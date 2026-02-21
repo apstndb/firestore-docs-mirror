@@ -1,0 +1,113 @@
+NAME
+
+gcloud firestore databases restore - restores a Cloud Firestore database from a backup
+
+SYNOPSIS
+
+`  gcloud firestore databases restore  ` `  --destination-database  ` = `  DESTINATION_DATABASE  ` `  --source-backup  ` = `  SOURCE_BACKUP  ` \[ `  --tags  ` =\[ `  KEY  ` = `  VALUE  ` , …\]\] \[ `  --encryption-type  ` = `  ENCRYPTION_TYPE  ` : `  --kms-key-name  ` = `  KMS_KEY_NAME  ` \] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+
+EXAMPLES
+
+To restore a database from a backup.
+
+``` text
+gcloud firestore databases restore --source-backup=projects/PROJECT_ID/locations/LOCATION_ID/backups/BACKUP_ID --destination-database=DATABASE_ID
+```
+
+To restore a database from a backup with tags.
+
+``` text
+gcloud firestore databases restore --source-backup=projects/PROJECT_ID/locations/LOCATION_ID/backups/BACKUP_ID --destination-database=DATABASE_ID --tags=key1=value1,key2=value2
+```
+
+To restore to a CMEK-enabled database.
+
+``` text
+gcloud firestore databases restore --source-backup=projects/PROJECT_ID/locations/LOCATION_ID/backups/BACKUP_ID --destination-database=DATABASE_ID --encryption-type=customer-managed-encryption --kms-key-name=projects/PROJECT_ID/locations/LOCATION_ID/keyRings/KEY_RING_ID/cryptoKeys/CRYPTO_KEY_ID
+```
+
+REQUIRED FLAGS
+
+  - `  --destination-database  ` = `  DESTINATION_DATABASE  `  
+    Destination database to restore to. Destination database will be created in the same location as the source backup.
+    
+    This value should be 4-63 characters. Valid characters are /\[a-z\]\[0-9\]-/ with first character a letter and the last a letter or a number. Must not be UUID-like /\[0-9a-f\]8(-\[0-9a-f\]4)3-\[0-9a-f\]12/.
+    
+    Using "(default)" database ID is also allowed.
+    
+    For example, to restore to database `  testdb  ` :
+    
+    ``` text
+    gcloud firestore databases restore --destination-database=testdb
+    ```
+
+  - `  --source-backup  ` = `  SOURCE_BACKUP  `  
+    The source backup to restore from.
+    
+    For example, to restore from backup `  cf9f748a-7980-4703-b1a1-d1ffff591db0  ` in us-east1:
+    
+    ``` text
+    gcloud firestore databases restore --source-backup=projects/PROJECT_ID/locations/us-east1/backups/cf9f748a-7980-4703-b1a1-d1ffff591db0
+    ```
+
+OPTIONAL FLAGS
+
+`  --tags  ` =\[ `  KEY  ` = `  VALUE  ` ,…\]
+
+Tags to attach to the destination database. Example: --tags=key1=value1,key2=value2
+
+For example, to attach tags to a database:
+
+$ --tags=key1=value1,key2=value2
+
+The encryption configuration of the new database being created from the backup. If not specified, the same encryption settings as the backup will be used.
+
+To create a CMEK-enabled database:
+
+``` text
+gcloud firestore databases restore --encryption-type=customer-managed-encryption --kms-key-name=projects/PROJECT_ID/locations/LOCATION_ID/keyRings/KEY_RING_ID/cryptoKeys/CRYPTO_KEY_ID
+```
+
+To create a Google-default-encrypted database:
+
+``` text
+gcloud firestore databases restore --encryption-type=google-default-encryption
+```
+
+To create a database using the same encryption settings as the backup:
+
+``` text
+gcloud firestore databases restore --encryption-type=use-source-encryption
+```
+
+`  --encryption-type  ` = `  ENCRYPTION_TYPE  `
+
+The encryption type of the destination database. `  ENCRYPTION_TYPE  ` must be one of: `  use-source-encryption  ` , `  customer-managed-encryption  ` , `  google-default-encryption  ` .
+
+This flag argument must be specified if any of the other arguments in this group are specified.
+
+`  --kms-key-name  ` = `  KMS_KEY_NAME  `
+
+The resource ID of a Cloud KMS key. If set, the database created will be a Customer-Managed Encryption Key (CMEK) database encrypted with this key. This feature is allowlist only in initial launch.
+
+Only a key in the same location as this database is allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS location us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS location europe. See <https://cloud.google.com/kms/docs/locations> .
+
+This value should be the KMS key resource ID in the format of `  projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}  ` . How to retrieve this resource ID is listed at <https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version> . This flag must only be specified when encryption-type is `  customer-managed-encryption  ` .
+
+GCLOUD WIDE FLAGS
+
+These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
+
+Run `  $ gcloud help  ` for details.
+
+NOTES
+
+These variants are also available:
+
+``` text
+gcloud alpha firestore databases restore
+```
+
+``` text
+gcloud beta firestore databases restore
+```

@@ -1,0 +1,48 @@
+NAME
+
+gcloud firestore user-creds - manage the user creds for a Cloud Firestore Database
+
+SYNOPSIS
+
+`  gcloud firestore user-creds  ` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+
+DESCRIPTION
+
+Manage the user creds for a Cloud Firestore Database.
+
+GCLOUD WIDE FLAGS
+
+These flags are available to all commands: `  --help  ` .
+
+Run `  $ gcloud help  ` for details.
+
+COMMANDS
+
+`  COMMAND  ` is one of the following:
+
+  - `  create  `  
+    Creates a Cloud Firestore user creds.
+  - `  delete  `  
+    Deletes a Cloud Firestore user creds.
+  - `  describe  `  
+    Describes a Cloud Firestore user creds.
+  - `  disable  `  
+    Disables a Cloud Firestore user creds.
+  - `  enable  `  
+    Enables a Cloud Firestore user creds.
+  - `  list  `  
+    Lists user creds under a Cloud Firestore database.
+  - `  reset-password  `  
+    Resets a Cloud Firestore user creds.
+
+NOTES
+
+These variants are also available:
+
+``` text
+gcloud alpha firestore user-creds
+```
+
+``` text
+gcloud beta firestore user-creds
+```

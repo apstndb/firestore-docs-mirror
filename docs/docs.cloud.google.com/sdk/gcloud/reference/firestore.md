@@ -1,0 +1,67 @@
+NAME
+
+gcloud firestore - manage your Cloud Firestore resources
+
+SYNOPSIS
+
+`  gcloud firestore  ` `  GROUP  ` | `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+
+DESCRIPTION
+
+export -- Export data to Google Cloud Storage
+
+import -- Import data from Google Cloud Storage
+
+bulk-delete -- Bulk delete documents from Cloud Firestore
+
+indexes -- Manage your Cloud Firestore indexes
+
+operations -- Manage Long Running Operations for Cloud Firestore
+
+GCLOUD WIDE FLAGS
+
+These flags are available to all commands: `  --help  ` .
+
+Run `  $ gcloud help  ` for details.
+
+GROUPS
+
+`  GROUP  ` is one of the following:
+
+  - `  backups  `  
+    The set of commands to manage backups for Cloud Firestore.
+  - `  databases  `  
+    Manage Creation of Cloud Firestore in Native mode Database.
+  - `  fields  `  
+    Manage field metadata for Cloud Firestore.
+  - `  indexes  `  
+    Manage indexes for Cloud Firestore.
+  - `  locations  `  
+    The set of commands to manage Locations for Cloud Firestore.
+  - `  operations  `  
+    Manage Long Running Operations for Cloud Firestore.
+  - `  user-creds  `  
+    Manage the user creds for a Cloud Firestore Database.
+
+COMMANDS
+
+`  COMMAND  ` is one of the following:
+
+  - `  bulk-delete  `  
+    bulk delete Cloud Firestore documents.
+  - `  export  `  
+    export Cloud Firestore documents to Google Cloud Storage.
+  - `  import  `  
+    import Cloud Firestore documents from Google Cloud Storage.
+
+NOTES
+
+These variants are also available:
+
+``` text
+gcloud alpha firestore
+```
+
+``` text
+gcloud beta firestore
+```

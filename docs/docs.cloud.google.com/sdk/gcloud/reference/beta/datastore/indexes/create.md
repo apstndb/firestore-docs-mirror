@@ -1,0 +1,55 @@
+NAME
+
+gcloud beta datastore indexes create - create new datastore indexes based on your local index configuration
+
+SYNOPSIS
+
+`  gcloud beta datastore indexes create  ` `  INDEX_FILE  ` \[ `  --database  ` = `  DATABASE  ` \] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+
+DESCRIPTION
+
+`  (BETA)  ` Create new datastore indexes based on your local index configuration. Any indexes in your index file that do not exist will be created.
+
+EXAMPLES
+
+To create new indexes based on your local configuration, run:
+
+``` text
+gcloud beta datastore indexes create ~/myapp/index.yaml
+```
+
+Detailed information about index configuration can be found at the [index.yaml reference](https://cloud.google.com/datastore/docs/tools/indexconfig) .
+
+POSITIONAL ARGUMENTS
+
+  - `  INDEX_FILE  `  
+    The path to your `  index.yaml  ` file. For a detailed look into defining your `  index.yaml  ` file, refer to this configuration guide: <https://cloud.google.com/datastore/docs/tools/indexconfig#Datastore_About_index_yaml>
+
+FLAGS
+
+  - `  --database  ` = `  DATABASE  `  
+    The database to operate on. If not specified, the CLI refers the `  (default)  ` database by default.
+    
+    For example, to operate on database `  testdb  ` :
+    
+    ``` text
+    gcloud beta datastore indexes create --database='testdb'
+    ```
+
+GCLOUD WIDE FLAGS
+
+These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
+
+Run `  $ gcloud help  ` for details.
+
+NOTES
+
+This command is currently in beta and might change without notice. These variants are also available:
+
+``` text
+gcloud datastore indexes create
+```
+
+``` text
+gcloud alpha datastore indexes create
+```

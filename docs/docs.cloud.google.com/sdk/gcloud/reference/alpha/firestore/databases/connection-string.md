@@ -1,0 +1,64 @@
+NAME
+
+gcloud alpha firestore databases connection-string - prints the mongo connection string for the given Firestore database
+
+SYNOPSIS
+
+`  gcloud alpha firestore databases connection-string  ` `  --database  ` = `  DATABASE  ` \[ `  --auth  ` = `  AUTH  ` ; default="none" | `  --validate  ` = `  VALIDATE  ` \] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+
+EXAMPLES
+
+To get the connection string for a Firestore database with a databaseId `  testdb  ` without auth configuration.
+
+``` text
+gcloud alpha firestore databases connection-string --database=testdb --auth=none
+```
+
+To get the connection string for a Firestore database with a databaseId `  testdb  ` with Google Compute Engine VM auth.
+
+``` text
+gcloud alpha firestore databases connection-string --database=testdb --auth=gce-vm
+```
+
+REQUIRED FLAGS
+
+  - `  --database  ` = `  DATABASE  `  
+    The database to operate on.
+    
+    For example, to operate on database `  foo  ` :
+    
+    ``` text
+    gcloud alpha firestore databases connection-string --database='foo'
+    ```
+
+OPTIONAL FLAGS
+
+At most one of these can be specified:
+
+  - `  --auth  ` = `  AUTH  ` ; default="none"  
+    The auth configuration for the connection string.
+    
+    If connecting from a Google Compute Engine VM, use `  gce-vm  ` . For short term access using the gcloud CLI's access token, use `  access-token  ` . For password auth use scram-sha-256. Otherwise, use `  none  ` and configure auth manually.
+    
+    `  AUTH  ` must be one of: `  none  ` , `  gce-vm  ` , `  access-token  ` , `  scram-sha-256  ` .
+
+  - `  --validate  ` = `  VALIDATE  `  
+    Validate the specified connection string for the current database. This command checks that the connection string is well formed, contains the required parameters, and specifies correct configuration values for the current database.
+
+GCLOUD WIDE FLAGS
+
+These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
+
+Run `  $ gcloud help  ` for details.
+
+NOTES
+
+This command is currently in alpha and might change without notice. If this command fails with API permission errors despite specifying the correct project, you might be trying to access an API with an invitation-only early access allowlist. These variants are also available:
+
+``` text
+gcloud firestore databases connection-string
+```
+
+``` text
+gcloud beta firestore databases connection-string
+```

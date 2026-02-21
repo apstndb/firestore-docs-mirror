@@ -1,0 +1,114 @@
+NAME
+
+gcloud beta firestore export - export Cloud Firestore documents to Google Cloud Storage
+
+SYNOPSIS
+
+`  gcloud beta firestore export  ` `  OUTPUT_URI_PREFIX  ` \[ `  --async  ` \] \[ `  --collection-ids  ` =\[ `  COLLECTION_GROUP_IDS  ` , …\]\] \[ `  --database  ` = `  DATABASE  ` ; default="(default)"\] \[ `  --namespace-ids  ` =\[ `  NAMESPACE_IDS  ` , …\]\] \[ `  --snapshot-time  ` = `  SNAPSHOT_TIME  ` \] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+
+DESCRIPTION
+
+`  (BETA)  ` export Cloud Firestore documents to Google Cloud Storage.
+
+EXAMPLES
+
+To export all collection groups to `  mybucket  ` in objects prefixed with `  my/path  ` , run:
+
+``` text
+gcloud beta firestore export gs://mybucket/my/path
+```
+
+To export a specific set of collections groups asynchronously, run:
+
+``` text
+gcloud beta firestore export gs://mybucket/my/path --collection-ids='specific collection group1','specific
+ collection group2' --async
+```
+
+To export all collection groups from certain namespace, run:
+
+``` text
+gcloud beta firestore export gs://mybucket/my/path --namespace-ids='specific namespace id'
+```
+
+To export from a snapshot at '2023-05-26T10:20:00.00Z', run:
+
+``` text
+gcloud beta firestore export gs://mybucket/my/path --snapshot-time='2023-05-26T10:20:00.00Z'
+```
+
+POSITIONAL ARGUMENTS
+
+  - `  OUTPUT_URI_PREFIX  `  
+    Location where the export files will be stored. Must be a valid Google Cloud Storage bucket with an optional path prefix.
+    
+    For example:
+    
+    ``` text
+    gcloud beta firestore export gs://mybucket/my/path
+    ```
+    
+    Will place the export in the `  mybucket  ` bucket in objects prefixed with `  my/path  ` .
+
+FLAGS
+
+  - `  --async  `  
+    Return immediately, without waiting for the operation in progress to complete.
+
+  - `  --collection-ids  ` =\[ `  COLLECTION_GROUP_IDS  ` ,…\]  
+    List specifying which collection groups will be included in the operation. When omitted, all collection groups are included.
+    
+    For example, to operate on only the `  customers  ` and `  orders  ` collections groups:
+    
+    ``` text
+    gcloud beta firestore export --collection-ids='customers','orders'
+    ```
+
+  - `  --database  ` = `  DATABASE  ` ; default="(default)"  
+    The database to operate on. The default value is `  (default)  ` .
+    
+    For example, to operate on database `  foo  ` :
+    
+    ``` text
+    gcloud beta firestore export --database='foo'
+    ```
+
+  - `  --namespace-ids  ` =\[ `  NAMESPACE_IDS  ` ,…\]  
+    List specifying which namespaces will be included in the operation. When omitted, all namespaces are included.
+    
+    This is only supported for Datastore Mode databases.
+    
+    For example, to operate on only the `  customers  ` and `  orders  ` namespaces:
+    
+    ``` text
+    gcloud beta firestore export --namespaces-ids='customers','orders'
+    ```
+
+  - `  --snapshot-time  ` = `  SNAPSHOT_TIME  `  
+    The version of the database to export.
+    
+    The timestamp must be in the past, rounded to the minute and not older than `  earliestVersionTime  ` . If specified, then the exported documents will represent a consistent view of the database at the provided time. Otherwise, there are no guarantees about the consistency of the exported documents.
+    
+    For example, to operate on snapshot time `  2023-05-26T10:20:00.00Z  ` :
+    
+    ``` text
+    gcloud beta firestore export --snapshot-time='2023-05-26T10:20:00.00Z'
+    ```
+
+GCLOUD WIDE FLAGS
+
+These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
+
+Run `  $ gcloud help  ` for details.
+
+NOTES
+
+This command is currently in beta and might change without notice. These variants are also available:
+
+``` text
+gcloud firestore export
+```
+
+``` text
+gcloud alpha firestore export
+```

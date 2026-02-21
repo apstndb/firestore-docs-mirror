@@ -1,0 +1,52 @@
+NAME
+
+gcloud alpha firestore databases - manage Creation of Cloud Firestore in Native mode Database
+
+SYNOPSIS
+
+`  gcloud alpha firestore databases  ` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+
+DESCRIPTION
+
+`  (ALPHA)  ` Manage Creation of Cloud Firestore in Native mode Database.
+
+GCLOUD WIDE FLAGS
+
+These flags are available to all commands: `  --help  ` .
+
+Run `  $ gcloud help  ` for details.
+
+COMMANDS
+
+`  COMMAND  ` is one of the following:
+
+  - `  clone  `  
+    `  (ALPHA)  ` Clone a Google Cloud Firestore database from another.
+  - `  connection-string  `  
+    `  (ALPHA)  ` Prints the mongo connection string for the given Firestore database.
+  - `  create  `  
+    `  (ALPHA)  ` Create a Google Cloud Firestore database via Firestore API.
+  - `  delete  `  
+    `  (ALPHA)  ` Delete a Google Cloud Firestore database.
+  - `  describe  `  
+    `  (ALPHA)  ` Describes information about a Cloud Firestore database.
+  - `  list  `  
+    `  (ALPHA)  ` Lists all Firestore databases under the project.
+  - `  ping  `  
+    `  (ALPHA)  ` Times the connection and ping time for a Firestore with MongoDB compatibility database.
+  - `  restore  `  
+    `  (ALPHA)  ` Restores a Cloud Firestore database from a backup.
+  - `  update  `  
+    `  (ALPHA)  ` Update the database configuration of a Cloud Firestore database.
+
+NOTES
+
+This command is currently in alpha and might change without notice. If this command fails with API permission errors despite specifying the correct project, you might be trying to access an API with an invitation-only early access allowlist. These variants are also available:
+
+``` text
+gcloud firestore databases
+```
+
+``` text
+gcloud beta firestore databases
+```

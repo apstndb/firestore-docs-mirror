@@ -1,0 +1,91 @@
+NAME
+
+gcloud beta firestore indexes fields describe - describe the index configuration of the given field
+
+SYNOPSIS
+
+`  gcloud beta firestore indexes fields describe  ` \[\[ `  FIELD  ` \] `  --collection-group  ` = `  COLLECTION_GROUP  ` `  --database  ` = `  DATABASE  ` \] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+
+DESCRIPTION
+
+`  (BETA)  ` Describe the index configuration of the given field.
+
+EXAMPLES
+
+The following command describes the database-wide default index settings:
+
+``` text
+gcloud beta firestore indexes fields describe
+```
+
+``` text
+gcloud beta firestore indexes fields describe --database=(default)
+```
+
+The following command describes the index configuration of the `  timestamp  ` field in the `  Events  ` collection group.
+
+``` text
+gcloud beta firestore indexes fields describe timestamp --collection-group=Events
+```
+
+POSITIONAL ARGUMENTS
+
+Field resource - Field to describe.
+
+This can be omitted to describe the database-wide default index settings. The arguments in this group can be used to specify the attributes of this resource. (NOTE) Some attributes are not given arguments in this group but can be set in other ways.
+
+To set the `  project  ` attribute:
+
+  - provide the argument `  field  ` on the command line with a fully specified name;
+  - with a fully specified name;
+  - provide the argument `  --project  ` on the command line;
+  - set the property `  core/project  ` .
+
+\[ `  FIELD  ` \]
+
+ID of the field or fully qualified identifier for the field.
+
+To set the `  field  ` attribute:
+
+  - provide the argument `  field  ` on the command line;
+  - .
+
+`  --collection-group  ` = `  COLLECTION_GROUP  `
+
+Collection group of the field. To set the `  collection-group  ` attribute:
+
+  - provide the argument `  field  ` on the command line with a fully specified name;
+  - with a fully specified name;
+  - provide the argument `  --collection-group  ` on the command line;
+  - .
+
+`  --database  ` = `  DATABASE  `
+
+Database of the field. To set the `  database  ` attribute:
+
+  - provide the argument `  field  ` on the command line with a fully specified name;
+  - with a fully specified name;
+  - provide the argument `  --database  ` on the command line;
+  - the default value of argument \[--database\] is `  (default)  ` .
+
+GCLOUD WIDE FLAGS
+
+These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
+
+Run `  $ gcloud help  ` for details.
+
+API REFERENCE
+
+This command uses the `  firestore/v1  ` API. The full documentation for this API can be found at: <https://cloud.google.com/firestore>
+
+NOTES
+
+This command is currently in beta and might change without notice. These variants are also available:
+
+``` text
+gcloud firestore indexes fields describe
+```
+
+``` text
+gcloud alpha firestore indexes fields describe
+```

@@ -1,0 +1,38 @@
+NAME
+
+gcloud beta firestore indexes - manage indexes for Cloud Firestore
+
+SYNOPSIS
+
+`  gcloud beta firestore indexes  ` `  GROUP  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+
+DESCRIPTION
+
+`  (BETA)  ` Manage indexes for Cloud Firestore.
+
+GCLOUD WIDE FLAGS
+
+These flags are available to all commands: `  --help  ` .
+
+Run `  $ gcloud help  ` for details.
+
+GROUPS
+
+`  GROUP  ` is one of the following:
+
+  - `  composite  `  
+    `  (BETA)  ` Manage composite indexes for Cloud Firestore.
+  - `  fields  `  
+    `  (BETA)  ` Manage single-field indexes for Cloud Firestore.
+
+NOTES
+
+This command is currently in beta and might change without notice. These variants are also available:
+
+``` text
+gcloud firestore indexes
+```
+
+``` text
+gcloud alpha firestore indexes
+```

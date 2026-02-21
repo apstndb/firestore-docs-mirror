@@ -1,0 +1,67 @@
+NAME
+
+gcloud alpha firestore - manage your Cloud Firestore resources
+
+SYNOPSIS
+
+`  gcloud alpha firestore  ` `  GROUP  ` | `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+
+DESCRIPTION
+
+`  (ALPHA)  ` export -- Export data to Google Cloud Storage
+
+import -- Import data from Google Cloud Storage
+
+bulk-delete -- Bulk delete documents from Cloud Firestore
+
+indexes -- Manage your Cloud Firestore indexes
+
+operations -- Manage Long Running Operations for Cloud Firestore
+
+GCLOUD WIDE FLAGS
+
+These flags are available to all commands: `  --help  ` .
+
+Run `  $ gcloud help  ` for details.
+
+GROUPS
+
+`  GROUP  ` is one of the following:
+
+  - `  backups  `  
+    `  (ALPHA)  ` The set of commands to manage backups for Cloud Firestore.
+  - `  databases  `  
+    `  (ALPHA)  ` Manage Creation of Cloud Firestore in Native mode Database.
+  - `  fields  `  
+    `  (ALPHA)  ` Manage field metadata for Cloud Firestore.
+  - `  indexes  `  
+    `  (ALPHA)  ` Manage indexes for Cloud Firestore.
+  - `  locations  `  
+    `  (ALPHA)  ` The set of commands to manage Locations for Cloud Firestore.
+  - `  operations  `  
+    `  (ALPHA)  ` Manage Long Running Operations for Cloud Firestore.
+  - `  user-creds  `  
+    `  (ALPHA)  ` Manage the user creds for a Cloud Firestore Database.
+
+COMMANDS
+
+`  COMMAND  ` is one of the following:
+
+  - `  bulk-delete  `  
+    `  (ALPHA)  ` bulk delete Cloud Firestore documents.
+  - `  export  `  
+    `  (ALPHA)  ` export Cloud Firestore documents to Google Cloud Storage.
+  - `  import  `  
+    `  (ALPHA)  ` import Cloud Firestore documents from Google Cloud Storage.
+
+NOTES
+
+This command is currently in alpha and might change without notice. If this command fails with API permission errors despite specifying the correct project, you might be trying to access an API with an invitation-only early access allowlist. These variants are also available:
+
+``` text
+gcloud firestore
+```
+
+``` text
+gcloud beta firestore
+```

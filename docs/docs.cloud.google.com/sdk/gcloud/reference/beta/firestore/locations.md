@@ -1,0 +1,36 @@
+NAME
+
+gcloud beta firestore locations - the set of commands to manage Locations for Cloud Firestore
+
+SYNOPSIS
+
+`  gcloud beta firestore locations  ` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+
+DESCRIPTION
+
+`  (BETA)  ` The set of commands to manage Locations for Cloud Firestore.
+
+GCLOUD WIDE FLAGS
+
+These flags are available to all commands: `  --help  ` .
+
+Run `  $ gcloud help  ` for details.
+
+COMMANDS
+
+`  COMMAND  ` is one of the following:
+
+  - `  list  `  
+    `  (BETA)  ` List locations available to Google Cloud Firestore.
+
+NOTES
+
+This command is currently in beta and might change without notice. These variants are also available:
+
+``` text
+gcloud firestore locations
+```
+
+``` text
+gcloud alpha firestore locations
+```

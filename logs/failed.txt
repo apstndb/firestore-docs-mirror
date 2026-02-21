@@ -1,0 +1,10 @@
+200 https://cloud.google.com/datastore/pricing
+200 https://cloud.google.com/datastore/sla
+200 https://cloud.google.com/firestore/pricing
+200 https://cloud.google.com/firestore/sla
+404 https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/listen
+404 https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/write
+404 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/listen
+404 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/write
+404 https://docs.cloud.google.com/firestore/enterprise/pricing
+404 https://docs.cloud.google.com/firestore/native/docs/query-explain-reference

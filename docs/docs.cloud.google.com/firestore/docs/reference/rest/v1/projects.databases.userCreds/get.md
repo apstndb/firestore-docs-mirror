@@ -1,0 +1,34 @@
+Gets a user creds resource. Note that the returned resource does not contain the secret value itself.
+
+### HTTP request
+
+`  GET https://firestore.googleapis.com/v1/{name=projects/*/databases/*/userCreds/*}  `
+
+The URL uses [gRPC Transcoding](https://google.aip.dev/127) syntax.
+
+### Path parameters
+
+Parameters
+
+`  name  `
+
+`  string  `
+
+Required. A name of the form `  projects/{projectId}/databases/{databaseId}/userCreds/{userCredsId}  `
+
+### Request body
+
+The request body must be empty.
+
+### Response body
+
+If successful, the response body contains an instance of `  UserCreds  ` .
+
+### Authorization scopes
+
+Requires one of the following OAuth scopes:
+
+  - `  https://www.googleapis.com/auth/datastore  `
+  - `  https://www.googleapis.com/auth/cloud-platform  `
+
+For more information, see the [Authentication Overview](/docs/authentication#authorization-gcp) .

@@ -1,0 +1,91 @@
+NAME
+
+gcloud beta firestore import - import Cloud Firestore documents from Google Cloud Storage
+
+SYNOPSIS
+
+`  gcloud beta firestore import  ` `  INPUT_URI_PREFIX  ` \[ `  --async  ` \] \[ `  --collection-ids  ` =\[ `  COLLECTION_GROUP_IDS  ` , …\]\] \[ `  --database  ` = `  DATABASE  ` ; default="(default)"\] \[ `  --namespace-ids  ` =\[ `  NAMESPACE_IDS  ` , …\]\] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+
+DESCRIPTION
+
+`  (BETA)  ` import Cloud Firestore documents from Google Cloud Storage.
+
+EXAMPLES
+
+To import all collection groups from `  mybucket/my/path  ` , run:
+
+``` text
+gcloud beta firestore import gs://mybucket/my/path
+```
+
+To import a specific set of collections groups asynchronously, run:
+
+``` text
+gcloud beta firestore import gs://mybucket/my/path --collection-ids='specific collection group1','specific
+ collection group2' --async
+```
+
+To import all collection groups from certain namespace, run:
+
+``` text
+gcloud beta firestore import gs://mybucket/my/path --namespace-ids='specific namespace id'
+```
+
+POSITIONAL ARGUMENTS
+
+  - `  INPUT_URI_PREFIX  `  
+    Location of the import files.
+    
+    This location is the 'output\_uri\_prefix' field of a previous export, and can be found via the 'gcloud beta firestore operations describe' command.
+
+FLAGS
+
+  - `  --async  `  
+    Return immediately, without waiting for the operation in progress to complete.
+
+  - `  --collection-ids  ` =\[ `  COLLECTION_GROUP_IDS  ` ,…\]  
+    List specifying which collection groups will be included in the operation. When omitted, all collection groups are included.
+    
+    For example, to operate on only the `  customers  ` and `  orders  ` collections groups:
+    
+    ``` text
+    gcloud beta firestore import --collection-ids='customers','orders'
+    ```
+
+  - `  --database  ` = `  DATABASE  ` ; default="(default)"  
+    The database to operate on. The default value is `  (default)  ` .
+    
+    For example, to operate on database `  foo  ` :
+    
+    ``` text
+    gcloud beta firestore import --database='foo'
+    ```
+
+  - `  --namespace-ids  ` =\[ `  NAMESPACE_IDS  ` ,…\]  
+    List specifying which namespaces will be included in the operation. When omitted, all namespaces are included.
+    
+    This is only supported for Datastore Mode databases.
+    
+    For example, to operate on only the `  customers  ` and `  orders  ` namespaces:
+    
+    ``` text
+    gcloud beta firestore import --namespaces-ids='customers','orders'
+    ```
+
+GCLOUD WIDE FLAGS
+
+These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
+
+Run `  $ gcloud help  ` for details.
+
+NOTES
+
+This command is currently in beta and might change without notice. These variants are also available:
+
+``` text
+gcloud firestore import
+```
+
+``` text
+gcloud alpha firestore import
+```

@@ -1,0 +1,53 @@
+NAME
+
+gcloud firestore backups delete - deletes a Cloud Firestore backup
+
+SYNOPSIS
+
+`  gcloud firestore backups delete  ` `  --backup  ` = `  BACKUP  ` `  --location  ` = `  LOCATION  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+
+EXAMPLES
+
+To delete `  cf9f748a-7980-4703-b1a1-d1ffff591db0  ` backup in us-east1.
+
+``` text
+gcloud firestore backups delete --location=us-east1 --backup=cf9f748a-7980-4703-b1a1-d1ffff591db0
+```
+
+REQUIRED FLAGS
+
+  - `  --backup  ` = `  BACKUP  `  
+    The backup to operate on.
+    
+    For example, to operate on backup `  cf9f748a-7980-4703-b1a1-d1ffff591db0  ` :
+    
+    ``` text
+    gcloud firestore backups delete --backup='cf9f748a-7980-4703-b1a1-d1ffff591db0'
+    ```
+
+  - `  --location  ` = `  LOCATION  `  
+    The location to operate on. Available locations are listed at <https://cloud.google.com/firestore/docs/locations> .
+    
+    For example, to operate on location `  us-east1  ` :
+    
+    ``` text
+    gcloud firestore backups delete --location='us-east1'
+    ```
+
+GCLOUD WIDE FLAGS
+
+These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
+
+Run `  $ gcloud help  ` for details.
+
+NOTES
+
+These variants are also available:
+
+``` text
+gcloud alpha firestore backups delete
+```
+
+``` text
+gcloud beta firestore backups delete
+```

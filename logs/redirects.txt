@@ -1,0 +1,11 @@
+https://cloud.google.com/datastore/docs/concepts/overview https://docs.cloud.google.com/datastore/docs/concepts/overview
+https://cloud.google.com/datastore/docs/samples/datastore-add-entity https://docs.cloud.google.com/datastore/docs/samples/datastore-add-entity
+https://cloud.google.com/firestore/docs/samples/firestore-data-set-id-random-collection-async https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-id-random-collection-async
+https://cloud.google.com/firestore/mongodb-compatibility/docs https://docs.cloud.google.com/firestore/mongodb-compatibility/docs
+https://cloud.google.com/firestore/native/docs https://docs.cloud.google.com/firestore/native/docs
+https://cloud.google.com/sdk/gcloud/reference/datastore https://docs.cloud.google.com/sdk/gcloud/reference/datastore
+https://cloud.google.com/sdk/gcloud/reference/firestore https://docs.cloud.google.com/sdk/gcloud/reference/firestore
+https://docs.cloud.google.com/datastore/pricing https://cloud.google.com/datastore/pricing
+https://docs.cloud.google.com/datastore/sla https://cloud.google.com/datastore/sla
+https://docs.cloud.google.com/firestore/pricing https://cloud.google.com/firestore/pricing
+https://docs.cloud.google.com/firestore/sla https://cloud.google.com/firestore/sla

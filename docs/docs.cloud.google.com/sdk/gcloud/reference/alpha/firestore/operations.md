@@ -1,0 +1,44 @@
+NAME
+
+gcloud alpha firestore operations - manage Long Running Operations for Cloud Firestore
+
+SYNOPSIS
+
+`  gcloud alpha firestore operations  ` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+
+DESCRIPTION
+
+`  (ALPHA)  ` Manage Long Running Operations for Cloud Firestore.
+
+GCLOUD WIDE FLAGS
+
+These flags are available to all commands: `  --help  ` .
+
+Run `  $ gcloud help  ` for details.
+
+COMMANDS
+
+`  COMMAND  ` is one of the following:
+
+  - `  cancel  `  
+    `  (ALPHA)  ` Cancel a currently-running Cloud Firestore admin operation.
+  - `  delete  `  
+    `  (ALPHA)  ` Delete a completed Cloud Firestore admin operation.
+  - `  describe  `  
+    `  (ALPHA)  ` Retrieves information about a Cloud Firestore admin operation.
+  - `  list  `  
+    `  (ALPHA)  ` List pending Cloud Firestore admin operations and their status.
+  - `  wait  `  
+    `  (ALPHA)  ` Waits a Cloud Firestore admin operation to complete.
+
+NOTES
+
+This command is currently in alpha and might change without notice. If this command fails with API permission errors despite specifying the correct project, you might be trying to access an API with an invitation-only early access allowlist. These variants are also available:
+
+``` text
+gcloud firestore operations
+```
+
+``` text
+gcloud beta firestore operations
+```

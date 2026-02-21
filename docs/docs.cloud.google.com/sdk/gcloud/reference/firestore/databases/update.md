@@ -1,0 +1,77 @@
+NAME
+
+gcloud firestore databases update - update the database configuration of a Cloud Firestore database
+
+SYNOPSIS
+
+`  gcloud firestore databases update  ` \[ `  --async  ` \] \[ `  --database  ` = `  DATABASE  ` \] \[ `  --delete-protection  ` \] \[ `  --enable-pitr  ` \] \[ `  --type  ` = `  TYPE  ` \] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+
+DESCRIPTION
+
+Update the database configuration of a Cloud Firestore database.
+
+EXAMPLES
+
+The following command updates the database type of a Cloud Firestore database.
+
+``` text
+gcloud firestore databases update --type=firestore-native
+```
+
+FLAGS
+
+`  --async  `
+
+Return immediately, without waiting for the operation in progress to complete.
+
+Database resource - Cloud Firestore database to update. This represents a Cloud resource. (NOTE) Some attributes are not given arguments in this group but can be set in other ways.
+
+To set the `  project  ` attribute:
+
+  - provide the argument `  --database  ` on the command line with a fully specified name;
+  - the default value of argument \[--database\] is `  (default)  ` with a fully specified name;
+  - provide the argument `  --project  ` on the command line;
+  - set the property `  core/project  ` .
+
+`  --database  ` = `  DATABASE  `
+
+ID of the database or fully qualified identifier for the database.
+
+To set the `  database  ` attribute:
+
+  - provide the argument `  --database  ` on the command line;
+  - the default value of argument \[--database\] is `  (default)  ` .
+
+`  --delete-protection  `
+
+If set to true, the Firestore database will be updated to have database delete protection enabled. A database with delete protection enabled cannot be deleted. You can disable the delete protection via --no-delete-protection.
+
+`  --enable-pitr  `
+
+If set to true, the Firestore database will be updated to enable Point In Time Recovery. You can disable the this feature via --no-enable-pitr.
+
+`  --type  ` = `  TYPE  `
+
+The database type. `  TYPE  ` must be one of: `  datastore-mode  ` , `  firestore-native  ` .
+
+GCLOUD WIDE FLAGS
+
+These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
+
+Run `  $ gcloud help  ` for details.
+
+API REFERENCE
+
+This command uses the `  firestore/v1  ` API. The full documentation for this API can be found at: <https://cloud.google.com/firestore>
+
+NOTES
+
+These variants are also available:
+
+``` text
+gcloud alpha firestore databases update
+```
+
+``` text
+gcloud beta firestore databases update
+```
