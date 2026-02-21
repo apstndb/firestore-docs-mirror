@@ -3,7 +3,7 @@ name: Update Documentation Mirror
 on:
   schedule:
     # Runs at 18:00 UTC every day (03:00 JST)
-    - cron: '0 18 * * *'
+    - cron: '0 19 * * *'
   workflow_dispatch: # Allows manual triggering from the Actions tab
 
 permissions:
