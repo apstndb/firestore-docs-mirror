@@ -17,59 +17,7 @@ This document describes how to use the Firestore remote Model Context Protocol (
 
 ## Before you begin
 
-1.  Sign in to your Google Cloud account. If you're new to Google Cloud, [create an account](https://console.cloud.google.com/freetrial) to evaluate how our products perform in real-world scenarios. New customers also get $300 in free credits to run, test, and deploy workloads.
-
-2.  In the Google Cloud console, on the project selector page, select or create a Google Cloud project.
-    
-    **Roles required to select or create a project**
-    
-      - **Select a project** : Selecting a project doesn't require a specific IAM role—you can select any project that you've been granted a role on.
-      - **Create a project** : To create a project, you need the Project Creator role ( `  roles/resourcemanager.projectCreator  ` ), which contains the `  resourcemanager.projects.create  ` permission. [Learn how to grant roles](/iam/docs/granting-changing-revoking-access) .
-    
-    **Note** : If you don't plan to keep the resources that you create in this procedure, create a project instead of selecting an existing project. After you finish these steps, you can delete the project, removing all resources associated with the project.
-
-3.  If you're using an existing project for this guide, [verify that you have the permissions required to complete this guide](#required-roles) . If you created a new project, then you already have the required permissions.
-
-4.  [Verify that billing is enabled for your Google Cloud project](/billing/docs/how-to/verify-billing-enabled#confirm_billing_is_enabled_on_a_project) .
-
-5.  [Install](/sdk/docs/install) the Google Cloud CLI.
-    
-    **Note:** If you installed the gcloud CLI previously, make sure you have the latest version by running `  gcloud components update  ` .
-
-6.  If you're using an external identity provider (IdP), you must first [sign in to the gcloud CLI with your federated identity](/iam/docs/workforce-log-in-gcloud) .
-
-7.  To [initialize](/sdk/docs/initializing) the gcloud CLI, run the following command:
-    
-    ``` text
-    gcloud init
-    ```
-
-8.  In the Google Cloud console, on the project selector page, select or create a Google Cloud project.
-    
-    **Roles required to select or create a project**
-    
-      - **Select a project** : Selecting a project doesn't require a specific IAM role—you can select any project that you've been granted a role on.
-      - **Create a project** : To create a project, you need the Project Creator role ( `  roles/resourcemanager.projectCreator  ` ), which contains the `  resourcemanager.projects.create  ` permission. [Learn how to grant roles](/iam/docs/granting-changing-revoking-access) .
-    
-    **Note** : If you don't plan to keep the resources that you create in this procedure, create a project instead of selecting an existing project. After you finish these steps, you can delete the project, removing all resources associated with the project.
-
-9.  If you're using an existing project for this guide, [verify that you have the permissions required to complete this guide](#required-roles) . If you created a new project, then you already have the required permissions.
-
-10. [Verify that billing is enabled for your Google Cloud project](/billing/docs/how-to/verify-billing-enabled#confirm_billing_is_enabled_on_a_project) .
-
-11. [Install](/sdk/docs/install) the Google Cloud CLI.
-    
-    **Note:** If you installed the gcloud CLI previously, make sure you have the latest version by running `  gcloud components update  ` .
-
-12. If you're using an external identity provider (IdP), you must first [sign in to the gcloud CLI with your federated identity](/iam/docs/workforce-log-in-gcloud) .
-
-13. To [initialize](/sdk/docs/initializing) the gcloud CLI, run the following command:
-    
-    ``` text
-    gcloud init
-    ```
-
-14. Select a Firestore in Native mode database to use or [create one](/firestore/native/docs/manage-databases#create_a_database) . Only Native mode databases in Enterprise or Standard edition support the remote MCP server.
+1.  Select a Firestore in Native mode database to use or [create one](/firestore/native/docs/manage-databases#create_a_database) . Only Native mode databases in Enterprise or Standard edition support the remote MCP server.
 
 ### Required roles
 

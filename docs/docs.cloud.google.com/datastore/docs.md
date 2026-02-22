@@ -8,16 +8,6 @@ Not sure what database option is right for you? Learn more about our [database s
 
 [Go to the Firestore in Datastore mode product page for more.](https://cloud.google.com/datastore/)
 
-#### Start your proof of concept with $300 in free credit
-
-  - Develop with our latest Generative AI models and tools.
-  - Get free usage of 20+ popular products, including Compute Engine and AI APIs.
-  - No automatic charges, no commitment.
-
-#### Keep exploring with 20+ always-free products.
-
-Access 20+ free products for common use cases, including AI APIs, VMs, data warehouses, and more.
-
 ## Documentation resources
 
 Find quickstarts and guides, review key references, and get help with common issues.

@@ -8,16 +8,6 @@ Firestore in Native mode is a NoSQL document database built for automatic scalin
 
 Not sure what database option is right for you? Learn more about our [database services](https://cloud.google.com/products/databases/) .
 
-#### Start your proof of concept with $300 in free credit
-
-  - Develop with our latest Generative AI models and tools.
-  - Get free usage of 20+ popular products, including Compute Engine and AI APIs.
-  - No automatic charges, no commitment.
-
-#### Keep exploring with 20+ always-free products.
-
-Access 20+ free products for common use cases, including AI APIs, VMs, data warehouses, and more.
-
 ## Documentation resources
 
 Find quickstarts and guides, review key references, and get help with common issues.

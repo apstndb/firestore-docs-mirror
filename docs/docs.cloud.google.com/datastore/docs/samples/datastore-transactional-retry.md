@@ -154,7 +154,7 @@ for ($i = 0; $i < $retries; $i++) {
         require_once __DIR__ . '/transfer_funds.php';
         transfer_funds($fromKeyId, $toKeyId, 10, $namespaceId);
     } catch (\Google\Cloud\Core\Exception\ConflictException $e) {
-        />/ if $i = $retries, the failure is final
+        // if $i >= $retries, the failure is final
         continue;
     }
     // Succeeded!

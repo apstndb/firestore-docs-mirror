@@ -30,51 +30,7 @@ By default, organization policies are inherited by the descendants of the resour
 
 ## Before you begin
 
-1.  Sign in to your Google Cloud account. If you're new to Google Cloud, [create an account](https://console.cloud.google.com/freetrial) to evaluate how our products perform in real-world scenarios. New customers also get $300 in free credits to run, test, and deploy workloads.
-
-2.  In the Google Cloud console, on the project selector page, select or create a Google Cloud project.
-    
-    **Roles required to select or create a project**
-    
-      - **Select a project** : Selecting a project doesn't require a specific IAM role—you can select any project that you've been granted a role on.
-      - **Create a project** : To create a project, you need the Project Creator role ( `  roles/resourcemanager.projectCreator  ` ), which contains the `  resourcemanager.projects.create  ` permission. [Learn how to grant roles](/iam/docs/granting-changing-revoking-access) .
-    
-    **Note** : If you don't plan to keep the resources that you create in this procedure, create a project instead of selecting an existing project. After you finish these steps, you can delete the project, removing all resources associated with the project.
-
-3.  [Verify that billing is enabled for your Google Cloud project](/billing/docs/how-to/verify-billing-enabled#confirm_billing_is_enabled_on_a_project) .
-
-4.  [Install](/sdk/docs/install) the Google Cloud CLI.
-
-5.  If you're using an external identity provider (IdP), you must first [sign in to the gcloud CLI with your federated identity](/iam/docs/workforce-log-in-gcloud) .
-
-6.  To [initialize](/sdk/docs/initializing) the gcloud CLI, run the following command:
-    
-    ``` text
-    gcloud init
-    ```
-
-7.  In the Google Cloud console, on the project selector page, select or create a Google Cloud project.
-    
-    **Roles required to select or create a project**
-    
-      - **Select a project** : Selecting a project doesn't require a specific IAM role—you can select any project that you've been granted a role on.
-      - **Create a project** : To create a project, you need the Project Creator role ( `  roles/resourcemanager.projectCreator  ` ), which contains the `  resourcemanager.projects.create  ` permission. [Learn how to grant roles](/iam/docs/granting-changing-revoking-access) .
-    
-    **Note** : If you don't plan to keep the resources that you create in this procedure, create a project instead of selecting an existing project. After you finish these steps, you can delete the project, removing all resources associated with the project.
-
-8.  [Verify that billing is enabled for your Google Cloud project](/billing/docs/how-to/verify-billing-enabled#confirm_billing_is_enabled_on_a_project) .
-
-9.  [Install](/sdk/docs/install) the Google Cloud CLI.
-
-10. If you're using an external identity provider (IdP), you must first [sign in to the gcloud CLI with your federated identity](/iam/docs/workforce-log-in-gcloud) .
-
-11. To [initialize](/sdk/docs/initializing) the gcloud CLI, run the following command:
-    
-    ``` text
-    gcloud init
-    ```
-
-12. Ensure that you know your [organization ID](/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id) .
+1.  Ensure that you know your [organization ID](/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id) .
 
 ### Required roles
 
@@ -128,17 +84,15 @@ When you have entered a value into each field, the equivalent YAML configuration
 To create a custom constraint, create a YAML file using the following format:
 
 ``` text
-      name: organizations/ORGANIZATION_ID/customConstraints/CONSTRAINT_NAME
-      resourceTypes:
-      - RESOURCE_NAME
-      methodTypes:
-      - CREATE
+name: organizations/ORGANIZATION_ID/customConstraints/CONSTRAINT_NAME
+resourceTypes: RESOURCE_NAME
+methodTypes:
+  - CREATE
 - UPDATE 
-      condition: "CONDITION"
-      actionType: ACTION
-      displayName: DISPLAY_NAME
-      description: DESCRIPTION
-      
+condition: "CONDITION"
+actionType: ACTION
+displayName: DISPLAY_NAME
+description: DESCRIPTION
 ```
 
 Replace the following:
@@ -154,8 +108,7 @@ Replace the following:
 After you have created the YAML file for a new custom constraint, you must set it up to make it available for organization policies in your organization. To set up a custom constraint, use the [`  gcloud org-policies set-custom-constraint  `](/sdk/gcloud/reference/org-policies/set-custom-constraint) command:
 
 ``` text
-        gcloud org-policies set-custom-constraint CONSTRAINT_PATH
-      
+gcloud org-policies set-custom-constraint CONSTRAINT_PATH
 ```
 
 Replace `  CONSTRAINT_PATH  ` with the full path to your custom constraint file. For example, `  /home/user/customconstraint.yaml  ` .
@@ -165,8 +118,7 @@ After this operation is complete, your custom constraints are available as organ
 To verify that the custom constraint exists, use the [`  gcloud org-policies list-custom-constraints  `](/sdk/gcloud/reference/org-policies/list-custom-constraints) command:
 
 ``` text
-      gcloud org-policies list-custom-constraints --organization=ORGANIZATION_ID
-      
+gcloud org-policies list-custom-constraints --organization=ORGANIZATION_ID
 ```
 
 Replace `  ORGANIZATION_ID  ` with the ID of your organization resource.
@@ -196,16 +148,14 @@ You can enforce a constraint by creating an organization policy that references 
 To create an organization policy with boolean rules, create a policy YAML file that references the constraint:
 
 ``` text
-        name: projects/PROJECT_ID/policies/CONSTRAINT_NAME
-        spec:
-          rules:
-          - enforce: true
-        
-        dryRunSpec:
-          rules:
-          - enforce: true
-        
-      
+name: projects/PROJECT_ID/policies/CONSTRAINT_NAME
+spec:
+  rules:
+  - enforce: true
+
+dryRunSpec:
+  rules:
+  - enforce: true
 ```
 
 Replace the following:
@@ -216,9 +166,7 @@ Replace the following:
 To enforce the organization policy in [dry-run mode](/resource-manager/docs/organization-policy/dry-run-policy) , run the following command with the `  dryRunSpec  ` flag:
 
 ``` text
-        gcloud org-policies set-policy POLICY_PATH \
-          --update-mask=dryRunSpec
-      
+gcloud org-policies set-policy POLICY_PATH --update-mask=dryRunSpec
 ```
 
 Replace `  POLICY_PATH  ` with the full path to your organization policy YAML file. The policy requires up to 15 minutes to take effect.
@@ -226,9 +174,7 @@ Replace `  POLICY_PATH  ` with the full path to your organization policy YAML fi
 After you verify that the organization policy in dry-run mode works as intended, set the live policy with the `  org-policies set-policy  ` command and the `  spec  ` flag:
 
 ``` text
-        gcloud org-policies set-policy POLICY_PATH \
-          --update-mask=spec
-      
+gcloud org-policies set-policy POLICY_PATH --update-mask=spec
 ```
 
 Replace `  POLICY_PATH  ` with the full path to your organization policy YAML file. The policy requires up to 15 minutes to take effect.

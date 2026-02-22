@@ -27,7 +27,7 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 
 ``` go
 // A complete key is assigned to the entity when it is Put.
-taskKey := datastore.IncompleteKey("Task", nil)
+taskKey := datastore.IncompleteKey("Task&quot;, nil)
 ```
 
 ### Java
