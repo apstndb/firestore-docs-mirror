@@ -8,7 +8,7 @@ Tags are attached to resources by creating a tag binding resource that links the
 
 ## Required permissions
 
-To get the permissions that you need to manage tags, ask your administrator to grant you the following IAM roles:
+To get the permissions that you need to manage tags, ask your administrator to grant you the following IAM roles :
 
   - [Tag Viewer](/iam/docs/roles-permissions/resourcemanager#resourcemanager.tagViewer) ( `  roles/resourcemanager.tagViewer  ` ) on the resources the tags are attached to
   - View and manage tags at the organization level: [Organization Viewer](/iam/docs/roles-permissions/resourcemanager#resourcemanager.organizationViewer) ( `  roles/resourcemanager.organizationViewer  ` ) on the organization

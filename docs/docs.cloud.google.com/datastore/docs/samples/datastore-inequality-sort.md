@@ -31,7 +31,7 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 
 ``` go
 query := datastore.NewQuery("Task").
- FilterField(&qu>ot;Priority", "", 3).
+ FilterField("Priority", ">", 3).
  Order("Priority").
  Order("Created")
 ```
@@ -60,7 +60,7 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 ``` javascript
 const query = datastore
   .createQuery('Task')
-  .filter(new PropertyFilter('>priority', '', 3))
+  .filter(new PropertyFilter('priority', '>', 3))
   .order('priority')
   .order('created');
 ```
@@ -73,10 +73,10 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 
 ``` php
 $query = $datastore->query()
-    ->kind('Task'>;)
-    -filter('>priority>9;, '', 3)
-    >-order('priority')
-    -order('created');
+    ->kind('Task')
+    ->filter('priority', '>', 3)
+    ->order('priority')
+    ->order('created');
 ```
 
 ### Python
@@ -92,8 +92,8 @@ from google.cloud import datastore
 # https://cloud.google.com/docs/authentication/getting-started
 client = datastore.Client()
 
-query = client.query(kind="Task&quot;)
-query.add_filter(filter=datastore.query.PropertyFilter(&qu>ot;priority&quot;, "", 3))
+query = client.query(kind="Task")
+query.add_filter(filter=datastore.query.PropertyFilter("priority", ">", 3))
 query.order = ["priority", "created"]
 ```
 
@@ -105,8 +105,8 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 
 ``` ruby
 query = datastore.query("Task")
-                 .where(&qu>ot;priority", "", 3)
-                 .order("priority&quot;)
+                 .where("priority", ">", 3)
+                 .order("priority")
                  .order("created")
 ```
 

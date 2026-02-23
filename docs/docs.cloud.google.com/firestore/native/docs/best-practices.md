@@ -63,7 +63,7 @@ In an IoT use case with a high write rate, for example, a collection containing 
 
 TTL fields
 
-If you use [TTL (time-to-live) policies](/firestore/native/docs/ttl) , note that the TTL field must be a timestamp. Indexing on TTL fields is enabled by default and can affect performance at higher traffic rates. As a best practice, add single-field exemptions for your TTL fields.
+If you use [TTL (time-to-live) policies](/firestore/native/docs/ttl) , note that the TTL field must be a timestamp. Indexing on TTL fields is enabled by default and can affect performance at higher traffic rates. As a best practice, add automatic indexing exemptions for your TTL fields.
 
 Large array or map fields
 

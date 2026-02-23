@@ -2,7 +2,7 @@
 
 Indexing behavior depends on the edition of the database. This page describes how to manage your indexes for Firestore Standard edition. For Firestore Enterprise edition, see [Firestore Enterprise edition index overview](/firestore/native/docs/enterprise-indexing) .
 
-Firestore Standard edition ensures query performance by requiring an index for every query. The indexes required for the most basic queries are [automatically created](/firestore/native/docs/standard-index-overview#single-field-indexes) for you. As you use and test your app, Firestore Standard edition generates error messages that help you create additional indexes that your app requires. This page describes how to manage your [single-field](/firestore/native/docs/standard-index-overview#single-field_indexes) , [composite](/firestore/native/docs/standard-index-overview#composite_indexes) , and [vector](/firestore/native/docs/vector-search#create_and_manage_vector_indexes) indexes.
+Firestore Standard edition ensures query performance by requiring an index for every query. The indexes required for the most basic queries are [automatically created](/firestore/native/docs/standard-index-overview#automatic_indexes) for you. As you use and test your app, Firestore Standard edition generates error messages that help you create additional indexes that your app requires. This page describes how to manage your [automatic](/firestore/native/docs/standard-index-overview#automatic_indexes) , [manual](/firestore/native/docs/standard-index-overview#manual_indexes) , and [vector](/firestore/native/docs/vector-search#create_and_manage_vector_indexes) indexes.
 
 ## Create a missing index through an error message
 
@@ -15,8 +15,6 @@ Follow the generated link to the Firebase console, review the automatically popu
 **Note:** For non-array and non-map fields, you must select **ascending** or **descending** ordering, even if you don't need the field for ordering. Your choice doesn't impact the behavior of equalities in the query.
 
 In the case that a vector index is required, the error message will include a Google Cloud CLI command to create the missing vector index. Run the command to create the missing index.
-
-**Note:** Currently vector indexes cannot be created in the Firebase console or the Google Cloud console.
 
 ## Roles and permissions
 
@@ -37,49 +35,55 @@ If you have defined custom roles, assign all of the following permissions to cre
   - `  datastore.indexes.list  `
   - `  datastore.indexes.update  `
 
-## Use the Google Cloud Platform Console
+## Use the Google Cloud console
 
-From the Google Cloud Platform Console, you can manage single-field indexing exemptions and composite indexes.
+From the Google Cloud console, you can manage automatic indexing exemptions and manual indexes.
 
-### Create a composite index
+### Create a manual index
 
-To manually create a new composite index from the GCP console:
+To manually create a new index from the Google Cloud console:
 
 1.  In the Google Cloud console, go to the **Databases** page.
 
 2.  Select the required database from the list of databases.
 
-3.  In the navigation menu, click **Indexes** , and then click the **Composite** tab.
+3.  In the navigation menu, click **Indexes** , and then click the **Manual** tab.
 
 4.  Click **Create Index** .
+    
+    To index a vector field for vector searches, select **Create vector index** . Otherwise, select **Create index** .
 
-5.  Enter a **Collection ID** . Add the names of the fields you want to index and an index mode for each field. Click **Save Index** .
+5.  Enter a **Collection ID** . Add the names of the fields you want to index and an index mode for each field.
+    
+    For vector indexes, enter a vector field path and the number of vector embedding dimensions.
+    
+    Click **Save Index** .
 
-Your new index will show up in the list of composite indexes and Firestore Standard edition will begin creating your index. When your index is done creating, you will see a green check mark next to the index.
+Your new index will show up in the list of manual indexes and Firestore Standard edition will begin creating your index. When your index is done creating, you will see a green check mark next to the index.
 
-### Delete a composite index
+### Delete a manual index
 
-To delete a composite index:
+To delete a manual index:
 
 1.  In the Google Cloud console, go to the **Databases** page.
 
 2.  Select the required database from the list of databases.
 
-3.  In the navigation menu, click **Indexes** , and then click the **Composite** tab.
+3.  In the navigation menu, click **Indexes** , and then click the **Manual** tab.
 
-4.  In the list of your composite indexes, click the **More** button more\_vert for the index you want to delete. Click **Delete** .
+4.  In the list of your manual indexes, click the **More** button more\_vert for the index you want to delete. Click **Delete** .
 
 5.  Confirm that you want to delete this index by clicking **Delete Index** from the alert.
 
-### Add a single-field index exemption
+### Add an automatic index exemption
 
-Single-field index exemptions allow you to override [automatic index settings](/firestore/native/docs/standard-index-overview#single-field-indexes) for specific fields in a collection. You can add a single-field exemption from the console:
+Automatic indexing exemptions allow you to override [automatic index settings](/firestore/native/docs/standard-index-overview#automatic_indexes) for specific fields in a collection. You can add an automatic indexing exemption from the console:
 
 1.  In the Google Cloud console, go to the **Databases** page.
 
 2.  Select the required database from the list of databases.
 
-3.  In the navigation menu, click **Indexes** , and then click the **Single Field** tab.
+3.  In the navigation menu, click **Indexes** , and then click the **Automatic** tab.
 
 4.  Click **Add Exemption** .
 
@@ -101,21 +105,21 @@ To define a single-field index exemption that applies to all fields under a coll
 
 4.  Click **Save Exemption** .
 
-### Delete a single-field index exemption
+### Delete an automatic indexing exemption
 
-To delete a single-field index exemption, do the following:
+To delete a automatic indexing exemption, do the following:
 
 1.  In the Google Cloud console, go to the **Databases** page.
 
 2.  Select the required database from the list of databases.
 
-3.  In the navigation menu, click **Indexes** , and then click the **Single Field** tab.
+3.  In the navigation menu, click **Indexes** , and then click the **Automatic** tab.
 
 4.  In the list of your single-field index exemptions, click the **More** button more\_vert for the exemption you want to delete. Click **Delete** .
 
 5.  Confirm that you want to delete this exemption by clicking **Delete** from the alert.
 
-When you delete a single-field exemption, the specified field or sub-field will use inherited indexing settings. Document fields revert to your database's automatic index settings. Sub-fields in a map inherit any exemptions on parent fields before inheriting automatic index settings.
+When you delete an automatic indexing exemption, the specified field or sub-field will use inherited indexing settings. Document fields revert to your database's automatic index settings. Sub-fields in a map inherit any exemptions on parent fields before inheriting automatic index settings.
 
 ## Use the Firebase CLI
 
@@ -129,11 +133,11 @@ If you make edits to the indexes using the Firebase console, make sure you also 
 
 ### Creating indexes in the database
 
-Firestore Standard edition databases can include both single-field and composite indexes. You can edit the Terraform configuration file to create an index for your database. Single-field and composite indexes use distinct Terraform resource types ( [`  google_firestore_index  `](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_index) and [`  google_firestore_field  `](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_field) ).
+Firestore Standard edition databases can include both single-field (automatic) and composite (manual) indexes. You can edit the Terraform configuration file to create an index for your database. Automatic and manual indexes use distinct Terraform resource types ( [`  google_firestore_index  `](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_index) and [`  google_firestore_field  `](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_field) ).
 
 Both Firestore Native Mode and Datastore Mode indexes are supported.
 
-#### Single-field index
+#### Single-field (automatic) index
 
 The following example Terraform configuration file creates a single-field index on the `  name  ` field in the `  chatrooms  ` collection:
 
@@ -167,7 +171,7 @@ resource "google_firestore_field" "single-index" {
   - Replace project-id with your project ID. Project IDs must be unique.
   - Replace database-id with your database ID.
 
-#### Composite index
+#### Composite (manual) index
 
 The following example Terraform configuration file creates a composite index for a combination of the `  name  ` field and the `  description  ` field in the `  chatrooms  ` collection:
 
@@ -446,6 +450,6 @@ When an operation is done, the operation description will contain [`  "done": tr
 
 ## Index building errors
 
-You might encounter index building errors when managing composite indexes and single-field index exemptions. An indexing operation can fail if Firestore Standard edition encounters a problem with the data it's indexing. Most commonly, this means you hit an [index limit](/firestore/native/docs/standard-index-overview#index_limitations) . For example, the operation may have reached the maximum number of index entries per document.
+You might encounter index building errors when managing manual indexes and automatic index exemptions. An indexing operation can fail if Firestore Standard edition encounters a problem with the data it's indexing. Most commonly, this means you hit an [index limit](/firestore/native/docs/standard-index-overview#index_limitations) . For example, the operation may have reached the maximum number of index entries per document.
 
 If index creation fails, you see the error message in the console. After you verify that you are not hitting any [index limits](/firestore/native/docs/standard-index-overview#index_limitations) , re-try your index operation.

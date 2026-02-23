@@ -192,9 +192,31 @@ async function storeEmbedding(event: FirestoreEvent<any>): Promise<void> {
 
 ## Create and manage vector indexes
 
-Before you can perform a nearest neighbor search with your vector embeddings, you must create a corresponding index. The following examples demonstrate how to create and manage vector indexes with the Google Cloud CLI. Vector indexes can also be [managed with the Firebase CLI and Terraform](/docs/firestore/query-data/indexing) .
+Before you can perform a nearest neighbor search with your vector embeddings, you must create a corresponding index. The following examples demonstrate how to create and manage vector indexes with the Google Cloud CLI and the console. Vector indexes can also be [managed with the Firebase CLI and Terraform](/docs/firestore/query-data/indexing) .
 
 ### Create a vector index
+
+### Google Cloud console
+
+To manually create a new index from the Google Cloud console:
+
+1.  In the Google Cloud console, go to the **Databases** page.
+
+2.  Select the required database from the list of databases.
+
+3.  In the navigation menu, click **Indexes** , and then click the **Manual** tab.
+
+4.  Click **Create Index** .
+    
+    To index a vector field for vector searches, select **Create vector index** .
+
+5.  Enter a **Collection ID** . Enter a vector field path and the number of vector embedding dimensions. Add the names of any additional fields you want to index and an index mode for each field.
+    
+    Click **Save Index** .
+
+Your new index will show up in the list of manual indexes and Firestore will begin creating your index. When your index is done creating, you will see a green check mark next to the index.
+
+### gcloud
 
 Before you create a vector index, upgrade to the latest version of the Google Cloud CLI:
 
@@ -203,8 +225,6 @@ gcloud components update
 ```
 
 To create a vector index, use [`  gcloud firestore indexes composite create  `](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/composite/create) :
-
-##### gcloud
 
 ``` text
 gcloud firestore indexes composite create \
@@ -221,9 +241,7 @@ where:
   - database-id is the ID of the database.
   - vector-configuration includes the vector `  dimension  ` and index type. The `  dimension  ` is an integer up to 2048. The index type must be `  flat  ` . Format the index configuration as follows: `  {"dimension":" DIMENSION ", "flat": "{}"}  ` .
 
-The following example creates a composite index, including a vector index for field `  vector-field  ` and an ascending index for field `  color  ` . You can use this type of index to [pre-filter data](#pre-filter-data) before a nearest neighbor search.
-
-##### gcloud
+The following example creates a composite index, including a vector index for field `  vector-field  ` and an ascending index for field `  color  ` . You can use this type of index to [pre-filter data](#pre-filter-documents) before a nearest neighbor search.
 
 ``` text
 gcloud firestore indexes composite create \
@@ -236,7 +254,19 @@ gcloud firestore indexes composite create \
 
 ### List all vector indexes
 
+### Google Cloud console
+
+1.  In the Google Cloud console, go to the **Databases** page.
+
+2.  Select the required database from the list of databases.
+
+3.  In the navigation menu, click **Indexes** , and then click the **Manual** tab.
+    
+    The indexes table lists all indexes for the database. Vector indexes include a vector field with a polyline icon.
+
 ##### gcloud
+
+To list all indexes and retrieve index IDs:
 
 ``` text
 gcloud firestore indexes composite list --database=database-id
@@ -244,7 +274,30 @@ gcloud firestore indexes composite list --database=database-id
 
 Replace database-id with the ID of the database.
 
+You can use th index ID to view more details about an index:
+
+``` text
+gcloud firestore indexes composite describe index-id --database=database-id
+```
+
+where:
+
+  - index-id is the ID of the index to describe.
+  - database-id is the ID of the database.
+
 ### Delete a vector index
+
+### Google Cloud console
+
+1.  In the Google Cloud console, go to the **Databases** page.
+
+2.  Select the required database from the list of databases.
+
+3.  In the navigation menu, click **Indexes** , and then click the **Manual** tab.
+
+4.  In the list of your manual indexes, click the **More** button more\_vert for the index you want to delete. Click **Delete** .
+
+5.  Confirm that you want to delete this index by clicking **Delete Index** from the alert.
 
 ##### gcloud
 
@@ -255,19 +308,6 @@ gcloud firestore indexes composite delete index-id --database=database-id
 where:
 
   - index-id is the ID of the index to delete. Use [`  indexes composite list  `](#list) to retrieve the index ID.
-  - database-id is the ID of the database.
-
-### Describe a vector index
-
-##### gcloud
-
-``` text
-gcloud firestore indexes composite describe index-id --database=database-id
-```
-
-where:
-
-  - index-id is the ID of the index to describe. Use or [`  indexes composite list  `](#list) to retrieve the index ID.
   - database-id is the ID of the database.
 
 ## Make a nearest-neighbor query

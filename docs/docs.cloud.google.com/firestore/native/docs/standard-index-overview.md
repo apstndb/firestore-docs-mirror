@@ -4,7 +4,7 @@ Indexing behavior depends on the edition of the database. This page describes in
 
 Indexes are an important factor in the performance of a database. Much like the index of a book which maps topics in a book to page numbers, a database index maps the items in a database to their locations in the database. When you query a database, the database can use an index to quickly identify the locations of the items that you requested.
 
-This page describes the two types of indexes that Firestore Standard edition uses, [single-field indexes](#single-field_indexes) and [composite indexes](#composite_indexes) .
+This page describes the two types of indexes that Firestore Standard edition uses, [automatic indexes](#automatic_indexes) and [manual indexes](#manual_indexes) .
 
 #### Index definition and structure
 
@@ -12,7 +12,7 @@ An index is defined on a list of fields of a given document, with a correspondin
 
 An index contains an entry for every field named in the index definition. The index includes all documents that are the potential results for queries based on the index. A document is included in the index only if it has an indexed value set for every field used in the index. If the index definition refers to a field for which the document has no value set, that document won't appear in the index. In this case, the document will never be returned as a result for any query based on the index.
 
-The composite index is sorted by field values, in the order specified in the index definition.
+The index is sorted by field values, in the order specified in the index definition.
 
 #### An index behind every query
 
@@ -24,17 +24,19 @@ Firestore Standard edition includes features that reduce the amount of time that
 
 ## Index types
 
-Firestore Standard edition uses two types of indexes: *single-field* and *composite* . Besides the number of fields indexed, single-field and composite indexes differ in how you manage them.
+Firestore Standard edition uses two types of indexes: *automatic* and *manual* . Manual and automatic indexes differ in how you manage them.
 
-### Single-field indexes
+**Note:** Automatic and manual indexes were previously known as *single-field* and *composite indexes* , respectively. We updated the names to reflect additional indexing features.
 
-A single-field index stores a sorted mapping of all the documents in a collection that contain a specific field. Each entry in a single-field index records a document's value for a specific field and the location of the document in the database. Firestore Standard edition uses these indexes to perform many basic queries. You manage single-field indexes by configuring your database's automatic indexing settings and index exemptions.
+### Automatic indexes
 
-#### Automatic indexing
+By default, Firestore Standard edition automatically builds indexes for each field present in the documents in a collection. These single-field indexes let you perform many basic queries. You manage automatic indexes by configuring your database's automatic indexing settings and index exemptions.
 
-By default, Firestore Standard edition automatically maintains single-field indexes for each field in a document and each subfield in a map. Firestore Standard edition uses the following default settings for single-field indexes:
+#### Automatic index defaults
 
-  - For each non-array and non-map field, Firestore Standard edition defines two [collection-scope](#query_scopes) single-field indexes, one in ascending mode and one in descending mode.
+Firestore Standard edition uses the following default settings for automatic indexes:
+
+  - For each non-array and non-map field, Firestore Standard edition defines two [collection-scope](#query_scopes) indexes, one in ascending mode and one in descending mode.
 
   - For each map field, Firestore Standard edition creates the following:
     
@@ -51,37 +53,37 @@ By default, Firestore Standard edition automatically maintains single-field inde
       - One collection-scope descending index for the whole array value
       - One collection-scope array-contains index.
 
-  - Single-field indexes with collection group scope are not maintained by default.
+  - Automatic indexes with collection group scope are not maintained by default.
 
-#### Single-field index exemptions
+#### Automatic index exemptions
 
-You can exempt a field from your [automatic indexing](#automatic_indexing) settings by creating a single-field index exemption. An indexing exemption overrides the database-wide automatic index settings. An exemption can enable a single-field index that your automatic indexing settings would otherwise disable or disable a single-field index that automatic indexing would otherwise enable. For cases where exemptions can be useful, see the [indexing best practices](#indexing_best_practices) .
+You can exempt a field from your automatic indexing settings by creating an indexing exemption. An indexing exemption overrides the database-wide automatic index settings. An exemption can enable an index that your automatic indexing settings would otherwise disable or disable an index that automatic indexing would otherwise enable. For cases where exemptions can be useful, see the [indexing best practices](#indexing_best_practices) .
 
 Use the `  *  ` field path value to add collection-level index exemptions on all fields in a collection group. For example, for collection group `  comments  ` , set the field path to `  *  ` to match all fields in the `  comments  ` collection group and disable indexing of all the fields under the collection group. You can then add exemptions to index only the fields required for your queries. Reducing the number of indexed fields reduces storage costs and can improve write performance.
 
-If you create a single-field index exemption for a map field, the map's subfields inherit those settings. You can, however, define single-field index exemptions for specific subfields. If you delete an exemption for a subfield, the subfield will inherit its parent's exemption settings, if they exist, or the database-wide settings if no parent exemptions exist.
+If you create an index exemption for a map field, the map's subfields inherit those settings. You can, however, define index exemptions for specific subfields. If you delete an exemption for a subfield, the subfield will inherit its parent's exemption settings, if they exist, or the database-wide settings if no parent exemptions exist.
 
-**Note:** An exemption only applies to automatic index settings. A field exempted from single-field indexing can still be indexed as part of a composite index.
+**Note:** An exemption only applies to automatic index settings. A field exempted from automatic indexing can still be indexed as part of a manual index.
 
-To create and manage single-field index exemptions, see [Manage indexes](../query-data/indexing#exemptions) .
+To create and manage automatic index exemptions, see [Manage indexes](../query-data/indexing#exemptions) .
 
-### Composite indexes
+### Manual indexes
 
-A composite index stores a sorted mapping of all the documents in a collection, based on an ordered list of fields to index.
+A manual index stores a sorted mapping of all the documents in a collection, based on an ordered list of fields to index.
 
-**Note:** You can have at most one array field per composite index.
+**Note:** You can have at most one array field per index.
 
-Firestore Standard edition uses composite indexes to support queries not already supported by single-field indexes.
+Firestore Standard edition uses manual indexes to support queries not already supported by automatic indexes.
 
-Firestore Standard edition doesn't automatically create composite indexes like it does for single-field indexes because of the large number of possible field combinations. Instead, Firestore Standard edition helps you [identify and create required composite indexes](../query-data/indexing) as you build your app.
+By default, Firestore Standard edition automatically creates single-field indexes for each field present within a collection. Firestore Standard edition doesn't automatically create indexes for combinations of fields because of the large number of possible field combinations. Instead, Firestore Standard edition helps you [identify and create required indexes](../query-data/indexing) as you build your app.
 
-Any time you attempt a query that isn't supported by an index, Firestore Standard edition returns an error message with a link that you can follow to create the missing index.
+Any time you attempt a query that isn't supported by an existing index, Firestore Standard edition returns an error message with a link that you can follow to create the missing index.
 
-You can also define and manage composite indexes manually by using the console or by using the [Firebase CLI](//firebase.google.com/docs/cli) . For more on creating and managing composite indexes, see [Manage indexes](../query-data/indexing) .
+You can also define and manage indexes manually by using the console or by using the [Firebase CLI](//firebase.google.com/docs/cli) . For more on creating and managing manual indexes, see [Manage indexes](../query-data/indexing) .
 
 ### Index modes and query scopes
 
-You configure single-field and composite indexes differently, but both require that you configure index modes and query scopes for your indexes.
+You configure automatic and manual indexes differently, but both require that you configure index modes and query scopes for your indexes.
 
 #### Index modes
 
@@ -318,7 +320,7 @@ citiesRef.where("country", "==", "USA")
          .where("population", "==", 860000)
 ```
 
-If you need to run a compound query that uses a range comparison ( `  <  ` , `  <=  ` , `  >  ` , or `  >=  ` ) or if you need to sort by a different field, you must create a [composite index](#composite_indexes) for that query.
+If you need to run a compound query that uses a range comparison ( `  <  ` , `  <=  ` , `  >  ` , or `  >=  ` ) or if you need to sort by a different field, you must create a [manual index](#manual_indexes) for that query.
 
 The `  array-contains  ` index allows you to query the `  regions  ` array field:
 
@@ -330,9 +332,9 @@ citiesRef.where("regions", "array-contains", "west_coast")
 citiesRef.where("regions", "array-contains-any", ["west_coast", "east_coast"])
 ```
 
-### Queries supported by composite indexes
+### Queries supported by manual indexes
 
-Firestore Standard edition uses composite indexes to support compound queries not already supported by single-field indexes. For example, you would need a composite index for the following queries:
+Create manual indexes to support compound queries not already supported by automatic single-field indexes. For example, you would need a manual index for the following queries:
 
 ##### Web
 
@@ -345,7 +347,7 @@ citiesRef.where("country", "in", ["USA", "Japan", "China"])
          .where("population", ">", 690000)
 ```
 
-These queries require the composite index below. Since the query uses an equality ( `  ==  ` or `  in  ` ) for the `  country  ` field, you can use an ascending or descending index mode for this field. By default, inequality clauses apply an ascending sort order based on the field in the inequality clause.
+These queries require the following index. Since the query uses an equality ( `  ==  ` or `  in  ` ) for the `  country  ` field, you can use an ascending or descending index mode for this field. By default, inequality clauses apply an ascending sort order based on the field in the inequality clause.
 
 <table>
 <thead>
@@ -364,7 +366,7 @@ These queries require the composite index below. Since the query uses an equalit
 </tbody>
 </table>
 
-To run the same queries but with a descending sort order, you need an additional composite index in the descending direction for `  population  ` :
+To run the same queries but with a descending sort order, you need an additional index in the descending direction for `  population  ` :
 
 ##### Web
 
@@ -406,7 +408,7 @@ citiesRef.where("country", "in", ["USA", "Japan", "China"])
 </tbody>
 </table>
 
-To avoid performance loss caused by [index merging](/datastore/docs/concepts/optimize-indexes#index_merging) , we recommend that you create a composite index to combine an `  array-contains  ` or `  array-contains-any  ` query with additional clauses:
+To avoid performance loss caused by [index merging](/datastore/docs/concepts/optimize-indexes#index_merging) , we recommend that you create an index to combine an `  array-contains  ` or `  array-contains-any  ` query with additional clauses:
 
 ##### Web
 
@@ -516,7 +518,7 @@ landmarksGroupRef.where("category", "==", "park")
 landmarksGroupRef.where("category", "in", ["park", "museum"])
 ```
 
-To run a collection group query that returns filtered or ordered results, you must enable a corresponding single-field or composite index with collection group scope. Collection group queries that don't filter or order results, however, do not require any additional index definitions.
+To run a collection group query that returns filtered or ordered results, you must enable a corresponding index with collection group scope. Collection group queries that don't filter or order results, however, don't require any additional index definitions.
 
 For example, you can run the following collection group query without enabling an additional index:
 
@@ -540,7 +542,7 @@ The following example demonstrates the index entries of a document.
 `  temperatures : {summer: 67, winter: 55}  `  
 `  neighborhoods : ["Mission", "Downtown", "Marina"]  `  
 
-#### Single-Field indexes
+#### Automatic indexes
 
   - city\_name ASC
   - city\_name DESC
@@ -554,7 +556,7 @@ The following example demonstrates the index entries of a document.
   - temperatures.winter DESC
   - neighborhoods Array Contains
 
-#### Composite indexes
+#### Manual indexes
 
   - city\_name ASC, neighborhoods ARRAY
   - city\_name DESC, neighborhoods ARRAY
@@ -572,7 +574,7 @@ This indexing configuration results in the following index entries for the docum
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Single-field index entries</strong></td>
+<td><strong>Automatic index entries</strong></td>
 <td></td>
 </tr>
 <tr class="even">
@@ -628,7 +630,7 @@ This indexing configuration results in the following index entries for the docum
 <td>neighborhoods: "Marina"</td>
 </tr>
 <tr class="odd">
-<td><strong>Composite index entries</strong></td>
+<td><strong>Manual index entries</strong></td>
 <td></td>
 </tr>
 <tr class="even">
@@ -664,7 +666,7 @@ Indexes contribute to the [storage costs](../pricing#storage-size) of your appli
 
 ### Use index merging
 
-Although Firestore Standard edition uses an index for every query, it doesn't necessarily require one index per query. For queries with multiple equality ( `  ==  ` ) clauses and, optionally, an `  orderBy  ` clause, Firestore Standard edition can re-use existing indexes. Firestore Standard edition can merge the indexes for simple equality filters to build the composite indexes needed for larger equality queries.
+Although Firestore Standard edition uses an index for every query, it doesn't necessarily require one index per query. For queries with multiple equality ( `  ==  ` ) clauses and, optionally, an `  orderBy  ` clause, Firestore Standard edition can re-use existing indexes. Firestore Standard edition can merge the indexes for simple equality filters to build the indexes needed for larger equality queries.
 
 You can reduce indexing costs by identifying situations where you can use index merging. For example, in a `  restaurants  ` collection for a restaurant rating app:
 
@@ -843,7 +845,7 @@ The sum of the size of a document's composite index entries</td>
 
 ## Indexing best practices
 
-For most apps, you can rely on automatic indexing and the error message links to manage your indexes. However, you may want to add single-field exemptions in the following cases:
+For most apps, you can rely on automatic indexing and the error message links to manage your indexes. However, you may want to add automatic indexing exemptions in the following cases:
 
 Case
 
@@ -861,7 +863,7 @@ In an IoT use case with a high write rate, for example, a collection containing 
 
 TTL fields
 
-If you use [TTL (time-to-live) policies](/firestore/native/docs/ttl) , note that the TTL field must be a timestamp. Indexing on TTL fields is enabled by default and can affect performance at higher traffic rates. As a best practice, add single-field exemptions for your TTL fields.
+If you use [TTL (time-to-live) policies](/firestore/native/docs/ttl) , note that the TTL field must be a timestamp. Indexing on TTL fields is enabled by default and can affect performance at higher traffic rates. As a best practice, add automatic indexing exemptions for your TTL fields.
 
 Large array or map fields
 
