@@ -7,5 +7,6 @@ https://cloud.google.com/sdk/gcloud/reference/datastore https://docs.cloud.googl
 https://cloud.google.com/sdk/gcloud/reference/firestore https://docs.cloud.google.com/sdk/gcloud/reference/firestore
 https://docs.cloud.google.com/datastore/pricing https://cloud.google.com/datastore/pricing
 https://docs.cloud.google.com/datastore/sla https://cloud.google.com/datastore/sla
+https://docs.cloud.google.com/firestore/enterprise/pricing https://cloud.google.com/firestore/enterprise/pricing
 https://docs.cloud.google.com/firestore/pricing https://cloud.google.com/firestore/pricing
 https://docs.cloud.google.com/firestore/sla https://cloud.google.com/firestore/sla
