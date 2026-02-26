@@ -113,10 +113,16 @@ To learn how to install and use the client library for Datastore mode, see [Data
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](/docs/authentication/set-up-adc-local-dev-environment) .
 
 ``` javascript
-async function markDone(taskId) {
-  const transaction = datastore.transaction();
-  const taskKey = datastore.key(['Task', datastore.int(taskId)]);
+const {Datastore} = require('@google-cloud/datastore');
+const datastore = new Datastore();
 
+async function markDone() {
+  // TODO(developer): uncomment the following line and define a taskId
+  // const taskId = 'task123';
+  const transaction = datastore.transaction();
+  const taskKey = datastore.key(['Task', taskId]);
+  console.log(taskKey);
+  console.log(taskKey.path);
   try {
     await transaction.run();
     const [task] = await transaction.get(taskKey);
@@ -129,8 +135,10 @@ async function markDone(taskId) {
     console.log(`Task ${taskId} updated successfully.`);
   } catch (err) {
     await transaction.rollback();
+    throw err;
   }
 }
+markDone();
 ```
 
 ### PHP
