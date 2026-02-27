@@ -133,7 +133,7 @@ Use delete protection to prevent accidental deletion of a database. You cannot d
 
 A named database includes any database not named `  (default)  ` . By default, the Firebase SDKs and Google API Client Libraries connect to the `  (default)  ` Firestore database in a project. To create a client connected to a named database, set the database ID when you instantiate a client.
 
-**Note:** To work with multiple databases, be sure to update to the latest [Firebase Client SDKs](//cloud.google.com/firestore/docs/reference/libraries#mobile_and_web_sdks) and [Google API Client Libraries](//cloud.google.com/firestore/docs/reference/libraries#google_cloud_client_libraries) .
+**Note:** To work with multiple databases, be sure to update to the latest [Firebase Client SDKs](/firestore/native/docs/reference/libraries#mobile-web-sdks) and [Google API Client Libraries](/firestore/native/docs/reference/libraries#google-cloud-client-libraries) .
 
 ## List databases
 

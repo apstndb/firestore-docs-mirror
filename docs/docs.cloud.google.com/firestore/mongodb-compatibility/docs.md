@@ -34,9 +34,9 @@ info
 
 ### Resources
 
-  - [Pricing](/firestore/enterprise/pricing)
+  - [Pricing](https://cloud.google.com/firestore/enterprise/pricing)
 
-  - [Pricing examples](https://cloud.google.com/memorystore/mongodb-compatibility/pricing-examples)
+  - [Pricing examples](https://cloud.google.com/firestore/mongodb-compatibility/pricing-examples)
 
   - [Storage size calculations](/firestore/mongodb-compatibility/docs/storage-size)
 

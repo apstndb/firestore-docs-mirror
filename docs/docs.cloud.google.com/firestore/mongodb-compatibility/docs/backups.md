@@ -23,7 +23,7 @@ When you use backups, you're charged for the following:
   - The amount of storage used by each backup.
   - For a restore operation, you're charged based on the size of the backup.
 
-For more details and exact rates, see the [Pricing](/firestore/enterprise/pricing) page.
+For more details and exact rates, see the [Pricing](https://cloud.google.com/firestore/enterprise/pricing) page.
 
 ## Before you begin
 
