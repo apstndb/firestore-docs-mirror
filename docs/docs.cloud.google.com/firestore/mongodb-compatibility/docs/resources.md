@@ -4,7 +4,7 @@
     
     Pricing details for Firestore with MongoDB compatibility.
 
-  - [](https://cloud.google.com/memorystore/mongodb-compatibility/pricing-examples)
+  - [](https://cloud.google.com/firestore/mongodb-compatibility/pricing-examples)
     
     ### Pricing examples
     

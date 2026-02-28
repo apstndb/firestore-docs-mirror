@@ -1,4 +1,4 @@
-# Documents (Input Stage)
+# Literals (Input Stage)
 
 **Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
 

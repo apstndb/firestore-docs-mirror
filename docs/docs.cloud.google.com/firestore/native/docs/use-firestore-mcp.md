@@ -86,7 +86,7 @@ The Firestore MCP server is disabled for use in your Google Cloud Project.
 
 Firestore MCP servers use the [OAuth 2.0](https://developers.google.com/identity/protocols/oauth2) protocol with [Identity and Access Management (IAM)](/iam/docs/overview) for authentication and authorization. All [Google Cloud identities](/docs/authentication/identity-products) are supported for authentication to MCP servers.
 
-We recommend creating a separate identity for agents using MCP tools so that access to resources can be controlled and monitored. For more information on authentication, see [Authenticate to MCP servers](https://docs.cloud.google.com/mcp/authenticate-mcp) .
+We recommend creating a separate identity for agents using MCP tools so that access to resources can be controlled and monitored. For more information on authentication, see [Authenticate to MCP servers](/mcp/authenticate-mcp) .
 
 ## Firestore MCP OAuth scopes
 
@@ -122,18 +122,18 @@ For the Firestore MCP server, enter the following as required:
   - **Server name** : Firestore MCP server
   - **Server URL** or **Endpoint** : firestore.googleapis.com/mcp
   - **Transport** : HTTP
-  - **Authentication details** : Depending on how you want to authenticate, you can enter your Google Cloud credentials, your OAuth Client ID and secret, or an agent identity and credentials. For more information on authentication, see [Authenticate to MCP servers](https://docs.cloud.google.com/mcp/authenticate-mcp) .
+  - **Authentication details** : Depending on how you want to authenticate, you can enter your Google Cloud credentials, your OAuth Client ID and secret, or an agent identity and credentials. For more information on authentication, see [Authenticate to MCP servers](/mcp/authenticate-mcp) .
   - **OAuth scope** : the [OAuth 2.0 scope](https://developers.google.com/identity/protocols/oauth2/scopes) that you want to use when connecting to the Firestore MCP server.
 
 For host specific guidance, see the following:
 
-  - [Claude.ai](https://docs.cloud.google.com/mcp/configure-mcp-ai-application#claude-ai)
-  - [Gemini CLI](https://docs.cloud.google.com/mcp/configure-mcp-ai-application#gemini-cli)
+  - [Claude.ai](/mcp/configure-mcp-ai-application#claude-ai)
+  - [Gemini CLI](/mcp/configure-mcp-ai-application#gemini-cli)
 
 For more general guidance, see the following resources:
 
   - [Connect to remote MCP servers](https://modelcontextprotocol.io/docs/develop/connect-remote-servers) .
-  - [Configure MCP in an AI application](https://docs.cloud.google.com/mcp/configure-mcp-ai-application) .
+  - [Configure MCP in an AI application](/mcp/configure-mcp-ai-application) .
 
 ## Available tools
 
@@ -170,9 +170,9 @@ The following are sample use cases and prompts for the Firestore MCP server:
 
 MCP introduces new security risks and considerations due to the wide variety of actions that can be taken with MCP tools. To minimize and manage these risks, Google Cloud offers defaults and customizable policies to control the use of MCP tools in your Google Cloud organization or project.
 
-For more information about MCP security and governance, see [AI security and safety](https://docs.cloud.google.com/mcp/ai-security-safety) .
+For more information about MCP security and governance, see [AI security and safety](/mcp/ai-security-safety) .
 
-### Model Armor
+### Use Model Armor
 
 Model Armor is a Google Cloud service designed to enhance the security and safety of your AI applications. It works by proactively screening LLM prompts and responses, protecting against various risks and supporting responsible AI practices. Whether you are deploying AI in your cloud environment, or on external cloud providers, Model Armor can help you prevent malicious input, verify content safety, protect sensitive data, maintain compliance, and enforce your AI safety and security policies consistently across your diverse AI landscape.
 
@@ -182,18 +182,33 @@ Model Armor is only available in specific regional locations. If Model Armor is 
 
 #### Enable Model Armor
 
-To enable Model Armor, complete the following steps:
+You must enable Model Armor APIs before you can use Model Armor.
 
-To enable Model Armor on your
+### Console
 
-Google Cloud project, run the following gcloud CLI command:
+1.  Enable the Model Armor API.
+    
+    **Roles required to enable APIs**
+    
+    To enable APIs, you need the Service Usage Admin IAM role ( `  roles/serviceusage.serviceUsageAdmin  ` ), which contains the `  serviceusage.services.enable  ` permission. [Learn how to grant roles](/iam/docs/granting-changing-revoking-access) .
 
-``` text
-gcloud services enable modelarmor.googleapis.com \
-    --project=PROJECT_ID
-```
+2.  Select the project where you want to activate Model Armor.
 
-Replace `  PROJECT_ID  ` with your Google Cloud project ID.
+### gcloud
+
+Before you begin, follow these steps using the Google Cloud CLI with the Model Armor API:
+
+1.  In the Google Cloud console, activate Cloud Shell.
+    
+    At the bottom of the Google Cloud console, a [Cloud Shell](/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
+
+2.  Run the following command to set the API endpoint for the Model Armor service.
+    
+    ``` text
+    gcloud config set api_endpoint_overrides/modelarmor "https://modelarmor.LOCATION.rep.googleapis.com/"
+    ```
+    
+    Replace `  LOCATION  ` with the region where you want to use Model Armor.
 
 #### Configure protection for Google and Google Cloud remote MCP servers
 
@@ -242,19 +257,6 @@ To protect your MCP tool calls and responses, you create a Model Armor floor set
     
     Replace `  PROJECT_ID  ` with the Google Cloud project ID.
 
-#### Disable Model Armor in a project
-
-To disable Model Armor on a Google Cloud project, run the following command:
-
-``` text
-gcloud beta services mcp content-security remove modelarmor.googleapis.com \
-    --project=PROJECT_ID
-```
-
-Replace `  PROJECT_ID  ` with the Google Cloud project ID.
-
-Google MCP traffic won't be scanned by Model Armor for the specified project.
-
 #### Disable scanning MCP traffic with Model Armor
 
 If you want to use Model Armor in a project, and you want to stop scanning Google MCP traffic with Model Armor, run the following command:
@@ -284,5 +286,5 @@ For more information, see [Control MCP use with Identity and Access Management](
 ## What's next
 
   - Read the [Firestore MCP reference documentation](/firestore/docs/reference/mcp) .
-  - Learn more about [Google Cloud MCP servers](https://docs.cloud.google.com/mcp/overview) .
+  - Learn more about [Google Cloud MCP servers](/mcp/overview) .
   - Learn how to [use an AI prompt to draft security rules](https://firebase.google.com/docs/ai-assistance/prompt-catalog/write-security-rules)
