@@ -138,7 +138,7 @@ Consider the following example where we create a latency alert policy. The alert
 
 3.  Select the **Request Latencies** metric from the **Consumed API** resource.
 
-4.  Add a service filter for `  firestore.googleapis.com  ` for Firestore Native databases.
+4.  Add a service filter for `  firestore.googleapis.com  ` for Native mode databases.
 
 5.  Click **Next** to configure the trigger.
 
