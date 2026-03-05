@@ -10,7 +10,9 @@ IAM lets you control **who (user)** has **what (role)** permission for **which**
 
 This section summarizes the permissions and roles that Firestore supports.
 
-**Note:** Some Firestore permissions differ from the standard IAM model permissions. For example, in the IAM model, the `  datastore.databases.get  ` permission lets you return a database object while, in Firestore, `  datastore.databases.get  ` lets you begin or roll back a transaction. To retrieve a database object's information, use the `  datastore.databases.getMetadata  ` permission.
+**Note:** Some Firestore with MongoDB compatibility permissions differ from the standard IAM model permissions. For example, in the IAM model, the `  datastore.databases.get  ` permission lets you return a database object while, in Firestore with MongoDB compatibility, `  datastore.databases.get  ` lets you begin or roll back a transaction. To retrieve a database object's information, use the `  datastore.databases.getMetadata  ` permission.
+
+The `  datastore.schemas.*  ` permissions were previously named `  datastore.indexes.*  ` . You can still use `  datastore.indexes  ` as an alias for `  datastore.schemas  ` .
 
 ### Required permissions for API methods
 
@@ -28,7 +30,7 @@ Required permissions
 
 `  ListIndexes  `
 
-`  datastore.indexes.list  `
+`  datastore.schemas.list  `
 
 `  Find  `
 
@@ -100,19 +102,19 @@ The same permissions that were required by the call that created the cursor.
 
 [`  create  `](https://cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.indexes/create)
 
-`  datastore.indexes.create  `
+`  datastore.schemas.create  `
 
 [`  delete  `](https://cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.indexes/delete)
 
-`  datastore.indexes.delete  `
+`  datastore.schemas.delete  `
 
 [`  get  `](https://cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.indexes/get)
 
-`  datastore.indexes.get  `
+`  datastore.schemas.get  `
 
 [`  list  `](https://cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.indexes/list)
 
-`  datastore.indexes.list  `
+`  datastore.schemas.list  `
 
 `  projects.databases  `
 
@@ -270,7 +272,7 @@ The following table lists the Firestore IAM roles. You can grant multiple roles 
 <code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
 <code dir="ltr" translate="no">       datastore.databases.list      </code><br />
 <code dir="ltr" translate="no">       datastore.entities.*      </code><br />
-<code dir="ltr" translate="no">       datastore.indexes.list      </code><br />
+<code dir="ltr" translate="no">       datastore.schemas.list      </code><br />
 <code dir="ltr" translate="no">       datastore.namespaces.get      </code><br />
 <code dir="ltr" translate="no">       datastore.namespaces.list      </code><br />
 <code dir="ltr" translate="no">       datastore.statistics.get      </code><br />
@@ -289,8 +291,8 @@ The following table lists the Firestore IAM roles. You can grant multiple roles 
 <code dir="ltr" translate="no">       datastore.databases.list      </code><br />
 <code dir="ltr" translate="no">       datastore.entities.get      </code><br />
 <code dir="ltr" translate="no">       datastore.entities.list      </code><br />
-<code dir="ltr" translate="no">       datastore.indexes.get      </code><br />
-<code dir="ltr" translate="no">       datastore.indexes.list      </code><br />
+<code dir="ltr" translate="no">       datastore.schemas.get      </code><br />
+<code dir="ltr" translate="no">       datastore.schemas.list      </code><br />
 <code dir="ltr" translate="no">       datastore.namespaces.get      </code><br />
 <code dir="ltr" translate="no">       datastore.namespaces.list      </code><br />
 <code dir="ltr" translate="no">       datastore.statistics.get      </code><br />
@@ -306,7 +308,7 @@ The following table lists the Firestore IAM roles. You can grant multiple roles 
 <br />
 <code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
 <br />
-<code dir="ltr" translate="no">       datastore.indexes.*      </code><br />
+<code dir="ltr" translate="no">       datastore.schemas.*      </code><br />
 <br />
 <code dir="ltr" translate="no">       datastore.operations.list      </code><br />
 <code dir="ltr" translate="no">       datastore.operations.get      </code><br />
@@ -535,27 +537,27 @@ The following table lists the permissions that Firestore supports.
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.indexes.create      </code></td>
+<td><code dir="ltr" translate="no">       datastore.schemas.create      </code></td>
 <td>Create an index.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.indexes.delete      </code></td>
+<td><code dir="ltr" translate="no">       datastore.schemas.delete      </code></td>
 <td>Delete an index.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.indexes.get      </code></td>
+<td><code dir="ltr" translate="no">       datastore.schemas.get      </code></td>
 <td>Read metadata from an index.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.indexes.list      </code></td>
+<td><code dir="ltr" translate="no">       datastore.schemas.list      </code></td>
 <td>List the indexes in a project.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.indexes.update      </code></td>
+<td><code dir="ltr" translate="no">       datastore.schemas.update      </code></td>
 <td>Update an index.</td>
 <td></td>
 </tr>

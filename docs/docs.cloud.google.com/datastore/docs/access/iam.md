@@ -10,6 +10,10 @@ IAM lets you control **who (users)** has **what (roles)** permission to **which*
 
 This section summarizes the permissions and roles Firestore in Datastore mode supports.
 
+**Note:** Some Datastore mode permissions differ from the standard IAM model permissions. For example, in the IAM model, the `  datastore.databases.get  ` permission lets you return a database object while, in Datastore mode, `  datastore.databases.get  ` lets you begin or roll back a transaction. To retrieve a database object's information, use the `  datastore.databases.getMetadata  ` permission.
+
+The `  datastore.schemas.*  ` permissions were previously named `  datastore.indexes.*  ` . You can still use `  datastore.indexes  ` as an alias for `  datastore.schemas  ` .
+
 ### Permissions
 
 The following table lists the permissions that Firestore in Datastore mode supports.
@@ -150,27 +154,27 @@ Commit with empty mutations.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.indexes.create      </code></td>
+<td><code dir="ltr" translate="no">       datastore.schemas.create      </code></td>
 <td>Create an index.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.indexes.delete      </code></td>
+<td><code dir="ltr" translate="no">       datastore.schemas.delete      </code></td>
 <td>Delete an index.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.indexes.get      </code></td>
+<td><code dir="ltr" translate="no">       datastore.schemas.get      </code></td>
 <td>Read metadata from an index.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.indexes.list      </code></td>
+<td><code dir="ltr" translate="no">       datastore.schemas.list      </code></td>
 <td>List the indexes in a project.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.indexes.update      </code></td>
+<td><code dir="ltr" translate="no">       datastore.schemas.update      </code></td>
 <td>Update an index.</td>
 <td></td>
 </tr>
@@ -389,7 +393,7 @@ For <a href="/datastore/docs/console/datastore-admin-console">Datastore Admin</a
 <code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
 <code dir="ltr" translate="no">       datastore.databases.list      </code><br />
 <code dir="ltr" translate="no">       datastore.entities.*      </code><br />
-<code dir="ltr" translate="no">       datastore.indexes.list      </code><br />
+<code dir="ltr" translate="no">       datastore.schemas.list      </code><br />
 <code dir="ltr" translate="no">       datastore.namespaces.get      </code><br />
 <code dir="ltr" translate="no">       datastore.namespaces.list      </code><br />
 <code dir="ltr" translate="no">       datastore.statistics.get      </code><br />
@@ -406,8 +410,8 @@ For <a href="/datastore/docs/console/datastore-admin-console">Datastore Admin</a
 <code dir="ltr" translate="no">       datastore.databases.list      </code><br />
 <code dir="ltr" translate="no">       datastore.entities.get      </code><br />
 <code dir="ltr" translate="no">       datastore.entities.list      </code><br />
-<code dir="ltr" translate="no">       datastore.indexes.get      </code><br />
-<code dir="ltr" translate="no">       datastore.indexes.list      </code><br />
+<code dir="ltr" translate="no">       datastore.schemas.get      </code><br />
+<code dir="ltr" translate="no">       datastore.schemas.list      </code><br />
 <code dir="ltr" translate="no">       datastore.namespaces.get      </code><br />
 <code dir="ltr" translate="no">       datastore.namespaces.list      </code><br />
 <code dir="ltr" translate="no">       datastore.statistics.get      </code><br />
@@ -445,7 +449,7 @@ For <a href="/datastore/docs/console/datastore-admin-console">Datastore Admin</a
 <td><code dir="ltr" translate="no">       roles/datastore.indexAdmin      </code></td>
 <td><code dir="ltr" translate="no">       appengine.applications.get      </code><br />
 <code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
-<code dir="ltr" translate="no">       datastore.indexes.*      </code><br />
+<code dir="ltr" translate="no">       datastore.schemas.*      </code><br />
 <code dir="ltr" translate="no">       datastore.operations.get      </code><br />
 <code dir="ltr" translate="no">       datastore.operations.list      </code><br />
 <code dir="ltr" translate="no">       resourcemanager.projects.get      </code><br />

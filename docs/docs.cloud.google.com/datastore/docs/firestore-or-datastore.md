@@ -8,7 +8,7 @@ We recommend the following when choosing a database mode:
 
   - **Use Firestore in Native mode for all new applications (server, mobile, and web).**
     
-    Firestore in Native mode uses a document-based data model that aligns with industry standards. In addition to a strongly consistent and scalable database, Firestore in Native mode provides real-time data syncing and backend-as-as-service features.
+    Firestore in Native mode uses a document-based data model that aligns with industry standards. In addition to a strongly consistent and scalable database, Firestore in Native mode provides real-time data syncing and backend-as-a-service features.
 
   - **Use Firestore in Datastore mode if your app depends on the Datastore API.**
     
