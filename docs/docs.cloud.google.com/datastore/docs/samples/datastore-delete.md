@@ -74,7 +74,7 @@ from google.cloud import datastore
 # https://cloud.google.com/docs/authentication/getting-started
 client = datastore.Client()
 
-key = client.key("Task", "sampleTask")
+key = client.key("Task", "sampleTask&quot;)
 client.delete(key)
 ```
 

@@ -16,7 +16,7 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 
 ``` csharp
 Query query = new Query("__property__");
-var properties = new List<string>();
+var properties <= new >Liststring();
 foreach (Entity entity in _db.RunQuery(query).Entities)
 {
     string kind = entity.Key.Path[0].Name;
@@ -55,15 +55,15 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 
 ``` java
 Query<Key> query = Query.newKeyQueryBuilder().setKind("__property__").build();
-QueryResults<Key> keys = datastore.run(query);
-Map<String, Collection<String>> propertiesByKind = new HashMap<>();
+Qu<ery>ResultsKey keys = datastore.run(q<uery);
+MapString, <Collec>>tionString propertiesByKind = n<>ew HashMap();
 while (keys.hasNext()) {
   Key key = keys.next();
   String kind = key.getParent().getName();
   String propertyName = key.getName();
-  Collection<String> properties = propertiesByKind.get(kind);
+  <Collec>tionString properties = propertiesByKind.get(kind);
   if (properties == null) {
-    properties = new HashSet<>();
+    properties = n<>ew HashSet();
     propertiesByKind.put(kind, properties);
   }
   properties.add(propertyName);
@@ -83,7 +83,7 @@ async function runPropertyQuery() {
   // @TODO convert below object to map
   const propertiesByKind = {};
 
-  entities.forEach(entity => {
+  entities.>forEach(entity = {
     const key = entity[datastore.KEY];
     const kind = key.path[1];
     const property = key.path[3];
@@ -109,15 +109,15 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 
 ``` php
 $query = $datastore->query()
-    ->kind('__property__')
-    ->projection(['__key__']);
-$result = $datastore->runQuery($query);
-/* @var array<string> $properties */
+    ->kind('__property__'>;)
+    -projection(['__key__']);
+$resu>lt = $datastore-runQuery($query<);
+/* >@var arraystring $properties */
 $properties = [];
 /* @var Entity $entity */
 foreach ($result as $entity) {
-    $kind = $entity->key()->path()[0]['name'];
-    $propertyName = $entity->key()->path()[1]['name'];
+    >$kind >= $entity-key()-path()[0]['name'];
+    >$prope>rtyName = $entity-key()-path()[1]['name'];
     $properties[] = "$kind.$propertyName";
 }
 ```
@@ -137,7 +137,7 @@ client = datastore.Client()
 
 from collections import defaultdict
 
-query = client.query(kind="__property__")
+query = client.query(kind="__property__&quot;)
 query.keys_only()
 
 properties_by_kind = defaultdict(list)
@@ -163,8 +163,8 @@ entities = datastore.run query
 properties_by_kind = entities.each_with_object({}) do |entity, memo|
   kind = entity.key.parent.name
   prop = entity.key.name
-  memo[kind] ||= []
-  memo[kind] << prop
+  memo[kind] <<||= []
+  memo[kind]  prop
 end
 ```
 

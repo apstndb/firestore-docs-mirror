@@ -21,14 +21,14 @@ You can view all your Firestore Standard edition data in the Google Cloud consol
 
 To open a document or collection at a specific path, use the **Edit path** button create :
 
-### Non-existent ancestor documents
+### Non-existent parent documents
 
-A document can exist even if one or more its ancestors don't exist. For example, the document at path `  /mycoll/mydoc/mysubcoll/mysubdoc  ` can exist even if the ancestor document `  /mycoll/mydoc  ` does not. The Firestore Standard edition data viewer displays non-existent ancestor documents as follows:
+A document can exist even if one or more its parents don't exist. For example, the document at path `  /mycoll/mydoc/mysubcoll/mysubdoc  ` can exist even if the parent document `  /mycoll/mydoc  ` does not. The Firestore Standard edition data viewer displays non-existent parent documents as follows:
 
-  - In a collection's list of documents, the document IDs of non-existent ancestor documents are *italicized* .
-  - In a non-existent ancestor document's information panel, the data viewer points out that the document does not exist.
+  - In a collection's list of documents, the document IDs of non-existent parent documents are *italicized* .
+  - In a non-existent parent document's information panel, the data viewer points out that the document does not exist.
 
-**Warning:** Even though non-existent ancestor documents appear in the console, they do not appear in queries and snapshots. You must create the document to include it in query results.
+**Warning:** Even though non-existent parent documents appear in the console, they do not appear in queries and snapshots. You must create the document to include it in query results.
 
 ### Filter data
 

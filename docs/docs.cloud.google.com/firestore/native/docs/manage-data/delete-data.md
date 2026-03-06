@@ -218,9 +218,9 @@ city_ref.deletedelete_data.rb
 
 **Warning:** Deleting a document does not delete its subcollections\!
 
-When you delete a document, Firestore does not automatically delete the documents within its subcollections. You can still access the subcollection documents by reference. For example, you can access the document at path `  /mycoll/mydoc/mysubcoll/mysubdoc  ` even if you delete the ancestor document at `  /mycoll/mydoc  ` .
+When you delete a document, Firestore does not automatically delete the documents within its subcollections. You can still access the subcollection documents by reference. For example, you can access the document at path `  /mycoll/mydoc/mysubcoll/mysubdoc  ` even if you delete the parent document at `  /mycoll/mydoc  ` .
 
-Non-existent ancestor documents [appear in the console](../using-console#non-existent_ancestor_documents) , but they do not appear in query results and snapshots.
+Non-existent parent documents [appear in the console](../using-console#non-existent-parent-documents) , but they don't appear in query results and snapshots.
 
 If you want to delete a document and all the documents within its subcollections, you must do so manually. For more information, see [Delete Collections](#collections) .
 
