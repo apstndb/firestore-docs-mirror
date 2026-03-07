@@ -143,17 +143,6 @@ Back-joins the supplied row's identifier to the actual row contents from primary
 |  records returned: 1
 ```
 
-### LookupById
-
-Performs a join by looking up documents in a foreign collection by their ID. The IDs to look up are sourced from a field in the input documents. The results of the lookup are added as a new field to the input documents.
-
-``` text
-• LookupById
-|  local_field: $localField_1
-|  foreign_datasource: (default)#/**/foreign
-|  output: $output_1
-```
-
 ### TableScan
 
 A full, unordered scan of a collection. Used when a query is run without an associated index.

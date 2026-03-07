@@ -33,22 +33,66 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 <td>Returns <code dir="ltr" translate="no">       TRUE      </code> if any of the values are present in the <code dir="ltr" translate="no">       ARRAY      </code></td>
 </tr>
 <tr class="odd">
+<td><code dir="ltr" translate="no">         ARRAY_FIRST       </code></td>
+<td>Returns the first element in an <code dir="ltr" translate="no">       ARRAY      </code></td>
+</tr>
+<tr class="even">
+<td><code dir="ltr" translate="no">         ARRAY_FIRST_N       </code></td>
+<td>Returns the first <code dir="ltr" translate="no">       n      </code> elements in an <code dir="ltr" translate="no">       ARRAY      </code></td>
+</tr>
+<tr class="odd">
 <td><code dir="ltr" translate="no">         ARRAY_GET       </code></td>
 <td>Returns the element at a given index in an <code dir="ltr" translate="no">       ARRAY      </code></td>
+</tr>
+<tr class="even">
+<td><code dir="ltr" translate="no">         ARRAY_INDEX_OF       </code></td>
+<td>Returns the index of the first occurrence of a value in an <code dir="ltr" translate="no">       ARRAY      </code></td>
+</tr>
+<tr class="odd">
+<td><code dir="ltr" translate="no">         ARRAY_INDEX_OF_ALL       </code></td>
+<td>Returns all indexes of a value in an <code dir="ltr" translate="no">       ARRAY      </code></td>
 </tr>
 <tr class="even">
 <td><code dir="ltr" translate="no">         ARRAY_LENGTH       </code></td>
 <td>Returns the number of elements in an <code dir="ltr" translate="no">       ARRAY      </code></td>
 </tr>
 <tr class="odd">
+<td><code dir="ltr" translate="no">         ARRAY_LAST       </code></td>
+<td>Returns the last element in an <code dir="ltr" translate="no">       ARRAY      </code></td>
+</tr>
+<tr class="even">
+<td><code dir="ltr" translate="no">         ARRAY_LAST_N       </code></td>
+<td>Returns the last <code dir="ltr" translate="no">       n      </code> elements in an <code dir="ltr" translate="no">       ARRAY      </code></td>
+</tr>
+<tr class="odd">
 <td><code dir="ltr" translate="no">         ARRAY_REVERSE       </code></td>
 <td>Reverses the order of elements in an <code dir="ltr" translate="no">       ARRAY      </code></td>
 </tr>
 <tr class="even">
+<td><code dir="ltr" translate="no">         ARRAY_SLICE       </code></td>
+<td>Returns a slice of an <code dir="ltr" translate="no">       ARRAY      </code></td>
+</tr>
+<tr class="odd">
+<td><code dir="ltr" translate="no">         MAXIMUM       </code></td>
+<td>Returns the maximum value in an <code dir="ltr" translate="no">       ARRAY      </code></td>
+</tr>
+<tr class="even">
+<td><code dir="ltr" translate="no">         MAXIMUM_N       </code></td>
+<td>Returns the <code dir="ltr" translate="no">       n      </code> largest values in an <code dir="ltr" translate="no">       ARRAY      </code></td>
+</tr>
+<tr class="odd">
+<td><code dir="ltr" translate="no">         MINIMUM       </code></td>
+<td>Returns the minimum value in an <code dir="ltr" translate="no">       ARRAY      </code></td>
+</tr>
+<tr class="even">
+<td><code dir="ltr" translate="no">         MINIMUM_N       </code></td>
+<td>Returns the <code dir="ltr" translate="no">       n      </code> smallest values in an <code dir="ltr" translate="no">       ARRAY      </code></td>
+</tr>
+<tr class="odd">
 <td><code dir="ltr" translate="no">         SUM       </code></td>
 <td>Returns the sum of all <code dir="ltr" translate="no">       NUMERIC      </code> values in an <code dir="ltr" translate="no">       ARRAY      </code> .</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code dir="ltr" translate="no">         JOIN       </code></td>
 <td>Produces a concatenation of the elements in an <code dir="ltr" translate="no">       ARRAY      </code> as a <code dir="ltr" translate="no">       STRING      </code> value.</td>
 </tr>
@@ -634,7 +678,7 @@ array_get(array: ARRAY, index: INT64) -> ANY
 Returns the element at the 0-based `  index  ` in `  array  ` .
 
   - If `  index  ` is negative, elements are accessed from the end of array, where `  -1  ` is the last element.
-  - If `  array  ` is not of type `  ARRAY  ` , the function returns an absent value.
+  - If `  array  ` is not of type `  ARRAY  ` and not `  null  ` , returns an error.
   - If `  index  ` is out of bounds, the function returns an absent value.
   - If `  index  ` is not of type `  INT64  ` , the function returns an error.
 
@@ -672,12 +716,12 @@ Returns the element at the 0-based `  index  ` in `  array  ` .
 <tr class="odd">
 <td style="text-align: left;">"abc"</td>
 <td style="text-align: left;">0</td>
-<td style="text-align: left;">absent</td>
+<td style="text-align: left;">error</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">null</td>
 <td style="text-align: left;">0</td>
-<td style="text-align: left;">absent</td>
+<td style="text-align: left;">null</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><code dir="ltr" translate="no">       Array      </code></td>
@@ -914,6 +958,473 @@ Pipeline.Snapshot result =
         .execute()
         .get();PipelineSnippets.java
 ```
+
+### ARRAY\_FIRST
+
+**Syntax:**
+
+``` text
+array_first(array: ARRAY) -> ANY
+```
+
+**Description:**
+
+Returns the first element in `  array  ` . This is equivalent to `  array_get(array, 0)  ` .
+
+  - If `  array  ` is empty, returns an absent value.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">array</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       array_first(array)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">[1, 2, 3]</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[]</td>
+<td style="text-align: left;">absent</td>
+</tr>
+</tbody>
+</table>
+
+### ARRAY\_FIRST\_N
+
+**Syntax:**
+
+``` text
+array_first_n(array: ARRAY, n: INT64) -> ARRAY
+```
+
+**Description:**
+
+Returns the first `  n  ` elements of `  array  ` . This is equivalent to `  array_slice(array, 0, n)  ` .
+
+  - If `  n  ` is negative, returns an error.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">array</th>
+<th style="text-align: left;">n</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       array_first_n(array, n)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">[1, 2, 3, 4, 5]</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">[1, 2, 3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[1, 2]</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">[1, 2]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">[1, 2, 3]</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">[]</td>
+</tr>
+</tbody>
+</table>
+
+### ARRAY\_INDEX\_OF
+
+**Syntax:**
+
+``` text
+array_index_of(array: ARRAY, value: ANY) -> INT64
+```
+
+**Description:**
+
+Returns the 0-based index of the first occurrence of `  value  ` in `  array  ` . Returns -1 if `  value  ` is not found.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">array</th>
+<th style="text-align: left;">value</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       array_index_of(array, value)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">[1, 2, 3, 2]</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[1, 2, 3]</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">-1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">[1, null, 3]</td>
+<td style="text-align: left;">null</td>
+<td style="text-align: left;">1</td>
+</tr>
+</tbody>
+</table>
+
+### ARRAY\_INDEX\_OF\_ALL
+
+**Syntax:**
+
+``` text
+array_index_of_all(array: ARRAY, value: ANY) -> ARRAY<INT64>
+```
+
+**Description:**
+
+Returns an array containing the 0-based indexes of all occurrences of `  value  ` in `  array  ` . Returns `  []  ` if `  value  ` is not found.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">array</th>
+<th style="text-align: left;">value</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       array_index_of_all(array, value)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">[1, 2, 3, 2]</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">[1, 3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[1, 2, 3]</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">[]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">[1, null, 3, null]</td>
+<td style="text-align: left;">null</td>
+<td style="text-align: left;">[1, 3]</td>
+</tr>
+</tbody>
+</table>
+
+### ARRAY\_LAST
+
+**Syntax:**
+
+``` text
+array_last(array: ARRAY) -> ANY
+```
+
+**Description:**
+
+Returns the last element in `  array  ` . This is equivalent to `  array_get(array, -1)  ` .
+
+  - If `  array  ` is empty, returns an absent value.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">array</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       array_last(array)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">[1, 2, 3]</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[]</td>
+<td style="text-align: left;">absent</td>
+</tr>
+</tbody>
+</table>
+
+### ARRAY\_LAST\_N
+
+**Syntax:**
+
+``` text
+array_last_n(array: ARRAY, n: INT64) -> ARRAY
+```
+
+**Description:**
+
+Returns the last `  n  ` elements of `  array  ` .
+
+  - If `  n  ` is negative, returns an error.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">array</th>
+<th style="text-align: left;">n</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       array_last_n(array, n)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">[1, 2, 3, 4, 5]</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">[3, 4, 5]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[1, 2]</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">[1, 2]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">[1, 2, 3]</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">[]</td>
+</tr>
+</tbody>
+</table>
+
+### ARRAY\_SLICE
+
+**Syntax:**
+
+``` text
+array_slice(array: ARRAY, offset: INT64, length: INT64) -> ARRAY
+```
+
+**Description:**
+
+Returns a subset of `  array  ` starting from 0-based index `  offset  ` , and including `  length  ` elements.
+
+  - If `  offset  ` is negative, it indicates the start position from the end of the array, with `  -1  ` being the last element.
+  - If `  length  ` is greater than the number of elements remaining in the array after `  offset  ` , the result extends to the end of the array.
+  - `  length  ` must be non-negative, otherwise returns an error.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">array</th>
+<th style="text-align: left;">offset</th>
+<th style="text-align: left;">length</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       array_slice(array, offset, length)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">[1, 2, 3, 4, 5]</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">[2, 3, 4]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[1, 2, 3, 4, 5]</td>
+<td style="text-align: left;">-2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">[4, 5]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">[1, 2, 3]</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">[2, 3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[1, 2, 3]</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">[]</td>
+</tr>
+</tbody>
+</table>
+
+### MAXIMUM
+
+**Syntax:**
+
+``` text
+maximum(array: ARRAY) -> ANY
+```
+
+**Description:**
+
+Returns the maximum value in `  array  ` .
+
+  - `  NULL  ` values are ignored during comparison.
+  - If `  array  ` is empty or only contains `  NULL  ` values, returns `  NULL  ` .
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">array</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       maximum(array)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">[1, 5, 2]</td>
+<td style="text-align: left;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[1, null, 5]</td>
+<td style="text-align: left;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">["a", "c", "b"]</td>
+<td style="text-align: left;">"c"</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[null, null]</td>
+<td style="text-align: left;">null</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">[]</td>
+<td style="text-align: left;">null</td>
+</tr>
+</tbody>
+</table>
+
+### MAXIMUM\_N
+
+**Syntax:**
+
+``` text
+maximum_n(array: ARRAY, n: INT64) -> ARRAY
+```
+
+**Description:**
+
+Returns an array of the `  n  ` largest values in `  array  ` in descending order.
+
+  - `  NULL  ` values are ignored.
+  - If `  n  ` is negative, returns an error.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">array</th>
+<th style="text-align: left;">n</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       maximum_n(array, n)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">[1, 5, 2, 4, 3]</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">[5, 4, 3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[1, null, 5]</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">[5, 1]</td>
+</tr>
+</tbody>
+</table>
+
+### MINIMUM
+
+**Syntax:**
+
+``` text
+minimum(array: ARRAY) -> ANY
+```
+
+**Description:**
+
+Returns the minimum value in `  array  ` .
+
+  - `  NULL  ` values are ignored during comparison.
+  - If `  array  ` is empty or only contains `  NULL  ` values, returns `  NULL  ` .
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">array</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       minimum(array)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">[1, 5, 2]</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[5, null, 1]</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">["a", "c", "b"]</td>
+<td style="text-align: left;">"a"</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[null, null]</td>
+<td style="text-align: left;">null</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">[]</td>
+<td style="text-align: left;">null</td>
+</tr>
+</tbody>
+</table>
+
+### MINIMUM\_N
+
+**Syntax:**
+
+``` text
+minimum_n(array: ARRAY, n: INT64) -> ARRAY
+```
+
+**Description:**
+
+Returns an array of the `  n  ` smallest values in `  array  ` in ascending order.
+
+  - `  NULL  ` values are ignored.
+  - If `  n  ` is negative, returns an error.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">array</th>
+<th style="text-align: left;">n</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       minimum_n(array, n)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">[1, 5, 2, 4, 3]</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">[1, 2, 3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[5, null, 1]</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">[1, 5]</td>
+</tr>
+</tbody>
+</table>
 
 ### SUM
 
