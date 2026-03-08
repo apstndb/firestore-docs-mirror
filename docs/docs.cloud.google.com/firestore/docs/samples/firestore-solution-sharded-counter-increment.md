@@ -47,18 +47,6 @@ func (c *Counter) incrementCounter(ctx context.Context, docRef *firestore.Docume
 }
 ```
 
-### Node.js
-
-To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](/docs/authentication/set-up-adc-local-dev-environment) .
-
-``` javascript
-function incrementCounter(docRef, numShards) {
-  const shardId = Math.floor(Math.random() * numShards);
-  const shardRef = docRef.collection('shards').doc(shardId.toString());
-  return shardRef.set({count: FieldValue.increment(1)}, {merge: true});
-}
-```
-
 ### PHP
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](/docs/authentication/set-up-adc-local-dev-environment) .

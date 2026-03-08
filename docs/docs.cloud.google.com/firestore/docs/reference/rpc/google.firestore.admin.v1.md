@@ -1007,6 +1007,8 @@ Output only. The unique resource name of the Backup.
 
 Format is `  projects/{project}/locations/{location}/backups/{backup}  ` .
 
+The location in the name will be the Standard Managed Multi-Region (SMMR) location (e.g. `  us  ` ) if the backup was created with an SMMR location, or the Google Managed Multi-Region (GMMR) location (e.g. `  nam5  ` ) if the backup was created with a GMMR location.
+
 `  database  `
 
 `  string  `
@@ -1445,13 +1447,13 @@ Output only. The timestamp at which this database was deleted. Only set if the d
 
 `  string  `
 
-The location of the database. Available locations are listed at <https://cloud.google.com/firestore/docs/locations> .
+Required. The location of the database. Available locations are listed at <https://cloud.google.com/firestore/docs/locations> .
 
 `  type  `
 
 `  DatabaseType  `
 
-The type of the database. See <https://cloud.google.com/datastore/docs/firestore-or-datastore> for information about how to choose.
+Required. The type of the database. See <https://cloud.google.com/datastore/docs/firestore-or-datastore> for information about how to choose.
 
 `  concurrency_mode  `
 
@@ -2980,15 +2982,9 @@ The user creds for the database.
 
 ## LocationMetadata
 
+This type has no fields.
+
 The metadata message for `  google.cloud.location.Location.metadata  ` .
-
-Fields
-
-`  available_storage_placements[]  `
-
-`  string  `
-
-The storage placements available in the location. When the location represents a Standard Managed Multi-Region (SMMR) like "us", this field lists the available Google-Managed Multi-Regions (GMMRs) within it, such as "nam5" or "eur3".
 
 ## OperationState
 

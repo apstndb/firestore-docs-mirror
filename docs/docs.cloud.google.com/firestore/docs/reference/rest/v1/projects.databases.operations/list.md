@@ -2,9 +2,12 @@ Lists operations that match the specified filter in the request. If the server d
 
 ### HTTP request
 
+Choose a location:
+
+  
 `  GET https://firestore.googleapis.com/v1/{name=projects/*/databases/*}/operations  `
 
-The URL uses [gRPC Transcoding](https://google.aip.dev/127) syntax.
+The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 

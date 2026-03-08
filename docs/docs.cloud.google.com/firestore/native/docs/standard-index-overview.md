@@ -20,7 +20,7 @@ If no index exists for a query, most databases crawl through their contents item
 
 #### Less index management, more app development
 
-Firestore Standard edition includes features that reduce the amount of time that you need to spend on index management. The indexes required for the most basic queries are automatically created for you. As you use and test your app, Firestore Standard edition helps you identify and [create additional indexes](../query-data/indexing) that your app requires.
+Firestore Standard edition includes features that reduce the amount of time that you need to spend on index management. The indexes required for the most basic queries are automatically created for you. As you use and test your app, Firestore Standard edition helps you identify and [create additional indexes](/firestore/native/docs/query-data/indexing) that your app requires.
 
 ## Index types
 
@@ -65,7 +65,7 @@ If you create an index exemption for a map field, the map's subfields inherit th
 
 **Note:** An exemption only applies to automatic index settings. A field exempted from automatic indexing can still be indexed as part of a manual index.
 
-To create and manage automatic index exemptions, see [Manage indexes](../query-data/indexing#exemptions) .
+To create and manage automatic index exemptions, see [Manage indexes](/firestore/native/docs/query-data/indexing#exemptions) .
 
 ### Manual indexes
 
@@ -75,11 +75,11 @@ A manual index stores a sorted mapping of all the documents in a collection, bas
 
 Firestore Standard edition uses manual indexes to support queries not already supported by automatic indexes.
 
-By default, Firestore Standard edition automatically creates single-field indexes for each field present within a collection. Firestore Standard edition doesn't automatically create indexes for combinations of fields because of the large number of possible field combinations. Instead, Firestore Standard edition helps you [identify and create required indexes](../query-data/indexing) as you build your app.
+By default, Firestore Standard edition automatically creates single-field indexes for each field present within a collection. Firestore Standard edition doesn't automatically create indexes for combinations of fields because of the large number of possible field combinations. Instead, Firestore Standard edition helps you [identify and create required indexes](/firestore/native/docs/query-data/indexing) as you build your app.
 
 Any time you attempt a query that isn't supported by an existing index, Firestore Standard edition returns an error message with a link that you can follow to create the missing index.
 
-You can also define and manage indexes manually by using the console or by using the [Firebase CLI](//firebase.google.com/docs/cli) . For more on creating and managing manual indexes, see [Manage indexes](../query-data/indexing) .
+You can also define and manage indexes manually by using the console or by using the [Firebase CLI](//firebase.google.com/docs/cli) . For more on creating and managing manual indexes, see [Manage indexes](/firestore/native/docs/query-data/indexing) .
 
 ### Index modes and query scopes
 
@@ -107,7 +107,7 @@ When you define an index, you select an index mode for each indexed field. Each 
 </tr>
 <tr class="odd">
 <td><strong>Array‑contains</strong></td>
-<td>Supports <a href="../query-data/queries#array_contains"><code dir="ltr" translate="no">        array-contains       </code></a> and <a href="../query-data/queries#in_and_array-contains-any"><code dir="ltr" translate="no">        array-contains-any       </code></a> query clauses on the field.</td>
+<td>Supports <a href="/firestore/native/docs/query-data/queries#array_contains"><code dir="ltr" translate="no">        array-contains       </code></a> and <a href="/firestore/native/docs/query-data/queries#in_and_array-contains-any"><code dir="ltr" translate="no">        array-contains-any       </code></a> query clauses on the field.</td>
 </tr>
 <tr class="even">
 <td><strong>Vector</strong></td>
@@ -126,7 +126,7 @@ Each index is scoped to either a collection or a collection group. This is known
 <!-- end list -->
 
   - Collection group scope  
-    A collection group includes all collections with the same collection ID. To run a [collection group query](../query-data/queries#collection-group-query) that returns filtered or ordered results from a collection group, you must create a corresponding index with collection group scope.
+    A collection group includes all collections with the same collection ID. To run a [collection group query](/firestore/native/docs/query-data/queries#collection-group-query) that returns filtered or ordered results from a collection group, you must create a corresponding index with collection group scope.
 
 ### Default ordering and the `     __name__    ` field
 
@@ -408,7 +408,7 @@ citiesRef.where("country", "in", ["USA", "Japan", "China"])
 </tbody>
 </table>
 
-To avoid performance loss caused by [index merging](/datastore/docs/concepts/optimize-indexes#index_merging) , we recommend that you create an index to combine an `  array-contains  ` or `  array-contains-any  ` query with additional clauses:
+To avoid performance loss caused by [index merging](https://docs.cloud.google.com/datastore/docs/concepts/optimize-indexes#index_merging) , we recommend that you create an index to combine an `  array-contains  ` or `  array-contains-any  ` query with additional clauses:
 
 ##### Web
 
@@ -662,7 +662,7 @@ This indexing configuration results in the following index entries for the docum
 
 ## Indexes and pricing
 
-Indexes contribute to the [storage costs](../pricing#storage-size) of your application. For more information about how to calculate storage size for indexes, see [Index entry size](../storage-size#index-entry-size) .
+Indexes contribute to the [storage costs](https://cloud.google.com/firestore/pricing#database-storage-size) of your application. For more information about how to calculate storage size for indexes, see [Index entry size](/firestore/native/docs/storage-size#index-entry-size) .
 
 ### Use index merging
 
@@ -775,7 +775,7 @@ db.collection("restaurants").where("editors_pick", "==", true)
 
 ## Indexing limits
 
-The following limits apply to indexes. For more information about quotas and limits, see [Quotas and Limits](../quotas) .
+The following limits apply to indexes. For more information about quotas and limits, see [Quotas and Limits](/firestore/quotas) .
 
 This page identifies the request quotas and limits for Firestore Standard edition.
 
@@ -869,6 +869,6 @@ Large array or map fields
 
 Large array or map fields can approach the limit of 40,000 index entries per document. If you are not querying based on a large array or map field, you should exempt it from indexing.
 
-If you are using queries with range and inequality operators on multiple fields, see the [indexing considerations](../query-data/multiple-range-fields#best-practices) that you should consider to optimize the performance and cost of Firestore Standard edition queries
+If you are using queries with range and inequality operators on multiple fields, see the [indexing considerations](/firestore/native/docs/query-data/multiple-range-fields#best-practices) that you should consider to optimize the performance and cost of Firestore Standard edition queries
 
 For more information about how to resolve indexing issues (index fanout, `  INVALID_ARGUMENT  ` errors) see the [troubleshooting page](https://cloud.google.com/firestore/docs/troubleshooting) .

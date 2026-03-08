@@ -59,8 +59,6 @@ Firestore supports the following multi-region locations:
 
 ### Enterprise edition
 
-During the Preview, Firestore in Native mode for Enterprise edition is available in the following multi-region locations:
-
 <table>
 <thead>
 <tr class="header">
@@ -72,10 +70,22 @@ During the Preview, Firestore in Native mode for Enterprise edition is available
 </thead>
 <tbody>
 <tr class="odd">
+<td><code dir="ltr" translate="no">          eur3         </code></td>
+<td>Europe</td>
+<td><code dir="ltr" translate="no">          europe-west1         </code> (Belgium), <code dir="ltr" translate="no">          europe-west4         </code> (Netherlands)</td>
+<td><code dir="ltr" translate="no">          europe-north1         </code> (Finland)</td>
+</tr>
+<tr class="even">
 <td><code dir="ltr" translate="no">          nam5         </code></td>
 <td>United States (Central)</td>
 <td><code dir="ltr" translate="no">          us-central1         </code> (Iowa), <code dir="ltr" translate="no">          us-central2         </code> (Oklahoma—private GCP region)</td>
 <td><code dir="ltr" translate="no">          us-east1         </code> (South Carolina)</td>
+</tr>
+<tr class="odd">
+<td><code dir="ltr" translate="no">          nam7         </code></td>
+<td>United States (Central and East)</td>
+<td><code dir="ltr" translate="no">          us-central1         </code> (Iowa), <code dir="ltr" translate="no">          us-east4         </code> (Northern Virginia)</td>
+<td><code dir="ltr" translate="no">          us-central2         </code> (Oklahoma—private Google Cloud region)</td>
 </tr>
 </tbody>
 </table>
@@ -322,19 +332,77 @@ Johannesburg
 
 ### Enterprise edition
 
-During the Preview, Firestore in Native mode for Enterprise edition is available in the following regional locations:
-
 Region name
 
 Region description
 
 **North America**
 
+`  us-west1  `
+
+Oregon
+
+`  us-west2  `
+
+Los Angeles
+
+`  us-west3  `
+
+Salt Lake City
+
+`  us-west4  `
+
+Las Vegas
+
+`  us-central1  `
+
+This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
+
+Iowa
+
+`  northamerica-northeast1  `
+
+Montréal
+
+`  northamerica-northeast2  `
+
+This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
+
+Toronto
+
+`  northamerica-south1  `
+
+This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
+
+Queretaro
+
+`  us-east1  `
+
+South Carolina
+
 `  us-east4  `
 
 Northern Virginia
 
+`  us-east5  `
+
+This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
+
+Columbus
+
+`  us-south1  `
+
+This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
+
+Dallas
+
 **South America**
+
+`  southamerica-west1  `
+
+This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
+
+Santiago
 
 `  southamerica-east1  `
 
@@ -342,9 +410,95 @@ São Paulo
 
 **Europe**
 
+`  europe-west2  `
+
+London
+
+`  europe-west1  `
+
+This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
+
+Belgium
+
 `  europe-west4  `
 
+This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
+
 Netherlands
+
+`  europe-west8  `
+
+This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
+
+Milan
+
+`  europe-southwest1  `
+
+This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
+
+Madrid
+
+`  europe-west9  `
+
+This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
+
+Paris
+
+`  europe-west12  `
+
+This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
+
+Turin
+
+`  europe-west10  `
+
+This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
+
+Berlin
+
+`  europe-west3  `
+
+Frankfurt
+
+`  europe-north1  `
+
+This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
+
+Finland
+
+`  europe-north2  `
+
+This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
+
+Stockholm
+
+`  europe-central2  `
+
+Warsaw
+
+`  europe-west6  `
+
+Zürich
+
+**Middle East**
+
+`  me-central1  `
+
+This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
+
+Doha
+
+`  me-central2  `
+
+This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
+
+Dammam
+
+`  me-west1  `
+
+This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
+
+Tel Aviv
 
 **Asia**
 
@@ -352,9 +506,59 @@ Netherlands
 
 Mumbai
 
+`  asia-south2  `
+
+This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
+
+Delhi
+
+`  asia-southeast1  `
+
+Singapore
+
+`  asia-southeast2  `
+
+Jakarta
+
+`  asia-east2  `
+
+Hong Kong
+
 `  asia-east1  `
 
 Taiwan
+
+`  asia-northeast1  `
+
+Tokyo
+
+`  asia-northeast2  `
+
+Osaka
+
+`  asia-northeast3  `
+
+Seoul
+
+**Australia**
+
+`  australia-southeast1  `
+
+Sydney
+
+`  australia-southeast2  `
+
+This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
+
+Melbourne
+
+**Africa**
+
+`  africa-south1  `
+
+This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
+
+Johannesburg
 
 ## Location SLA
 
@@ -383,7 +587,10 @@ Your Firestore location type determines the [Service Level Agreement (SLA)](http
 
 Your Firestore location determines the cost of database operations.
 
-For a comprehensive explanation of pricing per region and per region type, see [Understand Firestore billing](/firestore/pricing) .
+For a comprehensive explanation of pricing per region and per region type, see:
+
+  - [Firestore Standard edition pricing](https://cloud.google.com/firestore/pricing)
+  - [Firestore Enterprise edition pricing](https://cloud.google.com/firestore/enterprise/pricing)
 
 ## View the location of your databases
 

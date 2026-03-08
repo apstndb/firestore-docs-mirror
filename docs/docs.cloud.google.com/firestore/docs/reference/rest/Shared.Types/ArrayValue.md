@@ -66,6 +66,7 @@ A message that can hold any of the supported value types.
     object (MapValue)
   },
   &quot;fieldReferenceValue&quot;: string,
+  &quot;variableReferenceValue&quot;: string,
   &quot;functionValue&quot;: {
     object (Function)
   },
@@ -173,6 +174,14 @@ This is considered relative (vs absolute) since it only refers to a field and no
   - Must follow \[field reference\]\[FieldReference.field\_path\] limitations.
 
   - Not allowed to be used when writing documents.
+
+`  variableReferenceValue  `
+
+`  string  `
+
+Pointer to a variable defined elsewhere in a pipeline.
+
+Unlike `  fieldReferenceValue  ` which references a field within a document, this refers to a variable, defined in a separate namespace than the fields of a document.
 
 `  functionValue  `
 

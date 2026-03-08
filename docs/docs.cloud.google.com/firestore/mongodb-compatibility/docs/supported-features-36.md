@@ -229,7 +229,7 @@ Firestore with MongoDB compatibility supports the following query and projection
 </tr>
 <tr class="odd">
 <td><code dir="ltr" translate="no">       $meta      </code></td>
-<td>No</td>
+<td>Partial (supports `textScore`)</td>
 </tr>
 <tr class="even">
 <td><code dir="ltr" translate="no">       $slice      </code></td>
@@ -1001,7 +1001,7 @@ Firestore with MongoDB compatibility supports the following aggregation pipeline
 </tr>
 <tr class="odd">
 <td><code dir="ltr" translate="no">       $sample      </code></td>
-<td>No</td>
+<td>Yes</td>
 </tr>
 <tr class="even">
 <td><code dir="ltr" translate="no">       $set      </code></td>
@@ -1583,13 +1583,11 @@ Firestore with MongoDB compatibility supports the following administrative comma
 </tr>
 <tr class="odd">
 <td><code dir="ltr" translate="no">       createIndex      </code></td>
-<td><p>Yes</p>
-<p>To create indexes, see <a href="/firestore/mongodb-compatibility/docs/indexing">Manage indexes</a> .</p></td>
+<td>Yes</td>
 </tr>
 <tr class="even">
 <td><code dir="ltr" translate="no">       createIndexes      </code></td>
-<td><p>Yes</p>
-<p>To create indexes, see <a href="/firestore/mongodb-compatibility/docs/indexing">Manage indexes</a> .</p></td>
+<td>Yes</td>
 </tr>
 <tr class="odd">
 <td><code dir="ltr" translate="no">       createView      </code></td>

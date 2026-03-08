@@ -92,13 +92,13 @@ Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 
 
 `  string  `
 
-The location of the database. Available locations are listed at <https://cloud.google.com/firestore/docs/locations> .
+Required. The location of the database. Available locations are listed at <https://cloud.google.com/firestore/docs/locations> .
 
 `  type  `
 
 `  enum ( DatabaseType  ` )
 
-The type of the database. See <https://cloud.google.com/datastore/docs/firestore-or-datastore> for information about how to choose.
+Required. The type of the database. See <https://cloud.google.com/datastore/docs/firestore-or-datastore> for information about how to choose.
 
 `  concurrencyMode  `
 
