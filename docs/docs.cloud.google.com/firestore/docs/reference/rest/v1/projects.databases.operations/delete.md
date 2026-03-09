@@ -2,9 +2,12 @@ Deletes a long-running operation. This method indicates that the client is no lo
 
 ### HTTP request
 
+Choose a location:
+
+  
 `  DELETE https://firestore.googleapis.com/v1/{name=projects/*/databases/*/operations/*}  `
 
-The URL uses [gRPC Transcoding](https://google.aip.dev/127) syntax.
+The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 

@@ -9,9 +9,12 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 
 ### HTTP request
 
+Choose a location:
+
+  
 `  POST https://datastore.googleapis.com/v1/{name=projects/*/operations/*}:cancel  `
 
-The URL uses [gRPC Transcoding](https://google.aip.dev/127) syntax.
+The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 

@@ -2,9 +2,12 @@ Deletes a backup.
 
 ### HTTP request
 
+Choose a location:
+
+  
 `  DELETE https://firestore.googleapis.com/v1/{name=projects/*/locations/*/backups/*}  `
 
-The URL uses [gRPC Transcoding](https://google.aip.dev/127) syntax.
+The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 

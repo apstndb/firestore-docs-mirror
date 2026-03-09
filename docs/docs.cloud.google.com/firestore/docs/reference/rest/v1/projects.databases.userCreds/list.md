@@ -2,9 +2,12 @@ List all user creds in the database. Note that the returned resource does not co
 
 ### HTTP request
 
+Choose a location:
+
+  
 `  GET https://firestore.googleapis.com/v1/{parent=projects/*/databases/*}/userCreds  `
 
-The URL uses [gRPC Transcoding](https://google.aip.dev/127) syntax.
+The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 

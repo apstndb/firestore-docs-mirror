@@ -2,9 +2,12 @@ List backup schedules.
 
 ### HTTP request
 
+Choose a location:
+
+  
 `  GET https://firestore.googleapis.com/v1/{parent=projects/*/databases/*}/backupSchedules  `
 
-The URL uses [gRPC Transcoding](https://google.aip.dev/127) syntax.
+The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 

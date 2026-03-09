@@ -2,9 +2,12 @@ Lists the indexes that match the specified filters.
 
 ### HTTP request
 
+Choose a location:
+
+  
 `  GET https://firestore.googleapis.com/v1beta1/{parent=projects/*/databases/*}/indexes  `
 
-The URL uses [gRPC Transcoding](https://google.aip.dev/127) syntax.
+The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 

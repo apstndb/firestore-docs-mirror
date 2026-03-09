@@ -2,9 +2,12 @@ Creates a composite index. This returns a `  google.longrunning.Operation  ` whi
 
 ### HTTP request
 
+Choose a location:
+
+  
 `  POST https://firestore.googleapis.com/v1beta2/{parent=projects/*/databases/*/collectionGroups/*}/indexes  `
 
-The URL uses [gRPC Transcoding](https://google.aip.dev/127) syntax.
+The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 

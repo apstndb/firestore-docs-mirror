@@ -2,9 +2,12 @@ Exports a copy of all or a subset of documents from Google Cloud Firestore to an
 
 ### HTTP request
 
+Choose a location:
+
+  
 `  POST https://firestore.googleapis.com/v1beta1/{name=projects/*/databases/*}:exportDocuments  `
 
-The URL uses [gRPC Transcoding](https://google.aip.dev/127) syntax.
+The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 

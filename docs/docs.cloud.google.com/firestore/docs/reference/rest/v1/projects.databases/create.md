@@ -2,9 +2,12 @@ Create a database.
 
 ### HTTP request
 
+Choose a location:
+
+  
 `  POST https://firestore.googleapis.com/v1/{parent=projects/*}/databases  `
 
-The URL uses [gRPC Transcoding](https://google.aip.dev/127) syntax.
+The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 

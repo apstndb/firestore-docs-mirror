@@ -6,9 +6,9 @@ When you use Firestore client libraries, you can use any of the following endpoi
 
   - **Global endpoint** : By default, the Firestore client libraries send API requests to a global service endpoint named `  firestore.googleapis.com  ` . The global service endpoint routes the request to your database. During routing, a request might pass through a server in a location that's different from your database location.
 
-  - **Regional endpoint** : A regional endpoint enforces restrictions ensuring that data is stored and processed in a specified single region. To ensure that the service endpoint processes your app's Firestore requests in the same region as your database, specify a *regional endpoint* in the client library.
+  - **Regional endpoint** : A regional endpoint enforces restrictions ensuring that data is transmitted, stored and processed in a specified Google Cloud region. To ensure that the service endpoint processes your app's Firestore requests in the same region as your database, specify a *regional endpoint* in the client library.
 
-  - **Multi-regional endpoint** : A multi-regional endpoint enforces restrictions ensuring that data is stored and processed in a specified multi-region. To ensure that the service endpoint processes your app's Firestore requests in the same multi-region as your database, specify a *multi-regional endpoint* in the client library.
+  - **Multi-regional endpoint** : A multi-regional endpoint enforces restrictions ensuring that data is transmitted, stored and processed in a specified Google Cloud multi-region. To ensure that the service endpoint processes your app's Firestore requests in the same multi-region as your database, specify a *multi-regional endpoint* in the client library.
 
 ## Set a regional or multi-regional endpoint
 

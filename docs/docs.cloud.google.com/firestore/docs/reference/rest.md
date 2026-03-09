@@ -18,6 +18,14 @@ A [service endpoint](https://cloud.google.com/apis/design/glossary#api_service_e
 
   - `  https://firestore.googleapis.com  `
 
+### Regional service endpoint
+
+A regional service endpoint is a base URL that specifies the network address of an API service in a single region. A service that is available in multiple regions might have multiple regional endpoints. Select a location to see its regional service endpoint for this service.
+
+  
+
+`  https://firestore.googleapis.com  `
+
 ## REST Resource: [v1beta2.projects.databases](/firestore/docs/reference/rest/v1beta2/projects.databases)
 
 Methods

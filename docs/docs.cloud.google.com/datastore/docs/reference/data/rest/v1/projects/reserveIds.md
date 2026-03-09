@@ -10,9 +10,12 @@ Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.
 
 ### HTTP request
 
+Choose a location:
+
+  
 `  POST https://datastore.googleapis.com/v1/projects/{projectId}:reserveIds  `
 
-The URL uses [gRPC Transcoding](https://google.aip.dev/127) syntax.
+The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 

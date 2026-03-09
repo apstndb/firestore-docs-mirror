@@ -10,9 +10,12 @@ Exports a copy of all or a subset of entities from Google Cloud Datastore to ano
 
 ### HTTP request
 
+Choose a location:
+
+  
 `  POST https://datastore.googleapis.com/v1beta1/projects/{projectId}:export  `
 
-The URL uses [gRPC Transcoding](https://google.aip.dev/127) syntax.
+The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 

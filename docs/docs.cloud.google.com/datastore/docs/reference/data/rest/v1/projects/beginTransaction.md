@@ -11,9 +11,12 @@ Begins a new transaction.
 
 ### HTTP request
 
+Choose a location:
+
+  
 `  POST https://datastore.googleapis.com/v1/projects/{projectId}:beginTransaction  `
 
-The URL uses [gRPC Transcoding](https://google.aip.dev/127) syntax.
+The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 

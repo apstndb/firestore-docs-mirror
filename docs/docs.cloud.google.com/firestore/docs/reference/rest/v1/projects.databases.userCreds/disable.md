@@ -2,9 +2,12 @@ Disables a user creds. No-op if the user creds are already disabled.
 
 ### HTTP request
 
+Choose a location:
+
+  
 `  POST https://firestore.googleapis.com/v1/{name=projects/*/databases/*/userCreds/*}:disable  `
 
-The URL uses [gRPC Transcoding](https://google.aip.dev/127) syntax.
+The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 

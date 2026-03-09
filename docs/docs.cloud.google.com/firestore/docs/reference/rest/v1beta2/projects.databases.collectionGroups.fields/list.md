@@ -4,9 +4,12 @@ Currently, `  FirestoreAdmin.ListFields  ` only supports listing fields that hav
 
 ### HTTP request
 
+Choose a location:
+
+  
 `  GET https://firestore.googleapis.com/v1beta2/{parent=projects/*/databases/*/collectionGroups/*}/fields  `
 
-The URL uses [gRPC Transcoding](https://google.aip.dev/127) syntax.
+The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 

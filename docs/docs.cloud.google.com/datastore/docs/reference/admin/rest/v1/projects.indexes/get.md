@@ -9,9 +9,12 @@ Gets an index.
 
 ### HTTP request
 
+Choose a location:
+
+  
 `  GET https://datastore.googleapis.com/v1/projects/{projectId}/indexes/{indexId}  `
 
-The URL uses [gRPC Transcoding](https://google.aip.dev/127) syntax.
+The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 

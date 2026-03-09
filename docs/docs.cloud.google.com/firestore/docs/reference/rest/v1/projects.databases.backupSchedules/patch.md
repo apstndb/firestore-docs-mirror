@@ -2,9 +2,12 @@ Updates a backup schedule.
 
 ### HTTP request
 
+Choose a location:
+
+  
 `  PATCH https://firestore.googleapis.com/v1/{backupSchedule.name=projects/*/databases/*/backupSchedules/*}  `
 
-The URL uses [gRPC Transcoding](https://google.aip.dev/127) syntax.
+The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 

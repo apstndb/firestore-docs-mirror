@@ -1,16 +1,18 @@
-This page describes how to configure the Firestore in Datastore mode client libraries to use a locational endpoint.
+This page describes how to configure the Firestore in Datastore mode client libraries to use a regional or multi-regional endpoint.
 
-When you use Firestore in Datastore mode client libraries, you can use either of the following endpoints:
+When you use Firestore in Datastore mode client libraries, you can use any of the following endpoints:
 
-  - **Global endpoint** : By default, the Firestore in Datastore mode client libraries send API requests to a global service endpoint named `  datastore.googleapis.com  ` . The global service endpoint routes the request to your database. During routing, the request might pass through a locational service endpoint in a location that's different from your database location.
+  - **Global endpoint** : By default, the Firestore in Datastore mode client libraries send API requests to a global service endpoint named `  datastore.googleapis.com  ` . The global service endpoint routes the request to your database. During routing, the request might pass through a server in a location that's different from your database location.
 
-  - **Locational endpoint** : A locational endpoint enforces regional restrictions, ensuring that data is stored and processed in a specified region. To guarantee that the service endpoint processes your app's Firestore in Datastore mode requests in the same region as your database, specify a *locational endpoint* in the client library.
+  - **Regional endpoint** : A regional endpoint enforces restrictions ensuring that data is transmitted, stored and processed in a specified Google Cloud region. To ensure that the service endpoint processes your app's Firestore in Datastore mode requests in the same region as your database, specify a *regional endpoint* in the client library.
 
-## Set a locational endpoint
+  - **Multi-regional endpoint** : A multi-regional endpoint enforces restrictions ensuring that data is transmitted, stored and processed in a specified Google Cloud multi-region. To ensure that the service endpoint processes your app's Firestore in Datastore mode requests in the same multi-region as your database, specify a *multi-regional endpoint* in the client library.
 
-The following examples show how to set a locational endpoint when you initialize a Firestore in Datastore mode client.
+## Set a regional or multi-regional endpoint
 
-**Note:** Setting a locational endpoint other than where your data resides might result in a `  PermissionDeniedError  ` error.
+The method for configuring a regional or multi-regional endpoint is the same: you provide the endpoint string when initializing the client library. The following examples show how to set the endpoint string using a regional endpoint ( `  datastore.us-central1.rep.googleapis.com  ` ). To use a multi-regional endpoint, provide a multi-regional endpoint string corresponding to your database's location (for example, `  datastore.us.rep.googleapis.com  ` for `  nam5  ` ).
+
+**Note:** Setting an endpoint for a location other than where your data resides might result in a `  PermissionDeniedError  ` .
 
 ### Java
 
@@ -27,7 +29,7 @@ public class RegionalEndpoint {
   public Datastore createClient() throws Exception {
     // Instantiates a client
     DatastoreOptions options =
-        DatastoreOptions.newBuilder().setHost("https://nam5-datastore.googleapis.com").build();
+        DatastoreOptions.newBuilder().setHost("https://datastore.us-central1.rep.googleapis.com").build();
     Datastore datastore = options.getService();
     return datastore;
   }
@@ -41,7 +43,10 @@ To learn how to install and use the client library for Datastore mode, see [Data
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](/docs/authentication/set-up-adc-local-dev-environment) .
 
 ``` python
-ENDPOINT = "https://eur3-datastore.googleapis.com"
+from google.cloud import datastore
+from google.api_core.client_options import ClientOptions
+
+ENDPOINT = "https://datastore.africa-south1.rep.googleapis.com"
 client_options = ClientOptions(api_endpoint=ENDPOINT)
 client = datastore.Client(client_options=client_options)
 
@@ -51,16 +56,82 @@ for r in results:
     print(r)
 ```
 
-### Locational endpoint semantics
+### Regional and multi-regional endpoint semantics
 
-Firestore in Datastore mode supports locational endpoints for both region and multi-region locations.
+**Regional Endpoints (REP):**
 
-Use the following format to define locational endpoints:
+Firestore in Datastore mode supports regional endpoints for the regional locations listed here [Firestore in Datastore mode locations](/datastore/docs/locations#location-r) .
+
+Use the following format to define regional endpoints:
 
 ### Java
 
 ``` text
-  https://REGION_NAME-firestore.googleapis.com:443
+    datastore.REGION_NAME.rep.googleapis.com:443
+```
+
+Make sure that the port number is defined along with the endpoint.
+
+### Python
+
+``` text
+    datastore.REGION_NAME.rep.googleapis.com
+```
+
+### Go
+
+``` text
+    datastore.REGION_NAME.rep.googleapis.com:443
+```
+
+Make sure that the port number is defined along with the endpoint.
+
+Replace REGION\_NAME with the name of a regional hostname.
+
+Some examples of hostnames are:
+
+  - `  datastore.us-central1.rep.googleapis.com  `
+  - `  datastore.europe-west1.rep.googleapis.com  `
+
+**Multi-regional Endpoints (MREP)**
+
+For multi-regional endpoints, use `  us  ` for locations `  nam5  ` and `  nam7  ` , and `  eu  ` for location `  eur3  ` (see [Multi-regional locations](/datastore/docs/locations#location-mr) ).
+
+### Java
+
+``` text
+    datastore.us.rep.googleapis.com:443
+    datastore.eu.rep.googleapis.com:443
+```
+
+Make sure that the port number is defined along with the endpoint.
+
+### Python
+
+``` text
+    datastore.us.rep.googleapis.com
+    datastore.eu.rep.googleapis.com
+```
+
+### Go
+
+``` text
+    datastore.us.rep.googleapis.com:443
+    datastore.eu.rep.googleapis.com:443
+```
+
+Make sure that the port number is defined along with the endpoint.
+
+### Locational Endpoints (Deprecated)
+
+Locational endpoints are now deprecated. Use regional or multi-regional endpoints instead.
+
+Firestore in Datastore mode previously supported locational endpoints with the following format:
+
+### Java
+
+``` text
+  https://REGION_NAME-datastore.googleapis.com:443
 ```
 
 Make sure that the complete `  https  ` URL is used and that the port number is defined along with the endpoint.
@@ -68,7 +139,7 @@ Make sure that the complete `  https  ` URL is used and that the port number is 
 ### Python
 
 ``` text
-  https://REGION_NAME-firestore.googleapis.com
+  https://REGION_NAME-datastore.googleapis.com
 ```
 
 Make sure that the complete `  https  ` URL is set as the locational endpoint.
@@ -76,7 +147,7 @@ Make sure that the complete `  https  ` URL is set as the locational endpoint.
 ### Go
 
 ``` text
-  REGION_NAME-firestore.googleapis.com:443
+  REGION_NAME-datastore.googleapis.com:443
 ```
 
 Make sure that the port number is defined along with the endpoint.
@@ -91,6 +162,10 @@ Some examples of hostnames are:
   - `  asia-northeast2-datastore.googleapis.com  `
 
 For a complete list of multi-regional and regional hostnames, see [Firestore in Datastore mode locations](/datastore/docs/locations) .
+
+## Restrict global API endpoint usage
+
+To help enforce the use of regional and multi-regional endpoints, use the `  constraints/gcp.restrictEndpointUsage  ` organization policy constraint to block requests to the global API endpoint. For more information, see [Restricting endpoint usage](/assured-workloads/docs/restrict-endpoint-usage) .
 
 ## What's next
 
