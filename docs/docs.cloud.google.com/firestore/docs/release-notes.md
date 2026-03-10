@@ -4,6 +4,12 @@ You can see the latest product updates for all of Google Cloud on the [Google Cl
 
 To get the latest product updates delivered to you, add the URL of this page to your [feed reader](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the [feed URL](https://docs.cloud.google.com/feeds/fs-release-notes.xml) directly.
 
+## March 05, 2026
+
+Feature
+
+Firestore Enterprise edition now supports Native mode in all supported regions. For a list of supported regions, see [Locations](https://docs.cloud.google.com/firestore/native/docs/locations) .
+
 ## February 17, 2026
 
 Deprecated
