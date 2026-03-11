@@ -5,6 +5,10 @@ Before you read this page, you should be familiar with the [overview of Key Visu
   - Learn how to [open a Key Visualizer scan](./keyvis-getting-started#viewing-scan) .
   - See examples of common [entity key patterns](./keyvis-patterns) or [index key patterns](./keyvis-patterns-index) .
 
+### Edition and mode requirements
+
+This document applies to Firestore Standard edition in Firestore in Native mode.
+
 ## Adjusting brightness
 
 Key Visualizer heatmaps use dark colors to indicate normal or low values, and bright colors to indicate high values. You can adjust the color scale to help you see patterns in the heat map.

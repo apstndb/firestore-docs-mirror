@@ -1,5 +1,9 @@
 This page shows examples of patterns that you might see in a Key Visualizer heatmap. These patterns can help you troubleshoot specific performance issues.
 
+### Edition and mode requirements
+
+This document applies to Firestore Standard edition in Firestore in Native mode.
+
 ## Evenly distributed usage
 
 If a heatmap shows a fine-grained mix of dark and bright colors, then write/delete operations for index keys are evenly distributed throughout the database. This heatmap likely represents an effective usage pattern for Datastore mode.

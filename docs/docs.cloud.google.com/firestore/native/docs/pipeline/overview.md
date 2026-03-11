@@ -23,7 +23,7 @@ The following sections give an overview of the syntax for Pipeline operations.
 
 ### Concepts
 
-One notable difference with Pipeline operations is the introduction of explicit "stage" ordering. This makes it possible to express more complex queries. However, it is a notable deviation from the existing query interface (Core operations) where the ordering of stages was implied. Consider the following Pipeline operation example:
+One notable difference with Pipeline operations is the introduction of explicit "stage" ordering. This makes it possible to express more complex queries. However, it is a notable deviation from the existing query interface using Core operations. where the ordering of stages was implied. Consider the following Pipeline operations example:
 
 ##### Node.js
 
@@ -157,17 +157,17 @@ Pipeline operations support complex expressions. As such, it may be necessary to
     .where(eq("name","toronto"))
 
   // In many cases, it's not necessary to differentiate between the two. In the
-  // case of equality, we will implicit treat the first parameter as a field 
-  // reference and the second as a constant. However if you need to override you 
+  // case of equality, we will implicit treat the first parameter as a field
+  // reference and the second as a constant. However if you need to override you
   // can always be explicit with the value types
-  
+
   db.pipeline()
     .collection("cities")
     .where(eq(Field.of("name"), Constant.of("toronto")))
 
   // In some cases, being explicit is always required. However, it should be
   // enough to look at the type signature of the expressions to know what
-  //parameters can be used with implicit types, and what should be explicitly specified. 
+  //parameters can be used with implicit types, and what should be explicitly specified.
     
 ```
 
@@ -381,11 +381,11 @@ Multiple `  where(...)  ` statements can be chained together, and act as an `  a
     .where(eq("rating", 5.0))
     .where(lt('published', 1900))
     .execute();
-  
+
   const results = await db.pipeline()
     .collection("books")
     .where(and(
-      eq("rating", 5.0), 
+      eq("rating", 5.0),
       lt('published', 1900)))
     .execute();
     
@@ -484,7 +484,7 @@ The `  select(...)  ` , `  add_fields(...)  ` , & `  remove_fields(...)  ` all a
 
 The `  select(...)  ` and `  add_fields(...)  ` allow you to specify the result of an expression to a user-provided field name. An expression that results in an error will result in a `  null  ` value. The `  select(...)  ` will only return the documents with specified field names while `  add_fields(...)  ` extends the schema of the previous stage (potentially overwriting values with identical field names).
 
-The `  remove_fields(...)  ` allows specifying a set of fields to remove from the previous stage. Specifying field names that do not exist is a no-op.
+The `  remove_fields(...)  ` allows specifying a set of fields to remove from the previous stage. Specifying field names that don't exist is a no-op.
 
 See the [Restrict the Fields to Return](#restrict_the_fields_to_return) section below but in general using such a stage to restrict the result to only the fields needed in the client is helpful in reducing the cost and latency for most queries.
 
@@ -1144,7 +1144,7 @@ pipeline = (
 
 ### Emulator Support
 
-The emulator does not yet support Pipeline operations.
+The emulator doesn't support Pipeline operations.
 
 ### Realtime and Offline Support
 

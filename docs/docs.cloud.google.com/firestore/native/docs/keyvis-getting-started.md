@@ -4,7 +4,7 @@ This page describes how to use Key Visualizer to check for performance issues th
 
 ### Edition and mode requirements
 
-This document applies to Firestore Standard edition in Native mode.
+This document applies to Firestore Standard edition in Firestore in Native mode.
 
 ## Before you begin
 

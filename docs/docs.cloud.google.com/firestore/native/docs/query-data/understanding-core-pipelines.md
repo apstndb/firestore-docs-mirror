@@ -37,7 +37,7 @@ With the introduction of Native mode support in the Enterprise edition, both Fir
 <tr class="even">
 <td><strong>Supported querying operations</strong></td>
 <td>Limited to Firestore Core operations.</td>
-<td>Supports Firestore Core and Pipeline operations, and Firestore with MongoDB compatible operations.</td>
+<td>Supports Firestore Core and Pipeline operations, and Firestore MongoDB compatibility operations.</td>
 </tr>
 <tr class="odd">
 <td><strong>Indexing Requirement</strong></td>
