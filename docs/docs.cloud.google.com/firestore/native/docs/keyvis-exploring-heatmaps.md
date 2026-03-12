@@ -9,7 +9,7 @@ Before you read this page, you should be familiar with the [overview of Key Visu
 
 ### Edition and mode requirements
 
-This document applies to Firestore Standard edition in Native mode.
+This document applies to Firestore Standard edition in Firestore in Native mode.
 
 ## Adjusting brightness
 

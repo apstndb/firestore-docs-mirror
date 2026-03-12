@@ -1,6 +1,6 @@
 # Getting data
 
-**Tip:** This page applies to the Core operations interface. To get data with the Pipeline operations interface for Enterprise edition, see [Get data with Pipeline operations](/firestore/native/docs/pipeline/overview) .
+**Tip:** This page applies to Core operations. To get data with the Pipeline operations for Enterprise edition, see [Get data with Pipeline operations](/firestore/native/docs/pipeline/overview) .
 
 There are three ways to retrieve data stored in Firestore. Any of these methods can be used with documents, collections of documents, or the results of queries:
 

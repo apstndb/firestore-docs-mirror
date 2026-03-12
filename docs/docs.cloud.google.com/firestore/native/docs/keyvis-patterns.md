@@ -4,7 +4,7 @@ This page shows examples of patterns that you might see in a Key Visualizer heat
 
 ### Edition and mode requirements
 
-This document applies to Firestore Standard edition in Native mode.
+This document applies to Firestore Standard edition in Firestore in Native mode.
 
 ## Evenly distributed usage
 

@@ -1,5 +1,9 @@
 This page provides an overview of the Key Visualizer diagnostic tool for Firestore in Datastore mode.
 
+### Edition and mode requirements
+
+This document applies to Firestore Standard edition in Firestore in Native mode.
+
 ## What is Key Visualizer?
 
 Key Visualizer is a tool that helps you analyze your Datastore mode usage patterns. It generates visual reports that break down your usage based on the entities that you access or index entries that are written or deleted as entities are modified.

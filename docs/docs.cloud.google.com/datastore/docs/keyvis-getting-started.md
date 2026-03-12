@@ -1,5 +1,9 @@
 This page describes how to use Key Visualizer to check for performance issues that are related to your Firestore in Datastore mode usage patterns.
 
+### Edition and mode requirements
+
+This document applies to Firestore Standard edition in Firestore in Native mode.
+
 ## Before you begin
 
 To use Key Visualizer for Datastore mode, you must enable the Firestore Key Visualizer API.

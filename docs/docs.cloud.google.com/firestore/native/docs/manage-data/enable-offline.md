@@ -7,7 +7,7 @@ When the device comes back online, Firestore synchronizes any local changes made
 **Note:**
 
   - Offline persistence is supported only in Android, Apple, and web apps.
-  - [Pipeline operations](/firestore/native/docs/query-data/understanding-core-pipelines) don't support offline persistence. To use offline persistence with Enterprise edition databases, use core operations as described on this page.
+  - [Pipeline operations](/firestore/native/docs/query-data/understanding-core-pipelines) don't support offline persistence. To use offline persistence with Enterprise edition databases, use Core operations as described on this page.
 
 To use offline persistence, you don't need to make any changes to the code that you use to access Firestore data. With offline persistence enabled, the Firestore client library automatically manages online and offline data access and synchronizes local data when the device is back online.
 
@@ -475,7 +475,7 @@ if (indexManager != null) {
   indexManager.enableIndexAutoCreation();
 }
 
-// If not check indexManager != null, IDE shows warning: Method invocation 'enableIndexAutoCreation' may produce 'NullPointerException' 
+// If not check indexManager != null, IDE shows warning: Method invocation 'enableIndexAutoCreation' may produce 'NullPointerException'
 FirebaseFirestore.getInstance().getPersistentCacheIndexManager().enableIndexAutoCreation();
     
 ```

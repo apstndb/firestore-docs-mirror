@@ -4,7 +4,7 @@ You can *listen* to a document with the `  onSnapshot()  ` method. An initial ca
 
 **Note:**
 
-  - [Pipeline operations](/firestore/native/docs/query-data/understanding-core-pipelines) don't support realtime listeners. To use realtime listeners with Enterprise edition databases, use core operations as described on this page.
+  - [Pipeline operations](/firestore/native/docs/query-data/understanding-core-pipelines) don't support realtime listeners. To use Real-time Listen queries with Enterprise edition databases, use Core operations as described on this page.
   - Realtime listeners are not supported in the PHP client library.
 
 ### Web version 9

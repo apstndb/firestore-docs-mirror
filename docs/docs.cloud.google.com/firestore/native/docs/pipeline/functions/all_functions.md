@@ -4501,6 +4501,10 @@ When `  null_text  ` is provided:
 <td><code dir="ltr" translate="no">         NOT_EQUAL       </code></td>
 <td>Not equals comparison</td>
 </tr>
+<tr class="even">
+<td><code dir="ltr" translate="no">         CMP       </code></td>
+<td>General comparison</td>
+</tr>
 </tbody>
 </table>
 
@@ -5328,6 +5332,68 @@ Pipeline.Snapshot result =
         .execute()
         .get();PipelineSnippets.java
 ```
+
+### CMP
+
+**Syntax:**
+
+``` text
+cmp(x: ANY, y: ANY) -> Int64
+```
+
+**Description:**
+
+Compares `  x  ` & `  y  ` , returning:
+
+  - `  1L  ` if `  x  ` is greater than `  y  ` .
+  - `  -1L  ` if `  x  ` is less than `  y  ` .
+  - `  0L  ` otherwise.
+
+Unlike other comparison functions, the `  cmp(...)  ` function works across types, following the same ordering used in the `  sort(...)  ` stage. See [value type order](/firestore/native/docs/concepts/data-types) for how values are ordered across types.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code dir="ltr" translate="no">       x      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       y      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       cmp(x, y)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1L</td>
+<td style="text-align: left;">1L</td>
+<td style="text-align: left;">0L</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1.0</td>
+<td style="text-align: left;">1L</td>
+<td style="text-align: left;">0L</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">-1.0</td>
+<td style="text-align: left;">1L</td>
+<td style="text-align: left;">-1L</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">42.5D</td>
+<td style="text-align: left;">"foo"</td>
+<td style="text-align: left;">-1L</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code dir="ltr" translate="no">       NULL      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       NULL      </code></td>
+<td style="text-align: left;">0L</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code dir="ltr" translate="no">       NULL      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       ABSENT      </code></td>
+<td style="text-align: left;">0L</td>
+</tr>
+</tbody>
+</table>
 
 ## **Debugging Functions**
 

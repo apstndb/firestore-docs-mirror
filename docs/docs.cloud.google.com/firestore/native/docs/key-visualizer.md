@@ -4,7 +4,7 @@ This page provides an overview of the Key Visualizer diagnostic tool for Firesto
 
 ### Edition and mode requirements
 
-This document applies to Firestore Standard edition in Native mode.
+This document applies to Firestore Standard edition in Firestore in Native mode.
 
 ## What is Key Visualizer?
 

@@ -1,6 +1,6 @@
 # Write-time aggregations
 
-**Tip:** This page applies to the Core operations interface. To aggregate data in the Pipeline operations interface for Enterprise edition, see [Pipeline operation `  aggregate  ` stage](/firestore/native/docs/pipeline/overview#aggregate_distinct) .
+**Tip:** This page applies to Core operations. To aggregate data in Pipeline operations for Enterprise edition, see [Pipeline operation `  aggregate  ` stage](/firestore/native/docs/pipeline/overview#aggregate_distinct) .
 
 Queries in Firestore let you find documents in large collections. To gain insight into properties of the collection as a whole, you can aggregate data over a collection.
 

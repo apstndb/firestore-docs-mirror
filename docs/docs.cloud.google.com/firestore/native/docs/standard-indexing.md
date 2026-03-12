@@ -135,7 +135,7 @@ If you make edits to the indexes using the Firebase console, make sure you also 
 
 Firestore Standard edition databases can include both single-field (automatic) and composite (manual) indexes. You can edit the Terraform configuration file to create an index for your database. Automatic and manual indexes use distinct Terraform resource types ( [`  google_firestore_index  `](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_index) and [`  google_firestore_field  `](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_field) ).
 
-Both Firestore Native Mode and Datastore Mode indexes are supported.
+Both Native mode and Datastore mode indexes are supported.
 
 #### Single-field (automatic) index
 
