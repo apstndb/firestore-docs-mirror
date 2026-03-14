@@ -8,7 +8,7 @@ This page describes how to retrieve query execution information when you execute
 
 ## Use Query Explain
 
-You can use Query Explain to understand how your queries are being executed. This provides details that you can use to [optimize your queries](/firestore/docs/pipeline/enterprise-optimize-query-performance) .
+You can use Query Explain to understand how your queries are being executed. This provides details that you can use to [optimize your queries](/firestore/native/docs/enterprise-optimize-query-performance) .
 
 You can use Query Explain through the Google Cloud console.
 
@@ -34,7 +34,7 @@ db.pipeline().collection('/users').sort(field("status").ascending()).limit(100)
 
 ## Summary Statistics
 
-The top of the explained output contains a summary of the execution statistics. Use these statistics to determine if a query has high latency or cost. It also contains memory statistics which let you know how close your query is to [memory limits](/firestore/mongodb-compatibility/quotas#reads_writes_and_transactions) .
+The top of the explained output contains a summary of the execution statistics. Use these statistics to determine if a query has high latency or cost. It also contains memory statistics which let you know how close your query is to [memory limits](/firestore/quotas#writes_and_transactions) .
 
 ``` text
 Execution:
@@ -51,9 +51,9 @@ Billing:
 
 The execution tree describes the query execution as a series of nodes. The bottom nodes (leaf nodes) retrieve data from the storage layer which traverses up the tree to generate a query response.
 
-For details about each execution node, refer to the [Execution reference](/firestore/docs/pipeline/enterprise-query-explain-reference) .
+For details about each execution node, refer to the [Execution reference](/firestore/native/docs/enterprise-query-explain-reference) .
 
-For details on how to use this information to optimize your queries, see [Optimize query execution](/firestore/docs/pipeline/optimize-query-performance) .
+For details on how to use this information to optimize your queries, see [Optimize query execution](/firestore/native/docs/enterprise-optimize-query-performance) .
 
 The following is an example of an execution tree:
 
@@ -108,5 +108,5 @@ Tree:
 
 ## What's next
 
-  - To learn about the execution tree nodes, see the [Query execution reference](/firestore/docs/pipeline/enterprise-query-explain-reference) .
-  - To learn how to optimize your queries, see [Optimize query execution](/firestore/docs/pipeline/enterprise-optimize-query-performance) .
+  - To learn about the execution tree nodes, see the [Query execution reference](/firestore/native/docs/enterprise-query-explain-reference) .
+  - To learn how to optimize your queries, see [Optimize query execution](/firestore/native/docs/enterprise-optimize-query-performance) .
