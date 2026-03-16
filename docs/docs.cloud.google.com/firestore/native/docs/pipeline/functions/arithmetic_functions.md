@@ -57,30 +57,34 @@ Additionally, when an arithmetic function takes multiple numeric arguments of di
 <td>Rounds a <code dir="ltr" translate="no">       number      </code> to <code dir="ltr" translate="no">       places      </code> decimal places</td>
 </tr>
 <tr class="odd">
+<td><code dir="ltr" translate="no">         TRUNC       </code></td>
+<td>Truncates a <code dir="ltr" translate="no">       number      </code> to <code dir="ltr" translate="no">       places      </code> decimal places</td>
+</tr>
+<tr class="even">
 <td><code dir="ltr" translate="no">         POW       </code></td>
 <td>Returns the value of <code dir="ltr" translate="no">       base^exponent      </code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code dir="ltr" translate="no">         SQRT       </code></td>
 <td>Returns the square root of a <code dir="ltr" translate="no">       number      </code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code dir="ltr" translate="no">         EXP       </code></td>
 <td>Returns Euler's number raised to the power of <code dir="ltr" translate="no">       exponent      </code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code dir="ltr" translate="no">         LN       </code></td>
 <td>Returns the natural logarithm of a <code dir="ltr" translate="no">       number      </code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code dir="ltr" translate="no">         LOG       </code></td>
 <td>Returns the logarithm of a <code dir="ltr" translate="no">       number      </code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code dir="ltr" translate="no">         LOG10       </code></td>
 <td>Returns the logarithm of a <code dir="ltr" translate="no">       number      </code> to base <code dir="ltr" translate="no">       10      </code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code dir="ltr" translate="no">         RAND       </code></td>
 <td>Returns a pseudo-random floating point number</td>
 </tr>
@@ -1270,6 +1274,76 @@ Pipeline.Snapshot result =
         .execute()
         .get();PipelineSnippets.java
 ```
+
+### TRUNC
+
+**Syntax:**
+
+``` text
+trunc[N <: Number](number: N) -> N
+trunc[N <: Number](number:  N, places: INT64) -> N
+```
+
+**Description:**
+
+Truncates a `  number  ` to a specified number of `  places  ` decimal places. Truncates digits from the right of the decimal point if `  places  ` is positive, and to the left of the decimal point if it is negative.
+
+  - If only `  number  ` is provided, truncates to the nearest whole value towards zero.
+  - An `  error  ` is thrown if truncating results in overflow.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">number</th>
+<th style="text-align: left;">places</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       trunc(number, places)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">15.5</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">15.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-15.5</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">-15.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">-1</td>
+<td style="text-align: left;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">-2</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15.48924</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">15.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-15.48924</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">-15.48</td>
+</tr>
+</tbody>
+</table>
 
 ### POW
 

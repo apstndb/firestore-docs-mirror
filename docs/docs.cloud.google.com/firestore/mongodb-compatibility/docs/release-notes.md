@@ -74,15 +74,47 @@ Use [Query insights](/firestore/mongodb-compatibility/docs/query-insights) to vi
 
 Feature
 
-New JSON results viewer and JSON export tool in the Google Cloud console.
+Support for [Private Google Access](https://cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access) .
 
 Feature
 
-Usage dashboard in the Google Cloud console.
+General Availability (GA) release of [Firestore with MongoDB compatibility](https://cloud.google.com/firestore/mongodb-compatibility/docs/overview) .
 
 Feature
 
-You can [clone an existing database](https://cloud.google.com/firestore/mongodb-compatibility/docs/create-databases#clone-database) at a selected timestamp into a new database. This feature is available in [Preview](https://cloud.google.com/products#product-launch-stages) .
+Support for Firebase interfaces, including console, CLIs, and documentation.
+
+Feature
+
+Support for [Firestore Triggers (Events)](https://cloud.google.com/firestore/mongodb-compatibility/docs/eventarc) with Firestore with MongoDB compatibility databases.
+
+Feature
+
+Support for [explaining queries](https://cloud.google.com/firestore/mongodb-compatibility/docs/query-explain#use_query_explain) and [managing indexes](https://cloud.google.com/firestore/mongodb-compatibility/docs/indexing#create_an_index) in the MongoDB API.
+
+Feature
+
+Support for `  int32  ` , binary, and double types as document `  _id  ` identifier.
+
+Feature
+
+Support for [Point-In-Time-Recovery](https://cloud.google.com/firestore/mongodb-compatibility/docs/pitr) features, including reading data at a specific snapshot through the MongoDB APIs.
+
+Feature
+
+Support for [unique indexes](https://cloud.google.com/firestore/mongodb-compatibility/docs/index-overview#unique_indexes) .
+
+Feature
+
+New [billing metrics](https://cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard#billing_metrics) which allow customers to easily attribute Firestore Enterprise costs to database and RPC methods in Cloud Monitoring.
+
+Feature
+
+Support for [managed bulk delete](https://cloud.google.com/firestore/mongodb-compatibility/docs/bulk-delete) and [import and export](https://cloud.google.com/firestore/mongodb-compatibility/docs/export-import) .
+
+Feature
+
+A range of performance improvements to support more performant queries on arrays and larger bulk operations with fewer transient errors.
 
 Feature
 
@@ -155,47 +187,15 @@ Support for the following query features. For the full list of supported operato
 
 Feature
 
-A range of performance improvements to support more performant queries on arrays and larger bulk operations with fewer transient errors.
+You can [clone an existing database](https://cloud.google.com/firestore/mongodb-compatibility/docs/create-databases#clone-database) at a selected timestamp into a new database. This feature is available in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 Feature
 
-Support for [managed bulk delete](https://cloud.google.com/firestore/mongodb-compatibility/docs/bulk-delete) and [import and export](https://cloud.google.com/firestore/mongodb-compatibility/docs/export-import) .
+Usage dashboard in the Google Cloud console.
 
 Feature
 
-New [billing metrics](https://cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard#billing_metrics) which allow customers to easily attribute Firestore Enterprise costs to database and RPC methods in Cloud Monitoring.
-
-Feature
-
-Support for [unique indexes](https://cloud.google.com/firestore/mongodb-compatibility/docs/index-overview#unique_indexes) .
-
-Feature
-
-Support for [Point-In-Time-Recovery](https://cloud.google.com/firestore/mongodb-compatibility/docs/pitr) features, including reading data at a specific snapshot through the MongoDB APIs.
-
-Feature
-
-Support for `  int32  ` , binary, and double types as document `  _id  ` identifier.
-
-Feature
-
-Support for [explaining queries](https://cloud.google.com/firestore/mongodb-compatibility/docs/query-explain#use_query_explain) and [managing indexes](https://cloud.google.com/firestore/mongodb-compatibility/docs/indexing#create_an_index) in the MongoDB API.
-
-Feature
-
-Support for [Firestore Triggers (Events)](https://cloud.google.com/firestore/mongodb-compatibility/docs/eventarc) with Firestore with MongoDB compatibility databases.
-
-Feature
-
-Support for Firebase interfaces, including console, CLIs, and documentation.
-
-Feature
-
-General Availability (GA) release of [Firestore with MongoDB compatibility](https://cloud.google.com/firestore/mongodb-compatibility/docs/overview) .
-
-Feature
-
-Support for [Private Google Access](https://cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access) .
+New JSON results viewer and JSON export tool in the Google Cloud console.
 
 ## August 01, 2025
 
@@ -213,11 +213,7 @@ Support for [`  explain()  `](/firestore/mongodb-compatibility/docs/query-explai
 
 Feature
 
-[Bulk delete](/firestore/mongodb-compatibility/docs/bulk-delete) for Firestore with MongoDB compatibility is now available in [Preview](https://cloud.google.com/products#product-launch-stages) .
-
-Feature
-
-[Point-in-time recovery](/firestore/mongodb-compatibility/docs/pitr) and snapshot reads for Firestore with MongoDB compatibility are now available in [Preview](https://cloud.google.com/products#product-launch-stages) .
+[Managed import and export](/firestore/mongodb-compatibility/docs/export-import) for Firestore with MongoDB compatibility is now available in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 Feature
 
@@ -225,9 +221,17 @@ Feature
 
 Feature
 
-[Managed import and export](/firestore/mongodb-compatibility/docs/export-import) for Firestore with MongoDB compatibility is now available in [Preview](https://cloud.google.com/products#product-launch-stages) .
+[Point-in-time recovery](/firestore/mongodb-compatibility/docs/pitr) and snapshot reads for Firestore with MongoDB compatibility are now available in [Preview](https://cloud.google.com/products#product-launch-stages) .
+
+Feature
+
+[Bulk delete](/firestore/mongodb-compatibility/docs/bulk-delete) for Firestore with MongoDB compatibility is now available in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 ## July 10, 2025
+
+Feature
+
+Array update operators `  $push  ` and `  $pull  ` are now available in Preview.
 
 Feature
 
@@ -236,10 +240,6 @@ Performance improvements:
   - Performance improvements on disjunction `  $in  ` queries and keys only index scans due to query optimizer tuning is now available in Preview.
   - Performance improvements on bulk insertions is now available in Preview.
   - Performance improvements on `  $elemMatch  ` queries with indexes due to query optimizer tuning is now available in Preview.
-
-Feature
-
-Array update operators `  $push  ` and `  $pull  ` are now available in Preview.
 
 ## April 09, 2025
 

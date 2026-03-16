@@ -831,30 +831,34 @@ Additionally, when an arithmetic function takes multiple numeric arguments of di
 <td>Rounds a <code dir="ltr" translate="no">       number      </code> to <code dir="ltr" translate="no">       places      </code> decimal places</td>
 </tr>
 <tr class="odd">
+<td><code dir="ltr" translate="no">         TRUNC       </code></td>
+<td>Truncates a <code dir="ltr" translate="no">       number      </code> to <code dir="ltr" translate="no">       places      </code> decimal places</td>
+</tr>
+<tr class="even">
 <td><code dir="ltr" translate="no">         POW       </code></td>
 <td>Returns the value of <code dir="ltr" translate="no">       base^exponent      </code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code dir="ltr" translate="no">         SQRT       </code></td>
 <td>Returns the square root of a <code dir="ltr" translate="no">       number      </code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code dir="ltr" translate="no">         EXP       </code></td>
 <td>Returns Euler's number raised to the power of <code dir="ltr" translate="no">       exponent      </code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code dir="ltr" translate="no">         LN       </code></td>
 <td>Returns the natural logarithm of a <code dir="ltr" translate="no">       number      </code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code dir="ltr" translate="no">         LOG       </code></td>
 <td>Returns the logarithm of a <code dir="ltr" translate="no">       number      </code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code dir="ltr" translate="no">         LOG10       </code></td>
 <td>Returns the logarithm of a <code dir="ltr" translate="no">       number      </code> to base <code dir="ltr" translate="no">       10      </code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code dir="ltr" translate="no">         RAND       </code></td>
 <td>Returns a pseudo-random floating point number</td>
 </tr>
@@ -2044,6 +2048,76 @@ Pipeline.Snapshot result =
         .execute()
         .get();PipelineSnippets.java
 ```
+
+### TRUNC
+
+**Syntax:**
+
+``` text
+trunc[N <: Number](number: N) -> N
+trunc[N <: Number](number:  N, places: INT64) -> N
+```
+
+**Description:**
+
+Truncates a `  number  ` to a specified number of `  places  ` decimal places. Truncates digits from the right of the decimal point if `  places  ` is positive, and to the left of the decimal point if it is negative.
+
+  - If only `  number  ` is provided, truncates to the nearest whole value towards zero.
+  - An `  error  ` is thrown if truncating results in overflow.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">number</th>
+<th style="text-align: left;">places</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       trunc(number, places)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">15.5</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">15.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-15.5</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">-15.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">-1</td>
+<td style="text-align: left;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">-2</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">15.48924</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">15.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">-15.48924</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">-15.48</td>
+</tr>
+</tbody>
+</table>
 
 ### POW
 
@@ -5423,6 +5497,10 @@ Unlike other comparison functions, the `  cmp(...)  ` function works across type
 <td><code dir="ltr" translate="no">         IF_ERROR       </code></td>
 <td>Replaces the value with an expression if it has thrown an error</td>
 </tr>
+<tr class="odd">
+<td><code dir="ltr" translate="no">         ERROR       </code></td>
+<td>Terminates evaluation and returns an error with the specified message</td>
+</tr>
 </tbody>
 </table>
 
@@ -5651,6 +5729,224 @@ if_error(try: ANY, catch: ANY) -> ANY
 
 If an error is thrown during the evaluation of `  try  ` , evaluates and returns `  replacement  ` . Otherwise returns the resolved value of `  try  ` .
 
+### ERROR
+
+**Syntax:**
+
+``` text
+error(message: STRING) -> ANY
+```
+
+**Description:**
+
+Evaluation of the `  error  ` function results in the evaluation of the pipeline to terminate with an error. The given `  message  ` is included in the error.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code dir="ltr" translate="no">       cond      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       res      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       switch_on(cond, res, error("no condition matched"))      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code dir="ltr" translate="no">       TRUE      </code></td>
+<td style="text-align: left;">1L</td>
+<td style="text-align: left;">1L</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
+<td style="text-align: left;">1L</td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       ERROR ("no condition matched")      </code></td>
+</tr>
+</tbody>
+</table>
+
+## **Reference Functions**
+
+The `  REFERENCE  ` type acts as a "pointer" to other documents in the database (or even other databases). The following functions allow manipulating this type during query execution.
+
+<table>
+<tbody>
+<tr class="odd">
+<td>Name</td>
+<td>Description</td>
+</tr>
+<tr class="even">
+<td><code dir="ltr" translate="no">         COLLECTION_ID       </code></td>
+<td>Returns the ID of the leaf collection in the given reference</td>
+</tr>
+<tr class="odd">
+<td><code dir="ltr" translate="no">         DOCUMENT_ID       </code></td>
+<td>Returns the ID of the document in the given reference</td>
+</tr>
+<tr class="even">
+<td><code dir="ltr" translate="no">         PARENT       </code></td>
+<td>Returns the parent reference</td>
+</tr>
+<tr class="odd">
+<td><code dir="ltr" translate="no">         REFERENCE_SLICE       </code></td>
+<td>Returns a subset of segments from the given reference</td>
+</tr>
+</tbody>
+</table>
+
+### COLLECTION\_ID
+
+**Syntax:**
+
+``` text
+collection_id(ref: REFERENCE) -> STRING
+```
+
+**Description:**
+
+Returns the leaf collection ID of the given `  REFERENCE  ` .
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code dir="ltr" translate="no">       ref      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       collection_id(ref)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code dir="ltr" translate="no">       users/user1      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       "users"      </code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code dir="ltr" translate="no">       users/user1/posts/post1      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       "posts"      </code></td>
+</tr>
+</tbody>
+</table>
+
+### DOCUMENT\_ID
+
+**Syntax:**
+
+``` text
+document_id(ref: REFERENCE) -> ANY
+```
+
+**Description:**
+
+Returns the document ID of the given `  REFERENCE  ` .
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code dir="ltr" translate="no">       ref      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       document_id(ref)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code dir="ltr" translate="no">       users/user1      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       "user1"      </code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code dir="ltr" translate="no">       users/user1/posts/post1      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       "post1"      </code></td>
+</tr>
+</tbody>
+</table>
+
+### PARENT
+
+**Syntax:**
+
+``` text
+parent(ref: REFERENCE) -> REFERENCE
+```
+
+**Description:**
+
+Returns the parent `  REFERENCE  ` of the given reference, or `  NULL  ` if the ref is a root reference already.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code dir="ltr" translate="no">       ref      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       parent(ref)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code dir="ltr" translate="no">       /      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       NULL      </code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code dir="ltr" translate="no">       users/user1      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       /      </code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code dir="ltr" translate="no">       users/user1/posts/post1      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       users/user1      </code></td>
+</tr>
+</tbody>
+</table>
+
+### REFERENCE\_SLICE
+
+**Syntax:**
+
+``` text
+reference_slice(ref: REFERENCE, offset: INT, length: INT) -> REFERENCE
+```
+
+**Description:**
+
+A `  REFERENCE  ` is a list of `  (collection_id, document_id)  ` tuples and this allows getting a view of that list, just like `  array_slice(...)  ` .
+
+Returns a new `  REFERENCE  ` that is a subset of the segments of the given `  ref  ` .
+
+  - `  offset  ` : The starting index (0-based) of the slice. If negative, it is an offset from the end of the reference.
+  - `  length  ` : The number of segments to include in the slice.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code dir="ltr" translate="no">       ref      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       offset      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       length      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       reference_slice(ref, offset, length)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code dir="ltr" translate="no">       a/1/b/2/c/3      </code></td>
+<td style="text-align: left;">1L</td>
+<td style="text-align: left;">2L</td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       b/2/c/3      </code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code dir="ltr" translate="no">       a/1/b/2/c/3      </code></td>
+<td style="text-align: left;">0L</td>
+<td style="text-align: left;">2L</td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       a/1/b/2      </code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code dir="ltr" translate="no">       a/1/b/2/c/3      </code></td>
+<td style="text-align: left;">-2L</td>
+<td style="text-align: left;">2L</td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       c/3      </code></td>
+</tr>
+</tbody>
+</table>
+
 ## **Logical Functions**
 
 <table>
@@ -5676,22 +5972,34 @@ If an error is thrown during the evaluation of `  try  ` , evaluates and returns
 <td>Performs a logical NOT</td>
 </tr>
 <tr class="even">
+<td><code dir="ltr" translate="no">         NOR       </code></td>
+<td>Performs a logical NOR</td>
+</tr>
+<tr class="odd">
 <td><code dir="ltr" translate="no">         CONDITIONAL       </code></td>
 <td>Branches evaluation based on a conditional expression.</td>
 </tr>
+<tr class="even">
+<td><code dir="ltr" translate="no">         IF_NULL       </code></td>
+<td>Returns the first non-null value</td>
+</tr>
 <tr class="odd">
+<td><code dir="ltr" translate="no">         SWITCH_ON       </code></td>
+<td>Branches evaluation based on a series of conditions</td>
+</tr>
+<tr class="even">
 <td><code dir="ltr" translate="no">         EQUAL_ANY       </code></td>
 <td>Checks if a value is equal to any elements in an array</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code dir="ltr" translate="no">         NOT_EQUAL_ANY       </code></td>
 <td>Checks if a value is not equal to any elements in an array</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code dir="ltr" translate="no">         MAXIMUM       </code></td>
 <td>Returns the maximum value in a set of values</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code dir="ltr" translate="no">         MINIMUM       </code></td>
 <td>Returns the minimum value in a set of values</td>
 </tr>
@@ -6171,6 +6479,69 @@ Pipeline.Snapshot result =
         .get();PipelineSnippets.java
 ```
 
+### NOR
+
+**Syntax:**
+
+``` text
+nor(x: BOOLEAN...) -> BOOLEAN
+```
+
+**Description:**
+
+Returns the logical NOR of two or more boolean values.
+
+Returns `  NULL  ` if the result can't be derived due to any of the given values being `  ABSENT  ` or `  NULL  ` .
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code dir="ltr" translate="no">       x      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       y      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       nor(x, y)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code dir="ltr" translate="no">       TRUE      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       TRUE      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       TRUE      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       TRUE      </code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code dir="ltr" translate="no">       NULL      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       TRUE      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code dir="ltr" translate="no">       ABSENT      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       TRUE      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code dir="ltr" translate="no">       NULL      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       NULL      </code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       ABSENT      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       NULL      </code></td>
+</tr>
+</tbody>
+</table>
+
 ### NOT
 
 **Syntax:**
@@ -6451,6 +6822,86 @@ Pipeline.Snapshot result =
         .execute()
         .get();PipelineSnippets.java
 ```
+
+### IF\_NULL
+
+**Syntax:**
+
+``` text
+if_null(expr: ANY, replacement: ANY) -> ANY
+```
+
+**Description:**
+
+Returns `  expr  ` if it is not `  NULL  ` , otherwise evaluates and returns `  replacement  ` . The `  replacement  ` expression is not evaluated if `  expr  ` is used.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code dir="ltr" translate="no">       expr      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       replacement      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       if_null(expr, replacement)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1L</td>
+<td style="text-align: left;">2L</td>
+<td style="text-align: left;">1L</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code dir="ltr" translate="no">       NULL      </code></td>
+<td style="text-align: left;">2L</td>
+<td style="text-align: left;">2L</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code dir="ltr" translate="no">       ABSENT      </code></td>
+<td style="text-align: left;">2L</td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       ABSENT      </code></td>
+</tr>
+</tbody>
+</table>
+
+### SWITCH\_ON
+
+**Syntax:**
+
+``` text
+switch_on(cond1: BOOLEAN, res1: ANY, cond2: BOOLEAN, res2: ANY, ..., [default: ANY]) -> ANY
+```
+
+**Description:**
+
+Evaluates a series of conditions and returns the result associated with the first `  TRUE  ` condition. If no conditions evaluate to `  TRUE  ` , the `  default  ` value is returned if provided. If no `  default  ` value is provided, an error is thrown if no other conditions evaluated to `  TRUE  ` .
+
+To provide a `  default  ` value, pass it as the final argument such that there is an odd number of arguments.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code dir="ltr" translate="no">       x      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       switch_on(eq(x, 1L), "one", eq(x, 2L), "two", "other")      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1L</td>
+<td style="text-align: left;">"one"</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2L</td>
+<td style="text-align: left;">"two"</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3L</td>
+<td style="text-align: left;">"other"</td>
+</tr>
+</tbody>
+</table>
 
 ### EQUAL\_ANY
 
@@ -7347,24 +7798,48 @@ Each key-value pair will be in the form of a map with two entries, `  k  ` and `
 <td>Returns <code dir="ltr" translate="no">       TRUE      </code> if a value contains a <code dir="ltr" translate="no">       STRING      </code></td>
 </tr>
 <tr class="odd">
+<td><code dir="ltr" translate="no">         STRING_INDEX_OF       </code></td>
+<td>Returns the 0-based index of the first occurrence of a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value.</td>
+</tr>
+<tr class="even">
 <td><code dir="ltr" translate="no">         TO_UPPER       </code></td>
 <td>Converts a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value to uppercase.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code dir="ltr" translate="no">         TO_LOWER       </code></td>
 <td>Converts a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value to lowercase.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code dir="ltr" translate="no">         SUBSTRING       </code></td>
 <td>Gets a substring of a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code dir="ltr" translate="no">         STRING_REVERSE       </code></td>
 <td>Reverses a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value.</td>
+</tr>
+<tr class="even">
+<td><code dir="ltr" translate="no">         STRING_REPEAT       </code></td>
+<td>Repeats a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value a specified number of times.</td>
+</tr>
+<tr class="odd">
+<td><code dir="ltr" translate="no">         STRING_REPLACE_ALL       </code></td>
+<td>Replaces all occurrences of a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value.</td>
+</tr>
+<tr class="even">
+<td><code dir="ltr" translate="no">         STRING_REPLACE_ONE       </code></td>
+<td>Replaces the first occurrence of a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value.</td>
 </tr>
 <tr class="odd">
 <td><code dir="ltr" translate="no">         TRIM       </code></td>
 <td>Trims leading and trailing characters from a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value.</td>
+</tr>
+<tr class="even">
+<td><code dir="ltr" translate="no">         LTRIM       </code></td>
+<td>Trims leading characters from a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value.</td>
+</tr>
+<tr class="odd">
+<td><code dir="ltr" translate="no">         RTRIM       </code></td>
+<td>Trims trailing characters from a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value.</td>
 </tr>
 <tr class="even">
 <td><code dir="ltr" translate="no">         SPLIT       </code></td>
@@ -8532,6 +9007,76 @@ Pipeline.Snapshot result =
         .get();PipelineSnippets.java
 ```
 
+### STRING\_INDEX\_OF
+
+**Syntax:**
+
+``` text
+string_index_of[T <: STRING | BYTES](value: T, search: T) -> INT64
+```
+
+**Description:**
+
+Returns the 0-based index of the first occurrence of `  search  ` in `  value  ` .
+
+  - Returns `  -1  ` if `  search  ` is not found.
+  - If `  value  ` is a `  STRING  ` value, the result is measured in unicode code points. If it is a `  BYTES  ` value, it is measured in bytes.
+  - If `  search  ` is an empty `  STRING  ` or `  BYTES  ` value, the result is `  0  ` .
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">value</th>
+<th style="text-align: left;">search</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       string_index_of(value, search)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">"hello world"</td>
+<td style="text-align: left;">"o"</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"hello world"</td>
+<td style="text-align: left;">"l"</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">"hello world"</td>
+<td style="text-align: left;">"z"</td>
+<td style="text-align: left;">-1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"banana"</td>
+<td style="text-align: left;">"na"</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">"abc"</td>
+<td style="text-align: left;">""</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b"abc"</td>
+<td style="text-align: left;">b"b"</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">"é"</td>
+<td style="text-align: left;">"é"</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b"é"</td>
+<td style="text-align: left;">b"é"</td>
+<td style="text-align: left;">0</td>
+</tr>
+</tbody>
+</table>
+
 ### TO\_UPPER
 
 **Syntax:**
@@ -9116,6 +9661,169 @@ Pipeline.Snapshot result =
         .get();PipelineSnippets.java
 ```
 
+### STRING\_REPEAT
+
+**Syntax:**
+
+``` text
+string_repeat[T <: STRING | BYTES](input: T, repetitions: INT64) -> T
+```
+
+**Description:**
+
+Returns the `  input  ` repeated `  repetitions  ` times.
+
+  - `  repetitions  ` must be a non-negative integer.
+  - If `  repetitions  ` is `  0  ` , returns an empty value of the same type as `  input  ` .
+  - If the result exceeds the maximum allowed size (1 MB), an error is returned.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">input</th>
+<th style="text-align: left;">repetitions</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       string_repeat(input, repetitions)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">"foo"</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">"foofoofoo"</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"foo"</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">""</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">"a "</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">"a a a "</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b"ab"</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">b"abab"</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">"é🦆"</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">"é🦆é🦆"</td>
+</tr>
+</tbody>
+</table>
+
+### STRING\_REPLACE\_ALL
+
+**Syntax:**
+
+``` text
+string_replace_all[T <: STRING | BYTES](input: T, find: T, replacement: T) -> T
+```
+
+**Description:**
+
+Replaces all non-overlapping occurrences of `  find  ` in `  input  ` with `  replacement  ` .
+
+  - Matches are case-sensitive.
+  - If `  find  ` is empty, no replacements are made.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">input</th>
+<th style="text-align: left;">find</th>
+<th style="text-align: left;">replacement</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       string_replace_all(input, find, replacement)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">"foobarfoo"</td>
+<td style="text-align: left;">"foo"</td>
+<td style="text-align: left;">"baz"</td>
+<td style="text-align: left;">"bazbarbaz"</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"ababab"</td>
+<td style="text-align: left;">"aba"</td>
+<td style="text-align: left;">"c"</td>
+<td style="text-align: left;">"cbab"</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">"foobar"</td>
+<td style="text-align: left;">"o"</td>
+<td style="text-align: left;">""</td>
+<td style="text-align: left;">"fbar"</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"é🦆🌎🦆"</td>
+<td style="text-align: left;">"🦆"</td>
+<td style="text-align: left;">"a"</td>
+<td style="text-align: left;">"éa🌎a"</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b"abc"</td>
+<td style="text-align: left;">b"b"</td>
+<td style="text-align: left;">b"d"</td>
+<td style="text-align: left;">b"adc"</td>
+</tr>
+</tbody>
+</table>
+
+### STRING\_REPLACE\_ONE
+
+**Syntax:**
+
+``` text
+string_replace_one[T <: STRING | BYTES](input: T, find: T, replacement: T) -> T
+```
+
+**Description:**
+
+Replaces the first occurrence of `  find  ` in `  input  ` with `  replacement  ` .
+
+  - Matches are case-sensitive.
+  - If `  find  ` is empty, no replacements are made.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">input</th>
+<th style="text-align: left;">find</th>
+<th style="text-align: left;">replacement</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       string_replace_one(input, find, replacement)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">"foobarfoo"</td>
+<td style="text-align: left;">"foo"</td>
+<td style="text-align: left;">"baz"</td>
+<td style="text-align: left;">"bazbarfoo"</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"é"</td>
+<td style="text-align: left;">"é"</td>
+<td style="text-align: left;">"a"</td>
+<td style="text-align: left;">"a"</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b"foobar"</td>
+<td style="text-align: left;">b"o"</td>
+<td style="text-align: left;">b"z"</td>
+<td style="text-align: left;">b"fzoobar"</td>
+</tr>
+</tbody>
+</table>
+
 ### TRIM
 
 **Syntax:**
@@ -9292,6 +10000,140 @@ Pipeline.Snapshot result =
         .get();PipelineSnippets.java
 ```
 
+### LTRIM
+
+**Syntax:**
+
+``` text
+ltrim[T <: STRING | BYTES](value: T, to_trim: T) -> T
+ltrim[T <: STRING | BYTES](value: T) -> T
+```
+
+**Description:**
+
+Trims a specified set of `  BYTES  ` or `  CHARS  ` from the beginning of the supplied `  value  ` .
+
+  - If `  to_trim  ` is not provided, trims leading whitespace characters.
+
+**Examples:**
+
+When `  to_trim  ` is not provided:
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">value</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       ltrim(value)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">" foo "</td>
+<td style="text-align: left;">"foo "</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"foo"</td>
+<td style="text-align: left;">"foo"</td>
+</tr>
+</tbody>
+</table>
+
+When `  to_trim  ` is provided:
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">value</th>
+<th style="text-align: left;">to_trim</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       ltrim(value, to_trim)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">"aaabc"</td>
+<td style="text-align: left;">"a"</td>
+<td style="text-align: left;">"bc"</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"abacaba"</td>
+<td style="text-align: left;">"ba"</td>
+<td style="text-align: left;">"caba"</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">"é"</td>
+<td style="text-align: left;">"é"</td>
+<td style="text-align: left;">""</td>
+</tr>
+</tbody>
+</table>
+
+### RTRIM
+
+**Syntax:**
+
+``` text
+rtrim[T <: STRING | BYTES](value: T, to_trim: T) -> T
+rtrim[T <: STRING | BYTES](value: T) -> T
+```
+
+**Description:**
+
+Trims a specified set of `  BYTES  ` or `  CHARS  ` from the end of the supplied `  value  ` .
+
+  - If `  to_trim  ` is not provided, trims trailing whitespace characters.
+
+**Examples:**
+
+When `  to_trim  ` is not provided:
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">value</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       rtrim(value)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">" foo "</td>
+<td style="text-align: left;">" foo"</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"foo"</td>
+<td style="text-align: left;">"foo"</td>
+</tr>
+</tbody>
+</table>
+
+When `  to_trim  ` is provided:
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">value</th>
+<th style="text-align: left;">to_trim</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       rtrim(value, to_trim)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">"abccc"</td>
+<td style="text-align: left;">"c"</td>
+<td style="text-align: left;">"ab"</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"abacaba"</td>
+<td style="text-align: left;">"ba"</td>
+<td style="text-align: left;">"abac"</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">"é"</td>
+<td style="text-align: left;">"é"</td>
+<td style="text-align: left;">""</td>
+</tr>
+</tbody>
+</table>
+
 ### SPLIT
 
 **Syntax:**
@@ -9439,6 +10281,14 @@ When `  delimiter  ` is provided:
 <tr class="odd">
 <td><code dir="ltr" translate="no">         TIMESTAMP_TO_UNIX_SECONDS       </code></td>
 <td>Converts a <code dir="ltr" translate="no">       TIMESTAMP      </code> to the number of seconds since <code dir="ltr" translate="no">       1970-01-01 00:00:00 UTC      </code></td>
+</tr>
+<tr class="even">
+<td><code dir="ltr" translate="no">         TIMESTAMP_DIFF       </code></td>
+<td>Returns the whole number of specified <code dir="ltr" translate="no">       unit      </code> intervals between two <code dir="ltr" translate="no">       TIMESTAMP      </code> s.</td>
+</tr>
+<tr class="odd">
+<td><code dir="ltr" translate="no">         TIMESTAMP_EXTRACT       </code></td>
+<td>Extracts a specific <code dir="ltr" translate="no">       part      </code> (e.g. year, month, day) from a <code dir="ltr" translate="no">       TIMESTAMP      </code> .</td>
 </tr>
 </tbody>
 </table>
@@ -10551,6 +11401,132 @@ Pipeline.Snapshot result =
         .get();PipelineSnippets.java
 ```
 
+### TIMESTAMP\_DIFF
+
+**Syntax:**
+
+``` text
+timestamp_diff(end: TIMESTAMP, start: TIMESTAMP, unit: STRING) -> INT64
+```
+
+**Description:**
+
+Returns the whole number of specified `  unit  ` intervals between two `  TIMESTAMP  ` s.
+
+  - Returns a negative value if `  end  ` is before `  start  ` .
+  - Truncates any fractional unit. For example, `  timestamp_diff("2021-01-01 00:00:01", "2021-01-01 00:00:00", "minute")  ` returns `  0  ` .
+
+The `  unit  ` argument must be a string and one of the following:
+
+  - `  microsecond  `
+  - `  millisecond  `
+  - `  second  `
+  - `  minute  `
+  - `  hour  `
+  - `  day  `
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code dir="ltr" translate="no">       end      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       start      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       unit      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       timestamp_diff(end, start, unit)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2026-07-04 00:01:00 UTC</td>
+<td style="text-align: left;">2026-07-04 00:00:00 UTC</td>
+<td style="text-align: left;">"second"</td>
+<td style="text-align: left;">60L</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2026-07-04 00:00:00 UTC</td>
+<td style="text-align: left;">2026-07-05 00:00:00 UTC</td>
+<td style="text-align: left;">"day"</td>
+<td style="text-align: left;">-1L</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2026-07-04 00:00:59 UTC</td>
+<td style="text-align: left;">2026-07-04 00:00:00 UTC</td>
+<td style="text-align: left;">"minute"</td>
+<td style="text-align: left;">0L</td>
+</tr>
+</tbody>
+</table>
+
+### TIMESTAMP\_EXTRACT
+
+**Syntax:**
+
+``` text
+timestamp_extract(timestamp: TIMESTAMP, part: STRING[, timezone: STRING]) -> INT64
+```
+
+**Description:**
+
+Extracts a specific `  part  ` (e.g. year, month, day) from `  timestamp  ` .
+
+The `  part  ` argument must be a string and one of the following:
+
+  - `  microsecond  `
+  - `  millisecond  `
+  - `  second  `
+  - `  minute  `
+  - `  hour  `
+  - `  day  `
+  - `  dayofweek  ` : Returns a value between 1 (Sunday) and 7 (Saturday).
+  - `  dayofyear  `
+  - `  week  ` : Returns the week number of the year, starting at 1 for the first Sunday of the year.
+  - `  week([weekday])  ` : Returns the week number of the year, starting on the specified `  weekday  ` .
+  - `  month  `
+  - `  quarter  `
+  - `  year  `
+  - `  isoweek  ` : Returns the ISO 8601 week number.
+  - `  isoyear  ` : Returns the ISO 8601 week-numbering year.
+
+If the `  timezone  ` argument is provided, the extraction will be based on the given timezone's calendar. The extraction will respect daylight savings time.
+
+If `  timezone  ` is not provided, extraction will be based on `  UTC  ` .
+
+The `  timezone  ` argument should be a string representation of a timezone from the timezone database, for example `  America/New_York  ` . A custom time offset can also be used by specifying an offset from `  GMT  ` .
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code dir="ltr" translate="no">       timestamp      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       part      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       timezone      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       timestamp_extract(timestamp, part, timezone)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2025-02-20 10:20:30 UTC</td>
+<td style="text-align: left;">"year"</td>
+<td style="text-align: left;">Not provided</td>
+<td style="text-align: left;">2025</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2025-02-20 10:20:30 UTC</td>
+<td style="text-align: left;">"day"</td>
+<td style="text-align: left;">Not provided</td>
+<td style="text-align: left;">20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2025-12-31 23:59:59 UTC</td>
+<td style="text-align: left;">"year"</td>
+<td style="text-align: left;">"Asia/Tokyo"</td>
+<td style="text-align: left;">2026</td>
+</tr>
+</tbody>
+</table>
+
 ## **Type Functions**
 
 <table>
@@ -10562,6 +11538,10 @@ Pipeline.Snapshot result =
 <tr class="even">
 <td><code dir="ltr" translate="no">         TYPE       </code></td>
 <td>Returns the type of the value as a <code dir="ltr" translate="no">       STRING      </code> .</td>
+</tr>
+<tr class="odd">
+<td><code dir="ltr" translate="no">         IS_TYPE       </code></td>
+<td>Returns <code dir="ltr" translate="no">       true      </code> if the value matches the specified type.</td>
 </tr>
 </tbody>
 </table>
@@ -10718,6 +11698,105 @@ Pipeline.Snapshot result =
         .execute()
         .get();PipelineSnippets.java
 ```
+
+### IS\_TYPE
+
+**Syntax:**
+
+``` text
+is_type(input: ANY, type: STRING) -> BOOLEAN
+```
+
+**Description:**
+
+Returns `  true  ` if the `  input  ` matches the specified `  type  ` , otherwise `  false  ` . If given an absent `  input  ` , returns `  NULL  ` .
+
+Supported `  type  ` strings are:
+
+  - `  "null"  `
+  - `  "boolean"  `
+  - `  "int32"  `
+  - `  "int64"  `
+  - `  "float64"  `
+  - `  "decimal128"  `
+  - `  "number"  `
+  - `  "timestamp"  `
+  - `  "string"  `
+  - `  "bytes"  `
+  - `  "array"  `
+  - `  "map"  `
+  - `  "reference"  `
+  - `  "vector"  `
+  - `  "geo_point"  `
+  - `  "max_key"  `
+  - `  "min_key"  `
+  - `  "object_id"  `
+  - `  "regex"  `
+  - `  "bson_timestamp"  `
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code dir="ltr" translate="no">       input      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       type      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       is_type(input, type)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">NULL</td>
+<td style="text-align: left;">"null"</td>
+<td style="text-align: left;">true</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">true</td>
+<td style="text-align: left;">"boolean"</td>
+<td style="text-align: left;">true</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3.14</td>
+<td style="text-align: left;">"float64"</td>
+<td style="text-align: left;">true</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"foo"</td>
+<td style="text-align: left;">"string"</td>
+<td style="text-align: left;">true</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b"foo"</td>
+<td style="text-align: left;">"string"</td>
+<td style="text-align: left;">false</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[1, 2]</td>
+<td style="text-align: left;">"array"</td>
+<td style="text-align: left;">true</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">{"a": 1}</td>
+<td style="text-align: left;">"map"</td>
+<td style="text-align: left;">true</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code dir="ltr" translate="no">       vector([1.0, 2.0])      </code></td>
+<td style="text-align: left;">"vector"</td>
+<td style="text-align: left;">true</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ABSENT</td>
+<td style="text-align: left;">"string"</td>
+<td style="text-align: left;">NULL</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"bar"</td>
+<td style="text-align: left;">"other"</td>
+<td style="text-align: left;">ERROR</td>
+</tr>
+</tbody>
+</table>
 
 ## **Vector Functions**
 

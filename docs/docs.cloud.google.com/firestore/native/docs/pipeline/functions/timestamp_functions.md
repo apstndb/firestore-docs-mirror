@@ -52,6 +52,14 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 <td><code dir="ltr" translate="no">         TIMESTAMP_TO_UNIX_SECONDS       </code></td>
 <td>Converts a <code dir="ltr" translate="no">       TIMESTAMP      </code> to the number of seconds since <code dir="ltr" translate="no">       1970-01-01 00:00:00 UTC      </code></td>
 </tr>
+<tr class="even">
+<td><code dir="ltr" translate="no">         TIMESTAMP_DIFF       </code></td>
+<td>Returns the whole number of specified <code dir="ltr" translate="no">       unit      </code> intervals between two <code dir="ltr" translate="no">       TIMESTAMP      </code> s.</td>
+</tr>
+<tr class="odd">
+<td><code dir="ltr" translate="no">         TIMESTAMP_EXTRACT       </code></td>
+<td>Extracts a specific <code dir="ltr" translate="no">       part      </code> (e.g. year, month, day) from a <code dir="ltr" translate="no">       TIMESTAMP      </code> .</td>
+</tr>
 </tbody>
 </table>
 
@@ -1162,6 +1170,132 @@ Pipeline.Snapshot result =
         .execute()
         .get();PipelineSnippets.java
 ```
+
+### TIMESTAMP\_DIFF
+
+**Syntax:**
+
+``` text
+timestamp_diff(end: TIMESTAMP, start: TIMESTAMP, unit: STRING) -> INT64
+```
+
+**Description:**
+
+Returns the whole number of specified `  unit  ` intervals between two `  TIMESTAMP  ` s.
+
+  - Returns a negative value if `  end  ` is before `  start  ` .
+  - Truncates any fractional unit. For example, `  timestamp_diff("2021-01-01 00:00:01", "2021-01-01 00:00:00", "minute")  ` returns `  0  ` .
+
+The `  unit  ` argument must be a string and one of the following:
+
+  - `  microsecond  `
+  - `  millisecond  `
+  - `  second  `
+  - `  minute  `
+  - `  hour  `
+  - `  day  `
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code dir="ltr" translate="no">       end      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       start      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       unit      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       timestamp_diff(end, start, unit)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2026-07-04 00:01:00 UTC</td>
+<td style="text-align: left;">2026-07-04 00:00:00 UTC</td>
+<td style="text-align: left;">"second"</td>
+<td style="text-align: left;">60L</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2026-07-04 00:00:00 UTC</td>
+<td style="text-align: left;">2026-07-05 00:00:00 UTC</td>
+<td style="text-align: left;">"day"</td>
+<td style="text-align: left;">-1L</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2026-07-04 00:00:59 UTC</td>
+<td style="text-align: left;">2026-07-04 00:00:00 UTC</td>
+<td style="text-align: left;">"minute"</td>
+<td style="text-align: left;">0L</td>
+</tr>
+</tbody>
+</table>
+
+### TIMESTAMP\_EXTRACT
+
+**Syntax:**
+
+``` text
+timestamp_extract(timestamp: TIMESTAMP, part: STRING[, timezone: STRING]) -> INT64
+```
+
+**Description:**
+
+Extracts a specific `  part  ` (e.g. year, month, day) from `  timestamp  ` .
+
+The `  part  ` argument must be a string and one of the following:
+
+  - `  microsecond  `
+  - `  millisecond  `
+  - `  second  `
+  - `  minute  `
+  - `  hour  `
+  - `  day  `
+  - `  dayofweek  ` : Returns a value between 1 (Sunday) and 7 (Saturday).
+  - `  dayofyear  `
+  - `  week  ` : Returns the week number of the year, starting at 1 for the first Sunday of the year.
+  - `  week([weekday])  ` : Returns the week number of the year, starting on the specified `  weekday  ` .
+  - `  month  `
+  - `  quarter  `
+  - `  year  `
+  - `  isoweek  ` : Returns the ISO 8601 week number.
+  - `  isoyear  ` : Returns the ISO 8601 week-numbering year.
+
+If the `  timezone  ` argument is provided, the extraction will be based on the given timezone's calendar. The extraction will respect daylight savings time.
+
+If `  timezone  ` is not provided, extraction will be based on `  UTC  ` .
+
+The `  timezone  ` argument should be a string representation of a timezone from the timezone database, for example `  America/New_York  ` . A custom time offset can also be used by specifying an offset from `  GMT  ` .
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code dir="ltr" translate="no">       timestamp      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       part      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       timezone      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       timestamp_extract(timestamp, part, timezone)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2025-02-20 10:20:30 UTC</td>
+<td style="text-align: left;">"year"</td>
+<td style="text-align: left;">Not provided</td>
+<td style="text-align: left;">2025</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2025-02-20 10:20:30 UTC</td>
+<td style="text-align: left;">"day"</td>
+<td style="text-align: left;">Not provided</td>
+<td style="text-align: left;">20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2025-12-31 23:59:59 UTC</td>
+<td style="text-align: left;">"year"</td>
+<td style="text-align: left;">"Asia/Tokyo"</td>
+<td style="text-align: left;">2026</td>
+</tr>
+</tbody>
+</table>
 
 ## What's next
 

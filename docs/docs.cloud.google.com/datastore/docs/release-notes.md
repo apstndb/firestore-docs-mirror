@@ -968,13 +968,13 @@ You can now use [property transforms like `  increment  `](/datastore/docs/conce
 
 Feature
 
-The Java client library for Firestore in Datastore mode [now supports client-side tracing](/datastore/docs/client-side-traces) . This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
-
-Feature
-
 You can now use customer-managed encryption keys (CMEK) in Datastore to protect your data. This feature is generally available (GA) behind an allow-list.
 
 For more information, see [Customer-managed encryption keys (CMEK)](/datastore/docs/cmek) .
+
+Feature
+
+The Java client library for Firestore in Datastore mode [now supports client-side tracing](/datastore/docs/client-side-traces) . This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 ## September 16, 2024
 
@@ -1308,6 +1308,12 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 ## April 29, 2024
 
+Feature
+
+Firestore in Datastore mode now supports the `  us-south1  ` Dallas region.
+
+For a full list of supported locations, see [Locations](/datastore/docs/locations) .
+
 Libraries
 
 A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
@@ -1321,12 +1327,6 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 ##### Dependencies
 
   - Update dependency com.google.cloud:sdk-platform-java-config to v3.29.0 ( [\#1403](https://github.com/googleapis/java-datastore/issues/1403) ) ( [d23dc4c](https://github.com/googleapis/java-datastore/commit/d23dc4c26a95f2c323ade4db9a88d5435a173be8) )
-
-Feature
-
-Firestore in Datastore mode now supports the `  us-south1  ` Dallas region.
-
-For a full list of supported locations, see [Locations](/datastore/docs/locations) .
 
 ## April 08, 2024
 
@@ -1387,6 +1387,10 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Feature
 
+Datastore now supports using [range and inequality filters on multiple fields](/datastore/docs/multiple-range-fields) in a single query. This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
+
+Feature
+
 Support for [Query Explain](/datastore/docs/query-explain-analyze) . This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 Query Explain lets you submit queries and receive detailed query plan, billing and performance statistics on query execution in return. It helps you understand how your queries are executed, showing you inefficiencies.
@@ -1394,10 +1398,6 @@ Query Explain lets you submit queries and receive detailed query plan, billing a
 It functions like the `  EXPLAIN [ANALYZE]  ` operation in many relational database systems.
 
 For more information, see the [guide for Query Explain](/datastore/docs/query-explain-analyze) .
-
-Feature
-
-Datastore now supports using [range and inequality filters on multiple fields](/datastore/docs/multiple-range-fields) in a single query. This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 ## March 25, 2024
 
@@ -1695,26 +1695,6 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 ## October 02, 2023
 
-Change
-
-Raised the maximum number of composite indexes from 200 to 500 for projects with billing enabled. The limit is 200 for projects without billing enabled.
-
-For more information about limits, see [Limits](/datastore/docs/concepts/limits) .
-
-Libraries
-
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
-
-### Python
-
-### Changes for [google-cloud-ndb](https://github.com/googleapis/python-ndb)
-
-#### [2.2.2](https://github.com/googleapis/python-ndb/compare/v2.2.1...v2.2.2) (2023-09-19)
-
-##### Documentation
-
-  - **query:** Document deprecation of Query.default\_options ( [\#915](https://github.com/googleapis/python-ndb/issues/915) ) ( [a656719](https://github.com/googleapis/python-ndb/commit/a656719d8a4f20a8b8dc564a1e3837a2cfb037c4) ), closes [\#880](https://github.com/googleapis/python-ndb/issues/880)
-
 Libraries
 
 A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
@@ -1740,6 +1720,26 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
   - Update dependency org.graalvm.buildtools:native-maven-plugin to v0.9.26 ( [\#1177](https://github.com/googleapis/java-datastore/issues/1177) ) ( [7733004](https://github.com/googleapis/java-datastore/commit/7733004aff34bb8b4b8addccc68e75080f0f33a5) )
   - Update dependency org.graalvm.buildtools:native-maven-plugin to v0.9.27 ( [\#1193](https://github.com/googleapis/java-datastore/issues/1193) ) ( [a628255](https://github.com/googleapis/java-datastore/commit/a628255dffc2e8f871df699ebe7a94e4b75eb4b9) )
   - Update gapic-generator-java to 2.26.0 ( [\#1197](https://github.com/googleapis/java-datastore/issues/1197) ) ( [2540282](https://github.com/googleapis/java-datastore/commit/2540282653d8f8f06a71568c81eca8d3cb70f00f) )
+
+Libraries
+
+A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+
+### Python
+
+### Changes for [google-cloud-ndb](https://github.com/googleapis/python-ndb)
+
+#### [2.2.2](https://github.com/googleapis/python-ndb/compare/v2.2.1...v2.2.2) (2023-09-19)
+
+##### Documentation
+
+  - **query:** Document deprecation of Query.default\_options ( [\#915](https://github.com/googleapis/python-ndb/issues/915) ) ( [a656719](https://github.com/googleapis/python-ndb/commit/a656719d8a4f20a8b8dc564a1e3837a2cfb037c4) ), closes [\#880](https://github.com/googleapis/python-ndb/issues/880)
+
+Change
+
+Raised the maximum number of composite indexes from 200 to 500 for projects with billing enabled. The limit is 200 for projects without billing enabled.
+
+For more information about limits, see [Limits](/datastore/docs/concepts/limits) .
 
 ## September 25, 2023
 
@@ -1818,10 +1818,6 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 ## August 28, 2023
 
-Feature
-
-The [`  sum()  ` and `  avg()  ` aggregation functions](/datastore/docs/aggregation-queries) are now available for Firestore in Datastore mode.
-
 Libraries
 
 A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
@@ -1867,15 +1863,19 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
   - Update property requirement specifications ( [\#1169](https://github.com/googleapis/java-datastore/issues/1169) ) ( [c908837](https://github.com/googleapis/java-datastore/commit/c908837ea953a5fdc87f9c83937646d309806e03) )
 
+Feature
+
+The [`  sum()  ` and `  avg()  ` aggregation functions](/datastore/docs/aggregation-queries) are now available for Firestore in Datastore mode.
+
 ## August 25, 2023
 
 Feature
 
-[Scheduled backups](/datastore/docs/backups) now available in [Preview](https://cloud.google.com/products#product-launch-stages) .
+You can now [view and list multiple databases](/datastore/docs/manage-databases#list_databases) using the Google Cloud console. This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 Feature
 
-You can now [view and list multiple databases](/datastore/docs/manage-databases#list_databases) using the Google Cloud console. This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
+[Scheduled backups](/datastore/docs/backups) now available in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 ## August 14, 2023
 
@@ -1910,6 +1910,10 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 ## August 07, 2023
 
+Feature
+
+You can now visualize heatmap pattern for entity keys and make better workload pattern predictions. To learn more, see [Key Visualizer](/datastore/docs/key-visualizer) . This feature is in [Preview](https://cloud.google.com/products/#product-launch-stages) .
+
 Libraries
 
 A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
@@ -1929,11 +1933,25 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
   - Update dependency com.google.cloud:google-cloud-shared-dependencies to v3.14.0 ( [\#1159](https://github.com/googleapis/java-datastore/issues/1159) ) ( [fcf07d4](https://github.com/googleapis/java-datastore/commit/fcf07d4b5b1f949f1d6b46861406cef88a9a052b) )
   - Update dependency com.google.errorprone:error\_prone\_core to v2.21.0 ( [\#1158](https://github.com/googleapis/java-datastore/issues/1158) ) ( [08dbb3a](https://github.com/googleapis/java-datastore/commit/08dbb3ab98870f74b78caa7d160271fccc134ae9) )
 
-Feature
-
-You can now visualize heatmap pattern for entity keys and make better workload pattern predictions. To learn more, see [Key Visualizer](/datastore/docs/key-visualizer) . This feature is in [Preview](https://cloud.google.com/products/#product-launch-stages) .
-
 ## July 31, 2023
+
+Libraries
+
+A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+
+### Java
+
+### Changes for [google-cloud-datastore](https://github.com/googleapis/java-datastore)
+
+#### [2.15.1](https://github.com/googleapis/java-datastore/compare/v2.15.0...v2.15.1) (2023-07-28)
+
+##### Dependencies
+
+  - Shared-dependencies 3.13.0 ( [\#1146](https://github.com/googleapis/java-datastore/issues/1146) ) ( [542c628](https://github.com/googleapis/java-datastore/commit/542c6289d58f837b9b76e23f2b15d438cd54528c) )
+
+##### Documentation
+
+  - Fix javadoc errors ( [\#1126](https://github.com/googleapis/java-datastore/issues/1126) ) ( [\#1153](https://github.com/googleapis/java-datastore/issues/1153) ) ( [00c68b0](https://github.com/googleapis/java-datastore/commit/00c68b05da050c159a83b157cabfcee201f22c76) )
 
 Libraries
 
@@ -1973,24 +1991,6 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
   - Update dependency com.google.cloud:google-cloud-shared-dependencies to v3.13.1 ( [\#1136](https://github.com/googleapis/java-datastore/issues/1136) ) ( [f4d66af](https://github.com/googleapis/java-datastore/commit/f4d66aff3b86c656998443d12ff1eec301194cfd) )
   - Update dependency org.junit.vintage:junit-vintage-engine to v5.10.0 ( [\#1139](https://github.com/googleapis/java-datastore/issues/1139) ) ( [a170611](https://github.com/googleapis/java-datastore/commit/a170611e824d6ca6ea14c0ee57c35e3a4ab1eab0) )
-
-Libraries
-
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
-
-### Java
-
-### Changes for [google-cloud-datastore](https://github.com/googleapis/java-datastore)
-
-#### [2.15.1](https://github.com/googleapis/java-datastore/compare/v2.15.0...v2.15.1) (2023-07-28)
-
-##### Dependencies
-
-  - Shared-dependencies 3.13.0 ( [\#1146](https://github.com/googleapis/java-datastore/issues/1146) ) ( [542c628](https://github.com/googleapis/java-datastore/commit/542c6289d58f837b9b76e23f2b15d438cd54528c) )
-
-##### Documentation
-
-  - Fix javadoc errors ( [\#1126](https://github.com/googleapis/java-datastore/issues/1126) ) ( [\#1153](https://github.com/googleapis/java-datastore/issues/1153) ) ( [00c68b0](https://github.com/googleapis/java-datastore/commit/00c68b05da050c159a83b157cabfcee201f22c76) )
 
 ## July 17, 2023
 
@@ -2548,10 +2548,6 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 ## December 19, 2022
 
-Feature
-
-Support for the [`  australia-southeast2  ` (Melbourne)](/datastore/docs/locations) region.
-
 Libraries
 
 A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
@@ -2569,6 +2565,10 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 ##### Bug Fixes
 
   - **zlib:** Accomodate different Zlib compression levels ( [\#852](https://github.com/googleapis/python-ndb/issues/852) ) ( [c1ab83b](https://github.com/googleapis/python-ndb/commit/c1ab83b9581b3d4d10dc7d2508b1c93b14e3c31a) )
+
+Feature
+
+Support for the [`  australia-southeast2  ` (Melbourne)](/datastore/docs/locations) region.
 
 ## December 12, 2022
 
@@ -3055,15 +3055,15 @@ Except where noted, the Cloud Datastore documentation now describes behavior for
 
 ## October 22, 2018
 
-Feature
-
-Support for [`  asia-east2  ` region (Hong Kong)](/datastore/docs/locations) .
-
 Change
 
 Cloud Datastore will soon enforce IAM requirements for all App Engine apps, see [Cloud Datastore permissions for App Engine](/datastore/docs/activate#datastore-permissions-for-app-engine) . Previously, App Engine apps could always access Cloud Datastore instances in the same project.
 
 Cloud Datastore IAM requirements for App Engine will apply to projects created after 09/03/2018 and will gradually rollout to existing projects. At a future date, all projects will enforce Cloud Datastore IAM requirements for App Engine.
+
+Feature
+
+Support for [`  asia-east2  ` region (Hong Kong)](/datastore/docs/locations) .
 
 ## October 08, 2018
 
@@ -3081,14 +3081,6 @@ Support for [`  us-west2  ` region (Los Angeles)](/datastore/docs/locations) .
 
 ## February 28, 2018
 
-Deprecated
-
-The Cloud Datastore Administration API v1beta1 is now deprecated.
-
-Deprecated
-
-The Cloud Datastore Admin backup feature is being phased out in favor of the [managed export and import](/datastore/docs/export-import-entities) for Cloud Datastore. Please migrate to the managed export and import functionality at your earliest convenience. To help you make the transition, the Datastore Admin backup feature will continue to be available until February 28, 2019.
-
 Feature
 
 General Availability release of the [Cloud Datastore Administration API v1](/datastore/docs/reference/admin/rest/v1/projects) , previously in Beta. To learn more about using this service, see:
@@ -3096,11 +3088,19 @@ General Availability release of the [Cloud Datastore Administration API v1](/dat
   - [Exporting and Importing Entities](/datastore/docs/export-import-entities)
   - [Scheduling an Export](/datastore/docs/schedule-export)
 
+Deprecated
+
+The Cloud Datastore Admin backup feature is being phased out in favor of the [managed export and import](/datastore/docs/export-import-entities) for Cloud Datastore. Please migrate to the managed export and import functionality at your earliest convenience. To help you make the transition, the Datastore Admin backup feature will continue to be available until February 28, 2019.
+
+Deprecated
+
+The Cloud Datastore Administration API v1beta1 is now deprecated.
+
 ## January 30, 2018
 
 Feature
 
-When you begin a transaction with the Cloud Datastore Data API, you can now use a [`  TransactionOptions  `](/datastore/docs/reference/data/rest/v1/projects/beginTransaction#TransactionOptions) object to specify whether the transaction is read-only or read-write.
+When you begin a read-write transaction with the Cloud Datastore Data API, you can now specify a [`  previousTransaction  `](/datastore/docs/reference/data/rest/v1/projects/beginTransaction#ReadWrite) that you are retrying.
 
 Change
 
@@ -3108,7 +3108,7 @@ Message [`  BeginTransactionRequest  `](/datastore/docs/reference/data/rest/v1/p
 
 Feature
 
-When you begin a read-write transaction with the Cloud Datastore Data API, you can now specify a [`  previousTransaction  `](/datastore/docs/reference/data/rest/v1/projects/beginTransaction#ReadWrite) that you are retrying.
+When you begin a transaction with the Cloud Datastore Data API, you can now use a [`  TransactionOptions  `](/datastore/docs/reference/data/rest/v1/projects/beginTransaction#TransactionOptions) object to specify whether the transaction is read-only or read-write.
 
 ## January 10, 2018
 
@@ -3174,13 +3174,9 @@ Support for [`  europe-west2  ` region (London)](/datastore/docs/locations) .
 
 ## August 16, 2016
 
-Change
+Deprecated
 
-Message `  EntityResult  ` adds field `  version  ` as part of API v1 and API v1beta3.
-
-Feature
-
-Initial release of Cloud Datastore API v1.
+Because Cloud Datastore API v1 is released, Cloud Datastore API v1beta3 is now deprecated.
 
 Change
 
@@ -3189,9 +3185,13 @@ Error handling in Cloud Datastore API v1:
   - Attempting to insert an entity that already exists will return error code `  ALREADY_EXISTS  ` . In v1beta3, it returned `  INVALID_ARGUMENT  ` .
   - Attempting to update an entity that does not exist will return error code `  NOT_FOUND  ` . In v1beta3, it returned `  INVALID_ARGUMENT  ` .
 
-Deprecated
+Feature
 
-Because Cloud Datastore API v1 is released, Cloud Datastore API v1beta3 is now deprecated.
+Initial release of Cloud Datastore API v1.
+
+Change
+
+Message `  EntityResult  ` adds field `  version  ` as part of API v1 and API v1beta3.
 
 ## April 01, 2016
 

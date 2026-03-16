@@ -658,6 +658,7 @@ https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/compariso
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/debugging_functions
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/logical_functions
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_functions
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/reference_functions
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/string_functions
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/timestamp_functions
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/vector_functions

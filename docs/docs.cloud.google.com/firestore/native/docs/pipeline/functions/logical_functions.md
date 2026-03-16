@@ -29,22 +29,34 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 <td>Performs a logical NOT</td>
 </tr>
 <tr class="even">
+<td><code dir="ltr" translate="no">         NOR       </code></td>
+<td>Performs a logical NOR</td>
+</tr>
+<tr class="odd">
 <td><code dir="ltr" translate="no">         CONDITIONAL       </code></td>
 <td>Branches evaluation based on a conditional expression.</td>
 </tr>
+<tr class="even">
+<td><code dir="ltr" translate="no">         IF_NULL       </code></td>
+<td>Returns the first non-null value</td>
+</tr>
 <tr class="odd">
+<td><code dir="ltr" translate="no">         SWITCH_ON       </code></td>
+<td>Branches evaluation based on a series of conditions</td>
+</tr>
+<tr class="even">
 <td><code dir="ltr" translate="no">         EQUAL_ANY       </code></td>
 <td>Checks if a value is equal to any elements in an array</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code dir="ltr" translate="no">         NOT_EQUAL_ANY       </code></td>
 <td>Checks if a value is not equal to any elements in an array</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code dir="ltr" translate="no">         MAXIMUM       </code></td>
 <td>Returns the maximum value in a set of values</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code dir="ltr" translate="no">         MINIMUM       </code></td>
 <td>Returns the minimum value in a set of values</td>
 </tr>
@@ -524,6 +536,69 @@ Pipeline.Snapshot result =
         .get();PipelineSnippets.java
 ```
 
+### NOR
+
+**Syntax:**
+
+``` text
+nor(x: BOOLEAN...) -> BOOLEAN
+```
+
+**Description:**
+
+Returns the logical NOR of two or more boolean values.
+
+Returns `  NULL  ` if the result can't be derived due to any of the given values being `  ABSENT  ` or `  NULL  ` .
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code dir="ltr" translate="no">       x      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       y      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       nor(x, y)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code dir="ltr" translate="no">       TRUE      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       TRUE      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       TRUE      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       TRUE      </code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code dir="ltr" translate="no">       NULL      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       TRUE      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code dir="ltr" translate="no">       ABSENT      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       TRUE      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code dir="ltr" translate="no">       NULL      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       NULL      </code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       ABSENT      </code></td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       NULL      </code></td>
+</tr>
+</tbody>
+</table>
+
 ### NOT
 
 **Syntax:**
@@ -804,6 +879,86 @@ Pipeline.Snapshot result =
         .execute()
         .get();PipelineSnippets.java
 ```
+
+### IF\_NULL
+
+**Syntax:**
+
+``` text
+if_null(expr: ANY, replacement: ANY) -> ANY
+```
+
+**Description:**
+
+Returns `  expr  ` if it is not `  NULL  ` , otherwise evaluates and returns `  replacement  ` . The `  replacement  ` expression is not evaluated if `  expr  ` is used.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code dir="ltr" translate="no">       expr      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       replacement      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       if_null(expr, replacement)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1L</td>
+<td style="text-align: left;">2L</td>
+<td style="text-align: left;">1L</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code dir="ltr" translate="no">       NULL      </code></td>
+<td style="text-align: left;">2L</td>
+<td style="text-align: left;">2L</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code dir="ltr" translate="no">       ABSENT      </code></td>
+<td style="text-align: left;">2L</td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       ABSENT      </code></td>
+</tr>
+</tbody>
+</table>
+
+### SWITCH\_ON
+
+**Syntax:**
+
+``` text
+switch_on(cond1: BOOLEAN, res1: ANY, cond2: BOOLEAN, res2: ANY, ..., [default: ANY]) -> ANY
+```
+
+**Description:**
+
+Evaluates a series of conditions and returns the result associated with the first `  TRUE  ` condition. If no conditions evaluate to `  TRUE  ` , the `  default  ` value is returned if provided. If no `  default  ` value is provided, an error is thrown if no other conditions evaluated to `  TRUE  ` .
+
+To provide a `  default  ` value, pass it as the final argument such that there is an odd number of arguments.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code dir="ltr" translate="no">       x      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       switch_on(eq(x, 1L), "one", eq(x, 2L), "two", "other")      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1L</td>
+<td style="text-align: left;">"one"</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2L</td>
+<td style="text-align: left;">"two"</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3L</td>
+<td style="text-align: left;">"other"</td>
+</tr>
+</tbody>
+</table>
 
 ### EQUAL\_ANY
 

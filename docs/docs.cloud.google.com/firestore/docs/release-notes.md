@@ -12,13 +12,13 @@ Firestore Enterprise edition now supports Native mode in all supported regions. 
 
 ## February 17, 2026
 
-Deprecated
-
-Control of MCP use with organization policies is deprecated. After March 17, 2026, organization policies that use the `  gcp.managed.allowedMCPServices  ` constraint won't work, and you can control MCP use with IAM deny policies. For more information about controlling MCP use, see [Control MCP use with IAM](https://docs.cloud.google.com/mcp/control-mcp-use-iam) .
-
 Change
 
 After March 17, 2026, when you enable Firestore, the Firestore MCP server is automatically enabled.
+
+Deprecated
+
+Control of MCP use with organization policies is deprecated. After March 17, 2026, organization policies that use the `  gcp.managed.allowedMCPServices  ` constraint won't work, and you can control MCP use with IAM deny policies. For more information about controlling MCP use, see [Control MCP use with IAM](https://docs.cloud.google.com/mcp/control-mcp-use-iam) .
 
 Announcement
 
@@ -94,16 +94,16 @@ Committed use discounts are now [generally available (GA)](https://cloud.google.
 
 Feature
 
-You can now use Query insights to [view query performance metrics for your database](/firestore/docs/query-insights) . This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
-
-Feature
-
 Firestore is now available on [Database Center](/database-center/docs/overview) . You can track your Firestore resources in the fleet inventory section and the resource table in the Database Center. You can also use Database Center to monitor the following health issues for your Firestore resources:
 
   - No automated backup policy
   - No point-in-time recovery
 
 For more information about Database Center, see [Database Center overview](/database-center/docs/overview) . For more information about health issues supported for Firestore, see [Supported health issues](/database-center/docs/database-health-issues#supported-health-issues) .
+
+Feature
+
+You can now use Query insights to [view query performance metrics for your database](/firestore/docs/query-insights) . This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 ## March 24, 2025
 
@@ -245,6 +245,10 @@ You can now use Firestore to perform [K-nearest neighbor (KNN) vector searches](
 
 Feature
 
+Firestore now supports using [range and inequality filters on multiple fields](/firestore/docs/query-data/multiple-range-fields) in a single query. This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
+
+Feature
+
 Support for [Query Explain](/firestore/docs/query-explain) . This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 Query Explain lets you submit queries and receive detailed query plan, billing and performance statistics on query execution in return. It helps you understand how your queries are executed, showing you inefficiencies.
@@ -252,10 +256,6 @@ Query Explain lets you submit queries and receive detailed query plan, billing a
 It functions like the `  EXPLAIN [ANALYZE]  ` operation in many relational database systems.
 
 For more information, see the [guide for Query Explain](/firestore/docs/query-explain) .
-
-Feature
-
-Firestore now supports using [range and inequality filters on multiple fields](/firestore/docs/query-data/multiple-range-fields) in a single query. This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 ## January 29, 2024
 
@@ -285,11 +285,11 @@ Feature
 
 Feature
 
-You can now [create and delete non-default databases](/firestore/docs/manage-databases#create_a_database) in the Google Cloud console.
+You can now assemble and execute [`  sum()  ` and `  avg()  ` queries](/firestore/docs/query-data/aggregation-queries) in the Google Cloud console.
 
 Feature
 
-You can now assemble and execute [`  sum()  ` and `  avg()  ` queries](/firestore/docs/query-data/aggregation-queries) in the Google Cloud console.
+You can now [create and delete non-default databases](/firestore/docs/manage-databases#create_a_database) in the Google Cloud console.
 
 ## November 10, 2023
 
@@ -496,17 +496,17 @@ Feature
 
 ## November 12, 2021
 
-Announcement
+Feature
 
-The Firestore [Unity and C++ SDKs](/firestore/docs/quickstart-mobile-web#set_up_your_development_environment) are now supported at the General Availability release level.
+[Firebase App Check now supports the Firestore iOS and Android SDKs.](https://firebase.google.com/docs/app-check)
 
 Announcement
 
 [Dartpad](https://dart.dev/tools/dartpad) , Flutter's online editor, now supports Firestore. For an example, [see this sample app](https://dartpad.dev/?id=ba3b2530d348775da2cb357d60d4afbf&null_safety=true) .
 
-Feature
+Announcement
 
-[Firebase App Check now supports the Firestore iOS and Android SDKs.](https://firebase.google.com/docs/app-check)
+The Firestore [Unity and C++ SDKs](/firestore/docs/quickstart-mobile-web#set_up_your_development_environment) are now supported at the General Availability release level.
 
 ## November 04, 2021
 
@@ -666,10 +666,6 @@ You can now [use the increment operation](/firestore/docs/manage-data/add-data#i
 
 Feature
 
-General Availability release of Cloud Firestore. The [Cloud Firestore SLA](https://cloud.google.com/firestore/sla) is now in effect, including 99.999% availability for multi-region instances and 99.99% availability for regional instances.
-
-Feature
-
 Cloud Firestore now supports the following 10 additional locations:
 
   - Multi-region
@@ -702,6 +698,10 @@ Cloud Firestore now supports the following 10 additional locations:
 
 For a full list of supported multi-regions and regions, see [Cloud Firestore Locations](/firestore/docs/locations) .
 
+Feature
+
+General Availability release of Cloud Firestore. The [Cloud Firestore SLA](https://cloud.google.com/firestore/sla) is now in effect, including 99.999% availability for multi-region instances and 99.99% availability for regional instances.
+
 ## October 29, 2018
 
 Feature
@@ -721,15 +721,7 @@ We added two new features to help you work with arrays:
 
 Feature
 
-Cloud Firestore now supports the `  europe-west3  ` and `  us-east1  ` regions, see [Cloud Firestore Locations](/firestore/docs/locations) .
-
-Feature
-
-You can now create a [Cloud Firestore database in Datastore mode](/firestore/docs/firestore-or-datastore#choosing_a_database) . Datastore mode allows you to use Cloud Datastore client libraries with an improved Cloud Firestore storage layer, removing eventual consistency limitations.
-
-Feature
-
-You can now add [single-field index exemptions](/firestore/docs/concepts/index-overview#exemptions) to exempt specific fields from automatic indexing.
+You can now [manage your Cloud Firestore instance from the Google Cloud Platform console](/firestore/docs/using-console) .
 
 Feature
 
@@ -737,7 +729,15 @@ Added support for importing and exporting of documents, see [Exporting and Impor
 
 Feature
 
-You can now [manage your Cloud Firestore instance from the Google Cloud Platform console](/firestore/docs/using-console) .
+You can now add [single-field index exemptions](/firestore/docs/concepts/index-overview#exemptions) to exempt specific fields from automatic indexing.
+
+Feature
+
+You can now create a [Cloud Firestore database in Datastore mode](/firestore/docs/firestore-or-datastore#choosing_a_database) . Datastore mode allows you to use Cloud Datastore client libraries with an improved Cloud Firestore storage layer, removing eventual consistency limitations.
+
+Feature
+
+Cloud Firestore now supports the `  europe-west3  ` and `  us-east1  ` regions, see [Cloud Firestore Locations](/firestore/docs/locations) .
 
 ## June 13, 2018
 

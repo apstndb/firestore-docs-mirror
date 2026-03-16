@@ -4,9 +4,9 @@
 
 This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
-Indexing behavior depends on the edition of the database. This page describes how to manage your indexes for Firestore Enterprise edition. For Firestore Standard edition, see [Firestore Standard edition index overview](/firestore/docs/pipeline/standard-indexing) .
+Indexing behavior depends on the edition of the database. This page describes how to manage your indexes for Firestore Enterprise edition. For Firestore Standard edition, see [Firestore Standard edition index overview](/firestore/native/docs/standard-indexing) .
 
-To learn more about Firestore Enterprise edition indexes, see [Indexes overview](/firestore/docs/pipeline/index-overview) .
+To learn more about Firestore Enterprise edition indexes, see [Indexes overview](/firestore/native/docs/enterprise-index-overview) .
 
 ## Before you begin
 
@@ -47,11 +47,11 @@ To create an index, complete the following steps:
 
 7.  Select a field presence option, either non-sparse or sparse.
 
-8.  Optionally, set the [unique index](/concepts/enterprise-index-overview#unique_indexes) option.
+8.  Optionally, set the [unique index](/firestore/native/docs/enterprise-index-overview#unique_indexes) option.
 
 9.  Click **Create** .
 
-10. Your new index is displayed in the list of indexes and Firestore begins creating your index. When your index is created, you will see a green check mark next to the index. If index is not created, see [Index building errors](/concepts/enterprise-index-overview#index-building-errors) for possible causes.
+10. Your new index is displayed in the list of indexes and Firestore begins creating your index. When your index is created, you will see a green check mark next to the index. If index is not created, see [Index building errors](/firestore/native/docs/enterprise-index-overview#index-building-errors) for possible causes.
 
 ##### gcloud CLI
 

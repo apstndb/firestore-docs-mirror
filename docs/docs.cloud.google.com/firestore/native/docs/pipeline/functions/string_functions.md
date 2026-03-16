@@ -49,24 +49,48 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 <td>Returns <code dir="ltr" translate="no">       TRUE      </code> if a value contains a <code dir="ltr" translate="no">       STRING      </code></td>
 </tr>
 <tr class="odd">
+<td><code dir="ltr" translate="no">         STRING_INDEX_OF       </code></td>
+<td>Returns the 0-based index of the first occurrence of a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value.</td>
+</tr>
+<tr class="even">
 <td><code dir="ltr" translate="no">         TO_UPPER       </code></td>
 <td>Converts a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value to uppercase.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code dir="ltr" translate="no">         TO_LOWER       </code></td>
 <td>Converts a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value to lowercase.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code dir="ltr" translate="no">         SUBSTRING       </code></td>
 <td>Gets a substring of a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code dir="ltr" translate="no">         STRING_REVERSE       </code></td>
 <td>Reverses a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value.</td>
+</tr>
+<tr class="even">
+<td><code dir="ltr" translate="no">         STRING_REPEAT       </code></td>
+<td>Repeats a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value a specified number of times.</td>
+</tr>
+<tr class="odd">
+<td><code dir="ltr" translate="no">         STRING_REPLACE_ALL       </code></td>
+<td>Replaces all occurrences of a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value.</td>
+</tr>
+<tr class="even">
+<td><code dir="ltr" translate="no">         STRING_REPLACE_ONE       </code></td>
+<td>Replaces the first occurrence of a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value.</td>
 </tr>
 <tr class="odd">
 <td><code dir="ltr" translate="no">         TRIM       </code></td>
 <td>Trims leading and trailing characters from a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value.</td>
+</tr>
+<tr class="even">
+<td><code dir="ltr" translate="no">         LTRIM       </code></td>
+<td>Trims leading characters from a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value.</td>
+</tr>
+<tr class="odd">
+<td><code dir="ltr" translate="no">         RTRIM       </code></td>
+<td>Trims trailing characters from a <code dir="ltr" translate="no">       STRING      </code> or <code dir="ltr" translate="no">       BYTES      </code> value.</td>
 </tr>
 <tr class="even">
 <td><code dir="ltr" translate="no">         SPLIT       </code></td>
@@ -1234,6 +1258,76 @@ Pipeline.Snapshot result =
         .get();PipelineSnippets.java
 ```
 
+### STRING\_INDEX\_OF
+
+**Syntax:**
+
+``` text
+string_index_of[T <: STRING | BYTES](value: T, search: T) -> INT64
+```
+
+**Description:**
+
+Returns the 0-based index of the first occurrence of `  search  ` in `  value  ` .
+
+  - Returns `  -1  ` if `  search  ` is not found.
+  - If `  value  ` is a `  STRING  ` value, the result is measured in unicode code points. If it is a `  BYTES  ` value, it is measured in bytes.
+  - If `  search  ` is an empty `  STRING  ` or `  BYTES  ` value, the result is `  0  ` .
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">value</th>
+<th style="text-align: left;">search</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       string_index_of(value, search)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">"hello world"</td>
+<td style="text-align: left;">"o"</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"hello world"</td>
+<td style="text-align: left;">"l"</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">"hello world"</td>
+<td style="text-align: left;">"z"</td>
+<td style="text-align: left;">-1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"banana"</td>
+<td style="text-align: left;">"na"</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">"abc"</td>
+<td style="text-align: left;">""</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b"abc"</td>
+<td style="text-align: left;">b"b"</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">"é"</td>
+<td style="text-align: left;">"é"</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b"é"</td>
+<td style="text-align: left;">b"é"</td>
+<td style="text-align: left;">0</td>
+</tr>
+</tbody>
+</table>
+
 ### TO\_UPPER
 
 **Syntax:**
@@ -1818,6 +1912,169 @@ Pipeline.Snapshot result =
         .get();PipelineSnippets.java
 ```
 
+### STRING\_REPEAT
+
+**Syntax:**
+
+``` text
+string_repeat[T <: STRING | BYTES](input: T, repetitions: INT64) -> T
+```
+
+**Description:**
+
+Returns the `  input  ` repeated `  repetitions  ` times.
+
+  - `  repetitions  ` must be a non-negative integer.
+  - If `  repetitions  ` is `  0  ` , returns an empty value of the same type as `  input  ` .
+  - If the result exceeds the maximum allowed size (1 MB), an error is returned.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">input</th>
+<th style="text-align: left;">repetitions</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       string_repeat(input, repetitions)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">"foo"</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">"foofoofoo"</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"foo"</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">""</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">"a "</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">"a a a "</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b"ab"</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">b"abab"</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">"é🦆"</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">"é🦆é🦆"</td>
+</tr>
+</tbody>
+</table>
+
+### STRING\_REPLACE\_ALL
+
+**Syntax:**
+
+``` text
+string_replace_all[T <: STRING | BYTES](input: T, find: T, replacement: T) -> T
+```
+
+**Description:**
+
+Replaces all non-overlapping occurrences of `  find  ` in `  input  ` with `  replacement  ` .
+
+  - Matches are case-sensitive.
+  - If `  find  ` is empty, no replacements are made.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">input</th>
+<th style="text-align: left;">find</th>
+<th style="text-align: left;">replacement</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       string_replace_all(input, find, replacement)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">"foobarfoo"</td>
+<td style="text-align: left;">"foo"</td>
+<td style="text-align: left;">"baz"</td>
+<td style="text-align: left;">"bazbarbaz"</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"ababab"</td>
+<td style="text-align: left;">"aba"</td>
+<td style="text-align: left;">"c"</td>
+<td style="text-align: left;">"cbab"</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">"foobar"</td>
+<td style="text-align: left;">"o"</td>
+<td style="text-align: left;">""</td>
+<td style="text-align: left;">"fbar"</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"é🦆🌎🦆"</td>
+<td style="text-align: left;">"🦆"</td>
+<td style="text-align: left;">"a"</td>
+<td style="text-align: left;">"éa🌎a"</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b"abc"</td>
+<td style="text-align: left;">b"b"</td>
+<td style="text-align: left;">b"d"</td>
+<td style="text-align: left;">b"adc"</td>
+</tr>
+</tbody>
+</table>
+
+### STRING\_REPLACE\_ONE
+
+**Syntax:**
+
+``` text
+string_replace_one[T <: STRING | BYTES](input: T, find: T, replacement: T) -> T
+```
+
+**Description:**
+
+Replaces the first occurrence of `  find  ` in `  input  ` with `  replacement  ` .
+
+  - Matches are case-sensitive.
+  - If `  find  ` is empty, no replacements are made.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">input</th>
+<th style="text-align: left;">find</th>
+<th style="text-align: left;">replacement</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       string_replace_one(input, find, replacement)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">"foobarfoo"</td>
+<td style="text-align: left;">"foo"</td>
+<td style="text-align: left;">"baz"</td>
+<td style="text-align: left;">"bazbarfoo"</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"é"</td>
+<td style="text-align: left;">"é"</td>
+<td style="text-align: left;">"a"</td>
+<td style="text-align: left;">"a"</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">b"foobar"</td>
+<td style="text-align: left;">b"o"</td>
+<td style="text-align: left;">b"z"</td>
+<td style="text-align: left;">b"fzoobar"</td>
+</tr>
+</tbody>
+</table>
+
 ### TRIM
 
 **Syntax:**
@@ -1993,6 +2250,140 @@ Pipeline.Snapshot result =
         .execute()
         .get();PipelineSnippets.java
 ```
+
+### LTRIM
+
+**Syntax:**
+
+``` text
+ltrim[T <: STRING | BYTES](value: T, to_trim: T) -> T
+ltrim[T <: STRING | BYTES](value: T) -> T
+```
+
+**Description:**
+
+Trims a specified set of `  BYTES  ` or `  CHARS  ` from the beginning of the supplied `  value  ` .
+
+  - If `  to_trim  ` is not provided, trims leading whitespace characters.
+
+**Examples:**
+
+When `  to_trim  ` is not provided:
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">value</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       ltrim(value)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">" foo "</td>
+<td style="text-align: left;">"foo "</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"foo"</td>
+<td style="text-align: left;">"foo"</td>
+</tr>
+</tbody>
+</table>
+
+When `  to_trim  ` is provided:
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">value</th>
+<th style="text-align: left;">to_trim</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       ltrim(value, to_trim)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">"aaabc"</td>
+<td style="text-align: left;">"a"</td>
+<td style="text-align: left;">"bc"</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"abacaba"</td>
+<td style="text-align: left;">"ba"</td>
+<td style="text-align: left;">"caba"</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">"é"</td>
+<td style="text-align: left;">"é"</td>
+<td style="text-align: left;">""</td>
+</tr>
+</tbody>
+</table>
+
+### RTRIM
+
+**Syntax:**
+
+``` text
+rtrim[T <: STRING | BYTES](value: T, to_trim: T) -> T
+rtrim[T <: STRING | BYTES](value: T) -> T
+```
+
+**Description:**
+
+Trims a specified set of `  BYTES  ` or `  CHARS  ` from the end of the supplied `  value  ` .
+
+  - If `  to_trim  ` is not provided, trims trailing whitespace characters.
+
+**Examples:**
+
+When `  to_trim  ` is not provided:
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">value</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       rtrim(value)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">" foo "</td>
+<td style="text-align: left;">" foo"</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"foo"</td>
+<td style="text-align: left;">"foo"</td>
+</tr>
+</tbody>
+</table>
+
+When `  to_trim  ` is provided:
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">value</th>
+<th style="text-align: left;">to_trim</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       rtrim(value, to_trim)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">"abccc"</td>
+<td style="text-align: left;">"c"</td>
+<td style="text-align: left;">"ab"</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"abacaba"</td>
+<td style="text-align: left;">"ba"</td>
+<td style="text-align: left;">"abac"</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">"é"</td>
+<td style="text-align: left;">"é"</td>
+<td style="text-align: left;">""</td>
+</tr>
+</tbody>
+</table>
 
 ### SPLIT
 

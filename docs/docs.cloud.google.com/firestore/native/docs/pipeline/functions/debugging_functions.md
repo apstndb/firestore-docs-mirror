@@ -32,6 +32,10 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 <td><code dir="ltr" translate="no">         IF_ERROR       </code></td>
 <td>Replaces the value with an expression if it has thrown an error</td>
 </tr>
+<tr class="odd">
+<td><code dir="ltr" translate="no">         ERROR       </code></td>
+<td>Terminates evaluation and returns an error with the specified message</td>
+</tr>
 </tbody>
 </table>
 
@@ -259,6 +263,42 @@ if_error(try: ANY, catch: ANY) -> ANY
 **Description:**
 
 If an error is thrown during the evaluation of `  try  ` , evaluates and returns `  replacement  ` . Otherwise returns the resolved value of `  try  ` .
+
+### ERROR
+
+**Syntax:**
+
+``` text
+error(message: STRING) -> ANY
+```
+
+**Description:**
+
+Evaluation of the `  error  ` function results in the evaluation of the pipeline to terminate with an error. The given `  message  ` is included in the error.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><code dir="ltr" translate="no">       cond      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       res      </code></th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       switch_on(cond, res, error("no condition matched"))      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code dir="ltr" translate="no">       TRUE      </code></td>
+<td style="text-align: left;">1L</td>
+<td style="text-align: left;">1L</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
+<td style="text-align: left;">1L</td>
+<td style="text-align: left;"><code dir="ltr" translate="no">       ERROR ("no condition matched")      </code></td>
+</tr>
+</tbody>
+</table>
 
 ## What's next
 
