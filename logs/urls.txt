@@ -661,6 +661,7 @@ https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_funct
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/reference_functions
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/string_functions
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/timestamp_functions
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/type_functions
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/vector_functions
 https://docs.cloud.google.com/firestore/native/docs/pipeline/overview
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection
