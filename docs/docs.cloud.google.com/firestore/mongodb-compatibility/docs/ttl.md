@@ -1,10 +1,10 @@
-# Manage data retention with TTL policies
+# Manage data retention with TTL indexes
 
-This page describes how to use the Google Cloud console and the Google Cloud CLI to configure time to live (TTL) policies.
+This page describes how to use the MongoDB API, the Google Cloud console, and the Google Cloud CLI to configure time to live (TTL) indexes.
 
 ## Time to live overview
 
-Use TTL policies to automatically remove stale data from your databases. A TTL policy designates a given field as the expiration time for documents in a given collection. With TTL, you can decrease storage costs by cleaning out obsolete data. Data is typically deleted within 24 hours after its expiration date.
+Use TTL indexes to automatically remove stale data from your databases. A TTL index designates a given field as the expiration time for documents in a given collection. With TTL, you can decrease storage costs by cleaning out obsolete data. Data is typically deleted within 24 hours after its expiration time.
 
 ### Pricing
 
@@ -12,18 +12,18 @@ TTL delete operations count towards your document delete costs. For pricing of d
 
 ### Limits and constraints
 
-  - You can mark only one field per collection as a TTL field.
-  - You can have a maximum of 500 field-level TTL configurations.
+  - You can create only one TTL index per collection.
+  - You can have a maximum of 500 TTL indexes.
 
 ### TTL deletion
 
 Note the following key behaviors of TTL-driven deletion:
 
-  - Deletion through TTL is not an instantaneous process. Expired documents continue to appear in queries and lookup requests until the TTL process actually deletes them. TTL trades deletion timeliness for the benefit of reduced total cost of ownership for deletions. Data is typically deleted within 24 hours after its expiration date.
+  - Deletion through TTL is not an instantaneous process. Expired documents continue to appear in queries and lookup requests until the TTL process actually deletes them. TTL trades deletion timeliness for the benefit of reduced total cost of ownership for deletions. Data is typically deleted within 24 hours after its expiration time.
 
-  - Applying a TTL policy on an existing collection results in a bulk deletion of all expired data according to the new TTL policy. Note that this bulk deletion is also not instantaneous and depends on how much data exists for that collection.
+  - Creating a TTL index on an existing collection results in a bulk deletion of all expired data according to the new TTL index. Note that this bulk deletion is also not instantaneous and depends on how much data exists for that collection.
 
-  - If a document has an expiration time in the past and you add a new TTL policy to the collection, the document will be deleted within 24 hours of when the TTL policy finishes setup and becomes active.
+  - If a document has an expiration time in the past and you add a new TTL index to the collection, the document will be deleted within 24 hours of when the TTL index finishes setup and becomes active.
 
   - TTL does not necessarily delete documents in the same order as their expiration timestamps.
 
@@ -35,43 +35,66 @@ Note the following key behaviors of TTL-driven deletion:
 
   - TTL is designed to minimize impact on other database activities. Deletions driven by TTL are treated with a lower priority. Other strategies are also in place to smooth out traffic spikes from TTL-driven deletes.
 
-### TTL fields and indexes
+### TTL fields and non-TTL indexes
 
-A TTL field can be indexed or unindexed. However, because a TTL field is a timestamp, indexing the field can affect performance at higher traffic rates. Indexing a timestamp field can create hotspots which is against best practices. Hotspots are high read, write, and delete rates to a narrow document range.
+A TTL field can be indexed or unindexed. However, because a TTL field is a timestamp, including the field in a non-TTL index can affect performance at higher traffic rates. Including a timestamp field in a non-TTL index can create hotspots which is against best practices. Hotspots are high read, write, and delete rates to a narrow document range.
 
 ## Permissions
 
-The principal configuring a TTL policy requires the following permission in the project:
+The principal creating or dropping a TTL index requires the following permission in the project:
 
-  - Viewing TTL policies requires the `  datastore.indexes.list  ` and `  datastore.indexes.get  ` permissions.
-  - Modifying TTL policies requires the `  datastore.indexes.update  ` permission.
+  - Viewing TTL indexes requires the `  datastore.indexes.list  ` and `  datastore.indexes.get  ` permissions.
+  - Creating or dropping TTL indexes requires the `  datastore.indexes.update  ` permission.
   - Checking the status of TTL operations requires `  datastore.operations.list  ` and `  datastore.operations.get  ` .
 
 For roles that assign these permissions, see [Firestore Identity and Access Management roles](/firestore/mongodb-compatibility/docs/security/iam#predefined_roles) .
 
 ## Before you begin
 
-Before you use the gcloud CLI to manage TTL policies, use the [`  gcloud components update  `](https://cloud.google.com/sdk/gcloud/reference/components/update) command to update components to the latest available version:
+Before you use the gcloud CLI to manage TTL indexes, use the [`  gcloud components update  `](https://cloud.google.com/sdk/gcloud/reference/components/update) command to update components to the latest available version:
 
 ``` text
 gcloud components update
 ```
 
-## Create a TTL policy
+## Create a TTL index
 
-When you create a TTL policy, you designate a document field as the expiration time for documents in a collection.
+When you create a TTL index, you designate a document field as the expiration time for documents in a collection.
 
 TTL uses a specified field to identify documents that are eligible for deletion. The TTL field must be set to either a `  Timestamp  ` / `  BSON Date  ` value or an `  Array  ` value containing a `  Timestamp  ` / `  BSON Date  ` value. You can select a field that already exists or you can designate a field that you plan to add later.
 
-**Note:** Some TTL policies created before February 2026 don't apply to `  Timestamp  ` / `  BSON Date  ` values inside of `  Array  ` values. To update the policy to apply to `  Array  ` values, disable and re-enable the policy.
+**Note:** Some TTL indexes created before February 2026 don't apply to `  Timestamp  ` / `  BSON Date  ` values inside of `  Array  ` values. To update the index to apply to `  Array  ` values, drop and re-create the index.
 
 Consider the following before you set the TTL field value:
 
-  - The TTL field value can be a time in the future, now, or in the past. If the value is a time in the past, the document is immediately eligible for deletion. For example, you might create a TTL policy with the field `  expireAt  ` , which you then add to existing documents.
+  - The TTL field value can be a time in the future, now, or in the past. If the value is a time in the past, the document is immediately eligible for deletion. For example, you might create a TTL index with the field `  expireAt  ` , which you then add to existing documents.
 
   - Using any other data type or not setting the TTL field value will disable the TTL for the individual document.
 
-To create a TTL policy, follow these steps:
+To create a TTL index, follow these steps:
+
+### MongoDB API
+
+Include the `  expireAfterSeconds  ` index option when calling [`  createIndex()  `](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/) method:
+
+``` text
+db.COLLECTION_NAME.createIndex({"TTL_FIELD": 1, "expireAfterSeconds": EXPIRATION_OFFSET_SECONDS})
+```
+
+For example:
+
+``` text
+db.restaurants.createIndex({"ts": 1, "expireAfterSeconds": 3600})
+```
+
+`  expireAfterSeconds  ` identifies the TTL as a TTL index and is the offset between the timestamp value from the TTL field and the expiration time. If `  expireAfterSeconds  ` is set to `  0  ` , the expiration time is given directly by the timestamp value from the TTL field.
+
+Note the following limitations:
+
+  - TTL indexes must include exactly one field.
+  - TTL indexes are not usable in queries.
+  - You can create only one TTL index per collection.
+  - [Audit logs](/firestore/mongodb-compatibility/docs/audit-logging) for TTL index creation with the MongoDB API use the method name `  google.firestore.admin.v1.FirestoreAdmin.UpdateField  ` .
 
 ### Google Cloud Console
 
@@ -87,7 +110,7 @@ To create a TTL policy, follow these steps:
 
 6.  Click **Create** .
 
-The console returns to the **Time-to-live** page. If the operation successfully starts, the page adds an entry to the TTL policies table. On failure, the page displays an error message.
+The console returns to the **Time-to-live** page. If the operation successfully starts, the page adds an entry to the TTL indexes table. On failure, the page displays an error message.
 
 ### gcloud
 
@@ -95,7 +118,7 @@ The console returns to the **Time-to-live** page. If the operation successfully 
     
     At the bottom of the Google Cloud console, a [Cloud Shell](/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
 
-2.  Use the [`  firestore fields ttls update  `](https://cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update) command to configure a TTL policy. Add the `  --async  ` flag to prevent the gcloud CLI from waiting for the operation to complete.
+2.  Use the [`  firestore fields ttls update  `](https://cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update) command to configure a TTL index. Add the `  --async  ` flag to prevent the gcloud CLI from waiting for the operation to complete.
     
     ``` text
      gcloud firestore fields ttls update
@@ -103,13 +126,23 @@ The console returns to the **Time-to-live** page. If the operation successfully 
     --enable-ttl 
     ```
 
-### TTL policy enablement duration
+### TTL index creation duration
 
-Even on an empty database, it can take ten minutes or more to enable a TTL policy. Once you start an operation, closing the terminal does not cancel the operation.
+Even on an empty database, it can take ten minutes or more to create a TTL index. Once you start an operation, closing the terminal does not cancel the operation.
 
-## View TTL policies
+## View TTL indexes
 
-To view TTL policies and their statuses, follow these steps:
+To view TTL indexes, follow these steps:
+
+### MongoDB API
+
+Use the [`  listIndexes()  `](https://www.mongodb.com/docs/manual/reference/method/db.collection.listIndexes/) method to view TTL indexes. For example:
+
+``` text
+db.restaurants.listIndexes()
+```
+
+Note that the output will include both TTL indexes and non-TTL indexes. TTL indexes will include the `  expireAfterSeconds  ` option.
 
 ### Google Cloud Console
 
@@ -119,7 +152,7 @@ To view TTL policies and their statuses, follow these steps:
 
 3.  In the navigation menu, click **Time-to-live** .
 
-The console lists TTL policies for your database and includes each policy's status.
+The console lists TTL indexes for your database and includes each index's status.
 
 ### gcloud
 
@@ -127,13 +160,13 @@ The console lists TTL policies for your database and includes each policy's stat
     
     At the bottom of the Google Cloud console, a [Cloud Shell](/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
 
-2.  Use the [`  firestore fields ttls list  `](https://cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/list) command to configure a TTL policy. The following command lists all TTL policies.
+2.  Use the [`  firestore fields ttls list  `](https://cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/list) command to configure a TTL index. The following command lists all TTL indexes.
     
     ``` text
     gcloud firestore fields ttls list
     ```
     
-    To list TTL policies under a specific collection, use the following:
+    To list TTL indexes under a specific collection, use the following:
     
     ``` text
     gcloud firestore fields ttls list  --collection-group=collection_name
@@ -141,7 +174,7 @@ The console lists TTL policies for your database and includes each policy's stat
 
 ### View operation details
 
-You can use the gcloud CLI to view more details about a TTL policy that is in the `  CREATING  ` state.
+You can use the gcloud CLI to view more details about a TTL index that is in the `  CREATING  ` state.
 
 Use the [`  operations list  `](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command to see all running and recently completed operations:
 
@@ -151,9 +184,27 @@ gcloud firestore operations list
 
 The response includes an estimate of the operation's progress.
 
-## Disable a TTL policy
+## Drop a TTL index
 
-To disable a TTL policy, follow these steps:
+To drop a TTL index, follow these steps:
+
+### MongoDB API
+
+Use the [`  dropIndex()  `](https://www.mongodb.com/docs/manual/reference/method/db.collection.dropIndex/) method to drop a TTL index. For example:
+
+**Drop a TTL index using index name**
+
+``` text
+db.restaurants.dropIndex("ts_1")
+```
+
+**Drop a TTL index using index definition**
+
+``` text
+db.restaurants.dropIndex({"ts": 1})
+```
+
+Note that [Audit logs](/firestore/mongodb-compatibility/docs/audit-logging) for dropping a TTL index with the MongoDB API use the method name `  google.firestore.admin.v1.FirestoreAdmin.UpdateField  ` .
 
 ### Google Cloud Console
 
@@ -163,11 +214,11 @@ To disable a TTL policy, follow these steps:
 
 3.  In the navigation menu, click **Time-to-live** .
 
-4.  In the TTL policy table, find the row for the TTL policy. Within this table row, click the **Delete** (trashcan) button.
+4.  In the TTL index table, find the row for the TTL index. Within this table row, click the **Delete** (trashcan) button.
 
 5.  Confirm by clicking **Delete** .
 
-The console returns to the **Time-to-live** page. On success, Firestore with MongoDB compatibility removes the TTL policy from the table.
+The console returns to the **Time-to-live** page. On success, Firestore with MongoDB compatibility removes the TTL index from the table.
 
 ### gcloud
 
@@ -175,7 +226,7 @@ The console returns to the **Time-to-live** page. On success, Firestore with Mon
     
     At the bottom of the Google Cloud console, a [Cloud Shell](/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
 
-2.  Use the [`  firestore fields ttls update  `](https://cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update) command to configure a TTL policy. Add the `  --async  ` flag to prevent the gcloud CLI from waiting for the operation to complete.
+2.  Use the [`  firestore fields ttls update  `](https://cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update) command to configure a TTL index. Add the `  --async  ` flag to prevent the gcloud CLI from waiting for the operation to complete.
     
     ``` text
     gcloud firestore fields ttls update ttl_field --collection-group=collection_name --disable-ttl
@@ -197,12 +248,12 @@ You can use Cloud Monitoring to view metrics about TTL-driven deletions. Firesto
 <tr class="odd">
 <td>firestore.googleapis.com/document/ttl_deletion_count</td>
 <td>Time to live deletion count</td>
-<td><p>Total count of documents deleted by TTL policies.</p></td>
+<td><p>Total count of documents deleted by TTL indexes.</p></td>
 </tr>
 <tr class="even">
 <td>firestore.googleapis.com/document/ttl_expiration_to_deletion_delays</td>
 <td>Time to live expiration to deletion delays</td>
-<td><p>Time elapsed between when a document expired under a TTL policy and when it was actually deleted.</p></td>
+<td><p>Time elapsed between when a document expired under a TTL index and when it was actually deleted.</p></td>
 </tr>
 </tbody>
 </table>

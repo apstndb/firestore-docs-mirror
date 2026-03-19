@@ -1410,7 +1410,7 @@ Firestore with MongoDB compatibility supports the following indexes and index op
 </tr>
 <tr class="odd">
 <td>TTL</td>
-<td>No</td>
+<td>Yes</td>
 </tr>
 <tr class="even">
 <td>Unique</td>
