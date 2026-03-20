@@ -78,6 +78,10 @@ If you add the document `  {"abbreviation": "LA"}  ` to the collection, the uniq
 
 The same behavior applies to unique indexes with multiple fields. When creating or updating a document, missing indexed fields are set to `  null  ` and the resulting index entry must be unique in the index.
 
+## TTL indexes
+
+Use [TTL indexes](/firestore/mongodb-compatibility/docs/ttl) to automatically remove stale data from your databases. A TTL index designates a given field as the expiration time for documents in a given collection. With TTL, you can decrease storage costs by cleaning out obsolete data. Data is typically deleted within 24 hours after its expiration time.
+
 ## Troubleshoot index building errors
 
 You might encounter index building errors when managing your indexes. An indexing operation can fail if the database encounters a problem with the data. Indexing operations can fail for the following reasons:
@@ -91,4 +95,4 @@ You might encounter index building errors when managing your indexes. An indexin
 
 ## What's next
 
-  - Learn how to [create and manage indexes](/firestore/mongodb-compatibility/docs/indexing)
+  - Learn how to [create and manage indexes](/firestore/mongodb-compatibility/docs/indexing) or [TTL indexes](/firestore/mongodb-compatibility/docs/ttl)

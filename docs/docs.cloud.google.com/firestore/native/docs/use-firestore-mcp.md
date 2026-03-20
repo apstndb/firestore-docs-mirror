@@ -54,7 +54,7 @@ You can enable or disable the Firestore MCP server in a project with the `  gclo
 
 ### Enable the Firestore MCP server in a project
 
-**Note:** After March 17, 2026, the Firestore remote MCP server is automatically enabled when you enable Firestore.
+**Note:** Starting on March 17, 2026, separate enablement for MCP servers will be removed. When the Firestore API is enabled in a project, you can use Firestore through its remote MCP endpoint. This update will be released gradually across different regions.
 
 If you are using different projects for your client credentials, such as service account keys, OAuth client ID or API keys, and for hosting your resources, then you must enable the Firestore service and the Firestore remote MCP server on both projects.
 
@@ -261,9 +261,9 @@ Model Armor won't scan MCP traffic in the project.
 
 For example, you can deny or allow access based on:
 
-  - The principal.
-  - Tool properties like read-only.
-  - The application's OAuth client ID.
+  - The principal
+  - Tool properties like read-only
+  - The application's OAuth client ID
 
 For more information, see [Control MCP use with Identity and Access Management](/mcp/control-mcp-use-iam) .
 

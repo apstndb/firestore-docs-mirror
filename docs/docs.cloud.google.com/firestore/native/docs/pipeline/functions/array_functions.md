@@ -33,44 +33,52 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 <td>Returns <code dir="ltr" translate="no">       TRUE      </code> if any of the values are present in the <code dir="ltr" translate="no">       ARRAY      </code></td>
 </tr>
 <tr class="odd">
+<td><code dir="ltr" translate="no">         ARRAY_FILTER       </code></td>
+<td>Filters out elements from an <code dir="ltr" translate="no">       ARRAY      </code> that don't satisfy a predicate</td>
+</tr>
+<tr class="even">
 <td><code dir="ltr" translate="no">         ARRAY_FIRST       </code></td>
 <td>Returns the first element in an <code dir="ltr" translate="no">       ARRAY      </code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code dir="ltr" translate="no">         ARRAY_FIRST_N       </code></td>
 <td>Returns the first <code dir="ltr" translate="no">       n      </code> elements in an <code dir="ltr" translate="no">       ARRAY      </code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code dir="ltr" translate="no">         ARRAY_GET       </code></td>
 <td>Returns the element at a given index in an <code dir="ltr" translate="no">       ARRAY      </code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code dir="ltr" translate="no">         ARRAY_INDEX_OF       </code></td>
 <td>Returns the index of the first occurrence of a value in an <code dir="ltr" translate="no">       ARRAY      </code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code dir="ltr" translate="no">         ARRAY_INDEX_OF_ALL       </code></td>
 <td>Returns all indexes of a value in an <code dir="ltr" translate="no">       ARRAY      </code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code dir="ltr" translate="no">         ARRAY_LENGTH       </code></td>
 <td>Returns the number of elements in an <code dir="ltr" translate="no">       ARRAY      </code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code dir="ltr" translate="no">         ARRAY_LAST       </code></td>
 <td>Returns the last element in an <code dir="ltr" translate="no">       ARRAY      </code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code dir="ltr" translate="no">         ARRAY_LAST_N       </code></td>
 <td>Returns the last <code dir="ltr" translate="no">       n      </code> elements in an <code dir="ltr" translate="no">       ARRAY      </code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code dir="ltr" translate="no">         ARRAY_REVERSE       </code></td>
 <td>Reverses the order of elements in an <code dir="ltr" translate="no">       ARRAY      </code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code dir="ltr" translate="no">         ARRAY_SLICE       </code></td>
 <td>Returns a slice of an <code dir="ltr" translate="no">       ARRAY      </code></td>
+</tr>
+<tr class="even">
+<td><code dir="ltr" translate="no">         ARRAY_TRANSFORM       </code></td>
+<td>Transforms elements in an <code dir="ltr" translate="no">       ARRAY      </code> by applying expression to each element</td>
 </tr>
 <tr class="odd">
 <td><code dir="ltr" translate="no">         MAXIMUM       </code></td>
@@ -665,6 +673,55 @@ Pipeline.Snapshot result =
         .get();PipelineSnippets.java
 ```
 
+### ARRAY\_FILTER
+
+**Syntax:**
+
+``` text
+array_filter(array: ARRAY, predicate: (ANY) -> BOOLEAN) -> ARRAY
+```
+
+**Description:**
+
+Filters `  array  ` using a `  predicate  ` expression, returning a new array with only elements that satisfy the predicate.
+
+  - For each element in `  array  ` , `  predicate  ` is evaluated. If it returns `  true  ` , the element is included in the result; otherwise (if it returns `  false  ` or `  null  ` ), it is omitted.
+  - If `  predicate  ` evaluates to a non-boolean or non-null value, the function returns an error.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">array</th>
+<th style="text-align: left;">predicate</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       array_filter(array, predicate)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">[1, 2, 3]</td>
+<td style="text-align: left;">x -&gt; x &gt; 1</td>
+<td style="text-align: left;">[2, 3]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[1, null, 3]</td>
+<td style="text-align: left;">x -&gt; x &gt; 1</td>
+<td style="text-align: left;">[3]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">["a", "b", "c"]</td>
+<td style="text-align: left;">x -&gt; x != "b"</td>
+<td style="text-align: left;">["a", "c"]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[]</td>
+<td style="text-align: left;">x -&gt; true</td>
+<td style="text-align: left;">[]</td>
+</tr>
+</tbody>
+</table>
+
 ### ARRAY\_GET
 
 **Syntax:**
@@ -1247,6 +1304,57 @@ Returns a subset of `  array  ` starting from 0-based index `  offset  ` , and i
 <td style="text-align: left;">[1, 2, 3]</td>
 <td style="text-align: left;">3</td>
 <td style="text-align: left;">2</td>
+<td style="text-align: left;">[]</td>
+</tr>
+</tbody>
+</table>
+
+### ARRAY\_TRANSFORM
+
+**Syntax:**
+
+``` text
+array_transform(array: ARRAY, expression: (ANY) -> ANY) -> ARRAY
+array_transform(array: ARRAY, expression: (ANY, INT64) -> ANY) -> ARRAY
+```
+
+**Description:**
+
+Transforms `  array  ` by applying `  expression  ` to each element, returning a new array with transformed elements. The output array will always have same size as input array.
+
+  - `  expression  ` can be a unary function `  element -> result  ` , or a binary function `  (element, index) -> result  ` .
+  - If `  expression  ` is unary, it is called with each element of `  array  ` .
+  - If `  expression  ` is binary, it is called with each element of `  array  ` and its corresponding 0-based index.
+
+**Examples:**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">array</th>
+<th style="text-align: left;">expression</th>
+<th style="text-align: left;"><code dir="ltr" translate="no">       array_transform(array, expression)      </code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">[1, 2, 3]</td>
+<td style="text-align: left;">x -&gt; x * 2</td>
+<td style="text-align: left;">[2, 4, 6]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[1, 2, 3]</td>
+<td style="text-align: left;">x -&gt; x + 1</td>
+<td style="text-align: left;">[2, 3, 4]</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">[10, 20]</td>
+<td style="text-align: left;">(x, i) -&gt; x + i</td>
+<td style="text-align: left;">[10, 21]</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">[]</td>
+<td style="text-align: left;">x -&gt; 1</td>
 <td style="text-align: left;">[]</td>
 </tr>
 </tbody>
