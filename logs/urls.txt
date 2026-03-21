@@ -299,7 +299,6 @@ https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.database
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields/list
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields/patch
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes/create
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes/delete
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes/get
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes/list
@@ -656,6 +655,7 @@ https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmeti
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/array_functions
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/comparison_functions
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/debugging_functions
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/generic_functions
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/logical_functions
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_functions
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/reference_functions

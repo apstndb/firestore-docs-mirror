@@ -109,19 +109,15 @@ For production environments, the way you set up ADC depends on the service and c
 
 For a local development environment, you can set up ADC with the credentials that are associated with your Google Account:
 
-1.  
-2.  [Install](/sdk/docs/install) the Google Cloud CLI.
-
-3.  If you're using an external identity provider (IdP), you must first [sign in to the gcloud CLI with your federated identity](/iam/docs/workforce-log-in-gcloud) .
-
-4.  To [initialize](/sdk/docs/initializing) the gcloud CLI, run the following command:
+1.  [Install](/sdk/docs/install) the Google Cloud CLI. After installation, [initialize](/sdk/docs/initializing) the Google Cloud CLI by running the following command:
     
     ``` text
     gcloud init
     ```
+    
+    If you're using an external identity provider (IdP), you must first [sign in to the gcloud CLI with your federated identity](/iam/docs/workforce-log-in-gcloud) .
 
-5.  
-6.  If you're using a local shell, then create local authentication credentials for your user account:
+2.  If you're using a local shell, then create local authentication credentials for your user account:
     
     ``` text
     gcloud auth application-default login
@@ -130,6 +126,8 @@ For a local development environment, you can set up ADC with the credentials tha
     You don't need to do this if you're using Cloud Shell.
     
     If an authentication error is returned, and you are using an external identity provider (IdP), confirm that you have [signed in to the gcloud CLI with your federated identity](/iam/docs/workforce-log-in-gcloud) .
+    
+    A sign-in screen appears. After you sign in, your credentials are stored in the [local credential file used by ADC](/docs/authentication/application-default-credentials#personal) .
 
 ## Use the client library
 
