@@ -256,6 +256,7 @@ https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/BulkDel
 https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/ChangeType
 https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/CloneDatabaseMetadata
 https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/CreateDatabaseMetadata
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/CreateIndexRequest
 https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/DeleteDatabaseMetadata
 https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Density
 https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/ExportDocumentsMetadata
@@ -439,7 +440,6 @@ https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-do
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-document-path-async
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-subcollection
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-subcollection-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-array-operations
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-array-operations-async
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-doc-upsert
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-doc-upsert-async
@@ -637,7 +637,6 @@ https://docs.cloud.google.com/firestore/native/docs/keyvis-exploring-heatmaps
 https://docs.cloud.google.com/firestore/native/docs/keyvis-getting-started
 https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns
 https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns-index
-https://docs.cloud.google.com/firestore/native/docs/langchain
 https://docs.cloud.google.com/firestore/native/docs/locations
 https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data
 https://docs.cloud.google.com/firestore/native/docs/manage-data/bulk-delete

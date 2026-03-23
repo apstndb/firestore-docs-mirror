@@ -321,11 +321,6 @@ Updates a field configuration.
 
 Methods
 
-`  create  `
-
-`  POST /v1/{parent=projects/*/databases/*/collectionGroups/*}/indexes  `  
-Creates a composite index.
-
 `  delete  `
 
 `  DELETE /v1/{name=projects/*/databases/*/collectionGroups/*/indexes/*}  `  

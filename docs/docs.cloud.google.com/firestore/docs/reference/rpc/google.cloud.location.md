@@ -49,11 +49,13 @@ An abstract interface that provides location-related information for a service. 
 <tbody>
 <tr class="odd">
 <td><p><code dir="ltr" translate="no">           rpc ListLocations(                         ListLocationsRequest            </code> ) returns ( <code dir="ltr" translate="no">              ListLocationsResponse            </code> )</p>
-<p>Lists information about the supported locations for this service. This method can be called in two ways:</p>
+<p>Lists information about the supported locations for this service.</p>
+<p>This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field:</p>
 <ul>
-<li><strong>List all public locations:</strong> Use the path <code dir="ltr" translate="no">            GET /v1/locations           </code> .</li>
-<li><strong>List project-visible locations:</strong> Use the path <code dir="ltr" translate="no">            GET /v1/projects/{project_id}/locations           </code> . This may include public locations as well as private or other locations specifically visible to the project.</li>
+<li><strong>Global locations</strong> : If <code dir="ltr" translate="no">            name           </code> is empty, the method lists the public locations available to all projects.</li>
+<li><strong>Project-specific locations</strong> : If <code dir="ltr" translate="no">            name           </code> follows the format <code dir="ltr" translate="no">            projects/{project}           </code> , the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project.</li>
 </ul>
+<p>For gRPC and client library implementations, the resource name is passed as the <code dir="ltr" translate="no">           name          </code> field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>

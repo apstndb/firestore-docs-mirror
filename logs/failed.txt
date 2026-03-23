@@ -3,7 +3,8 @@
 200 https://cloud.google.com/firestore/enterprise/pricing
 200 https://cloud.google.com/firestore/pricing
 200 https://cloud.google.com/firestore/sla
-200 https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/CreateIndexRequest
+200 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-array-operations
+200 https://docs.cloud.google.com/firestore/native/docs/langchain
 404 https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Index
 404 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/listen
 404 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/write
