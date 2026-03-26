@@ -96,7 +96,7 @@ Visit [our installation guide](https://firebase.google.com/docs/ios/installation
 2.  Declare the dependency for the Firestore library for Android in your module (app-level) Gradle file (usually `  app/build.gradle.kts  ` or `  app/build.gradle  ` ):
     
     ``` text
-    implementation("com.google.firebase:firebase-firestore:26.1.1")
+    implementation("com.google.firebase:firebase-firestore:26.1.2")
     ```
     
     If your app uses multiple Firebase libraries, consider using the [Firebase Android BoM](//firebase.google.com/docs/android/learn-more#bom) , which ensures that your app's Firebase library versions are always compatible.

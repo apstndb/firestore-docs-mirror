@@ -26,46 +26,6 @@ When you create a Firestore project, it also enables the API in the [Cloud API M
 
 To run the client library, you must first set up [authentication](/docs/authentication/production) by creating a service account and setting an environment variable.
 
-Provide authentication credentials to your application code by setting the environment variable `  GOOGLE_APPLICATION_CREDENTIALS  ` . This variable applies only to your current shell session. If you want the variable to apply to future shell sessions, set the variable in your shell startup file, for example in the `  ~/.bashrc  ` or `  ~/.profile  ` file.
-
-### Linux or macOS
-
-``` text
-export GOOGLE_APPLICATION_CREDENTIALS="KEY_PATH"
-```
-
-Replace `  KEY_PATH  ` with the path of the JSON file that contains your credentials.
-
-For example:
-
-``` text
-export GOOGLE_APPLICATION_CREDENTIALS="/home/user/Downloads/service-account-file.json"
-```
-
-### Windows
-
-For PowerShell:
-
-``` text
-$env:GOOGLE_APPLICATION_CREDENTIALS="KEY_PATH"
-```
-
-Replace `  KEY_PATH  ` with the path of the JSON file that contains your credentials.
-
-For example:
-
-``` text
-$env:GOOGLE_APPLICATION_CREDENTIALS="C:\Users\username\Downloads\service-account-file.json"
-```
-
-For command prompt:
-
-``` text
-set GOOGLE_APPLICATION_CREDENTIALS=KEY_PATH
-```
-
-Replace `  KEY_PATH  ` with the path of the JSON file that contains your credentials.
-
 ## Add the server client library to your app
 
 Add the required dependencies and client libraries to your app.
