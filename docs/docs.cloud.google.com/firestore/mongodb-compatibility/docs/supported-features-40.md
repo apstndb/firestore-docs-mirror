@@ -911,10 +911,6 @@ Firestore with MongoDB compatibility supports the following aggregation pipeline
 ### Stage operators
 
 <table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
 <thead>
 <tr class="header">
 <th><strong>Operator</strong></th>
@@ -980,8 +976,7 @@ Firestore with MongoDB compatibility supports the following aggregation pipeline
 </tr>
 <tr class="odd">
 <td><code dir="ltr" translate="no">       $lookup      </code></td>
-<td><p>Yes</p>
-<p>Doesn't support the <code dir="ltr" translate="no">        let       </code> and <code dir="ltr" translate="no">        pipeline       </code> fields.</p></td>
+<td><p>Yes</p></td>
 </tr>
 <tr class="even">
 <td><code dir="ltr" translate="no">       $match      </code></td>

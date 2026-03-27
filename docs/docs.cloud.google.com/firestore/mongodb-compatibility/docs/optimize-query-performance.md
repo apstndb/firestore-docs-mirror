@@ -26,9 +26,20 @@ If an index is used for a query, but the query engine is still fetching and disc
 
 If a non-multikey index is used for a query, but the query engine is still performing an in-memory reordering of the result set, as identified by a [MajorSort node](/firestore/mongodb-compatibility/docs/query-explain-reference#majorsort) in the query execution tree, this is a sign that the index used can't be used to deliver the Sort requirement of the query. To create a more suitable index, see the next section.
 
-#### Index for `     $lookup    `
+### Optimizing `     $lookup    ` queries
 
-To improve the performance of a `  $lookup  ` stage, create an index on the `  foreignField  ` in the `  from  ` collection. This allows the join operation to efficiently find matching documents in the `  from  ` collection without scanning the entire collection.
+You can optimize `  $lookup  ` queries by adding indexes to the `  from  ` collection which lets the operation efficiently find matching documents without scanning the entire collection.
+
+#### `     $lookup    ` with `     localField    ` and `     foreignField    `
+
+If you are using the `  localField  ` and `  foreignField  ` options in the `  $lookup  ` stage, create an index on the `  foreignField  ` in the `  from  ` collection.
+
+#### `     $lookup    ` with nested pipelines
+
+If you are using the `  pipeline  ` option in the `  $lookup  ` stage with `  $match  ` stages, create an index on the fields involved in the foreign collection to avoid a full table scan:
+
+  - For `  $match  ` stages with filter semantics (for example `  {$match: {a: true}}  ` ), create an index on the fields involved in the foreign collection ( `  a  ` ).
+  - For `  $match  ` stages with aggregation semantics that compares a field with a constant value (for example `  {$match: {$expr: {$gt: [a, 10]}}}  ` ) or with equality comparisons ( `  eq  ` or `  in  ` ) between fields and variables defined in `  let  ` (for example `  {$match: {$expr: {$eq: [a, "$$a"]}}}  ` ), create an index on the fields involved in the foreign collection. Note that multikey index won't be used in the planning.
 
 ### Create Indexes
 
