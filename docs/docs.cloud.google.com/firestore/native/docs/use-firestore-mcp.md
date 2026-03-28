@@ -267,6 +267,19 @@ For example, you can deny or allow access based on:
 
 For more information, see [Control MCP use with Identity and Access Management](/mcp/control-mcp-use-iam) .
 
+## Monitor MCP usage
+
+You can monitor the usage and latency of your Firestore MCP tools through [Cloud Monitoring](https://cloud.google.com/monitoring/docs/) . The following metrics are available for the `  firestore.googleapis.com/Database  ` monitored resource:
+
+  - `  mcp/request_count  ` (Beta): The count of Firestore MCP calls.
+  - `  mcp/request_latencies  ` (Beta): The distribution of latencies for Firestore MCP calls.
+
+You can group and filter these metrics by the following labels:
+
+  - `  tool_name  ` : The name of the MCP tool making the MCP call.
+
+For more information about Firestore metrics, see [Firestore metrics](/monitoring/api/metrics_gcp_d_h#gcp-firestore) .
+
 ## What's next
 
   - Read the [Firestore MCP reference documentation](/firestore/docs/reference/mcp) .
