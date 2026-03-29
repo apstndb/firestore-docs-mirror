@@ -1,16 +1,12 @@
 This page describes how to create, update, and delete Firestore in Datastore mode databases. You can create multiple Firestore databases per project. You can use multiple databases to set up production and testing environments, to isolate customer data, and for data regionalization.
 
-## The `     (default)    ` database
+## Required roles and permissions
 
-If you don't specify a database, the Datastore mode client libraries and the Google Cloud CLI connect to the `  (default)  ` database by default.
+To create and manage databases, you'll need the following Identity and Access Management role:
 
-## Required roles
+  - [Cloud Datastore Owner](/iam/docs/roles-permissions/firestore#datastore.owner) ( `  roles/datastore.owner  ` )
 
-To create and manage databases, you need the `  Owner  ` or `  Datastore Owner  ` Identity and Access Management role. These roles grant the required permissions.
-
-### Required permissions
-
-To manage databases, you require the following permissions:
+That role grants the following permissions that you need to create and manage databases:
 
   - Create a database: `  datastore.databases.create  `
   - Read database configuration: `  datastore.databases.getMetadata  `
@@ -113,9 +109,9 @@ Replace the following:
 
 ### Database ID
 
-Valid database IDs include `  (default)  ` and IDs that conform to the following:
+A valid database Id must conform to these rules:
 
-  - Includes only letters, numbers, and hyphen ( `  -  ` ) characters.
+  - Only include letters, numbers, and hyphen ( `  -  ` ) characters.
   - Letters must be lowercase.
   - The first character must be a letter.
   - The last character must be a letter or number.
@@ -123,11 +119,13 @@ Valid database IDs include `  (default)  ` and IDs that conform to the following
   - Maximum of 63 characters.
   - Must not be a UUID or resemble a UUID. For example, don't use an ID like `  f47ac10b-58cc-0372-8567-0e02b2c3d479  ` .
 
-If you delete a database, you cannot immediately re-use the database ID until after 5 minutes.
+There is one exception to these rules: Standard edition will create a database named `  (default)  ` if you don't enter an ID yourself.
+
+Note that after you delete a database, you can't re-use its ID for about 5 minutes.
 
 ### Delete protection
 
-Use delete protection to prevent accidental deletion of a database. You cannot delete a database with delete protection enabled until you disable delete protection. Delete protection is disabled by default. You can enable delete protection when you create the database or you can [update a database configuration](#update_database_configuration) to enable delete protection.
+Use delete protection to prevent accidental deletion of a database. You cannot delete a database with delete protection enabled until you disable delete protection. Delete protection is disabled by default. You can update the database configuration to [enable or disable delete protection](#update-dp) .
 
 ## Access a named database with a client library
 
@@ -229,7 +227,7 @@ Replace DATABASE\_ID with a database ID.
 
 To delete a database, use the console or command-line tool.
 
-If the database has the delete protection setting enabled, you must first [disable delete protection](#update_the_delete_protection_setting) .
+If the database has the delete protection setting enabled, you must first [disable delete protection](#update-dp) .
 
 If the database contains [App Engine search data](https://cloud.google.com/appengine/docs/legacy/standard/python/search) or [blob entities](https://cloud.google.com/appengine/docs/legacy/standard/python/blobstore) , you must delete that data first.
 
@@ -245,7 +243,7 @@ Deleting a database does not incur charges for delete operations.
 
 3.  In the **Delete database?** dialog, confirm deletion by typing the database ID in the text field. Click **Delete** . The console informs you of operation success or failure.
     
-    If the operation fails, [view the database details](#view_database_details) and verify that delete protection is disabled. To disable delete protection, see [Update the delete protection setting](#update_the_delete_protection_setting) .
+    If the operation fails, [view the database details](#view_database_details) and verify that delete protection is disabled. To disable delete protection, see [Update the delete protection setting](#update-dp) .
 
 ##### gcloud
 
