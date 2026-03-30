@@ -39,6 +39,68 @@ Follow the index management documentation to [create indexes](/firestore/native/
 3.  Fields that will be used in range or inequality operators in decreasing order of query constraint selectivity.
 4.  Fields that will be returned as part of a query in the index: including such fields in the index allows the index to cover the query and avoid having to fetch document from the primary storage.
 
-### Use query hints
+### Force an index or table scan
 
-If you have created a more suitable index for the query but the query engine is not using that index, you can override the query engine's index preference by using a query hint.
+When you query Firestore in Native Mode, it automatically uses any indexes that are likely to make the query more efficient. As a result, you don't need to specify an index for your queries. However, for queries that are critical for your workload, we recommend that you use the `  forceIndex  ` option for more consistent performance.
+
+In a few cases, Firestore in Native Mode might choose an index that causes query latency to increase. If you've followed the troubleshooting steps for performance regressions and confirmed that it makes sense to try a different index for the query, you can specify the index using the `  forceIndex  ` option.
+
+You can use the `  forceIndex  ` option on any input stage in Pipeline operations to override Firestore in Native Mode's default query plan and specify an index to use, or to force a table scan.
+
+#### Force a specific index
+
+To force the query to use a specific index, provide the index ID as a string to the `  forceIndex  ` option. You can find the index ID from the console or from error messages.
+
+The following example forces the planner to use index with ID `  CICAgOi36pgK  ` :
+
+``` text
+// Force Planner to use Index ID CICAgOi36pgK
+db.pipeline()
+  .collectionGroup({ collectionId: "customers", forceIndex: "CICAgOi36pgK" })
+  .limit(100)
+```
+
+Here are some use cases for forcing a specific index:
+
+  - Testing the performance of different indexes.
+  - Ensuring a specific, known-optimal index is used for a query.
+  - Overriding the optimizer when its default choice is suboptimal for a particular query.
+
+If the specified index is not found, the query fails.
+
+#### Force a table scan
+
+A table scan reads documents in the collection or collection group without using any secondary indexes. To force a table scan, set `  forceIndex  ` to `  primary  ` .
+
+The following example forces a table scan:
+
+``` text
+// Force Planner to only do a Full-Table Scan
+db.pipeline()
+  .collectionGroup({ collectionId: "customers", forceIndex: "primary" })
+  .limit(100)
+```
+
+You might use a table scan in the following cases:
+
+  - For very small collections where index overhead is not justified.
+  - For queries that access most of the documents in a collection.
+  - For debugging and performance comparisons.
+
+**Caution:** Table scans on large collections are slow and don't scale. They read all documents in the collection, which significantly increases read operation costs. For most production scenarios, we recommend relying on indexes instead of forcing table scans.
+
+#### Use `     forceIndex    ` with Query Explain
+
+You can use [Query Explain](/firestore/native/docs/enterprise-query-explain) , especially with the `  analyze  ` option, to observe the effects of `  forceIndex  ` :
+
+  - Verify that Firestore in Native Mode used the specified index in `  forceIndex  ` by checking the leaf nodes of the execution tree for the index ID.
+  - Confirm that a `  TableScan  ` node appears in the plan when using `  forceIndex: "primary"  ` .
+  - Compare the performance metrics—such as latency, documents scanned, and index entries scanned—with and without `  forceIndex  ` to fine-tune query performance.
+
+#### Best practices for `     forceIndex    `
+
+While `  forceIndex  ` provides more control over query execution, Firestore in Native Mode's query optimizer is generally efficient for most use cases. Consider the following best practices when using `  forceIndex  ` :
+
+  - Use `  forceIndex  ` judiciously. If you observe suboptimal performance with the default query plan, use [Query Explain](/firestore/native/docs/enterprise-query-explain) to diagnose the issue before forcing an index.
+  - When using `  forceIndex  ` , make sure to test your queries with realistic data volumes to understand their performance and cost characteristics.ß
+  - Avoid using `  forceIndex: "primary"  ` on large collections in production environments.

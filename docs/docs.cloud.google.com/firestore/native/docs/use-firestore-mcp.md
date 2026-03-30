@@ -21,22 +21,19 @@ This document describes how to use the Firestore remote Model Context Protocol (
 
 ### Required roles
 
-To get the permissions that you need to enable the Firestore MCP server and interact with Firestore documents, ask your administrator to grant you the following IAM roles on the project where you want to enable the Firestore MCP server:
+To get the permissions that you need to use the Firestore MCP server and interact with Firestore documents, ask your administrator to grant you the following IAM roles on the project where you want to use the Firestore MCP server:
 
-  - [Service Usage Admin](/iam/docs/roles-permissions/serviceusage#serviceusage.serviceUsageAdmin) ( `  roles/serviceusage.serviceUsageAdmin  ` )
   - Make MCP tool calls: [MCP Tool User](/iam/docs/roles-permissions/mcp#mcp.toolUser) ( `  roles/mcp.toolUser  ` )
   - Read and edit Firestore documents: [Firestore User](/iam/docs/roles-permissions/firestore#datastore.user) ( `  roles/datastore.user  ` )
 
 For more information about granting roles, see [Manage access to projects, folders, and organizations](/iam/docs/granting-changing-revoking-access) .
 
-These predefined roles contain the permissions required to enable the Firestore MCP server and interact with Firestore documents. To see the exact permissions that are required, expand the **Required permissions** section:
+These predefined roles contain the permissions required to use the Firestore MCP server and interact with Firestore documents. To see the exact permissions that are required, expand the **Required permissions** section:
 
 #### Required permissions
 
-The following permissions are required to enable the Firestore MCP server and interact with Firestore documents:
+The following permissions are required to use the Firestore MCP server and interact with Firestore documents:
 
-  - `  serviceusage.mcppolicy.get  `
-  - `  serviceusage.mcppolicy.update  `
   - Make MCP tool calls: `  mcp.tools.call  `
   - Read and edit Firestore documents:
       - `  datastore.entities.allocateIds  `
@@ -47,40 +44,6 @@ The following permissions are required to enable the Firestore MCP server and in
       - `  datastore.entities.update  `
 
 You might also be able to get these permissions with [custom roles](/iam/docs/creating-custom-roles) or other [predefined roles](/iam/docs/roles-overview#predefined) .
-
-## Enable or disable the Firestore MCP server
-
-You can enable or disable the Firestore MCP server in a project with the `  gcloud beta services mcp enable  ` command. For more information, see the following sections.
-
-### Enable the Firestore MCP server in a project
-
-**Note:** Starting on March 17, 2026, separate enablement for MCP servers will be removed. When the Firestore API is enabled in a project, you can use Firestore through its remote MCP endpoint. This update will be released gradually across different regions.
-
-If you are using different projects for your client credentials, such as service account keys, OAuth client ID or API keys, and for hosting your resources, then you must enable the Firestore service and the Firestore remote MCP server on both projects.
-
-To enable the Firestore MCP server in your Google Cloud project, run the following command:
-
-``` text
-gcloud beta services mcp enable firestore.googleapis.com \
-    --project=PROJECT_ID
-```
-
-Replace `  PROJECT_ID  ` with the Google Cloud project ID.
-
-The Firestore remote MCP server is enabled for use in your Google Cloud Project. If the Firestore service isn't enabled for your Google Cloud project, you are prompted to enable the service before enabling the Firestore remote MCP server.
-
-As a security best practice, we recommend that you enable MCP servers only for the services required for your AI application to function.
-
-### Disable the Firestore MCP server in a project
-
-To disable the Firestore MCP server in your Google Cloud project, run the following command:
-
-``` text
-gcloud beta services mcp disable SERVICE \
-    --project=PROJECT_ID
-```
-
-The Firestore MCP server is disabled for use in your Google Cloud Project.
 
 ## Authentication and authorization
 
@@ -120,7 +83,7 @@ In your AI application, look for a way to connect to a remote MCP server. You ar
 For the Firestore MCP server, enter the following as required:
 
   - **Server name** : Firestore MCP server
-  - **Server URL** or **Endpoint** : firestore.googleapis.com/mcp
+  - **Server URL** or **Endpoint** : https://firestore.googleapis.com/mcp
   - **Transport** : HTTP
   - **Authentication details** : Depending on how you want to authenticate, you can enter your Google Cloud credentials, your OAuth Client ID and secret, or an agent identity and credentials. For more information on authentication, see [Authenticate to MCP servers](/mcp/authenticate-mcp) .
   - **OAuth scope** : the [OAuth 2.0 scope](https://developers.google.com/identity/protocols/oauth2/scopes) that you want to use when connecting to the Firestore MCP server.
@@ -174,11 +137,11 @@ For more information about MCP security and governance, see [AI security and saf
 
 ### Use Model Armor
 
-Model Armor is a Google Cloud service designed to enhance the security and safety of your AI applications. It works by proactively screening LLM prompts and responses, protecting against various risks and supporting responsible AI practices. Whether you are deploying AI in your cloud environment, or on external cloud providers, Model Armor can help you prevent malicious input, verify content safety, protect sensitive data, maintain compliance, and enforce your AI safety and security policies consistently across your diverse AI landscape.
+[Model Armor](/model-armor/overview) is a Google Cloud service designed to enhance the security and safety of your AI applications. It works by proactively screening LLM prompts and responses, protecting against various risks and supporting responsible AI practices. Whether you are deploying AI in your cloud environment, or on external cloud providers, Model Armor can help you prevent malicious input, verify content safety, protect sensitive data, maintain compliance, and enforce your AI safety and security policies consistently across your diverse AI landscape.
 
-Model Armor is only available in specific regional locations. If Model Armor is enabled for a project, and a call to that project comes from an unsupported region, Model Armor makes a cross-regional call. For more information, see [Model Armor locations](/model-armor/locations) .
+Model Armor is only available in specific regional locations. If Model Armor is enabled for a project, and a call to that project comes from an unsupported region, then Model Armor makes a cross-regional call. For more information, see [Model Armor locations](/model-armor/locations) .
 
-**Caution:** Model Armor logs the entire payload if a request fails. This might expose sensitive information in the logs.
+**Caution:** If a request fails, Model Armor logs the entire payload. This might expose sensitive information in the logs.
 
 #### Enable Model Armor
 
