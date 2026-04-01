@@ -74,7 +74,7 @@ func listenDocument(ctx context.Context, w io.Writer, projectID, collection stri
          fmt.Fprintf(w, "Document no longer exists\n")
          return nil
      }
-     fmt.Fprintf(w, "Received document snapshot: %v\n", ssnap.Data))
+     fmt.Fprintf(w, "Received document snapshot: %v\n", snap.Data())
  }
 }
 ```

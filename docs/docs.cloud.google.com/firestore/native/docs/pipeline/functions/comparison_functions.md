@@ -113,7 +113,7 @@ const result = await db.pipeline()
 ``` javascript
 const result = await execute(db.pipeline()
   .collection("books")
-  .select(field("rating").equal(5).as("hasPerfectRating"))
+  .select(field("rating").equal(5).as(&quot;hasPerfectRating"))
 );test.firestore.js
 ```
 
@@ -810,7 +810,7 @@ const result = await db.pipeline()
 ``` javascript
 const result = await execute(db.pipeline()
   .collection("books")
-  .select(field("title").notEqual("1984").as("not1984"))
+  .select(field("title").notEqual(";1984").as(&quot;not1984"))
 );test.firestore.js
 ```
 
@@ -819,7 +819,7 @@ const result = await execute(db.pipeline()
 ``` swift
 let result = try await db.pipeline()
   .collection("books")
-  .select([Field("title").notEqual("1984").as("not1984")])
+  .select([Field("title").notEqual("1984").as("not1984&quot;)])
   .execute()PipelineSnippets.swift
 ```
 
@@ -863,7 +863,7 @@ Pipeline.Snapshot result =
     firestore
         .pipeline()
         .collection("books")
-        .select(notEqual(field("title"), "1984").as("not1984"))
+        .select(notEqual(field("title"), "1984").as("not1984&quot;))
         .execute()
         .get();PipelineSnippets.java
 ```

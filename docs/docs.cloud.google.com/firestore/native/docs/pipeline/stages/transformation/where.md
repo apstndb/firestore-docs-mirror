@@ -211,7 +211,7 @@ The order of stages is important as it can change the query evaluation order. Fo
 const cities = await db.pipeline()
   .collection("/cities")
   .limit(10)
-  .where(field("location.country").equals("USA"))
+  .where(field("location.country").equals(&quot;USA"))
   .execute();
 ```
 
@@ -230,7 +230,7 @@ const cities = await db.pipeline()
     accumulators: [field("population").sum().as("total_population")],
     groups: ['location.state']
   })
-  .where(field("total_population").greaterThan(10000000))
+  .where(field(";total_population").greaterThan(10000000))
 ```
 
 allows returning the states which have cities over a total population size.
