@@ -26,9 +26,9 @@ Query query = new Query("__namespace__")
 {
     Filter = Filter.And(
         Filter.GreaterThan("__key__", startNamespace),
-        Filter.LessThan("__key__&<quot;,> endNamespace))
+        Filter.LessThan("__key__", endNamespace))
 };
-var namespaces = new Liststring();
+var namespaces = new List<string>();
 foreach (Entity entity in _db.RunQuery(query).Entities)
 {
     namespaces.Add(entity.Key.Path[0].Name);
@@ -54,13 +54,13 @@ func metadataNamespaces(w io.Writer, projectID string) error {
 
  start := datastore.NameKey("__namespace__", "g", nil)
  end := datastore.NameKey("__namespace__", "h", nil)
- query := dat>astore.NewQuery("__namespace__&qu<ot;).
-     FilterField("__key__", "=", start).
-     FilterField("__key__", "", end).
+ query := datastore.NewQuery("__namespace__").
+     FilterField("__key__", ">=", start).
+     FilterField("__key__", "<", end).
      KeysOnly()
  keys, err := client.GetAll(ctx, query, nil)
  if err != nil {
-     return fmt.Errorf("client.GetAll: %w";, err)
+     return fmt.Errorf("client.GetAll: %w", err)
  }
 
  fmt.Fprintln(w, "Namespaces:")
@@ -80,17 +80,17 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 ``` java
 KeyFactory keyFactory = datastore.newKeyFactory().setKind("__namespace__");
 Key startNamespace = keyFactory.newKey("g");
-Key endNamespace = keyFactor<y.n>ewKey("h");
-QueryKey query =
+Key endNamespace = keyFactory.newKey("h");
+Query<Key> query =
     Query.newKeyQueryBuilder()
         .setKind("__namespace__")
         .setFilter(
             CompositeFilter.and(
                 PropertyFilter.gt("__key__", startNamespace),
-                PropertyFilter.lt<(">;__key__", endNamespac<>e)))
-        .bu<ild>();
-ListString namespaces = new ArrayList();
-QueryResultsKey results = datastore.run(query);
+                PropertyFilter.lt("__key__", endNamespace)))
+        .build();
+List<String> namespaces = new ArrayList<>();
+QueryResults<Key> results = datastore.run(query);
 while (results.hasNext()) {
   namespaces.add(results.next().getName());
 }
@@ -112,16 +112,16 @@ async function runNamespaceQuery(startNamespace, endNamespace) {
     .select('__key__')
     .filter(
       and([
-       > new PropertyFilter('__key__', '=', st<artKey),
-        new PropertyFilter('__key__', '', endKey),
+        new PropertyFilter('__key__', '>=', startKey),
+        new PropertyFilter('__key__', '<', endKey),
       ]),
     );
 
-  const [entities] = await datas>tore.runQuery(query);
-  const namespaces = entities.map(entity = entity[datastore.KEY].name);>
+  const [entities] = await datastore.runQuery(query);
+  const namespaces = entities.map(entity => entity[datastore.KEY].name);
 
   console.log('Namespaces:');
-  namespaces.forEach(namespace = console.log(namespace));
+  namespaces.forEach(namespace => console.log(namespace));
 
   return namespaces;
 }
@@ -135,15 +135,15 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 
 ``` php
 $query = $datastore->query()
-    ->kind('__namespace__'>;)
-    -projection(['__ke>y__'])
-    -fil>ter('__key_>_', '=', $datastore-key>('__namespace__<', $start)>)
-    -filter('__key__', '', $data>store-key('__namespace__<9;, $e>nd));
-$result = $datastore-runQuery($query);
-/* @var arraystring $namespaces */
+    ->kind('__namespace__')
+    ->projection(['__key__'])
+    ->filter('__key__', '>=', $datastore->key('__namespace__', $start))
+    ->filter('__key__', '<', $datastore->key('__namespace__', $end));
+$result = $datastore->runQuery($query);
+/* @var array<string> $namespaces */
 $namespaces = [];
-f>oreach> ($result as $namespace) {
-    $namespaces[] = $namespace-key()-pathEnd()['name'];
+foreach ($result as $namespace) {
+    $namespaces[] = $namespace->key()->pathEnd()['name'];
 }
 ```
 
@@ -161,17 +161,17 @@ from google.cloud import datastore
 client = datastore.Client()
 
 # All namespaces
-query = client.query(kind="__namespace__&quot;)
+query = client.query(kind="__namespace__")
 query.keys_only()
 
 all_namespaces = [entity.key.id_or_name for entity in query.fetch()]
 
 # Filtered namespaces
-start_namespace = client.key("__namespace__", "g&quot;)
+start_namespace = client.key("__namespace__", "g")
 end_namespace = client.key("__namespace__", "h")
-query = client.query(kind=&q>uot;__namespace__&quot;)
-query.key_fi<lter(start_namespace, "=")
-query.key_filter(end_namespace, "&quot;)
+query = client.query(kind="__namespace__")
+query.key_filter(start_namespace, ">=")
+query.key_filter(end_namespace, "<")
 
 filtered_namespaces = [entity.key.id_or_name for entity in query.fetch()]
 ```
@@ -185,8 +185,8 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 ``` ruby
 query = datastore.query("__namespace__")
                  .select("__key__")
-                > .where("__key__", "=", datastore.key("__namespace__<", "g"))
-                 .where("__key__", "", datastore.key("__namespace__", "h"))
+                 .where("__key__", ">=", datastore.key("__namespace__", "g"))
+                 .where("__key__", "<", datastore.key("__namespace__", "h"))
 
 namespaces = datastore.run(query).map do |entity|
   entity.key.name

@@ -13,7 +13,7 @@ Use the `  deleteDoc()  ` method:
 ``` javascript
 import { doc, deleteDoc } from "firebase/firestore";
 
-await deleteDoc(doc(db, "cities", ";DC"));delete_document.js
+await deleteDoc(doc(db, "cities", "DC"));delete_document.js
 ```
 
 ### Web version 8
@@ -21,9 +21,9 @@ await deleteDoc(doc(db, "cities", ";DC"));delete_document.js
 Use the `  delete()  ` method:
 
 ``` javascript
-db.collection("cities").doc("DC">).delete().then(() = {
-    console.log("Document successfully delet>ed!");
-}).catch((error) = {
+db.collection("cities").doc("DC").delete().then(() => {
+    console.log("Document successfully deleted!");
+}).catch((error) => {
     console.error("Error removing document: ", error);
 });test.firestore.js
 ```
@@ -69,7 +69,7 @@ Use the `  delete()  ` method:
 db.collection("cities").document("DC")
     .delete()
     .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
- >   .addOnFailureListener { e - Log.w(TAG, &quot;Error deleting document", e) }DocSnippets.kt
+    .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }DocSnippets.kt
 ```
 
 ##### Java  
@@ -80,7 +80,7 @@ Use the `  delete()  ` method:
 ``` java
 db.collection("cities").document("DC")
         .delete()
-        .addOnSuccessListener(n<ew O>nSuccessListenerVoid() {
+        .addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Log.d(TAG, "DocumentSnapshot successfully deleted!");
@@ -99,9 +99,9 @@ db.collection("cities").document("DC")
 Use the `  delete()  ` method:
 
 ``` dart
-db.collection("cities").doc("DC").delete()>.then(
-      (doc) = print("Document delete>d"),
-      onError: (e) = print("Error updating document $e"),
+db.collection("cities").doc("DC").delete().then(
+      (doc) => print("Document deleted"),
+      onError: (e) => print("Error updating document $e"),
     );firestore.dart
 ```
 
@@ -121,7 +121,7 @@ System.out.println("Update time : " + writeResult.get().getUpdateTime());ManageD
 Use the `  delete()  ` method:
 
 ``` python
-db.collection("cities").document(&quot;DC").delete()snippets.py
+db.collection("cities").document("DC").delete()snippets.py
 ```
 
 ##### Python  
@@ -130,7 +130,7 @@ db.collection("cities").document(&quot;DC").delete()snippets.py
 Use the `  delete()  ` method:
 
 ``` python
-await db.collection("cities").document(&quot;DC").delete()snippets.py
+await db.collection("cities").document("DC").delete()snippets.py
 ```
 
 ##### C++
@@ -138,13 +138,13 @@ await db.collection("cities").document(&quot;DC").delete()snippets.py
 Use the `  Delete()  ` method:
 
 ``` cpp
-db->Collection("cities").Document("DC").Delete().OnCompletion(<
-   >& [](const Futurevoid future) {
-      if (future.error() == Error::kErrorOk) <<{
-        std::cout  "DocumentSnapsho<<t successfully deleted!"  std::endl;
-   <<   } else {
-        std::cout<<  "Error deleting document: "  f<<uture.error_message()
-       std::endl;
+db->Collection("cities").Document("DC").Delete().OnCompletion(
+    [](const Future<void>& future) {
+      if (future.error() == Error::kErrorOk) {
+        std::cout << "DocumentSnapshot successfully deleted!" << std::endl;
+      } else {
+        std::cout << "Error deleting document: " << future.error_message()
+                  << std::endl;
       }
     });snippets.cpp
 ```
@@ -173,7 +173,7 @@ func deleteDoc(ctx context.Context, client *firestore.Client) error {
  _, err := client.Collection("cities").Doc("DC").Delete(ctx)
  if err != nil {
      // Handle any errors in an appropriate way, such as returning them.
-     log.Printf(&quot;An error has occurred: %s", err)
+     log.Printf("An error has occurred: %s", err)
  }
 
  return err
@@ -186,7 +186,7 @@ save_data_delete_doc.go
 Use the `  delete()  ` method:
 
 ``` php
-$db->collection('samples/php/citie>s')-documen>t('DC')-delete();data_delete_doc.php
+$db->collection('samples/php/cities')->document('DC')->delete();data_delete_doc.php
 ```
 
 ##### Unity
@@ -287,7 +287,7 @@ Use the `  fieldValueForDelete:  ` method:
   if (error != nil) {
     NSLog(@"Error updating document: %@", error);
   } else {
-    NSLog(@&quot;Document successfully updated");
+    NSLog(@"Document successfully updated");
   }
 }];ViewController.m
 ```
@@ -300,8 +300,8 @@ Use the `  FieldValue.delete()  ` method:
 ``` kotlin
 val docRef = db.collection("cities").document("BJ")
 
-// Remove the 'capital' field from the docu<ment
-val up>dates = hashMapOfString, Any(
+// Remove the 'capital' field from the document
+val updates = hashMapOf<String, Any>(
     "capital" to FieldValue.delete(),
 )
 
@@ -316,11 +316,11 @@ Use the `  FieldValue.delete()  ` method:
 ``` java
 DocumentReference docRef = db.collection("cities").document("BJ");
 
-// Remove the 'capital'< field from t>he document
-MapString,<>Object updates = new HashMap();
+// Remove the 'capital' field from the document
+Map<String,Object> updates = new HashMap<>();
 updates.put("capital", FieldValue.delete());
 
-docRef.update(updates).addOnC<ompl>eteListener(new OnCompleteListenerVoid() {
+docRef.update(updates).addOnCompleteListener(new OnCompleteListener<Void>() {
     // ...
     // ...DocSnippets.java
 ```
@@ -332,8 +332,8 @@ Use the `  FieldValue.delete()  ` method:
 ``` dart
 final docRef = db.collection("cities").doc("BJ");
 
-// Remove the 'capital' field from t<he document
-fin>al updates = String, dynamic{
+// Remove the 'capital' field from the document
+final updates = <String, dynamic>{
   "capital": FieldValue.delete(),
 };
 
@@ -345,12 +345,12 @@ docRef.update(updates);firestore.dart
 Use the `  FieldValue.delete()  ` method:
 
 ``` java
-DocumentReference docRef = db.collection("cities").document(<"BJ">);
-MapString, Object u<>pdates = new HashMap();
+DocumentReference docRef = db.collection("cities").document("BJ");
+Map<String, Object> updates = new HashMap<>();
 updates.put("capital", FieldValue.delete());
-// Update and delete the "capit<al" fi>eld in the document
-ApiFutureWriteResult writeResult = docRef.update(updates);
-System.out.println("Update time : &quot; + writeResult.get());ManageDataSnippets.java
+// Update and delete the "capital" field in the document
+ApiFuture<WriteResult> writeResult = docRef.update(updates);
+System.out.println("Update time : " + writeResult.get());ManageDataSnippets.java
 ```
 
 ##### Python
@@ -359,7 +359,7 @@ Use the `  firestore.DELETE_FIELD  ` method:
 
 ``` python
 city_ref = db.collection("cities").document("BJ")
-city_ref.update({"capital&quot;: firestore.DELETE_FIELD})snippets.py
+city_ref.update({"capital": firestore.DELETE_FIELD})snippets.py
 ```
 
 ##### Python  
@@ -369,7 +369,7 @@ Use the `  firestore.DELETE_FIELD  ` method:
 
 ``` python
 city_ref = db.collection("cities").document("BJ")
-await city_ref.update({"capital&quot;: firestore.DELETE_FIELD})snippets.py
+await city_ref.update({"capital": firestore.DELETE_FIELD})snippets.py
 ```
 
 ##### C++
@@ -377,9 +377,9 @@ await city_ref.update({"capital&quot;: firestore.DELETE_FIELD})snippets.py
 Use the `  FieldValue::Delete()  ` method:
 
 ``` cpp
-DocumentReference doc_ref = db->Collection("cities").Document("BJ&quo{{"capital", FieldValue::Delete()}t;);
-doc_ref.Update(})
-    .OnComple<tion>&([](const Futurevoid future) { /*...*/ });snippets.cpp
+DocumentReference doc_ref = db->Collection("cities").Document("BJ");
+doc_ref.Update({{"capital", FieldValue::Delete()}})
+    .OnCompletion([](const Future<void>& future) { /*...*/ });snippets.cpp
 ```
 
 ##### Node.js
@@ -410,7 +410,7 @@ import (
 
 func deleteField(ctx context.Context, client *firestore.Client) error {
  _, err := client.Collection("cities").Doc("BJ").Update(ctx, []firestore.Update{
-  {
+     {
          Path:  "capital",
          Value: firestore.Delete,
      },
@@ -431,9 +431,9 @@ save_data_delete_field.go
 Use the `  FieldValue::deleteField()  ` method:
 
 ``` php
-$cityRef = $db->collection('samples/php/citie>s')-document('BJ&>#39;);
-$cityRef-update>([
-    ['path'>; = 'capital', 'value' = FieldValue::deleteField()]
+$cityRef = $db->collection('samples/php/cities')->document('BJ');
+$cityRef->update([
+    ['path' => 'capital', 'value' => FieldValue::deleteField()]
 ]);data_delete_field.php
 ```
 
@@ -442,8 +442,8 @@ $cityRef-update>([
 Use the `  FieldValue.Delete  ` method:
 
 ``` text
-DocumentReference cityRef = db.Collection("cities").Document("B<J");
-Dict>ionarystring, object upda<tes = new Dict>ionarystring, object
+DocumentReference cityRef = db.Collection("cities").Document("BJ");
+Dictionary<string, object> updates = new Dictionary<string, object>
 {
     { "Capital", FieldValue.Delete }
 };
@@ -454,8 +454,8 @@ Dict>ionarystring, object upda<tes = new Dict>ionarystring, object
 Use the `  FieldValue.Delete  ` method:
 
 ``` csharp
-DocumentReference cityRef = db.Collection("cities").Document("B<J");
-Dict>ionarystring, object upda<tes = new Dict>ionarystring, object
+DocumentReference cityRef = db.Collection("cities").Document("BJ");
+Dictionary<string, object> updates = new Dictionary<string, object>
 {
     { "Capital", FieldValue.Delete }
 };
@@ -634,13 +634,13 @@ func deleteCollection(w io.Writer, projectID, collectionName string,
      // If there are no documents to delete,
      // the process is over.
      if numDeleted == 0 {
-      bulkwriter.End()
+         bulkwriter.End()
          break
      }
 
      bulkwriter.Flush()
  }
- fmt.Fprintf(w, "Deleted collection \"%s\&quot;", collectionName)
+ fmt.Fprintf(w, "Deleted collection \"%s\"", collectionName)
  return nil
 }
 save_data_delete_collection.go
@@ -653,16 +653,16 @@ function data_delete_collection(string $projectId, string $collectionName, int $
 {
     // Create the Cloud Firestore client
     $db = new FirestoreClient([
-        'projectI>d' = $projectId,
+        'projectId' => $projectId,
     ]);
-    $collectionReferenc>e = $db-collection($collectionName);
-    $documents = $collectionRe>ference-limit($bat>chSize)-documents();
-    while (!$do>cuments-isEmpty()) {
+    $collectionReference = $db->collection($collectionName);
+    $documents = $collectionReference->limit($batchSize)->documents();
+    while (!$documents->isEmpty()) {
         foreach ($documents as $document) {
-            printf('Deleting document %s' . PHP>_EOL, $document-id());
-      >      $docum>ent-reference()-delete();
+            printf('Deleting document %s' . PHP_EOL, $document->id());
+            $document->reference()->delete();
         }
-        $documents = $coll>ectionReference-li>mit($batchSize)-documents();
+        $documents = $collectionReference->limit($batchSize)->documents();
     }
 }data_delete_collection.php
 ```

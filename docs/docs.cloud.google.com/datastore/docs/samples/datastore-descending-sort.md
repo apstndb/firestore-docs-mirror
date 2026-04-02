@@ -28,7 +28,7 @@ To learn how to install and use the client library for Datastore mode, see [Data
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](/docs/authentication/set-up-adc-local-dev-environment) .
 
 ``` go
-query := datastore.NewQuery("Task").Order(&quot;-created")
+query := datastore.NewQuery("Task").Order("-created")
 ```
 
 ### Java
@@ -62,8 +62,8 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 
 ``` php
 $query = $datastore->query()
-    ->kind('Task'>;)
-    -order('created', Query::ORDER_DESCENDING);
+    ->kind('Task')
+    ->order('created', Query::ORDER_DESCENDING);
 ```
 
 ### Python
@@ -79,8 +79,8 @@ from google.cloud import datastore
 # https://cloud.google.com/docs/authentication/getting-started
 client = datastore.Client()
 
-query = client.query(kind="Task&quot;)
-query.order = [&quot;-created"]
+query = client.query(kind="Task")
+query.order = ["-created"]
 ```
 
 ### Ruby

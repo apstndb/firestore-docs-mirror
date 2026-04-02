@@ -670,6 +670,7 @@ https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collec
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/database
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/documents
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/literals
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/subcollection
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/add_fields
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/aggregate
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/distinct

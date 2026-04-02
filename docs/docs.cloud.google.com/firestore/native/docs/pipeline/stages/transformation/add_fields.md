@@ -8,7 +8,7 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 Add new fields to the documents produced by the previous stage.
 
-The generated documents will contain all the fields from the previous stage along with all newly added fields, overwriting any field that shares the same name from the previous document.
+The generated documents will contain all the fields from the previous stage along with all newly added fields, overwriting any field that shares the same name from the previous document. The `  add_fields(...)  ` stage allows updating nested fields by specifying a nested field name as the alias.
 
 ## Syntax
 
@@ -17,7 +17,7 @@ The generated documents will contain all the fields from the previous stage alon
 ``` text
 const results = await db.pipeline()
   .collection("/users")
-  .addFields(field('first_name').concat(' ', field('last_name')).as('full_name'))
+  .addFields(field("first_name").concat(" ", field("last_name")).as("full_name"))
   .execute();
 ```
 
@@ -90,9 +90,7 @@ Pipeline.Snapshot result =
 
 ### Overlapping Fields
 
-Assigning an expression an alias that is already in the documents from the previous stage will cause the `  add_fields(...)  ` stage to overwrite the previous field.
-
-This can be used to chain up multiple expressions over the same field name, like:
+Assigning an expression an alias that is already in the documents from the previous stage will cause the `  add_fields(...)  ` stage to overwrite the previous field. This can be used to chain up multiple expressions over the same field name, like:
 
 ### Node.js
 
@@ -104,9 +102,9 @@ const results = await db.pipeline()
   .execute();
 ```
 
-### Nesting Fields
+### Nested Fields
 
-While the alias assigned to the newly added fields can contain special characters like `  .  ` , these are treated as top-level fields. For example:
+Nested fields (e.g. those with `  .  ` syntax) can be updated as part of this stage. This makes it possible to update a field "in-place" such as in:
 
 ### Node.js
 
@@ -117,4 +115,4 @@ const results = await db.pipeline()
   .execute();
 ```
 
-adds a new top-level field `  address.city  ` rather than merging the result of the expression back into the nested map under `  address  ` .
+Assigning an expression to a nested field will implicitly create any missing parent fields as well.

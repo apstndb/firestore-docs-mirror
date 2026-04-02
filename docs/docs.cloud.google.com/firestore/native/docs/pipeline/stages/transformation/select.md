@@ -99,15 +99,22 @@ Pipeline.Snapshot result =
 
 ### Position of a Select Stage
 
-There are no restrictions on when a select stage can be used, but any fields not included in a select stage won't be accessible to subsequent stages in a pipeline.
-
-For example, to select only the `  name  ` and `  location  ` fields of all cities in Canada from the following dataset:
+There are no restrictions on when a select stage can be used, but any fields not included in a select stage won't be accessible to subsequent stages in a pipeline. For example, to select only the `  name  ` and `  location  ` fields of all cities in Canada from the following dataset:
 
 ### Node.js
 
 ``` text
-await db.collection('cities').doc('SF').set({name: 'San Francisco', population: 800000, location: {country: 'USA', state: 'California'}});
-await db.collection('cities').doc('TO').set({name: 'Toronto', population: 3000000, location: {country: 'Canada', province: 'Ontario'}});
+await db.collection('cities').doc('SF').set({
+  name: 'San Francisco',
+  population: 800000,
+  location: {country: 'USA', state: 'California'}
+});
+
+await db.collection('cities').doc('TO').set({
+  name: 'Toronto',
+  population: 3000000,
+  location: {country: 'Canada', province: 'Ontario'}
+});
 ```
 
 The following pipeline can be used:
@@ -144,16 +151,30 @@ No documents will be produced, because `  location.country  ` has been removed f
 
 ### Select Nested Fields
 
-The Select stage can be used to select nested fields from both maps and arrays.
-
-For example, to select the nested `  country  ` field and first entry of the `  landmarks  ` array from the following documents:
+The `  select(...)  ` stage can be used to select nested fields from both maps and arrays. For example, to select the nested `  country  ` field and first entry of the `  landmarks  ` array from the following documents:
 
 ### Node.js
 
 ``` text
-await db.collection('cities').doc('SF').set({name: 'San Francisco', population: 800000, location: {country: 'USA', state: 'California'}, landmarks: ['Golden Gate Bridge', 'Alcatraz']});
-await db.collection('cities').doc('TO').set({name: 'Toronto', population:  3000000, province: 'ON', location: {country: 'Canada', province: 'Ontario'}, landmarks: ['CN Tower', 'Casa Loma']});
-await db.collection('cities').doc('AT').set({name: 'Atlantis', population: null});
+await db.collection('cities').doc('SF').set({
+  name: 'San Francisco',
+  population: 800000,
+  location: { country: 'USA', state: 'California' },
+  landmarks: [ 'Golden Gate Bridge', 'Alcatraz' ]
+});
+
+await db.collection('cities').doc('TO').set({
+  name: 'Toronto',
+  population:  3000000,
+  province: 'ON',
+  location: { country: 'Canada', province: 'Ontario' },
+  landmarks: [ 'CN Tower', 'Casa Loma' ]
+});
+
+await db.collection('cities').doc('AT').set({
+  name: 'Atlantis',
+  population: null
+});
 ```
 
 The following pipeline can be used:
@@ -163,7 +184,10 @@ The following pipeline can be used:
 ``` text
 const locations = await db.pipeline()
   .collection("/cities")
-  .select(field("name").as("city"), field("location.country").as("country"), field("landmarks").arrayGet(0).as("topLandmark"))
+  .select(
+    field("name").as("city"),
+    field("location.country").as("country"),
+    field("landmarks").offset(0).as("topLandmark"))
   .execute();
 ```
 
@@ -175,4 +199,20 @@ Which produces the following documents:
 {city: 'Atlantis'}
 ```
 
-If a nested map value or array value does not exist, it is not included in the resulting document. Array and map access in the select stage behaves identically to the `  array_get  ` and `  map_get  ` functions, respectively.
+If a nested map value or array value does not exist, it is not included in the resulting document. Array and map access in the select stage behaves identically to the `  offset(...)  ` and `  get_field(...)  ` functions, respectively.
+
+### Assign Nested Fields
+
+The result of an expression can also be assigned to a nested field, making it possible to have the `  select(...)  ` stage return a subset of nested fields from the previous stage. For example the following can be used to ensure only the `  city  ` & `  state  ` information is returned while still preserving the document's original shape:
+
+### Node.js
+
+``` text
+const results = await db.pipeline()
+  .collection("/users")
+  .addFields(
+    field("__name__"),
+    field("address.city").as("address.city"),
+    field("address.state").as("address.state"))
+  .execute();
+```

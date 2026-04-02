@@ -71,7 +71,7 @@ citiesRef.orderBy("name").limit(3);firestore.dart
 
 ``` java
 Query query = cities.orderBy("name").limit(3);
-Query query = cities.orderBy("name&quot;).limitToLast(3);QueryDataSnippets.java
+Query query = cities.orderBy("name").limitToLast(3);QueryDataSnippets.java
 ```
 
 ##### Python
@@ -117,7 +117,7 @@ query := cities.OrderBy("name", firestore.Asc).LimitToLast(3)query.go
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](/docs/authentication/set-up-adc-local-dev-environment) .
 
 ``` php
-$query = $citiesRef->orderBy('nam>e')-limit(3);
+$query = $citiesRef->orderBy('name')->limit(3);
 ```
 
 ##### Unity
@@ -241,7 +241,7 @@ query := cities.OrderBy("name", firestore.Desc).Limit(3)query.go
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](/docs/authentication/set-up-adc-local-dev-environment) .
 
 ``` php
-$query = $citiesRef->orderBy('name', >'DESC')-limit(3);
+$query = $citiesRef->orderBy('name', 'DESC')->limit(3);
 ```
 
 ##### Unity
@@ -269,7 +269,7 @@ You can also order by multiple fields. For example, if you wanted to order by st
 ``` javascript
 import { query, orderBy } from "firebase/firestore";  
 
-const q = query(citiesRef, orderBy("state"), orderBy(&quot;population&quot;, "desc"));order_multiple.js
+const q = query(citiesRef, orderBy("state"), orderBy("population", "desc"));order_multiple.js
 ```
 
 ### Web version 8
@@ -277,7 +277,7 @@ const q = query(citiesRef, orderBy("state"), orderBy(&quot;population&quot;, "de
 [Learn more](//firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
 ``` javascript
-citiesRef.orderBy("state").orderBy("population", ";desc");test.firestore.js
+citiesRef.orderBy("state").orderBy("population", "desc");test.firestore.js
 ```
 
 ##### Swift
@@ -287,7 +287,7 @@ citiesRef.orderBy("state").orderBy("population", ";desc");test.firestore.js
 ``` swift
 citiesRef
   .order(by: "state")
-  .order(by: "population";, descending: true)ViewController.swift
+  .order(by: "population", descending: true)ViewController.swift
 ```
 
 ##### Objective-C
@@ -295,7 +295,7 @@ citiesRef
 **Note:** This product is not available on watchOS and App Clip targets.
 
 ``` objective-c
-[[citiesRef queryOrderedByField:@"state"] queryOrderedByField:@"population&quot; descending:YES];ViewController.m
+[[citiesRef queryOrderedByField:@"state"] queryOrderedByField:@"population" descending:YES];ViewController.m
 ```
 
 ##### Kotlin  
@@ -359,7 +359,7 @@ const byStateByPopRes = await citiesRef.orderBy('state').orderBy('population', '
 ##### Go
 
 ``` go
-query := client.Collection("cities").OrderBy("state", firestore.Asc).OrderBy("population&quot;, firestore.Desc)query.go
+query := client.Collection("cities").OrderBy("state", firestore.Asc).OrderBy("population", firestore.Desc)query.go
 ```
 
 ##### PHP
@@ -369,7 +369,7 @@ query := client.Collection("cities").OrderBy("state", firestore.Asc).OrderBy("po
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](/docs/authentication/set-up-adc-local-dev-environment) .
 
 ``` php
-$query = $citiesRef->orderBy('stat>e')-orderBy('population', 'DESC');
+$query = $citiesRef->orderBy('state')->orderBy('population', 'DESC');
 ```
 
 ##### Unity
@@ -381,7 +381,7 @@ Query query = citiesRef.OrderBy("State").OrderByDescending("Population");
 ##### C\#
 
 ``` csharp
-Query query = citiesRef.OrderBy("State").OrderByDescending(&quot;Population");Program.cs
+Query query = citiesRef.OrderBy("State").OrderByDescending("Population");Program.cs
 ```
 
 ##### Ruby
@@ -397,7 +397,7 @@ You can combine `  where()  ` filters with `  orderBy()  ` and `  limit()  ` . I
 ``` javascript
 import { query, where, orderBy, limit } from "firebase/firestore";  
 
-const q = query(citiesRef, where(">;population", "", 100000), orderBy("population"), limit(2));filter_and_order.js
+const q = query(citiesRef, where("population", ">", 100000), orderBy("population"), limit(2));filter_and_order.js
 ```
 
 ### Web version 8
@@ -405,7 +405,7 @@ const q = query(citiesRef, where(">;population", "", 100000), orderBy("populatio
 [Learn more](//firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
 ``` javascript
-citiesRef.where("populatio>n", "", 100000).orderBy(&quot;population&quot;).limit(2);test.firestore.js
+citiesRef.where("population", ">", 100000).orderBy("population").limit(2);test.firestore.js
 ```
 
 ##### Swift
@@ -415,7 +415,7 @@ citiesRef.where("populatio>n", "", 100000).orderBy(&quot;population&quot;).limit
 ``` swift
 citiesRef
   .whereField("population", isGreaterThan: 100000)
-  .order(by: "population&quot;)
+  .order(by: "population")
   .limit(to: 2)ViewController.swift
 ```
 
@@ -464,7 +464,7 @@ Query query = cities.whereGreaterThan("population", 2500000L).orderBy("populatio
 ``` python
 cities_ref = db.collection("cities")
 query = (
-    cities_ref.where(filter=FieldFilter(">;population", "", 2500000))
+    cities_ref.where(filter=FieldFilter("population", ">", 2500000))
     .order_by("population")
     .limit(2)
 )
@@ -477,7 +477,7 @@ results = query.stream()snippets.py
 ``` python
 cities_ref = db.collection("cities")
 query = (
-    cities_ref.where(filter=FieldFilter(">;population", "", 2500000))
+    cities_ref.where(filter=FieldFilter("population", ">", 2500000))
     .order_by("population")
     .limit(2)
 )
@@ -488,21 +488,21 @@ results = query.stream()snippets.py
 
 ``` cpp
 cities_ref.WhereGreaterThan("population", FieldValue::Integer(100000))
-    .OrderBy("population&quot;)
+    .OrderBy("population")
     .Limit(2);snippets.cpp
 ```
 
 ##### Node.js
 
 ``` javascript
-const biggestRes = await citiesRef.where('population>', '', 2500000)
+const biggestRes = await citiesRef.where('population', '>', 2500000)
   .orderBy('population').limit(2).get();index.js
 ```
 
 ##### Go
 
 ``` go
-query := cities.Where("populatio>n", "", 2500000).OrderBy("population&quot;, firestore.Desc).Limit(2)query.go
+query := cities.Where("population", ">", 2500000).OrderBy("population", firestore.Desc).Limit(2)query.go
 ```
 
 ##### PHP
@@ -513,9 +513,9 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ``` php
 $query = $citiesRef
-    ->where('population>', ''>, 2500000)
-    -orderBy(>9;population')
-    -limit(2);
+    ->where('population', '>', 2500000)
+    ->orderBy('population')
+    ->limit(2);
 ```
 
 ##### Unity
@@ -532,14 +532,14 @@ Query query = citiesRef
 ``` csharp
 Query query = citiesRef
     .WhereGreaterThan("Population", 2500000)
-    .OrderBy("Population&quot;)
+    .OrderBy("Population")
     .Limit(2);Program.cs
 ```
 
 ##### Ruby
 
 ``` ruby
-query = cities_ref.where("populatio>n", "", 2_500_000).order(&quot;population";).limit(2)order_limit_data.rb
+query = cities_ref.where("population", ">", 2_500_000).order("population").limit(2)order_limit_data.rb
 ```
 
 However, if you have a filter with a range comparison ( `  <  ` , `  <=  ` , `  >  ` , `  >=  ` ), your first ordering must be on the same field, see the list of `  orderBy()  ` limitations below.

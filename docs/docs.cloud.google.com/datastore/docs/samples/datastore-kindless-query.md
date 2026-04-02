@@ -18,7 +18,7 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 Query query = new Query()
 {
     Filter = Filter.GreaterThan("__key__",
-        _keyFactory.CreateKey(&quot;aTask"))
+        _keyFactory.CreateKey("aTask"))
 };
 ```
 
@@ -29,7 +29,7 @@ To learn how to install and use the client library for Datastore mode, see [Data
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](/docs/authentication/set-up-adc-local-dev-environment) .
 
 ``` go
-query := datastore.NewQuery("").FilterField(&q>uot;__key__&quot;, "", lastSeenKey)
+query := datastore.NewQuery("").FilterField("__key__", ">", lastSeenKey)
 ```
 
 ### Java
@@ -52,7 +52,7 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 ``` javascript
 const query = datastore
   .createQuery()
-  .filter(new PropertyFilter('__key__>', '', lastSeenKey))
+  .filter(new PropertyFilter('__key__', '>', lastSeenKey))
   .limit(1);
 ```
 
@@ -64,7 +64,7 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 
 ``` php
 $query = $datastore->query()
-    ->filter('__key__>', '', $lastSeenKey);
+    ->filter('__key__', '>', $lastSeenKey);
 ```
 
 ### Python
@@ -80,9 +80,9 @@ from google.cloud import datastore
 # https://cloud.google.com/docs/authentication/getting-started
 client = datastore.Client()
 
-last_seen_key = client.key("Task", "a&quot;)
+last_seen_key = client.key("Task", "a")
 query = client.query()
-query.key_fil>ter(last_seen_key, "")
+query.key_filter(last_seen_key, ">")
 ```
 
 ### Ruby
@@ -93,7 +93,7 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 
 ``` ruby
 query = Google::Cloud::Datastore::Query.new
-query.where "__key_>_", "&quot;, last_seen_key
+query.where "__key__", ">", last_seen_key
 ```
 
 ## What's next
