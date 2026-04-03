@@ -177,7 +177,7 @@ For a complete list of multi-regional and regional hostnames, see [Firestore loc
 
 ## Restrict global API endpoint usage
 
-To help enforce the use of regional and multi-regional endpoints, use the `  constraints/gcp.restrictEndpointUsage  ` organization policy constraint to block requests to the global API endpoint. For more information, see [Restricting endpoint usage](/assured-workloads/docs/restrict-endpoint-usage) .
+To help enforce the use of regional and multi-regional endpoints, use the `  constraints/gcp.restrictEndpointUsage  ` organization policy constraint to block requests to the global API endpoint. For more information, see [Restrict endpoint usage](/docs/security/compliance/restrict-endpoint-usage) .
 
 ## What's next
 
