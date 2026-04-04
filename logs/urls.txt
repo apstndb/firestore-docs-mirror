@@ -6,6 +6,7 @@ https://docs.cloud.google.com/datastore/docs/apis
 https://docs.cloud.google.com/datastore/docs/app-engine-requirement
 https://docs.cloud.google.com/datastore/docs/articles/balancing-strong-and-eventual-consistency-with-google-cloud-datastore
 https://docs.cloud.google.com/datastore/docs/articles/fast-and-reliable-ranking-in-datastore
+https://docs.cloud.google.com/datastore/docs/audit-logging
 https://docs.cloud.google.com/datastore/docs/backups
 https://docs.cloud.google.com/datastore/docs/best-practices
 https://docs.cloud.google.com/datastore/docs/billing-questions
@@ -674,6 +675,7 @@ https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformati
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/aggregate
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/distinct
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/find_nearest
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/let
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/limit
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/offset
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/remove_fields
@@ -821,6 +823,7 @@ https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/user-creds/re
 https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore
 https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/export
 https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/import
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/indexes
 https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/indexes/cleanup
 https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/indexes/create
 https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/indexes/describe
