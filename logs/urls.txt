@@ -283,7 +283,6 @@ https://docs.cloud.google.com/firestore/docs/reference/rest/v1/ExplainMetrics
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1/ExplainOptions
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1/FieldReference
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1/ListDocumentsResponse
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/Precondition
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1/StructuredQuery
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1/TransactionOptions
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1/Write
@@ -530,7 +529,6 @@ https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-dataset-pt2
 https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-dataset-read
 https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-create
 https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-create-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-custom-type
 https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-custom-type-async
 https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-get
 https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-get-async
@@ -835,7 +833,6 @@ https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/operations/des
 https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/operations/list
 https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore
 https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/delete
 https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/describe
 https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/list
 https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/schedules

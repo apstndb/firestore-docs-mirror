@@ -3,6 +3,9 @@
 200 https://cloud.google.com/firestore/enterprise/pricing
 200 https://cloud.google.com/firestore/pricing
 200 https://cloud.google.com/firestore/sla
+200 https://docs.cloud.google.com/firestore/docs/reference/rest/v1/Precondition
+200 https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-custom-type
+200 https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/delete
 404 https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Index
 404 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/listen
 404 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/write
