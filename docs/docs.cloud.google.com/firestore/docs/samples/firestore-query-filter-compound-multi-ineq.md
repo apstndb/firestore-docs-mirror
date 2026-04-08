@@ -5,7 +5,6 @@ Please provide C\# and Ruby samples that match Firestore and Datastore examples 
 For detailed documentation that includes this code sample, see the following:
 
   - [Query with range and inequality filters on multiple fields overview](/firestore/native/docs/query-data/multiple-range-fields)
-  - [Query with range and inequality filters on multiple fields overview](https://firebase.google.com/docs/firestore/query-data/multiple-range-fields)
 
 ## Code sample
 

@@ -8,18 +8,7 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 Limits the number of documents returned by the pipeline.
 
-## Syntax
-
-### Node.js
-
-``` text
-const results = await db.pipeline()
-  .collection("/cities")
-  .limit(10)
-  .execute();
-```
-
-## Client examples
+## Examples
 
 ### Web
 
@@ -111,4 +100,4 @@ Pipeline pipeline =
 
 ## Behavior
 
-The `  limit  ` stage will only return the first `  N  ` documents. Unless a `  sort  ` stage is used before the limit, the order in which documents are returned is unstable and repeated executions may produce different results.
+The `  limit(...)  ` stage will only return the first `  N  ` documents. Unless a `  sort(...)  ` stage is used before the limit, the order in which documents are returned is unstable and repeated executions may produce different results.

@@ -1,4 +1,4 @@
-Create custom shard and counter types for Firestore distributed counters (async).
+Create custom shard and counter types for Firestore distributed counters
 
 ## Explore further
 
@@ -7,6 +7,50 @@ For detailed documentation that includes this code sample, see the following:
   - [Support frequent and distributed counters](/firestore/native/docs/solutions/counters)
 
 ## Code sample
+
+### C\#
+
+To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](/docs/authentication/set-up-adc-local-dev-environment) .
+
+``` csharp
+/// <summary>
+/// Shard is a document that contains the count.
+/// </summary>
+[FirestoreData]
+public class Shard
+{
+    [FirestoreProperty(name: "count")]
+    public int Count { get; set; }
+}
+```
+
+### Go
+
+To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](/docs/authentication/set-up-adc-local-dev-environment) .
+
+``` go
+import (
+ "context"
+ "fmt"
+ "math/rand"
+ "strconv"
+
+ "cloud.google.com/go/firestore"
+ "google.golang.org/api/iterator"
+)
+
+// Counter is a collection of documents (shards)
+// to realize counter with high frequency.
+type Counter struct {
+ numShards int
+}
+
+// Shard is a single counter, which is used in a group
+// of other shards within Counter.
+type Shard struct {
+ Count int
+}
+```
 
 ### Python
 

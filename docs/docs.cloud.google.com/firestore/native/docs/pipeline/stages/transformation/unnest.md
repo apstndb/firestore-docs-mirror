@@ -14,14 +14,14 @@ Optionally, the `  index_field  ` argument can be specified. When present, it in
 
 This stage behaves similar to `  CROSS JOIN UNNEST(...)  ` in many SQL systems.
 
-## Syntax
+## Examples
 
 ### Node.js
 
 ``` text
 const userScore = await db.pipeline()
     .collection("/users")
-    .unnest(field('scores').as('userScore'), /* index_field= */ 'attempt')
+    .unnest(field("scores").as("userScore"), /* index_field= */ "attempt")
     .execute();
 ```
 
@@ -36,8 +36,8 @@ For example, for the following collection:
 ### Node.js
 
 ``` text
-await db.collection('users').add({name: "foo", scores: [5, 4], userScore: 0});
-await db.collection('users').add({name: "bar", scores: [1, 3], attempt: 5});
+await db.collection("users").add({name: "foo", scores: [5, 4], userScore: 0});
+await db.collection("users").add({name: "bar", scores: [1, 3], attempt: 5});
 ```
 
 The `  unnest  ` stage can be used to extract each individual score per user.
@@ -47,7 +47,7 @@ The `  unnest  ` stage can be used to extract each individual score per user.
 ``` text
 const userScore = await db.pipeline()
     .collection("/users")
-    .unnest(field('scores').as('userScore'), /* index_field= */ 'attempt')
+    .unnest(field("scores").as("userScore"), /* index_field= */ "attempt")
     .execute();
 ```
 
@@ -129,9 +129,9 @@ For example, for the following collection:
 ### Node.js
 
 ``` text
-await db.collection('users').add({name: "foo", scores: 1});
-await db.collection('users').add({name: "bar", scores: null});
-await db.collection('users').add({name: "qux", scores: {backupScores: 1}});
+await db.collection("users").add({name: "foo", scores: 1});
+await db.collection("users").add({name: "bar", scores: null});
+await db.collection("users").add({name: "qux", scores: {backupScores: 1}});
 ```
 
 The `  unnest  ` stage can be used to extract each individual score per user.
@@ -141,16 +141,16 @@ The `  unnest  ` stage can be used to extract each individual score per user.
 ``` text
 const userScore = await db.pipeline()
     .collection("/users")
-    .unnest(field('scores').as('userScore'), /* index_field= */ 'attempt')
+    .unnest(field("scores").as("userScore"), /* index_field= */ "attempt")
     .execute();
 ```
 
 This produces the following documents with `  attempt  ` set to `  NULL  ` .
 
 ``` text
-  {name: "foo", scores: 1, attempt: null}
-  {name: "bar", scores: null, attempt: null}
-  {name: "qux", scores: {backupScores: 1}, attempt: null}
+  { name: "foo", scores: 1, attempt: null }
+  { name: "bar", scores: null, attempt: null }
+  { name: "qux", scores: { backupScores: 1 }, attempt: null }
 ```
 
 ### Empty Array Values
@@ -162,8 +162,8 @@ For example, for the following collection:
 ### Node.js
 
 ``` text
-await db.collection('users').add({name: "foo", scores: [5, 4]});
-await db.collection('users').add({name: "bar", scores: []});
+await db.collection("users").add({name: "foo", scores: [5, 4]});
+await db.collection("users").add({name: "bar", scores: []});
 ```
 
 The `  unnest  ` stage can be used to extract each individual score per user.
@@ -173,7 +173,7 @@ The `  unnest  ` stage can be used to extract each individual score per user.
 ``` text
 const userScore = await db.pipeline()
     .collection("/users")
-    .unnest(field('scores').as('userScore'), /* index_field= */ 'attempt')
+    .unnest(field("scores").as("userScore"), /* index_field= */ "attempt")
     .execute();
 ```
 
@@ -193,9 +193,9 @@ const userScore = await db.pipeline()
     .collection("/users")
     .unnest(
       conditional(
-        equal(field('scores'), []),
-        array([field('scores')]),
-        field('scores')
+        equal(field("scores"), []),
+        array([field("scores")]),
+        field("scores")
       ).as("userScore"),
     /* index_field= */ "attempt")
     .execute();
@@ -221,7 +221,7 @@ This will now return document with user `  bar  ` .
 
     const results = await db.pipeline()
       .database()
-      .unnest(Field.of('neighbors'), 'unnestedNeighbors', 'index')
+      .unnest(Field.of("neighbors"), "unnestedNeighbors", "index")
       .execute();
 
     // Output
@@ -345,33 +345,33 @@ Pipeline.Snapshot results =
 
 ### Nested Unnest
 
-In the case the expression evaluates to a nested array, multiple `  unnest  ` stages must be used to flatten each nested level.
+In the case the expression evaluates to a nested array, multiple `  unnest(...)  ` stages must be used to flatten each nested level.
 
 For example, for the following collection:
 
 ### Node.js
 
 ``` text
-await db.collection('users').add({name: "foo", record: [{scores: [5, 4], avg: 4.5}, {scores: [1, 3], old_avg: 2}]});
+await db.collection("users").add({name: "foo", record: [{scores: [5, 4], avg: 4.5}, {scores: [1, 3], old_avg: 2}]});
 ```
 
-The `  unnest  ` stage can be used sequentially to extract the innermost array.
+The `  unnest(...)  ` stage can be used sequentially to extract the innermost array.
 
 ### Node.js
 
 ``` text
 const userScore = await db.pipeline()
     .collection("/users")
-    .unnest(field('record').as('record'))
-    .unnest(field('record.scores').as('userScore'), /* index_field= */ 'attempt')
+    .unnest(field("record").as("record"))
+    .unnest(field("record.scores").as("userScore"), /* index_field= */ "attempt")
     .execute();
 ```
 
 This produces the following documents:
 
 ``` text
-  {name: "foo", record: [{scores: [5, 4], avg: 4.5}], userScore: 5, attempt: 0}
-  {name: "foo", record: [{scores: [5, 4], avg: 4.5}], userScore: 4, attempt: 1}
-  {name: "foo", record: [{scores: [1, 3], avg: 2}], userScore: 1, attempt: 0}
-  {name: "foo", record: [{scores: [1, 3], avg: 2}], userScore: 3, attempt: 1}
+  { name: "foo", record: [{ scores: [5, 4], avg: 4.5 }], userScore: 5, attempt: 0 }
+  { name: "foo", record: [{ scores: [5, 4], avg: 4.5 }], userScore: 4, attempt: 1 }
+  { name: "foo", record: [{ scores: [1, 3], avg: 2 }], userScore: 1, attempt: 0 }
+  { name: "foo", record: [{ scores: [1, 3], avg: 2 }], userScore: 3, attempt: 1 }
 ```

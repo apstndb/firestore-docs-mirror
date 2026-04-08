@@ -12,19 +12,7 @@ The stage must take one or more documents as input and cannot contain documents 
 
 This stage behaves similar to Firestore's `  batchGet  ` and allows filtering on the results directly rather than performing post-filtering steps after the batch operation.
 
-## Syntax
-
-### Node.js
-
-``` text
-const results = await db.pipeline()
-  .documents(
-    db.collection("cities").doc("SF"),
-    db.collection("cities").doc("NY"))
-  .execute();
-```
-
-## Client examples
+## Examples
 
 ### Web
 
@@ -65,12 +53,13 @@ val results = db.pipeline()
 Android
 
 ``` text
-Task<Pipeline.Snapshot> results = db.pipeline()
+      Task<Pipeline.Snapshot> results = db.pipeline()
     .documents(
         db.collection("cities").document("SF"),
         db.collection("cities").document("DC"),
         db.collection("cities").document("NY")
     ).execute();DocSnippets.java
+    
 ```
 
 ##### Python
@@ -103,29 +92,29 @@ Pipeline.Snapshot results =
 
 ## Behavior
 
-In order to use the `  documents  ` stage, it must appear as the first stage in the pipeline.
+In order to use the `  documents(...)  ` stage, it must appear as the first stage in the pipeline.
 
-The order of documents returned from the `  documents  ` stage is unstable and shouldn't be relied upon. A subsequent sort stage can be used to obtain a deterministic ordering.
+The order of documents returned from the `  documents(...)  ` stage is unstable and cannot be relied upon. A subsequent sort stage can be used to obtain a deterministic ordering.
 
 For example, for the following documents:
 
 ### Node.js
 
 ``` text
-await db.collection('cities').doc('SF').set({name: 'San Francsico', state: 'California'});
-await db.collection('cities').doc('NYC').set({name: 'New York City', state: 'New York'});
-await db.collection('cities').doc('CHI').set({name: 'Chicago', state: 'Illinois'});
+await db.collection("cities").doc("SF").set({name: "San Francsico", state: "California"});
+await db.collection("cities").doc("NYC").set({name: "New York City", state: "New York"});
+await db.collection("cities").doc("CHI").set({name: "Chicago", state: "Illinois"});
 ```
 
-The `  documents  ` stage can be used to retrieve only the `  SF  ` and `  NYC  ` documents and then sort them in ascending order of name.
+The `  documents(...)  ` stage can be used to retrieve only the `  SF  ` and `  NYC  ` documents and then sort them in ascending order of name.
 
 ### Node.js
 
 ``` text
 const results = await db.pipeline()
   .documents(
-    db.collection('cities').doc('SF'),
-    db.collection('cities').doc('NYC'))
+    db.collection("cities").doc("SF"),
+    db.collection("cities").doc("NYC"))
   .sort(field("name").ascending())
   .execute();
 ```
@@ -133,6 +122,6 @@ const results = await db.pipeline()
 This query produces the following documents:
 
 ``` text
-  {name: 'New York City', state: 'New York'}
-  {name: 'San Francsico', state: 'California'}
+  { name: "New York City", state: "New York" }
+  { name: "San Francsico", state: "California" }
 ```

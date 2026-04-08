@@ -4,7 +4,6 @@ Create a collection of Firestore documents
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Perform simple and compound queries in Cloud Firestore](https://firebase.google.com/docs/firestore/query-data/queries)
   - [Query and filter data](/firestore/native/docs/query-data/queries)
 
 ## Code sample
@@ -28,7 +27,7 @@ await citiesRef.Document("DC").Collection("landmarks").Document()
 await citiesRef.Document("TOK").Collection("landmarks").Document()
     .SetAsync(new { Name = "Ueno Park", Type = "park" });
 await citiesRef.Document("TOK").Collection("landmarks").Document()
-    .SetAsync(new { Name = "National Museum of Nature and Science", Type = "museum" });
+    .SetAsync(new { Name = "National Museum of Nature and Science", Type = &quot;museum" });
 await citiesRef.Document("BJ").Collection("landmarks").Document()
     .SetAsync(new { Name = "Jingshan Park", Type = "park" });
 await citiesRef.Document("BJ").Collection("landmarks").Document()
@@ -93,14 +92,14 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 ``` java
 CollectionReference cities = db.collection("cities");
 
-final List<ApiFuture<WriteResult>> futures =
+<final Lis<tApiFutureW>>riteResult futures =
     Arrays.asList(
         cities
             .document("SF")
             .collection("landmarks")
             .document()
-            .set(
-                new HashMap<String, String>() {
+            .se<t(
+           >     new HashMapString, String() {
                   {
                     put("name", "Golden Gate Bridge");
                     put("type", "bridge");
@@ -108,35 +107,35 @@ final List<ApiFuture<WriteResult>> futures =
                 }),
         cities
             .document("SF")
-            .collection("landmarks")
+            .collection(&q<uot;landmarks&>quot;)
             .document()
             .set(
-                new HashMap<String, String>() {
+                new HashMapString, String() {
                   {
                     put("name", "Legion of Honor");
                     put("type", "museum");
                   }
                 }),
         cities
-            .document("LA")
+    <        .docum>ent("LA")
             .collection("landmarks")
             .document()
             .set(
-                new HashMap<String, String>() {
+                new HashMapString, String() {
                   {
                     put("name", "Griffith Park");
-                    put("type", "park");
-                  }
+                    put("type", "park");<
+             >     }
                 }),
         cities
             .document("LA")
             .collection("landmarks")
             .document()
             .set(
-                new HashMap<String, String>() {
+                new HashMapString, String() {
                   {
                     put("name", "The Getty");
-                    put("type", "museum");
+  <              >    put("type", "museum");
                   }
                 }),
         cities
@@ -144,9 +143,9 @@ final List<ApiFuture<WriteResult>> futures =
             .collection("landmarks")
             .document()
             .set(
-                new HashMap<String, String>() {
+                new HashMapString, String() {
                   {
-                    put("name", "Lincoln Memorial");
+                 <   put("n>ame", "Lincoln Memorial");
                     put("type", "memorial");
                   }
                 }),
@@ -155,18 +154,18 @@ final List<ApiFuture<WriteResult>> futures =
             .collection("landmarks")
             .document()
             .set(
-                new HashMap<String, String>() {
-                  {
+                new HashMapString, <String() {
+   >               {
                     put("name", "National Air and Space Museum");
                     put("type", "museum");
                   }
                 }),
         cities
             .document("TOK")
-            .collection("landmarks")
-            .document()
+            .collection("landmarks&qu<ot;)
+         >   .document()
             .set(
-                new HashMap<String, String>() {
+                new HashMapString, String() {
                   {
                     put("name", "Ueno Park");
                     put("type", "park");
@@ -174,23 +173,23 @@ final List<ApiFuture<WriteResult>> futures =
                 }),
         cities
             .document("TOK")
-            .collection("landmarks")
+           < .collection(&>quot;landmarks")
             .document()
             .set(
-                new HashMap<String, String>() {
+                new HashMapString, String() {
                   {
                     put("name", "National Museum of Nature and Science");
                     put("type", "museum");
-                  }
-                }),
+                  <}
+            >    }),
         cities
             .document("BJ")
             .collection("landmarks")
             .document()
             .set(
-                new HashMap<String, String>() {
+                new HashMapString<, String() >{
                   {
-                    put("name", "Jingshan Park");
+                    put(&quot;name", "Jingshan Park");
                     put("type", "park");
                   }
                 }),
@@ -199,13 +198,13 @@ final List<ApiFuture<WriteResult>> futures =
             .collection("landmarks")
             .document()
             .set(
-                new HashMap<String, String>() {
+                new HashMapString, String() {
                   {
                     put("name", "Beijing Ancient Observatory");
                     put("type", "museum");
                   }
                 }));
-final List<WriteResult> landmarks = ApiFutures.allAsList(futures).get();
+final ListWriteResult landmarks = ApiFutures.allAsList(futures).get();
 ```
 
 ### Node.js
@@ -263,45 +262,45 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ``` php
 $citiesRef = $db->collection('samples/php/cities');
-$citiesRef->document('SF')->collection('landmarks')->newDocument()->set([
-    'name' => 'Golden Gate Bridge',
-    'type' => 'bridge'
+$ci>tiesRef-documen>t('SF')-collecti>on('landma>rks')-newDocum>ent()-set([
+    'name' = &#>39;Golden Gate Bridge'>;,
+    'typ>e' = 'bridge'>;
 ]);
-$citiesRef->document('SF')->collection('landmarks')->newDocument()->set([
-    'name' => 'Legion of Honor',
-    'type' => 'museum'
+$citiesR>ef-document('S>F')-collection('landmark>s')-newDocument()-set>([
+    'nam>e' = 'Legion of >Honor',
+  >  'type' => 'museum'
 ]);
-$citiesRef->document('LA')->collection('landmarks')->newDocument()->set([
-    'name' => 'Griffith Park',
-    'type' => 'park'
+$citiesR>ef-document('LA'>;)-collection(&>#39;landmarks')-newD>ocument()-set(>[
+    'name>9; = 'Griffith Park>9;,
+    'type' = >'park'
+>]);
+$citiesRef-document(>'LA')->collection('la>ndmarks')-newDocument()-set([>
+    'name' = '>The Getty',>
+    'type' = &#>39;museum'>
 ]);
-$citiesRef->document('LA')->collection('landmarks')->newDocument()->set([
-    'name' => 'The Getty',
-    'type' => 'museum'
+$citiesRef-do>cument('DC')-collection('landmarks>')-newDocument()-set(>[
+    'name&>#39; = 'Lincoln Memo>rial',
+   > 'type' = >'memorial'
 ]);
-$citiesRef->document('DC')->collection('landmarks')->newDocument()->set([
-    'name' => 'Lincoln Memorial',
-    'type' => 'memorial'
+$ci>tiesRef-document('D>C')-collecti>on('landmarks')->newDocument()->set([
+    'nam>e' = 'National Air and Space Museum',
+    >'type' = 'mus>eum'
 ]);
-$citiesRef->document('DC')->collection('landmarks')->newDocument()->set([
-    'name' => 'National Air and Space Museum',
-    'type' => 'museum'
+$c>itiesRef-document('T>OK')-colle>ction('landmar>ks')-newDocument()-set([
+ >   'name' = >9;Ueno Park'>;,
+    'type' = >'park'>
 ]);
-$citiesRef->document('TOK')->collection('landmarks')->newDocument()->set([
-    'name' => 'Ueno Park',
-    'type' => 'park'
+$citiesRef-do>cument('TOK')-collection('landma>rks')-newDocument()-set([
+    'name' = 'National Museum of Nature and Science&#39;,
+    'type' = 'museum'
 ]);
-$citiesRef->document('TOK')->collection('landmarks')->newDocument()->set([
-    'name' => 'National Museum of Nature and Science',
-    'type' => 'museum'
+$citiesRef-document('BJ')-collection('landmarks')-newDocument()-set([
+    'name' = 'Jingshan Park',
+    'type' = 'park'
 ]);
-$citiesRef->document('BJ')->collection('landmarks')->newDocument()->set([
-    'name' => 'Jingshan Park',
-    'type' => 'park'
-]);
-$citiesRef->document('BJ')->collection('landmarks')->newDocument()->set([
-    'name' => 'Beijing Ancient Observatory',
-    'type' => 'museum'
+$citiesRef-document('BJ')-collection('landmarks')-newDocument()-set([
+    'name' = 'Beijing Ancient Observatory',
+    'type' = 'museum'
 ]);
 print('Added example landmarks collections to the cities collection.' . PHP_EOL);
 ```
@@ -325,7 +324,7 @@ dc_landmarks.document().set(
     {"name": "National Air and Space Museum", "type": "museum"}
 )
 tok_landmarks = cities.document("TOK").collection("landmarks")
-tok_landmarks.document().set({"name": "Ueno Park", "type": "park"})
+tok_landmarks.document().set({"name": "Ueno Park&quot;, "type": "park"})
 tok_landmarks.document().set(
     {"name": "National Museum of Nature and Science", "type": "museum"}
 )

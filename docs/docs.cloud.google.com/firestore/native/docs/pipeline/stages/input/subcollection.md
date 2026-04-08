@@ -10,7 +10,7 @@ The `  subcollection(...)  ` input stage makes it easy to perform parent-child j
 
 Additional stages can be chained onto the `  subcollection(...)  ` stage to perform filtering or aggregation over the nested documents. Note that any field references used in subsequent stages refer to the documents from the nested collection, not the parent document. To refer to fields in the parent scope, first use the `  let  ` stage to define variables, then reference those variables in the local scope.
 
-## Syntax
+## Examples
 
 ### Node.js
 
@@ -44,8 +44,6 @@ db.pipeline()
 ```
 
 is still possible as fundamentally this stage is just syntactic sugar over this more complex join format.
-
-## Example
 
 For the following documents:
 

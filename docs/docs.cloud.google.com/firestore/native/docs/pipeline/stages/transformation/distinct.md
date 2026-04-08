@@ -6,29 +6,11 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## Description
 
-Find out the distinct values of a field or an expression from the previous stages.
+Find all the distinct combination of values for a series of expressions.
 
-## Syntax
+The `  distinct(...)  ` stage has similar syntax as `  select(...)  ` as it takes one or more selectable expressions. Strings can be used when the expression is just a field reference:
 
-`  distinct  ` stage has similar syntax as `  select  ` . It takes one or more selectable expressions to select and find distinct values on. Strings can be used when the expression is just a field reference:
-
-### Node.js
-
-``` text
-const cities = await db.pipeline()
-  .collection('/cities')
-  .distinct("country")
-  .execute();
-
-const cities = await db.pipeline()
-  .collection('/cities')
-  .distinct(
-    field("state").toLower().as("normalized_state"),
-    field("country"))
-  .execute();
-```
-
-## Client examples
+## Examples
 
 ##### Node.js
 
@@ -140,11 +122,7 @@ Pipeline.Snapshot cities2 =
 
 ## Behavior
 
-In terms of projection behaviors, `  distinct  ` is similar to `  select  ` with deduplication, therefore any selectable expression available to `  select  ` can also be used for `  distinct  ` .
-
-The `  distinct  ` stage works similarly to an aggregate stage without groups.
-
-See also [Aggregate Stage](/firestore/native/docs/pipeline/stages/transformation/aggregate) and [Select Stage](/firestore/native/docs/pipeline/stages/transformation/select) .
+The `  distinct(...)  ` stage works similarly to an aggregate stage without groups. See also [Aggregate Stage](/firestore/native/docs/pipeline/stages/transformation/aggregate) and [Select Stage](/firestore/native/docs/pipeline/stages/transformation/select) .
 
 ### Find Distinct Field Values
 
@@ -153,11 +131,11 @@ For example, to get a list of every country in the following `  cities  ` collec
 ### Node.js
 
 ``` text
-await db.collection('cities').doc('SF').set({name: 'San Francisco', state: 'CA', country: 'USA'});
-await db.collection('cities').doc('LA').set({name: 'Los Angeles', state: 'CA', country: 'USA'});
-await db.collection('cities').doc('NY').set({name: 'New York', state: 'NY', country: 'USA'});
-await db.collection('cities').doc('TOR').set({name: 'Toronto', state: null, country: 'Canada'});
-await db.collection('cities').doc('MEX').set({name: 'Mexico City', state: null, country: 'Mexico'});
+await db.collection("cities").doc("SF").set({name: "San Francisco", state: "CA", country: "USA"});
+await db.collection("cities").doc("LA").set({name: "Los Angeles", state: "CA", country: "USA"});
+await db.collection("cities").doc("NY").set({name: "New York", state: "NY", country: "USA"});
+await db.collection("cities").doc("TOR").set({name: "Toronto", state: null, country: "Canada"});
+await db.collection("cities").doc("MEX").set({name: "Mexico City", state: null, country: "Mexico"});
 ```
 
 Distinct countries can be found using:
@@ -166,7 +144,7 @@ Distinct countries can be found using:
 
 ``` text
 const cities = await db.pipeline()
-  .collection('/cities')
+  .collection("/cities")
   .distinct("country")
   .execute();
 ```
@@ -174,9 +152,9 @@ const cities = await db.pipeline()
 which generates the following result:
 
 ``` text
-{country: "USA"}
-{country: "Canada"}
-{country: "Mexico"}
+{ country: "USA" }
+{ country: "Canada" }
+{ country: "Mexico" }
 ```
 
 ### Distinct Output of Expressions
@@ -187,7 +165,7 @@ You can also find the distinct combinations of multiple fields, or more complica
 
 ``` text
 const cities = await db.pipeline()
-  .collection('/cities')
+  .collection("/cities")
   .distinct(
     field("state").toLower().as("normalized_state"),
     field("country"))
@@ -197,10 +175,10 @@ const cities = await db.pipeline()
 to get:
 
 ``` text
-{country: "USA", normalized_state: "ca"}
-{country: "USA", normalized_state: "ny"}
-{country: "Canada", normalized_state: null}
-{country: "Mexico", normalized_state: null}
+{ country: "USA", normalized_state: "ca" }
+{ country: "USA", normalized_state: "ny" }
+{ country: "Canada", normalized_state: null }
+{ country: "Mexico", normalized_state: null }
 ```
 
 ### Equivalence Behaviors
@@ -209,7 +187,7 @@ The equivalence behavior on distinct values follows the same semantics as equali
 
 This means that equivalent values, for example mathmatically equivalent numeric values, regardless of original types (32-bit integer, 64-bit integer, floating point numbers, decimal numbers, etc), are considered the same distinct value.
 
-As an example, in a collection `  numerics  ` with different documents containing `  foo  ` values of 32-bit integer `  1  ` , 64-bit integer `  1L  ` and floating point `  1.0  ` respectively, `  distinct  ` will only return 1 result.
+As an example, in a collection `  numerics  ` with different documents containing `  foo  ` values of 32-bit integer `  1  ` , 64-bit integer `  1L  ` and floating point `  1.0  ` respectively, `  distinct(...)  ` will only return 1 result.
 
 In such cases of having different equivalent values present in the dataset, the output value of the group can be **any** of these equivalent values. In this example, this value of `  foo  ` could be returned as `  1  ` , `  1L  ` , or `  1.0  ` .
 
@@ -217,10 +195,10 @@ Even if it appears to be deterministic, you should **not** attempt to rely on th
 
 ### Memory Usage
 
-How the `  distinct  ` stage is executed depends on the available indexes. When there is not an appropriate index chosen by the query optimizer, `  distinct  ` requires buffering all distinct values in the memory.
+How the `  distinct(...)  ` stage is executed depends on the available indexes. When there is not an appropriate index chosen by the query optimizer, `  distinct(...)  ` requires buffering all distinct values in the memory.
 
 In the event of having a very large number of distinct values, or values being very large (e.g. distinct on huge values), this stage may run out of memory.
 
-In such cases, you should apply filters to limit the dataset to perform `  distinct  ` on, or create indexes as recommended to avoid large memory usages.
+In such cases, you should apply filters to limit the dataset to perform `  distinct(...)  ` on, or create indexes as recommended to avoid large memory usages.
 
 Query Explain will provide information on the actual query execution plan and profiling data to help with the debugging.

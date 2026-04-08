@@ -5,8 +5,6 @@ Use a custom type on the client for Firestore documents (async).
 For detailed documentation that includes this code sample, see the following:
 
   - [Add and update data](/firestore/native/docs/manage-data/add-data)
-  - [Add data to Cloud Firestore](https://firebase.google.com/docs/firestore/manage-data/add-data)
-  - [Perform simple and compound queries in Cloud Firestore](https://firebase.google.com/docs/firestore/query-data/queries)
   - [Query and filter data](/firestore/native/docs/query-data/queries)
 
 ## Code sample

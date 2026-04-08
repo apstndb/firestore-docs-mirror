@@ -4,8 +4,7 @@ Getting Firestore documents from a collection
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Create a Firestore database by using a server client library](/firestore/native/docs/create-database-server-client-library)
-  - [Get started with Cloud Firestore](https://firebase.google.com/docs/firestore/quickstart)
+  - [Quickstart: Create a Firestore database by using a server client library](/firestore/native/docs/create-database-server-client-library)
 
 ## Code sample
 

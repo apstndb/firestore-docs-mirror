@@ -4,7 +4,6 @@ Query a Firestore collection group with an eq filter (async).
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Perform simple and compound queries in Cloud Firestore](https://firebase.google.com/docs/firestore/query-data/queries)
   - [Query and filter data](/firestore/native/docs/query-data/queries)
 
 ## Code sample

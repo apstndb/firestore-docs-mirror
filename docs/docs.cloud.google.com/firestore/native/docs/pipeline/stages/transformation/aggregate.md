@@ -6,13 +6,13 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## Description
 
-The `  aggregate  ` stage computes aggregated results (e.g. count, sum) from the documents returned by the previous stage.
+The `  aggregate(...)  ` stage computes aggregated results (e.g. count, sum) from the documents returned by the previous stage.
 
 Optionally, when a grouping expression is provided, it groups documents based on the provided expressions and then applies accumulator functions to each group.
 
-## Syntax
+## Examples
 
-For aggregations without group-by, the `  aggregate  ` stage takes one or more aliased aggregator expressions:
+For aggregations without group-by, the `  aggregate(...)  ` stage takes one or more aliased aggregator expressions:
 
 ### Node.js
 
@@ -111,7 +111,7 @@ which gives:
 
 ### Complex Expressions on Grouping
 
-Beyond grouping by only field values, the `  aggregate  ` stage supports grouping by results of complex expressions. Any expression that is valid in a `  select  ` stage can be used as a grouping key. This allows for flexible grouping based on calculated values or conditions.
+Beyond grouping by only field values, the `  aggregate(...)  ` stage supports grouping by results of complex expressions. Any expression that is valid in a `  select  ` stage can be used as a grouping key. This allows for flexible grouping based on calculated values or conditions.
 
 For example, to group by whether the state field is null, and find out the total population in each group:
 

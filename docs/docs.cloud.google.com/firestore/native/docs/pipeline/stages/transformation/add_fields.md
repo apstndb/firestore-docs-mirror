@@ -10,18 +10,7 @@ Add new fields to the documents produced by the previous stage.
 
 The generated documents will contain all the fields from the previous stage along with all newly added fields, overwriting any field that shares the same name from the previous document. The `  add_fields(...)  ` stage allows updating nested fields by specifying a nested field name as the alias.
 
-## Syntax
-
-### Node.js
-
-``` text
-const results = await db.pipeline()
-  .collection("/users")
-  .addFields(field("first_name").concat(" ", field("last_name")).as("full_name"))
-  .execute();
-```
-
-## Client examples
+## Examples
 
 ### Web
 
@@ -55,10 +44,11 @@ val result = db.pipeline()
 Android
 
 ``` text
-Task<Pipeline.Snapshot> result = db.pipeline()
+      Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.add(field("soldBooks"), field("unsoldBooks")).alias("totalBooks"))
     .execute();DocSnippets.java
+    
 ```
 
 ##### Python

@@ -8,18 +8,7 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 Generates new documents, either by referencing a subset of existing fields, or by assigning a field to the result of a given expression.
 
-## Syntax
-
-### Node.js
-
-``` text
-const names = await db.pipeline()
-  .collection("/cities")
-  .select(stringConcat(field("name"), ", ", field("location.country")).as("name"), "population")
-  .execute();
-```
-
-## Client examples
+## Examples
 
 ### Web
 
@@ -104,16 +93,16 @@ There are no restrictions on when a select stage can be used, but any fields not
 ### Node.js
 
 ``` text
-await db.collection('cities').doc('SF').set({
-  name: 'San Francisco',
+await db.collection("cities").doc("SF").set({
+  name: "San Francisco",
   population: 800000,
-  location: {country: 'USA', state: 'California'}
+  location: {country: "USA", state: "California"}
 });
 
-await db.collection('cities').doc('TO').set({
-  name: 'Toronto',
+await db.collection("cities").doc("TO").set({
+  name: "Toronto",
   population: 3000000,
-  location: {country: 'Canada', province: 'Ontario'}
+  location: {country: "Canada", province: "Ontario"}
 });
 ```
 
@@ -132,10 +121,10 @@ const names = await db.pipeline()
 Which produces the following documents:
 
 ``` text
-{name: 'Toronto, Canada', population: 3000000},
+{ name: "Toronto, Canada", population: 3000000 },
 ```
 
-However, if the `  select  ` stage is instead placed before the `  where  ` stage, like:
+However, if the `  select(...)  ` stage is instead placed before the `  where(...)  ` stage, like:
 
 ### Node.js
 
@@ -147,7 +136,7 @@ const names = await db.pipeline()
   .execute();
 ```
 
-No documents will be produced, because `  location.country  ` has been removed from the document before the execution of the `  where  ` stage.
+No documents will be produced, because `  location.country  ` has been removed from the document before the execution of the `  where(...)  ` stage.
 
 ### Select Nested Fields
 
@@ -156,23 +145,23 @@ The `  select(...)  ` stage can be used to select nested fields from both maps a
 ### Node.js
 
 ``` text
-await db.collection('cities').doc('SF').set({
-  name: 'San Francisco',
+await db.collection("cities").doc("SF").set({
+  name: "San Francisco",
   population: 800000,
-  location: { country: 'USA', state: 'California' },
-  landmarks: [ 'Golden Gate Bridge', 'Alcatraz' ]
+  location: { country: "USA", state: "California" },
+  landmarks: [ "Golden Gate Bridge", "Alcatraz" ]
 });
 
-await db.collection('cities').doc('TO').set({
-  name: 'Toronto',
+await db.collection("cities").doc("TO").set({
+  name: "Toronto",
   population:  3000000,
-  province: 'ON',
-  location: { country: 'Canada', province: 'Ontario' },
-  landmarks: [ 'CN Tower', 'Casa Loma' ]
+  province: "ON",
+  location: { country: "Canada", province: "Ontario" },
+  landmarks: [ "CN Tower", "Casa Loma" ]
 });
 
-await db.collection('cities').doc('AT').set({
-  name: 'Atlantis',
+await db.collection("cities").doc("AT").set({
+  name: "Atlantis",
   population: null
 });
 ```
@@ -194,9 +183,9 @@ const locations = await db.pipeline()
 Which produces the following documents:
 
 ``` text
-{city: 'San Francisco', country: 'USA', topLandmark: 'Golden Gate Bridge'},
-{city: 'Toronto', country: 'Canada', topLandmark: 'CN Tower'},
-{city: 'Atlantis'}
+{ city: "San Francisco", country: "USA", topLandmark: "Golden Gate Bridge" },
+{ city: "Toronto", country: "Canada", topLandmark: "CN Tower" },
+{ city: "Atlantis" }
 ```
 
 If a nested map value or array value does not exist, it is not included in the resulting document. Array and map access in the select stage behaves identically to the `  offset(...)  ` and `  get_field(...)  ` functions, respectively.

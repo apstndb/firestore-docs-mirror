@@ -6,24 +6,9 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## Description
 
-Performs a nearest neighbor vector search on the given `  embedding  ` field using the requested distance\_measure
+Performs a nearest neighbor vector search on the given `  embedding  ` field using the requested distance\_measure .
 
-## Syntax
-
-### Node.js
-
-``` text
-const results = await db.pipeline()
-  .collection("cities")
-  .findNearest({
-      field: 'embedding',
-      vectorValue: vector([1.5, 2.345]),
-      distanceMeasure: 'euclidean',
-  })
-  .execute();
-```
-
-## Client examples
+## Examples
 
 ##### Node.js
 
@@ -129,7 +114,7 @@ Pipeline.Snapshot results =
 
 ### Distance Measure
 
-The `  find_nearest  ` stage supports the following options for vector distance:
+The `  find_nearest(...)  ` stage supports the following options for vector distance:
 
   - `  euclidean  ` : Measures the `  euclidean  ` distance between the vectors. To learn more, see [Euclidean](https://en.wikipedia.org/wiki/Euclidean_distance) .
   - `  cosine  ` : Compares vectors based on the angle between them which lets you measure similarity that isn't based on the vectors magnitude. We recommend using `  dot_product  ` with unit normalized vectors instead of COSINE distance, which is mathematically equivalent with better performance. To learn more see [Cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity) .
@@ -163,9 +148,9 @@ You can limit the number of documents returned by the query by setting the limit
 const results = await db.pipeline()
   .collection("cities")
   .findNearest({
-      field: 'embedding',
+      field: "embedding",
       vectorValue: vector([1.5, 2.345]),
-      distanceMeasure: 'euclidean',
+      distanceMeasure: "euclidean",
       limit: 10,
   })
   .execute();
@@ -173,16 +158,16 @@ const results = await db.pipeline()
 
 ### Retrieving the Calculated Vector Distance
 
-You can retrieve the calculated vector distance by assigning a distance\_field output property name on the `  find_nearest  ` stage, as shown in the following example:
+You can retrieve the calculated vector distance by assigning a distance\_field output property name on the `  find_nearest(...)  ` stage, as shown in the following example:
 
 As an example, for the following collection:
 
 ### Node.js
 
 ``` text
-await db.collection('cities').doc('SF').set({name: 'San Francisco', embedding: vector([1.0, -1.0])});
-await db.collection('cities').doc('TO').set({name: 'Toronto', embedding: vector([5.0, -10.0])});
-await db.collection('cities').doc('AT').set({name: 'Atlantis', embedding: vector([2.0, -4.0])});
+await db.collection("cities").doc("SF").set({name: "San Francisco", embedding: vector([1.0, -1.0])});
+await db.collection("cities").doc("TO").set({name: "Toronto", embedding: vector([5.0, -10.0])});
+await db.collection("cities").doc("AT").set({name: "Atlantis", embedding: vector([2.0, -4.0])});
 ```
 
 Perform a vector search with a requested output distance\_field :
@@ -193,10 +178,10 @@ Perform a vector search with a requested output distance\_field :
 const results = await db.pipeline()
   .collection("cities")
   .findNearest({
-      field: 'embedding',
+      field: "embedding",
       vectorValue: vector([1.3, 2.345]),
-      distanceMeasure: 'euclidean',
-      distanceField: 'computedDistance',
+      distanceMeasure: "euclidean",
+      distanceField: "computedDistance",
   })
   .execute();
 ```
@@ -204,9 +189,9 @@ const results = await db.pipeline()
 Which produces the following documents:
 
 ``` text
-{name: 'San Francisco', embedding: vector([1.0, -1.0]), computedDistance: 3.3584259705999178},
-{name: 'Atlantis', embedding: vector([2.0, -4.0]), computedDistance: 6.383496299051172},
-{name: 'Toronto', embedding: vector([5.0, -10.0]), computedDistance: 12.887553103673328}
+{name: "San Francisco", embedding: vector([1.0, -1.0]), computedDistance: 3.3584259705999178},
+{name: "Atlantis", embedding: vector([2.0, -4.0]), computedDistance: 6.383496299051172},
+{name: "Toronto", embedding: vector([5.0, -10.0]), computedDistance: 12.887553103673328}
 ```
 
 ## Limitations

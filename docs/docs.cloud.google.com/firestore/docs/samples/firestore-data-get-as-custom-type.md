@@ -4,7 +4,6 @@ Get a Firestore document using custom types.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Get data with Cloud Firestore](https://firebase.google.com/docs/firestore/query-data/get-data)
   - [Getting data](/firestore/native/docs/query-data/get-data)
 
 ## Code sample

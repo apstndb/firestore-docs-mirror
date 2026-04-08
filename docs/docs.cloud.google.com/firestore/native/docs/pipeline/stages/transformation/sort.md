@@ -8,31 +8,7 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 Sorts the input documents based on one or more specified sort orderings.
 
-## Syntax
-
-The following example sorts the cities collection by population in ascending order:
-
-### Node.js
-
-``` text
-const results = await db.pipeline()
-  .collection("/cities")
-  .sort(Field.of("population").ascending())
-  .execute();
-```
-
-The following example sorts the cities collection by the length of the city name, in ascending order.
-
-### Node.js
-
-``` text
-const results = await db.pipeline()
-  .collection("/cities")
-  .sort(Field.of("name").charLength().ascending())
-  .execute();
-```
-
-## Client examples
+## Examples
 
 ### Web
 
@@ -117,12 +93,12 @@ Sort order follows [Firestore's value type order](https://docs.cloud.google.com/
 
 If there is no `  sort  ` stage in the query, the ordering of the returned results is non-deterministic and may vary between executions. If a `  sort  ` stage is present but the ordering expressions fail to produce a unique ordering among the returned results, the ordering of the returned results may still vary between executions.
 
-For example, sorting cities by the country of the cities, in ascending order against the following dataset
+For example, sorting cities by the country of the cities, in ascending order against the following dataset:
 
 ``` text
-{name: 'Los Angeles', state: 'CA', country: 'USA', population: 3970000},
-{name: 'New York', state: 'NY', country: 'USA', population: 8530000}
-{name: 'San Francisco', state: 'CA', country: 'USA', population: 870000},
+{ name: "Los Angeles", state: "CA", country: "USA", population: 3970000 },
+{ name: "New York", state: "NY", country: "USA", population: 8530000 }
+{ name: "San Francisco", state: "CA", country: "USA", population: 870000 },
 ```
 
 can produce any permutation of the 3 documents in the dataset because they all have the same country attribute. To produce a deterministic ordering of the results, you can append a sort order on **name** to the order:
@@ -132,7 +108,7 @@ can produce any permutation of the 3 documents in the dataset because they all h
 ``` text
 const results = await db.pipeline()
   .collection("/cities")
-  .sort(Field.of("country").ascending(), Field.of("__name__").ascending())
+  .sort(field("country").ascending(), fieldd("__name__").ascending())
   .execute();
 ```
 
@@ -140,11 +116,11 @@ This will use the unique document name as the tiebreaker when multiple documents
 
 ### Sorting Equivalent Values
 
-Equivalent values are sorted together but the order of results within the equivalent class are not deterministic according to the [Deterministic Order of Results discussion](#deterministic-order-of-results) . For example, sorting cities by size , in ascending order against the following dataset
+Equivalent values are sorted together but the order of results within the equivalent class are not deterministic according to the [Deterministic Order of Results discussion](#deterministic-order-of-results) . For example, sorting cities by size , in ascending order against the following dataset:
 
 ``` text
-{name: 'Los Angeles', state: 'CA', country: 'USA', size: 3970000},
-{name: 'Mexico City', state: null, country: 'Mexico', size: 3970000.0},
+{ name: "Los Angeles", state: "CA", country: "USA", size: 3970000 },
+{ name: "Mexico City", state: null, country: "Mexico", size: 3970000.0 },
 ```
 
 can produce any permutation of the 2 documents in the dataset because both documents have the equivalent size value `  3970000  ` .
@@ -159,22 +135,22 @@ When a `  limit  ` is used after a `  sort  ` , a top-n sort may be used. This o
 
 ### Null and Absent values
 
-If a field specified in an ordering does not exist in a document, its value is sorted as if the value is `  null  ` . For example, sorting cities by the state of the cities, in ascending order against the following dataset
+If a field specified in an ordering does not exist in a document, its value is sorted as if the value is `  null  ` . For example, sorting cities by the state of the cities, in ascending order against the following dataset:
 
 ``` text
-{name: 'Los Angeles', state: 'CA', country: 'USA', population: 3970000},
-{name: 'Mexico City', state: null, country: 'Mexico', population: 9200000},
-{name: 'New York', state: 'NY', country: 'USA', population: 8530000}
-{name: 'San Francisco', state: 'CA', country: 'USA', population: 870000},
-{name: 'Toronto', country: 'Canada', population: 2930000},
+{ name: "Los Angeles", state: "CA", country: "USA", population: 3970000 },
+{ name: "Mexico City", state: null, country: "Mexico", population: 9200000 },
+{ name: "New York", state: "NY", country: "USA", population: 8530000 }
+{ name: "San Francisco", state: "CA", country: "USA", population: 870000 },
+{ name: "Toronto", country: "Canada", population: 2930000 },
 ```
 
 produces the following results where the "Toronto" document and the "Mexico City" document are sorted as `  null  ` and before other documents.
 
 ``` text
-{name: 'Toronto', country: 'Canada', population: 2930000},
-{name: 'Mexico City', state: null, country: 'Mexico', population: 9200000},
-{name: 'Los Angeles', state: 'CA', country: 'USA', population: 3970000},
-{name: 'San Francisco', state: 'CA', country: 'USA', population: 870000},
-{name: 'New York', state: 'NY', country: 'USA', population: 8530000}
+{ name: "Toronto", country: "Canada", population: 2930000 },
+{ name: "Mexico City", state: null, country: "Mexico", population: 9200000 },
+{ name: "Los Angeles", state: "CA", country: "USA", population: 3970000 },
+{ name: "San Francisco", state: "CA", country: "USA", population: 870000 },
+{ name: "New York", state: "NY", country: "USA", population: 8530000 }
 ```

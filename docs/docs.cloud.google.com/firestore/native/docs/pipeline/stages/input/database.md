@@ -8,17 +8,7 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 Returns all the documents within a database across different collections and nested levels.
 
-## Syntax
-
-### Node.js
-
-``` text
-const results = await db.pipeline()
-  .database()
-  .execute();
-```
-
-## Client examples
+## Examples
 
 ### Web
 
@@ -55,11 +45,12 @@ val results = db.pipeline()
 Android
 
 ``` text
-// Count all documents in the database
+      // Count all documents in the database
 Task<Pipeline.Snapshot> results = db.pipeline()
     .database()
     .aggregate(AggregateFunction.countAll().alias("total"))
     .execute();DocSnippets.java
+    
 ```
 
 ##### Python
@@ -81,35 +72,35 @@ Pipeline.Snapshot results =
 
 ## Behavior
 
-In order to use the `  database  ` stage, it must appear as the first stage in the pipeline.
+In order to use the `  database(...)  ` stage, it must appear as the first stage in the pipeline.
 
-The order of documents returned from the `  database  ` stage is unstable and shouldn't be relied upon. A subsequent sort stage can be used to obtain a deterministic ordering.
+The order of documents returned from the `  database(...)  ` stage is unstable and cannot be relied upon. A subsequent sort stage can be used to obtain a deterministic ordering.
 
 For example, for the following documents:
 
 ### Node.js
 
 ``` text
-await db.collection('cities').doc('SF').set({name: 'San Francsico', state: 'California', population: 800000});
-await db.collection('states').doc('CA').set({name: 'California', population: 39000000});
-await db.collection('countries').doc('USA').set({name: 'United States of America', population: 340000000});
+await db.collection("cities").doc("SF").set({name: "San Francsico", state: "California", population: 800000});
+await db.collection("states").doc("CA").set({name: "California", population: 39000000});
+await db.collection("countries").doc("USA").set({name: "United States of America", population: 340000000});
 ```
 
-The `  database  ` stage can be used to retrieve all the documents in the database.
+The `  database(...)  ` stage can be used to retrieve all the documents in the database.
 
 ### Node.js
 
 ``` text
 const results = await db.pipeline()
   .database()
-  .sort(field('population').ascending())
+  .sort(field("population").ascending())
   .execute();
 ```
 
 This query produces the following documents:
 
 ``` text
-  {name: 'San Francsico', state: 'California', population: 800000}
-  {name: 'California', population: 39000000}
-  {name: 'United States of America', population: 340000000}
+  { name: "San Francsico", state: "California", population: 800000 }
+  { name: "California", population: 39000000 }
+  { name: "United States of America", population: 340000000 }
 ```

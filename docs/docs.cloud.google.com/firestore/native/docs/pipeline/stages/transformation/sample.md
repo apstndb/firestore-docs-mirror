@@ -10,80 +10,10 @@ Returns a non-deterministic sample from the results of the previous stage.
 
 There are two supported modes:
 
-  - `  DOCUMENTS  ` mode allows for sampling a set number of documents
-      - This mode is similar to `  GoogleSQL.RESERVOIR  ` in that it outputs a sample of size `  n  ` , where any sample of size `  n  ` is equally possible.
-  - `  PERCENT  ` mode allows for sampling a percentage of documents
-      - This mode is similar to `  GoogleSQL.BERNOULLI  ` in that each document is independently selected with an equal `  percent  ` probability. This results in `  #documents * percent / 100  ` documents being returned on average.
+  - `  documents  ` : pick `  n  ` documents randomly.
+  - `  percent  ` : pick `  n  ` percent of documents randomly.
 
-## Syntax
-
-### Node.js
-
-``` text
-  const sampled = await db.pipeline()
-    .database()
-    .sample(50)
-    .execute();
-
-  const sampled = await db.pipeline()
-    .database()
-    .sample({ percent: 0.5 })
-    .execute();
-```
-
-## Behavior
-
-### Documents Mode
-
-Documents mode retrieves a specified number of documents in a random order. The specified number must be a non-negative `  INT64  ` value.
-
-For example, for the following collection:
-
-### Node.js
-
-``` text
-await db.collection('cities').doc('SF').set({name: 'San Francsico', state: 'California'});
-await db.collection('cities').doc('NYC').set({name: 'New York City', state: 'New York'});
-await db.collection('cities').doc('CHI').set({name: 'Chicago', state: 'Illinois'});
-```
-
-The sample stage in document mode can be used to retrieve a non-deterministic subset of results from this collection.
-
-### Node.js
-
-``` text
-const sampled = await db.pipeline()
-    .collection("/cities")
-    .sample(1)
-    .execute();
-```
-
-In this example, only 1 document at random would be returned at random.
-
-``` text
-  {name: 'New York City', state: 'New York'}
-```
-
-If the supplied number is greater than the total number of documents returned, all documents are returned in a random order.
-
-### Node.js
-
-``` text
-const sampled = await db.pipeline()
-    .collection("/cities")
-    .sample(5)
-    .execute();
-```
-
-This will result in the following documents:
-
-``` text
-  {name: 'New York City', state: 'New York'}
-  {name: 'Chicago', state: 'Illinois'}
-  {name: 'San Francisco', state: 'California'}
-```
-
-#### Client examples
+## Examples
 
 ### Web
 
@@ -213,21 +143,73 @@ Pipeline.Snapshot results2 =
         .get();PipelineSnippets.java
 ```
 
-### Percent Mode
+## Modes
 
-In percent mode, each document has a specified `  percent  ` chance of being returned. Unlike documents mode, the order here is not random and instead preserves the pre-existing document order. This percent input must be a double value between `  0.0  ` and `  1.0  ` .
+### Documents Mode
 
-Since each document is independently selected, the output is non-deterministic and on average, `  #documents * percent / 100  ` documents will be returned.
+The `  documents  ` mode picks up to `  n  ` documents randomly from its input, where each document (along with the order of documents) is equally as likely to be chosen. To achieve this, Firestore needs to still scan and process all documents so this can still end up being an expensive operation.
 
 For example, for the following collection:
 
 ### Node.js
 
 ``` text
-await db.collection('cities').doc('SF').set({name: 'San Francsico', state: 'California'});
-await db.collection('cities').doc('NYC').set({name: 'New York City', state: 'New York'});
-await db.collection('cities').doc('CHI').set({name: 'Chicago', state: 'Illinois'});
-await db.collection('cities').doc('ATL').set({name: 'Atlanta', state: 'Georgia'});
+await db.collection("cities").doc("SF").set({name: "San Francsico", state: "California"});
+await db.collection("cities").doc("NYC").set({name: "New York City", state: "New York"});
+await db.collection("cities").doc("CHI").set({name: "Chicago", state: "Illinois"});
+```
+
+The sample stage in document mode can be used to retrieve a non-deterministic subset of results from this collection.
+
+### Node.js
+
+``` text
+const sampled = await db.pipeline()
+    .collection("/cities")
+    .sample(1)
+    .execute();
+```
+
+In this example, only 1 document at random would be returned at random.
+
+``` text
+  { name: "New York City", state: "New York" }
+```
+
+If the supplied number is greater than the total number of documents returned, all documents are returned in a random order.
+
+### Node.js
+
+``` text
+const sampled = await db.pipeline()
+    .collection("/cities")
+    .sample(5)
+    .execute();
+```
+
+This will result in the following documents:
+
+``` text
+  { name: "New York City", state: "New York" }
+  { name: "Chicago", state: "Illinois" }
+  { name: "San Francisco", state: "California" }
+```
+
+### Percent Mode
+
+The `  percent  ` mode attempts to pick `  n  ` percent of all documents from its input. This results in the stage producing approximately `  # documents * percent / 100  ` documents. Just like in `  documents  ` mode, Firestore ensures that each document is equally as likely to be returned. This does require that Firestore needs to scan and process all documents so this can still end up being an expensive operation, even when the result set is small.
+
+Unlike `  documents  ` mode, the order here is not random and instead preserves the pre-existing document order. This percent input must be a double value between `  0.0  ` and `  1.0  ` .
+
+For example, for the following collection:
+
+### Node.js
+
+``` text
+await db.collection("cities").doc("SF").set({name: "San Francsico", state: "California"});
+await db.collection("cities").doc("NYC").set({name: "New York City", state: "New York"});
+await db.collection("cities").doc("CHI").set({name: "Chicago", state: "Illinois"});
+await db.collection("cities").doc("ATL").set({name: "Atlanta", state: "Georgia"});
 ```
 
 The sample stage in percent mode can be used to retrieve (on average) 50% of the documents from the collection stage.
@@ -244,8 +226,8 @@ The sample stage in percent mode can be used to retrieve (on average) 50% of the
 This will result in a non-deterministic sample of (on average) 50% of documents from the `  cities  ` collection. The following is one possible output.
 
 ``` text
-  {name: 'New York City', state: 'New York'}
-  {name: 'Chicago', state: 'Illinois'}
+  { name: "New York City", state: "New York" }
+  { name: "Chicago", state: "Illinois" }
 ```
 
 In percent mode, because each document has the same probability of being selected, it is possible for no documents or all documents to be returned.

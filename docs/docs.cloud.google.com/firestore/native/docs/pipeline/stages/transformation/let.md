@@ -10,7 +10,7 @@ Define temporary variables that can be referenced in subsequent stages of the pi
 
 Variables created in the `  let(...)  ` stage are not included in the final results unless they are explicitly assigned to a field in a later stage (e.g., using `  add_fields(...)  ` or `  select(...)  ` ). This lets you simplify complex logic by breaking it into smaller, reusable components without cluttering the output documents. The `  let(...)  ` stage is particularly useful for **correlated sub-pipelines** , where a sub-pipeline needs to reference a value from the parent document's scope.
 
-## Syntax
+## Examples
 
 ### Node.js
 

@@ -5,7 +5,6 @@ Ordering and limiting Firestore queries
 For detailed documentation that includes this code sample, see the following:
 
   - [Order and limit data](/firestore/native/docs/query-data/order-limit-data)
-  - [Order and limit data with Cloud Firestore](https://firebase.google.com/docs/firestore/query-data/order-limit-data)
 
 ## Code sample
 

@@ -4,7 +4,6 @@ Demonstrates how to query a subcollection.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Get data with Cloud Firestore](https://firebase.google.com/docs/firestore/query-data/get-data)
   - [Getting data](/firestore/native/docs/query-data/get-data)
 
 ## Code sample
@@ -22,6 +21,29 @@ foreach (DocumentSnapshot document in querySnapshot.Documents)
 }
 ```
 
+### Java
+
+To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](/docs/authentication/set-up-adc-local-dev-environment) .
+
+``` java
+db.collection("cities")
+        .document("SF")
+        .collection("landmarks")
+        .get()
+        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Log.d(TAG, document.getId() + " => " + document.getData());
+                    }
+                } else {
+                    Log.d(TAG, "Error getting documents: ", task.getException());
+                }
+            }
+        });
+```
+
 ### Kotlin
 
 ``` kotlin
@@ -37,6 +59,20 @@ db.collection("cities")
     .addOnFailureListener { exception ->
         Log.d(TAG, "Error getting documents: ", exception)
     }
+```
+
+### Node.js
+
+To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](/docs/authentication/set-up-adc-local-dev-environment) .
+
+``` javascript
+const { collection, getDocs } = require("firebase/firestore");
+// Query a reference to a subcollection
+const querySnapshot = await getDocs(collection(db, "cities", "SF", "landmarks"));
+querySnapshot.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+  console.log(doc.id, " => ", doc.data());
+});
 ```
 
 ## What's next

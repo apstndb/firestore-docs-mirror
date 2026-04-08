@@ -8,17 +8,7 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 Returns all documents from a given collection. The collection can be nested.
 
-## Syntax
-
-### Node.js
-
-``` text
-const results = await db.pipeline()
-  .collection('/cities/SF/departments')
-  .execute();
-```
-
-## Client examples
+## Examples
 
 ### Web
 
@@ -85,19 +75,19 @@ Pipeline.Snapshot results =
 
 ## Behavior
 
-In order to use the `  collection  ` stage, it must appear as the first stage in the pipeline.
+In order to use the `  collection(...)  ` stage, it must appear as the first stage in the pipeline (or sub-pipeline).
 
-The order of documents returned from the `  collection  ` stage is unstable and shouldn't be relied upon. A subsequent sort stage can be used to obtain a deterministic ordering.
+The order of documents returned from the `  collection(...)  ` stage is unstable and cannot be relied upon. Firestore will attempt to execute the query in the most efficient way possible, which can change the order depending on the schema or index configuration. A subsequent `  sort(...)  ` stage can be used to obtain a deterministic ordering.
 
 For example, for the following documents:
 
 ### Node.js
 
 ``` text
-await db.collection('cities').doc('SF').set({name: 'San Francsico', state: 'California'});
-await db.collection('cities').doc('NYC').set({name: 'New York City', state: 'New York'});
-await db.collection('cities').doc('CHI').set({name: 'Chicago', state: 'Illinois'});
-await db.collection('states').doc('CA').set({name: 'California'});
+await db.collection("cities").doc("SF").set({name: "San Francsico", state: "California"});
+await db.collection("cities").doc("NYC").set({name: "New York City", state: "New York"});
+await db.collection("cities").doc("CHI").set({name: "Chicago", state: "Illinois"});
+await db.collection("states").doc("CA").set({name: "California"});
 ```
 
 The `  collection  ` stage can be used to retrieve all cities in the `  cities  ` collection and then sort them in ascending order of name.
@@ -106,32 +96,32 @@ The `  collection  ` stage can be used to retrieve all cities in the `  cities  
 
 ``` text
 const results = await db.pipeline()
-  .collection('/cities')
-  .sort(field('name').ascending())
+  .collection("/cities")
+  .sort(field("name").ascending())
   .execute();
 ```
 
 This query produces the following documents:
 
 ``` text
-  {name: 'Chicago', state: 'Illinois'}
-  {name: 'New York City', state: 'New York'}
-  {name: 'San Francisco', state: 'California'}
+  { name: "Chicago", state: "Illinois" }
+  { name: "New York City", state: "New York" }
+  { name: "San Francisco", state: "California" }
 ```
 
 ### Subcollections
 
-The `  collection  ` stage can also be used to target collections under a specific parent by providing the full path to the stage.
+The `  collection(...)  ` stage can also be used to target collections under a specific parent by providing the full path to the stage.
 
 For example, for the following documents:
 
 ### Node.js
 
 ``` text
-await db.collection('cities/SF/departments').doc('building').set({name: 'SF Building Deparment', employees: 750});
-await db.collection('cities/NY/departments').doc('building').set({name: 'NY Building Deparment', employees: 1000});
-await db.collection('cities/CHI/departments').doc('building').set({name: 'CHI Building Deparment', employees: 900});
-await db.collection('cities/NY/departments').doc('finance').set({name: 'NY Finance Deparment', employees: 1200});
+await db.collection("cities/SF/departments").doc("building").set({name: "SF Building Deparment", employees: 750});
+await db.collection("cities/NY/departments").doc("building").set({name: "NY Building Deparment", employees: 1000});
+await db.collection("cities/CHI/departments").doc("building").set({name: "CHI Building Deparment", employees: 900});
+await db.collection(&quot;cities/NY/departments").doc("finance").set({name: "NY Finance Deparment", employees: 1200});
 ```
 
 For this example, we only want the departments of New York city.
@@ -140,14 +130,14 @@ For this example, we only want the departments of New York city.
 
 ``` text
 const results = await db.pipeline()
-  .collection('/cities/NY/departments')
-  .sort(field('employees').ascending())
+  .collection("/cities/NY/departments")
+  .sort(field("employees").ascending())
   .execute();
 ```
 
 This will return all departments under the full path `  cities/NY/departments  ` .
 
 ``` text
-  {name: 'NY Building Deparment', employees: 1000}
-  {name: 'NY Finance Deparment', employees: 1200}
+  { name: "NY Building Deparment", employees: 1000 }
+  { name: "NY Finance Deparment", employees: 1200 }
 ```

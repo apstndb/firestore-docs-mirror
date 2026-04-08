@@ -8,45 +8,7 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 Filters the documents from the previous stage, returning only the documents where the condition evaluates to `  true  ` .
 
-**Syntax:**
-
-``` text
-where(condition: Expr)
-```
-
-## Example
-
-Create a cities collection with the following documents:
-
-### Node.js
-
-``` text
-await db.collection('cities').doc('SF').set({name: 'San Francisco', state: 'CA', country: 'USA', population: 870000});
-await db.collection('cities').doc('LA').set({name: 'Los Angeles', state: 'CA', country: 'USA', population: 3970000});
-await db.collection('cities').doc('NY').set({name: 'New York', state: 'NY', country: 'USA', population: 8530000});
-await db.collection('cities').doc('TOR').set({name: 'Toronto', state: null, country: 'Canada', population: 2930000});
-await db.collection('cities').doc('MEX').set({name: 'Mexico City', state: null, country: 'Mexico', population: 9200000});
-```
-
-Perform an equality search:
-
-### Node.js
-
-``` text
-const cities = await db.pipeline()
-  .collection("/cities")
-  .where(field("state").equals("CA"))
-  .execute();
-```
-
-Generates the following result:
-
-``` text
-{name: 'San Francisco', state: 'CA', country: 'USA', population: 870000},
-{name: 'Los Angeles',   state: 'CA', country: 'USA', population: 3970000}
-```
-
-## Client examples
+## Examples
 
 ### Web
 
@@ -228,7 +190,7 @@ const cities = await db.pipeline()
   .collection("/cities")
   .aggregate({
     accumulators: [field("population").sum().as("total_population")],
-    groups: ['location.state']
+    groups: ["location.state"]
   })
   .where(field("total_population").greaterThan(10000000))
 ```
