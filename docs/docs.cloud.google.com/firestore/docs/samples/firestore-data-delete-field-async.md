@@ -4,6 +4,7 @@ Delete a Firestore field (async).
 
 For detailed documentation that includes this code sample, see the following:
 
+  - [Delete data from Cloud Firestore](https://firebase.google.com/docs/firestore/manage-data/delete-data)
   - [Delete documents and fields](/firestore/native/docs/manage-data/delete-data)
 
 ## Code sample

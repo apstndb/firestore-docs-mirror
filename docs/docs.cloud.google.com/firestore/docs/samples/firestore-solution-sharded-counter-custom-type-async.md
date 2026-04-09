@@ -4,6 +4,7 @@ Create custom shard and counter types for Firestore distributed counters (async)
 
 For detailed documentation that includes this code sample, see the following:
 
+  - [Distributed counters](https://firebase.google.com/docs/firestore/solutions/counters)
   - [Support frequent and distributed counters](/firestore/native/docs/solutions/counters)
 
 ## Code sample

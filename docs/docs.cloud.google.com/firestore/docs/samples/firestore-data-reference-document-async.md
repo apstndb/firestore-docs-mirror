@@ -4,6 +4,7 @@ Create a Firestore document reference (async).
 
 For detailed documentation that includes this code sample, see the following:
 
+  - [Cloud Firestore Data model](https://firebase.google.com/docs/firestore/data-model)
   - [Data model](/firestore/native/docs/data-model)
 
 ## Code sample

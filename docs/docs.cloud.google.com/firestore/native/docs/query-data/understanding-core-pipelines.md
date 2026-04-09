@@ -35,7 +35,7 @@ With the introduction of Native mode support in the Enterprise edition, both Fir
 <td><strong>Enterprise edition</strong></td>
 </tr>
 <tr class="even">
-<td><strong>Supported querying operations</strong></td>
+<td><strong>Supported Operations</strong></td>
 <td>Limited to Firestore Core operations.</td>
 <td>Supports Firestore Core and Pipeline operations, and Firestore MongoDB compatibility operations.</td>
 </tr>
@@ -45,7 +45,7 @@ With the introduction of Native mode support in the Enterprise edition, both Fir
 <td>Indexes are not required for queries.</td>
 </tr>
 <tr class="even">
-<td><strong>Index creation</strong></td>
+<td><strong>Index Creation</strong></td>
 <td><strong>Automatic indexes</strong> are created for single fields. You can manually create composite indexes.</td>
 <td><strong>No automatic indexes</strong> are created. Indexes need to be manually managed.</td>
 </tr>
@@ -66,7 +66,7 @@ With the introduction of Native mode support in the Enterprise edition, both Fir
 <td>Charged per <strong>read and write</strong> (tranche). Reads are charged in <strong>Read Units</strong> (4 KiB tranches). Writes and deletes are merged into <strong>Write Units</strong> (1 KiB tranches).</td>
 </tr>
 <tr class="even">
-<td><strong>Base Pricing (per million)</strong>
+<td><strong>Base Pricing (per Million)</strong>
 <p>Prices shown are for the <em>us-central1</em> region</p></td>
 <td>Reads: <strong>$0.03 per 100,000 documents</strong> (or $0.30 per million).
 <p>Writes: <strong>$0.09 per 100,000 documents</strong> (or $0.90 per million).</p>
@@ -75,7 +75,7 @@ With the introduction of Native mode support in the Enterprise edition, both Fir
 <p>Write Units: <strong>$0.26 per 1 million</strong> write units. Prices are generally <strong>lower if documents are under 4KiB</strong> compared to the Standard Read cost.</p></td>
 </tr>
 <tr class="odd">
-<td><strong>Real-time Updates</strong>
+<td><strong>Real-Time Updates</strong>
 <p>Prices shown are for the <em>us-central1</em> region</p></td>
 <td>Realtime updates are <strong>included billed as Reads at $0.03 per 100,000 documents</strong> .</td>
 <td>Realtime updates have a <strong>new separate SKU</strong> (Realtime Update Units), charged per 4 KiB tranche. Realtime updates cost <strong>$0.30 per million read units</strong> .</td>

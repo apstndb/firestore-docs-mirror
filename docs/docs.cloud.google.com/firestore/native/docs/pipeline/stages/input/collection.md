@@ -121,7 +121,7 @@ For example, for the following documents:
 await db.collection("cities/SF/departments").doc("building").set({name: "SF Building Deparment", employees: 750});
 await db.collection("cities/NY/departments").doc("building").set({name: "NY Building Deparment", employees: 1000});
 await db.collection("cities/CHI/departments").doc("building").set({name: "CHI Building Deparment", employees: 900});
-await db.collection(&quot;cities/NY/departments").doc("finance").set({name: "NY Finance Deparment", employees: 1200});
+await db.collection("cities/NY/departments").doc("finance").set({name: "NY Finance Deparment", employees: 1200});
 ```
 
 For this example, we only want the departments of New York city.

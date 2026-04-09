@@ -5,6 +5,7 @@ Updating a Firestore document in a transaction (async).
 For detailed documentation that includes this code sample, see the following:
 
   - [Transactions and batched writes](/firestore/native/docs/manage-data/transactions)
+  - [Transactions and batched writes](https://firebase.google.com/docs/firestore/manage-data/transactions)
 
 ## Code sample
 

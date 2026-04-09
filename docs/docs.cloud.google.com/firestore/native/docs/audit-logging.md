@@ -1,6 +1,6 @@
 # Firestore audit logging information
 
-This document describes audit logging for Firestore. Google Cloud services generate audit logs that record administrative and access activities within your Google Cloud resources. For more information about Cloud Audit Logs, see the following:
+This document lists the audited methods for Firestore. Google Cloud services generate audit logs that record administrative and access activities within your Google Cloud resources. For more information about Cloud Audit Logs, see the following:
 
   - [Types of audit logs](/logging/docs/audit#types)
   - [Audit log entry structure](/logging/docs/audit#audit_log_entry_structure)
@@ -20,12 +20,16 @@ Individual writes from import, bulk delete operations and TTL are not audit logg
 
 ## Service name
 
-Firestore audit logs use the service name `  firestore.googleapis.com  ` . Filter for this service:
+To view the Firestore audit logs, do the following:
 
-``` text
-    protoPayload.serviceName="firestore.googleapis.com"
-  
-```
+1.  In the Google Cloud console, go to the Logs Explorer page:
+
+2.  Copy and paste the following query into the **Query** field of the Logs Explorer, and then click **Run query** .
+    
+    ``` text
+        protoPayload.serviceName="firestore.googleapis.com"
+      
+    ```
 
 ## Methods by permission type
 
@@ -59,11 +63,13 @@ API methods in the following list that are marked with (LRO) are long-running op
 <code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.GetDatabase      </code><br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.GetField      </code><br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.GetIndex      </code><br />
+<code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.GetUserCreds      </code><br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.ListBackupSchedules      </code><br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.ListBackups      </code><br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.ListDatabases      </code><br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.ListFields      </code><br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.ListIndexes      </code><br />
+<code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.ListUserCreds      </code><br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1beta1.FirestoreAdmin.GetIndex      </code><br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1beta1.FirestoreAdmin.ListIndexes      </code><br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1beta2.FirestoreAdmin.GetField      </code><br />
@@ -76,15 +82,21 @@ API methods in the following list that are marked with (LRO) are long-running op
 <tr class="even">
 <td><code dir="ltr" translate="no">       ADMIN_WRITE      </code></td>
 <td><code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.BulkDeleteDocuments      </code> (LRO)<br />
+<code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.CloneDatabase      </code><br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.CreateBackupSchedule      </code><br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.CreateDatabase      </code><br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.CreateIndex      </code> (LRO)<br />
+<code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.CreateUserCreds      </code><br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.DeleteBackup      </code><br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.DeleteBackupSchedule      </code><br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.DeleteDatabase      </code><br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.DeleteIndex      </code><br />
+<code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.DeleteUserCreds      </code><br />
+<code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.DisableUserCreds      </code><br />
+<code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.EnableUserCreds      </code><br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.ExportDocuments      </code> (LRO)<br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.ImportDocuments      </code> (LRO)<br />
+<code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.ResetUserPassword      </code><br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.RestoreDatabase      </code><br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.UpdateBackupSchedule      </code><br />
 <code dir="ltr" translate="no">       google.firestore.admin.v1.FirestoreAdmin.UpdateDatabase      </code><br />
@@ -105,6 +117,7 @@ API methods in the following list that are marked with (LRO) are long-running op
 <td><code dir="ltr" translate="no">       DATA_READ      </code></td>
 <td><code dir="ltr" translate="no">       google.firestore.v1.Firestore.BatchGetDocuments      </code><br />
 <code dir="ltr" translate="no">       google.firestore.v1.Firestore.BeginTransaction      </code><br />
+<code dir="ltr" translate="no">       google.firestore.v1.Firestore.ExecutePipeline      </code><br />
 <code dir="ltr" translate="no">       google.firestore.v1.Firestore.GetDocument      </code><br />
 <code dir="ltr" translate="no">       google.firestore.v1.Firestore.ListCollectionIds      </code><br />
 <code dir="ltr" translate="no">       google.firestore.v1.Firestore.ListDocuments      </code><br />
@@ -119,6 +132,7 @@ API methods in the following list that are marked with (LRO) are long-running op
 <code dir="ltr" translate="no">       google.firestore.v1beta1.Firestore.GetDocument      </code><br />
 <code dir="ltr" translate="no">       google.firestore.v1beta1.Firestore.ListCollectionIds      </code><br />
 <code dir="ltr" translate="no">       google.firestore.v1beta1.Firestore.ListDocuments      </code><br />
+<code dir="ltr" translate="no">       google.firestore.v1beta1.Firestore.Listen      </code><br />
 <code dir="ltr" translate="no">       google.firestore.v1beta1.Firestore.PartitionQuery      </code><br />
 <code dir="ltr" translate="no">       google.firestore.v1beta1.Firestore.Rollback      </code><br />
 <code dir="ltr" translate="no">       google.firestore.v1beta1.Firestore.RunAggregationQuery      </code><br />
@@ -132,11 +146,11 @@ API methods in the following list that are marked with (LRO) are long-running op
 <code dir="ltr" translate="no">       google.firestore.v1.Firestore.DeleteDocument      </code><br />
 <code dir="ltr" translate="no">       google.firestore.v1.Firestore.UpdateDocument      </code><br />
 <code dir="ltr" translate="no">       google.firestore.v1.Firestore.Write      </code><br />
-<code dir="ltr" translate="no">       google.firestore.v1beta1.Firestore.BatchWrite      </code><br />
 <code dir="ltr" translate="no">       google.firestore.v1beta1.Firestore.Commit      </code><br />
 <code dir="ltr" translate="no">       google.firestore.v1beta1.Firestore.CreateDocument      </code><br />
 <code dir="ltr" translate="no">       google.firestore.v1beta1.Firestore.DeleteDocument      </code><br />
-<code dir="ltr" translate="no">       google.firestore.v1beta1.Firestore.UpdateDocument      </code></td>
+<code dir="ltr" translate="no">       google.firestore.v1beta1.Firestore.UpdateDocument      </code><br />
+<code dir="ltr" translate="no">       google.firestore.v1beta1.Firestore.Write      </code></td>
 </tr>
 </tbody>
 </table>
@@ -180,6 +194,15 @@ The following audit logs are associated with methods belonging to `  google.fire
   - **Method is a long-running or streaming operation** : [**Long-running operation**](/logging/docs/audit/understanding-audit-logs#lro)  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.BulkDeleteDocuments"  `  
 
+#### `     CloneDatabase    `
+
+  - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.CloneDatabase  `  
+  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Permissions** :
+      - `  datastore.databases.clone - ADMIN_WRITE  `
+  - **Method is a long-running or streaming operation** : No.  
+  - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.CloneDatabase"  `  
+
 #### `     CreateBackupSchedule    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.CreateBackupSchedule  `  
@@ -206,6 +229,15 @@ The following audit logs are associated with methods belonging to `  google.fire
       - `  datastore.indexes.create - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : [**Long-running operation**](/logging/docs/audit/understanding-audit-logs#lro)  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.CreateIndex"  `  
+
+#### `     CreateUserCreds    `
+
+  - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.CreateUserCreds  `  
+  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Permissions** :
+      - `  datastore.userCreds.create - ADMIN_WRITE  `
+  - **Method is a long-running or streaming operation** : No.  
+  - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.CreateUserCreds"  `  
 
 #### `     DeleteBackup    `
 
@@ -242,6 +274,33 @@ The following audit logs are associated with methods belonging to `  google.fire
       - `  datastore.indexes.delete - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.DeleteIndex"  `  
+
+#### `     DeleteUserCreds    `
+
+  - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.DeleteUserCreds  `  
+  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Permissions** :
+      - `  datastore.userCreds.delete - ADMIN_WRITE  `
+  - **Method is a long-running or streaming operation** : No.  
+  - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.DeleteUserCreds"  `  
+
+#### `     DisableUserCreds    `
+
+  - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.DisableUserCreds  `  
+  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Permissions** :
+      - `  datastore.userCreds.update - ADMIN_WRITE  `
+  - **Method is a long-running or streaming operation** : No.  
+  - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.DisableUserCreds"  `  
+
+#### `     EnableUserCreds    `
+
+  - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.EnableUserCreds  `  
+  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Permissions** :
+      - `  datastore.userCreds.update - ADMIN_WRITE  `
+  - **Method is a long-running or streaming operation** : No.  
+  - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.EnableUserCreds"  `  
 
 #### `     ExportDocuments    `
 
@@ -297,6 +356,15 @@ The following audit logs are associated with methods belonging to `  google.fire
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.GetIndex"  `  
 
+#### `     GetUserCreds    `
+
+  - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.GetUserCreds  `  
+  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Permissions** :
+      - `  datastore.userCreds.get - ADMIN_READ  `
+  - **Method is a long-running or streaming operation** : No.  
+  - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.GetUserCreds"  `  
+
 #### `     ImportDocuments    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.ImportDocuments  `  
@@ -350,6 +418,24 @@ The following audit logs are associated with methods belonging to `  google.fire
       - `  datastore.indexes.list - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.ListIndexes"  `  
+
+#### `     ListUserCreds    `
+
+  - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.ListUserCreds  `  
+  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Permissions** :
+      - `  datastore.userCreds.list - ADMIN_READ  `
+  - **Method is a long-running or streaming operation** : No.  
+  - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.ListUserCreds"  `  
+
+#### `     ResetUserPassword    `
+
+  - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.ResetUserPassword  `  
+  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Permissions** :
+      - `  datastore.userCreds.update - ADMIN_WRITE  `
+  - **Method is a long-running or streaming operation** : No.  
+  - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.ResetUserPassword"  `  
 
 #### `     RestoreDatabase    `
 
@@ -570,8 +656,6 @@ The following audit logs are associated with methods belonging to `  google.fire
   - **Permissions** :
       - `  datastore.databases.get - DATA_READ  `
       - `  datastore.entities.create - DATA_WRITE  `
-      - `  datastore.entities.delete - DATA_WRITE  `
-      - `  datastore.entities.get - DATA_READ  `
       - `  datastore.entities.update - DATA_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.v1.Firestore.Commit"  `  
@@ -594,6 +678,19 @@ The following audit logs are associated with methods belonging to `  google.fire
       - `  datastore.entities.delete - DATA_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.v1.Firestore.DeleteDocument"  `  
+
+#### `     ExecutePipeline    `
+
+  - **Method** : `  google.firestore.v1.Firestore.ExecutePipeline  `  
+  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Permissions** :
+      - `  datastore.databases.get - DATA_READ  `
+      - `  datastore.entities.get - DATA_READ  `
+      - `  datastore.entities.list - DATA_READ  `
+  - **Method is a long-running or streaming operation** : No.  
+  - **Filter for this method** : `  protoPayload.methodName="google.firestore.v1.Firestore.ExecutePipeline"  `  
+
+**Note:** `  ExecutePipeline  ` is a short-lived streaming RPC and emits a log entry when the last message (document) is sent.
 
 #### `     GetDocument    `
 
@@ -671,6 +768,8 @@ The following audit logs are associated with methods belonging to `  google.fire
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.v1.Firestore.RunAggregationQuery"  `  
 
+**Note:** `  RunAggregationQuery  ` is a short-lived streaming RPC and emits a log entry when the last message (document) is sent.
+
 #### `     RunQuery    `
 
   - **Method** : `  google.firestore.v1.Firestore.RunQuery  `  
@@ -688,6 +787,7 @@ The following audit logs are associated with methods belonging to `  google.fire
   - **Method** : `  google.firestore.v1.Firestore.UpdateDocument  `  
   - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
   - **Permissions** :
+      - `  datastore.databases.get - DATA_READ  `
       - `  datastore.entities.create - DATA_WRITE  `
       - `  datastore.entities.update - DATA_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -725,8 +825,6 @@ The following audit logs are associated with methods belonging to `  google.fire
   - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.databases.get - DATA_READ  `
-      - `  datastore.entities.create - DATA_WRITE  `
-      - `  datastore.entities.update - DATA_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.v1beta1.Firestore.BatchWrite"  `  
 
@@ -746,7 +844,6 @@ The following audit logs are associated with methods belonging to `  google.fire
   - **Permissions** :
       - `  datastore.databases.get - DATA_READ  `
       - `  datastore.entities.create - DATA_WRITE  `
-      - `  datastore.entities.delete - DATA_WRITE  `
       - `  datastore.entities.update - DATA_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.v1beta1.Firestore.Commit"  `  
@@ -798,6 +895,16 @@ The following audit logs are associated with methods belonging to `  google.fire
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.v1beta1.Firestore.ListDocuments"  `  
 
+#### `     Listen    `
+
+  - **Method** : `  google.firestore.v1beta1.Firestore.Listen  `  
+  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Permissions** :
+      - `  datastore.entities.get - DATA_READ  `
+      - `  datastore.entities.list - DATA_READ  `
+  - **Method is a long-running or streaming operation** : [**Streaming RPC**](/logging/docs/audit/understanding-audit-logs#streaming)  
+  - **Filter for this method** : `  protoPayload.methodName="google.firestore.v1beta1.Firestore.Listen"  `  
+
 #### `     PartitionQuery    `
 
   - **Method** : `  google.firestore.v1beta1.Firestore.PartitionQuery  `  
@@ -827,6 +934,8 @@ The following audit logs are associated with methods belonging to `  google.fire
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.v1beta1.Firestore.RunAggregationQuery"  `  
 
+**Note:** `  RunAggregationQuery  ` is a short-lived streaming RPC and emits a log entry when the last message (document) is sent.
+
 #### `     RunQuery    `
 
   - **Method** : `  google.firestore.v1beta1.Firestore.RunQuery  `  
@@ -848,6 +957,16 @@ The following audit logs are associated with methods belonging to `  google.fire
       - `  datastore.entities.update - DATA_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.v1beta1.Firestore.UpdateDocument"  `  
+
+#### `     Write    `
+
+  - **Method** : `  google.firestore.v1beta1.Firestore.Write  `  
+  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Permissions** :
+      - `  datastore.entities.create - DATA_WRITE  `
+      - `  datastore.entities.update - DATA_WRITE  `
+  - **Method is a long-running or streaming operation** : No.  
+  - **Filter for this method** : `  protoPayload.methodName="google.firestore.v1beta1.Firestore.Write"  `  
 
 ### `     google.longrunning.Operations    `
 
@@ -888,6 +1007,18 @@ The following audit logs are associated with methods belonging to `  google.long
       - `  datastore.operations.list - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `  protoPayload.methodName="google.longrunning.Operations.ListOperations"  `  
+
+## Methods that don't produce audit logs
+
+A method might not produce audit logs for one or more of the following reasons:
+
+  - It is a high volume method involving significant log generation and storage costs.
+  - It has low auditing value.
+  - Another audit or platform log already provides method coverage.
+
+The following methods don't produce audit logs:
+
+  - `  google.longrunning.Operations.WaitOperation  `
 
 ## Identify request callers
 

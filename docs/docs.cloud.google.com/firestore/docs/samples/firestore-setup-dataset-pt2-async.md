@@ -4,7 +4,8 @@ Add data to Firestore (async).
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Quickstart: Create a Firestore database by using a server client library](/firestore/native/docs/create-database-server-client-library)
+  - [Create a Firestore database by using a server client library](/firestore/native/docs/create-database-server-client-library)
+  - [Get started with Cloud Firestore](https://firebase.google.com/docs/firestore/quickstart)
 
 ## Code sample
 
@@ -15,7 +16,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 ``` python
 doc_ref = db.collection("users").document("aturing")
 await doc_ref.set(
-    {"first": "Alan", "middle&quot;: "Mathison", "last": "Turing", "born": 1912}
+    {"first": "Alan", "middle": "Mathison", "last": "Turing", "born": 1912}
 )
 ```
 
