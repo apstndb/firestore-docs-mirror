@@ -4,9 +4,9 @@ Using the import and export features of the Datastore emulator, you can export d
 
 Before you use the import or export features of the Datastore emulator, complete the following:
 
-  - [Start the Datastore emulator.](/datastore/docs/tools/datastore-emulator)
+  - [Start the Datastore emulator.](https://docs.cloud.google.com/datastore/docs/tools/datastore-emulator)
     
-    The import and export features are available for `  cloud-datastore-emulator  ` versions 2.1.0 and greater. You may need to [update your Google Cloud CLI components](/sdk/docs/components#updating_components) .
+    The import and export features are available for `  cloud-datastore-emulator  ` versions 2.1.0 and greater. You may need to [update your Google Cloud CLI components](https://docs.cloud.google.com/sdk/docs/components#updating_components) .
 
   - For import operations, make sure your entity export files are on the same machine as the emulator.
 
@@ -18,7 +18,7 @@ To import entities into the emulator, send a `  POST  ` import request to the em
 
 ### Protocol
 
-``` bash
+``` lang-sh notranslate
 curl -X POST localhost:8081/v1/projects/[PROJECT_ID]:import \
 -H 'Content-Type: application/json' \
 -d '{"input_url":"[ENTITY_EXPORT_FILES]"}'
@@ -42,7 +42,7 @@ Specify kinds or namespaces in an entity filter:
 
 ### Protocol
 
-``` bash
+``` lang-sh notranslate
 curl -X POST localhost:8081/v1/projects/[PROJECT_ID]:import \
 -H 'Content-Type: application/json' \
 -d '{"input_url":"[ENTITY_EXPORT_FILES]",
@@ -73,7 +73,7 @@ To export entities in an emulator instance, send a `  POST  ` export request to 
 
 ### Protocol
 
-``` bash
+``` lang-sh notranslate
 curl -X POST localhost:8081/v1/projects/[PROJECT_ID]:export \
 -H 'Content-Type: application/json' \
 -d '{"output_url_prefix":"EXPORT_DIRECTORY"}'
@@ -89,7 +89,9 @@ where:
     
     `  {"output_url_prefix":"/home/user/myexports/2019-02-04/"}  `
 
-**Note:** If you intend to use an entity filter when importing entities from your entity export files, you must [specify an entity filter in your export operation](#export-with-entity-filter) .
+**Note:** If you intend to use an entity filter when importing entities from your entity export files, you must [specify an entity filter in your export operation](https://docs.cloud.google.com/datastore/docs/tools/emulator-export-import#export-with-entity-filter) .
+
+<span id="export-with-entity-filter"></span>
 
 <span id="export-with-entity-filter"></span>
 
@@ -101,7 +103,7 @@ Specify kinds or namespaces in an entity filter:
 
 ### Protocol
 
-``` bash
+``` lang-sh notranslate
 curl -X POST localhost:8081/v1/projects/[PROJECT_ID]:export \
 -H 'Content-Type: application/json' \
 -d '{"output_url_prefix":"EXPORT_DIRECTORY",
@@ -128,6 +130,6 @@ where:
 
 Entity export files created by the emulator are compatible with the managed import feature for Datastore mode databases.
 
-<span id="export-with-entity-filter">Before you can load entities exported from the emulator into your database, you must</span> [upload your entity export files to a Cloud Storage bucket](/storage/docs/uploading-objects) . The managed import feature reads only from Cloud Storage buckets.
+<span id="export-with-entity-filter">Before you can load entities exported from the emulator into your database, you must</span> [upload your entity export files to a Cloud Storage bucket](https://docs.cloud.google.com/storage/docs/uploading-objects) . The managed import feature reads only from Cloud Storage buckets.
 
-Once your entity export files are available in a Cloud Storage bucket, you can import the data into your database as described in [Exporting and importing entities](/datastore/docs/export-import-entities) .
+Once your entity export files are available in a Cloud Storage bucket, you can import the data into your database as described in [Exporting and importing entities](https://docs.cloud.google.com/datastore/docs/export-import-entities) .

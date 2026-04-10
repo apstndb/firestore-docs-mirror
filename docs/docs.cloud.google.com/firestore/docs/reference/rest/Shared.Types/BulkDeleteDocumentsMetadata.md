@@ -11,7 +11,7 @@ Metadata for `  google.longrunning.Operation  ` results from `  FirestoreAdmin.B
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;startTime&quot;: string,
   &quot;endTime&quot;: string,
   &quot;operationState&quot;: enum (OperationState),

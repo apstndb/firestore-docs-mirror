@@ -50,6 +50,16 @@ With the introduction of Native mode support in the Enterprise edition, both Fir
 <td><strong>No automatic indexes</strong> are created. Indexes need to be manually managed.</td>
 </tr>
 <tr class="odd">
+<td><strong>Indexed Fields</strong></td>
+<td>An additional <em>__name__</em> field is automatically appended to the indexed fields if not already present.</td>
+<td><em>__name__</em> is <strong>not</strong> automatically appended to the indexed fields. You need to explicitly specify <em>__name__</em> in the indexed fields if it is important for your application.</td>
+</tr>
+<tr class="even">
+<td><strong>Sort Order Normalization</strong></td>
+<td>The order by clause of the query is normalized by appending inequality fields and the <em>__name__</em> field at the end (if not already present). This guarantees a unique, deterministic ordering of the results regardless of what other fields are in the order by clause.</td>
+<td>No sort order normalization. A sort order such as <em>sort a ASC</em> only guarantees that results are sorted by field <em>a</em> . Firestore will use your existing indexes to return results in the most efficient order possible. Therefore, if <em>a</em> is not unique among the result set, the order of the results may vary from queries to queries depending on index configuration, execution strategies etc. To guarantee a unique, deterministic ordering of the results, you need to add a unique field such as <em>__name__</em> to the sort order.</td>
+</tr>
+<tr class="odd">
 <td><strong>Query Performance &amp; Cost</strong></td>
 <td>Queries are generally <strong>performant</strong> due to index requirements.</td>
 <td>Optimize query performance and costs by creating indexes. You can identify missing indexes using Query Explain and Query Insights.
@@ -85,5 +95,5 @@ With the introduction of Native mode support in the Enterprise edition, both Fir
 
 ## What's next
 
-  - [Learn how to construct Pipeline operations](/firestore/native/docs/pipeline/overview)
-  - [Get data with Core operations](/firestore/native/docs/query-data/get-data)
+  - [Learn how to construct Pipeline operations](https://docs.cloud.google.com/firestore/native/docs/pipeline/overview)
+  - [Get data with Core operations](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data)

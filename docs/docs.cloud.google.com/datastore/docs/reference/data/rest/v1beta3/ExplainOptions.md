@@ -1,4 +1,4 @@
-  - [JSON representation](#SCHEMA_REPRESENTATION)
+  - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/ExplainOptions#SCHEMA_REPRESENTATION)
 
 Explain options for the query.
 
@@ -13,7 +13,7 @@ Explain options for the query.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;analyze&quot;: boolean
 }</code></pre></td>
 </tr>

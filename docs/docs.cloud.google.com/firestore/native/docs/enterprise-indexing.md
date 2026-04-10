@@ -2,11 +2,11 @@
 
 **Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
 
-This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
-Indexing behavior depends on the edition of the database. This page describes how to manage your indexes for Firestore Enterprise edition. For Firestore Standard edition, see [Firestore Standard edition index overview](/firestore/native/docs/standard-indexing) .
+Indexing behavior depends on the edition of the database. This page describes how to manage your indexes for Firestore Enterprise edition. For Firestore Standard edition, see [Firestore Standard edition index overview](https://docs.cloud.google.com/firestore/native/docs/standard-indexing) .
 
-To learn more about Firestore Enterprise edition indexes, see [Indexes overview](/firestore/native/docs/enterprise-index-overview) .
+To learn more about Firestore Enterprise edition indexes, see [Indexes overview](https://docs.cloud.google.com/firestore/native/docs/enterprise-index-overview) .
 
 ## Before you begin
 
@@ -17,7 +17,7 @@ Before you can create an index in Firestore, make sure that you are assigned any
   - `  roles/editor  `
   - `  roles/owner  `
 
-To grant a role, see [Grant a single role](https://cloud.google.com/iam/docs/granting-changing-revoking-access#single-role) . For more information about Firestore roles and associated permissions, see [Predefined roles](security/iam) .
+To grant a role, see [Grant a single role](https://cloud.google.com/iam/docs/granting-changing-revoking-access#single-role) . For more information about Firestore roles and associated permissions, see [Predefined roles](https://docs.cloud.google.com/firestore/native/docs/security/iam) .
 
 If you have defined custom roles, assign all of the following permissions to create indexes:
 
@@ -34,6 +34,8 @@ To create an index, complete the following steps:
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select a database from the list of databases.
 
@@ -47,17 +49,17 @@ To create an index, complete the following steps:
 
 7.  Select a field presence option, either non-sparse or sparse.
 
-8.  Optionally, set the [unique index](/firestore/native/docs/enterprise-index-overview#unique_indexes) option.
+8.  Optionally, set the [unique index](https://docs.cloud.google.com/firestore/native/docs/enterprise-index-overview#unique_indexes) option.
 
 9.  Click **Create** .
 
-10. Your new index is displayed in the list of indexes and Firestore begins creating your index. When your index is created, you will see a green check mark next to the index. If index is not created, see [Index building errors](/firestore/native/docs/enterprise-index-overview#index-building-errors) for possible causes.
+10. Your new index is displayed in the list of indexes and Firestore begins creating your index. When your index is created, you will see a green check mark next to the index. If index is not created, see [Index building errors](https://docs.cloud.google.com/firestore/native/docs/enterprise-index-overview#index-building-errors) for possible causes.
 
 ##### gcloud CLI
 
 To create an index, use the [`  gcloud firestore indexes composite create  `](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/create) command.
 
-``` text
+``` suppresswarning
 gcloud firestore indexes composite create \
 --database='DATABASE_ID' \
 --collection-group=COLLECTION \
@@ -74,7 +76,7 @@ Replace the following:
 
   - FIELD\_CONFIGURATION : a field configuration. For each field, add `  --field-config=field-path=  ` . For example:
     
-    ``` text
+    ``` suppresswarning
         --field-config=field-path=user-id,order=descending \
         --field-config=field-path=score,order=descending
         
@@ -90,7 +92,7 @@ To create a unique index, add the `  --unique  ` flag.
 
 Use the [`  google_firestore_index  `](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_index) resource.
 
-``` text
+``` suppresswarning
 resource "google_firestore_index" "index" {
   database    = "DATABASE_ID"
   collection  = "COLLECTION"
@@ -123,6 +125,8 @@ To delete an index, complete the following steps:
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  From the list of databases, select a database.
 
@@ -136,7 +140,7 @@ To delete an index, complete the following steps:
 
 1.  To find the name of the index, use the [`  gcloud firestore indexes composite list  `](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/list) command.
     
-    ``` text
+    ``` suppresswarning
     gcloud firestore indexes composite list \
     --database='DATABASE_ID'
     ```
@@ -145,7 +149,7 @@ To delete an index, complete the following steps:
 
 2.  To delete the index, use the [`  gcloud firestore indexes composite delete  `](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/delete) command.
     
-    ``` text
+    ``` suppresswarning
     gcloud firestore indexes composite delete INDEX_NAME \
     --database='DATABASE_ID'
     ```
@@ -154,6 +158,8 @@ To delete an index, complete the following steps:
     
       - INDEX\_NAME : the name of an index
       - DATABASE\_ID : a database ID
+
+<span id="index-build-time"></span>
 
 ## Index build time
 
@@ -171,7 +177,7 @@ Index builds are *long-running operations* . The following sections describe how
 
 After you start to create an index, Firestore assigns the operation a unique name. Operation names are prefixed with `  projects/ PROJECT_ID /databases/ DATABASE_ID /operations/  ` , for example:
 
-``` text
+``` notranslate
 projects/PROJECT_ID/databases/DATABASE_ID/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
 ```
 
@@ -181,7 +187,7 @@ You can omit the prefix when specifying an operation name for the `  describe  `
 
 To list long-running operations, use the [`  gcloud firestore operations list  `](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command. This command lists ongoing and recently completed operations. Operations are listed for a few days after completion:
 
-``` text
+``` notranslate
 gcloud firestore operations list
 ```
 
@@ -189,7 +195,7 @@ gcloud firestore operations list
 
 Instead of listing all long-running operations, you can list the details of a single operation:
 
-``` text
+``` notranslate
 gcloud firestore operations describe operation-name
 ```
 
@@ -205,7 +211,7 @@ To estimate an operation's progress, divide `  workCompleted  ` by `  workEstima
 
 The following is an example of the progress of creating an index:
 
-``` text
+``` notranslate
 {
   "operations": [
     {

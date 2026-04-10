@@ -1,4 +1,4 @@
-  - [JSON representation](#SCHEMA_REPRESENTATION)
+  - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/DatastoreFirestoreMigrationMetadata#SCHEMA_REPRESENTATION)
 
 Metadata for Datastore to Firestore migration operations.
 
@@ -17,7 +17,7 @@ This singleton resource can be accessed at: "projects/{projectId}/operations/dat
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;migrationState&quot;: enum (MigrationState),
   &quot;migrationStep&quot;: enum (MigrationStep)
 }</code></pre></td>

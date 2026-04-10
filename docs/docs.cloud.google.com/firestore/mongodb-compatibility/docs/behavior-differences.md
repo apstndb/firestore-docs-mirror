@@ -4,10 +4,10 @@ This page describes behavioral differences between Firestore with MongoDB compat
 
 For a breakdown of supported features depending on MongoDB version, see:
 
-  - [Supported features: 8.0](/firestore/mongodb-compatibility/docs/supported-features-80)
-  - [Supported features: 7.0](/firestore/mongodb-compatibility/docs/supported-features-70)
-  - [Supported features: 6.0](/firestore/mongodb-compatibility/docs/supported-features-60)
-  - [Supported features: 5.0](/firestore/mongodb-compatibility/docs/supported-features-50)
+  - [Supported features: 8.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80)
+  - [Supported features: 7.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-70)
+  - [Supported features: 6.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-60)
+  - [Supported features: 5.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-50)
 
 ## Connections and databases
 
@@ -64,7 +64,7 @@ The following differences apply to naming parts of your data model.
 ## Aggregations
 
   - Aggregations are limited to 250 stages.
-  - The `  $merge  ` and `  $out  ` stages are not supported. See the [commands](#commands) section for a complete list of supported stages and operators.
+  - The `  $merge  ` and `  $out  ` stages are not supported. See the [commands](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences#commands) section for a complete list of supported stages and operators.
   - The `  $lookup  ` stage does not support the `  let  ` and `  pipeline  ` fields.
   - The `  $facet  ` stage does not support `  $rand  ` or `  $sample  ` in the input stages because it's a volatile expression.
 
@@ -97,7 +97,7 @@ The following differences apply to naming parts of your data model.
 
   - Wildcard indexes are not supported.
   - Firestore with MongoDB compatibility does not automatically create an index on `  _id  ` , but it ensures values of `  _id  ` are unique within a collection.
-  - Indexes without multi-key enabled are not automatically changed to [multi-key indexes](/firestore/mongodb-compatibility/docs/index-overview#multi-key_indexes_for_array_values) based on write operations. You must enable multi-key when you create the index and the option cannot be changed.
+  - Indexes without multi-key enabled are not automatically changed to [multi-key indexes](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview#multi-key_indexes_for_array_values) based on write operations. You must enable multi-key when you create the index and the option cannot be changed.
 
 ## Errors
 
@@ -235,28 +235,11 @@ The following behavior differences apply to specific commands.
 
 ### Transactions and sessions
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Command</strong></th>
-<th><strong>Unsupported Fields</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><p><code dir="ltr" translate="no">        commitTransaction       </code></p></td>
-<td><p>(none)</p></td>
-</tr>
-<tr class="even">
-<td><p><code dir="ltr" translate="no">        abortTransaction       </code></p></td>
-<td><p>(none)</p></td>
-</tr>
-<tr class="odd">
-<td><p><code dir="ltr" translate="no">        endSessions       </code></p></td>
-<td><p>(none)</p></td>
-</tr>
-</tbody>
-</table>
+| **Command**                          | **Unsupported Fields** |
+| ------------------------------------ | ---------------------- |
+| `         commitTransaction        ` | (none)                 |
+| `         abortTransaction        `  | (none)                 |
+| `         endSessions        `       | (none)                 |
 
 ### Administration
 
@@ -357,5 +340,5 @@ The following behavior differences apply to specific commands.
 
 ## What's next
 
-  - Run the [Quickstart: Create a database and connect to it](/firestore/mongodb-compatibility/docs/create-and-query-database) .
-  - For a full list of supported features, see [Supported MongoDB data types, drivers, and features](/firestore/mongodb-compatibility/docs/supported-data-types-drivers) .
+  - Run the [Quickstart: Create a database and connect to it](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database) .
+  - For a full list of supported features, see [Supported MongoDB data types, drivers, and features](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-data-types-drivers) .

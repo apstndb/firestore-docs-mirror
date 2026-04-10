@@ -8,6 +8,8 @@ This document applies to Firestore Standard edition in Firestore in Native mode.
 
 ## Evenly distributed usage
 
+![Heatmap showing evenly distributed reads and writes](https://docs.cloud.google.com/static/firestore/native/docs/images/keyvis-patterns-ideal.png)
+
 If a heatmap shows a fine-grained mix of dark and bright colors, then write/delete operations for index keys are evenly distributed throughout the database. This heatmap likely represents an effective usage pattern for Firestore.
 
 ## Indexes on sequential keys
@@ -20,31 +22,33 @@ Some examples of common hotspots on index are as follows:
 
 ### Hotspotting due to increasing timestamp
 
+![Heatmap showing hotspotting due to increasing timestamp](https://docs.cloud.google.com/static/firestore/native/docs/images/keyvis-patterns-timestamp.png)
+
 In this example, a heatmap with a single bright diagonal line can indicate a database that uses strictly increasing or decreasing index write/delete operations on a timestamp field name.
 
 ### Hotspotting due to increasing field names
 
+![Heatmap showing hotspotting due to increasing field](https://docs.cloud.google.com/static/firestore/native/docs/images/keyvis-patterns-property.png)
+
 In this example, a heatmap with a single bright diagonal line can indicate a database that uses strictly increasing or decreasing index write/delete operations on an incremental field, such as auto-generated invoice numbers.
 
-To identify the hotspotting issue, use the Key Visualizer tool and [understand the index key structure](/firestore/docs/keyvis-patterns-index#understand_the_index_key_structure) to determine which index causes the issue and exempt those indexes with [best practices](./best-practices#high_read_write_and_delete_rates_to_a_narrow_document_range) .
+To identify the hotspotting issue, use the Key Visualizer tool and [understand the index key structure](https://docs.cloud.google.com/firestore/docs/keyvis-patterns-index#understand_the_index_key_structure) to determine which index causes the issue and exempt those indexes with [best practices](https://docs.cloud.google.com/firestore/native/docs/best-practices#high_read_write_and_delete_rates_to_a_narrow_document_range) .
 
 ## Understand the index key structure
 
-Before you understand the structure of index keys that you see in Key Visualizer tool, learn about [indexes](./concepts/index-overview) in Firestore.
+Before you understand the structure of index keys that you see in Key Visualizer tool, learn about [indexes](https://docs.cloud.google.com/firestore/native/docs/concepts/index-overview) in Firestore.
 
 The following code shows an example index key format that you see when you hover over the affected key-range on the heatmap.
 
-``` text
-COLLECTION: projects/PROJECT_ID/databases/(default)/documents/Users
-  PROPERTIES: (Timestamp: DESC) 
-  VALUES: (16500000000000001)
-  DOCUMENT: projects/PROJECT_ID/databases/(default)/documents/Users/5000000000000001
-```
+    COLLECTION: projects/PROJECT_ID/databases/(default)/documents/Users
+      PROPERTIES: (Timestamp: DESC) 
+      VALUES: (16500000000000001)
+      DOCUMENT: projects/PROJECT_ID/databases/(default)/documents/Users/5000000000000001
 
 Where:
 
-  - **COLLECTION** : location of the collection in your database. Based on the [scope](./concepts/index-overview#query_scopes) , it can be collection path for collection scope or collection name for collection group scope.
-  - **PROPERTIES** : fields used to create the index. The [`  __name__  ` ordering property](/firestore/docs/concepts/index-overview#default_ordering_and_the_name_field) is only shown for index definitions that modify the default ordering.
+  - **COLLECTION** : location of the collection in your database. Based on the [scope](https://docs.cloud.google.com/firestore/native/docs/concepts/index-overview#query_scopes) , it can be collection path for collection scope or collection name for collection group scope.
+  - **PROPERTIES** : fields used to create the index. The [`  __name__  ` ordering property](https://docs.cloud.google.com/firestore/docs/concepts/index-overview#default_ordering_and_the_name_field) is only shown for index definitions that modify the default ordering.
   - **VALUES** : value of each property.
   - **DOCUMENT** : ID of the document updated in an operation.
 
@@ -53,6 +57,8 @@ From the earlier example, identify the fields from the **PROPERTIES** value to f
 To find the index, complete the following steps:
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -60,7 +66,7 @@ To find the index, complete the following steps:
 
 4.  Go to the **Composite** or **Single Field** tab.
     
-    You can identify the type of index by analyzing the **PROPERTIES** field. See [examples of index keys](./keyvis-patterns-index#examples_of_index_key_entries_on_the_heatmap) for more information.
+    You can identify the type of index by analyzing the **PROPERTIES** field. See [examples of index keys](https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns-index#examples_of_index_key_entries_on_the_heatmap) for more information.
 
 5.  Click **Filter** , select **Fields** , and enter the name of the field.
     
@@ -70,7 +76,7 @@ After you have identified the index that is causing issues, you can use the foll
 
   - Composite index: Either modify the index to ensure that the field whose value monotonically increases or decreases is not selected as the first field for indexing, or delete the index.
 
-  - Single-field index: Add an exemption for the field and the sorting order that you want to exempt. See [Adding a single-field exemption](./concepts/index-overview#single-field_index_exemptions) for more information.
+  - Single-field index: Add an exemption for the field and the sorting order that you want to exempt. See [Adding a single-field exemption](https://docs.cloud.google.com/firestore/native/docs/concepts/index-overview#single-field_index_exemptions) for more information.
 
 ### Examples of index key entries on the heatmap
 
@@ -141,7 +147,7 @@ Index entry for composite index with <code dir="ltr" translate="no">       Times
 </tr>
 <tr class="odd">
 <td>Collection scope composite Index entry with ASC and <code dir="ltr" translate="no">       __name__      </code> properties</td>
-<td>Index entry for the composite Index on the <code dir="ltr" translate="no">       Timestamp      </code> field in ascending order and with <code dir="ltr" translate="no">       __name__      </code> sorting in descending order for the <code dir="ltr" translate="no">       Users/5000000000000001      </code> document. You can use <code dir="ltr" translate="no">       __name__      </code> as the final field in an index definition to change the <a href="/firestore/docs/concepts/index-overview#default_ordering_and_the_name_field">default ordering of results</a> .</td>
+<td>Index entry for the composite Index on the <code dir="ltr" translate="no">       Timestamp      </code> field in ascending order and with <code dir="ltr" translate="no">       __name__      </code> sorting in descending order for the <code dir="ltr" translate="no">       Users/5000000000000001      </code> document. You can use <code dir="ltr" translate="no">       __name__      </code> as the final field in an index definition to change the <a href="https://docs.cloud.google.com/firestore/docs/concepts/index-overview#default_ordering_and_the_name_field">default ordering of results</a> .</td>
 <td><code dir="ltr" translate="no">       COLLECTION: projects/               PROJECT_ID              /databases/(default)/documents/Users      </code><br />
 <code dir="ltr" translate="no">       PROPERTIES: (Timestamp: ASC, __name__ DESC)      </code><br />
 <code dir="ltr" translate="no">       VALUES: (16500000000000001)      </code><br />
@@ -152,6 +158,6 @@ Index entry for composite index with <code dir="ltr" translate="no">       Times
 
 ## What's next
 
-  - Learn how to [get started with Key Visualizer](./keyvis-getting-started) .
-  - Find out how to [explore a heatmap in detail](./keyvis-exploring-heatmaps) .
-  - Read about the [metrics you can view in a heatmap](./key-visualizer#metrics) .
+  - Learn how to [get started with Key Visualizer](https://docs.cloud.google.com/firestore/native/docs/keyvis-getting-started) .
+  - Find out how to [explore a heatmap in detail](https://docs.cloud.google.com/firestore/native/docs/keyvis-exploring-heatmaps) .
+  - Read about the [metrics you can view in a heatmap](https://docs.cloud.google.com/firestore/native/docs/key-visualizer#metrics) .

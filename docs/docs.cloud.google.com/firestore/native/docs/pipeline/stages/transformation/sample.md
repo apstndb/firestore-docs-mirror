@@ -2,7 +2,7 @@
 
 **Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
 
-This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
 ## Description
 
@@ -17,131 +17,119 @@ There are two supported modes:
 
 ### Web
 
-``` javascript
-let results;
-
-// Get a sample of 100 documents in a database
-results = await execute(db.pipeline()
-  .database()
-  .sample(100)
-);
-
-// Randomly shuffle a list of 3 documents
-results = await execute(db.pipeline()
-  .documents([
-    doc(db, "cities", "SF"),
-    doc(db, "cities", "NY"),
-    doc(db, "cities", "DC"),
-  ])
-  .sample(3)
-);test.firestore.js
-```
+    let results;
+    
+    // Get a sample of 100 documents in a database
+    results = await execute(db.pipeline()
+      .database()
+      .sample(100)
+    );
+    
+    // Randomly shuffle a list of 3 documents
+    results = await execute(db.pipeline()
+      .documents([
+        doc(db, "cities", "SF"),
+        doc(db, "cities", "NY"),
+        doc(db, "cities", "DC"),
+      ])
+      .sample(3)
+    );test.firestore.js
 
 ##### Swift
 
-``` swift
-var results: Pipeline.Snapshot
-
-// Get a sample of 100 documents in a database
-results = try await db.pipeline()
-  .database()
-  .sample(count: 100)
-  .execute()
-
-// Randomly shuffle a list of 3 documents
-results = try await db.pipeline()
-  .documents([
-    db.collection("cities").document("SF"),
-    db.collection("cities").document("NY"),
-    db.collection("cities").document("DC"),
-  ])
-  .sample(count: 3)
-  .execute()PipelineSnippets.swift
-```
+    var results: Pipeline.Snapshot
+    
+    // Get a sample of 100 documents in a database
+    results = try await db.pipeline()
+      .database()
+      .sample(count: 100)
+      .execute()
+    
+    // Randomly shuffle a list of 3 documents
+    results = try await db.pipeline()
+      .documents([
+        db.collection("cities").document("SF"),
+        db.collection("cities").document("NY"),
+        db.collection("cities").document("DC"),
+      ])
+      .sample(count: 3)
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
 
-``` kotlin
-var results: Task<Pipeline.Snapshot>
-
-// Get a sample of 100 documents in a database
-results = db.pipeline()
-    .database()
-    .sample(100)
-    .execute()
-
-// Randomly shuffle a list of 3 documents
-results = db.pipeline()
-    .documents(
-        db.collection("cities").document("SF"),
-        db.collection("cities").document("NY"),
-        db.collection("cities").document("DC")
-    )
-    .sample(3)
-    .execute()DocSnippets.kt
-```
+    var results: Task<Pipeline.Snapshot>
+    
+    // Get a sample of 100 documents in a database
+    results = db.pipeline()
+        .database()
+        .sample(100)
+        .execute()
+    
+    // Randomly shuffle a list of 3 documents
+    results = db.pipeline()
+        .documents(
+            db.collection("cities").document("SF"),
+            db.collection("cities").document("NY"),
+            db.collection("cities").document("DC")
+        )
+        .sample(3)
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
 
-``` text
-Task<Pipeline.Snapshot> results;
-
-// Get a sample of 100 documents in a database
-results = db.pipeline()
-    .database()
-    .sample(100)
-    .execute();
-
-// Randomly shuffle a list of 3 documents
-results = db.pipeline()
-    .documents(
-        db.collection("cities").document("SF"),
-        db.collection("cities").document("NY"),
-        db.collection("cities").document("DC")
-    )
-    .sample(3)
-    .execute();DocSnippets.java
-```
+    Task<Pipeline.Snapshot> results;
+    
+    // Get a sample of 100 documents in a database
+    results = db.pipeline()
+        .database()
+        .sample(100)
+        .execute();
+    
+    // Randomly shuffle a list of 3 documents
+    results = db.pipeline()
+        .documents(
+            db.collection("cities").document("SF"),
+            db.collection("cities").document("NY"),
+            db.collection("cities").document("DC")
+        )
+        .sample(3)
+        .execute();DocSnippets.java
 
 ##### Python
 
-``` python
-# Get a sample of 100 documents in a database
-results = client.pipeline().database().sample(100).execute()
-
-# Randomly shuffle a list of 3 documents
-results = (
-    client.pipeline()
-    .documents(
-        client.collection("cities").document("SF"),
-        client.collection("cities").document("NY"),
-        client.collection("cities").document("DC"),
-    )
-    .sample(3)
-    .execute()
-)firestore_pipelines.py
-```
+    # Get a sample of 100 documents in a database
+    results = client.pipeline().database().sample(100).execute()
+    
+    # Randomly shuffle a list of 3 documents
+    results = (
+        client.pipeline()
+        .documents(
+            client.collection("cities").document("SF"),
+            client.collection("cities").document("NY"),
+            client.collection("cities").document("DC"),
+        )
+        .sample(3)
+        .execute()
+    )firestore_pipelines.py
 
 ##### Java
 
-``` java
-// Get a sample of 100 documents in a database
-Pipeline.Snapshot results1 = firestore.pipeline().database().sample(100).execute().get();
-
-// Randomly shuffle a list of 3 documents
-Pipeline.Snapshot results2 =
-    firestore
-        .pipeline()
-        .documents(
-            firestore.collection("cities").document("SF"),
-            firestore.collection("cities").document("NY"),
-            firestore.collection("cities").document("DC"))
-        .sample(3)
-        .execute()
-        .get();PipelineSnippets.java
-```
+    // Get a sample of 100 documents in a database
+    Pipeline.Snapshot results1 = firestore.pipeline().database().sample(100).execute().get();
+    
+    // Randomly shuffle a list of 3 documents
+    Pipeline.Snapshot results2 =
+        firestore
+            .pipeline()
+            .documents(
+                firestore.collection("cities").document("SF"),
+                firestore.collection("cities").document("NY"),
+                firestore.collection("cities").document("DC"))
+            .sample(3)
+            .execute()
+            .get();PipelineSnippets.java
 
 ## Modes
 
@@ -153,26 +141,22 @@ For example, for the following collection:
 
 ### Node.js
 
-``` text
-await db.collection("cities").doc("SF").set({name: "San Francsico", state: "California"});
-await db.collection("cities").doc("NYC").set({name: "New York City", state: "New York"});
-await db.collection("cities").doc("CHI").set({name: "Chicago", state: "Illinois"});
-```
+    await db.collection("cities").doc("SF").set({name: "San Francsico", state: "California"});
+    await db.collection("cities").doc("NYC").set({name: "New York City", state: "New York"});
+    await db.collection("cities").doc("CHI").set({name: "Chicago", state: "Illinois"});
 
 The sample stage in document mode can be used to retrieve a non-deterministic subset of results from this collection.
 
 ### Node.js
 
-``` text
-const sampled = await db.pipeline()
-    .collection("/cities")
-    .sample(1)
-    .execute();
-```
+    const sampled = await db.pipeline()
+        .collection("/cities")
+        .sample(1)
+        .execute();
 
 In this example, only 1 document at random would be returned at random.
 
-``` text
+``` 
   { name: "New York City", state: "New York" }
 ```
 
@@ -180,16 +164,14 @@ If the supplied number is greater than the total number of documents returned, a
 
 ### Node.js
 
-``` text
-const sampled = await db.pipeline()
-    .collection("/cities")
-    .sample(5)
-    .execute();
-```
+    const sampled = await db.pipeline()
+        .collection("/cities")
+        .sample(5)
+        .execute();
 
 This will result in the following documents:
 
-``` text
+``` 
   { name: "New York City", state: "New York" }
   { name: "Chicago", state: "Illinois" }
   { name: "San Francisco", state: "California" }
@@ -205,18 +187,16 @@ For example, for the following collection:
 
 ### Node.js
 
-``` text
-await db.collection("cities").doc("SF").set({name: "San Francsico", state: "California"});
-await db.collection("cities").doc("NYC").set({name: "New York City", state: "New York"});
-await db.collection("cities").doc("CHI").set({name: "Chicago", state: "Illinois"});
-await db.collection("cities").doc("ATL").set({name: "Atlanta", state: "Georgia"});
-```
+    await db.collection("cities").doc("SF").set({name: "San Francsico", state: "California"});
+    await db.collection("cities").doc("NYC").set({name: "New York City", state: "New York"});
+    await db.collection("cities").doc("CHI").set({name: "Chicago", state: "Illinois"});
+    await db.collection("cities").doc("ATL").set({name: "Atlanta", state: "Georgia"});
 
 The sample stage in percent mode can be used to retrieve (on average) 50% of the documents from the collection stage.
 
 ### Node.js
 
-``` text
+``` 
   const sampled = await db.pipeline()
     .collection("/cities")
     .sample({ percent: 0.5 })
@@ -225,7 +205,7 @@ The sample stage in percent mode can be used to retrieve (on average) 50% of the
 
 This will result in a non-deterministic sample of (on average) 50% of documents from the `  cities  ` collection. The following is one possible output.
 
-``` text
+``` 
   { name: "New York City", state: "New York" }
   { name: "Chicago", state: "Illinois" }
 ```
@@ -236,61 +216,49 @@ In percent mode, because each document has the same probability of being selecte
 
 ### Web
 
-``` javascript
-// Get a sample of on average 50% of the documents in the database
-const results = await execute(db.pipeline()
-  .database()
-  .sample({ percentage: 0.5 })
-);test.firestore.js
-```
+    // Get a sample of on average 50% of the documents in the database
+    const results = await execute(db.pipeline()
+      .database()
+      .sample({ percentage: 0.5 })
+    );test.firestore.js
 
 ##### Swift
 
-``` swift
-// Get a sample of on average 50% of the documents in the database
-let results = try await db.pipeline()
-  .database()
-  .sample(percentage: 0.5)
-  .execute()PipelineSnippets.swift
-```
+    // Get a sample of on average 50% of the documents in the database
+    let results = try await db.pipeline()
+      .database()
+      .sample(percentage: 0.5)
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
 
-``` kotlin
-// Get a sample of on average 50% of the documents in the database
-val results = db.pipeline()
-    .database()
-    .sample(SampleStage.withPercentage(0.5))
-    .execute()DocSnippets.kt
-```
+    // Get a sample of on average 50% of the documents in the database
+    val results = db.pipeline()
+        .database()
+        .sample(SampleStage.withPercentage(0.5))
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
 
-``` text
-// Get a sample of on average 50% of the documents in the database
-Task<Pipeline.Snapshot> results = db.pipeline()
-    .database()
-    .sample(SampleStage.withPercentage(0.5))
-    .execute();DocSnippets.java
-```
+    // Get a sample of on average 50% of the documents in the database
+    Task<Pipeline.Snapshot> results = db.pipeline()
+        .database()
+        .sample(SampleStage.withPercentage(0.5))
+        .execute();DocSnippets.java
 
 ##### Python
 
-``` python
-from google.cloud.firestore_v1.pipeline_stages import SampleOptions
-
-# Get a sample of on average 50% of the documents in the database
-results = (
-    client.pipeline().database().sample(SampleOptions.percentage(0.5)).execute()
-)firestore_pipelines.py
-```
+    from google.cloud.firestore_v1.pipeline_stages import SampleOptions
+    
+    # Get a sample of on average 50% of the documents in the database
+    results = (
+        client.pipeline().database().sample(SampleOptions.percentage(0.5)).execute()
+    )firestore_pipelines.py
 
 ##### Java
 
-``` java
-// Get a sample of on average 50% of the documents in the database
-Pipeline.Snapshot results =
-    firestore.pipeline().database().sample(Sample.withPercentage(0.5)).execute().get();PipelineSnippets.java
-```
+    // Get a sample of on average 50% of the documents in the database
+    Pipeline.Snapshot results =
+        firestore.pipeline().database().sample(Sample.withPercentage(0.5)).execute().get();PipelineSnippets.java

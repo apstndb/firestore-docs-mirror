@@ -20,9 +20,7 @@ The `  datastore.googleapis.com  ` service is bundled under the `  firestore.goo
 
   - When creating a service perimeter using the Google Cloud CLI, use `  firestore.googleapis.com  ` instead of `  datastore.googleapis.com  ` .
     
-    ``` text
-    --perimeter-restricted-services=firestore.googleapis.com
-    ```
+        --perimeter-restricted-services=firestore.googleapis.com
 
 ### App Engine legacy bundled services for Datastore
 
@@ -36,7 +34,7 @@ The `  datastore.googleapis.com  ` service is bundled under the `  firestore.goo
 
 To use Firestore with MongoDB compatibility with restricted VIP, you must configure connectivity to the VIP domain used by Firestore with MongoDB compatibility. This domain and its IP addresses are used only by the Firestore with MongoDB compatibility service and are VPC Service Controls compliant.
 
-For instructions, see [Configure Private Google Access in Firestore with MongoDB compatibility](/firestore/mongodb-compatibility/docs/configure-private-google-access) .
+For instructions, see [Configure Private Google Access in Firestore with MongoDB compatibility](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access) .
 
 ## Egress protection on import and export operations
 

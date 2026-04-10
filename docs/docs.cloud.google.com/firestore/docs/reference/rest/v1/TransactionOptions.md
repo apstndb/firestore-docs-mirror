@@ -11,7 +11,7 @@ Options for creating a new transaction.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
 
   // Union field mode can be only one of the following:
   &quot;readOnly&quot;: {
@@ -57,7 +57,7 @@ Options for a transaction that can only be used to read documents.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
 
   // Union field consistency_selector can be only one of the following:
   &quot;readTime&quot;: string
@@ -98,7 +98,7 @@ Firestore does not allow 3rd party auth requests to create read-write. transacti
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;retryTransaction&quot;: string
 }</code></pre></td>
 </tr>

@@ -48,13 +48,15 @@ Scan eligibility depends completely on database activity. It does not depend on 
 
 The following image shows a Key Visualizer scan. Each scan includes a heatmap that shows access patterns or performance metrics for a group of document keys or index keys over time.
 
+![Example of a Key Visualizer scan](https://docs.cloud.google.com/static/firestore/native/docs/images/key-visualizer-heatmap.png)
+
 #### Sharing scan URLs
 
-You can share or bookmark the URL of a Key Visualizer scan. The URL will open the same Key Visualizer scan and select the same metric. This URL is valid until the [scan data duration](#data-duration) expires.
+You can share or bookmark the URL of a Key Visualizer scan. The URL will open the same Key Visualizer scan and select the same metric. This URL is valid until the [scan data duration](https://docs.cloud.google.com/firestore/native/docs/key-visualizer#data-duration) expires.
 
 ### Heatmaps
 
-The core of a Key Visualizer scan is the heatmap, which shows the value of a metric over time, broken down into up to 1000 contiguous [key buckets](#key-buckets) .
+The core of a Key Visualizer scan is the heatmap, which shows the value of a metric over time, broken down into up to 1000 contiguous [key buckets](https://docs.cloud.google.com/firestore/native/docs/key-visualizer#key-buckets) .
 
 For a document keys heatmap, the x-axis of the heatmap represents time, and the y-axis represents document keys, while for an index keys heatmap, the x-axis of the heatmap represents time, and the y-axis represents index keys.
 
@@ -62,9 +64,9 @@ Each Key Visualizer scan for Firestore covers two hours of activity divided into
 
 A low value for a metric is considered "cold" and appears as a dark color. A high value is "hot," and it appears as a bright color. The highest values appear in white.
 
-Different types of usage result in different visual patterns within the heatmap, which can make it possible to diagnose issues at a glance. See [Heatmap patterns for document keys](./keyvis-patterns) or [Heatmap patterns for index keys](./keyvis-patterns-index) for examples of some common patterns.
+Different types of usage result in different visual patterns within the heatmap, which can make it possible to diagnose issues at a glance. See [Heatmap patterns for document keys](https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns) or [Heatmap patterns for index keys](https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns-index) for examples of some common patterns.
 
-Key Visualizer provides tools to help you understand the data in each scan. See [Getting started with Key Visualizer](./keyvis-getting-started) and [Exploring heatmaps](./keyvis-exploring-heatmaps) .
+Key Visualizer provides tools to help you understand the data in each scan. See [Getting started with Key Visualizer](https://docs.cloud.google.com/firestore/native/docs/keyvis-getting-started) and [Exploring heatmaps](https://docs.cloud.google.com/firestore/native/docs/keyvis-exploring-heatmaps) .
 
 ### Key buckets
 
@@ -78,81 +80,26 @@ Key Visualizer reports most metrics as averages over each key bucket, or as maxi
 
 The following metrics are available for document keys in Key Visualizer scans:
 
-<table>
-<thead>
-<tr class="header">
-<th>Metrics</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Activity metrics</strong></td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Ops/s</td>
-<td>Average number of document operations per second. Roughly equal to the sum of writes, lookups, and queries per second. This metric can indicate which keys are hot.</td>
-</tr>
-<tr class="odd">
-<td>Write ops/s</td>
-<td>Average number of document operations per second for writes and deletes.</td>
-</tr>
-<tr class="even">
-<td>Lookup ops/s</td>
-<td>Average number of document operations per second for lookups.</td>
-</tr>
-<tr class="odd">
-<td>Query ops/s</td>
-<td>Average number of document operations per second for queries.</td>
-</tr>
-<tr class="even">
-<td><strong>Performance metrics</strong></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Average write latency</td>
-<td>Average latency for writes and deletes within the processed data in the bucket.</td>
-</tr>
-<tr class="even">
-<td>Average lookup latency</td>
-<td>Average latency for lookups within the processed data in the bucket.</td>
-</tr>
-<tr class="odd">
-<td>Average query latency</td>
-<td>Average latency for queries within the processed data in the bucket.</td>
-</tr>
-<tr class="even">
-<td>Write tail latency</td>
-<td>Maximum observed write or delete latency within the processed data in the bucket.</td>
-</tr>
-<tr class="odd">
-<td>Lookup tail latency</td>
-<td>Maximum observed lookup latency within the processed data in the bucket.</td>
-</tr>
-<tr class="even">
-<td>Query tail latency</td>
-<td>Maximum observed query latency within the processed data in the bucket.</td>
-</tr>
-</tbody>
-</table>
+| Metrics                 | Description                                                                                                                                                         |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Activity metrics**    |                                                                                                                                                                     |
+| Ops/s                   | Average number of document operations per second. Roughly equal to the sum of writes, lookups, and queries per second. This metric can indicate which keys are hot. |
+| Write ops/s             | Average number of document operations per second for writes and deletes.                                                                                            |
+| Lookup ops/s            | Average number of document operations per second for lookups.                                                                                                       |
+| Query ops/s             | Average number of document operations per second for queries.                                                                                                       |
+| **Performance metrics** |                                                                                                                                                                     |
+| Average write latency   | Average latency for writes and deletes within the processed data in the bucket.                                                                                     |
+| Average lookup latency  | Average latency for lookups within the processed data in the bucket.                                                                                                |
+| Average query latency   | Average latency for queries within the processed data in the bucket.                                                                                                |
+| Write tail latency      | Maximum observed write or delete latency within the processed data in the bucket.                                                                                   |
+| Lookup tail latency     | Maximum observed lookup latency within the processed data in the bucket.                                                                                            |
+| Query tail latency      | Maximum observed query latency within the processed data in the bucket.                                                                                             |
 
 The following metric is available for index keys in Key Visualizer scans:
 
-<table>
-<thead>
-<tr class="header">
-<th>Metrics</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Index Write Ops/s</td>
-<td>Average number of index writes per second.</td>
-</tr>
-</tbody>
-</table>
+| Metrics           | Description                                |
+| ----------------- | ------------------------------------------ |
+| Index Write Ops/s | Average number of index writes per second. |
 
 ### Performance averages
 
@@ -174,6 +121,6 @@ This limit also means that if you bookmark or share the URL for a Key Visualizer
 
 ## What's next
 
-  - Learn how to [get started with Key Visualizer](./keyvis-getting-started) .
-  - Understand the [document key patterns](./keyvis-patterns) or [index key patterns](./keyvis-patterns-index) you might see in Key Visualizer heatmaps.
-  - Find out how to [explore a heatmap in detail](./keyvis-exploring-heatmaps) .
+  - Learn how to [get started with Key Visualizer](https://docs.cloud.google.com/firestore/native/docs/keyvis-getting-started) .
+  - Understand the [document key patterns](https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns) or [index key patterns](https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns-index) you might see in Key Visualizer heatmaps.
+  - Find out how to [explore a heatmap in detail](https://docs.cloud.google.com/firestore/native/docs/keyvis-exploring-heatmaps) .

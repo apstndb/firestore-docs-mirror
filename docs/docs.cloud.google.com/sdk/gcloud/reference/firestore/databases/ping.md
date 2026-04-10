@@ -10,7 +10,7 @@ EXAMPLES
 
 To time the connection and ping times for a Firestore with MongoDB compatibility database `  testdb  ` :
 
-``` text
+``` wrap-code
 gcloud firestore databases ping --database=testdb
 ```
 
@@ -21,7 +21,7 @@ REQUIRED FLAGS
     
     For example, to operate on database `  foo  ` :
     
-    ``` text
+    ``` wrap-code
     gcloud firestore databases ping --database='foo'
     ```
 
@@ -35,10 +35,10 @@ NOTES
 
 These variants are also available:
 
-``` text
+``` wrap-code
 gcloud alpha firestore databases ping
 ```
 
-``` text
+``` wrap-code
 gcloud beta firestore databases ping
 ```

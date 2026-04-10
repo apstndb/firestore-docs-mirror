@@ -1,4 +1,4 @@
-  - [JSON representation](#SCHEMA_REPRESENTATION)
+  - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/GqlQueryParameter#SCHEMA_REPRESENTATION)
 
 A binding parameter for a GQL query.
 
@@ -13,7 +13,7 @@ A binding parameter for a GQL query.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
 
   // Union field parameter_type can be only one of the following:
   &quot;value&quot;: {

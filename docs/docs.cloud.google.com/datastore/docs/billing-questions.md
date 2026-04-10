@@ -1,6 +1,6 @@
 Use the following resources to get help with billing questions:
 
-  - To learn more about billing, read the [Cloud Billing documentation](/billing/docs) .
+  - To learn more about billing, read the [Cloud Billing documentation](https://docs.cloud.google.com/billing/docs) .
 
   - Resolve billing concerns by using the [billing concerns troubleshooter](https://support.google.com/cloud/troubleshooter/7279311?hl=en&ref_topic=6288636) .
 

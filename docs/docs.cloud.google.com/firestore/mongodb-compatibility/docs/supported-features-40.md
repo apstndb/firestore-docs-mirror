@@ -1,6 +1,6 @@
 # Supported features: 4.0
 
-The following tables include a breakdown of MongoDB 4.0 features supported by Firestore with MongoDB compatibility. For differences in behavior, see [Behavior differences](/firestore/mongodb-compatibility/docs/behavior-differences) .
+The following tables include a breakdown of MongoDB 4.0 features supported by Firestore with MongoDB compatibility. For differences in behavior, see [Behavior differences](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences) .
 
 ## Query and projection operators
 
@@ -8,235 +8,75 @@ Firestore with MongoDB compatibility supports the following query and projection
 
 ### Array operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $all      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $elemMatch      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $size      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Operator**                | **Supported** |
+| --------------------------- | ------------- |
+| `        $all       `       | Yes           |
+| `        $elemMatch       ` | Yes           |
+| `        $size       `      | Yes           |
 
 ### Bitwise operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $bitsAllClear      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $bitsAllSet      </code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $bitsAnyClear      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $bitsAnySet      </code></td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+| **Operator**                   | **Supported** |
+| ------------------------------ | ------------- |
+| `        $bitsAllClear       ` | No            |
+| `        $bitsAllSet       `   | No            |
+| `        $bitsAnyClear       ` | No            |
+| `        $bitsAnySet       `   | No            |
 
 ### Comment operator
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $comment      </code></td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+| **Operator**              | **Supported** |
+| ------------------------- | ------------- |
+| `        $comment       ` | No            |
 
 ### Comparison operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $eq      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $gt      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $gte      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $in      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $lt      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $lte      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $ne      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $nin      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Operator**          | **Supported** |
+| --------------------- | ------------- |
+| `        $eq       `  | Yes           |
+| `        $gt       `  | Yes           |
+| `        $gte       ` | Yes           |
+| `        $in       `  | Yes           |
+| `        $lt       `  | Yes           |
+| `        $lte       ` | Yes           |
+| `        $ne       `  | Yes           |
+| `        $nin       ` | Yes           |
 
 ### Element operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $exists      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $type      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Operator**             | **Supported** |
+| ------------------------ | ------------- |
+| `        $exists       ` | Yes           |
+| `        $type       `   | Yes           |
 
 ### Evaluation query operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $expr      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $jsonSchema      </code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $mod      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $regex      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $text      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $where      </code></td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+| **Operator**                 | **Supported** |
+| ---------------------------- | ------------- |
+| `        $expr       `       | Yes           |
+| `        $jsonSchema       ` | No            |
+| `        $mod       `        | Yes           |
+| `        $regex       `      | Yes           |
+| `        $text       `       | No            |
+| `        $where       `      | No            |
 
 ### Logical operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $and      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $nor      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $not      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $or      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Operator**          | **Supported** |
+| --------------------- | ------------- |
+| `        $and       ` | Yes           |
+| `        $nor       ` | Yes           |
+| `        $not       ` | Yes           |
+| `        $or       `  | Yes           |
 
 ### Projection operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $elemMatch      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $meta      </code></td>
-<td>Partial (supports `textScore`)</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $slice      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Operator**                | **Supported**                    |
+| --------------------------- | -------------------------------- |
+| `        $       `          | Yes                              |
+| `        $elemMatch       ` | Yes                              |
+| `        $meta       `      | Partial (supports \`textScore\`) |
+| `        $slice       `     | Yes                              |
 
 ## Update operators
 
@@ -244,135 +84,43 @@ Firestore with MongoDB compatibility supports the following update operators.
 
 ### Array operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $[]      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $[&lt;identifier&gt;]      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $addToSet      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $pop      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $pull      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $pullAll      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $push      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Operator**                     | **Supported** |
+| -------------------------------- | ------------- |
+| `        $       `               | Yes           |
+| `        $[]       `             | Yes           |
+| `        $[<identifier>]       ` | Yes           |
+| `        $addToSet       `       | Yes           |
+| `        $pop       `            | Yes           |
+| `        $pull       `           | Yes           |
+| `        $pullAll       `        | Yes           |
+| `        $push       `           | Yes           |
 
 ### Bitwise operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $bit      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Operator**          | **Supported** |
+| --------------------- | ------------- |
+| `        $bit       ` | Yes           |
 
 ### Field operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $currentDate      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $inc      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $max      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $min      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $mul      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $rename      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $setOnInsert      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Operator**                  | **Supported** |
+| ----------------------------- | ------------- |
+| `        $currentDate       ` | Yes           |
+| `        $inc       `         | Yes           |
+| `        $max       `         | Yes           |
+| `        $min       `         | Yes           |
+| `        $mul       `         | Yes           |
+| `        $rename       `      | Yes           |
+| `        $setOnInsert       ` | Yes           |
 
 ### Update modifiers
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Modifier</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $each      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $position      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $slice      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $sort      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Modifier**               | **Supported** |
+| -------------------------- | ------------- |
+| `        $each       `     | Yes           |
+| `        $position       ` | Yes           |
+| `        $slice       `    | Yes           |
+| `        $sort       `     | Yes           |
 
 ## Aggregation pipeline operators
 
@@ -380,863 +128,251 @@ Firestore with MongoDB compatibility supports the following aggregation pipeline
 
 ### Accumulators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Expression</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $addToSet      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $avg      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $first      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $last      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $max      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $mergeObjects      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $min      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $push      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $stdDevPop      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $stdDevSamp      </code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $sum      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Expression**                 | **Supported** |
+| ------------------------------ | ------------- |
+| `        $addToSet       `     | Yes           |
+| `        $avg       `          | Yes           |
+| `        $first       `        | Yes           |
+| `        $last       `         | Yes           |
+| `        $max       `          | Yes           |
+| `        $mergeObjects       ` | Yes           |
+| `        $min       `          | Yes           |
+| `        $push       `         | Yes           |
+| `        $stdDevPop       `    | No            |
+| `        $stdDevSamp       `   | No            |
+| `        $sum       `          | Yes           |
 
 ### Accumulator expressions
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Expression</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $avg      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $first      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $last      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $max      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $min      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $stdDevPop      </code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $stdDevSamp      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $sum      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Expression**               | **Supported** |
+| ---------------------------- | ------------- |
+| `        $avg       `        | Yes           |
+| `        $first       `      | Yes           |
+| `        $last       `       | Yes           |
+| `        $max       `        | Yes           |
+| `        $min       `        | Yes           |
+| `        $stdDevPop       `  | No            |
+| `        $stdDevSamp       ` | No            |
+| `        $sum       `        | Yes           |
 
 ### Arithmetic operators
 
 **Limitations** : Arithmetic operators don't support `  decimal128  ` values.
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $abs      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $add      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $ceil      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $divide      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $exp      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $floor      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $ln      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $log      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $log10      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $mod      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $multiply      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $pow      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $sqrt      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $subtract      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $trunc      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Operator**               | **Supported** |
+| -------------------------- | ------------- |
+| `        $abs       `      | Yes           |
+| `        $add       `      | Yes           |
+| `        $ceil       `     | Yes           |
+| `        $divide       `   | Yes           |
+| `        $exp       `      | Yes           |
+| `        $floor       `    | Yes           |
+| `        $ln       `       | Yes           |
+| `        $log       `      | Yes           |
+| `        $log10       `    | Yes           |
+| `        $mod       `      | Yes           |
+| `        $multiply       ` | Yes           |
+| `        $pow       `      | Yes           |
+| `        $sqrt       `     | Yes           |
+| `        $subtract       ` | Yes           |
+| `        $trunc       `    | Yes           |
 
 ### Array operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $arrayElemAt      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $arrayToObject      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $concatArrays      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $filter      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $firstN      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $in      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $indexOfArray      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $isArray      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $map      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $objectToArray      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $range      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $reduce      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $reverseArray      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $size      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $slice      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $zip      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Operator**                    | **Supported** |
+| ------------------------------- | ------------- |
+| `        $arrayElemAt       `   | Yes           |
+| `        $arrayToObject       ` | Yes           |
+| `        $concatArrays       `  | Yes           |
+| `        $filter       `        | Yes           |
+| `        $firstN       `        | Yes           |
+| `        $in       `            | Yes           |
+| `        $indexOfArray       `  | Yes           |
+| `        $isArray       `       | Yes           |
+| `        $map       `           | Yes           |
+| `        $objectToArray       ` | Yes           |
+| `        $range       `         | Yes           |
+| `        $reduce       `        | Yes           |
+| `        $reverseArray       `  | Yes           |
+| `        $size       `          | Yes           |
+| `        $slice       `         | Yes           |
+| `        $zip       `           | Yes           |
 
 ### Boolean operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $and      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $not      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $or      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Operator**          | **Supported** |
+| --------------------- | ------------- |
+| `        $and       ` | Yes           |
+| `        $not       ` | Yes           |
+| `        $or       `  | Yes           |
 
 ### Comparison operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $cmp      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $eq      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $gt      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $gte      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $lt      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $lte      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $ne      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Operator**          | **Supported** |
+| --------------------- | ------------- |
+| `        $cmp       ` | Yes           |
+| `        $eq       `  | Yes           |
+| `        $gt       `  | Yes           |
+| `        $gte       ` | Yes           |
+| `        $lt       `  | Yes           |
+| `        $lte       ` | Yes           |
+| `        $ne       `  | Yes           |
 
 ### Conditional expression operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $cond      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $ifNull      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $switch      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Operator**             | **Supported** |
+| ------------------------ | ------------- |
+| `        $cond       `   | Yes           |
+| `        $ifNull       ` | Yes           |
+| `        $switch       ` | Yes           |
 
 ### Date operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $dateFromParts      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $dateFromString      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $dateToParts      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $dateToString      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $dayOfMonth      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $dayOfWeek      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $dayOfYear      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $hour      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $isoDayOfWeek      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $isoWeek      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $isoWeekYear      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $millisecond      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $minute      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $month      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $second      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $toDate      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $week      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $year      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Operator**                     | **Supported** |
+| -------------------------------- | ------------- |
+| `        $dateFromParts       `  | Yes           |
+| `        $dateFromString       ` | Yes           |
+| `        $dateToParts       `    | Yes           |
+| `        $dateToString       `   | Yes           |
+| `        $dayOfMonth       `     | Yes           |
+| `        $dayOfWeek       `      | Yes           |
+| `        $dayOfYear       `      | Yes           |
+| `        $hour       `           | Yes           |
+| `        $isoDayOfWeek       `   | Yes           |
+| `        $isoWeek       `        | Yes           |
+| `        $isoWeekYear       `    | Yes           |
+| `        $millisecond       `    | Yes           |
+| `        $minute       `         | Yes           |
+| `        $month       `          | Yes           |
+| `        $second       `         | Yes           |
+| `        $toDate       `         | Yes           |
+| `        $week       `           | Yes           |
+| `        $year       `           | Yes           |
 
 ### Miscellaneous operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $natural      </code></td>
-<td>Yes (ascending)</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $toHashedIndexKey      </code></td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+| **Operator**                       | **Supported**   |
+| ---------------------------------- | --------------- |
+| `        $natural       `          | Yes (ascending) |
+| `        $toHashedIndexKey       ` | No              |
 
 ### Literal expression operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $literal      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Operator**              | **Supported** |
+| ------------------------- | ------------- |
+| `        $literal       ` | Yes           |
 
 ### Object operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $mergeObjects      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $objectToArray      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Operator**                    | **Supported** |
+| ------------------------------- | ------------- |
+| `        $mergeObjects       `  | Yes           |
+| `        $objectToArray       ` | Yes           |
 
 ### Set operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $allElementsTrue      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $anyElementTrue      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $setDifference      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $setEquals      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $setIntersection      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $setIsSubset      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $setUnion      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Operator**                      | **Supported** |
+| --------------------------------- | ------------- |
+| `        $allElementsTrue       ` | Yes           |
+| `        $anyElementTrue       `  | Yes           |
+| `        $setDifference       `   | Yes           |
+| `        $setEquals       `       | Yes           |
+| `        $setIntersection       ` | Yes           |
+| `        $setIsSubset       `     | Yes           |
+| `        $setUnion       `        | Yes           |
 
 ### Stage operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $addFields      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $bucket      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $bucketAuto      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $collStats      </code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $count      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $currentOp      </code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $facet      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $geoNear      </code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $graphLookup      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $group      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $indexStats      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $limit      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $listLocalSessions      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $listSessions      </code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $lookup      </code></td>
-<td><p>Yes</p></td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $match      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $out      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $project      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $redact      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $replaceRoot      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $sample      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $set      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $skip      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $sort      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $sortByCount      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $unset      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $unwind      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Operator**                        | **Supported** |
+| ----------------------------------- | ------------- |
+| `        $addFields       `         | Yes           |
+| `        $bucket       `            | Yes           |
+| `        $bucketAuto       `        | No            |
+| `        $collStats       `         | No            |
+| `        $count       `             | Yes           |
+| `        $currentOp       `         | No            |
+| `        $facet       `             | Yes           |
+| `        $geoNear       `           | No            |
+| `        $graphLookup       `       | No            |
+| `        $group       `             | Yes           |
+| `        $indexStats       `        | No            |
+| `        $limit       `             | Yes           |
+| `        $listLocalSessions       ` | No            |
+| `        $listSessions       `      | No            |
+| `        $lookup       `            | Yes           |
+| `        $match       `             | Yes           |
+| `        $out       `               | No            |
+| `        $project       `           | Yes           |
+| `        $redact       `            | No            |
+| `        $replaceRoot       `       | Yes           |
+| `        $sample       `            | Yes           |
+| `        $set       `               | Yes           |
+| `        $skip       `              | Yes           |
+| `        $sort       `              | Yes           |
+| `        $sortByCount       `       | Yes           |
+| `        $unset       `             | Yes           |
+| `        $unwind       `            | Yes           |
 
 ### String operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $concat      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $dateFromString      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $dateToString      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $indexOfBytes      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $indexOfCP      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $ltrim      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $rtrim      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $split      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $strcasecmp      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $strLenBytes      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $strLenCP      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $substr      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $substrBytes      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $substrCP      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $toLower      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $toString      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $toUpper      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $trim      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Operator**                     | **Supported** |
+| -------------------------------- | ------------- |
+| `        $concat       `         | Yes           |
+| `        $dateFromString       ` | Yes           |
+| `        $dateToString       `   | Yes           |
+| `        $indexOfBytes       `   | Yes           |
+| `        $indexOfCP       `      | Yes           |
+| `        $ltrim       `          | Yes           |
+| `        $rtrim       `          | Yes           |
+| `        $split       `          | Yes           |
+| `        $strcasecmp       `     | Yes           |
+| `        $strLenBytes       `    | Yes           |
+| `        $strLenCP       `       | Yes           |
+| `        $substr       `         | Yes           |
+| `        $substrBytes       `    | Yes           |
+| `        $substrCP       `       | Yes           |
+| `        $toLower       `        | Yes           |
+| `        $toString       `       | Yes           |
+| `        $toUpper       `        | Yes           |
+| `        $trim       `           | Yes           |
 
 ### System variables
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Variable</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $$CURRENT      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $$DESCEND      </code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $$KEEP      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $$PRUNE      </code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $$REMOVE      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $$ROOT      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Variable**               | **Supported** |
+| -------------------------- | ------------- |
+| `        $$CURRENT       ` | No            |
+| `        $$DESCEND       ` | No            |
+| `        $$KEEP       `    | No            |
+| `        $$PRUNE       `   | No            |
+| `        $$REMOVE       `  | Yes           |
+| `        $$ROOT       `    | Yes           |
 
 ### Text operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $meta      </code></td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+| **Operator**           | **Supported** |
+| ---------------------- | ------------- |
+| `        $meta       ` | No            |
 
 ### Type operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $convert      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $toBool      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $toDate      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $toDecimal      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $toDouble      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $toInt      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $toLong      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $toObjectId      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $toString      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $type      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Operator**                 | **Supported** |
+| ---------------------------- | ------------- |
+| `        $convert       `    | Yes           |
+| `        $toBool       `     | Yes           |
+| `        $toDate       `     | Yes           |
+| `        $toDecimal       `  | Yes           |
+| `        $toDouble       `   | Yes           |
+| `        $toInt       `      | Yes           |
+| `        $toLong       `     | Yes           |
+| `        $toObjectId       ` | Yes           |
+| `        $toString       `   | Yes           |
+| `        $type       `       | Yes           |
 
 ### Variable operators
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Operator</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $let      </code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Operator**          | **Supported** |
+| --------------------- | ------------- |
+| `        $let       ` | Yes           |
 
 ## Geospatial
 
@@ -1244,85 +380,27 @@ Firestore with MongoDB compatibility supports the following Geospatial operators
 
 ### Geometry specifiers
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Specifier</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $box      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $center      </code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $centerSphere      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $geometry      </code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $maxDistance      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $minDistance      </code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $polygon      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $uniqueDocs      </code></td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+| **Specifier**                  | **Supported** |
+| ------------------------------ | ------------- |
+| `        $box       `          | No            |
+| `        $center       `       | No            |
+| `        $centerSphere       ` | No            |
+| `        $geometry       `     | No            |
+| `        $maxDistance       `  | No            |
+| `        $minDistance       `  | No            |
+| `        $polygon       `      | No            |
+| `        $uniqueDocs       `   | No            |
 
 ### Query selectors
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Selector</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $geoIntersects      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $geoWithin      </code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $near      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $nearSphere      </code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       $nearSphere      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       $uniqueDocs      </code></td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+| **Selector**                    | **Supported** |
+| ------------------------------- | ------------- |
+| `        $geoIntersects       ` | No            |
+| `        $geoWithin       `     | No            |
+| `        $near       `          | No            |
+| `        $nearSphere       `    | No            |
+| `        $nearSphere       `    | No            |
+| `        $uniqueDocs       `    | No            |
 
 ## Indexes and index properties
 
@@ -1330,89 +408,28 @@ Firestore with MongoDB compatibility supports the following indexes and index op
 
 ### Indexes
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Index type</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>2d</td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td>2dsphere</td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td>Compound</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td>Hashed</td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td>Multikey</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td>Single Field</td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td>Text</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+| **Index type** | **Supported** |
+| -------------- | ------------- |
+| 2d             | No            |
+| 2dsphere       | No            |
+| Compound       | Yes           |
+| Hashed         | No            |
+| Multikey       | Yes           |
+| Single Field   | Yes           |
+| Text           | No            |
 
 ### Index properties
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Property</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Background</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td>Case Insensitive</td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td>Partial</td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td>Non-Sparse</td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td>Sparse</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td>Text</td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td>TTL</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td>Unique</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Property**     | **Supported** |
+| ---------------- | ------------- |
+| Background       | Yes           |
+| Case Insensitive | No            |
+| Partial          | No            |
+| Non-Sparse       | Yes           |
+| Sparse           | Yes           |
+| Text             | No            |
+| TTL              | Yes           |
+| Unique           | Yes           |
 
 ## Database commands
 
@@ -1458,28 +475,11 @@ Firestore with MongoDB compatibility supports the following database commands.
 
 ### Authentication
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Command</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       authenticate      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       getnonce      </code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       logout      </code></td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+| **Command**                   | **Supported** |
+| ----------------------------- | ------------- |
+| `        authenticate       ` | No            |
+| `        getnonce       `     | No            |
+| `        logout       `       | No            |
 
 ### Query and write operations
 
@@ -1557,48 +557,16 @@ Firestore with MongoDB compatibility supports the following database commands.
 
 ### Session commands
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Command</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       abortTransaction      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       commitTransaction      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       endSessions      </code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       killAllSessions      </code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       killAllSessionsByPattern      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       killSessions      </code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       refreshSessions      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       startSession      </code></td>
-<td><p>Sessions can be started using the <code dir="ltr" translate="no">        startSession       </code> driver method.</p></td>
-</tr>
-</tbody>
-</table>
+| **Command**                               | **Supported**                                                                    |
+| ----------------------------------------- | -------------------------------------------------------------------------------- |
+| `        abortTransaction       `         | Yes                                                                              |
+| `        commitTransaction       `        | Yes                                                                              |
+| `        endSessions       `              | Yes                                                                              |
+| `        killAllSessions       `          | No                                                                               |
+| `        killAllSessionsByPattern       ` | No                                                                               |
+| `        killSessions       `             | No                                                                               |
+| `        refreshSessions       `          | No                                                                               |
+| `        startSession       `             | Sessions can be started using the `         startSession        ` driver method. |
 
 ## Administrative commands
 
@@ -1663,12 +631,12 @@ Firestore with MongoDB compatibility supports the following administrative comma
 <tr class="even">
 <td><code dir="ltr" translate="no">       dropDatabase      </code></td>
 <td><p>No</p>
-<p>To delete a database, see <a href="/firestore/mongodb-compatibility/docs/create-databases#delete-database">Delete a database</a> .</p></td>
+<p>To delete a database, see <a href="https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases#delete-database">Delete a database</a> .</p></td>
 </tr>
 <tr class="odd">
 <td><code dir="ltr" translate="no">       dropIndex      </code></td>
 <td><p>Yes</p>
-<p>To delete indexes, see <a href="/firestore/mongodb-compatibility/docs/indexing">Manage indexes</a> .</p></td>
+<p>To delete indexes, see <a href="https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing">Manage indexes</a> .</p></td>
 </tr>
 <tr class="even">
 <td><code dir="ltr" translate="no">       dropIndexes      </code></td>
@@ -1758,7 +726,7 @@ Firestore with MongoDB compatibility supports the following administrative comma
 <tr class="even">
 <td><code dir="ltr" translate="no">       explain      </code></td>
 <td><p>Yes</p>
-<p>For behavior differences and limitations, see <a href="/firestore/mongodb-compatibility/docs/query-explain#explain-command">Query Explain</a></p></td>
+<p>For behavior differences and limitations, see <a href="https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain#explain-command">Query Explain</a></p></td>
 </tr>
 <tr class="odd">
 <td><code dir="ltr" translate="no">       features      </code></td>
@@ -1793,52 +761,20 @@ Firestore with MongoDB compatibility supports the following administrative comma
 
 ### Role management commands
 
-To manage database access, Firestore with MongoDB compatibility supports [Identity and Access Management roles and permissions](/firestore/mongodb-compatibility/docs/security/iam) .
+To manage database access, Firestore with MongoDB compatibility supports [Identity and Access Management roles and permissions](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam) .
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Command</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       createRole      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       dropAllRolesFromDatabase      </code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       dropRole      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       grantRolesToRole      </code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       revokePrivilegesFromRole      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       revokeRolesFromRole      </code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       rolesInfo      </code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       updateRole      </code></td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+| **Command**                               | **Supported** |
+| ----------------------------------------- | ------------- |
+| `        createRole       `               | No            |
+| `        dropAllRolesFromDatabase       ` | No            |
+| `        dropRole       `                 | No            |
+| `        grantRolesToRole       `         | No            |
+| `        revokePrivilegesFromRole       ` | No            |
+| `        revokeRolesFromRole       `      | No            |
+| `        rolesInfo       `                | No            |
+| `        updateRole       `               | No            |
 
 ## What's next
 
-  - Run the [Quickstart: Create a database and connect to it](/firestore/mongodb-compatibility/docs/create-and-query-database) .
-  - Learn about [Behavior differences](/firestore/mongodb-compatibility/docs/behavior-differences) .
+  - Run the [Quickstart: Create a database and connect to it](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database) .
+  - Learn about [Behavior differences](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences) .

@@ -10,7 +10,9 @@ To use Key Visualizer for Datastore mode, you must enable the Firestore Key Visu
 
 **Roles required to enable APIs**
 
-To enable APIs, you need the Service Usage Admin IAM role ( `  roles/serviceusage.serviceUsageAdmin  ` ), which contains the `  serviceusage.services.enable  ` permission. [Learn how to grant roles](/iam/docs/granting-changing-revoking-access) .
+To enable APIs, you need the Service Usage Admin IAM role ( `  roles/serviceusage.serviceUsageAdmin  ` ), which contains the `  serviceusage.services.enable  ` permission. [Learn how to grant roles](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
+
+[Enable the API](https://console.cloud.google.com/flows/enableapi?apiid=firestorekeyvisualizer.googleapis.com&redirect=https://console.cloud.google.com)
 
 ### Required roles
 
@@ -37,6 +39,8 @@ Each Key Visualizer scan covers a two hour period. A scan for a given period is 
 To launch Key Visualizer:
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -46,7 +50,7 @@ To launch Key Visualizer:
     
     1.  Click the **Pencil icon** in the upper right. Select a **Date** and a **Time Span** .
         
-        Scans are available based on [scan eligibility](./key-visualizer#scan_eligibility) . You can't select time spans that did not meet scan eligibility or that are still processing. The two most recent scans of the day will take some time to process before they are available.
+        Scans are available based on [scan eligibility](https://docs.cloud.google.com/datastore/docs/key-visualizer#scan_eligibility) . You can't select time spans that did not meet scan eligibility or that are still processing. The two most recent scans of the day will take some time to process before they are available.
     
     2.  Select **All entity data** or **All index data** as the source.
     
@@ -56,7 +60,7 @@ To launch Key Visualizer:
     
     Click the metrics dropdown in the upper left and select a metric to view. Key Visualizer opens in the **Ops/s** metric for entity keys and **Index Write Ops/s** metric for index keys by default.
 
-To compare metrics or look for data correlations, you can display multiple Key Visualizer metrics together. See [Finding connections between different metrics](./keyvis-exploring-heatmaps#finding-connections) .
+To compare metrics or look for data correlations, you can display multiple Key Visualizer metrics together. See [Finding connections between different metrics](https://docs.cloud.google.com/datastore/docs/keyvis-exploring-heatmaps#finding-connections) .
 
 ## Viewing an activity overview
 
@@ -68,11 +72,13 @@ The following example shows a heatmap where there are major differences in the u
   - Ranges in bright colors have significantly more activity.
   - The glowing white range in the middle has very high activity.
 
+![Example of a Key Visualizer scan](https://docs.cloud.google.com/static/datastore/docs/images/keyvis-scan-example.png)
+
 ### Entity keys scan
 
 The **Ops/s** metric measures the number of requests per second for each key range. This metric is a sum of write, lookup, and query requests. Key Visualizer shows this metric by default when you open a heatmap.
 
-After getting an idea of the overall activity in your database, you can continue your investigation by looking at other metrics and focusing on key ranges that might be causing problems. [Learn more](./keyvis-exploring-heatmaps) .
+After getting an idea of the overall activity in your database, you can continue your investigation by looking at other metrics and focusing on key ranges that might be causing problems. [Learn more](https://docs.cloud.google.com/datastore/docs/keyvis-exploring-heatmaps) .
 
 ### Index keys scan
 
@@ -80,6 +86,6 @@ The **Index Write Ops/s** metric at a given cell measures the average index writ
 
 ## What's next
 
-  - Learn to recognize [common patterns in heatmaps for entity keys](./keyvis-patterns) .
-  - Learn to recognize [common patterns in heatmaps for index keys](./keyvis-patterns-index) .
-  - Find out how to [explore a heatmap in depth](./keyvis-exploring-heatmaps) .
+  - Learn to recognize [common patterns in heatmaps for entity keys](https://docs.cloud.google.com/datastore/docs/keyvis-patterns) .
+  - Learn to recognize [common patterns in heatmaps for index keys](https://docs.cloud.google.com/datastore/docs/keyvis-patterns-index) .
+  - Find out how to [explore a heatmap in depth](https://docs.cloud.google.com/datastore/docs/keyvis-exploring-heatmaps) .

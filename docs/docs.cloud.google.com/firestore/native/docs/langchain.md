@@ -2,7 +2,7 @@
 
 **Preview — LangChain**
 
-This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](/terms/service-terms#1) . Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
 This page introduces how to build LLM-powered applications using [LangChain](https://www.langchain.com/) . The overviews on this page link to procedure guides in GitHub.
 
@@ -16,9 +16,9 @@ For more information about LangChain, see the [Google LangChain](https://python.
 
 Firestore offers the following LangChain interfaces:
 
-  - [Vector store](#vector-store)
-  - [Document loader](#document-loader)
-  - [Chat message history](#chat-message-history)
+  - [Vector store](https://docs.cloud.google.com/firestore/native/docs/langchain#vector-store)
+  - [Document loader](https://docs.cloud.google.com/firestore/native/docs/langchain#document-loader)
+  - [Chat message history](https://docs.cloud.google.com/firestore/native/docs/langchain#chat-message-history)
 
 ## Vector store for Firestore
 

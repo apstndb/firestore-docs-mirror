@@ -16,23 +16,23 @@ EXAMPLES
 
 The following command creates an exemption for the `  timestamp  ` field in the `  Events  ` collection group, in which all indexes are disabled:
 
-``` text
+``` wrap-code
 gcloud beta firestore indexes fields update timestamp --collection-group=Events --disable-indexes
 ```
 
-``` text
+``` wrap-code
 gcloud beta firestore indexes fields update timestamp --database=(default) --collection-group=Events --disable-indexes
 ```
 
 The following command creates an exemption for the `  timestamp  ` field in the `  Events  ` collection group, in which the list of indexes is explicitly set to \[ASCENDING, DESCENDING\]:
 
-``` text
+``` wrap-code
 gcloud beta firestore indexes fields update timestamp --collection-group=Events --index=order=ASCENDING --index=order=DESCENDING
 ```
 
 The following command clears the exemption on the `  timestamp  ` field in the `  Events  ` collection group, so that the field will return to inheriting its index settings from its ancestors:
 
-``` text
+``` wrap-code
 gcloud beta firestore indexes fields update timestamp --collection-group=Events --clear-exemption
 ```
 
@@ -111,10 +111,10 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` text
+``` wrap-code
 gcloud firestore indexes fields update
 ```
 
-``` text
+``` wrap-code
 gcloud alpha firestore indexes fields update
 ```

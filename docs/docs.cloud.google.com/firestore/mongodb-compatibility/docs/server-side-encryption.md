@@ -8,7 +8,7 @@ With server-side encryption, you can either let Google manage cryptographic keys
 
 By default, Google manages cryptographic keys on your behalf using the same hardened key management systems that we use for our own encrypted data, including strict key access controls and auditing. Each Firestore with MongoDB compatibility object's data and metadata is [encrypted](https://cloud.google.com/docs/security/encryption/default-encryption) and each encryption key is itself encrypted with a regularly rotated set of master keys.
 
-For information about managing keys yourself, see [CMEK for Firestore with MongoDB compatibility](/firestore/mongodb-compatibility/docs/cmek) .
+For information about managing keys yourself, see [CMEK for Firestore with MongoDB compatibility](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/cmek) .
 
 ## Client-side encryption
 

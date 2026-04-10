@@ -1,6 +1,6 @@
 # Understand real-time queries at scale
 
-Read this document for guidance on scaling your serverless app beyond thousands of operations per second or hundreds of thousands of concurrent users. This document includes advanced topics to help you understand the system in depth. If you are just starting out with Firestore, see the [quickstart guide](/firestore/docs/quickstarts) instead.
+Read this document for guidance on scaling your serverless app beyond thousands of operations per second or hundreds of thousands of concurrent users. This document includes advanced topics to help you understand the system in depth. If you are just starting out with Firestore, see the [quickstart guide](https://docs.cloud.google.com/firestore/docs/quickstarts) instead.
 
 Firestore and the Firebase mobile/web SDKs provide a powerful model for developing serverless apps where client-side code directly accesses the database. The SDKs let clients listen for updates to the data in real time. You can use real-time updates to build responsive apps that don't require server infrastructure. While it's very easy to get something up and running, it helps to understand the constraints in the systems that make up Firestore so that your serverless app scales and performs well when traffic increases.
 
@@ -10,7 +10,9 @@ See the following sections for advice on scaling your app.
 
 The following diagram demonstrates the architecture of a real-time app:
 
-When an app that is running on a user's device (mobile or web) establishes a connection to Firestore, the connection is routed to a Firestore frontend server in the same [region](/firestore/native/docs/locations) where your database is located. For example, if your database is in `  us-east1  ` , the connection also goes to a Firestore frontend also in `  us-east1  ` . These connections are long-lived and stay open until explicitly closed by the app. The frontend reads data from the underlying Firestore storage systems.
+![Example real-time app architecture](https://docs.cloud.google.com/static/firestore/native/docs/images/real-time_app_architecture.svg)
+
+When an app that is running on a user's device (mobile or web) establishes a connection to Firestore, the connection is routed to a Firestore frontend server in the same [region](https://docs.cloud.google.com/firestore/native/docs/locations) where your database is located. For example, if your database is in `  us-east1  ` , the connection also goes to a Firestore frontend also in `  us-east1  ` . These connections are long-lived and stay open until explicitly closed by the app. The frontend reads data from the underlying Firestore storage systems.
 
 The distance between a user's physical location and the Firestore database location affects the latency experienced by the user. For example, a user in India whose app talks to a database in a Google Cloud region in North America might find the experience slower and the app less snappy than if the database was instead located closer, such as in India or in another part of Asia.
 
@@ -22,7 +24,7 @@ The following topics improve or affect your app's reliability:
 
 ### Enable offline mode
 
-The Firebase SDKs provide offline data persistence. If the app on the user's device can't connect to Firestore, the app remains usable by working with locally cached data. This ensures data access even when users experience spotty internet connections or completely lose access for several hours or days. For more details on offline mode, see [Enable offline data](/firestore/native/docs/manage-data/enable-offline) .
+The Firebase SDKs provide offline data persistence. If the app on the user's device can't connect to Firestore, the app remains usable by working with locally cached data. This ensures data access even when users experience spotty internet connections or completely lose access for several hours or days. For more details on offline mode, see [Enable offline data](https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline) .
 
 ### Understand automatic retries
 
@@ -34,24 +36,24 @@ There are several trade-offs when choosing between regional and multi-regional l
 
 ## Understand the real-time query system
 
-Real-time queries, also called snapshot listeners, let the app listen to changes in the database and get low-latency notifications as soon as the data changes. An app can get the same result by periodically polling the database for updates, but it's often slower, more expensive, and requires more code. For examples of how to set up and use real-time queries, see [Get real-time updates](/firestore/native/docs/query-data/listen) . The following sections get into details of how snapshot listeners work and describe some of the best practices for scaling real-time queries while retaining performance.
+Real-time queries, also called snapshot listeners, let the app listen to changes in the database and get low-latency notifications as soon as the data changes. An app can get the same result by periodically polling the database for updates, but it's often slower, more expensive, and requires more code. For examples of how to set up and use real-time queries, see [Get real-time updates](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) . The following sections get into details of how snapshot listeners work and describe some of the best practices for scaling real-time queries while retaining performance.
 
 Imagine two users that connect to Firestore through a messaging app built with one of the mobile SDKs.
 
 Client A writes to the database to add and update documents in a collection called `  chatroom  ` :
 
-``` text
-collection chatroom:
-    document message1:
-      from: 'Sparky'
-      message: 'Welcome to Firestore!'
-
-    document message2:
-      from: 'Santa'
-      message: 'Presents are coming'
-```
+    collection chatroom:
+        document message1:
+          from: 'Sparky'
+          message: 'Welcome to Firestore!'
+    
+        document message2:
+          from: 'Santa'
+          message: 'Presents are coming'
 
 Client B listens for updates in the same collection using a snapshot listener. Client B gets an immediate notification whenever someone creates a new message. The following diagram shows the architecture behind a snapshot listener:
+
+![Architecture of a snapshot listener connection](https://docs.cloud.google.com/static/firestore/native/docs/images/snapshot_listener_architecture.svg)
 
 The following sequence of events takes place when Client B connects a snapshot listener to the database:
 
@@ -67,7 +69,7 @@ The following sequence of events takes place when Client B connects a snapshot l
 
 A key part of Firestore's scalability depends on the fan-out from the changelog to the subscription handlers and the frontend servers. The fan-out lets a single data change to propagate efficiently to serve millions of real-time queries and connected users. By running many replicas of all these components across multiple zones (or multiple regions in the case of a multi-region deployment), Firestore achieves high availability and scalability.
 
-It's worth noting that all read operations issued from mobile and web SDKs follow the model above. They perform a polling query followed by listen mode to maintain consistency guarantees. This also applies to real-time listeners, calls to retrieve a document, and [one-shot queries](/firestore/native/docs/query-data/get-data) . You can think of single document retrievals and one-shot queries as short-lived snapshot listeners that come with similar constraints around performance.
+It's worth noting that all read operations issued from mobile and web SDKs follow the model above. They perform a polling query followed by listen mode to maintain consistency guarantees. This also applies to real-time listeners, calls to retrieve a document, and [one-shot queries](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data) . You can think of single document retrievals and one-shot queries as short-lived snapshot listeners that come with similar constraints around performance.
 
 ## Apply best practices for scaling real-time queries
 
@@ -79,11 +81,13 @@ This section helps you understand how the system responds to an increasing numbe
 
 The Firestore changelogs that drive the real-time queries automatically scale horizontally as write traffic increases. As the write rate for a database increases beyond what a single server can handle, the changelog is split across multiple servers, and the query processing starts to consume data from multiple subscription handlers instead of one. From the client and SDK's perspective, this is all transparent and no action is required from the app when splits happen. The following diagram demonstrates how real-time queries scale:
 
-Automatic scaling allows you to increase your write traffic without limits, but as the traffic ramps up, the system might take some time to respond. Follow the recommendations of the [5-5-5 rule](/firestore/native/docs/best-practices#ramping_up_traffic) to avoid creating a write hotspot. [Key Visualizer](https://cloud.google.com/firestore/docs/key-visualizer) is a useful tool for analyzing write hotspots.
+![Architecture of changelog fan-out](https://docs.cloud.google.com/static/firestore/native/docs/images/changelog_architecture.svg)
+
+Automatic scaling allows you to increase your write traffic without limits, but as the traffic ramps up, the system might take some time to respond. Follow the recommendations of the [5-5-5 rule](https://docs.cloud.google.com/firestore/native/docs/best-practices#ramping_up_traffic) to avoid creating a write hotspot. [Key Visualizer](https://cloud.google.com/firestore/docs/key-visualizer) is a useful tool for analyzing write hotspots.
 
 Many apps have predictable organic growth, which Firestore can accommodate without precautions. Batch workloads like importing a large dataset, however, can ramp up writes too quickly. As you design your app, stay aware of where your write traffic comes from.
 
-**Key Point:** Firestore scales automatically but ramping up writes too quickly leads to contention and performance problems. Make sure to follow the [5-5-5 rule](/firestore/native/docs/best-practices#ramping_up_traffic) to avoid creating a write hotspot.
+**Key Point:** Firestore scales automatically but ramping up writes too quickly leads to contention and performance problems. Make sure to follow the [5-5-5 rule](https://docs.cloud.google.com/firestore/native/docs/best-practices#ramping_up_traffic) to avoid creating a write hotspot.
 
 ### Understand how writes and reads interact
 
@@ -119,7 +123,7 @@ Another key part of responsive real-time queries involves making sure that the p
 
 A listener might also move back from a listening state to a polling state under some circumstances. This happens automatically and is transparent to the SDKs and your app. The following conditions might trigger a polling state:
 
-  - The system [re-balances a changelog](#understand_high_write_traffic_in_the_system) due to changes in load.
+  - The system [re-balances a changelog](https://docs.cloud.google.com/firestore/native/docs/real-time_queries_at_scale#understand_high_write_traffic_in_the_system) due to changes in load.
   - Hotspots cause failed or delayed writes to the database.
   - Transient server restarts temporarily affect listeners.
 
@@ -137,5 +141,5 @@ In cases where your app must consume a high rate of data, snapshot listeners mig
 
 ## What's Next
 
-  - Learn [how to use snapshot listeners](/firestore/native/docs/query-data/listen) .
-  - Read about more [best practices](/firestore/native/docs/best-practices) .
+  - Learn [how to use snapshot listeners](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) .
+  - Read about more [best practices](https://docs.cloud.google.com/firestore/native/docs/best-practices) .

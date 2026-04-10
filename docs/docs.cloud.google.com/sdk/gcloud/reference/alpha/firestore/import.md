@@ -14,20 +14,20 @@ EXAMPLES
 
 To import all collection groups from `  mybucket/my/path  ` , run:
 
-``` text
+``` wrap-code
 gcloud alpha firestore import gs://mybucket/my/path
 ```
 
 To import a specific set of collections groups asynchronously, run:
 
-``` text
+``` wrap-code
 gcloud alpha firestore import gs://mybucket/my/path --collection-ids='specific collection group1','specific
  collection group2' --async
 ```
 
 To import all collection groups from certain namespace, run:
 
-``` text
+``` wrap-code
 gcloud alpha firestore import gs://mybucket/my/path --namespace-ids='specific namespace id'
 ```
 
@@ -48,7 +48,7 @@ FLAGS
     
     For example, to operate on only the `  customers  ` and `  orders  ` collections groups:
     
-    ``` text
+    ``` wrap-code
     gcloud alpha firestore import --collection-ids='customers','orders'
     ```
 
@@ -57,7 +57,7 @@ FLAGS
     
     For example, to operate on database `  foo  ` :
     
-    ``` text
+    ``` wrap-code
     gcloud alpha firestore import --database='foo'
     ```
 
@@ -68,7 +68,7 @@ FLAGS
     
     For example, to operate on only the `  customers  ` and `  orders  ` namespaces:
     
-    ``` text
+    ``` wrap-code
     gcloud alpha firestore import --namespaces-ids='customers','orders'
     ```
 
@@ -82,10 +82,10 @@ NOTES
 
 This command is currently in alpha and might change without notice. If this command fails with API permission errors despite specifying the correct project, you might be trying to access an API with an invitation-only early access allowlist. These variants are also available:
 
-``` text
+``` wrap-code
 gcloud firestore import
 ```
 
-``` text
+``` wrap-code
 gcloud beta firestore import
 ```

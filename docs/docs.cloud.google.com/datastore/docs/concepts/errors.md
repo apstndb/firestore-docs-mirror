@@ -8,52 +8,31 @@ The rest of this page describes the structure of an error, enumerates specific e
 
 The following is the structure of an error response for a JSON request:
 
-``` text
-{
-  "error": {
-    "code": "integer",
-    "message": "string",
-    "status": "string"
-  }
-}
-```
+    {
+      "error": {
+        "code": "integer",
+        "message": "string",
+        "status": "string"
+      }
+    }
 
 The response object contains a single field `  error  ` whose value contains the following elements:
 
-<table>
-<thead>
-<tr class="header">
-<th>Element</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       code      </code></td>
-<td>An <a href="https://tools.ietf.org/html/rfc7231#section-6">HTTP status code</a> that generically identifies the request failure.</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       message      </code></td>
-<td>Specific information about the request failure.</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       status      </code></td>
-<td>The <a href="https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto">canonical error code</a> ( <code dir="ltr" translate="no">       google.rpc.Code      </code> ) for Google APIs. Codes that may be returned by the Datastore API are listed in <a href="#error_codes">Error Codes</a> .</td>
-</tr>
-</tbody>
-</table>
+| Element                  | Description                                                                                                                                                                                                                                                                                                          |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `        code       `    | An [HTTP status code](https://tools.ietf.org/html/rfc7231#section-6) that generically identifies the request failure.                                                                                                                                                                                                |
+| `        message       ` | Specific information about the request failure.                                                                                                                                                                                                                                                                      |
+| `        status       `  | The [canonical error code](https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto) ( `        google.rpc.Code       ` ) for Google APIs. Codes that may be returned by the Datastore API are listed in [Error Codes](https://docs.cloud.google.com/datastore/docs/concepts/errors#error_codes) . |
 
 Here's an example of an error response for a JSON request:
 
-``` text
-{
-  "error": {
-    "code": 400,
-    "message": "Key path is incomplete: [Person: null]",
-    "status": "INVALID_ARGUMENT"
-  }
-}
-```
+    {
+      "error": {
+        "code": 400,
+        "message": "Key path is incomplete: [Person: null]",
+        "status": "INVALID_ARGUMENT"
+      }
+    }
 
 If a request made with a content type of `  application/x-protobuf  ` results in an error, it will return a serialized [`  google.rpc.Status  `](https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto) message as the payload.
 
@@ -83,7 +62,7 @@ The recommended way to classify errors is inspect the value of the [canonical er
 <td>For a non-transactional commit:<br />
 Retry the request or structure your entities to reduce contention.<br />
 <br />
-For requests that are part of a <a href="/datastore/docs/concepts/transactions">transactional</a> commit:<br />
+For requests that are part of a <a href="https://docs.cloud.google.com/datastore/docs/concepts/transactions">transactional</a> commit:<br />
 Retry the entire transaction or structure your entities to reduce contention.</td>
 </tr>
 <tr class="even">
@@ -123,8 +102,8 @@ Retry the entire transaction or structure your entities to reduce contention.</t
 </tr>
 <tr class="odd">
 <td><code dir="ltr" translate="no">       RESOURCE_EXHAUSTED      </code></td>
-<td>Indicates that the project exceeded either its <a href="/datastore/docs/pricing">quota</a> or the region/multi-region capacity.</td>
-<td><a href="/datastore/docs/pricing#locating_quota_usage_information_for_your_app">Verify that you did not exceed your project quota</a> . If you exceeded a project quota, do not retry without fixing the problem.<br />
+<td>Indicates that the project exceeded either its <a href="https://docs.cloud.google.com/datastore/docs/pricing">quota</a> or the region/multi-region capacity.</td>
+<td><a href="https://docs.cloud.google.com/datastore/docs/pricing#locating_quota_usage_information_for_your_app">Verify that you did not exceed your project quota</a> . If you exceeded a project quota, do not retry without fixing the problem.<br />
 <br />
 Otherwise, retry with exponential backoff.</td>
 </tr>

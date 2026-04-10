@@ -2,7 +2,7 @@
 
 Point-in-time recovery (PITR) protects against accidental deletion or writes. PITR maintains versions of your documents from past timestamps. For example, in the case of a developer pushing any incorrect data, accidental deletes or writes, PITR can recover the data to a point in time in the past (up to a maximum of 7 days).
 
-For any live database that follows [Best practices](./best-practices) , use of PITR doesn't affect the performance of reads or writes.
+For any live database that follows [Best practices](https://docs.cloud.google.com/firestore/native/docs/best-practices) , use of PITR doesn't affect the performance of reads or writes.
 
 ## PITR window
 
@@ -10,32 +10,11 @@ After you enable PITR, Firestore starts retaining PITR data. PITR data is retain
 
 You can read data for a timestamp based on when PITR was enabled:
 
-<table>
-<thead>
-<tr class="header">
-<th>PITR enablement status</th>
-<th>Earliest PITR data available</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Disabled</td>
-<td>1 hour before the time of read request</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>enabled within 7 days</td>
-<td>1 hour before PITR was enabled</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>enabled more than 7 days ago</td>
-<td>7 days before the time of read request</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+| PITR enablement status       | Earliest PITR data available           |  |
+| ---------------------------- | -------------------------------------- |  |
+| Disabled                     | 1 hour before the time of read request |  |
+| enabled within 7 days        | 1 hour before PITR was enabled         |  |
+| enabled more than 7 days ago | 7 days before the time of read request |  |
 
 **Note:** You can't start reading from 7 days in the past immediately after you enable PITR.
 
@@ -53,13 +32,13 @@ Regardless of whether PITR is enabled or not, you can read (but not export) docu
 
 There are several ways to recover data:
 
-  - To **recover a portion of the database** , perform a [stale read](/firestore/native/docs/understand-reads-writes-scale#stale_reads) specifying a query-condition or using direct key lookup along with a timestamp in the past, and then write the results back into the live database. This is typically used for surgical operations on a live database. For example, if you accidentally delete a particular document or incorrectly update a subset of data, you can recover it with this method. For instructions, see [recovering a portion of your database](/firestore/native/docs/use-pitr#read-pitr) .
+  - To **recover a portion of the database** , perform a [stale read](https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale#stale_reads) specifying a query-condition or using direct key lookup along with a timestamp in the past, and then write the results back into the live database. This is typically used for surgical operations on a live database. For example, if you accidentally delete a particular document or incorrectly update a subset of data, you can recover it with this method. For instructions, see [recovering a portion of your database](https://docs.cloud.google.com/firestore/native/docs/use-pitr#read-pitr) .
 
   - To **recover the entire database** , use one of the following options:
     
-      - [Clone the database](/firestore/native/docs/manage-databases#clone-database) to create a copy of the database at a specific timestamp.
+      - [Clone the database](https://docs.cloud.google.com/firestore/native/docs/manage-databases#clone-database) to create a copy of the database at a specific timestamp.
     
-      - [Export](/firestore/native/docs/use-pitr#export-import) the database and specify a timestamp in the past and then import it to a new database. The PITR export operation supports all filters, including export of all documents and export of specific collections.
+      - [Export](https://docs.cloud.google.com/firestore/native/docs/use-pitr#export-import) the database and specify a timestamp in the past and then import it to a new database. The PITR export operation supports all filters, including export of all documents and export of specific collections.
     
     You can clone or export PITR data where the timestamp is a whole minute timestamp within the past seven days, but not earlier than the `  earliestVersionTime  ` .
 
@@ -67,14 +46,14 @@ There are several ways to recover data:
 
 Consider the following pricing information before you enable PITR for your database:
 
-  - Storage: Firestore measures the database size daily. Over the period of a month, these sample points are averaged to calculate the database storage size. This average value is multiplied by the unit price of PITR (GB-month). See [storage pricing](/firestore/pricing) for more information.
+  - Storage: Firestore measures the database size daily. Over the period of a month, these sample points are averaged to calculate the database storage size. This average value is multiplied by the unit price of PITR (GB-month). See [storage pricing](https://docs.cloud.google.com/firestore/pricing) for more information.
     
     PITR storage doesn't have a free tier and you must have billing enabled if you want to use PITR.
 
-  - Compute billing: Any queries that you make during the PITR window of 7 days, either through stale reads or exports, incur read operation costs based on the number of documents read. See [pricing](/firestore/pricing) for more information.
+  - Compute billing: Any queries that you make during the PITR window of 7 days, either through stale reads or exports, incur read operation costs based on the number of documents read. See [pricing](https://docs.cloud.google.com/firestore/pricing) for more information.
 
   - Minimum billing: You may be charged up to 1 day of PITR storage cost even if you disable PITR within a day after enablement.
 
 ## What's next
 
-  - Learn more about how to [recover data with PITR](./use-pitr) .
+  - Learn more about how to [recover data with PITR](https://docs.cloud.google.com/firestore/native/docs/use-pitr) .

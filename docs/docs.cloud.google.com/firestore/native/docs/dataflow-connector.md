@@ -14,7 +14,9 @@ To run the samples, you must enable the Dataflow API:
 
 **Roles required to enable APIs**
 
-To enable APIs, you need the Service Usage Admin IAM role ( `  roles/serviceusage.serviceUsageAdmin  ` ), which contains the `  serviceusage.services.enable  ` permission. [Learn how to grant roles](/iam/docs/granting-changing-revoking-access) .
+To enable APIs, you need the Service Usage Admin IAM role ( `  roles/serviceusage.serviceUsageAdmin  ` ), which contains the `  serviceusage.services.enable  ` permission. [Learn how to grant roles](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
+
+[Enable the API](https://console.cloud.google.com/flows/enableapi?apiid=dataflow.googleapis.com&redirect=https://console.cloud.google.com)
 
 ## Example Firestore pipelines
 
@@ -28,73 +30,71 @@ The source code for the samples is available in the [*googleapis/java-firestore*
 
 The following example creates documents in the `  cities-beam-sample  ` collection:
 
-``` java
-public class ExampleFirestoreBeamWrite {
-  private static final FirestoreOptions FIRESTORE_OPTIONS = FirestoreOptions.getDefaultInstance();
-
-  public static void main(String[] args) {
-    runWrite(args, "cities-beam-sample");
-  }
-
-  public static void runWrite(String[] args, String collectionId) {
-    // create pipeline options from the passed in arguments
-    PipelineOptions options =
-        PipelineOptionsFactory.fromArgs(args).withValidation().as(PipelineOptions.class);
-    Pipeline pipeline = Pipeline.create(options);
-
-    RpcQosOptions rpcQosOptions =
-        RpcQosOptions.newBuilder()
-            .withHintMaxNumWorkers(options.as(DataflowPipelineOptions.class).getMaxNumWorkers())
-            .build();
-
-    // create some writes
-    Write write1 =
-        Write.newBuilder()
-            .setUpdate(
-                Document.newBuilder()
-                    // resolves to
-                    // projects/<projectId>/databases/<databaseId>/documents/<collectionId>/NYC
-                    .setName(createDocumentName(collectionId, "NYC"))
-                    .putFields("name", Value.newBuilder().setStringValue("New York City").build())
-                    .putFields("state", Value.newBuilder().setStringValue("New York").build())
-                    .putFields("country", Value.newBuilder().setStringValue("USA").build()))
-            .build();
-
-    Write write2 =
-        Write.newBuilder()
-            .setUpdate(
-                Document.newBuilder()
-                    // resolves to
-                    // projects/<projectId>/databases/<databaseId>/documents/<collectionId>/TOK
-                    .setName(createDocumentName(collectionId, "TOK"))
-                    .putFields("name", Value.newBuilder().setStringValue("Tokyo").build())
-                    .putFields("country", Value.newBuilder().setStringValue("Japan").build())
-                    .putFields("capital", Value.newBuilder().setBooleanValue(true).build()))
-            .build();
-
-    // batch write the data
-    pipeline
-        .apply(Create.of(write1, write2))
-        .apply(FirestoreIO.v1().write().batchWrite().withRpcQosOptions(rpcQosOptions).build());
-
-    // run the pipeline
-    pipeline.run().waitUntilFinish();
-  }
-
-  private static String createDocumentName(String collectionId, String cityDocId) {
-    String documentPath =
-        String.format(
-            "projects/%s/databases/%s/documents",
-            FIRESTORE_OPTIONS.getProjectId(), FIRESTORE_OPTIONS.getDatabaseId());
-
-    return documentPath + "/" + collectionId + "/" + cityDocId;
-  }
-}ExampleFirestoreBeamWrite.java
-```
+    public class ExampleFirestoreBeamWrite {
+      private static final FirestoreOptions FIRESTORE_OPTIONS = FirestoreOptions.getDefaultInstance();
+    
+      public static void main(String[] args) {
+        runWrite(args, "cities-beam-sample");
+      }
+    
+      public static void runWrite(String[] args, String collectionId) {
+        // create pipeline options from the passed in arguments
+        PipelineOptions options =
+            PipelineOptionsFactory.fromArgs(args).withValidation().as(PipelineOptions.class);
+        Pipeline pipeline = Pipeline.create(options);
+    
+        RpcQosOptions rpcQosOptions =
+            RpcQosOptions.newBuilder()
+                .withHintMaxNumWorkers(options.as(DataflowPipelineOptions.class).getMaxNumWorkers())
+                .build();
+    
+        // create some writes
+        Write write1 =
+            Write.newBuilder()
+                .setUpdate(
+                    Document.newBuilder()
+                        // resolves to
+                        // projects/<projectId>/databases/<databaseId>/documents/<collectionId>/NYC
+                        .setName(createDocumentName(collectionId, "NYC"))
+                        .putFields("name", Value.newBuilder().setStringValue("New York City").build())
+                        .putFields("state", Value.newBuilder().setStringValue("New York").build())
+                        .putFields("country", Value.newBuilder().setStringValue("USA").build()))
+                .build();
+    
+        Write write2 =
+            Write.newBuilder()
+                .setUpdate(
+                    Document.newBuilder()
+                        // resolves to
+                        // projects/<projectId>/databases/<databaseId>/documents/<collectionId>/TOK
+                        .setName(createDocumentName(collectionId, "TOK"))
+                        .putFields("name", Value.newBuilder().setStringValue("Tokyo").build())
+                        .putFields("country", Value.newBuilder().setStringValue("Japan").build())
+                        .putFields("capital", Value.newBuilder().setBooleanValue(true).build()))
+                .build();
+    
+        // batch write the data
+        pipeline
+            .apply(Create.of(write1, write2))
+            .apply(FirestoreIO.v1().write().batchWrite().withRpcQosOptions(rpcQosOptions).build());
+    
+        // run the pipeline
+        pipeline.run().waitUntilFinish();
+      }
+    
+      private static String createDocumentName(String collectionId, String cityDocId) {
+        String documentPath =
+            String.format(
+                "projects/%s/databases/%s/documents",
+                FIRESTORE_OPTIONS.getProjectId(), FIRESTORE_OPTIONS.getDatabaseId());
+    
+        return documentPath + "/" + collectionId + "/" + cityDocId;
+      }
+    }ExampleFirestoreBeamWrite.java
 
 The example uses the following arguments to configure and run a pipeline:
 
-``` text
+``` pretty-print
 GOOGLE_CLOUD_PROJECT=project-id
 REGION=region
 TEMP_LOCATION=gs://temp-bucket/temp/
@@ -106,109 +106,107 @@ MAX_NUM_WORKERS=max-number-workers
 
 The following example pipeline reads documents from the `  cities-beam-sample  ` collection, applies a filter for documents where field `  country  ` is set to `  USA  ` , and returns the names of the matching documents.
 
-``` java
-public class ExampleFirestoreBeamRead {
-
-  public static void main(String[] args) {
-    runRead(args, "cities-beam-sample");
-  }
-
-  public static void runRead(String[] args, String collectionId) {
-    FirestoreOptions firestoreOptions = FirestoreOptions.getDefaultInstance();
-
-    PipelineOptions options =
-        PipelineOptionsFactory.fromArgs(args).withValidation().as(PipelineOptions.class);
-    Pipeline pipeline = Pipeline.create(options);
-
-    RpcQosOptions rpcQosOptions =
-        RpcQosOptions.newBuilder()
-            .withHintMaxNumWorkers(options.as(DataflowPipelineOptions.class).getMaxNumWorkers())
-            .build();
-
-    pipeline
-        .apply(Create.of(collectionId))
-        .apply(
-            new FilterDocumentsQuery(
-                firestoreOptions.getProjectId(), firestoreOptions.getDatabaseId()))
-        .apply(FirestoreIO.v1().read().runQuery().withRpcQosOptions(rpcQosOptions).build())
-        .apply(
-            ParDo.of(
-                // transform each document to its name
-                new DoFn<RunQueryResponse, String>() {
-                  @ProcessElement
-                  public void processElement(ProcessContext c) {
-                    c.output(Objects.requireNonNull(c.element()).getDocument().getName());
-                  }
-                }))
-        .apply(
-            ParDo.of(
-                // print the document name
-                new DoFn<String, Void>() {
-                  @ProcessElement
-                  public void processElement(ProcessContext c) {
-                    System.out.println(c.element());
-                  }
-                }));
-
-    pipeline.run().waitUntilFinish();
-  }
-
-  private static final class FilterDocumentsQuery
-      extends PTransform<PCollection<String>, PCollection<RunQueryRequest>> {
-
-    private final String projectId;
-    private final String databaseId;
-
-    public FilterDocumentsQuery(String projectId, String databaseId) {
-      this.projectId = projectId;
-      this.databaseId = databaseId;
-    }
-
-    @Override
-    public PCollection<RunQueryRequest> expand(PCollection<String> input) {
-      return input.apply(
-          ParDo.of(
-              new DoFn<String, RunQueryRequest>() {
-                @ProcessElement
-                public void processElement(ProcessContext c) {
-                  // select from collection "cities-collection-<uuid>"
-                  StructuredQuery.CollectionSelector collection =
-                      StructuredQuery.CollectionSelector.newBuilder()
-                          .setCollectionId(Objects.requireNonNull(c.element()))
-                          .build();
-                  // filter where country is equal to USA
-                  StructuredQuery.Filter countryFilter =
-                      StructuredQuery.Filter.newBuilder()
-                          .setFieldFilter(
-                              StructuredQuery.FieldFilter.newBuilder()
-                                  .setField(
-                                      StructuredQuery.FieldReference.newBuilder()
-                                          .setFieldPath("country")
-                                          .build())
-                                  .setValue(Value.newBuilder().setStringValue("USA").build())
-                                  .setOp(StructuredQuery.FieldFilter.Operator.EQUAL))
-                          .buildPartial();
-
-                  RunQueryRequest runQueryRequest =
-                      RunQueryRequest.newBuilder()
-                          .setParent(DocumentRootName.format(projectId, databaseId))
-                          .setStructuredQuery(
-                              StructuredQuery.newBuilder()
-                                  .addFrom(collection)
-                                  .setWhere(countryFilter)
-                                  .build())
-                          .build();
-                  c.output(runQueryRequest);
-                }
-              }));
-    }
-  }
-}ExampleFirestoreBeamRead.java
-```
+    public class ExampleFirestoreBeamRead {
+    
+      public static void main(String[] args) {
+        runRead(args, "cities-beam-sample");
+      }
+    
+      public static void runRead(String[] args, String collectionId) {
+        FirestoreOptions firestoreOptions = FirestoreOptions.getDefaultInstance();
+    
+        PipelineOptions options =
+            PipelineOptionsFactory.fromArgs(args).withValidation().as(PipelineOptions.class);
+        Pipeline pipeline = Pipeline.create(options);
+    
+        RpcQosOptions rpcQosOptions =
+            RpcQosOptions.newBuilder()
+                .withHintMaxNumWorkers(options.as(DataflowPipelineOptions.class).getMaxNumWorkers())
+                .build();
+    
+        pipeline
+            .apply(Create.of(collectionId))
+            .apply(
+                new FilterDocumentsQuery(
+                    firestoreOptions.getProjectId(), firestoreOptions.getDatabaseId()))
+            .apply(FirestoreIO.v1().read().runQuery().withRpcQosOptions(rpcQosOptions).build())
+            .apply(
+                ParDo.of(
+                    // transform each document to its name
+                    new DoFn<RunQueryResponse, String>() {
+                      @ProcessElement
+                      public void processElement(ProcessContext c) {
+                        c.output(Objects.requireNonNull(c.element()).getDocument().getName());
+                      }
+                    }))
+            .apply(
+                ParDo.of(
+                    // print the document name
+                    new DoFn<String, Void>() {
+                      @ProcessElement
+                      public void processElement(ProcessContext c) {
+                        System.out.println(c.element());
+                      }
+                    }));
+    
+        pipeline.run().waitUntilFinish();
+      }
+    
+      private static final class FilterDocumentsQuery
+          extends PTransform<PCollection<String>, PCollection<RunQueryRequest>> {
+    
+        private final String projectId;
+        private final String databaseId;
+    
+        public FilterDocumentsQuery(String projectId, String databaseId) {
+          this.projectId = projectId;
+          this.databaseId = databaseId;
+        }
+    
+        @Override
+        public PCollection<RunQueryRequest> expand(PCollection<String> input) {
+          return input.apply(
+              ParDo.of(
+                  new DoFn<String, RunQueryRequest>() {
+                    @ProcessElement
+                    public void processElement(ProcessContext c) {
+                      // select from collection "cities-collection-<uuid>"
+                      StructuredQuery.CollectionSelector collection =
+                          StructuredQuery.CollectionSelector.newBuilder()
+                              .setCollectionId(Objects.requireNonNull(c.element()))
+                              .build();
+                      // filter where country is equal to USA
+                      StructuredQuery.Filter countryFilter =
+                          StructuredQuery.Filter.newBuilder()
+                              .setFieldFilter(
+                                  StructuredQuery.FieldFilter.newBuilder()
+                                      .setField(
+                                          StructuredQuery.FieldReference.newBuilder()
+                                              .setFieldPath("country")
+                                              .build())
+                                      .setValue(Value.newBuilder().setStringValue("USA").build())
+                                      .setOp(StructuredQuery.FieldFilter.Operator.EQUAL))
+                              .buildPartial();
+    
+                      RunQueryRequest runQueryRequest =
+                          RunQueryRequest.newBuilder()
+                              .setParent(DocumentRootName.format(projectId, databaseId))
+                              .setStructuredQuery(
+                                  StructuredQuery.newBuilder()
+                                      .addFrom(collection)
+                                      .setWhere(countryFilter)
+                                      .build())
+                              .build();
+                      c.output(runQueryRequest);
+                    }
+                  }));
+        }
+      }
+    }ExampleFirestoreBeamRead.java
 
 The example uses the following arguments to configure and run a pipeline:
 
-``` text
+``` pretty-print
 GOOGLE_CLOUD_PROJECT=project-id
 REGION=region
 TEMP_LOCATION=gs://temp-bucket/temp/
@@ -218,7 +216,7 @@ MAX_NUM_WORKERS=max-number-workers
 
 ## Pricing
 
-Running a Firestore workload in Dataflow incurs costs for Firestore usage and Dataflow usage. Dataflow usage is billed for resources that your jobs use. See the [Dataflow pricing page](https://cloud.google.com/dataflow/pricing) for details. For Firestore pricing, see the [Pricing page](/firestore/pricing) .
+Running a Firestore workload in Dataflow incurs costs for Firestore usage and Dataflow usage. Dataflow usage is billed for resources that your jobs use. See the [Dataflow pricing page](https://cloud.google.com/dataflow/pricing) for details. For Firestore pricing, see the [Pricing page](https://docs.cloud.google.com/firestore/pricing) .
 
 ## What's next
 

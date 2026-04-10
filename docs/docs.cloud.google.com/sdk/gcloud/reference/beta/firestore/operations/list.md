@@ -10,9 +10,7 @@ DESCRIPTION
 
 `  (BETA)  ` Filters are case-sensitive and have the following syntax:
 
-``` text
-field = value [AND [field = value]] …
-```
+    field = value [AND [field = value]] …
 
 Only the logical `  AND  ` operator is supported; space-separated items are treated as having an implicit `  AND  ` operator.
 
@@ -20,13 +18,13 @@ EXAMPLES
 
 To retrieve information about recent operations, run:
 
-``` text
+``` wrap-code
 gcloud beta firestore operations list
 ```
 
 To only list operations that are done, run:
 
-``` text
+``` wrap-code
 gcloud beta firestore operations list --filter="done:true"
 ```
 
@@ -37,14 +35,14 @@ FLAGS
     
     For example, to operate on database `  foo  ` :
     
-    ``` text
+    ``` wrap-code
     gcloud beta firestore operations list --database='foo'
     ```
 
 LIST COMMAND FLAGS
 
   - `  --filter  ` = `  EXPRESSION  `  
-    Apply a Boolean filter `  EXPRESSION  ` to each resource item to be listed. If the expression evaluates `  True  ` , then that item is listed. For more details and examples of filter expressions, run $ [gcloud topic filters](/sdk/gcloud/reference/topic/filters) . This flag interacts with other flags that are applied in this order: `  --flatten  ` , `  --sort-by  ` , `  --filter  ` , `  --limit  ` .
+    Apply a Boolean filter `  EXPRESSION  ` to each resource item to be listed. If the expression evaluates `  True  ` , then that item is listed. For more details and examples of filter expressions, run $ [gcloud topic filters](https://docs.cloud.google.com/sdk/gcloud/reference/topic/filters) . This flag interacts with other flags that are applied in this order: `  --flatten  ` , `  --sort-by  ` , `  --filter  ` , `  --limit  ` .
   - `  --limit  ` = `  LIMIT  ` ; default=100  
     Maximum number of resources to list. The default is `  100  ` . This flag interacts with other flags that are applied in this order: `  --flatten  ` , `  --sort-by  ` , `  --filter  ` , `  --limit  ` .
   - `  --page-size  ` = `  PAGE_SIZE  ` ; default=100  
@@ -64,10 +62,10 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` text
+``` wrap-code
 gcloud firestore operations list
 ```
 
-``` text
+``` wrap-code
 gcloud alpha firestore operations list
 ```

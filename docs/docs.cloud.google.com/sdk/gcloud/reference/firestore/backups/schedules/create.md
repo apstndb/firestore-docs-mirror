@@ -10,13 +10,13 @@ EXAMPLES
 
 To create a backup schedule with 7 days retention and daily recurrence under database testdb.
 
-``` text
+``` wrap-code
 gcloud firestore backups schedules create --database=testdb --retention=7d --recurrence=daily
 ```
 
 To create a backup schedule with 7 days retention and weekly recurrence on Monday under database testdb.
 
-``` text
+``` wrap-code
 gcloud firestore backups schedules create --database=testdb --retention=7d --recurrence=weekly --day-of-week=MON
 ```
 
@@ -28,7 +28,7 @@ The database to operate on.
 
 For example, to operate on database `  foo  ` :
 
-``` text
+``` wrap-code
 gcloud firestore backups schedules create --database='foo'
 ```
 
@@ -38,7 +38,7 @@ The rention of the backup. At what relative time in the future, compared to the 
 
 For example, to set retention as 7 days.
 
-``` text
+``` wrap-code
 gcloud firestore backups schedules create --retention=7d
 ```
 
@@ -55,7 +55,7 @@ This must be specified.
     
     For example, to create a weekly backup schedule which creates backups on Monday.
     
-    ``` text
+    ``` wrap-code
     gcloud firestore backups schedules create --recurrence=weekly --day-of-week=MON
     ```
     
@@ -64,14 +64,10 @@ This must be specified.
   - `  --day-of-week  ` = `  DAY_OF_WEEK  `  
     The day of week (UTC time zone) of when backups are created.
     
-    ``` text
-    The available values are: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`,`SUN`.
-    Values are case insensitive.
-    ```
+        The available values are: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`,`SUN`.
+        Values are case insensitive.
     
-    ``` text
-    This is required when creating a weekly backup schedule.
-    ```
+        This is required when creating a weekly backup schedule.
     
     `  DAY_OF_WEEK  ` must be one of: `  SUN  ` , `  MON  ` , `  TUE  ` , `  WED  ` , `  THU  ` , `  FRI  ` , `  SAT  ` .
 
@@ -85,10 +81,10 @@ NOTES
 
 These variants are also available:
 
-``` text
+``` wrap-code
 gcloud alpha firestore backups schedules create
 ```
 
-``` text
+``` wrap-code
 gcloud beta firestore backups schedules create
 ```

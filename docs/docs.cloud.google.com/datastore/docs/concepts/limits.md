@@ -4,7 +4,7 @@ This page describes production limits for Firestore in Datastore mode.
 
 ## Firestore in Datastore mode limits
 
-In addition to these limits, see the [best practices](/datastore/docs/best-practices) for Firestore in Datastore mode.
+In addition to these limits, see the [best practices](https://docs.cloud.google.com/datastore/docs/best-practices) for Firestore in Datastore mode.
 
 <table>
 <colgroup>
@@ -24,7 +24,7 @@ In addition to these limits, see the [best practices](/datastore/docs/best-pract
 <p>You can <a href="https://cloud.google.com/support-hub">contact support</a> to request an increase to this limit.</p></td>
 </tr>
 <tr class="even">
-<td>Maximum number of <a href="/datastore/docs/cmek">customer-managed encryption keys (CMEK) databases</a> per project</td>
+<td>Maximum number of <a href="https://docs.cloud.google.com/datastore/docs/cmek">customer-managed encryption keys (CMEK) databases</a> per project</td>
 <td><p>0</p>
 <p>By default the quota is 0 because this feature is behind an allowlist. You can request to increase the quota by filling in <a href="https://docs.google.com/forms/d/e/1FAIpQLSfKs8wJf4IXu1NizvfyU2vT59JDbdPvkehMVZ2ab5l_aDLIIA/viewform?resourcekey=0-O15dlRFvA0JIDmh6VFUEcA">the CMEK access request form</a> .</p></td>
 </tr>
@@ -38,7 +38,7 @@ This limit applies when Datastore mode is used outside of Google App Engine. If 
 <td>10 MiB</td>
 </tr>
 <tr class="odd">
-<td>Maximum <a href="/datastore/docs/concepts/storage-size">size</a> for an entity</td>
+<td>Maximum <a href="https://docs.cloud.google.com/datastore/docs/concepts/storage-size">size</a> for an entity</td>
 <td>1,048,572 bytes<br />
 (1 MiB - 4 bytes)</td>
 </tr>
@@ -117,7 +117,7 @@ results in 4 filters towards this limit: <code dir="ltr" translate="no">       [
 
 ## legacy Cloud Datastore limits
 
-If you have not yet upgraded from Datastore to [Firestore in Datastore mode](/datastore/docs/firestore-or-datastore#cloud_firestore_in_datastore_mode) , the following limits also apply to your database instance:
+If you have not yet upgraded from Datastore to [Firestore in Datastore mode](https://docs.cloud.google.com/datastore/docs/firestore-or-datastore#cloud_firestore_in_datastore_mode) , the following limits also apply to your database instance:
 
 <table>
 <colgroup>
@@ -137,7 +137,7 @@ If you have not yet upgraded from Datastore to [Firestore in Datastore mode](/da
 </tr>
 <tr class="even">
 <td>Maximum rate of transactions reading from or writing to an entity group</td>
-<td><a href="/datastore/docs/concepts/cloud-datastore-transactions#transactions_and_entity_groups">1 per sec</a></td>
+<td><a href="https://docs.cloud.google.com/datastore/docs/concepts/cloud-datastore-transactions#transactions_and_entity_groups">1 per sec</a></td>
 </tr>
 <tr class="odd">
 <td>Maximum write rate to an entity group.
@@ -149,5 +149,5 @@ Note you can batch writes together for an entity group. This allows you to write
 
 ## What's next
 
-  - Learn about [Pricing and Quota](/datastore/docs/pricing)
-  - Learn about [Storage Size Calculations](/datastore/docs/concepts/storage-size)
+  - Learn about [Pricing and Quota](https://docs.cloud.google.com/datastore/docs/pricing)
+  - Learn about [Storage Size Calculations](https://docs.cloud.google.com/datastore/docs/concepts/storage-size)

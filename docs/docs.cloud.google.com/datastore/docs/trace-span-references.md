@@ -1,33 +1,16 @@
-[Client-side traces](/datastore/docs/client-side-traces) , which are collected by executing RPCs, provide several pieces of information for every request from a client, including spans with timestamps of when the client sent the RPC request and when the client received the RPC response. The spans include latency introduced by the network and client system.
+[Client-side traces](https://docs.cloud.google.com/datastore/docs/client-side-traces) , which are collected by executing RPCs, provide several pieces of information for every request from a client, including spans with timestamps of when the client sent the RPC request and when the client received the RPC response. The spans include latency introduced by the network and client system.
 
 Client-side traces can include the following information:
 
 ## Span metadata
 
-<table>
-<tbody>
-<tr class="odd">
-<td>Span ID</td>
-<td>Unique ID of this span</td>
-</tr>
-<tr class="even">
-<td>Parent Span ID</td>
-<td>ID of the parent span, not set for root span</td>
-</tr>
-<tr class="odd">
-<td>Project ID</td>
-<td>Google Cloud project ID that ingested the trace</td>
-</tr>
-<tr class="even">
-<td>Start Time</td>
-<td>Span start time</td>
-</tr>
-<tr class="odd">
-<td>End Time</td>
-<td>Span end time</td>
-</tr>
-</tbody>
-</table>
+|                |                                                 |
+| -------------- | ----------------------------------------------- |
+| Span ID        | Unique ID of this span                          |
+| Parent Span ID | ID of the parent span, not set for root span    |
+| Project ID     | Google Cloud project ID that ingested the trace |
+| Start Time     | Span start time                                 |
+| End Time       | Span end time                                   |
 
 ## Span attributes
 
@@ -221,4 +204,4 @@ One of:
 
 ## What's next
 
-  - [Learn how to configure client-side traces](/datastore/docs/client-side-traces)
+  - [Learn how to configure client-side traces](https://docs.cloud.google.com/datastore/docs/client-side-traces)

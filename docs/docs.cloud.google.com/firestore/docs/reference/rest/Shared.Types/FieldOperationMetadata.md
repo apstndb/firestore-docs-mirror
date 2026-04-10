@@ -11,7 +11,7 @@ Metadata for `  google.longrunning.Operation  ` results from `  FirestoreAdmin.U
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;startTime&quot;: string,
   &quot;endTime&quot;: string,
   &quot;field&quot;: string,
@@ -104,7 +104,7 @@ Information about an index configuration change.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;changeType&quot;: enum (ChangeType),
   &quot;index&quot;: {
     object (Index)
@@ -143,7 +143,7 @@ Information about a TTL configuration change.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;changeType&quot;: enum (ChangeType)
 }</code></pre></td>
 </tr>

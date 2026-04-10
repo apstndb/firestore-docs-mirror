@@ -11,7 +11,7 @@ A reference to a field in a document, ex: `  stats.operations  ` .
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;fieldPath&quot;: string
 }</code></pre></td>
 </tr>

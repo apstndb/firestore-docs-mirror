@@ -72,41 +72,37 @@ The built-in indexes for `  Photo  ` entities support single-filter queries like
 
 ### Python
 
-``` python
-from google.cloud import datastore
-
-# For help authenticating your client, visit
-# https://cloud.google.com/docs/authentication/getting-started
-client = datastore.Client()
-
-query_owner_id = client.query(kind="Photo", filters=[("owner_id", "=", "user1234")])
-
-query_size = client.query(kind="Photo", filters=[("size", "=", 2)])
-
-query_coloration = client.query(kind="Photo", filters=[("coloration", "=", 2)])
-```
+    from google.cloud import datastore
+    
+    # For help authenticating your client, visit
+    # https://cloud.google.com/docs/authentication/getting-started
+    client = datastore.Client()
+    
+    query_owner_id = client.query(kind="Photo", filters=[("owner_id", "=", "user1234")])
+    
+    query_size = client.query(kind="Photo", filters=[("size", "=", 2)])
+    
+    query_coloration = client.query(kind="Photo", filters=[("coloration", "=", 2)])
 
 The `  Photo  ` filter feature also requires queries that combine multiple equality filters with a logical `  AND  ` :
 
 ### Python
 
-``` python
-from google.cloud import datastore
-
-# For help authenticating your client, visit
-# https://cloud.google.com/docs/authentication/getting-started
-client = datastore.Client()
-
-query_all_properties = client.query(
-    kind="Photo",
-    filters=[
-        ("owner_id", "=", "user1234"),
-        ("size", "=", 2),
-        ("coloration", "=", 2),
-        ("tag", "=", "family"),
-    ],
-)
-```
+    from google.cloud import datastore
+    
+    # For help authenticating your client, visit
+    # https://cloud.google.com/docs/authentication/getting-started
+    client = datastore.Client()
+    
+    query_all_properties = client.query(
+        kind="Photo",
+        filters=[
+            ("owner_id", "=", "user1234"),
+            ("size", "=", 2),
+            ("coloration", "=", 2),
+            ("tag", "=", "family"),
+        ],
+    )
 
 Firestore in Datastore mode can support these queries by merging built-in indexes.
 
@@ -126,56 +122,52 @@ By merging built-in indexes, Firestore in Datastore mode supports queries with e
 
 ### Python
 
-``` python
-from google.cloud import datastore
-
-# For help authenticating your client, visit
-# https://cloud.google.com/docs/authentication/getting-started
-client = datastore.Client()
-
-query_all_properties = client.query(
-    kind="Photo",
-    filters=[
-        ("owner_id", "=", "user1234"),
-        ("size", "=", 2),
-        ("coloration", "=", 2),
-        ("tag", "=", "family"),
-    ],
-)
-```
+    from google.cloud import datastore
+    
+    # For help authenticating your client, visit
+    # https://cloud.google.com/docs/authentication/getting-started
+    client = datastore.Client()
+    
+    query_all_properties = client.query(
+        kind="Photo",
+        filters=[
+            ("owner_id", "=", "user1234"),
+            ("size", "=", 2),
+            ("coloration", "=", 2),
+            ("tag", "=", "family"),
+        ],
+    )
 
 Firestore in Datastore mode can also merge index results from multiple sections of the same index. By merging different sections of the built-in index for the `  tag  ` property, Firestore in Datastore mode supports queries that combine multiple `  tag  ` filters in a logical `  AND  ` :
 
 ### Python
 
-``` python
-from google.cloud import datastore
-
-# For help authenticating your client, visit
-# https://cloud.google.com/docs/authentication/getting-started
-client = datastore.Client()
-
-query_tag = client.query(
-    kind="Photo",
-    filters=[
-        ("tag", "=", "family"),
-        ("tag", "=", "outside"),
-        ("tag", "=", "camping"),
-    ],
-)
-
-query_owner_size_color_tags = client.query(
-    kind="Photo",
-    filters=[
-        ("owner_id", "=", "user1234"),
-        ("size", "=", 2),
-        ("coloration", "=", 2),
-        ("tag", "=", "family"),
-        ("tag", "=", "outside"),
-        ("tag", "=", "camping"),
-    ],
-)
-```
+    from google.cloud import datastore
+    
+    # For help authenticating your client, visit
+    # https://cloud.google.com/docs/authentication/getting-started
+    client = datastore.Client()
+    
+    query_tag = client.query(
+        kind="Photo",
+        filters=[
+            ("tag", "=", "family"),
+            ("tag", "=", "outside"),
+            ("tag", "=", "camping"),
+        ],
+    )
+    
+    query_owner_size_color_tags = client.query(
+        kind="Photo",
+        filters=[
+            ("owner_id", "=", "user1234"),
+            ("size", "=", 2),
+            ("coloration", "=", 2),
+            ("tag", "=", "family"),
+            ("tag", "=", "outside"),
+            ("tag", "=", "camping"),
+        ],
+    )
 
 The queries supported by merged built-in indexes complete the set of queries required by the `  Photo  ` filtering feature. Note that supporting the `  Photo  ` filtering feature did not require any additional composite indexes.
 
@@ -189,7 +181,7 @@ The index is sorted first by ancestor and then by property values, in the order 
 2.  Properties used in sort orders
 3.  Properties used in `  distinctOn  ` filter
 4.  Properties used in range & inequality filters (that are not already included in sort orders)
-5.  Properties used in aggregations and [projections](/datastore/docs/concepts/queries#projection_queries) (that are not already included in sort orders and range & inequality filters)
+5.  Properties used in aggregations and [projections](https://docs.cloud.google.com/datastore/docs/concepts/queries#projection_queries) (that are not already included in sort orders and range & inequality filters)
 
 This ensures that all results for every possible execution of the query are accounted. Firestore in Datastore mode databases execute a query using a perfect index using the following steps:
 
@@ -202,66 +194,54 @@ This ensures that all results for every possible execution of the query are acco
 
 For example, consider the following query:
 
-``` text
-SELECT * FROM Task
-WHERE category = 'Personal'
-  AND priority < 3
-ORDER BY priority DESC
-```
+    SELECT * FROM Task
+    WHERE category = 'Personal'
+      AND priority < 3
+    ORDER BY priority DESC
 
 The perfect composite index for this query is an index of keys for entities of kind `  Task  ` , with columns for the values of the `  category  ` and `  priority  ` properties. The index is sorted first in ascending order by `  category  ` and then in descending order by `  priority  ` :
 
-``` text
-indexes:
-- kind: Task
-  properties:
-  - name: category
-    direction: asc
-  - name: priority
-    direction: desc
-```
+    indexes:
+    - kind: Task
+      properties:
+      - name: category
+        direction: asc
+      - name: priority
+        direction: desc
 
 Two queries of the same form but with different filter values use the same index. For example, the following query uses the same index as the earlier query:
 
-``` text
-SELECT * FROM Task
-WHERE category = 'Work'
-  AND priority < 5
-ORDER BY priority DESC
-```
+    SELECT * FROM Task
+    WHERE category = 'Work'
+      AND priority < 5
+    ORDER BY priority DESC
 
 For this index
 
-``` text
-indexes:
-- kind: Task
-  properties:
-  - name: category
-    direction: asc
-  - name: priority
-    direction: asc
-  - name: created
-    direction: asc
-```
+    indexes:
+    - kind: Task
+      properties:
+      - name: category
+        direction: asc
+      - name: priority
+        direction: asc
+      - name: created
+        direction: asc
 
 The earlier index can satisfy both of the following queries:
 
-``` text
-SELECT * FROM Task
-WHERE category = 'Personal'
-  AND priority = 5
-ORDER BY created ASC
-```
+    SELECT * FROM Task
+    WHERE category = 'Personal'
+      AND priority = 5
+    ORDER BY created ASC
 
 and
 
-``` text
-SELECT * FROM Task
-WHERE category = 'Work'
-ORDER BY priority ASC, created ASC
-```
+    SELECT * FROM Task
+    WHERE category = 'Work'
+    ORDER BY priority ASC, created ASC
 
-**Caution:** Using a perfect index can significantly increase [storage size](/datastore/docs/concepts/storage-size) and write latency, especially in the case of [exploding indexes](/datastore/docs/concepts/indexes#index_limits) .
+**Caution:** Using a perfect index can significantly increase [storage size](https://docs.cloud.google.com/datastore/docs/concepts/storage-size) and write latency, especially in the case of [exploding indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes#index_limits) .
 
 ## Optimizing your index selection
 
@@ -296,80 +276,66 @@ When Firestore in Datastore mode merges indexes, each index scan often maps to a
 
 **Note:** For brevity, this section uses a shorthand notation for index definitions. The following definition denotes an index of kind `  model  ` , with property `  prop1  ` ascending and `  prop2  ` descending:
 
-``` text
-Index(model, prop1, -prop2)
-```
+    Index(model, prop1, -prop2)
 
 This is equivalent to the following configuration in `  index.yaml  ` :
 
-``` text
-indexes:
-- kind: model
-  ancestor: no
-  properties:
-  - name: prop1
-  - name: prop2
-    direction: desc
-```
+    indexes:
+    - kind: model
+      ancestor: no
+      properties:
+      - name: prop1
+      - name: prop2
+        direction: desc
 
 Consider this query:
 
 ### Python
 
-``` python
-from google.cloud import datastore
-
-# For help authenticating your client, visit
-# https://cloud.google.com/docs/authentication/getting-started
-client = datastore.Client()
-
-query_owner_size_tag = client.query(
-    kind="Photo",
-    filters=[
-        ("owner_id", "=", "username"),
-        ("size", "=", 2),
-        ("tag", "=", "family"),
-    ],
-)
-```
+    from google.cloud import datastore
+    
+    # For help authenticating your client, visit
+    # https://cloud.google.com/docs/authentication/getting-started
+    client = datastore.Client()
+    
+    query_owner_size_tag = client.query(
+        kind="Photo",
+        filters=[
+            ("owner_id", "=", "username"),
+            ("size", "=", 2),
+            ("tag", "=", "family"),
+        ],
+    )
 
 Each filter maps to one index scan in the following built-in indexes:
 
-``` text
-Index(Photo, owner_id)
-Index(Photo, size)
-Index(Photo, tag)
-```
+    Index(Photo, owner_id)
+    Index(Photo, size)
+    Index(Photo, tag)
 
 If you add the composite index `  Index(Photo, owner_id, size)  ` , the query maps to two index scans instead of three:
 
-``` text
-#  Satisfies both 'owner_id=username' and 'size=2'
-Index(Photo, owner_id, size)
-Index(Photo, tag)
-```
+    #  Satisfies both 'owner_id=username' and 'size=2'
+    Index(Photo, owner_id, size)
+    Index(Photo, tag)
 
 Consider a scenario with many large images, many black-and-white images, but few large, panoramic images. A query filtering for both panoramic and black-and-white images will be slow if it merges built-in indexes:
 
 ### Python
 
-``` python
-from google.cloud import datastore
-
-# For help authenticating your client, visit
-# https://cloud.google.com/docs/authentication/getting-started
-client = datastore.Client()
-
-query_size_coloration = client.query(
-    kind="Photo", filters=[("size", "=", 2), ("coloration", "=", 1)]
-)
-```
+    from google.cloud import datastore
+    
+    # For help authenticating your client, visit
+    # https://cloud.google.com/docs/authentication/getting-started
+    client = datastore.Client()
+    
+    query_size_coloration = client.query(
+        kind="Photo", filters=[("size", "=", 2), ("coloration", "=", 1)]
+    )
 
 To improve query performance, you can lowers the value of `  S  ` (smallest set of entities in a single index scan) in `  O(S/(R * I))  ` by adding the following composite index:
 
-``` text
-Index(Photo, size, coloration)
-```
+    Index(Photo, size, coloration)
 
 Compared to using two built-in indexes, this composite index produces fewer potential results for the same two query filters. This approach substantially improves performance at the cost of one more index.
 
@@ -457,56 +423,46 @@ Number of downloads
 
 If you disregard the `  tag  ` field, it's possible to select composite indexes that match every combination of `  Photo  ` filters:
 
-``` text
-Index(Photo, owner_id, -date_added)
-Index(Photo, owner_id, -comments)
-Index(Photo, size, -date_added)
-Index(Photo, size, -comments)
-...
-Index(Photo, owner_id, size, -date_added)
-Index(Photo, owner_id, size, -comments)
-...
-Index(Photo, owner_id, size, coloration, -date_added)
-Index(Photo, owner_id, size, coloration, -comments)
-```
+    Index(Photo, owner_id, -date_added)
+    Index(Photo, owner_id, -comments)
+    Index(Photo, size, -date_added)
+    Index(Photo, size, -comments)
+    ...
+    Index(Photo, owner_id, size, -date_added)
+    Index(Photo, owner_id, size, -comments)
+    ...
+    Index(Photo, owner_id, size, coloration, -date_added)
+    Index(Photo, owner_id, size, coloration, -comments)
 
 The total number of composite indexes is:
 
-``` text
-2^(number of filters) * (number of different orders) = 2 ^ 3 * 4 = 32 composite indexes
-```
+    2^(number of filters) * (number of different orders) = 2 ^ 3 * 4 = 32 composite indexes
 
 If you try to support up to 3 `  tag  ` filters, the total number of composite indexes is:
 
-``` text
-2 ^ (3 + 3 tag filters) * 4 = 256 indexes.
-```
+    2 ^ (3 + 3 tag filters) * 4 = 256 indexes.
 
-Indexes that include multi-value properties like `  tag  ` also lead to [exploding index issues](/datastore/docs/concepts/indexes#index_limits) that increase storage costs and write latency.
+Indexes that include multi-value properties like `  tag  ` also lead to [exploding index issues](https://docs.cloud.google.com/datastore/docs/concepts/indexes#index_limits) that increase storage costs and write latency.
 
 To support filters on the `  tag  ` field for this feature, you can reduce the total number of indexes by relying on merged indexes. The following set of composite indexes is the minimum required to support the `  Photo  ` filtering feature with ordering:
 
-``` text
-Index(Photo, owner_id, -date_added)
-Index(Photo, owner_id, -rating)
-Index(Photo, owner_id, -comments)
-Index(Photo, owner_id, -downloads)
-Index(Photo, size, -date_added)
-Index(Photo, size, -rating)
-Index(Photo, size, -comments)
-Index(Photo, size, -downloads)
-...
-Index(Photo, tag, -date_added)
-Index(Photo, tag, -rating)
-Index(Photo, tag, -comments)
-Index(Photo, tag, -downloads)
-```
+    Index(Photo, owner_id, -date_added)
+    Index(Photo, owner_id, -rating)
+    Index(Photo, owner_id, -comments)
+    Index(Photo, owner_id, -downloads)
+    Index(Photo, size, -date_added)
+    Index(Photo, size, -rating)
+    Index(Photo, size, -comments)
+    Index(Photo, size, -downloads)
+    ...
+    Index(Photo, tag, -date_added)
+    Index(Photo, tag, -rating)
+    Index(Photo, tag, -comments)
+    Index(Photo, tag, -downloads)
 
 The number of composite indexes defined is:
 
-``` text
-(number of filters + 1) * (number of orders) = 7 * 4 = 28
-```
+    (number of filters + 1) * (number of orders) = 7 * 4 = 28
 
 Index merging also provides the following benefits:
 
@@ -529,7 +485,7 @@ You can select optimal indexes for your Datastore mode database by using two app
     
       - Improves query performance
       - Consistent query performance that's not dependent on shape of data
-      - Must stay under the [limit of composite indexes](/datastore/docs/concepts/limits#limits)
+      - Must stay under the [limit of composite indexes](https://docs.cloud.google.com/datastore/docs/concepts/limits#limits)
       - Increased storage cost per entity
       - Increased write latency
 

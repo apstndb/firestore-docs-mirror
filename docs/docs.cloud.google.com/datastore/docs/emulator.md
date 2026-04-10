@@ -1,4 +1,4 @@
-The [Google Cloud CLI](/sdk) provides a local, in-memory emulator for Firestore that you can use to test your Firestore in Datastore mode application. You can use the emulator with all Datastore mode client libraries. You should use the emulator only for local testing.
+The [Google Cloud CLI](https://docs.cloud.google.com/sdk) provides a local, in-memory emulator for Firestore that you can use to test your Firestore in Datastore mode application. You can use the emulator with all Datastore mode client libraries. You should use the emulator only for local testing.
 
 Use the `  gcloud emulators firestore  ` with `  --database-mode=datastore-mode  ` to test Firestore in Datastore mode behavior.
 
@@ -10,29 +10,23 @@ Don't use the emulator for production deployments. Because the emulator stores d
 
 To install the Firestore emulator, install and update the gcloud CLI:
 
-1.  [Install the gcloud CLI](/sdk/docs/install) .
+1.  [Install the gcloud CLI](https://docs.cloud.google.com/sdk/docs/install) .
 
 2.  Update your gcloud CLI installation to get the latest features:
     
-    ``` text
-    gcloud components update
-    ```
+        gcloud components update
 
 ## Run the emulator
 
 1.  Run the following command to start the emulator:
     
-    ``` text
-    gcloud emulators firestore start --database-mode=datastore-mode
-    ```
+        gcloud emulators firestore start --database-mode=datastore-mode
     
     The emulator prints the host and port number where it is running.
     
     By default, the emulator attempts to use `  127.0.0.1:8080  ` . To bind the emulator to a specific host and port, use the optional `  --host-port  ` flag, replacing HOST and PORT :
     
-    ``` text
-    gcloud emulators firestore start --database-mode=datastore-mode --host-port=HOST:PORT
-    ```
+        gcloud emulators firestore start --database-mode=datastore-mode --host-port=HOST:PORT
 
 2.  Use the keyboard shortcut `  Control + C  ` to stop the emulator.
 
@@ -42,9 +36,7 @@ To install the Firestore emulator, install and update the gcloud CLI:
 
 To connect a client library and app to the emulator, set the `  DATASTORE_EMULATOR_HOST  ` environment variable. When this environment variable is set, the client libraries automatically connect to the emulator.
 
-``` text
-export DATASTORE_EMULATOR_HOST="HOST:PORT"
-```
+    export DATASTORE_EMULATOR_HOST="HOST:PORT"
 
 ## Import entities into the emulator
 
@@ -54,7 +46,7 @@ You can import entities into the emulator in two ways. The first is to add the f
 
 ### Protocol
 
-``` bash
+``` lang-sh notranslate
 curl -X POST http://localhost:8080/emulator/v1/projects/PROJECT_ID:import \
 -H 'Content-Type: application/json' \
 -d '{"database":"DATABASE", "export_directory":"EXPORT_DIRECTORY"}'
@@ -64,7 +56,7 @@ Modify `  localhost:8080  ` if the emulator uses a different port.
 
 ### CLI Flag
 
-``` bash
+``` lang-sh notranslate
 gcloud emulators firestore start --database-mode=datastore-mode --import-data=EXPORT_DIRECTORY
 ```
 
@@ -90,7 +82,7 @@ You can export entities from the emulator in two ways. The first is to add the f
 
 ### Protocol
 
-``` bash
+``` lang-sh notranslate
 curl -X POST http://localhost:8080/emulator/v1/projects/PROJECT_ID:export \
 -H 'Content-Type: application/json' \
 -d '{"database":"DATABASE_PATH", "export_directory":"EXPORT_DIRECTORY"}'
@@ -100,7 +92,7 @@ Modify `  localhost:8080  ` if the emulator uses a different port.
 
 ### CLI Flag
 
-``` bash
+``` lang-sh notranslate
 gcloud emulators firestore start --database-mode=datastore-mode --export-on-exit=EXPORT_DIRECTORY
 ```
 
@@ -122,9 +114,7 @@ where:
 
 By default, the Firestore emulator does not persist data to disk. To persist emulator data, run the following command to use import and export flags to load and save the data across emulator instances:
 
-``` text
-gcloud emulators firestore start --database-mode=datastore-mode --import-data=EXPORT_DIRECTORY --export-on-exit=EXPORT_DIRECTORY
-```
+    gcloud emulators firestore start --database-mode=datastore-mode --import-data=EXPORT_DIRECTORY --export-on-exit=EXPORT_DIRECTORY
 
 ## Reset emulator data
 
@@ -132,17 +122,13 @@ The Firestore emulator includes a REST endpoint for resetting all the data in th
 
 To reset all the data in the emulator, perform an HTTP `  POST  ` operation against the following endpoint, replacing HOST and PORT with the host and port you selected and replacing PROJECT\_ID with your own project ID:
 
-``` text
-http://HOST:PORT/reset
-```
+    http://HOST:PORT/reset
 
 Adjust the host and port if the emulator does not use `  127.0.0.1:8080  ` . Your code should await REST confirmation that the reset finished or failed.
 
 You can perform this operation from the shell using `  curl  ` :
 
-``` text
-$ curl -X POST "http://HOST:PORT/reset"
-```
+    $ curl -X POST "http://HOST:PORT/reset"
 
 ## How the emulator differs from production
 
@@ -158,7 +144,7 @@ The emulator doesn't attempt to mimic the transaction behavior that's seen in pr
 
 When you're testing features that involve multiple concurrent writes to one document, the emulator might be slow to complete write requests. It might take up to 30 seconds for the emulator to release the locks. If you need to adjust the test timeout intervals, then do so.
 
-The emulator doesn't also attempt to mimic all of the [production limits](/firestore/quotas#writes_and_transactions) , such as timeouts & size limits, which involve transactions. If you test features that depend on these production limits, then we recommend that you use a production environment instead of an emulator.
+The emulator doesn't also attempt to mimic all of the [production limits](https://docs.cloud.google.com/firestore/quotas#writes_and_transactions) , such as timeouts & size limits, which involve transactions. If you test features that depend on these production limits, then we recommend that you use a production environment instead of an emulator.
 
 ### Indexes
 
@@ -166,9 +152,9 @@ The emulator does not track composite indexes and instead executes any valid que
 
 ### Limits
 
-The emulator does not enforce all limits enforced in production. For example, the emulator may allow transactions that would be rejected as too large by the production service. Make sure that you are familiar with the [documented limits](/datastore/docs/concepts/limits) and that you design your app to proactively avoid them.
+The emulator does not enforce all limits enforced in production. For example, the emulator may allow transactions that would be rejected as too large by the production service. Make sure that you are familiar with the [documented limits](https://docs.cloud.google.com/datastore/docs/concepts/limits) and that you design your app to proactively avoid them.
 
 ## What's next
 
-  - Learn how to work with [Entities, properties, and keys](/datastore/docs/concepts/entities)
-  - Learn about [queries](/datastore/docs/concepts/queries)
+  - Learn how to work with [Entities, properties, and keys](https://docs.cloud.google.com/datastore/docs/concepts/entities)
+  - Learn about [queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)

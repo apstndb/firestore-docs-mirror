@@ -3,6 +3,8 @@ This page describes how to view and manage the entities, indexes, and statistics
 ## Viewing Datastore statistics
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -10,11 +12,15 @@ This page describes how to view and manage the entities, indexes, and statistics
 
 The dashboard should look like:
 
-For more information about the statistics on this page, see [Viewing Statistics in the Console](/datastore/docs/console/datastore-statistics) .
+![Datastore Dashboard](https://docs.cloud.google.com/static/datastore/images/datastore_admin_dashboard.png)
+
+For more information about the statistics on this page, see [Viewing Statistics in the Console](https://docs.cloud.google.com/datastore/docs/console/datastore-statistics) .
 
 ## Viewing indexes
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -25,6 +31,8 @@ For each index, you should see its status, such as whether it is ready to serve 
 ## Viewing entities
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -32,10 +40,12 @@ For each index, you should see its status, such as whether it is ready to serve 
 
 You should see:
 
-You can also create, update, delete, and query entities on this page. Learn how in the [Quickstart](/datastore/docs/store-query-data) .
+![Datastore Studio page](https://docs.cloud.google.com/static/datastore/images/datastore_studio_page.png)
+
+You can also create, update, delete, and query entities on this page. Learn how in the [Quickstart](https://docs.cloud.google.com/datastore/docs/store-query-data) .
 
 **Note:** While individual entities are removed almost immediately, a namespace container may remain visible for several days to a week after the final entity within it is removed.
 
 ## What's next?
 
-  - Get details about [Statistics in the Console](/datastore/docs/console/datastore-statistics) .
+  - Get details about [Statistics in the Console](https://docs.cloud.google.com/datastore/docs/console/datastore-statistics) .

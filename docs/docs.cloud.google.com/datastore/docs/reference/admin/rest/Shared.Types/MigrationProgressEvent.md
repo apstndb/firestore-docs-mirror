@@ -1,8 +1,8 @@
-  - [JSON representation](#SCHEMA_REPRESENTATION)
-  - [PrepareStepDetails](#PrepareStepDetails)
-      - [JSON representation](#PrepareStepDetails.SCHEMA_REPRESENTATION)
-  - [RedirectWritesStepDetails](#RedirectWritesStepDetails)
-      - [JSON representation](#RedirectWritesStepDetails.SCHEMA_REPRESENTATION)
+  - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/MigrationProgressEvent#SCHEMA_REPRESENTATION)
+  - [PrepareStepDetails](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/MigrationProgressEvent#PrepareStepDetails)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/MigrationProgressEvent#PrepareStepDetails.SCHEMA_REPRESENTATION)
+  - [RedirectWritesStepDetails](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/MigrationProgressEvent#RedirectWritesStepDetails)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/MigrationProgressEvent#RedirectWritesStepDetails.SCHEMA_REPRESENTATION)
 
 An event signifying the start of a new step in a [migration from Cloud Datastore to Cloud Firestore in Datastore mode](https://cloud.google.com/datastore/docs/upgrade-to-firestore) .
 
@@ -17,7 +17,7 @@ An event signifying the start of a new step in a [migration from Cloud Datastore
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;step&quot;: enum (MigrationStep),
 
   // Union field step_details can be only one of the following:
@@ -72,7 +72,7 @@ Details for the `  PREPARE  ` step.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;concurrencyMode&quot;: enum (ConcurrencyMode)
 }</code></pre></td>
 </tr>
@@ -102,7 +102,7 @@ Details for the `  REDIRECT_WRITES  ` step.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;concurrencyMode&quot;: enum (ConcurrencyMode)
 }</code></pre></td>
 </tr>

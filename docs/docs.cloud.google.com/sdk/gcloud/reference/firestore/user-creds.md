@@ -39,10 +39,10 @@ NOTES
 
 These variants are also available:
 
-``` text
+``` wrap-code
 gcloud alpha firestore user-creds
 ```
 
-``` text
+``` wrap-code
 gcloud beta firestore user-creds
 ```

@@ -1,6 +1,6 @@
 This page documents production updates to Firestore with MongoDB compatibility. You can periodically check this page for announcements about new or updated features, bug fixes, known issues, and deprecated functionality.
 
-You can see the latest product updates for all of Google Cloud on the [Google Cloud](/release-notes) page, browse and filter all release notes in the [Google Cloud console](https://console.cloud.google.com/release-notes) , or programmatically access release notes in [BigQuery](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=google_cloud_release_notes&t=release_notes&page=table) .
+You can see the latest product updates for all of Google Cloud on the [Google Cloud](https://docs.cloud.google.com/release-notes) page, browse and filter all release notes in the [Google Cloud console](https://console.cloud.google.com/release-notes) , or programmatically access release notes in [BigQuery](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=google_cloud_release_notes&t=release_notes&page=table) .
 
 To get the latest product updates delivered to you, add the URL of this page to your [feed reader](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the [feed URL](https://docs.cloud.google.com/feeds/firestore-with-mongodb-compatibility-release-notes.xml) directly.
 
@@ -53,7 +53,7 @@ The `  $lookup  ` operator now supports the following fields:
   - `  foreignField  `
   - `  as  `
 
-For the full list of supported operators see [Supported features](/firestore/mongodb-compatibility/docs/supported-features-80) .
+For the full list of supported operators see [Supported features](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80) .
 
 ## September 05, 2025
 
@@ -74,7 +74,7 @@ Support for the following query features. For the full list of supported operato
 
 Feature
 
-Use [Query insights](/firestore/mongodb-compatibility/docs/query-insights) to view query performance metrics for your database. This feature is now generally available ( [GA](https://cloud.google.com/products#product-launch-stages) ).
+Use [Query insights](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-insights) to view query performance metrics for your database. This feature is now generally available ( [GA](https://cloud.google.com/products#product-launch-stages) ).
 
 ## August 26, 2025
 
@@ -213,25 +213,25 @@ You can [clone an existing database](https://cloud.google.com/firestore/mongodb-
 
 Feature
 
-Support for [`  explain()  `](/firestore/mongodb-compatibility/docs/query-explain#use_query_explain) in the Firestore with MongoDB compatibility API is now available in [Preview](https://cloud.google.com/products#product-launch-stages) . You can now use `  explain()  ` in tools such as MongoDB Shell and Compass.
+Support for [`  explain()  `](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain#use_query_explain) in the Firestore with MongoDB compatibility API is now available in [Preview](https://cloud.google.com/products#product-launch-stages) . You can now use `  explain()  ` in tools such as MongoDB Shell and Compass.
 
 ## July 21, 2025
 
 Feature
 
-[Managed import and export](/firestore/mongodb-compatibility/docs/export-import) for Firestore with MongoDB compatibility is now available in [Preview](https://cloud.google.com/products#product-launch-stages) .
+[Managed import and export](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import) for Firestore with MongoDB compatibility is now available in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 Feature
 
-[Cloud Monitoring billing metrics for Firestore with MongoDB compatibility](/firestore/mongodb-compatibility/docs/use-monitoring-dashboard#billing_metrics) databases are now available in [Preview](https://cloud.google.com/products#product-launch-stages) . Limitations: These metrics don't reflect admin operations like import, export, bulk delete, indexing, and restore.
+[Cloud Monitoring billing metrics for Firestore with MongoDB compatibility](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard#billing_metrics) databases are now available in [Preview](https://cloud.google.com/products#product-launch-stages) . Limitations: These metrics don't reflect admin operations like import, export, bulk delete, indexing, and restore.
 
 Feature
 
-[Point-in-time recovery](/firestore/mongodb-compatibility/docs/pitr) and snapshot reads for Firestore with MongoDB compatibility are now available in [Preview](https://cloud.google.com/products#product-launch-stages) .
+[Point-in-time recovery](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/pitr) and snapshot reads for Firestore with MongoDB compatibility are now available in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 Feature
 
-[Bulk delete](/firestore/mongodb-compatibility/docs/bulk-delete) for Firestore with MongoDB compatibility is now available in [Preview](https://cloud.google.com/products#product-launch-stages) .
+[Bulk delete](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/bulk-delete) for Firestore with MongoDB compatibility is now available in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 ## July 10, 2025
 
@@ -251,4 +251,4 @@ Performance improvements:
 
 Feature
 
-Preview release of [Firestore with MongoDB compatibility](/firestore/mongodb-compatibility/docs/overview) .
+Preview release of [Firestore with MongoDB compatibility](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/overview) .

@@ -10,21 +10,17 @@ When using Java clients, enabling verbose gRPC and gax-java logging is crucial f
 
 To enable detailed logging, modify `  logging.properties  ` file as follows:
 
-``` text
-## This tracks the lifecycle events of each grpc channel 
-io.grpc.ChannelLogger.level=FINEST
-## Tracks channel pool events(resizing, shrinking) from GAX level
-com.google.api.gax.grpc.ChannelPool.level=FINEST
-```
+    ## This tracks the lifecycle events of each grpc channel 
+    io.grpc.ChannelLogger.level=FINEST
+    ## Tracks channel pool events(resizing, shrinking) from GAX level
+    com.google.api.gax.grpc.ChannelPool.level=FINEST
 
 Additionally, update the output logging level in `  logging.properties  ` to capture these logs:
 
-``` text
-# This could be changed to a file or other log output
-handlers=java.util.logging.ConsoleHandler
-java.util.logging.ConsoleHandler.level=FINEST
-java.util.logging.ConsoleHandler.formatter=java.util.logging.SimpleFormatter
-```
+    # This could be changed to a file or other log output
+    handlers=java.util.logging.ConsoleHandler
+    java.util.logging.ConsoleHandler.level=FINEST
+    java.util.logging.ConsoleHandler.formatter=java.util.logging.SimpleFormatter
 
 ## Apply the configuration
 
@@ -40,12 +36,10 @@ Add this argument when starting the Java application:
 
 This method is useful for integration tests or applications where logging configuration is managed within the code. Ensure this code runs early in the application's lifecycle.
 
-``` text
-LogManager logManager = LogManager.getLogManager();
-  try (final InputStream is = Main.class.getResourceAsStream("/logging.properties")) {
-logManager.readConfiguration(is);
-}
-```
+    LogManager logManager = LogManager.getLogManager();
+      try (final InputStream is = Main.class.getResourceAsStream("/logging.properties")) {
+    logManager.readConfiguration(is);
+    }
 
 ## Logging example
 
@@ -53,28 +47,24 @@ After enabling verbose logging, you'll see a mix of messages from `  com.google.
 
 **Channels under-provisioned which triggered channel pool expanding:**
 
-``` text
-09:15:30.123 [pool-1-thread-1] DEBUG com.google.api.gax.grpc.ChannelPool - Detected throughput peak of 40, expanding channel pool size: 4 -> 6. 
-09:15:30.124 [grpc-nio-worker-ELG-1-5] DEBUG io.grpc.ChannelLogger - [Channel<5>: (datastore.googleapis.com:443)] Entering IDLE state 
-09:15:30.124 [grpc-nio-worker-ELG-1-5] DEBUG io.grpc.ChannelLogger - [Channel<6>: (datastore.googleapis.com:443)] Entering IDLE state 
-09:15:30.125 [grpc-nio-worker-ELG-1-5] TRACE io.grpc.ChannelLogger - [Channel<5>: (datastore.googleapis.com:443)] newCall() called 
-09:15:30.126 [grpc-nio-worker-ELG-1-5] DEBUG io.grpc.ChannelLogger - [Channel<5>: (datastore.googleapis.com:443)] Entering CONNECTING state 09:15:30.127 [grpc-nio-worker-ELG-1-5] DEBUG io.grpc.ChannelLogger - [Channel<5>: (datastore.googleapis.com:443)] Entering READY state with picker: Picker{result=PickResult{subchannel=Subchannel<7>: (datastore.googleapis.com:443), streamTracerFactory=null, status=Status{code=OK, description=null, cause=null}, drop=false, authority-override=null}} 
-09:15:31.201 [grpc-nio-worker-ELG-1-6] TRACE io.grpc.ChannelLogger - [Channel<6>: (datastore.googleapis.com:443)] newCall() called 
-09:15:31.202 [grpc-nio-worker-ELG-1-6] DEBUG io.grpc.ChannelLogger - [Channel<6>: (datastore.googleapis.com:443)] Entering CONNECTING state 09:15:31.203 [grpc-nio-worker-ELG-1-6] DEBUG io.grpc.ChannelLogger - [Channel<6>: (datastore.googleapis.com:443)] Entering READY state with picker: Picker{result=PickResult{subchannel=Subchannel<8>: (datastore.googleapis.com:443), streamTracerFactory=null, status=Status{code=OK, description=null, cause=null}, drop=false, authority-override=null}}
-```
+    09:15:30.123 [pool-1-thread-1] DEBUG com.google.api.gax.grpc.ChannelPool - Detected throughput peak of 40, expanding channel pool size: 4 -> 6. 
+    09:15:30.124 [grpc-nio-worker-ELG-1-5] DEBUG io.grpc.ChannelLogger - [Channel<5>: (datastore.googleapis.com:443)] Entering IDLE state 
+    09:15:30.124 [grpc-nio-worker-ELG-1-5] DEBUG io.grpc.ChannelLogger - [Channel<6>: (datastore.googleapis.com:443)] Entering IDLE state 
+    09:15:30.125 [grpc-nio-worker-ELG-1-5] TRACE io.grpc.ChannelLogger - [Channel<5>: (datastore.googleapis.com:443)] newCall() called 
+    09:15:30.126 [grpc-nio-worker-ELG-1-5] DEBUG io.grpc.ChannelLogger - [Channel<5>: (datastore.googleapis.com:443)] Entering CONNECTING state 09:15:30.127 [grpc-nio-worker-ELG-1-5] DEBUG io.grpc.ChannelLogger - [Channel<5>: (datastore.googleapis.com:443)] Entering READY state with picker: Picker{result=PickResult{subchannel=Subchannel<7>: (datastore.googleapis.com:443), streamTracerFactory=null, status=Status{code=OK, description=null, cause=null}, drop=false, authority-override=null}} 
+    09:15:31.201 [grpc-nio-worker-ELG-1-6] TRACE io.grpc.ChannelLogger - [Channel<6>: (datastore.googleapis.com:443)] newCall() called 
+    09:15:31.202 [grpc-nio-worker-ELG-1-6] DEBUG io.grpc.ChannelLogger - [Channel<6>: (datastore.googleapis.com:443)] Entering CONNECTING state 09:15:31.203 [grpc-nio-worker-ELG-1-6] DEBUG io.grpc.ChannelLogger - [Channel<6>: (datastore.googleapis.com:443)] Entering READY state with picker: Picker{result=PickResult{subchannel=Subchannel<8>: (datastore.googleapis.com:443), streamTracerFactory=null, status=Status{code=OK, description=null, cause=null}, drop=false, authority-override=null}}
 
 **Channels over-provisioned which triggered channel pool shrinking:**
 
-``` text
-09:13:59.609 [grpc-nio-worker-ELG-1-4] DEBUG io.grpc.ChannelLogger - [Channel<21>: (datastore.googleapis.com:443)] Entering READY state with picker: Picker{result=PickResult{subchannel=Subchannel<23>: (datastore.googleapis.com:443), streamTracerFactory=null, status=Status{code=OK, description=null, cause=null}, drop=false, authority-override=null}}
-09:14:01.998 [pool-1-thread-1] DEBUG com.google.api.gax.grpc.ChannelPool - Detected throughput drop to 0, shrinking channel pool size: 8 -> 6.
-09:14:01.999 [pool-1-thread-1] TRACE io.grpc.ChannelLogger - [Channel<13>: (datastore.googleapis.com:443)] shutdown() called
-09:14:01.999 [pool-1-thread-1] DEBUG io.grpc.ChannelLogger - [Channel<13>: (datastore.googleapis.com:443)] Entering SHUTDOWN state
-09:14:01.999 [pool-1-thread-1] DEBUG io.grpc.ChannelLogger - [Channel<13>: (datastore.googleapis.com:443)] Terminated
-09:14:01.999 [pool-1-thread-1] TRACE io.grpc.ChannelLogger - [Channel<15>: (datastore.googleapis.com:443)] shutdown() called
-09:14:01.999 [pool-1-thread-1] DEBUG io.grpc.ChannelLogger - [Channel<15>: (datastore.googleapis.com:443)] Entering SHUTDOWN state
-09:14:01.999 [pool-1-thread-1] DEBUG io.grpc.ChannelLogger - [Channel<15>: (datastore.googleapis.com:443)] Terminated
-```
+    09:13:59.609 [grpc-nio-worker-ELG-1-4] DEBUG io.grpc.ChannelLogger - [Channel<21>: (datastore.googleapis.com:443)] Entering READY state with picker: Picker{result=PickResult{subchannel=Subchannel<23>: (datastore.googleapis.com:443), streamTracerFactory=null, status=Status{code=OK, description=null, cause=null}, drop=false, authority-override=null}}
+    09:14:01.998 [pool-1-thread-1] DEBUG com.google.api.gax.grpc.ChannelPool - Detected throughput drop to 0, shrinking channel pool size: 8 -> 6.
+    09:14:01.999 [pool-1-thread-1] TRACE io.grpc.ChannelLogger - [Channel<13>: (datastore.googleapis.com:443)] shutdown() called
+    09:14:01.999 [pool-1-thread-1] DEBUG io.grpc.ChannelLogger - [Channel<13>: (datastore.googleapis.com:443)] Entering SHUTDOWN state
+    09:14:01.999 [pool-1-thread-1] DEBUG io.grpc.ChannelLogger - [Channel<13>: (datastore.googleapis.com:443)] Terminated
+    09:14:01.999 [pool-1-thread-1] TRACE io.grpc.ChannelLogger - [Channel<15>: (datastore.googleapis.com:443)] shutdown() called
+    09:14:01.999 [pool-1-thread-1] DEBUG io.grpc.ChannelLogger - [Channel<15>: (datastore.googleapis.com:443)] Entering SHUTDOWN state
+    09:14:01.999 [pool-1-thread-1] DEBUG io.grpc.ChannelLogger - [Channel<15>: (datastore.googleapis.com:443)] Terminated
 
 These log entries are useful for:
 
@@ -102,9 +92,7 @@ Look for logs indicating that the channel pool is expanding. This is the primary
 
 **Channel Pool Expansion Log:**
 
-``` text
-[pool-1-thread-1] DEBUG com.google.api.gax.grpc.ChannelPool - Detected throughput peak of 40, expanding channel pool size: 4 -> 6.
-```
+    [pool-1-thread-1] DEBUG com.google.api.gax.grpc.ChannelPool - Detected throughput peak of 40, expanding channel pool size: 4 -> 6.
 
 **Interpretation** : The pool has detected a traffic spike and is opening new connections to handle the increased load. Frequent expansion, especially near startup, is a clear sign that your initial configuration isn't sufficient for your typical workload.
 
@@ -143,7 +131,7 @@ Increasing `  minChannelCount  ` sets a higher baseline of permanently open chan
 
 **Increase `  maxChannelCount  ` (Traffic spikes):**
 
-If you observe high latency during traffic spikes and your logs show the channel pool is consistently at its maximum size ( `  maxChannelCount  ` ), the current limit is likely too low for your peak traffic. By default, `  maxChannelCount  ` is set to 200. To determine a better value, use the [connection pool configuration guide](/datastore/docs/java-client-grpc#connection_pool_configuration) to calculate the optimal number of connections based on your application's peak Queries Per Second (QPS) and average request latency.
+If you observe high latency during traffic spikes and your logs show the channel pool is consistently at its maximum size ( `  maxChannelCount  ` ), the current limit is likely too low for your peak traffic. By default, `  maxChannelCount  ` is set to 200. To determine a better value, use the [connection pool configuration guide](https://docs.cloud.google.com/datastore/docs/java-client-grpc#connection_pool_configuration) to calculate the optimal number of connections based on your application's peak Queries Per Second (QPS) and average request latency.
 
 ### Symptom 2: Intermittent timeouts or RPC failures
 
@@ -161,9 +149,7 @@ The most critical log for diagnosing network problems is `  TRANSIENT_FAILURE  `
 
 <!-- end list -->
 
-``` text
-[grpc-nio-worker-ELG-1-7] DEBUG io.grpc.ChannelLogger - [Channel<9>: (datastore.googleapis.com:443)] Entering TRANSIENT_FAILURE state
-```
+    [grpc-nio-worker-ELG-1-7] DEBUG io.grpc.ChannelLogger - [Channel<9>: (datastore.googleapis.com:443)] Entering TRANSIENT_FAILURE state
 
   - **Interpretation** : This log is a major red flag indicating the channel has lost its connection. A single, isolated failure might just be a minor network blip. However, if we see these messages frequently or a channel gets stuck in this state, it points to a significant underlying issue.
 
@@ -191,9 +177,7 @@ The key indicator is observing that the channel pool stops expanding right at it
 
 <!-- end list -->
 
-``` text
-[pool-1-thread-1] DEBUG com.google.api.gax.grpc.ChannelPool - ... expanding channel pool size: 198 -> 200.
-```
+    [pool-1-thread-1] DEBUG com.google.api.gax.grpc.ChannelPool - ... expanding channel pool size: 198 -> 200.
 
   - **Indicator** : During the period of high latency, you will see **no further "expanding channel pool size" logs** . The absence of these logs, combined with the high latency, is a strong indicator that the `  maxChannelCount  ` limit has been reached.
 
@@ -201,7 +185,7 @@ The key indicator is observing that the channel pool stops expanding right at it
 
 The goal is to ensure the pool has enough capacity to handle peak load without queuing requests.
 
-  - **Increase `  maxChannelCount  `** : The primary solution is to increase the `  maxChannelCount  ` setting to a value that can support the application's peak traffic. Refer to the [connection pool configuration guide](/datastore/docs/java-client-grpc#connection_pool_configuration) to calculate the optimal number of connections based on the application's peak Queries Per Second (QPS) and average request latency.
+  - **Increase `  maxChannelCount  `** : The primary solution is to increase the `  maxChannelCount  ` setting to a value that can support the application's peak traffic. Refer to the [connection pool configuration guide](https://docs.cloud.google.com/datastore/docs/java-client-grpc#connection_pool_configuration) to calculate the optimal number of connections based on the application's peak Queries Per Second (QPS) and average request latency.
 
 ## Appendix
 
@@ -211,36 +195,13 @@ The following sections provide supplementary information to aid in troubleshooti
 
 The following channel states can appear in the logs, providing insights into connection behavior:
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">State</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><strong>IDLE</strong></td>
-<td style="text-align: left;">The channel is created but has no active connections or RPCs. It's waiting for traffic.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>CONNECTING</strong></td>
-<td style="text-align: left;">The channel is actively trying to establish a new network transport (connection) to the gRPC server.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>READY</strong></td>
-<td style="text-align: left;">The channel has an established and healthy transport and is ready to send RPCs.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>TRANSIENT_FAILURE</strong></td>
-<td style="text-align: left;">The channel encountered a recoverable failure (e.g., network blip, temporary server unavailability). It will automatically attempt to reconnect.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>SHUTDOWN</strong></td>
-<td style="text-align: left;">The channel has been closed, either manually (e.g., <code dir="ltr" translate="no">       shutdown()      </code> called) or due to an idle timeout. No new RPCs can be initiated.</td>
-</tr>
-</tbody>
-</table>
+| State                  | Description                                                                                                                                      |
+| :--------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------- |
+| **IDLE**               | The channel is created but has no active connections or RPCs. It's waiting for traffic.                                                          |
+| **CONNECTING**         | The channel is actively trying to establish a new network transport (connection) to the gRPC server.                                             |
+| **READY**              | The channel has an established and healthy transport and is ready to send RPCs.                                                                  |
+| **TRANSIENT\_FAILURE** | The channel encountered a recoverable failure (e.g., network blip, temporary server unavailability). It will automatically attempt to reconnect. |
+| **SHUTDOWN**           | The channel has been closed, either manually (e.g., `        shutdown()       ` called) or due to an idle timeout. No new RPCs can be initiated. |
 
 ### Tips
 

@@ -1,11 +1,11 @@
-  - [Resource: Index](#Index)
-      - [JSON representation](#Index.SCHEMA_REPRESENTATION)
-  - [AncestorMode](#AncestorMode)
-  - [IndexedProperty](#IndexedProperty)
-      - [JSON representation](#IndexedProperty.SCHEMA_REPRESENTATION)
-  - [Direction](#Direction)
-  - [State](#State)
-  - [Methods](#METHODS_SUMMARY)
+  - [Resource: Index](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes#Index)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes#Index.SCHEMA_REPRESENTATION)
+  - [AncestorMode](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes#AncestorMode)
+  - [IndexedProperty](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes#IndexedProperty)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes#IndexedProperty.SCHEMA_REPRESENTATION)
+  - [Direction](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes#Direction)
+  - [State](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes#State)
+  - [Methods](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes#METHODS_SUMMARY)
 
 ## Resource: Index
 
@@ -22,7 +22,7 @@ Datastore composite index definition.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;projectId&quot;: string,
   &quot;indexId&quot;: string,
   &quot;kind&quot;: string,
@@ -113,7 +113,7 @@ A property of an index.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;name&quot;: string,
   &quot;direction&quot;: enum (Direction)
 }</code></pre></td>

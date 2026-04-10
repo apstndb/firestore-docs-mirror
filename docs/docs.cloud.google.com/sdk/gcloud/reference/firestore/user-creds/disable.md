@@ -10,7 +10,7 @@ EXAMPLES
 
 To disable user creds 'test-user-creds-id' under database testdb.
 
-``` text
+``` wrap-code
 gcloud firestore user-creds disable test-user-creds-id --database='testdb'
 ```
 
@@ -21,7 +21,7 @@ POSITIONAL ARGUMENTS
     
     For example, to operate on user creds `  creds-name-1  ` :
     
-    ``` text
+    ``` wrap-code
     gcloud firestore user-creds disable creds-name-1
     ```
 
@@ -32,7 +32,7 @@ REQUIRED FLAGS
     
     For example, to operate on database `  foo  ` :
     
-    ``` text
+    ``` wrap-code
     gcloud firestore user-creds disable --database='foo'
     ```
 
@@ -46,10 +46,10 @@ NOTES
 
 These variants are also available:
 
-``` text
+``` wrap-code
 gcloud alpha firestore user-creds disable
 ```
 
-``` text
+``` wrap-code
 gcloud beta firestore user-creds disable
 ```

@@ -2,7 +2,7 @@
 
 **Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
 
-This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
 ## Description
 
@@ -16,43 +16,37 @@ This stage behaves similar to Firestore's `  batchGet  ` and allows filtering on
 
 ### Web
 
-``` javascript
-const results = await execute(db.pipeline()
-  .documents([
-    doc(db, "cities", "SF"),
-    doc(db, "cities", "DC"),
-    doc(db, "cities", "NY")
-  ])
-);test.firestore.js
-```
+    const results = await execute(db.pipeline()
+      .documents([
+        doc(db, "cities", "SF"),
+        doc(db, "cities", "DC"),
+        doc(db, "cities", "NY")
+      ])
+    );test.firestore.js
 
 ##### Swift
 
-``` swift
-let results = try await db.pipeline()
-  .documents([
-    db.collection("cities").document("SF"),
-    db.collection("cities").document("DC"),
-    db.collection("cities").document("NY")
-  ]).execute()PipelineSnippets.swift
-```
+    let results = try await db.pipeline()
+      .documents([
+        db.collection("cities").document("SF"),
+        db.collection("cities").document("DC"),
+        db.collection("cities").document("NY")
+      ]).execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
 
-``` kotlin
-val results = db.pipeline()
-    .documents(
-        db.collection("cities").document("SF"),
-        db.collection("cities").document("DC"),
-        db.collection("cities").document("NY")
-    ).execute()DocSnippets.kt
-```
+    val results = db.pipeline()
+        .documents(
+            db.collection("cities").document("SF"),
+            db.collection("cities").document("DC"),
+            db.collection("cities").document("NY")
+        ).execute()DocSnippets.kt
 
 ##### Java  
 Android
 
-``` text
+``` 
       Task<Pipeline.Snapshot> results = db.pipeline()
     .documents(
         db.collection("cities").document("SF"),
@@ -64,31 +58,27 @@ Android
 
 ##### Python
 
-``` python
-results = (
-    client.pipeline()
-    .documents(
-        client.collection("cities").document("SF"),
-        client.collection("cities").document("DC"),
-        client.collection("cities").document("NY"),
-    )
-    .execute()
-)firestore_pipelines.py
-```
+    results = (
+        client.pipeline()
+        .documents(
+            client.collection("cities").document("SF"),
+            client.collection("cities").document("DC"),
+            client.collection("cities").document("NY"),
+        )
+        .execute()
+    )firestore_pipelines.py
 
 ##### Java
 
-``` java
-Pipeline.Snapshot results =
-    firestore
-        .pipeline()
-        .documents(
-            firestore.collection("cities").document("SF"),
-            firestore.collection("cities").document("DC"),
-            firestore.collection("cities").document("NY"))
-        .execute()
-        .get();PipelineSnippets.java
-```
+    Pipeline.Snapshot results =
+        firestore
+            .pipeline()
+            .documents(
+                firestore.collection("cities").document("SF"),
+                firestore.collection("cities").document("DC"),
+                firestore.collection("cities").document("NY"))
+            .execute()
+            .get();PipelineSnippets.java
 
 ## Behavior
 
@@ -100,28 +90,24 @@ For example, for the following documents:
 
 ### Node.js
 
-``` text
-await db.collection("cities").doc("SF").set({name: "San Francsico", state: "California"});
-await db.collection("cities").doc("NYC").set({name: "New York City", state: "New York"});
-await db.collection("cities").doc("CHI").set({name: "Chicago", state: "Illinois"});
-```
+    await db.collection("cities").doc("SF").set({name: "San Francsico", state: "California"});
+    await db.collection("cities").doc("NYC").set({name: "New York City", state: "New York"});
+    await db.collection("cities").doc("CHI").set({name: "Chicago", state: "Illinois"});
 
 The `  documents(...)  ` stage can be used to retrieve only the `  SF  ` and `  NYC  ` documents and then sort them in ascending order of name.
 
 ### Node.js
 
-``` text
-const results = await db.pipeline()
-  .documents(
-    db.collection("cities").doc("SF"),
-    db.collection("cities").doc("NYC"))
-  .sort(field("name").ascending())
-  .execute();
-```
+    const results = await db.pipeline()
+      .documents(
+        db.collection("cities").doc("SF"),
+        db.collection("cities").doc("NYC"))
+      .sort(field("name").ascending())
+      .execute();
 
 This query produces the following documents:
 
-``` text
+``` 
   { name: "New York City", state: "New York" }
   { name: "San Francsico", state: "California" }
 ```

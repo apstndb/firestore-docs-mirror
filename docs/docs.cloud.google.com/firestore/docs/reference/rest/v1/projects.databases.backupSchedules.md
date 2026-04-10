@@ -15,7 +15,7 @@ This resource is owned by the database it is backing up, and is deleted along wi
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;name&quot;: string,
   &quot;createTime&quot;: string,
   &quot;updateTime&quot;: string,
@@ -113,7 +113,7 @@ The time zone is UTC.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;day&quot;: enum (DayOfWeek)
 }</code></pre></td>
 </tr>

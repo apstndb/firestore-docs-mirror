@@ -11,7 +11,7 @@ This resource represents a long-running operation that is the result of a networ
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;name&quot;: string,
   &quot;metadata&quot;: {
     &quot;@type&quot;: string,
@@ -90,7 +90,7 @@ You can find out more about this error model and how to work with it in the [API
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;code&quot;: integer,
   &quot;message&quot;: string,
   &quot;details&quot;: [

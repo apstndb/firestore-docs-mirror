@@ -3,9 +3,11 @@
 200 https://cloud.google.com/firestore/enterprise/pricing
 200 https://cloud.google.com/firestore/pricing
 200 https://cloud.google.com/firestore/sla
+200 https://docs.cloud.google.com/datastore/docs/java-client-grpc
 200 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/shredded-fields
 200 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/write-mql-gemini
 200 https://docs.cloud.google.com/firestore/native/docs/enterprise-shredded-fields
+200 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/connection-string
 404 https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Index
 404 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/listen
 404 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/write

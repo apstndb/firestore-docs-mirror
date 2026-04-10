@@ -2,11 +2,11 @@
 
 This document lists the audited methods for Firestore. Google Cloud services generate audit logs that record administrative and access activities within your Google Cloud resources. For more information about Cloud Audit Logs, see the following:
 
-  - [Types of audit logs](/logging/docs/audit#types)
-  - [Audit log entry structure](/logging/docs/audit#audit_log_entry_structure)
-  - [Storing and routing audit logs](/logging/docs/audit#storing_and_routing_audit_logs)
-  - [Cloud Logging pricing summary](/stackdriver/pricing#logs-pricing-summary)
-  - [Enable Data Access audit logs](/logging/docs/audit/configure-data-access)
+  - [Types of audit logs](https://docs.cloud.google.com/logging/docs/audit#types)
+  - [Audit log entry structure](https://docs.cloud.google.com/logging/docs/audit#audit_log_entry_structure)
+  - [Storing and routing audit logs](https://docs.cloud.google.com/logging/docs/audit#storing_and_routing_audit_logs)
+  - [Cloud Logging pricing summary](https://docs.cloud.google.com/stackdriver/pricing#logs-pricing-summary)
+  - [Enable Data Access audit logs](https://docs.cloud.google.com/logging/docs/audit/configure-data-access)
 
 ## Notes
 
@@ -14,7 +14,7 @@ When configuring audit logging, use the service name `  datastore.googleapis.com
   
 To view the time it took to process a `  DATA_READ  ` or `  DATA_WRITE  ` request, see the `  processing_duration  ` field within the `  metadata  ` object of an `  AuditLog  ` . `  processing_duration  ` describes the time the database took to actually process a request. This is smaller than the end-user latency. In particular, it does not include network overhead.  
   
-For [`  Listen  `](/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore.Listen) requests, `  processing_duration  ` is only present on the Audit Log for the initial result set returned. Its absent from subsequent Audit Logs for that same `  Listen  ` target.  
+For [`  Listen  `](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore.Listen) requests, `  processing_duration  ` is only present on the Audit Log for the initial result set returned. Its absent from subsequent Audit Logs for that same `  Listen  ` target.  
   
 Individual writes from import, bulk delete operations and TTL are not audit logged.
 
@@ -23,24 +23,26 @@ Individual writes from import, bulk delete operations and TTL are not audit logg
 To view the Firestore audit logs, do the following:
 
 1.  In the Google Cloud console, go to the Logs Explorer page:
+    
+    [Go to Logs Explorer](https://console.cloud.google.com/logs/query)
 
 2.  Copy and paste the following query into the **Query** field of the Logs Explorer, and then click **Run query** .
     
-    ``` text
+    ``` 
         protoPayload.serviceName="firestore.googleapis.com"
       
     ```
 
 ## Methods by permission type
 
-Firestore also includes the following operations as part of the [Key Visualizer](/firestore/docs/key-visualizer) diagnostic tool. These are [Data Access](/logging/docs/audit#data-access) audit logs and have the service name `  firestorekeyvisualizer.googleapis.com  ` . They are enabled by turning on `  DATA_READ  ` for the `  firestore.googleapis.com  ` service.
+Firestore also includes the following operations as part of the [Key Visualizer](https://docs.cloud.google.com/firestore/docs/key-visualizer) diagnostic tool. These are [Data Access](https://docs.cloud.google.com/logging/docs/audit#data-access) audit logs and have the service name `  firestorekeyvisualizer.googleapis.com  ` . They are enabled by turning on `  DATA_READ  ` for the `  firestore.googleapis.com  ` service.
 
   - `  google.cloud.keyvisualizer.KeyVisualizer.GetScan  `
   - `  google.cloud.keyvisualizer.KeyVisualizer.ListScans  `
 
-Each IAM permission has a `  type  ` property, whose value is an enum that can be one of four values: `  ADMIN_READ  ` , `  ADMIN_WRITE  ` , `  DATA_READ  ` , or `  DATA_WRITE  ` . When you call a method, Firestore generates an audit log whose category is dependent on the `  type  ` property of the permission required to perform the method. Methods that require an IAM permission with the `  type  ` property value of `  DATA_READ  ` , `  DATA_WRITE  ` , or `  ADMIN_READ  ` generate [Data Access](/logging/docs/audit#data-access) audit logs. Methods that require an IAM permission with the `  type  ` property value of `  ADMIN_WRITE  ` generate [Admin Activity](/logging/docs/audit#admin-activity) audit logs.
+Each IAM permission has a `  type  ` property, whose value is an enum that can be one of four values: `  ADMIN_READ  ` , `  ADMIN_WRITE  ` , `  DATA_READ  ` , or `  DATA_WRITE  ` . When you call a method, Firestore generates an audit log whose category is dependent on the `  type  ` property of the permission required to perform the method. Methods that require an IAM permission with the `  type  ` property value of `  DATA_READ  ` , `  DATA_WRITE  ` , or `  ADMIN_READ  ` generate [Data Access](https://docs.cloud.google.com/logging/docs/audit#data-access) audit logs. Methods that require an IAM permission with the `  type  ` property value of `  ADMIN_WRITE  ` generate [Admin Activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity) audit logs.
 
-API methods in the following list that are marked with (LRO) are long-running operations (LROs). These methods usually generate two audit log entries: one when the operation starts and another when it ends. For more information see [Audit logs for long-running operations](/logging/docs/audit/understanding-audit-logs#lro) .
+API methods in the following list that are marked with (LRO) are long-running operations (LROs). These methods usually generate two audit log entries: one when the operation starts and another when it ends. For more information see [Audit logs for long-running operations](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#lro) .
 
 <table>
 <colgroup>
@@ -166,7 +168,7 @@ The following audit logs are associated with methods belonging to `  google.clou
 #### `     GetLocation    `
 
   - **Method** : `  google.cloud.location.Locations.GetLocation  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.locations.get - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -175,7 +177,7 @@ The following audit logs are associated with methods belonging to `  google.clou
 #### `     ListLocations    `
 
   - **Method** : `  google.cloud.location.Locations.ListLocations  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.locations.list - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -188,16 +190,16 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     BulkDeleteDocuments    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.BulkDeleteDocuments  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.databases.bulkDelete - ADMIN_WRITE  `
-  - **Method is a long-running or streaming operation** : [**Long-running operation**](/logging/docs/audit/understanding-audit-logs#lro)  
+  - **Method is a long-running or streaming operation** : [**Long-running operation**](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#lro)  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.BulkDeleteDocuments"  `  
 
 #### `     CloneDatabase    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.CloneDatabase  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.databases.clone - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -206,7 +208,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     CreateBackupSchedule    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.CreateBackupSchedule  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.backupSchedules.create - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -215,7 +217,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     CreateDatabase    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.CreateDatabase  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.databases.create - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -224,16 +226,16 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     CreateIndex    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.CreateIndex  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.indexes.create - ADMIN_WRITE  `
-  - **Method is a long-running or streaming operation** : [**Long-running operation**](/logging/docs/audit/understanding-audit-logs#lro)  
+  - **Method is a long-running or streaming operation** : [**Long-running operation**](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#lro)  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.CreateIndex"  `  
 
 #### `     CreateUserCreds    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.CreateUserCreds  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.userCreds.create - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -242,7 +244,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     DeleteBackup    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.DeleteBackup  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.backups.delete - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -251,7 +253,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     DeleteBackupSchedule    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.DeleteBackupSchedule  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.backupSchedules.delete - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -260,7 +262,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     DeleteDatabase    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.DeleteDatabase  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.databases.delete - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -269,7 +271,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     DeleteIndex    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.DeleteIndex  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.indexes.delete - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -278,7 +280,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     DeleteUserCreds    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.DeleteUserCreds  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.userCreds.delete - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -287,7 +289,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     DisableUserCreds    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.DisableUserCreds  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.userCreds.update - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -296,7 +298,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     EnableUserCreds    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.EnableUserCreds  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.userCreds.update - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -305,16 +307,16 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     ExportDocuments    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.ExportDocuments  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.databases.export - ADMIN_WRITE  `
-  - **Method is a long-running or streaming operation** : [**Long-running operation**](/logging/docs/audit/understanding-audit-logs#lro)  
+  - **Method is a long-running or streaming operation** : [**Long-running operation**](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#lro)  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.ExportDocuments"  `  
 
 #### `     GetBackup    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.GetBackup  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.backups.get - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -323,7 +325,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     GetBackupSchedule    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.GetBackupSchedule  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.backupSchedules.get - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -332,7 +334,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     GetDatabase    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.GetDatabase  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.databases.getMetadata - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -341,7 +343,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     GetField    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.GetField  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.indexes.get - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -350,7 +352,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     GetIndex    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.GetIndex  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.indexes.get - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -359,7 +361,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     GetUserCreds    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.GetUserCreds  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.userCreds.get - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -368,16 +370,16 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     ImportDocuments    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.ImportDocuments  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.databases.import - ADMIN_WRITE  `
-  - **Method is a long-running or streaming operation** : [**Long-running operation**](/logging/docs/audit/understanding-audit-logs#lro)  
+  - **Method is a long-running or streaming operation** : [**Long-running operation**](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#lro)  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.ImportDocuments"  `  
 
 #### `     ListBackupSchedules    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.ListBackupSchedules  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.backupSchedules.list - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -386,7 +388,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     ListBackups    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.ListBackups  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.backups.list - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -395,7 +397,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     ListDatabases    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.ListDatabases  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.databases.list - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -404,7 +406,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     ListFields    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.ListFields  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.indexes.list - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -413,7 +415,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     ListIndexes    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.ListIndexes  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.indexes.list - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -422,7 +424,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     ListUserCreds    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.ListUserCreds  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.userCreds.list - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -431,7 +433,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     ResetUserPassword    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.ResetUserPassword  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.userCreds.update - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -440,7 +442,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     RestoreDatabase    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.RestoreDatabase  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.backups.restoreDatabase - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -449,7 +451,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     UpdateBackupSchedule    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.UpdateBackupSchedule  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.backupSchedules.update - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -458,7 +460,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     UpdateDatabase    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.UpdateDatabase  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.databases.update - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -467,10 +469,10 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     UpdateField    `
 
   - **Method** : `  google.firestore.admin.v1.FirestoreAdmin.UpdateField  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.indexes.update - ADMIN_WRITE  `
-  - **Method is a long-running or streaming operation** : [**Long-running operation**](/logging/docs/audit/understanding-audit-logs#lro)  
+  - **Method is a long-running or streaming operation** : [**Long-running operation**](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#lro)  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.UpdateField"  `  
 
 ### `     google.firestore.admin.v1beta1.FirestoreAdmin    `
@@ -480,16 +482,16 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     CreateIndex    `
 
   - **Method** : `  google.firestore.admin.v1beta1.FirestoreAdmin.CreateIndex  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.indexes.create - ADMIN_WRITE  `
-  - **Method is a long-running or streaming operation** : [**Long-running operation**](/logging/docs/audit/understanding-audit-logs#lro)  
+  - **Method is a long-running or streaming operation** : [**Long-running operation**](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#lro)  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1beta1.FirestoreAdmin.CreateIndex"  `  
 
 #### `     DeleteIndex    `
 
   - **Method** : `  google.firestore.admin.v1beta1.FirestoreAdmin.DeleteIndex  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.indexes.delete - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -498,16 +500,16 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     ExportDocuments    `
 
   - **Method** : `  google.firestore.admin.v1beta1.FirestoreAdmin.ExportDocuments  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.databases.export - ADMIN_WRITE  `
-  - **Method is a long-running or streaming operation** : [**Long-running operation**](/logging/docs/audit/understanding-audit-logs#lro)  
+  - **Method is a long-running or streaming operation** : [**Long-running operation**](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#lro)  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1beta1.FirestoreAdmin.ExportDocuments"  `  
 
 #### `     GetIndex    `
 
   - **Method** : `  google.firestore.admin.v1beta1.FirestoreAdmin.GetIndex  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.indexes.get - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -516,16 +518,16 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     ImportDocuments    `
 
   - **Method** : `  google.firestore.admin.v1beta1.FirestoreAdmin.ImportDocuments  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.databases.import - ADMIN_WRITE  `
-  - **Method is a long-running or streaming operation** : [**Long-running operation**](/logging/docs/audit/understanding-audit-logs#lro)  
+  - **Method is a long-running or streaming operation** : [**Long-running operation**](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#lro)  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1beta1.FirestoreAdmin.ImportDocuments"  `  
 
 #### `     ListIndexes    `
 
   - **Method** : `  google.firestore.admin.v1beta1.FirestoreAdmin.ListIndexes  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.indexes.list - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -538,16 +540,16 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     CreateIndex    `
 
   - **Method** : `  google.firestore.admin.v1beta2.FirestoreAdmin.CreateIndex  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.indexes.create - ADMIN_WRITE  `
-  - **Method is a long-running or streaming operation** : [**Long-running operation**](/logging/docs/audit/understanding-audit-logs#lro)  
+  - **Method is a long-running or streaming operation** : [**Long-running operation**](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#lro)  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1beta2.FirestoreAdmin.CreateIndex"  `  
 
 #### `     DeleteIndex    `
 
   - **Method** : `  google.firestore.admin.v1beta2.FirestoreAdmin.DeleteIndex  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.indexes.delete - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -556,16 +558,16 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     ExportDocuments    `
 
   - **Method** : `  google.firestore.admin.v1beta2.FirestoreAdmin.ExportDocuments  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.databases.export - ADMIN_WRITE  `
-  - **Method is a long-running or streaming operation** : [**Long-running operation**](/logging/docs/audit/understanding-audit-logs#lro)  
+  - **Method is a long-running or streaming operation** : [**Long-running operation**](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#lro)  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1beta2.FirestoreAdmin.ExportDocuments"  `  
 
 #### `     GetField    `
 
   - **Method** : `  google.firestore.admin.v1beta2.FirestoreAdmin.GetField  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.indexes.get - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -574,7 +576,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     GetIndex    `
 
   - **Method** : `  google.firestore.admin.v1beta2.FirestoreAdmin.GetIndex  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.indexes.get - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -583,16 +585,16 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     ImportDocuments    `
 
   - **Method** : `  google.firestore.admin.v1beta2.FirestoreAdmin.ImportDocuments  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.databases.import - ADMIN_WRITE  `
-  - **Method is a long-running or streaming operation** : [**Long-running operation**](/logging/docs/audit/understanding-audit-logs#lro)  
+  - **Method is a long-running or streaming operation** : [**Long-running operation**](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#lro)  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1beta2.FirestoreAdmin.ImportDocuments"  `  
 
 #### `     ListFields    `
 
   - **Method** : `  google.firestore.admin.v1beta2.FirestoreAdmin.ListFields  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.indexes.list - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -601,7 +603,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     ListIndexes    `
 
   - **Method** : `  google.firestore.admin.v1beta2.FirestoreAdmin.ListIndexes  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.indexes.list - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -610,10 +612,10 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     UpdateField    `
 
   - **Method** : `  google.firestore.admin.v1beta2.FirestoreAdmin.UpdateField  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.indexes.update - ADMIN_WRITE  `
-  - **Method is a long-running or streaming operation** : [**Long-running operation**](/logging/docs/audit/understanding-audit-logs#lro)  
+  - **Method is a long-running or streaming operation** : [**Long-running operation**](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#lro)  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.admin.v1beta2.FirestoreAdmin.UpdateField"  `  
 
 ### `     google.firestore.v1.Firestore    `
@@ -623,7 +625,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     BatchGetDocuments    `
 
   - **Method** : `  google.firestore.v1.Firestore.BatchGetDocuments  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.get - DATA_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -632,7 +634,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     BatchWrite    `
 
   - **Method** : `  google.firestore.v1.Firestore.BatchWrite  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.create - DATA_WRITE  `
       - `  datastore.entities.delete - DATA_WRITE  `
@@ -643,7 +645,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     BeginTransaction    `
 
   - **Method** : `  google.firestore.v1.Firestore.BeginTransaction  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.databases.get - DATA_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -652,7 +654,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     Commit    `
 
   - **Method** : `  google.firestore.v1.Firestore.Commit  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.databases.get - DATA_READ  `
       - `  datastore.entities.create - DATA_WRITE  `
@@ -663,7 +665,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     CreateDocument    `
 
   - **Method** : `  google.firestore.v1.Firestore.CreateDocument  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.allocateIds - DATA_WRITE  `
       - `  datastore.entities.create - DATA_WRITE  `
@@ -673,7 +675,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     DeleteDocument    `
 
   - **Method** : `  google.firestore.v1.Firestore.DeleteDocument  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.delete - DATA_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -682,7 +684,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     ExecutePipeline    `
 
   - **Method** : `  google.firestore.v1.Firestore.ExecutePipeline  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.databases.get - DATA_READ  `
       - `  datastore.entities.get - DATA_READ  `
@@ -695,7 +697,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     GetDocument    `
 
   - **Method** : `  google.firestore.v1.Firestore.GetDocument  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.get - DATA_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -704,7 +706,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     ListCollectionIds    `
 
   - **Method** : `  google.firestore.v1.Firestore.ListCollectionIds  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.list - DATA_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -713,7 +715,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     ListDocuments    `
 
   - **Method** : `  google.firestore.v1.Firestore.ListDocuments  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.get - DATA_READ  `
       - `  datastore.entities.list - DATA_READ  `
@@ -723,26 +725,26 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     Listen    `
 
   - **Method** : `  google.firestore.v1.Firestore.Listen  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.get - DATA_READ  `
       - `  datastore.entities.list - DATA_READ  `
-  - **Method is a long-running or streaming operation** : [**Streaming RPC**](/logging/docs/audit/understanding-audit-logs#streaming)  
+  - **Method is a long-running or streaming operation** : [**Streaming RPC**](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#streaming)  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.v1.Firestore.Listen"  `  
 
 **Note:**
 
 `  Listen  ` is a long-lived RPC that combines multiple streaming targets. Each target is a query or a set of document keys. The stream for each target includes an initial result set and a sequence of updates, additions, and removals to the result set. The targets are the relevant audit unit. Firestore audits each target as follows:
 
-  - When the target is added, emit a log entry with the targets query or document key set. In these entries, [`  operation.first  `](/logging/docs/reference/v2/rest/v2/LogEntry#logentryoperation) is true. This audit log is **omitted** when the stream is a resumption of an earlier Listen target stream.
+  - When the target is added, emit a log entry with the targets query or document key set. In these entries, [`  operation.first  `](https://docs.cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#logentryoperation) is true. This audit log is **omitted** when the stream is a resumption of an earlier Listen target stream.
   - Emit periodic updates reporting the count of updates since the last audit log for this target.
-  - Emit a log entry when the target is removed from the stream, either explicitly or due to the termination for the `  Listen  ` RPC. This log entry reports the count of updates since the last audit log for this target. In these entries, [`  operation.last  `](/logging/docs/reference/v2/rest/v2/LogEntry#logentryoperation) is true.
-  - The emitted log entries use the same [`  operation.id  `](/logging/docs/reference/v2/rest/v2/LogEntry#logentryoperation) .
+  - Emit a log entry when the target is removed from the stream, either explicitly or due to the termination for the `  Listen  ` RPC. This log entry reports the count of updates since the last audit log for this target. In these entries, [`  operation.last  `](https://docs.cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#logentryoperation) is true.
+  - The emitted log entries use the same [`  operation.id  `](https://docs.cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#logentryoperation) .
 
 #### `     PartitionQuery    `
 
   - **Method** : `  google.firestore.v1.Firestore.PartitionQuery  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.get - DATA_READ  `
       - `  datastore.entities.list - DATA_READ  `
@@ -752,7 +754,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     Rollback    `
 
   - **Method** : `  google.firestore.v1.Firestore.Rollback  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.databases.get - DATA_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -761,7 +763,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     RunAggregationQuery    `
 
   - **Method** : `  google.firestore.v1.Firestore.RunAggregationQuery  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.get - DATA_READ  `
       - `  datastore.entities.list - DATA_READ  `
@@ -773,7 +775,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     RunQuery    `
 
   - **Method** : `  google.firestore.v1.Firestore.RunQuery  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.get - DATA_READ  `
       - `  datastore.entities.list - DATA_READ  `
@@ -785,7 +787,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     UpdateDocument    `
 
   - **Method** : `  google.firestore.v1.Firestore.UpdateDocument  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.databases.get - DATA_READ  `
       - `  datastore.entities.create - DATA_WRITE  `
@@ -796,14 +798,14 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     Write    `
 
   - **Method** : `  google.firestore.v1.Firestore.Write  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.create - DATA_WRITE  `
       - `  datastore.entities.update - DATA_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.v1.Firestore.Write"  `  
 
-**Note:** `  Write  ` emits a log entry for every message received as each message corresponds to an independent write to the database. The emitted log entries use the same [`  operation.id  `](/logging/docs/reference/v2/rest/v2/LogEntry#logentryoperation) .
+**Note:** `  Write  ` emits a log entry for every message received as each message corresponds to an independent write to the database. The emitted log entries use the same [`  operation.id  `](https://docs.cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#logentryoperation) .
 
 ### `     google.firestore.v1beta1.Firestore    `
 
@@ -812,7 +814,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     BatchGetDocuments    `
 
   - **Method** : `  google.firestore.v1beta1.Firestore.BatchGetDocuments  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.databases.get - DATA_READ  `
       - `  datastore.entities.get - DATA_READ  `
@@ -822,7 +824,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     BatchWrite    `
 
   - **Method** : `  google.firestore.v1beta1.Firestore.BatchWrite  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.databases.get - DATA_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -831,7 +833,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     BeginTransaction    `
 
   - **Method** : `  google.firestore.v1beta1.Firestore.BeginTransaction  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.databases.get - DATA_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -840,7 +842,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     Commit    `
 
   - **Method** : `  google.firestore.v1beta1.Firestore.Commit  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.databases.get - DATA_READ  `
       - `  datastore.entities.create - DATA_WRITE  `
@@ -851,7 +853,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     CreateDocument    `
 
   - **Method** : `  google.firestore.v1beta1.Firestore.CreateDocument  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.allocateIds - DATA_WRITE  `
       - `  datastore.entities.create - DATA_WRITE  `
@@ -861,7 +863,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     DeleteDocument    `
 
   - **Method** : `  google.firestore.v1beta1.Firestore.DeleteDocument  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.delete - DATA_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -870,7 +872,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     GetDocument    `
 
   - **Method** : `  google.firestore.v1beta1.Firestore.GetDocument  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.get - DATA_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -879,7 +881,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     ListCollectionIds    `
 
   - **Method** : `  google.firestore.v1beta1.Firestore.ListCollectionIds  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.list - DATA_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -888,7 +890,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     ListDocuments    `
 
   - **Method** : `  google.firestore.v1beta1.Firestore.ListDocuments  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.get - DATA_READ  `
       - `  datastore.entities.list - DATA_READ  `
@@ -898,17 +900,17 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     Listen    `
 
   - **Method** : `  google.firestore.v1beta1.Firestore.Listen  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.get - DATA_READ  `
       - `  datastore.entities.list - DATA_READ  `
-  - **Method is a long-running or streaming operation** : [**Streaming RPC**](/logging/docs/audit/understanding-audit-logs#streaming)  
+  - **Method is a long-running or streaming operation** : [**Streaming RPC**](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#streaming)  
   - **Filter for this method** : `  protoPayload.methodName="google.firestore.v1beta1.Firestore.Listen"  `  
 
 #### `     PartitionQuery    `
 
   - **Method** : `  google.firestore.v1beta1.Firestore.PartitionQuery  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.get - DATA_READ  `
       - `  datastore.entities.list - DATA_READ  `
@@ -918,7 +920,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     Rollback    `
 
   - **Method** : `  google.firestore.v1beta1.Firestore.Rollback  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.databases.get - DATA_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -927,7 +929,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     RunAggregationQuery    `
 
   - **Method** : `  google.firestore.v1beta1.Firestore.RunAggregationQuery  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.get - DATA_READ  `
       - `  datastore.entities.list - DATA_READ  `
@@ -939,7 +941,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     RunQuery    `
 
   - **Method** : `  google.firestore.v1beta1.Firestore.RunQuery  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.get - DATA_READ  `
       - `  datastore.entities.list - DATA_READ  `
@@ -951,7 +953,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     UpdateDocument    `
 
   - **Method** : `  google.firestore.v1beta1.Firestore.UpdateDocument  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.create - DATA_WRITE  `
       - `  datastore.entities.update - DATA_WRITE  `
@@ -961,7 +963,7 @@ The following audit logs are associated with methods belonging to `  google.fire
 #### `     Write    `
 
   - **Method** : `  google.firestore.v1beta1.Firestore.Write  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.create - DATA_WRITE  `
       - `  datastore.entities.update - DATA_WRITE  `
@@ -975,7 +977,7 @@ The following audit logs are associated with methods belonging to `  google.long
 #### `     CancelOperation    `
 
   - **Method** : `  google.longrunning.Operations.CancelOperation  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.operations.cancel - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -984,7 +986,7 @@ The following audit logs are associated with methods belonging to `  google.long
 #### `     DeleteOperation    `
 
   - **Method** : `  google.longrunning.Operations.DeleteOperation  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.operations.delete - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -993,7 +995,7 @@ The following audit logs are associated with methods belonging to `  google.long
 #### `     GetOperation    `
 
   - **Method** : `  google.longrunning.Operations.GetOperation  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.operations.get - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -1002,7 +1004,7 @@ The following audit logs are associated with methods belonging to `  google.long
 #### `     ListOperations    `
 
   - **Method** : `  google.longrunning.Operations.ListOperations  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.operations.list - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -1022,10 +1024,10 @@ The following methods don't produce audit logs:
 
 ## Identify request callers
 
-Audit Log entries include information about the identity that performed the logged operation. To identify a request caller, see the following fields within an [`  AuditLog  `](/logging/docs/reference/audit/auditlog/rest/Shared.Types/AuditLog) object:
+Audit Log entries include information about the identity that performed the logged operation. To identify a request caller, see the following fields within an [`  AuditLog  `](https://docs.cloud.google.com/logging/docs/reference/audit/auditlog/rest/Shared.Types/AuditLog) object:
 
-  - The caller's identity is held in the [`  AuthenticationInfo  `](/logging/docs/reference/audit/auditlog/rest/Shared.Types/AuditLog#AuthenticationInfo) field. This can include the `  principalEmail  ` of the user. This information is [sometimes redacted](/logging/docs/audit#user-id) .
+  - The caller's identity is held in the [`  AuthenticationInfo  `](https://docs.cloud.google.com/logging/docs/reference/audit/auditlog/rest/Shared.Types/AuditLog#AuthenticationInfo) field. This can include the `  principalEmail  ` of the user. This information is [sometimes redacted](https://docs.cloud.google.com/logging/docs/audit#user-id) .
     
     If a JSON Web Token (JWT) was used for third-party authentication, the `  thirdPartyPrincipal  ` field includes the token's header and payload. For example, audit logs for requests authenticated with [Firebase Authentication](https://firebase.google.com/docs/auth) include that request's [auth token](https://firebase.google.com/docs/auth/users#auth_tokens) .
 
-  - The `  callerIp  ` field within the [`  requestMetadata  `](/logging/docs/reference/audit/auditlog/rest/Shared.Types/AuditLog#requestmetadata) object of an `  AuditLog  ` entry includes the IP address of the caller.
+  - The `  callerIp  ` field within the [`  requestMetadata  `](https://docs.cloud.google.com/logging/docs/reference/audit/auditlog/rest/Shared.Types/AuditLog#requestmetadata) object of an `  AuditLog  ` entry includes the IP address of the caller.

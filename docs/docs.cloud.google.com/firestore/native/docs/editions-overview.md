@@ -157,10 +157,10 @@ You can create both Firestore Enterprise edition and Standard edition databases 
 
 ## Migrate data between editions
 
-To try the advanced query engine and other Enterprise edition features, create a new Enterprise edition database. Firestore data is compatible with both edition. To migrate data between editions, use the [import and export features](/firestore/native/docs/manage-data/export-import) of Firestore.
+To try the advanced query engine and other Enterprise edition features, create a new Enterprise edition database. Firestore data is compatible with both edition. To migrate data between editions, use the [import and export features](https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import) of Firestore.
 
 ## What's next
 
-  - [Learn about client libraries for Firestore in Native mode.](/firestore/native/docs/reference/libraries)
-  - For apps that use the Datastore API, see [Firestore in Datastore mode](/datastore/docs/firestore-or-datastore) .
-  - [Learn how to create a Firestore with MongoDB compatibility database and connect to it with the mongosh tool](/firestore/mongodb-compatibility/docs/create-and-query-database) .
+  - [Learn about client libraries for Firestore in Native mode.](https://docs.cloud.google.com/firestore/native/docs/reference/libraries)
+  - For apps that use the Datastore API, see [Firestore in Datastore mode](https://docs.cloud.google.com/datastore/docs/firestore-or-datastore) .
+  - [Learn how to create a Firestore with MongoDB compatibility database and connect to it with the mongosh tool](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database) .

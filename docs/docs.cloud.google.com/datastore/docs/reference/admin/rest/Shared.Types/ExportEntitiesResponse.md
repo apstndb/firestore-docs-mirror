@@ -1,4 +1,4 @@
-  - [JSON representation](#SCHEMA_REPRESENTATION)
+  - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ExportEntitiesResponse#SCHEMA_REPRESENTATION)
 
 The response for `  google.datastore.admin.v1.DatastoreAdmin.ExportEntities  ` .
 
@@ -13,7 +13,7 @@ The response for `  google.datastore.admin.v1.DatastoreAdmin.ExportEntities  ` .
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;outputUrl&quot;: string
 }</code></pre></td>
 </tr>

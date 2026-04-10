@@ -13,7 +13,7 @@ The query stages are executed in the following order: 1. from 2. where 3. select
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;select&quot;: {
     object (Projection)
   },
@@ -99,9 +99,7 @@ A potential prefix of a position in the result set to start the query at.
 
 The ordering of the result set is based on the `  ORDER BY  ` clause of the original query.
 
-``` text
-SELECT * FROM k WHERE a = 1 AND b > 2 ORDER BY b ASC, __name__ ASC;
-```
+    SELECT * FROM k WHERE a = 1 AND b > 2 ORDER BY b ASC, __name__ ASC;
 
 This query's results are ordered by `  (b ASC, __name__ ASC)  ` .
 
@@ -179,7 +177,7 @@ The projection of document's fields to return.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;fields&quot;: [
     {
       object (FieldReference)
@@ -215,7 +213,7 @@ A selection of a collection, such as `  messages as m1  ` .
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;collectionId&quot;: string,
   &quot;allDescendants&quot;: boolean
 }</code></pre></td>
@@ -252,7 +250,7 @@ A filter.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
 
   // Union field filter_type can be only one of the following:
   &quot;compositeFilter&quot;: {
@@ -307,7 +305,7 @@ A filter that merges multiple other filters using the given operator.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;op&quot;: enum (Operator),
   &quot;filters&quot;: [
     {
@@ -370,7 +368,7 @@ A filter on a specific field.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;field&quot;: {
     object (FieldReference)
   },
@@ -506,7 +504,7 @@ A filter with a single operand.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;op&quot;: enum (Operator),
 
   // Union field operand_type can be only one of the following:
@@ -586,7 +584,7 @@ An order on a field.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;field&quot;: {
     object (FieldReference)
   },
@@ -643,7 +641,7 @@ Nearest Neighbors search config. The ordering provided by FindNearest supersedes
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;vectorField&quot;: {
     object (FieldReference)
   },

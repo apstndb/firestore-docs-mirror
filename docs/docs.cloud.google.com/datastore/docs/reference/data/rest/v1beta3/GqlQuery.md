@@ -1,4 +1,4 @@
-  - [JSON representation](#SCHEMA_REPRESENTATION)
+  - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/GqlQuery#SCHEMA_REPRESENTATION)
 
 A [GQL query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference) .
 
@@ -13,7 +13,7 @@ A [GQL query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference) .
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;queryString&quot;: string,
   &quot;allowLiterals&quot;: boolean,
   &quot;namedBindings&quot;: {

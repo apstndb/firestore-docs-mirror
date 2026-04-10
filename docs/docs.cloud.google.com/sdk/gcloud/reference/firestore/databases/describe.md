@@ -14,13 +14,13 @@ EXAMPLES
 
 To describe a Firestore database with a databaseId `  testdb  ` .
 
-``` text
+``` wrap-code
 gcloud firestore databases describe --database=testdb
 ```
 
 If databaseId is not specified, the command will describe information about the `  (default)  ` database.
 
-``` text
+``` wrap-code
 gcloud firestore databases describe
 ```
 
@@ -31,7 +31,7 @@ FLAGS
     
     For example, to operate on database `  foo  ` :
     
-    ``` text
+    ``` wrap-code
     gcloud firestore databases describe --database='foo'
     ```
 
@@ -45,10 +45,10 @@ NOTES
 
 These variants are also available:
 
-``` text
+``` wrap-code
 gcloud alpha firestore databases describe
 ```
 
-``` text
+``` wrap-code
 gcloud beta firestore databases describe
 ```

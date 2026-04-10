@@ -11,7 +11,7 @@ An array value.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;values&quot;: [
     {
       object (Value)
@@ -45,7 +45,7 @@ A message that can hold any of the supported value types.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
 
   // Union field value_type can be only one of the following:
   &quot;nullValue&quot;: null,
@@ -218,7 +218,7 @@ A map value.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;fields&quot;: {
     string: {
       object (Value)
@@ -248,11 +248,9 @@ Represents an unevaluated scalar expression.
 
 For example, the expression `  like(user_name, "%alice%")  ` is represented as:
 
-``` text
-name: "like"
-args { fieldReference: "user_name" }
-args { stringValue: "%alice%" }
-```
+    name: "like"
+    args { fieldReference: "user_name" }
+    args { stringValue: "%alice%" }
 
 <table>
 <colgroup>
@@ -265,7 +263,7 @@ args { stringValue: "%alice%" }
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;name&quot;: string,
   &quot;args&quot;: [
     {
@@ -324,7 +322,7 @@ A Firestore query represented as an ordered list of operations / stages.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;stages&quot;: [
     {
       object (Stage)
@@ -351,16 +349,14 @@ A stage is made up of a unique name, and a list of arguments. The exact number o
 
 To give an example, the stage `  filter(state = "MD")  ` would be encoded as:
 
-``` text
-name: "filter"
-args {
-  functionValue {
-    name: "eq"
-    args { fieldReferenceValue: "state" }
-    args { stringValue: "MD" }
-  }
-}
-```
+    name: "filter"
+    args {
+      functionValue {
+        name: "eq"
+        args { fieldReferenceValue: "state" }
+        args { stringValue: "MD" }
+      }
+    }
 
 See public documentation for the full list.
 
@@ -375,7 +371,7 @@ See public documentation for the full list.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;name&quot;: string,
   &quot;args&quot;: [
     {

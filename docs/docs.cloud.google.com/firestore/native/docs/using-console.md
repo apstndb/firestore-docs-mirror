@@ -12,6 +12,8 @@ You can manage Firestore Standard edition through the following actions in the G
 You can view all your Firestore Standard edition data in the Google Cloud console. From the Firestore Standard edition data viewer, click on a document or collection to open the data nested within that item.
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -21,12 +23,16 @@ You can view all your Firestore Standard edition data in the Google Cloud consol
 
 To open a document or collection at a specific path, use the **Edit path** button create :
 
+![Firestore Panel view in the console, with the Edit path button highlighted.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-console-edit-path.png)
+
 ### Non-existent parent documents
 
 A document can exist even if one or more its parents don't exist. For example, the document at path `  /mycoll/mydoc/mysubcoll/mysubdoc  ` can exist even if the parent document `  /mycoll/mydoc  ` does not. The Firestore Standard edition data viewer displays non-existent parent documents as follows:
 
   - In a collection's list of documents, the document IDs of non-existent parent documents are *italicized* .
   - In a non-existent parent document's information panel, the data viewer points out that the document does not exist.
+
+![Firestore data viewer in the console, showing a hierarchy of documents with a missing document highlighted and a warning message.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-console-non-existent-ancestor-document.png)
 
 **Warning:** Even though non-existent parent documents appear in the console, they do not appear in queries and snapshots. You must create the document to include it in query results.
 
@@ -35,8 +41,12 @@ A document can exist even if one or more its parents don't exist. For example, t
 You can filter documents in a collection based on field value and the `  ==  ` , `  !-  ` , `  >  ` , `  >=  ` , `  <  ` , `  <=  ` , `  in  ` , `  not-in  ` , `  array-contains  ` , `  array-contains-any  ` conditions. For example, you can display only documents where the value of field `  firstname  ` equals `  Sam  ` . To apply a collection filter:
 
 1.  Click the filter button filter\_list next to a collection ID:
+    
+    ![Firestore Panel view in the console, with the Filter button highlighted.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-console-filter-documents.png)
 
 2.  From the **Add filters** menu, select a document field, a filter condition, and a sort order.
+    
+    ![Firestore Add filters panel, showing options to filter by field, add conditions, change sort order, and preview query code.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-console-apply-filter.png)
 
 3.  Click **Apply** .
 
@@ -47,6 +57,8 @@ To remove a collection filter, open the same menu and click **Clear filter** .
 You can query for documents in the ***Query Builder*** tab of the Firestore Studio page.
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -54,7 +66,7 @@ You can query for documents in the ***Query Builder*** tab of the Firestore Stud
 
 4.  Click the **Query Builder** tab.
 
-5.  Select a [query scope](/firestore/docs/concepts/index-overview#query_scopes) .
+5.  Select a [query scope](https://docs.cloud.google.com/firestore/docs/concepts/index-overview#query_scopes) .
     
     Select ***Collection*** to query a single collection. In the text field, enter a path to a collection.
     
@@ -69,6 +81,8 @@ You can query for documents in the ***Query Builder*** tab of the Firestore Stud
     **Note:** Queries must meet Firestore Standard edition requirements and limitations for queries. Otherwise, the query fails and the page returns an error that describes why the query failed.
 
 7.  Click ***Run*** to retrieve results from your database.
+    
+    ![Query builder displaying results of a query.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-query-builder.png)
 
 **Tip:** Queries that you run are stored in your browser history. During the session, you can move forward and back within the browser to access recent queries. You can bookmark queries that you want to access often or to share with others.
 
@@ -77,20 +91,26 @@ You can query for documents in the ***Query Builder*** tab of the Firestore Stud
 As you use the Query Builder, keep in mind the following requirements and limitations for queries.
 
   - All queries must be supported by one more indexes. If the database cannot find an index to support the query, it will return an error that contains a link to build the required index.
+    
+    ![Query builder with an error message to build the required index for the query.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-query-builder-index-error.png)
 
   - `  ORDER BY  ` clauses must match the fields in the `  WHERE  ` clauses and come in the same order. By default, results are ordered by document ID. If you filter by any other field with anything other than an equality ( `  ==  ` ), add an `  ORDER BY  ` clause for that field.
+    
+    ![Query builder with a query clause and an order by clause on the same field.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-query-builder-order-by.png)
 
   - Range ( `  <  ` , `  <=  ` , `  >  ` , `  >=  ` ) and not equals ( `  !=  ` , `  not-in  ` ) query clauses must all filter on the same field.
 
-For additional limitations, see [Query limitations](/firestore/docs/query-data/queries#query_limitations) .
+For additional limitations, see [Query limitations](https://docs.cloud.google.com/firestore/docs/query-data/queries#query_limitations) .
 
 ## Manage data
 
-In Firestore Standard edition, you store data in documents and organize your documents into collections. Before you start adding data, learn more about the [Firestore Standard edition data model](./data-model) .
+In Firestore Standard edition, you store data in documents and organize your documents into collections. Before you start adding data, learn more about the [Firestore Standard edition data model](https://docs.cloud.google.com/firestore/native/docs/data-model) .
 
 You can add, edit, and delete documents and collections from the Firebase console. To manage your data from the GCP console, go to the **Firestore Studio** page:
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -121,6 +141,8 @@ To delete a collection:
 1.  Select the collection you want to delete.
 2.  Click the menu icon at the top of the documents column, then click **Delete collection** .
 
+![Click Delete collection from the menu in the documents column](https://docs.cloud.google.com/firestore/native/docs/images/firestore-console-delete-collection.png)
+
 To delete a document:
 
 1.  Select the document you want to delete.
@@ -130,35 +152,45 @@ Deleting a document deletes all of the nested data in that document, including a
 
 Deleting a document's fields does not delete its subcollections. Although empty, the document still exists and can appear in query results.
 
+![Click Delete document or Delete document fields from the context menu in the document details column](https://docs.cloud.google.com/firestore/native/docs/images/firestore-console-delete-document.png)
+
 To delete a specific field in a document:
 
 1.  Select the document to view its fields.
 2.  Click the delete icon beside the field you want to delete.
 
+![Click the delete icon to remove a field from a document](https://docs.cloud.google.com/firestore/native/docs/images/firestore-console-delete-field.png)
+
 ## Manage Firestore Security Rules
 
-You can view your [Firestore Security Rules](/firestore/docs/security/get-started) from the Google Cloud console. To edit or delete your ruleset, enable Firebase, and [use the Firebase CLI or Firebase console](/firestore/docs/security/get-started#deploying_rules) .
+You can view your [Firestore Security Rules](https://docs.cloud.google.com/firestore/docs/security/get-started) from the Google Cloud console. To edit or delete your ruleset, enable Firebase, and [use the Firebase CLI or Firebase console](https://docs.cloud.google.com/firestore/docs/security/get-started#deploying_rules) .
 
 ### Enabling Firebase
 
 To edit your Firestore Security Rules, you must enable Firebase for your Google Cloud project. If Firebase is not enabled, you can enable Firebase from the ***Security Rules*** page:
 
-The Firestore Security Rules feature is closely integrated with Firebase Auth and the Firebase SDKs (Web, Android, Apple platforms). For more on Firebase and Firestore, see [getting started with Firebase](/firestore/docs/client/get-firebase) .
+![If Firebase is not enabled in your project, the Enable Firebase SDK button appears.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-console-rules-enable-firebase.png)
+
+The Firestore Security Rules feature is closely integrated with Firebase Auth and the Firebase SDKs (Web, Android, Apple platforms). For more on Firebase and Firestore, see [getting started with Firebase](https://docs.cloud.google.com/firestore/docs/client/get-firebase) .
 
 ### View Security Rules
 
 To view your Firestore Security Rules from the Google Cloud console, go to the ***Security Rules*** page:
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
 3.  In the navigation menu, click **Security Rules** .
 
+![Use the Rules page to view your ruleset.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-console-view-rules.png)
+
 ### Edit Security Rules
 
-To edit or delete your Firestore Security Rules, [use the Firebase CLI or Firebase console](/firestore/docs/security/get-started#deploying_rules) . In the Firebase console, go to the [**Rules** tab](https://console.firebase.google.com/project/_/firestore/rules) in the **Firestore in Native Mode** section. Learn more about [setting up and customizing rules](./security/get-started) .
+To edit or delete your Firestore Security Rules, [use the Firebase CLI or Firebase console](https://docs.cloud.google.com/firestore/docs/security/get-started#deploying_rules) . In the Firebase console, go to the [**Rules** tab](https://console.firebase.google.com/project/_/firestore/rules) in the **Firestore in Native Mode** section. Learn more about [setting up and customizing rules](https://docs.cloud.google.com/firestore/native/docs/security/get-started) .
 
 ## Manage indexes
 
-To create new indexes for your queries and manage existing indexes from the Firebase console, go to the [**Indexes** tab](https://console.firebase.google.com/project/_/firestore/indexes) in the **Firestore in Native Mode** section. Learn more about [managing indexes](./query-data/indexing) .
+To create new indexes for your queries and manage existing indexes from the Firebase console, go to the [**Indexes** tab](https://console.firebase.google.com/project/_/firestore/indexes) in the **Firestore in Native Mode** section. Learn more about [managing indexes](https://docs.cloud.google.com/firestore/native/docs/query-data/indexing) .

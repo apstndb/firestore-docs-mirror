@@ -1,5 +1,7 @@
 # Firestore with MongoDB compatibility documentation
 
+[Read product documentation](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/overview)
+
 Firestore with MongoDB compatibility is a serverless, document database service that maximizes developer productivity and includes MongoDB Application Programming Interface (API) compatibility. Firestore with MongoDB compatibility is backed by a serverless infrastructure featuring single-digit milliseconds read performance, automatic scaling, high availability, integration into Google Cloud centralized governance, and pay-per-use pricing.
 
 [Go to the Firestore product page for more.](https://cloud.google.com/products/firestore/)
@@ -14,21 +16,21 @@ format\_list\_numbered
 
 ### Guides
 
-  - [Quickstart: Create a database and connect to it](/firestore/mongodb-compatibility/docs/create-and-query-database)
+  - [Quickstart: Create a database and connect to it](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database)
 
-  - [Supported MongoDB data types, drivers, and features](/firestore/mongodb-compatibility/docs/supported-data-types-drivers)
+  - [Supported MongoDB data types, drivers, and features](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-data-types-drivers)
 
-  - [Supported features by MongoDB API version](/firestore/mongodb-compatibility/docs/supported-features-80)
+  - [Supported features by MongoDB API version](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80)
 
-  - [Create and manage databases](/firestore/mongodb-compatibility/docs/create-databases)
+  - [Create and manage databases](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases)
 
 find\_in\_page
 
 ### Reference
 
-  - [API overview](/firestore/mongodb-compatibility/docs/apis)
+  - [API overview](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/apis)
 
-  - [Query execution reference](/firestore/mongodb-compatibility/docs/query-explain-reference)
+  - [Query execution reference](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain-reference)
 
 info
 
@@ -38,6 +40,6 @@ info
 
   - [Pricing examples](https://cloud.google.com/firestore/mongodb-compatibility/pricing-examples)
 
-  - [Storage size calculations](/firestore/mongodb-compatibility/docs/storage-size)
+  - [Storage size calculations](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size)
 
-  - [Quotas and limits](/firestore/mongodb-compatibility/quotas)
+  - [Quotas and limits](https://docs.cloud.google.com/firestore/mongodb-compatibility/quotas)

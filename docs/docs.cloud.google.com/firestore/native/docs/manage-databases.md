@@ -6,7 +6,7 @@ This page describes how to create, update, and delete Firestore databases. You c
 
 To create and manage databases, you'll need the following Identity and Access Management role:
 
-  - [Cloud Datastore Owner](/iam/docs/roles-permissions/firestore#datastore.owner) ( `  roles/datastore.owner  ` )
+  - [Cloud Datastore Owner](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.owner) ( `  roles/datastore.owner  ` )
 
 That role grants the following permissions that you need to create and manage databases:
 
@@ -23,12 +23,14 @@ To create a database, use one of the following methods:
 ##### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Click **Create a Firestore database** .
 
 3.  Enter a database ID.
 
-4.  Select a Firestore edition. See the [editions overview](/firestore/native/docs/editions-overview) to learn more about each edition.
+4.  Select a Firestore edition. See the [editions overview](https://docs.cloud.google.com/firestore/native/docs/editions-overview) to learn more about each edition.
 
 5.  Select a data access mode. The data access mode configures which API and which client libraries you can use with your database.
 
@@ -49,7 +51,7 @@ Use the [`  gcloud firestore databases create  `](https://cloud.google.com/sdk/g
 
   - To create a Firestore Enterprise edition database in Native mode:
     
-    ``` text
+    ``` suppresswarning
     gcloud firestore databases create \
     --database=DATABASE_ID \
     --location=LOCATION \
@@ -61,12 +63,12 @@ Use the [`  gcloud firestore databases create  `](https://cloud.google.com/sdk/g
     
     Replace the following:
     
-      - DATABASE\_ID : a [valid database ID](#database_id) .
-      - LOCATION : the name of a [Firestore multi-region or region](/firestore/native/docs/locations#types) .
+      - DATABASE\_ID : a [valid database ID](https://docs.cloud.google.com/firestore/native/docs/manage-databases#database_id) .
+      - LOCATION : the name of a [Firestore multi-region or region](https://docs.cloud.google.com/firestore/native/docs/locations#types) .
 
   - To create a Firestore Standard edition database:
     
-    ``` text
+    ``` suppresswarning
     gcloud firestore databases create \
     --database=DATABASE_ID \
     --location=LOCATION \
@@ -76,8 +78,8 @@ Use the [`  gcloud firestore databases create  `](https://cloud.google.com/sdk/g
     
     Replace the following:
     
-      - DATABASE\_ID : a [valid database ID](#database_id) .
-      - LOCATION : the name of a [Firestore multi-region or region](/firestore/native/docs/locations#types) .
+      - DATABASE\_ID : a [valid database ID](https://docs.cloud.google.com/firestore/native/docs/manage-databases#database_id) .
+      - LOCATION : the name of a [Firestore multi-region or region](https://docs.cloud.google.com/firestore/native/docs/locations#types) .
       - DATABASE\_TYPE : either `  firestore-native  ` for Native mode or `  datastore-mode  ` for Datastore mode.
 
 `  --delete-protection  ` is an optional flag to enable deletion protection. You cannot delete a database with deletion protection enabled until you disable this setting. This setting is disabled by default.
@@ -89,7 +91,7 @@ To add [tags](https://cloud.google.com/firestore/docs/tags) to the database, use
 
 ##### Firebase CLI
 
-``` text
+``` suppresswarning
 firebase firestore:databases:create DATABASE_ID \
 --location=LOCATION \
 [--delete-protection DELETE_PROTECTION_ENABLEMENT]
@@ -97,15 +99,15 @@ firebase firestore:databases:create DATABASE_ID \
 
 Replace the following:
 
-  - DATABASE\_ID : a [valid database ID](#database_id) .
-  - LOCATION : the name of a [Firestore multi-region or region](/firestore/native/docs/locations#types) .
+  - DATABASE\_ID : a [valid database ID](https://docs.cloud.google.com/firestore/native/docs/manage-databases#database_id) .
+  - LOCATION : the name of a [Firestore multi-region or region](https://docs.cloud.google.com/firestore/native/docs/locations#types) .
   - DELETE\_PROTECTION\_ENABLEMENT : Either `  ENABLED  ` or `  DISABLED  ` .
 
 `  --delete-protection  ` is an optional argument to enable deletion protection. You cannot delete a database with deletion protection enabled until you disable this setting. This setting is disabled by default.
 
 ##### Terraform
 
-``` text
+``` suppresswarning
 resource "google_firestore_database" "database" {
   project     = "project-id"
   name        = DATABASE_ID
@@ -119,8 +121,8 @@ resource "google_firestore_database" "database" {
 
 Replace the following:
 
-  - DATABASE\_ID : a [valid database ID](#database_id) .
-  - LOCATION : the name of a [Firestore multi-region or region](/firestore/native/docs/locations#types) .
+  - DATABASE\_ID : a [valid database ID](https://docs.cloud.google.com/firestore/native/docs/manage-databases#database_id) .
+  - LOCATION : the name of a [Firestore multi-region or region](https://docs.cloud.google.com/firestore/native/docs/locations#types) .
   - DATABASE\_TYPE : either `  FIRESTORE_NATIVE  ` for Native mode or `  DATASTORE_MODE  ` for Datastore mode.
   - DELETE\_PROTECTION\_ENABLEMENT : Either `  DELETE_PROTECTION_ENABLED  ` or `  DELETE_PROTECTION_DISABLED  ` .
 
@@ -144,17 +146,17 @@ Note that after you delete a database, you can't re-use its ID for about 5 minut
 
 ### Delete protection
 
-Use delete protection to prevent accidental deletion of a database. You cannot delete a database with delete protection enabled until you disable delete protection. Delete protection is disabled by default. You can update the database configuration to [enable or disable delete protection](#update-dp) .
+Use delete protection to prevent accidental deletion of a database. You cannot delete a database with delete protection enabled until you disable delete protection. Delete protection is disabled by default. You can update the database configuration to [enable or disable delete protection](https://docs.cloud.google.com/firestore/native/docs/manage-databases#update-dp) .
 
 ## Set up Firestore Security Rules for your databases
 
-Use the Firebase CLI to deploy Firestore Security Rules to each of your databases. Refer to the [guide for managing and deploying Firestore Security Rules](//firebase.google.com/docs/rules/manage-deploy) .
+Use the Firebase CLI to deploy Firestore Security Rules to each of your databases. Refer to the [guide for managing and deploying Firestore Security Rules](https://firebase.google.com/docs/rules/manage-deploy) .
 
 ## Access a named database with a client library
 
 A named database includes any database not named `  (default)  ` . By default, the Firebase SDKs and Google API Client Libraries connect to the `  (default)  ` Firestore database in a project. To create a client connected to a named database, set the database ID when you instantiate a client.
 
-**Note:** To work with multiple databases, be sure to update to the latest [Firebase Client SDKs](/firestore/native/docs/reference/libraries#mobile-web-sdks) and [Google API Client Libraries](/firestore/native/docs/reference/libraries#google-cloud-client-libraries) .
+**Note:** To work with multiple databases, be sure to update to the latest [Firebase Client SDKs](https://docs.cloud.google.com/firestore/native/docs/reference/libraries#mobile-web-sdks) and [Google API Client Libraries](https://docs.cloud.google.com/firestore/native/docs/reference/libraries#google-cloud-client-libraries) .
 
 ## List databases
 
@@ -164,13 +166,15 @@ Use one of the following methods to list your databases:
 
 In the Google Cloud console, go to the **Databases** page.
 
-**Note:** You can view and list your databases in the Google Cloud console. You can create the `  (default)  ` database using the Google Cloud console, but you must use the [Google Cloud CLI or another method](#create_a_database) to create a named database. To delete a database [use the Google Cloud CLI](#delete-database) .
+[Go to Databases](https://console.cloud.google.com/firestore/databases)
+
+**Note:** You can view and list your databases in the Google Cloud console. You can create the `  (default)  ` database using the Google Cloud console, but you must use the [Google Cloud CLI or another method](https://docs.cloud.google.com/firestore/native/docs/manage-databases#create_a_database) to create a named database. To delete a database [use the Google Cloud CLI](https://docs.cloud.google.com/firestore/native/docs/manage-databases#delete-database) .
 
 ##### gcloud
 
 Use the [`  gcloud firestore databases list  `](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/list) command to list all the databases in your project.
 
-``` text
+``` suppresswarning
 gcloud firestore databases list
 ```
 
@@ -178,7 +182,7 @@ gcloud firestore databases list
 
 Use the `  firebase firestore:databases:list  ` command to list all the databases in your project.
 
-``` text
+``` suppresswarning
 firebase firestore:databases:list
 ```
 
@@ -190,7 +194,7 @@ To view details about a single database, use one of the following methods:
 
 Use the [`  gcloud firestore databases describe  `](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/describe) command:
 
-``` text
+``` suppresswarning
 gcloud firestore databases describe --database=DATABASE_ID
 ```
 
@@ -198,7 +202,7 @@ gcloud firestore databases describe --database=DATABASE_ID
 
 Use the `  firebase firestore:databases:get  ` command:
 
-``` text
+``` suppresswarning
 firebase firestore:databases:get DATABASE_ID
 ```
 
@@ -214,7 +218,7 @@ To update the type of a database, use the `  gcloud firestore databases update  
 
 ##### gcloud
 
-``` text
+``` suppresswarning
 gcloud firestore databases update --database=DATABASE_ID \
 --type=DATABASE_TYPE
 ```
@@ -230,7 +234,7 @@ To enable delete protection on a database, use the `  gcloud firestore databases
 
 ##### gcloud
 
-``` text
+``` suppresswarning
 gcloud firestore databases update --database=DATABASE_ID --delete-protection
 ```
 
@@ -240,7 +244,7 @@ To disable delete protection on a database, use the `  gcloud firestore database
 
 ##### gcloud
 
-``` text
+``` suppresswarning
 gcloud firestore databases update --database=DATABASE_ID --no-delete-protection
 ```
 
@@ -250,29 +254,31 @@ Replace DATABASE\_ID with a database ID.
 
 To delete a database, use the console or command-line tool.
 
-If the database has the delete protection setting enabled, you must first [disable delete protection](#update-dp) .
+If the database has the delete protection setting enabled, you must first [disable delete protection](https://docs.cloud.google.com/firestore/native/docs/manage-databases#update-dp) .
 
 If the database contains [App Engine search data](https://cloud.google.com/appengine/docs/legacy/standard/python/search) or [blob entities](https://cloud.google.com/appengine/docs/legacy/standard/python/blobstore) , you must delete that data first.
 
-Deleting a database does not automatically delete any [Eventarc triggers](/firestore/native/docs/eventarc) for that database. The trigger stops delivering events but continues to exist until you [delete the trigger](https://cloud.google.com/eventarc/docs/managing-triggers#trigger-delete) .
+Deleting a database does not automatically delete any [Eventarc triggers](https://docs.cloud.google.com/firestore/native/docs/eventarc) for that database. The trigger stops delivering events but continues to exist until you [delete the trigger](https://cloud.google.com/eventarc/docs/managing-triggers#trigger-delete) .
 
 Deleting a database does not incur charges for delete operations.
 
 ##### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Click more\_vert **View more** in the table row for the database you want to delete. Click **Delete** . A dialog appears.
 
 3.  In the **Delete database?** dialog, confirm deletion by typing the database ID in the text field. Click **Delete** . The console informs you of operation success or failure.
     
-    If the operation fails, [view the database details](#view_database_details) and verify that delete protection is disabled. To disable delete protection, see [Update the delete protection setting](#update-dp) .
+    If the operation fails, [view the database details](https://docs.cloud.google.com/firestore/native/docs/manage-databases#view_database_details) and verify that delete protection is disabled. To disable delete protection, see [Update the delete protection setting](https://docs.cloud.google.com/firestore/native/docs/manage-databases#update-dp) .
 
 ##### gcloud
 
 Use the [\`gcloud firestore databases delete\`](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/delete) command.
 
-``` text
+``` suppresswarning
 gcloud firestore databases delete --database=DATABASE_ID
 ```
 
@@ -284,27 +290,29 @@ You can clone an existing database at a selected timestamp into a new database:
 
   - The cloned database is a new database that will be created in the same location as the source database.
     
-    To make a clone, Firestore uses [point-in-time recovery (PITR) data](/firestore/native/docs/pitr) of the source database. The cloned database includes all data and indexes.
+    To make a clone, Firestore uses [point-in-time recovery (PITR) data](https://docs.cloud.google.com/firestore/native/docs/pitr) of the source database. The cloned database includes all data and indexes.
 
-  - By default, the cloned database will be encrypted in the same way as the source database, using either Google's default encryption or [CMEK encryption](/firestore/native/docs/use-cmek) . You can specify a different encryption type or use a different key for CMEK encryption.
+  - By default, the cloned database will be encrypted in the same way as the source database, using either Google's default encryption or [CMEK encryption](https://docs.cloud.google.com/firestore/native/docs/use-cmek) . You can specify a different encryption type or use a different key for CMEK encryption.
 
-  - The timestamp has a granularity of one minute and specifies a point of time in the past, in the period defined by the [PITR window](/firestore/native/docs/pitr#pitr_window) :
+  - The timestamp has a granularity of one minute and specifies a point of time in the past, in the period defined by the [PITR window](https://docs.cloud.google.com/firestore/native/docs/pitr#pitr_window) :
     
       - If PITR is enabled for your database, you select any minute in the last 7 days (or less if PITR was enabled less than 7 days ago).
       - If PITR isn't enabled, you can select any minute in the past hour.
-      - You can check the earliest timestamp that you can pick [in your database's description](/firestore/native/docs/use-pitr#get-period) .
+      - You can check the earliest timestamp that you can pick [in your database's description](https://docs.cloud.google.com/firestore/native/docs/use-pitr#get-period) .
 
-**Note:** To clone databases, your Google Account must have the [`  datastore.databases.clone  ` IAM permission](#permissions) .
+**Note:** To clone databases, your Google Account must have the [`  datastore.databases.clone  ` IAM permission](https://docs.cloud.google.com/firestore/native/docs/manage-databases#permissions) .
 
 ### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Click more\_vert **View more** in the table row for the database that you want to clone. Click **Clone** . The **Create a clone** dialog appears.
 
 3.  In the **Create a clone** dialog, provide parameters for cloning the database:
     
-    1.  In the **Give the clone an ID** field, a [database ID](#database_id) for a new cloned database. This database ID must not be associated with an existing database.
+    1.  In the **Give the clone an ID** field, a [database ID](https://docs.cloud.google.com/firestore/native/docs/manage-databases#database_id) for a new cloned database. This database ID must not be associated with an existing database.
     
     2.  In the **Clone from** field, select a point in time to use for cloning. The selected time corresponds to a PITR timestamp, at the minute granularity.
 
@@ -316,40 +324,34 @@ You can clone an existing database at a selected timestamp into a new database:
 
 Use the [`  gcloud firestore databases clone  `](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/clone) command to clone a database:
 
-``` text
-gcloud firestore databases clone \
---source-database='SOURCE_DATABASE' \
---snapshot-time='PITR_TIMESTAMP' \
---destination-database='DESTINATION_DATABASE_ID'
-```
+    gcloud firestore databases clone \
+    --source-database='SOURCE_DATABASE' \
+    --snapshot-time='PITR_TIMESTAMP' \
+    --destination-database='DESTINATION_DATABASE_ID'
 
 Replace the following:
 
   - SOURCE\_DATABASE : the database name of an existing database that you want to clone. The name uses the format `  projects/ PROJECT_ID /databases/ SOURCE_DATABASE_ID  ` .
 
-  - PITR\_TIMESTAMP : a [PITR timestamp](/firestore/native/docs/use-pitr#get-period) in the [RFC 3339 format](https://tools.ietf.org/html/rfc3339) , at minute granularity. For example: `  2025-06-01T10:20:00.00Z  ` or `  2025-06-01T10:30:00.00-07:00  ` .
+  - PITR\_TIMESTAMP : a [PITR timestamp](https://docs.cloud.google.com/firestore/native/docs/use-pitr#get-period) in the [RFC 3339 format](https://tools.ietf.org/html/rfc3339) , at minute granularity. For example: `  2025-06-01T10:20:00.00Z  ` or `  2025-06-01T10:30:00.00-07:00  ` .
 
-  - DESTINATION\_DATABASE\_ID : a [database ID](#database_id) for a new cloned database. This database ID must not be associated with an existing database.
+  - DESTINATION\_DATABASE\_ID : a [database ID](https://docs.cloud.google.com/firestore/native/docs/manage-databases#database_id) for a new cloned database. This database ID must not be associated with an existing database.
 
 Example:
 
-``` text
-gcloud firestore databases clone \
---source-database='projects/example-project/databases/(default)' \
---snapshot-time='2025-06-01T10:20:00.00Z' \
---destination-database='example-dest-db'
-```
+    gcloud firestore databases clone \
+    --source-database='projects/example-project/databases/(default)' \
+    --snapshot-time='2025-06-01T10:20:00.00Z' \
+    --destination-database='example-dest-db'
 
 If you want to bind to some tags while cloning a database, use the previous command with the `  --tags  ` flag, which is an optional list of tags KEY=VALUE pairs to bind.
 
 Example:
 
-``` text
-gcloud firestore databases clone \
---source-database='projects/example-project/databases/(default)' \
---snapshot-time='2025-06-01T10:20:00.00Z' \
---destination-database='example-dest-db'
-```
+    gcloud firestore databases clone \
+    --source-database='projects/example-project/databases/(default)' \
+    --snapshot-time='2025-06-01T10:20:00.00Z' \
+    --destination-database='example-dest-db'
 
 By default, the cloned database will have the same encryption configuration as the source database. To change the encryption configuration, use the `  --encryption-type  ` argument:
 
@@ -359,14 +361,12 @@ By default, the cloned database will have the same encryption configuration as t
 
 The following example shows how to configure CMEK encryption for the cloned database:
 
-``` text
-gcloud firestore databases clone \
---source-database='projects/example-project/databases/(default)' \
---snapshot-time='2025-06-01T10:20:00.00Z' \
---destination-database='example-dest-db' \
---encryption-type='customer-managed-encryption' \
---kms-key-name='projects/example-project/locations/us-central1/keyRings/example-key-ring/cryptoKeys/example-key'
-```
+    gcloud firestore databases clone \
+    --source-database='projects/example-project/databases/(default)' \
+    --snapshot-time='2025-06-01T10:20:00.00Z' \
+    --destination-database='example-dest-db' \
+    --encryption-type='customer-managed-encryption' \
+    --kms-key-name='projects/example-project/locations/us-central1/keyRings/example-key-ring/cryptoKeys/example-key'
 
 ## Configure per-database access permissions
 
@@ -376,20 +376,16 @@ You can use [Identity and Access Management Conditions](https://cloud.google.com
 
 ### View existing IAM policies
 
-``` text
-gcloud projects get-iam-policy PROJECT_ID
-```
+    gcloud projects get-iam-policy PROJECT_ID
 
 Set `  PROJECT_ID  ` to your project ID.
 
 ### Grant access to a database
 
-``` text
-gcloud projects add-iam-policy-binding PROJECT_ID \
---member='user:EMAIL' \
---role='roles/datastore.user' \
---condition='expression=resource.name=="projects/PROJECT_ID/databases/DATABASE_ID",title=TITLE,description=DESCRIPTION'
-```
+    gcloud projects add-iam-policy-binding PROJECT_ID \
+    --member='user:EMAIL' \
+    --role='roles/datastore.user' \
+    --condition='expression=resource.name=="projects/PROJECT_ID/databases/DATABASE_ID",title=TITLE,description=DESCRIPTION'
 
 Set the following:
 
@@ -401,12 +397,10 @@ Set the following:
 
 ### Grant access to all except one database
 
-``` text
-gcloud projects add-iam-policy-binding PROJECT_ID \
---member='user:EMAIL' \
---role='roles/datastore.user' \
---condition='expression=resource.name!="projects/PROJECT_ID/databases/DATABASE_ID",title=TITLE,description=DESCRIPTION'
-```
+    gcloud projects add-iam-policy-binding PROJECT_ID \
+    --member='user:EMAIL' \
+    --role='roles/datastore.user' \
+    --condition='expression=resource.name!="projects/PROJECT_ID/databases/DATABASE_ID",title=TITLE,description=DESCRIPTION'
 
 Set the following:
 
@@ -418,11 +412,9 @@ Set the following:
 
 ### Remove policies for a given member and role
 
-``` text
-gcloud projects remove-iam-policy-binding PROJECT_ID \
---member='user:EMAIL' \
---role='roles/datastore.user' --all
-```
+    gcloud projects remove-iam-policy-binding PROJECT_ID \
+    --member='user:EMAIL' \
+    --role='roles/datastore.user' --all
 
 Set the following:
 
@@ -440,7 +432,7 @@ You can inspect aggregate metrics at the database level by looking at `  firesto
 
 ## Limitations
 
-  - You can have a maximum of 100 databases per project. You can [contact support](/support-hub) to request an increase to this limit.
+  - You can have a maximum of 100 databases per project. You can [contact support](https://docs.cloud.google.com/support-hub) to request an increase to this limit.
   - You cannot delete your `  (default)  ` database if it contains any [GAE search data](https://cloud.google.com/appengine/docs/legacy/standard/python/search) . Use the [index delete api](https://cloud.google.com/appengine/docs/legacy/standard/python/search#deleting_an_index) to delete GAE search data. If you recently deleted GAE Search data, there may be a waiting period before you are able to delete the database.
   - You cannot delete your `  (default)  ` database if it contains any [blob entities](https://cloud.google.com/appengine/docs/legacy/standard/python/blobstore) . Use the [Blobstore delete api](https://cloud.google.com/appengine/docs/legacy/standard/python/refdocs/google.appengine.ext.blobstore.blobstore#google.appengine.ext.blobstore.blobstore.delete) to delete Blobstore data. You can check if your `  (default)  ` database has Blobstore data by running the following GQL query in the Google Cloud console: `  SELECT * FROM __BlobInfo__  ` .
   - You cannot reuse a database ID until 5 minutes after the delete happens.
@@ -449,6 +441,6 @@ You can inspect aggregate metrics at the database level by looking at `  firesto
 
 ## What's next
 
-  - [Add data](/firestore/native/docs/manage-data/add-data)
-  - [Get data](/firestore/native/docs/query-data/get-data)
-  - [Delete data](/firestore/native/docs/manage-data/delete-data)
+  - [Add data](https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data)
+  - [Get data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data)
+  - [Delete data](https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data)

@@ -2,7 +2,7 @@
 
 **Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
 
-This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
 ## Description
 
@@ -18,12 +18,10 @@ This stage behaves similar to `  CROSS JOIN UNNEST(...)  ` in many SQL systems.
 
 ### Node.js
 
-``` text
-const userScore = await db.pipeline()
-    .collection("/users")
-    .unnest(field("scores").as("userScore"), /* index_field= */ "attempt")
-    .execute();
-```
+    const userScore = await db.pipeline()
+        .collection("/users")
+        .unnest(field("scores").as("userScore"), /* index_field= */ "attempt")
+        .execute();
 
 ## Behavior
 
@@ -35,25 +33,21 @@ For example, for the following collection:
 
 ### Node.js
 
-``` text
-await db.collection("users").add({name: "foo", scores: [5, 4], userScore: 0});
-await db.collection("users").add({name: "bar", scores: [1, 3], attempt: 5});
-```
+    await db.collection("users").add({name: "foo", scores: [5, 4], userScore: 0});
+    await db.collection("users").add({name: "bar", scores: [1, 3], attempt: 5});
 
 The `  unnest  ` stage can be used to extract each individual score per user.
 
 ### Node.js
 
-``` text
-const userScore = await db.pipeline()
-    .collection("/users")
-    .unnest(field("scores").as("userScore"), /* index_field= */ "attempt")
-    .execute();
-```
+    const userScore = await db.pipeline()
+        .collection("/users")
+        .unnest(field("scores").as("userScore"), /* index_field= */ "attempt")
+        .execute();
 
 In this case, `  userScore  ` and `  attempt  ` are both overwritten.
 
-``` text
+``` 
   {name: "foo", scores: [5, 4], userScore: 5, attempt: 0}
   {name: "foo", scores: [5, 4], userScore: 4, attempt: 1}
   {name: "bar", scores: [1, 3], userScore: 1, attempt: 0}
@@ -64,61 +58,51 @@ In this case, `  userScore  ` and `  attempt  ` are both overwritten.
 
 ##### Swift
 
-``` swift
-let results = try await db.pipeline()
-  .database()
-  .unnest(Field("arrayField").as("unnestedArrayField"), indexField: "index")
-  .execute()PipelineSnippets.swift
-```
+    let results = try await db.pipeline()
+      .database()
+      .unnest(Field("arrayField").as("unnestedArrayField"), indexField: "index")
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
 
-``` kotlin
-val results = db.pipeline()
-    .database()
-    .unnest(field("arrayField").alias("unnestedArrayField"), UnnestOptions().withIndexField("index"))
-    .execute()DocSnippets.kt
-```
+    val results = db.pipeline()
+        .database()
+        .unnest(field("arrayField").alias("unnestedArrayField"), UnnestOptions().withIndexField("index"))
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
 
-``` text
-Task<Pipeline.Snapshot> results = db.pipeline()
-    .database()
-    .unnest(field("arrayField").alias("unnestedArrayField"), new UnnestOptions().withIndexField("index"))
-    .execute();DocSnippets.java
-```
+    Task<Pipeline.Snapshot> results = db.pipeline()
+        .database()
+        .unnest(field("arrayField").alias("unnestedArrayField"), new UnnestOptions().withIndexField("index"))
+        .execute();DocSnippets.java
 
 ##### Python
 
-``` python
-from google.cloud.firestore_v1.pipeline_expressions import Field
-from google.cloud.firestore_v1.pipeline_stages import UnnestOptions
-
-results = (
-    client.pipeline()
-    .database()
-    .unnest(
-        Field.of("arrayField").as_("unnestedArrayField"),
-        options=UnnestOptions(index_field="index"),
-    )
-    .execute()
-)firestore_pipelines.py
-```
+    from google.cloud.firestore_v1.pipeline_expressions import Field
+    from google.cloud.firestore_v1.pipeline_stages import UnnestOptions
+    
+    results = (
+        client.pipeline()
+        .database()
+        .unnest(
+            Field.of("arrayField").as_("unnestedArrayField"),
+            options=UnnestOptions(index_field="index"),
+        )
+        .execute()
+    )firestore_pipelines.py
 
 ##### Java
 
-``` java
-Pipeline.Snapshot results =
-    firestore
-        .pipeline()
-        .database()
-        .unnest("arrayField", "unnestedArrayField", new UnnestOptions().withIndexField("index"))
-        .execute()
-        .get();PipelineSnippets.java
-```
+    Pipeline.Snapshot results =
+        firestore
+            .pipeline()
+            .database()
+            .unnest("arrayField", "unnestedArrayField", new UnnestOptions().withIndexField("index"))
+            .execute()
+            .get();PipelineSnippets.java
 
 ### Non Array Values
 
@@ -128,26 +112,22 @@ For example, for the following collection:
 
 ### Node.js
 
-``` text
-await db.collection("users").add({name: "foo", scores: 1});
-await db.collection("users").add({name: "bar", scores: null});
-await db.collection("users").add({name: "qux", scores: {backupScores: 1}});
-```
+    await db.collection("users").add({name: "foo", scores: 1});
+    await db.collection("users").add({name: "bar", scores: null});
+    await db.collection("users").add({name: "qux", scores: {backupScores: 1}});
 
 The `  unnest  ` stage can be used to extract each individual score per user.
 
 ### Node.js
 
-``` text
-const userScore = await db.pipeline()
-    .collection("/users")
-    .unnest(field("scores").as("userScore"), /* index_field= */ "attempt")
-    .execute();
-```
+    const userScore = await db.pipeline()
+        .collection("/users")
+        .unnest(field("scores").as("userScore"), /* index_field= */ "attempt")
+        .execute();
 
 This produces the following documents with `  attempt  ` set to `  NULL  ` .
 
-``` text
+``` 
   { name: "foo", scores: 1, attempt: null }
   { name: "bar", scores: null, attempt: null }
   { name: "qux", scores: { backupScores: 1 }, attempt: null }
@@ -161,25 +141,21 @@ For example, for the following collection:
 
 ### Node.js
 
-``` text
-await db.collection("users").add({name: "foo", scores: [5, 4]});
-await db.collection("users").add({name: "bar", scores: []});
-```
+    await db.collection("users").add({name: "foo", scores: [5, 4]});
+    await db.collection("users").add({name: "bar", scores: []});
 
 The `  unnest  ` stage can be used to extract each individual score per user.
 
 ### Node.js
 
-``` text
-const userScore = await db.pipeline()
-    .collection("/users")
-    .unnest(field("scores").as("userScore"), /* index_field= */ "attempt")
-    .execute();
-```
+    const userScore = await db.pipeline()
+        .collection("/users")
+        .unnest(field("scores").as("userScore"), /* index_field= */ "attempt")
+        .execute();
 
 This produces the following documents with user `  bar  ` missing from the output.
 
-``` text
+``` 
   {name: "foo", scores: [5, 4], userScore: 5, attempt: 0}
   {name: "foo", scores: [5, 4], userScore: 4, attempt: 1}
 ```
@@ -188,22 +164,20 @@ In order to return documents with empty arrays as well, you can wrap the unneste
 
 ### Node.js
 
-``` text
-const userScore = await db.pipeline()
-    .collection("/users")
-    .unnest(
-      conditional(
-        equal(field("scores"), []),
-        array([field("scores")]),
-        field("scores")
-      ).as("userScore"),
-    /* index_field= */ "attempt")
-    .execute();
-```
+    const userScore = await db.pipeline()
+        .collection("/users")
+        .unnest(
+          conditional(
+            equal(field("scores"), []),
+            array([field("scores")]),
+            field("scores")
+          ).as("userScore"),
+        /* index_field= */ "attempt")
+        .execute();
 
 This will now return document with user `  bar  ` .
 
-``` text
+``` 
   {name: "foo", scores: [5, 4], userScore: 5, attempt: 0}
   {name: "foo", scores: [5, 4], userScore: 4, attempt: 1}
   {name: "bar", scores: [], userScore: [], attempt: 0}
@@ -213,7 +187,7 @@ This will now return document with user `  bar  ` .
 
 ##### Node.js
 
-``` text
+``` 
     // Input
     // { identifier : 1, neighbors: [ "Alice", "Cathy" ] }
     // { identifier : 2, neighbors: []                   }
@@ -233,115 +207,105 @@ This will now return document with user `  bar  ` .
 
 ##### Swift
 
-``` swift
-// Input
-// { identifier : 1, neighbors: [ "Alice", "Cathy" ] }
-// { identifier : 2, neighbors: []                   }
-// { identifier : 3, neighbors: "Bob"                }
-
-let results = try await db.pipeline()
-  .database()
-  .unnest(Field("neighbors").as("unnestedNeighbors"), indexField: "index")
-  .execute()
-
-// Output
-// { identifier: 1, neighbors: [ "Alice", "Cathy" ], unnestedNeighbors: "Alice", index: 0 }
-// { identifier: 1, neighbors: [ "Alice", "Cathy" ], unnestedNeighbors: "Cathy", index: 1 }
-// { identifier: 3, neighbors: "Bob", index: null}PipelineSnippets.swift
-```
+    // Input
+    // { identifier : 1, neighbors: [ "Alice", "Cathy" ] }
+    // { identifier : 2, neighbors: []                   }
+    // { identifier : 3, neighbors: "Bob"                }
+    
+    let results = try await db.pipeline()
+      .database()
+      .unnest(Field("neighbors").as("unnestedNeighbors"), indexField: "index")
+      .execute()
+    
+    // Output
+    // { identifier: 1, neighbors: [ "Alice", "Cathy" ], unnestedNeighbors: "Alice", index: 0 }
+    // { identifier: 1, neighbors: [ "Alice", "Cathy" ], unnestedNeighbors: "Cathy", index: 1 }
+    // { identifier: 3, neighbors: "Bob", index: null}PipelineSnippets.swift
 
 ##### Kotlin  
 Android
 
-``` kotlin
-// Input
-// { identifier : 1, neighbors: [ "Alice", "Cathy" ] }
-// { identifier : 2, neighbors: []                   }
-// { identifier : 3, neighbors: "Bob"                }
-
-val results = db.pipeline()
-    .database()
-    .unnest(field("neighbors").alias("unnestedNeighbors"), UnnestOptions().withIndexField("index"))
-    .execute()
-
-// Output
-// { identifier: 1, neighbors: [ "Alice", "Cathy" ], unnestedNeighbors: "Alice", index: 0 }
-// { identifier: 1, neighbors: [ "Alice", "Cathy" ], unnestedNeighbors: "Cathy", index: 1 }
-// { identifier: 3, neighbors: "Bob", index: null}DocSnippets.kt
-```
+    // Input
+    // { identifier : 1, neighbors: [ "Alice", "Cathy" ] }
+    // { identifier : 2, neighbors: []                   }
+    // { identifier : 3, neighbors: "Bob"                }
+    
+    val results = db.pipeline()
+        .database()
+        .unnest(field("neighbors").alias("unnestedNeighbors"), UnnestOptions().withIndexField("index"))
+        .execute()
+    
+    // Output
+    // { identifier: 1, neighbors: [ "Alice", "Cathy" ], unnestedNeighbors: "Alice", index: 0 }
+    // { identifier: 1, neighbors: [ "Alice", "Cathy" ], unnestedNeighbors: "Cathy", index: 1 }
+    // { identifier: 3, neighbors: "Bob", index: null}DocSnippets.kt
 
 ##### Java  
 Android
 
-``` text
-// Input
-// { identifier : 1, neighbors: [ "Alice", "Cathy" ] }
-// { identifier : 2, neighbors: []                   }
-// { identifier : 3, neighbors: "Bob"                }
-
-Task<Pipeline.Snapshot> results = db.pipeline()
-    .database()
-    .unnest(field("neighbors").alias("unnestedNeighbors"), new UnnestOptions().withIndexField("index"))
-    .execute();
-
-// Output
-// { identifier: 1, neighbors: [ "Alice", "Cathy" ], unnestedNeighbors: "Alice", index: 0 }
-// { identifier: 1, neighbors: [ "Alice", "Cathy" ], unnestedNeighbors: "Cathy", index: 1 }
-// { identifier: 3, neighbors: "Bob", index: null}DocSnippets.java
-```
+    // Input
+    // { identifier : 1, neighbors: [ "Alice", "Cathy" ] }
+    // { identifier : 2, neighbors: []                   }
+    // { identifier : 3, neighbors: "Bob"                }
+    
+    Task<Pipeline.Snapshot> results = db.pipeline()
+        .database()
+        .unnest(field("neighbors").alias("unnestedNeighbors"), new UnnestOptions().withIndexField("index"))
+        .execute();
+    
+    // Output
+    // { identifier: 1, neighbors: [ "Alice", "Cathy" ], unnestedNeighbors: "Alice", index: 0 }
+    // { identifier: 1, neighbors: [ "Alice", "Cathy" ], unnestedNeighbors: "Cathy", index: 1 }
+    // { identifier: 3, neighbors: "Bob", index: null}DocSnippets.java
 
 ##### Python
 
-``` python
-from google.cloud.firestore_v1.pipeline_expressions import Field
-from google.cloud.firestore_v1.pipeline_stages import UnnestOptions
-
-# Input
-# { "identifier" : 1, "neighbors": [ "Alice", "Cathy" ] }
-# { "identifier" : 2, "neighbors": []                   }
-# { "identifier" : 3, "neighbors": "Bob"                }
-
-results = (
-    client.pipeline()
-    .database()
-    .unnest(
-        Field.of("neighbors").as_("unnestedNeighbors"),
-        options=UnnestOptions(index_field="index"),
+    from google.cloud.firestore_v1.pipeline_expressions import Field
+    from google.cloud.firestore_v1.pipeline_stages import UnnestOptions
+    
+    # Input
+    # { "identifier" : 1, "neighbors": [ "Alice", "Cathy" ] }
+    # { "identifier" : 2, "neighbors": []                   }
+    # { "identifier" : 3, "neighbors": "Bob"                }
+    
+    results = (
+        client.pipeline()
+        .database()
+        .unnest(
+            Field.of("neighbors").as_("unnestedNeighbors"),
+            options=UnnestOptions(index_field="index"),
+        )
+        .execute()
     )
-    .execute()
-)
-
-# Output
-# { "identifier": 1, "neighbors": [ "Alice", "Cathy" ],
-#   "unnestedNeighbors": "Alice", "index": 0 }
-# { "identifier": 1, "neighbors": [ "Alice", "Cathy" ],
-#   "unnestedNeighbors": "Cathy", "index": 1 }
-# { "identifier": 3, "neighbors": "Bob", "index": null}firestore_pipelines.py
-```
+    
+    # Output
+    # { "identifier": 1, "neighbors": [ "Alice", "Cathy" ],
+    #   "unnestedNeighbors": "Alice", "index": 0 }
+    # { "identifier": 1, "neighbors": [ "Alice", "Cathy" ],
+    #   "unnestedNeighbors": "Cathy", "index": 1 }
+    # { "identifier": 3, "neighbors": "Bob", "index": null}firestore_pipelines.py
 
 ##### Java
 
-``` java
-// Input
-// { "identifier" : 1, "neighbors": [ "Alice", "Cathy" ] }
-// { "identifier" : 2, "neighbors": []                   }
-// { "identifier" : 3, "neighbors": "Bob"                }
-
-Pipeline.Snapshot results =
-    firestore
-        .pipeline()
-        .database()
-        .unnest("neighbors", "unnestedNeighbors", new UnnestOptions().withIndexField("index"))
-        .execute()
-        .get();
-
-// Output
-// { "identifier": 1, "neighbors": [ "Alice", "Cathy" ],
-//   "unnestedNeighbors": "Alice", "index": 0 }
-// { "identifier": 1, "neighbors": [ "Alice", "Cathy" ],
-//   "unnestedNeighbors": "Cathy", "index": 1 }
-// { "identifier": 3, "neighbors": "Bob", "index": null}PipelineSnippets.java
-```
+    // Input
+    // { "identifier" : 1, "neighbors": [ "Alice", "Cathy" ] }
+    // { "identifier" : 2, "neighbors": []                   }
+    // { "identifier" : 3, "neighbors": "Bob"                }
+    
+    Pipeline.Snapshot results =
+        firestore
+            .pipeline()
+            .database()
+            .unnest("neighbors", "unnestedNeighbors", new UnnestOptions().withIndexField("index"))
+            .execute()
+            .get();
+    
+    // Output
+    // { "identifier": 1, "neighbors": [ "Alice", "Cathy" ],
+    //   "unnestedNeighbors": "Alice", "index": 0 }
+    // { "identifier": 1, "neighbors": [ "Alice", "Cathy" ],
+    //   "unnestedNeighbors": "Cathy", "index": 1 }
+    // { "identifier": 3, "neighbors": "Bob", "index": null}PipelineSnippets.java
 
 ### Nested Unnest
 
@@ -351,25 +315,21 @@ For example, for the following collection:
 
 ### Node.js
 
-``` text
-await db.collection("users").add({name: "foo", record: [{scores: [5, 4], avg: 4.5}, {scores: [1, 3], old_avg: 2}]});
-```
+    await db.collection("users").add({name: "foo", record: [{scores: [5, 4], avg: 4.5}, {scores: [1, 3], old_avg: 2}]});
 
 The `  unnest(...)  ` stage can be used sequentially to extract the innermost array.
 
 ### Node.js
 
-``` text
-const userScore = await db.pipeline()
-    .collection("/users")
-    .unnest(field("record").as("record"))
-    .unnest(field("record.scores").as("userScore"), /* index_field= */ "attempt")
-    .execute();
-```
+    const userScore = await db.pipeline()
+        .collection("/users")
+        .unnest(field("record").as("record"))
+        .unnest(field("record.scores").as("userScore"), /* index_field= */ "attempt")
+        .execute();
 
 This produces the following documents:
 
-``` text
+``` 
   { name: "foo", record: [{ scores: [5, 4], avg: 4.5 }], userScore: 5, attempt: 0 }
   { name: "foo", record: [{ scores: [5, 4], avg: 4.5 }], userScore: 4, attempt: 1 }
   { name: "foo", record: [{ scores: [1, 3], avg: 2 }], userScore: 1, attempt: 0 }

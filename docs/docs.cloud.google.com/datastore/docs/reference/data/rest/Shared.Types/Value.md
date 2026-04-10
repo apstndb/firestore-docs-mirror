@@ -1,12 +1,12 @@
-  - [JSON representation](#SCHEMA_REPRESENTATION)
-  - [Key](#Key)
-      - [JSON representation](#Key.SCHEMA_REPRESENTATION)
-  - [PartitionId](#PartitionId)
-      - [JSON representation](#PartitionId.SCHEMA_REPRESENTATION)
-  - [PathElement](#PathElement)
-      - [JSON representation](#PathElement.SCHEMA_REPRESENTATION)
-  - [Entity](#Entity)
-      - [JSON representation](#Entity.SCHEMA_REPRESENTATION)
+  - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/Value#SCHEMA_REPRESENTATION)
+  - [Key](https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/Value#Key)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/Value#Key.SCHEMA_REPRESENTATION)
+  - [PartitionId](https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/Value#PartitionId)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/Value#PartitionId.SCHEMA_REPRESENTATION)
+  - [PathElement](https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/Value#PathElement)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/Value#PathElement.SCHEMA_REPRESENTATION)
+  - [Entity](https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/Value#Entity)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/Value#Entity.SCHEMA_REPRESENTATION)
 
 A message that can hold any of the supported value types and associated metadata.
 
@@ -21,7 +21,7 @@ A message that can hold any of the supported value types and associated metadata
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;meaning&quot;: integer,
   &quot;excludeFromIndexes&quot;: boolean,
 
@@ -156,7 +156,7 @@ A unique identifier for an entity. If a key's partition ID or any of its path ki
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;partitionId&quot;: {
     object (PartitionId)
   },
@@ -213,7 +213,7 @@ Foreign partition IDs (in which the project ID does not match the context projec
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;projectId&quot;: string,
   &quot;databaseId&quot;: string,
   &quot;namespaceId&quot;: string
@@ -259,7 +259,7 @@ If either name or ID is set, the element is complete. If neither is set, the ele
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;kind&quot;: string,
 
   // Union field id_type can be only one of the following:
@@ -320,7 +320,7 @@ Must not exceed 1 MiB - 4 bytes.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;key&quot;: {
     object (Key)
   },

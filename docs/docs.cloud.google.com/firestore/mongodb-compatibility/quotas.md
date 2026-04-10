@@ -10,32 +10,12 @@ Free tier amounts are applied daily and reset at midnight Pacific time.
 
 The free tier applies to only one Firestore with MongoDB compatibility database per project. The first database that is created in a project without a free tier database will get the free tier. If the database with the free tier applied is deleted, the next database created will receive the free tier.
 
-<table>
-<thead>
-<tr class="header">
-<th>Free tier</th>
-<th>Quota</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Stored data</td>
-<td>1 GiB</td>
-</tr>
-<tr class="even">
-<td>Read units</td>
-<td>50,000 per day</td>
-</tr>
-<tr class="odd">
-<td>Write units</td>
-<td>40,000 per day</td>
-</tr>
-<tr class="even">
-<td>Outbound data transfer</td>
-<td>10 GiB per month</td>
-</tr>
-</tbody>
-</table>
+| Free tier              | Quota            |
+| ---------------------- | ---------------- |
+| Stored data            | 1 GiB            |
+| Read units             | 50,000 per day   |
+| Write units            | 40,000 per day   |
+| Outbound data transfer | 10 GiB per month |
 
 The following operations and features don't include free usage. You must [enable billing](https://cloud.google.com/billing/docs/how-to/modify-project) to use these features:
 
@@ -43,7 +23,7 @@ The following operations and features don't include free usage. You must [enable
   - Backup data
   - Restore operations
 
-For more information about how these features are billed, see [Storage pricing](/firestore/enterprise/pricing#storage-size) .
+For more information about how these features are billed, see [Storage pricing](https://docs.cloud.google.com/firestore/enterprise/pricing#storage-size) .
 
 ## Standard limits
 
@@ -69,7 +49,7 @@ The following tables show the limits that apply to Firestore with MongoDB compat
 <p><a href="https://cloud.google.com/support-hub">Contact support</a> to request an increase to this limit.</p></td>
 </tr>
 <tr class="even">
-<td>Maximum number of <a href="/firestore/mongodb-compatibility/docs/cmek">customer-managed encryption keys (CMEK) databases</a> per project</td>
+<td>Maximum number of <a href="https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/cmek">customer-managed encryption keys (CMEK) databases</a> per project</td>
 <td><p>0</p>
 <p>By default the quota is 0 because this feature is behind an allowlist. You can request to increase the quota by filling in <a href="https://docs.google.com/forms/d/e/1FAIpQLSfKs8wJf4IXu1NizvfyU2vT59JDbdPvkehMVZ2ab5l_aDLIIA/viewform?resourcekey=0-O15dlRFvA0JIDmh6VFUEcA">the CMEK access request form</a> .</p></td>
 </tr>
@@ -146,7 +126,7 @@ The following tables show the limits that apply to Firestore with MongoDB compat
 <td>Maximum depth of fields in a map or array</td>
 <td><p>20</p>
 <p>Map and array fields add one level to the overall depth of an object. For example, the following object has a total depth of three levels:</p>
-<pre class="text" dir="ltr" data-is-upgraded="" translate="no"><code>{
+<pre dir="ltr" data-is-upgraded="" translate="no"><code>{
   nested_object: {      #depth 1
     nested_array: [     #depth 2
       {
@@ -161,24 +141,10 @@ The following tables show the limits that apply to Firestore with MongoDB compat
 
 ### Reads, writes, and transactions
 
-<table>
-<thead>
-<tr class="header">
-<th>Limit</th>
-<th>Details</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Memory limit for a query</td>
-<td>128 MiB</td>
-</tr>
-<tr class="even">
-<td>Time limit for a transaction</td>
-<td>270 seconds, with a 60-second idle expiration time</td>
-</tr>
-</tbody>
-</table>
+| Limit                        | Details                                            |
+| ---------------------------- | -------------------------------------------------- |
+| Memory limit for a query     | 128 MiB                                            |
+| Time limit for a transaction | 270 seconds, with a 60-second idle expiration time |
 
 ### Indexes
 
@@ -220,42 +186,17 @@ The following tables show the limits that apply to Firestore with MongoDB compat
 
 ### Time to live (TTL)
 
-<table>
-<thead>
-<tr class="header">
-<th>Limit</th>
-<th>Details</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Maximum number of TTL configurations for a database</td>
-<td><p>500</p></td>
-</tr>
-</tbody>
-</table>
+| Limit                                               | Details |
+| --------------------------------------------------- | ------- |
+| Maximum number of TTL configurations for a database | 500     |
 
 ### Saved queries limits
 
 **Preview — Saved queries**
 
-This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](/terms/service-terms#1) . Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
-<table>
-<thead>
-<tr class="header">
-<th>Value</th>
-<th>Limit</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Maximum number of saved queries per project (including saved queries for other Google Cloud products)</td>
-<td>10,000</td>
-</tr>
-<tr class="even">
-<td>Maximum size for each query</td>
-<td>1 MiB</td>
-</tr>
-</tbody>
-</table>
+| Value                                                                                                 | Limit  |
+| ----------------------------------------------------------------------------------------------------- | ------ |
+| Maximum number of saved queries per project (including saved queries for other Google Cloud products) | 10,000 |
+| Maximum size for each query                                                                           | 1 MiB  |

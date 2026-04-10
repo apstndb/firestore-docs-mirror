@@ -1,9 +1,9 @@
 Accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application.
 
-  - [REST Resource: v1beta1.projects](#v1beta1.projects)
-  - [REST Resource: v1.projects](#v1.projects)
-  - [REST Resource: v1.projects.indexes](#v1.projects.indexes)
-  - [REST Resource: v1.projects.operations](#v1.projects.operations)
+  - [REST Resource: v1beta1.projects](https://docs.cloud.google.com/datastore/docs/reference/admin/rest#v1beta1.projects)
+  - [REST Resource: v1.projects](https://docs.cloud.google.com/datastore/docs/reference/admin/rest#v1.projects)
+  - [REST Resource: v1.projects.indexes](https://docs.cloud.google.com/datastore/docs/reference/admin/rest#v1.projects.indexes)
+  - [REST Resource: v1.projects.operations](https://docs.cloud.google.com/datastore/docs/reference/admin/rest#v1.projects.operations)
 
 ## Service: datastore.googleapis.com
 
@@ -26,11 +26,103 @@ A [service endpoint](https://cloud.google.com/apis/design/glossary#api_service_e
 
 A regional service endpoint is a base URL that specifies the network address of an API service in a single region. A service that is available in multiple regions might have multiple regional endpoints. Select a location to see its regional service endpoint for this service.
 
+global
+
+africa-south1
+
+asia-east1
+
+asia-east2
+
+asia-northeast1
+
+asia-northeast2
+
+asia-northeast3
+
+asia-south1
+
+asia-south2
+
+asia-southeast1
+
+asia-southeast2
+
+asia-southeast3
+
+australia-southeast1
+
+australia-southeast2
+
+europe-central2
+
+europe-north1
+
+europe-north2
+
+europe-southwest1
+
+europe-west1
+
+europe-west10
+
+europe-west12
+
+europe-west2
+
+europe-west3
+
+europe-west4
+
+europe-west6
+
+europe-west8
+
+europe-west9
+
+me-central1
+
+me-central2
+
+me-west1
+
+northamerica-northeast1
+
+northamerica-northeast2
+
+northamerica-south1
+
+southamerica-east1
+
+southamerica-west1
+
+us-central1
+
+us-east1
+
+us-east4
+
+us-east5
+
+us-south1
+
+us-west1
+
+us-west2
+
+us-west3
+
+us-west4
+
+eu
+
+us
+
   
 
 `  https://datastore.googleapis.com  `
 
-## REST Resource: [v1beta1.projects](/datastore/docs/reference/admin/rest/v1beta1/projects)
+## REST Resource: [v1beta1.projects](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1beta1/projects)
 
 Methods
 
@@ -44,7 +136,7 @@ Exports a copy of all or a subset of entities from Google Cloud Datastore to ano
 `  POST /v1beta1/projects/{projectId}:import  `  
 Imports entities into Google Cloud Datastore.
 
-## REST Resource: [v1.projects](/datastore/docs/reference/admin/rest/v1/projects)
+## REST Resource: [v1.projects](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects)
 
 Methods
 
@@ -58,7 +150,7 @@ Exports a copy of all or a subset of entities from Google Cloud Datastore to ano
 `  POST /v1/projects/{projectId}:import  `  
 Imports entities into Google Cloud Datastore.
 
-## REST Resource: [v1.projects.indexes](/datastore/docs/reference/admin/rest/v1/projects.indexes)
+## REST Resource: [v1.projects.indexes](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes)
 
 Methods
 
@@ -82,7 +174,7 @@ Gets an index.
 `  GET /v1/projects/{projectId}/indexes  `  
 Lists the indexes that match the specified filters.
 
-## REST Resource: [v1.projects.operations](/datastore/docs/reference/admin/rest/v1/projects.operations)
+## REST Resource: [v1.projects.operations](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations)
 
 Methods
 

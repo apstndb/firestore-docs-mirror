@@ -11,7 +11,7 @@ The result of applying a write.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;updateTime&quot;: string,
   &quot;transformResults&quot;: [
     {

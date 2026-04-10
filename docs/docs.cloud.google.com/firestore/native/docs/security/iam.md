@@ -24,84 +24,84 @@ Required permissions
 
 `  projects.databases.documents  `
 
-[`  batchGet  `](../reference/rest/latest/projects.databases.documents/batchGet)
+[`  batchGet  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/batchGet)
 
 `  datastore.entities.get  `
 
-[`  batchWrite  `](../reference/rest/latest/projects.databases.documents/batchWrite) update or transform with [exists precondition](../reference/rest/latest/Precondition) set to `  false  `
+[`  batchWrite  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/batchWrite) update or transform with [exists precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition) set to `  false  `
 
 `  datastore.entities.create  `
 
-[`  batchWrite  `](../reference/rest/latest/projects.databases.documents/batchWrite) update or transform with [exists precondition](../reference/rest/latest/Precondition) set to `  true  `
+[`  batchWrite  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/batchWrite) update or transform with [exists precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition) set to `  true  `
 
 `  datastore.entities.create  `
 
-[`  batchWrite  `](../reference/rest/latest/projects.databases.documents/batchWrite) update or transform with no [precondition](../reference/rest/latest/Precondition)
+[`  batchWrite  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/batchWrite) update or transform with no [precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition)
 
 `  datastore.entities.create datastore.entities.update  `
 
-[`  beginTransaction  `](../reference/rest/latest/projects.databases.documents/beginTransaction)
+[`  beginTransaction  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/beginTransaction)
 
 `  datastore.databases.get  `
 
-[`  commit  `](../reference/rest/latest/projects.databases.documents/commit) update or transform with [exists precondition](../reference/rest/latest/Precondition) set to `  false  `
+[`  commit  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/commit) update or transform with [exists precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition) set to `  false  `
 
 `  datastore.entities.create  `
 
-[`  commit  `](../reference/rest/latest/projects.databases.documents/commit) update or transform with [exists precondition](../reference/rest/latest/Precondition) set to `  true  `
+[`  commit  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/commit) update or transform with [exists precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition) set to `  true  `
 
 `  datastore.entities.update  `
 
-[`  commit  `](../reference/rest/latest/projects.databases.documents/commit) update or transform with no [precondition](../reference/rest/latest/Precondition)
+[`  commit  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/commit) update or transform with no [precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition)
 
 `  datastore.entities.create datastore.entities.update  `
 
-[`  commit  `](../reference/rest/latest/projects.databases.documents/commit) delete
+[`  commit  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/commit) delete
 
 `  datastore.entities.delete  `
 
-[`  createDocument  `](../reference/rest/latest/projects.databases.documents/createDocument)
+[`  createDocument  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/createDocument)
 
 `  datastore.entities.create  `
 
-[`  delete  `](../reference/rest/latest/projects.databases.documents/delete)
+[`  delete  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/delete)
 
 `  datastore.entities.delete  `
 
-[`  get  `](../reference/rest/latest/projects.databases.documents/get)
+[`  get  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/get)
 
 `  datastore.entities.get  `
 
-[`  list  `](../reference/rest/latest/projects.databases.documents/list)
+[`  list  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/list)
 
 `  datastore.entities.get  `  
 `  datastore.entities.list  `
 
-[`  listCollectionIds  `](../reference/rest/latest/projects.databases.documents/listCollectionIds)
+[`  listCollectionIds  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/listCollectionIds)
 
 `  datastore.entities.list  `
 
-[`  partitionQuery  `](../reference/rest/latest/projects.databases.documents/partitionQuery)
+[`  partitionQuery  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/partitionQuery)
 
 `  datastore.entities.get datastore.entities.list  `
 
-[`  patch  `](../reference/rest/latest/projects.databases.documents/patch)
+[`  patch  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/patch)
 
 `  datastore.entities.update  `
 
-[`  rollback  `](../reference/rest/latest/projects.databases.documents/rollback)
+[`  rollback  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/rollback)
 
 `  datastore.databases.get  `
 
-[`  runAggregationQuery  `](../reference/rest/latest/projects.databases.documents/runAggregationQuery)
+[`  runAggregationQuery  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/runAggregationQuery)
 
 `  datastore.entities.get datastore.entities.list  `
 
-[`  runQuery  `](../reference/rest/latest/projects.databases.documents/runQuery)
+[`  runQuery  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/runQuery)
 
 `  datastore.entities.get datastore.entities.list  `
 
-[`  executePipeline (RPC)  `](../reference/rest/latest/projects.databases.documents/executePipeline)  
+[`  executePipeline (RPC)  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/executePipeline)  
   
 with any of the following stages:  
 \- `  collection(...)  `  
@@ -110,50 +110,50 @@ with any of the following stages:
 
 `  datastore.entities.get datastore.entities.list  `
 
-[`  executePipeline (RPC)  `](../reference/rest/latest/projects.databases.documents/executePipeline)  
+[`  executePipeline (RPC)  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/executePipeline)  
   
 with any of the following stages:  
 \- `  documents(...)  `  
 
 `  datastore.entities.get  `
 
-[`  write (RPC)  `](../reference/rpc/google.firestore.v1#write) update or transform with [exists precondition](../reference/rest/latest/Precondition) set to `  false  `
+[`  write (RPC)  `](https://docs.cloud.google.com/firestore/native/docs/reference/rpc/google.firestore.v1#write) update or transform with [exists precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition) set to `  false  `
 
 `  datastore.entities.create  `
 
-[`  write (RPC)  `](../reference/rpc/google.firestore.v1#write) update or transform with [exists precondition](../reference/rest/latest/Precondition) set to `  true  `
+[`  write (RPC)  `](https://docs.cloud.google.com/firestore/native/docs/reference/rpc/google.firestore.v1#write) update or transform with [exists precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition) set to `  true  `
 
 `  datastore.entities.update  `
 
-[`  write (RPC)  `](../reference/rpc/google.firestore.v1#write) update or transform with no [precondition](../reference/rest/latest/Precondition)
+[`  write (RPC)  `](https://docs.cloud.google.com/firestore/native/docs/reference/rpc/google.firestore.v1#write) update or transform with no [precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition)
 
 `  datastore.entities.create datastore.entities.update  `
 
-[`  write (RPC)  `](../reference/rpc/google.firestore.v1#write) delete
+[`  write (RPC)  `](https://docs.cloud.google.com/firestore/native/docs/reference/rpc/google.firestore.v1#write) delete
 
 `  datastore.entities.delete  `
 
 `  projects.databases.indexes  `
 
-[`  create  `](../reference/rest/latest/projects.databases.indexes/create)
+[`  create  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.indexes/create)
 
 `  datastore.schemas.create  `
 
-[`  delete  `](../reference/rest/latest/projects.databases.indexes/delete)
+[`  delete  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.indexes/delete)
 
 `  datastore.schemas.delete  `
 
-[`  get  `](../reference/rest/latest/projects.databases.indexes/get)
+[`  get  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.indexes/get)
 
 `  datastore.schemas.get  `
 
-[`  list  `](../reference/rest/latest/projects.databases.indexes/list)
+[`  list  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.indexes/list)
 
 `  datastore.schemas.list  `
 
 `  projects.databases  `
 
-[`  create  `](../reference/rest/v1/projects.databases/create)
+[`  create  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/create)
 
 `  datastore.databases.create  `  
 
@@ -166,19 +166,19 @@ If you would like to verify whether the tag bindings are set successfully by lis
   - `  datastore.databases.listTagBindings  `
   - `  datastore.databases.listEffectiveTags  `
 
-[`  delete  `](../reference/rest/v1/projects.databases/delete)
+[`  delete  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/delete)
 
 `  datastore.databases.delete  `
 
-[`  get  `](../reference/rest/v1/projects.databases/get)
+[`  get  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/get)
 
 `  datastore.databases.getMetadata  `
 
-[`  list  `](../reference/rest/v1/projects.databases/list)
+[`  list  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/list)
 
 `  datastore.databases.list  `
 
-[`  patch  `](../reference/rest/v1/projects.databases/patch)
+[`  patch  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/patch)
 
 `  datastore.databases.update  `
 
@@ -186,7 +186,7 @@ restore
 
 `  datastore.backups.restoreDatabase  `
 
-[`  clone  `](../reference/rest/v1/projects.databases/clone)
+[`  clone  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/clone)
 
 `  datastore.databases.clone  `  
 
@@ -201,11 +201,11 @@ If you would like to verify whether the tag bindings are set successfully by lis
 
 `  projects.locations  `
 
-[`  get  `](../reference/rest/v1/projects.locations/get)
+[`  get  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.locations/get)
 
 `  datastore.locations.get  `
 
-[`  list  `](../reference/rest/v1/projects.locations/list)
+[`  list  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.locations/list)
 
 `  datastore.locations.list  `
 
@@ -439,12 +439,12 @@ The following table lists the Firestore IAM roles. You can grant multiple roles 
 
 If the predefined roles don't address your business requirements, you can define your own custom roles with permissions that you specify:
 
-  - [Learn about custom roles.](/iam/docs/understanding-custom-roles)
+  - [Learn about custom roles.](https://docs.cloud.google.com/iam/docs/understanding-custom-roles)
   - [Create and manage custom roles.](https://cloud.google.com/iam/docs/creating-custom-roles)
 
 #### Required roles to create and manage tags
 
-If any tag is represented in create or restore actions, some roles are required. See [Creating and managing tags](/resource-manager/docs/tags/tags-creating-and-managing) for more details on creating tag key-value pairs before associate them to the database resources.
+If any tag is represented in create or restore actions, some roles are required. See [Creating and managing tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing) for more details on creating tag key-value pairs before associate them to the database resources.
 
 The following listed permissions are required.
 
@@ -760,51 +760,36 @@ You can use [IAM Conditions](https://cloud.google.com/iam/docs/conditions-overvi
 
 For example, the following condition assigns a principal the `  datastore.user  ` role up until a specified date:
 
-``` text
-{
-  "role": "roles/datastore.user",
-  "members": [
-    "user:travis@example.com"
-  ],
-  "condition": {
-    "title": "Expires_December_1_2023",
-    "description": "Expires on December 1, 2023",
-    "expression":
-      "request.time < timestamp('2023-12-01T00:00:00.000Z')"
-  }
-}
-```
+    {
+      "role": "roles/datastore.user",
+      "members": [
+        "user:travis@example.com"
+      ],
+      "condition": {
+        "title": "Expires_December_1_2023",
+        "description": "Expires on December 1, 2023",
+        "expression":
+          "request.time < timestamp('2023-12-01T00:00:00.000Z')"
+      }
+    }
 
 To learn how to define IAM Conditions for temporary access, see [Configure temporary access](https://cloud.google.com/iam/docs/configuring-temporary-access) .
 
-To learn how to configure IAM Conditions for access to one or more databases, see [Configure database access conditions](/firestore/native/docs/manage-databases#configure_database_access_conditions) .
+To learn how to configure IAM Conditions for access to one or more databases, see [Configure database access conditions](https://docs.cloud.google.com/firestore/native/docs/manage-databases#configure_database_access_conditions) .
 
 ## Security rule dependency on IAM
 
-[Firestore Security Rules](/firestore/docs/security/get-started) for mobile/web clients depend on the following service account and IAM binding:
+[Firestore Security Rules](https://docs.cloud.google.com/firestore/docs/security/get-started) for mobile/web clients depend on the following service account and IAM binding:
 
-<table>
-<thead>
-<tr class="header">
-<th>Service account</th>
-<th>IAM role</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       service-               project_number              @firebase-rules.iam.gserviceaccount.com      </code></td>
-<td><code dir="ltr" translate="no">       roles/firebaserules.system      </code></td>
-</tr>
-</tbody>
-</table>
+| Service account                                                                                             | IAM role                                    |
+| ----------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| `        service-               project_number              @firebase-rules.iam.gserviceaccount.com       ` | `        roles/firebaserules.system       ` |
 
 Firebase automatically sets up this service account for you. If you remove the `  firebaserules.system  ` role from this service account, your security rules will deny all requests. To restore this IAM binding, use the following [gcloud CLI](https://cloud.google.com/sdk) command:
 
-``` text
-gcloud projects add-iam-policy-binding project_id \
---member=serviceAccount:service-project_number@firebase-rules.iam.gserviceaccount.com \
---role=roles/firebaserules.system
-```
+    gcloud projects add-iam-policy-binding project_id \
+    --member=serviceAccount:service-project_number@firebase-rules.iam.gserviceaccount.com \
+    --role=roles/firebaserules.system
 
 To determine your project\_id and project\_number , see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) .
 

@@ -1,22 +1,22 @@
 **Beta**
 
-This product is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](/terms/service-terms#1) . Pre-GA products are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+This product is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . Pre-GA products are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
 ## Mobile/Web Client Libraries
 
-  - [](/firestore/docs/client/get-firebase)
+  - [](https://docs.cloud.google.com/firestore/docs/client/get-firebase)
     
     ### Getting Started with Firebase
     
     Instructions for connecting your app to Firebase.
 
-  - [](/firestore/docs/quickstart)
+  - [](https://docs.cloud.google.com/firestore/docs/quickstart)
     
     ### Getting Started with the Mobile and Web Client Libraries
     
     See the quickstart for instructions on getting started with the Firestore mobile and web client libraries.
 
-  - [](/firestore/docs/reference/security)
+  - [](https://docs.cloud.google.com/firestore/docs/reference/security)
     
     ### Security Rules Server Client Library Reference
     
@@ -40,7 +40,7 @@ This product is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## Server Client Libraries
 
-  - [](/firestore/docs/quickstart)
+  - [](https://docs.cloud.google.com/firestore/docs/quickstart)
     
     ### Getting Started with the Server Client Libraries
     
@@ -66,7 +66,7 @@ This product is subject to the "Pre-GA Offerings Terms" in the General Service T
     
     ### PHP Server Client Library Reference
 
-  - [](/python/docs/reference/firestore/latest)
+  - [](https://docs.cloud.google.com/python/docs/reference/firestore/latest)
     
     ### Python Server Client Library Reference
 
@@ -76,13 +76,13 @@ This product is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## REST and RPC APIs
 
-  - [](/firestore/docs/reference/rest)
+  - [](https://docs.cloud.google.com/firestore/docs/reference/rest)
     
     ### REST API Overview
     
     Overview of the REST API for Firestore.
 
-  - [](/firestore/docs/reference/rpc)
+  - [](https://docs.cloud.google.com/firestore/docs/reference/rpc)
     
     ### RPC API Overview
     

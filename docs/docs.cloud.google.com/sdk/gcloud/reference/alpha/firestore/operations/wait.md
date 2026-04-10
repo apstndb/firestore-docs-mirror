@@ -14,7 +14,7 @@ EXAMPLES
 
 To wait a Cloud Firestore admin operation `  exampleOperationId  ` to complete, run:
 
-``` text
+``` wrap-code
 gcloud alpha firestore operations wait exampleOperationId
 ```
 
@@ -23,9 +23,7 @@ POSITIONAL ARGUMENTS
   - `  NAME  `  
     The unique name of the Operation to retrieve, formatted as full resource path:
     
-    ``` text
-    projects/my-app-id/databases/(default)/operations/foo
-    ```
+        projects/my-app-id/databases/(default)/operations/foo
 
 GCLOUD WIDE FLAGS
 

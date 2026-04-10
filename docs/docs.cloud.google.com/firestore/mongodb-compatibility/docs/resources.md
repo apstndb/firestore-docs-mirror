@@ -1,8 +1,8 @@
 **Beta**
 
-This product is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](/terms/service-terms#1) . Pre-GA products are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+This product is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . Pre-GA products are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
-  - [](/firestore/enterprise/pricing)
+  - [](https://docs.cloud.google.com/firestore/enterprise/pricing)
     
     ### Pricing
     
@@ -14,25 +14,25 @@ This product is subject to the "Pre-GA Offerings Terms" in the General Service T
     
     Examples of how billing units are calculated in some of the most common scenarios.
 
-  - [](/firestore/mongodb-compatibility/docs/storage-size)
+  - [](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size)
     
     ### Storage size calculations
     
     Describes the storage size of documents, fields, and index entries.
 
-  - [](/firestore/mongodb-compatibility/docs/release-notes)
+  - [](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/release-notes)
     
     ### Release Notes
     
     Product updates to Firestore with MongoDB compatibility.
 
-  - [](/firestore/mongodb-compatibility/docs/release-notes)
+  - [](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/release-notes)
     
     ### Release Notes
     
     Product updates to Firestore with MongoDB compatibility.
 
-  - [](/firestore/mongodb-compatibility/docs/locations)
+  - [](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/locations)
     
     ### Locations
     

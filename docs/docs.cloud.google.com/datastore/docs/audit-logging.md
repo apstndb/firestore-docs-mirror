@@ -1,10 +1,10 @@
 This document describes audit logging for Datastore. Google Cloud services generate audit logs that record administrative and access activities within your Google Cloud resources. For more information about Cloud Audit Logs, see the following:
 
-  - [Types of audit logs](/logging/docs/audit#types)
-  - [Audit log entry structure](/logging/docs/audit#audit_log_entry_structure)
-  - [Storing and routing audit logs](/logging/docs/audit#storing_and_routing_audit_logs)
-  - [Cloud Logging pricing summary](/stackdriver/pricing#logs-pricing-summary)
-  - [Enable Data Access audit logs](/logging/docs/audit/configure-data-access)
+  - [Types of audit logs](https://docs.cloud.google.com/logging/docs/audit#types)
+  - [Audit log entry structure](https://docs.cloud.google.com/logging/docs/audit#audit_log_entry_structure)
+  - [Storing and routing audit logs](https://docs.cloud.google.com/logging/docs/audit#storing_and_routing_audit_logs)
+  - [Cloud Logging pricing summary](https://docs.cloud.google.com/stackdriver/pricing#logs-pricing-summary)
+  - [Enable Data Access audit logs](https://docs.cloud.google.com/logging/docs/audit/configure-data-access)
 
 ## Notes
 
@@ -16,16 +16,16 @@ To view the time it took to process a `  DATA_READ  ` or `  DATA_WRITE  ` reques
 
 Datastore audit logs use the service name `  datastore.googleapis.com  ` . Filter for this service:
 
-``` text
+``` 
     protoPayload.serviceName="datastore.googleapis.com"
   
 ```
 
 ## Methods by permission type
 
-Each IAM permission has a `  type  ` property, whose value is an enum that can be one of four values: `  ADMIN_READ  ` , `  ADMIN_WRITE  ` , `  DATA_READ  ` , or `  DATA_WRITE  ` . When you call a method, Datastore generates an audit log whose category is dependent on the `  type  ` property of the permission required to perform the method. Methods that require an IAM permission with the `  type  ` property value of `  DATA_READ  ` , `  DATA_WRITE  ` , or `  ADMIN_READ  ` generate [Data Access](/logging/docs/audit#data-access) audit logs. Methods that require an IAM permission with the `  type  ` property value of `  ADMIN_WRITE  ` generate [Admin Activity](/logging/docs/audit#admin-activity) audit logs.
+Each IAM permission has a `  type  ` property, whose value is an enum that can be one of four values: `  ADMIN_READ  ` , `  ADMIN_WRITE  ` , `  DATA_READ  ` , or `  DATA_WRITE  ` . When you call a method, Datastore generates an audit log whose category is dependent on the `  type  ` property of the permission required to perform the method. Methods that require an IAM permission with the `  type  ` property value of `  DATA_READ  ` , `  DATA_WRITE  ` , or `  ADMIN_READ  ` generate [Data Access](https://docs.cloud.google.com/logging/docs/audit#data-access) audit logs. Methods that require an IAM permission with the `  type  ` property value of `  ADMIN_WRITE  ` generate [Admin Activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity) audit logs.
 
-API methods in the following list that are marked with (LRO) are long-running operations (LROs). These methods usually generate two audit log entries: one when the operation starts and another when it ends. For more information see [Audit logs for long-running operations](/logging/docs/audit/understanding-audit-logs#lro) .
+API methods in the following list that are marked with (LRO) are long-running operations (LROs). These methods usually generate two audit log entries: one when the operation starts and another when it ends. For more information see [Audit logs for long-running operations](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#lro) .
 
 <table>
 <colgroup>
@@ -93,16 +93,16 @@ The following audit logs are associated with methods belonging to `  google.data
 #### `     CreateIndex    `
 
   - **Method** : `  google.datastore.admin.v1.DatastoreAdmin.CreateIndex  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.indexes.create - ADMIN_WRITE  `
-  - **Method is a long-running or streaming operation** : [**Long-running operation**](/logging/docs/audit/understanding-audit-logs#lro)  
+  - **Method is a long-running or streaming operation** : [**Long-running operation**](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#lro)  
   - **Filter for this method** : `  protoPayload.methodName="google.datastore.admin.v1.DatastoreAdmin.CreateIndex"  `  
 
 #### `     DeleteIndex    `
 
   - **Method** : `  google.datastore.admin.v1.DatastoreAdmin.DeleteIndex  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.indexes.delete - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -111,16 +111,16 @@ The following audit logs are associated with methods belonging to `  google.data
 #### `     ExportEntities    `
 
   - **Method** : `  google.datastore.admin.v1.DatastoreAdmin.ExportEntities  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.databases.export - ADMIN_WRITE  `
-  - **Method is a long-running or streaming operation** : [**Long-running operation**](/logging/docs/audit/understanding-audit-logs#lro)  
+  - **Method is a long-running or streaming operation** : [**Long-running operation**](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#lro)  
   - **Filter for this method** : `  protoPayload.methodName="google.datastore.admin.v1.DatastoreAdmin.ExportEntities"  `  
 
 #### `     GetIndex    `
 
   - **Method** : `  google.datastore.admin.v1.DatastoreAdmin.GetIndex  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.indexes.get - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -129,16 +129,16 @@ The following audit logs are associated with methods belonging to `  google.data
 #### `     ImportEntities    `
 
   - **Method** : `  google.datastore.admin.v1.DatastoreAdmin.ImportEntities  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.databases.import - ADMIN_WRITE  `
-  - **Method is a long-running or streaming operation** : [**Long-running operation**](/logging/docs/audit/understanding-audit-logs#lro)  
+  - **Method is a long-running or streaming operation** : [**Long-running operation**](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#lro)  
   - **Filter for this method** : `  protoPayload.methodName="google.datastore.admin.v1.DatastoreAdmin.ImportEntities"  `  
 
 #### `     ListIndexes    `
 
   - **Method** : `  google.datastore.admin.v1.DatastoreAdmin.ListIndexes  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.indexes.list - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -151,19 +151,19 @@ The following audit logs are associated with methods belonging to `  google.data
 #### `     ExportEntities    `
 
   - **Method** : `  google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.databases.export - ADMIN_WRITE  `
-  - **Method is a long-running or streaming operation** : [**Long-running operation**](/logging/docs/audit/understanding-audit-logs#lro)  
+  - **Method is a long-running or streaming operation** : [**Long-running operation**](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#lro)  
   - **Filter for this method** : `  protoPayload.methodName="google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities"  `  
 
 #### `     ImportEntities    `
 
   - **Method** : `  google.datastore.admin.v1beta1.DatastoreAdmin.ImportEntities  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.databases.import - ADMIN_WRITE  `
-  - **Method is a long-running or streaming operation** : [**Long-running operation**](/logging/docs/audit/understanding-audit-logs#lro)  
+  - **Method is a long-running or streaming operation** : [**Long-running operation**](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#lro)  
   - **Filter for this method** : `  protoPayload.methodName="google.datastore.admin.v1beta1.DatastoreAdmin.ImportEntities"  `  
 
 ### `     google.datastore.v1.Datastore    `
@@ -173,7 +173,7 @@ The following audit logs are associated with methods belonging to `  google.data
 #### `     AllocateIds    `
 
   - **Method** : `  google.datastore.v1.Datastore.AllocateIds  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.allocateIds - DATA_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -182,7 +182,7 @@ The following audit logs are associated with methods belonging to `  google.data
 #### `     BeginTransaction    `
 
   - **Method** : `  google.datastore.v1.Datastore.BeginTransaction  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.databases.get - DATA_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -191,7 +191,7 @@ The following audit logs are associated with methods belonging to `  google.data
 #### `     Commit    `
 
   - **Method** : `  google.datastore.v1.Datastore.Commit  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.databases.get - DATA_READ  `
       - `  datastore.entities.create - DATA_WRITE  `
@@ -203,7 +203,7 @@ The following audit logs are associated with methods belonging to `  google.data
 #### `     Lookup    `
 
   - **Method** : `  google.datastore.v1.Datastore.Lookup  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.get - DATA_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -212,7 +212,7 @@ The following audit logs are associated with methods belonging to `  google.data
 #### `     ReserveIds    `
 
   - **Method** : `  google.datastore.v1.Datastore.ReserveIds  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.allocateIds - DATA_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -221,7 +221,7 @@ The following audit logs are associated with methods belonging to `  google.data
 #### `     Rollback    `
 
   - **Method** : `  google.datastore.v1.Datastore.Rollback  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.databases.get - DATA_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -230,7 +230,7 @@ The following audit logs are associated with methods belonging to `  google.data
 #### `     RunAggregationQuery    `
 
   - **Method** : `  google.datastore.v1.Datastore.RunAggregationQuery  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.get - DATA_READ  `
       - `  datastore.entities.list - DATA_READ  `
@@ -240,7 +240,7 @@ The following audit logs are associated with methods belonging to `  google.data
 #### `     RunQuery    `
 
   - **Method** : `  google.datastore.v1.Datastore.RunQuery  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.get - DATA_READ  `
       - `  datastore.entities.list - DATA_READ  `
@@ -254,7 +254,7 @@ The following audit logs are associated with methods belonging to `  google.data
 #### `     AllocateIds    `
 
   - **Method** : `  google.datastore.v1beta3.Datastore.AllocateIds  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.allocateIds - DATA_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -263,7 +263,7 @@ The following audit logs are associated with methods belonging to `  google.data
 #### `     BeginTransaction    `
 
   - **Method** : `  google.datastore.v1beta3.Datastore.BeginTransaction  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.databases.get - DATA_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -272,7 +272,7 @@ The following audit logs are associated with methods belonging to `  google.data
 #### `     Commit    `
 
   - **Method** : `  google.datastore.v1beta3.Datastore.Commit  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.create - DATA_WRITE  `
       - `  datastore.entities.delete - DATA_WRITE  `
@@ -283,7 +283,7 @@ The following audit logs are associated with methods belonging to `  google.data
 #### `     Lookup    `
 
   - **Method** : `  google.datastore.v1beta3.Datastore.Lookup  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.get - DATA_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -292,7 +292,7 @@ The following audit logs are associated with methods belonging to `  google.data
 #### `     ReserveIds    `
 
   - **Method** : `  google.datastore.v1beta3.Datastore.ReserveIds  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.allocateIds - DATA_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -301,7 +301,7 @@ The following audit logs are associated with methods belonging to `  google.data
 #### `     Rollback    `
 
   - **Method** : `  google.datastore.v1beta3.Datastore.Rollback  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.databases.get - DATA_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -310,7 +310,7 @@ The following audit logs are associated with methods belonging to `  google.data
 #### `     RunAggregationQuery    `
 
   - **Method** : `  google.datastore.v1beta3.Datastore.RunAggregationQuery  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.get - DATA_READ  `
       - `  datastore.entities.list - DATA_READ  `
@@ -320,7 +320,7 @@ The following audit logs are associated with methods belonging to `  google.data
 #### `     RunQuery    `
 
   - **Method** : `  google.datastore.v1beta3.Datastore.RunQuery  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.entities.get - DATA_READ  `
       - `  datastore.entities.list - DATA_READ  `
@@ -334,7 +334,7 @@ The following audit logs are associated with methods belonging to `  google.long
 #### `     CancelOperation    `
 
   - **Method** : `  google.longrunning.Operations.CancelOperation  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.operations.cancel - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -343,7 +343,7 @@ The following audit logs are associated with methods belonging to `  google.long
 #### `     DeleteOperation    `
 
   - **Method** : `  google.longrunning.Operations.DeleteOperation  `  
-  - **Audit log type** : [Admin activity](/logging/docs/audit#admin-activity)  
+  - **Audit log type** : [Admin activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity)  
   - **Permissions** :
       - `  datastore.operations.delete - ADMIN_WRITE  `
   - **Method is a long-running or streaming operation** : No.  
@@ -352,7 +352,7 @@ The following audit logs are associated with methods belonging to `  google.long
 #### `     GetOperation    `
 
   - **Method** : `  google.longrunning.Operations.GetOperation  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.operations.get - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  
@@ -361,7 +361,7 @@ The following audit logs are associated with methods belonging to `  google.long
 #### `     ListOperations    `
 
   - **Method** : `  google.longrunning.Operations.ListOperations  `  
-  - **Audit log type** : [Data access](/logging/docs/audit#data-access)  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `  datastore.operations.list - ADMIN_READ  `
   - **Method is a long-running or streaming operation** : No.  

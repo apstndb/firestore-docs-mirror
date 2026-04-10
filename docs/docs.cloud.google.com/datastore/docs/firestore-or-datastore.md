@@ -1,5 +1,7 @@
 When you create a Firestore database, you must choose between two modes: Native mode or Datastore mode. This page explains the difference between the two modes.
 
+<span id="choosing_a_database"></span>
+
 ## Choose a database mode
 
 When you create a new Firestore database, you must select a database mode. You can have both Native mode and Datastore mode databases in the same project, but each database will be of a single type.
@@ -31,7 +33,7 @@ Firestore is backwards compatible with Datastore, but the new data model, real-t
 
 Firestore in Datastore mode uses Datastore system behavior but accesses Firestore's storage layer, removing the following Datastore limitations:
 
-  - All Datastore queries are now strongly consistent, unless you explicitly request [eventual consistency](/datastore/docs/reference/data/rpc/google.datastore.v1#google.datastore.v1.ReadOptions) .
+  - All Datastore queries are now strongly consistent, unless you explicitly request [eventual consistency](https://docs.cloud.google.com/datastore/docs/reference/data/rpc/google.datastore.v1#google.datastore.v1.ReadOptions) .
   - Queries in transactions are no longer required to be ancestor queries.
   - Transactions are no longer limited to 25 entity groups.
   - Writes to an entity group are no longer limited to 1 per second.
@@ -50,13 +52,13 @@ Native mode and Datastore mode databases use the same pricing structure and are 
 
 #### Firestore in Native mode
 
-  - [Firestore pricing](/firestore/pricing)
-  - [Firestore locations](/firestore/docs/locations)
+  - [Firestore pricing](https://docs.cloud.google.com/firestore/pricing)
+  - [Firestore locations](https://docs.cloud.google.com/firestore/docs/locations)
 
 #### Firestore in Datastore mode
 
-  - [Firestore in Datastore mode pricing](/datastore/pricing)
-  - [Firestore in Datastore mode locations](/datastore/docs/locations)
+  - [Firestore in Datastore mode pricing](https://docs.cloud.google.com/datastore/pricing)
+  - [Firestore in Datastore mode locations](https://docs.cloud.google.com/datastore/docs/locations)
 
 ### Feature comparison
 
@@ -91,13 +93,13 @@ A strongly consistent storage layer.
   - Strongly consistent queries across the entire database
   - Transactions can access any number of entity groups
 
-**[Datastore v1 API](/datastore/docs/reference/data/rest) support**
+**[Datastore v1 API](https://docs.cloud.google.com/datastore/docs/reference/data/rest) support**
 
 No, requests are denied
 
 Yes
 
-**[Firestore v1 API](/firestore/docs/reference/rest) support**
+**[Firestore v1 API](https://docs.cloud.google.com/firestore/docs/reference/rest) support**
 
 Yes
 
@@ -105,7 +107,7 @@ No, requests are denied
 
 **Real-time updates**
 
-[Supports the ability to *listen* to a document or a set of documents for real-time updates.](/firestore/docs/query-data/listen)
+[Supports the ability to *listen* to a document or a set of documents for real-time updates.](https://docs.cloud.google.com/firestore/docs/query-data/listen)
 
 While listening to a document or set of documents, your clients are notified of any data changes and sent the newest set of data.
 
@@ -113,7 +115,7 @@ Not supported
 
 **Offline data persistence**
 
-[The mobile and web client libraries support offline data persistence.](/firestore/docs/manage-data/enable-offline)
+[The mobile and web client libraries support offline data persistence.](https://docs.cloud.google.com/firestore/docs/manage-data/enable-offline)
 
 Not supported
 
@@ -154,29 +156,29 @@ IAM manages database access
 
 **SLA**
 
-[Firestore SLA](/firestore/sla)
+[Firestore SLA](https://docs.cloud.google.com/firestore/sla)
 
-[Firestore SLA](/firestore/sla)
+[Firestore SLA](https://docs.cloud.google.com/firestore/sla)
 
 **Locations**
 
 Both modes support the same locations. For a detailed list of locations, see the following pages:
 
-  - [Firestore in Native mode locations](/firestore/docs/locations)
-  - [Firestore in Datastore mode locations](/datastore/docs/locations)
+  - [Firestore in Native mode locations](https://docs.cloud.google.com/firestore/docs/locations)
+  - [Firestore in Datastore mode locations](https://docs.cloud.google.com/datastore/docs/locations)
 
 **Pricing**
 
 Both modes use the same pricing structure for entity and document operations.
 
-Firestore in Datastore mode does not charge for [small operations](/datastore/pricing#small_operations) .
+Firestore in Datastore mode does not charge for [small operations](https://docs.cloud.google.com/datastore/pricing#small_operations) .
 
 Both modes use the same pricing structure for stored data and network bandwidth.
 
 For more details about pricing, see the following pages:
 
-  - [Firestore in Native mode pricing](/firestore/pricing)
-  - [Firestore in Datastore mode pricing](/datastore/pricing)
+  - [Firestore in Native mode pricing](https://docs.cloud.google.com/firestore/pricing)
+  - [Firestore in Datastore mode pricing](https://docs.cloud.google.com/datastore/pricing)
 
 **Console**
 
@@ -194,9 +196,9 @@ Namespaces supported
 
 Not supported in the App Engine standard environment Python 2.7 and PHP 5.5 runtimes
 
-Supported in the [App Engine standard environment](/appengine/docs/standard) , all other runtimes
+Supported in the [App Engine standard environment](https://docs.cloud.google.com/appengine/docs/standard) , all other runtimes
 
-Supported in the [App Engine flexible environment](/appengine/docs/flexible) , all runtimes
+Supported in the [App Engine flexible environment](https://docs.cloud.google.com/appengine/docs/flexible) , all runtimes
 
 Supported in all runtimes
 
@@ -204,7 +206,9 @@ Supported in all runtimes
 
 You can create a new Firestore database in either Native mode or Datastore mode. This choice does not depend on the modes of any existing databases in your project.
 
-See [Create and manage databases](/datastore/docs/manage-databases) for more info.
+See [Create and manage databases](https://docs.cloud.google.com/datastore/docs/manage-databases) for more info.
+
+<span id="database mode change"></span>
 
 ## Change between Native mode and Datastore mode
 
@@ -218,22 +222,18 @@ Change database to **Native mode** :
 
 Use the [gcloud firestore databases update](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/update) command to change your database to Native mode.
 
-``` text
-gcloud firestore databases update --type=firestore-native --database='DATABASE_ID'
-```
+    gcloud firestore databases update --type=firestore-native --database='DATABASE_ID'
 
 Replace DATABASE\_ID with the ID of your database.
 
 ### rest
 
-``` text
-curl --request PATCH \
---header "Authorization: Bearer "$(gcloud auth print-access-token) \
---header 'Accept: application/json' \
---header 'Content-Type: application/json' \
---data '{"type":"FIRESTORE_NATIVE"}' \
-"https://firestore.googleapis.com/v1/projects/PROJECT_ID/databases/DATABASE_ID?updateMask=type"
-```
+    curl --request PATCH \
+    --header "Authorization: Bearer "$(gcloud auth print-access-token) \
+    --header 'Accept: application/json' \
+    --header 'Content-Type: application/json' \
+    --data '{"type":"FIRESTORE_NATIVE"}' \
+    "https://firestore.googleapis.com/v1/projects/PROJECT_ID/databases/DATABASE_ID?updateMask=type"
 
 Replace the following:
 
@@ -246,7 +246,7 @@ Change database to **Datastore mode** :
 
 Use the [gcloud firestore databases update](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/update) command to change your database to Datastore mode.
 
-``` text
+``` 
  gcloud firestore databases update --type=datastore-mode --database='DATABASE_ID'
 ```
 
@@ -254,14 +254,12 @@ Replace DATABASE\_ID with the ID of your database.
 
 ### rest
 
-``` text
-curl --request PATCH \
---header "Authorization: Bearer "$(gcloud auth print-access-token) \
---header 'Accept: application/json' \
---header 'Content-Type: application/json' \
---data '{"type":"DATASTORE_MODE"}' \
-"https://firestore.googleapis.com/v1/projects/PROJECT_ID/databases/DATABASE_ID?updateMask=type"
-```
+    curl --request PATCH \
+    --header "Authorization: Bearer "$(gcloud auth print-access-token) \
+    --header 'Accept: application/json' \
+    --header 'Content-Type: application/json' \
+    --data '{"type":"DATASTORE_MODE"}' \
+    "https://firestore.googleapis.com/v1/projects/PROJECT_ID/databases/DATABASE_ID?updateMask=type"
 
 Replace the following:
 

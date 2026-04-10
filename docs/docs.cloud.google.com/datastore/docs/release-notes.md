@@ -1,6 +1,6 @@
 This page documents production updates to Datastore. You can periodically check this page for announcements about new or updated features, bug fixes, known issues, and deprecated functionality.
 
-You can see the latest product updates for all of Google Cloud on the [Google Cloud](/release-notes) page, browse and filter all release notes in the [Google Cloud console](https://console.cloud.google.com/release-notes) , or programmatically access release notes in [BigQuery](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=google_cloud_release_notes&t=release_notes&page=table) .
+You can see the latest product updates for all of Google Cloud on the [Google Cloud](https://docs.cloud.google.com/release-notes) page, browse and filter all release notes in the [Google Cloud console](https://console.cloud.google.com/release-notes) , or programmatically access release notes in [BigQuery](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=google_cloud_release_notes&t=release_notes&page=table) .
 
 To get the latest product updates delivered to you, add the URL of this page to your [feed reader](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the [feed URL](https://docs.cloud.google.com/feeds/datastore-release-notes.xml) directly.
 
@@ -10,9 +10,9 @@ Feature
 
 Regional and Multi-Regional endpoints for the Datastore API are now Generally Available ( [GA](https://cloud.google.com/products#product-launch-stages) ). You can use a Regional or a Multi-Regional endpoint to ensure that your application's requests are transmitted, stored and processed in the same region or multi-region as your database's location.
 
-To learn more, see the [Datastore regional endpoints](/datastore/docs/regional-endpoints) guide.
+To learn more, see the [Datastore regional endpoints](https://docs.cloud.google.com/datastore/docs/regional-endpoints) guide.
 
-You can also use [Private Service Connect regional endpoints](/vpc/docs/about-accessing-regional-google-apis-endpoints) and [Private Service Connect backends](/vpc/docs/private-service-connect-backends) to connect to the regional and the multi-regional endpoints of the Datastore API.
+You can also use [Private Service Connect regional endpoints](https://docs.cloud.google.com/vpc/docs/about-accessing-regional-google-apis-endpoints) and [Private Service Connect backends](https://docs.cloud.google.com/vpc/docs/private-service-connect-backends) to connect to the regional and the multi-regional endpoints of the Datastore API.
 
 ## February 02, 2026
 
@@ -331,7 +331,7 @@ Libraries
 
 Feature
 
-Use [Query insights](/datastore/docs/query-insights) to view query performance metrics for your database. This feature is now generally available ( [GA](https://cloud.google.com/products#product-launch-stages) ).
+Use [Query insights](https://docs.cloud.google.com/datastore/docs/query-insights) to view query performance metrics for your database. This feature is now generally available ( [GA](https://cloud.google.com/products#product-launch-stages) ).
 
 ## August 25, 2025
 
@@ -389,7 +389,7 @@ Libraries
 
 Feature
 
-You can [clone an existing database](/datastore/docs/manage-databases#clone-database) at a selected timestamp into a new database. This feature is available in [Preview](https://cloud.google.com/products#product-launch-stages) .
+You can [clone an existing database](https://docs.cloud.google.com/datastore/docs/manage-databases#clone-database) at a selected timestamp into a new database. This feature is available in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 ## July 21, 2025
 
@@ -525,7 +525,7 @@ Libraries
 
 Feature
 
-Committed use discounts are now [generally available (GA)](https://cloud.google.com/products#product-launch-stages) for Firestore in Datastore mode in exchange for a commitment to continuously spend a certain amount on read/write/delete operations for one year or three years. For details, see [Committed use discounts](/datastore/docs/cuds) .
+Committed use discounts are now [generally available (GA)](https://cloud.google.com/products#product-launch-stages) for Firestore in Datastore mode in exchange for a commitment to continuously spend a certain amount on read/write/delete operations for one year or three years. For details, see [Committed use discounts](https://docs.cloud.google.com/datastore/docs/cuds) .
 
 ## April 21, 2025
 
@@ -550,7 +550,7 @@ Libraries
 
 Feature
 
-You can now use Query insights to [view query performance metrics for your database](/datastore/docs/query-insights) . This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
+You can now use Query insights to [view query performance metrics for your database](https://docs.cloud.google.com/datastore/docs/query-insights) . This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 ## March 24, 2025
 
@@ -558,7 +558,7 @@ Feature
 
 Firestore in Datastore mode now supports multi-region `  nam7  ` United States (Central and East), which consists of regions `  us-central1  ` (Iowa) and `  us-east4  ` (Northern Virginia).
 
-For a full list of supported locations, see [Locations](/firestore/docs/locations) .
+For a full list of supported locations, see [Locations](https://docs.cloud.google.com/firestore/docs/locations) .
 
 Libraries
 
@@ -600,7 +600,7 @@ Feature
 
 Firestore in Datastore mode now supports the `  europe-north2  ` Stockholm region.
 
-For a full list of supported locations, see [Locations](/datastore/docs/locations) .
+For a full list of supported locations, see [Locations](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## March 03, 2025
 
@@ -722,7 +722,7 @@ Libraries
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Python
 
@@ -766,7 +766,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -784,7 +784,7 @@ Feature
 
 You can now use Active Assist to provide recommendations and insights that improve the reliability of your databases. This feature is generally available (GA).
 
-For more information, see [Reliability recommender](/datastore/docs/reliability-recommender) .
+For more information, see [Reliability recommender](https://docs.cloud.google.com/datastore/docs/reliability-recommender) .
 
 ## November 18, 2024
 
@@ -792,11 +792,11 @@ Feature
 
 Firestore in Datastore mode now supports the `  northamerica-south1  ` Queretaro region.
 
-For a full list of supported locations, see [Locations](/datastore/docs/locations) .
+For a full list of supported locations, see [Locations](https://docs.cloud.google.com/datastore/docs/locations) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -813,7 +813,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Node.js
 
@@ -832,13 +832,13 @@ Feature
 
 You can now use the managed bulk delete service to delete entities in bulk. This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
-For more information, see [Bulk delete data](/datastore/docs/bulk-delete) .
+For more information, see [Bulk delete data](https://docs.cloud.google.com/datastore/docs/bulk-delete) .
 
 ## November 04, 2024
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Node.js
 
@@ -892,7 +892,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -917,7 +917,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -942,7 +942,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -972,7 +972,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Feature
 
-You can now use [property transforms like `  increment  `](/datastore/docs/concepts/entities#property_transforms) in the REST API. This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
+You can now use [property transforms like `  increment  `](https://docs.cloud.google.com/datastore/docs/concepts/entities#property_transforms) in the REST API. This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 ## October 01, 2024
 
@@ -980,17 +980,17 @@ Feature
 
 You can now use customer-managed encryption keys (CMEK) in Datastore to protect your data. This feature is generally available (GA) behind an allow-list.
 
-For more information, see [Customer-managed encryption keys (CMEK)](/datastore/docs/cmek) .
+For more information, see [Customer-managed encryption keys (CMEK)](https://docs.cloud.google.com/datastore/docs/cmek) .
 
 Feature
 
-The Java client library for Firestore in Datastore mode [now supports client-side tracing](/datastore/docs/client-side-traces) . This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
+The Java client library for Firestore in Datastore mode [now supports client-side tracing](https://docs.cloud.google.com/datastore/docs/client-side-traces) . This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 ## September 16, 2024
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -1009,7 +1009,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Python
 
@@ -1025,7 +1025,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Go
 
@@ -1066,7 +1066,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Python
 
@@ -1082,7 +1082,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Python
 
@@ -1124,13 +1124,13 @@ Feature
 
 You can now apply range and inequality filters to multiple fields in a query. This feature is generally available (GA).
 
-For more information, see [Query with range and inequality filters on multiple fields overview](/datastore/docs/multiple-range-fields) .
+For more information, see [Query with range and inequality filters on multiple fields overview](https://docs.cloud.google.com/datastore/docs/multiple-range-fields) .
 
 ## July 01, 2024
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Node.js
 
@@ -1160,13 +1160,13 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Feature
 
-[Scheduled backups](/firestore/docs/backups) are now available in GA.
+[Scheduled backups](https://docs.cloud.google.com/firestore/docs/backups) are now available in GA.
 
 ## June 17, 2024
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Go
 
@@ -1183,7 +1183,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -1201,7 +1201,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Node.js
 
@@ -1241,7 +1241,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -1258,7 +1258,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Go
 
@@ -1291,7 +1291,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Go
 
@@ -1322,11 +1322,11 @@ Feature
 
 Firestore in Datastore mode now supports the `  us-south1  ` Dallas region.
 
-For a full list of supported locations, see [Locations](/datastore/docs/locations) .
+For a full list of supported locations, see [Locations](https://docs.cloud.google.com/datastore/docs/locations) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -1354,19 +1354,19 @@ Firestore in Datastore mode now supports the following additional locations:
   - `  us-central1  ` Iowa
   - `  us-east5  ` Columbus
 
-For a full list of supported locations, see [Locations](/datastore/docs/locations) .
+For a full list of supported locations, see [Locations](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## April 05, 2024
 
 Feature
 
-Support for [Customer-managed encryption keys (CMEK)](/datastore/docs/cmek) . This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
+Support for [Customer-managed encryption keys (CMEK)](https://docs.cloud.google.com/datastore/docs/cmek) . This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 ## April 01, 2024
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Node.js
 
@@ -1397,23 +1397,23 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Feature
 
-Datastore now supports using [range and inequality filters on multiple fields](/datastore/docs/multiple-range-fields) in a single query. This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
+Datastore now supports using [range and inequality filters on multiple fields](https://docs.cloud.google.com/datastore/docs/multiple-range-fields) in a single query. This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 Feature
 
-Support for [Query Explain](/datastore/docs/query-explain-analyze) . This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
+Support for [Query Explain](https://docs.cloud.google.com/datastore/docs/query-explain-analyze) . This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 Query Explain lets you submit queries and receive detailed query plan, billing and performance statistics on query execution in return. It helps you understand how your queries are executed, showing you inefficiencies.
 
 It functions like the `  EXPLAIN [ANALYZE]  ` operation in many relational database systems.
 
-For more information, see the [guide for Query Explain](/datastore/docs/query-explain-analyze) .
+For more information, see the [guide for Query Explain](https://docs.cloud.google.com/datastore/docs/query-explain-analyze) .
 
 ## March 25, 2024
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Python
 
@@ -1455,13 +1455,13 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Feature
 
-You can now use the Firestore emulator to test Firestore in Datastore mode behavior. Use [`  gcloud emulators firestore start  ` with `  --database-mode=datastore-mode  `](/datastore/docs/emulator) .
+You can now use the Firestore emulator to test Firestore in Datastore mode behavior. Use [`  gcloud emulators firestore start  ` with `  --database-mode=datastore-mode  `](https://docs.cloud.google.com/datastore/docs/emulator) .
 
 ## March 04, 2024
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Python
 
@@ -1495,13 +1495,13 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Feature
 
-[Eventarc events](/datastore/docs/eventarc) and [Firestore events for Cloud Functions (2nd gen)](/datastore/docs/extend-with-functions-2nd-gen) are now supported at the General Availability ( [GA](https://cloud.google.com/products#product-launch-stages) ) level.
+[Eventarc events](https://docs.cloud.google.com/datastore/docs/eventarc) and [Firestore events for Cloud Functions (2nd gen)](https://docs.cloud.google.com/datastore/docs/extend-with-functions-2nd-gen) are now supported at the General Availability ( [GA](https://cloud.google.com/products#product-launch-stages) ) level.
 
 ## January 15, 2024
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -1522,25 +1522,25 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Feature
 
-The ability to [create multiple databases per project](/datastore/docs/manage-databases) is now supported at the [General Availability level](https://cloud.google.com/products/#product-launch-stages) .
+The ability to [create multiple databases per project](https://docs.cloud.google.com/datastore/docs/manage-databases) is now supported at the [General Availability level](https://cloud.google.com/products/#product-launch-stages) .
 
 ## January 02, 2024
 
 Feature
 
-Support for the [europe-west1 (Belgium) and me-central2 (Dammam) locations](/datastore/docs/locations) .
+Support for the [europe-west1 (Belgium) and me-central2 (Dammam) locations](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## December 20, 2023
 
 Feature
 
-[Index scans in Key Visualizer](/datastore/docs/keyvis-patterns-index) are now supported at the General Availability ( [GA](https://cloud.google.com/products#product-launch-stages) ) level.
+[Index scans in Key Visualizer](https://docs.cloud.google.com/datastore/docs/keyvis-patterns-index) are now supported at the General Availability ( [GA](https://cloud.google.com/products#product-launch-stages) ) level.
 
 ## December 18, 2023
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Node.js
 
@@ -1580,13 +1580,13 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Feature
 
-You can now [create and delete non-default databases](/datastore/docs/manage-databases#create_a_database) in the Google Cloud console.
+You can now [create and delete non-default databases](https://docs.cloud.google.com/datastore/docs/manage-databases#create_a_database) in the Google Cloud console.
 
 ## December 04, 2023
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -1607,13 +1607,13 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Feature
 
-Support for Firestore in Datastore mode [point-in-time recovery (PITR)](/datastore/docs/pitr) feature that provides protection against accidental deletion or writes is now [generally available (GA)](https://cloud.google.com/products#product-launch-stages) .
+Support for Firestore in Datastore mode [point-in-time recovery (PITR)](https://docs.cloud.google.com/datastore/docs/pitr) feature that provides protection against accidental deletion or writes is now [generally available (GA)](https://cloud.google.com/products#product-launch-stages) .
 
 ## November 06, 2023
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -1629,7 +1629,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -1648,7 +1648,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -1664,7 +1664,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Node.js
 
@@ -1707,7 +1707,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -1733,7 +1733,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Python
 
@@ -1749,19 +1749,19 @@ Change
 
 Raised the maximum number of composite indexes from 200 to 500 for projects with billing enabled. The limit is 200 for projects without billing enabled.
 
-For more information about limits, see [Limits](/datastore/docs/concepts/limits) .
+For more information about limits, see [Limits](https://docs.cloud.google.com/datastore/docs/concepts/limits) .
 
 ## September 25, 2023
 
 Feature
 
-Support for [europe-west9 (Paris), me-central1 (Doha), and me-west1 (Tel Aviv)](/datastore/docs/locations) .
+Support for [europe-west9 (Paris), me-central1 (Doha), and me-west1 (Tel Aviv)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## September 18, 2023
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Node.js
 
@@ -1810,7 +1810,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Python
 
@@ -1830,7 +1830,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Go
 
@@ -1875,23 +1875,23 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Feature
 
-The [`  sum()  ` and `  avg()  ` aggregation functions](/datastore/docs/aggregation-queries) are now available for Firestore in Datastore mode.
+The [`  sum()  ` and `  avg()  ` aggregation functions](https://docs.cloud.google.com/datastore/docs/aggregation-queries) are now available for Firestore in Datastore mode.
 
 ## August 25, 2023
 
 Feature
 
-You can now [view and list multiple databases](/datastore/docs/manage-databases#list_databases) using the Google Cloud console. This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
+You can now [view and list multiple databases](https://docs.cloud.google.com/datastore/docs/manage-databases#list_databases) using the Google Cloud console. This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 Feature
 
-[Scheduled backups](/datastore/docs/backups) now available in [Preview](https://cloud.google.com/products#product-launch-stages) .
+[Scheduled backups](https://docs.cloud.google.com/datastore/docs/backups) now available in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 ## August 14, 2023
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Node.js
 
@@ -1922,11 +1922,11 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Feature
 
-You can now visualize heatmap pattern for entity keys and make better workload pattern predictions. To learn more, see [Key Visualizer](/datastore/docs/key-visualizer) . This feature is in [Preview](https://cloud.google.com/products/#product-launch-stages) .
+You can now visualize heatmap pattern for entity keys and make better workload pattern predictions. To learn more, see [Key Visualizer](https://docs.cloud.google.com/datastore/docs/key-visualizer) . This feature is in [Preview](https://cloud.google.com/products/#product-launch-stages) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -1947,7 +1947,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -1965,7 +1965,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Go
 
@@ -2006,7 +2006,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -2026,19 +2026,19 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Feature
 
-Support for Firestore in Datastore mode [point-in-time recovery (PITR)](/datastore/docs/pitr) feature that provides protection against accidental deletion or writes is now available in [Preview](https://cloud.google.com/products/#product-launch-stages) .
+Support for Firestore in Datastore mode [point-in-time recovery (PITR)](https://docs.cloud.google.com/datastore/docs/pitr) feature that provides protection against accidental deletion or writes is now available in [Preview](https://cloud.google.com/products/#product-launch-stages) .
 
 ## July 11, 2023
 
 Feature
 
-Support for the [northamerica-northeast2 (Toronto)](/datastore/docs/locations) region.
+Support for the [northamerica-northeast2 (Toronto)](https://docs.cloud.google.com/datastore/docs/locations) region.
 
 ## July 10, 2023
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Go
 
@@ -2064,13 +2064,13 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Feature
 
-[Multiple databases](/datastore/docs/manage-databases) now available in [Preview](https://cloud.google.com/products/#product-launch-stages) .
+[Multiple databases](https://docs.cloud.google.com/datastore/docs/manage-databases) now available in [Preview](https://cloud.google.com/products/#product-launch-stages) .
 
 ## July 03, 2023
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Go
 
@@ -2094,13 +2094,13 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Feature
 
-[Eventarc events](/datastore/docs/eventarc) and [Firestore in Datastore mode events for Cloud Functions (2nd gen)](/datastore/docs/extend-with-functions-2nd-gen) now available in [Preview](https://cloud.google.com/products/#product-launch-stages) .
+[Eventarc events](https://docs.cloud.google.com/datastore/docs/eventarc) and [Firestore in Datastore mode events for Cloud Functions (2nd gen)](https://docs.cloud.google.com/datastore/docs/extend-with-functions-2nd-gen) now available in [Preview](https://cloud.google.com/products/#product-launch-stages) .
 
 ## June 26, 2023
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Python
 
@@ -2132,13 +2132,13 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Announcement
 
-[`  OR  ` queries](/datastore/docs/concepts/queries#composite_filters) are now supported at the [General Availability level](https://cloud.google.com/products/#product-launch-stages) .
+[`  OR  ` queries](https://docs.cloud.google.com/datastore/docs/concepts/queries#composite_filters) are now supported at the [General Availability level](https://cloud.google.com/products/#product-launch-stages) .
 
 ## June 19, 2023
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -2162,13 +2162,13 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Feature
 
-Support for the [asia-south2 (Delhi)](/datastore/docs/locations#location-r) region.
+Support for the [asia-south2 (Delhi)](https://docs.cloud.google.com/datastore/docs/locations#location-r) region.
 
 ## May 01, 2023
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -2201,7 +2201,7 @@ Feature
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Node.js
 
@@ -2229,13 +2229,13 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Feature
 
-The Firestore in Datastore mode documentation has been updated to include guidance on using regional endpoints. For details, see [Regional endpoints](/datastore/docs/regional-endpoints) .
+The Firestore in Datastore mode documentation has been updated to include guidance on using regional endpoints. For details, see [Regional endpoints](https://docs.cloud.google.com/datastore/docs/regional-endpoints) .
 
 ## April 03, 2023
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Python
 
@@ -2267,19 +2267,19 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Change
 
-Firestore in Datastore mode no longer limits the number of entities that can be passed to a `  Commit  ` operation. Previously, the limit was 500. [The limit for request size](/datastore/docs/concepts/limits#limits) still applies.
+Firestore in Datastore mode no longer limits the number of entities that can be passed to a `  Commit  ` operation. Previously, the limit was 500. [The limit for request size](https://docs.cloud.google.com/datastore/docs/concepts/limits#limits) still applies.
 
 ## March 24, 2023
 
 Feature
 
-[`  OR  ` queries](/datastore/docs/concepts/queries#composite_filters) now available in [Preview](https://cloud.google.com/products/#product-launch-stages) .
+[`  OR  ` queries](https://docs.cloud.google.com/datastore/docs/concepts/queries#composite_filters) now available in [Preview](https://cloud.google.com/products/#product-launch-stages) .
 
 ## March 20, 2023
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Python
 
@@ -2300,13 +2300,13 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Feature
 
-Support for the [`  europe-west4  ` (Netherlands)](/datastore/docs/locations) region.
+Support for the [`  europe-west4  ` (Netherlands)](https://docs.cloud.google.com/datastore/docs/locations) region.
 
 ## March 06, 2023
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Python
 
@@ -2336,7 +2336,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Node.js
 
@@ -2364,7 +2364,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Node.js
 
@@ -2382,7 +2382,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Node.js
 
@@ -2415,7 +2415,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Python
 
@@ -2455,7 +2455,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Node.js
 
@@ -2499,7 +2499,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Python
 
@@ -2527,7 +2527,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Python
 
@@ -2560,7 +2560,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Python
 
@@ -2578,13 +2578,13 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Feature
 
-Support for the [`  australia-southeast2  ` (Melbourne)](/datastore/docs/locations) region.
+Support for the [`  australia-southeast2  ` (Melbourne)](https://docs.cloud.google.com/datastore/docs/locations) region.
 
 ## December 12, 2022
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Python
 
@@ -2634,7 +2634,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Go
 
@@ -2681,7 +2681,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Python
 
@@ -2715,7 +2715,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Go
 
@@ -2746,7 +2746,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -2762,7 +2762,7 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Python
 
@@ -2818,13 +2818,13 @@ A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
 
 Feature
 
-[`  count()  ` queries](/datastore/docs/aggregation-queries) are now available in [Preview](https://cloud.google.com/products/#product-launch-stages) .
+[`  count()  ` queries](https://docs.cloud.google.com/datastore/docs/aggregation-queries) are now available in [Preview](https://cloud.google.com/products/#product-launch-stages) .
 
 ## October 17, 2022
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Python
 
@@ -2854,13 +2854,13 @@ Feature
 
 **Note:** This feature has been disabled and moved to a future release.
 
-In the Google Cloud console, updated the pages for editing an entity. See [Edit an entity in the console](/datastore/docs/editing_entity_console) .
+In the Google Cloud console, updated the pages for editing an entity. See [Edit an entity in the console](https://docs.cloud.google.com/datastore/docs/editing_entity_console) .
 
 ## August 15, 2022
 
 Libraries
 
-A weekly digest of client library updates from across the [Cloud SDK](/sdk) .
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
 
 ### Java
 
@@ -2921,43 +2921,43 @@ Feature
 
 Feature
 
-[Support for VPC Service Controls](/datastore/docs/securing-with-vpc-sc) is now available in **General Availability** .
+[Support for VPC Service Controls](https://docs.cloud.google.com/datastore/docs/securing-with-vpc-sc) is now available in **General Availability** .
 
 ## April 28, 2022
 
 Feature
 
-The `  datastore.databases.getMetadata  ` permission now supports custom Identity and Access Management roles. You can use custom roles with this permission to [unlink your database from App Engine](/datastore/docs/app-engine-requirement) .
+The `  datastore.databases.getMetadata  ` permission now supports custom Identity and Access Management roles. You can use custom roles with this permission to [unlink your database from App Engine](https://docs.cloud.google.com/datastore/docs/app-engine-requirement) .
 
 ## January 12, 2022
 
 Feature
 
-[Support for VPC Service Controls](/datastore/docs/securing-with-vpc-sc) is now available in [Preview](https://cloud.google.com/products/#product-launch-stages) .
+[Support for VPC Service Controls](https://docs.cloud.google.com/datastore/docs/securing-with-vpc-sc) is now available in [Preview](https://cloud.google.com/products/#product-launch-stages) .
 
 ## December 15, 2021
 
 Feature
 
-[Key Visualizer for Datastore](/datastore/docs/key-visualizer) is now generally available ( [GA](https://cloud.google.com/products#product-launch-stages) ).
+[Key Visualizer for Datastore](https://docs.cloud.google.com/datastore/docs/key-visualizer) is now generally available ( [GA](https://cloud.google.com/products#product-launch-stages) ).
 
 ## November 04, 2021
 
 Feature
 
-`  DATA_READ  ` and `  DATA_WRITE  ` Data Access audit logs are now supported at the [General Availability release level](https://cloud.google.com/products/#product-launch-stages) . See [Datastore audit logging information](/datastore/docs/audit-logging) .
+`  DATA_READ  ` and `  DATA_WRITE  ` Data Access audit logs are now supported at the [General Availability release level](https://cloud.google.com/products/#product-launch-stages) . See [Datastore audit logging information](https://docs.cloud.google.com/datastore/docs/audit-logging) .
 
 ## September 02, 2021
 
 Feature
 
-Added `  DATA_READ  ` and `  DATA_WRITE  ` Data Access audit logs. See [Firestore in Datastore mode audit logging information](/datastore/docs/audit-logging) . This feature is available in **Preview** .
+Added `  DATA_READ  ` and `  DATA_WRITE  ` Data Access audit logs. See [Firestore in Datastore mode audit logging information](https://docs.cloud.google.com/datastore/docs/audit-logging) . This feature is available in **Preview** .
 
 ## July 22, 2021
 
 Change
 
-**This feature was released on [September 2, 2021](#September_02_2021) .**
+**This feature was released on [September 2, 2021](https://docs.cloud.google.com/datastore/docs/release-notes#September_02_2021) .**
 
 The `  DATA_READ  ` and `  DATA_WRITE  ` Data Access audit logs feature has been moved to a future release. It is not currently available.
 
@@ -2965,15 +2965,15 @@ The `  DATA_READ  ` and `  DATA_WRITE  ` Data Access audit logs feature has been
 
 Feature
 
-**This feature release was moved to [September 2, 2021](#September_02_2021) .**
+**This feature release was moved to [September 2, 2021](https://docs.cloud.google.com/datastore/docs/release-notes#September_02_2021) .**
 
-Added `  DATA_READ  ` and `  DATA_WRITE  ` Data Access audit logs. See [Firestore in Datastore mode audit logging information](/datastore/docs/audit-logging) . This feature is available in **Preview** .
+Added `  DATA_READ  ` and `  DATA_WRITE  ` Data Access audit logs. See [Firestore in Datastore mode audit logging information](https://docs.cloud.google.com/datastore/docs/audit-logging) . This feature is available in **Preview** .
 
 ## June 15, 2021
 
 Feature
 
-Support for [Identity and Access Management custom roles](/datastore/docs/access/iam#custom-roles) .
+Support for [Identity and Access Management custom roles](https://docs.cloud.google.com/datastore/docs/access/iam#custom-roles) .
 
 ## June 14, 2021
 
@@ -2985,81 +2985,81 @@ Support for the following additional locations:
   - `  us-west1  ` Oregeon
   - `  asia-east1  ` Taiwan
 
-See the [full list of locations](/datastore/docs/locations) .
+See the [full list of locations](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## May 13, 2021
 
 Feature
 
-You can now [view recent import and export operations from the Google Cloud Console](/datastore/docs/export-import-entities#listing_all_long-running_operations) .
+You can now [view recent import and export operations from the Google Cloud Console](https://docs.cloud.google.com/datastore/docs/export-import-entities#listing_all_long-running_operations) .
 
 ## April 13, 2021
 
 Feature
 
-Support for the [`  europe-central2  ` (Warsaw)](/datastore/docs/locations) region.
+Support for the [`  europe-central2  ` (Warsaw)](https://docs.cloud.google.com/datastore/docs/locations) region.
 
 ## September 16, 2020
 
 Feature
 
-You can now use the [`  goog-firestoremanaged  ` billing report label](/datastore/docs/export-import-entities#viewing_export_and_import_costs) to view costs related to export and import operations.
+You can now use the [`  goog-firestoremanaged  ` billing report label](https://docs.cloud.google.com/datastore/docs/export-import-entities#viewing_export_and_import_costs) to view costs related to export and import operations.
 
 ## September 14, 2020
 
 Breaking
 
-The `  gcloud datastore index create  ` and `  gcloud datastore index cleanup  ` commands now require gcloud version 279.0.0 or greater. To update the gcloud CLI, use the [`  gcloud components update  `](/sdk/docs/components#updating_components) command.
+The `  gcloud datastore index create  ` and `  gcloud datastore index cleanup  ` commands now require gcloud version 279.0.0 or greater. To update the gcloud CLI, use the [`  gcloud components update  `](https://docs.cloud.google.com/sdk/docs/components#updating_components) command.
 
 ## June 08, 2020
 
 Feature
 
-Support for the [`  asia-southeast2  ` (Jakarta)](/datastore/docs/locations) region.
+Support for the [`  asia-southeast2  ` (Jakarta)](https://docs.cloud.google.com/datastore/docs/locations) region.
 
 ## April 20, 2020
 
 Feature
 
-Support for [`  us-west4  ` region (Las Vegas)](/datastore/docs/locations) .
+Support for [`  us-west4  ` region (Las Vegas)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## March 11, 2020
 
 Feature
 
-Support for [`  us-west3  ` (Salt Lake City) and `  asia-northeast3  ` (Seoul)](/datastore/docs/locations) .
+Support for [`  us-west3  ` (Salt Lake City) and `  asia-northeast3  ` (Seoul)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## February 13, 2020
 
 Feature
 
-You can now [configure indexes with the REST API](/datastore/docs/configure-indexes-rest-api) .
+You can now [configure indexes with the REST API](https://docs.cloud.google.com/datastore/docs/configure-indexes-rest-api) .
 
 ## November 18, 2019
 
 Feature
 
-You can now [start managed export and import operations from the Google Cloud Console](/datastore/docs/export-import-entities#exporting_all_entities) .
+You can now [start managed export and import operations from the Google Cloud Console](https://docs.cloud.google.com/datastore/docs/export-import-entities#exporting_all_entities) .
 
 ## April 18, 2019
 
 Feature
 
-Support for [`  asia-northeast2  ` region (Osaka)](/datastore/docs/locations) .
+Support for [`  asia-northeast2  ` region (Osaka)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## April 15, 2019
 
 Feature
 
-Support for [`  europe-west6  ` region (Zürich)](/datastore/docs/locations) .
+Support for [`  europe-west6  ` region (Zürich)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## January 31, 2019
 
 Feature
 
-[Cloud Firestore is now Generally Available.](/firestore/docs/release-notes#january_31_2019) Cloud Firestore is the new version of Cloud Datastore and includes a backwards-compatible [Datastore mode](/firestore/docs/firestore-or-datastore#in_datastore_mode) .
+[Cloud Firestore is now Generally Available.](https://docs.cloud.google.com/firestore/docs/release-notes#january_31_2019) Cloud Firestore is the new version of Cloud Datastore and includes a backwards-compatible [Datastore mode](https://docs.cloud.google.com/firestore/docs/firestore-or-datastore#in_datastore_mode) .
 
-If you intend to use the Cloud Datastore API in a new project, use Cloud Firestore in Datastore mode. Existing Cloud Datastore databases will be [automatically upgraded to Cloud Firestore in Datastore mode](/datastore/docs/upgrade-to-firestore) .
+If you intend to use the Cloud Datastore API in a new project, use Cloud Firestore in Datastore mode. Existing Cloud Datastore databases will be [automatically upgraded to Cloud Firestore in Datastore mode](https://docs.cloud.google.com/datastore/docs/upgrade-to-firestore) .
 
 Except where noted, the Cloud Datastore documentation now describes behavior for Cloud Firestore in Datastore mode.
 
@@ -3067,40 +3067,40 @@ Except where noted, the Cloud Datastore documentation now describes behavior for
 
 Change
 
-Cloud Datastore will soon enforce IAM requirements for all App Engine apps, see [Cloud Datastore permissions for App Engine](/datastore/docs/activate#datastore-permissions-for-app-engine) . Previously, App Engine apps could always access Cloud Datastore instances in the same project.
+Cloud Datastore will soon enforce IAM requirements for all App Engine apps, see [Cloud Datastore permissions for App Engine](https://docs.cloud.google.com/datastore/docs/activate#datastore-permissions-for-app-engine) . Previously, App Engine apps could always access Cloud Datastore instances in the same project.
 
 Cloud Datastore IAM requirements for App Engine will apply to projects created after 09/03/2018 and will gradually rollout to existing projects. At a future date, all projects will enforce Cloud Datastore IAM requirements for App Engine.
 
 Feature
 
-Support for [`  asia-east2  ` region (Hong Kong)](/datastore/docs/locations) .
+Support for [`  asia-east2  ` region (Hong Kong)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## October 08, 2018
 
 Feature
 
-You can now create a [Cloud Firestore database in Datastore mode](/datastore/docs/firestore-or-datastore#choosing_a_database) . Datastore mode allows you to use Cloud Datastore client libraries with an improved Cloud Firestore storage layer, removing eventual consistency limitations.
+You can now create a [Cloud Firestore database in Datastore mode](https://docs.cloud.google.com/datastore/docs/firestore-or-datastore#choosing_a_database) . Datastore mode allows you to use Cloud Datastore client libraries with an improved Cloud Firestore storage layer, removing eventual consistency limitations.
 
-If you have an existing Cloud Datastore project, see this page on the [automatic upgrade to Cloud Firestore](/datastore/docs/upgrade-to-firestore) .
+If you have an existing Cloud Datastore project, see this page on the [automatic upgrade to Cloud Firestore](https://docs.cloud.google.com/datastore/docs/upgrade-to-firestore) .
 
 ## July 10, 2018
 
 Feature
 
-Support for [`  us-west2  ` region (Los Angeles)](/datastore/docs/locations) .
+Support for [`  us-west2  ` region (Los Angeles)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## February 28, 2018
 
 Feature
 
-General Availability release of the [Cloud Datastore Administration API v1](/datastore/docs/reference/admin/rest/v1/projects) , previously in Beta. To learn more about using this service, see:
+General Availability release of the [Cloud Datastore Administration API v1](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects) , previously in Beta. To learn more about using this service, see:
 
-  - [Exporting and Importing Entities](/datastore/docs/export-import-entities)
-  - [Scheduling an Export](/datastore/docs/schedule-export)
+  - [Exporting and Importing Entities](https://docs.cloud.google.com/datastore/docs/export-import-entities)
+  - [Scheduling an Export](https://docs.cloud.google.com/datastore/docs/schedule-export)
 
 Deprecated
 
-The Cloud Datastore Admin backup feature is being phased out in favor of the [managed export and import](/datastore/docs/export-import-entities) for Cloud Datastore. Please migrate to the managed export and import functionality at your earliest convenience. To help you make the transition, the Datastore Admin backup feature will continue to be available until February 28, 2019.
+The Cloud Datastore Admin backup feature is being phased out in favor of the [managed export and import](https://docs.cloud.google.com/datastore/docs/export-import-entities) for Cloud Datastore. Please migrate to the managed export and import functionality at your earliest convenience. To help you make the transition, the Datastore Admin backup feature will continue to be available until February 28, 2019.
 
 Deprecated
 
@@ -3110,33 +3110,33 @@ The Cloud Datastore Administration API v1beta1 is now deprecated.
 
 Feature
 
-When you begin a read-write transaction with the Cloud Datastore Data API, you can now specify a [`  previousTransaction  `](/datastore/docs/reference/data/rest/v1/projects/beginTransaction#ReadWrite) that you are retrying.
+When you begin a read-write transaction with the Cloud Datastore Data API, you can now specify a [`  previousTransaction  `](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/beginTransaction#ReadWrite) that you are retrying.
 
 Change
 
-Message [`  BeginTransactionRequest  `](/datastore/docs/reference/data/rest/v1/projects/beginTransaction) adds field `  transactionOptions  ` as part of the Data API.
+Message [`  BeginTransactionRequest  `](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/beginTransaction) adds field `  transactionOptions  ` as part of the Data API.
 
 Feature
 
-When you begin a transaction with the Cloud Datastore Data API, you can now use a [`  TransactionOptions  `](/datastore/docs/reference/data/rest/v1/projects/beginTransaction#TransactionOptions) object to specify whether the transaction is read-only or read-write.
+When you begin a transaction with the Cloud Datastore Data API, you can now use a [`  TransactionOptions  `](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/beginTransaction#TransactionOptions) object to specify whether the transaction is read-only or read-write.
 
 ## January 10, 2018
 
 Feature
 
-Support for [`  northamerica-northeast1  ` region (Montréal)](/datastore/docs/locations) .
+Support for [`  northamerica-northeast1  ` region (Montréal)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## October 31, 2017
 
 Feature
 
-Support for [`  asia-south1  ` region (Mumbai)](/datastore/docs/locations) .
+Support for [`  asia-south1  ` region (Mumbai)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## September 05, 2017
 
 Feature
 
-Support for [`  southamerica-east1  ` region (São Paulo)](/datastore/docs/locations) .
+Support for [`  southamerica-east1  ` region (São Paulo)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## August 30, 2017
 
@@ -3147,15 +3147,15 @@ Initial Beta release of the Cloud Datastore Administration API v1.
 Additions to the API definition:
 
   - Methods for exporting and importing entities.
-      - [export](/datastore/docs/reference/admin/rest/v1beta1/projects/export)
-      - [import](/datastore/docs/reference/admin/rest/v1beta1/projects/import)
+      - [export](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1beta1/projects/export)
+      - [import](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1beta1/projects/import)
   - Methods for managing long-running operations.
-      - [cancel](/datastore/docs/reference/rest/v1/projects.operations/cancel)
-      - [delete](/datastore/docs/reference/rest/v1/projects.operations/delete)
-      - [get](/datastore/docs/reference/rest/v1/projects.operations/get)
-      - [list](/datastore/docs/reference/rest/v1/projects.operations/list)
+      - [cancel](https://docs.cloud.google.com/datastore/docs/reference/rest/v1/projects.operations/cancel)
+      - [delete](https://docs.cloud.google.com/datastore/docs/reference/rest/v1/projects.operations/delete)
+      - [get](https://docs.cloud.google.com/datastore/docs/reference/rest/v1/projects.operations/get)
+      - [list](https://docs.cloud.google.com/datastore/docs/reference/rest/v1/projects.operations/list)
 
-Additions to the `  gcloud  ` command-line tool effective in [version 169.0.0](/sdk/docs/release-notes#16900_2017-08-30) :
+Additions to the `  gcloud  ` command-line tool effective in [version 169.0.0](https://docs.cloud.google.com/sdk/docs/release-notes#16900_2017-08-30) :
 
   - `  gcloud beta datastore export  ` has been added to support exporting entities
   - `  gcloud beta datastore import  ` has been added to support importing entities
@@ -3168,19 +3168,19 @@ Additions to the `  gcloud  ` command-line tool effective in [version 169.0.0](/
 
 Feature
 
-Support for [`  europe-west3  ` region (Frankfurt)](/datastore/docs/locations) .
+Support for [`  europe-west3  ` region (Frankfurt)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## July 18, 2017
 
 Feature
 
-Support for [`  australia-southeast1  ` region (Sydney)](/datastore/docs/locations) .
+Support for [`  australia-southeast1  ` region (Sydney)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## June 06, 2017
 
 Feature
 
-Support for [`  europe-west2  ` region (London)](/datastore/docs/locations) .
+Support for [`  europe-west2  ` region (London)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## August 16, 2016
 

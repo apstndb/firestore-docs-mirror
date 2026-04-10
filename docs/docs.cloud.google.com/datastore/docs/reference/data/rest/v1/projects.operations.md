@@ -1,8 +1,8 @@
-  - [Resource: Operation](#Operation)
-      - [JSON representation](#Operation.SCHEMA_REPRESENTATION)
-  - [Status](#Status)
-      - [JSON representation](#Status.SCHEMA_REPRESENTATION)
-  - [Methods](#METHODS_SUMMARY)
+  - [Resource: Operation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations#Operation)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations#Operation.SCHEMA_REPRESENTATION)
+  - [Status](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations#Status)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations#Status.SCHEMA_REPRESENTATION)
+  - [Methods](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations#METHODS_SUMMARY)
 
 ## Resource: Operation
 
@@ -19,7 +19,7 @@ This resource represents a long-running operation that is the result of a networ
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;name&quot;: string,
   &quot;metadata&quot;: {
     &quot;@type&quot;: string,
@@ -98,7 +98,7 @@ You can find out more about this error model and how to work with it in the [API
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;code&quot;: integer,
   &quot;message&quot;: string,
   &quot;details&quot;: [

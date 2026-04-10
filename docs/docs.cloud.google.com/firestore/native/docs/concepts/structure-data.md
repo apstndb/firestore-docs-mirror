@@ -55,7 +55,7 @@ You can create collections within documents when you have data that might expand
 <tbody>
 <tr class="odd">
 <td><ul>
-<li><strong>Advantages:</strong> As your lists grow, the size of the parent document doesn't change. You also get full query capabilities on subcollections, and you can issue <a href="../query-data/queries">collection group queries</a> across subcollections.</li>
+<li><strong>Advantages:</strong> As your lists grow, the size of the parent document doesn't change. You also get full query capabilities on subcollections, and you can issue <a href="https://docs.cloud.google.com/firestore/native/docs/query-data/queries">collection group queries</a> across subcollections.</li>
 <li><strong>Limitations:</strong> You can't easily delete subcollections.</li>
 <li><strong>What's a possible use case?</strong> In the same chat app, for example, you might create collections of users or messages within chat room documents.</li>
 </ul></td>

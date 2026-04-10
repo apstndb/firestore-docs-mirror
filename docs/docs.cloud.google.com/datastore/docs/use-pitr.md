@@ -1,10 +1,10 @@
 This page describes how to use point-in-time recovery (PITR) to retain and recover data in Firestore in Datastore mode.
 
-To understand PITR concepts, see [Point-in-time recovery](/datastore/docs/pitr) .
+To understand PITR concepts, see [Point-in-time recovery](https://docs.cloud.google.com/datastore/docs/pitr) .
 
 ## Permissions
 
-To get the permissions that you need to manage PITR settings, ask your administrator to grant you the [Cloud Datastore Owner](/iam/docs/roles-permissions/firestore#datastore.owner) ( `  roles/datastore.owner  ` ) IAM role on the project whose PITR settings you want to enable. For more information about granting roles, see [Manage access to projects, folders, and organizations](/iam/docs/granting-changing-revoking-access) .
+To get the permissions that you need to manage PITR settings, ask your administrator to grant you the [Cloud Datastore Owner](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.owner) ( `  roles/datastore.owner  ` ) IAM role on the project whose PITR settings you want to enable. For more information about granting roles, see [Manage access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
 
 This predefined role contains the permissions required to manage PITR settings. To see the exact permissions that are required, expand the **Required permissions** section:
 
@@ -18,7 +18,7 @@ The following permissions are required to manage PITR settings:
   - To export PITR data: `  datastore.databases.export  `
   - To import PITR data: `  datastore.databases.import  `
 
-You might also be able to get these permissions with [custom roles](/iam/docs/creating-custom-roles) or other [predefined roles](/iam/docs/roles-overview#predefined) .
+You might also be able to get these permissions with [custom roles](https://docs.cloud.google.com/iam/docs/creating-custom-roles) or other [predefined roles](https://docs.cloud.google.com/iam/docs/roles-overview#predefined) .
 
 ## Before you begin
 
@@ -34,13 +34,15 @@ Note the following points before you start using PITR:
 
 ## Enable PITR
 
-Before using PITR, [enable billing for your Google Cloud project](/billing/docs/how-to/modify-project#enable_billing_for_a_project) . Only Google Cloud projects with billing enabled can use the PITR feature.
+Before using PITR, [enable billing for your Google Cloud project](https://docs.cloud.google.com/billing/docs/how-to/modify-project#enable_billing_for_a_project) . Only Google Cloud projects with billing enabled can use the PITR feature.
 
 To enable PITR for your database:
 
 ### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -58,13 +60,11 @@ To disable PITR, clear the **Enable point-in-time recovery** checkbox from the D
 
 Enable PITR during database creation with the [`  gcloud firestore databases create  `](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/create) command as follows:
 
-``` text
-gcloud firestore databases create\
-  --location=LOCATION\
-  [--database=DATABASE_ID; default="(default)"]\
-  [--type=TYPE; default="firestore-native"]\
-  --enable-pitr
-```
+    gcloud firestore databases create\
+      --location=LOCATION\
+      [--database=DATABASE_ID; default="(default)"]\
+      [--type=TYPE; default="firestore-native"]\
+      --enable-pitr
 
 Replace the values as follows:
 
@@ -74,11 +74,9 @@ Replace the values as follows:
 
 You can disable PITR using the [`  gcloud firestore databases update  `](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/update) command as follows:
 
-``` text
-gcloud firestore databases update\
-  [--database=DATABASE_ID; default="(default)"]\
-  --no-enable-pitr
-```
+    gcloud firestore databases update\
+      [--database=DATABASE_ID; default="(default)"]\
+      --no-enable-pitr
 
 Replace the values as follows:
 
@@ -89,6 +87,8 @@ Replace the values as follows:
 ### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -104,15 +104,13 @@ Replace the values as follows:
 
 Run the [gcloud firestore databases describe](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/describe) command as follows:
 
-``` text
-gcloud firestore databases describe --database=DATABASE_ID
-```
+    gcloud firestore databases describe --database=DATABASE_ID
 
 Replace `  DATABASE_ID  ` with the database ID or `  (default)  ` .
 
 Here's the output:
 
-``` text
+``` 
     appEngineIntegrationMode: ENABLED
     concurrencyMode: PESSIMISTIC
     createTime: '2021-03-24T17:02:35.234Z'
@@ -147,7 +145,7 @@ You can read PITR data using the client libraries, REST API methods, or Firestor
 
 You must use the `  readTime  ` method in the `  ReadOption  ` class to read PITR data. You cannot use the `  ReadOnly  ` transaction to perform reads. See [ReadOption](https://github.com/googleapis/java-datastore/blob/main/google-cloud-datastore/src/main/java/com/google/cloud/datastore/ReadOption.java) sample code, for more information.
 
-``` text
+``` 
   Datastore datastore = ...
   Timestamp timestamp = ...
 
@@ -170,7 +168,7 @@ For a complete list of `  readTime  ` examples, see the [GitHub repository](http
 
 Use PITR read in Datastore mode Python SDK using the `  readTime  ` method or use the `  ReadOnly  ` transaction with `  readTime  ` to perform reads.
 
-``` text
+``` 
   from datetime import datetime, timezone
 
   read_time = datetime.now(tz=timezone.utc)
@@ -202,13 +200,13 @@ For a complete list of `  readTime  ` examples, see the [GitHub](https://github.
 
 ### REST API
 
-PITR reads are supported in the Datastore mode V1 read methods, which are [lookup](/datastore/docs/reference/data/rest/v1/projects/lookup) , [runQuery](/datastore/docs/reference/data/rest/v1/projects/runQuery) , and [runAggregationQuery](/datastore/docs/reference/data/rest/v1/projects/runAggregationQuery) .
+PITR reads are supported in the Datastore mode V1 read methods, which are [lookup](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/lookup) , [runQuery](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/runQuery) , and [runAggregationQuery](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/runAggregationQuery) .
 
 To perform a read using the REST methods, try one of the following options:
 
 1.  In the your read method request, pass the `  readTime  ` value as a supported PITR timestamp in the `  readOptions  ` method. A PITR timestamp can be either a microsecond precision timestamp within the past hour or a whole minute timestamp beyond the past hour, but not earlier than the `  earliestVersionTime  ` .
 
-2.  Use the `  readTime  ` parameter together with the `  BeginTransaction  ` method as part of a [`  ReadOnly  ` transaction](/java/docs/reference/google-cloud-datastore/latest/com.google.datastore.v1#transactionoptions.readonly) for multiple PITR reads.
+2.  Use the `  readTime  ` parameter together with the `  BeginTransaction  ` method as part of a [`  ReadOnly  ` transaction](https://docs.cloud.google.com/java/docs/reference/google-cloud-datastore/latest/com.google.datastore.v1#transactionoptions.readonly) for multiple PITR reads.
 
 ### Apache Beam
 
@@ -220,7 +218,7 @@ Specify the `  withReadTime(Instant readTime)  ` method on the [`  DatastoreV1.R
 
 The following code shows how to use the `  withReadTime  ` method for PITR reads.
 
-``` text
+``` 
   com.google.datastore.v1.Query query = ...
     Instant readTime = Instant.ofEpochSecond(1684098540L);
 
@@ -244,27 +242,29 @@ You can clone an existing database at a selected timestamp into a new database:
 
   - The cloned database is a new database that will be created in the same location as the source database.
     
-    To make a clone, Firestore uses [point-in-time recovery (PITR) data](/datastore/docs/pitr) of the source database. The cloned database includes all data and indexes.
+    To make a clone, Firestore uses [point-in-time recovery (PITR) data](https://docs.cloud.google.com/datastore/docs/pitr) of the source database. The cloned database includes all data and indexes.
 
-  - By default, the cloned database will be encrypted in the same way as the source database, using either Google's default encryption or [CMEK encryption](/datastore/docs/use-cmek) . You can specify a different encryption type or use a different key for CMEK encryption.
+  - By default, the cloned database will be encrypted in the same way as the source database, using either Google's default encryption or [CMEK encryption](https://docs.cloud.google.com/datastore/docs/use-cmek) . You can specify a different encryption type or use a different key for CMEK encryption.
 
-  - The timestamp has a granularity of one minute and specifies a point of time in the past, in the period defined by the [PITR window](/datastore/docs/pitr#pitr_window) :
+  - The timestamp has a granularity of one minute and specifies a point of time in the past, in the period defined by the [PITR window](https://docs.cloud.google.com/datastore/docs/pitr#pitr_window) :
     
       - If PITR is enabled for your database, you select any minute in the last 7 days (or less if PITR was enabled less than 7 days ago).
       - If PITR isn't enabled, you can select any minute in the past hour.
-      - You can check the earliest timestamp that you can pick [in your database's description](#get-period) .
+      - You can check the earliest timestamp that you can pick [in your database's description](https://docs.cloud.google.com/datastore/docs/use-pitr#get-period) .
 
-**Note:** To clone databases, your Google Account must have the [`  datastore.databases.clone  ` IAM permission](#permissions) .
+**Note:** To clone databases, your Google Account must have the [`  datastore.databases.clone  ` IAM permission](https://docs.cloud.google.com/datastore/docs/use-pitr#permissions) .
 
 ### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Click more\_vert **View more** in the table row for the database that you want to clone. Click **Clone** . The **Create a clone** dialog appears.
 
 3.  In the **Create a clone** dialog, provide parameters for cloning the database:
     
-    1.  In the **Give the clone an ID** field, a [database ID](manage-databases#database_id) for a new cloned database. This database ID must not be associated with an existing database.
+    1.  In the **Give the clone an ID** field, a [database ID](https://docs.cloud.google.com/datastore/docs/manage-databases#database_id) for a new cloned database. This database ID must not be associated with an existing database.
     
     2.  In the **Clone from** field, select a point in time to use for cloning. The selected time corresponds to a PITR timestamp, at the minute granularity.
 
@@ -276,29 +276,25 @@ You can clone an existing database at a selected timestamp into a new database:
 
 Use the [`  gcloud firestore databases clone  `](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/clone) command to clone a database:
 
-``` text
-gcloud firestore databases clone \
---source-database='SOURCE_DATABASE' \
---snapshot-time='PITR_TIMESTAMP' \
---destination-database='DESTINATION_DATABASE_ID'
-```
+    gcloud firestore databases clone \
+    --source-database='SOURCE_DATABASE' \
+    --snapshot-time='PITR_TIMESTAMP' \
+    --destination-database='DESTINATION_DATABASE_ID'
 
 Replace the following:
 
   - SOURCE\_DATABASE : the database name of an existing database that you want to clone. The name uses the format `  projects/ PROJECT_ID /databases/ SOURCE_DATABASE_ID  ` .
 
-  - PITR\_TIMESTAMP : a [PITR timestamp](#get-period) in the [RFC 3339 format](https://tools.ietf.org/html/rfc3339) , at minute granularity. For example: `  2025-06-01T10:20:00.00Z  ` or `  2025-06-01T10:30:00.00-07:00  ` .
+  - PITR\_TIMESTAMP : a [PITR timestamp](https://docs.cloud.google.com/datastore/docs/use-pitr#get-period) in the [RFC 3339 format](https://tools.ietf.org/html/rfc3339) , at minute granularity. For example: `  2025-06-01T10:20:00.00Z  ` or `  2025-06-01T10:30:00.00-07:00  ` .
 
-  - DESTINATION\_DATABASE\_ID : a [database ID](manage-databases#database_id) for a new cloned database. This database ID must not be associated with an existing database.
+  - DESTINATION\_DATABASE\_ID : a [database ID](https://docs.cloud.google.com/datastore/docs/manage-databases#database_id) for a new cloned database. This database ID must not be associated with an existing database.
 
 Example:
 
-``` text
-gcloud firestore databases clone \
---source-database='projects/example-project/databases/(default)' \
---snapshot-time='2025-06-01T10:20:00.00Z' \
---destination-database='example-dest-db'
-```
+    gcloud firestore databases clone \
+    --source-database='projects/example-project/databases/(default)' \
+    --snapshot-time='2025-06-01T10:20:00.00Z' \
+    --destination-database='example-dest-db'
 
 ### Change the cloned database's encryption configuration
 
@@ -310,18 +306,16 @@ By default, the cloned database will have the same encryption configuration as t
 
 The following example shows how to configure CMEK encryption for the cloned database:
 
-``` text
-gcloud firestore databases clone \
---source-database='projects/example-project/databases/(default)' \
---snapshot-time='2025-06-01T10:20:00.00Z' \
---destination-database='example-dest-db' \
---encryption-type='customer-managed-encryption' \
---kms-key-name='projects/example-project/locations/us-central1/keyRings/example-key-ring/cryptoKeys/example-key'
-```
+    gcloud firestore databases clone \
+    --source-database='projects/example-project/databases/(default)' \
+    --snapshot-time='2025-06-01T10:20:00.00Z' \
+    --destination-database='example-dest-db' \
+    --encryption-type='customer-managed-encryption' \
+    --kms-key-name='projects/example-project/locations/us-central1/keyRings/example-key-ring/cryptoKeys/example-key'
 
 ## Export and import from PITR data
 
-You can export your database to Cloud Storage from PITR data using the [`  gcloud firestore export  `](/sdk/gcloud/reference/firestore/export) command. You can export PITR data where the timestamp is a whole minute timestamp within the past seven days, but not earlier than the `  earliestVersionTime  ` . If data no longer exists at the specified timestamp, the export operation fails.
+You can export your database to Cloud Storage from PITR data using the [`  gcloud firestore export  `](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/export) command. You can export PITR data where the timestamp is a whole minute timestamp within the past seven days, but not earlier than the `  earliestVersionTime  ` . If data no longer exists at the specified timestamp, the export operation fails.
 
 The PITR export operation supports all filters, including export of all entities and export of specific kinds or namespaces.
 
@@ -331,12 +325,10 @@ The PITR export operation supports all filters, including export of all entities
     
     Run the following command to export the database to your bucket.
     
-    ``` text
-    gcloud firestore export gs://[BUCKET_NAME_PATH] \
-        --snapshot-time=[PITR_TIMESTAMP] \
-        --collection-ids=[COLLECTION_IDS] \
-        --namespace-ids=[NAMESPACE_IDS]
-    ```
+        gcloud firestore export gs://[BUCKET_NAME_PATH] \
+            --snapshot-time=[PITR_TIMESTAMP] \
+            --collection-ids=[COLLECTION_IDS] \
+            --namespace-ids=[NAMESPACE_IDS]
     
     Where,
     
@@ -345,7 +337,7 @@ The PITR export operation supports all filters, including export of all entities
       - `  COLLECTION_IDS  ` - a list of collection IDs or collection group IDs, for example- `  'specific collection group1'  ` , `  'specific collection group2'  ` .
       - `  NAMESPACE_IDS  ` - a list of namespace IDs, for example- `  'customer'  ` , `  'orders'  ` .
     
-    [Exporting a specific subset of kinds and/or namespaces with an entity filter](/datastore/docs/export-import-entities#exporting_specific_kinds_or_namespaces) is also supported.
+    [Exporting a specific subset of kinds and/or namespaces with an entity filter](https://docs.cloud.google.com/datastore/docs/export-import-entities#exporting_specific_kinds_or_namespaces) is also supported.
     
     Note the following points before exporting PITR data:
     
@@ -355,4 +347,4 @@ The PITR export operation supports all filters, including export of all entities
 
 2.  Import to a database.
     
-    Use the steps in [Import all entities](/datastore/docs/export-import-entities#importing_all_entities) to import your exported database. If any entity already exists in your database, it will be overwritten. [Importing a specific subset of kinds and/or namespaces with an entity filter](/datastore/docs/export-import-entities#importing_specific_kinds_or_namespaces) is also supported.
+    Use the steps in [Import all entities](https://docs.cloud.google.com/datastore/docs/export-import-entities#importing_all_entities) to import your exported database. If any entity already exists in your database, it will be overwritten. [Importing a specific subset of kinds and/or namespaces with an entity filter](https://docs.cloud.google.com/datastore/docs/export-import-entities#importing_specific_kinds_or_namespaces) is also supported.

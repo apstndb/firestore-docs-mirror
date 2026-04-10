@@ -1,6 +1,6 @@
 # Configure environment variables
 
-This page describes the preparation part of the [migration process](/firestore/mongodb-compatibility/docs/migrate-data) where you configure environment variables in your local environment. From this environment, you will later execute the commands that configure and actuate the migration process. Each of these commands will use one or more environment variables that you set at this stage.
+This page describes the preparation part of the [migration process](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-data) where you configure environment variables in your local environment. From this environment, you will later execute the commands that configure and actuate the migration process. Each of these commands will use one or more environment variables that you set at this stage.
 
 At this stage, you do the following:
 
@@ -15,7 +15,7 @@ The following template helps to set up environment variables that are common to 
 The template configures the following set of environment variables:
 
   - **General parameters** that are applicable to the entire migration procedure.
-  - **Datastream connection parameters** that are used to create and manage [Datastream connection profiles](/datastream/docs/create-connection-profiles) .
+  - **Datastream connection parameters** that are used to create and manage [Datastream connection profiles](https://docs.cloud.google.com/datastream/docs/create-connection-profiles) .
   - **Datastream data placement parameters** for managing data placement in the Cloud Storage bucket during the migration.
   - **Dataflow template parameters** for managing the pipeline that will copy data from the Cloud Storage bucket into your Firestore with MongoDB compatibility database.
   - **Additional Dataflow template parameters** these parameters are derived from other parameters that you specify and you don't need to set them.
@@ -23,62 +23,60 @@ The template configures the following set of environment variables:
 
 Set the following variables before proceeding with other commands in this guide:
 
-``` text
-# General parameters
-PROJECT_ID="PROJECT_ID"
-LOCATION="LOCATION"
-
-# Datastream connection parameters
-SRC_CONNECTION_PROFILE_NAME="SRC_CONNECTION_PROFILE_NAME"
-DST_CONNECTION_PROFILE_NAME="DST_CONNECTION_PROFILE_NAME"
-DATASTREAM_NAME="DATASTREAM_NAME"
-
-# Datastream data placement parameters
-GCS_BUCKET_NAME="GCS_BUCKET_NAME"
-GCS_BUCKET_ROOT_PATH="GCS_BUCKET_ROOT_PATH"
-GCS_BUCKET_SUB_PATH="GCS_BUCKET_SUB_PATH"
-
-# Dataflow template parameters
-GCS_BUCKET_TEMPLATE_PATH="GCS_BUCKET_TEMPLATE_PATH"
-NUM_WORKERS=NUM_WORKERS
-MAX_WORKERS=MAX_WORKERS
-WORKER_TYPE="WORKER_TYPE"
-
-# Additional Dataflow template parameters: these are initialized
-# from parameters above and don't require further customization
-INPUT_FILE_LOCATION="gs://${GCS_BUCKET_NAME}/${GCS_BUCKET_ROOT_PATH}/${GCS_BUCKET_SUB_PATH}/"
-TEMP_OUTPUT_LOCATION="gs://${GCS_BUCKET_NAME}/${GCS_BUCKET_ROOT_PATH}/tmp"
-DLQ_LOCATION="gs://${GCS_BUCKET_NAME}/${GCS_BUCKET_ROOT_PATH}/dql"
-STAGING_LOCATION="gs://${GCS_BUCKET_NAME}/${GCS_BUCKET_ROOT_PATH}/staging"
-
-# Firestore connection parameters
-FIRESTORE_CONNECTION_URI="FIRESTORE_CONNECTION_URI"
-FIRESTORE_DATABASE_NAME="FIRESTORE_DATABASE_NAME"
-```
+    # General parameters
+    PROJECT_ID="PROJECT_ID"
+    LOCATION="LOCATION"
+    
+    # Datastream connection parameters
+    SRC_CONNECTION_PROFILE_NAME="SRC_CONNECTION_PROFILE_NAME"
+    DST_CONNECTION_PROFILE_NAME="DST_CONNECTION_PROFILE_NAME"
+    DATASTREAM_NAME="DATASTREAM_NAME"
+    
+    # Datastream data placement parameters
+    GCS_BUCKET_NAME="GCS_BUCKET_NAME"
+    GCS_BUCKET_ROOT_PATH="GCS_BUCKET_ROOT_PATH"
+    GCS_BUCKET_SUB_PATH="GCS_BUCKET_SUB_PATH"
+    
+    # Dataflow template parameters
+    GCS_BUCKET_TEMPLATE_PATH="GCS_BUCKET_TEMPLATE_PATH"
+    NUM_WORKERS=NUM_WORKERS
+    MAX_WORKERS=MAX_WORKERS
+    WORKER_TYPE="WORKER_TYPE"
+    
+    # Additional Dataflow template parameters: these are initialized
+    # from parameters above and don't require further customization
+    INPUT_FILE_LOCATION="gs://${GCS_BUCKET_NAME}/${GCS_BUCKET_ROOT_PATH}/${GCS_BUCKET_SUB_PATH}/"
+    TEMP_OUTPUT_LOCATION="gs://${GCS_BUCKET_NAME}/${GCS_BUCKET_ROOT_PATH}/tmp"
+    DLQ_LOCATION="gs://${GCS_BUCKET_NAME}/${GCS_BUCKET_ROOT_PATH}/dql"
+    STAGING_LOCATION="gs://${GCS_BUCKET_NAME}/${GCS_BUCKET_ROOT_PATH}/staging"
+    
+    # Firestore connection parameters
+    FIRESTORE_CONNECTION_URI="FIRESTORE_CONNECTION_URI"
+    FIRESTORE_DATABASE_NAME="FIRESTORE_DATABASE_NAME"
 
 Replace the following:
 
   - General parameters:
     
-      - PROJECT\_ID : a [Project ID](/resource-manager/docs/creating-managing-projects) of the Google Cloud project where the migration pipeline will run. Example: `  example-project  ` .
+      - PROJECT\_ID : a [Project ID](https://docs.cloud.google.com/resource-manager/docs/creating-managing-projects) of the Google Cloud project where the migration pipeline will run. Example: `  example-project  ` .
         
         It's possible to use a destination Firestore with MongoDB compatibility database that is located in another project. However, this guide assumes that all relevant resources are located in the same project.
     
-      - LOCATION : [a region](/firestore/mongodb-compatibility/docs/locations) where the migration pipeline will run. Examples: `  nam5  ` , `  us-central1  ` .
+      - LOCATION : [a region](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/locations) where the migration pipeline will run. Examples: `  nam5  ` , `  us-central1  ` .
         
         We recommed to use the same region as the destination Firestore with MongoDB compatibility database.
 
   - Datastream connection parameters:
     
-      - SRC\_CONNECTION\_PROFILE\_NAME : a human-readable name for the [Datastream connection profile](/datastream/docs/create-connection-profiles) of the MongoDB-compatible source database. Example: `  source-mongo-profile  ` .
+      - SRC\_CONNECTION\_PROFILE\_NAME : a human-readable name for the [Datastream connection profile](https://docs.cloud.google.com/datastream/docs/create-connection-profiles) of the MongoDB-compatible source database. Example: `  source-mongo-profile  ` .
         
         You create a connection profile with this name later.
     
-      - DST\_CONNECTION\_PROFILE\_NAME : a human-readable name for the [Datastream connection profile](/datastream/docs/create-connection-profiles) for the destination Cloud Storage bucket. Example: `  destination-gcs-profile  ` .
+      - DST\_CONNECTION\_PROFILE\_NAME : a human-readable name for the [Datastream connection profile](https://docs.cloud.google.com/datastream/docs/create-connection-profiles) for the destination Cloud Storage bucket. Example: `  destination-gcs-profile  ` .
         
         You create a destination connection profile with this name later.
     
-      - DATASTREAM\_NAME : A human-readable name of a [Datastream stream](/datastream/docs/create-a-stream) that will transfer the data from the MongoDB-compatible source database into Cloud Storage. Example: `  mongo-to-gcs-stream  ` .
+      - DATASTREAM\_NAME : A human-readable name of a [Datastream stream](https://docs.cloud.google.com/datastream/docs/create-a-stream) that will transfer the data from the MongoDB-compatible source database into Cloud Storage. Example: `  mongo-to-gcs-stream  ` .
         
         You create this stream later.
 
@@ -86,7 +84,7 @@ Replace the following:
     
     **Note:** Wildcards are not supported in the Cloud Storage paths.
     
-      - GCS\_BUCKET\_NAME : the name of the Cloud Storage bucket that you've [created earlier](/firestore/mongodb-compatibility/docs/migrate-configure-resources#create-bucket) . Example: `  mongo-migration-bucket  ` .
+      - GCS\_BUCKET\_NAME : the name of the Cloud Storage bucket that you've [created earlier](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-resources#create-bucket) . Example: `  mongo-migration-bucket  ` .
         
         This value is used to create a destination connection profile later.
     
@@ -102,19 +100,19 @@ Replace the following:
 
   - Dataflow template parameters:
     
-      - GCS\_BUCKET\_TEMPLATE\_PATH : A sub-path in the GCS\_BUCKET\_ROOT\_PATH directory where a [Dataflow template](/dataflow/docs/concepts/dataflow-templates) will be staged. Example: `  mongo-migration-template-path  ` .
+      - GCS\_BUCKET\_TEMPLATE\_PATH : A sub-path in the GCS\_BUCKET\_ROOT\_PATH directory where a [Dataflow template](https://docs.cloud.google.com/dataflow/docs/concepts/dataflow-templates) will be staged. Example: `  mongo-migration-template-path  ` .
     
       - NUM\_WORKERS : The starting number of workers to run the Dataflow template with. Example: `  2  ` .
     
       - MAX\_WORKERS : The maximum number of workers to run the Dataflow template with. Example: `  8  ` .
     
-      - WORKER\_TYPE : The Compute Engine instance type to use for the Dataflow job. The recommended machine type is [`  e2-highmem-8  `](/compute/docs/general-purpose-machines#e2-high-mem) .
+      - WORKER\_TYPE : The Compute Engine instance type to use for the Dataflow job. The recommended machine type is [`  e2-highmem-8  `](https://docs.cloud.google.com/compute/docs/general-purpose-machines#e2-high-mem) .
 
   - Firestore connection parameters:
     
       - FIRESTORE\_DATABASE\_NAME : The name of the Firestore with MongoDB compatibility database where you migrate the data. Example: `  firestore-database-name  ` .
     
-      - FIRESTORE\_CONNECTION\_URI : The [connection URI string](/firestore/mongodb-compatibility/docs/create-and-query-database#create-database) for the Firestore with MongoDB compatibility database.
+      - FIRESTORE\_CONNECTION\_URI : The [connection URI string](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database#create-database) for the Firestore with MongoDB compatibility database.
         
         Example: `  mongodb://USERNAME:PASSWORD@CONNECTION_STRING:443/ FIRESTORE_DATABASE_NAME ?loadBalanced=true&authMechanism=SCRAM-SHA-256&tls=true&retryWrites=false  ` .
 
@@ -126,15 +124,13 @@ The following templates help to set up environment variables that are specific t
 
 The following variables are specific for MongoDB source databases located in a self-managed cluster (Compute Engine). Set them before proceeding with other commands in this guide:
 
-``` text
-# Google Compute Engine VM MongoDB Parameters
-MONGODB_USERNAME="MONGODB_USERNAME"
-MONGODB_PASSWORD="MONGODB_PASSWORD"
-MONGODB_IP_ADDRESS="MONGODB_IP_ADDRESS"
-REPLICA_SET="REPLICA_SET"
-MONGODB_DATABASE_NAME="MONGODB_DATABASE_NAME"
-PRIVATE_CONNECTION_NAME="PRIVATE_CONNECTION_NAME"
-```
+    # Google Compute Engine VM MongoDB Parameters
+    MONGODB_USERNAME="MONGODB_USERNAME"
+    MONGODB_PASSWORD="MONGODB_PASSWORD"
+    MONGODB_IP_ADDRESS="MONGODB_IP_ADDRESS"
+    REPLICA_SET="REPLICA_SET"
+    MONGODB_DATABASE_NAME="MONGODB_DATABASE_NAME"
+    PRIVATE_CONNECTION_NAME="PRIVATE_CONNECTION_NAME"
 
 Replace the following:
 
@@ -152,26 +148,24 @@ Replace the following:
 
   - MONGODB\_DATABASE\_NAME : The name of the MongoDB-compatible source database. Example: `  source_db  ` .
 
-  - PRIVATE\_CONNECTION\_NAME : The ID of the private connectivity configuration that [you've created earlier](/firestore/mongodb-compatibility/docs/migrate-configure-resources#source-specific-configuration) . Example: `  pc_name  ` .
+  - PRIVATE\_CONNECTION\_NAME : The ID of the private connectivity configuration that [you've created earlier](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-resources#source-specific-configuration) . Example: `  pc_name  ` .
 
 ### MongoDB over SSH
 
-If you are managing a private MongoDB deployment outside of Compute Engine, Datastream supports connecting to your source database over a forward-SSH tunnel. For more information, see [SSH tunnels](/datastream/docs/network-connectivity-options#sshtunnel) .
+If you are managing a private MongoDB deployment outside of Compute Engine, Datastream supports connecting to your source database over a forward-SSH tunnel. For more information, see [SSH tunnels](https://docs.cloud.google.com/datastream/docs/network-connectivity-options#sshtunnel) .
 
 The following variables are specific for connecting to MongoDB source databases over a forward-SSH tunnel. Set them before proceeding with other commands in this guide:
 
-``` text
-# MongoDB over an SSH Tunnel Parameters
-MONGODB_USERNAME="MONGODB_USERNAME"
-MONGODB_PASSWORD="MONGODB_PASSWORD"
-MONGODB_IP_ADDRESS="MONGODB_IP_ADDRESS"
-REPLICA_SET="REPLICA_SET"
-MONGODB_DATABASE_NAME="MONGODB_DATABASE_NAME"
-BASTION_IP_ADDRESS="BASTION_IP_ADDRESS"
-BASTION_SSH_PORT="BASTION_SSH_PORT"
-BASTION_SSH_USERNAME="BASTION_SSH_USERNAME"
-BASTION_SSH_PRIVATE_KEY="BASTION_SSH_PRIVATE_KEY"
-```
+    # MongoDB over an SSH Tunnel Parameters
+    MONGODB_USERNAME="MONGODB_USERNAME"
+    MONGODB_PASSWORD="MONGODB_PASSWORD"
+    MONGODB_IP_ADDRESS="MONGODB_IP_ADDRESS"
+    REPLICA_SET="REPLICA_SET"
+    MONGODB_DATABASE_NAME="MONGODB_DATABASE_NAME"
+    BASTION_IP_ADDRESS="BASTION_IP_ADDRESS"
+    BASTION_SSH_PORT="BASTION_SSH_PORT"
+    BASTION_SSH_USERNAME="BASTION_SSH_USERNAME"
+    BASTION_SSH_PRIVATE_KEY="BASTION_SSH_PRIVATE_KEY"
 
 Replace the following:
 
@@ -197,27 +191,25 @@ Replace the following:
 
   - BASTION\_SSH\_PRIVATE\_KEY : The full payload of the SSH private key. For example, for an RSA key, this payload would include the `  -----BEGIN RSA PRIVATE KEY-----  ` header and the `  -----END RSA PRIVATE KEY-----  ` footer. Example: `  BASTION_SSH_PRIVATE_KEY=$(cat ~/.ssh/private_key)  `
     
-    **Note:** Datastream also accepts an SSH password. This alternative is described in the [Connection Profile](/firestore/mongodb-compatibility/docs/migrate-create-connection-profiles#connection-profile-source) section.
+    **Note:** Datastream also accepts an SSH password. This alternative is described in the [Connection Profile](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-create-connection-profiles#connection-profile-source) section.
 
 ### Amazon DocumentDB
 
-Ensure that you have the private SSH key for the Amazon EC2 instance that will provide the connection to the DocumentDB cluster. Also ensure that you have downloaded the region-specific Certificate Bundle as described in the [Resource Configuration](/firestore/mongodb-compatibility/docs/migrate-configure-resources#source-specific-configuration) section, and extracted and validated a specific certificate.
+Ensure that you have the private SSH key for the Amazon EC2 instance that will provide the connection to the DocumentDB cluster. Also ensure that you have downloaded the region-specific Certificate Bundle as described in the [Resource Configuration](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-resources#source-specific-configuration) section, and extracted and validated a specific certificate.
 
 The following variables are specific for connecting to DocumentDB source databases over a forward-SSH tunnel. Set them before proceeding with other commands in this guide:
 
-``` text
-# DocumentDB over an EC2 SSH Tunnel Parameters
-MONGODB_USERNAME="MONGODB_USERNAME"
-MONGODB_PASSWORD="MONGODB_PASSWORD"
-MONGODB_HOST_ADDRESS="MONGODB_HOST_ADDRESS"
-REPLICA_SET="REPLICA_SET"
-MONGODB_DATABASE_NAME="MONGODB_DATABASE_NAME"
-BASTION_IP_ADDRESS="BASTION_IP_ADDRESS"
-BASTION_SSH_PORT="BASTION_SSH_PORT"
-BASTION_SSH_USERNAME="BASTION_SSH_USERNAME"
-BASTION_SSH_PRIVATE_KEY="BASTION_SSH_PRIVATE_KEY"
-DOCUMENT_DB_CA_CERTIFICATE="DOCUMENT_DB_CA_CERTIFICATE"
-```
+    # DocumentDB over an EC2 SSH Tunnel Parameters
+    MONGODB_USERNAME="MONGODB_USERNAME"
+    MONGODB_PASSWORD="MONGODB_PASSWORD"
+    MONGODB_HOST_ADDRESS="MONGODB_HOST_ADDRESS"
+    REPLICA_SET="REPLICA_SET"
+    MONGODB_DATABASE_NAME="MONGODB_DATABASE_NAME"
+    BASTION_IP_ADDRESS="BASTION_IP_ADDRESS"
+    BASTION_SSH_PORT="BASTION_SSH_PORT"
+    BASTION_SSH_USERNAME="BASTION_SSH_USERNAME"
+    BASTION_SSH_PRIVATE_KEY="BASTION_SSH_PRIVATE_KEY"
+    DOCUMENT_DB_CA_CERTIFICATE="DOCUMENT_DB_CA_CERTIFICATE"
 
 Replace the following:
 
@@ -245,13 +237,11 @@ Replace the following:
 
 The following variables are specific for Azure Cosmos DB source databases. Set them before proceeding with other commands in this guide:
 
-``` text
-# Azure Cosmos DB Parameters
-MONGODB_USERNAME="MONGODB_USERNAME"
-MONGODB_PASSWORD="MONGODB_PASSWORD"
-MONGODB_HOST_ADDRESS="MONGODB_HOST_ADDRESS"
-MONGODB_DATABASE_NAME="MONGODB_DATABASE_NAME"
-```
+    # Azure Cosmos DB Parameters
+    MONGODB_USERNAME="MONGODB_USERNAME"
+    MONGODB_PASSWORD="MONGODB_PASSWORD"
+    MONGODB_HOST_ADDRESS="MONGODB_HOST_ADDRESS"
+    MONGODB_DATABASE_NAME="MONGODB_DATABASE_NAME"
 
 Replace the following:
 
@@ -264,13 +254,11 @@ Replace the following:
 
 The following variables are specific for MongoDB Atlas source databases. Set them before proceeding with other commands in this guide:
 
-``` text
-# MongoDB Atlas Parameters
-MONGODB_USERNAME="MONGODB_USERNAME"
-MONGODB_PASSWORD="MONGODB_PASSWORD"
-MONGODB_HOST_ADDRESS="MONGODB_HOST"
-MONGODB_DATABASE_NAME="MONGODB_DATABASE_NAME"
-```
+    # MongoDB Atlas Parameters
+    MONGODB_USERNAME="MONGODB_USERNAME"
+    MONGODB_PASSWORD="MONGODB_PASSWORD"
+    MONGODB_HOST_ADDRESS="MONGODB_HOST"
+    MONGODB_DATABASE_NAME="MONGODB_DATABASE_NAME"
 
 Replace the following:
 
@@ -281,4 +269,4 @@ Replace the following:
 
 ## What's next
 
-Proceed to [Create connection profiles](/firestore/mongodb-compatibility/docs/migrate-create-connection-profiles) .
+Proceed to [Create connection profiles](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-create-connection-profiles) .

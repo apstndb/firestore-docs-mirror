@@ -1,6 +1,6 @@
 # Test security rules
 
-As you're building your app, you might want to lock down access to your Firestore in Native Mode database. However, before you launch, you'll need more nuanced Firestore Security Rules. With the Firestore in Native Mode emulator, in addition to prototyping and testing your app's [general features and behavior](//firebase.google.com/docs/emulator-suite/connect_and_prototype) , you can write unit tests that check the behavior of your Firestore Security Rules.
+As you're building your app, you might want to lock down access to your Firestore in Native Mode database. However, before you launch, you'll need more nuanced Firestore Security Rules. With the Firestore in Native Mode emulator, in addition to prototyping and testing your app's [general features and behavior](https://firebase.google.com/docs/emulator-suite/connect_and_prototype) , you can write unit tests that check the behavior of your Firestore Security Rules.
 
 **Note:** The server client libraries bypass all Firestore Security Rules and instead authenticate through [Google Application Default Credentials](https://cloud.google.com/docs/authentication/production) . If you're using the server client libraries or the REST or RPC APIs, make sure to set up [Identity and Access Management (IAM) for Firestore](https://cloud.google.com/firestore/docs/security/iam) .
 
@@ -10,7 +10,7 @@ For a few basic test cases with simple rules, try out the [quickstart sample](ht
 
 ## Understand Firestore Security Rules
 
-Implement [Firebase Authentication](https://firebase.google.com/docs/auth/) and [Firestore Security Rules](/firestore/native/docs/security/get-started) for serverless authentication, authorization, and data validation when you use the mobile and web client libraries.
+Implement [Firebase Authentication](https://firebase.google.com/docs/auth/) and [Firestore Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/get-started) for serverless authentication, authorization, and data validation when you use the mobile and web client libraries.
 
 Firestore Security Rules include two pieces:
 
@@ -21,48 +21,38 @@ Firebase Authentication verifies users' credentials and provides the foundation 
 
 Every database request from a Firestore mobile/web client library is evaluated against your security rules before reading or writing any data. If the rules deny access to any of the specified document paths, the entire request fails.
 
-Learn more about Firestore Security Rules in [Get started with Firestore Security Rules](/firestore/native/docs/security/get-started) .
+Learn more about Firestore Security Rules in [Get started with Firestore Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/get-started) .
 
 ## Install the emulator
 
-To install the Firestore in Native Mode emulator, use the [Firebase CLI](//firebase.google.com/docs/cli/) and run the command below:
+To install the Firestore in Native Mode emulator, use the [Firebase CLI](https://firebase.google.com/docs/cli/) and run the command below:
 
-``` text
-firebase setup:emulators:firestore
-```
+    firebase setup:emulators:firestore
 
 ## Run the emulator
 
-Begin by initializing a Firebase project in your working directory. This is a common first step when [using the Firebase CLI](//firebase.google.com/docs/cli#initialize_a_firebase_project) .
+Begin by initializing a Firebase project in your working directory. This is a common first step when [using the Firebase CLI](https://firebase.google.com/docs/cli#initialize_a_firebase_project) .
 
-``` text
-firebase init
-```
+    firebase init
 
 Start the emulator using the following command. The emulator will run until you kill the process:
 
-``` text
-firebase emulators:start --only firestore
-```
+    firebase emulators:start --only firestore
 
 In many cases you want to start the emulator, run a test suite, and then shut down the emulator after the tests run. You can do this easily using the `  emulators:exec  ` command:
 
-``` text
-firebase emulators:exec --only firestore "./my-test-script.sh"
-```
+    firebase emulators:exec --only firestore "./my-test-script.sh"
 
 When started the emulator will attempt to run on a default port (8080). You can change the emulator port by modifying the `  "emulators"  ` section of your `  firebase.json  ` file:
 
-``` text
-{
-  // ...
-  "emulators": {
-    "firestore": {
-      "port": "YOUR_PORT"
+    {
+      // ...
+      "emulators": {
+        "firestore": {
+          "port": "YOUR_PORT"
+        }
+      }
     }
-  }
-}
-```
 
 ## Before you run the emulator
 
@@ -76,10 +66,10 @@ Before you start using the emulator, keep in mind the following:
 
 ### Run local unit tests with the v9 JavaScript SDK
 
-Firebase distributes a Security Rules unit testing library with both its version 9 JavaScript SDK and its version 8 SDK. The library APIs are significantly different. We recommend the v9 testing library, which is more streamlined and requires less setup to connect to emulators and thus safely avoid accidental use of production resources. For backwards compatibility, we continue to make the [v8 testing library available](//firebase.google.com/docs/rules/unit-tests#rut-v1-testing) .
+Firebase distributes a Security Rules unit testing library with both its version 9 JavaScript SDK and its version 8 SDK. The library APIs are significantly different. We recommend the v9 testing library, which is more streamlined and requires less setup to connect to emulators and thus safely avoid accidental use of production resources. For backwards compatibility, we continue to make the [v8 testing library available](https://firebase.google.com/docs/rules/unit-tests#rut-v1-testing) .
 
-  - [Common test methods and utility functions in the v9 SDK](#rut-v2-common-methods)
-  - [Emulator-specific test methods in the v9 SDK](#rut-v2-specific-methods)
+  - [Common test methods and utility functions in the v9 SDK](https://docs.cloud.google.com/firestore/native/docs/security/test-rules-emulator#rut-v2-common-methods)
+  - [Emulator-specific test methods in the v9 SDK](https://docs.cloud.google.com/firestore/native/docs/security/test-rules-emulator#rut-v2-specific-methods)
 
 Use the `  @firebase/rules-unit-testing  ` module to interact with the emulator that runs locally. If you get timeouts or `  ECONNREFUSED  ` errors, double-check that the emulator is actually running.
 
@@ -89,16 +79,14 @@ The v9 Rules Unit Testing library is always aware of the emulators and never tou
 
 You import the library using v9 modular import statements. For example:
 
-``` text
-import {
-  assertFails,
-  assertSucceeds,
-  initializeTestEnvironment
-} from "@firebase/rules-unit-testing"
-
-// Use `const { … } = require("@firebase/rules-unit-testing")` if imports are not supported
-// Or we suggest `const testing = require("@firebase/rules-unit-testing")` if necessary.
-```
+    import {
+      assertFails,
+      assertSucceeds,
+      initializeTestEnvironment
+    } from "@firebase/rules-unit-testing"
+    
+    // Use `const { … } = require("@firebase/rules-unit-testing")` if imports are not supported
+    // Or we suggest `const testing = require("@firebase/rules-unit-testing")` if necessary.
 
 Once imported, implementing unit tests involves:
 
@@ -107,11 +95,11 @@ Once imported, implementing unit tests involves:
   - Setting up test suite and per-test before/after hooks with calls to clean up test data and environment, like `  RulesTestEnvironment.cleanup()  ` or `  RulesTestEnvironment.clearFirestore()  ` .
   - Implementing test cases that mimic authentication states using `  RulesTestEnvironment.authenticatedContext  ` and `  RulesTestEnvironment.unauthenticatedContext  ` .
 
-**Note:** A summary of the API for the Rules unit testing library is provided below. You can also review the [full API reference documentation](//firebase.google.com/docs/reference/emulator-suite/rules-unit-testing/rules-unit-testing) .
+**Note:** A summary of the API for the Rules unit testing library is provided below. You can also review the [full API reference documentation](https://firebase.google.com/docs/reference/emulator-suite/rules-unit-testing/rules-unit-testing) .
 
 ### Common methods and utility functions
 
-Also see [emulator-specific test methods in the v9 SDK](#rut-v2-specific-methods) .
+Also see [emulator-specific test methods in the v9 SDK](https://docs.cloud.google.com/firestore/native/docs/security/test-rules-emulator#rut-v2-specific-methods) .
 
 **`  initializeTestEnvironment() => RulesTestEnvironment  `**
 
@@ -119,14 +107,12 @@ This function initializes a test environment for rules unit testing. Call this f
 
 The function accepts an optional object defining a `  TestEnvironmentConfig  ` , which can consist of a project ID and emulator configuration settings.
 
-``` text
-let testEnv = await initializeTestEnvironment({
-  projectId: "demo-project-1234",
-  firestore: {
-    rules: fs.readFileSync("firestore.rules", "utf8"),
-  },
-});
-```
+    let testEnv = await initializeTestEnvironment({
+      projectId: "demo-project-1234",
+      firestore: {
+        rules: fs.readFileSync("firestore.rules", "utf8"),
+      },
+    });
 
 Note: The emulators persist data between test invocations on a single emulator run. This might impact your results. To clear data between each test run, call the applicable clear emulator data method, e.g. `  clearFirestoreData  ` , between tests.
 
@@ -136,14 +122,12 @@ This method creates a `  RulesTestContext  ` , which behaves like an authenticat
 
 Use the returned test context object in your tests to access any emulator instances configured, including those configured with `  initializeTestEnvironment  ` .
 
-``` text
-// Assuming a Firestore app and the Firestore emulator for this example
-import { setDoc } from "firebase/firestore";
-
-const alice = testEnv.authenticatedContext("alice", { … });
-// Use the Firestore instance associated with this context
-await assertSucceeds(setDoc(alice.firestore().doc('/users/alice'), { ... });
-```
+    // Assuming a Firestore app and the Firestore emulator for this example
+    import { setDoc } from "firebase/firestore";
+    
+    const alice = testEnv.authenticatedContext("alice", { … });
+    // Use the Firestore instance associated with this context
+    await assertSucceeds(setDoc(alice.firestore().doc('/users/alice'), { ... });
 
 **`  RulesTestEnvironment.unauthenticatedContext() => RulesTestContext  `**
 
@@ -151,16 +135,14 @@ This method creates a `  RulesTestContext  ` , which behaves like a client that 
 
 Use the returned test context object in your tests to access any emulator instances configured, including those configured with `  initializeTestEnvironment  ` .
 
-``` text
-// Assuming a Cloud Storage app and the Storage emulator for this example
-import { getStorage, ref, deleteObject } from "firebase/storage";
-
-const alice = testEnv.unauthenticatedContext();
-
-// Use the Cloud Storage instance associated with this context
-const desertRef = ref(alice.storage(), 'images/desert.jpg');
-await assertSucceeds(deleteObject(desertRef));
-```
+    // Assuming a Cloud Storage app and the Storage emulator for this example
+    import { getStorage, ref, deleteObject } from "firebase/storage";
+    
+    const alice = testEnv.unauthenticatedContext();
+    
+    // Use the Cloud Storage instance associated with this context
+    const desertRef = ref(alice.storage(), 'images/desert.jpg');
+    await assertSucceeds(deleteObject(desertRef));
 
 **`  RulesTestEnvironment.withSecurityRulesDisabled()  `**
 
@@ -180,9 +162,7 @@ This is a test case utility function.
 
 The function asserts that the supplied Promise wrapping an emulator operation will be resolved with no Security Rules violations.
 
-``` text
-await assertSucceeds(setDoc(alice.firestore(), '/users/alice'), { ... });
-```
+    await assertSucceeds(setDoc(alice.firestore(), '/users/alice'), { ... });
 
 **`  assertFails(pr: Promise<any>)) => Promise<any>  `**
 
@@ -190,13 +170,11 @@ This is a test case utility function.
 
 The function asserts that the supplied Promise wrapping an emulator operation will be rejected with a Security Rules violation.
 
-``` text
-await assertFails(setDoc(alice.firestore(), '/users/bob'), { ... });
-```
+    await assertFails(setDoc(alice.firestore(), '/users/bob'), { ... });
 
 ### Emulator-specific methods
 
-Also see [common test methods and utility functions in the v9 SDK](#rut-v2-common-methods) .
+Also see [common test methods and utility functions in the v9 SDK](https://docs.cloud.google.com/firestore/native/docs/security/test-rules-emulator#rut-v2-common-methods) .
 
 **`  RulesTestEnvironment.clearFirestore() => Promise<void>  `**
 
@@ -211,6 +189,8 @@ This method gets a Firestore instance for this test context. The returned Fireba
 The Firestore in Native Mode emulator lets you visualize client requests in the Emulator Suite UI, including evaluation tracing for Firebase Security Rules.
 
 Open the *Firestore \> Requests* tab to view the detailed evaluation sequence for each request.
+
+![Firestore Emulator Requests Monitor showing Security Rules evaluations](https://firebase.google.com/docs/firestore/security/images/firestore-emulator-request-monitor-rules.png)
 
 ## Generate test reports
 

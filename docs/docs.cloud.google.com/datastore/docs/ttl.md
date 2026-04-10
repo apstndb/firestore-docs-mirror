@@ -1,4 +1,4 @@
-This page describes how to use the Google Cloud console and the Google Cloud CLI to configure time-to-live (TTL) policies. Before you read this page, you should understand the [Datastore mode data model](/datastore/docs/concepts/entities) .
+This page describes how to use the Google Cloud console and the Google Cloud CLI to configure time-to-live (TTL) policies. Before you read this page, you should understand the [Datastore mode data model](https://docs.cloud.google.com/datastore/docs/concepts/entities) .
 
 ## Time-to-live overview
 
@@ -6,7 +6,7 @@ Use TTL policies to automatically remove stale data from your databases. A TTL p
 
 ### Pricing
 
-TTL delete operations count towards your entity delete costs. For pricing of delete operations, see [Firestore in Datastore mode pricing](../pricing) .
+TTL delete operations count towards your entity delete costs. For pricing of delete operations, see [Firestore in Datastore mode pricing](https://docs.cloud.google.com/datastore/pricing) .
 
 ### Limits and constraints
 
@@ -35,11 +35,13 @@ Note the following key behaviors of TTL-driven deletion:
 
   - TTL is designed to minimize impact on other database activities. Deletions driven by TTL are treated with a lower priority. Other strategies are also in place to smooth out traffic spikes from TTL-driven deletes.
 
+<span id="single-field_indexes"></span>
+
 ### TTL properties and indexes
 
-A TTL property can be indexed or un-indexed. However, because a TTL property is a timestamp, indexing the property can affect performance at higher traffic rates. Indexing a timestamp property is against best practices and can create [hotspots](/datastore/docs/best-practices#high_readwrite_rates_to_a_narrow_key_range) . Hotspots are high read, write, and delete rates to a narrow key range.
+A TTL property can be indexed or un-indexed. However, because a TTL property is a timestamp, indexing the property can affect performance at higher traffic rates. Indexing a timestamp property is against best practices and can create [hotspots](https://docs.cloud.google.com/datastore/docs/best-practices#high_readwrite_rates_to_a_narrow_key_range) . Hotspots are high read, write, and delete rates to a narrow key range.
 
-By default, Datastore creates a built-in index for all properties. You can [exclude a property from indexes](/datastore/docs/concepts/indexes#unindexed_properties) to disable indexes on a TTL property.
+By default, Datastore creates a built-in index for all properties. You can [exclude a property from indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes#unindexed_properties) to disable indexes on a TTL property.
 
 ## Permissions
 
@@ -49,15 +51,13 @@ The principal configuring a TTL policy requires the following permission in the 
   - Modifying TTL policies requires the `  datastore.indexes.update  ` permission.
   - Checking the status of TTL operations requires `  datastore.operations.list  ` and `  datastore.operations.get  ` .
 
-For roles that assign these permissions, see [Datastore Identity and Access Management roles](/datastore/docs/access/iam#iam_roles) .
+For roles that assign these permissions, see [Datastore Identity and Access Management roles](https://docs.cloud.google.com/datastore/docs/access/iam#iam_roles) .
 
 ## Before you begin
 
-Before you use the gcloud CLI to manage TTL policies, use the [`  gcloud components update  `](/sdk/gcloud/reference/components/update) command to update components to the latest available version:
+Before you use the gcloud CLI to manage TTL policies, use the [`  gcloud components update  `](https://docs.cloud.google.com/sdk/gcloud/reference/components/update) command to update components to the latest available version:
 
-``` text
-gcloud components update
-```
+    gcloud components update
 
 ## Create a TTL policy
 
@@ -76,6 +76,8 @@ Follow the steps below to create a TTL policy:
 ### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -93,11 +95,13 @@ The console returns to the **Time-to-live** page. If the operation successfully 
 
 1.  In the Google Cloud console, activate Cloud Shell.
     
-    At the bottom of the Google Cloud console, a [Cloud Shell](/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
-
-2.  Use the [`  firestore fields ttls update  `](/sdk/gcloud/reference/firestore/fields/ttls/update) command to configure a TTL policy. Add the `  --async  ` flag to prevent the gcloud CLI from waiting for the operation to complete.
+    [Activate Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
     
-    ``` text
+    At the bottom of the Google Cloud console, a [Cloud Shell](https://docs.cloud.google.com/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
+
+2.  Use the [`  firestore fields ttls update  `](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update) command to configure a TTL policy. Add the `  --async  ` flag to prevent the gcloud CLI from waiting for the operation to complete.
+    
+    ``` notranslate
     gcloud firestore fields ttls update ttl_field --collection-group=collection_group_name --enable-ttl
     ```
 
@@ -110,6 +114,8 @@ Follow the steps below to view TTL policies and their statuses.
 ### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -121,17 +127,19 @@ The Google Cloud console lists TTL policies for your database and includes each 
 
 1.  In the Google Cloud console, activate Cloud Shell.
     
-    At the bottom of the Google Cloud console, a [Cloud Shell](/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
-
-2.  Use the [`  firestore fields ttls list  `](/sdk/gcloud/reference/firestore/fields/ttls/list) command to view a TTL policy. The following command lists all TTL policies.
+    [Activate Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
     
-    ``` text
+    At the bottom of the Google Cloud console, a [Cloud Shell](https://docs.cloud.google.com/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
+
+2.  Use the [`  firestore fields ttls list  `](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/list) command to view a TTL policy. The following command lists all TTL policies.
+    
+    ``` notranslate
     gcloud firestore fields ttls list
     ```
     
     To list TTL policies under a specific kind, use the following:
     
-    ``` text
+    ``` notranslate
     gcloud firestore fields ttls list  --collection-group=collection_group_name
     ```
 
@@ -139,9 +147,9 @@ The Google Cloud console lists TTL policies for your database and includes each 
 
 You can use the gcloud CLI to view more details about a TTL policy that is in the `  CREATING  ` state.
 
-Use the [`  operations list  `](/sdk/gcloud/reference/firestore/operations/list) command to see all running and recently completed operations:
+Use the [`  operations list  `](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command to see all running and recently completed operations:
 
-``` text
+``` notranslate
 gcloud firestore operations list
 ```
 
@@ -154,6 +162,8 @@ Follow the steps below to disable a TTL policy.
 ### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -169,11 +179,13 @@ The Google Cloud console returns to the **Time-to-live** page. On success, Datas
 
 1.  In the Google Cloud console, activate Cloud Shell.
     
-    At the bottom of the Google Cloud console, a [Cloud Shell](/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
-
-2.  Use the [`  firestore fields ttls update  `](/sdk/gcloud/reference/firestore/fields/ttls/update) command to configure a TTL policy. Add the `  --async  ` flag to prevent the gcloud CLI from waiting for the operation to complete.
+    [Activate Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
     
-    ``` text
+    At the bottom of the Google Cloud console, a [Cloud Shell](https://docs.cloud.google.com/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
+
+2.  Use the [`  firestore fields ttls update  `](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update) command to configure a TTL policy. Add the `  --async  ` flag to prevent the gcloud CLI from waiting for the operation to complete.
+    
+    ``` notranslate
     gcloud firestore fields ttls update ttl_field --collection-group=collection_group_name --disable-ttl
     ```
 
@@ -181,19 +193,9 @@ The Google Cloud console returns to the **Time-to-live** page. On success, Datas
 
 You can use Cloud Monitoring to view metrics about TTL-driven deletions. Datastore provides the following metrics for TTL:
 
-<table>
-<tbody>
-<tr class="odd">
-<td>datastore.googleapis.com/entity/ttl_deletion_count</td>
-<td>TTL deletion count</td>
-<td><p>Total count of entities deleted by TTL policies.</p></td>
-</tr>
-<tr class="even">
-<td>datastore.googleapis.com/entity/ttl_expiration_to_deletion_delays</td>
-<td>TTL expiration to deletion delays</td>
-<td><p>Time elapsed between when an entity expired under a TTL policy and when it was actually deleted.</p></td>
-</tr>
-</tbody>
-</table>
+|                                                                       |                                   |                                                                                                  |
+| --------------------------------------------------------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------ |
+| datastore.googleapis.com/entity/ttl\_deletion\_count                  | TTL deletion count                | Total count of entities deleted by TTL policies.                                                 |
+| datastore.googleapis.com/entity/ttl\_expiration\_to\_deletion\_delays | TTL expiration to deletion delays | Time elapsed between when an entity expired under a TTL policy and when it was actually deleted. |
 
-To set up a dashboard with Datastore metrics, see [manage custom dashboard](/monitoring/charts/dashboards) and [add dashboard widgets](/monitoring/charts) .
+To set up a dashboard with Datastore metrics, see [manage custom dashboard](https://docs.cloud.google.com/monitoring/charts/dashboards) and [add dashboard widgets](https://docs.cloud.google.com/monitoring/charts) .

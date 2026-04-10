@@ -14,11 +14,11 @@ EXAMPLES
 
 The following command describes the composite index with ID `  3421ef  ` :
 
-``` text
+``` wrap-code
 gcloud beta firestore indexes composite describe 3421ef
 ```
 
-``` text
+``` wrap-code
 gcloud beta firestore indexes composite describe 3421ef --database=(default)
 ```
 
@@ -69,10 +69,10 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` text
+``` wrap-code
 gcloud firestore indexes composite describe
 ```
 
-``` text
+``` wrap-code
 gcloud alpha firestore indexes composite describe
 ```

@@ -1,5 +1,5 @@
-  - [Resource](#RESOURCE_REPRESENTATION)
-  - [Methods](#METHODS_SUMMARY)
+  - [Resource](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects#RESOURCE_REPRESENTATION)
+  - [Methods](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects#METHODS_SUMMARY)
 
 ## Resource
 

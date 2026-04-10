@@ -13,7 +13,7 @@ A Cloud Firestore Database.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;name&quot;: string,
   &quot;uid&quot;: string,
   &quot;createTime&quot;: string,
@@ -348,7 +348,7 @@ The CMEK (Customer Managed Encryption Key) configuration for a Firestore databas
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;kmsKeyName&quot;: string,
   &quot;activeKeyVersion&quot;: [
     string
@@ -393,7 +393,7 @@ Information about the provenance of this database.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;operation&quot;: string,
 
   // Union field source can be only one of the following:
@@ -437,7 +437,7 @@ Information about a backup that was used to restore a database.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;backup&quot;: string
 }</code></pre></td>
 </tr>

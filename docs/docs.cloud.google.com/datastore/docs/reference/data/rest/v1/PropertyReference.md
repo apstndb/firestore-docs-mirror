@@ -1,4 +1,4 @@
-  - [JSON representation](#SCHEMA_REPRESENTATION)
+  - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/PropertyReference#SCHEMA_REPRESENTATION)
 
 A reference to a property relative to the kind expressions.
 
@@ -13,7 +13,7 @@ A reference to a property relative to the kind expressions.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;name&quot;: string
 }</code></pre></td>
 </tr>

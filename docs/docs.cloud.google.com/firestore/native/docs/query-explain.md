@@ -2,7 +2,7 @@
 
 Query Explain allows you to submit Firestore in Native Mode queries to the backend and receive detailed performance statistics on backend query execution in return. It functions like the `  EXPLAIN [ANALYZE]  ` operation in many relational database systems.
 
-Query Explain requests can be sent using the [Firestore server client libraries](/firestore/docs/reference/libraries#server_client_libraries) .
+Query Explain requests can be sent using the [Firestore server client libraries](https://docs.cloud.google.com/firestore/docs/reference/libraries#server_client_libraries) .
 
 Query Explain results help you understand how your queries are executed, showing you inefficiencies and the location of likely server-side bottlenecks.
 
@@ -35,7 +35,7 @@ Note that requests are authenticated with IAM, using the same permissions for re
 
 ##### Java (Admin)
 
-``` text
+``` 
 Query q = db.collection("col").whereGreaterThan("a", 1);
 ExplainOptions options = ExplainOptions.builder().build();
 
@@ -48,7 +48,7 @@ PlanSummary planSummary = metrics.getPlanSummary();
 
 ##### Node (Admin)
 
-``` text
+``` 
 const q = db.collection('col').where('country', '=', 'USA');
 const options = { analyze : 'false' };
 
@@ -62,16 +62,14 @@ const plan = metrics.planSummary;
 
 The exact format of the response depends on the execution environment. Returned results can be converted to JSON. For example:
 
-``` text
-{
-    "indexes_used": [
-        {"query_scope": "Collection", "properties": "(category ASC, __name__ ASC)"},
-        {"query_scope": "Collection", "properties": "(country ASC, __name__ ASC)"},
-    ]
-}
-```
+    {
+        "indexes_used": [
+            {"query_scope": "Collection", "properties": "(category ASC, __name__ ASC)"},
+            {"query_scope": "Collection", "properties": "(country ASC, __name__ ASC)"},
+        ]
+    }
 
-For more information, see the [Query Explain report reference](./query-explain-report-reference) .
+For more information, see the [Query Explain report reference](https://docs.cloud.google.com/firestore/native/docs/query-explain-report-reference) .
 
 ## Use Query Explain with the analyze option
 
@@ -83,7 +81,7 @@ Note that requests are authenticated with IAM, using the same permissions for re
 
 ##### Java (Admin)
 
-``` text
+``` 
 Query q = db.collection("col").whereGreaterThan("a", 1);
 
 ExplainOptions options = ExplainOptions.builder().setAnalyze(true).build();
@@ -100,7 +98,7 @@ ExecutionStats stats = metrics.getExecutionStats();
 
 ##### Node (Admin)
 
-``` text
+``` 
 const q = db.collection('col').where('country', '=', 'USA');
 
 const options = { analyze : 'true' };
@@ -117,96 +115,88 @@ const stats = metrics.executionStats;
 
 The following example shows the `  stats  ` object returned in addition to `  planInfo  ` . The exact format of the response depends on the execution environment. The example response is in JSON format.
 
-``` text
-{
-    "resultsReturned": "5",
-    "executionDuration": "0.100718s",
-    "readOperations": "5",
-    "debugStats": {
-               "index_entries_scanned": "95000",
-               "documents_scanned": "5"
-               "billing_details": {
-                     "documents_billable": "5",
-                     "index_entries_billable": "0",
-                     "small_ops": "0",
-                     "min_query_cost": "0",
-               }
+    {
+        "resultsReturned": "5",
+        "executionDuration": "0.100718s",
+        "readOperations": "5",
+        "debugStats": {
+                   "index_entries_scanned": "95000",
+                   "documents_scanned": "5"
+                   "billing_details": {
+                         "documents_billable": "5",
+                         "index_entries_billable": "0",
+                         "small_ops": "0",
+                         "min_query_cost": "0",
+                   }
+        }
+    
     }
 
-}
-```
-
-For more information, see the [Query Explain report reference](./query-explain-report-reference) .
+For more information, see the [Query Explain report reference](https://docs.cloud.google.com/firestore/native/docs/query-explain-report-reference) .
 
 ## Interpret results and make adjustments
 
 Let's look at an example scenario in which we query movies by genre and country of production.
 
-**Note:** Query Explain is designed for useful ad hoc analysis; its report format will evolve to maximize ease of reading and understanding, not suitability for machine processing. Some metrics are expected to change as Firestore in Native Mode evolves (i.e., metrics may be added, removed, or updated) and are not covered by the same deprecation policy as other Firestore in Native Mode APIs. For more information, see the [Query Explain report reference](./query-explain-report-reference) .
+**Note:** Query Explain is designed for useful ad hoc analysis; its report format will evolve to maximize ease of reading and understanding, not suitability for machine processing. Some metrics are expected to change as Firestore in Native Mode evolves (i.e., metrics may be added, removed, or updated) and are not covered by the same deprecation policy as other Firestore in Native Mode APIs. For more information, see the [Query Explain report reference](https://docs.cloud.google.com/firestore/native/docs/query-explain-report-reference) .
 
 For illustration, assume the equivalent of this SQL query.
 
-``` text
-SELECT *
-FROM /movies
-WHERE category = 'Romantic' AND country = 'USA';
-```
+    SELECT *
+    FROM /movies
+    WHERE category = 'Romantic' AND country = 'USA';
 
 If we use the analyze option, the returned metrics show the query runs on two single-field indexes, `  (category ASC, __name__ ASC)  ` and `  (country ASC, __name__ ASC)  ` . It scans 16500 index entries, but returns only 1200 documents.
 
-``` text
-// Output query planning info
-{
-    "indexes_used": [
-        {"query_scope": "Collection", "properties": "(category ASC, __name__ ASC)"},
-        {"query_scope": "Collection", "properties": "(country ASC, __name__ ASC)"},
-    ]
-}
-
-// Output query status
-{
-    "resultsReturned": "1200",
-    "executionDuration": "0.118882s",
-    "readOperations": "1200",
-    "debugStats": {
-               "index_entries_scanned": "16500",
-               "documents_scanned": "1200"
-               "billing_details": {
-                     "documents_billable": "1200",
-                     "index_entries_billable": "0",
-                     "small_ops": "0",
-                     "min_query_cost": "0",
-               }
+    // Output query planning info
+    {
+        "indexes_used": [
+            {"query_scope": "Collection", "properties": "(category ASC, __name__ ASC)"},
+            {"query_scope": "Collection", "properties": "(country ASC, __name__ ASC)"},
+        ]
     }
-}
-```
+    
+    // Output query status
+    {
+        "resultsReturned": "1200",
+        "executionDuration": "0.118882s",
+        "readOperations": "1200",
+        "debugStats": {
+                   "index_entries_scanned": "16500",
+                   "documents_scanned": "1200"
+                   "billing_details": {
+                         "documents_billable": "1200",
+                         "index_entries_billable": "0",
+                         "small_ops": "0",
+                         "min_query_cost": "0",
+                   }
+        }
+    }
 
 To optimize the performance of executing the query, you can create a fully-covered composite index `  (category ASC, country ASC, __name__ ASC)  ` .
 
 Running the query with the analyze option again we can see that the newly-created index is selected for this query, and the query runs much faster and more efficiently.
 
-``` text
-// Output query planning info
-{
-    "indexes_used": [
-        {"query_scope": "Collection", "properties": "(category ASC, country ASC,  __name__ ASC)"}
-    ]
-}
-
-// Output query stats
-{
-    "resultsReturned": "1200",
-    "executionDuration": "0.026139s",
-    "readOperations": "1200",
-    "debugStats": {
-               "index_entries_scanned": "1200",
-               "documents_scanned": "1200"
-               "billing_details": {
-                     "documents_billable": "1200",
-                     "index_entries_billable": "0",
-                     "small_ops": "0",
-                     "min_query_cost": "0",
-               }
+    // Output query planning info
+    {
+        "indexes_used": [
+            {"query_scope": "Collection", "properties": "(category ASC, country ASC,  __name__ ASC)"}
+        ]
     }
-}
-```
+    
+    // Output query stats
+    {
+        "resultsReturned": "1200",
+        "executionDuration": "0.026139s",
+        "readOperations": "1200",
+        "debugStats": {
+                   "index_entries_scanned": "1200",
+                   "documents_scanned": "1200"
+                   "billing_details": {
+                         "documents_billable": "1200",
+                         "index_entries_billable": "0",
+                         "small_ops": "0",
+                         "min_query_cost": "0",
+                   }
+        }
+    }

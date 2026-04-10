@@ -1,6 +1,6 @@
 # Configure resources for migration
 
-This page describes the preparation part of the [migration process](/firestore/mongodb-compatibility/docs/migrate-data) where you configure resources for the migration.
+This page describes the preparation part of the [migration process](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-data) where you configure resources for the migration.
 
 At this stage, you do the following:
 
@@ -13,24 +13,24 @@ At this stage, you do the following:
 
 Your account requires appropriate IAM roles in all services used in the migration process:
 
-  - [Datastream roles](/iam/docs/roles-permissions/datastream)
-  - [Dataflow roles](/dataflow/docs/concepts/access-control)
-  - [Cloud Storage roles](/storage/docs/access-control/iam-roles)
-  - [Datastore roles](/datastore/docs/access/iam)
+  - [Datastream roles](https://docs.cloud.google.com/iam/docs/roles-permissions/datastream)
+  - [Dataflow roles](https://docs.cloud.google.com/dataflow/docs/concepts/access-control)
+  - [Cloud Storage roles](https://docs.cloud.google.com/storage/docs/access-control/iam-roles)
+  - [Datastore roles](https://docs.cloud.google.com/datastore/docs/access/iam)
 
 ## Install command-line tools
 
-The migration procedure uses the gcloud CLI to configure and actuate the migration steps. If required, install the gcloud CLI by following instructions on the [Install the gcloud CLI](/sdk/docs/install) page.
+The migration procedure uses the gcloud CLI to configure and actuate the migration steps. If required, install the gcloud CLI by following instructions on the [Install the gcloud CLI](https://docs.cloud.google.com/sdk/docs/install) page.
 
 ## Source-specific configuration
 
 ### MongoDB on Compute Engine
 
-A MongoDB database that runs on Compute Engine VMs in a self-managed cluster isn't normally exposed to the public internet. The migration procedure will use [Private Service Connect in Datastream](/datastream/docs/psc-interfaces) to connect the Datastream pipeline to your source database.
+A MongoDB database that runs on Compute Engine VMs in a self-managed cluster isn't normally exposed to the public internet. The migration procedure will use [Private Service Connect in Datastream](https://docs.cloud.google.com/datastream/docs/psc-interfaces) to connect the Datastream pipeline to your source database.
 
 Do the following:
 
-1.  Configure Datastream Private Connectivity by following instructions outlined in [Create a private connectivity configuration](/datastream/docs/create-a-private-connectivity-configuration#create-the-configuration) .
+1.  Configure Datastream Private Connectivity by following instructions outlined in [Create a private connectivity configuration](https://docs.cloud.google.com/datastream/docs/create-a-private-connectivity-configuration#create-the-configuration) .
 
 2.  Note the `  Configuration ID  ` parameter of the created configuration. You will use it in later stages to set up required environment variables.
 
@@ -50,9 +50,9 @@ Note that the Certificate Bundle contains multiple certificates. You have to ext
 
 ## Configure a destination Firestore with MongoDB compatibility database
 
-1.  Make sure that your project has a Firestore with MongoDB compatibility database where you will migrate data from your source Mongo database. For more information about creating a database, see [Create and manage databases](/firestore/mongodb-compatibility/docs/create-databases) .
+1.  Make sure that your project has a Firestore with MongoDB compatibility database where you will migrate data from your source Mongo database. For more information about creating a database, see [Create and manage databases](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases) .
 
-2.  For the purpose of this migration, we recommend to [create a username and password](/firestore/mongodb-compatibility/docs/connect#scram) for the Firestore with MongoDB compatibility database to use with the SCRAM-SHA-256 authentication protocol. This username can be safely deleted after the migration completes, or you may choose to keep using these credentials to connect your Mongo clients to your new Firestore with MongoDB compatibility database.
+2.  For the purpose of this migration, we recommend to [create a username and password](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect#scram) for the Firestore with MongoDB compatibility database to use with the SCRAM-SHA-256 authentication protocol. This username can be safely deleted after the migration completes, or you may choose to keep using these credentials to connect your Mongo clients to your new Firestore with MongoDB compatibility database.
 
 You will use the name of this Firestore with MongoDB compatibility database and the user credentials in later steps.
 
@@ -66,12 +66,12 @@ The value might need to be adjusted further, depending on the pattern of the tra
 
 Create a new Cloud Storage bucket in the following way:
 
-1.  Choose a [Cloud Storage region](/storage/docs/locations) where the migration pipeline will run. We recommend to use the region where your destination Firestore with MongoDB compatibility database is located.
+1.  Choose a [Cloud Storage region](https://docs.cloud.google.com/storage/docs/locations) where the migration pipeline will run. We recommend to use the region where your destination Firestore with MongoDB compatibility database is located.
 
 2.  Choose the name for this bucket. Example: `  mongo-migration-bucket  ` . You will use this name in later steps.
 
-3.  Create a new Cloud Storage bucket with the chosen name and in the chosen region by following instructions provided on the [Create a bucket](/storage/docs/creating-buckets#create-bucket) page in the Cloud Storage documentation.
+3.  Create a new Cloud Storage bucket with the chosen name and in the chosen region by following instructions provided on the [Create a bucket](https://docs.cloud.google.com/storage/docs/creating-buckets#create-bucket) page in the Cloud Storage documentation.
 
 ## What's next
 
-Proceed to [Configure environment variables](/firestore/mongodb-compatibility/docs/migrate-configure-env-vars) .
+Proceed to [Configure environment variables](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-env-vars) .

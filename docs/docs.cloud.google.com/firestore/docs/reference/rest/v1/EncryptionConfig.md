@@ -13,7 +13,7 @@ The source could be a `  Backup  ` or a `  PitrSnapshot  ` .
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
 
   // Union field encryption_type can be only one of the following:
   &quot;googleDefaultEncryption&quot;: {
@@ -80,7 +80,7 @@ The configuration options for using CMEK (Customer Managed Encryption Key) encry
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;kmsKeyName&quot;: string
 }</code></pre></td>
 </tr>

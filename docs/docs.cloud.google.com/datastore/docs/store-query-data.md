@@ -4,14 +4,17 @@ This page shows you how to store and query data in Firestore in Datastore mode u
 
 ## Before you begin
 
-  - If you are **not** the project owner, your account requires the following permissions to complete this quickstart:
+  - <span id="quickstart-permissions"></span> If you are **not** the project owner, your account requires the following permissions to complete this quickstart:
     
-      - Your account requires the [**Datastore Owner** role](/iam/docs/understanding-roles#cloud_datastore_roles) which contains the `  datastore.databases.create  ` permission needed to create a Datastore mode instance.
-      - Datastore mode requires an active App Engine application. If the project doesn't have an application, this quickstart creates one for you. In that case, you require the `  appengine.applications.create  ` permission. The project owner can assign this permission with an [IAM custom role](/iam/docs/creating-custom-roles) .
+      - Your account requires the [**Datastore Owner** role](https://docs.cloud.google.com/iam/docs/understanding-roles#cloud_datastore_roles) which contains the `  datastore.databases.create  ` permission needed to create a Datastore mode instance.
+      - Datastore mode requires an active App Engine application. If the project doesn't have an application, this quickstart creates one for you. In that case, you require the `  appengine.applications.create  ` permission. The project owner can assign this permission with an [IAM custom role](https://docs.cloud.google.com/iam/docs/creating-custom-roles) .
+
+<span id="firestore-or-datastore"></span>
 
 ## Create a database
 
 1.  To create a new database instance, open the Datastore section in the Google Cloud console:  
+    [Go to the Datastore page](https://console.cloud.google.com/datastore/welcome)
 
 2.  Select a database mode.
     
@@ -21,17 +24,17 @@ This page shows you how to store and query data in Firestore in Datastore mode u
     
       - **Firestore in Native Mode**
         
-        Recommended for mobile and web apps. To get started with Firestore, continue in the [Firestore Quickstart](/firestore/docs/quickstart) .
+        Recommended for mobile and web apps. To get started with Firestore, continue in the [Firestore Quickstart](https://docs.cloud.google.com/firestore/docs/quickstart) .
     
       - **Firestore in Datastore Mode**
         
         Recommended for app architectures with backend servers.
     
-    For more guidance on selecting a database mode and for a feature-by-feature comparison, see [choosing between Native Mode and Datastore Mode](/datastore/docs/firestore-or-datastore) .
+    For more guidance on selecting a database mode and for a feature-by-feature comparison, see [choosing between Native Mode and Datastore Mode](https://docs.cloud.google.com/datastore/docs/firestore-or-datastore) .
 
 3.  Select a database location. Datastore mode supports multi-region and regional locations.
     
-    A multi-region location maximizes availability and durability. Regional locations offer lower write latency. To learn more about location types, see [Datastore mode locations](/datastore/docs/locations) . The location applies to both Datastore mode databases and App Engine apps for your Google Cloud project.
+    A multi-region location maximizes availability and durability. Regional locations offer lower write latency. To learn more about location types, see [Datastore mode locations](https://docs.cloud.google.com/datastore/docs/locations) . The location applies to both Datastore mode databases and App Engine apps for your Google Cloud project.
     
     **Warning:** Once you create your database, you cannot change the location.
     
@@ -40,6 +43,8 @@ This page shows you how to store and query data in Firestore in Datastore mode u
 ## Store data
 
 1.  Go to the Datastore Entities page in the Google Cloud console.
+    
+    [Go to the Entities page](https://console.cloud.google.com/datastore/entities/query)
     
     This page lets you store, query, update, and delete data.
 
@@ -51,38 +56,16 @@ This page shows you how to store and query data in Firestore in Datastore mode u
 
 5.  Under **Properties** , use the **Add property** button to add these properties:
     
-    <table>
-    <thead>
-    <tr class="header">
-    <th>Name</th>
-    <th>Type</th>
-    <th>Value</th>
-    <th>Indexed</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="odd">
-    <td>description</td>
-    <td>String</td>
-    <td>Learn about Datastore.</td>
-    <td></td>
-    </tr>
-    <tr class="even">
-    <td>created</td>
-    <td>Date and time</td>
-    <td>(today's date)</td>
-    <td>✓</td>
-    </tr>
-    <tr class="odd">
-    <td>done</td>
-    <td>Boolean</td>
-    <td>False</td>
-    <td>✓</td>
-    </tr>
-    </tbody>
-    </table>
+    | Name        | Type          | Value                  | Indexed |
+    | ----------- | ------------- | ---------------------- | ------- |
+    | description | String        | Learn about Datastore. |         |
+    | created     | Date and time | (today's date)         | ✓       |
+    | done        | Boolean       | False                  | ✓       |
     
+
     Your creation page should now look like this:
+    
+    ![The entity creation window with various properties set](https://docs.cloud.google.com/static/datastore/docs/images/developer_console_create_entity.png)
 
 6.  Click **Create** . The console displays the `  Task  ` entity that you just created.
 
@@ -103,7 +86,7 @@ Next, add a query clause to restrict the results to entities that meet specific 
 
 1.  Click **Add query clause** .
 2.  In the dropdown lists, select `  WHERE  ` , `  done  ` , `  ==  ` , **boolean** , and **false** .
-3.  Click **Run** . The results show the `  Task  ` entity that you created since its `  done  ` value is `  false  ` .
+3.  Click **Run** . The results show the `  Task  ` entity that you created since its `  done  ` value is `  false  ` . ![A kind query with a filter applied](https://docs.cloud.google.com/static/datastore/docs/images/kind_query_filter.png)
 4.  Now change the query clause to `  WHERE  ` , `  done  ` , `  ==  ` , **boolean** , and **true** . Click **Run** . The results do not include the `  Task  ` entity that you created, because its `  done  ` value is not `  true  ` .
 
 ### Run GQL queries
@@ -120,7 +103,7 @@ The GQL query editor supports autocompletion for kinds: When you need to type a 
 
 Add a query filter to restrict the results to entities that meet specific criteria:
 
-1.  Run a query such as `  SELECT * FROM Task WHERE done=false  ` . Note that `  Task  ` and `  done  ` are case sensitive. The results show the `  Task  ` entity that you created, since its `  done  ` value is `  false  ` .
+1.  Run a query such as `  SELECT * FROM Task WHERE done=false  ` . Note that `  Task  ` and `  done  ` are case sensitive. The results show the `  Task  ` entity that you created, since its `  done  ` value is `  false  ` . ![A GQL query with a filter applied](https://docs.cloud.google.com/static/datastore/docs/images/gql_query_filter.png)
 2.  Now run a query such as `  SELECT * FROM Task WHERE done=true  ` . The results do not include the `  Task  ` entity that you created, because its `  done  ` value is not `  true  ` .
 
 ## Clean up
@@ -134,5 +117,5 @@ That's it, you completed this quickstart\!
 
 ## What's next
 
-  - Learn more about [Datastore Queries](/datastore/docs/concepts/queries) .
-  - Learn more about [Datastore mode](/datastore/docs) databases.
+  - Learn more about [Datastore Queries](https://docs.cloud.google.com/datastore/docs/concepts/queries) .
+  - Learn more about [Datastore mode](https://docs.cloud.google.com/datastore/docs) databases.

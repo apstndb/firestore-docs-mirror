@@ -114,7 +114,7 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -143,7 +143,7 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -170,7 +170,7 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -197,7 +197,7 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -224,7 +224,7 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -251,7 +251,7 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -278,7 +278,7 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -305,7 +305,7 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -332,7 +332,7 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -359,7 +359,7 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -386,7 +386,7 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -413,7 +413,7 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -440,7 +440,7 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -462,7 +462,7 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 <p>Runs an aggregation query.</p>
 <p>Rather than producing <code dir="ltr" translate="no">             Document           </code> results like <code dir="ltr" translate="no">             Firestore.RunQuery           </code> , this API allows running an aggregation to produce a series of <code dir="ltr" translate="no">             AggregationResult           </code> server-side.</p>
 <p>High-Level Example:</p>
-<pre class="text" dir="ltr" data-is-upgraded="" translate="no"><code>-- Return the number of documents in table given a filter.
+<pre dir="ltr" data-is-upgraded="" translate="no"><code>-- Return the number of documents in table given a filter.
 SELECT COUNT(*) FROM ( SELECT * FROM k where a = true );</code></pre>
 <dl>
 <dt>Authorization scopes</dt>
@@ -471,7 +471,7 @@ SELECT COUNT(*) FROM ( SELECT * FROM k where a = true );</code></pre>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -498,7 +498,7 @@ SELECT COUNT(*) FROM ( SELECT * FROM k where a = true );</code></pre>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -525,7 +525,7 @@ SELECT COUNT(*) FROM ( SELECT * FROM k where a = true );</code></pre>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -552,7 +552,7 @@ SELECT COUNT(*) FROM ( SELECT * FROM k where a = true );</code></pre>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -777,9 +777,7 @@ The bloom filter hashes the entries with MD5 and treats the resulting 128-bit ha
 
 These two hash values, named `  h1  ` and `  h2  ` , are then used to compute the `  hash_count  ` hash values using the formula, starting at `  i=0  ` :
 
-``` text
-h(i) = h1 + (i * h2)
-```
+    h(i) = h1 + (i * h2)
 
 These resulting values are then taken modulo the number of bits in the bloom filter to get the bits of the bloom filter to test for the given entry.
 
@@ -1371,11 +1369,9 @@ Represents an unevaluated scalar expression.
 
 For example, the expression `  like(user_name, "%alice%")  ` is represented as:
 
-``` text
-name: "like"
-args { field_reference: "user_name" }
-args { string_value: "%alice%" }
-```
+    name: "like"
+    args { field_reference: "user_name" }
+    args { string_value: "%alice%" }
 
 Fields
 
@@ -1784,16 +1780,14 @@ A stage is made up of a unique name, and a list of arguments. The exact number o
 
 To give an example, the stage `  filter(state = "MD")  ` would be encoded as:
 
-``` text
-name: "filter"
-args {
-  function_value {
-    name: "eq"
-    args { field_reference_value: "state" }
-    args { string_value: "MD" }
-  }
-}
-```
+    name: "filter"
+    args {
+      function_value {
+        name: "eq"
+        args { field_reference_value: "state" }
+        args { string_value: "MD" }
+      }
+    }
 
 See public documentation for the full list.
 
@@ -2093,29 +2087,25 @@ Optional. Optional name of the field to store the result of the aggregation into
 
 If not provided, Firestore will pick a default name following the format `  field_<incremental_id++>  ` . For example:
 
-``` text
-AGGREGATE
-  COUNT_UP_TO(1) AS count_up_to_1,
-  COUNT_UP_TO(2),
-  COUNT_UP_TO(3) AS count_up_to_3,
-  COUNT(*)
-OVER (
-  ...
-);
-```
+    AGGREGATE
+      COUNT_UP_TO(1) AS count_up_to_1,
+      COUNT_UP_TO(2),
+      COUNT_UP_TO(3) AS count_up_to_3,
+      COUNT(*)
+    OVER (
+      ...
+    );
 
 becomes:
 
-``` text
-AGGREGATE
-  COUNT_UP_TO(1) AS count_up_to_1,
-  COUNT_UP_TO(2) AS field_1,
-  COUNT_UP_TO(3) AS count_up_to_3,
-  COUNT(*) AS field_2
-OVER (
-  ...
-);
-```
+    AGGREGATE
+      COUNT_UP_TO(1) AS count_up_to_1,
+      COUNT_UP_TO(2) AS field_1,
+      COUNT_UP_TO(3) AS count_up_to_3,
+      COUNT(*) AS field_2
+    OVER (
+      ...
+    );
 
 Requires:
 
@@ -2182,9 +2172,7 @@ Unspecified is interpreted as no bound.
 
 High-Level Example:
 
-``` text
-AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k );
-```
+    AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k );
 
 Requires:
 
@@ -2291,9 +2279,7 @@ A potential prefix of a position in the result set to start the query at.
 
 The ordering of the result set is based on the `  ORDER BY  ` clause of the original query.
 
-``` text
-SELECT * FROM k WHERE a = 1 AND b > 2 ORDER BY b ASC, __name__ ASC;
-```
+    SELECT * FROM k WHERE a = 1 AND b > 2 ORDER BY b ASC, __name__ ASC;
 
 This query's results are ordered by `  (b ASC, __name__ ASC)  ` .
 

@@ -14,25 +14,25 @@ EXAMPLES
 
 To export all kinds in the `  exampleNs  ` namespace in the `  exampleProject  ` project to the `  exampleBucket  ` , run:
 
-``` text
+``` wrap-code
 gcloud beta datastore export gs://exampleBucket --namespaces='exampleNs' --project='exampleProject'
 ```
 
 To export the `  exampleKind  ` and `  otherKind  ` kinds in the `  exampleNs  ` namespace in the `  exampleProject  ` project to the `  exampleBucket  ` , run:
 
-``` text
+``` wrap-code
 gcloud beta datastore export gs://exampleBucket --kinds='exampleKind','otherKind' --namespaces='exampleNs' --project='exampleProject'
 ```
 
 To export all namespaces and kinds in the currently set project to the `  exampleBucket  ` without waiting for the operation to complete, run:
 
-``` text
+``` wrap-code
 gcloud beta datastore export gs://exampleBucket --async
 ```
 
 To export the `  exampleKind  ` in all namespaces in the currently set project to the `  exampleBucket  ` , and output the result in JSON, run:
 
-``` text
+``` wrap-code
 gcloud beta datastore export gs://exampleBucket --kinds='exampleKind' --format=json
 ```
 
@@ -41,7 +41,7 @@ POSITIONAL ARGUMENTS
   - `  OUTPUT_URL_PREFIX  `  
     Location for the export metadata and data files. Must be a valid Google Cloud Storage bucket with an optional path prefix. For example:
     
-    ``` text
+    ``` wrap-code
     gcloud beta datastore export gs://mybucket/my/path
     ```
     
@@ -55,21 +55,21 @@ FLAGS
   - `  --kinds  ` =\[ `  KIND  ` ,…\]  
     A list specifying what kinds will be included in the operation. When omitted, all Kinds are included. For example, to operate on only the 'Customer' and 'Order' Kinds:
     
-    ``` text
+    ``` wrap-code
     gcloud beta datastore export --kinds='Customer','Order'
     ```
 
   - `  --namespaces  ` =\[ `  NAMESPACE  ` ,…\]  
     A list specifying what namespaces will be included in the operation. When omitted, all namespaces are included in the operation, including the default namespace. To specify that `  only  ` the default namespace should be operated on, use the special symbol '(default)'. For example, to operate on entities from both the 'customers' and default namespaces:
     
-    ``` text
+    ``` wrap-code
     gcloud beta datastore export --namespaces='(default)','customers'
     ```
 
   - `  --operation-labels  ` =\[ `  OPERATION_LABEL  ` ,…\]  
     A string:string map of custom labels to associate with this operation. For example:
     
-    ``` text
+    ``` wrap-code
     gcloud beta datastore export --operation-labels=comment='customer orders','sales rep'=pending
     ```
 
@@ -83,10 +83,10 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` text
+``` wrap-code
 gcloud datastore export
 ```
 
-``` text
+``` wrap-code
 gcloud alpha datastore export
 ```

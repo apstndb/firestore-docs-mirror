@@ -4,14 +4,104 @@ Rather than producing `  Document  ` results like `  Firestore.RunQuery  ` , thi
 
 High-Level Example:
 
-``` text
--- Return the number of documents in table given a filter.
-SELECT COUNT(*) FROM ( SELECT * FROM k where a = true );
-```
+    -- Return the number of documents in table given a filter.
+    SELECT COUNT(*) FROM ( SELECT * FROM k where a = true );
 
 ### HTTP request
 
 Choose a location:
+
+global
+
+africa-south1
+
+asia-east1
+
+asia-east2
+
+asia-northeast1
+
+asia-northeast2
+
+asia-northeast3
+
+asia-south1
+
+asia-south2
+
+asia-southeast1
+
+asia-southeast2
+
+asia-southeast3
+
+australia-southeast1
+
+australia-southeast2
+
+europe-central2
+
+europe-north1
+
+europe-north2
+
+europe-southwest1
+
+europe-west1
+
+europe-west10
+
+europe-west12
+
+europe-west2
+
+europe-west3
+
+europe-west4
+
+europe-west6
+
+europe-west8
+
+europe-west9
+
+me-central1
+
+me-central2
+
+me-west1
+
+northamerica-northeast1
+
+northamerica-northeast2
+
+northamerica-south1
+
+southamerica-east1
+
+southamerica-west1
+
+us-central1
+
+us-east1
+
+us-east4
+
+us-east5
+
+us-south1
+
+us-west1
+
+us-west2
+
+us-west3
+
+us-west4
+
+eu
+
+us
 
   
 `  POST https://firestore.googleapis.com/v1beta1/{parent=projects/*/databases/*/documents}:runAggregationQuery  `
@@ -43,7 +133,7 @@ The request body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;explainOptions&quot;: {
     object (ExplainOptions)
   },
@@ -129,7 +219,7 @@ If successful, the response body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;result&quot;: {
     object (AggregationResult)
   },
@@ -186,7 +276,7 @@ Requires one of the following OAuth scopes:
   - `  https://www.googleapis.com/auth/datastore  `
   - `  https://www.googleapis.com/auth/cloud-platform  `
 
-For more information, see the [Authentication Overview](/docs/authentication#authorization-gcp) .
+For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .
 
 ## StructuredAggregationQuery
 
@@ -203,7 +293,7 @@ Firestore query for running an aggregation over a `  StructuredQuery  ` .
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;aggregations&quot;: [
     {
       object (Aggregation)
@@ -255,7 +345,7 @@ Defines an aggregation that produces a single result.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;alias&quot;: string,
 
   // Union field operator can be only one of the following:
@@ -284,29 +374,25 @@ Optional. Optional name of the field to store the result of the aggregation into
 
 If not provided, Firestore will pick a default name following the format `  field_<incremental_id++>  ` . For example:
 
-``` text
-AGGREGATE
-  COUNT_UP_TO(1) AS count_up_to_1,
-  COUNT_UP_TO(2),
-  COUNT_UP_TO(3) AS count_up_to_3,
-  COUNT(*)
-OVER (
-  ...
-);
-```
+    AGGREGATE
+      COUNT_UP_TO(1) AS count_up_to_1,
+      COUNT_UP_TO(2),
+      COUNT_UP_TO(3) AS count_up_to_3,
+      COUNT(*)
+    OVER (
+      ...
+    );
 
 becomes:
 
-``` text
-AGGREGATE
-  COUNT_UP_TO(1) AS count_up_to_1,
-  COUNT_UP_TO(2) AS field_1,
-  COUNT_UP_TO(3) AS count_up_to_3,
-  COUNT(*) AS field_2
-OVER (
-  ...
-);
-```
+    AGGREGATE
+      COUNT_UP_TO(1) AS count_up_to_1,
+      COUNT_UP_TO(2) AS field_1,
+      COUNT_UP_TO(3) AS count_up_to_3,
+      COUNT(*) AS field_2
+    OVER (
+      ...
+    );
 
 Requires:
 
@@ -350,7 +436,7 @@ The `  COUNT(*)  ` aggregation function operates on the entire document so it do
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;upTo&quot;: string
 }</code></pre></td>
 </tr>
@@ -371,9 +457,7 @@ Unspecified is interpreted as no bound.
 
 High-Level Example:
 
-``` text
-AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k );
-```
+    AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k );
 
 Requires:
 
@@ -404,7 +488,7 @@ Sum of the values of the requested field.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;field&quot;: {
     object (FieldReference)
   }
@@ -444,7 +528,7 @@ Average of the values of the requested field.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;field&quot;: {
     object (FieldReference)
   }
@@ -478,7 +562,7 @@ The keys of `  aggregateFields  ` are the same for all results in an aggregation
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;aggregateFields&quot;: {
     string: {
       object (Value)

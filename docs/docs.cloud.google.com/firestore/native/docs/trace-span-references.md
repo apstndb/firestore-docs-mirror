@@ -2,40 +2,20 @@
 
 **Preview**
 
-This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](/terms/service-terms#1) . Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
-[Client-side traces](/firestore/native/docs/client-side-traces) , which are collected by executing RPCs, provide several pieces of information for every request from a client, including spans with timestamps of when the client sent the RPC request and when the client received the RPC response. The spans include latency introduced by the network and client system.
+[Client-side traces](https://docs.cloud.google.com/firestore/native/docs/client-side-traces) , which are collected by executing RPCs, provide several pieces of information for every request from a client, including spans with timestamps of when the client sent the RPC request and when the client received the RPC response. The spans include latency introduced by the network and client system.
 
 Client-side traces can include the following information:
 
 ## Span metadata
 
-<table>
-<thead>
-<tr class="header">
-<th>Span ID</th>
-<th>Unique ID of this span</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Parent Span ID</td>
-<td>ID of the parent span, not set for root span</td>
-</tr>
-<tr class="even">
-<td>Project ID</td>
-<td>Google Cloud project ID that ingested the trace</td>
-</tr>
-<tr class="odd">
-<td>Start Time</td>
-<td>Span start time</td>
-</tr>
-<tr class="even">
-<td>End Time</td>
-<td>Span end time</td>
-</tr>
-</tbody>
-</table>
+| Span ID        | Unique ID of this span                          |
+| -------------- | ----------------------------------------------- |
+| Parent Span ID | ID of the parent span, not set for root span    |
+| Project ID     | Google Cloud project ID that ingested the trace |
+| Start Time     | Span start time                                 |
+| End Time       | Span end time                                   |
 
 ## Span attributes
 

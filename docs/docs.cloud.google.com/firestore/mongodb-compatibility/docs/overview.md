@@ -4,7 +4,7 @@ Firestore with MongoDB compatibility lets you use existing MongoDB application c
 
 Firestore offers a differentiated serverless document database service, featuring multi-region replication with strong consistency, virtually unlimited scalability, industry-leading high availability of up to 99.999% SLA, and single-digit milliseconds read performance.
 
-Firestore with MongoDB compatibility is available as part of [Firestore Enterprise edition](/firestore/native/docs/editions-overview) .
+Firestore with MongoDB compatibility is available as part of [Firestore Enterprise edition](https://docs.cloud.google.com/firestore/native/docs/editions-overview) .
 
 ## Key capabilities
 
@@ -55,12 +55,12 @@ Firestore has automatic multi-region data replication, strongly-consistent queri
 
 Firestore is a cloud-first, NoSQL document database offering MongoDB compatibility.
 
-Following the Firestore with MongoDB compatibility data model, you store data in documents that contain fields mapping to values. These documents are stored in collections, which are containers for your documents that you can use to organize your data and build queries. Documents support many different [data types](/firestore/mongodb-compatibility/docs/supported-data-types-drivers) , from strings and numbers, to complex, embedded objects.
+Following the Firestore with MongoDB compatibility data model, you store data in documents that contain fields mapping to values. These documents are stored in collections, which are containers for your documents that you can use to organize your data and build queries. Documents support many different [data types](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-data-types-drivers) , from strings and numbers, to complex, embedded objects.
 
 Additionally, querying in Firestore is expressive, efficient, and flexible. You can use standard MongoDB driver or the MongoDB Query Language (MQL). You can create shallow queries to retrieve data at the document level without needing to retrieve the entire collection, and add sorting, filtering, and limits to your queries or cursors to paginate your results.
 
-Finally, Firestore with MongoDB compatibility is fully integrated with Google Cloud governance services including [Identity and Access Management (IAM)](/firestore/mongodb-compatibility/docs/security/iam) Cloud Monitoring, and Cloud Audit Logs.
+Finally, Firestore with MongoDB compatibility is fully integrated with Google Cloud governance services including [Identity and Access Management (IAM)](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam) Cloud Monitoring, and Cloud Audit Logs.
 
 ## What's next
 
-  - [Get started with Firestore with MongoDB compatibility](/firestore/mongodb-compatibility/docs/create-and-query-database)
+  - [Get started with Firestore with MongoDB compatibility](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database)

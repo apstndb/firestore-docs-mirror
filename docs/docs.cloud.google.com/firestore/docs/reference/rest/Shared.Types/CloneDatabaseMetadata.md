@@ -11,7 +11,7 @@ Metadata for the `  long-running operation  ` from the \[databases.clone\]\[goog
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;startTime&quot;: string,
   &quot;endTime&quot;: string,
   &quot;operationState&quot;: enum (OperationState),
@@ -84,7 +84,7 @@ A consistent snapshot of a database at a specific point in time. A PITR (Point-i
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;database&quot;: string,
   &quot;databaseUid&quot;: string,
   &quot;snapshotTime&quot;: string

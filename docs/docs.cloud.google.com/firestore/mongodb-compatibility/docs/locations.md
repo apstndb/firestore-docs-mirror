@@ -2,13 +2,13 @@
 
 When you provision a Firestore database, you must choose a *location* for it. To reduce latency and increase availability, store your data close to the users and services that need it.
 
-You can optionally [create multiple databases](/firestore/mongodb-compatibility/docs/create-databases) in your project, each with its own location setting.
+You can optionally [create multiple databases](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases) in your project, each with its own location setting.
 
 Be aware that once you provision a database, you cannot change its location setting.
 
 ## Types of locations
 
-You can store your Firestore with MongoDB compatibility data in a [*multi-region* location](#location-mr) or a [*regional* location](#location-r) .
+You can store your Firestore with MongoDB compatibility data in a [*multi-region* location](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/locations#location-mr) or a [*regional* location](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/locations#location-r) .
 
 ### Multi-region locations
 
@@ -20,36 +20,11 @@ By replicating the data between multiple regions, data can continue to be served
 
 Firestore with MongoDB compatibility supports the following multi-region locations:
 
-<table>
-<thead>
-<tr class="header">
-<th>Multi-region name</th>
-<th>Multi-region description</th>
-<th>Read-Write regions</th>
-<th>Witness region</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       eur3      </code></td>
-<td>Europe</td>
-<td><code dir="ltr" translate="no">       europe-west1      </code> (Belgium), <code dir="ltr" translate="no">       europe-west4      </code> (Netherlands)</td>
-<td><code dir="ltr" translate="no">       europe-north1      </code> (Finland)</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       nam5      </code></td>
-<td>United States (Central)</td>
-<td><code dir="ltr" translate="no">       us-central1      </code> (Iowa), <code dir="ltr" translate="no">       us-central2      </code> (Oklahoma—private Google Cloud region)</td>
-<td><code dir="ltr" translate="no">       us-east1      </code> (South Carolina)</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">       nam7      </code></td>
-<td>United States (Central and East)</td>
-<td><code dir="ltr" translate="no">       us-central1      </code> (Iowa), <code dir="ltr" translate="no">       us-east4      </code> (Northern Virginia)</td>
-<td><code dir="ltr" translate="no">       us-central2      </code> (Oklahoma—private Google Cloud region)</td>
-</tr>
-</tbody>
-</table>
+| Multi-region name     | Multi-region description         | Read-Write regions                                                                                       | Witness region                                                      |
+| --------------------- | -------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `        eur3       ` | Europe                           | `        europe-west1       ` (Belgium), `        europe-west4       ` (Netherlands)                     | `        europe-north1       ` (Finland)                            |
+| `        nam5       ` | United States (Central)          | `        us-central1       ` (Iowa), `        us-central2       ` (Oklahoma—private Google Cloud region) | `        us-east1       ` (South Carolina)                          |
+| `        nam7       ` | United States (Central and East) | `        us-central1       ` (Iowa), `        us-east4       ` (Northern Virginia)                       | `        us-central2       ` (Oklahoma—private Google Cloud region) |
 
 ### Regional locations
 
@@ -247,26 +222,12 @@ Johannesburg
 
 ## Location SLA
 
-Your Firestore with MongoDB compatibility location type determines the [Service Level Agreement (SLA)](/firestore/sla) uptime percentage at General Availability (GA):
+Your Firestore with MongoDB compatibility location type determines the [Service Level Agreement (SLA)](https://docs.cloud.google.com/firestore/sla) uptime percentage at General Availability (GA):
 
-<table>
-<thead>
-<tr class="header">
-<th>Covered service</th>
-<th>Monthly uptime percentage</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Firestore with MongoDB compatibility Multi-Region</td>
-<td>&gt;= 99.999%</td>
-</tr>
-<tr class="even">
-<td>Firestore with MongoDB compatibility Regional</td>
-<td>&gt;= 99.99%</td>
-</tr>
-</tbody>
-</table>
+| Covered service                                   | Monthly uptime percentage |
+| ------------------------------------------------- | ------------------------- |
+| Firestore with MongoDB compatibility Multi-Region | \>= 99.999%               |
+| Firestore with MongoDB compatibility Regional     | \>= 99.99%                |
 
 ## Location pricing
 
@@ -284,6 +245,6 @@ Use one of the following methods to view the location setting for your databases
 
 ## Next steps
 
-  - To create a Firestore with MongoDB compatibility database in a specific location, see [Create and manage databases](/firestore/mongodb-compatibility/docs/create-databases)
+  - To create a Firestore with MongoDB compatibility database in a specific location, see [Create and manage databases](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases)
 
   - For more information about building applications to meet your latency, availability, and durability requirements, refer to [Geography and Regions](https://cloud.google.com/docs/geography-and-regions#multi-regional_resources) .

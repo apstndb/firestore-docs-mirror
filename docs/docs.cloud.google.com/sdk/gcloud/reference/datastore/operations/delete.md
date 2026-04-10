@@ -14,13 +14,13 @@ EXAMPLES
 
 To delete the completed operation with id `  exampleId  ` , run:
 
-``` text
+``` wrap-code
 gcloud datastore operations delete exampleId
 ```
 
 or
 
-``` text
+``` wrap-code
 gcloud datastore operations delete projects/your-project-id/operations/exampleId
 ```
 
@@ -29,15 +29,11 @@ POSITIONAL ARGUMENTS
   - `  NAME  `  
     The unique name of the Operation to delete, formatted as either the full or relative resource path:
     
-    ``` text
-    projects/my-app-id/operations/foo
-    ```
+        projects/my-app-id/operations/foo
     
     or:
     
-    ``` text
-    foo
-    ```
+        foo
 
 GCLOUD WIDE FLAGS
 
@@ -49,10 +45,10 @@ NOTES
 
 These variants are also available:
 
-``` text
+``` wrap-code
 gcloud alpha datastore operations delete
 ```
 
-``` text
+``` wrap-code
 gcloud beta datastore operations delete
 ```

@@ -2,9 +2,9 @@
 
 **Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
 
-This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
-Indexing behavior depends on the edition of the database. This page describes indexing for Firestore Enterprise edition. For Firestore Standard edition, see [Firestore Standard edition index overview](/firestore/docs/pipeline/concepts/standard-index-overview) .
+Indexing behavior depends on the edition of the database. This page describes indexing for Firestore Enterprise edition. For Firestore Standard edition, see [Firestore Standard edition index overview](https://docs.cloud.google.com/firestore/docs/pipeline/concepts/standard-index-overview) .
 
 This section describes indexing for Firestore Enterprise edition. **Firestore Enterprise edition does not create any indexes by default** . To reduce costs and improve database performance, create indexes for your most commonly used queries.
 
@@ -18,30 +18,16 @@ An index consists of the following:
   - a list of fields in the given collection
   - an order, either ascending or descending, for each field
 
-An index can also enable the [sparse](#sparse_indexes) or [unique](#unique_indexes) options.
+An index can also enable the [sparse](https://docs.cloud.google.com/firestore/native/docs/enterprise-index-overview#sparse_indexes) or [unique](https://docs.cloud.google.com/firestore/native/docs/enterprise-index-overview#unique_indexes) options.
 
 ### Index ordering
 
 The order and sort direction of each field uniquely defines the index. For example, the following indexes are two distinct indexes and not interchangeable:
 
-<table>
-<thead>
-<tr class="header">
-<th>Collection</th>
-<th>Fields</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>cities</td>
-<td>country (ascending), population (descending)</td>
-</tr>
-<tr class="even">
-<td>cities</td>
-<td>population (descending), country (ascending),</td>
-</tr>
-</tbody>
-</table>
+| Collection | Fields                                        |
+| ---------- | --------------------------------------------- |
+| cities     | country (ascending), population (descending)  |
+| cities     | population (descending), country (ascending), |
 
 When creating an index to support a query, include the fields in the same order as your query.
 
@@ -63,22 +49,9 @@ If you insert a document with missing fields for the unique index, the index set
 
 For example, with this index:
 
-<table>
-<thead>
-<tr class="header">
-<th>Collection</th>
-<th>Fields indexed</th>
-<th>Query scope</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>cities</td>
-<td>name (ascending)</td>
-<td>Collection</td>
-</tr>
-</tbody>
-</table>
+| Collection | Fields indexed   | Query scope |
+| ---------- | ---------------- | ----------- |
+| cities     | name (ascending) | Collection  |
 
 If you add the document `  {"abbreviation": "LA"}  ` to the collection, the unique index creates an entry with `  name  ` set to `  null  ` . If you then try to add the document `  {"abbreviation": "NYC"}  ` , the operation fails because the resulting entry for the unique index is the same.
 

@@ -743,27 +743,25 @@ You can use [IAM Conditions](https://cloud.google.com/iam/docs/conditions-overvi
 
 For example, the following condition assigns a principal the `  datastore.user  ` role up until a specified date:
 
-``` text
-{
-  "role": "roles/datastore.user",
-  "members": [
-    "user:travis@example.com"
-  ],
-  "condition": {
-    "title": "Expires_December_1_2023",
-    "description": "Expires on December 1, 2023",
-    "expression":
-      "request.time < timestamp('2023-12-01T00:00:00.000Z')"
-  }
-}
-```
+    {
+      "role": "roles/datastore.user",
+      "members": [
+        "user:travis@example.com"
+      ],
+      "condition": {
+        "title": "Expires_December_1_2023",
+        "description": "Expires on December 1, 2023",
+        "expression":
+          "request.time < timestamp('2023-12-01T00:00:00.000Z')"
+      }
+    }
 
 To learn how to define IAM Conditions for temporary access, see [Configure temporary access](https://cloud.google.com/iam/docs/configuring-temporary-access) .
 
-To learn how to configure IAM Conditions for access to one or more databases, see [Configure database access conditions](/firestore/mongodb-compatibility/docs/create-databases#configure_per-database_access_permissions) .
+To learn how to configure IAM Conditions for access to one or more databases, see [Configure database access conditions](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases#configure_per-database_access_permissions) .
 
 ## What's next
 
   - Learn more about [IAM](https://cloud.google.com/iam/docs/) .
   - [Grant IAM roles](https://cloud.google.com/iam/docs/granting-changing-revoking-access) .
-  - Learn about [authentication](/firestore/mongodb-compatibility/docs/connect) .
+  - Learn about [authentication](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect) .

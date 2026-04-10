@@ -1,15 +1,107 @@
-  - [HTTP request](#body.HTTP_TEMPLATE)
-  - [Path parameters](#body.PATH_PARAMETERS)
-  - [Request body](#body.request_body)
-  - [Response body](#body.response_body)
-  - [Authorization scopes](#body.aspect)
-  - [Try it\!](#try-it)
+  - [HTTP request](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/cancel#body.HTTP_TEMPLATE)
+  - [Path parameters](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/cancel#body.PATH_PARAMETERS)
+  - [Request body](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/cancel#body.request_body)
+  - [Response body](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/cancel#body.response_body)
+  - [Authorization scopes](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/cancel#body.aspect)
+  - [Try it\!](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/cancel#try-it)
 
 Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `  google.rpc.Code.UNIMPLEMENTED  ` . Clients can use `  Operations.GetOperation  ` or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an `  Operation.error  ` value with a `  google.rpc.Status.code  ` of `  1  ` , corresponding to `  Code.CANCELLED  ` .
 
 ### HTTP request
 
 Choose a location:
+
+global
+
+africa-south1
+
+asia-east1
+
+asia-east2
+
+asia-northeast1
+
+asia-northeast2
+
+asia-northeast3
+
+asia-south1
+
+asia-south2
+
+asia-southeast1
+
+asia-southeast2
+
+asia-southeast3
+
+australia-southeast1
+
+australia-southeast2
+
+europe-central2
+
+europe-north1
+
+europe-north2
+
+europe-southwest1
+
+europe-west1
+
+europe-west10
+
+europe-west12
+
+europe-west2
+
+europe-west3
+
+europe-west4
+
+europe-west6
+
+europe-west8
+
+europe-west9
+
+me-central1
+
+me-central2
+
+me-west1
+
+northamerica-northeast1
+
+northamerica-northeast2
+
+northamerica-south1
+
+southamerica-east1
+
+southamerica-west1
+
+us-central1
+
+us-east1
+
+us-east4
+
+us-east5
+
+us-south1
+
+us-west1
+
+us-west2
+
+us-west3
+
+us-west4
+
+eu
+
+us
 
   
 `  POST https://datastore.googleapis.com/v1/{name=projects/*/operations/*}:cancel  `
@@ -41,4 +133,4 @@ Requires one of the following OAuth scopes:
   - `  https://www.googleapis.com/auth/datastore  `
   - `  https://www.googleapis.com/auth/cloud-platform  `
 
-For more information, see the [Authentication Overview](/docs/authentication#authorization-gcp) .
+For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

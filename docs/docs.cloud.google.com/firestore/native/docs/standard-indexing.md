@@ -1,8 +1,10 @@
 # Manage Standard edition indexes
 
-Indexing behavior depends on the edition of the database. This page describes how to manage your indexes for Firestore Standard edition. For Firestore Enterprise edition, see [Firestore Enterprise edition index overview](/firestore/native/docs/enterprise-indexing) .
+Indexing behavior depends on the edition of the database. This page describes how to manage your indexes for Firestore Standard edition. For Firestore Enterprise edition, see [Firestore Enterprise edition index overview](https://docs.cloud.google.com/firestore/native/docs/enterprise-indexing) .
 
-Firestore Standard edition ensures query performance by requiring an index for every query. The indexes required for the most basic queries are [automatically created](/firestore/native/docs/standard-index-overview#automatic_indexes) for you. As you use and test your app, Firestore Standard edition generates error messages that help you create additional indexes that your app requires. This page describes how to manage your [automatic](/firestore/native/docs/standard-index-overview#automatic_indexes) , [manual](/firestore/native/docs/standard-index-overview#manual_indexes) , and [vector](/firestore/native/docs/vector-search#create_and_manage_vector_indexes) indexes.
+Firestore Standard edition ensures query performance by requiring an index for every query. The indexes required for the most basic queries are [automatically created](https://docs.cloud.google.com/firestore/native/docs/standard-index-overview#automatic_indexes) for you. As you use and test your app, Firestore Standard edition generates error messages that help you create additional indexes that your app requires. This page describes how to manage your [automatic](https://docs.cloud.google.com/firestore/native/docs/standard-index-overview#automatic_indexes) , [manual](https://docs.cloud.google.com/firestore/native/docs/standard-index-overview#manual_indexes) , and [vector](https://docs.cloud.google.com/firestore/native/docs/vector-search#create_and_manage_vector_indexes) indexes.
+
+<span id="error-links"></span>
 
 ## Create a missing index through an error message
 
@@ -44,6 +46,8 @@ From the Google Cloud console, you can manage automatic indexing exemptions and 
 To manually create a new index from the Google Cloud console:
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -66,6 +70,8 @@ Your new index will show up in the list of manual indexes and Firestore Standard
 To delete a manual index:
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -75,11 +81,15 @@ To delete a manual index:
 
 5.  Confirm that you want to delete this index by clicking **Delete Index** from the alert.
 
+<span id="exemptions"></span>
+
 ### Add an automatic index exemption
 
-Automatic indexing exemptions allow you to override [automatic index settings](/firestore/native/docs/standard-index-overview#automatic_indexes) for specific fields in a collection. You can add an automatic indexing exemption from the console:
+Automatic indexing exemptions allow you to override [automatic index settings](https://docs.cloud.google.com/firestore/native/docs/standard-index-overview#automatic_indexes) for specific fields in a collection. You can add an automatic indexing exemption from the console:
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -100,6 +110,8 @@ To define a single-field index exemption that applies to all fields under a coll
 1.  Click **Add Exemption** .
 
 2.  Enter a **Collection ID** for the collection group and set **Field path** as `  *  ` .
+    
+    ![Choose field to exempt](https://docs.cloud.google.com/static/firestore/native/docs/images/firestore-console-collection-level-exemption.png)
 
 3.  Select the indexing exemptions you want to apply for all fields in the collection group.
 
@@ -110,6 +122,8 @@ To define a single-field index exemption that applies to all fields under a coll
 To delete a automatic indexing exemption, do the following:
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -119,15 +133,15 @@ To delete a automatic indexing exemption, do the following:
 
 5.  Confirm that you want to delete this exemption by clicking **Delete** from the alert.
 
-When you delete an automatic indexing exemption, the specified field or sub-field will use inherited indexing settings. Document fields revert to your database's automatic index settings. Sub-fields in a map inherit any exemptions on parent fields before inheriting automatic index settings.
+<span id="delete-exemption"></span> When you delete an automatic indexing exemption, the specified field or sub-field will use inherited indexing settings. Document fields revert to your database's automatic index settings. Sub-fields in a map inherit any exemptions on parent fields before inheriting automatic index settings.
 
 ## Use the Firebase CLI
 
-You can also deploy indexes with the [Firebase CLI](//firebase.google.com/docs/cli) . To get started, run `  firebase init firestore  ` in your project directory. During setup, the Firebase CLI generates a JSON file with the default indexes in the correct format. Edit the file to add more indexes and deploy it with the `  firebase deploy  ` command.
+You can also deploy indexes with the [Firebase CLI](https://firebase.google.com/docs/cli) . To get started, run `  firebase init firestore  ` in your project directory. During setup, the Firebase CLI generates a JSON file with the default indexes in the correct format. Edit the file to add more indexes and deploy it with the `  firebase deploy  ` command.
 
 To deploy Firestore Standard edition indexes and rules only, add the `  --only firestore  ` flag.
 
-If you make edits to the indexes using the Firebase console, make sure you also update your local indexes file. Refer to the [JSON index definition reference](//firebase.google.com/docs/reference/firestore/indexes/) .
+If you make edits to the indexes using the Firebase console, make sure you also update your local indexes file. Refer to the [JSON index definition reference](https://firebase.google.com/docs/reference/firestore/indexes/) .
 
 ## Use Terraform
 
@@ -143,7 +157,7 @@ The following example Terraform configuration file creates a single-field index 
 
 **firestore.tf**
 
-``` text
+``` pretty-print
 resource "random_id" "variable"{
   byte_length = 8
 }
@@ -177,7 +191,7 @@ The following example Terraform configuration file creates a composite index for
 
 **firestore.tf**
 
-``` text
+``` pretty-print
 resource "google_firestore_index" "composite-index" {
   project = "project-id"
   database = "database-id"
@@ -206,7 +220,7 @@ The following example Terraform configuration file creates a vector index on the
 
 **firestore.tf**
 
-``` text
+``` pretty-print
 resource "google_firestore_index" "vector-index" {
   project = "project-id"
   database = "database-id"
@@ -236,7 +250,7 @@ You can also create Datastore Mode indexes using Terraform.
 
 **datastore.tf**
 
-``` text
+``` pretty-print
 resource "google_firestore_index" "datastore-mode-index" {
   project = "project-id"
   database = "database-id"
@@ -272,21 +286,17 @@ If you were previously using the `  google_datastore_index  ` resource, you can 
 
 More detailed instructions follow:
 
-Write a replacement `  google_firestore_index  ` based on your existing `  google_datastore_index  ` resource. See [below](#translate-your-index) for the required changes.
+Write a replacement `  google_firestore_index  ` based on your existing `  google_datastore_index  ` resource. See [below](https://docs.cloud.google.com/firestore/native/docs/standard-indexing#translate-your-index) for the required changes.
 
 Determine the Firestore resource path of your index:
 
-``` text
-export INDEX_RESOURCE_PATH=$(echo '"projects/${google_datastore_index.datastore-index-resource-name.project}/databases/(default)/collectionGroups/${google_datastore_index.datastore-index-resource-name.kind}/indexes/${google_datastore_index.datastore-index-resource-name.index_id}"' | terraform console | tr -d '"')
-```
+    export INDEX_RESOURCE_PATH=$(echo '"projects/${google_datastore_index.datastore-index-resource-name.project}/databases/(default)/collectionGroups/${google_datastore_index.datastore-index-resource-name.kind}/indexes/${google_datastore_index.datastore-index-resource-name.index_id}"' | terraform console | tr -d '"')
 
 Replace datastore-index-resource-name with the Terraform name of your existing resource.
 
 Import your existing Datastore mode index to the `  google_firestore_index  ` resource you created above:
 
-``` text
-terraform import google_firestore_index.firestore-index-resource-name $INDEX_RESOURCE_PATH
-```
+    terraform import google_firestore_index.firestore-index-resource-name $INDEX_RESOURCE_PATH
 
 Replace firestore-index-resource-name with the Terraform name of your existing resource.
 
@@ -296,9 +306,7 @@ Delete the existing `  google_datastore_index  ` resource from your Terraform co
 
 Remove the existing `  google_datastore_index  ` resource from Terraform state:
 
-``` text
-terraform state rm google_datastore_index.datastore-index-resource-name
-```
+    terraform state rm google_datastore_index.datastore-index-resource-name
 
 For more information on removing resources, see the Terraform page on [Removing Resources](https://developer.hashicorp.com/terraform/language/resources/syntax#removing-resources) .
 
@@ -306,9 +314,7 @@ Run `  terraform plan  ` . Verify the output to confirm that you are neither cre
 
 Inspect the output to ensure the import completed successfully. If the output shows any fields changing, ensure these changes are intended. If the output includes a line similar to:
 
-``` text
-google_firestore_index.firestore-index-resource-name must be replaced
-```
+    google_firestore_index.firestore-index-resource-name must be replaced
 
 then inspect your Terraform configuration file to see if there were any mistakes.
 
@@ -316,9 +322,7 @@ then inspect your Terraform configuration file to see if there were any mistakes
 
 Once you are satisfied with the Terraform plan output, run:
 
-``` text
-terraform apply
-```
+    terraform apply
 
 ###### Translate your index
 
@@ -334,7 +338,7 @@ For example, consider this `  google_datastore_index  ` resource:
 
 **datastore.tf**
 
-``` text
+``` pretty-print
 resource "google_datastore_index" "legacy" {
   kind = "foo"
 
@@ -352,7 +356,7 @@ resource "google_datastore_index" "legacy" {
 
 The equivalent `  google_firestore_index  ` resource would be:
 
-``` text
+``` pretty-print
 resource "google_firestore_index" "new" {
   // note: defaults to the provider project
   project = project
@@ -379,6 +383,8 @@ resource "google_firestore_index" "new" {
 }
 ```
 
+<span id="index-build-time"></span>
+
 ## Index build time
 
 To build an index, Firestore Standard edition must set up the index and then backfill the index with existing data. Index build time is the sum of setup time and backfill time:
@@ -393,7 +399,7 @@ Index builds are *long-running operations* .
 
 After you start an index build, Firestore Standard edition assigns the operation a unique name. Operation names are prefixed with `  projects/[PROJECT_ID]/databases/(default)/operations/  ` , for example:
 
-``` text
+``` notranslate
 projects/project-id/databases/(default)/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
 ```
 
@@ -403,7 +409,7 @@ However, you can leave out the prefix when specifying an operation name for the 
 
 To list long-running operations, use the [gcloud firestore operations list](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command. This command lists ongoing and recently completed operations. Operations are listed for a few days after completion:
 
-``` text
+``` notranslate
 gcloud firestore operations list
 ```
 
@@ -411,7 +417,7 @@ gcloud firestore operations list
 
 Instead of listing all long-running operations, you can list the details of a single operation:
 
-``` text
+``` notranslate
 gcloud firestore operations describe operation-name
 ```
 
@@ -425,7 +431,7 @@ Divide `  workCompleted  ` by `  workEstimated  ` for a rough progress estimate.
 
 For example, here is the progress status of an index build:
 
-``` text
+``` notranslate
 {
   "operations": [
     {
@@ -448,8 +454,10 @@ For example, here is the progress status of an index build:
 
 When an operation is done, the operation description will contain [`  "done": true  `](https://docs.cloud.google.com/firestore/docs/reference//reference/rpc/google.longrunning#operation) . See the value of the [`  state  ` field](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#state) for the result of the operation. If the `  done  ` field is not set in the response, then its value is `  false  ` . Do not depend on the existence of the `  done  ` value for in-progress operations.
 
+<span id="index-build-error"></span> <span id="exemption-errors"></span>
+
 ## Index building errors
 
-You might encounter index building errors when managing manual indexes and automatic index exemptions. An indexing operation can fail if Firestore Standard edition encounters a problem with the data it's indexing. Most commonly, this means you hit an [index limit](/firestore/native/docs/standard-index-overview#index_limitations) . For example, the operation may have reached the maximum number of index entries per document.
+You might encounter index building errors when managing manual indexes and automatic index exemptions. An indexing operation can fail if Firestore Standard edition encounters a problem with the data it's indexing. Most commonly, this means you hit an [index limit](https://docs.cloud.google.com/firestore/native/docs/standard-index-overview#index_limitations) . For example, the operation may have reached the maximum number of index entries per document.
 
-If index creation fails, you see the error message in the console. After you verify that you are not hitting any [index limits](/firestore/native/docs/standard-index-overview#index_limitations) , re-try your index operation.
+If index creation fails, you see the error message in the console. After you verify that you are not hitting any [index limits](https://docs.cloud.google.com/firestore/native/docs/standard-index-overview#index_limitations) , re-try your index operation.

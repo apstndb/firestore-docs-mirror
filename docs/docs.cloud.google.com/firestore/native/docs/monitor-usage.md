@@ -15,12 +15,16 @@ The usage dashboards require the `  monitoring.timeSeries.list  ` IAM permission
 To view usage metrics for a Firestore database, open the database **Usage** page in the Google Cloud console.
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
 3.  In the navigation menu, click **Usage** .
 
 4.  Click the link in the message that appears on the page to view your database usage.
+    
+    ![The Firestore database usage dashboard in the Google Cloud console.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-database-usage-dashboard.png)
 
 ### Aggregated usage dashboard
 
@@ -30,9 +34,17 @@ If your project has multiple Firestore databases, you can view aggregated usage 
 
 In the Google Cloud console, go to the **Project usage** page.
 
+[Go to Google Cloud project project usage](https://console.cloud.google.com/firestore/project-usage)
+
 The project usage dashboard shows document operations over time as follows:
 
+![The Firestore project usage dashboard in the Google Cloud console.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-usage-dashboard-cloud-console.png)
+
 ### Firebase console
+
+[Go to the Firestore usage page (Firebase console)](https://console.firebase.google.com/project/_/firestore/usage/last-24h/reads)
+
+![The Firestore usage dashboard in the Firebase console.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-usage-dashboard.png)
 
 ### Usage dashboard and billing reports
 
@@ -52,13 +64,17 @@ Operations that cause discrepancies between the usage dashboard and billed usage
 
   - Queries that return zero results. Queries with zero results incur a cost of one read operation. This usage is billed but does not appear in the usage dashboard.
 
-  - Read operations from [index entries read](/firestore/pricing#index-reads) . This usage is billed but does not appear in the usage dashboard. For example, aggregation queries bill for index entries read but this usage does not appear in the usage dashboard.
+  - Read operations from [index entries read](https://docs.cloud.google.com/firestore/pricing#index-reads) . This usage is billed but does not appear in the usage dashboard. For example, aggregation queries bill for index entries read but this usage does not appear in the usage dashboard.
 
-The usage dashboard for deletes does not capture automatic expiration operations performed by Time-to-live (TTL) policies. Please refer to the TTL metrics from [Cloud Monitoring](#monitoring-metrics) .
+The usage dashboard for deletes does not capture automatic expiration operations performed by Time-to-live (TTL) policies. Please refer to the TTL metrics from [Cloud Monitoring](https://docs.cloud.google.com/firestore/native/docs/monitor-usage#monitoring-metrics) .
 
 ## Security rule usage
 
 Additionally, the Firebase console provides a Firebase Security Rules evaluation dashboard, a useful, at-a-glance view of rules invocations. You can also monitor Firebase Security Rules usage through [Cloud Monitoring](https://cloud.google.com/monitoring/api/metrics_gcp#gcp-firestore) . This provides the same rule evaluation metrics, along with the ability to build custom dashboards, analyze trends, and configure alerts (for example, when denied requests spike). See the [Cloud Monitoring metrics reference](https://cloud.google.com/monitoring/api/metrics_gcp#gcp-firestore) for the complete list of available metrics.
+
+[Go to Rules](https://console.firebase.google.com/project/_/firestore/rules)
+
+![Firestore Rules monitoring dashboard in the Firebase console.](https://docs.cloud.google.com/firestore/native/docs/images/firestore_rules_monitor.png)
 
 ## Cloud Monitoring metrics
 
@@ -95,7 +111,7 @@ Cloud Monitoring includes the following Firestore metrics:
 <tr class="even">
 <td>Active Connections</td>
 <td><p>The number of active connections to your database.</p>
-<p>Each active <a href="/firestore/docs/reference/libraries#mobile_and_web_sdks">mobile and web SDK</a> maintains a single connection, which can be shared across multiple snapshot listeners. The <a href="/firestore/docs/reference/libraries#server_client_libraries">server client libraries</a> create one connection per snapshot listener.</p></td>
+<p>Each active <a href="https://docs.cloud.google.com/firestore/docs/reference/libraries#mobile_and_web_sdks">mobile and web SDK</a> maintains a single connection, which can be shared across multiple snapshot listeners. The <a href="https://docs.cloud.google.com/firestore/docs/reference/libraries#server_client_libraries">server client libraries</a> create one connection per snapshot listener.</p></td>
 </tr>
 <tr class="odd">
 <td>Snapshot Listeners</td>
@@ -103,11 +119,11 @@ Cloud Monitoring includes the following Firestore metrics:
 </tr>
 <tr class="even">
 <td>Time-to-live deletion count</td>
-<td><p>Total count of documents deleted by <a href="/firestore/native/docs/ttl">Time-to-live (TTL) policies</a> .</p></td>
+<td><p>Total count of documents deleted by <a href="https://docs.cloud.google.com/firestore/native/docs/ttl">Time-to-live (TTL) policies</a> .</p></td>
 </tr>
 <tr class="odd">
 <td>Time-to-live expiration to deletion delays</td>
-<td><p>Time elapsed between when a document expired under a <a href="/firestore/native/docs/ttl">Time-to-live (TTL) policy</a> and when it was actually deleted.</p></td>
+<td><p>Time elapsed between when a document expired under a <a href="https://docs.cloud.google.com/firestore/native/docs/ttl">Time-to-live (TTL) policy</a> and when it was actually deleted.</p></td>
 </tr>
 </tbody>
 </table>
@@ -115,7 +131,7 @@ Cloud Monitoring includes the following Firestore metrics:
 **Note:** The preceding list covers only the most commonly used Firestore metrics. Additional metrics, such as latency measurements, index entry reads, and system-level metrics, are also available through Cloud Monitoring. See the [full reference of Firestore metrics](https://cloud.google.com/monitoring/api/metrics_gcp#gcp-firestore) for the complete set.
 
   - Realtime updates usage  
-    Use the active connections and snapshot listeners metrics to measure your usage of [realtime updates](/firestore/native/docs/query-data/listen) .
+    Use the active connections and snapshot listeners metrics to measure your usage of [realtime updates](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) .
     
     Let's say a user opens your app on their phone. The app then connects to Firestore and subscribes to 10 queries. This increases your metrics by 1 active connection and 10 snapshot listeners.
 
@@ -124,7 +140,7 @@ Cloud Monitoring includes the following Firestore metrics:
 
 ### Latency metrics
 
-Backend latency metrics are available through common Google Cloud [firestore](//cloud.google.com//monitoring/api/metrics_gcp_d_h#gcp-firestore) metrics.
+Backend latency metrics are available through common Google Cloud [firestore](https://cloud.google.com//monitoring/api/metrics_gcp_d_h#gcp-firestore) metrics.
 
 For example, a graph of [p50 latency](https://console.cloud.google.com/monitoring/metrics-explorer;duration=P7D?pageState=%7B%22domainObjectDeprecationId%22:%2212ACB359-342F-4174-8878-0B5FCECCB7E6%22,%22xyChart%22:%7B%22constantLines%22:%5B%5D,%22dataSets%22:%5B%7B%22plotType%22:%22LINE%22,%22targetAxis%22:%22Y1%22,%22timeSeriesFilter%22:%7B%22aggregations%22:%5B%7B%22crossSeriesReducer%22:%22REDUCE_PERCENTILE_50%22,%22groupByFields%22:%5B%5D,%22perSeriesAligner%22:%22ALIGN_DELTA%22%7D%5D,%22apiSource%22:%22DEFAULT_CLOUD%22,%22crossSeriesReducer%22:%22REDUCE_PERCENTILE_50%22,%22filter%22:%22metric.type%3D%5C%22firestore.googleapis.com%2Fapi%2Frequest_latencies%5C%22%20resource.type%3D%5C%22firestore.googleapis.com%2FDatabase%5C%22%20metric.label.%5C%22service%5C%22%3D%5C%22firestore.googleapis.com%5C%22%22,%22groupByFields%22:%5B%5D,%22minAlignmentPeriod%22:%2260s%22,%22perSeriesAligner%22:%22ALIGN_DELTA%22%7D%7D%5D,%22options%22:%7B%22mode%22:%22COLOR%22%7D,%22y1Axis%22:%7B%22label%22:%22%22,%22scale%22:%22LINEAR%22%7D%7D%7D) can be found in the Cloud Console's metrics explorer view.
 

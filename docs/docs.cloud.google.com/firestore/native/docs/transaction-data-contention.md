@@ -1,6 +1,6 @@
 # Data contention in transactions
 
-This page describes transactional data contention, serializability, and isolation. For transaction code samples, see [transactions and batched writes](./manage-data/transactions) instead.
+This page describes transactional data contention, serializability, and isolation. For transaction code samples, see [transactions and batched writes](https://docs.cloud.google.com/firestore/native/docs/manage-data/transactions) instead.
 
 ## Transactions and data contention
 
@@ -11,9 +11,7 @@ For a transaction to succeed, the documents retrieved by its read operations mus
 
 Firestore resolves data contention by delaying or failing one of the operations. The Firestore client libraries automatically retry transactions that fail due to data contention. After a finite number of retries, the transaction operation fails and returns an error message:
 
-``` text
-ABORTED: Too much contention on these documents. Please try again.
-```
+    ABORTED: Too much contention on these documents. Please try again.
 
 When deciding which operation to fail or delay, behavior depends the type of concurrency controls.
 
@@ -84,7 +82,7 @@ Actual execution of a transaction requires some span of time. The execution of a
   - Firestore commits transactions in order by commit time.
   - Firestore isolates transactions from concurrent operations with a later commit time.
 
-In the case of data contention between concurrent operations, [Firestore uses optimistic and pessimistic concurrency controls to resolve contention.](#concurrency-controls)
+In the case of data contention between concurrent operations, [Firestore uses optimistic and pessimistic concurrency controls to resolve contention.](https://docs.cloud.google.com/firestore/native/docs/transaction-data-contention#concurrency-controls)
 
 ### Isolation within a transaction
 

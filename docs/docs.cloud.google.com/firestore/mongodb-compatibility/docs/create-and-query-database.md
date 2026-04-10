@@ -5,23 +5,27 @@ Learn how to create a Firestore with MongoDB compatibility database and connect 
 ## Before you begin
 
 1.  In the Google Cloud console, go to the project selector page.
+    
+    [Go to project selector](https://console.cloud.google.com/projectselector2/home/dashboard)
 
 2.  Select or create a Google Cloud project.
     
     **Roles required to select or create a project**
     
       - **Select a project** : Selecting a project doesn't require a specific IAM role—you can select any project that you've been granted a role on.
-      - **Create a project** : To create a project, you need the Project Creator role ( `  roles/resourcemanager.projectCreator  ` ), which contains the `  resourcemanager.projects.create  ` permission. [Learn how to grant roles](/iam/docs/granting-changing-revoking-access) .
+      - **Create a project** : To create a project, you need the Project Creator role ( `  roles/resourcemanager.projectCreator  ` ), which contains the `  resourcemanager.projects.create  ` permission. [Learn how to grant roles](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
     
     **Note** : If you don't plan to keep the resources that you create in this procedure, create a project instead of selecting an existing project. After you finish these steps, you can delete the project, removing all resources associated with the project.
 
-3.  [Verify that billing is enabled for your Google Cloud project](/billing/docs/how-to/verify-billing-enabled#confirm_billing_is_enabled_on_a_project) .
+3.  [Verify that billing is enabled for your Google Cloud project](https://docs.cloud.google.com/billing/docs/how-to/verify-billing-enabled#confirm_billing_is_enabled_on_a_project) .
 
 4.  Make sure that you have the following role or roles on the project: Cloud Datastore Owner
     
     #### Check for the roles
     
     1.  In the Google Cloud console, go to the **IAM** page.
+        
+        [Go to IAM](https://console.cloud.google.com/projectselector/iam-admin/iam?supportedpurview=project)
     
     2.  Select the project.
     
@@ -32,6 +36,8 @@ Learn how to create a Firestore with MongoDB compatibility database and connect 
     #### Grant the roles
     
     1.  In the Google Cloud console, go to the **IAM** page.
+        
+        [Go to IAM](https://console.cloud.google.com/projectselector/iam-admin/iam?supportedpurview=project)
     
     2.  Select the project.
     
@@ -52,6 +58,8 @@ Learn how to create a Firestore with MongoDB compatibility database and connect 
 In the Google Cloud console, create a new Firestore Enterprise edition database. Firestore with MongoDB compatibility requires Firestore Enterprise edition:
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Click **Create a Firestore Database** .
 
@@ -69,7 +77,7 @@ In the Google Cloud console, create a new Firestore Enterprise edition database.
 
 The connection string depends on the UID of the database (system-generated) and the location of database:
 
-``` text
+``` suppresswarning
 UID.LOCATION.firestore.goog
 ```
 
@@ -78,6 +86,8 @@ UID.LOCATION.firestore.goog
 In the Google Cloud console, create a new database user and assign the user Identity and Access Management permissions.
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the database from the list of databases.
 
@@ -95,7 +105,7 @@ In the Google Cloud console, create a new database user and assign the user Iden
 
 Use the connection string, username, and password to connect to your database, run `  mongosh  ` locally with the following configuration options.
 
-``` text
+``` suppresswarning
 mongosh 'mongodb://USERNAME:PASSWORD@CONNECTION_STRING:443/DATABASE_ID?loadBalanced=true&authMechanism=SCRAM-SHA-256&tls=true&retryWrites=false'
 ```
 
@@ -108,7 +118,7 @@ Replace the following:
 
 Once connected, you can create and read data, for example:
 
-``` text
+``` suppresswarning
 db.pages.insertOne({ message: "Hello World!"})
 db.pages.find({})
 exit
@@ -116,6 +126,6 @@ exit
 
 ## What's next
 
-  - [See a list of supported features](/firestore/mongodb-compatibility/docs/supported-data-types-drivers)
-  - [Learn about behavior differences in Firestore with MongoDB compatibility](/firestore/mongodb-compatibility/docs/behavior-differences)
-  - [Learn about additional authentication methods](/firestore/mongodb-compatibility/docs/connect)
+  - [See a list of supported features](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-data-types-drivers)
+  - [Learn about behavior differences in Firestore with MongoDB compatibility](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences)
+  - [Learn about additional authentication methods](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect)

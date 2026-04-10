@@ -18,9 +18,7 @@ The `  datastore.googleapis.com  ` service is bundled under the `  firestore.goo
 
   - When creating a service perimeter using the Google Cloud CLI, use `  firestore.googleapis.com  ` instead of `  datastore.googleapis.com  ` .
     
-    ``` text
-    --perimeter-restricted-services=firestore.googleapis.com
-    ```
+        --perimeter-restricted-services=firestore.googleapis.com
 
 ### App Engine legacy bundled services for Datastore
 
@@ -55,6 +53,8 @@ The Firestore service agent is preferable because it is specific to Firestore. T
 You can view which account your import and export operations use to authorize requests from the **Import/Export** page in the Google Cloud console. You can also view if your database already uses the Firestore service agent.
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -64,8 +64,8 @@ You can view which account your import and export operations use to authorize re
 
 If your project does not use the Firestore service agent, you can migrate to the Firestore service agent using either of these techniques:
 
-  - [Migrate a project by checking and updating Cloud Storage bucket permissions (recommended)](#migrate-by-project) .
-  - [Add an organization-wide policy constraint](#migrate-by-org-policy) that affects all projects within the organization.
+  - [Migrate a project by checking and updating Cloud Storage bucket permissions (recommended)](https://docs.cloud.google.com/datastore/docs/securing-with-vpc-sc#migrate-by-project) .
+  - [Add an organization-wide policy constraint](https://docs.cloud.google.com/datastore/docs/securing-with-vpc-sc#migrate-by-org-policy) that affects all projects within the organization.
 
 The first of these techniques is preferable because it localizes the scope of effect to a single Datastore mode project. The second technique is not preferred because it doesn't migrate existing Cloud Storage bucket permissions. It does, however, offer security compliance at the organization level.
 
@@ -93,6 +93,8 @@ The migration process described in the following section helps you identify Clou
 Complete the following steps to migrate from the App Engine service account to the Firestore service agent. Once completed, the migration can't be undone.
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -133,6 +135,8 @@ Complete the following steps to migrate from the App Engine service account to t
 To verify your project's migration status:
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -142,7 +146,7 @@ To verify your project's migration status:
     
     If the principal is `  service- PROJECT_NUMBER @gcp-sa-firestore.iam.gserviceaccount.com  ` , then your project has already migrated to the Firestore service agent. The migration can't be undone.
     
-    If the project has not been migrated, a banner appears at the top of the page with a **Check Bucket Status** button. See [Migrate to the Firestore service agent](#migrate_to_the_firestore_service_agent) to complete the migration.
+    If the project has not been migrated, a banner appears at the top of the page with a **Check Bucket Status** button. See [Migrate to the Firestore service agent](https://docs.cloud.google.com/datastore/docs/securing-with-vpc-sc#migrate_to_the_firestore_service_agent) to complete the migration.
 
 ### Add an organization-wide policy constraint
 
@@ -150,8 +154,8 @@ To verify your project's migration status:
     
     **Require Firestore Service Agent for import/export** ( `  firestore.requireP4SAforImportExport  ` ).
     
-    This constraint requires import and export operations to use the Firestore service agent to authorize requests. To set this constraint, see [Creating and managing organization policies](/resource-manager/docs/organization-policy/creating-managing-policies#creating_and_editing_policies) .
+    This constraint requires import and export operations to use the Firestore service agent to authorize requests. To set this constraint, see [Creating and managing organization policies](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-policies#creating_and_editing_policies) .
 
 Applying this organizational policy constraint does not automatically grant the appropriate Cloud Storage bucket permissions for the Firestore service agent.
 
-If the constraint creates permission errors for any import or export workflows, you can disable it to go back to using default service account. After you [check and update Cloud Storage bucket permissions](#migrate-by-project) , you can enable the constraint again.
+If the constraint creates permission errors for any import or export workflows, you can disable it to go back to using default service account. After you [check and update Cloud Storage bucket permissions](https://docs.cloud.google.com/datastore/docs/securing-with-vpc-sc#migrate-by-project) , you can enable the constraint again.

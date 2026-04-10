@@ -8,11 +8,11 @@ Firestore in Native Mode includes a no-cost tier to help you get started at no c
 
 Charges for Firestore in Native Mode usage fall under the following categories:
 
-  - **Operations:** All reads, writes, and deletes have a cost associated with them. Reads include queries, simple fetches, and updates through realtime listeners. You're also charged for any reads required to evaluate Firestore Security Rules you've added to your database. Learn more about [charges for operations in Firestore in Native Mode](/firestore/native/docs/pricing#operations) .
-  - **Storage:** You're charged for the data you store in Firestore in Native Mode, including metadata and indexes. Examples of metadata include document names, collection IDs, and field names. Index entries typically include the collection ID, the field values indexed, and the document name. Learn more about [storage costs in Firestore in Native Mode](/firestore/native/docs/pricing#storage) .
-  - **Network bandwidth:** Outgoing network bandwidth (or network egress, respectively) costs include connection overhead for your Firestore in Native Mode requests. Incoming network bandwidth (network ingress) is no-cost. Review the [network bandwidth costs](/firestore/native/docs/pricing#network) and monitor your usage to properly plan for bandwidth costs.
+  - **Operations:** All reads, writes, and deletes have a cost associated with them. Reads include queries, simple fetches, and updates through realtime listeners. You're also charged for any reads required to evaluate Firestore Security Rules you've added to your database. Learn more about [charges for operations in Firestore in Native Mode](https://docs.cloud.google.com/firestore/native/docs/pricing#operations) .
+  - **Storage:** You're charged for the data you store in Firestore in Native Mode, including metadata and indexes. Examples of metadata include document names, collection IDs, and field names. Index entries typically include the collection ID, the field values indexed, and the document name. Learn more about [storage costs in Firestore in Native Mode](https://docs.cloud.google.com/firestore/native/docs/pricing#storage) .
+  - **Network bandwidth:** Outgoing network bandwidth (or network egress, respectively) costs include connection overhead for your Firestore in Native Mode requests. Incoming network bandwidth (network ingress) is no-cost. Review the [network bandwidth costs](https://docs.cloud.google.com/firestore/native/docs/pricing#network) and monitor your usage to properly plan for bandwidth costs.
 
-For a full, detailed explanation of Firestore in Native Mode costs, see [Firestore in Native Mode Pricing](/firestore/native/docs/pricing) .
+For a full, detailed explanation of Firestore in Native Mode costs, see [Firestore in Native Mode Pricing](https://docs.cloud.google.com/firestore/native/docs/pricing) .
 
 ## Overview: Costs by usage level
 
@@ -23,11 +23,11 @@ To illustrate typical costs, consider an example chat app, where users can initi
 Consider the following assumptions about usage and data storage:
 
   - **Daily Active Users (DAUs) are 10% of total app installations.** You can estimate your daily costs using a rough estimate of your Daily Active Users (DAUs). These are the users that actively open and use your app on a given day, which is typically a small subset of your total app installations. For the calculations below, we estimated DAUs as 10% of the total number of app installations.
-  - **Document sizes are relatively small.** See the [table below](#document-sizes) for a breakdown of document size by type.
+  - **Document sizes are relatively small.** See the [table below](https://docs.cloud.google.com/firestore/native/docs/billing-example#document-sizes) for a breakdown of document size by type.
   - **Data is only stored for three months.** The messages in the example chat app are only stored for a three-month period. To account for the delete operations, the calculations below show a daily delete for every daily write.
-  - **These cost estimates reflect the bulk of the example app's costs, but not all of them.** We've accounted for the bulk of an app's costs by calculating operations, user and message storage, and egress for the most frequent user tasks outlined in this guide. However, you might need to take into account additional costs, depending on your app's structure and data needs. Use this example to guide your calculations, but refer to the [pricing page](/firestore/pricing) for more thorough explanations of Firestore in Native Mode costs.
+  - **These cost estimates reflect the bulk of the example app's costs, but not all of them.** We've accounted for the bulk of an app's costs by calculating operations, user and message storage, and egress for the most frequent user tasks outlined in this guide. However, you might need to take into account additional costs, depending on your app's structure and data needs. Use this example to guide your calculations, but refer to the [pricing page](https://docs.cloud.google.com/firestore/pricing) for more thorough explanations of Firestore in Native Mode costs.
 
-For a breakdown of operations by user task, see the [Breakdown: Billed usage by user task](#costs-breakdown) section.
+For a breakdown of operations by user task, see the [Breakdown: Billed usage by user task](https://docs.cloud.google.com/firestore/native/docs/billing-example#costs-breakdown) section.
 
 #### Small  
 (50k installs)
@@ -288,46 +288,25 @@ For our example chat app, the data structure is as follows:
 
 To calculate the storage costs for storing the app's data, apply the following assumptions about document sizes:
 
-<table>
-<thead>
-<tr class="header">
-<th>Collection</th>
-<th>Document Size (in transit)</th>
-<th>Document Size (on disk)*</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>users</td>
-<td>1KB</td>
-<td>3KB</td>
-</tr>
-<tr class="even">
-<td>groups</td>
-<td>0.5KB</td>
-<td>1.5KB</td>
-</tr>
-<tr class="odd">
-<td>messages</td>
-<td>0.25KB</td>
-<td>0.75KB</td>
-</tr>
-</tbody>
-</table>
+| Collection | Document Size (in transit) | Document Size (on disk)\* |
+| ---------- | -------------------------- | ------------------------- |
+| users      | 1KB                        | 3KB                       |
+| groups     | 0.5KB                      | 1.5KB                     |
+| messages   | 0.25KB                     | 0.75KB                    |
 
 *\*This size calculation includes indexes for the message fields, but assumes indexing is disabled for message content.*
 
 The app also only stores messages that are up to three months old, to lower storage costs.
 
-For more information on calculating storage costs, see [Understanding storage size calculations](/firestore/docs/storage-size) .
+For more information on calculating storage costs, see [Understanding storage size calculations](https://docs.cloud.google.com/firestore/docs/storage-size) .
 
 ### Operations
 
 Users typically complete the following common tasks in the app:
 
-  - [**See the list of chats:**](#see-chats) Users open the home screen of the app and see a list of chats (group and direct) ordered by the most recent message posted.
-  - [**Read messages in a chat:**](#read-chats) Users select chats from the home screen and read recent messages from chats.
-  - [**Send a message to a chat:**](#send-chats) Users send messages to chats (group or direct).
+  - [**See the list of chats:**](https://docs.cloud.google.com/firestore/native/docs/billing-example#see-chats) Users open the home screen of the app and see a list of chats (group and direct) ordered by the most recent message posted.
+  - [**Read messages in a chat:**](https://docs.cloud.google.com/firestore/native/docs/billing-example#read-chats) Users select chats from the home screen and read recent messages from chats.
+  - [**Send a message to a chat:**](https://docs.cloud.google.com/firestore/native/docs/billing-example#send-chats) Users send messages to chats (group or direct).
 
 The example app's total estimated operations in Firestore in Native Mode for the three typical user tasks are as follows:
 
@@ -346,13 +325,11 @@ The home screen of the app loads the 25 most recent chats, incurring charges for
 
 In the example below, we limit the query to new chats using a timestamp of each successful fetch, stored by the app:
 
-``` text
-db.collection('groups')
-  .where('participants', 'array-contains', 'user123')
-  .where('lastUpdated', '>', lastFetchTimestamp)
-  .orderBy('lastUpdated', 'desc')
-  .limit(25)
-```
+    db.collection('groups')
+      .where('participants', 'array-contains', 'user123')
+      .where('lastUpdated', '>', lastFetchTimestamp)
+      .orderBy('lastUpdated', 'desc')
+      .limit(25)
 
 Assume there are an average of 10 updated chats each time the user checks the app. This query only incurs 10 document reads.
 
@@ -368,14 +345,12 @@ Users click into chat threads from the home screen to see recent messages, loadi
 
 Assume the typical user performs this action 5 times daily (once for every time they open the home screen), leading to a total of 250 reads per user each day. We can also limit our query to new messages since the last fetch time:
 
-``` text
-db.collection('groups')
-  .doc('group234')
-  .collection('messages')
-  .where('sentTime', '>', lastFetchTimestamp)
-  .orderBy('sentTime', 'desc')
-  .limit(50)
-```
+    db.collection('groups')
+      .doc('group234')
+      .collection('messages')
+      .where('sentTime', '>', lastFetchTimestamp)
+      .orderBy('sentTime', 'desc')
+      .limit(50)
 
 Assume that a user gets about 30 messages a day across all chats. Since you've limited the query to fetch new messages, this translates to just 30 retrieved messages/day.
 
@@ -401,7 +376,7 @@ Note that the cost of reading these messages has been accounted for in the other
 
 ## Billed usage for administrator tasks
 
-As an app owner or administrator you probably want to generate reports from your app's data. For example, you might want to keep a daily count of the number of messages sent by your users. You can accomplish this with a [`  count()  `](/firestore/native/docs/query-data/aggregation-queries) aggregation of the `  messages  ` collection group.
+As an app owner or administrator you probably want to generate reports from your app's data. For example, you might want to keep a daily count of the number of messages sent by your users. You can accomplish this with a [`  count()  `](https://docs.cloud.google.com/firestore/native/docs/query-data/aggregation-queries) aggregation of the `  messages  ` collection group.
 
 For aggregation queries such as `  count()  ` , you are charged one document read for each batch of up to 1,000 index entries matched by the query. Running this daily aggregation adds the following monthly charges:
 

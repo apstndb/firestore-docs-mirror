@@ -11,7 +11,7 @@ An object that represents a latitude/longitude pair. This is expressed as a pair
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;latitude&quot;: number,
   &quot;longitude&quot;: number
 }</code></pre></td>

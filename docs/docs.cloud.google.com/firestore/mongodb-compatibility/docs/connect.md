@@ -16,7 +16,7 @@ The database connection string depends on the UID of the database, the location 
 
 The exact connection string depends on the authentication mechanism, but the base connection string uses the following format:
 
-``` text
+``` suppresswarning
 mongodb://UID.LOCATION.firestore.goog:443/DATABASE_ID?loadBalanced=true&tls=true&retryWrites=false
 ```
 
@@ -25,6 +25,8 @@ You can obtain the base connection string in one of the following ways:
 ##### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, click the database ID of the relevant database.
 
@@ -34,7 +36,7 @@ You can obtain the base connection string in one of the following ways:
 
 Use `  gcloud firestore database describe  ` to retrieve the UID and location information:
 
-``` text
+``` suppresswarning
 gcloud firestore databases describe \
 --database=DATABASE_ID \
 --format='yaml(locationId, uid)'
@@ -46,10 +48,10 @@ The output includes the location and UID of the database. Use this information t
 
 Use the base connection string and one of the following methods to authenticate and connect to your database:
 
-  - [Username and password (SCRAM)](#scram)
-  - [Compute Engine service account](#gce-vm)
-  - [Cloud Run service account](#cloud-run)
-  - [Google Auth Library](#connect_with_the_google_auth_library)
+  - [Username and password (SCRAM)](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect#scram)
+  - [Compute Engine service account](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect#gce-vm)
+  - [Cloud Run service account](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect#cloud-run)
+  - [Google Auth Library](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect#connect_with_the_google_auth_library)
 
 ## Connect with Username and password (SCRAM)
 
@@ -57,9 +59,9 @@ Follow these steps to create a user credential for your database and connect to 
 
 ### Before you begin
 
-To get the permissions that you need to create a user, ask your administrator to grant you the [userCredsAdmin](/iam/docs/roles-permissions/firestore#datastore.userCredsAdmin) ( `  roles/datastore.userCredsAdmin  ` ) IAM role on your database. For more information about granting roles, see [Manage access to projects, folders, and organizations](/iam/docs/granting-changing-revoking-access) .
+To get the permissions that you need to create a user, ask your administrator to grant you the [userCredsAdmin](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.userCredsAdmin) ( `  roles/datastore.userCredsAdmin  ` ) IAM role on your database. For more information about granting roles, see [Manage access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
 
-You might also be able to get the required permissions through [custom roles](/iam/docs/creating-custom-roles) or other [predefined roles](/iam/docs/roles-overview#predefined) .
+You might also be able to get the required permissions through [custom roles](https://docs.cloud.google.com/iam/docs/creating-custom-roles) or other [predefined roles](https://docs.cloud.google.com/iam/docs/roles-overview#predefined) .
 
 ### Create a user and connect to a database
 
@@ -68,6 +70,8 @@ To create a user for your Firestore with MongoDB compatibility database, use one
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select a database from the list of databases.
 
@@ -89,7 +93,7 @@ To create a user for your Firestore with MongoDB compatibility database, use one
 
 1.  To authenticate with SCRAM, you must first create a user credential. Use the `  gcloud firestore user-creds  ` command:
     
-    ``` text
+    ``` suppresswarning
     gcloud firestore user-creds create USERNAME --database=DATABASE_ID
     ```
     
@@ -104,7 +108,7 @@ To create a user for your Firestore with MongoDB compatibility database, use one
     
     The output resembles the following:
     
-    ``` text
+    ``` suppresswarning
     name: projects/PROJECT_NAME/databases/DATABASE_ID/userCreds/USERNAME
     resourceIdentity:
       principal: principal://firestore.googleapis.com/projects/PROJECT_NUMBER/name/databases/DATABASE_ID/userCreds/USERNAME
@@ -113,7 +117,7 @@ To create a user for your Firestore with MongoDB compatibility database, use one
 
 2.  By default, this new user credential does not have any permissions. For read and write access to the database, add the `  roles/datastore.user  ` role for this specific database:
     
-    ``` text
+    ``` suppresswarning
     gcloud projects add-iam-policy-binding PROJECT_NAME \
     --member='principal://firestore.googleapis.com/projects/PROJECT_NUMBER/name/databases/DATABASE_ID/userCreds/USERNAME' \
     --role=roles/datastore.user \
@@ -123,10 +127,10 @@ To create a user for your Firestore with MongoDB compatibility database, use one
     Replace the following:
     
       - PROJECT\_NAME : the name of your project.
-      - PROJECT\_NUMBER : the [project number](/resource-manager/docs/creating-managing-projects#identifying_projects) .
+      - PROJECT\_NUMBER : the [project number](https://docs.cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) .
       - DATABASE\_ID : the database ID.
       - USERNAME : the username you previously created.
-      - CONDITION\_TITLE : a title for this condition. This condition [restricts access to only this database](/firestore/mongodb-compatibility/docs/create-databases#configure_per-database_access_permissions) .
+      - CONDITION\_TITLE : a title for this condition. This condition [restricts access to only this database](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases#configure_per-database_access_permissions) .
 
 ##### Java
 
@@ -134,14 +138,14 @@ This section provides a code example for creating user credentials and configuri
 
 For Maven builds, you can use the following coordinates:
 
-``` text
+``` suppresswarning
 com.google.cloud:google-cloud-firestore-admin:3.33.1
 com.google.cloud:google-cloud-resourcemanager:1.76.0
 ```
 
 Provision user credentials and an IAM policy:
 
-``` text
+``` suppresswarning
 import com.google.cloud.firestore.v1.FirestoreAdminClient;
 import com.google.cloud.resourcemanager.v3.ProjectName;
 import com.google.cloud.resourcemanager.v3.ProjectsClient;
@@ -243,7 +247,7 @@ This section provides a code example for creating user credentials and configuri
 
 The required Python libraries can be installed with the pip tool:
 
-``` text
+``` suppresswarning
 pip install google-cloud-iam
 pip install google-cloud-firestore
 pip install google-cloud-resource-manager
@@ -251,7 +255,7 @@ pip install google-cloud-resource-manager
 
 Provision user credentials and an IAM policy:
 
-``` text
+``` suppresswarning
 from google.cloud import resourcemanager_v3
 from google.cloud.firestore_admin_v1 import FirestoreAdminClient
 from google.cloud.firestore_admin_v1 import types
@@ -337,7 +341,7 @@ def provision_firestore_user_creds_and_iam(
 
 Use the following connection string to connect to your database with SCRAM:
 
-``` text
+``` suppresswarning
 mongodb://USERNAME:PASSWORD@UID.LOCATION.firestore.goog:443/DATABASE_ID?loadBalanced=true&authMechanism=SCRAM-SHA-256&tls=true&retryWrites=false
 ```
 
@@ -357,21 +361,19 @@ This library lets you use a number of different types of authentication (Applica
 
 This requires [adding the auth library as a dependency](https://github.com/googleapis/google-auth-library-java?tab=readme-ov-file#importing-the-auth-library) :
 
-``` text
-// Maven
-<dependency>
-  <groupId>com.google.auth</groupId>
-  <artifactId>google-auth-library-oauth2-http</artifactId>
-  <version>1.19.0</version>
-</dependency>
-
-// Gradle
-implementation 'com.google.auth:google-auth-library-oauth2-http:1.19.0'
-```
+    // Maven
+    <dependency>
+      <groupId>com.google.auth</groupId>
+      <artifactId>google-auth-library-oauth2-http</artifactId>
+      <version>1.19.0</version>
+    </dependency>
+    
+    // Gradle
+    implementation 'com.google.auth:google-auth-library-oauth2-http:1.19.0'
 
 The following code sample demonstrates how to connect:
 
-``` text
+``` suppresswarning
 val db = MongoClients.create(
     clientSettings(
       "DATABASE_UID",
@@ -439,7 +441,7 @@ Configure a user-managed service account for your VM:
   - To configure service account during VM creation, see [Create a VM that uses a user-managed service account](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances) .
   - To configure service account on an existing VM, see [Change the attached service account](https://cloud.google.com/compute/docs/instances/change-service-account) .
 
-See the instructions in the [Configure credentials](#configure-creds) sections to complete the IAM policy configuration for your Compute Engine service account.
+See the instructions in the [Configure credentials](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect#configure-creds) sections to complete the IAM policy configuration for your Compute Engine service account.
 
 ### Connect from Cloud Run
 
@@ -450,13 +452,13 @@ You can authenticate and connect to your database using a Cloud Run service acco
   - To configure the service account for Cloud Run, see [Configure service identity](https://cloud.google.com/run/docs/configuring/services/service-identity#configure-service-identity)
   - To determine the service account that is already associated with your Cloud Run service, see [gcloud run services describe](https://cloud.google.com/sdk/gcloud/reference/run/services/describe)
 
-See the instructions in the [Configure credentials](#configure-creds) sections to complete the IAM policy configuration for your Cloud Run service account.
+See the instructions in the [Configure credentials](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect#configure-creds) sections to complete the IAM policy configuration for your Cloud Run service account.
 
 ### Configure credentials
 
 To grant the service account the `  roles/datastore.user  ` role for read and write to Firestore, run the following command:
 
-``` text
+``` suppresswarning
 gcloud projects add-iam-policy-binding PROJECT_NAME --member="serviceAccount:SERVICE_ACCOUNT_EMAIL" --role=roles/datastore.user
 ```
 
@@ -469,7 +471,7 @@ Replace the following:
 
 Use the following format to construct the connection string:
 
-``` text
+``` suppresswarning
 mongodb://DATABASE_UID.LOCATION.firestore.goog:443/DATABASE_ID?loadBalanced=true&tls=true&retryWrites=false&authMechanism=MONGODB-OIDC&authMechanismProperties=ENVIRONMENT:gcp,TOKEN_RESOURCE:FIRESTORE
 ```
 
@@ -479,7 +481,7 @@ Replace the following:
   - LOCATION : the location of your database.
   - DATABASE\_ID the database ID.
 
-For more information on retrieving the UID and location, see [Retrieve the connection string](#connection_string) .
+For more information on retrieving the UID and location, see [Retrieve the connection string](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect#connection_string) .
 
 ## Connect with a temporary access token
 
@@ -487,7 +489,7 @@ You can use a temporary Google Cloud access token to run diagnostic tools such a
 
 For example, use the following command to connect to your database with `  mongosh  ` :
 
-``` text
+``` suppresswarning
 mongosh --tls \
       --username access_token --password $(gcloud auth print-access-token) \
       'mongodb://UID.LOCATION.firestore.goog:443/DATABASE_ID?loadBalanced=true&authMechanism=PLAIN&authSource=$external&retryWrites=false'

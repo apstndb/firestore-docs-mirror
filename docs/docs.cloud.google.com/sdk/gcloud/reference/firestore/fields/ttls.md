@@ -29,10 +29,10 @@ NOTES
 
 These variants are also available:
 
-``` text
+``` wrap-code
 gcloud alpha firestore fields ttls
 ```
 
-``` text
+``` wrap-code
 gcloud beta firestore fields ttls
 ```

@@ -30,21 +30,17 @@ A key benefit of multitenancy is having the same application serve multiple clie
 
 For example, consider a Task List application that silos data on a per user basis. The application could define namespaces based on user name, resulting in the following partitions:
 
-``` text
-Partition ID: project:"my_project_id"/namespace:"Joe"
-Partition ID: project:"my_project_id"/namespace:"Alice"
-Partition ID: project:"my_project_id"/namespace:"Charlie"
-```
+    Partition ID: project:"my_project_id"/namespace:"Joe"
+    Partition ID: project:"my_project_id"/namespace:"Alice"
+    Partition ID: project:"my_project_id"/namespace:"Charlie"
 
 The application could define a logical structure of a `  Task  ` kind as follows, to use for all namespaces:
 
-``` text
-kind: Task
-properties:
- - "done", Boolean
- - "created", DateTime
- - "description", String, excluded from index
-```
+    kind: Task
+    properties:
+     - "done", Boolean
+     - "created", DateTime
+     - "description", String, excluded from index
 
 When a user creates an entity of kind `  Task  ` , the entity is stored in the user’s own partition, resulting in siloed data. The application processes `  Task  ` entities consistently across namespaces because only one schema is used for the `  Task  ` kind. An application with siloed data and consistent behaviour would be multitenant.
 
@@ -57,11 +53,11 @@ The application could query on the `  description  ` property for Alice’s `  T
 
 ## Viewing namespaces in the console
 
-To see statistics for the namespaces used in your project, visit the [Datastore Dashboard](https://console.cloud.google.com/datastore/stats) page in the Google Cloud console. To programmatically determine which namespaces are used in your project, see [Namespace queries](/datastore/docs/concepts/metadataqueries#namespace_queries) .
+To see statistics for the namespaces used in your project, visit the [Datastore Dashboard](https://console.cloud.google.com/datastore/stats) page in the Google Cloud console. To programmatically determine which namespaces are used in your project, see [Namespace queries](https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries#namespace_queries) .
 
-If you need to group data *within* a tenant, you can categorize your data by [kinds](/datastore/docs/concepts/entities#kinds_and_identifiers) , and you can also organize highly related data with [entity groups](/datastore/docs/concepts/entities#entity_groups) .
+If you need to group data *within* a tenant, you can categorize your data by [kinds](https://docs.cloud.google.com/datastore/docs/concepts/entities#kinds_and_identifiers) , and you can also organize highly related data with [entity groups](https://docs.cloud.google.com/datastore/docs/concepts/entities#entity_groups) .
 
 ## What's next
 
-  - Learn about [entities](/datastore/docs/concepts/entities) .
-  - Learn about [queries](/datastore/docs/concepts/queries) .
+  - Learn about [entities](https://docs.cloud.google.com/datastore/docs/concepts/entities) .
+  - Learn about [queries](https://docs.cloud.google.com/datastore/docs/concepts/queries) .

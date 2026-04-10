@@ -43,10 +43,10 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` text
+``` wrap-code
 gcloud firestore databases
 ```
 
-``` text
+``` wrap-code
 gcloud alpha firestore databases
 ```

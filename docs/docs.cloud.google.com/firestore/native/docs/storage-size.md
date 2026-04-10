@@ -2,7 +2,7 @@
 
 This page describes the storage size of documents, document names, fields, and index entries in Firestore.
 
-You can learn about the costs of this storage at [Firestore Pricing](/firestore/pricing) .
+You can learn about the costs of this storage at [Firestore Pricing](https://docs.cloud.google.com/firestore/pricing) .
 
 ## String size
 
@@ -23,7 +23,7 @@ For example:
 
 ## Document ID size
 
-The size of a document ID is either the [string size](#string-size) for a string ID or 8 bytes for an integer ID.
+The size of a document ID is either the [string size](https://docs.cloud.google.com/firestore/native/docs/storage-size#string-size) for a string ID or 8 bytes for an integer ID.
 
 **Note:** The Firestore client libraries always use string document IDs.
 
@@ -48,84 +48,40 @@ For a document in the subcollection `  users/jeff/tasks  ` with a string documen
 
 The following table shows the size of field values by type.
 
-<table>
-<thead>
-<tr class="header">
-<th>Type</th>
-<th>Size</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Array</td>
-<td>The sum of the sizes of its values</td>
-</tr>
-<tr class="even">
-<td>Boolean</td>
-<td>1 byte</td>
-</tr>
-<tr class="odd">
-<td>Bytes</td>
-<td>Byte length</td>
-</tr>
-<tr class="even">
-<td>Date and time</td>
-<td>8 bytes</td>
-</tr>
-<tr class="odd">
-<td>Floating-point number</td>
-<td>8 bytes</td>
-</tr>
-<tr class="even">
-<td>Geographical point</td>
-<td>16 bytes</td>
-</tr>
-<tr class="odd">
-<td>Integer</td>
-<td>8 bytes</td>
-</tr>
-<tr class="even">
-<td>Map</td>
-<td>The size of the map, calculated the same way as <a href="#document-size">document size</a></td>
-</tr>
-<tr class="odd">
-<td>Null</td>
-<td>1 byte</td>
-</tr>
-<tr class="even">
-<td>Reference</td>
-<td>The <a href="#document-name-size">document name size</a></td>
-</tr>
-<tr class="odd">
-<td>Text string</td>
-<td>Number of UTF-8 encoded bytes + 1</td>
-</tr>
-<tr class="even">
-<td>Vector</td>
-<td>8 bytes per dimension</td>
-</tr>
-</tbody>
-</table>
+| Type                  | Size                                                                                                                                            |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Array                 | The sum of the sizes of its values                                                                                                              |
+| Boolean               | 1 byte                                                                                                                                          |
+| Bytes                 | Byte length                                                                                                                                     |
+| Date and time         | 8 bytes                                                                                                                                         |
+| Floating-point number | 8 bytes                                                                                                                                         |
+| Geographical point    | 16 bytes                                                                                                                                        |
+| Integer               | 8 bytes                                                                                                                                         |
+| Map                   | The size of the map, calculated the same way as [document size](https://docs.cloud.google.com/firestore/native/docs/storage-size#document-size) |
+| Null                  | 1 byte                                                                                                                                          |
+| Reference             | The [document name size](https://docs.cloud.google.com/firestore/native/docs/storage-size#document-name-size)                                   |
+| Text string           | Number of UTF-8 encoded bytes + 1                                                                                                               |
+| Vector                | 8 bytes per dimension                                                                                                                           |
 
 For example, a boolean field named `  done  ` would use 6 bytes:
 
   - 5 bytes for the `  done  ` field name
   - 1 byte for the boolean value
 
-**Note:** Field values in an index are truncated after 1500 bytes, see [indexing limits](/firestore/native/docs/quotas#indexes) .
+**Note:** Field values in an index are truncated after 1500 bytes, see [indexing limits](https://docs.cloud.google.com/firestore/native/docs/quotas#indexes) .
 
 ## Document size
 
 The size of a document is the sum of:
 
-  - The [document name size](#document-name-size)
-  - The sum of the [string size](#string-size) of each field name
-  - The sum of the size of each [field value](#field-size)
+  - The [document name size](https://docs.cloud.google.com/firestore/native/docs/storage-size#document-name-size)
+  - The sum of the [string size](https://docs.cloud.google.com/firestore/native/docs/storage-size#string-size) of each field name
+  - The sum of the size of each [field value](https://docs.cloud.google.com/firestore/native/docs/storage-size#field-size)
   - 32 additional bytes
 
 This example is for a document in subcollection `  users/jeff/tasks  ` with a string document ID of `  my_task_id  ` :
 
-``` text
+``` 
  - "type": "Personal"
  - "done": false
  - "priority": 1
@@ -189,15 +145,15 @@ The size of a single-field index entry depends on whether an index is scoped to 
 
 The size of an entry in a single-field index with collection scope is the sum of:
 
-  - The [document name size](#document-name-size) of the indexed document
-  - The [document name size](#document-name-size) of the indexed document's parent document
-  - The [string size](#string-size) of the indexed field name
-  - The size of the indexed [field value](#field-size)
+  - The [document name size](https://docs.cloud.google.com/firestore/native/docs/storage-size#document-name-size) of the indexed document
+  - The [document name size](https://docs.cloud.google.com/firestore/native/docs/storage-size#document-name-size) of the indexed document's parent document
+  - The [string size](https://docs.cloud.google.com/firestore/native/docs/storage-size#string-size) of the indexed field name
+  - The size of the indexed [field value](https://docs.cloud.google.com/firestore/native/docs/storage-size#field-size)
   - 32 additional bytes
 
 Consider a document in the sub-collection `  users/jeff/tasks  ` with a string document ID of `  my_task_id  ` :
 
-``` text
+``` 
  - "type": "Personal"
  - "done": false
  - "priority": 1
@@ -216,14 +172,14 @@ For a single-field index with collection scope that indexes the `  done  ` field
 
 The size of an entry in a single-field index with collection group scope is the sum of:
 
-  - The [document name size](#document-name-size) of the indexed document
-  - The [string size](#string-size) of the indexed field name
-  - The size of the indexed [field value](#field-size)
+  - The [document name size](https://docs.cloud.google.com/firestore/native/docs/storage-size#document-name-size) of the indexed document
+  - The [string size](https://docs.cloud.google.com/firestore/native/docs/storage-size#string-size) of the indexed field name
+  - The size of the indexed [field value](https://docs.cloud.google.com/firestore/native/docs/storage-size#field-size)
   - 48 additional bytes
 
 Consider a document in the sub-collection `  users/jeff/tasks  ` with a string document ID of `  my_task_id  ` :
 
-``` text
+``` 
  - "type": "Personal"
  - "done": false
  - "priority": 1
@@ -245,14 +201,14 @@ The size of an entry in a composite index depends on whether the index is scoped
 
 The size of an index entry in a composite index with collection scope is the sum of:
 
-  - The [document name size](#document-name-size) of the indexed document
-  - The [document name size](#document-name-size) of the indexed document's parent document
-  - The sum of the indexed [field values](#field-size)
+  - The [document name size](https://docs.cloud.google.com/firestore/native/docs/storage-size#document-name-size) of the indexed document
+  - The [document name size](https://docs.cloud.google.com/firestore/native/docs/storage-size#document-name-size) of the indexed document's parent document
+  - The sum of the indexed [field values](https://docs.cloud.google.com/firestore/native/docs/storage-size#field-size)
   - 32 additional bytes
 
 Consider a document in the sub-collection `  users/jeff/tasks  ` with a string document ID of `  my_task_id  ` :
 
-``` text
+``` 
  - "type": "Personal"
  - "done": false
  - "priority": 1
@@ -271,13 +227,13 @@ For a composite index with collection scope that indexes the `  done  ` and `  p
 
 The size of an index entry in a composite index with collection group scope is the sum of:
 
-  - The [document name size](#document-name-size) of the indexed document
-  - The sum of the indexed [field values](#field-size)
+  - The [document name size](https://docs.cloud.google.com/firestore/native/docs/storage-size#document-name-size) of the indexed document
+  - The sum of the indexed [field values](https://docs.cloud.google.com/firestore/native/docs/storage-size#field-size)
   - 32 additional bytes
 
 Consider a document in the sub-collection `  users/jeff/tasks  ` with a string document ID of `  my_task_id  ` :
 
-``` text
+``` 
  - "type": "Personal"
  - "done": false
  - "priority": 1
@@ -293,4 +249,4 @@ For a composite index with collection group scope that indexes the `  done  ` an
 
 ## What's next
 
-Learn about [Firestore pricing](/firestore/pricing) .
+Learn about [Firestore pricing](https://docs.cloud.google.com/firestore/pricing) .

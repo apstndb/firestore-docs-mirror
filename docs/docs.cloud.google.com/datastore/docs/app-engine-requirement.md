@@ -14,11 +14,9 @@ If you disable your App Engine app, you also disable access to the Datastore mod
 
 You can check the App Engine unlink state using the REST API:
 
-``` text
-curl  --header "Authorization: Bearer $(gcloud auth print-access-token)" \
---header "Content-type: application/json" \
-"https://firestore.googleapis.com/v1/projects/PROJECT_ID/databases/(default)"
-```
+    curl  --header "Authorization: Bearer $(gcloud auth print-access-token)" \
+    --header "Content-type: application/json" \
+    "https://firestore.googleapis.com/v1/projects/PROJECT_ID/databases/(default)"
 
 In the response, look at the value of `  appEngineIntegrationMode  ` . If the value is `  DISABLED  ` , your database is not linked to an App Engine app.
 
@@ -30,9 +28,11 @@ Unlinking is a permanent operation.
 
 If you unlink your database, you cannot use the **Disable Writes** feature in the **Datastore Admin** page. If writes are currently disabled, unlinking your database will enable writes.
 
-Before unlinking your database from App Engine, make sure you [enable the Firestore API and update your IAM permissions](#enable-api) .
+Before unlinking your database from App Engine, make sure you [enable the Firestore API and update your IAM permissions](https://docs.cloud.google.com/datastore/docs/app-engine-requirement#enable-api) .
 
 To unlink your database, Go to the **Datastore Admin** page and click **Unlink database from app** . It may take up to five minutes for the unlinking operation to take effect.
+
+[Go to Datastore Admin](https://console.cloud.google.com/datastore/settings)
 
 ## Migrating Terraform App Engine Resources
 
@@ -46,7 +46,7 @@ In your Terraform configuration file, create a new `  google_firestore_database 
 
 #### datastore.tf
 
-``` text
+``` pretty-print
 resource "google_firestore_database" "database" {
   project     = "project"
   name        = "(default)"
@@ -65,25 +65,19 @@ See [Datastore locations](https://cloud.google.com/datastore/docs/locations) for
 
 ### Import the existing Datastore mode database
 
-First, ensure that the [Firestore API](#enabling_the_api_via_terraform) is enabled.
+First, ensure that the [Firestore API](https://docs.cloud.google.com/datastore/docs/app-engine-requirement#enabling_the_api_via_terraform) is enabled.
 
 Next, import the existing Datastore mode database into your Terraform state:
 
-``` text
-terraform import google_firestore_database.database "(default)"
-```
+    terraform import google_firestore_database.database "(default)"
 
 Next, run:
 
-``` text
-terraform plan
-```
+    terraform plan
 
 Inspect the output to ensure the import completed successfully. If the output shows any fields changing, ensure these changes are intended. If the output includes a line similar to:
 
-``` text
-google_firestore_database.database must be replaced
-```
+    google_firestore_database.database must be replaced
 
 then inspect your Terraform configuration file to see if there were any mistakes, particularly in the project , location , or name fields, and then run `  terraform plan  ` again. Any fields that are requiring Terraform to replace your database will be marked with `  # forces replacement  ` in the plan output.
 
@@ -91,9 +85,7 @@ then inspect your Terraform configuration file to see if there were any mistakes
 
 Once you are satisfied with the Terraform plan output, run:
 
-``` text
-terraform apply
-```
+    terraform apply
 
 ### Removing the google\_app\_engine\_application resource
 
@@ -101,24 +93,18 @@ If you have an existing `  google_app_engine_application  ` resource in your Ter
 
 Afterwards, once again run:
 
-``` text
-terraform plan
-```
+    terraform plan
 
 You should see output similar to the following:
 
-``` text
-Terraform will perform the following actions:
-
-  # google_app_engine_application.app will be destroyed
-  # (because google_app_engine_application.app is not in configuration)
-```
+    Terraform will perform the following actions:
+    
+      # google_app_engine_application.app will be destroyed
+      # (because google_app_engine_application.app is not in configuration)
 
 Once you are satisfied with the plan output, run
 
-``` text
-terraform apply
-```
+    terraform apply
 
 Terraform does not currently support deletion of App Engine resources; although Terraform will show the resource as being destroyed, it will not actually delete the App Engine application. However, the App Engine application will no longer be managed by Terraform.
 
@@ -144,15 +130,15 @@ You should also verify your IAM permissions to ensure your access to the databas
 
 Verify that the accounts accessing the database through the Google Cloud console have the required permissions, listed above.
 
-[Predefined roles](/datastore/docs/access/iam#iam_roles) such as *Datastore User* and *Datastore Viewer* include the required permissions. If you created any custom IAM roles, you may need to update them to include the permissions above.
+[Predefined roles](https://docs.cloud.google.com/datastore/docs/access/iam#iam_roles) such as *Datastore User* and *Datastore Viewer* include the required permissions. If you created any custom IAM roles, you may need to update them to include the permissions above.
 
-If you previously defined a custom role for Datastore, it might lack the `  datastore.databases.getMetadata  ` permission. Ensure continued access by updating your custom roles with `  datastore.databases.getMetadata  ` or by using a [predefined role](/datastore/docs/access/iam#iam_roles) .
+If you previously defined a custom role for Datastore, it might lack the `  datastore.databases.getMetadata  ` permission. Ensure continued access by updating your custom roles with `  datastore.databases.getMetadata  ` or by using a [predefined role](https://docs.cloud.google.com/datastore/docs/access/iam#iam_roles) .
 
 ### Enabling the API via Terraform
 
 If you wish, you can also enable the Firestore API via Terraform:
 
-``` text
+``` pretty-print
 resource "google_project_service" "firestore" {
   project = "project"
   service = "firestore.googleapis.com"
@@ -161,7 +147,7 @@ resource "google_project_service" "firestore" {
 
 If you have a `  google_firestore_database  ` resource, you can add a dependency on the `  google_project_service  ` resource to ensure that the API is enabled before Terraform attempts to create the database:
 
-``` text
+``` pretty-print
 resource "google_firestore_database" "database" {
   // ...
   depends_on = [google_project_service.firestore]

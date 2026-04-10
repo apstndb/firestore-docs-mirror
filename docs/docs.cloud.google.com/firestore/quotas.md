@@ -12,71 +12,25 @@ The free tier applies to only one Firestore database per project. The first data
 
 ### Standard edition
 
-<table>
-<thead>
-<tr class="header">
-<th>Free tier</th>
-<th>Quota</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Stored data</td>
-<td>1 GiB</td>
-</tr>
-<tr class="even">
-<td>Document reads</td>
-<td>50,000 per day</td>
-</tr>
-<tr class="odd">
-<td>Document writes</td>
-<td>20,000 per day</td>
-</tr>
-<tr class="even">
-<td>Document deletes</td>
-<td>20,000 per day</td>
-</tr>
-<tr class="odd">
-<td>Outbound data transfer</td>
-<td>10 GiB per month</td>
-</tr>
-</tbody>
-</table>
+| Free tier              | Quota            |
+| ---------------------- | ---------------- |
+| Stored data            | 1 GiB            |
+| Document reads         | 50,000 per day   |
+| Document writes        | 20,000 per day   |
+| Document deletes       | 20,000 per day   |
+| Outbound data transfer | 10 GiB per month |
 
 ### Enterprise edition
 
-<table>
-<thead>
-<tr class="header">
-<th>Free tier</th>
-<th>Quota</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Stored data</td>
-<td>1 GiB</td>
-</tr>
-<tr class="even">
-<td>Read units</td>
-<td>50,000 per day</td>
-</tr>
-<tr class="odd">
-<td>Real-time update units</td>
-<td>50,000 per day</td>
-</tr>
-<tr class="even">
-<td>Write units</td>
-<td>40,000 per day</td>
-</tr>
-<tr class="odd">
-<td>Outbound data transfer</td>
-<td>10 GiB per month</td>
-</tr>
-</tbody>
-</table>
+| Free tier              | Quota            |
+| ---------------------- | ---------------- |
+| Stored data            | 1 GiB            |
+| Read units             | 50,000 per day   |
+| Real-time update units | 50,000 per day   |
+| Write units            | 40,000 per day   |
+| Outbound data transfer | 10 GiB per month |
 
-The following operations and features don't include free usage. You must [enable billing](/billing/docs/how-to/modify-project) to use these features:
+The following operations and features don't include free usage. You must [enable billing](https://docs.cloud.google.com/billing/docs/how-to/modify-project) to use these features:
 
   - Managed deletes (TTL)
   - PITR data
@@ -107,10 +61,10 @@ The following tables show the limits that apply to Firestore. These are hard lim
 <tr class="odd">
 <td>Maximum number of databases per project</td>
 <td><p>100</p>
-<p>You can <a href="/support-hub">contact support</a> to request an increase to this limit.</p></td>
+<p>You can <a href="https://docs.cloud.google.com/support-hub">contact support</a> to request an increase to this limit.</p></td>
 </tr>
 <tr class="even">
-<td>Maximum number of <a href="/firestore/docs/cmek">customer-managed encryption keys (CMEK) databases</a> per project</td>
+<td>Maximum number of <a href="https://docs.cloud.google.com/firestore/docs/cmek">customer-managed encryption keys (CMEK) databases</a> per project</td>
 <td><p>0</p>
 <p>By default the quota is 0 because this feature is behind an allowlist. You can request to increase the quota by filling in <a href="https://docs.google.com/forms/d/e/1FAIpQLSfKs8wJf4IXu1NizvfyU2vT59JDbdPvkehMVZ2ab5l_aDLIIA/viewform?resourcekey=0-O15dlRFvA0JIDmh6VFUEcA">the CMEK access request form</a> .</p></td>
 </tr>
@@ -134,10 +88,10 @@ The following tables show the limits that apply to Firestore. These are hard lim
 <tr class="odd">
 <td>Maximum number of databases per project</td>
 <td><p>100</p>
-<p>You can <a href="/support-hub">contact support</a> to request an increase to this limit.</p></td>
+<p>You can <a href="https://docs.cloud.google.com/support-hub">contact support</a> to request an increase to this limit.</p></td>
 </tr>
 <tr class="even">
-<td>Maximum number of <a href="/firestore/docs/cmek">customer-managed encryption keys (CMEK) databases</a> per project</td>
+<td>Maximum number of <a href="https://docs.cloud.google.com/firestore/docs/cmek">customer-managed encryption keys (CMEK) databases</a> per project</td>
 <td><p>0</p>
 <p>By default the quota is 0 because this feature is behind an allowlist. You can request to increase the quota by filling in <a href="https://docs.google.com/forms/d/e/1FAIpQLSfKs8wJf4IXu1NizvfyU2vT59JDbdPvkehMVZ2ab5l_aDLIIA/viewform?resourcekey=0-O15dlRFvA0JIDmh6VFUEcA">the CMEK access request form</a> .</p></td>
 </tr>
@@ -229,7 +183,7 @@ A quoted field name starts and ends with the backtick character ( <code dir="ltr
 <td>Maximum depth of fields in a map or array</td>
 <td><p>20</p>
 <p>Map and array fields add one level to the overall depth of an object. For example, the following object has a total depth of three levels:</p>
-<pre class="text" dir="ltr" data-is-upgraded="" translate="no"><code>{
+<pre dir="ltr" data-is-upgraded="" translate="no"><code>{
   nested_map: {         #depth 1
     nested_array: [     #depth 2
       {
@@ -326,7 +280,7 @@ A quoted field name starts and ends with the backtick character ( <code dir="ltr
 <td>Maximum depth of fields in a map or array</td>
 <td><p>20</p>
 <p>Map and array fields add one level to the overall depth of an object. For example, the following object has a total depth of three levels:</p>
-<pre class="text" dir="ltr" data-is-upgraded="" translate="no"><code>{
+<pre dir="ltr" data-is-upgraded="" translate="no"><code>{
   nested_map: {         #depth 1
     nested_array: [     #depth 2
       {
@@ -344,53 +298,19 @@ A quoted field name starts and ends with the backtick character ( <code dir="ltr
 
 ### Standard edition
 
-<table>
-<thead>
-<tr class="header">
-<th>Limit</th>
-<th>Details</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Maximum API request size</td>
-<td>10 MiB</td>
-</tr>
-<tr class="even">
-<td>Time limit for a transaction</td>
-<td>270 seconds, with a 60-second idle expiration time</td>
-</tr>
-<tr class="odd">
-<td>Maximum number of field transformations that can be performed on a single document in a <code dir="ltr" translate="no">          Commit         </code> operation or in a transaction</td>
-<td>500</td>
-</tr>
-</tbody>
-</table>
+| Limit                                                                                                                                               | Details                                            |
+| --------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| Maximum API request size                                                                                                                            | 10 MiB                                             |
+| Time limit for a transaction                                                                                                                        | 270 seconds, with a 60-second idle expiration time |
+| Maximum number of field transformations that can be performed on a single document in a `           Commit          ` operation or in a transaction | 500                                                |
 
 ### Enterprise edition
 
-<table>
-<thead>
-<tr class="header">
-<th>Limit</th>
-<th>Details</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Maximum API request size</td>
-<td>10 MiB</td>
-</tr>
-<tr class="even">
-<td>Time limit for a transaction</td>
-<td>270 seconds, with a 60-second idle expiration time</td>
-</tr>
-<tr class="odd">
-<td>Maximum number of field transformations that can be performed on a single document in a <code dir="ltr" translate="no">          Commit         </code> operation or in a transaction</td>
-<td>500</td>
-</tr>
-</tbody>
-</table>
+| Limit                                                                                                                                               | Details                                            |
+| --------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| Maximum API request size                                                                                                                            | 10 MiB                                             |
+| Time limit for a transaction                                                                                                                        | 270 seconds, with a 60-second idle expiration time |
+| Maximum number of field transformations that can be performed on a single document in a `           Commit          ` operation or in a transaction | 500                                                |
 
 ### Indexes
 
@@ -414,7 +334,7 @@ A quoted field name starts and ends with the backtick character ( <code dir="ltr
 <li><p>200 when you have not enabled billing for your Google Cloud project.</p>
 <p>If you need more quota, you must <a href="https://cloud.google.com/billing/docs/how-to/modify-project">enable billing for your Google Cloud project.</a></p></li>
 <li><p>1000 when you enable billing for your Google Cloud project.</p>
-<p>You can <a href="/support-hub">contact support</a> to request an increase to this limit.</p></li>
+<p>You can <a href="https://docs.cloud.google.com/support-hub">contact support</a> to request an increase to this limit.</p></li>
 </ul></td>
 </tr>
 <tr class="even">
@@ -434,7 +354,7 @@ A quoted field name starts and ends with the backtick character ( <code dir="ltr
 <li>The number of single-field index entries</li>
 <li>The number of composite index entries</li>
 </ul>
-<p>To see how Firestore turns a document and a set of indexes into index entries, see <a href="/firestore/docs/concepts/index-overview#index_entries">this index entry count example</a> .</p></td>
+<p>To see how Firestore turns a document and a set of indexes into index entries, see <a href="https://docs.cloud.google.com/firestore/docs/concepts/index-overview#index_entries">this index entry count example</a> .</p></td>
 </tr>
 <tr class="even">
 <td>Maximum number of fields in a composite index</td>
@@ -443,7 +363,7 @@ A quoted field name starts and ends with the backtick character ( <code dir="ltr
 <tr class="odd">
 <td>Maximum size of an index entry</td>
 <td><p>7.5 KiB</p>
-<p>To see how Firestore calculates index entry size, see <a href="/firestore/docs/storage-size#index-entry-size">index entry size</a> .</p></td>
+<p>To see how Firestore calculates index entry size, see <a href="https://docs.cloud.google.com/firestore/docs/storage-size#index-entry-size">index entry size</a> .</p></td>
 </tr>
 <tr class="even">
 <td>Maximum sum of the sizes of a document's index entries</td>
@@ -480,7 +400,7 @@ The sum of the size of a document's composite index entries</td>
 <li><p>200 when you have not enabled billing for your Google Cloud project.</p>
 <p>If you need more quota, you must <a href="https://cloud.google.com/billing/docs/how-to/modify-project">enable billing for your Google Cloud project.</a></p></li>
 <li><p>1000 when you enable billing for your Google Cloud project.</p>
-<p>You can <a href="/support-hub">contact support</a> to request an increase to this limit.</p></li>
+<p>You can <a href="https://docs.cloud.google.com/support-hub">contact support</a> to request an increase to this limit.</p></li>
 </ul></td>
 </tr>
 <tr class="even">
@@ -494,7 +414,7 @@ The sum of the size of a document's composite index entries</td>
 <tr class="even">
 <td>Maximum size of an index entry</td>
 <td><p>7.5 KiB</p>
-<p>To see how Firestore calculates index entry size, see <a href="/firestore/docs/storage-size#index-entry-size">index entry size</a> .</p></td>
+<p>To see how Firestore calculates index entry size, see <a href="https://docs.cloud.google.com/firestore/docs/storage-size#index-entry-size">index entry size</a> .</p></td>
 </tr>
 <tr class="odd">
 <td>Maximum sum of the sizes of a document's index entries</td>
@@ -558,57 +478,23 @@ The sum of the size of a document's composite index entries</td>
 
 ### Export/Import
 
-The following limits apply to [managed import and export operations](/firestore/docs/manage-data/export-import) :
+The following limits apply to [managed import and export operations](https://docs.cloud.google.com/firestore/docs/manage-data/export-import) :
 
 ### Standard edition
 
-<table>
-<thead>
-<tr class="header">
-<th>Limit</th>
-<th>Details</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Maximum total number of both export and import requests for a project allowed per minute</td>
-<td>20</td>
-</tr>
-<tr class="even">
-<td>Maximum number of concurrent exports and imports</td>
-<td>50</td>
-</tr>
-<tr class="odd">
-<td>Maximum number of collection ID filters for export and import requests</td>
-<td>100</td>
-</tr>
-</tbody>
-</table>
+| Limit                                                                                    | Details |
+| ---------------------------------------------------------------------------------------- | ------- |
+| Maximum total number of both export and import requests for a project allowed per minute | 20      |
+| Maximum number of concurrent exports and imports                                         | 50      |
+| Maximum number of collection ID filters for export and import requests                   | 100     |
 
 ### Enterprise edition
 
-<table>
-<thead>
-<tr class="header">
-<th>Limit</th>
-<th>Details</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Maximum total number of both export and import requests for a project allowed per minute</td>
-<td>20</td>
-</tr>
-<tr class="even">
-<td>Maximum number of concurrent exports and imports</td>
-<td>50</td>
-</tr>
-<tr class="odd">
-<td>Maximum number of collection ID filters for export and import requests</td>
-<td>100</td>
-</tr>
-</tbody>
-</table>
+| Limit                                                                                    | Details |
+| ---------------------------------------------------------------------------------------- | ------- |
+| Maximum total number of both export and import requests for a project allowed per minute | 20      |
+| Maximum number of concurrent exports and imports                                         | 50      |
+| Maximum number of collection ID filters for export and import requests                   | 100     |
 
 ### Security rules
 

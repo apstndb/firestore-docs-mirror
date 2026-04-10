@@ -1,4 +1,4 @@
-This page describes the storage size of entities, keys, properties, and index entries in Firestore in Datastore mode. You can learn about the costs of this storage at [Datastore mode Pricing](/datastore/docs/pricing) .
+This page describes the storage size of entities, keys, properties, and index entries in Firestore in Datastore mode. You can learn about the costs of this storage at [Datastore mode Pricing](https://docs.cloud.google.com/datastore/docs/pricing) .
 
 ## String size
 
@@ -28,9 +28,7 @@ The size of a key is the sum of
 
 For a key of kind `  Task  ` in the default namespace with a numeric ID and no ancestor:
 
-``` text
-Task id:5730082031140864
-```
+    Task id:5730082031140864
 
 The key size is 5 + 8 + 16 = 29 bytes:
 
@@ -40,9 +38,7 @@ The key size is 5 + 8 + 16 = 29 bytes:
 
 For a key of kind `  Task  ` in the default namespace with a string ID and no ancestor:
 
-``` text
-Task name:my_task_id
-```
+    Task name:my_task_id
 
 The key size is 5 + 11 + 16 = 32 bytes:
 
@@ -52,9 +48,7 @@ The key size is 5 + 11 + 16 = 32 bytes:
 
 For a `  Task  ` entity with a `  TaskList  ` ancestor in the default namespace:
 
-``` text
-TaskList id:5654313976201216 > Task id:5629499534213120
-```
+    TaskList id:5654313976201216 > Task id:5629499534213120
 
 The ancestor uses 9 + 8 = 17 bytes:
 
@@ -77,62 +71,23 @@ The size of a property is the sum of
   - The property name string size
   - The property value’s size
 
+<span id="property-value-sizes"></span>
+
 The following shows the size of property values by type.
 
-<table>
-<thead>
-<tr class="header">
-<th>Type</th>
-<th>Size</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Array</td>
-<td>the sum of the sizes of its values</td>
-</tr>
-<tr class="even">
-<td>Blob</td>
-<td>byte length</td>
-</tr>
-<tr class="odd">
-<td>Boolean</td>
-<td>1 byte</td>
-</tr>
-<tr class="even">
-<td>Double</td>
-<td>8 bytes</td>
-</tr>
-<tr class="odd">
-<td>Embedded entity</td>
-<td>the <a href="#entity_size">entity size</a></td>
-</tr>
-<tr class="even">
-<td>Geographical point</td>
-<td>16 bytes</td>
-</tr>
-<tr class="odd">
-<td>Integer</td>
-<td>8 bytes</td>
-</tr>
-<tr class="even">
-<td>Key</td>
-<td>the <a href="#key_size">key size</a></td>
-</tr>
-<tr class="odd">
-<td>Null</td>
-<td>1 byte</td>
-</tr>
-<tr class="even">
-<td>String</td>
-<td>number of UTF-8 encoded bytes + 1</td>
-</tr>
-<tr class="odd">
-<td>Timestamp</td>
-<td>8 bytes</td>
-</tr>
-</tbody>
-</table>
+| Type               | Size                                                                                              |
+| ------------------ | ------------------------------------------------------------------------------------------------- |
+| Array              | the sum of the sizes of its values                                                                |
+| Blob               | byte length                                                                                       |
+| Boolean            | 1 byte                                                                                            |
+| Double             | 8 bytes                                                                                           |
+| Embedded entity    | the [entity size](https://docs.cloud.google.com/datastore/docs/concepts/storage-size#entity_size) |
+| Geographical point | 16 bytes                                                                                          |
+| Integer            | 8 bytes                                                                                           |
+| Key                | the [key size](https://docs.cloud.google.com/datastore/docs/concepts/storage-size#key_size)       |
+| Null               | 1 byte                                                                                            |
+| String             | number of UTF-8 encoded bytes + 1                                                                 |
+| Timestamp          | 8 bytes                                                                                           |
 
 For example, a property named `  done  ` with a type of Boolean would use 6 bytes:
 
@@ -143,19 +98,17 @@ For example, a property named `  done  ` with a type of Boolean would use 6 byte
 
 The size of an entity is the sum of
 
-  - The [key size](#key_size)
-  - The sum of the [property sizes](#property_size)
+  - The [key size](https://docs.cloud.google.com/datastore/docs/concepts/storage-size#key_size)
+  - The sum of the [property sizes](https://docs.cloud.google.com/datastore/docs/concepts/storage-size#property_size)
   - 32 bytes
 
 This example is for an entity of kind `  Task  ` in the default namespace with a numeric ID and no ancestor:
 
-``` text
-Task id:5730082031140864
- - "type": "Personal"
- - "done": false
- - "priority": 1
- - "description": "Learn Google Cloud Datastore"
-```
+    Task id:5730082031140864
+     - "type": "Personal"
+     - "done": false
+     - "priority": 1
+     - "description": "Learn Google Cloud Datastore"
 
 The total size of the properties is 78 bytes:
 
@@ -208,23 +161,21 @@ The size of an index entry is calculated as follows for built-in and composite i
 
 The size of a built-in index entry is the sum of:
 
-  - The [key size](#key_size) of the indexed entity
+  - The [key size](https://docs.cloud.google.com/datastore/docs/concepts/storage-size#key_size) of the indexed entity
   - The sum of the indexed property names
-  - The sum of the indexed [property values](#property-value-sizes)
+  - The sum of the indexed [property values](https://docs.cloud.google.com/datastore/docs/concepts/storage-size#property-value-sizes)
   - The size of the indexed entity kind name
   - 32 bytes
 
 For example, take an entity of kind `  Task  ` in the default namespace with a numeric ID and no ancestor:
 
-``` text
-Task id:5730082031140864
- - "type": "Personal"
- - "done": false
- - "priority": 1
- - "description": "Learn Google Cloud Datastore"
-```
+    Task id:5730082031140864
+     - "type": "Personal"
+     - "done": false
+     - "priority": 1
+     - "description": "Learn Google Cloud Datastore"
 
-If `  done  ` is an indexed property, the [built-in index](/datastore/docs/concepts/indexes#built_in_indexes) entry for the single property `  done  ` index consists of the key, the `  done  ` property name and value, the `  Task  ` kind name, and 32 bytes for an index entry. The total size of this index entry is 72 bytes:
+If `  done  ` is an indexed property, the [built-in index](https://docs.cloud.google.com/datastore/docs/concepts/indexes#built_in_indexes) entry for the single property `  done  ` index consists of the key, the `  done  ` property name and value, the `  Task  ` kind name, and 32 bytes for an index entry. The total size of this index entry is 72 bytes:
 
   - 29 for the key
   - 6 for the `  done  ` property name and Boolean value
@@ -237,23 +188,21 @@ By default, Datastore mode databases automatically predefine two single property
 
 The size of a composite index entry is the sum of:
 
-  - The [key size](#key_size) of the indexed entity
-  - The sum of the indexed [property values](#property-value-sizes)
+  - The [key size](https://docs.cloud.google.com/datastore/docs/concepts/storage-size#key_size) of the indexed entity
+  - The sum of the indexed [property values](https://docs.cloud.google.com/datastore/docs/concepts/storage-size#property-value-sizes)
   - 32 bytes
 
 For example, take an entity of kind `  Task  ` in the default namespace with a numeric ID and no ancestor:
 
-``` text
-indexes:
-- kind: Task
-  properties:
-  - name: done
-    direction: asc
-  - name: priority
-    direction: asc
-```
+    indexes:
+    - kind: Task
+      properties:
+      - name: done
+        direction: asc
+      - name: priority
+        direction: asc
 
-Consider a [composite index](/datastore/docs/concepts/indexes#composite_indexes) that uses the `  done  ` and `  priority  ` properties (both ascending):
+Consider a [composite index](https://docs.cloud.google.com/datastore/docs/concepts/indexes#composite_indexes) that uses the `  done  ` and `  priority  ` properties (both ascending):
 
 The total size of the index entry in this index is 70 bytes:
 
@@ -262,9 +211,9 @@ The total size of the index entry in this index is 70 bytes:
   - 8 for the `  priority  ` property integer value
   - 32 for an index entry
 
-If you do not want Firestore in Datastore mode to maintain an index for a property, [exclude the property from your indexes](/datastore/docs/concepts/indexes#unindexed_properties) . Note that excluding a property removes it from any composite indexes.
+If you do not want Firestore in Datastore mode to maintain an index for a property, [exclude the property from your indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes#unindexed_properties) . Note that excluding a property removes it from any composite indexes.
 
 ## What's next
 
-  - Learn about [Datastore mode Pricing](/datastore/docs/pricing) .
-  - Learn about [Datastore mode Indexes](/datastore/docs/concepts/indexes) .
+  - Learn about [Datastore mode Pricing](https://docs.cloud.google.com/datastore/docs/pricing) .
+  - Learn about [Datastore mode Indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes) .

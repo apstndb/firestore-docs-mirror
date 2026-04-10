@@ -10,7 +10,7 @@ EXAMPLES
 
 To describe user creds 'test-user-creds-id' under database testdb.
 
-``` text
+``` wrap-code
 gcloud beta firestore user-creds describe test-user-creds-id --database='testdb'
 ```
 
@@ -21,7 +21,7 @@ POSITIONAL ARGUMENTS
     
     For example, to operate on user creds `  creds-name-1  ` :
     
-    ``` text
+    ``` wrap-code
     gcloud beta firestore user-creds describe creds-name-1
     ```
 
@@ -32,7 +32,7 @@ REQUIRED FLAGS
     
     For example, to operate on database `  foo  ` :
     
-    ``` text
+    ``` wrap-code
     gcloud beta firestore user-creds describe --database='foo'
     ```
 
@@ -46,10 +46,10 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` text
+``` wrap-code
 gcloud firestore user-creds describe
 ```
 
-``` text
+``` wrap-code
 gcloud alpha firestore user-creds describe
 ```

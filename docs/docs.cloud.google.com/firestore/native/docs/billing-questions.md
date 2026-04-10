@@ -8,13 +8,15 @@ This page gives tips and resources to help you understand your Firestore billing
 
 ## Import and Export Usage
 
-When breaking down your billing report, make sure to review costs related to [import and export operations](/firestore/docs/manage-data/export-import) . These operations perform read and write operations which count towards your Firestore billing. Depending on how often you import and export data, these operations can make up a significant source of billed operations.
+When breaking down your billing report, make sure to review costs related to [import and export operations](https://docs.cloud.google.com/firestore/docs/manage-data/export-import) . These operations perform read and write operations which count towards your Firestore billing. Depending on how often you import and export data, these operations can make up a significant source of billed operations.
 
 Note that the usage dashboard in the console does not reflect reads and writes from import and export operations. You can view import/export operations and related costs in the following ways:
 
 ### Billing Labels
 
 Export and import operations apply the `  goog-firestoremanaged:exportimport  ` label to their read and write operations. In the Cloud Billing reports page, you can use this label to view costs related to import and export operations:
+
+![Access the goog-firestoremanaged label from the filters menu.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-import-export-billing-label.png)
 
 ### List recent operations
 
@@ -24,17 +26,19 @@ You can view recent import and export operations using the console or `  gcloud 
 
 You can view a list of recent export and import operations in the **Firestore Import/Export** page of the Google Cloud console.
 
+[Go to the Import/Export page](https://console.cloud.google.com/firestore/import-export)
+
 ### gcloud
 
-Use the [`  operations list  `](/sdk/gcloud/reference/firestore/operations/list) command to see all running and recently completed export and import operations:
+Use the [`  operations list  `](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command to see all running and recently completed export and import operations:
 
-``` text
+``` notranslate
 gcloud firestore operations list
 ```
 
 ### Audit Logs for admin operations
 
-Firestore writes audit logs for export operations, import operations, and indexing operations, see [Firestore audit logging information](/firestore/docs/audit-logging) .
+Firestore writes audit logs for export operations, import operations, and indexing operations, see [Firestore audit logging information](https://docs.cloud.google.com/firestore/docs/audit-logging) .
 
 ## Console usage
 
@@ -48,7 +52,7 @@ In addition to the [pricing information](https://cloud.google.com/firestore/pric
 
   - **Real-time updates**
     
-    When you [listen to the results of a query](/firestore/docs/query-data/listen) , you are charged for a read each time a document in the result set is added or updated. You are also charged for a read when a document is removed from the result set because the document has changed. (In contrast, when a document is deleted, you are not charged for a read.)
+    When you [listen to the results of a query](https://docs.cloud.google.com/firestore/docs/query-data/listen) , you are charged for a read each time a document in the result set is added or updated. You are also charged for a read when a document is removed from the result set because the document has changed. (In contrast, when a document is deleted, you are not charged for a read.)
     
     Review the scope of your real-time listeners. Listening to the results of a very broad query or listening to an entire collection might result in more read operations than required.
 
@@ -62,7 +66,7 @@ In addition to the [pricing information](https://cloud.google.com/firestore/pric
 
   - **Query offsets**
     
-    [Query offsets](https://googleapis.dev/nodejs/firestore/latest/Query.html#offset) skip a specified number of query results but skipped results still count towards billing. Because of this additional cost, you should use [cursors](/firestore/docs/query-data/query-cursors) instead of offsets.
+    [Query offsets](https://googleapis.dev/nodejs/firestore/latest/Query.html#offset) skip a specified number of query results but skipped results still count towards billing. Because of this additional cost, you should use [cursors](https://docs.cloud.google.com/firestore/docs/query-data/query-cursors) instead of offsets.
 
 ## Usage dashboard discrepancies
 
@@ -82,8 +86,8 @@ Operations that cause discrepancies between the usage dashboard and billed usage
 
   - Queries that return zero results. Queries with zero results incur a cost of one read operation. This usage is billed but does not appear in the usage dashboard.
 
-  - Read operations from [index entries read](/firestore/pricing#index-reads) . This usage is billed but does not appear in the usage dashboard. For example, aggregation queries bill for index entries read but this usage does not appear in the usage dashboard.
+  - Read operations from [index entries read](https://docs.cloud.google.com/firestore/pricing#index-reads) . This usage is billed but does not appear in the usage dashboard. For example, aggregation queries bill for index entries read but this usage does not appear in the usage dashboard.
 
 ## What's next
 
-For more help with your billing report, contact [Cloud Billing Support](/support/billing) .
+For more help with your billing report, contact [Cloud Billing Support](https://docs.cloud.google.com/support/billing) .

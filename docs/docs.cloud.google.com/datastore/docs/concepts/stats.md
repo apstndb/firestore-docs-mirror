@@ -4,7 +4,7 @@ You can view these statistics in the Google Cloud console in one of the followin
 
   - On the [Dashboard](https://console.cloud.google.com/project/_/datastore/stats) page.
   - On the [Entities](https://console.cloud.google.com/project/_/datastore/entities/query/gql) page, run a GQL query in the form of `  SELECT * FROM __Stat_Kind__  ` .
-  - Programmatically within the application by querying for specially named entities using the Datastore API. For more information about the Datastore API, see [APIs & Reference](/datastore/docs/apis) .
+  - Programmatically within the application by querying for specially named entities using the Datastore API. For more information about the Datastore API, see [APIs & Reference](https://docs.cloud.google.com/datastore/docs/apis) .
 
 Datastore uses *kind names* that begin and end with two underscores to identify special entities that provide statistics about your data. These are called *statistics entities* . For example, each app has one entity of the kind `  __Stat_Total__  ` , which represents statistics about all of the entities in a Datastore mode database.
 
@@ -16,7 +16,7 @@ Statistics entities track information about your data and give you insights into
 
 Each entity belongs to a specific kind. *Statistics kind* indicates the category of statistics being collected or used. Use the kind to identify the purpose of a statistic, such as optimizing a query, improving performance, or data analysis.
 
-Some statistic kinds also have additional properties listed in the [List of statistics](#stats-list) section of this document.
+Some statistic kinds also have additional properties listed in the [List of statistics](https://docs.cloud.google.com/datastore/docs/concepts/stats#stats-list) section of this document.
 
 When the statistics system creates new statistic entities, it doesn't delete the previous statistic entities right away. The best way to get a consistent view of the statistics is to query for the statistic entity with the most recent `  timestamp  ` , then use that timestamp value as a filter when you fetch other statistic entities.
 
@@ -68,7 +68,7 @@ Note that <code dir="ltr" translate="no">       __Stat_Namespace__      </code> 
 • <code dir="ltr" translate="no">       composite_index_bytes      </code> : the storage in composite index entries measured in bytes.<br />
 • <code dir="ltr" translate="no">       composite_index_count      </code> : the count of composite index entries.<br />
 <br />
-For more information, see the <a href="#stats-limitations">Statistics limitations</a> section of this document.<br />
+For more information, see the <a href="https://docs.cloud.google.com/datastore/docs/concepts/stats#stats-limitations">Statistics limitations</a> section of this document.<br />
 </td>
 </tr>
 <tr class="odd">
@@ -159,7 +159,7 @@ Additional properties:<br />
 • <code dir="ltr" translate="no">       builtin_index_bytes      </code> : the storage in the built-in index measured in bytes.<br />
 • <code dir="ltr" translate="no">       builtin_index_count      </code> : the count of built-in index entries.<br />
 <br />
-For more information, see the <a href="#stats-limitations">Statistics limitations</a> section of this document.<br />
+For more information, see the <a href="https://docs.cloud.google.com/datastore/docs/concepts/stats#stats-limitations">Statistics limitations</a> section of this document.<br />
 </td>
 </tr>
 <tr class="even">
@@ -191,7 +191,7 @@ Additional properties:<br />
 • <code dir="ltr" translate="no">       builtin_index_bytes      </code> : the storage in built-in index entries measured in bytes.<br />
 • <code dir="ltr" translate="no">       builtin_index_count      </code> : the count of built-in index entries.<br />
 <br />
-For more information, see the <a href="#stats-limitations">Statistics limitations</a> section of this document.<br />
+For more information, see the <a href="https://docs.cloud.google.com/datastore/docs/concepts/stats#stats-limitations">Statistics limitations</a> section of this document.<br />
 </td>
 </tr>
 </tbody>
@@ -224,7 +224,7 @@ Some statistics refer to property value types by name, as strings. These names a
 
 Statistics have the following limitations:
 
-  - The `  __Stat_PropertyType_Kind__  ` property and the `  __Stat_PropertyType_PropertyName_Kind__  ` property return property type metadata for [array](/datastore/docs/concepts/entities#array) value types, and separately record the property type for each value in the array. For example, if an array property stores a list of strings, the property records the property type as `  STRING  ` , while the actual property type is `  ARRAY<STRING>  ` .
+  - The `  __Stat_PropertyType_Kind__  ` property and the `  __Stat_PropertyType_PropertyName_Kind__  ` property return property type metadata for [array](https://docs.cloud.google.com/datastore/docs/concepts/entities#array) value types, and separately record the property type for each value in the array. For example, if an array property stores a list of strings, the property records the property type as `  STRING  ` , while the actual property type is `  ARRAY<STRING>  ` .
   - The `  __Stat_Namespace__  ` entities contain the same information found in `  __Stat_Ns_Total__  ` records. `  __Stat_Namespace__  ` entities are stored in the empty namespace and contain a `  subject_namespace  ` field describing the namespace to which they belong. `  __Stat_Ns_Total__  ` records are stored in the namespace to which they refer, and thus don't contain a `  subject_namespace  ` field. Hence, a query on kind `  __Stat_Namespace__  ` (from the empty string namespace) ordered descending by `  bytes  ` will list the namespaces that consume the largest storage first. Since queries across namespaces are not possible, any query for `  __Stat_Ns_Total__  ` entities will only ever produce at most a single record.
 
 ## Statistics entities drop order
@@ -270,4 +270,4 @@ Kind statistics entities have the following drop order:
 
 ## What's next
 
-  - [Locating quota usage information](/datastore/docs/pricing#locating_quota_usage_information_for_your_app)
+  - [Locating quota usage information](https://docs.cloud.google.com/datastore/docs/pricing#locating_quota_usage_information_for_your_app)

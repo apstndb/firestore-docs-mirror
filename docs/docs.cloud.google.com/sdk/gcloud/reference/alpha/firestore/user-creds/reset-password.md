@@ -10,7 +10,7 @@ EXAMPLES
 
 To reset password for user creds 'test-user-creds-id' under database testdb.
 
-``` text
+``` wrap-code
 gcloud alpha firestore user-creds reset-password test-user-creds-id --database='testdb'
 ```
 
@@ -21,7 +21,7 @@ POSITIONAL ARGUMENTS
     
     For example, to operate on user creds `  creds-name-1  ` :
     
-    ``` text
+    ``` wrap-code
     gcloud alpha firestore user-creds reset-password creds-name-1
     ```
 
@@ -32,7 +32,7 @@ REQUIRED FLAGS
     
     For example, to operate on database `  foo  ` :
     
-    ``` text
+    ``` wrap-code
     gcloud alpha firestore user-creds reset-password --database='foo'
     ```
 
@@ -46,10 +46,10 @@ NOTES
 
 This command is currently in alpha and might change without notice. If this command fails with API permission errors despite specifying the correct project, you might be trying to access an API with an invitation-only early access allowlist. These variants are also available:
 
-``` text
+``` wrap-code
 gcloud firestore user-creds reset-password
 ```
 
-``` text
+``` wrap-code
 gcloud beta firestore user-creds reset-password
 ```

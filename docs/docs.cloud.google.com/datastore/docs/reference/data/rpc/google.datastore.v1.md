@@ -88,7 +88,7 @@ Each RPC normalizes the partition IDs of the keys in its input entities, and alw
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -115,7 +115,7 @@ Each RPC normalizes the partition IDs of the keys in its input entities, and alw
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -142,7 +142,7 @@ Each RPC normalizes the partition IDs of the keys in its input entities, and alw
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -169,7 +169,7 @@ Each RPC normalizes the partition IDs of the keys in its input entities, and alw
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -196,7 +196,7 @@ Each RPC normalizes the partition IDs of the keys in its input entities, and alw
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -223,7 +223,7 @@ Each RPC normalizes the partition IDs of the keys in its input entities, and alw
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -250,7 +250,7 @@ Each RPC normalizes the partition IDs of the keys in its input entities, and alw
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -277,7 +277,7 @@ Each RPC normalizes the partition IDs of the keys in its input entities, and alw
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -322,29 +322,25 @@ Optional. Optional name of the property to store the result of the aggregation.
 
 If not provided, Datastore will pick a default name following the format `  property_<incremental_id++>  ` . For example:
 
-``` text
-AGGREGATE
-  COUNT_UP_TO(1) AS count_up_to_1,
-  COUNT_UP_TO(2),
-  COUNT_UP_TO(3) AS count_up_to_3,
-  COUNT(*)
-OVER (
-  ...
-);
-```
+    AGGREGATE
+      COUNT_UP_TO(1) AS count_up_to_1,
+      COUNT_UP_TO(2),
+      COUNT_UP_TO(3) AS count_up_to_3,
+      COUNT(*)
+    OVER (
+      ...
+    );
 
 becomes:
 
-``` text
-AGGREGATE
-  COUNT_UP_TO(1) AS count_up_to_1,
-  COUNT_UP_TO(2) AS property_1,
-  COUNT_UP_TO(3) AS count_up_to_3,
-  COUNT(*) AS property_2
-OVER (
-  ...
-);
-```
+    AGGREGATE
+      COUNT_UP_TO(1) AS count_up_to_1,
+      COUNT_UP_TO(2) AS property_1,
+      COUNT_UP_TO(3) AS count_up_to_3,
+      COUNT(*) AS property_2
+    OVER (
+      ...
+    );
 
 Requires:
 
@@ -413,9 +409,7 @@ If a zero value is provided, a count result of zero should always be expected.
 
 High-Level Example:
 
-``` text
-AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k );
-```
+    AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k );
 
 Requires:
 

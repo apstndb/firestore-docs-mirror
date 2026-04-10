@@ -10,9 +10,7 @@ DESCRIPTION
 
 Filters are case-sensitive and have the following syntax:
 
-``` text
-field = value [AND [field = value]] …
-```
+    field = value [AND [field = value]] …
 
 where `  field  ` is one of `  kind  ` , `  namespace  ` , `  type  ` , or `  labels.[KEY]  ` , and `  [KEY]  ` is a label key. `  kind  ` and `  namespace  ` may be `  *  ` to query for operations on all kinds and/or all namespaces. `  type  ` may be one of `  export_entities  ` or `  import_entities  ` .
 
@@ -22,32 +20,32 @@ EXAMPLES
 
 To see the list of all operations, run:
 
-``` text
+``` wrap-code
 gcloud datastore operations list
 ```
 
 To see the list of all export operations, run:
 
-``` text
+``` wrap-code
 gcloud datastore operations list --filter='type:export_entities'
 ```
 
 To see the list of all export operations for kind 'MyKind', run:
 
-``` text
+``` wrap-code
 gcloud datastore operations list --filter='type:export_entities AND kind:MyKind'
 ```
 
 To see the list of all operations with particular labels, run:
 
-``` text
+``` wrap-code
 gcloud datastore operations list --filter='labels.run = daily'
 ```
 
 LIST COMMAND FLAGS
 
   - `  --filter  ` = `  EXPRESSION  `  
-    Apply a Boolean filter `  EXPRESSION  ` to each resource item to be listed. If the expression evaluates `  True  ` , then that item is listed. For more details and examples of filter expressions, run $ [gcloud topic filters](/sdk/gcloud/reference/topic/filters) . This flag interacts with other flags that are applied in this order: `  --flatten  ` , `  --sort-by  ` , `  --filter  ` , `  --limit  ` .
+    Apply a Boolean filter `  EXPRESSION  ` to each resource item to be listed. If the expression evaluates `  True  ` , then that item is listed. For more details and examples of filter expressions, run $ [gcloud topic filters](https://docs.cloud.google.com/sdk/gcloud/reference/topic/filters) . This flag interacts with other flags that are applied in this order: `  --flatten  ` , `  --sort-by  ` , `  --filter  ` , `  --limit  ` .
   - `  --limit  ` = `  LIMIT  ` ; default=100  
     Maximum number of resources to list. The default is `  100  ` . This flag interacts with other flags that are applied in this order: `  --flatten  ` , `  --sort-by  ` , `  --filter  ` , `  --limit  ` .
   - `  --page-size  ` = `  PAGE_SIZE  ` ; default=100  
@@ -67,10 +65,10 @@ NOTES
 
 These variants are also available:
 
-``` text
+``` wrap-code
 gcloud alpha datastore operations list
 ```
 
-``` text
+``` wrap-code
 gcloud beta datastore operations list
 ```

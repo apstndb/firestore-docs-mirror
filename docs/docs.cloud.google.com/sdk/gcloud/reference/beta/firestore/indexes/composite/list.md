@@ -14,17 +14,17 @@ EXAMPLES
 
 The following command lists all composite indexes in the database:
 
-``` text
+``` wrap-code
 gcloud beta firestore indexes composite list
 ```
 
-``` text
+``` wrap-code
 gcloud beta firestore indexes composite list --database=(default)
 ```
 
 The following command lists composite indexes in the `  Events  ` collection group:
 
-``` text
+``` wrap-code
 gcloud beta firestore indexes composite list --filter=COLLECTION_GROUP:Events
 ```
 
@@ -53,7 +53,7 @@ Database of the collection group. To set the `  database  ` attribute:
 LIST COMMAND FLAGS
 
   - `  --filter  ` = `  EXPRESSION  `  
-    Apply a Boolean filter `  EXPRESSION  ` to each resource item to be listed. If the expression evaluates `  True  ` , then that item is listed. For more details and examples of filter expressions, run $ [gcloud topic filters](/sdk/gcloud/reference/topic/filters) . This flag interacts with other flags that are applied in this order: `  --flatten  ` , `  --sort-by  ` , `  --filter  ` , `  --limit  ` .
+    Apply a Boolean filter `  EXPRESSION  ` to each resource item to be listed. If the expression evaluates `  True  ` , then that item is listed. For more details and examples of filter expressions, run $ [gcloud topic filters](https://docs.cloud.google.com/sdk/gcloud/reference/topic/filters) . This flag interacts with other flags that are applied in this order: `  --flatten  ` , `  --sort-by  ` , `  --filter  ` , `  --limit  ` .
   - `  --limit  ` = `  LIMIT  `  
     Maximum number of resources to list. The default is `  unlimited  ` . This flag interacts with other flags that are applied in this order: `  --flatten  ` , `  --sort-by  ` , `  --filter  ` , `  --limit  ` .
   - `  --page-size  ` = `  PAGE_SIZE  `  
@@ -77,10 +77,10 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` text
+``` wrap-code
 gcloud firestore indexes composite list
 ```
 
-``` text
+``` wrap-code
 gcloud alpha firestore indexes composite list
 ```

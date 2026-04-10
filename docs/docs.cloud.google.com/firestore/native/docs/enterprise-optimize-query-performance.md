@@ -2,9 +2,9 @@
 
 **Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
 
-This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
-To troubleshoot slow queries, use [Query Explain](/firestore/native/docs/enterprise-query-explain) to obtain the query execution plan and the runtime execution profile. The following section describe steps you can take to optimize query performance depending on the execution profile:
+To troubleshoot slow queries, use [Query Explain](https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain) to obtain the query execution plan and the runtime execution profile. The following section describe steps you can take to optimize query performance depending on the execution profile:
 
 ## Limit the number of results
 
@@ -20,19 +20,19 @@ Use the following instructions to set up and optimize indexes.
 
 ### Identify if the query is using an index
 
-You can identify if the query is using an index by checking the leaf nodes in the execution tree. If the leaf node of the execution tree is a [TableScan node](/firestore/native/docs/enterprise-query-explain-reference#tablescan) , that means the query is not using an index and is scanning documents from primary storage. If an index is being used, the leaf node of the execution tree will display the index ID and index fields of the index.
+You can identify if the query is using an index by checking the leaf nodes in the execution tree. If the leaf node of the execution tree is a [TableScan node](https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain-reference#tablescan) , that means the query is not using an index and is scanning documents from primary storage. If an index is being used, the leaf node of the execution tree will display the index ID and index fields of the index.
 
 ### Identify a better index
 
 An index is useful for a query if it can reduce the number of documents that the query engine needs to fetch from primary storage or if its field ordering can deliver the Sort requirement of the query.
 
-If an index is used for a query, but the query engine is still fetching and discarding many documents, as identified by a Scan node that returns many records followed by a [Filter node](/firestore/native/docs/enterprise-query-explain-reference#filter) that returns few records, this is a sign that the query predicate satisfied using the index is not selective. To create a more suitable index, see [Create indexes](#create_indexes) .
+If an index is used for a query, but the query engine is still fetching and discarding many documents, as identified by a Scan node that returns many records followed by a [Filter node](https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain-reference#filter) that returns few records, this is a sign that the query predicate satisfied using the index is not selective. To create a more suitable index, see [Create indexes](https://docs.cloud.google.com/firestore/native/docs/enterprise-optimize-query-performance#create_indexes) .
 
-If an index is used for a query, but the query engine is still performing an in-memory reordering of the result set, as identified by a [MajorSort node](/firestore/native/docs/enterprise-query-explain-reference#majorsort) in the query execution tree, this is a sign that the index used can't be used to deliver the Sort requirement of the query. To create a more suitable index, see the next section.
+If an index is used for a query, but the query engine is still performing an in-memory reordering of the result set, as identified by a [MajorSort node](https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain-reference#majorsort) in the query execution tree, this is a sign that the index used can't be used to deliver the Sort requirement of the query. To create a more suitable index, see the next section.
 
 ### Create Indexes
 
-Follow the index management documentation to [create indexes](/firestore/native/docs/enterprise-indexing) . To ensure your query can use indexes, create regular (not Multikey) indexes with fields in the following order:
+Follow the index management documentation to [create indexes](https://docs.cloud.google.com/firestore/native/docs/enterprise-indexing) . To ensure your query can use indexes, create regular (not Multikey) indexes with fields in the following order:
 
 1.  All fields that will be used in equality operators. To maximize chance of reuse across queries, order fields in decreasing order of occurrence of the fields in equality operators among queries.
 2.  All fields that will be sorted on (in the same order).
@@ -53,12 +53,10 @@ To force the query to use a specific index, provide the index ID as a string to 
 
 The following example forces the planner to use index with ID `  CICAgOi36pgK  ` :
 
-``` text
-// Force Planner to use Index ID CICAgOi36pgK
-db.pipeline()
-  .collectionGroup({ collectionId: "customers", forceIndex: "CICAgOi36pgK" })
-  .limit(100)
-```
+    // Force Planner to use Index ID CICAgOi36pgK
+    db.pipeline()
+      .collectionGroup({ collectionId: "customers", forceIndex: "CICAgOi36pgK" })
+      .limit(100)
 
 Here are some use cases for forcing a specific index:
 
@@ -74,12 +72,10 @@ A table scan reads documents in the collection or collection group without using
 
 The following example forces a table scan:
 
-``` text
-// Force Planner to only do a Full-Table Scan
-db.pipeline()
-  .collectionGroup({ collectionId: "customers", forceIndex: "primary" })
-  .limit(100)
-```
+    // Force Planner to only do a Full-Table Scan
+    db.pipeline()
+      .collectionGroup({ collectionId: "customers", forceIndex: "primary" })
+      .limit(100)
 
 You might use a table scan in the following cases:
 
@@ -91,7 +87,7 @@ You might use a table scan in the following cases:
 
 #### Use `     forceIndex    ` with Query Explain
 
-You can use [Query Explain](/firestore/native/docs/enterprise-query-explain) , especially with the `  analyze  ` option, to observe the effects of `  forceIndex  ` :
+You can use [Query Explain](https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain) , especially with the `  analyze  ` option, to observe the effects of `  forceIndex  ` :
 
   - Verify that Firestore in Native Mode used the specified index in `  forceIndex  ` by checking the leaf nodes of the execution tree for the index ID.
   - Confirm that a `  TableScan  ` node appears in the plan when using `  forceIndex: "primary"  ` .
@@ -101,6 +97,6 @@ You can use [Query Explain](/firestore/native/docs/enterprise-query-explain) , e
 
 While `  forceIndex  ` provides more control over query execution, Firestore in Native Mode's query optimizer is generally efficient for most use cases. Consider the following best practices when using `  forceIndex  ` :
 
-  - Use `  forceIndex  ` judiciously. If you observe suboptimal performance with the default query plan, use [Query Explain](/firestore/native/docs/enterprise-query-explain) to diagnose the issue before forcing an index.
+  - Use `  forceIndex  ` judiciously. If you observe suboptimal performance with the default query plan, use [Query Explain](https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain) to diagnose the issue before forcing an index.
   - When using `  forceIndex  ` , make sure to test your queries with realistic data volumes to understand their performance and cost characteristics.ß
   - Avoid using `  forceIndex: "primary"  ` on large collections in production environments.

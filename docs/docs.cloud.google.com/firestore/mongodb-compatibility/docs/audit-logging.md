@@ -20,9 +20,7 @@ To view the time it took to process a `  DATA_READ  ` or `  DATA_WRITE  ` reques
 
 Firestore audit logs use the service name `  firestore.googleapis.com  ` . Filter for this service:
 
-``` text
-protoPayload.serviceName="firestore.googleapis.com"
-```
+    protoPayload.serviceName="firestore.googleapis.com"
 
 ## Methods by permission type
 

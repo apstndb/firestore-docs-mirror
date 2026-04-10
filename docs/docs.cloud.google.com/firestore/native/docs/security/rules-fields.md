@@ -1,6 +1,6 @@
 # Control access to specific fields
 
-This page builds on the concepts in [Structuring Security Rules](./rules-structure) and [Writing Conditions for Security Rules](./rules-conditions) to explain how you can use Firestore Security Rules to create rules that allow clients to perform operations on some fields in a document but not others.
+This page builds on the concepts in [Structuring Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/rules-structure) and [Writing Conditions for Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/rules-conditions) to explain how you can use Firestore Security Rules to create rules that allow clients to perform operations on some fields in a document but not others.
 
 **Note:** The server client libraries bypass all Firestore Security Rules and instead authenticate through [Google Application Default Credentials](https://cloud.google.com/docs/authentication/production) . If you're using the server client libraries or the REST or RPC APIs, make sure to set up [Identity and Access Management (IAM) for Firestore](https://cloud.google.com/firestore/docs/security/iam) .
 
@@ -16,7 +16,7 @@ If there are certain fields within a document that you want to keep hidden from 
 
 **/employees/{emp\_id}**
 
-``` text
+``` 
   name: "Alice Hamilton",
   department: 461,
   start_date: <timestamp>
@@ -24,7 +24,7 @@ If there are certain fields within a document that you want to keep hidden from 
 
 **/employees/{emp\_id}/private/finances**
 
-``` text
+``` 
     salary: 80000,
     bonus_mult: 1.25,
     perf_review: 4.2
@@ -32,22 +32,20 @@ If there are certain fields within a document that you want to keep hidden from 
 
 Then you can add security rules that have different levels of access for the two collections. In this example, we're using [custom auth claims](https://firebase.google.com/docs/auth/admin/custom-claims) to say that only users with the custom auth claim `  role  ` equal to `  Finance  ` can view an employee's financial information.
 
-``` text
-service cloud.firestore {
-  match /databases/{database}/documents {
-    // Allow any logged in user to view the public employee data
-    match /employees/{emp_id} {
-      allow read: if request.resource.auth != null
-      // Allow only users with the custom auth claim of "Finance" to view
-      // the employee's financial data
-      match /private/finances {
-        allow read: if request.resource.auth &&
-          request.resource.auth.token.role == 'Finance'
+    service cloud.firestore {
+      match /databases/{database}/documents {
+        // Allow any logged in user to view the public employee data
+        match /employees/{emp_id} {
+          allow read: if request.resource.auth != null
+          // Allow only users with the custom auth claim of "Finance" to view
+          // the employee's financial data
+          match /private/finances {
+            allow read: if request.resource.auth &&
+              request.resource.auth.token.role == 'Finance'
+          }
+        }
       }
     }
-  }
-}
-```
 
 ## Restricting fields on document creation
 
@@ -59,17 +57,15 @@ You can create these rules by examining the `  keys  ` method of the [`  request
 
 Let's say you wanted to make sure that all documents created in a `  restaurant  ` collection contained at least a `  name  ` , `  location  ` , and `  city  ` field. You could do that by calling [`  hasAll()  `](https://firebase.google.com/docs/reference/rules/rules.List#hasAll) on the list of keys in the new document.
 
-``` text
-service cloud.firestore {
-  match /databases/{database}/documents {
-    // Allow the user to create a document only if that document contains a name
-    // location, and city field
-    match /restaurant/{restId} {
-      allow create: if request.resource.data.keys().hasAll(['name', 'location', 'city']);
+    service cloud.firestore {
+      match /databases/{database}/documents {
+        // Allow the user to create a document only if that document contains a name
+        // location, and city field
+        match /restaurant/{restId} {
+          allow create: if request.resource.data.keys().hasAll(['name', 'location', 'city']);
+        }
+      }
     }
-  }
-}
-```
 
 This allows restaurants to be created with other fields as well, but it ensures that all documents created by a client contain at least these three fields.
 
@@ -79,71 +75,63 @@ Similarly, you can prevent clients from creating documents that contain specific
 
 For instance, in the following example, clients are not allowed to create a document that contains an `  average_score  ` or `  rating_count  ` field since these fields will be added by a server call at a later point.
 
-``` text
-service cloud.firestore {
-  match /databases/{database}/documents {
-    // Allow the user to create a document only if that document does *not*
-    // contain an average_score or rating_count field.
-    match /restaurant/{restId} {
-      allow create: if (!request.resource.data.keys().hasAny(
-        ['average_score', 'rating_count']));
+    service cloud.firestore {
+      match /databases/{database}/documents {
+        // Allow the user to create a document only if that document does *not*
+        // contain an average_score or rating_count field.
+        match /restaurant/{restId} {
+          allow create: if (!request.resource.data.keys().hasAny(
+            ['average_score', 'rating_count']));
+        }
+      }
     }
-  }
-}
-```
 
 ### Creating an allowlist of fields for new documents
 
 Instead of forbidding certain fields in new documents, you might want to create a list of only those fields that are explicitly allowed in new documents. Then you can use the [`  hasOnly()  `](https://firebase.google.com/docs/reference/rules/rules.List#hasOnly) function to make sure that any new documents created contain just these fields (or a subset of these fields) and no other.
 
-``` text
-service cloud.firestore {
-  match /databases/{database}/documents {
-    // Allow the user to create a document only if that document doesn't contain
-    // any fields besides the ones listed below.
-    match /restaurant/{restId} {
-      allow create: if (request.resource.data.keys().hasOnly(
-        ['name', 'location', 'city', 'address', 'hours', 'cuisine']));
+    service cloud.firestore {
+      match /databases/{database}/documents {
+        // Allow the user to create a document only if that document doesn't contain
+        // any fields besides the ones listed below.
+        match /restaurant/{restId} {
+          allow create: if (request.resource.data.keys().hasOnly(
+            ['name', 'location', 'city', 'address', 'hours', 'cuisine']));
+        }
+      }
     }
-  }
-}
-```
 
 ### Combining required and optional fields
 
 You can combine `  hasAll  ` and `  hasOnly  ` operations together in your security rules to require some fields and allow others. For instance, this example requires that all new documents contain the `  name  ` , `  location  ` , and `  city  ` fields, and optionally allows the `  address  ` , `  hours  ` , and `  cuisine  ` fields.
 
-``` text
-service cloud.firestore {
-  match /databases/{database}/documents {
-    // Allow the user to create a document only if that document has a name,
-    // location, and city field, and optionally address, hours, or cuisine field
-    match /restaurant/{restId} {
-      allow create: if (request.resource.data.keys().hasAll(['name', 'location', 'city'])) &&
-       (request.resource.data.keys().hasOnly(
-           ['name', 'location', 'city', 'address', 'hours', 'cuisine']));
+    service cloud.firestore {
+      match /databases/{database}/documents {
+        // Allow the user to create a document only if that document has a name,
+        // location, and city field, and optionally address, hours, or cuisine field
+        match /restaurant/{restId} {
+          allow create: if (request.resource.data.keys().hasAll(['name', 'location', 'city'])) &&
+           (request.resource.data.keys().hasOnly(
+               ['name', 'location', 'city', 'address', 'hours', 'cuisine']));
+        }
+      }
     }
-  }
-}
-```
 
 In a real-world scenario, you may wish to move this logic into a helper function to avoid duplicating your code and to more easily combine the optional and required fields into a single list, like so:
 
-``` text
-service cloud.firestore {
-  match /databases/{database}/documents {
-    function verifyFields(required, optional) {
-      let allAllowedFields = required.concat(optional);
-      return request.resource.data.keys().hasAll(required) &&
-        request.resource.data.keys().hasOnly(allAllowedFields);
+    service cloud.firestore {
+      match /databases/{database}/documents {
+        function verifyFields(required, optional) {
+          let allAllowedFields = required.concat(optional);
+          return request.resource.data.keys().hasAll(required) &&
+            request.resource.data.keys().hasOnly(allAllowedFields);
+        }
+        match /restaurant/{restId} {
+          allow create: if verifyFields(['name', 'location', 'city'],
+            ['address', 'hours', 'cuisine']);
+        }
+      }
     }
-    match /restaurant/{restId} {
-      allow create: if verifyFields(['name', 'location', 'city'],
-        ['address', 'hours', 'cuisine']);
-    }
-  }
-}
-```
 
 ## Restricting fields on update
 
@@ -159,18 +147,16 @@ By using the [`  hasAny()  `](https://firebase.google.com/docs/reference/rules/r
 
 For instance, you might want to allow clients to update information about a restaurant but not change their average score or number of reviews.
 
-``` text
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /restaurant/{restId} {
-      // Allow the client to update a document only if that document doesn't
-      // change the average_score or rating_count fields
-      allow update: if (!request.resource.data.diff(resource.data).affectedKeys()
-        .hasAny(['average_score', 'rating_count']));
+    service cloud.firestore {
+      match /databases/{database}/documents {
+        match /restaurant/{restId} {
+          // Allow the client to update a document only if that document doesn't
+          // change the average_score or rating_count fields
+          allow update: if (!request.resource.data.diff(resource.data).affectedKeys()
+            .hasAny(['average_score', 'rating_count']));
+        }
+      }
     }
-  }
-}
-```
 
 ### Allowing only certain fields to be changed
 
@@ -178,17 +164,15 @@ Rather than specifying fields that you don't want changed, you can also use the 
 
 For instance, rather than disallowing the `  average_score  ` and `  rating_count  ` field, you could create security rules that allow clients to only change the `  name  ` , `  location  ` , `  city  ` , `  address  ` , `  hours  ` , and `  cuisine  ` fields.
 
-``` text
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /restaurant/{restId} {
-    // Allow a client to update only these 6 fields in a document
-      allow update: if (request.resource.data.diff(resource.data).affectedKeys()
-        .hasOnly(['name', 'location', 'city', 'address', 'hours', 'cuisine']));
+    service cloud.firestore {
+      match /databases/{database}/documents {
+        match /restaurant/{restId} {
+        // Allow a client to update only these 6 fields in a document
+          allow update: if (request.resource.data.diff(resource.data).affectedKeys()
+            .hasOnly(['name', 'location', 'city', 'address', 'hours', 'cuisine']));
+        }
+      }
     }
-  }
-}
-```
 
 This means that if, in some future iteration of your app, restaurant documents include a `  telephone  ` field, attempts to edit that field would fail until you go back and add that field to the `  hasOnly()  ` list in your security rules.
 
@@ -198,23 +182,21 @@ Another effect of Firestore being schemaless is that there is no enforcement at 
 
 For example, the following security rule enforces that a review's `  score  ` field has to be an integer, the `  headline  ` , `  content  ` , and `  author_name  ` fields are strings, and the `  review_date  ` is a timestamp.
 
-``` text
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /restaurant/{restId} {
-      // Restaurant rules go here...
-      match /review/{reviewId} {
-        allow create: if (request.resource.data.score is int &&
-          request.resource.data.headline is string &&
-          request.resource.data.content is string &&
-          request.resource.data.author_name is string &&
-          request.resource.data.review_date is timestamp
-        );
+    service cloud.firestore {
+      match /databases/{database}/documents {
+        match /restaurant/{restId} {
+          // Restaurant rules go here...
+          match /review/{reviewId} {
+            allow create: if (request.resource.data.score is int &&
+              request.resource.data.headline is string &&
+              request.resource.data.content is string &&
+              request.resource.data.author_name is string &&
+              request.resource.data.review_date is timestamp
+            );
+          }
+        }
       }
     }
-  }
-}
-```
 
 Valid data types for the `  is  ` operator are `  bool  ` , `  bytes  ` , `  float  ` , `  int  ` , `  list  ` , `  latlng  ` , `  number  ` , `  path  ` , `  map  ` , `  string  ` , and `  timestamp  ` . The `  is  ` operator also supports `  constraint  ` , `  duration  ` , `  set  ` , and `  map_diff  ` data types, but since these are generated by the security rules language itself and not generated by clients, you rarely use them in most practical applications.
 
@@ -224,47 +206,43 @@ Similarly, you can use security rules to enforce type values for specific entrie
 
 For example, the following rules ensure that a `  tags  ` field in a document contains a list and that the first entry is a string. It also ensures that the `  product  ` field contains a map that in turn contains a product name that is a string and a quantity that is an integer.
 
-``` text
-service cloud.firestore {
-  match /databases/{database}/documents {
-  match /orders/{orderId} {
-    allow create: if request.resource.data.tags is list &&
-      request.resource.data.tags[0] is string &&
-      request.resource.data.product is map &&
-      request.resource.data.product.name is string &&
-      request.resource.data.product.quantity is int
+    service cloud.firestore {
+      match /databases/{database}/documents {
+      match /orders/{orderId} {
+        allow create: if request.resource.data.tags is list &&
+          request.resource.data.tags[0] is string &&
+          request.resource.data.product is map &&
+          request.resource.data.product.name is string &&
+          request.resource.data.product.quantity is int
+          }
+        }
       }
     }
-  }
-}
-```
 
 Field types need to be enforced when both creating and updating a document. Therefore, you might want to consider creating a helper function that you can call in both the create and update sections of your security rules.
 
-``` text
-service cloud.firestore {
-  match /databases/{database}/documents {
-
-  function reviewFieldsAreValidTypes(docData) {
-     return docData.score is int &&
-          docData.headline is string &&
-          docData.content is string &&
-          docData.author_name is string &&
-          docData.review_date is timestamp;
-  }
-
-   match /restaurant/{restId} {
-      // Restaurant rules go here...
-      match /review/{reviewId} {
-        allow create: if reviewFieldsAreValidTypes(request.resource.data) &&
-          // Other rules may go here
-        allow update: if reviewFieldsAreValidTypes(request.resource.data) &&
-          // Other rules may go here
+    service cloud.firestore {
+      match /databases/{database}/documents {
+    
+      function reviewFieldsAreValidTypes(docData) {
+         return docData.score is int &&
+              docData.headline is string &&
+              docData.content is string &&
+              docData.author_name is string &&
+              docData.review_date is timestamp;
+      }
+    
+       match /restaurant/{restId} {
+          // Restaurant rules go here...
+          match /review/{reviewId} {
+            allow create: if reviewFieldsAreValidTypes(request.resource.data) &&
+              // Other rules may go here
+            allow update: if reviewFieldsAreValidTypes(request.resource.data) &&
+              // Other rules may go here
+          }
+        }
       }
     }
-  }
-}
-```
 
 ### Enforcing types for optional fields
 
@@ -272,7 +250,7 @@ It's important to remember that calling `  request.resource.data.foo  ` on a doc
 
 For example, if review documents also contain an optional `  photo_url  ` field and an optional `  tags  ` field that you want to verify are strings and lists respectively, you can accomplish this by rewriting the `  reviewFieldsAreValidTypes  ` function to something like the following:
 
-``` text
+``` 
   function reviewFieldsAreValidTypes(docData) {
      return docData.score is int &&
           docData.headline is string &&

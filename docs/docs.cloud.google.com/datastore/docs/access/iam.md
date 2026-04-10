@@ -1,6 +1,6 @@
-Google Cloud offers Identity and Access Management (IAM), which lets you give more granular access to specific Google Cloud resources and prevents unwanted access to other resources. This page describes the Firestore in Datastore mode IAM roles. For a detailed description of IAM, read the [IAM documentation](/iam/docs) .
+Google Cloud offers Identity and Access Management (IAM), which lets you give more granular access to specific Google Cloud resources and prevents unwanted access to other resources. This page describes the Firestore in Datastore mode IAM roles. For a detailed description of IAM, read the [IAM documentation](https://docs.cloud.google.com/iam/docs) .
 
-**Note:** App Engine applications [require IAM permissions to access Datastore mode databases](/datastore/docs/activate#datastore-permissions-for-app-engine) .
+**Note:** App Engine applications [require IAM permissions to access Datastore mode databases](https://docs.cloud.google.com/datastore/docs/activate#datastore-permissions-for-app-engine) .
 
 IAM lets you adopt the [security principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) , so you grant only the necessary access to your resources.
 
@@ -240,12 +240,12 @@ Commit with empty mutations.</td>
 </tr>
 <tr class="even">
 <td><code dir="ltr" translate="no">       datastore.statistics.get      </code></td>
-<td>Retrieve <a href="/datastore/docs/concepts/stats">statistics</a> entities.</td>
+<td>Retrieve <a href="https://docs.cloud.google.com/datastore/docs/concepts/stats">statistics</a> entities.</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td><code dir="ltr" translate="no">       datastore.statistics.list      </code></td>
-<td>List the keys of <a href="/datastore/docs/concepts/stats">statistics</a> entities.<br />
+<td>List the keys of <a href="https://docs.cloud.google.com/datastore/docs/concepts/stats">statistics</a> entities.<br />
 ( <code dir="ltr" translate="no">       datastore.statistics.get      </code> is required to access the statistics entity data.)</td>
 <td></td>
 </tr>
@@ -359,7 +359,7 @@ Commit with empty mutations.</td>
 
 ### Predefined roles
 
-With IAM, every Datastore API method requires that the account making the API request has the appropriate permissions to use the resource. Permissions are granted by setting policies that grant roles to a user, group, or service account. In addition to the basic roles, [Owner, Editor, and Viewer](/iam/docs/roles-overview#basic) , you can grant Firestore in Datastore mode roles to the users of your project.
+With IAM, every Datastore API method requires that the account making the API request has the appropriate permissions to use the resource. Permissions are granted by setting policies that grant roles to a user, group, or service account. In addition to the basic roles, [Owner, Editor, and Viewer](https://docs.cloud.google.com/iam/docs/roles-overview#basic) , you can grant Firestore in Datastore mode roles to the users of your project.
 
 The following table lists the Firestore in Datastore mode IAM roles. You can grant multiple roles to a user, group, or service account.
 
@@ -384,7 +384,7 @@ The following table lists the Firestore in Datastore mode IAM roles. You can gra
 <code dir="ltr" translate="no">       resourcemanager.projects.get      </code><br />
 <code dir="ltr" translate="no">       resourcemanager.projects.list      </code></td>
 <td>Full access to the database instance.<br />
-For <a href="/datastore/docs/console/datastore-admin-console">Datastore Admin</a> access, grant the <code dir="ltr" translate="no">       appengine.appAdmin      </code> role to the principal.</td>
+For <a href="https://docs.cloud.google.com/datastore/docs/console/datastore-admin-console">Datastore Admin</a> access, grant the <code dir="ltr" translate="no">       appengine.appAdmin      </code> role to the principal.</td>
 </tr>
 <tr class="even">
 <td><code dir="ltr" translate="no">       roles/datastore.user      </code></td>
@@ -535,18 +535,18 @@ For <a href="/datastore/docs/console/datastore-admin-console">Datastore Admin</a
 </tbody>
 </table>
 
-**Warning:** The App Engine [Owner, Editor, and Viewer](/appengine/docs/standard/java/roles#basic_roles) basic roles and the [App Engine Admin](/appengine/docs/java/access-control#predefined_app_engine_roles) predefined role have access to some of the functionality on the [Datastore Admin page](/datastore/docs/console/datastore-admin-console) .
+**Warning:** The App Engine [Owner, Editor, and Viewer](https://docs.cloud.google.com/appengine/docs/standard/java/roles#basic_roles) basic roles and the [App Engine Admin](https://docs.cloud.google.com/appengine/docs/java/access-control#predefined_app_engine_roles) predefined role have access to some of the functionality on the [Datastore Admin page](https://docs.cloud.google.com/datastore/docs/console/datastore-admin-console) .
 
 ### Custom roles
 
 If the predefined roles don't address your business requirements, you can define your own custom roles with permissions that you specify:
 
-  - [Learn about custom roles.](/iam/docs/understanding-custom-roles)
-  - [Create and manage custom roles.](/iam/docs/creating-custom-roles)
+  - [Learn about custom roles.](https://docs.cloud.google.com/iam/docs/understanding-custom-roles)
+  - [Create and manage custom roles.](https://docs.cloud.google.com/iam/docs/creating-custom-roles)
 
 #### Required roles to create and manage tags
 
-If any tag is represented in create or restore actions, some roles are required. See [Creating and managing tags](/resource-manager/docs/tags/tags-creating-and-managing) for more details on creating tag key-value pairs before associate them to the database resources.
+If any tag is represented in create or restore actions, some roles are required. See [Creating and managing tags](https://docs.cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing) for more details on creating tag key-value pairs before associate them to the database resources.
 
 The following listed permissions are required.
 
@@ -610,20 +610,20 @@ The following table lists the permissions that the caller must have to call each
 <td><code dir="ltr" translate="no">         commit       </code> for a lookup</td>
 <td><code dir="ltr" translate="no">       datastore.entities.get      </code><br />
 <br />
-For a lookup related to metadata or statistics, see <a href="#required_permissions_for_metadata_and_statistics">Required Permissions for Metadata and Statistics</a> .</td>
+For a lookup related to metadata or statistics, see <a href="https://docs.cloud.google.com/datastore/docs/access/iam#required_permissions_for_metadata_and_statistics">Required Permissions for Metadata and Statistics</a> .</td>
 </tr>
 <tr class="odd">
 <td><code dir="ltr" translate="no">         commit       </code> for a query</td>
 <td><code dir="ltr" translate="no">       datastore.entities.list      </code><br />
-<code dir="ltr" translate="no">       datastore.entities.get      </code> (if the query is not a <a href="/datastore/docs/concepts/queries#keys-only_queries">keys-only query</a> )<br />
+<code dir="ltr" translate="no">       datastore.entities.get      </code> (if the query is not a <a href="https://docs.cloud.google.com/datastore/docs/concepts/queries#keys-only_queries">keys-only query</a> )<br />
 <br />
-For a query related to metadata or statistics, see <a href="#required_permissions_for_metadata_and_statistics">Required Permissions for Metadata and Statistics</a> .</td>
+For a query related to metadata or statistics, see <a href="https://docs.cloud.google.com/datastore/docs/access/iam#required_permissions_for_metadata_and_statistics">Required Permissions for Metadata and Statistics</a> .</td>
 </tr>
 <tr class="even">
 <td><code dir="ltr" translate="no">         lookup       </code></td>
 <td><code dir="ltr" translate="no">       datastore.entities.get      </code><br />
 <br />
-For a lookup related to metadata or statistics, see <a href="#required_permissions_for_metadata_and_statistics">Required Permissions for Metadata and Statistics</a> .</td>
+For a lookup related to metadata or statistics, see <a href="https://docs.cloud.google.com/datastore/docs/access/iam#required_permissions_for_metadata_and_statistics">Required Permissions for Metadata and Statistics</a> .</td>
 </tr>
 <tr class="odd">
 <td><code dir="ltr" translate="no">         rollback       </code></td>
@@ -632,12 +632,12 @@ For a lookup related to metadata or statistics, see <a href="#required_permissio
 <tr class="even">
 <td><code dir="ltr" translate="no">         runQuery       </code></td>
 <td><code dir="ltr" translate="no">       datastore.entities.list      </code><br />
-<code dir="ltr" translate="no">       datastore.entities.get      </code> (if the query is not a <a href="/datastore/docs/concepts/queries#keys-only_queries">keys-only query</a> )<br />
+<code dir="ltr" translate="no">       datastore.entities.get      </code> (if the query is not a <a href="https://docs.cloud.google.com/datastore/docs/concepts/queries#keys-only_queries">keys-only query</a> )<br />
 <br />
-For a query related to metadata or statistics, see <a href="#required_permissions_for_metadata_and_statistics">Required Permissions for Metadata and Statistics</a> .</td>
+For a query related to metadata or statistics, see <a href="https://docs.cloud.google.com/datastore/docs/access/iam#required_permissions_for_metadata_and_statistics">Required Permissions for Metadata and Statistics</a> .</td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">         runQuery       </code> with a <a href="/datastore/docs/concepts/queries#kindless_queries">kindless query</a></td>
+<td><code dir="ltr" translate="no">         runQuery       </code> with a <a href="https://docs.cloud.google.com/datastore/docs/concepts/queries#kindless_queries">kindless query</a></td>
 <td><code dir="ltr" translate="no">       datastore.entities.get      </code><br />
 <code dir="ltr" translate="no">       datastore.entities.list      </code><br />
 <code dir="ltr" translate="no">       datastore.statistics.get      </code><br />
@@ -648,7 +648,7 @@ For a query related to metadata or statistics, see <a href="#required_permission
 
 ### Required Permissions for Metadata and Statistics
 
-The following table lists permissions that the caller must have to call methods on [Metadata](/datastore/docs/concepts/metadataqueries) and [Statistics](/datastore/docs/concepts/stats) .
+The following table lists permissions that the caller must have to call methods on [Metadata](https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries) and [Statistics](https://docs.cloud.google.com/datastore/docs/concepts/stats) .
 
 <table>
 <colgroup>
@@ -681,9 +681,9 @@ The following table lists permissions that the caller must have to call methods 
 
 ### Required roles to create a Datastore mode database instance
 
-To create a new Datastore mode database instance, you require either the [**Owner** role](/iam/docs/roles-overview#basic) or the [**Datastore Owner** role](/iam/docs/roles-permissions/firestore) .
+To create a new Datastore mode database instance, you require either the [**Owner** role](https://docs.cloud.google.com/iam/docs/roles-overview#basic) or the [**Datastore Owner** role](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore) .
 
-Datastore mode databases requires an active App Engine application. If the project doesn't have an application, Firestore in Datastore mode creates one for you. In that case, you require the `  appengine.applications.create  ` permission from the **Owner** role or from an [IAM custom role](/iam/docs/creating-custom-roles) containing the permission.
+Datastore mode databases requires an active App Engine application. If the project doesn't have an application, Firestore in Datastore mode creates one for you. In that case, you require the `  appengine.applications.create  ` permission from the **Owner** role or from an [IAM custom role](https://docs.cloud.google.com/iam/docs/creating-custom-roles) containing the permission.
 
 ## Role change latency
 
@@ -693,36 +693,34 @@ Firestore in Datastore mode caches IAM permissions for 5 minutes, so it will tak
 
 You can get and set IAM policies using the Google Cloud console, the IAM methods, or the Google Cloud CLI.
 
-  - For the Google Cloud console, see [Access control using the Google Cloud console](/iam/docs/managing-policies#access_control_via_console) .
-  - For the IAM methods, see [Access control using the API](/iam/docs/managing-policies#access_control_via_api) .
-  - For the gcloud CLI, see [Access control using the gcloud tool](/iam/docs/managing-policies#access_control_via_the_gcloud_tool) .
+  - For the Google Cloud console, see [Access control using the Google Cloud console](https://docs.cloud.google.com/iam/docs/managing-policies#access_control_via_console) .
+  - For the IAM methods, see [Access control using the API](https://docs.cloud.google.com/iam/docs/managing-policies#access_control_via_api) .
+  - For the gcloud CLI, see [Access control using the gcloud tool](https://docs.cloud.google.com/iam/docs/managing-policies#access_control_via_the_gcloud_tool) .
 
 ## Configure conditional access permissions
 
-You can use [IAM Conditions](/iam/docs/conditions-overview) to define and enforce conditional access control.
+You can use [IAM Conditions](https://docs.cloud.google.com/iam/docs/conditions-overview) to define and enforce conditional access control.
 
 For example, the following condition assigns a principal the `  datastore.user  ` role up until a specified date:
 
-``` text
-{
-  "role": "roles/datastore.user",
-  "members": [
-    "user:travis@example.com"
-  ],
-  "condition": {
-    "title": "Expires_December_1_2023",
-    "description": "Expires on December 1, 2023",
-    "expression":
-      "request.time < timestamp('2023-12-01T00:00:00.000Z')"
-  }
-}
-```
+    {
+      "role": "roles/datastore.user",
+      "members": [
+        "user:travis@example.com"
+      ],
+      "condition": {
+        "title": "Expires_December_1_2023",
+        "description": "Expires on December 1, 2023",
+        "expression":
+          "request.time < timestamp('2023-12-01T00:00:00.000Z')"
+      }
+    }
 
-To learn how to define IAM Conditions for temporary access, see [Configure temporary access](/iam/docs/configuring-temporary-access) .
+To learn how to define IAM Conditions for temporary access, see [Configure temporary access](https://docs.cloud.google.com/iam/docs/configuring-temporary-access) .
 
-To learn how to configure IAM Conditions for access to one or more databases, see [Configure database access conditions](/datastore/docs/manage-databases#configure_per-database_access_permissions) .
+To learn how to configure IAM Conditions for access to one or more databases, see [Configure database access conditions](https://docs.cloud.google.com/datastore/docs/manage-databases#configure_per-database_access_permissions) .
 
 ## What's next
 
-  - Learn more about [IAM](/iam/docs) .
-  - [Grant IAM roles](/iam/docs/managing-policies) .
+  - Learn more about [IAM](https://docs.cloud.google.com/iam/docs) .
+  - [Grant IAM roles](https://docs.cloud.google.com/iam/docs/managing-policies) .

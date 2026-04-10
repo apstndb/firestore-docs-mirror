@@ -1,26 +1,118 @@
-  - [HTTP request](#body.HTTP_TEMPLATE)
-  - [Path parameters](#body.PATH_PARAMETERS)
-  - [Request body](#body.request_body)
-      - [JSON representation](#body.request_body.SCHEMA_REPRESENTATION)
-  - [Response body](#body.response_body)
-      - [JSON representation](#body.CommitResponse.SCHEMA_REPRESENTATION)
-  - [Authorization scopes](#body.aspect)
-  - [Mode](#Mode)
-  - [Mutation](#Mutation)
-      - [JSON representation](#Mutation.SCHEMA_REPRESENTATION)
-  - [ConflictResolutionStrategy](#ConflictResolutionStrategy)
-  - [PropertyTransform](#PropertyTransform)
-      - [JSON representation](#PropertyTransform.SCHEMA_REPRESENTATION)
-  - [ServerValue](#ServerValue)
-  - [MutationResult](#MutationResult)
-      - [JSON representation](#MutationResult.SCHEMA_REPRESENTATION)
-  - [Try it\!](#try-it)
+  - [HTTP request](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit#body.HTTP_TEMPLATE)
+  - [Path parameters](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit#body.PATH_PARAMETERS)
+  - [Request body](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit#body.request_body)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit#body.request_body.SCHEMA_REPRESENTATION)
+  - [Response body](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit#body.response_body)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit#body.CommitResponse.SCHEMA_REPRESENTATION)
+  - [Authorization scopes](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit#body.aspect)
+  - [Mode](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit#Mode)
+  - [Mutation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit#Mutation)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit#Mutation.SCHEMA_REPRESENTATION)
+  - [ConflictResolutionStrategy](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit#ConflictResolutionStrategy)
+  - [PropertyTransform](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit#PropertyTransform)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit#PropertyTransform.SCHEMA_REPRESENTATION)
+  - [ServerValue](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit#ServerValue)
+  - [MutationResult](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit#MutationResult)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit#MutationResult.SCHEMA_REPRESENTATION)
+  - [Try it\!](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit#try-it)
 
 Commits a transaction, optionally creating, deleting or modifying some entities.
 
 ### HTTP request
 
 Choose a location:
+
+global
+
+africa-south1
+
+asia-east1
+
+asia-east2
+
+asia-northeast1
+
+asia-northeast2
+
+asia-northeast3
+
+asia-south1
+
+asia-south2
+
+asia-southeast1
+
+asia-southeast2
+
+asia-southeast3
+
+australia-southeast1
+
+australia-southeast2
+
+europe-central2
+
+europe-north1
+
+europe-north2
+
+europe-southwest1
+
+europe-west1
+
+europe-west10
+
+europe-west12
+
+europe-west2
+
+europe-west3
+
+europe-west4
+
+europe-west6
+
+europe-west8
+
+europe-west9
+
+me-central1
+
+me-central2
+
+me-west1
+
+northamerica-northeast1
+
+northamerica-northeast2
+
+northamerica-south1
+
+southamerica-east1
+
+southamerica-west1
+
+us-central1
+
+us-east1
+
+us-east4
+
+us-east5
+
+us-south1
+
+us-west1
+
+us-west2
+
+us-west3
+
+us-west4
+
+eu
+
+us
 
   
 `  POST https://datastore.googleapis.com/v1beta3/projects/{projectId}:commit  `
@@ -52,7 +144,7 @@ The request body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;mode&quot;: enum (Mode),
   &quot;mutations&quot;: [
     {
@@ -118,7 +210,7 @@ If successful, the response body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;mutationResults&quot;: [
     {
       object (MutationResult)
@@ -160,7 +252,7 @@ Requires one of the following OAuth scopes:
   - `  https://www.googleapis.com/auth/datastore  `
   - `  https://www.googleapis.com/auth/cloud-platform  `
 
-For more information, see the [Authentication Overview](/docs/authentication#authorization-gcp) .
+For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .
 
 ## Mode
 
@@ -195,7 +287,7 @@ A mutation to apply to an entity.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;conflictResolutionStrategy&quot;: enum (ConflictResolutionStrategy),
   &quot;propertyMask&quot;: {
     object (PropertyMask)
@@ -331,7 +423,7 @@ A transformation of an entity property.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;property&quot;: string,
 
   // Union field transform_type can be only one of the following:
@@ -450,7 +542,7 @@ The result of applying a mutation.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;key&quot;: {
     object (Key)
   },

@@ -18,6 +18,8 @@ The migration process has the following stages:
 
 The following diagram summarizes the migration process:
 
+![Streaming data migration architecture](https://docs.cloud.google.com/static/firestore/mongodb-compatibility/docs/images/firestore-migration.svg)
+
 Your MongoDB-compatible source database remains in a serving state while the data transfer takes place:
 
   - The Datastream process captures both data at rest and change events.
@@ -32,21 +34,21 @@ This section describes the migration in more detail.
 
 The Datastream service creates a stream between a source and a destination. In this case, the source is your current MongoDB-compatible deployment, while the destination is Cloud Storage. This process has the following steps:
 
-1.  [Create a source Datastream connection profile](/firestore/mongodb-compatibility/docs/migrate-create-connection-profiles) for your Mongo source. Specific instructions depend on the type and the way your MongoDB-compatible source is deployed.
+1.  [Create a source Datastream connection profile](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-create-connection-profiles) for your Mongo source. Specific instructions depend on the type and the way your MongoDB-compatible source is deployed.
 
-2.  [Create a Cloud Storage bucket](/firestore/mongodb-compatibility/docs/migrate-configure-resources#create-bucket) that will receive the data and the change events from your MongoDB-compatible source database.
+2.  [Create a Cloud Storage bucket](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-resources#create-bucket) that will receive the data and the change events from your MongoDB-compatible source database.
 
-3.  [Create a destination Datastream connection profile](/firestore/mongodb-compatibility/docs/migrate-create-connection-profiles#connection-profile-storage) that uses this Cloud Storage bucket.
+3.  [Create a destination Datastream connection profile](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-create-connection-profiles#connection-profile-storage) that uses this Cloud Storage bucket.
 
-4.  [Create and actuate a Datastream stream](/firestore/mongodb-compatibility/docs/migrate-import-from-source) that connects the source connection profile to the destination connection profile.
+4.  [Create and actuate a Datastream stream](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-import-from-source) that connects the source connection profile to the destination connection profile.
 
-5.  [Initiate a Dataflow pipeline](/firestore/mongodb-compatibility/docs/migrate-write-to-destination) to begin injecting the captured data into your Firestore with MongoDB compatibility database.
+5.  [Initiate a Dataflow pipeline](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-write-to-destination) to begin injecting the captured data into your Firestore with MongoDB compatibility database.
 
-6.  [Monitor the stream](/firestore/mongodb-compatibility/docs/migrate-traffic#migration-completion-milestones) to identify important milestones in the migration process to determine whether any errors were encountered during the data transfer.
+6.  [Monitor the stream](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-traffic#migration-completion-milestones) to identify important milestones in the migration process to determine whether any errors were encountered during the data transfer.
 
-7.  When it's appropriate, [shut down write traffic](/firestore/mongodb-compatibility/docs/migrate-traffic#shut-down-write-traffic) to the source database. After all data, including recent changes, was replicated to the Firestore with MongoDB compatibility database, redirect read traffic to the new destination.
+7.  When it's appropriate, [shut down write traffic](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-traffic#shut-down-write-traffic) to the source database. After all data, including recent changes, was replicated to the Firestore with MongoDB compatibility database, redirect read traffic to the new destination.
 
-8.  [Enable write traffic](/firestore/mongodb-compatibility/docs/migrate-traffic#migrate-write-traffic) to your Firestore with MongoDB compatibility database.
+8.  [Enable write traffic](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-traffic#migrate-write-traffic) to your Firestore with MongoDB compatibility database.
 
 ## About code examples
 
@@ -56,11 +58,11 @@ As an alternative, you can replace the variables in command examples with the sa
 
 ## Limitations
 
-Before you begin, review the [differences between Firestore with MongoDB compatibility and MongoDB](/firestore/mongodb-compatibility/docs/behavior-differences) . Pay special attention to the following:
+Before you begin, review the [differences between Firestore with MongoDB compatibility and MongoDB](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences) . Pay special attention to the following:
 
-  - [Unsupported data types](/firestore/mongodb-compatibility/docs/behavior-differences#values)
-  - [Restrictions on `  _id  `](/firestore/mongodb-compatibility/docs/behavior-differences#_id)
-  - [Document size limits](/firestore/mongodb-compatibility/docs/behavior-differences#documents)
+  - [Unsupported data types](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences#values)
+  - [Restrictions on `  _id  `](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences#_id)
+  - [Document size limits](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences#documents)
 
 If any of your data doesn't meet restrictions in the preceding categories:
 
@@ -80,4 +82,4 @@ Datastream has the following requirements:
 
 ## What's next
 
-Proceed to [Configure resources for migration](/firestore/mongodb-compatibility/docs/migrate-configure-resources) .
+Proceed to [Configure resources for migration](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-resources) .

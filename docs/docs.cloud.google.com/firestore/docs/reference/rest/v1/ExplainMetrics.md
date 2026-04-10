@@ -11,7 +11,7 @@ Explain metrics for the query.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;planSummary&quot;: {
     object (PlanSummary)
   },
@@ -52,7 +52,7 @@ Planning phase information for the query.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;indexesUsed&quot;: [
     {
       object
@@ -86,7 +86,7 @@ Execution statistics for the query.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;resultsReturned&quot;: string,
   &quot;executionDuration&quot;: string,
   &quot;readOperations&quot;: string,

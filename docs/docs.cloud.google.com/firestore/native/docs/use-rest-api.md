@@ -7,13 +7,13 @@ The REST API can be helpful for the following use cases:
   - Accessing Firestore from a resource-constrained environment, such as an internet of things (IoT) device, where running a complete client library is not possible.
   - Automating database administration or retrieving detailed database metadata.
 
-If you are using a [gRPC-supported language](https://grpc.io/about/#osp) , consider using the [RPC API](./reference/rpc/) rather than the REST API.
+If you are using a [gRPC-supported language](https://grpc.io/about/#osp) , consider using the [RPC API](https://docs.cloud.google.com/firestore/native/docs/reference/rpc/) rather than the REST API.
 
 ## Authentication and authorization
 
 For authentication, the Firestore REST API accepts either a [Firebase Authentication](https://firebase.google.com/docs/auth/) ID token or a [Google Identity OAuth 2.0](https://developers.google.com/identity/protocols/OAuth2) token. The token you provide affects your request's authorization:
 
-  - Use Firebase ID tokens to authenticate requests from your application's users. For these requests, Firestore uses [Firestore Security Rules](./security/get-started) to determine if a request is authorized.
+  - Use Firebase ID tokens to authenticate requests from your application's users. For these requests, Firestore uses [Firestore Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/get-started) to determine if a request is authorized.
 
   - Use a Google Identity OAuth 2.0 token and a [service account](https://cloud.google.com/iam/docs/service-accounts) to authenticate requests from your application, such as requests for database administration. For these requests, Firestore uses [Identity and Access Management (IAM)](https://cloud.google.com/iam/docs/overview) to determine if a request is authorized.
 
@@ -26,7 +26,7 @@ You can attain a Firebase ID token in two ways:
 
 By retrieving a user's Firebase ID token, you can make requests on behalf of the user.
 
-For requests authenticated with a Firebase ID token and for unauthenticated requests, Firestore uses your [Firestore Security Rules](./security/get-started) to determine if a request is authorized.
+For requests authenticated with a Firebase ID token and for unauthenticated requests, Firestore uses your [Firestore Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/get-started) to determine if a request is authorized.
 
 ### Working with Google Identity OAuth 2.0 tokens
 
@@ -50,25 +50,21 @@ All REST API endpoints exist under the base URL `  https://firestore.googleapis.
 
 To create a path to a document with the ID `  LA  ` in the collection `  cities  ` under the project `  YOUR_PROJECT_ID  ` you would use the following structure.
 
-``` text
-/projects/YOUR_PROJECT_ID/databases/(default)/documents/cities/LA
-```
+    /projects/YOUR_PROJECT_ID/databases/(default)/documents/cities/LA
 
 To interact with this path, combine it with the base API URL.
 
-``` text
-https://firestore.googleapis.com/v1/projects/YOUR_PROJECT_ID/databases/(default)/documents/cities/LA
-```
+    https://firestore.googleapis.com/v1/projects/YOUR_PROJECT_ID/databases/(default)/documents/cities/LA
 
 The best way to begin experimenting with the REST API is to use the [API Explorer](https://developers.google.com/apis-explorer/#search/firestore/firestore/v1/) , which automatically generates Google Identity OAuth 2.0 tokens and allows you to examine the API.
 
 ## Methods
 
-Below are brief descriptions of the two most important method groups. For a complete list, see the [REST API reference](./reference/rest/) or use the [API Explorer](https://developers.google.com/apis-explorer/#search/firestore/firestore/v1/) .
+Below are brief descriptions of the two most important method groups. For a complete list, see the [REST API reference](https://docs.cloud.google.com/firestore/native/docs/reference/rest/) or use the [API Explorer](https://developers.google.com/apis-explorer/#search/firestore/firestore/v1/) .
 
 #### `     v1.projects.databases.documents    `
 
-Perform CRUD operations on documents, similar to those outlined in the [add data](./manage-data/add-data) or [get data](./query-data/get-data) guides.
+Perform CRUD operations on documents, similar to those outlined in the [add data](https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data) or [get data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data) guides.
 
 #### `     v1.projects.databases.collectionGroups.indexes    `
 
@@ -80,7 +76,7 @@ Also enables retrieval of document metadata, such as the list of all fields and 
 
 When a Firestore request succeeds, the Firestore API returns an HTTP `  200 OK  ` status code and the requested data. When a request fails, the Firestore API returns an HTTP `  4xx  ` or `  5xx  ` status code and a response with information about the error.
 
-The following table lists recommended actions for each error code. These codes apply to the Firestore REST and RPC APIs. The [Firestore SDKs and client libraries](/firestore/docs/reference/libraries) may not return these same error codes.
+The following table lists recommended actions for each error code. These codes apply to the Firestore REST and RPC APIs. The [Firestore SDKs and client libraries](https://docs.cloud.google.com/firestore/docs/reference/libraries) may not return these same error codes.
 
 <table>
 <colgroup>
@@ -142,8 +138,8 @@ Retry the entire transaction or re-structure your data model to reduce contentio
 </tr>
 <tr class="odd">
 <td><code dir="ltr" translate="no">       RESOURCE_EXHAUSTED      </code></td>
-<td>The project exceeded either its <a href="/firestore/quotas">quota</a> or the region/multi-region capacity.</td>
-<td><a href="./monitor-usage#view-quota">Verify that you did not exceed your project quota</a> . If you exceeded a project quota, do not retry without fixing the problem.<br />
+<td>The project exceeded either its <a href="https://docs.cloud.google.com/firestore/quotas">quota</a> or the region/multi-region capacity.</td>
+<td><a href="https://docs.cloud.google.com/firestore/native/docs/monitor-usage#view-quota">Verify that you did not exceed your project quota</a> . If you exceeded a project quota, do not retry without fixing the problem.<br />
 <br />
 Otherwise, retry with exponential backoff.</td>
 </tr>

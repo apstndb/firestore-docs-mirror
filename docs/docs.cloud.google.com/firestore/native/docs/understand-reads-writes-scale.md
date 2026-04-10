@@ -1,6 +1,6 @@
 # Understand reads and writes at scale
 
-Read this document to make informed decisions on architecting your applications for high performance and reliability. This document includes advanced Firestore topics. If you're just starting out with Firestore, see the [quickstart guide](/firestore/docs/quickstarts) instead.
+Read this document to make informed decisions on architecting your applications for high performance and reliability. This document includes advanced Firestore topics. If you're just starting out with Firestore, see the [quickstart guide](https://docs.cloud.google.com/firestore/docs/quickstarts) instead.
 
 Firestore is a flexible, scalable database for mobile device, web, and server development from Firebase and Google Cloud. It's very easy to get started with Firestore and write rich and powerful applications.
 
@@ -11,6 +11,8 @@ See the following sections for best practices before architecting your applicati
 ## Understand the high level components
 
 The following diagram shows the high level components involved in a Firestore API request.
+
+![High level components](https://docs.cloud.google.com/static/firestore/native/docs/images/high-level-components.png)
 
 ### Firestore SDK and client libraries
 
@@ -53,15 +55,19 @@ Firestore is a schemaless document database. However, internally it lays out the
 
 The following diagram shows how the tables for a Firestore database might look like with the splits. The splits are replicated in three different zones and each split has an assigned Paxos leader.
 
+![Data layout](https://docs.cloud.google.com/static/firestore/native/docs/images/data-layout.png)
+
 #### Single Region versus Multi-Region
 
-When you create a database, you must select a [region](/firestore/native/docs/locations#location-r) or [multi-region](/firestore/native/docs/locations#location-mr) .
+When you create a database, you must select a [region](https://docs.cloud.google.com/firestore/native/docs/locations#location-r) or [multi-region](https://docs.cloud.google.com/firestore/native/docs/locations#location-mr) .
 
 A single regional location is a specific geographic location, like *us-west1* . The splits of data of a Firestore database have replicas in different zones within the selected region, as explained earlier.
 
 A multi-region location consists of a defined set of regions where replicas of the database are stored. In a multi-region deployment of Firestore, two of the regions have *full replicas* of the entire data in the database. A third region has a *witness replica* that does not maintain a full set of data, but participates in replication. By replicating the data between multiple regions, data is available to be written and read even with the loss of an entire region.
 
-For more information about the locations of a region, see [Firestore locations](/firestore/native/docs/locations) .
+For more information about the locations of a region, see [Firestore locations](https://docs.cloud.google.com/firestore/native/docs/locations) .
+
+![Single region versus multi-region](https://docs.cloud.google.com/static/firestore/native/docs/images/single-multi-region.png)
 
 **Key Point:** Choosing between single region versus multi-region configurations has key performance, availability, and cost trade-offs.
 
@@ -69,7 +75,7 @@ For more information about the locations of a region, see [Firestore locations](
 
 A Firestore client can write data by creating, updating, or deleting a single document. A write to a single document requires updating both the document and its associated index entries atomically in the storage layer. Firestore also supports atomic operations consisting of multiple reads and/or writes to one or more documents.
 
-For all kinds of writes, Firestore provides the [ACID properties](https://en.wikipedia.org/wiki/ACID) (atomicity, consistency, isolation, and durability) of relational databases. Firestore also provides [*serializability*](/firestore/native/docs/transaction-data-contention#serializable_isolation) , which means that all transactions appear as if executed in a serial order.
+For all kinds of writes, Firestore provides the [ACID properties](https://en.wikipedia.org/wiki/ACID) (atomicity, consistency, isolation, and durability) of relational databases. Firestore also provides [*serializability*](https://docs.cloud.google.com/firestore/native/docs/transaction-data-contention#serializable_isolation) , which means that all transactions appear as if executed in a serial order.
 
 ### High-level steps in a write transaction
 
@@ -83,7 +89,7 @@ This also includes making necessary updates to the Indexes table as follows:
   - Fields that are being removed from the documents need corresponding deletes in the Indexes table.
   - Fields that are being modified in the documents, need both deletes (for old values) and inserts (for new values) in the Indexes table.
 
-To calculate the mutations mentioned earlier, Firestore reads the *indexing configuration* for the project. The indexing configuration stores information about the indexes for a project. Firestore uses two types of indexes: single-field and composite. For a detailed understanding of the indexes created in Firestore, see [Index types in Firestore](/firestore/docs/concepts/index-overview) .
+To calculate the mutations mentioned earlier, Firestore reads the *indexing configuration* for the project. The indexing configuration stores information about the indexes for a project. Firestore uses two types of indexes: single-field and composite. For a detailed understanding of the indexes created in Firestore, see [Index types in Firestore](https://docs.cloud.google.com/firestore/docs/concepts/index-overview) .
 
 Once the mutations are calculated, Firestore collects them inside a transaction and then commits it.
 
@@ -91,13 +97,19 @@ Once the mutations are calculated, Firestore collects them inside a transaction 
 
 ### Understand a write transaction in the storage layer
 
-As discussed earlier, a write in Firestore involves a read-write transaction in the storage layer. Depending on the layout of data, a write might involve one or more splits as seen in the [data layout](#data_layout) .
+As discussed earlier, a write in Firestore involves a read-write transaction in the storage layer. Depending on the layout of data, a write might involve one or more splits as seen in the [data layout](https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale#data_layout) .
 
 In the following diagram, the Firestore database has eight splits (marked 1-8) hosted on three different storage servers in a single zone, and each split is replicated in 3(or more) different zones. Each split has a Paxos leader, which might be in a different zone for different splits.
 
+![Firestore database split](https://docs.cloud.google.com/static/firestore/native/docs/images/life-of-write-deep-dive.png)
+
 Consider a Firestore database that has the `  Restaurants  ` collection as follows:
 
+![Restaurant collection](https://docs.cloud.google.com/static/firestore/native/docs/images/life-of-write-restaurant.png)
+
 The Firestore client requests the following change to a document in the `  Restaurant  ` collection by updating the value of the `  priceCategory  ` field.
+
+![Change to a document in collection](https://docs.cloud.google.com/static/firestore/native/docs/images/life-of-write-collection.png)
 
 The following high-level steps describe what happens as part of the write:
 
@@ -123,6 +135,8 @@ The following steps describe what happens as part of the commit:
 4.  Once the coordinator knows all participants, including itself, are prepared, it communicates the *`  accept  `* transaction outcome to all the participants (second phase of two-phase commit). In this phase, each participant records the commit decision to stable storage and the transaction is committed.
 5.  The coordinator responds to the storage client in Firestore that the transaction has been committed. In parallel, the coordinator and all the participants apply the mutations to the data.
 
+![Commit lifecycle](https://docs.cloud.google.com/static/firestore/native/docs/images/life-of-write-commit.png)
+
 When the Firestore database is small, it may happen that a single split owns all the keys in the mutations M1-M5. In such a case, there is only one participant in the transaction and the two-phase commit mentioned earlier is not required, thus making the writes faster.
 
 #### Writes in multi-region
@@ -131,7 +145,7 @@ In a multi-region deployment, the spread of replicas across regions increases av
 
 We configure the replicas in a way that leadership for splits always stays in the primary region. The primary region is the one from which traffic is incoming to the Firestore server. This decision of leadership reduces the round-trip delay in communication between the storage client in Firestore and the replica leader (or coordinator for multi-split transactions).
 
-Each write in Firestore also involves some interaction with the real-time engine in Firestore. For more information about real-time queries, see [Understand real-time queries at scale](/firestore/native/docs/real-time_queries_at_scale) .
+Each write in Firestore also involves some interaction with the real-time engine in Firestore. For more information about real-time queries, see [Understand real-time queries at scale](https://docs.cloud.google.com/firestore/native/docs/real-time_queries_at_scale) .
 
 **Key Point:** Firestore uses transactions to do writes, which requires acquiring shared locks for read and exclusive locks for write. When a transaction reads many rows no other transaction can write to that set of rows till this transaction either commits or aborts, causing higher latencies and/or lock contention errors. Hence, try to avoid large reads inside a transaction.
 
@@ -161,7 +175,7 @@ By default, Firestore reads are *strongly consistent* . This strong consistency 
 
 #### Single Split read
 
-The storage client in Firestore looks up the splits that own the keys of the rows to be read. Let’s assume that it needs to do a read from Split 3 from the earlier [section](#understand_a_write_transaction_in_the_storage_layer) . The client sends the read request to the nearest replica to reduce round trip latency.
+The storage client in Firestore looks up the splits that own the keys of the rows to be read. Let’s assume that it needs to do a read from Split 3 from the earlier [section](https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale#understand_a_write_transaction_in_the_storage_layer) . The client sends the read request to the nearest replica to reduce round trip latency.
 
 At this point, the following cases might happen depending on the chosen replica:
 
@@ -215,5 +229,5 @@ Firestore provides the [Key Visualizer](https://cloud.google.com/firestore/docs/
 
 ## What's Next
 
-  - Read about more [best practices](/firestore/native/docs/best-practices)
-  - Learn about [real-time queries at scale](/firestore/native/docs/real-time_queries_at_scale)
+  - Read about more [best practices](https://docs.cloud.google.com/firestore/native/docs/best-practices)
+  - Learn about [real-time queries at scale](https://docs.cloud.google.com/firestore/native/docs/real-time_queries_at_scale)

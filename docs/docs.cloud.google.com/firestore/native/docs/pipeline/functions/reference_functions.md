@@ -2,44 +2,25 @@
 
 **Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
 
-This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
 ## **Reference Functions**
 
 The `  REFERENCE  ` type acts as a "pointer" to other documents in the database (or even other databases). The following functions allow manipulating this type during query execution.
 
-<table>
-<tbody>
-<tr class="odd">
-<td>Name</td>
-<td>Description</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">         COLLECTION_ID       </code></td>
-<td>Returns the ID of the leaf collection in the given reference</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">         DOCUMENT_ID       </code></td>
-<td>Returns the ID of the document in the given reference</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">         PARENT       </code></td>
-<td>Returns the parent reference</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">         REFERENCE_SLICE       </code></td>
-<td>Returns a subset of segments from the given reference</td>
-</tr>
-</tbody>
-</table>
+|                                     |                                                              |
+| ----------------------------------- | ------------------------------------------------------------ |
+| Name                                | Description                                                  |
+| `          COLLECTION_ID        `   | Returns the ID of the leaf collection in the given reference |
+| `          DOCUMENT_ID        `     | Returns the ID of the document in the given reference        |
+| `          PARENT        `          | Returns the parent reference                                 |
+| `          REFERENCE_SLICE        ` | Returns a subset of segments from the given reference        |
 
 ### COLLECTION\_ID
 
 **Syntax:**
 
-``` text
-collection_id(ref: REFERENCE) -> STRING
-```
+    collection_id(ref: REFERENCE) -> STRING
 
 **Description:**
 
@@ -47,32 +28,16 @@ Returns the leaf collection ID of the given `  REFERENCE  ` .
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;"><code dir="ltr" translate="no">       ref      </code></th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       collection_id(ref)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><code dir="ltr" translate="no">       users/user1      </code></td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       "users"      </code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code dir="ltr" translate="no">       users/user1/posts/post1      </code></td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       "posts"      </code></td>
-</tr>
-</tbody>
-</table>
+| `        ref       `                     | `        collection_id(ref)       ` |
+| :--------------------------------------- | :---------------------------------- |
+| `        users/user1       `             | `        "users"       `            |
+| `        users/user1/posts/post1       ` | `        "posts"       `            |
 
 ### DOCUMENT\_ID
 
 **Syntax:**
 
-``` text
-document_id(ref: REFERENCE) -> ANY
-```
+    document_id(ref: REFERENCE) -> ANY
 
 **Description:**
 
@@ -80,32 +45,16 @@ Returns the document ID of the given `  REFERENCE  ` .
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;"><code dir="ltr" translate="no">       ref      </code></th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       document_id(ref)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><code dir="ltr" translate="no">       users/user1      </code></td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       "user1"      </code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code dir="ltr" translate="no">       users/user1/posts/post1      </code></td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       "post1"      </code></td>
-</tr>
-</tbody>
-</table>
+| `        ref       `                     | `        document_id(ref)       ` |
+| :--------------------------------------- | :-------------------------------- |
+| `        users/user1       `             | `        "user1"       `          |
+| `        users/user1/posts/post1       ` | `        "post1"       `          |
 
 ### PARENT
 
 **Syntax:**
 
-``` text
-parent(ref: REFERENCE) -> REFERENCE
-```
+    parent(ref: REFERENCE) -> REFERENCE
 
 **Description:**
 
@@ -113,36 +62,17 @@ Returns the parent `  REFERENCE  ` of the given reference, or `  NULL  ` if the 
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;"><code dir="ltr" translate="no">       ref      </code></th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       parent(ref)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><code dir="ltr" translate="no">       /      </code></td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       NULL      </code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code dir="ltr" translate="no">       users/user1      </code></td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       /      </code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code dir="ltr" translate="no">       users/user1/posts/post1      </code></td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       users/user1      </code></td>
-</tr>
-</tbody>
-</table>
+| `        ref       `                     | `        parent(ref)       ` |
+| :--------------------------------------- | :--------------------------- |
+| `        /       `                       | `        NULL       `        |
+| `        users/user1       `             | `        /       `           |
+| `        users/user1/posts/post1       ` | `        users/user1       ` |
 
 ### REFERENCE\_SLICE
 
 **Syntax:**
 
-``` text
-reference_slice(ref: REFERENCE, offset: INT, length: INT) -> REFERENCE
-```
+    reference_slice(ref: REFERENCE, offset: INT, length: INT) -> REFERENCE
 
 **Description:**
 
@@ -155,37 +85,12 @@ Returns a new `  REFERENCE  ` that is a subset of the segments of the given `  r
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;"><code dir="ltr" translate="no">       ref      </code></th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       offset      </code></th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       length      </code></th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       reference_slice(ref, offset, length)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><code dir="ltr" translate="no">       a/1/b/2/c/3      </code></td>
-<td style="text-align: left;">1L</td>
-<td style="text-align: left;">2L</td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       b/2/c/3      </code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code dir="ltr" translate="no">       a/1/b/2/c/3      </code></td>
-<td style="text-align: left;">0L</td>
-<td style="text-align: left;">2L</td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       a/1/b/2      </code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code dir="ltr" translate="no">       a/1/b/2/c/3      </code></td>
-<td style="text-align: left;">-2L</td>
-<td style="text-align: left;">2L</td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       c/3      </code></td>
-</tr>
-</tbody>
-</table>
+| `        ref       `         | `        offset       ` | `        length       ` | `        reference_slice(ref, offset, length)       ` |
+| :--------------------------- | :---------------------- | :---------------------- | :---------------------------------------------------- |
+| `        a/1/b/2/c/3       ` | 1L                      | 2L                      | `        b/2/c/3       `                              |
+| `        a/1/b/2/c/3       ` | 0L                      | 2L                      | `        a/1/b/2       `                              |
+| `        a/1/b/2/c/3       ` | \-2L                    | 2L                      | `        c/3       `                                  |
 
 ## What's next
 
-  - See the [Pipeline Queries overview](/firestore/docs/pipeline/overview)
+  - See the [Pipeline Queries overview](https://docs.cloud.google.com/firestore/docs/pipeline/overview)

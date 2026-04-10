@@ -14,7 +14,7 @@ EXAMPLES
 
 To retrieve information about the `  exampleOperationId  ` operation, run:
 
-``` text
+``` wrap-code
 gcloud firestore operations describe exampleOperationId
 ```
 
@@ -23,15 +23,11 @@ POSITIONAL ARGUMENTS
   - `  NAME  `  
     The unique name of the Operation to retrieve, formatted as either the full or relative resource path:
     
-    ``` text
-    projects/my-app-id/databases/(default)/operations/foo
-    ```
+        projects/my-app-id/databases/(default)/operations/foo
     
     or:
     
-    ``` text
-    foo
-    ```
+        foo
 
 FLAGS
 
@@ -40,7 +36,7 @@ FLAGS
     
     For example, to operate on database `  foo  ` :
     
-    ``` text
+    ``` wrap-code
     gcloud firestore operations describe --database='foo'
     ```
 
@@ -54,10 +50,10 @@ NOTES
 
 These variants are also available:
 
-``` text
+``` wrap-code
 gcloud alpha firestore operations describe
 ```
 
-``` text
+``` wrap-code
 gcloud beta firestore operations describe
 ```

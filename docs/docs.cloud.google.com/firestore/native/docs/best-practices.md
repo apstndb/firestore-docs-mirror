@@ -4,11 +4,11 @@ Use the best practices listed here as a quick reference when building an applica
 
 ## Database location
 
-When you create your database instance, select the [database location](/firestore/native/docs/locations) closest to your users and compute resources. Far-reaching network hops are more error-prone and increase query latency.
+When you create your database instance, select the [database location](https://docs.cloud.google.com/firestore/native/docs/locations) closest to your users and compute resources. Far-reaching network hops are more error-prone and increase query latency.
 
-To maximize the availability and durability of your application, select a [multi-region location](/firestore/native/docs/locations#location-mr) and place critical compute resources in at least two regions.
+To maximize the availability and durability of your application, select a [multi-region location](https://docs.cloud.google.com/firestore/native/docs/locations#location-mr) and place critical compute resources in at least two regions.
 
-Select a [regional location](/firestore/native/docs/locations#location-r) for lower costs, for lower write latency if your application is sensitive to latency, or for [co-location with other GCP resources](https://cloud.google.com/about/locations/#products-available-by-region) .
+Select a [regional location](https://docs.cloud.google.com/firestore/native/docs/locations#location-r) for lower costs, for lower write latency if your application is sensitive to latency, or for [co-location with other GCP resources](https://cloud.google.com/about/locations/#products-available-by-region) .
 
 ## Document IDs
 
@@ -21,7 +21,7 @@ Select a [regional location](/firestore/native/docs/locations#location-r) for lo
       - `  Customer1  ` , `  Customer2  ` , `  Customer3  ` , ...
       - `  Product 1  ` , `  Product 2  ` , `  Product 3  ` , ...
     
-    Such sequential IDs can lead to [hotspots](#hotspots) that impact latency.
+    Such sequential IDs can lead to [hotspots](https://docs.cloud.google.com/firestore/native/docs/best-practices#hotspots) that impact latency.
 
 ## Field Names
 
@@ -39,13 +39,13 @@ Select a [regional location](/firestore/native/docs/locations#location-r) for lo
 
 The main contributor to write latency is index fanout. The best practices to reduce index fanout are:
 
-  - Set [collection-level index exemptions](./query-data/indexing#add_a_collection-level_exemption) . An easy default is to disable Descending & Array indexing. Removing unused indexed values will also lower [storage costs](/firestore/pricing#storage-size) .
+  - Set [collection-level index exemptions](https://docs.cloud.google.com/firestore/native/docs/query-data/indexing#add_a_collection-level_exemption) . An easy default is to disable Descending & Array indexing. Removing unused indexed values will also lower [storage costs](https://docs.cloud.google.com/firestore/pricing#storage-size) .
 
   - Reduce the number of documents in a transaction. For writing a large number of documents, consider using a bulk writer instead of the atomic batch writer.
 
 ### Index exemptions
 
-For most apps, you can rely on automatic indexing as well as any error message links to manage your indexes. However, you may want to add [single-field exemptions](/firestore/docs/concepts/index-overview#single-field_index_exemptions) in the following cases:
+For most apps, you can rely on automatic indexing as well as any error message links to manage your indexes. However, you may want to add [single-field exemptions](https://docs.cloud.google.com/firestore/docs/concepts/index-overview#single-field_index_exemptions) in the following cases:
 
 Case
 
@@ -63,7 +63,7 @@ In an IoT use case with a high write rate, for example, a collection containing 
 
 TTL fields
 
-If you use [TTL (time-to-live) policies](/firestore/native/docs/ttl) , note that the TTL field must be a timestamp. Indexing on TTL fields is enabled by default and can affect performance at higher traffic rates. As a best practice, add automatic indexing exemptions for your TTL fields.
+If you use [TTL (time-to-live) policies](https://docs.cloud.google.com/firestore/native/docs/ttl) , note that the TTL field must be a timestamp. Indexing on TTL fields is enabled by default and can affect performance at higher traffic rates. As a best practice, add automatic indexing exemptions for your TTL fields.
 
 Large array or map fields
 
@@ -71,19 +71,19 @@ Large array or map fields can approach the limit of 40,000 index entries per doc
 
 ## Read and write operations
 
-  - The exact maximum rate that an app can update a single document depends highly on the workload. For more information, see [Updates to a single document](#updates_to_a_single_document) .
+  - The exact maximum rate that an app can update a single document depends highly on the workload. For more information, see [Updates to a single document](https://docs.cloud.google.com/firestore/native/docs/best-practices#updates_to_a_single_document) .
 
   - Use asynchronous calls where available instead of synchronous calls. Asynchronous calls minimize latency impact. For example, consider an application that needs the result of a document lookup and the results of a query before rendering a response. If the lookup and the query do not have a data dependency, there is no need to synchronously wait until the lookup completes before initiating the query.
 
-  - Do not use offsets. Instead, use [cursors](/firestore/docs/query-data/query-cursors) . Using an offset only avoids returning the skipped documents to your application, but these documents are still retrieved internally. The skipped documents affect the latency of the query, and your application is billed for the read operations required to retrieve them.
+  - Do not use offsets. Instead, use [cursors](https://docs.cloud.google.com/firestore/docs/query-data/query-cursors) . Using an offset only avoids returning the skipped documents to your application, but these documents are still retrieved internally. The skipped documents affect the latency of the query, and your application is billed for the read operations required to retrieve them.
 
 ### Transactions retries
 
-The Firestore [SDKs and client libraries](/firestore/docs/reference/libraries) automatically retry failed transactions to deal with transient errors. If your application accesses Firestore through the [REST](/firestore/docs/reference/rest) or [RPC](/firestore/docs/reference/rpc) APIs directly instead of through an SDK, your application should implement transaction retries to increase reliability.
+The Firestore [SDKs and client libraries](https://docs.cloud.google.com/firestore/docs/reference/libraries) automatically retry failed transactions to deal with transient errors. If your application accesses Firestore through the [REST](https://docs.cloud.google.com/firestore/docs/reference/rest) or [RPC](https://docs.cloud.google.com/firestore/docs/reference/rpc) APIs directly instead of through an SDK, your application should implement transaction retries to increase reliability.
 
 ### Real-time updates
 
-For best practices related to real-time updates, see [Understand real-time queries at scale](/firestore/native/docs/real-time_queries_at_scale) .
+For best practices related to real-time updates, see [Understand real-time queries at scale](https://docs.cloud.google.com/firestore/native/docs/real-time_queries_at_scale) .
 
 ## Designing for scale
 
@@ -95,11 +95,13 @@ As you design your app, consider how quickly your app updates single documents. 
 
 A document write operation updates the document and any associated indexes, and Firestore synchronously applies the write operation across a quorum of replicas. At high enough write rates, the database will start to encounter contention, higher latency, or other errors.
 
+<span id="hotspots"></span>
+
 ### High read, write, and delete rates to a narrow document range
 
 Avoid high read or write rates to lexicographically close documents, or your application will experience contention errors. This issue is known as hotspotting, and your application can experience hotspotting if it does any of the following:
 
-  - Creates new documents at a very [high rate](#ramping_up_traffic) and allocates its own monotonically increasing IDs.
+  - Creates new documents at a very [high rate](https://docs.cloud.google.com/firestore/native/docs/best-practices#ramping_up_traffic) and allocates its own monotonically increasing IDs.
     
     Firestore allocates document IDs using a scatter algorithm. You should not encounter hotspotting on writes if you create new documents using automatic document IDs.
 
@@ -117,42 +119,38 @@ Avoid queries that skip over recently deleted data. A query may have to skip ove
 
 An example of a workload that might have to skip over a lot of deleted data is one that tries to find the oldest queued work items. The query might look like:
 
-``` text
-docs = db.collection('WorkItems').order_by('created').limit(100)
-delete_batch = db.batch()
-for doc in docs.stream():
-  finish_work(doc)
-  delete_batch.delete(doc.reference)
-delete_batch.commit()
-```
+    docs = db.collection('WorkItems').order_by('created').limit(100)
+    delete_batch = db.batch()
+    for doc in docs.stream():
+      finish_work(doc)
+      delete_batch.delete(doc.reference)
+    delete_batch.commit()
 
 Each time this query runs it scans over the index entries for the `  created  ` field on any recently deleted documents. This slows down queries.
 
 To improve the performance, use the `  start_at  ` method to find the best place to start. For example:
 
-``` text
-completed_items = db.collection('CompletionStats').document('all stats').get()
-docs = db.collection('WorkItems').start_at(
-    {'created': completed_items.get('last_completed')}).order_by(
-        'created').limit(100)
-delete_batch = db.batch()
-last_completed = None
-for doc in docs.stream():
-  finish_work(doc)
-  delete_batch.delete(doc.reference)
-  last_completed = doc.get('created')
-
-if last_completed:
-  delete_batch.update(completed_items.reference,
-                      {'last_completed': last_completed})
-  delete_batch.commit()
-```
+    completed_items = db.collection('CompletionStats').document('all stats').get()
+    docs = db.collection('WorkItems').start_at(
+        {'created': completed_items.get('last_completed')}).order_by(
+            'created').limit(100)
+    delete_batch = db.batch()
+    last_completed = None
+    for doc in docs.stream():
+      finish_work(doc)
+      delete_batch.delete(doc.reference)
+      last_completed = doc.get('created')
+    
+    if last_completed:
+      delete_batch.update(completed_items.reference,
+                          {'last_completed': last_completed})
+      delete_batch.commit()
 
 NOTE: The example above uses a monotonically increasing field which is an anti-pattern for high write rates.
 
 ### Ramping up traffic
 
-You should gradually ramp up traffic to new collections or lexicographically close documents to give Firestore sufficient time to prepare documents for increased traffic. We recommend starting with a maximum of 500 operations per second to a new collection and then increasing traffic by 50% every 5 minutes. You can similarly ramp up your write traffic, but keep in mind the [Firestore Standard Limits](/firestore/quotas#writes_and_transactions) . Be sure that operations are distributed relatively evenly throughout the key range. This is called the "500/50/5" rule.
+You should gradually ramp up traffic to new collections or lexicographically close documents to give Firestore sufficient time to prepare documents for increased traffic. We recommend starting with a maximum of 500 operations per second to a new collection and then increasing traffic by 50% every 5 minutes. You can similarly ramp up your write traffic, but keep in mind the [Firestore Standard Limits](https://docs.cloud.google.com/firestore/quotas#writes_and_transactions) . Be sure that operations are distributed relatively evenly throughout the key range. This is called the "500/50/5" rule.
 
 #### Migrating traffic to a new collection
 

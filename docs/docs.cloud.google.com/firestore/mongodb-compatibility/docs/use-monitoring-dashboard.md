@@ -12,18 +12,10 @@ A monitored resource in Cloud Monitoring represents a logical or physical entity
 
 Using the [Cloud Monitoring API](https://cloud.google.com/monitoring/api/resources) , Firestore with MongoDB compatibility performance is monitored with the following resource:
 
-<table>
-<tbody>
-<tr class="odd">
-<td><strong>Resources</strong></td>
-<td><strong>Description</strong></td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">       firestore.googleapis.com/Database      </code></td>
-<td>Monitored resource type that provides breakdowns for <code dir="ltr" translate="no">       project      </code> , <code dir="ltr" translate="no">       location      </code> , and <code dir="ltr" translate="no">       database_id      </code> .</td>
-</tr>
-</tbody>
-</table>
+|                                                    |                                                                                                                                                |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Resources**                                      | **Description**                                                                                                                                |
+| `        firestore.googleapis.com/Database       ` | Monitored resource type that provides breakdowns for `        project       ` , `        location       ` , and `        database_id       ` . |
 
 ### Metrics
 
@@ -53,7 +45,7 @@ The following metrics can be used to understand whether your database is read he
   - `  document/read_ops_count  ` : The number of successful document reads from queries or lookups.
   - `  document/write_ops_count  ` : The number of successful document writes.
 
-**Note:** The `  document/delete_ops_count  ` metric doesn't include documents deleted because of TTL policies. For information about metrics that capture deletes due to TTL policies, see [TTL Metrics](#ttl_metrics) .
+**Note:** The `  document/delete_ops_count  ` metric doesn't include documents deleted because of TTL policies. For information about metrics that capture deletes due to TTL policies, see [TTL Metrics](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard#ttl_metrics) .
 
 ### Billing metrics
 
@@ -61,7 +53,7 @@ Use these metrics to understand billing usage. These metrics don't include billi
 
   - `  api/billable_read_units  ` : The number of billable read units. Usage can be broken down by service name and API method.
   - `  api/billable_write_units  ` : The number of billable write units. Usage can be broken down by service name and API method.
-  - `  document/billable_managed_delete_write_units  ` : The number of billable write units from managed delete services like [TTL](/firestore/mongodb-compatibility/docs/ttl) .
+  - `  document/billable_managed_delete_write_units  ` : The number of billable write units from managed delete services like [TTL](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl) .
 
 ### Index metrics
 
@@ -71,7 +63,7 @@ Index write rates can be contrasted with the `  document/write_ops_count  ` metr
 
 ### TTL Metrics
 
-The TTL metrics for Firestore with MongoDB compatibility metrics are used to monitor the effect of the [TTL policy](/firestore/mongodb-compatibility/docs/ttl) enforced.
+The TTL metrics for Firestore with MongoDB compatibility metrics are used to monitor the effect of the [TTL policy](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl) enforced.
 
   - `  document/ttl_deletion_count  ` : Total count of documents deleted by TTL services.
   - `  document/ttl_expiration_to_deletion_delays  ` : Time elapsed between when a document with a TTL expired, and when it was actually deleted.
@@ -93,6 +85,8 @@ The usage dashboards require the `  monitoring.timeSeries.list  ` Identity and A
 To view usage metrics for a Firestore with MongoDB compatibility database, do the following.
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -100,7 +94,7 @@ To view usage metrics for a Firestore with MongoDB compatibility database, do th
 
 #### Usage dashboard and billing reports
 
-The Firestore usage dashboards in the console provide an estimate of usage. They can help you identify spikes in usage. However, the dashboard is not an exact view of billed operations. Billed usage is likely higher. To monitor billing, see [billing metrics](#billing_metrics) .
+The Firestore usage dashboards in the console provide an estimate of usage. They can help you identify spikes in usage. However, the dashboard is not an exact view of billed operations. Billed usage is likely higher. To monitor billing, see [billing metrics](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard#billing_metrics) .
 
 In all cases of discrepancy, the billing report takes precedence over the usage dashboard.
 
@@ -111,6 +105,8 @@ Import and export operations cause discrepancies between the usage dashboard and
 The **Monitoring** page in the Firestore section of the Google Cloud console includes predefined monitoring dashboards such as **Request Latencies (P50 and P99)** , **Response Codes** , and **Query stats (P50)** . You can also create up to one custom dashboard. To access the **Monitoring** page for a database, follow these steps:
 
 1.  In the Google Cloud console, open the Firestore **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select a database from the list.
 
@@ -133,6 +129,8 @@ Consider the following example where we create a latency alert policy. The alert
 ### Console
 
 1.  In the Google Cloud console, go to the **Monitoring** page then select *notifications* **Alerting** .
+    
+    [Go to Monitoring](https://console.cloud.google.com/monitoring/alerting)
 
 2.  Select **Create policy** .
 
@@ -158,13 +156,11 @@ Consider the following example where we create a latency alert policy. The alert
 
 You can implement the same latency alert policy using a Monitoring Query Language (MQL) query. For more examples of using MQL, see [Sample MQL queries](https://cloud.google.com/monitoring/mql/examples) .
 
-``` text
-fetch consumed_api
-| metric 'serviceruntime.googleapis.com/api/request_latencies'
-| filter (resource.service == 'firestore.googleapis.com')
-| group_by 5m,
-    [value_request_latencies_percentile:
-      percentile(value.request_latencies, 99)]
-| every 5m
-| condition val() > 0.25 's'
-```
+    fetch consumed_api
+    | metric 'serviceruntime.googleapis.com/api/request_latencies'
+    | filter (resource.service == 'firestore.googleapis.com')
+    | group_by 5m,
+        [value_request_latencies_percentile:
+          percentile(value.request_latencies, 99)]
+    | every 5m
+    | condition val() > 0.25 's'

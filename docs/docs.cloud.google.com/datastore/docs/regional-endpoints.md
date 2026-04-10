@@ -16,57 +16,53 @@ The method for configuring a regional or multi-regional endpoint is the same: yo
 
 ### Java
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Java API reference documentation](https://cloud.google.com/java/docs/reference/google-cloud-datastore/latest/history) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Java API reference documentation](https://cloud.google.com/java/docs/reference/google-cloud-datastore/latest/history) .
 
-To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](/docs/authentication/set-up-adc-local-dev-environment) .
+To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-``` java
-import com.google.cloud.datastore.Datastore;
-import com.google.cloud.datastore.DatastoreOptions;
-
-public class RegionalEndpoint {
-
-  public Datastore createClient() throws Exception {
-    // Instantiates a client
-    DatastoreOptions options =
-        DatastoreOptions.newBuilder().setHost("https://datastore.us-central1.rep.googleapis.com").build();
-    Datastore datastore = options.getService();
-    return datastore;
-  }
-}
-```
+    import com.google.cloud.datastore.Datastore;
+    import com.google.cloud.datastore.DatastoreOptions;
+    
+    public class RegionalEndpoint {
+    
+      public Datastore createClient() throws Exception {
+        // Instantiates a client
+        DatastoreOptions options =
+            DatastoreOptions.newBuilder().setHost("https://datastore.us-central1.rep.googleapis.com").build();
+        Datastore datastore = options.getService();
+        return datastore;
+      }
+    }
 
 ### Python
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Python API reference documentation](https://cloud.google.com/python/docs/reference/datastore/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Python API reference documentation](https://cloud.google.com/python/docs/reference/datastore/latest) .
 
-To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](/docs/authentication/set-up-adc-local-dev-environment) .
+To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-``` python
-from google.cloud import datastore
-from google.api_core.client_options import ClientOptions
-
-ENDPOINT = "https://datastore.africa-south1.rep.googleapis.com"
-client_options = ClientOptions(api_endpoint=ENDPOINT)
-client = datastore.Client(client_options=client_options)
-
-query = client.query(kind="Task")
-results = list(query.fetch())
-for r in results:
-    print(r)
-```
+    from google.cloud import datastore
+    from google.api_core.client_options import ClientOptions
+    
+    ENDPOINT = "https://datastore.africa-south1.rep.googleapis.com"
+    client_options = ClientOptions(api_endpoint=ENDPOINT)
+    client = datastore.Client(client_options=client_options)
+    
+    query = client.query(kind="Task")
+    results = list(query.fetch())
+    for r in results:
+        print(r)
 
 ### Regional and multi-regional endpoint semantics
 
 **Regional Endpoints (REP):**
 
-Firestore in Datastore mode supports regional endpoints for the regional locations listed here [Firestore in Datastore mode locations](/datastore/docs/locations#location-r) .
+Firestore in Datastore mode supports regional endpoints for the regional locations listed here [Firestore in Datastore mode locations](https://docs.cloud.google.com/datastore/docs/locations#location-r) .
 
 Use the following format to define regional endpoints:
 
 ### Java
 
-``` text
+``` 
     datastore.REGION_NAME.rep.googleapis.com:443
 ```
 
@@ -74,13 +70,13 @@ Make sure that the port number is defined along with the endpoint.
 
 ### Python
 
-``` text
+``` 
     datastore.REGION_NAME.rep.googleapis.com
 ```
 
 ### Go
 
-``` text
+``` 
     datastore.REGION_NAME.rep.googleapis.com:443
 ```
 
@@ -95,11 +91,11 @@ Some examples of hostnames are:
 
 **Multi-regional Endpoints (MREP)**
 
-For multi-regional endpoints, use `  us  ` for locations `  nam5  ` and `  nam7  ` , and `  eu  ` for location `  eur3  ` (see [Multi-regional locations](/datastore/docs/locations#location-mr) ).
+For multi-regional endpoints, use `  us  ` for locations `  nam5  ` and `  nam7  ` , and `  eu  ` for location `  eur3  ` (see [Multi-regional locations](https://docs.cloud.google.com/datastore/docs/locations#location-mr) ).
 
 ### Java
 
-``` text
+``` 
     datastore.us.rep.googleapis.com:443
     datastore.eu.rep.googleapis.com:443
 ```
@@ -108,14 +104,14 @@ Make sure that the port number is defined along with the endpoint.
 
 ### Python
 
-``` text
+``` 
     datastore.us.rep.googleapis.com
     datastore.eu.rep.googleapis.com
 ```
 
 ### Go
 
-``` text
+``` 
     datastore.us.rep.googleapis.com:443
     datastore.eu.rep.googleapis.com:443
 ```
@@ -130,7 +126,7 @@ Firestore in Datastore mode previously supported locational endpoints with the f
 
 ### Java
 
-``` text
+``` 
   https://REGION_NAME-datastore.googleapis.com:443
 ```
 
@@ -138,7 +134,7 @@ Make sure that the complete `  https  ` URL is used and that the port number is 
 
 ### Python
 
-``` text
+``` 
   https://REGION_NAME-datastore.googleapis.com
 ```
 
@@ -146,7 +142,7 @@ Make sure that the complete `  https  ` URL is set as the locational endpoint.
 
 ### Go
 
-``` text
+``` 
   REGION_NAME-datastore.googleapis.com:443
 ```
 
@@ -161,13 +157,13 @@ Some examples of hostnames are:
   - `  europe-west6-datastore.googleapis.com  `
   - `  asia-northeast2-datastore.googleapis.com  `
 
-For a complete list of multi-regional and regional hostnames, see [Firestore in Datastore mode locations](/datastore/docs/locations) .
+For a complete list of multi-regional and regional hostnames, see [Firestore in Datastore mode locations](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## Restrict global API endpoint usage
 
-To help enforce the use of regional and multi-regional endpoints, use the `  constraints/gcp.restrictEndpointUsage  ` organization policy constraint to block requests to the global API endpoint. For more information, see [Restrict endpoint usage](/docs/security/compliance/restrict-endpoint-usage) .
+To help enforce the use of regional and multi-regional endpoints, use the `  constraints/gcp.restrictEndpointUsage  ` organization policy constraint to block requests to the global API endpoint. For more information, see [Restrict endpoint usage](https://docs.cloud.google.com/docs/security/compliance/restrict-endpoint-usage) .
 
 ## What's next
 
-  - Learn about the Firestore in Datastore mode data model. See [Entities, properties, and keys](/datastore/docs/concepts/entities) .
-  - See the [Best practices](/datastore/docs/best-practices) for Firestore in Datastore mode.
+  - Learn about the Firestore in Datastore mode data model. See [Entities, properties, and keys](https://docs.cloud.google.com/datastore/docs/concepts/entities) .
+  - See the [Best practices](https://docs.cloud.google.com/datastore/docs/best-practices) for Firestore in Datastore mode.

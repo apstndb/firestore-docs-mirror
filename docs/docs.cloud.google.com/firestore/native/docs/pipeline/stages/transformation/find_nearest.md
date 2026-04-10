@@ -2,7 +2,7 @@
 
 **Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
 
-This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
 ## Description
 
@@ -12,103 +12,89 @@ Performs a nearest neighbor vector search on the given `  embedding  ` field usi
 
 ##### Node.js
 
-``` javascript
-const results = await db.pipeline()
-  .collection("cities")
-  .findNearest({
-      field: "embedding",
-      vectorValue: [1.5, 2.345],
-      distanceMeasure: "euclidean"
-  })
-  .execute();test.firestore.js
-```
+    const results = await db.pipeline()
+      .collection("cities")
+      .findNearest({
+          field: "embedding",
+          vectorValue: [1.5, 2.345],
+          distanceMeasure: "euclidean"
+      })
+      .execute();test.firestore.js
 
 ### Web
 
-``` javascript
-const results = await execute(db.pipeline()
-  .collection("cities")
-  .findNearest({
-      field: "embedding",
-      vectorValue: [1.5, 2.345],
-      distanceMeasure: "euclidean"
-  }));test.firestore.js
-```
+    const results = await execute(db.pipeline()
+      .collection("cities")
+      .findNearest({
+          field: "embedding",
+          vectorValue: [1.5, 2.345],
+          distanceMeasure: "euclidean"
+      }));test.firestore.js
 
 ##### Swift
 
-``` swift
-let results = try await db.pipeline()
-  .collection("cities")
-  .findNearest(
-    field: Field("embedding"),
-    vectorValue: VectorValue([1.5, 2.345]),
-    distanceMeasure: .euclidean
-  )
-  .execute()PipelineSnippets.swift
-```
+    let results = try await db.pipeline()
+      .collection("cities")
+      .findNearest(
+        field: Field("embedding"),
+        vectorValue: VectorValue([1.5, 2.345]),
+        distanceMeasure: .euclidean
+      )
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
 
-``` kotlin
-val results = db.pipeline()
-    .collection("cities")
-    .findNearest(
-        "embedding",
-        FieldValue.vector(doubleArrayOf(1.5, 2.345)),
-        FindNearestStage.DistanceMeasure.EUCLIDEAN
-    )
-    .execute()DocSnippets.kt
-```
+    val results = db.pipeline()
+        .collection("cities")
+        .findNearest(
+            "embedding",
+            FieldValue.vector(doubleArrayOf(1.5, 2.345)),
+            FindNearestStage.DistanceMeasure.EUCLIDEAN
+        )
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
 
-``` text
-Task<Pipeline.Snapshot> results = db.pipeline()
-        .collection("cities")
-        .findNearest(
-            "embedding",
-            new double[] {1.5, 2.345},
-            FindNearestStage.DistanceMeasure.EUCLIDEAN
-        )
-        .execute();DocSnippets.java
-```
+    Task<Pipeline.Snapshot> results = db.pipeline()
+            .collection("cities")
+            .findNearest(
+                "embedding",
+                new double[] {1.5, 2.345},
+                FindNearestStage.DistanceMeasure.EUCLIDEAN
+            )
+            .execute();DocSnippets.java
 
 ##### Python
 
-``` python
-from google.cloud.firestore_v1.vector import Vector
-from google.cloud.firestore_v1.base_vector_query import DistanceMeasure
-
-results = (
-    client.pipeline()
-    .collection("cities")
-    .find_nearest(
-        field="embedding",
-        vector_value=Vector([1.5, 2.345]),
-        distance_measure=DistanceMeasure.EUCLIDEAN,
-    )
-    .execute()
-)firestore_pipelines.py
-```
+    from google.cloud.firestore_v1.vector import Vector
+    from google.cloud.firestore_v1.base_vector_query import DistanceMeasure
+    
+    results = (
+        client.pipeline()
+        .collection("cities")
+        .find_nearest(
+            field="embedding",
+            vector_value=Vector([1.5, 2.345]),
+            distance_measure=DistanceMeasure.EUCLIDEAN,
+        )
+        .execute()
+    )firestore_pipelines.py
 
 ##### Java
 
-``` java
-Pipeline.Snapshot results =
-    firestore
-        .pipeline()
-        .collection("cities")
-        .findNearest(
-            "embedding",
-            new double[] {1.5, 2.345},
-            FindNearest.DistanceMeasure.EUCLIDEAN,
-            new FindNearestOptions())
-        .execute()
-        .get();PipelineSnippets.java
-```
+    Pipeline.Snapshot results =
+        firestore
+            .pipeline()
+            .collection("cities")
+            .findNearest(
+                "embedding",
+                new double[] {1.5, 2.345},
+                FindNearest.DistanceMeasure.EUCLIDEAN,
+                new FindNearestOptions())
+            .execute()
+            .get();PipelineSnippets.java
 
 ## Behavior
 
@@ -144,17 +130,15 @@ You can limit the number of documents returned by the query by setting the limit
 
 ### Node.js
 
-``` text
-const results = await db.pipeline()
-  .collection("cities")
-  .findNearest({
-      field: "embedding",
-      vectorValue: vector([1.5, 2.345]),
-      distanceMeasure: "euclidean",
-      limit: 10,
-  })
-  .execute();
-```
+    const results = await db.pipeline()
+      .collection("cities")
+      .findNearest({
+          field: "embedding",
+          vectorValue: vector([1.5, 2.345]),
+          distanceMeasure: "euclidean",
+          limit: 10,
+      })
+      .execute();
 
 ### Retrieving the Calculated Vector Distance
 
@@ -164,35 +148,29 @@ As an example, for the following collection:
 
 ### Node.js
 
-``` text
-await db.collection("cities").doc("SF").set({name: "San Francisco", embedding: vector([1.0, -1.0])});
-await db.collection("cities").doc("TO").set({name: "Toronto", embedding: vector([5.0, -10.0])});
-await db.collection("cities").doc("AT").set({name: "Atlantis", embedding: vector([2.0, -4.0])});
-```
+    await db.collection("cities").doc("SF").set({name: "San Francisco", embedding: vector([1.0, -1.0])});
+    await db.collection("cities").doc("TO").set({name: "Toronto", embedding: vector([5.0, -10.0])});
+    await db.collection("cities").doc("AT").set({name: "Atlantis", embedding: vector([2.0, -4.0])});
 
 Perform a vector search with a requested output distance\_field :
 
 ### Node.js
 
-``` text
-const results = await db.pipeline()
-  .collection("cities")
-  .findNearest({
-      field: "embedding",
-      vectorValue: vector([1.3, 2.345]),
-      distanceMeasure: "euclidean",
-      distanceField: "computedDistance",
-  })
-  .execute();
-```
+    const results = await db.pipeline()
+      .collection("cities")
+      .findNearest({
+          field: "embedding",
+          vectorValue: vector([1.3, 2.345]),
+          distanceMeasure: "euclidean",
+          distanceField: "computedDistance",
+      })
+      .execute();
 
 Which produces the following documents:
 
-``` text
-{name: "San Francisco", embedding: vector([1.0, -1.0]), computedDistance: 3.3584259705999178},
-{name: "Atlantis", embedding: vector([2.0, -4.0]), computedDistance: 6.383496299051172},
-{name: "Toronto", embedding: vector([5.0, -10.0]), computedDistance: 12.887553103673328}
-```
+    {name: "San Francisco", embedding: vector([1.0, -1.0]), computedDistance: 3.3584259705999178},
+    {name: "Atlantis", embedding: vector([2.0, -4.0]), computedDistance: 6.383496299051172},
+    {name: "Toronto", embedding: vector([5.0, -10.0]), computedDistance: 12.887553103673328}
 
 ## Limitations
 

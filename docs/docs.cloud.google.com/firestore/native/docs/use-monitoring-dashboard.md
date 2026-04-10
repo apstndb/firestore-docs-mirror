@@ -9,6 +9,8 @@ To view the different Firestore metrics and create charts, use one the following
   - The **Monitoring** page in the Firestore section of the Google Cloud console. This page includes a pre-defined monitoring dashboard. You can also create up to one custom dashboard. To access the **Monitoring** page for a database, follow these steps:
     
     1.  In the Google Cloud console, open the Firestore **Databases** page.
+        
+        [Go to Databases](https://console.cloud.google.com/firestore/databases)
     
     2.  Select a database from the list.
     
@@ -30,7 +32,7 @@ The error rate is determined by dividing the number of requests that resulted in
 
 An example dashboard for calculating error rates can be created by calculating the A/B ratio for `  api/request_count  ` of valid requests with `  4xx  ` or `  5xx  ` error codes contrasted with the `  api/request_count  ` of all valid requests.
 
-**Figure 1.** Understand availability with error rate.
+![**Figure 1.** Understand availability with error rate.](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-error-rate.png)
 
 In figure 1, you can see how to visualize the error rate ratio using the **api/request\_count** metrics in the Metrics explorer.
 
@@ -45,18 +47,24 @@ Consider the following example where we create a latency alert policy. The alert
 ### Console
 
 1.  In the Google Cloud console, go to the **Monitoring** page then select *notifications* **Alerting** .
+    
+    [Go to Monitoring](https://console.cloud.google.com/monitoring/alerting)
 
 2.  Select **Create policy** .
 
 3.  Select the **Request Latencies** metric from the **Consumed API** resource.
 
 4.  Add a service filter for `  firestore.googleapis.com  ` for Firestore in Native mode databases.
+    
+    ![](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-dashboard-latencies.png)
 
 5.  Click **Next** to configure the trigger.
 
 6.  Select the **Condition Types** as **Threshold** .
     
     A threshold condition is set to a threshold value of 250ms. An alert is triggered when the p99 latency value stays the same for the entire period of the rolling window (5 min).
+    
+    ![](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-dashboard-alerts.png)
 
 7.  Set the **Threshold value** as **250** .
 
@@ -70,7 +78,7 @@ Consider the following example where we create a latency alert policy. The alert
 
 You can implement the same latency alert policy using a Monitoring Query Language (MQL) query. For more examples of using MQL, see [Sample MQL queries](https://cloud.google.com/monitoring/mql/examples) .
 
-``` text
+``` 
       fetch consumed_api
       | metric 'serviceruntime.googleapis.com/api/request_latencies'
       | filter (resource.service == 'firestore.googleapis.com')

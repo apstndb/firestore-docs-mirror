@@ -8,7 +8,7 @@ Firestore supports mobile or web SDKs and server client libraries.
 
 Firestore supports server client libraries for C\#, Go, Java, Node.js, PHP, Python, and Ruby. Use these client libraries to set up privileged server environments.
 
-Server client libraries create a privileged Firestore environment with full access to your database. In this environment, requests are not evaluated against your Firestore security rules. Privileged Firestore servers are secured using Identity and Access Management (IAM), see [Security for server client libraries](../security/iam) .
+Server client libraries create a privileged Firestore environment with full access to your database. In this environment, requests are not evaluated against your Firestore security rules. Privileged Firestore servers are secured using Identity and Access Management (IAM), see [Security for server client libraries](https://docs.cloud.google.com/firestore/native/docs/security/iam) .
 
 Use the server client libraries for administrative database tasks or if you prefer an architecture with an intermediary server between your users and your Firestore database.
 
@@ -115,7 +115,7 @@ Firestore supports SDKs for Android, iOS, and web. Combined with [Firestore secu
 
 The mobile and web SDKs also support [realtime updates](https://cloud.google.com/firestore/docs/query-data/listen) and [offline data persistence](https://firebase.google.com/docs/firestore/manage-data/enable-offline) .
 
-To get started with the Android or Apple platforms, or Web SDK, see [Create a Firestore database by using a web or mobile client library](/firestore/native/docs/reference/firestore/docs/create-database-web-mobile-client-library) .
+To get started with the Android or Apple platforms, or Web SDK, see [Create a Firestore database by using a web or mobile client library](https://docs.cloud.google.com/firestore/native/docs/reference/firestore/docs/create-database-web-mobile-client-library) .
 
 ### References and resources
 
@@ -162,5 +162,5 @@ In addition to the mobile or web SDKs and server client libraries, Firestore off
 
 ## What's next
 
-  - Learn about [authentication](/firestore/docs/authentication) .
-  - Learn about [security rules](/firestore/docs/security/get-started) for client libraries.
+  - Learn about [authentication](https://docs.cloud.google.com/firestore/docs/authentication) .
+  - Learn about [security rules](https://docs.cloud.google.com/firestore/docs/security/get-started) for client libraries.

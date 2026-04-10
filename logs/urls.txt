@@ -42,7 +42,6 @@ https://docs.cloud.google.com/datastore/docs/export-import-entities
 https://docs.cloud.google.com/datastore/docs/extend-with-functions-2nd-gen
 https://docs.cloud.google.com/datastore/docs/firestore-or-datastore
 https://docs.cloud.google.com/datastore/docs/getting-support
-https://docs.cloud.google.com/datastore/docs/java-client-grpc
 https://docs.cloud.google.com/datastore/docs/key-visualizer
 https://docs.cloud.google.com/datastore/docs/keyvis-exploring-heatmaps
 https://docs.cloud.google.com/datastore/docs/keyvis-getting-started
@@ -913,7 +912,6 @@ https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/u
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/bulk-delete
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/clone
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/connection-string
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/create
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/delete
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/describe

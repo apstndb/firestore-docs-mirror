@@ -139,7 +139,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -168,7 +168,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -195,7 +195,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -222,7 +222,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -249,7 +249,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -276,7 +276,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -303,7 +303,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -330,7 +330,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -357,7 +357,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -384,7 +384,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -411,7 +411,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -438,7 +438,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -465,7 +465,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -493,7 +493,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -520,7 +520,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -547,7 +547,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -574,7 +574,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -601,7 +601,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -628,7 +628,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -655,7 +655,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -682,7 +682,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -709,7 +709,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -736,7 +736,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -763,7 +763,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -791,7 +791,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -818,7 +818,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -845,7 +845,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -872,7 +872,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -901,7 +901,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -928,7 +928,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -955,7 +955,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -984,7 +984,7 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
 <li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
 </ul>
-<p>For more information, see the <a href="/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
+<p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
 </dl></td>
 </tr>
@@ -2530,14 +2530,12 @@ This is both the default and only allowed value for Standard Edition databases (
 
 Take for example the following document:
 
-``` text
-{
-  "__name__": "...",
-  "a": 1,
-  "b": 2,
-  "c": 3
-}
-```
+    {
+      "__name__": "...",
+      "a": 1,
+      "b": 2,
+      "c": 3
+    }
 
 an index on `  (a ASC, b ASC, c ASC, __name__ ASC)  ` will generate an index entry for this document since `  a  ` , 'b', `  c  ` , and `  __name__  ` are all present but an index of `  (a ASC, d ASC, __name__ ASC)  ` will not generate an index entry for this document since `  d  ` is missing.
 
@@ -2551,14 +2549,12 @@ This is used as the definition of a sparse index for Enterprise Edition database
 
 Take for example the following document:
 
-``` text
-{
-  "__name__": "...",
-  "a": 1,
-  "b": 2,
-  "c": 3
-}
-```
+    {
+      "__name__": "...",
+      "a": 1,
+      "b": 2,
+      "c": 3
+    }
 
 an index on `  (a ASC, d ASC)  ` will generate an index entry for this document since `  a  ` is present, and will fill in an `  unset  ` value for `  d  ` . An index on `  (d ASC, e ASC)  ` will not generate any index entry as neither `  d  ` nor `  e  ` are present.
 

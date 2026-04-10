@@ -9,14 +9,14 @@ This page describes CMEK for Firestore with MongoDB compatibility. For more info
   - [Customer-managed encryption keys (CMEK)](https://cloud.google.com/kms/docs/cmek)
   - [Best practices for using CMEKs](https://cloud.google.com/kms/docs/cmek-best-practices)
 
-For instructions on performing CMEK-related tasks with Firestore with MongoDB compatibility, see [Use CMEK](/firestore/mongodb-compatibility/docs/use-cmek) .
+For instructions on performing CMEK-related tasks with Firestore with MongoDB compatibility, see [Use CMEK](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-cmek) .
 
 **Note:** For information about access to this release, see the [access request form](https://docs.google.com/forms/d/e/1FAIpQLSfKs8wJf4IXu1NizvfyU2vT59JDbdPvkehMVZ2ab5l_aDLIIA/viewform?resourcekey=0-O15dlRFvA0JIDmh6VFUEcA) .
 
 ## Features
 
   - **Data control** : CMEK lets you manage the KMS key. You can rotate, disable, and destroy the key used to encrypt the data at rest in your Firestore with MongoDB compatibility database.
-  - **Performance** : CMEK does not impact the [Firestore SLA](/firestore/sla) .
+  - **Performance** : CMEK does not impact the [Firestore SLA](https://docs.cloud.google.com/firestore/sla) .
   - **Auditability** : If you [enable audit logging for Cloud KMS](https://cloud.google.com/logging/docs/audit/configure-data-access#config-console-enable) , all the operations on the key are logged and viewable in Cloud Logging.
   - **Organization policy constraints** : You can use [CMEK organization policy constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints) to specify encryption compliance requirements for Firestore with MongoDB compatibility databases in your organization.
 
@@ -43,14 +43,12 @@ Encrypt and decrypt operations are not issued on every data request. Instead, th
 
 If the system detects that the key is unavailable, within 10 minutes any subsequent calls to the Firestore with MongoDB compatibility database, including reads, writes, and queries, return a `  INVALID_ARGUMENT  ` error with the following message:
 
-``` text
-The customer-managed encryption key required by the requested
-resource is not accessible.
-```
+    The customer-managed encryption key required by the requested
+    resource is not accessible.
 
-If the database has [time-to-live (TTL) policies](/firestore/mongodb-compatibility/docs/ttl) , and if any expiration times get exceeded while the key is unavailable, [data deletion by TTL](/firestore/mongodb-compatibility/docs/ttl#ttl_deletion) will be delayed until the key gets reinstated. If the database has long-running operations in progress, they will be affected as follows:
+If the database has [time-to-live (TTL) policies](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl) , and if any expiration times get exceeded while the key is unavailable, [data deletion by TTL](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl#ttl_deletion) will be delayed until the key gets reinstated. If the database has long-running operations in progress, they will be affected as follows:
 
-  - [Index build](/firestore/mongodb-compatibility/docs/indexing#index_build_time) operations, and operations [enabling new TTL policies](/firestore/mongodb-compatibility/docs/ttl#ttl_policy_enablement_duration) will stop making progress. The stopped operations will be retried if the key gets reinstated.
+  - [Index build](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing#index_build_time) operations, and operations [enabling new TTL policies](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl#ttl_policy_enablement_duration) will stop making progress. The stopped operations will be retried if the key gets reinstated.
 
 Keys are considered unavailable in any situation that intentionally disallows Firestore with MongoDB compatibility from accessing the key. This includes:
 
@@ -71,7 +69,7 @@ Reinstatement of a key involves the following, depending on the situation:
 
 When you rotate the CMEK key, Firestore with MongoDB compatibility re-encrypts the database with the latest primary version of the CMEK key. During the re-encryption process, keep both the earlier and the new key version available. Once re-encryption finishes, disabling or deleting the earlier versions of the CMEK key won't disable access to the database since it's encrypted with the new primary key version.
 
-You can also view the key versions that are being used to protect a database. For more information, see [View the key in use](/firestore/mongodb-compatibility/docs/use-cmek#view-key) .
+You can also view the key versions that are being used to protect a database. For more information, see [View the key in use](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-cmek#view-key) .
 
 ## External key considerations
 
@@ -95,7 +93,7 @@ Firestore with MongoDB compatibility creates the first backup of a CMEK database
 
 **Note:** Once the backup is created, you can't modify its key and key version, even if you rotate the Cloud KMS key.
 
-For more information about Firestore with MongoDB compatibility backups, see [Back up and restore data](/firestore/mongodb-compatibility/docs/backups) .
+For more information about Firestore with MongoDB compatibility backups, see [Back up and restore data](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/backups) .
 
 A database restored from a backup uses the same encryption mechanism as the backup by default. When you restore a database, you can specify a different encryption type in one of the following ways:
 
@@ -103,7 +101,7 @@ A database restored from a backup uses the same encryption mechanism as the back
   - Restore to a non-CMEK database that uses [Google's default encryption](https://cloud.google.com/security/encryption/default-encryption#googles_default_encryption) .
   - Restore to a database that uses the same encryption as the backup.
 
-For more information about restoring a Firestore with MongoDB compatibility database from a backup, see [Restore data from a database backup](/firestore/mongodb-compatibility/docs/backups#restore_data_from_a_database_backup) . For more information about restoring a CMEK-protected Firestore with MongoDB compatibility database from a backup, see [Restore a CMEK-protected database](/firestore/mongodb-compatibility/docs/use-cmek#restore-cmek-db) .
+For more information about restoring a Firestore with MongoDB compatibility database from a backup, see [Restore data from a database backup](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/backups#restore_data_from_a_database_backup) . For more information about restoring a CMEK-protected Firestore with MongoDB compatibility database from a backup, see [Restore a CMEK-protected database](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-cmek#restore-cmek-db) .
 
 ## Clone
 
@@ -113,7 +111,7 @@ By default, a database cloned from another database uses the same encryption mec
   - Clone to a non-CMEK database that uses [Google's default encryption](https://cloud.google.com/security/encryption/default-encryption#googles_default_encryption) .
   - (Default) Clone to a database that uses the same encryption as the source database.
 
-For more information about cloning a Firestore with MongoDB compatibility database, see [Clone a database](/firestore/mongodb-compatibility/docs/use-pitr#clone) . For more information about cloning a CMEK-protected Firestore with MongoDB compatibility database, see [Clone a CMEK-protected database](/firestore/mongodb-compatibility/docs/use-cmek#clone-cmek-db) .
+For more information about cloning a Firestore with MongoDB compatibility database, see [Clone a database](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-pitr#clone) . For more information about cloning a CMEK-protected Firestore with MongoDB compatibility database, see [Clone a CMEK-protected database](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-cmek#clone-cmek-db) .
 
 ## Key tracking
 
@@ -137,4 +135,4 @@ When keys are unavailable or disabled, be aware of the following behaviors that 
 
 ## What's next
 
-  - [Learn how to use CMEK with Firestore with MongoDB compatibility](/firestore/mongodb-compatibility/docs/use-cmek) .
+  - [Learn how to use CMEK with Firestore with MongoDB compatibility](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-cmek) .

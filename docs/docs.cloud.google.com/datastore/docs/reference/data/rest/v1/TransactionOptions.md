@@ -1,8 +1,8 @@
-  - [JSON representation](#SCHEMA_REPRESENTATION)
-  - [ReadWrite](#ReadWrite)
-      - [JSON representation](#ReadWrite.SCHEMA_REPRESENTATION)
-  - [ReadOnly](#ReadOnly)
-      - [JSON representation](#ReadOnly.SCHEMA_REPRESENTATION)
+  - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/TransactionOptions#SCHEMA_REPRESENTATION)
+  - [ReadWrite](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/TransactionOptions#ReadWrite)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/TransactionOptions#ReadWrite.SCHEMA_REPRESENTATION)
+  - [ReadOnly](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/TransactionOptions#ReadOnly)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/TransactionOptions#ReadOnly.SCHEMA_REPRESENTATION)
 
 Options for beginning a new transaction.
 
@@ -19,7 +19,7 @@ Transactions can be created explicitly with calls to `  Datastore.BeginTransacti
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
 
   // Union field mode can be only one of the following:
   &quot;readWrite&quot;: {
@@ -65,7 +65,7 @@ Options specific to read / write transactions.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;previousTransaction&quot;: string
 }</code></pre></td>
 </tr>
@@ -97,7 +97,7 @@ Options specific to read-only transactions.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;readTime&quot;: string
 }</code></pre></td>
 </tr>

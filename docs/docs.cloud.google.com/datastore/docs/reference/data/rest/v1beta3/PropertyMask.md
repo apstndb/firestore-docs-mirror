@@ -1,4 +1,4 @@
-  - [JSON representation](#SCHEMA_REPRESENTATION)
+  - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/PropertyMask#SCHEMA_REPRESENTATION)
 
 The set of arbitrarily nested property paths used to restrict an operation to only a subset of properties in an entity.
 
@@ -13,7 +13,7 @@ The set of arbitrarily nested property paths used to restrict an operation to on
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;paths&quot;: [
     string
   ]

@@ -18,13 +18,13 @@ To protect against data disasters like accidental deletion or modification of da
 
 ### Scheduled backups
 
-Backups support a maximum retention period of 14 weeks. You can schedule daily or weekly backups. You can restore your database from a backup to a new Firestore with MongoDB compatibility database in the same project. For more details, see [Back up and restore data](/firestore/mongodb-compatibility/docs/backups) .
+Backups support a maximum retention period of 14 weeks. You can schedule daily or weekly backups. You can restore your database from a backup to a new Firestore with MongoDB compatibility database in the same project. For more details, see [Back up and restore data](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/backups) .
 
 Backups provide a higher retention period than PITR. Restoring a database from a backup costs less than restoring a database from PITR data.
 
 ### Point-in-time recovery (PITR)
 
-Enable PITR to read documents from a point in time up to seven days in the past. You can read data at a granularity level of 1 minute and surgically write back into the your database with a recovery time objective (maximum time for recovery) of 0. The recovery point objective (maximum possible data loss) is 1 minute. For more details, see [Point in time recovery](/firestore/mongodb-compatibility/docs/pitr) .
+Enable PITR to read documents from a point in time up to seven days in the past. You can read data at a granularity level of 1 minute and surgically write back into the your database with a recovery time objective (maximum time for recovery) of 0. The recovery point objective (maximum possible data loss) is 1 minute. For more details, see [Point in time recovery](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/pitr) .
 
 If you don't need to restore an entire database, PITR reads can recover only the data required. PITR reads also provide a lower recovery time objective and lower recovery point objective than backups.
 
@@ -34,15 +34,15 @@ For data retention needs beyond 14 weeks, you can use PITR to create an export o
 
 PITR data exports are useful for archiving data from your database. When compared to backups, recovering a database from a PITR export is generally more expensive than recovering the same data from a backup.
 
-To start a PITR export operation, see [Export and import from PITR data](/firestore/mongodb-compatibility/docs/use-pitr#export-import) .
+To start a PITR export operation, see [Export and import from PITR data](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-pitr#export-import) .
 
 #### Database clone
 
 You can recover data by cloning your database from a point in time in the past. If PITR is enabled, you can clone from up to seven days in the past. If PITR is not enabled, you can clone from up to one hour in the past.
 
-To start a clone operation, see [Clone from a database](/firestore/mongodb-compatibility/docs/use-pitr#clone) .
+To start a clone operation, see [Clone from a database](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-pitr#clone) .
 
 ## What's next
 
-  - [Learn about backups](/firestore/mongodb-compatibility/docs/backups)
-  - [Learn about PITR exports](/firestore/mongodb-compatibility/docs/pitr)
+  - [Learn about backups](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/backups)
+  - [Learn about PITR exports](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/pitr)

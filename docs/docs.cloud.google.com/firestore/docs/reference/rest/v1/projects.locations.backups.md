@@ -15,7 +15,7 @@ The backup contains all documents and index configurations for the given databas
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;name&quot;: string,
   &quot;database&quot;: string,
   &quot;databaseUid&quot;: string,

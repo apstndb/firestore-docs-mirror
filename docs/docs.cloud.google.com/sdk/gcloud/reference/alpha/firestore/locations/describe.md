@@ -10,7 +10,7 @@ EXAMPLES
 
 To describe a Firestore locations with us-east1.
 
-``` text
+``` wrap-code
 gcloud alpha firestore locations describe --location="us-east1"
 ```
 
@@ -21,7 +21,7 @@ REQUIRED FLAGS
     
     For example, to operate on location `  us-east1  ` :
     
-    ``` text
+    ``` wrap-code
     gcloud alpha firestore locations describe --location='us-east1'
     ```
 

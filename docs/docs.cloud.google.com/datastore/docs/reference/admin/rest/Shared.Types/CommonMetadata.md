@@ -1,4 +1,4 @@
-  - [JSON representation](#SCHEMA_REPRESENTATION)
+  - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/CommonMetadata#SCHEMA_REPRESENTATION)
 
 Metadata common to all Datastore Admin operations.
 
@@ -13,7 +13,7 @@ Metadata common to all Datastore Admin operations.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;startTime&quot;: string,
   &quot;endTime&quot;: string,
   &quot;operationType&quot;: enum (OperationType),

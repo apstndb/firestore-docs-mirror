@@ -2,7 +2,7 @@
 
 **Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
 
-This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
 ## Description
 
@@ -14,72 +14,58 @@ The generated documents will contain all fields from the previous stage except f
 
 ##### Node.js
 
-``` javascript
-const results = await db.pipeline()
-  .collection("cities")
-  .removeFields("population", "location.state")
-  .execute();test.firestore.js
-```
+    const results = await db.pipeline()
+      .collection("cities")
+      .removeFields("population", "location.state")
+      .execute();test.firestore.js
 
 ### Web
 
-``` javascript
-const results = await execute(db.pipeline()
-  .collection("cities")
-  .removeFields("population", "location.state"));test.firestore.js
-```
+    const results = await execute(db.pipeline()
+      .collection("cities")
+      .removeFields("population", "location.state"));test.firestore.js
 
 ##### Swift
 
-``` swift
-let results = try await db.pipeline()
-  .collection("cities")
-  .removeFields(["population", "location.state"])
-  .execute()PipelineSnippets.swift
-```
+    let results = try await db.pipeline()
+      .collection("cities")
+      .removeFields(["population", "location.state"])
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
 
-``` kotlin
-val results = db.pipeline()
-    .collection("cities")
-    .removeFields("population", "location.state")
-    .execute()DocSnippets.kt
-```
+    val results = db.pipeline()
+        .collection("cities")
+        .removeFields("population", "location.state")
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
 
-``` text
-Task<Pipeline.Snapshot> results = db.pipeline()
-        .collection("cities")
-        .removeFields("population", "location.state")
-        .execute();DocSnippets.java
-```
+    Task<Pipeline.Snapshot> results = db.pipeline()
+            .collection("cities")
+            .removeFields("population", "location.state")
+            .execute();DocSnippets.java
 
 ##### Python
 
-``` python
-results = (
-    client.pipeline()
-    .collection("cities")
-    .remove_fields("population", "location.state")
-    .execute()
-)firestore_pipelines.py
-```
+    results = (
+        client.pipeline()
+        .collection("cities")
+        .remove_fields("population", "location.state")
+        .execute()
+    )firestore_pipelines.py
 
 ##### Java
 
-``` java
-Pipeline.Snapshot results =
-    firestore
-        .pipeline()
-        .collection("cities")
-        .removeFields("population", "location.state")
-        .execute()
-        .get();PipelineSnippets.java
-```
+    Pipeline.Snapshot results =
+        firestore
+            .pipeline()
+            .collection("cities")
+            .removeFields("population", "location.state")
+            .execute()
+            .get();PipelineSnippets.java
 
 ## Behavior
 
@@ -91,28 +77,22 @@ For example, to remove the nested state field from the dataset:
 
 ### Node.js
 
-``` text
-await db.collection("cities").doc("SF").set({name: "San Francisco", location: {country: "USA", state: "California"}});
-await db.collection("cities").doc("TO").set({name: "Toronto", location: {country: "Canada", province: "Ontario"}});
-```
+    await db.collection("cities").doc("SF").set({name: "San Francisco", location: {country: "USA", state: "California"}});
+    await db.collection("cities").doc("TO").set({name: "Toronto", location: {country: "Canada", province: "Ontario"}});
 
 The following pipeline can be used:
 
 ### Node.js
 
-``` text
-const results = await db.pipeline()
-  .collection("/cities")
-  .removeFields("location.state")
-  .execute();
-```
+    const results = await db.pipeline()
+      .collection("/cities")
+      .removeFields("location.state")
+      .execute();
 
 Which produces the following documents:
 
-``` text
-{ name: "San Francisco", location: { country: "USA" } }
-{ name: "Toronto", location: { country: "Canada", province: "Ontario" } }
-```
+    { name: "San Francisco", location: { country: "USA" } }
+    { name: "Toronto", location: { country: "Canada", province: "Ontario" } }
 
 Removal of elements within an array is unsupported.
 

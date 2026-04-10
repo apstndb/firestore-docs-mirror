@@ -1,6 +1,6 @@
 **Preview**
 
-This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](/terms/service-terms#1) . Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
 To monitor and debug Firestore in Datastore mode (Datastore) requests end-to-end, you can enable traces in the Java client library. Client-side tracing can provide a signal about the performance as experienced by your application, as well as insights that can help with debugging issues.
 
@@ -39,30 +39,14 @@ To better understand billing, start with a small trace sampling ratio (trace a s
 
 Before you begin:
 
-  - Make sure you set up the service account under which your app writes traces to your observability backend with the necessary [Identity and Access Management roles](/trace/docs/iam) :
+  - Make sure you set up the service account under which your app writes traces to your observability backend with the necessary [Identity and Access Management roles](https://docs.cloud.google.com/trace/docs/iam) :
     
-    <table>
-    <thead>
-    <tr class="header">
-    <th>Trace operation</th>
-    <th>IAM role</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="odd">
-    <td>Read traces</td>
-    <td><code dir="ltr" translate="no">         roles/cloudtrace.user        </code></td>
-    </tr>
-    <tr class="even">
-    <td>Write traces</td>
-    <td><code dir="ltr" translate="no">         roles/cloudtrace.agent        </code></td>
-    </tr>
-    <tr class="odd">
-    <td>Read/write traces</td>
-    <td><code dir="ltr" translate="no">         roles/cloudtrace.admin        </code></td>
-    </tr>
-    </tbody>
-    </table>
+    | Trace operation   | IAM role                                    |
+    | ----------------- | ------------------------------------------- |
+    | Read traces       | `          roles/cloudtrace.user         `  |
+    | Write traces      | `          roles/cloudtrace.agent         ` |
+    | Read/write traces | `          roles/cloudtrace.admin         ` |
+    
 
   - Verify Trace API is enabled on this project.
 
@@ -71,11 +55,11 @@ Before you begin:
 This section provides example configurations for client-side traces. You can export to a Collector or directly to an observability backend. You also have the following options for configuring client-side traces:
 
   - You can configure traces with the OpenTelemetry APIs. This requires code changes to your application. See the following examples:
-      - [Export to a Collector with OpenTelemetry APIs](#export_to_collector)
-      - [Export directly to an observability backend with OpenTelemetry APIs](#export_to_backend)
+      - [Export to a Collector with OpenTelemetry APIs](https://docs.cloud.google.com/datastore/docs/client-side-traces#export_to_collector)
+      - [Export directly to an observability backend with OpenTelemetry APIs](https://docs.cloud.google.com/datastore/docs/client-side-traces#export_to_backend)
   - You can configure traces without code changes using auto agents. You need to set the environment variable `  DATASTORE_ENABLE_TRACING=ON  ` . You also need to set other configuration settings as described in [Agent Configuration](https://opentelemetry.io/docs/languages/java/automatic/configuration/) . See the following examples:
-      - [Export to a Collector with Auto Agents](#export_to_collector_auto_agent)
-      - [Export directly to an observability backend with Auto Agents](#export_to_backend_auto_agent)
+      - [Export to a Collector with Auto Agents](https://docs.cloud.google.com/datastore/docs/client-side-traces#export_to_collector_auto_agent)
+      - [Export directly to an observability backend with Auto Agents](https://docs.cloud.google.com/datastore/docs/client-side-traces#export_to_backend_auto_agent)
 
 ### Export traces to a Collector with OpenTelemetry APIs
 
@@ -83,7 +67,7 @@ The following code configures the Datastore Java client library to export spans 
 
 ##### Java
 
-``` text
+``` suppresswarning
 Resource resource = Resource
   .getDefault().merge(Resource.builder().put(SERVICE_NAME, "My App").build());
 
@@ -129,7 +113,7 @@ The following code configures the Java client library to directly export trace s
 
 ##### Java
 
-``` text
+``` suppresswarning
 // TraceExporter needed for this use case
 import com.google.cloud.opentelemetry.trace.TraceExporter;
 
@@ -173,7 +157,7 @@ Run your OpenTelemetry Collector with OTLP gRPC receivers enabled. Set the agent
 
 ##### Terminal
 
-``` text
+``` suppresswarning
 DATASTORE_ENABLE_TRACING=ON                            \
 java                                                   \
 -javaagent:path/to/opentelemetry-javaagent.jar         \
@@ -193,7 +177,7 @@ In addition to setting the environment variable `  DATASTORE_ENABLE_TRACING=ON  
 
 ##### Terminal
 
-``` text
+``` suppresswarning
 DATASTORE_ENABLE_TRACING=ON                                                \
 java                                                                       \
 -javaagent:path/to/opentelemetry-javaagent.jar                             \
@@ -209,15 +193,21 @@ java                                                                       \
 
 ## Example trace
 
-The following examples show how trace information is displayed in Cloud Trace. For more information about possible attributes and values, see [Trace span attributes and events](/datastore/docs/trace-span-references) .
+The following examples show how trace information is displayed in Cloud Trace. For more information about possible attributes and values, see [Trace span attributes and events](https://docs.cloud.google.com/datastore/docs/trace-span-references) .
 
 ### Example trace span
 
+![A trace span viewed from Cloud Trace.](https://docs.cloud.google.com/static/datastore/images/client-side-trace-span.png)
+
 ### Example event log
+
+![A trace span event log viewed from Cloud Trace.](https://docs.cloud.google.com/static/datastore/images/client-side-trace-event-log.png)
 
 ### Example attribute values
 
+![Attribute values of a trace span viewed from Cloud Trace.](https://docs.cloud.google.com/static/datastore/images/client-side-trace-attributes.png)
+
 ## What's next
 
-  - View the reference for [Trace span attributes and events.](/datastore/docs/trace-span-references) .
-  - Learn about [server-side monitoring](/datastore/docs/understand-performance-monitoring) .
+  - View the reference for [Trace span attributes and events.](https://docs.cloud.google.com/datastore/docs/trace-span-references) .
+  - Learn about [server-side monitoring](https://docs.cloud.google.com/datastore/docs/understand-performance-monitoring) .

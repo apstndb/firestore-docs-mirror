@@ -11,7 +11,7 @@ A precondition on a document, used for conditional operations.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
 
   // Union field condition_type can be only one of the following:
   &quot;exists&quot;: boolean,

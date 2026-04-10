@@ -10,13 +10,13 @@ EXAMPLES
 
 To get the connection string for a Firestore database with a databaseId `  testdb  ` without auth configuration.
 
-``` text
+``` wrap-code
 gcloud alpha firestore databases connection-string --database=testdb --auth=none
 ```
 
 To get the connection string for a Firestore database with a databaseId `  testdb  ` with Google Compute Engine VM auth.
 
-``` text
+``` wrap-code
 gcloud alpha firestore databases connection-string --database=testdb --auth=gce-vm
 ```
 
@@ -27,7 +27,7 @@ REQUIRED FLAGS
     
     For example, to operate on database `  foo  ` :
     
-    ``` text
+    ``` wrap-code
     gcloud alpha firestore databases connection-string --database='foo'
     ```
 
@@ -55,10 +55,10 @@ NOTES
 
 This command is currently in alpha and might change without notice. If this command fails with API permission errors despite specifying the correct project, you might be trying to access an API with an invitation-only early access allowlist. These variants are also available:
 
-``` text
+``` wrap-code
 gcloud firestore databases connection-string
 ```
 
-``` text
+``` wrap-code
 gcloud beta firestore databases connection-string
 ```

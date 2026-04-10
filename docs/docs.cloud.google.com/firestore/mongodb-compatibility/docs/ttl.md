@@ -47,15 +47,15 @@ The principal creating or dropping a TTL index requires the following permission
   - Creating or dropping TTL indexes requires the `  datastore.indexes.update  ` permission.
   - Checking the status of TTL operations requires `  datastore.operations.list  ` and `  datastore.operations.get  ` .
 
-For roles that assign these permissions, see [Firestore Identity and Access Management roles](/firestore/mongodb-compatibility/docs/security/iam#predefined_roles) .
+For roles that assign these permissions, see [Firestore Identity and Access Management roles](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam#predefined_roles) .
 
 ## Before you begin
 
 Before you use the gcloud CLI to manage TTL indexes, use the [`  gcloud components update  `](https://cloud.google.com/sdk/gcloud/reference/components/update) command to update components to the latest available version:
 
-``` text
-gcloud components update
-```
+    gcloud components update
+
+<span id="create_ttl_policy"></span>
 
 ## Create a TTL index
 
@@ -77,15 +77,11 @@ To create a TTL index, follow these steps:
 
 Include the `  expireAfterSeconds  ` index option when calling [`  createIndex()  `](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/) method:
 
-``` text
-db.COLLECTION_NAME.createIndex({"TTL_FIELD": 1, "expireAfterSeconds": EXPIRATION_OFFSET_SECONDS})
-```
+    db.COLLECTION_NAME.createIndex({"TTL_FIELD": 1, "expireAfterSeconds": EXPIRATION_OFFSET_SECONDS})
 
 For example:
 
-``` text
-db.restaurants.createIndex({"ts": 1, "expireAfterSeconds": 3600})
-```
+    db.restaurants.createIndex({"ts": 1, "expireAfterSeconds": 3600})
 
 `  expireAfterSeconds  ` identifies the TTL as a TTL index and is the offset between the timestamp value from the TTL field and the expiration time. If `  expireAfterSeconds  ` is set to `  0  ` , the expiration time is given directly by the timestamp value from the TTL field.
 
@@ -94,11 +90,13 @@ Note the following limitations:
   - TTL indexes must include exactly one field.
   - TTL indexes are not usable in queries.
   - You can create only one TTL index per collection.
-  - [Audit logs](/firestore/mongodb-compatibility/docs/audit-logging) for TTL index creation with the MongoDB API use the method name `  google.firestore.admin.v1.FirestoreAdmin.UpdateField  ` .
+  - [Audit logs](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/audit-logging) for TTL index creation with the MongoDB API use the method name `  google.firestore.admin.v1.FirestoreAdmin.UpdateField  ` .
 
 ### Google Cloud Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -116,15 +114,19 @@ The console returns to the **Time-to-live** page. If the operation successfully 
 
 1.  In the Google Cloud console, activate Cloud Shell.
     
-    At the bottom of the Google Cloud console, a [Cloud Shell](/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
+    [Activate Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
+    
+    At the bottom of the Google Cloud console, a [Cloud Shell](https://docs.cloud.google.com/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
 
 2.  Use the [`  firestore fields ttls update  `](https://cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update) command to configure a TTL index. Add the `  --async  ` flag to prevent the gcloud CLI from waiting for the operation to complete.
     
-    ``` text
+    ``` notranslate
      gcloud firestore fields ttls update
     ttl_field --collection-group=collection_name
     --enable-ttl 
     ```
+
+<span id="ttl_policy_enablement_duration"></span>
 
 ### TTL index creation duration
 
@@ -138,15 +140,15 @@ To view TTL indexes, follow these steps:
 
 Use the [`  listIndexes()  `](https://www.mongodb.com/docs/manual/reference/method/db.collection.listIndexes/) method to view TTL indexes. For example:
 
-``` text
-db.restaurants.listIndexes()
-```
+    db.restaurants.listIndexes()
 
 Note that the output will include both TTL indexes and non-TTL indexes. TTL indexes will include the `  expireAfterSeconds  ` option.
 
 ### Google Cloud Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -158,17 +160,19 @@ The console lists TTL indexes for your database and includes each index's status
 
 1.  In the Google Cloud console, activate Cloud Shell.
     
-    At the bottom of the Google Cloud console, a [Cloud Shell](/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
+    [Activate Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
+    
+    At the bottom of the Google Cloud console, a [Cloud Shell](https://docs.cloud.google.com/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
 
 2.  Use the [`  firestore fields ttls list  `](https://cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/list) command to configure a TTL index. The following command lists all TTL indexes.
     
-    ``` text
+    ``` notranslate
     gcloud firestore fields ttls list
     ```
     
     To list TTL indexes under a specific collection, use the following:
     
-    ``` text
+    ``` notranslate
     gcloud firestore fields ttls list  --collection-group=collection_name
     ```
 
@@ -178,7 +182,7 @@ You can use the gcloud CLI to view more details about a TTL index that is in the
 
 Use the [`  operations list  `](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command to see all running and recently completed operations:
 
-``` text
+``` notranslate
 gcloud firestore operations list
 ```
 
@@ -194,21 +198,19 @@ Use the [`  dropIndex()  `](https://www.mongodb.com/docs/manual/reference/method
 
 **Drop a TTL index using index name**
 
-``` text
-db.restaurants.dropIndex("ts_1")
-```
+    db.restaurants.dropIndex("ts_1")
 
 **Drop a TTL index using index definition**
 
-``` text
-db.restaurants.dropIndex({"ts": 1})
-```
+    db.restaurants.dropIndex({"ts": 1})
 
-Note that [Audit logs](/firestore/mongodb-compatibility/docs/audit-logging) for dropping a TTL index with the MongoDB API use the method name `  google.firestore.admin.v1.FirestoreAdmin.UpdateField  ` .
+Note that [Audit logs](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/audit-logging) for dropping a TTL index with the MongoDB API use the method name `  google.firestore.admin.v1.FirestoreAdmin.UpdateField  ` .
 
 ### Google Cloud Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -224,11 +226,13 @@ The console returns to the **Time-to-live** page. On success, Firestore with Mon
 
 1.  In the Google Cloud console, activate Cloud Shell.
     
-    At the bottom of the Google Cloud console, a [Cloud Shell](/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
+    [Activate Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
+    
+    At the bottom of the Google Cloud console, a [Cloud Shell](https://docs.cloud.google.com/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
 
 2.  Use the [`  firestore fields ttls update  `](https://cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update) command to configure a TTL index. Add the `  --async  ` flag to prevent the gcloud CLI from waiting for the operation to complete.
     
-    ``` text
+    ``` notranslate
     gcloud firestore fields ttls update ttl_field --collection-group=collection_name --disable-ttl
     ```
 
@@ -236,26 +240,9 @@ The console returns to the **Time-to-live** page. On success, Firestore with Mon
 
 You can use Cloud Monitoring to view metrics about TTL-driven deletions. Firestore with MongoDB compatibility provides the following metrics for TTL:
 
-<table>
-<thead>
-<tr class="header">
-<th>Metric type</th>
-<th>Metric name</th>
-<th>Metric description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>firestore.googleapis.com/document/ttl_deletion_count</td>
-<td>Time to live deletion count</td>
-<td><p>Total count of documents deleted by TTL indexes.</p></td>
-</tr>
-<tr class="even">
-<td>firestore.googleapis.com/document/ttl_expiration_to_deletion_delays</td>
-<td>Time to live expiration to deletion delays</td>
-<td><p>Time elapsed between when a document expired under a TTL index and when it was actually deleted.</p></td>
-</tr>
-</tbody>
-</table>
+| Metric type                                                             | Metric name                                | Metric description                                                                               |
+| ----------------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| firestore.googleapis.com/document/ttl\_deletion\_count                  | Time to live deletion count                | Total count of documents deleted by TTL indexes.                                                 |
+| firestore.googleapis.com/document/ttl\_expiration\_to\_deletion\_delays | Time to live expiration to deletion delays | Time elapsed between when a document expired under a TTL index and when it was actually deleted. |
 
 To set up a dashboard with Firestore with MongoDB compatibility metrics, see [manage custom dashboard](https://cloud.google.com/monitoring/charts/dashboards) and [add dashboard widgets](https://cloud.google.com/monitoring/charts) .

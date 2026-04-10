@@ -22,11 +22,103 @@ A [service endpoint](https://cloud.google.com/apis/design/glossary#api_service_e
 
 A regional service endpoint is a base URL that specifies the network address of an API service in a single region. A service that is available in multiple regions might have multiple regional endpoints. Select a location to see its regional service endpoint for this service.
 
+global
+
+africa-south1
+
+asia-east1
+
+asia-east2
+
+asia-northeast1
+
+asia-northeast2
+
+asia-northeast3
+
+asia-south1
+
+asia-south2
+
+asia-southeast1
+
+asia-southeast2
+
+asia-southeast3
+
+australia-southeast1
+
+australia-southeast2
+
+europe-central2
+
+europe-north1
+
+europe-north2
+
+europe-southwest1
+
+europe-west1
+
+europe-west10
+
+europe-west12
+
+europe-west2
+
+europe-west3
+
+europe-west4
+
+europe-west6
+
+europe-west8
+
+europe-west9
+
+me-central1
+
+me-central2
+
+me-west1
+
+northamerica-northeast1
+
+northamerica-northeast2
+
+northamerica-south1
+
+southamerica-east1
+
+southamerica-west1
+
+us-central1
+
+us-east1
+
+us-east4
+
+us-east5
+
+us-south1
+
+us-west1
+
+us-west2
+
+us-west3
+
+us-west4
+
+eu
+
+us
+
   
 
 `  https://firestore.googleapis.com  `
 
-## REST Resource: [v1beta2.projects.databases](/firestore/docs/reference/rest/v1beta2/projects.databases)
+## REST Resource: [v1beta2.projects.databases](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases)
 
 Methods
 
@@ -40,7 +132,7 @@ Exports a copy of all or a subset of documents from Google Cloud Firestore to an
 `  POST /v1beta2/{name=projects/*/databases/*}:importDocuments  `  
 Imports documents into Google Cloud Firestore.
 
-## REST Resource: [v1beta2.projects.databases.collectionGroups.fields](/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.fields)
+## REST Resource: [v1beta2.projects.databases.collectionGroups.fields](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.fields)
 
 Methods
 
@@ -59,7 +151,7 @@ Lists the field configuration and metadata for this database.
 `  PATCH /v1beta2/{field.name=projects/*/databases/*/collectionGroups/*/fields/*}  `  
 Updates a field configuration.
 
-## REST Resource: [v1beta2.projects.databases.collectionGroups.indexes](/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.indexes)
+## REST Resource: [v1beta2.projects.databases.collectionGroups.indexes](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.indexes)
 
 Methods
 
@@ -83,7 +175,7 @@ Gets a composite index.
 `  GET /v1beta2/{parent=projects/*/databases/*/collectionGroups/*}/indexes  `  
 Lists composite indexes.
 
-## REST Resource: [v1beta1.projects.databases](/firestore/docs/reference/rest/v1beta1/projects.databases)
+## REST Resource: [v1beta1.projects.databases](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases)
 
 Methods
 
@@ -97,7 +189,7 @@ Exports a copy of all or a subset of documents from Google Cloud Firestore to an
 `  POST /v1beta1/{name=projects/*/databases/*}:importDocuments  `  
 Imports documents into Google Cloud Firestore.
 
-## REST Resource: [v1beta1.projects.databases.documents](/firestore/docs/reference/rest/v1beta1/projects.databases.documents)
+## REST Resource: [v1beta1.projects.databases.documents](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents)
 
 Methods
 
@@ -191,7 +283,7 @@ Runs a query.
 `  POST /v1beta1/{database=projects/*/databases/*}/documents:write  `  
 Streams batches of document updates and deletes, in order.
 
-## REST Resource: [v1beta1.projects.databases.indexes](/firestore/docs/reference/rest/v1beta1/projects.databases.indexes)
+## REST Resource: [v1beta1.projects.databases.indexes](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes)
 
 Methods
 
@@ -215,7 +307,7 @@ Gets an index.
 `  GET /v1beta1/{parent=projects/*/databases/*}/indexes  `  
 Lists the indexes that match the specified filters.
 
-## REST Resource: [v1.projects.databases](/firestore/docs/reference/rest/v1/projects.databases)
+## REST Resource: [v1.projects.databases](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases)
 
 Methods
 
@@ -269,7 +361,7 @@ Updates a database.
 `  POST /v1/{parent=projects/*}/databases:restore  `  
 Creates a new database by restoring from an existing backup.
 
-## REST Resource: [v1.projects.databases.backupSchedules](/firestore/docs/reference/rest/v1/projects.databases.backupSchedules)
+## REST Resource: [v1.projects.databases.backupSchedules](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules)
 
 Methods
 
@@ -298,7 +390,7 @@ List backup schedules.
 `  PATCH /v1/{backupSchedule.name=projects/*/databases/*/backupSchedules/*}  `  
 Updates a backup schedule.
 
-## REST Resource: [v1.projects.databases.collectionGroups.fields](/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields)
+## REST Resource: [v1.projects.databases.collectionGroups.fields](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields)
 
 Methods
 
@@ -317,7 +409,7 @@ Lists the field configuration and metadata for this database.
 `  PATCH /v1/{field.name=projects/*/databases/*/collectionGroups/*/fields/*}  `  
 Updates a field configuration.
 
-## REST Resource: [v1.projects.databases.collectionGroups.indexes](/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes)
+## REST Resource: [v1.projects.databases.collectionGroups.indexes](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes)
 
 Methods
 
@@ -336,7 +428,7 @@ Gets a composite index.
 `  GET /v1/{parent=projects/*/databases/*/collectionGroups/*}/indexes  `  
 Lists composite indexes.
 
-## REST Resource: [v1.projects.databases.documents](/firestore/docs/reference/rest/v1/projects.databases.documents)
+## REST Resource: [v1.projects.databases.documents](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents)
 
 Methods
 
@@ -430,7 +522,7 @@ Runs a query.
 `  POST /v1/{database=projects/*/databases/*}/documents:write  `  
 Streams batches of document updates and deletes, in order.
 
-## REST Resource: [v1.projects.databases.operations](/firestore/docs/reference/rest/v1/projects.databases.operations)
+## REST Resource: [v1.projects.databases.operations](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.operations)
 
 Methods
 
@@ -454,7 +546,7 @@ Gets the latest state of a long-running operation.
 `  GET /v1/{name=projects/*/databases/*}/operations  `  
 Lists operations that match the specified filter in the request.
 
-## REST Resource: [v1.projects.databases.userCreds](/firestore/docs/reference/rest/v1/projects.databases.userCreds)
+## REST Resource: [v1.projects.databases.userCreds](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds)
 
 Methods
 
@@ -493,7 +585,7 @@ List all user creds in the database.
 `  POST /v1/{name=projects/*/databases/*/userCreds/*}:resetPassword  `  
 Resets the password of a user creds.
 
-## REST Resource: [v1.projects.locations](/firestore/docs/reference/rest/v1/projects.locations)
+## REST Resource: [v1.projects.locations](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations)
 
 Methods
 
@@ -507,7 +599,7 @@ Gets information about a location.
 `  GET /v1/{name=projects/*}/locations  `  
 Lists information about the supported locations for this service.
 
-## REST Resource: [v1.projects.locations.backups](/firestore/docs/reference/rest/v1/projects.locations.backups)
+## REST Resource: [v1.projects.locations.backups](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations.backups)
 
 Methods
 

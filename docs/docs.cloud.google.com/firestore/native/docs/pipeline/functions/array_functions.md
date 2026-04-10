@@ -2,118 +2,42 @@
 
 **Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
 
-This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
 ## **Array Functions**
 
-<table>
-<tbody>
-<tr class="odd">
-<td>Name</td>
-<td>Description</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">         ARRAY       </code></td>
-<td>Returns an <code dir="ltr" translate="no">       ARRAY      </code> containing one element for each input argument</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">         ARRAY_CONCAT       </code></td>
-<td>Concatenates multiple arrays into a single <code dir="ltr" translate="no">       ARRAY      </code></td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">         ARRAY_CONTAINS       </code></td>
-<td>Returns <code dir="ltr" translate="no">       TRUE      </code> if a given <code dir="ltr" translate="no">       ARRAY      </code> contains a particular value</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">         ARRAY_CONTAINS_ALL       </code></td>
-<td>Returns <code dir="ltr" translate="no">       TRUE      </code> if all values are present in the <code dir="ltr" translate="no">       ARRAY      </code></td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">         ARRAY_CONTAINS_ANY       </code></td>
-<td>Returns <code dir="ltr" translate="no">       TRUE      </code> if any of the values are present in the <code dir="ltr" translate="no">       ARRAY      </code></td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">         ARRAY_FILTER       </code></td>
-<td>Filters out elements from an <code dir="ltr" translate="no">       ARRAY      </code> that don't satisfy a predicate</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">         ARRAY_FIRST       </code></td>
-<td>Returns the first element in an <code dir="ltr" translate="no">       ARRAY      </code></td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">         ARRAY_FIRST_N       </code></td>
-<td>Returns the first <code dir="ltr" translate="no">       n      </code> elements in an <code dir="ltr" translate="no">       ARRAY      </code></td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">         ARRAY_GET       </code></td>
-<td>Returns the element at a given index in an <code dir="ltr" translate="no">       ARRAY      </code></td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">         ARRAY_INDEX_OF       </code></td>
-<td>Returns the index of the first occurrence of a value in an <code dir="ltr" translate="no">       ARRAY      </code></td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">         ARRAY_INDEX_OF_ALL       </code></td>
-<td>Returns all indexes of a value in an <code dir="ltr" translate="no">       ARRAY      </code></td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">         ARRAY_LENGTH       </code></td>
-<td>Returns the number of elements in an <code dir="ltr" translate="no">       ARRAY      </code></td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">         ARRAY_LAST       </code></td>
-<td>Returns the last element in an <code dir="ltr" translate="no">       ARRAY      </code></td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">         ARRAY_LAST_N       </code></td>
-<td>Returns the last <code dir="ltr" translate="no">       n      </code> elements in an <code dir="ltr" translate="no">       ARRAY      </code></td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">         ARRAY_REVERSE       </code></td>
-<td>Reverses the order of elements in an <code dir="ltr" translate="no">       ARRAY      </code></td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">         ARRAY_SLICE       </code></td>
-<td>Returns a slice of an <code dir="ltr" translate="no">       ARRAY      </code></td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">         ARRAY_TRANSFORM       </code></td>
-<td>Transforms elements in an <code dir="ltr" translate="no">       ARRAY      </code> by applying expression to each element</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">         MAXIMUM       </code></td>
-<td>Returns the maximum value in an <code dir="ltr" translate="no">       ARRAY      </code></td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">         MAXIMUM_N       </code></td>
-<td>Returns the <code dir="ltr" translate="no">       n      </code> largest values in an <code dir="ltr" translate="no">       ARRAY      </code></td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">         MINIMUM       </code></td>
-<td>Returns the minimum value in an <code dir="ltr" translate="no">       ARRAY      </code></td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">         MINIMUM_N       </code></td>
-<td>Returns the <code dir="ltr" translate="no">       n      </code> smallest values in an <code dir="ltr" translate="no">       ARRAY      </code></td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">         SUM       </code></td>
-<td>Returns the sum of all <code dir="ltr" translate="no">       NUMERIC      </code> values in an <code dir="ltr" translate="no">       ARRAY      </code> .</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">         JOIN       </code></td>
-<td>Produces a concatenation of the elements in an <code dir="ltr" translate="no">       ARRAY      </code> as a <code dir="ltr" translate="no">       STRING      </code> value.</td>
-</tr>
-</tbody>
-</table>
+|                                        |                                                                                                           |
+| -------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Name                                   | Description                                                                                               |
+| `          ARRAY        `              | Returns an `        ARRAY       ` containing one element for each input argument                          |
+| `          ARRAY_CONCAT        `       | Concatenates multiple arrays into a single `        ARRAY       `                                         |
+| `          ARRAY_CONTAINS        `     | Returns `        TRUE       ` if a given `        ARRAY       ` contains a particular value               |
+| `          ARRAY_CONTAINS_ALL        ` | Returns `        TRUE       ` if all values are present in the `        ARRAY       `                     |
+| `          ARRAY_CONTAINS_ANY        ` | Returns `        TRUE       ` if any of the values are present in the `        ARRAY       `              |
+| `          ARRAY_FILTER        `       | Filters out elements from an `        ARRAY       ` that don't satisfy a predicate                        |
+| `          ARRAY_FIRST        `        | Returns the first element in an `        ARRAY       `                                                    |
+| `          ARRAY_FIRST_N        `      | Returns the first `        n       ` elements in an `        ARRAY       `                                |
+| `          ARRAY_GET        `          | Returns the element at a given index in an `        ARRAY       `                                         |
+| `          ARRAY_INDEX_OF        `     | Returns the index of the first occurrence of a value in an `        ARRAY       `                         |
+| `          ARRAY_INDEX_OF_ALL        ` | Returns all indexes of a value in an `        ARRAY       `                                               |
+| `          ARRAY_LENGTH        `       | Returns the number of elements in an `        ARRAY       `                                               |
+| `          ARRAY_LAST        `         | Returns the last element in an `        ARRAY       `                                                     |
+| `          ARRAY_LAST_N        `       | Returns the last `        n       ` elements in an `        ARRAY       `                                 |
+| `          ARRAY_REVERSE        `      | Reverses the order of elements in an `        ARRAY       `                                               |
+| `          ARRAY_SLICE        `        | Returns a slice of an `        ARRAY       `                                                              |
+| `          ARRAY_TRANSFORM        `    | Transforms elements in an `        ARRAY       ` by applying expression to each element                   |
+| `          MAXIMUM        `            | Returns the maximum value in an `        ARRAY       `                                                    |
+| `          MAXIMUM_N        `          | Returns the `        n       ` largest values in an `        ARRAY       `                                |
+| `          MINIMUM        `            | Returns the minimum value in an `        ARRAY       `                                                    |
+| `          MINIMUM_N        `          | Returns the `        n       ` smallest values in an `        ARRAY       `                               |
+| `          SUM        `                | Returns the sum of all `        NUMERIC       ` values in an `        ARRAY       ` .                     |
+| `          JOIN        `               | Produces a concatenation of the elements in an `        ARRAY       ` as a `        STRING       ` value. |
 
 ### ARRAY
 
 **Syntax:**
 
-``` text
-array(values: ANY...) -> ARRAY
-```
+    array(values: ANY...) -> ARRAY
 
 **Description:**
 
@@ -123,44 +47,19 @@ Constructs an array from the given elements.
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">values</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       array(values)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">()</td>
-<td style="text-align: left;">[]</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">(1, 2, 3)</td>
-<td style="text-align: left;">[1, 2, 3]</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">("a", 1, true)</td>
-<td style="text-align: left;">["a", 1, true]</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">(1, null)</td>
-<td style="text-align: left;">[1, null]</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">(1, [2, 3])</td>
-<td style="text-align: left;">[1, [2, 3]]</td>
-</tr>
-</tbody>
-</table>
+| values         | `        array(values)       ` |
+| :------------- | :----------------------------- |
+| ()             | \[\]                           |
+| (1, 2, 3)      | \[1, 2, 3\]                    |
+| ("a", 1, true) | \["a", 1, true\]               |
+| (1, null)      | \[1, null\]                    |
+| (1, \[2, 3\])  | \[1, \[2, 3\]\]                |
 
 ### ARRAY\_CONCAT
 
 **Syntax:**
 
-``` text
-array_concat(arrays: ARRAY...) -> ARRAY
-```
+    array_concat(arrays: ARRAY...) -> ARRAY
 
 **Description:**
 
@@ -168,65 +67,39 @@ Concatenates two or more arrays into a single `  ARRAY  ` .
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">arrays</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       array_concat(arrays)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">([1, 2], [3, 4])</td>
-<td style="text-align: left;">[1, 2, 3, 4]</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">(["a", "b"], ["c"])</td>
-<td style="text-align: left;">["a", "b", "c"]</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">([1], [2], [3])</td>
-<td style="text-align: left;">[1, 2, 3]</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">([], [1, 2])</td>
-<td style="text-align: left;">[1, 2]</td>
-</tr>
-</tbody>
-</table>
+| arrays                  | `        array_concat(arrays)       ` |
+| :---------------------- | :------------------------------------ |
+| (\[1, 2\], \[3, 4\])    | \[1, 2, 3, 4\]                        |
+| (\["a", "b"\], \["c"\]) | \["a", "b", "c"\]                     |
+| (\[1\], \[2\], \[3\])   | \[1, 2, 3\]                           |
+| (\[\], \[1, 2\])        | \[1, 2\]                              |
 
 ##### Node.js
 
-``` javascript
-const result = await db.pipeline()
-  .collection("books")
-  .select(field("genre").arrayConcat([field("subGenre")]).as("allGenres"))
-  .execute();test.firestore.js
-```
+    const result = await db.pipeline()
+      .collection("books")
+      .select(field("genre").arrayConcat([field("subGenre")]).as("allGenres"))
+      .execute();test.firestore.js
 
 ##### Swift
 
-``` swift
-let result = try await db.pipeline()
-  .collection("books")
-  .select([Field("genre").arrayConcat([Field("subGenre")]).as("allGenres")])
-  .execute()PipelineSnippets.swift
-```
+    let result = try await db.pipeline()
+      .collection("books")
+      .select([Field("genre").arrayConcat([Field("subGenre")]).as("allGenres")])
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
 
-``` kotlin
-val result = db.pipeline()
-    .collection("books")
-    .select(field("genre").arrayConcat(field("subGenre")).alias("allGenres"))
-    .execute()DocSnippets.kt
-```
+    val result = db.pipeline()
+        .collection("books")
+        .select(field("genre").arrayConcat(field("subGenre")).alias("allGenres"))
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
 
-``` text
+``` 
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("genre").arrayConcat(field("subGenre")).alias("allGenres"))
@@ -236,36 +109,30 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 ##### Python
 
-``` python
-from google.cloud.firestore_v1.pipeline_expressions import Field
-
-result = (
-    client.pipeline()
-    .collection("books")
-    .select(Field.of("genre").array_concat(Field.of("subGenre")).as_("allGenres"))
-    .execute()
-)firestore_pipelines.py
-```
+    from google.cloud.firestore_v1.pipeline_expressions import Field
+    
+    result = (
+        client.pipeline()
+        .collection("books")
+        .select(Field.of("genre").array_concat(Field.of("subGenre")).as_("allGenres"))
+        .execute()
+    )firestore_pipelines.py
 
 ##### Java
 
-``` java
-Pipeline.Snapshot result =
-    firestore
-        .pipeline()
-        .collection("books")
-        .select(arrayConcat(field("genre"), field("subGenre")).as("allGenres"))
-        .execute()
-        .get();PipelineSnippets.java
-```
+    Pipeline.Snapshot result =
+        firestore
+            .pipeline()
+            .collection("books")
+            .select(arrayConcat(field("genre"), field("subGenre")).as("allGenres"))
+            .execute()
+            .get();PipelineSnippets.java
 
 ### ARRAY\_CONTAINS
 
 **Syntax:**
 
-``` text
-array_contains(array: ARRAY, value: ANY) -> BOOLEAN
-```
+    array_contains(array: ARRAY, value: ANY) -> BOOLEAN
 
 **Description:**
 
@@ -273,79 +140,46 @@ Returns `  TRUE  ` if `  value  ` is found in the `  array  ` , and `  FALSE  ` 
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;">value</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       array_contains(array, value)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">true</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[[1, 2], [3]]</td>
-<td style="text-align: left;">[1, 2]</td>
-<td style="text-align: left;">true</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[1, null]</td>
-<td style="text-align: left;">null</td>
-<td style="text-align: left;">true</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">"abc"</td>
-<td style="text-align: left;">ANY</td>
-<td style="text-align: left;">error</td>
-</tr>
-</tbody>
-</table>
+| array               | value    | `        array_contains(array, value)       ` |
+| :------------------ | :------- | :-------------------------------------------- |
+| \[1, 2, 3\]         | 2        | true                                          |
+| \[\[1, 2\], \[3\]\] | \[1, 2\] | true                                          |
+| \[1, null\]         | null     | true                                          |
+| "abc"               | ANY      | error                                         |
 
 ##### Node.js
 
-``` javascript
-const result = await db.pipeline()
-  .collection("books")
-  .select(field("genre").arrayContains(constant("mystery")).as("isMystery"))
-  .execute();test.firestore.js
-```
+    const result = await db.pipeline()
+      .collection("books")
+      .select(field("genre").arrayContains(constant("mystery")).as("isMystery"))
+      .execute();test.firestore.js
 
 ### Web
 
-``` javascript
-const result = await execute(db.pipeline()
-  .collection("books")
-  .select(field("genre").arrayContains(constant("mystery")).as("isMystery"))
-);test.firestore.js
-```
+    const result = await execute(db.pipeline()
+      .collection("books")
+      .select(field("genre").arrayContains(constant("mystery")).as("isMystery"))
+    );test.firestore.js
 
 ##### Swift
 
-``` swift
-let result = try await db.pipeline()
-  .collection("books")
-  .select([Field("genre").arrayContains(Constant("mystery")).as("isMystery")])
-  .execute()PipelineSnippets.swift
-```
+    let result = try await db.pipeline()
+      .collection("books")
+      .select([Field("genre").arrayContains(Constant("mystery")).as("isMystery")])
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
 
-``` kotlin
-val result = db.pipeline()
-    .collection("books")
-    .select(field("genre").arrayContains("mystery").alias("isMystery"))
-    .execute()DocSnippets.kt
-```
+    val result = db.pipeline()
+        .collection("books")
+        .select(field("genre").arrayContains("mystery").alias("isMystery"))
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
 
-``` text
+``` 
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("genre").arrayContains("mystery").alias("isMystery"))
@@ -355,36 +189,30 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 ##### Python
 
-``` python
-from google.cloud.firestore_v1.pipeline_expressions import Field
-
-result = (
-    client.pipeline()
-    .collection("books")
-    .select(Field.of("genre").array_contains("mystery").as_("isMystery"))
-    .execute()
-)firestore_pipelines.py
-```
+    from google.cloud.firestore_v1.pipeline_expressions import Field
+    
+    result = (
+        client.pipeline()
+        .collection("books")
+        .select(Field.of("genre").array_contains("mystery").as_("isMystery"))
+        .execute()
+    )firestore_pipelines.py
 
 ##### Java
 
-``` java
-Pipeline.Snapshot result =
-    firestore
-        .pipeline()
-        .collection("books")
-        .select(arrayContains(field("genre"), "mystery").as("isMystery"))
-        .execute()
-        .get();PipelineSnippets.java
-```
+    Pipeline.Snapshot result =
+        firestore
+            .pipeline()
+            .collection("books")
+            .select(arrayContains(field("genre"), "mystery").as("isMystery"))
+            .execute()
+            .get();PipelineSnippets.java
 
 ### ARRAY\_CONTAINS\_ALL
 
 **Syntax:**
 
-``` text
-array_contains_all(array: ARRAY, search_values: ARRAY) -> BOOLEAN
-```
+    array_contains_all(array: ARRAY, search_values: ARRAY) -> BOOLEAN
 
 **Description:**
 
@@ -392,105 +220,64 @@ Returns `  TRUE  ` if all `  search_values  ` are found in the `  array  ` , and
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;">search_values</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       array_contains_all(array, search_values)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">[1, 2]</td>
-<td style="text-align: left;">true</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">[1, 4]</td>
-<td style="text-align: left;">false</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[1, null]</td>
-<td style="text-align: left;">[null]</td>
-<td style="text-align: left;">true</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[NaN]</td>
-<td style="text-align: left;">[NaN]</td>
-<td style="text-align: left;">true</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">true</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">true</td>
-</tr>
-</tbody>
-</table>
+| array       | search\_values | `        array_contains_all(array, search_values)       ` |
+| :---------- | :------------- | :-------------------------------------------------------- |
+| \[1, 2, 3\] | \[1, 2\]       | true                                                      |
+| \[1, 2, 3\] | \[1, 4\]       | false                                                     |
+| \[1, null\] | \[null\]       | true                                                      |
+| \[NaN\]     | \[NaN\]        | true                                                      |
+| \[\]        | \[\]           | true                                                      |
+| \[1, 2, 3\] | \[\]           | true                                                      |
 
 ##### Node.js
 
-``` javascript
-const result = await db.pipeline()
-  .collection("books")
-  .select(
-    field("genre")
-      .arrayContainsAll([constant("fantasy"), constant("adventure")])
-      .as("isFantasyAdventure")
-  )
-  .execute();test.firestore.js
-```
+    const result = await db.pipeline()
+      .collection("books")
+      .select(
+        field("genre")
+          .arrayContainsAll([constant("fantasy"), constant("adventure")])
+          .as("isFantasyAdventure")
+      )
+      .execute();test.firestore.js
 
 ### Web
 
-``` javascript
-const result = await execute(db.pipeline()
-  .collection("books")
-  .select(
-    field("genre")
-      .arrayContainsAll([constant("fantasy"), constant("adventure")])
-      .as("isFantasyAdventure")
-  )
-);test.firestore.js
-```
+    const result = await execute(db.pipeline()
+      .collection("books")
+      .select(
+        field("genre")
+          .arrayContainsAll([constant("fantasy"), constant("adventure")])
+          .as("isFantasyAdventure")
+      )
+    );test.firestore.js
 
 ##### Swift
 
-``` swift
-let result = try await db.pipeline()
-  .collection("books")
-  .select([
-    Field("genre")
-      .arrayContainsAll([Constant("fantasy"), Constant("adventure")])
-      .as("isFantasyAdventure")
-  ])
-  .execute()PipelineSnippets.swift
-```
+    let result = try await db.pipeline()
+      .collection("books")
+      .select([
+        Field("genre")
+          .arrayContainsAll([Constant("fantasy"), Constant("adventure")])
+          .as("isFantasyAdventure")
+      ])
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
 
-``` kotlin
-val result = db.pipeline()
-    .collection("books")
-    .select(
-        field("genre")
-            .arrayContainsAll(listOf("fantasy", "adventure"))
-            .alias("isFantasyAdventure")
-    )
-    .execute()DocSnippets.kt
-```
+    val result = db.pipeline()
+        .collection("books")
+        .select(
+            field("genre")
+                .arrayContainsAll(listOf("fantasy", "adventure"))
+                .alias("isFantasyAdventure")
+        )
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
 
-``` text
+``` 
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(
@@ -504,42 +291,36 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 ##### Python
 
-``` python
-from google.cloud.firestore_v1.pipeline_expressions import Field
-
-result = (
-    client.pipeline()
-    .collection("books")
-    .select(
-        Field.of("genre")
-        .array_contains_all(["fantasy", "adventure"])
-        .as_("isFantasyAdventure")
-    )
-    .execute()
-)firestore_pipelines.py
-```
+    from google.cloud.firestore_v1.pipeline_expressions import Field
+    
+    result = (
+        client.pipeline()
+        .collection("books")
+        .select(
+            Field.of("genre")
+            .array_contains_all(["fantasy", "adventure"])
+            .as_("isFantasyAdventure")
+        )
+        .execute()
+    )firestore_pipelines.py
 
 ##### Java
 
-``` java
-Pipeline.Snapshot result =
-    firestore
-        .pipeline()
-        .collection("books")
-        .select(
-            arrayContainsAll(field("genre"), Arrays.asList("fantasy", "adventure"))
-                .as("isFantasyAdventure"))
-        .execute()
-        .get();PipelineSnippets.java
-```
+    Pipeline.Snapshot result =
+        firestore
+            .pipeline()
+            .collection("books")
+            .select(
+                arrayContainsAll(field("genre"), Arrays.asList("fantasy", "adventure"))
+                    .as("isFantasyAdventure"))
+            .execute()
+            .get();PipelineSnippets.java
 
 ### ARRAY\_CONTAINS\_ANY
 
 **Syntax:**
 
-``` text
-array_contains_any(array: ARRAY, search_values: ARRAY) -> BOOLEAN
-```
+    array_contains_any(array: ARRAY, search_values: ARRAY) -> BOOLEAN
 
 **Description:**
 
@@ -547,90 +328,61 @@ Returns `  TRUE  ` if any of the `  search_values  ` are found in the `  array  
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;">search_values</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       array_contains_any(array, search_values)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">[4, 1]</td>
-<td style="text-align: left;">true</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">[4, 5]</td>
-<td style="text-align: left;">false</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, null]</td>
-<td style="text-align: left;">[null]</td>
-<td style="text-align: left;">true</td>
-</tr>
-</tbody>
-</table>
+| array          | search\_values | `        array_contains_any(array, search_values)       ` |
+| :------------- | :------------- | :-------------------------------------------------------- |
+| \[1, 2, 3\]    | \[4, 1\]       | true                                                      |
+| \[1, 2, 3\]    | \[4, 5\]       | false                                                     |
+| \[1, 2, null\] | \[null\]       | true                                                      |
 
 ##### Node.js
 
-``` javascript
-const result = await db.pipeline()
-  .collection("books")
-  .select(
-    field("genre")
-      .arrayContainsAny([constant("fantasy"), constant("nonfiction")])
-      .as("isMysteryOrFantasy")
-  )
-  .execute();test.firestore.js
-```
+    const result = await db.pipeline()
+      .collection("books")
+      .select(
+        field("genre")
+          .arrayContainsAny([constant("fantasy"), constant("nonfiction")])
+          .as("isMysteryOrFantasy")
+      )
+      .execute();test.firestore.js
 
 ### Web
 
-``` javascript
-const result = await execute(db.pipeline()
-  .collection("books")
-  .select(
-    field("genre")
-      .arrayContainsAny([constant("fantasy"), constant("nonfiction")])
-      .as("isMysteryOrFantasy")
-  )
-);test.firestore.js
-```
+    const result = await execute(db.pipeline()
+      .collection("books")
+      .select(
+        field("genre")
+          .arrayContainsAny([constant("fantasy"), constant("nonfiction")])
+          .as("isMysteryOrFantasy")
+      )
+    );test.firestore.js
 
 ##### Swift
 
-``` swift
-let result = try await db.pipeline()
-  .collection("books")
-  .select([
-    Field("genre")
-      .arrayContainsAny([Constant("fantasy"), Constant("nonfiction")])
-      .as("isMysteryOrFantasy")
-  ])
-  .execute()PipelineSnippets.swift
-```
+    let result = try await db.pipeline()
+      .collection("books")
+      .select([
+        Field("genre")
+          .arrayContainsAny([Constant("fantasy"), Constant("nonfiction")])
+          .as("isMysteryOrFantasy")
+      ])
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
 
-``` kotlin
-val result = db.pipeline()
-    .collection("books")
-    .select(
-        field("genre")
-            .arrayContainsAny(listOf("fantasy", "nonfiction"))
-            .alias("isMysteryOrFantasy")
-    )
-    .execute()DocSnippets.kt
-```
+    val result = db.pipeline()
+        .collection("books")
+        .select(
+            field("genre")
+                .arrayContainsAny(listOf("fantasy", "nonfiction"))
+                .alias("isMysteryOrFantasy")
+        )
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
 
-``` text
+``` 
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(
@@ -644,42 +396,36 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 ##### Python
 
-``` python
-from google.cloud.firestore_v1.pipeline_expressions import Field
-
-result = (
-    client.pipeline()
-    .collection("books")
-    .select(
-        Field.of("genre")
-        .array_contains_any(["fantasy", "nonfiction"])
-        .as_("isMysteryOrFantasy")
-    )
-    .execute()
-)firestore_pipelines.py
-```
+    from google.cloud.firestore_v1.pipeline_expressions import Field
+    
+    result = (
+        client.pipeline()
+        .collection("books")
+        .select(
+            Field.of("genre")
+            .array_contains_any(["fantasy", "nonfiction"])
+            .as_("isMysteryOrFantasy")
+        )
+        .execute()
+    )firestore_pipelines.py
 
 ##### Java
 
-``` java
-Pipeline.Snapshot result =
-    firestore
-        .pipeline()
-        .collection("books")
-        .select(
-            arrayContainsAny(field("genre"), Arrays.asList("fantasy", "nonfiction"))
-                .as("isMysteryOrFantasy"))
-        .execute()
-        .get();PipelineSnippets.java
-```
+    Pipeline.Snapshot result =
+        firestore
+            .pipeline()
+            .collection("books")
+            .select(
+                arrayContainsAny(field("genre"), Arrays.asList("fantasy", "nonfiction"))
+                    .as("isMysteryOrFantasy"))
+            .execute()
+            .get();PipelineSnippets.java
 
 ### ARRAY\_FILTER
 
 **Syntax:**
 
-``` text
-array_filter(array: ARRAY, predicate: (ANY) -> BOOLEAN) -> ARRAY
-```
+    array_filter(array: ARRAY, predicate: (ANY) -> BOOLEAN) -> ARRAY
 
 **Description:**
 
@@ -690,45 +436,18 @@ Filters `  array  ` using a `  predicate  ` expression, returning a new array wi
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;">predicate</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       array_filter(array, predicate)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">x -&gt; x &gt; 1</td>
-<td style="text-align: left;">[2, 3]</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[1, null, 3]</td>
-<td style="text-align: left;">x -&gt; x &gt; 1</td>
-<td style="text-align: left;">[3]</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">["a", "b", "c"]</td>
-<td style="text-align: left;">x -&gt; x != "b"</td>
-<td style="text-align: left;">["a", "c"]</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">x -&gt; true</td>
-<td style="text-align: left;">[]</td>
-</tr>
-</tbody>
-</table>
+| array             | predicate       | `        array_filter(array, predicate)       ` |
+| :---------------- | :-------------- | :---------------------------------------------- |
+| \[1, 2, 3\]       | x -\> x \> 1    | \[2, 3\]                                        |
+| \[1, null, 3\]    | x -\> x \> 1    | \[3\]                                           |
+| \["a", "b", "c"\] | x -\> x \!= "b" | \["a", "c"\]                                    |
+| \[\]              | x -\> true      | \[\]                                            |
 
 ### ARRAY\_GET
 
 **Syntax:**
 
-``` text
-array_get(array: ARRAY, index: INT64) -> ANY
-```
+    array_get(array: ARRAY, index: INT64) -> ANY
 
 **Description:**
 
@@ -741,65 +460,22 @@ Returns the element at the 0-based `  index  ` in `  array  ` .
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;">index</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       array_get(array, index)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">-1</td>
-<td style="text-align: left;">3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">absent</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">-4</td>
-<td style="text-align: left;">absent</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">"abc"</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">error</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">null</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">null</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code dir="ltr" translate="no">       Array      </code></td>
-<td style="text-align: left;">"a"</td>
-<td style="text-align: left;">error</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code dir="ltr" translate="no">       Array      </code></td>
-<td style="text-align: left;">2.0</td>
-<td style="text-align: left;">error</td>
-</tr>
-</tbody>
-</table>
+| array                  | index | `        array_get(array, index)       ` |
+| :--------------------- | :---- | :--------------------------------------- |
+| \[1, 2, 3\]            | 0     | 1                                        |
+| \[1, 2, 3\]            | \-1   | 3                                        |
+| \[1, 2, 3\]            | 3     | absent                                   |
+| \[1, 2, 3\]            | \-4   | absent                                   |
+| "abc"                  | 0     | error                                    |
+| null                   | 0     | null                                     |
+| `        Array       ` | "a"   | error                                    |
+| `        Array       ` | 2.0   | error                                    |
 
 ### ARRAY\_LENGTH
 
 **Syntax:**
 
-``` text
-array_length(array: ARRAY) -> INT64
-```
+    array_length(array: ARRAY) -> INT64
 
 **Description:**
 
@@ -807,74 +483,46 @@ Returns the number of elements in `  array  ` .
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       array_length(array)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[1, 1, 1]</td>
-<td style="text-align: left;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[1, null]</td>
-<td style="text-align: left;">2</td>
-</tr>
-</tbody>
-</table>
+| array       | `        array_length(array)       ` |
+| :---------- | :----------------------------------- |
+| \[1, 2, 3\] | 3                                    |
+| \[\]        | 0                                    |
+| \[1, 1, 1\] | 3                                    |
+| \[1, null\] | 2                                    |
 
 ##### Node.js
 
-``` javascript
-const result = await db.pipeline()
-  .collection("books")
-  .select(field("genre").arrayLength().as("genreCount"))
-  .execute();test.firestore.js
-```
+    const result = await db.pipeline()
+      .collection("books")
+      .select(field("genre").arrayLength().as("genreCount"))
+      .execute();test.firestore.js
 
 ### Web
 
-``` javascript
-const result = await execute(db.pipeline()
-  .collection("books")
-  .select(field("genre").arrayLength().as("genreCount"))
-);test.firestore.js
-```
+    const result = await execute(db.pipeline()
+      .collection("books")
+      .select(field("genre").arrayLength().as("genreCount"))
+    );test.firestore.js
 
 ##### Swift
 
-``` swift
-let result = try await db.pipeline()
-  .collection("books")
-  .select([Field("genre").arrayLength().as("genreCount")])
-  .execute()PipelineSnippets.swift
-```
+    let result = try await db.pipeline()
+      .collection("books")
+      .select([Field("genre").arrayLength().as("genreCount")])
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
 
-``` kotlin
-val result = db.pipeline()
-    .collection("books")
-    .select(field("genre").arrayLength().alias("genreCount"))
-    .execute()DocSnippets.kt
-```
+    val result = db.pipeline()
+        .collection("books")
+        .select(field("genre").arrayLength().alias("genreCount"))
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
 
-``` text
+``` 
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("genre").arrayLength().alias("genreCount"))
@@ -884,36 +532,30 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 ##### Python
 
-``` python
-from google.cloud.firestore_v1.pipeline_expressions import Field
-
-result = (
-    client.pipeline()
-    .collection("books")
-    .select(Field.of("genre").array_length().as_("genreCount"))
-    .execute()
-)firestore_pipelines.py
-```
+    from google.cloud.firestore_v1.pipeline_expressions import Field
+    
+    result = (
+        client.pipeline()
+        .collection("books")
+        .select(Field.of("genre").array_length().as_("genreCount"))
+        .execute()
+    )firestore_pipelines.py
 
 ##### Java
 
-``` java
-Pipeline.Snapshot result =
-    firestore
-        .pipeline()
-        .collection("books")
-        .select(arrayLength(field("genre")).as("genreCount"))
-        .execute()
-        .get();PipelineSnippets.java
-```
+    Pipeline.Snapshot result =
+        firestore
+            .pipeline()
+            .collection("books")
+            .select(arrayLength(field("genre")).as("genreCount"))
+            .execute()
+            .get();PipelineSnippets.java
 
 ### ARRAY\_REVERSE
 
 **Syntax:**
 
-``` text
-array_reverse(array: ARRAY) -> ARRAY
-```
+    array_reverse(array: ARRAY) -> ARRAY
 
 **Description:**
 
@@ -921,67 +563,42 @@ Reverses the given `  array  ` .
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       array_reverse(array)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">[3, 2, 1]</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">["a", "b"]</td>
-<td style="text-align: left;">["b", "a"]</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, 2, 3]</td>
-<td style="text-align: left;">[3, 2, 2, 1]</td>
-</tr>
-</tbody>
-</table>
+| array          | `        array_reverse(array)       ` |
+| :------------- | :------------------------------------ |
+| \[1, 2, 3\]    | \[3, 2, 1\]                           |
+| \["a", "b"\]   | \["b", "a"\]                          |
+| \[1, 2, 2, 3\] | \[3, 2, 2, 1\]                        |
 
 ##### Node.js
 
-``` javascript
-const result = await db.pipeline()
-  .collection("books")
-  .select(arrayReverse(field("genre")).as("reversedGenres"))
-  .execute();test.firestore.js
-```
+    const result = await db.pipeline()
+      .collection("books")
+      .select(arrayReverse(field("genre")).as("reversedGenres"))
+      .execute();test.firestore.js
 
 ### Web
 
-``` javascript
-const result = await execute(db.pipeline()
-  .collection("books")
-  .select(field("genre").arrayReverse().as("reversedGenres"))
-);test.firestore.js
-```
+    const result = await execute(db.pipeline()
+      .collection("books")
+      .select(field("genre").arrayReverse().as("reversedGenres"))
+    );test.firestore.js
 
 ##### Swift
 
-``` swift
-let result = try await db.pipeline()
-  .collection("books")
-  .select([Field("genre").arrayReverse().as("reversedGenres")])
-  .execute()PipelineSnippets.swift
-```
+    let result = try await db.pipeline()
+      .collection("books")
+      .select([Field("genre").arrayReverse().as("reversedGenres")])
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
 
-``` kotlin
-val result = db.pipeline()
-    .collection("books")
-    .select(field("genre").arrayReverse().alias("reversedGenres"))
-    .execute()DocSnippets.kt
-```
+    val result = db.pipeline()
+        .collection("books")
+        .select(field("genre").arrayReverse().alias("reversedGenres"))
+        .execute()DocSnippets.kt
 
-``` text
+``` 
     Java
 Android
 Task<Pipeline.Snapshot> result = db.pipeline()
@@ -993,36 +610,30 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 ##### Python
 
-``` python
-from google.cloud.firestore_v1.pipeline_expressions import Field
-
-result = (
-    client.pipeline()
-    .collection("books")
-    .select(Field.of("genre").array_reverse().as_("reversedGenres"))
-    .execute()
-)firestore_pipelines.py
-```
+    from google.cloud.firestore_v1.pipeline_expressions import Field
+    
+    result = (
+        client.pipeline()
+        .collection("books")
+        .select(Field.of("genre").array_reverse().as_("reversedGenres"))
+        .execute()
+    )firestore_pipelines.py
 
 ##### Java
 
-``` java
-Pipeline.Snapshot result =
-    firestore
-        .pipeline()
-        .collection("books")
-        .select(arrayReverse(field("genre")).as("reversedGenres"))
-        .execute()
-        .get();PipelineSnippets.java
-```
+    Pipeline.Snapshot result =
+        firestore
+            .pipeline()
+            .collection("books")
+            .select(arrayReverse(field("genre")).as("reversedGenres"))
+            .execute()
+            .get();PipelineSnippets.java
 
 ### ARRAY\_FIRST
 
 **Syntax:**
 
-``` text
-array_first(array: ARRAY) -> ANY
-```
+    array_first(array: ARRAY) -> ANY
 
 **Description:**
 
@@ -1032,32 +643,16 @@ Returns the first element in `  array  ` . This is equivalent to `  array_get(ar
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       array_first(array)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">absent</td>
-</tr>
-</tbody>
-</table>
+| array       | `        array_first(array)       ` |
+| :---------- | :---------------------------------- |
+| \[1, 2, 3\] | 1                                   |
+| \[\]        | absent                              |
 
 ### ARRAY\_FIRST\_N
 
 **Syntax:**
 
-``` text
-array_first_n(array: ARRAY, n: INT64) -> ARRAY
-```
+    array_first_n(array: ARRAY, n: INT64) -> ARRAY
 
 **Description:**
 
@@ -1067,40 +662,17 @@ Returns the first `  n  ` elements of `  array  ` . This is equivalent to `  arr
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;">n</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       array_first_n(array, n)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, 3, 4, 5]</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">[1, 2, 3]</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[1, 2]</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">[1, 2]</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">[]</td>
-</tr>
-</tbody>
-</table>
+| array             | n | `        array_first_n(array, n)       ` |
+| :---------------- | :- | :--------------------------------------- |
+| \[1, 2, 3, 4, 5\] | 3 | \[1, 2, 3\]                              |
+| \[1, 2\]          | 3 | \[1, 2\]                                 |
+| \[1, 2, 3\]       | 0 | \[\]                                     |
 
 ### ARRAY\_INDEX\_OF
 
 **Syntax:**
 
-``` text
-array_index_of(array: ARRAY, value: ANY) -> INT64
-```
+    array_index_of(array: ARRAY, value: ANY) -> INT64
 
 **Description:**
 
@@ -1108,40 +680,17 @@ Returns the 0-based index of the first occurrence of `  value  ` in `  array  ` 
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;">value</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       array_index_of(array, value)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, 3, 2]</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">4</td>
-<td style="text-align: left;">-1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[1, null, 3]</td>
-<td style="text-align: left;">null</td>
-<td style="text-align: left;">1</td>
-</tr>
-</tbody>
-</table>
+| array          | value | `        array_index_of(array, value)       ` |
+| :------------- | :---- | :-------------------------------------------- |
+| \[1, 2, 3, 2\] | 2     | 1                                             |
+| \[1, 2, 3\]    | 4     | \-1                                           |
+| \[1, null, 3\] | null  | 1                                             |
 
 ### ARRAY\_INDEX\_OF\_ALL
 
 **Syntax:**
 
-``` text
-array_index_of_all(array: ARRAY, value: ANY) -> ARRAY<INT64>
-```
+    array_index_of_all(array: ARRAY, value: ANY) -> ARRAY<INT64>
 
 **Description:**
 
@@ -1149,40 +698,17 @@ Returns an array containing the 0-based indexes of all occurrences of `  value  
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;">value</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       array_index_of_all(array, value)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, 3, 2]</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">[1, 3]</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">4</td>
-<td style="text-align: left;">[]</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[1, null, 3, null]</td>
-<td style="text-align: left;">null</td>
-<td style="text-align: left;">[1, 3]</td>
-</tr>
-</tbody>
-</table>
+| array                | value | `        array_index_of_all(array, value)       ` |
+| :------------------- | :---- | :------------------------------------------------ |
+| \[1, 2, 3, 2\]       | 2     | \[1, 3\]                                          |
+| \[1, 2, 3\]          | 4     | \[\]                                              |
+| \[1, null, 3, null\] | null  | \[1, 3\]                                          |
 
 ### ARRAY\_LAST
 
 **Syntax:**
 
-``` text
-array_last(array: ARRAY) -> ANY
-```
+    array_last(array: ARRAY) -> ANY
 
 **Description:**
 
@@ -1192,32 +718,16 @@ Returns the last element in `  array  ` . This is equivalent to `  array_get(arr
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       array_last(array)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">3</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">absent</td>
-</tr>
-</tbody>
-</table>
+| array       | `        array_last(array)       ` |
+| :---------- | :--------------------------------- |
+| \[1, 2, 3\] | 3                                  |
+| \[\]        | absent                             |
 
 ### ARRAY\_LAST\_N
 
 **Syntax:**
 
-``` text
-array_last_n(array: ARRAY, n: INT64) -> ARRAY
-```
+    array_last_n(array: ARRAY, n: INT64) -> ARRAY
 
 **Description:**
 
@@ -1227,40 +737,17 @@ Returns the last `  n  ` elements of `  array  ` .
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;">n</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       array_last_n(array, n)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, 3, 4, 5]</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">[3, 4, 5]</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[1, 2]</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">[1, 2]</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">0</td>
-<td style="text-align: left;">[]</td>
-</tr>
-</tbody>
-</table>
+| array             | n | `        array_last_n(array, n)       ` |
+| :---------------- | :- | :-------------------------------------- |
+| \[1, 2, 3, 4, 5\] | 3 | \[3, 4, 5\]                             |
+| \[1, 2\]          | 3 | \[1, 2\]                                |
+| \[1, 2, 3\]       | 0 | \[\]                                    |
 
 ### ARRAY\_SLICE
 
 **Syntax:**
 
-``` text
-array_slice(array: ARRAY, offset: INT64, length: INT64) -> ARRAY
-```
+    array_slice(array: ARRAY, offset: INT64, length: INT64) -> ARRAY
 
 **Description:**
 
@@ -1272,51 +759,19 @@ Returns a subset of `  array  ` starting from 0-based index `  offset  ` , and i
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;">offset</th>
-<th style="text-align: left;">length</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       array_slice(array, offset, length)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, 3, 4, 5]</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">[2, 3, 4]</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[1, 2, 3, 4, 5]</td>
-<td style="text-align: left;">-2</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">[4, 5]</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">5</td>
-<td style="text-align: left;">[2, 3]</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">[]</td>
-</tr>
-</tbody>
-</table>
+| array             | offset | length | `        array_slice(array, offset, length)       ` |
+| :---------------- | :----- | :----- | :-------------------------------------------------- |
+| \[1, 2, 3, 4, 5\] | 1      | 3      | \[2, 3, 4\]                                         |
+| \[1, 2, 3, 4, 5\] | \-2    | 2      | \[4, 5\]                                            |
+| \[1, 2, 3\]       | 1      | 5      | \[2, 3\]                                            |
+| \[1, 2, 3\]       | 3      | 2      | \[\]                                                |
 
 ### ARRAY\_TRANSFORM
 
 **Syntax:**
 
-``` text
-array_transform(array: ARRAY, expression: (ANY) -> ANY) -> ARRAY
-array_transform(array: ARRAY, expression: (ANY, INT64) -> ANY) -> ARRAY
-```
+    array_transform(array: ARRAY, expression: (ANY) -> ANY) -> ARRAY
+    array_transform(array: ARRAY, expression: (ANY, INT64) -> ANY) -> ARRAY
 
 **Description:**
 
@@ -1328,45 +783,18 @@ Transforms `  array  ` by applying `  expression  ` to each element, returning a
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;">expression</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       array_transform(array, expression)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">x -&gt; x * 2</td>
-<td style="text-align: left;">[2, 4, 6]</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">x -&gt; x + 1</td>
-<td style="text-align: left;">[2, 3, 4]</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[10, 20]</td>
-<td style="text-align: left;">(x, i) -&gt; x + i</td>
-<td style="text-align: left;">[10, 21]</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">x -&gt; 1</td>
-<td style="text-align: left;">[]</td>
-</tr>
-</tbody>
-</table>
+| array       | expression       | `        array_transform(array, expression)       ` |
+| :---------- | :--------------- | :-------------------------------------------------- |
+| \[1, 2, 3\] | x -\> x \* 2     | \[2, 4, 6\]                                         |
+| \[1, 2, 3\] | x -\> x + 1      | \[2, 3, 4\]                                         |
+| \[10, 20\]  | (x, i) -\> x + i | \[10, 21\]                                          |
+| \[\]        | x -\> 1          | \[\]                                                |
 
 ### MAXIMUM
 
 **Syntax:**
 
-``` text
-maximum(array: ARRAY) -> ANY
-```
+    maximum(array: ARRAY) -> ANY
 
 **Description:**
 
@@ -1377,44 +805,19 @@ Returns the maximum value in `  array  ` .
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       maximum(array)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[1, 5, 2]</td>
-<td style="text-align: left;">5</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[1, null, 5]</td>
-<td style="text-align: left;">5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">["a", "c", "b"]</td>
-<td style="text-align: left;">"c"</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[null, null]</td>
-<td style="text-align: left;">null</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">null</td>
-</tr>
-</tbody>
-</table>
+| array             | `        maximum(array)       ` |
+| :---------------- | :------------------------------ |
+| \[1, 5, 2\]       | 5                               |
+| \[1, null, 5\]    | 5                               |
+| \["a", "c", "b"\] | "c"                             |
+| \[null, null\]    | null                            |
+| \[\]              | null                            |
 
 ### MAXIMUM\_N
 
 **Syntax:**
 
-``` text
-maximum_n(array: ARRAY, n: INT64) -> ARRAY
-```
+    maximum_n(array: ARRAY, n: INT64) -> ARRAY
 
 **Description:**
 
@@ -1425,35 +828,16 @@ Returns an array of the `  n  ` largest values in `  array  ` in descending orde
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;">n</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       maximum_n(array, n)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[1, 5, 2, 4, 3]</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">[5, 4, 3]</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[1, null, 5]</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">[5, 1]</td>
-</tr>
-</tbody>
-</table>
+| array             | n | `        maximum_n(array, n)       ` |
+| :---------------- | :- | :----------------------------------- |
+| \[1, 5, 2, 4, 3\] | 3 | \[5, 4, 3\]                          |
+| \[1, null, 5\]    | 3 | \[5, 1\]                             |
 
 ### MINIMUM
 
 **Syntax:**
 
-``` text
-minimum(array: ARRAY) -> ANY
-```
+    minimum(array: ARRAY) -> ANY
 
 **Description:**
 
@@ -1464,44 +848,19 @@ Returns the minimum value in `  array  ` .
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       minimum(array)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[1, 5, 2]</td>
-<td style="text-align: left;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[5, null, 1]</td>
-<td style="text-align: left;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">["a", "c", "b"]</td>
-<td style="text-align: left;">"a"</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[null, null]</td>
-<td style="text-align: left;">null</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">null</td>
-</tr>
-</tbody>
-</table>
+| array             | `        minimum(array)       ` |
+| :---------------- | :------------------------------ |
+| \[1, 5, 2\]       | 1                               |
+| \[5, null, 1\]    | 1                               |
+| \["a", "c", "b"\] | "a"                             |
+| \[null, null\]    | null                            |
+| \[\]              | null                            |
 
 ### MINIMUM\_N
 
 **Syntax:**
 
-``` text
-minimum_n(array: ARRAY, n: INT64) -> ARRAY
-```
+    minimum_n(array: ARRAY, n: INT64) -> ARRAY
 
 **Description:**
 
@@ -1512,35 +871,16 @@ Returns an array of the `  n  ` smallest values in `  array  ` in ascending orde
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;">n</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       minimum_n(array, n)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[1, 5, 2, 4, 3]</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">[1, 2, 3]</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[5, null, 1]</td>
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">[1, 5]</td>
-</tr>
-</tbody>
-</table>
+| array             | n | `        minimum_n(array, n)       ` |
+| :---------------- | :- | :----------------------------------- |
+| \[1, 5, 2, 4, 3\] | 3 | \[1, 2, 3\]                          |
+| \[5, null, 1\]    | 3 | \[1, 5\]                             |
 
 ### SUM
 
 **Syntax:**
 
-``` text
-sum(array: ARRAY) -> INT64 | FLOAT64
-```
+    sum(array: ARRAY) -> INT64 | FLOAT64
 
 **Description:**
 
@@ -1554,57 +894,23 @@ Returns the sum of all `  NUMERIC  ` values in an `  ARRAY  ` .
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       sum(array)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[1, 2, 3]</td>
-<td style="text-align: left;">6L</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[1L, 2L, 3L]</td>
-<td style="text-align: left;">6L</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[2000000000, 2000000000]</td>
-<td style="text-align: left;">4000000000L</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[10, 20.5]</td>
-<td style="text-align: left;">30.5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[1, "a", 2]</td>
-<td style="text-align: left;">3L</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[INT64.MAX_VALUE, 1]</td>
-<td style="text-align: left;">error</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[INT64.MAX_VALUE, 1, -1.0]</td>
-<td style="text-align: left;">error</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[INT64.MAX_VALUE, 1.0]</td>
-<td style="text-align: left;">9.223372036854776e+18</td>
-</tr>
-</tbody>
-</table>
+| array                         | `        sum(array)       ` |
+| :---------------------------- | :-------------------------- |
+| \[1, 2, 3\]                   | 6L                          |
+| \[1L, 2L, 3L\]                | 6L                          |
+| \[2000000000, 2000000000\]    | 4000000000L                 |
+| \[10, 20.5\]                  | 30.5                        |
+| \[1, "a", 2\]                 | 3L                          |
+| \[INT64.MAX\_VALUE, 1\]       | error                       |
+| \[INT64.MAX\_VALUE, 1, -1.0\] | error                       |
+| \[INT64.MAX\_VALUE, 1.0\]     | 9.223372036854776e+18       |
 
 ### JOIN
 
 **Syntax:**
 
-``` text
-join[T <: STRING | BYTES](array: ARRAY<T>, delimiter: T) -> STRING
-join[T <: STRING | BYTES](array: ARRAY<T>, delimiter: T, null_text: T) -> STRING
-```
+    join[T <: STRING | BYTES](array: ARRAY<T>, delimiter: T) -> STRING
+    join[T <: STRING | BYTES](array: ARRAY<T>, delimiter: T, null_text: T) -> STRING
 
 **Description:**
 
@@ -1618,99 +924,26 @@ Returns a concatenation of the elements in `  array  ` as a `  STRING  ` . The `
 
 When `  null_text  ` is not provided:
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;">delimiter</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       join(array, delimiter)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">["a", "b", "c"]</td>
-<td style="text-align: left;">","</td>
-<td style="text-align: left;">"a,b,c"</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">["a", null, "c"]</td>
-<td style="text-align: left;">","</td>
-<td style="text-align: left;">"a,c"</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[b'a', b'b', b'c']</td>
-<td style="text-align: left;">b','</td>
-<td style="text-align: left;">b'a,b,c'</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">["a", b'c']</td>
-<td style="text-align: left;">","</td>
-<td style="text-align: left;">error</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">["a", "c"]</td>
-<td style="text-align: left;">b','</td>
-<td style="text-align: left;">error</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[b'a', b'c']</td>
-<td style="text-align: left;">","</td>
-<td style="text-align: left;">error</td>
-</tr>
-</tbody>
-</table>
+| array                | delimiter | `        join(array, delimiter)       ` |
+| :------------------- | :-------- | :-------------------------------------- |
+| \["a", "b", "c"\]    | ","       | "a,b,c"                                 |
+| \["a", null, "c"\]   | ","       | "a,c"                                   |
+| \[b'a', b'b', b'c'\] | b','      | b'a,b,c'                                |
+| \["a", b'c'\]        | ","       | error                                   |
+| \["a", "c"\]         | b','      | error                                   |
+| \[b'a', b'c'\]       | ","       | error                                   |
 
 When `  null_text  ` is provided:
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;">array</th>
-<th style="text-align: left;">delimiter</th>
-<th style="text-align: left;">null_text</th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       join(array, delimiter, null_text)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">["a", null, "c"]</td>
-<td style="text-align: left;">","</td>
-<td style="text-align: left;">"MISSING"</td>
-<td style="text-align: left;">"a,MISSING,c"</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[b'a', null, b'c']</td>
-<td style="text-align: left;">b','</td>
-<td style="text-align: left;">b'NULL'</td>
-<td style="text-align: left;">b'a,NULL,c'</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[null, "b", null]</td>
-<td style="text-align: left;">","</td>
-<td style="text-align: left;">"MISSING"</td>
-<td style="text-align: left;">"MISSING,b,MISSING"</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[b'a', null, null]</td>
-<td style="text-align: left;">b','</td>
-<td style="text-align: left;">b'NULL'</td>
-<td style="text-align: left;">b'a,NULL,NULL'</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">["a", null]</td>
-<td style="text-align: left;">","</td>
-<td style="text-align: left;">b'N'</td>
-<td style="text-align: left;">error</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[b'a', null]</td>
-<td style="text-align: left;">b','</td>
-<td style="text-align: left;">"N"</td>
-<td style="text-align: left;">error</td>
-</tr>
-</tbody>
-</table>
+| array                | delimiter | null\_text | `        join(array, delimiter, null_text)       ` |
+| :------------------- | :-------- | :--------- | :------------------------------------------------- |
+| \["a", null, "c"\]   | ","       | "MISSING"  | "a,MISSING,c"                                      |
+| \[b'a', null, b'c'\] | b','      | b'NULL'    | b'a,NULL,c'                                        |
+| \[null, "b", null\]  | ","       | "MISSING"  | "MISSING,b,MISSING"                                |
+| \[b'a', null, null\] | b','      | b'NULL'    | b'a,NULL,NULL'                                     |
+| \["a", null\]        | ","       | b'N'       | error                                              |
+| \[b'a', null\]       | b','      | "N"        | error                                              |
 
 ## What's next
 
-  - See the [Pipeline Queries overview](/firestore/docs/pipeline/overview)
+  - See the [Pipeline Queries overview](https://docs.cloud.google.com/firestore/docs/pipeline/overview)

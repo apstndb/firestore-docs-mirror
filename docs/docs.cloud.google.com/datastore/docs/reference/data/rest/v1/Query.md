@@ -1,19 +1,19 @@
-  - [JSON representation](#SCHEMA_REPRESENTATION)
-  - [Projection](#Projection)
-      - [JSON representation](#Projection.SCHEMA_REPRESENTATION)
-  - [KindExpression](#KindExpression)
-      - [JSON representation](#KindExpression.SCHEMA_REPRESENTATION)
-  - [Filter](#Filter)
-      - [JSON representation](#Filter.SCHEMA_REPRESENTATION)
-  - [CompositeFilter](#CompositeFilter)
-      - [JSON representation](#CompositeFilter.SCHEMA_REPRESENTATION)
-  - [Operator](#Operator)
-  - [PropertyFilter](#PropertyFilter)
-      - [JSON representation](#PropertyFilter.SCHEMA_REPRESENTATION)
-  - [Operator](#Operator_1)
-  - [PropertyOrder](#PropertyOrder)
-      - [JSON representation](#PropertyOrder.SCHEMA_REPRESENTATION)
-  - [Direction](#Direction)
+  - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/Query#SCHEMA_REPRESENTATION)
+  - [Projection](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/Query#Projection)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/Query#Projection.SCHEMA_REPRESENTATION)
+  - [KindExpression](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/Query#KindExpression)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/Query#KindExpression.SCHEMA_REPRESENTATION)
+  - [Filter](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/Query#Filter)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/Query#Filter.SCHEMA_REPRESENTATION)
+  - [CompositeFilter](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/Query#CompositeFilter)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/Query#CompositeFilter.SCHEMA_REPRESENTATION)
+  - [Operator](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/Query#Operator)
+  - [PropertyFilter](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/Query#PropertyFilter)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/Query#PropertyFilter.SCHEMA_REPRESENTATION)
+  - [Operator](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/Query#Operator_1)
+  - [PropertyOrder](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/Query#PropertyOrder)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/Query#PropertyOrder.SCHEMA_REPRESENTATION)
+  - [Direction](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/Query#Direction)
 
 A query for entities.
 
@@ -30,7 +30,7 @@ The query stages are executed in the following order: 1. kind 2. filter 3. proje
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;projection&quot;: [
     {
       object (Projection)
@@ -142,7 +142,7 @@ A representation of a property in a projection.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;property&quot;: {
     object (PropertyReference)
   }
@@ -174,7 +174,7 @@ A representation of a kind.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;name&quot;: string
 }</code></pre></td>
 </tr>
@@ -204,7 +204,7 @@ A holder for any type of filter.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
 
   // Union field filter_type can be only one of the following:
   &quot;compositeFilter&quot;: {
@@ -250,7 +250,7 @@ A filter that merges multiple other filters using the given operator.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;op&quot;: enum (Operator),
   &quot;filters&quot;: [
     {
@@ -313,7 +313,7 @@ A filter on a specific property.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;property&quot;: {
     object (PropertyReference)
   },
@@ -444,7 +444,7 @@ The desired order for a specific property.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;property&quot;: {
     object (PropertyReference)
   },

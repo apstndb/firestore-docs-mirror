@@ -13,7 +13,7 @@ Cloud Firestore indexes enable simple and complex queries against documents in a
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;name&quot;: string,
   &quot;queryScope&quot;: enum (QueryScope),
   &quot;fields&quot;: [

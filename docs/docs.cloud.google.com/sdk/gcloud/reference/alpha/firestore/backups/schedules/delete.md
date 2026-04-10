@@ -10,7 +10,7 @@ EXAMPLES
 
 To delete backup schedule 'cf9f748a-7980-4703-b1a1-d1ffff591db0' under database testdb.
 
-``` text
+``` wrap-code
 gcloud alpha firestore backups schedules delete --database='testdb' --backup-schedule='cf9f748a-7980-4703-b1a1-d1ffff591db0'
 ```
 
@@ -21,7 +21,7 @@ REQUIRED FLAGS
     
     For example, to operate on backup schedule `  091a49a0-223f-4c98-8c69-a284abbdb26b  ` :
     
-    ``` text
+    ``` wrap-code
     gcloud alpha firestore backups schedules delete --backup-schedule='091a49a0-223f-4c98-8c69-a284abbdb26b'
     ```
 
@@ -30,7 +30,7 @@ REQUIRED FLAGS
     
     For example, to operate on database `  foo  ` :
     
-    ``` text
+    ``` wrap-code
     gcloud alpha firestore backups schedules delete --database='foo'
     ```
 
@@ -44,10 +44,10 @@ NOTES
 
 This command is currently in alpha and might change without notice. If this command fails with API permission errors despite specifying the correct project, you might be trying to access an API with an invitation-only early access allowlist. These variants are also available:
 
-``` text
+``` wrap-code
 gcloud firestore backups schedules delete
 ```
 
-``` text
+``` wrap-code
 gcloud beta firestore backups schedules delete
 ```

@@ -14,11 +14,11 @@ EXAMPLES
 
 The following command creates a composite index with fields `  user_id  ` (in descending order) followed by `  timestamp  ` (in descending order) in the `  Events  ` collection group.
 
-``` text
+``` wrap-code
 gcloud beta firestore indexes composite create --collection-group=Events --field-config=field-path=user-id,order=descending --field-config=field-path=timestamp,order=descending
 ```
 
-``` text
+``` wrap-code
 gcloud beta firestore indexes composite create --database=(default) --collection-group=Events --field-config=field-path=user-id,order=descending --field-config=field-path=timestamp,order=descending
 ```
 
@@ -43,21 +43,15 @@ Required, Configuration for an index field.
 
 `  Shorthand Example:  `
 
-``` text
---field-config=array-config=string,field-path=string,order=string,vector-config={dimension=int,flat} --field-config=array-config=string,field-path=string,order=string,vector-config={dimension=int,flat}
-```
+    --field-config=array-config=string,field-path=string,order=string,vector-config={dimension=int,flat} --field-config=array-config=string,field-path=string,order=string,vector-config={dimension=int,flat}
 
 `  JSON Example:  `
 
-``` text
---field-config='[{"array-config": "string", "field-path": "string", "order": "string", "vector-config": {"dimension": int, "flat": {}}}]'
-```
+    --field-config='[{"array-config": "string", "field-path": "string", "order": "string", "vector-config": {"dimension": int, "flat": {}}}]'
 
 `  File Example:  `
 
-``` text
---field-config=path_to_file.(yaml|json)
-```
+    --field-config=path_to_file.(yaml|json)
 
 Collection group resource - Collection group of the index. The arguments in this group can be used to specify the attributes of this resource. (NOTE) Some attributes are not given arguments in this group but can be set in other ways.
 
@@ -114,10 +108,10 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` text
+``` wrap-code
 gcloud firestore indexes composite create
 ```
 
-``` text
+``` wrap-code
 gcloud alpha firestore indexes composite create
 ```

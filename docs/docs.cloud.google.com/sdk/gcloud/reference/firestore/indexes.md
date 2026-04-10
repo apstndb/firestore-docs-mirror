@@ -29,10 +29,10 @@ NOTES
 
 These variants are also available:
 
-``` text
+``` wrap-code
 gcloud alpha firestore indexes
 ```
 
-``` text
+``` wrap-code
 gcloud beta firestore indexes
 ```

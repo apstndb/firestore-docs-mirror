@@ -4,104 +4,30 @@ The following tables list supported MongoDB data types, drivers, and third-party
 
 ## Data types
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>BSON Type</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>32-bit Integer (int)</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td>64-bit Integer (long)</td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td>Array</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td>Binary Data</td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td>Boolean</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td>Date</td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td>DBPointer</td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td>DBRef</td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td>Decimal128</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td>Double</td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td>JavaScript</td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td>JavaScript (with scope)</td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td>MaxKey</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td>MinKey</td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td>Null</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td>Object</td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td>ObjectId</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td>Regular Expression</td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td>String</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td>Symbol</td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td>Timestamp</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td>Undefined</td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+| **BSON Type**           | **Supported** |
+| ----------------------- | ------------- |
+| 32-bit Integer (int)    | Yes           |
+| 64-bit Integer (long)   | Yes           |
+| Array                   | Yes           |
+| Binary Data             | Yes           |
+| Boolean                 | Yes           |
+| Date                    | Yes           |
+| DBPointer               | No            |
+| DBRef                   | No            |
+| Decimal128              | Yes           |
+| Double                  | Yes           |
+| JavaScript              | No            |
+| JavaScript (with scope) | No            |
+| MaxKey                  | Yes           |
+| MinKey                  | Yes           |
+| Null                    | Yes           |
+| Object                  | Yes           |
+| ObjectId                | Yes           |
+| Regular Expression      | Yes           |
+| String                  | Yes           |
+| Symbol                  | No            |
+| Timestamp               | Yes           |
+| Undefined               | No            |
 
 ## Document `     _id    `
 
@@ -180,55 +106,26 @@ The Java, Node.js, and Python drivers support OIDC authentication from Google Cl
 
 Firestore with MongoDB compatibility supports third-party tools described in this section.
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Tool</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="https://www.mongodb.com/docs/database-tools/mongoimport/">mongoimport</a></td>
-<td>MongoDB Database Tools</td>
-</tr>
-<tr class="even">
-<td><a href="https://www.mongodb.com/docs/database-tools/mongoexport/">mongoexport</a></td>
-<td>MongoDB Database Tools</td>
-</tr>
-<tr class="odd">
-<td><a href="https://www.mongodb.com/docs/database-tools/mongodump/">mongodump</a></td>
-<td>MongoDB Database Tools</td>
-</tr>
-<tr class="even">
-<td><a href="https://www.mongodb.com/docs/database-tools/mongorestore/">mongorestore</a></td>
-<td>MongoDB Database Tools</td>
-</tr>
-<tr class="odd">
-<td><a href="https://www.mongodb.com/docs/mongodb-shell/">mongosh</a></td>
-<td>MongoDB Shell</td>
-</tr>
-<tr class="even">
-<td><a href="https://mongoosejs.com/">Mongoose</a></td>
-<td>MongoDB object modeling tool</td>
-</tr>
-<tr class="odd">
-<td><a href="https://www.mongodb.com/products/tools/compass">MongoDB Compass</a></td>
-<td>GUI tool for data exploration</td>
-</tr>
-</tbody>
-</table>
+| **Tool**                                                                  | **Description**               |
+| ------------------------------------------------------------------------- | ----------------------------- |
+| [mongoimport](https://www.mongodb.com/docs/database-tools/mongoimport/)   | MongoDB Database Tools        |
+| [mongoexport](https://www.mongodb.com/docs/database-tools/mongoexport/)   | MongoDB Database Tools        |
+| [mongodump](https://www.mongodb.com/docs/database-tools/mongodump/)       | MongoDB Database Tools        |
+| [mongorestore](https://www.mongodb.com/docs/database-tools/mongorestore/) | MongoDB Database Tools        |
+| [mongosh](https://www.mongodb.com/docs/mongodb-shell/)                    | MongoDB Shell                 |
+| [Mongoose](https://mongoosejs.com/)                                       | MongoDB object modeling tool  |
+| [MongoDB Compass](https://www.mongodb.com/products/tools/compass)         | GUI tool for data exploration |
 
 **Note:** Some third-party tools require a connection string. To obtain a connection string for your Firestore with MongoDB compatibility database, you can run the [`  firestore databases connection-string  ` command](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/connection-string) using Google Cloud CLI.
 
 ## What's next
 
-  - Run the [Quickstart: Create a database and connect to it](/firestore/mongodb-compatibility/docs/create-and-query-database) .
-  - Learn about [Behavior differences](/firestore/mongodb-compatibility/docs/behavior-differences) .
+  - Run the [Quickstart: Create a database and connect to it](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database) .
+  - Learn about [Behavior differences](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences) .
   - For a breakdown of supported features depending on MongoDB version, see
-      - [Supported features: 8.0](/firestore/mongodb-compatibility/docs/supported-features-80)
-      - [Supported features: 7.0](/firestore/mongodb-compatibility/docs/supported-features-70)
-      - [Supported features: 6.0](/firestore/mongodb-compatibility/docs/supported-features-60)
-      - [Supported features: 5.0](/firestore/mongodb-compatibility/docs/supported-features-50)
-      - [Supported features: 4.0](/firestore/mongodb-compatibility/docs/supported-features-40)
-      - [Supported features: 3.6](/firestore/mongodb-compatibility/docs/supported-features-36)
+      - [Supported features: 8.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80)
+      - [Supported features: 7.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-70)
+      - [Supported features: 6.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-60)
+      - [Supported features: 5.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-50)
+      - [Supported features: 4.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-40)
+      - [Supported features: 3.6](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-36)

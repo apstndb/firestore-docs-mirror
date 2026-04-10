@@ -31,10 +31,10 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` text
+``` wrap-code
 gcloud firestore indexes fields
 ```
 
-``` text
+``` wrap-code
 gcloud alpha firestore indexes fields
 ```

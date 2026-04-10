@@ -2,10 +2,10 @@
 
 The Reliability recommender supports the following recommendation subtypes:
 
-  - [Enable scheduled backups](/firestore/docs/backups)
-  - [Enable PITR](/firestore/docs/pitr)
+  - [Enable scheduled backups](https://docs.cloud.google.com/firestore/docs/backups)
+  - [Enable PITR](https://docs.cloud.google.com/firestore/docs/pitr)
 
-which are a part of [Disaster Recovery Plan](/firestore/docs/disaster-recovery) to protect your data against data disasters such as accidental deletion or modification of data.
+which are a part of [Disaster Recovery Plan](https://docs.cloud.google.com/firestore/docs/disaster-recovery) to protect your data against data disasters such as accidental deletion or modification of data.
 
 This document describes how to enable and view your recommendations and insights to improve the reliability of your databases.
 
@@ -13,37 +13,17 @@ This document describes how to enable and view your recommendations and insights
 
 Before you can view Firestore reliability recommendations and insights, do the following:
 
-1.  Enable the Recommender API as described in [Enable the API](/recommender/docs/enabling) .
+1.  Enable the Recommender API as described in [Enable the API](https://docs.cloud.google.com/recommender/docs/enabling) .
 
 2.  Ensure that you have sufficient permissions. You must have one of the following roles, which provide the necessary permissions:
     
-    <table>
-    <colgroup>
-    <col style="width: 45%" />
-    <col style="width: 55%" />
-    </colgroup>
-    <thead>
-    <tr class="header">
-    <th>Task description</th>
-    <th>Role</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="odd">
-    <td>View recommendations/insights</td>
-    <td><code dir="ltr" translate="no">         roles/recommender.firestoredatabasereliabilityViewer        </code></td>
-    </tr>
-    <tr class="even">
-    <td>View and update (dismiss) recommendations/insights</td>
-    <td><code dir="ltr" translate="no">         roles/recommender.firestoredatabasereliabilityAdmin        </code></td>
-    </tr>
-    <tr class="odd">
-    <td>Opt out of recommendations/insights in Transparency and Control Center. For more information, see <a href="/recommender/docs/opting-out">Opting out</a> .</td>
-    <td><code dir="ltr" translate="no">         roles/dataprocessing.admin        </code></td>
-    </tr>
-    </tbody>
-    </table>
+    | Task description                                                                                                                                                            | Role                                                                      |
+    | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+    | View recommendations/insights                                                                                                                                               | `          roles/recommender.firestoredatabasereliabilityViewer         ` |
+    | View and update (dismiss) recommendations/insights                                                                                                                          | `          roles/recommender.firestoredatabasereliabilityAdmin         `  |
+    | Opt out of recommendations/insights in Transparency and Control Center. For more information, see [Opting out](https://docs.cloud.google.com/recommender/docs/opting-out) . | `          roles/dataprocessing.admin         `                           |
     
+
     These Recommender roles provide the following API permissions:
     
     <table>
@@ -76,8 +56,8 @@ Before you can view Firestore reliability recommendations and insights, do the f
     
     For more information about roles and about granting access, see the following:
     
-      - [Understanding roles](/iam/docs/understanding-roles)
-      - [Managing access to projects, folders, and organizations](/iam/docs/granting-changing-revoking-access)
+      - [Understanding roles](https://docs.cloud.google.com/iam/docs/understanding-roles)
+      - [Managing access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access)
 
 ## View recommendations
 
@@ -90,14 +70,16 @@ You can view reliability recommendations only if you have non-empty, in-use data
 You can view your recommendations by doing following:
 
 1.  Go to the Google Cloud console, or use the following button:
+    
+    [Go to Google Cloud console](https://console.cloud.google.com/)
 
 2.  Select the **Recommendations** tab.
 
 ### gcloud CLI
 
-To list reliability recommendations by using `  gcloud  ` , run the [`  gcloud recommender recommendations list  `](/sdk/gcloud/reference/recommender/recommendations/list) command as follows:
+To list reliability recommendations by using `  gcloud  ` , run the [`  gcloud recommender recommendations list  `](https://docs.cloud.google.com/sdk/gcloud/reference/recommender/recommendations/list) command as follows:
 
-``` text
+``` 
   gcloud recommender recommendations list \
   --project=PROJECT_ID \
   --location=LOCATION \
@@ -112,9 +94,9 @@ Replace the following:
 
 ### Recommender API
 
-To list your reliability recommendations by using the [Recommendations API](/recommender/docs/using-api) , call the [`  recommendations.list  `](/recommender/docs/reference/rest/v1beta1/projects.locations.recommenders.recommendations/list) method as follows:
+To list your reliability recommendations by using the [Recommendations API](https://docs.cloud.google.com/recommender/docs/using-api) , call the [`  recommendations.list  `](https://docs.cloud.google.com/recommender/docs/reference/rest/v1beta1/projects.locations.recommenders.recommendations/list) method as follows:
 
-``` text
+``` 
   curl -H "Authorization: Bearer $(gcloud auth print-access-token)"  \
   -H "x-goog-user-project: PROJECT_ID" \
   "https://recommender.googleapis.com/v1/projects/PROJECT_ID/locations/LOCATION/recommenders/google.firestore.database.RECOMMENDER/recommendations"
@@ -126,7 +108,7 @@ Replace the following:
   - `  LOCATION  ` : A region, such as `  us-central1  ` .
   - `  RECOMMENDER  ` : The ID of the recommender as `  ReliabilityRecommender  ` .
 
-For more information, see [Using the API - Recommendations](/recommender/docs/using-api) .
+For more information, see [Using the API - Recommendations](https://docs.cloud.google.com/recommender/docs/using-api) .
 
 ## View insights
 
@@ -138,9 +120,9 @@ To view insights and detailed recommendations by using the Google Cloud console,
 
 ### gcloud CLI
 
-To view insights by using `  gcloud  ` , run the [`  gcloud recommender insights list  `](/sdk/gcloud/reference/recommender/insights/list) command as follows:
+To view insights by using `  gcloud  ` , run the [`  gcloud recommender insights list  `](https://docs.cloud.google.com/sdk/gcloud/reference/recommender/insights/list) command as follows:
 
-``` text
+``` 
   gcloud recommender insights list \
   --project=PROJECT_ID \
   --location=LOCATION \
@@ -157,11 +139,9 @@ Replace the following:
 
 To list your insights by using the Recommender API, run the following command:
 
-``` text
-curl -H "Authorization: Bearer $(gcloud auth print-access-token)"  \
-
-"https://recommender.googleapis.com/v1/projects/PROJECT_ID/locations/LOCATION/insightTypes/google.firestore.database.INSIGHT_TYPE/insights"
-```
+    curl -H "Authorization: Bearer $(gcloud auth print-access-token)"  \
+    
+    "https://recommender.googleapis.com/v1/projects/PROJECT_ID/locations/LOCATION/insightTypes/google.firestore.database.INSIGHT_TYPE/insights"
 
 Replace the following:
 
@@ -169,12 +149,12 @@ Replace the following:
   - `  LOCATION  ` : A region, such as `  us-central1  ` .
   - `  INSIGHT_TYPE  ` : The ID of the insight type as `  ReliabilityInsight  ` .
 
-For more information, see [Using the API - Insights](/recommender/docs/insights/using-api) .
+For more information, see [Using the API - Insights](https://docs.cloud.google.com/recommender/docs/insights/using-api) .
 
 ## Apply recommendations
 
-For more information about how to improve your disaster recovery plan, see [Plan disaster recovery](/firestore/native/docs/disaster-recovery) .
+For more information about how to improve your disaster recovery plan, see [Plan disaster recovery](https://docs.cloud.google.com/firestore/native/docs/disaster-recovery) .
 
 ## Pricing
 
-Reliability recommendations and insights are available free of charge. For information about other pricing tiers, see [Recommender pricing](/recommender/pricing) .
+Reliability recommendations and insights are available free of charge. For information about other pricing tiers, see [Recommender pricing](https://docs.cloud.google.com/recommender/pricing) .

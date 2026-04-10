@@ -2,11 +2,11 @@
 
 This page describes how to use point-in-time recovery (PITR) to retain and recover data in Firestore with MongoDB compatibility.
 
-To understand PITR concepts, see [Point-in-time recovery](/firestore/mongodb-compatibility/docs/pitr) .
+To understand PITR concepts, see [Point-in-time recovery](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/pitr) .
 
 ## Permissions
 
-To get the permissions that you need to manage PITR settings, ask your administrator to grant you the [Cloud Datastore Owner](/iam/docs/roles-permissions/firestore#datastore.owner) ( `  roles/datastore.owner  ` ) IAM role on the project whose PITR settings you want to enable. For more information about granting roles, see [Manage access to projects, folders, and organizations](/iam/docs/granting-changing-revoking-access) .
+To get the permissions that you need to manage PITR settings, ask your administrator to grant you the [Cloud Datastore Owner](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.owner) ( `  roles/datastore.owner  ` ) IAM role on the project whose PITR settings you want to enable. For more information about granting roles, see [Manage access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
 
 This predefined role contains the permissions required to manage PITR settings. To see the exact permissions that are required, expand the **Required permissions** section:
 
@@ -21,7 +21,7 @@ The following permissions are required to manage PITR settings:
   - To import PITR data: `  datastore.databases.import  `
   - To clone a database: `  datastore.databases.clone  `
 
-You might also be able to get these permissions with [custom roles](/iam/docs/creating-custom-roles) or other [predefined roles](/iam/docs/roles-overview#predefined) .
+You might also be able to get these permissions with [custom roles](https://docs.cloud.google.com/iam/docs/creating-custom-roles) or other [predefined roles](https://docs.cloud.google.com/iam/docs/roles-overview#predefined) .
 
 ## Before you begin
 
@@ -44,6 +44,8 @@ To enable PITR for your database:
 ### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -53,7 +55,7 @@ To enable PITR for your database:
 
 5.  Select the **Enable point-in-time recovery** checkbox, and then click **Save** .
 
-Enabling PITR incurs storage costs. See [Pricing](/firestore/enterprise/pricing) for more information.
+Enabling PITR incurs storage costs. See [Pricing](https://docs.cloud.google.com/firestore/enterprise/pricing) for more information.
 
 To disable PITR, clear the **Enable point-in-time recovery** checkbox from the Disaster Recovery page in the Google Cloud console.
 
@@ -61,13 +63,11 @@ To disable PITR, clear the **Enable point-in-time recovery** checkbox from the D
 
 Enable PITR during database creation with the [`  gcloud firestore databases create  `](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/create) and the `  --enable-ptir  ` command as follows:
 
-``` text
-gcloud firestore databases create\
-  --location=LOCATION\
-  --database=DATABASE_ID\
-  --edition=enterprise\
-  --enable-pitr
-```
+    gcloud firestore databases create\
+      --location=LOCATION\
+      --database=DATABASE_ID\
+      --edition=enterprise\
+      --enable-pitr
 
 Replace the values as follows:
 
@@ -76,11 +76,9 @@ Replace the values as follows:
 
 You can disable PITR using the [`  gcloud firestore databases update  `](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/update) command as follows:
 
-``` text
-gcloud firestore databases update\
-  --database=DATABASE_ID\
-  --no-enable-pitr
-```
+    gcloud firestore databases update\
+      --database=DATABASE_ID\
+      --no-enable-pitr
 
 Replace the values as follows:
 
@@ -91,6 +89,8 @@ Replace the values as follows:
 ### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -106,15 +106,13 @@ Replace the values as follows:
 
 Run the [gcloud firestore databases describe](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/describe) command as follows:
 
-``` text
-gcloud firestore databases describe --database=DATABASE_ID
-```
+    gcloud firestore databases describe --database=DATABASE_ID
 
 Replace `  DATABASE_ID  ` with the database ID or `  '(default)'  ` .
 
 Here's the output:
 
-``` text
+``` 
     appEngineIntegrationMode: ENABLED
     concurrencyMode: PESSIMISTIC
     createTime: '2021-03-24T17:02:35.234Z'
@@ -143,7 +141,7 @@ You can read PITR data using the snapshot session in various MongoDB client driv
 
 ### Java
 
-``` text
+``` 
     var session =
         mongoClient.startSession(ClientSessionOptions.builder().snapshot(true).build());
   session.setSnapshotTimestamp(new BsonTimestamp(seconds, nanos));
@@ -162,7 +160,7 @@ You can read PITR data using the snapshot session in various MongoDB client driv
 
 In MongoDB, the `  BsonTimestamp  ` is a MongoDB internal only BSON type of 64 bits. The first 32 bits represents the epoch timestamp seconds and the latter 32 bits represents an ordinal operation count within a MongoDB cluster.
 
-In Firestore with MongoDB compatibility, the snapshot timestamp, which still uses a `  BsonTimestamp  ` value type, interprets the first 32 bits as epoch timestamp seconds, but the latter 32 bits as nanoseconds within the second. Note that not all nanosecond PITR snapshots are supported. Microseconds timestamps in the past 1 hour are allowed, and timestamps of whole minutes from the past 7 days are allowed. See the [point-in-time recovery (PITR) overview](/firestore/mongodb-compatibility/docs/pitr#pitr_window) for what read timestamps are supported.
+In Firestore with MongoDB compatibility, the snapshot timestamp, which still uses a `  BsonTimestamp  ` value type, interprets the first 32 bits as epoch timestamp seconds, but the latter 32 bits as nanoseconds within the second. Note that not all nanosecond PITR snapshots are supported. Microseconds timestamps in the past 1 hour are allowed, and timestamps of whole minutes from the past 7 days are allowed. See the [point-in-time recovery (PITR) overview](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/pitr#pitr_window) for what read timestamps are supported.
 
 ## Clone from a database
 
@@ -170,27 +168,29 @@ You can clone an existing database at a selected timestamp into a new database:
 
   - The cloned database is a new database that will be created in the same location as the source database.
     
-    To make a clone, Firestore uses [point-in-time recovery (PITR) data](/firestore/mongodb-compatibility/docs/pitr) of the source database. The cloned database includes all data and indexes.
+    To make a clone, Firestore uses [point-in-time recovery (PITR) data](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/pitr) of the source database. The cloned database includes all data and indexes.
 
-  - By default, the cloned database will be encrypted in the same way as the source database, using either Google's default encryption or [CMEK encryption](/firestore/mongodb-compatibility/docs/use-cmek) . You can specify a different encryption type or use a different key for CMEK encryption.
+  - By default, the cloned database will be encrypted in the same way as the source database, using either Google's default encryption or [CMEK encryption](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-cmek) . You can specify a different encryption type or use a different key for CMEK encryption.
 
-  - The timestamp has a granularity of one minute and specifies a point of time in the past, in the period defined by the [PITR window](/firestore/mongodb-compatibility/docs/pitr#pitr_window) :
+  - The timestamp has a granularity of one minute and specifies a point of time in the past, in the period defined by the [PITR window](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/pitr#pitr_window) :
     
       - If PITR is enabled for your database, you select any minute in the last 7 days (or less if PITR was enabled less than 7 days ago).
       - If PITR isn't enabled, you can select any minute in the past hour.
-      - You can check the earliest timestamp that you can pick [in your database's description](#get-period) .
+      - You can check the earliest timestamp that you can pick [in your database's description](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-pitr#get-period) .
 
-**Note:** To clone databases, your Google Account must have the [`  datastore.databases.clone  ` IAM permission](#permissions) .
+**Note:** To clone databases, your Google Account must have the [`  datastore.databases.clone  ` IAM permission](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-pitr#permissions) .
 
 ### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Click more\_vert **View more** in the table row for the database that you want to clone. Click **Clone** . The **Create a clone** dialog appears.
 
 3.  In the **Create a clone** dialog, provide parameters for cloning the database:
     
-    1.  In the **Give the clone an ID** field, a [database ID](create-databases#database_id) for a new cloned database. This database ID must not be associated with an existing database.
+    1.  In the **Give the clone an ID** field, a [database ID](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases#database_id) for a new cloned database. This database ID must not be associated with an existing database.
     
     2.  In the **Clone from** field, select a point in time to use for cloning. The selected time corresponds to a PITR timestamp, at the minute granularity.
 
@@ -202,41 +202,35 @@ You can clone an existing database at a selected timestamp into a new database:
 
 Use the [`  gcloud firestore databases clone  `](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/clone) command to clone a database:
 
-``` text
-gcloud firestore databases clone \
---source-database='SOURCE_DATABASE' \
---snapshot-time='PITR_TIMESTAMP' \
---destination-database='DESTINATION_DATABASE_ID'
-```
+    gcloud firestore databases clone \
+    --source-database='SOURCE_DATABASE' \
+    --snapshot-time='PITR_TIMESTAMP' \
+    --destination-database='DESTINATION_DATABASE_ID'
 
 Replace the following:
 
   - SOURCE\_DATABASE : the database name of an existing database that you want to clone. The name uses the format `  projects/ PROJECT_ID /databases/ SOURCE_DATABASE_ID  ` .
 
-  - PITR\_TIMESTAMP : a [PITR timestamp](#get-period) in the [RFC 3339 format](https://tools.ietf.org/html/rfc3339) , at minute granularity. For example: `  2025-06-01T10:20:00.00Z  ` or `  2025-06-01T10:30:00.00-07:00  ` .
+  - PITR\_TIMESTAMP : a [PITR timestamp](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-pitr#get-period) in the [RFC 3339 format](https://tools.ietf.org/html/rfc3339) , at minute granularity. For example: `  2025-06-01T10:20:00.00Z  ` or `  2025-06-01T10:30:00.00-07:00  ` .
 
-  - DESTINATION\_DATABASE\_ID : a [database ID](create-databases#database_id) for a new cloned database. This database ID must not be associated with an existing database.
+  - DESTINATION\_DATABASE\_ID : a [database ID](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases#database_id) for a new cloned database. This database ID must not be associated with an existing database.
 
 Example:
 
-``` text
-gcloud firestore databases clone \
---source-database='projects/example-project/databases/(default)' \
---snapshot-time='2025-06-01T10:20:00.00Z' \
---destination-database='example-dest-db'
-```
+    gcloud firestore databases clone \
+    --source-database='projects/example-project/databases/(default)' \
+    --snapshot-time='2025-06-01T10:20:00.00Z' \
+    --destination-database='example-dest-db'
 
 If you want to bind to some tags while cloning a database, use the previous command with the `  --tags  ` flag, which is an optional list of tags KEY=VALUE pairs to bind.
 
 Example:
 
-``` text
-gcloud firestore databases clone \
---source-database='projects/example-project/databases/(default)' \
---snapshot-time='2025-06-01T10:20:00.00Z' \
---destination-database='example-dest-db' \
---tags=key1=value1,key2=value2
-```
+    gcloud firestore databases clone \
+    --source-database='projects/example-project/databases/(default)' \
+    --snapshot-time='2025-06-01T10:20:00.00Z' \
+    --destination-database='example-dest-db' \
+    --tags=key1=value1,key2=value2
 
 By default, the cloned database will have the same encryption configuration as the source database. To change the encryption configuration, use the `  --encryption-type  ` argument:
 
@@ -246,25 +240,21 @@ By default, the cloned database will have the same encryption configuration as t
 
 The following example shows how to configure CMEK encryption for the cloned database:
 
-``` text
-gcloud firestore databases clone \
---source-database='projects/example-project/databases/(default)' \
---snapshot-time='2025-06-01T10:20:00.00Z' \
---destination-database='example-dest-db' \
---encryption-type='customer-managed-encryption' \
---kms-key-name='projects/example-project/locations/us-central1/keyRings/example-key-ring/cryptoKeys/example-key'
-```
+    gcloud firestore databases clone \
+    --source-database='projects/example-project/databases/(default)' \
+    --snapshot-time='2025-06-01T10:20:00.00Z' \
+    --destination-database='example-dest-db' \
+    --encryption-type='customer-managed-encryption' \
+    --kms-key-name='projects/example-project/locations/us-central1/keyRings/example-key-ring/cryptoKeys/example-key'
 
 ### Firebase CLI
 
 Use the `  firebase firestore:databases:clone  ` command to clone a database:
 
-``` text
-firebase firestore:databases:clone \
-'SOURCE_DATABASE' \
-'DESTINATION_DATABASE' \
---snapshot-time 'PITR_TIMESTAMP'
-```
+    firebase firestore:databases:clone \
+    'SOURCE_DATABASE' \
+    'DESTINATION_DATABASE' \
+    --snapshot-time 'PITR_TIMESTAMP'
 
 Replace the following:
 
@@ -272,7 +262,7 @@ Replace the following:
 
   - DESTINATION\_DATABASE : a database name for a new cloned database. The name uses the format `  projects/ PROJECT_ID /databases/ DESTINATION_DATABASE_ID  ` . This database name must not be associated with an existing database.
 
-  - PITR\_TIMESTAMP : a [PITR timestamp](#get-period) in the [RFC 3339 format](https://tools.ietf.org/html/rfc3339) , at minute granularity. For example: `  2025-06-01T10:20:00.00Z  ` or `  2025-06-01T10:30:00.00-07:00  ` . If unspecified, the chosen snapshot will be the current time, rounded down to the minute.
+  - PITR\_TIMESTAMP : a [PITR timestamp](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-pitr#get-period) in the [RFC 3339 format](https://tools.ietf.org/html/rfc3339) , at minute granularity. For example: `  2025-06-01T10:20:00.00Z  ` or `  2025-06-01T10:30:00.00-07:00  ` . If unspecified, the chosen snapshot will be the current time, rounded down to the minute.
 
 By default, the cloned database will have the same encryption configuration as the source database. To change the encryption configuration, use the `  --encryption-type  ` argument:
 
@@ -282,13 +272,11 @@ By default, the cloned database will have the same encryption configuration as t
 
 The following example shows how to configure CMEK encryption for the cloned database:
 
-``` text
-firebase firestore:databases:clone \
-'projects/example-project/databases/(default)' \
-'projects/example-project/databases/example-dest-db' \
---snapshot-time 'PITR_TIMESTAMP' \
---encryption-type CUSTOMER_MANAGED_ENCRYPTION
-```
+    firebase firestore:databases:clone \
+    'projects/example-project/databases/(default)' \
+    'projects/example-project/databases/example-dest-db' \
+    --snapshot-time 'PITR_TIMESTAMP' \
+    --encryption-type CUSTOMER_MANAGED_ENCRYPTION
 
 ## Export and import from PITR data
 
@@ -302,11 +290,9 @@ The PITR export operation supports all filters, including export of all document
     
     Run the following command to export the database to your bucket.
     
-    ``` text
-    gcloud firestore export gs://BUCKET_NAME_PATH \
-        --snapshot-time=PITR_TIMESTAMP \
-        --collection-ids=COLLECTION_IDS
-    ```
+        gcloud firestore export gs://BUCKET_NAME_PATH \
+            --snapshot-time=PITR_TIMESTAMP \
+            --collection-ids=COLLECTION_IDS
     
     Replace the following:
     
@@ -322,4 +308,4 @@ The PITR export operation supports all filters, including export of all document
 
 2.  Import to a database.
     
-    Use the steps in [Import all documents](/firestore/mongodb-compatibility/docs/export-import#import_all_documents_from_an_export) to import your exported database. If any document already exists in your database, it will be overwritten.
+    Use the steps in [Import all documents](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import#import_all_documents_from_an_export) to import your exported database. If any document already exists in your database, it will be overwritten.

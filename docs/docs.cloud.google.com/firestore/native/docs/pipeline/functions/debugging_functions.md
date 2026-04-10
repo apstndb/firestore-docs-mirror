@@ -2,50 +2,25 @@
 
 **Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
 
-This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
 ## **Debugging Functions**
 
-<table>
-<tbody>
-<tr class="odd">
-<td>Name</td>
-<td>Description</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">         EXISTS       </code></td>
-<td>Returns <code dir="ltr" translate="no">       TRUE      </code> if the value is not an absent value</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">         IS_ABSENT       </code></td>
-<td>Returns <code dir="ltr" translate="no">       TRUE      </code> if the value is an absent value</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">         IF_ABSENT       </code></td>
-<td>Replaces the value with an expression if it is absent</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">         IS_ERROR       </code></td>
-<td>Catches and checks if an error has been thrown by the underlying expression</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">         IF_ERROR       </code></td>
-<td>Replaces the value with an expression if it has thrown an error</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">         ERROR       </code></td>
-<td>Terminates evaluation and returns an error with the specified message</td>
-</tr>
-</tbody>
-</table>
+|                               |                                                                             |
+| ----------------------------- | --------------------------------------------------------------------------- |
+| Name                          | Description                                                                 |
+| `          EXISTS        `    | Returns `        TRUE       ` if the value is not an absent value           |
+| `          IS_ABSENT        ` | Returns `        TRUE       ` if the value is an absent value               |
+| `          IF_ABSENT        ` | Replaces the value with an expression if it is absent                       |
+| `          IS_ERROR        `  | Catches and checks if an error has been thrown by the underlying expression |
+| `          IF_ERROR        `  | Replaces the value with an expression if it has thrown an error             |
+| `          ERROR        `     | Terminates evaluation and returns an error with the specified message       |
 
 ### EXISTS
 
 **Syntax:**
 
-``` text
-exists(value: ANY) -> BOOLEAN
-```
+    exists(value: ANY) -> BOOLEAN
 
 **Description:**
 
@@ -53,118 +28,82 @@ Returns `  TRUE  ` if `  value  ` is not the absent value.
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;"><code dir="ltr" translate="no">       value      </code></th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       exists(value)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">0L</td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       TRUE      </code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">"foo"</td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       TRUE      </code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code dir="ltr" translate="no">       NULL      </code></td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       TRUE      </code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code dir="ltr" translate="no">       ABSENT      </code></td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
-</tr>
-</tbody>
-</table>
+| `        value       `  | `        exists(value)       ` |
+| :---------------------- | :----------------------------- |
+| 0L                      | `        TRUE       `          |
+| "foo"                   | `        TRUE       `          |
+| `        NULL       `   | `        TRUE       `          |
+| `        ABSENT       ` | `        FALSE       `         |
 
 ##### Node.js
 
-``` javascript
-const result = await db.pipeline()
-  .collection("books")
-  .select(field("rating").exists().as("hasRating"))
-  .execute();test.firestore.js
-```
+    const result = await db.pipeline()
+      .collection("books")
+      .select(field("rating").exists().as("hasRating"))
+      .execute();test.firestore.js
 
 ### Web
 
 **Example:**
 
-``` javascript
-const result = await execute(db.pipeline()
-  .collection("books")
-  .select(field("rating").exists().as("hasRating"))
-);test.firestore.js
-```
+    const result = await execute(db.pipeline()
+      .collection("books")
+      .select(field("rating").exists().as("hasRating"))
+    );test.firestore.js
 
 ##### Swift
 
-``` swift
-let result = try await db.pipeline()
-  .collection("books")
-  .select([Field("rating").exists().as("hasRating")])
-  .execute()PipelineSnippets.swift
-```
+    let result = try await db.pipeline()
+      .collection("books")
+      .select([Field("rating").exists().as("hasRating")])
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
 
 **Example:**
 
-``` kotlin
-val result = db.pipeline()
-    .collection("books")
-    .select(field("rating").exists().alias("hasRating"))
-    .execute()DocSnippets.kt
-```
+    val result = db.pipeline()
+        .collection("books")
+        .select(field("rating").exists().alias("hasRating"))
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
 
 **Example:**
 
-``` text
-Task<Pipeline.Snapshot> result = db.pipeline()
-    .collection("books")
-    .select(field("rating").exists().alias("hasRating"))
-    .execute();DocSnippets.java
-```
+    Task<Pipeline.Snapshot> result = db.pipeline()
+        .collection("books")
+        .select(field("rating").exists().alias("hasRating"))
+        .execute();DocSnippets.java
 
 ##### Python
 
-``` python
-from google.cloud.firestore_v1.pipeline_expressions import Field
-
-result = (
-    client.pipeline()
-    .collection("books")
-    .select(Field.of("rating").exists().as_("hasRating"))
-    .execute()
-)firestore_pipelines.py
-```
+    from google.cloud.firestore_v1.pipeline_expressions import Field
+    
+    result = (
+        client.pipeline()
+        .collection("books")
+        .select(Field.of("rating").exists().as_("hasRating"))
+        .execute()
+    )firestore_pipelines.py
 
 ##### Java
 
-``` java
-Pipeline.Snapshot result =
-    firestore
-        .pipeline()
-        .collection("books")
-        .select(exists(field("rating")).as("hasRating"))
-        .execute()
-        .get();PipelineSnippets.java
-```
+    Pipeline.Snapshot result =
+        firestore
+            .pipeline()
+            .collection("books")
+            .select(exists(field("rating")).as("hasRating"))
+            .execute()
+            .get();PipelineSnippets.java
 
 ### IS\_ABSENT
 
 **Syntax:**
 
-``` text
-is_absent(value: ANY) -> BOOLEAN
-```
+    is_absent(value: ANY) -> BOOLEAN
 
 **Description:**
 
@@ -172,40 +111,18 @@ Returns `  TRUE  ` if `  value  ` is the absent value, and `  FALSE  ` otherwise
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;"><code dir="ltr" translate="no">       value      </code></th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       is_absent(value)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">0L</td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">"foo"</td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code dir="ltr" translate="no">       NULL      </code></td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code dir="ltr" translate="no">       ABSENT      </code></td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       TRUE      </code></td>
-</tr>
-</tbody>
-</table>
+| `        value       `  | `        is_absent(value)       ` |
+| :---------------------- | :-------------------------------- |
+| 0L                      | `        FALSE       `            |
+| "foo"                   | `        FALSE       `            |
+| `        NULL       `   | `        FALSE       `            |
+| `        ABSENT       ` | `        TRUE       `             |
 
 ### IF\_ABSENT
 
 **Syntax:**
 
-``` text
-if_absent(value: ANY, replacement: ANY) -> ANY
-```
+    if_absent(value: ANY, replacement: ANY) -> ANY
 
 **Description:**
 
@@ -213,40 +130,17 @@ If `  value  ` is an absent value, evaluates and returns `  replacement  ` . Oth
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;"><code dir="ltr" translate="no">       value      </code></th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       replacement      </code></th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       if_absent(value, replacement)      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">5L</td>
-<td style="text-align: left;">0L</td>
-<td style="text-align: left;">5L</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code dir="ltr" translate="no">       NULL      </code></td>
-<td style="text-align: left;">0L</td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       NULL      </code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code dir="ltr" translate="no">       ABSENT      </code></td>
-<td style="text-align: left;">0L</td>
-<td style="text-align: left;">0L</td>
-</tr>
-</tbody>
-</table>
+| `        value       `  | `        replacement       ` | `        if_absent(value, replacement)       ` |
+| :---------------------- | :--------------------------- | :--------------------------------------------- |
+| 5L                      | 0L                           | 5L                                             |
+| `        NULL       `   | 0L                           | `        NULL       `                          |
+| `        ABSENT       ` | 0L                           | 0L                                             |
 
 ### IS\_ERROR
 
 **Syntax:**
 
-``` text
-is_error(try: ANY) -> BOOLEAN
-```
+    is_error(try: ANY) -> BOOLEAN
 
 **Description:**
 
@@ -256,9 +150,7 @@ Returns `  TRUE  ` if an error is thrown during the evaluation of `  try  ` . Re
 
 **Syntax:**
 
-``` text
-if_error(try: ANY, catch: ANY) -> ANY
-```
+    if_error(try: ANY, catch: ANY) -> ANY
 
 **Description:**
 
@@ -268,9 +160,7 @@ If an error is thrown during the evaluation of `  try  ` , evaluates and returns
 
 **Syntax:**
 
-``` text
-error(message: STRING) -> ANY
-```
+    error(message: STRING) -> ANY
 
 **Description:**
 
@@ -278,28 +168,11 @@ Evaluation of the `  error  ` function results in the evaluation of the pipeline
 
 **Examples:**
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;"><code dir="ltr" translate="no">       cond      </code></th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       res      </code></th>
-<th style="text-align: left;"><code dir="ltr" translate="no">       switch_on(cond, res, error("no condition matched"))      </code></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><code dir="ltr" translate="no">       TRUE      </code></td>
-<td style="text-align: left;">1L</td>
-<td style="text-align: left;">1L</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code dir="ltr" translate="no">       FALSE      </code></td>
-<td style="text-align: left;">1L</td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       ERROR ("no condition matched")      </code></td>
-</tr>
-</tbody>
-</table>
+| `        cond       `  | `        res       ` | `        switch_on(cond, res, error("no condition matched"))       ` |
+| :--------------------- | :------------------- | :------------------------------------------------------------------- |
+| `        TRUE       `  | 1L                   | 1L                                                                   |
+| `        FALSE       ` | 1L                   | `        ERROR ("no condition matched")       `                      |
 
 ## What's next
 
-  - See the [Pipeline Queries overview](/firestore/docs/pipeline/overview)
+  - See the [Pipeline Queries overview](https://docs.cloud.google.com/firestore/docs/pipeline/overview)

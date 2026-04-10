@@ -2,7 +2,7 @@
 
 **Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
 
-This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
 ## Description
 
@@ -14,18 +14,16 @@ Variables created in the `  let(...)  ` stage are not included in the final resu
 
 ### Node.js
 
-``` text
-const results = await db.pipeline()
-  .collection("/awards")
-  // `let(...)` referred to as `define(...)` in the Web SDK.
-  .define(rand().as("r"))
-  .addFields(
-    switchOn(
-      lessThan(variable("r"), 0.05), constant("rare"),
-      lessThan(variable("r"), 0.25), constant("uncommon"),
-      constant("common")).as("random_score"))
-  .execute();
-```
+    const results = await db.pipeline()
+      .collection("/awards")
+      // `let(...)` referred to as `define(...)` in the Web SDK.
+      .define(rand().as("r"))
+      .addFields(
+        switchOn(
+          lessThan(variable("r"), 0.05), constant("rare"),
+          lessThan(variable("r"), 0.25), constant("uncommon"),
+          constant("common")).as("random_score"))
+      .execute();
 
 ## Behavior
 
@@ -33,37 +31,12 @@ const results = await db.pipeline()
 
 While **fields** represent data stored within documents, **variables** are temporary values that exist only during the execution of the pipeline.
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: left;">Fields</th>
-<th style="text-align: left;">Variables</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Purpose</td>
-<td style="text-align: left;">access or store fields into documents</td>
-<td style="text-align: left;">generate or access temporary values during pipeline execution</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">SDK Usage</td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       field("name")      </code></td>
-<td style="text-align: left;"><code dir="ltr" translate="no">       variable("name")      </code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Scope</td>
-<td style="text-align: left;">local to current document</td>
-<td style="text-align: left;">global to pipeline and sub-pipelines</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Undefined References</td>
-<td style="text-align: left;">evaluates to <code dir="ltr" translate="no">       absent      </code></td>
-<td style="text-align: left;">generates runtime error</td>
-</tr>
-</tbody>
-</table>
+|                      | Fields                                | Variables                                                     |
+| :------------------- | :------------------------------------ | :------------------------------------------------------------ |
+| Purpose              | access or store fields into documents | generate or access temporary values during pipeline execution |
+| SDK Usage            | `        field("name")       `        | `        variable("name")       `                             |
+| Scope                | local to current document             | global to pipeline and sub-pipelines                          |
+| Undefined References | evaluates to `        absent       `  | generates runtime error                                       |
 
 **Scope:**
 
@@ -79,18 +52,16 @@ Variables are essential when working with nested pipelines. A sub-pipeline execu
 
 ### Node.js
 
-``` text
-// Fetch reviewers alongside their negative reviews.
-const pipeline = db.pipeline()
-  .collection("/reviewers")
-  // `let(...)` referred to as `define(...)` in the Web SDK.
-  .define(field("__name__").as("reviewer_name"))
-  .select("__name__", array(db.pipeline().collectionGroup("reviews")
-    .where(field("author").equals(variable("reviewer_name")))
-    .where(field("rating").lessThan(2))
-    .select("review", "rating")).as("negative_reviews"))
-  .execute();
-```
+    // Fetch reviewers alongside their negative reviews.
+    const pipeline = db.pipeline()
+      .collection("/reviewers")
+      // `let(...)` referred to as `define(...)` in the Web SDK.
+      .define(field("__name__").as("reviewer_name"))
+      .select("__name__", array(db.pipeline().collectionGroup("reviews")
+        .where(field("author").equals(variable("reviewer_name")))
+        .where(field("rating").lessThan(2))
+        .select("review", "rating")).as("negative_reviews"))
+      .execute();
 
 ### Overlapping Variables
 
@@ -100,4 +71,4 @@ Variables referenced in sub-pipeline follow [lexical scoping rules](https://en.w
 
 ### Comparison with `     add_fields(...)    `
 
-The `  let(...)  ` stage behaves similarly to the [`  add_fields(...)  `](/firestore/native/docs/pipeline/stages/transformation/add_fields) stage, but instead of adding fields to the document, it assigns values to variables.
+The `  let(...)  ` stage behaves similarly to the [`  add_fields(...)  `](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/add_fields) stage, but instead of adding fields to the document, it assigns values to variables.

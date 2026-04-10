@@ -1,6 +1,6 @@
 # Perform an in-place restore operation
 
-This page describes how to restore data in a backup to a database with the same name as the source database of the backup. Before you read this page, you should be familiar with [Back up and restore data](/firestore/mongodb-compatibility/docs/backups) .
+This page describes how to restore data in a backup to a database with the same name as the source database of the backup. Before you read this page, you should be familiar with [Back up and restore data](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/backups) .
 
 ## In-place restore
 
@@ -26,7 +26,7 @@ Retrieve and copy the index configuration of your database. Use the index config
 
   - Use [`  gcloud firestore indexes composite list  `](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/list) to retrieve a list of composite indexes:
     
-    ``` text
+    ``` 
         gcloud firestore indexes composite list --database=DATABASE_ID
     ```
     
@@ -34,7 +34,7 @@ Retrieve and copy the index configuration of your database. Use the index config
 
   - Use [`  gcloud firestore indexes fields list  `](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/fields/list) to retrieve a list of single-field (built-in) index exemptions.
     
-    ``` text
+    ``` 
         gcloud firestore indexes fields list --database=DATABASE_ID
     ```
 
@@ -46,13 +46,13 @@ Once a restore operation begins, you cannot cancel the operation and must wait u
 
 1.  Use the [`  gcloud firestore backups list  `](https://cloud.google.com/sdk/gcloud/reference/firestore/backups/list) command to identify the backup to use for the restore operation and note the resource name. The resource name uses the following format:
     
-    ``` text
+    ``` 
         projects/PROJECT_ID/locations/LOCATION/backups/BACKUP_ID
     ```
 
 2.  Use the `  gcloud firestore databases delete  ` command to delete the existing database:
     
-    ``` text
+    ``` 
         gcloud firestore databases delete --database='DATABASE_ID'
     ```
     
@@ -60,15 +60,13 @@ Once a restore operation begins, you cannot cancel the operation and must wait u
 
 3.  Wait at least 5 minutes after you delete the database for the database ID to become available again. Initiate a restore operation using the [`  gcloud firestore databases restore  `](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/restore) command:
     
-    ``` text
-    gcloud firestore databases restore \
-    --source-backup=projects/PROJECT_ID/locations/LOCATION/backups/BACKUP_ID \
-    --destination-database='DATABASE_ID'
-    ```
+        gcloud firestore databases restore \
+        --source-backup=projects/PROJECT_ID/locations/LOCATION/backups/BACKUP_ID \
+        --destination-database='DATABASE_ID'
     
     Replace DATABASE\_ID with the database ID.
 
 ## What's next
 
-  - [Learn more about backup schedules and restore operations](/firestore/mongodb-compatibility/docs/backups)
-  - [Learn about configuring point-in-time recovery (PITR)](/firestore/mongodb-compatibility/docs/pitr)
+  - [Learn more about backup schedules and restore operations](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/backups)
+  - [Learn about configuring point-in-time recovery (PITR)](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/pitr)

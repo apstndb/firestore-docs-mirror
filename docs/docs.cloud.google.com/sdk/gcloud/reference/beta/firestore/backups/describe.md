@@ -10,7 +10,7 @@ EXAMPLES
 
 To retrieve information about the `  cf9f748a-7980-4703-b1a1-d1ffff591db0  ` backup in us-east1.
 
-``` text
+``` wrap-code
 gcloud beta firestore backups describe --location=us-east1 --backup=cf9f748a-7980-4703-b1a1-d1ffff591db0
 ```
 
@@ -21,7 +21,7 @@ REQUIRED FLAGS
     
     For example, to operate on backup `  cf9f748a-7980-4703-b1a1-d1ffff591db0  ` :
     
-    ``` text
+    ``` wrap-code
     gcloud beta firestore backups describe --backup='cf9f748a-7980-4703-b1a1-d1ffff591db0'
     ```
 
@@ -30,7 +30,7 @@ REQUIRED FLAGS
     
     For example, to operate on location `  us-east1  ` :
     
-    ``` text
+    ``` wrap-code
     gcloud beta firestore backups describe --location='us-east1'
     ```
 
@@ -44,10 +44,10 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` text
+``` wrap-code
 gcloud firestore backups describe
 ```
 
-``` text
+``` wrap-code
 gcloud alpha firestore backups describe
 ```

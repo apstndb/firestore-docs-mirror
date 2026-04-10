@@ -2,10 +2,10 @@
 
 This page describes how to analyze the heatmap in a Key Visualizer scan so you can identify the source of a Firestore performance issue.
 
-Before you read this page, you should be familiar with the [overview of Key Visualizer](./key-visualizer) . You may also want to:
+Before you read this page, you should be familiar with the [overview of Key Visualizer](https://docs.cloud.google.com/firestore/native/docs/key-visualizer) . You may also want to:
 
-  - Learn how to [open a Key Visualizer scan](./keyvis-getting-started#viewing-scan) .
-  - See examples of common [document key patterns](./keyvis-patterns) or [index key patterns](./keyvis-patterns-index) .
+  - Learn how to [open a Key Visualizer scan](https://docs.cloud.google.com/firestore/native/docs/keyvis-getting-started#viewing-scan) .
+  - See examples of common [document key patterns](https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns) or [index key patterns](https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns-index) .
 
 ### Edition and mode requirements
 
@@ -44,10 +44,14 @@ To drill down into the heatmap's data for a group of keys that share a common pr
 1.  Move the cursor over one of the levels in the key hierarchy that appears to the left of the heatmap.
     
     Key Visualizer highlights the area of the heatmap that shows this level of the hierarchy. It also shows the key prefix for all of the keys at this level.
+    
+    ![Example of a highlighted area in a heatmap for a group of keys](https://docs.cloud.google.com/static/firestore/native/docs/images/keyvis-key-prefix-hover.png)
 
 2.  Click the level of the key hierarchy that you want to examine.
     
     Key Visualizer zooms in on this level of the hierarchy.
+    
+    ![Example of zooming in on a level of the key hierarchy](https://docs.cloud.google.com/static/firestore/native/docs/images/keyvis-key-prefix-zoomed.png)
 
 3.  Click another level of the key hierarchy to zoom in further, or press the `  Backspace  ` or `  Delete  ` key to return to the previous area.
 
@@ -61,13 +65,15 @@ By default, when you open a Key Visualizer scan, it displays the **Ops/s** metri
 
 In case of index keys, it displays the **Index Write Ops/s** metric that gives an overview of index key usage.
 
-For descriptions of each metric, see [Key Visualizer Metrics](./key-visualizer#Metrics) .
+For descriptions of each metric, see [Key Visualizer Metrics](https://docs.cloud.google.com/firestore/native/docs/key-visualizer#Metrics) .
 
 ## Finding connections between different metrics for document keys
 
 You can view multiple metrics at the same time in Key Visualizer when you want to compare metrics or find correlations between metrics. For example, you might want to see if hotspots on your **Ops/s** heatmap correlate with high latency in your **Average write latency** heatmap.
 
 To view multiple metrics and their values at the same time, click **Show Info Panel** near the top right corner. A list of metrics appears in a pane to the right of the scan.
+
+![Example showing the multimetric pane for\_a\_scan](https://docs.cloud.google.com/static/firestore/native/docs/images/keyvis-multimetric-pane.png)
 
 To examine several metrics at once, use the following tools in the multimetric pane:
 
@@ -78,6 +84,8 @@ To examine several metrics at once, use the following tools in the multimetric p
   - To hide an individual metric's heatmap, click the metric name again.
 
   - To display a metric's heatmap in the main window, click the solid arrow at the left edge of the metric's title bar.
+    
+    ![Left arrow shows a metric in the main window](https://docs.cloud.google.com/static/firestore/native/docs/images/keyvis-mini-metric.png)
 
   - Hover over a miniature heatmap to see corresponding activity in the main view.
 
@@ -91,5 +99,5 @@ To compare different metrics for a key bucket at the same point in time, you can
 
 ## What's next
 
-  - Learn to recognize [document key patterns](./keyvis-patterns) or [index key patterns](./keyvis-patterns-index) .
-  - Read about the [metrics you can view in a heatmap](./key-visualizer#Metrics) .
+  - Learn to recognize [document key patterns](https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns) or [index key patterns](https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns-index) .
+  - Read about the [metrics you can view in a heatmap](https://docs.cloud.google.com/firestore/native/docs/key-visualizer#Metrics) .

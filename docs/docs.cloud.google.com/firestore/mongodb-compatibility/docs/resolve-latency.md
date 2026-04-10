@@ -24,7 +24,7 @@ The following table describes possible causes of increased latency:
 <td>Sustained, increasing traffic.</td>
 <td>read, write</td>
 <td><p>For rapid traffic increases, Firestore with MongoDB compatibility attempts to automatically scale to meet the increased demand. When Firestore with MongoDB compatibility scales, latency begins to decrease.</p>
-<p>Hot-spots (high read, write, and delete rates to a narrow document range) limit the ability of Firestore with MongoDB compatibility to scale. Review <a href="/firestore/mongodb-compatibility/docs/understand-reads-writes-scale#avoid_hotspots">Avoid hot-spots</a> and identify hot-spots in your application.</p></td>
+<p>Hot-spots (high read, write, and delete rates to a narrow document range) limit the ability of Firestore with MongoDB compatibility to scale. Review <a href="https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-reads-writes-scale#avoid_hotspots">Avoid hot-spots</a> and identify hot-spots in your application.</p></td>
 </tr>
 <tr class="even">
 <td>Contention, either from updating a single document too frequently or from transactions.</td>

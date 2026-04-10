@@ -20,63 +20,59 @@ The method for configuring a regional or multi-regional endpoint is the same: yo
 
 ### Java
 
-To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](/docs/authentication/set-up-adc-local-dev-environment) .
+To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-``` java
-import com.google.auth.oauth2.GoogleCredentials;
-import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.FirestoreOptions;
-
-
-/**
- * Demonstrate how to set a regional endpoint.
- */
-public class RegionalEndpointSnippets {
-
-  /**
-   * Create a client with a regional endpoint.
-   **/
-  public Firestore regionalEndpoint(String projectId, String endpoint) throws Exception {
-    FirestoreOptions firestoreOptions =
-        FirestoreOptions.newBuilder()
-            .setProjectId(projectId)
-            .setCredentials(GoogleCredentials.getApplicationDefault())
-            // set endpoint like firestore.us-central1.rep.googleapis.com:443
-            .setHost(endpoint)
-            .build();
-    Firestore dbWithEndpoint = firestoreOptions.getService();
-
-    return dbWithEndpoint;
-  }
-
-}
-```
+    import com.google.auth.oauth2.GoogleCredentials;
+    import com.google.cloud.firestore.Firestore;
+    import com.google.cloud.firestore.FirestoreOptions;
+    
+    
+    /**
+     * Demonstrate how to set a regional endpoint.
+     */
+    public class RegionalEndpointSnippets {
+    
+      /**
+       * Create a client with a regional endpoint.
+       **/
+      public Firestore regionalEndpoint(String projectId, String endpoint) throws Exception {
+        FirestoreOptions firestoreOptions =
+            FirestoreOptions.newBuilder()
+                .setProjectId(projectId)
+                .setCredentials(GoogleCredentials.getApplicationDefault())
+                // set endpoint like firestore.us-central1.rep.googleapis.com:443
+                .setHost(endpoint)
+                .build();
+        Firestore dbWithEndpoint = firestoreOptions.getService();
+    
+        return dbWithEndpoint;
+      }
+    
+    }
 
 ### Python
 
-To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](/docs/authentication/set-up-adc-local-dev-environment) .
+To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-``` python
-ENDPOINT = "firestore.africa-south1.rep.googleapis.com"
-client_options = ClientOptions(api_endpoint=ENDPOINT)
-db = firestore.Client(client_options=client_options)
-
-cities_query = db.collection("cities").limit(2).get()
-for r in cities_query:
-    print(r)
-```
+    ENDPOINT = "firestore.africa-south1.rep.googleapis.com"
+    client_options = ClientOptions(api_endpoint=ENDPOINT)
+    db = firestore.Client(client_options=client_options)
+    
+    cities_query = db.collection("cities").limit(2).get()
+    for r in cities_query:
+        print(r)
 
 ### Regional and multi-regional endpoint semantics
 
 **Regional Endpoints (REP):**
 
-Firestore supports regional endpoints for the regional locations listed here [Firestore locations](/firestore/docs/locations#location-r) .
+Firestore supports regional endpoints for the regional locations listed here [Firestore locations](https://docs.cloud.google.com/firestore/docs/locations#location-r) .
 
 Use the following format to define regional endpoints:
 
 ### Java
 
-``` text
+``` 
     firestore.REGION_NAME.rep.googleapis.com:443
 ```
 
@@ -84,13 +80,13 @@ Make sure that the port number is defined along with the endpoint.
 
 ### Python
 
-``` text
+``` 
     firestore.REGION_NAME.rep.googleapis.com
 ```
 
 ### Go
 
-``` text
+``` 
     firestore.REGION_NAME.rep.googleapis.com:443
 ```
 
@@ -105,11 +101,11 @@ Some examples of hostnames are:
 
 **Multi-regional Endpoints (MREP)**
 
-For multi-regional endpoints, use `  us  ` for locations `  nam5  ` and `  nam7  ` , and `  eu  ` for location `  eur3  ` (see [Multi-regional locations](/firestore/docs/locations#location-mr) ).
+For multi-regional endpoints, use `  us  ` for locations `  nam5  ` and `  nam7  ` , and `  eu  ` for location `  eur3  ` (see [Multi-regional locations](https://docs.cloud.google.com/firestore/docs/locations#location-mr) ).
 
 ### Java
 
-``` text
+``` 
     firestore.us.rep.googleapis.com:443
     firestore.eu.rep.googleapis.com:443
 ```
@@ -118,14 +114,14 @@ Make sure that the port number is defined along with the endpoint.
 
 ### Python
 
-``` text
+``` 
     firestore.us.rep.googleapis.com
     firestore.eu.rep.googleapis.com
 ```
 
 ### Go
 
-``` text
+``` 
     firestore.us.rep.googleapis.com:443
     firestore.eu.rep.googleapis.com:443
 ```
@@ -134,7 +130,7 @@ Make sure that the port number is defined along with the endpoint.
 
 ### Limitations
 
-  - Regional and multi-regional endpoints don't support [real-time listeners](/firestore/native/docs/query-data/listen) .
+  - Regional and multi-regional endpoints don't support [real-time listeners](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) .
 
 ### Locational Endpoints (Deprecated)
 
@@ -144,7 +140,7 @@ Firestore previously supported locational endpoints with the following format:
 
 ### Java
 
-``` text
+``` 
   REGION_NAME-firestore.googleapis.com:443
 ```
 
@@ -152,13 +148,13 @@ Make sure that the port number is defined along with the endpoint.
 
 ### Python
 
-``` text
+``` 
   REGION_NAME-firestore.googleapis.com
 ```
 
 ### Go
 
-``` text
+``` 
   REGION_NAME-firestore.googleapis.com:443
 ```
 
@@ -173,13 +169,13 @@ Some examples of hostnames are:
   - `  europe-west6-firestore.googleapis.com  `
   - `  asia-northeast2-firestore.googleapis.com  `
 
-For a complete list of multi-regional and regional hostnames, see [Firestore locations](/firestore/docs/locations) .
+For a complete list of multi-regional and regional hostnames, see [Firestore locations](https://docs.cloud.google.com/firestore/docs/locations) .
 
 ## Restrict global API endpoint usage
 
-To help enforce the use of regional and multi-regional endpoints, use the `  constraints/gcp.restrictEndpointUsage  ` organization policy constraint to block requests to the global API endpoint. For more information, see [Restrict endpoint usage](/docs/security/compliance/restrict-endpoint-usage) .
+To help enforce the use of regional and multi-regional endpoints, use the `  constraints/gcp.restrictEndpointUsage  ` organization policy constraint to block requests to the global API endpoint. For more information, see [Restrict endpoint usage](https://docs.cloud.google.com/docs/security/compliance/restrict-endpoint-usage) .
 
 ## What's next
 
-  - Learn about the Firestore [data model](/firestore/docs/data-model) .
-  - [Best practices](/firestore/docs/best-practices) for using Firestore.
+  - Learn about the Firestore [data model](https://docs.cloud.google.com/firestore/docs/data-model) .
+  - [Best practices](https://docs.cloud.google.com/firestore/docs/best-practices) for using Firestore.

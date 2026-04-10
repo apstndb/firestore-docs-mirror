@@ -1,5 +1,5 @@
-  - [JSON representation](#SCHEMA_REPRESENTATION)
-  - [ReadConsistency](#ReadConsistency)
+  - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/ReadOptions#SCHEMA_REPRESENTATION)
+  - [ReadConsistency](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/ReadOptions#ReadConsistency)
 
 The options shared by read requests.
 
@@ -14,7 +14,7 @@ The options shared by read requests.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
 
   // Union field consistency_type can be only one of the following:
   &quot;readConsistency&quot;: enum (ReadConsistency),

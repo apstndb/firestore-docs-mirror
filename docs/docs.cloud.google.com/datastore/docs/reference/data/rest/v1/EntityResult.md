@@ -1,4 +1,4 @@
-  - [JSON representation](#SCHEMA_REPRESENTATION)
+  - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/EntityResult#SCHEMA_REPRESENTATION)
 
 The result of fetching an entity from Datastore.
 
@@ -13,7 +13,7 @@ The result of fetching an entity from Datastore.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;entity&quot;: {
     object (Entity)
   },

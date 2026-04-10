@@ -14,26 +14,26 @@ EXAMPLES
 
 To export all collection groups to `  mybucket  ` in objects prefixed with `  my/path  ` , run:
 
-``` text
+``` wrap-code
 gcloud firestore export gs://mybucket/my/path
 ```
 
 To export a specific set of collections groups asynchronously, run:
 
-``` text
+``` wrap-code
 gcloud firestore export gs://mybucket/my/path --collection-ids='specific collection group1','specific
  collection group2' --async
 ```
 
 To export all collection groups from certain namespace, run:
 
-``` text
+``` wrap-code
 gcloud firestore export gs://mybucket/my/path --namespace-ids='specific namespace id'
 ```
 
 To export from a snapshot at '2023-05-26T10:20:00.00Z', run:
 
-``` text
+``` wrap-code
 gcloud firestore export gs://mybucket/my/path --snapshot-time='2023-05-26T10:20:00.00Z'
 ```
 
@@ -44,7 +44,7 @@ POSITIONAL ARGUMENTS
     
     For example:
     
-    ``` text
+    ``` wrap-code
     gcloud firestore export gs://mybucket/my/path
     ```
     
@@ -60,7 +60,7 @@ FLAGS
     
     For example, to operate on only the `  customers  ` and `  orders  ` collections groups:
     
-    ``` text
+    ``` wrap-code
     gcloud firestore export --collection-ids='customers','orders'
     ```
 
@@ -69,7 +69,7 @@ FLAGS
     
     For example, to operate on database `  foo  ` :
     
-    ``` text
+    ``` wrap-code
     gcloud firestore export --database='foo'
     ```
 
@@ -80,7 +80,7 @@ FLAGS
     
     For example, to operate on only the `  customers  ` and `  orders  ` namespaces:
     
-    ``` text
+    ``` wrap-code
     gcloud firestore export --namespaces-ids='customers','orders'
     ```
 
@@ -91,7 +91,7 @@ FLAGS
     
     For example, to operate on snapshot time `  2023-05-26T10:20:00.00Z  ` :
     
-    ``` text
+    ``` wrap-code
     gcloud firestore export --snapshot-time='2023-05-26T10:20:00.00Z'
     ```
 
@@ -105,10 +105,10 @@ NOTES
 
 These variants are also available:
 
-``` text
+``` wrap-code
 gcloud alpha firestore export
 ```
 
-``` text
+``` wrap-code
 gcloud beta firestore export
 ```

@@ -4,37 +4,37 @@
     
     Firestore in Datastore mode offers free and billable usage.
 
-  - [](/datastore/docs/concepts/limits)
+  - [](https://docs.cloud.google.com/datastore/docs/concepts/limits)
     
     ### Quotas and limits
     
     Learn about Firestore in Datastore mode production limits, such as maximum number of databases per project.
 
-  - [](/datastore/release-notes)
+  - [](https://docs.cloud.google.com/datastore/release-notes)
     
     ### Release notes
     
     Production updates to Firestore in Datastore mode.
 
-  - [](/datastore/docs/billing-questions)
+  - [](https://docs.cloud.google.com/datastore/docs/billing-questions)
     
     ### Billing questions
     
     Firestore in Datastore mode resources to get help with billing questions.
 
-  - [](/datastore/docs/locations)
+  - [](https://docs.cloud.google.com/datastore/docs/locations)
     
     ### Locations
     
     Learn about the types of Firestore in Datastore mode locations and set a location.
 
-  - [](/datastore/docs/getting-support)
+  - [](https://docs.cloud.google.com/datastore/docs/getting-support)
     
     ### Support
     
     Find out how to get support for Firestore in Datastore mode.
 
-  - [](/datastore/sla)
+  - [](https://docs.cloud.google.com/datastore/sla)
     
     ### Service Level Agreement
     

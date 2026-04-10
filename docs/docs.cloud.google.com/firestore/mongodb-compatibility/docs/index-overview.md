@@ -12,30 +12,16 @@ An index consists of the following:
   - a list of fields in the given collection
   - an order, either ascending or descending, for each field
 
-An index can also enable the [sparse](#sparse_indexes) , [multikey](#multikey) , or [unique](#unique_indexes) options.
+An index can also enable the [sparse](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview#sparse_indexes) , [multikey](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview#multikey) , or [unique](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview#unique_indexes) options.
 
 ### Index ordering
 
 The order and sort direction of each field uniquely defines the index. For example, the following indexes are two distinct indexes and not interchangeable:
 
-<table>
-<thead>
-<tr class="header">
-<th>Collection</th>
-<th>Fields</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>cities</td>
-<td>country (ascending), population (descending)</td>
-</tr>
-<tr class="even">
-<td>cities</td>
-<td>population (descending), country (ascending),</td>
-</tr>
-</tbody>
-</table>
+| Collection | Fields                                        |
+| ---------- | --------------------------------------------- |
+| cities     | country (ascending), population (descending)  |
+| cities     | population (descending), country (ascending), |
 
 When creating an index to support a query, include the fields in the same order as your query.
 
@@ -70,9 +56,7 @@ If you insert a document with missing fields for the unique index, the index set
 
 For example, with this index:
 
-``` text
-db.cities.createIndex( { "name": 1 }, { unique: true } )
-```
+    db.cities.createIndex( { "name": 1 }, { unique: true } )
 
 If you add the document `  {"abbreviation": "LA"}  ` to the collection, the unique index creates an entry with `  name  ` set to `  null  ` . If you then try to add the document `  {"abbreviation": "NYC"}  ` , the operation fails because the resulting entry for the unique index is the same.
 
@@ -80,7 +64,7 @@ The same behavior applies to unique indexes with multiple fields. When creating 
 
 ## TTL indexes
 
-Use [TTL indexes](/firestore/mongodb-compatibility/docs/ttl) to automatically remove stale data from your databases. A TTL index designates a given field as the expiration time for documents in a given collection. With TTL, you can decrease storage costs by cleaning out obsolete data. Data is typically deleted within 24 hours after its expiration time.
+Use [TTL indexes](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl) to automatically remove stale data from your databases. A TTL index designates a given field as the expiration time for documents in a given collection. With TTL, you can decrease storage costs by cleaning out obsolete data. Data is typically deleted within 24 hours after its expiration time.
 
 ## Troubleshoot index building errors
 
@@ -95,4 +79,4 @@ You might encounter index building errors when managing your indexes. An indexin
 
 ## What's next
 
-  - Learn how to [create and manage indexes](/firestore/mongodb-compatibility/docs/indexing) or [TTL indexes](/firestore/mongodb-compatibility/docs/ttl)
+  - Learn how to [create and manage indexes](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing) or [TTL indexes](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl)

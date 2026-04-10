@@ -1,31 +1,123 @@
-  - [HTTP request](#body.HTTP_TEMPLATE)
-  - [Path parameters](#body.PATH_PARAMETERS)
-  - [Request body](#body.request_body)
-      - [JSON representation](#body.request_body.SCHEMA_REPRESENTATION)
-  - [Response body](#body.response_body)
-      - [JSON representation](#body.RunAggregationQueryResponse.SCHEMA_REPRESENTATION)
-  - [Authorization scopes](#body.aspect)
-  - [AggregationQuery](#AggregationQuery)
-      - [JSON representation](#AggregationQuery.SCHEMA_REPRESENTATION)
-  - [Aggregation](#Aggregation)
-      - [JSON representation](#Aggregation.SCHEMA_REPRESENTATION)
-  - [Count](#Count)
-      - [JSON representation](#Count.SCHEMA_REPRESENTATION)
-  - [Sum](#Sum)
-      - [JSON representation](#Sum.SCHEMA_REPRESENTATION)
-  - [Avg](#Avg)
-      - [JSON representation](#Avg.SCHEMA_REPRESENTATION)
-  - [AggregationResultBatch](#AggregationResultBatch)
-      - [JSON representation](#AggregationResultBatch.SCHEMA_REPRESENTATION)
-  - [AggregationResult](#AggregationResult)
-      - [JSON representation](#AggregationResult.SCHEMA_REPRESENTATION)
-  - [Try it\!](#try-it)
+  - [HTTP request](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#body.HTTP_TEMPLATE)
+  - [Path parameters](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#body.PATH_PARAMETERS)
+  - [Request body](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#body.request_body)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#body.request_body.SCHEMA_REPRESENTATION)
+  - [Response body](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#body.response_body)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#body.RunAggregationQueryResponse.SCHEMA_REPRESENTATION)
+  - [Authorization scopes](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#body.aspect)
+  - [AggregationQuery](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#AggregationQuery)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#AggregationQuery.SCHEMA_REPRESENTATION)
+  - [Aggregation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#Aggregation)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#Aggregation.SCHEMA_REPRESENTATION)
+  - [Count](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#Count)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#Count.SCHEMA_REPRESENTATION)
+  - [Sum](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#Sum)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#Sum.SCHEMA_REPRESENTATION)
+  - [Avg](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#Avg)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#Avg.SCHEMA_REPRESENTATION)
+  - [AggregationResultBatch](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#AggregationResultBatch)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#AggregationResultBatch.SCHEMA_REPRESENTATION)
+  - [AggregationResult](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#AggregationResult)
+      - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#AggregationResult.SCHEMA_REPRESENTATION)
+  - [Try it\!](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery#try-it)
 
 Runs an aggregation query.
 
 ### HTTP request
 
 Choose a location:
+
+global
+
+africa-south1
+
+asia-east1
+
+asia-east2
+
+asia-northeast1
+
+asia-northeast2
+
+asia-northeast3
+
+asia-south1
+
+asia-south2
+
+asia-southeast1
+
+asia-southeast2
+
+asia-southeast3
+
+australia-southeast1
+
+australia-southeast2
+
+europe-central2
+
+europe-north1
+
+europe-north2
+
+europe-southwest1
+
+europe-west1
+
+europe-west10
+
+europe-west12
+
+europe-west2
+
+europe-west3
+
+europe-west4
+
+europe-west6
+
+europe-west8
+
+europe-west9
+
+me-central1
+
+me-central2
+
+me-west1
+
+northamerica-northeast1
+
+northamerica-northeast2
+
+northamerica-south1
+
+southamerica-east1
+
+southamerica-west1
+
+us-central1
+
+us-east1
+
+us-east4
+
+us-east5
+
+us-south1
+
+us-west1
+
+us-west2
+
+us-west3
+
+us-west4
+
+eu
+
+us
 
   
 `  POST https://datastore.googleapis.com/v1beta3/projects/{projectId}:runAggregationQuery  `
@@ -57,7 +149,7 @@ The request body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;partitionId&quot;: {
     object (PartitionId)
   },
@@ -132,7 +224,7 @@ If successful, the response body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;batch&quot;: {
     object (AggregationResultBatch)
   },
@@ -174,7 +266,7 @@ Requires one of the following OAuth scopes:
   - `  https://www.googleapis.com/auth/datastore  `
   - `  https://www.googleapis.com/auth/cloud-platform  `
 
-For more information, see the [Authentication Overview](/docs/authentication#authorization-gcp) .
+For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .
 
 ## AggregationQuery
 
@@ -191,7 +283,7 @@ Datastore query for running an aggregation over a `  Query  ` .
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;aggregations&quot;: [
     {
       object (Aggregation)
@@ -243,7 +335,7 @@ Defines an aggregation that produces a single result.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;alias&quot;: string,
 
   // Union field operator can be only one of the following:
@@ -272,29 +364,25 @@ Optional. Optional name of the property to store the result of the aggregation.
 
 If not provided, Datastore will pick a default name following the format `  property_<incremental_id++>  ` . For example:
 
-``` text
-AGGREGATE
-  COUNT_UP_TO(1) AS count_up_to_1,
-  COUNT_UP_TO(2),
-  COUNT_UP_TO(3) AS count_up_to_3,
-  COUNT(*)
-OVER (
-  ...
-);
-```
+    AGGREGATE
+      COUNT_UP_TO(1) AS count_up_to_1,
+      COUNT_UP_TO(2),
+      COUNT_UP_TO(3) AS count_up_to_3,
+      COUNT(*)
+    OVER (
+      ...
+    );
 
 becomes:
 
-``` text
-AGGREGATE
-  COUNT_UP_TO(1) AS count_up_to_1,
-  COUNT_UP_TO(2) AS property_1,
-  COUNT_UP_TO(3) AS count_up_to_3,
-  COUNT(*) AS property_2
-OVER (
-  ...
-);
-```
+    AGGREGATE
+      COUNT_UP_TO(1) AS count_up_to_1,
+      COUNT_UP_TO(2) AS property_1,
+      COUNT_UP_TO(3) AS count_up_to_3,
+      COUNT(*) AS property_2
+    OVER (
+      ...
+    );
 
 Requires:
 
@@ -338,7 +426,7 @@ The `  COUNT(*)  ` aggregation function operates on the entire entity so it does
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;upTo&quot;: string
 }</code></pre></td>
 </tr>
@@ -361,9 +449,7 @@ If a zero value is provided, a count result of zero should always be expected.
 
 High-Level Example:
 
-``` text
-AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k );
-```
+    AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k );
 
 Requires:
 
@@ -394,7 +480,7 @@ Sum of the values of the requested property.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;property&quot;: {
     object (PropertyReference)
   }
@@ -434,7 +520,7 @@ Average of the values of the requested property.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;property&quot;: {
     object (PropertyReference)
   }
@@ -466,7 +552,7 @@ A batch of aggregation results produced by an aggregation query.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;aggregationResults&quot;: [
     {
       object (AggregationResult)
@@ -520,7 +606,7 @@ The keys of `  aggregateProperties  ` are the same for all results in an aggrega
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre class="text" dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
   &quot;aggregateProperties&quot;: {
     string: {
       object (Value)

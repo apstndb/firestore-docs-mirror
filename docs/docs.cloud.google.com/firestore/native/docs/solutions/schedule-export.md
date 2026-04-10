@@ -10,7 +10,7 @@ Before you schedule managed data exports, you must complete the following tasks:
 
 1.  [Enable billing for your Google Cloud project.](https://cloud.google.com/billing/docs/how-to/modify-project) Only Google Cloud projects with billing enabled can use the export and import feature.
     **Note:** Firebase projects must be on the [Blaze plan](https://firebase.google.com/pricing/?authuser=0) to use the managed export and import feature. Enabling billing for the Google Cloud automatically upgrades your Firebase project to the Blaze plan.
-2.  Export operations require a destination Cloud Storage bucket. [Create a Cloud Storage bucket](https://cloud.google.com/storage/docs/creating-buckets) in a location near [your Firestore database location](../locations#view-settings) . You cannot use a Requester Pays bucket for export operations.
+2.  Export operations require a destination Cloud Storage bucket. [Create a Cloud Storage bucket](https://cloud.google.com/storage/docs/creating-buckets) in a location near [your Firestore database location](https://docs.cloud.google.com/firestore/native/docs/locations#view-settings) . You cannot use a Requester Pays bucket for export operations.
 
 ## Create a Cloud Function and a Cloud Scheduler job
 
@@ -20,9 +20,7 @@ Follow the steps below to create a Node.js Cloud Function that initiates a Fires
 
 1.  [Install the Firebase CLI](https://firebase.google.com/docs/cli) . In a new directory, initialize the CLI for Cloud Run functions:
     
-    ``` text
-    firebase init functions --project PROJECT_ID
-    ```
+        firebase init functions --project PROJECT_ID
     
     1.  Select **JavaScript** for the language.
     2.  Optionally, enable ESLint.
@@ -30,40 +28,38 @@ Follow the steps below to create a Node.js Cloud Function that initiates a Fires
 
 2.  Replace the code in the `  functions/index.js  ` file with the following:
     
-    ``` javascript
-    const functions = require('firebase-functions');
-    const firestore = require('@google-cloud/firestore');
-    const client = new firestore.v1.FirestoreAdminClient();
-    
-    // Replace BUCKET_NAME
-    const bucket = 'gs://BUCKET_NAME';
-    
-    exports.scheduledFirestoreExport = functions.pubsub
-                                                .schedule('every 24 hours')
-                                                .onRun((context) => {
-    
-      const projectId = process.env.GCP_PROJECT;
-      const databaseName = 
-        client.databasePath(projectId, '(default)');
-    
-      return client.exportDocuments({
-        name: databaseName,
-        outputUriPrefix: bucket,
-        // Leave collectionIds empty to export all collections
-        // or set to a list of collection IDs to export,
-        // collectionIds: ['users', 'posts']
-        collectionIds: []
-        })
-      .then(responses => {
-        const response = responses[0];
-        console.log(`Operation Name: ${response['name']}`);
-      })
-      .catch(err => {
-        console.error(err);
-        throw new Error('Export operation failed');
-      });
-    });index.js
-    ```
+        const functions = require('firebase-functions');
+        const firestore = require('@google-cloud/firestore');
+        const client = new firestore.v1.FirestoreAdminClient();
+        
+        // Replace BUCKET_NAME
+        const bucket = 'gs://BUCKET_NAME';
+        
+        exports.scheduledFirestoreExport = functions.pubsub
+                                                    .schedule('every 24 hours')
+                                                    .onRun((context) => {
+        
+          const projectId = process.env.GCP_PROJECT;
+          const databaseName = 
+            client.databasePath(projectId, '(default)');
+        
+          return client.exportDocuments({
+            name: databaseName,
+            outputUriPrefix: bucket,
+            // Leave collectionIds empty to export all collections
+            // or set to a list of collection IDs to export,
+            // collectionIds: ['users', 'posts']
+            collectionIds: []
+            })
+          .then(responses => {
+            const response = responses[0];
+            console.log(`Operation Name: ${response['name']}`);
+          })
+          .catch(err => {
+            console.error(err);
+            throw new Error('Export operation failed');
+          });
+        });index.js
 
 3.  In the code above, modify the following:
     
@@ -79,15 +75,15 @@ Follow the steps below to create a Node.js Cloud Function that initiates a Fires
 
 4.  Deploy the scheduled function:
     
-    ``` text
-    firebase deploy --only functions
-    ```
+        firebase deploy --only functions
 
 ##### Google Cloud console
 
 ###### Create a Cloud Function
 
 1.  Go to the **Cloud Functions** page in the Google Cloud console:
+    
+    [Go to Cloud Functions](https://console.cloud.google.com/functions/list)
 
 2.  Click **Write a function**
 
@@ -99,37 +95,35 @@ Follow the steps below to create a Node.js Cloud Function that initiates a Fires
 
 6.  Under **Source code** , select **Inline editor** . Enter the following code under `  index.js  ` :
     
-    ``` text
-    const firestore = require('@google-cloud/firestore');
-    const client = new firestore.v1.FirestoreAdminClient();
-    // Replace BUCKET_NAME
-    const bucket = 'gs://BUCKET_NAME'
-    
-    exports.scheduledFirestoreExport = (event, context) => {
-      const databaseName = client.databasePath(
-        YOUR_PROJECT_ID,
-        '(default)'
-      );
-    
-      return client
-        .exportDocuments({
-          name: databaseName,
-          outputUriPrefix: bucket,
-          // Leave collectionIds empty to export all collection groups
-          // or define a list of collection group IDs:
-          // collectionIds: ['users', 'posts']
-          collectionIds: [],
-        })
-        .then(responses => {
-          const response = responses[0];
-          console.log(`Operation Name: ${response['name']}`);
-          return response;
-        })
-        .catch(err => {
-          console.error(err);
-        });
-    };
-    ```
+        const firestore = require('@google-cloud/firestore');
+        const client = new firestore.v1.FirestoreAdminClient();
+        // Replace BUCKET_NAME
+        const bucket = 'gs://BUCKET_NAME'
+        
+        exports.scheduledFirestoreExport = (event, context) => {
+          const databaseName = client.databasePath(
+            YOUR_PROJECT_ID,
+            '(default)'
+          );
+        
+          return client
+            .exportDocuments({
+              name: databaseName,
+              outputUriPrefix: bucket,
+              // Leave collectionIds empty to export all collection groups
+              // or define a list of collection group IDs:
+              // collectionIds: ['users', 'posts']
+              collectionIds: [],
+            })
+            .then(responses => {
+              const response = responses[0];
+              console.log(`Operation Name: ${response['name']}`);
+              return response;
+            })
+            .catch(err => {
+              console.error(err);
+            });
+        };
     
     In the code above, modify the following:
     
@@ -141,13 +135,11 @@ Follow the steps below to create a Node.js Cloud Function that initiates a Fires
 
 7.  Under `  package.json  ` , add the following dependency:
     
-    ``` text
-    {
-      "dependencies": {
-        "@google-cloud/firestore": "^1.3.0"
-      }
-    }
-    ```
+        {
+          "dependencies": {
+            "@google-cloud/firestore": "^1.3.0"
+          }
+        }
 
 8.  Under **Function to execute** , enter `  scheduledFirestoreExport  ` , the name of the function in `  index.js  ` .
 
@@ -158,6 +150,8 @@ Follow the steps below to create a Node.js Cloud Function that initiates a Fires
 Next, create a Cloud Scheduler job that calls your Cloud Function:
 
 1.  Go to the **Cloud Scheduler** page in the Google Cloud console:
+    
+    [Go to Cloud Scheduler](https://console.cloud.google.com/cloudscheduler)
 
 2.  Click **Create Job** .
 
@@ -181,9 +175,7 @@ Next, give the Cloud Function permission to start export operations and to write
 
 This Cloud Function uses your project's default service account to authenticate and authorize its export operations. When you create a project, a default service account is created for you with the following name:
 
-``` text
-PROJECT_ID@appspot.gserviceaccount.com
-```
+    PROJECT_ID@appspot.gserviceaccount.com
 
 This service account requires permission to start an export operation and to write to your Cloud Storage bucket. To grant these permissions, assign the following IAM roles to the default service account:
 
@@ -194,21 +186,18 @@ This service account requires permission to start an export operation and to wri
 You can use the `  gcloud  ` and `  gsutil  ` command-line tools to assign these roles.
 
 If not already installed, you can access these tools from [Cloud Shell](https://cloud.google.com/shell/) in the Google Cloud console:  
+[Start Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
 
 1.  Assign the **Cloud Datastore Import Export Admin** role. Replace PROJECT\_ID , and run the following command:
     
-    ``` text
-    gcloud projects add-iam-policy-binding PROJECT_ID \
-        --member serviceAccount:PROJECT_ID@appspot.gserviceaccount.com \
-        --role roles/datastore.importExportAdmin
-    ```
+        gcloud projects add-iam-policy-binding PROJECT_ID \
+            --member serviceAccount:PROJECT_ID@appspot.gserviceaccount.com \
+            --role roles/datastore.importExportAdmin
 
 2.  Assign the **Storage Admin** role on your bucket. Replace PROJECT\_ID and BUCKET\_NAME , and run the following command:
     
-    ``` text
-    gsutil iam ch serviceAccount:PROJECT_ID@appspot.gserviceaccount.com:admin \
-        gs://BUCKET_NAME
-    ```
+        gsutil iam ch serviceAccount:PROJECT_ID@appspot.gserviceaccount.com:admin \
+            gs://BUCKET_NAME
 
 If you disable or delete your App Engine default service account, your App Engine app will lose access to your Firestore database. If you disabled your App Engine service account, you can re-enable it, see [enabling a service account](https://cloud.google.com/iam/docs/creating-managing-service-accounts#enabling) . If you deleted your App Engine service account within the last 30 days, you can restore your service account, see [undeleting a service account](https://cloud.google.com/iam/docs/creating-managing-service-accounts#undeleting) .
 
@@ -217,6 +206,7 @@ If you disable or delete your App Engine default service account, your App Engin
 You can test your Cloud Scheduler job in the **Cloud Scheduler** page of the Google Cloud console.
 
 1.  Go to the **Cloud Scheduler** page in the Google Cloud console.  
+    [Go to Cloud Scheduler](https://console.cloud.google.com/cloudscheduler)
 
 2.  In the row for your new Cloud Scheduler job, click **Run now** .
     
@@ -232,12 +222,18 @@ To see if the Cloud Function successfully started an export operation, open the 
 
 Go to the **Cloud Run functions** page in the Firebase console.
 
+[Go to Function Logs](https://console.firebase.google.com/project/_/functions/logs)
+
 ### GCP Console
 
 Go to the **Cloud Run functions** page in the Google Cloud console.
 
+[Go to Logs Viewer](https://console.cloud.google.com/logs/viewer?resource=cloud_function)
+
 ## View export progress
 
-You can use the `  gcloud firestore operations list  ` command to view the progress of your export operations, see [managing export and import operations](../manage-data/export-import#managing_export_and_import_operations) .
+You can use the `  gcloud firestore operations list  ` command to view the progress of your export operations, see [managing export and import operations](https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import#managing_export_and_import_operations) .
 
 After an export operation completes, you can view the output files in your Cloud Storage bucket:
+
+[Open the Cloud Storage browser](https://console.cloud.google.com/storage/browser)

@@ -2,7 +2,7 @@
 
 **Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
 
-This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
 ## Description
 
@@ -14,115 +14,101 @@ The `  distinct(...)  ` stage has similar syntax as `  select(...)  ` as it take
 
 ##### Node.js
 
-``` javascript
-let cities = await db.pipeline()
-  .collection("cities")
-  .distinct("country")
-  .execute();
-
-cities = await db.pipeline()
-  .collection("cities")
-  .distinct(
-    field("state").toLower().as("normalizedState"),
-    field("country"))
-  .execute();test.firestore.js
-```
+    let cities = await db.pipeline()
+      .collection("cities")
+      .distinct("country")
+      .execute();
+    
+    cities = await db.pipeline()
+      .collection("cities")
+      .distinct(
+        field("state").toLower().as("normalizedState"),
+        field("country"))
+      .execute();test.firestore.js
 
 ### Web
 
-``` javascript
-let cities = await execute(db.pipeline()
-  .collection("cities")
-  .distinct("country"));
-
-cities = await execute(db.pipeline()
-  .collection("cities")
-  .distinct(
-    field("state").toLower().as("normalizedState"),
-    field("country")));test.firestore.js
-```
+    let cities = await execute(db.pipeline()
+      .collection("cities")
+      .distinct("country"));
+    
+    cities = await execute(db.pipeline()
+      .collection("cities")
+      .distinct(
+        field("state").toLower().as("normalizedState"),
+        field("country")));test.firestore.js
 
 ##### Swift
 
-``` swift
-let results = try await db.pipeline()
-  .collection("books")
-  .distinct([
-    Field("author").toUpper().as("author"),
-    Field("genre")
-  ])
-  .execute()PipelineSnippets.swift
-```
+    let results = try await db.pipeline()
+      .collection("books")
+      .distinct([
+        Field("author").toUpper().as("author"),
+        Field("genre")
+      ])
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
 
-``` kotlin
-var cities = db.pipeline()
-    .collection("cities")
-    .distinct("country")
-    .execute()
-
-cities = db.pipeline()
-    .collection("cities")
-    .distinct(
-        field("state").toLower().alias("normalizedState"),
-        field("country")
-    )
-    .execute()DocSnippets.kt
-```
+    var cities = db.pipeline()
+        .collection("cities")
+        .distinct("country")
+        .execute()
+    
+    cities = db.pipeline()
+        .collection("cities")
+        .distinct(
+            field("state").toLower().alias("normalizedState"),
+            field("country")
+        )
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
 
-``` text
-Task<Pipeline.Snapshot> cities;
-cities = db.pipeline()
-        .collection("cities")
-        .distinct("country")
-        .execute();
-
-cities = db.pipeline()
-        .collection("cities")
-        .distinct(
-                field("state").toLower().alias("normalizedState"),
-                field("country"))
-        .execute();DocSnippets.java
-```
+    Task<Pipeline.Snapshot> cities;
+    cities = db.pipeline()
+            .collection("cities")
+            .distinct("country")
+            .execute();
+    
+    cities = db.pipeline()
+            .collection("cities")
+            .distinct(
+                    field("state").toLower().alias("normalizedState"),
+                    field("country"))
+            .execute();DocSnippets.java
 
 ##### Python
 
-``` python
-from google.cloud.firestore_v1.pipeline_expressions import Field
-
-cities = client.pipeline().collection("cities").distinct("country").execute()
-
-cities = (
-    client.pipeline()
-    .collection("cities")
-    .distinct(Field.of("state").to_lower().as_("normalizedState"), "country")
-    .execute()
-)firestore_pipelines.py
-```
+    from google.cloud.firestore_v1.pipeline_expressions import Field
+    
+    cities = client.pipeline().collection("cities").distinct("country").execute()
+    
+    cities = (
+        client.pipeline()
+        .collection("cities")
+        .distinct(Field.of("state").to_lower().as_("normalizedState"), "country")
+        .execute()
+    )firestore_pipelines.py
 
 ##### Java
 
-``` java
-Pipeline.Snapshot cities1 =
-    firestore.pipeline().collection("cities").distinct("country").execute().get();
-
-Pipeline.Snapshot cities2 =
-    firestore
-        .pipeline()
-        .collection("cities")
-        .distinct(toLower(field("state")).as("normalizedState"), field("country"))
-        .execute()
-        .get();PipelineSnippets.java
-```
+    Pipeline.Snapshot cities1 =
+        firestore.pipeline().collection("cities").distinct("country").execute().get();
+    
+    Pipeline.Snapshot cities2 =
+        firestore
+            .pipeline()
+            .collection("cities")
+            .distinct(toLower(field("state")).as("normalizedState"), field("country"))
+            .execute()
+            .get();PipelineSnippets.java
 
 ## Behavior
 
-The `  distinct(...)  ` stage works similarly to an aggregate stage without groups. See also [Aggregate Stage](/firestore/native/docs/pipeline/stages/transformation/aggregate) and [Select Stage](/firestore/native/docs/pipeline/stages/transformation/select) .
+The `  distinct(...)  ` stage works similarly to an aggregate stage without groups. See also [Aggregate Stage](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/aggregate) and [Select Stage](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/select) .
 
 ### Find Distinct Field Values
 
@@ -130,32 +116,26 @@ For example, to get a list of every country in the following `  cities  ` collec
 
 ### Node.js
 
-``` text
-await db.collection("cities").doc("SF").set({name: "San Francisco", state: "CA", country: "USA"});
-await db.collection("cities").doc("LA").set({name: "Los Angeles", state: "CA", country: "USA"});
-await db.collection("cities").doc("NY").set({name: "New York", state: "NY", country: "USA"});
-await db.collection("cities").doc("TOR").set({name: "Toronto", state: null, country: "Canada"});
-await db.collection("cities").doc("MEX").set({name: "Mexico City", state: null, country: "Mexico"});
-```
+    await db.collection("cities").doc("SF").set({name: "San Francisco", state: "CA", country: "USA"});
+    await db.collection("cities").doc("LA").set({name: "Los Angeles", state: "CA", country: "USA"});
+    await db.collection("cities").doc("NY").set({name: "New York", state: "NY", country: "USA"});
+    await db.collection("cities").doc("TOR").set({name: "Toronto", state: null, country: "Canada"});
+    await db.collection("cities").doc("MEX").set({name: "Mexico City", state: null, country: "Mexico"});
 
 Distinct countries can be found using:
 
 ### Node.js
 
-``` text
-const cities = await db.pipeline()
-  .collection("/cities")
-  .distinct("country")
-  .execute();
-```
+    const cities = await db.pipeline()
+      .collection("/cities")
+      .distinct("country")
+      .execute();
 
 which generates the following result:
 
-``` text
-{ country: "USA" }
-{ country: "Canada" }
-{ country: "Mexico" }
-```
+    { country: "USA" }
+    { country: "Canada" }
+    { country: "Mexico" }
 
 ### Distinct Output of Expressions
 
@@ -163,23 +143,19 @@ You can also find the distinct combinations of multiple fields, or more complica
 
 ### Node.js
 
-``` text
-const cities = await db.pipeline()
-  .collection("/cities")
-  .distinct(
-    field("state").toLower().as("normalized_state"),
-    field("country"))
-  .execute();
-```
+    const cities = await db.pipeline()
+      .collection("/cities")
+      .distinct(
+        field("state").toLower().as("normalized_state"),
+        field("country"))
+      .execute();
 
 to get:
 
-``` text
-{ country: "USA", normalized_state: "ca" }
-{ country: "USA", normalized_state: "ny" }
-{ country: "Canada", normalized_state: null }
-{ country: "Mexico", normalized_state: null }
-```
+    { country: "USA", normalized_state: "ca" }
+    { country: "USA", normalized_state: "ny" }
+    { country: "Canada", normalized_state: null }
+    { country: "Mexico", normalized_state: null }
 
 ### Equivalence Behaviors
 

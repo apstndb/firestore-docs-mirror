@@ -1,6 +1,6 @@
 # Manage indexes
 
-This page describes how to manage your indexes. To learn more about indexes, see [Indexes overview](/firestore/mongodb-compatibility/docs/index-overview) .
+This page describes how to manage your indexes. To learn more about indexes, see [Indexes overview](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview) .
 
 ## Before you begin
 
@@ -11,7 +11,7 @@ Before you can create an index in Firestore with MongoDB compatibility, make sur
   - `  roles/editor  `
   - `  roles/owner  `
 
-To grant a role, see [Grant a single role](https://cloud.google.com/iam/docs/granting-changing-revoking-access#single-role) . For more information about Firestore roles and associated permissions, see [Predefined roles](/firestore/mongodb-compatibility/docs/security/iam) .
+To grant a role, see [Grant a single role](https://cloud.google.com/iam/docs/granting-changing-revoking-access#single-role) . For more information about Firestore roles and associated permissions, see [Predefined roles](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam) .
 
 If you have defined custom roles, assign all of the following permissions to create indexes:
 
@@ -29,19 +29,19 @@ To create an index, complete the following steps:
 
 Use the [`  createIndex()  `](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/) method to create an index. For example:
 
-  - ``` text
+  - ``` 
       db.restaurants.createIndex({"cuisine" : 1})
       
     ```
 
-  - ``` text
+  - ``` 
       db.restaurants.createIndex({"cuisine" : 1}, {sparse: true})
       
     ```
 
   - Index creation with `  db.runCommand()  ` is also supported with at most one index.
     
-    ``` text
+    ``` 
       db.runCommand({"createIndexes":"restaurant", "index": [{"key": {"cuisine":1}, {"name": "cuisine_index"}]})
       
     ```
@@ -49,12 +49,14 @@ Use the [`  createIndex()  `](https://www.mongodb.com/docs/manual/reference/meth
 Note the following limitations:
 
   - You can create only one index per request. `  db. collection .createIndexes()  ` is not supported.
-  - [Audit logs](/firestore/mongodb-compatibility/docs/audit-logging) for index creation with the MongoDB API use the method name `  google.firestore.admin.v1.FirestoreAdmin.CreateIndex  ` .
-  - For supported index options, see [indexes and index properties](/firestore/mongodb-compatibility/docs/supported-features-80#indexes_and_index_properties) .
+  - [Audit logs](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/audit-logging) for index creation with the MongoDB API use the method name `  google.firestore.admin.v1.FirestoreAdmin.CreateIndex  ` .
+  - For supported index options, see [indexes and index properties](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80#indexes_and_index_properties) .
 
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select a database from the list of databases.
 
@@ -68,17 +70,17 @@ Note the following limitations:
 
 7.  Select a field presence option, either non-sparse or sparse.
 
-8.  Optionally, set the [multikey index](/firestore/mongodb-compatibility/docs/index-overview#multikey) or [unique index](/firestore/mongodb-compatibility/docs/index-overview#unique_indexes) options.
+8.  Optionally, set the [multikey index](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview#multikey) or [unique index](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview#unique_indexes) options.
 
 9.  Click **Create** .
 
-10. Your new index is displayed in the list of indexes and Firestore with MongoDB compatibility begins creating your index. When your index is created, you will see a green check mark next to the index. If index is not created, see [Index building errors](/firestore/mongodb-compatibility/docs/index-overview#index-building-errors) for possible causes.
+10. Your new index is displayed in the list of indexes and Firestore with MongoDB compatibility begins creating your index. When your index is created, you will see a green check mark next to the index. If index is not created, see [Index building errors](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview#index-building-errors) for possible causes.
 
 ##### gcloud CLI
 
 To create an index, use the [`  gcloud firestore indexes composite create  `](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/create) command. Set `  api-scope  ` to `  mongodb-compatible-api  ` .
 
-``` text
+``` suppresswarning
 gcloud firestore indexes composite create \
 --database='DATABASE_ID' \
 --collection-group=COLLECTION \
@@ -96,7 +98,7 @@ Replace the following:
 
   - FIELD\_CONFIGURATION : a field configuration. For each field, add `  --field-config=field-path=  ` . For example:
     
-    ``` text
+    ``` suppresswarning
         --field-config=field-path=user-id,order=descending \
         --field-config=field-path=score,order=descending
         
@@ -114,7 +116,7 @@ To create a unique index, add the `  --unique  ` flag.
 
 Use the [`  google_firestore_index  `](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_index) resource and set `  api_scope  ` to `  MONGODB_COMPATIBLE_API  ` and `  query_scope  ` to `  COLLECTION_GROUP  ` .
 
-``` text
+``` suppresswarning
 resource "google_firestore_index" "index" {
   database    = "DATABASE_ID"
   collection  = "COLLECTION"
@@ -151,19 +153,17 @@ Use the [`  dropIndex()  `](https://www.mongodb.com/docs/manual/reference/method
 
 **Delete an index using index name**
 
-``` text
-db.restaurants.dropIndex("cuisine_index")
-```
+    db.restaurants.dropIndex("cuisine_index")
 
 **Delete an index using index definition**
 
-``` text
-db.restaurants.dropIndex({"cuisine" : 1})
-```
+    db.restaurants.dropIndex({"cuisine" : 1})
 
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  From the list of databases, select a database.
 
@@ -177,7 +177,7 @@ db.restaurants.dropIndex({"cuisine" : 1})
 
 1.  To find the name of the index, use the [`  gcloud firestore indexes composite list  `](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/list) command.
     
-    ``` text
+    ``` suppresswarning
     gcloud firestore indexes composite list \
     --database='DATABASE_ID'
     ```
@@ -186,7 +186,7 @@ db.restaurants.dropIndex({"cuisine" : 1})
 
 2.  To delete the index, use the [`  gcloud firestore indexes composite delete  `](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/delete) command.
     
-    ``` text
+    ``` suppresswarning
     gcloud firestore indexes composite delete INDEX_NAME \
     --database='DATABASE_ID'
     ```
@@ -195,6 +195,8 @@ db.restaurants.dropIndex({"cuisine" : 1})
     
       - INDEX\_NAME : the name of an index
       - DATABASE\_ID : a database ID
+
+<span id="index-build-time"></span>
 
 ## Index build time
 
@@ -212,7 +214,7 @@ Index builds are *long-running operations* . The following sections describe how
 
 After you start to create an index, Firestore with MongoDB compatibility assigns the operation a unique name. Operation names are prefixed with `  projects/ PROJECT_ID /databases/ DATABASE_ID /operations/  ` , for example:
 
-``` text
+``` notranslate
 projects/PROJECT_ID/databases/DATABASE_ID/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
 ```
 
@@ -222,7 +224,7 @@ You can omit the prefix when specifying an operation name for the `  describe  `
 
 To list long-running operations, use the [`  gcloud firestore operations list  `](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command. This command lists ongoing and recently completed operations. Operations are listed for a few days after completion:
 
-``` text
+``` notranslate
 gcloud firestore operations list
 ```
 
@@ -230,7 +232,7 @@ gcloud firestore operations list
 
 Instead of listing all long-running operations, you can list the details of a single operation:
 
-``` text
+``` notranslate
 gcloud firestore operations describe operation-name
 ```
 
@@ -246,7 +248,7 @@ To estimate an operation's progress, divide `  workCompleted  ` by `  workEstima
 
 The following is an example of the progress of creating an index:
 
-``` text
+``` notranslate
 {
   "operations": [
     {

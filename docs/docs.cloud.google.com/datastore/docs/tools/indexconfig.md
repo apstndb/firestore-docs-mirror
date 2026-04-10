@@ -1,44 +1,42 @@
-Firestore in Datastore mode uses [indexes](/datastore/docs/concepts/indexes) for every query your application makes. These indexes are updated whenever an entity changes, so the results can be returned quickly when the application makes a query. Datastore mode provides [built-in](/datastore/docs/concepts/indexes#built_in_indexes) indexes automatically, but needs to know in advance which [composite indexes](/datastore/docs/concepts/indexes#composite_indexes) the application will require. You specify which composite indexes your application needs in a configuration file. The [Datastore emulator](/datastore/docs/tools/datastore-emulator) can generate the Datastore mode composite index configuration automatically as you test your application. The [`  gcloud  `](/sdk/gcloud/reference) command-line tool provides commands to update the indexes that are available to your production Datastore mode database.
+Firestore in Datastore mode uses [indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes) for every query your application makes. These indexes are updated whenever an entity changes, so the results can be returned quickly when the application makes a query. Datastore mode provides [built-in](https://docs.cloud.google.com/datastore/docs/concepts/indexes#built_in_indexes) indexes automatically, but needs to know in advance which [composite indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes#composite_indexes) the application will require. You specify which composite indexes your application needs in a configuration file. The [Datastore emulator](https://docs.cloud.google.com/datastore/docs/tools/datastore-emulator) can generate the Datastore mode composite index configuration automatically as you test your application. The [`  gcloud  `](https://docs.cloud.google.com/sdk/gcloud/reference) command-line tool provides commands to update the indexes that are available to your production Datastore mode database.
 
 ## System requirements
 
-To use the gcloud CLI, you must have installed the [Google Cloud CLI](/sdk) .
+To use the gcloud CLI, you must have installed the [Google Cloud CLI](https://docs.cloud.google.com/sdk) .
 
 ## About index.yaml
 
 Every Datastore mode query made by an application needs a corresponding index. Indexes for simple queries, such as queries over a single property, are created automatically. Composite indexes for complex queries must be defined in a configuration file named `  index.yaml  ` . This file is uploaded with the application to create composite indexes in a Datastore mode database.
 
-The Datastore emulator automatically adds items to this file when the application tries to execute a query that needs a composite index that does not have an appropriate entry in the configuration file. You can adjust composite indexes or create new ones manually by editing the file. The `  index.yaml  ` is located in the `  <project-directory>/WEB-INF/  ` folder. By default, the data directory that contains `  WEB-INF/appengine-generated/index.yaml  ` is `  ~/.config/gcloud/emulators/datastore/  ` . See [Datastore emulator project directories](/datastore/docs/tools/datastore-emulator#emulator_project_directories) for additional details.
+The Datastore emulator automatically adds items to this file when the application tries to execute a query that needs a composite index that does not have an appropriate entry in the configuration file. You can adjust composite indexes or create new ones manually by editing the file. The `  index.yaml  ` is located in the `  <project-directory>/WEB-INF/  ` folder. By default, the data directory that contains `  WEB-INF/appengine-generated/index.yaml  ` is `  ~/.config/gcloud/emulators/datastore/  ` . See [Datastore emulator project directories](https://docs.cloud.google.com/datastore/docs/tools/datastore-emulator#emulator_project_directories) for additional details.
 
 **Note:** If during testing the application exercises every query it will make using the emulator, then the generated entries in `  index.yaml  ` will be complete. You only need to edit the file manually to delete composite indexes that are no longer used, or to define composite indexes not created by the emulator.
 
 The following is an example of an `  index.yaml  ` file:
 
-``` text
-indexes:
-
-- kind: Task
-  ancestor: no
-  properties:
-  - name: done
-  - name: priority
-    direction: desc
-
-- kind: Task
-  properties:
-  - name: collaborators
-    direction: asc
-  - name: created
-    direction: desc
-
-- kind: TaskList
-  ancestor: yes
-  properties:
-  - name: percent_complete
-    direction: asc
-  - name: type
-    direction: asc
-```
+    indexes:
+    
+    - kind: Task
+      ancestor: no
+      properties:
+      - name: done
+      - name: priority
+        direction: desc
+    
+    - kind: Task
+      properties:
+      - name: collaborators
+        direction: asc
+      - name: created
+        direction: desc
+    
+    - kind: TaskList
+      ancestor: yes
+      properties:
+      - name: percent_complete
+        direction: asc
+      - name: type
+        direction: asc
 
 The syntax of `  index.yaml  ` is the YAML format. For more information about this syntax, see [the YAML website](http://www.yaml.org/) .
 
@@ -71,9 +69,7 @@ An index element can have the following elements:
 
 When the Datastore emulator adds a generated composite index definition to `  index.yaml  ` , it does so below the following line, inserting it if necessary:
 
-``` text
-# AUTOGENERATED
-```
+    # AUTOGENERATED
 
 The emulator considers all composite index definitions below this line to be automatic, and it may update existing definitions below this line as the application makes queries.
 
@@ -81,7 +77,7 @@ All composite index definitions above this line are considered to be under manua
 
 ## Updating composite indexes
 
-The [`  datastore indexes create  `](/sdk/gcloud/reference/datastore/indexes/create) command looks at your local Datastore composite index configuration (the `  index.yaml  ` file), and if the composite index configuration defines an composite index that doesn't exist yet in your production Datastore mode database, your database creates the new composite index. See [the development workflow using the gcloud CLI](/datastore/docs/tools#the_development_workflow_using_gcloud) for an example of how to use `  indexes create  ` .
+The [`  datastore indexes create  `](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/indexes/create) command looks at your local Datastore composite index configuration (the `  index.yaml  ` file), and if the composite index configuration defines an composite index that doesn't exist yet in your production Datastore mode database, your database creates the new composite index. See [the development workflow using the gcloud CLI](https://docs.cloud.google.com/datastore/docs/tools#the_development_workflow_using_gcloud) for an example of how to use `  indexes create  ` .
 
 To create a composite index, the database must set up the composite index and then backfill the composite index with existing data. Composite index creation time is the sum of setup time and backfill time:
 
@@ -97,11 +93,11 @@ You can check the status of the composite indexes from the [Indexes](https://con
 
 When you change or remove a composite index from the composite index configuration, the original composite index is *not* deleted from your Datastore mode database automatically. This gives you the opportunity to leave an older version of the application running while new composite indexes are being built, or to revert to the older version immediately if a problem is discovered with a newer version.
 
-When you are sure that old composite indexes are no longer needed, you can delete them by using the [`  datastore indexes cleanup  `](/sdk/gcloud/reference/datastore/indexes/cleanup) command. This command deletes all composite indexes for the production Datastore mode instance that are not mentioned in the local version of `  index.yaml  ` . See [the development workflow using the gcloud CLI](/datastore/docs/tools#the_development_workflow_using_gcloud) for an example of how to use `  indexes cleanup  ` .
+When you are sure that old composite indexes are no longer needed, you can delete them by using the [`  datastore indexes cleanup  `](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/indexes/cleanup) command. This command deletes all composite indexes for the production Datastore mode instance that are not mentioned in the local version of `  index.yaml  ` . See [the development workflow using the gcloud CLI](https://docs.cloud.google.com/datastore/docs/tools#the_development_workflow_using_gcloud) for an example of how to use `  indexes cleanup  ` .
 
 ## Command-line arguments
 
-For details on command-line arguments for creating and cleaning composite indexes, see [`  datastore indexes create  `](/sdk/gcloud/reference/datastore/indexes/create) and [`  datastore indexes cleanup  `](/sdk/gcloud/reference/datastore/indexes/cleanup) , respectively. For details on command-line arguments for the gcloud CLI, see [the gcloud CLI reference](/sdk/gcloud/reference) .
+For details on command-line arguments for creating and cleaning composite indexes, see [`  datastore indexes create  `](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/indexes/create) and [`  datastore indexes cleanup  `](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/indexes/cleanup) , respectively. For details on command-line arguments for the gcloud CLI, see [the gcloud CLI reference](https://docs.cloud.google.com/sdk/gcloud/reference) .
 
 ## Managing long-running operations
 
@@ -109,7 +105,7 @@ Composite index builds are *long-running operations* and can take a substantial 
 
 After you start a composite index build, Datastore mode assigns the operation a unique name. Operation names are prefixed with `  projects/[PROJECT_ID]/databases/(default)/operations/  ` , for example:
 
-``` text
+``` notranslate
 projects/project-id/databases/(default)/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
 ```
 
@@ -117,11 +113,11 @@ However, you can leave out the prefix when specifying an operation name for the 
 
 ### Listing all long-running operations
 
-To list long-running operations, use the [gcloud datastore operations list](/sdk/gcloud/reference/datastore/operations/list) command. This command lists ongoing and recently completed operations. Operations are listed for a few days after completion:
+To list long-running operations, use the [gcloud datastore operations list](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/list) command. This command lists ongoing and recently completed operations. Operations are listed for a few days after completion:
 
 ### gcloud
 
-``` text
+``` notranslate
 gcloud datastore operations list
 ```
 
@@ -133,45 +129,39 @@ Before using any of the request data, make the following replacements:
 
 HTTP method and URL:
 
-``` text
-GET https://datastore.googleapis.com/v1/projects/project-id/operations
-```
+    GET https://datastore.googleapis.com/v1/projects/project-id/operations
 
 To send your request, expand one of these options:
 
 #### curl (Linux, macOS, or Cloud Shell)
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](/sdk/gcloud/reference/init) or [`  gcloud auth login  `](/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](/shell/docs) , which automatically logs you into the `  gcloud  ` CLI . You can check the currently active account by running [`  gcloud auth list  `](/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `  gcloud  ` CLI . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Execute the following command:
 
-``` text
-curl -X GET \
-     -H "Authorization: Bearer $(gcloud auth print-access-token)" \
-     "https://datastore.googleapis.com/v1/projects/project-id/operations"
-```
+    curl -X GET \
+         -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+         "https://datastore.googleapis.com/v1/projects/project-id/operations"
 
 #### PowerShell (Windows)
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](/sdk/gcloud/reference/init) or [`  gcloud auth login  `](/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`  gcloud auth list  `](/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Execute the following command:
 
-``` text
-$cred = gcloud auth print-access-token
-$headers = @{ "Authorization" = "Bearer $cred" }
-
-Invoke-WebRequest `
-    -Method GET `
-    -Headers $headers `
-    -Uri "https://datastore.googleapis.com/v1/projects/project-id/operations" | Select-Object -Expand Content
-```
+    $cred = gcloud auth print-access-token
+    $headers = @{ "Authorization" = "Bearer $cred" }
+    
+    Invoke-WebRequest `
+        -Method GET `
+        -Headers $headers `
+        -Uri "https://datastore.googleapis.com/v1/projects/project-id/operations" | Select-Object -Expand Content
 
 See information about the response below.
 
 For example, a recently completed composite index build shows the following information:
 
-``` text
+``` notranslate
 {
   "operations": [
   {
@@ -224,9 +214,9 @@ Instead of listing all long-running operations, you can list the details of a si
 
 ### gcloud
 
-Use the [`  operations describe  `](/sdk/gcloud/reference/datastore/operations/describe) command to show the status of a composite index build.
+Use the [`  operations describe  `](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/describe) command to show the status of a composite index build.
 
-``` text
+``` notranslate
 gcloud datastore operations describe operation-name
 ```
 
@@ -238,53 +228,47 @@ Before using any of the request data, make the following replacements:
 
 HTTP method and URL:
 
-``` text
-GET https://datastore.googleapis.com/v1/projects/project-id/operations
-```
+    GET https://datastore.googleapis.com/v1/projects/project-id/operations
 
 To send your request, expand one of these options:
 
 #### curl (Linux, macOS, or Cloud Shell)
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](/sdk/gcloud/reference/init) or [`  gcloud auth login  `](/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](/shell/docs) , which automatically logs you into the `  gcloud  ` CLI . You can check the currently active account by running [`  gcloud auth list  `](/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `  gcloud  ` CLI . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Execute the following command:
 
-``` text
-curl -X GET \
-     -H "Authorization: Bearer $(gcloud auth print-access-token)" \
-     "https://datastore.googleapis.com/v1/projects/project-id/operations"
-```
+    curl -X GET \
+         -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+         "https://datastore.googleapis.com/v1/projects/project-id/operations"
 
 #### PowerShell (Windows)
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](/sdk/gcloud/reference/init) or [`  gcloud auth login  `](/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`  gcloud auth list  `](/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Execute the following command:
 
-``` text
-$cred = gcloud auth print-access-token
-$headers = @{ "Authorization" = "Bearer $cred" }
-
-Invoke-WebRequest `
-    -Method GET `
-    -Headers $headers `
-    -Uri "https://datastore.googleapis.com/v1/projects/project-id/operations" | Select-Object -Expand Content
-```
+    $cred = gcloud auth print-access-token
+    $headers = @{ "Authorization" = "Bearer $cred" }
+    
+    Invoke-WebRequest `
+        -Method GET `
+        -Headers $headers `
+        -Uri "https://datastore.googleapis.com/v1/projects/project-id/operations" | Select-Object -Expand Content
 
 See information about the response below.
 
 ### Estimating the completion time
 
-As your operation runs, see the value of the [`  state  ` field](/datastore/docs/reference/admin/rpc/google.datastore.admin.v1#state) for the overall status of the operation.
+As your operation runs, see the value of the [`  state  ` field](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1#state) for the overall status of the operation.
 
-A request for the status of a long-running operation also returns the metrics `  workEstimated  ` and `  workCompleted  ` . These metrics are returned for the number of entities. `  workEstimated  ` shows the estimated total number of entities an operation will process, based on [database statistics](/datastore/docs/concepts/indexes#composite_indexes) . `  workCompleted  ` shows the number of entities processed so far. After the operation completes, `  workCompleted  ` reflects the total number of entities that were actually processed, which might be different than the value of `  workEstimated  ` .
+A request for the status of a long-running operation also returns the metrics `  workEstimated  ` and `  workCompleted  ` . These metrics are returned for the number of entities. `  workEstimated  ` shows the estimated total number of entities an operation will process, based on [database statistics](https://docs.cloud.google.com/datastore/docs/concepts/indexes#composite_indexes) . `  workCompleted  ` shows the number of entities processed so far. After the operation completes, `  workCompleted  ` reflects the total number of entities that were actually processed, which might be different than the value of `  workEstimated  ` .
 
 Divide `  workCompleted  ` by `  workEstimated  ` for a rough progress estimate. The estimate might be inaccurate because it depends on delayed statistics collection.
 
 For example, here is the progress status of a composite index build:
 
-``` text
+``` notranslate
 {
   "operations": [
     {
@@ -305,4 +289,4 @@ For example, here is the progress status of a composite index build:
     ...
 ```
 
-When an operation is done, the operation description will contain [`  "done": true  `](/datastore/docs/reference/admin/rpc/google.longrunning#operation) . See the value of the [`  state  ` field](/datastore/docs/reference/admin/rpc/google.datastore.admin.v1#state) for the result of the operation. If the `  done  ` field is not set in the response, then its value is `  false  ` . Do not depend on the existence of the `  done  ` value for in-progress operations.
+When an operation is done, the operation description will contain [`  "done": true  `](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.longrunning#operation) . See the value of the [`  state  ` field](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1#state) for the result of the operation. If the `  done  ` field is not set in the response, then its value is `  false  ` . Do not depend on the existence of the `  done  ` value for in-progress operations.

@@ -2,7 +2,7 @@ Committed use discounts (CUDs) provide deeply discounted prices in exchange for 
 
 CUDs are ideal when your spending on Datastore mode operations involves a predictable minimum that you can commit to for at least a year.
 
-**Note** : This document discusses some spend-based committed use discounts (CUDs) that automatically migrate to a new consumption model, which leverages discounts rather than credits. The migration date is indicated by a notification in the Google Cloud console Billing Overview page. For more information about the improvements, the affected CUDs, and any required actions on your part, see [Spend-based CUDs](/docs/cuds-multiprice) .
+**Note** : This document discusses some spend-based committed use discounts (CUDs) that automatically migrate to a new consumption model, which leverages discounts rather than credits. The migration date is indicated by a notification in the Google Cloud console Billing Overview page. For more information about the improvements, the affected CUDs, and any required actions on your part, see [Spend-based CUDs](https://docs.cloud.google.com/docs/cuds-multiprice) .
 
 ## Datastore mode CUD pricing
 
@@ -43,11 +43,11 @@ To purchase or manage CUDs for a Cloud Billing account, follow the instructions 
 
 Ideally, your commitment represents at least your expected minimum hourly expenditure on Datastore mode Read/Write/Delete operations across your projects over the next one or three years.
 
-**Note:** The prices in this section are examples. See [Firestore in Datastore mode Pricing](/datastore/docs/pricing) for current prices.
+**Note:** The prices in this section are examples. See [Firestore in Datastore mode Pricing](https://docs.cloud.google.com/datastore/docs/pricing) for current prices.
 
 As an example, say that you have a Datastore mode database that is in region: `  us-central1  ` (Iowa).
 
-From the [pricing page](/datastore/docs/pricing) , you can calculate the approximate hourly one-year commitment cost as follows:
+From the [pricing page](https://docs.cloud.google.com/datastore/docs/pricing) , you can calculate the approximate hourly one-year commitment cost as follows:
 
   - Monthly cost of a 1-year, $1.92/hour commitment: ($2.40 per hour - 20% discount) \* 730 hours = $1,401.60 per month
   - Total savings per month: $1,752 - $1,401.60 = $350.40
@@ -95,6 +95,6 @@ Your commitment fee applies to every hour during the term of the commitment, reg
 ## What's next
 
   - Read an [overview of Firestore in Datastore mode pricing](https://cloud.google.com/datastore/pricing) .
-  - Learn how to [view your CUD reports](/billing/docs/how-to/cud-analysis) .
-  - Understand savings with [cost breakdown reports](/billing/docs/how-to/cost-breakdown) .
-  - View the [list of Google Cloud services that offer CUDs](/docs/cuds) .
+  - Learn how to [view your CUD reports](https://docs.cloud.google.com/billing/docs/how-to/cud-analysis) .
+  - Understand savings with [cost breakdown reports](https://docs.cloud.google.com/billing/docs/how-to/cost-breakdown) .
+  - View the [list of Google Cloud services that offer CUDs](https://docs.cloud.google.com/docs/cuds) .

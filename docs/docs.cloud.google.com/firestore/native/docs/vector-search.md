@@ -24,24 +24,22 @@ The following example shows how to store a vector embedding in a Firestore docum
 
 ##### Python
 
-``` python
-from google.cloud import firestore
-from google.cloud.firestore_v1.vector import Vector
-
-firestore_client = firestore.Client()
-collection = firestore_client.collection("coffee-beans")
-doc = {
-    "name": "Kahawa coffee beans",
-    "description": "Information about the Kahawa coffee beans.",
-    "embedding_field": Vector([0.18332680, 0.24160706, 0.3416704]),
-}
-
-collection.add(doc)vector_search.py
-```
+    from google.cloud import firestore
+    from google.cloud.firestore_v1.vector import Vector
+    
+    firestore_client = firestore.Client()
+    collection = firestore_client.collection("coffee-beans")
+    doc = {
+        "name": "Kahawa coffee beans",
+        "description": "Information about the Kahawa coffee beans.",
+        "embedding_field": Vector([0.18332680, 0.24160706, 0.3416704]),
+    }
+    
+    collection.add(doc)vector_search.py
 
 ##### Node.js
 
-``` text
+``` suppresswarning
 import {
   Firestore,
   FieldValue,
@@ -58,53 +56,51 @@ await coll.add({
 
 ##### Go
 
-``` go
-import (
- "context"
- "fmt"
- "io"
-
- "cloud.google.com/go/firestore"
-)
-
-type CoffeeBean struct {
- Name           string             `firestore:"name,omitempty"`
- Description    string             `firestore:"description,omitempty"`
- EmbeddingField firestore.Vector32 `firestore:"embedding_field,omitempty"`
- Color          string             `firestore:"color,omitempty"`
-}
-
-func storeVectors(w io.Writer, projectID string) error {
- ctx := context.Background()
-
- // Create client
- client, err := firestore.NewClient(ctx, projectID)
- if err != nil {
-     return fmt.Errorf("firestore.NewClient: %w", err)
- }
- defer client.Close()
-
- // Vector can be represented by Vector32 or Vector64
- doc := CoffeeBean{
-     Name:           "Kahawa coffee beans",
-     Description:    "Information about the Kahawa coffee beans.",
-     EmbeddingField: []float32{1.0, 2.0, 3.0},
-     Color:          "red",
- }
- ref := client.Collection("coffee-beans").NewDoc()
- if _, err = ref.Set(ctx, doc); err != nil {
-     fmt.Fprintf(w, "failed to upsert: %v", err)
-     return err
- }
-
- return nil
-}
-vector_store.go
-```
+    import (
+     "context"
+     "fmt"
+     "io"
+    
+     "cloud.google.com/go/firestore"
+    )
+    
+    type CoffeeBean struct {
+     Name           string             `firestore:"name,omitempty"`
+     Description    string             `firestore:"description,omitempty"`
+     EmbeddingField firestore.Vector32 `firestore:"embedding_field,omitempty"`
+     Color          string             `firestore:"color,omitempty"`
+    }
+    
+    func storeVectors(w io.Writer, projectID string) error {
+     ctx := context.Background()
+    
+     // Create client
+     client, err := firestore.NewClient(ctx, projectID)
+     if err != nil {
+         return fmt.Errorf("firestore.NewClient: %w", err)
+     }
+     defer client.Close()
+    
+     // Vector can be represented by Vector32 or Vector64
+     doc := CoffeeBean{
+         Name:           "Kahawa coffee beans",
+         Description:    "Information about the Kahawa coffee beans.",
+         EmbeddingField: []float32{1.0, 2.0, 3.0},
+         Color:          "red",
+     }
+     ref := client.Collection("coffee-beans").NewDoc()
+     if _, err = ref.Set(ctx, doc); err != nil {
+         fmt.Fprintf(w, "failed to upsert: %v", err)
+         return err
+     }
+    
+     return nil
+    }
+    vector_store.go
 
 ##### Java
 
-``` text
+``` suppresswarning
 import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.FieldValue;
@@ -123,11 +119,11 @@ DocumentReference documentReference = future.get();
 
 ### Compute vector embeddings with a Cloud Function
 
-To calculate and store vector embeddings whenever a document is updated or created, you can set up a [Cloud Run function](/firestore/native/docs/extend-with-functions-2nd-gen) :
+To calculate and store vector embeddings whenever a document is updated or created, you can set up a [Cloud Run function](https://docs.cloud.google.com/firestore/native/docs/extend-with-functions-2nd-gen) :
 
 ##### Python
 
-``` text
+``` suppresswarning
 @functions_framework.cloud_event
 def store_embedding(cloud_event) -> None:
   """Triggers by a change to a Firestore document.
@@ -145,7 +141,7 @@ def store_embedding(cloud_event) -> None:
 
 ##### Node.js
 
-``` text
+``` suppresswarning
 /**
  * A vector embedding will be computed from the
  * value of the `content` field. The vector value
@@ -180,19 +176,19 @@ async function storeEmbedding(event: FirestoreEvent<any>): Promise<void> {
 
 ##### Go
 
-``` text
+``` suppresswarning
   // Not yet supported in the Go client library
 ```
 
 ##### Java
 
-``` text
+``` suppresswarning
   // Not yet supported in the Java client library
 ```
 
 ## Create and manage vector indexes
 
-Before you can perform a nearest neighbor search with your vector embeddings, you must create a corresponding index. The following examples demonstrate how to create and manage vector indexes with the Google Cloud CLI and the console. Vector indexes can also be [managed with the Firebase CLI and Terraform](/docs/firestore/query-data/indexing) .
+Before you can perform a nearest neighbor search with your vector embeddings, you must create a corresponding index. The following examples demonstrate how to create and manage vector indexes with the Google Cloud CLI and the console. Vector indexes can also be [managed with the Firebase CLI and Terraform](https://docs.cloud.google.com/docs/firestore/query-data/indexing) .
 
 ### Create a vector index
 
@@ -201,6 +197,8 @@ Before you can perform a nearest neighbor search with your vector embeddings, yo
 To manually create a new index from the Google Cloud console:
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -220,19 +218,15 @@ Your new index will show up in the list of manual indexes and Firestore will beg
 
 Before you create a vector index, upgrade to the latest version of the Google Cloud CLI:
 
-``` text
-gcloud components update
-```
+    gcloud components update
 
 To create a vector index, use [`  gcloud firestore indexes composite create  `](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/composite/create) :
 
-``` text
-gcloud firestore indexes composite create \
---collection-group=collection-group \
---query-scope=COLLECTION \
---field-config field-path=vector-field,vector-config='vector-configuration' \
---database=database-id
-```
+    gcloud firestore indexes composite create \
+    --collection-group=collection-group \
+    --query-scope=COLLECTION \
+    --field-config field-path=vector-field,vector-config='vector-configuration' \
+    --database=database-id
 
 where:
 
@@ -241,22 +235,24 @@ where:
   - database-id is the ID of the database.
   - vector-configuration includes the vector `  dimension  ` and index type. The `  dimension  ` is an integer up to 2048. The index type must be `  flat  ` . Format the index configuration as follows: `  {"dimension":" DIMENSION ", "flat": "{}"}  ` .
 
-The following example creates a composite index, including a vector index for field `  vector-field  ` and an ascending index for field `  color  ` . You can use this type of index to [pre-filter data](#pre-filter-documents) before a nearest neighbor search.
+The following example creates a composite index, including a vector index for field `  vector-field  ` and an ascending index for field `  color  ` . You can use this type of index to [pre-filter data](https://docs.cloud.google.com/firestore/native/docs/vector-search#pre-filter-documents) before a nearest neighbor search.
 
-``` text
-gcloud firestore indexes composite create \
---collection-group=collection-group \
---query-scope=COLLECTION \
---field-config=order=ASCENDING,field-path="color" \
---field-config field-path=vector-field,vector-config='{"dimension":"1024", "flat": "{}"}' \
---database=database-id
-```
+    gcloud firestore indexes composite create \
+    --collection-group=collection-group \
+    --query-scope=COLLECTION \
+    --field-config=order=ASCENDING,field-path="color" \
+    --field-config field-path=vector-field,vector-config='{"dimension":"1024", "flat": "{}"}' \
+    --database=database-id
+
+[](https://docs.cloud.google.com/firestore/native/docs/describe_a_vector_index)
 
 ### List all vector indexes
 
 ### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -268,17 +264,13 @@ gcloud firestore indexes composite create \
 
 To list all indexes and retrieve index IDs:
 
-``` text
-gcloud firestore indexes composite list --database=database-id
-```
+    gcloud firestore indexes composite list --database=database-id
 
 Replace database-id with the ID of the database.
 
 You can use th index ID to view more details about an index:
 
-``` text
-gcloud firestore indexes composite describe index-id --database=database-id
-```
+    gcloud firestore indexes composite describe index-id --database=database-id
 
 where:
 
@@ -290,6 +282,8 @@ where:
 ### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
+    
+    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -301,41 +295,37 @@ where:
 
 ##### gcloud
 
-``` text
-gcloud firestore indexes composite delete index-id --database=database-id
-```
+    gcloud firestore indexes composite delete index-id --database=database-id
 
 where:
 
-  - index-id is the ID of the index to delete. Use [`  indexes composite list  `](#list) to retrieve the index ID.
+  - index-id is the ID of the index to delete. Use [`  indexes composite list  `](https://docs.cloud.google.com/firestore/native/docs/vector-search#list) to retrieve the index ID.
   - database-id is the ID of the database.
 
 ## Make a nearest-neighbor query
 
-You can perform a similarity search to find the nearest neighbors of a vector embedding. Similarity searches require [vector indexes](#create_and_manage_vector_indexes) . If an index doesn't exist, Firestore suggests an index to create using the gcloud CLI.
+You can perform a similarity search to find the nearest neighbors of a vector embedding. Similarity searches require [vector indexes](https://docs.cloud.google.com/firestore/native/docs/vector-search#create_and_manage_vector_indexes) . If an index doesn't exist, Firestore suggests an index to create using the gcloud CLI.
 
 The following example finds 10 nearest neighbors of the query vector.
 
 ##### Python
 
-``` python
-from google.cloud.firestore_v1.base_vector_query import DistanceMeasure
-from google.cloud.firestore_v1.vector import Vector
-
-collection = db.collection("coffee-beans")
-
-# Requires a single-field vector index
-vector_query = collection.find_nearest(
-    vector_field="embedding_field",
-    query_vector=Vector([0.3416704, 0.18332680, 0.24160706]),
-    distance_measure=DistanceMeasure.EUCLIDEAN,
-    limit=5,
-)vector_search.py
-```
+    from google.cloud.firestore_v1.base_vector_query import DistanceMeasure
+    from google.cloud.firestore_v1.vector import Vector
+    
+    collection = db.collection("coffee-beans")
+    
+    # Requires a single-field vector index
+    vector_query = collection.find_nearest(
+        vector_field="embedding_field",
+        query_vector=Vector([0.3416704, 0.18332680, 0.24160706]),
+        distance_measure=DistanceMeasure.EUCLIDEAN,
+        limit=5,
+    )vector_search.py
 
 ##### Node.js
 
-``` text
+``` suppresswarning
 import {
   Firestore,
   FieldValue,
@@ -356,53 +346,51 @@ const vectorQuerySnapshot: VectorQuerySnapshot = await vectorQuery.get();
 
 ##### Go
 
-``` go
-import (
- "context"
- "fmt"
- "io"
-
- "cloud.google.com/go/firestore"
-)
-
-func vectorSearchBasic(w io.Writer, projectID string) error {
- ctx := context.Background()
-
- // Create client
- client, err := firestore.NewClient(ctx, projectID)
- if err != nil {
-     return fmt.Errorf("firestore.NewClient: %w", err)
- }
- defer client.Close()
-
- collection := client.Collection("coffee-beans")
-
- // Requires a vector index
- // https://firebase.google.com/docs/firestore/vector-search#create_and_manage_vector_indexes
- vectorQuery := collection.FindNearest("embedding_field",
-     []float32{3.0, 1.0, 2.0},
-     5,
-     // More info: https://firebase.google.com/docs/firestore/vector-search#vector_distances
-     firestore.DistanceMeasureEuclidean,
-     nil)
-
- docs, err := vectorQuery.Documents(ctx).GetAll()
- if err != nil {
-     fmt.Fprintf(w, "failed to get vector query results: %v", err)
-     return err
- }
-
- for _, doc := range docs {
-     fmt.Fprintln(w, doc.Data()["name"])
- }
- return nil
-}
-vector_search_basic.go
-```
+    import (
+     "context"
+     "fmt"
+     "io"
+    
+     "cloud.google.com/go/firestore"
+    )
+    
+    func vectorSearchBasic(w io.Writer, projectID string) error {
+     ctx := context.Background()
+    
+     // Create client
+     client, err := firestore.NewClient(ctx, projectID)
+     if err != nil {
+         return fmt.Errorf("firestore.NewClient: %w", err)
+     }
+     defer client.Close()
+    
+     collection := client.Collection("coffee-beans")
+    
+     // Requires a vector index
+     // https://firebase.google.com/docs/firestore/vector-search#create_and_manage_vector_indexes
+     vectorQuery := collection.FindNearest("embedding_field",
+         []float32{3.0, 1.0, 2.0},
+         5,
+         // More info: https://firebase.google.com/docs/firestore/vector-search#vector_distances
+         firestore.DistanceMeasureEuclidean,
+         nil)
+    
+     docs, err := vectorQuery.Documents(ctx).GetAll()
+     if err != nil {
+         fmt.Fprintf(w, "failed to get vector query results: %v", err)
+         return err
+     }
+    
+     for _, doc := range docs {
+         fmt.Fprintln(w, doc.Data()["name"])
+     }
+     return nil
+    }
+    vector_search_basic.go
 
 ##### Java
 
-``` text
+``` suppresswarning
 import com.google.cloud.firestore.VectorQuery;
 import com.google.cloud.firestore.VectorQuerySnapshot;
 
@@ -448,25 +436,23 @@ To pre-filter documents before finding the nearest neighbors, you can combine a 
 
 ##### Python
 
-``` python
-from google.cloud.firestore_v1.base_vector_query import DistanceMeasure
-from google.cloud.firestore_v1.vector import Vector
-
-collection = db.collection("coffee-beans")
-
-# Similarity search with pre-filter
-# Requires a composite vector index
-vector_query = collection.where("color", "==", "red").find_nearest(
-    vector_field="embedding_field",
-    query_vector=Vector([0.3416704, 0.18332680, 0.24160706]),
-    distance_measure=DistanceMeasure.EUCLIDEAN,
-    limit=5,
-)vector_search.py
-```
+    from google.cloud.firestore_v1.base_vector_query import DistanceMeasure
+    from google.cloud.firestore_v1.vector import Vector
+    
+    collection = db.collection("coffee-beans")
+    
+    # Similarity search with pre-filter
+    # Requires a composite vector index
+    vector_query = collection.where("color", "==", "red").find_nearest(
+        vector_field="embedding_field",
+        query_vector=Vector([0.3416704, 0.18332680, 0.24160706]),
+        distance_measure=DistanceMeasure.EUCLIDEAN,
+        limit=5,
+    )vector_search.py
 
 ##### Node.js
 
-``` text
+``` suppresswarning
 // Similarity search with pre-filter
 // Requires composite vector index
 const preFilteredVectorQuery: VectorQuery = coll
@@ -483,54 +469,52 @@ const vectorQueryResults = await preFilteredVectorQuery.get();
 
 ##### Go
 
-``` go
-import (
- "context"
- "fmt"
- "io"
-
- "cloud.google.com/go/firestore"
-)
-
-func vectorSearchPrefilter(w io.Writer, projectID string) error {
- ctx := context.Background()
-
- // Create client
- client, err := firestore.NewClient(ctx, projectID)
- if err != nil {
-     return fmt.Errorf("firestore.NewClient: %w", err)
- }
- defer client.Close()
-
- collection := client.Collection("coffee-beans")
-
- // Similarity search with pre-filter
- // Requires a composite vector index
- vectorQuery := collection.Where("color", "==", "red").
-     FindNearest("embedding_field",
-         []float32{3.0, 1.0, 2.0},
-         5,
-         // More info: https://firebase.google.com/docs/firestore/vector-search#vector_distances
-         firestore.DistanceMeasureEuclidean,
-         nil)
-
- docs, err := vectorQuery.Documents(ctx).GetAll()
- if err != nil {
-     fmt.Fprintf(w, "failed to get vector query results: %v", err)
-     return err
- }
-
- for _, doc := range docs {
-     fmt.Fprintln(w, doc.Data()["name"])
- }
- return nil
-}
-vector_search_prefilter.go
-```
+    import (
+     "context"
+     "fmt"
+     "io"
+    
+     "cloud.google.com/go/firestore"
+    )
+    
+    func vectorSearchPrefilter(w io.Writer, projectID string) error {
+     ctx := context.Background()
+    
+     // Create client
+     client, err := firestore.NewClient(ctx, projectID)
+     if err != nil {
+         return fmt.Errorf("firestore.NewClient: %w", err)
+     }
+     defer client.Close()
+    
+     collection := client.Collection("coffee-beans")
+    
+     // Similarity search with pre-filter
+     // Requires a composite vector index
+     vectorQuery := collection.Where("color", "==", "red").
+         FindNearest("embedding_field",
+             []float32{3.0, 1.0, 2.0},
+             5,
+             // More info: https://firebase.google.com/docs/firestore/vector-search#vector_distances
+             firestore.DistanceMeasureEuclidean,
+             nil)
+    
+     docs, err := vectorQuery.Documents(ctx).GetAll()
+     if err != nil {
+         fmt.Fprintf(w, "failed to get vector query results: %v", err)
+         return err
+     }
+    
+     for _, doc := range docs {
+         fmt.Fprintln(w, doc.Data()["name"])
+     }
+     return nil
+    }
+    vector_search_prefilter.go
 
 ##### Java
 
-``` text
+``` suppresswarning
 import com.google.cloud.firestore.VectorQuery;
 import com.google.cloud.firestore.VectorQuerySnapshot;
 
@@ -552,29 +536,27 @@ You can retrieve the calculated vector distance by assigning a `  distance_resul
 
 ##### Python
 
-``` python
-from google.cloud.firestore_v1.base_vector_query import DistanceMeasure
-from google.cloud.firestore_v1.vector import Vector
-
-collection = db.collection("coffee-beans")
-
-vector_query = collection.find_nearest(
-    vector_field="embedding_field",
-    query_vector=Vector([0.3416704, 0.18332680, 0.24160706]),
-    distance_measure=DistanceMeasure.EUCLIDEAN,
-    limit=10,
-    distance_result_field="vector_distance",
-)
-
-docs = vector_query.stream()
-
-for doc in docs:
-    print(f"{doc.id}, Distance: {doc.get('vector_distance')}")vector_search.py
-```
+    from google.cloud.firestore_v1.base_vector_query import DistanceMeasure
+    from google.cloud.firestore_v1.vector import Vector
+    
+    collection = db.collection("coffee-beans")
+    
+    vector_query = collection.find_nearest(
+        vector_field="embedding_field",
+        query_vector=Vector([0.3416704, 0.18332680, 0.24160706]),
+        distance_measure=DistanceMeasure.EUCLIDEAN,
+        limit=10,
+        distance_result_field="vector_distance",
+    )
+    
+    docs = vector_query.stream()
+    
+    for doc in docs:
+        print(f"{doc.id}, Distance: {doc.get('vector_distance')}")vector_search.py
 
 ##### Node.js
 
-``` text
+``` suppresswarning
 const vectorQuery: VectorQuery = coll.findNearest(
     {
       vectorField: 'embedding_field',
@@ -593,53 +575,51 @@ snapshot.forEach((doc) => {
 
 ##### Go
 
-``` go
-import (
- "context"
- "fmt"
- "io"
-
- "cloud.google.com/go/firestore"
-)
-
-func vectorSearchDistanceResultField(w io.Writer, projectID string) error {
- ctx := context.Background()
-
- client, err := firestore.NewClient(ctx, projectID)
- if err != nil {
-     return fmt.Errorf("firestore.NewClient: %w", err)
- }
- defer client.Close()
-
- collection := client.Collection("coffee-beans")
-
- // Requires a vector index
- // https://firebase.google.com/docs/firestore/vector-search#create_and_manage_vector_indexes
- vectorQuery := collection.FindNearest("embedding_field",
-     []float32{3.0, 1.0, 2.0},
-     10,
-     firestore.DistanceMeasureEuclidean,
-     &firestore.FindNearestOptions{
-         DistanceResultField: "vector_distance",
-     })
-
- docs, err := vectorQuery.Documents(ctx).GetAll()
- if err != nil {
-     fmt.Fprintf(w, "failed to get vector query results: %v", err)
-     return err
- }
-
- for _, doc := range docs {
-     fmt.Fprintf(w, "%v, Distance: %v\n", doc.Data()["name"], doc.Data()["vector_distance"])
- }
- return nil
-}
-vector_search_result_field.go
-```
+    import (
+     "context"
+     "fmt"
+     "io"
+    
+     "cloud.google.com/go/firestore"
+    )
+    
+    func vectorSearchDistanceResultField(w io.Writer, projectID string) error {
+     ctx := context.Background()
+    
+     client, err := firestore.NewClient(ctx, projectID)
+     if err != nil {
+         return fmt.Errorf("firestore.NewClient: %w", err)
+     }
+     defer client.Close()
+    
+     collection := client.Collection("coffee-beans")
+    
+     // Requires a vector index
+     // https://firebase.google.com/docs/firestore/vector-search#create_and_manage_vector_indexes
+     vectorQuery := collection.FindNearest("embedding_field",
+         []float32{3.0, 1.0, 2.0},
+         10,
+         firestore.DistanceMeasureEuclidean,
+         &firestore.FindNearestOptions{
+             DistanceResultField: "vector_distance",
+         })
+    
+     docs, err := vectorQuery.Documents(ctx).GetAll()
+     if err != nil {
+         fmt.Fprintf(w, "failed to get vector query results: %v", err)
+         return err
+     }
+    
+     for _, doc := range docs {
+         fmt.Fprintf(w, "%v, Distance: %v\n", doc.Data()["name"], doc.Data()["vector_distance"])
+     }
+     return nil
+    }
+    vector_search_result_field.go
 
 ##### Java
 
-``` text
+``` suppresswarning
 import com.google.cloud.firestore.VectorQuery;
 import com.google.cloud.firestore.VectorQueryOptions;
 import com.google.cloud.firestore.VectorQuerySnapshot;
@@ -663,19 +643,17 @@ If you want to use a field mask to return a subset of document fields along with
 
 ##### Python
 
-``` python
-vector_query = collection.select(["color", "vector_distance"]).find_nearest(
-    vector_field="embedding_field",
-    query_vector=Vector([0.3416704, 0.18332680, 0.24160706]),
-    distance_measure=DistanceMeasure.EUCLIDEAN,
-    limit=10,
-    distance_result_field="vector_distance",
-)vector_search.py
-```
+    vector_query = collection.select(["color", "vector_distance"]).find_nearest(
+        vector_field="embedding_field",
+        query_vector=Vector([0.3416704, 0.18332680, 0.24160706]),
+        distance_measure=DistanceMeasure.EUCLIDEAN,
+        limit=10,
+        distance_result_field="vector_distance",
+    )vector_search.py
 
 ##### Node.js
 
-``` text
+``` suppresswarning
 const vectorQuery: VectorQuery = coll
     .select('name', 'description', 'vector_distance')
     .findNearest({
@@ -689,54 +667,52 @@ const vectorQuery: VectorQuery = coll
 
 ##### Go
 
-``` go
-import (
- "context"
- "fmt"
- "io"
-
- "cloud.google.com/go/firestore"
-)
-
-func vectorSearchDistanceResultFieldMasked(w io.Writer, projectID string) error {
- ctx := context.Background()
-
- client, err := firestore.NewClient(ctx, projectID)
- if err != nil {
-     return fmt.Errorf("firestore.NewClient: %w", err)
- }
- defer client.Close()
-
- collection := client.Collection("coffee-beans")
-
- // Requires a vector index
- // https://firebase.google.com/docs/firestore/vector-search#create_and_manage_vector_indexes
- vectorQuery := collection.Select("color", "vector_distance").
-     FindNearest("embedding_field",
-         []float32{3.0, 1.0, 2.0},
-         10,
-         firestore.DistanceMeasureEuclidean,
-         &firestore.FindNearestOptions{
-             DistanceResultField: "vector_distance",
-         })
-
- docs, err := vectorQuery.Documents(ctx).GetAll()
- if err != nil {
-     fmt.Fprintf(w, "failed to get vector query results: %v", err)
-     return err
- }
-
- for _, doc := range docs {
-     fmt.Fprintf(w, "%v, Distance: %v\n", doc.Data()["color"], doc.Data()["vector_distance"])
- }
- return nil
-}
-vector_search_result_field_masked.go
-```
+    import (
+     "context"
+     "fmt"
+     "io"
+    
+     "cloud.google.com/go/firestore"
+    )
+    
+    func vectorSearchDistanceResultFieldMasked(w io.Writer, projectID string) error {
+     ctx := context.Background()
+    
+     client, err := firestore.NewClient(ctx, projectID)
+     if err != nil {
+         return fmt.Errorf("firestore.NewClient: %w", err)
+     }
+     defer client.Close()
+    
+     collection := client.Collection("coffee-beans")
+    
+     // Requires a vector index
+     // https://firebase.google.com/docs/firestore/vector-search#create_and_manage_vector_indexes
+     vectorQuery := collection.Select("color", "vector_distance").
+         FindNearest("embedding_field",
+             []float32{3.0, 1.0, 2.0},
+             10,
+             firestore.DistanceMeasureEuclidean,
+             &firestore.FindNearestOptions{
+                 DistanceResultField: "vector_distance",
+             })
+    
+     docs, err := vectorQuery.Documents(ctx).GetAll()
+     if err != nil {
+         fmt.Fprintf(w, "failed to get vector query results: %v", err)
+         return err
+     }
+    
+     for _, doc := range docs {
+         fmt.Fprintf(w, "%v, Distance: %v\n", doc.Data()["color"], doc.Data()["vector_distance"])
+     }
+     return nil
+    }
+    vector_search_result_field_masked.go
 
 ##### Java
 
-``` text
+``` suppresswarning
 import com.google.cloud.firestore.VectorQuery;
 import com.google.cloud.firestore.VectorQueryOptions;
 import com.google.cloud.firestore.VectorQuerySnapshot;
@@ -771,29 +747,27 @@ The following example shows how to specify a distance threshold to return up to 
 
 ##### Python
 
-``` python
-from google.cloud.firestore_v1.base_vector_query import DistanceMeasure
-from google.cloud.firestore_v1.vector import Vector
-
-collection = db.collection("coffee-beans")
-
-vector_query = collection.find_nearest(
-    vector_field="embedding_field",
-    query_vector=Vector([0.3416704, 0.18332680, 0.24160706]),
-    distance_measure=DistanceMeasure.EUCLIDEAN,
-    limit=10,
-    distance_threshold=4.5,
-)
-
-docs = vector_query.stream()
-
-for doc in docs:
-    print(f"{doc.id}")vector_search.py
-```
+    from google.cloud.firestore_v1.base_vector_query import DistanceMeasure
+    from google.cloud.firestore_v1.vector import Vector
+    
+    collection = db.collection("coffee-beans")
+    
+    vector_query = collection.find_nearest(
+        vector_field="embedding_field",
+        query_vector=Vector([0.3416704, 0.18332680, 0.24160706]),
+        distance_measure=DistanceMeasure.EUCLIDEAN,
+        limit=10,
+        distance_threshold=4.5,
+    )
+    
+    docs = vector_query.stream()
+    
+    for doc in docs:
+        print(f"{doc.id}")vector_search.py
 
 ##### Node.js
 
-``` text
+``` suppresswarning
 const vectorQuery: VectorQuery = coll.findNearest({
   vectorField: 'embedding_field',
   queryVector: [3.0, 1.0, 2.0],
@@ -811,53 +785,51 @@ snapshot.forEach((doc) => {
 
 ##### Go
 
-``` go
-import (
- "context"
- "fmt"
- "io"
-
- "cloud.google.com/go/firestore"
-)
-
-func vectorSearchDistanceThreshold(w io.Writer, projectID string) error {
- ctx := context.Background()
-
- client, err := firestore.NewClient(ctx, projectID)
- if err != nil {
-     return fmt.Errorf("firestore.NewClient: %w", err)
- }
- defer client.Close()
-
- collection := client.Collection("coffee-beans")
-
- // Requires a vector index
- // https://firebase.google.com/docs/firestore/vector-search#create_and_manage_vector_indexes
- vectorQuery := collection.FindNearest("embedding_field",
-     []float32{3.0, 1.0, 2.0},
-     10,
-     firestore.DistanceMeasureEuclidean,
-     &firestore.FindNearestOptions{
-         DistanceThreshold: firestore.Ptr[float64](4.5),
-     })
-
- docs, err := vectorQuery.Documents(ctx).GetAll()
- if err != nil {
-     fmt.Fprintf(w, "failed to get vector query results: %v", err)
-     return err
- }
-
- for _, doc := range docs {
-     fmt.Fprintln(w, doc.Data()["name"])
- }
- return nil
-}
-vector_search_distance_threshold.go
-```
+    import (
+     "context"
+     "fmt"
+     "io"
+    
+     "cloud.google.com/go/firestore"
+    )
+    
+    func vectorSearchDistanceThreshold(w io.Writer, projectID string) error {
+     ctx := context.Background()
+    
+     client, err := firestore.NewClient(ctx, projectID)
+     if err != nil {
+         return fmt.Errorf("firestore.NewClient: %w", err)
+     }
+     defer client.Close()
+    
+     collection := client.Collection("coffee-beans")
+    
+     // Requires a vector index
+     // https://firebase.google.com/docs/firestore/vector-search#create_and_manage_vector_indexes
+     vectorQuery := collection.FindNearest("embedding_field",
+         []float32{3.0, 1.0, 2.0},
+         10,
+         firestore.DistanceMeasureEuclidean,
+         &firestore.FindNearestOptions{
+             DistanceThreshold: firestore.Ptr[float64](4.5),
+         })
+    
+     docs, err := vectorQuery.Documents(ctx).GetAll()
+     if err != nil {
+         fmt.Fprintf(w, "failed to get vector query results: %v", err)
+         return err
+     }
+    
+     for _, doc := range docs {
+         fmt.Fprintln(w, doc.Data()["name"])
+     }
+     return nil
+    }
+    vector_search_distance_threshold.go
 
 ##### Java
 
-``` text
+``` suppresswarning
 import com.google.cloud.firestore.VectorQuery;
 import com.google.cloud.firestore.VectorQueryOptions;
 import com.google.cloud.firestore.VectorQuerySnapshot;
@@ -885,10 +857,10 @@ As you work with vector embeddings, note the following limitations:
 
   - The maximum supported embedding dimension is 2048. To store larger indexes, use [dimensionality reduction](https://en.wikipedia.org/wiki/Dimensionality_reduction) .
   - The maximum number of documents to return from a nearest-neighbor query is 1000.
-  - Vector search does not support [real-time snapshot listeners](/firestore/native/docs/query-data/listen) .
+  - Vector search does not support [real-time snapshot listeners](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) .
   - Only the Python, Node.js, Go, and Java client libraries support vector search.
 
 ## What's next
 
-  - Read about [best practices](/firestore/native/docs/best-practices) for Firestore.
-  - Understand [reads and writes at scale](/firestore/native/docs/understand-reads-writes-scale) .
+  - Read about [best practices](https://docs.cloud.google.com/firestore/native/docs/best-practices) for Firestore.
+  - Understand [reads and writes at scale](https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale) .

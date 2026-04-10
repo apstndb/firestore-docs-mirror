@@ -2,17 +2,17 @@
 
 When you provision a Firestore instance, you must choose a *location* for the instance. To reduce latency and increase availability, store your data close to the users and services that need it.
 
-You can optionally [create multiple databases](/firestore/docs/manage-databases) in your project, each with its own location setting.
+You can optionally [create multiple databases](https://docs.cloud.google.com/firestore/docs/manage-databases) in your project, each with its own location setting.
 
 Be aware that once you provision a database instance, you cannot change its location setting.
 
-**Important** : The location setting for your *default* Firestore database instance has a [dependency on the "location of default Google Cloud resources"](#default-cloud-location) . This means that when you provision your default Firestore database, its location might have already been set, either during project creation or when setting up another service that shares this location dependency.
+**Important** : The location setting for your *default* Firestore database instance has a [dependency on the "location of default Google Cloud resources"](https://docs.cloud.google.com/firestore/native/docs/locations#default-cloud-location) . This means that when you provision your default Firestore database, its location might have already been set, either during project creation or when setting up another service that shares this location dependency.
 
 Any non-default Firestore database instances in your project do not share this location dependency.
 
 ## Types of locations
 
-You can store your Firestore data in a [*multi-region* location](#location-mr) or a [*regional* location](#location-r) .
+You can store your Firestore data in a [*multi-region* location](https://docs.cloud.google.com/firestore/native/docs/locations#location-mr) or a [*regional* location](https://docs.cloud.google.com/firestore/native/docs/locations#location-r) .
 
 ### Multi-region locations
 
@@ -26,71 +26,21 @@ Firestore supports the following multi-region locations:
 
 ### Standard edition
 
-<table>
-<thead>
-<tr class="header">
-<th>Multi-region name</th>
-<th>Multi-region description</th>
-<th>Read-Write regions</th>
-<th>Witness region</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">          eur3         </code></td>
-<td>Europe</td>
-<td><code dir="ltr" translate="no">          europe-west1         </code> (Belgium), <code dir="ltr" translate="no">          europe-west4         </code> (Netherlands)</td>
-<td><code dir="ltr" translate="no">          europe-north1         </code> (Finland)</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">          nam5         </code></td>
-<td>United States (Central)</td>
-<td><code dir="ltr" translate="no">          us-central1         </code> (Iowa), <code dir="ltr" translate="no">          us-central2         </code> (Oklahoma—private GCP region)</td>
-<td><code dir="ltr" translate="no">          us-east1         </code> (South Carolina)</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">          nam7         </code></td>
-<td>United States (Central and East)</td>
-<td><code dir="ltr" translate="no">          us-central1         </code> (Iowa), <code dir="ltr" translate="no">          us-east4         </code> (Northern Virginia)</td>
-<td><code dir="ltr" translate="no">          us-central2         </code> (Oklahoma—private Google Cloud region)</td>
-</tr>
-</tbody>
-</table>
+| Multi-region name           | Multi-region description         | Read-Write regions                                                                                          | Witness region                                                            |
+| --------------------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `           eur3          ` | Europe                           | `           europe-west1          ` (Belgium), `           europe-west4          ` (Netherlands)            | `           europe-north1          ` (Finland)                            |
+| `           nam5          ` | United States (Central)          | `           us-central1          ` (Iowa), `           us-central2          ` (Oklahoma—private GCP region) | `           us-east1          ` (South Carolina)                          |
+| `           nam7          ` | United States (Central and East) | `           us-central1          ` (Iowa), `           us-east4          ` (Northern Virginia)              | `           us-central2          ` (Oklahoma—private Google Cloud region) |
 
 ### Enterprise edition
 
-<table>
-<thead>
-<tr class="header">
-<th>Multi-region name</th>
-<th>Multi-region description</th>
-<th>Read-Write regions</th>
-<th>Witness region</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">          eur3         </code></td>
-<td>Europe</td>
-<td><code dir="ltr" translate="no">          europe-west1         </code> (Belgium), <code dir="ltr" translate="no">          europe-west4         </code> (Netherlands)</td>
-<td><code dir="ltr" translate="no">          europe-north1         </code> (Finland)</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">          nam5         </code></td>
-<td>United States (Central)</td>
-<td><code dir="ltr" translate="no">          us-central1         </code> (Iowa), <code dir="ltr" translate="no">          us-central2         </code> (Oklahoma—private GCP region)</td>
-<td><code dir="ltr" translate="no">          us-east1         </code> (South Carolina)</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">          nam7         </code></td>
-<td>United States (Central and East)</td>
-<td><code dir="ltr" translate="no">          us-central1         </code> (Iowa), <code dir="ltr" translate="no">          us-east4         </code> (Northern Virginia)</td>
-<td><code dir="ltr" translate="no">          us-central2         </code> (Oklahoma—private Google Cloud region)</td>
-</tr>
-</tbody>
-</table>
+| Multi-region name           | Multi-region description         | Read-Write regions                                                                                          | Witness region                                                            |
+| --------------------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `           eur3          ` | Europe                           | `           europe-west1          ` (Belgium), `           europe-west4          ` (Netherlands)            | `           europe-north1          ` (Finland)                            |
+| `           nam5          ` | United States (Central)          | `           us-central1          ` (Iowa), `           us-central2          ` (Oklahoma—private GCP region) | `           us-east1          ` (South Carolina)                          |
+| `           nam7          ` | United States (Central and East) | `           us-central1          ` (Iowa), `           us-east4          ` (Northern Virginia)              | `           us-central2          ` (Oklahoma—private Google Cloud region) |
 
-**Note:** If your project already has an App Engine app with a location of either `  us-central  ` or `  europe-west  ` , then your *default* Firestore database will be considered [multi-regional](#location-mr) .
+**Note:** If your project already has an App Engine app with a location of either `  us-central  ` or `  europe-west  ` , then your *default* Firestore database will be considered [multi-regional](https://docs.cloud.google.com/firestore/native/docs/locations#location-mr) .
 
 ### Regional locations
 
@@ -564,24 +514,10 @@ Johannesburg
 
 Your Firestore location type determines the [Service Level Agreement (SLA)](https://cloud.google.com/firestore/sla) uptime percentage:
 
-<table>
-<thead>
-<tr class="header">
-<th>Covered service</th>
-<th>Monthly uptime percentage</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Firestore Multi-Region</td>
-<td>&gt;= 99.999%</td>
-</tr>
-<tr class="even">
-<td>Firestore Regional</td>
-<td>&gt;= 99.99%</td>
-</tr>
-</tbody>
-</table>
+| Covered service        | Monthly uptime percentage |
+| ---------------------- | ------------------------- |
+| Firestore Multi-Region | \>= 99.999%               |
+| Firestore Regional     | \>= 99.99%                |
 
 ## Location pricing
 
@@ -596,7 +532,7 @@ For a comprehensive explanation of pricing per region and per region type, see:
 
 Use one of the following methods to view the location setting for your databases:
 
-  - Run the [`  gcloud firestore databases list  `](/sdk/gcloud/reference/firestore/databases/list) command.
+  - Run the [`  gcloud firestore databases list  `](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/list) command.
 
   - Open the [database list](https://console.cloud.google.com/firestore/databases) in the Google Cloud console. The location for each database is in the location column.
 
@@ -636,11 +572,11 @@ Here are the details of what changed in the possible **location dependencies** :
 
 If you used ***1st gen scheduled* functions** , then their location is set to the location for default Google Cloud resources. This is because Cloud Scheduler and App Engine previously had an association with each other. Also, if you set up 1st gen scheduled functions *before* provisioning other resources that shared this location setting, then you set their location, too.
 
-Note that if you have an App Engine app with a location of either `  us-central  ` or `  europe-west  ` , then your location for default Google Cloud resources is considered [multi-regional](/firestore/docs/locations#location-mr) .
+Note that if you have an App Engine app with a location of either `  us-central  ` or `  europe-west  ` , then your location for default Google Cloud resources is considered [multi-regional](https://docs.cloud.google.com/firestore/docs/locations#location-mr) .
 
 ## Next steps
 
-  - To create a Firestore database in specific location, visit one of the [Firestore quickstarts](/firestore/docs/quickstarts) .
+  - To create a Firestore database in specific location, visit one of the [Firestore quickstarts](https://docs.cloud.google.com/firestore/docs/quickstarts) .
 
 <!-- end list -->
 

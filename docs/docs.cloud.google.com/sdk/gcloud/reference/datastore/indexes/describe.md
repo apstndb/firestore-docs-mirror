@@ -14,7 +14,7 @@ EXAMPLES
 
 To describe the index with id `  exampleIndexId  ` , run:
 
-``` text
+``` wrap-code
 gcloud datastore indexes describe exampleIndexId
 ```
 
@@ -51,10 +51,10 @@ NOTES
 
 These variants are also available:
 
-``` text
+``` wrap-code
 gcloud alpha datastore indexes describe
 ```
 
-``` text
+``` wrap-code
 gcloud beta datastore indexes describe
 ```

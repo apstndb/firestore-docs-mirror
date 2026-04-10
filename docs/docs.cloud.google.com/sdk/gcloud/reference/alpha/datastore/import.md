@@ -14,19 +14,19 @@ EXAMPLES
 
 To import all data exported to the output URL `  gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata  ` , run:
 
-``` text
+``` wrap-code
 gcloud alpha datastore import gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata
 ```
 
 To import all data exported to the output URL `  gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata  ` without waiting for the operation to complete, run:
 
-``` text
+``` wrap-code
 gcloud alpha datastore import gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata --async
 ```
 
 To import only the `  exampleKind  ` from the data exported to the output URL `  gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata  ` , run:
 
-``` text
+``` wrap-code
 gcloud alpha datastore import gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata --kinds='exampleKind'
 ```
 
@@ -45,21 +45,21 @@ FLAGS
   - `  --kinds  ` =\[ `  KIND  ` ,…\]  
     A list specifying what kinds will be included in the operation. When omitted, all Kinds are included. For example, to operate on only the 'Customer' and 'Order' Kinds:
     
-    ``` text
+    ``` wrap-code
     gcloud alpha datastore import --kinds='Customer','Order'
     ```
 
   - `  --namespaces  ` =\[ `  NAMESPACE  ` ,…\]  
     A list specifying what namespaces will be included in the operation. When omitted, all namespaces are included in the operation, including the default namespace. To specify that `  only  ` the default namespace should be operated on, use the special symbol '(default)'. For example, to operate on entities from both the 'customers' and default namespaces:
     
-    ``` text
+    ``` wrap-code
     gcloud alpha datastore import --namespaces='(default)','customers'
     ```
 
   - `  --operation-labels  ` =\[ `  OPERATION_LABEL  ` ,…\]  
     A string:string map of custom labels to associate with this operation. For example:
     
-    ``` text
+    ``` wrap-code
     gcloud alpha datastore import --operation-labels=comment='customer orders','sales rep'=pending
     ```
 
@@ -73,10 +73,10 @@ NOTES
 
 This command is currently in alpha and might change without notice. If this command fails with API permission errors despite specifying the correct project, you might be trying to access an API with an invitation-only early access allowlist. These variants are also available:
 
-``` text
+``` wrap-code
 gcloud datastore import
 ```
 
-``` text
+``` wrap-code
 gcloud beta datastore import
 ```

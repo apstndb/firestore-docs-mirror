@@ -23,76 +23,23 @@ For example:
 
 The following table shows the size of field values by type.
 
-<table>
-<thead>
-<tr class="header">
-<th>Type</th>
-<th>Size</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Array</td>
-<td>The sum of the sizes of its values</td>
-</tr>
-<tr class="even">
-<td>Boolean</td>
-<td>1 byte</td>
-</tr>
-<tr class="odd">
-<td>Binary data</td>
-<td>Byte length + 1 for a non-generic (non-0) subtype</td>
-</tr>
-<tr class="even">
-<td>Date</td>
-<td>8 bytes</td>
-</tr>
-<tr class="odd">
-<td>Double</td>
-<td>8 bytes</td>
-</tr>
-<tr class="even">
-<td>Double128</td>
-<td>16 bytes</td>
-</tr>
-<tr class="odd">
-<td>32-bit integer</td>
-<td>4 bytes</td>
-</tr>
-<tr class="even">
-<td>64-bit integer (long)</td>
-<td>8 bytes</td>
-</tr>
-<tr class="odd">
-<td>Object</td>
-<td>The sum of the string sizes of each field name and the sizes of each field falue in the embedded object</td>
-</tr>
-<tr class="even">
-<td>Min Key</td>
-<td>1 byte</td>
-</tr>
-<tr class="odd">
-<td>Max Key</td>
-<td>1 byte</td>
-</tr>
-<tr class="even">
-<td>Null</td>
-<td>1 byte</td>
-</tr>
-<tr class="odd">
-<td>Regular expression</td>
-<td>(Pattern length + 1) + (Options length + 1)</td>
-</tr>
-<tr class="even">
-<td>Timestamp</td>
-<td>8 bytes</td>
-</tr>
-<tr class="odd">
-<td>String</td>
-<td>Number of UTF-8 encoded bytes + 1</td>
-</tr>
-</tbody>
-</table>
+| Type                  | Size                                                                                                    |
+| --------------------- | ------------------------------------------------------------------------------------------------------- |
+| Array                 | The sum of the sizes of its values                                                                      |
+| Boolean               | 1 byte                                                                                                  |
+| Binary data           | Byte length + 1 for a non-generic (non-0) subtype                                                       |
+| Date                  | 8 bytes                                                                                                 |
+| Double                | 8 bytes                                                                                                 |
+| Double128             | 16 bytes                                                                                                |
+| 32-bit integer        | 4 bytes                                                                                                 |
+| 64-bit integer (long) | 8 bytes                                                                                                 |
+| Object                | The sum of the string sizes of each field name and the sizes of each field falue in the embedded object |
+| Min Key               | 1 byte                                                                                                  |
+| Max Key               | 1 byte                                                                                                  |
+| Null                  | 1 byte                                                                                                  |
+| Regular expression    | (Pattern length + 1) + (Options length + 1)                                                             |
+| Timestamp             | 8 bytes                                                                                                 |
+| String                | Number of UTF-8 encoded bytes + 1                                                                       |
 
 For example, a boolean field named `  done  ` would use 6 bytes:
 
@@ -103,22 +50,20 @@ For example, a boolean field named `  done  ` would use 6 bytes:
 
 The size of a document is the sum of:
 
-  - The [string size](#string-size) of the collection name
-  - The sum of the [string size](#string-size) of each field name (except `  _id  ` )
-  - The sum of the size of each [field value](#field-size) (including `  _id  ` )
+  - The [string size](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size#string-size) of the collection name
+  - The sum of the [string size](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size#string-size) of each field name (except `  _id  ` )
+  - The sum of the size of each [field value](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size#field-size) (including `  _id  ` )
   - 48 additional bytes
 
 This example is for a document in collection `  tasks  ` :
 
-``` text
-{
-  "_id": "my_task_id",
-  "type": "Personal",
-  "done": false,
-  "priority": 1,
-  "description": "Learn Cloud Firestore"
-}
-```
+    {
+      "_id": "my_task_id",
+      "type": "Personal",
+      "done": false,
+      "priority": 1,
+      "description": "Learn Cloud Firestore"
+    }
 
 The total size of the fields is 78 bytes:
 
@@ -171,22 +116,20 @@ So the document size is 6 + 78 + 48 = 132 bytes:
 
 The size of an index entry in an index is the sum of:
 
-  - The [string size](#string-size) of the collection name
+  - The [string size](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size#string-size) of the collection name
   - The size of the `  _id  ` field value
-  - The sum of the indexed [field values](#field-size)
+  - The sum of the indexed [field values](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size#field-size)
   - 48 additional bytes
 
 Consider a document in the `  tasks  ` collection:
 
-``` text
-{
-  "_id": "my_task_id",
-  "type": "Personal",
-  "done": false,
-  "priority": 1,
-  "description": "Learn Cloud Firestore"
-}
-```
+    {
+      "_id": "my_task_id",
+      "type": "Personal",
+      "done": false,
+      "priority": 1,
+      "description": "Learn Cloud Firestore"
+    }
 
 For an index on the `  done  ` and `  priority  ` fields (both ascending), the total size of the index entry in this index is 70 bytes:
 
