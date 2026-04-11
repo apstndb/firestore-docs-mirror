@@ -24,7 +24,7 @@ For more information, see [Setting Up a Go Development Environment](https://docs
 
 ### Java
 
-If you are using [Maven](https://maven.apache.org/) , add the following to your `  pom.xml  ` file. For more information about BOMs, see [The Google Cloud Platform Libraries BOM](https://cloud.google.com/java/docs/bom) .
+If you are using [Maven](https://maven.apache.org/) , add the following to your `pom.xml` file. For more information about BOMs, see [The Google Cloud Platform Libraries BOM](https://cloud.google.com/java/docs/bom) .
 
     <dependencyManagement>
       <dependencies>
@@ -381,7 +381,7 @@ The following list contains links to more resources related to the client librar
   - [API reference](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest)
   - [Client libraries best practices](https://docs.cloud.google.com/apis/docs/client-libraries-best-practices)
   - [Issue tracker](https://github.com/googleapis/google-cloud-dotnet/issues)
-  - [`  google-cloud-datastore  ` on Stack Overflow](https://stackoverflow.com/search?q=%5Bgoogle-cloud-datastore%5D+%5Bc%23%5D)
+  - [`google-cloud-datastore` on Stack Overflow](https://stackoverflow.com/search?q=%5Bgoogle-cloud-datastore%5D+%5Bc%23%5D)
   - [Source code](https://github.com/googleapis/google-cloud-dotnet)
 
 ### Go
@@ -391,7 +391,7 @@ The following list contains links to more resources related to the client librar
   - [API reference](https://cloud.google.com/go/docs/reference/cloud.google.com/go/datastore/latest)
   - [Client libraries best practices](https://docs.cloud.google.com/apis/docs/client-libraries-best-practices)
   - [Issue tracker](https://github.com/googleapis/google-cloud-go/issues)
-  - [`  google-cloud-datastore  ` on Stack Overflow](https://stackoverflow.com/search?q=%5Bgoogle-cloud-datastore%5D+%5Bgo%5D)
+  - [`google-cloud-datastore` on Stack Overflow](https://stackoverflow.com/search?q=%5Bgoogle-cloud-datastore%5D+%5Bgo%5D)
   - [Source code](https://github.com/googleapis/google-cloud-go)
 
 ### Java
@@ -401,7 +401,7 @@ The following list contains links to more resources related to the client librar
   - [API reference](https://cloud.google.com/java/docs/reference/google-cloud-datastore/latest/history)
   - [Client libraries best practices](https://docs.cloud.google.com/apis/docs/client-libraries-best-practices)
   - [Issue tracker](https://github.com/googleapis/java-datastore/issues)
-  - [`  google-cloud-datastore  ` on Stack Overflow](https://stackoverflow.com/search?q=%5Bgoogle-cloud-datastore%5D+%5Bjava%5D)
+  - [`google-cloud-datastore` on Stack Overflow](https://stackoverflow.com/search?q=%5Bgoogle-cloud-datastore%5D+%5Bjava%5D)
   - [Source code](https://github.com/googleapis/java-datastore)
 
 ### Node.js
@@ -411,7 +411,7 @@ The following list contains links to more resources related to the client librar
   - [API reference](https://cloud.google.com/nodejs/docs/reference/datastore/latest)
   - [Client libraries best practices](https://docs.cloud.google.com/apis/docs/client-libraries-best-practices)
   - [Issue tracker](https://github.com/googleapis/nodejs-datastore/issues)
-  - [`  google-cloud-datastore  ` on Stack Overflow](https://stackoverflow.com/search?q=%5Bgoogle-cloud-datastore%5D+%5Bnode.js%5D)
+  - [`google-cloud-datastore` on Stack Overflow](https://stackoverflow.com/search?q=%5Bgoogle-cloud-datastore%5D+%5Bnode.js%5D)
   - [Source code](https://github.com/googleapis/nodejs-datastore)
 
 ### PHP
@@ -421,7 +421,7 @@ The following list contains links to more resources related to the client librar
   - [API reference](https://googleapis.github.io/google-cloud-php/#/docs/cloud-datastore/latest)
   - [Client libraries best practices](https://docs.cloud.google.com/apis/docs/client-libraries-best-practices)
   - [Issue tracker](https://github.com/googleapis/google-cloud-php/issues)
-  - [`  google-cloud-datastore  ` on Stack Overflow](https://stackoverflow.com/search?q=%5Bgoogle-cloud-datastore%5D+%5Bphp%5D)
+  - [`google-cloud-datastore` on Stack Overflow](https://stackoverflow.com/search?q=%5Bgoogle-cloud-datastore%5D+%5Bphp%5D)
   - [Source code](https://github.com/googleapis/google-cloud-php)
 
 ### Python
@@ -431,7 +431,7 @@ The following list contains links to more resources related to the client librar
   - [API reference](https://cloud.google.com/python/docs/reference/datastore/latest)
   - [Client libraries best practices](https://docs.cloud.google.com/apis/docs/client-libraries-best-practices)
   - [Issue tracker](https://github.com/googleapis/python-datastore/issues)
-  - [`  google-cloud-datastore  ` on Stack Overflow](https://stackoverflow.com/search?q=%5Bgoogle-cloud-datastore%5D+%5Bpython%5D)
+  - [`google-cloud-datastore` on Stack Overflow](https://stackoverflow.com/search?q=%5Bgoogle-cloud-datastore%5D+%5Bpython%5D)
   - [Source code](https://github.com/googleapis/python-datastore)
 
 ### Ruby
@@ -441,7 +441,7 @@ The following list contains links to more resources related to the client librar
   - [API reference](https://docs.cloud.google.com/ruby/docs/reference/google-cloud-datastore/latest)
   - [Client libraries best practices](https://docs.cloud.google.com/apis/docs/client-libraries-best-practices)
   - [Issue tracker](https://github.com/googleapis/google-cloud-ruby/issues)
-  - [`  google-cloud-datastore  ` on Stack Overflow](https://stackoverflow.com/search?q=%5Bgoogle-cloud-datastore%5D+%5Bruby%5D)
+  - [`google-cloud-datastore` on Stack Overflow](https://stackoverflow.com/search?q=%5Bgoogle-cloud-datastore%5D+%5Bruby%5D)
   - [Source code](https://github.com/googleapis/google-cloud-ruby)
 
 ### Dependency on App Engine application

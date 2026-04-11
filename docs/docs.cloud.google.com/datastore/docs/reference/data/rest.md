@@ -19,7 +19,7 @@ A [Discovery Document](https://developers.google.com/discovery/v1/reference/apis
 
 A [service endpoint](https://cloud.google.com/apis/design/glossary#api_service_endpoint) is a base URL that specifies the network address of an API service. One service might have multiple service endpoints. This service has the following service endpoint and all URIs below are relative to this service endpoint:
 
-  - `  https://datastore.googleapis.com  `
+  - `https://datastore.googleapis.com`
 
 ### Regional service endpoint
 
@@ -119,7 +119,7 @@ us
 
   
 
-`  https://datastore.googleapis.com  `
+`https://datastore.googleapis.com`
 
 ## REST Resource: [v1beta3.projects](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects)
 
@@ -127,42 +127,42 @@ Methods
 
 `  allocateIds  `
 
-`  POST /v1beta3/projects/{projectId}:allocateIds  `  
+`POST /v1beta3/projects/{projectId}:allocateIds`  
 Allocates IDs for the given keys, which is useful for referencing an entity before it is inserted.
 
 `  beginTransaction  `
 
-`  POST /v1beta3/projects/{projectId}:beginTransaction  `  
+`POST /v1beta3/projects/{projectId}:beginTransaction`  
 Begins a new transaction.
 
 `  commit  `
 
-`  POST /v1beta3/projects/{projectId}:commit  `  
+`POST /v1beta3/projects/{projectId}:commit`  
 Commits a transaction, optionally creating, deleting or modifying some entities.
 
 `  lookup  `
 
-`  POST /v1beta3/projects/{projectId}:lookup  `  
+`POST /v1beta3/projects/{projectId}:lookup`  
 Looks up entities by key.
 
 `  reserveIds  `
 
-`  POST /v1beta3/projects/{projectId}:reserveIds  `  
+`POST /v1beta3/projects/{projectId}:reserveIds`  
 Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.
 
 `  rollback  `
 
-`  POST /v1beta3/projects/{projectId}:rollback  `  
+`POST /v1beta3/projects/{projectId}:rollback`  
 Rolls back a transaction.
 
 `  runAggregationQuery  `
 
-`  POST /v1beta3/projects/{projectId}:runAggregationQuery  `  
+`POST /v1beta3/projects/{projectId}:runAggregationQuery`  
 Runs an aggregation query.
 
 `  runQuery  `
 
-`  POST /v1beta3/projects/{projectId}:runQuery  `  
+`POST /v1beta3/projects/{projectId}:runQuery`  
 Queries for entities.
 
 ## REST Resource: [v1.projects](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects)
@@ -171,42 +171,42 @@ Methods
 
 `  allocateIds  `
 
-`  POST /v1/projects/{projectId}:allocateIds  `  
+`POST /v1/projects/{projectId}:allocateIds`  
 Allocates IDs for the given keys, which is useful for referencing an entity before it is inserted.
 
 `  beginTransaction  `
 
-`  POST /v1/projects/{projectId}:beginTransaction  `  
+`POST /v1/projects/{projectId}:beginTransaction`  
 Begins a new transaction.
 
 `  commit  `
 
-`  POST /v1/projects/{projectId}:commit  `  
+`POST /v1/projects/{projectId}:commit`  
 Commits a transaction, optionally creating, deleting or modifying some entities.
 
 `  lookup  `
 
-`  POST /v1/projects/{projectId}:lookup  `  
+`POST /v1/projects/{projectId}:lookup`  
 Looks up entities by key.
 
 `  reserveIds  `
 
-`  POST /v1/projects/{projectId}:reserveIds  `  
+`POST /v1/projects/{projectId}:reserveIds`  
 Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.
 
 `  rollback  `
 
-`  POST /v1/projects/{projectId}:rollback  `  
+`POST /v1/projects/{projectId}:rollback`  
 Rolls back a transaction.
 
 `  runAggregationQuery  `
 
-`  POST /v1/projects/{projectId}:runAggregationQuery  `  
+`POST /v1/projects/{projectId}:runAggregationQuery`  
 Runs an aggregation query.
 
 `  runQuery  `
 
-`  POST /v1/projects/{projectId}:runQuery  `  
+`POST /v1/projects/{projectId}:runQuery`  
 Queries for entities.
 
 ## REST Resource: [v1.projects.operations](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations)
@@ -215,20 +215,20 @@ Methods
 
 `  cancel  `
 
-`  POST /v1/{name=projects/*/operations/*}:cancel  `  
+`POST /v1/{name=projects/*/operations/*}:cancel`  
 Starts asynchronous cancellation on a long-running operation.
 
 `  delete  `
 
-`  DELETE /v1/{name=projects/*/operations/*}  `  
+`DELETE /v1/{name=projects/*/operations/*}`  
 Deletes a long-running operation.
 
 `  get  `
 
-`  GET /v1/{name=projects/*/operations/*}  `  
+`GET /v1/{name=projects/*/operations/*}`  
 Gets the latest state of a long-running operation.
 
 `  list  `
 
-`  GET /v1/{name=projects/*}/operations  `  
+`GET /v1/{name=projects/*}/operations`  
 Lists operations that match the specified filter in the request.

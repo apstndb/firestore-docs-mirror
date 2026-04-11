@@ -6,9 +6,9 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## Background
 
-Pipeline operations are a new query interface for Firestore. This interface provides advanced query functionality that includes complex expressions. It also adds support for many new functions like `  min, max, substring, regex_match  ` and `  array_contains_all  ` .
+Pipeline operations are a new query interface for Firestore. This interface provides advanced query functionality that includes complex expressions. It also adds support for many new functions like `min, max, substring, regex_match` and `array_contains_all` .
 
-With Pipeline operations, index creation is also completely optional, streamlining the process of developing new queries. Pipeline operations also remove many limitations on query shape allowing you to specify large `  in  ` or `  or  ` queries.
+With Pipeline operations, index creation is also completely optional, streamlining the process of developing new queries. Pipeline operations also remove many limitations on query shape allowing you to specify large `in` or `or` queries.
 
 ## Getting Started
 
@@ -133,7 +133,7 @@ There are a few terms that are important to understand when creating Pipeline op
 
 **Stages:** A pipeline may consist of one or more stages. Logically, these represent the series of steps (or stages) taken to execute the query. Note: In practice, stages may be executed out of order to improve performance. However, this does not modify the intent or correctness of the query.
 
-**Expressions:** Stages will often accept an expression allowing you to express more complex queries. Expression may be simple and consist of a single function like `  eq("a", 1)  ` . You can also express more complex expressions by nesting expressions like `  and(eq("a", 1), eq("b", 2)).  `
+**Expressions:** Stages will often accept an expression allowing you to express more complex queries. Expression may be simple and consist of a single function like `eq("a", 1)` . You can also express more complex expressions by nesting expressions like `and(eq("a", 1), eq("b", 2)).`
 
 ### Field vs. Constant References
 
@@ -203,7 +203,7 @@ Android
 
 ### Input Stages
 
-The input stage represents the first stage of a query. It defines the initial set of documents you are querying over. For Pipeline operations, this largely is similar to existing queries, where most queries start with either a `  collection(...)  ` or `  collection_group(...)  ` stage. Two new input stages are `  database()  ` and `  documents(...)  ` where `  database()  ` allows returning **all** documents in the database, while `  documents(...)  ` acts identical to a batch read.
+The input stage represents the first stage of a query. It defines the initial set of documents you are querying over. For Pipeline operations, this largely is similar to existing queries, where most queries start with either a `collection(...)` or `collection_group(...)` stage. Two new input stages are `database()` and `documents(...)` where `database()` allows returning **all** documents in the database, while `documents(...)` acts identical to a batch read.
 
 ##### Node.js
 
@@ -337,13 +337,13 @@ Android
         .execute()
     )firestore_pipelines.py
 
-As with all other stages, the order of results from these input stages is not stable. A `  sort(...)  ` operator should always be added if a specific ordering is desired.
+As with all other stages, the order of results from these input stages is not stable. A `sort(...)` operator should always be added if a specific ordering is desired.
 
 ### Where
 
-The `  where(...)  ` stage acts as a traditional filter operation over documents generated from the previous stage and mostly mirrors the existing "where" syntax for existing queries. Any document for where a given expression evaluates to a non- `  true  ` value is filtered out from the returned documents.
+The `where(...)` stage acts as a traditional filter operation over documents generated from the previous stage and mostly mirrors the existing "where" syntax for existing queries. Any document for where a given expression evaluates to a non- `true` value is filtered out from the returned documents.
 
-Multiple `  where(...)  ` statements can be chained together, and act as an `  and(...)  ` expression. For example the following two queries are logically equivalent and can be used interchangeably.
+Multiple `where(...)` statements can be chained together, and act as an `and(...)` expression. For example the following two queries are logically equivalent and can be used interchangeably.
 
 ##### Node.js
 
@@ -442,17 +442,17 @@ Android
 
 ### Select / Add & Remove Fields
 
-The `  select(...)  ` , `  add_fields(...)  ` , & `  remove_fields(...)  ` all allow you to modify the fields being returned from a previous stage. These three are generally referred to as projection-style stages.
+The `select(...)` , `add_fields(...)` , & `remove_fields(...)` all allow you to modify the fields being returned from a previous stage. These three are generally referred to as projection-style stages.
 
-The `  select(...)  ` and `  add_fields(...)  ` allow you to specify the result of an expression to a user-provided field name. An expression that results in an error will result in a `  null  ` value. The `  select(...)  ` will only return the documents with specified field names while `  add_fields(...)  ` extends the schema of the previous stage (potentially overwriting values with identical field names).
+The `select(...)` and `add_fields(...)` allow you to specify the result of an expression to a user-provided field name. An expression that results in an error will result in a `null` value. The `select(...)` will only return the documents with specified field names while `add_fields(...)` extends the schema of the previous stage (potentially overwriting values with identical field names).
 
-The `  remove_fields(...)  ` allows specifying a set of fields to remove from the previous stage. Specifying field names that don't exist is a no-op.
+The `remove_fields(...)` allows specifying a set of fields to remove from the previous stage. Specifying field names that don't exist is a no-op.
 
 See the [Restrict the Fields to Return](https://docs.cloud.google.com/firestore/native/docs/pipeline/overview#restrict_the_fields_to_return) section below but in general using such a stage to restrict the result to only the fields needed in the client is helpful in reducing the cost and latency for most queries.
 
 ### Aggregate / Distinct
 
-The `  aggregate(...)  ` stage lets you perform a series of aggregations over the input documents. By default, all documents are aggregated together, but an optional `  grouping  ` argument can be provided, allowing the input documents aggregated into different buckets.
+The `aggregate(...)` stage lets you perform a series of aggregations over the input documents. By default, all documents are aggregated together, but an optional `grouping` argument can be provided, allowing the input documents aggregated into different buckets.
 
 ##### Node.js
 
@@ -524,9 +524,9 @@ Android
         .execute()
     )firestore_pipelines.py
 
-When `  groupings  ` is not specified, this stage will produce only a single document, otherwise a document will be generated for each unique combination of `  groupings  ` values.
+When `groupings` is not specified, this stage will produce only a single document, otherwise a document will be generated for each unique combination of `groupings` values.
 
-The `  distinct(...)  ` stage is a simplified aggregation operator which allows generating just the unique `  groupings  ` without any accumulators. It behaves identically to that of `  aggregate(...)  ` in all other regards. An example is given below:
+The `distinct(...)` stage is a simplified aggregation operator which allows generating just the unique `groupings` without any accumulators. It behaves identically to that of `aggregate(...)` in all other regards. An example is given below:
 
 ##### Node.js
 
@@ -597,7 +597,7 @@ Functions are a building block for creating expressions and complex queries. For
 
 ![Example demonstrating stages and functions in a query](https://docs.cloud.google.com/firestore/native/docs/images/pipeline-queries/pipeline_query_stage_expression.jpg)
 
-Many stages accept expressions which contain one or more functions. The most common function usage will be found in the `  where(...)  ` and `  select(...)  ` stages. There are two main types of functions that you should be familiar with:
+Many stages accept expressions which contain one or more functions. The most common function usage will be found in the `where(...)` and `select(...)` stages. There are two main types of functions that you should be familiar with:
 
 ##### Node.js
 
@@ -718,7 +718,7 @@ Android
 
 ## Limits
 
-For the most part Enterprise Edition doesn't impose limits on the shape of the query. In other words, you're not limited to a small number of values in an `  IN  ` or `  OR  ` query. Instead, there are two primary limits you should be aware of:
+For the most part Enterprise Edition doesn't impose limits on the shape of the query. In other words, you're not limited to a small number of values in an `IN` or `OR` query. Instead, there are two primary limits you should be aware of:
 
   - **Deadline:** 60 seconds (identical to Standard Edition).
   - **Memory Usage:** 128 MiB limit on the amount of materialized data during query execution.
@@ -727,16 +727,16 @@ For the most part Enterprise Edition doesn't impose limits on the shape of the q
 
 You may encounter failed queries for a number of reasons. Here is a link to [common errors](https://docs.cloud.google.com/firestore/docs/understand-error-codes) and the associated action you can take:
 
-|                                     |                                                                                                                                                                                                          |
-| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Error Code**                      | **Action**                                                                                                                                                                                               |
-| `        DEADLINE_EXCEEDED       `  | The query you are executing exceeds a 60 second deadline and requires additional optimization. See the performance section for tips. If you are unable to root cause the problem, reach out to the team. |
-| `        RESOURCE_EXHAUSTED       ` | The query you are executing exceeds the memory limits and requires additional optimization. See the performance section for tips. If you are unable to root cause the problem, reach out to the team.    |
-| `        INTERNAL       `           | [Contact](https://docs.cloud.google.com/support/docs/customer-care-procedures#create_a_support_case) the team for support.                                                                               |
+|                      |                                                                                                                                                                                                          |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Error Code**       | **Action**                                                                                                                                                                                               |
+| `DEADLINE_EXCEEDED`  | The query you are executing exceeds a 60 second deadline and requires additional optimization. See the performance section for tips. If you are unable to root cause the problem, reach out to the team. |
+| `RESOURCE_EXHAUSTED` | The query you are executing exceeds the memory limits and requires additional optimization. See the performance section for tips. If you are unable to root cause the problem, reach out to the team.    |
+| `INTERNAL`           | [Contact](https://docs.cloud.google.com/support/docs/customer-care-procedures#create_a_support_case) the team for support.                                                                               |
 
 ## Performance
 
-Unlike existing queries, Pipeline operations do not require that an index is always present. This means that a query can exhibit higher latency compared to existing queries which would have just failed immediately with a `  FAILED_PRECONDITION  ` missing index error. To improve the performance of Pipeline operations, there are a couple of steps you can take.
+Unlike existing queries, Pipeline operations do not require that an index is always present. This means that a query can exhibit higher latency compared to existing queries which would have just failed immediately with a `FAILED_PRECONDITION` missing index error. To improve the performance of Pipeline operations, there are a couple of steps you can take.
 
 ### Create Indexes
 
@@ -823,7 +823,7 @@ Android
         .execute()
     )firestore_pipelines.py
 
-The recommended index is a collection scope index on `  books  ` for `  (genre [...], published DESC, avg_rating DESC).  `
+The recommended index is a collection scope index on `books` for `(genre [...], published DESC, avg_rating DESC).`
 
 #### Index density
 
@@ -902,11 +902,11 @@ Android
         .execute()
     )firestore_pipelines.py
 
-If the database already has a collection scope index on `  books  ` for `  (category [...], title [...], author [...])  ` then it can avoid fetching anything from the main documents themselves. In this case the order in the index does not matter, `  [...]  ` is used to signify that.
+If the database already has a collection scope index on `books` for `(category [...], title [...], author [...])` then it can avoid fetching anything from the main documents themselves. In this case the order in the index does not matter, `[...]` is used to signify that.
 
 ### Restrict the Fields to Return
 
-By default, a Firestore query returns all fields in a document, analogous to a `  SELECT *  ` in traditional systems. If however your application only needs a subset of the fields, the `  select(...)  ` or `  restrict(...)  ` stages can be used to push this filtering server-side. This will decrease both the response size (decreasing the network egress cost) as well as improving latency.
+By default, a Firestore query returns all fields in a document, analogous to a `SELECT *` in traditional systems. If however your application only needs a subset of the fields, the `select(...)` or `restrict(...)` stages can be used to push this filtering server-side. This will decrease both the response size (decreasing the network egress cost) as well as improving latency.
 
 ## Troubleshooting Tools
 
@@ -922,11 +922,11 @@ Pipeline operations if fully integrated with existing [Firestore metrics](https:
 
 ### Specialized Indexes
 
-Pipeline operations do not yet support existing `  array-contains  ` & `  vector  ` [index types](https://docs.cloud.google.com/firestore/docs/concepts/index-overview#index_modes) . Instead of just rejecting such queries, Firestore will attempt to use other existing `  ascending  ` & `  descending  ` indexes. It is expected that during private preview Pipeline operations with such `  array_contains  ` or `  find_nearest  ` expressions will be slower than their existing equivalents due to this.
+Pipeline operations do not yet support existing `array-contains` & `vector` [index types](https://docs.cloud.google.com/firestore/docs/concepts/index-overview#index_modes) . Instead of just rejecting such queries, Firestore will attempt to use other existing `ascending` & `descending` indexes. It is expected that during private preview Pipeline operations with such `array_contains` or `find_nearest` expressions will be slower than their existing equivalents due to this.
 
 ### Pagination
 
-Support for easily [paginating](https://docs.cloud.google.com/firestore/docs/query-data/query-cursors) over a result set is not supported during the private preview. This can be worked around by chaining up equivalent `  where(...)  ` & `  sort(...)  ` stages as shown below.
+Support for easily [paginating](https://docs.cloud.google.com/firestore/docs/query-data/query-cursors) over a result set is not supported during the private preview. This can be worked around by chaining up equivalent `where(...)` & `sort(...)` stages as shown below.
 
 ##### Node.js
 

@@ -1,6 +1,6 @@
 # Securely querying data
 
-This page builds on the concepts in [Structuring Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/rules-structure) and [Writing Conditions for Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/rules-conditions) to explain how Firestore Security Rules interact with queries. It takes a closer look at how security rules affect the queries you can write and describes how to ensure your queries use the same constraints as your security rules. This page also describes how to write security rules to allow or deny queries based on query properties like `  limit  ` and `  orderBy  ` .
+This page builds on the concepts in [Structuring Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/rules-structure) and [Writing Conditions for Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/rules-conditions) to explain how Firestore Security Rules interact with queries. It takes a closer look at how security rules affect the queries you can write and describes how to ensure your queries use the same constraints as your security rules. This page also describes how to write security rules to allow or deny queries based on query properties like `limit` and `orderBy` .
 
 **Note:** The server client libraries bypass all Firestore Security Rules and instead authenticate through [Google Application Default Credentials](https://cloud.google.com/docs/authentication/production) . If you're using the server client libraries or the REST or RPC APIs, make sure to set up [Identity and Access Management (IAM) for Firestore](https://cloud.google.com/firestore/docs/security/iam) .
 
@@ -16,9 +16,9 @@ As the examples below demonstrate, you must write your queries to fit the constr
 
 **Note:** The same rules apply to both normal queries that return documents and [aggregation queries](https://docs.cloud.google.com/firestore/native/docs/query-data/aggregation-queries) . In other words, security rules control what conditions are allowed, not how data is returned.
 
-### Secure and query documents based on `     auth.uid    `
+### Secure and query documents based on `auth.uid`
 
-The following example demonstrates how to write a query to retrieve documents protected by a security rule. Consider a database that contains a collection of `  story  ` documents:
+The following example demonstrates how to write a query to retrieve documents protected by a security rule. Consider a database that contains a collection of `story` documents:
 
 **/stories/{storyid}**
 
@@ -29,9 +29,9 @@ The following example demonstrates how to write a query to retrieve documents pr
       published: false
     }
 
-In addition to the `  title  ` and `  content  ` fields, each document stores the `  author  ` and `  published  ` fields to use for access control. These examples assume the app uses [Firebase Authentication](https://firebase.google.com/docs/auth/) to set the `  author  ` field to the UID of the user who created the document. Firebase Authentication also populates the [`  request.auth  `](https://firebase.google.com/docs/reference/rules/rules.firestore.Request) variable in the security rules.
+In addition to the `title` and `content` fields, each document stores the `author` and `published` fields to use for access control. These examples assume the app uses [Firebase Authentication](https://firebase.google.com/docs/auth/) to set the `author` field to the UID of the user who created the document. Firebase Authentication also populates the [`request.auth`](https://firebase.google.com/docs/reference/rules/rules.firestore.Request) variable in the security rules.
 
-The following security rule uses the [`  request.auth  `](https://firebase.google.com/docs/reference/rules/rules.firestore.Request) and [`  resource.data  `](https://firebase.google.com/docs/reference/rules/rules.firestore.Resource) variables to restrict read and write access for each `  story  ` to its author:
+The following security rule uses the [`request.auth`](https://firebase.google.com/docs/reference/rules/rules.firestore.Request) and [`resource.data`](https://firebase.google.com/docs/reference/rules/rules.firestore.Resource) variables to restrict read and write access for each `story` to its author:
 
     service cloud.firestore {
       match /databases/{database}/documents {
@@ -42,16 +42,16 @@ The following security rule uses the [`  request.auth  `](https://firebase.googl
       }
     }
 
-Suppose that your app includes a page that shows the user a list of `  story  ` documents that they authored. You might expect that you could use the following query to populate this page. However, this query will fail, because it does not include the same constraints as your security rules:
+Suppose that your app includes a page that shows the user a list of `story` documents that they authored. You might expect that you could use the following query to populate this page. However, this query will fail, because it does not include the same constraints as your security rules:
 
 Invalid : Query constraints do not match security rules constraints
 
     // This query will fail
     db.collection("stories").get()
 
-The query fails ***even if*** the current user actually is the author of every `  story  ` document. The reason for this behavior is that when Firestore applies your security rules, it evaluates the query against its *potential* result set, not against the *actual* properties of documents in your database. If a query could *potentially* include documents that violate your security rules, the query will fail.
+The query fails ***even if*** the current user actually is the author of every `story` document. The reason for this behavior is that when Firestore applies your security rules, it evaluates the query against its *potential* result set, not against the *actual* properties of documents in your database. If a query could *potentially* include documents that violate your security rules, the query will fail.
 
-In contrast, the following query succeeds, because it includes the same constraint on the `  author  ` field as the security rules:
+In contrast, the following query succeeds, because it includes the same constraint on the `author` field as the security rules:
 
 Valid : Query constraints match security rules constraints
 
@@ -61,7 +61,7 @@ Valid : Query constraints match security rules constraints
 
 ### Secure and query documents based on a field
 
-To further demonstrate the interaction between queries and rules, the security rules below expand read access for the `  stories  ` collection to allow any user to read `  story  ` documents where the `  published  ` field is set to `  true  ` .
+To further demonstrate the interaction between queries and rules, the security rules below expand read access for the `stories` collection to allow any user to read `story` documents where the `published` field is set to `true` .
 
     service cloud.firestore {
       match /databases/{database}/documents {
@@ -78,19 +78,19 @@ The query for published pages must include the same constraints as the security 
 
     db.collection("stories").where("published", "==", true).get()
 
-The query constraint `  .where("published", "==", true)  ` guarantees that `  resource.data.published  ` is `  true  ` for any result. Therefore, this query satisfies the security rules and is allowed to read data.
+The query constraint `.where("published", "==", true)` guarantees that `resource.data.published` is `true` for any result. Therefore, this query satisfies the security rules and is allowed to read data.
 
 <span id="in_and_array-contains-any_queries"></span>
 
-### `     OR    ` queries
+### `OR` queries
 
-When evaluating a logical `  OR  ` query ( `  or  ` , `  in  ` , or `  array-contains-any  ` ) against a ruleset, Firestore evaluates each comparison value separately. Each comparison value must meet the security rule constraints. For example, for the following rule:
+When evaluating a logical `OR` query ( `or` , `in` , or `array-contains-any` ) against a ruleset, Firestore evaluates each comparison value separately. Each comparison value must meet the security rule constraints. For example, for the following rule:
 
     match /mydocuments/{doc} {
       allow read: if resource.data.x > 5;
     }
 
-Invalid : Query does not guarantee that `  x > 5  ` for all potential documents
+Invalid : Query does not guarantee that `x > 5` for all potential documents
 
     // These queries will fail
     query(db.collection("mydocuments"),
@@ -103,7 +103,7 @@ Invalid : Query does not guarantee that `  x > 5  ` for all potential documents
           where("x", "in", [1, 3, 6, 42, 99])
         )
 
-Valid : Query guarantees that `  x > 5  ` for all potential documents
+Valid : Query guarantees that `x > 5` for all potential documents
 
     query(db.collection("mydocuments"),
           or(where("x", "==", 6),
@@ -117,18 +117,18 @@ Valid : Query guarantees that `  x > 5  ` for all potential documents
 
 ### Evaluating constraints on queries
 
-Your security rules can also accept or deny queries based on their constraints. The [`  request.query  `](https://firebase.google.com/docs/reference/rules/rules.firestore.Request) variable contains the `  limit  ` , `  offset  ` , and `  orderBy  ` properties of a query. For example, your security rules can deny any query that doesn't limit the maximum number of documents retrieved to a certain range:
+Your security rules can also accept or deny queries based on their constraints. The [`request.query`](https://firebase.google.com/docs/reference/rules/rules.firestore.Request) variable contains the `limit` , `offset` , and `orderBy` properties of a query. For example, your security rules can deny any query that doesn't limit the maximum number of documents retrieved to a certain range:
 
     allow list: if request.query.limit <= 10;
 
-**Note:** [You can break `  read  ` rules into `  get  ` and `  list  ` rules](https://docs.cloud.google.com/firestore/native/docs/security/rules-structure#granular_operations) . Rules for `  get  ` apply to requests for single documents, and rules for `  list  ` apply to queries and requests for collections.
+**Note:** [You can break `read` rules into `get` and `list` rules](https://docs.cloud.google.com/firestore/native/docs/security/rules-structure#granular_operations) . Rules for `get` apply to requests for single documents, and rules for `list` apply to queries and requests for collections.
 
-The following ruleset demonstrates how to write security rules that evaluate constraints placed on queries. This example expands the previous `  stories  ` ruleset with the following changes:
+The following ruleset demonstrates how to write security rules that evaluate constraints placed on queries. This example expands the previous `stories` ruleset with the following changes:
 
-  - The ruleset separates the read rule into rules for `  get  ` and `  list  ` .
-  - The `  get  ` rule restricts retrieval of single documents to public documents or documents the user authored.
-  - The `  list  ` rule applies the same restrictions as `  get  ` but for queries. It also checks the query limit, then denies any query without a limit or with a limit greater than 10.
-  - The ruleset defines an `  authorOrPublished()  ` function to avoid code duplication.
+  - The ruleset separates the read rule into rules for `get` and `list` .
+  - The `get` rule restricts retrieval of single documents to public documents or documents the user authored.
+  - The `list` rule applies the same restrictions as `get` but for queries. It also checks the query limit, then denies any query without a limit or with a limit greater than 10.
+  - The ruleset defines an `authorOrPublished()` function to avoid code duplication.
 
 <!-- end list -->
 
@@ -169,10 +169,10 @@ By default, queries are scoped to a single collection and they retrieve results 
 
 In your security rules, you must explicitly allow collection group queries by writing a rule for the collection group:
 
-1.  Make sure `  rules_version = '2';  ` is the first line of your ruleset. Collection group queries require the [new recursive wildcard `  {name=**}  `](https://docs.cloud.google.com/firestore/native/docs/security/rules-structure#recursive_wildcards) behavior of security rules version 2.
-2.  Write a rule for your collection group using `  match /{path=**}/ [COLLECTION_ID] /{doc}  ` .
+1.  Make sure `rules_version = '2';` is the first line of your ruleset. Collection group queries require the [new recursive wildcard `{name=**}`](https://docs.cloud.google.com/firestore/native/docs/security/rules-structure#recursive_wildcards) behavior of security rules version 2.
+2.  Write a rule for your collection group using `match /{path=**}/ [COLLECTION_ID] /{doc}` .
 
-For example, consider a forum organized into `  forum  ` documents containing `  posts  ` subcollections:
+For example, consider a forum organized into `forum` documents containing `posts` subcollections:
 
 **/forums/{forumid}/posts/{postid}**
 
@@ -199,15 +199,15 @@ Any authenticated user can retrieve the posts of any single forum:
 
     db.collection("forums/technology/posts").get()
 
-But what if you want to show the current user their posts across all forums? You can use a [collection group query](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#collection-group-query) to retrieve results from all `  posts  ` collections:
+But what if you want to show the current user their posts across all forums? You can use a [collection group query](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#collection-group-query) to retrieve results from all `posts` collections:
 
     var user = firebase.auth().currentUser;
     
     db.collectionGroup("posts").where("author", "==", user.uid).get()
 
-**Note:** This query requires an index on the `  posts  ` collection for field `  author  ` and with collection group scope. If you haven't enabled this index, the query will return an error link you can follow to create the required index.
+**Note:** This query requires an index on the `posts` collection for field `author` and with collection group scope. If you haven't enabled this index, the query will return an error link you can follow to create the required index.
 
-In your security rules, you must allow this query by writing a read or list rule for the `  posts  ` collection group:
+In your security rules, you must allow this query by writing a read or list rule for the `posts` collection group:
 
     rules_version = '2';
     service cloud.firestore {
@@ -227,15 +227,15 @@ In your security rules, you must allow this query by writing a read or list rule
       }
     }
 
-Note, however, that these rules will apply to all collections with ID `  posts  ` , regardless of hierarchy. For example, these rules apply to all of the following `  posts  ` collections:
+Note, however, that these rules will apply to all collections with ID `posts` , regardless of hierarchy. For example, these rules apply to all of the following `posts` collections:
 
-  - `  /posts/{postid}  `
-  - `  /forums/{forumid}/posts/{postid}  `
-  - `  /forums/{forumid}/subforum/{subforumid}/posts/{postid}  `
+  - `/posts/{postid}`
+  - `/forums/{forumid}/posts/{postid}`
+  - `/forums/{forumid}/subforum/{subforumid}/posts/{postid}`
 
 ### Secure collection group queries based on a field
 
-Like single-collection queries, collection group queries must also meet the constraints set by your security rules. For example, we can add a `  published  ` field to each forum post like we did in the `  stories  ` example above:
+Like single-collection queries, collection group queries must also meet the constraints set by your security rules. For example, we can add a `published` field to each forum post like we did in the `stories` example above:
 
 **/forums/{forumid}/posts/{postid}**
 
@@ -246,7 +246,7 @@ Like single-collection queries, collection group queries must also meet the cons
       published: false
     }
 
-We can then write rules for the `  posts  ` collection group based on the `  published  ` status and the post `  author  ` :
+We can then write rules for the `posts` collection group based on the `published` status and the post `author` :
 
     rules_version = '2';
     service cloud.firestore {
@@ -308,17 +308,17 @@ Consider an application that keeps track of each user's transactions among sever
       user: "some_auth_id",
     }
 
-Notice the `  user  ` field. Even though we know which user owns a `  transaction  ` document from the document's path, we duplicate this information in each `  transaction  ` document because it allows us to do two things:
+Notice the `user` field. Even though we know which user owns a `transaction` document from the document's path, we duplicate this information in each `transaction` document because it allows us to do two things:
 
-  - Write collection group queries that are restricted to documents that include a specific `  /users/{userid}  ` in their document path. For example:
+  - Write collection group queries that are restricted to documents that include a specific `/users/{userid}` in their document path. For example:
     
         var user = firebase.auth().currentUser;
         // Return current user's last five transactions across all exchanges
         db.collectionGroup("transactions").where("user", "==", user).orderBy('timestamp').limit(5)
 
-  - Enforce this restriction for all queries on the `  transactions  ` collection group so one user cannot retrieve another user's `  transaction  ` documents.
+  - Enforce this restriction for all queries on the `transactions` collection group so one user cannot retrieve another user's `transaction` documents.
 
-We enforce this restriction in our security rules and include data validation for the `  user  ` field:
+We enforce this restriction in our security rules and include data validation for the `user` field:
 
     rules_version = '2';
     service cloud.firestore {

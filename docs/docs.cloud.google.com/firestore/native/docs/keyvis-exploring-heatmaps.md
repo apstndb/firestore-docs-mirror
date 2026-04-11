@@ -29,9 +29,9 @@ There are several ways to zoom in or out:
 
   - Scroll up or down within the heatmap.
   - Click the **Rectangular Zoom** *crop* button, then click and drag to select an area to enlarge.
-  - Press and hold the `  Shift  ` key, then click and drag to select an area to enlarge.
-  - Return to the previous area of the heatmap by pressing the `  Backspace  ` or `  Delete  ` key.
-  - Zoom out to view the entire table by clicking the **Reset Zoom** *zoom\_out\_map* button or pressing the `  R  ` key.
+  - Press and hold the `Shift` key, then click and drag to select an area to enlarge.
+  - Return to the previous area of the heatmap by pressing the `Backspace` or `Delete` key.
+  - Zoom out to view the entire table by clicking the **Reset Zoom** *zoom\_out\_map* button or pressing the `R` key.
 
 ## Drilling down by key prefix
 
@@ -53,7 +53,7 @@ To drill down into the heatmap's data for a group of keys that share a common pr
     
     ![Example of zooming in on a level of the key hierarchy](https://docs.cloud.google.com/static/firestore/native/docs/images/keyvis-key-prefix-zoomed.png)
 
-3.  Click another level of the key hierarchy to zoom in further, or press the `  Backspace  ` or `  Delete  ` key to return to the previous area.
+3.  Click another level of the key hierarchy to zoom in further, or press the `Backspace` or `Delete` key to return to the previous area.
 
 ## Pinning details about a metric
 
@@ -77,7 +77,7 @@ To view multiple metrics and their values at the same time, click **Show Info Pa
 
 To examine several metrics at once, use the following tools in the multimetric pane:
 
-  - To show or hide miniature heatmaps for all metrics, click `  Expand All  ` or `  Collapse All  ` at the top right.
+  - To show or hide miniature heatmaps for all metrics, click `Expand All` or `Collapse All` at the top right.
 
   - To show an individual metric's heatmap, click the metric name.
 

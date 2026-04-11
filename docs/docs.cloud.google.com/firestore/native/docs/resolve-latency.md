@@ -35,7 +35,7 @@ The following table describes possible causes of increased latency:
 <tr class="odd">
 <td>Slow merge-join queries.</td>
 <td>read</td>
-<td>For example, queries with multiple equality filters ( <code dir="ltr" translate="no">       ==      </code> ) but not backed by composite indexes can result in slow merge-join queries. To improve performance, add composite indexes for these queries, see Reason #3 in <a href="https://firebase.googleblog.com/2019/08/why-is-my-cloud-firestore-query-slow.html">Why is my Firestore query slow?</a></td>
+<td>For example, queries with multiple equality filters ( <code dir="ltr" translate="no">==</code> ) but not backed by composite indexes can result in slow merge-join queries. To improve performance, add composite indexes for these queries, see Reason #3 in <a href="https://firebase.googleblog.com/2019/08/why-is-my-cloud-firestore-query-slow.html">Why is my Firestore query slow?</a></td>
 </tr>
 <tr class="even">
 <td>Large reads that return many documents.</td>

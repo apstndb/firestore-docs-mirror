@@ -29,7 +29,7 @@ Gemini CLI is highly extensible, allowing for the addition of new tools and capa
 
 The integration with Gemini CLI is through a dedicated extension that offers additional capabilities compared to the standard MCP Toolbox connection. The extension offers a streamlined installation process and a set of tools. The open-source extension contains detailed information on installation, configuration, and usage examples. For more information, see the [Gemini CLI Extension - Firestore](https://github.com/gemini-cli-extensions/firestore-native) .
 
-The `  firestore-native  ` extension includes tools for querying the database, updating documents, and managing Firestore security rules.
+The `firestore-native` extension includes tools for querying the database, updating documents, and managing Firestore security rules.
 
 Category
 
@@ -39,29 +39,29 @@ Example natural language prompt
 
 Document and data retrieval
 
-`  get_documents  `
+`get_documents`
 
 Show me the Firestore data for the test users qa\_user\_123 and qa\_user\_456 from the users-staging collection.
 
-`  list_collections  `
+`list_collections`
 
 List all subcollections under the users-staging collection.
 
-`  query_collection  `
+`query_collection`
 
 Find all users in the users-staging collection whose wishlist contains product-glasses.
 
 Document updates and deletions
 
-`  add_documents  `
+`add_documents`
 
 Add document qa\_user\_789 to the users-staging collection with fields name: tester1 and location: USA.
 
-`  delete_documents  `
+`delete_documents`
 
 Delete document qa\_user\_789 from the users-staging collection.
 
-`  update_document  `
+`update_document`
 
 Update the document with ID order-987 in the orders collection to set the status to 'Shipped'.
 
@@ -69,11 +69,11 @@ For all 20 test users you just found, please remove product-glasses(inactive) fr
 
 Security rules management
 
-`  get_rules  `
+`get_rules`
 
 Show me the active Firestore security rules for this database.
 
-`  validate_rules  `
+`validate_rules`
 
 new\_rules.txt is a new Firestore Security Rule I'm working on for staging. Can you validate it for me?
 
@@ -83,8 +83,8 @@ To use the tools in the Gemini CLI extension for Firestore, you must have one of
 
 | Task                                      | Role name                                                                                                            | Required Identity and Access Management (IAM) role |
 | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| Read and write data in Firestore database | [Cloud Datastore User](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.user)            | `        roles/datastore.user       `              |
-| View and test security rules              | [Firebase Rules Viewer](https://docs.cloud.google.com/iam/docs/roles-permissions/firebaserules#firebaserules.viewer) | `        roles/firebaserules.viewer       `        |
+| Read and write data in Firestore database | [Cloud Datastore User](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.user)            | `roles/datastore.user`                             |
+| View and test security rules              | [Firebase Rules Viewer](https://docs.cloud.google.com/iam/docs/roles-permissions/firebaserules#firebaserules.viewer) | `roles/firebaserules.viewer`                       |
 
 ## Set up Firestore
 
@@ -97,7 +97,7 @@ To use the tools in the Gemini CLI extension for Firestore, you must have one of
 4.  Set up authentication for your local environment.
     
       - [Install gcloud CLI](https://docs.cloud.google.com/sdk/docs/install)
-      - Run `  gcloud auth application-default login  ` to authenticate
+      - Run `gcloud auth application-default login` to authenticate
 
 ## Configure the MCP client
 
@@ -111,7 +111,7 @@ This section describes how to configure various developer tools to connect to yo
     
         gemini extensions install https://github.com/gemini-cli-extensions/firestore-native
 
-3.  Set environment variables to connect to your Firestore database. The `  FIRESTORE_DATABASE  ` variable is optional and defaults to `  (default)  ` :
+3.  Set environment variables to connect to your Firestore database. The `FIRESTORE_DATABASE` variable is optional and defaults to `(default)` :
     
         export FIRESTORE_PROJECT="PROJECT_ID"
         export FIRESTORE_DATABASE="DATABASE_NAME"
@@ -128,7 +128,7 @@ This section describes how to configure various developer tools to connect to yo
 
 We recommend to configure Gemini Code Assist to use the Gemini CLI, this approach removes the need to manually configure an MCP server.
 
-1.  Make sure you have installed and configured the [Gemini CLI](https://github.com/google-gemini/gemini-cli?tab=readme-ov-file#-installation) and the [`  firestore-native  ` extension](https://github.com/gemini-cli-extensions/firestore-native) .
+1.  Make sure you have installed and configured the [Gemini CLI](https://github.com/google-gemini/gemini-cli?tab=readme-ov-file#-installation) and the [`firestore-native` extension](https://github.com/gemini-cli-extensions/firestore-native) .
 2.  [Configure Gemini Code Assist to use the Gemini CLI](https://developers.google.com/gemini-code-assist/docs/set-up-gemini-standard-enterprise) .
 3.  Start interacting with your Firestore database using natural language directly within the Gemini Code Assist chat.
 
@@ -142,25 +142,25 @@ We recommend to configure Gemini Code Assist to use the Gemini CLI, this approac
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/linux/amd64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/arm64
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/arm64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/amd64
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/amd64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### windows/amd64
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/windows/amd64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
 
 2.  Make the binary executable.
     
@@ -173,8 +173,8 @@ We recommend to configure Gemini Code Assist to use the Gemini CLI, this approac
 #### Connect to the MCP server
 
 1.  Install [Claude Code](https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview) .
-2.  Create the `  .mcp.json  ` file in your project root, if it doesn't exist.
-3.  Add the following configuration, replace the environment variables with your values, and save. The `  FIRESTORE_DATABASE  ` variable is optional and defaults to `  (default)  ` .
+2.  Create the `.mcp.json` file in your project root, if it doesn't exist.
+3.  Add the following configuration, replace the environment variables with your values, and save. The `FIRESTORE_DATABASE` variable is optional and defaults to `(default)` .
 
   
 
@@ -205,25 +205,25 @@ We recommend to configure Gemini Code Assist to use the Gemini CLI, this approac
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/linux/amd64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/arm64
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/arm64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/amd64
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/amd64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### windows/amd64
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/windows/amd64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
 
 2.  Make the binary executable.
     
@@ -237,7 +237,7 @@ We recommend to configure Gemini Code Assist to use the Gemini CLI, this approac
 
 1.  Open [Claude Desktop](https://claude.ai/download) and navigate to **Settings** .
 2.  In the **Developer** tab, click **Edit Config** to open the configuration file.
-3.  Add the following configuration, replace the environment variables with your values, and save. The `  FIRESTORE_DATABASE  ` variable is optional and defaults to `  (default)  ` .
+3.  Add the following configuration, replace the environment variables with your values, and save. The `FIRESTORE_DATABASE` variable is optional and defaults to `(default)` .
 
   
 
@@ -269,25 +269,25 @@ We recommend to configure Gemini Code Assist to use the Gemini CLI, this approac
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/linux/amd64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/arm64
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/arm64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/amd64
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/amd64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### windows/amd64
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/windows/amd64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
 
 2.  Make the binary executable.
     
@@ -301,7 +301,7 @@ We recommend to configure Gemini Code Assist to use the Gemini CLI, this approac
 
 1.  Open the [Cline](https://github.com/cline/cline) extension in VS Code and tap **MCP Servers** icon.
 2.  Click **Configure MCP Servers** to open the configuration file.
-3.  Add the following configuration, replace the environment variables with your values, and save. The `  FIRESTORE_DATABASE  ` variable is optional and defaults to `  (default)  ` .
+3.  Add the following configuration, replace the environment variables with your values, and save. The `FIRESTORE_DATABASE` variable is optional and defaults to `(default)` .
 
   
 
@@ -334,25 +334,25 @@ A green active status appears after the server connects successfully.
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/linux/amd64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/arm64
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/arm64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/amd64
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/amd64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### windows/amd64
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/windows/amd64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
 
 2.  Make the binary executable.
     
@@ -364,9 +364,9 @@ A green active status appears after the server connects successfully.
 
 #### Connect to the MCP server
 
-1.  Create the `  .cursor  ` directory in your project root if it doesn't exist.
-2.  Create the `  .cursor/mcp.json  ` file if it doesn't exist, and open it.
-3.  Add the following configuration, replace the environment variables with your values, and save. The `  FIRESTORE_DATABASE  ` variable is optional and defaults to `  (default)  ` .
+1.  Create the `.cursor` directory in your project root if it doesn't exist.
+2.  Create the `.cursor/mcp.json` file if it doesn't exist, and open it.
+3.  Add the following configuration, replace the environment variables with your values, and save. The `FIRESTORE_DATABASE` variable is optional and defaults to `(default)` .
 
 <!-- end list -->
 
@@ -397,25 +397,25 @@ A green active status appears after the server connects successfully.
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/linux/amd64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/arm64
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/arm64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/amd64
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/amd64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### windows/amd64
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/windows/amd64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
 
 2.  Make the binary executable.
     
@@ -427,9 +427,9 @@ A green active status appears after the server connects successfully.
 
 #### Connect to the MCP server
 
-1.  Open [VS Code](https://code.visualstudio.com/docs/copilot/overview) and create `  .vscode  ` directory in your project root if it does not exist.
-2.  Create the `  .vscode/mcp.json  ` file if it doesn't exist, and open it.
-3.  Add the following configuration, replace the environment variables with your values, and save. The `  FIRESTORE_DATABASE  ` variable is optional and defaults to `  (default)  ` .
+1.  Open [VS Code](https://code.visualstudio.com/docs/copilot/overview) and create `.vscode` directory in your project root if it does not exist.
+2.  Create the `.vscode/mcp.json` file if it doesn't exist, and open it.
+3.  Add the following configuration, replace the environment variables with your values, and save. The `FIRESTORE_DATABASE` variable is optional and defaults to `(default)` .
 
 <!-- end list -->
 
@@ -458,25 +458,25 @@ A green active status appears after the server connects successfully.
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/linux/amd64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/arm64
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/arm64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/amd64
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/amd64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### windows/amd64
     
         curl -O https://storage.googleapis.com/genai-toolbox/version/windows/amd64/toolbox
     
-    Replace `  version  ` with the Toolbox version number, for example `  v0.15.0  ` .
+    Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
 
 2.  Make the binary executable.
     
@@ -490,7 +490,7 @@ A green active status appears after the server connects successfully.
 
 1.  Open [Windsurf](https://docs.codeium.com/windsurf) and navigate to Cascade assistant.
 2.  Click the MCP icon, then click **Configure** to open the configuration file.
-3.  Add the following configuration, replace the environment variables with your values, and save. The `  FIRESTORE_DATABASE  ` variable is optional and defaults to `  (default)  ` .
+3.  Add the following configuration, replace the environment variables with your values, and save. The `FIRESTORE_DATABASE` variable is optional and defaults to `(default)` .
 
 <!-- end list -->
 

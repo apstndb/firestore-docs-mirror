@@ -30,100 +30,72 @@ The query stages are executed in the following order: 1. kind 2. filter 3. proje
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;projection&quot;: [
-    {
-      object (Projection)
-    }
-  ],
-  &quot;kind&quot;: [
-    {
-      object (KindExpression)
-    }
-  ],
-  &quot;filter&quot;: {
-    object (Filter)
-  },
-  &quot;order&quot;: [
-    {
-      object (PropertyOrder)
-    }
-  ],
-  &quot;distinctOn&quot;: [
-    {
-      object (PropertyReference)
-    }
-  ],
-  &quot;startCursor&quot;: string,
-  &quot;endCursor&quot;: string,
-  &quot;offset&quot;: integer,
-  &quot;limit&quot;: integer
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;projection&quot;: [{object (Projection)}],&quot;kind&quot;: [{object (KindExpression)}],&quot;filter&quot;: {object (Filter)},&quot;order&quot;: [{object (PropertyOrder)}],&quot;distinctOn&quot;: [{object (PropertyReference)}],&quot;startCursor&quot;: string,&quot;endCursor&quot;: string,&quot;offset&quot;: integer,&quot;limit&quot;: integer}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  projection[]  `
+`projection[]`
 
-`  object ( Projection  ` )
+` object ( Projection  ` )
 
 The projection to return. Defaults to returning all properties.
 
-`  kind[]  `
+`kind[]`
 
-`  object ( KindExpression  ` )
+` object ( KindExpression  ` )
 
 The kinds to query (if empty, returns entities of all kinds). Currently at most 1 kind may be specified.
 
-`  filter  `
+`filter`
 
-`  object ( Filter  ` )
+` object ( Filter  ` )
 
 The filter to apply.
 
-`  order[]  `
+`order[]`
 
-`  object ( PropertyOrder  ` )
+` object ( PropertyOrder  ` )
 
 The order to apply to the query results (if empty, order is unspecified).
 
-`  distinctOn[]  `
+`distinctOn[]`
 
-`  object ( PropertyReference  ` )
+` object ( PropertyReference  ` )
 
 The properties to make distinct. The query results will contain the first result for each distinct combination of values for the given properties (if empty, all results are returned).
 
 Requires:
 
-  - If `  order  ` is specified, the set of distinct on properties must appear before the non-distinct on properties in `  order  ` .
+  - If `order` is specified, the set of distinct on properties must appear before the non-distinct on properties in `order` .
 
-`  startCursor  `
+`startCursor`
 
-`  string ( bytes format)  `
+`string ( bytes format)`
 
 A starting point for the query results. Query cursors are returned in query result batches and [can only be used to continue the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets) .
 
 A base64-encoded string.
 
-`  endCursor  `
+`endCursor`
 
-`  string ( bytes format)  `
+`string ( bytes format)`
 
 An ending point for the query results. Query cursors are returned in query result batches and [can only be used to limit the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets) .
 
 A base64-encoded string.
 
-`  offset  `
+`offset`
 
-`  integer  `
+`integer`
 
 The number of results to skip. Applies before limit, but after all other constraints. Optional. Must be \>= 0 if specified.
 
-`  limit  `
+`limit`
 
-`  integer  `
+`integer`
 
 The maximum number of results to return. Applies after all other constraints. Optional. Unspecified is interpreted as no limit. Must be \>= 0 if specified.
 
@@ -142,20 +114,16 @@ A representation of a property in a projection.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;property&quot;: {
-    object (PropertyReference)
-  }
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;property&quot;: {object (PropertyReference)}}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  property  `
+`property`
 
-`  object ( PropertyReference  ` )
+` object ( PropertyReference  ` )
 
 The property to project.
 
@@ -183,9 +151,9 @@ A representation of a kind.
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
 The name of the kind.
 
@@ -204,34 +172,24 @@ A holder for any type of filter.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-
-  // Union field filter_type can be only one of the following:
-  &quot;compositeFilter&quot;: {
-    object (CompositeFilter)
-  },
-  &quot;propertyFilter&quot;: {
-    object (PropertyFilter)
-  }
-  // End of list of possible types for union field filter_type.
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{// Union field filter_type can be only one of the following:&quot;compositeFilter&quot;: {object (CompositeFilter)},&quot;propertyFilter&quot;: {object (PropertyFilter)}// End of list of possible types for union field filter_type.}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-Union field `  filter_type  ` . The type of filter. `  filter_type  ` can be only one of the following:
+Union field `filter_type` . The type of filter. `filter_type` can be only one of the following:
 
-`  compositeFilter  `
+`compositeFilter`
 
-`  object ( CompositeFilter  ` )
+` object ( CompositeFilter  ` )
 
 A composite filter.
 
-`  propertyFilter  `
+`propertyFilter`
 
-`  object ( PropertyFilter  ` )
+` object ( PropertyFilter  ` )
 
 A filter on a property.
 
@@ -250,29 +208,22 @@ A filter that merges multiple other filters using the given operator.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;op&quot;: enum (Operator),
-  &quot;filters&quot;: [
-    {
-      object (Filter)
-    }
-  ]
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;op&quot;: enum (Operator),&quot;filters&quot;: [{object (Filter)}]}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  op  `
+`op`
 
-`  enum ( Operator  ` )
+` enum ( Operator  ` )
 
 The operator for combining multiple filters.
 
-`  filters[]  `
+`filters[]`
 
-`  object ( Filter  ` )
+` object ( Filter  ` )
 
 The list of filters to combine.
 
@@ -286,15 +237,15 @@ A composite filter operator.
 
 Enums
 
-`  OPERATOR_UNSPECIFIED  `
+`OPERATOR_UNSPECIFIED`
 
 Unspecified. This value must not be used.
 
-`  AND  `
+`AND`
 
 The results are required to satisfy each of the combined filters.
 
-`  OR  `
+`OR`
 
 Documents are required to satisfy at least one of the combined filters.
 
@@ -313,36 +264,28 @@ A filter on a specific property.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;property&quot;: {
-    object (PropertyReference)
-  },
-  &quot;op&quot;: enum (Operator),
-  &quot;value&quot;: {
-    object (Value)
-  }
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;property&quot;: {object (PropertyReference)},&quot;op&quot;: enum (Operator),&quot;value&quot;: {object (Value)}}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  property  `
+`property`
 
-`  object ( PropertyReference  ` )
+` object ( PropertyReference  ` )
 
 The property to filter by.
 
-`  op  `
+`op`
 
-`  enum ( Operator  ` )
+` enum ( Operator  ` )
 
 The operator to filter by.
 
-`  value  `
+`value`
 
-`  object ( Value  ` )
+`object ( Value` )
 
 The value to compare the property to.
 
@@ -352,82 +295,82 @@ A property filter operator.
 
 Enums
 
-`  OPERATOR_UNSPECIFIED  `
+`OPERATOR_UNSPECIFIED`
 
 Unspecified. This value must not be used.
 
-`  LESS_THAN  `
+`LESS_THAN`
 
-The given `  property  ` is less than the given `  value  ` .
-
-Requires:
-
-  - That `  property  ` comes first in `  order_by  ` .
-
-`  LESS_THAN_OR_EQUAL  `
-
-The given `  property  ` is less than or equal to the given `  value  ` .
+The given `property` is less than the given `value` .
 
 Requires:
 
-  - That `  property  ` comes first in `  order_by  ` .
+  - That `property` comes first in `order_by` .
 
-`  GREATER_THAN  `
+`LESS_THAN_OR_EQUAL`
 
-The given `  property  ` is greater than the given `  value  ` .
-
-Requires:
-
-  - That `  property  ` comes first in `  order_by  ` .
-
-`  GREATER_THAN_OR_EQUAL  `
-
-The given `  property  ` is greater than or equal to the given `  value  ` .
+The given `property` is less than or equal to the given `value` .
 
 Requires:
 
-  - That `  property  ` comes first in `  order_by  ` .
+  - That `property` comes first in `order_by` .
 
-`  EQUAL  `
+`GREATER_THAN`
 
-The given `  property  ` is equal to the given `  value  ` .
-
-`  IN  `
-
-The given `  property  ` is equal to at least one value in the given array.
+The given `property` is greater than the given `value` .
 
 Requires:
 
-  - That `  value  ` is a non-empty `  ArrayValue  ` , subject to disjunction limits.
-  - No `  NOT_IN  ` is in the same query.
+  - That `property` comes first in `order_by` .
 
-`  NOT_EQUAL  `
+`GREATER_THAN_OR_EQUAL`
 
-The given `  property  ` is not equal to the given `  value  ` .
+The given `property` is greater than or equal to the given `value` .
 
 Requires:
 
-  - No other `  NOT_EQUAL  ` or `  NOT_IN  ` is in the same query.
-  - That `  property  ` comes first in the `  order_by  ` .
+  - That `property` comes first in `order_by` .
 
-`  HAS_ANCESTOR  `
+`EQUAL`
+
+The given `property` is equal to the given `value` .
+
+`IN`
+
+The given `property` is equal to at least one value in the given array.
+
+Requires:
+
+  - That `value` is a non-empty `ArrayValue` , subject to disjunction limits.
+  - No `NOT_IN` is in the same query.
+
+`NOT_EQUAL`
+
+The given `property` is not equal to the given `value` .
+
+Requires:
+
+  - No other `NOT_EQUAL` or `NOT_IN` is in the same query.
+  - That `property` comes first in the `order_by` .
+
+`HAS_ANCESTOR`
 
 Limit the result set to the given entity and its descendants.
 
 Requires:
 
-  - That `  value  ` is an entity key.
-  - All evaluated disjunctions must have the same `  HAS_ANCESTOR  ` filter.
+  - That `value` is an entity key.
+  - All evaluated disjunctions must have the same `HAS_ANCESTOR` filter.
 
-`  NOT_IN  `
+`NOT_IN`
 
-The value of the `  property  ` is not in the given array.
+The value of the `property` is not in the given array.
 
 Requires:
 
-  - That `  value  ` is a non-empty `  ArrayValue  ` with at most 10 values.
-  - No other `  OR  ` , `  IN  ` , `  NOT_IN  ` , `  NOT_EQUAL  ` is in the same query.
-  - That `  field  ` comes first in the `  order_by  ` .
+  - That `value` is a non-empty `ArrayValue` with at most 10 values.
+  - No other `OR` , `IN` , `NOT_IN` , `NOT_EQUAL` is in the same query.
+  - That `field` comes first in the `order_by` .
 
 ## PropertyOrder
 
@@ -444,29 +387,24 @@ The desired order for a specific property.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;property&quot;: {
-    object (PropertyReference)
-  },
-  &quot;direction&quot;: enum (Direction)
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;property&quot;: {object (PropertyReference)},&quot;direction&quot;: enum (Direction)}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  property  `
+`property`
 
-`  object ( PropertyReference  ` )
+` object ( PropertyReference  ` )
 
 The property to order by.
 
-`  direction  `
+`direction`
 
-`  enum ( Direction  ` )
+` enum ( Direction  ` )
 
-The direction to order by. Defaults to `  ASCENDING  ` .
+The direction to order by. Defaults to `ASCENDING` .
 
 ## Direction
 
@@ -474,14 +412,14 @@ The sort direction.
 
 Enums
 
-`  DIRECTION_UNSPECIFIED  `
+`DIRECTION_UNSPECIFIED`
 
 Unspecified. This value must not be used.
 
-`  ASCENDING  `
+`ASCENDING`
 
 Ascending.
 
-`  DESCENDING  `
+`DESCENDING`
 
 Descending.

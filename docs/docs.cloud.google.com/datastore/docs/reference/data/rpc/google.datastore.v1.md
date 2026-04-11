@@ -79,14 +79,14 @@ Each RPC normalizes the partition IDs of the keys in its input entities, and alw
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc AllocateIds(                         AllocateIdsRequest            </code> ) returns ( <code dir="ltr" translate="no">              AllocateIdsResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc AllocateIds(              AllocateIdsRequest            </code> ) returns ( <code dir="ltr" translate="no">             AllocateIdsResponse            </code> )</p>
 <p>Allocates IDs for the given keys, which is useful for referencing an entity before it is inserted.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -106,14 +106,14 @@ Each RPC normalizes the partition IDs of the keys in its input entities, and alw
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc BeginTransaction(                         BeginTransactionRequest            </code> ) returns ( <code dir="ltr" translate="no">              BeginTransactionResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc BeginTransaction(              BeginTransactionRequest            </code> ) returns ( <code dir="ltr" translate="no">             BeginTransactionResponse            </code> )</p>
 <p>Begins a new transaction.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -133,14 +133,14 @@ Each RPC normalizes the partition IDs of the keys in its input entities, and alw
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc Commit(                         CommitRequest            </code> ) returns ( <code dir="ltr" translate="no">              CommitResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc Commit(              CommitRequest            </code> ) returns ( <code dir="ltr" translate="no">             CommitResponse            </code> )</p>
 <p>Commits a transaction, optionally creating, deleting or modifying some entities.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -160,14 +160,14 @@ Each RPC normalizes the partition IDs of the keys in its input entities, and alw
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc Lookup(                         LookupRequest            </code> ) returns ( <code dir="ltr" translate="no">              LookupResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc Lookup(              LookupRequest            </code> ) returns ( <code dir="ltr" translate="no">             LookupResponse            </code> )</p>
 <p>Looks up entities by key.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -187,14 +187,14 @@ Each RPC normalizes the partition IDs of the keys in its input entities, and alw
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ReserveIds(                         ReserveIdsRequest            </code> ) returns ( <code dir="ltr" translate="no">              ReserveIdsResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ReserveIds(              ReserveIdsRequest            </code> ) returns ( <code dir="ltr" translate="no">             ReserveIdsResponse            </code> )</p>
 <p>Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -214,14 +214,14 @@ Each RPC normalizes the partition IDs of the keys in its input entities, and alw
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc Rollback(                         RollbackRequest            </code> ) returns ( <code dir="ltr" translate="no">              RollbackResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc Rollback(              RollbackRequest            </code> ) returns ( <code dir="ltr" translate="no">             RollbackResponse            </code> )</p>
 <p>Rolls back a transaction.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -241,14 +241,14 @@ Each RPC normalizes the partition IDs of the keys in its input entities, and alw
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc RunAggregationQuery(                         RunAggregationQueryRequest            </code> ) returns ( <code dir="ltr" translate="no">              RunAggregationQueryResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc RunAggregationQuery(              RunAggregationQueryRequest            </code> ) returns ( <code dir="ltr" translate="no">             RunAggregationQueryResponse            </code> )</p>
 <p>Runs an aggregation query.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -268,14 +268,14 @@ Each RPC normalizes the partition IDs of the keys in its input entities, and alw
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc RunQuery(                         RunQueryRequest            </code> ) returns ( <code dir="ltr" translate="no">              RunQueryResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc RunQuery(              RunQueryRequest            </code> ) returns ( <code dir="ltr" translate="no">             RunQueryResponse            </code> )</p>
 <p>Queries for entities.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -290,19 +290,19 @@ Datastore query for running an aggregation over a `  Query  ` .
 
 Fields
 
-`  aggregations[]  `
+`aggregations[]`
 
 `  Aggregation  `
 
-Optional. Series of aggregations to apply over the results of the `  nested_query  ` .
+Optional. Series of aggregations to apply over the results of the `nested_query` .
 
 Requires:
 
   - A minimum of one and maximum of five aggregations per query.
 
-Union field `  query_type  ` . The base query to aggregate over. `  query_type  ` can be only one of the following:
+Union field `query_type` . The base query to aggregate over. `query_type` can be only one of the following:
 
-`  nested_query  `
+`nested_query`
 
 `  Query  `
 
@@ -314,13 +314,13 @@ Defines an aggregation that produces a single result.
 
 Fields
 
-`  alias  `
+`alias`
 
-`  string  `
+`string`
 
 Optional. Optional name of the property to store the result of the aggregation.
 
-If not provided, Datastore will pick a default name following the format `  property_<incremental_id++>  ` . For example:
+If not provided, Datastore will pick a default name following the format `property_<incremental_id++>` . For example:
 
     AGGREGATE
       COUNT_UP_TO(1) AS count_up_to_1,
@@ -347,21 +347,21 @@ Requires:
   - Must be unique across all aggregation aliases.
   - Conform to `  entity property name  ` limitations.
 
-Union field `  operator  ` . The type of aggregation to perform, required. `  operator  ` can be only one of the following:
+Union field `operator` . The type of aggregation to perform, required. `operator` can be only one of the following:
 
-`  count  `
+`count`
 
 `  Count  `
 
 Count aggregator.
 
-`  sum  `
+`sum`
 
 `  Sum  `
 
 Sum aggregator.
 
-`  avg  `
+`avg`
 
 `  Avg  `
 
@@ -371,17 +371,17 @@ Average aggregator.
 
 Average of the values of the requested property.
 
-  - Only numeric values will be aggregated. All non-numeric values including `  NULL  ` are skipped.
+  - Only numeric values will be aggregated. All non-numeric values including `NULL` are skipped.
 
-  - If the aggregated values contain `  NaN  ` , returns `  NaN  ` . Infinity math follows IEEE-754 standards.
+  - If the aggregated values contain `NaN` , returns `NaN` . Infinity math follows IEEE-754 standards.
 
-  - If the aggregated value set is empty, returns `  NULL  ` .
+  - If the aggregated value set is empty, returns `NULL` .
 
   - Always returns the result as a double.
 
 Fields
 
-`  property  `
+`property`
 
 `  PropertyReference  `
 
@@ -391,11 +391,11 @@ The property to aggregate on.
 
 Count of entities that match the query.
 
-The `  COUNT(*)  ` aggregation function operates on the entire entity so it does not require a field reference.
+The `COUNT(*)` aggregation function operates on the entire entity so it does not require a field reference.
 
 Fields
 
-`  up_to  `
+`up_to`
 
 `  Int64Value  `
 
@@ -419,9 +419,9 @@ Requires:
 
 Sum of the values of the requested property.
 
-  - Only numeric values will be aggregated. All non-numeric values including `  NULL  ` are skipped.
+  - Only numeric values will be aggregated. All non-numeric values including `NULL` are skipped.
 
-  - If the aggregated values contain `  NaN  ` , returns `  NaN  ` . Infinity math follows IEEE-754 standards.
+  - If the aggregated values contain `NaN` , returns `NaN` . Infinity math follows IEEE-754 standards.
 
   - If the aggregated value set is empty, returns 0.
 
@@ -431,7 +431,7 @@ Sum of the values of the requested property.
 
 Fields
 
-`  property  `
+`property`
 
 `  PropertyReference  `
 
@@ -441,15 +441,15 @@ The property to aggregate on.
 
 The result of a single bucket from a Datastore aggregation query.
 
-The keys of `  aggregate_properties  ` are the same for all results in an aggregation query, unlike entity queries which can have different fields present for each result.
+The keys of `aggregate_properties` are the same for all results in an aggregation query, unlike entity queries which can have different fields present for each result.
 
 Fields
 
-`  aggregate_properties  `
+`aggregate_properties`
 
-`  map<string, Value  ` \>
+` map<string, Value  ` \>
 
-The result of the aggregation functions, ex: `  COUNT(*) AS total_entities  ` .
+The result of the aggregation functions, ex: `COUNT(*) AS total_entities` .
 
 The key is the `  alias  ` assigned to the aggregation function on input and the size of this map equals the number of aggregation functions in the query.
 
@@ -459,19 +459,19 @@ A batch of aggregation results produced by an aggregation query.
 
 Fields
 
-`  aggregation_results[]  `
+`aggregation_results[]`
 
 `  AggregationResult  `
 
 The aggregation results for this batch.
 
-`  more_results  `
+`more_results`
 
 `  MoreResultsType  `
 
-The state of the query after the current batch. Only COUNT(\*) aggregations are supported in the initial launch. Therefore, expected result type is limited to `  NO_MORE_RESULTS  ` .
+The state of the query after the current batch. Only COUNT(\*) aggregations are supported in the initial launch. Therefore, expected result type is limited to `NO_MORE_RESULTS` .
 
-`  read_time  `
+`read_time`
 
 `  Timestamp  `
 
@@ -485,21 +485,21 @@ The request for `  Datastore.AllocateIds  ` .
 
 Fields
 
-`  project_id  `
+`project_id`
 
-`  string  `
+`string`
 
 Required. The ID of the project against which to make the request.
 
-`  database_id  `
+`database_id`
 
-`  string  `
+`string`
 
 The ID of the database against which to make the request.
 
 '(default)' is not allowed; please use empty string '' to refer the default database.
 
-`  keys[]  `
+`keys[]`
 
 `  Key  `
 
@@ -511,7 +511,7 @@ The response for `  Datastore.AllocateIds  ` .
 
 Fields
 
-`  keys[]  `
+`keys[]`
 
 `  Key  `
 
@@ -523,7 +523,7 @@ An array value.
 
 Fields
 
-`  values[]  `
+`values[]`
 
 `  Value  `
 
@@ -535,21 +535,21 @@ The request for `  Datastore.BeginTransaction  ` .
 
 Fields
 
-`  project_id  `
+`project_id`
 
-`  string  `
+`string`
 
 Required. The ID of the project against which to make the request.
 
-`  database_id  `
+`database_id`
 
-`  string  `
+`string`
 
 The ID of the database against which to make the request.
 
 '(default)' is not allowed; please use empty string '' to refer the default database.
 
-`  transaction_options  `
+`transaction_options`
 
 `  TransactionOptions  `
 
@@ -561,9 +561,9 @@ The response for `  Datastore.BeginTransaction  ` .
 
 Fields
 
-`  transaction  `
+`transaction`
 
-`  bytes  `
+`bytes`
 
 The transaction identifier (always present).
 
@@ -573,50 +573,50 @@ The request for `  Datastore.Commit  ` .
 
 Fields
 
-`  project_id  `
+`project_id`
 
-`  string  `
+`string`
 
 Required. The ID of the project against which to make the request.
 
-`  database_id  `
+`database_id`
 
-`  string  `
+`string`
 
 The ID of the database against which to make the request.
 
 '(default)' is not allowed; please use empty string '' to refer the default database.
 
-`  mode  `
+`mode`
 
 `  Mode  `
 
-The type of commit to perform. Defaults to `  TRANSACTIONAL  ` .
+The type of commit to perform. Defaults to `TRANSACTIONAL` .
 
-`  mutations[]  `
+`mutations[]`
 
 `  Mutation  `
 
 The mutations to perform.
 
-When mode is `  TRANSACTIONAL  ` , mutations affecting a single entity are applied in order. The following sequences of mutations affecting a single entity are not permitted in a single `  Commit  ` request:
+When mode is `TRANSACTIONAL` , mutations affecting a single entity are applied in order. The following sequences of mutations affecting a single entity are not permitted in a single `Commit` request:
 
-  - `  insert  ` followed by `  insert  `
-  - `  update  ` followed by `  insert  `
-  - `  upsert  ` followed by `  insert  `
-  - `  delete  ` followed by `  update  `
+  - `insert` followed by `insert`
+  - `update` followed by `insert`
+  - `upsert` followed by `insert`
+  - `delete` followed by `update`
 
-When mode is `  NON_TRANSACTIONAL  ` , no two mutations may affect a single entity.
+When mode is `NON_TRANSACTIONAL` , no two mutations may affect a single entity.
 
-Union field `  transaction_selector  ` . Must be set when mode is `  TRANSACTIONAL  ` . `  transaction_selector  ` can be only one of the following:
+Union field `transaction_selector` . Must be set when mode is `TRANSACTIONAL` . `transaction_selector` can be only one of the following:
 
-`  transaction  `
+`transaction`
 
-`  bytes  `
+`bytes`
 
 The identifier of the transaction associated with the commit. A transaction identifier is returned by a call to `  Datastore.BeginTransaction  ` .
 
-`  single_use_transaction  `
+`single_use_transaction`
 
 `  TransactionOptions  `
 
@@ -628,15 +628,15 @@ The modes available for commits.
 
 Enums
 
-`  MODE_UNSPECIFIED  `
+`MODE_UNSPECIFIED`
 
 Unspecified. This value must not be used.
 
-`  TRANSACTIONAL  `
+`TRANSACTIONAL`
 
 Transactional: The mutations are either all applied, or none are applied. Learn about transactions [here](https://cloud.google.com/datastore/docs/concepts/transactions) .
 
-`  NON_TRANSACTIONAL  `
+`NON_TRANSACTIONAL`
 
 Non-transactional: The mutations may not apply as all or none.
 
@@ -646,19 +646,19 @@ The response for `  Datastore.Commit  ` .
 
 Fields
 
-`  mutation_results[]  `
+`mutation_results[]`
 
 `  MutationResult  `
 
 The result of performing the mutations. The i-th mutation result corresponds to the i-th mutation in the request.
 
-`  index_updates  `
+`index_updates`
 
-`  int32  `
+`int32`
 
 The number of index entries updated during the commit, or zero if none were updated.
 
-`  commit_time  `
+`commit_time`
 
 `  Timestamp  `
 
@@ -670,13 +670,13 @@ A filter that merges multiple other filters using the given operator.
 
 Fields
 
-`  op  `
+`op`
 
 `  Operator  `
 
 The operator for combining multiple filters.
 
-`  filters[]  `
+`filters[]`
 
 `  Filter  `
 
@@ -692,15 +692,15 @@ A composite filter operator.
 
 Enums
 
-`  OPERATOR_UNSPECIFIED  `
+`OPERATOR_UNSPECIFIED`
 
 Unspecified. This value must not be used.
 
-`  AND  `
+`AND`
 
 The results are required to satisfy each of the combined filters.
 
-`  OR  `
+`OR`
 
 Documents are required to satisfy at least one of the combined filters.
 
@@ -712,19 +712,19 @@ Must not exceed 1 MiB - 4 bytes.
 
 Fields
 
-`  key  `
+`key`
 
 `  Key  `
 
 The entity's key.
 
-An entity must have a key, unless otherwise documented (for example, an entity in `  Value.entity_value  ` may have no key). An entity's kind is its key path's last element's kind, or null if it has no key.
+An entity must have a key, unless otherwise documented (for example, an entity in `Value.entity_value` may have no key). An entity's kind is its key path's last element's kind, or null if it has no key.
 
-`  properties  `
+`properties`
 
-`  map<string, Value  ` \>
+` map<string, Value  ` \>
 
-The entity's properties. The map's keys are property names. A property name matching regex `  __.*__  ` is reserved. A reserved property name is forbidden in certain documented contexts. The map keys, represented as UTF-8, must not exceed 1,500 bytes and cannot be empty.
+The entity's properties. The map's keys are property names. A property name matching regex `__.*__` is reserved. A reserved property name is forbidden in certain documented contexts. The map keys, represented as UTF-8, must not exceed 1,500 bytes and cannot be empty.
 
 ## EntityResult
 
@@ -732,59 +732,59 @@ The result of fetching an entity from Datastore.
 
 Fields
 
-`  entity  `
+`entity`
 
 `  Entity  `
 
 The resulting entity.
 
-`  version  `
+`version`
 
-`  int64  `
+`int64`
 
 The version of the entity, a strictly positive number that monotonically increases with changes to the entity.
 
-This field is set for `  FULL  ` entity results.
+This field is set for `  FULL ` entity results.
 
-For `  missing  ` entities in `  LookupResponse  ` , this is the version of the snapshot that was used to look up the entity, and it is always set except for eventually consistent reads.
+For `  missing  ` entities in `LookupResponse` , this is the version of the snapshot that was used to look up the entity, and it is always set except for eventually consistent reads.
 
-`  create_time  `
-
-`  Timestamp  `
-
-The time at which the entity was created. This field is set for `  FULL  ` entity results. If this entity is missing, this field will not be set.
-
-`  update_time  `
+`create_time`
 
 `  Timestamp  `
 
-The time at which the entity was last changed. This field is set for `  FULL  ` entity results. If this entity is missing, this field will not be set.
+The time at which the entity was created. This field is set for `  FULL ` entity results. If this entity is missing, this field will not be set.
 
-`  cursor  `
+`update_time`
 
-`  bytes  `
+`  Timestamp  `
 
-A cursor that points to the position after the result entity. Set only when the `  EntityResult  ` is part of a `  QueryResultBatch  ` message.
+The time at which the entity was last changed. This field is set for `  FULL ` entity results. If this entity is missing, this field will not be set.
+
+`cursor`
+
+`bytes`
+
+A cursor that points to the position after the result entity. Set only when the `EntityResult` is part of a `QueryResultBatch` message.
 
 ## ResultType
 
-Specifies what data the 'entity' field contains. A `  ResultType  ` is either implied (for example, in `  LookupResponse.missing  ` from `  datastore.proto  ` , it is always `  KEY_ONLY  ` ) or specified by context (for example, in message `  QueryResultBatch  ` , field `  entity_result_type  ` specifies a `  ResultType  ` for all the values in field `  entity_results  ` ).
+Specifies what data the 'entity' field contains. A `ResultType` is either implied (for example, in `LookupResponse.missing` from `datastore.proto` , it is always `KEY_ONLY` ) or specified by context (for example, in message `QueryResultBatch` , field `entity_result_type` specifies a `ResultType` for all the values in field `entity_results` ).
 
 Enums
 
-`  RESULT_TYPE_UNSPECIFIED  `
+`RESULT_TYPE_UNSPECIFIED`
 
 Unspecified. This value is never used.
 
-`  FULL  `
+`FULL`
 
 The key and properties.
 
-`  PROJECTION  `
+`PROJECTION`
 
 A projected subset of properties. The entity may have no key.
 
-`  KEY_ONLY  `
+`KEY_ONLY`
 
 Only the key.
 
@@ -794,25 +794,25 @@ Execution statistics for the query.
 
 Fields
 
-`  results_returned  `
+`results_returned`
 
-`  int64  `
+`int64`
 
 Total number of results returned, including documents, projections, aggregation results, keys.
 
-`  execution_duration  `
+`execution_duration`
 
 `  Duration  `
 
 Total time to execute the query in the backend.
 
-`  read_operations  `
+`read_operations`
 
-`  int64  `
+`int64`
 
 Total billable read operations.
 
-`  debug_stats  `
+`debug_stats`
 
 `  Struct  `
 
@@ -824,13 +824,13 @@ Explain metrics for the query.
 
 Fields
 
-`  plan_summary  `
+`plan_summary`
 
 `  PlanSummary  `
 
 Planning phase information for the query.
 
-`  execution_stats  `
+`execution_stats`
 
 `  ExecutionStats  `
 
@@ -842,9 +842,9 @@ Explain options for the query.
 
 Fields
 
-`  analyze  `
+`analyze`
 
-`  bool  `
+`bool`
 
 Optional. Whether to execute this query.
 
@@ -858,15 +858,15 @@ A holder for any type of filter.
 
 Fields
 
-Union field `  filter_type  ` . The type of filter. `  filter_type  ` can be only one of the following:
+Union field `filter_type` . The type of filter. `filter_type` can be only one of the following:
 
-`  composite_filter  `
+`composite_filter`
 
 `  CompositeFilter  `
 
 A composite filter.
 
-`  property_filter  `
+`property_filter`
 
 `  PropertyFilter  `
 
@@ -878,33 +878,33 @@ A [GQL query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference) .
 
 Fields
 
-`  query_string  `
+`query_string`
 
-`  string  `
+`string`
 
 A string of the format described [here](https://cloud.google.com/datastore/docs/apis/gql/gql_reference) .
 
-`  allow_literals  `
+`allow_literals`
 
-`  bool  `
+`bool`
 
-When false, the query string must not contain any literals and instead must bind all values. For example, `  SELECT * FROM Kind WHERE a = 'string literal'  ` is not allowed, while `  SELECT * FROM Kind WHERE a = @value  ` is.
+When false, the query string must not contain any literals and instead must bind all values. For example, `SELECT * FROM Kind WHERE a = 'string literal'` is not allowed, while `SELECT * FROM Kind WHERE a = @value` is.
 
-`  named_bindings  `
+`named_bindings`
 
-`  map<string, GqlQueryParameter  ` \>
+` map<string, GqlQueryParameter  ` \>
 
 For each non-reserved named binding site in the query string, there must be a named parameter with that name, but not necessarily the inverse.
 
-Key must match regex `  [A-Za-z_$][A-Za-z_$0-9]*  ` , must not match regex `  __.*__  ` , and must not be `  ""  ` .
+Key must match regex `[A-Za-z_$][A-Za-z_$0-9]*` , must not match regex `__.*__` , and must not be `""` .
 
-`  positional_bindings[]  `
+`positional_bindings[]`
 
 `  GqlQueryParameter  `
 
 Numbered binding site @1 references the first numbered parameter, effectively using 1-based indexing, rather than the usual 0.
 
-For each binding site numbered i in `  query_string  ` , there must be an i-th numbered parameter. The inverse must also be true.
+For each binding site numbered i in `query_string` , there must be an i-th numbered parameter. The inverse must also be true.
 
 ## GqlQueryParameter
 
@@ -912,17 +912,17 @@ A binding parameter for a GQL query.
 
 Fields
 
-Union field `  parameter_type  ` . The type of parameter. `  parameter_type  ` can be only one of the following:
+Union field `parameter_type` . The type of parameter. `parameter_type` can be only one of the following:
 
-`  value  `
+`value`
 
 `  Value  `
 
 A value parameter.
 
-`  cursor  `
+`cursor`
 
-`  bytes  `
+`bytes`
 
 A query cursor. Query cursors are returned in query result batches.
 
@@ -932,19 +932,19 @@ A unique identifier for an entity. If a key's partition ID or any of its path ki
 
 Fields
 
-`  partition_id  `
+`partition_id`
 
 `  PartitionId  `
 
 Entities are partitioned into subsets, currently identified by a project ID and namespace ID. Queries are scoped to a single partition.
 
-`  path[]  `
+`path[]`
 
 `  PathElement  `
 
 The entity path. An entity path consists of one or more elements composed of a kind and a string or numerical identifier, which identify entities. The first element identifies a *root entity* , the second element identifies a *child* of the root entity, the third element identifies a child of the second entity, and so forth. The entities identified by all prefixes of the path are called the element's *ancestors* .
 
-An entity path is always fully complete: *all* of the entity's ancestors are required to be in the path along with the entity identifier itself. The only exception is that in some documented cases, the identifier in the last path element (for the entity) itself may be omitted. For example, the last path element of the key of `  Mutation.insert  ` may have no identifier.
+An entity path is always fully complete: *all* of the entity's ancestors are required to be in the path along with the entity identifier itself. The only exception is that in some documented cases, the identifier in the last path element (for the entity) itself may be omitted. For example, the last path element of the key of `Mutation.insert` may have no identifier.
 
 A path can never be empty, and a path can have at most 100 elements.
 
@@ -956,35 +956,35 @@ If either name or ID is set, the element is complete. If neither is set, the ele
 
 Fields
 
-`  kind  `
+`kind`
 
-`  string  `
+`string`
 
 The kind of the entity.
 
-A kind matching regex `  __.*__  ` is reserved/read-only. A kind must not contain more than 1500 bytes when UTF-8 encoded. Cannot be `  ""  ` .
+A kind matching regex `__.*__` is reserved/read-only. A kind must not contain more than 1500 bytes when UTF-8 encoded. Cannot be `""` .
 
-Must be valid UTF-8 bytes. Legacy values that are not valid UTF-8 are encoded as `  __bytes<X>__  ` where `  <X>  ` is the base-64 encoding of the bytes.
+Must be valid UTF-8 bytes. Legacy values that are not valid UTF-8 are encoded as `__bytes<X>__` where `<X>` is the base-64 encoding of the bytes.
 
-Union field `  id_type  ` . The type of ID. `  id_type  ` can be only one of the following:
+Union field `id_type` . The type of ID. `id_type` can be only one of the following:
 
-`  id  `
+`id`
 
-`  int64  `
+`int64`
 
 The auto-allocated ID of the entity.
 
 Never equal to zero. Values less than zero are discouraged and may not be supported in the future.
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
 The name of the entity.
 
-A name matching regex `  __.*__  ` is reserved/read-only. A name must not be more than 1500 bytes when UTF-8 encoded. Cannot be `  ""  ` .
+A name matching regex `__.*__` is reserved/read-only. A name must not be more than 1500 bytes when UTF-8 encoded. Cannot be `""` .
 
-Must be valid UTF-8 bytes. Legacy values that are not valid UTF-8 are encoded as `  __bytes<X>__  ` where `  <X>  ` is the base-64 encoding of the bytes.
+Must be valid UTF-8 bytes. Legacy values that are not valid UTF-8 are encoded as `__bytes<X>__` where `<X>` is the base-64 encoding of the bytes.
 
 ## KindExpression
 
@@ -992,9 +992,9 @@ A representation of a kind.
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
 The name of the kind.
 
@@ -1004,33 +1004,33 @@ The request for `  Datastore.Lookup  ` .
 
 Fields
 
-`  project_id  `
+`project_id`
 
-`  string  `
+`string`
 
 Required. The ID of the project against which to make the request.
 
-`  database_id  `
+`database_id`
 
-`  string  `
+`string`
 
 The ID of the database against which to make the request.
 
 '(default)' is not allowed; please use empty string '' to refer the default database.
 
-`  read_options  `
+`read_options`
 
 `  ReadOptions  `
 
 The options for this lookup request.
 
-`  keys[]  `
+`keys[]`
 
 `  Key  `
 
 Required. Keys of entities to look up.
 
-`  property_mask  `
+`property_mask`
 
 `  PropertyMask  `
 
@@ -1046,33 +1046,33 @@ The response for `  Datastore.Lookup  ` .
 
 Fields
 
-`  found[]  `
+`found[]`
 
 `  EntityResult  `
 
-Entities found as `  ResultType.FULL  ` entities. The order of results in this field is undefined and has no relation to the order of the keys in the input.
+Entities found as `ResultType.FULL` entities. The order of results in this field is undefined and has no relation to the order of the keys in the input.
 
-`  missing[]  `
+`missing[]`
 
 `  EntityResult  `
 
-Entities not found as `  ResultType.KEY_ONLY  ` entities. The order of results in this field is undefined and has no relation to the order of the keys in the input.
+Entities not found as `ResultType.KEY_ONLY` entities. The order of results in this field is undefined and has no relation to the order of the keys in the input.
 
-`  deferred[]  `
+`deferred[]`
 
 `  Key  `
 
 A list of keys that were not looked up due to resource constraints. The order of results in this field is undefined and has no relation to the order of the keys in the input.
 
-`  transaction  `
+`transaction`
 
-`  bytes  `
+`bytes`
 
 The identifier of the transaction that was started as part of this Lookup request.
 
 Set only when `  ReadOptions.new_transaction  ` was set in `  LookupRequest.read_options  ` .
 
-`  read_time  `
+`read_time`
 
 `  Timestamp  `
 
@@ -1084,65 +1084,65 @@ A mutation to apply to an entity.
 
 Fields
 
-`  conflict_resolution_strategy  `
+`conflict_resolution_strategy`
 
 `  ConflictResolutionStrategy  `
 
-The strategy to use when a conflict is detected. Defaults to `  SERVER_VALUE  ` . If this is set, then `  conflict_detection_strategy  ` must also be set.
+The strategy to use when a conflict is detected. Defaults to `SERVER_VALUE` . If this is set, then `conflict_detection_strategy` must also be set.
 
-`  property_mask  `
+`property_mask`
 
 `  PropertyMask  `
 
-The properties to write in this mutation. None of the properties in the mask may have a reserved name, except for `  __key__  ` . This field is ignored for `  delete  ` .
+The properties to write in this mutation. None of the properties in the mask may have a reserved name, except for `__key__` . This field is ignored for `delete` .
 
 If the entity already exists, only properties referenced in the mask are updated, others are left untouched. Properties referenced in the mask but not in the entity are deleted.
 
-`  property_transforms[]  `
+`property_transforms[]`
 
 `  PropertyTransform  `
 
 Optional. The transforms to perform on the entity.
 
-This field can be set only when the operation is `  insert  ` , `  update  ` , or `  upsert  ` . If present, the transforms are be applied to the entity regardless of the property mask, in order, after the operation.
+This field can be set only when the operation is `insert` , `update` , or `upsert` . If present, the transforms are be applied to the entity regardless of the property mask, in order, after the operation.
 
-Union field `  operation  ` . The mutation operation.
+Union field `operation` . The mutation operation.
 
-For `  insert  ` , `  update  ` , and `  upsert  ` : - The entity's key must not be reserved/read-only. - No property in the entity may have a reserved name, not even a property in an entity in a value. - No value in the entity may have meaning 18, not even a value in an entity in another value. `  operation  ` can be only one of the following:
+For `insert` , `update` , and `upsert` : - The entity's key must not be reserved/read-only. - No property in the entity may have a reserved name, not even a property in an entity in a value. - No value in the entity may have meaning 18, not even a value in an entity in another value. `operation` can be only one of the following:
 
-`  insert  `
+`insert`
 
 `  Entity  `
 
 The entity to insert. The entity must not already exist. The entity key's final path element may be incomplete.
 
-`  update  `
+`update`
 
 `  Entity  `
 
 The entity to update. The entity must already exist. Must have a complete key path.
 
-`  upsert  `
+`upsert`
 
 `  Entity  `
 
 The entity to upsert. The entity may or may not already exist. The entity key's final path element may be incomplete.
 
-`  delete  `
+`delete`
 
 `  Key  `
 
 The key of the entity to delete. The entity may or may not already exist. Must have a complete key path and must not be reserved/read-only.
 
-Union field `  conflict_detection_strategy  ` . When set, the server will detect whether or not this mutation conflicts with the current version of the entity on the server. Conflicting mutations are not applied, and are marked as such in MutationResult. `  conflict_detection_strategy  ` can be only one of the following:
+Union field `conflict_detection_strategy` . When set, the server will detect whether or not this mutation conflicts with the current version of the entity on the server. Conflicting mutations are not applied, and are marked as such in MutationResult. `conflict_detection_strategy` can be only one of the following:
 
-`  base_version  `
+`base_version`
 
-`  int64  `
+`int64`
 
 The version of the entity that this mutation is being applied to. If this does not match the current version on the server, the mutation conflicts.
 
-`  update_time  `
+`update_time`
 
 `  Timestamp  `
 
@@ -1154,15 +1154,15 @@ The possible ways to resolve a conflict detected in a mutation.
 
 Enums
 
-`  STRATEGY_UNSPECIFIED  `
+`STRATEGY_UNSPECIFIED`
 
-Unspecified. Defaults to `  SERVER_VALUE  ` .
+Unspecified. Defaults to `SERVER_VALUE` .
 
-`  SERVER_VALUE  `
+`SERVER_VALUE`
 
 The server entity is kept.
 
-`  FAIL  `
+`FAIL`
 
 The whole commit request fails.
 
@@ -1172,37 +1172,37 @@ The result of applying a mutation.
 
 Fields
 
-`  key  `
+`key`
 
 `  Key  `
 
 The automatically allocated key. Set only when the mutation allocated a key.
 
-`  version  `
+`version`
 
-`  int64  `
+`int64`
 
 The version of the entity on the server after processing the mutation. If the mutation doesn't change anything on the server, then the version will be the version of the current entity or, if no entity is present, a version that is strictly greater than the version of any previous entity and less than the version of any possible future entity.
 
-`  create_time  `
+`create_time`
 
 `  Timestamp  `
 
 The create time of the entity. This field will not be set after a 'delete'.
 
-`  update_time  `
+`update_time`
 
 `  Timestamp  `
 
 The update time of the entity on the server after processing the mutation. If the mutation doesn't change anything on the server, then the timestamp will be the update timestamp of the current entity. This field will not be set after a 'delete'.
 
-`  conflict_detected  `
+`conflict_detected`
 
-`  bool  `
+`bool`
 
 Whether a conflict was detected for this mutation. Always false when a conflict detection strategy field is not set in the mutation.
 
-`  transform_results[]  `
+`transform_results[]`
 
 `  Value  `
 
@@ -1216,29 +1216,29 @@ A partition ID contains several dimensions: project ID and namespace ID.
 
 Partition dimensions:
 
-  - May be `  ""  ` .
+  - May be `""` .
   - Must be valid UTF-8 bytes.
-  - Must have values that match regex `  [A-Za-z\d\.\-_]{1,100}  ` If the value of any dimension matches regex `  __.*__  ` , the partition is reserved/read-only. A reserved/read-only partition ID is forbidden in certain documented contexts.
+  - Must have values that match regex `[A-Za-z\d\.\-_]{1,100}` If the value of any dimension matches regex `__.*__` , the partition is reserved/read-only. A reserved/read-only partition ID is forbidden in certain documented contexts.
 
 Foreign partition IDs (in which the project ID does not match the context project ID ) are discouraged. Reads and writes of foreign partition IDs may fail if the project is not in an active state.
 
 Fields
 
-`  project_id  `
+`project_id`
 
-`  string  `
+`string`
 
 The ID of the project to which the entities belong.
 
-`  database_id  `
+`database_id`
 
-`  string  `
+`string`
 
 If not empty, the ID of the database to which the entities belong.
 
-`  namespace_id  `
+`namespace_id`
 
-`  string  `
+`string`
 
 If not empty, the ID of the namespace to which the entities belong.
 
@@ -1248,7 +1248,7 @@ Planning phase information for the query.
 
 Fields
 
-`  indexes_used[]  `
+`indexes_used[]`
 
 `  Struct  `
 
@@ -1260,7 +1260,7 @@ A representation of a property in a projection.
 
 Fields
 
-`  property  `
+`property`
 
 `  PropertyReference  `
 
@@ -1272,19 +1272,19 @@ A filter on a specific property.
 
 Fields
 
-`  property  `
+`property`
 
 `  PropertyReference  `
 
 The property to filter by.
 
-`  op  `
+`op`
 
 `  Operator  `
 
 The operator to filter by.
 
-`  value  `
+`value`
 
 `  Value  `
 
@@ -1296,82 +1296,82 @@ A property filter operator.
 
 Enums
 
-`  OPERATOR_UNSPECIFIED  `
+`OPERATOR_UNSPECIFIED`
 
 Unspecified. This value must not be used.
 
-`  LESS_THAN  `
+`LESS_THAN`
 
-The given `  property  ` is less than the given `  value  ` .
-
-Requires:
-
-  - That `  property  ` comes first in `  order_by  ` .
-
-`  LESS_THAN_OR_EQUAL  `
-
-The given `  property  ` is less than or equal to the given `  value  ` .
+The given `property` is less than the given `value` .
 
 Requires:
 
-  - That `  property  ` comes first in `  order_by  ` .
+  - That `property` comes first in `order_by` .
 
-`  GREATER_THAN  `
+`LESS_THAN_OR_EQUAL`
 
-The given `  property  ` is greater than the given `  value  ` .
-
-Requires:
-
-  - That `  property  ` comes first in `  order_by  ` .
-
-`  GREATER_THAN_OR_EQUAL  `
-
-The given `  property  ` is greater than or equal to the given `  value  ` .
+The given `property` is less than or equal to the given `value` .
 
 Requires:
 
-  - That `  property  ` comes first in `  order_by  ` .
+  - That `property` comes first in `order_by` .
 
-`  EQUAL  `
+`GREATER_THAN`
 
-The given `  property  ` is equal to the given `  value  ` .
-
-`  IN  `
-
-The given `  property  ` is equal to at least one value in the given array.
+The given `property` is greater than the given `value` .
 
 Requires:
 
-  - That `  value  ` is a non-empty `  ArrayValue  ` , subject to disjunction limits.
-  - No `  NOT_IN  ` is in the same query.
+  - That `property` comes first in `order_by` .
 
-`  NOT_EQUAL  `
+`GREATER_THAN_OR_EQUAL`
 
-The given `  property  ` is not equal to the given `  value  ` .
+The given `property` is greater than or equal to the given `value` .
 
 Requires:
 
-  - No other `  NOT_EQUAL  ` or `  NOT_IN  ` is in the same query.
-  - That `  property  ` comes first in the `  order_by  ` .
+  - That `property` comes first in `order_by` .
 
-`  HAS_ANCESTOR  `
+`EQUAL`
+
+The given `property` is equal to the given `value` .
+
+`IN`
+
+The given `property` is equal to at least one value in the given array.
+
+Requires:
+
+  - That `value` is a non-empty `ArrayValue` , subject to disjunction limits.
+  - No `NOT_IN` is in the same query.
+
+`NOT_EQUAL`
+
+The given `property` is not equal to the given `value` .
+
+Requires:
+
+  - No other `NOT_EQUAL` or `NOT_IN` is in the same query.
+  - That `property` comes first in the `order_by` .
+
+`HAS_ANCESTOR`
 
 Limit the result set to the given entity and its descendants.
 
 Requires:
 
-  - That `  value  ` is an entity key.
-  - All evaluated disjunctions must have the same `  HAS_ANCESTOR  ` filter.
+  - That `value` is an entity key.
+  - All evaluated disjunctions must have the same `HAS_ANCESTOR` filter.
 
-`  NOT_IN  `
+`NOT_IN`
 
-The value of the `  property  ` is not in the given array.
+The value of the `property` is not in the given array.
 
 Requires:
 
-  - That `  value  ` is a non-empty `  ArrayValue  ` with at most 10 values.
-  - No other `  OR  ` , `  IN  ` , `  NOT_IN  ` , `  NOT_EQUAL  ` is in the same query.
-  - That `  field  ` comes first in the `  order_by  ` .
+  - That `value` is a non-empty `ArrayValue` with at most 10 values.
+  - No other `OR` , `IN` , `NOT_IN` , `NOT_EQUAL` is in the same query.
+  - That `field` comes first in the `order_by` .
 
 ## PropertyMask
 
@@ -1379,15 +1379,15 @@ The set of arbitrarily nested property paths used to restrict an operation to on
 
 Fields
 
-`  paths[]  `
+`paths[]`
 
-`  string  `
+`string`
 
 The paths to the properties covered by this mask.
 
-A path is a list of property names separated by dots ( `  .  ` ), for example `  foo.bar  ` means the property `  bar  ` inside the entity property `  foo  ` inside the entity associated with this path.
+A path is a list of property names separated by dots ( `.` ), for example `foo.bar` means the property `bar` inside the entity property `foo` inside the entity associated with this path.
 
-If a property name contains a dot `  .  ` or a backslash `  \  ` , then that name must be escaped.
+If a property name contains a dot `.` or a backslash `\` , then that name must be escaped.
 
 A path must not be empty, and may not reference a value inside an `  array value  ` .
 
@@ -1397,17 +1397,17 @@ The desired order for a specific property.
 
 Fields
 
-`  property  `
+`property`
 
 `  PropertyReference  `
 
 The property to order by.
 
-`  direction  `
+`direction`
 
 `  Direction  `
 
-The direction to order by. Defaults to `  ASCENDING  ` .
+The direction to order by. Defaults to `ASCENDING` .
 
 ## Direction
 
@@ -1415,15 +1415,15 @@ The sort direction.
 
 Enums
 
-`  DIRECTION_UNSPECIFIED  `
+`DIRECTION_UNSPECIFIED`
 
 Unspecified. This value must not be used.
 
-`  ASCENDING  `
+`ASCENDING`
 
 Ascending.
 
-`  DESCENDING  `
+`DESCENDING`
 
 Descending.
 
@@ -1433,15 +1433,15 @@ A reference to a property relative to the kind expressions.
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
 A reference to a property.
 
 Requires:
 
-  - MUST be a dot-delimited ( `  .  ` ) string of segments, where each segment conforms to `  entity property name  ` limitations.
+  - MUST be a dot-delimited ( `.` ) string of segments, where each segment conforms to `  entity property name  ` limitations.
 
 ## PropertyTransform
 
@@ -1449,25 +1449,25 @@ A transformation of an entity property.
 
 Fields
 
-`  property  `
+`property`
 
-`  string  `
+`string`
 
 Optional. The name of the property.
 
-Property paths (a list of property names separated by dots ( `  .  ` )) may be used to refer to properties inside entity values. For example `  foo.bar  ` means the property `  bar  ` inside the entity property `  foo  ` .
+Property paths (a list of property names separated by dots ( `.` )) may be used to refer to properties inside entity values. For example `foo.bar` means the property `bar` inside the entity property `foo` .
 
-If a property name contains a dot `  .  ` or a backlslash `  \  ` , then that name must be escaped.
+If a property name contains a dot `.` or a backlslash `\` , then that name must be escaped.
 
-Union field `  transform_type  ` . The transformation to apply to the property. `  transform_type  ` can be only one of the following:
+Union field `transform_type` . The transformation to apply to the property. `transform_type` can be only one of the following:
 
-`  set_to_server_value  `
+`set_to_server_value`
 
 `  ServerValue  `
 
 Sets the property to the given server value.
 
-`  increment  `
+`increment`
 
 `  Value  `
 
@@ -1475,7 +1475,7 @@ Adds the given value to the property's current value.
 
 This must be an integer or a double value. If the property is not an integer or double, or if the property does not yet exist, the transformation will set the property to the given value. If either of the given value or the current property value are doubles, both values will be interpreted as doubles. Double arithmetic and representation of double values follows IEEE 754 semantics. If there is positive/negative integer overflow, the property is resolved to the largest magnitude positive/negative integer.
 
-`  maximum  `
+`maximum`
 
 `  Value  `
 
@@ -1483,7 +1483,7 @@ Sets the property to the maximum of its current value and the given value.
 
 This must be an integer or a double value. If the property is not an integer or double, or if the property does not yet exist, the transformation will set the property to the given value. If a maximum operation is applied where the property and the input value are of mixed types (that is - one is an integer and one is a double) the property takes on the type of the larger operand. If the operands are equivalent (e.g. 3 and 3.0), the property does not change. 0, 0.0, and -0.0 are all zero. The maximum of a zero stored value and zero input value is always the stored value. The maximum of any numeric value x and NaN is NaN.
 
-`  minimum  `
+`minimum`
 
 `  Value  `
 
@@ -1491,7 +1491,7 @@ Sets the property to the minimum of its current value and the given value.
 
 This must be an integer or a double value. If the property is not an integer or double, or if the property does not yet exist, the transformation will set the property to the input value. If a minimum operation is applied where the property and the input value are of mixed types (that is - one is an integer and one is a double) the property takes on the type of the smaller operand. If the operands are equivalent (e.g. 3 and 3.0), the property does not change. 0, 0.0, and -0.0 are all zero. The minimum of a zero stored value and zero input value is always the stored value. The minimum of any numeric value x and NaN is NaN.
 
-`  append_missing_elements  `
+`append_missing_elements`
 
 `  ArrayValue  `
 
@@ -1501,7 +1501,7 @@ Equivalent numbers of different types (e.g. 3L and 3.0) are considered equal whe
 
 The corresponding transform result will be the null value.
 
-`  remove_all_from_array  `
+`remove_all_from_array`
 
 `  ArrayValue  `
 
@@ -1517,11 +1517,11 @@ A value that is calculated by the server.
 
 Enums
 
-`  SERVER_VALUE_UNSPECIFIED  `
+`SERVER_VALUE_UNSPECIFIED`
 
 Unspecified. This value must not be used.
 
-`  REQUEST_TIME  `
+`REQUEST_TIME`
 
 The time at which the server processed the request, with millisecond precision. If used on multiple properties (same or different entities) in a transaction, all the properties will get the same server timestamp.
 
@@ -1533,31 +1533,31 @@ The query stages are executed in the following order: 1. kind 2. filter 3. proje
 
 Fields
 
-`  projection[]  `
+`projection[]`
 
 `  Projection  `
 
 The projection to return. Defaults to returning all properties.
 
-`  kind[]  `
+`kind[]`
 
 `  KindExpression  `
 
 The kinds to query (if empty, returns entities of all kinds). Currently at most 1 kind may be specified.
 
-`  filter  `
+`filter`
 
 `  Filter  `
 
 The filter to apply.
 
-`  order[]  `
+`order[]`
 
 `  PropertyOrder  `
 
 The order to apply to the query results (if empty, order is unspecified).
 
-`  distinct_on[]  `
+`distinct_on[]`
 
 `  PropertyReference  `
 
@@ -1565,27 +1565,27 @@ The properties to make distinct. The query results will contain the first result
 
 Requires:
 
-  - If `  order  ` is specified, the set of distinct on properties must appear before the non-distinct on properties in `  order  ` .
+  - If `order` is specified, the set of distinct on properties must appear before the non-distinct on properties in `order` .
 
-`  start_cursor  `
+`start_cursor`
 
-`  bytes  `
+`bytes`
 
 A starting point for the query results. Query cursors are returned in query result batches and [can only be used to continue the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets) .
 
-`  end_cursor  `
+`end_cursor`
 
-`  bytes  `
+`bytes`
 
 An ending point for the query results. Query cursors are returned in query result batches and [can only be used to limit the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets) .
 
-`  offset  `
+`offset`
 
-`  int32  `
+`int32`
 
 The number of results to skip. Applies before limit, but after all other constraints. Optional. Must be \>= 0 if specified.
 
-`  limit  `
+`limit`
 
 `  Int32Value  `
 
@@ -1597,81 +1597,81 @@ A batch of results produced by a query.
 
 Fields
 
-`  skipped_results  `
+`skipped_results`
 
-`  int32  `
+`int32`
 
 The number of results skipped, typically because of an offset.
 
-`  skipped_cursor  `
+`skipped_cursor`
 
-`  bytes  `
+`bytes`
 
-A cursor that points to the position after the last skipped result. Will be set when `  skipped_results  ` \!= 0.
+A cursor that points to the position after the last skipped result. Will be set when `skipped_results` \!= 0.
 
-`  entity_result_type  `
+`entity_result_type`
 
 `  ResultType  `
 
-The result type for every entity in `  entity_results  ` .
+The result type for every entity in `entity_results` .
 
-`  entity_results[]  `
+`entity_results[]`
 
 `  EntityResult  `
 
 The results for this batch.
 
-`  end_cursor  `
+`end_cursor`
 
-`  bytes  `
+`bytes`
 
 A cursor that points to the position after the last result in the batch.
 
-`  more_results  `
+`more_results`
 
 `  MoreResultsType  `
 
 The state of the query after the current batch.
 
-`  snapshot_version  `
+`snapshot_version`
 
-`  int64  `
+`int64`
 
-The version number of the snapshot this batch was returned from. This applies to the range of results from the query's `  start_cursor  ` (or the beginning of the query if no cursor was given) to this batch's `  end_cursor  ` (not the query's `  end_cursor  ` ).
+The version number of the snapshot this batch was returned from. This applies to the range of results from the query's `start_cursor` (or the beginning of the query if no cursor was given) to this batch's `end_cursor` (not the query's `end_cursor` ).
 
 In a single transaction, subsequent query result batches for the same query can have a greater snapshot version number. Each batch's snapshot version is valid for all preceding batches. The value will be zero for eventually consistent queries.
 
-`  read_time  `
+`read_time`
 
 `  Timestamp  `
 
-Read timestamp this batch was returned from. This applies to the range of results from the query's `  start_cursor  ` (or the beginning of the query if no cursor was given) to this batch's `  end_cursor  ` (not the query's `  end_cursor  ` ).
+Read timestamp this batch was returned from. This applies to the range of results from the query's `start_cursor` (or the beginning of the query if no cursor was given) to this batch's `end_cursor` (not the query's `end_cursor` ).
 
 In a single transaction, subsequent query result batches for the same query can have a greater timestamp. Each batch's read timestamp is valid for all preceding batches. This value will not be set for eventually consistent queries in Cloud Datastore.
 
 ## MoreResultsType
 
-The possible values for the `  more_results  ` field.
+The possible values for the `more_results` field.
 
 Enums
 
-`  MORE_RESULTS_TYPE_UNSPECIFIED  `
+`MORE_RESULTS_TYPE_UNSPECIFIED`
 
 Unspecified. This value is never used.
 
-`  NOT_FINISHED  `
+`NOT_FINISHED`
 
 There may be additional batches to fetch from this query.
 
-`  MORE_RESULTS_AFTER_LIMIT  `
+`MORE_RESULTS_AFTER_LIMIT`
 
 The query is finished, but there may be more results after the limit.
 
-`  MORE_RESULTS_AFTER_CURSOR  `
+`MORE_RESULTS_AFTER_CURSOR`
 
 The query is finished, but there may be more results after the end cursor.
 
-`  NO_MORE_RESULTS  `
+`NO_MORE_RESULTS`
 
 The query is finished, and there are no more results.
 
@@ -1681,23 +1681,23 @@ The options shared by read requests.
 
 Fields
 
-Union field `  consistency_type  ` . For Cloud Firestore in Datastore mode, if you don't specify read\_consistency then all lookups and queries default to `  read_consistency  ` = `  STRONG  ` . Note that, in Cloud Datastore, global queries defaulted to `  read_consistency  ` = `  EVENTUAL  ` .
+Union field `consistency_type` . For Cloud Firestore in Datastore mode, if you don't specify read\_consistency then all lookups and queries default to `read_consistency` = `STRONG` . Note that, in Cloud Datastore, global queries defaulted to `read_consistency` = `EVENTUAL` .
 
-Explicitly setting `  read_consistency  ` = `  EVENTUAL  ` will result in eventually consistent lookups and queries. `  consistency_type  ` can be only one of the following:
+Explicitly setting `read_consistency` = `EVENTUAL` will result in eventually consistent lookups and queries. `consistency_type` can be only one of the following:
 
-`  read_consistency  `
+`read_consistency`
 
 `  ReadConsistency  `
 
 The non-transactional read consistency to use.
 
-`  transaction  `
+`transaction`
 
-`  bytes  `
+`bytes`
 
 The identifier of the transaction in which to read. A transaction identifier is returned by a call to `  Datastore.BeginTransaction  ` .
 
-`  new_transaction  `
+`new_transaction`
 
 `  TransactionOptions  `
 
@@ -1705,7 +1705,7 @@ Options for beginning a new transaction for this request.
 
 The new transaction identifier will be returned in the corresponding response as either `  LookupResponse.transaction  ` or `  RunQueryResponse.transaction  ` .
 
-`  read_time  `
+`read_time`
 
 `  Timestamp  `
 
@@ -1719,15 +1719,15 @@ The possible values for read consistencies.
 
 Enums
 
-`  READ_CONSISTENCY_UNSPECIFIED  `
+`READ_CONSISTENCY_UNSPECIFIED`
 
 Unspecified. This value must not be used.
 
-`  STRONG  `
+`STRONG`
 
 Strong consistency.
 
-`  EVENTUAL  `
+`EVENTUAL`
 
 Eventual consistency.
 
@@ -1737,21 +1737,21 @@ The request for `  Datastore.ReserveIds  ` .
 
 Fields
 
-`  project_id  `
+`project_id`
 
-`  string  `
+`string`
 
 Required. The ID of the project against which to make the request.
 
-`  database_id  `
+`database_id`
 
-`  string  `
+`string`
 
 The ID of the database against which to make the request.
 
 '(default)' is not allowed; please use empty string '' to refer the default database.
 
-`  keys[]  `
+`keys[]`
 
 `  Key  `
 
@@ -1769,23 +1769,23 @@ The request for `  Datastore.Rollback  ` .
 
 Fields
 
-`  project_id  `
+`project_id`
 
-`  string  `
+`string`
 
 Required. The ID of the project against which to make the request.
 
-`  database_id  `
+`database_id`
 
-`  string  `
+`string`
 
 The ID of the database against which to make the request.
 
 '(default)' is not allowed; please use empty string '' to refer the default database.
 
-`  transaction  `
+`transaction`
 
-`  bytes  `
+`bytes`
 
 Required. The transaction identifier, returned by a call to `  Datastore.BeginTransaction  ` .
 
@@ -1801,47 +1801,47 @@ The request for `  Datastore.RunAggregationQuery  ` .
 
 Fields
 
-`  project_id  `
+`project_id`
 
-`  string  `
+`string`
 
 Required. The ID of the project against which to make the request.
 
-`  database_id  `
+`database_id`
 
-`  string  `
+`string`
 
 The ID of the database against which to make the request.
 
 '(default)' is not allowed; please use empty string '' to refer the default database.
 
-`  partition_id  `
+`partition_id`
 
 `  PartitionId  `
 
 Entities are partitioned into subsets, identified by a partition ID. Queries are scoped to a single partition. This partition ID is normalized with the standard default context partition ID.
 
-`  read_options  `
+`read_options`
 
 `  ReadOptions  `
 
 The options for this query.
 
-`  explain_options  `
+`explain_options`
 
 `  ExplainOptions  `
 
 Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only query results will be returned.
 
-Union field `  query_type  ` . The type of query. `  query_type  ` can be only one of the following:
+Union field `query_type` . The type of query. `query_type` can be only one of the following:
 
-`  aggregation_query  `
+`aggregation_query`
 
 `  AggregationQuery  `
 
 The query to run.
 
-`  gql_query  `
+`gql_query`
 
 `  GqlQuery  `
 
@@ -1853,27 +1853,27 @@ The response for `  Datastore.RunAggregationQuery  ` .
 
 Fields
 
-`  batch  `
+`batch`
 
 `  AggregationResultBatch  `
 
 A batch of aggregation results. Always present.
 
-`  query  `
+`query`
 
 `  AggregationQuery  `
 
-The parsed form of the `  GqlQuery  ` from the request, if it was set.
+The parsed form of the `GqlQuery` from the request, if it was set.
 
-`  transaction  `
+`transaction`
 
-`  bytes  `
+`bytes`
 
 The identifier of the transaction that was started as part of this RunAggregationQuery request.
 
 Set only when `  ReadOptions.new_transaction  ` was set in `  RunAggregationQueryRequest.read_options  ` .
 
-`  explain_metrics  `
+`explain_metrics`
 
 `  ExplainMetrics  `
 
@@ -1885,33 +1885,33 @@ The request for `  Datastore.RunQuery  ` .
 
 Fields
 
-`  project_id  `
+`project_id`
 
-`  string  `
+`string`
 
 Required. The ID of the project against which to make the request.
 
-`  database_id  `
+`database_id`
 
-`  string  `
+`string`
 
 The ID of the database against which to make the request.
 
 '(default)' is not allowed; please use empty string '' to refer the default database.
 
-`  partition_id  `
+`partition_id`
 
 `  PartitionId  `
 
 Entities are partitioned into subsets, identified by a partition ID. Queries are scoped to a single partition. This partition ID is normalized with the standard default context partition ID.
 
-`  read_options  `
+`read_options`
 
 `  ReadOptions  `
 
 The options for this query.
 
-`  property_mask  `
+`property_mask`
 
 `  PropertyMask  `
 
@@ -1919,21 +1919,21 @@ The properties to return. This field must not be set for a projection query.
 
 See `  LookupRequest.property_mask  ` .
 
-`  explain_options  `
+`explain_options`
 
 `  ExplainOptions  `
 
 Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only query results will be returned.
 
-Union field `  query_type  ` . The type of query. `  query_type  ` can be only one of the following:
+Union field `query_type` . The type of query. `query_type` can be only one of the following:
 
-`  query  `
+`query`
 
 `  Query  `
 
 The query to run.
 
-`  gql_query  `
+`gql_query`
 
 `  GqlQuery  `
 
@@ -1945,27 +1945,27 @@ The response for `  Datastore.RunQuery  ` .
 
 Fields
 
-`  batch  `
+`batch`
 
 `  QueryResultBatch  `
 
 A batch of query results. This is always present unless running a query under explain-only mode: `  RunQueryRequest.explain_options  ` was provided and `  ExplainOptions.analyze  ` was set to false.
 
-`  query  `
+`query`
 
 `  Query  `
 
-The parsed form of the `  GqlQuery  ` from the request, if it was set.
+The parsed form of the `GqlQuery` from the request, if it was set.
 
-`  transaction  `
+`transaction`
 
-`  bytes  `
+`bytes`
 
 The identifier of the transaction that was started as part of this RunQuery request.
 
 Set only when `  ReadOptions.new_transaction  ` was set in `  RunQueryRequest.read_options  ` .
 
-`  explain_metrics  `
+`explain_metrics`
 
 `  ExplainMetrics  `
 
@@ -1979,15 +1979,15 @@ Transactions can be created explicitly with calls to `  Datastore.BeginTransacti
 
 Fields
 
-Union field `  mode  ` . The `  mode  ` of the transaction, indicating whether write operations are supported. `  mode  ` can be only one of the following:
+Union field `mode` . The `mode` of the transaction, indicating whether write operations are supported. `mode` can be only one of the following:
 
-`  read_write  `
+`read_write`
 
 `  ReadWrite  `
 
 The transaction should allow both reads and writes.
 
-`  read_only  `
+`read_only`
 
 `  ReadOnly  `
 
@@ -1999,7 +1999,7 @@ Options specific to read-only transactions.
 
 Fields
 
-`  read_time  `
+`read_time`
 
 `  Timestamp  `
 
@@ -2013,9 +2013,9 @@ Options specific to read / write transactions.
 
 Fields
 
-`  previous_transaction  `
+`previous_transaction`
 
-`  bytes  `
+`bytes`
 
 The transaction identifier of the transaction being retried.
 
@@ -2025,75 +2025,75 @@ A message that can hold any of the supported value types and associated metadata
 
 Fields
 
-`  meaning  `
+`meaning`
 
-`  int32  `
+`int32`
 
-The `  meaning  ` field should only be populated for backwards compatibility.
+The `meaning` field should only be populated for backwards compatibility.
 
-`  exclude_from_indexes  `
+`exclude_from_indexes`
 
-`  bool  `
+`bool`
 
 If the value should be excluded from all indexes including those defined explicitly.
 
-Union field `  value_type  ` . Must have a value set. `  value_type  ` can be only one of the following:
+Union field `value_type` . Must have a value set. `value_type` can be only one of the following:
 
-`  null_value  `
+`null_value`
 
 `  NullValue  `
 
 A null value.
 
-`  boolean_value  `
+`boolean_value`
 
-`  bool  `
+`bool`
 
 A boolean value.
 
-`  integer_value  `
+`integer_value`
 
-`  int64  `
+`int64`
 
 An integer value.
 
-`  double_value  `
+`double_value`
 
-`  double  `
+`double`
 
 A double value.
 
-`  timestamp_value  `
+`timestamp_value`
 
 `  Timestamp  `
 
 A timestamp value. When stored in the Datastore, precise only to microseconds; any additional precision is rounded down.
 
-`  key_value  `
+`key_value`
 
 `  Key  `
 
 A key value.
 
-`  string_value  `
+`string_value`
 
-`  string  `
+`string`
 
-A UTF-8 encoded string value. When `  exclude_from_indexes  ` is false (it is indexed) , may have at most 1500 bytes. Otherwise, may be set to at most 1,000,000 bytes.
+A UTF-8 encoded string value. When `exclude_from_indexes` is false (it is indexed) , may have at most 1500 bytes. Otherwise, may be set to at most 1,000,000 bytes.
 
-`  blob_value  `
+`blob_value`
 
-`  bytes  `
+`bytes`
 
-A blob value. May have at most 1,000,000 bytes. When `  exclude_from_indexes  ` is false, may have at most 1500 bytes. In JSON requests, must be base64-encoded.
+A blob value. May have at most 1,000,000 bytes. When `exclude_from_indexes` is false, may have at most 1500 bytes. In JSON requests, must be base64-encoded.
 
-`  geo_point_value  `
+`geo_point_value`
 
 `  LatLng  `
 
 A geo point value representing a point on the surface of Earth.
 
-`  entity_value  `
+`entity_value`
 
 `  Entity  `
 
@@ -2103,8 +2103,8 @@ An entity value.
   - May have a key with an incomplete key path.
   - May have a reserved/read-only key.
 
-`  array_value  `
+`array_value`
 
 `  ArrayValue  `
 
-An array value. Cannot contain another array value. A `  Value  ` instance that sets field `  array_value  ` must not set fields `  meaning  ` or `  exclude_from_indexes  ` .
+An array value. Cannot contain another array value. A `Value` instance that sets field `array_value` must not set fields `meaning` or `exclude_from_indexes` .

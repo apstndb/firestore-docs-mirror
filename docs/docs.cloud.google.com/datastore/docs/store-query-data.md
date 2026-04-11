@@ -6,8 +6,8 @@ This page shows you how to store and query data in Firestore in Datastore mode u
 
   - <span id="quickstart-permissions"></span> If you are **not** the project owner, your account requires the following permissions to complete this quickstart:
     
-      - Your account requires the [**Datastore Owner** role](https://docs.cloud.google.com/iam/docs/understanding-roles#cloud_datastore_roles) which contains the `  datastore.databases.create  ` permission needed to create a Datastore mode instance.
-      - Datastore mode requires an active App Engine application. If the project doesn't have an application, this quickstart creates one for you. In that case, you require the `  appengine.applications.create  ` permission. The project owner can assign this permission with an [IAM custom role](https://docs.cloud.google.com/iam/docs/creating-custom-roles) .
+      - Your account requires the [**Datastore Owner** role](https://docs.cloud.google.com/iam/docs/understanding-roles#cloud_datastore_roles) which contains the `datastore.databases.create` permission needed to create a Datastore mode instance.
+      - Datastore mode requires an active App Engine application. If the project doesn't have an application, this quickstart creates one for you. In that case, you require the `appengine.applications.create` permission. The project owner can assign this permission with an [IAM custom role](https://docs.cloud.google.com/iam/docs/creating-custom-roles) .
 
 <span id="firestore-or-datastore"></span>
 
@@ -50,9 +50,9 @@ This page shows you how to store and query data in Firestore in Datastore mode u
 
 2.  Click **Create entity** .
 
-3.  On the **Create an entity** page, use `  [default]  ` for **Namespace** .
+3.  On the **Create an entity** page, use `[default]` for **Namespace** .
 
-4.  Type `  Task  ` in the **Kind** field. Leave **Key identifier** set to the default value of `  Numeric ID (auto-generated)  ` .
+4.  Type `Task` in the **Kind** field. Leave **Key identifier** set to the default value of `Numeric ID (auto-generated)` .
 
 5.  Under **Properties** , use the **Add property** button to add these properties:
     
@@ -67,7 +67,7 @@ This page shows you how to store and query data in Firestore in Datastore mode u
     
     ![The entity creation window with various properties set](https://docs.cloud.google.com/static/datastore/docs/images/developer_console_create_entity.png)
 
-6.  Click **Create** . The console displays the `  Task  ` entity that you just created.
+6.  Click **Create** . The console displays the `Task` entity that you just created.
 
 You just stored data in your database\!
 
@@ -78,24 +78,24 @@ Datastore mode databases support querying data by kind or by Google Query Langua
 ### Run kind queries
 
 1.  Click **Query by kind** .
-2.  Select `  Task  ` as the kind.
+2.  Select `Task` as the kind.
 
-The query results show the `  Task  ` entity that you created.
+The query results show the `Task` entity that you created.
 
 Next, add a query clause to restrict the results to entities that meet specific criteria:
 
 1.  Click **Add query clause** .
-2.  In the dropdown lists, select `  WHERE  ` , `  done  ` , `  ==  ` , **boolean** , and **false** .
-3.  Click **Run** . The results show the `  Task  ` entity that you created since its `  done  ` value is `  false  ` . ![A kind query with a filter applied](https://docs.cloud.google.com/static/datastore/docs/images/kind_query_filter.png)
-4.  Now change the query clause to `  WHERE  ` , `  done  ` , `  ==  ` , **boolean** , and **true** . Click **Run** . The results do not include the `  Task  ` entity that you created, because its `  done  ` value is not `  true  ` .
+2.  In the dropdown lists, select `WHERE` , `done` , `==` , **boolean** , and **false** .
+3.  Click **Run** . The results show the `Task` entity that you created since its `done` value is `false` . ![A kind query with a filter applied](https://docs.cloud.google.com/static/datastore/docs/images/kind_query_filter.png)
+4.  Now change the query clause to `WHERE` , `done` , `==` , **boolean** , and **true** . Click **Run** . The results do not include the `Task` entity that you created, because its `done` value is not `true` .
 
 ### Run GQL queries
 
 1.  Click **Query by GQL** .
-2.  Enter `  SELECT * FROM Task  ` as the query. Note that `  Task  ` is case sensitive.
+2.  Enter `SELECT * FROM Task` as the query. Note that `Task` is case sensitive.
 3.  Click **Run query** .
 
-The query results show the `  Task  ` entity that you created.
+The query results show the `Task` entity that you created.
 
 **Tip**
 
@@ -103,15 +103,15 @@ The GQL query editor supports autocompletion for kinds: When you need to type a 
 
 Add a query filter to restrict the results to entities that meet specific criteria:
 
-1.  Run a query such as `  SELECT * FROM Task WHERE done=false  ` . Note that `  Task  ` and `  done  ` are case sensitive. The results show the `  Task  ` entity that you created, since its `  done  ` value is `  false  ` . ![A GQL query with a filter applied](https://docs.cloud.google.com/static/datastore/docs/images/gql_query_filter.png)
-2.  Now run a query such as `  SELECT * FROM Task WHERE done=true  ` . The results do not include the `  Task  ` entity that you created, because its `  done  ` value is not `  true  ` .
+1.  Run a query such as `SELECT * FROM Task WHERE done=false` . Note that `Task` and `done` are case sensitive. The results show the `Task` entity that you created, since its `done` value is `false` . ![A GQL query with a filter applied](https://docs.cloud.google.com/static/datastore/docs/images/gql_query_filter.png)
+2.  Now run a query such as `SELECT * FROM Task WHERE done=true` . The results do not include the `Task` entity that you created, because its `done` value is not `true` .
 
 ## Clean up
 
-1.  Click **Query by kind** and ensure `  Task  ` is the selected kind.
+1.  Click **Query by kind** and ensure `Task` is the selected kind.
 2.  Click **Clear** to remove any query clauses.
-3.  Select the `  Task  ` entity that you created.
-4.  Click **Delete** , and then confirm you want to delete the `  Task  ` entity. Depending on the size of the browser window, **Delete** might be under the more\_vert **More actions** menu. Once deleted, the entity is permanently removed from your database.
+3.  Select the `Task` entity that you created.
+4.  Click **Delete** , and then confirm you want to delete the `Task` entity. Depending on the size of the browser window, **Delete** might be under the more\_vert **More actions** menu. Once deleted, the entity is permanently removed from your database.
 
 That's it, you completed this quickstart\!
 

@@ -33,7 +33,7 @@ The table below describes possible causes of increased latency:
 <tr class="odd">
 <td>Slow merge-join queries.</td>
 <td>read</td>
-<td>For example, queries with multiple equality filters ( <code dir="ltr" translate="no">       ==      </code> ) but not backed by composite indexes can result in slow merge-join queries. To improve performance, add composite indexes for these queries, see <a href="https://docs.cloud.google.com/datastore/docs/concepts/optimize-indexes">Optimizing indexes</a> .</td>
+<td>For example, queries with multiple equality filters ( <code dir="ltr" translate="no">==</code> ) but not backed by composite indexes can result in slow merge-join queries. To improve performance, add composite indexes for these queries, see <a href="https://docs.cloud.google.com/datastore/docs/concepts/optimize-indexes">Optimizing indexes</a> .</td>
 </tr>
 <tr class="even">
 <td>Large reads that return many entities.</td>
@@ -68,7 +68,7 @@ To resolve this issue, see the [guide to troubleshooting latency](https://docs.c
 
 ### ABORTED
 
-The following situations can increase `  ABORTED  ` errors:
+The following situations can increase `ABORTED` errors:
 
   - An entity receiving too many updates per second.
   - Contention from overlapping transactions.
@@ -97,7 +97,7 @@ To resolve this issue:
 
 ### RESOURCE\_EXHAUSTED
 
-The following situations can lead to `  RESOURCE_EXHAUSTED  ` errors:
+The following situations can lead to `RESOURCE_EXHAUSTED` errors:
 
 You exceeded the [free tier quota](https://docs.cloud.google.com/datastore/pricing#free_quota) and billing is not enabled for your project.
 
@@ -111,7 +111,7 @@ To resolve this issue:
 
 ### INVALID\_ARGUMENT
 
-The following situations can cause `  INVALID_ARGUMENT  ` errors:
+The following situations can cause `INVALID_ARGUMENT` errors:
 
   - Attempting to commit an entity with an **indexed** property value greater than 1500 bytes. This limit applies to the UTF-8 encoding of the property value.
   - Attempting to commit an entity with **un-indexed** property values greater than 1,048,487 bytes (1 MiB - 89 bytes). This limit applies to the sum of the property values in an entity. For example, four properties of 256 KiB each exceed the limit.

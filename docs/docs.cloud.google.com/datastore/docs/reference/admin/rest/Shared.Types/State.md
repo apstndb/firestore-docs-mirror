@@ -2,34 +2,34 @@ The various possible states for an ongoing Operation.
 
 Enums
 
-`  STATE_UNSPECIFIED  `
+`STATE_UNSPECIFIED`
 
 Unspecified.
 
-`  INITIALIZING  `
+`INITIALIZING`
 
 Request is being prepared for processing.
 
-`  PROCESSING  `
+`PROCESSING`
 
 Request is actively being processed.
 
-`  CANCELLING  `
+`CANCELLING`
 
 Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.
 
-`  FINALIZING  `
+`FINALIZING`
 
 Request has been processed and is in its finalization stage.
 
-`  SUCCESSFUL  `
+`SUCCESSFUL`
 
 Request has completed successfully.
 
-`  FAILED  `
+`FAILED`
 
 Request has finished being processed, but encountered an error.
 
-`  CANCELLED  `
+`CANCELLED`
 
 Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation.

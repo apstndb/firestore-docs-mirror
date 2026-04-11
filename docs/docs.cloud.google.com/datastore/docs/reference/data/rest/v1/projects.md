@@ -7,34 +7,34 @@ There is no persistent data associated with this resource.
 
 ## Methods
 
-### `             allocateIds           `
+### `            allocateIds           `
 
 Allocates IDs for the given keys, which is useful for referencing an entity before it is inserted.
 
-### `             beginTransaction           `
+### `            beginTransaction           `
 
 Begins a new transaction.
 
-### `             commit           `
+### `            commit           `
 
 Commits a transaction, optionally creating, deleting or modifying some entities.
 
-### `             lookup           `
+### `            lookup           `
 
 Looks up entities by key.
 
-### `             reserveIds           `
+### `            reserveIds           `
 
 Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.
 
-### `             rollback           `
+### `            rollback           `
 
 Rolls back a transaction.
 
-### `             runAggregationQuery           `
+### `            runAggregationQuery           `
 
 Runs an aggregation query.
 
-### `             runQuery           `
+### `            runQuery           `
 
 Queries for entities.

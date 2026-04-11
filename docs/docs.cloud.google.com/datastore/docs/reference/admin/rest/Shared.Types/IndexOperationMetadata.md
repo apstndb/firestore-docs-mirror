@@ -13,35 +13,27 @@ Metadata for Index operations.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;common&quot;: {
-    object (CommonMetadata)
-  },
-  &quot;progressEntities&quot;: {
-    object (Progress)
-  },
-  &quot;indexId&quot;: string
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;common&quot;: {object (CommonMetadata)},&quot;progressEntities&quot;: {object (Progress)},&quot;indexId&quot;: string}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  common  `
+`common`
 
-`  object ( CommonMetadata  ` )
+` object ( CommonMetadata  ` )
 
 Metadata common to all Datastore Admin operations.
 
-`  progressEntities  `
+`progressEntities`
 
-`  object ( Progress  ` )
+` object ( Progress  ` )
 
 An estimate of the number of entities processed.
 
-`  indexId  `
+`indexId`
 
-`  string  `
+`string`
 
 The index resource ID that this operation is acting on.

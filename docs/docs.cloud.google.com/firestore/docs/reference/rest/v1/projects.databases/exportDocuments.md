@@ -99,7 +99,7 @@ eu
 us
 
   
-`  POST https://firestore.googleapis.com/v1/{name=projects/*/databases/*}:exportDocuments  `
+`POST https://firestore.googleapis.com/v1/{name=projects/*/databases/*}:exportDocuments`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -107,11 +107,11 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Required. Database to export. Should be of the form: `  projects/{projectId}/databases/{databaseId}  ` .
+Required. Database to export. Should be of the form: `projects/{projectId}/databases/{databaseId}` .
 
 ### Request body
 
@@ -144,33 +144,33 @@ The request body contains data with the following structure:
 
 Fields
 
-`  collectionIds[]  `
+`collectionIds[]`
 
-`  string  `
+`string`
 
 IDs of the collection groups to export. Unspecified means all collection groups. Each collection group in this list must be unique.
 
-`  outputUriPrefix  `
+`outputUriPrefix`
 
-`  string  `
+`string`
 
-The output URI. Currently only supports Google Cloud Storage URIs of the form: `  gs://BUCKET_NAME[/NAMESPACE_PATH]  ` , where `  BUCKET_NAME  ` is the name of the Google Cloud Storage bucket and `  NAMESPACE_PATH  ` is an optional Google Cloud Storage namespace path. When choosing a name, be sure to consider Google Cloud Storage naming guidelines: <https://cloud.google.com/storage/docs/naming> . If the URI is a bucket (without a namespace path), a prefix will be generated based on the start time.
+The output URI. Currently only supports Google Cloud Storage URIs of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]` , where `BUCKET_NAME` is the name of the Google Cloud Storage bucket and `NAMESPACE_PATH` is an optional Google Cloud Storage namespace path. When choosing a name, be sure to consider Google Cloud Storage naming guidelines: <https://cloud.google.com/storage/docs/naming> . If the URI is a bucket (without a namespace path), a prefix will be generated based on the start time.
 
-`  namespaceIds[]  `
+`namespaceIds[]`
 
-`  string  `
+`string`
 
 An empty list represents all namespaces. This is the preferred usage for databases that don't use namespaces.
 
 An empty string element represents the default namespace. This should be used if the database has data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be unique.
 
-`  snapshotTime  `
+`snapshotTime`
 
-`  string ( Timestamp  ` format)
+` string ( Timestamp  ` format)
 
 The timestamp that corresponds to the version of the database to be exported. The timestamp must be in the past, rounded to the minute and not older than `  earliestVersionTime  ` . If specified, then the exported documents will represent a consistent view of the database at the provided time. Otherwise, there are no guarantees about the consistency of the exported documents.
 
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `  "2014-10-02T15:01:23Z"  ` , `  "2014-10-02T15:01:23.045123456Z"  ` or `  "2014-10-02T15:01:23+05:30"  ` .
+Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .
 
 ### Response body
 
@@ -180,7 +180,7 @@ If successful, the response body contains an instance of `  Operation  ` .
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

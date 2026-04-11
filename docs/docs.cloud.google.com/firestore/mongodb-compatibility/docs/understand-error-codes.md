@@ -4,7 +4,7 @@ This page lists error codes that you might encounter and provides suggestions fo
 
 ### DeadlineExceeded (262)
 
-The following can increase `  DeadlineExceeded (262)  ` errors:
+The following can increase `DeadlineExceeded (262)` errors:
 
   - An increase in latency caused an operation to take longer than the deadline (60 seconds by default) to complete.
 
@@ -16,7 +16,7 @@ To resolve this issue, see the [guide to troubleshooting latency](https://docs.c
 
 ### Aborted (112)
 
-The following situations can increase `  Aborted (112)  ` errors:
+The following situations can increase `Aborted (112)` errors:
 
   - A document receiving too many updates per second.
   - Contention from overlapping transactions.
@@ -41,7 +41,7 @@ To resolve this issue:
 
 ### InvalidArgument (2)
 
-The following situations can cause `  InvalidArgument (2)  ` errors:
+The following situations can cause `InvalidArgument (2)` errors:
 
   - Attempting to commit a document with that exceeds the 7.5 KiB limit for an index entry.
 

@@ -6,13 +6,13 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## Description
 
-The `  aggregate(...)  ` stage computes aggregated results (e.g. count, sum) from the documents returned by the previous stage.
+The `aggregate(...)` stage computes aggregated results (e.g. count, sum) from the documents returned by the previous stage.
 
 Optionally, when a grouping expression is provided, it groups documents based on the provided expressions and then applies accumulator functions to each group.
 
 ## Examples
 
-For aggregations without group-by, the `  aggregate(...)  ` stage takes one or more aliased aggregator expressions:
+For aggregations without group-by, the `aggregate(...)` stage takes one or more aliased aggregator expressions:
 
 ### Node.js
 
@@ -71,7 +71,7 @@ which produces:
 
 ### Perform Aggregations on Groups
 
-By supplying a `  groups  ` argument, you can perform aggregations on each distinct group.
+By supplying a `groups` argument, you can perform aggregations on each distinct group.
 
 For example, to find the city with the largest population in each country and each state:
 
@@ -97,7 +97,7 @@ which gives:
 
 ### Complex Expressions on Grouping
 
-Beyond grouping by only field values, the `  aggregate(...)  ` stage supports grouping by results of complex expressions. Any expression that is valid in a `  select  ` stage can be used as a grouping key. This allows for flexible grouping based on calculated values or conditions.
+Beyond grouping by only field values, the `aggregate(...)` stage supports grouping by results of complex expressions. Any expression that is valid in a `select` stage can be used as a grouping key. This allows for flexible grouping based on calculated values or conditions.
 
 For example, to group by whether the state field is null, and find out the total population in each group:
 
@@ -120,7 +120,7 @@ will return:
 
 ### Aggregator Behaviors
 
-The aggregation behavior of each supported function (e.g. `  count  ` , `  sum  ` , `  avg  ` ) can be found in the dedicated page for [Aggregate Functions](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/aggregate_functions) .
+The aggregation behavior of each supported function (e.g. `count` , `sum` , `avg` ) can be found in the dedicated page for [Aggregate Functions](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/aggregate_functions) .
 
 ### Group Key Behaviors
 
@@ -128,11 +128,11 @@ When grouping documents, Firestore uses equality semantics to determine if value
 
 This means that equivalent values, for example mathematically equivalent numeric values, regardless of original type (32-bit integer, 64-bit integer, floating point numbers, decimal128, etc), are all grouped together.
 
-As an example, in a collection `  numerics  ` with different documents containing `  foo  ` values of 32-bit integer `  1  ` , 64-bit integer `  1L  ` and floating-point number `  1.0  ` respectively, they will all be accumulated into the same group. Running a count grouping by `  foo  ` will return:
+As an example, in a collection `numerics` with different documents containing `foo` values of 32-bit integer `1` , 64-bit integer `1L` and floating-point number `1.0` respectively, they will all be accumulated into the same group. Running a count grouping by `foo` will return:
 
     {foo: 1.0, count: 3}
 
-In such cases of having different equivalent values present in the dataset, the output value of the group can be **any** of these equivalent values. In this example, `  foo  ` could be `  1  ` , `  1L  ` , or `  1.0  ` .
+In such cases of having different equivalent values present in the dataset, the output value of the group can be **any** of these equivalent values. In this example, `foo` could be `1` , `1L` , or `1.0` .
 
 Even if it appears to be deterministic, you should **not** attempt to rely on the behavior of one specific value being selected.
 

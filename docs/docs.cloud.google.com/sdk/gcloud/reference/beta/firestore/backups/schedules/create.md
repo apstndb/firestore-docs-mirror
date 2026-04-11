@@ -4,7 +4,7 @@ gcloud beta firestore backups schedules create - creates a Cloud Firestore backu
 
 SYNOPSIS
 
-`  gcloud beta firestore backups schedules create  ` `  --database  ` = `  DATABASE  ` `  --retention  ` = `  RETENTION  ` ( `  --recurrence  ` = `  RECURRENCE  ` : `  --day-of-week  ` = `  DAY_OF_WEEK  ` ) \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud beta firestore backups schedules create` `  --database  ` = `  DATABASE  ` `  --retention  ` = `  RETENTION  ` ( `  --recurrence  ` = `  RECURRENCE  ` : `  --day-of-week  ` = `  DAY_OF_WEEK  ` ) \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 EXAMPLES
 
@@ -22,17 +22,17 @@ gcloud beta firestore backups schedules create --database=testdb --retention=7d 
 
 REQUIRED FLAGS
 
-`  --database  ` = `  DATABASE  `
+`--database` = `  DATABASE  `
 
 The database to operate on.
 
-For example, to operate on database `  foo  ` :
+For example, to operate on database `foo` :
 
 ``` wrap-code
 gcloud beta firestore backups schedules create --database='foo'
 ```
 
-`  --retention  ` = `  RETENTION  `
+`--retention` = `  RETENTION  `
 
 The rention of the backup. At what relative time in the future, compared to the creation time of the backup should the backup be deleted, i.e. keep backups for 7 days.
 
@@ -46,7 +46,7 @@ Recurrence settings of a backup schedule.
 
 This must be specified.
 
-  - `  --recurrence  ` = `  RECURRENCE  `  
+  - `--recurrence` = `  RECURRENCE  `  
     The recurrence settings of a backup schedule.
     
     Currently only daily and weekly backup schedules are supported.
@@ -61,7 +61,7 @@ This must be specified.
     
     This flag argument must be specified if any of the other arguments in this group are specified.
 
-  - `  --day-of-week  ` = `  DAY_OF_WEEK  `  
+  - `--day-of-week` = `  DAY_OF_WEEK  `  
     The day of week (UTC time zone) of when backups are created.
     
         The available values are: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`,`SUN`.
@@ -69,13 +69,13 @@ This must be specified.
     
         This is required when creating a weekly backup schedule.
     
-    `  DAY_OF_WEEK  ` must be one of: `  SUN  ` , `  MON  ` , `  TUE  ` , `  WED  ` , `  THU  ` , `  FRI  ` , `  SAT  ` .
+    `  DAY_OF_WEEK  ` must be one of: `SUN` , `MON` , `TUE` , `WED` , `THU` , `FRI` , `SAT` .
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 NOTES
 

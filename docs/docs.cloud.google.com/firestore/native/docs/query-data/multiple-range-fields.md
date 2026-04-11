@@ -117,11 +117,11 @@ The following query uses range filters on population and density to return all c
 
 Before you run your queries, read about [queries](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data) and the Firestore [data model](https://docs.cloud.google.com/firestore/native/docs/data-model) .
 
-In Firestore, the `  ORDER BY  ` clause of a query determines which indexes can be used to serve the query. For example, an `  ORDER BY a ASC, b ASC  ` query requires a composite index on the `  a ASC, b ASC  ` fields.
+In Firestore, the `ORDER BY` clause of a query determines which indexes can be used to serve the query. For example, an `ORDER BY a ASC, b ASC` query requires a composite index on the `a ASC, b ASC` fields.
 
 To optimize the performance and cost of Firestore queries, optimize the order of fields in the index. To do this, ensure that your index is ordered from left to right such that the query distills to a dataset that prevents scanning of unnecessary index entries.
 
-Suppose you want to search through a collection of employees and find United States employees whose salary is more than $100,000 and whose number of years of experience is greater than 0. Based on your understanding of the dataset, you know that the salary constraint is more selective than the experience constraint. The ideal index that would reduce the number of index scans would be the `  (salary [...], experience [...])  ` . Thus, the query that would be fast and cost-efficient would order `  salary  ` before `  experience  ` and look as follows:
+Suppose you want to search through a collection of employees and find United States employees whose salary is more than $100,000 and whose number of years of experience is greater than 0. Based on your understanding of the dataset, you know that the salary constraint is more selective than the experience constraint. The ideal index that would reduce the number of index scans would be the `(salary [...], experience [...])` . Thus, the query that would be fast and cost-efficient would order `salary` before `experience` and look as follows:
 
 ### Java
 
@@ -153,13 +153,13 @@ When optimizing indexes, note the following best practices.
 
 #### Order index fields by equalities followed by most selective range or inequality field
 
-Firestore uses the leftmost fields of a composite index to satisfy the equality constraints and the range or inequality constraint, if any, on the first field of the `  orderBy()  ` query. These constraints can reduce the number of index entries that Firestore scans. Firestore uses the remaining fields of the index to satisfy other range or inequality constraints of the query. These constraints don't reduce the number of index entries that Firestore scans but filter out unmatched documents so that the number of documents that are returned to the clients are reduced.
+Firestore uses the leftmost fields of a composite index to satisfy the equality constraints and the range or inequality constraint, if any, on the first field of the `orderBy()` query. These constraints can reduce the number of index entries that Firestore scans. Firestore uses the remaining fields of the index to satisfy other range or inequality constraints of the query. These constraints don't reduce the number of index entries that Firestore scans but filter out unmatched documents so that the number of documents that are returned to the clients are reduced.
 
 For more information about creating efficient indexes, see [index properties](https://docs.cloud.google.com/firestore/native/docs/concepts/index-overview#index_properties) .
 
 #### Order fields in decreasing order of query constraint selectivity
 
-To ensure that Firestore selects the optimal index for your query, specify an `  orderBy()  ` clause that orders fields in decreasing order of query constraint selectivity. Higher selectivity matches a smaller subset of documents, while lower selectivity matches a larger subset of documents. Ensure that you select range or inequality fields with higher selectivity earlier in the index ordering than fields with lower selectivity.
+To ensure that Firestore selects the optimal index for your query, specify an `orderBy()` clause that orders fields in decreasing order of query constraint selectivity. Higher selectivity matches a smaller subset of documents, while lower selectivity matches a larger subset of documents. Ensure that you select range or inequality fields with higher selectivity earlier in the index ordering than fields with lower selectivity.
 
 To minimize the number of documents that Firestore scans and returns over the network, you should always order fields in the decreasing order of query constraint selectivity. If the result set is not in the required order and the result set is expected to be small, you can implement client-side logic to reorder it as per your ordering expectation.
 
@@ -196,7 +196,7 @@ For example, suppose you want to search through a collection of employees to fin
     
     // Order results by `experience`
 
-While adding an ordering on `  experience  ` to the query will yield the same set of documents and obviate re-ordering the results on the clients, the query may read many more extraneous index entries than the earlier query. This is because Firestore always prefers an index whose index fields prefix match the order by clause of the query. If `  experience  ` were added to the order by clause, then Firestore will select the `  (experience [...], salary [...])  ` index for computing query results. Since there are no other constraints on `  experience  ` , Firestore will read **all** index entries of the `  employees  ` collection before applying the `  salary  ` filter to find the final result set. This means that index entries which don't satisfy the `  salary  ` filter are still read, thus increasing the latency and cost of the query.
+While adding an ordering on `experience` to the query will yield the same set of documents and obviate re-ordering the results on the clients, the query may read many more extraneous index entries than the earlier query. This is because Firestore always prefers an index whose index fields prefix match the order by clause of the query. If `experience` were added to the order by clause, then Firestore will select the `(experience [...], salary [...])` index for computing query results. Since there are no other constraints on `experience` , Firestore will read **all** index entries of the `employees` collection before applying the `salary` filter to find the final result set. This means that index entries which don't satisfy the `salary` filter are still read, thus increasing the latency and cost of the query.
 
 ## Pricing
 
@@ -208,7 +208,7 @@ For detailed information, see the [Pricing](https://docs.cloud.google.com/firest
 
 Apart from the [query limitations](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#query_limitations) , note the following limitations before using queries with range and inequality filters on multiple fields:
 
-  - Queries with range or inequality filters on document fields and only equality constraints on the document key `  (__name__)  ` aren't supported.
+  - Queries with range or inequality filters on document fields and only equality constraints on the document key `(__name__)` aren't supported.
   - Firestore limits the number of range or inequality fields to 10. This is to prevent queries from becoming too expensive to run.
 
 ## What's next

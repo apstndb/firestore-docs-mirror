@@ -6,10 +6,10 @@ The Google Cloud CLI provides a convenient way to access the Datastore mode REST
 
 To access the Firestore in Datastore mode REST API methods below, you must authenticate your request by providing a Google OAuth 2.0 access token with one of the following scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
-The cURL and PowerShell examples below use the `  gcloud auth print-access-token  ` command to authenticate requests. For more information about obtaining an access token, see [Using OAuth 2.0 to Access Google APIs](https://developers.google.com/identity/protocols/OAuth2) .
+The cURL and PowerShell examples below use the `gcloud auth print-access-token` command to authenticate requests. For more information about obtaining an access token, see [Using OAuth 2.0 to Access Google APIs](https://developers.google.com/identity/protocols/OAuth2) .
 
 ### Authorization
 
@@ -17,24 +17,24 @@ The authenticated user, group, or service account in the request must have autho
 
   - For full index read and edit access, grant one of these roles:
     
-      - `  roles/owner  `
-      - `  roles/editor  `
-      - `  roles/datastore.owner  `
-      - `  roles/datastore.indexAdmin  `
+      - `roles/owner`
+      - `roles/editor`
+      - `roles/datastore.owner`
+      - `roles/datastore.indexAdmin`
 
   - For index read access only (get and list), grant one of these roles:
     
-      - `  roles/viewer  `
-      - `  roles/datastore.user  `
-      - `  roles/datastore.viewer  `
+      - `roles/viewer`
+      - `roles/datastore.user`
+      - `roles/datastore.viewer`
 
 For more information about assigning these roles, see [granting, changing, and revoking access to resources](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
 
 ## Before you begin
 
-The `  curl  ` and PowerShell examples below use the Google Cloud CLI (Google Cloud CLI) to authenticate requests. To run these examples locally, [install and initialize the Google Cloud CLI](https://cloud.google.com/sdk/docs/quickstarts) .
+The `curl` and PowerShell examples below use the Google Cloud CLI (Google Cloud CLI) to authenticate requests. To run these examples locally, [install and initialize the Google Cloud CLI](https://cloud.google.com/sdk/docs/quickstarts) .
 
-Alternatively, you can access `  gcloud  ` and `  curl  ` from the Google Cloud console using [Cloud Shell](https://cloud.google.com/shell/) .
+Alternatively, you can access `gcloud` and `curl` from the Google Cloud console using [Cloud Shell](https://cloud.google.com/shell/) .
 
 [Start Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
 
@@ -46,9 +46,9 @@ Before using any of the request data, make the following replacements:
 
   - project-id : your project ID
   - kind : the entity kind to index
-  - include-ancestors : whether or not to include entity ancestors in the index to support [ancestor queries](https://docs.cloud.google.com/datastore/docs/concepts/queries#ancestor_queries) , either `  NONE  ` or `  ALL_ANCESTORS  `
+  - include-ancestors : whether or not to include entity ancestors in the index to support [ancestor queries](https://docs.cloud.google.com/datastore/docs/concepts/queries#ancestor_queries) , either `NONE` or `ALL_ANCESTORS`
   - property-name : the property to index, must specify two or more properties
-  - index-direction : the sort order for each property, `  ASCENDING  ` or `  DESCENDING  `
+  - index-direction : the sort order for each property, `ASCENDING` or `DESCENDING`
 
 HTTP method and URL:
 
@@ -75,9 +75,9 @@ To send your request, choose one of these options:
 
 #### curl
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `  gcloud  ` CLI . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
-Save the request body in a file named `  request.json  ` , and execute the following command:
+Save the request body in a file named `request.json` , and execute the following command:
 
     curl -X POST \
          -H "Authorization: Bearer $(gcloud auth print-access-token)" \
@@ -87,9 +87,9 @@ Save the request body in a file named `  request.json  ` , and execute the follo
 
 #### PowerShell
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
-Save the request body in a file named `  request.json  ` , and execute the following command:
+Save the request body in a file named `request.json` , and execute the following command:
 
     $cred = gcloud auth print-access-token
     $headers = @{ "Authorization" = "Bearer $cred" }
@@ -139,7 +139,7 @@ To send your request, choose one of these options:
 
 #### curl
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `  gcloud  ` CLI . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Execute the following command:
 
@@ -149,7 +149,7 @@ Execute the following command:
 
 #### PowerShell
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Execute the following command:
 
@@ -189,12 +189,12 @@ You should receive a JSON response similar to the following:
 
 ### Index state
 
-See the index state for progress information and error messages. You cannot use an index for queries until it reaches the `  READY  ` state. Possible index statuses include:
+See the index state for progress information and error messages. You cannot use an index for queries until it reaches the `READY` state. Possible index statuses include:
 
-  - `  CREATING  ` : index creation in progress.
-  - `  ALREADY_EXISTS  ` : cannot complete operation because this index already exists.
-  - `  ERROR  ` : index creation failed. Fix the data that caused the error, [delete](https://docs.cloud.google.com/datastore/docs/configure-indexes-rest-api#deleting_a_composite_index) this index, and then [create](https://docs.cloud.google.com/datastore/docs/configure-indexes-rest-api#creating_a_composite_index) the index again.
-  - `  READY  ` : index creation complete. The index is ready to use for queries.
+  - `CREATING` : index creation in progress.
+  - `ALREADY_EXISTS` : cannot complete operation because this index already exists.
+  - `ERROR` : index creation failed. Fix the data that caused the error, [delete](https://docs.cloud.google.com/datastore/docs/configure-indexes-rest-api#deleting_a_composite_index) this index, and then [create](https://docs.cloud.google.com/datastore/docs/configure-indexes-rest-api#creating_a_composite_index) the index again.
+  - `READY` : index creation complete. The index is ready to use for queries.
 
 ## Deleting a composite index
 
@@ -206,7 +206,7 @@ To send your request, choose one of these options:
 
 #### curl
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `  gcloud  ` CLI . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Execute the following command:
 
@@ -216,7 +216,7 @@ Execute the following command:
 
 #### PowerShell
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Execute the following command:
 
@@ -250,7 +250,7 @@ To send your request, choose one of these options:
 
 #### curl
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `  gcloud  ` CLI . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Execute the following command:
 
@@ -260,7 +260,7 @@ Execute the following command:
 
 #### PowerShell
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Execute the following command:
 

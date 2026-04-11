@@ -114,9 +114,9 @@ Index creation is performed asynchronously. An Operation resource is created for
 
 The Operations collection provides a record of actions performed for the specified Project (including any Operations in progress). Operations are not created directly but through calls on other collections or resources.
 
-An Operation that is done may be deleted so that it is no longer listed as part of the Operation collection. Operations are garbage collected after 30 days. By default, ListOperations will only return in progress and failed operations. To list completed operation, issue a ListOperations request with the filter `  done: true  ` .
+An Operation that is done may be deleted so that it is no longer listed as part of the Operation collection. Operations are garbage collected after 30 days. By default, ListOperations will only return in progress and failed operations. To list completed operation, issue a ListOperations request with the filter `done: true` .
 
-Operations are created by service `  FirestoreAdmin  ` , but are accessed via service `  google.longrunning.Operations  ` .
+Operations are created by service `FirestoreAdmin` , but are accessed via service `google.longrunning.Operations` .
 
 <table>
 <colgroup>
@@ -129,15 +129,15 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc BulkDeleteDocuments(                         BulkDeleteDocumentsRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc BulkDeleteDocuments(              BulkDeleteDocumentsRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
 <p>Bulk deletes a subset of documents from Google Cloud Firestore. Documents created or updated after the underlying system starts to process the request will not be deleted. The bulk delete occurs in the background and its progress can be monitored and managed via the Operation resource that is created.</p>
 <p>For more details on bulk delete behavior, refer to: <a href="https://cloud.google.com/firestore/docs/manage-data/bulk-delete">https://cloud.google.com/firestore/docs/manage-data/bulk-delete</a></p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -157,16 +157,16 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc CloneDatabase(                         CloneDatabaseRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc CloneDatabase(              CloneDatabaseRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
 <p>Creates a new database by cloning an existing one.</p>
-<p>The new database must be in the same cloud region or multi-region location as the existing database. This behaves similar to <code dir="ltr" translate="no">             FirestoreAdmin.CreateDatabase           </code> except instead of creating a new empty database, a new database is created with the database type, index configuration, and documents from an existing database.</p>
-<p>The <code dir="ltr" translate="no">             long-running operation           </code> can be used to track the progress of the clone, with the Operation's <code dir="ltr" translate="no">             metadata           </code> field type being the <code dir="ltr" translate="no">             CloneDatabaseMetadata           </code> . The <code dir="ltr" translate="no">             response           </code> type is the <code dir="ltr" translate="no">             Database           </code> if the clone was successful. The new database is not readable or writeable until the LRO has completed.</p>
+<p>The new database must be in the same cloud region or multi-region location as the existing database. This behaves similar to <code dir="ltr" translate="no">            FirestoreAdmin.CreateDatabase           </code> except instead of creating a new empty database, a new database is created with the database type, index configuration, and documents from an existing database.</p>
+<p>The <code dir="ltr" translate="no">            long-running operation           </code> can be used to track the progress of the clone, with the Operation's <code dir="ltr" translate="no">            metadata           </code> field type being the <code dir="ltr" translate="no">            CloneDatabaseMetadata           </code> . The <code dir="ltr" translate="no">            response           </code> type is the <code dir="ltr" translate="no">            Database           </code> if the clone was successful. The new database is not readable or writeable until the LRO has completed.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -186,14 +186,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc CreateBackupSchedule(                         CreateBackupScheduleRequest            </code> ) returns ( <code dir="ltr" translate="no">              BackupSchedule            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc CreateBackupSchedule(              CreateBackupScheduleRequest            </code> ) returns ( <code dir="ltr" translate="no">             BackupSchedule            </code> )</p>
 <p>Creates a backup schedule on a database. At most two backup schedules can be configured on a database, one daily backup schedule and one weekly backup schedule.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -213,14 +213,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc CreateDatabase(                         CreateDatabaseRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc CreateDatabase(              CreateDatabaseRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
 <p>Create a database.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -240,14 +240,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc CreateIndex(                         CreateIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
-<p>Creates a composite index. This returns a <code dir="ltr" translate="no">             google.longrunning.Operation           </code> which may be used to track the status of the creation. The metadata for the operation will be the type <code dir="ltr" translate="no">             IndexOperationMetadata           </code> .</p>
+<td><p><code dir="ltr" translate="no">rpc CreateIndex(              CreateIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
+<p>Creates a composite index. This returns a <code dir="ltr" translate="no">            google.longrunning.Operation           </code> which may be used to track the status of the creation. The metadata for the operation will be the type <code dir="ltr" translate="no">            IndexOperationMetadata           </code> .</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -267,14 +267,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc CreateUserCreds(                         CreateUserCredsRequest            </code> ) returns ( <code dir="ltr" translate="no">              UserCreds            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc CreateUserCreds(              CreateUserCredsRequest            </code> ) returns ( <code dir="ltr" translate="no">             UserCreds            </code> )</p>
 <p>Create a user creds.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -294,14 +294,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc DeleteBackup(                         DeleteBackupRequest            </code> ) returns ( <code dir="ltr" translate="no">              Empty            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc DeleteBackup(              DeleteBackupRequest            </code> ) returns ( <code dir="ltr" translate="no">             Empty            </code> )</p>
 <p>Deletes a backup.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -321,14 +321,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc DeleteBackupSchedule(                         DeleteBackupScheduleRequest            </code> ) returns ( <code dir="ltr" translate="no">              Empty            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc DeleteBackupSchedule(              DeleteBackupScheduleRequest            </code> ) returns ( <code dir="ltr" translate="no">             Empty            </code> )</p>
 <p>Deletes a backup schedule.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -348,14 +348,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc DeleteDatabase(                         DeleteDatabaseRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc DeleteDatabase(              DeleteDatabaseRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
 <p>Deletes a database.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -375,14 +375,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc DeleteIndex(                         DeleteIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">              Empty            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc DeleteIndex(              DeleteIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">             Empty            </code> )</p>
 <p>Deletes a composite index.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -402,14 +402,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc DeleteUserCreds(                         DeleteUserCredsRequest            </code> ) returns ( <code dir="ltr" translate="no">              Empty            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc DeleteUserCreds(              DeleteUserCredsRequest            </code> ) returns ( <code dir="ltr" translate="no">             Empty            </code> )</p>
 <p>Deletes a user creds.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -429,14 +429,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc DisableUserCreds(                         DisableUserCredsRequest            </code> ) returns ( <code dir="ltr" translate="no">              UserCreds            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc DisableUserCreds(              DisableUserCredsRequest            </code> ) returns ( <code dir="ltr" translate="no">             UserCreds            </code> )</p>
 <p>Disables a user creds. No-op if the user creds are already disabled.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -456,14 +456,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc EnableUserCreds(                         EnableUserCredsRequest            </code> ) returns ( <code dir="ltr" translate="no">              UserCreds            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc EnableUserCreds(              EnableUserCredsRequest            </code> ) returns ( <code dir="ltr" translate="no">             UserCreds            </code> )</p>
 <p>Enables a user creds. No-op if the user creds are already enabled.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -483,15 +483,15 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ExportDocuments(                         ExportDocumentsRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ExportDocuments(              ExportDocumentsRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
 <p>Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage. Recent updates to documents may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage.</p>
 <p>For more details on export behavior and output format, refer to: <a href="https://cloud.google.com/firestore/docs/manage-data/export-import">https://cloud.google.com/firestore/docs/manage-data/export-import</a></p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -511,14 +511,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc GetBackup(                         GetBackupRequest            </code> ) returns ( <code dir="ltr" translate="no">              Backup            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc GetBackup(              GetBackupRequest            </code> ) returns ( <code dir="ltr" translate="no">             Backup            </code> )</p>
 <p>Gets information about a backup.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -538,14 +538,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc GetBackupSchedule(                         GetBackupScheduleRequest            </code> ) returns ( <code dir="ltr" translate="no">              BackupSchedule            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc GetBackupSchedule(              GetBackupScheduleRequest            </code> ) returns ( <code dir="ltr" translate="no">             BackupSchedule            </code> )</p>
 <p>Gets information about a backup schedule.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -565,14 +565,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc GetDatabase(                         GetDatabaseRequest            </code> ) returns ( <code dir="ltr" translate="no">              Database            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc GetDatabase(              GetDatabaseRequest            </code> ) returns ( <code dir="ltr" translate="no">             Database            </code> )</p>
 <p>Gets information about a database.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -592,14 +592,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc GetField(                         GetFieldRequest            </code> ) returns ( <code dir="ltr" translate="no">              Field            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc GetField(              GetFieldRequest            </code> ) returns ( <code dir="ltr" translate="no">             Field            </code> )</p>
 <p>Gets the metadata and configuration for a Field.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -619,14 +619,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc GetIndex(                         GetIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">              Index            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc GetIndex(              GetIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">             Index            </code> )</p>
 <p>Gets a composite index.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -646,14 +646,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc GetUserCreds(                         GetUserCredsRequest            </code> ) returns ( <code dir="ltr" translate="no">              UserCreds            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc GetUserCreds(              GetUserCredsRequest            </code> ) returns ( <code dir="ltr" translate="no">             UserCreds            </code> )</p>
 <p>Gets a user creds resource. Note that the returned resource does not contain the secret value itself.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -673,14 +673,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ImportDocuments(                         ImportDocumentsRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ImportDocuments(              ImportDocumentsRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
 <p>Imports documents into Google Cloud Firestore. Existing documents with the same name are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an ImportDocuments operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Firestore.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -700,14 +700,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ListBackupSchedules(                         ListBackupSchedulesRequest            </code> ) returns ( <code dir="ltr" translate="no">              ListBackupSchedulesResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ListBackupSchedules(              ListBackupSchedulesRequest            </code> ) returns ( <code dir="ltr" translate="no">             ListBackupSchedulesResponse            </code> )</p>
 <p>List backup schedules.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -727,14 +727,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ListBackups(                         ListBackupsRequest            </code> ) returns ( <code dir="ltr" translate="no">              ListBackupsResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ListBackups(              ListBackupsRequest            </code> ) returns ( <code dir="ltr" translate="no">             ListBackupsResponse            </code> )</p>
 <p>Lists all the backups.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -754,14 +754,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ListDatabases(                         ListDatabasesRequest            </code> ) returns ( <code dir="ltr" translate="no">              ListDatabasesResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ListDatabases(              ListDatabasesRequest            </code> ) returns ( <code dir="ltr" translate="no">             ListDatabasesResponse            </code> )</p>
 <p>List all the databases in the project.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -781,15 +781,15 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ListFields(                         ListFieldsRequest            </code> ) returns ( <code dir="ltr" translate="no">              ListFieldsResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ListFields(              ListFieldsRequest            </code> ) returns ( <code dir="ltr" translate="no">             ListFieldsResponse            </code> )</p>
 <p>Lists the field configuration and metadata for this database.</p>
-<p>Currently, <code dir="ltr" translate="no">             FirestoreAdmin.ListFields           </code> only supports listing fields that have been explicitly overridden. To issue this query, call <code dir="ltr" translate="no">             FirestoreAdmin.ListFields           </code> with the filter set to <code dir="ltr" translate="no">           indexConfig.usesAncestorConfig:false          </code> or <code dir="ltr" translate="no">           ttlConfig:*          </code> .</p>
+<p>Currently, <code dir="ltr" translate="no">            FirestoreAdmin.ListFields           </code> only supports listing fields that have been explicitly overridden. To issue this query, call <code dir="ltr" translate="no">            FirestoreAdmin.ListFields           </code> with the filter set to <code dir="ltr" translate="no">indexConfig.usesAncestorConfig:false</code> or <code dir="ltr" translate="no">ttlConfig:*</code> .</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -809,14 +809,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ListIndexes(                         ListIndexesRequest            </code> ) returns ( <code dir="ltr" translate="no">              ListIndexesResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ListIndexes(              ListIndexesRequest            </code> ) returns ( <code dir="ltr" translate="no">             ListIndexesResponse            </code> )</p>
 <p>Lists composite indexes.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -836,14 +836,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ListUserCreds(                         ListUserCredsRequest            </code> ) returns ( <code dir="ltr" translate="no">              ListUserCredsResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ListUserCreds(              ListUserCredsRequest            </code> ) returns ( <code dir="ltr" translate="no">             ListUserCredsResponse            </code> )</p>
 <p>List all user creds in the database. Note that the returned resource does not contain the secret value itself.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -863,14 +863,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ResetUserPassword(                         ResetUserPasswordRequest            </code> ) returns ( <code dir="ltr" translate="no">              UserCreds            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ResetUserPassword(              ResetUserPasswordRequest            </code> ) returns ( <code dir="ltr" translate="no">             UserCreds            </code> )</p>
 <p>Resets the password of a user creds.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -890,16 +890,16 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc RestoreDatabase(                         RestoreDatabaseRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc RestoreDatabase(              RestoreDatabaseRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
 <p>Creates a new database by restoring from an existing backup.</p>
-<p>The new database must be in the same cloud region or multi-region location as the existing backup. This behaves similar to <code dir="ltr" translate="no">             FirestoreAdmin.CreateDatabase           </code> except instead of creating a new empty database, a new database is created with the database type, index configuration, and documents from an existing backup.</p>
-<p>The <code dir="ltr" translate="no">             long-running operation           </code> can be used to track the progress of the restore, with the Operation's <code dir="ltr" translate="no">             metadata           </code> field type being the <code dir="ltr" translate="no">             RestoreDatabaseMetadata           </code> . The <code dir="ltr" translate="no">             response           </code> type is the <code dir="ltr" translate="no">             Database           </code> if the restore was successful. The new database is not readable or writeable until the LRO has completed.</p>
+<p>The new database must be in the same cloud region or multi-region location as the existing backup. This behaves similar to <code dir="ltr" translate="no">            FirestoreAdmin.CreateDatabase           </code> except instead of creating a new empty database, a new database is created with the database type, index configuration, and documents from an existing backup.</p>
+<p>The <code dir="ltr" translate="no">            long-running operation           </code> can be used to track the progress of the restore, with the Operation's <code dir="ltr" translate="no">            metadata           </code> field type being the <code dir="ltr" translate="no">            RestoreDatabaseMetadata           </code> . The <code dir="ltr" translate="no">            response           </code> type is the <code dir="ltr" translate="no">            Database           </code> if the restore was successful. The new database is not readable or writeable until the LRO has completed.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -919,14 +919,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc UpdateBackupSchedule(                         UpdateBackupScheduleRequest            </code> ) returns ( <code dir="ltr" translate="no">              BackupSchedule            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc UpdateBackupSchedule(              UpdateBackupScheduleRequest            </code> ) returns ( <code dir="ltr" translate="no">             BackupSchedule            </code> )</p>
 <p>Updates a backup schedule.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -946,14 +946,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc UpdateDatabase(                         UpdateDatabaseRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc UpdateDatabase(              UpdateDatabaseRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
 <p>Updates a database.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -973,16 +973,16 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc UpdateField(                         UpdateFieldRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
-<p>Updates a field configuration. Currently, field updates apply only to single field index configuration. However, calls to <code dir="ltr" translate="no">             FirestoreAdmin.UpdateField           </code> should provide a field mask to avoid changing any configuration that the caller isn't aware of. The field mask should be specified as: <code dir="ltr" translate="no">           { paths: "index_config" }          </code> .</p>
-<p>This call returns a <code dir="ltr" translate="no">             google.longrunning.Operation           </code> which may be used to track the status of the field update. The metadata for the operation will be the type <code dir="ltr" translate="no">             FieldOperationMetadata           </code> .</p>
-<p>To configure the default field settings for the database, use the special <code dir="ltr" translate="no">           Field          </code> with resource name: <code dir="ltr" translate="no">           projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*          </code> .</p>
+<td><p><code dir="ltr" translate="no">rpc UpdateField(              UpdateFieldRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
+<p>Updates a field configuration. Currently, field updates apply only to single field index configuration. However, calls to <code dir="ltr" translate="no">            FirestoreAdmin.UpdateField           </code> should provide a field mask to avoid changing any configuration that the caller isn't aware of. The field mask should be specified as: <code dir="ltr" translate="no">{ paths: "index_config" }</code> .</p>
+<p>This call returns a <code dir="ltr" translate="no">            google.longrunning.Operation           </code> which may be used to track the status of the field update. The metadata for the operation will be the type <code dir="ltr" translate="no">            FieldOperationMetadata           </code> .</p>
+<p>To configure the default field settings for the database, use the special <code dir="ltr" translate="no">Field</code> with resource name: <code dir="ltr" translate="no">projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*</code> .</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -999,43 +999,43 @@ The backup contains all documents and index configurations for the given databas
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
 Output only. The unique resource name of the Backup.
 
-Format is `  projects/{project}/locations/{location}/backups/{backup}  ` .
+Format is `projects/{project}/locations/{location}/backups/{backup}` .
 
-The location in the name will be the Standard Managed Multi-Region (SMMR) location (e.g. `  us  ` ) if the backup was created with an SMMR location, or the Google Managed Multi-Region (GMMR) location (e.g. `  nam5  ` ) if the backup was created with a GMMR location.
+The location in the name will be the Standard Managed Multi-Region (SMMR) location (e.g. `us` ) if the backup was created with an SMMR location, or the Google Managed Multi-Region (GMMR) location (e.g. `nam5` ) if the backup was created with a GMMR location.
 
-`  database  `
+`database`
 
-`  string  `
+`string`
 
 Output only. Name of the Firestore database that the backup is from.
 
-Format is `  projects/{project}/databases/{database}  ` .
+Format is `projects/{project}/databases/{database}` .
 
-`  database_uid  `
+`database_uid`
 
-`  string  `
+`string`
 
 Output only. The system-generated UUID4 for the Firestore database that the backup is from.
 
-`  snapshot_time  `
+`snapshot_time`
 
 `  Timestamp  `
 
 Output only. The backup contains an externally consistent copy of the database at this time.
 
-`  expire_time  `
+`expire_time`
 
 `  Timestamp  `
 
 Output only. The timestamp at which this backup expires.
 
-`  state  `
+`state`
 
 `  State  `
 
@@ -1047,19 +1047,19 @@ Indicate the current state of the backup.
 
 Enums
 
-`  STATE_UNSPECIFIED  `
+`STATE_UNSPECIFIED`
 
 The state is unspecified.
 
-`  CREATING  `
+`CREATING`
 
 The pending backup is still being created. Operations on the backup will be rejected in this state.
 
-`  READY  `
+`READY`
 
 The backup is complete and ready to use.
 
-`  NOT_AVAILABLE  `
+`NOT_AVAILABLE`
 
 The backup is not available at this moment.
 
@@ -1071,17 +1071,17 @@ This resource is owned by the database it is backing up, and is deleted along wi
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
 Output only. The unique backup schedule identifier across all locations and databases for the given project.
 
 This will be auto-assigned.
 
-Format is `  projects/{project}/databases/{database}/backupSchedules/{backup_schedule}  `
+Format is `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
 
-`  create_time  `
+`create_time`
 
 `  Timestamp  `
 
@@ -1089,13 +1089,13 @@ Output only. The timestamp at which this backup schedule was created and effecti
 
 No backups will be created for this schedule before this time.
 
-`  update_time  `
+`update_time`
 
 `  Timestamp  `
 
 Output only. The timestamp at which this backup schedule was most recently updated. When a backup schedule is first created, this is the same as create\_time.
 
-`  retention  `
+`retention`
 
 `  Duration  `
 
@@ -1103,15 +1103,15 @@ At what relative time in the future, compared to its creation time, the backup s
 
 The maximum supported retention period is 14 weeks.
 
-Union field `  recurrence  ` . A oneof field to represent when backups will be taken. `  recurrence  ` can be only one of the following:
+Union field `recurrence` . A oneof field to represent when backups will be taken. `recurrence` can be only one of the following:
 
-`  daily_recurrence  `
+`daily_recurrence`
 
 `  DailyRecurrence  `
 
 For a schedule that runs daily.
 
-`  weekly_recurrence  `
+`weekly_recurrence`
 
 `  WeeklyRecurrence  `
 
@@ -1123,49 +1123,49 @@ Metadata for `  google.longrunning.Operation  ` results from `  FirestoreAdmin.B
 
 Fields
 
-`  start_time  `
+`start_time`
 
 `  Timestamp  `
 
 The time this operation started.
 
-`  end_time  `
+`end_time`
 
 `  Timestamp  `
 
 The time this operation completed. Will be unset if operation still in progress.
 
-`  operation_state  `
+`operation_state`
 
 `  OperationState  `
 
 The state of the operation.
 
-`  progress_documents  `
+`progress_documents`
 
 `  Progress  `
 
 The progress, in documents, of this operation.
 
-`  progress_bytes  `
+`progress_bytes`
 
 `  Progress  `
 
 The progress, in bytes, of this operation.
 
-`  collection_ids[]  `
+`collection_ids[]`
 
-`  string  `
+`string`
 
 The IDs of the collection groups that are being deleted.
 
-`  namespace_ids[]  `
+`namespace_ids[]`
 
-`  string  `
+`string`
 
 Which namespace IDs are being deleted.
 
-`  snapshot_time  `
+`snapshot_time`
 
 `  Timestamp  `
 
@@ -1181,23 +1181,23 @@ Requests with namespace\_ids and collection\_ids both empty will be rejected. Pl
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Required. Database to operate. Should be of the form: `  projects/{project_id}/databases/{database_id}  ` .
+Required. Database to operate. Should be of the form: `projects/{project_id}/databases/{database_id}` .
 
-`  collection_ids[]  `
+`collection_ids[]`
 
-`  string  `
+`string`
 
 Optional. IDs of the collection groups to delete. Unspecified means all collection groups.
 
 Each collection group in this list must be unique.
 
-`  namespace_ids[]  `
+`namespace_ids[]`
 
-`  string  `
+`string`
 
 Optional. Namespaces to delete.
 
@@ -1219,37 +1219,37 @@ Metadata for the `  long-running operation  ` from the \[CloneDatabase\]\[google
 
 Fields
 
-`  start_time  `
+`start_time`
 
 `  Timestamp  `
 
 The time the clone was started.
 
-`  end_time  `
+`end_time`
 
 `  Timestamp  `
 
 The time the clone finished, unset for ongoing clones.
 
-`  operation_state  `
+`operation_state`
 
 `  OperationState  `
 
 The operation state of the clone.
 
-`  database  `
+`database`
 
-`  string  `
+`string`
 
 The name of the database being cloned to.
 
-`  pitr_snapshot  `
+`pitr_snapshot`
 
 `  PitrSnapshot  `
 
 The snapshot from which this database was cloned.
 
-`  progress_percentage  `
+`progress_percentage`
 
 `  Progress  `
 
@@ -1261,15 +1261,15 @@ The request message for `  FirestoreAdmin.CloneDatabase  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. The project to clone the database in. Format is `  projects/{project_id}  ` .
+Required. The project to clone the database in. Format is `projects/{project_id}` .
 
-`  database_id  `
+`database_id`
 
-`  string  `
+`string`
 
 Required. The ID to use for the database, which will become the final component of the database's resource name. This database ID must not be associated with an existing database.
 
@@ -1277,7 +1277,7 @@ This value should be 4-63 characters. Valid characters are /\[a-z\]\[0-9\]-/ wit
 
 "(default)" database ID is also valid if the database is Standard edition.
 
-`  pitr_snapshot  `
+`pitr_snapshot`
 
 `  PitrSnapshot  `
 
@@ -1285,7 +1285,7 @@ Required. Specification of the PITR data to clone from. The source database must
 
 The cloned database will be created in the same location as the source database.
 
-`  encryption_config  `
+`encryption_config`
 
 `  EncryptionConfig  `
 
@@ -1293,13 +1293,13 @@ Optional. Encryption configuration for the cloned database.
 
 If this field is not specified, the cloned database will use the same encryption configuration as the source database, namely `  use_source_encryption  ` .
 
-`  tags  `
+`tags`
 
-`  map<string, string>  `
+`map<string, string>`
 
 Optional. Immutable. Tags to be bound to the cloned database.
 
-The tags should be provided in the format of `  tagKeys/{tag_key_id} -> tagValues/{tag_value_id}  ` .
+The tags should be provided in the format of `tagKeys/{tag_key_id} -> tagValues/{tag_value_id}` .
 
 ## CreateBackupScheduleRequest
 
@@ -1307,15 +1307,15 @@ The request for `  FirestoreAdmin.CreateBackupSchedule  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
 Required. The parent database.
 
-Format `  projects/{project}/databases/{database}  `
+Format `projects/{project}/databases/{database}`
 
-`  backup_schedule  `
+`backup_schedule`
 
 `  BackupSchedule  `
 
@@ -1333,21 +1333,21 @@ The request for `  FirestoreAdmin.CreateDatabase  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. A parent name of the form `  projects/{project_id}  `
+Required. A parent name of the form `projects/{project_id}`
 
-`  database  `
+`database`
 
 `  Database  `
 
 Required. The Database to create.
 
-`  database_id  `
+`database_id`
 
-`  string  `
+`string`
 
 Required. The ID to use for the database, which will become the final component of the database's resource name.
 
@@ -1361,13 +1361,13 @@ The request for `  FirestoreAdmin.CreateIndex  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. A parent name of the form `  projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}  `
+Required. A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`
 
-`  index  `
+`index`
 
 `  Index  `
 
@@ -1379,21 +1379,21 @@ The request for `  FirestoreAdmin.CreateUserCreds  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. A parent name of the form `  projects/{project_id}/databases/{database_id}  `
+Required. A parent name of the form `projects/{project_id}/databases/{database_id}`
 
-`  user_creds  `
+`user_creds`
 
 `  UserCreds  `
 
 Required. The user creds to create.
 
-`  user_creds_id  `
+`user_creds_id`
 
-`  string  `
+`string`
 
 Required. The ID to use for the user creds, which will become the final component of the user creds's resource name.
 
@@ -1413,49 +1413,49 @@ A Cloud Firestore Database.
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-The resource name of the Database. Format: `  projects/{project}/databases/{database}  `
+The resource name of the Database. Format: `projects/{project}/databases/{database}`
 
-`  uid  `
+`uid`
 
-`  string  `
+`string`
 
 Output only. The system-generated UUID4 for this Database.
 
-`  create_time  `
+`create_time`
 
 `  Timestamp  `
 
 Output only. The timestamp at which this database was created. Databases created before 2016 do not populate create\_time.
 
-`  update_time  `
+`update_time`
 
 `  Timestamp  `
 
 Output only. The timestamp at which this database was most recently updated. Note this only includes updates to the database resource and not data contained by the database.
 
-`  delete_time  `
+`delete_time`
 
 `  Timestamp  `
 
 Output only. The timestamp at which this database was deleted. Only set if the database has been deleted.
 
-`  location_id  `
+`location_id`
 
-`  string  `
+`string`
 
 Required. The location of the database. Available locations are listed at <https://cloud.google.com/firestore/docs/locations> .
 
-`  type  `
+`type`
 
 `  DatabaseType  `
 
 Required. The type of the database. See <https://cloud.google.com/datastore/docs/firestore-or-datastore> for information about how to choose.
 
-`  concurrency_mode  `
+`concurrency_mode`
 
 `  ConcurrencyMode  `
 
@@ -1463,107 +1463,107 @@ The concurrency control mode to use for this database.
 
 If unspecified in a CreateDatabase request, this will default based on the database edition: Optimistic for Enterprise and Pessimistic for all other databases.
 
-`  version_retention_period  `
+`version_retention_period`
 
 `  Duration  `
 
 Output only. The period during which past versions of data are retained in the database.
 
-Any `  read  ` or `  query  ` can specify a `  read_time  ` within this window, and will read the state of the database at that time.
+Any `  read  ` or `  query  ` can specify a `read_time` within this window, and will read the state of the database at that time.
 
 If the PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
 
-`  earliest_version_time  `
+`earliest_version_time`
 
 `  Timestamp  `
 
-Output only. The earliest timestamp at which older versions of the data can be read from the database. See \[version\_retention\_period\] above; this field is populated with `  now - version_retention_period  ` .
+Output only. The earliest timestamp at which older versions of the data can be read from the database. See \[version\_retention\_period\] above; this field is populated with `now - version_retention_period` .
 
 This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
 
-`  point_in_time_recovery_enablement  `
+`point_in_time_recovery_enablement`
 
 `  PointInTimeRecoveryEnablement  `
 
 Whether to enable the PITR feature on this database.
 
-`  app_engine_integration_mode  `
+`app_engine_integration_mode`
 
 `  AppEngineIntegrationMode  `
 
 The App Engine integration mode to use for this database.
 
-`  key_prefix  `
+`key_prefix`
 
-`  string  `
+`string`
 
 Output only. The key\_prefix for this database. This key\_prefix is used, in combination with the project ID (" \~ ") to construct the application ID that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes.
 
 This value may be empty in which case the appid to use for URL-encoded keys is the project\_id (eg: foo instead of v\~foo).
 
-`  delete_protection_state  `
+`delete_protection_state`
 
 `  DeleteProtectionState  `
 
 State of delete protection for the database.
 
-`  cmek_config  `
+`cmek_config`
 
 `  CmekConfig  `
 
 Optional. Presence indicates CMEK is enabled for this database.
 
-`  previous_id  `
+`previous_id`
 
-`  string  `
+`string`
 
 Output only. The database resource's prior database ID. This field is only populated for deleted databases.
 
-`  source_info  `
+`source_info`
 
 `  SourceInfo  `
 
 Output only. Information about the provenance of this database.
 
-`  tags  `
+`tags`
 
-`  map<string, string>  `
+`map<string, string>`
 
 Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example: "123/environment": "production", "123/costCenter": "marketing"
 
-`  etag  `
+`etag`
 
-`  string  `
+`string`
 
 This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 
-`  database_edition  `
+`database_edition`
 
 `  DatabaseEdition  `
 
 Immutable. The edition of the database.
 
-`  realtime_updates_mode  `
+`realtime_updates_mode`
 
 `  RealtimeUpdatesMode  `
 
 Immutable. The default Realtime Updates mode to use for this database.
 
-`  firestore_data_access_mode  `
+`firestore_data_access_mode`
 
 `  DataAccessMode  `
 
 Optional. The Firestore API data access mode to use for this database. If not set on write: - the default value is DATA\_ACCESS\_MODE\_DISABLED for Enterprise Edition. - the default value is DATA\_ACCESS\_MODE\_ENABLED for Standard Edition.
 
-`  mongodb_compatible_data_access_mode  `
+`mongodb_compatible_data_access_mode`
 
 `  DataAccessMode  `
 
 Optional. The MongoDB compatible API data access mode to use for this database. If not set on write, the default value is DATA\_ACCESS\_MODE\_ENABLED for Enterprise Edition. The value is always DATA\_ACCESS\_MODE\_DISABLED for Standard Edition.
 
-`  free_tier  `
+`free_tier`
 
-`  bool  `
+`bool`
 
 Output only. Background: Free tier is the ability of a Firestore database to use a small amount of resources every day without being charged. Once usage exceeds the free tier limit further usage is charged.
 
@@ -1577,15 +1577,15 @@ The type of App Engine integration mode.
 
 Enums
 
-`  APP_ENGINE_INTEGRATION_MODE_UNSPECIFIED  `
+`APP_ENGINE_INTEGRATION_MODE_UNSPECIFIED`
 
 Not used.
 
-`  ENABLED  `
+`ENABLED`
 
 If an App Engine application exists in the same region as this database, App Engine configuration will impact this database. This includes disabling of the application & database, as well as disabling writes to the database.
 
-`  DISABLED  `
+`DISABLED`
 
 App Engine has no effect on the ability of this database to serve requests.
 
@@ -1597,23 +1597,23 @@ The CMEK (Customer Managed Encryption Key) configuration for a Firestore databas
 
 Fields
 
-`  kms_key_name  `
+`kms_key_name`
 
-`  string  `
+`string`
 
 Required. Only keys in the same location as this database are allowed to be used for encryption.
 
 For Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe. See <https://cloud.google.com/kms/docs/locations> .
 
-The expected format is `  projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}  ` .
+The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}` .
 
-`  active_key_version[]  `
+`active_key_version[]`
 
-`  string  `
+`string`
 
 Output only. Currently in-use [KMS key versions](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) . During [key rotation](https://cloud.google.com/kms/docs/key-rotation) , there can be multiple in-use key versions.
 
-The expected format is `  projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}  ` .
+The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}` .
 
 ## ConcurrencyMode
 
@@ -1621,23 +1621,23 @@ The type of concurrency control mode for transactions.
 
 Enums
 
-`  CONCURRENCY_MODE_UNSPECIFIED  `
+`CONCURRENCY_MODE_UNSPECIFIED`
 
 Not used.
 
-`  OPTIMISTIC  `
+`OPTIMISTIC`
 
 Use optimistic concurrency control by default. This mode is available for Cloud Firestore databases.
 
 This is the default setting for Cloud Firestore Enterprise Edition databases.
 
-`  PESSIMISTIC  `
+`PESSIMISTIC`
 
 Use pessimistic concurrency control by default. This mode is available for Cloud Firestore databases.
 
 This is the default setting for Cloud Firestore Standard Edition databases.
 
-`  OPTIMISTIC_WITH_ENTITY_GROUPS  `
+`OPTIMISTIC_WITH_ENTITY_GROUPS`
 
 Use optimistic concurrency control with entity groups by default.
 
@@ -1651,15 +1651,15 @@ The data access mode.
 
 Enums
 
-`  DATA_ACCESS_MODE_UNSPECIFIED  `
+`DATA_ACCESS_MODE_UNSPECIFIED`
 
 Not Used.
 
-`  DATA_ACCESS_MODE_ENABLED  `
+`DATA_ACCESS_MODE_ENABLED`
 
 Accessing the database through the API is allowed.
 
-`  DATA_ACCESS_MODE_DISABLED  `
+`DATA_ACCESS_MODE_DISABLED`
 
 Accessing the database through the API is disallowed.
 
@@ -1669,17 +1669,17 @@ The edition of the database.
 
 Enums
 
-`  DATABASE_EDITION_UNSPECIFIED  `
+`DATABASE_EDITION_UNSPECIFIED`
 
 Not used.
 
-`  STANDARD  `
+`STANDARD`
 
 Standard edition.
 
 This is the default setting if not specified.
 
-`  ENTERPRISE  `
+`ENTERPRISE`
 
 Enterprise edition.
 
@@ -1691,15 +1691,15 @@ Mode changes are only allowed if the database is empty.
 
 Enums
 
-`  DATABASE_TYPE_UNSPECIFIED  `
+`DATABASE_TYPE_UNSPECIFIED`
 
 Not used.
 
-`  FIRESTORE_NATIVE  `
+`FIRESTORE_NATIVE`
 
 Firestore Native Mode
 
-`  DATASTORE_MODE  `
+`DATASTORE_MODE`
 
 Firestore in Datastore Mode.
 
@@ -1709,15 +1709,15 @@ The delete protection state of the database.
 
 Enums
 
-`  DELETE_PROTECTION_STATE_UNSPECIFIED  `
+`DELETE_PROTECTION_STATE_UNSPECIFIED`
 
 The default value. Delete protection type is not specified
 
-`  DELETE_PROTECTION_DISABLED  `
+`DELETE_PROTECTION_DISABLED`
 
 Delete protection is disabled
 
-`  DELETE_PROTECTION_ENABLED  `
+`DELETE_PROTECTION_ENABLED`
 
 Delete protection is enabled
 
@@ -1729,21 +1729,21 @@ The source could be a `  Backup  ` or a `  PitrSnapshot  ` .
 
 Fields
 
-Union field `  encryption_type  ` . The method for encrypting the database. `  encryption_type  ` can be only one of the following:
+Union field `encryption_type` . The method for encrypting the database. `encryption_type` can be only one of the following:
 
-`  google_default_encryption  `
+`google_default_encryption`
 
 `  GoogleDefaultEncryptionOptions  `
 
 Use Google default encryption.
 
-`  use_source_encryption  `
+`use_source_encryption`
 
 `  SourceEncryptionOptions  `
 
 The database will use the same encryption configuration as the source.
 
-`  customer_managed_encryption  `
+`customer_managed_encryption`
 
 `  CustomerManagedEncryptionOptions  `
 
@@ -1755,15 +1755,15 @@ The configuration options for using CMEK (Customer Managed Encryption Key) encry
 
 Fields
 
-`  kms_key_name  `
+`kms_key_name`
 
-`  string  `
+`string`
 
 Required. Only keys in the same location as the database are allowed to be used for encryption.
 
 For Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe. See <https://cloud.google.com/kms/docs/locations> .
 
-The expected format is `  projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}  ` .
+The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}` .
 
 ## GoogleDefaultEncryptionOptions
 
@@ -1783,20 +1783,20 @@ Point In Time Recovery feature enablement.
 
 Enums
 
-`  POINT_IN_TIME_RECOVERY_ENABLEMENT_UNSPECIFIED  `
+`POINT_IN_TIME_RECOVERY_ENABLEMENT_UNSPECIFIED`
 
 Not used.
 
-`  POINT_IN_TIME_RECOVERY_ENABLED  `
+`POINT_IN_TIME_RECOVERY_ENABLED`
 
 Reads are supported on selected versions of the data from within the past 7 days:
 
   - Reads against any timestamp within the past hour
   - Reads against 1-minute snapshots beyond 1 hour and within 7 days
 
-`  version_retention_period  ` and `  earliest_version_time  ` can be used to determine the supported versions.
+`version_retention_period` and `earliest_version_time` can be used to determine the supported versions.
 
-`  POINT_IN_TIME_RECOVERY_DISABLED  `
+`POINT_IN_TIME_RECOVERY_DISABLED`
 
 Reads are supported on any version of the data from within the past 1 hour.
 
@@ -1806,15 +1806,15 @@ Information about the provenance of this database.
 
 Fields
 
-`  operation  `
+`operation`
 
-`  string  `
+`string`
 
-The associated long-running operation. This field may not be set after the operation has completed. Format: `  projects/{project}/databases/{database}/operations/{operation}  ` .
+The associated long-running operation. This field may not be set after the operation has completed. Format: `projects/{project}/databases/{database}/operations/{operation}` .
 
-Union field `  source  ` . The source from which this database is derived. `  source  ` can be only one of the following:
+Union field `source` . The source from which this database is derived. `source` can be only one of the following:
 
-`  backup  `
+`backup`
 
 `  BackupSource  `
 
@@ -1826,11 +1826,11 @@ Information about a backup that was used to restore a database.
 
 Fields
 
-`  backup  `
+`backup`
 
-`  string  `
+`string`
 
-The resource name of the backup that was used to restore this database. Format: `  projects/{project}/locations/{location}/backups/{backup}  ` .
+The resource name of the backup that was used to restore this database. Format: `projects/{project}/locations/{location}/backups/{backup}` .
 
 ## DeleteBackupRequest
 
@@ -1838,13 +1838,13 @@ The request for `  FirestoreAdmin.DeleteBackup  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
 Required. Name of the backup to delete.
 
-format is `  projects/{project}/locations/{location}/backups/{backup}  ` .
+format is `projects/{project}/locations/{location}/backups/{backup}` .
 
 ## DeleteBackupScheduleRequest
 
@@ -1852,13 +1852,13 @@ The request for \[FirestoreAdmin.DeleteBackupSchedules\]\[\].
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
 Required. The name of the backup schedule.
 
-Format `  projects/{project}/databases/{database}/backupSchedules/{backup_schedule}  `
+Format `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
 
 ## DeleteDatabaseMetadata
 
@@ -1872,15 +1872,15 @@ The request for `  FirestoreAdmin.DeleteDatabase  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Required. A name of the form `  projects/{project_id}/databases/{database_id}  `
+Required. A name of the form `projects/{project_id}/databases/{database_id}`
 
-`  etag  `
+`etag`
 
-`  string  `
+`string`
 
 The current etag of the Database. If an etag is provided and does not match the current etag of the database, deletion will be blocked and a FAILED\_PRECONDITION error will be returned.
 
@@ -1890,11 +1890,11 @@ The request for `  FirestoreAdmin.DeleteIndex  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Required. A name of the form `  projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}  `
+Required. A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`
 
 ## DeleteUserCredsRequest
 
@@ -1902,11 +1902,11 @@ The request for `  FirestoreAdmin.DeleteUserCreds  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Required. A name of the form `  projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}  `
+Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}`
 
 ## DisableUserCredsRequest
 
@@ -1914,11 +1914,11 @@ The request for `  FirestoreAdmin.DisableUserCreds  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Required. A name of the form `  projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}  `
+Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}`
 
 ## EnableUserCredsRequest
 
@@ -1926,11 +1926,11 @@ The request for `  FirestoreAdmin.EnableUserCreds  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Required. A name of the form `  projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}  `
+Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}`
 
 ## ExportDocumentsMetadata
 
@@ -1938,55 +1938,55 @@ Metadata for `  google.longrunning.Operation  ` results from `  FirestoreAdmin.E
 
 Fields
 
-`  start_time  `
+`start_time`
 
 `  Timestamp  `
 
 The time this operation started.
 
-`  end_time  `
+`end_time`
 
 `  Timestamp  `
 
 The time this operation completed. Will be unset if operation still in progress.
 
-`  operation_state  `
+`operation_state`
 
 `  OperationState  `
 
 The state of the export operation.
 
-`  progress_documents  `
+`progress_documents`
 
 `  Progress  `
 
 The progress, in documents, of this operation.
 
-`  progress_bytes  `
+`progress_bytes`
 
 `  Progress  `
 
 The progress, in bytes, of this operation.
 
-`  collection_ids[]  `
+`collection_ids[]`
 
-`  string  `
+`string`
 
 Which collection IDs are being exported.
 
-`  output_uri_prefix  `
+`output_uri_prefix`
 
-`  string  `
+`string`
 
 Where the documents are being exported to.
 
-`  namespace_ids[]  `
+`namespace_ids[]`
 
-`  string  `
+`string`
 
 Which namespace IDs are being exported.
 
-`  snapshot_time  `
+`snapshot_time`
 
 `  Timestamp  `
 
@@ -1998,33 +1998,33 @@ The request for `  FirestoreAdmin.ExportDocuments  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Required. Database to export. Should be of the form: `  projects/{project_id}/databases/{database_id}  ` .
+Required. Database to export. Should be of the form: `projects/{project_id}/databases/{database_id}` .
 
-`  collection_ids[]  `
+`collection_ids[]`
 
-`  string  `
+`string`
 
 IDs of the collection groups to export. Unspecified means all collection groups. Each collection group in this list must be unique.
 
-`  output_uri_prefix  `
+`output_uri_prefix`
 
-`  string  `
+`string`
 
-The output URI. Currently only supports Google Cloud Storage URIs of the form: `  gs://BUCKET_NAME[/NAMESPACE_PATH]  ` , where `  BUCKET_NAME  ` is the name of the Google Cloud Storage bucket and `  NAMESPACE_PATH  ` is an optional Google Cloud Storage namespace path. When choosing a name, be sure to consider Google Cloud Storage naming guidelines: <https://cloud.google.com/storage/docs/naming> . If the URI is a bucket (without a namespace path), a prefix will be generated based on the start time.
+The output URI. Currently only supports Google Cloud Storage URIs of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]` , where `BUCKET_NAME` is the name of the Google Cloud Storage bucket and `NAMESPACE_PATH` is an optional Google Cloud Storage namespace path. When choosing a name, be sure to consider Google Cloud Storage naming guidelines: <https://cloud.google.com/storage/docs/naming> . If the URI is a bucket (without a namespace path), a prefix will be generated based on the start time.
 
-`  namespace_ids[]  `
+`namespace_ids[]`
 
-`  string  `
+`string`
 
 An empty list represents all namespaces. This is the preferred usage for databases that don't use namespaces.
 
 An empty string element represents the default namespace. This should be used if the database has data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be unique.
 
-`  snapshot_time  `
+`snapshot_time`
 
 `  Timestamp  `
 
@@ -2036,9 +2036,9 @@ Returned in the `  google.longrunning.Operation  ` response field.
 
 Fields
 
-`  output_uri_prefix  `
+`output_uri_prefix`
 
-`  string  `
+`string`
 
 Location of the output files. This can be used to begin an import into Cloud Firestore (this project or another project) after the operation completes successfully.
 
@@ -2050,31 +2050,31 @@ Fields are grouped by their "Collection Group", which represent all collections 
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Required. A field name of the form: `  projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}  `
+Required. A field name of the form: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`
 
-A field path can be a simple field name, e.g. `  address  ` or a path to fields within `  map_value  ` , e.g. `  address.city  ` , or a special field path. The only valid special field is `  *  ` , which represents any field.
+A field path can be a simple field name, e.g. `address` or a path to fields within `map_value` , e.g. `address.city` , or a special field path. The only valid special field is `*` , which represents any field.
 
-Field paths can be quoted using ``  `  `` (backtick). The only character that must be escaped within a quoted field path is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted include: `  *  ` , `  .  ` , ``  `  `` (backtick), `  [  ` , `  ]  ` , as well as any ascii symbolic characters.
+Field paths can be quoted using `` ` `` (backtick). The only character that must be escaped within a quoted field path is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted include: `*` , `.` , `` ` `` (backtick), `[` , `]` , as well as any ascii symbolic characters.
 
-Examples: ``  `address.city`  `` represents a field named `  address.city  ` , not the map key `  city  ` in the field `  address  ` . ``  `*`  `` represents a field named `  *  ` , not any field.
+Examples: `` `address.city` `` represents a field named `address.city` , not the map key `city` in the field `address` . `` `*` `` represents a field named `*` , not any field.
 
-A special `  Field  ` contains the default indexing settings for all fields. This field's resource name is: `  projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*  ` Indexes defined on this `  Field  ` will be applied to all fields which do not have their own `  Field  ` index configuration.
+A special `Field` contains the default indexing settings for all fields. This field's resource name is: `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*` Indexes defined on this `Field` will be applied to all fields which do not have their own `Field` index configuration.
 
-`  index_config  `
+`index_config`
 
 `  IndexConfig  `
 
-The index configuration for this field. If unset, field indexing will revert to the configuration defined by the `  ancestor_field  ` . To explicitly remove all indexes for this field, specify an index config with an empty list of indexes.
+The index configuration for this field. If unset, field indexing will revert to the configuration defined by the `ancestor_field` . To explicitly remove all indexes for this field, specify an index config with an empty list of indexes.
 
-`  ttl_config  `
+`ttl_config`
 
 `  TtlConfig  `
 
-The TTL configuration for this `  Field  ` . Setting or unsetting this will enable or disable the TTL for documents that have this `  Field  ` .
+The TTL configuration for this `Field` . Setting or unsetting this will enable or disable the TTL for documents that have this `Field` .
 
 ## IndexConfig
 
@@ -2082,33 +2082,33 @@ The index configuration for this field.
 
 Fields
 
-`  indexes[]  `
+`indexes[]`
 
 `  Index  `
 
 The indexes supported for this field.
 
-`  uses_ancestor_config  `
+`uses_ancestor_config`
 
-`  bool  `
+`bool`
 
-Output only. When true, the `  Field  ` 's index configuration is set from the configuration specified by the `  ancestor_field  ` . When false, the `  Field  ` 's index configuration is defined explicitly.
+Output only. When true, the `Field` 's index configuration is set from the configuration specified by the `ancestor_field` . When false, the `Field` 's index configuration is defined explicitly.
 
-`  ancestor_field  `
+`ancestor_field`
 
-`  string  `
+`string`
 
-Output only. Specifies the resource name of the `  Field  ` from which this field's index configuration is set (when `  uses_ancestor_config  ` is true), or from which it *would* be set if this field had no index configuration (when `  uses_ancestor_config  ` is false).
+Output only. Specifies the resource name of the `Field` from which this field's index configuration is set (when `uses_ancestor_config` is true), or from which it *would* be set if this field had no index configuration (when `uses_ancestor_config` is false).
 
-`  reverting  `
+`reverting`
 
-`  bool  `
+`bool`
 
-Output only When true, the `  Field  ` 's index configuration is in the process of being reverted. Once complete, the index config will transition to the same state as the field specified by `  ancestor_field  ` , at which point `  uses_ancestor_config  ` will be `  true  ` and `  reverting  ` will be `  false  ` .
+Output only When true, the `Field` 's index configuration is in the process of being reverted. Once complete, the index config will transition to the same state as the field specified by `ancestor_field` , at which point `uses_ancestor_config` will be `true` and `reverting` will be `false` .
 
 ## TtlConfig
 
-The TTL (time-to-live) configuration for documents that have this `  Field  ` set.
+The TTL (time-to-live) configuration for documents that have this `Field` set.
 
 Storing a timestamp value into a TTL-enabled field will be treated as the document's absolute expiration time. For Enterprise edition databases, the timestamp value may also be stored in an array value in the TTL-enabled field.
 
@@ -2116,7 +2116,7 @@ Timestamp values in the past indicate that the document is eligible for immediat
 
 Fields
 
-`  state  `
+`state`
 
 `  State  `
 
@@ -2128,21 +2128,21 @@ The state of applying the TTL configuration to all documents.
 
 Enums
 
-`  STATE_UNSPECIFIED  `
+`STATE_UNSPECIFIED`
 
 The state is unspecified or unknown.
 
-`  CREATING  `
+`CREATING`
 
 The TTL is being applied. There is an active long-running operation to track the change. Newly written documents will have TTLs applied as requested. Requested TTLs on existing documents are still being processed. When TTLs on all existing documents have been processed, the state will move to 'ACTIVE'.
 
-`  ACTIVE  `
+`ACTIVE`
 
 The TTL is active for all documents.
 
-`  NEEDS_REPAIR  `
+`NEEDS_REPAIR`
 
-The TTL configuration could not be enabled for all existing documents. Newly written documents will continue to have their TTL applied. The LRO returned when last attempting to enable TTL for this `  Field  ` has failed, and may have more details.
+The TTL configuration could not be enabled for all existing documents. Newly written documents will continue to have their TTL applied. The LRO returned when last attempting to enable TTL for this `Field` has failed, and may have more details.
 
 ## FieldOperationMetadata
 
@@ -2150,49 +2150,49 @@ Metadata for `  google.longrunning.Operation  ` results from `  FirestoreAdmin.U
 
 Fields
 
-`  start_time  `
+`start_time`
 
 `  Timestamp  `
 
 The time this operation started.
 
-`  end_time  `
+`end_time`
 
 `  Timestamp  `
 
 The time this operation completed. Will be unset if operation still in progress.
 
-`  field  `
+`field`
 
-`  string  `
+`string`
 
-The field resource that this operation is acting on. For example: `  projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}  `
+The field resource that this operation is acting on. For example: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`
 
-`  index_config_deltas[]  `
+`index_config_deltas[]`
 
 `  IndexConfigDelta  `
 
 A list of `  IndexConfigDelta  ` , which describe the intent of this operation.
 
-`  state  `
+`state`
 
 `  OperationState  `
 
 The state of the operation.
 
-`  progress_documents  `
+`progress_documents`
 
 `  Progress  `
 
 The progress, in documents, of this operation.
 
-`  progress_bytes  `
+`progress_bytes`
 
 `  Progress  `
 
 The progress, in bytes, of this operation.
 
-`  ttl_config_delta  `
+`ttl_config_delta`
 
 `  TtlConfigDelta  `
 
@@ -2204,13 +2204,13 @@ Information about an index configuration change.
 
 Fields
 
-`  change_type  `
+`change_type`
 
 `  ChangeType  `
 
 Specifies how the index is changing.
 
-`  index  `
+`index`
 
 `  Index  `
 
@@ -2222,15 +2222,15 @@ Specifies how the index is changing.
 
 Enums
 
-`  CHANGE_TYPE_UNSPECIFIED  `
+`CHANGE_TYPE_UNSPECIFIED`
 
 The type of change is not specified or known.
 
-`  ADD  `
+`ADD`
 
 The single field index is being added.
 
-`  REMOVE  `
+`REMOVE`
 
 The single field index is being removed.
 
@@ -2240,7 +2240,7 @@ Information about a TTL configuration change.
 
 Fields
 
-`  change_type  `
+`change_type`
 
 `  ChangeType  `
 
@@ -2252,15 +2252,15 @@ Specifies how the TTL config is changing.
 
 Enums
 
-`  CHANGE_TYPE_UNSPECIFIED  `
+`CHANGE_TYPE_UNSPECIFIED`
 
 The type of change is not specified or known.
 
-`  ADD  `
+`ADD`
 
 The TTL config is being added.
 
-`  REMOVE  `
+`REMOVE`
 
 The TTL config is being removed.
 
@@ -2270,13 +2270,13 @@ The request for `  FirestoreAdmin.GetBackup  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
 Required. Name of the backup to fetch.
 
-Format is `  projects/{project}/locations/{location}/backups/{backup}  ` .
+Format is `projects/{project}/locations/{location}/backups/{backup}` .
 
 ## GetBackupScheduleRequest
 
@@ -2284,13 +2284,13 @@ The request for `  FirestoreAdmin.GetBackupSchedule  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
 Required. The name of the backup schedule.
 
-Format `  projects/{project}/databases/{database}/backupSchedules/{backup_schedule}  `
+Format `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
 
 ## GetDatabaseRequest
 
@@ -2298,11 +2298,11 @@ The request for `  FirestoreAdmin.GetDatabase  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Required. A name of the form `  projects/{project_id}/databases/{database_id}  `
+Required. A name of the form `projects/{project_id}/databases/{database_id}`
 
 ## GetFieldRequest
 
@@ -2310,11 +2310,11 @@ The request for `  FirestoreAdmin.GetField  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Required. A name of the form `  projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_id}  `
+Required. A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_id}`
 
 ## GetIndexRequest
 
@@ -2322,11 +2322,11 @@ The request for `  FirestoreAdmin.GetIndex  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Required. A name of the form `  projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}  `
+Required. A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`
 
 ## GetUserCredsRequest
 
@@ -2334,11 +2334,11 @@ The request for `  FirestoreAdmin.GetUserCreds  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Required. A name of the form `  projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}  `
+Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}`
 
 ## ImportDocumentsMetadata
 
@@ -2346,51 +2346,51 @@ Metadata for `  google.longrunning.Operation  ` results from `  FirestoreAdmin.I
 
 Fields
 
-`  start_time  `
+`start_time`
 
 `  Timestamp  `
 
 The time this operation started.
 
-`  end_time  `
+`end_time`
 
 `  Timestamp  `
 
 The time this operation completed. Will be unset if operation still in progress.
 
-`  operation_state  `
+`operation_state`
 
 `  OperationState  `
 
 The state of the import operation.
 
-`  progress_documents  `
+`progress_documents`
 
 `  Progress  `
 
 The progress, in documents, of this operation.
 
-`  progress_bytes  `
+`progress_bytes`
 
 `  Progress  `
 
 The progress, in bytes, of this operation.
 
-`  collection_ids[]  `
+`collection_ids[]`
 
-`  string  `
+`string`
 
 Which collection IDs are being imported.
 
-`  input_uri_prefix  `
+`input_uri_prefix`
 
-`  string  `
+`string`
 
 The location of the documents being imported.
 
-`  namespace_ids[]  `
+`namespace_ids[]`
 
-`  string  `
+`string`
 
 Which namespace IDs are being imported.
 
@@ -2400,27 +2400,27 @@ The request for `  FirestoreAdmin.ImportDocuments  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Required. Database to import into. Should be of the form: `  projects/{project_id}/databases/{database_id}  ` .
+Required. Database to import into. Should be of the form: `projects/{project_id}/databases/{database_id}` .
 
-`  collection_ids[]  `
+`collection_ids[]`
 
-`  string  `
+`string`
 
 IDs of the collection groups to import. Unspecified means all collection groups that were included in the export. Each collection group in this list must be unique.
 
-`  input_uri_prefix  `
+`input_uri_prefix`
 
-`  string  `
+`string`
 
 Location of the exported files. This must match the output\_uri\_prefix of an ExportDocumentsResponse from an export that has completed successfully. See: `  google.firestore.admin.v1.ExportDocumentsResponse.output_uri_prefix  ` .
 
-`  namespace_ids[]  `
+`namespace_ids[]`
 
-`  string  `
+`string`
 
 An empty list represents all namespaces. This is the preferred usage for databases that don't use namespaces.
 
@@ -2432,13 +2432,13 @@ Cloud Firestore indexes enable simple and complex queries against documents in a
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Output only. A server defined name for this index. The form of this name for composite indexes will be: `  projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}  ` For single field indexes, this field will be empty.
+Output only. A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
 
-`  query_scope  `
+`query_scope`
 
 `  QueryScope  `
 
@@ -2446,51 +2446,51 @@ Indexes with a collection query scope specified allow queries against a collecti
 
 Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection ID as this index.
 
-`  api_scope  `
+`api_scope`
 
 `  ApiScope  `
 
 The API scope supported by this index.
 
-`  fields[]  `
+`fields[]`
 
 `  IndexField  `
 
 The fields supported by this index.
 
-For composite indexes, this requires a minimum of 2 and a maximum of 100 fields. The last field entry is always for the field path `  __name__  ` . If, on creation, `  __name__  ` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `  __name__  ` will be ordered ASCENDING (unless explicitly specified).
+For composite indexes, this requires a minimum of 2 and a maximum of 100 fields. The last field entry is always for the field path `__name__` . If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified).
 
 For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
 
-`  state  `
+`state`
 
 `  State  `
 
 Output only. The serving state of the index.
 
-`  density  `
+`density`
 
 `  Density  `
 
 Immutable. The density configuration of the index.
 
-`  multikey  `
+`multikey`
 
-`  bool  `
+`bool`
 
 Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors.
 
 Note this field only applies to index with MONGODB\_COMPATIBLE\_API ApiScope.
 
-`  shard_count  `
+`shard_count`
 
-`  int32  `
+`int32`
 
 Optional. The number of shards for the index.
 
-`  unique  `
+`unique`
 
-`  bool  `
+`bool`
 
 Optional. Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
 
@@ -2500,15 +2500,15 @@ API Scope defines the APIs (Firestore Native, or Firestore in Datastore Mode) th
 
 Enums
 
-`  ANY_API  `
+`ANY_API`
 
 The index can only be used by the Firestore Native query API. This is the default.
 
-`  DATASTORE_MODE_API  `
+`DATASTORE_MODE_API`
 
 The index can only be used by the Firestore in Datastore Mode query API.
 
-`  MONGODB_COMPATIBLE_API  `
+`MONGODB_COMPATIBLE_API`
 
 The index can only be used by the MONGODB\_COMPATIBLE\_API.
 
@@ -2518,15 +2518,15 @@ The density configuration for the index.
 
 Enums
 
-`  DENSITY_UNSPECIFIED  `
+`DENSITY_UNSPECIFIED`
 
 Unspecified. It will use database default setting. This value is input only.
 
-`  SPARSE_ALL  `
+`SPARSE_ALL`
 
 An index entry will only exist if ALL fields are present in the document.
 
-This is both the default and only allowed value for Standard Edition databases (for both Cloud Firestore `  ANY_API  ` and Cloud Datastore `  DATASTORE_MODE_API  ` ).
+This is both the default and only allowed value for Standard Edition databases (for both Cloud Firestore `ANY_API` and Cloud Datastore `DATASTORE_MODE_API` ).
 
 Take for example the following document:
 
@@ -2537,11 +2537,11 @@ Take for example the following document:
       "c": 3
     }
 
-an index on `  (a ASC, b ASC, c ASC, __name__ ASC)  ` will generate an index entry for this document since `  a  ` , 'b', `  c  ` , and `  __name__  ` are all present but an index of `  (a ASC, d ASC, __name__ ASC)  ` will not generate an index entry for this document since `  d  ` is missing.
+an index on `(a ASC, b ASC, c ASC, __name__ ASC)` will generate an index entry for this document since `a` , 'b', `c` , and `__name__` are all present but an index of `(a ASC, d ASC, __name__ ASC)` will not generate an index entry for this document since `d` is missing.
 
 This means that such indexes can only be used to serve a query when the query has either implicit or explicit requirements that all fields from the index are present.
 
-`  SPARSE_ANY  `
+`SPARSE_ANY`
 
 An index entry will exist if ANY field are present in the document.
 
@@ -2556,17 +2556,17 @@ Take for example the following document:
       "c": 3
     }
 
-an index on `  (a ASC, d ASC)  ` will generate an index entry for this document since `  a  ` is present, and will fill in an `  unset  ` value for `  d  ` . An index on `  (d ASC, e ASC)  ` will not generate any index entry as neither `  d  ` nor `  e  ` are present.
+an index on `(a ASC, d ASC)` will generate an index entry for this document since `a` is present, and will fill in an `unset` value for `d` . An index on `(d ASC, e ASC)` will not generate any index entry as neither `d` nor `e` are present.
 
-An index that contains `  __name__  ` will generate an index entry for all documents since Firestore guarantees that all documents have a `  __name__  ` field.
+An index that contains `__name__` will generate an index entry for all documents since Firestore guarantees that all documents have a `__name__` field.
 
-`  DENSE  `
+`DENSE`
 
 An index entry will exist regardless of if the fields are present or not.
 
 This is the default density for an Enterprise Edition database.
 
-The index will store `  unset  ` values for fields that are not present in the document.
+The index will store `unset` values for fields that are not present in the document.
 
 ## IndexField
 
@@ -2574,27 +2574,27 @@ A field in an index. The field\_path describes which field is indexed, the value
 
 Fields
 
-`  field_path  `
+`field_path`
 
-`  string  `
+`string`
 
 Can be **name** . For single field indexes, this must match the name of the field or may be omitted.
 
-Union field `  value_mode  ` . How the field value is indexed. `  value_mode  ` can be only one of the following:
+Union field `value_mode` . How the field value is indexed. `value_mode` can be only one of the following:
 
-`  order  `
+`order`
 
 `  Order  `
 
 Indicates that this field supports ordering by the specified order or comparing using =, \!=, \<, \<=, \>, \>=.
 
-`  array_config  `
+`array_config`
 
 `  ArrayConfig  `
 
-Indicates that this field supports operations on `  array_value  ` s.
+Indicates that this field supports operations on `array_value` s.
 
-`  vector_config  `
+`vector_config`
 
 `  VectorConfig  `
 
@@ -2606,11 +2606,11 @@ The supported array value configurations.
 
 Enums
 
-`  ARRAY_CONFIG_UNSPECIFIED  `
+`ARRAY_CONFIG_UNSPECIFIED`
 
 The index does not support additional array queries.
 
-`  CONTAINS  `
+`CONTAINS`
 
 The index supports array containment queries.
 
@@ -2620,15 +2620,15 @@ The supported orderings.
 
 Enums
 
-`  ORDER_UNSPECIFIED  `
+`ORDER_UNSPECIFIED`
 
 The ordering is unspecified. Not a valid option.
 
-`  ASCENDING  `
+`ASCENDING`
 
 The field is ordered by ascending field value.
 
-`  DESCENDING  `
+`DESCENDING`
 
 The field is ordered by descending field value.
 
@@ -2638,17 +2638,17 @@ The index configuration to support vector search operations
 
 Fields
 
-`  dimension  `
+`dimension`
 
-`  int32  `
+`int32`
 
 Required. The vector dimension this configuration applies to.
 
 The resulting index will only include vectors of this dimension, and can be used for vector search with the same dimension.
 
-Union field `  type  ` . The type of index used. `  type  ` can be only one of the following:
+Union field `type` . The type of index used. `type` can be only one of the following:
 
-`  flat  `
+`flat`
 
 `  FlatIndex  `
 
@@ -2662,45 +2662,45 @@ An index that stores vectors in a flat data structure, and supports exhaustive s
 
 ## QueryScope
 
-Query Scope defines the scope at which a query is run. This is specified on a StructuredQuery's `  from  ` field.
+Query Scope defines the scope at which a query is run. This is specified on a StructuredQuery's `from` field.
 
 Enums
 
-`  QUERY_SCOPE_UNSPECIFIED  `
+`QUERY_SCOPE_UNSPECIFIED`
 
 The query scope is unspecified. Not a valid option.
 
-`  COLLECTION  `
+`COLLECTION`
 
 Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the collection ID specified by the index.
 
-`  COLLECTION_GROUP  `
+`COLLECTION_GROUP`
 
 Indexes with a collection group query scope specified allow queries against all collections that has the collection ID specified by the index.
 
-`  COLLECTION_RECURSIVE  `
+`COLLECTION_RECURSIVE`
 
 Include all the collections's ancestor in the index. Only available for Datastore Mode databases.
 
 ## State
 
-The state of an index. During index creation, an index will be in the `  CREATING  ` state. If the index is created successfully, it will transition to the `  READY  ` state. If the index creation encounters a problem, the index will transition to the `  NEEDS_REPAIR  ` state.
+The state of an index. During index creation, an index will be in the `CREATING` state. If the index is created successfully, it will transition to the `READY` state. If the index creation encounters a problem, the index will transition to the `NEEDS_REPAIR` state.
 
 Enums
 
-`  STATE_UNSPECIFIED  `
+`STATE_UNSPECIFIED`
 
 The state is unspecified.
 
-`  CREATING  `
+`CREATING`
 
 The index is being created. There is an active long-running operation for the index. The index is updated when writing a document. Some index data may exist.
 
-`  READY  `
+`READY`
 
 The index is ready to be used. The index is updated when writing a document. The index is fully populated from all stored documents it applies to.
 
-`  NEEDS_REPAIR  `
+`NEEDS_REPAIR`
 
 The index was being created, but something went wrong. There is no active long-running operation for the index, and the most recently finished long-running operation failed. The index is not updated when writing a document. Some index data may exist. Use the google.longrunning.Operations API to determine why the operation that last attempted to create this index failed, then re-create the index.
 
@@ -2710,37 +2710,37 @@ Metadata for `  google.longrunning.Operation  ` results from `  FirestoreAdmin.C
 
 Fields
 
-`  start_time  `
+`start_time`
 
 `  Timestamp  `
 
 The time this operation started.
 
-`  end_time  `
+`end_time`
 
 `  Timestamp  `
 
 The time this operation completed. Will be unset if operation still in progress.
 
-`  index  `
+`index`
 
-`  string  `
+`string`
 
-The index resource that this operation is acting on. For example: `  projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}  `
+The index resource that this operation is acting on. For example: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`
 
-`  state  `
+`state`
 
 `  OperationState  `
 
 The state of the operation.
 
-`  progress_documents  `
+`progress_documents`
 
 `  Progress  `
 
 The progress, in documents, of this operation.
 
-`  progress_bytes  `
+`progress_bytes`
 
 `  Progress  `
 
@@ -2752,13 +2752,13 @@ The request for `  FirestoreAdmin.ListBackupSchedules  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
 Required. The parent database.
 
-Format is `  projects/{project}/databases/{database}  ` .
+Format is `projects/{project}/databases/{database}` .
 
 ## ListBackupSchedulesResponse
 
@@ -2766,7 +2766,7 @@ The response for `  FirestoreAdmin.ListBackupSchedules  ` .
 
 Fields
 
-`  backup_schedules[]  `
+`backup_schedules[]`
 
 `  BackupSchedule  `
 
@@ -2778,25 +2778,25 @@ The request for `  FirestoreAdmin.ListBackups  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
 Required. The location to list backups from.
 
-Format is `  projects/{project}/locations/{location}  ` . Use `  {location} = '-'  ` to list backups from all locations for the given project. This allows listing backups from a single location or from all locations.
+Format is `projects/{project}/locations/{location}` . Use `{location} = '-'` to list backups from all locations for the given project. This allows listing backups from a single location or from all locations.
 
-`  filter  `
+`filter`
 
-`  string  `
+`string`
 
 An expression that filters the list of returned backups.
 
-A filter expression consists of a field name, a comparison operator, and a value for filtering. The value must be a string, a number, or a boolean. The comparison operator must be one of: `  <  ` , `  >  ` , `  <=  ` , `  >=  ` , `  !=  ` , `  =  ` , or `  :  ` . Colon `  :  ` is the contains operator. Filter rules are not case sensitive.
+A filter expression consists of a field name, a comparison operator, and a value for filtering. The value must be a string, a number, or a boolean. The comparison operator must be one of: `<` , `>` , `<=` , `>=` , `!=` , `=` , or `:` . Colon `:` is the contains operator. Filter rules are not case sensitive.
 
 The following fields in the `  Backup  ` are eligible for filtering:
 
-  - `  database_uid  ` (supports `  =  ` only)
+  - `database_uid` (supports `=` only)
 
 ## ListBackupsResponse
 
@@ -2804,15 +2804,15 @@ The response for `  FirestoreAdmin.ListBackups  ` .
 
 Fields
 
-`  backups[]  `
+`backups[]`
 
 `  Backup  `
 
 List of all backups for the project.
 
-`  unreachable[]  `
+`unreachable[]`
 
-`  string  `
+`string`
 
 List of locations that existing backups were not able to be fetched from.
 
@@ -2824,15 +2824,15 @@ A request to list the Firestore Databases in all locations for a project.
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. A parent name of the form `  projects/{project_id}  `
+Required. A parent name of the form `projects/{project_id}`
 
-`  show_deleted  `
+`show_deleted`
 
-`  bool  `
+`bool`
 
 If true, also returns deleted resources.
 
@@ -2842,15 +2842,15 @@ The list of databases for a project.
 
 Fields
 
-`  databases[]  `
+`databases[]`
 
 `  Database  `
 
 The databases in the project.
 
-`  unreachable[]  `
+`unreachable[]`
 
-`  string  `
+`string`
 
 In the event that data about individual databases cannot be listed they will be recorded here.
 
@@ -2862,27 +2862,27 @@ The request for `  FirestoreAdmin.ListFields  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. A parent name of the form `  projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}  `
+Required. A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`
 
-`  filter  `
+`filter`
 
-`  string  `
+`string`
 
-The filter to apply to list results. Currently, `  FirestoreAdmin.ListFields  ` only supports listing fields that have been explicitly overridden. To issue this query, call `  FirestoreAdmin.ListFields  ` with a filter that includes `  indexConfig.usesAncestorConfig:false  ` or `  ttlConfig:*  ` .
+The filter to apply to list results. Currently, `  FirestoreAdmin.ListFields  ` only supports listing fields that have been explicitly overridden. To issue this query, call `  FirestoreAdmin.ListFields  ` with a filter that includes `indexConfig.usesAncestorConfig:false` or `ttlConfig:*` .
 
-`  page_size  `
+`page_size`
 
-`  int32  `
+`int32`
 
 The number of results to return.
 
-`  page_token  `
+`page_token`
 
-`  string  `
+`string`
 
 A page token, returned from a previous call to `  FirestoreAdmin.ListFields  ` , that may be used to get the next page of results.
 
@@ -2892,15 +2892,15 @@ The response for `  FirestoreAdmin.ListFields  ` .
 
 Fields
 
-`  fields[]  `
+`fields[]`
 
 `  Field  `
 
 The requested fields.
 
-`  next_page_token  `
+`next_page_token`
 
-`  string  `
+`string`
 
 A page token that may be used to request another page of results. If blank, this is the last page.
 
@@ -2910,27 +2910,27 @@ The request for `  FirestoreAdmin.ListIndexes  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. A parent name of the form `  projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}  `
+Required. A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`
 
-`  filter  `
+`filter`
 
-`  string  `
+`string`
 
 The filter to apply to list results.
 
-`  page_size  `
+`page_size`
 
-`  int32  `
+`int32`
 
 The number of results to return.
 
-`  page_token  `
+`page_token`
 
-`  string  `
+`string`
 
 A page token, returned from a previous call to `  FirestoreAdmin.ListIndexes  ` , that may be used to get the next page of results.
 
@@ -2940,15 +2940,15 @@ The response for `  FirestoreAdmin.ListIndexes  ` .
 
 Fields
 
-`  indexes[]  `
+`indexes[]`
 
 `  Index  `
 
 The requested indexes.
 
-`  next_page_token  `
+`next_page_token`
 
-`  string  `
+`string`
 
 A page token that may be used to request another page of results. If blank, this is the last page.
 
@@ -2958,11 +2958,11 @@ The request for `  FirestoreAdmin.ListUserCreds  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. A parent database name of the form `  projects/{project_id}/databases/{database_id}  `
+Required. A parent database name of the form `projects/{project_id}/databases/{database_id}`
 
 ## ListUserCredsResponse
 
@@ -2970,7 +2970,7 @@ The response for `  FirestoreAdmin.ListUserCreds  ` .
 
 Fields
 
-`  user_creds[]  `
+`user_creds[]`
 
 `  UserCreds  `
 
@@ -2988,35 +2988,35 @@ Describes the state of the operation.
 
 Enums
 
-`  OPERATION_STATE_UNSPECIFIED  `
+`OPERATION_STATE_UNSPECIFIED`
 
 Unspecified.
 
-`  INITIALIZING  `
+`INITIALIZING`
 
 Request is being prepared for processing.
 
-`  PROCESSING  `
+`PROCESSING`
 
 Request is actively being processed.
 
-`  CANCELLING  `
+`CANCELLING`
 
 Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.
 
-`  FINALIZING  `
+`FINALIZING`
 
 Request has been processed and is in its finalization stage.
 
-`  SUCCESSFUL  `
+`SUCCESSFUL`
 
 Request has completed successfully.
 
-`  FAILED  `
+`FAILED`
 
 Request has finished being processed, but encountered an error.
 
-`  CANCELLED  `
+`CANCELLED`
 
 Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation.
 
@@ -3026,19 +3026,19 @@ A consistent snapshot of a database at a specific point in time. A PITR (Point-i
 
 Fields
 
-`  database  `
+`database`
 
-`  string  `
+`string`
 
-Required. The name of the database that this was a snapshot of. Format: `  projects/{project}/databases/{database}  ` .
+Required. The name of the database that this was a snapshot of. Format: `projects/{project}/databases/{database}` .
 
-`  database_uid  `
+`database_uid`
 
-`  bytes  `
+`bytes`
 
 Output only. Public UUID of the database the snapshot was associated with.
 
-`  snapshot_time  `
+`snapshot_time`
 
 `  Timestamp  `
 
@@ -3050,15 +3050,15 @@ Describes the progress of the operation. Unit of work is generic and must be int
 
 Fields
 
-`  estimated_work  `
+`estimated_work`
 
-`  int64  `
+`int64`
 
 The amount of work estimated.
 
-`  completed_work  `
+`completed_work`
 
-`  int64  `
+`int64`
 
 The amount of work completed.
 
@@ -3068,17 +3068,17 @@ The Realtime Updates mode.
 
 Enums
 
-`  REALTIME_UPDATES_MODE_UNSPECIFIED  `
+`REALTIME_UPDATES_MODE_UNSPECIFIED`
 
 The Realtime Updates feature is not specified.
 
-`  REALTIME_UPDATES_MODE_ENABLED  `
+`REALTIME_UPDATES_MODE_ENABLED`
 
 The Realtime Updates feature is enabled by default.
 
 This could potentially degrade write performance for the database.
 
-`  REALTIME_UPDATES_MODE_DISABLED  `
+`REALTIME_UPDATES_MODE_DISABLED`
 
 The Realtime Updates feature is disabled by default.
 
@@ -3088,11 +3088,11 @@ The request for `  FirestoreAdmin.ResetUserPassword  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Required. A name of the form `  projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}  `
+Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}`
 
 ## RestoreDatabaseMetadata
 
@@ -3100,37 +3100,37 @@ Metadata for the `  long-running operation  ` from the \[RestoreDatabase\]\[goog
 
 Fields
 
-`  start_time  `
+`start_time`
 
 `  Timestamp  `
 
 The time the restore was started.
 
-`  end_time  `
+`end_time`
 
 `  Timestamp  `
 
 The time the restore finished, unset for ongoing restores.
 
-`  operation_state  `
+`operation_state`
 
 `  OperationState  `
 
 The operation state of the restore.
 
-`  database  `
+`database`
 
-`  string  `
+`string`
 
 The name of the database being restored to.
 
-`  backup  `
+`backup`
 
-`  string  `
+`string`
 
 The name of the backup restoring from.
 
-`  progress_percentage  `
+`progress_percentage`
 
 `  Progress  `
 
@@ -3142,15 +3142,15 @@ The request message for `  FirestoreAdmin.RestoreDatabase  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. The project to restore the database in. Format is `  projects/{project_id}  ` .
+Required. The project to restore the database in. Format is `projects/{project_id}` .
 
-`  database_id  `
+`database_id`
 
-`  string  `
+`string`
 
 Required. The ID to use for the database, which will become the final component of the database's resource name. This database ID must not be associated with an existing database.
 
@@ -3158,17 +3158,17 @@ This value should be 4-63 characters. Valid characters are /\[a-z\]\[0-9\]-/ wit
 
 "(default)" database ID is also valid if the database is Standard edition.
 
-`  backup  `
+`backup`
 
-`  string  `
+`string`
 
 Required. Backup to restore from. Must be from the same project as the parent.
 
 The restored database will be created in the same location as the source backup.
 
-Format is: `  projects/{project_id}/locations/{location}/backups/{backup}  `
+Format is: `projects/{project_id}/locations/{location}/backups/{backup}`
 
-`  encryption_config  `
+`encryption_config`
 
 `  EncryptionConfig  `
 
@@ -3176,13 +3176,13 @@ Optional. Encryption configuration for the restored database.
 
 If this field is not specified, the restored database will use the same encryption configuration as the backup, namely `  use_source_encryption  ` .
 
-`  tags  `
+`tags`
 
-`  map<string, string>  `
+`map<string, string>`
 
 Optional. Immutable. Tags to be bound to the restored database.
 
-The tags should be provided in the format of `  tagKeys/{tag_key_id} -> tagValues/{tag_value_id}  ` .
+The tags should be provided in the format of `tagKeys/{tag_key_id} -> tagValues/{tag_value_id}` .
 
 ## UpdateBackupScheduleRequest
 
@@ -3190,13 +3190,13 @@ The request for `  FirestoreAdmin.UpdateBackupSchedule  ` .
 
 Fields
 
-`  backup_schedule  `
+`backup_schedule`
 
 `  BackupSchedule  `
 
 Required. The backup schedule to update.
 
-`  update_mask  `
+`update_mask`
 
 `  FieldMask  `
 
@@ -3214,13 +3214,13 @@ The request for `  FirestoreAdmin.UpdateDatabase  ` .
 
 Fields
 
-`  database  `
+`database`
 
 `  Database  `
 
 Required. The database to update.
 
-`  update_mask  `
+`update_mask`
 
 `  FieldMask  `
 
@@ -3232,13 +3232,13 @@ The request for `  FirestoreAdmin.UpdateField  ` .
 
 Fields
 
-`  field  `
+`field`
 
 `  Field  `
 
 Required. The field to be updated.
 
-`  update_mask  `
+`update_mask`
 
 `  FieldMask  `
 
@@ -3250,39 +3250,39 @@ A Cloud Firestore User Creds.
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Identifier. The resource name of the UserCreds. Format: `  projects/{project}/databases/{database}/userCreds/{user_creds}  `
+Identifier. The resource name of the UserCreds. Format: `projects/{project}/databases/{database}/userCreds/{user_creds}`
 
-`  create_time  `
+`create_time`
 
 `  Timestamp  `
 
 Output only. The time the user creds were created.
 
-`  update_time  `
+`update_time`
 
 `  Timestamp  `
 
 Output only. The time the user creds were last updated.
 
-`  state  `
+`state`
 
 `  State  `
 
 Output only. Whether the user creds are enabled or disabled. Defaults to ENABLED on creation.
 
-`  secure_password  `
+`secure_password`
 
-`  string  `
+`string`
 
 Output only. The plaintext server-generated password for the user creds. Only populated in responses for CreateUserCreds and ResetUserPassword.
 
-Union field `  UserCredsIdentity  ` . Identity associated with this User Creds. `  UserCredsIdentity  ` can be only one of the following:
+Union field `UserCredsIdentity` . Identity associated with this User Creds. `UserCredsIdentity` can be only one of the following:
 
-`  resource_identity  `
+`resource_identity`
 
 `  ResourceIdentity  `
 
@@ -3294,9 +3294,9 @@ Describes a Resource Identity principal.
 
 Fields
 
-`  principal  `
+`principal`
 
-`  string  `
+`string`
 
 Output only. Principal identifier string. See: <https://cloud.google.com/iam/docs/principal-identifiers>
 
@@ -3306,15 +3306,15 @@ The state of the user creds (ENABLED or DISABLED).
 
 Enums
 
-`  STATE_UNSPECIFIED  `
+`STATE_UNSPECIFIED`
 
 The default value. Should not be used.
 
-`  ENABLED  `
+`ENABLED`
 
 The user creds are enabled.
 
-`  DISABLED  `
+`DISABLED`
 
 The user creds are disabled.
 
@@ -3326,7 +3326,7 @@ The time zone is UTC.
 
 Fields
 
-`  day  `
+`day`
 
 `  DayOfWeek  `
 

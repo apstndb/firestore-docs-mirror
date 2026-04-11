@@ -4,7 +4,7 @@ This page lists error codes that you might encounter and provides suggestions fo
 
 ### DEADLINE\_EXCEEDED
 
-The following can increase `  DEADLINE_EXCEEDED  ` errors:
+The following can increase `DEADLINE_EXCEEDED` errors:
 
   - An increase in latency caused an operation take longer than the deadline (60 seconds by default) to complete.
 
@@ -18,7 +18,7 @@ To resolve this issue, see the [guide to troubleshooting latency](https://docs.c
 
 ### ABORTED
 
-The following situations can increase `  ABORTED  ` errors:
+The following situations can increase `ABORTED` errors:
 
   - A document receiving too many updates per second.
   - Contention from overlapping transactions.
@@ -47,7 +47,7 @@ To resolve this issue:
 
 ### RESOURCE\_EXHAUSTED
 
-The following situations can lead to `  RESOURCE_EXHAUSTED  ` errors:
+The following situations can lead to `RESOURCE_EXHAUSTED` errors:
 
   - You exceeded the [free tier quota](https://cloud.google.com/firestore/quotas#free-quota) and billing is not enabled for your project.
 
@@ -77,7 +77,7 @@ To resolve this issue:
 
 ### INVALID\_ARGUMENT
 
-The following situations can cause `  INVALID_ARGUMENT  ` errors:
+The following situations can cause `INVALID_ARGUMENT` errors:
 
   - Attempting to commit a document with an **indexed** field value greater than 1,500 bytes. This limits applies to the UTF-8 encoding of the field value.
   - Attempting to commit a document with **un-indexed** field values greater than 1,048,487 bytes (1 MiB - 89 bytes). This limit applies to the sum of the field values in a document. For example, four fields of 256 KiB each exceed the limit.

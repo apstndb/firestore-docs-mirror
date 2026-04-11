@@ -14,8 +14,8 @@ Use the Query insights dashboard to monitor metrics-related queries. Based on th
 
 Query insights includes data from the following API methods:
 
-  - `  find  `
-  - `  aggregate  `
+  - `find`
+  - `aggregate`
 
 You can view data about the queries that use these methods for a given project, database, and time duration ranging from 10 minutes to 30 days. Data for queries with equivalent structures is captured under a single normalized query.
 
@@ -52,9 +52,9 @@ There's no additional cost for Query insights.
 
 ## Required roles
 
-To get the permission that you need to view the Query insights dashboard, ask your administrator to grant you the [Datastore Viewer](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.viewer) ( `  roles/datastore.viewer  ` ) IAM role on your project. For more information about granting roles, see [Manage access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
+To get the permission that you need to view the Query insights dashboard, ask your administrator to grant you the [Datastore Viewer](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.viewer) ( `roles/datastore.viewer` ) IAM role on your project. For more information about granting roles, see [Manage access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
 
-This predefined role contains the `  datastore.insights.get  ` permission, which is required to view the Query insights dashboard.
+This predefined role contains the `datastore.insights.get` permission, which is required to view the Query insights dashboard.
 
 You might also be able to get this permission with [custom roles](https://docs.cloud.google.com/iam/docs/creating-custom-roles) or other [predefined roles](https://docs.cloud.google.com/iam/docs/roles-overview#predefined) .
 

@@ -63,13 +63,13 @@ Libraries
   - enable grpc configurator for client-side tracing ( [\#1886](https://github.com/googleapis/java-datastore/issues/1886) ) ( [97004c8](https://github.com/googleapis/java-datastore/commit/97004c85d73541ccfc26e0f4212e3a447d3e4ba6) )
   - enable hermetic library generation ( [\#1462](https://github.com/googleapis/java-datastore/issues/1462) ) ( [d142d9c](https://github.com/googleapis/java-datastore/commit/d142d9c95d91c8cadaf696efc12d6136814938ff) )
   - implement query profile ( [\#1365](https://github.com/googleapis/java-datastore/issues/1365) ) ( [2515ed6](https://github.com/googleapis/java-datastore/commit/2515ed6cf733df84069309a3055a21cdd65c9c90) )
-  - introduce `  java.time  ` methods and variables ( [\#1671](https://github.com/googleapis/java-datastore/issues/1671) ) ( [5a78a80](https://github.com/googleapis/java-datastore/commit/5a78a8075867f4b2fc598f0423bd2ab65b559856) )
+  - introduce `java.time` methods and variables ( [\#1671](https://github.com/googleapis/java-datastore/issues/1671) ) ( [5a78a80](https://github.com/googleapis/java-datastore/commit/5a78a8075867f4b2fc598f0423bd2ab65b559856) )
   - Introducing Tracing with OpenTelemetry API [\#1537](https://github.com/googleapis/java-datastore/issues/1537) ( [\#1576](https://github.com/googleapis/java-datastore/issues/1576) ) ( [5440c22](https://github.com/googleapis/java-datastore/commit/5440c22364074c108450c3a748a6a17d5f1dddda) )
   - Java datastore gapic upgrade ( [\#1824](https://github.com/googleapis/java-datastore/issues/1824) ) ( [a296d43](https://github.com/googleapis/java-datastore/commit/a296d43724c57aba6a69ebed249261e3d367d625) )
   - New PropertyMask field which allows partial commits, lookups, and query results ( [\#1455](https://github.com/googleapis/java-datastore/issues/1455) ) ( [ff5e397](https://github.com/googleapis/java-datastore/commit/ff5e39775446216b4806f55f14dacb7fc8e8854b) )
   - next release from main branch is 2.27.0 ( [\#1781](https://github.com/googleapis/java-datastore/issues/1781) ) ( [d29f47c](https://github.com/googleapis/java-datastore/commit/d29f47cbef9998acdc8b7b0f42d93574dab3cc7f) )
   - next release from main branch is 2.31.0 ( [\#1912](https://github.com/googleapis/java-datastore/issues/1912) ) ( [a74c46b](https://github.com/googleapis/java-datastore/commit/a74c46bfbac8eaf5c97fe653b740e26e7c79f4da) )
-  - remove `  @BetaApi  ` annotations from get/setDatabaseId methods ( [\#1272](https://github.com/googleapis/java-datastore/issues/1272) ) ( [2bd9a51](https://github.com/googleapis/java-datastore/commit/2bd9a51122248ee242bbcd4914e219d9d5e435bb) )
+  - remove `@BetaApi` annotations from get/setDatabaseId methods ( [\#1272](https://github.com/googleapis/java-datastore/issues/1272) ) ( [2bd9a51](https://github.com/googleapis/java-datastore/commit/2bd9a51122248ee242bbcd4914e219d9d5e435bb) )
   - Support for field update operators in the Datastore API and resolution strategies when there is a conflict at write time ( [b299266](https://github.com/googleapis/java-datastore/commit/b299266e42037b731ee7bbba21dbded73a37323c) )
   - update with latest from main ( [\#2018](https://github.com/googleapis/java-datastore/issues/2018) ) ( [3a0daed](https://github.com/googleapis/java-datastore/commit/3a0daedca7a2ac9c97bc82592e0ba0d2421243c0) )
   - Upgrade protobuf gen code to 4.33 ( [\#2019](https://github.com/googleapis/java-datastore/issues/2019) ) ( [c783809](https://github.com/googleapis/java-datastore/commit/c783809a7b9e27e4d8982e8f2197351e5173203a) )
@@ -77,7 +77,7 @@ Libraries
 ##### Bug Fixes
 
   - checksum format ( [\#1178](https://github.com/googleapis/java-datastore/issues/1178) ) ( [410b939](https://github.com/googleapis/java-datastore/commit/410b9397bb9ba480dff6217c0c4c27364e58db49) )
-  - deprecate `  databaseId  ` on datastore-v1-proto-client DatastoreOptions ( [\#1190](https://github.com/googleapis/java-datastore/issues/1190) ) ( [12a3d27](https://github.com/googleapis/java-datastore/commit/12a3d27ebc7ca87338ee896fd6ba3e804edd95ce) )
+  - deprecate `databaseId` on datastore-v1-proto-client DatastoreOptions ( [\#1190](https://github.com/googleapis/java-datastore/issues/1190) ) ( [12a3d27](https://github.com/googleapis/java-datastore/commit/12a3d27ebc7ca87338ee896fd6ba3e804edd95ce) )
   - **deps:** Update the Java code generator (gapic-generator-java) to 2.31.0 ( [\#1278](https://github.com/googleapis/java-datastore/issues/1278) ) ( [01cced6](https://github.com/googleapis/java-datastore/commit/01cced66613bc10ba71cc80166119e321915ec34) )
   - **deps:** Update the Java code generator (gapic-generator-java) to 2.32.0 ( [\#1293](https://github.com/googleapis/java-datastore/issues/1293) ) ( [f4ee0cb](https://github.com/googleapis/java-datastore/commit/f4ee0cb4668077f9fb6b0ede1ea69b9033748fe9) )
   - **deps:** Update the Java code generator (gapic-generator-java) to 2.37.0 ( [\#1355](https://github.com/googleapis/java-datastore/issues/1355) ) ( [bcc5668](https://github.com/googleapis/java-datastore/commit/bcc5668039d4dd2055e9666a65fcda3984fc33b5) )
@@ -104,7 +104,7 @@ Libraries
   - Migrate off TextPrinter's deprecated methods ( [\#1452](https://github.com/googleapis/java-datastore/issues/1452) ) ( [c3c1317](https://github.com/googleapis/java-datastore/commit/c3c131735863d71971110e2ac7ac0244ce16ee92) )
   - next release candidate ( [4824f2b](https://github.com/googleapis/java-datastore/commit/4824f2b214d3addcf25235f43cc9bf4a2ebb0a76) )
   - remove 500 char path name limit ( [\#1865](https://github.com/googleapis/java-datastore/issues/1865) ) ( [1097175](https://github.com/googleapis/java-datastore/commit/10971752310d8b1794c8e77041b582707142b328) )
-  - remove deprecated `  databaseId  ` field in DatastoreOptions ( [\#1237](https://github.com/googleapis/java-datastore/issues/1237) ) ( [05e25e5](https://github.com/googleapis/java-datastore/commit/05e25e5d31f72f9cdedbb5efa85c64b55ccbc405) )
+  - remove deprecated `databaseId` field in DatastoreOptions ( [\#1237](https://github.com/googleapis/java-datastore/issues/1237) ) ( [05e25e5](https://github.com/googleapis/java-datastore/commit/05e25e5d31f72f9cdedbb5efa85c64b55ccbc405) )
   - remove QueryMode field from RunAggregationQueryRequest ( [c1e7c62](https://github.com/googleapis/java-datastore/commit/c1e7c6201e0e35469df1492a4ce61bf6a095f8be) )
   - remove QueryMode field from RunQueryRequest ( [c1e7c62](https://github.com/googleapis/java-datastore/commit/c1e7c6201e0e35469df1492a4ce61bf6a095f8be) )
   - remove ResultSetStats field from RunAggregationQueryResponse ( [c1e7c62](https://github.com/googleapis/java-datastore/commit/c1e7c6201e0e35469df1492a4ce61bf6a095f8be) )
@@ -556,7 +556,7 @@ You can now use Query insights to [view query performance metrics for your datab
 
 Feature
 
-Firestore in Datastore mode now supports multi-region `  nam7  ` United States (Central and East), which consists of regions `  us-central1  ` (Iowa) and `  us-east4  ` (Northern Virginia).
+Firestore in Datastore mode now supports multi-region `nam7` United States (Central and East), which consists of regions `us-central1` (Iowa) and `us-east4` (Northern Virginia).
 
 For a full list of supported locations, see [Locations](https://docs.cloud.google.com/firestore/docs/locations) .
 
@@ -598,7 +598,7 @@ Libraries
 
 Feature
 
-Firestore in Datastore mode now supports the `  europe-north2  ` Stockholm region.
+Firestore in Datastore mode now supports the `europe-north2` Stockholm region.
 
 For a full list of supported locations, see [Locations](https://docs.cloud.google.com/datastore/docs/locations) .
 
@@ -752,7 +752,7 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 
 ##### Features
 
-  - Introduce `  java.time  ` methods and variables ( [\#1671](https://github.com/googleapis/java-datastore/issues/1671) ) ( [5a78a80](https://github.com/googleapis/java-datastore/commit/5a78a8075867f4b2fc598f0423bd2ab65b559856) )
+  - Introduce `java.time` methods and variables ( [\#1671](https://github.com/googleapis/java-datastore/issues/1671) ) ( [5a78a80](https://github.com/googleapis/java-datastore/commit/5a78a8075867f4b2fc598f0423bd2ab65b559856) )
 
 ##### Dependencies
 
@@ -790,7 +790,7 @@ For more information, see [Reliability recommender](https://docs.cloud.google.co
 
 Feature
 
-Firestore in Datastore mode now supports the `  northamerica-south1  ` Queretaro region.
+Firestore in Datastore mode now supports the `northamerica-south1` Queretaro region.
 
 For a full list of supported locations, see [Locations](https://docs.cloud.google.com/datastore/docs/locations) .
 
@@ -972,7 +972,7 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 
 Feature
 
-You can now use [property transforms like `  increment  `](https://docs.cloud.google.com/datastore/docs/concepts/entities#property_transforms) in the REST API. This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
+You can now use [property transforms like `increment`](https://docs.cloud.google.com/datastore/docs/concepts/entities#property_transforms) in the REST API. This feature is in [Preview](https://cloud.google.com/products#product-launch-stages) .
 
 ## October 01, 2024
 
@@ -1211,7 +1211,7 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 
 ##### ⚠ BREAKING CHANGES
 
-  - An existing method `  UpdateVehicleLocation  ` is removed from service `  VehicleService  ` ( [\#1248](https://github.com/googleapis/nodejs-datastore/issues/1248) )
+  - An existing method `UpdateVehicleLocation` is removed from service `VehicleService` ( [\#1248](https://github.com/googleapis/nodejs-datastore/issues/1248) )
 
 ##### Features
 
@@ -1219,7 +1219,7 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 
 ##### Bug Fixes
 
-  - An existing method `  UpdateVehicleLocation  ` is removed from service `  VehicleService  ` ( [\#1248](https://github.com/googleapis/nodejs-datastore/issues/1248) ) ( [ba79118](https://github.com/googleapis/nodejs-datastore/commit/ba79118ac00ccc3bb0380ee5693c3b687a7ae9c7) )
+  - An existing method `UpdateVehicleLocation` is removed from service `VehicleService` ( [\#1248](https://github.com/googleapis/nodejs-datastore/issues/1248) ) ( [ba79118](https://github.com/googleapis/nodejs-datastore/commit/ba79118ac00ccc3bb0380ee5693c3b687a7ae9c7) )
   - Read time should be used for transaction reads ( [\#1171](https://github.com/googleapis/nodejs-datastore/issues/1171) ) ( [73a0a39](https://github.com/googleapis/nodejs-datastore/commit/73a0a39b4c0423a5b4802076cdce80fce7c9adda) )
 
 ### Java
@@ -1320,7 +1320,7 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 
 Feature
 
-Firestore in Datastore mode now supports the `  us-south1  ` Dallas region.
+Firestore in Datastore mode now supports the `us-south1` Dallas region.
 
 For a full list of supported locations, see [Locations](https://docs.cloud.google.com/datastore/docs/locations) .
 
@@ -1344,15 +1344,15 @@ Feature
 
 Firestore in Datastore mode now supports the following additional locations:
 
-  - `  africa-south1  ` Johannesburg
-  - `  europe-north1  ` Finland
-  - `  europe-southwest1  ` Madrid
-  - `  europe-west10  ` Berlin
-  - `  europe-west12  ` Turin
-  - `  europe-west8  ` Milan
-  - `  southamerica-west1  ` Santiago
-  - `  us-central1  ` Iowa
-  - `  us-east5  ` Columbus
+  - `africa-south1` Johannesburg
+  - `europe-north1` Finland
+  - `europe-southwest1` Madrid
+  - `europe-west10` Berlin
+  - `europe-west12` Turin
+  - `europe-west8` Milan
+  - `southamerica-west1` Santiago
+  - `us-central1` Iowa
+  - `us-east5` Columbus
 
 For a full list of supported locations, see [Locations](https://docs.cloud.google.com/datastore/docs/locations) .
 
@@ -1405,7 +1405,7 @@ Support for [Query Explain](https://docs.cloud.google.com/datastore/docs/query-e
 
 Query Explain lets you submit queries and receive detailed query plan, billing and performance statistics on query execution in return. It helps you understand how your queries are executed, showing you inefficiencies.
 
-It functions like the `  EXPLAIN [ANALYZE]  ` operation in many relational database systems.
+It functions like the `EXPLAIN [ANALYZE]` operation in many relational database systems.
 
 For more information, see the [guide for Query Explain](https://docs.cloud.google.com/datastore/docs/query-explain-analyze) .
 
@@ -1455,7 +1455,7 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 
 Feature
 
-You can now use the Firestore emulator to test Firestore in Datastore mode behavior. Use [`  gcloud emulators firestore start  ` with `  --database-mode=datastore-mode  `](https://docs.cloud.google.com/datastore/docs/emulator) .
+You can now use the Firestore emulator to test Firestore in Datastore mode behavior. Use [`gcloud emulators firestore start` with `--database-mode=datastore-mode`](https://docs.cloud.google.com/datastore/docs/emulator) .
 
 ## March 04, 2024
 
@@ -1511,7 +1511,7 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 
 ##### Features
 
-  - Remove `  @BetaApi  ` annotations from get/setDatabaseId methods ( [\#1272](https://github.com/googleapis/java-datastore/issues/1272) ) ( [2bd9a51](https://github.com/googleapis/java-datastore/commit/2bd9a51122248ee242bbcd4914e219d9d5e435bb) )
+  - Remove `@BetaApi` annotations from get/setDatabaseId methods ( [\#1272](https://github.com/googleapis/java-datastore/issues/1272) ) ( [2bd9a51](https://github.com/googleapis/java-datastore/commit/2bd9a51122248ee242bbcd4914e219d9d5e435bb) )
 
 ##### Dependencies
 
@@ -1570,7 +1570,7 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 
 ##### Bug Fixes
 
-  - Use `  retry_async  ` instead of `  retry  ` in async client ( [4e15ce6](https://github.com/googleapis/python-datastore/commit/4e15ce640580f14fb1ee5d8ad49ea48e860ff1da) )
+  - Use `retry_async` instead of `retry` in async client ( [4e15ce6](https://github.com/googleapis/python-datastore/commit/4e15ce640580f14fb1ee5d8ad49ea48e860ff1da) )
 
 ##### Documentation
 
@@ -1596,7 +1596,7 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 
 ##### Bug Fixes
 
-  - Remove deprecated `  databaseId  ` field in DatastoreOptions ( [\#1237](https://github.com/googleapis/java-datastore/issues/1237) ) ( [05e25e5](https://github.com/googleapis/java-datastore/commit/05e25e5d31f72f9cdedbb5efa85c64b55ccbc405) )
+  - Remove deprecated `databaseId` field in DatastoreOptions ( [\#1237](https://github.com/googleapis/java-datastore/issues/1237) ) ( [05e25e5](https://github.com/googleapis/java-datastore/commit/05e25e5d31f72f9cdedbb5efa85c64b55ccbc405) )
 
 ##### Dependencies
 
@@ -1718,7 +1718,7 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 ##### Bug Fixes
 
   - Checksum format ( [\#1178](https://github.com/googleapis/java-datastore/issues/1178) ) ( [410b939](https://github.com/googleapis/java-datastore/commit/410b9397bb9ba480dff6217c0c4c27364e58db49) )
-  - Deprecate `  databaseId  ` on datastore-v1-proto-client DatastoreOptions ( [\#1190](https://github.com/googleapis/java-datastore/issues/1190) ) ( [12a3d27](https://github.com/googleapis/java-datastore/commit/12a3d27ebc7ca87338ee896fd6ba3e804edd95ce) )
+  - Deprecate `databaseId` on datastore-v1-proto-client DatastoreOptions ( [\#1190](https://github.com/googleapis/java-datastore/issues/1190) ) ( [12a3d27](https://github.com/googleapis/java-datastore/commit/12a3d27ebc7ca87338ee896fd6ba3e804edd95ce) )
 
 ##### Dependencies
 
@@ -1850,7 +1850,7 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 
 ##### Documentation
 
-  - **datastore/admin:** Specify limit for `  properties  ` in `  Index  ` message in Datastore Admin API ( [b890425](https://github.com/googleapis/google-cloud-go/commit/b8904253a0f8424ea4548469e5feef321bd7396a) )
+  - **datastore/admin:** Specify limit for `properties` in `Index` message in Datastore Admin API ( [b890425](https://github.com/googleapis/google-cloud-go/commit/b8904253a0f8424ea4548469e5feef321bd7396a) )
 
 ### Java
 
@@ -1875,7 +1875,7 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 
 Feature
 
-The [`  sum()  ` and `  avg()  ` aggregation functions](https://docs.cloud.google.com/datastore/docs/aggregation-queries) are now available for Firestore in Datastore mode.
+The [`sum()` and `avg()` aggregation functions](https://docs.cloud.google.com/datastore/docs/aggregation-queries) are now available for Firestore in Datastore mode.
 
 ## August 25, 2023
 
@@ -1916,7 +1916,7 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 ##### Documentation
 
   - Minor formatting in Datastore Admin API ( [cfcd0c2](https://github.com/googleapis/python-datastore/commit/cfcd0c2552c5dcf503cb3dee8c57b1e82be2d432) )
-  - Specify limit for `  properties  ` in `  Index  ` message in Datastore Admin API ( [cfcd0c2](https://github.com/googleapis/python-datastore/commit/cfcd0c2552c5dcf503cb3dee8c57b1e82be2d432) )
+  - Specify limit for `properties` in `Index` message in Datastore Admin API ( [cfcd0c2](https://github.com/googleapis/python-datastore/commit/cfcd0c2552c5dcf503cb3dee8c57b1e82be2d432) )
 
 ## August 07, 2023
 
@@ -1936,7 +1936,7 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 
 ##### Documentation
 
-  - Specify limit for `  properties  ` in `  Index  ` message in Datastore Admin API ( [\#1149](https://github.com/googleapis/java-datastore/issues/1149) ) ( [00a696d](https://github.com/googleapis/java-datastore/commit/00a696d5e0fe2ffe6c9e02abd902d1b533265310) )
+  - Specify limit for `properties` in `Index` message in Datastore Admin API ( [\#1149](https://github.com/googleapis/java-datastore/issues/1149) ) ( [00a696d](https://github.com/googleapis/java-datastore/commit/00a696d5e0fe2ffe6c9e02abd902d1b533265310) )
 
 ##### Dependencies
 
@@ -2132,7 +2132,7 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 
 Announcement
 
-[`  OR  ` queries](https://docs.cloud.google.com/datastore/docs/concepts/queries#composite_filters) are now supported at the [General Availability level](https://cloud.google.com/products/#product-launch-stages) .
+[`OR` queries](https://docs.cloud.google.com/datastore/docs/concepts/queries#composite_filters) are now supported at the [General Availability level](https://cloud.google.com/products/#product-launch-stages) .
 
 ## June 19, 2023
 
@@ -2189,13 +2189,13 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 
 ##### Documentation
 
-  - Remove `  @BetaApi  ` annotations for count aggregations ( [\#1051](https://github.com/googleapis/java-datastore/issues/1051) ) ( [b8bdaa2](https://github.com/googleapis/java-datastore/commit/b8bdaa23f165f6bcb5a891ef2437ffdd7ce8aa4c) )
+  - Remove `@BetaApi` annotations for count aggregations ( [\#1051](https://github.com/googleapis/java-datastore/issues/1051) ) ( [b8bdaa2](https://github.com/googleapis/java-datastore/commit/b8bdaa23f165f6bcb5a891ef2437ffdd7ce8aa4c) )
 
 ## April 24, 2023
 
 Feature
 
-[`  count()  ` queries](https://cloud.google.com/datastore/docs/aggregation-queries) are now supported at the [General Availability level](https://cloud.google.com/products/#product-launch-stages) .
+[`count()` queries](https://cloud.google.com/datastore/docs/aggregation-queries) are now supported at the [General Availability level](https://cloud.google.com/products/#product-launch-stages) .
 
 ## April 17, 2023
 
@@ -2267,13 +2267,13 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 
 Change
 
-Firestore in Datastore mode no longer limits the number of entities that can be passed to a `  Commit  ` operation. Previously, the limit was 500. [The limit for request size](https://docs.cloud.google.com/datastore/docs/concepts/limits#limits) still applies.
+Firestore in Datastore mode no longer limits the number of entities that can be passed to a `Commit` operation. Previously, the limit was 500. [The limit for request size](https://docs.cloud.google.com/datastore/docs/concepts/limits#limits) still applies.
 
 ## March 24, 2023
 
 Feature
 
-[`  OR  ` queries](https://docs.cloud.google.com/datastore/docs/concepts/queries#composite_filters) now available in [Preview](https://cloud.google.com/products/#product-launch-stages) .
+[`OR` queries](https://docs.cloud.google.com/datastore/docs/concepts/queries#composite_filters) now available in [Preview](https://cloud.google.com/products/#product-launch-stages) .
 
 ## March 20, 2023
 
@@ -2300,7 +2300,7 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 
 Feature
 
-Support for the [`  europe-west4  ` (Netherlands)](https://docs.cloud.google.com/datastore/docs/locations) region.
+Support for the [`europe-west4` (Netherlands)](https://docs.cloud.google.com/datastore/docs/locations) region.
 
 ## March 06, 2023
 
@@ -2578,7 +2578,7 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 
 Feature
 
-Support for the [`  australia-southeast2  ` (Melbourne)](https://docs.cloud.google.com/datastore/docs/locations) region.
+Support for the [`australia-southeast2` (Melbourne)](https://docs.cloud.google.com/datastore/docs/locations) region.
 
 ## December 12, 2022
 
@@ -2818,7 +2818,7 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 
 Feature
 
-[`  count()  ` queries](https://docs.cloud.google.com/datastore/docs/aggregation-queries) are now available in [Preview](https://cloud.google.com/products/#product-launch-stages) .
+[`count()` queries](https://docs.cloud.google.com/datastore/docs/aggregation-queries) are now available in [Preview](https://cloud.google.com/products/#product-launch-stages) .
 
 ## October 17, 2022
 
@@ -2908,7 +2908,7 @@ Not-equal (\!=), IN, and NOT\_IN query filters now available in all client libra
 
 Feature
 
-[Datastore now supports the not-equal ( `  !=  ` ), `  IN  ` and `  NOT_IN  ` query filters.](https://cloud.google.com/datastore/docs/concepts/queries#special_query_types) The filters are now available in the Google Cloud console and the following client libraries:
+[Datastore now supports the not-equal ( `!=` ), `IN` and `NOT_IN` query filters.](https://cloud.google.com/datastore/docs/concepts/queries#special_query_types) The filters are now available in the Google Cloud console and the following client libraries:
 
   - Java
   - Python
@@ -2927,7 +2927,7 @@ Feature
 
 Feature
 
-The `  datastore.databases.getMetadata  ` permission now supports custom Identity and Access Management roles. You can use custom roles with this permission to [unlink your database from App Engine](https://docs.cloud.google.com/datastore/docs/app-engine-requirement) .
+The `datastore.databases.getMetadata` permission now supports custom Identity and Access Management roles. You can use custom roles with this permission to [unlink your database from App Engine](https://docs.cloud.google.com/datastore/docs/app-engine-requirement) .
 
 ## January 12, 2022
 
@@ -2945,13 +2945,13 @@ Feature
 
 Feature
 
-`  DATA_READ  ` and `  DATA_WRITE  ` Data Access audit logs are now supported at the [General Availability release level](https://cloud.google.com/products/#product-launch-stages) . See [Datastore audit logging information](https://docs.cloud.google.com/datastore/docs/audit-logging) .
+`DATA_READ` and `DATA_WRITE` Data Access audit logs are now supported at the [General Availability release level](https://cloud.google.com/products/#product-launch-stages) . See [Datastore audit logging information](https://docs.cloud.google.com/datastore/docs/audit-logging) .
 
 ## September 02, 2021
 
 Feature
 
-Added `  DATA_READ  ` and `  DATA_WRITE  ` Data Access audit logs. See [Firestore in Datastore mode audit logging information](https://docs.cloud.google.com/datastore/docs/audit-logging) . This feature is available in **Preview** .
+Added `DATA_READ` and `DATA_WRITE` Data Access audit logs. See [Firestore in Datastore mode audit logging information](https://docs.cloud.google.com/datastore/docs/audit-logging) . This feature is available in **Preview** .
 
 ## July 22, 2021
 
@@ -2959,7 +2959,7 @@ Change
 
 **This feature was released on [September 2, 2021](https://docs.cloud.google.com/datastore/docs/release-notes#September_02_2021) .**
 
-The `  DATA_READ  ` and `  DATA_WRITE  ` Data Access audit logs feature has been moved to a future release. It is not currently available.
+The `DATA_READ` and `DATA_WRITE` Data Access audit logs feature has been moved to a future release. It is not currently available.
 
 ## July 16, 2021
 
@@ -2967,7 +2967,7 @@ Feature
 
 **This feature release was moved to [September 2, 2021](https://docs.cloud.google.com/datastore/docs/release-notes#September_02_2021) .**
 
-Added `  DATA_READ  ` and `  DATA_WRITE  ` Data Access audit logs. See [Firestore in Datastore mode audit logging information](https://docs.cloud.google.com/datastore/docs/audit-logging) . This feature is available in **Preview** .
+Added `DATA_READ` and `DATA_WRITE` Data Access audit logs. See [Firestore in Datastore mode audit logging information](https://docs.cloud.google.com/datastore/docs/audit-logging) . This feature is available in **Preview** .
 
 ## June 15, 2021
 
@@ -2981,9 +2981,9 @@ Feature
 
 Support for the following additional locations:
 
-  - `  asia-southeast1  ` Singapore
-  - `  us-west1  ` Oregeon
-  - `  asia-east1  ` Taiwan
+  - `asia-southeast1` Singapore
+  - `us-west1` Oregeon
+  - `asia-east1` Taiwan
 
 See the [full list of locations](https://docs.cloud.google.com/datastore/docs/locations) .
 
@@ -2997,37 +2997,37 @@ You can now [view recent import and export operations from the Google Cloud Cons
 
 Feature
 
-Support for the [`  europe-central2  ` (Warsaw)](https://docs.cloud.google.com/datastore/docs/locations) region.
+Support for the [`europe-central2` (Warsaw)](https://docs.cloud.google.com/datastore/docs/locations) region.
 
 ## September 16, 2020
 
 Feature
 
-You can now use the [`  goog-firestoremanaged  ` billing report label](https://docs.cloud.google.com/datastore/docs/export-import-entities#viewing_export_and_import_costs) to view costs related to export and import operations.
+You can now use the [`goog-firestoremanaged` billing report label](https://docs.cloud.google.com/datastore/docs/export-import-entities#viewing_export_and_import_costs) to view costs related to export and import operations.
 
 ## September 14, 2020
 
 Breaking
 
-The `  gcloud datastore index create  ` and `  gcloud datastore index cleanup  ` commands now require gcloud version 279.0.0 or greater. To update the gcloud CLI, use the [`  gcloud components update  `](https://docs.cloud.google.com/sdk/docs/components#updating_components) command.
+The `gcloud datastore index create` and `gcloud datastore index cleanup` commands now require gcloud version 279.0.0 or greater. To update the gcloud CLI, use the [`gcloud components update`](https://docs.cloud.google.com/sdk/docs/components#updating_components) command.
 
 ## June 08, 2020
 
 Feature
 
-Support for the [`  asia-southeast2  ` (Jakarta)](https://docs.cloud.google.com/datastore/docs/locations) region.
+Support for the [`asia-southeast2` (Jakarta)](https://docs.cloud.google.com/datastore/docs/locations) region.
 
 ## April 20, 2020
 
 Feature
 
-Support for [`  us-west4  ` region (Las Vegas)](https://docs.cloud.google.com/datastore/docs/locations) .
+Support for [`us-west4` region (Las Vegas)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## March 11, 2020
 
 Feature
 
-Support for [`  us-west3  ` (Salt Lake City) and `  asia-northeast3  ` (Seoul)](https://docs.cloud.google.com/datastore/docs/locations) .
+Support for [`us-west3` (Salt Lake City) and `asia-northeast3` (Seoul)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## February 13, 2020
 
@@ -3045,13 +3045,13 @@ You can now [start managed export and import operations from the Google Cloud Co
 
 Feature
 
-Support for [`  asia-northeast2  ` region (Osaka)](https://docs.cloud.google.com/datastore/docs/locations) .
+Support for [`asia-northeast2` region (Osaka)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## April 15, 2019
 
 Feature
 
-Support for [`  europe-west6  ` region (Zürich)](https://docs.cloud.google.com/datastore/docs/locations) .
+Support for [`europe-west6` region (Zürich)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## January 31, 2019
 
@@ -3073,7 +3073,7 @@ Cloud Datastore IAM requirements for App Engine will apply to projects created a
 
 Feature
 
-Support for [`  asia-east2  ` region (Hong Kong)](https://docs.cloud.google.com/datastore/docs/locations) .
+Support for [`asia-east2` region (Hong Kong)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## October 08, 2018
 
@@ -3087,7 +3087,7 @@ If you have an existing Cloud Datastore project, see this page on the [automatic
 
 Feature
 
-Support for [`  us-west2  ` region (Los Angeles)](https://docs.cloud.google.com/datastore/docs/locations) .
+Support for [`us-west2` region (Los Angeles)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## February 28, 2018
 
@@ -3110,33 +3110,33 @@ The Cloud Datastore Administration API v1beta1 is now deprecated.
 
 Feature
 
-When you begin a read-write transaction with the Cloud Datastore Data API, you can now specify a [`  previousTransaction  `](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/beginTransaction#ReadWrite) that you are retrying.
+When you begin a read-write transaction with the Cloud Datastore Data API, you can now specify a [`previousTransaction`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/beginTransaction#ReadWrite) that you are retrying.
 
 Change
 
-Message [`  BeginTransactionRequest  `](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/beginTransaction) adds field `  transactionOptions  ` as part of the Data API.
+Message [`BeginTransactionRequest`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/beginTransaction) adds field `transactionOptions` as part of the Data API.
 
 Feature
 
-When you begin a transaction with the Cloud Datastore Data API, you can now use a [`  TransactionOptions  `](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/beginTransaction#TransactionOptions) object to specify whether the transaction is read-only or read-write.
+When you begin a transaction with the Cloud Datastore Data API, you can now use a [`TransactionOptions`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/beginTransaction#TransactionOptions) object to specify whether the transaction is read-only or read-write.
 
 ## January 10, 2018
 
 Feature
 
-Support for [`  northamerica-northeast1  ` region (Montréal)](https://docs.cloud.google.com/datastore/docs/locations) .
+Support for [`northamerica-northeast1` region (Montréal)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## October 31, 2017
 
 Feature
 
-Support for [`  asia-south1  ` region (Mumbai)](https://docs.cloud.google.com/datastore/docs/locations) .
+Support for [`asia-south1` region (Mumbai)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## September 05, 2017
 
 Feature
 
-Support for [`  southamerica-east1  ` region (São Paulo)](https://docs.cloud.google.com/datastore/docs/locations) .
+Support for [`southamerica-east1` region (São Paulo)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## August 30, 2017
 
@@ -3155,32 +3155,32 @@ Additions to the API definition:
       - [get](https://docs.cloud.google.com/datastore/docs/reference/rest/v1/projects.operations/get)
       - [list](https://docs.cloud.google.com/datastore/docs/reference/rest/v1/projects.operations/list)
 
-Additions to the `  gcloud  ` command-line tool effective in [version 169.0.0](https://docs.cloud.google.com/sdk/docs/release-notes#16900_2017-08-30) :
+Additions to the `gcloud` command-line tool effective in [version 169.0.0](https://docs.cloud.google.com/sdk/docs/release-notes#16900_2017-08-30) :
 
-  - `  gcloud beta datastore export  ` has been added to support exporting entities
-  - `  gcloud beta datastore import  ` has been added to support importing entities
-  - `  gcloud beta datastore operations cancel  ` has been added to support canceling long-running operations
-  - `  gcloud beta datastore operations delete  ` has been added to support deleting long-running operations
-  - `  gcloud beta datastore operations describe  ` has been added to support describing a completed long-running operation
-  - `  gcloud beta datastore operations list  ` has been added to support listing active long-running operations
+  - `gcloud beta datastore export` has been added to support exporting entities
+  - `gcloud beta datastore import` has been added to support importing entities
+  - `gcloud beta datastore operations cancel` has been added to support canceling long-running operations
+  - `gcloud beta datastore operations delete` has been added to support deleting long-running operations
+  - `gcloud beta datastore operations describe` has been added to support describing a completed long-running operation
+  - `gcloud beta datastore operations list` has been added to support listing active long-running operations
 
 ## August 01, 2017
 
 Feature
 
-Support for [`  europe-west3  ` region (Frankfurt)](https://docs.cloud.google.com/datastore/docs/locations) .
+Support for [`europe-west3` region (Frankfurt)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## July 18, 2017
 
 Feature
 
-Support for [`  australia-southeast1  ` region (Sydney)](https://docs.cloud.google.com/datastore/docs/locations) .
+Support for [`australia-southeast1` region (Sydney)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## June 06, 2017
 
 Feature
 
-Support for [`  europe-west2  ` region (London)](https://docs.cloud.google.com/datastore/docs/locations) .
+Support for [`europe-west2` region (London)](https://docs.cloud.google.com/datastore/docs/locations) .
 
 ## August 16, 2016
 
@@ -3192,8 +3192,8 @@ Change
 
 Error handling in Cloud Datastore API v1:
 
-  - Attempting to insert an entity that already exists will return error code `  ALREADY_EXISTS  ` . In v1beta3, it returned `  INVALID_ARGUMENT  ` .
-  - Attempting to update an entity that does not exist will return error code `  NOT_FOUND  ` . In v1beta3, it returned `  INVALID_ARGUMENT  ` .
+  - Attempting to insert an entity that already exists will return error code `ALREADY_EXISTS` . In v1beta3, it returned `INVALID_ARGUMENT` .
+  - Attempting to update an entity that does not exist will return error code `NOT_FOUND` . In v1beta3, it returned `INVALID_ARGUMENT` .
 
 Feature
 
@@ -3201,7 +3201,7 @@ Initial release of Cloud Datastore API v1.
 
 Change
 
-Message `  EntityResult  ` adds field `  version  ` as part of API v1 and API v1beta3.
+Message `EntityResult` adds field `version` as part of API v1 and API v1beta3.
 
 ## April 01, 2016
 
@@ -3209,96 +3209,96 @@ Change
 
   - Initial release of Cloud Datastore API v1beta3.
   - Changes to the API definition:
-      - The API is now defined in three proto files: `  entity.proto  ` , `  query.proto  ` , and `  datastore.proto  ` .
+      - The API is now defined in three proto files: `entity.proto` , `query.proto` , and `datastore.proto` .
       - The proto files now use proto3 syntax:
           - Maps are used for several fields (see below for details).
-          - All enums add a value with suffix `  _UNSPECIFIED  ` that is equal to 0.
-          - `  oneof  ` is used to prevent setting mutually-exclusive fields:
-              - Fields `  id  ` and `  name  ` in message `  PathElement  ` .
-              - The value fields in message `  Value  ` .
-              - Fields `  composite_filter  ` and `  property_filter  ` in type `  Filter  ` .
-              - Fields `  value  ` and `  cursor  ` in message `  GqlQueryParameter  ` .
-              - Fields `  upsert  ` , `  update  ` , `  upsert  ` , and `  delete  ` in message `  Mutation  ` .
-      - All request messages add a top-level field `  project_id  ` . This field is populated automatically for requests made over HTTP.
+          - All enums add a value with suffix `_UNSPECIFIED` that is equal to 0.
+          - `oneof` is used to prevent setting mutually-exclusive fields:
+              - Fields `id` and `name` in message `PathElement` .
+              - The value fields in message `Value` .
+              - Fields `composite_filter` and `property_filter` in type `Filter` .
+              - Fields `value` and `cursor` in message `GqlQueryParameter` .
+              - Fields `upsert` , `update` , `upsert` , and `delete` in message `Mutation` .
+      - All request messages add a top-level field `project_id` . This field is populated automatically for requests made over HTTP.
       - Several repeated fields now have plural names:
-          - In message `  CompositeFilter  ` , `  filter  ` is now `  filters  ` .
-          - In message `  QueryResultBatch  ` , `  entity_result  ` is now `  entity_results  ` .
-          - In message `  LookupRequest  ` , `  key  ` is now `  keys  ` .
-          - In message `  AllocateIdsRequest  ` , `  key  ` is now `  keys  ` .
-          - In message `  AllocateIdsResponse  ` , `  key  ` is now `  keys  ` .
+          - In message `CompositeFilter` , `filter` is now `filters` .
+          - In message `QueryResultBatch` , `entity_result` is now `entity_results` .
+          - In message `LookupRequest` , `key` is now `keys` .
+          - In message `AllocateIdsRequest` , `key` is now `keys` .
+          - In message `AllocateIdsResponse` , `key` is now `keys` .
       - The proto package name now includes the API version.
-      - In message `  PartitionId  ` :
-          - Field `  dataset_id  ` is now `  project_id  ` . `  project_id  ` never includes the app/project ID "prefix" (e.g. "s\~"). This fixes <https://github.com/GoogleCloudPlatform/google-cloud-datastore/issues/59> .
-          - Field `  namespace  ` is now `  namespace_id  ` .
-      - In message `  Key  ` , field `  path_element  ` is now `  path  ` .
-      - In message `  Value  ` :
-          - Null values are represented by explicitly setting field `  null_value  ` with type `  com.protobuf.NullValue  ` . This fixes <https://github.com/GoogleCloudPlatform/google-cloud-datastore/issues/41> .
-          - Field `  timestamp_microseconds_value  ` is now `  timestamp_value  ` with type `  google.protobuf.Timestamp  ` . In JSON, the field `  dateTimeValue  ` is now `  timestampValue  ` . This field is still limited to microsecond precision.
-          - Field `  blob_key_value  ` is removed. Values that previously populated that field in the v1beta1 or v1beta2 APIs will instead populate field `  string_value  ` in the v1beta3 API.
-          - Field `  geo_point_value  ` of type `  google.type.LatLng  ` is added.
-          - Repeated field `  list_value  ` is replaced with `  array_value  ` of type `  ArrayValue  ` .
-          - Field `  indexed  ` , which defaulted to true, is now `  exclude_from_indexes  ` , which defaults to false.
-      - Message `  Property  ` is removed. In message `  Entity  ` , repeated field `  property  ` is now field `  properties  ` which is a map from `  string  ` to `  Value  ` .
-      - Message `  PropertyExpression  ` is now `  Projection  ` .
-      - Message `  EntityResult  ` adds a field `  cursor  ` of type `  bytes  ` .
-      - In message `  Query  ` :
-          - Field `  group_by  ` is now `  distinct_on  ` .
-          - Field `  limit  ` is now of type `  google.protobuf.Int32Value  ` .
-      - In message `  PropertyExpression  ` , enum `  AggregationFunction  ` and field `  aggregation_function  ` are removed.
-      - In messages `  CompositeFilter  ` and `  PropertyFilter  ` , field `  operator  ` is now `  op  ` .
-      - In message `  GqlQuery  ` :
-          - Field `  allow_literal  ` is now `  allow_literals  ` .
-          - Repeated field `  name_arg  ` is now map field `  named_bindings  ` .
-          - Field `  number_arg  ` is now `  positional_bindings  ` .
-      - Message `  GqlQueryArg  ` is now `  GqlQueryParameter  ` . Field `  name  ` is removed.
-      - Enum `  MoreResultsType  ` adds a new value `  MORE_RESULTS_AFTER_CURSOR  ` .
-      - Message `  QueryResultBatch  ` adds field `  skipped_cursor  ` .
-      - In message `  Mutation  ` :
-          - A `  Mutation  ` now describes one change to one single entity. Its fields are no longer repeated.
-          - Field `  insert_auto_id  ` is removed. `  insert  ` and `  update  ` mutations now support auto ID allocation.
-          - Field `  force  ` is removed.
-      - In message `  MutationResult  ` :
-          - Field `  index_updates  ` is moved to message `  CommitResponse  ` .
-          - Repeated field `  insert_auto_id_key  ` is now `  key  ` and is no longer repeated.
-      - Message `  RunQueryResponse  ` adds field `  query  ` . When a `  RunQueryRequest  ` message sets field `  gql_query  ` , the `  RunQueryResponse  ` message sets field `  query  ` to the parsed form of the `  GqlQuery  ` message from the request.
-      - In message `  BeginTransactionRequest  ` , enum `  IsolationLevel  ` and field `  isolation_level  ` are removed. All transactions are now serializable.
-      - In message `  CommitRequest  ` , field `  mutation  ` is now repeated field `  mutations  ` .
-      - In message `  CommitResponse  ` , field `  mutation_result  ` is now repeated field `  mutation_results  ` .
+      - In message `PartitionId` :
+          - Field `dataset_id` is now `project_id` . `project_id` never includes the app/project ID "prefix" (e.g. "s\~"). This fixes <https://github.com/GoogleCloudPlatform/google-cloud-datastore/issues/59> .
+          - Field `namespace` is now `namespace_id` .
+      - In message `Key` , field `path_element` is now `path` .
+      - In message `Value` :
+          - Null values are represented by explicitly setting field `null_value` with type `com.protobuf.NullValue` . This fixes <https://github.com/GoogleCloudPlatform/google-cloud-datastore/issues/41> .
+          - Field `timestamp_microseconds_value` is now `timestamp_value` with type `google.protobuf.Timestamp` . In JSON, the field `dateTimeValue` is now `timestampValue` . This field is still limited to microsecond precision.
+          - Field `blob_key_value` is removed. Values that previously populated that field in the v1beta1 or v1beta2 APIs will instead populate field `string_value` in the v1beta3 API.
+          - Field `geo_point_value` of type `google.type.LatLng` is added.
+          - Repeated field `list_value` is replaced with `array_value` of type `ArrayValue` .
+          - Field `indexed` , which defaulted to true, is now `exclude_from_indexes` , which defaults to false.
+      - Message `Property` is removed. In message `Entity` , repeated field `property` is now field `properties` which is a map from `string` to `Value` .
+      - Message `PropertyExpression` is now `Projection` .
+      - Message `EntityResult` adds a field `cursor` of type `bytes` .
+      - In message `Query` :
+          - Field `group_by` is now `distinct_on` .
+          - Field `limit` is now of type `google.protobuf.Int32Value` .
+      - In message `PropertyExpression` , enum `AggregationFunction` and field `aggregation_function` are removed.
+      - In messages `CompositeFilter` and `PropertyFilter` , field `operator` is now `op` .
+      - In message `GqlQuery` :
+          - Field `allow_literal` is now `allow_literals` .
+          - Repeated field `name_arg` is now map field `named_bindings` .
+          - Field `number_arg` is now `positional_bindings` .
+      - Message `GqlQueryArg` is now `GqlQueryParameter` . Field `name` is removed.
+      - Enum `MoreResultsType` adds a new value `MORE_RESULTS_AFTER_CURSOR` .
+      - Message `QueryResultBatch` adds field `skipped_cursor` .
+      - In message `Mutation` :
+          - A `Mutation` now describes one change to one single entity. Its fields are no longer repeated.
+          - Field `insert_auto_id` is removed. `insert` and `update` mutations now support auto ID allocation.
+          - Field `force` is removed.
+      - In message `MutationResult` :
+          - Field `index_updates` is moved to message `CommitResponse` .
+          - Repeated field `insert_auto_id_key` is now `key` and is no longer repeated.
+      - Message `RunQueryResponse` adds field `query` . When a `RunQueryRequest` message sets field `gql_query` , the `RunQueryResponse` message sets field `query` to the parsed form of the `GqlQuery` message from the request.
+      - In message `BeginTransactionRequest` , enum `IsolationLevel` and field `isolation_level` are removed. All transactions are now serializable.
+      - In message `CommitRequest` , field `mutation` is now repeated field `mutations` .
+      - In message `CommitResponse` , field `mutation_result` is now repeated field `mutation_results` .
   - Changes to the JSON API:
       - Null values are now supported. This fixes <https://github.com/GoogleCloudPlatform/google-cloud-datastore/issues/41> .
       - Fields set to their default values are not included in responses, for example:
-          - Fields `  found  ` , `  missing  ` , and `  deferred  ` in message to `  LookupResponse  ` are not included when they are empty.
-          - Field `  entity_result  ` in message `  QueryResultBatch  ` is not included when it is empty.
-          - Field `  skipped_results  ` in message `  QueryResultBatch  ` is not included when it is 0.
-  - The API endpoint format has changed. For example, in v1beta2, a `  RunQuery  ` is sent to: `  https://www.googleapis.com/datastore/v1beta2/datasets/<dataset-id>/runQuery  ` In v1beta3, it is sent to: `  https://datastore.googleapis.com/v1beta3/projects/<project-id>:runQuery  `
+          - Fields `found` , `missing` , and `deferred` in message to `LookupResponse` are not included when they are empty.
+          - Field `entity_result` in message `QueryResultBatch` is not included when it is empty.
+          - Field `skipped_results` in message `QueryResultBatch` is not included when it is 0.
+  - The API endpoint format has changed. For example, in v1beta2, a `RunQuery` is sent to: `https://www.googleapis.com/datastore/v1beta2/datasets/<dataset-id>/runQuery` In v1beta3, it is sent to: `https://datastore.googleapis.com/v1beta3/projects/<project-id>:runQuery`
   - Account domain restrictions no longer apply when accessing the API. This fixes <https://github.com/GoogleCloudPlatform/google-cloud-datastore/issues/19> .
   - Errors:
-      - JSON errors add a `  status  ` field and remove the `  errors  ` list.
-      - Errors resulting from requests with a content type of `  application/x-protobuf  ` are now a serialized `  google.rpc.Status  ` message.
+      - JSON errors add a `status` field and remove the `errors` list.
+      - Errors resulting from requests with a content type of `application/x-protobuf` are now a serialized `google.rpc.Status` message.
   - Changes to GQL:
-      - In synthetic literal `  KEY  ` , `  DATASET  ` is now `  PROJECT  ` .
-      - The `  BLOBKEY  ` synthetic literal is removed.
-      - The `  FIRST  ` aggregator is removed.
-      - The `  GROUP BY  ` clause is replaced with `  DISTINCT ON  ` .
+      - In synthetic literal `KEY` , `DATASET` is now `PROJECT` .
+      - The `BLOBKEY` synthetic literal is removed.
+      - The `FIRST` aggregator is removed.
+      - The `GROUP BY` clause is replaced with `DISTINCT ON` .
       - Fully-qualified property names are now supported.
       - Query filters on timestamps prior to the epoch are now supported.
   - Empty array values are now supported.
   - Indexing and querying properties inside of entity values is now supported. Values inside entity values are indexed by default.
   - Key normalization:
-      - In `  Key  ` objects in `  RunQueryRequest  ` s, key normalization will never set `  partition_id.namespace_id  ` , as it previously did under some circumstances. If a key should reference that partition its `  partition_id.namespace_id  ` must be explicitly set.
-      - `  Key  ` objects with empty `  path  ` and empty or unset `  partition_id  ` are no longer normalized.
+      - In `Key` objects in `RunQueryRequest` s, key normalization will never set `partition_id.namespace_id` , as it previously did under some circumstances. If a key should reference that partition its `partition_id.namespace_id` must be explicitly set.
+      - `Key` objects with empty `path` and empty or unset `partition_id` are no longer normalized.
   - Writes of foreign partition IDs may now fail if the foreign project is not in an active state. For this reason, use of foreign partition IDs is discouraged.
-  - In a non-transactional `  Commit  ` requests, no two mutations may affect the same entity.
-  - In transactional `  Commit  ` requests, mutations affecting the same entity are applied in the order in which they appear in the request. Certain sequences of mutations affecting the same entity are not permitted.
-  - Field `  more_results  ` in message `  QueryResultBatch  ` is accurate in more cases. This fixes <https://github.com/GoogleCloudPlatform/google-cloud-datastore/issues/48> .
-  - The typical number of results returned by a call to `  RunQuery  ` is smaller due to a change in server-side batching. As before, clients should not rely on the batch size and instead use cursors to continue queries.
-  - Scope `  https://www.googleapis.com/auth/userinfo.email  ` is no longer required.
+  - In a non-transactional `Commit` requests, no two mutations may affect the same entity.
+  - In transactional `Commit` requests, mutations affecting the same entity are applied in the order in which they appear in the request. Certain sequences of mutations affecting the same entity are not permitted.
+  - Field `more_results` in message `QueryResultBatch` is accurate in more cases. This fixes <https://github.com/GoogleCloudPlatform/google-cloud-datastore/issues/48> .
+  - The typical number of results returned by a call to `RunQuery` is smaller due to a change in server-side batching. As before, clients should not rely on the batch size and instead use cursors to continue queries.
+  - Scope `https://www.googleapis.com/auth/userinfo.email` is no longer required.
   - The API works for projects that have an App Engine domain restriction. This fixes <https://github.com/GoogleCloudPlatform/google-cloud-datastore/issues/19> .
-  - `  gcd  ` tool:
-      - Options `  -d  ` , `  --dataset_id  ` , and `  --dataset_id_override  ` are now `  -p  ` , `  --project_id  ` , and `  --project_id_override  ` , respectively.
-      - Option `  --auth_mode  ` is removed. The `  updateindexes  ` and `  vacuumindexes  ` commands always use OAuth 2.0.
-      - Option `  --auto_generate_indexes  ` is now `  --store_index_configuration_on_disk  ` .
-      - Index configuration for new projects is now stored in a YAML file: `  <directory>/WEB-INF/index.yaml  ` . Index configuration for projects that previously used XML will continue to do so.
+  - `gcd` tool:
+      - Options `-d` , `--dataset_id` , and `--dataset_id_override` are now `-p` , `--project_id` , and `--project_id_override` , respectively.
+      - Option `--auth_mode` is removed. The `updateindexes` and `vacuumindexes` commands always use OAuth 2.0.
+      - Option `--auto_generate_indexes` is now `--store_index_configuration_on_disk` .
+      - Index configuration for new projects is now stored in a YAML file: `<directory>/WEB-INF/index.yaml` . Index configuration for projects that previously used XML will continue to do so.
 
 ## September 01, 2013
 
@@ -3306,12 +3306,12 @@ Change
 
   - Initial release of Cloud Datastore API v1beta2.
   - Changes to the API:
-      - `  BlindWrite  ` method merged into `  Commit  ` .
-      - Added `  list_value  ` to `  Value  ` and changed `  value  ` to a non-repeated field in `  Property  ` .
-      - In the JSON API, string constants are now uppercase and underscore-separated instead of camel-cased (e.g. `  LESS_THAN_OR_EQUAL  ` instead of `  lessThanOrEqual  ` ).
+      - `BlindWrite` method merged into `Commit` .
+      - Added `list_value` to `Value` and changed `value` to a non-repeated field in `Property` .
+      - In the JSON API, string constants are now uppercase and underscore-separated instead of camel-cased (e.g. `LESS_THAN_OR_EQUAL` instead of `lessThanOrEqual` ).
   - Changes to GQL:
-      - New synthetic literals: `  BLOB  ` , `  BLOBKEY  ` , `  DATETIME  ` , `  KEY  ` .
-      - Support for `  IS NULL  ` .
+      - New synthetic literals: `BLOB` , `BLOBKEY` , `DATETIME` , `KEY` .
+      - Support for `IS NULL` .
       - Fixed partition ID handling for binding arguments.
   - Fixed partition ID handling for query requests that include an explicit partition ID.
   - Fixed scopes in discovery document. This fixes <https://github.com/GoogleCloudPlatform/google-cloud-datastore/issues/9> .
@@ -3322,11 +3322,11 @@ Change
 
   - GQL support.
   - Metadata query support.
-  - `  gcd  ` tool:
-      - Microsoft Windows support ( `  gcd.cmd  ` ).
-      - Added testing mode option `  --testing  ` , which doesn't store data or index configuration on disk and supports fully-consistent non-ancestor queries. This option is useful for unit and integration tests.
-      - More intuitive `  update_indexes  ` command (renamed to `  updateindexes  ` ).
-      - New `  create  ` command and simplified `  start  ` command.
+  - `gcd` tool:
+      - Microsoft Windows support ( `gcd.cmd` ).
+      - Added testing mode option `--testing` , which doesn't store data or index configuration on disk and supports fully-consistent non-ancestor queries. This option is useful for unit and integration tests.
+      - More intuitive `update_indexes` command (renamed to `updateindexes` ).
+      - New `create` command and simplified `start` command.
       - Improved integration with existing App Engine applications.
 
 ## May 01, 2013

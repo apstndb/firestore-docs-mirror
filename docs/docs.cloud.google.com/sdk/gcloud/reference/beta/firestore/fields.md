@@ -4,24 +4,24 @@ gcloud beta firestore fields - manage field metadata for Cloud Firestore
 
 SYNOPSIS
 
-`  gcloud beta firestore fields  ` `  GROUP  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud beta firestore fields` `  GROUP  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (BETA)  ` Manage field metadata for Cloud Firestore.
+`(BETA)` Manage field metadata for Cloud Firestore.
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 GROUPS
 
 `  GROUP  ` is one of the following:
 
   - `  ttls  `  
-    `  (BETA)  ` Manage Time-to-live metadata for Cloud Firestore.
+    `(BETA)` Manage Time-to-live metadata for Cloud Firestore.
 
 NOTES
 

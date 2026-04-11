@@ -66,9 +66,9 @@ Android
 
 ## Behavior
 
-In order to use the `  collection_group(...)  ` stage, it must appear as the first stage in the pipeline.
+In order to use the `collection_group(...)` stage, it must appear as the first stage in the pipeline.
 
-The order of documents returned from the `  collection_group(...)  ` stage is unstable and cannot be relied upon. Firestore will attempt to execute the query in the most efficient way possible, which can change the order depending on the schema or index configuration. A subsequent `  sort(...)  ` stage can be used to obtain a deterministic ordering.
+The order of documents returned from the `collection_group(...)` stage is unstable and cannot be relied upon. Firestore will attempt to execute the query in the most efficient way possible, which can change the order depending on the schema or index configuration. A subsequent `sort(...)` stage can be used to obtain a deterministic ordering.
 
 For example, for the following documents:
 
@@ -79,7 +79,7 @@ For example, for the following documents:
     await db.collection("cities/CHI/departments").doc("building").set({name: "CHI Building Deparment", employees: 900});
     await db.collection("cities/NY/departments").doc("finance").set({name: "NY Finance Deparment", employees: 1200});
 
-The `  collection_group(...)  ` stage can be used to return documents from every departments collection across all parent collections in the database.
+The `collection_group(...)` stage can be used to return documents from every departments collection across all parent collections in the database.
 
 ### Node.js
 

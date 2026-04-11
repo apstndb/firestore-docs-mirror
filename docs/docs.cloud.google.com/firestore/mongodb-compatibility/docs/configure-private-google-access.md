@@ -64,25 +64,25 @@ The following table summarizes the different ways that you can configure Private
 </thead>
 <tbody>
 <tr class="odd">
-<td><p>Default domain ( <code dir="ltr" translate="no">        firestore.goog       </code> )</p>
-<p>The default domains are used when you don't configure DNS records for <code dir="ltr" translate="no">        restricted.firestore.goog       </code> .</p></td>
-<td><code dir="ltr" translate="no">       136.124.0.0/23      </code></td>
+<td><p>Default domain ( <code dir="ltr" translate="no">firestore.goog</code> )</p>
+<p>The default domains are used when you don't configure DNS records for <code dir="ltr" translate="no">restricted.firestore.goog</code> .</p></td>
+<td><code dir="ltr" translate="no">136.124.0.0/23</code></td>
 <td>You access the Firestore with MongoDB compatibility service through its public IP addresses, so no special DNS configuration is required.</td>
 <td><p>Check that your VPC network can route traffic to the IP address ranges that are used by the Firestore with MongoDB compatibility service.</p>
 <ul>
-<li><a href="https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access#config-routing-default">Basic configuration</a> : Confirm that you have default routes with next hop <code dir="ltr" translate="no">         default-internet-gateway        </code> and a destination range of <code dir="ltr" translate="no">         0.0.0.0/0        </code> . Create those routes if they are missing.</li>
-<li><a href="https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access#config-routing-custom">Custom configuration</a> : Create routes to the <code dir="ltr" translate="no">         136.124.0.0/23        </code> IP address range.</li>
+<li><a href="https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access#config-routing-default">Basic configuration</a> : Confirm that you have default routes with next hop <code dir="ltr" translate="no">default-internet-gateway</code> and a destination range of <code dir="ltr" translate="no">0.0.0.0/0</code> . Create those routes if they are missing.</li>
+<li><a href="https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access#config-routing-custom">Custom configuration</a> : Create routes to the <code dir="ltr" translate="no">136.124.0.0/23</code> IP address range.</li>
 </ul></td>
-<td><p>Check that your <a href="https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access#config-firewall">firewall rules</a> allow egress to the <code dir="ltr" translate="no">        136.124.0.0/23       </code> IP address range.</p>
+<td><p>Check that your <a href="https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access#config-firewall">firewall rules</a> allow egress to the <code dir="ltr" translate="no">136.124.0.0/23</code> IP address range.</p>
 <p>The default allow egress firewall rule allows this traffic, if there is no higher priority rule that blocks it.</p></td>
 </tr>
 <tr class="even">
-<td><p><code dir="ltr" translate="no">        restricted.firestore.goog       </code></p>
-<p>Use <code dir="ltr" translate="no">        restricted.firestore.goog       </code> to access the Firestore with MongoDB compatibility service by using a set of IP addresses only routable from within Google Cloud. Can be used in VPC Service Controls scenarios.</p></td>
-<td><code dir="ltr" translate="no">       199.36.153.2/31      </code></td>
-<td>Configure <a href="https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access#config-domain">DNS records</a> to send requests to the <code dir="ltr" translate="no">       199.36.153.2/31      </code> IP address range.</td>
-<td>Check that your VPC network has <a href="https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access#config-routing-custom">routes</a> to the <code dir="ltr" translate="no">       199.36.153.2/31      </code> IP address range.</td>
-<td>Check that your <a href="https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access#config-firewall">firewall rules</a> allow egress to the <code dir="ltr" translate="no">       199.36.153.2/31      </code> IP address range.</td>
+<td><p><code dir="ltr" translate="no">restricted.firestore.goog</code></p>
+<p>Use <code dir="ltr" translate="no">restricted.firestore.goog</code> to access the Firestore with MongoDB compatibility service by using a set of IP addresses only routable from within Google Cloud. Can be used in VPC Service Controls scenarios.</p></td>
+<td><code dir="ltr" translate="no">199.36.153.2/31</code></td>
+<td>Configure <a href="https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access#config-domain">DNS records</a> to send requests to the <code dir="ltr" translate="no">199.36.153.2/31</code> IP address range.</td>
+<td>Check that your VPC network has <a href="https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access#config-routing-custom">routes</a> to the <code dir="ltr" translate="no">199.36.153.2/31</code> IP address range.</td>
+<td>Check that your <a href="https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access#config-firewall">firewall rules</a> allow egress to the <code dir="ltr" translate="no">199.36.153.2/31</code> IP address range.</td>
 </tr>
 </tbody>
 </table>
@@ -93,27 +93,27 @@ This section describes how to configure your network to access the Firestore wit
 
 ### DNS configuration
 
-**Note:** There are public DNS records `  restricted.firestore.goog  ` . However, you can't use the public records when you configure Private Google Access. You must create a private DNS zone and records.
+**Note:** There are public DNS records `restricted.firestore.goog` . However, you can't use the public records when you configure Private Google Access. You must create a private DNS zone and records.
 
 Unlike other Google APIs, the Firestore with MongoDB compatibility API uses different domain names and IP addresses for Private Google Access:
 
-  - `  restricted.firestore.goog  ` enables API access to the Firestore with MongoDB compatibility API.
+  - `restricted.firestore.goog` enables API access to the Firestore with MongoDB compatibility API.
     
-      - IP addresses: `  199.36.153.2  ` and `  199.36.153.3  ` .
+      - IP addresses: `199.36.153.2` and `199.36.153.3` .
     
       - Because Firestore with MongoDB compatibility is compliant with VPC Service Controls, you can use this domain in VPC Service Controls scenarios.
 
 To create a DNS zone and records for Firestore with MongoDB compatibility:
 
-1.  Create a private DNS zone for `  firestore.goog  ` .
+1.  Create a private DNS zone for `firestore.goog` .
     
     Consider [creating a Cloud DNS private zone](https://cloud.google.com/dns/zones#create-private-zone) for this purpose.
 
-2.  In the `  firestore.goog  ` zone, create the following records:
+2.  In the `firestore.goog` zone, create the following records:
     
-    1.  An `  A  ` record for `  restricted.firestore.goog  ` that points to the following IP addresses: `  199.36.153.2  ` and `  199.36.153.3  ` .
+    1.  An `A` record for `restricted.firestore.goog` that points to the following IP addresses: `199.36.153.2` and `199.36.153.3` .
     
-    2.  A `  CNAME  ` record for `  *.firestore.goog  ` that points to `  restricted.firestore.goog  ` .
+    2.  A `CNAME` record for `*.firestore.goog` that points to `restricted.firestore.goog` .
     
     To create these records in Cloud DNS, see [add a record](https://cloud.google.com/dns/docs/records#add_a_record) .
 
@@ -121,22 +121,22 @@ To create a DNS zone and records for Firestore with MongoDB compatibility:
 
 Your VPC network must have appropriate routes whose next hops are the default internet gateway. Google Cloud doesn't support routing traffic to Google APIs and services through other VM instances or custom next hops. Despite being called *default internet gateway* , packets sent from VMs in your VPC network to Google APIs and services remain within Google's network.
 
-  - If you select the default domain option, your VM instances connect to the Firestore with MongoDB compatibility service using the following public IP address range: `  136.124.0.0/23  ` . These IP addresses are publicly routable, but the path from a VM in a VPC network to those addresses remains within Google's network.
+  - If you select the default domain option, your VM instances connect to the Firestore with MongoDB compatibility service using the following public IP address range: `136.124.0.0/23` . These IP addresses are publicly routable, but the path from a VM in a VPC network to those addresses remains within Google's network.
 
-  - Google doesn't publish routes on the internet to any of the IP addresses used by the `  restricted.firestore.goog  ` domain. Consequently, this domain can only be accessed by VMs in a VPC network or on-premises systems connected to a VPC network.
+  - Google doesn't publish routes on the internet to any of the IP addresses used by the `restricted.firestore.goog` domain. Consequently, this domain can only be accessed by VMs in a VPC network or on-premises systems connected to a VPC network.
 
 If your VPC network contains a [default route](https://cloud.google.com/vpc/docs/vpc#routingpacketsinternet) whose next hop is the default internet gateway, you can use that route to access the Firestore with MongoDB compatibility service, without needing to create custom routes. See [routing with a default route](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access#config-routing-default) for details.
 
-If you have replaced a default route (destination `  0.0.0.0/0  ` or `  ::0/0  ` ) with a custom route whose next hop is *not* the default internet gateway, you can meet the routing requirements for the Firestore with MongoDB compatibility service [using custom routing](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access#config-routing-custom) instead.
+If you have replaced a default route (destination `0.0.0.0/0` or `::0/0` ) with a custom route whose next hop is *not* the default internet gateway, you can meet the routing requirements for the Firestore with MongoDB compatibility service [using custom routing](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access#config-routing-custom) instead.
 
 #### Routing with a default route
 
-Each VPC network contains an IPv4 default route ( `  0.0.0.0/0  ` ) when it is created.
+Each VPC network contains an IPv4 default route ( `0.0.0.0/0` ) when it is created.
 
 The default route provides a path to the IP addresses for the following destinations:
 
-  - Default domain ( `  firestore.goog  ` ): `  136.124.0.0/23  `
-  - `  restricted.firestore.goog  ` : `  199.36.153.2/31  `
+  - Default domain ( `firestore.goog` ): `136.124.0.0/23`
+  - `restricted.firestore.goog` : `199.36.153.2/31`
 
 For Google Cloud console and Google Cloud CLI instructions on how to check the configuration of a default route in a given network, see [Configure Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access#config-routing-default) .
 
@@ -144,19 +144,19 @@ For Google Cloud console and Google Cloud CLI instructions on how to check the c
 
 As an alternative to a default route, you can use custom static routes, each having a more specific destination, and each using the default internet gateway next hop. The destination IP addresses for the routes depend on [the domain that you choose](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access#summary) :
 
-  - Default domain ( `  firestore.goog  ` ): `  136.124.0.0/23  `
-  - `  restricted.firestore.goog  ` : `  199.36.153.2/31  `
+  - Default domain ( `firestore.goog` ): `136.124.0.0/23`
+  - `restricted.firestore.goog` : `199.36.153.2/31`
 
 For Google Cloud console and Google Cloud CLI instructions on how to check the configuration of custom routes in a given network, see [Configure Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access#config-routing-custom) .
 
 ### Firewall configuration
 
-The firewall configuration of your VPC network must allow access from VMs to the IP addresses used by the Firestore with MongoDB compatibility service. The implied `  allow egress  ` rule satisfies this requirement.
+The firewall configuration of your VPC network must allow access from VMs to the IP addresses used by the Firestore with MongoDB compatibility service. The implied `allow egress` rule satisfies this requirement.
 
-In some firewall configurations, you need to create specific egress allow rules. For example, suppose you've created an egress deny rule that blocks traffic to all destinations ( `  0.0.0.0  ` for IPv4). In that case, you must create one egress allow firewall rule whose priority is higher than the egress deny rule for each IP address range used by the [the domain that you choose](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access#summary) :
+In some firewall configurations, you need to create specific egress allow rules. For example, suppose you've created an egress deny rule that blocks traffic to all destinations ( `0.0.0.0` for IPv4). In that case, you must create one egress allow firewall rule whose priority is higher than the egress deny rule for each IP address range used by the [the domain that you choose](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access#summary) :
 
-  - Default domain ( `  firestore.goog  ` : `  136.124.0.0/23  `
-  - `  restricted.firestore.goog  ` : `  199.36.153.2/31  `
+  - Default domain ( `firestore.goog` : `136.124.0.0/23`
+  - `restricted.firestore.goog` : `199.36.153.2/31`
 
 To create firewall rules, see [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewalls#creating_firewall_rules) . You can limit the VMs to which the firewall rules apply when you define [the target](https://cloud.google.com/vpc/docs/firewalls#rule_assignment) of each egress allow rule.
 

@@ -4,34 +4,34 @@ If a collection contains documents with sequential indexed values, Firestore lim
 
 #### Sequential indexed fields
 
-"Sequential indexed fields" means any collection of documents that contains a monotonically increasing or decreasing indexed field. In many cases, this means a `  timestamp  ` field, but any monotonically increasing or decreasing field value can trigger the write limit of 500 writes per second.
+"Sequential indexed fields" means any collection of documents that contains a monotonically increasing or decreasing indexed field. In many cases, this means a `timestamp` field, but any monotonically increasing or decreasing field value can trigger the write limit of 500 writes per second.
 
-For example, the limit applies to a collection of `  user  ` documents with indexed field `  userid  ` if the app assigns `  userid  ` values like so:
+For example, the limit applies to a collection of `user` documents with indexed field `userid` if the app assigns `userid` values like so:
 
-  - `  1281, 1282, 1283, 1284, 1285, ...  `
+  - `1281, 1282, 1283, 1284, 1285, ...`
 
-On the other hand, not all `  timestamp  ` fields trigger this limit. If a `  timestamp  ` field tracks randomly distributed values, the write limit does not apply. The actual value of the field does not matter either, only that the field is monotonically increasing or decreasing. For example, both of the following sets of monotonically increasing field values trigger the write limit:
+On the other hand, not all `timestamp` fields trigger this limit. If a `timestamp` field tracks randomly distributed values, the write limit does not apply. The actual value of the field does not matter either, only that the field is monotonically increasing or decreasing. For example, both of the following sets of monotonically increasing field values trigger the write limit:
 
-  - `  100000, 100001, 100002, 100003, ...  `
-  - `  0, 1, 2, 3, ...  `
+  - `100000, 100001, 100002, 100003, ...`
+  - `0, 1, 2, 3, ...`
 
 ## Sharding a timestamp field
 
-Assume your app uses a monotonically increasing `  timestamp  ` field. If your app doesn't use the `  timestamp  ` field in any queries, you can remove the 500 writes per second limit by not indexing the timestamp field. If you do require a `  timestamp  ` field for your queries, you can work around the limit by using *sharded timestamps* :
+Assume your app uses a monotonically increasing `timestamp` field. If your app doesn't use the `timestamp` field in any queries, you can remove the 500 writes per second limit by not indexing the timestamp field. If you do require a `timestamp` field for your queries, you can work around the limit by using *sharded timestamps* :
 
-1.  Add a `  shard  ` field alongside the `  timestamp  ` field. Use `  1..n  ` distinct values for the `  shard  ` field. This raises the write limit for the collection to `  500*n  ` , but you must aggregate `  n  ` queries.
-2.  Update your write logic to *randomly* assign a `  shard  ` value to each document.
+1.  Add a `shard` field alongside the `timestamp` field. Use `1..n` distinct values for the `shard` field. This raises the write limit for the collection to `500*n` , but you must aggregate `n` queries.
+2.  Update your write logic to *randomly* assign a `shard` value to each document.
 3.  Update your queries to aggregate the sharded result sets.
-4.  Disable single-field indexes for both the `  shard  ` field and the `  timestamp  ` field. Delete existing composite indexes that contain the `  timestamp  ` field.
-5.  Create new composite indexes to support your updated queries. The order of the fields in an index matters, and the `  shard  ` field must come before the `  timestamp  ` field. Any indexes that include the `  timestamp  ` field must also include the `  shard  ` field.
+4.  Disable single-field indexes for both the `shard` field and the `timestamp` field. Delete existing composite indexes that contain the `timestamp` field.
+5.  Create new composite indexes to support your updated queries. The order of the fields in an index matters, and the `shard` field must come before the `timestamp` field. Any indexes that include the `timestamp` field must also include the `shard` field.
 
-You should implement sharded timestamps only in use cases with sustained write rates above 500 writes per second. Otherwise, this is a pre-mature optimization. Sharding a `  timestamp  ` field removes the 500 writes per second restriction but with the trade-off of needing client-side query aggregations.
+You should implement sharded timestamps only in use cases with sustained write rates above 500 writes per second. Otherwise, this is a pre-mature optimization. Sharding a `timestamp` field removes the 500 writes per second restriction but with the trade-off of needing client-side query aggregations.
 
-The following examples show how to shard a `  timestamp  ` field and how to query a sharded result set.
+The following examples show how to shard a `timestamp` field and how to query a sharded result set.
 
 ### Example data model and queries
 
-As an example, imagine an app for near real-time analysis of financial instruments like currencies, common stocks, and ETFs. This app writes documents to an `  instruments  ` collection like so:
+As an example, imagine an app for near real-time analysis of financial instruments like currencies, common stocks, and ETFs. This app writes documents to an `instruments` collection like so:
 
 ##### Node.js
 
@@ -82,7 +82,7 @@ As an example, imagine an app for near real-time analysis of financial instrumen
     }
     nonShardedTimestamps.js
 
-This app runs the following queries and orders by the `  timestamp  ` field:
+This app runs the following queries and orders by the `timestamp` field:
 
 ##### Node.js
 
@@ -139,11 +139,11 @@ This app runs the following queries and orders by the `  timestamp  ` field:
           return Promise.all([commonStock, exchange1Instruments, usdInstruments]);
         });nonShardedTimestamps.js
 
-After some research, you determine that the app will receive between 1,000 and 1,500 instrument updates per second. This surpasses the 500 writes per second allowed for collections containing documents with indexed timestamp fields. To increase the write throughput, you need 3 shard values, `  MAX_INSTRUMENT_UPDATES/500 = 3  ` . This example uses the shard values `  x  ` , `  y  ` , and `  z  ` . You can also use numbers or other characters for your shard values.
+After some research, you determine that the app will receive between 1,000 and 1,500 instrument updates per second. This surpasses the 500 writes per second allowed for collections containing documents with indexed timestamp fields. To increase the write throughput, you need 3 shard values, `MAX_INSTRUMENT_UPDATES/500 = 3` . This example uses the shard values `x` , `y` , and `z` . You can also use numbers or other characters for your shard values.
 
 ### Adding a shard field
 
-Add a `  shard  ` field to your documents. Set the `  shard  ` field to values `  x  ` , `  y  ` , or `  z  ` which raises the write limit on the collection to 1,500 writes per second.
+Add a `shard` field to your documents. Set the `shard` field to values `x` , `y` , or `z` which raises the write limit on the collection to 1,500 writes per second.
 
 ##### Node.js
 
@@ -223,7 +223,7 @@ Add a `  shard  ` field to your documents. Set the `  shard  ` field to values `
 
 ### Querying the sharded timestamp
 
-Adding a `  shard  ` field requires that you update your queries to aggregate sharded results:
+Adding a `shard` field requires that you update your queries to aggregate sharded results:
 
 ##### Node.js
 
@@ -322,7 +322,7 @@ Adding a `  shard  ` field requires that you update your queries to aggregate sh
 
 ### Update index definitions
 
-To remove the 500 writes per second constraint, delete the existing single-field and composite indexes that use the `  timestamp  ` field.
+To remove the 500 writes per second constraint, delete the existing single-field and composite indexes that use the `timestamp` field.
 
 #### Delete composite index definitions
 
@@ -332,7 +332,7 @@ To remove the 500 writes per second constraint, delete the existing single-field
     
     [Go to Composite Indexes](https://console.firebase.google.com/project/_/firestore/indexes)
 
-2.  For each index that contains the `  timestamp  ` field, click the more\_vert button and click ***Delete*** .
+2.  For each index that contains the `timestamp` field, click the more\_vert button and click ***Delete*** .
 
 ### GCP Console
 
@@ -344,17 +344,17 @@ To remove the 500 writes per second constraint, delete the existing single-field
 
 3.  In the navigation menu, click **Indexes** , and then click the **Composite** tab.
 
-4.  Use the **Filter** field to search for index definitions that contain the `  timestamp  ` field.
+4.  Use the **Filter** field to search for index definitions that contain the `timestamp` field.
 
 5.  For each of these indexes, click the more\_vert button and click ***Delete*** .
 
 ### Firebase CLI
 
-1.  If you haven't set up the Firebase CLI, [follow these direction to install the CLI and run the `  firebase init  ` command](https://firebase.google.com/docs/cli#install_the_firebase_cli) . During the `  init  ` command, make sure to select `  Firestore: Deploy rules and create indexes for Firestore  ` .
+1.  If you haven't set up the Firebase CLI, [follow these direction to install the CLI and run the `firebase init` command](https://firebase.google.com/docs/cli#install_the_firebase_cli) . During the `init` command, make sure to select `Firestore: Deploy rules and create indexes for Firestore` .
 
-2.  During setup, the Firebase CLI downloads your existing index definitions to a file named, by default, `  firestore.indexes.json  ` .
+2.  During setup, the Firebase CLI downloads your existing index definitions to a file named, by default, `firestore.indexes.json` .
 
-3.  Remove any index definitions that contain the `  timestamp  ` field, for example:
+3.  Remove any index definitions that contain the `timestamp` field, for example:
     
         {
         "indexes": [
@@ -418,7 +418,7 @@ To remove the 500 writes per second constraint, delete the existing single-field
 
 2.  Click ***Add Exemption*** .
 
-3.  For ***Collection ID*** , enter `  instruments  ` . For ***Field path*** , enter `  timestamp  ` .
+3.  For ***Collection ID*** , enter `instruments` . For ***Field path*** , enter `timestamp` .
 
 4.  Under ***Query scope*** , select both ***Collection*** and ***Collection group*** .
 
@@ -426,7 +426,7 @@ To remove the 500 writes per second constraint, delete the existing single-field
 
 6.  Toggle all the index settings to ***Disabled*** . Click ***Save*** .
 
-7.  Repeat the same steps for the `  shard  ` field.
+7.  Repeat the same steps for the `shard` field.
 
 ### GCP Console
 
@@ -442,7 +442,7 @@ To remove the 500 writes per second constraint, delete the existing single-field
 
 5.  Click ***Add Exemption*** .
 
-6.  For ***Collection ID*** , enter `  instruments  ` . For ***Field path*** , enter `  timestamp  ` .
+6.  For ***Collection ID*** , enter `instruments` . For ***Field path*** , enter `timestamp` .
 
 7.  Under ***Query scope*** , select both ***Collection*** and ***Collection group*** .
 
@@ -450,11 +450,11 @@ To remove the 500 writes per second constraint, delete the existing single-field
 
 9.  Toggle all the index settings to ***Disabled*** . Click ***Save*** .
 
-10. Repeat the same steps for the `  shard  ` field.
+10. Repeat the same steps for the `shard` field.
 
 ### Firebase CLI
 
-1.  Add the following to the `  fieldOverrides  ` section of your index definitions file:
+1.  Add the following to the `fieldOverrides` section of your index definitions file:
     
         {
          "fieldOverrides": [
@@ -473,7 +473,7 @@ To remove the 500 writes per second constraint, delete the existing single-field
 
 ### Create new composite indexes
 
-After removing all the previous indexes containing the `  timestamp  ` , define the new indexes that your app requires. Any index containing the `  timestamp  ` field must also contain the `  shard  ` field. For example, to support the queries above, add the following indexes:
+After removing all the previous indexes containing the `timestamp` , define the new indexes that your app requires. Any index containing the `timestamp` field must also contain the `shard` field. For example, to support the queries above, add the following indexes:
 
 | Collection  | Fields indexed                                                                 | Query scope |
 | ----------- | ------------------------------------------------------------------------------ | ----------- |

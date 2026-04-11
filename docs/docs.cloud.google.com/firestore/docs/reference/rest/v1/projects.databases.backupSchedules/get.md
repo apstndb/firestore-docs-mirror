@@ -97,7 +97,7 @@ eu
 us
 
   
-`  GET https://firestore.googleapis.com/v1/{name=projects/*/databases/*/backupSchedules/*}  `
+`GET https://firestore.googleapis.com/v1/{name=projects/*/databases/*/backupSchedules/*}`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -105,13 +105,13 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
 Required. The name of the backup schedule.
 
-Format `  projects/{project}/databases/{database}/backupSchedules/{backupSchedule}  `
+Format `projects/{project}/databases/{database}/backupSchedules/{backupSchedule}`
 
 ### Request body
 
@@ -125,7 +125,7 @@ If successful, the response body contains an instance of `  BackupSchedule  ` .
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

@@ -120,7 +120,7 @@ eu
 us
 
   
-`  POST https://datastore.googleapis.com/v1/projects/{projectId}:runAggregationQuery  `
+`POST https://datastore.googleapis.com/v1/projects/{projectId}:runAggregationQuery`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -128,9 +128,9 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  projectId  `
+`projectId`
 
-`  string  `
+`string`
 
 Required. The ID of the project against which to make the request.
 
@@ -149,70 +149,50 @@ The request body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;databaseId&quot;: string,
-  &quot;partitionId&quot;: {
-    object (PartitionId)
-  },
-  &quot;readOptions&quot;: {
-    object (ReadOptions)
-  },
-  &quot;explainOptions&quot;: {
-    object (ExplainOptions)
-  },
-
-  // Union field query_type can be only one of the following:
-  &quot;aggregationQuery&quot;: {
-    object (AggregationQuery)
-  },
-  &quot;gqlQuery&quot;: {
-    object (GqlQuery)
-  }
-  // End of list of possible types for union field query_type.
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;databaseId&quot;: string,&quot;partitionId&quot;: {object (PartitionId)},&quot;readOptions&quot;: {object (ReadOptions)},&quot;explainOptions&quot;: {object (ExplainOptions)},// Union field query_type can be only one of the following:&quot;aggregationQuery&quot;: {object (AggregationQuery)},&quot;gqlQuery&quot;: {object (GqlQuery)}// End of list of possible types for union field query_type.}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  databaseId  `
+`databaseId`
 
-`  string  `
+`string`
 
 The ID of the database against which to make the request.
 
 '(default)' is not allowed; please use empty string '' to refer the default database.
 
-`  partitionId  `
+`partitionId`
 
-`  object ( PartitionId  ` )
+` object ( PartitionId  ` )
 
 Entities are partitioned into subsets, identified by a partition ID. Queries are scoped to a single partition. This partition ID is normalized with the standard default context partition ID.
 
-`  readOptions  `
+`readOptions`
 
-`  object ( ReadOptions  ` )
+` object ( ReadOptions  ` )
 
 The options for this query.
 
-`  explainOptions  `
+`explainOptions`
 
-`  object ( ExplainOptions  ` )
+` object ( ExplainOptions  ` )
 
 Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only query results will be returned.
 
-Union field `  query_type  ` . The type of query. `  query_type  ` can be only one of the following:
+Union field `query_type` . The type of query. `query_type` can be only one of the following:
 
-`  aggregationQuery  `
+`aggregationQuery`
 
-`  object ( AggregationQuery  ` )
+` object ( AggregationQuery  ` )
 
 The query to run.
 
-`  gqlQuery  `
+`gqlQuery`
 
-`  object ( GqlQuery  ` )
+` object ( GqlQuery  ` )
 
 The GQL query to run. This query must be an aggregation query.
 
@@ -233,39 +213,28 @@ If successful, the response body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;batch&quot;: {
-    object (AggregationResultBatch)
-  },
-  &quot;query&quot;: {
-    object (AggregationQuery)
-  },
-  &quot;transaction&quot;: string,
-  &quot;explainMetrics&quot;: {
-    object (ExplainMetrics)
-  }
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;batch&quot;: {object (AggregationResultBatch)},&quot;query&quot;: {object (AggregationQuery)},&quot;transaction&quot;: string,&quot;explainMetrics&quot;: {object (ExplainMetrics)}}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  batch  `
+`batch`
 
-`  object ( AggregationResultBatch  ` )
+` object ( AggregationResultBatch  ` )
 
 A batch of aggregation results. Always present.
 
-`  query  `
+`query`
 
-`  object ( AggregationQuery  ` )
+` object ( AggregationQuery  ` )
 
-The parsed form of the `  GqlQuery  ` from the request, if it was set.
+The parsed form of the `GqlQuery` from the request, if it was set.
 
-`  transaction  `
+`transaction`
 
-`  string ( bytes format)  `
+`string ( bytes format)`
 
 The identifier of the transaction that was started as part of this projects.runAggregationQuery request.
 
@@ -273,9 +242,9 @@ Set only when `  ReadOptions.new_transaction  ` was set in `  RunAggregationQuer
 
 A base64-encoded string.
 
-`  explainMetrics  `
+`explainMetrics`
 
-`  object ( ExplainMetrics  ` )
+` object ( ExplainMetrics  ` )
 
 Query explain metrics. This is only present when the `  RunAggregationQueryRequest.explain_options  ` is provided, and it is sent only once with the last response in the stream.
 
@@ -283,8 +252,8 @@ Query explain metrics. This is only present when the `  RunAggregationQueryReque
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .
 
@@ -303,40 +272,28 @@ Datastore query for running an aggregation over a `  Query  ` .
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;aggregations&quot;: [
-    {
-      object (Aggregation)
-    }
-  ],
-
-  // Union field query_type can be only one of the following:
-  &quot;nestedQuery&quot;: {
-    object (Query)
-  }
-  // End of list of possible types for union field query_type.
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;aggregations&quot;: [{object (Aggregation)}],// Union field query_type can be only one of the following:&quot;nestedQuery&quot;: {object (Query)}// End of list of possible types for union field query_type.}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  aggregations[]  `
+`aggregations[]`
 
-`  object ( Aggregation  ` )
+` object ( Aggregation  ` )
 
-Optional. Series of aggregations to apply over the results of the `  nestedQuery  ` .
+Optional. Series of aggregations to apply over the results of the `nestedQuery` .
 
 Requires:
 
   - A minimum of one and maximum of five aggregations per query.
 
-Union field `  query_type  ` . The base query to aggregate over. `  query_type  ` can be only one of the following:
+Union field `query_type` . The base query to aggregate over. `query_type` can be only one of the following:
 
-`  nestedQuery  `
+`nestedQuery`
 
-`  object ( Query  ` )
+` object ( Query  ` )
 
 Nested query for aggregation
 
@@ -355,34 +312,20 @@ Defines an aggregation that produces a single result.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;alias&quot;: string,
-
-  // Union field operator can be only one of the following:
-  &quot;count&quot;: {
-    object (Count)
-  },
-  &quot;sum&quot;: {
-    object (Sum)
-  },
-  &quot;avg&quot;: {
-    object (Avg)
-  }
-  // End of list of possible types for union field operator.
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;alias&quot;: string,// Union field operator can be only one of the following:&quot;count&quot;: {object (Count)},&quot;sum&quot;: {object (Sum)},&quot;avg&quot;: {object (Avg)}// End of list of possible types for union field operator.}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  alias  `
+`alias`
 
-`  string  `
+`string`
 
 Optional. Optional name of the property to store the result of the aggregation.
 
-If not provided, Datastore will pick a default name following the format `  property_<incremental_id++>  ` . For example:
+If not provided, Datastore will pick a default name following the format `property_<incremental_id++>` . For example:
 
     AGGREGATE
       COUNT_UP_TO(1) AS count_up_to_1,
@@ -409,23 +352,23 @@ Requires:
   - Must be unique across all aggregation aliases.
   - Conform to `  entity property name  ` limitations.
 
-Union field `  operator  ` . The type of aggregation to perform, required. `  operator  ` can be only one of the following:
+Union field `operator` . The type of aggregation to perform, required. `operator` can be only one of the following:
 
-`  count  `
+`count`
 
-`  object ( Count  ` )
+` object ( Count  ` )
 
 Count aggregator.
 
-`  sum  `
+`sum`
 
-`  object ( Sum  ` )
+` object ( Sum  ` )
 
 Sum aggregator.
 
-`  avg  `
+`avg`
 
-`  object ( Avg  ` )
+` object ( Avg  ` )
 
 Average aggregator.
 
@@ -433,7 +376,7 @@ Average aggregator.
 
 Count of entities that match the query.
 
-The `  COUNT(*)  ` aggregation function operates on the entire entity so it does not require a field reference.
+The `COUNT(*)` aggregation function operates on the entire entity so it does not require a field reference.
 
 <table>
 <colgroup>
@@ -455,9 +398,9 @@ The `  COUNT(*)  ` aggregation function operates on the entire entity so it does
 
 Fields
 
-`  upTo  `
+`upTo`
 
-`  string ( Int64Value format)  `
+`string ( Int64Value format)`
 
 Optional. Optional constraint on the maximum number of entities to count.
 
@@ -479,9 +422,9 @@ Requires:
 
 Sum of the values of the requested property.
 
-  - Only numeric values will be aggregated. All non-numeric values including `  NULL  ` are skipped.
+  - Only numeric values will be aggregated. All non-numeric values including `NULL` are skipped.
 
-  - If the aggregated values contain `  NaN  ` , returns `  NaN  ` . Infinity math follows IEEE-754 standards.
+  - If the aggregated values contain `NaN` , returns `NaN` . Infinity math follows IEEE-754 standards.
 
   - If the aggregated value set is empty, returns 0.
 
@@ -500,20 +443,16 @@ Sum of the values of the requested property.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;property&quot;: {
-    object (PropertyReference)
-  }
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;property&quot;: {object (PropertyReference)}}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  property  `
+`property`
 
-`  object ( PropertyReference  ` )
+` object ( PropertyReference  ` )
 
 The property to aggregate on.
 
@@ -521,11 +460,11 @@ The property to aggregate on.
 
 Average of the values of the requested property.
 
-  - Only numeric values will be aggregated. All non-numeric values including `  NULL  ` are skipped.
+  - Only numeric values will be aggregated. All non-numeric values including `NULL` are skipped.
 
-  - If the aggregated values contain `  NaN  ` , returns `  NaN  ` . Infinity math follows IEEE-754 standards.
+  - If the aggregated values contain `NaN` , returns `NaN` . Infinity math follows IEEE-754 standards.
 
-  - If the aggregated value set is empty, returns `  NULL  ` .
+  - If the aggregated value set is empty, returns `NULL` .
 
   - Always returns the result as a double.
 
@@ -540,20 +479,16 @@ Average of the values of the requested property.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;property&quot;: {
-    object (PropertyReference)
-  }
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;property&quot;: {object (PropertyReference)}}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  property  `
+`property`
 
-`  object ( PropertyReference  ` )
+` object ( PropertyReference  ` )
 
 The property to aggregate on.
 
@@ -572,48 +507,40 @@ A batch of aggregation results produced by an aggregation query.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;aggregationResults&quot;: [
-    {
-      object (AggregationResult)
-    }
-  ],
-  &quot;moreResults&quot;: enum (MoreResultsType),
-  &quot;readTime&quot;: string
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;aggregationResults&quot;: [{object (AggregationResult)}],&quot;moreResults&quot;: enum (MoreResultsType),&quot;readTime&quot;: string}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  aggregationResults[]  `
+`aggregationResults[]`
 
-`  object ( AggregationResult  ` )
+` object ( AggregationResult  ` )
 
 The aggregation results for this batch.
 
-`  moreResults  `
+`moreResults`
 
-`  enum ( MoreResultsType  ` )
+` enum ( MoreResultsType  ` )
 
-The state of the query after the current batch. Only COUNT(\*) aggregations are supported in the initial launch. Therefore, expected result type is limited to `  NO_MORE_RESULTS  ` .
+The state of the query after the current batch. Only COUNT(\*) aggregations are supported in the initial launch. Therefore, expected result type is limited to `NO_MORE_RESULTS` .
 
-`  readTime  `
+`readTime`
 
-`  string ( Timestamp  ` format)
+` string ( Timestamp  ` format)
 
 Read timestamp this batch was returned from.
 
 In a single transaction, subsequent query result batches for the same query can have a greater timestamp. Each batch's read timestamp is valid for all preceding batches.
 
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `  "2014-10-02T15:01:23Z"  ` , `  "2014-10-02T15:01:23.045123456Z"  ` or `  "2014-10-02T15:01:23+05:30"  ` .
+Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .
 
 ## AggregationResult
 
 The result of a single bucket from a Datastore aggregation query.
 
-The keys of `  aggregateProperties  ` are the same for all results in an aggregation query, unlike entity queries which can have different fields present for each result.
+The keys of `aggregateProperties` are the same for all results in an aggregation query, unlike entity queries which can have different fields present for each result.
 
 <table>
 <colgroup>
@@ -626,26 +553,19 @@ The keys of `  aggregateProperties  ` are the same for all results in an aggrega
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;aggregateProperties&quot;: {
-    string: {
-      object (Value)
-    },
-    ...
-  }
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;aggregateProperties&quot;: {string: {object (Value)},...}}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  aggregateProperties  `
+`aggregateProperties`
 
-`  map (key: string, value: object ( Value  ` ))
+` map (key: string, value: object ( Value  ` ))
 
-The result of the aggregation functions, ex: `  COUNT(*) AS total_entities  ` .
+The result of the aggregation functions, ex: `COUNT(*) AS total_entities` .
 
 The key is the `  alias  ` assigned to the aggregation function on input and the size of this map equals the number of aggregation functions in the query.
 
-An object containing a list of `  "key": value  ` pairs. Example: `  { "name": "wrench", "mass": "1.3kg", "count": "3" }  ` .
+An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }` .

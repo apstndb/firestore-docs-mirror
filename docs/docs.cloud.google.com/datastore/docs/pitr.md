@@ -16,7 +16,7 @@ You can read data for a timestamp based on when PITR was enabled:
 
 **Note:** You can't start reading from seven days in the past immediately after you enable PITR.
 
-A single version per minute is retained in the PITR window. You can read documents at minute granularity using a whole minute timestamp. Only one version of a document is retained in case of multiple writes. For example, if a document had multiple writes ranging from `  v1, v2, ... vk  ` between `  2023-05-30 09:00:00AM  ` (exclusive) and `  2023-05-30 09:01:00AM  ` (inclusive) timestamp, a read request at timestamp `  2023-05-30 09:01:00AM  ` returns the `  vk  ` version of the document.
+A single version per minute is retained in the PITR window. You can read documents at minute granularity using a whole minute timestamp. Only one version of a document is retained in case of multiple writes. For example, if a document had multiple writes ranging from `v1, v2, ... vk` between `2023-05-30 09:00:00AM` (exclusive) and `2023-05-30 09:01:00AM` (inclusive) timestamp, a read request at timestamp `2023-05-30 09:01:00AM` returns the `vk` version of the document.
 
 You can read from the data created during the PITR window. The data is stored at a minute granularity and you can recover data at the same granularity. Datastore mode PITR feature is disabled by default.
 
@@ -36,7 +36,7 @@ There are two ways to recover data:
     
       - [Export](https://docs.cloud.google.com/datastore/docs/use-pitr#export-import) the database and specify a timestamp in the past and then import it to a new database. The PITR export operation supports all filters, including export of all entities and export of specific kinds and namespaces.
     
-    You can clone or export PITR data where the timestamp is a whole minute timestamp within the past seven days, but not earlier than the `  earliestVersionTime  ` .
+    You can clone or export PITR data where the timestamp is a whole minute timestamp within the past seven days, but not earlier than the `earliestVersionTime` .
 
 ## Pricing
 

@@ -106,7 +106,7 @@ eu
 us
 
   
-`  GET https://datastore.googleapis.com/v1/projects/{projectId}/indexes  `
+`GET https://datastore.googleapis.com/v1/projects/{projectId}/indexes`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -114,9 +114,9 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  projectId  `
+`projectId`
 
-`  string  `
+`string`
 
 Project ID against which to make the request.
 
@@ -124,19 +124,19 @@ Project ID against which to make the request.
 
 Parameters
 
-`  filter  `
+`filter`
 
-`  string  `
+`string`
 
-`  pageSize  `
+`pageSize`
 
-`  integer  `
+`integer`
 
 The maximum number of items to return. If zero, then all results will be returned.
 
-`  pageToken  `
+`pageToken`
 
-`  string  `
+`string`
 
 The nextPageToken value returned from a previous List request, if any.
 
@@ -161,29 +161,22 @@ If successful, the response body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;indexes&quot;: [
-    {
-      object (Index)
-    }
-  ],
-  &quot;nextPageToken&quot;: string
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;indexes&quot;: [{object (Index)}],&quot;nextPageToken&quot;: string}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  indexes[]  `
+`indexes[]`
 
-`  object ( Index  ` )
+` object ( Index  ` )
 
 The indexes.
 
-`  nextPageToken  `
+`nextPageToken`
 
-`  string  `
+`string`
 
 The standard List next-page token.
 
@@ -191,7 +184,7 @@ The standard List next-page token.
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

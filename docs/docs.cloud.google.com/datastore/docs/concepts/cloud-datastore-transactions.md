@@ -206,7 +206,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
       end
     end
 
-Note that in order to keep our examples more succinct we sometimes omit the `  rollback  ` if the transaction fails. In production code it is important to ensure that every transaction is either explicitly committed or rolled back.
+Note that in order to keep our examples more succinct we sometimes omit the `rollback` if the transaction fails. In production code it is important to ensure that every transaction is either explicitly committed or rolled back.
 
 ## What can be done in a transaction
 
@@ -224,7 +224,7 @@ This consistent snapshot view also extends to reads after writes inside transact
 
 ## Uses for transactions
 
-One use of transactions is updating an entity with a new property value relative to its current value. The `  transferFunds  ` example above does that for two entities, by withdrawing money from one account and transferring it to another. The Datastore API does not automatically retry transactions, but you can add your own logic to retry them, for instance to handle conflicts when another request updates the same entity at the same time.
+One use of transactions is updating an entity with a new property value relative to its current value. The `transferFunds` example above does that for two entities, by withdrawing money from one account and transferring it to another. The Datastore API does not automatically retry transactions, but you can add your own logic to retry them, for instance to handle conflicts when another request updates the same entity at the same time.
 
 ### C\#
 
@@ -406,7 +406,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
       end
     end
 
-This requires a transaction because the value of `  balance  ` in an entity may be updated by another user after this code fetches the object, but before it saves the modified object. Without a transaction, the user's request uses the value of `  balance  ` prior to the other user's update, and the save overwrites the new value. With a transaction, the application is told about the other user's update.
+This requires a transaction because the value of `balance` in an entity may be updated by another user after this code fetches the object, but before it saves the modified object. Without a transaction, the user's request uses the value of `balance` prior to the other user's update, and the save overwrites the new value. With a transaction, the application is told about the other user's update.
 
 Another common use for transactions is to fetch an entity with a named key, or create it if it doesn't yet exist (this example builds on the TaskList example from [creating an entity](https://docs.cloud.google.com/datastore/docs/concepts/entities#creating_an_entity) ):
 
@@ -719,7 +719,7 @@ An entity group is a set of entities connected through ancestry to a common root
     
     **Warning:** Exceeding the write throughput limit of one transaction per second within a single entity group can lead to read and write contention on all entity groups involved in your transactions.
 
-In many applications, it is acceptable to use eventual consistency (i.e. a non-ancestor query spanning multiple entity groups, which may at times return slightly stale data) when obtaining a broad view of unrelated data, and then to use strong consistency (an ancestor query, or a `  lookup  ` of a single entity) when viewing or editing a single set of highly related data. In such applications, it is usually a good approach to use a separate entity group for each set of highly related data. For more information, see [Data Consistency](https://docs.cloud.google.com/datastore/docs/concepts/structuring_for_strong_consistency) .
+In many applications, it is acceptable to use eventual consistency (i.e. a non-ancestor query spanning multiple entity groups, which may at times return slightly stale data) when obtaining a broad view of unrelated data, and then to use strong consistency (an ancestor query, or a `lookup` of a single entity) when viewing or editing a single set of highly related data. In such applications, it is usually a good approach to use a separate entity group for each set of highly related data. For more information, see [Data Consistency](https://docs.cloud.google.com/datastore/docs/concepts/structuring_for_strong_consistency) .
 
 **Note:** Avoid storing sensitive information in the entity group key. Entity group keys may be retained after the entity group is deleted in order to provide fast and reliable service across Datastore.
 

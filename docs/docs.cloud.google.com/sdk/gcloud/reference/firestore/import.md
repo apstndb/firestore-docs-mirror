@@ -4,7 +4,7 @@ gcloud firestore import - import Cloud Firestore documents from Google Cloud Sto
 
 SYNOPSIS
 
-`  gcloud firestore import  ` `  INPUT_URI_PREFIX  ` \[ `  --async  ` \] \[ `  --collection-ids  ` =\[ `  COLLECTION_GROUP_IDS  ` , …\]\] \[ `  --database  ` = `  DATABASE  ` ; default="(default)"\] \[ `  --namespace-ids  ` =\[ `  NAMESPACE_IDS  ` , …\]\] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud firestore import` `  INPUT_URI_PREFIX  ` \[ `  --async  ` \] \[ `  --collection-ids  ` =\[ `  COLLECTION_GROUP_IDS  ` , …\]\] \[ `  --database  ` = `  DATABASE  ` ; default="(default)"\] \[ `  --namespace-ids  ` =\[ `  NAMESPACE_IDS  ` , …\]\] \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
@@ -12,7 +12,7 @@ import Cloud Firestore documents from Google Cloud Storage.
 
 EXAMPLES
 
-To import all collection groups from `  mybucket/my/path  ` , run:
+To import all collection groups from `mybucket/my/path` , run:
 
 ``` wrap-code
 gcloud firestore import gs://mybucket/my/path
@@ -21,8 +21,7 @@ gcloud firestore import gs://mybucket/my/path
 To import a specific set of collections groups asynchronously, run:
 
 ``` wrap-code
-gcloud firestore import gs://mybucket/my/path --collection-ids='specific collection group1','specific
- collection group2' --async
+gcloud firestore import gs://mybucket/my/path --collection-ids='specific collection group1','specific collection group2' --async
 ```
 
 To import all collection groups from certain namespace, run:
@@ -40,33 +39,33 @@ POSITIONAL ARGUMENTS
 
 FLAGS
 
-  - `  --async  `  
+  - `--async`  
     Return immediately, without waiting for the operation in progress to complete.
 
-  - `  --collection-ids  ` =\[ `  COLLECTION_GROUP_IDS  ` ,…\]  
+  - `--collection-ids` =\[ `  COLLECTION_GROUP_IDS  ` ,…\]  
     List specifying which collection groups will be included in the operation. When omitted, all collection groups are included.
     
-    For example, to operate on only the `  customers  ` and `  orders  ` collections groups:
+    For example, to operate on only the `customers` and `orders` collections groups:
     
     ``` wrap-code
     gcloud firestore import --collection-ids='customers','orders'
     ```
 
-  - `  --database  ` = `  DATABASE  ` ; default="(default)"  
-    The database to operate on. The default value is `  (default)  ` .
+  - `--database` = `  DATABASE  ` ; default="(default)"  
+    The database to operate on. The default value is `(default)` .
     
-    For example, to operate on database `  foo  ` :
+    For example, to operate on database `foo` :
     
     ``` wrap-code
     gcloud firestore import --database='foo'
     ```
 
-  - `  --namespace-ids  ` =\[ `  NAMESPACE_IDS  ` ,…\]  
+  - `--namespace-ids` =\[ `  NAMESPACE_IDS  ` ,…\]  
     List specifying which namespaces will be included in the operation. When omitted, all namespaces are included.
     
     This is only supported for Datastore Mode databases.
     
-    For example, to operate on only the `  customers  ` and `  orders  ` namespaces:
+    For example, to operate on only the `customers` and `orders` namespaces:
     
     ``` wrap-code
     gcloud firestore import --namespaces-ids='customers','orders'
@@ -76,7 +75,7 @@ GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 NOTES
 

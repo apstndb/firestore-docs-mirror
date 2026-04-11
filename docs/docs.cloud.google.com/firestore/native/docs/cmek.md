@@ -41,11 +41,11 @@ When you create a Firestore CMEK-protected database, your Cloud KMS key is used 
 
 Encrypt and decrypt operations are not issued on every data request. Instead, the Firestore system polls Cloud KMS every 5 minutes to check if the key is still available and then performs encrypt and decrypt operations if the key is available.
 
-If the system detects that the key is unavailable, within 10 minutes any subsequent calls to the Firestore database, including reads, writes, and queries, return a `  FAILED_PRECONDITION  ` error with the `  The customer-managed encryption key required by the requested resource is not accessible  ` message.
+If the system detects that the key is unavailable, within 10 minutes any subsequent calls to the Firestore database, including reads, writes, and queries, return a `FAILED_PRECONDITION` error with the `The customer-managed encryption key required by the requested resource is not accessible` message.
 
 If the database has [time-to-live (TTL) policies](https://docs.cloud.google.com/firestore/native/docs/ttl) , and if any expiration times get exceeded while the key is unavailable, [data deletion by TTL](https://docs.cloud.google.com/firestore/native/docs/ttl#ttl_deletion) will be delayed until the key gets reinstated. If the database has long-running operations in progress, they will be affected as follows:
 
-  - Data [import](https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import#import_data) or [export](https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import#export_data) operations will stop making progress, and be marked as `  Failed  ` . The failed operations will **not** be retried if the key gets reinstated.
+  - Data [import](https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import#import_data) or [export](https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import#export_data) operations will stop making progress, and be marked as `Failed` . The failed operations will **not** be retried if the key gets reinstated.
   - [Index build](https://docs.cloud.google.com/firestore/native/docs/query-data/indexing#index_build_time) operations, and operations [enabling new TTL policies](https://docs.cloud.google.com/firestore/native/docs/ttl#ttl_policy_enablement_duration) will stop making progress. The stopped operations will be retried if the key gets reinstated.
 
 Keys are considered unavailable in any situation that intentionally disallows Firestore from accessing the key. This includes:
@@ -75,7 +75,7 @@ When you use a Cloud EKM key, Google has no control over the availability of you
 
 If an externally-managed key is unavailable, Firestore continues to support full database operations on a best-effort basis for up to one hour.
 
-After an hour, if Firestore is still unable to connect with Cloud KMS, Firestore begins taking the database offline as a protective measure. Calls to the database will fail with a `  FAILED_PRECONDITION  ` error that includes additional details.
+After an hour, if Firestore is still unable to connect with Cloud KMS, Firestore begins taking the database offline as a protective measure. Calls to the database will fail with a `FAILED_PRECONDITION` error that includes additional details.
 
 See the [Cloud External Key Manager documentation](https://cloud.google.com/kms/docs/ekm#considerations) for more information about using external keys.
 
@@ -121,7 +121,7 @@ When keys are unavailable or disabled, be aware of the following behaviors that 
 
   - You can change Firestore point-in-time recovery (PITR) settings on a CMEK-enabled database even if the key is unavailable because PITR settings are database metadata, which isn't encrypted by CMEK.
   - You can delete a CMEK database that has unavailable keys.
-  - When you create a CMEK-enabled database, disabled keys don't show on the list of available keys in the Google Cloud console. If you manually input a disabled key, the database creation process will fail with a `  FAILED_PRECONDITION  ` error 400.
+  - When you create a CMEK-enabled database, disabled keys don't show on the list of available keys in the Google Cloud console. If you manually input a disabled key, the database creation process will fail with a `FAILED_PRECONDITION` error 400.
 
 ## Limitations
 

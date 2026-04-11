@@ -23,14 +23,14 @@ Measures the progress of a particular metric.
 
 Fields
 
-`  workCompleted  `
+`workCompleted`
 
-`  string ( int64 format)  `
+`string ( int64 format)`
 
 The amount of work that has been completed. Note that this may be greater than workEstimated.
 
-`  workEstimated  `
+`workEstimated`
 
-`  string ( int64 format)  `
+`string ( int64 format)`
 
 An estimate of how much work needs to be performed. May be zero if the work estimate is unavailable.

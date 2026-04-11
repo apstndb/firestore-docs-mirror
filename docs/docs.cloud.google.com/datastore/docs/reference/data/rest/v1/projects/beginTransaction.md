@@ -106,7 +106,7 @@ eu
 us
 
   
-`  POST https://datastore.googleapis.com/v1/projects/{projectId}:beginTransaction  `
+`POST https://datastore.googleapis.com/v1/projects/{projectId}:beginTransaction`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -114,9 +114,9 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  projectId  `
+`projectId`
 
-`  string  `
+`string`
 
 Required. The ID of the project against which to make the request.
 
@@ -135,29 +135,24 @@ The request body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;databaseId&quot;: string,
-  &quot;transactionOptions&quot;: {
-    object (TransactionOptions)
-  }
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;databaseId&quot;: string,&quot;transactionOptions&quot;: {object (TransactionOptions)}}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  databaseId  `
+`databaseId`
 
-`  string  `
+`string`
 
 The ID of the database against which to make the request.
 
 '(default)' is not allowed; please use empty string '' to refer the default database.
 
-`  transactionOptions  `
+`transactionOptions`
 
-`  object ( TransactionOptions  ` )
+` object ( TransactionOptions  ` )
 
 Options for a new transaction.
 
@@ -187,9 +182,9 @@ If successful, the response body contains data with the following structure:
 
 Fields
 
-`  transaction  `
+`transaction`
 
-`  string ( bytes format)  `
+`string ( bytes format)`
 
 The transaction identifier (always present).
 
@@ -199,7 +194,7 @@ A base64-encoded string.
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

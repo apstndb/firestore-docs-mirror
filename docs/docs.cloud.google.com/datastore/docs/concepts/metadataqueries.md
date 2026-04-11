@@ -10,23 +10,23 @@ The [Datastore Dashboard](https://console.cloud.google.com/project/_/datastore/s
 
 Three special entity kinds are reserved for metadata queries:
 
-| Entity                         | Description                                                        |
-| ------------------------------ | ------------------------------------------------------------------ |
-| `        __namespace__       ` | Used to find all the namespaces used in your application entities. |
-| `        __kind__       `      | Used to query a specific kind.                                     |
-| `        __property__       `  | Used to query by a property of a kind.                             |
+| Entity          | Description                                                        |
+| --------------- | ------------------------------------------------------------------ |
+| `__namespace__` | Used to find all the namespaces used in your application entities. |
+| `__kind__`      | Used to query a specific kind.                                     |
+| `__property__`  | Used to query by a property of a kind.                             |
 
 These kinds will not conflict with others of the same names that may already exist in your application. By querying on these special kinds, you can retrieve entities containing the desired metadata.
 
-The entities returned by metadata queries are generated dynamically, based on the current state of your database. While you can create local entity objects of kinds `  __namespace__  ` , `  __kind__  ` , or `  __property__  ` , any attempt to store them in the database will fail.
+The entities returned by metadata queries are generated dynamically, based on the current state of your database. While you can create local entity objects of kinds `__namespace__` , `__kind__` , or `__property__` , any attempt to store them in the database will fail.
 
 ## Namespace queries
 
 You can use a *namespace query* to find all namespaces used in the application's entities. This allows you to perform activities such as administrative functions across multiple namespaces.
 
-Namespace queries return entities of the special kind `  __namespace__  ` whose key name is the name of a namespace. (An exception is the default namespace designated by the empty string `  ""  ` : since the empty string is not a valid key name, this namespace is keyed with the numeric ID `  1  ` instead.) Queries of this type support filtering only for ranges over the special pseudoproperty `  __key__  ` , whose value is the entity's key. The results can be sorted by ascending (but not descending) `  __key__  ` value. Because `  __namespace__  ` entities have no properties, both keys-only and non-keys-only queries return the same information.
+Namespace queries return entities of the special kind `__namespace__` whose key name is the name of a namespace. (An exception is the default namespace designated by the empty string `""` : since the empty string is not a valid key name, this namespace is keyed with the numeric ID `1` instead.) Queries of this type support filtering only for ranges over the special pseudoproperty `__key__` , whose value is the entity's key. The results can be sorted by ascending (but not descending) `__key__` value. Because `__namespace__` entities have no properties, both keys-only and non-keys-only queries return the same information.
 
-The following example returns a list of an application's namespaces in the range between the values assigned to the `  startNamespace  ` and `  endNamespace  ` variables:
+The following example returns a list of an application's namespaces in the range between the values assigned to the `startNamespace` and `endNamespace` variables:
 
 ### C\#
 
@@ -207,7 +207,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
 ## Kind queries
 
-*Kind queries* return entities of kind `  __kind__  ` whose key name is the name of an entity kind. Queries of this type are implicitly restricted to the current namespace and support filtering only for ranges over the `  __key__  ` pseudoproperty. The results can be sorted by ascending (but not descending) `  __key__  ` value. Because `  __kind__  ` entities have no properties, both keys-only and non-keys-only queries return the same information.
+*Kind queries* return entities of kind `__kind__` whose key name is the name of an entity kind. Queries of this type are implicitly restricted to the current namespace and support filtering only for ranges over the `__key__` pseudoproperty. The results can be sorted by ascending (but not descending) `__key__` value. Because `__kind__` entities have no properties, both keys-only and non-keys-only queries return the same information.
 
 The following example prints a list of the kinds used in an application:
 
@@ -324,13 +324,13 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
 ## Property queries
 
-*Property queries* return entities of kind `  __property__  ` denoting the indexed properties associated with an entity kind. (Unindexed properties are not included.) The entity representing property *p* of kind *k* is built as follows:
+*Property queries* return entities of kind `__property__` denoting the indexed properties associated with an entity kind. (Unindexed properties are not included.) The entity representing property *p* of kind *k* is built as follows:
 
-  - The entity's key has kind `  __property__  ` and key name *p* .
-  - The entity's parent key has kind `  __kind__  ` and key name *k* .
-  - The entity's `  property_representation  ` array property contains all the property's [representations](https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries#property_queries_property_representations) .
+  - The entity's key has kind `__property__` and key name *p* .
+  - The entity's parent key has kind `__kind__` and key name *k* .
+  - The entity's `property_representation` array property contains all the property's [representations](https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries#property_queries_property_representations) .
 
-For example, if your database contains exactly two `  Task  ` entities with `  name  ` and `  done  ` properties:
+For example, if your database contains exactly two `Task` entities with `name` and `done` properties:
 
     Key: 'Task:1'
     name: 'Read some properties'
@@ -340,7 +340,7 @@ For example, if your database contains exactly two `  Task  ` entities with `  n
     name: 'Climb'
     done: null
 
-then the two entities returned by a `  __property__  ` query will be:
+then the two entities returned by a `__property__` query will be:
 
     Key: '__kind__:Task/__property__:name'
     property_representation: [ 'STRING' ]
@@ -348,7 +348,7 @@ then the two entities returned by a `  __property__  ` query will be:
     Key: '__kind__:Task/__property__:done'
     property_representation: [ 'BOOLEAN', 'NULL' ]
 
-Property queries are implicitly restricted to the current namespace, and support limited [filtering](https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries#property_queries_filtering) with an ancestor or a range over the `  __key__  ` pseudoproperty.
+Property queries are implicitly restricted to the current namespace, and support limited [filtering](https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries#property_queries_filtering) with an ancestor or a range over the `__key__` pseudoproperty.
 
 A *keys-only* property query is more efficient than a non-keys-only query, as it does not need to collect the property's representations. The following example retrieves the names of all of an application's entity kinds and the properties associated with each:
 
@@ -504,25 +504,25 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
 ### Property queries: property representations
 
-Non-keys-only property queries, known as *property representation queries* , return additional information on the value types used for each property. The `  property_representation  ` property in the entity representing property *p* of kind *k* is an array containing all *representations* of *p* 's value in any entity of kind *k* .
+Non-keys-only property queries, known as *property representation queries* , return additional information on the value types used for each property. The `property_representation` property in the entity representing property *p* of kind *k* is an array containing all *representations* of *p* 's value in any entity of kind *k* .
 
 Each [value](https://docs.cloud.google.com/datastore/docs/concepts/entities#properties_and_value_types) has the following *representation* (note that some value types share representations):
 
 | Value type            | Representation                         |
 | --------------------- | -------------------------------------- |
-| Integer               | `        INT64       `                 |
-| Floating-point number | `        DOUBLE       `                |
-| Boolean               | `        BOOLEAN       `               |
-| Text string           | `        STRING       `                |
-| Byte string           | `        STRING       `                |
-| Date and time         | `        INT64       `                 |
-| Datastore key         | `        REFERENCE       `             |
-| Embedded entity       | `        STRING       `                |
+| Integer               | `INT64`                                |
+| Floating-point number | `DOUBLE`                               |
+| Boolean               | `BOOLEAN`                              |
+| Text string           | `STRING`                               |
+| Byte string           | `STRING`                               |
+| Date and time         | `INT64`                                |
+| Datastore key         | `REFERENCE`                            |
+| Embedded entity       | `STRING`                               |
 | Array                 | representation of the array's elements |
-| Geographical point    | `        POINT       `                 |
-| Null                  | `        NULL       `                  |
+| Geographical point    | `POINT`                                |
+| Null                  | `NULL`                                 |
 
-The following example finds all representations of properties of kind `  Task  ` , using an [ancestor property query](https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries#property_queries_filtering) :
+The following example finds all representations of properties of kind `Task` , using an [ancestor property query](https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries#property_queries_filtering) :
 
 ### C\#
 
@@ -691,16 +691,16 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
 ### Property queries: filtering
 
-Property queries support ancestor filtering on a `  __kind__  ` or `  __property__  ` key, to limit the query results to a single kind or property, as seen in the property representation query above.
+Property queries support ancestor filtering on a `__kind__` or `__property__` key, to limit the query results to a single kind or property, as seen in the property representation query above.
 
-Property queries can also be filtered with a range over the pseudoproperty `  __key__  ` , where the keys denote either `  __kind__  ` or `  __property__  ` entities. The results can be sorted by ascending (but not descending) `  __key__  ` value. Filtering is applied to kind-property pairs, ordered first by kind and second by property. For instance, suppose you have entities with these properties:
+Property queries can also be filtered with a range over the pseudoproperty `__key__` , where the keys denote either `__kind__` or `__property__` entities. The results can be sorted by ascending (but not descending) `__key__` value. Filtering is applied to kind-property pairs, ordered first by kind and second by property. For instance, suppose you have entities with these properties:
 
-  - kind `  Task  ` with properties
-      - `  created  `
-      - `  priority  `
-      - `  tags  `
-  - kind `  TaskList  ` with properties
-      - `  created  `
+  - kind `Task` with properties
+      - `created`
+      - `priority`
+      - `tags`
+  - kind `TaskList` with properties
+      - `created`
 
 The following keys-only property query:
 
@@ -832,6 +832,6 @@ will collect the following kind, property name pairs:
     Task, tags
     TaskList, created
 
-Notice that the results include properties from kinds `  Task  ` and `  TaskList  ` , but do not include the `  created  ` property of kind `  Task  ` , because it falls outside the range specified for the query.
+Notice that the results include properties from kinds `Task` and `TaskList` , but do not include the `created` property of kind `Task` , because it falls outside the range specified for the query.
 
-**Note:** Since the `  __key__  ` kind filters on kind-property pairs, you can't use a single query for the same property name in different kinds. You can query for all properties in all kinds (or in a range of kinds), but you cannot construct a single query that retrieves, for example, all properties with names between *m* and *q* in all kinds (or in kinds *A* and *B* ).
+**Note:** Since the `__key__` kind filters on kind-property pairs, you can't use a single query for the same property name in different kinds. You can query for all properties in all kinds (or in a range of kinds), but you cannot construct a single query that retrieves, for example, all properties with names between *m* and *q* in all kinds (or in kinds *A* and *B* ).

@@ -26,11 +26,11 @@ The following table lists the data types supported by Firestore. It also describ
 <td><p>An array cannot contain another array value as one of its elements.</p>
 <p>Within an array, elements maintain the position assigned to them. When sorting two or more arrays, arrays are ordered based on their element values.</p>
 <p>When comparing two arrays, the first elements of each array are compared. If the first elements are equal, then the second elements are compared and so on until a difference is found. If an array runs out of elements to compare but is equal up to that point, then the shorter array is ordered before the longer array.</p>
-<p>For example, <code dir="ltr" translate="no">        [1, 2, 3] &lt; [1, 2, 3, 1] &lt; [2]       </code> . The array <code dir="ltr" translate="no">        [2]       </code> has the greatest first element value. The array <code dir="ltr" translate="no">        [1, 2, 3]       </code> has elements equal to the first three elements of <code dir="ltr" translate="no">        [1, 2, 3, 1]       </code> but is shorter in length.</p></td>
+<p>For example, <code dir="ltr" translate="no">[1, 2, 3] &lt; [1, 2, 3, 1] &lt; [2]</code> . The array <code dir="ltr" translate="no">[2]</code> has the greatest first element value. The array <code dir="ltr" translate="no">[1, 2, 3]</code> has elements equal to the first three elements of <code dir="ltr" translate="no">[1, 2, 3, 1]</code> but is shorter in length.</p></td>
 </tr>
 <tr class="even">
 <td>Boolean</td>
-<td><code dir="ltr" translate="no">       false      </code> &lt; <code dir="ltr" translate="no">       true      </code></td>
+<td><code dir="ltr" translate="no">false</code> &lt; <code dir="ltr" translate="no">true</code></td>
 <td>—</td>
 </tr>
 <tr class="odd">
@@ -46,7 +46,7 @@ The following table lists the data types supported by Firestore. It also describ
 <tr class="odd">
 <td>Floating-point number</td>
 <td>Numeric</td>
-<td>64-bit double precision according to <a href="https://en.wikipedia.org/wiki/IEEE_754">IEEE 754</a> , including (normalized) <code dir="ltr" translate="no">       NaN      </code> &amp; <code dir="ltr" translate="no">       +/-Infinity      </code> .</td>
+<td>64-bit double precision according to <a href="https://en.wikipedia.org/wiki/IEEE_754">IEEE 754</a> , including (normalized) <code dir="ltr" translate="no">NaN</code> &amp; <code dir="ltr" translate="no">+/-Infinity</code> .</td>
 </tr>
 <tr class="even">
 <td>Geographical point</td>
@@ -62,14 +62,14 @@ The following table lists the data types supported by Firestore. It also describ
 <td>Map</td>
 <td>By keys, then by value</td>
 <td><p>Represents an object embedded within a document. When indexed, you can query on subfields. If you exclude this value from indexing, then all subfields are also excluded from indexing.</p>
-<p>Key ordering is always sorted. For example, if you write <code dir="ltr" translate="no">        {c: "foo", a: "bar", b: "qux"}       </code> the map is sorted by key and saved as <code dir="ltr" translate="no">        {a: "bar", b: "qux", c: "foo"}       </code> .</p>
+<p>Key ordering is always sorted. For example, if you write <code dir="ltr" translate="no">{c: "foo", a: "bar", b: "qux"}</code> the map is sorted by key and saved as <code dir="ltr" translate="no">{a: "bar", b: "qux", c: "foo"}</code> .</p>
 <p>Map fields are sorted by key and compared by key-value pairs, first comparing the keys and then the values. If the first key-value pairs are equal, the next key-value pairs are compared, and so on. If two maps have all of the same key-value pairs, then map length is considered. For example, the following maps are in ascending order:</p>
-<p><code dir="ltr" translate="no">        {a: "aaa", b: "baz"}       </code><br />
-<code dir="ltr" translate="no">        {a: "foo", b: "bar"}       </code><br />
-<code dir="ltr" translate="no">        {a: "foo", b: "bar", c: "qux"}       </code><br />
-<code dir="ltr" translate="no">        {a: "foo", b: "baz"}       </code><br />
-<code dir="ltr" translate="no">        {b: "aaa", c: "baz"}       </code><br />
-<code dir="ltr" translate="no">        {c: "aaa"}       </code><br />
+<p><code dir="ltr" translate="no">{a: "aaa", b: "baz"}</code><br />
+<code dir="ltr" translate="no">{a: "foo", b: "bar"}</code><br />
+<code dir="ltr" translate="no">{a: "foo", b: "bar", c: "qux"}</code><br />
+<code dir="ltr" translate="no">{a: "foo", b: "baz"}</code><br />
+<code dir="ltr" translate="no">{b: "aaa", c: "baz"}</code><br />
+<code dir="ltr" translate="no">{c: "aaa"}</code><br />
 </p></td>
 </tr>
 <tr class="odd">
@@ -80,7 +80,7 @@ The following table lists the data types supported by Firestore. It also describ
 <tr class="even">
 <td>Reference</td>
 <td>By path elements (collection, document ID, collection, document ID...)</td>
-<td>For example, <code dir="ltr" translate="no">       projects/[PROJECT_ID]/databases/[DATABASE_ID]/documents/[DOCUMENT_PATH]      </code> .</td>
+<td>For example, <code dir="ltr" translate="no">projects/[PROJECT_ID]/databases/[DATABASE_ID]/documents/[DOCUMENT_PATH]</code> .</td>
 </tr>
 <tr class="odd">
 <td>Text string</td>
@@ -113,4 +113,4 @@ When a query involves a field with values of mixed types, Firestore uses a deter
 
 ## Numeric ordering
 
-Firestore sorts all numeric values ( `  Integer  ` & `  Floating point  ` ) interleaved with each other. Floating point comparison follows the total ordering of [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754) with the notable exception being that Firestore normalizes all `  NaN  ` values, and considers it less than `  -Infinity  ` .
+Firestore sorts all numeric values ( `Integer` & `Floating point` ) interleaved with each other. Floating point comparison follows the total ordering of [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754) with the notable exception being that Firestore normalizes all `NaN` values, and considers it less than `-Infinity` .

@@ -19,19 +19,19 @@ When deciding which operation to fail or delay, behavior depends the type of con
 
 The concurrency mode is a configurable database option. Firestore supports the following concurrency modes:
 
-  - `  PESSIMISTIC  ` : Pessimistic concurrency controls assume that data contention is likely. Pessimistic transactions use database locks to prevent other operations from modifying data.
+  - `PESSIMISTIC` : Pessimistic concurrency controls assume that data contention is likely. Pessimistic transactions use database locks to prevent other operations from modifying data.
     
     With pessimist concurrency controls, transactions place locks on the documents they read. A transaction's lock on a document blocks other transactions, batched writes, and non-transactional writes from changing that document. A transaction releases its document locks at commit time. It also releases its locks if it times out or fails for any reason.
     
     When a transaction locks a document, other write operations must wait for the transaction to release its lock. Transactions acquire their locks in chronological order.
 
-  - `  OPTIMISTIC  ` : Optimistic concurrency controls assume that data contention is not likely or that it's not efficient to hold database locks. Optimistic transactions don't use database locks to block other operations from changing data
+  - `OPTIMISTIC` : Optimistic concurrency controls assume that data contention is not likely or that it's not efficient to hold database locks. Optimistic transactions don't use database locks to block other operations from changing data
     
     With optimistic concurrency controls, a transaction keeps track of all the documents you read inside the transaction. The transaction completes its write operations **only if** none of those documents changed during the transaction's execution. If any document did change, the transaction handler retries the transaction. If the transaction can't get a clean result after a few retries, the transaction fails due to data contention.
 
 ### Concurrency mode defaults
 
-The default for Standard edition is `  PESSIMISTIC  ` . The default for Enterprise edition is `  OPTIMISTIC  ` . However, the behaviour also depends on the type of client library:
+The default for Standard edition is `PESSIMISTIC` . The default for Enterprise edition is `OPTIMISTIC` . However, the behaviour also depends on the type of client library:
 
   - The mobile/web SDKs use optimistic concurrency controls. The mobile and web SDKs behave independently of this setting as they always emulate optimistic concurrency.
 
@@ -41,7 +41,7 @@ The default for Standard edition is `  PESSIMISTIC  ` . The default for Enterpri
 
 ## Data contention in the mobile/web SDKs
 
-Mobile and web SDKs emulate optimistic concurrency transactions using write preconditions on document versions. This emulation occurs regardless of the database's concurrency mode setting. The mobile and web SDKs don't use the [built-in transactions](https://docs.cloud.google.com//firestore/docs/reference/rest/v1/projects.databases.documents/commit) feature, so even if the database concurrency mode is configured for `  PESSIMISTIC  ` , mobile clients still behave optimistically.
+Mobile and web SDKs emulate optimistic concurrency transactions using write preconditions on document versions. This emulation occurs regardless of the database's concurrency mode setting. The mobile and web SDKs don't use the [built-in transactions](https://docs.cloud.google.com//firestore/docs/reference/rest/v1/projects.databases.documents/commit) feature, so even if the database concurrency mode is configured for `PESSIMISTIC` , mobile clients still behave optimistically.
 
 Mobile/web SDKs use optimistic concurrency controls, because they can operate in environments with high latency and an unreliable network connection. Locking documents in a high latency environment would cause too many data contention failures.
 

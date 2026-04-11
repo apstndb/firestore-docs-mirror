@@ -20,7 +20,7 @@ The migration procedure described in the subsequent sections uses the gcloud CLI
 
 Run the following command to create a Datastream connection profile to the MongoDB database hosted on Compute Engine.
 
-Omit the `  --mongodb-replica-set  ` flag from the following command when connecting to a sharded cluster.
+Omit the `--mongodb-replica-set` flag from the following command when connecting to a sharded cluster.
 
     gcloud datastream connection-profiles create "$SRC_CONNECTION_PROFILE_NAME" \
     --display-name="$SRC_CONNECTION_PROFILE_NAME" \
@@ -40,9 +40,9 @@ This example assumes you have already [configured SSH connectivity](https://docs
 
 Run the following command to create a Datastream connection profile to the MongoDB database hosted on Compute Engine.
 
-Omit the `  --mongodb-replica-set  ` flag from the following command when connecting to a sharded cluster.
+Omit the `--mongodb-replica-set` flag from the following command when connecting to a sharded cluster.
 
-If you want to connect with an SSH password, pass the `  --forward-ssh-password  ` flag instead of the `  --forward-ssh-private-key  ` flag.
+If you want to connect with an SSH password, pass the `--forward-ssh-password` flag instead of the `--forward-ssh-private-key` flag.
 
     gcloud datastream connection-profiles create "$SRC_CONNECTION_PROFILE_NAME" \
     --display-name="$SRC_CONNECTION_PROFILE_NAME" \

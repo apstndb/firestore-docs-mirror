@@ -12,7 +12,7 @@ For instance, you might want to allow a client to create or change a document, b
 
 Reads in Firestore are performed at the document level. You either retrieve the full document, or you retrieve nothing. There is no way to retrieve a partial document. It is impossible using security rules alone to prevent users from reading specific fields within a document.
 
-If there are certain fields within a document that you want to keep hidden from some users, the best way would be to put them in a separate document. For instance, you might consider creating a document in a `  private  ` subcollection like so:
+If there are certain fields within a document that you want to keep hidden from some users, the best way would be to put them in a separate document. For instance, you might consider creating a document in a `private` subcollection like so:
 
 **/employees/{emp\_id}**
 
@@ -30,7 +30,7 @@ If there are certain fields within a document that you want to keep hidden from 
     perf_review: 4.2
 ```
 
-Then you can add security rules that have different levels of access for the two collections. In this example, we're using [custom auth claims](https://firebase.google.com/docs/auth/admin/custom-claims) to say that only users with the custom auth claim `  role  ` equal to `  Finance  ` can view an employee's financial information.
+Then you can add security rules that have different levels of access for the two collections. In this example, we're using [custom auth claims](https://firebase.google.com/docs/auth/admin/custom-claims) to say that only users with the custom auth claim `role` equal to `Finance` can view an employee's financial information.
 
     service cloud.firestore {
       match /databases/{database}/documents {
@@ -51,11 +51,11 @@ Then you can add security rules that have different levels of access for the two
 
 Firestore is schemaless, meaning that there are no restrictions at the database level for what fields a document contains. While this flexibility can make development easier, there will be times when you want to ensure that clients can only create documents that contain specific fields, or don't contain other fields.
 
-You can create these rules by examining the `  keys  ` method of the [`  request.resource.data  `](https://firebase.google.com/docs/reference/rules/rules.firestore.Resource#data) object. This is a list of all fields that the client is attempting to write in this new document. By combining this set of fields with functions like [`  hasOnly()  `](https://firebase.google.com/docs/reference/rules/rules.List#hasOnly) or [`  hasAny()  `](https://firebase.google.com/docs/reference/rules/rules.List#hasAny) , you can add in logic that restricts the types of documents a user can add to Firestore.
+You can create these rules by examining the `keys` method of the [`request.resource.data`](https://firebase.google.com/docs/reference/rules/rules.firestore.Resource#data) object. This is a list of all fields that the client is attempting to write in this new document. By combining this set of fields with functions like [`hasOnly()`](https://firebase.google.com/docs/reference/rules/rules.List#hasOnly) or [`hasAny()`](https://firebase.google.com/docs/reference/rules/rules.List#hasAny) , you can add in logic that restricts the types of documents a user can add to Firestore.
 
 ### Requiring specific fields in new documents
 
-Let's say you wanted to make sure that all documents created in a `  restaurant  ` collection contained at least a `  name  ` , `  location  ` , and `  city  ` field. You could do that by calling [`  hasAll()  `](https://firebase.google.com/docs/reference/rules/rules.List#hasAll) on the list of keys in the new document.
+Let's say you wanted to make sure that all documents created in a `restaurant` collection contained at least a `name` , `location` , and `city` field. You could do that by calling [`hasAll()`](https://firebase.google.com/docs/reference/rules/rules.List#hasAll) on the list of keys in the new document.
 
     service cloud.firestore {
       match /databases/{database}/documents {
@@ -71,9 +71,9 @@ This allows restaurants to be created with other fields as well, but it ensures 
 
 ### Forbidding specific fields in new documents
 
-Similarly, you can prevent clients from creating documents that contain specific fields by using [`  hasAny()  `](https://firebase.google.com/docs/reference/rules/rules.List#hasAny) against a list of forbidden fields. This method evaluates to true if a document contains any of these fields, so you probably want to negate the result in order to forbid certain fields.
+Similarly, you can prevent clients from creating documents that contain specific fields by using [`hasAny()`](https://firebase.google.com/docs/reference/rules/rules.List#hasAny) against a list of forbidden fields. This method evaluates to true if a document contains any of these fields, so you probably want to negate the result in order to forbid certain fields.
 
-For instance, in the following example, clients are not allowed to create a document that contains an `  average_score  ` or `  rating_count  ` field since these fields will be added by a server call at a later point.
+For instance, in the following example, clients are not allowed to create a document that contains an `average_score` or `rating_count` field since these fields will be added by a server call at a later point.
 
     service cloud.firestore {
       match /databases/{database}/documents {
@@ -88,7 +88,7 @@ For instance, in the following example, clients are not allowed to create a docu
 
 ### Creating an allowlist of fields for new documents
 
-Instead of forbidding certain fields in new documents, you might want to create a list of only those fields that are explicitly allowed in new documents. Then you can use the [`  hasOnly()  `](https://firebase.google.com/docs/reference/rules/rules.List#hasOnly) function to make sure that any new documents created contain just these fields (or a subset of these fields) and no other.
+Instead of forbidding certain fields in new documents, you might want to create a list of only those fields that are explicitly allowed in new documents. Then you can use the [`hasOnly()`](https://firebase.google.com/docs/reference/rules/rules.List#hasOnly) function to make sure that any new documents created contain just these fields (or a subset of these fields) and no other.
 
     service cloud.firestore {
       match /databases/{database}/documents {
@@ -103,7 +103,7 @@ Instead of forbidding certain fields in new documents, you might want to create 
 
 ### Combining required and optional fields
 
-You can combine `  hasAll  ` and `  hasOnly  ` operations together in your security rules to require some fields and allow others. For instance, this example requires that all new documents contain the `  name  ` , `  location  ` , and `  city  ` fields, and optionally allows the `  address  ` , `  hours  ` , and `  cuisine  ` fields.
+You can combine `hasAll` and `hasOnly` operations together in your security rules to require some fields and allow others. For instance, this example requires that all new documents contain the `name` , `location` , and `city` fields, and optionally allows the `address` , `hours` , and `cuisine` fields.
 
     service cloud.firestore {
       match /databases/{database}/documents {
@@ -135,15 +135,15 @@ In a real-world scenario, you may wish to move this logic into a helper function
 
 ## Restricting fields on update
 
-A common security practice is to only allow clients to edit some fields and not others. You cannot accomplish this solely by looking at the `  request.resource.data.keys()  ` list described in the previous section, since this list represents the complete document as it would look after the update, and would therefore include fields that the client did not change.
+A common security practice is to only allow clients to edit some fields and not others. You cannot accomplish this solely by looking at the `request.resource.data.keys()` list described in the previous section, since this list represents the complete document as it would look after the update, and would therefore include fields that the client did not change.
 
-However, if you were to use the [`  diff()  `](https://firebase.google.com/docs/reference/rules/rules.Map#diff) function, you could compare `  request.resource.data  ` with the `  resource.data  ` object, which represents the document in the database before the update. This creates a [`  mapDiff  `](https://firebase.google.com/docs/reference/rules/rules.MapDiff) object, which is an object containing all of the changes between two different maps.
+However, if you were to use the [`diff()`](https://firebase.google.com/docs/reference/rules/rules.Map#diff) function, you could compare `request.resource.data` with the `resource.data` object, which represents the document in the database before the update. This creates a [`mapDiff`](https://firebase.google.com/docs/reference/rules/rules.MapDiff) object, which is an object containing all of the changes between two different maps.
 
-By calling the [`  affectedKeys()  `](https://firebase.google.com/docs/reference/rules/rules.MapDiff#affectedKeys) method on this mapDiff, you can come up with a set of fields that were changed in an edit. Then you can use functions like [`  hasOnly()  `](https://firebase.google.com/docs/reference/rules/rules.Set#hasOnly) or [`  hasAny()  `](https://firebase.google.com/docs/reference/rules/rules.Set#hasAny) to ensure that this set does (or doesn't) contain certain items.
+By calling the [`affectedKeys()`](https://firebase.google.com/docs/reference/rules/rules.MapDiff#affectedKeys) method on this mapDiff, you can come up with a set of fields that were changed in an edit. Then you can use functions like [`hasOnly()`](https://firebase.google.com/docs/reference/rules/rules.Set#hasOnly) or [`hasAny()`](https://firebase.google.com/docs/reference/rules/rules.Set#hasAny) to ensure that this set does (or doesn't) contain certain items.
 
 ### Preventing some fields from being changed
 
-By using the [`  hasAny()  `](https://firebase.google.com/docs/reference/rules/rules.Set#hasAny) method on the set generated by [`  affectedKeys()  `](https://firebase.google.com/docs/reference/rules/rules.MapDiff#affectedKeys) and then negating the result, you can reject any client request that attempts to change fields that you don't want changed.
+By using the [`hasAny()`](https://firebase.google.com/docs/reference/rules/rules.Set#hasAny) method on the set generated by [`affectedKeys()`](https://firebase.google.com/docs/reference/rules/rules.MapDiff#affectedKeys) and then negating the result, you can reject any client request that attempts to change fields that you don't want changed.
 
 For instance, you might want to allow clients to update information about a restaurant but not change their average score or number of reviews.
 
@@ -160,9 +160,9 @@ For instance, you might want to allow clients to update information about a rest
 
 ### Allowing only certain fields to be changed
 
-Rather than specifying fields that you don't want changed, you can also use the [`  hasOnly()  `](https://firebase.google.com/docs/reference/rules/rules.Set#hasOnly) function to specify a list of fields that you do want changed. This is generally considered more secure because writes to any new document fields are disallowed by default until you explicitly allow them in your security rules.
+Rather than specifying fields that you don't want changed, you can also use the [`hasOnly()`](https://firebase.google.com/docs/reference/rules/rules.Set#hasOnly) function to specify a list of fields that you do want changed. This is generally considered more secure because writes to any new document fields are disallowed by default until you explicitly allow them in your security rules.
 
-For instance, rather than disallowing the `  average_score  ` and `  rating_count  ` field, you could create security rules that allow clients to only change the `  name  ` , `  location  ` , `  city  ` , `  address  ` , `  hours  ` , and `  cuisine  ` fields.
+For instance, rather than disallowing the `average_score` and `rating_count` field, you could create security rules that allow clients to only change the `name` , `location` , `city` , `address` , `hours` , and `cuisine` fields.
 
     service cloud.firestore {
       match /databases/{database}/documents {
@@ -174,13 +174,13 @@ For instance, rather than disallowing the `  average_score  ` and `  rating_coun
       }
     }
 
-This means that if, in some future iteration of your app, restaurant documents include a `  telephone  ` field, attempts to edit that field would fail until you go back and add that field to the `  hasOnly()  ` list in your security rules.
+This means that if, in some future iteration of your app, restaurant documents include a `telephone` field, attempts to edit that field would fail until you go back and add that field to the `hasOnly()` list in your security rules.
 
 ## Enforcing field types
 
-Another effect of Firestore being schemaless is that there is no enforcement at the database level for what types of data can be stored in specific fields. This is something you can enforce in security rules, however, with the `  is  ` operator.
+Another effect of Firestore being schemaless is that there is no enforcement at the database level for what types of data can be stored in specific fields. This is something you can enforce in security rules, however, with the `is` operator.
 
-For example, the following security rule enforces that a review's `  score  ` field has to be an integer, the `  headline  ` , `  content  ` , and `  author_name  ` fields are strings, and the `  review_date  ` is a timestamp.
+For example, the following security rule enforces that a review's `score` field has to be an integer, the `headline` , `content` , and `author_name` fields are strings, and the `review_date` is a timestamp.
 
     service cloud.firestore {
       match /databases/{database}/documents {
@@ -198,13 +198,13 @@ For example, the following security rule enforces that a review's `  score  ` fi
       }
     }
 
-Valid data types for the `  is  ` operator are `  bool  ` , `  bytes  ` , `  float  ` , `  int  ` , `  list  ` , `  latlng  ` , `  number  ` , `  path  ` , `  map  ` , `  string  ` , and `  timestamp  ` . The `  is  ` operator also supports `  constraint  ` , `  duration  ` , `  set  ` , and `  map_diff  ` data types, but since these are generated by the security rules language itself and not generated by clients, you rarely use them in most practical applications.
+Valid data types for the `is` operator are `bool` , `bytes` , `float` , `int` , `list` , `latlng` , `number` , `path` , `map` , `string` , and `timestamp` . The `is` operator also supports `constraint` , `duration` , `set` , and `map_diff` data types, but since these are generated by the security rules language itself and not generated by clients, you rarely use them in most practical applications.
 
-`  list  ` and `  map  ` data types do not have support for generics, or type arguments. In other words, you can use security rules to enforce that a certain field contains a list or a map, but you can not enforce that a field contains a list of all integers or all strings.
+`list` and `map` data types do not have support for generics, or type arguments. In other words, you can use security rules to enforce that a certain field contains a list or a map, but you can not enforce that a field contains a list of all integers or all strings.
 
 Similarly, you can use security rules to enforce type values for specific entries in a list or a map (using brakets notation or key names respectively), but there is no shortcut to enforce the data types of all members in a map or a list at once.
 
-For example, the following rules ensure that a `  tags  ` field in a document contains a list and that the first entry is a string. It also ensures that the `  product  ` field contains a map that in turn contains a product name that is a string and a quantity that is an integer.
+For example, the following rules ensure that a `tags` field in a document contains a list and that the first entry is a string. It also ensures that the `product` field contains a map that in turn contains a product name that is a string and a quantity that is an integer.
 
     service cloud.firestore {
       match /databases/{database}/documents {
@@ -246,9 +246,9 @@ Field types need to be enforced when both creating and updating a document. Ther
 
 ### Enforcing types for optional fields
 
-It's important to remember that calling `  request.resource.data.foo  ` on a document where `  foo  ` doesn't exist results in an error, and therefore any security rule making that call will deny the request. You can handle this situation by using the [`  get  `](https://firebase.google.com/docs/reference/rules/rules.Map#get) method on `  request.resource.data  ` . The `  get  ` method allows you to provide a default argument for the field you're retrieving from a map if that field doesn't exist.
+It's important to remember that calling `request.resource.data.foo` on a document where `foo` doesn't exist results in an error, and therefore any security rule making that call will deny the request. You can handle this situation by using the [`get`](https://firebase.google.com/docs/reference/rules/rules.Map#get) method on `request.resource.data` . The `get` method allows you to provide a default argument for the field you're retrieving from a map if that field doesn't exist.
 
-For example, if review documents also contain an optional `  photo_url  ` field and an optional `  tags  ` field that you want to verify are strings and lists respectively, you can accomplish this by rewriting the `  reviewFieldsAreValidTypes  ` function to something like the following:
+For example, if review documents also contain an optional `photo_url` field and an optional `tags` field that you want to verify are strings and lists respectively, you can accomplish this by rewriting the `reviewFieldsAreValidTypes` function to something like the following:
 
 ``` 
   function reviewFieldsAreValidTypes(docData) {
@@ -262,7 +262,7 @@ For example, if review documents also contain an optional `  photo_url  ` field 
   }
 ```
 
-This rejects documents where `  tags  ` exists, but isn't a list, while still permitting documents that don't contain a `  tags  ` (or `  photo_url  ` ) field.
+This rejects documents where `tags` exists, but isn't a list, while still permitting documents that don't contain a `tags` (or `photo_url` ) field.
 
 ## Partial writes are never allowed
 

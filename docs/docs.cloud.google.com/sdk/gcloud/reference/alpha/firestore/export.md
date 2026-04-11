@@ -4,15 +4,15 @@ gcloud alpha firestore export - export Cloud Firestore documents to Google Cloud
 
 SYNOPSIS
 
-`  gcloud alpha firestore export  ` `  OUTPUT_URI_PREFIX  ` \[ `  --async  ` \] \[ `  --collection-ids  ` =\[ `  COLLECTION_GROUP_IDS  ` , …\]\] \[ `  --database  ` = `  DATABASE  ` ; default="(default)"\] \[ `  --namespace-ids  ` =\[ `  NAMESPACE_IDS  ` , …\]\] \[ `  --snapshot-time  ` = `  SNAPSHOT_TIME  ` \] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud alpha firestore export` `  OUTPUT_URI_PREFIX  ` \[ `  --async  ` \] \[ `  --collection-ids  ` =\[ `  COLLECTION_GROUP_IDS  ` , …\]\] \[ `  --database  ` = `  DATABASE  ` ; default="(default)"\] \[ `  --namespace-ids  ` =\[ `  NAMESPACE_IDS  ` , …\]\] \[ `  --snapshot-time  ` = `  SNAPSHOT_TIME  ` \] \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (ALPHA)  ` export Cloud Firestore documents to Google Cloud Storage.
+`(ALPHA)` export Cloud Firestore documents to Google Cloud Storage.
 
 EXAMPLES
 
-To export all collection groups to `  mybucket  ` in objects prefixed with `  my/path  ` , run:
+To export all collection groups to `mybucket` in objects prefixed with `my/path` , run:
 
 ``` wrap-code
 gcloud alpha firestore export gs://mybucket/my/path
@@ -21,8 +21,7 @@ gcloud alpha firestore export gs://mybucket/my/path
 To export a specific set of collections groups asynchronously, run:
 
 ``` wrap-code
-gcloud alpha firestore export gs://mybucket/my/path --collection-ids='specific collection group1','specific
- collection group2' --async
+gcloud alpha firestore export gs://mybucket/my/path --collection-ids='specific collection group1','specific collection group2' --async
 ```
 
 To export all collection groups from certain namespace, run:
@@ -48,48 +47,48 @@ POSITIONAL ARGUMENTS
     gcloud alpha firestore export gs://mybucket/my/path
     ```
     
-    Will place the export in the `  mybucket  ` bucket in objects prefixed with `  my/path  ` .
+    Will place the export in the `mybucket` bucket in objects prefixed with `my/path` .
 
 FLAGS
 
-  - `  --async  `  
+  - `--async`  
     Return immediately, without waiting for the operation in progress to complete.
 
-  - `  --collection-ids  ` =\[ `  COLLECTION_GROUP_IDS  ` ,…\]  
+  - `--collection-ids` =\[ `  COLLECTION_GROUP_IDS  ` ,…\]  
     List specifying which collection groups will be included in the operation. When omitted, all collection groups are included.
     
-    For example, to operate on only the `  customers  ` and `  orders  ` collections groups:
+    For example, to operate on only the `customers` and `orders` collections groups:
     
     ``` wrap-code
     gcloud alpha firestore export --collection-ids='customers','orders'
     ```
 
-  - `  --database  ` = `  DATABASE  ` ; default="(default)"  
-    The database to operate on. The default value is `  (default)  ` .
+  - `--database` = `  DATABASE  ` ; default="(default)"  
+    The database to operate on. The default value is `(default)` .
     
-    For example, to operate on database `  foo  ` :
+    For example, to operate on database `foo` :
     
     ``` wrap-code
     gcloud alpha firestore export --database='foo'
     ```
 
-  - `  --namespace-ids  ` =\[ `  NAMESPACE_IDS  ` ,…\]  
+  - `--namespace-ids` =\[ `  NAMESPACE_IDS  ` ,…\]  
     List specifying which namespaces will be included in the operation. When omitted, all namespaces are included.
     
     This is only supported for Datastore Mode databases.
     
-    For example, to operate on only the `  customers  ` and `  orders  ` namespaces:
+    For example, to operate on only the `customers` and `orders` namespaces:
     
     ``` wrap-code
     gcloud alpha firestore export --namespaces-ids='customers','orders'
     ```
 
-  - `  --snapshot-time  ` = `  SNAPSHOT_TIME  `  
+  - `--snapshot-time` = `  SNAPSHOT_TIME  `  
     The version of the database to export.
     
-    The timestamp must be in the past, rounded to the minute and not older than `  earliestVersionTime  ` . If specified, then the exported documents will represent a consistent view of the database at the provided time. Otherwise, there are no guarantees about the consistency of the exported documents.
+    The timestamp must be in the past, rounded to the minute and not older than `earliestVersionTime` . If specified, then the exported documents will represent a consistent view of the database at the provided time. Otherwise, there are no guarantees about the consistency of the exported documents.
     
-    For example, to operate on snapshot time `  2023-05-26T10:20:00.00Z  ` :
+    For example, to operate on snapshot time `2023-05-26T10:20:00.00Z` :
     
     ``` wrap-code
     gcloud alpha firestore export --snapshot-time='2023-05-26T10:20:00.00Z'
@@ -99,7 +98,7 @@ GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 NOTES
 

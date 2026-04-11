@@ -101,7 +101,7 @@ eu
 us
 
   
-`  POST https://firestore.googleapis.com/v1/{parent=projects/*}/databases:restore  `
+`POST https://firestore.googleapis.com/v1/{parent=projects/*}/databases:restore`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -109,11 +109,11 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. The project to restore the database in. Format is `  projects/{projectId}  ` .
+Required. The project to restore the database in. Format is `projects/{projectId}` .
 
 ### Request body
 
@@ -130,26 +130,16 @@ The request body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;databaseId&quot;: string,
-  &quot;backup&quot;: string,
-  &quot;encryptionConfig&quot;: {
-    object (EncryptionConfig)
-  },
-  &quot;tags&quot;: {
-    string: string,
-    ...
-  }
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;databaseId&quot;: string,&quot;backup&quot;: string,&quot;encryptionConfig&quot;: {object (EncryptionConfig)},&quot;tags&quot;: {string: string,...}}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  databaseId  `
+`databaseId`
 
-`  string  `
+`string`
 
 Required. The ID to use for the database, which will become the final component of the database's resource name. This database ID must not be associated with an existing database.
 
@@ -157,33 +147,33 @@ This value should be 4-63 characters. Valid characters are /\[a-z\]\[0-9\]-/ wit
 
 "(default)" database ID is also valid if the database is Standard edition.
 
-`  backup  `
+`backup`
 
-`  string  `
+`string`
 
 Required. Backup to restore from. Must be from the same project as the parent.
 
 The restored database will be created in the same location as the source backup.
 
-Format is: `  projects/{projectId}/locations/{location}/backups/{backup}  `
+Format is: `projects/{projectId}/locations/{location}/backups/{backup}`
 
-`  encryptionConfig  `
+`encryptionConfig`
 
-`  object ( EncryptionConfig  ` )
+` object ( EncryptionConfig  ` )
 
 Optional. Encryption configuration for the restored database.
 
 If this field is not specified, the restored database will use the same encryption configuration as the backup, namely `  useSourceEncryption  ` .
 
-`  tags  `
+`tags`
 
-`  map (key: string, value: string)  `
+`map (key: string, value: string)`
 
 Optional. Immutable. Tags to be bound to the restored database.
 
-The tags should be provided in the format of `  tagKeys/{tag_key_id} -> tagValues/{tag_value_id}  ` .
+The tags should be provided in the format of `tagKeys/{tag_key_id} -> tagValues/{tag_value_id}` .
 
-An object containing a list of `  "key": value  ` pairs. Example: `  { "name": "wrench", "mass": "1.3kg", "count": "3" }  ` .
+An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }` .
 
 ### Response body
 
@@ -193,7 +183,7 @@ If successful, the response body contains an instance of `  Operation  ` .
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

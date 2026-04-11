@@ -97,7 +97,7 @@ eu
 us
 
   
-`  PATCH https://firestore.googleapis.com/v1/{backupSchedule.name=projects/*/databases/*/backupSchedules/*}  `
+`PATCH https://firestore.googleapis.com/v1/{backupSchedule.name=projects/*/databases/*/backupSchedules/*}`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -105,27 +105,27 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  backupSchedule.name  `
+`backupSchedule.name`
 
-`  string  `
+`string`
 
 Output only. The unique backup schedule identifier across all locations and databases for the given project.
 
 This will be auto-assigned.
 
-Format is `  projects/{project}/databases/{database}/backupSchedules/{backupSchedule}  `
+Format is `projects/{project}/databases/{database}/backupSchedules/{backupSchedule}`
 
 ### Query parameters
 
 Parameters
 
-`  updateMask  `
+`updateMask`
 
-`  string ( FieldMask  ` format)
+` string ( FieldMask  ` format)
 
 The list of fields to be updated.
 
-This is a comma-separated list of fully qualified names of fields. Example: `  "user.displayName,photo"  ` .
+This is a comma-separated list of fully qualified names of fields. Example: `"user.displayName,photo"` .
 
 ### Request body
 
@@ -139,7 +139,7 @@ If successful, the response body contains an instance of `  BackupSchedule  ` .
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

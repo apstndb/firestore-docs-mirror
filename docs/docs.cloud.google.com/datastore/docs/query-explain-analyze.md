@@ -1,4 +1,4 @@
-Query Explain lets you submit Datastore mode queries to the backend and receive detailed performance statistics on backend query execution in return. It functions like the `  EXPLAIN ANALYZE  ` operation in many relational database systems.
+Query Explain lets you submit Datastore mode queries to the backend and receive detailed performance statistics on backend query execution in return. It functions like the `EXPLAIN ANALYZE` operation in many relational database systems.
 
 You can send Query Explain requests using the [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) .
 
@@ -72,7 +72,7 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
       }
     }
 
-See the `  indexes_used  ` field in the response to learn about the indexes used in the query plan:
+See the `indexes_used` field in the response to learn about the indexes used in the query plan:
 
     "indexes_used": [
             {"query_scope": "Collection Group", "properties": "(__name__ ASC)"},
@@ -158,7 +158,7 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
       }
     }
 
-See the `  executionStats  ` object to find query profiling information such as:
+See the `executionStats` object to find query profiling information such as:
 
     {
         "resultsReturned": "5",
@@ -192,7 +192,7 @@ For illustration, assume the equivalent of this SQL query.
     FROM movies
     WHERE category = 'Romantic' AND country = 'USA';
 
-If we use the analyze option, the following report output shows the query runs on single-field indexes `  (category ASC, __name__ ASC)  ` and `  (country ASC, __name__ ASC)  ` . It scans 16500 index entries, but returns only 1200 documents.
+If we use the analyze option, the following report output shows the query runs on single-field indexes `(category ASC, __name__ ASC)` and `(country ASC, __name__ ASC)` . It scans 16500 index entries, but returns only 1200 documents.
 
     // Output query planning info
     "indexes_used": [

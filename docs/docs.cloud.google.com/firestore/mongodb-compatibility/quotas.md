@@ -75,15 +75,15 @@ The following tables show the limits that apply to Firestore with MongoDB compat
 <td><ul>
 <li>Must be valid UTF-8 characters</li>
 <li>Must be no longer than 1,500 bytes</li>
-<li>Can't match the regular expression <code dir="ltr" translate="no">         __.*__        </code></li>
-<li>Can't contain <code dir="ltr" translate="no">         $        </code></li>
-<li>Can't be the empty string ( <code dir="ltr" translate="no">         ""        </code> )</li>
+<li>Can't match the regular expression <code dir="ltr" translate="no">__.*__</code></li>
+<li>Can't contain <code dir="ltr" translate="no">$</code></li>
+<li>Can't be the empty string ( <code dir="ltr" translate="no">""</code> )</li>
 <li>Can't contain the null character</li>
 <li>Can't begin with `system.` and can't contain `.system.`.</li>
 </ul></td>
 </tr>
 <tr class="even">
-<td>Constraints on document IDs ( <code dir="ltr" translate="no">       _id      </code> )</td>
+<td>Constraints on document IDs ( <code dir="ltr" translate="no">_id</code> )</td>
 <td><ul>
 <li>Must be an ObjectId, String, 64-bit integer, 32-bit integer, Double, Binary, or Object. Other BSON types are not supported.</li>
 <li>Must be no larger than 1,500 bytes</li>
@@ -94,7 +94,7 @@ The following tables show the limits that apply to Firestore with MongoDB compat
 <li><p>For String-typed IDs:</p>
 <ul>
 <li>Must be valid UTF-8 characters</li>
-<li>Can't match the regular expression <code dir="ltr" translate="no">           __.*__          </code></li>
+<li>Can't match the regular expression <code dir="ltr" translate="no">__.*__</code></li>
 </ul></li>
 </ul></td>
 </tr>
@@ -106,8 +106,8 @@ The following tables show the limits that apply to Firestore with MongoDB compat
 <td>Constraints on field names</td>
 <td><ul>
 <li>Must be valid UTF-8 characters</li>
-<li>Can't be the empty string ( <code dir="ltr" translate="no">         ""        </code> )</li>
-<li>Can't match the regular expression <code dir="ltr" translate="no">         __.*__        </code></li>
+<li>Can't be the empty string ( <code dir="ltr" translate="no">""</code> )</li>
+<li>Can't match the regular expression <code dir="ltr" translate="no">__.*__</code></li>
 </ul></td>
 </tr>
 <tr class="odd">

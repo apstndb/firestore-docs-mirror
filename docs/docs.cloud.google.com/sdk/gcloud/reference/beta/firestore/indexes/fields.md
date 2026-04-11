@@ -4,28 +4,28 @@ gcloud beta firestore indexes fields - manage single-field indexes for Cloud Fir
 
 SYNOPSIS
 
-`  gcloud beta firestore indexes fields  ` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud beta firestore indexes fields` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (BETA)  ` Changes here apply to index settings for individual fields, and won't affect any composite indexes using those fields.
+`(BETA)` Changes here apply to index settings for individual fields, and won't affect any composite indexes using those fields.
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 COMMANDS
 
 `  COMMAND  ` is one of the following:
 
   - `  describe  `  
-    `  (BETA)  ` Describe the index configuration of the given field.
+    `(BETA)` Describe the index configuration of the given field.
   - `  list  `  
-    `  (BETA)  ` List fields with non-default index settings.
+    `(BETA)` List fields with non-default index settings.
   - `  update  `  
-    `  (BETA)  ` Update the index configuration of the given field.
+    `(BETA)` Update the index configuration of the given field.
 
 NOTES
 

@@ -85,7 +85,7 @@ Visit [our installation guide](https://firebase.google.com/docs/ios/installation
 
 1.  Follow the instructions to [add Firebase to your Android app](https://firebase.google.com/docs/android/setup) .
 
-2.  Declare the dependency for the Firestore library for Android in your module (app-level) Gradle file (usually `  app/build.gradle.kts  ` or `  app/build.gradle  ` ):
+2.  Declare the dependency for the Firestore library for Android in your module (app-level) Gradle file (usually `app/build.gradle.kts` or `app/build.gradle` ):
     
         implementation("com.google.firebase:firebase-firestore:26.1.2")
     
@@ -111,7 +111,7 @@ Follow the instructions to [add Firebase to your C++ project](https://firebase.g
 
 **C++ interface for Android.**
 
-  - **Gradle dependencies.** Add the following to your module (app-level) Gradle file (usually `  app/build.gradle  ` ):
+  - **Gradle dependencies.** Add the following to your module (app-level) Gradle file (usually `app/build.gradle` ):
     
     ``` 
             android.defaultConfig.externalNativeBuild.cmake {
@@ -127,7 +127,7 @@ Follow the instructions to [add Firebase to your C++ project](https://firebase.g
             
     ```
 
-  - **Binary dependencies.** Similarly, the recommended way to get the binary dependencies is to add the following to your `  CMakeLists.txt  ` file:
+  - **Binary dependencies.** Similarly, the recommended way to get the binary dependencies is to add the following to your `CMakeLists.txt` file:
     
     ``` 
             add_subdirectory(${FIREBASE_CPP_SDK_DIR} bin/ EXCLUDE_FROM_ALL)
@@ -146,13 +146,13 @@ Follow the instructions to [add Firebase to your Unity project](https://firebase
 
 Use the Unity interface to configure your project to minify Android builds.
 
-You must minify the build to avoid the message `  Error while merging dex archives  ` .
+You must minify the build to avoid the message `Error while merging dex archives` .
 
   - The option can be found in **Player Settings \> Android \> Publishing Settings \> Minify** .
   - The options may differ in different versions of Unity so refer to the official [Unity documentation](https://docs.unity3d.com/Manual/class-PlayerSettingsAndroid.html#minify) and the [Firebase Unity Build Debug Guide](https://firebase.google.com/docs/unity/build-debug-guide#single_dex_issues_and_minification_mandatory_if_using_cloud_firestore) .
-  - If, after enabling minification, the number of referenced methods still exceeds the limit, another option is to enable `  multidex  ` in:
-      - `  mainTemplate.gradle  ` if **Custom Gradle Template** under **Player Settings** is enabled
-      - or, the module-level `  build.gradle  ` file, if you use Android Studio to build the exported project.
+  - If, after enabling minification, the number of referenced methods still exceeds the limit, another option is to enable `multidex` in:
+      - `mainTemplate.gradle` if **Custom Gradle Template** under **Player Settings** is enabled
+      - or, the module-level `build.gradle` file, if you use Android Studio to build the exported project.
 
 ## Initialize Firestore in Native Mode
 
@@ -402,7 +402,7 @@ Android
      Debug.Log("Added data to the alovelace document in the users collection.");
     });
 
-Now add another document to the `  users  ` collection. Notice that this document includes a key-value pair (middle name) that does not appear in the first document. Documents in a collection can contain different sets of information.
+Now add another document to the `users` collection. Notice that this document includes a key-value pair (middle name) that does not appear in the first document. Documents in a collection can contain different sets of information.
 
 ### Web version 9
 
@@ -572,7 +572,7 @@ Android
 
 Use the data viewer in the [Firebase console](https://console.firebase.google.com/project/_/firestore/data) to quickly verify that you've added data to Firestore.
 
-You can also use the `  get  ` method to retrieve the entire collection.
+You can also use the `get` method to retrieve the entire collection.
 
 ### Web version 9
 

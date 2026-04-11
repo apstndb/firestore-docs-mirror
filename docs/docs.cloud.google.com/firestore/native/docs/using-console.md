@@ -27,7 +27,7 @@ To open a document or collection at a specific path, use the **Edit path** butto
 
 ### Non-existent parent documents
 
-A document can exist even if one or more its parents don't exist. For example, the document at path `  /mycoll/mydoc/mysubcoll/mysubdoc  ` can exist even if the parent document `  /mycoll/mydoc  ` does not. The Firestore Standard edition data viewer displays non-existent parent documents as follows:
+A document can exist even if one or more its parents don't exist. For example, the document at path `/mycoll/mydoc/mysubcoll/mysubdoc` can exist even if the parent document `/mycoll/mydoc` does not. The Firestore Standard edition data viewer displays non-existent parent documents as follows:
 
   - In a collection's list of documents, the document IDs of non-existent parent documents are *italicized* .
   - In a non-existent parent document's information panel, the data viewer points out that the document does not exist.
@@ -38,7 +38,7 @@ A document can exist even if one or more its parents don't exist. For example, t
 
 ### Filter data
 
-You can filter documents in a collection based on field value and the `  ==  ` , `  !-  ` , `  >  ` , `  >=  ` , `  <  ` , `  <=  ` , `  in  ` , `  not-in  ` , `  array-contains  ` , `  array-contains-any  ` conditions. For example, you can display only documents where the value of field `  firstname  ` equals `  Sam  ` . To apply a collection filter:
+You can filter documents in a collection based on field value and the `==` , `!-` , `>` , `>=` , `<` , `<=` , `in` , `not-in` , `array-contains` , `array-contains-any` conditions. For example, you can display only documents where the value of field `firstname` equals `Sam` . To apply a collection filter:
 
 1.  Click the filter button filter\_list next to a collection ID:
     
@@ -74,7 +74,7 @@ You can query for documents in the ***Query Builder*** tab of the Firestore Stud
     
     The table will automatically display documents from the specified collection or collection group.
 
-6.  Click ***Add to query*** to filter the returned set of documents. By default, the Query Builder adds a `  WHERE  ` clause. You can modify this clause using the dropdowns and text fields or change to one of the other available clauses. To continue building more complex queries, click ***Add to query*** .
+6.  Click ***Add to query*** to filter the returned set of documents. By default, the Query Builder adds a `WHERE` clause. You can modify this clause using the dropdowns and text fields or change to one of the other available clauses. To continue building more complex queries, click ***Add to query*** .
     
     To remove a query clause, click it's remove button delete . To remove all query clauses, click ***Clear*** .
     
@@ -94,11 +94,11 @@ As you use the Query Builder, keep in mind the following requirements and limita
     
     ![Query builder with an error message to build the required index for the query.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-query-builder-index-error.png)
 
-  - `  ORDER BY  ` clauses must match the fields in the `  WHERE  ` clauses and come in the same order. By default, results are ordered by document ID. If you filter by any other field with anything other than an equality ( `  ==  ` ), add an `  ORDER BY  ` clause for that field.
+  - `ORDER BY` clauses must match the fields in the `WHERE` clauses and come in the same order. By default, results are ordered by document ID. If you filter by any other field with anything other than an equality ( `==` ), add an `ORDER BY` clause for that field.
     
     ![Query builder with a query clause and an order by clause on the same field.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-query-builder-order-by.png)
 
-  - Range ( `  <  ` , `  <=  ` , `  >  ` , `  >=  ` ) and not equals ( `  !=  ` , `  not-in  ` ) query clauses must all filter on the same field.
+  - Range ( `<` , `<=` , `>` , `>=` ) and not equals ( `!=` , `not-in` ) query clauses must all filter on the same field.
 
 For additional limitations, see [Query limitations](https://docs.cloud.google.com/firestore/docs/query-data/queries#query_limitations) .
 

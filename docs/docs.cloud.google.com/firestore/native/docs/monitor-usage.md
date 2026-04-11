@@ -8,7 +8,7 @@ Use the usage dashboards in the Google Cloud console and Firebase console to vie
 
 #### Access control
 
-The usage dashboards require the `  monitoring.timeSeries.list  ` IAM permission. The Project Owner, Editor, and Viewer roles grant this permission. You can also grant this permission through a [Cloud Monitoring role](https://cloud.google.com/monitoring/access-control#monitoring_2) or a [custom role](https://cloud.google.com/iam/docs/creating-custom-roles) .
+The usage dashboards require the `monitoring.timeSeries.list` IAM permission. The Project Owner, Editor, and Viewer roles grant this permission. You can also grant this permission through a [Cloud Monitoring role](https://cloud.google.com/monitoring/access-control#monitoring_2) or a [custom role](https://cloud.google.com/iam/docs/creating-custom-roles) .
 
 ### Database usage dashboard
 

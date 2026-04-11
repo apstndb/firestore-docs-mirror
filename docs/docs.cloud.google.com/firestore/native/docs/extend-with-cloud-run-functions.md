@@ -16,7 +16,7 @@ The process of Firestore events triggering a Cloud Run function consists of the 
 
 2.  When a change occurs, the service is triggered and performs its tasks.
 
-3.  The service receives a data object with a snapshot of the affected document. For `  write  ` or `  update  ` events, the data object contains snapshots representing document state before and after the triggering event.
+3.  The service receives a data object with a snapshot of the affected document. For `write` or `update` events, the data object contains snapshots representing document state before and after the triggering event.
 
 ## Before you begin
 
@@ -34,15 +34,15 @@ You or your administrator must grant the deployer account and the trigger identi
 
 To get the permissions that you need to trigger from Firestore events, ask your administrator to grant you the following IAM roles on your project:
 
-  - [Cloud Build Editor](https://docs.cloud.google.com/iam/docs/roles-permissions/cloudbuild#cloudbuild.builds.editor) ( `  roles/cloudbuild.builds.editor  ` )
-  - [Cloud Run Admin](https://docs.cloud.google.com/iam/docs/roles-permissions/run#run.admin) ( `  roles/run.admin  ` )
-  - [Datastore Owner](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.owner) ( `  roles/datastore.owner  ` )
-  - [Eventarc Admin](https://docs.cloud.google.com/iam/docs/roles-permissions/eventarc#eventarc.admin) ( `  roles/eventarc.admin  ` )
-  - [Logs View Accessor](https://docs.cloud.google.com/iam/docs/roles-permissions/logging#logging.viewAccessor) ( `  roles/logging.viewAccessor  ` )
-  - [Project IAM Admin](https://docs.cloud.google.com/iam/docs/roles-permissions/resourcemanager#resourcemanager.projectIamAdmin) ( `  roles/resourcemanager.projectIamAdmin  ` )
-  - [Service Account Admin](https://docs.cloud.google.com/iam/docs/roles-permissions/iam#iam.serviceAccountAdmin) ( `  roles/iam.serviceAccountAdmin  ` )
-  - [Service Account User](https://docs.cloud.google.com/iam/docs/roles-permissions/iam#iam.serviceAccountUser) ( `  roles/iam.serviceAccountUser  ` )
-  - [Service Usage Admin](https://docs.cloud.google.com/iam/docs/roles-permissions/serviceusage#serviceusage.serviceUsageAdmin) ( `  roles/serviceusage.serviceUsageAdmin  ` )
+  - [Cloud Build Editor](https://docs.cloud.google.com/iam/docs/roles-permissions/cloudbuild#cloudbuild.builds.editor) ( `roles/cloudbuild.builds.editor` )
+  - [Cloud Run Admin](https://docs.cloud.google.com/iam/docs/roles-permissions/run#run.admin) ( `roles/run.admin` )
+  - [Datastore Owner](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.owner) ( `roles/datastore.owner` )
+  - [Eventarc Admin](https://docs.cloud.google.com/iam/docs/roles-permissions/eventarc#eventarc.admin) ( `roles/eventarc.admin` )
+  - [Logs View Accessor](https://docs.cloud.google.com/iam/docs/roles-permissions/logging#logging.viewAccessor) ( `roles/logging.viewAccessor` )
+  - [Project IAM Admin](https://docs.cloud.google.com/iam/docs/roles-permissions/resourcemanager#resourcemanager.projectIamAdmin) ( `roles/resourcemanager.projectIamAdmin` )
+  - [Service Account Admin](https://docs.cloud.google.com/iam/docs/roles-permissions/iam#iam.serviceAccountAdmin) ( `roles/iam.serviceAccountAdmin` )
+  - [Service Account User](https://docs.cloud.google.com/iam/docs/roles-permissions/iam#iam.serviceAccountUser) ( `roles/iam.serviceAccountUser` )
+  - [Service Usage Admin](https://docs.cloud.google.com/iam/docs/roles-permissions/serviceusage#serviceusage.serviceUsageAdmin) ( `roles/serviceusage.serviceUsageAdmin` )
 
 For more information about granting roles, see [Manage access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
 
@@ -64,13 +64,13 @@ Note that by default, [Cloud Build permissions include permissions to upload and
     
     **Note:**
     
-    The [`  iam.automaticIamGrantsForDefaultServiceAccounts  ` organization policy constraint](https://docs.cloud.google.com/resource-manager/docs/organization-policy/restricting-service-accounts#disable_service_account_default_grants) prevents the Editor role from being automatically granted to default service accounts. If you created your organization after May 3, 2024, this constraint is enforced by default.
+    The [`iam.automaticIamGrantsForDefaultServiceAccounts` organization policy constraint](https://docs.cloud.google.com/resource-manager/docs/organization-policy/restricting-service-accounts#disable_service_account_default_grants) prevents the Editor role from being automatically granted to default service accounts. If you created your organization after May 3, 2024, this constraint is enforced by default.
     
     We strongly recommend that you enforce this constraint to disable the automatic role grant. If you disable the automatic role grant, you must decide which roles to grant to the default service accounts, and then [grant these roles](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) yourself.
     
     If the default service account already has the Editor role, we recommend that you replace the Editor role with less permissive roles.To safely modify the service account's roles, use [Policy Simulator](https://docs.cloud.google.com/policy-intelligence/docs/simulate-iam-policies) to see the impact of the change, and then [grant and revoke the appropriate roles](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
 
-2.  By default, Cloud Run services are only callable by Project Owners, Project Editors, and Cloud Run Admins and Invokers. You can [control access on a per-service basis](https://docs.cloud.google.com/run/docs/securing/managing-access#control-service-or-job-access) ; however, for testing purposes, grant the [Cloud Run Invoker role](https://docs.cloud.google.com/iam/docs/roles-permissions/run#run.invoker) ( `  run.invoker  ` ) on the Google Cloud project to the Compute Engine service account. This grants the role on all Cloud Run services and jobs in a project.
+2.  By default, Cloud Run services are only callable by Project Owners, Project Editors, and Cloud Run Admins and Invokers. You can [control access on a per-service basis](https://docs.cloud.google.com/run/docs/securing/managing-access#control-service-or-job-access) ; however, for testing purposes, grant the [Cloud Run Invoker role](https://docs.cloud.google.com/iam/docs/roles-permissions/run#run.invoker) ( `run.invoker` ) on the Google Cloud project to the Compute Engine service account. This grants the role on all Cloud Run services and jobs in a project.
     
         gcloud projects add-iam-policy-binding PROJECT_ID \
             --member=serviceAccount:PROJECT_NUMBER-compute@developer.gserviceaccount.com \
@@ -78,9 +78,9 @@ Note that by default, [Cloud Build permissions include permissions to upload and
     
     Note that if you create a trigger for an authenticated Cloud Run service without granting the Cloud Run Invoker role, the trigger is created successfully and is active. However, the trigger will not work as expected and a message similar to the following appears in the logs:
     
-    `  The request was not authenticated. Either allow unauthenticated invocations or set the proper Authorization header.  `
+    `The request was not authenticated. Either allow unauthenticated invocations or set the proper Authorization header.`
 
-3.  Grant the [Eventarc Event Receiver role](https://docs.cloud.google.com/iam/docs/roles-permissions/eventarc#eventarc.eventReceiver) ( `  roles/eventarc.eventReceiver  ` ) on the project to the Compute Engine default service account so that the Eventarc trigger can receive events from event providers.
+3.  Grant the [Eventarc Event Receiver role](https://docs.cloud.google.com/iam/docs/roles-permissions/eventarc#eventarc.eventReceiver) ( `roles/eventarc.eventReceiver` ) on the project to the Compute Engine default service account so that the Eventarc trigger can receive events from event providers.
     
         gcloud projects add-iam-policy-binding PROJECT_ID \
             --member=serviceAccount:PROJECT_NUMBER-compute@developer.gserviceaccount.com \
@@ -88,7 +88,7 @@ Note that by default, [Cloud Build permissions include permissions to upload and
 
 #### Optional role for the Pub/Sub service agent
 
-  - If you enabled the Cloud Pub/Sub service agent on or before April 8, 2021, to support authenticated Pub/Sub push requests, grant the [Service Account Token Creator role](https://docs.cloud.google.com/iam/docs/roles-permissions/iam#iam.serviceAccountTokenCreator) ( `  roles/iam.serviceAccountTokenCreator  ` ) to the service agent. Otherwise, this role is granted by default:
+  - If you enabled the Cloud Pub/Sub service agent on or before April 8, 2021, to support authenticated Pub/Sub push requests, grant the [Service Account Token Creator role](https://docs.cloud.google.com/iam/docs/roles-permissions/iam#iam.serviceAccountTokenCreator) ( `roles/iam.serviceAccountTokenCreator` ) to the service agent. Otherwise, this role is granted by default:
     
         gcloud projects add-iam-policy-binding PROJECT_ID \
             --member=serviceAccount:service-PROJECT_NUMBER@gcp-sa-pubsub.iam.gserviceaccount.com \
@@ -102,7 +102,7 @@ Before you deploy your service, you must create a Firestore database:
 
 2.  Select **Create a Firestore database** .
 
-3.  In the **Name your database** field, enter a *Database ID* , such as `  firestore-db  ` .
+3.  In the **Name your database** field, enter a *Database ID* , such as `firestore-db` .
 
 4.  In the **Configuration options** section, **Firestore native** is selected by default along with the applicable security rules.
 
@@ -122,22 +122,22 @@ To write a function that responds to Firestore events, prepare to specify the fo
 
 ### Event types
 
-Firestore supports `  create  ` , `  update  ` , `  delete  ` , and `  write  ` events. The `  write  ` event encompasses all modifications to a document.
+Firestore supports `create` , `update` , `delete` , and `write` events. The `write` event encompasses all modifications to a document.
 
-| Event type                                                                  | Trigger                                                               |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `        google.cloud.firestore.document.v1.created       ` (default)       | Triggered when a document is written to for the first time.           |
-| `        google.cloud.firestore.document.v1.updated       `                 | Triggered when a document already exists and has any value changed.   |
-| `        google.cloud.firestore.document.v1.deleted       `                 | Triggered when a document with data is deleted.                       |
-| `        google.cloud.firestore.document.v1.written       `                 | Triggered when a document is created, updated or deleted.             |
-| `        google.cloud.firestore.document.v1.created.withAuthContext       ` | Same as `        created       ` but adds authentication information. |
-| `        google.cloud.firestore.document.v1.updated.withAuthContext       ` | Same as `        updated       ` but adds authentication information. |
-| `        google.cloud.firestore.document.v1.deleted.withAuthContext       ` | Same as `        deleted       ` but adds authentication information. |
-| `        google.cloud.firestore.document.v1.written.withAuthContext       ` | Same as `        written       ` but adds authentication information. |
+| Event type                                                   | Trigger                                                             |
+| ------------------------------------------------------------ | ------------------------------------------------------------------- |
+| `google.cloud.firestore.document.v1.created` (default)       | Triggered when a document is written to for the first time.         |
+| `google.cloud.firestore.document.v1.updated`                 | Triggered when a document already exists and has any value changed. |
+| `google.cloud.firestore.document.v1.deleted`                 | Triggered when a document with data is deleted.                     |
+| `google.cloud.firestore.document.v1.written`                 | Triggered when a document is created, updated or deleted.           |
+| `google.cloud.firestore.document.v1.created.withAuthContext` | Same as `created` but adds authentication information.              |
+| `google.cloud.firestore.document.v1.updated.withAuthContext` | Same as `updated` but adds authentication information.              |
+| `google.cloud.firestore.document.v1.deleted.withAuthContext` | Same as `deleted` but adds authentication information.              |
+| `google.cloud.firestore.document.v1.written.withAuthContext` | Same as `written` but adds authentication information.              |
 
 **Note:** You set triggers at the document level. It is not possible to create a trigger activated by changes to a specific field or collection.
 
-Wildcards are written in triggers using curly braces, for example: `  projects/ YOUR_PROJECT_ID /databases/(default)/documents/collection/{document_wildcard}  `
+Wildcards are written in triggers using curly braces, for example: `projects/ YOUR_PROJECT_ID /databases/(default)/documents/collection/{document_wildcard}`
 
 ### Trigger event filters
 
@@ -145,29 +145,29 @@ To trigger your service, specify a document path to listen to. The document path
 
 Here are a few examples of valid document paths:
 
-  - `  users/marie  ` : Monitors a single document, `  /users/marie  ` .
+  - `users/marie` : Monitors a single document, `/users/marie` .
 
-  - `  users/{username}  ` : Monitors all user documents. Wildcards are used to monitor all documents in the collection.
+  - `users/{username}` : Monitors all user documents. Wildcards are used to monitor all documents in the collection.
 
-  - `  users/{username}/addresses/home  ` : Monitors the home address document for all users.
+  - `users/{username}/addresses/home` : Monitors the home address document for all users.
 
-  - `  users/{username}/addresses/{addressId}  ` : Monitors all address documents.
+  - `users/{username}/addresses/{addressId}` : Monitors all address documents.
 
-  - `  users/{user=**}  ` : Monitors all user documents and any documents in subcollections under each user document such as `  /users/userID/address/home  ` or `  /users/userID/phone/work  ` .
+  - `users/{user=**}` : Monitors all user documents and any documents in subcollections under each user document such as `/users/userID/address/home` or `/users/userID/phone/work` .
 
-  - `  users/{username}/addresses  ` : *invalid* address path. Refers to the subcollection `  addresses  ` , not a document.
+  - `users/{username}/addresses` : *invalid* address path. Refers to the subcollection `addresses` , not a document.
 
 #### Wildcards and parameters
 
-If you don't know the specific document you want to monitor, use a `  {wildcard}  ` instead of the document ID:
+If you don't know the specific document you want to monitor, use a `{wildcard}` instead of the document ID:
 
-  - `  users/{username}  ` listens for changes to all user documents.
+  - `users/{username}` listens for changes to all user documents.
 
-In this example, when any field on any document in `  users  ` is changed, it matches a wildcard called `  {username}  ` .
+In this example, when any field on any document in `users` is changed, it matches a wildcard called `{username}` .
 
-If a document in `  users  ` has [subcollections](https://docs.cloud.google.com/firestore/docs/concepts/structure-data#subcollections) , and a field in one of those subcollections' documents is changed, the `  {username}  ` wildcard is *not* triggered. If your goal is to respond to events in subcollections also, use the multi-segment wildcard `  {username=**}  ` .
+If a document in `users` has [subcollections](https://docs.cloud.google.com/firestore/docs/concepts/structure-data#subcollections) , and a field in one of those subcollections' documents is changed, the `{username}` wildcard is *not* triggered. If your goal is to respond to events in subcollections also, use the multi-segment wildcard `{username=**}` .
 
-Wildcard matches are extracted from document paths. You can define as many wildcards as you like to substitute explicit collection or document IDs. You can use up to *one* multi-segment wildcard like `  {username=**}  ` .
+Wildcard matches are extracted from document paths. You can define as many wildcards as you like to substitute explicit collection or document IDs. You can use up to *one* multi-segment wildcard like `{username=**}` .
 
 ### Function code
 
@@ -175,13 +175,13 @@ See [examples](https://docs.cloud.google.com/firestore/native/docs/extend-with-c
 
 #### Include the proto dependencies in your source
 
-You must include the [Cloud Run `  data.proto  `](https://github.com/googleapis/google-cloudevents/blob/main/proto/google/events/cloud/firestore/v1/data.proto) file in the source directory for your function. This file imports the following protos which you must also include in your source directory:
+You must include the [Cloud Run `data.proto`](https://github.com/googleapis/google-cloudevents/blob/main/proto/google/events/cloud/firestore/v1/data.proto) file in the source directory for your function. This file imports the following protos which you must also include in your source directory:
 
-  - [`  google/protobuf/struct.proto  `](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/struct.proto)
-  - [`  google/protobuf/timestamp.proto  `](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/timestamp.proto)
-  - [`  google/type/latlng.proto  `](https://github.com/googleapis/googleapis/blob/master/google/type/latlng.proto)
+  - [`google/protobuf/struct.proto`](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/struct.proto)
+  - [`google/protobuf/timestamp.proto`](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/timestamp.proto)
+  - [`google/type/latlng.proto`](https://github.com/googleapis/googleapis/blob/master/google/type/latlng.proto)
 
-Use the same directory structure for the dependencies. For example, place `  struct.proto  ` within `  google/protobuf  ` .
+Use the same directory structure for the dependencies. For example, place `struct.proto` within `google/protobuf` .
 
 These files are required to decode event data. If your function source does not include these files, it returns an error when it runs.
 
@@ -252,7 +252,7 @@ This trigger invokes your service with an event similar to:
 }
 ```
 
-Each `  Document  ` object contains one or more `  Value  ` objects. See the [`  Value  ` documentation](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/Value) for type references.
+Each `Document` object contains one or more `Value` objects. See the [`Value` documentation](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/Value) for type references.
 
 ## Create triggers for functions
 
@@ -292,7 +292,7 @@ When you use the Google Cloud console to create a function, you can also add a t
     
     7.  In the **Service account** field, select a service account. Eventarc triggers are linked to service accounts to use as an identity when invoking your function. Your Eventarc trigger's service account must have the permission to invoke your function. By default, Cloud Run uses the [Compute Engine default service account](https://docs.cloud.google.com/compute/docs/access/service-accounts#default_service_account) .
     
-    8.  Optionally, specify the **Service URL path** to send the incoming request to. This is the relative path on the destination service to which the events for the trigger should be sent. For example: `  /  ` , `  /route  ` , `  route  ` , and `  route/subroute  ` .
+    8.  Optionally, specify the **Service URL path** to send the incoming request to. This is the relative path on the destination service to which the events for the trigger should be sent. For example: `/` , `/route` , `route` , and `route/subroute` .
 
 6.  Once you've completed the required fields, click **Save trigger** .
 
@@ -320,7 +320,7 @@ When you create a function using the gcloud CLI, you must first [deploy](https:/
     
       - BASE\_IMAGE\_ID with the base image environment for your function. For more details about base images and the packages included in each image, see [Runtimes base images](https://docs.cloud.google.com/run/docs/configuring/services/runtime-base-images#how_to_obtain_base_images) .
     
-      - REGION with the Google Cloud [region](https://docs.cloud.google.com/run/docs/locations) where you want to deploy your function. For example, `  europe-west1  ` .
+      - REGION with the Google Cloud [region](https://docs.cloud.google.com/run/docs/locations) where you want to deploy your function. For example, `europe-west1` .
 
 2.  Run the following command to create a trigger that filters events:
     
@@ -343,7 +343,7 @@ When you create a function using the gcloud CLI, you must first [deploy](https:/
     
       - PROJECT\_NUMBER with your Google Cloud project number. Eventarc triggers are linked to service accounts to use as an identity when invoking your function. Your Eventarc trigger's service account must have the permission to invoke your function. By default, Cloud Run uses the Default compute service account.
     
-    Each `  event-filters  ` flag specifies a type of event, with the function triggering only when an event meets all of the criteria specified in its `  event-filters  ` flags. Each trigger must have an `  event-filters  ` flag specifying a supported [event type](https://docs.cloud.google.com/eventarc/docs/reference/supported-events#directly-from-a-google-cloud-source) , such as a new document written to Firestore or a file uploaded to Cloud Storage. You can't change the event filter type after creation. To change the event filter type, you must create a new trigger and delete the old one. Optionally, you can repeat the `  --event-filters  ` flag with a supported filter in the form `  ATTRIBUTE=VALUE  ` to add more filters.
+    Each `event-filters` flag specifies a type of event, with the function triggering only when an event meets all of the criteria specified in its `event-filters` flags. Each trigger must have an `event-filters` flag specifying a supported [event type](https://docs.cloud.google.com/eventarc/docs/reference/supported-events#directly-from-a-google-cloud-source) , such as a new document written to Firestore or a file uploaded to Cloud Storage. You can't change the event filter type after creation. To change the event filter type, you must create a new trigger and delete the old one. Optionally, you can repeat the `--event-filters` flag with a supported filter in the form `ATTRIBUTE=VALUE` to add more filters.
 
 ### Terraform
 
@@ -531,7 +531,7 @@ The following sample prints the fields of a triggering Firestore event:
 
 #### Deploy the function
 
-To deploy the `  Hello Firestore  ` function, run the following command:
+To deploy the `Hello Firestore` function, run the following command:
 
 If you haven't already done so, set up your [Firestore database](https://docs.cloud.google.com/run/docs/triggering/firestore-triggers#set_up_your_database) .
 
@@ -539,7 +539,7 @@ To deploy the function, see [Create triggers for functions](https://docs.cloud.g
 
 #### Test the function
 
-To test the `  Hello Firestore  ` function, set up a collection called `  users  ` in your [Firestore database](https://docs.cloud.google.com/run/docs/triggering/firestore-triggers#set_up_your_database) :
+To test the `Hello Firestore` function, set up a collection called `users` in your [Firestore database](https://docs.cloud.google.com/run/docs/triggering/firestore-triggers#set_up_your_database) :
 
 1.  In the Google Cloud console, go to the Firestore databases page:
     
@@ -547,11 +547,11 @@ To test the `  Hello Firestore  ` function, set up a collection called `  users 
 
 2.  Click **Start a collection** .
 
-3.  Specify `  users  ` as the collection ID.
+3.  Specify `users` as the collection ID.
 
 4.  To start adding the collection's first document, under **Add its first document** accept the auto-generated **Document ID** .
 
-5.  Add at least one field for the document, specifying a name and value. For example, in **Field name** , enter `  username  ` , and in **Field value** , enter `  rowan  ` .
+5.  Add at least one field for the document, specifying a name and value. For example, in **Field name** , enter `username` , and in **Field value** , enter `rowan` .
 
 6.  When you're done, click **Save** .
     
@@ -571,7 +571,7 @@ The following example retrieves the value added by the user, converts the string
 
 ### Node.js
 
-Use [protobufjs](https://www.npmjs.com/package/protobufjs) to decode the event data. Include the `  google.events.cloud.firestore.v1  ` [`  data.proto  `](https://github.com/GoogleCloudPlatform/nodejs-docs-samples/tree/main/functions/v2/firebase/firestore/helloFirestore) in your source.
+Use [protobufjs](https://www.npmjs.com/package/protobufjs) to decode the event data. Include the `google.events.cloud.firestore.v1` [`data.proto`](https://github.com/GoogleCloudPlatform/nodejs-docs-samples/tree/main/functions/v2/firebase/firestore/helloFirestore) in your source.
 
     const functions = require('@google-cloud/functions-framework');
     const Firestore = require('@google-cloud/firestore');
@@ -891,11 +891,11 @@ Use [protobufjs](https://www.npmjs.com/package/protobufjs) to decode the event d
         }
     }
 
-**Note:** Updating the function-triggering Firestore document might create subsequent `  updated  ` events, which might cascade into an infinite loop within your function. To solve this problem, use trigger types that ignore updates (such as `  created  ` ), or configure your function to only write to Firestore if the underlying value has changed.
+**Note:** Updating the function-triggering Firestore document might create subsequent `updated` events, which might cascade into an infinite loop within your function. To solve this problem, use trigger types that ignore updates (such as `created` ), or configure your function to only write to Firestore if the underlying value has changed.
 
 #### Deploy the function
 
-To deploy the `  Convert to Uppercase  ` function, run the following command:
+To deploy the `Convert to Uppercase` function, run the following command:
 
 If you haven't already done so, set up your [Firestore database](https://docs.cloud.google.com/run/docs/triggering/firestore-triggers#set_up_your_database) .
 
@@ -903,7 +903,7 @@ To deploy the function, see [Create triggers for functions](https://docs.cloud.g
 
 #### Test the function
 
-To test the `  Convert to Uppercase  ` function you just deployed, set up a collection called `  messages  ` in your [Firestore database](https://docs.cloud.google.com/run/docs/triggering/firestore-triggers#set_up_your_database) :
+To test the `Convert to Uppercase` function you just deployed, set up a collection called `messages` in your [Firestore database](https://docs.cloud.google.com/run/docs/triggering/firestore-triggers#set_up_your_database) :
 
 1.  In the Google Cloud console, go to the Firestore databases page:
     
@@ -911,11 +911,11 @@ To test the `  Convert to Uppercase  ` function you just deployed, set up a coll
 
 2.  Click **Start a collection** .
 
-3.  Specify `  messages  ` as the collection ID.
+3.  Specify `messages` as the collection ID.
 
 4.  To start adding the collection's first document, under **Add its first document** accept the auto-generated **Document ID** .
 
-5.  To trigger your deployed function, add a document where the **Field name** is `  original  ` and the **Field value** is `  minka  ` .
+5.  To trigger your deployed function, add a document where the **Field name** is `original` and the **Field value** is `minka` .
 
 6.  When you save the document, you can see the lowercase word in the value field convert to uppercase.
     

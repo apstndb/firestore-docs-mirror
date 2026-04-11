@@ -4,11 +4,11 @@ The following examples demonstrate how to delete documents, fields, and collecti
 
 ## Delete documents
 
-To delete a document, use the following language-specific `  delete()  ` methods:
+To delete a document, use the following language-specific `delete()` methods:
 
 ### Web version 9
 
-Use the `  deleteDoc()  ` method:
+Use the `deleteDoc()` method:
 
     import { doc, deleteDoc } from "firebase/firestore";
     
@@ -16,7 +16,7 @@ Use the `  deleteDoc()  ` method:
 
 ### Web version 8
 
-Use the `  delete()  ` method:
+Use the `delete()` method:
 
     db.collection("cities").doc("DC").delete().then(() => {
         console.log("Document successfully deleted!");
@@ -26,7 +26,7 @@ Use the `  delete()  ` method:
 
 ##### Swift
 
-Use the `  delete()  ` method:
+Use the `delete()` method:
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
@@ -39,7 +39,7 @@ Use the `  delete()  ` method:
 
 ##### Objective-C
 
-Use the `  deleteDocumentWithCompletion:  ` method:
+Use the `deleteDocumentWithCompletion:` method:
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
@@ -55,7 +55,7 @@ Use the `  deleteDocumentWithCompletion:  ` method:
 ##### Kotlin  
 Android
 
-Use the `  delete()  ` method:
+Use the `delete()` method:
 
     db.collection("cities").document("DC")
         .delete()
@@ -65,7 +65,7 @@ Use the `  delete()  ` method:
 ##### Java  
 Android
 
-Use the `  delete()  ` method:
+Use the `delete()` method:
 
     db.collection("cities").document("DC")
             .delete()
@@ -84,7 +84,7 @@ Use the `  delete()  ` method:
 
 ### Dart
 
-Use the `  delete()  ` method:
+Use the `delete()` method:
 
     db.collection("cities").doc("DC").delete().then(
           (doc) => print("Document deleted"),
@@ -93,7 +93,7 @@ Use the `  delete()  ` method:
 
 ##### Java
 
-Use the `  delete()  ` method:
+Use the `delete()` method:
 
     // asynchronously delete a document
     ApiFuture<WriteResult> writeResult = db.collection("cities").document("DC").delete();
@@ -102,20 +102,20 @@ Use the `  delete()  ` method:
 
 ##### Python
 
-Use the `  delete()  ` method:
+Use the `delete()` method:
 
     db.collection("cities").document("DC").delete()snippets.py
 
 ##### Python  
 (Async)
 
-Use the `  delete()  ` method:
+Use the `delete()` method:
 
     await db.collection("cities").document("DC").delete()snippets.py
 
 ##### C++
 
-Use the `  Delete()  ` method:
+Use the `Delete()` method:
 
     db->Collection("cities").Document("DC").Delete().OnCompletion(
         [](const Future<void>& future) {
@@ -129,13 +129,13 @@ Use the `  Delete()  ` method:
 
 ##### Node.js
 
-Use the `  delete()  ` method:
+Use the `delete()` method:
 
     const res = await db.collection('cities').doc('DC').delete();index.js
 
 ##### Go
 
-Use the `  Delete()  ` method:
+Use the `Delete()` method:
 
     import (
      "context"
@@ -157,34 +157,34 @@ Use the `  Delete()  ` method:
 
 ##### PHP
 
-Use the `  delete()  ` method:
+Use the `delete()` method:
 
     $db->collection('samples/php/cities')->document('DC')->delete();data_delete_doc.php
 
 ##### Unity
 
-Use the `  DeleteAsync()  ` method:
+Use the `DeleteAsync()` method:
 
     DocumentReference cityRef = db.Collection("cities").Document("DC");
     cityRef.DeleteAsync();
 
 ##### C\#
 
-Use the `  DeleteAsync()  ` method:
+Use the `DeleteAsync()` method:
 
     DocumentReference cityRef = db.Collection("cities").Document("DC");
     await cityRef.DeleteAsync();Program.cs
 
 ##### Ruby
 
-Use the `  delete()  ` method:
+Use the `delete()` method:
 
     city_ref = firestore.doc "#{collection_path}/DC"
     city_ref.deletedelete_data.rb
 
 **Warning:** Deleting a document does not delete its subcollections\!
 
-When you delete a document, Firestore does not automatically delete the documents within its subcollections. You can still access the subcollection documents by reference. For example, you can access the document at path `  /mycoll/mydoc/mysubcoll/mysubdoc  ` even if you delete the parent document at `  /mycoll/mydoc  ` .
+When you delete a document, Firestore does not automatically delete the documents within its subcollections. You can still access the subcollection documents by reference. For example, you can access the document at path `/mycoll/mydoc/mysubcoll/mysubdoc` even if you delete the parent document at `/mycoll/mydoc` .
 
 Non-existent parent documents [appear in the console](https://docs.cloud.google.com/firestore/native/docs/using-console#non-existent-parent-documents) , but they don't appear in query results and snapshots.
 
@@ -192,11 +192,11 @@ If you want to delete a document and all the documents within its subcollections
 
 ## Delete fields
 
-To delete specific fields from a document, use the following language-specific `  FieldValue.delete()  ` methods when you update a document:
+To delete specific fields from a document, use the following language-specific `FieldValue.delete()` methods when you update a document:
 
 ### Web version 9
 
-Use the `  deleteField()  ` method:
+Use the `deleteField()` method:
 
     import { doc, updateDoc, deleteField } from "firebase/firestore";
     
@@ -209,7 +209,7 @@ Use the `  deleteField()  ` method:
 
 ### Web version 8
 
-Use the `  FieldValue.delete()  ` method:
+Use the `FieldValue.delete()` method:
 
     var cityRef = db.collection('cities').doc('BJ');
     
@@ -220,7 +220,7 @@ Use the `  FieldValue.delete()  ` method:
 
 ##### Swift
 
-Use the `  FieldValue.delete()  ` method:
+Use the `FieldValue.delete()` method:
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
@@ -236,7 +236,7 @@ Use the `  FieldValue.delete()  ` method:
 
 ##### Objective-C
 
-Use the `  fieldValueForDelete:  ` method:
+Use the `fieldValueForDelete:` method:
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
@@ -253,7 +253,7 @@ Use the `  fieldValueForDelete:  ` method:
 ##### Kotlin  
 Android
 
-Use the `  FieldValue.delete()  ` method:
+Use the `FieldValue.delete()` method:
 
     val docRef = db.collection("cities").document("BJ")
     
@@ -267,7 +267,7 @@ Use the `  FieldValue.delete()  ` method:
 ##### Java  
 Android
 
-Use the `  FieldValue.delete()  ` method:
+Use the `FieldValue.delete()` method:
 
     DocumentReference docRef = db.collection("cities").document("BJ");
     
@@ -281,7 +281,7 @@ Use the `  FieldValue.delete()  ` method:
 
 ### Dart
 
-Use the `  FieldValue.delete()  ` method:
+Use the `FieldValue.delete()` method:
 
     final docRef = db.collection("cities").doc("BJ");
     
@@ -294,7 +294,7 @@ Use the `  FieldValue.delete()  ` method:
 
 ##### Java
 
-Use the `  FieldValue.delete()  ` method:
+Use the `FieldValue.delete()` method:
 
     DocumentReference docRef = db.collection("cities").document("BJ");
     Map<String, Object> updates = new HashMap<>();
@@ -305,7 +305,7 @@ Use the `  FieldValue.delete()  ` method:
 
 ##### Python
 
-Use the `  firestore.DELETE_FIELD  ` method:
+Use the `firestore.DELETE_FIELD` method:
 
     city_ref = db.collection("cities").document("BJ")
     city_ref.update({"capital": firestore.DELETE_FIELD})snippets.py
@@ -313,14 +313,14 @@ Use the `  firestore.DELETE_FIELD  ` method:
 ##### Python  
 (Async)
 
-Use the `  firestore.DELETE_FIELD  ` method:
+Use the `firestore.DELETE_FIELD` method:
 
     city_ref = db.collection("cities").document("BJ")
     await city_ref.update({"capital": firestore.DELETE_FIELD})snippets.py
 
 ##### C++
 
-Use the `  FieldValue::Delete()  ` method:
+Use the `FieldValue::Delete()` method:
 
     DocumentReference doc_ref = db->Collection("cities").Document("BJ");
     doc_ref.Update({{"capital", FieldValue::Delete()}})
@@ -328,7 +328,7 @@ Use the `  FieldValue::Delete()  ` method:
 
 ##### Node.js
 
-Use the `  FieldValue.delete()  ` method:
+Use the `FieldValue.delete()` method:
 
     // Create a document reference
     const cityRef = db.collection('cities').doc('BJ');
@@ -340,7 +340,7 @@ Use the `  FieldValue.delete()  ` method:
 
 ##### Go
 
-Use the `  firestore.Delete  ` method:
+Use the `firestore.Delete` method:
 
     import (
      "context"
@@ -368,7 +368,7 @@ Use the `  firestore.Delete  ` method:
 
 ##### PHP
 
-Use the `  FieldValue::deleteField()  ` method:
+Use the `FieldValue::deleteField()` method:
 
     $cityRef = $db->collection('samples/php/cities')->document('BJ');
     $cityRef->update([
@@ -377,7 +377,7 @@ Use the `  FieldValue::deleteField()  ` method:
 
 ##### Unity
 
-Use the `  FieldValue.Delete  ` method:
+Use the `FieldValue.Delete` method:
 
     DocumentReference cityRef = db.Collection("cities").Document("BJ");
     Dictionary<string, object> updates = new Dictionary<string, object>
@@ -387,7 +387,7 @@ Use the `  FieldValue.Delete  ` method:
 
 ##### C\#
 
-Use the `  FieldValue.Delete  ` method:
+Use the `FieldValue.Delete` method:
 
     DocumentReference cityRef = db.Collection("cities").Document("BJ");
     Dictionary<string, object> updates = new Dictionary<string, object>
@@ -398,7 +398,7 @@ Use the `  FieldValue.Delete  ` method:
 
 ##### Ruby
 
-Use the `  firestore.field_delete  ` method:
+Use the `firestore.field_delete` method:
 
     city_ref = firestore.doc "#{collection_path}/BJ"
     city_ref.update({ capital: firestore.field_delete })delete_data.rb

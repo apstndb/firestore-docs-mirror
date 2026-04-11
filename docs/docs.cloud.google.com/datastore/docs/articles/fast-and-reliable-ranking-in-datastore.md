@@ -26,7 +26,7 @@ However, up-to-date player ranking is not an easy problem to solve, not for Tomo
 
 Getting a rank is easy, if it's not expected to also be scalable and fast. For example, you could execute the following query:
 
-`  SELECT count(key) FROM Players WHERE Score > YourScore  `
+`SELECT count(key) FROM Players WHERE Score > YourScore`
 
 This query counts all the players who have a higher score than yours (Figure 4). But do you want to execute this query for every request from the portal page? How long would it take when you have a million players?
 
@@ -58,10 +58,10 @@ Kaz found an open source implementation of a tree-based ranking algorithm for Da
 
 This Python-based library exposes two methods:
 
-  - `  SetScore  ` to set the score of a player.
-  - `  FindRank  ` to get the rank of a given score.
+  - `SetScore` to set the score of a player.
+  - `FindRank` to get the rank of a given score.
 
-As player-score pairs are created and updated with the `  SetScore  ` method, the Code Jam ranking library builds an N-ary tree <sup>1</sup> . For example, let’s consider a tertiary tree that can count the number of players with scores in the range from 0 to 80 (Figure 5). The library stores the root node, which holds three numbers, as one entity. Each number corresponds to the number of players with scores in the sub-ranges 0 - 26, 27 - 53 and 54 - 80, respectively. The root node has a child node for each range, holding in turn three values for players in the sub-ranges of the sub-range. The hierarchy needs four levels to store the number of players for 81 different score values.
+As player-score pairs are created and updated with the `SetScore` method, the Code Jam ranking library builds an N-ary tree <sup>1</sup> . For example, let’s consider a tertiary tree that can count the number of players with scores in the range from 0 to 80 (Figure 5). The library stores the root node, which holds three numbers, as one entity. Each number corresponds to the number of players with scores in the sub-ranges 0 - 26, 27 - 53 and 54 - 80, respectively. The root node has a child node for each range, holding in turn three values for players in the sub-ranges of the sub-range. The hierarchy needs four levels to store the number of players for 81 different score values.
 
 ![Figure 5: Getting the rank of a score in a tertiary tree.](https://docs.cloud.google.com/static/datastore/docs/articles/images/fast-and-reliable-ranking-in-datastore/image05.png)
 
@@ -95,8 +95,8 @@ However, there is a downside to the Job Aggregation pattern: it uses just one th
 
 Based on the advice from the Datastore team, Kaz wrote Proof of Concept (PoC) code that combines the Job Aggregation pattern with the Code Jam ranking library. The PoC has the following components:
 
-  - **Frontend** : Accepts `  SetScore  ` requests from users and adds them as tasks to a pull queue.
-  - **Pull Queue** : Receives and holds the `  SetScore  ` update requests from the frontend.
+  - **Frontend** : Accepts `SetScore` requests from users and adds them as tasks to a pull queue.
+  - **Pull Queue** : Receives and holds the `SetScore` update requests from the frontend.
   - **Backend** : Runs an infinite loop with a single thread that pulls the update requests from the queue and executes them with the Code Jam ranking library.
 
 The PoC creates a [pull queue](https://docs.cloud.google.com/appengine/docs/python/taskqueue/overview-pull) , which is a kind of [Task Queue](https://docs.cloud.google.com/appengine/docs/python/taskqueue) in App Engine that allows developers to implement one or multiple workers that consume the tasks added to the queue. The backend instance has a single thread in an infinite loop that keeps pulling as many tasks as possible (up to 1000) from the queue. The thread passes each update request to the Code Jam ranking library, which executes them as a batch in a single transaction. The transaction may be open for a second or more, but because there is a single thread driving the library and Datastore, there is no contention and no concurrent modification problem.
@@ -117,11 +117,11 @@ Michael Tang, a Solutions Architect, recommended a workaround using Queue Shardi
 
 The enhanced backend instance loop executes the following algorithm:
 
-1.  Lease `  SetScore  ` tasks from 10 queues.
-2.  Call the `  SetScores  ` method with the tasks.
+1.  Lease `SetScore` tasks from 10 queues.
+2.  Call the `SetScores` method with the tasks.
 3.  Delete the leased tasks from the queues.
 
-In step 1, each queue supplies up to 1000 tasks, each task holding a player name and a score. After aggregating all the player-score pairs into a dictionary, step 2 passes the batch of updates to the `  SetScores  ` method of the Code Jam ranking library, which opens a transaction to store them in Datastore. If there was no error executing the method, then step 3 deletes the leased tasks from the queues.
+In step 1, each queue supplies up to 1000 tasks, each task holding a player name and a score. After aggregating all the player-score pairs into a dictionary, step 2 passes the batch of updates to the `SetScores` method of the Code Jam ranking library, which opens a transaction to store them in Datastore. If there was no error executing the method, then step 3 deletes the leased tasks from the queues.
 
 If there is an error or unexpected shutdown of the loop or the backend instance, the update tasks remain in the task queues, so that they can be processed when the instance restarts. In a production system, you might have another backend acting as a watchdog in standby mode, ready to take over if the first instance should fail.
 
@@ -145,8 +145,8 @@ The proposed solution has several advantages and one disadvantage:
 
 #### Advantages:
 
-  - Fast: `  FindRank  ` call takes a few hundred milliseconds or less.
-  - Fast: `  SetScore  ` just dispatches a task, which is processed by the backend in a few seconds.
+  - Fast: `FindRank` call takes a few hundred milliseconds or less.
+  - Fast: `SetScore` just dispatches a task, which is processed by the backend in a few seconds.
   - Strongly consistent and persisted in Datastore.
   - Ranks are accurate.
   - Scalable to any number of players.
@@ -161,7 +161,7 @@ As this solution uses the Job Aggregation pattern, it relies on a single thread 
 
 If you require an even larger update rate, you may need to shard the ranking tree. You would create multiple implementations of the above system—a set of queues each driving a backend module that updates its own ranking tree.
 
-In general, coordinating the trees is not required or expected. In the simplest case, each `  SetScore  ` update is randomly dispatched to a queue. With three such trees, each with its own Datastore entity group and backend server, the expected update throughput would be three times greater. The tradeoff is that FindRank must query each ranking tree to obtain the rank of a score, and then sum the rank from each tree to find the actual rank, which will take a bit longer. The query time for `  FindRank  ` can be substantially reduced by keeping entities in Memcache.
+In general, coordinating the trees is not required or expected. In the simplest case, each `SetScore` update is randomly dispatched to a queue. With three such trees, each with its own Datastore entity group and backend server, the expected update throughput would be three times greater. The tradeoff is that FindRank must query each ranking tree to obtain the rank of a score, and then sum the rank from each tree to find the actual rank, which will take a bit longer. The query time for `FindRank` can be substantially reduced by keeping entities in Memcache.
 
 This is similar to the well-known approach of using [sharded counters](https://docs.cloud.google.com/appengine/articles/sharding_counters) : each counter is incremented independently, and the total sum is computed only when needed by the client.
 
@@ -196,7 +196,7 @@ Ranking is a classic, yet hard-to-solve, problem if you require the algorithm to
 
 As mentioned in the [How to Get a Rank](https://docs.cloud.google.com/datastore/docs/articles/fast-and-reliable-ranking-in-datastore#howtorank) section, it is expensive to query the database for every ranking request. This alternative approach periodically obtains the count of all the scores, computes the rank of selected scores, and provides those data points for use in computing ranks for particular players. The total range of scores is partitioned into ‘buckets’. Each bucket is characterized by a sub-range of scores and the number of players with scores in that range. From that data, the rank of any score can be found to a close approximation. These buckets are similar to the top-level node in the ranking tree, but instead of descending to more detailed nodes, this algorithm just interpolates within a bucket.
 
-The retrieval of rank by users from the frontend is decoupled from rank computation on buckets in the backend to minimize the time to find a rank. When a player’s rank is requested, the appropriate bucket is found based on the player’s score. The bucket includes an upper rank boundary and a count of players within the bucket. Linear interpolation within buckets is used to estimate the rank of players within buckets. In our tests, we were able to get a player’s rank in consistently less than 400 milliseconds for a full HTTP round trip. The cost of the `  FindRank  ` method does not depend on the number of players in the population.
+The retrieval of rank by users from the frontend is decoupled from rank computation on buckets in the backend to minimize the time to find a rank. When a player’s rank is requested, the appropriate bucket is found based on the player’s score. The bucket includes an upper rank boundary and a count of players within the bucket. Linear interpolation within buckets is used to estimate the rank of players within buckets. In our tests, we were able to get a player’s rank in consistently less than 400 milliseconds for a full HTTP round trip. The cost of the `FindRank` method does not depend on the number of players in the population.
 
 #### Computing the rank for a given score
 
@@ -210,7 +210,7 @@ The count and upper-most rank (i.e. the highest rank possible in this bucket) ar
 
 #### Computing the count and range for each bucket
 
-In the background, using a cron job or task queue, the counts for each bucket are computed and saved by iterating over all buckets. We call this a *global query* , because it computes the parameters needed for estimating the ranks by examining the scores of all players. Sample Python code to do this by the scores in the `  [low_score, high_score]  ` range for each bucket is shown below.
+In the background, using a cron job or task queue, the counts for each bucket are computed and saved by iterating over all buckets. We call this a *global query* , because it computes the parameters needed for estimating the ranks by examining the scores of all players. Sample Python code to do this by the scores in the `[low_score, high_score]` range for each bucket is shown below.
 
     next_upper_rank = 1
     for b in buckets:
@@ -220,7 +220,7 @@ In the background, using a cron job or task queue, the counts for each bucket ar
       b.put()
       next_upper_rank += count
 
-The `  GetCountInRange()  ` method counts each player with scores in the range covered by the bucket. Because Datastore maintains a sorted index on the player scores, this count can be computed efficiently.
+The `GetCountInRange()` method counts each player with scores in the range covered by the bucket. Because Datastore maintains a sorted index on the player scores, this count can be computed efficiently.
 
 When we need to find the rank of a particular player, we can use code as shown below.
 
@@ -228,7 +228,7 @@ When we need to find the rank of a particular player, we can use code as shown b
     rank = RankInBucket(b, score)
     return rank + b.upper_rank - 1
 
-The `  GetBucketByScore(score)  ` method retrieves the bucket that contains the given score. The method `  RankInBucket()  ` performs an estimate of rank within the bucket. The player’s rank is the sum of the upper-most rank of the bucket, and the rank within the specific bucket that brackets the player’s score. We need to subtract 1 from the result because the upper-most rank of the top bucket will be 1, and the rank of the top player within a specific bucket will also be 1.
+The `GetBucketByScore(score)` method retrieves the bucket that contains the given score. The method `RankInBucket()` performs an estimate of rank within the bucket. The player’s rank is the sum of the upper-most rank of the bucket, and the rank within the specific bucket that brackets the player’s score. We need to subtract 1 from the result because the upper-most rank of the top bucket will be 1, and the rank of the top player within a specific bucket will also be 1.
 
 The buckets are stored to both Datastore and Memcache. To compute the rank, read buckets from Memcache (or Datastore, if Memcache is missing the data). In our own implementation of this algorithm, we used the Python NDB Client Library that uses Memcache to cache data stored in Datastore.
 
@@ -252,7 +252,7 @@ Since the computation of a bucket’s upper-most rank is done in the background 
 
 The time to count all the players’ scores, compute the global ranks, and update the buckets, needs to be considered. In our tests, with a population of ten million players, the time was 8 minutes and 34 seconds for our test system on App Engine. This is faster than the hour(s) it would take to compute the rank of each player, but the trade-off is the approximation of scores within each bucket. In contrast, the tree algorithm computes the ‘bucket ranges’ (the top node of the tree) incrementally every few seconds, but has greater implementation complexity and limited throughput.
 
-In all cases, the time for `  FindRank  ` also depends on rapid retrieval of data (bucket or tree nodes) from Memcache. If the data is evicted from Memcache, then it must be re-fetched from Datastore and re-cached for subsequent `  FindRank  ` requests.
+In all cases, the time for `FindRank` also depends on rapid retrieval of data (bucket or tree nodes) from Memcache. If the data is evicted from Memcache, then it must be re-fetched from Datastore and re-cached for subsequent `FindRank` requests.
 
 #### Accuracy
 

@@ -75,15 +75,15 @@ To access your database from a Compute Engine instance, complete the following s
 
 ### gcloud
 
-1.  If you haven't already done this, [install](https://docs.cloud.google.com/sdk/docs/install) the Google Cloud CLI and [set up `  gcloud compute  `](https://docs.cloud.google.com/compute/docs/gcloud-compute) .
+1.  If you haven't already done this, [install](https://docs.cloud.google.com/sdk/docs/install) the Google Cloud CLI and [set up `gcloud compute`](https://docs.cloud.google.com/compute/docs/gcloud-compute) .
 
-2.  Add a Compute Engine VM instance and start it, following the instructions for [starting an instance](https://docs.cloud.google.com/compute/docs/instances/creating-and-starting-an-instance#startinstancegcloud) in the Compute Engine documentation. Specify the project ID, the VM instance name, and either the `  cloud-platform  ` or the `  datastore  ` [scope](https://docs.cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) as shown in the following example.
+2.  Add a Compute Engine VM instance and start it, following the instructions for [starting an instance](https://docs.cloud.google.com/compute/docs/instances/creating-and-starting-an-instance#startinstancegcloud) in the Compute Engine documentation. Specify the project ID, the VM instance name, and either the `cloud-platform` or the `datastore` [scope](https://docs.cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) as shown in the following example.
     
         export PROJECT_ID=[YOUR_PROJECT_ID]
         export INSTANCE_NAME=[YOUR_INSTANCE_NAME]
         gcloud compute instances create $INSTANCE_NAME --project $PROJECT_ID --scopes datastore
     
-    Replace `  [YOUR_PROJECT_ID]  ` with the ID of the project you created previously and `  [YOUR_INSTANCE_NAME]  ` with the name you want to use for your VM instance.
+    Replace `[YOUR_PROJECT_ID]` with the ID of the project you created previously and `[YOUR_INSTANCE_NAME]` with the name you want to use for your VM instance.
 
 3.  Confirm that your [instance is running](https://docs.cloud.google.com/compute/docs/instances/checking-instance-status) .
 

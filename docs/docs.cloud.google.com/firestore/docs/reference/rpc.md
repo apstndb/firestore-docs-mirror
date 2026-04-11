@@ -2,9 +2,9 @@ Accesses the NoSQL document database built for automatic scaling, high performan
 
 ## Service: firestore.googleapis.com
 
-The Service name `  firestore.googleapis.com  ` is needed to create RPC client stubs.
+The Service name `firestore.googleapis.com` is needed to create RPC client stubs.
 
-## `         google.cloud.location.Locations       `
+## `        google.cloud.location.Locations       `
 
 Methods
 
@@ -16,7 +16,7 @@ Gets information about a location.
 
 Lists information about the supported locations for this service.
 
-## `         google.firestore.admin.v1.FirestoreAdmin       `
+## `        google.firestore.admin.v1.FirestoreAdmin       `
 
 Methods
 
@@ -148,7 +148,7 @@ Updates a database.
 
 Updates a field configuration.
 
-## `         google.firestore.admin.v1beta1.FirestoreAdmin       `
+## `        google.firestore.admin.v1beta1.FirestoreAdmin       `
 
 Methods
 
@@ -176,7 +176,7 @@ Imports documents into Google Cloud Firestore.
 
 Lists the indexes that match the specified filters.
 
-## `         google.firestore.admin.v1beta2.FirestoreAdmin       `
+## `        google.firestore.admin.v1beta2.FirestoreAdmin       `
 
 Methods
 
@@ -216,7 +216,7 @@ Lists composite indexes.
 
 Updates a field configuration.
 
-## `         google.firestore.v1.Firestore       `
+## `        google.firestore.v1.Firestore       `
 
 Methods
 
@@ -288,7 +288,7 @@ Updates or inserts a document.
 
 Streams batches of document updates and deletes, in order.
 
-## `         google.firestore.v1beta1.Firestore       `
+## `        google.firestore.v1beta1.Firestore       `
 
 Methods
 
@@ -360,7 +360,7 @@ Updates or inserts a document.
 
 Streams batches of document updates and deletes, in order.
 
-## `         google.longrunning.Operations       `
+## `        google.longrunning.Operations       `
 
 Methods
 

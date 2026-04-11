@@ -14,13 +14,13 @@ Note that the usage dashboard in the console does not reflect reads and writes f
 
 ### Billing Labels
 
-Export and import operations apply the `  goog-firestoremanaged:exportimport  ` label to their read and write operations. In the Cloud Billing reports page, you can use this label to view costs related to import and export operations:
+Export and import operations apply the `goog-firestoremanaged:exportimport` label to their read and write operations. In the Cloud Billing reports page, you can use this label to view costs related to import and export operations:
 
 ![Access the goog-firestoremanaged label from the filters menu.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-import-export-billing-label.png)
 
 ### List recent operations
 
-You can view recent import and export operations using the console or `  gcloud  ` .
+You can view recent import and export operations using the console or `gcloud` .
 
 ### Console
 
@@ -30,7 +30,7 @@ You can view a list of recent export and import operations in the **Firestore Im
 
 ### gcloud
 
-Use the [`  operations list  `](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command to see all running and recently completed export and import operations:
+Use the [`operations list`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command to see all running and recently completed export and import operations:
 
 ``` notranslate
 gcloud firestore operations list

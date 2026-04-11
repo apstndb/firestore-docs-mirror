@@ -4,9 +4,9 @@ An aggregation query processes the data from multiple index entries to return a 
 
 Firestore supports the following aggregation queries:
 
-  - `  count()  `
-  - `  sum()  `
-  - `  average()  `
+  - `count()`
+  - `sum()`
+  - `average()`
 
 Firestore calculates the aggregation and transmits only the result back to your application. Compared to executing a full query and calculating the aggregation in your app, aggregation queries save on both billed document reads and bytes transferred.
 
@@ -14,13 +14,13 @@ Aggregation queries rely on the existing index configuration that your queries a
 
 **Note:** While the code samples cover multiple languages, the text explaining the samples refers to the Web method names.
 
-## Use the `     count()    ` aggregation
+## Use the `count()` aggregation
 
-The `  count()  ` aggregation query lets you determine the number of documents in a collection or query.
+The `count()` aggregation query lets you determine the number of documents in a collection or query.
 
 For more information about the example data, see [Getting data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data) .
 
-The following `  count()  ` aggregation returns the total number of cities in the `  cities  ` collection.
+The following `count()` aggregation returns the total number of cities in the `cities` collection.
 
 ### Web version 9
 
@@ -195,7 +195,7 @@ console.log(snapshot.data().count);
     
     aggregate_query_count.py
 
-The `  count()  ` aggregation takes into account any filters on the query and any `  limit  ` clauses.
+The `count()` aggregation takes into account any filters on the query and any `limit` clauses.
 
 ### Web version 9
 
@@ -376,9 +376,9 @@ console.log(snapshot.data().count);
     
     aggregate_query_count.py
 
-## Use the `     sum()    ` aggregation
+## Use the `sum()` aggregation
 
-Use the `  sum()  ` aggregation to return the total sum of numeric values that match a given query—for example:
+Use the `sum()` aggregation to return the total sum of numeric values that match a given query—for example:
 
 ### Web version 9
 
@@ -533,7 +533,7 @@ func createSumQuery(w io.Writer, projectID string) error {
       
 ```
 
-The `  sum()  ` aggregation takes into account any filters on the query and any limit clauses—for example:
+The `sum()` aggregation takes into account any filters on the query and any limit clauses—for example:
 
 ### Web version 9
 
@@ -698,9 +698,9 @@ func createSumQuery(w io.Writer, projectID string) error {
       
 ```
 
-## Use the `     average()    ` aggregation
+## Use the `average()` aggregation
 
-Use the `  average()  ` aggregation to return the average of numeric values that match a given query, for example:
+Use the `average()` aggregation to return the average of numeric values that match a given query, for example:
 
 ### Web version 9
 
@@ -855,7 +855,7 @@ func createAvgQuery(w io.Writer, projectID string) error {
       
 ```
 
-The `  average()  ` aggregation takes into account any filters on the query and any limit clauses, for example:
+The `average()` aggregation takes into account any filters on the query and any limit clauses, for example:
 
 ### Web version 9
 
@@ -1227,7 +1227,7 @@ As you work with aggregation queries, note the following behavior and limitation
 
   - You can't use aggregation queries with real-time listeners and offline queries. Aggregation queries are only supported through a direct server response. Queries are served only by the Firestore backend, skipping the local cache and any buffered updates. This behavior is identical to operations that are performed inside [Firestore transactions](https://docs.cloud.google.com/firestore/native/docs/manage-data/transactions) .
 
-  - If an aggregation can't resolve within 60 seconds, it returns a `  DEADLINE_EXCEEDED  ` error. Performance depends on your index configuration and on the size of the dataset.
+  - If an aggregation can't resolve within 60 seconds, it returns a `DEADLINE_EXCEEDED` error. Performance depends on your index configuration and on the size of the dataset.
     
     **Note:** Most queries scale based on the on the size of the result set, not the dataset. However, aggregation queries scale based on the size of the dataset and the number of index entries scanned.
     
@@ -1235,11 +1235,11 @@ As you work with aggregation queries, note the following behavior and limitation
 
   - Aggregation queries read from index entries and include only indexed fields.
 
-  - Adding an `  OrderBy  ` clause to an aggregation query limits the aggregation to the documents where the sorting field exists.
+  - Adding an `OrderBy` clause to an aggregation query limits the aggregation to the documents where the sorting field exists.
 
-  - For `  sum()  ` and `  average()  ` aggregations, non-numeric values are ignored. `  sum()  ` and `  average()  ` aggregations take into account only integer values and floating-point number values.
+  - For `sum()` and `average()` aggregations, non-numeric values are ignored. `sum()` and `average()` aggregations take into account only integer values and floating-point number values.
 
-  - When combining multiple aggregations in a single query, note that `  sum()  ` and `  average()  ` ignore non-numeric values while `  count()  ` includes non-numeric values.
+  - When combining multiple aggregations in a single query, note that `sum()` and `average()` ignore non-numeric values while `count()` includes non-numeric values.
 
   - If you combine aggregations that are on different fields, the calculation includes only the documents that contain all those fields.
 

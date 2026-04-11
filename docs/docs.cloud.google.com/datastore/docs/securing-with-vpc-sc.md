@@ -4,19 +4,19 @@
 
 The following APIs are bundled together in VPC Service Controls:
 
-  - `  firestore.googleapis.com  `
-  - `  datastore.googleapis.com  `
-  - `  firestorekeyvisualizer.googleapis.com  `
+  - `firestore.googleapis.com`
+  - `datastore.googleapis.com`
+  - `firestorekeyvisualizer.googleapis.com`
 
-When you restrict the `  firestore.googleapis.com  ` service in a perimeter, the perimeter also restricts the `  datastore.googleapis.com  ` and `  firestorekeyvisualizer.googleapis.com  ` services.
+When you restrict the `firestore.googleapis.com` service in a perimeter, the perimeter also restricts the `datastore.googleapis.com` and `firestorekeyvisualizer.googleapis.com` services.
 
 ### Restrict the datastore.googleapis.com service
 
-The `  datastore.googleapis.com  ` service is bundled under the `  firestore.googleapis.com  ` service. To restrict the `  datastore.googleapis.com  ` service, you must restrict the `  firestore.googleapis.com  ` service as follows:
+The `datastore.googleapis.com` service is bundled under the `firestore.googleapis.com` service. To restrict the `datastore.googleapis.com` service, you must restrict the `firestore.googleapis.com` service as follows:
 
   - When creating a service perimeter using the Google Cloud console, add Firestore as the restricted service.
 
-  - When creating a service perimeter using the Google Cloud CLI, use `  firestore.googleapis.com  ` instead of `  datastore.googleapis.com  ` .
+  - When creating a service perimeter using the Google Cloud CLI, use `firestore.googleapis.com` instead of `datastore.googleapis.com` .
     
         --perimeter-restricted-services=firestore.googleapis.com
 
@@ -37,12 +37,12 @@ Firestore in Datastore mode supports VPC Service Controls but requires additiona
 Firestore uses a Firestore service agent to authorize import and export operations instead of using the App Engine service account. The service agent and service account use the following naming conventions:
 
   - Firestore service agent  
-    `  service- PROJECT_NUMBER @gcp-sa-firestore.iam.gserviceaccount.com  `
+    `service- PROJECT_NUMBER @gcp-sa-firestore.iam.gserviceaccount.com`
 
 Firestore previously used the App Engine default service account instead of the Firestore service agent. If your database still uses the App Engine service account to import or export data, we recommend that you follow the instructions in this section to migrate to using the Firestore service agent.
 
   - App Engine service account  
-    `  PROJECT_ID @appspot.gserviceaccount.com  `
+    `  PROJECT_ID @appspot.gserviceaccount.com `
 
 The Firestore service agent is preferable because it is specific to Firestore. The App Engine service account is shared by more than one service.
 
@@ -82,9 +82,9 @@ For any export or import operations that use a Cloud Storage bucket in *another*
 
 Import and export workflows that stay within the same project do not require changes to permissions. The Firestore service agent can access buckets in the same project by default.
 
-Update the permissions for Cloud Storage buckets from other projects to give access to the `  service- PROJECT_NUMBER @gcp-sa-firestore.iam.gserviceaccount.com  ` service agent. Grant the service agent the `  Firestore Service Agent  ` role.
+Update the permissions for Cloud Storage buckets from other projects to give access to the `service- PROJECT_NUMBER @gcp-sa-firestore.iam.gserviceaccount.com` service agent. Grant the service agent the `Firestore Service Agent` role.
 
-The `  Firestore Service Agent  ` role grants read and write permissions for a Cloud Storage bucket. If you need to grant only read or only write permissions, use a [custom role](https://cloud.google.com/iam/docs/creating-custom-roles) .
+The `Firestore Service Agent` role grants read and write permissions for a Cloud Storage bucket. If you need to grant only read or only write permissions, use a [custom role](https://cloud.google.com/iam/docs/creating-custom-roles) .
 
 The migration process described in the following section helps you identify Cloud Storage buckets that might require permission updates.
 
@@ -144,7 +144,7 @@ To verify your project's migration status:
 
 4.  Look for the principal next to the **Import/Export jobs run as** label.
     
-    If the principal is `  service- PROJECT_NUMBER @gcp-sa-firestore.iam.gserviceaccount.com  ` , then your project has already migrated to the Firestore service agent. The migration can't be undone.
+    If the principal is `service- PROJECT_NUMBER @gcp-sa-firestore.iam.gserviceaccount.com` , then your project has already migrated to the Firestore service agent. The migration can't be undone.
     
     If the project has not been migrated, a banner appears at the top of the page with a **Check Bucket Status** button. See [Migrate to the Firestore service agent](https://docs.cloud.google.com/datastore/docs/securing-with-vpc-sc#migrate_to_the_firestore_service_agent) to complete the migration.
 
@@ -152,7 +152,7 @@ To verify your project's migration status:
 
   - Set the following constraint in your organization's policy:
     
-    **Require Firestore Service Agent for import/export** ( `  firestore.requireP4SAforImportExport  ` ).
+    **Require Firestore Service Agent for import/export** ( `firestore.requireP4SAforImportExport` ).
     
     This constraint requires import and export operations to use the Firestore service agent to authorize requests. To set this constraint, see [Creating and managing organization policies](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-policies#creating_and_editing_policies) .
 

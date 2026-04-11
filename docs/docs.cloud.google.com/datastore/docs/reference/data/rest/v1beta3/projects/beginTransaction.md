@@ -112,7 +112,7 @@ eu
 us
 
   
-`  POST https://datastore.googleapis.com/v1beta3/projects/{projectId}:beginTransaction  `
+`POST https://datastore.googleapis.com/v1beta3/projects/{projectId}:beginTransaction`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -120,9 +120,9 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  projectId  `
+`projectId`
 
-`  string  `
+`string`
 
 Required. The ID of the project against which to make the request.
 
@@ -141,20 +141,16 @@ The request body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;transactionOptions&quot;: {
-    object (TransactionOptions)
-  }
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;transactionOptions&quot;: {object (TransactionOptions)}}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  transactionOptions  `
+`transactionOptions`
 
-`  object ( TransactionOptions  ` )
+` object ( TransactionOptions  ` )
 
 Options for a new transaction.
 
@@ -184,9 +180,9 @@ If successful, the response body contains data with the following structure:
 
 Fields
 
-`  transaction  `
+`transaction`
 
-`  string ( bytes format)  `
+`string ( bytes format)`
 
 The transaction identifier (always present).
 
@@ -196,8 +192,8 @@ A base64-encoded string.
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .
 
@@ -205,7 +201,7 @@ For more information, see the [Authentication Overview](https://docs.cloud.googl
 
 Options for beginning a new transaction.
 
-Transactions can be created explicitly with calls to `  Datastore.BeginTransaction  ` or implicitly by setting `  ReadOptions.new_transaction  ` in read requests.
+Transactions can be created explicitly with calls to `  Datastore.BeginTransaction  ` or implicitly by setting `ReadOptions.new_transaction` in read requests.
 
 <table>
 <colgroup>
@@ -218,34 +214,24 @@ Transactions can be created explicitly with calls to `  Datastore.BeginTransacti
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-
-  // Union field mode can be only one of the following:
-  &quot;readWrite&quot;: {
-    object (ReadWrite)
-  },
-  &quot;readOnly&quot;: {
-    object (ReadOnly)
-  }
-  // End of list of possible types for union field mode.
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{// Union field mode can be only one of the following:&quot;readWrite&quot;: {object (ReadWrite)},&quot;readOnly&quot;: {object (ReadOnly)}// End of list of possible types for union field mode.}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-Union field `  mode  ` . The `  mode  ` of the transaction, indicating whether write operations are supported. `  mode  ` can be only one of the following:
+Union field `mode` . The `mode` of the transaction, indicating whether write operations are supported. `mode` can be only one of the following:
 
-`  readWrite  `
+`readWrite`
 
-`  object ( ReadWrite  ` )
+` object ( ReadWrite  ` )
 
 The transaction should allow both reads and writes.
 
-`  readOnly  `
+`readOnly`
 
-`  object ( ReadOnly  ` )
+` object ( ReadOnly  ` )
 
 The transaction should only allow reads.
 
@@ -273,9 +259,9 @@ Options specific to read / write transactions.
 
 Fields
 
-`  previousTransaction  `
+`previousTransaction`
 
-`  string ( bytes format)  `
+`string ( bytes format)`
 
 The transaction identifier of the transaction being retried.
 
@@ -305,12 +291,12 @@ Options specific to read-only transactions.
 
 Fields
 
-`  readTime  `
+`readTime`
 
-`  string ( Timestamp  ` format)
+` string ( Timestamp  ` format)
 
 Reads entities at the given time.
 
 This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days.
 
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `  "2014-10-02T15:01:23Z"  ` , `  "2014-10-02T15:01:23.045123456Z"  ` or `  "2014-10-02T15:01:23+05:30"  ` .
+Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .

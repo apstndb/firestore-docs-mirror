@@ -15,46 +15,38 @@ Fields are grouped by their "Collection Group", which represent all collections 
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;name&quot;: string,
-  &quot;indexConfig&quot;: {
-    object (IndexConfig)
-  },
-  &quot;ttlConfig&quot;: {
-    object (TtlConfig)
-  }
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;name&quot;: string,&quot;indexConfig&quot;: {object (IndexConfig)},&quot;ttlConfig&quot;: {object (TtlConfig)}}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Required. A field name of the form: `  projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId}/fields/{fieldPath}  `
+Required. A field name of the form: `projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId}/fields/{fieldPath}`
 
-A field path can be a simple field name, e.g. `  address  ` or a path to fields within `  mapValue  ` , e.g. `  address.city  ` , or a special field path. The only valid special field is `  *  ` , which represents any field.
+A field path can be a simple field name, e.g. `address` or a path to fields within `mapValue` , e.g. `address.city` , or a special field path. The only valid special field is `*` , which represents any field.
 
-Field paths can be quoted using ``  `  `` (backtick). The only character that must be escaped within a quoted field path is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted include: `  *  ` , `  .  ` , ``  `  `` (backtick), `  [  ` , `  ]  ` , as well as any ascii symbolic characters.
+Field paths can be quoted using `` ` `` (backtick). The only character that must be escaped within a quoted field path is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted include: `*` , `.` , `` ` `` (backtick), `[` , `]` , as well as any ascii symbolic characters.
 
-Examples: ``  `address.city`  `` represents a field named `  address.city  ` , not the map key `  city  ` in the field `  address  ` . ``  `*`  `` represents a field named `  *  ` , not any field.
+Examples: `` `address.city` `` represents a field named `address.city` , not the map key `city` in the field `address` . `` `*` `` represents a field named `*` , not any field.
 
-A special `  Field  ` contains the default indexing settings for all fields. This field's resource name is: `  projects/{projectId}/databases/{databaseId}/collectionGroups/__default__/fields/*  ` Indexes defined on this `  Field  ` will be applied to all fields which do not have their own `  Field  ` index configuration.
+A special `Field` contains the default indexing settings for all fields. This field's resource name is: `projects/{projectId}/databases/{databaseId}/collectionGroups/__default__/fields/*` Indexes defined on this `Field` will be applied to all fields which do not have their own `Field` index configuration.
 
-`  indexConfig  `
+`indexConfig`
 
-`  object ( IndexConfig  ` )
+` object ( IndexConfig  ` )
 
-The index configuration for this field. If unset, field indexing will revert to the configuration defined by the `  ancestorField  ` . To explicitly remove all indexes for this field, specify an index config with an empty list of indexes.
+The index configuration for this field. If unset, field indexing will revert to the configuration defined by the `ancestorField` . To explicitly remove all indexes for this field, specify an index config with an empty list of indexes.
 
-`  ttlConfig  `
+`ttlConfig`
 
-`  object ( TtlConfig  ` )
+` object ( TtlConfig  ` )
 
-The TTL configuration for this `  Field  ` . Setting or unsetting this will enable or disable the TTL for documents that have this `  Field  ` .
+The TTL configuration for this `Field` . Setting or unsetting this will enable or disable the TTL for documents that have this `Field` .
 
 ## IndexConfig
 
@@ -71,49 +63,40 @@ The index configuration for this field.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;indexes&quot;: [
-    {
-      object (Index)
-    }
-  ],
-  &quot;usesAncestorConfig&quot;: boolean,
-  &quot;ancestorField&quot;: string,
-  &quot;reverting&quot;: boolean
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;indexes&quot;: [{object (Index)}],&quot;usesAncestorConfig&quot;: boolean,&quot;ancestorField&quot;: string,&quot;reverting&quot;: boolean}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  indexes[]  `
+`indexes[]`
 
-`  object ( Index  ` )
+` object ( Index  ` )
 
 The indexes supported for this field.
 
-`  usesAncestorConfig  `
+`usesAncestorConfig`
 
-`  boolean  `
+`boolean`
 
-Output only. When true, the `  Field  ` 's index configuration is set from the configuration specified by the `  ancestorField  ` . When false, the `  Field  ` 's index configuration is defined explicitly.
+Output only. When true, the `Field` 's index configuration is set from the configuration specified by the `ancestorField` . When false, the `Field` 's index configuration is defined explicitly.
 
-`  ancestorField  `
+`ancestorField`
 
-`  string  `
+`string`
 
-Output only. Specifies the resource name of the `  Field  ` from which this field's index configuration is set (when `  usesAncestorConfig  ` is true), or from which it *would* be set if this field had no index configuration (when `  usesAncestorConfig  ` is false).
+Output only. Specifies the resource name of the `Field` from which this field's index configuration is set (when `usesAncestorConfig` is true), or from which it *would* be set if this field had no index configuration (when `usesAncestorConfig` is false).
 
-`  reverting  `
+`reverting`
 
-`  boolean  `
+`boolean`
 
-Output only When true, the `  Field  ` 's index configuration is in the process of being reverted. Once complete, the index config will transition to the same state as the field specified by `  ancestorField  ` , at which point `  usesAncestorConfig  ` will be `  true  ` and `  reverting  ` will be `  false  ` .
+Output only When true, the `Field` 's index configuration is in the process of being reverted. Once complete, the index config will transition to the same state as the field specified by `ancestorField` , at which point `usesAncestorConfig` will be `true` and `reverting` will be `false` .
 
 ## TtlConfig
 
-The TTL (time-to-live) configuration for documents that have this `  Field  ` set.
+The TTL (time-to-live) configuration for documents that have this `Field` set.
 
 Storing a timestamp value into a TTL-enabled field will be treated as the document's absolute expiration time. For Enterprise edition databases, the timestamp value may also be stored in an array value in the TTL-enabled field.
 
@@ -130,18 +113,16 @@ Timestamp values in the past indicate that the document is eligible for immediat
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;state&quot;: enum (State)
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;state&quot;: enum (State)}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  state  `
+`state`
 
-`  enum ( State  ` )
+` enum ( State  ` )
 
 Output only. The state of the TTL configuration.
 
@@ -151,32 +132,32 @@ The state of applying the TTL configuration to all documents.
 
 Enums
 
-`  STATE_UNSPECIFIED  `
+`STATE_UNSPECIFIED`
 
 The state is unspecified or unknown.
 
-`  CREATING  `
+`CREATING`
 
 The TTL is being applied. There is an active long-running operation to track the change. Newly written documents will have TTLs applied as requested. Requested TTLs on existing documents are still being processed. When TTLs on all existing documents have been processed, the state will move to 'ACTIVE'.
 
-`  ACTIVE  `
+`ACTIVE`
 
 The TTL is active for all documents.
 
-`  NEEDS_REPAIR  `
+`NEEDS_REPAIR`
 
-The TTL configuration could not be enabled for all existing documents. Newly written documents will continue to have their TTL applied. The LRO returned when last attempting to enable TTL for this `  Field  ` has failed, and may have more details.
+The TTL configuration could not be enabled for all existing documents. Newly written documents will continue to have their TTL applied. The LRO returned when last attempting to enable TTL for this `Field` has failed, and may have more details.
 
 ## Methods
 
-### `             get           `
+### `            get           `
 
 Gets the metadata and configuration for a Field.
 
-### `             list           `
+### `            list           `
 
 Lists the field configuration and metadata for this database.
 
-### `             patch           `
+### `            patch           `
 
 Updates a field configuration.

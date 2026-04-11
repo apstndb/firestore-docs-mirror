@@ -4,30 +4,30 @@ gcloud beta datastore operations - manage Long Running Operations for Cloud Data
 
 SYNOPSIS
 
-`  gcloud beta datastore operations  ` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud beta datastore operations` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (BETA)  ` Manage Long Running Operations for Cloud Datastore.
+`(BETA)` Manage Long Running Operations for Cloud Datastore.
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 COMMANDS
 
 `  COMMAND  ` is one of the following:
 
   - `  cancel  `  
-    `  (BETA)  ` Cancel a currently-running Cloud Datastore admin operation.
+    `(BETA)` Cancel a currently-running Cloud Datastore admin operation.
   - `  delete  `  
-    `  (BETA)  ` Delete a completed Cloud Datastore admin operation.
+    `(BETA)` Delete a completed Cloud Datastore admin operation.
   - `  describe  `  
-    `  (BETA)  ` Retrieves information about a Cloud Datastore admin operation.
+    `(BETA)` Retrieves information about a Cloud Datastore admin operation.
   - `  list  `  
-    `  (BETA)  ` List pending Cloud Datastore admin operations and their status.
+    `(BETA)` List pending Cloud Datastore admin operations and their status.
 
 NOTES
 

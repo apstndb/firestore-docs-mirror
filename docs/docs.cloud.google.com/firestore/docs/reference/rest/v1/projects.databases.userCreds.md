@@ -13,64 +13,52 @@ A Cloud Firestore User Creds.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;name&quot;: string,
-  &quot;createTime&quot;: string,
-  &quot;updateTime&quot;: string,
-  &quot;state&quot;: enum (State),
-  &quot;securePassword&quot;: string,
-
-  // Union field UserCredsIdentity can be only one of the following:
-  &quot;resourceIdentity&quot;: {
-    object (ResourceIdentity)
-  }
-  // End of list of possible types for union field UserCredsIdentity.
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;name&quot;: string,&quot;createTime&quot;: string,&quot;updateTime&quot;: string,&quot;state&quot;: enum (State),&quot;securePassword&quot;: string,// Union field UserCredsIdentity can be only one of the following:&quot;resourceIdentity&quot;: {object (ResourceIdentity)}// End of list of possible types for union field UserCredsIdentity.}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Identifier. The resource name of the UserCreds. Format: `  projects/{project}/databases/{database}/userCreds/{userCreds}  `
+Identifier. The resource name of the UserCreds. Format: `projects/{project}/databases/{database}/userCreds/{userCreds}`
 
-`  createTime  `
+`createTime`
 
-`  string ( Timestamp  ` format)
+` string ( Timestamp  ` format)
 
 Output only. The time the user creds were created.
 
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `  "2014-10-02T15:01:23Z"  ` , `  "2014-10-02T15:01:23.045123456Z"  ` or `  "2014-10-02T15:01:23+05:30"  ` .
+Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .
 
-`  updateTime  `
+`updateTime`
 
-`  string ( Timestamp  ` format)
+` string ( Timestamp  ` format)
 
 Output only. The time the user creds were last updated.
 
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `  "2014-10-02T15:01:23Z"  ` , `  "2014-10-02T15:01:23.045123456Z"  ` or `  "2014-10-02T15:01:23+05:30"  ` .
+Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .
 
-`  state  `
+`state`
 
-`  enum ( State  ` )
+` enum ( State  ` )
 
 Output only. Whether the user creds are enabled or disabled. Defaults to ENABLED on creation.
 
-`  securePassword  `
+`securePassword`
 
-`  string  `
+`string`
 
 Output only. The plaintext server-generated password for the user creds. Only populated in responses for userCreds.create and userCreds.resetPassword.
 
-Union field `  UserCredsIdentity  ` . Identity associated with this User Creds. `  UserCredsIdentity  ` can be only one of the following:
+Union field `UserCredsIdentity` . Identity associated with this User Creds. `UserCredsIdentity` can be only one of the following:
 
-`  resourceIdentity  `
+`resourceIdentity`
 
-`  object ( ResourceIdentity  ` )
+` object ( ResourceIdentity  ` )
 
 Resource Identity descriptor.
 
@@ -80,15 +68,15 @@ The state of the user creds (ENABLED or DISABLED).
 
 Enums
 
-`  STATE_UNSPECIFIED  `
+`STATE_UNSPECIFIED`
 
 The default value. Should not be used.
 
-`  ENABLED  `
+`ENABLED`
 
 The user creds are enabled.
 
-`  DISABLED  `
+`DISABLED`
 
 The user creds are disabled.
 
@@ -116,38 +104,38 @@ Describes a Resource Identity principal.
 
 Fields
 
-`  principal  `
+`principal`
 
-`  string  `
+`string`
 
 Output only. Principal identifier string. See: <https://cloud.google.com/iam/docs/principal-identifiers>
 
 ## Methods
 
-### `             create           `
+### `            create           `
 
 Create a user creds.
 
-### `             delete           `
+### `            delete           `
 
 Deletes a user creds.
 
-### `             disable           `
+### `            disable           `
 
 Disables a user creds.
 
-### `             enable           `
+### `            enable           `
 
 Enables a user creds.
 
-### `             get           `
+### `            get           `
 
 Gets a user creds resource.
 
-### `             list           `
+### `            list           `
 
 List all user creds in the database.
 
-### `             resetPassword           `
+### `            resetPassword           `
 
 Resets the password of a user creds.

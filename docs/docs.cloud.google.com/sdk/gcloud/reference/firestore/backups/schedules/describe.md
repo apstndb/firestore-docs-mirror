@@ -4,7 +4,7 @@ gcloud firestore backups schedules describe - describes a Cloud Firestore backup
 
 SYNOPSIS
 
-`  gcloud firestore backups schedules describe  ` `  --backup-schedule  ` = `  BACKUP_SCHEDULE  ` `  --database  ` = `  DATABASE  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud firestore backups schedules describe` `  --backup-schedule  ` = `  BACKUP_SCHEDULE  ` `  --database  ` = `  DATABASE  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 EXAMPLES
 
@@ -16,19 +16,19 @@ gcloud firestore backups schedules describe --database='testdb' --backup-schedul
 
 REQUIRED FLAGS
 
-  - `  --backup-schedule  ` = `  BACKUP_SCHEDULE  `  
+  - `--backup-schedule` = `  BACKUP_SCHEDULE  `  
     The backup schedule to operate on.
     
-    For example, to operate on backup schedule `  091a49a0-223f-4c98-8c69-a284abbdb26b  ` :
+    For example, to operate on backup schedule `091a49a0-223f-4c98-8c69-a284abbdb26b` :
     
     ``` wrap-code
     gcloud firestore backups schedules describe --backup-schedule='091a49a0-223f-4c98-8c69-a284abbdb26b'
     ```
 
-  - `  --database  ` = `  DATABASE  `  
+  - `--database` = `  DATABASE  `  
     The database to operate on.
     
-    For example, to operate on database `  foo  ` :
+    For example, to operate on database `foo` :
     
     ``` wrap-code
     gcloud firestore backups schedules describe --database='foo'
@@ -38,7 +38,7 @@ GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 NOTES
 

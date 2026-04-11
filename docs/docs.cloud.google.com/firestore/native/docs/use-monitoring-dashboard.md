@@ -30,7 +30,7 @@ You can create a monitoring dashboard to monitor error rates and ensure availabi
 
 The error rate is determined by dividing the number of requests that resulted in an error response by the total number of requests sent.
 
-An example dashboard for calculating error rates can be created by calculating the A/B ratio for `  api/request_count  ` of valid requests with `  4xx  ` or `  5xx  ` error codes contrasted with the `  api/request_count  ` of all valid requests.
+An example dashboard for calculating error rates can be created by calculating the A/B ratio for `api/request_count` of valid requests with `4xx` or `5xx` error codes contrasted with the `api/request_count` of all valid requests.
 
 ![**Figure 1.** Understand availability with error rate.](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-error-rate.png)
 
@@ -54,7 +54,7 @@ Consider the following example where we create a latency alert policy. The alert
 
 3.  Select the **Request Latencies** metric from the **Consumed API** resource.
 
-4.  Add a service filter for `  firestore.googleapis.com  ` for Firestore in Native mode databases.
+4.  Add a service filter for `firestore.googleapis.com` for Firestore in Native mode databases.
     
     ![](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-dashboard-latencies.png)
 

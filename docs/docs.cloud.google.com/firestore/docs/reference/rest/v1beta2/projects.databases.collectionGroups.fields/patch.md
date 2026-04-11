@@ -1,8 +1,8 @@
-Updates a field configuration. Currently, field updates apply only to single field index configuration. However, calls to `  FirestoreAdmin.UpdateField  ` should provide a field mask to avoid changing any configuration that the caller isn't aware of. The field mask should be specified as: `  { paths: "indexConfig" }  ` .
+Updates a field configuration. Currently, field updates apply only to single field index configuration. However, calls to `  FirestoreAdmin.UpdateField  ` should provide a field mask to avoid changing any configuration that the caller isn't aware of. The field mask should be specified as: `{ paths: "indexConfig" }` .
 
-This call returns a `  google.longrunning.Operation  ` which may be used to track the status of the field update. The metadata for the operation will be the type `  FieldOperationMetadata  ` .
+This call returns a `  google.longrunning.Operation  ` which may be used to track the status of the field update. The metadata for the operation will be the type `FieldOperationMetadata` .
 
-To configure the default field settings for the database, use the special `  Field  ` with resource name: `  projects/{projectId}/databases/{databaseId}/collectionGroups/__default__/fields/*  ` .
+To configure the default field settings for the database, use the special `Field` with resource name: `projects/{projectId}/databases/{databaseId}/collectionGroups/__default__/fields/*` .
 
 ### HTTP request
 
@@ -101,7 +101,7 @@ eu
 us
 
   
-`  PATCH https://firestore.googleapis.com/v1beta2/{field.name=projects/*/databases/*/collectionGroups/*/fields/*}  `
+`PATCH https://firestore.googleapis.com/v1beta2/{field.name=projects/*/databases/*/collectionGroups/*/fields/*}`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -109,31 +109,31 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  field.name  `
+`field.name`
 
-`  string  `
+`string`
 
-A field name of the form `  projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId}/fields/{fieldPath}  `
+A field name of the form `projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId}/fields/{fieldPath}`
 
-A field path may be a simple field name, e.g. `  address  ` or a path to fields within mapValue , e.g. `  address.city  ` , or a special field path. The only valid special field is `  *  ` , which represents any field.
+A field path may be a simple field name, e.g. `address` or a path to fields within mapValue , e.g. `address.city` , or a special field path. The only valid special field is `*` , which represents any field.
 
-Field paths may be quoted using `  (backtick). The only character that needs to be escaped within a quoted field path is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted include:  ` \* `  ,  ` . `  , ``` (backtick),  ` \[ `  ,  ` \]\`, as well as any ascii symbolic characters.
+Field paths may be quoted using `(backtick). The only character that needs to be escaped within a quoted field path is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted include:` \* `,` . `, ``` (backtick),` \[ `,` \]\`, as well as any ascii symbolic characters.
 
-Examples: (Note: Comments here are written in markdown syntax, so there is an additional layer of backticks to represent a code block) `  \  ` address.city\` `  represents a field named  ` address.city `  , not the map key  ` city `  in the field  ` address `  .  ` \`\*\` `  represents a field named  ` \*\`, not any field.
+Examples: (Note: Comments here are written in markdown syntax, so there is an additional layer of backticks to represent a code block) `\` address.city\` `represents a field named` address.city `, not the map key` city `in the field` address `.` \`\*\` `represents a field named` \*\`, not any field.
 
-A special `  Field  ` contains the default indexing settings for all fields. This field's resource name is: `  projects/{projectId}/databases/{databaseId}/collectionGroups/__default__/fields/*  ` Indexes defined on this `  Field  ` will be applied to all fields which do not have their own `  Field  ` index configuration.
+A special `Field` contains the default indexing settings for all fields. This field's resource name is: `projects/{projectId}/databases/{databaseId}/collectionGroups/__default__/fields/*` Indexes defined on this `Field` will be applied to all fields which do not have their own `Field` index configuration.
 
 ### Query parameters
 
 Parameters
 
-`  updateMask  `
+`updateMask`
 
-`  string ( FieldMask  ` format)
+` string ( FieldMask  ` format)
 
 A mask, relative to the field. If specified, only configuration specified by this field\_mask will be updated in the field.
 
-This is a comma-separated list of fully qualified names of fields. Example: `  "user.displayName,photo"  ` .
+This is a comma-separated list of fully qualified names of fields. Example: `"user.displayName,photo"` .
 
 ### Request body
 
@@ -147,7 +147,7 @@ If successful, the response body contains an instance of `  Operation  ` .
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

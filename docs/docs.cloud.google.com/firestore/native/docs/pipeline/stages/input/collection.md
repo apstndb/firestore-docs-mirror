@@ -63,9 +63,9 @@ Android
 
 ## Behavior
 
-In order to use the `  collection(...)  ` stage, it must appear as the first stage in the pipeline (or sub-pipeline).
+In order to use the `collection(...)` stage, it must appear as the first stage in the pipeline (or sub-pipeline).
 
-The order of documents returned from the `  collection(...)  ` stage is unstable and cannot be relied upon. Firestore will attempt to execute the query in the most efficient way possible, which can change the order depending on the schema or index configuration. A subsequent `  sort(...)  ` stage can be used to obtain a deterministic ordering.
+The order of documents returned from the `collection(...)` stage is unstable and cannot be relied upon. Firestore will attempt to execute the query in the most efficient way possible, which can change the order depending on the schema or index configuration. A subsequent `sort(...)` stage can be used to obtain a deterministic ordering.
 
 For example, for the following documents:
 
@@ -76,7 +76,7 @@ For example, for the following documents:
     await db.collection("cities").doc("CHI").set({name: "Chicago", state: "Illinois"});
     await db.collection("states").doc("CA").set({name: "California"});
 
-The `  collection  ` stage can be used to retrieve all cities in the `  cities  ` collection and then sort them in ascending order of name.
+The `collection` stage can be used to retrieve all cities in the `cities` collection and then sort them in ascending order of name.
 
 ### Node.js
 
@@ -95,7 +95,7 @@ This query produces the following documents:
 
 ### Subcollections
 
-The `  collection(...)  ` stage can also be used to target collections under a specific parent by providing the full path to the stage.
+The `collection(...)` stage can also be used to target collections under a specific parent by providing the full path to the stage.
 
 For example, for the following documents:
 
@@ -115,7 +115,7 @@ For this example, we only want the departments of New York city.
       .sort(field("employees").ascending())
       .execute();
 
-This will return all departments under the full path `  cities/NY/departments  ` .
+This will return all departments under the full path `cities/NY/departments` .
 
 ``` 
   { name: "NY Building Deparment", employees: 1000 }

@@ -115,7 +115,7 @@ This stage runs multiple pipelines in parallel and concatenates the results toge
 
 ### Non-Deterministic Order of Results
 
-The order in which results are combined between the two pipelines is non-deterministic. Any perceived order is unstable and shouldn't be relied upon. A following `  sort(...)  ` stage can be added if a stable order is required.
+The order in which results are combined between the two pipelines is non-deterministic. Any perceived order is unstable and shouldn't be relied upon. A following `sort(...)` stage can be added if a stable order is required.
 
 ##### Node.js
 
@@ -195,4 +195,4 @@ Android
 
 ### Duplicate Results
 
-The `  union(...)  ` stage does not deduplicate results. A following `  distinct(...)  ` or `  aggregate(...)  ` stage can be added if duplicate results need to be removed.
+The `union(...)` stage does not deduplicate results. A following `distinct(...)` or `aggregate(...)` stage can be added if duplicate results need to be removed.

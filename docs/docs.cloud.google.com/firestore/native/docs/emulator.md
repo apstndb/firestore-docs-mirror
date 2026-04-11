@@ -26,11 +26,11 @@ To install the Firestore emulator, install and update the gcloud CLI:
     
     The emulator prints the host and port number where it is running.
     
-    By default, the emulator attempts to use `  127.0.0.1:8080  ` . To bind the emulator to a specific host and port, use the optional `  --host-port  ` flag, replacing HOST and PORT :
+    By default, the emulator attempts to use `127.0.0.1:8080` . To bind the emulator to a specific host and port, use the optional `--host-port` flag, replacing HOST and PORT :
     
         gcloud emulators firestore start --host-port=HOST:PORT
 
-2.  Type `  Control + C  ` to stop the emulator. The emulator may also be stopped with a POST to `  /shutdown  ` . For example:
+2.  Type `Control + C` to stop the emulator. The emulator may also be stopped with a POST to `/shutdown` . For example:
     
         curl -d '' HOST:PORT/shutdown
 
@@ -40,7 +40,7 @@ How you connect to the emulator depends on the type of client library, server cl
 
 ### Server client libraries
 
-To connect a Firestore server client library (C\#, Go, Java, Node.js, PHP, Python, and Ruby), set the `  FIRESTORE_EMULATOR_HOST  ` environment variable. When this environment variable is set, the server client libraries automatically connect to the emulator.
+To connect a Firestore server client library (C\#, Go, Java, Node.js, PHP, Python, and Ruby), set the `FIRESTORE_EMULATOR_HOST` environment variable. When this environment variable is set, the server client libraries automatically connect to the emulator.
 
     export FIRESTORE_EMULATOR_HOST="HOST:PORT"
 
@@ -92,13 +92,13 @@ The Firestore in Native Mode emulator clears database contents when shut down. S
 
 The Firestore emulator includes a REST endpoint for deleting all the data currently in the emulator. You can use this endpoint to clear data between tests without shutting down the emulator.
 
-To delete all data in the emulator, perform an HTTP `  DELETE  ` operation against the following endpoint, replacing HOST and PORT with the host and port you selected and replacing PROJECT\_ID with your own project ID:
+To delete all data in the emulator, perform an HTTP `DELETE` operation against the following endpoint, replacing HOST and PORT with the host and port you selected and replacing PROJECT\_ID with your own project ID:
 
     http://HOST:PORT/emulator/v1/projects/PROJECT_ID/databases/(default)/documents
 
-Adjust the host and port if the emulator does not use `  127.0.0.1:8080  ` . Your code should await REST confirmation that the deletion finished or failed.
+Adjust the host and port if the emulator does not use `127.0.0.1:8080` . Your code should await REST confirmation that the deletion finished or failed.
 
-You can perform this operation from the shell using `  curl  ` :
+You can perform this operation from the shell using `curl` :
 
     $ curl -v -X DELETE "http://HOST:PORT/emulator/v1/projects/PROJECT_ID/databases/(default)/documents"
 

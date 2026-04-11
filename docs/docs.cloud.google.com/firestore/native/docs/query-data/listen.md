@@ -1,6 +1,6 @@
 # Get real-time updates
 
-You can *listen* to a document with the `  onSnapshot()  ` method. An initial call using the callback you provide creates a document snapshot immediately with the current contents of the single document. Then, each time the contents change, another call updates the document snapshot.
+You can *listen* to a document with the `onSnapshot()` method. An initial call using the callback you provide creates a document snapshot immediately with the current contents of the single document. Then, each time the contents change, another call updates the document snapshot.
 
 **Note:**
 
@@ -101,7 +101,7 @@ Android
         );
     firestore.dart
 
-Often, you want your UI to react to changes in the contents of a Firestore document or collection. You can do so with a `  StreamBuilder  ` widget that consumes the Firestore snapshot stream:
+Often, you want your UI to react to changes in the contents of a Firestore document or collection. You can do so with a `StreamBuilder` widget that consumes the Firestore snapshot stream:
 
     class UserInformation extends StatefulWidget {
       @override
@@ -300,7 +300,7 @@ Often, you want your UI to react to changes in the contents of a Firestore docum
 
 Local writes in your app will invoke snapshot listeners immediately. This is because of an important feature called "latency compensation." When you perform a write, your listeners will be notified with the new data *before* the data is sent to the backend.
 
-Retrieved documents have a `  metadata.hasPendingWrites  ` property that indicates whether the document has local changes that haven't been written to the backend yet. You can use this property to determine the source of events received by your snapshot listener:
+Retrieved documents have a `metadata.hasPendingWrites` property that indicates whether the document has local changes that haven't been written to the backend yet. You can use this property to determine the source of events received by your snapshot listener:
 
 ### Web version 9
 
@@ -482,9 +482,9 @@ When listening for changes to a document, collection, or query, you can pass opt
 
 By default, listeners are not notified of changes that only affect metadata. Consider what happens when your app writes a new document:
 
-1.  A change event is immediately fired with the new data. The document has not yet been written to the backend so the "pending writes" flag is `  true  ` .
+1.  A change event is immediately fired with the new data. The document has not yet been written to the backend so the "pending writes" flag is `true` .
 2.  The document is written to the backend.
-3.  The backend notifies the client of the successful write. There is no change to the document data, but there is a metadata change because the "pending writes" flag is now `  false  ` .
+3.  The backend notifies the client of the successful write. There is no change to the document data, but there is a metadata change because the "pending writes" flag is now `false` .
 
 If you want to receive snapshot events when the document or query metadata changes, pass a listen options object when attaching your listener.
 
@@ -606,7 +606,7 @@ Android
 
     // Not yet supported in the Ruby client library
 
-**Note:** If you just want to know when your write has completed, you can listen to the completion callback rather than using `  hasPendingWrites  ` . In JavaScript, use the `  Promise  ` returned from your write operation by attaching a `  .then()  ` callback. In Swift, pass a completion callback to your write function.
+**Note:** If you just want to know when your write has completed, you can listen to the completion callback rather than using `hasPendingWrites` . In JavaScript, use the `Promise` returned from your write operation by attaching a `.then()` callback. In Swift, pass a completion callback to your write function.
 
 ### Configure listeners for local changes only
 
@@ -731,7 +731,7 @@ Android
 
 ## Listen to multiple documents in a collection
 
-As with documents, you can use `  onSnapshot()  ` instead of `  get()  ` to listen to the results of a query. This creates a query snapshot. For example, to listen to the documents with state `  CA  ` :
+As with documents, you can use `onSnapshot()` instead of `get()` to listen to the results of a query. This creates a query snapshot. For example, to listen to the documents with state `CA` :
 
 ### Web version 9
 
@@ -1020,7 +1020,7 @@ Android
 
 The snapshot handler will receive a new query snapshot every time the query results change (that is, when a document is added, removed, or modified).
 
-**Important:** As explained above under [Events for local changes](https://docs.cloud.google.com/firestore/native/docs/query-data/listen#events-local-changes) , you will receive events *immediately* for your local writes. Your listener can use the `  metadata.hasPendingWrites  ` field on each document to determine whether the document has local changes that have not yet been written to the backend.
+**Important:** As explained above under [Events for local changes](https://docs.cloud.google.com/firestore/native/docs/query-data/listen#events-local-changes) , you will receive events *immediately* for your local writes. Your listener can use the `metadata.hasPendingWrites` field on each document to determine whether the document has local changes that have not yet been written to the backend.
 
 ## View changes between snapshots
 
@@ -1410,7 +1410,7 @@ Android
       end
     endquery_watch.rb
 
-**Important:** The first query snapshot contains `  added  ` events for all existing documents that match the query. This is because you're getting a set of changes that bring your query snapshot current with the initial state of the query. This allows you, for instance, to directly populate your UI from the changes you receive in the first query snapshot, without needing to add special logic for handling the initial state.
+**Important:** The first query snapshot contains `added` events for all existing documents that match the query. This is because you're getting a set of changes that bring your query snapshot current with the initial state of the query. This allows you, for instance, to directly populate your UI from the changes you receive in the first query snapshot, without needing to add special logic for handling the initial state.
 
 The initial state can come from the server directly, or from a local cache. If there is state available in a local cache, the query snapshot will be initially populated with the cached data, then updated with the server's data when the client has caught up with the server's state.
 

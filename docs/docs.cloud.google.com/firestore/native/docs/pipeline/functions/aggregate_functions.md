@@ -6,22 +6,22 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## **Aggregate**
 
-All aggregate functions can be used as top-level expressions in the `  aggregate(...)  ` stage.
+All aggregate functions can be used as top-level expressions in the `aggregate(...)` stage.
 
-|                                        |                                                                                       |
-| -------------------------------------- | ------------------------------------------------------------------------------------- |
-| Name                                   | Description                                                                           |
-| `          COUNT        `              | Returns the number of documents.                                                      |
-| `          COUNT_IF        `           | Returns the count of documents where an expression evaluates to `        TRUE       ` |
-| `          COUNT_DISTINCT        `     | Returns the count of unique, non `        NULL       ` values                         |
-| `          SUM        `                | Returns the sum of all `        NUMERIC       ` values                                |
-| `          AVERAGE        `            | Returns the average of all `        NUMERIC       ` values                            |
-| `          MINIMUM        `            | Returns the minimum non `        NULL       ` value                                   |
-| `          MAXIMUM        `            | Returns the maximum non `        NULL       ` value                                   |
-| `          FIRST        `              | Returns the `        expression       ` value for the first document.                 |
-| `          LAST        `               | Returns the `        expression       ` value for the last document.                  |
-| `          ARRAY_AGG        `          | Returns an array of all input values.                                                 |
-| `          ARRAY_AGG_DISTINCT        ` | Returns an array of all distinct input values.                                        |
+|                                       |                                                                        |
+| ------------------------------------- | ---------------------------------------------------------------------- |
+| Name                                  | Description                                                            |
+| `         COUNT        `              | Returns the number of documents.                                       |
+| `         COUNT_IF        `           | Returns the count of documents where an expression evaluates to `TRUE` |
+| `         COUNT_DISTINCT        `     | Returns the count of unique, non `NULL` values                         |
+| `         SUM        `                | Returns the sum of all `NUMERIC` values                                |
+| `         AVERAGE        `            | Returns the average of all `NUMERIC` values                            |
+| `         MINIMUM        `            | Returns the minimum non `NULL` value                                   |
+| `         MAXIMUM        `            | Returns the maximum non `NULL` value                                   |
+| `         FIRST        `              | Returns the `expression` value for the first document.                 |
+| `         LAST        `               | Returns the `expression` value for the last document.                  |
+| `         ARRAY_AGG        `          | Returns an array of all input values.                                  |
+| `         ARRAY_AGG_DISTINCT        ` | Returns an array of all distinct input values.                         |
 
 ### COUNT
 
@@ -32,7 +32,7 @@ All aggregate functions can be used as top-level expressions in the `  aggregate
 
 **Description:**
 
-Returns the count of documents from the previous stage where `  expression  ` evaluates to any non- `  NULL  ` value. If no `  expression  ` is provided, returns the total count of documents from the previous stage.
+Returns the count of documents from the previous stage where `expression` evaluates to any non- `NULL` value. If no `expression` is provided, returns the total count of documents from the previous stage.
 
 ##### Node.js
 
@@ -146,7 +146,7 @@ Android
 
 **Description:**
 
-Returns the number of documents from the previous stage where `  expression  ` evaluates to `  TRUE  ` .
+Returns the number of documents from the previous stage where `expression` evaluates to `TRUE` .
 
 ##### Node.js
 
@@ -224,7 +224,7 @@ Android
 
 **Description:**
 
-Returns the number of unique non- `  NULL  ` , non- `  ABSENT  ` values of `  expression  ` .
+Returns the number of unique non- `NULL` , non- `ABSENT` values of `expression` .
 
 ##### Node.js
 
@@ -292,11 +292,11 @@ Android
 
 **Description:**
 
-Returns the sum for all numerical values, ignoring non-numeric values. Returns `  NaN  ` if any values are `  NaN  ` .
+Returns the sum for all numerical values, ignoring non-numeric values. Returns `NaN` if any values are `NaN` .
 
 The output will have the same type as the widest input type except in these cases:
 
-  - An `  INTEGER  ` will be converted to a `  DOUBLE  ` if it cannot be represented as an `  INTEGER  ` .
+  - An `INTEGER` will be converted to a `DOUBLE` if it cannot be represented as an `INTEGER` .
 
 ##### Node.js
 
@@ -364,11 +364,11 @@ Android
 
 **Description:**
 
-Returns the average for all numerical values, ignoring non-numeric values. Evaluates to `  NaN  ` if any values are `  NaN  ` , or `  NULL  ` if no numerical values are aggregated.
+Returns the average for all numerical values, ignoring non-numeric values. Evaluates to `NaN` if any values are `NaN` , or `NULL` if no numerical values are aggregated.
 
 The output will have the same type as the input type except in these cases:
 
-  - An `  INTEGER  ` will be converted to a `  DOUBLE  ` if it cannot be represented as an `  INTEGER  ` .
+  - An `INTEGER` will be converted to a `DOUBLE` if it cannot be represented as an `INTEGER` .
 
 ##### Node.js
 
@@ -436,9 +436,9 @@ Android
 
 **Description:**
 
-Returns the minimum non- `  NULL  ` , non-absent value of the `  expression  ` when evaluated on each document.
+Returns the minimum non- `NULL` , non-absent value of the `expression` when evaluated on each document.
 
-If there are no non- `  NULL  ` , non-absent values, `  NULL  ` is returned. This includes when no documents are considered.
+If there are no non- `NULL` , non-absent values, `NULL` is returned. This includes when no documents are considered.
 
 If there are multiple minimum equivalent values, any one of those values can be returned. Value type ordering follows [documented ordering](https://docs.cloud.google.com/firestore/docs/concepts/data-types#value_type_ordering) .
 
@@ -508,9 +508,9 @@ Android
 
 **Description:**
 
-Returns the maximum non- `  NULL  ` , non-absent value of the `  expression  ` when evaluated on each document.
+Returns the maximum non- `NULL` , non-absent value of the `expression` when evaluated on each document.
 
-If there are no non- `  NULL  ` , non-absent values, `  NULL  ` is returned. This includes when no documents are considered.
+If there are no non- `NULL` , non-absent values, `NULL` is returned. This includes when no documents are considered.
 
 If there are multiple maximum equivalent values, any one of those values can be returned. Value type ordering follows [documented ordering](https://docs.cloud.google.com/firestore/docs/concepts/data-types#value_type_ordering) .
 
@@ -580,7 +580,7 @@ Android
 
 **Description:**
 
-Returns the value of `  expression  ` for the first returned document.
+Returns the value of `expression` for the first returned document.
 
 ### LAST
 
@@ -590,7 +590,7 @@ Returns the value of `  expression  ` for the first returned document.
 
 **Description:**
 
-Returns the value of `  expression  ` for the last returned document.
+Returns the value of `expression` for the last returned document.
 
 ### ARRAY\_AGG
 
@@ -600,9 +600,9 @@ Returns the value of `  expression  ` for the last returned document.
 
 **Description:**
 
-Returns an array containing all values of `  expression  ` when evaluated on each document.
+Returns an array containing all values of `expression` when evaluated on each document.
 
-If the expression resolves to an absent value, it is converted to `  NULL  ` .
+If the expression resolves to an absent value, it is converted to `NULL` .
 
 The order of elements in the output array is not stable and shouldn't be relied upon.
 
@@ -614,9 +614,9 @@ The order of elements in the output array is not stable and shouldn't be relied 
 
 **Description:**
 
-Returns an array containing all distinct values of `  expression  ` when evaluated on each document.
+Returns an array containing all distinct values of `expression` when evaluated on each document.
 
-If the expression resolves to an absent value, it is converted to `  NULL  ` .
+If the expression resolves to an absent value, it is converted to `NULL` .
 
 The order of elements in the output array is not stable and shouldn't be relied upon.
 

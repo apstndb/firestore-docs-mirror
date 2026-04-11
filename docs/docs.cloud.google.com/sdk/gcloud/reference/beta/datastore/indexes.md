@@ -4,30 +4,30 @@ gcloud beta datastore indexes - manage your Cloud Datastore indexes
 
 SYNOPSIS
 
-`  gcloud beta datastore indexes  ` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud beta datastore indexes` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (BETA)  ` The gcloud datastore command group lets you create and delete Google Cloud Datastore indexes.
+`(BETA)` The gcloud datastore command group lets you create and delete Google Cloud Datastore indexes.
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 COMMANDS
 
 `  COMMAND  ` is one of the following:
 
   - `  cleanup  `  
-    `  (BETA)  ` Remove unused datastore indexes based on your local index configuration.
+    `(BETA)` Remove unused datastore indexes based on your local index configuration.
   - `  create  `  
-    `  (BETA)  ` Create new datastore indexes based on your local index configuration.
+    `(BETA)` Create new datastore indexes based on your local index configuration.
   - `  describe  `  
-    `  (BETA)  ` Show details about an Cloud Datastore index.
+    `(BETA)` Show details about an Cloud Datastore index.
   - `  list  `  
-    `  (BETA)  ` List Cloud Datastore indexes.
+    `(BETA)` List Cloud Datastore indexes.
 
 NOTES
 

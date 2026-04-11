@@ -97,7 +97,7 @@ eu
 us
 
   
-`  POST https://firestore.googleapis.com/v1/{parent=projects/*}/databases  `
+`POST https://firestore.googleapis.com/v1/{parent=projects/*}/databases`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -105,19 +105,19 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. A parent name of the form `  projects/{projectId}  `
+Required. A parent name of the form `projects/{projectId}`
 
 ### Query parameters
 
 Parameters
 
-`  databaseId  `
+`databaseId`
 
-`  string  `
+`string`
 
 Required. The ID to use for the database, which will become the final component of the database's resource name.
 
@@ -137,7 +137,7 @@ If successful, the response body contains a newly created instance of `  Operati
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

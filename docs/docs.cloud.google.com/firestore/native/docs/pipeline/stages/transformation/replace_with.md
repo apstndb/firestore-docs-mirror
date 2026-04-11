@@ -12,9 +12,9 @@ The expression can either be a literal map or an expression that evaluates to a 
 
 There are 3 supported modes:
 
-  - `  full_replace  ` : Replaces the entire document with the result of the given expression, omitting fields that don't appear in it.
-  - `  merge_overwrite_existing  ` : Merges the expression with the existing document, overwriting field values in the document with values in the expression
-  - `  merge_keep_existing  ` : Merges the expression with the existing document, only adding field values when one does not exist in the document.
+  - `full_replace` : Replaces the entire document with the result of the given expression, omitting fields that don't appear in it.
+  - `merge_overwrite_existing` : Merges the expression with the existing document, overwriting field values in the document with values in the expression
+  - `merge_keep_existing` : Merges the expression with the existing document, only adding field values when one does not exist in the document.
 
 ## Examples
 

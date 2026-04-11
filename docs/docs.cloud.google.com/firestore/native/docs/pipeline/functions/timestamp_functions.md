@@ -6,21 +6,21 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## **Timestamp Functions**
 
-|                                               |                                                                                                                    |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Name                                          | Description                                                                                                        |
-| `          CURRENT_TIMESTAMP        `         | Generates a `        TIMESTAMP       ` corresponding to the request time.                                          |
-| `          TIMESTAMP_TRUNC        `           | Truncates a `        TIMESTAMP       ` to a given granularity.                                                     |
-| `          UNIX_MICROS_TO_TIMESTAMP        `  | Converts the number of microseconds since `        1970-01-01 00:00:00 UTC       ` to a `        TIMESTAMP       ` |
-| `          UNIX_MILLIS_TO_TIMESTAMP        `  | Converts the number of milliseconds since `        1970-01-01 00:00:00 UTC       ` to a `        TIMESTAMP       ` |
-| `          UNIX_SECONDS_TO_TIMESTAMP        ` | Converts the number of seconds since `        1970-01-01 00:00:00 UTC       ` to a `        TIMESTAMP       `      |
-| `          TIMESTAMP_ADD        `             | Adds a time interval to a `        TIMESTAMP       `                                                               |
-| `          TIMESTAMP_SUB        `             | Subtracts a time interval to a `        TIMESTAMP       `                                                          |
-| `          TIMESTAMP_TO_UNIX_MICROS        `  | Converts a `        TIMESTAMP       ` to the number of microseconds since `        1970-01-01 00:00:00 UTC       ` |
-| `          TIMESTAMP_TO_UNIX_MILLIS        `  | Converts a `        TIMESTAMP       ` to the number of milliseconds since `        1970-01-01 00:00:00 UTC       ` |
-| `          TIMESTAMP_TO_UNIX_SECONDS        ` | Converts a `        TIMESTAMP       ` to the number of seconds since `        1970-01-01 00:00:00 UTC       `      |
-| `          TIMESTAMP_DIFF        `            | Returns the whole number of specified `        unit       ` intervals between two `        TIMESTAMP       ` s.    |
-| `          TIMESTAMP_EXTRACT        `         | Extracts a specific `        part       ` (e.g. year, month, day) from a `        TIMESTAMP       ` .              |
+|                                              |                                                                                      |
+| -------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Name                                         | Description                                                                          |
+| `         CURRENT_TIMESTAMP        `         | Generates a `TIMESTAMP` corresponding to the request time.                           |
+| `         TIMESTAMP_TRUNC        `           | Truncates a `TIMESTAMP` to a given granularity.                                      |
+| `         UNIX_MICROS_TO_TIMESTAMP        `  | Converts the number of microseconds since `1970-01-01 00:00:00 UTC` to a `TIMESTAMP` |
+| `         UNIX_MILLIS_TO_TIMESTAMP        `  | Converts the number of milliseconds since `1970-01-01 00:00:00 UTC` to a `TIMESTAMP` |
+| `         UNIX_SECONDS_TO_TIMESTAMP        ` | Converts the number of seconds since `1970-01-01 00:00:00 UTC` to a `TIMESTAMP`      |
+| `         TIMESTAMP_ADD        `             | Adds a time interval to a `TIMESTAMP`                                                |
+| `         TIMESTAMP_SUB        `             | Subtracts a time interval to a `TIMESTAMP`                                           |
+| `         TIMESTAMP_TO_UNIX_MICROS        `  | Converts a `TIMESTAMP` to the number of microseconds since `1970-01-01 00:00:00 UTC` |
+| `         TIMESTAMP_TO_UNIX_MILLIS        `  | Converts a `TIMESTAMP` to the number of milliseconds since `1970-01-01 00:00:00 UTC` |
+| `         TIMESTAMP_TO_UNIX_SECONDS        ` | Converts a `TIMESTAMP` to the number of seconds since `1970-01-01 00:00:00 UTC`      |
+| `         TIMESTAMP_DIFF        `            | Returns the whole number of specified `unit` intervals between two `TIMESTAMP` s.    |
+| `         TIMESTAMP_EXTRACT        `         | Extracts a specific `part` (e.g. year, month, day) from a `TIMESTAMP` .              |
 
 ### CURRENT\_TIMESTAMP
 
@@ -30,7 +30,7 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 **Description:**
 
-Gets the timestamp at the beginning of request time `  input  ` (interpreted as the number of microseconds since `  1970-01-01 00:00:00 UTC  ` ).
+Gets the timestamp at the beginning of request time `input` (interpreted as the number of microseconds since `1970-01-01 00:00:00 UTC` ).
 
 This is stable within a query, and will always resolve to the same value if called multiple times.
 
@@ -44,37 +44,37 @@ This is stable within a query, and will always resolve to the same value if call
 
 Truncates a timestamp down to a given granularity.
 
-The `  granularity  ` argument must be a string and one of the following:
+The `granularity` argument must be a string and one of the following:
 
-  - `  microsecond  `
-  - `  millisecond  `
-  - `  second  `
-  - `  minute  `
-  - `  hour  `
-  - `  day  `
-  - `  week  `
-  - `  week([weekday])  `
-  - `  month  `
-  - `  quarter  `
-  - `  year  `
-  - `  isoyear  `
+  - `microsecond`
+  - `millisecond`
+  - `second`
+  - `minute`
+  - `hour`
+  - `day`
+  - `week`
+  - `week([weekday])`
+  - `month`
+  - `quarter`
+  - `year`
+  - `isoyear`
 
-If the `  timezone  ` argument is provided, truncation will be based on the given timezone's calendar boundaries (e.g. day truncation will truncate to midnight in the given timezone). The truncation will respect daylight savings time.
+If the `timezone` argument is provided, truncation will be based on the given timezone's calendar boundaries (e.g. day truncation will truncate to midnight in the given timezone). The truncation will respect daylight savings time.
 
-If `  timezone  ` is not provided, truncation will be based on `  UTC  ` calendar boundaries.
+If `timezone` is not provided, truncation will be based on `UTC` calendar boundaries.
 
-The `  timezone  ` argument should be a string representation of a timezone from the tz database, for example `  America/New_York  ` . A custom time offset can also be used by specifying an offset from `  GMT  ` .
+The `timezone` argument should be a string representation of a timezone from the tz database, for example `America/New_York` . A custom time offset can also be used by specifying an offset from `GMT` .
 
 **Examples:**
 
-| `        timestamp       `     | `        granularity       ` | `        timezone       ` | `        timestamp_trunc(timestamp, granularity, timezone)       ` |
-| :----------------------------- | :--------------------------- | :------------------------ | :----------------------------------------------------------------- |
-| 2000-01-01 10:20:30:123456 UTC | "second"                     | Not provided              | 2001-01-01 10:20:30 UTC                                            |
-| 1997-05-31 04:30:30 UTC        | "day"                        | Not provided              | 1997-05-31 00:00:00 UTC                                            |
-| 1997-05-31 04:30:30 UTC        | "day"                        | "America/Los\_Angeles"    | 1997-05-30 07:00:00 UTC                                            |
-| 2001-03-16 04:00:00 UTC        | "week(friday)                | Not provided              | 2001-03-16 00:00:00 UTC                                            |
-| 2001-03-23 04:00:00 UTC        | "week(friday)                | "America/Los\_Angeles"    | 2001-03-23 17:00:00 UTC                                            |
-| 2026-01-24 20:00:00 UTC        | "month"                      | "GMT+06:32:43"            | 2026-01-01T06:32:43 UTC                                            |
+| `timestamp`                    | `granularity` | `timezone`             | `timestamp_trunc(timestamp, granularity, timezone)` |
+| :----------------------------- | :------------ | :--------------------- | :-------------------------------------------------- |
+| 2000-01-01 10:20:30:123456 UTC | "second"      | Not provided           | 2001-01-01 10:20:30 UTC                             |
+| 1997-05-31 04:30:30 UTC        | "day"         | Not provided           | 1997-05-31 00:00:00 UTC                             |
+| 1997-05-31 04:30:30 UTC        | "day"         | "America/Los\_Angeles" | 1997-05-30 07:00:00 UTC                             |
+| 2001-03-16 04:00:00 UTC        | "week(friday) | Not provided           | 2001-03-16 00:00:00 UTC                             |
+| 2001-03-23 04:00:00 UTC        | "week(friday) | "America/Los\_Angeles" | 2001-03-23 17:00:00 UTC                             |
+| 2026-01-24 20:00:00 UTC        | "month"       | "GMT+06:32:43"         | 2026-01-01T06:32:43 UTC                             |
 
 ### UNIX\_MICROS\_TO\_TIMESTAMP
 
@@ -84,15 +84,15 @@ The `  timezone  ` argument should be a string representation of a timezone from
 
 **Description:**
 
-Converts `  input  ` (interpreted as the number of microseconds since `  1970-01-01 00:00:00 UTC  ` ) to a `  TIMESTAMP  ` . Throws an `  error  ` if `  input  ` cannot be converted to a valid `  TIMESTAMP  ` .
+Converts `input` (interpreted as the number of microseconds since `1970-01-01 00:00:00 UTC` ) to a `TIMESTAMP` . Throws an `error` if `input` cannot be converted to a valid `TIMESTAMP` .
 
 **Examples:**
 
-| `        input       ` | `        unix_micros_to_timestamp(input)       ` |
-| :--------------------- | :----------------------------------------------- |
-| 0L                     | 1970-01-01 00:00:00 UTC                          |
-| 400123456L             | 1970-01-01 00:06:40.123456 UTC                   |
-| \-1000000L             | 1969-12-31 23:59:59 UTC                          |
+| `input`    | `unix_micros_to_timestamp(input)` |
+| :--------- | :-------------------------------- |
+| 0L         | 1970-01-01 00:00:00 UTC           |
+| 400123456L | 1970-01-01 00:06:40.123456 UTC    |
+| \-1000000L | 1969-12-31 23:59:59 UTC           |
 
 ##### Node.js
 
@@ -174,15 +174,15 @@ Android
 
 **Description:**
 
-Converts `  input  ` (interpreted as the number of milliseconds since `  1970-01-01 00:00:00 UTC  ` ) to a `  TIMESTAMP  ` . Throws an `  error  ` if `  input  ` cannot be converted to a valid `  TIMESTAMP  ` .
+Converts `input` (interpreted as the number of milliseconds since `1970-01-01 00:00:00 UTC` ) to a `TIMESTAMP` . Throws an `error` if `input` cannot be converted to a valid `TIMESTAMP` .
 
 **Examples:**
 
-| `        input       ` | `        unix_millis_to_timestamp(input)       ` |
-| :--------------------- | :----------------------------------------------- |
-| 0L                     | 1970-01-01 00:00:00 UTC                          |
-| 4000123L               | 1970-01-01 01:06:40.123 UTC                      |
-| \-1000000L             | 1969-12-31 23:43:20 UTC                          |
+| `input`    | `unix_millis_to_timestamp(input)` |
+| :--------- | :-------------------------------- |
+| 0L         | 1970-01-01 00:00:00 UTC           |
+| 4000123L   | 1970-01-01 01:06:40.123 UTC       |
+| \-1000000L | 1969-12-31 23:43:20 UTC           |
 
 ##### Node.js
 
@@ -264,15 +264,15 @@ Android
 
 **Description:**
 
-Converts `  input  ` (interpreted as the number of seconds since `  1970-01-01 00:00:00 UTC  ` ) to a `  TIMESTAMP  ` . Throws an `  error  ` if `  input  ` cannot be converted to a valid `  TIMESTAMP  ` .
+Converts `input` (interpreted as the number of seconds since `1970-01-01 00:00:00 UTC` ) to a `TIMESTAMP` . Throws an `error` if `input` cannot be converted to a valid `TIMESTAMP` .
 
 **Examples:**
 
-| `        input       ` | `        unix_seconds_to_timestamp(input)       ` |
-| :--------------------- | :------------------------------------------------ |
-| 0L                     | 1970-01-01 00:00:00 UTC                           |
-| 60L                    | 1970-01-01 00:01:00 UTC                           |
-| \-300L                 | 1969-12-31 23:55:00 UTC                           |
+| `input` | `unix_seconds_to_timestamp(input)` |
+| :------ | :--------------------------------- |
+| 0L      | 1970-01-01 00:00:00 UTC            |
+| 60L     | 1970-01-01 00:01:00 UTC            |
+| \-300L  | 1969-12-31 23:55:00 UTC            |
 
 ##### Node.js
 
@@ -354,26 +354,26 @@ Android
 
 **Description:**
 
-Adds an `  amount  ` of `  unit  ` from `  timestamp  ` . The `  amount  ` argument can be negative, in that case it is equivalent to [TIMESTAMP\_SUB](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/timestamp_functions#timestamp_sub) .
+Adds an `amount` of `unit` from `timestamp` . The `amount` argument can be negative, in that case it is equivalent to [TIMESTAMP\_SUB](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/timestamp_functions#timestamp_sub) .
 
-The `  unit  ` argument must be a string and one of the following:
+The `unit` argument must be a string and one of the following:
 
-  - `  microsecond  `
-  - `  millisecond  `
-  - `  second  `
-  - `  minute  `
-  - `  hour  `
-  - `  day  `
+  - `microsecond`
+  - `millisecond`
+  - `second`
+  - `minute`
+  - `hour`
+  - `day`
 
-Throws an error if the resulting timestamp does not fit within the `  TIMESTAMP  ` range.
+Throws an error if the resulting timestamp does not fit within the `TIMESTAMP` range.
 
 **Examples:**
 
-| `        timestamp       ` | `        unit       ` | `        amount       ` | `        timestamp_add(timestamp, unit, amount)       ` |
-| :------------------------- | :-------------------- | :---------------------- | :------------------------------------------------------ |
-| 2025-02-20 00:00:00 UTC    | "minute"              | 2L                      | 2025-02-20 00:02:00 UTC                                 |
-| 2025-02-20 00:00:00 UTC    | "hour"                | \-4L                    | 2025-02-19 20:00:00 UTC                                 |
-| 2025-02-20 00:00:00 UTC    | "day"                 | 5L                      | 2025-02-25 00:00:00 UTC                                 |
+| `timestamp`             | `unit`   | `amount` | `timestamp_add(timestamp, unit, amount)` |
+| :---------------------- | :------- | :------- | :--------------------------------------- |
+| 2025-02-20 00:00:00 UTC | "minute" | 2L       | 2025-02-20 00:02:00 UTC                  |
+| 2025-02-20 00:00:00 UTC | "hour"   | \-4L     | 2025-02-19 20:00:00 UTC                  |
+| 2025-02-20 00:00:00 UTC | "day"    | 5L       | 2025-02-25 00:00:00 UTC                  |
 
 ##### Node.js
 
@@ -453,26 +453,26 @@ Android
 
 **Description:**
 
-Subtracts an `  amount  ` of `  unit  ` from `  timestamp  ` . The `  amount  ` argument can be negative, in that case it is equivalent to [TIMESTAMP\_ADD](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/timestamp_functions#timestamp_add) .
+Subtracts an `amount` of `unit` from `timestamp` . The `amount` argument can be negative, in that case it is equivalent to [TIMESTAMP\_ADD](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/timestamp_functions#timestamp_add) .
 
-The `  unit  ` argument must be a string and one of the following:
+The `unit` argument must be a string and one of the following:
 
-  - `  microsecond  `
-  - `  millisecond  `
-  - `  second  `
-  - `  minute  `
-  - `  hour  `
-  - `  day  `
+  - `microsecond`
+  - `millisecond`
+  - `second`
+  - `minute`
+  - `hour`
+  - `day`
 
-Throws an error if the resulting timestamp does not fit within the `  TIMESTAMP  ` range.
+Throws an error if the resulting timestamp does not fit within the `TIMESTAMP` range.
 
 **Examples:**
 
-| `        timestamp       ` | `        unit       ` | `        amount       ` | `        timestamp_sub(timestamp, unit, amount)       ` |
-| :------------------------- | :-------------------- | :---------------------- | :------------------------------------------------------ |
-| 2026-07-04 00:00:00 UTC    | "minute"              | 40L                     | 2026-07-03 23:20:00 UTC                                 |
-| 2026-07-04 00:00:00 UTC    | "hour"                | \-24L                   | 2026-07-05 00:00:00 UTC                                 |
-| 2026-07-04 00:00:00 UTC    | "day"                 | 3L                      | 2026-07-01 00:00:00 UTC                                 |
+| `timestamp`             | `unit`   | `amount` | `timestamp_sub(timestamp, unit, amount)` |
+| :---------------------- | :------- | :------- | :--------------------------------------- |
+| 2026-07-04 00:00:00 UTC | "minute" | 40L      | 2026-07-03 23:20:00 UTC                  |
+| 2026-07-04 00:00:00 UTC | "hour"   | \-24L    | 2026-07-05 00:00:00 UTC                  |
+| 2026-07-04 00:00:00 UTC | "day"    | 3L       | 2026-07-01 00:00:00 UTC                  |
 
 ##### Node.js
 
@@ -556,15 +556,15 @@ Android
 
 **Description:**
 
-Converts `  input  ` to the number of microseconds since `  1970-01-01 00:00:00 UTC  ` . Truncates higher levels of precision by rounding down to the beginning of the microsecond.
+Converts `input` to the number of microseconds since `1970-01-01 00:00:00 UTC` . Truncates higher levels of precision by rounding down to the beginning of the microsecond.
 
 **Examples:**
 
-| `        input       `         | `        timestamp_to_unix_micros(input)       ` |
-| :----------------------------- | :----------------------------------------------- |
-| 1970-01-01 00:00:00 UTC        | 0L                                               |
-| 1970-01-01 00:06:40.123456 UTC | 400123456L                                       |
-| 1969-12-31 23:59:59 UTC        | \-1000000L                                       |
+| `input`                        | `timestamp_to_unix_micros(input)` |
+| :----------------------------- | :-------------------------------- |
+| 1970-01-01 00:00:00 UTC        | 0L                                |
+| 1970-01-01 00:06:40.123456 UTC | 400123456L                        |
+| 1969-12-31 23:59:59 UTC        | \-1000000L                        |
 
 ##### Node.js
 
@@ -642,15 +642,15 @@ Android
 
 **Description:**
 
-Converts `  input  ` to the number of milliseconds since `  1970-01-01 00:00:00 UTC  ` . Truncates higher levels of precision by rounding down to the beginning of the millisecond.
+Converts `input` to the number of milliseconds since `1970-01-01 00:00:00 UTC` . Truncates higher levels of precision by rounding down to the beginning of the millisecond.
 
 **Examples:**
 
-| `        input       `      | `        timestamp_to_unix_millis(input)       ` |
-| :-------------------------- | :----------------------------------------------- |
-| 1970-01-01 00:00:00 UTC     | 0L                                               |
-| 1970-01-01 01:06:40.123 UTC | 4000123L                                         |
-| 1969-12-31 23:43:20         | \-1000000L                                       |
+| `input`                     | `timestamp_to_unix_millis(input)` |
+| :-------------------------- | :-------------------------------- |
+| 1970-01-01 00:00:00 UTC     | 0L                                |
+| 1970-01-01 01:06:40.123 UTC | 4000123L                          |
+| 1969-12-31 23:43:20         | \-1000000L                        |
 
 ##### Node.js
 
@@ -728,15 +728,15 @@ Android
 
 **Description:**
 
-Converts `  input  ` to the number of seconds since `  1970-01-01 00:00:00 UTC  ` . Truncates higher levels of precision by rounding down to the beginning of the second.
+Converts `input` to the number of seconds since `1970-01-01 00:00:00 UTC` . Truncates higher levels of precision by rounding down to the beginning of the second.
 
 **Examples:**
 
-| `        input       `  | `        timestamp_to_unix_seconds(input)       ` |
-| :---------------------- | :------------------------------------------------ |
-| 1970-01-01 00:00:00 UTC | 0L                                                |
-| 1970-01-01 00:01:00 UTC | 60L                                               |
-| 1969-12-31 23:55:00 UTC | \-300L                                            |
+| `input`                 | `timestamp_to_unix_seconds(input)` |
+| :---------------------- | :--------------------------------- |
+| 1970-01-01 00:00:00 UTC | 0L                                 |
+| 1970-01-01 00:01:00 UTC | 60L                                |
+| 1969-12-31 23:55:00 UTC | \-300L                             |
 
 ##### Node.js
 
@@ -814,27 +814,27 @@ Android
 
 **Description:**
 
-Returns the whole number of specified `  unit  ` intervals between two `  TIMESTAMP  ` s.
+Returns the whole number of specified `unit` intervals between two `TIMESTAMP` s.
 
-  - Returns a negative value if `  end  ` is before `  start  ` .
-  - Truncates any fractional unit. For example, `  timestamp_diff("2021-01-01 00:00:01", "2021-01-01 00:00:00", "minute")  ` returns `  0  ` .
+  - Returns a negative value if `end` is before `start` .
+  - Truncates any fractional unit. For example, `timestamp_diff("2021-01-01 00:00:01", "2021-01-01 00:00:00", "minute")` returns `0` .
 
-The `  unit  ` argument must be a string and one of the following:
+The `unit` argument must be a string and one of the following:
 
-  - `  microsecond  `
-  - `  millisecond  `
-  - `  second  `
-  - `  minute  `
-  - `  hour  `
-  - `  day  `
+  - `microsecond`
+  - `millisecond`
+  - `second`
+  - `minute`
+  - `hour`
+  - `day`
 
 **Examples:**
 
-| `        end       `    | `        start       `  | `        unit       ` | `        timestamp_diff(end, start, unit)       ` |
-| :---------------------- | :---------------------- | :-------------------- | :------------------------------------------------ |
-| 2026-07-04 00:01:00 UTC | 2026-07-04 00:00:00 UTC | "second"              | 60L                                               |
-| 2026-07-04 00:00:00 UTC | 2026-07-05 00:00:00 UTC | "day"                 | \-1L                                              |
-| 2026-07-04 00:00:59 UTC | 2026-07-04 00:00:00 UTC | "minute"              | 0L                                                |
+| `end`                   | `start`                 | `unit`   | `timestamp_diff(end, start, unit)` |
+| :---------------------- | :---------------------- | :------- | :--------------------------------- |
+| 2026-07-04 00:01:00 UTC | 2026-07-04 00:00:00 UTC | "second" | 60L                                |
+| 2026-07-04 00:00:00 UTC | 2026-07-05 00:00:00 UTC | "day"    | \-1L                               |
+| 2026-07-04 00:00:59 UTC | 2026-07-04 00:00:00 UTC | "minute" | 0L                                 |
 
 ### TIMESTAMP\_EXTRACT
 
@@ -844,39 +844,39 @@ The `  unit  ` argument must be a string and one of the following:
 
 **Description:**
 
-Extracts a specific `  part  ` (e.g. year, month, day) from `  timestamp  ` .
+Extracts a specific `part` (e.g. year, month, day) from `timestamp` .
 
-The `  part  ` argument must be a string and one of the following:
+The `part` argument must be a string and one of the following:
 
-  - `  microsecond  `
-  - `  millisecond  `
-  - `  second  `
-  - `  minute  `
-  - `  hour  `
-  - `  day  `
-  - `  dayofweek  ` : Returns a value between 1 (Sunday) and 7 (Saturday).
-  - `  dayofyear  `
-  - `  week  ` : Returns the week number of the year, starting at 1 for the first Sunday of the year.
-  - `  week([weekday])  ` : Returns the week number of the year, starting on the specified `  weekday  ` .
-  - `  month  `
-  - `  quarter  `
-  - `  year  `
-  - `  isoweek  ` : Returns the ISO 8601 week number.
-  - `  isoyear  ` : Returns the ISO 8601 week-numbering year.
+  - `microsecond`
+  - `millisecond`
+  - `second`
+  - `minute`
+  - `hour`
+  - `day`
+  - `dayofweek` : Returns a value between 1 (Sunday) and 7 (Saturday).
+  - `dayofyear`
+  - `week` : Returns the week number of the year, starting at 1 for the first Sunday of the year.
+  - `week([weekday])` : Returns the week number of the year, starting on the specified `weekday` .
+  - `month`
+  - `quarter`
+  - `year`
+  - `isoweek` : Returns the ISO 8601 week number.
+  - `isoyear` : Returns the ISO 8601 week-numbering year.
 
-If the `  timezone  ` argument is provided, the extraction will be based on the given timezone's calendar. The extraction will respect daylight savings time.
+If the `timezone` argument is provided, the extraction will be based on the given timezone's calendar. The extraction will respect daylight savings time.
 
-If `  timezone  ` is not provided, extraction will be based on `  UTC  ` .
+If `timezone` is not provided, extraction will be based on `UTC` .
 
-The `  timezone  ` argument should be a string representation of a timezone from the timezone database, for example `  America/New_York  ` . A custom time offset can also be used by specifying an offset from `  GMT  ` .
+The `timezone` argument should be a string representation of a timezone from the timezone database, for example `America/New_York` . A custom time offset can also be used by specifying an offset from `GMT` .
 
 **Examples:**
 
-| `        timestamp       ` | `        part       ` | `        timezone       ` | `        timestamp_extract(timestamp, part, timezone)       ` |
-| :------------------------- | :-------------------- | :------------------------ | :------------------------------------------------------------ |
-| 2025-02-20 10:20:30 UTC    | "year"                | Not provided              | 2025                                                          |
-| 2025-02-20 10:20:30 UTC    | "day"                 | Not provided              | 20                                                            |
-| 2025-12-31 23:59:59 UTC    | "year"                | "Asia/Tokyo"              | 2026                                                          |
+| `timestamp`             | `part` | `timezone`   | `timestamp_extract(timestamp, part, timezone)` |
+| :---------------------- | :----- | :----------- | :--------------------------------------------- |
+| 2025-02-20 10:20:30 UTC | "year" | Not provided | 2025                                           |
+| 2025-02-20 10:20:30 UTC | "day"  | Not provided | 20                                             |
+| 2025-12-31 23:59:59 UTC | "year" | "Asia/Tokyo" | 2026                                           |
 
 ## What's next
 

@@ -9,13 +9,13 @@ Query cursors define the start and end points for a query, allowing you to:
   - Return a subset of the data.
   - Paginate query results.
 
-However, to define a specific range for a query, you should use the `  where()  ` method described in [Simple Queries](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#simple_queries) .
+However, to define a specific range for a query, you should use the `where()` method described in [Simple Queries](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#simple_queries) .
 
 ## Add a simple cursor to a query
 
-Use the `  startAt()  ` or `  startAfter()  ` methods to define the start point for a query. The `  startAt()  ` method includes the start point, while the `  startAfter()  ` method excludes it.
+Use the `startAt()` or `startAfter()` methods to define the start point for a query. The `startAt()` method includes the start point, while the `startAfter()` method excludes it.
 
-For example, if you use `  startAt(A)  ` in a query, it returns the entire alphabet. If you use `  startAfter(A)  ` instead, it returns `  B-Z  ` .
+For example, if you use `startAt(A)` in a query, it returns the entire alphabet. If you use `startAfter(A)` instead, it returns `B-Z` .
 
 ### Web version 9
 
@@ -122,7 +122,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
     query = cities_ref.order("population").start_at(1_000_000)paginate_data.rb
 
-Similarly, use the `  endAt()  ` or `  endBefore()  ` methods to define an end point for your query results.
+Similarly, use the `endAt()` or `endBefore()` methods to define an end point for your query results.
 
 ### Web version 9
 
@@ -438,7 +438,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ## Paginate a query
 
-Paginate queries by combining query cursors with the `  limit()  ` method. For example, use the last document in a batch as the start of a cursor for the next batch.
+Paginate queries by combining query cursors with the `limit()` method. For example, use the last document in a batch as the start of a cursor for the next batch.
 
 ### Web version 9
 

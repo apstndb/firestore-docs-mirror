@@ -33,48 +33,48 @@ A resource that represents a Google Cloud location.
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Resource name for the location, which may vary between implementations. For example: `  "projects/example-project/locations/us-east1"  `
+Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"`
 
-`  locationId  `
+`locationId`
 
-`  string  `
+`string`
 
-The canonical id for this location. For example: `  "us-east1"  ` .
+The canonical id for this location. For example: `"us-east1"` .
 
-`  displayName  `
+`displayName`
 
-`  string  `
+`string`
 
 The friendly name for this location, typically a nearby city name. For example, "Tokyo".
 
-`  labels  `
+`labels`
 
-`  map (key: string, value: string)  `
+`map (key: string, value: string)`
 
 Cross-service attributes for the location. For example
 
     {"cloud.googleapis.com/region": "us-east1"}
 
-An object containing a list of `  "key": value  ` pairs. Example: `  { "name": "wrench", "mass": "1.3kg", "count": "3" }  ` .
+An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }` .
 
-`  metadata  `
+`metadata`
 
-`  object  `
+`object`
 
 Service-specific metadata. For example the available capacity at the given location.
 
-An object containing fields of an arbitrary type. An additional field `  "@type"  ` contains a URI identifying the type. Example: `  { "id": 1234, "@type": "types.example.com/standard/id" }  ` .
+An object containing fields of an arbitrary type. An additional field `"@type"` contains a URI identifying the type. Example: `{ "id": 1234, "@type": "types.example.com/standard/id" }` .
 
 ## Methods
 
-### `             get           `
+### `            get           `
 
 Gets information about a location.
 
-### `             list           `
+### `            list           `
 
 Lists information about the supported locations for this service.

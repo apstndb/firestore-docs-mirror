@@ -1,4 +1,4 @@
-A reference to a field in a document, ex: `  stats.operations  ` .
+A reference to a field in a document, ex: `stats.operations` .
 
 <table>
 <colgroup>
@@ -20,12 +20,12 @@ A reference to a field in a document, ex: `  stats.operations  ` .
 
 Fields
 
-`  fieldPath  `
+`fieldPath`
 
-`  string  `
+`string`
 
 A reference to a field in a document.
 
 Requires:
 
-  - MUST be a dot-delimited ( `  .  ` ) string of segments, where each segment conforms to `  document field name  ` limitations.
+  - MUST be a dot-delimited ( `.` ) string of segments, where each segment conforms to `  document field name  ` limitations.

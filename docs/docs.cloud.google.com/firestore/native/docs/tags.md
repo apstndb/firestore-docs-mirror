@@ -12,16 +12,16 @@ Tags are attached to resources by creating a tag binding resource that links the
 
 To get the permissions that you need to manage tags, ask your administrator to grant you the following IAM roles:
 
-  - [Tag Viewer](https://docs.cloud.google.com/iam/docs/roles-permissions/resourcemanager#resourcemanager.tagViewer) ( `  roles/resourcemanager.tagViewer  ` ) on the resources the tags are attached to
-  - View and manage tags at the organization level: [Organization Viewer](https://docs.cloud.google.com/iam/docs/roles-permissions/resourcemanager#resourcemanager.organizationViewer) ( `  roles/resourcemanager.organizationViewer  ` ) on the organization
-  - Create, update, and delete tag definitions: [Tag Administrator](https://docs.cloud.google.com/iam/docs/roles-permissions/resourcemanager#resourcemanager.tagAdmin) ( `  roles/resourcemanager.tagAdmin  ` ) on the resource you're creating, updating, or deleting tags for
-  - Attach and remove tags from resources: [Tag User](https://docs.cloud.google.com/iam/docs/roles-permissions/resourcemanager#resourcemanager.tagUser) ( `  roles/resourcemanager.tagUser  ` ) on the tag value and the resources that you are attaching or removing the tag value to
+  - [Tag Viewer](https://docs.cloud.google.com/iam/docs/roles-permissions/resourcemanager#resourcemanager.tagViewer) ( `roles/resourcemanager.tagViewer` ) on the resources the tags are attached to
+  - View and manage tags at the organization level: [Organization Viewer](https://docs.cloud.google.com/iam/docs/roles-permissions/resourcemanager#resourcemanager.organizationViewer) ( `roles/resourcemanager.organizationViewer` ) on the organization
+  - Create, update, and delete tag definitions: [Tag Administrator](https://docs.cloud.google.com/iam/docs/roles-permissions/resourcemanager#resourcemanager.tagAdmin) ( `roles/resourcemanager.tagAdmin` ) on the resource you're creating, updating, or deleting tags for
+  - Attach and remove tags from resources: [Tag User](https://docs.cloud.google.com/iam/docs/roles-permissions/resourcemanager#resourcemanager.tagUser) ( `roles/resourcemanager.tagUser` ) on the tag value and the resources that you are attaching or removing the tag value to
 
 For more information about granting roles, see [Manage access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
 
 You might also be able to get the required permissions through [custom roles](https://docs.cloud.google.com/iam/docs/creating-custom-roles) or other [predefined roles](https://docs.cloud.google.com/iam/docs/roles-overview#predefined) .
 
-To attach tags to Firestore instances, you need the [Datastore Owner](https://docs.cloud.google.com/datastore/docs/access/iam#iam_roles) role ( `  roles/datastore.owner  ` ).
+To attach tags to Firestore instances, you need the [Datastore Owner](https://docs.cloud.google.com/datastore/docs/access/iam#iam_roles) role ( `roles/datastore.owner` ).
 
 ## Create tag keys and values
 
@@ -44,13 +44,13 @@ Replace the following:
 
   - `  LOCATION  ` : the location to operate on.
   - `  DATABASE  ` : the ID to use for the database.
-  - `  KEY  ` = `  VALUE  ` : list of tags KEY=VALUE pairs to bind. Each item must be expressed as `  <tag-key-namespaced-name>=<tag-value-short-name>  ` or `  <tag-key-name>=<tag-value-name>  ` .
+  - `  KEY  ` = `  VALUE  ` : list of tags KEY=VALUE pairs to bind. Each item must be expressed as `<tag-key-namespaced-name>=<tag-value-short-name>` or `<tag-key-name>=<tag-value-name>` .
 
-Specify multiple tags by separating the tags with a comma, for example, `  TAGKEY1=TAGVALUE1,TAGKEY2=TAGVALUE2  `
+Specify multiple tags by separating the tags with a comma, for example, `TAGKEY1=TAGVALUE1,TAGKEY2=TAGVALUE2`
 
 ### API
 
-Send a `  POST  ` request to the following URL:
+Send a `POST` request to the following URL:
 
 ``` 
       
@@ -71,7 +71,7 @@ Replace the following:
   - `  PROJECT  ` : the project to operate on.
   - `  DATABASE  ` : the ID to use for the database.
   - `  LOCATION  ` : the location to operate on.
-  - `  KEY  ` : `  VALUE  ` : list of tags KEY=VALUE pairs to bind. Each item must be expressed as `  <tag-key-namespaced-name>:<tag-value-short-name>  ` or `  <tag-key-name>:<tag-value-name>  ` .
+  - `  KEY  ` : `  VALUE  ` : list of tags KEY=VALUE pairs to bind. Each item must be expressed as `<tag-key-namespaced-name>:<tag-value-short-name>` or `<tag-key-name>:<tag-value-name>` .
 
 ## Add tags to existing resources
 
@@ -79,7 +79,7 @@ To add a tag to existing databases, follow these steps:
 
 ### gcloud
 
-To attach a tag to a database, you must create a tag binding resource by using the `  gcloud resource-manager tags bindings create  ` command:
+To attach a tag to a database, you must create a tag binding resource by using the `gcloud resource-manager tags bindings create` command:
 
 ``` 
       gcloud resource-manager tags bindings create \
@@ -91,9 +91,9 @@ To attach a tag to a database, you must create a tag binding resource by using t
 
 Replace the following:
 
-  - `  TAGVALUE_NAME  ` : the permanent ID or namespaced name of the tag value that is attached—for example, `  tagValues/567890123456  ` .
-  - `  RESOURCE_ID  ` is the full ID of the resource, including the API domain name to identify the type of resource ( `  //firestore.googleapis.com/  ` ). For example, to attach a tag to a database in `  projects/firestore-test-project  ` , the full ID is: `  //firestore.googleapis.com/projects/firestore-test-project/databases/\(default\)  ` .
-  - `  LOCATION  ` : the location of your resource. If you're attaching a tag to a global resource, such as a folder or a project, omit this flag. If you're attaching a tag to a regional or a zonal resource, you must specify the location—for example, `  us-central1  ` (region) or `  us-central1-a  ` (zone).
+  - `  TAGVALUE_NAME  ` : the permanent ID or namespaced name of the tag value that is attached—for example, `tagValues/567890123456` .
+  - `  RESOURCE_ID  ` is the full ID of the resource, including the API domain name to identify the type of resource ( `//firestore.googleapis.com/` ). For example, to attach a tag to a database in `projects/firestore-test-project` , the full ID is: `//firestore.googleapis.com/projects/firestore-test-project/databases/\(default\)` .
+  - `  LOCATION  ` : the location of your resource. If you're attaching a tag to a global resource, such as a folder or a project, omit this flag. If you're attaching a tag to a regional or a zonal resource, you must specify the location—for example, `us-central1` (region) or `us-central1-a` (zone).
 
 ## List tags attached to resources
 
@@ -101,7 +101,7 @@ You can view a list of tag bindings directly attached to or inherited by the dat
 
 ### gcloud
 
-To get a list of tag bindings attached to a resource, use the `  gcloud resource-manager tags bindings list  ` command:
+To get a list of tag bindings attached to a resource, use the `gcloud resource-manager tags bindings list` command:
 
 ``` 
       gcloud resource-manager tags bindings list \
@@ -112,8 +112,8 @@ To get a list of tag bindings attached to a resource, use the `  gcloud resource
 
 Replace the following:
 
-  - `  RESOURCE_ID  ` is the full ID of the resource, including the API domain name to identify the type of resource ( `  //firestore.googleapis.com/  ` ). For example, to attach a tag to a database in `  projects/firestore-test-project  ` , the full ID is: `  //firestore.googleapis.com/projects/firestore-test-project/databases/\(default\)  ` .
-  - `  LOCATION  ` : the location of your resource. If you're viewing a tag attached to a global resource, such as a folder or a project, omit this flag. If you're viewing a tag attached to a regional or a zonal resource, you must specify the location—for example, `  us-central1  ` (region) or `  us-central1-a  ` (zone).
+  - `  RESOURCE_ID  ` is the full ID of the resource, including the API domain name to identify the type of resource ( `//firestore.googleapis.com/` ). For example, to attach a tag to a database in `projects/firestore-test-project` , the full ID is: `//firestore.googleapis.com/projects/firestore-test-project/databases/\(default\)` .
+  - `  LOCATION  ` : the location of your resource. If you're viewing a tag attached to a global resource, such as a folder or a project, omit this flag. If you're viewing a tag attached to a regional or a zonal resource, you must specify the location—for example, `us-central1` (region) or `us-central1-a` (zone).
 
 You should get a response similar to the following:
 
@@ -130,7 +130,7 @@ You can detach tags that have been directly attached to a database. Inherited ta
 
 ### gcloud
 
-To delete a tag binding, use the `  gcloud resource-manager tags bindings delete  ` command:
+To delete a tag binding, use the `gcloud resource-manager tags bindings delete` command:
 
 ``` 
       gcloud resource-manager tags bindings delete \
@@ -142,9 +142,9 @@ To delete a tag binding, use the `  gcloud resource-manager tags bindings delete
 
 Replace the following:
 
-  - `  TAGVALUE_NAME  ` : the permanent ID or namespaced name of the tag value that is attached—for example, `  tagValues/567890123456  ` .
-  - `  RESOURCE_ID  ` is the full ID of the resource, including the API domain name to identify the type of resource ( `  //firestore.googleapis.com/  ` ). For example, to attach a tag to a database in `  projects/firestore-test-project  ` , the full ID is: `  //firestore.googleapis.com/projects/firestore-test-project/databases/\(default\)  ` .
-  - `  LOCATION  ` : the location of your resource. If you're attaching a tag to a global resource, such as a folder or a project, omit this flag. If you're attaching a tag to a regional or a zonal resource, you must specify the location—for example, `  us-central1  ` (region) or `  us-central1-a  ` (zone).
+  - `  TAGVALUE_NAME  ` : the permanent ID or namespaced name of the tag value that is attached—for example, `tagValues/567890123456` .
+  - `  RESOURCE_ID  ` is the full ID of the resource, including the API domain name to identify the type of resource ( `//firestore.googleapis.com/` ). For example, to attach a tag to a database in `projects/firestore-test-project` , the full ID is: `//firestore.googleapis.com/projects/firestore-test-project/databases/\(default\)` .
+  - `  LOCATION  ` : the location of your resource. If you're attaching a tag to a global resource, such as a folder or a project, omit this flag. If you're attaching a tag to a regional or a zonal resource, you must specify the location—for example, `us-central1` (region) or `us-central1-a` (zone).
 
 ## Delete tag keys and values
 

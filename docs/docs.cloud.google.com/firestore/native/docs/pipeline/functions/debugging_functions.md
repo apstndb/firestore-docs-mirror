@@ -6,15 +6,15 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## **Debugging Functions**
 
-|                               |                                                                             |
-| ----------------------------- | --------------------------------------------------------------------------- |
-| Name                          | Description                                                                 |
-| `          EXISTS        `    | Returns `        TRUE       ` if the value is not an absent value           |
-| `          IS_ABSENT        ` | Returns `        TRUE       ` if the value is an absent value               |
-| `          IF_ABSENT        ` | Replaces the value with an expression if it is absent                       |
-| `          IS_ERROR        `  | Catches and checks if an error has been thrown by the underlying expression |
-| `          IF_ERROR        `  | Replaces the value with an expression if it has thrown an error             |
-| `          ERROR        `     | Terminates evaluation and returns an error with the specified message       |
+|                              |                                                                             |
+| ---------------------------- | --------------------------------------------------------------------------- |
+| Name                         | Description                                                                 |
+| `         EXISTS        `    | Returns `TRUE` if the value is not an absent value                          |
+| `         IS_ABSENT        ` | Returns `TRUE` if the value is an absent value                              |
+| `         IF_ABSENT        ` | Replaces the value with an expression if it is absent                       |
+| `         IS_ERROR        `  | Catches and checks if an error has been thrown by the underlying expression |
+| `         IF_ERROR        `  | Replaces the value with an expression if it has thrown an error             |
+| `         ERROR        `     | Terminates evaluation and returns an error with the specified message       |
 
 ### EXISTS
 
@@ -24,16 +24,16 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 **Description:**
 
-Returns `  TRUE  ` if `  value  ` is not the absent value.
+Returns `TRUE` if `value` is not the absent value.
 
 **Examples:**
 
-| `        value       `  | `        exists(value)       ` |
-| :---------------------- | :----------------------------- |
-| 0L                      | `        TRUE       `          |
-| "foo"                   | `        TRUE       `          |
-| `        NULL       `   | `        TRUE       `          |
-| `        ABSENT       ` | `        FALSE       `         |
+| `value`  | `exists(value)` |
+| :------- | :-------------- |
+| 0L       | `TRUE`          |
+| "foo"    | `TRUE`          |
+| `NULL`   | `TRUE`          |
+| `ABSENT` | `FALSE`         |
 
 ##### Node.js
 
@@ -107,16 +107,16 @@ Android
 
 **Description:**
 
-Returns `  TRUE  ` if `  value  ` is the absent value, and `  FALSE  ` otherwise. Absent values are values that are missing from the input, such as a missing document field.
+Returns `TRUE` if `value` is the absent value, and `FALSE` otherwise. Absent values are values that are missing from the input, such as a missing document field.
 
 **Examples:**
 
-| `        value       `  | `        is_absent(value)       ` |
-| :---------------------- | :-------------------------------- |
-| 0L                      | `        FALSE       `            |
-| "foo"                   | `        FALSE       `            |
-| `        NULL       `   | `        FALSE       `            |
-| `        ABSENT       ` | `        TRUE       `             |
+| `value`  | `is_absent(value)` |
+| :------- | :----------------- |
+| 0L       | `FALSE`            |
+| "foo"    | `FALSE`            |
+| `NULL`   | `FALSE`            |
+| `ABSENT` | `TRUE`             |
 
 ### IF\_ABSENT
 
@@ -126,15 +126,15 @@ Returns `  TRUE  ` if `  value  ` is the absent value, and `  FALSE  ` otherwise
 
 **Description:**
 
-If `  value  ` is an absent value, evaluates and returns `  replacement  ` . Otherwise returns `  value  ` .
+If `value` is an absent value, evaluates and returns `replacement` . Otherwise returns `value` .
 
 **Examples:**
 
-| `        value       `  | `        replacement       ` | `        if_absent(value, replacement)       ` |
-| :---------------------- | :--------------------------- | :--------------------------------------------- |
-| 5L                      | 0L                           | 5L                                             |
-| `        NULL       `   | 0L                           | `        NULL       `                          |
-| `        ABSENT       ` | 0L                           | 0L                                             |
+| `value`  | `replacement` | `if_absent(value, replacement)` |
+| :------- | :------------ | :------------------------------ |
+| 5L       | 0L            | 5L                              |
+| `NULL`   | 0L            | `NULL`                          |
+| `ABSENT` | 0L            | 0L                              |
 
 ### IS\_ERROR
 
@@ -144,7 +144,7 @@ If `  value  ` is an absent value, evaluates and returns `  replacement  ` . Oth
 
 **Description:**
 
-Returns `  TRUE  ` if an error is thrown during the evaluation of `  try  ` . Returns `  FALSE  ` otherwise.
+Returns `TRUE` if an error is thrown during the evaluation of `try` . Returns `FALSE` otherwise.
 
 ### IF\_ERROR
 
@@ -154,7 +154,7 @@ Returns `  TRUE  ` if an error is thrown during the evaluation of `  try  ` . Re
 
 **Description:**
 
-If an error is thrown during the evaluation of `  try  ` , evaluates and returns `  replacement  ` . Otherwise returns the resolved value of `  try  ` .
+If an error is thrown during the evaluation of `try` , evaluates and returns `replacement` . Otherwise returns the resolved value of `try` .
 
 ### ERROR
 
@@ -164,14 +164,14 @@ If an error is thrown during the evaluation of `  try  ` , evaluates and returns
 
 **Description:**
 
-Evaluation of the `  error  ` function results in the evaluation of the pipeline to terminate with an error. The given `  message  ` is included in the error.
+Evaluation of the `error` function results in the evaluation of the pipeline to terminate with an error. The given `message` is included in the error.
 
 **Examples:**
 
-| `        cond       `  | `        res       ` | `        switch_on(cond, res, error("no condition matched"))       ` |
-| :--------------------- | :------------------- | :------------------------------------------------------------------- |
-| `        TRUE       `  | 1L                   | 1L                                                                   |
-| `        FALSE       ` | 1L                   | `        ERROR ("no condition matched")       `                      |
+| `cond`  | `res` | `switch_on(cond, res, error("no condition matched"))` |
+| :------ | :---- | :---------------------------------------------------- |
+| `TRUE`  | 1L    | 1L                                                    |
+| `FALSE` | 1L    | `ERROR ("no condition matched")`                      |
 
 ## What's next
 

@@ -32,7 +32,7 @@ Do the following:
 
 1.  Configure Datastream Private Connectivity by following instructions outlined in [Create a private connectivity configuration](https://docs.cloud.google.com/datastream/docs/create-a-private-connectivity-configuration#create-the-configuration) .
 
-2.  Note the `  Configuration ID  ` parameter of the created configuration. You will use it in later stages to set up required environment variables.
+2.  Note the `Configuration ID` parameter of the created configuration. You will use it in later stages to set up required environment variables.
 
 ### Azure Cosmos DB
 
@@ -68,7 +68,7 @@ Create a new Cloud Storage bucket in the following way:
 
 1.  Choose a [Cloud Storage region](https://docs.cloud.google.com/storage/docs/locations) where the migration pipeline will run. We recommend to use the region where your destination Firestore with MongoDB compatibility database is located.
 
-2.  Choose the name for this bucket. Example: `  mongo-migration-bucket  ` . You will use this name in later steps.
+2.  Choose the name for this bucket. Example: `mongo-migration-bucket` . You will use this name in later steps.
 
 3.  Create a new Cloud Storage bucket with the chosen name and in the chosen region by following instructions provided on the [Create a bucket](https://docs.cloud.google.com/storage/docs/creating-buckets#create-bucket) page in the Cloud Storage documentation.
 

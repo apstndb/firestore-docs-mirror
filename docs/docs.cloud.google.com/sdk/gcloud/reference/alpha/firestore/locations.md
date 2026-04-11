@@ -4,26 +4,26 @@ gcloud alpha firestore locations - the set of commands to manage Locations for C
 
 SYNOPSIS
 
-`  gcloud alpha firestore locations  ` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud alpha firestore locations` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (ALPHA)  ` The set of commands to manage Locations for Cloud Firestore.
+`(ALPHA)` The set of commands to manage Locations for Cloud Firestore.
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 COMMANDS
 
 `  COMMAND  ` is one of the following:
 
   - `  describe  `  
-    `  (ALPHA)  ` Describes a location available to Google Cloud Firestore.
+    `(ALPHA)` Describes a location available to Google Cloud Firestore.
   - `  list  `  
-    `  (ALPHA)  ` List locations available to Google Cloud Firestore.
+    `(ALPHA)` List locations available to Google Cloud Firestore.
 
 NOTES
 

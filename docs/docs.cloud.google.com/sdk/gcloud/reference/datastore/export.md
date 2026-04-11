@@ -4,7 +4,7 @@ gcloud datastore export - export Cloud Datastore entities to Google Cloud Storag
 
 SYNOPSIS
 
-`  gcloud datastore export  ` `  OUTPUT_URL_PREFIX  ` \[ `  --async  ` \] \[ `  --kinds  ` =\[ `  KIND  ` , …\]\] \[ `  --namespaces  ` =\[ `  NAMESPACE  ` , …\]\] \[ `  --operation-labels  ` =\[ `  OPERATION_LABEL  ` , …\]\] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud datastore export` `  OUTPUT_URL_PREFIX  ` \[ `  --async  ` \] \[ `  --kinds  ` =\[ `  KIND  ` , …\]\] \[ `  --namespaces  ` =\[ `  NAMESPACE  ` , …\]\] \[ `  --operation-labels  ` =\[ `  OPERATION_LABEL  ` , …\]\] \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
@@ -12,25 +12,25 @@ Export a copy of all or a subset of entities from Google Cloud Datastore to anot
 
 EXAMPLES
 
-To export all kinds in the `  exampleNs  ` namespace in the `  exampleProject  ` project to the `  exampleBucket  ` , run:
+To export all kinds in the `exampleNs` namespace in the `exampleProject` project to the `exampleBucket` , run:
 
 ``` wrap-code
 gcloud datastore export gs://exampleBucket --namespaces='exampleNs' --project='exampleProject'
 ```
 
-To export the `  exampleKind  ` and `  otherKind  ` kinds in the `  exampleNs  ` namespace in the `  exampleProject  ` project to the `  exampleBucket  ` , run:
+To export the `exampleKind` and `otherKind` kinds in the `exampleNs` namespace in the `exampleProject` project to the `exampleBucket` , run:
 
 ``` wrap-code
 gcloud datastore export gs://exampleBucket --kinds='exampleKind','otherKind' --namespaces='exampleNs' --project='exampleProject'
 ```
 
-To export all namespaces and kinds in the currently set project to the `  exampleBucket  ` without waiting for the operation to complete, run:
+To export all namespaces and kinds in the currently set project to the `exampleBucket` without waiting for the operation to complete, run:
 
 ``` wrap-code
 gcloud datastore export gs://exampleBucket --async
 ```
 
-To export the `  exampleKind  ` in all namespaces in the currently set project to the `  exampleBucket  ` , and output the result in JSON, run:
+To export the `exampleKind` in all namespaces in the currently set project to the `exampleBucket` , and output the result in JSON, run:
 
 ``` wrap-code
 gcloud datastore export gs://exampleBucket --kinds='exampleKind' --format=json
@@ -45,28 +45,28 @@ POSITIONAL ARGUMENTS
     gcloud datastore export gs://mybucket/my/path
     ```
     
-    Will place the export in the `  mybucket  ` bucket in objects prefixed with `  my/path  ` .
+    Will place the export in the `mybucket` bucket in objects prefixed with `my/path` .
 
 FLAGS
 
-  - `  --async  `  
+  - `--async`  
     Return immediately, without waiting for the operation in progress to complete.
 
-  - `  --kinds  ` =\[ `  KIND  ` ,…\]  
+  - `--kinds` =\[ `  KIND  ` ,…\]  
     A list specifying what kinds will be included in the operation. When omitted, all Kinds are included. For example, to operate on only the 'Customer' and 'Order' Kinds:
     
     ``` wrap-code
     gcloud datastore export --kinds='Customer','Order'
     ```
 
-  - `  --namespaces  ` =\[ `  NAMESPACE  ` ,…\]  
-    A list specifying what namespaces will be included in the operation. When omitted, all namespaces are included in the operation, including the default namespace. To specify that `  only  ` the default namespace should be operated on, use the special symbol '(default)'. For example, to operate on entities from both the 'customers' and default namespaces:
+  - `--namespaces` =\[ `  NAMESPACE  ` ,…\]  
+    A list specifying what namespaces will be included in the operation. When omitted, all namespaces are included in the operation, including the default namespace. To specify that `only` the default namespace should be operated on, use the special symbol '(default)'. For example, to operate on entities from both the 'customers' and default namespaces:
     
     ``` wrap-code
     gcloud datastore export --namespaces='(default)','customers'
     ```
 
-  - `  --operation-labels  ` =\[ `  OPERATION_LABEL  ` ,…\]  
+  - `--operation-labels` =\[ `  OPERATION_LABEL  ` ,…\]  
     A string:string map of custom labels to associate with this operation. For example:
     
     ``` wrap-code
@@ -77,7 +77,7 @@ GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 NOTES
 

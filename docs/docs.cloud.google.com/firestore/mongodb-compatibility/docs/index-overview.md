@@ -44,7 +44,7 @@ The following situations lead to errors when working with array values and multi
   - An operation attempts to add an array value to a field indexed by a regular index. To add the array value, you must delete existing regular indexes on that field, and recreate them as multikey indexes.
   - You attempt to create a regular index on a field that contains an array value. You must either create a multikey index or delete the array values.
   - An operation attempts to index multiple fields with array values. You cannot have more than one field with an array value in a multikey index. To proceed, modify your data model or your index definitions.
-  - You attempt to create a multikey index where two field paths share a common prefix like `  users.posts  ` and `  users.zip  ` .
+  - You attempt to create a multikey index where two field paths share a common prefix like `users.posts` and `users.zip` .
 
 ## Unique indexes
 
@@ -52,15 +52,15 @@ Set the unique index option to enforce unique values for the indexed fields. For
 
 ### Absent fields in a unique index
 
-If you insert a document with missing fields for the unique index, the index sets `  null  ` values for the missing fields. The resulting index entry must be unique or the operation fails.
+If you insert a document with missing fields for the unique index, the index sets `null` values for the missing fields. The resulting index entry must be unique or the operation fails.
 
 For example, with this index:
 
     db.cities.createIndex( { "name": 1 }, { unique: true } )
 
-If you add the document `  {"abbreviation": "LA"}  ` to the collection, the unique index creates an entry with `  name  ` set to `  null  ` . If you then try to add the document `  {"abbreviation": "NYC"}  ` , the operation fails because the resulting entry for the unique index is the same.
+If you add the document `{"abbreviation": "LA"}` to the collection, the unique index creates an entry with `name` set to `null` . If you then try to add the document `{"abbreviation": "NYC"}` , the operation fails because the resulting entry for the unique index is the same.
 
-The same behavior applies to unique indexes with multiple fields. When creating or updating a document, missing indexed fields are set to `  null  ` and the resulting index entry must be unique in the index.
+The same behavior applies to unique indexes with multiple fields. When creating or updating a document, missing indexed fields are set to `null` and the resulting index entry must be unique in the index.
 
 ## TTL indexes
 

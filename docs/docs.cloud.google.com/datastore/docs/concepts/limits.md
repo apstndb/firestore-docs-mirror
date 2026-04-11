@@ -43,8 +43,8 @@ This limit applies when Datastore mode is used outside of Google App Engine. If 
 (1 MiB - 4 bytes)</td>
 </tr>
 <tr class="even">
-<td><p>Maximum number of property transformations that can be performed on a single entity in a <code dir="ltr" translate="no">        Commit       </code> operation or in a transaction.</p>
-<p>For array transforms like <code dir="ltr" translate="no">        "appendMissingElements"       </code> , each array element counts towards the limit.</p></td>
+<td><p>Maximum number of property transformations that can be performed on a single entity in a <code dir="ltr" translate="no">Commit</code> operation or in a transaction.</p>
+<p>For array transforms like <code dir="ltr" translate="no">"appendMissingElements"</code> , each array element counts towards the limit.</p></td>
 <td>500</td>
 </tr>
 <tr class="odd">
@@ -56,7 +56,7 @@ This limit applies when Datastore mode is used outside of Google App Engine. If 
 <td>20</td>
 </tr>
 <tr class="odd">
-<td>Maximum number of keys allowed for a <code dir="ltr" translate="no">       Lookup      </code> operation in the Datastore API</td>
+<td>Maximum number of keys allowed for a <code dir="ltr" translate="no">Lookup</code> operation in the Datastore API</td>
 <td>1,000</td>
 </tr>
 <tr class="even">
@@ -103,9 +103,9 @@ This limit applies when Datastore mode is used outside of Google App Engine. If 
 </tr>
 <tr class="even">
 <td>Maximum number of entity filters for export and import requests
-When the export or import request specifies an <code dir="ltr" translate="no">       entity_filter      </code> , each combination of filtered kind and namespace counts as a separate filter towards this limit. For example:
-A request with <code dir="ltr" translate="no">       kinds=['foo', 'bar']      </code> and <code dir="ltr" translate="no">       namespace_ids=['', 'ns1']      </code><br />
-results in 4 filters towards this limit: <code dir="ltr" translate="no">       [('', 'foo'), ('', 'bar'), ('ns1', 'foo'), ('ns1', 'bar')]      </code></td>
+When the export or import request specifies an <code dir="ltr" translate="no">entity_filter</code> , each combination of filtered kind and namespace counts as a separate filter towards this limit. For example:
+A request with <code dir="ltr" translate="no">kinds=['foo', 'bar']</code> and <code dir="ltr" translate="no">namespace_ids=['', 'ns1']</code><br />
+results in 4 filters towards this limit: <code dir="ltr" translate="no">[('', 'foo'), ('', 'bar'), ('ns1', 'foo'), ('ns1', 'bar')]</code></td>
 <td>100</td>
 </tr>
 <tr class="odd">

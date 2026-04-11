@@ -4,11 +4,11 @@ gcloud alpha datastore - manage your Cloud Datastore resources
 
 SYNOPSIS
 
-`  gcloud alpha datastore  ` `  GROUP  ` | `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud alpha datastore` `  GROUP  ` | `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (ALPHA)  ` Cloud Datastore is a highly-scalable NoSQL database for your applications. Cloud Datastore automatically handles sharding and replication, providing you with a highly available and durable database that scales automatically to handle your applications' load.
+`(ALPHA)` Cloud Datastore is a highly-scalable NoSQL database for your applications. Cloud Datastore automatically handles sharding and replication, providing you with a highly available and durable database that scales automatically to handle your applications' load.
 
 More information on Cloud Datastore can be found here: <https://cloud.google.com/datastore> and detailed documentation can be found here: <https://cloud.google.com/datastore/docs>
 
@@ -24,25 +24,25 @@ GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 GROUPS
 
 `  GROUP  ` is one of the following:
 
   - `  indexes  `  
-    `  (ALPHA)  ` Manage your Cloud Datastore indexes.
+    `(ALPHA)` Manage your Cloud Datastore indexes.
   - `  operations  `  
-    `  (ALPHA)  ` Manage Long Running Operations for Cloud Datastore.
+    `(ALPHA)` Manage Long Running Operations for Cloud Datastore.
 
 COMMANDS
 
 `  COMMAND  ` is one of the following:
 
   - `  export  `  
-    `  (ALPHA)  ` Export Cloud Datastore entities to Google Cloud Storage.
+    `(ALPHA)` Export Cloud Datastore entities to Google Cloud Storage.
   - `  import  `  
-    `  (ALPHA)  ` Import Cloud Datastore entities from Google Cloud Storage.
+    `(ALPHA)` Import Cloud Datastore entities from Google Cloud Storage.
 
 NOTES
 

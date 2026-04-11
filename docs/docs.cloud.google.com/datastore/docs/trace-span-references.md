@@ -191,16 +191,16 @@ String
 
 read\_conistencey
 
-`  STRONG  ` or `  EVENTUAL  `
+`STRONG` or `EVENTUAL`
 
 more\_results
 
 One of:
 
-  - `  NOT_FINISHED  `
-  - `  MORE_RESULTS_AFTER_LIMIT  `
-  - `  MORE_RESULTS_AFTER_CURSOR  `
-  - `  NO_MORE_RESULTS  `
+  - `NOT_FINISHED`
+  - `MORE_RESULTS_AFTER_LIMIT`
+  - `MORE_RESULTS_AFTER_CURSOR`
+  - `NO_MORE_RESULTS`
 
 ## What's next
 

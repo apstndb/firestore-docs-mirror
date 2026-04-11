@@ -4,9 +4,9 @@ Many apps have documents that are indexed by physical locations. For example, yo
 
 ## Solution: Geohashes
 
-Geohash is a system for encoding a `  (latitude, longitude)  ` pair into a single Base32 string. In the Geohash system the world is divided into a rectangular grid. Each character of a Geohash string specifies one of 32 subdivisions of the prefix hash. For example the Geohash `  abcd  ` is one of 32 four-character hashes fully contained within the larger Geohash `  abc  ` .
+Geohash is a system for encoding a `(latitude, longitude)` pair into a single Base32 string. In the Geohash system the world is divided into a rectangular grid. Each character of a Geohash string specifies one of 32 subdivisions of the prefix hash. For example the Geohash `abcd` is one of 32 four-character hashes fully contained within the larger Geohash `abc` .
 
-The longer the shared prefix between two hashes, the closer they are to each other. For example `  abcdef  ` is closer to `  abcdeg  ` than `  abcdff  ` . However the converse is not true\! Two areas may be very close to each other while having very different Geohashes:
+The longer the shared prefix between two hashes, the closer they are to each other. For example `abcdef` is closer to `abcdeg` than `abcdff` . However the converse is not true\! Two areas may be very close to each other while having very different Geohashes:
 
 ![Geohashes far apart](https://docs.cloud.google.com/firestore/native/docs/images/firestore-geohash-far.png)
 

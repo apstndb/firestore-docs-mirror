@@ -26,8 +26,8 @@ To accomplish these goals, Key Visualizer can help you complete the following ta
 
 In Key Visualizer, the term **Index Key** refers to a index's unique identifier. These can be built-in indexes or composite indexes. For example, the following indexes are some examples of index keys as seen on the Key Visualizer tool:
 
-  - ``  NAMESPACE: '' KIND: Test PROPERTIES: (integer: ASC, description: DESC)ANCESTOR:KEY(PROJECT('PROJECT_ID'),NAMESPACE(''),`Ancestor`,1685558526142092,`Test`,4848490060529664) VALUES: (1,"tIu9hjuuTpFj0OjDdBe0lX3Zfv8P6pOWKQYxE6hNaol0HrWzGoJ1MHva4T8XupUVccbe4ZCU7Fa1NUhEVBAAcBiUijZw00D0qHbZ") ENTITY: KEY(PROJECT('PROJECT_ID'),NAMESPACE(''),`Ancestor`,1685558526142092,`Test`,4848490060529664)  ``
-  - ``  NAMESPACE: '' KIND: Test PROPERTIES: (integer: ASC, description:DESC) ANCESTOR: KEY(PROJECT('PROJECT_ID'),NAMESPACE(''),`Ancestor`,1685556682238805,`Test`,5097691411464192) VALUES: (1,"7m4tJ4nMqmpWgTH9dl6GxgHlnsLbCEZTlFRxVIapvFvXgt3SPogs2bqIDLxAL3GK6Wg1oig7PJi2iin7p3PZueNM5SgqMXwwAm9j") ENTITY:KEY(PROJECT('PROJECT_ID'),NAMESPACE(''),`Ancestor`,1685556682238805,`Test`,5097691411464192)  ``
+  - ``NAMESPACE: '' KIND: Test PROPERTIES: (integer: ASC, description: DESC)ANCESTOR:KEY(PROJECT('PROJECT_ID'),NAMESPACE(''),`Ancestor`,1685558526142092,`Test`,4848490060529664) VALUES: (1,"tIu9hjuuTpFj0OjDdBe0lX3Zfv8P6pOWKQYxE6hNaol0HrWzGoJ1MHva4T8XupUVccbe4ZCU7Fa1NUhEVBAAcBiUijZw00D0qHbZ") ENTITY: KEY(PROJECT('PROJECT_ID'),NAMESPACE(''),`Ancestor`,1685558526142092,`Test`,4848490060529664)``
+  - ``NAMESPACE: '' KIND: Test PROPERTIES: (integer: ASC, description:DESC) ANCESTOR: KEY(PROJECT('PROJECT_ID'),NAMESPACE(''),`Ancestor`,1685556682238805,`Test`,5097691411464192) VALUES: (1,"7m4tJ4nMqmpWgTH9dl6GxgHlnsLbCEZTlFRxVIapvFvXgt3SPogs2bqIDLxAL3GK6Wg1oig7PJi2iin7p3PZueNM5SgqMXwwAm9j") ENTITY:KEY(PROJECT('PROJECT_ID'),NAMESPACE(''),`Ancestor`,1685556682238805,`Test`,5097691411464192)``
 
 ## Scan eligibility
 

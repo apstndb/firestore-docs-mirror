@@ -71,7 +71,7 @@ Android
 
 ### Remove Nested Fields
 
-The `  remove_fields(...)  ` stage respects nested field syntax, and will remove keys from a map.
+The `remove_fields(...)` stage respects nested field syntax, and will remove keys from a map.
 
 For example, to remove the nested state field from the dataset:
 
@@ -98,4 +98,4 @@ Removal of elements within an array is unsupported.
 
 ### Remove on Non-Existent Fields
 
-If a nested or top-level field given to `  remove_fields(...)  ` does not exist in a document, the stage won't edit the document for that field. Other existing fields will still be removed.
+If a nested or top-level field given to `remove_fields(...)` does not exist in a document, the stage won't edit the document for that field. Other existing fields will still be removed.

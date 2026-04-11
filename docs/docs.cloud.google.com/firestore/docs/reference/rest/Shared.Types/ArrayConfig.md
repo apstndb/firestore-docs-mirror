@@ -2,10 +2,10 @@ The supported array value configurations.
 
 Enums
 
-`  ARRAY_CONFIG_UNSPECIFIED  `
+`ARRAY_CONFIG_UNSPECIFIED`
 
 The index does not support additional array queries.
 
-`  CONTAINS  `
+`CONTAINS`
 
 The index supports array containment queries.

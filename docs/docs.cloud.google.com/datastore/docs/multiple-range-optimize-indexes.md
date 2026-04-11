@@ -48,7 +48,7 @@ The following example shows how the use of correct index ordering saves the numb
 
 ### Simple queries
 
-With the [earlier example](https://docs.cloud.google.com/datastore/docs/multiple-range-fields#indexing_considerations) of a collection of employees, the simple query that runs with the `  (salary, experience)  ` index is as follows:
+With the [earlier example](https://docs.cloud.google.com/datastore/docs/multiple-range-fields#indexing_considerations) of a collection of employees, the simple query that runs with the `(salary, experience)` index is as follows:
 
 ### GQL
 
@@ -96,7 +96,7 @@ The query scans 95000 index entries only to return 5 entities. A large number of
             }
         }
 
-As per the earlier example, we can infer that the `  salary  ` constraint is more selective than the `  experience  ` constraint.
+As per the earlier example, we can infer that the `salary` constraint is more selective than the `experience` constraint.
 
 ### GQL
 
@@ -116,7 +116,7 @@ As per the earlier example, we can infer that the `  salary  ` constraint is mor
         .setOrderBy(OrderBy("salary"), OrderBy("experience"))
         .build();
 
-When you explicitly use the `  orderBy()  ` clause to add the predicates in the earlier order, Firestore in Datastore mode uses the `  (salary, experience)  ` index to run the query. Since the selection of the first range filter is better than the earlier query, the query runs faster and is cost-efficient.
+When you explicitly use the `orderBy()` clause to add the predicates in the earlier order, Firestore in Datastore mode uses the `(salary, experience)` index to run the query. Since the selection of the first range filter is better than the earlier query, the query runs faster and is cost-efficient.
 
 ``` 
     // Output query planning info

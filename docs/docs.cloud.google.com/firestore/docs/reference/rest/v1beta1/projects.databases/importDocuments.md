@@ -97,7 +97,7 @@ eu
 us
 
   
-`  POST https://firestore.googleapis.com/v1beta1/{name=projects/*/databases/*}:importDocuments  `
+`POST https://firestore.googleapis.com/v1beta1/{name=projects/*/databases/*}:importDocuments`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -105,11 +105,11 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Database to import into. Should be of the form: `  projects/{projectId}/databases/{databaseId}  ` .
+Database to import into. Should be of the form: `projects/{projectId}/databases/{databaseId}` .
 
 ### Request body
 
@@ -138,17 +138,17 @@ The request body contains data with the following structure:
 
 Fields
 
-`  collectionIds[]  `
+`collectionIds[]`
 
-`  string  `
+`string`
 
 Which collection ids to import. Unspecified means all collections included in the import.
 
-`  inputUriPrefix  `
+`inputUriPrefix`
 
-`  string  `
+`string`
 
-Location of the exported files. This must match the outputUriPrefix of an ExportDocumentsResponse from an export that has completed successfully. See: `  google.firestore.admin.v1beta1.ExportDocumentsResponse.output_uri_prefix  ` .
+Location of the exported files. This must match the outputUriPrefix of an ExportDocumentsResponse from an export that has completed successfully. See: `google.firestore.admin.v1beta1.ExportDocumentsResponse.output_uri_prefix` .
 
 ### Response body
 
@@ -158,7 +158,7 @@ If successful, the response body contains an instance of `  Operation  ` .
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

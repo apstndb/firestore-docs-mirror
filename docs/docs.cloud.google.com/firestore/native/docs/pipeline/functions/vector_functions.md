@@ -6,14 +6,14 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## **Vector Functions**
 
-|                                        |                                                    |
-| -------------------------------------- | -------------------------------------------------- |
-| Name                                   | Description                                        |
-| `          COSINE_DISTANCE        `    | Returns the cosine distance between two vectors    |
-| `          DOT_PRODUCT        `        | Returns the dot product between two vectors        |
-| `          EUCLIDEAN_DISTANCE        ` | Returns the euclidean distance between two vectors |
-| `          MANHATTAN_DISTANCE        ` | Returns the manhattan distance between two vectors |
-| `          VECTOR_LENGTH        `      | Returns the number of elements in a vector         |
+|                                       |                                                    |
+| ------------------------------------- | -------------------------------------------------- |
+| Name                                  | Description                                        |
+| `         COSINE_DISTANCE        `    | Returns the cosine distance between two vectors    |
+| `         DOT_PRODUCT        `        | Returns the dot product between two vectors        |
+| `         EUCLIDEAN_DISTANCE        ` | Returns the euclidean distance between two vectors |
+| `         MANHATTAN_DISTANCE        ` | Returns the manhattan distance between two vectors |
+| `         VECTOR_LENGTH        `      | Returns the number of elements in a vector         |
 
 ### COSINE\_DISTANCE
 
@@ -23,7 +23,7 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 **Description:**
 
-Returns the cosine distance between `  x  ` and `  y  ` .
+Returns the cosine distance between `x` and `y` .
 
 ##### Node.js
 
@@ -109,7 +109,7 @@ Android
 
 **Description:**
 
-Returns the dot product of `  x  ` and `  y  ` .
+Returns the dot product of `x` and `y` .
 
 ##### Node.js
 
@@ -195,7 +195,7 @@ Android
 
 **Description:**
 
-Computes the euclidean distance between `  x  ` and `  y  ` .
+Computes the euclidean distance between `x` and `y` .
 
 ##### Node.js
 
@@ -285,7 +285,7 @@ Android
 
 **Description:**
 
-Computes the manhattan distance between `  x  ` and `  y  ` .
+Computes the manhattan distance between `x` and `y` .
 
 ### VECTOR\_LENGTH
 
@@ -295,7 +295,7 @@ Computes the manhattan distance between `  x  ` and `  y  ` .
 
 **Description:**
 
-Returns the number of elements in a `  VECTOR  ` .
+Returns the number of elements in a `VECTOR` .
 
 ##### Node.js
 

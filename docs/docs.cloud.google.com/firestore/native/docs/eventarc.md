@@ -9,7 +9,7 @@ You can use [Eventarc](https://docs.cloud.google.com/eventarc/docs/overview) and
 
 Eventarc offers a standardized solution to manage the flow of state changes, called *events* , between decoupled microservices. When triggered, Eventarc routes these events to various destinations while managing delivery, security, authorization, observability, and error-handling for you.
 
-**Note:** Eventarc events use the [`  CloudEvents  `](https://cloudevents.io/) specification.
+**Note:** Eventarc events use the [`CloudEvents`](https://cloudevents.io/) specification.
 
 ## Limitations
 
@@ -29,7 +29,7 @@ Note the following limitations for Firestore triggers for Eventarc:
 
 Cloud Run functions (2nd gen) uses Eventarc events for all runtimes. Previously, Cloud Run functions (1st gen) used Eventarc events for [only some runtimes](https://docs.cloud.google.com/functions/docs/writing/write-event-driven-functions) . Eventarc events introduce the following differences from [Cloud Run functions (1st gen)](https://docs.cloud.google.com/firestore/docs/extend-with-functions) .
 
-  - The Firestore triggers for Eventarc support additional destinations besides Cloud Run functions. You can route `  CloudEvents  ` to a number of [destinations](https://docs.cloud.google.com/eventarc/docs/event-providers-targets) including, but not limited to Cloud Run, GKE, and Workflows.
+  - The Firestore triggers for Eventarc support additional destinations besides Cloud Run functions. You can route `CloudEvents` to a number of [destinations](https://docs.cloud.google.com/eventarc/docs/event-providers-targets) including, but not limited to Cloud Run, GKE, and Workflows.
 
   - Firestore triggers for Eventarc retrieve the trigger definition at the start of a database write operation and uses that definition to decide if Firestore should emit an event. The write operation does not take into account any changes to trigger definition that might happen as it runs.
     
@@ -45,8 +45,8 @@ Event interoperability lets you share Eventarc code across Firestore databases o
 
 If you apply a Native mode event trigger to a Datastore mode database, Eventarc makes the following conversions:
 
-  - The namespace of the entity is stored in the event's `  PartitionId  ` attribute.
-  - Embedded entities are converted to Native mode `  map  ` types.
+  - The namespace of the entity is stored in the event's `PartitionId` attribute.
+  - Embedded entities are converted to Native mode `map` types.
 
 ## What's next
 

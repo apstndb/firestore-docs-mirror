@@ -6,7 +6,7 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## Description
 
-Filters the documents from the previous stage, returning only the documents where the condition evaluates to `  true  ` .
+Filters the documents from the previous stage, returning only the documents where the condition evaluates to `true` .
 
 ## Examples
 
@@ -110,7 +110,7 @@ Android
 
 ### Multiple Stages
 
-Multiple `  where(...)  ` stages can be chained together, acting as an `  and(...)  ` expression across each condition.
+Multiple `where(...)` stages can be chained together, acting as an `and(...)` expression across each condition.
 
 ### Node.js
 
@@ -120,7 +120,7 @@ Multiple `  where(...)  ` stages can be chained together, acting as an `  and(..
       .where(field("population").greaterThan(500000))
       .execute();
 
-Filtering based on a logical `  or  ` of two conditions though need to be done as a single `  where(...)  ` stage though.
+Filtering based on a logical `or` of two conditions though need to be done as a single `where(...)` stage though.
 
 ### Node.js
 
@@ -143,7 +143,7 @@ The filter condition can contain complex filter conditions containing deeply nes
           field("location.state").charLength().greaterThan(7)
           .and(field("location.country").equals("USA"))))
 
-filters `  /cities  ` based on a regular expression, or if the city is in the `  USA  ` with a long enough state name. Any expression can be given as the condition, but will only match those which evaluate to `  true  ` .
+filters `/cities` based on a regular expression, or if the city is in the `USA` with a long enough state name. Any expression can be given as the condition, but will only match those which evaluate to `true` .
 
 ### Stage Ordering
 
@@ -157,11 +157,11 @@ The order of stages is important as it can change the query evaluation order. Fo
       .where(field("location.country").equals("USA"))
       .execute();
 
-will only filter on `  location.country  ` for a (potentially random) set of 10 documents as the prior `  limit(...)  ` stage is restricting the documents that are ever provided to the `  where(...)  ` stage. Given this, the rule of thumb is to put the `  where(...)  ` stages as early in the query as possible.
+will only filter on `location.country` for a (potentially random) set of 10 documents as the prior `limit(...)` stage is restricting the documents that are ever provided to the `where(...)` stage. Given this, the rule of thumb is to put the `where(...)` stages as early in the query as possible.
 
-**`  HAVING  ` -Like Functionality:**
+**`HAVING` -Like Functionality:**
 
-The `  where(...)  ` stage can come after any stage that changes the schema of the documents, like `  select(...)  ` or `  aggregate(...)  ` and will refer to the fields produced from those stages. Importantly for `  aggregate(...)  ` , a following `  where(...)  ` clause that refers to the accumulated fields acts like a `  HAVING  ` clause in a typical SQL system. For example:
+The `where(...)` stage can come after any stage that changes the schema of the documents, like `select(...)` or `aggregate(...)` and will refer to the fields produced from those stages. Importantly for `aggregate(...)` , a following `where(...)` clause that refers to the accumulated fields acts like a `HAVING` clause in a typical SQL system. For example:
 
 ### Node.js
 

@@ -4,28 +4,28 @@ gcloud alpha firestore indexes fields - manage single-field indexes for Cloud Fi
 
 SYNOPSIS
 
-`  gcloud alpha firestore indexes fields  ` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud alpha firestore indexes fields` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (ALPHA)  ` Changes here apply to index settings for individual fields, and won't affect any composite indexes using those fields.
+`(ALPHA)` Changes here apply to index settings for individual fields, and won't affect any composite indexes using those fields.
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 COMMANDS
 
 `  COMMAND  ` is one of the following:
 
   - `  describe  `  
-    `  (ALPHA)  ` Describe the index configuration of the given field.
+    `(ALPHA)` Describe the index configuration of the given field.
   - `  list  `  
-    `  (ALPHA)  ` List fields with non-default index settings.
+    `(ALPHA)` List fields with non-default index settings.
   - `  update  `  
-    `  (ALPHA)  ` Update the index configuration of the given field.
+    `(ALPHA)` Update the index configuration of the given field.
 
 NOTES
 

@@ -11,29 +11,22 @@ The response for `  Firestore.ListDocuments  ` .
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;documents&quot;: [
-    {
-      object (Document)
-    }
-  ],
-  &quot;nextPageToken&quot;: string
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;documents&quot;: [{object (Document)}],&quot;nextPageToken&quot;: string}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  documents[]  `
+`documents[]`
 
-`  object ( Document  ` )
+` object ( Document  ` )
 
 The Documents found.
 
-`  nextPageToken  `
+`nextPageToken`
 
-`  string  `
+`string`
 
 A token to retrieve the next page of documents.
 

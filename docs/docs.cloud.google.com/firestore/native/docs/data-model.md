@@ -12,13 +12,13 @@ Collections and documents are created implicitly in Firestore. Simply assign dat
 
 In Firestore, the unit of storage is the document. A document is a lightweight record that contains fields, which map to values. Each document is identified by a name.
 
-A document representing a user `  alovelace  ` might look like this:
+A document representing a user `alovelace` might look like this:
 
   - class alovelace
     
-    `  first : "Ada"  `  
-    `  last : "Lovelace"  `  
-    `  born : 1815  `  
+    `first : "Ada"`  
+    `last : "Lovelace"`  
+    `born : 1815`  
 
 **Note:** Firestore supports a variety of data types for values: boolean, number, string, geo point, binary blob, and timestamp. You can also use arrays or nested objects, called maps, to structure data within a document.
 
@@ -26,10 +26,10 @@ Complex, nested objects in a document are called maps. For example, you could st
 
   - class alovelace
     
-    `  name :  `  
-    `  first : "Ada"  `  
-    `  last : "Lovelace"  `  
-    `  born : 1815  `  
+    `name :`  
+    `first : "Ada"`  
+    `last : "Lovelace"`  
+    `born : 1815`  
 
 You may notice that documents look a lot like JSON. In fact, they basically are. There are some differences (for example, documents support extra data types and are limited to the [document size limit](https://docs.cloud.google.com/firestore/quotas#collections_documents_and_fields) ), but in general, you can treat documents as lightweight JSON records.
 
@@ -37,21 +37,21 @@ You may notice that documents look a lot like JSON. In fact, they basically are.
 
 ![](https://docs.cloud.google.com/static/firestore/native/docs/images/structure-data.png)
 
-Documents live in collections, which are simply containers for documents. For example, you could have a `  users  ` collection to contain your various users, each represented by a document:
+Documents live in collections, which are simply containers for documents. For example, you could have a `users` collection to contain your various users, each represented by a document:
 
   - collections\_bookmark users
     
       - class alovelace
         
-        `  first : "Ada"  `  
-        `  last : "Lovelace"  `  
-        `  born : 1815  `  
+        `first : "Ada"`  
+        `last : "Lovelace"`  
+        `born : 1815`  
     
       - class aturing
         
-        `  first : "Alan"  `  
-        `  last : "Turing"  `  
-        `  born : 1912  `  
+        `first : "Alan"`  
+        `last : "Turing"`  
+        `born : 1912`  
 
 Firestore is schemaless, so you have complete freedom over what fields you put in each document and what data types you store in those fields. Documents within the same collection can all contain different fields or store different types of data in those fields. However, it's a good idea to use the same fields and data types across multiple documents, so that you can query the documents more easily.
 
@@ -63,7 +63,7 @@ You do not need to "create" or "delete" collections. After you create the first 
 
 ## References
 
-Every document in Firestore is uniquely identified by its location within the database. The previous example showed a document `  alovelace  ` within the collection `  users  ` . To refer to this location in your code, you can create a *reference* to it.
+Every document in Firestore is uniquely identified by its location within the database. The previous example showed a document `alovelace` within the collection `users` . To refer to this location in your code, you can create a *reference* to it.
 
 ### Web version 9
 
@@ -268,7 +268,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 **Note:** *Collection references* and *document references* are two distinct types of references and let you perform different operations. For example, you could use a collection reference for querying the documents in the collection, and you could use a document reference to read or write an individual document.
 
-For convenience, you can also create references by specifying the path to a document or collection as a string, with path components separated by a forward slash ( `  /  ` ). For example, to create a reference to the `  alovelace  ` document:
+For convenience, you can also create references by specifying the path to a document or collection as a string, with path components separated by a forward slash ( `/` ). For example, to create a reference to the `alovelace` document:
 
 ### Web version 9
 
@@ -373,17 +373,17 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 To understand how hierarchical data structures work in Firestore, consider an example chat app with messages and chat rooms.
 
-You can create a collection called `  rooms  ` to store different chat rooms:
+You can create a collection called `rooms` to store different chat rooms:
 
   - collections\_bookmark rooms
     
       - class roomA
         
-        `  name : "my chat room"  `  
+        `name : "my chat room"`  
     
       - class roomB
         
-        `  ...  `  
+        `...`  
 
 Now that you have chat rooms, decide how to store your messages. You might not want to store them in the chat room's document. Documents in Firestore should be lightweight, and a chat room could contain a large number of messages. However, you can create additional collections within your chat room's document, as subcollections.
 
@@ -393,28 +393,28 @@ The best way to store messages in this scenario is by using subcollections. A su
 
 **Note:** You can query across subcollections with the same collection ID by using [Collection Group Queries](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#collection-group-query) .
 
-You can create a subcollection called `  messages  ` for every room document in your `  rooms  ` collection:
+You can create a subcollection called `messages` for every room document in your `rooms` collection:
 
   - collections\_bookmark rooms
     
       - class roomA
         
-        `  name : "my chat room"  `  
+        `name : "my chat room"`  
         
           - collections\_bookmark messages
             
               - class message1
                 
-                `  from : "alex"  `  
-                `  msg : "Hello World!"  `  
+                `from : "alex"`  
+                `msg : "Hello World!"`  
             
               - class message2
                 
-                `  ...  `  
+                `...`  
     
       - class roomB
         
-        `  ...  `  
+        `...`  
 
 In this example, you would create a reference to a message in the subcollection with the following code:
 
@@ -546,10 +546,10 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 Notice the alternating pattern of collections and documents. Your collections and documents must always follow this pattern. You cannot reference a collection in a collection or a document in a document.
 
-Subcollections allow you to structure data hierarchically, making data easier to access. To get all messages in `  roomA  ` , you can create a collection reference to the subcollection `  messages  ` and interact with it like you would any other collection reference.
+Subcollections allow you to structure data hierarchically, making data easier to access. To get all messages in `roomA` , you can create a collection reference to the subcollection `messages` and interact with it like you would any other collection reference.
 
 Documents in subcollections can contain subcollections as well, allowing you to further nest data. You can nest data up to 100 levels deep.
 
 **Warning:** Deleting a document does not delete its subcollections\!  
   
-When you delete a document that has subcollections, those subcollections are not deleted. For example, there may be a document located at `  coll/doc/subcoll/subdoc  ` even though the document `  coll/doc  ` no longer exists. If you want to delete documents in subcollections when deleting a parent document, you must do so manually, as shown in [Delete Collections](https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data#collections) .
+When you delete a document that has subcollections, those subcollections are not deleted. For example, there may be a document located at `coll/doc/subcoll/subdoc` even though the document `coll/doc` no longer exists. If you want to delete documents in subcollections when deleting a parent document, you must do so manually, as shown in [Delete Collections](https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data#collections) .

@@ -202,7 +202,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
       end
     end
 
-Note that in order to keep our examples more succinct we sometimes omit the `  rollback  ` if the transaction fails. In production code, it is important to ensure that every transaction is either explicitly committed or rolled back.
+Note that in order to keep our examples more succinct we sometimes omit the `rollback` if the transaction fails. In production code, it is important to ensure that every transaction is either explicitly committed or rolled back.
 
 ## What can be done in a transaction
 
@@ -246,17 +246,17 @@ Firestore in Datastore mode supports three concurrency modes. The concurrency mo
     
     **Note:** In the past, legacy Cloud Datastore databases were upgraded to Firestore in Datastore mode. Databases that depended on entity group transactional semantics were initially configured to use the Optimistic With Entity Groups concurrency mode.
     
-    To remove `  OPTIMISTIC_WITH_ENTITY_GROUPS  ` query, transaction and write throughput limitations, change your project's concurrency mode to Optimistic. To ensure this change is compatible with your project:
+    To remove `OPTIMISTIC_WITH_ENTITY_GROUPS` query, transaction and write throughput limitations, change your project's concurrency mode to Optimistic. To ensure this change is compatible with your project:
     
     1.  Create a test project in Firestore in Datastore mode.
     
-    2.  Change the test project's concurrency mode to `  OPTIMISTIC  ` . Issue an [HTTP PATCH](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/patch) request, as demonstrated below.
+    2.  Change the test project's concurrency mode to `OPTIMISTIC` . Issue an [HTTP PATCH](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/patch) request, as demonstrated below.
     
     3.  Run tests on the test project to ensure that you workload performs as expected without Entity Groups.
     
-    4.  [Change your main project's concurrency mode](https://docs.cloud.google.com/datastore/docs/concepts/transactions#change_concurrency_mode) from `  OPTIMISTIC_WITH_ENTITY_GROUPS  ` to `  OPTIMISTIC  ` .
+    4.  [Change your main project's concurrency mode](https://docs.cloud.google.com/datastore/docs/concepts/transactions#change_concurrency_mode) from `OPTIMISTIC_WITH_ENTITY_GROUPS` to `OPTIMISTIC` .
     
-    **Note:** The [Remote API](https://docs.cloud.google.com/appengine/docs/standard/python/tools/remoteapi) library requires Entity Groups and will not work in the `  OPTIMISTIC  ` concurrency mode. If you use the Remote API, either migrate off this API, or to continue using this library, keep your project in the `  OPTIMISTIC_WITH_ENTITY_GROUPS  ` mode.
+    **Note:** The [Remote API](https://docs.cloud.google.com/appengine/docs/standard/python/tools/remoteapi) library requires Entity Groups and will not work in the `OPTIMISTIC` concurrency mode. If you use the Remote API, either migrate off this API, or to continue using this library, keep your project in the `OPTIMISTIC_WITH_ENTITY_GROUPS` mode.
 
 ### View concurrency mode
 
@@ -267,7 +267,7 @@ Use the Firestore [projects.databases](https://cloud.google.com/firestore/docs/r
 
 ### Change concurrency mode
 
-To change your database's concurrency mode, send a `  PATCH  ` request to the Firestore [projects.databases](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases) REST resource:
+To change your database's concurrency mode, send a `PATCH` request to the Firestore [projects.databases](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases) REST resource:
 
     curl --request PATCH \
     --header "Authorization: Bearer "$(gcloud auth print-access-token) \
@@ -278,12 +278,12 @@ To change your database's concurrency mode, send a `  PATCH  ` request to the Fi
 
 where:
 
-  - CONCURRENCY\_MODE is `  PESSIMISTIC  ` , `  OPTIMISTIC  ` , or `  OPTIMISTIC_WITH_ENTITY_GROUPS  ` .
+  - CONCURRENCY\_MODE is `PESSIMISTIC` , `OPTIMISTIC` , or `OPTIMISTIC_WITH_ENTITY_GROUPS` .
   - PROJECT\_ID is the ID of your Google Cloud project.
 
 ## Uses for transactions
 
-One use of transactions is updating an entity with a new property value relative to its current value. The `  transferFunds  ` example above does that for two entities, by withdrawing money from one account and transferring it to another. The Datastore API does not automatically retry transactions, but you can add your own logic to retry them, for instance to handle conflicts when another request updates the same entity at the same time.
+One use of transactions is updating an entity with a new property value relative to its current value. The `transferFunds` example above does that for two entities, by withdrawing money from one account and transferring it to another. The Datastore API does not automatically retry transactions, but you can add your own logic to retry them, for instance to handle conflicts when another request updates the same entity at the same time.
 
 ### C\#
 
@@ -465,7 +465,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
       end
     end
 
-This requires a transaction because the value of `  balance  ` in an entity may be updated by another user after this code fetches the object, but before it saves the modified object. Without a transaction, the user's request uses the value of `  balance  ` prior to the other user's update, and the save overwrites the new value. With a transaction, the application is told about the other user's update.
+This requires a transaction because the value of `balance` in an entity may be updated by another user after this code fetches the object, but before it saves the modified object. Without a transaction, the user's request uses the value of `balance` prior to the other user's update, and the save overwrites the new value. With a transaction, the application is told about the other user's update.
 
 Another common use for transactions is to fetch an entity with a named key, or create it if it doesn't yet exist (this example builds on the TaskList example from [creating an entity](https://docs.cloud.google.com/datastore/docs/concepts/entities#creating_an_entity) ):
 

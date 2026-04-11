@@ -50,14 +50,14 @@ Operation Service:
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ExportEntities(                         ExportEntitiesRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ExportEntities(              ExportEntitiesRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
 <p>Exports a copy of all or a subset of entities from Google Cloud Datastore to another storage system, such as Google Cloud Storage. Recent updates to entities may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -77,14 +77,14 @@ Operation Service:
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ImportEntities(                         ImportEntitiesRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ImportEntities(              ImportEntitiesRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
 <p>Imports entities into Google Cloud Datastore. Existing entities with the same key are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an ImportEntities operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Datastore.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -99,31 +99,31 @@ Metadata common to all Datastore Admin operations.
 
 Fields
 
-`  start_time  `
+`start_time`
 
 `  Timestamp  `
 
 The time that work began on the operation.
 
-`  end_time  `
+`end_time`
 
 `  Timestamp  `
 
 The time the operation ended, either successfully or otherwise.
 
-`  operation_type  `
+`operation_type`
 
 `  OperationType  `
 
 The type of the operation. Can be used as a filter in ListOperationsRequest.
 
-`  labels  `
+`labels`
 
-`  map<string, string>  `
+`map<string, string>`
 
 The client-assigned labels which were provided when the operation was created. May also include additional labels.
 
-`  state  `
+`state`
 
 `  State  `
 
@@ -135,35 +135,35 @@ The various possible states for an ongoing Operation.
 
 Enums
 
-`  STATE_UNSPECIFIED  `
+`STATE_UNSPECIFIED`
 
 Unspecified.
 
-`  INITIALIZING  `
+`INITIALIZING`
 
 Request is being prepared for processing.
 
-`  PROCESSING  `
+`PROCESSING`
 
 Request is actively being processed.
 
-`  CANCELLING  `
+`CANCELLING`
 
 Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.
 
-`  FINALIZING  `
+`FINALIZING`
 
 Request has been processed and is in its finalization stage.
 
-`  SUCCESSFUL  `
+`SUCCESSFUL`
 
 Request has completed successfully.
 
-`  FAILED  `
+`FAILED`
 
 Request has finished being processed, but encountered an error.
 
-`  CANCELLED  `
+`CANCELLED`
 
 Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation.
 
@@ -183,15 +183,15 @@ The entire Baz namespace: kinds=\[\], namespace\_ids=\['Baz'\]
 
 Fields
 
-`  kinds[]  `
+`kinds[]`
 
-`  string  `
+`string`
 
 If empty, then this represents all kinds.
 
-`  namespace_ids[]  `
+`namespace_ids[]`
 
-`  string  `
+`string`
 
 An empty list represents all namespaces. This is the preferred usage for projects that don't use namespaces.
 
@@ -203,33 +203,33 @@ Metadata for ExportEntities operations.
 
 Fields
 
-`  common  `
+`common`
 
 `  CommonMetadata  `
 
 Metadata common to all Datastore Admin operations.
 
-`  progress_entities  `
+`progress_entities`
 
 `  Progress  `
 
 An estimate of the number of entities processed.
 
-`  progress_bytes  `
+`progress_bytes`
 
 `  Progress  `
 
 An estimate of the number of bytes processed.
 
-`  entity_filter  `
+`entity_filter`
 
 `  EntityFilter  `
 
 Description of which entities are being exported.
 
-`  output_url_prefix  `
+`output_url_prefix`
 
-`  string  `
+`string`
 
 Location for the export metadata and data files. This will be the same value as the `  google.datastore.admin.v1beta1.ExportEntitiesRequest.output_url_prefix  ` field. The final output location is provided in `  google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url  ` .
 
@@ -239,31 +239,31 @@ The request for `  google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities 
 
 Fields
 
-`  project_id  `
+`project_id`
 
-`  string  `
+`string`
 
 Project ID against which to make the request.
 
-`  labels  `
+`labels`
 
-`  map<string, string>  `
+`map<string, string>`
 
 Client-assigned labels.
 
-`  entity_filter  `
+`entity_filter`
 
 `  EntityFilter  `
 
 Description of what data from the project is included in the export.
 
-`  output_url_prefix  `
+`output_url_prefix`
 
-`  string  `
+`string`
 
 Location for the export metadata and data files.
 
-The full resource URL of the external storage location. Currently, only Google Cloud Storage is supported. So output\_url\_prefix should be of the form: `  gs://BUCKET_NAME[/NAMESPACE_PATH]  ` , where `  BUCKET_NAME  ` is the name of the Cloud Storage bucket and `  NAMESPACE_PATH  ` is an optional Cloud Storage namespace path (this is not a Cloud Datastore namespace). For more information about Cloud Storage namespace paths, see [Object name considerations](https://cloud.google.com/storage/docs/naming#object-considerations) .
+The full resource URL of the external storage location. Currently, only Google Cloud Storage is supported. So output\_url\_prefix should be of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]` , where `BUCKET_NAME` is the name of the Cloud Storage bucket and `NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is not a Cloud Datastore namespace). For more information about Cloud Storage namespace paths, see [Object name considerations](https://cloud.google.com/storage/docs/naming#object-considerations) .
 
 The resulting files will be nested deeper than the specified URL prefix. The final output URL will be provided in the `  google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url  ` field. That value should be used for subsequent ImportEntities operations.
 
@@ -275,9 +275,9 @@ The response for `  google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities
 
 Fields
 
-`  output_url  `
+`output_url`
 
-`  string  `
+`string`
 
 Location of the output metadata file. This can be used to begin an import into Cloud Datastore (this project or another project). See `  google.datastore.admin.v1beta1.ImportEntitiesRequest.input_url  ` . Only present if the operation completed successfully.
 
@@ -287,33 +287,33 @@ Metadata for ImportEntities operations.
 
 Fields
 
-`  common  `
+`common`
 
 `  CommonMetadata  `
 
 Metadata common to all Datastore Admin operations.
 
-`  progress_entities  `
+`progress_entities`
 
 `  Progress  `
 
 An estimate of the number of entities processed.
 
-`  progress_bytes  `
+`progress_bytes`
 
 `  Progress  `
 
 An estimate of the number of bytes processed.
 
-`  entity_filter  `
+`entity_filter`
 
 `  EntityFilter  `
 
 Description of which entities are being imported.
 
-`  input_url  `
+`input_url`
 
-`  string  `
+`string`
 
 The location of the import metadata file. This will be the same value as the `  google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url  ` field.
 
@@ -323,27 +323,27 @@ The request for `  google.datastore.admin.v1beta1.DatastoreAdmin.ImportEntities 
 
 Fields
 
-`  project_id  `
+`project_id`
 
-`  string  `
+`string`
 
 Project ID against which to make the request.
 
-`  labels  `
+`labels`
 
-`  map<string, string>  `
+`map<string, string>`
 
 Client-assigned labels.
 
-`  input_url  `
+`input_url`
 
-`  string  `
+`string`
 
-The full resource URL of the external storage location. Currently, only Google Cloud Storage is supported. So input\_url should be of the form: `  gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE  ` , where `  BUCKET_NAME  ` is the name of the Cloud Storage bucket, `  NAMESPACE_PATH  ` is an optional Cloud Storage namespace path (this is not a Cloud Datastore namespace), and `  OVERALL_EXPORT_METADATA_FILE  ` is the metadata file written by the ExportEntities operation. For more information about Cloud Storage namespace paths, see [Object name considerations](https://cloud.google.com/storage/docs/naming#object-considerations) .
+The full resource URL of the external storage location. Currently, only Google Cloud Storage is supported. So input\_url should be of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE` , where `BUCKET_NAME` is the name of the Cloud Storage bucket, `NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is not a Cloud Datastore namespace), and `OVERALL_EXPORT_METADATA_FILE` is the metadata file written by the ExportEntities operation. For more information about Cloud Storage namespace paths, see [Object name considerations](https://cloud.google.com/storage/docs/naming#object-considerations) .
 
 For more information, see `  google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url  ` .
 
-`  entity_filter  `
+`entity_filter`
 
 `  EntityFilter  `
 
@@ -355,15 +355,15 @@ Operation types.
 
 Enums
 
-`  OPERATION_TYPE_UNSPECIFIED  `
+`OPERATION_TYPE_UNSPECIFIED`
 
 Unspecified.
 
-`  EXPORT_ENTITIES  `
+`EXPORT_ENTITIES`
 
 ExportEntities.
 
-`  IMPORT_ENTITIES  `
+`IMPORT_ENTITIES`
 
 ImportEntities.
 
@@ -373,14 +373,14 @@ Measures the progress of a particular metric.
 
 Fields
 
-`  work_completed  `
+`work_completed`
 
-`  int64  `
+`int64`
 
 The amount of work that has been completed. Note that this may be greater than work\_estimated.
 
-`  work_estimated  `
+`work_estimated`
 
-`  int64  `
+`int64`
 
 An estimate of how much work needs to be performed. May be zero if the work estimate is unavailable.

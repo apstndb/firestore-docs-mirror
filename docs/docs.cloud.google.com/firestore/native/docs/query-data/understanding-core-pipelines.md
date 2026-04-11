@@ -14,7 +14,7 @@ Pipeline operations are available only in Firestore Enterprise edition and are i
 
 ### Core operations
 
-Core operations are the original interface for Firestore. Core operations uses a method-chaining syntax ( `  .where()  ` , `  .orderBy()  ` , `  .get()  ` ) on document or collection references to retrieve documents. The ordering of query stages is implied and aggregation support is limited.
+Core operations are the original interface for Firestore. Core operations uses a method-chaining syntax ( `.where()` , `.orderBy()` , `.get()` ) on document or collection references to retrieve documents. The ordering of query stages is implied and aggregation support is limited.
 
 Core operations are available in both Enterprise and Standard editions, but index defaults are very different between editions. See the next section for details.
 

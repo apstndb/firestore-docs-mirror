@@ -16,15 +16,15 @@ The terms ***row*** and ***record*** are used to generically refer to a document
 
 ### Variables
 
-`  $  ` denotes a variable, which is created or referenced in the execution tree. For example: `  $foo_1  ` . These variables are typically used to refer to the contents of a document or the value of an expression evaluated during the execution of a query.
+`$` denotes a variable, which is created or referenced in the execution tree. For example: `$foo_1` . These variables are typically used to refer to the contents of a document or the value of an expression evaluated during the execution of a query.
 
 The following internal variables can appear in the execution nodes:
 
-  - `  $__key__  ` - the key is an internal identifier for a document. This is an absolute, unique identifier with the project, database, and the full path of the document.
-  - `  $__id__  ` - the ID is a unique identifier for a document within its collection. This is unique within a single collection.
-  - `  $rid  ` - the row ID is an internal identifier for a document in storage. This is unique within a single collection.
+  - `$__key__` - the key is an internal identifier for a document. This is an absolute, unique identifier with the project, database, and the full path of the document.
+  - `$__id__` - the ID is a unique identifier for a document within its collection. This is unique within a single collection.
+  - `$rid` - the row ID is an internal identifier for a document in storage. This is unique within a single collection.
 
-Consider an example where a `  Compute  ` node is used to compute the `  __id__  ` from the document `  __key__  ` :
+Consider an example where a `Compute` node is used to compute the `__id__` from the document `__key__` :
 
     Compute
         |  $__id__1: _id($__key__)
@@ -32,16 +32,16 @@ Consider an example where a `  Compute  ` node is used to compute the `  __id__ 
 
 ### Constraints and ranges
 
-Some scan nodes use `  constraints  ` and `  ranges  ` attributes to describe the range of values that are scanned. These attributes use a range tree format which contains a list of values. These values correspond to the ordered list of keys which appear in the index definition. For example, the first range which appears in the tree, here `  (1..5]  ` , corresponds to the constraints on the first key, here `  a  ` , in the ordered list of keys:
+Some scan nodes use `constraints` and `ranges` attributes to describe the range of values that are scanned. These attributes use a range tree format which contains a list of values. These values correspond to the ordered list of keys which appear in the index definition. For example, the first range which appears in the tree, here `(1..5]` , corresponds to the constraints on the first key, here `a` , in the ordered list of keys:
 
     | index: type=CollectionGroupIndex, id=CICAgOjXh#EK, keys=[a ASC, b ASC, __key__ ASC]
     | constraints: /
                    |----(1..5]
                         |----[1L]
 
-Each level of indentation indicates the constraint applying to the next key in the list. Square brackets represent an inclusive range, rounded brackets are an exclusive range. In this case, the constraint translates to `  1 < "a" <= 5  ` , and `  "b" = 1  ` .
+Each level of indentation indicates the constraint applying to the next key in the list. Square brackets represent an inclusive range, rounded brackets are an exclusive range. In this case, the constraint translates to `1 < "a" <= 5` , and `"b" = 1` .
 
-In the following example with multiple branches for `  a  ` , the constraint corresponds to `  1 < a <= 5 OR a = 10  ` :
+In the following example with multiple branches for `a` , the constraint corresponds to `1 < a <= 5 OR a = 10` :
 
     | constraints: /
                    |----(1L, 5L]
@@ -49,9 +49,9 @@ In the following example with multiple branches for `  a  ` , the constraint cor
 
 ### Key Variables
 
-In some scan nodes (such as `  SequentialScan  ` ), there is both a list of keys as part of the `  index  ` attribute, and a separate `  keys  ` attribute in the `  Scan  ` node. The `  keys  ` attribute in the `  Scan  ` node denotes the variable name of each key in the index definition, in order. The variables can be used to reference the runtime values of the scanned field further up in the execution tree.
+In some scan nodes (such as `SequentialScan` ), there is both a list of keys as part of the `index` attribute, and a separate `keys` attribute in the `Scan` node. The `keys` attribute in the `Scan` node denotes the variable name of each key in the index definition, in order. The variables can be used to reference the runtime values of the scanned field further up in the execution tree.
 
-In the following example, the value of the `  user  ` field for the current document maps to variable `  $user_1  ` and the value of `  date_placed  ` to `  $date_placed_1  ` .
+In the following example, the value of the `user` field for the current document maps to variable `$user_1` and the value of `date_placed` to `$date_placed_1` .
 
     index: type=CollectionGroupIndex, id=CICAgOjXh4EK, keys=[user ASC, date_placed ASC, __key__ ASC]
     keys: [user ASC, date_placed ASC, __key__ ASC]
@@ -64,7 +64,7 @@ A query execution tree can contain the following nodes.
 
 Represents a dynamic scan where the rows returned may not be along a single sequential range of the index, and multiple distinct scans must be performed to satisfy the query.
 
-For example, a query where `  a  ` exists and `  b  ` equals 1 working on an index of `  ["a" ASC, "b" ASC]  ` , would need to scan and return a separate, potentially non-sequential range for each distinct value of `  a  ` . This is more efficient than a full `  TableScan  ` , but less efficient than a single `  SequentialScan  ` on a composite index of `  ["b" ASC, "a" ASC]  ` .
+For example, a query where `a` exists and `b` equals 1 working on an index of `["a" ASC, "b" ASC]` , would need to scan and return a separate, potentially non-sequential range for each distinct value of `a` . This is more efficient than a full `TableScan` , but less efficient than a single `SequentialScan` on a composite index of `["b" ASC, "a" ASC]` .
 
     • SeekingScan
     | constraints: /
@@ -80,7 +80,7 @@ For example, a query where `  a  ` exists and `  b  ` equals 1 working on an ind
 
 Represents a scan of a static, sequential range of rows in storage that can be performed in a single read operation.
 
-The `  key ordering length  ` refers to the number of keys that must be preserved and returned in original key order. For a schema of `  [k1, k2, k3]  ` , a key ordering length of 0 means the scan can return in any order, 1 means order by k1, but rows with the same k1 value can come with any order, 3 returns documents in exact sorted order.
+The `key ordering length` refers to the number of keys that must be preserved and returned in original key order. For a schema of `[k1, k2, k3]` , a key ordering length of 0 means the scan can return in any order, 1 means order by k1, but rows with the same k1 value can come with any order, 3 returns documents in exact sorted order.
 
     • SequentialScan
     | index: type=CollectionGroupIndex, id=CAE, keys=[user ASC, date_placed ASC, __key__ ASC]
@@ -109,7 +109,7 @@ Represents a scan of a static, sequential range of rows in storage with in-memor
 
 Represents a dynamic scan where the rows returned may be parametrized by runtime data and might not be along a single sequential range of the index, and multiple distinct scans may be performed to satisfy the query.
 
-For example, a query where `  user  ` equals `  $user_id  ` and `  date_placed  ` equals `  "2025-08-10"  ` running on an index of `  ["user" ASC, "date_placed" ASC]  ` , would use the value of the `  $user_id  ` variable at runtime and the `  "2025-08-10"  ` constraint on `  date_placed  ` to restrict the scan ranges.
+For example, a query where `user` equals `$user_id` and `date_placed` equals `"2025-08-10"` running on an index of `["user" ASC, "date_placed" ASC]` , would use the value of the `$user_id` variable at runtime and the `"2025-08-10"` constraint on `date_placed` to restrict the scan ranges.
 
     • IndexSeek
     | index: type=CollectionGroupIndex, id=CAE, keys=[user ASC, date_placed ASC, __key__ ASC]
@@ -121,7 +121,7 @@ For example, a query where `  user  ` equals `  $user_id  ` and `  date_placed  
 
 ### Fetch
 
-Back-joins the supplied row's identifier to the actual row contents from primary storage. `  Fetch  ` is required if a parent node (or the final query result) requires a subset of fields from the documents.
+Back-joins the supplied row's identifier to the actual row contents from primary storage. `Fetch` is required if a parent node (or the final query result) requires a subset of fields from the documents.
 
     • Fetch
     |  order: PRESERVE_INPUT_ORDER
@@ -142,7 +142,7 @@ Performs a join by looking up documents in a foreign collection by their ID. The
 
 A full, unordered scan of a collection. Used when a query is run without an associated index.
 
-Order can be either `  STABLE  ` or `  UNDEFINED  ` , with `  STABLE  ` denoting a deterministic ordering.
+Order can be either `STABLE` or `UNDEFINED` , with `STABLE` denoting a deterministic ordering.
 
     • TableScan
     |  order: STABLE
@@ -153,9 +153,9 @@ Order can be either `  STABLE  ` or `  UNDEFINED  ` , with `  STABLE  ` denoting
 
 ### NestedLoopJoin
 
-Performs a join between two sets of data (left and right) by iterating through each row of the left input and, for each left row, scanning the right input for matching rows based on the `  join_condition  ` .
+Performs a join between two sets of data (left and right) by iterating through each row of the left input and, for each left row, scanning the right input for matching rows based on the `join_condition` .
 
-The `  join_type  ` indicates the type of join. For example, `  LEFT_OUTER  ` means all rows from the left input are included at least once in the output. If a left row does not match any row in the right input based on the `  join_condition  ` , it will still be included, with null values for the columns from the right input.
+The `join_type` indicates the type of join. For example, `LEFT_OUTER` means all rows from the left input are included at least once in the output. If a left row does not match any row in the right input based on the `join_condition` , it will still be included, with null values for the columns from the right input.
 
     • NestedLoopJoin
     |  join_type: LEFT_OUTER
@@ -226,7 +226,7 @@ Selectively returns rows if and only if they match the supplied expression.
 
 ### RecordCount
 
-Counts the number of rows produced by the child node and emits the current count to the variable specified in the `  count  ` attribute.
+Counts the number of rows produced by the child node and emits the current count to the variable specified in the `count` attribute.
 
     • RecordCount
     |  count: $row_number_1

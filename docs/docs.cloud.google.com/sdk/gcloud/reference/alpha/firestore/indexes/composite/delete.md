@@ -4,15 +4,15 @@ gcloud alpha firestore indexes composite delete - delete the given composite ind
 
 SYNOPSIS
 
-`  gcloud alpha firestore indexes composite delete  ` ( `  INDEX  ` : `  --database  ` = `  DATABASE  ` ) \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud alpha firestore indexes composite delete` ( `  INDEX  ` : `  --database  ` = `  DATABASE  ` ) \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (ALPHA)  ` Delete the given composite index.
+`(ALPHA)` Delete the given composite index.
 
 EXAMPLES
 
-The following command deletes the composite index with ID `  3421ef  ` :
+The following command deletes the composite index with ID `3421ef` :
 
 ``` wrap-code
 gcloud alpha firestore indexes composite delete 3421ef
@@ -26,15 +26,15 @@ POSITIONAL ARGUMENTS
 
 Composite index resource - Index to delete. The arguments in this group can be used to specify the attributes of this resource. (NOTE) Some attributes are not given arguments in this group but can be set in other ways.
 
-To set the `  project  ` attribute:
+To set the `project` attribute:
 
-  - provide the argument `  index  ` on the command line with a fully specified name;
-  - provide the argument `  --project  ` on the command line;
-  - set the property `  core/project  ` .
+  - provide the argument `index` on the command line with a fully specified name;
+  - provide the argument `--project` on the command line;
+  - set the property `core/project` .
 
-To set the `  collection-group  ` attribute:
+To set the `collection-group` attribute:
 
-  - provide the argument `  index  ` on the command line with a fully specified name;
+  - provide the argument `index` on the command line with a fully specified name;
   - provide the argument \[--collection-group\] on the command line.
 
 This must be specified.
@@ -42,28 +42,28 @@ This must be specified.
   - `  INDEX  `  
     ID of the composite index or fully qualified identifier for the composite index.
     
-    To set the `  index  ` attribute:
+    To set the `index` attribute:
     
-      - provide the argument `  index  ` on the command line.
+      - provide the argument `index` on the command line.
     
     This positional argument must be specified if any of the other arguments in this group are specified.
 
-  - `  --database  ` = `  DATABASE  `  
-    Database of the composite index. To set the `  database  ` attribute:
+  - `--database` = `  DATABASE  `  
+    Database of the composite index. To set the `database` attribute:
     
-      - provide the argument `  index  ` on the command line with a fully specified name;
-      - provide the argument `  --database  ` on the command line;
-      - the default value of argument \[--database\] is `  (default)  ` .
+      - provide the argument `index` on the command line with a fully specified name;
+      - provide the argument `--database` on the command line;
+      - the default value of argument \[--database\] is `(default)` .
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 API REFERENCE
 
-This command uses the `  firestore/v1  ` API. The full documentation for this API can be found at: <https://cloud.google.com/firestore>
+This command uses the `firestore/v1` API. The full documentation for this API can be found at: <https://cloud.google.com/firestore>
 
 NOTES
 

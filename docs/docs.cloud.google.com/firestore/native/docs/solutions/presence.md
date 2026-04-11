@@ -118,7 +118,7 @@ Let's take a look at the changes required to fulfill the first issue - updating 
         });
     });index.js
 
-With these changes we've now ensured that the *local* Firestore state will always reflect the online/offline status of the device. This means you can listen to the `  /status/{uid}  ` document and use the data to change your UI to reflect connection status.
+With these changes we've now ensured that the *local* Firestore state will always reflect the online/offline status of the device. This means you can listen to the `/status/{uid}` document and use the data to change your UI to reflect connection status.
 
 ### Web
 
@@ -129,7 +129,7 @@ With these changes we've now ensured that the *local* Firestore state will alway
 
 #### Updating Firestore globally
 
-Although our application correctly reports online presence to itself, this status will not be accurate in other Firestore apps yet because our "offline" status write is local only and won't be synced up when a connection is restored. To counter this, we'll use a Cloud Function which watches the `  status/{uid}  ` path in Realtime Database. When the Realtime Database value changes the value will sync to Firestore so that all users' statuses are correct.
+Although our application correctly reports online presence to itself, this status will not be accurate in other Firestore apps yet because our "offline" status write is local only and won't be synced up when a connection is restored. To counter this, we'll use a Cloud Function which watches the `status/{uid}` path in Realtime Database. When the Realtime Database value changes the value will sync to Firestore so that all users' statuses are correct.
 
 ### Node.js
 
@@ -150,7 +150,7 @@ Although our application correctly reports online presence to itself, this statu
             });
         });index.js
 
-Once you deploy this function, you'll have a complete presence system running with Firestore. Below is an example of monitoring for any users who come online or go offline using a `  where()  ` query.
+Once you deploy this function, you'll have a complete presence system running with Firestore. Below is an example of monitoring for any users who come online or go offline using a `where()` query.
 
 ### Web
 
@@ -177,4 +177,4 @@ Using Realtime Database to add presence to your Firestore app is scalable and ef
 
   - **Debouncing** - when listening to realtime changes in Firestore, this solution is likely to trigger multiple changes. If these changes trigger more events than you want, manually debounce the Firestore events.
   - **Connectivity** - this implementation measures connectivity to Realtime Database, not to Firestore. If the connection status to each database is not the same, this solution might report an incorrect presence state.
-  - **Android** - on Android, the Realtime Database disconnects from the backend after 60 seconds of inactivity. Inactivity means no open listeners or pending operations. To keep the connection open, we recommended you add a value event listener to a path besides `  .info/connected  ` . For example you could do `  FirebaseDatabase.getInstance().getReference((new Date()).toString()).keepSynced()  ` at the start of each session. For more information, see [Detecting Connection State](https://firebase.google.com/docs/database/android/offline-capabilities#section-connection-state) .
+  - **Android** - on Android, the Realtime Database disconnects from the backend after 60 seconds of inactivity. Inactivity means no open listeners or pending operations. To keep the connection open, we recommended you add a value event listener to a path besides `.info/connected` . For example you could do `FirebaseDatabase.getInstance().getReference((new Date()).toString()).keepSynced()` at the start of each session. For more information, see [Detecting Connection State](https://firebase.google.com/docs/database/android/offline-capabilities#section-connection-state) .

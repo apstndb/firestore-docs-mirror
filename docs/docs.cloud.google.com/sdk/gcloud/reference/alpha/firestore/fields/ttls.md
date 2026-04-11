@@ -4,26 +4,26 @@ gcloud alpha firestore fields ttls - manage Time-to-live metadata for Cloud Fire
 
 SYNOPSIS
 
-`  gcloud alpha firestore fields ttls  ` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud alpha firestore fields ttls` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (ALPHA)  ` Manage Time-to-live metadata for Cloud Firestore.
+`(ALPHA)` Manage Time-to-live metadata for Cloud Firestore.
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 COMMANDS
 
 `  COMMAND  ` is one of the following:
 
   - `  list  `  
-    `  (ALPHA)  ` List all fields used as a Time To Live expiration setting.
+    `(ALPHA)` List all fields used as a Time To Live expiration setting.
   - `  update  `  
-    `  (ALPHA)  ` Update the TTL configuration of the given field.
+    `(ALPHA)` Update the TTL configuration of the given field.
 
 NOTES
 

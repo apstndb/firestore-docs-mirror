@@ -4,15 +4,15 @@ gcloud beta datastore operations cancel - cancel a currently-running Cloud Datas
 
 SYNOPSIS
 
-`  gcloud beta datastore operations cancel  ` `  NAME  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud beta datastore operations cancel` `  NAME  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (BETA)  ` Cancel a currently-running Cloud Datastore admin operation.
+`(BETA)` Cancel a currently-running Cloud Datastore admin operation.
 
 EXAMPLES
 
-To cancel the currently-running operation with id `  exampleId  ` , run:
+To cancel the currently-running operation with id `exampleId` , run:
 
 ``` wrap-code
 gcloud beta datastore operations cancel exampleId
@@ -39,7 +39,7 @@ GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 NOTES
 

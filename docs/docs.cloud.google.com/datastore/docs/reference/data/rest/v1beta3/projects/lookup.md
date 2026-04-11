@@ -106,7 +106,7 @@ eu
 us
 
   
-`  POST https://datastore.googleapis.com/v1beta3/projects/{projectId}:lookup  `
+`POST https://datastore.googleapis.com/v1beta3/projects/{projectId}:lookup`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -114,9 +114,9 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  projectId  `
+`projectId`
 
-`  string  `
+`string`
 
 Required. The ID of the project against which to make the request.
 
@@ -135,40 +135,28 @@ The request body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;readOptions&quot;: {
-    object (ReadOptions)
-  },
-  &quot;keys&quot;: [
-    {
-      object (Key)
-    }
-  ],
-  &quot;propertyMask&quot;: {
-    object (PropertyMask)
-  }
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;readOptions&quot;: {object (ReadOptions)},&quot;keys&quot;: [{object (Key)}],&quot;propertyMask&quot;: {object (PropertyMask)}}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  readOptions  `
+`readOptions`
 
-`  object ( ReadOptions  ` )
+` object ( ReadOptions  ` )
 
 The options for this lookup request.
 
-`  keys[]  `
+`keys[]`
 
-`  object ( Key  ` )
+`object ( Key` )
 
 Required. Keys of entities to look up.
 
-`  propertyMask  `
+`propertyMask`
 
-`  object ( PropertyMask  ` )
+` object ( PropertyMask  ` )
 
 The properties to return. Defaults to returning all properties.
 
@@ -193,61 +181,44 @@ If successful, the response body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;found&quot;: [
-    {
-      object (EntityResult)
-    }
-  ],
-  &quot;missing&quot;: [
-    {
-      object (EntityResult)
-    }
-  ],
-  &quot;deferred&quot;: [
-    {
-      object (Key)
-    }
-  ],
-  &quot;readTime&quot;: string
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;found&quot;: [{object (EntityResult)}],&quot;missing&quot;: [{object (EntityResult)}],&quot;deferred&quot;: [{object (Key)}],&quot;readTime&quot;: string}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  found[]  `
+`found[]`
 
-`  object ( EntityResult  ` )
+` object ( EntityResult  ` )
 
-Entities found as `  ResultType.FULL  ` entities. The order of results in this field is undefined and has no relation to the order of the keys in the input.
+Entities found as `ResultType.FULL` entities. The order of results in this field is undefined and has no relation to the order of the keys in the input.
 
-`  missing[]  `
+`missing[]`
 
-`  object ( EntityResult  ` )
+` object ( EntityResult  ` )
 
-Entities not found as `  ResultType.KEY_ONLY  ` entities. The order of results in this field is undefined and has no relation to the order of the keys in the input.
+Entities not found as `ResultType.KEY_ONLY` entities. The order of results in this field is undefined and has no relation to the order of the keys in the input.
 
-`  deferred[]  `
+`deferred[]`
 
-`  object ( Key  ` )
+`object ( Key` )
 
 A list of keys that were not looked up due to resource constraints. The order of results in this field is undefined and has no relation to the order of the keys in the input.
 
-`  readTime  `
+`readTime`
 
-`  string ( Timestamp  ` format)
+` string ( Timestamp  ` format)
 
 The time at which these entities were read or found missing.
 
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `  "2014-10-02T15:01:23Z"  ` , `  "2014-10-02T15:01:23.045123456Z"  ` or `  "2014-10-02T15:01:23+05:30"  ` .
+Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .
 
 ### Authorization scopes
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

@@ -17,19 +17,19 @@ Before you can use the managed export and import service, you must complete the 
 
 2.  Make sure your account has the necessary IAM permissions in your source project and destination project. **If you are a project owner for both projects, your account has the required permissions.** Otherwise, the following IAM roles grant the necessary permissions for Firestore export and import operations:
     
-    `  Owner  ` , `  Cloud Datastore Owner  ` , or `  Cloud Datastore Import Export Admin  `
+    `Owner` , `Cloud Datastore Owner` , or `Cloud Datastore Import Export Admin`
     
     **Note:** These roles grant permissions for both Datastore and Firestore.
     
     A project owner can grant one of these roles by following the steps in [Grant access](https://cloud.google.com/iam/docs/granting-changing-revoking-access#grant_access) .
 
-3.  Set up the `  gcloud  ` command-line tool and connect to your project in one of the following ways:
+3.  Set up the `gcloud` command-line tool and connect to your project in one of the following ways:
     
-      - Access `  gcloud  ` from the Google Cloud console using [Cloud Shell](https://cloud.google.com/shell/) .
+      - Access `gcloud` from the Google Cloud console using [Cloud Shell](https://cloud.google.com/shell/) .
         
         [Start Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
         
-        Make sure `  gcloud  ` is configured for the correct project:
+        Make sure `gcloud` is configured for the correct project:
         
             gcloud config set project [SOURCE_PROJECT_ID]
     
@@ -45,9 +45,9 @@ Export your data by creating a Cloud Storage bucket for your Firestore export fi
 
 [Create a Cloud Storage bucket](https://cloud.google.com/storage/docs/creating-buckets) in the same location as your Firestore database. To view your database location, see your [project location setting](https://docs.cloud.google.com/firestore/native/docs/locations#project_location_setting) . You cannot use a Requester Pays bucket for export and import operations.
 
-**If your Cloud Storage bucket is not in your source project** , you must give the source project's default service account access to the bucket. Each Google Cloud project has an automatically created default service account with the name `  PROJECT_ID @appspot.gserviceaccount.com  ` . Firestore export operations use this default service account to authorize Cloud Storage bucket operations. To give the default service account access to your source bucket, grant it the [`  Storage Admin  `](https://cloud.google.com/storage/docs/access-control/iam-roles) role.
+**If your Cloud Storage bucket is not in your source project** , you must give the source project's default service account access to the bucket. Each Google Cloud project has an automatically created default service account with the name `  PROJECT_ID @appspot.gserviceaccount.com ` . Firestore export operations use this default service account to authorize Cloud Storage bucket operations. To give the default service account access to your source bucket, grant it the [`Storage Admin`](https://cloud.google.com/storage/docs/access-control/iam-roles) role.
 
-You can grant this role with the [`  gsutil  ` tool](https://cloud.google.com/storage/docs/gsutil) available in Cloud Shell:
+You can grant this role with the [`gsutil` tool](https://cloud.google.com/storage/docs/gsutil) available in Cloud Shell:
 
 [Start Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
 
@@ -83,7 +83,7 @@ If your app continues to write to your database while you perform an export oper
 
 ### Begin an export operation
 
-Use the `  gcloud firestore export  ` command to export data from your source project. You can export all your data or only specific collection groups. Replace `  [SOURCE_BUCKET]  ` with the name of your Cloud Storage bucket:
+Use the `gcloud firestore export` command to export data from your source project. You can export all your data or only specific collection groups. Replace `[SOURCE_BUCKET]` with the name of your Cloud Storage bucket:
 
   - Export all data
     
@@ -97,11 +97,11 @@ Use the `  gcloud firestore export  ` command to export data from your source pr
     gcloud firestore export gs://[SOURCE_BUCKET] --collection-ids=[COLLECTION_GROUP_ID_1],[COLLECTION_GROUP_ID_2] --async
     ```
 
-Take note of your export operation's `  outputURIPrefix  ` as you will use this later on. By default, Firestore adds a pre-fix to your export files based on a timestamp:
+Take note of your export operation's `outputURIPrefix` as you will use this later on. By default, Firestore adds a pre-fix to your export files based on a timestamp:
 
     outputUriPrefix: gs://[SOURCE_BUCKET]/2019-03-05T20:58:23_56418
 
-As the export operation runs, you can use the `  firestore operations list  ` command to view your operation's progress:
+As the export operation runs, you can use the `firestore operations list` command to view your operation's progress:
 
 ``` notranslate
 gcloud firestore operations list
@@ -119,13 +119,13 @@ Before you can begin an import operation, you must make sure your destination pr
 
 If your source bucket location is different from the Firestore location of your destination project, you must move your data files to a Cloud Storage bucket in the same location as your destination project.
 
-Move your data files to another Cloud Storage bucket by following the steps in [Moving and Renaming Buckets](https://cloud.google.com/storage/docs/moving-buckets) . For all the following steps, use this new bucket as the `  [SOURCE_BUCKET]  ` .
+Move your data files to another Cloud Storage bucket by following the steps in [Moving and Renaming Buckets](https://cloud.google.com/storage/docs/moving-buckets) . For all the following steps, use this new bucket as the `[SOURCE_BUCKET]` .
 
 #### Give the project service account access to your source bucket
 
-If your source bucket is not in your destination project, then you must give the destination project's default service account access to your source bucket. The default service account is named `  [DESTINATION_PROJECT_ID] @appspot.gserviceaccount.com  ` . To give the default service account access to your source bucket, grant it the proper permissions to access the bucket.
+If your source bucket is not in your destination project, then you must give the destination project's default service account access to your source bucket. The default service account is named `  [DESTINATION_PROJECT_ID] @appspot.gserviceaccount.com ` . To give the default service account access to your source bucket, grant it the proper permissions to access the bucket.
 
-You can grant the necessary roles with the [`  gsutil  ` tool](https://cloud.google.com/storage/docs/gsutil) available in Cloud Shell:
+You can grant the necessary roles with the [`gsutil` tool](https://cloud.google.com/storage/docs/gsutil) available in Cloud Shell:
 
 [Start Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
 
@@ -136,23 +136,23 @@ You can also [grant this role in the Google Cloud console](https://cloud.google.
 
 ### Begin an import operation
 
-Before starting the import operation, make sure `  gcloud  ` is configured for the correct project:
+Before starting the import operation, make sure `gcloud` is configured for the correct project:
 
     gcloud config set project [DESTINATION_PROJECT_ID]
 
-Use the `  gcloud firestore import  ` command to import the data in your source bucket into your destination project:
+Use the `gcloud firestore import` command to import the data in your source bucket into your destination project:
 
 ``` notranslate
 gcloud firestore import gs://[SOURCE_BUCKET]/[EXPORT_PREFIX] --async
 ```
 
-Where `  [EXPORT_PREFIX]  ` matches the prefix in your export operation's `  outputUriPrefix  ` . For example:
+Where `[EXPORT_PREFIX]` matches the prefix in your export operation's `outputUriPrefix` . For example:
 
 ``` notranslate
 gcloud firestore import gs://[SOURCE_BUCKET]/2019-03-05T20:58:23_56418 --async
 ```
 
-As the export operation runs, you can use the `  firestore operations list  ` command to view your operation's progress:
+As the export operation runs, you can use the `firestore operations list` command to view your operation's progress:
 
 ``` notranslate
 gcloud firestore operations list

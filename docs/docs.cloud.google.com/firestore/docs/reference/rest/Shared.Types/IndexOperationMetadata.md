@@ -1,4 +1,4 @@
-Metadata for `  google.longrunning.Operation  ` results from `  FirestoreAdmin.CreateIndex  ` .
+Metadata for `  google.longrunning.Operation  ` results from `FirestoreAdmin.CreateIndex` .
 
 <table>
 <colgroup>
@@ -11,60 +11,49 @@ Metadata for `  google.longrunning.Operation  ` results from `  FirestoreAdmin.C
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;startTime&quot;: string,
-  &quot;endTime&quot;: string,
-  &quot;index&quot;: string,
-  &quot;state&quot;: enum (OperationState),
-  &quot;progressDocuments&quot;: {
-    object (Progress)
-  },
-  &quot;progressBytes&quot;: {
-    object (Progress)
-  }
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;startTime&quot;: string,&quot;endTime&quot;: string,&quot;index&quot;: string,&quot;state&quot;: enum (OperationState),&quot;progressDocuments&quot;: {object (Progress)},&quot;progressBytes&quot;: {object (Progress)}}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  startTime  `
+`startTime`
 
-`  string ( Timestamp  ` format)
+` string ( Timestamp  ` format)
 
 The time this operation started.
 
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `  "2014-10-02T15:01:23Z"  ` , `  "2014-10-02T15:01:23.045123456Z"  ` or `  "2014-10-02T15:01:23+05:30"  ` .
+Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .
 
-`  endTime  `
+`endTime`
 
-`  string ( Timestamp  ` format)
+` string ( Timestamp  ` format)
 
 The time this operation completed. Will be unset if operation still in progress.
 
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `  "2014-10-02T15:01:23Z"  ` , `  "2014-10-02T15:01:23.045123456Z"  ` or `  "2014-10-02T15:01:23+05:30"  ` .
+Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .
 
-`  index  `
+`index`
 
-`  string  `
+`string`
 
-The index resource that this operation is acting on. For example: `  projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId}/indexes/{index_id}  `
+The index resource that this operation is acting on. For example: `projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId}/indexes/{index_id}`
 
-`  state  `
+`state`
 
-`  enum ( OperationState  ` )
+` enum ( OperationState  ` )
 
 The state of the operation.
 
-`  progressDocuments  `
+`progressDocuments`
 
-`  object ( Progress  ` )
+` object ( Progress  ` )
 
 The progress, in documents, of this operation.
 
-`  progressBytes  `
+`progressBytes`
 
-`  object ( Progress  ` )
+` object ( Progress  ` )
 
 The progress, in bytes, of this operation.

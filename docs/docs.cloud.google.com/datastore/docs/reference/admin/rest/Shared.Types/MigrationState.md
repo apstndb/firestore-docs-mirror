@@ -2,18 +2,18 @@ States for a migration.
 
 Enums
 
-`  MIGRATION_STATE_UNSPECIFIED  `
+`MIGRATION_STATE_UNSPECIFIED`
 
 Unspecified.
 
-`  RUNNING  `
+`RUNNING`
 
 The migration is running.
 
-`  PAUSED  `
+`PAUSED`
 
 The migration is paused.
 
-`  COMPLETE  `
+`COMPLETE`
 
 The migration is complete.

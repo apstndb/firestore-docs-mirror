@@ -97,7 +97,7 @@ eu
 us
 
   
-`  POST https://firestore.googleapis.com/v1beta1/{name=projects/*/databases/*}:exportDocuments  `
+`POST https://firestore.googleapis.com/v1beta1/{name=projects/*/databases/*}:exportDocuments`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -105,11 +105,11 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Database to export. Should be of the form: `  projects/{projectId}/databases/{databaseId}  ` .
+Database to export. Should be of the form: `projects/{projectId}/databases/{databaseId}` .
 
 ### Request body
 
@@ -138,17 +138,17 @@ The request body contains data with the following structure:
 
 Fields
 
-`  collectionIds[]  `
+`collectionIds[]`
 
-`  string  `
+`string`
 
 Which collection ids to export. Unspecified means all collections.
 
-`  outputUriPrefix  `
+`outputUriPrefix`
 
-`  string  `
+`string`
 
-The output URI. Currently only supports Google Cloud Storage URIs of the form: `  gs://BUCKET_NAME[/NAMESPACE_PATH]  ` , where `  BUCKET_NAME  ` is the name of the Google Cloud Storage bucket and `  NAMESPACE_PATH  ` is an optional Google Cloud Storage namespace path. When choosing a name, be sure to consider Google Cloud Storage naming guidelines: <https://cloud.google.com/storage/docs/naming> . If the URI is a bucket (without a namespace path), a prefix will be generated based on the start time.
+The output URI. Currently only supports Google Cloud Storage URIs of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]` , where `BUCKET_NAME` is the name of the Google Cloud Storage bucket and `NAMESPACE_PATH` is an optional Google Cloud Storage namespace path. When choosing a name, be sure to consider Google Cloud Storage naming guidelines: <https://cloud.google.com/storage/docs/naming> . If the URI is a bucket (without a namespace path), a prefix will be generated based on the start time.
 
 ### Response body
 
@@ -158,7 +158,7 @@ If successful, the response body contains an instance of `  Operation  ` .
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

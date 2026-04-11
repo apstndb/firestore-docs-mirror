@@ -4,11 +4,11 @@ gcloud alpha firestore - manage your Cloud Firestore resources
 
 SYNOPSIS
 
-`  gcloud alpha firestore  ` `  GROUP  ` | `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud alpha firestore` `  GROUP  ` | `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (ALPHA)  ` export -- Export data to Google Cloud Storage
+`(ALPHA)` export -- Export data to Google Cloud Storage
 
 import -- Import data from Google Cloud Storage
 
@@ -22,37 +22,37 @@ GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 GROUPS
 
 `  GROUP  ` is one of the following:
 
   - `  backups  `  
-    `  (ALPHA)  ` The set of commands to manage backups for Cloud Firestore.
+    `(ALPHA)` The set of commands to manage backups for Cloud Firestore.
   - `  databases  `  
-    `  (ALPHA)  ` Manage Creation of Cloud Firestore in Native mode Database.
+    `(ALPHA)` Manage Creation of Cloud Firestore in Native mode Database.
   - `  fields  `  
-    `  (ALPHA)  ` Manage field metadata for Cloud Firestore.
+    `(ALPHA)` Manage field metadata for Cloud Firestore.
   - `  indexes  `  
-    `  (ALPHA)  ` Manage indexes for Cloud Firestore.
+    `(ALPHA)` Manage indexes for Cloud Firestore.
   - `  locations  `  
-    `  (ALPHA)  ` The set of commands to manage Locations for Cloud Firestore.
+    `(ALPHA)` The set of commands to manage Locations for Cloud Firestore.
   - `  operations  `  
-    `  (ALPHA)  ` Manage Long Running Operations for Cloud Firestore.
+    `(ALPHA)` Manage Long Running Operations for Cloud Firestore.
   - `  user-creds  `  
-    `  (ALPHA)  ` Manage the user creds for a Cloud Firestore Database.
+    `(ALPHA)` Manage the user creds for a Cloud Firestore Database.
 
 COMMANDS
 
 `  COMMAND  ` is one of the following:
 
   - `  bulk-delete  `  
-    `  (ALPHA)  ` bulk delete Cloud Firestore documents.
+    `(ALPHA)` bulk delete Cloud Firestore documents.
   - `  export  `  
-    `  (ALPHA)  ` export Cloud Firestore documents to Google Cloud Storage.
+    `(ALPHA)` export Cloud Firestore documents to Google Cloud Storage.
   - `  import  `  
-    `  (ALPHA)  ` import Cloud Firestore documents from Google Cloud Storage.
+    `(ALPHA)` import Cloud Firestore documents from Google Cloud Storage.
 
 NOTES
 

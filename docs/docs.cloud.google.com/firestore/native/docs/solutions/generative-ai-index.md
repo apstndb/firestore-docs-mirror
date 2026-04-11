@@ -29,11 +29,11 @@ Once the embeddings are generated you can store them in Firestore using one of t
 
 ### looks\_3 Create a vector index
 
-The next step is to create a Firestore KNN vector index where the vector embeddings are stored. During the preview release, you will need to create the index using the `  gcloud  ` command line tool.
+The next step is to create a Firestore KNN vector index where the vector embeddings are stored. During the preview release, you will need to create the index using the `gcloud` command line tool.
 
 ### looks\_4 Perform the vector search
 
-Once you have added all the vector embeddings and created the vector index, you are ready to run the search. You will then utilize the `  find_nearest  ` call on a collection reference to pass the query vector embedding with which to compare the stored embeddings and to specify the distance function you want to utilize.
+Once you have added all the vector embeddings and created the vector index, you are ready to run the search. You will then utilize the `find_nearest` call on a collection reference to pass the query vector embedding with which to compare the stored embeddings and to specify the distance function you want to utilize.
 
 Once again, explore the workflow and more use cases in our [blog post](https://cloud.google.com/blog/products/databases/get-started-with-firestore-vector-similarity-search) .
 

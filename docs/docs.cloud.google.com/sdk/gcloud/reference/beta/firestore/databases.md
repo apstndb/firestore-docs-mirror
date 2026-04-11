@@ -4,40 +4,40 @@ gcloud beta firestore databases - manage Creation of Cloud Firestore in Native m
 
 SYNOPSIS
 
-`  gcloud beta firestore databases  ` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud beta firestore databases` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (BETA)  ` Manage Creation of Cloud Firestore in Native mode Database.
+`(BETA)` Manage Creation of Cloud Firestore in Native mode Database.
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 COMMANDS
 
 `  COMMAND  ` is one of the following:
 
   - `  clone  `  
-    `  (BETA)  ` Clone a Google Cloud Firestore database from another.
+    `(BETA)` Clone a Google Cloud Firestore database from another.
   - `  connection-string  `  
-    `  (BETA)  ` Prints the mongo connection string for the given Firestore database.
+    `(BETA)` Prints the mongo connection string for the given Firestore database.
   - `  create  `  
-    `  (BETA)  ` Create a Google Cloud Firestore database via Firestore API.
+    `(BETA)` Create a Google Cloud Firestore database via Firestore API.
   - `  delete  `  
-    `  (BETA)  ` Delete a Google Cloud Firestore database.
+    `(BETA)` Delete a Google Cloud Firestore database.
   - `  describe  `  
-    `  (BETA)  ` Describes information about a Cloud Firestore database.
+    `(BETA)` Describes information about a Cloud Firestore database.
   - `  list  `  
-    `  (BETA)  ` Lists all Firestore databases under the project.
+    `(BETA)` Lists all Firestore databases under the project.
   - `  ping  `  
-    `  (BETA)  ` Times the connection and ping time for a Firestore with MongoDB compatibility database.
+    `(BETA)` Times the connection and ping time for a Firestore with MongoDB compatibility database.
   - `  restore  `  
-    `  (BETA)  ` Restores a Cloud Firestore database from a backup.
+    `(BETA)` Restores a Cloud Firestore database from a backup.
   - `  update  `  
-    `  (BETA)  ` Update the database configuration of a Cloud Firestore database.
+    `(BETA)` Update the database configuration of a Cloud Firestore database.
 
 NOTES
 

@@ -13,53 +13,39 @@ Metadata for ImportEntities operations.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;common&quot;: {
-    object (CommonMetadata)
-  },
-  &quot;progressEntities&quot;: {
-    object (Progress)
-  },
-  &quot;progressBytes&quot;: {
-    object (Progress)
-  },
-  &quot;entityFilter&quot;: {
-    object (EntityFilter)
-  },
-  &quot;inputUrl&quot;: string
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;common&quot;: {object (CommonMetadata)},&quot;progressEntities&quot;: {object (Progress)},&quot;progressBytes&quot;: {object (Progress)},&quot;entityFilter&quot;: {object (EntityFilter)},&quot;inputUrl&quot;: string}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  common  `
+`common`
 
-`  object ( CommonMetadata  ` )
+` object ( CommonMetadata  ` )
 
 Metadata common to all Datastore Admin operations.
 
-`  progressEntities  `
+`progressEntities`
 
-`  object ( Progress  ` )
+` object ( Progress  ` )
 
 An estimate of the number of entities processed.
 
-`  progressBytes  `
+`progressBytes`
 
-`  object ( Progress  ` )
+` object ( Progress  ` )
 
 An estimate of the number of bytes processed.
 
-`  entityFilter  `
+`entityFilter`
 
-`  object ( EntityFilter  ` )
+` object ( EntityFilter  ` )
 
 Description of which entities are being imported.
 
-`  inputUrl  `
+`inputUrl`
 
-`  string  `
+`string`
 
 The location of the import metadata file. This will be the same value as the `  google.datastore.admin.v1.ExportEntitiesResponse.output_url  ` field.

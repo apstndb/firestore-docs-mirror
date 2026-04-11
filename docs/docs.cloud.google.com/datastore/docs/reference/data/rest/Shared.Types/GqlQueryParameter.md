@@ -13,32 +13,24 @@ A binding parameter for a GQL query.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-
-  // Union field parameter_type can be only one of the following:
-  &quot;value&quot;: {
-    object (Value)
-  },
-  &quot;cursor&quot;: string
-  // End of list of possible types for union field parameter_type.
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{// Union field parameter_type can be only one of the following:&quot;value&quot;: {object (Value)},&quot;cursor&quot;: string// End of list of possible types for union field parameter_type.}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-Union field `  parameter_type  ` . The type of parameter. `  parameter_type  ` can be only one of the following:
+Union field `parameter_type` . The type of parameter. `parameter_type` can be only one of the following:
 
-`  value  `
+`value`
 
-`  object ( Value  ` )
+` object ( Value  ` )
 
 A value parameter.
 
-`  cursor  `
+`cursor`
 
-`  string ( bytes format)  `
+`string ( bytes format)`
 
 A query cursor. Query cursors are returned in query result batches.
 

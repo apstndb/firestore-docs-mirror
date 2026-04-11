@@ -15,63 +15,56 @@ The backup contains all documents and index configurations for the given databas
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;name&quot;: string,
-  &quot;database&quot;: string,
-  &quot;databaseUid&quot;: string,
-  &quot;snapshotTime&quot;: string,
-  &quot;expireTime&quot;: string,
-  &quot;state&quot;: enum (State)
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;name&quot;: string,&quot;database&quot;: string,&quot;databaseUid&quot;: string,&quot;snapshotTime&quot;: string,&quot;expireTime&quot;: string,&quot;state&quot;: enum (State)}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
 Output only. The unique resource name of the Backup.
 
-Format is `  projects/{project}/locations/{location}/backups/{backup}  ` .
+Format is `projects/{project}/locations/{location}/backups/{backup}` .
 
-The location in the name will be the Standard Managed Multi-Region (SMMR) location (e.g. `  us  ` ) if the backup was created with an SMMR location, or the Google Managed Multi-Region (GMMR) location (e.g. `  nam5  ` ) if the backup was created with a GMMR location.
+The location in the name will be the Standard Managed Multi-Region (SMMR) location (e.g. `us` ) if the backup was created with an SMMR location, or the Google Managed Multi-Region (GMMR) location (e.g. `nam5` ) if the backup was created with a GMMR location.
 
-`  database  `
+`database`
 
-`  string  `
+`string`
 
 Output only. Name of the Firestore database that the backup is from.
 
-Format is `  projects/{project}/databases/{database}  ` .
+Format is `projects/{project}/databases/{database}` .
 
-`  databaseUid  `
+`databaseUid`
 
-`  string  `
+`string`
 
 Output only. The system-generated UUID4 for the Firestore database that the backup is from.
 
-`  snapshotTime  `
+`snapshotTime`
 
-`  string ( Timestamp  ` format)
+` string ( Timestamp  ` format)
 
 Output only. The backup contains an externally consistent copy of the database at this time.
 
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `  "2014-10-02T15:01:23Z"  ` , `  "2014-10-02T15:01:23.045123456Z"  ` or `  "2014-10-02T15:01:23+05:30"  ` .
+Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .
 
-`  expireTime  `
+`expireTime`
 
-`  string ( Timestamp  ` format)
+` string ( Timestamp  ` format)
 
 Output only. The timestamp at which this backup expires.
 
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `  "2014-10-02T15:01:23Z"  ` , `  "2014-10-02T15:01:23.045123456Z"  ` or `  "2014-10-02T15:01:23+05:30"  ` .
+Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .
 
-`  state  `
+`state`
 
-`  enum ( State  ` )
+` enum ( State  ` )
 
 Output only. The current state of the backup.
 
@@ -81,32 +74,32 @@ Indicate the current state of the backup.
 
 Enums
 
-`  STATE_UNSPECIFIED  `
+`STATE_UNSPECIFIED`
 
 The state is unspecified.
 
-`  CREATING  `
+`CREATING`
 
 The pending backup is still being created. Operations on the backup will be rejected in this state.
 
-`  READY  `
+`READY`
 
 The backup is complete and ready to use.
 
-`  NOT_AVAILABLE  `
+`NOT_AVAILABLE`
 
 The backup is not available at this moment.
 
 ## Methods
 
-### `             delete           `
+### `            delete           `
 
 Deletes a backup.
 
-### `             get           `
+### `            get           `
 
 Gets information about a backup.
 
-### `             list           `
+### `            list           `
 
 Lists all the backups.

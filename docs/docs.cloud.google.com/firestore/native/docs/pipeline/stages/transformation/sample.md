@@ -10,8 +10,8 @@ Returns a non-deterministic sample from the results of the previous stage.
 
 There are two supported modes:
 
-  - `  documents  ` : pick `  n  ` documents randomly.
-  - `  percent  ` : pick `  n  ` percent of documents randomly.
+  - `documents` : pick `n` documents randomly.
+  - `percent` : pick `n` percent of documents randomly.
 
 ## Examples
 
@@ -135,7 +135,7 @@ Android
 
 ### Documents Mode
 
-The `  documents  ` mode picks up to `  n  ` documents randomly from its input, where each document (along with the order of documents) is equally as likely to be chosen. To achieve this, Firestore needs to still scan and process all documents so this can still end up being an expensive operation.
+The `documents` mode picks up to `n` documents randomly from its input, where each document (along with the order of documents) is equally as likely to be chosen. To achieve this, Firestore needs to still scan and process all documents so this can still end up being an expensive operation.
 
 For example, for the following collection:
 
@@ -179,9 +179,9 @@ This will result in the following documents:
 
 ### Percent Mode
 
-The `  percent  ` mode attempts to pick `  n  ` percent of all documents from its input. This results in the stage producing approximately `  # documents * percent / 100  ` documents. Just like in `  documents  ` mode, Firestore ensures that each document is equally as likely to be returned. This does require that Firestore needs to scan and process all documents so this can still end up being an expensive operation, even when the result set is small.
+The `percent` mode attempts to pick `n` percent of all documents from its input. This results in the stage producing approximately `# documents * percent / 100` documents. Just like in `documents` mode, Firestore ensures that each document is equally as likely to be returned. This does require that Firestore needs to scan and process all documents so this can still end up being an expensive operation, even when the result set is small.
 
-Unlike `  documents  ` mode, the order here is not random and instead preserves the pre-existing document order. This percent input must be a double value between `  0.0  ` and `  1.0  ` .
+Unlike `documents` mode, the order here is not random and instead preserves the pre-existing document order. This percent input must be a double value between `0.0` and `1.0` .
 
 For example, for the following collection:
 
@@ -203,7 +203,7 @@ The sample stage in percent mode can be used to retrieve (on average) 50% of the
     .execute();
 ```
 
-This will result in a non-deterministic sample of (on average) 50% of documents from the `  cities  ` collection. The following is one possible output.
+This will result in a non-deterministic sample of (on average) 50% of documents from the `cities` collection. The following is one possible output.
 
 ``` 
   { name: "New York City", state: "New York" }

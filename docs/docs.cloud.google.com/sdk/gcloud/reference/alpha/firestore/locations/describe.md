@@ -4,7 +4,7 @@ gcloud alpha firestore locations describe - describes a location available to Go
 
 SYNOPSIS
 
-`  gcloud alpha firestore locations describe  ` `  --location  ` = `  LOCATION  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud alpha firestore locations describe` `  --location  ` = `  LOCATION  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 EXAMPLES
 
@@ -16,10 +16,10 @@ gcloud alpha firestore locations describe --location="us-east1"
 
 REQUIRED FLAGS
 
-  - `  --location  ` = `  LOCATION  `  
+  - `--location` = `  LOCATION  `  
     The location to operate on. Available locations are listed at <https://cloud.google.com/firestore/docs/locations> .
     
-    For example, to operate on location `  us-east1  ` :
+    For example, to operate on location `us-east1` :
     
     ``` wrap-code
     gcloud alpha firestore locations describe --location='us-east1'
@@ -29,7 +29,7 @@ GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 NOTES
 

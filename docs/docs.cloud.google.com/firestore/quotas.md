@@ -119,9 +119,9 @@ The following tables show the limits that apply to Firestore. These are hard lim
 <td><ul>
 <li>Must be valid UTF-8 characters</li>
 <li>Must be no longer than 1,500 bytes</li>
-<li>Cannot contain a forward slash ( <code dir="ltr" translate="no">            /           </code> )</li>
-<li>Cannot solely consist of a single period ( <code dir="ltr" translate="no">            .           </code> ) or double periods ( <code dir="ltr" translate="no">            ..           </code> )</li>
-<li>Cannot match the regular expression <code dir="ltr" translate="no">            __.*__           </code></li>
+<li>Cannot contain a forward slash ( <code dir="ltr" translate="no">/</code> )</li>
+<li>Cannot solely consist of a single period ( <code dir="ltr" translate="no">.</code> ) or double periods ( <code dir="ltr" translate="no">..</code> )</li>
+<li>Cannot match the regular expression <code dir="ltr" translate="no">__.*__</code></li>
 </ul></td>
 </tr>
 <tr class="even">
@@ -133,10 +133,10 @@ The following tables show the limits that apply to Firestore. These are hard lim
 <td><ul>
 <li>Must be valid UTF-8 characters</li>
 <li>Must be no longer than 1,500 bytes</li>
-<li>Cannot contain a forward slash ( <code dir="ltr" translate="no">            /           </code> )</li>
-<li>Cannot solely consist of a single period ( <code dir="ltr" translate="no">            .           </code> ) or double periods ( <code dir="ltr" translate="no">            ..           </code> )</li>
-<li>Cannot match the regular expression <code dir="ltr" translate="no">            __.*__           </code></li>
-<li>If you import Datastore entities into a Firestore database, numeric entity IDs are exposed as <code dir="ltr" translate="no">            __id[0-9]+__           </code></li>
+<li>Cannot contain a forward slash ( <code dir="ltr" translate="no">/</code> )</li>
+<li>Cannot solely consist of a single period ( <code dir="ltr" translate="no">.</code> ) or double periods ( <code dir="ltr" translate="no">..</code> )</li>
+<li>Cannot match the regular expression <code dir="ltr" translate="no">__.*__</code></li>
+<li>If you import Datastore entities into a Firestore database, numeric entity IDs are exposed as <code dir="ltr" translate="no">__id[0-9]+__</code></li>
 </ul></td>
 </tr>
 <tr class="even">
@@ -151,7 +151,7 @@ The following tables show the limits that apply to Firestore. These are hard lim
 <td>Constraints on field names</td>
 <td><ul>
 <li>Must be valid UTF-8 characters</li>
-<li>Cannot match the regular expression <code dir="ltr" translate="no">            __.*__           </code></li>
+<li>Cannot match the regular expression <code dir="ltr" translate="no">__.*__</code></li>
 </ul></td>
 </tr>
 <tr class="odd">
@@ -161,15 +161,15 @@ The following tables show the limits that apply to Firestore. These are hard lim
 <tr class="even">
 <td>Constraints on field paths</td>
 <td><ul>
-<li>Must separate field names with a single period ( <code dir="ltr" translate="no">            .           </code> )</li>
-<li>May be passed as a dot-delimited ( <code dir="ltr" translate="no">            .           </code> ) string of segments where each segment is either a simple field name or a quoted field name (defined below).</li>
+<li>Must separate field names with a single period ( <code dir="ltr" translate="no">.</code> )</li>
+<li>May be passed as a dot-delimited ( <code dir="ltr" translate="no">.</code> ) string of segments where each segment is either a simple field name or a quoted field name (defined below).</li>
 </ul>
 A simple field name is one where all of the following are true:
 <ul>
-<li>Contains only the characters <code dir="ltr" translate="no">            a-z           </code> , <code dir="ltr" translate="no">            A-Z           </code> , <code dir="ltr" translate="no">            0-9           </code> , and underscore ( <code dir="ltr" translate="no">            _           </code> )</li>
-<li>Does not start with <code dir="ltr" translate="no">            0-9           </code></li>
+<li>Contains only the characters <code dir="ltr" translate="no">a-z</code> , <code dir="ltr" translate="no">A-Z</code> , <code dir="ltr" translate="no">0-9</code> , and underscore ( <code dir="ltr" translate="no">_</code> )</li>
+<li>Does not start with <code dir="ltr" translate="no">0-9</code></li>
 </ul>
-A quoted field name starts and ends with the backtick character ( <code dir="ltr" translate="no">          `         </code> ). For example, <code dir="ltr" translate="no">          foo.`x&amp;y`         </code> refers to the <code dir="ltr" translate="no">          x&amp;y         </code> field nested under the <code dir="ltr" translate="no">          foo         </code> field. To construct a field name with the backtick character, escape the backtick character with the backslash character ( <code dir="ltr" translate="no">          \         </code> ). For convenience, you can avoid quoted field names by passing the field path as a FieldPath object ( <a href="https://firebase.google.com/docs/reference/js/firestore_.fieldpath">for example, see JavaScript FieldPath</a> ).</td>
+A quoted field name starts and ends with the backtick character ( <code dir="ltr" translate="no">`</code> ). For example, <code dir="ltr" translate="no">foo.`x&amp;y`</code> refers to the <code dir="ltr" translate="no">x&amp;y</code> field nested under the <code dir="ltr" translate="no">foo</code> field. To construct a field name with the backtick character, escape the backtick character with the backslash character ( <code dir="ltr" translate="no">\</code> ). For convenience, you can avoid quoted field names by passing the field path as a FieldPath object ( <a href="https://firebase.google.com/docs/reference/js/firestore_.fieldpath">for example, see JavaScript FieldPath</a> ).</td>
 </tr>
 <tr class="odd">
 <td>Maximum size of a field path</td>
@@ -216,9 +216,9 @@ A quoted field name starts and ends with the backtick character ( <code dir="ltr
 <td><ul>
 <li>Must be valid UTF-8 characters</li>
 <li>Must be no longer than 1,500 bytes</li>
-<li>Cannot contain a forward slash ( <code dir="ltr" translate="no">            /           </code> )</li>
-<li>Cannot solely consist of a single period ( <code dir="ltr" translate="no">            .           </code> ) or double periods ( <code dir="ltr" translate="no">            ..           </code> )</li>
-<li>Cannot match the regular expression <code dir="ltr" translate="no">            __.*__           </code></li>
+<li>Cannot contain a forward slash ( <code dir="ltr" translate="no">/</code> )</li>
+<li>Cannot solely consist of a single period ( <code dir="ltr" translate="no">.</code> ) or double periods ( <code dir="ltr" translate="no">..</code> )</li>
+<li>Cannot match the regular expression <code dir="ltr" translate="no">__.*__</code></li>
 </ul></td>
 </tr>
 <tr class="even">
@@ -230,10 +230,10 @@ A quoted field name starts and ends with the backtick character ( <code dir="ltr
 <td><ul>
 <li>Must be valid UTF-8 characters</li>
 <li>Must be no longer than 1,500 bytes</li>
-<li>Cannot contain a forward slash ( <code dir="ltr" translate="no">            /           </code> )</li>
-<li>Cannot solely consist of a single period ( <code dir="ltr" translate="no">            .           </code> ) or double periods ( <code dir="ltr" translate="no">            ..           </code> )</li>
-<li>Cannot match the regular expression <code dir="ltr" translate="no">            __.*__           </code></li>
-<li>If you import Datastore entities into a Firestore database, numeric entity IDs are exposed as <code dir="ltr" translate="no">            __id[0-9]+__           </code></li>
+<li>Cannot contain a forward slash ( <code dir="ltr" translate="no">/</code> )</li>
+<li>Cannot solely consist of a single period ( <code dir="ltr" translate="no">.</code> ) or double periods ( <code dir="ltr" translate="no">..</code> )</li>
+<li>Cannot match the regular expression <code dir="ltr" translate="no">__.*__</code></li>
+<li>If you import Datastore entities into a Firestore database, numeric entity IDs are exposed as <code dir="ltr" translate="no">__id[0-9]+__</code></li>
 </ul></td>
 </tr>
 <tr class="even">
@@ -248,7 +248,7 @@ A quoted field name starts and ends with the backtick character ( <code dir="ltr
 <td>Constraints on field names</td>
 <td><ul>
 <li>Must be valid UTF-8 characters</li>
-<li>Cannot match the regular expression <code dir="ltr" translate="no">            __.*__           </code></li>
+<li>Cannot match the regular expression <code dir="ltr" translate="no">__.*__</code></li>
 </ul></td>
 </tr>
 <tr class="odd">
@@ -258,15 +258,15 @@ A quoted field name starts and ends with the backtick character ( <code dir="ltr
 <tr class="even">
 <td>Constraints on field paths</td>
 <td><ul>
-<li>Must separate field names with a single period ( <code dir="ltr" translate="no">            .           </code> )</li>
-<li>May be passed as a dot-delimited ( <code dir="ltr" translate="no">            .           </code> ) string of segments where each segment is either a simple field name or a quoted field name (defined below).</li>
+<li>Must separate field names with a single period ( <code dir="ltr" translate="no">.</code> )</li>
+<li>May be passed as a dot-delimited ( <code dir="ltr" translate="no">.</code> ) string of segments where each segment is either a simple field name or a quoted field name (defined below).</li>
 </ul>
 A simple field name is one where all of the following are true:
 <ul>
-<li>Contains only the characters <code dir="ltr" translate="no">            a-z           </code> , <code dir="ltr" translate="no">            A-Z           </code> , <code dir="ltr" translate="no">            0-9           </code> , and underscore ( <code dir="ltr" translate="no">            _           </code> )</li>
-<li>Does not start with <code dir="ltr" translate="no">            0-9           </code></li>
+<li>Contains only the characters <code dir="ltr" translate="no">a-z</code> , <code dir="ltr" translate="no">A-Z</code> , <code dir="ltr" translate="no">0-9</code> , and underscore ( <code dir="ltr" translate="no">_</code> )</li>
+<li>Does not start with <code dir="ltr" translate="no">0-9</code></li>
 </ul>
-A quoted field name starts and ends with the backtick character ( <code dir="ltr" translate="no">          `         </code> ). For example, <code dir="ltr" translate="no">          foo.`x&amp;y`         </code> refers to the <code dir="ltr" translate="no">          x&amp;y         </code> field nested under the <code dir="ltr" translate="no">          foo         </code> field. To construct a field name with the backtick character, escape the backtick character with the backslash character ( <code dir="ltr" translate="no">          \         </code> ). For convenience, you can avoid quoted field names by passing the field path as a FieldPath object ( <a href="https://firebase.google.com/docs/reference/js/firestore_.fieldpath">for example, see JavaScript FieldPath</a> ).</td>
+A quoted field name starts and ends with the backtick character ( <code dir="ltr" translate="no">`</code> ). For example, <code dir="ltr" translate="no">foo.`x&amp;y`</code> refers to the <code dir="ltr" translate="no">x&amp;y</code> field nested under the <code dir="ltr" translate="no">foo</code> field. To construct a field name with the backtick character, escape the backtick character with the backslash character ( <code dir="ltr" translate="no">\</code> ). For convenience, you can avoid quoted field names by passing the field path as a FieldPath object ( <a href="https://firebase.google.com/docs/reference/js/firestore_.fieldpath">for example, see JavaScript FieldPath</a> ).</td>
 </tr>
 <tr class="odd">
 <td>Maximum size of a field path</td>
@@ -298,19 +298,19 @@ A quoted field name starts and ends with the backtick character ( <code dir="ltr
 
 ### Standard edition
 
-| Limit                                                                                                                                               | Details                                            |
-| --------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| Maximum API request size                                                                                                                            | 10 MiB                                             |
-| Time limit for a transaction                                                                                                                        | 270 seconds, with a 60-second idle expiration time |
-| Maximum number of field transformations that can be performed on a single document in a `           Commit          ` operation or in a transaction | 500                                                |
+| Limit                                                                                                                          | Details                                            |
+| ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------- |
+| Maximum API request size                                                                                                       | 10 MiB                                             |
+| Time limit for a transaction                                                                                                   | 270 seconds, with a 60-second idle expiration time |
+| Maximum number of field transformations that can be performed on a single document in a `Commit` operation or in a transaction | 500                                                |
 
 ### Enterprise edition
 
-| Limit                                                                                                                                               | Details                                            |
-| --------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| Maximum API request size                                                                                                                            | 10 MiB                                             |
-| Time limit for a transaction                                                                                                                        | 270 seconds, with a 60-second idle expiration time |
-| Maximum number of field transformations that can be performed on a single document in a `           Commit          ` operation or in a transaction | 500                                                |
+| Limit                                                                                                                          | Details                                            |
+| ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------- |
+| Maximum API request size                                                                                                       | 10 MiB                                             |
+| Time limit for a transaction                                                                                                   | 270 seconds, with a 60-second idle expiration time |
+| Maximum number of field transformations that can be performed on a single document in a `Commit` operation or in a transaction | 500                                                |
 
 ### Indexes
 
@@ -513,7 +513,7 @@ The following limits apply to [managed import and export operations](https://doc
 </thead>
 <tbody>
 <tr class="odd">
-<td>Maximum number of <code dir="ltr" translate="no">          exists()         </code> , <code dir="ltr" translate="no">          get()         </code> , and <code dir="ltr" translate="no">          getAfter()         </code> calls per request</td>
+<td>Maximum number of <code dir="ltr" translate="no">exists()</code> , <code dir="ltr" translate="no">get()</code> , and <code dir="ltr" translate="no">getAfter()</code> calls per request</td>
 <td><ul>
 <li>10 for single-document requests and query requests.</li>
 <li><p>20 for multi-document reads, transactions, and batched writes. The previous limit of 10 also applies to each operation.</p>
@@ -523,15 +523,15 @@ The following limits apply to [managed import and export operations](https://doc
 <p>Some document access calls may be cached, and cached calls do not count towards the limits.</p></td>
 </tr>
 <tr class="even">
-<td>Maximum nested <code dir="ltr" translate="no">          match         </code> statement depth</td>
+<td>Maximum nested <code dir="ltr" translate="no">match</code> statement depth</td>
 <td>10</td>
 </tr>
 <tr class="odd">
-<td>Maximum path length, in path segments, allowed within a set of nested <code dir="ltr" translate="no">          match         </code> statements</td>
+<td>Maximum path length, in path segments, allowed within a set of nested <code dir="ltr" translate="no">match</code> statements</td>
 <td>100</td>
 </tr>
 <tr class="even">
-<td>Maximum number of path capture variables allowed within a set of nested <code dir="ltr" translate="no">          match         </code> statements</td>
+<td>Maximum number of path capture variables allowed within a set of nested <code dir="ltr" translate="no">match</code> statements</td>
 <td>20</td>
 </tr>
 <tr class="odd">
@@ -543,7 +543,7 @@ The following limits apply to [managed import and export operations](https://doc
 <td>7</td>
 </tr>
 <tr class="odd">
-<td>Maximum number of <code dir="ltr" translate="no">          let         </code> variable bindings per function</td>
+<td>Maximum number of <code dir="ltr" translate="no">let</code> variable bindings per function</td>
 <td>10</td>
 </tr>
 <tr class="even">
@@ -558,7 +558,7 @@ The following limits apply to [managed import and export operations](https://doc
 <td>Maximum size of a ruleset</td>
 <td>Rulesets must obey two size limits:
 <ul>
-<li>a 256 KB limit on the size of the ruleset text source published from the Firebase console or from the CLI using <code dir="ltr" translate="no">            firebase deploy           </code> .</li>
+<li>a 256 KB limit on the size of the ruleset text source published from the Firebase console or from the CLI using <code dir="ltr" translate="no">firebase deploy</code> .</li>
 <li>a 250 KB limit on the size of the compiled ruleset that results when Firebase processes the source and makes it active on the back-end.</li>
 </ul></td>
 </tr>
@@ -580,7 +580,7 @@ The following limits apply to [managed import and export operations](https://doc
 </thead>
 <tbody>
 <tr class="odd">
-<td>Maximum number of <code dir="ltr" translate="no">          exists()         </code> , <code dir="ltr" translate="no">          get()         </code> , and <code dir="ltr" translate="no">          getAfter()         </code> calls per request</td>
+<td>Maximum number of <code dir="ltr" translate="no">exists()</code> , <code dir="ltr" translate="no">get()</code> , and <code dir="ltr" translate="no">getAfter()</code> calls per request</td>
 <td><ul>
 <li>10 for single-document requests and query requests.</li>
 <li><p>20 for multi-document reads, transactions, and batched writes. The previous limit of 10 also applies to each operation.</p>
@@ -590,15 +590,15 @@ The following limits apply to [managed import and export operations](https://doc
 <p>Some document access calls may be cached, and cached calls do not count towards the limits.</p></td>
 </tr>
 <tr class="even">
-<td>Maximum nested <code dir="ltr" translate="no">          match         </code> statement depth</td>
+<td>Maximum nested <code dir="ltr" translate="no">match</code> statement depth</td>
 <td>10</td>
 </tr>
 <tr class="odd">
-<td>Maximum path length, in path segments, allowed within a set of nested <code dir="ltr" translate="no">          match         </code> statements</td>
+<td>Maximum path length, in path segments, allowed within a set of nested <code dir="ltr" translate="no">match</code> statements</td>
 <td>100</td>
 </tr>
 <tr class="even">
-<td>Maximum number of path capture variables allowed within a set of nested <code dir="ltr" translate="no">          match         </code> statements</td>
+<td>Maximum number of path capture variables allowed within a set of nested <code dir="ltr" translate="no">match</code> statements</td>
 <td>20</td>
 </tr>
 <tr class="odd">
@@ -610,7 +610,7 @@ The following limits apply to [managed import and export operations](https://doc
 <td>7</td>
 </tr>
 <tr class="odd">
-<td>Maximum number of <code dir="ltr" translate="no">          let         </code> variable bindings per function</td>
+<td>Maximum number of <code dir="ltr" translate="no">let</code> variable bindings per function</td>
 <td>10</td>
 </tr>
 <tr class="even">
@@ -625,7 +625,7 @@ The following limits apply to [managed import and export operations](https://doc
 <td>Maximum size of a ruleset</td>
 <td>Rulesets must obey two size limits:
 <ul>
-<li>a 256 KB limit on the size of the ruleset text source published from the Firebase console or from the CLI using <code dir="ltr" translate="no">            firebase deploy           </code> .</li>
+<li>a 256 KB limit on the size of the ruleset text source published from the Firebase console or from the CLI using <code dir="ltr" translate="no">firebase deploy</code> .</li>
 <li>a 250 KB limit on the size of the compiled ruleset that results when Firebase processes the source and makes it active on the back-end.</li>
 </ul></td>
 </tr>

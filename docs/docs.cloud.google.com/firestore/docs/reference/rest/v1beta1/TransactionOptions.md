@@ -11,34 +11,24 @@ Options for creating a new transaction.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-
-  // Union field mode can be only one of the following:
-  &quot;readOnly&quot;: {
-    object (ReadOnly)
-  },
-  &quot;readWrite&quot;: {
-    object (ReadWrite)
-  }
-  // End of list of possible types for union field mode.
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{// Union field mode can be only one of the following:&quot;readOnly&quot;: {object (ReadOnly)},&quot;readWrite&quot;: {object (ReadWrite)}// End of list of possible types for union field mode.}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-Union field `  mode  ` . The mode of the transaction. `  mode  ` can be only one of the following:
+Union field `mode` . The mode of the transaction. `mode` can be only one of the following:
 
-`  readOnly  `
+`readOnly`
 
-`  object ( ReadOnly  ` )
+` object ( ReadOnly  ` )
 
 The transaction can only be used for read operations.
 
-`  readWrite  `
+`readWrite`
 
-`  object ( ReadWrite  ` )
+` object ( ReadWrite  ` )
 
 The transaction can be used for both read and write operations.
 
@@ -57,29 +47,24 @@ Options for a transaction that can only be used to read documents.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-
-  // Union field consistency_selector can be only one of the following:
-  &quot;readTime&quot;: string
-  // End of list of possible types for union field consistency_selector.
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{// Union field consistency_selector can be only one of the following:&quot;readTime&quot;: string// End of list of possible types for union field consistency_selector.}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-Union field `  consistency_selector  ` . The consistency mode for this transaction. If not set, defaults to strong consistency. `  consistency_selector  ` can be only one of the following:
+Union field `consistency_selector` . The consistency mode for this transaction. If not set, defaults to strong consistency. `consistency_selector` can be only one of the following:
 
-`  readTime  `
+`readTime`
 
-`  string ( Timestamp  ` format)
+` string ( Timestamp  ` format)
 
 Reads documents at the given time.
 
 This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days.
 
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `  "2014-10-02T15:01:23Z"  ` , `  "2014-10-02T15:01:23.045123456Z"  ` or `  "2014-10-02T15:01:23+05:30"  ` .
+Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .
 
 ## ReadWrite
 
@@ -107,9 +92,9 @@ Firestore does not allow 3rd party auth requests to create read-write. transacti
 
 Fields
 
-`  retryTransaction  `
+`retryTransaction`
 
-`  string ( bytes format)  `
+`string ( bytes format)`
 
 An optional transaction to retry.
 

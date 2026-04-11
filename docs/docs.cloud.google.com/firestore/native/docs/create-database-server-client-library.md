@@ -106,23 +106,23 @@ Add the Firestore Go library to your app:
 
 ##### C\#
 
-1.  Add the Firestore C\# library to your app in your `  .csproj  ` file:
+1.  Add the Firestore C\# library to your app in your `.csproj` file:
     
         <ItemGroup>
           <PackageReference Include="Google.Cloud.Firestore" Version="1.1.0-beta01" />
         </ItemGroup>
 
-2.  Add the following to your `  Program.cs  ` file:
+2.  Add the following to your `Program.cs` file:
     
         using Google.Cloud.Firestore;
 
 ##### Ruby
 
-1.  Add the Firestore Ruby library to your app in your `  Gemfile  ` :
+1.  Add the Firestore Ruby library to your app in your `Gemfile` :
     
         gem "google-cloud-firestore"
 
-2.  Install dependencies from your `  Gemfile  ` using:
+2.  Install dependencies from your `Gemfile` using:
     
         bundle install
 
@@ -338,7 +338,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
     
     puts "Added data to the alovelace document in the users collection."
 
-Now add another document to the `  users  ` collection. Notice that this document includes a key-value pair (middle name) that does not appear in the first document. Documents in a collection can contain different sets of information.
+Now add another document to the `users` collection. Notice that this document includes a key-value pair (middle name) that does not appear in the first document. Documents in a collection can contain different sets of information.
 
 ### Java
 
@@ -445,7 +445,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 To quickly verify that you've added data to Firestore, use the data viewer in the [Firebase console](https://console.firebase.google.com/project/_/firestore/data) .
 
-You can also use the `  get  ` method to retrieve the entire collection.
+You can also use the `get` method to retrieve the entire collection.
 
 ### Java
 

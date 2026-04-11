@@ -68,11 +68,11 @@ The following query uses range filters on priority and days to return all tasks 
 
 Before you start running queries, make sure you have read about [queries](https://docs.cloud.google.com/datastore/docs/concepts/queries) .
 
-If an `  ORDER BY  ` clause isn't specified, Firestore in Datastore mode uses any index that can satisfy the query's filter condition to serve the query. This approach produces a result set that is ordered according to the index definition.
+If an `ORDER BY` clause isn't specified, Firestore in Datastore mode uses any index that can satisfy the query's filter condition to serve the query. This approach produces a result set that is ordered according to the index definition.
 
 To optimize the performance and cost of Firestore in Datastore mode queries, optimize the order of properties in the index. To do this, ensure that your index is ordered from left to right so that the query distills to a dataset that prevents scanning of extraneous index entries.
 
-For example, suppose you want to search through a collection of employees to find United States employees whose salary is more than $100,000 and whose number of years of experience is greater than 0. Based on your understanding of the dataset, you know that the salary constraint is more selective than the experience constraint. An index that reduces the number of index scans is the `  (salary [...], experience [...])  ` index. As a result, a fast and cost-efficient query orders `  salary  ` before `  experience  ` , as shown in the following example:
+For example, suppose you want to search through a collection of employees to find United States employees whose salary is more than $100,000 and whose number of years of experience is greater than 0. Based on your understanding of the dataset, you know that the salary constraint is more selective than the experience constraint. An index that reduces the number of index scans is the `(salary [...], experience [...])` index. As a result, a fast and cost-efficient query orders `salary` before `experience` , as shown in the following example:
 
 ### GQL
 
@@ -118,13 +118,13 @@ When optimizing indexes, note the following best practices.
 
 #### Order queries by equalities followed by most selective range or inequality field
 
-Firestore in Datastore mode uses the leftmost properties of a composite index to satisfy the equality constraints and the range and inequality constraint, if any, on the first field of the `  orderBy()  ` query. These constraints can reduce the number of index entries that Firestore in Datastore mode scans. Firestore in Datastore mode uses the remaining properties of the index to satisfy other range and inequality constraints of the query. These constraints don't reduce the number of index entries that Firestore in Datastore mode scans, but they filter out unmatched entities so that the number of entities that are returned to the clients are reduced.
+Firestore in Datastore mode uses the leftmost properties of a composite index to satisfy the equality constraints and the range and inequality constraint, if any, on the first field of the `orderBy()` query. These constraints can reduce the number of index entries that Firestore in Datastore mode scans. Firestore in Datastore mode uses the remaining properties of the index to satisfy other range and inequality constraints of the query. These constraints don't reduce the number of index entries that Firestore in Datastore mode scans, but they filter out unmatched entities so that the number of entities that are returned to the clients are reduced.
 
 For more information about creating efficient indexes, see [index structure and definition](https://docs.cloud.google.com/datastore/docs/concepts/indexes) and [optimizing indexes](https://docs.cloud.google.com/datastore/docs/concepts/optimize-indexes) .
 
 #### Order properties in decreasing order of query constraint selectivity
 
-To ensure that Firestore in Datastore mode selects the optimal index for your query, specify an `  orderBy()  ` clause that orders range and inequality properties based on how selective their constraints are in your query, starting from the most selective. Higher selectivity matches fewer entities, while lower selectivity matches more entities. In your index ordering, put range and inequality properties with higher selectivity before properties with lower selectivity.
+To ensure that Firestore in Datastore mode selects the optimal index for your query, specify an `orderBy()` clause that orders range and inequality properties based on how selective their constraints are in your query, starting from the most selective. Higher selectivity matches fewer entities, while lower selectivity matches more entities. In your index ordering, put range and inequality properties with higher selectivity before properties with lower selectivity.
 
 To minimize the number of entities that Firestore in Datastore mode scans and returns over the network, you should always order properties in the decreasing order of query constraint selectivity. If the result set is not in the required order and the result set is expected to be small, you can implement client-side logic to reorder it as per your ordering expectation.
 
@@ -158,7 +158,7 @@ For example, if you want to search through a collection of employees to find Uni
     results = query.fetch()
     // Order results by `experience`
 
-While adding an ordering on `  experience  ` to the query will yield the same set of entities and obviate re-ordering the results on the clients, the query may read many more extraneous index entries than the earlier query. This is because Firestore in Datastore mode always prefers an index whose index properties prefix match the order by clause of the query. If `  experience  ` were added to the order by clause, then Firestore in Datastore mode will select the `  (experience [...], salary [...])  ` index for computing query results. Since there are no other constraints on `  experience  ` , Firestore in Datastore mode will read **all** index entries of the `  employees  ` collection before applying the `  salary  ` filter to find the final result set. This means that index entries which don't satisfy the `  salary  ` filter are still read, thus increasing the latency and cost of the query.
+While adding an ordering on `experience` to the query will yield the same set of entities and obviate re-ordering the results on the clients, the query may read many more extraneous index entries than the earlier query. This is because Firestore in Datastore mode always prefers an index whose index properties prefix match the order by clause of the query. If `experience` were added to the order by clause, then Firestore in Datastore mode will select the `(experience [...], salary [...])` index for computing query results. Since there are no other constraints on `experience` , Firestore in Datastore mode will read **all** index entries of the `employees` collection before applying the `salary` filter to find the final result set. This means that index entries which don't satisfy the `salary` filter are still read, thus increasing the latency and cost of the query.
 
 ## Pricing
 

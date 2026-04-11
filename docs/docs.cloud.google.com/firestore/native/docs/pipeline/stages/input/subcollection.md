@@ -6,9 +6,9 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## Description
 
-The `  subcollection(...)  ` input stage makes it easy to perform parent-child joins using the built-in `  __name__  ` field.
+The `subcollection(...)` input stage makes it easy to perform parent-child joins using the built-in `__name__` field.
 
-Additional stages can be chained onto the `  subcollection(...)  ` stage to perform filtering or aggregation over the nested documents. Note that any field references used in subsequent stages refer to the documents from the nested collection, not the parent document. To refer to fields in the parent scope, first use the `  let  ` stage to define variables, then reference those variables in the local scope.
+Additional stages can be chained onto the `subcollection(...)` stage to perform filtering or aggregation over the nested documents. Note that any field references used in subsequent stages refer to the documents from the nested collection, not the parent document. To refer to fields in the parent scope, first use the `let` stage to define variables, then reference those variables in the local scope.
 
 ## Examples
 
@@ -23,9 +23,9 @@ Additional stages can be chained onto the `  subcollection(...)  ` stage to perf
 
 ## Behavior
 
-The `  subcollection(...)  ` stage must be used within the context of a sub-pipeline. It uses the `  __name__  ` (the document reference) of the current document in the parent scope to determine which sub-collection to fetch. For example, if the parent document is `  /restaurants/pizza-place  ` , then `  subcollection("reviews")  ` returns all documents from the `  /restaurants/pizza-place/reviews  ` collection.
+The `subcollection(...)` stage must be used within the context of a sub-pipeline. It uses the `__name__` (the document reference) of the current document in the parent scope to determine which sub-collection to fetch. For example, if the parent document is `/restaurants/pizza-place` , then `subcollection("reviews")` returns all documents from the `/restaurants/pizza-place/reviews` collection.
 
-If the document reference has been renamed, or it is not possible to define a field with `  __name__  ` then manually writing the join like:
+If the document reference has been renamed, or it is not possible to define a field with `__name__` then manually writing the join like:
 
 ### Node.js
 
@@ -60,7 +60,7 @@ For the following documents:
     await restaurant2.collection("reviews").doc("1").create({ rating: 4 });
     await restaurant2.collection("reviews").doc("1").create({ rating: 5 });
 
-The following query retrieves each restaurant and summarizes its reviews in a new `  review_summary  ` field:
+The following query retrieves each restaurant and summarizes its reviews in a new `review_summary` field:
 
 ### Node.js
 

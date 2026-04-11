@@ -5,9 +5,9 @@
   - [Authorization scopes](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes/create#body.aspect)
   - [Try it\!](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes/create#try-it)
 
-Creates the specified index. A newly created index's initial state is `  CREATING  ` . On completion of the returned `  google.longrunning.Operation  ` , the state will be `  READY  ` . If the index already exists, the call will return an `  ALREADY_EXISTS  ` status.
+Creates the specified index. A newly created index's initial state is `CREATING` . On completion of the returned `  google.longrunning.Operation  ` , the state will be `READY` . If the index already exists, the call will return an `ALREADY_EXISTS` status.
 
-During index creation, the process could result in an error, in which case the index will move to the `  ERROR  ` state. The process can be recovered by fixing the data that caused the error, removing the index with `  delete  ` , then re-creating the index with `  create  ` .
+During index creation, the process could result in an error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index with `  delete  ` , then re-creating the index with `  create  ` .
 
 Indexes with a single property cannot be created.
 
@@ -108,7 +108,7 @@ eu
 us
 
   
-`  POST https://datastore.googleapis.com/v1/projects/{projectId}/indexes  `
+`POST https://datastore.googleapis.com/v1/projects/{projectId}/indexes`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -116,9 +116,9 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  projectId  `
+`projectId`
 
-`  string  `
+`string`
 
 Project ID against which to make the request.
 
@@ -134,7 +134,7 @@ If successful, the response body contains a newly created instance of `  Operati
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

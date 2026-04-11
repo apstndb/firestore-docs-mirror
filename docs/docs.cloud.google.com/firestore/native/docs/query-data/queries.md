@@ -1,6 +1,6 @@
 # Query and filter data
 
-Firestore provides powerful query functionality for specifying which documents you want to retrieve from a collection or collection group. These queries can also be used with either `  get()  ` or `  addSnapshotListener()  ` , as described in [Get Data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data) and [Get Realtime Updates](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) .
+Firestore provides powerful query functionality for specifying which documents you want to retrieve from a collection or collection group. These queries can also be used with either `get()` or `addSnapshotListener()` , as described in [Get Data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data) and [Get Realtime Updates](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) .
 
 **Note:** While the code samples cover multiple languages, the text explaining the samples refers to the Web method names.
 
@@ -793,7 +793,7 @@ Android
 
 ## Simple queries
 
-The following query returns all cities with state `  CA  ` :
+The following query returns all cities with state `CA` :
 
 ### Web version 9
 
@@ -1082,7 +1082,7 @@ Android
 
 ### Execute a query
 
-After creating a query object, use the `  get()  ` function to retrieve the results:
+After creating a query object, use the `get()` function to retrieve the results:
 
 ### Web version 9
 
@@ -1346,18 +1346,18 @@ See [Get Data](https://docs.cloud.google.com/firestore/native/docs/query-data/ge
 
 ## Query operators
 
-The `  where()  ` method takes three parameters: a field to filter on, a comparison operator, and a value. Core operations support the following comparison operators:
+The `where()` method takes three parameters: a field to filter on, a comparison operator, and a value. Core operations support the following comparison operators:
 
-  - `  <  ` less than
-  - `  <=  ` less than or equal to
-  - `  ==  ` equal to
-  - `  >  ` greater than
-  - `  >=  ` greater than or equal to
-  - [`  !=  ` not equal to](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#not_equal)
-  - [`  array-contains  `](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#array_membership)
-  - [`  array-contains-any  `](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#in_and_array-contains-any)
-  - [`  in  `](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#in_and_array-contains-any)
-  - [`  not-in  `](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#in_and_array-contains-any)
+  - `<` less than
+  - `<=` less than or equal to
+  - `==` equal to
+  - `>` greater than
+  - `>=` greater than or equal to
+  - [`!=` not equal to](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#not_equal)
+  - [`array-contains`](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#array_membership)
+  - [`array-contains-any`](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#in_and_array-contains-any)
+  - [`in`](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#in_and_array-contains-any)
+  - [`not-in`](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#in_and_array-contains-any)
 
 **Note:** For Apple, Android, and Java, the comparison operator is explicitly named in the method.
 
@@ -1483,9 +1483,9 @@ Android
 
 <span id="not_equal"></span>
 
-### Not equal ( `     !=    ` )
+### Not equal ( `!=` )
 
-Use the not equal ( `  !=  ` ) operator to return documents where the given field exists and does not match the comparison value. For example:
+Use the not equal ( `!=` ) operator to return documents where the given field exists and does not match the comparison value. For example:
 
 ### Web version 9
 
@@ -1564,26 +1564,26 @@ Android
     cities_ref = firestore.col collection_path
     query = cities_ref.where "capital", "!=", falsequery_data.rb
 
-This query returns every `  city  ` document where the `  capital  ` field exists with a value other than `  false  ` or `  null  ` . This includes `  city  ` documents where the `  capital  ` field value equals `  true  ` or any non-boolean value besides `  null  ` .
+This query returns every `city` document where the `capital` field exists with a value other than `false` or `null` . This includes `city` documents where the `capital` field value equals `true` or any non-boolean value besides `null` .
 
-This query does not return `  city  ` documents where the `  capital  ` field does not exist. **Not-equal ( `  !=  ` ) and `  not-in  ` queries exclude documents where the given field does not exist** .
+This query does not return `city` documents where the `capital` field does not exist. **Not-equal ( `!=` ) and `not-in` queries exclude documents where the given field does not exist** .
 
-A field exists when it's set to any value, including an empty string ( `  ""  ` ), `  null  ` , and `  NaN  ` (not a number). Note that `  null  ` field values do not match `  !=  ` clauses, because `  x != null  ` evaluates to `  undefined  ` .
+A field exists when it's set to any value, including an empty string ( `""` ), `null` , and `NaN` (not a number). Note that `null` field values do not match `!=` clauses, because `x != null` evaluates to `undefined` .
 
-**Warning:** A `  !=  ` query clause might match many documents in a collection. To control the number of results returned, use a [limit clause](https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data) or [paginate your query](https://docs.cloud.google.com/firestore/native/docs/query-data/query-cursors#paginate_a_query) .
+**Warning:** A `!=` query clause might match many documents in a collection. To control the number of results returned, use a [limit clause](https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data) or [paginate your query](https://docs.cloud.google.com/firestore/native/docs/query-data/query-cursors#paginate_a_query) .
 
 #### Standard edition limitations
 
-Note the following limitations for `  !=  ` queries. These limitations apply only to Standard edition:
+Note the following limitations for `!=` queries. These limitations apply only to Standard edition:
 
   - Only documents where the given field exists can match the query.
-  - You can't combine `  not-in  ` and `  !=  ` in a compound query.
+  - You can't combine `not-in` and `!=` in a compound query.
 
 <span id="array_contains"></span>
 
 ### Array membership
 
-You can use the `  array-contains  ` operator to filter based on array values. For example:
+You can use the `array-contains` operator to filter based on array values. For example:
 
 ### Web version 9
 
@@ -1685,15 +1685,15 @@ Android
     cities_ref = firestore.col collection_path
     cities = cities_ref.where "regions", "array-contains", "west_coast"query_data.rb
 
-This query returns every `  city  ` document where the `  regions  ` field is an array that contains `  west_coast  ` . If the array has multiple instances of the value you query on, the document is included in the results only once.
+This query returns every `city` document where the `regions` field is an array that contains `west_coast` . If the array has multiple instances of the value you query on, the document is included in the results only once.
 
-You can use at most one `  array-contains  ` clause per disjunction ( `  or  ` group). You can't combine `  array-contains  ` with `  array-contains-any  ` in the same disjunction.
+You can use at most one `array-contains` clause per disjunction ( `or` group). You can't combine `array-contains` with `array-contains-any` in the same disjunction.
 
 <span id="in_and_array-contains-any"></span>
 
-### `     in    ` , `     not-in    ` , and `     array-contains-any    `
+### `in` , `not-in` , and `array-contains-any`
 
-Use the `  in  ` operator to combine [up to 30](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#in_not-in_array-contains-any_limits) equality ( `  ==  ` ) clauses on the same field with a logical `  OR  ` . An `  in  ` query returns documents where the given field matches any of the comparison values. For example:
+Use the `in` operator to combine [up to 30](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#in_not-in_array-contains-any_limits) equality ( `==` ) clauses on the same field with a logical `OR` . An `in` query returns documents where the given field matches any of the comparison values. For example:
 
 ### Web version 9
 
@@ -1802,11 +1802,11 @@ Android
     cities_ref = firestore.col collection_path
     usr_or_japan = cities_ref.where "country", "in", ["USA", "Japan"]query_data.rb
 
-This query returns every `  city  ` document where the `  country  ` field is set to `  USA  ` or `  Japan  ` . From the example data, this includes the `  SF  ` , `  LA  ` , `  DC  ` , and `  TOK  ` documents.
+This query returns every `city` document where the `country` field is set to `USA` or `Japan` . From the example data, this includes the `SF` , `LA` , `DC` , and `TOK` documents.
 
-#### `     not-in    `
+#### `not-in`
 
-Use the `  not-in  ` operator to combine up to 10 not equal ( `  !=  ` ) clauses on the same field with a logical `  AND  ` . A `  not-in  ` query returns documents where the given field exists, is not `  null  ` , and does not match any of the comparison values. For example:
+Use the `not-in` operator to combine up to 10 not equal ( `!=` ) clauses on the same field with a logical `AND` . A `not-in` query returns documents where the given field exists, is not `null` , and does not match any of the comparison values. For example:
 
 ### Web version 9
 
@@ -1894,15 +1894,15 @@ Android
     cities_ref = firestore.col collection_path
     usr_or_japan = cities_ref.where "country", "not_in", ["USA", "Japan"]query_data.rb
 
-This query returns every `  city  ` document where the `  country  ` field exists and is not set to `  USA  ` , `  Japan  ` , or `  null  ` . From the example data, this includes the `  London  ` and `  Hong Kong  ` documents.
+This query returns every `city` document where the `country` field exists and is not set to `USA` , `Japan` , or `null` . From the example data, this includes the `London` and `Hong Kong` documents.
 
-**`  not-in  ` queries exclude documents where the given field does not exist.** A field exists when it's set to any value, including an empty string ( `  ""  ` ), `  null  ` , and `  NaN  ` (not a number). Note that `  x != null  ` evaluates to `  undefined  ` . A `  not-in  ` query with `  null  ` as one of the comparison values does not match any documents.
+**`not-in` queries exclude documents where the given field does not exist.** A field exists when it's set to any value, including an empty string ( `""` ), `null` , and `NaN` (not a number). Note that `x != null` evaluates to `undefined` . A `not-in` query with `null` as one of the comparison values does not match any documents.
 
-**Warning:** A `  not-in  ` query clause might match many documents in a collection. To control the number of results returned, use a [limit clause](https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data) or [paginate your query](https://docs.cloud.google.com/firestore/native/docs/query-data/query-cursors#paginate_a_query) .
+**Warning:** A `not-in` query clause might match many documents in a collection. To control the number of results returned, use a [limit clause](https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data) or [paginate your query](https://docs.cloud.google.com/firestore/native/docs/query-data/query-cursors#paginate_a_query) .
 
-#### `     array-contains-any    `
+#### `array-contains-any`
 
-Use the `  array-contains-any  ` operator to combine [up to 30](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#in_not-in_array-contains-any_limits) `  array-contains  ` clauses on the same field with a logical `  OR  ` . An `  array-contains-any  ` query returns documents where the given field is an array that contains one or more of the comparison values:
+Use the `array-contains-any` operator to combine [up to 30](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#in_not-in_array-contains-any_limits) `array-contains` clauses on the same field with a logical `OR` . An `array-contains-any` query returns documents where the given field is an array that contains one or more of the comparison values:
 
 ### Web version 9
 
@@ -2025,13 +2025,13 @@ Android
     cities_ref = firestore.col collection_path
     costal_cities = cities_ref.where "regions", "array-contains-any", ["west_coast", "east_coast"]query_data.rb
 
-This query returns every city document where the `  regions  ` field is an array that contains `  west_coast  ` or `  east_coast  ` . From the example data, this includes the `  SF  ` , `  LA  ` , and `  DC  ` documents.
+This query returns every city document where the `regions` field is an array that contains `west_coast` or `east_coast` . From the example data, this includes the `SF` , `LA` , and `DC` documents.
 
-Results from `  array-contains-any  ` are de-duped. Even if a document's array field matches more than one of the comparison values, the result set includes that document only once.
+Results from `array-contains-any` are de-duped. Even if a document's array field matches more than one of the comparison values, the result set includes that document only once.
 
-`  array-contains-any  ` always filters by the array data type. For example, the query above would not return a city document where instead of an array, the `  regions  ` field is the string `  west_coast  ` .
+`array-contains-any` always filters by the array data type. For example, the query above would not return a city document where instead of an array, the `regions` field is the string `west_coast` .
 
-You can use an array value as a comparison value for `  in  ` , but unlike `  array-contains-any  ` , the clause matches for an exact match of array length, order, and values. For example:
+You can use an array value as a comparison value for `in` , but unlike `array-contains-any` , the clause matches for an exact match of array length, order, and values. For example:
 
 ### Web version 9
 
@@ -2139,24 +2139,24 @@ Android
     cities_ref = firestore.col collection_path
     exactly_one_cost = cities_ref.where "regions", "in", [["west_coast"], ["east_coast"]]query_data.rb
 
-This query returns every city document where the `  regions  ` field is an array that contains exactly one element of either `  west_coast  ` or `  east_coast  ` . From the example data, only the `  DC  ` document qualifies with its `  regions  ` field of `  ["east_coast"]  ` . The `  SF  ` document, however, does not match because its `  regions  ` field is `  ["west_coast", "norcal"]  ` .
+This query returns every city document where the `regions` field is an array that contains exactly one element of either `west_coast` or `east_coast` . From the example data, only the `DC` document qualifies with its `regions` field of `["east_coast"]` . The `SF` document, however, does not match because its `regions` field is `["west_coast", "norcal"]` .
 
 <span id="in_not-in_array-contains-any_limits"></span>
 
 #### Standard edition limitations
 
-Note the following limitations for `  in  ` , `  not-in  ` , and `  array-contains-any  ` . These limitations apply only to Standard edition:
+Note the following limitations for `in` , `not-in` , and `array-contains-any` . These limitations apply only to Standard edition:
 
-  - Firestore provides support for logical `  OR  ` queries through the `  or  ` , `  in  ` , and `  array-contains-any  ` operators. These queries are limited to [30 disjunctions based on the query's disjunctive normal form](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#limits_on_or_queries) . This limit is fixed and cannot be adjusted.
-  - You can use at most one `  array-contains  ` clause per disjunction ( `  or  ` group). You can't combine `  array-contains  ` with `  array-contains-any  ` in the same disjunction.
-  - You can't combine `  not-in  ` with not equals `  !=  ` .
-  - `  not-in  ` supports up to 10 comparison values.
+  - Firestore provides support for logical `OR` queries through the `or` , `in` , and `array-contains-any` operators. These queries are limited to [30 disjunctions based on the query's disjunctive normal form](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#limits_on_or_queries) . This limit is fixed and cannot be adjusted.
+  - You can use at most one `array-contains` clause per disjunction ( `or` group). You can't combine `array-contains` with `array-contains-any` in the same disjunction.
+  - You can't combine `not-in` with not equals `!=` .
+  - `not-in` supports up to 10 comparison values.
 
 <span id="compound_queries"></span>
 
-## Compound ( `     AND    ` ) queries
+## Compound ( `AND` ) queries
 
-You can combine constraints with a logical `  AND  ` by chaining multiple equality operators ( `  ==  ` or `  array-contains  ` ). However, you must create a [composite index](https://docs.cloud.google.com/firestore/native/docs/query-data/indexing) to combine equality operators with the inequality operators, `  <  ` , `  <=  ` , `  >  ` , and `  !=  ` .
+You can combine constraints with a logical `AND` by chaining multiple equality operators ( `==` or `array-contains` ). However, you must create a [composite index](https://docs.cloud.google.com/firestore/native/docs/query-data/indexing) to combine equality operators with the inequality operators, `<` , `<=` , `>` , and `!=` .
 
 ### Web version 9
 
@@ -2282,9 +2282,9 @@ Android
 
     chained_query = cities_ref.where("state", "=", "CA").where("name", "=", "San Francisco")query_data.rb
 
-## `     OR    ` queries
+## `OR` queries
 
-You can combine constraints with a logical `  OR  ` . For example:
+You can combine constraints with a logical `OR` . For example:
 
 ### Web version 9
 
@@ -2478,9 +2478,9 @@ Snippet not available.
 
 Snippet not available.
 
-Firestore uses your composite indexes to serve `  OR  ` queries. If your indexes do not support the query, Firestore [suggests additional indexes for your database](https://docs.cloud.google.com/firestore/native/docs/query-data/indexing#create_a_missing_index_through_an_error_message) .
+Firestore uses your composite indexes to serve `OR` queries. If your indexes do not support the query, Firestore [suggests additional indexes for your database](https://docs.cloud.google.com/firestore/native/docs/query-data/indexing#create_a_missing_index_through_an_error_message) .
 
-You can combine `  OR  ` queries with compound queries to filter on combinations of `  OR  ` and `  AND  ` operations. For example:
+You can combine `OR` queries with compound queries to filter on combinations of `OR` and `AND` operations. For example:
 
 ### Web version 9
 
@@ -2612,11 +2612,11 @@ Snippet not available.
 
 ### Standard edition limitations
 
-Note the following limitations for `  or  ` queries. These limitations apply only to Standard edition:
+Note the following limitations for `or` queries. These limitations apply only to Standard edition:
 
-  - Firestore limits a query to a [maximum of 30 disjunctions based on the query's disjunctive normal form](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#limits_on_or_queries) . This limit is fixed and cannot be adjusted. You are more likely to reach this limit when performing an `  AND  ` of multiple `  OR  ` groups.
+  - Firestore limits a query to a [maximum of 30 disjunctions based on the query's disjunctive normal form](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#limits_on_or_queries) . This limit is fixed and cannot be adjusted. You are more likely to reach this limit when performing an `AND` of multiple `OR` groups.
 
-  - You can't combine `  not-in  ` with `  in  ` , `  array-contains-any  ` , or `  or  ` in the same query.
+  - You can't combine `not-in` with `in` , `array-contains-any` , or `or` in the same query.
 
 For a full description of limitations, see [Query limitations](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#query_limitations) .
 
@@ -2624,7 +2624,7 @@ For a full description of limitations, see [Query limitations](https://docs.clou
 
 A collection group consists of all collections with the same ID. By default, queries retrieve results from a single collection in your database. Use a collection group query to retrieve documents from a collection group instead of from a single collection.
 
-For example, you can create a `  landmarks  ` collection group by adding a landmarks subcollection to each city:
+For example, you can create a `landmarks` collection group by adding a landmarks subcollection to each city:
 
 ### Web version 9
 
@@ -3887,9 +3887,9 @@ Android
       }
     )query_data.rb
 
-We can use the simple and compound query described earlier to query a single city's `  landmarks  ` subcollection, but you might also want to retrieve results from every city's `  landmarks  ` subcollection at once.
+We can use the simple and compound query described earlier to query a single city's `landmarks` subcollection, but you might also want to retrieve results from every city's `landmarks` subcollection at once.
 
-The `  landmarks  ` collection group consists of all collections with the ID `  landmarks  ` , and you can query it using a collection group query. For example, this collection group query retrieves all `  museum  ` landmarks across all cities:
+The `landmarks` collection group consists of all collections with the ID `landmarks` , and you can query it using a collection group query. For example, this collection group query retrieves all `museum` landmarks across all cities:
 
 ### Web version 9
 
@@ -4096,17 +4096,17 @@ For more information, see the [guide for Query Explain](https://docs.cloud.googl
 
 The following list summarizes Firestore query limitations. These limitations apply only to Standard edition:
 
-  - Firestore provides support for logical `  OR  ` queries through the `  or  ` , `  in  ` , and `  array-contains-any  ` operators. These queries are limited to [30 disjunctions based on the query's disjunctive normal form](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#limits_on_or_queries) . This limit is fixed and cannot be adjusted.
-  - You can use at most one `  array-contains  ` clause per disjunction ( `  or  ` group). You can't combine `  array-contains  ` with `  array-contains-any  ` in the same disjunction.
-  - You can't combine `  not-in  ` with `  in  ` , `  array-contains-any  ` , or `  or  ` in the same query.
-  - Only a single `  not-in  ` or `  !=  ` is allowed per query.
-  - `  not-in  ` supports up to 10 comparison values.
+  - Firestore provides support for logical `OR` queries through the `or` , `in` , and `array-contains-any` operators. These queries are limited to [30 disjunctions based on the query's disjunctive normal form](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#limits_on_or_queries) . This limit is fixed and cannot be adjusted.
+  - You can use at most one `array-contains` clause per disjunction ( `or` group). You can't combine `array-contains` with `array-contains-any` in the same disjunction.
+  - You can't combine `not-in` with `in` , `array-contains-any` , or `or` in the same query.
+  - Only a single `not-in` or `!=` is allowed per query.
+  - `not-in` supports up to 10 comparison values.
   - The sum of filters, sort orders, and parent document path (1 for a subcollection, 0 for a root collection) in a query cannot exceed 100. This is calculated based on the [disjunctive normal form of the query](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#disjunctive_normal_form) .
   - A query with an inequality filter on a field implies ordering by that field and [filters for existence of that field](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#orderby_and_existence) .
 
-### Limits on `     OR    ` queries
+### Limits on `OR` queries
 
-To prevent a query from becoming too computationally expensive, Firestore Standard edition limits how many `  AND  ` and `  OR  ` clauses you can combine. To apply this limit, Firestore converts queries that perform logical `  OR  ` operations ( `  or  ` , `  in  ` , and `  array-contains-any  ` ) to [disjunctive normal form](https://en.wikipedia.org/wiki/Disjunctive_normal_form) (also known as an `  OR  ` of `  AND  ` s). **Firestore limits a query to a maximum of 30 disjunctions in disjunctive normal form.** This limit is fixed and cannot be adjusted.
+To prevent a query from becoming too computationally expensive, Firestore Standard edition limits how many `AND` and `OR` clauses you can combine. To apply this limit, Firestore converts queries that perform logical `OR` operations ( `or` , `in` , and `array-contains-any` ) to [disjunctive normal form](https://en.wikipedia.org/wiki/Disjunctive_normal_form) (also known as an `OR` of `AND` s). **Firestore limits a query to a maximum of 30 disjunctions in disjunctive normal form.** This limit is fixed and cannot be adjusted.
 
 #### Disjunctive normal form
 
@@ -4114,20 +4114,20 @@ Firestore converts queries to disjunctive normal form by applying two rules:
 
   - ***Flatten***
     
-    Given conditions `  A  ` , `  B  ` , and `  C  ` :
+    Given conditions `A` , `B` , and `C` :
     
-    `  A and (B and C) => A and B and C  `
+    `A and (B and C) => A and B and C`
 
   - [***Distributive Law***](https://en.wikipedia.org/wiki/Distributive_property)
     
-    Given conditions `  A  ` , `  B  ` , `  C  ` , and `  D  ` :
+    Given conditions `A` , `B` , `C` , and `D` :
     
-      - `  A and (B or C) => (A and B) or (A and C)  `
-      - `  (A or B) and (C or D) => (A and C) or (A and D) or (B and C) or (B and D)  `
+      - `A and (B or C) => (A and B) or (A and C)`
+      - `(A or B) and (C or D) => (A and C) or (A and D) or (B and C) or (B and D)`
 
-When applying these rules to `  in  ` and `  array-contains-any  ` queries, remember that these operators are shorthands for `  OR  ` . For example, `  a in [1,2]  ` is shorthand for `  a = 1 OR a = 2  ` .
+When applying these rules to `in` and `array-contains-any` queries, remember that these operators are shorthands for `OR` . For example, `a in [1,2]` is shorthand for `a = 1 OR a = 2` .
 
-**Warning:** Due to the multiplicative nature of conversions to disjunctive normal form, you are more likely to reach the limit when performing an `  AND  ` of multiple `  OR  ` groups.
+**Warning:** Due to the multiplicative nature of conversions to disjunctive normal form, you are more likely to reach the limit when performing an `AND` of multiple `OR` groups.
 
 The following examples show the number of disjunctions for different queries:
 
@@ -4212,11 +4212,11 @@ The following examples show the number of disjunctions for different queries:
 </tbody>
 </table>
 
-## `     orderBy    ` and existence
+## `orderBy` and existence
 
 When you order a query by a given field, the query can return only the documents where the order-by field exists.
 
-For example, the following query would not return any documents where the `  population  ` field is not set, even if they otherwise meet the query filters.
+For example, the following query would not return any documents where the `population` field is not set, even if they otherwise meet the query filters.
 
 ##### Java
 
@@ -4224,7 +4224,7 @@ For example, the following query would not return any documents where the `  pop
 db.collection("cities").whereEqualTo("country", “USA”).orderBy(“population”);
 ```
 
-A related effect applies to inequalities. A query with an inequality filter on a field also implies ordering by that field. The following query does not return documents without a `  population  ` field even if `  country = USA  ` in that document . As a workaround, you can execute separate queries for each ordering or you can assign a value for all fields that you order by.
+A related effect applies to inequalities. A query with an inequality filter on a field also implies ordering by that field. The following query does not return documents without a `population` field even if `country = USA` in that document . As a workaround, you can execute separate queries for each ordering or you can assign a value for all fields that you order by.
 
 ##### Java
 

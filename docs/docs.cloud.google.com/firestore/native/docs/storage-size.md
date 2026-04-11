@@ -18,8 +18,8 @@ The following are stored as strings:
 
 For example:
 
-  - The collection ID `  tasks  ` uses 5 bytes + 1 byte, for a total of 6 bytes.
-  - The field name `  description  ` uses 11 bytes + 1 byte, for a total of 12 bytes.
+  - The collection ID `tasks` uses 5 bytes + 1 byte, for a total of 6 bytes.
+  - The field name `description` uses 11 bytes + 1 byte, for a total of 12 bytes.
 
 ## Document ID size
 
@@ -34,15 +34,15 @@ The size of a document name is the sum of:
   - The size of each collection ID and document ID in the path to the document
   - 16 additional bytes
 
-For a document in the subcollection `  users/jeff/tasks  ` with a string document ID of `  my_task_id  ` , the document name size is 6 + 5 + 6 + 11 + 16 = 44 bytes:
+For a document in the subcollection `users/jeff/tasks` with a string document ID of `my_task_id` , the document name size is 6 + 5 + 6 + 11 + 16 = 44 bytes:
 
-  - 6 bytes for the `  users  ` collection ID
-  - 5 bytes for the `  jeff  ` document ID
-  - 6 bytes for the `  tasks  ` collection ID
-  - 11 bytes for the `  my_task_id  ` document ID
+  - 6 bytes for the `users` collection ID
+  - 5 bytes for the `jeff` document ID
+  - 6 bytes for the `tasks` collection ID
+  - 11 bytes for the `my_task_id` document ID
   - 16 additional bytes
 
-**Note:** Any documents in subcollections under the document, for example `  users/jeff/tasks/my_task_id/comments/D8PvloqiczrzXik3SWjZ  ` , aren't counted towards the document name size or the 1 MiB limit for the `  users/jeff/tasks/my_task_id  ` document.
+**Note:** Any documents in subcollections under the document, for example `users/jeff/tasks/my_task_id/comments/D8PvloqiczrzXik3SWjZ` , aren't counted towards the document name size or the 1 MiB limit for the `users/jeff/tasks/my_task_id` document.
 
 ## Field value size
 
@@ -63,9 +63,9 @@ The following table shows the size of field values by type.
 | Text string           | Number of UTF-8 encoded bytes + 1                                                                                                               |
 | Vector                | 8 bytes per dimension                                                                                                                           |
 
-For example, a boolean field named `  done  ` would use 6 bytes:
+For example, a boolean field named `done` would use 6 bytes:
 
-  - 5 bytes for the `  done  ` field name
+  - 5 bytes for the `done` field name
   - 1 byte for the boolean value
 
 **Note:** Field values in an index are truncated after 1500 bytes, see [indexing limits](https://docs.cloud.google.com/firestore/native/docs/quotas#indexes) .
@@ -79,7 +79,7 @@ The size of a document is the sum of:
   - The sum of the size of each [field value](https://docs.cloud.google.com/firestore/native/docs/storage-size#field-size)
   - 32 additional bytes
 
-This example is for a document in subcollection `  users/jeff/tasks  ` with a string document ID of `  my_task_id  ` :
+This example is for a document in subcollection `users/jeff/tasks` with a string document ID of `my_task_id` :
 
 ``` 
  - "type": "Personal"
@@ -103,22 +103,22 @@ The total size of the fields is 71 bytes:
 </thead>
 <tbody>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       "type": "Personal"      </code></td>
+<td><code dir="ltr" translate="no">"type": "Personal"</code></td>
 <td>14<br />
 5 for the field name + 9 for the field's string value</td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       "done": false      </code></td>
+<td><code dir="ltr" translate="no">"done": false</code></td>
 <td>6<br />
 5 for the field name + 1 for the field's boolean value</td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       "priority": 1      </code></td>
+<td><code dir="ltr" translate="no">"priority": 1</code></td>
 <td>17<br />
 9 for the field name + 8 for the field's integer value</td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       "description": "Learn Cloud Firestore"      </code></td>
+<td><code dir="ltr" translate="no">"description": "Learn Cloud Firestore"</code></td>
 <td>34<br />
 12 for the field name + 22 for the field's string value</td>
 </tr>
@@ -131,7 +131,7 @@ So the document size is 44 + 71 + 32 = 147 bytes:
   - 71 bytes for the fields
   - 32 additional bytes
 
-**Note:** Any documents in subcollections under the document, for example `  users/jeff/tasks/my_task_id/comments/D8PvloqiczrzXik3SWjZ  ` , aren't counted towards the document name size or the 1 MiB limit for the `  users/jeff/tasks/my_task_id  ` document.
+**Note:** Any documents in subcollections under the document, for example `users/jeff/tasks/my_task_id/comments/D8PvloqiczrzXik3SWjZ` , aren't counted towards the document name size or the 1 MiB limit for the `users/jeff/tasks/my_task_id` document.
 
 ## Index entry size
 
@@ -151,7 +151,7 @@ The size of an entry in a single-field index with collection scope is the sum of
   - The size of the indexed [field value](https://docs.cloud.google.com/firestore/native/docs/storage-size#field-size)
   - 32 additional bytes
 
-Consider a document in the sub-collection `  users/jeff/tasks  ` with a string document ID of `  my_task_id  ` :
+Consider a document in the sub-collection `users/jeff/tasks` with a string document ID of `my_task_id` :
 
 ``` 
  - "type": "Personal"
@@ -160,11 +160,11 @@ Consider a document in the sub-collection `  users/jeff/tasks  ` with a string d
  - "description": "Learn Cloud Firestore"
 ```
 
-For a single-field index with collection scope that indexes the `  done  ` field, the total size of the entry in this index is 109 bytes:
+For a single-field index with collection scope that indexes the `done` field, the total size of the entry in this index is 109 bytes:
 
-  - 44 bytes for the document name `  users/jeff/tasks/my_task_id  `
-  - 27 bytes for the parent document's document name `  users/jeff  `
-  - 5 bytes for the `  done  ` field name
+  - 44 bytes for the document name `users/jeff/tasks/my_task_id`
+  - 27 bytes for the parent document's document name `users/jeff`
+  - 5 bytes for the `done` field name
   - 1 byte for the boolean field value
   - 32 additional bytes
 
@@ -177,7 +177,7 @@ The size of an entry in a single-field index with collection group scope is the 
   - The size of the indexed [field value](https://docs.cloud.google.com/firestore/native/docs/storage-size#field-size)
   - 48 additional bytes
 
-Consider a document in the sub-collection `  users/jeff/tasks  ` with a string document ID of `  my_task_id  ` :
+Consider a document in the sub-collection `users/jeff/tasks` with a string document ID of `my_task_id` :
 
 ``` 
  - "type": "Personal"
@@ -186,10 +186,10 @@ Consider a document in the sub-collection `  users/jeff/tasks  ` with a string d
  - "description": "Learn Cloud Firestore"
 ```
 
-For a single-field index with collection group scope that indexes the `  done  ` field, the total size of the entry in this index is 98 bytes:
+For a single-field index with collection group scope that indexes the `done` field, the total size of the entry in this index is 98 bytes:
 
-  - 44 bytes for the document name `  users/jeff/tasks/my_task_id  `
-  - 5 bytes for the `  done  ` field name
+  - 44 bytes for the document name `users/jeff/tasks/my_task_id`
+  - 5 bytes for the `done` field name
   - 1 byte for the boolean field value
   - 48 additional bytes
 
@@ -206,7 +206,7 @@ The size of an index entry in a composite index with collection scope is the sum
   - The sum of the indexed [field values](https://docs.cloud.google.com/firestore/native/docs/storage-size#field-size)
   - 32 additional bytes
 
-Consider a document in the sub-collection `  users/jeff/tasks  ` with a string document ID of `  my_task_id  ` :
+Consider a document in the sub-collection `users/jeff/tasks` with a string document ID of `my_task_id` :
 
 ``` 
  - "type": "Personal"
@@ -215,10 +215,10 @@ Consider a document in the sub-collection `  users/jeff/tasks  ` with a string d
  - "description": "Learn Cloud Firestore"
 ```
 
-For a composite index with collection scope that indexes the `  done  ` and `  priority  ` fields (both ascending), the total size of the entry in this index is 112 bytes:
+For a composite index with collection scope that indexes the `done` and `priority` fields (both ascending), the total size of the entry in this index is 112 bytes:
 
-  - 44 bytes for the document name `  users/jeff/tasks/my_task_id  `
-  - 27 bytes for the parent document's document name `  users/jeff  `
+  - 44 bytes for the document name `users/jeff/tasks/my_task_id`
+  - 27 bytes for the parent document's document name `users/jeff`
   - 1 byte for the boolean field value
   - 8 bytes for the integer field value
   - 32 additional bytes
@@ -231,7 +231,7 @@ The size of an index entry in a composite index with collection group scope is t
   - The sum of the indexed [field values](https://docs.cloud.google.com/firestore/native/docs/storage-size#field-size)
   - 32 additional bytes
 
-Consider a document in the sub-collection `  users/jeff/tasks  ` with a string document ID of `  my_task_id  ` :
+Consider a document in the sub-collection `users/jeff/tasks` with a string document ID of `my_task_id` :
 
 ``` 
  - "type": "Personal"
@@ -240,9 +240,9 @@ Consider a document in the sub-collection `  users/jeff/tasks  ` with a string d
  - "description": "Learn Cloud Firestore"
 ```
 
-For a composite index with collection group scope that indexes the `  done  ` and `  priority  ` fields (both ascending), the total size of the index entry in this index is 85 bytes:
+For a composite index with collection group scope that indexes the `done` and `priority` fields (both ascending), the total size of the index entry in this index is 85 bytes:
 
-  - 44 bytes for the document name `  users/jeff/tasks/my_task_id  `
+  - 44 bytes for the document name `users/jeff/tasks/my_task_id`
   - 1 byte for the boolean field value
   - 8 bytes for the integer field value
   - 32 additional bytes

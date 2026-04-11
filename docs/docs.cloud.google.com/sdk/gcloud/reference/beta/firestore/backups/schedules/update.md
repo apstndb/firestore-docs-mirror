@@ -4,7 +4,7 @@ gcloud beta firestore backups schedules update - updates a Cloud Firestore backu
 
 SYNOPSIS
 
-`  gcloud beta firestore backups schedules update  ` `  --backup-schedule  ` = `  BACKUP_SCHEDULE  ` `  --database  ` = `  DATABASE  ` \[ `  --retention  ` = `  RETENTION  ` \] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud beta firestore backups schedules update` `  --backup-schedule  ` = `  BACKUP_SCHEDULE  ` `  --database  ` = `  DATABASE  ` \[ `  --retention  ` = `  RETENTION  ` \] \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 EXAMPLES
 
@@ -16,19 +16,19 @@ gcloud beta firestore backups schedules update --database='testdb' --backup-sche
 
 REQUIRED FLAGS
 
-  - `  --backup-schedule  ` = `  BACKUP_SCHEDULE  `  
+  - `--backup-schedule` = `  BACKUP_SCHEDULE  `  
     The backup schedule to operate on.
     
-    For example, to operate on backup schedule `  091a49a0-223f-4c98-8c69-a284abbdb26b  ` :
+    For example, to operate on backup schedule `091a49a0-223f-4c98-8c69-a284abbdb26b` :
     
     ``` wrap-code
     gcloud beta firestore backups schedules update --backup-schedule='091a49a0-223f-4c98-8c69-a284abbdb26b'
     ```
 
-  - `  --database  ` = `  DATABASE  `  
+  - `--database` = `  DATABASE  `  
     The database to operate on.
     
-    For example, to operate on database `  foo  ` :
+    For example, to operate on database `foo` :
     
     ``` wrap-code
     gcloud beta firestore backups schedules update --database='foo'
@@ -36,7 +36,7 @@ REQUIRED FLAGS
 
 OPTIONAL FLAGS
 
-  - `  --retention  ` = `  RETENTION  `  
+  - `--retention` = `  RETENTION  `  
     The rention of the backup. At what relative time in the future, compared to the creation time of the backup should the backup be deleted, i.e. keep backups for 7 days.
     
     For example, to set retention as 7 days.
@@ -49,7 +49,7 @@ GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 NOTES
 

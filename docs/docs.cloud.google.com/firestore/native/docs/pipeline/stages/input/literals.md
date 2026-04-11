@@ -21,11 +21,11 @@ This stage is commonly used for testing other stages in isolation, though it can
 
 ## Behavior
 
-The `  literals(...)  ` stage can only be used as the first stage in a pipeline (or sub-pipeline). The order of documents returned from the `  literals(...)  ` matches the order in which they are defined.
+The `literals(...)` stage can only be used as the first stage in a pipeline (or sub-pipeline). The order of documents returned from the `literals(...)` matches the order in which they are defined.
 
 While literal values are the most common, it is also possible to pass in expressions, which will be evaluated and returned, making it possible to test out different query / expression behavior without first needing to create some test data.
 
-For example, the following shows how to quickly test out the `  length(...)  ` function on some constant test sets:
+For example, the following shows how to quickly test out the `length(...)` function on some constant test sets:
 
 ### Node.js
 

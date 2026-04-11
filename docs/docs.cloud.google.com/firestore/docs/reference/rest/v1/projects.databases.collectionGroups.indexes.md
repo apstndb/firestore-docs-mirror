@@ -4,14 +4,14 @@ There is no persistent data associated with this resource.
 
 ## Methods
 
-### `             delete           `
+### `            delete           `
 
 Deletes a composite index.
 
-### `             get           `
+### `            get           `
 
 Gets a composite index.
 
-### `             list           `
+### `            list           `
 
 Lists composite indexes.

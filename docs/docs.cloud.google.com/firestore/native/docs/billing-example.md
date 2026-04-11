@@ -16,7 +16,7 @@ For a full, detailed explanation of Firestore in Native Mode costs, see [Firesto
 
 ## Overview: Costs by usage level
 
-To illustrate typical costs, consider an example chat app, where users can initiate chats with two or more participants. Users can see their active chats in a list, read messages, and send messages. For this example, we're using pricing for the North America multi-region (specifically `  nam5  ` ).
+To illustrate typical costs, consider an example chat app, where users can initiate chats with two or more participants. Users can see their active chats in a list, read messages, and send messages. For this example, we're using pricing for the North America multi-region (specifically `nam5` ).
 
 ### Assumptions
 
@@ -279,9 +279,9 @@ A benefit of the Firestore in Native Mode billing model worth considering is tha
 
 For our example chat app, the data structure is as follows:
 
-  - `  users/{userId}  ` — User records
-  - `  groups/{groupId}  ` — Chats between 2 or more users
-      - `  messages/{messageId}  ` — Each message in a chat.
+  - `users/{userId}` — User records
+  - `groups/{groupId}` — Chats between 2 or more users
+      - `messages/{messageId}` — Each message in a chat.
     
       - 
 ### Data storage
@@ -364,7 +364,7 @@ Assume that a user gets about 30 messages a day across all chats. Since you've l
 
 Users can send messages to other participants once they're in a chat. Assume that an active user sends about 10 messages per day.
 
-Each sent message will cause two document writes: one write to the `  messages  ` subcollection of the chat and one write to the chat parent document to update the `  lastUpdated  ` timestamp and other metadata.
+Each sent message will cause two document writes: one write to the `messages` subcollection of the chat and one write to the chat parent document to update the `lastUpdated` timestamp and other metadata.
 
 Note that the cost of reading these messages has been accounted for in the other journeys, so the totals below only consider this write cost.
 
@@ -376,9 +376,9 @@ Note that the cost of reading these messages has been accounted for in the other
 
 ## Billed usage for administrator tasks
 
-As an app owner or administrator you probably want to generate reports from your app's data. For example, you might want to keep a daily count of the number of messages sent by your users. You can accomplish this with a [`  count()  `](https://docs.cloud.google.com/firestore/native/docs/query-data/aggregation-queries) aggregation of the `  messages  ` collection group.
+As an app owner or administrator you probably want to generate reports from your app's data. For example, you might want to keep a daily count of the number of messages sent by your users. You can accomplish this with a [`count()`](https://docs.cloud.google.com/firestore/native/docs/query-data/aggregation-queries) aggregation of the `messages` collection group.
 
-For aggregation queries such as `  count()  ` , you are charged one document read for each batch of up to 1,000 index entries matched by the query. Running this daily aggregation adds the following monthly charges:
+For aggregation queries such as `count()` , you are charged one document read for each batch of up to 1,000 index entries matched by the query. Running this daily aggregation adds the following monthly charges:
 
 #### Small  
 (50k installs)

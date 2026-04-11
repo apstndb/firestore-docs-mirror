@@ -37,15 +37,15 @@ The entire Baz namespace: kinds=\[\], namespaceIds=\['Baz'\]
 
 Fields
 
-`  kinds[]  `
+`kinds[]`
 
-`  string  `
+`string`
 
 If empty, then this represents all kinds.
 
-`  namespaceIds[]  `
+`namespaceIds[]`
 
-`  string  `
+`string`
 
 An empty list represents all namespaces. This is the preferred usage for projects that don't use namespaces.
 

@@ -97,7 +97,7 @@ eu
 us
 
   
-`  GET https://firestore.googleapis.com/v1/{parent=projects/*}/databases  `
+`GET https://firestore.googleapis.com/v1/{parent=projects/*}/databases`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -105,19 +105,19 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. A parent name of the form `  projects/{projectId}  `
+Required. A parent name of the form `projects/{projectId}`
 
 ### Query parameters
 
 Parameters
 
-`  showDeleted  `
+`showDeleted`
 
-`  boolean  `
+`boolean`
 
 If true, also returns deleted resources.
 
@@ -142,31 +142,22 @@ If successful, the response body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;databases&quot;: [
-    {
-      object (Database)
-    }
-  ],
-  &quot;unreachable&quot;: [
-    string
-  ]
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;databases&quot;: [{object (Database)}],&quot;unreachable&quot;: [string]}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  databases[]  `
+`databases[]`
 
-`  object ( Database  ` )
+` object ( Database  ` )
 
 The databases in the project.
 
-`  unreachable[]  `
+`unreachable[]`
 
-`  string  `
+`string`
 
 In the event that data about individual databases cannot be listed they will be recorded here.
 
@@ -176,7 +167,7 @@ An example entry might be: projects/some\_project/locations/some\_location This 
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

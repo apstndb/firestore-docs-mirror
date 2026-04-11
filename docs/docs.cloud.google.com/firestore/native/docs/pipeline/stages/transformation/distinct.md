@@ -8,7 +8,7 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 Find all the distinct combination of values for a series of expressions.
 
-The `  distinct(...)  ` stage has similar syntax as `  select(...)  ` as it takes one or more selectable expressions. Strings can be used when the expression is just a field reference:
+The `distinct(...)` stage has similar syntax as `select(...)` as it takes one or more selectable expressions. Strings can be used when the expression is just a field reference:
 
 ## Examples
 
@@ -108,11 +108,11 @@ Android
 
 ## Behavior
 
-The `  distinct(...)  ` stage works similarly to an aggregate stage without groups. See also [Aggregate Stage](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/aggregate) and [Select Stage](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/select) .
+The `distinct(...)` stage works similarly to an aggregate stage without groups. See also [Aggregate Stage](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/aggregate) and [Select Stage](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/select) .
 
 ### Find Distinct Field Values
 
-For example, to get a list of every country in the following `  cities  ` collection:
+For example, to get a list of every country in the following `cities` collection:
 
 ### Node.js
 
@@ -163,18 +163,18 @@ The equivalence behavior on distinct values follows the same semantics as equali
 
 This means that equivalent values, for example mathmatically equivalent numeric values, regardless of original types (32-bit integer, 64-bit integer, floating point numbers, decimal numbers, etc), are considered the same distinct value.
 
-As an example, in a collection `  numerics  ` with different documents containing `  foo  ` values of 32-bit integer `  1  ` , 64-bit integer `  1L  ` and floating point `  1.0  ` respectively, `  distinct(...)  ` will only return 1 result.
+As an example, in a collection `numerics` with different documents containing `foo` values of 32-bit integer `1` , 64-bit integer `1L` and floating point `1.0` respectively, `distinct(...)` will only return 1 result.
 
-In such cases of having different equivalent values present in the dataset, the output value of the group can be **any** of these equivalent values. In this example, this value of `  foo  ` could be returned as `  1  ` , `  1L  ` , or `  1.0  ` .
+In such cases of having different equivalent values present in the dataset, the output value of the group can be **any** of these equivalent values. In this example, this value of `foo` could be returned as `1` , `1L` , or `1.0` .
 
 Even if it appears to be deterministic, you should **not** attempt to rely on the behavior of one specific value getting selected.
 
 ### Memory Usage
 
-How the `  distinct(...)  ` stage is executed depends on the available indexes. When there is not an appropriate index chosen by the query optimizer, `  distinct(...)  ` requires buffering all distinct values in the memory.
+How the `distinct(...)` stage is executed depends on the available indexes. When there is not an appropriate index chosen by the query optimizer, `distinct(...)` requires buffering all distinct values in the memory.
 
 In the event of having a very large number of distinct values, or values being very large (e.g. distinct on huge values), this stage may run out of memory.
 
-In such cases, you should apply filters to limit the dataset to perform `  distinct(...)  ` on, or create indexes as recommended to avoid large memory usages.
+In such cases, you should apply filters to limit the dataset to perform `distinct(...)` on, or create indexes as recommended to avoid large memory usages.
 
 Query Explain will provide information on the actual query execution plan and profiling data to help with the debugging.

@@ -582,7 +582,7 @@ Android
     
     puts "Counter incremented."distributed_counters.rb
 
-To get the total count, query for all shards and sum their `  count  ` fields:
+To get the total count, query for all shards and sum their `count` fields:
 
 ### Web
 

@@ -16,10 +16,10 @@ The following values are returned as results to operations performed with [Query
 
 The contents of indexes used are subject to change as Datastore mode evolves.
 
-| Key          | Type   | Description                                                                                                                                              |
-| ------------ | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| query\_scope | String | The scope at which a query is run. For example `        Collection       ` , `        Collection Group       ` and `        Includes Ancestors       ` . |
-| properties   | String | The index fields in a format, for example `        (age ASC, __name__ ASC)       ` .                                                                     |
+| Key          | Type   | Description                                                                                                 |
+| ------------ | ------ | ----------------------------------------------------------------------------------------------------------- |
+| query\_scope | String | The scope at which a query is run. For example `Collection` , `Collection Group` and `Includes Ancestors` . |
+| properties   | String | The index fields in a format, for example `(age ASC, __name__ ASC)` .                                       |
 
 ## Execution statistics
 

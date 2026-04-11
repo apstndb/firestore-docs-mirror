@@ -79,7 +79,7 @@ Sort order follows [Firestore's value type order](https://docs.cloud.google.com/
 
 ### Deterministic Order of Results
 
-If there is no `  sort  ` stage in the query, the ordering of the returned results is non-deterministic and may vary between executions. If a `  sort  ` stage is present but the ordering expressions fail to produce a unique ordering among the returned results, the ordering of the returned results may still vary between executions.
+If there is no `sort` stage in the query, the ordering of the returned results is non-deterministic and may vary between executions. If a `sort` stage is present but the ordering expressions fail to produce a unique ordering among the returned results, the ordering of the returned results may still vary between executions.
 
 For example, sorting cities by the country of the cities, in ascending order against the following dataset:
 
@@ -105,19 +105,19 @@ Equivalent values are sorted together but the order of results within the equiva
     { name: "Los Angeles", state: "CA", country: "USA", size: 3970000 },
     { name: "Mexico City", state: null, country: "Mexico", size: 3970000.0 },
 
-can produce any permutation of the 2 documents in the dataset because both documents have the equivalent size value `  3970000  ` .
+can produce any permutation of the 2 documents in the dataset because both documents have the equivalent size value `3970000` .
 
 ### Multiple Sort Stages
 
-When the query contains multiple consecutive sort stages, only the last sort stage has an impact on the query results. Note that this is different from the behavior of the `  orderBy  ` clause in the Core API.
+When the query contains multiple consecutive sort stages, only the last sort stage has an impact on the query results. Note that this is different from the behavior of the `orderBy` clause in the Core API.
 
 ### Top-N Sort Optimization
 
-When a `  limit  ` is used after a `  sort  ` , a top-n sort may be used. This optimization bounds the memory use of the sort stage by allowing it to only store `  N  ` documents at a time—as defined by `  limit  ` —making the sort more memory-efficient.
+When a `limit` is used after a `sort` , a top-n sort may be used. This optimization bounds the memory use of the sort stage by allowing it to only store `N` documents at a time—as defined by `limit` —making the sort more memory-efficient.
 
 ### Null and Absent values
 
-If a field specified in an ordering does not exist in a document, its value is sorted as if the value is `  null  ` . For example, sorting cities by the state of the cities, in ascending order against the following dataset:
+If a field specified in an ordering does not exist in a document, its value is sorted as if the value is `null` . For example, sorting cities by the state of the cities, in ascending order against the following dataset:
 
     { name: "Los Angeles", state: "CA", country: "USA", population: 3970000 },
     { name: "Mexico City", state: null, country: "Mexico", population: 9200000 },
@@ -125,7 +125,7 @@ If a field specified in an ordering does not exist in a document, its value is s
     { name: "San Francisco", state: "CA", country: "USA", population: 870000 },
     { name: "Toronto", country: "Canada", population: 2930000 },
 
-produces the following results where the "Toronto" document and the "Mexico City" document are sorted as `  null  ` and before other documents.
+produces the following results where the "Toronto" document and the "Mexico City" document are sorted as `null` and before other documents.
 
     { name: "Toronto", country: "Canada", population: 2930000 },
     { name: "Mexico City", state: null, country: "Mexico", population: 9200000 },

@@ -97,7 +97,7 @@ eu
 us
 
   
-`  PATCH https://firestore.googleapis.com/v1/{database.name=projects/*/databases/*}  `
+`PATCH https://firestore.googleapis.com/v1/{database.name=projects/*/databases/*}`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -105,23 +105,23 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  database.name  `
+`database.name`
 
-`  string  `
+`string`
 
-The resource name of the Database. Format: `  projects/{project}/databases/{database}  `
+The resource name of the Database. Format: `projects/{project}/databases/{database}`
 
 ### Query parameters
 
 Parameters
 
-`  updateMask  `
+`updateMask`
 
-`  string ( FieldMask  ` format)
+` string ( FieldMask  ` format)
 
 The list of fields to be updated.
 
-This is a comma-separated list of fully qualified names of fields. Example: `  "user.displayName,photo"  ` .
+This is a comma-separated list of fully qualified names of fields. Example: `"user.displayName,photo"` .
 
 ### Request body
 
@@ -135,7 +135,7 @@ If successful, the response body contains an instance of `  Operation  ` .
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

@@ -45,7 +45,7 @@ Set the unique index option to enforce unique values for the indexed fields. For
 
 ### Absent fields in a unique index
 
-If you insert a document with missing fields for the unique index, the index sets `  null  ` values for the missing fields. The resulting index entry must be unique or the operation fails.
+If you insert a document with missing fields for the unique index, the index sets `null` values for the missing fields. The resulting index entry must be unique or the operation fails.
 
 For example, with this index:
 
@@ -53,9 +53,9 @@ For example, with this index:
 | ---------- | ---------------- | ----------- |
 | cities     | name (ascending) | Collection  |
 
-If you add the document `  {"abbreviation": "LA"}  ` to the collection, the unique index creates an entry with `  name  ` set to `  null  ` . If you then try to add the document `  {"abbreviation": "NYC"}  ` , the operation fails because the resulting entry for the unique index is the same.
+If you add the document `{"abbreviation": "LA"}` to the collection, the unique index creates an entry with `name` set to `null` . If you then try to add the document `{"abbreviation": "NYC"}` , the operation fails because the resulting entry for the unique index is the same.
 
-The same behavior applies to unique indexes with multiple fields. When creating or updating a document, missing indexed fields are set to `  null  ` and the resulting index entry must be unique in the index.
+The same behavior applies to unique indexes with multiple fields. When creating or updating a document, missing indexed fields are set to `null` and the resulting index entry must be unique in the index.
 
 ## Troubleshoot index building errors
 

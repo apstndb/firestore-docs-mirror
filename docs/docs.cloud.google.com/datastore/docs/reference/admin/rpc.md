@@ -2,9 +2,9 @@ Accesses the schemaless NoSQL database to provide fully managed, robust, scalabl
 
 ## Service: datastore.googleapis.com
 
-The Service name `  datastore.googleapis.com  ` is needed to create RPC client stubs.
+The Service name `datastore.googleapis.com` is needed to create RPC client stubs.
 
-## `         google.datastore.admin.v1.DatastoreAdmin       `
+## `        google.datastore.admin.v1.DatastoreAdmin       `
 
 Methods
 
@@ -32,7 +32,7 @@ Imports entities into Google Cloud Datastore.
 
 Lists the indexes that match the specified filters.
 
-## `         google.datastore.admin.v1beta1.DatastoreAdmin       `
+## `        google.datastore.admin.v1beta1.DatastoreAdmin       `
 
 Methods
 
@@ -44,7 +44,7 @@ Exports a copy of all or a subset of entities from Google Cloud Datastore to ano
 
 Imports entities into Google Cloud Datastore.
 
-## `         google.longrunning.Operations       `
+## `        google.longrunning.Operations       `
 
 Methods
 

@@ -4,15 +4,15 @@ Google Cloud offers Identity and Access Management (IAM), which lets you give mo
 
 IAM lets you adopt the [security principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) , so you grant only the necessary access to your resources.
 
-IAM lets you control **who (users)** has **what (roles)** permission to **which** resources by setting IAM policies. IAM policies grant specific role(s) to a user, giving the user certain permissions. For example, you can grant the `  datastore.indexAdmin  ` role to a user and the user can create, modify, delete, list, or view indexes.
+IAM lets you control **who (users)** has **what (roles)** permission to **which** resources by setting IAM policies. IAM policies grant specific role(s) to a user, giving the user certain permissions. For example, you can grant the `datastore.indexAdmin` role to a user and the user can create, modify, delete, list, or view indexes.
 
 ## Permissions and Roles
 
 This section summarizes the permissions and roles Firestore in Datastore mode supports.
 
-**Note:** Some Datastore mode permissions differ from the standard IAM model permissions. For example, in the IAM model, the `  datastore.databases.get  ` permission lets you return a database object while, in Datastore mode, `  datastore.databases.get  ` lets you begin or roll back a transaction. To retrieve a database object's information, use the `  datastore.databases.getMetadata  ` permission.
+**Note:** Some Datastore mode permissions differ from the standard IAM model permissions. For example, in the IAM model, the `datastore.databases.get` permission lets you return a database object while, in Datastore mode, `datastore.databases.get` lets you begin or roll back a transaction. To retrieve a database object's information, use the `datastore.databases.getMetadata` permission.
 
-The `  datastore.schemas.*  ` permissions were previously named `  datastore.indexes.*  ` . You can still use `  datastore.indexes  ` as an alias for `  datastore.schemas  ` .
+The `datastore.schemas.*` permissions were previously named `datastore.indexes.*` . You can still use `datastore.indexes` as an alias for `datastore.schemas` .
 
 ### Permissions
 
@@ -33,82 +33,82 @@ The following table lists the permissions that Firestore in Datastore mode suppo
 </thead>
 <tbody>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.databases.export      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.export</code></td>
 <td>Export entities from a database.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.databases.bulkDelete      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.bulkDelete</code></td>
 <td>Bulk delete entities from a database.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.databases.get      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.get</code></td>
 <td>Begin or rollback a transaction.<br />
 Commit with empty mutations.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.databases.import      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.import</code></td>
 <td>Import entities into a database.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.databases.getMetadata      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.getMetadata</code></td>
 <td>Read metadata from a database.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.databases.list      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.list</code></td>
 <td>List databases in a project.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.databases.create      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.create</code></td>
 <td>Create a database.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.databases.update      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.update</code></td>
 <td>Update a database.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.databases.delete      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.delete</code></td>
 <td>Delete a database.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.databases.clone      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.clone</code></td>
 <td>Clone a database.
-<p>If your <code dir="ltr" translate="no">        clone       </code> request contains a <code dir="ltr" translate="no">        tags       </code> value, then the following additional permissions are required:</p>
+<p>If your <code dir="ltr" translate="no">clone</code> request contains a <code dir="ltr" translate="no">tags</code> value, then the following additional permissions are required:</p>
 <ul>
-<li><code dir="ltr" translate="no">         datastore.databases.createTagBinding        </code></li>
+<li><code dir="ltr" translate="no">datastore.databases.createTagBinding</code></li>
 </ul>
 <p>If you would like to verify whether the tag bindings are set successfully by listing the bindings, then the following additional permissions are required:</p>
 <ul>
-<li><code dir="ltr" translate="no">         datastore.databases.listTagBindings        </code></li>
-<li><code dir="ltr" translate="no">         datastore.databases.listEffectiveTags        </code></li>
+<li><code dir="ltr" translate="no">datastore.databases.listTagBindings</code></li>
+<li><code dir="ltr" translate="no">datastore.databases.listEffectiveTags</code></li>
 </ul></td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.databases.createTagBinding      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.createTagBinding</code></td>
 <td>Create a tag binding for a database.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.databases.deleteTagBinding      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.deleteTagBinding</code></td>
 <td>Delete a tag binding for a database.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.databases.listTagBindings      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.listTagBindings</code></td>
 <td>List all tag bindings for a database.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.databases.listEffectiveTagBindings      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.listEffectiveTagBindings</code></td>
 <td>List effective tag bindings for a database.</td>
 <td></td>
 </tr>
@@ -118,33 +118,33 @@ Commit with empty mutations.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.entities.allocateIds      </code></td>
+<td><code dir="ltr" translate="no">datastore.entities.allocateIds</code></td>
 <td>Allocate IDs for keys with an incomplete key path.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.entities.create      </code></td>
+<td><code dir="ltr" translate="no">datastore.entities.create</code></td>
 <td>Create an entity.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.entities.delete      </code></td>
+<td><code dir="ltr" translate="no">datastore.entities.delete</code></td>
 <td>Delete an entity.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.entities.get      </code></td>
+<td><code dir="ltr" translate="no">datastore.entities.get</code></td>
 <td>Read an entity.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.entities.list      </code></td>
+<td><code dir="ltr" translate="no">datastore.entities.list</code></td>
 <td>List the keys of entities in a project.<br />
-( <code dir="ltr" translate="no">       datastore.entities.get      </code> is required to access the entity data.)</td>
+( <code dir="ltr" translate="no">datastore.entities.get</code> is required to access the entity data.)</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.entities.update      </code></td>
+<td><code dir="ltr" translate="no">datastore.entities.update</code></td>
 <td>Update an entity.</td>
 <td></td>
 </tr>
@@ -154,27 +154,27 @@ Commit with empty mutations.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.schemas.create      </code></td>
+<td><code dir="ltr" translate="no">datastore.schemas.create</code></td>
 <td>Create an index.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.schemas.delete      </code></td>
+<td><code dir="ltr" translate="no">datastore.schemas.delete</code></td>
 <td>Delete an index.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.schemas.get      </code></td>
+<td><code dir="ltr" translate="no">datastore.schemas.get</code></td>
 <td>Read metadata from an index.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.schemas.list      </code></td>
+<td><code dir="ltr" translate="no">datastore.schemas.list</code></td>
 <td>List the indexes in a project.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.schemas.update      </code></td>
+<td><code dir="ltr" translate="no">datastore.schemas.update</code></td>
 <td>Update an index.</td>
 <td></td>
 </tr>
@@ -184,12 +184,12 @@ Commit with empty mutations.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.namespaces.get      </code></td>
+<td><code dir="ltr" translate="no">datastore.namespaces.get</code></td>
 <td>Retrieve metadata from a namespace.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.namespaces.list      </code></td>
+<td><code dir="ltr" translate="no">datastore.namespaces.list</code></td>
 <td>List the namespaces in a project.</td>
 <td></td>
 </tr>
@@ -199,22 +199,22 @@ Commit with empty mutations.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.operations.cancel      </code></td>
+<td><code dir="ltr" translate="no">datastore.operations.cancel</code></td>
 <td>Cancel a long-running operation.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.operations.delete      </code></td>
+<td><code dir="ltr" translate="no">datastore.operations.delete</code></td>
 <td>Delete a long-running operation.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.operations.get      </code></td>
+<td><code dir="ltr" translate="no">datastore.operations.get</code></td>
 <td>Gets the latest state of a long-running operation.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.operations.list      </code></td>
+<td><code dir="ltr" translate="no">datastore.operations.list</code></td>
 <td>List long-running operations.</td>
 <td></td>
 </tr>
@@ -224,12 +224,12 @@ Commit with empty mutations.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       resourcemanager.projects.get      </code></td>
+<td><code dir="ltr" translate="no">resourcemanager.projects.get</code></td>
 <td>Browse resources in the project.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       resourcemanager.projects.list      </code></td>
+<td><code dir="ltr" translate="no">resourcemanager.projects.list</code></td>
 <td>List owned projects.</td>
 <td></td>
 </tr>
@@ -239,14 +239,14 @@ Commit with empty mutations.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.statistics.get      </code></td>
+<td><code dir="ltr" translate="no">datastore.statistics.get</code></td>
 <td>Retrieve <a href="https://docs.cloud.google.com/datastore/docs/concepts/stats">statistics</a> entities.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.statistics.list      </code></td>
+<td><code dir="ltr" translate="no">datastore.statistics.list</code></td>
 <td>List the keys of <a href="https://docs.cloud.google.com/datastore/docs/concepts/stats">statistics</a> entities.<br />
-( <code dir="ltr" translate="no">       datastore.statistics.get      </code> is required to access the statistics entity data.)</td>
+( <code dir="ltr" translate="no">datastore.statistics.get</code> is required to access the statistics entity data.)</td>
 <td></td>
 </tr>
 <tr class="even">
@@ -255,7 +255,7 @@ Commit with empty mutations.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       appengine.applications.get      </code></td>
+<td><code dir="ltr" translate="no">appengine.applications.get</code></td>
 <td>Read-only access to all App Engine application configuration and settings.</td>
 <td></td>
 </tr>
@@ -265,12 +265,12 @@ Commit with empty mutations.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.locations.get      </code></td>
+<td><code dir="ltr" translate="no">datastore.locations.get</code></td>
 <td>Get details about a database location. Required to create a new database.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.locations.list      </code></td>
+<td><code dir="ltr" translate="no">datastore.locations.list</code></td>
 <td>List available database locations. Required to create a new database.</td>
 <td></td>
 </tr>
@@ -280,12 +280,12 @@ Commit with empty mutations.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.keyVisualizerScans.get      </code></td>
+<td><code dir="ltr" translate="no">datastore.keyVisualizerScans.get</code></td>
 <td>Get details about Key Visualizer scans.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.keyVisualizerScans.list      </code></td>
+<td><code dir="ltr" translate="no">datastore.keyVisualizerScans.list</code></td>
 <td>List available Key Visualizer scans.</td>
 <td></td>
 </tr>
@@ -295,27 +295,27 @@ Commit with empty mutations.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.backupSchedules.get      </code></td>
+<td><code dir="ltr" translate="no">datastore.backupSchedules.get</code></td>
 <td>Get details about a backup schedule.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.backupSchedules.list      </code></td>
+<td><code dir="ltr" translate="no">datastore.backupSchedules.list</code></td>
 <td>List available backup schedules.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.backupSchedules.create      </code></td>
+<td><code dir="ltr" translate="no">datastore.backupSchedules.create</code></td>
 <td>Create a backup schedule.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.backupSchedules.update      </code></td>
+<td><code dir="ltr" translate="no">datastore.backupSchedules.update</code></td>
 <td>Update a backup schedule.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.backupSchedules.delete      </code></td>
+<td><code dir="ltr" translate="no">datastore.backupSchedules.delete</code></td>
 <td>Delete a backup schedule.</td>
 <td></td>
 </tr>
@@ -325,22 +325,22 @@ Commit with empty mutations.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.backups.get      </code></td>
+<td><code dir="ltr" translate="no">datastore.backups.get</code></td>
 <td>Get details about a backup.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.backups.list      </code></td>
+<td><code dir="ltr" translate="no">datastore.backups.list</code></td>
 <td>List available backups.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.backups.delete      </code></td>
+<td><code dir="ltr" translate="no">datastore.backups.delete</code></td>
 <td>Delete a backup.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.backups.restoreDatabase      </code></td>
+<td><code dir="ltr" translate="no">datastore.backups.restoreDatabase</code></td>
 <td>Restore a database from a backup.</td>
 <td></td>
 </tr>
@@ -350,7 +350,7 @@ Commit with empty mutations.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.insights.get      </code></td>
+<td><code dir="ltr" translate="no">datastore.insights.get</code></td>
 <td>Get insights of a resource</td>
 <td></td>
 </tr>
@@ -378,157 +378,157 @@ The following table lists the Firestore in Datastore mode IAM roles. You can gra
 </thead>
 <tbody>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       roles/datastore.owner      </code></td>
-<td><code dir="ltr" translate="no">       appengine.applications.get      </code><br />
-<code dir="ltr" translate="no">       datastore.*      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.get      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.list      </code></td>
+<td><code dir="ltr" translate="no">roles/datastore.owner</code></td>
+<td><code dir="ltr" translate="no">appengine.applications.get</code><br />
+<code dir="ltr" translate="no">datastore.*</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.get</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.list</code></td>
 <td>Full access to the database instance.<br />
-For <a href="https://docs.cloud.google.com/datastore/docs/console/datastore-admin-console">Datastore Admin</a> access, grant the <code dir="ltr" translate="no">       appengine.appAdmin      </code> role to the principal.</td>
+For <a href="https://docs.cloud.google.com/datastore/docs/console/datastore-admin-console">Datastore Admin</a> access, grant the <code dir="ltr" translate="no">appengine.appAdmin</code> role to the principal.</td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       roles/datastore.user      </code></td>
-<td><code dir="ltr" translate="no">       appengine.applications.get      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.get      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.list      </code><br />
-<code dir="ltr" translate="no">       datastore.entities.*      </code><br />
-<code dir="ltr" translate="no">       datastore.schemas.list      </code><br />
-<code dir="ltr" translate="no">       datastore.namespaces.get      </code><br />
-<code dir="ltr" translate="no">       datastore.namespaces.list      </code><br />
-<code dir="ltr" translate="no">       datastore.statistics.get      </code><br />
-<code dir="ltr" translate="no">       datastore.statistics.list      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.get      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.list      </code></td>
+<td><code dir="ltr" translate="no">roles/datastore.user</code></td>
+<td><code dir="ltr" translate="no">appengine.applications.get</code><br />
+<code dir="ltr" translate="no">datastore.databases.get</code><br />
+<code dir="ltr" translate="no">datastore.databases.getMetadata</code><br />
+<code dir="ltr" translate="no">datastore.databases.list</code><br />
+<code dir="ltr" translate="no">datastore.entities.*</code><br />
+<code dir="ltr" translate="no">datastore.schemas.list</code><br />
+<code dir="ltr" translate="no">datastore.namespaces.get</code><br />
+<code dir="ltr" translate="no">datastore.namespaces.list</code><br />
+<code dir="ltr" translate="no">datastore.statistics.get</code><br />
+<code dir="ltr" translate="no">datastore.statistics.list</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.get</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.list</code></td>
 <td>Read/write access to data in a Datastore mode database. Intended for application developers and service accounts.</td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       roles/datastore.viewer      </code></td>
-<td><code dir="ltr" translate="no">       appengine.applications.get      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.get      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.list      </code><br />
-<code dir="ltr" translate="no">       datastore.entities.get      </code><br />
-<code dir="ltr" translate="no">       datastore.entities.list      </code><br />
-<code dir="ltr" translate="no">       datastore.schemas.get      </code><br />
-<code dir="ltr" translate="no">       datastore.schemas.list      </code><br />
-<code dir="ltr" translate="no">       datastore.namespaces.get      </code><br />
-<code dir="ltr" translate="no">       datastore.namespaces.list      </code><br />
-<code dir="ltr" translate="no">       datastore.statistics.get      </code><br />
-<code dir="ltr" translate="no">       datastore.statistics.list      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.get      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.list      </code><br />
-<code dir="ltr" translate="no">       datastore.insights.get      </code></td>
+<td><code dir="ltr" translate="no">roles/datastore.viewer</code></td>
+<td><code dir="ltr" translate="no">appengine.applications.get</code><br />
+<code dir="ltr" translate="no">datastore.databases.get</code><br />
+<code dir="ltr" translate="no">datastore.databases.getMetadata</code><br />
+<code dir="ltr" translate="no">datastore.databases.list</code><br />
+<code dir="ltr" translate="no">datastore.entities.get</code><br />
+<code dir="ltr" translate="no">datastore.entities.list</code><br />
+<code dir="ltr" translate="no">datastore.schemas.get</code><br />
+<code dir="ltr" translate="no">datastore.schemas.list</code><br />
+<code dir="ltr" translate="no">datastore.namespaces.get</code><br />
+<code dir="ltr" translate="no">datastore.namespaces.list</code><br />
+<code dir="ltr" translate="no">datastore.statistics.get</code><br />
+<code dir="ltr" translate="no">datastore.statistics.list</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.get</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.list</code><br />
+<code dir="ltr" translate="no">datastore.insights.get</code></td>
 <td>Read access to all Datastore mode database resources.</td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       roles/datastore.importExportAdmin      </code></td>
-<td><code dir="ltr" translate="no">       appengine.applications.get      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.export      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.import      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.cancel      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.get      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.list      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.get      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.list      </code></td>
+<td><code dir="ltr" translate="no">roles/datastore.importExportAdmin</code></td>
+<td><code dir="ltr" translate="no">appengine.applications.get</code><br />
+<code dir="ltr" translate="no">datastore.databases.export</code><br />
+<code dir="ltr" translate="no">datastore.databases.getMetadata</code><br />
+<code dir="ltr" translate="no">datastore.databases.import</code><br />
+<code dir="ltr" translate="no">datastore.operations.cancel</code><br />
+<code dir="ltr" translate="no">datastore.operations.get</code><br />
+<code dir="ltr" translate="no">datastore.operations.list</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.get</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.list</code></td>
 <td>Full access to manage imports and exports.</td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       roles/datastore.bulkAdmin      </code></td>
-<td><code dir="ltr" translate="no">       resourcemanager.projects.get      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.list      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.bulkDelete      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.cancel      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.get      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.list      </code></td>
+<td><code dir="ltr" translate="no">roles/datastore.bulkAdmin</code></td>
+<td><code dir="ltr" translate="no">resourcemanager.projects.get</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.list</code><br />
+<code dir="ltr" translate="no">datastore.databases.getMetadata</code><br />
+<code dir="ltr" translate="no">datastore.databases.bulkDelete</code><br />
+<code dir="ltr" translate="no">datastore.operations.cancel</code><br />
+<code dir="ltr" translate="no">datastore.operations.get</code><br />
+<code dir="ltr" translate="no">datastore.operations.list</code></td>
 <td>Full access to manage bulk operations.</td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       roles/datastore.indexAdmin      </code></td>
-<td><code dir="ltr" translate="no">       appengine.applications.get      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
-<code dir="ltr" translate="no">       datastore.schemas.*      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.get      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.list      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.get      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.list      </code></td>
+<td><code dir="ltr" translate="no">roles/datastore.indexAdmin</code></td>
+<td><code dir="ltr" translate="no">appengine.applications.get</code><br />
+<code dir="ltr" translate="no">datastore.databases.getMetadata</code><br />
+<code dir="ltr" translate="no">datastore.schemas.*</code><br />
+<code dir="ltr" translate="no">datastore.operations.get</code><br />
+<code dir="ltr" translate="no">datastore.operations.list</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.get</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.list</code></td>
 <td>Full access to manage index definitions.</td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       roles/datastore.keyVisualizerViewer      </code></td>
-<td><code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
-<code dir="ltr" translate="no">       datastore.keyVisualizerScans.get      </code><br />
-<code dir="ltr" translate="no">       datastore.keyVisualizerScans.list      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.get      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.list      </code></td>
+<td><code dir="ltr" translate="no">roles/datastore.keyVisualizerViewer</code></td>
+<td><code dir="ltr" translate="no">datastore.databases.getMetadata</code><br />
+<code dir="ltr" translate="no">datastore.keyVisualizerScans.get</code><br />
+<code dir="ltr" translate="no">datastore.keyVisualizerScans.list</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.get</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.list</code></td>
 <td>Full access to Key Visualizer scans.</td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       roles/datastore.backupSchedulesViewer      </code></td>
-<td><code dir="ltr" translate="no">       datastore.backupSchedules.get      </code><br />
-<code dir="ltr" translate="no">       datastore.backupSchedules.list      </code></td>
+<td><code dir="ltr" translate="no">roles/datastore.backupSchedulesViewer</code></td>
+<td><code dir="ltr" translate="no">datastore.backupSchedules.get</code><br />
+<code dir="ltr" translate="no">datastore.backupSchedules.list</code></td>
 <td>Read access to backup schedules in a Datastore mode database.</td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       roles/datastore.backupSchedulesAdmin      </code></td>
-<td><code dir="ltr" translate="no">       datastore.backupSchedules.get      </code><br />
-<code dir="ltr" translate="no">       datastore.backupSchedules.list      </code><br />
-<code dir="ltr" translate="no">       datastore.backupSchedules.create      </code><br />
-<code dir="ltr" translate="no">       datastore.backupSchedules.update      </code><br />
-<code dir="ltr" translate="no">       datastore.backupSchedules.delete      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.list      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.getMetadata      </code></td>
+<td><code dir="ltr" translate="no">roles/datastore.backupSchedulesAdmin</code></td>
+<td><code dir="ltr" translate="no">datastore.backupSchedules.get</code><br />
+<code dir="ltr" translate="no">datastore.backupSchedules.list</code><br />
+<code dir="ltr" translate="no">datastore.backupSchedules.create</code><br />
+<code dir="ltr" translate="no">datastore.backupSchedules.update</code><br />
+<code dir="ltr" translate="no">datastore.backupSchedules.delete</code><br />
+<code dir="ltr" translate="no">datastore.databases.list</code><br />
+<code dir="ltr" translate="no">datastore.databases.getMetadata</code></td>
 <td>Full access to backup schedules in a Datastore mode database.</td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       roles/datastore.backupsViewer      </code></td>
-<td><code dir="ltr" translate="no">       datastore.backups.get      </code><br />
-<code dir="ltr" translate="no">       datastore.backups.list      </code></td>
+<td><code dir="ltr" translate="no">roles/datastore.backupsViewer</code></td>
+<td><code dir="ltr" translate="no">datastore.backups.get</code><br />
+<code dir="ltr" translate="no">datastore.backups.list</code></td>
 <td>Read access to backup information in a Datastore mode location.</td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       roles/datastore.backupsAdmin      </code></td>
-<td><code dir="ltr" translate="no">       datastore.backups.get      </code><br />
-<code dir="ltr" translate="no">       datastore.backups.list      </code><br />
-<code dir="ltr" translate="no">       datastore.backups.delete      </code></td>
+<td><code dir="ltr" translate="no">roles/datastore.backupsAdmin</code></td>
+<td><code dir="ltr" translate="no">datastore.backups.get</code><br />
+<code dir="ltr" translate="no">datastore.backups.list</code><br />
+<code dir="ltr" translate="no">datastore.backups.delete</code></td>
 <td>Full access to backups in a Datastore mode location.</td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       roles/datastore.restoreAdmin      </code></td>
-<td><code dir="ltr" translate="no">       datastore.backups.get      </code><br />
-<code dir="ltr" translate="no">       datastore.backups.list      </code><br />
-<code dir="ltr" translate="no">       datastore.backups.restoreDatabase      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.list      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.create      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.list      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.get      </code><br />
+<td><code dir="ltr" translate="no">roles/datastore.restoreAdmin</code></td>
+<td><code dir="ltr" translate="no">datastore.backups.get</code><br />
+<code dir="ltr" translate="no">datastore.backups.list</code><br />
+<code dir="ltr" translate="no">datastore.backups.restoreDatabase</code><br />
+<code dir="ltr" translate="no">datastore.databases.list</code><br />
+<code dir="ltr" translate="no">datastore.databases.create</code><br />
+<code dir="ltr" translate="no">datastore.databases.getMetadata</code><br />
+<code dir="ltr" translate="no">datastore.operations.list</code><br />
+<code dir="ltr" translate="no">datastore.operations.get</code><br />
 </td>
 <td>Ability to restore a Datastore mode backup into a new database. This role also gives the ability to create new databases, not necessarily by restoring from a backup.</td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       roles/datastore.cloneAdmin      </code></td>
-<td><code dir="ltr" translate="no">       datastore.databases.clone      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.list      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.create      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.list      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.get      </code><br />
+<td><code dir="ltr" translate="no">roles/datastore.cloneAdmin</code></td>
+<td><code dir="ltr" translate="no">datastore.databases.clone</code><br />
+<code dir="ltr" translate="no">datastore.databases.list</code><br />
+<code dir="ltr" translate="no">datastore.databases.create</code><br />
+<code dir="ltr" translate="no">datastore.databases.getMetadata</code><br />
+<code dir="ltr" translate="no">datastore.operations.list</code><br />
+<code dir="ltr" translate="no">datastore.operations.get</code><br />
 </td>
 <td>Ability to clone a Datastore mode database into a new database. This role also gives the ability to create new databases, not necessarily by cloning.</td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       roles/datastore.statisticsViewer      </code></td>
-<td><code dir="ltr" translate="no">       resourcemanager.projects.get      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.list      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
-<code dir="ltr" translate="no">       datastore.insights.get      </code><br />
-<code dir="ltr" translate="no">       datastore.keyVisualizerScans.get      </code><br />
-<code dir="ltr" translate="no">       datastore.keyVisualizerScans.list      </code><br />
-<code dir="ltr" translate="no">       datastore.statistics.list      </code><br />
-<code dir="ltr" translate="no">       datastore.statistics.get      </code><br />
+<td><code dir="ltr" translate="no">roles/datastore.statisticsViewer</code></td>
+<td><code dir="ltr" translate="no">resourcemanager.projects.get</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.list</code><br />
+<code dir="ltr" translate="no">datastore.databases.getMetadata</code><br />
+<code dir="ltr" translate="no">datastore.insights.get</code><br />
+<code dir="ltr" translate="no">datastore.keyVisualizerScans.get</code><br />
+<code dir="ltr" translate="no">datastore.keyVisualizerScans.list</code><br />
+<code dir="ltr" translate="no">datastore.statistics.list</code><br />
+<code dir="ltr" translate="no">datastore.statistics.get</code><br />
 </td>
 <td>Read access to Insights, Stats, and Key Visualizer scans.</td>
 </tr>
@@ -552,14 +552,14 @@ The following listed permissions are required.
 
 ##### View tags
 
-  - `  datastore.databases.listTagBindings  `
-  - `  datastore.databases.listEffectiveTags  `
+  - `datastore.databases.listTagBindings`
+  - `datastore.databases.listEffectiveTags`
 
 ##### Manage tags on resources
 
 The following permission is required for the database resource you're attaching the tag value.
 
-  - `  datastore.databases.createTagBinding  `
+  - `datastore.databases.createTagBinding`
 
 ### Required Permissions for API methods
 
@@ -578,70 +578,70 @@ The following table lists the permissions that the caller must have to call each
 </thead>
 <tbody>
 <tr class="odd">
-<td><code dir="ltr" translate="no">         allocateIds       </code></td>
-<td><code dir="ltr" translate="no">       datastore.entities.allocateIds      </code></td>
+<td><code dir="ltr" translate="no">        allocateIds       </code></td>
+<td><code dir="ltr" translate="no">datastore.entities.allocateIds</code></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">         beginTransaction       </code></td>
-<td><code dir="ltr" translate="no">       datastore.databases.get      </code></td>
+<td><code dir="ltr" translate="no">        beginTransaction       </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.get</code></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">         commit       </code> with empty mutations</td>
-<td><code dir="ltr" translate="no">       datastore.databases.get      </code></td>
+<td><code dir="ltr" translate="no">        commit       </code> with empty mutations</td>
+<td><code dir="ltr" translate="no">datastore.databases.get</code></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">         commit       </code> for an insert</td>
-<td><code dir="ltr" translate="no">       datastore.entities.create      </code></td>
+<td><code dir="ltr" translate="no">        commit       </code> for an insert</td>
+<td><code dir="ltr" translate="no">datastore.entities.create</code></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">         commit       </code> for an upsert</td>
-<td><code dir="ltr" translate="no">       datastore.entities.create      </code><br />
-<code dir="ltr" translate="no">       datastore.entities.update      </code></td>
+<td><code dir="ltr" translate="no">        commit       </code> for an upsert</td>
+<td><code dir="ltr" translate="no">datastore.entities.create</code><br />
+<code dir="ltr" translate="no">datastore.entities.update</code></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">         commit       </code> for an update</td>
-<td><code dir="ltr" translate="no">       datastore.entities.update      </code></td>
+<td><code dir="ltr" translate="no">        commit       </code> for an update</td>
+<td><code dir="ltr" translate="no">datastore.entities.update</code></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">         commit       </code> for a delete</td>
-<td><code dir="ltr" translate="no">       datastore.entities.delete      </code></td>
+<td><code dir="ltr" translate="no">        commit       </code> for a delete</td>
+<td><code dir="ltr" translate="no">datastore.entities.delete</code></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">         commit       </code> for a lookup</td>
-<td><code dir="ltr" translate="no">       datastore.entities.get      </code><br />
+<td><code dir="ltr" translate="no">        commit       </code> for a lookup</td>
+<td><code dir="ltr" translate="no">datastore.entities.get</code><br />
 <br />
 For a lookup related to metadata or statistics, see <a href="https://docs.cloud.google.com/datastore/docs/access/iam#required_permissions_for_metadata_and_statistics">Required Permissions for Metadata and Statistics</a> .</td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">         commit       </code> for a query</td>
-<td><code dir="ltr" translate="no">       datastore.entities.list      </code><br />
-<code dir="ltr" translate="no">       datastore.entities.get      </code> (if the query is not a <a href="https://docs.cloud.google.com/datastore/docs/concepts/queries#keys-only_queries">keys-only query</a> )<br />
+<td><code dir="ltr" translate="no">        commit       </code> for a query</td>
+<td><code dir="ltr" translate="no">datastore.entities.list</code><br />
+<code dir="ltr" translate="no">datastore.entities.get</code> (if the query is not a <a href="https://docs.cloud.google.com/datastore/docs/concepts/queries#keys-only_queries">keys-only query</a> )<br />
 <br />
 For a query related to metadata or statistics, see <a href="https://docs.cloud.google.com/datastore/docs/access/iam#required_permissions_for_metadata_and_statistics">Required Permissions for Metadata and Statistics</a> .</td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">         lookup       </code></td>
-<td><code dir="ltr" translate="no">       datastore.entities.get      </code><br />
+<td><code dir="ltr" translate="no">        lookup       </code></td>
+<td><code dir="ltr" translate="no">datastore.entities.get</code><br />
 <br />
 For a lookup related to metadata or statistics, see <a href="https://docs.cloud.google.com/datastore/docs/access/iam#required_permissions_for_metadata_and_statistics">Required Permissions for Metadata and Statistics</a> .</td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">         rollback       </code></td>
-<td><code dir="ltr" translate="no">       datastore.databases.get      </code></td>
+<td><code dir="ltr" translate="no">        rollback       </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.get</code></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">         runQuery       </code></td>
-<td><code dir="ltr" translate="no">       datastore.entities.list      </code><br />
-<code dir="ltr" translate="no">       datastore.entities.get      </code> (if the query is not a <a href="https://docs.cloud.google.com/datastore/docs/concepts/queries#keys-only_queries">keys-only query</a> )<br />
+<td><code dir="ltr" translate="no">        runQuery       </code></td>
+<td><code dir="ltr" translate="no">datastore.entities.list</code><br />
+<code dir="ltr" translate="no">datastore.entities.get</code> (if the query is not a <a href="https://docs.cloud.google.com/datastore/docs/concepts/queries#keys-only_queries">keys-only query</a> )<br />
 <br />
 For a query related to metadata or statistics, see <a href="https://docs.cloud.google.com/datastore/docs/access/iam#required_permissions_for_metadata_and_statistics">Required Permissions for Metadata and Statistics</a> .</td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">         runQuery       </code> with a <a href="https://docs.cloud.google.com/datastore/docs/concepts/queries#kindless_queries">kindless query</a></td>
-<td><code dir="ltr" translate="no">       datastore.entities.get      </code><br />
-<code dir="ltr" translate="no">       datastore.entities.list      </code><br />
-<code dir="ltr" translate="no">       datastore.statistics.get      </code><br />
-<code dir="ltr" translate="no">       datastore.statistics.list      </code></td>
+<td><code dir="ltr" translate="no">        runQuery       </code> with a <a href="https://docs.cloud.google.com/datastore/docs/concepts/queries#kindless_queries">kindless query</a></td>
+<td><code dir="ltr" translate="no">datastore.entities.get</code><br />
+<code dir="ltr" translate="no">datastore.entities.list</code><br />
+<code dir="ltr" translate="no">datastore.statistics.get</code><br />
+<code dir="ltr" translate="no">datastore.statistics.list</code></td>
 </tr>
 </tbody>
 </table>
@@ -663,18 +663,18 @@ The following table lists permissions that the caller must have to call methods 
 </thead>
 <tbody>
 <tr class="odd">
-<td><code dir="ltr" translate="no">         lookup       </code> of entities with kind names matching <strong>__Stat_*__</strong></td>
-<td><code dir="ltr" translate="no">       datastore.statistics.get      </code></td>
+<td><code dir="ltr" translate="no">        lookup       </code> of entities with kind names matching <strong>__Stat_*__</strong></td>
+<td><code dir="ltr" translate="no">datastore.statistics.get</code></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">         runQuery       </code> using kinds with names matching <strong>__Stat_*__</strong></td>
-<td><code dir="ltr" translate="no">       datastore.statistics.get      </code><br />
-<code dir="ltr" translate="no">       datastore.statistics.list      </code></td>
+<td><code dir="ltr" translate="no">        runQuery       </code> using kinds with names matching <strong>__Stat_*__</strong></td>
+<td><code dir="ltr" translate="no">datastore.statistics.get</code><br />
+<code dir="ltr" translate="no">datastore.statistics.list</code></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">         runQuery       </code> using the kind <strong>__namespace__</strong></td>
-<td><code dir="ltr" translate="no">       datastore.namespaces.get      </code><br />
-<code dir="ltr" translate="no">       datastore.namespaces.list      </code></td>
+<td><code dir="ltr" translate="no">        runQuery       </code> using the kind <strong>__namespace__</strong></td>
+<td><code dir="ltr" translate="no">datastore.namespaces.get</code><br />
+<code dir="ltr" translate="no">datastore.namespaces.list</code></td>
 </tr>
 </tbody>
 </table>
@@ -683,7 +683,7 @@ The following table lists permissions that the caller must have to call methods 
 
 To create a new Datastore mode database instance, you require either the [**Owner** role](https://docs.cloud.google.com/iam/docs/roles-overview#basic) or the [**Datastore Owner** role](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore) .
 
-Datastore mode databases requires an active App Engine application. If the project doesn't have an application, Firestore in Datastore mode creates one for you. In that case, you require the `  appengine.applications.create  ` permission from the **Owner** role or from an [IAM custom role](https://docs.cloud.google.com/iam/docs/creating-custom-roles) containing the permission.
+Datastore mode databases requires an active App Engine application. If the project doesn't have an application, Firestore in Datastore mode creates one for you. In that case, you require the `appengine.applications.create` permission from the **Owner** role or from an [IAM custom role](https://docs.cloud.google.com/iam/docs/creating-custom-roles) containing the permission.
 
 ## Role change latency
 
@@ -701,7 +701,7 @@ You can get and set IAM policies using the Google Cloud console, the IAM methods
 
 You can use [IAM Conditions](https://docs.cloud.google.com/iam/docs/conditions-overview) to define and enforce conditional access control.
 
-For example, the following condition assigns a principal the `  datastore.user  ` role up until a specified date:
+For example, the following condition assigns a principal the `datastore.user` role up until a specified date:
 
     {
       "role": "roles/datastore.user",

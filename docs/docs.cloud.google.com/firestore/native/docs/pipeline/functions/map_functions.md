@@ -6,18 +6,18 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## **Map Functions**
 
-|                                     |                                                         |
-| ----------------------------------- | ------------------------------------------------------- |
-| Name                                | Description                                             |
-| `          MAP        `             | Constructs a map value from a series of key-value pairs |
-| `          MAP_GET        `         | Returns the value in a map given a specified key        |
-| `          MAP_SET        `         | Returns a copy of a map with a series of updated keys   |
-| `          MAP_REMOVE        `      | Returns a copy of a map with a series of keys removed   |
-| `          MAP_MERGE        `       | Merges a series of maps together.                       |
-| `          CURRENT_CONTEXT        ` | Returns the current context as a map.                   |
-| `          MAP_KEYS        `        | Returns an array of all keys in a map.                  |
-| `          MAP_VALUES        `      | Returns an array of all values in a map.                |
-| `          MAP_ENTRIES        `     | Returns an array of key-value pairs of a map.           |
+|                                    |                                                         |
+| ---------------------------------- | ------------------------------------------------------- |
+| Name                               | Description                                             |
+| `         MAP        `             | Constructs a map value from a series of key-value pairs |
+| `         MAP_GET        `         | Returns the value in a map given a specified key        |
+| `         MAP_SET        `         | Returns a copy of a map with a series of updated keys   |
+| `         MAP_REMOVE        `      | Returns a copy of a map with a series of keys removed   |
+| `         MAP_MERGE        `       | Merges a series of maps together.                       |
+| `         CURRENT_CONTEXT        ` | Returns the current context as a map.                   |
+| `         MAP_KEYS        `        | Returns an array of all keys in a map.                  |
+| `         MAP_VALUES        `      | Returns an array of all values in a map.                |
+| `         MAP_ENTRIES        `     | Returns an array of key-value pairs of a map.           |
 
 ### MAP
 
@@ -37,7 +37,7 @@ Constructs a map from a series of key-value pairs.
 
 **Description:**
 
-Returns the value in a map given a specified key. Returns an `  ABSENT  ` value if the `  key  ` does not exist in the map, or if the `  map  ` argument is not a `  MAP  ` .
+Returns the value in a map given a specified key. Returns an `ABSENT` value if the `key` does not exist in the map, or if the `map` argument is not a `MAP` .
 
 ##### Node.js
 
@@ -115,11 +115,11 @@ Android
 
 **Description:**
 
-Returns a copy of the `  map  ` value with its contents updated by a series of key-value pairs.
+Returns a copy of the `map` value with its contents updated by a series of key-value pairs.
 
 If the given resolves to an absent value, the associated key is removed from the map.
 
-If the `  map  ` argument is not a `  MAP  ` , returns an absent value.
+If the `map` argument is not a `MAP` , returns an absent value.
 
 ### MAP\_REMOVE
 
@@ -129,7 +129,7 @@ If the `  map  ` argument is not a `  MAP  ` , returns an absent value.
 
 **Description:**
 
-Returns a copy of the `  map  ` value with a series of keys removed.
+Returns a copy of the `map` value with a series of keys removed.
 
 ### MAP\_MERGE
 
@@ -155,7 +155,7 @@ Returns a map consisting of all available fields in the current point of executi
 
 **Description:**
 
-Returns an array containing all keys of the `  map  ` value.
+Returns an array containing all keys of the `map` value.
 
 ### MAP\_VALUES
 
@@ -165,7 +165,7 @@ Returns an array containing all keys of the `  map  ` value.
 
 **Description:**
 
-Returns an array containing all values of the `  map  ` value.
+Returns an array containing all values of the `map` value.
 
 ### MAP\_ENTRIES
 
@@ -175,13 +175,13 @@ Returns an array containing all values of the `  map  ` value.
 
 **Description:**
 
-Returns an array containing all key-value pairs in the `  map  ` value.
+Returns an array containing all key-value pairs in the `map` value.
 
-Each key-value pair will be in the form of a map with two entries, `  k  ` and `  v  ` .
+Each key-value pair will be in the form of a map with two entries, `k` and `v` .
 
 **Examples:**
 
-| `        map       `           | `        map_entries(map)       `                         |
+| `map`                          | `map_entries(map)`                                        |
 | :----------------------------- | :-------------------------------------------------------- |
 | {}                             | \[\]                                                      |
 | {"foo" : 2L}                   | \[{"k": "foo", "v" : 2L}\]                                |

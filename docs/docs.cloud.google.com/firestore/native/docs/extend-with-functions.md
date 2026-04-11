@@ -14,14 +14,14 @@ Firestore Enterprise edition doesn't support Cloud Functions (1st gen). Use [Clo
 
 ## Firestore function triggers
 
-The Cloud Functions for Firebase SDK exports a [`  functions.firestore  `](https://firebase.google.com/docs/reference/functions/firebase-functions.firestore) object that allows you to create handlers tied to specific Firestore events.
+The Cloud Functions for Firebase SDK exports a [`functions.firestore`](https://firebase.google.com/docs/reference/functions/firebase-functions.firestore) object that allows you to create handlers tied to specific Firestore events.
 
-| Event Type                                                                                                                                                           |                                                     Trigger                                                     |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------: |
-| [`         onCreate        `](https://firebase.google.com/docs/reference/functions/firebase-functions.firestore.documentbuilder.md#firestoredocumentbuilderoncreate) |                           Triggered when a document is written to for the first time.                           |
-| [`         onUpdate        `](https://firebase.google.com/docs/reference/functions/firebase-functions.firestore.documentbuilder.md#firestoredocumentbuilderonupdate) |                       Triggered when a document already exists and has any value changed.                       |
-| [`         onDelete        `](https://firebase.google.com/docs/reference/functions/firebase-functions.firestore.documentbuilder.md#firestoredocumentbuilderondelete) |                                 Triggered when a document with data is deleted.                                 |
-| [`         onWrite        `](https://firebase.google.com/docs/reference/functions/firebase-functions.firestore.documentbuilder.md#firestoredocumentbuilderonwrite)   | Triggered when `        onCreate       ` , `        onUpdate       ` or `        onDelete       ` is triggered. |
+| Event Type                                                                                                                                          |                               Trigger                               |
+| --------------------------------------------------------------------------------------------------------------------------------------------------- | :-----------------------------------------------------------------: |
+| [`onCreate`](https://firebase.google.com/docs/reference/functions/firebase-functions.firestore.documentbuilder.md#firestoredocumentbuilderoncreate) |     Triggered when a document is written to for the first time.     |
+| [`onUpdate`](https://firebase.google.com/docs/reference/functions/firebase-functions.firestore.documentbuilder.md#firestoredocumentbuilderonupdate) | Triggered when a document already exists and has any value changed. |
+| [`onDelete`](https://firebase.google.com/docs/reference/functions/firebase-functions.firestore.documentbuilder.md#firestoredocumentbuilderondelete) |           Triggered when a document with data is deleted.           |
+| [`onWrite`](https://firebase.google.com/docs/reference/functions/firebase-functions.firestore.documentbuilder.md#firestoredocumentbuilderonwrite)   | Triggered when `onCreate` , `onUpdate` or `onDelete` is triggered.  |
 
 **Note:** Firestore events will trigger only on document changes. An update to a Firestore document, where data is unchanged (a no-op write), will not generate an update or write event. It is not possible to add events to specific fields.
 
@@ -59,7 +59,7 @@ If you want to trigger an event for *any* change to a specific document then you
 
 ### Specify a group of documents using wildcards
 
-If you want to attach a trigger to a group of documents, such as any document in a certain collection, then use a `  {wildcard}  ` in place of the document ID:
+If you want to attach a trigger to a group of documents, such as any document in a certain collection, then use a `{wildcard}` in place of the document ID:
 
 ### Node.js
 
@@ -73,11 +73,11 @@ If you want to attach a trigger to a group of documents, such as any document in
           // change.after.data() == {name: "Marie"}
         });index.js
 
-In this example, when any field on any document in `  users  ` is changed, it matches a wildcard called `  userId  ` .
+In this example, when any field on any document in `users` is changed, it matches a wildcard called `userId` .
 
-If a document in `  users  ` has subcollections, and a field in one of those subcollections' documents is changed, the `  userId  ` wildcard is *not* triggered.
+If a document in `users` has subcollections, and a field in one of those subcollections' documents is changed, the `userId` wildcard is *not* triggered.
 
-Wildcard matches are extracted from the document path and stored into `  context.params  ` . You may define as many wildcards as you like to substitute explicit collection or document IDs, for example:
+Wildcard matches are extracted from the document path and stored into `context.params` . You may define as many wildcards as you like to substitute explicit collection or document IDs, for example:
 
 ### Node.js
 
@@ -93,13 +93,13 @@ Wildcard matches are extracted from the document path and stored into `  context
           // change.after.data() == {body: "Hello"}
         });index.js
 
-**Note:** Your trigger must *always* point to a document, even if you're using a wildcard. For example, `  users/{userId}/{messageCollectionId}  ` is not valid because `  {messageCollectionId}  ` is a collection. However, `  users/{userId}/{messageCollectionId}/{messageId}  ` *is* valid because `  {messageId}  ` will always point to a document.
+**Note:** Your trigger must *always* point to a document, even if you're using a wildcard. For example, `users/{userId}/{messageCollectionId}` is not valid because `{messageCollectionId}` is a collection. However, `users/{userId}/{messageCollectionId}/{messageId}` *is* valid because `{messageId}` will always point to a document.
 
 ## Event Triggers
 
 ### Trigger a function when a new document is created
 
-You can trigger a function to fire any time a new document is created in a collection by using an `  onCreate()  ` handler with a [wildcard](https://docs.cloud.google.com/firestore/native/docs/extend-with-functions#wildcards-parameters) . This example function calls `  createUser  ` every time a new user profile is added:
+You can trigger a function to fire any time a new document is created in a collection by using an `onCreate()` handler with a [wildcard](https://docs.cloud.google.com/firestore/native/docs/extend-with-functions#wildcards-parameters) . This example function calls `createUser` every time a new user profile is added:
 
 ### Node.js
 
@@ -118,7 +118,7 @@ You can trigger a function to fire any time a new document is created in a colle
 
 ### Trigger a function when a document is updated
 
-You can also trigger a function to fire when a document is updated using the `  onUpdate()  ` function with a [wildcard](https://docs.cloud.google.com/firestore/native/docs/extend-with-functions#wildcards-parameters) . This example function calls `  updateUser  ` if a user changes their profile:
+You can also trigger a function to fire when a document is updated using the `onUpdate()` function with a [wildcard](https://docs.cloud.google.com/firestore/native/docs/extend-with-functions#wildcards-parameters) . This example function calls `updateUser` if a user changes their profile:
 
 ### Node.js
 
@@ -140,7 +140,7 @@ You can also trigger a function to fire when a document is updated using the `  
 
 ### Trigger a function when a document is deleted
 
-You can also trigger a function when a document is deleted using the `  onDelete()  ` function with a [wildcard](https://docs.cloud.google.com/firestore/native/docs/extend-with-functions#wildcards-parameters) . This example function calls `  deleteUser  ` when a user deletes their user profile:
+You can also trigger a function when a document is deleted using the `onDelete()` function with a [wildcard](https://docs.cloud.google.com/firestore/native/docs/extend-with-functions#wildcards-parameters) . This example function calls `deleteUser` when a user deletes their user profile:
 
 ### Node.js
 
@@ -156,7 +156,7 @@ You can also trigger a function when a document is deleted using the `  onDelete
 
 ### Trigger a function for all changes to a document
 
-If you don't care about the type of event being fired, you can listen for all changes in a Firestore document using the `  onWrite()  ` function with a [wildcard](https://docs.cloud.google.com/firestore/native/docs/extend-with-functions#wildcards-parameters) . This example function calls `  modifyUser  ` if a user is created, updated, or deleted:
+If you don't care about the type of event being fired, you can listen for all changes in a Firestore document using the `onWrite()` function with a [wildcard](https://docs.cloud.google.com/firestore/native/docs/extend-with-functions#wildcards-parameters) . This example function calls `modifyUser` if a user is created, updated, or deleted:
 
 ### Node.js
 
@@ -181,7 +181,7 @@ When a function is triggered, it provides a snapshot of the data related to the 
 
 #### Reading Data
 
-When a function is triggered, you might want to get data from a document that was updated, or get the data prior to update. You can get the prior data by using `  change.before.data()  ` , which contains the document snapshot before the update. Similarly, `  change.after.data()  ` contains the document snapshot state after the update.
+When a function is triggered, you might want to get data from a document that was updated, or get the data prior to update. You can get the prior data by using `change.before.data()` , which contains the document snapshot before the update. Similarly, `change.after.data()` contains the document snapshot state after the update.
 
 ### Node.js
 
@@ -195,7 +195,7 @@ When a function is triggered, you might want to get data from a document that wa
           const previousValue = change.before.data();
         });index.js
 
-You can access properties as you would in any other object. Alternatively, you can use the `  get  ` function to access specific fields:
+You can access properties as you would in any other object. Alternatively, you can use the `get` function to access specific fields:
 
 ### Node.js
 
@@ -208,9 +208,9 @@ You can access properties as you would in any other object. Alternatively, you c
 
 #### Writing Data
 
-Each function invocation is associated with a specific document in your Firestore database. You can access that document as a `  DocumentReference  ` in the `  ref  ` property of the snapshot returned to your function.
+Each function invocation is associated with a specific document in your Firestore database. You can access that document as a `DocumentReference` in the `ref` property of the snapshot returned to your function.
 
-This `  DocumentReference  ` comes from the [Firestore Node.js SDK](https://docs.cloud.google.com/firestore/native/docs/quickstart) and includes methods like `  update()  ` , `  set()  ` , and `  remove()  ` so you can easily modify the document that triggered the function.
+This `DocumentReference` comes from the [Firestore Node.js SDK](https://docs.cloud.google.com/firestore/native/docs/quickstart) and includes methods like `update()` , `set()` , and `remove()` so you can easily modify the document that triggered the function.
 
 ### Node.js
 
@@ -274,7 +274,7 @@ Note the following limitations for Firestore triggers for Cloud Run functions:
   - Deleting a database does not automatically delete any triggers for that database. The trigger stops delivering events but continues to exist until you [delete the trigger](https://cloud.google.com/eventarc/docs/managing-triggers#trigger-delete) .
   - If a matched event exceeds the [maximum request size](https://cloud.google.com/functions/quotas#resource_limits) , the event might not be delivered to Cloud Run functions (1st gen).
       - Events not delivered because of request size are logged in [platform logs](https://cloud.google.com/logging/docs/api/platform-logs) and count towards the log usage for the project.
-      - You can find these logs in the Logs Explorer with the message "Event cannot deliver to Cloud function due to size exceeding the limit for 1st gen..." of `  error  ` severity. You can find the function name under the `  functionName  ` field. If the `  receiveTimestamp  ` field is still within an hour from now, you can infer the actual event content by reading the document in question with a snapshot before and after the timestamp.
+      - You can find these logs in the Logs Explorer with the message "Event cannot deliver to Cloud function due to size exceeding the limit for 1st gen..." of `error` severity. You can find the function name under the `functionName` field. If the `receiveTimestamp` field is still within an hour from now, you can infer the actual event content by reading the document in question with a snapshot before and after the timestamp.
       - To avoid such cadence, you can:
           - Migrate and upgrade to Cloud Run functions (2nd gen)
           - Downsize the document

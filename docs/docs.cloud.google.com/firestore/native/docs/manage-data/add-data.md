@@ -44,7 +44,7 @@ Initialize an instance of Firestore:
     // Initialize Firestore and get a reference to the service
     const db = getFirestore(app);
 
-Replace FIREBASE\_CONFIGURATION with your web app's [`  firebaseConfig  `](https://support.google.com/firebase/answer/7015592) .
+Replace FIREBASE\_CONFIGURATION with your web app's [`firebaseConfig`](https://support.google.com/firebase/answer/7015592) .
 
 To persist data when the device loses its connection, see the [Enable Offline Data](https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline) documentation.
 
@@ -66,7 +66,7 @@ To persist data when the device loses its connection, see the [Enable Offline Da
     // Initialize Firestore and get a reference to the service
     const db = firebase.firestore();
 
-Replace FIREBASE\_CONFIGURATION with your web app's [`  firebaseConfig  `](https://support.google.com/firebase/answer/7015592) .
+Replace FIREBASE\_CONFIGURATION with your web app's [`firebaseConfig`](https://support.google.com/firebase/answer/7015592) .
 
 To persist data when the device loses its connection, see the [Enable Offline Data](https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline) documentation.
 
@@ -246,11 +246,11 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ## Set a document
 
-To create or overwrite a single document, use the following language-specific `  set()  ` methods:
+To create or overwrite a single document, use the following language-specific `set()` methods:
 
 ### Web version 9
 
-Use the `  setDoc()  ` method:
+Use the `setDoc()` method:
 
     import { doc, setDoc } from "firebase/firestore"; 
     
@@ -263,7 +263,7 @@ Use the `  setDoc()  ` method:
 
 ### Web version 8
 
-Use the `  set()  ` method:
+Use the `set()` method:
 
     // Add a new document in collection "cities"
     db.collection("cities").doc("LA").set({
@@ -280,7 +280,7 @@ Use the `  set()  ` method:
 
 ##### Swift
 
-Use the `  setData()  ` method:
+Use the `setData()` method:
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
@@ -298,7 +298,7 @@ Use the `  setData()  ` method:
 
 ##### Objective-C
 
-Use the `  setData:  ` method:
+Use the `setData:` method:
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
@@ -318,7 +318,7 @@ Use the `  setData:  ` method:
 ##### Kotlin  
 Android
 
-Use the `  set()  ` method:
+Use the `set()` method:
 
     val city = hashMapOf(
         "name" to "Los Angeles",
@@ -334,7 +334,7 @@ Use the `  set()  ` method:
 ##### Java  
 Android
 
-Use the `  set()  ` method:
+Use the `set()` method:
 
     Map<String, Object> city = new HashMap<>();
     city.put("name", "Los Angeles");
@@ -358,7 +358,7 @@ Use the `  set()  ` method:
 
 ### Dart
 
-Use the `  set()  ` method:
+Use the `set()` method:
 
     final city = <String, String>{
       "name": "Los Angeles",
@@ -374,7 +374,7 @@ Use the `  set()  ` method:
 
 ##### Java
 
-Use the `  set()  ` method:
+Use the `set()` method:
 
     // Create a Map to store the data we want to set
     Map<String, Object> docData = new HashMap<>();
@@ -390,7 +390,7 @@ Use the `  set()  ` method:
 
 ##### Python
 
-Use the `  set()  ` method:
+Use the `set()` method:
 
     data = {"name": "Los Angeles", "state": "CA", "country": "USA"}
     
@@ -400,7 +400,7 @@ Use the `  set()  ` method:
 ##### Python  
 (Async)
 
-Use the `  set()  ` method:
+Use the `set()` method:
 
     data = {"name": "Los Angeles", "state": "CA", "country": "USA"}
     
@@ -409,7 +409,7 @@ Use the `  set()  ` method:
 
 ##### C++
 
-Use the `  Set()  ` method:
+Use the `Set()` method:
 
     // Add a new document in collection 'cities'
     db->Collection("cities")
@@ -428,7 +428,7 @@ Use the `  Set()  ` method:
 
 ##### Node.js
 
-Use the `  set()  ` method:
+Use the `set()` method:
 
     const data = {
       name: 'Los Angeles',
@@ -441,7 +441,7 @@ Use the `  set()  ` method:
 
 ##### Go
 
-Use the `  Set()  ` method:
+Use the `Set()` method:
 
     import (
      "context"
@@ -467,7 +467,7 @@ Use the `  Set()  ` method:
 
 ##### PHP
 
-Use the `  set()  ` method:
+Use the `set()` method:
 
 ### PHP
 
@@ -482,7 +482,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ##### Unity
 
-Use the `  SetAsync()  ` method:
+Use the `SetAsync()` method:
 
     DocumentReference docRef = db.Collection("cities").Document("LA");
     Dictionary<string, object> city = new Dictionary<string, object>
@@ -497,7 +497,7 @@ Use the `  SetAsync()  ` method:
 
 ##### C\#
 
-Use the `  SetAsync()  ` method:
+Use the `SetAsync()` method:
 
     DocumentReference docRef = db.Collection("cities").Document("LA");
     Dictionary<string, object> city = new Dictionary<string, object>
@@ -510,7 +510,7 @@ Use the `  SetAsync()  ` method:
 
 ##### Ruby
 
-Use the `  set()  ` method:
+Use the `set()` method:
 
     city_ref = firestore.doc "#{collection_path}/LA"
     
@@ -1070,7 +1070,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ### Custom objects
 
-Using `  Map  ` or `  Dictionary  ` objects to represent your documents is often inconvenient, so Firestore supports writing documents with custom classes. Firestore converts the objects to supported data types.
+Using `Map` or `Dictionary` objects to represent your documents is often inconvenient, so Firestore supports writing documents with custom classes. Firestore converts the objects to supported data types.
 
 Using custom classes, you can rewrite the initial example in the following way:
 
@@ -1653,7 +1653,7 @@ Android
 
 ## Add a document
 
-When you use `  set()  ` to create a document, you must specify an ID for the document to create, as shown in the following example:
+When you use `set()` to create a document, you must specify an ID for the document to create, as shown in the following example:
 
 ### Web version 9
 
@@ -1758,11 +1758,11 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
     city_ref = firestore.doc "#{collection_path}/new-city-id"
     city_ref.set dataadd_data.rb
 
-If there isn't a meaningful ID for the document, Firestore can auto-generate an ID for you. You can call the following language-specific `  add()  ` methods:
+If there isn't a meaningful ID for the document, Firestore can auto-generate an ID for you. You can call the following language-specific `add()` methods:
 
 ### Web version 9
 
-Use the `  addDoc()  ` method:
+Use the `addDoc()` method:
 
     import { collection, addDoc } from "firebase/firestore"; 
     
@@ -1775,7 +1775,7 @@ Use the `  addDoc()  ` method:
 
 ### Web version 8
 
-Use the `  add()  ` method:
+Use the `add()` method:
 
     // Add a new document with a generated id.
     db.collection("cities").add({
@@ -1791,7 +1791,7 @@ Use the `  add()  ` method:
 
 ##### Swift
 
-Use the `  addDocument()  ` method:
+Use the `addDocument()` method:
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
@@ -1808,7 +1808,7 @@ Use the `  addDocument()  ` method:
 
 ##### Objective-C
 
-Use the `  addDocumentWithData:  ` method:
+Use the `addDocumentWithData:` method:
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
@@ -1828,7 +1828,7 @@ Use the `  addDocumentWithData:  ` method:
 ##### Kotlin  
 Android
 
-Use the `  add()  ` method:
+Use the `add()` method:
 
     // Add a new document with a generated id.
     val data = hashMapOf(
@@ -1848,7 +1848,7 @@ Use the `  add()  ` method:
 ##### Java  
 Android
 
-Use the `  add()  ` method:
+Use the `add()` method:
 
     // Add a new document with a generated id.
     Map<String, Object> data = new HashMap<>();
@@ -1872,7 +1872,7 @@ Use the `  add()  ` method:
 
 ### Dart
 
-Use the `  add()  ` method:
+Use the `add()` method:
 
     // Add a new document with a generated id.
     final data = {"name": "Tokyo", "country": "Japan"};
@@ -1882,7 +1882,7 @@ Use the `  add()  ` method:
 
 ##### Java
 
-Use the `  add()  ` method:
+Use the `add()` method:
 
     // Add document data with auto-generated id.
     Map<String, Object> data = new HashMap<>();
@@ -1893,7 +1893,7 @@ Use the `  add()  ` method:
 
 ##### Python
 
-Use the `  add()  ` method:
+Use the `add()` method:
 
     city = {"name": "Tokyo", "country": "Japan"}
     update_time, city_ref = db.collection("cities").add(city)
@@ -1902,20 +1902,20 @@ Use the `  add()  ` method:
 ##### Python  
 (Async)
 
-Use the `  add()  ` method:
+Use the `add()` method:
 
     city = City(name="Tokyo", state=None, country="Japan")
     await db.collection("cities").add(city.to_dict())snippets.py
 
 ##### C++
 
-Use the `  Add()  ` method:
+Use the `Add()` method:
 
     db->Collection("cities").Add({/*some data*/});snippets.cpp
 
 ##### Node.js
 
-Use the `  add()  ` method:
+Use the `add()` method:
 
     // Add a new document with a generated id.
     const res = await db.collection('cities').add({
@@ -1927,7 +1927,7 @@ Use the `  add()  ` method:
 
 ##### Go
 
-Use the `  Add()  ` method:
+Use the `Add()` method:
 
     import (
      "context"
@@ -1952,7 +1952,7 @@ Use the `  Add()  ` method:
 
 ##### PHP
 
-Use the `  add()  ` method:
+Use the `add()` method:
 
 ### PHP
 
@@ -1967,7 +1967,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ##### Unity
 
-Use the `  AddAsync()  ` method:
+Use the `AddAsync()` method:
 
     Dictionary<string, object> city = new Dictionary<string, object>
     {
@@ -1981,7 +1981,7 @@ Use the `  AddAsync()  ` method:
 
 ##### C\#
 
-Use the `  AddAsync()  ` method:
+Use the `AddAsync()` method:
 
     Dictionary<string, object> city = new Dictionary<string, object>
     {
@@ -1993,7 +1993,7 @@ Use the `  AddAsync()  ` method:
 
 ##### Ruby
 
-Use the `  add()  ` method:
+Use the `add()` method:
 
     data = {
       name:    "Tokyo",
@@ -2005,11 +2005,11 @@ Use the `  add()  ` method:
     added_doc_ref = cities_ref.add data
     puts "Added document with ID: #{added_doc_ref.document_id}."add_data.rb
 
-The examples show adding data to a top-level collection like `  cities  ` . Firestore also supports subcollections inside documents such as `  cities/LA/landmarks  ` . The same `  set()  ` , `  add()  ` , and `  update()  ` methods apply when working with subcollections.
+The examples show adding data to a top-level collection like `cities` . Firestore also supports subcollections inside documents such as `cities/LA/landmarks` . The same `set()` , `add()` , and `update()` methods apply when working with subcollections.
 
 **Important:** Unlike "push IDs" in the Firebase Realtime Database, Firestore auto-generated IDs don't provide any automatic ordering. If you want to order your documents by creation date, store a timestamp as a field in the documents.
 
-In some cases, it can be useful to create a document reference with an auto-generated ID, then use the reference later. For this use case, you can call `  doc()  ` in the following way:
+In some cases, it can be useful to create a document reference with an auto-generated ID, then use the reference later. For this use case, you can call `doc()` in the following way:
 
 ### Web version 9
 
@@ -2188,15 +2188,15 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
     
     added_doc_ref.set dataadd_data.rb
 
-In the backend, `  .add(...)  ` and `  .doc().set(...)  ` are equivalent, so you can use either option.
+In the backend, `.add(...)` and `.doc().set(...)` are equivalent, so you can use either option.
 
 ## Update a document
 
-To update some fields of a document without overwriting the entire document, use the following language-specific `  update()  ` methods:
+To update some fields of a document without overwriting the entire document, use the following language-specific `update()` methods:
 
 ### Web version 9
 
-Use the `  updateDoc()  ` method:
+Use the `updateDoc()` method:
 
     import { doc, updateDoc } from "firebase/firestore";
     
@@ -2209,7 +2209,7 @@ Use the `  updateDoc()  ` method:
 
 ### Web version 8
 
-Use the `  update()  ` method:
+Use the `update()` method:
 
     var washingtonRef = db.collection("cities").doc("DC");
     
@@ -2227,7 +2227,7 @@ Use the `  update()  ` method:
 
 ##### Swift
 
-Use the `  updateData()  ` method:
+Use the `updateData()` method:
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
@@ -2245,7 +2245,7 @@ Use the `  updateData()  ` method:
 
 ##### Objective-C
 
-Use the `  updateData:  ` method:
+Use the `updateData:` method:
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
@@ -2265,7 +2265,7 @@ Use the `  updateData:  ` method:
 ##### Kotlin  
 Android
 
-Use the `  update()  ` method:
+Use the `update()` method:
 
     val washingtonRef = db.collection("cities").document("DC")
     
@@ -2278,7 +2278,7 @@ Use the `  update()  ` method:
 ##### Java  
 Android
 
-Use the `  update()  ` method:
+Use the `update()` method:
 
     DocumentReference washingtonRef = db.collection("cities").document("DC");
     
@@ -2300,7 +2300,7 @@ Use the `  update()  ` method:
 
 ### Dart
 
-Use the `  update()  ` method:
+Use the `update()` method:
 
     final washingtonRef = db.collection("cites").doc("DC");
     washingtonRef.update({"capital": true}).then(
@@ -2309,7 +2309,7 @@ Use the `  update()  ` method:
 
 ##### Java
 
-Use the `  update()  ` method:
+Use the `update()` method:
 
     // Update an existing document
     DocumentReference docRef = db.collection("cities").document("DC");
@@ -2323,7 +2323,7 @@ Use the `  update()  ` method:
 
 ##### Python
 
-Use the `  update()  ` method:
+Use the `update()` method:
 
     city_ref = db.collection("cities").document("DC")
     
@@ -2333,7 +2333,7 @@ Use the `  update()  ` method:
 ##### Python  
 (Async)
 
-Use the `  update()  ` method:
+Use the `update()` method:
 
     city_ref = db.collection("cities").document("DC")
     
@@ -2342,7 +2342,7 @@ Use the `  update()  ` method:
 
 ##### C++
 
-Use the `  Update()  ` method:
+Use the `Update()` method:
 
     DocumentReference washington_ref = db->Collection("cities").Document("DC");
     // Set the "capital" field of the city "DC".
@@ -2350,7 +2350,7 @@ Use the `  Update()  ` method:
 
 ##### Node.js
 
-Use the `  update()  ` method:
+Use the `update()` method:
 
     const cityRef = db.collection('cities').doc('DC');
     
@@ -2359,7 +2359,7 @@ Use the `  update()  ` method:
 
 ##### Go
 
-Use the `  Update()  ` method:
+Use the `Update()` method:
 
     import (
      "context"
@@ -2388,7 +2388,7 @@ Use the `  Update()  ` method:
 
 ##### PHP
 
-Use the `  update()  ` method:
+Use the `update()` method:
 
 ### PHP
 
@@ -2401,7 +2401,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ##### Unity
 
-Use the `  UpdateAsync()  ` method:
+Use the `UpdateAsync()` method:
 
     DocumentReference cityRef = db.Collection("cities").Document("new-city-id");
     Dictionary<string, object> updates = new Dictionary<string, object>
@@ -2417,7 +2417,7 @@ Use the `  UpdateAsync()  ` method:
 
 ##### C\#
 
-Use the `  UpdateAsync()  ` method:
+Use the `UpdateAsync()` method:
 
     DocumentReference cityRef = db.Collection("cities").Document("new-city-id");
     Dictionary<string, object> updates = new Dictionary<string, object>
@@ -2430,7 +2430,7 @@ Use the `  UpdateAsync()  ` method:
 
 ##### Ruby
 
-Use the `  update()  ` method:
+Use the `update()` method:
 
     city_ref = firestore.doc "#{collection_path}/DC"
     city_ref.update({ capital: true })add_data.rb
@@ -2625,7 +2625,7 @@ When updating multiple timestamp fields inside of a [transaction](https://docs.c
 
 ### Update fields in nested objects
 
-If your document contains nested objects, you can use the *dot notation* to reference nested fields within the document when you call `  update()  ` :
+If your document contains nested objects, you can use the *dot notation* to reference nested fields within the document when you call `update()` :
 
 ### Web version 9
 
@@ -3038,7 +3038,7 @@ Dot notation allows you to update a single nested field without overwriting othe
 
 ### Update elements in an array
 
-If your document contains an array field, you can use `  arrayUnion()  ` and `  arrayRemove()  ` to add and remove elements. `  arrayUnion()  ` adds elements to an array but only elements not already present. `  arrayRemove()  ` removes all instances of each given element.
+If your document contains an array field, you can use `arrayUnion()` and `arrayRemove()` to add and remove elements. `arrayUnion()` adds elements to an array but only elements not already present. `arrayRemove()` removes all instances of each given element.
 
 ### Web version 9
 

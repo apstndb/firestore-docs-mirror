@@ -81,11 +81,11 @@ To shut down the Dataflow pipeline:
     
     The output will produce a list of Dataflow jobs.
 
-2.  In the list of jobs, find the `  NAME  ` value that has the timestamp that you've specified in the `  DATAFLOW_START_TIME  ` [environment variable](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-env-vars) .
+2.  In the list of jobs, find the `NAME` value that has the timestamp that you've specified in the `  DATAFLOW_START_TIME  ` [environment variable](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-env-vars) .
     
-    Format: `  dataflow-mongodb-to-firestore- DATAFLOW_START_TIME  ` . Example: `  dataflow-mongodb-to-firestore-20250514173638  ` .
+    Format: ` dataflow-mongodb-to-firestore- DATAFLOW_START_TIME  ` . Example: `dataflow-mongodb-to-firestore-20250514173638` .
 
-3.  Obtain the corresponding `  JOB_ID  ` . Example: `  2025-05-14_17_36_39-10772223470853954680  ` .
+3.  Obtain the corresponding `JOB_ID` . Example: `2025-05-14_17_36_39-10772223470853954680` .
 
 4.  Run the drain command for this job ID:
     

@@ -8,32 +8,32 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 All arithmetic functions in Firestore have the following behaviors:
 
-  - Evaluates to `  NULL  ` if any of the input parameters is `  NULL  ` .
-  - Evaluates to `  NaN  ` if any of the arguments is `  NaN  ` .
+  - Evaluates to `NULL` if any of the input parameters is `NULL` .
+  - Evaluates to `NaN` if any of the arguments is `NaN` .
   - Generates an error if an overflow or underflow occurs.
 
-Additionally, when an arithmetic function takes multiple numeric arguments of different types (for example: `  add(5.0, 6)  ` ), Firestore implicitly converts arguments to the widest input type. If only `  INT32  ` inputs are provided, the return type will be `  INT64  ` .
+Additionally, when an arithmetic function takes multiple numeric arguments of different types (for example: `add(5.0, 6)` ), Firestore implicitly converts arguments to the widest input type. If only `INT32` inputs are provided, the return type will be `INT64` .
 
-|                              |                                                                                |
-| ---------------------------- | ------------------------------------------------------------------------------ |
-| Name                         | Description                                                                    |
-| `          ABS        `      | Returns the absolute value of a `        number       `                        |
-| `          ADD        `      | Returns the value of `        x + y       `                                    |
-| `          SUBTRACT        ` | Returns the value of `        x - y       `                                    |
-| `          MULTIPLY        ` | Returns the value of `        x * y       `                                    |
-| `          DIVIDE        `   | Returns the value of `        x / y       `                                    |
-| `          MOD        `      | Returns the remainder of the division of `        x / y       `                |
-| `          CEIL        `     | Returns the ceiling of a `        number       `                               |
-| `          FLOOR        `    | Returns the floor of a `        number       `                                 |
-| `          ROUND        `    | Rounds a `        number       ` to `        places       ` decimal places     |
-| `          TRUNC        `    | Truncates a `        number       ` to `        places       ` decimal places  |
-| `          POW        `      | Returns the value of `        base^exponent       `                            |
-| `          SQRT        `     | Returns the square root of a `        number       `                           |
-| `          EXP        `      | Returns Euler's number raised to the power of `        exponent       `        |
-| `          LN        `       | Returns the natural logarithm of a `        number       `                     |
-| `          LOG        `      | Returns the logarithm of a `        number       `                             |
-| `          LOG10        `    | Returns the logarithm of a `        number       ` to base `        10       ` |
-| `          RAND        `     | Returns a pseudo-random floating point number                                  |
+|                             |                                                          |
+| --------------------------- | -------------------------------------------------------- |
+| Name                        | Description                                              |
+| `         ABS        `      | Returns the absolute value of a `number`                 |
+| `         ADD        `      | Returns the value of `x + y`                             |
+| `         SUBTRACT        ` | Returns the value of `x - y`                             |
+| `         MULTIPLY        ` | Returns the value of `x * y`                             |
+| `         DIVIDE        `   | Returns the value of `x / y`                             |
+| `         MOD        `      | Returns the remainder of the division of `x / y`         |
+| `         CEIL        `     | Returns the ceiling of a `number`                        |
+| `         FLOOR        `    | Returns the floor of a `number`                          |
+| `         ROUND        `    | Rounds a `number` to `places` decimal places             |
+| `         TRUNC        `    | Truncates a `number` to `places` decimal places          |
+| `         POW        `      | Returns the value of `base^exponent`                     |
+| `         SQRT        `     | Returns the square root of a `number`                    |
+| `         EXP        `      | Returns Euler's number raised to the power of `exponent` |
+| `         LN        `       | Returns the natural logarithm of a `number`              |
+| `         LOG        `      | Returns the logarithm of a `number`                      |
+| `         LOG10        `    | Returns the logarithm of a `number` to base `10`         |
+| `         RAND        `     | Returns a pseudo-random floating point number            |
 
 ### ABS
 
@@ -43,22 +43,22 @@ Additionally, when an arithmetic function takes multiple numeric arguments of di
 
 **Description:**
 
-Returns the absolute value of a `  number  ` .
+Returns the absolute value of a `number` .
 
-  - Throws an error when the function would overflow an `  INT32  ` or `  INT64  ` value.
+  - Throws an error when the function would overflow an `INT32` or `INT64` value.
 
 **Examples:**
 
-| number            | `        abs(number)       ` |
-| :---------------- | :--------------------------- |
-| 10                | 10                           |
-| \-10              | 10                           |
-| 10L               | 10L                          |
-| \-0.0             | 0.0                          |
-| 10.5              | 10.5                         |
-| \-10.5            | 10.5                         |
-| \-2 <sup>31</sup> | `        [error]       `     |
-| \-2 <sup>63</sup> | `        [error]       `     |
+| number            | `abs(number)` |
+| :---------------- | :------------ |
+| 10                | 10            |
+| \-10              | 10            |
+| 10L               | 10L           |
+| \-0.0             | 0.0           |
+| 10.5              | 10.5          |
+| \-10.5            | 10.5          |
+| \-2 <sup>31</sup> | `[error]`     |
+| \-2 <sup>63</sup> | `[error]`     |
 
 ### ADD
 
@@ -68,17 +68,17 @@ Returns the absolute value of a `  number  ` .
 
 **Description:**
 
-Returns the value of `  x + y  ` .
+Returns the value of `x + y` .
 
 **Examples:**
 
-| x         | y   | `        add(x, y)       ` |
-| :-------- | :-- | :------------------------- |
-| 20        | 3   | 23                         |
-| 10.0      | 1   | 11.0                       |
-| 22.5      | 2.0 | 24.5                       |
-| INT64.MAX | 1   | `        [error]       `   |
-| INT64.MIN | \-1 | `        [error]       `   |
+| x         | y   | `add(x, y)` |
+| :-------- | :-- | :---------- |
+| 20        | 3   | 23          |
+| 10.0      | 1   | 11.0        |
+| 22.5      | 2.0 | 24.5        |
+| INT64.MAX | 1   | `[error]`   |
+| INT64.MIN | \-1 | `[error]`   |
 
 ##### Node.js
 
@@ -149,17 +149,17 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns the value of `  x - y  ` .
+Returns the value of `x - y` .
 
 **Examples:**
 
-| x         | y   | `        subtract(x, y)       ` |
-| :-------- | :-- | :------------------------------ |
-| 20        | 3   | 17                              |
-| 10.0      | 1   | 9.0                             |
-| 22.5      | 2.0 | 20.5                            |
-| INT64.MAX | \-1 | `        [error]       `        |
-| INT64.MIN | 1   | `        [error]       `        |
+| x         | y   | `subtract(x, y)` |
+| :-------- | :-- | :--------------- |
+| 20        | 3   | 17               |
+| 10.0      | 1   | 9.0              |
+| 22.5      | 2.0 | 20.5             |
+| INT64.MAX | \-1 | `[error]`        |
+| INT64.MIN | 1   | `[error]`        |
 
 ##### Node.js
 
@@ -237,18 +237,18 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns the value of `  x * y  ` .
+Returns the value of `x * y` .
 
 **Examples:**
 
-| x           | y           | `        multiply(x, y)       ` |
-| :---------- | :---------- | :------------------------------ |
-| 20          | 3           | 60                              |
-| 10.0        | 1           | 10.0                            |
-| 22.5        | 2.0         | 45.0                            |
-| INT64.MAX   | 2           | `        [error]       `        |
-| INT64.MIN   | 2           | `        [error]       `        |
-| FLOAT64.MAX | FLOAT64.MAX | `        +inf       `           |
+| x           | y           | `multiply(x, y)` |
+| :---------- | :---------- | :--------------- |
+| 20          | 3           | 60               |
+| 10.0        | 1           | 10.0             |
+| 22.5        | 2.0         | 45.0             |
+| INT64.MAX   | 2           | `[error]`        |
+| INT64.MIN   | 2           | `[error]`        |
+| FLOAT64.MAX | FLOAT64.MAX | `+inf`           |
 
 ##### Node.js
 
@@ -319,18 +319,18 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns the value of `  x / y  ` . Integer division is truncated.
+Returns the value of `x / y` . Integer division is truncated.
 
 **Examples:**
 
-| x     | y   | `        divide(x, y)       ` |
-| :---- | :-- | :---------------------------- |
-| 20    | 3   | 6                             |
-| 10.0  | 3   | 3.333...                      |
-| 22.5  | 2   | 11.25                         |
-| 10    | 0   | `        [error]       `      |
-| 1.0   | 0.0 | `        +inf       `         |
-| \-1.0 | 0.0 | `        -inf       `         |
+| x     | y   | `divide(x, y)` |
+| :---- | :-- | :------------- |
+| 20    | 3   | 6              |
+| 10.0  | 3   | 3.333...       |
+| 22.5  | 2   | 11.25          |
+| 10    | 0   | `[error]`      |
+| 1.0   | 0.0 | `+inf`         |
+| \-1.0 | 0.0 | `-inf`         |
 
 ##### Node.js
 
@@ -401,23 +401,23 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns the remainder of `  x / y  ` .
+Returns the remainder of `x / y` .
 
-  - Throws an `  error  ` when `  y  ` is zero for integer types ( `  INT64  ` ).
-  - Returns `  NaN  ` when `  y  ` is zero for float types ( `  FLOAT64  ` ).
+  - Throws an `error` when `y` is zero for integer types ( `INT64` ).
+  - Returns `NaN` when `y` is zero for float types ( `FLOAT64` ).
 
 **Examples:**
 
-| x    | y   | `        mod(x, y)       ` |
-| :--- | :-- | :------------------------- |
-| 20   | 3   | 2                          |
-| \-10 | 3   | \-1                        |
-| 10   | \-3 | 1                          |
-| \-10 | \-3 | \-1                        |
-| 10   | 1   | 0                          |
-| 22.5 | 2   | 0.5                        |
-| 22.5 | 0.0 | `        NaN       `       |
-| 25   | 0   | `        [error]       `   |
+| x    | y   | `mod(x, y)` |
+| :--- | :-- | :---------- |
+| 20   | 3   | 2           |
+| \-10 | 3   | \-1         |
+| 10   | \-3 | 1           |
+| \-10 | \-3 | \-1         |
+| 10   | 1   | 0           |
+| 22.5 | 2   | 0.5         |
+| 22.5 | 0.0 | `NaN`       |
+| 25   | 0   | `[error]`   |
 
 ##### Node.js
 
@@ -495,21 +495,21 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns the smallest integer value that isn't less than `  number  ` .
+Returns the smallest integer value that isn't less than `number` .
 
 **Examples:**
 
-| number                | `        ceil(number)       ` |
-| :-------------------- | :---------------------------- |
-| 20                    | 20                            |
-| 10                    | 10                            |
-| 0                     | 0                             |
-| 24L                   | 24L                           |
-| \-0.4                 | \-0.0                         |
-| 0.4                   | 1.0                           |
-| 22.5                  | 23.0                          |
-| `        +inf       ` | `        +inf       `         |
-| `        -inf       ` | `        -inf       `         |
+| number | `ceil(number)` |
+| :----- | :------------- |
+| 20     | 20             |
+| 10     | 10             |
+| 0      | 0              |
+| 24L    | 24L            |
+| \-0.4  | \-0.0          |
+| 0.4    | 1.0            |
+| 22.5   | 23.0           |
+| `+inf` | `+inf`         |
+| `-inf` | `-inf`         |
 
 ##### Node.js
 
@@ -602,21 +602,21 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns the largest integer value that isn't greater than `  number  ` .
+Returns the largest integer value that isn't greater than `number` .
 
 **Examples:**
 
-| number                | `        floor(number)       ` |
-| :-------------------- | :----------------------------- |
-| 20                    | 20                             |
-| 10                    | 10                             |
-| 0                     | 0                              |
-| 2147483648            | 2147483648                     |
-| \-0.4                 | \-1.0                          |
-| 0.4                   | 0.0                            |
-| 22.5                  | 22.0                           |
-| `        +inf       ` | `        +inf       `          |
-| `        -inf       ` | `        -inf       `          |
+| number     | `floor(number)` |
+| :--------- | :-------------- |
+| 20         | 20              |
+| 10         | 10              |
+| 0          | 0               |
+| 2147483648 | 2147483648      |
+| \-0.4      | \-1.0           |
+| 0.4        | 0.0             |
+| 22.5       | 22.0            |
+| `+inf`     | `+inf`          |
+| `-inf`     | `-inf`          |
 
 ##### Node.js
 
@@ -700,25 +700,25 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Rounds `  places  ` digits off a `  number  ` . Rounds digits from the right of the decimal point if `  places  ` is positive, and to the left of the decimal point if it is negative.
+Rounds `places` digits off a `number` . Rounds digits from the right of the decimal point if `places` is positive, and to the left of the decimal point if it is negative.
 
-  - If only `  number  ` is provided, rounds to the nearest whole value.
+  - If only `number` is provided, rounds to the nearest whole value.
   - Rounds away from zero in halfway cases.
-  - An `  error  ` is thrown if rounding with a negative `  places  ` value results in overflow.
+  - An `error` is thrown if rounding with a negative `places` value results in overflow.
 
 **Examples:**
 
-| number              | places | `        round(number, places)       ` |
-| :------------------ | :----- | :------------------------------------- |
-| 15.5                | 0      | 16.0                                   |
-| \-15.5              | 0      | \-16.0                                 |
-| 15                  | 1      | 15                                     |
-| 15                  | 0      | 15                                     |
-| 15                  | \-1    | 20                                     |
-| 15                  | \-2    | 0                                      |
-| 15.48924            | 1      | 15.5                                   |
-| 2 <sup>31</sup> -1  | \-1    | `        [error]       `               |
-| 2 <sup>63</sup> -1L | \-1    | `        [error]       `               |
+| number              | places | `round(number, places)` |
+| :------------------ | :----- | :---------------------- |
+| 15.5                | 0      | 16.0                    |
+| \-15.5              | 0      | \-16.0                  |
+| 15                  | 1      | 15                      |
+| 15                  | 0      | 15                      |
+| 15                  | \-1    | 20                      |
+| 15                  | \-2    | 0                       |
+| 15.48924            | 1      | 15.5                    |
+| 2 <sup>31</sup> -1  | \-1    | `[error]`               |
+| 2 <sup>63</sup> -1L | \-1    | `[error]`               |
 
 ##### Node.js
 
@@ -802,23 +802,23 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Truncates a `  number  ` to a specified number of `  places  ` decimal places. Truncates digits from the right of the decimal point if `  places  ` is positive, and to the left of the decimal point if it is negative.
+Truncates a `number` to a specified number of `places` decimal places. Truncates digits from the right of the decimal point if `places` is positive, and to the left of the decimal point if it is negative.
 
-  - If only `  number  ` is provided, truncates to the nearest whole value towards zero.
-  - An `  error  ` is thrown if truncating results in overflow.
+  - If only `number` is provided, truncates to the nearest whole value towards zero.
+  - An `error` is thrown if truncating results in overflow.
 
 **Examples:**
 
-| number     | places | `        trunc(number, places)       ` |
-| :--------- | :----- | :------------------------------------- |
-| 15.5       | 0      | 15.0                                   |
-| \-15.5     | 0      | \-15.0                                 |
-| 15         | 1      | 15                                     |
-| 15         | 0      | 15                                     |
-| 15         | \-1    | 10                                     |
-| 15         | \-2    | 0                                      |
-| 15.48924   | 1      | 15.4                                   |
-| \-15.48924 | 2      | \-15.48                                |
+| number     | places | `trunc(number, places)` |
+| :--------- | :----- | :---------------------- |
+| 15.5       | 0      | 15.0                    |
+| \-15.5     | 0      | \-15.0                  |
+| 15         | 1      | 15                      |
+| 15         | 0      | 15                      |
+| 15         | \-1    | 10                      |
+| 15         | \-2    | 0                       |
+| 15.48924   | 1      | 15.4                    |
+| \-15.48924 | 2      | \-15.48                 |
 
 ### POW
 
@@ -828,24 +828,24 @@ Truncates a `  number  ` to a specified number of `  places  ` decimal places. T
 
 **Description:**
 
-Returns the value `  base  ` raised to the power of `  exponent  ` .
+Returns the value `base` raised to the power of `exponent` .
 
-  - Throws an error if `  base <= 0  ` and `  exponent  ` is negative.
+  - Throws an error if `base <= 0` and `exponent` is negative.
 
-  - For any `  exponent  ` , `  pow(1, exponent)  ` is 1.
+  - For any `exponent` , `pow(1, exponent)` is 1.
 
-  - For any `  base  ` , `  pow(base, 0)  ` is 1.
+  - For any `base` , `pow(base, 0)` is 1.
 
 **Examples:**
 
-| base                  | exponent              | `        pow(base, exponent)       ` |
-| :-------------------- | :-------------------- | :----------------------------------- |
-| 2                     | 3                     | 8.0                                  |
-| 2                     | \-3                   | 0.125                                |
-| `        +inf       ` | 0                     | 1.0                                  |
-| 1                     | `        +inf       ` | 1.0                                  |
-| \-1                   | 0.5                   | `        [error]       `             |
-| 0                     | \-1                   | `        [error]       `             |
+| base   | exponent | `pow(base, exponent)` |
+| :----- | :------- | :-------------------- |
+| 2      | 3        | 8.0                   |
+| 2      | \-3      | 0.125                 |
+| `+inf` | 0        | 1.0                   |
+| 1      | `+inf`   | 1.0                   |
+| \-1    | 0.5      | `[error]`             |
+| 0      | \-1      | `[error]`             |
 
 ##### Node.js
 
@@ -1021,21 +1021,21 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns the square root of a `  number  ` .
+Returns the square root of a `number` .
 
-  - Throws an `  error  ` if `  number  ` is negative.
+  - Throws an `error` if `number` is negative.
 
 **Examples:**
 
-| number                 | `        sqrt(number)       ` |
-| :--------------------- | :---------------------------- |
-| 25                     | 5.0                           |
-| 12.002                 | 3.464...                      |
-| 0.0                    | 0.0                           |
-| `        NaN       `   | `        NaN       `          |
-| `        +inf       `  | `        +inf       `         |
-| `        -inf       `  | `        [error]       `      |
-| `        x < 0       ` | `        [error]       `      |
+| number  | `sqrt(number)` |
+| :------ | :------------- |
+| 25      | 5.0            |
+| 12.002  | 3.464...       |
+| 0.0     | 0.0            |
+| `NaN`   | `NaN`          |
+| `+inf`  | `+inf`         |
+| `-inf`  | `[error]`      |
+| `x < 0` | `[error]`      |
 
 ##### Node.js
 
@@ -1211,16 +1211,16 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns the value of Euler's number raised to the power of `  exponent  ` , also called the natural exponential function.
+Returns the value of Euler's number raised to the power of `exponent` , also called the natural exponential function.
 
 **Examples:**
 
-| exponent              | `        exp(exponent)       `                     |
-| :-------------------- | :------------------------------------------------- |
-| 0.0                   | 1.0                                                |
-| 10                    | `        e^10       ` ( `        FLOAT64       ` ) |
-| `        +inf       ` | `        +inf       `                              |
-| `        -inf       ` | 0                                                  |
+| exponent | `exp(exponent)`      |
+| :------- | :------------------- |
+| 0.0      | 1.0                  |
+| 10       | `e^10` ( `FLOAT64` ) |
+| `+inf`   | `+inf`               |
+| `-inf`   | 0                    |
 
 ##### Node.js
 
@@ -1291,19 +1291,19 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns the natural logarithm of `  number  ` . This function is equivalent to `  log(number)  ` .
+Returns the natural logarithm of `number` . This function is equivalent to `log(number)` .
 
 **Examples:**
 
-| number                                          | `        ln(number)       ` |
-| :---------------------------------------------- | :-------------------------- |
-| 1                                               | 0.0                         |
-| 2L                                              | 0.693...                    |
-| 1.0                                             | 0.0                         |
-| `        e       ` ( `        FLOAT64       ` ) | 1.0                         |
-| `        -inf       `                           | `        NaN       `        |
-| `        +inf       `                           | `        +inf       `       |
-| `        x <= 0       `                         | `        [error]       `    |
+| number            | `ln(number)` |
+| :---------------- | :----------- |
+| 1                 | 0.0          |
+| 2L                | 0.693...     |
+| 1.0               | 0.0          |
+| `e` ( `FLOAT64` ) | 1.0          |
+| `-inf`            | `NaN`        |
+| `+inf`            | `+inf`       |
+| `x <= 0`          | `[error]`    |
 
 ##### Node.js
 
@@ -1375,20 +1375,20 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns the logarithm of a `  number  ` to `  base  ` .
+Returns the logarithm of a `number` to `base` .
 
-  - If only `  number  ` is provided, returns the logarithm of `  number  ` to `  base  ` (synonymous to `  ln(number)  ` ).
+  - If only `number` is provided, returns the logarithm of `number` to `base` (synonymous to `ln(number)` ).
 
 **Examples:**
 
-| number                       | base                       | `        log(number, base)       ` |
-| :--------------------------- | :------------------------- | :--------------------------------- |
-| 100                          | 10                         | 2.0                                |
-| `        -inf       `        | `        Numeric       `   | `        NaN       `               |
-| `        Numeric       ` .   | `        +inf       `      | `        NaN       `               |
-| `        number <= 0       ` | `        Numeric       `   | `        [error]       `           |
-| `        Numeric       `     | `        base <= 0       ` | `        [error]       `           |
-| `        Numeric       `     | 1.0                        | `        [error]       `           |
+| number        | base        | `log(number, base)` |
+| :------------ | :---------- | :------------------ |
+| 100           | 10          | 2.0                 |
+| `-inf`        | `Numeric`   | `NaN`               |
+| `Numeric` .   | `+inf`      | `NaN`               |
+| `number <= 0` | `Numeric`   | `[error]`           |
+| `Numeric`     | `base <= 0` | `[error]`           |
+| `Numeric`     | 1.0         | `[error]`           |
 
 ### LOG10
 
@@ -1398,16 +1398,16 @@ Returns the logarithm of a `  number  ` to `  base  ` .
 
 **Description:**
 
-Returns the logarithm of a `  number  ` to base `  10  ` .
+Returns the logarithm of a `number` to base `10` .
 
 **Examples:**
 
-| number                  | `        log10(number)       ` |
-| :---------------------- | :----------------------------- |
-| 100                     | 2.0                            |
-| `        -inf       `   | `        NaN       `           |
-| `        +inf       `   | `        +inf       `          |
-| `        x <= 0       ` | `        [error]       `       |
+| number   | `log10(number)` |
+| :------- | :-------------- |
+| 100      | 2.0             |
+| `-inf`   | `NaN`           |
+| `+inf`   | `+inf`          |
+| `x <= 0` | `[error]`       |
 
 ### RAND
 
@@ -1417,7 +1417,7 @@ Returns the logarithm of a `  number  ` to base `  10  ` .
 
 **Description:**
 
-Return a pseudo-random floating point number, chosen uniformly between `  0.0  ` (inclusive) and `  1.0  ` (exclusive).
+Return a pseudo-random floating point number, chosen uniformly between `0.0` (inclusive) and `1.0` (exclusive).
 
 ## What's next
 

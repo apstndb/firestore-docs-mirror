@@ -101,7 +101,7 @@ eu
 us
 
   
-`  POST https://firestore.googleapis.com/v1beta1/{database=projects/*/databases/*}/documents:batchWrite  `
+`POST https://firestore.googleapis.com/v1beta1/{database=projects/*/databases/*}/documents:batchWrite`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -109,11 +109,11 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  database  `
+`database`
 
-`  string  `
+`string`
 
-Required. The database name. In the format: `  projects/{projectId}/databases/{databaseId}  ` .
+Required. The database name. In the format: `projects/{projectId}/databases/{databaseId}` .
 
 ### Request body
 
@@ -130,38 +130,28 @@ The request body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;writes&quot;: [
-    {
-      object (Write)
-    }
-  ],
-  &quot;labels&quot;: {
-    string: string,
-    ...
-  }
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;writes&quot;: [{object (Write)}],&quot;labels&quot;: {string: string,...}}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  writes[]  `
+`writes[]`
 
-`  object ( Write  ` )
+` object ( Write  ` )
 
 The writes to apply.
 
 Method does not apply writes atomically and does not guarantee ordering. Each write succeeds or fails independently. You cannot write to the same document more than once per request.
 
-`  labels  `
+`labels`
 
-`  map (key: string, value: string)  `
+`map (key: string, value: string)`
 
 Labels associated with this batch write.
 
-An object containing a list of `  "key": value  ` pairs. Example: `  { "name": "wrench", "mass": "1.3kg", "count": "3" }  ` .
+An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }` .
 
 ### Response body
 
@@ -180,35 +170,24 @@ If successful, the response body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;writeResults&quot;: [
-    {
-      object (WriteResult)
-    }
-  ],
-  &quot;status&quot;: [
-    {
-      object (Status)
-    }
-  ]
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;writeResults&quot;: [{object (WriteResult)}],&quot;status&quot;: [{object (Status)}]}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  writeResults[]  `
+`writeResults[]`
 
-`  object ( WriteResult  ` )
+` object ( WriteResult  ` )
 
 The result of applying the writes.
 
 This i-th write result corresponds to the i-th write in the request.
 
-`  status[]  `
+`status[]`
 
-`  object ( Status  ` )
+` object ( Status  ` )
 
 The status of applying the writes.
 
@@ -218,7 +197,7 @@ This i-th write status corresponds to the i-th write in the request.
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

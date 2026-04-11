@@ -103,23 +103,23 @@ In the following diagram, the Firestore database has eight splits (marked 1-8) h
 
 ![Firestore database split](https://docs.cloud.google.com/static/firestore/native/docs/images/life-of-write-deep-dive.png)
 
-Consider a Firestore database that has the `  Restaurants  ` collection as follows:
+Consider a Firestore database that has the `Restaurants` collection as follows:
 
 ![Restaurant collection](https://docs.cloud.google.com/static/firestore/native/docs/images/life-of-write-restaurant.png)
 
-The Firestore client requests the following change to a document in the `  Restaurant  ` collection by updating the value of the `  priceCategory  ` field.
+The Firestore client requests the following change to a document in the `Restaurant` collection by updating the value of the `priceCategory` field.
 
 ![Change to a document in collection](https://docs.cloud.google.com/static/firestore/native/docs/images/life-of-write-collection.png)
 
 The following high-level steps describe what happens as part of the write:
 
 1.  Create a read-write transaction.
-2.  Read the `  restaurant1  ` document in the `  Restaurants  ` collection from the *Documents* table from the storage layer.
+2.  Read the `restaurant1` document in the `Restaurants` collection from the *Documents* table from the storage layer.
 3.  Read the indexes for the document from the *Indexes* table.
 4.  Compute the mutations to be made to the data. In this case, there are five mutations:
-      - M1: Update the row for `  restaurant1  ` in the *Documents* table to reflect the change in value of the *`  priceCategory  `* field.
-      - M2 and M3: Delete the rows for the old value of *`  priceCategory  `* in the *Indexes* table for descending and ascending indexes.
-      - M4 and M5: Insert the rows for the new value of *`  priceCategory  `* in the *Indexes* table for descending and ascending indexes.
+      - M1: Update the row for `restaurant1` in the *Documents* table to reflect the change in value of the *`priceCategory`* field.
+      - M2 and M3: Delete the rows for the old value of *`priceCategory`* in the *Indexes* table for descending and ascending indexes.
+      - M4 and M5: Insert the rows for the new value of *`priceCategory`* in the *Indexes* table for descending and ascending indexes.
 5.  Commit these mutations.
 
 The storage client in the Firestore service looks up the splits that owns the keys of the rows to be changed. Let’s consider a case where Split 3 serves M1, and Split 6 serves M2-M5. There is a distributed transaction, involving all these splits as *participants* . The participant splits may also include any other split from which data was read earlier as part of the read-write transaction.
@@ -130,9 +130,9 @@ The following steps describe what happens as part of the commit:
 2.  Splits 3 and 6 are the participants in this transaction. One of the participants is chosen as the *coordinator* , such as Split 3. The job of the coordinator is to make sure the transaction either commits or aborts atomically across all participants.
       - The leader replicas of these splits are responsible for work done by the participants and coordinators.
 3.  Each participant and coordinator runs a Paxos algorithm with their respective replicas.
-      - The leader runs a Paxos algorithm with the replicas. Quorum is achieved if most of the replicas reply with an `  ok to commit  ` response to the leader.
-      - Each participant then notifies the coordinator when they are *prepared* (first phase of two-phase commit). If any participant cannot commit the transaction, the whole transaction `  aborts  ` .
-4.  Once the coordinator knows all participants, including itself, are prepared, it communicates the *`  accept  `* transaction outcome to all the participants (second phase of two-phase commit). In this phase, each participant records the commit decision to stable storage and the transaction is committed.
+      - The leader runs a Paxos algorithm with the replicas. Quorum is achieved if most of the replicas reply with an `ok to commit` response to the leader.
+      - Each participant then notifies the coordinator when they are *prepared* (first phase of two-phase commit). If any participant cannot commit the transaction, the whole transaction `aborts` .
+4.  Once the coordinator knows all participants, including itself, are prepared, it communicates the *`accept`* transaction outcome to all the participants (second phase of two-phase commit). In this phase, each participant records the commit decision to stable storage and the transaction is committed.
 5.  The coordinator responds to the storage client in Firestore that the transaction has been committed. In parallel, the coordinator and all the participants apply the mutations to the data.
 
 ![Commit lifecycle](https://docs.cloud.google.com/static/firestore/native/docs/images/life-of-write-commit.png)
@@ -197,7 +197,7 @@ In the situation where the reads have to be done from multiple splits, the same 
 
 Strong reads are the default mode in Firestore. However, it comes at a cost of potential higher latency due to the communication that may be required with the leader. Often your Firestore application doesn’t need to read the latest version of the data and the functionality works well with data that may be a few seconds stale.
 
-In such a case, the client may opt to receive stale reads by using the `  read_time  ` read options. In this case, reads are done as the data was at `  read_time  ` , and the closest replica is highly likely to already have verified it has data at the specified `  read_time  ` . For noticeably better performance, 15 seconds is a reasonable staleness value. Even for stale reads, rows yielded are consistent with each other.
+In such a case, the client may opt to receive stale reads by using the `read_time` read options. In this case, reads are done as the data was at `read_time` , and the closest replica is highly likely to already have verified it has data at the specified `read_time` . For noticeably better performance, 15 seconds is a reasonable staleness value. Even for stale reads, rows yielded are consistent with each other.
 
 **Key Point:** Strong reads ensure reads see the latest data. However, it may come with the extra round trip latency overhead of a replica having to communicate with the leader, and also potentially having to wait for write transactions to be applied. For better performance, use reads that allow the return of stale data.
 

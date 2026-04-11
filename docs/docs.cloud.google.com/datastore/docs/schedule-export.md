@@ -11,7 +11,7 @@ Before you schedule data exports, you must complete the following tasks:
 
 Follow the steps below to create a Cloud Function that initiates data exports and a Cloud Scheduler job to call that function:
 
-### Create a `     datastore_export    ` Cloud Function
+### Create a `datastore_export` Cloud Function
 
 1.  Go to the **Cloud Functions** page in the Google Cloud console:
     
@@ -19,17 +19,17 @@ Follow the steps below to create a Cloud Function that initiates data exports an
 
 2.  Click **Create Function**
 
-3.  Enter a function name such as `  datastoreExport  `
+3.  Enter a function name such as `datastoreExport`
 
 4.  Under **Trigger** , select **Cloud Pub/Sub** . Cloud Scheduler uses your pub/sub topic to call your function.
 
-5.  In the **Topic** field, select **Create a topic** . Enter a name for the pub/sub topic such as `  startDatastoreExport  ` . Take note of the topic name as you need it to create your Cloud Scheduler job.
+5.  In the **Topic** field, select **Create a topic** . Enter a name for the pub/sub topic such as `startDatastoreExport` . Take note of the topic name as you need it to create your Cloud Scheduler job.
 
 6.  Under **Source code** , select **Inline editor** .
 
 7.  In the **Runtime** dropdown, select **Python 3.7** .
 
-8.  Enter the following code for `  main.py  ` :
+8.  Enter the following code for `main.py` :
     
         # Copyright 2021 Google LLC All Rights Reserved.
         #
@@ -89,11 +89,11 @@ Follow the steps below to create a Cloud Function that initiates data exports an
             response = operation.result()
             print(response)
 
-9.  In `  requirements.txt  ` , add the following dependency:
+9.  In `requirements.txt` , add the following dependency:
     
         google-cloud-datastore==2.23.0
 
-10. Under **Entry point** , enter `  datastore_export  ` , the name of the function in `  main.py  ` .
+10. Under **Entry point** , enter `datastore_export` , the name of the function in `main.py` .
 
 11. Click **Deploy** to deploy the Cloud Function.
 
@@ -107,8 +107,8 @@ This Cloud Function uses your project's default service account to authenticate 
 
 This service account needs permission to start export operations and to write to your Cloud Storage bucket. To grant these permissions, assign the following IAM roles to the default service account:
 
-  - `  Cloud Datastore Import Export Admin  `
-  - `  Storage Object User  ` role on the bucket
+  - `Cloud Datastore Import Export Admin`
+  - `Storage Object User` role on the bucket
 
 You can use the Google Cloud CLI to assign these roles. You can access this tool from [Cloud Shell](https://docs.cloud.google.com/shell) in the Google Cloud console:  
 [Start Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
@@ -127,7 +127,7 @@ You can use the Google Cloud CLI to assign these roles. You can access this tool
 
 ### Create a Cloud Scheduler job
 
-Next, create a Cloud Scheduler job that calls the `  datastore_export  ` Cloud Function:
+Next, create a Cloud Scheduler job that calls the `datastore_export` Cloud Function:
 
 1.  Go to the **Cloud Scheduler** page in the Google Cloud console:
     
@@ -135,15 +135,15 @@ Next, create a Cloud Scheduler job that calls the `  datastore_export  ` Cloud F
 
 2.  Click **Create Job** .
 
-3.  Enter a **Name** for the job such as `  scheduledDatastoreExport  ` .
+3.  Enter a **Name** for the job such as `scheduledDatastoreExport` .
 
 4.  Enter a **Frequency** in [unix-cron format](https://docs.cloud.google.com/scheduler/docs/configuring/cron-job-schedules) .
 
 5.  Select a **Timezone** .
 
-6.  Under **Target** , select **Pub/Sub** . In the **Topic** field, enter the name of the pub/sub topic you defined alongside your Cloud Function, `  startDatastoreExport  ` in the example above.
+6.  Under **Target** , select **Pub/Sub** . In the **Topic** field, enter the name of the pub/sub topic you defined alongside your Cloud Function, `startDatastoreExport` in the example above.
 
-7.  In the **Payload** field, enter a JSON object to configure the export operation. The `  datastore_export  ` Cloud Function requires a `  bucket  ` value. You can optionally include `  kinds  ` or `  namespaceIDs  ` values to set an entity filter, for example:
+7.  In the **Payload** field, enter a JSON object to configure the export operation. The `datastore_export` Cloud Function requires a `bucket` value. You can optionally include `kinds` or `namespaceIDs` values to set an entity filter, for example:
     
     ### Export all entities
     
@@ -153,14 +153,14 @@ Next, create a Cloud Scheduler job that calls the `  datastore_export  ` Cloud F
     
     ### Export with entity filter
     
-      - Export entities of kind `  User  ` or `  Task  ` from all namespaces:
+      - Export entities of kind `User` or `Task` from all namespaces:
         
             {
             "bucket": "gs://bucket_name",
             "kinds": ["User", "Task"]
             }
     
-      - Export entities of kind `  User  ` or `  Task  ` from the default and `  Testers  ` namespaces. Use an empty string ( `  ""  ` ) to specify the default namespace:
+      - Export entities of kind `User` or `Task` from the default and `Testers` namespaces. Use an empty string ( `""` ) to specify the default namespace:
         
             {
             "bucket": "gs://bucket_name",
@@ -168,7 +168,7 @@ Next, create a Cloud Scheduler job that calls the `  datastore_export  ` Cloud F
             "namespaceIds": ["", "Testers"]
             }
     
-      - Export entities of any kind from the default and `  Testers  ` namespaces. Use an empty string ( `  ""  ` ) to specify the default namespace:
+      - Export entities of any kind from the default and `Testers` namespaces. Use an empty string ( `""` ) to specify the default namespace:
         
             {
             "bucket": "gs://bucket_name",
@@ -202,7 +202,7 @@ The log for the Cloud Function reports errors and successful export initiations.
 
 ### View export progress
 
-You can use the `  gcloud datastore operations list  ` command to view the progress of your export operations, see [listing all long-running operations](https://docs.cloud.google.com/datastore/docs/export-import-entities#listing_all_long-running_operations) .
+You can use the `gcloud datastore operations list` command to view the progress of your export operations, see [listing all long-running operations](https://docs.cloud.google.com/datastore/docs/export-import-entities#listing_all_long-running_operations) .
 
 After an export operation completes, you can view the output files in your Cloud Storage bucket. The managed export service uses a timestamp to organize your export operations:
 

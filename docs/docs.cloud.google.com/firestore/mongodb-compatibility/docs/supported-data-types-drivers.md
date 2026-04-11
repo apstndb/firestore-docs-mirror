@@ -29,9 +29,9 @@ The following tables list supported MongoDB data types, drivers, and third-party
 | Timestamp               | Yes           |
 | Undefined               | No            |
 
-## Document `     _id    `
+## Document `_id`
 
-The top-level `  _id  ` field in a document must be one of the following types:
+The top-level `_id` field in a document must be one of the following types:
 
   - ObjectId
   - String
@@ -41,7 +41,7 @@ The top-level `  _id  ` field in a document must be one of the following types:
   - Binary
   - Object
 
-The total size of the `  _id  ` must not exceed 1500 bytes.
+The total size of the `_id` must not exceed 1500 bytes.
 
 Each values within an Object-typed ID must also be of a supported ID type or an Array of values, each of which is of a supported ID type.
 
@@ -116,7 +116,7 @@ Firestore with MongoDB compatibility supports third-party tools described in thi
 | [Mongoose](https://mongoosejs.com/)                                       | MongoDB object modeling tool  |
 | [MongoDB Compass](https://www.mongodb.com/products/tools/compass)         | GUI tool for data exploration |
 
-**Note:** Some third-party tools require a connection string. To obtain a connection string for your Firestore with MongoDB compatibility database, you can run the [`  firestore databases connection-string  ` command](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/connection-string) using Google Cloud CLI.
+**Note:** Some third-party tools require a connection string. To obtain a connection string for your Firestore with MongoDB compatibility database, you can run the [`firestore databases connection-string` command](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/connection-string) using Google Cloud CLI.
 
 ## What's next
 

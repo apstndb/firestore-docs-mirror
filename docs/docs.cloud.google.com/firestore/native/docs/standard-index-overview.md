@@ -65,7 +65,7 @@ Firestore Standard edition uses the following default settings for automatic ind
 
 You can exempt a field from your automatic indexing settings by creating an indexing exemption. An indexing exemption overrides the database-wide automatic index settings. An exemption can enable an index that your automatic indexing settings would otherwise disable or disable an index that automatic indexing would otherwise enable. For cases where exemptions can be useful, see the [indexing best practices](https://docs.cloud.google.com/firestore/native/docs/standard-index-overview#indexing_best_practices) .
 
-Use the `  *  ` field path value to add collection-level index exemptions on all fields in a collection group. For example, for collection group `  comments  ` , set the field path to `  *  ` to match all fields in the `  comments  ` collection group and disable indexing of all the fields under the collection group. You can then add exemptions to index only the fields required for your queries. Reducing the number of indexed fields reduces storage costs and can improve write performance.
+Use the `*` field path value to add collection-level index exemptions on all fields in a collection group. For example, for collection group `comments` , set the field path to `*` to match all fields in the `comments` collection group and disable indexing of all the fields under the collection group. You can then add exemptions to index only the fields required for your queries. Reducing the number of indexed fields reduces storage costs and can improve write performance.
 
 If you create an index exemption for a map field, the map's subfields inherit those settings. You can, however, define index exemptions for specific subfields. If you delete an exemption for a subfield, the subfield will inherit its parent's exemption settings, if they exist, or the database-wide settings if no parent exemptions exist.
 
@@ -97,12 +97,12 @@ You configure automatic and manual indexes differently, but both require that yo
 
 When you define an index, you select an index mode for each indexed field. Each field's index mode supports specific query clauses on that field. You can select from the following index modes:
 
-| Index mode                     | Description                                                                                                                                                                                                                                                                                                   |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Ascending** arrow\_upward    | Supports `        <       ` , `        <=       ` , `        ==       ` , `        >=       ` , `        >       ` , `        !=       ` , `        in       ` , and `        not-in       ` , query clauses on the field and supports sorting results in ascending order based on this field value.          |
-| **Descending** arrow\_downward | Supports `        <       ` , `        <=       ` , `        ==       ` , `        >=       ` , `        >       ` , `        !=       ` , `        in       ` , and `        not-in       ` query clauses on the field and supports sorting results in descending order based on this field value.           |
-| **Array‑contains**             | Supports [`         array-contains        `](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#array_contains) and [`         array-contains-any        `](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#in_and_array-contains-any) query clauses on the field. |
-| **Vector**                     | Supports [`         FindNearest        `](https://docs.cloud.google.com/firestore/native/docs/vector-search) query clauses on the field.                                                                                                                                                                      |
+| Index mode                     | Description                                                                                                                                                                                                                                                                 |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Ascending** arrow\_upward    | Supports `<` , `<=` , `==` , `>=` , `>` , `!=` , `in` , and `not-in` , query clauses on the field and supports sorting results in ascending order based on this field value.                                                                                                |
+| **Descending** arrow\_downward | Supports `<` , `<=` , `==` , `>=` , `>` , `!=` , `in` , and `not-in` query clauses on the field and supports sorting results in descending order based on this field value.                                                                                                 |
+| **Array‑contains**             | Supports [`array-contains`](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#array_contains) and [`array-contains-any`](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#in_and_array-contains-any) query clauses on the field. |
+| **Vector**                     | Supports [`FindNearest`](https://docs.cloud.google.com/firestore/native/docs/vector-search) query clauses on the field.                                                                                                                                                     |
 
 #### Query scopes
 
@@ -118,19 +118,19 @@ Each index is scoped to either a collection or a collection group. This is known
   - Collection group scope  
     A collection group includes all collections with the same collection ID. To run a [collection group query](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#collection-group-query) that returns filtered or ordered results from a collection group, you must create a corresponding index with collection group scope.
 
-### Default ordering and the `     __name__    ` field
+### Default ordering and the `__name__` field
 
-In addition to sorting documents by the index modes specified for each field (ascending or descending) , indexes apply a final sorting by the `  __name__  ` field of each document. The value of the `  __name__  ` field is set to the full document path. This means that documents in the result set with the same field values are sorted by document path.
+In addition to sorting documents by the index modes specified for each field (ascending or descending) , indexes apply a final sorting by the `__name__` field of each document. The value of the `__name__` field is set to the full document path. This means that documents in the result set with the same field values are sorted by document path.
 
-By default, the `  __name__  ` field is sorted in the same direction of the last sorted field in the index definition. For example:
+By default, the `__name__` field is sorted in the same direction of the last sorted field in the index definition. For example:
 
-| Collection | Fields indexed                                                                           | Query scope |
-| ---------- | ---------------------------------------------------------------------------------------- | ----------- |
-| cities     | arrow\_upward name, arrow\_upward `        __name__       `                              | Collection  |
-| cities     | arrow\_downward state, arrow\_downward `        __name__       `                         | Collection  |
-| cities     | arrow\_upward country, arrow\_upward population, arrow\_upward `        __name__       ` | Collection  |
+| Collection | Fields indexed                                                            | Query scope |
+| ---------- | ------------------------------------------------------------------------- | ----------- |
+| cities     | arrow\_upward name, arrow\_upward `__name__`                              | Collection  |
+| cities     | arrow\_downward state, arrow\_downward `__name__`                         | Collection  |
+| cities     | arrow\_upward country, arrow\_upward population, arrow\_upward `__name__` | Collection  |
 
-To sort results by the non-default `  __name__  ` direction, you need to create that index.
+To sort results by the non-default `__name__` direction, you need to create that index.
 
 ## Index properties
 
@@ -144,7 +144,7 @@ An index that allows the query to be executed most efficiently is defined by the
 Firestore Standard edition computes the results for queries as follows:
 
 1.  Identifies the index corresponding to the query's collection, filter properties, filter operators, and sort orders.
-2.  Identifies the index position from which the scanning starts. The start position is prefixed with the query's equality filters and ends with the range and inequality filters on the first `  orderBy  ` field.
+2.  Identifies the index position from which the scanning starts. The start position is prefixed with the query's equality filters and ends with the range and inequality filters on the first `orderBy` field.
 3.  Starts scanning the index, returning each document that satisfies all the filters, until the scanning process does one of the following:
       - Encounters a document that doesn't meet the filter conditions and confirms that any subsequent document will never fully meet the filter conditions.
       - Reaches the end of the index.
@@ -152,9 +152,9 @@ Firestore Standard edition computes the results for queries as follows:
 
 ## Indexing example
 
-By automatically creating single-field indexes for you, Firestore Standard edition allows your application to quickly support the most basic database queries. Single-field indexes allow you to perform simple queries based on field values and the comparators `  <  ` , `  <=  ` , `  ==  ` , `  >=  ` , `  >  ` , and `  in  ` . For array fields, they allow you to perform `  array-contains  ` and `  array-contains-any  ` queries.
+By automatically creating single-field indexes for you, Firestore Standard edition allows your application to quickly support the most basic database queries. Single-field indexes allow you to perform simple queries based on field values and the comparators `<` , `<=` , `==` , `>=` , `>` , and `in` . For array fields, they allow you to perform `array-contains` and `array-contains-any` queries.
 
-To illustrate, examine the following examples from the point of view of index creation. The following snippet creates a few `  city  ` documents in a `  cities  ` collection and sets `  name  ` , `  state  ` , `  country  ` , `  capital  ` , `  population  ` , and `  tags  ` fields for each document:
+To illustrate, examine the following examples from the point of view of index creation. The following snippet creates a few `city` documents in a `cities` collection and sets `name` , `state` , `country` , `capital` , `population` , and `tags` fields for each document:
 
 ##### Web
 
@@ -183,21 +183,21 @@ To illustrate, examine the following examples from the point of view of index cr
 
 Assuming the default automatic indexing settings, Firestore Standard edition updates one ascending single-field index per field, one descending single- field index per field, and one array-contains single-field index for the array field. Each row in the following table represents an entry in a single-field index:
 
-| Collection | Field indexed                           | Query scope |
-| ---------- | --------------------------------------- | ----------- |
-| cities     | arrow\_upward name                      | Collection  |
-| cities     | arrow\_upward state                     | Collection  |
-| cities     | arrow\_upward country                   | Collection  |
-| cities     | arrow\_upward capital                   | Collection  |
-| cities     | arrow\_upward population                | Collection  |
-| cities     | arrow\_upward regions                   | Collection  |
-| cities     | arrow\_downward name                    | Collection  |
-| cities     | arrow\_downward state                   | Collection  |
-| cities     | arrow\_downward country                 | Collection  |
-| cities     | arrow\_downward capital                 | Collection  |
-| cities     | arrow\_downward population              | Collection  |
-| cities     | arrow\_downward regions                 | Collection  |
-| cities     | `        array-contains       ` regions | Collection  |
+| Collection | Field indexed              | Query scope |
+| ---------- | -------------------------- | ----------- |
+| cities     | arrow\_upward name         | Collection  |
+| cities     | arrow\_upward state        | Collection  |
+| cities     | arrow\_upward country      | Collection  |
+| cities     | arrow\_upward capital      | Collection  |
+| cities     | arrow\_upward population   | Collection  |
+| cities     | arrow\_upward regions      | Collection  |
+| cities     | arrow\_downward name       | Collection  |
+| cities     | arrow\_downward state      | Collection  |
+| cities     | arrow\_downward country    | Collection  |
+| cities     | arrow\_downward capital    | Collection  |
+| cities     | arrow\_downward population | Collection  |
+| cities     | arrow\_downward regions    | Collection  |
+| cities     | `array-contains` regions   | Collection  |
 
 ### Queries supported by single-field indexes
 
@@ -209,7 +209,7 @@ Using these automatically created single-field indexes, you can run simple queri
     const populationQuery = citiesRef.where("population", "<", 100000);
     const nameQuery = citiesRef.where("name", ">=", "San Francisco");test.firestore.js
 
-You can also create `  in  ` and compound equality ( `  ==  ` ) queries:
+You can also create `in` and compound equality ( `==` ) queries:
 
 ##### Web
 
@@ -222,9 +222,9 @@ You can also create `  in  ` and compound equality ( `  ==  ` ) queries:
              .where("state", "==", "CA")
              .where("population", "==", 860000)
 
-If you need to run a compound query that uses a range comparison ( `  <  ` , `  <=  ` , `  >  ` , or `  >=  ` ) or if you need to sort by a different field, you must create a [manual index](https://docs.cloud.google.com/firestore/native/docs/standard-index-overview#manual_indexes) for that query.
+If you need to run a compound query that uses a range comparison ( `<` , `<=` , `>` , or `>=` ) or if you need to sort by a different field, you must create a [manual index](https://docs.cloud.google.com/firestore/native/docs/standard-index-overview#manual_indexes) for that query.
 
-The `  array-contains  ` index allows you to query the `  regions  ` array field:
+The `array-contains` index allows you to query the `regions` array field:
 
 ##### Web
 
@@ -247,13 +247,13 @@ Create manual indexes to support compound queries not already supported by autom
     citiesRef.where("country", "in", ["USA", "Japan", "China"])
              .where("population", ">", 690000)
 
-These queries require the following index. Since the query uses an equality ( `  ==  ` or `  in  ` ) for the `  country  ` field, you can use an ascending or descending index mode for this field. By default, inequality clauses apply an ascending sort order based on the field in the inequality clause.
+These queries require the following index. Since the query uses an equality ( `==` or `in` ) for the `country` field, you can use an ascending or descending index mode for this field. By default, inequality clauses apply an ascending sort order based on the field in the inequality clause.
 
 | Collection | Fields indexed                                                        | Query scope |
 | ---------- | --------------------------------------------------------------------- | ----------- |
 | cities     | arrow\_upward (or arrow\_downward ) country, arrow\_upward population | Collection  |
 
-To run the same queries but with a descending sort order, you need an additional index in the descending direction for `  population  ` :
+To run the same queries but with a descending sort order, you need an additional index in the descending direction for `population` :
 
 ##### Web
 
@@ -276,7 +276,7 @@ To run the same queries but with a descending sort order, you need an additional
 | cities     | arrow\_upward country, arrow\_upward population            | Collection  |
 | **cities** | arrow\_upward **country** , arrow\_downward **population** | Collection  |
 
-To avoid performance loss caused by [index merging](https://docs.cloud.google.com/datastore/docs/concepts/optimize-indexes#index_merging) , we recommend that you create an index to combine an `  array-contains  ` or `  array-contains-any  ` query with additional clauses:
+To avoid performance loss caused by [index merging](https://docs.cloud.google.com/datastore/docs/concepts/optimize-indexes#index_merging) , we recommend that you create an index to combine an `array-contains` or `array-contains-any` query with additional clauses:
 
 ##### Web
 
@@ -293,7 +293,7 @@ To avoid performance loss caused by [index merging](https://docs.cloud.google.co
 
 ### Queries supported by collection group indexes
 
-To demonstrate an index with collection group scope, add a `  landmarks  ` sub-collection to some of the `  city  ` documents:
+To demonstrate an index with collection group scope, add a `landmarks` sub-collection to some of the `city` documents:
 
 ##### Web
 
@@ -313,7 +313,7 @@ To demonstrate an index with collection group scope, add a `  landmarks  ` sub-c
         name: "National Mall",
         category : "park" });
 
-Using the following single-field index with collection scope, you can query a single city's `  landmarks  ` collection based on the `  category  ` field:
+Using the following single-field index with collection scope, you can query a single city's `landmarks` collection based on the `category` field:
 
 | Collection | Fields indexed                               | Query scope |
 | ---------- | -------------------------------------------- | ----------- |
@@ -324,13 +324,13 @@ Using the following single-field index with collection scope, you can query a si
     citiesRef.doc("SF").collection("landmarks").where("category", "==", "park")
     citiesRef.doc("SF").collection("landmarks").where("category", "in", ["park", "museum"])
 
-If you're interested in querying the landmarks across all cities, for example, you run this query on the collection group that consists of all `  landmarks  ` collections. You must also enable a `  landmarks  ` single-field index with collection group scope:
+If you're interested in querying the landmarks across all cities, for example, you run this query on the collection group that consists of all `landmarks` collections. You must also enable a `landmarks` single-field index with collection group scope:
 
 | Collection | Fields indexed                               | Query scope          |
 | ---------- | -------------------------------------------- | -------------------- |
 | landmarks  | arrow\_upward (or arrow\_downward ) category | **Collection group** |
 
-With this index enabled, you can query the `  landmarks  ` collection group:
+With this index enabled, you can query the `landmarks` collection group:
 
 ##### Web
 
@@ -355,11 +355,11 @@ The following example demonstrates the index entries of a document.
 
 #### Document
 
-`  /cities/SF  `
+`/cities/SF`
 
-`  city_name : "San Francisco"  `  
-`  temperatures : {summer: 67, winter: 55}  `  
-`  neighborhoods : ["Mission", "Downtown", "Marina"]  `  
+`city_name : "San Francisco"`  
+`temperatures : {summer: 67, winter: 55}`  
+`neighborhoods : ["Mission", "Downtown", "Marina"]`  
 
 #### Automatic indexes
 
@@ -414,21 +414,21 @@ Indexes contribute to the [storage costs](https://cloud.google.com/firestore/pri
 
 ### Use index merging
 
-Although Firestore Standard edition uses an index for every query, it doesn't necessarily require one index per query. For queries with multiple equality ( `  ==  ` ) clauses and, optionally, an `  orderBy  ` clause, Firestore Standard edition can re-use existing indexes. Firestore Standard edition can merge the indexes for simple equality filters to build the indexes needed for larger equality queries.
+Although Firestore Standard edition uses an index for every query, it doesn't necessarily require one index per query. For queries with multiple equality ( `==` ) clauses and, optionally, an `orderBy` clause, Firestore Standard edition can re-use existing indexes. Firestore Standard edition can merge the indexes for simple equality filters to build the indexes needed for larger equality queries.
 
-You can reduce indexing costs by identifying situations where you can use index merging. For example, in a `  restaurants  ` collection for a restaurant rating app:
+You can reduce indexing costs by identifying situations where you can use index merging. For example, in a `restaurants` collection for a restaurant rating app:
 
   - collections\_bookmark restaurants
     
       - class burgerthyme
         
-        `  name : "Burger Thyme"  `  
-        `  category : "burgers"  `  
-        `  city : "San Francisco"  `  
-        `  editors_pick : true  `  
-        `  star_rating : 4  `  
+        `name : "Burger Thyme"`  
+        `category : "burgers"`  
+        `city : "San Francisco"`  
+        `editors_pick : true`  
+        `star_rating : 4`  
 
-This app uses queries like the following. The app uses combinations of equality clauses for `  category  ` , `  city  ` , and `  editors_pick  ` while always sorting by ascending `  star_rating  ` :
+This app uses queries like the following. The app uses combinations of equality clauses for `category` , `city` , and `editors_pick` while always sorting by ascending `star_rating` :
 
 ##### Web
 
@@ -571,4 +571,4 @@ Large array or map fields can approach the limit of 40,000 index entries per doc
 
 If you are using queries with range and inequality operators on multiple fields, see the [indexing considerations](https://docs.cloud.google.com/firestore/native/docs/query-data/multiple-range-fields#best-practices) that you should consider to optimize the performance and cost of Firestore Standard edition queries
 
-For more information about how to resolve indexing issues (index fanout, `  INVALID_ARGUMENT  ` errors) see the [troubleshooting page](https://cloud.google.com/firestore/docs/troubleshooting) .
+For more information about how to resolve indexing issues (index fanout, `INVALID_ARGUMENT` errors) see the [troubleshooting page](https://cloud.google.com/firestore/docs/troubleshooting) .

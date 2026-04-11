@@ -18,11 +18,11 @@ With the managed export and import service, you can recover from accidental dele
 
   - To import only a subset of entities or to import data into BigQuery, you must specify an [entity filter](https://docs.cloud.google.com/datastore/docs/export-import-entities#entity_filter) in your export.
 
-  - The `  .overall_export_metadata  ` filename must match the name of its parent folder:
+  - The `.overall_export_metadata` filename must match the name of its parent folder:
     
-    `  gs://BUCKET_NAME/OPTIONAL_NAMESPACE_PATH/ PARENT_FOLDER_NAME / PARENT_FOLDER_NAME .overall_export_metadata  `
+    `gs://BUCKET_NAME/OPTIONAL_NAMESPACE_PATH/ PARENT_FOLDER_NAME / PARENT_FOLDER_NAME .overall_export_metadata`
     
-    If you move or copy the output files of an export, keep the `  PARENT_FOLDER_NAME  ` , contents of the subfolders, and the `  .overall_export_metadata  ` filename the same.
+    If you move or copy the output files of an export, keep the `PARENT_FOLDER_NAME` , contents of the subfolders, and the `.overall_export_metadata` filename the same.
 
 ## Before you begin
 
@@ -32,15 +32,15 @@ Before you can use the managed export and import service, you must complete the 
 
 2.  [Create a Cloud Storage bucket](https://docs.cloud.google.com/storage/docs/creating-buckets) in the same location as your [Firestore in Datastore mode database](https://docs.cloud.google.com/datastore/docs/locations#location-chosen) . You cannot use a Requester Pays bucket for export and import operations.
 
-3.  Assign an [IAM role](https://docs.cloud.google.com/datastore/docs/access/iam) to your user account that grants the `  datastore.databases.export  ` permission, if you are exporting data, or the `  datastore.databases.import  ` permission, if you are importing data. The `  Datastore Import Export Admin  ` [role](https://docs.cloud.google.com/datastore/docs/access/iam#iam_roles) , for example, grants both permissions.
+3.  Assign an [IAM role](https://docs.cloud.google.com/datastore/docs/access/iam) to your user account that grants the `datastore.databases.export` permission, if you are exporting data, or the `datastore.databases.import` permission, if you are importing data. The `Datastore Import Export Admin` [role](https://docs.cloud.google.com/datastore/docs/access/iam#iam_roles) , for example, grants both permissions.
 
 4.  If the Cloud Storage bucket is in another project, [give the Firestore service agent access to the bucket](https://docs.cloud.google.com/datastore/docs/export-import-entities#service_agent_permissions) .
 
-### Set up `     gcloud    ` for your project
+### Set up `gcloud` for your project
 
-If you plan to use `  gcloud  ` to start your import and export operations, set up `  gcloud  ` and connect to your project in one of the following ways:
+If you plan to use `gcloud` to start your import and export operations, set up `gcloud` and connect to your project in one of the following ways:
 
-  - Access `  gcloud  ` from the Google Cloud console using [Cloud Shell](https://docs.cloud.google.com/shell) .
+  - Access `gcloud` from the Google Cloud console using [Cloud Shell](https://docs.cloud.google.com/shell) .
     
     [Start Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
     
@@ -56,7 +56,7 @@ To run export and import operations, your user account and your project's Datast
 
 ### User account permissions
 
-The user account or service account initiating the operation requires the `  datastore.databases.export  ` and `  datastore.databases.import  ` IAM permissions. **If you are the project owner, your account has the required permissions** . Otherwise, the following IAM roles grant the necessary permissions:
+The user account or service account initiating the operation requires the `datastore.databases.export` and `datastore.databases.import` IAM permissions. **If you are the project owner, your account has the required permissions** . Otherwise, the following IAM roles grant the necessary permissions:
 
   - Datastore Owner
   - Datastore Import Export Admin
@@ -70,7 +70,7 @@ A project owner can grant one of these roles by following the steps in [Grant ac
 Export and import operations use a Firestore service agent to authorize Cloud Storage operations. The Firestore service agent uses the following naming convention:
 
   - Firestore service agent  
-    `  service- PROJECT_NUMBER @gcp-sa-firestore.iam.gserviceaccount.com  `
+    `service- PROJECT_NUMBER @gcp-sa-firestore.iam.gserviceaccount.com`
 
 To learn more about service agents, see [Service agents](https://cloud.google.com/iam/docs/service-agents) .
 
@@ -116,10 +116,10 @@ For export operations involving a bucket in another project, modify the permissi
 
 You can also create an [IAM custom role](https://docs.cloud.google.com/iam/docs/creating-custom-roles) with slightly different permissions than the ones contained in the roles listed earlier:
 
-  - `  storage.buckets.get  `
-  - `  storage.objects.create  `
-  - `  storage.objects.delete  `
-  - `  storage.objects.list  `
+  - `storage.buckets.get`
+  - `storage.objects.create`
+  - `storage.objects.delete`
+  - `storage.objects.list`
 
 ### Import operations
 
@@ -130,8 +130,8 @@ For import operations involving a Cloud Storage bucket in another project, modif
 
 You can also create an [IAM custom role](https://docs.cloud.google.com/iam/docs/creating-custom-roles) with the following permissions:
 
-  - `  storage.buckets.get  `
-  - `  storage.objects.get  `
+  - `storage.buckets.get`
+  - `storage.objects.get`
 
 ## Starting managed export and import operations
 
@@ -153,7 +153,7 @@ This section describes how to start a managed export or import operation.
 
 1.  In the navigation menu, click **Import/Export** .
 2.  Click **Export** .
-3.  Set the **Namespace** field to `  All Namespaces  ` , and set the **Kind** field to `  All Kinds  ` .
+3.  Set the **Namespace** field to `All Namespaces` , and set the **Kind** field to `All Kinds` .
 4.  Below **Destination** , enter the name of your Cloud Storage bucket.
 5.  Click **Export** .
 
@@ -161,17 +161,17 @@ The console returns to the **Import/Export** page. An alert reports the success 
 
 ### gcloud
 
-Use the [`  gcloud firestore export  `](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/export) command to export all entities in your database.
+Use the [`gcloud firestore export`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/export) command to export all entities in your database.
 
 ``` notranslate
  gcloud firestore export gs://bucket-name --async --database=DATABASE
 ```
 
-where bucket-name is the name of your Cloud Storage bucket and an optional prefix, for example, `  bucket-name /datastore-exports/export-name  ` . You cannot re-use the same prefix for another export operation. If you do not provide a file prefix, the managed export service creates one based on the current time.
+where bucket-name is the name of your Cloud Storage bucket and an optional prefix, for example, `  bucket-name /datastore-exports/export-name ` . You cannot re-use the same prefix for another export operation. If you do not provide a file prefix, the managed export service creates one based on the current time.
 
-Use the [`  --async  `](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/export#--async) flag to prevent `  gcloud  ` from waiting for the operation to complete. If you omit the `  --async  ` flag, you can type `  Ctrl+c  ` to stop waiting for an operation. This will not cancel the operation.
+Use the [`--async`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/export#--async) flag to prevent `gcloud` from waiting for the operation to complete. If you omit the `--async` flag, you can type `Ctrl+c` to stop waiting for an operation. This will not cancel the operation.
 
-Set the `  --database  ` flag to the name of the database from which you want to export the entities. For the default database, use `  --database='(default)'  ` .
+Set the `--database` flag to the name of the database from which you want to export the entities. For the default database, use `--database='(default)'` .
 
 ### rest
 
@@ -194,9 +194,9 @@ To send your request, expand one of these options:
 
 #### curl (Linux, macOS, or Cloud Shell)
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `  gcloud  ` CLI . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
-Save the request body in a file named `  request.json  ` , and execute the following command:
+Save the request body in a file named `request.json` , and execute the following command:
 
     curl -X POST \
          -H "Authorization: Bearer $(gcloud auth print-access-token)" \
@@ -206,9 +206,9 @@ Save the request body in a file named `  request.json  ` , and execute the follo
 
 #### PowerShell (Windows)
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
-Save the request body in a file named `  request.json  ` , and execute the following command:
+Save the request body in a file named `request.json` , and execute the following command:
 
     $cred = gcloud auth print-access-token
     $headers = @{ "Authorization" = "Bearer $cred" }
@@ -250,7 +250,7 @@ To export a specific subset of kinds and/or namespaces, provide an *entity filte
 
 In the console, you can select either all kinds or one specific kind. Similarly, you can select all namespaces or one specific namespace.
 
-To specify a list of namespaces and kinds to export, use `  gcloud  ` instead.
+To specify a list of namespaces and kinds to export, use `gcloud` instead.
 
 1.  In the Google Cloud console, go to the **Databases** page.
     
@@ -262,9 +262,9 @@ To specify a list of namespaces and kinds to export, use `  gcloud  ` instead.
 
 4.  Click **Export** .
 
-5.  Set the **Namespace** field to `  All Namespaces  ` or to the name of one of your namespaces.
+5.  Set the **Namespace** field to `All Namespaces` or to the name of one of your namespaces.
 
-6.  Set the **Kind** field to `  All Kinds  ` or to the name a kind.
+6.  Set the **Kind** field to `All Kinds` or to the name a kind.
 
 7.  Under **Destination** , enter the name of your Cloud Storage bucket.
 
@@ -282,11 +282,11 @@ The console returns to the **Import/Export** page. An alert reports the success 
   --database=DATABASE
 ```
 
-where bucket-name is the name of your Cloud Storage bucket and an optional prefix, for example, `  bucket-name /datastore-exports/export-name  ` . You cannot re-use the same prefix for another export operation. If you do not provide a file prefix, the managed export service creates one based on the current time.
+where bucket-name is the name of your Cloud Storage bucket and an optional prefix, for example, `  bucket-name /datastore-exports/export-name ` . You cannot re-use the same prefix for another export operation. If you do not provide a file prefix, the managed export service creates one based on the current time.
 
-Use the [`  --async  `](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/export#--async) flag to prevent `  gcloud  ` from waiting for the operation to complete. If you omit the `  --async  ` flag, you can type `  Ctrl+c  ` to stop waiting for an operation. This will not cancel the operation.
+Use the [`--async`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/export#--async) flag to prevent `gcloud` from waiting for the operation to complete. If you omit the `--async` flag, you can type `Ctrl+c` to stop waiting for an operation. This will not cancel the operation.
 
-Set the `  --database  ` flag to the name of the database from which you want to export specific kinds or namespaces. For the default database, use `  --database='(default)'  ` .
+Set the `--database` flag to the name of the database from which you want to export specific kinds or namespaces. For the default database, use `--database='(default)'` .
 
 ### rest
 
@@ -315,9 +315,9 @@ To send your request, expand one of these options:
 
 #### curl (Linux, macOS, or Cloud Shell)
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `  gcloud  ` CLI . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
-Save the request body in a file named `  request.json  ` , and execute the following command:
+Save the request body in a file named `request.json` , and execute the following command:
 
     curl -X POST \
          -H "Authorization: Bearer $(gcloud auth print-access-token)" \
@@ -327,9 +327,9 @@ Save the request body in a file named `  request.json  ` , and execute the follo
 
 #### PowerShell (Windows)
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
-Save the request body in a file named `  request.json  ` , and execute the following command:
+Save the request body in a file named `request.json` , and execute the following command:
 
     $cred = gcloud auth print-access-token
     $headers = @{ "Authorization" = "Bearer $cred" }
@@ -370,9 +370,9 @@ The response is a [long-running operation](https://docs.cloud.google.com/datasto
 
 ### Metadata files
 
-An export operation creates a metadata file for each namespace-kind pair specified. Metadata files are typically named `  NAMESPACE_NAME_KIND_NAME.export_metadata  ` . However, if a namespace or kind would create an invalid [Cloud Storage object name](https://docs.cloud.google.com/storage/docs/objects#naming) , the file will be named `  export[NUM].export_metadata  ` .
+An export operation creates a metadata file for each namespace-kind pair specified. Metadata files are typically named `NAMESPACE_NAME_KIND_NAME.export_metadata` . However, if a namespace or kind would create an invalid [Cloud Storage object name](https://docs.cloud.google.com/storage/docs/objects#naming) , the file will be named `export[NUM].export_metadata` .
 
-The metadata files are protocol buffers and can be decoded with the [`  protoc  ` protocol compiler](https://github.com/protocolbuffers/protobuf#readme) . For example, you can decode a metadata file to determine the namespace and kinds the export files contain:
+The metadata files are protocol buffers and can be decoded with the [`protoc` protocol compiler](https://github.com/protocolbuffers/protobuf#readme) . For example, you can decode a metadata file to determine the namespace and kinds the export files contain:
 
 ``` notranslate
 protoc --decode_raw < export0.export_metadata
@@ -392,11 +392,11 @@ protoc --decode_raw < export0.export_metadata
 
 4.  Click **Import** .
 
-5.  In the `  File  ` field, click *Browse* and select an `  .overall_export_metadata  ` file.
+5.  In the `File` field, click *Browse* and select an `.overall_export_metadata` file.
     
-    Make sure that the `  .overall_export_metadata  ` file is not moved from the default location.
+    Make sure that the `.overall_export_metadata` file is not moved from the default location.
 
-6.  Set the **Namespace** field to `  All Namespaces  ` , and set the **Kind** field to `  All Kinds  ` .
+6.  Set the **Namespace** field to `All Namespaces` , and set the **Kind** field to `All Kinds` .
 
 7.  Click **Import** .
 
@@ -412,11 +412,11 @@ gcloud firestore import gs://bucket-name/file-path/file-name.overall_export_meta
 --database=DATABASE
 ```
 
-where bucket-name/file-path/file-name is the path to your `  overall_export_metadata  ` file within your Cloud Storage bucket.
+where bucket-name/file-path/file-name is the path to your `overall_export_metadata` file within your Cloud Storage bucket.
 
-Use the [`  --async  `](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/export#--async) flag to prevent `  gcloud  ` from waiting for the operation to complete. If you omit the `  --async  ` flag, you can type `  Ctrl+c  ` to stop waiting for an operation. This will not cancel the operation.
+Use the [`--async`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/export#--async) flag to prevent `gcloud` from waiting for the operation to complete. If you omit the `--async` flag, you can type `Ctrl+c` to stop waiting for an operation. This will not cancel the operation.
 
-Set the `  --database  ` flag to the name of the database where you want to import all the entities. For the default database, use `  --database='(default)'  ` .
+Set the `--database` flag to the name of the database where you want to import all the entities. For the default database, use `--database='(default)'` .
 
 ### rest
 
@@ -424,7 +424,7 @@ Before using any of the request data, make the following replacements:
 
   - project-id : your project ID
   - bucket-name : your Cloud Storage bucket name
-  - object-name : your Cloud Storage object name (example: `  2017-05-25T23:54:39_76544/2017-05-25T23:54:39_76544.overall_export_metadata  `
+  - object-name : your Cloud Storage object name (example: `2017-05-25T23:54:39_76544/2017-05-25T23:54:39_76544.overall_export_metadata`
 
 HTTP method and URL:
 
@@ -440,9 +440,9 @@ To send your request, expand one of these options:
 
 #### curl (Linux, macOS, or Cloud Shell)
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `  gcloud  ` CLI . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
-Save the request body in a file named `  request.json  ` , and execute the following command:
+Save the request body in a file named `request.json` , and execute the following command:
 
     curl -X POST \
          -H "Authorization: Bearer $(gcloud auth print-access-token)" \
@@ -452,9 +452,9 @@ Save the request body in a file named `  request.json  ` , and execute the follo
 
 #### PowerShell (Windows)
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
-Save the request body in a file named `  request.json  ` , and execute the following command:
+Save the request body in a file named `request.json` , and execute the following command:
 
     $cred = gcloud auth print-access-token
     $headers = @{ "Authorization" = "Bearer $cred" }
@@ -486,13 +486,13 @@ You should receive a JSON response similar to the following:
 
 The response is a [long-running operation](https://docs.cloud.google.com/datastore/docs/export-import-entities#long-running-operation) , which you can check for completion.
 
-#### Locating your `     overall_export_metadata    ` file
+#### Locating your `overall_export_metadata` file
 
 You can determine the value to use for the import location by using the Cloud Storage browser in the Google Cloud console:
 
 [Open the Cloud Storage Browser](https://console.cloud.google.com/storage/browser)
 
-You can also [list and describe completed operations](https://docs.cloud.google.com/datastore/docs/export-import-entities#long-running-operation) . The `  outputURL  ` field shows the name of the `  overall_export_metadata  ` file:
+You can also [list and describe completed operations](https://docs.cloud.google.com/datastore/docs/export-import-entities#long-running-operation) . The `outputURL` field shows the name of the `overall_export_metadata` file:
 
 ``` notranslate
 "outputUrl": "gs://bucket-name/2017-05-25T23:54:39_76544/2017-05-25T23:54:39_76544.overall_export_metadata",
@@ -508,7 +508,7 @@ You can specify kinds and namespaces only if the export files were created with 
 
 In the console, you can select either all kinds or one specific kind. Similarly, you can select all namespaces or one specific namespace.
 
-To specify a list of namespaces and kinds to import, use `  gcloud  ` instead.
+To specify a list of namespaces and kinds to import, use `gcloud` instead.
 
 1.  In the Google Cloud console, go to the **Databases** page.
     
@@ -520,13 +520,13 @@ To specify a list of namespaces and kinds to import, use `  gcloud  ` instead.
 
 4.  Click **Import** .
 
-5.  In the `  File  ` field, click *Browse* and select an `  .overall_export_metadata  ` file.
+5.  In the `File` field, click *Browse* and select an `.overall_export_metadata` file.
     
-    Ensure that you import the `  .overall_export_metadata  ` file and not an `  .export_metadata  ` file.
+    Ensure that you import the `.overall_export_metadata` file and not an `.export_metadata` file.
 
-6.  Set the **Namespace** field to `  All Namespaces  ` or to a specific namespace.
+6.  Set the **Namespace** field to `All Namespaces` or to a specific namespace.
 
-7.  Set the **Kind** field to `  All Kinds  ` or to a specific kind.
+7.  Set the **Kind** field to `All Kinds` or to a specific kind.
 
 8.  Click **Import** .
 
@@ -542,11 +542,11 @@ The console returns to the **Import/Export** page. An alert reports the success 
   --database=DATABASE
 ```
 
-where bucket-name/file-path/file-name is the path to your `  overall_export_metadata  ` file within your Cloud Storage bucket.
+where bucket-name/file-path/file-name is the path to your `overall_export_metadata` file within your Cloud Storage bucket.
 
-Use the [`  --async  `](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/export#--async) flag to prevent `  gcloud  ` from waiting for the operation to complete. If you omit the `  --async  ` flag, you can type `  Ctrl+c  ` to stop waiting for an operation. This will not cancel the operation.
+Use the [`--async`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/export#--async) flag to prevent `gcloud` from waiting for the operation to complete. If you omit the `--async` flag, you can type `Ctrl+c` to stop waiting for an operation. This will not cancel the operation.
 
-Set the `  --database  ` flag to the name of the database where you want to import the specific kinds or namespaces. For the default database, use `  --database='(default)'  ` .
+Set the `--database` flag to the name of the database where you want to import the specific kinds or namespaces. For the default database, use `--database='(default)'` .
 
 ### rest
 
@@ -554,7 +554,7 @@ Before using any of the request data, make the following replacements:
 
   - project-id : your project ID
   - bucket-name : your Cloud Storage bucket name
-  - object-name : your Cloud Storage object name (example: `  2017-05-25T23:54:39_76544/2017-05-25T23:54:39_76544.overall_export_metadata  `
+  - object-name : your Cloud Storage object name (example: `2017-05-25T23:54:39_76544/2017-05-25T23:54:39_76544.overall_export_metadata`
   - kind : the entity kind
   - namespace : the namespace ID (use "" for the default namespace ID)
 
@@ -576,9 +576,9 @@ To send your request, expand one of these options:
 
 #### curl (Linux, macOS, or Cloud Shell)
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `  gcloud  ` CLI . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
-Save the request body in a file named `  request.json  ` , and execute the following command:
+Save the request body in a file named `request.json` , and execute the following command:
 
     curl -X POST \
          -H "Authorization: Bearer $(gcloud auth print-access-token)" \
@@ -588,9 +588,9 @@ Save the request body in a file named `  request.json  ` , and execute the follo
 
 #### PowerShell (Windows)
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
-Save the request body in a file named `  request.json  ` , and execute the following command:
+Save the request body in a file named `request.json` , and execute the following command:
 
     $cred = gcloud auth print-access-token
     $headers = @{ "Authorization" = "Bearer $cred" }
@@ -631,14 +631,14 @@ The response is a [long-running operation](https://docs.cloud.google.com/datasto
 
 ### Export and import from PITR data
 
-You can export your database to Cloud Storage from [PITR data](https://docs.cloud.google.com/datastore/docs/pitr) . You can export PITR data where the timestamp is a whole minute timestamp within the past seven days, but not earlier than the `  earliestVersionTime  ` . If data no longer exists at the specified timestamp, the export operation fails.
+You can export your database to Cloud Storage from [PITR data](https://docs.cloud.google.com/datastore/docs/pitr) . You can export PITR data where the timestamp is a whole minute timestamp within the past seven days, but not earlier than the `earliestVersionTime` . If data no longer exists at the specified timestamp, the export operation fails.
 
 The PITR export operation supports all filters, including exporting all documents and exporting specific collections.
 
 Note the following points before exporting PITR data:
 
-  - Specify the timestamp in [RFC 3339 format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Timestamp) . For example, `  2023-05-26T10:20:00.00Z  ` .
-  - Make sure that the timestamp you specify is a whole minute timestamp within the past seven days, but not earlier than the `  earliestVersionTime  ` . If data no longer exists at the specified timestamp, an error is generated.
+  - Specify the timestamp in [RFC 3339 format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Timestamp) . For example, `2023-05-26T10:20:00.00Z` .
+  - Make sure that the timestamp you specify is a whole minute timestamp within the past seven days, but not earlier than the `earliestVersionTime` . If data no longer exists at the specified timestamp, an error is generated.
   - You are not charged for a failed PITR export.
 
 ### Console
@@ -669,16 +669,16 @@ Note the following points before exporting PITR data:
 
 ### gcloud
 
-You can export your database to Cloud Storage from [PITR data](https://docs.cloud.google.com/datastore/docs/pitr) using the [`  gcloud firestore export  `](https://cloud.google.com/sdk/gcloud/reference/firestore/export) command. The PITR export operation supports all filters, including exporting all entities and exporting specific kinds or namespaces.
+You can export your database to Cloud Storage from [PITR data](https://docs.cloud.google.com/datastore/docs/pitr) using the [`gcloud firestore export`](https://cloud.google.com/sdk/gcloud/reference/firestore/export) command. The PITR export operation supports all filters, including exporting all entities and exporting specific kinds or namespaces.
 
-Export the database, specifying the `  snapshot-time  ` parameter to a recovery timestamp. Run the following command to export the database to your bucket.
+Export the database, specifying the `snapshot-time` parameter to a recovery timestamp. Run the following command to export the database to your bucket.
 
     gcloud firestore export gs://[BUCKET_NAME_PATH] \
               --snapshot-time=[PITR_TIMESTAMP] \
               --collection-ids=[COLLECTION_IDS] \
               --namespace-ids=[NAMESPACE_IDS]
 
-Where `  PITR_TIMESTAMP  ` is a PITR timestamp at the minute granularity, for example, `  2023-05-26T10:20:00.00Z  ` .
+Where `  PITR_TIMESTAMP  ` is a PITR timestamp at the minute granularity, for example, `2023-05-26T10:20:00.00Z` .
 
 ### Import transformations
 
@@ -692,13 +692,13 @@ Managed import and export operations are *long-running operations* . These metho
 
 After you start an export or import operation, Datastore mode assigns the operation a unique name. You can use the operation name to delete, cancel, or status check the operation.
 
-Operation names are prefixed with `  projects/[PROJECT_ID]/databases/(default)/operations/  ` , for example:
+Operation names are prefixed with `projects/[PROJECT_ID]/databases/(default)/operations/` , for example:
 
 ``` notranslate
 projects/project-id/databases/(default)/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
 ```
 
-You can leave out the prefix when specifying an operation name for `  gcloud  ` commands.
+You can leave out the prefix when specifying an operation name for `gcloud` commands.
 
 ### Listing all long-running operations
 
@@ -777,7 +777,7 @@ To send your request, expand one of these options:
 
 #### curl (Linux, macOS, or Cloud Shell)
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `  gcloud  ` CLI . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Execute the following command:
 
@@ -787,7 +787,7 @@ Execute the following command:
 
 #### PowerShell (Windows)
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Execute the following command:
 
@@ -858,7 +858,7 @@ You can view a list of the most recent export and import operations in the **Imp
 
 ### gcloud
 
-Use the [`  operations describe  `](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/describe) command to show the status of a long-running operation.
+Use the [`operations describe`](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/describe) command to show the status of a long-running operation.
 
 ``` notranslate
 gcloud datastore operations describe operation-name
@@ -879,7 +879,7 @@ To send your request, expand one of these options:
 
 #### curl (Linux, macOS, or Cloud Shell)
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `  gcloud  ` CLI . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Execute the following command:
 
@@ -889,7 +889,7 @@ Execute the following command:
 
 #### PowerShell (Windows)
 
-**Note:** The following command assumes that you have logged in to the `  gcloud  ` CLI with your user account by running [`  gcloud init  `](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`  gcloud auth login  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`  gcloud auth list  `](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Execute the following command:
 
@@ -935,15 +935,15 @@ You should receive a JSON response similar to the following:
 
 ### Estimating the completion time
 
-As your operation runs, see the value of the [`  state  ` field](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1#state) for the overall status of the operation.
+As your operation runs, see the value of the [`state` field](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1#state) for the overall status of the operation.
 
-A request for the status of a long-running operation returns the metrics `  workEstimated  ` and `  workCompleted  ` . Each of these metrics is returned in both number of bytes and number of entities:
+A request for the status of a long-running operation returns the metrics `workEstimated` and `workCompleted` . Each of these metrics is returned in both number of bytes and number of entities:
 
-  - `  workEstimated  ` shows the estimated total number of bytes and documents an operation will process. Datastore mode might omit this metric if it cannot make an estimate.
+  - `workEstimated` shows the estimated total number of bytes and documents an operation will process. Datastore mode might omit this metric if it cannot make an estimate.
 
-  - `  workCompleted  ` shows the number of bytes and documents processed so far. After the operation completes, the value shows the total number of bytes and documents that were actually processed, which might be larger than the value of `  workEstimated  ` .
+  - `workCompleted` shows the number of bytes and documents processed so far. After the operation completes, the value shows the total number of bytes and documents that were actually processed, which might be larger than the value of `workEstimated` .
 
-Divide `  workCompleted  ` by `  workEstimated  ` for a rough progress estimate. This estimate might be inaccurate, because it depends on delayed statistics collection.
+Divide `workCompleted` by `workEstimated` for a rough progress estimate. This estimate might be inaccurate, because it depends on delayed statistics collection.
 
 For example, here is the progress status of an export operation:
 
@@ -966,7 +966,7 @@ For example, here is the progress status of an export operation:
         ...
 ```
 
-When an operation completes, the operation description contains [`  "done": true  `](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.longrunning#operation) . See the value of the [`  state  ` field](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1#state) for the result of the operation. If the `  done  ` field is not set in the response, then its value is `  false  ` . Don't depend on the existence of the `  done  ` value for in-progress operations.
+When an operation completes, the operation description contains [`"done": true`](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.longrunning#operation) . See the value of the [`state` field](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1#state) for the result of the operation. If the `done` field is not set in the response, then its value is `false` . Don't depend on the existence of the `done` value for in-progress operations.
 
 ### Cancel an operation
 
@@ -988,7 +988,7 @@ In the *Recent imports and exports* table, currently running operations include 
 
 ### gcloud
 
-Use the [`  operations cancel  `](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/cancel) command to stop an operation in progress:
+Use the [`operations cancel`](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/cancel) command to stop an operation in progress:
 
 ``` notranslate
 gcloud datastore operations cancel operation-name
@@ -1000,7 +1000,7 @@ Cancelling a running operation does not undo the operation. A cancelled export o
 
 ### gcloud
 
-Use the [`  operations delete  `](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/delete) command to remove an operation from the list of recent operations. This command won't delete export files from Cloud Storage.
+Use the [`operations delete`](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/delete) command to remove an operation from the list of recent operations. This command won't delete export files from Cloud Storage.
 
 ``` notranslate
 gcloud datastore operations delete operation-name
@@ -1017,11 +1017,11 @@ Export or import operations won't trigger any [Google Cloud budget](https://docs
 
 ### Viewing export and import costs
 
-Export and import operations apply the `  goog-firestoremanaged:exportimport  ` label to billed operations. In the [Cloud Billing reports page](https://docs.cloud.google.com/billing/docs/how-to/reports#getting_started) , you can use this label to view costs related to import and export operations:
+Export and import operations apply the `goog-firestoremanaged:exportimport` label to billed operations. In the [Cloud Billing reports page](https://docs.cloud.google.com/billing/docs/how-to/reports#getting_started) , you can use this label to view costs related to import and export operations:
 
 ![Access the goog-firestoremanaged label from the filters menu.](https://docs.cloud.google.com/static/firestore/native/docs/images/firestore-import-export-billing-label.png)
 
-**Note:** Export and import operations executed before September 8th, 2020 did not apply the `  goog-firestoremanaged  ` label.
+**Note:** Export and import operations executed before September 8th, 2020 did not apply the `goog-firestoremanaged` label.
 
 ## Differences from Datastore Admin backups
 
@@ -1052,12 +1052,12 @@ If a kind's BigQuery schema surpasses 10,000 columns, the export operation attem
 Firestore uses a Firestore service agent to authorize import and export operations instead of using the App Engine service account. The service agent and service account use the following naming conventions:
 
   - Firestore service agent  
-    `  service- PROJECT_NUMBER @gcp-sa-firestore.iam.gserviceaccount.com  `
+    `service- PROJECT_NUMBER @gcp-sa-firestore.iam.gserviceaccount.com`
 
 Firestore previously used the App Engine default service account instead of the Firestore service agent. If your database still uses the App Engine service account to import or export data, we recommend that you follow the instructions in this section to migrate to using the Firestore service agent.
 
   - App Engine service account  
-    `  PROJECT_ID @appspot.gserviceaccount.com  `
+    `  PROJECT_ID @appspot.gserviceaccount.com `
 
 The Firestore service agent is preferable because it is specific to Firestore. The App Engine service account is shared by more than one service.
 
@@ -1097,9 +1097,9 @@ For any export or import operations that use a Cloud Storage bucket in *another*
 
 Import and export workflows that stay within the same project do not require changes to permissions. The Firestore service agent can access buckets in the same project by default.
 
-Update the permissions for Cloud Storage buckets from other projects to give access to the `  service- PROJECT_NUMBER @gcp-sa-firestore.iam.gserviceaccount.com  ` service agent. Grant the service agent the `  Firestore Service Agent  ` role.
+Update the permissions for Cloud Storage buckets from other projects to give access to the `service- PROJECT_NUMBER @gcp-sa-firestore.iam.gserviceaccount.com` service agent. Grant the service agent the `Firestore Service Agent` role.
 
-The `  Firestore Service Agent  ` role grants read and write permissions for a Cloud Storage bucket. If you need to grant only read or only write permissions, use a [custom role](https://cloud.google.com/iam/docs/creating-custom-roles) .
+The `Firestore Service Agent` role grants read and write permissions for a Cloud Storage bucket. If you need to grant only read or only write permissions, use a [custom role](https://cloud.google.com/iam/docs/creating-custom-roles) .
 
 The migration process described in the following section helps you identify Cloud Storage buckets that might require permission updates.
 
@@ -1159,7 +1159,7 @@ To verify your project's migration status:
 
 4.  Look for the principal next to the **Import/Export jobs run as** label.
     
-    If the principal is `  service- PROJECT_NUMBER @gcp-sa-firestore.iam.gserviceaccount.com  ` , then your project has already migrated to the Firestore service agent. The migration can't be undone.
+    If the principal is `service- PROJECT_NUMBER @gcp-sa-firestore.iam.gserviceaccount.com` , then your project has already migrated to the Firestore service agent. The migration can't be undone.
     
     If the project has not been migrated, a banner appears at the top of the page with a **Check Bucket Status** button. See [Migrate to the Firestore service agent](https://docs.cloud.google.com/datastore/docs/export-import-entities#migrate_to_the_firestore_service_agent) to complete the migration.
 
@@ -1167,7 +1167,7 @@ To verify your project's migration status:
 
   - Set the following constraint in your organization's policy:
     
-    **Require Firestore Service Agent for import/export** ( `  firestore.requireP4SAforImportExport  ` ).
+    **Require Firestore Service Agent for import/export** ( `firestore.requireP4SAforImportExport` ).
     
     This constraint requires import and export operations to use the Firestore service agent to authorize requests. To set this constraint, see [Creating and managing organization policies](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-policies#creating_and_editing_policies) .
 

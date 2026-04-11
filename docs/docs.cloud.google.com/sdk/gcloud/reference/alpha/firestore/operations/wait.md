@@ -4,15 +4,15 @@ gcloud alpha firestore operations wait - waits a Cloud Firestore admin operation
 
 SYNOPSIS
 
-`  gcloud alpha firestore operations wait  ` `  NAME  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud alpha firestore operations wait` `  NAME  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (ALPHA)  ` Waits a Cloud Firestore admin operation to complete.
+`(ALPHA)` Waits a Cloud Firestore admin operation to complete.
 
 EXAMPLES
 
-To wait a Cloud Firestore admin operation `  exampleOperationId  ` to complete, run:
+To wait a Cloud Firestore admin operation `exampleOperationId` to complete, run:
 
 ``` wrap-code
 gcloud alpha firestore operations wait exampleOperationId
@@ -29,7 +29,7 @@ GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 NOTES
 

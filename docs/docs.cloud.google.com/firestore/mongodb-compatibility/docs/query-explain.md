@@ -6,7 +6,7 @@ This page describes how to retrieve query execution information when you execute
 
 You can use Query Explain to understand how your queries are being executed. This provides details that you can use to [optimize your queries](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/optimize-query-performance) .
 
-You can use Query Explain through the Google Cloud console or the `  explain  ` command.
+You can use Query Explain through the Google Cloud console or the `explain` command.
 
 ##### Console
 
@@ -26,13 +26,13 @@ Execute a query in the Query Editor and open the **Explanation** tab:
 
 ##### MongoDB API
 
-Query Explain in the MongoDB API is supported through the [`  explain  `](https://www.mongodb.com/docs/manual/reference/command/explain/) command which you can use in tools such as Mongo Shell and Compass.
+Query Explain in the MongoDB API is supported through the [`explain`](https://www.mongodb.com/docs/manual/reference/command/explain/) command which you can use in tools such as Mongo Shell and Compass.
 
-The `  explain  ` command is supported with the `  aggregate  ` , `  find  ` , `  distinct  ` , and `  count  ` commands, for example:
+The `explain` command is supported with the `aggregate` , `find` , `distinct` , and `count` commands, for example:
 
     db.collection.explain('executionStats').find(...)
 
-You can also use the `  explain()  ` method, for example:
+You can also use the `explain()` method, for example:
 
     db.collection.find({QUERY}).explain('executionStats')
 
@@ -44,11 +44,11 @@ Note the following limitations and differences:
     
         db.collection.aggregate(..., explain: true)
 
-  - Query Explain is only supported on the `  find  ` , `  aggregate  ` , `  count  ` , and `  distinct  ` commands.
+  - Query Explain is only supported on the `find` , `aggregate` , `count` , and `distinct` commands.
 
-  - The `  Verbosity  ` and `  Comment  ` options of Query Explain are not supported through the MongoDB API. The behaviour matches the `  executionStats  ` option. The `  allPlansExecution  ` and `  queryPlanner  ` options are ignored if provided.
+  - The `Verbosity` and `Comment` options of Query Explain are not supported through the MongoDB API. The behaviour matches the `executionStats` option. The `allPlansExecution` and `queryPlanner` options are ignored if provided.
     
-    If no verbosity is provided, the shell uses the `  queryPlanner  ` verbosity and filters out execution stats. You must use the `  executionStats  ` or `  allPlansExecution  ` verbosity to see the full output.
+    If no verbosity is provided, the shell uses the `queryPlanner` verbosity and filters out execution stats. You must use the `executionStats` or `allPlansExecution` verbosity to see the full output.
 
 ## Analysis
 

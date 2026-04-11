@@ -2,7 +2,7 @@
 
 This page shows you how to use Organization Policy Service custom constraints to restrict specific operations on the following Google Cloud resources:
 
-  - `  firestore.googleapis.com/Database  `
+  - `firestore.googleapis.com/Database`
 
 To learn more about Organization Policy, see [Custom organization policies](https://docs.cloud.google.com/organization-policy/overview#custom-organization-policies) .
 
@@ -34,7 +34,7 @@ By default, organization policies are inherited by the descendants of the resour
 
 ### Required roles
 
-To get the permissions that you need to manage custom organization policies, ask your administrator to grant you the [Organization Policy Administrator](https://docs.cloud.google.com/iam/docs/roles-permissions/orgpolicy#orgpolicy.policyAdmin) ( `  roles/orgpolicy.policyAdmin  ` ) IAM role on the organization resource. For more information about granting roles, see [Manage access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
+To get the permissions that you need to manage custom organization policies, ask your administrator to grant you the [Organization Policy Administrator](https://docs.cloud.google.com/iam/docs/roles-permissions/orgpolicy#orgpolicy.policyAdmin) ( `roles/orgpolicy.policyAdmin` ) IAM role on the organization resource. For more information about granting roles, see [Manage access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
 
 You might also be able to get the required permissions through [custom roles](https://docs.cloud.google.com/iam/docs/creating-custom-roles) or other [predefined roles](https://docs.cloud.google.com/iam/docs/roles-overview#predefined) .
 
@@ -56,19 +56,19 @@ Click add **Custom constraint** .
 
 In the **Display name** box, enter a human-readable name for the constraint. This name is used in error messages and can be used for identification and debugging. Don't use personally identifiable information (PII) or sensitive data in display names because this name could be exposed in error messages. This field can contain up to 200 characters.
 
-In the **Constraint ID** box, enter the ID that you want for your new custom constraint. A custom constraint can only contain letters (including upper and lowercase) or numbers, for example `  custom.deleteProtectionRequired  ` . This field can contain up to 70 characters, not counting the prefix ( `  custom.  ` ), for example, `  organizations/123456789/customConstraints/custom  ` . Don't include PII or sensitive data in your constraint ID, because it could be exposed in error messages.
+In the **Constraint ID** box, enter the ID that you want for your new custom constraint. A custom constraint can only contain letters (including upper and lowercase) or numbers, for example `custom.deleteProtectionRequired` . This field can contain up to 70 characters, not counting the prefix ( `custom.` ), for example, `organizations/123456789/customConstraints/custom` . Don't include PII or sensitive data in your constraint ID, because it could be exposed in error messages.
 
 In the **Description** box, enter a human-readable description of the constraint. This description is used as an error message when the policy is violated. Include details about why the policy violation occurred and how to resolve the policy violation. Don't include PII or sensitive data in your description, because it could be exposed in error messages. This field can contain up to 2000 characters.
 
-In the **Resource type** box, select the name of the Google Cloud REST resource containing the object and field that you want to restrict—for example, `  container.googleapis.com/NodePool  ` . Most resource types support up to 20 custom constraints. If you attempt to create more custom constraints, the operation fails.
+In the **Resource type** box, select the name of the Google Cloud REST resource containing the object and field that you want to restrict—for example, `container.googleapis.com/NodePool` . Most resource types support up to 20 custom constraints. If you attempt to create more custom constraints, the operation fails.
 
-Under **Enforcement method** , select whether to enforce the constraint on a REST `  CREATE  ` method or both `  CREATE  ` and `  UPDATE  ` methods. If you enforce the constraint with the `  UPDATE  ` method on a resource that violates the constraint, changes to that resource are blocked by the organization policy unless the change resolves the violation.
+Under **Enforcement method** , select whether to enforce the constraint on a REST `CREATE` method or both `CREATE` and `UPDATE` methods. If you enforce the constraint with the `UPDATE` method on a resource that violates the constraint, changes to that resource are blocked by the organization policy unless the change resolves the violation.
 
 To see supported methods for each service, find the service in [Services that support custom constraints](https://docs.cloud.google.com/organization-policy/reference/custom-constraint-supported-services) .
 
 To define a condition, click edit **Edit condition** .
 
-1.  In the **Add condition** panel, create a CEL condition that refers to a supported service resource, for example, `  resource.management.autoUpgrade == false  ` . This field can contain up to 1000 characters. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language) . For more information about the service resources you can use in your custom constraints, see [Custom constraint supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services) .
+1.  In the **Add condition** panel, create a CEL condition that refers to a supported service resource, for example, `resource.management.autoUpgrade == false` . This field can contain up to 1000 characters. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language) . For more information about the service resources you can use in your custom constraints, see [Custom constraint supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services) .
 2.  Click **Save** .
 
 Under **Action** , select whether to allow or deny the evaluated method if the condition is met.
@@ -97,24 +97,24 @@ To create a custom constraint, create a YAML file using the following format:
 
 Replace the following:
 
-  - `  ORGANIZATION_ID  ` : your organization ID, such as `  123456789  ` .
-  - `  CONSTRAINT_NAME  ` : the name that you want for your new custom constraint. A custom constraint can only contain letters (including upper and lowercase) or numbers, for example, `  custom.deleteProtectionRequired  ` . This field can contain up to 70 characters, not counting the prefix ( `  custom.  ` )— for example, `  organizations/123456789/customConstraints/custom  ` . Don't include PII or sensitive data in your constraint ID, because it could be exposed in error messages.
-  - `  RESOURCE_NAME  ` : the fully qualified name of the Google Cloud resource containing the object and field that you want to restrict. For example, `  firestore.googleapis.com/Database  ` . Most resource types support up to 20 custom constraints. If you attempt to create more custom constraints, the operation fails.
-  - `  methodTypes  ` : the REST methods that the constraint is enforced on. Can be `  CREATE  ` or both `  CREATE  ` and `  UPDATE  ` . If you enforce the constraint with the `  UPDATE  ` method on a resource that violates the constraint, changes to that resource are blocked by the organization policy unless the change resolves the violation.
-  - `  CONDITION  ` : a [CEL condition](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language) that is written against a representation of a supported service resource. This field can contain up to 1000 characters. For example, `  "resource.deleteProtectionState == \"DELETE_PROTECTION_ENABLED\""  ` .
-  - `  ACTION  ` : the action to take if the `  condition  ` is met. Possible values are `  ALLOW  ` and `  DENY  ` .
+  - `  ORGANIZATION_ID  ` : your organization ID, such as `123456789` .
+  - `  CONSTRAINT_NAME  ` : the name that you want for your new custom constraint. A custom constraint can only contain letters (including upper and lowercase) or numbers, for example, `custom.deleteProtectionRequired` . This field can contain up to 70 characters, not counting the prefix ( `custom.` )— for example, `organizations/123456789/customConstraints/custom` . Don't include PII or sensitive data in your constraint ID, because it could be exposed in error messages.
+  - `  RESOURCE_NAME  ` : the fully qualified name of the Google Cloud resource containing the object and field that you want to restrict. For example, `firestore.googleapis.com/Database` . Most resource types support up to 20 custom constraints. If you attempt to create more custom constraints, the operation fails.
+  - `methodTypes` : the REST methods that the constraint is enforced on. Can be `CREATE` or both `CREATE` and `UPDATE` . If you enforce the constraint with the `UPDATE` method on a resource that violates the constraint, changes to that resource are blocked by the organization policy unless the change resolves the violation.
+  - `  CONDITION  ` : a [CEL condition](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language) that is written against a representation of a supported service resource. This field can contain up to 1000 characters. For example, `"resource.deleteProtectionState == \"DELETE_PROTECTION_ENABLED\""` .
+  - `  ACTION  ` : the action to take if the `condition` is met. Possible values are `ALLOW` and `DENY` .
   - `  DISPLAY_NAME  ` : a human-readable name for the constraint. This name is used in error messages and can be used for identification and debugging. Don't use PII or sensitive data in display names because this name could be exposed in error messages. This field can contain up to 200 characters.
   - `  DESCRIPTION  ` : a human-friendly description of the constraint to display as an error message when the policy is violated. This field can contain up to 2000 characters.
 
-After you have created the YAML file for a new custom constraint, you must set it up to make it available for organization policies in your organization. To set up a custom constraint, use the [`  gcloud org-policies set-custom-constraint  `](https://docs.cloud.google.com/sdk/gcloud/reference/org-policies/set-custom-constraint) command:
+After you have created the YAML file for a new custom constraint, you must set it up to make it available for organization policies in your organization. To set up a custom constraint, use the [`gcloud org-policies set-custom-constraint`](https://docs.cloud.google.com/sdk/gcloud/reference/org-policies/set-custom-constraint) command:
 
     gcloud org-policies set-custom-constraint CONSTRAINT_PATH
 
-Replace `  CONSTRAINT_PATH  ` with the full path to your custom constraint file. For example, `  /home/user/customconstraint.yaml  ` .
+Replace `  CONSTRAINT_PATH  ` with the full path to your custom constraint file. For example, `/home/user/customconstraint.yaml` .
 
 After this operation is complete, your custom constraints are available as organization policies in your list of Google Cloud organization policies.
 
-To verify that the custom constraint exists, use the [`  gcloud org-policies list-custom-constraints  `](https://docs.cloud.google.com/sdk/gcloud/reference/org-policies/list-custom-constraints) command:
+To verify that the custom constraint exists, use the [`gcloud org-policies list-custom-constraints`](https://docs.cloud.google.com/sdk/gcloud/reference/org-policies/list-custom-constraints) command:
 
     gcloud org-policies list-custom-constraints --organization=ORGANIZATION_ID
 
@@ -168,15 +168,15 @@ To create an organization policy with boolean rules, create a policy YAML file t
 Replace the following:
 
   - `  PROJECT_ID  ` : the project that you want to enforce your constraint on.
-  - `  CONSTRAINT_NAME  ` : the name you defined for your custom constraint. For example, `  custom.deleteProtectionRequired  ` .
+  - `  CONSTRAINT_NAME  ` : the name you defined for your custom constraint. For example, `custom.deleteProtectionRequired` .
 
-To enforce the organization policy in [dry-run mode](https://docs.cloud.google.com/organization-policy/test-policies) , run the following command with the `  dryRunSpec  ` flag:
+To enforce the organization policy in [dry-run mode](https://docs.cloud.google.com/organization-policy/test-policies) , run the following command with the `dryRunSpec` flag:
 
     gcloud org-policies set-policy POLICY_PATH --update-mask=dryRunSpec
 
 Replace `  POLICY_PATH  ` with the full path to your organization policy YAML file. The policy requires up to 15 minutes to take effect.
 
-After you verify that the organization policy in dry-run mode works as intended, set the live policy with the `  org-policies set-policy  ` command and the `  spec  ` flag:
+After you verify that the organization policy in dry-run mode works as intended, set the live policy with the `org-policies set-policy` command and the `spec` flag:
 
     gcloud org-policies set-policy POLICY_PATH --update-mask=spec
 
@@ -190,7 +190,7 @@ Before you begin, you must know the following:
 
 <!-- end list -->
 
-1.  Create the `  deleteProtectionRequired.yaml  ` file as follows:
+1.  Create the `deleteProtectionRequired.yaml` file as follows:
     
     ``` 
      name: organizations/ORGANIZATION_ID/customConstraints/custom.deleteProtectionRequired
@@ -205,7 +205,7 @@ Before you begin, you must know the following:
      description: To ensure the data security, Delete Protection is required to be enabled for Firestore databases.
     ```
     
-    This makes sure that all `  CREATE  ` and `  UPDATE  ` methods on a Firestore with MongoDB compatibility database meet the constraint of `  deleteProtectionState  ` being `  DELETE_PROTECTION_ENABLED  ` . As a result, any databases create/update/restore/clone operations without explicitly enabling Delete Protection are rejected.
+    This makes sure that all `CREATE` and `UPDATE` methods on a Firestore with MongoDB compatibility database meet the constraint of `deleteProtectionState` being `DELETE_PROTECTION_ENABLED` . As a result, any databases create/update/restore/clone operations without explicitly enabling Delete Protection are rejected.
 
 2.  Set up the custom constraint at the organization level:
     
@@ -213,7 +213,7 @@ Before you begin, you must know the following:
 
 ### Test the policy
 
-Try to create a database without setting the `  --delete-protection  ` flag in a project in the organization:
+Try to create a database without setting the `--delete-protection` flag in a project in the organization:
 
     gcloud firestore database create \
        --project=PROJECT_ID \
@@ -248,7 +248,7 @@ This table provides syntax examples for some common custom constraints.
 </thead>
 <tbody>
 <tr class="odd">
-<td>Database names must follow a certain pattern. Note that the format of a database name in custom organization policies is <code dir="ltr" translate="no">       projects/               project-id              /databases/               database-id       </code> while only database-id is specified in database management operations.</td>
+<td>Database names must follow a certain pattern. Note that the format of a database name in custom organization policies is <code dir="ltr" translate="no">projects/         project-id        /databases/         database-id       </code> while only database-id is specified in database management operations.</td>
 <td><pre dir="ltr" data-is-upgraded="" data-syntax="YAML" translate="no"><code>name: organizations/ORGANIZATION_ID/customConstraints/custom.nameSuffixMobile
 resourceTypes:
 - firestore.googleapis.com/Database
@@ -337,21 +337,21 @@ Field
 
 firestore.googleapis.com/Database
 
-`  resource.appEngineIntegrationMode  `
+`resource.appEngineIntegrationMode`
 
-`  resource.cmekConfig.kmsKeyName  `
+`resource.cmekConfig.kmsKeyName`
 
-`  resource.concurrencyMode  `
+`resource.concurrencyMode`
 
-`  resource.deleteProtectionState  `
+`resource.deleteProtectionState`
 
-`  resource.locationId  `
+`resource.locationId`
 
-`  resource.name  `
+`resource.name`
 
-`  resource.pointInTimeRecoveryEnablement  `
+`resource.pointInTimeRecoveryEnablement`
 
-`  resource.type  `
+`resource.type`
 
 ## What's next
 

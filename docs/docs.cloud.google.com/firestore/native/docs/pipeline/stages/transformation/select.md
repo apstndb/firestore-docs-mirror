@@ -76,7 +76,7 @@ Android
 
 ### Position of a Select Stage
 
-There are no restrictions on when a select stage can be used, but any fields not included in a select stage won't be accessible to subsequent stages in a pipeline. For example, to select only the `  name  ` and `  location  ` fields of all cities in Canada from the following dataset:
+There are no restrictions on when a select stage can be used, but any fields not included in a select stage won't be accessible to subsequent stages in a pipeline. For example, to select only the `name` and `location` fields of all cities in Canada from the following dataset:
 
 ### Node.js
 
@@ -106,7 +106,7 @@ Which produces the following documents:
 
     { name: "Toronto, Canada", population: 3000000 },
 
-However, if the `  select(...)  ` stage is instead placed before the `  where(...)  ` stage, like:
+However, if the `select(...)` stage is instead placed before the `where(...)` stage, like:
 
 ### Node.js
 
@@ -116,11 +116,11 @@ However, if the `  select(...)  ` stage is instead placed before the `  where(..
       .where(equal(field("location.country"), "Canada"))
       .execute();
 
-No documents will be produced, because `  location.country  ` has been removed from the document before the execution of the `  where(...)  ` stage.
+No documents will be produced, because `location.country` has been removed from the document before the execution of the `where(...)` stage.
 
 ### Select Nested Fields
 
-The `  select(...)  ` stage can be used to select nested fields from both maps and arrays. For example, to select the nested `  country  ` field and first entry of the `  landmarks  ` array from the following documents:
+The `select(...)` stage can be used to select nested fields from both maps and arrays. For example, to select the nested `country` field and first entry of the `landmarks` array from the following documents:
 
 ### Node.js
 
@@ -162,11 +162,11 @@ Which produces the following documents:
     { city: "Toronto", country: "Canada", topLandmark: "CN Tower" },
     { city: "Atlantis" }
 
-If a nested map value or array value does not exist, it is not included in the resulting document. Array and map access in the select stage behaves identically to the `  offset(...)  ` and `  get_field(...)  ` functions, respectively.
+If a nested map value or array value does not exist, it is not included in the resulting document. Array and map access in the select stage behaves identically to the `offset(...)` and `get_field(...)` functions, respectively.
 
 ### Assign Nested Fields
 
-The result of an expression can also be assigned to a nested field, making it possible to have the `  select(...)  ` stage return a subset of nested fields from the previous stage. For example the following can be used to ensure only the `  city  ` & `  state  ` information is returned while still preserving the document's original shape:
+The result of an expression can also be assigned to a nested field, making it possible to have the `select(...)` stage return a subset of nested fields from the previous stage. For example the following can be used to ensure only the `city` & `state` information is returned while still preserving the document's original shape:
 
 ### Node.js
 

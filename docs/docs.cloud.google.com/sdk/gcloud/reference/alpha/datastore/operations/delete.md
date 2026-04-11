@@ -4,15 +4,15 @@ gcloud alpha datastore operations delete - delete a completed Cloud Datastore ad
 
 SYNOPSIS
 
-`  gcloud alpha datastore operations delete  ` `  NAME  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud alpha datastore operations delete` `  NAME  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (ALPHA)  ` Delete a completed Cloud Datastore admin operation.
+`(ALPHA)` Delete a completed Cloud Datastore admin operation.
 
 EXAMPLES
 
-To delete the completed operation with id `  exampleId  ` , run:
+To delete the completed operation with id `exampleId` , run:
 
 ``` wrap-code
 gcloud alpha datastore operations delete exampleId
@@ -39,7 +39,7 @@ GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 NOTES
 

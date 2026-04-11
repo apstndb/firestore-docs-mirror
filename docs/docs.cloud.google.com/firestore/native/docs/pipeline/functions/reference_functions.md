@@ -6,15 +6,15 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## **Reference Functions**
 
-The `  REFERENCE  ` type acts as a "pointer" to other documents in the database (or even other databases). The following functions allow manipulating this type during query execution.
+The `REFERENCE` type acts as a "pointer" to other documents in the database (or even other databases). The following functions allow manipulating this type during query execution.
 
-|                                     |                                                              |
-| ----------------------------------- | ------------------------------------------------------------ |
-| Name                                | Description                                                  |
-| `          COLLECTION_ID        `   | Returns the ID of the leaf collection in the given reference |
-| `          DOCUMENT_ID        `     | Returns the ID of the document in the given reference        |
-| `          PARENT        `          | Returns the parent reference                                 |
-| `          REFERENCE_SLICE        ` | Returns a subset of segments from the given reference        |
+|                                    |                                                              |
+| ---------------------------------- | ------------------------------------------------------------ |
+| Name                               | Description                                                  |
+| `         COLLECTION_ID        `   | Returns the ID of the leaf collection in the given reference |
+| `         DOCUMENT_ID        `     | Returns the ID of the document in the given reference        |
+| `         PARENT        `          | Returns the parent reference                                 |
+| `         REFERENCE_SLICE        ` | Returns a subset of segments from the given reference        |
 
 ### COLLECTION\_ID
 
@@ -24,14 +24,14 @@ The `  REFERENCE  ` type acts as a "pointer" to other documents in the database 
 
 **Description:**
 
-Returns the leaf collection ID of the given `  REFERENCE  ` .
+Returns the leaf collection ID of the given `REFERENCE` .
 
 **Examples:**
 
-| `        ref       `                     | `        collection_id(ref)       ` |
-| :--------------------------------------- | :---------------------------------- |
-| `        users/user1       `             | `        "users"       `            |
-| `        users/user1/posts/post1       ` | `        "posts"       `            |
+| `ref`                     | `collection_id(ref)` |
+| :------------------------ | :------------------- |
+| `users/user1`             | `"users"`            |
+| `users/user1/posts/post1` | `"posts"`            |
 
 ### DOCUMENT\_ID
 
@@ -41,14 +41,14 @@ Returns the leaf collection ID of the given `  REFERENCE  ` .
 
 **Description:**
 
-Returns the document ID of the given `  REFERENCE  ` .
+Returns the document ID of the given `REFERENCE` .
 
 **Examples:**
 
-| `        ref       `                     | `        document_id(ref)       ` |
-| :--------------------------------------- | :-------------------------------- |
-| `        users/user1       `             | `        "user1"       `          |
-| `        users/user1/posts/post1       ` | `        "post1"       `          |
+| `ref`                     | `document_id(ref)` |
+| :------------------------ | :----------------- |
+| `users/user1`             | `"user1"`          |
+| `users/user1/posts/post1` | `"post1"`          |
 
 ### PARENT
 
@@ -58,15 +58,15 @@ Returns the document ID of the given `  REFERENCE  ` .
 
 **Description:**
 
-Returns the parent `  REFERENCE  ` of the given reference, or `  NULL  ` if the ref is a root reference already.
+Returns the parent `REFERENCE` of the given reference, or `NULL` if the ref is a root reference already.
 
 **Examples:**
 
-| `        ref       `                     | `        parent(ref)       ` |
-| :--------------------------------------- | :--------------------------- |
-| `        /       `                       | `        NULL       `        |
-| `        users/user1       `             | `        /       `           |
-| `        users/user1/posts/post1       ` | `        users/user1       ` |
+| `ref`                     | `parent(ref)` |
+| :------------------------ | :------------ |
+| `/`                       | `NULL`        |
+| `users/user1`             | `/`           |
+| `users/user1/posts/post1` | `users/user1` |
 
 ### REFERENCE\_SLICE
 
@@ -76,20 +76,20 @@ Returns the parent `  REFERENCE  ` of the given reference, or `  NULL  ` if the 
 
 **Description:**
 
-A `  REFERENCE  ` is a list of `  (collection_id, document_id)  ` tuples and this allows getting a view of that list, just like `  array_slice(...)  ` .
+A `REFERENCE` is a list of `(collection_id, document_id)` tuples and this allows getting a view of that list, just like `array_slice(...)` .
 
-Returns a new `  REFERENCE  ` that is a subset of the segments of the given `  ref  ` .
+Returns a new `REFERENCE` that is a subset of the segments of the given `ref` .
 
-  - `  offset  ` : The starting index (0-based) of the slice. If negative, it is an offset from the end of the reference.
-  - `  length  ` : The number of segments to include in the slice.
+  - `offset` : The starting index (0-based) of the slice. If negative, it is an offset from the end of the reference.
+  - `length` : The number of segments to include in the slice.
 
 **Examples:**
 
-| `        ref       `         | `        offset       ` | `        length       ` | `        reference_slice(ref, offset, length)       ` |
-| :--------------------------- | :---------------------- | :---------------------- | :---------------------------------------------------- |
-| `        a/1/b/2/c/3       ` | 1L                      | 2L                      | `        b/2/c/3       `                              |
-| `        a/1/b/2/c/3       ` | 0L                      | 2L                      | `        a/1/b/2       `                              |
-| `        a/1/b/2/c/3       ` | \-2L                    | 2L                      | `        c/3       `                                  |
+| `ref`         | `offset` | `length` | `reference_slice(ref, offset, length)` |
+| :------------ | :------- | :------- | :------------------------------------- |
+| `a/1/b/2/c/3` | 1L       | 2L       | `b/2/c/3`                              |
+| `a/1/b/2/c/3` | 0L       | 2L       | `a/1/b/2`                              |
+| `a/1/b/2/c/3` | \-2L     | 2L       | `c/3`                                  |
 
 ## What's next
 

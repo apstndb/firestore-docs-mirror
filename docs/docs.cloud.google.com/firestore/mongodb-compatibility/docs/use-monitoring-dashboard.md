@@ -12,10 +12,10 @@ A monitored resource in Cloud Monitoring represents a logical or physical entity
 
 Using the [Cloud Monitoring API](https://cloud.google.com/monitoring/api/resources) , Firestore with MongoDB compatibility performance is monitored with the following resource:
 
-|                                                    |                                                                                                                                                |
-| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Resources**                                      | **Description**                                                                                                                                |
-| `        firestore.googleapis.com/Database       ` | Monitored resource type that provides breakdowns for `        project       ` , `        location       ` , and `        database_id       ` . |
+|                                     |                                                                                                   |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------- |
+| **Resources**                       | **Description**                                                                                   |
+| `firestore.googleapis.com/Database` | Monitored resource type that provides breakdowns for `project` , `location` , and `database_id` . |
 
 ### Metrics
 
@@ -23,15 +23,15 @@ For a complete list of metrics for Firestore, see [Firestore metrics](https://cl
 
 ### Service runtime metrics
 
-The [`  serviceruntime  `](https://cloud.google.com/monitoring/api/metrics_gcp_p_z#gcp-serviceruntime) metrics provide a high-level overview of a project's traffic. These metrics are available for most Google Cloud APIs. The [`  consumed_api  `](https://cloud.google.com/monitoring/api/resources#tag_consumed_api) monitored resource type contains these common metrics. These metrics are sampled every 30 minutes resulting in data being smoothed out.
+The [`serviceruntime`](https://cloud.google.com/monitoring/api/metrics_gcp_p_z#gcp-serviceruntime) metrics provide a high-level overview of a project's traffic. These metrics are available for most Google Cloud APIs. The [`consumed_api`](https://cloud.google.com/monitoring/api/resources#tag_consumed_api) monitored resource type contains these common metrics. These metrics are sampled every 30 minutes resulting in data being smoothed out.
 
-An important resource label for the `  serviceruntime  ` metrics is `  method  ` . This label represents the underlying RPC method called. The SDK method that you call may not necessarily be named the same as the underlying RPC method. The reason is that the SDK provides high-level API abstraction. However, when trying to understand how your application interacts with Firestore, it is important to understand the metrics based on the name of the RPC method.
+An important resource label for the `serviceruntime` metrics is `method` . This label represents the underlying RPC method called. The SDK method that you call may not necessarily be named the same as the underlying RPC method. The reason is that the SDK provides high-level API abstraction. However, when trying to understand how your application interacts with Firestore, it is important to understand the metrics based on the name of the RPC method.
 
 If you need to know what the underlying RPC method is for a given SDK method, see the [API documentation](https://cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1) .
 
 #### api/request\_latencies
 
-The `  api/request_latencies  ` metric provides latency distributions across all completed requests.
+The `api/request_latencies` metric provides latency distributions across all completed requests.
 
 Firestore records metrics from the **Firestore Service** component. Latency metrics include the time that Firestore receives the request to the time that Firestore finishes sending the response, including interactions with the storage layer. Due to this, round-trip latency (rtt) between the client and the Firestore service is not included in these metrics.
 
@@ -41,32 +41,32 @@ Firestore provides read, write, and delete counts. The write metric provides a b
 
 The following metrics can be used to understand whether your database is read heavy or write heavy, and the rate of new documents versus deleted documents.
 
-  - `  document/delete_ops_count  ` : The number of successful document deletes.
-  - `  document/read_ops_count  ` : The number of successful document reads from queries or lookups.
-  - `  document/write_ops_count  ` : The number of successful document writes.
+  - `document/delete_ops_count` : The number of successful document deletes.
+  - `document/read_ops_count` : The number of successful document reads from queries or lookups.
+  - `document/write_ops_count` : The number of successful document writes.
 
-**Note:** The `  document/delete_ops_count  ` metric doesn't include documents deleted because of TTL policies. For information about metrics that capture deletes due to TTL policies, see [TTL Metrics](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard#ttl_metrics) .
+**Note:** The `document/delete_ops_count` metric doesn't include documents deleted because of TTL policies. For information about metrics that capture deletes due to TTL policies, see [TTL Metrics](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard#ttl_metrics) .
 
 ### Billing metrics
 
 Use these metrics to understand billing usage. These metrics don't include billing from administrator operations (indexing, import, export, and bulk delete).
 
-  - `  api/billable_read_units  ` : The number of billable read units. Usage can be broken down by service name and API method.
-  - `  api/billable_write_units  ` : The number of billable write units. Usage can be broken down by service name and API method.
-  - `  document/billable_managed_delete_write_units  ` : The number of billable write units from managed delete services like [TTL](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl) .
+  - `api/billable_read_units` : The number of billable read units. Usage can be broken down by service name and API method.
+  - `api/billable_write_units` : The number of billable write units. Usage can be broken down by service name and API method.
+  - `document/billable_managed_delete_write_units` : The number of billable write units from managed delete services like [TTL](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl) .
 
 ### Index metrics
 
-Index write rates can be contrasted with the `  document/write_ops_count  ` metric to understand index fanout.
+Index write rates can be contrasted with the `document/write_ops_count` metric to understand index fanout.
 
-  - `  index/write_count  ` : Count of index writes.
+  - `index/write_count` : Count of index writes.
 
 ### TTL Metrics
 
 The TTL metrics for Firestore with MongoDB compatibility metrics are used to monitor the effect of the [TTL policy](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl) enforced.
 
-  - `  document/ttl_deletion_count  ` : Total count of documents deleted by TTL services.
-  - `  document/ttl_expiration_to_deletion_delays  ` : Time elapsed between when a document with a TTL expired, and when it was actually deleted.
+  - `document/ttl_deletion_count` : Total count of documents deleted by TTL services.
+  - `document/ttl_expiration_to_deletion_delays` : Time elapsed between when a document with a TTL expired, and when it was actually deleted.
 
 ## View predefined dashboards and create custom dashboards
 
@@ -78,7 +78,7 @@ Open the usage dashboards in the Google Cloud console to view document reads, wr
 
 #### Access control
 
-The usage dashboards require the `  monitoring.timeSeries.list  ` Identity and Access Management (IAM) permission. The Project Owner, Editor, and Viewer roles grant this permission. You can also grant this permission through a [Cloud Monitoring role](https://cloud.google.com/monitoring/access-control#monitoring_2) or a [custom role](https://cloud.google.com/iam/docs/creating-custom-roles) .
+The usage dashboards require the `monitoring.timeSeries.list` Identity and Access Management (IAM) permission. The Project Owner, Editor, and Viewer roles grant this permission. You can also grant this permission through a [Cloud Monitoring role](https://cloud.google.com/monitoring/access-control#monitoring_2) or a [custom role](https://cloud.google.com/iam/docs/creating-custom-roles) .
 
 #### Database usage dashboard
 
@@ -136,7 +136,7 @@ Consider the following example where we create a latency alert policy. The alert
 
 3.  Select the **Request Latencies** metric from the **Consumed API** resource.
 
-4.  Add a service filter for `  firestore.googleapis.com  ` for Native mode databases.
+4.  Add a service filter for `firestore.googleapis.com` for Native mode databases.
 
 5.  Click **Next** to configure the trigger.
 

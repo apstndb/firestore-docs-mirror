@@ -97,7 +97,7 @@ eu
 us
 
   
-`  POST https://firestore.googleapis.com/v1/{parent=projects/*/databases/*/documents/**}/{collectionId}  `
+`POST https://firestore.googleapis.com/v1/{parent=projects/*/databases/*/documents/**}/{collectionId}`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -105,33 +105,33 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. The parent resource. For example: `  projects/{projectId}/databases/{databaseId}/documents  ` or `  projects/{projectId}/databases/{databaseId}/documents/chatrooms/{chatroom_id}  `
+Required. The parent resource. For example: `projects/{projectId}/databases/{databaseId}/documents` or `projects/{projectId}/databases/{databaseId}/documents/chatrooms/{chatroom_id}`
 
-`  collectionId  `
+`collectionId`
 
-`  string  `
+`string`
 
-Required. The collection ID, relative to `  parent  ` , to list. For example: `  chatrooms  ` .
+Required. The collection ID, relative to `parent` , to list. For example: `chatrooms` .
 
 ### Query parameters
 
 Parameters
 
-`  documentId  `
+`documentId`
 
-`  string  `
+`string`
 
 The client-assigned document ID to use for this document.
 
 Optional. If not specified, an ID will be assigned by the service.
 
-`  mask  `
+`mask`
 
-`  object ( DocumentMask  ` )
+` object ( DocumentMask  ` )
 
 The fields to return. If not set, returns all fields.
 
@@ -149,7 +149,7 @@ If successful, the response body contains an instance of `  Document  ` .
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

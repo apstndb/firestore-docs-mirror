@@ -17,24 +17,21 @@ This singleton resource can be accessed at: "projects/{projectId}/operations/dat
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;migrationState&quot;: enum (MigrationState),
-  &quot;migrationStep&quot;: enum (MigrationStep)
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;migrationState&quot;: enum (MigrationState),&quot;migrationStep&quot;: enum (MigrationStep)}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  migrationState  `
+`migrationState`
 
-`  enum ( MigrationState  ` )
+` enum ( MigrationState  ` )
 
 The current state of migration from Cloud Datastore to Cloud Firestore in Datastore mode.
 
-`  migrationStep  `
+`migrationStep`
 
-`  enum ( MigrationStep  ` )
+` enum ( MigrationStep  ` )
 
 The current step of migration from Cloud Datastore to Cloud Firestore in Datastore mode.

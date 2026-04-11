@@ -21,14 +21,14 @@ Describes the progress of the operation. Unit of work is generic and must be int
 
 Fields
 
-`  estimatedWork  `
+`estimatedWork`
 
-`  string ( int64 format)  `
+`string ( int64 format)`
 
 The amount of work estimated.
 
-`  completedWork  `
+`completedWork`
 
-`  string ( int64 format)  `
+`string ( int64 format)`
 
 The amount of work completed.

@@ -12,11 +12,11 @@ Before you can view Firestore with MongoDB compatibility reliability recommendat
 
 2.  Ensure that you have sufficient permissions. You must have one of the following roles, which provide the necessary permissions:
     
-    | Task description                                                                                                                                                            | Role                                                                      |
-    | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-    | View recommendations/insights                                                                                                                                               | `          roles/recommender.firestoredatabasereliabilityViewer         ` |
-    | View and update (dismiss) recommendations/insights                                                                                                                          | `          roles/recommender.firestoredatabasereliabilityAdmin         `  |
-    | Opt out of recommendations/insights in Transparency and Control Center. For more information, see [Opting out](https://docs.cloud.google.com/recommender/docs/opting-out) . | `          roles/dataprocessing.admin         `                           |
+    | Task description                                                                                                                                                            | Role                                                   |
+    | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
+    | View recommendations/insights                                                                                                                                               | `roles/recommender.firestoredatabasereliabilityViewer` |
+    | View and update (dismiss) recommendations/insights                                                                                                                          | `roles/recommender.firestoredatabasereliabilityAdmin`  |
+    | Opt out of recommendations/insights in Transparency and Control Center. For more information, see [Opting out](https://docs.cloud.google.com/recommender/docs/opting-out) . | `roles/dataprocessing.admin`                           |
     
 
     These Recommender roles provide the following API permissions:
@@ -34,17 +34,17 @@ Before you can view Firestore with MongoDB compatibility reliability recommendat
     </thead>
     <tbody>
     <tr class="odd">
-    <td><code dir="ltr" translate="no">         roles/recommender.firestoredatabasereliabilityViewer        </code></td>
-    <td><code dir="ltr" translate="no">         recommender.firestoreDatabaseReliabilityRecommendations.get        </code><br />
-    <code dir="ltr" translate="no">         recommender.firestoreDatabaseReliabilityRecommendations.list        </code><br />
-    <code dir="ltr" translate="no">         recommender.firestoreDatabaseReliabilityInsights.get        </code><br />
-    <code dir="ltr" translate="no">         recommender.firestoreDatabaseReliabilityInsights.list        </code></td>
+    <td><code dir="ltr" translate="no">roles/recommender.firestoredatabasereliabilityViewer</code></td>
+    <td><code dir="ltr" translate="no">recommender.firestoreDatabaseReliabilityRecommendations.get</code><br />
+    <code dir="ltr" translate="no">recommender.firestoreDatabaseReliabilityRecommendations.list</code><br />
+    <code dir="ltr" translate="no">recommender.firestoreDatabaseReliabilityInsights.get</code><br />
+    <code dir="ltr" translate="no">recommender.firestoreDatabaseReliabilityInsights.list</code></td>
     </tr>
     <tr class="even">
-    <td><code dir="ltr" translate="no">         roles/recommender.firestoredatabasereliabilityAdmin        </code></td>
-    <td><code dir="ltr" translate="no">         roles/recommender.firestoredatabasereliabilityViewer        </code> permissions, plus<br />
-    <code dir="ltr" translate="no">         recommender.firestoreDatabaseReliabilityRecommendations.update        </code><br />
-    <code dir="ltr" translate="no">         recommender.firestoreDatabaseReliabilityInsights.update        </code></td>
+    <td><code dir="ltr" translate="no">roles/recommender.firestoredatabasereliabilityAdmin</code></td>
+    <td><code dir="ltr" translate="no">roles/recommender.firestoredatabasereliabilityViewer</code> permissions, plus<br />
+    <code dir="ltr" translate="no">recommender.firestoreDatabaseReliabilityRecommendations.update</code><br />
+    <code dir="ltr" translate="no">recommender.firestoreDatabaseReliabilityInsights.update</code></td>
     </tr>
     </tbody>
     </table>
@@ -72,7 +72,7 @@ You can view your recommendations by doing following:
 
 ### gcloud CLI
 
-To list reliability recommendations by using `  gcloud  ` , run the [`  gcloud recommender recommendations list  `](https://docs.cloud.google.com/sdk/gcloud/reference/recommender/recommendations/list) command as follows:
+To list reliability recommendations by using `gcloud` , run the [`gcloud recommender recommendations list`](https://docs.cloud.google.com/sdk/gcloud/reference/recommender/recommendations/list) command as follows:
 
 ``` 
   gcloud recommender recommendations list \
@@ -84,12 +84,12 @@ To list reliability recommendations by using `  gcloud  ` , run the [`  gcloud r
 Replace the following:
 
   - `  PROJECT_ID  ` : Your project ID
-  - `  LOCATION  ` : A region, such as `  us-central1  `
-  - `  RECOMMENDER  ` : The ID of the recommender as `  ReliabilityRecommender  ` .
+  - `  LOCATION  ` : A region, such as `us-central1`
+  - `  RECOMMENDER  ` : The ID of the recommender as `ReliabilityRecommender` .
 
 ### Recommender API
 
-To list your reliability recommendations by using the [Recommendations API](https://docs.cloud.google.com/recommender/docs/using-api) , call the [`  recommendations.list  `](https://docs.cloud.google.com/recommender/docs/reference/rest/v1beta1/projects.locations.recommenders.recommendations/list) method as follows:
+To list your reliability recommendations by using the [Recommendations API](https://docs.cloud.google.com/recommender/docs/using-api) , call the [`recommendations.list`](https://docs.cloud.google.com/recommender/docs/reference/rest/v1beta1/projects.locations.recommenders.recommendations/list) method as follows:
 
 ``` 
   curl -H "Authorization: Bearer $(gcloud auth print-access-token)"  \
@@ -100,8 +100,8 @@ To list your reliability recommendations by using the [Recommendations API](http
 Replace the following:
 
   - `  PROJECT_ID  ` : Your project ID.
-  - `  LOCATION  ` : A region, such as `  us-central1  ` .
-  - `  RECOMMENDER  ` : The ID of the recommender as `  ReliabilityRecommender  ` .
+  - `  LOCATION  ` : A region, such as `us-central1` .
+  - `  RECOMMENDER  ` : The ID of the recommender as `ReliabilityRecommender` .
 
 For more information, see [Using the API - Recommendations](https://docs.cloud.google.com/recommender/docs/using-api) .
 
@@ -115,7 +115,7 @@ To view insights and detailed recommendations by using the Google Cloud console,
 
 ### gcloud CLI
 
-To view insights by using `  gcloud  ` , run the [`  gcloud recommender insights list  `](https://docs.cloud.google.com/sdk/gcloud/reference/recommender/insights/list) command as follows:
+To view insights by using `gcloud` , run the [`gcloud recommender insights list`](https://docs.cloud.google.com/sdk/gcloud/reference/recommender/insights/list) command as follows:
 
 ``` 
   gcloud recommender insights list \
@@ -127,8 +127,8 @@ To view insights by using `  gcloud  ` , run the [`  gcloud recommender insights
 Replace the following:
 
   - `  PROJECT_ID  ` : Your project ID.
-  - `  LOCATION  ` : A region, such as `  us-central1  ` .
-  - `  INSIGHT_TYPE  ` : The ID of the insight type as `  ReliabilityInsight  ` .
+  - `  LOCATION  ` : A region, such as `us-central1` .
+  - `  INSIGHT_TYPE  ` : The ID of the insight type as `ReliabilityInsight` .
 
 ### Recommender API
 
@@ -140,8 +140,8 @@ To list your insights by using the Recommender API, run the following command:
 Replace the following:
 
   - `  PROJECT_ID  ` : Your project ID.
-  - `  LOCATION  ` : A region, such as `  us-central1  ` .
-  - `  INSIGHT_TYPE  ` : The ID of the insight type as `  ReliabilityInsight  ` .
+  - `  LOCATION  ` : A region, such as `us-central1` .
+  - `  INSIGHT_TYPE  ` : The ID of the insight type as `ReliabilityInsight` .
 
 For more information, see [Using the API - Insights](https://docs.cloud.google.com/recommender/docs/insights/using-api) .
 

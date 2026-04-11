@@ -28,7 +28,7 @@ After March 17, 2026, when you enable Firestore, the Firestore MCP server is aut
 
 Deprecated
 
-Control of MCP use with organization policies is deprecated. After March 17, 2026, organization policies that use the `  gcp.managed.allowedMCPServices  ` constraint won't work, and you can control MCP use with IAM deny policies. For more information about controlling MCP use, see [Control MCP use with IAM](https://docs.cloud.google.com/mcp/control-mcp-use-iam) .
+Control of MCP use with organization policies is deprecated. After March 17, 2026, organization policies that use the `gcp.managed.allowedMCPServices` constraint won't work, and you can control MCP use with IAM deny policies. For more information about controlling MCP use, see [Control MCP use with IAM](https://docs.cloud.google.com/mcp/control-mcp-use-iam) .
 
 Announcement
 
@@ -62,7 +62,7 @@ Feature
 
 Firestore Enterprise edition now supports Native mode and the Pipeline operations interface.
 
-Pipeline operations are a new query interface for Firestore. This interface provides advanced query functionality that includes complex expressions. It also adds support for many new functions like `  min  ` , `  max  ` , `  substring  ` , `  regex_match  ` and `  array_contains_all  ` .
+Pipeline operations are a new query interface for Firestore. This interface provides advanced query functionality that includes complex expressions. It also adds support for many new functions like `min` , `max` , `substring` , `regex_match` and `array_contains_all` .
 
 With Firestore Enterprise edition in Native mode, index creation is also completely optional, streamlining the process of developing new queries.
 
@@ -119,7 +119,7 @@ You can now use Query insights to [view query performance metrics for your datab
 
 Feature
 
-Cloud Firestore now supports multi-region `  nam7  ` United States (Central and East), which consists of regions `  us-central1  ` (Iowa) and `  us-east4  ` (Northern Virginia).
+Cloud Firestore now supports multi-region `nam7` United States (Central and East), which consists of regions `us-central1` (Iowa) and `us-east4` (Northern Virginia).
 
 For a full list of supported locations, see [Locations](https://docs.cloud.google.com/firestore/docs/locations) .
 
@@ -127,7 +127,7 @@ For a full list of supported locations, see [Locations](https://docs.cloud.googl
 
 Feature
 
-Firestore now supports the `  europe-north2  ` Stockholm region.
+Firestore now supports the `europe-north2` Stockholm region.
 
 For a full list of supported locations, see [Locations](https://docs.cloud.google.com/firestore/docs/locations) .
 
@@ -165,7 +165,7 @@ For more information, see [Reliability recommender](https://docs.cloud.google.co
 
 Feature
 
-Firestore now supports the `  northamerica-south1  ` Queretaro region.
+Firestore now supports the `northamerica-south1` Queretaro region.
 
 For a full list of supported locations, see [Locations](https://docs.cloud.google.com/firestore/docs/locations) .
 
@@ -217,7 +217,7 @@ Feature
 
 Feature
 
-Firestore now supports the `  us-south1  ` Dallas region.
+Firestore now supports the `us-south1` Dallas region.
 
 For a full list of supported locations, see [Locations](https://docs.cloud.google.com/firestore/docs/locations) .
 
@@ -227,15 +227,15 @@ Feature
 
 Firestore now supports the following additional locations:
 
-  - `  africa-south1  ` Johannesburg
-  - `  europe-north1  ` Finland
-  - `  europe-southwest1  ` Madrid
-  - `  europe-west10  ` Berlin
-  - `  europe-west12  ` Turin
-  - `  europe-west8  ` Milan
-  - `  southamerica-west1  ` Santiago
-  - `  us-central1  ` Iowa
-  - `  us-east5  ` Columbus
+  - `africa-south1` Johannesburg
+  - `europe-north1` Finland
+  - `europe-southwest1` Madrid
+  - `europe-west10` Berlin
+  - `europe-west12` Turin
+  - `europe-west8` Milan
+  - `southamerica-west1` Santiago
+  - `us-central1` Iowa
+  - `us-east5` Columbus
 
 For a full list of supported locations, see [Locations](https://docs.cloud.google.com/firestore/docs/locations) .
 
@@ -263,7 +263,7 @@ Support for [Query Explain](https://docs.cloud.google.com/firestore/docs/query-e
 
 Query Explain lets you submit queries and receive detailed query plan, billing and performance statistics on query execution in return. It helps you understand how your queries are executed, showing you inefficiencies.
 
-It functions like the `  EXPLAIN [ANALYZE]  ` operation in many relational database systems.
+It functions like the `EXPLAIN [ANALYZE]` operation in many relational database systems.
 
 For more information, see the [guide for Query Explain](https://docs.cloud.google.com/firestore/docs/query-explain) .
 
@@ -295,7 +295,7 @@ Feature
 
 Feature
 
-You can now assemble and execute [`  sum()  ` and `  avg()  ` queries](https://docs.cloud.google.com/firestore/docs/query-data/aggregation-queries) in the Google Cloud console.
+You can now assemble and execute [`sum()` and `avg()` queries](https://docs.cloud.google.com/firestore/docs/query-data/aggregation-queries) in the Google Cloud console.
 
 Feature
 
@@ -317,7 +317,7 @@ For documents with many fields that don't require indexing, you can now add coll
 
 Feature
 
-The [`  sum()  ` and `  average()  ` aggregation functions](https://docs.cloud.google.com/firestore/docs/query-data/aggregation-queries) are now available.
+The [`sum()` and `average()` aggregation functions](https://docs.cloud.google.com/firestore/docs/query-data/aggregation-queries) are now available.
 
 ## October 02, 2023
 
@@ -387,7 +387,7 @@ Feature
 
 Announcement
 
-[`  OR  ` queries](https://docs.cloud.google.com/firestore/docs/query-data/queries#or_queries) now supported at the [General Availability level](https://cloud.google.com/products/#product-launch-stages) .
+[`OR` queries](https://docs.cloud.google.com/firestore/docs/query-data/queries#or_queries) now supported at the [General Availability level](https://cloud.google.com/products/#product-launch-stages) .
 
 ## May 23, 2023
 
@@ -399,7 +399,7 @@ Support for the [asia-south2 (Delhi)](https://docs.cloud.google.com/firestore/do
 
 Feature
 
-[`  count()  ` queries](https://cloud.google.com/firestore/docs/query-data/aggregation-queries) are now supported at the [General Availability level](https://cloud.google.com/products/#product-launch-stages) .
+[`count()` queries](https://cloud.google.com/firestore/docs/query-data/aggregation-queries) are now supported at the [General Availability level](https://cloud.google.com/products/#product-launch-stages) .
 
 ## April 17, 2023
 
@@ -417,37 +417,37 @@ The Firestore documentation has been updated to include guidance on using region
 
 Change
 
-Firestore no longer limits the number of writes that can be passed to a `  Commit  ` operation or performed in a transaction. Previously, the limit was 500. [Limits for request size and the transaction time limit](https://docs.cloud.google.com/firestore/quotas#writes_and_transactions) still apply.
+Firestore no longer limits the number of writes that can be passed to a `Commit` operation or performed in a transaction. Previously, the limit was 500. [Limits for request size and the transaction time limit](https://docs.cloud.google.com/firestore/quotas#writes_and_transactions) still apply.
 
 ## March 24, 2023
 
 Feature
 
-[`  OR  ` queries](https://docs.cloud.google.com/firestore/docs/query-data/queries#or_queries) now available in [Preview](https://cloud.google.com/products/#product-launch-stages) .
+[`OR` queries](https://docs.cloud.google.com/firestore/docs/query-data/queries#or_queries) now available in [Preview](https://cloud.google.com/products/#product-launch-stages) .
 
 ## March 13, 2023
 
 Feature
 
-Support for the [`  europe-west4  ` (Netherlands)](https://docs.cloud.google.com/firestore/docs/locations) region.
+Support for the [`europe-west4` (Netherlands)](https://docs.cloud.google.com/firestore/docs/locations) region.
 
 ## January 06, 2023
 
 Change
 
-The Firestore indexes pages in the Google Cloud and Firebase consoles now show the `  __name__  ` field in each composite index definition. The `  __name__  ` field is [added by default to each index definition and affects the sorting of results](https://cloud.google.com/firestore/docs/concepts/index-overview#default_ordering_and_the_name_field) . The `  __name__  ` field was always part of each index definition but was previously hidden by the console.
+The Firestore indexes pages in the Google Cloud and Firebase consoles now show the `__name__` field in each composite index definition. The `__name__` field is [added by default to each index definition and affects the sorting of results](https://cloud.google.com/firestore/docs/concepts/index-overview#default_ordering_and_the_name_field) . The `__name__` field was always part of each index definition but was previously hidden by the console.
 
 ## December 19, 2022
 
 Feature
 
-Support for the [`  australia-southeast2  ` (Melbourne)](https://docs.cloud.google.com/firestore/docs/locations) region.
+Support for the [`australia-southeast2` (Melbourne)](https://docs.cloud.google.com/firestore/docs/locations) region.
 
 ## October 17, 2022
 
 Feature
 
-[`  count()  ` queries](https://docs.cloud.google.com/firestore/docs/query-data/aggregation-queries) now available in [Preview](https://cloud.google.com/products/#product-launch-stages) .
+[`count()` queries](https://docs.cloud.google.com/firestore/docs/query-data/aggregation-queries) now available in [Preview](https://cloud.google.com/products/#product-launch-stages) .
 
 Change
 
@@ -490,7 +490,7 @@ Announcement
 
 Feature
 
-The `  datastore.databases.getMetadata  ` permission now supports custom Identity and Access Management roles.
+The `datastore.databases.getMetadata` permission now supports custom Identity and Access Management roles.
 
 ## January 12, 2022
 
@@ -522,7 +522,7 @@ The Firestore [Unity and C++ SDKs](https://docs.cloud.google.com/firestore/docs/
 
 Feature
 
-`  DATA_READ  ` and `  DATA_WRITE  ` Data Access audit logs are now supported at the [General Availability release level](https://cloud.google.com/products/#product-launch-stages) . See [Firestore audit logging information](https://docs.cloud.google.com/firestore/docs/audit-logging) .
+`DATA_READ` and `DATA_WRITE` Data Access audit logs are now supported at the [General Availability release level](https://cloud.google.com/products/#product-launch-stages) . See [Firestore audit logging information](https://docs.cloud.google.com/firestore/docs/audit-logging) .
 
 ## September 09, 2021
 
@@ -534,7 +534,7 @@ Feature
 
 Feature
 
-Added `  DATA_READ  ` and `  DATA_WRITE  ` Data Access audit logs. See [Firestore audit logging information](https://docs.cloud.google.com/firestore/docs/audit-logging) . This feature is available in **Preview** .
+Added `DATA_READ` and `DATA_WRITE` Data Access audit logs. See [Firestore audit logging information](https://docs.cloud.google.com/firestore/docs/audit-logging) . This feature is available in **Preview** .
 
 ## July 22, 2021
 
@@ -542,7 +542,7 @@ Change
 
 **This feature was released on [September 2, 2021](https://docs.cloud.google.com/firestore/docs/release-notes#September_02_2021) .**
 
-The `  DATA_READ  ` and `  DATA_WRITE  ` Data Access audit logs feature has been moved to a future release. It is not currently available.
+The `DATA_READ` and `DATA_WRITE` Data Access audit logs feature has been moved to a future release. It is not currently available.
 
 ## July 16, 2021
 
@@ -550,7 +550,7 @@ Feature
 
 **This feature release was moved to [September 2, 2021](https://docs.cloud.google.com/firestore/docs/release-notes#September_02_2021) .**
 
-Added `  DATA_READ  ` and `  DATA_WRITE  ` Data Access audit logs. See [Firestore audit logging information](https://docs.cloud.google.com/firestore/docs/audit-logging) . This feature is available in **Preview** .
+Added `DATA_READ` and `DATA_WRITE` Data Access audit logs. See [Firestore audit logging information](https://docs.cloud.google.com/firestore/docs/audit-logging) . This feature is available in **Preview** .
 
 ## June 15, 2021
 
@@ -564,9 +564,9 @@ Feature
 
 Support for the following additional locations:
 
-  - `  asia-southeast1  ` Singapore
-  - `  us-west1  ` Oregeon
-  - `  asia-east1  ` Taiwan
+  - `asia-southeast1` Singapore
+  - `us-west1` Oregeon
+  - `asia-east1` Taiwan
 
 See the [full list of locations](https://docs.cloud.google.com/firestore/docs/locations) .
 
@@ -574,7 +574,7 @@ See the [full list of locations](https://docs.cloud.google.com/firestore/docs/lo
 
 Feature
 
-Support for the [`  europe-central2  ` (Warsaw)](https://docs.cloud.google.com/firestore/docs/locations) region.
+Support for the [`europe-central2` (Warsaw)](https://docs.cloud.google.com/firestore/docs/locations) region.
 
 ## February 25, 2021
 
@@ -598,13 +598,13 @@ You can now [start import and export operations from the Google Cloud Console](h
 
 Feature
 
-[Firestore now supports the not equals `  !=  ` and `  not-in  ` query operators](https://docs.cloud.google.com/firestore/docs/query-data/queries#query_operators) .
+[Firestore now supports the not equals `!=` and `not-in` query operators](https://docs.cloud.google.com/firestore/docs/query-data/queries#query_operators) .
 
 ## September 16, 2020
 
 Feature
 
-You can now use the [`  goog-firestoremanaged  ` billing report label](https://docs.cloud.google.com/firestore/docs/manage-data/export-import#viewing_export_and_import_costs) to view costs related to import and export operations.
+You can now use the [`goog-firestoremanaged` billing report label](https://docs.cloud.google.com/firestore/docs/manage-data/export-import#viewing_export_and_import_costs) to view costs related to import and export operations.
 
 ## September 11, 2020
 
@@ -622,25 +622,25 @@ The Google Cloud console now includes a [Firestore usage dashboard](https://docs
 
 Feature
 
-Support for the [`  asia-southeast2  ` (Jakarta)](https://docs.cloud.google.com/firestore/docs/locations) .
+Support for the [`asia-southeast2` (Jakarta)](https://docs.cloud.google.com/firestore/docs/locations) .
 
 ## April 20, 2020
 
 Feature
 
-Support for [`  us-west4  ` region (Las Vegas)](https://docs.cloud.google.com/firestore/docs/locations) .
+Support for [`us-west4` region (Las Vegas)](https://docs.cloud.google.com/firestore/docs/locations) .
 
 ## March 11, 2020
 
 Feature
 
-Support for [`  us-west3  ` (Salt Lake City) and `  asia-northeast3  ` (Seoul)](https://docs.cloud.google.com/firestore/docs/locations) .
+Support for [`us-west3` (Salt Lake City) and `asia-northeast3` (Seoul)](https://docs.cloud.google.com/firestore/docs/locations) .
 
 ## November 07, 2019
 
 Feature
 
-Cloud Firestore now supports the [`  in  ` and `  array-contains-any  ` query operators](https://docs.cloud.google.com/firestore/docs/query-data/queries#in_and_array-contains-any) .
+Cloud Firestore now supports the [`in` and `array-contains-any` query operators](https://docs.cloud.google.com/firestore/docs/query-data/queries#in_and_array-contains-any) .
 
 ## July 08, 2019
 
@@ -658,13 +658,13 @@ Cloud Firestore now supports [collection group queries](https://docs.cloud.googl
 
 Feature
 
-Support for [`  asia-northeast2  ` region (Osaka)](https://docs.cloud.google.com/firestore/docs/locations) .
+Support for [`asia-northeast2` region (Osaka)](https://docs.cloud.google.com/firestore/docs/locations) .
 
 ## April 15, 2019
 
 Feature
 
-Support for [`  europe-west6  ` region (Zürich)](https://docs.cloud.google.com/firestore/docs/locations) .
+Support for [`europe-west6` region (Zürich)](https://docs.cloud.google.com/firestore/docs/locations) .
 
 ## March 28, 2019
 
@@ -680,31 +680,31 @@ Cloud Firestore now supports the following 10 additional locations:
 
   - Multi-region
     
-      - `  eur3  ` Europe
+      - `eur3` Europe
 
   - North America (regional)
     
-      - `  us-west2  ` Los Angeles
-      - `  northamerica-northeast1  ` Montréal
-      - `  us-east4  ` Northern Virginia
+      - `us-west2` Los Angeles
+      - `northamerica-northeast1` Montréal
+      - `us-east4` Northern Virginia
 
   - South America (regional)
     
-      - `  southamerica-east1  ` São Paulo
+      - `southamerica-east1` São Paulo
 
   - Europe (regional)
     
-      - `  europe-west2  ` London
+      - `europe-west2` London
 
   - Asia (regional)
     
-      - `  asia-south1  ` Mumbai
-      - `  asia-east2  ` Hong Kong
-      - `  asia-northeast1  ` Tokyo
+      - `asia-south1` Mumbai
+      - `asia-east2` Hong Kong
+      - `asia-northeast1` Tokyo
 
   - Australia (regional)
     
-      - `  australia-southeast1  ` Sydney
+      - `australia-southeast1` Sydney
 
 For a full list of supported multi-regions and regions, see [Cloud Firestore Locations](https://docs.cloud.google.com/firestore/docs/locations) .
 
@@ -725,7 +725,7 @@ Feature
 We added two new features to help you work with arrays:
 
   - [Array contains queries](https://docs.cloud.google.com/firestore/docs/query-data/queries#array_membership) : query for documents that contain a particular array value.
-  - [Array transforms](https://docs.cloud.google.com/firestore/docs/manage-data/add-data#update_elements_in_an_array) : the `  arrayUnion()  ` and `  arrayRemove()  ` functions allow you to directly modify array field values.
+  - [Array transforms](https://docs.cloud.google.com/firestore/docs/manage-data/add-data#update_elements_in_an_array) : the `arrayUnion()` and `arrayRemove()` functions allow you to directly modify array field values.
 
 ## August 08, 2018
 
@@ -747,7 +747,7 @@ You can now create a [Cloud Firestore database in Datastore mode](https://docs.c
 
 Feature
 
-Cloud Firestore now supports the `  europe-west3  ` and `  us-east1  ` regions, see [Cloud Firestore Locations](https://docs.cloud.google.com/firestore/docs/locations) .
+Cloud Firestore now supports the `europe-west3` and `us-east1` regions, see [Cloud Firestore Locations](https://docs.cloud.google.com/firestore/docs/locations) .
 
 ## June 13, 2018
 
@@ -780,7 +780,7 @@ The Firebase SDK for Cloud Functions v1.0.0 is now available and introduces some
 
 Feature
 
-Cloud Firestore Security Rules now support the [`  getAfter()  `](https://docs.cloud.google.com/firestore/docs/reference/security#getafter) function. Use this function to [enforce data validation for atomic operations](https://docs.cloud.google.com/firestore/docs/manage-data/transactions#data_validation_for_atomic_operations) .
+Cloud Firestore Security Rules now support the [`getAfter()`](https://docs.cloud.google.com/firestore/docs/reference/security#getafter) function. Use this function to [enforce data validation for atomic operations](https://docs.cloud.google.com/firestore/docs/manage-data/transactions#data_validation_for_atomic_operations) .
 
 ## February 23, 2018
 
@@ -788,7 +788,7 @@ Feature
 
 New documentation page on [Cloud Firestore Security Rules and queries.](https://docs.cloud.google.com/firestore/docs/security/rules-query)
 
-This page clarifies how Cloud Firestore Security Rules evaluate query requests. Read this page to learn how to write queries that satisfy your security rules and how to write security rules based on query properties like `  limit  ` and `  orderby  ` .
+This page clarifies how Cloud Firestore Security Rules evaluate query requests. Read this page to learn how to write queries that satisfy your security rules and how to write security rules based on query properties like `limit` and `orderby` .
 
 ## February 08, 2018
 

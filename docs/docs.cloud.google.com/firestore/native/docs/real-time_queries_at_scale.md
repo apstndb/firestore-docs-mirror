@@ -12,7 +12,7 @@ The following diagram demonstrates the architecture of a real-time app:
 
 ![Example real-time app architecture](https://docs.cloud.google.com/static/firestore/native/docs/images/real-time_app_architecture.svg)
 
-When an app that is running on a user's device (mobile or web) establishes a connection to Firestore, the connection is routed to a Firestore frontend server in the same [region](https://docs.cloud.google.com/firestore/native/docs/locations) where your database is located. For example, if your database is in `  us-east1  ` , the connection also goes to a Firestore frontend also in `  us-east1  ` . These connections are long-lived and stay open until explicitly closed by the app. The frontend reads data from the underlying Firestore storage systems.
+When an app that is running on a user's device (mobile or web) establishes a connection to Firestore, the connection is routed to a Firestore frontend server in the same [region](https://docs.cloud.google.com/firestore/native/docs/locations) where your database is located. For example, if your database is in `us-east1` , the connection also goes to a Firestore frontend also in `us-east1` . These connections are long-lived and stay open until explicitly closed by the app. The frontend reads data from the underlying Firestore storage systems.
 
 The distance between a user's physical location and the Firestore database location affects the latency experienced by the user. For example, a user in India whose app talks to a database in a Google Cloud region in North America might find the experience slower and the app less snappy than if the database was instead located closer, such as in India or in another part of Asia.
 
@@ -40,7 +40,7 @@ Real-time queries, also called snapshot listeners, let the app listen to changes
 
 Imagine two users that connect to Firestore through a messaging app built with one of the mobile SDKs.
 
-Client A writes to the database to add and update documents in a collection called `  chatroom  ` :
+Client A writes to the database to add and update documents in a collection called `chatroom` :
 
     collection chatroom:
         document message1:
@@ -57,7 +57,7 @@ Client B listens for updates in the same collection using a snapshot listener. C
 
 The following sequence of events takes place when Client B connects a snapshot listener to the database:
 
-1.  Client B opens a connection to Firestore and registers a listener by making a call to `  onSnapshot(collection("chatroom"))  ` through the Firebase SDK. This listener can stay active for hours.
+1.  Client B opens a connection to Firestore and registers a listener by making a call to `onSnapshot(collection("chatroom"))` through the Firebase SDK. This listener can stay active for hours.
 2.  The Firestore frontend queries the underlying storage system to bootstrap the dataset. It loads the entire result set of matching documents. We refer to this as a **polling query** . The system then evaluates the database's [Firebase Security Rules](https://firebase.google.com/docs/rules) to verify that the user can access this data. If the user is authorized, the database returns the data to the user.
 3.  Client B's query then moves into **listen mode** . The listener registers with a subscription handler and waits for updates to the data.
 4.  Client A now sends a write operation to modify a document.
@@ -65,7 +65,7 @@ The following sequence of events takes place when Client B connects a snapshot l
 6.  Transactionally, the system commits the same update to an internal changelog. The changelog establishes a strict ordering of changes as they happen.
 7.  The changelog in turn fans out the updated data to a pool of subscription handlers.
 8.  A **reverse query matcher** executes to see if the updated document matches any currently registered snapshot listeners. In this example, the document matches Client B's snapshot listener. As the name implies, you can think of the reverse query matcher as a normal database query but done in reverse. Instead of searching through documents to find those that match a query, it efficiently searches through queries to find those that match an incoming document. Upon finding a match, the system forwards the document in question to the snapshot listeners. Then the system evaluates the database's [Firebase Security Rules](https://firebase.google.com/docs/rules) to ensure that only authorized users receive the data.
-9.  The system forwards the document update to the SDK on client B's device, and the `  onSnapshot  ` callback fires. If local persistence is enabled, the SDK applies the update to the local cache as well.
+9.  The system forwards the document update to the SDK on client B's device, and the `onSnapshot` callback fires. If local persistence is enabled, the SDK applies the update to the local cache as well.
 
 A key part of Firestore's scalability depends on the fan-out from the changelog to the subscription handlers and the frontend servers. The fan-out lets a single data change to propagate efficiently to serve millions of real-time queries and connected users. By running many replicas of all these components across multiple zones (or multiple regions in the case of a multi-region deployment), Firestore achieves high availability and scalability.
 

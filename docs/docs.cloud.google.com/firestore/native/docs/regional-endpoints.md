@@ -4,7 +4,7 @@ This page describes how to configure the Firestore client libraries to use a reg
 
 When you use Firestore client libraries, you can use any of the following endpoints:
 
-  - **Global endpoint** : By default, the Firestore client libraries send API requests to a global service endpoint named `  firestore.googleapis.com  ` . The global service endpoint routes the request to your database. During routing, a request might pass through a server in a location that's different from your database location.
+  - **Global endpoint** : By default, the Firestore client libraries send API requests to a global service endpoint named `firestore.googleapis.com` . The global service endpoint routes the request to your database. During routing, a request might pass through a server in a location that's different from your database location.
 
   - **Regional endpoint** : A regional endpoint enforces restrictions ensuring that data is transmitted, stored and processed in a specified Google Cloud region. To ensure that the service endpoint processes your app's Firestore requests in the same region as your database, specify a *regional endpoint* in the client library.
 
@@ -12,11 +12,11 @@ When you use Firestore client libraries, you can use any of the following endpoi
 
 ## Set a regional or multi-regional endpoint
 
-The method for configuring a regional or multi-regional endpoint is the same: you provide the endpoint string when initializing the client library. The following examples show how to set the endpoint string using a regional endpoint ( `  firestore.us-central1.rep.googleapis.com  ` ). To use a multi-regional endpoint, provide a multi-regional endpoint string corresponding to your database's location (for example, `  firestore.us.rep.googleapis.com  ` for `  nam5  ` ).
+The method for configuring a regional or multi-regional endpoint is the same: you provide the endpoint string when initializing the client library. The following examples show how to set the endpoint string using a regional endpoint ( `firestore.us-central1.rep.googleapis.com` ). To use a multi-regional endpoint, provide a multi-regional endpoint string corresponding to your database's location (for example, `firestore.us.rep.googleapis.com` for `nam5` ).
 
 **Note:** You can set regional and multi-regional endpoints in the server client libraries, namely C\#, Go, Java, Node.js, PHP, Python, and Ruby. The mobile and web SDKs, namely, Android, IOS, and Web are not supported.
 
-**Note:** Setting an endpoint for a location other than where your data resides might result in a `  PermissionDeniedError  ` .
+**Note:** Setting an endpoint for a location other than where your data resides might result in a `PermissionDeniedError` .
 
 ### Java
 
@@ -96,12 +96,12 @@ Replace REGION\_NAME with the name of a regional hostname.
 
 Some examples of hostnames are:
 
-  - `  firestore.us-central1.rep.googleapis.com  `
-  - `  firestore.europe-west1.rep.googleapis.com  `
+  - `firestore.us-central1.rep.googleapis.com`
+  - `firestore.europe-west1.rep.googleapis.com`
 
 **Multi-regional Endpoints (MREP)**
 
-For multi-regional endpoints, use `  us  ` for locations `  nam5  ` and `  nam7  ` , and `  eu  ` for location `  eur3  ` (see [Multi-regional locations](https://docs.cloud.google.com/firestore/docs/locations#location-mr) ).
+For multi-regional endpoints, use `us` for locations `nam5` and `nam7` , and `eu` for location `eur3` (see [Multi-regional locations](https://docs.cloud.google.com/firestore/docs/locations#location-mr) ).
 
 ### Java
 
@@ -164,16 +164,16 @@ Replace REGION\_NAME with the name of a regional or multi-regional hostnames.
 
 Some examples of hostnames are:
 
-  - `  eur3-firestore.googleapis.com  `
-  - `  nam5-firestore.googleapis.com  `
-  - `  europe-west6-firestore.googleapis.com  `
-  - `  asia-northeast2-firestore.googleapis.com  `
+  - `eur3-firestore.googleapis.com`
+  - `nam5-firestore.googleapis.com`
+  - `europe-west6-firestore.googleapis.com`
+  - `asia-northeast2-firestore.googleapis.com`
 
 For a complete list of multi-regional and regional hostnames, see [Firestore locations](https://docs.cloud.google.com/firestore/docs/locations) .
 
 ## Restrict global API endpoint usage
 
-To help enforce the use of regional and multi-regional endpoints, use the `  constraints/gcp.restrictEndpointUsage  ` organization policy constraint to block requests to the global API endpoint. For more information, see [Restrict endpoint usage](https://docs.cloud.google.com/docs/security/compliance/restrict-endpoint-usage) .
+To help enforce the use of regional and multi-regional endpoints, use the `constraints/gcp.restrictEndpointUsage` organization policy constraint to block requests to the global API endpoint. For more information, see [Restrict endpoint usage](https://docs.cloud.google.com/docs/security/compliance/restrict-endpoint-usage) .
 
 ## What's next
 

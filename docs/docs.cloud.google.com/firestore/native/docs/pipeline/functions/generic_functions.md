@@ -6,13 +6,13 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## **Generic Functions**
 
-|                                      |                                                                                                                                                            |
-| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Name                                 | Description                                                                                                                                                |
-| `          CURRENT_DOCUMENT        ` | Returns the document currently being processed in the pipeline.                                                                                            |
-| `          CONCAT        `           | Concatenates two or more values of same type.                                                                                                              |
-| `          LENGTH        `           | Calculates the length of a `        String       ` , `        Bytes       ` , `        Array       ` , `        Vector       ` , or `        Map       ` . |
-| `          REVERSE        `          | Reverses a `        String       ` , `        Bytes       ` , or `        Array       ` .                                                                  |
+|                                     |                                                                                 |
+| ----------------------------------- | ------------------------------------------------------------------------------- |
+| Name                                | Description                                                                     |
+| `         CURRENT_DOCUMENT        ` | Returns the document currently being processed in the pipeline.                 |
+| `         CONCAT        `           | Concatenates two or more values of same type.                                   |
+| `         LENGTH        `           | Calculates the length of a `String` , `Bytes` , `Array` , `Vector` , or `Map` . |
+| `         REVERSE        `          | Reverses a `String` , `Bytes` , or `Array` .                                    |
 
 ### CURRENT\_DOCUMENT
 
@@ -48,14 +48,14 @@ Concatenates two or more values of same type.
 
 **Examples:**
 
-| values                  | `        concat(values)       ` |
-| :---------------------- | :------------------------------ |
-| "abc", "def"            | "abcdef"                        |
-| \[1, 2\], \[3, 4\]      | \[1, 2, 3, 4\]                  |
-| b"abc", b"def"          | b"abcdef"                       |
-| "abc", \[1,2,3\], "ghi" | error                           |
-| \[1,2,3\]               | error                           |
-| "abc", null             | null                            |
+| values                  | `concat(values)` |
+| :---------------------- | :--------------- |
+| "abc", "def"            | "abcdef"         |
+| \[1, 2\], \[3, 4\]      | \[1, 2, 3, 4\]   |
+| b"abc", b"def"          | b"abcdef"        |
+| "abc", \[1,2,3\], "ghi" | error            |
+| \[1,2,3\]               | error            |
+| "abc", null             | null             |
 
 ##### Node.js
 
@@ -92,17 +92,17 @@ Android
 
 **Description:**
 
-Calculates the length of a `  String  ` , `  Bytes  ` , `  Array  ` , `  Vector  ` , or `  Map  ` value.
+Calculates the length of a `String` , `Bytes` , `Array` , `Vector` , or `Map` value.
 
 **Examples:**
 
-| value          | `        length(value)       ` |
-| :------------- | :----------------------------- |
-| "hello"        | 5                              |
-| \[1, 2, 3, 4\] | 4                              |
-| b"abcde"       | 5                              |
-| null           | null                           |
-| 1              | error                          |
+| value          | `length(value)` |
+| :------------- | :-------------- |
+| "hello"        | 5               |
+| \[1, 2, 3, 4\] | 4               |
+| b"abcde"       | 5               |
+| null           | null            |
+| 1              | error           |
 
 ### REVERSE
 
@@ -112,17 +112,17 @@ Calculates the length of a `  String  ` , `  Bytes  ` , `  Array  ` , `  Vector 
 
 **Description:**
 
-Reverses a `  String  ` , `  Bytes  ` , or `  Array  ` value.
+Reverses a `String` , `Bytes` , or `Array` value.
 
 **Examples:**
 
-| value       | `        reverse(value)       ` |
-| :---------- | :------------------------------ |
-| "hello"     | "olleh"                         |
-| \[1, 2, 3\] | \[3, 2, 1\]                     |
-| b"abc"      | b"cba"                          |
-| 23          | error                           |
-| null        | null                            |
+| value       | `reverse(value)` |
+| :---------- | :--------------- |
+| "hello"     | "olleh"          |
+| \[1, 2, 3\] | \[3, 2, 1\]      |
+| b"abc"      | b"cba"           |
+| 23          | error            |
+| null        | null             |
 
 ## What's next
 

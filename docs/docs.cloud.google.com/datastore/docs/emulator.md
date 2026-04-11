@@ -1,6 +1,6 @@
 The [Google Cloud CLI](https://docs.cloud.google.com/sdk) provides a local, in-memory emulator for Firestore that you can use to test your Firestore in Datastore mode application. You can use the emulator with all Datastore mode client libraries. You should use the emulator only for local testing.
 
-Use the `  gcloud emulators firestore  ` with `  --database-mode=datastore-mode  ` to test Firestore in Datastore mode behavior.
+Use the `gcloud emulators firestore` with `--database-mode=datastore-mode` to test Firestore in Datastore mode behavior.
 
 Don't use the emulator for production deployments. Because the emulator stores data only in memory, it doesn't persist data across runs.
 
@@ -24,17 +24,17 @@ To install the Firestore emulator, install and update the gcloud CLI:
     
     The emulator prints the host and port number where it is running.
     
-    By default, the emulator attempts to use `  127.0.0.1:8080  ` . To bind the emulator to a specific host and port, use the optional `  --host-port  ` flag, replacing HOST and PORT :
+    By default, the emulator attempts to use `127.0.0.1:8080` . To bind the emulator to a specific host and port, use the optional `--host-port` flag, replacing HOST and PORT :
     
         gcloud emulators firestore start --database-mode=datastore-mode --host-port=HOST:PORT
 
-2.  Use the keyboard shortcut `  Control + C  ` to stop the emulator.
+2.  Use the keyboard shortcut `Control + C` to stop the emulator.
 
-**Note:** The default port for the emulator is `  8080  ` . This differs from the legacy Cloud Datastore emulator which used default port `  8081  ` .
+**Note:** The default port for the emulator is `8080` . This differs from the legacy Cloud Datastore emulator which used default port `8081` .
 
 ## Connect to the emulator
 
-To connect a client library and app to the emulator, set the `  DATASTORE_EMULATOR_HOST  ` environment variable. When this environment variable is set, the client libraries automatically connect to the emulator.
+To connect a client library and app to the emulator, set the `DATASTORE_EMULATOR_HOST` environment variable. When this environment variable is set, the client libraries automatically connect to the emulator.
 
     export DATASTORE_EMULATOR_HOST="HOST:PORT"
 
@@ -42,35 +42,35 @@ To connect a client library and app to the emulator, set the `  DATASTORE_EMULAT
 
 The emulator's import feature lets you load entities from a set of entity export files into the emulator. The entity export files can come from an export of your Datastore mode database or from an emulator instance.
 
-You can import entities into the emulator in two ways. The first is to add the flag `  import-data  ` to your emulator start command. The second method is to send a POST import request to the emulator. You can use [curl](https://curl.haxx.se/) or a similar tool. Refer to the following examples.
+You can import entities into the emulator in two ways. The first is to add the flag `import-data` to your emulator start command. The second method is to send a POST import request to the emulator. You can use [curl](https://curl.haxx.se/) or a similar tool. Refer to the following examples.
 
 ### Protocol
 
-``` lang-sh notranslate
+``` notranslate lang-sh
 curl -X POST http://localhost:8080/emulator/v1/projects/PROJECT_ID:import \
 -H 'Content-Type: application/json' \
 -d '{"database":"DATABASE", "export_directory":"EXPORT_DIRECTORY"}'
 ```
 
-Modify `  localhost:8080  ` if the emulator uses a different port.
+Modify `localhost:8080` if the emulator uses a different port.
 
 ### CLI Flag
 
-``` lang-sh notranslate
+``` notranslate lang-sh
 gcloud emulators firestore start --database-mode=datastore-mode --import-data=EXPORT_DIRECTORY
 ```
 
 where:
 
-  - `  [PROJECT_ID]  ` is the ID of your project.
+  - `[PROJECT_ID]` is the ID of your project.
 
-  - `  [DATABASE]  ` is the database path. For example a project with default database would look like the following:
+  - `[DATABASE]` is the database path. For example a project with default database would look like the following:
     
-    `  {"database":"projects/myProject/databases/"}  `
+    `{"database":"projects/myProject/databases/"}`
 
-  - `  [EXPORT_DIRECTORY]  ` is the path to the `  overall_export_metadata  ` file of your entity export files. For example:
+  - `[EXPORT_DIRECTORY]` is the path to the `overall_export_metadata` file of your entity export files. For example:
     
-    `  {"export_directory":"/home/user/myexports/2024-03-26T19:39:33_443/2024-03-26T19:39:33_443.overall_export_metadata"}  `
+    `{"export_directory":"/home/user/myexports/2024-03-26T19:39:33_443/2024-03-26T19:39:33_443.overall_export_metadata"}`
 
 **Note:** Exporting entities of specific kinds or namespaces is not supported.
 
@@ -78,35 +78,35 @@ where:
 
 The emulator's export feature lets you save entities in the emulator into a set of entity export files. You can then use an import operation to load the entities in the entity export files into your Datastore mode database or into an emulator instance.
 
-You can export entities from the emulator in two ways. The first is to add the flag `  export-on-exit  ` to your emulator start command. The second method is to send a `  POST  ` export request to the emulator. You can use [curl](https://curl.haxx.se/) or a similar tool. Refer to the following examples.
+You can export entities from the emulator in two ways. The first is to add the flag `export-on-exit` to your emulator start command. The second method is to send a `POST` export request to the emulator. You can use [curl](https://curl.haxx.se/) or a similar tool. Refer to the following examples.
 
 ### Protocol
 
-``` lang-sh notranslate
+``` notranslate lang-sh
 curl -X POST http://localhost:8080/emulator/v1/projects/PROJECT_ID:export \
 -H 'Content-Type: application/json' \
 -d '{"database":"DATABASE_PATH", "export_directory":"EXPORT_DIRECTORY"}'
 ```
 
-Modify `  localhost:8080  ` if the emulator uses a different port.
+Modify `localhost:8080` if the emulator uses a different port.
 
 ### CLI Flag
 
-``` lang-sh notranslate
+``` notranslate lang-sh
 gcloud emulators firestore start --database-mode=datastore-mode --export-on-exit=EXPORT_DIRECTORY
 ```
 
 where:
 
-  - `  [PROJECT_ID]  ` is the ID of your project.
+  - `[PROJECT_ID]` is the ID of your project.
 
-  - `  [DATABASE_PATH]  ` is the database path. For example a project with default database would look like the following:
+  - `[DATABASE_PATH]` is the database path. For example a project with default database would look like the following:
     
-    `  {"database":"projects/myProject/databases/"}  `
+    `{"database":"projects/myProject/databases/"}`
 
-  - `  [EXPORT_DIRECTORY]  ` specifies the directory where the emulator saves the entity export files. This directory must not already contain a set of entity export files. For example:
+  - `[EXPORT_DIRECTORY]` specifies the directory where the emulator saves the entity export files. This directory must not already contain a set of entity export files. For example:
     
-    `  {"export_directory":"/home/user/myexports/2024-03-26/"}  `
+    `{"export_directory":"/home/user/myexports/2024-03-26/"}`
 
 **Note:** Exporting entities of specific kinds or namespaces is not supported.
 
@@ -120,13 +120,13 @@ By default, the Firestore emulator does not persist data to disk. To persist emu
 
 The Firestore emulator includes a REST endpoint for resetting all the data in the emulator. You can use this endpoint to clear data between tests without shutting down the emulator.
 
-To reset all the data in the emulator, perform an HTTP `  POST  ` operation against the following endpoint, replacing HOST and PORT with the host and port you selected and replacing PROJECT\_ID with your own project ID:
+To reset all the data in the emulator, perform an HTTP `POST` operation against the following endpoint, replacing HOST and PORT with the host and port you selected and replacing PROJECT\_ID with your own project ID:
 
     http://HOST:PORT/reset
 
-Adjust the host and port if the emulator does not use `  127.0.0.1:8080  ` . Your code should await REST confirmation that the reset finished or failed.
+Adjust the host and port if the emulator does not use `127.0.0.1:8080` . Your code should await REST confirmation that the reset finished or failed.
 
-You can perform this operation from the shell using `  curl  ` :
+You can perform this operation from the shell using `curl` :
 
     $ curl -X POST "http://HOST:PORT/reset"
 

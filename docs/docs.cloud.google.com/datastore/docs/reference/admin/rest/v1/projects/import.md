@@ -105,7 +105,7 @@ eu
 us
 
   
-`  POST https://datastore.googleapis.com/v1/projects/{projectId}:import  `
+`POST https://datastore.googleapis.com/v1/projects/{projectId}:import`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -113,9 +113,9 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  projectId  `
+`projectId`
 
-`  string  `
+`string`
 
 Required. Project ID against which to make the request.
 
@@ -134,41 +134,32 @@ The request body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;labels&quot;: {
-    string: string,
-    ...
-  },
-  &quot;inputUrl&quot;: string,
-  &quot;entityFilter&quot;: {
-    object (EntityFilter)
-  }
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;labels&quot;: {string: string,...},&quot;inputUrl&quot;: string,&quot;entityFilter&quot;: {object (EntityFilter)}}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  labels  `
+`labels`
 
-`  map (key: string, value: string)  `
+`map (key: string, value: string)`
 
 Client-assigned labels.
 
-An object containing a list of `  "key": value  ` pairs. Example: `  { "name": "wrench", "mass": "1.3kg", "count": "3" }  ` .
+An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }` .
 
-`  inputUrl  `
+`inputUrl`
 
-`  string  `
+`string`
 
-Required. The full resource URL of the external storage location. Currently, only Google Cloud Storage is supported. So inputUrl should be of the form: `  gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE  ` , where `  BUCKET_NAME  ` is the name of the Cloud Storage bucket, `  NAMESPACE_PATH  ` is an optional Cloud Storage namespace path (this is not a Cloud Datastore namespace), and `  OVERALL_EXPORT_METADATA_FILE  ` is the metadata file written by the projects.export operation. For more information about Cloud Storage namespace paths, see [Object name considerations](https://cloud.google.com/storage/docs/naming#object-considerations) .
+Required. The full resource URL of the external storage location. Currently, only Google Cloud Storage is supported. So inputUrl should be of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE` , where `BUCKET_NAME` is the name of the Cloud Storage bucket, `NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is not a Cloud Datastore namespace), and `OVERALL_EXPORT_METADATA_FILE` is the metadata file written by the projects.export operation. For more information about Cloud Storage namespace paths, see [Object name considerations](https://cloud.google.com/storage/docs/naming#object-considerations) .
 
 For more information, see `  google.datastore.admin.v1.ExportEntitiesResponse.output_url  ` .
 
-`  entityFilter  `
+`entityFilter`
 
-`  object ( EntityFilter  ` )
+` object ( EntityFilter  ` )
 
 Optionally specify which kinds/namespaces are to be imported. If provided, the list must be a subset of the EntityFilter used in creating the export, otherwise a FAILED\_PRECONDITION error will be returned. If no filter is specified then all entities from the export are imported.
 
@@ -180,7 +171,7 @@ If successful, the response body contains an instance of `  Operation  ` .
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

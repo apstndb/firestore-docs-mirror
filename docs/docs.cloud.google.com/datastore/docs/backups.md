@@ -31,12 +31,12 @@ Make sure that billing is enabled for your Google Cloud project. Learn how to [c
 
 To get the permissions that you need to manage backups and backup schedules, ask your administrator to grant you one or more of the following Identity and Access Management roles:
 
-  - `  roles/datastore.owner  ` : Full access to the Firestore database
-  - `  roles/datastore.backupsAdmin  ` : Read and write access to backups
-  - `  roles/datastore.backupsViewer  ` : Read access to backups
-  - `  roles/datastore.backupSchedulesAdmin  ` : Read and write access to backup schedules
-  - `  roles/datastore.backupSchedulesViewer  ` : Read access to backup schedules
-  - `  roles/datastore.restoreAdmin  ` : Permissions to initiate restore operations
+  - `roles/datastore.owner` : Full access to the Firestore database
+  - `roles/datastore.backupsAdmin` : Read and write access to backups
+  - `roles/datastore.backupsViewer` : Read access to backups
+  - `roles/datastore.backupSchedulesAdmin` : Read and write access to backup schedules
+  - `roles/datastore.backupSchedulesViewer` : Read access to backup schedules
+  - `roles/datastore.restoreAdmin` : Permissions to initiate restore operations
 
 ## Create and manage backup schedules
 
@@ -64,7 +64,7 @@ Use one of the following tools to create a backup schedule.
 
 ##### gcloud
 
-To create a backup schedule for a database, use the [`  gcloud firestore backups schedules create  `](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/create) command. To create a daily backup schedule, set the `  --recurrence  ` flag to `  daily  ` :
+To create a backup schedule for a database, use the [`gcloud firestore backups schedules create`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/create) command. To create a daily backup schedule, set the `--recurrence` flag to `daily` :
 
 ``` lang-sh pretty-print
 gcloud firestore backups schedules create \
@@ -75,8 +75,8 @@ gcloud firestore backups schedules create \
 
 Replace the following:
 
-  - DATABASE\_ID : The ID of the database to back up. Set to `  '(default)'  ` for the default database.
-  - RETENTION\_PERIOD : Set this to a value up to 14 weeks ( `  14w  ` ).
+  - DATABASE\_ID : The ID of the database to back up. Set to `'(default)'` for the default database.
+  - RETENTION\_PERIOD : Set this to a value up to 14 weeks ( `14w` ).
 
 ##### Terraform
 
@@ -96,8 +96,8 @@ resource "google_firestore_backup_schedule" "daily-backup" {
 Replace the following:
 
   - PROJECT\_ID : The ID of the project.
-  - DATABASE\_ID : The ID of the database to back up. Set to `  '(default)'  ` for the default database.
-  - RETENTION\_PERIOD\_SECONDS : Set this to a value in seconds, followed by "s". The maximum value is `  8467200s  ` (14 weeks).
+  - DATABASE\_ID : The ID of the database to back up. Set to `'(default)'` for the default database.
+  - RETENTION\_PERIOD\_SECONDS : Set this to a value in seconds, followed by "s". The maximum value is `8467200s` (14 weeks).
 
 #### Create a weekly backup schedule
 
@@ -115,7 +115,7 @@ Replace the following:
 
 ##### gcloud
 
-To create a weekly backup schedule, set the `  --recurrence  ` flag to `  weekly  ` :
+To create a weekly backup schedule, set the `--recurrence` flag to `weekly` :
 
 ``` lang-sh pretty-print
 gcloud firestore backups schedules create \
@@ -127,16 +127,16 @@ gcloud firestore backups schedules create \
 
 Replace the following:
 
-  - DATABASE\_ID : The ID of the database to back up. Set to `  '(default)'  ` for the default database.
-  - RETENTION\_PERIOD : Set this to a value up to 14 weeks ( `  14w  ` ).
+  - DATABASE\_ID : The ID of the database to back up. Set to `'(default)'` for the default database.
+  - RETENTION\_PERIOD : Set this to a value up to 14 weeks ( `14w` ).
   - DAY : The day of the week to take the backup. Set to one of the following:
-      - `  SUN  ` for Sunday
-      - `  MON  ` for Monday
-      - `  TUE  ` for Tuesday
-      - `  WED  ` for Wednesday
-      - `  THU  ` for Thursday
-      - `  FRI  ` for Friday
-      - `  SAT  ` for Saturday
+      - `SUN` for Sunday
+      - `MON` for Monday
+      - `TUE` for Tuesday
+      - `WED` for Wednesday
+      - `THU` for Thursday
+      - `FRI` for Friday
+      - `SAT` for Saturday
 
 ##### Terraform
 
@@ -158,16 +158,16 @@ resource "google_firestore_backup_schedule" "weekly-backup" {
 Replace the following:
 
   - PROJECT\_ID : The ID of the project.
-  - DATABASE\_ID : The ID of the database to back up. Set to `  '(default)'  ` for the default database.
-  - RETENTION\_PERIOD\_SECONDS : Set this to a value in seconds, followed by "s". The maximum value is `  8467200s  ` (14 weeks).
+  - DATABASE\_ID : The ID of the database to back up. Set to `'(default)'` for the default database.
+  - RETENTION\_PERIOD\_SECONDS : Set this to a value in seconds, followed by "s". The maximum value is `8467200s` (14 weeks).
   - DAY : The day of the week to take the backup. Set to one of the following:
-      - `  SUNDAY  ` for Sunday
-      - `  MONDAY  ` for Monday
-      - `  TUESDAY  ` for Tuesday
-      - `  WEDNESDAY  ` for Wednesday
-      - `  THURSDAY  ` for Thursday
-      - `  FRIDAY  ` for Friday
-      - `  SATURDAY  ` for Saturday
+      - `SUNDAY` for Sunday
+      - `MONDAY` for Monday
+      - `TUESDAY` for Tuesday
+      - `WEDNESDAY` for Wednesday
+      - `THURSDAY` for Thursday
+      - `FRIDAY` for Friday
+      - `SATURDAY` for Saturday
 
 ### List backup schedules
 
@@ -185,14 +185,14 @@ To list all backup schedules for a database, use one of the following methods:
 
 ##### gcloud
 
-Use the [`  gcloud firestore backups schedules list  `](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/list) command.
+Use the [`gcloud firestore backups schedules list`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/list) command.
 
 ``` lang-sh pretty-print
 gcloud firestore backups schedules list \
 --database='DATABASE_ID'
 ```
 
-Replace DATABASE\_ID with the ID of the database. Use `  '(default)'  ` for the default database.
+Replace DATABASE\_ID with the ID of the database. Use `'(default)'` for the default database.
 
 ### Describe backup schedule
 
@@ -210,7 +210,7 @@ To retrieve information about a backup schedule, use one of the following method
 
 ##### gcloud
 
-Use the [`  gcloud firestore backups schedules describe  `](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/describe) command:
+Use the [`gcloud firestore backups schedules describe`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/describe) command:
 
 ``` lang-sh pretty-print
 gcloud firestore backups schedules describe \
@@ -220,7 +220,7 @@ gcloud firestore backups schedules describe \
 
 Replace the following:
 
-  - DATABASE\_ID : The ID of the database to back up. Set to `  '(default)'  ` for the default database.
+  - DATABASE\_ID : The ID of the database to back up. Set to `'(default)'` for the default database.
   - BACKUP\_SCHEDULE\_ID : The ID of a backup schedule. You can view the ID of each backup schedule when you [list all backup schedules](https://docs.cloud.google.com/datastore/docs/backups#list_backup_schedules) .
 
 ### Update a backup schedule
@@ -241,7 +241,7 @@ To update the retention period of a backup schedule, use one of the following me
 
 ##### gcloud
 
-Use the [`  gcloud firestore backups schedules update  `](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/update) command:
+Use the [`gcloud firestore backups schedules update`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/update) command:
 
 ``` lang-sh pretty-print
 gcloud firestore backups schedules update \
@@ -252,9 +252,9 @@ gcloud firestore backups schedules update \
 
 Replace the following:
 
-  - DATABASE\_ID : The ID of the database to back up. Set to `  '(default)'  ` for the default database.
+  - DATABASE\_ID : The ID of the database to back up. Set to `'(default)'` for the default database.
   - BACKUP\_SCHEDULE\_ID : The ID of a backup schedule. You can view the ID of each backup schedule when you [list all backup schedules](https://docs.cloud.google.com/datastore/docs/backups#list_backup_schedules) .
-  - RETENTION\_PERIOD : Set this to a value up to 14 weeks ( `  14w  ` ).
+  - RETENTION\_PERIOD : Set this to a value up to 14 weeks ( `14w` ).
 
 You can update the retention period of a backup schedule, but you cannot update its recurrence. If you need a backup schedule with a different recurrence, delete the old backup schedule if it is no longer required and create a new backup schedule with the preferred recurrence.
 
@@ -276,7 +276,7 @@ To delete a backup schedule, use one of the following methods:
 
 ##### gcloud
 
-Use the [`  gcloud firestore backups schedules delete  `](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/delete) command:
+Use the [`gcloud firestore backups schedules delete`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/delete) command:
 
 ``` lang-sh pretty-print
 gcloud firestore backups schedules delete \
@@ -286,7 +286,7 @@ gcloud firestore backups schedules delete \
 
 Replace the following:
 
-  - DATABASE\_ID : The ID of the database to back up. Set to `  '(default)'  ` for the default database.
+  - DATABASE\_ID : The ID of the database to back up. Set to `'(default)'` for the default database.
   - BACKUP\_SCHEDULE\_ID : The ID of a backup schedule. You can view the ID of each backup schedule when you [list all backup schedules](https://docs.cloud.google.com/datastore/docs/backups#list_backup_schedules) .
 
 Note that deleting a backup schedule won't delete backups already created by this schedule. You can wait for them to expire after their retention period, or to manually delete a backup, see [delete backup](https://docs.cloud.google.com/datastore/docs/backups#delete_backup) .
@@ -311,14 +311,14 @@ To list available backups, use one of the following methods:
 
 ##### gcloud
 
-Use the [`  gcloud firestore backups list  `](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/list) command:
+Use the [`gcloud firestore backups list`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/list) command:
 
 ``` lang-sh pretty-print
 gcloud firestore backups list \
 --format="table(name, database, state)"
 ```
 
-The `  --format="table(name, database, state)"  ` flag formats the output into a more readable format. To list only the backups from a specific location, use the `  --location  ` flag:
+The `--format="table(name, database, state)"` flag formats the output into a more readable format. To list only the backups from a specific location, use the `--location` flag:
 
 ``` lang-sh pretty-print
 gcloud firestore backups list \
@@ -344,7 +344,7 @@ To view details about a backup, use one of the following methods:
 
 ##### gcloud
 
-Use the [`  gcloud firestore backups describe  `](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/describe) command:
+Use the [`gcloud firestore backups describe`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/describe) command:
 
 ``` lang-sh pretty-print
 gcloud firestore backups describe \
@@ -377,7 +377,7 @@ To delete a backup, use one of the following methods.
 
 ##### gcloud
 
-Use the [`  gcloud firestore backups delete  `](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/delete) command:
+Use the [`gcloud firestore backups delete`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/delete) command:
 
 ``` lang-sh pretty-print
 gcloud firestore backups delete \
@@ -414,7 +414,7 @@ To begin a restore operation, use one of the following methods:
 
 ##### gcloud
 
-Use the [`  gcloud firestore databases restore  `](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/restore) command:
+Use the [`gcloud firestore databases restore`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/restore) command:
 
 ``` lang-sh pretty-print
 gcloud firestore databases restore \
@@ -430,10 +430,10 @@ Replace the following:
   - BACKUP\_ID : The ID of a backup. You can view the ID of each backup when you [list all backups](https://docs.cloud.google.com/datastore/docs/backups#list_backups) .
   - DATABASE\_ID : A database ID for the new database. You cannot use a database ID that is already in use.
   - \[ KEY = VALUE \]: A optional list of tags KEY=VALUE pairs to bind. For example:
-      - `  --tags=123/environment=production,123/costCenter=marketing  `
-      - `  --tags=tagKeys/333=tagValues/444  `
+      - `--tags=123/environment=production,123/costCenter=marketing`
+      - `--tags=tagKeys/333=tagValues/444`
 
-The database mode will match that of the backup. The output will include `  metadata  ` , `  name  ` , and `  response  ` components:
+The database mode will match that of the backup. The output will include `metadata` , `name` , and `response` components:
 
 ``` pretty-print
 metadata:
@@ -453,13 +453,13 @@ response:
   ...
 ```
 
-The `  metadata  ` field includes a `  progressPercentage  ` component, detailing the estimated progress of the restore thus far, and an `  operationState  ` specifying the overall state of the restore. To retrieve this information again, use `  gcloud firestore operations list  ` :
+The `metadata` field includes a `progressPercentage` component, detailing the estimated progress of the restore thus far, and an `operationState` specifying the overall state of the restore. To retrieve this information again, use `  gcloud firestore operations list  ` :
 
 ``` lang-sh pretty-print
 gcloud firestore operations list --database=DATABASE_ID
 ```
 
-or, using the `  name  ` field from the output described above, with `  gcloud firestore operations describe  ` :
+or, using the `name` field from the output described above, with `  gcloud firestore operations describe  ` :
 
 ``` lang-sh pretty-print
 gcloud firestore operations describe OPERATION_NAME
@@ -467,7 +467,7 @@ gcloud firestore operations describe OPERATION_NAME
 
 ### Limitations
 
-A restore operation does not restore [App Engine search data](https://cloud.google.com/appengine/docs/legacy/standard/python/search) or [blob entities](https://cloud.google.com/appengine/docs/legacy/standard/python/blobstore) from a `  (default)  ` database. This data is only valid for the `  (default)  ` database, and it won't be useful if you restore from `  (default)  ` to a database which does not support such data, so it is excluded from backups.
+A restore operation does not restore [App Engine search data](https://cloud.google.com/appengine/docs/legacy/standard/python/search) or [blob entities](https://cloud.google.com/appengine/docs/legacy/standard/python/blobstore) from a `(default)` database. This data is only valid for the `(default)` database, and it won't be useful if you restore from `(default)` to a database which does not support such data, so it is excluded from backups.
 
 ### What to do after restoring
 

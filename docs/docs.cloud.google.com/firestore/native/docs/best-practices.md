@@ -12,14 +12,14 @@ Select a [regional location](https://docs.cloud.google.com/firestore/native/docs
 
 ## Document IDs
 
-  - Avoid the document IDs `  .  ` and `  ..  ` .
+  - Avoid the document IDs `.` and `..` .
 
-  - Avoid using `  /  ` forward slashes in document IDs.
+  - Avoid using `/` forward slashes in document IDs.
 
   - Do not use monotonically increasing document IDs such as:
     
-      - `  Customer1  ` , `  Customer2  ` , `  Customer3  ` , ...
-      - `  Product 1  ` , `  Product 2  ` , `  Product 3  ` , ...
+      - `Customer1` , `Customer2` , `Customer3` , ...
+      - `Product 1` , `Product 2` , `Product 3` , ...
     
     Such sequential IDs can lead to [hotspots](https://docs.cloud.google.com/firestore/native/docs/best-practices#hotspots) that impact latency.
 
@@ -27,11 +27,11 @@ Select a [regional location](https://docs.cloud.google.com/firestore/native/docs
 
   - Avoid the following characters in field names because they require extra escaping:
     
-      - `  .  ` period
-      - `  [  ` left bracket
-      - `  ]  ` right bracket
-      - `  *  ` asterisk
-      - ``  `  `` backtick
+      - `.` period
+      - `[` left bracket
+      - `]` right bracket
+      - `*` asterisk
+      - `` ` `` backtick
 
 ## Indexes
 
@@ -126,9 +126,9 @@ An example of a workload that might have to skip over a lot of deleted data is o
       delete_batch.delete(doc.reference)
     delete_batch.commit()
 
-Each time this query runs it scans over the index entries for the `  created  ` field on any recently deleted documents. This slows down queries.
+Each time this query runs it scans over the index entries for the `created` field on any recently deleted documents. This slows down queries.
 
-To improve the performance, use the `  start_at  ` method to find the best place to start. For example:
+To improve the performance, use the `start_at` method to find the best place to start. For example:
 
     completed_items = db.collection('CompletionStats').document('all stats').get()
     docs = db.collection('WorkItems').start_at(

@@ -4,7 +4,7 @@ gcloud firestore fields - manage field metadata for Cloud Firestore
 
 SYNOPSIS
 
-`  gcloud firestore fields  ` `  GROUP  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud firestore fields` `  GROUP  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
@@ -14,7 +14,7 @@ GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 GROUPS
 

@@ -4,35 +4,35 @@ gcloud alpha firestore backups - the set of commands to manage backups for Cloud
 
 SYNOPSIS
 
-`  gcloud alpha firestore backups  ` `  GROUP  ` | `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud alpha firestore backups` `  GROUP  ` | `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (ALPHA)  ` The set of commands to manage backups for Cloud Firestore.
+`(ALPHA)` The set of commands to manage backups for Cloud Firestore.
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 GROUPS
 
 `  GROUP  ` is one of the following:
 
   - `  schedules  `  
-    `  (ALPHA)  ` Manage the backup schedules for a Cloud Firestore Database.
+    `(ALPHA)` Manage the backup schedules for a Cloud Firestore Database.
 
 COMMANDS
 
 `  COMMAND  ` is one of the following:
 
   - `  delete  `  
-    `  (ALPHA)  ` Deletes a Cloud Firestore backup.
+    `(ALPHA)` Deletes a Cloud Firestore backup.
   - `  describe  `  
-    `  (ALPHA)  ` Retrieves information about a Cloud Firestore backup.
+    `(ALPHA)` Retrieves information about a Cloud Firestore backup.
   - `  list  `  
-    `  (ALPHA)  ` List backups available to Cloud Firestore.
+    `(ALPHA)` List backups available to Cloud Firestore.
 
 NOTES
 

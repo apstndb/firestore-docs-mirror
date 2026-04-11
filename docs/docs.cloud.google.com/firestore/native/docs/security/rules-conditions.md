@@ -34,7 +34,7 @@ Another common pattern is to make sure users can only read and write their own d
       }
     }
 
-If your app uses Firebase Authentication or [Google Cloud Identity Platform](https://cloud.google.com/identity-platform) , the `  request.auth  ` variable contains the authentication information for the client requesting data. For more information about `  request.auth  ` , see [the reference documentation](https://firebase.google.com/docs/reference/rules/rules.firestore.Request#auth) .
+If your app uses Firebase Authentication or [Google Cloud Identity Platform](https://cloud.google.com/identity-platform) , the `request.auth` variable contains the authentication information for the client requesting data. For more information about `request.auth` , see [the reference documentation](https://firebase.google.com/docs/reference/rules/rules.firestore.Request#auth) .
 
 ## Data validation
 
@@ -50,9 +50,9 @@ Many apps store access control information as fields on documents in the databas
       }
     }
 
-The `  resource  ` variable refers to the requested document, and `  resource.data  ` is a map of all of the fields and values stored in the document. For more information on the `  resource  ` variable, see [the reference documentation](https://firebase.google.com/docs/reference/rules/rules.firestore.Resource) .
+The `resource` variable refers to the requested document, and `resource.data` is a map of all of the fields and values stored in the document. For more information on the `resource` variable, see [the reference documentation](https://firebase.google.com/docs/reference/rules/rules.firestore.Resource) .
 
-When writing data, you may want to compare incoming data to existing data. In this case, if your ruleset allows the pending write, the `  request.resource  ` variable contains the future state of the document. For `  update  ` operations that only modify a subset of the document fields, the `  request.resource  ` variable will contain the pending document state after the operation. You can check the field values in `  request.resource  ` to prevent unwanted or inconsistent data updates:
+When writing data, you may want to compare incoming data to existing data. In this case, if your ruleset allows the pending write, the `request.resource` variable contains the future state of the document. For `update` operations that only modify a subset of the document fields, the `request.resource` variable will contain the pending document state after the operation. You can check the field values in `request.resource` to prevent unwanted or inconsistent data updates:
 
     service cloud.firestore {
       match /databases/{database}/documents {
@@ -67,9 +67,9 @@ When writing data, you may want to compare incoming data to existing data. In th
 
 ## Access other documents
 
-Using the `  get()  ` and `  exists()  ` functions, your security rules can evaluate incoming requests against other documents in the database. The `  get()  ` and `  exists()  ` functions both expect fully specified document paths. When using variables to construct paths for `  get()  ` and `  exists()  ` , you need to explicitly escape variables using the `  $(variable)  ` syntax.
+Using the `get()` and `exists()` functions, your security rules can evaluate incoming requests against other documents in the database. The `get()` and `exists()` functions both expect fully specified document paths. When using variables to construct paths for `get()` and `exists()` , you need to explicitly escape variables using the `$(variable)` syntax.
 
-In the example below, the `  database  ` variable is captured by the match statement `  match /databases/{database}/documents  ` and used to form the path:
+In the example below, the `database` variable is captured by the match statement `match /databases/{database}/documents` and used to form the path:
 
     service cloud.firestore {
       match /databases/{database}/documents {
@@ -85,7 +85,7 @@ In the example below, the `  database  ` variable is captured by the match state
       }
     }
 
-For writes, you can use the `  getAfter()  ` function to access the state of a document after a transaction or batch of writes completes but before the transaction or batch commits. Like `  get()  ` , the `  getAfter()  ` function takes a fully specified document path. You can use `  getAfter()  ` to define sets of writes that must take place together as a transaction or batch.
+For writes, you can use the `getAfter()` function to access the state of a document after a transaction or batch of writes completes but before the transaction or batch commits. Like `get()` , the `getAfter()` function takes a fully specified document path. You can use `getAfter()` to define sets of writes that must take place together as a transaction or batch.
 
 ### Access call limits
 
@@ -109,12 +109,12 @@ Using these functions executes a read operation in your database, which means yo
 
 As your security rules become more complex, you may want to wrap sets of conditions in functions that you can reuse across your ruleset. Security rules support custom functions. The syntax for custom functions is a bit like JavaScript, but security rules functions are written in a domain-specific language that has some important limitations:
 
-  - Functions can contain only a single `  return  ` statement. They cannot contain any additional logic. For example, they cannot execute loops or call external services.
-  - Functions can automatically access functions and variables from the scope in which they are defined. For example, a function defined within the `  service cloud.firestore  ` scope has access to the `  resource  ` variable and built-in functions such as `  get()  ` and `  exists()  ` .
+  - Functions can contain only a single `return` statement. They cannot contain any additional logic. For example, they cannot execute loops or call external services.
+  - Functions can automatically access functions and variables from the scope in which they are defined. For example, a function defined within the `service cloud.firestore` scope has access to the `resource` variable and built-in functions such as `get()` and `exists()` .
   - Functions may call other functions but may not recurse. The total call stack depth is limited to 10.
-  - In rules version `  v2  ` , functions can define variables using the `  let  ` keyword. Functions can have up to 10 let bindings, but must end with a return statement.
+  - In rules version `v2` , functions can define variables using the `let` keyword. Functions can have up to 10 let bindings, but must end with a return statement.
 
-A function is defined with the `  function  ` keyword and takes zero or more arguments. For example, you may want to combine the two types of conditions used in the examples above into a single function:
+A function is defined with the `function` keyword and takes zero or more arguments. For example, you may want to combine the two types of conditions used in the examples above into a single function:
 
     service cloud.firestore {
       match /databases/{database}/documents {
@@ -151,7 +151,7 @@ For example, take the following security rule:
       }
     }
 
-Denied : This rule rejects the following query because the result set can include documents where `  visibility  ` is not `  public  ` :
+Denied : This rule rejects the following query because the result set can include documents where `visibility` is not `public` :
 
 ##### Web
 
@@ -162,7 +162,7 @@ Denied : This rule rejects the following query because the result set can includ
         });
     });
 
-Allowed : This rule allows the following query because the `  where("visibility", "==", "public")  ` clause guarantees that the result set satisfies the rule's condition:
+Allowed : This rule allows the following query because the `where("visibility", "==", "public")` clause guarantees that the result set satisfies the rule's condition:
 
 ##### Web
 

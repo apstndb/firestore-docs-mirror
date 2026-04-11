@@ -12,9 +12,9 @@ The saved queries capability is available only in the Google Cloud console.
 
 To get the permissions that you need to use saved queries, ask your administrator to grant you the following Identity and Access Management (IAM) roles on the project:
 
-  - To view saved queries: [Cloud Datastore Viewer](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam#predefined_roles) ( `  roles/datastore.viewer  ` )
-  - To view, create, modify, and delete saved queries: [Cloud Datastore User](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam#predefined_roles) ( `  roles/datastore.user  ` )
-  - To administer, view, create, modify, and delete saved queries: [Cloud Datastore Owner](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam#predefined_roles) ( `  roles/datastore.owner  ` ). This role has broad permissions and provides full access to Firestore with MongoDB compatibility, only for use by administrators.
+  - To view saved queries: [Cloud Datastore Viewer](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam#predefined_roles) ( `roles/datastore.viewer` )
+  - To view, create, modify, and delete saved queries: [Cloud Datastore User](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam#predefined_roles) ( `roles/datastore.user` )
+  - To administer, view, create, modify, and delete saved queries: [Cloud Datastore Owner](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam#predefined_roles) ( `roles/datastore.owner` ). This role has broad permissions and provides full access to Firestore with MongoDB compatibility, only for use by administrators.
 
 For more information about granting roles, see [Manage access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
 
@@ -39,37 +39,37 @@ To create, view, modify, and delete saved queries, you need the following IAM pe
 <tr class="odd">
 <td>Create saved queries</td>
 <td><ul>
-<li><code dir="ltr" translate="no">         databasesconsole.studioQueries.create        </code></li>
+<li><code dir="ltr" translate="no">databasesconsole.studioQueries.create</code></li>
 </ul></td>
 </tr>
 <tr class="even">
 <td>View saved queries</td>
 <td><ul>
-<li><code dir="ltr" translate="no">         databasesconsole.studioQueries.search        </code></li>
-<li><code dir="ltr" translate="no">         databasesconsole.locations.get        </code></li>
-<li><code dir="ltr" translate="no">         databasesconsole.locations.list        </code></li>
+<li><code dir="ltr" translate="no">databasesconsole.studioQueries.search</code></li>
+<li><code dir="ltr" translate="no">databasesconsole.locations.get</code></li>
+<li><code dir="ltr" translate="no">databasesconsole.locations.list</code></li>
 </ul></td>
 </tr>
 <tr class="odd">
 <td>Modify saved queries</td>
 <td><ul>
-<li><code dir="ltr" translate="no">         databasesconsole.studioQueries.update        </code></li>
+<li><code dir="ltr" translate="no">databasesconsole.studioQueries.update</code></li>
 </ul></td>
 </tr>
 <tr class="even">
 <td>Delete saved queries</td>
 <td><ul>
-<li><code dir="ltr" translate="no">         databasesconsole.studioQueries.delete        </code></li>
+<li><code dir="ltr" translate="no">databasesconsole.studioQueries.delete</code></li>
 </ul></td>
 </tr>
 <tr class="odd">
 <td>Administer saved queries<br />
 (Only for use by administrators)</td>
 <td><ul>
-<li><code dir="ltr" translate="no">         databasesConsole.studioQueries.list        </code></li>
+<li><code dir="ltr" translate="no">databasesConsole.studioQueries.list</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">         databasesconsole.locations.list        </code></li>
+<li><code dir="ltr" translate="no">databasesconsole.locations.list</code></li>
 </ul></td>
 </tr>
 </tbody>
@@ -79,9 +79,9 @@ To create, view, modify, and delete saved queries, you need the following IAM pe
 
 You can also get these permissions using [custom roles](https://docs.cloud.google.com/iam/docs/creating-custom-roles) or other [predefined roles](https://docs.cloud.google.com/iam/docs/roles-overview#predefined) .
 
-The [Studio Query User](https://docs.cloud.google.com/iam/docs/roles-permissions/databasesconsole) ( `  roles/databasesconsole.studioQueryUser  ` ) role provides create, view, and write saved queries access. This role meets the needs of most users.
+The [Studio Query User](https://docs.cloud.google.com/iam/docs/roles-permissions/databasesconsole) ( `roles/databasesconsole.studioQueryUser` ) role provides create, view, and write saved queries access. This role meets the needs of most users.
 
-Grant the [Studio Query Admin](https://docs.cloud.google.com/iam/docs/roles-permissions/databasesconsole) ( `  roles/databasesconsole.studioQueryAdmin  ` ) role only to administrators. For more information about Firestore with MongoDB compatibility IAM, see [Identity and Access Management](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam) .
+Grant the [Studio Query Admin](https://docs.cloud.google.com/iam/docs/roles-permissions/databasesconsole) ( `roles/databasesconsole.studioQueryAdmin` ) role only to administrators. For more information about Firestore with MongoDB compatibility IAM, see [Identity and Access Management](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam) .
 
 ## Create a saved query
 

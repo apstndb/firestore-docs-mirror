@@ -1,17 +1,17 @@
 # Write-time aggregations
 
-**Tip:** This page applies to Core operations. To aggregate data in Pipeline operations for Enterprise edition, see [Pipeline operation `  aggregate  ` stage](https://docs.cloud.google.com/firestore/native/docs/pipeline/overview#aggregate_distinct) .
+**Tip:** This page applies to Core operations. To aggregate data in Pipeline operations for Enterprise edition, see [Pipeline operation `aggregate` stage](https://docs.cloud.google.com/firestore/native/docs/pipeline/overview#aggregate_distinct) .
 
 Queries in Firestore let you find documents in large collections. To gain insight into properties of the collection as a whole, you can aggregate data over a collection.
 
 You can aggregate data either at read-time or at write time:
 
-  - **Read-time aggregations** calculate a result at the time of the request. Firestore supports the `  count()  ` , `  sum()  ` , and `  average()  ` aggregation queries at read-time. Read-time aggregation queries are are easier to add to your app than write-time aggregations. For more on aggregation queries, see [Summarize data with aggregation queries](https://docs.cloud.google.com/firestore/native/docs/query-data/aggregation-queries) .
+  - **Read-time aggregations** calculate a result at the time of the request. Firestore supports the `count()` , `sum()` , and `average()` aggregation queries at read-time. Read-time aggregation queries are are easier to add to your app than write-time aggregations. For more on aggregation queries, see [Summarize data with aggregation queries](https://docs.cloud.google.com/firestore/native/docs/query-data/aggregation-queries) .
 
   - **Write-time aggregations** calculate a result each time the app performs a relevant write operation. Write-time aggregations are more work to implement, but you might use them instead of read-time aggregations for one of the following reasons:
     
-      - You want to listen to the aggregation result for real-time updates. The `  count()  ` , `  sum()  ` , and `  average()  ` aggregation queries do not support real-time updates.
-      - You want to store the aggregation result in a client-side cache. The `  count()  ` , `  sum()  ` , and `  average()  ` aggregation queries do not support caching.
+      - You want to listen to the aggregation result for real-time updates. The `count()` , `sum()` , and `average()` aggregation queries do not support real-time updates.
+      - You want to store the aggregation result in a client-side cache. The `count()` , `sum()` , and `average()` aggregation queries do not support caching.
       - You are aggregating data from tens of thousands of documents for each of your users and consider costs. At a lower number of documents, read-time aggregations cost less. For a large number of documents in an aggregations, write-time aggregations might cost less.
 
 You can implement a write-time aggregation using either a client-side transaction or with Cloud Run functions. The following sections describe how to implement write-time aggregations.

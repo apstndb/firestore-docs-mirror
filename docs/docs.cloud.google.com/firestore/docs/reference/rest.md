@@ -16,7 +16,7 @@ A [Discovery Document](https://developers.google.com/discovery/v1/reference/apis
 
 A [service endpoint](https://cloud.google.com/apis/design/glossary#api_service_endpoint) is a base URL that specifies the network address of an API service. One service might have multiple service endpoints. This service has the following service endpoint and all URIs below are relative to this service endpoint:
 
-  - `  https://firestore.googleapis.com  `
+  - `https://firestore.googleapis.com`
 
 ### Regional service endpoint
 
@@ -116,7 +116,7 @@ us
 
   
 
-`  https://firestore.googleapis.com  `
+`https://firestore.googleapis.com`
 
 ## REST Resource: [v1beta2.projects.databases](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases)
 
@@ -124,12 +124,12 @@ Methods
 
 `  exportDocuments  `
 
-`  POST /v1beta2/{name=projects/*/databases/*}:exportDocuments  `  
+`POST /v1beta2/{name=projects/*/databases/*}:exportDocuments`  
 Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage.
 
 `  importDocuments  `
 
-`  POST /v1beta2/{name=projects/*/databases/*}:importDocuments  `  
+`POST /v1beta2/{name=projects/*/databases/*}:importDocuments`  
 Imports documents into Google Cloud Firestore.
 
 ## REST Resource: [v1beta2.projects.databases.collectionGroups.fields](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.fields)
@@ -138,17 +138,17 @@ Methods
 
 `  get  `
 
-`  GET /v1beta2/{name=projects/*/databases/*/collectionGroups/*/fields/*}  `  
+`GET /v1beta2/{name=projects/*/databases/*/collectionGroups/*/fields/*}`  
 Gets the metadata and configuration for a Field.
 
 `  list  `
 
-`  GET /v1beta2/{parent=projects/*/databases/*/collectionGroups/*}/fields  `  
+`GET /v1beta2/{parent=projects/*/databases/*/collectionGroups/*}/fields`  
 Lists the field configuration and metadata for this database.
 
 `  patch  `
 
-`  PATCH /v1beta2/{field.name=projects/*/databases/*/collectionGroups/*/fields/*}  `  
+`PATCH /v1beta2/{field.name=projects/*/databases/*/collectionGroups/*/fields/*}`  
 Updates a field configuration.
 
 ## REST Resource: [v1beta2.projects.databases.collectionGroups.indexes](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.indexes)
@@ -157,22 +157,22 @@ Methods
 
 `  create  `
 
-`  POST /v1beta2/{parent=projects/*/databases/*/collectionGroups/*}/indexes  `  
+`POST /v1beta2/{parent=projects/*/databases/*/collectionGroups/*}/indexes`  
 Creates a composite index.
 
 `  delete  `
 
-`  DELETE /v1beta2/{name=projects/*/databases/*/collectionGroups/*/indexes/*}  `  
+`DELETE /v1beta2/{name=projects/*/databases/*/collectionGroups/*/indexes/*}`  
 Deletes a composite index.
 
 `  get  `
 
-`  GET /v1beta2/{name=projects/*/databases/*/collectionGroups/*/indexes/*}  `  
+`GET /v1beta2/{name=projects/*/databases/*/collectionGroups/*/indexes/*}`  
 Gets a composite index.
 
 `  list  `
 
-`  GET /v1beta2/{parent=projects/*/databases/*/collectionGroups/*}/indexes  `  
+`GET /v1beta2/{parent=projects/*/databases/*/collectionGroups/*}/indexes`  
 Lists composite indexes.
 
 ## REST Resource: [v1beta1.projects.databases](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases)
@@ -181,12 +181,12 @@ Methods
 
 `  exportDocuments  `
 
-`  POST /v1beta1/{name=projects/*/databases/*}:exportDocuments  `  
+`POST /v1beta1/{name=projects/*/databases/*}:exportDocuments`  
 Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage.
 
 `  importDocuments  `
 
-`  POST /v1beta1/{name=projects/*/databases/*}:importDocuments  `  
+`POST /v1beta1/{name=projects/*/databases/*}:importDocuments`  
 Imports documents into Google Cloud Firestore.
 
 ## REST Resource: [v1beta1.projects.databases.documents](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents)
@@ -195,92 +195,92 @@ Methods
 
 `  batchGet  `
 
-`  POST /v1beta1/{database=projects/*/databases/*}/documents:batchGet  `  
+`POST /v1beta1/{database=projects/*/databases/*}/documents:batchGet`  
 Gets multiple documents.
 
 `  batchWrite  `
 
-`  POST /v1beta1/{database=projects/*/databases/*}/documents:batchWrite  `  
+`POST /v1beta1/{database=projects/*/databases/*}/documents:batchWrite`  
 Applies a batch of write operations.
 
 `  beginTransaction  `
 
-`  POST /v1beta1/{database=projects/*/databases/*}/documents:beginTransaction  `  
+`POST /v1beta1/{database=projects/*/databases/*}/documents:beginTransaction`  
 Starts a new transaction.
 
 `  commit  `
 
-`  POST /v1beta1/{database=projects/*/databases/*}/documents:commit  `  
+`POST /v1beta1/{database=projects/*/databases/*}/documents:commit`  
 Commits a transaction, while optionally updating documents.
 
 `  createDocument  `
 
-`  POST /v1beta1/{parent=projects/*/databases/*/documents/**}/{collectionId}  `  
+`POST /v1beta1/{parent=projects/*/databases/*/documents/**}/{collectionId}`  
 Creates a new document.
 
 `  delete  `
 
-`  DELETE /v1beta1/{name=projects/*/databases/*/documents/*/**}  `  
+`DELETE /v1beta1/{name=projects/*/databases/*/documents/*/**}`  
 Deletes a document.
 
 `  executePipeline  `
 
-`  POST /v1beta1/{database=projects/*/databases/*}/documents:executePipeline  `  
+`POST /v1beta1/{database=projects/*/databases/*}/documents:executePipeline`  
 Executes a pipeline query.
 
 `  get  `
 
-`  GET /v1beta1/{name=projects/*/databases/*/documents/*/**}  `  
+`GET /v1beta1/{name=projects/*/databases/*/documents/*/**}`  
 Gets a single document.
 
 `  list  `
 
-`  GET /v1beta1/{parent=projects/*/databases/*/documents/*/**}/{collectionId}  `  
+`GET /v1beta1/{parent=projects/*/databases/*/documents/*/**}/{collectionId}`  
 Lists documents.
 
 `  listCollectionIds  `
 
-`  POST /v1beta1/{parent=projects/*/databases/*/documents}:listCollectionIds  `  
+`POST /v1beta1/{parent=projects/*/databases/*/documents}:listCollectionIds`  
 Lists all the collection IDs underneath a document.
 
 `  listDocuments  `
 
-`  GET /v1beta1/{parent=projects/*/databases/*/documents}/{collectionId}  `  
+`GET /v1beta1/{parent=projects/*/databases/*/documents}/{collectionId}`  
 Lists documents.
 
 `  listen  `
 
-`  POST /v1beta1/{database=projects/*/databases/*}/documents:listen  `  
+`POST /v1beta1/{database=projects/*/databases/*}/documents:listen`  
 Listens to changes.
 
 `  partitionQuery  `
 
-`  POST /v1beta1/{parent=projects/*/databases/*/documents}:partitionQuery  `  
+`POST /v1beta1/{parent=projects/*/databases/*/documents}:partitionQuery`  
 Partitions a query by returning partition cursors that can be used to run the query in parallel.
 
 `  patch  `
 
-`  PATCH /v1beta1/{document.name=projects/*/databases/*/documents/*/**}  `  
+`PATCH /v1beta1/{document.name=projects/*/databases/*/documents/*/**}`  
 Updates or inserts a document.
 
 `  rollback  `
 
-`  POST /v1beta1/{database=projects/*/databases/*}/documents:rollback  `  
+`POST /v1beta1/{database=projects/*/databases/*}/documents:rollback`  
 Rolls back a transaction.
 
 `  runAggregationQuery  `
 
-`  POST /v1beta1/{parent=projects/*/databases/*/documents}:runAggregationQuery  `  
+`POST /v1beta1/{parent=projects/*/databases/*/documents}:runAggregationQuery`  
 Runs an aggregation query.
 
 `  runQuery  `
 
-`  POST /v1beta1/{parent=projects/*/databases/*/documents}:runQuery  `  
+`POST /v1beta1/{parent=projects/*/databases/*/documents}:runQuery`  
 Runs a query.
 
 `  write  `
 
-`  POST /v1beta1/{database=projects/*/databases/*}/documents:write  `  
+`POST /v1beta1/{database=projects/*/databases/*}/documents:write`  
 Streams batches of document updates and deletes, in order.
 
 ## REST Resource: [v1beta1.projects.databases.indexes](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes)
@@ -289,22 +289,22 @@ Methods
 
 `  create  `
 
-`  POST /v1beta1/{parent=projects/*/databases/*}/indexes  `  
+`POST /v1beta1/{parent=projects/*/databases/*}/indexes`  
 Creates the specified index.
 
 `  delete  `
 
-`  DELETE /v1beta1/{name=projects/*/databases/*/indexes/*}  `  
+`DELETE /v1beta1/{name=projects/*/databases/*/indexes/*}`  
 Deletes an index.
 
 `  get  `
 
-`  GET /v1beta1/{name=projects/*/databases/*/indexes/*}  `  
+`GET /v1beta1/{name=projects/*/databases/*/indexes/*}`  
 Gets an index.
 
 `  list  `
 
-`  GET /v1beta1/{parent=projects/*/databases/*}/indexes  `  
+`GET /v1beta1/{parent=projects/*/databases/*}/indexes`  
 Lists the indexes that match the specified filters.
 
 ## REST Resource: [v1.projects.databases](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases)
@@ -313,52 +313,52 @@ Methods
 
 `  bulkDeleteDocuments  `
 
-`  POST /v1/{name=projects/*/databases/*}:bulkDeleteDocuments  `  
+`POST /v1/{name=projects/*/databases/*}:bulkDeleteDocuments`  
 Bulk deletes a subset of documents from Google Cloud Firestore.
 
 `  clone  `
 
-`  POST /v1/{parent=projects/*}/databases:clone  `  
+`POST /v1/{parent=projects/*}/databases:clone`  
 Creates a new database by cloning an existing one.
 
 `  create  `
 
-`  POST /v1/{parent=projects/*}/databases  `  
+`POST /v1/{parent=projects/*}/databases`  
 Create a database.
 
 `  delete  `
 
-`  DELETE /v1/{name=projects/*/databases/*}  `  
+`DELETE /v1/{name=projects/*/databases/*}`  
 Deletes a database.
 
 `  exportDocuments  `
 
-`  POST /v1/{name=projects/*/databases/*}:exportDocuments  `  
+`POST /v1/{name=projects/*/databases/*}:exportDocuments`  
 Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage.
 
 `  get  `
 
-`  GET /v1/{name=projects/*/databases/*}  `  
+`GET /v1/{name=projects/*/databases/*}`  
 Gets information about a database.
 
 `  importDocuments  `
 
-`  POST /v1/{name=projects/*/databases/*}:importDocuments  `  
+`POST /v1/{name=projects/*/databases/*}:importDocuments`  
 Imports documents into Google Cloud Firestore.
 
 `  list  `
 
-`  GET /v1/{parent=projects/*}/databases  `  
+`GET /v1/{parent=projects/*}/databases`  
 List all the databases in the project.
 
 `  patch  `
 
-`  PATCH /v1/{database.name=projects/*/databases/*}  `  
+`PATCH /v1/{database.name=projects/*/databases/*}`  
 Updates a database.
 
 `  restore  `
 
-`  POST /v1/{parent=projects/*}/databases:restore  `  
+`POST /v1/{parent=projects/*}/databases:restore`  
 Creates a new database by restoring from an existing backup.
 
 ## REST Resource: [v1.projects.databases.backupSchedules](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules)
@@ -367,27 +367,27 @@ Methods
 
 `  create  `
 
-`  POST /v1/{parent=projects/*/databases/*}/backupSchedules  `  
+`POST /v1/{parent=projects/*/databases/*}/backupSchedules`  
 Creates a backup schedule on a database.
 
 `  delete  `
 
-`  DELETE /v1/{name=projects/*/databases/*/backupSchedules/*}  `  
+`DELETE /v1/{name=projects/*/databases/*/backupSchedules/*}`  
 Deletes a backup schedule.
 
 `  get  `
 
-`  GET /v1/{name=projects/*/databases/*/backupSchedules/*}  `  
+`GET /v1/{name=projects/*/databases/*/backupSchedules/*}`  
 Gets information about a backup schedule.
 
 `  list  `
 
-`  GET /v1/{parent=projects/*/databases/*}/backupSchedules  `  
+`GET /v1/{parent=projects/*/databases/*}/backupSchedules`  
 List backup schedules.
 
 `  patch  `
 
-`  PATCH /v1/{backupSchedule.name=projects/*/databases/*/backupSchedules/*}  `  
+`PATCH /v1/{backupSchedule.name=projects/*/databases/*/backupSchedules/*}`  
 Updates a backup schedule.
 
 ## REST Resource: [v1.projects.databases.collectionGroups.fields](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields)
@@ -396,17 +396,17 @@ Methods
 
 `  get  `
 
-`  GET /v1/{name=projects/*/databases/*/collectionGroups/*/fields/*}  `  
+`GET /v1/{name=projects/*/databases/*/collectionGroups/*/fields/*}`  
 Gets the metadata and configuration for a Field.
 
 `  list  `
 
-`  GET /v1/{parent=projects/*/databases/*/collectionGroups/*}/fields  `  
+`GET /v1/{parent=projects/*/databases/*/collectionGroups/*}/fields`  
 Lists the field configuration and metadata for this database.
 
 `  patch  `
 
-`  PATCH /v1/{field.name=projects/*/databases/*/collectionGroups/*/fields/*}  `  
+`PATCH /v1/{field.name=projects/*/databases/*/collectionGroups/*/fields/*}`  
 Updates a field configuration.
 
 ## REST Resource: [v1.projects.databases.collectionGroups.indexes](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes)
@@ -415,17 +415,17 @@ Methods
 
 `  delete  `
 
-`  DELETE /v1/{name=projects/*/databases/*/collectionGroups/*/indexes/*}  `  
+`DELETE /v1/{name=projects/*/databases/*/collectionGroups/*/indexes/*}`  
 Deletes a composite index.
 
 `  get  `
 
-`  GET /v1/{name=projects/*/databases/*/collectionGroups/*/indexes/*}  `  
+`GET /v1/{name=projects/*/databases/*/collectionGroups/*/indexes/*}`  
 Gets a composite index.
 
 `  list  `
 
-`  GET /v1/{parent=projects/*/databases/*/collectionGroups/*}/indexes  `  
+`GET /v1/{parent=projects/*/databases/*/collectionGroups/*}/indexes`  
 Lists composite indexes.
 
 ## REST Resource: [v1.projects.databases.documents](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents)
@@ -434,92 +434,92 @@ Methods
 
 `  batchGet  `
 
-`  POST /v1/{database=projects/*/databases/*}/documents:batchGet  `  
+`POST /v1/{database=projects/*/databases/*}/documents:batchGet`  
 Gets multiple documents.
 
 `  batchWrite  `
 
-`  POST /v1/{database=projects/*/databases/*}/documents:batchWrite  `  
+`POST /v1/{database=projects/*/databases/*}/documents:batchWrite`  
 Applies a batch of write operations.
 
 `  beginTransaction  `
 
-`  POST /v1/{database=projects/*/databases/*}/documents:beginTransaction  `  
+`POST /v1/{database=projects/*/databases/*}/documents:beginTransaction`  
 Starts a new transaction.
 
 `  commit  `
 
-`  POST /v1/{database=projects/*/databases/*}/documents:commit  `  
+`POST /v1/{database=projects/*/databases/*}/documents:commit`  
 Commits a transaction, while optionally updating documents.
 
 `  createDocument  `
 
-`  POST /v1/{parent=projects/*/databases/*/documents/**}/{collectionId}  `  
+`POST /v1/{parent=projects/*/databases/*/documents/**}/{collectionId}`  
 Creates a new document.
 
 `  delete  `
 
-`  DELETE /v1/{name=projects/*/databases/*/documents/*/**}  `  
+`DELETE /v1/{name=projects/*/databases/*/documents/*/**}`  
 Deletes a document.
 
 `  executePipeline  `
 
-`  POST /v1/{database=projects/*/databases/*}/documents:executePipeline  `  
+`POST /v1/{database=projects/*/databases/*}/documents:executePipeline`  
 Executes a pipeline query.
 
 `  get  `
 
-`  GET /v1/{name=projects/*/databases/*/documents/*/**}  `  
+`GET /v1/{name=projects/*/databases/*/documents/*/**}`  
 Gets a single document.
 
 `  list  `
 
-`  GET /v1/{parent=projects/*/databases/*/documents/*/**}/{collectionId}  `  
+`GET /v1/{parent=projects/*/databases/*/documents/*/**}/{collectionId}`  
 Lists documents.
 
 `  listCollectionIds  `
 
-`  POST /v1/{parent=projects/*/databases/*/documents}:listCollectionIds  `  
+`POST /v1/{parent=projects/*/databases/*/documents}:listCollectionIds`  
 Lists all the collection IDs underneath a document.
 
 `  listDocuments  `
 
-`  GET /v1/{parent=projects/*/databases/*/documents}/{collectionId}  `  
+`GET /v1/{parent=projects/*/databases/*/documents}/{collectionId}`  
 Lists documents.
 
 `  listen  `
 
-`  POST /v1/{database=projects/*/databases/*}/documents:listen  `  
+`POST /v1/{database=projects/*/databases/*}/documents:listen`  
 Listens to changes.
 
 `  partitionQuery  `
 
-`  POST /v1/{parent=projects/*/databases/*/documents}:partitionQuery  `  
+`POST /v1/{parent=projects/*/databases/*/documents}:partitionQuery`  
 Partitions a query by returning partition cursors that can be used to run the query in parallel.
 
 `  patch  `
 
-`  PATCH /v1/{document.name=projects/*/databases/*/documents/*/**}  `  
+`PATCH /v1/{document.name=projects/*/databases/*/documents/*/**}`  
 Updates or inserts a document.
 
 `  rollback  `
 
-`  POST /v1/{database=projects/*/databases/*}/documents:rollback  `  
+`POST /v1/{database=projects/*/databases/*}/documents:rollback`  
 Rolls back a transaction.
 
 `  runAggregationQuery  `
 
-`  POST /v1/{parent=projects/*/databases/*/documents}:runAggregationQuery  `  
+`POST /v1/{parent=projects/*/databases/*/documents}:runAggregationQuery`  
 Runs an aggregation query.
 
 `  runQuery  `
 
-`  POST /v1/{parent=projects/*/databases/*/documents}:runQuery  `  
+`POST /v1/{parent=projects/*/databases/*/documents}:runQuery`  
 Runs a query.
 
 `  write  `
 
-`  POST /v1/{database=projects/*/databases/*}/documents:write  `  
+`POST /v1/{database=projects/*/databases/*}/documents:write`  
 Streams batches of document updates and deletes, in order.
 
 ## REST Resource: [v1.projects.databases.operations](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.operations)
@@ -528,22 +528,22 @@ Methods
 
 `  cancel  `
 
-`  POST /v1/{name=projects/*/databases/*/operations/*}:cancel  `  
+`POST /v1/{name=projects/*/databases/*/operations/*}:cancel`  
 Starts asynchronous cancellation on a long-running operation.
 
 `  delete  `
 
-`  DELETE /v1/{name=projects/*/databases/*/operations/*}  `  
+`DELETE /v1/{name=projects/*/databases/*/operations/*}`  
 Deletes a long-running operation.
 
 `  get  `
 
-`  GET /v1/{name=projects/*/databases/*/operations/*}  `  
+`GET /v1/{name=projects/*/databases/*/operations/*}`  
 Gets the latest state of a long-running operation.
 
 `  list  `
 
-`  GET /v1/{name=projects/*/databases/*}/operations  `  
+`GET /v1/{name=projects/*/databases/*}/operations`  
 Lists operations that match the specified filter in the request.
 
 ## REST Resource: [v1.projects.databases.userCreds](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds)
@@ -552,37 +552,37 @@ Methods
 
 `  create  `
 
-`  POST /v1/{parent=projects/*/databases/*}/userCreds  `  
+`POST /v1/{parent=projects/*/databases/*}/userCreds`  
 Create a user creds.
 
 `  delete  `
 
-`  DELETE /v1/{name=projects/*/databases/*/userCreds/*}  `  
+`DELETE /v1/{name=projects/*/databases/*/userCreds/*}`  
 Deletes a user creds.
 
 `  disable  `
 
-`  POST /v1/{name=projects/*/databases/*/userCreds/*}:disable  `  
+`POST /v1/{name=projects/*/databases/*/userCreds/*}:disable`  
 Disables a user creds.
 
 `  enable  `
 
-`  POST /v1/{name=projects/*/databases/*/userCreds/*}:enable  `  
+`POST /v1/{name=projects/*/databases/*/userCreds/*}:enable`  
 Enables a user creds.
 
 `  get  `
 
-`  GET /v1/{name=projects/*/databases/*/userCreds/*}  `  
+`GET /v1/{name=projects/*/databases/*/userCreds/*}`  
 Gets a user creds resource.
 
 `  list  `
 
-`  GET /v1/{parent=projects/*/databases/*}/userCreds  `  
+`GET /v1/{parent=projects/*/databases/*}/userCreds`  
 List all user creds in the database.
 
 `  resetPassword  `
 
-`  POST /v1/{name=projects/*/databases/*/userCreds/*}:resetPassword  `  
+`POST /v1/{name=projects/*/databases/*/userCreds/*}:resetPassword`  
 Resets the password of a user creds.
 
 ## REST Resource: [v1.projects.locations](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations)
@@ -591,12 +591,12 @@ Methods
 
 `  get  `
 
-`  GET /v1/{name=projects/*/locations/*}  `  
+`GET /v1/{name=projects/*/locations/*}`  
 Gets information about a location.
 
 `  list  `
 
-`  GET /v1/{name=projects/*}/locations  `  
+`GET /v1/{name=projects/*}/locations`  
 Lists information about the supported locations for this service.
 
 ## REST Resource: [v1.projects.locations.backups](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations.backups)
@@ -605,15 +605,15 @@ Methods
 
 `  delete  `
 
-`  DELETE /v1/{name=projects/*/locations/*/backups/*}  `  
+`DELETE /v1/{name=projects/*/locations/*/backups/*}`  
 Deletes a backup.
 
 `  get  `
 
-`  GET /v1/{name=projects/*/locations/*/backups/*}  `  
+`GET /v1/{name=projects/*/locations/*/backups/*}`  
 Gets information about a backup.
 
 `  list  `
 
-`  GET /v1/{parent=projects/*/locations/*}/backups  `  
+`GET /v1/{parent=projects/*/locations/*}/backups`  
 Lists all the backups.

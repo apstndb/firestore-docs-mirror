@@ -23,8 +23,8 @@ This document describes how to use the Firestore remote Model Context Protocol (
 
 To get the permissions that you need to use the Firestore MCP server and interact with Firestore documents, ask your administrator to grant you the following IAM roles on the project where you want to use the Firestore MCP server:
 
-  - Make MCP tool calls: [MCP Tool User](https://docs.cloud.google.com/iam/docs/roles-permissions/mcp#mcp.toolUser) ( `  roles/mcp.toolUser  ` )
-  - Read and edit Firestore documents: [Firestore User](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.user) ( `  roles/datastore.user  ` )
+  - Make MCP tool calls: [MCP Tool User](https://docs.cloud.google.com/iam/docs/roles-permissions/mcp#mcp.toolUser) ( `roles/mcp.toolUser` )
+  - Read and edit Firestore documents: [Firestore User](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.user) ( `roles/datastore.user` )
 
 For more information about granting roles, see [Manage access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
 
@@ -34,14 +34,14 @@ These predefined roles contain the permissions required to use the Firestore MCP
 
 The following permissions are required to use the Firestore MCP server and interact with Firestore documents:
 
-  - Make MCP tool calls: `  mcp.tools.call  `
+  - Make MCP tool calls: `mcp.tools.call`
   - Read and edit Firestore documents:
-      - `  datastore.entities.allocateIds  `
-      - `  datastore.entities.create  `
-      - `  datastore.entities.delete  `
-      - `  datastore.entities.get  `
-      - `  datastore.entities.list  `
-      - `  datastore.entities.update  `
+      - `datastore.entities.allocateIds`
+      - `datastore.entities.create`
+      - `datastore.entities.delete`
+      - `datastore.entities.get`
+      - `datastore.entities.list`
+      - `datastore.entities.update`
 
 You might also be able to get these permissions with [custom roles](https://docs.cloud.google.com/iam/docs/creating-custom-roles) or other [predefined roles](https://docs.cloud.google.com/iam/docs/roles-overview#predefined) .
 
@@ -57,9 +57,9 @@ OAuth 2.0 uses scopes and credentials to determine if an authenticated principal
 
 Firestore has the following MCP tool OAuth scopes:
 
-| Scope URI for gcloud CLI                                        | Description                                                                                                |
-| --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `        https://www.googleapis.com/auth/cloud-platform       ` | See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account. |
+| Scope URI for gcloud CLI                         | Description                                                                                                |
+| ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
+| `https://www.googleapis.com/auth/cloud-platform` | See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account. |
 
 Additional scopes might be required on the resources accessed during a tool call. To view a list of scopes required for Firestore, see [Firestore API](https://developers.google.com/identity/protocols/oauth2/scopes#firestore) .
 
@@ -93,7 +93,7 @@ To view details of available MCP tools and their descriptions for the Firestore 
 
 ### List tools
 
-Use the [MCP inspector](https://modelcontextprotocol.io/docs/tools/inspector) to list tools, or send a `  tools/list  ` HTTP request directly to the Firestore remote MCP server. The `  tools/list  ` method doesn't require authentication.
+Use the [MCP inspector](https://modelcontextprotocol.io/docs/tools/inspector) to list tools, or send a `tools/list` HTTP request directly to the Firestore remote MCP server. The `tools/list` method doesn't require authentication.
 
     POST /mcp HTTP/1.1
     Host: firestore.googleapis.com
@@ -140,7 +140,7 @@ You must enable Model Armor APIs before you can use Model Armor.
     
     **Roles required to enable APIs**
     
-    To enable APIs, you need the Service Usage Admin IAM role ( `  roles/serviceusage.serviceUsageAdmin  ` ), which contains the `  serviceusage.services.enable  ` permission. [Learn how to grant roles](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
+    To enable APIs, you need the Service Usage Admin IAM role ( `roles/serviceusage.serviceUsageAdmin` ), which contains the `serviceusage.services.enable` permission. [Learn how to grant roles](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
     
     [Enable the API](https://console.cloud.google.com/flows/enableapi?apiid=modelarmor.googleapis.com)
 
@@ -187,9 +187,9 @@ Replace `  PROJECT_ID  ` with your Google Cloud project ID.
 
 Note the following settings:
 
-  - `  INSPECT_AND_BLOCK  ` : The enforcement type that inspects content for the Google MCP server and blocks prompts and responses that match the filters.
-  - `  ENABLED  ` : The setting that enables a filter or enforcement.
-  - `  MEDIUM_AND_ABOVE  ` : The confidence level for the Responsible AI - Dangerous filter settings. You can modify this setting, though lower values might result in more false positives. For more information, see [Model Armor confidence levels](https://docs.cloud.google.com/model-armor/overview#ma-confidence-levels) .
+  - `INSPECT_AND_BLOCK` : The enforcement type that inspects content for the Google MCP server and blocks prompts and responses that match the filters.
+  - `ENABLED` : The setting that enables a filter or enforcement.
+  - `MEDIUM_AND_ABOVE` : The confidence level for the Responsible AI - Dangerous filter settings. You can modify this setting, though lower values might result in more false positives. For more information, see [Model Armor confidence levels](https://docs.cloud.google.com/model-armor/overview#ma-confidence-levels) .
 
 #### Disable scanning MCP traffic with Model Armor
 
@@ -217,14 +217,14 @@ For more information, see [Control MCP use with Identity and Access Management](
 
 ## Monitor MCP usage
 
-You can monitor the usage and latency of your Firestore MCP tools through [Cloud Monitoring](https://cloud.google.com/monitoring/docs/) . The following metrics are available for the `  firestore.googleapis.com/Database  ` monitored resource:
+You can monitor the usage and latency of your Firestore MCP tools through [Cloud Monitoring](https://cloud.google.com/monitoring/docs/) . The following metrics are available for the `firestore.googleapis.com/Database` monitored resource:
 
-  - `  mcp/request_count  ` (Beta): The count of Firestore MCP calls.
-  - `  mcp/request_latencies  ` (Beta): The distribution of latencies for Firestore MCP calls.
+  - `mcp/request_count` (Beta): The count of Firestore MCP calls.
+  - `mcp/request_latencies` (Beta): The distribution of latencies for Firestore MCP calls.
 
 You can group and filter these metrics by the following labels:
 
-  - `  tool_name  ` : The name of the MCP tool making the MCP call.
+  - `tool_name` : The name of the MCP tool making the MCP call.
 
 For more information about Firestore metrics, see [Firestore metrics](https://docs.cloud.google.com/monitoring/api/metrics_gcp_d_h#gcp-firestore) .
 

@@ -2,18 +2,18 @@ Concurrency modes for transactions in Cloud Firestore.
 
 Enums
 
-`  CONCURRENCY_MODE_UNSPECIFIED  `
+`CONCURRENCY_MODE_UNSPECIFIED`
 
 Unspecified.
 
-`  PESSIMISTIC  `
+`PESSIMISTIC`
 
 Pessimistic concurrency.
 
-`  OPTIMISTIC  `
+`OPTIMISTIC`
 
 Optimistic concurrency.
 
-`  OPTIMISTIC_WITH_ENTITY_GROUPS  `
+`OPTIMISTIC_WITH_ENTITY_GROUPS`
 
 Optimistic concurrency with entity groups.

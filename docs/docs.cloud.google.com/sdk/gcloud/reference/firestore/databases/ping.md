@@ -4,11 +4,11 @@ gcloud firestore databases ping - times the connection and ping time for a Fires
 
 SYNOPSIS
 
-`  gcloud firestore databases ping  ` `  --database  ` = `  DATABASE  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud firestore databases ping` `  --database  ` = `  DATABASE  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 EXAMPLES
 
-To time the connection and ping times for a Firestore with MongoDB compatibility database `  testdb  ` :
+To time the connection and ping times for a Firestore with MongoDB compatibility database `testdb` :
 
 ``` wrap-code
 gcloud firestore databases ping --database=testdb
@@ -16,10 +16,10 @@ gcloud firestore databases ping --database=testdb
 
 REQUIRED FLAGS
 
-  - `  --database  ` = `  DATABASE  `  
+  - `--database` = `  DATABASE  `  
     The database to operate on.
     
-    For example, to operate on database `  foo  ` :
+    For example, to operate on database `foo` :
     
     ``` wrap-code
     gcloud firestore databases ping --database='foo'
@@ -29,7 +29,7 @@ GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 NOTES
 

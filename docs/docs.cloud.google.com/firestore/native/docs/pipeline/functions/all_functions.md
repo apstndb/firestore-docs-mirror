@@ -6,22 +6,22 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## **Aggregate**
 
-All aggregate functions can be used as top-level expressions in the `  aggregate(...)  ` stage.
+All aggregate functions can be used as top-level expressions in the `aggregate(...)` stage.
 
-|                                        |                                                                                       |
-| -------------------------------------- | ------------------------------------------------------------------------------------- |
-| Name                                   | Description                                                                           |
-| `          COUNT        `              | Returns the number of documents.                                                      |
-| `          COUNT_IF        `           | Returns the count of documents where an expression evaluates to `        TRUE       ` |
-| `          COUNT_DISTINCT        `     | Returns the count of unique, non `        NULL       ` values                         |
-| `          SUM        `                | Returns the sum of all `        NUMERIC       ` values                                |
-| `          AVERAGE        `            | Returns the average of all `        NUMERIC       ` values                            |
-| `          MINIMUM        `            | Returns the minimum non `        NULL       ` value                                   |
-| `          MAXIMUM        `            | Returns the maximum non `        NULL       ` value                                   |
-| `          FIRST        `              | Returns the `        expression       ` value for the first document.                 |
-| `          LAST        `               | Returns the `        expression       ` value for the last document.                  |
-| `          ARRAY_AGG        `          | Returns an array of all input values.                                                 |
-| `          ARRAY_AGG_DISTINCT        ` | Returns an array of all distinct input values.                                        |
+|                                       |                                                                        |
+| ------------------------------------- | ---------------------------------------------------------------------- |
+| Name                                  | Description                                                            |
+| `         COUNT        `              | Returns the number of documents.                                       |
+| `         COUNT_IF        `           | Returns the count of documents where an expression evaluates to `TRUE` |
+| `         COUNT_DISTINCT        `     | Returns the count of unique, non `NULL` values                         |
+| `         SUM        `                | Returns the sum of all `NUMERIC` values                                |
+| `         AVERAGE        `            | Returns the average of all `NUMERIC` values                            |
+| `         MINIMUM        `            | Returns the minimum non `NULL` value                                   |
+| `         MAXIMUM        `            | Returns the maximum non `NULL` value                                   |
+| `         FIRST        `              | Returns the `expression` value for the first document.                 |
+| `         LAST        `               | Returns the `expression` value for the last document.                  |
+| `         ARRAY_AGG        `          | Returns an array of all input values.                                  |
+| `         ARRAY_AGG_DISTINCT        ` | Returns an array of all distinct input values.                         |
 
 ### COUNT
 
@@ -32,7 +32,7 @@ All aggregate functions can be used as top-level expressions in the `  aggregate
 
 **Description:**
 
-Returns the count of documents from the previous stage where `  expression  ` evaluates to any non- `  NULL  ` value. If no `  expression  ` is provided, returns the total count of documents from the previous stage.
+Returns the count of documents from the previous stage where `expression` evaluates to any non- `NULL` value. If no `expression` is provided, returns the total count of documents from the previous stage.
 
 ##### Node.js
 
@@ -146,7 +146,7 @@ Android
 
 **Description:**
 
-Returns the number of documents from the previous stage where `  expression  ` evaluates to `  TRUE  ` .
+Returns the number of documents from the previous stage where `expression` evaluates to `TRUE` .
 
 ##### Node.js
 
@@ -224,7 +224,7 @@ Android
 
 **Description:**
 
-Returns the number of unique non- `  NULL  ` , non- `  ABSENT  ` values of `  expression  ` .
+Returns the number of unique non- `NULL` , non- `ABSENT` values of `expression` .
 
 ##### Node.js
 
@@ -292,11 +292,11 @@ Android
 
 **Description:**
 
-Returns the sum for all numerical values, ignoring non-numeric values. Returns `  NaN  ` if any values are `  NaN  ` .
+Returns the sum for all numerical values, ignoring non-numeric values. Returns `NaN` if any values are `NaN` .
 
 The output will have the same type as the widest input type except in these cases:
 
-  - An `  INTEGER  ` will be converted to a `  DOUBLE  ` if it cannot be represented as an `  INTEGER  ` .
+  - An `INTEGER` will be converted to a `DOUBLE` if it cannot be represented as an `INTEGER` .
 
 ##### Node.js
 
@@ -364,11 +364,11 @@ Android
 
 **Description:**
 
-Returns the average for all numerical values, ignoring non-numeric values. Evaluates to `  NaN  ` if any values are `  NaN  ` , or `  NULL  ` if no numerical values are aggregated.
+Returns the average for all numerical values, ignoring non-numeric values. Evaluates to `NaN` if any values are `NaN` , or `NULL` if no numerical values are aggregated.
 
 The output will have the same type as the input type except in these cases:
 
-  - An `  INTEGER  ` will be converted to a `  DOUBLE  ` if it cannot be represented as an `  INTEGER  ` .
+  - An `INTEGER` will be converted to a `DOUBLE` if it cannot be represented as an `INTEGER` .
 
 ##### Node.js
 
@@ -436,9 +436,9 @@ Android
 
 **Description:**
 
-Returns the minimum non- `  NULL  ` , non-absent value of the `  expression  ` when evaluated on each document.
+Returns the minimum non- `NULL` , non-absent value of the `expression` when evaluated on each document.
 
-If there are no non- `  NULL  ` , non-absent values, `  NULL  ` is returned. This includes when no documents are considered.
+If there are no non- `NULL` , non-absent values, `NULL` is returned. This includes when no documents are considered.
 
 If there are multiple minimum equivalent values, any one of those values can be returned. Value type ordering follows [documented ordering](https://docs.cloud.google.com/docs/firestore/manage-data/data-types#value_type_ordering) .
 
@@ -508,9 +508,9 @@ Android
 
 **Description:**
 
-Returns the maximum non- `  NULL  ` , non-absent value of the `  expression  ` when evaluated on each document.
+Returns the maximum non- `NULL` , non-absent value of the `expression` when evaluated on each document.
 
-If there are no non- `  NULL  ` , non-absent values, `  NULL  ` is returned. This includes when no documents are considered.
+If there are no non- `NULL` , non-absent values, `NULL` is returned. This includes when no documents are considered.
 
 If there are multiple maximum equivalent values, any one of those values can be returned. Value type ordering follows [documented ordering](https://docs.cloud.google.com/docs/firestore/manage-data/data-types#value_type_ordering) .
 
@@ -580,7 +580,7 @@ Android
 
 **Description:**
 
-Returns the value of `  expression  ` for the first returned document.
+Returns the value of `expression` for the first returned document.
 
 ### LAST
 
@@ -590,7 +590,7 @@ Returns the value of `  expression  ` for the first returned document.
 
 **Description:**
 
-Returns the value of `  expression  ` for the last returned document.
+Returns the value of `expression` for the last returned document.
 
 ### ARRAY\_AGG
 
@@ -600,9 +600,9 @@ Returns the value of `  expression  ` for the last returned document.
 
 **Description:**
 
-Returns an array containing all values of `  expression  ` when evaluated on each document.
+Returns an array containing all values of `expression` when evaluated on each document.
 
-If the expression resolves to an absent value, it is converted to `  NULL  ` .
+If the expression resolves to an absent value, it is converted to `NULL` .
 
 The order of elements in the output array is not stable and shouldn't be relied upon.
 
@@ -614,9 +614,9 @@ The order of elements in the output array is not stable and shouldn't be relied 
 
 **Description:**
 
-Returns an array containing all distinct values of `  expression  ` when evaluated on each document.
+Returns an array containing all distinct values of `expression` when evaluated on each document.
 
-If the expression resolves to an absent value, it is converted to `  NULL  ` .
+If the expression resolves to an absent value, it is converted to `NULL` .
 
 The order of elements in the output array is not stable and shouldn't be relied upon.
 
@@ -624,32 +624,32 @@ The order of elements in the output array is not stable and shouldn't be relied 
 
 All arithmetic functions in Firestore have the following behaviors:
 
-  - Evaluates to `  NULL  ` if any of the input parameters is `  NULL  ` .
-  - Evaluates to `  NaN  ` if any of the arguments is `  NaN  ` .
+  - Evaluates to `NULL` if any of the input parameters is `NULL` .
+  - Evaluates to `NaN` if any of the arguments is `NaN` .
   - Generates an error if an overflow or underflow occurs.
 
-Additionally, when an arithmetic function takes multiple numeric arguments of different types (for example: `  add(5.0, 6)  ` ), Firestore implicitly converts arguments to the widest input type. If only `  INT32  ` inputs are provided, the return type will be `  INT64  ` .
+Additionally, when an arithmetic function takes multiple numeric arguments of different types (for example: `add(5.0, 6)` ), Firestore implicitly converts arguments to the widest input type. If only `INT32` inputs are provided, the return type will be `INT64` .
 
-|                              |                                                                                |
-| ---------------------------- | ------------------------------------------------------------------------------ |
-| Name                         | Description                                                                    |
-| `          ABS        `      | Returns the absolute value of a `        number       `                        |
-| `          ADD        `      | Returns the value of `        x + y       `                                    |
-| `          SUBTRACT        ` | Returns the value of `        x - y       `                                    |
-| `          MULTIPLY        ` | Returns the value of `        x * y       `                                    |
-| `          DIVIDE        `   | Returns the value of `        x / y       `                                    |
-| `          MOD        `      | Returns the remainder of the division of `        x / y       `                |
-| `          CEIL        `     | Returns the ceiling of a `        number       `                               |
-| `          FLOOR        `    | Returns the floor of a `        number       `                                 |
-| `          ROUND        `    | Rounds a `        number       ` to `        places       ` decimal places     |
-| `          TRUNC        `    | Truncates a `        number       ` to `        places       ` decimal places  |
-| `          POW        `      | Returns the value of `        base^exponent       `                            |
-| `          SQRT        `     | Returns the square root of a `        number       `                           |
-| `          EXP        `      | Returns Euler's number raised to the power of `        exponent       `        |
-| `          LN        `       | Returns the natural logarithm of a `        number       `                     |
-| `          LOG        `      | Returns the logarithm of a `        number       `                             |
-| `          LOG10        `    | Returns the logarithm of a `        number       ` to base `        10       ` |
-| `          RAND        `     | Returns a pseudo-random floating point number                                  |
+|                             |                                                          |
+| --------------------------- | -------------------------------------------------------- |
+| Name                        | Description                                              |
+| `         ABS        `      | Returns the absolute value of a `number`                 |
+| `         ADD        `      | Returns the value of `x + y`                             |
+| `         SUBTRACT        ` | Returns the value of `x - y`                             |
+| `         MULTIPLY        ` | Returns the value of `x * y`                             |
+| `         DIVIDE        `   | Returns the value of `x / y`                             |
+| `         MOD        `      | Returns the remainder of the division of `x / y`         |
+| `         CEIL        `     | Returns the ceiling of a `number`                        |
+| `         FLOOR        `    | Returns the floor of a `number`                          |
+| `         ROUND        `    | Rounds a `number` to `places` decimal places             |
+| `         TRUNC        `    | Truncates a `number` to `places` decimal places          |
+| `         POW        `      | Returns the value of `base^exponent`                     |
+| `         SQRT        `     | Returns the square root of a `number`                    |
+| `         EXP        `      | Returns Euler's number raised to the power of `exponent` |
+| `         LN        `       | Returns the natural logarithm of a `number`              |
+| `         LOG        `      | Returns the logarithm of a `number`                      |
+| `         LOG10        `    | Returns the logarithm of a `number` to base `10`         |
+| `         RAND        `     | Returns a pseudo-random floating point number            |
 
 ### ABS
 
@@ -659,22 +659,22 @@ Additionally, when an arithmetic function takes multiple numeric arguments of di
 
 **Description:**
 
-Returns the absolute value of a `  number  ` .
+Returns the absolute value of a `number` .
 
-  - Throws an error when the function would overflow an `  INT32  ` or `  INT64  ` value.
+  - Throws an error when the function would overflow an `INT32` or `INT64` value.
 
 **Examples:**
 
-| number            | `        abs(number)       ` |
-| :---------------- | :--------------------------- |
-| 10                | 10                           |
-| \-10              | 10                           |
-| 10L               | 10L                          |
-| \-0.0             | 0.0                          |
-| 10.5              | 10.5                         |
-| \-10.5            | 10.5                         |
-| \-2 <sup>31</sup> | `        [error]       `     |
-| \-2 <sup>63</sup> | `        [error]       `     |
+| number            | `abs(number)` |
+| :---------------- | :------------ |
+| 10                | 10            |
+| \-10              | 10            |
+| 10L               | 10L           |
+| \-0.0             | 0.0           |
+| 10.5              | 10.5          |
+| \-10.5            | 10.5          |
+| \-2 <sup>31</sup> | `[error]`     |
+| \-2 <sup>63</sup> | `[error]`     |
 
 ### ADD
 
@@ -684,17 +684,17 @@ Returns the absolute value of a `  number  ` .
 
 **Description:**
 
-Returns the value of `  x + y  ` .
+Returns the value of `x + y` .
 
 **Examples:**
 
-| x         | y   | `        add(x, y)       ` |
-| :-------- | :-- | :------------------------- |
-| 20        | 3   | 23                         |
-| 10.0      | 1   | 11.0                       |
-| 22.5      | 2.0 | 24.5                       |
-| INT64.MAX | 1   | `        [error]       `   |
-| INT64.MIN | \-1 | `        [error]       `   |
+| x         | y   | `add(x, y)` |
+| :-------- | :-- | :---------- |
+| 20        | 3   | 23          |
+| 10.0      | 1   | 11.0        |
+| 22.5      | 2.0 | 24.5        |
+| INT64.MAX | 1   | `[error]`   |
+| INT64.MIN | \-1 | `[error]`   |
 
 ##### Node.js
 
@@ -765,17 +765,17 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns the value of `  x - y  ` .
+Returns the value of `x - y` .
 
 **Examples:**
 
-| x         | y   | `        subtract(x, y)       ` |
-| :-------- | :-- | :------------------------------ |
-| 20        | 3   | 17                              |
-| 10.0      | 1   | 9.0                             |
-| 22.5      | 2.0 | 20.5                            |
-| INT64.MAX | \-1 | `        [error]       `        |
-| INT64.MIN | 1   | `        [error]       `        |
+| x         | y   | `subtract(x, y)` |
+| :-------- | :-- | :--------------- |
+| 20        | 3   | 17               |
+| 10.0      | 1   | 9.0              |
+| 22.5      | 2.0 | 20.5             |
+| INT64.MAX | \-1 | `[error]`        |
+| INT64.MIN | 1   | `[error]`        |
 
 ##### Node.js
 
@@ -853,18 +853,18 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns the value of `  x * y  ` .
+Returns the value of `x * y` .
 
 **Examples:**
 
-| x           | y           | `        multiply(x, y)       ` |
-| :---------- | :---------- | :------------------------------ |
-| 20          | 3           | 60                              |
-| 10.0        | 1           | 10.0                            |
-| 22.5        | 2.0         | 45.0                            |
-| INT64.MAX   | 2           | `        [error]       `        |
-| INT64.MIN   | 2           | `        [error]       `        |
-| FLOAT64.MAX | FLOAT64.MAX | `        +inf       `           |
+| x           | y           | `multiply(x, y)` |
+| :---------- | :---------- | :--------------- |
+| 20          | 3           | 60               |
+| 10.0        | 1           | 10.0             |
+| 22.5        | 2.0         | 45.0             |
+| INT64.MAX   | 2           | `[error]`        |
+| INT64.MIN   | 2           | `[error]`        |
+| FLOAT64.MAX | FLOAT64.MAX | `+inf`           |
 
 ##### Node.js
 
@@ -935,18 +935,18 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns the value of `  x / y  ` . Integer division is truncated.
+Returns the value of `x / y` . Integer division is truncated.
 
 **Examples:**
 
-| x     | y   | `        divide(x, y)       ` |
-| :---- | :-- | :---------------------------- |
-| 20    | 3   | 6                             |
-| 10.0  | 3   | 3.333...                      |
-| 22.5  | 2   | 11.25                         |
-| 10    | 0   | `        [error]       `      |
-| 1.0   | 0.0 | `        +inf       `         |
-| \-1.0 | 0.0 | `        -inf       `         |
+| x     | y   | `divide(x, y)` |
+| :---- | :-- | :------------- |
+| 20    | 3   | 6              |
+| 10.0  | 3   | 3.333...       |
+| 22.5  | 2   | 11.25          |
+| 10    | 0   | `[error]`      |
+| 1.0   | 0.0 | `+inf`         |
+| \-1.0 | 0.0 | `-inf`         |
 
 ##### Node.js
 
@@ -1017,23 +1017,23 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns the remainder of `  x / y  ` .
+Returns the remainder of `x / y` .
 
-  - Throws an `  error  ` when `  y  ` is zero for integer types ( `  INT64  ` ).
-  - Returns `  NaN  ` when `  y  ` is zero for float types ( `  FLOAT64  ` ).
+  - Throws an `error` when `y` is zero for integer types ( `INT64` ).
+  - Returns `NaN` when `y` is zero for float types ( `FLOAT64` ).
 
 **Examples:**
 
-| x    | y   | `        mod(x, y)       ` |
-| :--- | :-- | :------------------------- |
-| 20   | 3   | 2                          |
-| \-10 | 3   | \-1                        |
-| 10   | \-3 | 1                          |
-| \-10 | \-3 | \-1                        |
-| 10   | 1   | 0                          |
-| 22.5 | 2   | 0.5                        |
-| 22.5 | 0.0 | `        NaN       `       |
-| 25   | 0   | `        [error]       `   |
+| x    | y   | `mod(x, y)` |
+| :--- | :-- | :---------- |
+| 20   | 3   | 2           |
+| \-10 | 3   | \-1         |
+| 10   | \-3 | 1           |
+| \-10 | \-3 | \-1         |
+| 10   | 1   | 0           |
+| 22.5 | 2   | 0.5         |
+| 22.5 | 0.0 | `NaN`       |
+| 25   | 0   | `[error]`   |
 
 ##### Node.js
 
@@ -1111,21 +1111,21 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns the smallest integer value that isn't less than `  number  ` .
+Returns the smallest integer value that isn't less than `number` .
 
 **Examples:**
 
-| number                | `        ceil(number)       ` |
-| :-------------------- | :---------------------------- |
-| 20                    | 20                            |
-| 10                    | 10                            |
-| 0                     | 0                             |
-| 24L                   | 24L                           |
-| \-0.4                 | \-0.0                         |
-| 0.4                   | 1.0                           |
-| 22.5                  | 23.0                          |
-| `        +inf       ` | `        +inf       `         |
-| `        -inf       ` | `        -inf       `         |
+| number | `ceil(number)` |
+| :----- | :------------- |
+| 20     | 20             |
+| 10     | 10             |
+| 0      | 0              |
+| 24L    | 24L            |
+| \-0.4  | \-0.0          |
+| 0.4    | 1.0            |
+| 22.5   | 23.0           |
+| `+inf` | `+inf`         |
+| `-inf` | `-inf`         |
 
 ##### Node.js
 
@@ -1218,21 +1218,21 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns the largest integer value that isn't greater than `  number  ` .
+Returns the largest integer value that isn't greater than `number` .
 
 **Examples:**
 
-| number                | `        floor(number)       ` |
-| :-------------------- | :----------------------------- |
-| 20                    | 20                             |
-| 10                    | 10                             |
-| 0                     | 0                              |
-| 2147483648            | 2147483648                     |
-| \-0.4                 | \-1.0                          |
-| 0.4                   | 0.0                            |
-| 22.5                  | 22.0                           |
-| `        +inf       ` | `        +inf       `          |
-| `        -inf       ` | `        -inf       `          |
+| number     | `floor(number)` |
+| :--------- | :-------------- |
+| 20         | 20              |
+| 10         | 10              |
+| 0          | 0               |
+| 2147483648 | 2147483648      |
+| \-0.4      | \-1.0           |
+| 0.4        | 0.0             |
+| 22.5       | 22.0            |
+| `+inf`     | `+inf`          |
+| `-inf`     | `-inf`          |
 
 ##### Node.js
 
@@ -1316,25 +1316,25 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Rounds `  places  ` digits off a `  number  ` . Rounds digits from the right of the decimal point if `  places  ` is positive, and to the left of the decimal point if it is negative.
+Rounds `places` digits off a `number` . Rounds digits from the right of the decimal point if `places` is positive, and to the left of the decimal point if it is negative.
 
-  - If only `  number  ` is provided, rounds to the nearest whole value.
+  - If only `number` is provided, rounds to the nearest whole value.
   - Rounds away from zero in halfway cases.
-  - An `  error  ` is thrown if rounding with a negative `  places  ` value results in overflow.
+  - An `error` is thrown if rounding with a negative `places` value results in overflow.
 
 **Examples:**
 
-| number              | places | `        round(number, places)       ` |
-| :------------------ | :----- | :------------------------------------- |
-| 15.5                | 0      | 16.0                                   |
-| \-15.5              | 0      | \-16.0                                 |
-| 15                  | 1      | 15                                     |
-| 15                  | 0      | 15                                     |
-| 15                  | \-1    | 20                                     |
-| 15                  | \-2    | 0                                      |
-| 15.48924            | 1      | 15.5                                   |
-| 2 <sup>31</sup> -1  | \-1    | `        [error]       `               |
-| 2 <sup>63</sup> -1L | \-1    | `        [error]       `               |
+| number              | places | `round(number, places)` |
+| :------------------ | :----- | :---------------------- |
+| 15.5                | 0      | 16.0                    |
+| \-15.5              | 0      | \-16.0                  |
+| 15                  | 1      | 15                      |
+| 15                  | 0      | 15                      |
+| 15                  | \-1    | 20                      |
+| 15                  | \-2    | 0                       |
+| 15.48924            | 1      | 15.5                    |
+| 2 <sup>31</sup> -1  | \-1    | `[error]`               |
+| 2 <sup>63</sup> -1L | \-1    | `[error]`               |
 
 ##### Node.js
 
@@ -1418,23 +1418,23 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Truncates a `  number  ` to a specified number of `  places  ` decimal places. Truncates digits from the right of the decimal point if `  places  ` is positive, and to the left of the decimal point if it is negative.
+Truncates a `number` to a specified number of `places` decimal places. Truncates digits from the right of the decimal point if `places` is positive, and to the left of the decimal point if it is negative.
 
-  - If only `  number  ` is provided, truncates to the nearest whole value towards zero.
-  - An `  error  ` is thrown if truncating results in overflow.
+  - If only `number` is provided, truncates to the nearest whole value towards zero.
+  - An `error` is thrown if truncating results in overflow.
 
 **Examples:**
 
-| number     | places | `        trunc(number, places)       ` |
-| :--------- | :----- | :------------------------------------- |
-| 15.5       | 0      | 15.0                                   |
-| \-15.5     | 0      | \-15.0                                 |
-| 15         | 1      | 15                                     |
-| 15         | 0      | 15                                     |
-| 15         | \-1    | 10                                     |
-| 15         | \-2    | 0                                      |
-| 15.48924   | 1      | 15.4                                   |
-| \-15.48924 | 2      | \-15.48                                |
+| number     | places | `trunc(number, places)` |
+| :--------- | :----- | :---------------------- |
+| 15.5       | 0      | 15.0                    |
+| \-15.5     | 0      | \-15.0                  |
+| 15         | 1      | 15                      |
+| 15         | 0      | 15                      |
+| 15         | \-1    | 10                      |
+| 15         | \-2    | 0                       |
+| 15.48924   | 1      | 15.4                    |
+| \-15.48924 | 2      | \-15.48                 |
 
 ### POW
 
@@ -1444,24 +1444,24 @@ Truncates a `  number  ` to a specified number of `  places  ` decimal places. T
 
 **Description:**
 
-Returns the value `  base  ` raised to the power of `  exponent  ` .
+Returns the value `base` raised to the power of `exponent` .
 
-  - Throws an error if `  base <= 0  ` and `  exponent  ` is negative.
+  - Throws an error if `base <= 0` and `exponent` is negative.
 
-  - For any `  exponent  ` , `  pow(1, exponent)  ` is 1.
+  - For any `exponent` , `pow(1, exponent)` is 1.
 
-  - For any `  base  ` , `  pow(base, 0)  ` is 1.
+  - For any `base` , `pow(base, 0)` is 1.
 
 **Examples:**
 
-| base                  | exponent              | `        pow(base, exponent)       ` |
-| :-------------------- | :-------------------- | :----------------------------------- |
-| 2                     | 3                     | 8.0                                  |
-| 2                     | \-3                   | 0.125                                |
-| `        +inf       ` | 0                     | 1.0                                  |
-| 1                     | `        +inf       ` | 1.0                                  |
-| \-1                   | 0.5                   | `        [error]       `             |
-| 0                     | \-1                   | `        [error]       `             |
+| base   | exponent | `pow(base, exponent)` |
+| :----- | :------- | :-------------------- |
+| 2      | 3        | 8.0                   |
+| 2      | \-3      | 0.125                 |
+| `+inf` | 0        | 1.0                   |
+| 1      | `+inf`   | 1.0                   |
+| \-1    | 0.5      | `[error]`             |
+| 0      | \-1      | `[error]`             |
 
 ##### Node.js
 
@@ -1637,21 +1637,21 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns the square root of a `  number  ` .
+Returns the square root of a `number` .
 
-  - Throws an `  error  ` if `  number  ` is negative.
+  - Throws an `error` if `number` is negative.
 
 **Examples:**
 
-| number                 | `        sqrt(number)       ` |
-| :--------------------- | :---------------------------- |
-| 25                     | 5.0                           |
-| 12.002                 | 3.464...                      |
-| 0.0                    | 0.0                           |
-| `        NaN       `   | `        NaN       `          |
-| `        +inf       `  | `        +inf       `         |
-| `        -inf       `  | `        [error]       `      |
-| `        x < 0       ` | `        [error]       `      |
+| number  | `sqrt(number)` |
+| :------ | :------------- |
+| 25      | 5.0            |
+| 12.002  | 3.464...       |
+| 0.0     | 0.0            |
+| `NaN`   | `NaN`          |
+| `+inf`  | `+inf`         |
+| `-inf`  | `[error]`      |
+| `x < 0` | `[error]`      |
 
 ##### Node.js
 
@@ -1827,16 +1827,16 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns the value of Euler's number raised to the power of `  exponent  ` , also called the natural exponential function.
+Returns the value of Euler's number raised to the power of `exponent` , also called the natural exponential function.
 
 **Examples:**
 
-| exponent              | `        exp(exponent)       `                     |
-| :-------------------- | :------------------------------------------------- |
-| 0.0                   | 1.0                                                |
-| 10                    | `        e^10       ` ( `        FLOAT64       ` ) |
-| `        +inf       ` | `        +inf       `                              |
-| `        -inf       ` | 0                                                  |
+| exponent | `exp(exponent)`      |
+| :------- | :------------------- |
+| 0.0      | 1.0                  |
+| 10       | `e^10` ( `FLOAT64` ) |
+| `+inf`   | `+inf`               |
+| `-inf`   | 0                    |
 
 ##### Node.js
 
@@ -1907,19 +1907,19 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns the natural logarithm of `  number  ` . This function is equivalent to `  log(number)  ` .
+Returns the natural logarithm of `number` . This function is equivalent to `log(number)` .
 
 **Examples:**
 
-| number                                          | `        ln(number)       ` |
-| :---------------------------------------------- | :-------------------------- |
-| 1                                               | 0.0                         |
-| 2L                                              | 0.693...                    |
-| 1.0                                             | 0.0                         |
-| `        e       ` ( `        FLOAT64       ` ) | 1.0                         |
-| `        -inf       `                           | `        NaN       `        |
-| `        +inf       `                           | `        +inf       `       |
-| `        x <= 0       `                         | `        [error]       `    |
+| number            | `ln(number)` |
+| :---------------- | :----------- |
+| 1                 | 0.0          |
+| 2L                | 0.693...     |
+| 1.0               | 0.0          |
+| `e` ( `FLOAT64` ) | 1.0          |
+| `-inf`            | `NaN`        |
+| `+inf`            | `+inf`       |
+| `x <= 0`          | `[error]`    |
 
 ##### Node.js
 
@@ -1991,20 +1991,20 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns the logarithm of a `  number  ` to `  base  ` .
+Returns the logarithm of a `number` to `base` .
 
-  - If only `  number  ` is provided, returns the logarithm of `  number  ` to `  base  ` (synonymous to `  ln(number)  ` ).
+  - If only `number` is provided, returns the logarithm of `number` to `base` (synonymous to `ln(number)` ).
 
 **Examples:**
 
-| number                       | base                       | `        log(number, base)       ` |
-| :--------------------------- | :------------------------- | :--------------------------------- |
-| 100                          | 10                         | 2.0                                |
-| `        -inf       `        | `        Numeric       `   | `        NaN       `               |
-| `        Numeric       ` .   | `        +inf       `      | `        NaN       `               |
-| `        number <= 0       ` | `        Numeric       `   | `        [error]       `           |
-| `        Numeric       `     | `        base <= 0       ` | `        [error]       `           |
-| `        Numeric       `     | 1.0                        | `        [error]       `           |
+| number        | base        | `log(number, base)` |
+| :------------ | :---------- | :------------------ |
+| 100           | 10          | 2.0                 |
+| `-inf`        | `Numeric`   | `NaN`               |
+| `Numeric` .   | `+inf`      | `NaN`               |
+| `number <= 0` | `Numeric`   | `[error]`           |
+| `Numeric`     | `base <= 0` | `[error]`           |
+| `Numeric`     | 1.0         | `[error]`           |
 
 ### LOG10
 
@@ -2014,16 +2014,16 @@ Returns the logarithm of a `  number  ` to `  base  ` .
 
 **Description:**
 
-Returns the logarithm of a `  number  ` to base `  10  ` .
+Returns the logarithm of a `number` to base `10` .
 
 **Examples:**
 
-| number                  | `        log10(number)       ` |
-| :---------------------- | :----------------------------- |
-| 100                     | 2.0                            |
-| `        -inf       `   | `        NaN       `           |
-| `        +inf       `   | `        +inf       `          |
-| `        x <= 0       ` | `        [error]       `       |
+| number   | `log10(number)` |
+| :------- | :-------------- |
+| 100      | 2.0             |
+| `-inf`   | `NaN`           |
+| `+inf`   | `+inf`          |
+| `x <= 0` | `[error]`       |
 
 ### RAND
 
@@ -2033,36 +2033,36 @@ Returns the logarithm of a `  number  ` to base `  10  ` .
 
 **Description:**
 
-Return a pseudo-random floating point number, chosen uniformly between `  0.0  ` (inclusive) and `  1.0  ` (exclusive).
+Return a pseudo-random floating point number, chosen uniformly between `0.0` (inclusive) and `1.0` (exclusive).
 
 ## **Array Functions**
 
-|                                        |                                                                                                           |
-| -------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Name                                   | Description                                                                                               |
-| `          ARRAY        `              | Returns an `        ARRAY       ` containing one element for each input argument                          |
-| `          ARRAY_CONCAT        `       | Concatenates multiple arrays into a single `        ARRAY       `                                         |
-| `          ARRAY_CONTAINS        `     | Returns `        TRUE       ` if a given `        ARRAY       ` contains a particular value               |
-| `          ARRAY_CONTAINS_ALL        ` | Returns `        TRUE       ` if all values are present in the `        ARRAY       `                     |
-| `          ARRAY_CONTAINS_ANY        ` | Returns `        TRUE       ` if any of the values are present in the `        ARRAY       `              |
-| `          ARRAY_FILTER        `       | Filters out elements from an `        ARRAY       ` that don't satisfy a predicate                        |
-| `          ARRAY_FIRST        `        | Returns the first element in an `        ARRAY       `                                                    |
-| `          ARRAY_FIRST_N        `      | Returns the first `        n       ` elements in an `        ARRAY       `                                |
-| `          ARRAY_GET        `          | Returns the element at a given index in an `        ARRAY       `                                         |
-| `          ARRAY_INDEX_OF        `     | Returns the index of the first occurrence of a value in an `        ARRAY       `                         |
-| `          ARRAY_INDEX_OF_ALL        ` | Returns all indexes of a value in an `        ARRAY       `                                               |
-| `          ARRAY_LENGTH        `       | Returns the number of elements in an `        ARRAY       `                                               |
-| `          ARRAY_LAST        `         | Returns the last element in an `        ARRAY       `                                                     |
-| `          ARRAY_LAST_N        `       | Returns the last `        n       ` elements in an `        ARRAY       `                                 |
-| `          ARRAY_REVERSE        `      | Reverses the order of elements in an `        ARRAY       `                                               |
-| `          ARRAY_SLICE        `        | Returns a slice of an `        ARRAY       `                                                              |
-| `          ARRAY_TRANSFORM        `    | Transforms elements in an `        ARRAY       ` by applying expression to each element                   |
-| `          MAXIMUM        `            | Returns the maximum value in an `        ARRAY       `                                                    |
-| `          MAXIMUM_N        `          | Returns the `        n       ` largest values in an `        ARRAY       `                                |
-| `          MINIMUM        `            | Returns the minimum value in an `        ARRAY       `                                                    |
-| `          MINIMUM_N        `          | Returns the `        n       ` smallest values in an `        ARRAY       `                               |
-| `          SUM        `                | Returns the sum of all `        NUMERIC       ` values in an `        ARRAY       ` .                     |
-| `          JOIN        `               | Produces a concatenation of the elements in an `        ARRAY       ` as a `        STRING       ` value. |
+|                                       |                                                                             |
+| ------------------------------------- | --------------------------------------------------------------------------- |
+| Name                                  | Description                                                                 |
+| `         ARRAY        `              | Returns an `ARRAY` containing one element for each input argument           |
+| `         ARRAY_CONCAT        `       | Concatenates multiple arrays into a single `ARRAY`                          |
+| `         ARRAY_CONTAINS        `     | Returns `TRUE` if a given `ARRAY` contains a particular value               |
+| `         ARRAY_CONTAINS_ALL        ` | Returns `TRUE` if all values are present in the `ARRAY`                     |
+| `         ARRAY_CONTAINS_ANY        ` | Returns `TRUE` if any of the values are present in the `ARRAY`              |
+| `         ARRAY_FILTER        `       | Filters out elements from an `ARRAY` that don't satisfy a predicate         |
+| `         ARRAY_FIRST        `        | Returns the first element in an `ARRAY`                                     |
+| `         ARRAY_FIRST_N        `      | Returns the first `n` elements in an `ARRAY`                                |
+| `         ARRAY_GET        `          | Returns the element at a given index in an `ARRAY`                          |
+| `         ARRAY_INDEX_OF        `     | Returns the index of the first occurrence of a value in an `ARRAY`          |
+| `         ARRAY_INDEX_OF_ALL        ` | Returns all indexes of a value in an `ARRAY`                                |
+| `         ARRAY_LENGTH        `       | Returns the number of elements in an `ARRAY`                                |
+| `         ARRAY_LAST        `         | Returns the last element in an `ARRAY`                                      |
+| `         ARRAY_LAST_N        `       | Returns the last `n` elements in an `ARRAY`                                 |
+| `         ARRAY_REVERSE        `      | Reverses the order of elements in an `ARRAY`                                |
+| `         ARRAY_SLICE        `        | Returns a slice of an `ARRAY`                                               |
+| `         ARRAY_TRANSFORM        `    | Transforms elements in an `ARRAY` by applying expression to each element    |
+| `         MAXIMUM        `            | Returns the maximum value in an `ARRAY`                                     |
+| `         MAXIMUM_N        `          | Returns the `n` largest values in an `ARRAY`                                |
+| `         MINIMUM        `            | Returns the minimum value in an `ARRAY`                                     |
+| `         MINIMUM_N        `          | Returns the `n` smallest values in an `ARRAY`                               |
+| `         SUM        `                | Returns the sum of all `NUMERIC` values in an `ARRAY` .                     |
+| `         JOIN        `               | Produces a concatenation of the elements in an `ARRAY` as a `STRING` value. |
 
 ### ARRAY
 
@@ -2074,17 +2074,17 @@ Return a pseudo-random floating point number, chosen uniformly between `  0.0  `
 
 Constructs an array from the given elements.
 
-  - If an argument does not exist, it is replaced with `  NULL  ` in the resulting array.
+  - If an argument does not exist, it is replaced with `NULL` in the resulting array.
 
 **Examples:**
 
-| values         | `        array(values)       ` |
-| :------------- | :----------------------------- |
-| ()             | \[\]                           |
-| (1, 2, 3)      | \[1, 2, 3\]                    |
-| ("a", 1, true) | \["a", 1, true\]               |
-| (1, null)      | \[1, null\]                    |
-| (1, \[2, 3\])  | \[1, \[2, 3\]\]                |
+| values         | `array(values)`  |
+| :------------- | :--------------- |
+| ()             | \[\]             |
+| (1, 2, 3)      | \[1, 2, 3\]      |
+| ("a", 1, true) | \["a", 1, true\] |
+| (1, null)      | \[1, null\]      |
+| (1, \[2, 3\])  | \[1, \[2, 3\]\]  |
 
 ### ARRAY\_CONCAT
 
@@ -2094,16 +2094,16 @@ Constructs an array from the given elements.
 
 **Description:**
 
-Concatenates two or more arrays into a single `  ARRAY  ` .
+Concatenates two or more arrays into a single `ARRAY` .
 
 **Examples:**
 
-| arrays                  | `        array_concat(arrays)       ` |
-| :---------------------- | :------------------------------------ |
-| (\[1, 2\], \[3, 4\])    | \[1, 2, 3, 4\]                        |
-| (\["a", "b"\], \["c"\]) | \["a", "b", "c"\]                     |
-| (\[1\], \[2\], \[3\])   | \[1, 2, 3\]                           |
-| (\[\], \[1, 2\])        | \[1, 2\]                              |
+| arrays                  | `array_concat(arrays)` |
+| :---------------------- | :--------------------- |
+| (\[1, 2\], \[3, 4\])    | \[1, 2, 3, 4\]         |
+| (\["a", "b"\], \["c"\]) | \["a", "b", "c"\]      |
+| (\[1\], \[2\], \[3\])   | \[1, 2, 3\]            |
+| (\[\], \[1, 2\])        | \[1, 2\]               |
 
 ##### Node.js
 
@@ -2167,16 +2167,16 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns `  TRUE  ` if `  value  ` is found in the `  array  ` , and `  FALSE  ` otherwise.
+Returns `TRUE` if `value` is found in the `array` , and `FALSE` otherwise.
 
 **Examples:**
 
-| array               | value    | `        array_contains(array, value)       ` |
-| :------------------ | :------- | :-------------------------------------------- |
-| \[1, 2, 3\]         | 2        | true                                          |
-| \[\[1, 2\], \[3\]\] | \[1, 2\] | true                                          |
-| \[1, null\]         | null     | true                                          |
-| "abc"               | ANY      | error                                         |
+| array               | value    | `array_contains(array, value)` |
+| :------------------ | :------- | :----------------------------- |
+| \[1, 2, 3\]         | 2        | true                           |
+| \[\[1, 2\], \[3\]\] | \[1, 2\] | true                           |
+| \[1, null\]         | null     | true                           |
+| "abc"               | ANY      | error                          |
 
 ##### Node.js
 
@@ -2247,18 +2247,18 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns `  TRUE  ` if all `  search_values  ` are found in the `  array  ` , and `  FALSE  ` otherwise.
+Returns `TRUE` if all `search_values` are found in the `array` , and `FALSE` otherwise.
 
 **Examples:**
 
-| array       | search\_values | `        array_contains_all(array, search_values)       ` |
-| :---------- | :------------- | :-------------------------------------------------------- |
-| \[1, 2, 3\] | \[1, 2\]       | true                                                      |
-| \[1, 2, 3\] | \[1, 4\]       | false                                                     |
-| \[1, null\] | \[null\]       | true                                                      |
-| \[NaN\]     | \[NaN\]        | true                                                      |
-| \[\]        | \[\]           | true                                                      |
-| \[1, 2, 3\] | \[\]           | true                                                      |
+| array       | search\_values | `array_contains_all(array, search_values)` |
+| :---------- | :------------- | :----------------------------------------- |
+| \[1, 2, 3\] | \[1, 2\]       | true                                       |
+| \[1, 2, 3\] | \[1, 4\]       | false                                      |
+| \[1, null\] | \[null\]       | true                                       |
+| \[NaN\]     | \[NaN\]        | true                                       |
+| \[\]        | \[\]           | true                                       |
+| \[1, 2, 3\] | \[\]           | true                                       |
 
 ##### Node.js
 
@@ -2355,15 +2355,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns `  TRUE  ` if any of the `  search_values  ` are found in the `  array  ` , and `  FALSE  ` otherwise.
+Returns `TRUE` if any of the `search_values` are found in the `array` , and `FALSE` otherwise.
 
 **Examples:**
 
-| array          | search\_values | `        array_contains_any(array, search_values)       ` |
-| :------------- | :------------- | :-------------------------------------------------------- |
-| \[1, 2, 3\]    | \[4, 1\]       | true                                                      |
-| \[1, 2, 3\]    | \[4, 5\]       | false                                                     |
-| \[1, 2, null\] | \[null\]       | true                                                      |
+| array          | search\_values | `array_contains_any(array, search_values)` |
+| :------------- | :------------- | :----------------------------------------- |
+| \[1, 2, 3\]    | \[4, 1\]       | true                                       |
+| \[1, 2, 3\]    | \[4, 5\]       | false                                      |
+| \[1, 2, null\] | \[null\]       | true                                       |
 
 ##### Node.js
 
@@ -2460,19 +2460,19 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Filters `  array  ` using a `  predicate  ` expression, returning a new array with only elements that satisfy the predicate.
+Filters `array` using a `predicate` expression, returning a new array with only elements that satisfy the predicate.
 
-  - For each element in `  array  ` , `  predicate  ` is evaluated. If it returns `  true  ` , the element is included in the result; otherwise (if it returns `  false  ` or `  null  ` ), it is omitted.
-  - If `  predicate  ` evaluates to a non-boolean or non-null value, the function returns an error.
+  - For each element in `array` , `predicate` is evaluated. If it returns `true` , the element is included in the result; otherwise (if it returns `false` or `null` ), it is omitted.
+  - If `predicate` evaluates to a non-boolean or non-null value, the function returns an error.
 
 **Examples:**
 
-| array             | predicate       | `        array_filter(array, predicate)       ` |
-| :---------------- | :-------------- | :---------------------------------------------- |
-| \[1, 2, 3\]       | x -\> x \> 1    | \[2, 3\]                                        |
-| \[1, null, 3\]    | x -\> x \> 1    | \[3\]                                           |
-| \["a", "b", "c"\] | x -\> x \!= "b" | \["a", "c"\]                                    |
-| \[\]              | x -\> true      | \[\]                                            |
+| array             | predicate       | `array_filter(array, predicate)` |
+| :---------------- | :-------------- | :------------------------------- |
+| \[1, 2, 3\]       | x -\> x \> 1    | \[2, 3\]                         |
+| \[1, null, 3\]    | x -\> x \> 1    | \[3\]                            |
+| \["a", "b", "c"\] | x -\> x \!= "b" | \["a", "c"\]                     |
+| \[\]              | x -\> true      | \[\]                             |
 
 ### ARRAY\_GET
 
@@ -2482,25 +2482,25 @@ Filters `  array  ` using a `  predicate  ` expression, returning a new array wi
 
 **Description:**
 
-Returns the element at the 0-based `  index  ` in `  array  ` .
+Returns the element at the 0-based `index` in `array` .
 
-  - If `  index  ` is negative, elements are accessed from the end of array, where `  -1  ` is the last element.
-  - If `  array  ` is not of type `  ARRAY  ` and not `  null  ` , returns an error.
-  - If `  index  ` is out of bounds, the function returns an absent value.
-  - If `  index  ` is not of type `  INT64  ` , the function returns an error.
+  - If `index` is negative, elements are accessed from the end of array, where `-1` is the last element.
+  - If `array` is not of type `ARRAY` and not `null` , returns an error.
+  - If `index` is out of bounds, the function returns an absent value.
+  - If `index` is not of type `INT64` , the function returns an error.
 
 **Examples:**
 
-| array                  | index | `        array_get(array, index)       ` |
-| :--------------------- | :---- | :--------------------------------------- |
-| \[1, 2, 3\]            | 0     | 1                                        |
-| \[1, 2, 3\]            | \-1   | 3                                        |
-| \[1, 2, 3\]            | 3     | absent                                   |
-| \[1, 2, 3\]            | \-4   | absent                                   |
-| "abc"                  | 0     | error                                    |
-| null                   | 0     | null                                     |
-| `        Array       ` | "a"   | error                                    |
-| `        Array       ` | 2.0   | error                                    |
+| array       | index | `array_get(array, index)` |
+| :---------- | :---- | :------------------------ |
+| \[1, 2, 3\] | 0     | 1                         |
+| \[1, 2, 3\] | \-1   | 3                         |
+| \[1, 2, 3\] | 3     | absent                    |
+| \[1, 2, 3\] | \-4   | absent                    |
+| "abc"       | 0     | error                     |
+| null        | 0     | null                      |
+| `Array`     | "a"   | error                     |
+| `Array`     | 2.0   | error                     |
 
 ### ARRAY\_LENGTH
 
@@ -2510,16 +2510,16 @@ Returns the element at the 0-based `  index  ` in `  array  ` .
 
 **Description:**
 
-Returns the number of elements in `  array  ` .
+Returns the number of elements in `array` .
 
 **Examples:**
 
-| array       | `        array_length(array)       ` |
-| :---------- | :----------------------------------- |
-| \[1, 2, 3\] | 3                                    |
-| \[\]        | 0                                    |
-| \[1, 1, 1\] | 3                                    |
-| \[1, null\] | 2                                    |
+| array       | `array_length(array)` |
+| :---------- | :-------------------- |
+| \[1, 2, 3\] | 3                     |
+| \[\]        | 0                     |
+| \[1, 1, 1\] | 3                     |
+| \[1, null\] | 2                     |
 
 ##### Node.js
 
@@ -2590,15 +2590,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Reverses the given `  array  ` .
+Reverses the given `array` .
 
 **Examples:**
 
-| array          | `        array_reverse(array)       ` |
-| :------------- | :------------------------------------ |
-| \[1, 2, 3\]    | \[3, 2, 1\]                           |
-| \["a", "b"\]   | \["b", "a"\]                          |
-| \[1, 2, 2, 3\] | \[3, 2, 2, 1\]                        |
+| array          | `array_reverse(array)` |
+| :------------- | :--------------------- |
+| \[1, 2, 3\]    | \[3, 2, 1\]            |
+| \["a", "b"\]   | \["b", "a"\]           |
+| \[1, 2, 2, 3\] | \[3, 2, 2, 1\]         |
 
 ##### Node.js
 
@@ -2668,16 +2668,16 @@ Task<Pipeline.Snapshot> result = db.pipeline()
 
 **Description:**
 
-Returns the first element in `  array  ` . This is equivalent to `  array_get(array, 0)  ` .
+Returns the first element in `array` . This is equivalent to `array_get(array, 0)` .
 
-  - If `  array  ` is empty, returns an absent value.
+  - If `array` is empty, returns an absent value.
 
 **Examples:**
 
-| array       | `        array_first(array)       ` |
-| :---------- | :---------------------------------- |
-| \[1, 2, 3\] | 1                                   |
-| \[\]        | absent                              |
+| array       | `array_first(array)` |
+| :---------- | :------------------- |
+| \[1, 2, 3\] | 1                    |
+| \[\]        | absent               |
 
 ### ARRAY\_FIRST\_N
 
@@ -2687,17 +2687,17 @@ Returns the first element in `  array  ` . This is equivalent to `  array_get(ar
 
 **Description:**
 
-Returns the first `  n  ` elements of `  array  ` . This is equivalent to `  array_slice(array, 0, n)  ` .
+Returns the first `n` elements of `array` . This is equivalent to `array_slice(array, 0, n)` .
 
-  - If `  n  ` is negative, returns an error.
+  - If `n` is negative, returns an error.
 
 **Examples:**
 
-| array             | n | `        array_first_n(array, n)       ` |
-| :---------------- | :- | :--------------------------------------- |
-| \[1, 2, 3, 4, 5\] | 3 | \[1, 2, 3\]                              |
-| \[1, 2\]          | 3 | \[1, 2\]                                 |
-| \[1, 2, 3\]       | 0 | \[\]                                     |
+| array             | n | `array_first_n(array, n)` |
+| :---------------- | :- | :------------------------ |
+| \[1, 2, 3, 4, 5\] | 3 | \[1, 2, 3\]               |
+| \[1, 2\]          | 3 | \[1, 2\]                  |
+| \[1, 2, 3\]       | 0 | \[\]                      |
 
 ### ARRAY\_INDEX\_OF
 
@@ -2707,15 +2707,15 @@ Returns the first `  n  ` elements of `  array  ` . This is equivalent to `  arr
 
 **Description:**
 
-Returns the 0-based index of the first occurrence of `  value  ` in `  array  ` . Returns -1 if `  value  ` is not found.
+Returns the 0-based index of the first occurrence of `value` in `array` . Returns -1 if `value` is not found.
 
 **Examples:**
 
-| array          | value | `        array_index_of(array, value)       ` |
-| :------------- | :---- | :-------------------------------------------- |
-| \[1, 2, 3, 2\] | 2     | 1                                             |
-| \[1, 2, 3\]    | 4     | \-1                                           |
-| \[1, null, 3\] | null  | 1                                             |
+| array          | value | `array_index_of(array, value)` |
+| :------------- | :---- | :----------------------------- |
+| \[1, 2, 3, 2\] | 2     | 1                              |
+| \[1, 2, 3\]    | 4     | \-1                            |
+| \[1, null, 3\] | null  | 1                              |
 
 ### ARRAY\_INDEX\_OF\_ALL
 
@@ -2725,15 +2725,15 @@ Returns the 0-based index of the first occurrence of `  value  ` in `  array  ` 
 
 **Description:**
 
-Returns an array containing the 0-based indexes of all occurrences of `  value  ` in `  array  ` . Returns `  []  ` if `  value  ` is not found.
+Returns an array containing the 0-based indexes of all occurrences of `value` in `array` . Returns `[]` if `value` is not found.
 
 **Examples:**
 
-| array                | value | `        array_index_of_all(array, value)       ` |
-| :------------------- | :---- | :------------------------------------------------ |
-| \[1, 2, 3, 2\]       | 2     | \[1, 3\]                                          |
-| \[1, 2, 3\]          | 4     | \[\]                                              |
-| \[1, null, 3, null\] | null  | \[1, 3\]                                          |
+| array                | value | `array_index_of_all(array, value)` |
+| :------------------- | :---- | :--------------------------------- |
+| \[1, 2, 3, 2\]       | 2     | \[1, 3\]                           |
+| \[1, 2, 3\]          | 4     | \[\]                               |
+| \[1, null, 3, null\] | null  | \[1, 3\]                           |
 
 ### ARRAY\_LAST
 
@@ -2743,16 +2743,16 @@ Returns an array containing the 0-based indexes of all occurrences of `  value  
 
 **Description:**
 
-Returns the last element in `  array  ` . This is equivalent to `  array_get(array, -1)  ` .
+Returns the last element in `array` . This is equivalent to `array_get(array, -1)` .
 
-  - If `  array  ` is empty, returns an absent value.
+  - If `array` is empty, returns an absent value.
 
 **Examples:**
 
-| array       | `        array_last(array)       ` |
-| :---------- | :--------------------------------- |
-| \[1, 2, 3\] | 3                                  |
-| \[\]        | absent                             |
+| array       | `array_last(array)` |
+| :---------- | :------------------ |
+| \[1, 2, 3\] | 3                   |
+| \[\]        | absent              |
 
 ### ARRAY\_LAST\_N
 
@@ -2762,17 +2762,17 @@ Returns the last element in `  array  ` . This is equivalent to `  array_get(arr
 
 **Description:**
 
-Returns the last `  n  ` elements of `  array  ` .
+Returns the last `n` elements of `array` .
 
-  - If `  n  ` is negative, returns an error.
+  - If `n` is negative, returns an error.
 
 **Examples:**
 
-| array             | n | `        array_last_n(array, n)       ` |
-| :---------------- | :- | :-------------------------------------- |
-| \[1, 2, 3, 4, 5\] | 3 | \[3, 4, 5\]                             |
-| \[1, 2\]          | 3 | \[1, 2\]                                |
-| \[1, 2, 3\]       | 0 | \[\]                                    |
+| array             | n | `array_last_n(array, n)` |
+| :---------------- | :- | :----------------------- |
+| \[1, 2, 3, 4, 5\] | 3 | \[3, 4, 5\]              |
+| \[1, 2\]          | 3 | \[1, 2\]                 |
+| \[1, 2, 3\]       | 0 | \[\]                     |
 
 ### ARRAY\_SLICE
 
@@ -2782,20 +2782,20 @@ Returns the last `  n  ` elements of `  array  ` .
 
 **Description:**
 
-Returns a subset of `  array  ` starting from 0-based index `  offset  ` , and including `  length  ` elements.
+Returns a subset of `array` starting from 0-based index `offset` , and including `length` elements.
 
-  - If `  offset  ` is negative, it indicates the start position from the end of the array, with `  -1  ` being the last element.
-  - If `  length  ` is greater than the number of elements remaining in the array after `  offset  ` , the result extends to the end of the array.
-  - `  length  ` must be non-negative, otherwise returns an error.
+  - If `offset` is negative, it indicates the start position from the end of the array, with `-1` being the last element.
+  - If `length` is greater than the number of elements remaining in the array after `offset` , the result extends to the end of the array.
+  - `length` must be non-negative, otherwise returns an error.
 
 **Examples:**
 
-| array             | offset | length | `        array_slice(array, offset, length)       ` |
-| :---------------- | :----- | :----- | :-------------------------------------------------- |
-| \[1, 2, 3, 4, 5\] | 1      | 3      | \[2, 3, 4\]                                         |
-| \[1, 2, 3, 4, 5\] | \-2    | 2      | \[4, 5\]                                            |
-| \[1, 2, 3\]       | 1      | 5      | \[2, 3\]                                            |
-| \[1, 2, 3\]       | 3      | 2      | \[\]                                                |
+| array             | offset | length | `array_slice(array, offset, length)` |
+| :---------------- | :----- | :----- | :----------------------------------- |
+| \[1, 2, 3, 4, 5\] | 1      | 3      | \[2, 3, 4\]                          |
+| \[1, 2, 3, 4, 5\] | \-2    | 2      | \[4, 5\]                             |
+| \[1, 2, 3\]       | 1      | 5      | \[2, 3\]                             |
+| \[1, 2, 3\]       | 3      | 2      | \[\]                                 |
 
 ### ARRAY\_TRANSFORM
 
@@ -2806,20 +2806,20 @@ Returns a subset of `  array  ` starting from 0-based index `  offset  ` , and i
 
 **Description:**
 
-Transforms `  array  ` by applying `  expression  ` to each element, returning a new array with transformed elements. The output array will always have same size as input array.
+Transforms `array` by applying `expression` to each element, returning a new array with transformed elements. The output array will always have same size as input array.
 
-  - `  expression  ` can be a unary function `  element -> result  ` , or a binary function `  (element, index) -> result  ` .
-  - If `  expression  ` is unary, it is called with each element of `  array  ` .
-  - If `  expression  ` is binary, it is called with each element of `  array  ` and its corresponding 0-based index.
+  - `expression` can be a unary function `element -> result` , or a binary function `(element, index) -> result` .
+  - If `expression` is unary, it is called with each element of `array` .
+  - If `expression` is binary, it is called with each element of `array` and its corresponding 0-based index.
 
 **Examples:**
 
-| array       | expression       | `        array_transform(array, expression)       ` |
-| :---------- | :--------------- | :-------------------------------------------------- |
-| \[1, 2, 3\] | x -\> x \* 2     | \[2, 4, 6\]                                         |
-| \[1, 2, 3\] | x -\> x + 1      | \[2, 3, 4\]                                         |
-| \[10, 20\]  | (x, i) -\> x + i | \[10, 21\]                                          |
-| \[\]        | x -\> 1          | \[\]                                                |
+| array       | expression       | `array_transform(array, expression)` |
+| :---------- | :--------------- | :----------------------------------- |
+| \[1, 2, 3\] | x -\> x \* 2     | \[2, 4, 6\]                          |
+| \[1, 2, 3\] | x -\> x + 1      | \[2, 3, 4\]                          |
+| \[10, 20\]  | (x, i) -\> x + i | \[10, 21\]                           |
+| \[\]        | x -\> 1          | \[\]                                 |
 
 ### MAXIMUM
 
@@ -2829,20 +2829,20 @@ Transforms `  array  ` by applying `  expression  ` to each element, returning a
 
 **Description:**
 
-Returns the maximum value in `  array  ` .
+Returns the maximum value in `array` .
 
-  - `  NULL  ` values are ignored during comparison.
-  - If `  array  ` is empty or only contains `  NULL  ` values, returns `  NULL  ` .
+  - `NULL` values are ignored during comparison.
+  - If `array` is empty or only contains `NULL` values, returns `NULL` .
 
 **Examples:**
 
-| array             | `        maximum(array)       ` |
-| :---------------- | :------------------------------ |
-| \[1, 5, 2\]       | 5                               |
-| \[1, null, 5\]    | 5                               |
-| \["a", "c", "b"\] | "c"                             |
-| \[null, null\]    | null                            |
-| \[\]              | null                            |
+| array             | `maximum(array)` |
+| :---------------- | :--------------- |
+| \[1, 5, 2\]       | 5                |
+| \[1, null, 5\]    | 5                |
+| \["a", "c", "b"\] | "c"              |
+| \[null, null\]    | null             |
+| \[\]              | null             |
 
 ### MAXIMUM\_N
 
@@ -2852,17 +2852,17 @@ Returns the maximum value in `  array  ` .
 
 **Description:**
 
-Returns an array of the `  n  ` largest values in `  array  ` in descending order.
+Returns an array of the `n` largest values in `array` in descending order.
 
-  - `  NULL  ` values are ignored.
-  - If `  n  ` is negative, returns an error.
+  - `NULL` values are ignored.
+  - If `n` is negative, returns an error.
 
 **Examples:**
 
-| array             | n | `        maximum_n(array, n)       ` |
-| :---------------- | :- | :----------------------------------- |
-| \[1, 5, 2, 4, 3\] | 3 | \[5, 4, 3\]                          |
-| \[1, null, 5\]    | 3 | \[5, 1\]                             |
+| array             | n | `maximum_n(array, n)` |
+| :---------------- | :- | :-------------------- |
+| \[1, 5, 2, 4, 3\] | 3 | \[5, 4, 3\]           |
+| \[1, null, 5\]    | 3 | \[5, 1\]              |
 
 ### MINIMUM
 
@@ -2872,20 +2872,20 @@ Returns an array of the `  n  ` largest values in `  array  ` in descending orde
 
 **Description:**
 
-Returns the minimum value in `  array  ` .
+Returns the minimum value in `array` .
 
-  - `  NULL  ` values are ignored during comparison.
-  - If `  array  ` is empty or only contains `  NULL  ` values, returns `  NULL  ` .
+  - `NULL` values are ignored during comparison.
+  - If `array` is empty or only contains `NULL` values, returns `NULL` .
 
 **Examples:**
 
-| array             | `        minimum(array)       ` |
-| :---------------- | :------------------------------ |
-| \[1, 5, 2\]       | 1                               |
-| \[5, null, 1\]    | 1                               |
-| \["a", "c", "b"\] | "a"                             |
-| \[null, null\]    | null                            |
-| \[\]              | null                            |
+| array             | `minimum(array)` |
+| :---------------- | :--------------- |
+| \[1, 5, 2\]       | 1                |
+| \[5, null, 1\]    | 1                |
+| \["a", "c", "b"\] | "a"              |
+| \[null, null\]    | null             |
+| \[\]              | null             |
 
 ### MINIMUM\_N
 
@@ -2895,17 +2895,17 @@ Returns the minimum value in `  array  ` .
 
 **Description:**
 
-Returns an array of the `  n  ` smallest values in `  array  ` in ascending order.
+Returns an array of the `n` smallest values in `array` in ascending order.
 
-  - `  NULL  ` values are ignored.
-  - If `  n  ` is negative, returns an error.
+  - `NULL` values are ignored.
+  - If `n` is negative, returns an error.
 
 **Examples:**
 
-| array             | n | `        minimum_n(array, n)       ` |
-| :---------------- | :- | :----------------------------------- |
-| \[1, 5, 2, 4, 3\] | 3 | \[1, 2, 3\]                          |
-| \[5, null, 1\]    | 3 | \[1, 5\]                             |
+| array             | n | `minimum_n(array, n)` |
+| :---------------- | :- | :-------------------- |
+| \[1, 5, 2, 4, 3\] | 3 | \[1, 2, 3\]           |
+| \[5, null, 1\]    | 3 | \[1, 5\]              |
 
 ### SUM
 
@@ -2915,26 +2915,26 @@ Returns an array of the `  n  ` smallest values in `  array  ` in ascending orde
 
 **Description:**
 
-Returns the sum of all `  NUMERIC  ` values in an `  ARRAY  ` .
+Returns the sum of all `NUMERIC` values in an `ARRAY` .
 
   - Non-numeric values in the array are ignored.
-  - If any numeric value in the array is `  NaN  ` , the function returns `  NaN  ` .
-  - The return type is determined by the widest numeric type in the array: `  INT64  ` \< `  FLOAT64  ` .
+  - If any numeric value in the array is `NaN` , the function returns `NaN` .
+  - The return type is determined by the widest numeric type in the array: `INT64` \< `FLOAT64` .
   - If 64-bit integer overflow occurs before any floating point value is summed, an error is returned. If floating point values are summed, overflow will result in +/- infinity.
-  - If the array contains no numeric values at all, the function returns `  NULL  ` .
+  - If the array contains no numeric values at all, the function returns `NULL` .
 
 **Examples:**
 
-| array                         | `        sum(array)       ` |
-| :---------------------------- | :-------------------------- |
-| \[1, 2, 3\]                   | 6L                          |
-| \[1L, 2L, 3L\]                | 6L                          |
-| \[2000000000, 2000000000\]    | 4000000000L                 |
-| \[10, 20.5\]                  | 30.5                        |
-| \[1, "a", 2\]                 | 3L                          |
-| \[INT64.MAX\_VALUE, 1\]       | error                       |
-| \[INT64.MAX\_VALUE, 1, -1.0\] | error                       |
-| \[INT64.MAX\_VALUE, 1.0\]     | 9.223372036854776e+18       |
+| array                         | `sum(array)`          |
+| :---------------------------- | :-------------------- |
+| \[1, 2, 3\]                   | 6L                    |
+| \[1L, 2L, 3L\]                | 6L                    |
+| \[2000000000, 2000000000\]    | 4000000000L           |
+| \[10, 20.5\]                  | 30.5                  |
+| \[1, "a", 2\]                 | 3L                    |
+| \[INT64.MAX\_VALUE, 1\]       | error                 |
+| \[INT64.MAX\_VALUE, 1, -1.0\] | error                 |
+| \[INT64.MAX\_VALUE, 1.0\]     | 9.223372036854776e+18 |
 
 ### JOIN
 
@@ -2945,48 +2945,48 @@ Returns the sum of all `  NUMERIC  ` values in an `  ARRAY  ` .
 
 **Description:**
 
-Returns a concatenation of the elements in `  array  ` as a `  STRING  ` . The `  array  ` can be of `  STRING  ` or `  BYTES  ` data types.
+Returns a concatenation of the elements in `array` as a `STRING` . The `array` can be of `STRING` or `BYTES` data types.
 
-  - All elements in `  array  ` , `  delimiter  ` , and `  null_text  ` must be of the same type; they must all be `  STRING  ` s or all be `  BYTES  ` .
-  - If `  null_text  ` is provided, any `  NULL  ` values in `  array  ` are replaced with `  null_text  ` .
-  - If `  null_text  ` is not provided, `  NULL  ` values in `  array  ` are omitted from the result.
+  - All elements in `array` , `delimiter` , and `null_text` must be of the same type; they must all be `STRING` s or all be `BYTES` .
+  - If `null_text` is provided, any `NULL` values in `array` are replaced with `null_text` .
+  - If `null_text` is not provided, `NULL` values in `array` are omitted from the result.
 
 **Examples:**
 
-When `  null_text  ` is not provided:
+When `null_text` is not provided:
 
-| array                | delimiter | `        join(array, delimiter)       ` |
-| :------------------- | :-------- | :-------------------------------------- |
-| \["a", "b", "c"\]    | ","       | "a,b,c"                                 |
-| \["a", null, "c"\]   | ","       | "a,c"                                   |
-| \[b'a', b'b', b'c'\] | b','      | b'a,b,c'                                |
-| \["a", b'c'\]        | ","       | error                                   |
-| \["a", "c"\]         | b','      | error                                   |
-| \[b'a', b'c'\]       | ","       | error                                   |
+| array                | delimiter | `join(array, delimiter)` |
+| :------------------- | :-------- | :----------------------- |
+| \["a", "b", "c"\]    | ","       | "a,b,c"                  |
+| \["a", null, "c"\]   | ","       | "a,c"                    |
+| \[b'a', b'b', b'c'\] | b','      | b'a,b,c'                 |
+| \["a", b'c'\]        | ","       | error                    |
+| \["a", "c"\]         | b','      | error                    |
+| \[b'a', b'c'\]       | ","       | error                    |
 
-When `  null_text  ` is provided:
+When `null_text` is provided:
 
-| array                | delimiter | null\_text | `        join(array, delimiter, null_text)       ` |
-| :------------------- | :-------- | :--------- | :------------------------------------------------- |
-| \["a", null, "c"\]   | ","       | "MISSING"  | "a,MISSING,c"                                      |
-| \[b'a', null, b'c'\] | b','      | b'NULL'    | b'a,NULL,c'                                        |
-| \[null, "b", null\]  | ","       | "MISSING"  | "MISSING,b,MISSING"                                |
-| \[b'a', null, null\] | b','      | b'NULL'    | b'a,NULL,NULL'                                     |
-| \["a", null\]        | ","       | b'N'       | error                                              |
-| \[b'a', null\]       | b','      | "N"        | error                                              |
+| array                | delimiter | null\_text | `join(array, delimiter, null_text)` |
+| :------------------- | :-------- | :--------- | :---------------------------------- |
+| \["a", null, "c"\]   | ","       | "MISSING"  | "a,MISSING,c"                       |
+| \[b'a', null, b'c'\] | b','      | b'NULL'    | b'a,NULL,c'                         |
+| \[null, "b", null\]  | ","       | "MISSING"  | "MISSING,b,MISSING"                 |
+| \[b'a', null, null\] | b','      | b'NULL'    | b'a,NULL,NULL'                      |
+| \["a", null\]        | ","       | b'N'       | error                               |
+| \[b'a', null\]       | b','      | "N"        | error                               |
 
 ## **Comparison Functions**
 
-|                                           |                                  |
-| ----------------------------------------- | -------------------------------- |
-| Name                                      | Description                      |
-| `          EQUAL        `                 | Equality comparison              |
-| `          GREATER_THAN        `          | Greater than comparison          |
-| `          GREATER_THAN_OR_EQUAL        ` | Greater than or equal comparison |
-| `          LESS_THAN        `             | Less than comparison             |
-| `          LESS_THAN_OR_EQUAL        `    | Less than or equal comparison    |
-| `          NOT_EQUAL        `             | Not equals comparison            |
-| `          CMP        `                   | General comparison               |
+|                                          |                                  |
+| ---------------------------------------- | -------------------------------- |
+| Name                                     | Description                      |
+| `         EQUAL        `                 | Equality comparison              |
+| `         GREATER_THAN        `          | Greater than comparison          |
+| `         GREATER_THAN_OR_EQUAL        ` | Greater than or equal comparison |
+| `         LESS_THAN        `             | Less than comparison             |
+| `         LESS_THAN_OR_EQUAL        `    | Less than or equal comparison    |
+| `         NOT_EQUAL        `             | Not equals comparison            |
+| `         CMP        `                   | General comparison               |
 
 ### EQUAL
 
@@ -2996,18 +2996,18 @@ When `  null_text  ` is provided:
 
 **Examples:**
 
-| `        x       `    | `        y       `      | `        equal(x, y)       ` |
-| :-------------------- | :---------------------- | :--------------------------- |
-| 1L                    | 1L                      | `        TRUE       `        |
-| 1.0                   | 1L                      | `        TRUE       `        |
-| \-1.0                 | 1L                      | `        FALSE       `       |
-| NaN                   | NaN                     | `        TRUE       `        |
-| `        NULL       ` | `        NULL       `   | `        TRUE       `        |
-| `        NULL       ` | `        ABSENT       ` | `        FALSE       `       |
+| `x`    | `y`      | `equal(x, y)` |
+| :----- | :------- | :------------ |
+| 1L     | 1L       | `TRUE`        |
+| 1.0    | 1L       | `TRUE`        |
+| \-1.0  | 1L       | `FALSE`       |
+| NaN    | NaN      | `TRUE`        |
+| `NULL` | `NULL`   | `TRUE`        |
+| `NULL` | `ABSENT` | `FALSE`       |
 
 **Description:**
 
-Returns `  TRUE  ` if `  x  ` and `  y  ` are equal, and `  FALSE  ` otherwise.
+Returns `TRUE` if `x` and `y` are equal, and `FALSE` otherwise.
 
 ##### Node.js
 
@@ -3075,22 +3075,22 @@ Android
 
 **Description:**
 
-Returns `  TRUE  ` if `  x  ` is greater than `  y  ` , and `  FALSE  ` otherwise.
+Returns `TRUE` if `x` is greater than `y` , and `FALSE` otherwise.
 
-If `  x  ` and `  y  ` are not comparable, returns `  FALSE  ` .
+If `x` and `y` are not comparable, returns `FALSE` .
 
 **Examples:**
 
-| `        x       `    | `        y       `    | `        greater_than(x, y)       ` |
-| :-------------------- | :-------------------- | :---------------------------------- |
-| 1L                    | 0.0                   | `        TRUE       `               |
-| 1L                    | 1L                    | `        FALSE       `              |
-| 1L                    | 2L                    | `        FALSE       `              |
-| "foo"                 | 0L                    | `        FALSE       `              |
-| 0L                    | "foo"                 | `        FALSE       `              |
-| NaN                   | 0L                    | `        FALSE       `              |
-| 0L                    | NaN                   | `        FALSE       `              |
-| `        NULL       ` | `        NULL       ` | `        FALSE       `              |
+| `x`    | `y`    | `greater_than(x, y)` |
+| :----- | :----- | :------------------- |
+| 1L     | 0.0    | `TRUE`               |
+| 1L     | 1L     | `FALSE`              |
+| 1L     | 2L     | `FALSE`              |
+| "foo"  | 0L     | `FALSE`              |
+| 0L     | "foo"  | `FALSE`              |
+| NaN    | 0L     | `FALSE`              |
+| 0L     | NaN    | `FALSE`              |
+| `NULL` | `NULL` | `FALSE`              |
 
 ##### Node.js
 
@@ -3158,22 +3158,22 @@ Android
 
 **Description:**
 
-Returns `  TRUE  ` if `  x  ` is greater than or equal to `  y  ` , and `  FALSE  ` otherwise.
+Returns `TRUE` if `x` is greater than or equal to `y` , and `FALSE` otherwise.
 
-If `  x  ` and `  y  ` are not comparable, returns `  FALSE  ` .
+If `x` and `y` are not comparable, returns `FALSE` .
 
 **Examples:**
 
-| `        x       `    | `        y       `    | `        greater_than_or_equal(x, y)       ` |
-| :-------------------- | :-------------------- | :------------------------------------------- |
-| 1L                    | 0.0                   | `        TRUE       `                        |
-| 1L                    | 1L                    | `        TRUE       `                        |
-| 1L                    | 2L                    | `        FALSE       `                       |
-| "foo"                 | 0L                    | `        FALSE       `                       |
-| 0L                    | "foo"                 | `        FALSE       `                       |
-| NaN                   | 0L                    | `        FALSE       `                       |
-| 0L                    | NaN                   | `        FALSE       `                       |
-| `        NULL       ` | `        NULL       ` | `        TRUE       `                        |
+| `x`    | `y`    | `greater_than_or_equal(x, y)` |
+| :----- | :----- | :---------------------------- |
+| 1L     | 0.0    | `TRUE`                        |
+| 1L     | 1L     | `TRUE`                        |
+| 1L     | 2L     | `FALSE`                       |
+| "foo"  | 0L     | `FALSE`                       |
+| 0L     | "foo"  | `FALSE`                       |
+| NaN    | 0L     | `FALSE`                       |
+| 0L     | NaN    | `FALSE`                       |
+| `NULL` | `NULL` | `TRUE`                        |
 
 ##### Node.js
 
@@ -3245,22 +3245,22 @@ Android
 
 **Description:**
 
-Returns `  TRUE  ` if `  x  ` is less than `  y  ` , and `  FALSE  ` otherwise.
+Returns `TRUE` if `x` is less than `y` , and `FALSE` otherwise.
 
-If `  x  ` and `  y  ` are not comparable, returns `  FALSE  ` .
+If `x` and `y` are not comparable, returns `FALSE` .
 
 **Examples:**
 
-| `        x       `    | `        y       `    | `        less_than(x, y)       ` |
-| :-------------------- | :-------------------- | :------------------------------- |
-| 1L                    | 0.0                   | `        FALSE       `           |
-| 1L                    | 1L                    | `        FALSE       `           |
-| 1L                    | 2L                    | `        TRUE       `            |
-| "foo"                 | 0L                    | `        FALSE       `           |
-| 0L                    | "foo"                 | `        FALSE       `           |
-| NaN                   | 0L                    | `        FALSE       `           |
-| 0L                    | NaN                   | `        FALSE       `           |
-| `        NULL       ` | `        NULL       ` | `        FALSE       `           |
+| `x`    | `y`    | `less_than(x, y)` |
+| :----- | :----- | :---------------- |
+| 1L     | 0.0    | `FALSE`           |
+| 1L     | 1L     | `FALSE`           |
+| 1L     | 2L     | `TRUE`            |
+| "foo"  | 0L     | `FALSE`           |
+| 0L     | "foo"  | `FALSE`           |
+| NaN    | 0L     | `FALSE`           |
+| 0L     | NaN    | `FALSE`           |
+| `NULL` | `NULL` | `FALSE`           |
 
 ##### Node.js
 
@@ -3328,22 +3328,22 @@ Android
 
 **Description:**
 
-Returns `  TRUE  ` if `  x  ` is less than or equal to `  y  ` , and `  FALSE  ` otherwise.
+Returns `TRUE` if `x` is less than or equal to `y` , and `FALSE` otherwise.
 
-If `  x  ` and `  y  ` are not comparable, returns `  FALSE  ` .
+If `x` and `y` are not comparable, returns `FALSE` .
 
 **Examples:**
 
-| `        x       `    | `        y       `    | `        less_than(x, y)       ` |
-| :-------------------- | :-------------------- | :------------------------------- |
-| 1L                    | 0.0                   | `        FALSE       `           |
-| 1L                    | 1L                    | `        TRUE       `            |
-| 1L                    | 2L                    | `        TRUE       `            |
-| "foo"                 | 0L                    | `        FALSE       `           |
-| 0L                    | "foo"                 | `        FALSE       `           |
-| NaN                   | 0L                    | `        FALSE       `           |
-| 0L                    | NaN                   | `        FALSE       `           |
-| `        NULL       ` | `        NULL       ` | `        TRUE       `            |
+| `x`    | `y`    | `less_than(x, y)` |
+| :----- | :----- | :---------------- |
+| 1L     | 0.0    | `FALSE`           |
+| 1L     | 1L     | `TRUE`            |
+| 1L     | 2L     | `TRUE`            |
+| "foo"  | 0L     | `FALSE`           |
+| 0L     | "foo"  | `FALSE`           |
+| NaN    | 0L     | `FALSE`           |
+| 0L     | NaN    | `FALSE`           |
+| `NULL` | `NULL` | `TRUE`            |
 
 ##### Node.js
 
@@ -3411,19 +3411,19 @@ Android
 
 **Description:**
 
-Returns `  TRUE  ` if `  x  ` is not equal to `  y  ` , and `  FALSE  ` otherwise.
+Returns `TRUE` if `x` is not equal to `y` , and `FALSE` otherwise.
 
 **Examples:**
 
-| `        x       `    | `        y       `      | `        not_equal(x, y)       ` |
-| :-------------------- | :---------------------- | :------------------------------- |
-| 1L                    | 1L                      | `        FALSE       `           |
-| 1.0                   | 1L                      | `        FALSE       `           |
-| \-1.0                 | 1L                      | `        TRUE       `            |
-| NaN                   | 0L                      | `        TRUE       `            |
-| NaN                   | NaN                     | `        FALSE       `           |
-| `        NULL       ` | `        NULL       `   | `        FALSE       `           |
-| `        NULL       ` | `        ABSENT       ` | `        TRUE       `            |
+| `x`    | `y`      | `not_equal(x, y)` |
+| :----- | :------- | :---------------- |
+| 1L     | 1L       | `FALSE`           |
+| 1.0    | 1L       | `FALSE`           |
+| \-1.0  | 1L       | `TRUE`            |
+| NaN    | 0L       | `TRUE`            |
+| NaN    | NaN      | `FALSE`           |
+| `NULL` | `NULL`   | `FALSE`           |
+| `NULL` | `ABSENT` | `TRUE`            |
 
 ##### Node.js
 
@@ -3491,36 +3491,36 @@ Android
 
 **Description:**
 
-Compares `  x  ` & `  y  ` , returning:
+Compares `x` & `y` , returning:
 
-  - `  1L  ` if `  x  ` is greater than `  y  ` .
-  - `  -1L  ` if `  x  ` is less than `  y  ` .
-  - `  0L  ` otherwise.
+  - `1L` if `x` is greater than `y` .
+  - `-1L` if `x` is less than `y` .
+  - `0L` otherwise.
 
-Unlike other comparison functions, the `  cmp(...)  ` function works across types, following the same ordering used in the `  sort(...)  ` stage. See [value type order](https://docs.cloud.google.com/firestore/native/docs/concepts/data-types) for how values are ordered across types.
+Unlike other comparison functions, the `cmp(...)` function works across types, following the same ordering used in the `sort(...)` stage. See [value type order](https://docs.cloud.google.com/firestore/native/docs/concepts/data-types) for how values are ordered across types.
 
 **Examples:**
 
-| `        x       `    | `        y       `      | `        cmp(x, y)       ` |
-| :-------------------- | :---------------------- | :------------------------- |
-| 1L                    | 1L                      | 0L                         |
-| 1.0                   | 1L                      | 0L                         |
-| \-1.0                 | 1L                      | \-1L                       |
-| 42.5D                 | "foo"                   | \-1L                       |
-| `        NULL       ` | `        NULL       `   | 0L                         |
-| `        NULL       ` | `        ABSENT       ` | 0L                         |
+| `x`    | `y`      | `cmp(x, y)` |
+| :----- | :------- | :---------- |
+| 1L     | 1L       | 0L          |
+| 1.0    | 1L       | 0L          |
+| \-1.0  | 1L       | \-1L        |
+| 42.5D  | "foo"    | \-1L        |
+| `NULL` | `NULL`   | 0L          |
+| `NULL` | `ABSENT` | 0L          |
 
 ## **Debugging Functions**
 
-|                               |                                                                             |
-| ----------------------------- | --------------------------------------------------------------------------- |
-| Name                          | Description                                                                 |
-| `          EXISTS        `    | Returns `        TRUE       ` if the value is not an absent value           |
-| `          IS_ABSENT        ` | Returns `        TRUE       ` if the value is an absent value               |
-| `          IF_ABSENT        ` | Replaces the value with an expression if it is absent                       |
-| `          IS_ERROR        `  | Catches and checks if an error has been thrown by the underlying expression |
-| `          IF_ERROR        `  | Replaces the value with an expression if it has thrown an error             |
-| `          ERROR        `     | Terminates evaluation and returns an error with the specified message       |
+|                              |                                                                             |
+| ---------------------------- | --------------------------------------------------------------------------- |
+| Name                         | Description                                                                 |
+| `         EXISTS        `    | Returns `TRUE` if the value is not an absent value                          |
+| `         IS_ABSENT        ` | Returns `TRUE` if the value is an absent value                              |
+| `         IF_ABSENT        ` | Replaces the value with an expression if it is absent                       |
+| `         IS_ERROR        `  | Catches and checks if an error has been thrown by the underlying expression |
+| `         IF_ERROR        `  | Replaces the value with an expression if it has thrown an error             |
+| `         ERROR        `     | Terminates evaluation and returns an error with the specified message       |
 
 ### EXISTS
 
@@ -3530,16 +3530,16 @@ Unlike other comparison functions, the `  cmp(...)  ` function works across type
 
 **Description:**
 
-Returns `  TRUE  ` if `  value  ` is not the absent value.
+Returns `TRUE` if `value` is not the absent value.
 
 **Examples:**
 
-| `        value       `  | `        exists(value)       ` |
-| :---------------------- | :----------------------------- |
-| 0L                      | `        TRUE       `          |
-| "foo"                   | `        TRUE       `          |
-| `        NULL       `   | `        TRUE       `          |
-| `        ABSENT       ` | `        FALSE       `         |
+| `value`  | `exists(value)` |
+| :------- | :-------------- |
+| 0L       | `TRUE`          |
+| "foo"    | `TRUE`          |
+| `NULL`   | `TRUE`          |
+| `ABSENT` | `FALSE`         |
 
 ##### Node.js
 
@@ -3613,16 +3613,16 @@ Android
 
 **Description:**
 
-Returns `  TRUE  ` if `  value  ` is the absent value, and `  FALSE  ` otherwise. Absent values are values that are missing from the input, such as a missing document field.
+Returns `TRUE` if `value` is the absent value, and `FALSE` otherwise. Absent values are values that are missing from the input, such as a missing document field.
 
 **Examples:**
 
-| `        value       `  | `        is_absent(value)       ` |
-| :---------------------- | :-------------------------------- |
-| 0L                      | `        FALSE       `            |
-| "foo"                   | `        FALSE       `            |
-| `        NULL       `   | `        FALSE       `            |
-| `        ABSENT       ` | `        TRUE       `             |
+| `value`  | `is_absent(value)` |
+| :------- | :----------------- |
+| 0L       | `FALSE`            |
+| "foo"    | `FALSE`            |
+| `NULL`   | `FALSE`            |
+| `ABSENT` | `TRUE`             |
 
 ### IF\_ABSENT
 
@@ -3632,15 +3632,15 @@ Returns `  TRUE  ` if `  value  ` is the absent value, and `  FALSE  ` otherwise
 
 **Description:**
 
-If `  value  ` is an absent value, evaluates and returns `  replacement  ` . Otherwise returns `  value  ` .
+If `value` is an absent value, evaluates and returns `replacement` . Otherwise returns `value` .
 
 **Examples:**
 
-| `        value       `  | `        replacement       ` | `        if_absent(value, replacement)       ` |
-| :---------------------- | :--------------------------- | :--------------------------------------------- |
-| 5L                      | 0L                           | 5L                                             |
-| `        NULL       `   | 0L                           | `        NULL       `                          |
-| `        ABSENT       ` | 0L                           | 0L                                             |
+| `value`  | `replacement` | `if_absent(value, replacement)` |
+| :------- | :------------ | :------------------------------ |
+| 5L       | 0L            | 5L                              |
+| `NULL`   | 0L            | `NULL`                          |
+| `ABSENT` | 0L            | 0L                              |
 
 ### IS\_ERROR
 
@@ -3650,7 +3650,7 @@ If `  value  ` is an absent value, evaluates and returns `  replacement  ` . Oth
 
 **Description:**
 
-Returns `  TRUE  ` if an error is thrown during the evaluation of `  try  ` . Returns `  FALSE  ` otherwise.
+Returns `TRUE` if an error is thrown during the evaluation of `try` . Returns `FALSE` otherwise.
 
 ### IF\_ERROR
 
@@ -3660,7 +3660,7 @@ Returns `  TRUE  ` if an error is thrown during the evaluation of `  try  ` . Re
 
 **Description:**
 
-If an error is thrown during the evaluation of `  try  ` , evaluates and returns `  replacement  ` . Otherwise returns the resolved value of `  try  ` .
+If an error is thrown during the evaluation of `try` , evaluates and returns `replacement` . Otherwise returns the resolved value of `try` .
 
 ### ERROR
 
@@ -3670,26 +3670,26 @@ If an error is thrown during the evaluation of `  try  ` , evaluates and returns
 
 **Description:**
 
-Evaluation of the `  error  ` function results in the evaluation of the pipeline to terminate with an error. The given `  message  ` is included in the error.
+Evaluation of the `error` function results in the evaluation of the pipeline to terminate with an error. The given `message` is included in the error.
 
 **Examples:**
 
-| `        cond       `  | `        res       ` | `        switch_on(cond, res, error("no condition matched"))       ` |
-| :--------------------- | :------------------- | :------------------------------------------------------------------- |
-| `        TRUE       `  | 1L                   | 1L                                                                   |
-| `        FALSE       ` | 1L                   | `        ERROR ("no condition matched")       `                      |
+| `cond`  | `res` | `switch_on(cond, res, error("no condition matched"))` |
+| :------ | :---- | :---------------------------------------------------- |
+| `TRUE`  | 1L    | 1L                                                    |
+| `FALSE` | 1L    | `ERROR ("no condition matched")`                      |
 
 ## **Reference Functions**
 
-The `  REFERENCE  ` type acts as a "pointer" to other documents in the database (or even other databases). The following functions allow manipulating this type during query execution.
+The `REFERENCE` type acts as a "pointer" to other documents in the database (or even other databases). The following functions allow manipulating this type during query execution.
 
-|                                     |                                                              |
-| ----------------------------------- | ------------------------------------------------------------ |
-| Name                                | Description                                                  |
-| `          COLLECTION_ID        `   | Returns the ID of the leaf collection in the given reference |
-| `          DOCUMENT_ID        `     | Returns the ID of the document in the given reference        |
-| `          PARENT        `          | Returns the parent reference                                 |
-| `          REFERENCE_SLICE        ` | Returns a subset of segments from the given reference        |
+|                                    |                                                              |
+| ---------------------------------- | ------------------------------------------------------------ |
+| Name                               | Description                                                  |
+| `         COLLECTION_ID        `   | Returns the ID of the leaf collection in the given reference |
+| `         DOCUMENT_ID        `     | Returns the ID of the document in the given reference        |
+| `         PARENT        `          | Returns the parent reference                                 |
+| `         REFERENCE_SLICE        ` | Returns a subset of segments from the given reference        |
 
 ### COLLECTION\_ID
 
@@ -3699,14 +3699,14 @@ The `  REFERENCE  ` type acts as a "pointer" to other documents in the database 
 
 **Description:**
 
-Returns the leaf collection ID of the given `  REFERENCE  ` .
+Returns the leaf collection ID of the given `REFERENCE` .
 
 **Examples:**
 
-| `        ref       `                     | `        collection_id(ref)       ` |
-| :--------------------------------------- | :---------------------------------- |
-| `        users/user1       `             | `        "users"       `            |
-| `        users/user1/posts/post1       ` | `        "posts"       `            |
+| `ref`                     | `collection_id(ref)` |
+| :------------------------ | :------------------- |
+| `users/user1`             | `"users"`            |
+| `users/user1/posts/post1` | `"posts"`            |
 
 ### DOCUMENT\_ID
 
@@ -3716,14 +3716,14 @@ Returns the leaf collection ID of the given `  REFERENCE  ` .
 
 **Description:**
 
-Returns the document ID of the given `  REFERENCE  ` .
+Returns the document ID of the given `REFERENCE` .
 
 **Examples:**
 
-| `        ref       `                     | `        document_id(ref)       ` |
-| :--------------------------------------- | :-------------------------------- |
-| `        users/user1       `             | `        "user1"       `          |
-| `        users/user1/posts/post1       ` | `        "post1"       `          |
+| `ref`                     | `document_id(ref)` |
+| :------------------------ | :----------------- |
+| `users/user1`             | `"user1"`          |
+| `users/user1/posts/post1` | `"post1"`          |
 
 ### PARENT
 
@@ -3733,15 +3733,15 @@ Returns the document ID of the given `  REFERENCE  ` .
 
 **Description:**
 
-Returns the parent `  REFERENCE  ` of the given reference, or `  NULL  ` if the ref is a root reference already.
+Returns the parent `REFERENCE` of the given reference, or `NULL` if the ref is a root reference already.
 
 **Examples:**
 
-| `        ref       `                     | `        parent(ref)       ` |
-| :--------------------------------------- | :--------------------------- |
-| `        /       `                       | `        NULL       `        |
-| `        users/user1       `             | `        /       `           |
-| `        users/user1/posts/post1       ` | `        users/user1       ` |
+| `ref`                     | `parent(ref)` |
+| :------------------------ | :------------ |
+| `/`                       | `NULL`        |
+| `users/user1`             | `/`           |
+| `users/user1/posts/post1` | `users/user1` |
 
 ### REFERENCE\_SLICE
 
@@ -3751,38 +3751,38 @@ Returns the parent `  REFERENCE  ` of the given reference, or `  NULL  ` if the 
 
 **Description:**
 
-A `  REFERENCE  ` is a list of `  (collection_id, document_id)  ` tuples and this allows getting a view of that list, just like `  array_slice(...)  ` .
+A `REFERENCE` is a list of `(collection_id, document_id)` tuples and this allows getting a view of that list, just like `array_slice(...)` .
 
-Returns a new `  REFERENCE  ` that is a subset of the segments of the given `  ref  ` .
+Returns a new `REFERENCE` that is a subset of the segments of the given `ref` .
 
-  - `  offset  ` : The starting index (0-based) of the slice. If negative, it is an offset from the end of the reference.
-  - `  length  ` : The number of segments to include in the slice.
+  - `offset` : The starting index (0-based) of the slice. If negative, it is an offset from the end of the reference.
+  - `length` : The number of segments to include in the slice.
 
 **Examples:**
 
-| `        ref       `         | `        offset       ` | `        length       ` | `        reference_slice(ref, offset, length)       ` |
-| :--------------------------- | :---------------------- | :---------------------- | :---------------------------------------------------- |
-| `        a/1/b/2/c/3       ` | 1L                      | 2L                      | `        b/2/c/3       `                              |
-| `        a/1/b/2/c/3       ` | 0L                      | 2L                      | `        a/1/b/2       `                              |
-| `        a/1/b/2/c/3       ` | \-2L                    | 2L                      | `        c/3       `                                  |
+| `ref`         | `offset` | `length` | `reference_slice(ref, offset, length)` |
+| :------------ | :------- | :------- | :------------------------------------- |
+| `a/1/b/2/c/3` | 1L       | 2L       | `b/2/c/3`                              |
+| `a/1/b/2/c/3` | 0L       | 2L       | `a/1/b/2`                              |
+| `a/1/b/2/c/3` | \-2L     | 2L       | `c/3`                                  |
 
 ## **Logical Functions**
 
-|                                   |                                                            |
-| --------------------------------- | ---------------------------------------------------------- |
-| Name                              | Description                                                |
-| `          AND        `           | Performs a logical AND                                     |
-| `          OR        `            | Performs a logical OR                                      |
-| `          XOR        `           | Performs a logical XOR                                     |
-| `          NOT        `           | Performs a logical NOT                                     |
-| `          NOR        `           | Performs a logical NOR                                     |
-| `          CONDITIONAL        `   | Branches evaluation based on a conditional expression.     |
-| `          IF_NULL        `       | Returns the first non-null value                           |
-| `          SWITCH_ON        `     | Branches evaluation based on a series of conditions        |
-| `          EQUAL_ANY        `     | Checks if a value is equal to any elements in an array     |
-| `          NOT_EQUAL_ANY        ` | Checks if a value is not equal to any elements in an array |
-| `          MAXIMUM        `       | Returns the maximum value in a set of values               |
-| `          MINIMUM        `       | Returns the minimum value in a set of values               |
+|                                  |                                                            |
+| -------------------------------- | ---------------------------------------------------------- |
+| Name                             | Description                                                |
+| `         AND        `           | Performs a logical AND                                     |
+| `         OR        `            | Performs a logical OR                                      |
+| `         XOR        `           | Performs a logical XOR                                     |
+| `         NOT        `           | Performs a logical NOT                                     |
+| `         NOR        `           | Performs a logical NOR                                     |
+| `         CONDITIONAL        `   | Branches evaluation based on a conditional expression.     |
+| `         IF_NULL        `       | Returns the first non-null value                           |
+| `         SWITCH_ON        `     | Branches evaluation based on a series of conditions        |
+| `         EQUAL_ANY        `     | Checks if a value is equal to any elements in an array     |
+| `         NOT_EQUAL_ANY        ` | Checks if a value is not equal to any elements in an array |
+| `         MAXIMUM        `       | Returns the maximum value in a set of values               |
+| `         MINIMUM        `       | Returns the minimum value in a set of values               |
 
 ### AND
 
@@ -3794,18 +3794,18 @@ Returns a new `  REFERENCE  ` that is a subset of the segments of the given `  r
 
 Returns the logical AND of two or more boolean values.
 
-Returns `  NULL  ` if the result can't be derived due to any of the given values being `  ABSENT  ` or `  NULL  ` .
+Returns `NULL` if the result can't be derived due to any of the given values being `ABSENT` or `NULL` .
 
 **Examples:**
 
-| `        x       `      | `        y       `      | `        and(x, y)       ` |
-| :---------------------- | :---------------------- | :------------------------- |
-| `        TRUE       `   | `        TRUE       `   | `        TRUE       `      |
-| `        FALSE       `  | `        TRUE       `   | `        FALSE       `     |
-| `        NULL       `   | `        TRUE       `   | `        NULL       `      |
-| `        ABSENT       ` | `        TRUE       `   | `        NULL       `      |
-| `        NULL       `   | `        FALSE       `  | `        FALSE       `     |
-| `        FALSE       `  | `        ABSENT       ` | `        FALSE       `     |
+| `x`      | `y`      | `and(x, y)` |
+| :------- | :------- | :---------- |
+| `TRUE`   | `TRUE`   | `TRUE`      |
+| `FALSE`  | `TRUE`   | `FALSE`     |
+| `NULL`   | `TRUE`   | `NULL`      |
+| `ABSENT` | `TRUE`   | `NULL`      |
+| `NULL`   | `FALSE`  | `FALSE`     |
+| `FALSE`  | `ABSENT` | `FALSE`     |
 
 ##### Node.js
 
@@ -3899,18 +3899,18 @@ Android
 
 Returns the logical OR of two or more boolean values.
 
-Returns `  NULL  ` if the result can't be derived due to any of the given values being `  ABSENT  ` or `  NULL  ` .
+Returns `NULL` if the result can't be derived due to any of the given values being `ABSENT` or `NULL` .
 
 **Examples:**
 
-| `        x       `      | `        y       `      | `        or(x, y)       ` |
-| :---------------------- | :---------------------- | :------------------------ |
-| `        TRUE       `   | `        TRUE       `   | `        TRUE       `     |
-| `        FALSE       `  | `        TRUE       `   | `        TRUE       `     |
-| `        NULL       `   | `        TRUE       `   | `        TRUE       `     |
-| `        ABSENT       ` | `        TRUE       `   | `        TRUE       `     |
-| `        NULL       `   | `        FALSE       `  | `        NULL       `     |
-| `        FALSE       `  | `        ABSENT       ` | `        NULL       `     |
+| `x`      | `y`      | `or(x, y)` |
+| :------- | :------- | :--------- |
+| `TRUE`   | `TRUE`   | `TRUE`     |
+| `FALSE`  | `TRUE`   | `TRUE`     |
+| `NULL`   | `TRUE`   | `TRUE`     |
+| `ABSENT` | `TRUE`   | `TRUE`     |
+| `NULL`   | `FALSE`  | `NULL`     |
+| `FALSE`  | `ABSENT` | `NULL`     |
 
 ##### Node.js
 
@@ -4005,19 +4005,19 @@ Android
 
 Returns the logical XOR of two or more boolean values.
 
-Returns `  NULL  ` if any of the given values are `  ABSENT  ` or `  NULL  ` .
+Returns `NULL` if any of the given values are `ABSENT` or `NULL` .
 
 **Examples:**
 
-| `        x       `      | `        y       `      | `        xor(x, y)       ` |
-| :---------------------- | :---------------------- | :------------------------- |
-| `        TRUE       `   | `        TRUE       `   | `        FALSE       `     |
-| `        FALSE       `  | `        FALSE       `  | `        FALSE       `     |
-| `        FALSE       `  | `        TRUE       `   | `        TRUE       `      |
-| `        NULL       `   | `        TRUE       `   | `        NULL       `      |
-| `        ABSENT       ` | `        TRUE       `   | `        NULL       `      |
-| `        NULL       `   | `        FALSE       `  | `        NULL       `      |
-| `        FALSE       `  | `        ABSENT       ` | `        NULL       `      |
+| `x`      | `y`      | `xor(x, y)` |
+| :------- | :------- | :---------- |
+| `TRUE`   | `TRUE`   | `FALSE`     |
+| `FALSE`  | `FALSE`  | `FALSE`     |
+| `FALSE`  | `TRUE`   | `TRUE`      |
+| `NULL`   | `TRUE`   | `NULL`      |
+| `ABSENT` | `TRUE`   | `NULL`      |
+| `NULL`   | `FALSE`  | `NULL`      |
+| `FALSE`  | `ABSENT` | `NULL`      |
 
 ##### Node.js
 
@@ -4116,19 +4116,19 @@ Android
 
 Returns the logical NOR of two or more boolean values.
 
-Returns `  NULL  ` if the result can't be derived due to any of the given values being `  ABSENT  ` or `  NULL  ` .
+Returns `NULL` if the result can't be derived due to any of the given values being `ABSENT` or `NULL` .
 
 **Examples:**
 
-| `        x       `      | `        y       `      | `        nor(x, y)       ` |
-| :---------------------- | :---------------------- | :------------------------- |
-| `        TRUE       `   | `        TRUE       `   | `        FALSE       `     |
-| `        FALSE       `  | `        TRUE       `   | `        FALSE       `     |
-| `        FALSE       `  | `        FALSE       `  | `        TRUE       `      |
-| `        NULL       `   | `        TRUE       `   | `        FALSE       `     |
-| `        ABSENT       ` | `        TRUE       `   | `        FALSE       `     |
-| `        NULL       `   | `        FALSE       `  | `        NULL       `      |
-| `        FALSE       `  | `        ABSENT       ` | `        NULL       `      |
+| `x`      | `y`      | `nor(x, y)` |
+| :------- | :------- | :---------- |
+| `TRUE`   | `TRUE`   | `FALSE`     |
+| `FALSE`  | `TRUE`   | `FALSE`     |
+| `FALSE`  | `FALSE`  | `TRUE`      |
+| `NULL`   | `TRUE`   | `FALSE`     |
+| `ABSENT` | `TRUE`   | `FALSE`     |
+| `NULL`   | `FALSE`  | `NULL`      |
+| `FALSE`  | `ABSENT` | `NULL`      |
 
 ### NOT
 
@@ -4223,18 +4223,18 @@ Android
 
 **Description:**
 
-Evaluates and returns the `  true_case  ` if the `  condition  ` evaluates to `  TRUE  ` .
+Evaluates and returns the `true_case` if the `condition` evaluates to `TRUE` .
 
-Evaluates and returns the `  false_case  ` if the condition resolves to `  FALSE  ` , `  NULL  ` , or an `  ABSENT  ` value.
+Evaluates and returns the `false_case` if the condition resolves to `FALSE` , `NULL` , or an `ABSENT` value.
 
 **Examples:**
 
-| `        condition       ` | `        true_case       ` | `        false_case       ` | `        conditional(condition, true_case, false_case)       ` |
-| :------------------------- | :------------------------- | :-------------------------- | :------------------------------------------------------------- |
-| `        TRUE       `      | 1L                         | 0L                          | 1L                                                             |
-| `        FALSE       `     | 1L                         | 0L                          | 0L                                                             |
-| `        NULL       `      | 1L                         | 0L                          | 0L                                                             |
-| `        ABSENT       `    | 1L                         | 0L                          | 0L                                                             |
+| `condition` | `true_case` | `false_case` | `conditional(condition, true_case, false_case)` |
+| :---------- | :---------- | :----------- | :---------------------------------------------- |
+| `TRUE`      | 1L          | 0L           | 1L                                              |
+| `FALSE`     | 1L          | 0L           | 0L                                              |
+| `NULL`      | 1L          | 0L           | 0L                                              |
+| `ABSENT`    | 1L          | 0L           | 0L                                              |
 
 ##### Node.js
 
@@ -4357,15 +4357,15 @@ Android
 
 **Description:**
 
-Returns `  expr  ` if it is not `  NULL  ` , otherwise evaluates and returns `  replacement  ` . The `  replacement  ` expression is not evaluated if `  expr  ` is used.
+Returns `expr` if it is not `NULL` , otherwise evaluates and returns `replacement` . The `replacement` expression is not evaluated if `expr` is used.
 
 **Examples:**
 
-| `        expr       `   | `        replacement       ` | `        if_null(expr, replacement)       ` |
-| :---------------------- | :--------------------------- | :------------------------------------------ |
-| 1L                      | 2L                           | 1L                                          |
-| `        NULL       `   | 2L                           | 2L                                          |
-| `        ABSENT       ` | 2L                           | `        ABSENT       `                     |
+| `expr`   | `replacement` | `if_null(expr, replacement)` |
+| :------- | :------------ | :--------------------------- |
+| 1L       | 2L            | 1L                           |
+| `NULL`   | 2L            | 2L                           |
+| `ABSENT` | 2L            | `ABSENT`                     |
 
 ### SWITCH\_ON
 
@@ -4375,17 +4375,17 @@ Returns `  expr  ` if it is not `  NULL  ` , otherwise evaluates and returns `  
 
 **Description:**
 
-Evaluates a series of conditions and returns the result associated with the first `  TRUE  ` condition. If no conditions evaluate to `  TRUE  ` , the `  default  ` value is returned if provided. If no `  default  ` value is provided, an error is thrown if no other conditions evaluated to `  TRUE  ` .
+Evaluates a series of conditions and returns the result associated with the first `TRUE` condition. If no conditions evaluate to `TRUE` , the `default` value is returned if provided. If no `default` value is provided, an error is thrown if no other conditions evaluated to `TRUE` .
 
-To provide a `  default  ` value, pass it as the final argument such that there is an odd number of arguments.
+To provide a `default` value, pass it as the final argument such that there is an odd number of arguments.
 
 **Examples:**
 
-| `        x       ` | `        switch_on(eq(x, 1L), "one", eq(x, 2L), "two", "other")       ` |
-| :----------------- | :---------------------------------------------------------------------- |
-| 1L                 | "one"                                                                   |
-| 2L                 | "two"                                                                   |
-| 3L                 | "other"                                                                 |
+| `x` | `switch_on(eq(x, 1L), "one", eq(x, 2L), "two", "other")` |
+| :-- | :------------------------------------------------------- |
+| 1L  | "one"                                                    |
+| 2L  | "two"                                                    |
+| 3L  | "other"                                                  |
 
 ### EQUAL\_ANY
 
@@ -4395,18 +4395,18 @@ To provide a `  default  ` value, pass it as the final argument such that there 
 
 **Description:**
 
-Returns `  TRUE  ` if `  value  ` is in the `  search_space  ` array.
+Returns `TRUE` if `value` is in the `search_space` array.
 
 **Examples:**
 
-| `        value       `  | `        search_space       `  | `        equal_any(value, search_space)       ` |
-| :---------------------- | :----------------------------- | :---------------------------------------------- |
-| 0L                      | \[1L, 2L, 3L\]                 | `        FALSE       `                          |
-| 2L                      | \[1L, 2L, 3L\]                 | `        TRUE       `                           |
-| `        NULL       `   | \[1L, 2L, 3L\]                 | `        FALSE       `                          |
-| `        NULL       `   | \[1L, `        NULL       ` \] | `        TRUE       `                           |
-| `        ABSENT       ` | \[1L, `        NULL       ` \] | `        FALSE       `                          |
-| NaN                     | \[1L, NaN, 3L\]                | `        TRUE       `                           |
+| `value`  | `search_space`  | `equal_any(value, search_space)` |
+| :------- | :-------------- | :------------------------------- |
+| 0L       | \[1L, 2L, 3L\]  | `FALSE`                          |
+| 2L       | \[1L, 2L, 3L\]  | `TRUE`                           |
+| `NULL`   | \[1L, 2L, 3L\]  | `FALSE`                          |
+| `NULL`   | \[1L, `NULL` \] | `TRUE`                           |
+| `ABSENT` | \[1L, `NULL` \] | `FALSE`                          |
+| NaN      | \[1L, NaN, 3L\] | `TRUE`                           |
 
 ##### Node.js
 
@@ -4495,18 +4495,18 @@ Android
 
 **Description:**
 
-Returns `  TRUE  ` if `  value  ` is not in the `  search_space  ` array.
+Returns `TRUE` if `value` is not in the `search_space` array.
 
 **Examples:**
 
-| `        value       `  | `        search_space       `  | `        not_equal_any(value, search_space)       ` |
-| :---------------------- | :----------------------------- | :-------------------------------------------------- |
-| 0L                      | \[1L, 2L, 3L\]                 | `        TRUE       `                               |
-| 2L                      | \[1L, 2L, 3L\]                 | `        FALSE       `                              |
-| `        NULL       `   | \[1L, 2L, 3L\]                 | `        TRUE       `                               |
-| `        NULL       `   | \[1L, `        NULL       ` \] | `        FALSE       `                              |
-| `        ABSENT       ` | \[1L, `        NULL       ` \] | `        TRUE       `                               |
-| NaN                     | \[1L, NaN, 3L\]                | `        FALSE       `                              |
+| `value`  | `search_space`  | `not_equal_any(value, search_space)` |
+| :------- | :-------------- | :----------------------------------- |
+| 0L       | \[1L, 2L, 3L\]  | `TRUE`                               |
+| 2L       | \[1L, 2L, 3L\]  | `FALSE`                              |
+| `NULL`   | \[1L, 2L, 3L\]  | `TRUE`                               |
+| `NULL`   | \[1L, `NULL` \] | `FALSE`                              |
+| `ABSENT` | \[1L, `NULL` \] | `TRUE`                               |
+| NaN      | \[1L, NaN, 3L\] | `FALSE`                              |
 
 ##### Node.js
 
@@ -4596,23 +4596,23 @@ Android
 
 **Description:**
 
-Returns the maximum non- `  NULL  ` , non- `  ABSENT  ` value in a series of values `  x  ` .
+Returns the maximum non- `NULL` , non- `ABSENT` value in a series of values `x` .
 
-If there are no non- `  NULL  ` , non- `  ABSENT  ` values, `  NULL  ` is returned.
+If there are no non- `NULL` , non- `ABSENT` values, `NULL` is returned.
 
 If there are multiple maximum equivalent values, any one of those values can be returned. Value type ordering follows [documented ordering](https://docs.cloud.google.com/docs/firestore/manage-data/data-types#value_type_ordering) .
 
 **Examples:**
 
-| `        x       `      | `        y       `      | `        maximum(x, y)       ` |
-| :---------------------- | :---------------------- | :----------------------------- |
-| `        FALSE       `  | `        TRUE       `   | `        TRUE       `          |
-| `        FALSE       `  | \-10L                   | \-10L                          |
-| 0.0                     | \-5L                    | 0.0                            |
-| "foo"                   | "bar"                   | "foo"                          |
-| "foo"                   | \["foo"\]               | \["foo"\]                      |
-| `        ABSENT       ` | `        ABSENT       ` | `        NULL       `          |
-| `        NULL       `   | `        NULL       `   | `        NULL       `          |
+| `x`      | `y`       | `maximum(x, y)` |
+| :------- | :-------- | :-------------- |
+| `FALSE`  | `TRUE`    | `TRUE`          |
+| `FALSE`  | \-10L     | \-10L           |
+| 0.0      | \-5L      | 0.0             |
+| "foo"    | "bar"     | "foo"           |
+| "foo"    | \["foo"\] | \["foo"\]       |
+| `ABSENT` | `ABSENT`  | `NULL`          |
+| `NULL`   | `NULL`    | `NULL`          |
 
 ##### Node.js
 
@@ -4687,23 +4687,23 @@ Android
 
 **Description:**
 
-Returns the minimum non- `  NULL  ` , non- `  ABSENT  ` value in a series of values `  x  ` .
+Returns the minimum non- `NULL` , non- `ABSENT` value in a series of values `x` .
 
-If there are no non- `  NULL  ` , non- `  ABSENT  ` values, `  NULL  ` is returned.
+If there are no non- `NULL` , non- `ABSENT` values, `NULL` is returned.
 
 If there are multiple minimum equivalent values, any one of those values can be returned. Value type ordering follows [documented ordering](https://docs.cloud.google.com/docs/firestore/manage-data/data-types#value_type_ordering) .
 
 **Examples:**
 
-| `        x       `      | `        y       `      | `        minimum(x, y)       ` |
-| :---------------------- | :---------------------- | :----------------------------- |
-| `        FALSE       `  | `        TRUE       `   | `        FALSE       `         |
-| `        FALSE       `  | \-10L                   | `        FALSE       `         |
-| 0.0                     | \-5L                    | \-5L                           |
-| "foo"                   | "bar"                   | "bar"                          |
-| "foo"                   | \["foo"\]               | "foo"                          |
-| `        ABSENT       ` | `        ABSENT       ` | `        NULL       `          |
-| `        NULL       `   | `        NULL       `   | `        NULL       `          |
+| `x`      | `y`       | `minimum(x, y)` |
+| :------- | :-------- | :-------------- |
+| `FALSE`  | `TRUE`    | `FALSE`         |
+| `FALSE`  | \-10L     | `FALSE`         |
+| 0.0      | \-5L      | \-5L            |
+| "foo"    | "bar"     | "bar"           |
+| "foo"    | \["foo"\] | "foo"           |
+| `ABSENT` | `ABSENT`  | `NULL`          |
+| `NULL`   | `NULL`    | `NULL`          |
 
 ##### Node.js
 
@@ -4771,18 +4771,18 @@ Android
 
 ## **Map Functions**
 
-|                                     |                                                         |
-| ----------------------------------- | ------------------------------------------------------- |
-| Name                                | Description                                             |
-| `          MAP        `             | Constructs a map value from a series of key-value pairs |
-| `          MAP_GET        `         | Returns the value in a map given a specified key        |
-| `          MAP_SET        `         | Returns a copy of a map with a series of updated keys   |
-| `          MAP_REMOVE        `      | Returns a copy of a map with a series of keys removed   |
-| `          MAP_MERGE        `       | Merges a series of maps together.                       |
-| `          CURRENT_CONTEXT        ` | Returns the current context as a map.                   |
-| `          MAP_KEYS        `        | Returns an array of all keys in a map.                  |
-| `          MAP_VALUES        `      | Returns an array of all values in a map.                |
-| `          MAP_ENTRIES        `     | Returns an array of key-value pairs of a map.           |
+|                                    |                                                         |
+| ---------------------------------- | ------------------------------------------------------- |
+| Name                               | Description                                             |
+| `         MAP        `             | Constructs a map value from a series of key-value pairs |
+| `         MAP_GET        `         | Returns the value in a map given a specified key        |
+| `         MAP_SET        `         | Returns a copy of a map with a series of updated keys   |
+| `         MAP_REMOVE        `      | Returns a copy of a map with a series of keys removed   |
+| `         MAP_MERGE        `       | Merges a series of maps together.                       |
+| `         CURRENT_CONTEXT        ` | Returns the current context as a map.                   |
+| `         MAP_KEYS        `        | Returns an array of all keys in a map.                  |
+| `         MAP_VALUES        `      | Returns an array of all values in a map.                |
+| `         MAP_ENTRIES        `     | Returns an array of key-value pairs of a map.           |
 
 ### MAP
 
@@ -4802,7 +4802,7 @@ Constructs a map from a series of key-value pairs.
 
 **Description:**
 
-Returns the value in a map given a specified key. Returns an `  ABSENT  ` value if the `  key  ` does not exist in the map, or if the `  map  ` argument is not a `  MAP  ` .
+Returns the value in a map given a specified key. Returns an `ABSENT` value if the `key` does not exist in the map, or if the `map` argument is not a `MAP` .
 
 ##### Node.js
 
@@ -4880,11 +4880,11 @@ Android
 
 **Description:**
 
-Returns a copy of the `  map  ` value with its contents updated by a series of key-value pairs.
+Returns a copy of the `map` value with its contents updated by a series of key-value pairs.
 
 If the given resolves to an absent value, the associated key is removed from the map.
 
-If the `  map  ` argument is not a `  MAP  ` , returns an absent value.
+If the `map` argument is not a `MAP` , returns an absent value.
 
 ### MAP\_REMOVE
 
@@ -4894,7 +4894,7 @@ If the `  map  ` argument is not a `  MAP  ` , returns an absent value.
 
 **Description:**
 
-Returns a copy of the `  map  ` value with a series of keys removed.
+Returns a copy of the `map` value with a series of keys removed.
 
 ### MAP\_MERGE
 
@@ -4920,7 +4920,7 @@ Returns a map consisting of all available fields in the current point of executi
 
 **Description:**
 
-Returns an array containing all keys of the `  map  ` value.
+Returns an array containing all keys of the `map` value.
 
 ### MAP\_VALUES
 
@@ -4930,7 +4930,7 @@ Returns an array containing all keys of the `  map  ` value.
 
 **Description:**
 
-Returns an array containing all values of the `  map  ` value.
+Returns an array containing all values of the `map` value.
 
 ### MAP\_ENTRIES
 
@@ -4940,13 +4940,13 @@ Returns an array containing all values of the `  map  ` value.
 
 **Description:**
 
-Returns an array containing all key-value pairs in the `  map  ` value.
+Returns an array containing all key-value pairs in the `map` value.
 
-Each key-value pair will be in the form of a map with two entries, `  k  ` and `  v  ` .
+Each key-value pair will be in the form of a map with two entries, `k` and `v` .
 
 **Examples:**
 
-| `        map       `           | `        map_entries(map)       `                         |
+| `map`                          | `map_entries(map)`                                        |
 | :----------------------------- | :-------------------------------------------------------- |
 | {}                             | \[\]                                                      |
 | {"foo" : 2L}                   | \[{"k": "foo", "v" : 2L}\]                                |
@@ -4954,30 +4954,30 @@ Each key-value pair will be in the form of a map with two entries, `  k  ` and `
 
 ## **String Functions**
 
-|                                        |                                                                                                                 |
-| -------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Name                                   | Description                                                                                                     |
-| `          BYTE_LENGTH        `        | Returns the number of `        BYTES       ` in a `        STRING       ` or `        BYTES       ` value       |
-| `          CHAR_LENGTH        `        | Returns the number of unicode characters in a `        STRING       ` value                                     |
-| `          STARTS_WITH        `        | Returns `        TRUE       ` if a `        STRING       ` begins with a given prefix                           |
-| `          ENDS_WITH        `          | Returns `        TRUE       ` if a `        STRING       ` ends with a given postfix                            |
-| `          LIKE        `               | Returns `        TRUE       ` if a `        STRING       ` matches a pattern                                    |
-| `          REGEX_CONTAINS        `     | Returns `        TRUE       ` if a value is a partial or full match for a regular expression                    |
-| `          REGEX_MATCH        `        | Returns `        TRUE       ` if any part of a value matches a regular expression                               |
-| `          STRING_CONCAT        `      | Concatenates multiple `        STRING       ` into a `        STRING       `                                    |
-| `          STRING_CONTAINS        `    | Returns `        TRUE       ` if a value contains a `        STRING       `                                     |
-| `          STRING_INDEX_OF        `    | Returns the 0-based index of the first occurrence of a `        STRING       ` or `        BYTES       ` value. |
-| `          TO_UPPER        `           | Converts a `        STRING       ` or `        BYTES       ` value to uppercase.                                |
-| `          TO_LOWER        `           | Converts a `        STRING       ` or `        BYTES       ` value to lowercase.                                |
-| `          SUBSTRING        `          | Gets a substring of a `        STRING       ` or `        BYTES       ` value.                                  |
-| `          STRING_REVERSE        `     | Reverses a `        STRING       ` or `        BYTES       ` value.                                             |
-| `          STRING_REPEAT        `      | Repeats a `        STRING       ` or `        BYTES       ` value a specified number of times.                  |
-| `          STRING_REPLACE_ALL        ` | Replaces all occurrences of a `        STRING       ` or `        BYTES       ` value.                          |
-| `          STRING_REPLACE_ONE        ` | Replaces the first occurrence of a `        STRING       ` or `        BYTES       ` value.                     |
-| `          TRIM        `               | Trims leading and trailing characters from a `        STRING       ` or `        BYTES       ` value.           |
-| `          LTRIM        `              | Trims leading characters from a `        STRING       ` or `        BYTES       ` value.                        |
-| `          RTRIM        `              | Trims trailing characters from a `        STRING       ` or `        BYTES       ` value.                       |
-| `          SPLIT        `              | Splits a `        STRING       ` or `        BYTES       ` value into an array.                                 |
+|                                       |                                                                                   |
+| ------------------------------------- | --------------------------------------------------------------------------------- |
+| Name                                  | Description                                                                       |
+| `         BYTE_LENGTH        `        | Returns the number of `BYTES` in a `STRING` or `BYTES` value                      |
+| `         CHAR_LENGTH        `        | Returns the number of unicode characters in a `STRING` value                      |
+| `         STARTS_WITH        `        | Returns `TRUE` if a `STRING` begins with a given prefix                           |
+| `         ENDS_WITH        `          | Returns `TRUE` if a `STRING` ends with a given postfix                            |
+| `         LIKE        `               | Returns `TRUE` if a `STRING` matches a pattern                                    |
+| `         REGEX_CONTAINS        `     | Returns `TRUE` if a value is a partial or full match for a regular expression     |
+| `         REGEX_MATCH        `        | Returns `TRUE` if any part of a value matches a regular expression                |
+| `         STRING_CONCAT        `      | Concatenates multiple `STRING` into a `STRING`                                    |
+| `         STRING_CONTAINS        `    | Returns `TRUE` if a value contains a `STRING`                                     |
+| `         STRING_INDEX_OF        `    | Returns the 0-based index of the first occurrence of a `STRING` or `BYTES` value. |
+| `         TO_UPPER        `           | Converts a `STRING` or `BYTES` value to uppercase.                                |
+| `         TO_LOWER        `           | Converts a `STRING` or `BYTES` value to lowercase.                                |
+| `         SUBSTRING        `          | Gets a substring of a `STRING` or `BYTES` value.                                  |
+| `         STRING_REVERSE        `     | Reverses a `STRING` or `BYTES` value.                                             |
+| `         STRING_REPEAT        `      | Repeats a `STRING` or `BYTES` value a specified number of times.                  |
+| `         STRING_REPLACE_ALL        ` | Replaces all occurrences of a `STRING` or `BYTES` value.                          |
+| `         STRING_REPLACE_ONE        ` | Replaces the first occurrence of a `STRING` or `BYTES` value.                     |
+| `         TRIM        `               | Trims leading and trailing characters from a `STRING` or `BYTES` value.           |
+| `         LTRIM        `              | Trims leading characters from a `STRING` or `BYTES` value.                        |
+| `         RTRIM        `              | Trims trailing characters from a `STRING` or `BYTES` value.                       |
+| `         SPLIT        `              | Splits a `STRING` or `BYTES` value into an array.                                 |
 
 ### BYTE\_LENGTH
 
@@ -4987,15 +4987,15 @@ Each key-value pair will be in the form of a map with two entries, `  k  ` and `
 
 **Description:**
 
-Returns the number of `  BYTES  ` in a `  STRING  ` or `  BYTES  ` value.
+Returns the number of `BYTES` in a `STRING` or `BYTES` value.
 
 **Examples:**
 
-| value    | `        byte_length(value)       ` |
-| :------- | :---------------------------------- |
-| "abc"    | 3                                   |
-| "xyzabc" | 6                                   |
-| b"abc"   | 3                                   |
+| value    | `byte_length(value)` |
+| :------- | :------------------- |
+| "abc"    | 3                    |
+| "xyzabc" | 6                    |
+| b"abc"   | 3                    |
 
 ##### Node.js
 
@@ -5073,15 +5073,15 @@ Android
 
 **Description:**
 
-Returns the number of unicode code points in `  STRING  ` value.
+Returns the number of unicode code points in `STRING` value.
 
 **Examples:**
 
-| value   | `        char_length(value)       ` |
-| :------ | :---------------------------------- |
-| "abc"   | 3                                   |
-| "hello" | 5                                   |
-| "world" | 5                                   |
+| value   | `char_length(value)` |
+| :------ | :------------------- |
+| "abc"   | 3                    |
+| "hello" | 5                    |
+| "world" | 5                    |
 
 ##### Node.js
 
@@ -5159,15 +5159,15 @@ Android
 
 **Description:**
 
-Returns `  TRUE  ` if `  value  ` begins with `  prefix  ` .
+Returns `TRUE` if `value` begins with `prefix` .
 
 **Examples:**
 
-| value | prefix | `        starts_with(value, prefix)       ` |
-| :---- | :----- | :------------------------------------------ |
-| "abc" | "a"    | true                                        |
-| "abc" | "b"    | false                                       |
-| "abc" | ""     | true                                        |
+| value | prefix | `starts_with(value, prefix)` |
+| :---- | :----- | :--------------------------- |
+| "abc" | "a"    | true                         |
+| "abc" | "b"    | false                        |
+| "abc" | ""     | true                         |
 
 ##### Node.js
 
@@ -5252,15 +5252,15 @@ Android
 
 **Description:**
 
-Returns `  TRUE  ` if `  value  ` ends with `  postfix  ` .
+Returns `TRUE` if `value` ends with `postfix` .
 
 **Examples:**
 
-| value | postfix | `        ends_with(value, postfix)       ` |
-| :---- | :------ | :----------------------------------------- |
-| "abc" | "c"     | true                                       |
-| "abc" | "b"     | false                                      |
-| "abc" | ""      | true                                       |
+| value | postfix | `ends_with(value, postfix)` |
+| :---- | :------ | :-------------------------- |
+| "abc" | "c"     | true                        |
+| "abc" | "b"     | false                       |
+| "abc" | ""      | true                        |
 
 ##### Node.js
 
@@ -5333,16 +5333,16 @@ Android
 
 **Description:**
 
-Returns `  TRUE  ` if `  value  ` matches `  pattern  ` .
+Returns `TRUE` if `value` matches `pattern` .
 
 **Examples:**
 
-| value       | pattern      | `        like(value, pattern)       ` |
-| :---------- | :----------- | :------------------------------------ |
-| "Firestore" | "Fire%"      | true                                  |
-| "Firestore" | "%store"     | true                                  |
-| "Datastore" | "Data\_tore" | true                                  |
-| "100%"      | "100\\%"     | true                                  |
+| value       | pattern      | `like(value, pattern)` |
+| :---------- | :----------- | :--------------------- |
+| "Firestore" | "Fire%"      | true                   |
+| "Firestore" | "%store"     | true                   |
+| "Datastore" | "Data\_tore" | true                   |
+| "100%"      | "100\\%"     | true                   |
 
 ##### Node.js
 
@@ -5425,17 +5425,17 @@ Android
 
 **Description:**
 
-Returns `  TRUE  ` if some part of `  value  ` matches `  pattern  ` . If `  pattern  ` is not a valid regular expression, this function returns an `  error  ` .
+Returns `TRUE` if some part of `value` matches `pattern` . If `pattern` is not a valid regular expression, this function returns an `error` .
 
 Regular expressions follow the syntax of the [re2](https://github.com/google/re2/wiki/Syntax) library.
 
 **Examples:**
 
-| value       | pattern  | `        regex_contains(value, pattern)       ` |
-| :---------- | :------- | :---------------------------------------------- |
-| "Firestore" | "Fire"   | true                                            |
-| "Firestore" | "store$" | true                                            |
-| "Firestore" | "data"   | false                                           |
+| value       | pattern  | `regex_contains(value, pattern)` |
+| :---------- | :------- | :------------------------------- |
+| "Firestore" | "Fire"   | true                             |
+| "Firestore" | "store$" | true                             |
+| "Firestore" | "data"   | false                            |
 
 ##### Node.js
 
@@ -5524,17 +5524,17 @@ Android
 
 **Description:**
 
-Returns `  TRUE  ` if `  value  ` fully matches `  pattern  ` . If `  pattern  ` is not a valid regular expression, this function returns an `  error  ` .
+Returns `TRUE` if `value` fully matches `pattern` . If `pattern` is not a valid regular expression, this function returns an `error` .
 
 Regular expressions follow the syntax of the [re2](https://github.com/google/re2/wiki/Syntax) library.
 
 **Examples:**
 
-| value       | pattern     | `        regex_match(value, pattern)       ` |
-| :---------- | :---------- | :------------------------------------------- |
-| "Firestore" | "F.\*store" | true                                         |
-| "Firestore" | "Fire"      | false                                        |
-| "Firestore" | "^F.\*e$"   | true                                         |
+| value       | pattern     | `regex_match(value, pattern)` |
+| :---------- | :---------- | :---------------------------- |
+| "Firestore" | "F.\*store" | true                          |
+| "Firestore" | "Fire"      | false                         |
+| "Firestore" | "^F.\*e$"   | true                          |
 
 ##### Node.js
 
@@ -5623,16 +5623,16 @@ Android
 
 **Description:**
 
-Concatenates two or more `  STRING  ` values into a single result.
+Concatenates two or more `STRING` values into a single result.
 
 **Examples:**
 
-| arguments                       | `        string_concat(values...)       ` |
-| :------------------------------ | :---------------------------------------- |
-| `        ()       `             | error                                     |
-| `        ("a")       `          | "a"                                       |
-| `        ("abc", "def")       ` | "abcdef"                                  |
-| `        ("a", "", "c")       ` | "ac"                                      |
+| arguments        | `string_concat(values...)` |
+| :--------------- | :------------------------- |
+| `()`             | error                      |
+| `("a")`          | "a"                        |
+| `("abc", "def")` | "abcdef"                   |
+| `("a", "", "c")` | "ac"                       |
 
 ##### Node.js
 
@@ -5719,17 +5719,17 @@ Android
 
 **Description:**
 
-Checks if `  value  ` contains the literal String `  substring  ` .
+Checks if `value` contains the literal String `substring` .
 
 **Examples:**
 
-| value | substring | `        string_contains(value, substring)       ` |
-| :---- | :-------- | :------------------------------------------------- |
-| "abc" | "b"       | true                                               |
-| "abc" | "d"       | false                                              |
-| "abc" | ""        | true                                               |
-| "a.c" | "."       | true                                               |
-| "☃☃☃" | "☃"       | true                                               |
+| value | substring | `string_contains(value, substring)` |
+| :---- | :-------- | :---------------------------------- |
+| "abc" | "b"       | true                                |
+| "abc" | "d"       | false                               |
+| "abc" | ""        | true                                |
+| "a.c" | "."       | true                                |
+| "☃☃☃" | "☃"       | true                                |
 
 ##### Node.js
 
@@ -5812,24 +5812,24 @@ Android
 
 **Description:**
 
-Returns the 0-based index of the first occurrence of `  search  ` in `  value  ` .
+Returns the 0-based index of the first occurrence of `search` in `value` .
 
-  - Returns `  -1  ` if `  search  ` is not found.
-  - If `  value  ` is a `  STRING  ` value, the result is measured in unicode code points. If it is a `  BYTES  ` value, it is measured in bytes.
-  - If `  search  ` is an empty `  STRING  ` or `  BYTES  ` value, the result is `  0  ` .
+  - Returns `-1` if `search` is not found.
+  - If `value` is a `STRING` value, the result is measured in unicode code points. If it is a `BYTES` value, it is measured in bytes.
+  - If `search` is an empty `STRING` or `BYTES` value, the result is `0` .
 
 **Examples:**
 
-| value         | search | `        string_index_of(value, search)       ` |
-| :------------ | :----- | :---------------------------------------------- |
-| "hello world" | "o"    | 4                                               |
-| "hello world" | "l"    | 2                                               |
-| "hello world" | "z"    | \-1                                             |
-| "banana"      | "na"   | 2                                               |
-| "abc"         | ""     | 0                                               |
-| b"abc"        | b"b"   | 1                                               |
-| "é"           | "é"    | 0                                               |
-| b"é"          | b"é"   | 0                                               |
+| value         | search | `string_index_of(value, search)` |
+| :------------ | :----- | :------------------------------- |
+| "hello world" | "o"    | 4                                |
+| "hello world" | "l"    | 2                                |
+| "hello world" | "z"    | \-1                              |
+| "banana"      | "na"   | 2                                |
+| "abc"         | ""     | 0                                |
+| b"abc"        | b"b"   | 1                                |
+| "é"           | "é"    | 0                                |
+| b"é"          | b"é"   | 0                                |
 
 ### TO\_UPPER
 
@@ -5839,18 +5839,18 @@ Returns the 0-based index of the first occurrence of `  search  ` in `  value  `
 
 **Description:**
 
-Converts a `  STRING  ` or `  BYTES  ` value to uppercase.
+Converts a `STRING` or `BYTES` value to uppercase.
 
 If a byte or char does not correspond to a UTF-8 lowercase alphabetic character, it is passed through unchanged.
 
 **Examples:**
 
-| value  | `        to_upper(value)       ` |
-| :----- | :------------------------------- |
-| "abc"  | "ABC"                            |
-| "AbC"  | "ABC"                            |
-| b"abc" | b"ABC"                           |
-| b"a1c" | b"A1C"                           |
+| value  | `to_upper(value)` |
+| :----- | :---------------- |
+| "abc"  | "ABC"             |
+| "AbC"  | "ABC"             |
+| b"abc" | b"ABC"            |
+| b"a1c" | b"A1C"            |
 
 ##### Node.js
 
@@ -5933,18 +5933,18 @@ Android
 
 **Description:**
 
-Converts a `  STRING  ` or `  BYTES  ` value to lowercase.
+Converts a `STRING` or `BYTES` value to lowercase.
 
 If a byte or char does not correspond to a UTF-8 uppercase alphabetic character, it is passed through unchanged.
 
 **Examples:**
 
-| value  | `        to_lower(value)       ` |
-| :----- | :------------------------------- |
-| "ABC"  | "abc"                            |
-| "AbC"  | "abc"                            |
-| "A1C"  | "a1c"                            |
-| b"ABC" | b"abc"                           |
+| value  | `to_lower(value)` |
+| :----- | :---------------- |
+| "ABC"  | "abc"             |
+| "AbC"  | "abc"             |
+| "A1C"  | "a1c"             |
+| b"ABC" | b"abc"            |
 
 ##### Node.js
 
@@ -6028,34 +6028,34 @@ Android
 
 **Description:**
 
-Returns a substring of `  input  ` starting at `  position  ` (zero-based index) and including up to `  length  ` entries. If no `  length  ` is provided, returns the substring from `  position  ` to the end of the `  input  ` .
+Returns a substring of `input` starting at `position` (zero-based index) and including up to `length` entries. If no `length` is provided, returns the substring from `position` to the end of the `input` .
 
-  - If `  input  ` is a `  STRING  ` value, `  position  ` and `  length  ` are measured in unicode code points. If it is a `  BYTES  ` value, they are measured in bytes.
+  - If `input` is a `STRING` value, `position` and `length` are measured in unicode code points. If it is a `BYTES` value, they are measured in bytes.
 
-  - If `  position  ` is greater than the length of the `  input  ` , an empty substring is returned. If `  position  ` plus `  length  ` is greater than the length of `  input  ` , the substring is truncated to the end of `  input  ` .
+  - If `position` is greater than the length of the `input` , an empty substring is returned. If `position` plus `length` is greater than the length of `input` , the substring is truncated to the end of `input` .
 
-  - If `  position  ` is negative, the position is taken from the end of the input. If the negative `  position  ` is greater than the size of the input, the position is set to zero. `  length  ` must be non-negative.
+  - If `position` is negative, the position is taken from the end of the input. If the negative `position` is greater than the size of the input, the position is set to zero. `length` must be non-negative.
 
 **Examples:**
 
-When `  length  ` is not provided:
+When `length` is not provided:
 
-| input  | position | `        substring(input, position)       ` |
-| :----- | :------- | :------------------------------------------ |
-| "abc"  | 0        | "abc"                                       |
-| "abc"  | 1        | "bc"                                        |
-| "abc"  | 3        | ""                                          |
-| "abc"  | \-1      | "c"                                         |
-| b"abc" | 1        | b"bc"                                       |
+| input  | position | `substring(input, position)` |
+| :----- | :------- | :--------------------------- |
+| "abc"  | 0        | "abc"                        |
+| "abc"  | 1        | "bc"                         |
+| "abc"  | 3        | ""                           |
+| "abc"  | \-1      | "c"                          |
+| b"abc" | 1        | b"bc"                        |
 
-When `  length  ` is provided:
+When `length` is provided:
 
-| input  | position | length | `        substring(input, position, length)       ` |
-| :----- | :------- | :----- | :-------------------------------------------------- |
-| "abc"  | 0        | 1      | "a"                                                 |
-| "abc"  | 1        | 2      | "bc"                                                |
-| "abc"  | \-1      | 1      | "c"                                                 |
-| b"abc" | 0        | 1      | b"a"                                                |
+| input  | position | length | `substring(input, position, length)` |
+| :----- | :------- | :----- | :----------------------------------- |
+| "abc"  | 0        | 1      | "a"                                  |
+| "abc"  | 1        | 2      | "bc"                                 |
+| "abc"  | \-1      | 1      | "c"                                  |
+| b"abc" | 0        | 1      | b"a"                                 |
 
 ##### Node.js
 
@@ -6153,16 +6153,16 @@ Android
 
 Returns the supplied input in reverse order.
 
-Characters are delineated by Unicode code points when the input is a `  STRING  ` , and bytes when the input is a `  BYTES  ` value.
+Characters are delineated by Unicode code points when the input is a `STRING` , and bytes when the input is a `BYTES` value.
 
 **Examples:**
 
-| input   | `        string_reverse(input)       ` |
-| :------ | :------------------------------------- |
-| "abc"   | "cba"                                  |
-| "a🌹b"   | "b🌹a"                                  |
-| "hello" | "olleh"                                |
-| b"abc"  | b"cba"                                 |
+| input   | `string_reverse(input)` |
+| :------ | :---------------------- |
+| "abc"   | "cba"                   |
+| "a🌹b"   | "b🌹a"                   |
+| "hello" | "olleh"                 |
+| b"abc"  | b"cba"                  |
 
 ##### Node.js
 
@@ -6240,21 +6240,21 @@ Android
 
 **Description:**
 
-Returns the `  input  ` repeated `  repetitions  ` times.
+Returns the `input` repeated `repetitions` times.
 
-  - `  repetitions  ` must be a non-negative integer.
-  - If `  repetitions  ` is `  0  ` , returns an empty value of the same type as `  input  ` .
+  - `repetitions` must be a non-negative integer.
+  - If `repetitions` is `0` , returns an empty value of the same type as `input` .
   - If the result exceeds the maximum allowed size (1 MB), an error is returned.
 
 **Examples:**
 
-| input | repetitions | `        string_repeat(input, repetitions)       ` |
-| :---- | :---------- | :------------------------------------------------- |
-| "foo" | 3           | "foofoofoo"                                        |
-| "foo" | 0           | ""                                                 |
-| "a "  | 3           | "a a a "                                           |
-| b"ab" | 2           | b"abab"                                            |
-| "é🦆"  | 2           | "é🦆é🦆"                                             |
+| input | repetitions | `string_repeat(input, repetitions)` |
+| :---- | :---------- | :---------------------------------- |
+| "foo" | 3           | "foofoofoo"                         |
+| "foo" | 0           | ""                                  |
+| "a "  | 3           | "a a a "                            |
+| b"ab" | 2           | b"abab"                             |
+| "é🦆"  | 2           | "é🦆é🦆"                              |
 
 ### STRING\_REPLACE\_ALL
 
@@ -6264,20 +6264,20 @@ Returns the `  input  ` repeated `  repetitions  ` times.
 
 **Description:**
 
-Replaces all non-overlapping occurrences of `  find  ` in `  input  ` with `  replacement  ` .
+Replaces all non-overlapping occurrences of `find` in `input` with `replacement` .
 
   - Matches are case-sensitive.
-  - If `  find  ` is empty, no replacements are made.
+  - If `find` is empty, no replacements are made.
 
 **Examples:**
 
-| input       | find  | replacement | `        string_replace_all(input, find, replacement)       ` |
-| :---------- | :---- | :---------- | :------------------------------------------------------------ |
-| "foobarfoo" | "foo" | "baz"       | "bazbarbaz"                                                   |
-| "ababab"    | "aba" | "c"         | "cbab"                                                        |
-| "foobar"    | "o"   | ""          | "fbar"                                                        |
-| "é🦆🌎🦆"      | "🦆"   | "a"         | "éa🌎a"                                                        |
-| b"abc"      | b"b"  | b"d"        | b"adc"                                                        |
+| input       | find  | replacement | `string_replace_all(input, find, replacement)` |
+| :---------- | :---- | :---------- | :--------------------------------------------- |
+| "foobarfoo" | "foo" | "baz"       | "bazbarbaz"                                    |
+| "ababab"    | "aba" | "c"         | "cbab"                                         |
+| "foobar"    | "o"   | ""          | "fbar"                                         |
+| "é🦆🌎🦆"      | "🦆"   | "a"         | "éa🌎a"                                         |
+| b"abc"      | b"b"  | b"d"        | b"adc"                                         |
 
 ### STRING\_REPLACE\_ONE
 
@@ -6287,18 +6287,18 @@ Replaces all non-overlapping occurrences of `  find  ` in `  input  ` with `  re
 
 **Description:**
 
-Replaces the first occurrence of `  find  ` in `  input  ` with `  replacement  ` .
+Replaces the first occurrence of `find` in `input` with `replacement` .
 
   - Matches are case-sensitive.
-  - If `  find  ` is empty, no replacements are made.
+  - If `find` is empty, no replacements are made.
 
 **Examples:**
 
-| input       | find  | replacement | `        string_replace_one(input, find, replacement)       ` |
-| :---------- | :---- | :---------- | :------------------------------------------------------------ |
-| "foobarfoo" | "foo" | "baz"       | "bazbarfoo"                                                   |
-| "é"         | "é"   | "a"         | "a"                                                           |
-| b"foobar"   | b"o"  | b"z"        | b"fzoobar"                                                    |
+| input       | find  | replacement | `string_replace_one(input, find, replacement)` |
+| :---------- | :---- | :---------- | :--------------------------------------------- |
+| "foobarfoo" | "foo" | "baz"       | "bazbarfoo"                                    |
+| "é"         | "é"   | "a"         | "a"                                            |
+| b"foobar"   | b"o"  | b"z"        | b"fzoobar"                                     |
 
 ### TRIM
 
@@ -6309,35 +6309,35 @@ Replaces the first occurrence of `  find  ` in `  input  ` with `  replacement  
 
 **Description:**
 
-Trims a specified set of `  BYTES  ` or `  CHARS  ` from the beginning and end of the supplied `  input  ` .
+Trims a specified set of `BYTES` or `CHARS` from the beginning and end of the supplied `input` .
 
-  - If no `  values_to_trim  ` are provided, trims whitespace characters.
+  - If no `values_to_trim` are provided, trims whitespace characters.
 
 **Examples:**
 
-When `  values_to_trim  ` is not provided:
+When `values_to_trim` is not provided:
 
-| input                      | `        trim(input)       ` |
-| :------------------------- | :--------------------------- |
-| " foo "                    | "foo"                        |
-| b" foo "                   | b"foo"                       |
-| "foo"                      | "foo"                        |
-| ""                         | ""                           |
-| " "                        | ""                           |
-| "\\t foo \\n"              | "foo"                        |
-| b"\\t foo \\n"             | b"foo"                       |
-| "\\r\\f\\v foo \\r\\f\\v"  | "foo"                        |
-| b"\\r\\f\\v foo \\r\\f\\v" | b"foo"                       |
+| input                      | `trim(input)` |
+| :------------------------- | :------------ |
+| " foo "                    | "foo"         |
+| b" foo "                   | b"foo"        |
+| "foo"                      | "foo"         |
+| ""                         | ""            |
+| " "                        | ""            |
+| "\\t foo \\n"              | "foo"         |
+| b"\\t foo \\n"             | b"foo"        |
+| "\\r\\f\\v foo \\r\\f\\v"  | "foo"         |
+| b"\\r\\f\\v foo \\r\\f\\v" | b"foo"        |
 
-When `  values_to_trim  ` is provided:
+When `values_to_trim` is provided:
 
-| input          | values\_to\_trim | `        trim(input, values_to_trim)       ` |
-| :------------- | :--------------- | :------------------------------------------- |
-| "abcbfooaacb"  | "abc"            | "foo"                                        |
-| "abcdaabadbac" | "abc"            | "daabad"                                     |
-| b"C1C2C3"      | b"C1"            | b"C2C3"                                      |
-| b"C1C2"        | "foo"            | error                                        |
-| "foo"          | b"C1"            | error                                        |
+| input          | values\_to\_trim | `trim(input, values_to_trim)` |
+| :------------- | :--------------- | :---------------------------- |
+| "abcbfooaacb"  | "abc"            | "foo"                         |
+| "abcdaabadbac" | "abc"            | "daabad"                      |
+| b"C1C2C3"      | b"C1"            | b"C2C3"                       |
+| b"C1C2"        | "foo"            | error                         |
+| "foo"          | b"C1"            | error                         |
 
 ### Web
 
@@ -6407,26 +6407,26 @@ Android
 
 **Description:**
 
-Trims a specified set of `  BYTES  ` or `  CHARS  ` from the beginning of the supplied `  value  ` .
+Trims a specified set of `BYTES` or `CHARS` from the beginning of the supplied `value` .
 
-  - If `  to_trim  ` is not provided, trims leading whitespace characters.
+  - If `to_trim` is not provided, trims leading whitespace characters.
 
 **Examples:**
 
-When `  to_trim  ` is not provided:
+When `to_trim` is not provided:
 
-| value   | `        ltrim(value)       ` |
-| :------ | :---------------------------- |
-| " foo " | "foo "                        |
-| "foo"   | "foo"                         |
+| value   | `ltrim(value)` |
+| :------ | :------------- |
+| " foo " | "foo "         |
+| "foo"   | "foo"          |
 
-When `  to_trim  ` is provided:
+When `to_trim` is provided:
 
-| value     | to\_trim | `        ltrim(value, to_trim)       ` |
-| :-------- | :------- | :------------------------------------- |
-| "aaabc"   | "a"      | "bc"                                   |
-| "abacaba" | "ba"     | "caba"                                 |
-| "é"       | "é"      | ""                                     |
+| value     | to\_trim | `ltrim(value, to_trim)` |
+| :-------- | :------- | :---------------------- |
+| "aaabc"   | "a"      | "bc"                    |
+| "abacaba" | "ba"     | "caba"                  |
+| "é"       | "é"      | ""                      |
 
 ### RTRIM
 
@@ -6437,26 +6437,26 @@ When `  to_trim  ` is provided:
 
 **Description:**
 
-Trims a specified set of `  BYTES  ` or `  CHARS  ` from the end of the supplied `  value  ` .
+Trims a specified set of `BYTES` or `CHARS` from the end of the supplied `value` .
 
-  - If `  to_trim  ` is not provided, trims trailing whitespace characters.
+  - If `to_trim` is not provided, trims trailing whitespace characters.
 
 **Examples:**
 
-When `  to_trim  ` is not provided:
+When `to_trim` is not provided:
 
-| value   | `        rtrim(value)       ` |
-| :------ | :---------------------------- |
-| " foo " | " foo"                        |
-| "foo"   | "foo"                         |
+| value   | `rtrim(value)` |
+| :------ | :------------- |
+| " foo " | " foo"         |
+| "foo"   | "foo"          |
 
-When `  to_trim  ` is provided:
+When `to_trim` is provided:
 
-| value     | to\_trim | `        rtrim(value, to_trim)       ` |
-| :-------- | :------- | :------------------------------------- |
-| "abccc"   | "c"      | "ab"                                   |
-| "abacaba" | "ba"     | "abac"                                 |
-| "é"       | "é"      | ""                                     |
+| value     | to\_trim | `rtrim(value, to_trim)` |
+| :-------- | :------- | :---------------------- |
+| "abccc"   | "c"      | "ab"                    |
+| "abacaba" | "ba"     | "abac"                  |
+| "é"       | "é"      | ""                      |
 
 ### SPLIT
 
@@ -6467,56 +6467,56 @@ When `  to_trim  ` is provided:
 
 **Description:**
 
-Splits a `  STRING  ` or `  BYTES  ` value, using a delimiter.
+Splits a `STRING` or `BYTES` value, using a delimiter.
 
-  - For `  STRING  ` the default delimiter is the comma `  ,  ` . The delimiter is treated as a single string.
+  - For `STRING` the default delimiter is the comma `,` . The delimiter is treated as a single string.
 
-  - For `  BYTES  ` , you must specify a delimiter.
+  - For `BYTES` , you must specify a delimiter.
 
-  - Splitting on an empty delimiter produces an array of Unicode codepoints for `  STRING  ` values, and an array of `  BYTES  ` for `  BYTES  ` values.
+  - Splitting on an empty delimiter produces an array of Unicode codepoints for `STRING` values, and an array of `BYTES` for `BYTES` values.
 
-  - Splitting an empty `  STRING  ` returns an `  ARRAY  ` with a single empty `  STRING  ` .
+  - Splitting an empty `STRING` returns an `ARRAY` with a single empty `STRING` .
 
 **Examples:**
 
-When `  delimiter  ` is not provided:
+When `delimiter` is not provided:
 
-| input         | `        split(input)       ` |
-| :------------ | :---------------------------- |
-| "foo,bar,foo" | \["foo", "bar", "foo"\]       |
-| "foo"         | \["foo"\]                     |
-| ",foo,"       | \["", "foo", ""\]             |
-| ""            | \[""\]                        |
-| b"C120C2C4"   | error                         |
+| input         | `split(input)`          |
+| :------------ | :---------------------- |
+| "foo,bar,foo" | \["foo", "bar", "foo"\] |
+| "foo"         | \["foo"\]               |
+| ",foo,"       | \["", "foo", ""\]       |
+| ""            | \[""\]                  |
+| b"C120C2C4"   | error                   |
 
-When `  delimiter  ` is provided:
+When `delimiter` is provided:
 
-| input         | delimiter | `        split(input, delimiter)       ` |
-| :------------ | :-------- | :--------------------------------------- |
-| "foo bar foo" | " "       | \["foo", "bar", "foo"\]                  |
-| "foo bar foo" | "z"       | \["foo bar foo"\]                        |
-| "abc"         | ""        | \["a", "b", "c"\]                        |
-| b"C1,C2,C4"   | b","      | \[b"C1", b"C2", b"C4"\]                  |
-| b"ABC"        | b""       | \[b"A", b"B", b"C"\]                     |
-| "foo"         | b"C1"     | error                                    |
+| input         | delimiter | `split(input, delimiter)` |
+| :------------ | :-------- | :------------------------ |
+| "foo bar foo" | " "       | \["foo", "bar", "foo"\]   |
+| "foo bar foo" | "z"       | \["foo bar foo"\]         |
+| "abc"         | ""        | \["a", "b", "c"\]         |
+| b"C1,C2,C4"   | b","      | \[b"C1", b"C2", b"C4"\]   |
+| b"ABC"        | b""       | \[b"A", b"B", b"C"\]      |
+| "foo"         | b"C1"     | error                     |
 
 ## **Timestamp Functions**
 
-|                                               |                                                                                                                    |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Name                                          | Description                                                                                                        |
-| `          CURRENT_TIMESTAMP        `         | Generates a `        TIMESTAMP       ` corresponding to the request time.                                          |
-| `          TIMESTAMP_TRUNC        `           | Truncates a `        TIMESTAMP       ` to a given granularity.                                                     |
-| `          UNIX_MICROS_TO_TIMESTAMP        `  | Converts the number of microseconds since `        1970-01-01 00:00:00 UTC       ` to a `        TIMESTAMP       ` |
-| `          UNIX_MILLIS_TO_TIMESTAMP        `  | Converts the number of milliseconds since `        1970-01-01 00:00:00 UTC       ` to a `        TIMESTAMP       ` |
-| `          UNIX_SECONDS_TO_TIMESTAMP        ` | Converts the number of seconds since `        1970-01-01 00:00:00 UTC       ` to a `        TIMESTAMP       `      |
-| `          TIMESTAMP_ADD        `             | Adds a time interval to a `        TIMESTAMP       `                                                               |
-| `          TIMESTAMP_SUB        `             | Subtracts a time interval to a `        TIMESTAMP       `                                                          |
-| `          TIMESTAMP_TO_UNIX_MICROS        `  | Converts a `        TIMESTAMP       ` to the number of microseconds since `        1970-01-01 00:00:00 UTC       ` |
-| `          TIMESTAMP_TO_UNIX_MILLIS        `  | Converts a `        TIMESTAMP       ` to the number of milliseconds since `        1970-01-01 00:00:00 UTC       ` |
-| `          TIMESTAMP_TO_UNIX_SECONDS        ` | Converts a `        TIMESTAMP       ` to the number of seconds since `        1970-01-01 00:00:00 UTC       `      |
-| `          TIMESTAMP_DIFF        `            | Returns the whole number of specified `        unit       ` intervals between two `        TIMESTAMP       ` s.    |
-| `          TIMESTAMP_EXTRACT        `         | Extracts a specific `        part       ` (e.g. year, month, day) from a `        TIMESTAMP       ` .              |
+|                                              |                                                                                      |
+| -------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Name                                         | Description                                                                          |
+| `         CURRENT_TIMESTAMP        `         | Generates a `TIMESTAMP` corresponding to the request time.                           |
+| `         TIMESTAMP_TRUNC        `           | Truncates a `TIMESTAMP` to a given granularity.                                      |
+| `         UNIX_MICROS_TO_TIMESTAMP        `  | Converts the number of microseconds since `1970-01-01 00:00:00 UTC` to a `TIMESTAMP` |
+| `         UNIX_MILLIS_TO_TIMESTAMP        `  | Converts the number of milliseconds since `1970-01-01 00:00:00 UTC` to a `TIMESTAMP` |
+| `         UNIX_SECONDS_TO_TIMESTAMP        ` | Converts the number of seconds since `1970-01-01 00:00:00 UTC` to a `TIMESTAMP`      |
+| `         TIMESTAMP_ADD        `             | Adds a time interval to a `TIMESTAMP`                                                |
+| `         TIMESTAMP_SUB        `             | Subtracts a time interval to a `TIMESTAMP`                                           |
+| `         TIMESTAMP_TO_UNIX_MICROS        `  | Converts a `TIMESTAMP` to the number of microseconds since `1970-01-01 00:00:00 UTC` |
+| `         TIMESTAMP_TO_UNIX_MILLIS        `  | Converts a `TIMESTAMP` to the number of milliseconds since `1970-01-01 00:00:00 UTC` |
+| `         TIMESTAMP_TO_UNIX_SECONDS        ` | Converts a `TIMESTAMP` to the number of seconds since `1970-01-01 00:00:00 UTC`      |
+| `         TIMESTAMP_DIFF        `            | Returns the whole number of specified `unit` intervals between two `TIMESTAMP` s.    |
+| `         TIMESTAMP_EXTRACT        `         | Extracts a specific `part` (e.g. year, month, day) from a `TIMESTAMP` .              |
 
 ### CURRENT\_TIMESTAMP
 
@@ -6526,7 +6526,7 @@ When `  delimiter  ` is provided:
 
 **Description:**
 
-Gets the timestamp at the beginning of request time `  input  ` (interpreted as the number of microseconds since `  1970-01-01 00:00:00 UTC  ` ).
+Gets the timestamp at the beginning of request time `input` (interpreted as the number of microseconds since `1970-01-01 00:00:00 UTC` ).
 
 This is stable within a query, and will always resolve to the same value if called multiple times.
 
@@ -6540,37 +6540,37 @@ This is stable within a query, and will always resolve to the same value if call
 
 Truncates a timestamp down to a given granularity.
 
-The `  granularity  ` argument must be a string and one of the following:
+The `granularity` argument must be a string and one of the following:
 
-  - `  microsecond  `
-  - `  millisecond  `
-  - `  second  `
-  - `  minute  `
-  - `  hour  `
-  - `  day  `
-  - `  week  `
-  - `  week([weekday])  `
-  - `  month  `
-  - `  quarter  `
-  - `  year  `
-  - `  isoyear  `
+  - `microsecond`
+  - `millisecond`
+  - `second`
+  - `minute`
+  - `hour`
+  - `day`
+  - `week`
+  - `week([weekday])`
+  - `month`
+  - `quarter`
+  - `year`
+  - `isoyear`
 
-If the `  timezone  ` argument is provided, truncation will be based on the given timezone's calendar boundaries (e.g. day truncation will truncate to midnight in the given timezone). The truncation will respect daylight savings time.
+If the `timezone` argument is provided, truncation will be based on the given timezone's calendar boundaries (e.g. day truncation will truncate to midnight in the given timezone). The truncation will respect daylight savings time.
 
-If `  timezone  ` is not provided, truncation will be based on `  UTC  ` calendar boundaries.
+If `timezone` is not provided, truncation will be based on `UTC` calendar boundaries.
 
-The `  timezone  ` argument should be a string representation of a timezone from the tz database, for example `  America/New_York  ` . A custom time offset can also be used by specifying an offset from `  GMT  ` .
+The `timezone` argument should be a string representation of a timezone from the tz database, for example `America/New_York` . A custom time offset can also be used by specifying an offset from `GMT` .
 
 **Examples:**
 
-| `        timestamp       `     | `        granularity       ` | `        timezone       ` | `        timestamp_trunc(timestamp, granularity, timezone)       ` |
-| :----------------------------- | :--------------------------- | :------------------------ | :----------------------------------------------------------------- |
-| 2000-01-01 10:20:30:123456 UTC | "second"                     | Not provided              | 2001-01-01 10:20:30 UTC                                            |
-| 1997-05-31 04:30:30 UTC        | "day"                        | Not provided              | 1997-05-31 00:00:00 UTC                                            |
-| 1997-05-31 04:30:30 UTC        | "day"                        | "America/Los\_Angeles"    | 1997-05-30 07:00:00 UTC                                            |
-| 2001-03-16 04:00:00 UTC        | "week(friday)                | Not provided              | 2001-03-16 00:00:00 UTC                                            |
-| 2001-03-23 04:00:00 UTC        | "week(friday)                | "America/Los\_Angeles"    | 2001-03-23 17:00:00 UTC                                            |
-| 2026-01-24 20:00:00 UTC        | "month"                      | "GMT+06:32:43"            | 2026-01-01T06:32:43 UTC                                            |
+| `timestamp`                    | `granularity` | `timezone`             | `timestamp_trunc(timestamp, granularity, timezone)` |
+| :----------------------------- | :------------ | :--------------------- | :-------------------------------------------------- |
+| 2000-01-01 10:20:30:123456 UTC | "second"      | Not provided           | 2001-01-01 10:20:30 UTC                             |
+| 1997-05-31 04:30:30 UTC        | "day"         | Not provided           | 1997-05-31 00:00:00 UTC                             |
+| 1997-05-31 04:30:30 UTC        | "day"         | "America/Los\_Angeles" | 1997-05-30 07:00:00 UTC                             |
+| 2001-03-16 04:00:00 UTC        | "week(friday) | Not provided           | 2001-03-16 00:00:00 UTC                             |
+| 2001-03-23 04:00:00 UTC        | "week(friday) | "America/Los\_Angeles" | 2001-03-23 17:00:00 UTC                             |
+| 2026-01-24 20:00:00 UTC        | "month"       | "GMT+06:32:43"         | 2026-01-01T06:32:43 UTC                             |
 
 ### UNIX\_MICROS\_TO\_TIMESTAMP
 
@@ -6580,15 +6580,15 @@ The `  timezone  ` argument should be a string representation of a timezone from
 
 **Description:**
 
-Converts `  input  ` (interpreted as the number of microseconds since `  1970-01-01 00:00:00 UTC  ` ) to a `  TIMESTAMP  ` . Throws an `  error  ` if `  input  ` cannot be converted to a valid `  TIMESTAMP  ` .
+Converts `input` (interpreted as the number of microseconds since `1970-01-01 00:00:00 UTC` ) to a `TIMESTAMP` . Throws an `error` if `input` cannot be converted to a valid `TIMESTAMP` .
 
 **Examples:**
 
-| `        input       ` | `        unix_micros_to_timestamp(input)       ` |
-| :--------------------- | :----------------------------------------------- |
-| 0L                     | 1970-01-01 00:00:00 UTC                          |
-| 400123456L             | 1970-01-01 00:06:40.123456 UTC                   |
-| \-1000000L             | 1969-12-31 23:59:59 UTC                          |
+| `input`    | `unix_micros_to_timestamp(input)` |
+| :--------- | :-------------------------------- |
+| 0L         | 1970-01-01 00:00:00 UTC           |
+| 400123456L | 1970-01-01 00:06:40.123456 UTC    |
+| \-1000000L | 1969-12-31 23:59:59 UTC           |
 
 ##### Node.js
 
@@ -6670,15 +6670,15 @@ Android
 
 **Description:**
 
-Converts `  input  ` (interpreted as the number of milliseconds since `  1970-01-01 00:00:00 UTC  ` ) to a `  TIMESTAMP  ` . Throws an `  error  ` if `  input  ` cannot be converted to a valid `  TIMESTAMP  ` .
+Converts `input` (interpreted as the number of milliseconds since `1970-01-01 00:00:00 UTC` ) to a `TIMESTAMP` . Throws an `error` if `input` cannot be converted to a valid `TIMESTAMP` .
 
 **Examples:**
 
-| `        input       ` | `        unix_millis_to_timestamp(input)       ` |
-| :--------------------- | :----------------------------------------------- |
-| 0L                     | 1970-01-01 00:00:00 UTC                          |
-| 4000123L               | 1970-01-01 01:06:40.123 UTC                      |
-| \-1000000L             | 1969-12-31 23:43:20 UTC                          |
+| `input`    | `unix_millis_to_timestamp(input)` |
+| :--------- | :-------------------------------- |
+| 0L         | 1970-01-01 00:00:00 UTC           |
+| 4000123L   | 1970-01-01 01:06:40.123 UTC       |
+| \-1000000L | 1969-12-31 23:43:20 UTC           |
 
 ##### Node.js
 
@@ -6760,15 +6760,15 @@ Android
 
 **Description:**
 
-Converts `  input  ` (interpreted as the number of seconds since `  1970-01-01 00:00:00 UTC  ` ) to a `  TIMESTAMP  ` . Throws an `  error  ` if `  input  ` cannot be converted to a valid `  TIMESTAMP  ` .
+Converts `input` (interpreted as the number of seconds since `1970-01-01 00:00:00 UTC` ) to a `TIMESTAMP` . Throws an `error` if `input` cannot be converted to a valid `TIMESTAMP` .
 
 **Examples:**
 
-| `        input       ` | `        unix_seconds_to_timestamp(input)       ` |
-| :--------------------- | :------------------------------------------------ |
-| 0L                     | 1970-01-01 00:00:00 UTC                           |
-| 60L                    | 1970-01-01 00:01:00 UTC                           |
-| \-300L                 | 1969-12-31 23:55:00 UTC                           |
+| `input` | `unix_seconds_to_timestamp(input)` |
+| :------ | :--------------------------------- |
+| 0L      | 1970-01-01 00:00:00 UTC            |
+| 60L     | 1970-01-01 00:01:00 UTC            |
+| \-300L  | 1969-12-31 23:55:00 UTC            |
 
 ##### Node.js
 
@@ -6850,26 +6850,26 @@ Android
 
 **Description:**
 
-Adds an `  amount  ` of `  unit  ` from `  timestamp  ` . The `  amount  ` argument can be negative, in that case it is equivalent to [TIMESTAMP\_SUB](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#timestamp_sub) .
+Adds an `amount` of `unit` from `timestamp` . The `amount` argument can be negative, in that case it is equivalent to [TIMESTAMP\_SUB](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#timestamp_sub) .
 
-The `  unit  ` argument must be a string and one of the following:
+The `unit` argument must be a string and one of the following:
 
-  - `  microsecond  `
-  - `  millisecond  `
-  - `  second  `
-  - `  minute  `
-  - `  hour  `
-  - `  day  `
+  - `microsecond`
+  - `millisecond`
+  - `second`
+  - `minute`
+  - `hour`
+  - `day`
 
-Throws an error if the resulting timestamp does not fit within the `  TIMESTAMP  ` range.
+Throws an error if the resulting timestamp does not fit within the `TIMESTAMP` range.
 
 **Examples:**
 
-| `        timestamp       ` | `        unit       ` | `        amount       ` | `        timestamp_add(timestamp, unit, amount)       ` |
-| :------------------------- | :-------------------- | :---------------------- | :------------------------------------------------------ |
-| 2025-02-20 00:00:00 UTC    | "minute"              | 2L                      | 2025-02-20 00:02:00 UTC                                 |
-| 2025-02-20 00:00:00 UTC    | "hour"                | \-4L                    | 2025-02-19 20:00:00 UTC                                 |
-| 2025-02-20 00:00:00 UTC    | "day"                 | 5L                      | 2025-02-25 00:00:00 UTC                                 |
+| `timestamp`             | `unit`   | `amount` | `timestamp_add(timestamp, unit, amount)` |
+| :---------------------- | :------- | :------- | :--------------------------------------- |
+| 2025-02-20 00:00:00 UTC | "minute" | 2L       | 2025-02-20 00:02:00 UTC                  |
+| 2025-02-20 00:00:00 UTC | "hour"   | \-4L     | 2025-02-19 20:00:00 UTC                  |
+| 2025-02-20 00:00:00 UTC | "day"    | 5L       | 2025-02-25 00:00:00 UTC                  |
 
 ##### Node.js
 
@@ -6949,26 +6949,26 @@ Android
 
 **Description:**
 
-Subtracts an `  amount  ` of `  unit  ` from `  timestamp  ` . The `  amount  ` argument can be negative, in that case it is equivalent to [TIMESTAMP\_ADD](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#timestamp_add) .
+Subtracts an `amount` of `unit` from `timestamp` . The `amount` argument can be negative, in that case it is equivalent to [TIMESTAMP\_ADD](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#timestamp_add) .
 
-The `  unit  ` argument must be a string and one of the following:
+The `unit` argument must be a string and one of the following:
 
-  - `  microsecond  `
-  - `  millisecond  `
-  - `  second  `
-  - `  minute  `
-  - `  hour  `
-  - `  day  `
+  - `microsecond`
+  - `millisecond`
+  - `second`
+  - `minute`
+  - `hour`
+  - `day`
 
-Throws an error if the resulting timestamp does not fit within the `  TIMESTAMP  ` range.
+Throws an error if the resulting timestamp does not fit within the `TIMESTAMP` range.
 
 **Examples:**
 
-| `        timestamp       ` | `        unit       ` | `        amount       ` | `        timestamp_sub(timestamp, unit, amount)       ` |
-| :------------------------- | :-------------------- | :---------------------- | :------------------------------------------------------ |
-| 2026-07-04 00:00:00 UTC    | "minute"              | 40L                     | 2026-07-03 23:20:00 UTC                                 |
-| 2026-07-04 00:00:00 UTC    | "hour"                | \-24L                   | 2026-07-05 00:00:00 UTC                                 |
-| 2026-07-04 00:00:00 UTC    | "day"                 | 3L                      | 2026-07-01 00:00:00 UTC                                 |
+| `timestamp`             | `unit`   | `amount` | `timestamp_sub(timestamp, unit, amount)` |
+| :---------------------- | :------- | :------- | :--------------------------------------- |
+| 2026-07-04 00:00:00 UTC | "minute" | 40L      | 2026-07-03 23:20:00 UTC                  |
+| 2026-07-04 00:00:00 UTC | "hour"   | \-24L    | 2026-07-05 00:00:00 UTC                  |
+| 2026-07-04 00:00:00 UTC | "day"    | 3L       | 2026-07-01 00:00:00 UTC                  |
 
 ##### Node.js
 
@@ -7052,15 +7052,15 @@ Android
 
 **Description:**
 
-Converts `  input  ` to the number of microseconds since `  1970-01-01 00:00:00 UTC  ` . Truncates higher levels of precision by rounding down to the beginning of the microsecond.
+Converts `input` to the number of microseconds since `1970-01-01 00:00:00 UTC` . Truncates higher levels of precision by rounding down to the beginning of the microsecond.
 
 **Examples:**
 
-| `        input       `         | `        timestamp_to_unix_micros(input)       ` |
-| :----------------------------- | :----------------------------------------------- |
-| 1970-01-01 00:00:00 UTC        | 0L                                               |
-| 1970-01-01 00:06:40.123456 UTC | 400123456L                                       |
-| 1969-12-31 23:59:59 UTC        | \-1000000L                                       |
+| `input`                        | `timestamp_to_unix_micros(input)` |
+| :----------------------------- | :-------------------------------- |
+| 1970-01-01 00:00:00 UTC        | 0L                                |
+| 1970-01-01 00:06:40.123456 UTC | 400123456L                        |
+| 1969-12-31 23:59:59 UTC        | \-1000000L                        |
 
 ##### Node.js
 
@@ -7138,15 +7138,15 @@ Android
 
 **Description:**
 
-Converts `  input  ` to the number of milliseconds since `  1970-01-01 00:00:00 UTC  ` . Truncates higher levels of precision by rounding down to the beginning of the millisecond.
+Converts `input` to the number of milliseconds since `1970-01-01 00:00:00 UTC` . Truncates higher levels of precision by rounding down to the beginning of the millisecond.
 
 **Examples:**
 
-| `        input       `      | `        timestamp_to_unix_millis(input)       ` |
-| :-------------------------- | :----------------------------------------------- |
-| 1970-01-01 00:00:00 UTC     | 0L                                               |
-| 1970-01-01 01:06:40.123 UTC | 4000123L                                         |
-| 1969-12-31 23:43:20         | \-1000000L                                       |
+| `input`                     | `timestamp_to_unix_millis(input)` |
+| :-------------------------- | :-------------------------------- |
+| 1970-01-01 00:00:00 UTC     | 0L                                |
+| 1970-01-01 01:06:40.123 UTC | 4000123L                          |
+| 1969-12-31 23:43:20         | \-1000000L                        |
 
 ##### Node.js
 
@@ -7224,15 +7224,15 @@ Android
 
 **Description:**
 
-Converts `  input  ` to the number of seconds since `  1970-01-01 00:00:00 UTC  ` . Truncates higher levels of precision by rounding down to the beginning of the second.
+Converts `input` to the number of seconds since `1970-01-01 00:00:00 UTC` . Truncates higher levels of precision by rounding down to the beginning of the second.
 
 **Examples:**
 
-| `        input       `  | `        timestamp_to_unix_seconds(input)       ` |
-| :---------------------- | :------------------------------------------------ |
-| 1970-01-01 00:00:00 UTC | 0L                                                |
-| 1970-01-01 00:01:00 UTC | 60L                                               |
-| 1969-12-31 23:55:00 UTC | \-300L                                            |
+| `input`                 | `timestamp_to_unix_seconds(input)` |
+| :---------------------- | :--------------------------------- |
+| 1970-01-01 00:00:00 UTC | 0L                                 |
+| 1970-01-01 00:01:00 UTC | 60L                                |
+| 1969-12-31 23:55:00 UTC | \-300L                             |
 
 ##### Node.js
 
@@ -7310,27 +7310,27 @@ Android
 
 **Description:**
 
-Returns the whole number of specified `  unit  ` intervals between two `  TIMESTAMP  ` s.
+Returns the whole number of specified `unit` intervals between two `TIMESTAMP` s.
 
-  - Returns a negative value if `  end  ` is before `  start  ` .
-  - Truncates any fractional unit. For example, `  timestamp_diff("2021-01-01 00:00:01", "2021-01-01 00:00:00", "minute")  ` returns `  0  ` .
+  - Returns a negative value if `end` is before `start` .
+  - Truncates any fractional unit. For example, `timestamp_diff("2021-01-01 00:00:01", "2021-01-01 00:00:00", "minute")` returns `0` .
 
-The `  unit  ` argument must be a string and one of the following:
+The `unit` argument must be a string and one of the following:
 
-  - `  microsecond  `
-  - `  millisecond  `
-  - `  second  `
-  - `  minute  `
-  - `  hour  `
-  - `  day  `
+  - `microsecond`
+  - `millisecond`
+  - `second`
+  - `minute`
+  - `hour`
+  - `day`
 
 **Examples:**
 
-| `        end       `    | `        start       `  | `        unit       ` | `        timestamp_diff(end, start, unit)       ` |
-| :---------------------- | :---------------------- | :-------------------- | :------------------------------------------------ |
-| 2026-07-04 00:01:00 UTC | 2026-07-04 00:00:00 UTC | "second"              | 60L                                               |
-| 2026-07-04 00:00:00 UTC | 2026-07-05 00:00:00 UTC | "day"                 | \-1L                                              |
-| 2026-07-04 00:00:59 UTC | 2026-07-04 00:00:00 UTC | "minute"              | 0L                                                |
+| `end`                   | `start`                 | `unit`   | `timestamp_diff(end, start, unit)` |
+| :---------------------- | :---------------------- | :------- | :--------------------------------- |
+| 2026-07-04 00:01:00 UTC | 2026-07-04 00:00:00 UTC | "second" | 60L                                |
+| 2026-07-04 00:00:00 UTC | 2026-07-05 00:00:00 UTC | "day"    | \-1L                               |
+| 2026-07-04 00:00:59 UTC | 2026-07-04 00:00:00 UTC | "minute" | 0L                                 |
 
 ### TIMESTAMP\_EXTRACT
 
@@ -7340,47 +7340,47 @@ The `  unit  ` argument must be a string and one of the following:
 
 **Description:**
 
-Extracts a specific `  part  ` (e.g. year, month, day) from `  timestamp  ` .
+Extracts a specific `part` (e.g. year, month, day) from `timestamp` .
 
-The `  part  ` argument must be a string and one of the following:
+The `part` argument must be a string and one of the following:
 
-  - `  microsecond  `
-  - `  millisecond  `
-  - `  second  `
-  - `  minute  `
-  - `  hour  `
-  - `  day  `
-  - `  dayofweek  ` : Returns a value between 1 (Sunday) and 7 (Saturday).
-  - `  dayofyear  `
-  - `  week  ` : Returns the week number of the year, starting at 1 for the first Sunday of the year.
-  - `  week([weekday])  ` : Returns the week number of the year, starting on the specified `  weekday  ` .
-  - `  month  `
-  - `  quarter  `
-  - `  year  `
-  - `  isoweek  ` : Returns the ISO 8601 week number.
-  - `  isoyear  ` : Returns the ISO 8601 week-numbering year.
+  - `microsecond`
+  - `millisecond`
+  - `second`
+  - `minute`
+  - `hour`
+  - `day`
+  - `dayofweek` : Returns a value between 1 (Sunday) and 7 (Saturday).
+  - `dayofyear`
+  - `week` : Returns the week number of the year, starting at 1 for the first Sunday of the year.
+  - `week([weekday])` : Returns the week number of the year, starting on the specified `weekday` .
+  - `month`
+  - `quarter`
+  - `year`
+  - `isoweek` : Returns the ISO 8601 week number.
+  - `isoyear` : Returns the ISO 8601 week-numbering year.
 
-If the `  timezone  ` argument is provided, the extraction will be based on the given timezone's calendar. The extraction will respect daylight savings time.
+If the `timezone` argument is provided, the extraction will be based on the given timezone's calendar. The extraction will respect daylight savings time.
 
-If `  timezone  ` is not provided, extraction will be based on `  UTC  ` .
+If `timezone` is not provided, extraction will be based on `UTC` .
 
-The `  timezone  ` argument should be a string representation of a timezone from the timezone database, for example `  America/New_York  ` . A custom time offset can also be used by specifying an offset from `  GMT  ` .
+The `timezone` argument should be a string representation of a timezone from the timezone database, for example `America/New_York` . A custom time offset can also be used by specifying an offset from `GMT` .
 
 **Examples:**
 
-| `        timestamp       ` | `        part       ` | `        timezone       ` | `        timestamp_extract(timestamp, part, timezone)       ` |
-| :------------------------- | :-------------------- | :------------------------ | :------------------------------------------------------------ |
-| 2025-02-20 10:20:30 UTC    | "year"                | Not provided              | 2025                                                          |
-| 2025-02-20 10:20:30 UTC    | "day"                 | Not provided              | 20                                                            |
-| 2025-12-31 23:59:59 UTC    | "year"                | "Asia/Tokyo"              | 2026                                                          |
+| `timestamp`             | `part` | `timezone`   | `timestamp_extract(timestamp, part, timezone)` |
+| :---------------------- | :----- | :----------- | :--------------------------------------------- |
+| 2025-02-20 10:20:30 UTC | "year" | Not provided | 2025                                           |
+| 2025-02-20 10:20:30 UTC | "day"  | Not provided | 20                                             |
+| 2025-12-31 23:59:59 UTC | "year" | "Asia/Tokyo" | 2026                                           |
 
 ## **Type Functions**
 
-|                             |                                                                        |
-| --------------------------- | ---------------------------------------------------------------------- |
-| Name                        | Description                                                            |
-| `          TYPE        `    | Returns the type of the value as a `        STRING       ` .           |
-| `          IS_TYPE        ` | Returns `        true       ` if the value matches the specified type. |
+|                            |                                                         |
+| -------------------------- | ------------------------------------------------------- |
+| Name                       | Description                                             |
+| `         TYPE        `    | Returns the type of the value as a `STRING` .           |
+| `         IS_TYPE        ` | Returns `true` if the value matches the specified type. |
 
 ### TYPE
 
@@ -7390,27 +7390,27 @@ The `  timezone  ` argument should be a string representation of a timezone from
 
 **Description:**
 
-Returns a string representation of the `  input  ` type.
+Returns a string representation of the `input` type.
 
-If given an absent value, returns `  NULL  ` .
+If given an absent value, returns `NULL` .
 
 **Examples:**
 
-| `        input       `              | `        type(input)       ` |
-| ----------------------------------- | ---------------------------- |
-| NULL                                | "null"                       |
-| true                                | "boolean"                    |
-| 1                                   | "int32"                      |
-| \-3L                                | "int64"                      |
-| 3.14                                | "float64"                    |
-| 2024-01-01T00:00:00Z UTC            | "timestamp"                  |
-| "foo"                               | "string"                     |
-| b"foo"                              | "bytes"                      |
-| \[1, 2\]                            | "array"                      |
-| {"a": 1}                            | "map"                        |
-| `        path("c/d")       `        | "reference"                  |
-| `        vector([1.0, 2.0])       ` | "vector"                     |
-| ABSENT                              | NULL                         |
+| `input`                  | `type(input)` |
+| ------------------------ | ------------- |
+| NULL                     | "null"        |
+| true                     | "boolean"     |
+| 1                        | "int32"       |
+| \-3L                     | "int64"       |
+| 3.14                     | "float64"     |
+| 2024-01-01T00:00:00Z UTC | "timestamp"   |
+| "foo"                    | "string"      |
+| b"foo"                   | "bytes"       |
+| \[1, 2\]                 | "array"       |
+| {"a": 1}                 | "map"         |
+| `path("c/d")`            | "reference"   |
+| `vector([1.0, 2.0])`     | "vector"      |
+| ABSENT                   | NULL          |
 
 **Client examples**
 
@@ -7480,56 +7480,56 @@ Android
 
 **Description:**
 
-Returns `  true  ` if the `  input  ` matches the specified `  type  ` , otherwise `  false  ` . If given an absent `  input  ` , returns `  NULL  ` .
+Returns `true` if the `input` matches the specified `type` , otherwise `false` . If given an absent `input` , returns `NULL` .
 
-Supported `  type  ` strings are:
+Supported `type` strings are:
 
-  - `  "null"  `
-  - `  "boolean"  `
-  - `  "int32"  `
-  - `  "int64"  `
-  - `  "float64"  `
-  - `  "decimal128"  `
-  - `  "number"  `
-  - `  "timestamp"  `
-  - `  "string"  `
-  - `  "bytes"  `
-  - `  "array"  `
-  - `  "map"  `
-  - `  "reference"  `
-  - `  "vector"  `
-  - `  "geo_point"  `
-  - `  "max_key"  `
-  - `  "min_key"  `
-  - `  "object_id"  `
-  - `  "regex"  `
-  - `  "bson_timestamp"  `
+  - `"null"`
+  - `"boolean"`
+  - `"int32"`
+  - `"int64"`
+  - `"float64"`
+  - `"decimal128"`
+  - `"number"`
+  - `"timestamp"`
+  - `"string"`
+  - `"bytes"`
+  - `"array"`
+  - `"map"`
+  - `"reference"`
+  - `"vector"`
+  - `"geo_point"`
+  - `"max_key"`
+  - `"min_key"`
+  - `"object_id"`
+  - `"regex"`
+  - `"bson_timestamp"`
 
 **Examples:**
 
-| `        input       `              | `        type       ` | `        is_type(input, type)       ` |
-| :---------------------------------- | :-------------------- | :------------------------------------ |
-| NULL                                | "null"                | true                                  |
-| true                                | "boolean"             | true                                  |
-| 3.14                                | "float64"             | true                                  |
-| "foo"                               | "string"              | true                                  |
-| b"foo"                              | "string"              | false                                 |
-| \[1, 2\]                            | "array"               | true                                  |
-| {"a": 1}                            | "map"                 | true                                  |
-| `        vector([1.0, 2.0])       ` | "vector"              | true                                  |
-| ABSENT                              | "string"              | NULL                                  |
-| "bar"                               | "other"               | ERROR                                 |
+| `input`              | `type`    | `is_type(input, type)` |
+| :------------------- | :-------- | :--------------------- |
+| NULL                 | "null"    | true                   |
+| true                 | "boolean" | true                   |
+| 3.14                 | "float64" | true                   |
+| "foo"                | "string"  | true                   |
+| b"foo"               | "string"  | false                  |
+| \[1, 2\]             | "array"   | true                   |
+| {"a": 1}             | "map"     | true                   |
+| `vector([1.0, 2.0])` | "vector"  | true                   |
+| ABSENT               | "string"  | NULL                   |
+| "bar"                | "other"   | ERROR                  |
 
 ## **Vector Functions**
 
-|                                        |                                                    |
-| -------------------------------------- | -------------------------------------------------- |
-| Name                                   | Description                                        |
-| `          COSINE_DISTANCE        `    | Returns the cosine distance between two vectors    |
-| `          DOT_PRODUCT        `        | Returns the dot product between two vectors        |
-| `          EUCLIDEAN_DISTANCE        ` | Returns the euclidean distance between two vectors |
-| `          MANHATTAN_DISTANCE        ` | Returns the manhattan distance between two vectors |
-| `          VECTOR_LENGTH        `      | Returns the number of elements in a vector         |
+|                                       |                                                    |
+| ------------------------------------- | -------------------------------------------------- |
+| Name                                  | Description                                        |
+| `         COSINE_DISTANCE        `    | Returns the cosine distance between two vectors    |
+| `         DOT_PRODUCT        `        | Returns the dot product between two vectors        |
+| `         EUCLIDEAN_DISTANCE        ` | Returns the euclidean distance between two vectors |
+| `         MANHATTAN_DISTANCE        ` | Returns the manhattan distance between two vectors |
+| `         VECTOR_LENGTH        `      | Returns the number of elements in a vector         |
 
 ### COSINE\_DISTANCE
 
@@ -7539,7 +7539,7 @@ Supported `  type  ` strings are:
 
 **Description:**
 
-Returns the cosine distance between `  x  ` and `  y  ` .
+Returns the cosine distance between `x` and `y` .
 
 ##### Node.js
 
@@ -7625,7 +7625,7 @@ Android
 
 **Description:**
 
-Returns the dot product of `  x  ` and `  y  ` .
+Returns the dot product of `x` and `y` .
 
 ##### Node.js
 
@@ -7711,7 +7711,7 @@ Android
 
 **Description:**
 
-Computes the euclidean distance between `  x  ` and `  y  ` .
+Computes the euclidean distance between `x` and `y` .
 
 ##### Node.js
 
@@ -7801,7 +7801,7 @@ Android
 
 **Description:**
 
-Computes the manhattan distance between `  x  ` and `  y  ` .
+Computes the manhattan distance between `x` and `y` .
 
 ### VECTOR\_LENGTH
 
@@ -7811,7 +7811,7 @@ Computes the manhattan distance between `  x  ` and `  y  ` .
 
 **Description:**
 
-Returns the number of elements in a `  VECTOR  ` .
+Returns the number of elements in a `VECTOR` .
 
 ##### Node.js
 

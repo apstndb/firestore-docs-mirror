@@ -26,7 +26,7 @@ An entity and all of its ancestors belong to one and only one namespace. This me
 
 ## Sample use case
 
-A key benefit of multitenancy is having the same application serve multiple client organizations. To achieve this benefit, for a given kind, your application should behave the same regardless of the namespace. For example, from the application’s perspective, an entity of kind `  Task  ` in one namespace should logically be the same as an entity of kind `  Task  ` in all other namespaces. Your application could then use a single set of index definitions to support `  Task  ` queries, regardless of which namespaces contain `  Task  ` entities.
+A key benefit of multitenancy is having the same application serve multiple client organizations. To achieve this benefit, for a given kind, your application should behave the same regardless of the namespace. For example, from the application’s perspective, an entity of kind `Task` in one namespace should logically be the same as an entity of kind `Task` in all other namespaces. Your application could then use a single set of index definitions to support `Task` queries, regardless of which namespaces contain `Task` entities.
 
 For example, consider a Task List application that silos data on a per user basis. The application could define namespaces based on user name, resulting in the following partitions:
 
@@ -34,7 +34,7 @@ For example, consider a Task List application that silos data on a per user basi
     Partition ID: project:"my_project_id"/namespace:"Alice"
     Partition ID: project:"my_project_id"/namespace:"Charlie"
 
-The application could define a logical structure of a `  Task  ` kind as follows, to use for all namespaces:
+The application could define a logical structure of a `Task` kind as follows, to use for all namespaces:
 
     kind: Task
     properties:
@@ -42,14 +42,14 @@ The application could define a logical structure of a `  Task  ` kind as follows
      - "created", DateTime
      - "description", String, excluded from index
 
-When a user creates an entity of kind `  Task  ` , the entity is stored in the user’s own partition, resulting in siloed data. The application processes `  Task  ` entities consistently across namespaces because only one schema is used for the `  Task  ` kind. An application with siloed data and consistent behaviour would be multitenant.
+When a user creates an entity of kind `Task` , the entity is stored in the user’s own partition, resulting in siloed data. The application processes `Task` entities consistently across namespaces because only one schema is used for the `Task` kind. An application with siloed data and consistent behaviour would be multitenant.
 
-If the logical structure of a `  Task  ` kind differs by namespace, the application would not be multitenant because it processes `  Task  ` entities differently across namespaces. For example, consider `  Task  ` kinds that have different schema based on namespace:
+If the logical structure of a `Task` kind differs by namespace, the application would not be multitenant because it processes `Task` entities differently across namespaces. For example, consider `Task` kinds that have different schema based on namespace:
 
-  - `  Task  ` entities in the Joe namespace *exclude* the `  description  ` property from the index
-  - `  Task  ` entities in the Alice namespace *include* the `  description  ` property from the index
+  - `Task` entities in the Joe namespace *exclude* the `description` property from the index
+  - `Task` entities in the Alice namespace *include* the `description` property from the index
 
-The application could query on the `  description  ` property for Alice’s `  Task  ` entities, but it could not query on the `  description  ` property for Joe’s `  Task  ` entities, so the application would not be multitenant.
+The application could query on the `description` property for Alice’s `Task` entities, but it could not query on the `description` property for Joe’s `Task` entities, so the application would not be multitenant.
 
 ## Viewing namespaces in the console
 

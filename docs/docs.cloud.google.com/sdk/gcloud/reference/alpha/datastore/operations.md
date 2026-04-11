@@ -4,30 +4,30 @@ gcloud alpha datastore operations - manage Long Running Operations for Cloud Dat
 
 SYNOPSIS
 
-`  gcloud alpha datastore operations  ` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud alpha datastore operations` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (ALPHA)  ` Manage Long Running Operations for Cloud Datastore.
+`(ALPHA)` Manage Long Running Operations for Cloud Datastore.
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 COMMANDS
 
 `  COMMAND  ` is one of the following:
 
   - `  cancel  `  
-    `  (ALPHA)  ` Cancel a currently-running Cloud Datastore admin operation.
+    `(ALPHA)` Cancel a currently-running Cloud Datastore admin operation.
   - `  delete  `  
-    `  (ALPHA)  ` Delete a completed Cloud Datastore admin operation.
+    `(ALPHA)` Delete a completed Cloud Datastore admin operation.
   - `  describe  `  
-    `  (ALPHA)  ` Retrieves information about a Cloud Datastore admin operation.
+    `(ALPHA)` Retrieves information about a Cloud Datastore admin operation.
   - `  list  `  
-    `  (ALPHA)  ` List pending Cloud Datastore admin operations and their status.
+    `(ALPHA)` List pending Cloud Datastore admin operations and their status.
 
 NOTES
 

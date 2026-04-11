@@ -8,14 +8,14 @@ When using Java clients, enabling verbose gRPC and gax-java logging is crucial f
 
 ## Enable logging for Java clients
 
-To enable detailed logging, modify `  logging.properties  ` file as follows:
+To enable detailed logging, modify `logging.properties` file as follows:
 
     ## This tracks the lifecycle events of each grpc channel 
     io.grpc.ChannelLogger.level=FINEST
     ## Tracks channel pool events(resizing, shrinking) from GAX level
     com.google.api.gax.grpc.ChannelPool.level=FINEST
 
-Additionally, update the output logging level in `  logging.properties  ` to capture these logs:
+Additionally, update the output logging level in `logging.properties` to capture these logs:
 
     # This could be changed to a file or other log output
     handlers=java.util.logging.ConsoleHandler
@@ -24,13 +24,13 @@ Additionally, update the output logging level in `  logging.properties  ` to cap
 
 ## Apply the configuration
 
-`  logging.properties  ` file can be applied using one of two methods:
+`logging.properties` file can be applied using one of two methods:
 
 **1. Via a JVM System Property**
 
 Add this argument when starting the Java application:
 
-`  -Djava.util.logging.config.file=/path/to/logging.properties  `
+`-Djava.util.logging.config.file=/path/to/logging.properties`
 
 **2. Load Programmatically**
 
@@ -43,7 +43,7 @@ This method is useful for integration tests or applications where logging config
 
 ## Logging example
 
-After enabling verbose logging, you'll see a mix of messages from `  com.google.api.gax.grpc.ChannelPool  ` and `  io.grpc.ChannelLogger  ` :
+After enabling verbose logging, you'll see a mix of messages from `com.google.api.gax.grpc.ChannelPool` and `io.grpc.ChannelLogger` :
 
 **Channels under-provisioned which triggered channel pool expanding:**
 
@@ -74,7 +74,7 @@ These log entries are useful for:
 
 ## Interpreting logs for symptom diagnosis
 
-When troubleshooting performance issues like high latency or errors, start by enabling logging for `  com.google.api.gax.grpc.ChannelPool  ` and `  io.grpc.ChannelLogger  ` . Then, match the symptoms you're observing with the common scenarios in this guide to interpret the logs and find a resolution.
+When troubleshooting performance issues like high latency or errors, start by enabling logging for `com.google.api.gax.grpc.ChannelPool` and `io.grpc.ChannelLogger` . Then, match the symptoms you're observing with the common scenarios in this guide to interpret the logs and find a resolution.
 
 ### Symptom 1: High latency at startup or during traffic spikes
 
@@ -100,38 +100,38 @@ Look for logs indicating that the channel pool is expanding. This is the primary
 
 The goal is to have enough channels ready before the traffic arrives, preventing the client from having to create them under pressure.
 
-**Increase `  initialChannelCount  ` (High Latency at Startup):**
+**Increase `initialChannelCount` (High Latency at Startup):**
 
-If you observe high latency at startup, the most effective solution is to increase the `  initialChannelCount  ` in the `  ChannelPoolSettings  ` . By default, this value is set to **10** , which could be too low for applications that handle significant traffic at startup.
+If you observe high latency at startup, the most effective solution is to increase the `initialChannelCount` in the `ChannelPoolSettings` . By default, this value is set to **10** , which could be too low for applications that handle significant traffic at startup.
 
 To find the right value for the application, you should:
 
-1.  Enable `  FINEST  ` level logging for `  com.google.api.gax.grpc.ChannelPool  ` .
+1.  Enable `FINEST` level logging for `com.google.api.gax.grpc.ChannelPool` .
 2.  Run your application under a typical starting workload or traffic spike.
 3.  Observe the channel pool expansion logs to see what size the pool stabilizes at.
 
 For example, if you see logs like this:  
-`  [pool-1-thread-1] DEBUG com.google.api.gax.grpc.ChannelPool - Detected throughput peak of 80, expanding channel pool size: 4 -> 6.  `
+`[pool-1-thread-1] DEBUG com.google.api.gax.grpc.ChannelPool - Detected throughput peak of 80, expanding channel pool size: 4 -> 6.`
 
 and then a minute later, you see logs:
 
-`  [pool-1-thread-1] DEBUG com.google.api.gax.grpc.ChannelPool - Detected throughput peak of 95, expanding channel pool size: 6 -> 8.  `
+`[pool-1-thread-1] DEBUG com.google.api.gax.grpc.ChannelPool - Detected throughput peak of 95, expanding channel pool size: 6 -> 8.`
 
-If you see expanded channel pool size stabilized at 8 channels and no more expanding logs can be found, this indicates that your application needed 8 channels to handle its workload. A good starting point would be to set your `  initialChannelCount  ` to 8. This ensures the connections are established upfront, reducing or eliminating latency caused by on-the-fly scaling.
+If you see expanded channel pool size stabilized at 8 channels and no more expanding logs can be found, this indicates that your application needed 8 channels to handle its workload. A good starting point would be to set your `initialChannelCount` to 8. This ensures the connections are established upfront, reducing or eliminating latency caused by on-the-fly scaling.
 
 The goal is to ensure the pool has enough capacity to handle peak load without queuing requests.
 
-**Increase `  minChannelCount  ` (Traffic spikes):**
+**Increase `minChannelCount` (Traffic spikes):**
 
 If you experience high latency specifically at the beginning of traffic spikes, it's a sign that your traffic is increasing faster than the channel pool can reactively create new connections. This is common for applications with predictable, sudden bursts of traffic.
 
 The pool stabilizes with a small number of channels during normal traffic and proactively adds more as traffic increases to prevent saturation. This scaling process takes time, causing the initial requests in a burst to be queued, which results in high latency.
 
-Increasing `  minChannelCount  ` sets a higher baseline of permanently open channels. This ensures enough capacity is already available to handle the initial burst, eliminating the scaling delay and the associated latency spike.
+Increasing `minChannelCount` sets a higher baseline of permanently open channels. This ensures enough capacity is already available to handle the initial burst, eliminating the scaling delay and the associated latency spike.
 
-**Increase `  maxChannelCount  ` (Traffic spikes):**
+**Increase `maxChannelCount` (Traffic spikes):**
 
-If you observe high latency during traffic spikes and your logs show the channel pool is consistently at its maximum size ( `  maxChannelCount  ` ), the current limit is likely too low for your peak traffic. By default, `  maxChannelCount  ` is set to 200. To determine a better value, use the [connection pool configuration guide](https://docs.cloud.google.com/datastore/docs/java-client-grpc#connection_pool_configuration) to calculate the optimal number of connections based on your application's peak Queries Per Second (QPS) and average request latency.
+If you observe high latency during traffic spikes and your logs show the channel pool is consistently at its maximum size ( `maxChannelCount` ), the current limit is likely too low for your peak traffic. By default, `maxChannelCount` is set to 200. To determine a better value, use the [connection pool configuration guide](https://docs.cloud.google.com/datastore/docs/java-client-grpc#connection_pool_configuration) to calculate the optimal number of connections based on your application's peak Queries Per Second (QPS) and average request latency.
 
 ### Symptom 2: Intermittent timeouts or RPC failures
 
@@ -143,7 +143,7 @@ Connections between the client and the Datastore service are being dropped. The 
 
 #### Logs to look for
 
-The most critical log for diagnosing network problems is `  TRANSIENT_FAILURE  ` .
+The most critical log for diagnosing network problems is `TRANSIENT_FAILURE` .
 
   - **Transient Failure Log:**
 
@@ -155,7 +155,7 @@ The most critical log for diagnosing network problems is `  TRANSIENT_FAILURE  `
 
 #### How to resolve
 
-**Investigate your network environment** . Check for issues with firewalls, proxies, routers, or general network instability between the application and `  datastore.googleapis.com  ` .
+**Investigate your network environment** . Check for issues with firewalls, proxies, routers, or general network instability between the application and `datastore.googleapis.com` .
 
 ### Symptom 3: High latency with over 20,000 concurrent requests per client
 
@@ -163,11 +163,11 @@ This specific symptom applies to applications running at a very high scale, typi
 
 #### Possible cause
 
-The client is suffering from channel saturation because the channel pool has reached its configured `  maxChannelCount  ` . By default, the pool is configured with a limit of **200** channels. Since each gRPC channel can handle up to 100 concurrent requests, this limit is only reached when a single client instance is processing approximately **20,000** requests simultaneously.
+The client is suffering from channel saturation because the channel pool has reached its configured `maxChannelCount` . By default, the pool is configured with a limit of **200** channels. Since each gRPC channel can handle up to 100 concurrent requests, this limit is only reached when a single client instance is processing approximately **20,000** requests simultaneously.
 
 Once the pool hits this ceiling, it cannot create more connections. All 200 channels become overloaded, and new requests are queued on the client side, causing the sharp spike in latency.
 
-The following logs can help confirm that the `  maxChannelCount  ` has been reached.
+The following logs can help confirm that the `maxChannelCount` has been reached.
 
 #### Logs to look for
 
@@ -179,13 +179,13 @@ The key indicator is observing that the channel pool stops expanding right at it
 
     [pool-1-thread-1] DEBUG com.google.api.gax.grpc.ChannelPool - ... expanding channel pool size: 198 -> 200.
 
-  - **Indicator** : During the period of high latency, you will see **no further "expanding channel pool size" logs** . The absence of these logs, combined with the high latency, is a strong indicator that the `  maxChannelCount  ` limit has been reached.
+  - **Indicator** : During the period of high latency, you will see **no further "expanding channel pool size" logs** . The absence of these logs, combined with the high latency, is a strong indicator that the `maxChannelCount` limit has been reached.
 
 #### How to resolve
 
 The goal is to ensure the pool has enough capacity to handle peak load without queuing requests.
 
-  - **Increase `  maxChannelCount  `** : The primary solution is to increase the `  maxChannelCount  ` setting to a value that can support the application's peak traffic. Refer to the [connection pool configuration guide](https://docs.cloud.google.com/datastore/docs/java-client-grpc#connection_pool_configuration) to calculate the optimal number of connections based on the application's peak Queries Per Second (QPS) and average request latency.
+  - **Increase `maxChannelCount`** : The primary solution is to increase the `maxChannelCount` setting to a value that can support the application's peak traffic. Refer to the [connection pool configuration guide](https://docs.cloud.google.com/datastore/docs/java-client-grpc#connection_pool_configuration) to calculate the optimal number of connections based on the application's peak Queries Per Second (QPS) and average request latency.
 
 ## Appendix
 
@@ -201,8 +201,8 @@ The following channel states can appear in the logs, providing insights into con
 | **CONNECTING**         | The channel is actively trying to establish a new network transport (connection) to the gRPC server.                                             |
 | **READY**              | The channel has an established and healthy transport and is ready to send RPCs.                                                                  |
 | **TRANSIENT\_FAILURE** | The channel encountered a recoverable failure (e.g., network blip, temporary server unavailability). It will automatically attempt to reconnect. |
-| **SHUTDOWN**           | The channel has been closed, either manually (e.g., `        shutdown()       ` called) or due to an idle timeout. No new RPCs can be initiated. |
+| **SHUTDOWN**           | The channel has been closed, either manually (e.g., `shutdown()` called) or due to an idle timeout. No new RPCs can be initiated.                |
 
 ### Tips
 
-  - If you use a structured logging framework like SLF4J or Logback, you must configure equivalent log levels in `  logback.xml  ` or other logger configuration files. The `  java.util.logging  ` levels will be mapped by the logging facade.
+  - If you use a structured logging framework like SLF4J or Logback, you must configure equivalent log levels in `logback.xml` or other logger configuration files. The `java.util.logging` levels will be mapped by the logging facade.

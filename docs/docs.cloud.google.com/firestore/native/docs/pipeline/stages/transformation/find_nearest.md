@@ -6,7 +6,7 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## Description
 
-Performs a nearest neighbor vector search on the given `  embedding  ` field using the requested distance\_measure .
+Performs a nearest neighbor vector search on the given `embedding` field using the requested distance\_measure .
 
 ## Examples
 
@@ -100,11 +100,11 @@ Android
 
 ### Distance Measure
 
-The `  find_nearest(...)  ` stage supports the following options for vector distance:
+The `find_nearest(...)` stage supports the following options for vector distance:
 
-  - `  euclidean  ` : Measures the `  euclidean  ` distance between the vectors. To learn more, see [Euclidean](https://en.wikipedia.org/wiki/Euclidean_distance) .
-  - `  cosine  ` : Compares vectors based on the angle between them which lets you measure similarity that isn't based on the vectors magnitude. We recommend using `  dot_product  ` with unit normalized vectors instead of COSINE distance, which is mathematically equivalent with better performance. To learn more see [Cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity) .
-  - `  dot_product  ` : Similar to `  cosine  ` but is affected by the magnitude of the vectors. To learn more, see [Dot product](https://en.wikipedia.org/wiki/Dot_product) .
+  - `euclidean` : Measures the `euclidean` distance between the vectors. To learn more, see [Euclidean](https://en.wikipedia.org/wiki/Euclidean_distance) .
+  - `cosine` : Compares vectors based on the angle between them which lets you measure similarity that isn't based on the vectors magnitude. We recommend using `dot_product` with unit normalized vectors instead of COSINE distance, which is mathematically equivalent with better performance. To learn more see [Cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity) .
+  - `dot_product` : Similar to `cosine` but is affected by the magnitude of the vectors. To learn more, see [Dot product](https://en.wikipedia.org/wiki/Dot_product) .
 
 ### Choose the distance measure
 
@@ -114,15 +114,15 @@ In addition, if you know which distance measure your model was trained with, use
 
 **Normalized data**
 
-If you have a dataset where all vector embeddings are normalized, then all three distance measures provide the same semantic search results. In essence, although each distance measure returns a different value, those values sort the same way. When embeddings are normalized, `  dot_product  ` is usually the most computationally efficient, but the difference is negligible in most cases. However, if your application is highly performance sensitive, `  dot_product  ` might help with performance tuning.
+If you have a dataset where all vector embeddings are normalized, then all three distance measures provide the same semantic search results. In essence, although each distance measure returns a different value, those values sort the same way. When embeddings are normalized, `dot_product` is usually the most computationally efficient, but the difference is negligible in most cases. However, if your application is highly performance sensitive, `dot_product` might help with performance tuning.
 
 **Non-normalized data**
 
-If you have a dataset where vector embeddings aren't normalized, then it's not mathematically correct to use `  dot_product  ` as a distance measure because dot product doesn't measure distance. Depending on how the embeddings were generated and what type of search is preferred, either the `  cosine  ` or `  euclidean  ` distance measure produces search results that are subjectively better than the other distance measures. Experimentation with either `  cosine  ` or `  euclidean  ` might be necessary to determine which is best for your use case.
+If you have a dataset where vector embeddings aren't normalized, then it's not mathematically correct to use `dot_product` as a distance measure because dot product doesn't measure distance. Depending on how the embeddings were generated and what type of search is preferred, either the `cosine` or `euclidean` distance measure produces search results that are subjectively better than the other distance measures. Experimentation with either `cosine` or `euclidean` might be necessary to determine which is best for your use case.
 
 **Unsure if data is normalized or non-normalized**
 
-If you're unsure whether or not your data is normalized and you want to use `  dot_product  ` , we recommend that you use `  cosine  ` instead. `  cosine  ` is like `  dot_product  ` with normalization built in. Distance measured using `  cosine  ` ranges from `  0  ` to `  2  ` . A result that is close to `  0  ` indicates the vectors are very similar.
+If you're unsure whether or not your data is normalized and you want to use `dot_product` , we recommend that you use `cosine` instead. `cosine` is like `dot_product` with normalization built in. Distance measured using `cosine` ranges from `0` to `2` . A result that is close to `0` indicates the vectors are very similar.
 
 ### Limit the results
 
@@ -142,7 +142,7 @@ You can limit the number of documents returned by the query by setting the limit
 
 ### Retrieving the Calculated Vector Distance
 
-You can retrieve the calculated vector distance by assigning a distance\_field output property name on the `  find_nearest(...)  ` stage, as shown in the following example:
+You can retrieve the calculated vector distance by assigning a distance\_field output property name on the `find_nearest(...)` stage, as shown in the following example:
 
 As an example, for the following collection:
 

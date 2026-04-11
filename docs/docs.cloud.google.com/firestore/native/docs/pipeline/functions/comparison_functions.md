@@ -6,16 +6,16 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## **Comparison Functions**
 
-|                                           |                                  |
-| ----------------------------------------- | -------------------------------- |
-| Name                                      | Description                      |
-| `          EQUAL        `                 | Equality comparison              |
-| `          GREATER_THAN        `          | Greater than comparison          |
-| `          GREATER_THAN_OR_EQUAL        ` | Greater than or equal comparison |
-| `          LESS_THAN        `             | Less than comparison             |
-| `          LESS_THAN_OR_EQUAL        `    | Less than or equal comparison    |
-| `          NOT_EQUAL        `             | Not equals comparison            |
-| `          CMP        `                   | General comparison               |
+|                                          |                                  |
+| ---------------------------------------- | -------------------------------- |
+| Name                                     | Description                      |
+| `         EQUAL        `                 | Equality comparison              |
+| `         GREATER_THAN        `          | Greater than comparison          |
+| `         GREATER_THAN_OR_EQUAL        ` | Greater than or equal comparison |
+| `         LESS_THAN        `             | Less than comparison             |
+| `         LESS_THAN_OR_EQUAL        `    | Less than or equal comparison    |
+| `         NOT_EQUAL        `             | Not equals comparison            |
+| `         CMP        `                   | General comparison               |
 
 ### EQUAL
 
@@ -25,18 +25,18 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 **Examples:**
 
-| `        x       `    | `        y       `      | `        equal(x, y)       ` |
-| :-------------------- | :---------------------- | :--------------------------- |
-| 1L                    | 1L                      | `        TRUE       `        |
-| 1.0                   | 1L                      | `        TRUE       `        |
-| \-1.0                 | 1L                      | `        FALSE       `       |
-| NaN                   | NaN                     | `        TRUE       `        |
-| `        NULL       ` | `        NULL       `   | `        TRUE       `        |
-| `        NULL       ` | `        ABSENT       ` | `        FALSE       `       |
+| `x`    | `y`      | `equal(x, y)` |
+| :----- | :------- | :------------ |
+| 1L     | 1L       | `TRUE`        |
+| 1.0    | 1L       | `TRUE`        |
+| \-1.0  | 1L       | `FALSE`       |
+| NaN    | NaN      | `TRUE`        |
+| `NULL` | `NULL`   | `TRUE`        |
+| `NULL` | `ABSENT` | `FALSE`       |
 
 **Description:**
 
-Returns `  TRUE  ` if `  x  ` and `  y  ` are equal, and `  FALSE  ` otherwise.
+Returns `TRUE` if `x` and `y` are equal, and `FALSE` otherwise.
 
 ##### Node.js
 
@@ -104,22 +104,22 @@ Android
 
 **Description:**
 
-Returns `  TRUE  ` if `  x  ` is greater than `  y  ` , and `  FALSE  ` otherwise.
+Returns `TRUE` if `x` is greater than `y` , and `FALSE` otherwise.
 
-If `  x  ` and `  y  ` are not comparable, returns `  FALSE  ` .
+If `x` and `y` are not comparable, returns `FALSE` .
 
 **Examples:**
 
-| `        x       `    | `        y       `    | `        greater_than(x, y)       ` |
-| :-------------------- | :-------------------- | :---------------------------------- |
-| 1L                    | 0.0                   | `        TRUE       `               |
-| 1L                    | 1L                    | `        FALSE       `              |
-| 1L                    | 2L                    | `        FALSE       `              |
-| "foo"                 | 0L                    | `        FALSE       `              |
-| 0L                    | "foo"                 | `        FALSE       `              |
-| NaN                   | 0L                    | `        FALSE       `              |
-| 0L                    | NaN                   | `        FALSE       `              |
-| `        NULL       ` | `        NULL       ` | `        FALSE       `              |
+| `x`    | `y`    | `greater_than(x, y)` |
+| :----- | :----- | :------------------- |
+| 1L     | 0.0    | `TRUE`               |
+| 1L     | 1L     | `FALSE`              |
+| 1L     | 2L     | `FALSE`              |
+| "foo"  | 0L     | `FALSE`              |
+| 0L     | "foo"  | `FALSE`              |
+| NaN    | 0L     | `FALSE`              |
+| 0L     | NaN    | `FALSE`              |
+| `NULL` | `NULL` | `FALSE`              |
 
 ##### Node.js
 
@@ -187,22 +187,22 @@ Android
 
 **Description:**
 
-Returns `  TRUE  ` if `  x  ` is greater than or equal to `  y  ` , and `  FALSE  ` otherwise.
+Returns `TRUE` if `x` is greater than or equal to `y` , and `FALSE` otherwise.
 
-If `  x  ` and `  y  ` are not comparable, returns `  FALSE  ` .
+If `x` and `y` are not comparable, returns `FALSE` .
 
 **Examples:**
 
-| `        x       `    | `        y       `    | `        greater_than_or_equal(x, y)       ` |
-| :-------------------- | :-------------------- | :------------------------------------------- |
-| 1L                    | 0.0                   | `        TRUE       `                        |
-| 1L                    | 1L                    | `        TRUE       `                        |
-| 1L                    | 2L                    | `        FALSE       `                       |
-| "foo"                 | 0L                    | `        FALSE       `                       |
-| 0L                    | "foo"                 | `        FALSE       `                       |
-| NaN                   | 0L                    | `        FALSE       `                       |
-| 0L                    | NaN                   | `        FALSE       `                       |
-| `        NULL       ` | `        NULL       ` | `        TRUE       `                        |
+| `x`    | `y`    | `greater_than_or_equal(x, y)` |
+| :----- | :----- | :---------------------------- |
+| 1L     | 0.0    | `TRUE`                        |
+| 1L     | 1L     | `TRUE`                        |
+| 1L     | 2L     | `FALSE`                       |
+| "foo"  | 0L     | `FALSE`                       |
+| 0L     | "foo"  | `FALSE`                       |
+| NaN    | 0L     | `FALSE`                       |
+| 0L     | NaN    | `FALSE`                       |
+| `NULL` | `NULL` | `TRUE`                        |
 
 ##### Node.js
 
@@ -274,22 +274,22 @@ Android
 
 **Description:**
 
-Returns `  TRUE  ` if `  x  ` is less than `  y  ` , and `  FALSE  ` otherwise.
+Returns `TRUE` if `x` is less than `y` , and `FALSE` otherwise.
 
-If `  x  ` and `  y  ` are not comparable, returns `  FALSE  ` .
+If `x` and `y` are not comparable, returns `FALSE` .
 
 **Examples:**
 
-| `        x       `    | `        y       `    | `        less_than(x, y)       ` |
-| :-------------------- | :-------------------- | :------------------------------- |
-| 1L                    | 0.0                   | `        FALSE       `           |
-| 1L                    | 1L                    | `        FALSE       `           |
-| 1L                    | 2L                    | `        TRUE       `            |
-| "foo"                 | 0L                    | `        FALSE       `           |
-| 0L                    | "foo"                 | `        FALSE       `           |
-| NaN                   | 0L                    | `        FALSE       `           |
-| 0L                    | NaN                   | `        FALSE       `           |
-| `        NULL       ` | `        NULL       ` | `        FALSE       `           |
+| `x`    | `y`    | `less_than(x, y)` |
+| :----- | :----- | :---------------- |
+| 1L     | 0.0    | `FALSE`           |
+| 1L     | 1L     | `FALSE`           |
+| 1L     | 2L     | `TRUE`            |
+| "foo"  | 0L     | `FALSE`           |
+| 0L     | "foo"  | `FALSE`           |
+| NaN    | 0L     | `FALSE`           |
+| 0L     | NaN    | `FALSE`           |
+| `NULL` | `NULL` | `FALSE`           |
 
 ##### Node.js
 
@@ -357,22 +357,22 @@ Android
 
 **Description:**
 
-Returns `  TRUE  ` if `  x  ` is less than or equal to `  y  ` , and `  FALSE  ` otherwise.
+Returns `TRUE` if `x` is less than or equal to `y` , and `FALSE` otherwise.
 
-If `  x  ` and `  y  ` are not comparable, returns `  FALSE  ` .
+If `x` and `y` are not comparable, returns `FALSE` .
 
 **Examples:**
 
-| `        x       `    | `        y       `    | `        less_than(x, y)       ` |
-| :-------------------- | :-------------------- | :------------------------------- |
-| 1L                    | 0.0                   | `        FALSE       `           |
-| 1L                    | 1L                    | `        TRUE       `            |
-| 1L                    | 2L                    | `        TRUE       `            |
-| "foo"                 | 0L                    | `        FALSE       `           |
-| 0L                    | "foo"                 | `        FALSE       `           |
-| NaN                   | 0L                    | `        FALSE       `           |
-| 0L                    | NaN                   | `        FALSE       `           |
-| `        NULL       ` | `        NULL       ` | `        TRUE       `            |
+| `x`    | `y`    | `less_than(x, y)` |
+| :----- | :----- | :---------------- |
+| 1L     | 0.0    | `FALSE`           |
+| 1L     | 1L     | `TRUE`            |
+| 1L     | 2L     | `TRUE`            |
+| "foo"  | 0L     | `FALSE`           |
+| 0L     | "foo"  | `FALSE`           |
+| NaN    | 0L     | `FALSE`           |
+| 0L     | NaN    | `FALSE`           |
+| `NULL` | `NULL` | `TRUE`            |
 
 ##### Node.js
 
@@ -440,19 +440,19 @@ Android
 
 **Description:**
 
-Returns `  TRUE  ` if `  x  ` is not equal to `  y  ` , and `  FALSE  ` otherwise.
+Returns `TRUE` if `x` is not equal to `y` , and `FALSE` otherwise.
 
 **Examples:**
 
-| `        x       `    | `        y       `      | `        not_equal(x, y)       ` |
-| :-------------------- | :---------------------- | :------------------------------- |
-| 1L                    | 1L                      | `        FALSE       `           |
-| 1.0                   | 1L                      | `        FALSE       `           |
-| \-1.0                 | 1L                      | `        TRUE       `            |
-| NaN                   | 0L                      | `        TRUE       `            |
-| NaN                   | NaN                     | `        FALSE       `           |
-| `        NULL       ` | `        NULL       `   | `        FALSE       `           |
-| `        NULL       ` | `        ABSENT       ` | `        TRUE       `            |
+| `x`    | `y`      | `not_equal(x, y)` |
+| :----- | :------- | :---------------- |
+| 1L     | 1L       | `FALSE`           |
+| 1.0    | 1L       | `FALSE`           |
+| \-1.0  | 1L       | `TRUE`            |
+| NaN    | 0L       | `TRUE`            |
+| NaN    | NaN      | `FALSE`           |
+| `NULL` | `NULL`   | `FALSE`           |
+| `NULL` | `ABSENT` | `TRUE`            |
 
 ##### Node.js
 
@@ -520,24 +520,24 @@ Android
 
 **Description:**
 
-Compares `  x  ` & `  y  ` , returning:
+Compares `x` & `y` , returning:
 
-  - `  1L  ` if `  x  ` is greater than `  y  ` .
-  - `  -1L  ` if `  x  ` is less than `  y  ` .
-  - `  0L  ` otherwise.
+  - `1L` if `x` is greater than `y` .
+  - `-1L` if `x` is less than `y` .
+  - `0L` otherwise.
 
-Unlike other comparison functions, the `  cmp(...)  ` function works across types, following the same ordering used in the `  sort(...)  ` stage. See [value type order](https://docs.cloud.google.com/firestore/native/docs/concepts/data-types) for how values are ordered across types.
+Unlike other comparison functions, the `cmp(...)` function works across types, following the same ordering used in the `sort(...)` stage. See [value type order](https://docs.cloud.google.com/firestore/native/docs/concepts/data-types) for how values are ordered across types.
 
 **Examples:**
 
-| `        x       `    | `        y       `      | `        cmp(x, y)       ` |
-| :-------------------- | :---------------------- | :------------------------- |
-| 1L                    | 1L                      | 0L                         |
-| 1.0                   | 1L                      | 0L                         |
-| \-1.0                 | 1L                      | \-1L                       |
-| 42.5D                 | "foo"                   | \-1L                       |
-| `        NULL       ` | `        NULL       `   | 0L                         |
-| `        NULL       ` | `        ABSENT       ` | 0L                         |
+| `x`    | `y`      | `cmp(x, y)` |
+| :----- | :------- | :---------- |
+| 1L     | 1L       | 0L          |
+| 1.0    | 1L       | 0L          |
+| \-1.0  | 1L       | \-1L        |
+| 42.5D  | "foo"    | \-1L        |
+| `NULL` | `NULL`   | 0L          |
+| `NULL` | `ABSENT` | 0L          |
 
 ## What's next
 

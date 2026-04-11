@@ -11,30 +11,23 @@ A position in a query result set.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;values&quot;: [
-    {
-      object (Value)
-    }
-  ],
-  &quot;before&quot;: boolean
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;values&quot;: [{object (Value)}],&quot;before&quot;: boolean}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  values[]  `
+`values[]`
 
-`  object ( Value  ` )
+` object ( Value  ` )
 
 The values that represent a position, in the order they appear in the order by clause of a query.
 
 Can contain fewer values than specified in the order by clause.
 
-`  before  `
+`before`
 
-`  boolean  `
+`boolean`
 
 If the position is just before or just after the given values, relative to the sort order defined by the query.

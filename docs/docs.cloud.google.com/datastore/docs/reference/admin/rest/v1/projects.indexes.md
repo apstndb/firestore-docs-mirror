@@ -22,51 +22,40 @@ Datastore composite index definition.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;projectId&quot;: string,
-  &quot;indexId&quot;: string,
-  &quot;kind&quot;: string,
-  &quot;ancestor&quot;: enum (AncestorMode),
-  &quot;properties&quot;: [
-    {
-      object (IndexedProperty)
-    }
-  ],
-  &quot;state&quot;: enum (State)
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;projectId&quot;: string,&quot;indexId&quot;: string,&quot;kind&quot;: string,&quot;ancestor&quot;: enum (AncestorMode),&quot;properties&quot;: [{object (IndexedProperty)}],&quot;state&quot;: enum (State)}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  projectId  `
+`projectId`
 
-`  string  `
+`string`
 
 Output only. Project ID.
 
-`  indexId  `
+`indexId`
 
-`  string  `
+`string`
 
 Output only. The resource ID of the index.
 
-`  kind  `
+`kind`
 
-`  string  `
+`string`
 
 Required. The entity kind to which this index applies.
 
-`  ancestor  `
+`ancestor`
 
-`  enum ( AncestorMode  ` )
+` enum ( AncestorMode  ` )
 
 Required. The index's ancestor mode. Must not be ANCESTOR\_MODE\_UNSPECIFIED.
 
-`  properties[]  `
+`properties[]`
 
-`  object ( IndexedProperty  ` )
+` object ( IndexedProperty  ` )
 
 Required. An ordered sequence of property names and their index attributes.
 
@@ -74,9 +63,9 @@ Requires:
 
   - A maximum of 100 properties.
 
-`  state  `
+`state`
 
-`  enum ( State  ` )
+` enum ( State  ` )
 
 Output only. The state of the index.
 
@@ -86,15 +75,15 @@ For an ordered index, specifies whether each of the entity's ancestors will be i
 
 Enums
 
-`  ANCESTOR_MODE_UNSPECIFIED  `
+`ANCESTOR_MODE_UNSPECIFIED`
 
 The ancestor mode is unspecified.
 
-`  NONE  `
+`NONE`
 
 Do not include the entity's ancestors in the index.
 
-`  ALL_ANCESTORS  `
+`ALL_ANCESTORS`
 
 Include all the entity's ancestors in the index.
 
@@ -113,25 +102,22 @@ A property of an index.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;name&quot;: string,
-  &quot;direction&quot;: enum (Direction)
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;name&quot;: string,&quot;direction&quot;: enum (Direction)}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
 Required. The property name to index.
 
-`  direction  `
+`direction`
 
-`  enum ( Direction  ` )
+` enum ( Direction  ` )
 
 Required. The indexed property's direction. Must not be DIRECTION\_UNSPECIFIED.
 
@@ -141,15 +127,15 @@ The direction determines how a property is indexed.
 
 Enums
 
-`  DIRECTION_UNSPECIFIED  `
+`DIRECTION_UNSPECIFIED`
 
 The direction is unspecified.
 
-`  ASCENDING  `
+`ASCENDING`
 
 The property's values are indexed so as to support sequencing in ascending order and also query by \<, \>, \<=, \>=, and =.
 
-`  DESCENDING  `
+`DESCENDING`
 
 The property's values are indexed so as to support sequencing in descending order and also query by \<, \>, \<=, \>=, and =.
 
@@ -159,40 +145,40 @@ The possible set of states of an index.
 
 Enums
 
-`  STATE_UNSPECIFIED  `
+`STATE_UNSPECIFIED`
 
 The state is unspecified.
 
-`  CREATING  `
+`CREATING`
 
 The index is being created, and cannot be used by queries. There is an active long-running operation for the index. The index is updated when writing an entity. Some index data may exist.
 
-`  READY  `
+`READY`
 
 The index is ready to be used. The index is updated when writing an entity. The index is fully populated from all stored entities it applies to.
 
-`  DELETING  `
+`DELETING`
 
 The index is being deleted, and cannot be used by queries. There is an active long-running operation for the index. The index is not updated when writing an entity. Some index data may exist.
 
-`  ERROR  `
+`ERROR`
 
 The index was being created or deleted, but something went wrong. The index cannot by used by queries. There is no active long-running operation for the index, and the most recently finished long-running operation failed. The index is not updated when writing an entity. Some index data may exist.
 
 ## Methods
 
-### `             create           `
+### `            create           `
 
 Creates the specified index.
 
-### `             delete           `
+### `            delete           `
 
 Deletes an existing index.
 
-### `             get           `
+### `            get           `
 
 Gets an index.
 
-### `             list           `
+### `            list           `
 
 Lists the indexes that match the specified filters.

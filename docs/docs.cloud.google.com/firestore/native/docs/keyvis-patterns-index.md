@@ -48,7 +48,7 @@ The following code shows an example index key format that you see when you hover
 Where:
 
   - **COLLECTION** : location of the collection in your database. Based on the [scope](https://docs.cloud.google.com/firestore/native/docs/concepts/index-overview#query_scopes) , it can be collection path for collection scope or collection name for collection group scope.
-  - **PROPERTIES** : fields used to create the index. The [`  __name__  ` ordering property](https://docs.cloud.google.com/firestore/docs/concepts/index-overview#default_ordering_and_the_name_field) is only shown for index definitions that modify the default ordering.
+  - **PROPERTIES** : fields used to create the index. The [`__name__` ordering property](https://docs.cloud.google.com/firestore/docs/concepts/index-overview#default_ordering_and_the_name_field) is only shown for index definitions that modify the default ordering.
   - **VALUES** : value of each property.
   - **DOCUMENT** : ID of the document updated in an operation.
 
@@ -98,60 +98,60 @@ After you have identified the index that is causing issues, you can use the foll
 <td>Collection scope single-field Indexes ASC, DESC</td>
 <td>Firestore creates indexes with collection scope by default.<br />
 <br />
-Index entry for the single-field Index on the <code dir="ltr" translate="no">       Timestamp      </code> field, in descending order for the <code dir="ltr" translate="no">       Users/5000000000000001      </code> document.</td>
-<td><code dir="ltr" translate="no">       COLLECTION: projects/               PROJECT_ID              /databases/(default)/documents/Users      </code><br />
-<code dir="ltr" translate="no">       PROPERTIES: (Timestamp: DESC)      </code><br />
-<code dir="ltr" translate="no">       VALUES: (16500000000000001)      </code><br />
-<code dir="ltr" translate="no">       DOCUMENT: projects/               PROJECT_ID              /databases/(default)/documents/Users/5000000000000001      </code></td>
+Index entry for the single-field Index on the <code dir="ltr" translate="no">Timestamp</code> field, in descending order for the <code dir="ltr" translate="no">Users/5000000000000001</code> document.</td>
+<td><code dir="ltr" translate="no">COLLECTION: projects/         PROJECT_ID        /databases/(default)/documents/Users</code><br />
+<code dir="ltr" translate="no">PROPERTIES: (Timestamp: DESC)</code><br />
+<code dir="ltr" translate="no">VALUES: (16500000000000001)</code><br />
+<code dir="ltr" translate="no">DOCUMENT: projects/         PROJECT_ID        /databases/(default)/documents/Users/5000000000000001</code></td>
 </tr>
 <tr class="even">
 <td>Collection scope single-field Indexes for array fields</td>
 <td>For each array field in a document, Firestore creates and maintains a collection scope array-contains index.<br />
 <br />
-Index entry for array-contains mode single-field indexes that will be created when a field <code dir="ltr" translate="no">       Country: [USA, Japan]      </code> is added to the document. Note that ASC,DESC indexes will also be created by default for this field. The example shows the ASC index for the <code dir="ltr" translate="no">       Country      </code> field.</td>
-<td><code dir="ltr" translate="no">       COLLECTION: projects/               PROJECT_ID              /databases/(default)/documents/Users      </code><br />
-<code dir="ltr" translate="no">       PROPERTIES:(Country: ASC)      </code><br />
-<code dir="ltr" translate="no">       VALUES:([USA, Japan]) DOCUMENT:(projects/               PROJECT_ID              /databases/(default)/documents/Users/5000000000000001)      </code></td>
+Index entry for array-contains mode single-field indexes that will be created when a field <code dir="ltr" translate="no">Country: [USA, Japan]</code> is added to the document. Note that ASC,DESC indexes will also be created by default for this field. The example shows the ASC index for the <code dir="ltr" translate="no">Country</code> field.</td>
+<td><code dir="ltr" translate="no">COLLECTION: projects/         PROJECT_ID        /databases/(default)/documents/Users</code><br />
+<code dir="ltr" translate="no">PROPERTIES:(Country: ASC)</code><br />
+<code dir="ltr" translate="no">VALUES:([USA, Japan]) DOCUMENT:(projects/         PROJECT_ID        /databases/(default)/documents/Users/5000000000000001)</code></td>
 </tr>
 <tr class="odd">
 <td>Collection group single-field Indexes ASC, DESC, ARRAY</td>
 <td>A collection group includes all collections with the same collection ID.<br />
-Index entry for the collection group single-field Index on the <code dir="ltr" translate="no">       Timestamp      </code> field, in descending order.</td>
-<td><code dir="ltr" translate="no">       COLLECTION GROUP: Users      </code><br />
-<code dir="ltr" translate="no">       PROPERTIES: (Timestamp: DESC)      </code><br />
-<code dir="ltr" translate="no">       VALUES: (16500000000000001L)      </code><br />
-<code dir="ltr" translate="no">       DOCUMENT: projects/               PROJECT_ID              /databases/(default)/documents/Users/5000000000000001      </code></td>
+Index entry for the collection group single-field Index on the <code dir="ltr" translate="no">Timestamp</code> field, in descending order.</td>
+<td><code dir="ltr" translate="no">COLLECTION GROUP: Users</code><br />
+<code dir="ltr" translate="no">PROPERTIES: (Timestamp: DESC)</code><br />
+<code dir="ltr" translate="no">VALUES: (16500000000000001L)</code><br />
+<code dir="ltr" translate="no">DOCUMENT: projects/         PROJECT_ID        /databases/(default)/documents/Users/5000000000000001</code></td>
 </tr>
 <tr class="even">
 <td>Collection group single-field Indexes ASC, DESC, ARRAY</td>
-<td>Index entry for the collection group single-field Index on <code dir="ltr" translate="no">       Country      </code> field in the <code dir="ltr" translate="no">       array-contains      </code> mode</td>
-<td><code dir="ltr" translate="no">       COLLECTION GROUP: Users PROPERTIES: (Country: ARRAY ASC) VALUES: (USA) DOCUMENT: projects/               PROJECT_ID              /databases/(default)/documents/Users/5000000000000001      </code></td>
+<td>Index entry for the collection group single-field Index on <code dir="ltr" translate="no">Country</code> field in the <code dir="ltr" translate="no">array-contains</code> mode</td>
+<td><code dir="ltr" translate="no">COLLECTION GROUP: Users PROPERTIES: (Country: ARRAY ASC) VALUES: (USA) DOCUMENT: projects/         PROJECT_ID        /databases/(default)/documents/Users/5000000000000001</code></td>
 </tr>
 <tr class="odd">
 <td>Collection composite index entry with ASC, ASC, ARRAY properties</td>
 <td>Composite index entries with parent are created when nested documents are created with collection scope index definition.<br />
 <br />
-Index entry for composite index with <code dir="ltr" translate="no">       Timestamp      </code> and <code dir="ltr" translate="no">       Name      </code> field in ascending order, and <code dir="ltr" translate="no">       Country      </code> in <code dir="ltr" translate="no">       array-contains      </code> mode.</td>
-<td><code dir="ltr" translate="no">       COLLECTION: projects/               PROJECT_ID              /databases/(default)/documents/Users      </code><br />
-<code dir="ltr" translate="no">       PROPERTIES: (Timestamp: ASC, Name: ASC,Country: ARRAY)      </code><br />
-<code dir="ltr" translate="no">       VALUES: (16500000000000001L, 'Alice', 'USA')      </code><br />
-<code dir="ltr" translate="no">       DOCUMENT: (projects/               PROJECT_ID              /databases/(default)/documents/Users/5000000000000001)      </code></td>
+Index entry for composite index with <code dir="ltr" translate="no">Timestamp</code> and <code dir="ltr" translate="no">Name</code> field in ascending order, and <code dir="ltr" translate="no">Country</code> in <code dir="ltr" translate="no">array-contains</code> mode.</td>
+<td><code dir="ltr" translate="no">COLLECTION: projects/         PROJECT_ID        /databases/(default)/documents/Users</code><br />
+<code dir="ltr" translate="no">PROPERTIES: (Timestamp: ASC, Name: ASC,Country: ARRAY)</code><br />
+<code dir="ltr" translate="no">VALUES: (16500000000000001L, 'Alice', 'USA')</code><br />
+<code dir="ltr" translate="no">DOCUMENT: (projects/         PROJECT_ID        /databases/(default)/documents/Users/5000000000000001)</code></td>
 </tr>
 <tr class="even">
 <td>Collection group scope composite index entry with ASC, ASC properties</td>
-<td>Index entry for the composite index on the <code dir="ltr" translate="no">       Timestamp      </code> field, in ascending order and <code dir="ltr" translate="no">       Name      </code> field in ascending order</td>
-<td><code dir="ltr" translate="no">       COLLECTION GROUP: Users      </code><br />
-<code dir="ltr" translate="no">       PROPERTIES: (Timestamp: ASC, Name: ASC)      </code><br />
-<code dir="ltr" translate="no">       VALUES: (16500000000000001L, 'Alice')      </code><br />
-<code dir="ltr" translate="no">       DOCUMENT: (projects/               PROJECT_ID              /databases/(default)/documents/Users/5000000000000001)      </code></td>
+<td>Index entry for the composite index on the <code dir="ltr" translate="no">Timestamp</code> field, in ascending order and <code dir="ltr" translate="no">Name</code> field in ascending order</td>
+<td><code dir="ltr" translate="no">COLLECTION GROUP: Users</code><br />
+<code dir="ltr" translate="no">PROPERTIES: (Timestamp: ASC, Name: ASC)</code><br />
+<code dir="ltr" translate="no">VALUES: (16500000000000001L, 'Alice')</code><br />
+<code dir="ltr" translate="no">DOCUMENT: (projects/         PROJECT_ID        /databases/(default)/documents/Users/5000000000000001)</code></td>
 </tr>
 <tr class="odd">
-<td>Collection scope composite Index entry with ASC and <code dir="ltr" translate="no">       __name__      </code> properties</td>
-<td>Index entry for the composite Index on the <code dir="ltr" translate="no">       Timestamp      </code> field in ascending order and with <code dir="ltr" translate="no">       __name__      </code> sorting in descending order for the <code dir="ltr" translate="no">       Users/5000000000000001      </code> document. You can use <code dir="ltr" translate="no">       __name__      </code> as the final field in an index definition to change the <a href="https://docs.cloud.google.com/firestore/docs/concepts/index-overview#default_ordering_and_the_name_field">default ordering of results</a> .</td>
-<td><code dir="ltr" translate="no">       COLLECTION: projects/               PROJECT_ID              /databases/(default)/documents/Users      </code><br />
-<code dir="ltr" translate="no">       PROPERTIES: (Timestamp: ASC, __name__ DESC)      </code><br />
-<code dir="ltr" translate="no">       VALUES: (16500000000000001)      </code><br />
-<code dir="ltr" translate="no">       DOCUMENT: projects/               PROJECT_ID              /databases/(default)/documents/Users/5000000000000001      </code></td>
+<td>Collection scope composite Index entry with ASC and <code dir="ltr" translate="no">__name__</code> properties</td>
+<td>Index entry for the composite Index on the <code dir="ltr" translate="no">Timestamp</code> field in ascending order and with <code dir="ltr" translate="no">__name__</code> sorting in descending order for the <code dir="ltr" translate="no">Users/5000000000000001</code> document. You can use <code dir="ltr" translate="no">__name__</code> as the final field in an index definition to change the <a href="https://docs.cloud.google.com/firestore/docs/concepts/index-overview#default_ordering_and_the_name_field">default ordering of results</a> .</td>
+<td><code dir="ltr" translate="no">COLLECTION: projects/         PROJECT_ID        /databases/(default)/documents/Users</code><br />
+<code dir="ltr" translate="no">PROPERTIES: (Timestamp: ASC, __name__ DESC)</code><br />
+<code dir="ltr" translate="no">VALUES: (16500000000000001)</code><br />
+<code dir="ltr" translate="no">DOCUMENT: projects/         PROJECT_ID        /databases/(default)/documents/Users/5000000000000001</code></td>
 </tr>
 </tbody>
 </table>

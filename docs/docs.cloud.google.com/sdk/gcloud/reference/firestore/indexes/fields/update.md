@@ -4,7 +4,7 @@ gcloud firestore indexes fields update - update the index configuration of the g
 
 SYNOPSIS
 
-`  gcloud firestore indexes fields update  ` ( `  FIELD  ` : `  --collection-group  ` = `  COLLECTION_GROUP  ` `  --database  ` = `  DATABASE  ` ) ( `  --clear-exemption  ` | `  --disable-indexes  ` | `  --index  ` =\[ `  KEY  ` = `  VALUE  ` , …\]) \[ `  --async  ` \] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud firestore indexes fields update` ( `  FIELD  ` : `  --collection-group  ` = `  COLLECTION_GROUP  ` `  --database  ` = `  DATABASE  ` ) ( `  --clear-exemption  ` | `  --disable-indexes  ` | `  --index  ` =\[ `  KEY  ` = `  VALUE  ` , …\]) \[ `  --async  ` \] \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
@@ -14,7 +14,7 @@ This creates an exemption for the field in question, allowing one to modify the 
 
 EXAMPLES
 
-The following command creates an exemption for the `  timestamp  ` field in the `  Events  ` collection group, in which all indexes are disabled:
+The following command creates an exemption for the `timestamp` field in the `Events` collection group, in which all indexes are disabled:
 
 ``` wrap-code
 gcloud firestore indexes fields update timestamp --collection-group=Events --disable-indexes
@@ -24,13 +24,13 @@ gcloud firestore indexes fields update timestamp --collection-group=Events --dis
 gcloud firestore indexes fields update timestamp --database=(default) --collection-group=Events --disable-indexes
 ```
 
-The following command creates an exemption for the `  timestamp  ` field in the `  Events  ` collection group, in which the list of indexes is explicitly set to \[ASCENDING, DESCENDING\]:
+The following command creates an exemption for the `timestamp` field in the `Events` collection group, in which the list of indexes is explicitly set to \[ASCENDING, DESCENDING\]:
 
 ``` wrap-code
 gcloud firestore indexes fields update timestamp --collection-group=Events --index=order=ASCENDING --index=order=DESCENDING
 ```
 
-The following command clears the exemption on the `  timestamp  ` field in the `  Events  ` collection group, so that the field will return to inheriting its index settings from its ancestors:
+The following command clears the exemption on the `timestamp` field in the `Events` collection group, so that the field will return to inheriting its index settings from its ancestors:
 
 ``` wrap-code
 gcloud firestore indexes fields update timestamp --collection-group=Events --clear-exemption
@@ -40,72 +40,72 @@ POSITIONAL ARGUMENTS
 
 Field resource - Field to update. The arguments in this group can be used to specify the attributes of this resource. (NOTE) Some attributes are not given arguments in this group but can be set in other ways.
 
-To set the `  project  ` attribute:
+To set the `project` attribute:
 
-  - provide the argument `  field  ` on the command line with a fully specified name;
-  - provide the argument `  --project  ` on the command line;
-  - set the property `  core/project  ` .
+  - provide the argument `field` on the command line with a fully specified name;
+  - provide the argument `--project` on the command line;
+  - set the property `core/project` .
 
 This must be specified.
 
   - `  FIELD  `  
     ID of the field or fully qualified identifier for the field.
     
-    To set the `  field  ` attribute:
+    To set the `field` attribute:
     
-      - provide the argument `  field  ` on the command line.
+      - provide the argument `field` on the command line.
     
     This positional argument must be specified if any of the other arguments in this group are specified.
 
-  - `  --collection-group  ` = `  COLLECTION_GROUP  `  
-    Collection group of the field. To set the `  collection-group  ` attribute:
+  - `--collection-group` = `  COLLECTION_GROUP  `  
+    Collection group of the field. To set the `collection-group` attribute:
     
-      - provide the argument `  field  ` on the command line with a fully specified name;
-      - provide the argument `  --collection-group  ` on the command line.
+      - provide the argument `field` on the command line with a fully specified name;
+      - provide the argument `--collection-group` on the command line.
 
-  - `  --database  ` = `  DATABASE  `  
-    Database of the field. To set the `  database  ` attribute:
+  - `--database` = `  DATABASE  `  
+    Database of the field. To set the `database` attribute:
     
-      - provide the argument `  field  ` on the command line with a fully specified name;
-      - provide the argument `  --database  ` on the command line;
-      - the default value of argument \[--database\] is `  (default)  ` .
+      - provide the argument `field` on the command line with a fully specified name;
+      - provide the argument `--database` on the command line;
+      - the default value of argument \[--database\] is `(default)` .
 
 REQUIRED FLAGS
 
 Exactly one of these must be specified:
 
-  - `  --clear-exemption  `  
+  - `--clear-exemption`  
     If provided, the field's current index configuration will be reverted to inherit from its ancestor index configurations.
 
-  - `  --disable-indexes  `  
+  - `--disable-indexes`  
     If provided, the field will no longer be indexed at all.
 
-  - `  --index  ` =\[ `  KEY  ` = `  VALUE  ` ,…\]  
+  - `--index` =\[ `  KEY  ` = `  VALUE  ` ,…\]  
     An index for the field.
     
     This flag can be repeated to provide multiple indexes. Any existing indexes will be overwritten with the ones provided. Any omitted indexes will be deleted if they currently exist.
     
     The following keys are allowed:
     
-      - `  order  `  
+      - `order`  
         Specifies the order. Valid options are: 'ascending', 'descending'. Exactly one of 'order' or 'array-config' must be specified.
-      - `  array-config  `  
+      - `array-config`  
         Specifies the configuration for an array field. The only valid option is 'contains'. Exactly one of 'order' or 'array-config' must be specified.
 
 OPTIONAL FLAGS
 
-  - `  --async  `  
+  - `--async`  
     Return immediately, without waiting for the operation in progress to complete.
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 API REFERENCE
 
-This command uses the `  firestore/v1  ` API. The full documentation for this API can be found at: <https://cloud.google.com/firestore>
+This command uses the `firestore/v1` API. The full documentation for this API can be found at: <https://cloud.google.com/firestore>
 
 NOTES
 

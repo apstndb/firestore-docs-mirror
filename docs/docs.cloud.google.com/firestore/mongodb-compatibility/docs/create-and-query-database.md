@@ -1,6 +1,6 @@
 # Connect with mongosh
 
-Learn how to create a Firestore with MongoDB compatibility database and connect to it with the `  mongosh  ` tool.
+Learn how to create a Firestore with MongoDB compatibility database and connect to it with the `mongosh` tool.
 
 ## Before you begin
 
@@ -13,7 +13,7 @@ Learn how to create a Firestore with MongoDB compatibility database and connect 
     **Roles required to select or create a project**
     
       - **Select a project** : Selecting a project doesn't require a specific IAM role—you can select any project that you've been granted a role on.
-      - **Create a project** : To create a project, you need the Project Creator role ( `  roles/resourcemanager.projectCreator  ` ), which contains the `  resourcemanager.projects.create  ` permission. [Learn how to grant roles](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
+      - **Create a project** : To create a project, you need the Project Creator role ( `roles/resourcemanager.projectCreator` ), which contains the `resourcemanager.projects.create` permission. [Learn how to grant roles](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
     
     **Note** : If you don't plan to keep the resources that you create in this procedure, create a project instead of selecting an existing project. After you finish these steps, you can delete the project, removing all resources associated with the project.
 
@@ -51,7 +51,7 @@ Learn how to create a Firestore with MongoDB compatibility database and connect 
     
     7.  Click **Save** .
 
-5.  [Install the `  mongosh  ` tool](https://www.mongodb.com/docs/mongodb-shell/install/)
+5.  [Install the `mongosh` tool](https://www.mongodb.com/docs/mongodb-shell/install/)
 
 ## Create a Firestore with MongoDB compatibility database and retrieve the connection string
 
@@ -101,9 +101,9 @@ In the Google Cloud console, create a new database user and assign the user Iden
 
 7.  Click create. The database creates a user and shows you the user's generated password. **Copy and save this password. You will not be able to retrieve this password later** .
 
-## Connect using `     mongosh    `
+## Connect using `mongosh`
 
-Use the connection string, username, and password to connect to your database, run `  mongosh  ` locally with the following configuration options.
+Use the connection string, username, and password to connect to your database, run `mongosh` locally with the following configuration options.
 
 ``` suppresswarning
 mongosh 'mongodb://USERNAME:PASSWORD@CONNECTION_STRING:443/DATABASE_ID?loadBalanced=true&authMechanism=SCRAM-SHA-256&tls=true&retryWrites=false'

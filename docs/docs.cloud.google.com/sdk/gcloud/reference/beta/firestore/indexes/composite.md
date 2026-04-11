@@ -4,30 +4,30 @@ gcloud beta firestore indexes composite - manage composite indexes for Cloud Fir
 
 SYNOPSIS
 
-`  gcloud beta firestore indexes composite  ` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud beta firestore indexes composite` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (BETA)  ` Manage composite indexes for Cloud Firestore.
+`(BETA)` Manage composite indexes for Cloud Firestore.
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 COMMANDS
 
 `  COMMAND  ` is one of the following:
 
   - `  create  `  
-    `  (BETA)  ` Create a new composite index.
+    `(BETA)` Create a new composite index.
   - `  delete  `  
-    `  (BETA)  ` Delete the given composite index.
+    `(BETA)` Delete the given composite index.
   - `  describe  `  
-    `  (BETA)  ` Describe the given composite index.
+    `(BETA)` Describe the given composite index.
   - `  list  `  
-    `  (BETA)  ` List composite indexes.
+    `(BETA)` List composite indexes.
 
 NOTES
 

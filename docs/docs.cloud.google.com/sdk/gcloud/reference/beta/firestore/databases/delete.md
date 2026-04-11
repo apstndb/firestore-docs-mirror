@@ -4,7 +4,7 @@ gcloud beta firestore databases delete - delete a Google Cloud Firestore databas
 
 SYNOPSIS
 
-`  gcloud beta firestore databases delete  ` `  --database  ` = `  DATABASE  ` \[ `  --etag  ` = `  ETAG  ` \] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud beta firestore databases delete` `  --database  ` = `  DATABASE  ` \[ `  --etag  ` = `  ETAG  ` \] \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 EXAMPLES
 
@@ -28,19 +28,19 @@ gcloud beta firestore databases delete --database=test --etag=etag
 
 REQUIRED FLAGS
 
-  - `  --database  ` = `  DATABASE  `  
+  - `--database` = `  DATABASE  `  
     The database to operate on.
 
 OPTIONAL FLAGS
 
-  - `  --etag  ` = `  ETAG  `  
+  - `--etag` = `  ETAG  `  
     The current etag of the Database. If an etag is provided and does not match the current etag of the database, deletion will be blocked and a FAILED\_PRECONDITION error will be returned.
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 NOTES
 

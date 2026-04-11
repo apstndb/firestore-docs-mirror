@@ -1,4 +1,4 @@
-**Note:** This content applies to the emulator for legacy Cloud Datastore. To emulate Firestore in Datastore mode, [use `  gcloud emulators firestore start --database-mode=datastore-mode  `](https://docs.cloud.google.com/datastore/docs/emulator) instead.
+**Note:** This content applies to the emulator for legacy Cloud Datastore. To emulate Firestore in Datastore mode, [use `gcloud emulators firestore start --database-mode=datastore-mode`](https://docs.cloud.google.com/datastore/docs/emulator) instead.
 
 The Datastore emulator provides local emulation of the production Datastore environment. You can use the emulator to develop and test your application locally. In addition, the emulator can help you generate indexes for your production Datastore instance and delete unneeded indexes. This page guides you through installing the emulator, starting the emulator, and setting environment variables to connect your application to the emulator.
 
@@ -10,8 +10,8 @@ By default, the Datastore emulator does not emulate [features introduced by Fire
 
   - The emulator simulates eventual consistency, by default. Firestore in Datastore mode is strongly consistent.
   - The emulator does not allow non-ancestor queries within transactions. Firestore in Datastore mode no longer has this limitation.
-  - The emulator does not support `  IN  ` , `  !=  ` , and `  NOT-IN  ` queries.
-  - The emulator does not support aggregation queries like `  COUNT(*)  ` .
+  - The emulator does not support `IN` , `!=` , and `NOT-IN` queries.
+  - The emulator does not support aggregation queries like `COUNT(*)` .
 
 However, the [--use-firestore-in-datastore-mode](https://docs.cloud.google.com/sdk/gcloud/reference/beta/emulators/datastore/start) flag helps loosen some of the restrictions above for Firestore in Datastore Mode.
 
@@ -19,7 +19,7 @@ However, the [--use-firestore-in-datastore-mode](https://docs.cloud.google.com/s
   - The emulator allows for non-ancestor queries within transactions.
   - The emulator removes the limitation of 25 entity groups in a transaction.
 
-To emulate Firestore in Datastore mode, [use `  gcloud emulators firestore start --database-mode=datastore-mode  `](https://docs.cloud.google.com/datastore/docs/emulator) instead.
+To emulate Firestore in Datastore mode, [use `gcloud emulators firestore start --database-mode=datastore-mode`](https://docs.cloud.google.com/datastore/docs/emulator) instead.
 
 ## Before you begin
 
@@ -31,27 +31,27 @@ To use the Datastore emulator you need:
 
 ## Installing the emulator
 
-The Datastore emulator is a component of the gcloud CLI. Use the [`  gcloud components install  `](https://docs.cloud.google.com/sdk/gcloud/reference/components/install) command to install the Datastore emulator:
+The Datastore emulator is a component of the gcloud CLI. Use the [`gcloud components install`](https://docs.cloud.google.com/sdk/gcloud/reference/components/install) command to install the Datastore emulator:
 
     gcloud components install cloud-datastore-emulator
 
 ## Emulator data directories
 
-The emulator simulates Datastore by creating `  /WEB-INF/appengine-generated/local_db.bin  ` in a specified data directory and storing data in `  local_db.bin  ` . By default, the emulator uses the data directory `  ~/.config/gcloud/emulators/datastore/  ` . The `  local_db.bin  ` file persists between sessions of the emulator. You can set up multiple data directories and think of each as a separate, local Datastore mode instance. To clear the contents of a `  local_db.bin  ` file, stop the emulator and manually delete the file.
+The emulator simulates Datastore by creating `/WEB-INF/appengine-generated/local_db.bin` in a specified data directory and storing data in `local_db.bin` . By default, the emulator uses the data directory `~/.config/gcloud/emulators/datastore/` . The `local_db.bin` file persists between sessions of the emulator. You can set up multiple data directories and think of each as a separate, local Datastore mode instance. To clear the contents of a `local_db.bin` file, stop the emulator and manually delete the file.
 
 ## Starting the emulator
 
-Start the emulator by executing [`  datastore start  `](https://docs.cloud.google.com/sdk/gcloud/reference/beta/emulators/datastore/start) from a command prompt:
+Start the emulator by executing [`datastore start`](https://docs.cloud.google.com/sdk/gcloud/reference/beta/emulators/datastore/start) from a command prompt:
 
     gcloud beta emulators datastore start [flags]
 
-where `  [flags]  ` are optional command-line arguments supplied to the gcloud CLI. For example:
+where `[flags]` are optional command-line arguments supplied to the gcloud CLI. For example:
 
-  - [`  --data-dir=[DATA_DIR]  `](https://docs.cloud.google.com/sdk/gcloud/reference/beta/emulators/datastore/start) changes the emulator's data directory. The emulator creates the `  /WEB-INF/appengine-generated/local_db.bin  ` file inside `  [DATA_DIR]  ` or, if available, uses an existing file.
+  - [`--data-dir=[DATA_DIR]`](https://docs.cloud.google.com/sdk/gcloud/reference/beta/emulators/datastore/start) changes the emulator's data directory. The emulator creates the `/WEB-INF/appengine-generated/local_db.bin` file inside `[DATA_DIR]` or, if available, uses an existing file.
 
-  - [`  --no-store-on-disk  `](https://docs.cloud.google.com/sdk/gcloud/reference/beta/emulators/datastore/start) configures the emulator not to persist any data to disk for the emulator session.
+  - [`--no-store-on-disk`](https://docs.cloud.google.com/sdk/gcloud/reference/beta/emulators/datastore/start) configures the emulator not to persist any data to disk for the emulator session.
 
-See the [`  gcloud beta emulators datastore start  `](https://docs.cloud.google.com/sdk/gcloud/reference/beta/emulators/datastore/start) reference for the full list of optional flags.
+See the [`gcloud beta emulators datastore start`](https://docs.cloud.google.com/sdk/gcloud/reference/beta/emulators/datastore/start) reference for the full list of optional flags.
 
 After you start the emulator, you should see a message similar to the following:
 
@@ -74,13 +74,13 @@ If your application and the emulator run on the same machine, you can set the en
 
 ### Linux / macOS
 
-Run `  env-init  ` using command substitution:
+Run `env-init` using command substitution:
 
     $(gcloud beta emulators datastore env-init)
 
 ### Windows
 
-Create and run a batch file using output from `  env-init  ` :
+Create and run a batch file using output from `env-init` :
 
     gcloud beta emulators datastore env-init > set_vars.cmd && set_vars.cmd
 
@@ -90,11 +90,11 @@ Your application will now connect to the Datastore emulator.
 
 If your application and the emulator run on different machines, set the environment variables manually:
 
-1.  Run the `  env-init  ` command:
+1.  Run the `env-init` command:
     
         gcloud beta emulators datastore env-init
 
-2.  On the machine that runs your application, set the environment variables and values as directed by the output of the `  env-init  ` command. For example:
+2.  On the machine that runs your application, set the environment variables and values as directed by the output of the `env-init` command. For example:
     
     Linux / macOS
     
@@ -128,13 +128,13 @@ If your application and the emulator run on the same machine, you can remove the
 
 ### Linux / macOS
 
-Run `  env-unset  ` using command substitution:
+Run `env-unset` using command substitution:
 
     $(gcloud beta emulators datastore env-unset)
 
 ### Windows
 
-Create and run a batch file using output from `  env-unset  ` :
+Create and run a batch file using output from `env-unset` :
 
     gcloud beta emulators datastore env-unset > remove_vars.cmd && remove_vars.cmd
 
@@ -144,11 +144,11 @@ Your application will now connect to your production Datastore mode database.
 
 If your application and the emulator run on different machines, remove the environment variables manually:
 
-1.  Run the `  env-unset  ` command:
+1.  Run the `env-unset` command:
     
         gcloud beta emulators datastore env-unset
 
-2.  On the machine that runs your application, remove the environment variables as directed by the output of the `  env-unset  ` command. For example:
+2.  On the machine that runs your application, remove the environment variables as directed by the output of the `env-unset` command. For example:
     
     Linux / macOS
     

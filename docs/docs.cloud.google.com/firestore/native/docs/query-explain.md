@@ -1,6 +1,6 @@
 # Understand query performance using Query Explain
 
-Query Explain allows you to submit Firestore in Native Mode queries to the backend and receive detailed performance statistics on backend query execution in return. It functions like the `  EXPLAIN [ANALYZE]  ` operation in many relational database systems.
+Query Explain allows you to submit Firestore in Native Mode queries to the backend and receive detailed performance statistics on backend query execution in return. It functions like the `EXPLAIN [ANALYZE]` operation in many relational database systems.
 
 Query Explain requests can be sent using the [Firestore server client libraries](https://docs.cloud.google.com/firestore/docs/reference/libraries#server_client_libraries) .
 
@@ -42,7 +42,6 @@ ExplainOptions options = ExplainOptions.builder().build();
 ExplainResults<QuerySnapshot> explainResults = q.explain(options).get();
 ExplainMetrics metrics = explainResults.getMetrics();
 PlanSummary planSummary = metrics.getPlanSummary();
-
     
 ```
 
@@ -56,7 +55,6 @@ const explainResults = await q.explain(options);
 
 const metrics = explainResults.metrics;
 const plan = metrics.planSummary;
-
     
 ```
 
@@ -92,7 +90,6 @@ ExplainMetrics metrics = explainResults.getMetrics();
 PlanSummary planSummary = metrics.getPlanSummary();
 List<Map<String, Object>> indexesUsed = planSummary.getIndexesUsed();
 ExecutionStats stats = metrics.getExecutionStats();
-
     
 ```
 
@@ -109,11 +106,10 @@ const metrics = explainResults.metrics;
 const plan = metrics.planSummary;
 const indexesUsed = plan.indexesUsed;
 const stats = metrics.executionStats;
-
     
 ```
 
-The following example shows the `  stats  ` object returned in addition to `  planInfo  ` . The exact format of the response depends on the execution environment. The example response is in JSON format.
+The following example shows the `stats` object returned in addition to `planInfo` . The exact format of the response depends on the execution environment. The example response is in JSON format.
 
     {
         "resultsReturned": "5",
@@ -146,7 +142,7 @@ For illustration, assume the equivalent of this SQL query.
     FROM /movies
     WHERE category = 'Romantic' AND country = 'USA';
 
-If we use the analyze option, the returned metrics show the query runs on two single-field indexes, `  (category ASC, __name__ ASC)  ` and `  (country ASC, __name__ ASC)  ` . It scans 16500 index entries, but returns only 1200 documents.
+If we use the analyze option, the returned metrics show the query runs on two single-field indexes, `(category ASC, __name__ ASC)` and `(country ASC, __name__ ASC)` . It scans 16500 index entries, but returns only 1200 documents.
 
     // Output query planning info
     {
@@ -173,7 +169,7 @@ If we use the analyze option, the returned metrics show the query runs on two si
         }
     }
 
-To optimize the performance of executing the query, you can create a fully-covered composite index `  (category ASC, country ASC, __name__ ASC)  ` .
+To optimize the performance of executing the query, you can create a fully-covered composite index `(category ASC, country ASC, __name__ ASC)` .
 
 Running the query with the analyze option again we can see that the newly-created index is selected for this query, and the query runs much faster and more efficiently.
 

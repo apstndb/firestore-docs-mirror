@@ -6,17 +6,17 @@ This page describes the second stage of the [migration process](https://docs.clo
 
 The following command starts a new, uniquely named, Dataflow pipeline.
 
-**Note:** The start timestamp of the job is captured in the `  DATAFLOW_START_TIME  ` environment variable. Make a note of this timestamp: it will appear as part of the job name in the Dataflow console. Also note that the Dataflow template does not support wildcard expressions for Cloud Storage paths.
+**Note:** The start timestamp of the job is captured in the `DATAFLOW_START_TIME` environment variable. Make a note of this timestamp: it will appear as part of the job name in the Dataflow console. Also note that the Dataflow template does not support wildcard expressions for Cloud Storage paths.
 
 The following formats are acceptable:
 
-  - `  inputFilePattern=gs://bucket-name/migration/attempt_1/  `
-  - `  inputFilePattern=gs://bucket-name/migration/  `
-  - `  inputFilePattern=gs://bucket-name/  `
+  - `inputFilePattern=gs://bucket-name/migration/attempt_1/`
+  - `inputFilePattern=gs://bucket-name/migration/`
+  - `inputFilePattern=gs://bucket-name/`
 
 Not supported:
 
-  - `  inputFilePattern=gs://bucket-name/**/*  `
+  - `inputFilePattern=gs://bucket-name/**/*`
 
 <!-- end list -->
 
@@ -48,7 +48,7 @@ Not supported:
     maxNumWorkers=$MAX_WORKERS,\
     workerMachineType=$WORKER_TYPE
 
-**Note:** To ensure correct sequencing of document updates and deletions, the Dataflow job creates shadow collections in your destination database. For example, if your source database contains a collection named `  users  ` , the destination Firestore database will have both `  shadow_users  ` and `  users  ` collections after the migration completes. You can delete the contents of the shadow collection after migrating. The naming prefix for the shadow collection is controlled by the `  shadowCollectionPrefix  ` Dataflow template parameter.
+**Note:** To ensure correct sequencing of document updates and deletions, the Dataflow job creates shadow collections in your destination database. For example, if your source database contains a collection named `users` , the destination Firestore database will have both `shadow_users` and `users` collections after the migration completes. You can delete the contents of the shadow collection after migrating. The naming prefix for the shadow collection is controlled by the `shadowCollectionPrefix` Dataflow template parameter.
 
 For more information about monitoring the Dataflow pipeline, see [Troubleshooting](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-troubleshooting) .
 

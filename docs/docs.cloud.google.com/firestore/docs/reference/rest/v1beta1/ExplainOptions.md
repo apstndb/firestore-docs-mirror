@@ -20,9 +20,9 @@ Explain options for the query.
 
 Fields
 
-`  analyze  `
+`analyze`
 
-`  boolean  `
+`boolean`
 
 Optional. Whether to execute this query.
 

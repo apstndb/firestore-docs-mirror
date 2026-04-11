@@ -23,14 +23,14 @@ An object that represents a latitude/longitude pair. This is expressed as a pair
 
 Fields
 
-`  latitude  `
+`latitude`
 
-`  number  `
+`number`
 
 The latitude in degrees. It must be in the range \[-90.0, +90.0\].
 
-`  longitude  `
+`longitude`
 
-`  number  `
+`number`
 
 The longitude in degrees. It must be in the range \[-180.0, +180.0\].

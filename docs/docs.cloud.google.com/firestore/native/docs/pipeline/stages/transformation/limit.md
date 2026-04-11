@@ -88,4 +88,4 @@ Android
 
 ## Behavior
 
-The `  limit(...)  ` stage will only return the first `  N  ` documents. Unless a `  sort(...)  ` stage is used before the limit, the order in which documents are returned is unstable and repeated executions may produce different results.
+The `limit(...)` stage will only return the first `N` documents. Unless a `sort(...)` stage is used before the limit, the order in which documents are returned is unstable and repeated executions may produce different results.

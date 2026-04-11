@@ -5,7 +5,7 @@
   - [Authorization scopes](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/delete#body.aspect)
   - [Try it\!](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/delete#try-it)
 
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `  google.rpc.Code.UNIMPLEMENTED  ` .
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED` .
 
 ### HTTP request
 
@@ -104,7 +104,7 @@ eu
 us
 
   
-`  DELETE https://datastore.googleapis.com/v1/{name=projects/*/operations/*}  `
+`DELETE https://datastore.googleapis.com/v1/{name=projects/*/operations/*}`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -112,9 +112,9 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
 The name of the operation resource to be deleted.
 
@@ -130,7 +130,7 @@ If successful, the response body is an empty JSON object.
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

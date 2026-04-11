@@ -15,8 +15,8 @@ To use offline persistence, you don't need to make any changes to the code that 
 
 When you initialize Firestore, you can enable or disable offline persistence:
 
-  - For Android and Apple platforms, offline persistence is enabled by default. To disable persistence, set the `  PersistenceEnabled  ` option to `  false  ` .
-  - For the web, offline persistence is disabled by default. To enable persistence, call the `  enablePersistence  ` method. Firestore's cache isn't automatically cleared between sessions. Consequently, if your web app handles sensitive information, make sure to ask the user if they're on a trusted device before enabling persistence.
+  - For Android and Apple platforms, offline persistence is enabled by default. To disable persistence, set the `PersistenceEnabled` option to `false` .
+  - For the web, offline persistence is disabled by default. To enable persistence, call the `enablePersistence` method. Firestore's cache isn't automatically cleared between sessions. Consequently, if your web app handles sensitive information, make sure to ask the user if they're on a trusted device before enabling persistence.
 
 **Important:** For the web, offline persistence is supported only by the Chrome, Safari, and Firefox web browsers.
 
@@ -223,9 +223,9 @@ Android
 
 While the device is offline, if you have enabled offline persistence, your listeners will receive listen events when the locally cached data changes. You can listen to documents, collections, and queries.
 
-To check whether you're receiving data from the server or the cache, use the `  fromCache  ` property on the `  SnapshotMetadata  ` in your snapshot event. If `  fromCache  ` is `  true  ` , the data came from the cache and might be stale or incomplete. If `  fromCache  ` is `  false  ` , the data is complete and current with the latest updates on the server.
+To check whether you're receiving data from the server or the cache, use the `fromCache` property on the `SnapshotMetadata` in your snapshot event. If `fromCache` is `true` , the data came from the cache and might be stale or incomplete. If `fromCache` is `false` , the data is complete and current with the latest updates on the server.
 
-By default, no event is raised if *only* the `  SnapshotMetadata  ` changed. If you rely on the `  fromCache  ` values, specify the `  includeMetadataChanges  ` listen option when you attach your listen handler.
+By default, no event is raised if *only* the `SnapshotMetadata` changed. If you rely on the `fromCache` values, specify the `includeMetadataChanges` listen option when you attach your listen handler.
 
 ### Web version 9
 

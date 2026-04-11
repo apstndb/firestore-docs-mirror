@@ -15,76 +15,62 @@ This resource is owned by the database it is backing up, and is deleted along wi
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;name&quot;: string,
-  &quot;createTime&quot;: string,
-  &quot;updateTime&quot;: string,
-  &quot;retention&quot;: string,
-
-  // Union field recurrence can be only one of the following:
-  &quot;dailyRecurrence&quot;: {
-    object (DailyRecurrence)
-  },
-  &quot;weeklyRecurrence&quot;: {
-    object (WeeklyRecurrence)
-  }
-  // End of list of possible types for union field recurrence.
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;name&quot;: string,&quot;createTime&quot;: string,&quot;updateTime&quot;: string,&quot;retention&quot;: string,// Union field recurrence can be only one of the following:&quot;dailyRecurrence&quot;: {object (DailyRecurrence)},&quot;weeklyRecurrence&quot;: {object (WeeklyRecurrence)}// End of list of possible types for union field recurrence.}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
 Output only. The unique backup schedule identifier across all locations and databases for the given project.
 
 This will be auto-assigned.
 
-Format is `  projects/{project}/databases/{database}/backupSchedules/{backupSchedule}  `
+Format is `projects/{project}/databases/{database}/backupSchedules/{backupSchedule}`
 
-`  createTime  `
+`createTime`
 
-`  string ( Timestamp  ` format)
+` string ( Timestamp  ` format)
 
 Output only. The timestamp at which this backup schedule was created and effective since.
 
 No backups will be created for this schedule before this time.
 
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `  "2014-10-02T15:01:23Z"  ` , `  "2014-10-02T15:01:23.045123456Z"  ` or `  "2014-10-02T15:01:23+05:30"  ` .
+Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .
 
-`  updateTime  `
+`updateTime`
 
-`  string ( Timestamp  ` format)
+` string ( Timestamp  ` format)
 
 Output only. The timestamp at which this backup schedule was most recently updated. When a backup schedule is first created, this is the same as createTime.
 
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `  "2014-10-02T15:01:23Z"  ` , `  "2014-10-02T15:01:23.045123456Z"  ` or `  "2014-10-02T15:01:23+05:30"  ` .
+Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .
 
-`  retention  `
+`retention`
 
-`  string ( Duration  ` format)
+` string ( Duration  ` format)
 
 At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
 
 The maximum supported retention period is 14 weeks.
 
-A duration in seconds with up to nine fractional digits, ending with ' `  s  ` '. Example: `  "3.5s"  ` .
+A duration in seconds with up to nine fractional digits, ending with ' `s` '. Example: `"3.5s"` .
 
-Union field `  recurrence  ` . A oneof field to represent when backups will be taken. `  recurrence  ` can be only one of the following:
+Union field `recurrence` . A oneof field to represent when backups will be taken. `recurrence` can be only one of the following:
 
-`  dailyRecurrence  `
+`dailyRecurrence`
 
-`  object ( DailyRecurrence  ` )
+` object ( DailyRecurrence  ` )
 
 For a schedule that runs daily.
 
-`  weeklyRecurrence  `
+`weeklyRecurrence`
 
-`  object ( WeeklyRecurrence  ` )
+` object ( WeeklyRecurrence  ` )
 
 For a schedule that runs weekly on a specific day.
 
@@ -113,18 +99,16 @@ The time zone is UTC.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;day&quot;: enum (DayOfWeek)
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;day&quot;: enum (DayOfWeek)}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  day  `
+`day`
 
-`  enum ( DayOfWeek  ` )
+` enum ( DayOfWeek  ` )
 
 The day of week to run.
 
@@ -136,56 +120,56 @@ Represents a day of the week.
 
 Enums
 
-`  DAY_OF_WEEK_UNSPECIFIED  `
+`DAY_OF_WEEK_UNSPECIFIED`
 
 The day of the week is unspecified.
 
-`  MONDAY  `
+`MONDAY`
 
 Monday
 
-`  TUESDAY  `
+`TUESDAY`
 
 Tuesday
 
-`  WEDNESDAY  `
+`WEDNESDAY`
 
 Wednesday
 
-`  THURSDAY  `
+`THURSDAY`
 
 Thursday
 
-`  FRIDAY  `
+`FRIDAY`
 
 Friday
 
-`  SATURDAY  `
+`SATURDAY`
 
 Saturday
 
-`  SUNDAY  `
+`SUNDAY`
 
 Sunday
 
 ## Methods
 
-### `             create           `
+### `            create           `
 
 Creates a backup schedule on a database.
 
-### `             delete           `
+### `            delete           `
 
 Deletes a backup schedule.
 
-### `             get           `
+### `            get           `
 
 Gets information about a backup schedule.
 
-### `             list           `
+### `            list           `
 
 List backup schedules.
 
-### `             patch           `
+### `            patch           `
 
 Updates a backup schedule.

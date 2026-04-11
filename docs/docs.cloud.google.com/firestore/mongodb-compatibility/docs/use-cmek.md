@@ -15,7 +15,7 @@ Before you can create a CMEK-protected Firestore with MongoDB compatibility data
 
 Complete these steps for each project that will contain CMEK-protected Firestore with MongoDB compatibility databases. If you later create a new CMEK key, you must configure IAM settings for that key.
 
-**Note:** The `  gcloud  ` commands on this page show placeholders for two Google Cloud projects: the project that contains Firestore with MongoDB compatibility databases, `  FIRESTORE_PROJECT  ` , and the project that contains your CMEK key(s), `  KMS_PROJECT  ` . However, you can use the same project for your Firestore with MongoDB compatibility databases and CMEK keys.
+**Note:** The `gcloud` commands on this page show placeholders for two Google Cloud projects: the project that contains Firestore with MongoDB compatibility databases, `  FIRESTORE_PROJECT  ` , and the project that contains your CMEK key(s), `  KMS_PROJECT  ` . However, you can use the same project for your Firestore with MongoDB compatibility databases and CMEK keys.
 
 ### Request access
 
@@ -46,13 +46,13 @@ The Cloud KMS [key location](https://cloud.google.com/kms/docs/locations) must b
 
   - For [regional database locations](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/locations#location-r) , use the same location name for key ring, key, and database because the location names have a one-to-one mapping.
     
-    For example, if you want to create a CMEK-protected database in `  us-west1  ` , create a key ring and key in `  us-west1  ` .
+    For example, if you want to create a CMEK-protected database in `us-west1` , create a key ring and key in `us-west1` .
 
   - For [multi-region database locations](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/locations#location-mr) , use the location name of the [KMS multi-region location](https://cloud.google.com/kms/docs/locations) :
     
-      - Use the Cloud KMS `  us  ` multi-region location for the Firestore with MongoDB compatibility `  nam5  ` multi-region location.
+      - Use the Cloud KMS `us` multi-region location for the Firestore with MongoDB compatibility `nam5` multi-region location.
     
-      - Use the Cloud KMS `  europe  ` multi-region location for the Firestore with MongoDB compatibility `  eur3  ` multi-region location.
+      - Use the Cloud KMS `europe` multi-region location for the Firestore with MongoDB compatibility `eur3` multi-region location.
 
 In the Google Cloud project where you want to manage your keys, complete the following:
 
@@ -83,7 +83,7 @@ To grant an Cloud KMS role to your service agent, do the following. You are also
 
 ### gcloud
 
-Grant the `  cloudkms.cryptoKeyEncrypterDecrypter  ` role to your service agent:
+Grant the `cloudkms.cryptoKeyEncrypterDecrypter` role to your service agent:
 
     gcloud kms keys add-iam-policy-binding KMS_KEY \
     --keyring KMS_KEYRING\
@@ -137,7 +137,7 @@ You can choose an encryption type and key only when you create a CMEK-enabled da
 
 8.  The list of keys is limited to the current Google Cloud project and the database location that you selected. To use a key from a different Google Cloud project, click **Switch Project** or **Enter Key Manually** .
 
-9.  If you are prompted to grant key permission to the Firestore with MongoDB compatibility service account, click **Grant** . To create a CMEK database, your Firestore with MongoDB compatibility service account must be granted the `  cloudkms.cryptoKeyEncrypterDecrypter  ` role.
+9.  If you are prompted to grant key permission to the Firestore with MongoDB compatibility service account, click **Grant** . To create a CMEK database, your Firestore with MongoDB compatibility service account must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role.
 
 10. Select security rules for mobile and web clients.
 
@@ -167,7 +167,7 @@ Replace the following:
 
   - `  KMS_KEY_NAME  ` with the name you assigned to the key. Use the full resource name for the key in the following format:
     
-    `  projects/ KMS_PROJECT /locations/ KMS_LOCATION /keyRings/ KMS_KEYRING_ID /cryptoKeys/ KMS_KEY_ID  `
+    ` projects/ KMS_PROJECT /locations/ KMS_LOCATION /keyRings/ KMS_KEYRING_ID /cryptoKeys/ KMS_KEY_ID  `
 
   - `  FIRESTORE_PROJECT  ` with the project to use for your Firestore with MongoDB compatibility database
 
@@ -187,7 +187,7 @@ Before you restore CMEK-protected database from a backup:
 
 ### Restore a CMEK-protected database to CMEK encryption
 
-To restore to CMEK encryption, run the [`  gcloud firestore databases restore  `](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/restore) command with the optional `  encryption-type  ` and `  kms-key-name  ` flags to configure the encryption type for the restored database. If you don't specify the encryption type, the restored database will use the same encryption configuration as the backup.
+To restore to CMEK encryption, run the [`gcloud firestore databases restore`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/restore) command with the optional `encryption-type` and `kms-key-name` flags to configure the encryption type for the restored database. If you don't specify the encryption type, the restored database will use the same encryption configuration as the backup.
 
     gcloud firestore databases restore \
     --encryption-type=customer-managed-encryption \
@@ -195,18 +195,18 @@ To restore to CMEK encryption, run the [`  gcloud firestore databases restore  `
 
 Replace `  KMS_KEY_NAME  ` with the name that you assigned to the key. Use the full resource name for the key in the following format:
 
-`  projects/ KMS_PROJECT /locations/ KMS_LOCATION /keyRings/ KMS_KEYRING_ID /cryptoKeys/ KMS_KEY_ID  `
+` projects/ KMS_PROJECT /locations/ KMS_LOCATION /keyRings/ KMS_KEYRING_ID /cryptoKeys/ KMS_KEY_ID  `
 
 ### Restore a CMEK-protected database to default encryption
 
-To restore to [Google's default encryption](https://cloud.google.com/security/encryption/default-encryption#googles_default_encryption) (non-CMEK), set the `  encryption-type  ` flag in the following way:
+To restore to [Google's default encryption](https://cloud.google.com/security/encryption/default-encryption#googles_default_encryption) (non-CMEK), set the `encryption-type` flag in the following way:
 
     gcloud firestore databases restore \
     --encryption-type=google-default-encryption
 
 ### Restore a CMEK-protected database to the same encryption type as the backup
 
-To restore to the same encryption type as the backup, set the `  encryption-type  ` flag in the following way:
+To restore to the same encryption type as the backup, set the `encryption-type` flag in the following way:
 
     gcloud firestore databases restore --encryption-type=use-source-encryption
 
@@ -214,7 +214,7 @@ To restore to the same encryption type as the backup, set the `  encryption-type
 
 ### Restore a CMEK-protected database to CMEK encryption
 
-To restore to CMEK encryption, use the optional `  encryption-type  ` and `  kms-key-name  ` flag. If you don't specify the encryption type, the restored database will use the same encryption configuration as the backup.
+To restore to CMEK encryption, use the optional `encryption-type` and `kms-key-name` flag. If you don't specify the encryption type, the restored database will use the same encryption configuration as the backup.
 
     firebase firestore:databases:restore \
     --database DATABASE_ID \
@@ -239,7 +239,7 @@ Confirm that your restored Firestore with MongoDB compatibility database is CMEK
 
 ### Restore a CMEK-protected database to default encryption
 
-To restore to [Google's default encryption](https://cloud.google.com/security/encryption/default-encryption#googles_default_encryption) (non-CMEK), set the `  encryption-type  ` flag in the following way:
+To restore to [Google's default encryption](https://cloud.google.com/security/encryption/default-encryption#googles_default_encryption) (non-CMEK), set the `encryption-type` flag in the following way:
 
     firebase firestore:databases:restore \
     --database DATABASE_ID \
@@ -256,7 +256,7 @@ Replace the following:
 
 ### Restore a CMEK-protected database to the same encryption type as the backup
 
-To restore to the same encryption type as the backup, set the `  encryption-type  ` flag in the following way:
+To restore to the same encryption type as the backup, set the `encryption-type` flag in the following way:
 
     firebase firestore:databases:restore \
     --database DATABASE_ID \
@@ -282,7 +282,7 @@ Before you clone a CMEK-protected database:
 
 ### Clone a CMEK-protected database to CMEK encryption
 
-To clone to CMEK encryption, run the [gcloud firestore databases clone](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/clone) command with the optional `  encryption-type  ` and `  kms-key-name  ` flags to configure the encryption type for the cloned database. If you don't specify the encryption type, the cloned database will use the same encryption configuration as the source database.
+To clone to CMEK encryption, run the [gcloud firestore databases clone](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/clone) command with the optional `encryption-type` and `kms-key-name` flags to configure the encryption type for the cloned database. If you don't specify the encryption type, the cloned database will use the same encryption configuration as the source database.
 
     gcloud firestore databases clone \
     --encryption-type=customer-managed-encryption \
@@ -294,25 +294,25 @@ Replace `  KMS_KEY_NAME  ` with the name that you assigned to the key. Use the f
 
 ### Clone a CMEK-protected database to default encryption
 
-To clone to [Google's default encryption](https://cloud.google.com/security/encryption/default-encryption#googles_default_encryption) (non-CMEK), set the `  encryption-type  ` flag in the following way:
+To clone to [Google's default encryption](https://cloud.google.com/security/encryption/default-encryption#googles_default_encryption) (non-CMEK), set the `encryption-type` flag in the following way:
 
     gcloud firestore databases clone \
     --encryption-type=google-default-encryption
 
 ### Clone a CMEK-protected database to the same encryption type as the source database
 
-To clone to the same encryption type as the source database, set the `  encryption-type  ` flag in the following way:
+To clone to the same encryption type as the source database, set the `encryption-type` flag in the following way:
 
     gcloud firestore databases clone \
     --encryption-type=use-source-encryption
 
-This is also the default behavior if `  --encryption-type  ` is unspecified.
+This is also the default behavior if `--encryption-type` is unspecified.
 
 ### Firebase CLI
 
 ### Clone a CMEK-protected database to CMEK encryption
 
-To clone to CMEK encryption, run the `  firebase firestore:databases:clone  ` command with the optional `  encryption-type  ` and `  kms-key-name  ` flags to configure the encryption type for the cloned database. If you don't specify the encryption type, the cloned database will use the same encryption configuration as the source database.
+To clone to CMEK encryption, run the `firebase firestore:databases:clone` command with the optional `encryption-type` and `kms-key-name` flags to configure the encryption type for the cloned database. If you don't specify the encryption type, the cloned database will use the same encryption configuration as the source database.
 
     firebase firestore:databases:clone \
     SOURCE_DATABASE \
@@ -326,7 +326,7 @@ Replace `  KMS_KEY_NAME  ` with the name that you assigned to the key. Use the f
 
 ### Clone a CMEK-protected database to default encryption
 
-To clone to [Google's default encryption](https://cloud.google.com/security/encryption/default-encryption#googles_default_encryption) (non-CMEK), set the `  encryption-type  ` flag in the following way:
+To clone to [Google's default encryption](https://cloud.google.com/security/encryption/default-encryption#googles_default_encryption) (non-CMEK), set the `encryption-type` flag in the following way:
 
     firebase firestore:databases:clone \
     SOURCE_DATABASE \
@@ -335,7 +335,7 @@ To clone to [Google's default encryption](https://cloud.google.com/security/encr
 
 ### Clone a CMEK-protected database to the same encryption type as the source database
 
-To clone to the same encryption type as the source database, set the `  encryption-type  ` flag in the following way:
+To clone to the same encryption type as the source database, set the `encryption-type` flag in the following way:
 
 ``` 
   firebase firestore:databases:clone \
@@ -344,7 +344,7 @@ DESTINATION_DATABASE \
 --encryption-type=USE_SOURCE_ENCRYPTION
 ```
 
-This is also the default behavior if `  --encryption-type  ` is unspecified.
+This is also the default behavior if `--encryption-type` is unspecified.
 
 ## View the key in use
 
@@ -356,7 +356,7 @@ You can use the [databases describe](https://cloud.google.com/sdk/gcloud/referen
       --database=DATABASE_ID \
       --project=FIRESTORE_PROJECT
 
-You should see CMEK information in the `  cmekConfig  ` field in the response similar to the following:
+You should see CMEK information in the `cmekConfig` field in the response similar to the following:
 
     cmekConfig:
         activeKeyVersion:
@@ -367,8 +367,8 @@ You should see CMEK information in the `  cmekConfig  ` field in the response si
 
 The response includes the following information:
 
-  - `  kmsKeyName  ` : the full key resource name of the key that's used to encrypt your CMEK-protected database.
-  - `  activeKeyVersion  ` : a list of all [key versions](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) in use by the CMEK-protected database. During [key rotation](https://cloud.google.com/kms/docs/key-rotation) , you can have multiple active key versions. Both the old key version and new key version need to be available during key rotation. Don't disable the old key version until it no longer appears in the `  activeKeyVersion  ` field.
+  - `kmsKeyName` : the full key resource name of the key that's used to encrypt your CMEK-protected database.
+  - `activeKeyVersion` : a list of all [key versions](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions) in use by the CMEK-protected database. During [key rotation](https://cloud.google.com/kms/docs/key-rotation) , you can have multiple active key versions. Both the old key version and new key version need to be available during key rotation. Don't disable the old key version until it no longer appears in the `activeKeyVersion` field.
 
 ### REST API
 
@@ -376,11 +376,11 @@ HTTP request:
 
     GET https://firestore.googleapis.com/v1/{name=projects/FIRESTORE_PROJECT/databases/DATABASE_ID}
 
-In the request body configure CMEK in the `  cmek_config.kms_key_name  ` field. Set to the full resource ID of a Cloud KMS key. Only a key in the same location as this database is allowed.
+In the request body configure CMEK in the `cmek_config.kms_key_name` field. Set to the full resource ID of a Cloud KMS key. Only a key in the same location as this database is allowed.
 
-This value should be the Cloud KMS key resource ID in the format of `  projects/{KMS_PROJECT}/locations/{KMS_LOCATION}/keyRings/{KMS_KEYRING_ID}/cryptoKeys/{KMS_KEY_ID}  ` .
+This value should be the Cloud KMS key resource ID in the format of `projects/{KMS_PROJECT}/locations/{KMS_LOCATION}/keyRings/{KMS_KEYRING_ID}/cryptoKeys/{KMS_KEY_ID}` .
 
-For more details for other fields, see the [`  database create  ` page](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/create) .
+For more details for other fields, see the [`database create` page](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/create) .
 
 Example request:
 
@@ -411,7 +411,7 @@ To disable a key associated with a database, complete the following:
 2.  [Disable those key versions](https://cloud.google.com/kms/docs/enable-disable#disable)
 3.  Wait for the change to take effect and check if the data is no longer accessible. Changes typically take effect within minutes, but can take up to 3 hours.
 
-When a key used by a database is disabled, expect to receive a `  INVALID_ARGUMENT  ` exception with additional details in the error message, for example:
+When a key used by a database is disabled, expect to receive a `INVALID_ARGUMENT` exception with additional details in the error message, for example:
 
     {
       "error": {
@@ -478,7 +478,7 @@ To specify encryption compliance requirements for Firestore with MongoDB compati
 
 ### Require CMEK protection
 
-Configure `  constraints/gcp.restrictNonCmekServices  ` to require CMEK for Firestore with MongoDB compatibility database creation. Set the constraint to `  deny  ` and add `  firestore.googleapis.com  ` to the deny list, for example:
+Configure `constraints/gcp.restrictNonCmekServices` to require CMEK for Firestore with MongoDB compatibility database creation. Set the constraint to `deny` and add `firestore.googleapis.com` to the deny list, for example:
 
     gcloud resource-manager org-policies deny gcp.restrictNonCmekServices  is:firestore.googleapis.com --project=FIRESTORE_PROJECT
 
@@ -486,7 +486,7 @@ Replace `  FIRESTORE_PROJECT  ` with the project to restrict.
 
 To learn more about configuring organization policies, see [Creating and editing policies](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-policies#creating_and_editing_policies) .
 
-After the policy takes effect, you receive a `  FAILED_PRECONDITION  ` exception and error message if you try to create a non-CMEK database under the affected project. For example, an exception looks like:
+After the policy takes effect, you receive a `FAILED_PRECONDITION` exception and error message if you try to create a non-CMEK database under the affected project. For example, an exception looks like:
 
     {
       "error": {
@@ -506,9 +506,9 @@ After the policy takes effect, you receive a `  FAILED_PRECONDITION  ` exception
 
 ### Limit the use of keys for CMEK
 
-To limit which Cloud KMS keys are used for CMEK protection, configure the `  constraints/gcp.restrictCmekCryptoKeyProjects  ` constraint.
+To limit which Cloud KMS keys are used for CMEK protection, configure the `constraints/gcp.restrictCmekCryptoKeyProjects` constraint.
 
-As a list constraint, the accepted values are resource hierarchy indicators (for example, `  projects/PROJECT_ID  ` , `  under:folders/FOLDER_ID  ` , and `  under:organizations/ORGANIZATION_ID  ` ). Use this constraint by configuring a list of resource hierarchy indicators and setting the constraint to **Allow** . This configuration restricts supported services so that CMEK keys can be chosen only from the listed projects, folders, and organizations. Requests to create CMEK-protected resources in configured services don't succeed without a Firestore with MongoDB compatibility key from one of the allowed resources.
+As a list constraint, the accepted values are resource hierarchy indicators (for example, `projects/PROJECT_ID` , `under:folders/FOLDER_ID` , and `under:organizations/ORGANIZATION_ID` ). Use this constraint by configuring a list of resource hierarchy indicators and setting the constraint to **Allow** . This configuration restricts supported services so that CMEK keys can be chosen only from the listed projects, folders, and organizations. Requests to create CMEK-protected resources in configured services don't succeed without a Firestore with MongoDB compatibility key from one of the allowed resources.
 
 The following example allows only keys from the ALLOWED\_KEY\_PROJECT\_ID for CMEK-protected databases in the specified project:
 
@@ -516,7 +516,7 @@ The following example allows only keys from the ALLOWED\_KEY\_PROJECT\_ID for CM
     under:projects/<var>ALLOWED_KEY_PROJECT_ID</var> \
     --project=<var>FIRESTORE_PROJECT</var>
 
-After the policy takes effect, you receive a `  FAILED_PRECONDITION  ` exception and an error message if you violate the constraint. An exception looks like the following:
+After the policy takes effect, you receive a `FAILED_PRECONDITION` exception and an error message if you violate the constraint. An exception looks like the following:
 
     {
       "error": {

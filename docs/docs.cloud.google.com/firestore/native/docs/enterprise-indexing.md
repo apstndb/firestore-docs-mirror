@@ -12,20 +12,20 @@ To learn more about Firestore Enterprise edition indexes, see [Indexes overview]
 
 Before you can create an index in Firestore, make sure that you are assigned any of the following roles:
 
-  - `  roles/datastore.owner  `
-  - `  roles/datastore.indexAdmin  `
-  - `  roles/editor  `
-  - `  roles/owner  `
+  - `roles/datastore.owner`
+  - `roles/datastore.indexAdmin`
+  - `roles/editor`
+  - `roles/owner`
 
 To grant a role, see [Grant a single role](https://cloud.google.com/iam/docs/granting-changing-revoking-access#single-role) . For more information about Firestore roles and associated permissions, see [Predefined roles](https://docs.cloud.google.com/firestore/native/docs/security/iam) .
 
 If you have defined custom roles, assign all of the following permissions to create indexes:
 
-  - `  datastore.indexes.create  `
-  - `  datastore.indexes.delete  `
-  - `  datastore.indexes.get  `
-  - `  datastore.indexes.list  `
-  - `  datastore.indexes.update  `
+  - `datastore.indexes.create`
+  - `datastore.indexes.delete`
+  - `datastore.indexes.get`
+  - `datastore.indexes.list`
+  - `datastore.indexes.update`
 
 ## Create an index
 
@@ -57,7 +57,7 @@ To create an index, complete the following steps:
 
 ##### gcloud CLI
 
-To create an index, use the [`  gcloud firestore indexes composite create  `](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/create) command.
+To create an index, use the [`gcloud firestore indexes composite create`](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/create) command.
 
 ``` suppresswarning
 gcloud firestore indexes composite create \
@@ -74,7 +74,7 @@ Replace the following:
 
   - COLLECTION : a collection name.
 
-  - FIELD\_CONFIGURATION : a field configuration. For each field, add `  --field-config=field-path=  ` . For example:
+  - FIELD\_CONFIGURATION : a field configuration. For each field, add `--field-config=field-path=` . For example:
     
     ``` suppresswarning
         --field-config=field-path=user-id,order=descending \
@@ -82,15 +82,15 @@ Replace the following:
         
     ```
     
-    For more information about configuring these fields, see [`  --field-config  `](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/create#--field-config) .
+    For more information about configuring these fields, see [`--field-config`](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/create#--field-config) .
 
-To create a sparse index, set `  --density=sparse-any  ` .
+To create a sparse index, set `--density=sparse-any` .
 
-To create a unique index, add the `  --unique  ` flag.
+To create a unique index, add the `--unique` flag.
 
 ##### Terraform
 
-Use the [`  google_firestore_index  `](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_index) resource.
+Use the [`google_firestore_index`](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_index) resource.
 
 ``` suppresswarning
 resource "google_firestore_index" "index" {
@@ -115,8 +115,8 @@ Replace the following:
   - DATABASE\_ID : The database ID for your chosen database
   - COLLECTION : The name of the collection to index
   - FIELD\_PATH : The name of the field to index
-  - ORDER : One of `  ASCENDING  ` or `  DESCENDING  `
-  - DENSITY : One of `  SPARSE_ANY  ` or `  DENSE  `
+  - ORDER : One of `ASCENDING` or `DESCENDING`
+  - DENSITY : One of `SPARSE_ANY` or `DENSE`
 
 ## Delete an index
 
@@ -138,7 +138,7 @@ To delete an index, complete the following steps:
 
 ##### gcloud CLI
 
-1.  To find the name of the index, use the [`  gcloud firestore indexes composite list  `](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/list) command.
+1.  To find the name of the index, use the [`gcloud firestore indexes composite list`](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/list) command.
     
     ``` suppresswarning
     gcloud firestore indexes composite list \
@@ -147,7 +147,7 @@ To delete an index, complete the following steps:
     
     Replace DATABASE\_ID with the database ID.
 
-2.  To delete the index, use the [`  gcloud firestore indexes composite delete  `](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/delete) command.
+2.  To delete the index, use the [`gcloud firestore indexes composite delete`](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/delete) command.
     
     ``` suppresswarning
     gcloud firestore indexes composite delete INDEX_NAME \
@@ -175,17 +175,17 @@ Index builds are *long-running operations* . The following sections describe how
 
 **Key Term:** Firestore supports several administrative operations that can take a long time to complete. These operations are called ***long-running operations*** . Firestore includes features to execute and manage long- running operations. Supported long-running operations include index builds and export operations.
 
-After you start to create an index, Firestore assigns the operation a unique name. Operation names are prefixed with `  projects/ PROJECT_ID /databases/ DATABASE_ID /operations/  ` , for example:
+After you start to create an index, Firestore assigns the operation a unique name. Operation names are prefixed with `projects/ PROJECT_ID /databases/ DATABASE_ID /operations/` , for example:
 
 ``` notranslate
 projects/PROJECT_ID/databases/DATABASE_ID/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
 ```
 
-You can omit the prefix when specifying an operation name for the `  describe  ` command.
+You can omit the prefix when specifying an operation name for the `describe` command.
 
 ### List all long-running operations
 
-To list long-running operations, use the [`  gcloud firestore operations list  `](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command. This command lists ongoing and recently completed operations. Operations are listed for a few days after completion:
+To list long-running operations, use the [`gcloud firestore operations list`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command. This command lists ongoing and recently completed operations. Operations are listed for a few days after completion:
 
 ``` notranslate
 gcloud firestore operations list
@@ -201,11 +201,11 @@ gcloud firestore operations describe operation-name
 
 ### Estimating the completion time
 
-As your operation runs, see the value of the [`  state  ` field](https://cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#state) for the overall status of the operation.
+As your operation runs, see the value of the [`state` field](https://cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#state) for the overall status of the operation.
 
-A request for the status of a long-running operation also returns the metrics `  workEstimated  ` and `  workCompleted  ` . `  workEstimated  ` shows the estimated total number of documents an operation will process. `  workCompleted  ` shows the number of documents processed so far. After the operation completes, `  workCompleted  ` reflects the total number of documents that were actually processed, which might be different than the value of `  workEstimated  ` .
+A request for the status of a long-running operation also returns the metrics `workEstimated` and `workCompleted` . `workEstimated` shows the estimated total number of documents an operation will process. `workCompleted` shows the number of documents processed so far. After the operation completes, `workCompleted` reflects the total number of documents that were actually processed, which might be different than the value of `workEstimated` .
 
-To estimate an operation's progress, divide `  workCompleted  ` by `  workEstimated  ` .
+To estimate an operation's progress, divide `workCompleted` by `workEstimated` .
 
 **Note:** The estimate might be inaccurate because it depends on delayed statistics collection.
 
@@ -232,4 +232,4 @@ The following is an example of the progress of creating an index:
     ...
 ```
 
-When an operation completes, the operation description will contain [`  "done": true  `](https://cloud.google.com/firestore/docs/reference/rpc/google.longrunning#operation) . See the value of the [`  state  ` field](https://cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#state) for the result of the operation. If the `  done  ` field is not set in the response, then the operation has not completed.
+When an operation completes, the operation description will contain [`"done": true`](https://cloud.google.com/firestore/docs/reference/rpc/google.longrunning#operation) . See the value of the [`state` field](https://cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#state) for the result of the operation. If the `done` field is not set in the response, then the operation has not completed.

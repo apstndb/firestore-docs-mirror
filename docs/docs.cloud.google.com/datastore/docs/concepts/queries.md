@@ -123,7 +123,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
     WHERE done = FALSE AND priority >= 4
     ORDER BY priority DESC
 
-**Note:** The properties being filtered on must have a corresponding predefined index which can be defined in your [index configuration file](https://docs.cloud.google.com/datastore/docs/tools/indexconfig) ( `  index.yaml  ` ).
+**Note:** The properties being filtered on must have a corresponding predefined index which can be defined in your [index configuration file](https://docs.cloud.google.com/datastore/docs/tools/indexconfig) ( `index.yaml` ).
 
 The following example shows how to run a query:
 
@@ -309,20 +309,20 @@ The property value must be supplied by the application; it cannot refer to or be
 
 The comparison operator can be any of the following:
 
-| Operator                               | Meaning                                                                                 |
-| -------------------------------------- | --------------------------------------------------------------------------------------- |
-| `        EQUAL       `                 | Equal to                                                                                |
-| `        LESS_THAN       `             | Less than                                                                               |
-| `        LESS_THAN_OR_EQUAL       `    | Less than or equal to                                                                   |
-| `        GREATER_THAN       `          | Greater than                                                                            |
-| `        GREATER_THAN_OR_EQUAL       ` | Greater than or equal to                                                                |
-| `        NOT_EQUAL       `             | Not equal to                                                                            |
-| `        IN       `                    | Member of the specified list. Equal to any of the values in a specified list.           |
-| `        NOT_IN       `                | Not a member of the specified list. Not equal to any of the values in a specified list. |
+| Operator                | Meaning                                                                                 |
+| ----------------------- | --------------------------------------------------------------------------------------- |
+| `EQUAL`                 | Equal to                                                                                |
+| `LESS_THAN`             | Less than                                                                               |
+| `LESS_THAN_OR_EQUAL`    | Less than or equal to                                                                   |
+| `GREATER_THAN`          | Greater than                                                                            |
+| `GREATER_THAN_OR_EQUAL` | Greater than or equal to                                                                |
+| `NOT_EQUAL`             | Not equal to                                                                            |
+| `IN`                    | Member of the specified list. Equal to any of the values in a specified list.           |
+| `NOT_IN`                | Not a member of the specified list. Not equal to any of the values in a specified list. |
 
 #### Composite filters
 
-A *composite filter* consists of more than one property filter. You can combine filters with `  AND  ` and `  OR  ` . The following example returns `  Task  ` entities that are marked not done and have a priority of 4:
+A *composite filter* consists of more than one property filter. You can combine filters with `AND` and `OR` . The following example returns `Task` entities that are marked not done and have a priority of 4:
 
 ### C\#
 
@@ -416,7 +416,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
     SELECT * FROM Task WHERE done = FALSE AND priority = 4
 
-The following example combines filters with a logical `  OR  ` :
+The following example combines filters with a logical `OR` :
 
 ##### C\#
 
@@ -549,7 +549,7 @@ Snippet not available.
 
 Snippet not available.
 
-Firestore in Datastore mode supports combining filters with `  AND  ` and `  OR  ` operators. The following example returns `  Task  ` entities that are either starred or that are marked not done and have a priority of 4:
+Firestore in Datastore mode supports combining filters with `AND` and `OR` operators. The following example returns `Task` entities that are either starred or that are marked not done and have a priority of 4:
 
 ##### C\#
 
@@ -613,7 +613,7 @@ Snippet not available.
 
 #### Key filters
 
-To filter on the value of an entity's key, use the special property `  __key__  ` :
+To filter on the value of an entity's key, use the special property `__key__` :
 
 ### C\#
 
@@ -969,16 +969,16 @@ If no sort orders are specified, the results are returned in the order they are 
 *Sort orders* have the following restrictions:
 
   - Because of the way Datastore mode executes queries, if a query specifies inequality filters on a property and *sort orders* on other properties, [the property used in the inequality filters must be ordered before the other properties](https://docs.cloud.google.com/datastore/docs/concepts/queries#properties_used_in_inequality_filters_must_be_sorted_first) .
-  - If ordering is specified, the set of properties specified in the `  distinct on  ` clause must appear before any non- `  distinct on  ` properties in the *sort orders* . For more information, see [grouping queries](https://docs.cloud.google.com/datastore/docs/concepts/queries#grouping) .
+  - If ordering is specified, the set of properties specified in the `distinct on` clause must appear before any non- `distinct on` properties in the *sort orders* . For more information, see [grouping queries](https://docs.cloud.google.com/datastore/docs/concepts/queries#grouping) .
   - [Sort orders on properties with equality filters are all ignored](https://docs.cloud.google.com/datastore/docs/concepts/queries#sort_orders_are_ignored_on_properties_with_equality_filters) .
 
 ## Special query types
 
 Some specific types of query deserve special mention:
 
-### `     != Not equal    `
+### `!= Not equal`
 
-Use the not-equal ( `  !=  ` ) operator to return entities where the given property exists and doesn't match the comparison value.
+Use the not-equal ( `!=` ) operator to return entities where the given property exists and doesn't match the comparison value.
 
 ### C\#
 
@@ -1084,22 +1084,22 @@ Not Applicable
 
     SELECT * FROM Task WHERE category != 'work'
 
-This query returns every `  Task  ` entity where the `  category  ` property exists and is set to any value other than `  Work  ` .
+This query returns every `Task` entity where the `category` property exists and is set to any value other than `Work` .
 
-This query doesn't return entities where the `  category  ` property doesn't exist. Not-equal ( `  !=  ` ) and `  NOT_IN  ` queries exclude entities where the given property doesn't exist or where the property is excluded from indexing. A property exists when it's set to any value, including an empty string or `  null  ` .
+This query doesn't return entities where the `category` property doesn't exist. Not-equal ( `!=` ) and `NOT_IN` queries exclude entities where the given property doesn't exist or where the property is excluded from indexing. A property exists when it's set to any value, including an empty string or `null` .
 
 **Note:** This features is available for Firestore in Datastore mode. It is not available for pre-migration [Datastore databases](https://docs.cloud.google.com/datastore/docs/upgrade-to-firestore) .
 
 #### Limitations
 
-Note the following limitations for `  !=  ` queries:
+Note the following limitations for `!=` queries:
 
   - Only entities where the given property exists can match the query.
-  - Only a single `  NOT_IN  ` or `  !=  ` is allowed per query.
+  - Only a single `NOT_IN` or `!=` is allowed per query.
 
-### `     IN    `
+### `IN`
 
-Use the `  IN  ` operator to combine up to 30 equality ( `  ==  ` ) clauses on the same property with a logical `  OR  ` . An `  IN  ` query returns entities where the given property matches any of the comparison values.
+Use the `IN` operator to combine up to 30 equality ( `==` ) clauses on the same property with a logical `OR` . An `IN` query returns entities where the given property matches any of the comparison values.
 
 ### C\#
 
@@ -1205,13 +1205,13 @@ Not Applicable
 
     SELECT * FROM Task WHERE tag IN ARRAY('learn', 'study')
 
-This query returns every `  Task  ` entity where the `  tag  ` property is set to `  learn  ` or `  study  ` . This includes `  Task  ` entities where the `  tag  ` property includes one of these values but not the other.
+This query returns every `Task` entity where the `tag` property is set to `learn` or `study` . This includes `Task` entities where the `tag` property includes one of these values but not the other.
 
 **Note:** This features is available for Firestore in Datastore mode. It is not available for pre-migration [Datastore databases](https://docs.cloud.google.com/datastore/docs/upgrade-to-firestore) .
 
-### `     NOT_IN    `
+### `NOT_IN`
 
-Use the `  NOT_IN  ` operator to combine up to 10 not-equal ( `  !=  ` ) clauses on the same property with a logical `  AND  ` . A `  NOT_IN  ` query returns entities where the given property exists and doesn't match any of the comparison values.
+Use the `NOT_IN` operator to combine up to 10 not-equal ( `!=` ) clauses on the same property with a logical `AND` . A `NOT_IN` query returns entities where the given property exists and doesn't match any of the comparison values.
 
 ### C\#
 
@@ -1317,16 +1317,16 @@ Not Applicable
 
     SELECT * FROM Task WHERE category NOT IN ARRAY('work', 'chores', 'school')
 
-This query doesn't return entities where the `  category  ` entity doesn't exist. Not-equal ( `  !=  ` ) and `  NOT_IN  ` queries exclude entities where the given property doesn't exist. A property exists when it's set to any value, including an empty string or `  null  ` .
+This query doesn't return entities where the `category` entity doesn't exist. Not-equal ( `!=` ) and `NOT_IN` queries exclude entities where the given property doesn't exist. A property exists when it's set to any value, including an empty string or `null` .
 
 **Note:** This features is available for Firestore in Datastore mode. It is not available for pre-migration [Datastore databases](https://docs.cloud.google.com/datastore/docs/upgrade-to-firestore) .
 
 #### Limitations
 
-Note the following limitations for `  NOT_IN  ` queries:
+Note the following limitations for `NOT_IN` queries:
 
   - Only entities where the given property exists can match the query.
-  - Only a single `  NOT_IN  ` or `  !=  ` is allowed per query.
+  - Only a single `NOT_IN` or `!=` is allowed per query.
 
 ### Ancestor queries
 
@@ -1423,13 +1423,13 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
 #### Limitations on Ancestor queries
 
-Note the following limitations for `  Ancestor  ` queries:
+Note the following limitations for `Ancestor` queries:
 
   - All evaluated disjunctions must have the same ancestor filter.
 
 ### Kindless queries
 
-A query with no kind and no ancestor retrieves all of the entities of an application from Datastore mode. Such *kindless queries* cannot include filters or sort orders on property values. They can, however, filter on entity keys and use ancestor filters. Key filters can be used by specifying `  __key__  ` as the property name:
+A query with no kind and no ancestor retrieves all of the entities of an application from Datastore mode. Such *kindless queries* cannot include filters or sort orders on property values. They can, however, filter on entity keys and use ancestor filters. Key filters can be used by specifying `__key__` as the property name:
 
 ### C\#
 
@@ -1605,7 +1605,7 @@ Projection queries are similar to SQL queries of the form:
 
 You can use all of the filtering and sorting features available for standard entity queries, but note [these limitations](https://docs.cloud.google.com/datastore/docs/concepts/queries#limitations_on_projections) .
 
-The example SQL query returns abridged results with only the specified properties, `  priority  ` and `  percent_complete  ` , populated with values; all other properties are not populated. Here's how you construct this as a projection query:
+The example SQL query returns abridged results with only the specified properties, `priority` and `percent_complete` , populated with values; all other properties are not populated. Here's how you construct this as a projection query:
 
 ### C\#
 
@@ -1807,11 +1807,11 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
 Not Applicable
 
-A projection query that doesn't use the [`  distinct on  `](https://docs.cloud.google.com/datastore/docs/concepts/queries#grouping) clause is a small operation and counts as only a single entity read for the query itself.
+A projection query that doesn't use the [`distinct on`](https://docs.cloud.google.com/datastore/docs/concepts/queries#grouping) clause is a small operation and counts as only a single entity read for the query itself.
 
 #### Grouping
 
-Projection queries can use the `  distinct on  ` clause to ensure that only the first result for each distinct combination of values for the specified properties will be returned. This will return only the first result for entities which have the same values for the properties that are being projected.
+Projection queries can use the `distinct on` clause to ensure that only the first result for each distinct combination of values for the specified properties will be returned. This will return only the first result for entities which have the same values for the properties that are being projected.
 
 ### C\#
 
@@ -1912,11 +1912,11 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
     SELECT DISTINCT ON (category) category, priority FROM Task
     ORDER BY category, priority
 
-The set of properties specified in the `  distinct on  ` clause must appear before any non- `  distinct on  ` properties in the `  order by  ` clause if `  order by  ` is specified.
+The set of properties specified in the `distinct on` clause must appear before any non- `distinct on` properties in the `order by` clause if `order by` is specified.
 
 ### Aggregation queries
 
-Firestore in Datastore mode supports the `  count()  ` aggregation query. See [Aggregation queries](https://docs.cloud.google.com/datastore/docs/aggregation-queries) .
+Firestore in Datastore mode supports the `count()` aggregation query. See [Aggregation queries](https://docs.cloud.google.com/datastore/docs/aggregation-queries) .
 
 ### Range and inequality filters on multiple properties
 
@@ -1932,7 +1932,7 @@ Consider the following when your query includes properties with array values.
 
 Because of the way they're indexed, entities with multiple values for the same property can sometimes interact with query filters and sort orders in unexpected and surprising ways.
 
-If a query has multiple inequality filters on a given property, an entity will match the query only if at least one of its individual values for the property satisfies *all* of the filters. For example, if an entity of kind `  Task  ` has values `  fun  ` and `  programming  ` for property `  tag  ` , it will *not* match the query:
+If a query has multiple inequality filters on a given property, an entity will match the query only if at least one of its individual values for the property satisfies *all* of the filters. For example, if an entity of kind `Task` has values `fun` and `programming` for property `tag` , it will *not* match the query:
 
 ### C\#
 
@@ -2026,11 +2026,11 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
     SELECT * FROM Task WHERE tag > 'learn' AND tag < 'math'
 
-Each of the entity's `  tag  ` values satisfies one of the filters, but neither single value satisfies both.
+Each of the entity's `tag` values satisfies one of the filters, but neither single value satisfies both.
 
 ### Multiple equality filters
 
-Multiple equality filters can be used to query for entities that contain a set of values. For example, an entity of kind `  Task  ` with values `  fun  ` and `  programming  ` for property `  tag  ` *will* satisfy the query
+Multiple equality filters can be used to query for entities that contain a set of values. For example, an entity of kind `Task` with values `fun` and `programming` for property `tag` *will* satisfy the query
 
 ### C\#
 
@@ -2124,7 +2124,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
     SELECT * FROM Task WHERE tag = 'fun' AND tag = 'programming'
 
-even though neither of the entity's individual `  tag  ` values satisfies both filter conditions.
+even though neither of the entity's individual `tag` values satisfies both filter conditions.
 
 ### Sort Order
 
@@ -2136,11 +2136,11 @@ If a multi-valued property is not used in any filter:
   - and the query results are sorted in descending order by the property, the greatest value is used for ordering.
   - other values don't affect the sort order, nor does the number of values.
 
-This has the unusual consequence that an entity with property values `  1  ` and `  9  ` precedes an entity with values `  4  ` , `  5  ` , `  6  ` , and `  7  ` in both ascending *and* descending order.
+This has the unusual consequence that an entity with property values `1` and `9` precedes an entity with values `4` , `5` , `6` , and `7` in both ascending *and* descending order.
 
 If a multi-valued property is used in an equality filter, [any sort order on that property is ignored](https://docs.cloud.google.com/datastore/docs/concepts/queries#sort_orders_are_ignored_on_properties_with_equality_filters) .
 
-If a multi-valued property is used in an inequality or an `  NOT_IN  ` filter:
+If a multi-valued property is used in an inequality or an `NOT_IN` filter:
 
   - and the query results are sorted in ascending order by the property, the smallest value that satisfies all of the query's inequality filters is used for ordering.
   - and the query results are sorted in descending order by the property, the greatest value that satisfies all of the query's inequality filters is used for ordering.
@@ -2155,7 +2155,7 @@ any sort order on that property is ignored, as the filters evaluate the same as 
 
 ### Projections and array-valued properties
 
-Projecting a property with array values won't populate all values for that property. Instead, a separate entity will be returned for each unique combination of projected values matching the query. For example, suppose you have an entity of kind `  Task  ` with two multiple-valued properties, `  tag  ` and `  collaborators  ` :
+Projecting a property with array values won't populate all values for that property. Instead, a separate entity will be returned for each unique combination of projected values matching the query. For example, suppose you have an entity of kind `Task` with two multiple-valued properties, `tag` and `collaborators` :
 
 ### C\#
 
@@ -2260,10 +2260,10 @@ Then the projection query
 
 will return four entities with the following combinations of values:
 
-`  tag  ` = `  'fun'  ` , `  collaborators  ` = `  'alice'  `  
-`  tag  ` = `  'fun'  ` , `  collaborators  ` = `  'bob'  `  
-`  tag  ` = `  'programming'  ` , `  collaborators  ` = `  'alice'  `  
-`  tag  ` = `  'programming'  ` , `  collaborators  ` = `  'bob'  `
+`tag` = `'fun'` , `collaborators` = `'alice'`  
+`tag` = `'fun'` , `collaborators` = `'bob'`  
+`tag` = `'programming'` , `collaborators` = `'alice'`  
+`tag` = `'programming'` , `collaborators` = `'bob'`
 
 **Warning:** Including more than one array-valued property in a projection will result in an [exploding index](https://docs.cloud.google.com/datastore/docs/concepts/indexes#index_limits) .
 
@@ -2344,7 +2344,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
     SELECT * FROM Task LIMIT 5
 
-*Query cursors* allow an application to retrieve a query's results in convenient batches without incurring the overhead of a query offset. After performing a retrieval operation, the application can obtain a cursor, which is an opaque byte string marking the index position of the last result retrieved. The application can save this string (for instance in your Datastore mode database, a cache, or embedded in a web page as a base-64 encoded HTTP `  GET  ` or `  POST  ` parameter), and can then use the cursor as the starting point for a subsequent retrieval operation to obtain the next batch of results from the point where the previous retrieval ended. A retrieval can also specify an end cursor, to limit the extent of the result set returned.
+*Query cursors* allow an application to retrieve a query's results in convenient batches without incurring the overhead of a query offset. After performing a retrieval operation, the application can obtain a cursor, which is an opaque byte string marking the index position of the last result retrieved. The application can save this string (for instance in your Datastore mode database, a cache, or embedded in a web page as a base-64 encoded HTTP `GET` or `POST` parameter), and can then use the cursor as the starting point for a subsequent retrieval operation to obtain the next batch of results from the point where the previous retrieval ended. A retrieval can also specify an end cursor, to limit the extent of the result set returned.
 
 The following example demonstrates the use of cursors for pagination:
 
@@ -2563,7 +2563,7 @@ Cursors are subject to the following limitations:
       - ancestor
       - filter
       - distinct on
-      - sort order An exception is if the original query's final sort order was on `  __key__  ` . In that case, you can use the cursor in a *reverse query* , which is the original query with each sort order reversed. The reverse query can modify the start cursor, end cursor, offset, and limit.
+      - sort order An exception is if the original query's final sort order was on `__key__` . In that case, you can use the cursor in a *reverse query* , which is the original query with each sort order reversed. The reverse query can modify the start cursor, end cursor, offset, and limit.
   - Cursors don't always work as expected with a query that uses an inequality filter or a sort order on a property with multiple values. The de-duplication logic for such multiple-valued properties doesn't persist between retrievals, possibly causing the same result to be returned more than once.
   - New Datastore mode releases may change internal implementation details, invalidating cursors that depend on them. If an application attempts to use a cursor that is no longer valid, Firestore in Datastore mode raises an exception.
 
@@ -2591,9 +2591,9 @@ A query can't find property values that aren't indexed, nor can it sort on such 
 
 To prevent queries from becoming too expensive to run, Firestore in Datastore mode limits the number of range or inequality properties to 10. For more information on queries with inequality filters, see [Query using range and inequality filters on multiple properties](https://docs.cloud.google.com/datastore/docs/multiple-range-fields) .
 
-#### You can't use both `     NOT_EQUAL    ` and `     NOT_IN    ` s
+#### You can't use both `NOT_EQUAL` and `NOT_IN` s
 
-If you use the `  NOT_IN  ` , you can't also add a `  NOT_EQUAL  ` clause.
+If you use the `NOT_IN` , you can't also add a `NOT_EQUAL` clause.
 
 #### Ordering of query results is undefined when no sort order is specified
 
@@ -2669,7 +2669,7 @@ Not Applicable
     # Sort order on an equality filter is ignored
     SELECT * FROM Task WHERE tag = 'learn' ORDER BY tag ASC
 
-This doesn't apply to queries that include an `  IN  ` filter. Use the [`  IN  ` operator](https://docs.cloud.google.com/datastore/docs/concepts/queries#in) to combine up to 10 equality ( `  ==  ` ) clauses on the same property with a logical `  OR  ` . If you add a sort order for that property, it's applied to the result set.
+This doesn't apply to queries that include an `IN` filter. Use the [`IN` operator](https://docs.cloud.google.com/datastore/docs/concepts/queries#in) to combine up to 10 equality ( `==` ) clauses on the same property with a logical `OR` . If you add a sort order for that property, it's applied to the result set.
 
 ### C\#
 
@@ -3021,11 +3021,11 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
     # Invalid query!
     SELECT * FROM Task WHERE priority > 3 ORDER BY created, priority
 
-#### `     OrderBy    ` and existence
+#### `OrderBy` and existence
 
 When you order a query by a given property, the query can return only the entities where the order-by property exists.
 
-For example, the following query wouldn't return any entities where the `  priority  ` property is not set, even if they otherwise meet the query filters.
+For example, the following query wouldn't return any entities where the `priority` property is not set, even if they otherwise meet the query filters.
 
 ##### Java
 
@@ -3037,7 +3037,7 @@ Query<Entity> query =
                                  .build();
 ```
 
-A related effect applies to inequalities. A query with an inequality filter on a property also implies ordering by that property. The following query doesn't return entities without a `  priority  ` property even if `  starred = true  ` in that entity. As a workaround, you can execute separate queries for each ordering or you can assign a value for all properties that you order by.
+A related effect applies to inequalities. A query with an inequality filter on a property also implies ordering by that property. The following query doesn't return entities without a `priority` property even if `starred = true` in that entity. As a workaround, you can execute separate queries for each ordering or you can assign a value for all properties that you order by.
 
 ##### Java
 
@@ -3073,7 +3073,7 @@ Projection queries are subject to the following limitations:
 
   - **Only indexed properties can be projected.**
     
-    This means that all properties used in a query (projected or filters) must exist in the same index. So, `  select tag from Task where priority = 1  ` requires a composite index on priority then tag.
+    This means that all properties used in a query (projected or filters) must exist in the same index. So, `select tag from Task where priority = 1` requires a composite index on priority then tag.
     
     Projection is not supported for strings that are longer than 1500 bytes, byte arrays that have more than 1500 elements, and other properties explicitly marked as unindexed.
 

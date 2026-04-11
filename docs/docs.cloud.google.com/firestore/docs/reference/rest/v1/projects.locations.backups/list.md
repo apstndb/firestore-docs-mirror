@@ -97,7 +97,7 @@ eu
 us
 
   
-`  GET https://firestore.googleapis.com/v1/{parent=projects/*/locations/*}/backups  `
+`GET https://firestore.googleapis.com/v1/{parent=projects/*/locations/*}/backups`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -105,29 +105,29 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
 Required. The location to list backups from.
 
-Format is `  projects/{project}/locations/{location}  ` . Use `  {location} = '-'  ` to list backups from all locations for the given project. This allows listing backups from a single location or from all locations.
+Format is `projects/{project}/locations/{location}` . Use `{location} = '-'` to list backups from all locations for the given project. This allows listing backups from a single location or from all locations.
 
 ### Query parameters
 
 Parameters
 
-`  filter  `
+`filter`
 
-`  string  `
+`string`
 
 An expression that filters the list of returned backups.
 
-A filter expression consists of a field name, a comparison operator, and a value for filtering. The value must be a string, a number, or a boolean. The comparison operator must be one of: `  <  ` , `  >  ` , `  <=  ` , `  >=  ` , `  !=  ` , `  =  ` , or `  :  ` . Colon `  :  ` is the contains operator. Filter rules are not case sensitive.
+A filter expression consists of a field name, a comparison operator, and a value for filtering. The value must be a string, a number, or a boolean. The comparison operator must be one of: `<` , `>` , `<=` , `>=` , `!=` , `=` , or `:` . Colon `:` is the contains operator. Filter rules are not case sensitive.
 
 The following fields in the `  Backup  ` are eligible for filtering:
 
-  - `  databaseUid  ` (supports `  =  ` only)
+  - `databaseUid` (supports `=` only)
 
 ### Request body
 
@@ -150,31 +150,22 @@ If successful, the response body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;backups&quot;: [
-    {
-      object (Backup)
-    }
-  ],
-  &quot;unreachable&quot;: [
-    string
-  ]
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;backups&quot;: [{object (Backup)}],&quot;unreachable&quot;: [string]}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  backups[]  `
+`backups[]`
 
-`  object ( Backup  ` )
+` object ( Backup  ` )
 
 List of all backups for the project.
 
-`  unreachable[]  `
+`unreachable[]`
 
-`  string  `
+`string`
 
 List of locations that existing backups were not able to be fetched from.
 
@@ -184,7 +175,7 @@ Instead of failing the entire requests when a single location is unreachable, th
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

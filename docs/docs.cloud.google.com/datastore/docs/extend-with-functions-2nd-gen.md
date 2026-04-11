@@ -4,22 +4,22 @@ With Cloud Run functions and Eventarc, you can deploy code to handle events trig
 
 Eventarc supports the following Firestore in Datastore mode event triggers to let you create Cloud Run functions (2nd gen) handlers tied to Firestore in Datastore mode events:
 
-| Event Type                                                                | Trigger                                                                                                      |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `        google.cloud.datastore.entity.v1.created       `                 | Triggered when an entity is written for the first time.                                                      |
-| `        google.cloud.datastore.entity.v1.updated       `                 | Triggered when an entity already exists and has any value changed.                                           |
-| `        google.cloud.datastore.entity.v1.deleted       `                 | Triggered when an entity is deleted.                                                                         |
-| `        google.cloud.datastore.entity.v1.written       `                 | Triggered when `        created       ` , `        updated       ` or `        deleted       ` is triggered. |
-| `        google.cloud.datastore.entity.v1.created.withAuthContext       ` | Same as `        created       ` but adds authentication information.                                        |
-| `        google.cloud.datastore.entity.v1.updated.withAuthContext       ` | Same as `        updated       ` but adds authentication information.                                        |
-| `        google.cloud.datastore.entity.v1.deleted.withAuthContext       ` | Same as `        deleted       ` but adds authentication information.                                        |
-| `        google.cloud.datastore.entity.v1.written.withAuthContext       ` | Same as `        written       ` but adds authentication information.                                        |
+| Event Type                                                 | Trigger                                                            |
+| ---------------------------------------------------------- | ------------------------------------------------------------------ |
+| `google.cloud.datastore.entity.v1.created`                 | Triggered when an entity is written for the first time.            |
+| `google.cloud.datastore.entity.v1.updated`                 | Triggered when an entity already exists and has any value changed. |
+| `google.cloud.datastore.entity.v1.deleted`                 | Triggered when an entity is deleted.                               |
+| `google.cloud.datastore.entity.v1.written`                 | Triggered when `created` , `updated` or `deleted` is triggered.    |
+| `google.cloud.datastore.entity.v1.created.withAuthContext` | Same as `created` but adds authentication information.             |
+| `google.cloud.datastore.entity.v1.updated.withAuthContext` | Same as `updated` but adds authentication information.             |
+| `google.cloud.datastore.entity.v1.deleted.withAuthContext` | Same as `deleted` but adds authentication information.             |
+| `google.cloud.datastore.entity.v1.written.withAuthContext` | Same as `written` but adds authentication information.             |
 
 Datastore mode event triggers respond only to entity changes. An update to a Datastore mode entity where data is unchanged (a no-op write) does not generate an update or write event. You cannot generate events for only specific properties.
 
 ### Include authentication context in the event
 
-To include additional authentication information about the event, use an event trigger with the `  withAuthContext  ` extension. This extension adds additional information about the principal that triggered the event. It adds the `  authtype  ` and `  authid  ` attributes in addition to the information returned in the base event. See the [`  authcontext  `](https://github.com/cloudevents/spec/blob/main/cloudevents/extensions/authcontext.md) reference for more information about attribute values.
+To include additional authentication information about the event, use an event trigger with the `withAuthContext` extension. This extension adds additional information about the principal that triggered the event. It adds the `authtype` and `authid` attributes in addition to the information returned in the base event. See the [`authcontext`](https://github.com/cloudevents/spec/blob/main/cloudevents/extensions/authcontext.md) reference for more information about attribute values.
 
 ## Write an entity-triggered function
 
@@ -31,59 +31,59 @@ To write a function that responds to Firestore in Datastore mode events, prepare
 
 ### Trigger event filters
 
-When you specify an event filter, you can specify either an exact entity match or a path pattern. Use a path pattern to match multiple entities with the wildcards `  *  ` or `  **  ` .
+When you specify an event filter, you can specify either an exact entity match or a path pattern. Use a path pattern to match multiple entities with the wildcards `*` or `**` .
 
 For example, you can specify an exact entity match to respond to changes to the following entity:
 
     users/marie
 
-Use wildcards, `  *  ` or `  **  ` , to respond to changes in entities that match a pattern. The `  *  ` wildcard matches a single segment, and the `  **  ` multi-segment wildcard matches zero or more segments in the pattern.
+Use wildcards, `*` or `**` , to respond to changes in entities that match a pattern. The `*` wildcard matches a single segment, and the `**` multi-segment wildcard matches zero or more segments in the pattern.
 
-For single segment matches ( `  *  ` ) you can also use a named capture group, such as `  users/{userId}  ` .
+For single segment matches ( `*` ) you can also use a named capture group, such as `users/{userId}` .
 
 The following table demonstrates valid path patterns:
 
-| Pattern                                                     | Description                                                                                                                                                     |
-| ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `        users/*       ` or `        users/{userId}       ` | Matches all entities of kind `        users       ` . Does not match descendant entities level like `        /users/marie/messages/33e2IxYBD9enzS50SJ68       ` |
-| `        users/**       `                                   | Matches all entities of kind `        users       ` and all descendant entities like `        /users/marie/messages/33e2IxYBD9enzS50SJ68       `                |
+| Pattern                       | Description                                                                                                                       |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `users/*` or `users/{userId}` | Matches all entities of kind `users` . Does not match descendant entities level like `/users/marie/messages/33e2IxYBD9enzS50SJ68` |
+| `users/**`                    | Matches all entities of kind `users` and all descendant entities like `/users/marie/messages/33e2IxYBD9enzS50SJ68`                |
 
 To learn more about path patterns, see [Eventarc path patterns](https://docs.cloud.google.com/eventarc/docs/path-patterns) .
 
 Your trigger must *always* point to an entity, even if you're using a wildcard. See the following examples:
 
-  - `  users/{userId=*}/{messages=*}  ` is not valid because `  {messages=*}  ` is a kind ID.
+  - `users/{userId=*}/{messages=*}` is not valid because `{messages=*}` is a kind ID.
 
-  - `  users/{userId=*}/{messages}/{messageId=*}  ` *is* valid because `  {messageId=*}  ` always points to an entity.
+  - `users/{userId=*}/{messages}/{messageId=*}` *is* valid because `{messageId=*}` always points to an entity.
 
 ### Character escaping
 
 The section describes situations that require you to escape characters in kind IDs and entity IDs. Escaping a character lets the event filter correctly interpret the ID.
 
-  - If a kind ID or entity ID includes a `  ~  ` or `  /  ` character, you must escape the ID in your event filter. To escape an ID, use the format `  __esc ENCODED_ID __  ` . Replace ENCODED\_ID with a kind ID or entity ID that has all `  ~  ` and `  /  ` characters replaced by their encoding IDs, which are the following:
+  - If a kind ID or entity ID includes a `~` or `/` character, you must escape the ID in your event filter. To escape an ID, use the format `__esc ENCODED_ID __` . Replace ENCODED\_ID with a kind ID or entity ID that has all `~` and `/` characters replaced by their encoding IDs, which are the following:
     
-      - `  ~  ` : `  ~0  `
-      - `  /  ` : `  ~1  `
+      - `~` : `~0`
+      - `/` : `~1`
     
-    For example, the kind ID `  user/profile  ` becomes `  __escusers~1profile__  ` . An example path pattern with this kind ID is `  __escusers~1profile__/{userId}  `
+    For example, the kind ID `user/profile` becomes `__escusers~1profile__` . An example path pattern with this kind ID is `__escusers~1profile__/{userId}`
 
-  - If you use the kind ID or entity ID of either `  .  ` or `  ..  ` in your event filter, you must escape the ID as follows:
+  - If you use the kind ID or entity ID of either `.` or `..` in your event filter, you must escape the ID as follows:
     
-      - `  .  ` : `  __esc~2__  `
-      - `  ..  ` : `  __esc~2~2__  `
+      - `.` : `__esc~2__`
+      - `..` : `__esc~2~2__`
     
-    You need to escape the `  .  ` character only if the ID is exactly `  .  ` or `  ..  ` . For example, the kind ID `  customers.info  ` does not require escaping.
+    You need to escape the `.` character only if the ID is exactly `.` or `..` . For example, the kind ID `customers.info` does not require escaping.
 
-  - If your kind or entity ID is a numeric value instead of a string value, you must escape the ID with `  __id NUMERIC_VALUE __  ` . For example, the path pattern for an entity of kind `  111  ` and entity ID `  222  ` is `  __id111__/__id222__  ` .
+  - If your kind or entity ID is a numeric value instead of a string value, you must escape the ID with `__id NUMERIC_VALUE __` . For example, the path pattern for an entity of kind `111` and entity ID `222` is `__id111__/__id222__` .
 
-  - If you migrated from [Legacy Cloud Datastore](https://docs.cloud.google.com/datastore/docs/upgrade-to-firestore) to Firestore in Datastore mode, your database might contain legacy IDs in a non-UTF8 encoding. You must escape these IDs with `  __bytes BASE64_ENCODING __  ` . Replace BASE64\_ENCODING with the base-64 encoding of the ID. For example, the path pattern `  Task/{task}  ` with escaping for non-UTF8 kind ID `  Task  ` becomes `  __bytesVGFzaw==__/{task}  ` .
+  - If you migrated from [Legacy Cloud Datastore](https://docs.cloud.google.com/datastore/docs/upgrade-to-firestore) to Firestore in Datastore mode, your database might contain legacy IDs in a non-UTF8 encoding. You must escape these IDs with `__bytes BASE64_ENCODING __` . Replace BASE64\_ENCODING with the base-64 encoding of the ID. For example, the path pattern `Task/{task}` with escaping for non-UTF8 kind ID `Task` becomes `__bytesVGFzaw==__/{task}` .
 
 ## Example functions
 
-The following sample demonstrates how to receive Datastore mode events. To work with the data involved in an event, look at the `  value  ` and `  old_value  ` fields.
+The following sample demonstrates how to receive Datastore mode events. To work with the data involved in an event, look at the `value` and `old_value` fields.
 
-  - `  value  ` : An `  EntityResult  ` object that contains a **post-operation** entity snapshot. This field is not populated for delete events.
-  - `  old_value  ` : An `  EntityResult  ` object that contains a **pre-operation** entity snapshot. This field is only populated for update and delete events.
+  - `value` : An `EntityResult` object that contains a **post-operation** entity snapshot. This field is not populated for delete events.
+  - `old_value` : An `EntityResult` object that contains a **pre-operation** entity snapshot. This field is only populated for update and delete events.
 
 ### Java
 
@@ -117,13 +117,13 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 
 ### Include the proto dependencies in your source
 
-You must include the [Datastore mode `  data.proto  `](https://github.com/googleapis/google-cloudevents/blob/main/proto/google/events/cloud/datastore/v1/data.proto) file in the source directory for your function. This file imports the following protos which you must also include in your source directory:
+You must include the [Datastore mode `data.proto`](https://github.com/googleapis/google-cloudevents/blob/main/proto/google/events/cloud/datastore/v1/data.proto) file in the source directory for your function. This file imports the following protos which you must also include in your source directory:
 
-  - [`  google/protobuf/struct.proto  `](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/struct.proto)
-  - [`  google/protobuf/timestamp.proto  `](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/timestamp.proto)
-  - [`  google/type/latlng.proto  `](https://github.com/googleapis/googleapis/blob/master/google/type/latlng.proto)
+  - [`google/protobuf/struct.proto`](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/struct.proto)
+  - [`google/protobuf/timestamp.proto`](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/timestamp.proto)
+  - [`google/type/latlng.proto`](https://github.com/googleapis/googleapis/blob/master/google/type/latlng.proto)
 
-Use the same directory structure for the dependencies. For example, place `  struct.proto  ` within `  google/protobuf  ` .
+Use the same directory structure for the dependencies. For example, place `struct.proto` within `google/protobuf` .
 
 These files are required to decode event data. If your function source does not include these files, it returns an error when it runs.
 
@@ -157,7 +157,7 @@ You can deploy a function using either the gcloud CLI or the Google Cloud consol
     
     At the bottom of the Google Cloud console, a [Cloud Shell](https://docs.cloud.google.com/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
 
-2.  Use the [`  gcloud functions deploy  `](https://docs.cloud.google.com/sdk/gcloud/reference/functions/deploy) command to deploy a function:
+2.  Use the [`gcloud functions deploy`](https://docs.cloud.google.com/sdk/gcloud/reference/functions/deploy) command to deploy a function:
     
     ``` lang-sh
     gcloud functions deploy FUNCTION_NAME \
@@ -175,17 +175,17 @@ You can deploy a function using either the gcloud CLI or the Google Cloud consol
     
     The first argument, FUNCTION\_NAME , is a name for your deployed function. The function name must start with a letter followed by up to 62 letters, numbers, hyphens, or underscores, and must end with a letter or a number. Replace FUNCTION\_NAME with a valid function name. Then, add the following flags:
     
-      - The [`  --gen2  `](https://docs.cloud.google.com/sdk/gcloud/reference/functions/deploy#--gen2) flag specifies that you want to deploy to Cloud Run functions (2nd gen). Omitting this flag results in deployment to Cloud Run functions (1st gen).
+      - The [`--gen2`](https://docs.cloud.google.com/sdk/gcloud/reference/functions/deploy#--gen2) flag specifies that you want to deploy to Cloud Run functions (2nd gen). Omitting this flag results in deployment to Cloud Run functions (1st gen).
     
-      - The [`  --region= FUNCTION_LOCATION  `](https://docs.cloud.google.com/sdk/gcloud/reference/functions/deploy#--region) flag specifies the region in which to deploy your function.
+      - The [` --region= FUNCTION_LOCATION  `](https://docs.cloud.google.com/sdk/gcloud/reference/functions/deploy#--region) flag specifies the region in which to deploy your function.
         
-        To maximize proximity, set FUNCTION\_LOCATION to a region near your Firestore database. If your Firestore database is in a multi-region location, set the value to `  us-central1  ` for databases in `  nam5  ` and to `  europe-west4  ` for databases in `  eur3  ` . For regional Firestore locations, set to the same region.
+        To maximize proximity, set FUNCTION\_LOCATION to a region near your Firestore database. If your Firestore database is in a multi-region location, set the value to `us-central1` for databases in `nam5` and to `europe-west4` for databases in `eur3` . For regional Firestore locations, set to the same region.
     
-      - The [`  --trigger-location= TRIGGER_LOCATION  `](https://docs.cloud.google.com/sdk/gcloud/reference/functions/deploy?_gl#--trigger-location) flag specifies the location of the trigger. You must set TRIGGER\_LOCATION to the location of your Datastore mode database.
+      - The [` --trigger-location= TRIGGER_LOCATION  `](https://docs.cloud.google.com/sdk/gcloud/reference/functions/deploy?_gl#--trigger-location) flag specifies the location of the trigger. You must set TRIGGER\_LOCATION to the location of your Datastore mode database.
     
-      - The [`  --runtime= RUNTIME  `](https://docs.cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime) flag specifies which language runtime your function uses. Cloud Run functions supports several runtimes. See [Runtimes](https://docs.cloud.google.com/functions/docs/concepts/exec#runtimes) for more information. Set RUNTIME to a supported runtime.
+      - The [` --runtime= RUNTIME  `](https://docs.cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime) flag specifies which language runtime your function uses. Cloud Run functions supports several runtimes. See [Runtimes](https://docs.cloud.google.com/functions/docs/concepts/exec#runtimes) for more information. Set RUNTIME to a supported runtime.
     
-      - The [`  --source= SOURCE_LOCATION  `](https://docs.cloud.google.com/sdk/gcloud/reference/functions/deploy#--source) flag specifies the location of your function source code. See the following for details:
+      - The [` --source= SOURCE_LOCATION  `](https://docs.cloud.google.com/sdk/gcloud/reference/functions/deploy#--source) flag specifies the location of your function source code. See the following for details:
         
           - [Deploy from your local machine](https://docs.cloud.google.com/functions/docs/deploy#from-local-machine)
           - [Deploy from Cloud Storage](https://docs.cloud.google.com/functions/docs/deploy#from-cloud-storage)
@@ -193,43 +193,43 @@ You can deploy a function using either the gcloud CLI or the Google Cloud consol
         
         Set SOURCE\_LOCATION to the location of your function source code.
     
-      - The [`  --entry-point= CODE_ENTRYPOINT  `](https://docs.cloud.google.com/sdk/gcloud/reference/functions/deploy#--entry-point) flag specifies the entry point to your function in your source code. This is the code that your function executes when it runs. You must set CODE\_ENTRYPOINT to a function name or fully-qualified class name that exists in your source code. See [Function entry point](https://docs.cloud.google.com/functions/docs/writing#entry-point) for more information.
+      - The [` --entry-point= CODE_ENTRYPOINT  `](https://docs.cloud.google.com/sdk/gcloud/reference/functions/deploy#--entry-point) flag specifies the entry point to your function in your source code. This is the code that your function executes when it runs. You must set CODE\_ENTRYPOINT to a function name or fully-qualified class name that exists in your source code. See [Function entry point](https://docs.cloud.google.com/functions/docs/writing#entry-point) for more information.
     
-      - The [`  --trigger-event-filters  `](https://docs.cloud.google.com/sdk/gcloud/reference/functions/deploy#--trigger-event-filters) flags define the event filter which includes trigger type and the entity or path that triggers the events. Set the following attribute values to define your event filter:
+      - The [`--trigger-event-filters`](https://docs.cloud.google.com/sdk/gcloud/reference/functions/deploy#--trigger-event-filters) flags define the event filter which includes trigger type and the entity or path that triggers the events. Set the following attribute values to define your event filter:
         
-          - `  type= EVENT_FILTER_TYPE  ` : Firestore supports the following event types:
+          - ` type= EVENT_FILTER_TYPE  ` : Firestore supports the following event types:
             
-              - `  google.cloud.datastore.entity.v1.created  ` : event is sent when an entity is written for the first time.
-              - `  google.cloud.datastore.entity.v1.updated  ` : event is sent when an entity already exists and has any value changed.
-              - `  google.cloud.datastore.entity.v1.deleted  ` : event is sent when an entity is deleted.
-              - `  google.cloud.datastore.entity.v1.written  ` : event is sent when an entity is created, updated, or deleted.
-              - `  google.cloud.datastore.entity.v1.created.withAuthContext  ` : event is sent when a document is written to for the first time and the event includes additional authentication information
-              - `  google.cloud.datastore.entity.v1.updated.withAuthContext  ` : event is sent when a document already exists and has any value changed. Includes additional authentication information
-              - `  google.cloud.datastore.entity.v1.deleted.withAuthContext  ` : event is sent when a document is deleted. Includes additional authentication information
-              - `  google.cloud.datastore.entity.v1.written.withAuthContext  ` : event is sent when a document is created, updated, or deleted and event. Includes additional authentication information
+              - `google.cloud.datastore.entity.v1.created` : event is sent when an entity is written for the first time.
+              - `google.cloud.datastore.entity.v1.updated` : event is sent when an entity already exists and has any value changed.
+              - `google.cloud.datastore.entity.v1.deleted` : event is sent when an entity is deleted.
+              - `google.cloud.datastore.entity.v1.written` : event is sent when an entity is created, updated, or deleted.
+              - `google.cloud.datastore.entity.v1.created.withAuthContext` : event is sent when a document is written to for the first time and the event includes additional authentication information
+              - `google.cloud.datastore.entity.v1.updated.withAuthContext` : event is sent when a document already exists and has any value changed. Includes additional authentication information
+              - `google.cloud.datastore.entity.v1.deleted.withAuthContext` : event is sent when a document is deleted. Includes additional authentication information
+              - `google.cloud.datastore.entity.v1.written.withAuthContext` : event is sent when a document is created, updated, or deleted and event. Includes additional authentication information
             
             Set EVENT\_FILTER\_TYPE to one of these event types.
         
-          - `  database= DATABASE  ` : the Firestore database. For the default database name, set DATABASE to `  (default)  ` .
+          - ` database= DATABASE  ` : the Firestore database. For the default database name, set DATABASE to `(default)` .
         
-          - `  namespace= NAMESPACE  ` : the database [namespace](https://docs.cloud.google.com/datastore/docs/concepts/multitenancy) . For the default database name, set NAMESPACE to `  (default)  ` . Remove the flag to match any namespace.
+          - ` namespace= NAMESPACE  ` : the database [namespace](https://docs.cloud.google.com/datastore/docs/concepts/multitenancy) . For the default database name, set NAMESPACE to `(default)` . Remove the flag to match any namespace.
             
-            **Note:** Set exactly to `  (default)  ` for the default namespace. This is a non-canonical resource name used only for Eventarc. Do not set to `  [default]  ` as shown in the Google Cloud console.
+            **Note:** Set exactly to `(default)` for the default namespace. This is a non-canonical resource name used only for Eventarc. Do not set to `[default]` as shown in the Google Cloud console.
         
-          - `  entity= ENTITY_OR_PATH  ` : the database path that triggers events when data is created, updated, or deleted. Accepted values for ENTITY\_OR\_PATH are:
+          - ` entity= ENTITY_OR_PATH  ` : the database path that triggers events when data is created, updated, or deleted. Accepted values for ENTITY\_OR\_PATH are:
             
-              - Equal; for example, `  --trigger-event-filters="entity='users/marie'"  `
-              - Path pattern; for example, `  --trigger-event-filters-path-pattern="entity='users/*'"  ` . For more information, see [Understand path patterns](https://docs.cloud.google.com/eventarc/docs/path-patterns) .
+              - Equal; for example, `--trigger-event-filters="entity='users/marie'"`
+              - Path pattern; for example, `--trigger-event-filters-path-pattern="entity='users/*'"` . For more information, see [Understand path patterns](https://docs.cloud.google.com/eventarc/docs/path-patterns) .
         
         You can optionally specify additional [configuration](https://docs.cloud.google.com/functions/docs/configuring) , [networking](https://docs.cloud.google.com/functions/docs/networking/network-settings) , and [security](https://docs.cloud.google.com/functions/docs/securing) options when you deploy a function.
         
-        For a complete reference on the deployment command and its flags, see the [`  gcloud functions deploy  `](https://docs.cloud.google.com/sdk/gcloud/reference/functions/deploy) documentation.
+        For a complete reference on the deployment command and its flags, see the [`gcloud functions deploy`](https://docs.cloud.google.com/sdk/gcloud/reference/functions/deploy) documentation.
 
 ### Example deployments
 
 The following examples demonstrate deployments with the Google Cloud CLI.
 
-Deploy a function for a database in the `  us-west2  ` region:
+Deploy a function for a database in the `us-west2` region:
 
     gcloud functions deploy gcfv2-trigger-datastore-node \
     --gen2 \
@@ -242,7 +242,7 @@ Deploy a function for a database in the `  us-west2  ` region:
     --trigger-event-filters=database='(default)' \
     --trigger-event-filters-path-pattern="entity='messages/{pushId}'"
 
-Deploy a function for a database in the `  nam5  ` multi-region:
+Deploy a function for a database in the `nam5` multi-region:
 
     gcloud functions deploy gcfv2-trigger-datastore-python \
     --gen2 \
@@ -268,7 +268,7 @@ Note the following limitations for Firestore triggers for Cloud Run functions:
   - Deleting a database does not automatically delete any triggers for that database. The trigger stops delivering events but continues to exist until you [delete the trigger](https://cloud.google.com/eventarc/docs/managing-triggers#trigger-delete) .
   - If a matched event exceeds the [maximum request size](https://cloud.google.com/functions/quotas#resource_limits) , the event might not be delivered to Cloud Run functions (1st gen).
       - Events not delivered because of request size are logged in [platform logs](https://cloud.google.com/logging/docs/api/platform-logs) and count towards the log usage for the project.
-      - You can find these logs in the Logs Explorer with the message "Event cannot deliver to Cloud function due to size exceeding the limit for 1st gen..." of `  error  ` severity. You can find the function name under the `  functionName  ` field. If the `  receiveTimestamp  ` field is still within an hour from now, you can infer the actual event content by reading the document in question with a snapshot before and after the timestamp.
+      - You can find these logs in the Logs Explorer with the message "Event cannot deliver to Cloud function due to size exceeding the limit for 1st gen..." of `error` severity. You can find the function name under the `functionName` field. If the `receiveTimestamp` field is still within an hour from now, you can infer the actual event content by reading the document in question with a snapshot before and after the timestamp.
       - To avoid such cadence, you can:
           - Migrate and upgrade to Cloud Run functions (2nd gen)
           - Downsize the document
@@ -279,10 +279,10 @@ Note the following limitations for Firestore triggers for Cloud Run functions:
 
 Eventarc does not support multi-regions for Firestore event triggers, but you can still create triggers for Firestore databases in multi-region locations. Eventarc maps Firestore multi-region locations to the following Eventarc regions:
 
-| Firestore multi-region | Eventarc region               |
-| ---------------------- | ----------------------------- |
-| `        nam5       `  | `        us-central1       `  |
-| `        eur3       `  | `        europe-west4       ` |
+| Firestore multi-region | Eventarc region |
+| ---------------------- | --------------- |
+| `nam5`                 | `us-central1`   |
+| `eur3`                 | `europe-west4`  |
 
 ## What's next
 

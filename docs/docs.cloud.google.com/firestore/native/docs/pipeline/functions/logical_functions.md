@@ -6,21 +6,21 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## **Logical Functions**
 
-|                                   |                                                            |
-| --------------------------------- | ---------------------------------------------------------- |
-| Name                              | Description                                                |
-| `          AND        `           | Performs a logical AND                                     |
-| `          OR        `            | Performs a logical OR                                      |
-| `          XOR        `           | Performs a logical XOR                                     |
-| `          NOT        `           | Performs a logical NOT                                     |
-| `          NOR        `           | Performs a logical NOR                                     |
-| `          CONDITIONAL        `   | Branches evaluation based on a conditional expression.     |
-| `          IF_NULL        `       | Returns the first non-null value                           |
-| `          SWITCH_ON        `     | Branches evaluation based on a series of conditions        |
-| `          EQUAL_ANY        `     | Checks if a value is equal to any elements in an array     |
-| `          NOT_EQUAL_ANY        ` | Checks if a value is not equal to any elements in an array |
-| `          MAXIMUM        `       | Returns the maximum value in a set of values               |
-| `          MINIMUM        `       | Returns the minimum value in a set of values               |
+|                                  |                                                            |
+| -------------------------------- | ---------------------------------------------------------- |
+| Name                             | Description                                                |
+| `         AND        `           | Performs a logical AND                                     |
+| `         OR        `            | Performs a logical OR                                      |
+| `         XOR        `           | Performs a logical XOR                                     |
+| `         NOT        `           | Performs a logical NOT                                     |
+| `         NOR        `           | Performs a logical NOR                                     |
+| `         CONDITIONAL        `   | Branches evaluation based on a conditional expression.     |
+| `         IF_NULL        `       | Returns the first non-null value                           |
+| `         SWITCH_ON        `     | Branches evaluation based on a series of conditions        |
+| `         EQUAL_ANY        `     | Checks if a value is equal to any elements in an array     |
+| `         NOT_EQUAL_ANY        ` | Checks if a value is not equal to any elements in an array |
+| `         MAXIMUM        `       | Returns the maximum value in a set of values               |
+| `         MINIMUM        `       | Returns the minimum value in a set of values               |
 
 ### AND
 
@@ -32,18 +32,18 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 Returns the logical AND of two or more boolean values.
 
-Returns `  NULL  ` if the result can't be derived due to any of the given values being `  ABSENT  ` or `  NULL  ` .
+Returns `NULL` if the result can't be derived due to any of the given values being `ABSENT` or `NULL` .
 
 **Examples:**
 
-| `        x       `      | `        y       `      | `        and(x, y)       ` |
-| :---------------------- | :---------------------- | :------------------------- |
-| `        TRUE       `   | `        TRUE       `   | `        TRUE       `      |
-| `        FALSE       `  | `        TRUE       `   | `        FALSE       `     |
-| `        NULL       `   | `        TRUE       `   | `        NULL       `      |
-| `        ABSENT       ` | `        TRUE       `   | `        NULL       `      |
-| `        NULL       `   | `        FALSE       `  | `        FALSE       `     |
-| `        FALSE       `  | `        ABSENT       ` | `        FALSE       `     |
+| `x`      | `y`      | `and(x, y)` |
+| :------- | :------- | :---------- |
+| `TRUE`   | `TRUE`   | `TRUE`      |
+| `FALSE`  | `TRUE`   | `FALSE`     |
+| `NULL`   | `TRUE`   | `NULL`      |
+| `ABSENT` | `TRUE`   | `NULL`      |
+| `NULL`   | `FALSE`  | `FALSE`     |
+| `FALSE`  | `ABSENT` | `FALSE`     |
 
 ##### Node.js
 
@@ -137,18 +137,18 @@ Android
 
 Returns the logical OR of two or more boolean values.
 
-Returns `  NULL  ` if the result can't be derived due to any of the given values being `  ABSENT  ` or `  NULL  ` .
+Returns `NULL` if the result can't be derived due to any of the given values being `ABSENT` or `NULL` .
 
 **Examples:**
 
-| `        x       `      | `        y       `      | `        or(x, y)       ` |
-| :---------------------- | :---------------------- | :------------------------ |
-| `        TRUE       `   | `        TRUE       `   | `        TRUE       `     |
-| `        FALSE       `  | `        TRUE       `   | `        TRUE       `     |
-| `        NULL       `   | `        TRUE       `   | `        TRUE       `     |
-| `        ABSENT       ` | `        TRUE       `   | `        TRUE       `     |
-| `        NULL       `   | `        FALSE       `  | `        NULL       `     |
-| `        FALSE       `  | `        ABSENT       ` | `        NULL       `     |
+| `x`      | `y`      | `or(x, y)` |
+| :------- | :------- | :--------- |
+| `TRUE`   | `TRUE`   | `TRUE`     |
+| `FALSE`  | `TRUE`   | `TRUE`     |
+| `NULL`   | `TRUE`   | `TRUE`     |
+| `ABSENT` | `TRUE`   | `TRUE`     |
+| `NULL`   | `FALSE`  | `NULL`     |
+| `FALSE`  | `ABSENT` | `NULL`     |
 
 ##### Node.js
 
@@ -243,19 +243,19 @@ Android
 
 Returns the logical XOR of two or more boolean values.
 
-Returns `  NULL  ` if any of the given values are `  ABSENT  ` or `  NULL  ` .
+Returns `NULL` if any of the given values are `ABSENT` or `NULL` .
 
 **Examples:**
 
-| `        x       `      | `        y       `      | `        xor(x, y)       ` |
-| :---------------------- | :---------------------- | :------------------------- |
-| `        TRUE       `   | `        TRUE       `   | `        FALSE       `     |
-| `        FALSE       `  | `        FALSE       `  | `        FALSE       `     |
-| `        FALSE       `  | `        TRUE       `   | `        TRUE       `      |
-| `        NULL       `   | `        TRUE       `   | `        NULL       `      |
-| `        ABSENT       ` | `        TRUE       `   | `        NULL       `      |
-| `        NULL       `   | `        FALSE       `  | `        NULL       `      |
-| `        FALSE       `  | `        ABSENT       ` | `        NULL       `      |
+| `x`      | `y`      | `xor(x, y)` |
+| :------- | :------- | :---------- |
+| `TRUE`   | `TRUE`   | `FALSE`     |
+| `FALSE`  | `FALSE`  | `FALSE`     |
+| `FALSE`  | `TRUE`   | `TRUE`      |
+| `NULL`   | `TRUE`   | `NULL`      |
+| `ABSENT` | `TRUE`   | `NULL`      |
+| `NULL`   | `FALSE`  | `NULL`      |
+| `FALSE`  | `ABSENT` | `NULL`      |
 
 ##### Node.js
 
@@ -354,19 +354,19 @@ Android
 
 Returns the logical NOR of two or more boolean values.
 
-Returns `  NULL  ` if the result can't be derived due to any of the given values being `  ABSENT  ` or `  NULL  ` .
+Returns `NULL` if the result can't be derived due to any of the given values being `ABSENT` or `NULL` .
 
 **Examples:**
 
-| `        x       `      | `        y       `      | `        nor(x, y)       ` |
-| :---------------------- | :---------------------- | :------------------------- |
-| `        TRUE       `   | `        TRUE       `   | `        FALSE       `     |
-| `        FALSE       `  | `        TRUE       `   | `        FALSE       `     |
-| `        FALSE       `  | `        FALSE       `  | `        TRUE       `      |
-| `        NULL       `   | `        TRUE       `   | `        FALSE       `     |
-| `        ABSENT       ` | `        TRUE       `   | `        FALSE       `     |
-| `        NULL       `   | `        FALSE       `  | `        NULL       `      |
-| `        FALSE       `  | `        ABSENT       ` | `        NULL       `      |
+| `x`      | `y`      | `nor(x, y)` |
+| :------- | :------- | :---------- |
+| `TRUE`   | `TRUE`   | `FALSE`     |
+| `FALSE`  | `TRUE`   | `FALSE`     |
+| `FALSE`  | `FALSE`  | `TRUE`      |
+| `NULL`   | `TRUE`   | `FALSE`     |
+| `ABSENT` | `TRUE`   | `FALSE`     |
+| `NULL`   | `FALSE`  | `NULL`      |
+| `FALSE`  | `ABSENT` | `NULL`      |
 
 ### NOT
 
@@ -461,18 +461,18 @@ Android
 
 **Description:**
 
-Evaluates and returns the `  true_case  ` if the `  condition  ` evaluates to `  TRUE  ` .
+Evaluates and returns the `true_case` if the `condition` evaluates to `TRUE` .
 
-Evaluates and returns the `  false_case  ` if the condition resolves to `  FALSE  ` , `  NULL  ` , or an `  ABSENT  ` value.
+Evaluates and returns the `false_case` if the condition resolves to `FALSE` , `NULL` , or an `ABSENT` value.
 
 **Examples:**
 
-| `        condition       ` | `        true_case       ` | `        false_case       ` | `        conditional(condition, true_case, false_case)       ` |
-| :------------------------- | :------------------------- | :-------------------------- | :------------------------------------------------------------- |
-| `        TRUE       `      | 1L                         | 0L                          | 1L                                                             |
-| `        FALSE       `     | 1L                         | 0L                          | 0L                                                             |
-| `        NULL       `      | 1L                         | 0L                          | 0L                                                             |
-| `        ABSENT       `    | 1L                         | 0L                          | 0L                                                             |
+| `condition` | `true_case` | `false_case` | `conditional(condition, true_case, false_case)` |
+| :---------- | :---------- | :----------- | :---------------------------------------------- |
+| `TRUE`      | 1L          | 0L           | 1L                                              |
+| `FALSE`     | 1L          | 0L           | 0L                                              |
+| `NULL`      | 1L          | 0L           | 0L                                              |
+| `ABSENT`    | 1L          | 0L           | 0L                                              |
 
 ##### Node.js
 
@@ -595,15 +595,15 @@ Android
 
 **Description:**
 
-Returns `  expr  ` if it is not `  NULL  ` , otherwise evaluates and returns `  replacement  ` . The `  replacement  ` expression is not evaluated if `  expr  ` is used.
+Returns `expr` if it is not `NULL` , otherwise evaluates and returns `replacement` . The `replacement` expression is not evaluated if `expr` is used.
 
 **Examples:**
 
-| `        expr       `   | `        replacement       ` | `        if_null(expr, replacement)       ` |
-| :---------------------- | :--------------------------- | :------------------------------------------ |
-| 1L                      | 2L                           | 1L                                          |
-| `        NULL       `   | 2L                           | 2L                                          |
-| `        ABSENT       ` | 2L                           | `        ABSENT       `                     |
+| `expr`   | `replacement` | `if_null(expr, replacement)` |
+| :------- | :------------ | :--------------------------- |
+| 1L       | 2L            | 1L                           |
+| `NULL`   | 2L            | 2L                           |
+| `ABSENT` | 2L            | `ABSENT`                     |
 
 ### SWITCH\_ON
 
@@ -613,17 +613,17 @@ Returns `  expr  ` if it is not `  NULL  ` , otherwise evaluates and returns `  
 
 **Description:**
 
-Evaluates a series of conditions and returns the result associated with the first `  TRUE  ` condition. If no conditions evaluate to `  TRUE  ` , the `  default  ` value is returned if provided. If no `  default  ` value is provided, an error is thrown if no other conditions evaluated to `  TRUE  ` .
+Evaluates a series of conditions and returns the result associated with the first `TRUE` condition. If no conditions evaluate to `TRUE` , the `default` value is returned if provided. If no `default` value is provided, an error is thrown if no other conditions evaluated to `TRUE` .
 
-To provide a `  default  ` value, pass it as the final argument such that there is an odd number of arguments.
+To provide a `default` value, pass it as the final argument such that there is an odd number of arguments.
 
 **Examples:**
 
-| `        x       ` | `        switch_on(eq(x, 1L), "one", eq(x, 2L), "two", "other")       ` |
-| :----------------- | :---------------------------------------------------------------------- |
-| 1L                 | "one"                                                                   |
-| 2L                 | "two"                                                                   |
-| 3L                 | "other"                                                                 |
+| `x` | `switch_on(eq(x, 1L), "one", eq(x, 2L), "two", "other")` |
+| :-- | :------------------------------------------------------- |
+| 1L  | "one"                                                    |
+| 2L  | "two"                                                    |
+| 3L  | "other"                                                  |
 
 ### EQUAL\_ANY
 
@@ -633,18 +633,18 @@ To provide a `  default  ` value, pass it as the final argument such that there 
 
 **Description:**
 
-Returns `  TRUE  ` if `  value  ` is in the `  search_space  ` array.
+Returns `TRUE` if `value` is in the `search_space` array.
 
 **Examples:**
 
-| `        value       `  | `        search_space       `  | `        equal_any(value, search_space)       ` |
-| :---------------------- | :----------------------------- | :---------------------------------------------- |
-| 0L                      | \[1L, 2L, 3L\]                 | `        FALSE       `                          |
-| 2L                      | \[1L, 2L, 3L\]                 | `        TRUE       `                           |
-| `        NULL       `   | \[1L, 2L, 3L\]                 | `        FALSE       `                          |
-| `        NULL       `   | \[1L, `        NULL       ` \] | `        TRUE       `                           |
-| `        ABSENT       ` | \[1L, `        NULL       ` \] | `        FALSE       `                          |
-| NaN                     | \[1L, NaN, 3L\]                | `        TRUE       `                           |
+| `value`  | `search_space`  | `equal_any(value, search_space)` |
+| :------- | :-------------- | :------------------------------- |
+| 0L       | \[1L, 2L, 3L\]  | `FALSE`                          |
+| 2L       | \[1L, 2L, 3L\]  | `TRUE`                           |
+| `NULL`   | \[1L, 2L, 3L\]  | `FALSE`                          |
+| `NULL`   | \[1L, `NULL` \] | `TRUE`                           |
+| `ABSENT` | \[1L, `NULL` \] | `FALSE`                          |
+| NaN      | \[1L, NaN, 3L\] | `TRUE`                           |
 
 ##### Node.js
 
@@ -733,18 +733,18 @@ Android
 
 **Description:**
 
-Returns `  TRUE  ` if `  value  ` is not in the `  search_space  ` array.
+Returns `TRUE` if `value` is not in the `search_space` array.
 
 **Examples:**
 
-| `        value       `  | `        search_space       `  | `        not_equal_any(value, search_space)       ` |
-| :---------------------- | :----------------------------- | :-------------------------------------------------- |
-| 0L                      | \[1L, 2L, 3L\]                 | `        TRUE       `                               |
-| 2L                      | \[1L, 2L, 3L\]                 | `        FALSE       `                              |
-| `        NULL       `   | \[1L, 2L, 3L\]                 | `        TRUE       `                               |
-| `        NULL       `   | \[1L, `        NULL       ` \] | `        FALSE       `                              |
-| `        ABSENT       ` | \[1L, `        NULL       ` \] | `        TRUE       `                               |
-| NaN                     | \[1L, NaN, 3L\]                | `        FALSE       `                              |
+| `value`  | `search_space`  | `not_equal_any(value, search_space)` |
+| :------- | :-------------- | :----------------------------------- |
+| 0L       | \[1L, 2L, 3L\]  | `TRUE`                               |
+| 2L       | \[1L, 2L, 3L\]  | `FALSE`                              |
+| `NULL`   | \[1L, 2L, 3L\]  | `TRUE`                               |
+| `NULL`   | \[1L, `NULL` \] | `FALSE`                              |
+| `ABSENT` | \[1L, `NULL` \] | `TRUE`                               |
+| NaN      | \[1L, NaN, 3L\] | `FALSE`                              |
 
 ##### Node.js
 
@@ -834,23 +834,23 @@ Android
 
 **Description:**
 
-Returns the maximum non- `  NULL  ` , non- `  ABSENT  ` value in a series of values `  x  ` .
+Returns the maximum non- `NULL` , non- `ABSENT` value in a series of values `x` .
 
-If there are no non- `  NULL  ` , non- `  ABSENT  ` values, `  NULL  ` is returned.
+If there are no non- `NULL` , non- `ABSENT` values, `NULL` is returned.
 
 If there are multiple maximum equivalent values, any one of those values can be returned. Value type ordering follows [documented ordering](https://docs.cloud.google.com/firestore/docs/concepts/data-types#value_type_ordering) .
 
 **Examples:**
 
-| `        x       `      | `        y       `      | `        maximum(x, y)       ` |
-| :---------------------- | :---------------------- | :----------------------------- |
-| `        FALSE       `  | `        TRUE       `   | `        TRUE       `          |
-| `        FALSE       `  | \-10L                   | \-10L                          |
-| 0.0                     | \-5L                    | 0.0                            |
-| "foo"                   | "bar"                   | "foo"                          |
-| "foo"                   | \["foo"\]               | \["foo"\]                      |
-| `        ABSENT       ` | `        ABSENT       ` | `        NULL       `          |
-| `        NULL       `   | `        NULL       `   | `        NULL       `          |
+| `x`      | `y`       | `maximum(x, y)` |
+| :------- | :-------- | :-------------- |
+| `FALSE`  | `TRUE`    | `TRUE`          |
+| `FALSE`  | \-10L     | \-10L           |
+| 0.0      | \-5L      | 0.0             |
+| "foo"    | "bar"     | "foo"           |
+| "foo"    | \["foo"\] | \["foo"\]       |
+| `ABSENT` | `ABSENT`  | `NULL`          |
+| `NULL`   | `NULL`    | `NULL`          |
 
 ##### Node.js
 
@@ -925,23 +925,23 @@ Android
 
 **Description:**
 
-Returns the minimum non- `  NULL  ` , non- `  ABSENT  ` value in a series of values `  x  ` .
+Returns the minimum non- `NULL` , non- `ABSENT` value in a series of values `x` .
 
-If there are no non- `  NULL  ` , non- `  ABSENT  ` values, `  NULL  ` is returned.
+If there are no non- `NULL` , non- `ABSENT` values, `NULL` is returned.
 
 If there are multiple minimum equivalent values, any one of those values can be returned. Value type ordering follows [documented ordering](https://docs.cloud.google.com/firestore/docs/concepts/data-types#value_type_ordering) .
 
 **Examples:**
 
-| `        x       `      | `        y       `      | `        minimum(x, y)       ` |
-| :---------------------- | :---------------------- | :----------------------------- |
-| `        FALSE       `  | `        TRUE       `   | `        FALSE       `         |
-| `        FALSE       `  | \-10L                   | `        FALSE       `         |
-| 0.0                     | \-5L                    | \-5L                           |
-| "foo"                   | "bar"                   | "bar"                          |
-| "foo"                   | \["foo"\]               | "foo"                          |
-| `        ABSENT       ` | `        ABSENT       ` | `        NULL       `          |
-| `        NULL       `   | `        NULL       `   | `        NULL       `          |
+| `x`      | `y`       | `minimum(x, y)` |
+| :------- | :-------- | :-------------- |
+| `FALSE`  | `TRUE`    | `FALSE`         |
+| `FALSE`  | \-10L     | `FALSE`         |
+| 0.0      | \-5L      | \-5L            |
+| "foo"    | "bar"     | "bar"           |
+| "foo"    | \["foo"\] | "foo"           |
+| `ABSENT` | `ABSENT`  | `NULL`          |
+| `NULL`   | `NULL`    | `NULL`          |
 
 ##### Node.js
 

@@ -9,7 +9,7 @@ Firestore supports atomic operations for reading and writing data. In a set of a
 
 Using the Firestore client libraries, you can group multiple operations into a single transaction. Transactions are useful when you want to update a field's value based on its current value, or the value of some other field.
 
-A transaction consists of any number of `  get()  ` operations followed by any number of write operations such as `  set()  ` , `  update()  ` , or `  delete()  ` . In the case of a concurrent edit, Firestore runs the entire transaction again. For example, if a transaction reads documents and another client modifies any of those documents, Firestore retries the transaction. This feature ensures that the transaction runs on up-to-date and consistent data.
+A transaction consists of any number of `get()` operations followed by any number of write operations such as `set()` , `update()` , or `delete()` . In the case of a concurrent edit, Firestore runs the entire transaction again. For example, if a transaction reads documents and another client modifies any of those documents, Firestore retries the transaction. This feature ensures that the transaction runs on up-to-date and consistent data.
 
 Transactions never partially apply writes. All writes execute at the end of a successful transaction.
 
@@ -859,7 +859,7 @@ A failed transaction returns an error and does not write anything to the databas
 
 ## Batched writes
 
-If you do not need to read any documents in your operation set, you can execute multiple write operations as a single batch that contains any combination of `  set()  ` , `  update()  ` , or `  delete()  ` operations. Each operation in the batch counts separately towards your Firestore usage. A batch of writes completes atomically and can write to multiple documents. The following example shows how to build and commit a write batch:
+If you do not need to read any documents in your operation set, you can execute multiple write operations as a single batch that contains any combination of `set()` , `update()` , or `delete()` operations. Each operation in the batch counts separately towards your Firestore usage. A batch of writes completes atomically and can write to multiple documents. The following example shows how to build and commit a write batch:
 
 ### Web version 9
 
@@ -1282,9 +1282,9 @@ A batched write with hundreds of documents might require many index updates and 
 
 ## Data validation for atomic operations
 
-For mobile/web client libraries, you can validate data using [Firestore Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/get-started) . You can ensure that related documents are always updated atomically and always as part of a transaction or batched write. Use the [`  getAfter()  `](https://firebase.google.com/docs/reference/rules/rules.firestore#.getAfter) security rule function to access and validate the state of a document after a set of operations completes but *before* Firestore commits the operations.
+For mobile/web client libraries, you can validate data using [Firestore Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/get-started) . You can ensure that related documents are always updated atomically and always as part of a transaction or batched write. Use the [`getAfter()`](https://firebase.google.com/docs/reference/rules/rules.firestore#.getAfter) security rule function to access and validate the state of a document after a set of operations completes but *before* Firestore commits the operations.
 
-For example, imagine that the database for the `  cities  ` example also contains a `  countries  ` collection. Each `  country  ` document uses a `  last_updated  ` field to keep track of the last time any city related to that country was updated. The following security rules require that an update to a `  city  ` document must also atomically update the related country's `  last_updated  ` field:
+For example, imagine that the database for the `cities` example also contains a `countries` collection. Each `country` document uses a `last_updated` field to keep track of the last time any city related to that country was updated. The following security rules require that an update to a `city` document must also atomically update the related country's `last_updated` field:
 
     service cloud.firestore {
       match /databases/{database}/documents {

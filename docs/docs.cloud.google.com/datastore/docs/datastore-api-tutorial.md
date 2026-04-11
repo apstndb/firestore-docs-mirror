@@ -6,7 +6,7 @@ This page provides a short exercise in building a command-line TaskList applicat
     In addition to a basic understanding of how to develop applications, you should be able to download and install additional libraries before attempting this tutorial.
 2.  **A Google Cloud project with the Datastore mode API enabled**  
     Applications that use Datastore mode are associated with a [Google Cloud](https://console.cloud.google.com/) project with the Datastore mode API enabled. This project provides authentication credentials you use in your application to identify it to Google and authorize its use of the Datastore mode API.  
-    Follow [these instructions](https://docs.cloud.google.com/apis/docs/getting-started) to create a project, enable the Datastore mode API for it, and set up your local development environment with authentication credentials using the `  gcloud auth login  ` command. Make a note of the project's ID, which you'll use later on.
+    Follow [these instructions](https://docs.cloud.google.com/apis/docs/getting-started) to create a project, enable the Datastore mode API for it, and set up your local development environment with authentication credentials using the `gcloud auth login` command. Make a note of the project's ID, which you'll use later on.
 
 ## Installation and setup
 
@@ -20,7 +20,7 @@ Install client libraries and configure any additional settings for your developm
 
 3.  Extract the files from the zip into a directory in your *Documents* folder.
 
-4.  In Visual Studio, open the file `  dotnet-docs-samples-master\datastore\api\Datastore.sln  ` .
+4.  In Visual Studio, open the file `dotnet-docs-samples-master\datastore\api\Datastore.sln` .
 
 5.  In Visual Studio's **Solution Explorer** window, right-click the **TaskList** project and choose **Set as StartUp Project** .
 
@@ -44,11 +44,11 @@ Install client libraries and configure any additional settings for your developm
     
         cd $GOPATH/src/github.com/GoogleCloudPlatform/golang-samples/datastore/tasks
 
-3.  At a command prompt, run the following, where `  <project-id>  ` is the ID of your Google Cloud project.
+3.  At a command prompt, run the following, where `<project-id>` is the ID of your Google Cloud project.
     
         export DATASTORE_PROJECT_ID=<project-id>
     
-    (Windows users: use `  set  ` instead of `  export  ` .)
+    (Windows users: use `set` instead of `export` .)
 
 4.  Run the application\!
     
@@ -68,7 +68,7 @@ Install client libraries and configure any additional settings for your developm
     
         cd java-datastore-main/samples/snippets
 
-5.  Run the following, where `  <project-id>  ` is the ID of your Google Cloud project.
+5.  Run the following, where `<project-id>` is the ID of your Google Cloud project.
     
         gcloud config set project <project-id>
 
@@ -95,11 +95,11 @@ Install client libraries and configure any additional settings for your developm
     
         npm install
 
-6.  At a command prompt, run the following, where `  <project-id>  ` is the ID of your Google Cloud project.
+6.  At a command prompt, run the following, where `<project-id>` is the ID of your Google Cloud project.
     
         export GCLOUD_PROJECT=<project-id>
     
-    (Windows users: use `  set  ` instead of `  export  ` .)
+    (Windows users: use `set` instead of `export` .)
 
 7.  Run the application\!
     
@@ -131,7 +131,7 @@ Install client libraries and configure any additional settings for your developm
 
 1.  Ensure you have [Python](https://www.python.org/downloads/) (version 2.7.9 or later), [pip](https://pip.pypa.io/en/latest/installing/) , and [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/) installed.
 
-2.  Activate a `  virtualenv  ` session.
+2.  Activate a `virtualenv` session.
     
         virtualenv venv
         source venv/bin/activate
@@ -150,7 +150,7 @@ Install client libraries and configure any additional settings for your developm
     
         pip install -r requirements.txt
 
-7.  Run the application\! Use the ID of your Google Cloud project for `  <project-id>  ` .
+7.  Run the application\! Use the ID of your Google Cloud project for `<project-id>` .
     
         python tasks.py new project-id
 
@@ -172,11 +172,11 @@ Install client libraries and configure any additional settings for your developm
     
         bundle install
 
-6.  At a command prompt, run the following, where `  <project-id>  ` is the ID of your Google Cloud project.
+6.  At a command prompt, run the following, where `<project-id>` is the ID of your Google Cloud project.
     
         export GOOGLE_CLOUD_PROJECT=<project-id>
     
-    (Windows users: use `  set  ` instead of `  export  ` .)
+    (Windows users: use `set` instead of `export` .)
 
 7.  Run the application\!
     
@@ -300,13 +300,13 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
 ## Storing data
 
-Objects in Datastore mode are known as *entities* , and each entity is of a particular *kind* . The TaskList application will store entities of kind `  Task  ` , with the following properties:
+Objects in Datastore mode are known as *entities* , and each entity is of a particular *kind* . The TaskList application will store entities of kind `Task` , with the following properties:
 
-  - `  description  ` : a string specified by the user as the task description
-  - `  created  ` : a date that shows when the task was initially created
-  - `  done  ` : a boolean that indicates whether the task has been completed
+  - `description` : a string specified by the user as the task description
+  - `created` : a date that shows when the task was initially created
+  - `done` : a boolean that indicates whether the task has been completed
 
-When the user adds a new task, the TaskList application creates a `  Task  ` entity with values for the properties previously listed:
+When the user adds a new task, the TaskList application creates a `Task` entity with values for the properties previously listed:
 
 ### C\#
 
@@ -522,7 +522,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
       task.key.id
     end
 
-For this application, we also provide a method to update the `  done  ` property, to indicate the task is complete:
+For this application, we also provide a method to update the `done` property, to indicate the task is complete:
 
 ### C\#
 
@@ -712,7 +712,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
       datastore.save task
     end
 
-Here's the method to delete a `  Task  ` entity, using the `  Task  ` entity's key:
+Here's the method to delete a `Task` entity, using the `Task` entity's key:
 
 ### C\#
 
@@ -844,7 +844,7 @@ In addition to retrieving entities from Datastore mode directly by their keys, a
   - Zero or more filters, for example to select kinds whose properties match a value
   - Zero or more sort orders, to sequence the results
 
-For this application, we'll query Datastore mode for `  Task  ` entities sorted by creation time:
+For this application, we'll query Datastore mode for `Task` entities sorted by creation time:
 
 ### C\#
 

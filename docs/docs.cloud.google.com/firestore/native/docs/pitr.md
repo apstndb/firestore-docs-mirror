@@ -18,15 +18,15 @@ You can read data for a timestamp based on when PITR was enabled:
 
 **Note:** You can't start reading from 7 days in the past immediately after you enable PITR.
 
-A single version per minute is retained in the PITR window. You can read documents at minute granularity using a whole minute timestamp. Reads that are not at minute granularity like `  2023-05-30 09:00:00.1234AM  ` return an error that the `  read_time  ` is too old.
+A single version per minute is retained in the PITR window. You can read documents at minute granularity using a whole minute timestamp. Reads that are not at minute granularity like `2023-05-30 09:00:00.1234AM` return an error that the `read_time` is too old.
 
-Only one version of a document is retained in case of multiple writes. For example, if a document had multiple writes ranging from `  v1, v2, ... vk  ` between `  2023-05-30 09:00:00AM  ` (exclusive) and `  2023-05-30 09:01:00AM  ` (inclusive) timestamp, a read request at timestamp `  2023-05-30 09:01:00AM  ` returns the `  vk  ` version of the document.
+Only one version of a document is retained in case of multiple writes. For example, if a document had multiple writes ranging from `v1, v2, ... vk` between `2023-05-30 09:00:00AM` (exclusive) and `2023-05-30 09:01:00AM` (inclusive) timestamp, a read request at timestamp `2023-05-30 09:01:00AM` returns the `vk` version of the document.
 
 You can read from the data created during the PITR window. The data is stored at a minute granularity and you can recover data at the same granularity. The PITR feature is disabled by default.
 
-The [`  earliestVersionTime  `](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases#Database) field of your database specifies the earliest permissible read time for your data.
+The [`earliestVersionTime`](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases#Database) field of your database specifies the earliest permissible read time for your data.
 
-Regardless of whether PITR is enabled or not, you can read (but not export) documents at any microsecond-granularity timestamp within the past hour, but not before the `  earliestVersionTime  ` .
+Regardless of whether PITR is enabled or not, you can read (but not export) documents at any microsecond-granularity timestamp within the past hour, but not before the `earliestVersionTime` .
 
 ## Ways to recover data
 
@@ -40,7 +40,7 @@ There are several ways to recover data:
     
       - [Export](https://docs.cloud.google.com/firestore/native/docs/use-pitr#export-import) the database and specify a timestamp in the past and then import it to a new database. The PITR export operation supports all filters, including export of all documents and export of specific collections.
     
-    You can clone or export PITR data where the timestamp is a whole minute timestamp within the past seven days, but not earlier than the `  earliestVersionTime  ` .
+    You can clone or export PITR data where the timestamp is a whole minute timestamp within the past seven days, but not earlier than the `earliestVersionTime` .
 
 ## Pricing
 

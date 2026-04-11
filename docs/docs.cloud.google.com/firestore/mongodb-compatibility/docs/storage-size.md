@@ -12,12 +12,12 @@ The following are stored as strings:
 
   - Collection name
   - Field names
-  - String field values (including `  _id  ` )
+  - String field values (including `_id` )
 
 For example:
 
-  - The collection name `  tasks  ` uses 5 bytes + 1 byte, for a total of 6 bytes.
-  - The field name `  description  ` uses 11 bytes + 1 byte, for a total of 12 bytes.
+  - The collection name `tasks` uses 5 bytes + 1 byte, for a total of 6 bytes.
+  - The field name `description` uses 11 bytes + 1 byte, for a total of 12 bytes.
 
 ## Field value size
 
@@ -41,9 +41,9 @@ The following table shows the size of field values by type.
 | Timestamp             | 8 bytes                                                                                                 |
 | String                | Number of UTF-8 encoded bytes + 1                                                                       |
 
-For example, a boolean field named `  done  ` would use 6 bytes:
+For example, a boolean field named `done` would use 6 bytes:
 
-  - 5 bytes for the `  done  ` field name
+  - 5 bytes for the `done` field name
   - 1 byte for the boolean value
 
 ## Document size
@@ -51,11 +51,11 @@ For example, a boolean field named `  done  ` would use 6 bytes:
 The size of a document is the sum of:
 
   - The [string size](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size#string-size) of the collection name
-  - The sum of the [string size](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size#string-size) of each field name (except `  _id  ` )
-  - The sum of the size of each [field value](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size#field-size) (including `  _id  ` )
+  - The sum of the [string size](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size#string-size) of each field name (except `_id` )
+  - The sum of the size of each [field value](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size#field-size) (including `_id` )
   - 48 additional bytes
 
-This example is for a document in collection `  tasks  ` :
+This example is for a document in collection `tasks` :
 
     {
       "_id": "my_task_id",
@@ -80,26 +80,26 @@ The total size of the fields is 78 bytes:
 </thead>
 <tbody>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       "_id": "my_task_id"      </code></td>
+<td><code dir="ltr" translate="no">"_id": "my_task_id"</code></td>
 <td>11 for the field's string value</td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       "type": "Personal"      </code></td>
+<td><code dir="ltr" translate="no">"type": "Personal"</code></td>
 <td>14<br />
 5 for the field name + 9 for the field's string value</td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       "done": false      </code></td>
+<td><code dir="ltr" translate="no">"done": false</code></td>
 <td>6<br />
 5 for the field name + 1 for the field's boolean value</td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       "priority": 1      </code></td>
+<td><code dir="ltr" translate="no">"priority": 1</code></td>
 <td>17<br />
 9 for the field name + 4 for the field's 32-bit integer value</td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       "description": "Learn Cloud Firestore"      </code></td>
+<td><code dir="ltr" translate="no">"description": "Learn Cloud Firestore"</code></td>
 <td>34<br />
 12 for the field name + 22 for the field's string value</td>
 </tr>
@@ -117,11 +117,11 @@ So the document size is 6 + 78 + 48 = 132 bytes:
 The size of an index entry in an index is the sum of:
 
   - The [string size](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size#string-size) of the collection name
-  - The size of the `  _id  ` field value
+  - The size of the `_id` field value
   - The sum of the indexed [field values](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size#field-size)
   - 48 additional bytes
 
-Consider a document in the `  tasks  ` collection:
+Consider a document in the `tasks` collection:
 
     {
       "_id": "my_task_id",
@@ -131,15 +131,15 @@ Consider a document in the `  tasks  ` collection:
       "description": "Learn Cloud Firestore"
     }
 
-For an index on the `  done  ` and `  priority  ` fields (both ascending), the total size of the index entry in this index is 70 bytes:
+For an index on the `done` and `priority` fields (both ascending), the total size of the index entry in this index is 70 bytes:
 
-  - 6 bytes for the collection name `  tasks  `
-  - 11 bytes for the `  _id  ` field value
+  - 6 bytes for the collection name `tasks`
+  - 11 bytes for the `_id` field value
   - 1 byte for the boolean field value
   - 4 bytes for the 32-bit integer field value
   - 48 additional bytes
 
-For sparse indexes, if a document doesn't include any of the fields, then no index entry is created. If a document contains at least one of the indexed fields, an index entry is created with absent indexed fields set to `  NULL  ` .
+For sparse indexes, if a document doesn't include any of the fields, then no index entry is created. If a document contains at least one of the indexed fields, an index entry is created with absent indexed fields set to `NULL` .
 
 ## What's next
 

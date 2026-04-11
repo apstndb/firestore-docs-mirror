@@ -20,7 +20,7 @@ As a customer, you are responsible for the secure configuration and operation of
 Run your agent with a minimally-scoped service account. This is the first and most critical layer of defense.
 
   - **Dedicated identity:** Create a separate, dedicated service account for each unique agent or application using MCP tools. Do not reuse existing SAs, especially those with broad permissions.
-  - **Minimal scopes:** Grant the service account only the necessary Identity and Access Management (IAM) roles—for example, `  alloydb.viewer  ` , not `  alloydb.admin  ` . If the agent only needs read access to a specific dataset, use custom IAM roles to restrict access to the absolute minimum needed for its function.
+  - **Minimal scopes:** Grant the service account only the necessary Identity and Access Management (IAM) roles—for example, `alloydb.viewer` , not `alloydb.admin` . If the agent only needs read access to a specific dataset, use custom IAM roles to restrict access to the absolute minimum needed for its function.
   - **Separation of duties:** If an agent needs both read access to data and write access to a log or temporary storage, use two separate service accounts—one account for high-risk data access (minimally scoped) and one for low-risk operational tasks.
 
 ### Use database-native granular controls
@@ -64,7 +64,7 @@ Restrict agent access to sensitive columns—for example, PII— even in an auth
 <td><br />
 <strong>Spanner</strong></td>
 <td><br />
-Fine-Grained Access Control (Database roles with <code dir="ltr" translate="no">       GRANT/REVOKE      </code> )</td>
+Fine-Grained Access Control (Database roles with <code dir="ltr" translate="no">GRANT/REVOKE</code> )</td>
 <td><br />
 Enforce precise read/write/update permissions on tables and columns.</td>
 </tr>
@@ -111,15 +111,15 @@ Agents must only call tools that are necessary for the task. Make sure that your
 
 ### Limit data access in multi-tenant databases
 
-A general tool like `  execute_sql  ` lets the caller execute database queries that can read any data that IAM and database permissions allow access to. When you create an agent that accesses data in a multi-tenant application without a trusted human in the loop, you might need to limit data access further.
+A general tool like `execute_sql` lets the caller execute database queries that can read any data that IAM and database permissions allow access to. When you create an agent that accesses data in a multi-tenant application without a trusted human in the loop, you might need to limit data access further.
 
 To make sure that the agent can only read subsets of the data that it has access to, we recommend that you create custom tools using a framework like [MCP Toolbox for Databases](https://github.com/googleapis/genai-toolbox) . For more information, see [Prebuilt vs. Custom Tools](https://googleapis.github.io/genai-toolbox/resources/tools/#prebuilt-vs-custom-tools) .
 
-For example, imagine that your database stores orders for all end users in the `  Orders  ` table. You're developing a chat agent that interacts with users and can look up their orders. The chat agent has permission to read the entire `  Orders  ` table, but one end user must not be able to request information about another user's orders.
+For example, imagine that your database stores orders for all end users in the `Orders` table. You're developing a chat agent that interacts with users and can look up their orders. The chat agent has permission to read the entire `Orders` table, but one end user must not be able to request information about another user's orders.
 
-In an unsafe scenario, you equip the agent with only an `  execute_sql  ` tool, creating a risk for a data leak. A malicious user can trick the agent into reading and returning other users' orders. Instructing the agent to enforce the access rules is typically not sufficient to protect the data.
+In an unsafe scenario, you equip the agent with only an `execute_sql` tool, creating a risk for a data leak. A malicious user can trick the agent into reading and returning other users' orders. Instructing the agent to enforce the access rules is typically not sufficient to protect the data.
 
-In a safe scenario, you give the agent a more specific custom tool—like `  lookup_active_order  ` —where the identity of the user in the query filter is set outside of the agent's control.
+In a safe scenario, you give the agent a more specific custom tool—like `lookup_active_order` —where the identity of the user in the query filter is set outside of the agent's control.
 
 ## Security and safety configurations
 
@@ -151,7 +151,7 @@ gcloud ai endpoints update ENDPOINT_ID \
     --model-armor-config-file=model_armor_config.json
 ```
 
-In the following example, `  model_armor_config.json  ` might reference a DLP template:
+In the following example, `model_armor_config.json` might reference a DLP template:
 
     {
       "safety_thresholds": {

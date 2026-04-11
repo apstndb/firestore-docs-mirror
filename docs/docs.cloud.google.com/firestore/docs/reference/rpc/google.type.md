@@ -9,35 +9,35 @@ Represents a day of the week.
 
 Enums
 
-`  DAY_OF_WEEK_UNSPECIFIED  `
+`DAY_OF_WEEK_UNSPECIFIED`
 
 The day of the week is unspecified.
 
-`  MONDAY  `
+`MONDAY`
 
 Monday
 
-`  TUESDAY  `
+`TUESDAY`
 
 Tuesday
 
-`  WEDNESDAY  `
+`WEDNESDAY`
 
 Wednesday
 
-`  THURSDAY  `
+`THURSDAY`
 
 Thursday
 
-`  FRIDAY  `
+`FRIDAY`
 
 Friday
 
-`  SATURDAY  `
+`SATURDAY`
 
 Saturday
 
-`  SUNDAY  `
+`SUNDAY`
 
 Sunday
 
@@ -47,14 +47,14 @@ An object that represents a latitude/longitude pair. This is expressed as a pair
 
 Fields
 
-`  latitude  `
+`latitude`
 
-`  double  `
+`double`
 
 The latitude in degrees. It must be in the range \[-90.0, +90.0\].
 
-`  longitude  `
+`longitude`
 
-`  double  `
+`double`
 
 The longitude in degrees. It must be in the range \[-180.0, +180.0\].

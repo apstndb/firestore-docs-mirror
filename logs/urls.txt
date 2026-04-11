@@ -42,6 +42,7 @@ https://docs.cloud.google.com/datastore/docs/export-import-entities
 https://docs.cloud.google.com/datastore/docs/extend-with-functions-2nd-gen
 https://docs.cloud.google.com/datastore/docs/firestore-or-datastore
 https://docs.cloud.google.com/datastore/docs/getting-support
+https://docs.cloud.google.com/datastore/docs/java-client-grpc
 https://docs.cloud.google.com/datastore/docs/key-visualizer
 https://docs.cloud.google.com/datastore/docs/keyvis-exploring-heatmaps
 https://docs.cloud.google.com/datastore/docs/keyvis-getting-started
@@ -583,6 +584,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/saved-queries
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/securing-with-vpc-sc
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/server-side-encryption
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/shredded-fields
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-data-types-drivers
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-36
@@ -627,6 +629,7 @@ https://docs.cloud.google.com/firestore/native/docs/enterprise-optimize-query-pe
 https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain
 https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain-reference
 https://docs.cloud.google.com/firestore/native/docs/enterprise-query-insights
+https://docs.cloud.google.com/firestore/native/docs/enterprise-shredded-fields
 https://docs.cloud.google.com/firestore/native/docs/eventarc
 https://docs.cloud.google.com/firestore/native/docs/extend-with-cloud-run-functions
 https://docs.cloud.google.com/firestore/native/docs/extend-with-functions
@@ -912,6 +915,7 @@ https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/u
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/bulk-delete
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/clone
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/connection-string
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/create
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/delete
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/describe

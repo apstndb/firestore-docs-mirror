@@ -2,7 +2,7 @@
 
 Use the managed bulk delete service to delete data from your database. This feature supports deletion against one or more collection groups.
 
-This page describes how to delete documents in bulk using the managed bulk delete service. The Firestore with MongoDB compatibility managed bulk delete service is available through the [`  gcloud  `](https://cloud.google.com/sdk/gcloud/) command-line tool and the Firestore [REST API](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/bulkDeleteDocuments) .
+This page describes how to delete documents in bulk using the managed bulk delete service. The Firestore with MongoDB compatibility managed bulk delete service is available through the [`gcloud`](https://cloud.google.com/sdk/gcloud/) command-line tool and the Firestore [REST API](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/bulkDeleteDocuments) .
 
 **Caution:** Bulk deleting data from Firestore with MongoDB compatibility incurs one delete operation per document deleted and some read operations based on a fraction of total documents read. However, these operations don't appear in the usage section of the console. Make sure that you understand this before issuing bulk deletes to avoid billed charges.
 
@@ -14,18 +14,18 @@ Before you can use the managed bulk delete service, you must complete the follow
 
 2.  Make sure your account has the necessary permissions for Firestore with MongoDB compatibility. **If you are the project owner, your account has the required permissions.** Otherwise, the following roles grant the necessary permissions for bulk delete operations:
     
-      - [Firestore with MongoDB compatibility roles:](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam#predefined_roles) `  Owner  ` , `  Cloud Datastore Owner  ` , or `  Cloud Datastore Bulk Admin  `
+      - [Firestore with MongoDB compatibility roles:](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam#predefined_roles) `Owner` , `Cloud Datastore Owner` , or `Cloud Datastore Bulk Admin`
         **Note:** These Datastore roles also grant permissions in Firestore.
 
-### Set up `     gcloud    ` for your project
+### Set up `gcloud` for your project
 
-You can initiate bulk delete operations through the Google Cloud console or the `  gcloud  ` command-line tool. To use `  gcloud  ` , set up the command-line tool and connect to your project in one of the following ways:
+You can initiate bulk delete operations through the Google Cloud console or the `gcloud` command-line tool. To use `gcloud` , set up the command-line tool and connect to your project in one of the following ways:
 
-  - Access `  gcloud  ` from the Google Cloud console using [Cloud Shell](https://cloud.google.com/shell/) .
+  - Access `gcloud` from the Google Cloud console using [Cloud Shell](https://cloud.google.com/shell/) .
     
     [Start Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
     
-    Make sure `  gcloud  ` is configured for the correct project:
+    Make sure `gcloud` is configured for the correct project:
     
         gcloud config set project [PROJECT_ID]
 
@@ -41,7 +41,7 @@ A bulk delete operation first finds all applicable documents in your database an
 
 ### gcloud
 
-To bulk delete specific collection groups, use the [`  --collection-ids  `](https://cloud.google.com/sdk/gcloud/reference/beta/firestore/bulk-delete#FLAGS) flag. The operation deletes only the collection groups with the given IDs.
+To bulk delete specific collection groups, use the [`--collection-ids`](https://cloud.google.com/sdk/gcloud/reference/beta/firestore/bulk-delete#FLAGS) flag. The operation deletes only the collection groups with the given IDs.
 
 ``` notranslate
 gcloud firestore bulk-delete \
@@ -49,7 +49,7 @@ gcloud firestore bulk-delete \
 --database=[DATABASE]
 ```
 
-For example, consider multiple documents that represent restaurants in the `  restaurants  ` collection of the `  cymbal  ` database. You also have collections for `  ratings  ` , `  reviews  ` , and `  outlets  ` . To bulk delete the `  restaurants  ` and `  reviews  ` collections, your command looks as follows:
+For example, consider multiple documents that represent restaurants in the `restaurants` collection of the `cymbal` database. You also have collections for `ratings` , `reviews` , and `outlets` . To bulk delete the `restaurants` and `reviews` collections, your command looks as follows:
 
     gcloud firestore bulk-delete \
     --collection-ids=restaurants,reviews \
@@ -59,19 +59,19 @@ For example, consider multiple documents that represent restaurants in the `  re
 
 After you start a bulk delete operation, Firestore with MongoDB compatibility assigns the operation a unique name. You can use the operation name to delete, cancel, or check the status of the operation.
 
-Operation names are prefixed with `  projects/[PROJECT_ID]/databases/[DATABASE_ID]/operations/  ` , for example:
+Operation names are prefixed with `projects/[PROJECT_ID]/databases/[DATABASE_ID]/operations/` , for example:
 
 ``` notranslate
 projects/my-project/databases/(default)/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
 ```
 
-However, you can leave out the prefix when specifying an operation name for the `  describe  ` , `  cancel  ` , and `  delete  ` commands.
+However, you can leave out the prefix when specifying an operation name for the `describe` , `cancel` , and `delete` commands.
 
 ### List all bulk delete operations
 
 ### gcloud
 
-Use the [`  operations list  `](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command to see all running and recently completed operations, including bulk delete operations:
+Use the [`operations list`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command to see all running and recently completed operations, including bulk delete operations:
 
 ``` notranslate
 gcloud firestore operations list
@@ -81,7 +81,7 @@ gcloud firestore operations list
 
 ### gcloud
 
-Use the [`  operations describe  `](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/describe) command to show the status of a bulk delete operation.
+Use the [`operations describe`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/describe) command to show the status of a bulk delete operation.
 
 ``` notranslate
 gcloud firestore operations describe [OPERATION_NAME]
@@ -89,19 +89,19 @@ gcloud firestore operations describe [OPERATION_NAME]
 
 #### Estimate the completion time
 
-A request for the status of a long-running operation returns the metrics `  workEstimated  ` and `  workCompleted  ` . Each of these metrics is returned in both number of bytes and number of documents:
+A request for the status of a long-running operation returns the metrics `workEstimated` and `workCompleted` . Each of these metrics is returned in both number of bytes and number of documents:
 
-  - `  workEstimated  ` shows the estimated total number of bytes and documents an operation will process. Firestore with MongoDB compatibility might omit this metric if it can't make an estimate.
+  - `workEstimated` shows the estimated total number of bytes and documents an operation will process. Firestore with MongoDB compatibility might omit this metric if it can't make an estimate.
 
-  - `  workCompleted  ` shows the number of bytes and documents deleted so far. After the operation completes, the value shows the total number of bytes and documents that were actually processed, which might be larger than the value of `  workEstimated  ` .
+  - `workCompleted` shows the number of bytes and documents deleted so far. After the operation completes, the value shows the total number of bytes and documents that were actually processed, which might be larger than the value of `workEstimated` .
 
-Divide `  workCompleted  ` by `  workEstimated  ` for a rough progress estimate. This estimate might be inaccurate, because it depends on delayed statistics collection.
+Divide `workCompleted` by `workEstimated` for a rough progress estimate. This estimate might be inaccurate, because it depends on delayed statistics collection.
 
 ### Cancel an operation
 
 ### gcloud
 
-Use the [`  operations cancel  `](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/cancel) command to stop an operation in progress:
+Use the [`operations cancel`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/cancel) command to stop an operation in progress:
 
 ``` notranslate
 gcloud firestore operations cancel [OPERATION_NAME]
@@ -111,7 +111,7 @@ Cancelling a running operation doesn't undo the operation. A cancelled bulk dele
 
 ### Delete an operation
 
-Use the [`  gcloud firestore operations delete  `](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/delete) command to remove a completed operation from the list of recent operations. To cancel a running operation, use the earlier cancellation operation.
+Use the [`gcloud firestore operations delete`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/delete) command to remove a completed operation from the list of recent operations. To cancel a running operation, use the earlier cancellation operation.
 
 ``` notranslate
 gcloud firestore operations delete [OPERATION_NAME]
@@ -133,4 +133,4 @@ Bulk delete operations doesn't trigger your [Google Cloud budget](https://cloud.
 
 ### View bulk delete costs
 
-Bulk delete operations apply the `  goog-firestoremanaged:bulkdelete  ` label to billed operations. In the [Cloud Billing reports page](https://cloud.google.com/billing/docs/how-to/reports#getting_started) , you can use this label to view costs related to bulk delete operations.
+Bulk delete operations apply the `goog-firestoremanaged:bulkdelete` label to billed operations. In the [Cloud Billing reports page](https://cloud.google.com/billing/docs/how-to/reports#getting_started) , you can use this label to view costs related to bulk delete operations.

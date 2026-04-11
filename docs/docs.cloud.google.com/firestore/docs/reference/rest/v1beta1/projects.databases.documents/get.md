@@ -97,7 +97,7 @@ eu
 us
 
   
-`  GET https://firestore.googleapis.com/v1beta1/{name=projects/*/databases/*/documents/*/**}  `
+`GET https://firestore.googleapis.com/v1beta1/{name=projects/*/databases/*/documents/*/**}`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -105,43 +105,43 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Required. The resource name of the Document to get. In the format: `  projects/{projectId}/databases/{databaseId}/documents/{document_path}  ` .
+Required. The resource name of the Document to get. In the format: `projects/{projectId}/databases/{databaseId}/documents/{document_path}` .
 
 ### Query parameters
 
 Parameters
 
-`  mask  `
+`mask`
 
-`  object ( DocumentMask  ` )
+` object ( DocumentMask  ` )
 
 The fields to return. If not set, returns all fields.
 
 If the document has a field that is not present in this mask, that field will not be returned in the response.
 
-Union parameter `  consistency_selector  ` . The consistency mode for this transaction. If not set, defaults to strong consistency. `  consistency_selector  ` can be only one of the following:
+Union parameter `consistency_selector` . The consistency mode for this transaction. If not set, defaults to strong consistency. `consistency_selector` can be only one of the following:
 
-`  transaction  `
+`transaction`
 
-`  string ( bytes format)  `
+`string ( bytes format)`
 
 Reads the document in a transaction.
 
 A base64-encoded string.
 
-`  readTime  `
+`readTime`
 
-`  string ( Timestamp  ` format)
+` string ( Timestamp  ` format)
 
 Reads the version of the document at the given time.
 
 This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days.
 
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `  "2014-10-02T15:01:23Z"  ` , `  "2014-10-02T15:01:23.045123456Z"  ` or `  "2014-10-02T15:01:23+05:30"  ` .
+Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .
 
 ### Request body
 
@@ -155,7 +155,7 @@ If successful, the response body contains an instance of `  Document  ` .
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

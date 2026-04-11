@@ -4,15 +4,15 @@ gcloud beta datastore operations describe - retrieves information about a Cloud 
 
 SYNOPSIS
 
-`  gcloud beta datastore operations describe  ` `  NAME  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud beta datastore operations describe` `  NAME  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (BETA)  ` Retrieves information about a Cloud Datastore admin operation.
+`(BETA)` Retrieves information about a Cloud Datastore admin operation.
 
 EXAMPLES
 
-To see information on the operation with id `  exampleId  ` , run:
+To see information on the operation with id `exampleId` , run:
 
 ``` wrap-code
 gcloud beta datastore operations describe exampleId
@@ -39,7 +39,7 @@ GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 NOTES
 

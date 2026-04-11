@@ -1,16 +1,16 @@
 # Order and limit data
 
-**Tip:** This page applies to the Core operations interface. To order and limit data in the Pipeline operations interface for Enterprise edition, see [Pipeline operation `  limit  ` stage](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/limit) .
+**Tip:** This page applies to the Core operations interface. To order and limit data in the Pipeline operations interface for Enterprise edition, see [Pipeline operation `limit` stage](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/limit) .
 
-Firestore provides powerful query functionality for specifying which documents you want to retrieve from a collection. These queries can also be used with either `  get()  ` or `  addSnapshotListener()  ` , as described in [Get Data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data) .
+Firestore provides powerful query functionality for specifying which documents you want to retrieve from a collection. These queries can also be used with either `get()` or `addSnapshotListener()` , as described in [Get Data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data) .
 
 **Note:** While the code samples cover multiple languages, the text explaining the samples refers to the Web method names.
 
 ## Order and limit data
 
-By default, a query retrieves all documents that satisfy the query in ascending order by document ID. You can specify the sort order for your data using `  orderBy()  ` , and you can limit the number of documents retrieved using `  limit()  ` . If you specify a `  limit()  ` , the value must be greater than or equal to zero.
+By default, a query retrieves all documents that satisfy the query in ascending order by document ID. You can specify the sort order for your data using `orderBy()` , and you can limit the number of documents retrieved using `limit()` . If you specify a `limit()` , the value must be greater than or equal to zero.
 
-**Note:** An `  orderBy()  ` clause also [filters for existence of the given field](https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data#orderby_and_existence) . The result set will not include documents that do not contain the given field.
+**Note:** An `orderBy()` clause also [filters for existence of the given field](https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data#orderby_and_existence) . The result set will not include documents that do not contain the given field.
 
 For example, you could query for the first 3 cities alphabetically with:
 
@@ -288,7 +288,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
     query = cities_ref.order("state").order("population", "desc")order_limit_data.rb
 
-You can combine `  where()  ` filters with `  orderBy()  ` and `  limit()  ` . In the following example, the queries define a population threshold, sort by population in ascending order, and return only the first few results that exceed the threshold:
+You can combine `where()` filters with `orderBy()` and `limit()` . In the following example, the queries define a population threshold, sort by population in ascending order, and return only the first few results that exceed the threshold:
 
 ### Web version 9
 
@@ -406,19 +406,19 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
     query = cities_ref.where("population", ">", 2_500_000).order("population").limit(2)order_limit_data.rb
 
-However, if you have a filter with a range comparison ( `  <  ` , `  <=  ` , `  >  ` , `  >=  ` ), your first ordering must be on the same field, see the list of `  orderBy()  ` limitations below.
+However, if you have a filter with a range comparison ( `<` , `<=` , `>` , `>=` ), your first ordering must be on the same field, see the list of `orderBy()` limitations below.
 
 ## Limitations
 
-Note the following restriction for `  orderBy()  ` clauses:
+Note the following restriction for `orderBy()` clauses:
 
-  - An `  orderBy()  ` clause also [filters for existence of the given fields](https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data#orderby_and_existence) . The result set will not include documents that do not contain the given fields.
+  - An `orderBy()` clause also [filters for existence of the given fields](https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data#orderby_and_existence) . The result set will not include documents that do not contain the given fields.
 
-## `     orderBy    ` and existence
+## `orderBy` and existence
 
 When you order a query by a given field, the query can return only the documents where the order-by field exists.
 
-For example, the following query would not return any documents where the `  population  ` field is not set, even if they otherwise meet the query filters.
+For example, the following query would not return any documents where the `population` field is not set, even if they otherwise meet the query filters.
 
 ##### Java
 
@@ -426,7 +426,7 @@ For example, the following query would not return any documents where the `  pop
 db.collection("cities").whereEqualTo("country", “USA”).orderBy(“population”);
 ```
 
-A related effect applies to inequalities. A query with an inequality filter on a field also implies ordering by that field. The following query does not return documents without a `  population  ` field even if `  country = USA  ` in that document . As a workaround, you can execute separate queries for each ordering or you can assign a value for all fields that you order by.
+A related effect applies to inequalities. A query with an inequality filter on a field also implies ordering by that field. The following query does not return documents without a `population` field even if `country = USA` in that document . As a workaround, you can execute separate queries for each ordering or you can assign a value for all fields that you order by.
 
 ##### Java
 

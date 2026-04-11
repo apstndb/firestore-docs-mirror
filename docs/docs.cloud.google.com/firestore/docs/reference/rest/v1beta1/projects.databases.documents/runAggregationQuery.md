@@ -104,7 +104,7 @@ eu
 us
 
   
-`  POST https://firestore.googleapis.com/v1beta1/{parent=projects/*/databases/*/documents}:runAggregationQuery  `
+`POST https://firestore.googleapis.com/v1beta1/{parent=projects/*/databases/*/documents}:runAggregationQuery`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -112,11 +112,11 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. The parent resource name. In the format: `  projects/{projectId}/databases/{databaseId}/documents  ` or `  projects/{projectId}/databases/{databaseId}/documents/{document_path}  ` . For example: `  projects/my-project/databases/my-database/documents  ` or `  projects/my-project/databases/my-database/documents/chatrooms/my-chatroom  `
+Required. The parent resource name. In the format: `projects/{projectId}/databases/{databaseId}/documents` or `projects/{projectId}/databases/{databaseId}/documents/{document_path}` . For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
 
 ### Request body
 
@@ -133,50 +133,32 @@ The request body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;explainOptions&quot;: {
-    object (ExplainOptions)
-  },
-
-  // Union field query_type can be only one of the following:
-  &quot;structuredAggregationQuery&quot;: {
-    object (StructuredAggregationQuery)
-  }
-  // End of list of possible types for union field query_type.
-
-  // Union field consistency_selector can be only one of the following:
-  &quot;transaction&quot;: string,
-  &quot;newTransaction&quot;: {
-    object (TransactionOptions)
-  },
-  &quot;readTime&quot;: string
-  // End of list of possible types for union field consistency_selector.
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;explainOptions&quot;: {object (ExplainOptions)},// Union field query_type can be only one of the following:&quot;structuredAggregationQuery&quot;: {object (StructuredAggregationQuery)}// End of list of possible types for union field query_type.// Union field consistency_selector can be only one of the following:&quot;transaction&quot;: string,&quot;newTransaction&quot;: {object (TransactionOptions)},&quot;readTime&quot;: string// End of list of possible types for union field consistency_selector.}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  explainOptions  `
+`explainOptions`
 
-`  object ( ExplainOptions  ` )
+` object ( ExplainOptions  ` )
 
 Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only query results will be returned.
 
-Union field `  query_type  ` . The query to run. `  query_type  ` can be only one of the following:
+Union field `query_type` . The query to run. `query_type` can be only one of the following:
 
-`  structuredAggregationQuery  `
+`structuredAggregationQuery`
 
-`  object ( StructuredAggregationQuery  ` )
+` object ( StructuredAggregationQuery  ` )
 
 An aggregation query.
 
-Union field `  consistency_selector  ` . The consistency mode for the query, defaults to strong consistency. `  consistency_selector  ` can be only one of the following:
+Union field `consistency_selector` . The consistency mode for the query, defaults to strong consistency. `consistency_selector` can be only one of the following:
 
-`  transaction  `
+`transaction`
 
-`  string ( bytes format)  `
+`string ( bytes format)`
 
 Run the aggregation within an already active transaction.
 
@@ -184,23 +166,23 @@ The value here is the opaque transaction ID to execute the query in.
 
 A base64-encoded string.
 
-`  newTransaction  `
+`newTransaction`
 
-`  object ( TransactionOptions  ` )
+` object ( TransactionOptions  ` )
 
 Starts a new transaction as part of the query, defaulting to read-only.
 
 The new transaction ID will be returned as the first response in the stream.
 
-`  readTime  `
+`readTime`
 
-`  string ( Timestamp  ` format)
+` string ( Timestamp  ` format)
 
 Executes the query at the given timestamp.
 
 This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days.
 
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `  "2014-10-02T15:01:23Z"  ` , `  "2014-10-02T15:01:23.045123456Z"  ` or `  "2014-10-02T15:01:23+05:30"  ` .
+Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .
 
 ### Response body
 
@@ -219,33 +201,24 @@ If successful, the response body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;result&quot;: {
-    object (AggregationResult)
-  },
-  &quot;transaction&quot;: string,
-  &quot;readTime&quot;: string,
-  &quot;explainMetrics&quot;: {
-    object (ExplainMetrics)
-  }
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;result&quot;: {object (AggregationResult)},&quot;transaction&quot;: string,&quot;readTime&quot;: string,&quot;explainMetrics&quot;: {object (ExplainMetrics)}}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  result  `
+`result`
 
-`  object ( AggregationResult  ` )
+` object ( AggregationResult  ` )
 
 A single aggregation result.
 
 Not present when reporting partial progress.
 
-`  transaction  `
+`transaction`
 
-`  string ( bytes format)  `
+`string ( bytes format)`
 
 The transaction that was started as part of this request.
 
@@ -253,19 +226,19 @@ Only present on the first response when the request requested to start a new tra
 
 A base64-encoded string.
 
-`  readTime  `
+`readTime`
 
-`  string ( Timestamp  ` format)
+` string ( Timestamp  ` format)
 
-The time at which the aggregate result was computed. This is always monotonically increasing; in this case, the previous AggregationResult in the result stream are guaranteed not to have changed between their `  readTime  ` and this one.
+The time at which the aggregate result was computed. This is always monotonically increasing; in this case, the previous AggregationResult in the result stream are guaranteed not to have changed between their `readTime` and this one.
 
-If the query returns no results, a response with `  readTime  ` and no `  result  ` will be sent, and this represents the time at which the query was run.
+If the query returns no results, a response with `readTime` and no `result` will be sent, and this represents the time at which the query was run.
 
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `  "2014-10-02T15:01:23Z"  ` , `  "2014-10-02T15:01:23.045123456Z"  ` or `  "2014-10-02T15:01:23+05:30"  ` .
+Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .
 
-`  explainMetrics  `
+`explainMetrics`
 
-`  object ( ExplainMetrics  ` )
+` object ( ExplainMetrics  ` )
 
 Query explain metrics. This is only present when the `  RunAggregationQueryRequest.explain_options  ` is provided, and it is sent only once with the last response in the stream.
 
@@ -273,8 +246,8 @@ Query explain metrics. This is only present when the `  RunAggregationQueryReque
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .
 
@@ -293,40 +266,28 @@ Firestore query for running an aggregation over a `  StructuredQuery  ` .
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;aggregations&quot;: [
-    {
-      object (Aggregation)
-    }
-  ],
-
-  // Union field query_type can be only one of the following:
-  &quot;structuredQuery&quot;: {
-    object (StructuredQuery)
-  }
-  // End of list of possible types for union field query_type.
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;aggregations&quot;: [{object (Aggregation)}],// Union field query_type can be only one of the following:&quot;structuredQuery&quot;: {object (StructuredQuery)}// End of list of possible types for union field query_type.}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  aggregations[]  `
+`aggregations[]`
 
-`  object ( Aggregation  ` )
+` object ( Aggregation  ` )
 
-Optional. Series of aggregations to apply over the results of the `  structuredQuery  ` .
+Optional. Series of aggregations to apply over the results of the `structuredQuery` .
 
 Requires:
 
   - A minimum of one and maximum of five aggregations per query.
 
-Union field `  query_type  ` . The base query to aggregate over. `  query_type  ` can be only one of the following:
+Union field `query_type` . The base query to aggregate over. `query_type` can be only one of the following:
 
-`  structuredQuery  `
+`structuredQuery`
 
-`  object ( StructuredQuery  ` )
+` object ( StructuredQuery  ` )
 
 Nested structured query.
 
@@ -345,34 +306,20 @@ Defines an aggregation that produces a single result.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;alias&quot;: string,
-
-  // Union field operator can be only one of the following:
-  &quot;count&quot;: {
-    object (Count)
-  },
-  &quot;sum&quot;: {
-    object (Sum)
-  },
-  &quot;avg&quot;: {
-    object (Avg)
-  }
-  // End of list of possible types for union field operator.
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;alias&quot;: string,// Union field operator can be only one of the following:&quot;count&quot;: {object (Count)},&quot;sum&quot;: {object (Sum)},&quot;avg&quot;: {object (Avg)}// End of list of possible types for union field operator.}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  alias  `
+`alias`
 
-`  string  `
+`string`
 
 Optional. Optional name of the field to store the result of the aggregation into.
 
-If not provided, Firestore will pick a default name following the format `  field_<incremental_id++>  ` . For example:
+If not provided, Firestore will pick a default name following the format `field_<incremental_id++>` . For example:
 
     AGGREGATE
       COUNT_UP_TO(1) AS count_up_to_1,
@@ -399,23 +346,23 @@ Requires:
   - Must be unique across all aggregation aliases.
   - Conform to `  document field name  ` limitations.
 
-Union field `  operator  ` . The type of aggregation to perform, required. `  operator  ` can be only one of the following:
+Union field `operator` . The type of aggregation to perform, required. `operator` can be only one of the following:
 
-`  count  `
+`count`
 
-`  object ( Count  ` )
+` object ( Count  ` )
 
 Count aggregator.
 
-`  sum  `
+`sum`
 
-`  object ( Sum  ` )
+` object ( Sum  ` )
 
 Sum aggregator.
 
-`  avg  `
+`avg`
 
-`  object ( Avg  ` )
+` object ( Avg  ` )
 
 Average aggregator.
 
@@ -423,7 +370,7 @@ Average aggregator.
 
 Count of documents that match the query.
 
-The `  COUNT(*)  ` aggregation function operates on the entire document so it does not require a field reference.
+The `COUNT(*)` aggregation function operates on the entire document so it does not require a field reference.
 
 <table>
 <colgroup>
@@ -445,9 +392,9 @@ The `  COUNT(*)  ` aggregation function operates on the entire document so it do
 
 Fields
 
-`  upTo  `
+`upTo`
 
-`  string ( Int64Value format)  `
+`string ( Int64Value format)`
 
 Optional. Optional constraint on the maximum number of documents to count.
 
@@ -467,9 +414,9 @@ Requires:
 
 Sum of the values of the requested field.
 
-  - Only numeric values will be aggregated. All non-numeric values including `  NULL  ` are skipped.
+  - Only numeric values will be aggregated. All non-numeric values including `NULL` are skipped.
 
-  - If the aggregated values contain `  NaN  ` , returns `  NaN  ` . Infinity math follows IEEE-754 standards.
+  - If the aggregated values contain `NaN` , returns `NaN` . Infinity math follows IEEE-754 standards.
 
   - If the aggregated value set is empty, returns 0.
 
@@ -488,20 +435,16 @@ Sum of the values of the requested field.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;field&quot;: {
-    object (FieldReference)
-  }
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;field&quot;: {object (FieldReference)}}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  field  `
+`field`
 
-`  object ( FieldReference  ` )
+` object ( FieldReference  ` )
 
 The field to aggregate on.
 
@@ -509,11 +452,11 @@ The field to aggregate on.
 
 Average of the values of the requested field.
 
-  - Only numeric values will be aggregated. All non-numeric values including `  NULL  ` are skipped.
+  - Only numeric values will be aggregated. All non-numeric values including `NULL` are skipped.
 
-  - If the aggregated values contain `  NaN  ` , returns `  NaN  ` . Infinity math follows IEEE-754 standards.
+  - If the aggregated values contain `NaN` , returns `NaN` . Infinity math follows IEEE-754 standards.
 
-  - If the aggregated value set is empty, returns `  NULL  ` .
+  - If the aggregated value set is empty, returns `NULL` .
 
   - Always returns the result as a double.
 
@@ -528,20 +471,16 @@ Average of the values of the requested field.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;field&quot;: {
-    object (FieldReference)
-  }
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;field&quot;: {object (FieldReference)}}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  field  `
+`field`
 
-`  object ( FieldReference  ` )
+` object ( FieldReference  ` )
 
 The field to aggregate on.
 
@@ -549,7 +488,7 @@ The field to aggregate on.
 
 The result of a single bucket from a Firestore aggregation query.
 
-The keys of `  aggregateFields  ` are the same for all results in an aggregation query, unlike document queries which can have different fields present for each result.
+The keys of `aggregateFields` are the same for all results in an aggregation query, unlike document queries which can have different fields present for each result.
 
 <table>
 <colgroup>
@@ -562,26 +501,19 @@ The keys of `  aggregateFields  ` are the same for all results in an aggregation
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;aggregateFields&quot;: {
-    string: {
-      object (Value)
-    },
-    ...
-  }
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;aggregateFields&quot;: {string: {object (Value)},...}}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  aggregateFields  `
+`aggregateFields`
 
-`  map (key: string, value: object ( Value  ` ))
+`map (key: string, value: object ( Value` ))
 
-The result of the aggregation functions, ex: `  COUNT(*) AS total_docs  ` .
+The result of the aggregation functions, ex: `COUNT(*) AS total_docs` .
 
 The key is the `  alias  ` assigned to the aggregation function on input and the size of this map equals the number of aggregation functions in the query.
 
-An object containing a list of `  "key": value  ` pairs. Example: `  { "name": "wrench", "mass": "1.3kg", "count": "3" }  ` .
+An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }` .

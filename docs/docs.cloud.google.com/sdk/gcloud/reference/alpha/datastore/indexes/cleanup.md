@@ -4,11 +4,11 @@ gcloud alpha datastore indexes cleanup - remove unused datastore indexes based o
 
 SYNOPSIS
 
-`  gcloud alpha datastore indexes cleanup  ` `  INDEX_FILE  ` \[ `  --database  ` = `  DATABASE  ` \] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud alpha datastore indexes cleanup` `  INDEX_FILE  ` \[ `  --database  ` = `  DATABASE  ` \] \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (ALPHA)  ` This command removes unused datastore indexes based on your local index configuration. Any indexes that exist that are not in the index file will be removed.
+`(ALPHA)` This command removes unused datastore indexes based on your local index configuration. Any indexes that exist that are not in the index file will be removed.
 
 EXAMPLES
 
@@ -21,14 +21,14 @@ gcloud alpha datastore indexes cleanup ~/myapp/index.yaml
 POSITIONAL ARGUMENTS
 
   - `  INDEX_FILE  `  
-    The path to your `  index.yaml  ` file. For a detailed look into defining your `  index.yaml  ` file, refer to this configuration guide: <https://cloud.google.com/datastore/docs/tools/indexconfig#Datastore_About_index_yaml>
+    The path to your `index.yaml` file. For a detailed look into defining your `index.yaml` file, refer to this configuration guide: <https://cloud.google.com/datastore/docs/tools/indexconfig#Datastore_About_index_yaml>
 
 FLAGS
 
-  - `  --database  ` = `  DATABASE  `  
-    The database to operate on. If not specified, the CLI refers the `  (default)  ` database by default.
+  - `--database` = `  DATABASE  `  
+    The database to operate on. If not specified, the CLI refers the `(default)` database by default.
     
-    For example, to operate on database `  testdb  ` :
+    For example, to operate on database `testdb` :
     
     ``` wrap-code
     gcloud alpha datastore indexes cleanup --database='testdb'
@@ -38,7 +38,7 @@ GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 NOTES
 

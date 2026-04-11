@@ -14,7 +14,7 @@ To run the samples, you must enable the Dataflow API:
 
 **Roles required to enable APIs**
 
-To enable APIs, you need the Service Usage Admin IAM role ( `  roles/serviceusage.serviceUsageAdmin  ` ), which contains the `  serviceusage.services.enable  ` permission. [Learn how to grant roles](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
+To enable APIs, you need the Service Usage Admin IAM role ( `roles/serviceusage.serviceUsageAdmin` ), which contains the `serviceusage.services.enable` permission. [Learn how to grant roles](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
 
 [Enable the API](https://console.cloud.google.com/flows/enableapi?apiid=dataflow.googleapis.com&redirect=https://console.cloud.google.com)
 
@@ -26,9 +26,9 @@ The examples below demonstrate a pipeline that writes data and one that reads an
 
 The source code for the samples is available in the [*googleapis/java-firestore* GitHub repository](https://github.com/googleapis/java-firestore/tree/main/samples/snippets/src/main/java/com/example/firestore/beam) . To run these samples, download the source code and see the [README](https://github.com/googleapis/java-firestore/tree/main/samples/snippets/src/main/java/com/example/firestore/beam#readme) .
 
-### Example `     Write    ` pipeline
+### Example `Write` pipeline
 
-The following example creates documents in the `  cities-beam-sample  ` collection:
+The following example creates documents in the `cities-beam-sample` collection:
 
     public class ExampleFirestoreBeamWrite {
       private static final FirestoreOptions FIRESTORE_OPTIONS = FirestoreOptions.getDefaultInstance();
@@ -102,9 +102,9 @@ NUM_WORKERS=number-workers
 MAX_NUM_WORKERS=max-number-workers
 ```
 
-### Example `     Read    ` Pipeline
+### Example `Read` Pipeline
 
-The following example pipeline reads documents from the `  cities-beam-sample  ` collection, applies a filter for documents where field `  country  ` is set to `  USA  ` , and returns the names of the matching documents.
+The following example pipeline reads documents from the `cities-beam-sample` collection, applies a filter for documents where field `country` is set to `USA` , and returns the names of the matching documents.
 
     public class ExampleFirestoreBeamRead {
     

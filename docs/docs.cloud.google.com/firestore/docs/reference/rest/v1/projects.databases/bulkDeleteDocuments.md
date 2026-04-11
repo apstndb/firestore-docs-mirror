@@ -99,7 +99,7 @@ eu
 us
 
   
-`  POST https://firestore.googleapis.com/v1/{name=projects/*/databases/*}:bulkDeleteDocuments  `
+`POST https://firestore.googleapis.com/v1/{name=projects/*/databases/*}:bulkDeleteDocuments`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -107,11 +107,11 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Required. Database to operate. Should be of the form: `  projects/{projectId}/databases/{databaseId}  ` .
+Required. Database to operate. Should be of the form: `projects/{projectId}/databases/{databaseId}` .
 
 ### Request body
 
@@ -142,17 +142,17 @@ The request body contains data with the following structure:
 
 Fields
 
-`  collectionIds[]  `
+`collectionIds[]`
 
-`  string  `
+`string`
 
 Optional. IDs of the collection groups to delete. Unspecified means all collection groups.
 
 Each collection group in this list must be unique.
 
-`  namespaceIds[]  `
+`namespaceIds[]`
 
-`  string  `
+`string`
 
 Optional. Namespaces to delete.
 
@@ -170,7 +170,7 @@ If successful, the response body contains an instance of `  Operation  ` .
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

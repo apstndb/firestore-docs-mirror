@@ -4,30 +4,30 @@ gcloud alpha datastore indexes - manage your Cloud Datastore indexes
 
 SYNOPSIS
 
-`  gcloud alpha datastore indexes  ` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud alpha datastore indexes` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (ALPHA)  ` The gcloud datastore command group lets you create and delete Google Cloud Datastore indexes.
+`(ALPHA)` The gcloud datastore command group lets you create and delete Google Cloud Datastore indexes.
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 COMMANDS
 
 `  COMMAND  ` is one of the following:
 
   - `  cleanup  `  
-    `  (ALPHA)  ` Remove unused datastore indexes based on your local index configuration.
+    `(ALPHA)` Remove unused datastore indexes based on your local index configuration.
   - `  create  `  
-    `  (ALPHA)  ` Create new datastore indexes based on your local index configuration.
+    `(ALPHA)` Create new datastore indexes based on your local index configuration.
   - `  describe  `  
-    `  (ALPHA)  ` Show details about an Cloud Datastore index.
+    `(ALPHA)` Show details about an Cloud Datastore index.
   - `  list  `  
-    `  (ALPHA)  ` List Cloud Datastore indexes.
+    `(ALPHA)` List Cloud Datastore indexes.
 
 NOTES
 

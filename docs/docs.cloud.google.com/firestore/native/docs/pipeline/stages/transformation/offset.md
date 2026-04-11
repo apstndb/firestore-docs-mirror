@@ -6,7 +6,7 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## Description
 
-Skips the first `  N  ` input documents.
+Skips the first `N` input documents.
 
 ## Examples
 
@@ -57,4 +57,4 @@ Android
 
 ## Behavior
 
-The `  offset(...)  ` stage will skip the first `  N  ` input documents. Unless a `  sort(...)  ` stage is used before the offset, the order in which documents are returned is unstable and repeated executions might produce different results.
+The `offset(...)` stage will skip the first `N` input documents. Unless a `sort(...)` stage is used before the offset, the order in which documents are returned is unstable and repeated executions might produce different results.

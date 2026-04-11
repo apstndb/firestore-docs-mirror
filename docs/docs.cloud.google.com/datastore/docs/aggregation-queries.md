@@ -1,14 +1,14 @@
 An aggregation query processes the data from multiple indexed entities to return a single summary value. Firestore in Datastore mode supports the following aggregation queries:
 
-  - `  count()  `
-  - `  sum()  `
-  - `  avg()  `
+  - `count()`
+  - `sum()`
+  - `avg()`
 
 Aggregation queries simplify your application code and cost less than fetching each entity for processing. Read this page to learn how to use aggregation queries.
 
-## `     count()    ` aggregation
+## `count()` aggregation
 
-Use the `  count()  ` aggregation to return the total number of indexed entities that match a given query. For example, this `  count()  ` aggregation returns the total number of entities in a kind.
+Use the `count()` aggregation to return the total number of indexed entities that match a given query. For example, this `count()` aggregation returns the total number of entities in a kind.
 
 ##### Java
 
@@ -115,15 +115,15 @@ fmt.Printf("Number of results from query: %d\n", countValue.GetIntegerValue())
 
     AGGREGATE COUNT(*) AS total OVER ( SELECT * AS total FROM tasks )
 
-GQL supports a simplified form of `  count()  ` queries:
+GQL supports a simplified form of `count()` queries:
 
     SELECT COUNT(*) AS total FROM tasks
 
-This example uses an optional alias of `  total  ` .
+This example uses an optional alias of `total` .
 
-The simplified form supports only `  FROM  ` and `  WHERE  ` clauses. See the [GQL reference](https://docs.cloud.google.com/datastore/docs/reference/gql_reference#aggregationss) for more information.
+The simplified form supports only `FROM` and `WHERE` clauses. See the [GQL reference](https://docs.cloud.google.com/datastore/docs/reference/gql_reference#aggregationss) for more information.
 
-The `  count()  ` aggregation takes into account any filters on the query and any `  limit  ` clauses. For example, the following aggregation returns a count of the number of entities that match the given filters.
+The `count()` aggregation takes into account any filters on the query and any `limit` clauses. For example, the following aggregation returns a count of the number of entities that match the given filters.
 
 ##### Java
 
@@ -250,15 +250,15 @@ fmt.Printf("Number of results from query: %d\n", countValue.GetIntegerValue())
 
     AGGREGATE COUNT(*) OVER ( SELECT * FROM tasks WHERE is_done = false AND tag = 'house')
 
-GQL supports a simplified form of `  count()  ` queries:
+GQL supports a simplified form of `count()` queries:
 
     SELECT COUNT(*) AS total
     FROM tasks
     WHERE is_done = false AND tag = 'house'
 
-This example uses an optional alias of `  total  ` .
+This example uses an optional alias of `total` .
 
-The simplified form supports only `  FROM  ` and `  WHERE  ` clauses. See the [GQL reference](https://docs.cloud.google.com/datastore/docs/reference/gql_reference#aggregationss) for more information.
+The simplified form supports only `FROM` and `WHERE` clauses. See the [GQL reference](https://docs.cloud.google.com/datastore/docs/reference/gql_reference#aggregationss) for more information.
 
 This example shows how to count up to a certain value. You can use this to, for example, stop counting at a certain number and inform users that they exceeded that number.
 
@@ -343,19 +343,19 @@ fmt.Printf("We have at least %d tasks\n", countValue.GetIntegerValue())
 
     AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM tasks WHERE is_done = false)
 
-GQL supports a simplified form of `  count_up_to()  ` queries:
+GQL supports a simplified form of `count_up_to()` queries:
 
     SELECT COUNT_UP_TO(1000) AS total
     FROM tasks
     WHERE is_done = false AND tag = 'house'
 
-This example uses an optional alias of `  total  ` .
+This example uses an optional alias of `total` .
 
-The simplified form supports only `  FROM  ` and `  WHERE  ` clauses. See the [GQL reference](https://docs.cloud.google.com/datastore/docs/reference/gql_reference#aggregationss) for more information.
+The simplified form supports only `FROM` and `WHERE` clauses. See the [GQL reference](https://docs.cloud.google.com/datastore/docs/reference/gql_reference#aggregationss) for more information.
 
-## `     sum()    ` aggregation
+## `sum()` aggregation
 
-Use the `  sum()  ` aggregation to return the total sum of numeric values that match a given query. For example, the following `  sum()  ` aggregation returns the total sum of numeric values of the given property from entities of the given kind:
+Use the `sum()` aggregation to return the total sum of numeric values that match a given query. For example, the following `sum()` aggregation returns the total sum of numeric values of the given property from entities of the given kind:
 
 ##### Java
 
@@ -460,15 +460,15 @@ fmt.Printf("Sum of results from query: %d\n", sumValue.GetIntegerValue())
       FROM tasks
     )
 
-GQL supports a simplified form of `  sum()  ` queries:
+GQL supports a simplified form of `sum()` queries:
 
     SELECT SUM(hours) AS total_hours FROM tasks
 
-This example uses an optional alias of `  total_hours  ` .
+This example uses an optional alias of `total_hours` .
 
-The simplified form supports only `  FROM  ` and `  WHERE  ` clauses. See the [GQL reference](https://docs.cloud.google.com/datastore/docs/reference/gql_reference#aggregationss) for more information.
+The simplified form supports only `FROM` and `WHERE` clauses. See the [GQL reference](https://docs.cloud.google.com/datastore/docs/reference/gql_reference#aggregationss) for more information.
 
-The `  sum()  ` aggregation takes into account any filters on the query and any `  limit  ` clauses. For example, the following aggregation returns a sum of the specified property with a numeric value in entities that match the given filters.
+The `sum()` aggregation takes into account any filters on the query and any `limit` clauses. For example, the following aggregation returns a sum of the specified property with a numeric value in entities that match the given filters.
 
 ##### Java
 
@@ -591,20 +591,20 @@ fmt.Printf("Sum of results from query: %d\n", sumValue.GetIntegerValue())
       WHERE is_done = false AND tag = 'house'
     )
 
-GQL supports a simplified form of `  sum()  ` queries:
+GQL supports a simplified form of `sum()` queries:
 
     SELECT
       SUM(hours) AS total_hours
     FROM tasks
     WHERE is_done = false AND tag = 'house'
 
-This example uses an optional alias of `  total_hours  ` .
+This example uses an optional alias of `total_hours` .
 
-The simplified form supports only `  FROM  ` and `  WHERE  ` clauses. See the [GQL reference](https://docs.cloud.google.com/datastore/docs/reference/gql_reference#aggregationss) for more information.
+The simplified form supports only `FROM` and `WHERE` clauses. See the [GQL reference](https://docs.cloud.google.com/datastore/docs/reference/gql_reference#aggregationss) for more information.
 
-## `     avg()    ` aggregation
+## `avg()` aggregation
 
-Use the `  avg()  ` aggregation to return the average of numeric values that match a given query. For example, the following `  avg()  ` aggregation returns the arithmetic mean of the specified property from the numeric property values of entities that match the query:
+Use the `avg()` aggregation to return the average of numeric values that match a given query. For example, the following `avg()` aggregation returns the arithmetic mean of the specified property from the numeric property values of entities that match the query:
 
 ##### Java
 
@@ -710,15 +710,15 @@ fmt.Printf("average hours: %f\n", avgValue.GetDoubleValue())
       FROM tasks
     )
 
-GQL supports a simplified form of `  avg()  ` queries:
+GQL supports a simplified form of `avg()` queries:
 
     SELECT AVG(hours) as avg_hours
 
-This example uses an optional alias of `  avg_hours  ` .
+This example uses an optional alias of `avg_hours` .
 
-The simplified form supports only `  FROM  ` and `  WHERE  ` clauses. See the [GQL reference](https://docs.cloud.google.com/datastore/docs/reference/gql_reference#aggregationss) for more information.
+The simplified form supports only `FROM` and `WHERE` clauses. See the [GQL reference](https://docs.cloud.google.com/datastore/docs/reference/gql_reference#aggregationss) for more information.
 
-The `  avg()  ` aggregation takes into account any filters on the query and any `  limit  ` clauses. For example, the following aggregation returns the arithmetic mean of the specified property from the numeric property values of entities that match the query filters.
+The `avg()` aggregation takes into account any filters on the query and any `limit` clauses. For example, the following aggregation returns the arithmetic mean of the specified property from the numeric property values of entities that match the query filters.
 
 ##### Java
 
@@ -841,16 +841,16 @@ fmt.Printf("average hours: %f\n", avgValue.GetDoubleValue())
       WHERE is_done = false AND tag = 'house'
     )
 
-GQL supports a simplified form of `  avg()  ` queries:
+GQL supports a simplified form of `avg()` queries:
 
     SELECT
       AVG(hours) as avg_hours
     FROM tasks
     WHERE is_done = false AND tag = 'house'
 
-This example uses an optional alias of `  avg_hours  ` .
+This example uses an optional alias of `avg_hours` .
 
-The simplified form supports only `  FROM  ` and `  WHERE  ` clauses. See the [GQL reference](https://docs.cloud.google.com/datastore/docs/reference/gql_reference#aggregationss) for more information.
+The simplified form supports only `FROM` and `WHERE` clauses. See the [GQL reference](https://docs.cloud.google.com/datastore/docs/reference/gql_reference#aggregationss) for more information.
 
 ## Calculate multiple aggregations in a query
 
@@ -985,9 +985,9 @@ GQL supports a simplified form for aggregation queries:
     FROM tasks
     WHERE is_done = false AND tag = 'house'
 
-This example uses the optional aliases of `  total_hours  ` and `  total_tasks  ` .
+This example uses the optional aliases of `total_hours` and `total_tasks` .
 
-The simplified form supports only `  FROM  ` and `  WHERE  ` clauses. See the [GQL reference](https://docs.cloud.google.com/datastore/docs/reference/gql_reference#aggregationss) for more information.
+The simplified form supports only `FROM` and `WHERE` clauses. See the [GQL reference](https://docs.cloud.google.com/datastore/docs/reference/gql_reference#aggregationss) for more information.
 
 Queries with multiple aggregation include only the entities that contain all the properties in each aggregation. This might lead to different results from performing each aggregation separately.
 
@@ -997,7 +997,7 @@ As you work with aggregation queries, note the following behavior and limitation
 
   - The query you provide to the aggregation must meet the [restrictions on queries](https://docs.cloud.google.com/datastore/docs/concepts/queries#restrictions_on_queries) .
 
-  - If an aggregation query cannot resolve within 60 seconds, it returns a `  DEADLINE_EXCEEDED  ` error. Performance depends on your index configuration and on the size of the dataset.
+  - If an aggregation query cannot resolve within 60 seconds, it returns a `DEADLINE_EXCEEDED` error. Performance depends on your index configuration and on the size of the dataset.
     
     **Note:** Most queries scale based on the on the size of the result set, not the dataset. However, aggregation queries scale based on the size of the dataset and the number of index entries scanned.
     
@@ -1005,23 +1005,23 @@ As you work with aggregation queries, note the following behavior and limitation
 
   - Aggregation queries read from index entries and include only indexed properties in the calculation.
 
-  - Adding an `  OrderBy  ` clause to the query limits the aggregation to the entities where the sorting property exists.
+  - Adding an `OrderBy` clause to the query limits the aggregation to the entities where the sorting property exists.
 
-  - In GQL, the [simplified form](https://docs.cloud.google.com/datastore/docs/reference/gql_reference#aggregationss) does not support `  ORDER BY  ` , `  LIMIT  ` , or `  OFFSET  ` clauses.
+  - In GQL, the [simplified form](https://docs.cloud.google.com/datastore/docs/reference/gql_reference#aggregationss) does not support `ORDER BY` , `LIMIT` , or `OFFSET` clauses.
 
-  - In a projection query, you can aggregate data only from the properties in the projection. For example, in the GQL query `  SELECT a, b FROM k WHERE c = 1  ` , you can aggregate data only from among `  a  ` or `  b  ` .
+  - In a projection query, you can aggregate data only from the properties in the projection. For example, in the GQL query `SELECT a, b FROM k WHERE c = 1` , you can aggregate data only from among `a` or `b` .
 
-  - A `  count()  ` aggregation does not de-duplicate entities with array properties. Each array value that matches the query adds one to the count.
+  - A `count()` aggregation does not de-duplicate entities with array properties. Each array value that matches the query adds one to the count.
 
-  - For `  sum()  ` and `  avg()  ` aggregations, Non-numeric values are ignored. `  sum()  ` and `  avg()  ` aggregation take into account only integer values, floating-point number values, and timestamps. Timestamps are converted to microsecond integer values for `  sum()  ` , `  avg()  ` , and [projections](https://docs.cloud.google.com/datastore/docs/concepts/queries#limitations_on_projections) .
+  - For `sum()` and `avg()` aggregations, Non-numeric values are ignored. `sum()` and `avg()` aggregation take into account only integer values, floating-point number values, and timestamps. Timestamps are converted to microsecond integer values for `sum()` , `avg()` , and [projections](https://docs.cloud.google.com/datastore/docs/concepts/queries#limitations_on_projections) .
 
-  - When combining multiple aggregations in a single query, note that `  sum()  ` and `  avg()  ` ignore non-numeric values while `  count()  ` includes non-numeric values.
+  - When combining multiple aggregations in a single query, note that `sum()` and `avg()` ignore non-numeric values while `count()` includes non-numeric values.
 
   - If you combine aggregations that are on different properties, the calculation includes only the entities that contain all those properties. This might lead to different results from performing each aggregation separately.
 
 ## Pricing
 
-Pricing for the `  count()  ` , `  sum()  ` , and `  avg()  ` aggregation queries depends on the number of index entries scanned during the operation. You are billed one entity read for up to 1,000 index entries matched. Subsequent index entries matched cost additional read units. There is a minimum cost of one read unit for every query. For pricing information, see [Firestore in Datastore mode pricing](https://cloud.google.com/datastore/pricing#entity_reads) .
+Pricing for the `count()` , `sum()` , and `avg()` aggregation queries depends on the number of index entries scanned during the operation. You are billed one entity read for up to 1,000 index entries matched. Subsequent index entries matched cost additional read units. There is a minimum cost of one read unit for every query. For pricing information, see [Firestore in Datastore mode pricing](https://cloud.google.com/datastore/pricing#entity_reads) .
 
 If you combine multiple aggregation in a single query, the query uses the same index for each aggregation and performs a single scan over the data. This can help reduce the number of index scans and reads billed when compared to performing each aggregation separately. However, queries with multiple aggregations include only the entities that contain all those properties. This might lead to different results from performing each aggregation separately.
 

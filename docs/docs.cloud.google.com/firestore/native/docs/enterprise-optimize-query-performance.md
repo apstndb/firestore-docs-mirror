@@ -8,11 +8,11 @@ To troubleshoot slow queries, use [Query Explain](https://docs.cloud.google.com/
 
 ## Limit the number of results
 
-Use the records returned field in the execution tree to identify if the query is returning many documents. Consider limiting the number of documents returned by using the `  limit(...)  ` stage. This reduces the serialized byte size of the results when returned to the clients over the network. In cases where the `  Limit  ` node is preceded by a `  MajorSort  ` node, the query engine can coalesce the `  Limit  ` and the `  MajorSort  ` nodes and replaces a full in-memory materialization and sort with a TopN sort, reducing the memory requirement for the query.
+Use the records returned field in the execution tree to identify if the query is returning many documents. Consider limiting the number of documents returned by using the `limit(...)` stage. This reduces the serialized byte size of the results when returned to the clients over the network. In cases where the `Limit` node is preceded by a `MajorSort` node, the query engine can coalesce the `Limit` and the `MajorSort` nodes and replaces a full in-memory materialization and sort with a TopN sort, reducing the memory requirement for the query.
 
 ## Limit the Result Document Size
 
-Consider limiting the size of the document returned by using by using a `  select(...)  ` to only return the fields required or `  remove_fields(...)  ` to discard overly large fields. This helps reduce the compute and memory cost of processing intermediate results and the serialized byte size of the results when returned to the clients over the network. In cases where all fields referenced in the query are covered by a regular index, this also allows the query to be fully covered by the index scan, avoiding the need to fetch documents from the primary storage.
+Consider limiting the size of the document returned by using by using a `select(...)` to only return the fields required or `remove_fields(...)` to discard overly large fields. This helps reduce the compute and memory cost of processing intermediate results and the serialized byte size of the results when returned to the clients over the network. In cases where all fields referenced in the query are covered by a regular index, this also allows the query to be fully covered by the index scan, avoiding the need to fetch documents from the primary storage.
 
 ## Use indexes
 
@@ -41,17 +41,17 @@ Follow the index management documentation to [create indexes](https://docs.cloud
 
 ### Force an index or table scan
 
-When you query Firestore in Native Mode, it automatically uses any indexes that are likely to make the query more efficient. As a result, you don't need to specify an index for your queries. However, for queries that are critical for your workload, we recommend that you use the `  forceIndex  ` option for more consistent performance.
+When you query Firestore in Native Mode, it automatically uses any indexes that are likely to make the query more efficient. As a result, you don't need to specify an index for your queries. However, for queries that are critical for your workload, we recommend that you use the `forceIndex` option for more consistent performance.
 
-In a few cases, Firestore in Native Mode might choose an index that causes query latency to increase. If you've followed the troubleshooting steps for performance regressions and confirmed that it makes sense to try a different index for the query, you can specify the index using the `  forceIndex  ` option.
+In a few cases, Firestore in Native Mode might choose an index that causes query latency to increase. If you've followed the troubleshooting steps for performance regressions and confirmed that it makes sense to try a different index for the query, you can specify the index using the `forceIndex` option.
 
-You can use the `  forceIndex  ` option on any input stage in Pipeline operations to override Firestore in Native Mode's default query plan and specify an index to use, or to force a table scan.
+You can use the `forceIndex` option on any input stage in Pipeline operations to override Firestore in Native Mode's default query plan and specify an index to use, or to force a table scan.
 
 #### Force a specific index
 
-To force the query to use a specific index, provide the index ID as a string to the `  forceIndex  ` option. You can find the index ID from the console or from error messages.
+To force the query to use a specific index, provide the index ID as a string to the `forceIndex` option. You can find the index ID from the console or from error messages.
 
-The following example forces the planner to use index with ID `  CICAgOi36pgK  ` :
+The following example forces the planner to use index with ID `CICAgOi36pgK` :
 
     // Force Planner to use Index ID CICAgOi36pgK
     db.pipeline()
@@ -68,7 +68,7 @@ If the specified index is not found, the query fails.
 
 #### Force a table scan
 
-A table scan reads documents in the collection or collection group without using any secondary indexes. To force a table scan, set `  forceIndex  ` to `  primary  ` .
+A table scan reads documents in the collection or collection group without using any secondary indexes. To force a table scan, set `forceIndex` to `primary` .
 
 The following example forces a table scan:
 
@@ -85,18 +85,18 @@ You might use a table scan in the following cases:
 
 **Caution:** Table scans on large collections are slow and don't scale. They read all documents in the collection, which significantly increases read operation costs. For most production scenarios, we recommend relying on indexes instead of forcing table scans.
 
-#### Use `     forceIndex    ` with Query Explain
+#### Use `forceIndex` with Query Explain
 
-You can use [Query Explain](https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain) , especially with the `  analyze  ` option, to observe the effects of `  forceIndex  ` :
+You can use [Query Explain](https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain) , especially with the `analyze` option, to observe the effects of `forceIndex` :
 
-  - Verify that Firestore in Native Mode used the specified index in `  forceIndex  ` by checking the leaf nodes of the execution tree for the index ID.
-  - Confirm that a `  TableScan  ` node appears in the plan when using `  forceIndex: "primary"  ` .
-  - Compare the performance metrics—such as latency, documents scanned, and index entries scanned—with and without `  forceIndex  ` to fine-tune query performance.
+  - Verify that Firestore in Native Mode used the specified index in `forceIndex` by checking the leaf nodes of the execution tree for the index ID.
+  - Confirm that a `TableScan` node appears in the plan when using `forceIndex: "primary"` .
+  - Compare the performance metrics—such as latency, documents scanned, and index entries scanned—with and without `forceIndex` to fine-tune query performance.
 
-#### Best practices for `     forceIndex    `
+#### Best practices for `forceIndex`
 
-While `  forceIndex  ` provides more control over query execution, Firestore in Native Mode's query optimizer is generally efficient for most use cases. Consider the following best practices when using `  forceIndex  ` :
+While `forceIndex` provides more control over query execution, Firestore in Native Mode's query optimizer is generally efficient for most use cases. Consider the following best practices when using `forceIndex` :
 
-  - Use `  forceIndex  ` judiciously. If you observe suboptimal performance with the default query plan, use [Query Explain](https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain) to diagnose the issue before forcing an index.
-  - When using `  forceIndex  ` , make sure to test your queries with realistic data volumes to understand their performance and cost characteristics.ß
-  - Avoid using `  forceIndex: "primary"  ` on large collections in production environments.
+  - Use `forceIndex` judiciously. If you observe suboptimal performance with the default query plan, use [Query Explain](https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain) to diagnose the issue before forcing an index.
+  - When using `forceIndex` , make sure to test your queries with realistic data volumes to understand their performance and cost characteristics.ß
+  - Avoid using `forceIndex: "primary"` on large collections in production environments.

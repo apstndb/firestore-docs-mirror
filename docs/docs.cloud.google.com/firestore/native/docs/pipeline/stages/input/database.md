@@ -62,9 +62,9 @@ Task<Pipeline.Snapshot> results = db.pipeline()
 
 ## Behavior
 
-In order to use the `  database(...)  ` stage, it must appear as the first stage in the pipeline.
+In order to use the `database(...)` stage, it must appear as the first stage in the pipeline.
 
-The order of documents returned from the `  database(...)  ` stage is unstable and cannot be relied upon. A subsequent sort stage can be used to obtain a deterministic ordering.
+The order of documents returned from the `database(...)` stage is unstable and cannot be relied upon. A subsequent sort stage can be used to obtain a deterministic ordering.
 
 For example, for the following documents:
 
@@ -74,7 +74,7 @@ For example, for the following documents:
     await db.collection("states").doc("CA").set({name: "California", population: 39000000});
     await db.collection("countries").doc("USA").set({name: "United States of America", population: 340000000});
 
-The `  database(...)  ` stage can be used to retrieve all the documents in the database.
+The `database(...)` stage can be used to retrieve all the documents in the database.
 
 ### Node.js
 

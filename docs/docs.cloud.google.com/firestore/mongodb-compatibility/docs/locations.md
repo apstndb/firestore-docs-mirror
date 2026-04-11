@@ -20,11 +20,11 @@ By replicating the data between multiple regions, data can continue to be served
 
 Firestore with MongoDB compatibility supports the following multi-region locations:
 
-| Multi-region name     | Multi-region description         | Read-Write regions                                                                                       | Witness region                                                      |
-| --------------------- | -------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `        eur3       ` | Europe                           | `        europe-west1       ` (Belgium), `        europe-west4       ` (Netherlands)                     | `        europe-north1       ` (Finland)                            |
-| `        nam5       ` | United States (Central)          | `        us-central1       ` (Iowa), `        us-central2       ` (Oklahoma—private Google Cloud region) | `        us-east1       ` (South Carolina)                          |
-| `        nam7       ` | United States (Central and East) | `        us-central1       ` (Iowa), `        us-east4       ` (Northern Virginia)                       | `        us-central2       ` (Oklahoma—private Google Cloud region) |
+| Multi-region name | Multi-region description         | Read-Write regions                                                         | Witness region                                       |
+| ----------------- | -------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `eur3`            | Europe                           | `europe-west1` (Belgium), `europe-west4` (Netherlands)                     | `europe-north1` (Finland)                            |
+| `nam5`            | United States (Central)          | `us-central1` (Iowa), `us-central2` (Oklahoma—private Google Cloud region) | `us-east1` (South Carolina)                          |
+| `nam7`            | United States (Central and East) | `us-central1` (Iowa), `us-east4` (Northern Virginia)                       | `us-central2` (Oklahoma—private Google Cloud region) |
 
 ### Regional locations
 
@@ -40,183 +40,183 @@ Region description
 
 **North America**
 
-`  us-west1  `
+`us-west1`
 
 Oregon
 
-`  us-west2  `
+`us-west2`
 
 Los Angeles
 
-`  us-west3  `
+`us-west3`
 
 Salt Lake City
 
-`  us-west4  `
+`us-west4`
 
 Las Vegas
 
-`  us-central1  `
+`us-central1`
 
 Iowa
 
-`  northamerica-northeast1  `
+`northamerica-northeast1`
 
 Montréal
 
-`  northamerica-northeast2  `
+`northamerica-northeast2`
 
 Toronto
 
-`  northamerica-south1  `
+`northamerica-south1`
 
 Queretaro
 
-`  us-east1  `
+`us-east1`
 
 South Carolina
 
-`  us-east4  `
+`us-east4`
 
 Northern Virginia
 
-`  us-east5  `
+`us-east5`
 
 Columbus
 
-`  us-south1  `
+`us-south1`
 
 Dallas
 
 **South America**
 
-`  southamerica-west1  `
+`southamerica-west1`
 
 Santiago
 
-`  southamerica-east1  `
+`southamerica-east1`
 
 São Paulo
 
 **Europe**
 
-`  europe-west2  `
+`europe-west2`
 
 London
 
-`  europe-west1  `
+`europe-west1`
 
 Belgium
 
-`  europe-west4  `
+`europe-west4`
 
 Netherlands
 
-`  europe-west8  `
+`europe-west8`
 
 Milan
 
-`  europe-southwest1  `
+`europe-southwest1`
 
 Madrid
 
-`  europe-west9  `
+`europe-west9`
 
 Paris
 
-`  europe-west12  `
+`europe-west12`
 
 Turin
 
-`  europe-west10  `
+`europe-west10`
 
 Berlin
 
-`  europe-west3  `
+`europe-west3`
 
 Frankfurt
 
-`  europe-north1  `
+`europe-north1`
 
 Finland
 
-`  europe-north2  `
+`europe-north2`
 
 Stockholm
 
-`  europe-central2  `
+`europe-central2`
 
 Warsaw
 
-`  europe-west6  `
+`europe-west6`
 
 Zürich
 
 **Middle East**
 
-`  me-central1  `
+`me-central1`
 
 Doha
 
-`  me-central2  `
+`me-central2`
 
 Dammam
 
-`  me-west1  `
+`me-west1`
 
 Tel Aviv
 
 **Asia**
 
-`  asia-south1  `
+`asia-south1`
 
 Mumbai
 
-`  asia-south2  `
+`asia-south2`
 
 Delhi
 
-`  asia-southeast1  `
+`asia-southeast1`
 
 Singapore
 
-`  asia-southeast2  `
+`asia-southeast2`
 
 Jakarta
 
-`  asia-east2  `
+`asia-east2`
 
 Hong Kong
 
-`  asia-east1  `
+`asia-east1`
 
 Taiwan
 
-`  asia-northeast1  `
+`asia-northeast1`
 
 Tokyo
 
-`  asia-northeast2  `
+`asia-northeast2`
 
 Osaka
 
-`  asia-northeast3  `
+`asia-northeast3`
 
 Seoul
 
 **Australia**
 
-`  australia-southeast1  `
+`australia-southeast1`
 
 Sydney
 
-`  australia-southeast2  `
+`australia-southeast2`
 
 Melbourne
 
 **Africa**
 
-`  africa-south1  `
+`africa-south1`
 
 Johannesburg
 
@@ -239,7 +239,7 @@ For a comprehensive explanation of pricing per region and per region type, see [
 
 Use one of the following methods to view the location setting for your databases:
 
-  - Run the [`  gcloud firestore databases list  `](https://cloud.google.com//sdk/gcloud/reference/firestore/databases/list) command.
+  - Run the [`gcloud firestore databases list`](https://cloud.google.com//sdk/gcloud/reference/firestore/databases/list) command.
 
   - Open the [database list](https://console.cloud.google.com/firestore/databases) in the Google Cloud console. The location for each database is in the location column.
 

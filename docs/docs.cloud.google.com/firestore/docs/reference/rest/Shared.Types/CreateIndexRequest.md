@@ -1,4 +1,4 @@
-The request for `  FirestoreAdmin.CreateIndex  ` .
+The request for `FirestoreAdmin.CreateIndex` .
 
 <table>
 <colgroup>
@@ -11,26 +11,21 @@ The request for `  FirestoreAdmin.CreateIndex  ` .
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;parent&quot;: string,
-  &quot;index&quot;: {
-    object (Index)
-  }
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;parent&quot;: string,&quot;index&quot;: {object (Index)}}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. A parent name of the form `  projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId}  `
+Required. A parent name of the form `projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId}`
 
-`  index  `
+`index`
 
-`  object ( Index  ` )
+` object ( Index  ` )
 
 Required. The composite index to create.

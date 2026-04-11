@@ -47,14 +47,14 @@ Ideally, your commitment represents at least your expected minimum hourly expend
 
 **Note:** The prices in this section are examples. See [Firestore Pricing](https://docs.cloud.google.com/firestore/pricing) for current prices.
 
-As an example, say that you have a Firestore database that is in region: `  us-central1  ` (Iowa).
+As an example, say that you have a Firestore database that is in region: `us-central1` (Iowa).
 
 From the [pricing page](https://docs.cloud.google.com/firestore/pricing) , you can calculate the approximate hourly one-year commitment cost as follows:
 
   - Monthly cost of a 1-year, $1.92/hour commitment: ($2.40 per hour - 20% discount) \* 730 hours = $1,401.60 per month
   - Total savings per month: $1,752 - $1,401.60 = $350.40
 
-If you expect to spend that minimum of $1.92 per hour continuously for the next year or more, then you can make a commitment for that amount. In other words, when purchasing that CUD, you would enter " `  $1.92  ` " as the hourly commitment amount.
+If you expect to spend that minimum of $1.92 per hour continuously for the next year or more, then you can make a commitment for that amount. In other words, when purchasing that CUD, you would enter " `$1.92` " as the hourly commitment amount.
 
 In the legacy CUDs program, your commitment amount is the on-demand price instead. For more information about the differences between the legacy and new spend-based CUDs program, see [Improvements to the spend-based CUDs program](https://cloud.google.com/docs/cuds-multiprice) .
 

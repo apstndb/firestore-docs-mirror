@@ -8,7 +8,7 @@ Security rules provide access control and data validation in a simple yet expres
 
 ## Security rules version 2
 
-As of May 2019, version 2 of the Firestore security rules is now available. Version 2 of the rules changes the behavior of [recursive wildcards](https://docs.cloud.google.com/firestore/native/docs/security/rules-structure#recursive_wildcards) `  {name=**}  ` . You must use version 2 if you plan to use [collection group queries](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#collection-group-query) . You must opt-in to version 2 by making `  rules_version = '2';  ` the first line in your security rules:
+As of May 2019, version 2 of the Firestore security rules is now available. Version 2 of the rules changes the behavior of [recursive wildcards](https://docs.cloud.google.com/firestore/native/docs/security/rules-structure#recursive_wildcards) `{name=**}` . You must use version 2 if you plan to use [collection group queries](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#collection-group-query) . You must opt-in to version 2 by making `rules_version = '2';` the first line in your security rules:
 
     rules_version = '2';
     service cloud.firestore {
@@ -18,7 +18,7 @@ As of May 2019, version 2 of the Firestore security rules is now available. Vers
 
 You will write and manage Firestore Security Rules tailored to the data model you create for the default database and each additional database in your project.
 
-All Firestore Security Rules consist of `  match  ` statements, which identify documents in your database, and `  allow  ` expressions, which control access to those documents:
+All Firestore Security Rules consist of `match` statements, which identify documents in your database, and `allow` expressions, which control access to those documents:
 
     service cloud.firestore {
       match /databases/{database}/documents {
@@ -67,7 +67,7 @@ Below are some examples of basic rule sets. While these rules are valid, they ar
       }
     }
 
-The `  {document=**}  ` path used in the examples above matches any document in the entire database. Continue on to the guide for [structuring security rules](https://docs.cloud.google.com/firestore/native/docs/security/rules-structure) to learn how to match specific data paths and work with hierarchical data.
+The `{document=**}` path used in the examples above matches any document in the entire database. Continue on to the guide for [structuring security rules](https://docs.cloud.google.com/firestore/native/docs/security/rules-structure) to learn how to match specific data paths and work with hierarchical data.
 
 ## Testing rules
 

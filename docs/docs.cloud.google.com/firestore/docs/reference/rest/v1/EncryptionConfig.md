@@ -13,43 +13,30 @@ The source could be a `  Backup  ` or a `  PitrSnapshot  ` .
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-
-  // Union field encryption_type can be only one of the following:
-  &quot;googleDefaultEncryption&quot;: {
-    object (GoogleDefaultEncryptionOptions)
-  },
-  &quot;useSourceEncryption&quot;: {
-    object (SourceEncryptionOptions)
-  },
-  &quot;customerManagedEncryption&quot;: {
-    object (CustomerManagedEncryptionOptions)
-  }
-  // End of list of possible types for union field encryption_type.
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{// Union field encryption_type can be only one of the following:&quot;googleDefaultEncryption&quot;: {object (GoogleDefaultEncryptionOptions)},&quot;useSourceEncryption&quot;: {object (SourceEncryptionOptions)},&quot;customerManagedEncryption&quot;: {object (CustomerManagedEncryptionOptions)}// End of list of possible types for union field encryption_type.}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-Union field `  encryption_type  ` . The method for encrypting the database. `  encryption_type  ` can be only one of the following:
+Union field `encryption_type` . The method for encrypting the database. `encryption_type` can be only one of the following:
 
-`  googleDefaultEncryption  `
+`googleDefaultEncryption`
 
-`  object ( GoogleDefaultEncryptionOptions  ` )
+` object ( GoogleDefaultEncryptionOptions  ` )
 
 Use Google default encryption.
 
-`  useSourceEncryption  `
+`useSourceEncryption`
 
-`  object ( SourceEncryptionOptions  ` )
+` object ( SourceEncryptionOptions  ` )
 
 The database will use the same encryption configuration as the source.
 
-`  customerManagedEncryption  `
+`customerManagedEncryption`
 
-`  object ( CustomerManagedEncryptionOptions  ` )
+` object ( CustomerManagedEncryptionOptions  ` )
 
 Use Customer Managed Encryption Keys (CMEK) for encryption.
 
@@ -89,12 +76,12 @@ The configuration options for using CMEK (Customer Managed Encryption Key) encry
 
 Fields
 
-`  kmsKeyName  `
+`kmsKeyName`
 
-`  string  `
+`string`
 
 Required. Only keys in the same location as the database are allowed to be used for encryption.
 
 For Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe. See <https://cloud.google.com/kms/docs/locations> .
 
-The expected format is `  projects/{projectId}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}  ` .
+The expected format is `projects/{projectId}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}` .

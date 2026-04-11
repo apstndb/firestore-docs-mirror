@@ -58,25 +58,25 @@ Replace the following:
 
   - General parameters:
     
-      - PROJECT\_ID : a [Project ID](https://docs.cloud.google.com/resource-manager/docs/creating-managing-projects) of the Google Cloud project where the migration pipeline will run. Example: `  example-project  ` .
+      - PROJECT\_ID : a [Project ID](https://docs.cloud.google.com/resource-manager/docs/creating-managing-projects) of the Google Cloud project where the migration pipeline will run. Example: `example-project` .
         
         It's possible to use a destination Firestore with MongoDB compatibility database that is located in another project. However, this guide assumes that all relevant resources are located in the same project.
     
-      - LOCATION : [a region](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/locations) where the migration pipeline will run. Examples: `  nam5  ` , `  us-central1  ` .
+      - LOCATION : [a region](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/locations) where the migration pipeline will run. Examples: `nam5` , `us-central1` .
         
         We recommed to use the same region as the destination Firestore with MongoDB compatibility database.
 
   - Datastream connection parameters:
     
-      - SRC\_CONNECTION\_PROFILE\_NAME : a human-readable name for the [Datastream connection profile](https://docs.cloud.google.com/datastream/docs/create-connection-profiles) of the MongoDB-compatible source database. Example: `  source-mongo-profile  ` .
+      - SRC\_CONNECTION\_PROFILE\_NAME : a human-readable name for the [Datastream connection profile](https://docs.cloud.google.com/datastream/docs/create-connection-profiles) of the MongoDB-compatible source database. Example: `source-mongo-profile` .
         
         You create a connection profile with this name later.
     
-      - DST\_CONNECTION\_PROFILE\_NAME : a human-readable name for the [Datastream connection profile](https://docs.cloud.google.com/datastream/docs/create-connection-profiles) for the destination Cloud Storage bucket. Example: `  destination-gcs-profile  ` .
+      - DST\_CONNECTION\_PROFILE\_NAME : a human-readable name for the [Datastream connection profile](https://docs.cloud.google.com/datastream/docs/create-connection-profiles) for the destination Cloud Storage bucket. Example: `destination-gcs-profile` .
         
         You create a destination connection profile with this name later.
     
-      - DATASTREAM\_NAME : A human-readable name of a [Datastream stream](https://docs.cloud.google.com/datastream/docs/create-a-stream) that will transfer the data from the MongoDB-compatible source database into Cloud Storage. Example: `  mongo-to-gcs-stream  ` .
+      - DATASTREAM\_NAME : A human-readable name of a [Datastream stream](https://docs.cloud.google.com/datastream/docs/create-a-stream) that will transfer the data from the MongoDB-compatible source database into Cloud Storage. Example: `mongo-to-gcs-stream` .
         
         You create this stream later.
 
@@ -84,37 +84,37 @@ Replace the following:
     
     **Note:** Wildcards are not supported in the Cloud Storage paths.
     
-      - GCS\_BUCKET\_NAME : the name of the Cloud Storage bucket that you've [created earlier](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-resources#create-bucket) . Example: `  mongo-migration-bucket  ` .
+      - GCS\_BUCKET\_NAME : the name of the Cloud Storage bucket that you've [created earlier](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-resources#create-bucket) . Example: `mongo-migration-bucket` .
         
         This value is used to create a destination connection profile later.
     
-      - GCS\_BUCKET\_ROOT\_PATH : The name of the top-level directory in the Cloud Storage bucket for placing the intermediate data during the migration. Example: `  mongo-migration-root  ` .
+      - GCS\_BUCKET\_ROOT\_PATH : The name of the top-level directory in the Cloud Storage bucket for placing the intermediate data during the migration. Example: `mongo-migration-root` .
         
         This value is used to create a destination connection profile later.
     
       - GCS\_BUCKET\_TEMPLATE\_PATH : A sub-path in the GCS\_BUCKET\_ROOT\_PATH directory for a given Datastream instance.
         
-        The same destination connection profile can be used for multiple exports to Cloud Storage. However **you must designate a unique sub-path** for each migration. Example: `  mongo-migration-data-0  ` .
+        The same destination connection profile can be used for multiple exports to Cloud Storage. However **you must designate a unique sub-path** for each migration. Example: `mongo-migration-data-0` .
         
         This value is used to create a stream later.
 
   - Dataflow template parameters:
     
-      - GCS\_BUCKET\_TEMPLATE\_PATH : A sub-path in the GCS\_BUCKET\_ROOT\_PATH directory where a [Dataflow template](https://docs.cloud.google.com/dataflow/docs/concepts/dataflow-templates) will be staged. Example: `  mongo-migration-template-path  ` .
+      - GCS\_BUCKET\_TEMPLATE\_PATH : A sub-path in the GCS\_BUCKET\_ROOT\_PATH directory where a [Dataflow template](https://docs.cloud.google.com/dataflow/docs/concepts/dataflow-templates) will be staged. Example: `mongo-migration-template-path` .
     
-      - NUM\_WORKERS : The starting number of workers to run the Dataflow template with. Example: `  2  ` .
+      - NUM\_WORKERS : The starting number of workers to run the Dataflow template with. Example: `2` .
     
-      - MAX\_WORKERS : The maximum number of workers to run the Dataflow template with. Example: `  8  ` .
+      - MAX\_WORKERS : The maximum number of workers to run the Dataflow template with. Example: `8` .
     
-      - WORKER\_TYPE : The Compute Engine instance type to use for the Dataflow job. The recommended machine type is [`  e2-highmem-8  `](https://docs.cloud.google.com/compute/docs/general-purpose-machines#e2-high-mem) .
+      - WORKER\_TYPE : The Compute Engine instance type to use for the Dataflow job. The recommended machine type is [`e2-highmem-8`](https://docs.cloud.google.com/compute/docs/general-purpose-machines#e2-high-mem) .
 
   - Firestore connection parameters:
     
-      - FIRESTORE\_DATABASE\_NAME : The name of the Firestore with MongoDB compatibility database where you migrate the data. Example: `  firestore-database-name  ` .
+      - FIRESTORE\_DATABASE\_NAME : The name of the Firestore with MongoDB compatibility database where you migrate the data. Example: `firestore-database-name` .
     
       - FIRESTORE\_CONNECTION\_URI : The [connection URI string](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database#create-database) for the Firestore with MongoDB compatibility database.
         
-        Example: `  mongodb://USERNAME:PASSWORD@CONNECTION_STRING:443/ FIRESTORE_DATABASE_NAME ?loadBalanced=true&authMechanism=SCRAM-SHA-256&tls=true&retryWrites=false  ` .
+        Example: `mongodb://USERNAME:PASSWORD@CONNECTION_STRING:443/ FIRESTORE_DATABASE_NAME ?loadBalanced=true&authMechanism=SCRAM-SHA-256&tls=true&retryWrites=false` .
 
 ### Set environment variables specific to the source database type
 
@@ -134,21 +134,21 @@ The following variables are specific for MongoDB source databases located in a s
 
 Replace the following:
 
-  - MONGODB\_USERNAME : The username of the MongoDB-compatible source database. Example: `  mongouser  ` .
+  - MONGODB\_USERNAME : The username of the MongoDB-compatible source database. Example: `mongouser` .
 
-  - MONGODB\_PASSWORD : The password of the MongoDB-compatible source database. Example: `  mongopassword  ` .
+  - MONGODB\_PASSWORD : The password of the MongoDB-compatible source database. Example: `mongopassword` .
 
-  - MONGODB\_IP\_ADDRESS : specify the internal IP address, along with the port number, of the VM that hosts your MongoDB server. Example: `  10.0.0.1:27017  ` .
+  - MONGODB\_IP\_ADDRESS : specify the internal IP address, along with the port number, of the VM that hosts your MongoDB server. Example: `10.0.0.1:27017` .
     
       - For deployments that are not sharded, but configured with [replica sets](https://www.mongodb.com/docs/manual/replication) , the IP address of any replica in the set is valid. However, we recommend to use one of the secondary replicas.
     
       - For [sharded clusters](https://www.mongodb.com/docs/manual/sharding) , specify the address of one of your *mongos* servers.
 
-  - (Only for clusters with replica sets that aren't sharded) REPLICA\_SET : Specify the name of the replica set that must be used for the migration process. Example: `  rs0  ` .
+  - (Only for clusters with replica sets that aren't sharded) REPLICA\_SET : Specify the name of the replica set that must be used for the migration process. Example: `rs0` .
 
-  - MONGODB\_DATABASE\_NAME : The name of the MongoDB-compatible source database. Example: `  source_db  ` .
+  - MONGODB\_DATABASE\_NAME : The name of the MongoDB-compatible source database. Example: `source_db` .
 
-  - PRIVATE\_CONNECTION\_NAME : The ID of the private connectivity configuration that [you've created earlier](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-resources#source-specific-configuration) . Example: `  pc_name  ` .
+  - PRIVATE\_CONNECTION\_NAME : The ID of the private connectivity configuration that [you've created earlier](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-resources#source-specific-configuration) . Example: `pc_name` .
 
 ### MongoDB over SSH
 
@@ -169,27 +169,27 @@ The following variables are specific for connecting to MongoDB source databases 
 
 Replace the following:
 
-  - MONGODB\_USERNAME : The username of the MongoDB-compatible source database. Example: `  mongouser  ` .
+  - MONGODB\_USERNAME : The username of the MongoDB-compatible source database. Example: `mongouser` .
 
-  - MONGODB\_PASSWORD : The password of the MongoDB-compatible source database. Example: `  mongopassword  ` .
+  - MONGODB\_PASSWORD : The password of the MongoDB-compatible source database. Example: `mongopassword` .
 
-  - MONGODB\_IP\_ADDRESS : specify the internal IP address, along with the port number, of the VM that hosts your MongoDB server. Example: `  10.0.0.1:27017  ` .
+  - MONGODB\_IP\_ADDRESS : specify the internal IP address, along with the port number, of the VM that hosts your MongoDB server. Example: `10.0.0.1:27017` .
     
       - For deployments that are not sharded, but configured with [replica sets](https://www.mongodb.com/docs/manual/replication) , the IP address of any replica in the set is valid. However, we recommend to use one of the secondary replicas.
     
       - For [sharded clusters](https://www.mongodb.com/docs/manual/sharding) , specify the address of one of your *mongos* servers.
 
-  - (Only for clusters with replica sets that aren't sharded) REPLICA\_SET : Specify the name of the replica set that must be used for the migration process. Example: `  rs0  ` .
+  - (Only for clusters with replica sets that aren't sharded) REPLICA\_SET : Specify the name of the replica set that must be used for the migration process. Example: `rs0` .
 
-  - MONGODB\_DATABASE\_NAME : The name of the MongoDB-compatible source database. Example: `  source_db  ` .
+  - MONGODB\_DATABASE\_NAME : The name of the MongoDB-compatible source database. Example: `source_db` .
 
-  - BASTION\_IP\_ADDRESS : the address of the host on your network that can accept an SSH connection. This can be the MongoDB server itself, or a designated [Bastion](https://cloud.google.com/solutions/connecting-securely#bastion) host that allows SSH access from a public network, and also provides internal connectivity to the actual MongoDB server. Example: `  30.0.0.1  ` .
+  - BASTION\_IP\_ADDRESS : the address of the host on your network that can accept an SSH connection. This can be the MongoDB server itself, or a designated [Bastion](https://cloud.google.com/solutions/connecting-securely#bastion) host that allows SSH access from a public network, and also provides internal connectivity to the actual MongoDB server. Example: `30.0.0.1` .
 
-  - BASTION\_SSH\_PORT : The SSH port on the host. Example: `  22  ` .
+  - BASTION\_SSH\_PORT : The SSH port on the host. Example: `22` .
 
   - BASTION\_SSH\_USERNAME : Username for the ssh connection.
 
-  - BASTION\_SSH\_PRIVATE\_KEY : The full payload of the SSH private key. For example, for an RSA key, this payload would include the `  -----BEGIN RSA PRIVATE KEY-----  ` header and the `  -----END RSA PRIVATE KEY-----  ` footer. Example: `  BASTION_SSH_PRIVATE_KEY=$(cat ~/.ssh/private_key)  `
+  - BASTION\_SSH\_PRIVATE\_KEY : The full payload of the SSH private key. For example, for an RSA key, this payload would include the `-----BEGIN RSA PRIVATE KEY-----` header and the `-----END RSA PRIVATE KEY-----` footer. Example: `BASTION_SSH_PRIVATE_KEY=$(cat ~/.ssh/private_key)`
     
     **Note:** Datastream also accepts an SSH password. This alternative is described in the [Connection Profile](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-create-connection-profiles#connection-profile-source) section.
 
@@ -213,25 +213,25 @@ The following variables are specific for connecting to DocumentDB source databas
 
 Replace the following:
 
-  - MONGODB\_USERNAME : The username of the DocumentDB source database. Example: `  mongouser  ` .
+  - MONGODB\_USERNAME : The username of the DocumentDB source database. Example: `mongouser` .
 
-  - MONGODB\_PASSWORD : The password of the DocumentDB source database. Example: `  mongopassword  ` .
+  - MONGODB\_PASSWORD : The password of the DocumentDB source database. Example: `mongopassword` .
 
-  - MONGODB\_HOST\_ADDRESS : The address of the DocumentDB cluster. Example: `  mydocumentdb.cluster-abcd.us-east-2.docdb.amazonaws.com:27017  ` .
+  - MONGODB\_HOST\_ADDRESS : The address of the DocumentDB cluster. Example: `mydocumentdb.cluster-abcd.us-east-2.docdb.amazonaws.com:27017` .
 
-  - REPLICA\_SET : Specify the name of the replica set that must be used for the migration process. Example: `  rs0  ` .
+  - REPLICA\_SET : Specify the name of the replica set that must be used for the migration process. Example: `rs0` .
 
-  - MONGODB\_DATABASE\_NAME : The name of the DocumentDB source database. Example: `  source_db  ` .
+  - MONGODB\_DATABASE\_NAME : The name of the DocumentDB source database. Example: `source_db` .
 
-  - BASTION\_IP\_ADDRESS : the external IP address of the EC2 instance that allows SSH access from a public network, and also provides internal connectivity to the DocumentDB cluster within your Amazon VPC. Example: `  30.0.0.1  ` .
+  - BASTION\_IP\_ADDRESS : the external IP address of the EC2 instance that allows SSH access from a public network, and also provides internal connectivity to the DocumentDB cluster within your Amazon VPC. Example: `30.0.0.1` .
 
-  - BASTION\_SSH\_PORT : The SSH port on the host. Example: `  22  ` .
+  - BASTION\_SSH\_PORT : The SSH port on the host. Example: `22` .
 
   - BASTION\_SSH\_USERNAME : Username for the ssh connection.
 
-  - BASTION\_SSH\_PRIVATE\_KEY : The full payload of the SSH private key. For example, for an RSA key, this payload would include the `  -----BEGIN RSA PRIVATE KEY-----  ` header and the `  -----END RSA PRIVATE KEY-----  ` footer. Example: `  BASTION_SSH_PRIVATE_KEY=$(cat ~/ec2_bastion_host.pem)  `
+  - BASTION\_SSH\_PRIVATE\_KEY : The full payload of the SSH private key. For example, for an RSA key, this payload would include the `-----BEGIN RSA PRIVATE KEY-----` header and the `-----END RSA PRIVATE KEY-----` footer. Example: `BASTION_SSH_PRIVATE_KEY=$(cat ~/ec2_bastion_host.pem)`
 
-  - DOCUMENT\_DB\_CA\_CERTIFICATE : The full payload of the DocumentDB CA Certificate. This payload should include the `  -----BEGIN CERTIFICATE-----  ` header and the `  -----END CERTIFICATE-----  ` footer and must only include a single certificate. Example: `  BASTION_SSH_PRIVATE_KEY=$(cat ~/us-east-1.pem)  `
+  - DOCUMENT\_DB\_CA\_CERTIFICATE : The full payload of the DocumentDB CA Certificate. This payload should include the `-----BEGIN CERTIFICATE-----` header and the `-----END CERTIFICATE-----` footer and must only include a single certificate. Example: `BASTION_SSH_PRIVATE_KEY=$(cat ~/us-east-1.pem)`
 
 ### Azure Cosmos DB
 
@@ -245,10 +245,10 @@ The following variables are specific for Azure Cosmos DB source databases. Set t
 
 Replace the following:
 
-  - MONGODB\_USERNAME : The username of the MongoDB-compatible source database. Example: `  mongouser  ` .
-  - MONGODB\_PASSWORD : The password of the MongoDB-compatible source database. Example: `  mongopassword  ` .
-  - MONGODB\_HOST\_ADDRESS : The hostname of the MongoDB-compatible source database. The value must conform to the [MongoDB SRV connection format](https://www.mongodb.com/docs/manual/reference/connection-string) . Example: `  host.cosmos.azure.example.com  ` .
-  - MONGODB\_DATABASE\_NAME : The name of the MongoDB-compatible source database. Example: `  source_db  ` .
+  - MONGODB\_USERNAME : The username of the MongoDB-compatible source database. Example: `mongouser` .
+  - MONGODB\_PASSWORD : The password of the MongoDB-compatible source database. Example: `mongopassword` .
+  - MONGODB\_HOST\_ADDRESS : The hostname of the MongoDB-compatible source database. The value must conform to the [MongoDB SRV connection format](https://www.mongodb.com/docs/manual/reference/connection-string) . Example: `host.cosmos.azure.example.com` .
+  - MONGODB\_DATABASE\_NAME : The name of the MongoDB-compatible source database. Example: `source_db` .
 
 ### MongoDB Atlas
 
@@ -262,10 +262,10 @@ The following variables are specific for MongoDB Atlas source databases. Set the
 
 Replace the following:
 
-  - MONGODB\_USERNAME : The username of the MongoDB-compatible source database. Example: `  mongouser  ` .
-  - MONGODB\_PASSWORD : The password of the MongoDB-compatible source database. Example: `  mongopassword  ` .
-  - MONGODB\_HOST\_ADDRESS : The hostname of the MongoDB-compatible source database. The value must conform to the [MongoDB SRV connection format](https://www.mongodb.com/docs/manual/reference/connection-string) . Example: `  host.mongodb.example.com  ` .
-  - MONGODB\_DATABASE\_NAME : The name of the MongoDB-compatible source database. Example: `  source_db  ` .
+  - MONGODB\_USERNAME : The username of the MongoDB-compatible source database. Example: `mongouser` .
+  - MONGODB\_PASSWORD : The password of the MongoDB-compatible source database. Example: `mongopassword` .
+  - MONGODB\_HOST\_ADDRESS : The hostname of the MongoDB-compatible source database. The value must conform to the [MongoDB SRV connection format](https://www.mongodb.com/docs/manual/reference/connection-string) . Example: `host.mongodb.example.com` .
+  - MONGODB\_DATABASE\_NAME : The name of the MongoDB-compatible source database. Example: `source_db` .
 
 ## What's next
 

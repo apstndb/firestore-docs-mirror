@@ -13,17 +13,15 @@ An event signifying a change in state of a [migration from Cloud Datastore to Cl
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;state&quot;: enum (MigrationState)
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;state&quot;: enum (MigrationState)}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  state  `
+`state`
 
-`  enum ( MigrationState  ` )
+` enum ( MigrationState  ` )
 
 The new state of the migration.

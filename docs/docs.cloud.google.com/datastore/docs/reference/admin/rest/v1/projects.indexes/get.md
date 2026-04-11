@@ -104,7 +104,7 @@ eu
 us
 
   
-`  GET https://datastore.googleapis.com/v1/projects/{projectId}/indexes/{indexId}  `
+`GET https://datastore.googleapis.com/v1/projects/{projectId}/indexes/{indexId}`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -112,15 +112,15 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  projectId  `
+`projectId`
 
-`  string  `
+`string`
 
 Project ID against which to make the request.
 
-`  indexId  `
+`indexId`
 
-`  string  `
+`string`
 
 The resource ID of the index to get.
 
@@ -136,7 +136,7 @@ If successful, the response body contains an instance of `  Index  ` .
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

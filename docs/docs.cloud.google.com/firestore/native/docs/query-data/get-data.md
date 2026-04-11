@@ -40,7 +40,7 @@ Initialize an instance of Firestore:
     // Initialize Firestore and get a reference to the service
     const db = getFirestore(app);
 
-Replace FIREBASE\_CONFIGURATION with your web app's [`  firebaseConfig  `](https://support.google.com/firebase/answer/7015592) .
+Replace FIREBASE\_CONFIGURATION with your web app's [`firebaseConfig`](https://support.google.com/firebase/answer/7015592) .
 
 To persist data when the device loses its connection, see the [Enable Offline Data](https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline) documentation.
 
@@ -62,7 +62,7 @@ To persist data when the device loses its connection, see the [Enable Offline Da
     // Initialize Firestore and get a reference to the service
     const db = firebase.firestore();
 
-Replace FIREBASE\_CONFIGURATION with your web app's [`  firebaseConfig  `](https://support.google.com/firebase/answer/7015592) .
+Replace FIREBASE\_CONFIGURATION with your web app's [`firebaseConfig`](https://support.google.com/firebase/answer/7015592) .
 
 To persist data when the device loses its connection, see the [Enable Offline Data](https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline) documentation.
 
@@ -959,7 +959,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ## Get a document
 
-The following example shows how to retrieve the contents of a single document using `  get()  ` :
+The following example shows how to retrieve the contents of a single document using `get()` :
 
 ### Web version 9
 
@@ -1214,15 +1214,15 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
       puts "Document #{snapshot.document_id} does not exist!"
     endget_data.rb
 
-**Note:** If there is no document at the location referenced by `  docRef  ` , the resulting `  document  ` will be empty and calling `  exists  ` on it will return `  false  ` .
+**Note:** If there is no document at the location referenced by `docRef` , the resulting `document` will be empty and calling `exists` on it will return `false` .
 
 ### Source Options
 
-For platforms with offline support, you can set the `  source  ` option to control how a `  get  ` call uses the offline cache.
+For platforms with offline support, you can set the `source` option to control how a `get` call uses the offline cache.
 
-By default, a `  get  ` call will attempt to fetch the latest document snapshot from your database. On platforms with offline support, the client library will use the offline cache if the network is unavailable or if the request times out.
+By default, a `get` call will attempt to fetch the latest document snapshot from your database. On platforms with offline support, the client library will use the offline cache if the network is unavailable or if the request times out.
 
-You can specify the `  source  ` option in a `  get()  ` call to change the default behavior. You can fetch from only the database and ignore the offline cache, or you can fetch from only the offline cache. For example:
+You can specify the `source` option in a `get()` call to change the default behavior. You can fetch from only the database and ignore the offline cache, or you can fetch from only the offline cache. For example:
 
 ### Web version 9
 
@@ -1406,7 +1406,7 @@ Not supported in the Ruby SDK.
 
 ### Custom objects
 
-The previous example retrieved the contents of the document as a map, but in some languages it's often more convenient to use a custom object type. In [Add Data](https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data) , you defined a `  City  ` class that you used to define each city. You can turn your document back into a `  City  ` object:
+The previous example retrieved the contents of the document as a map, but in some languages it's often more convenient to use a custom object type. In [Add Data](https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data) , you defined a `City` class that you used to define each city. You can turn your document back into a `City` object:
 
 To use custom objects, you must define a [FirestoreDataConverter](https://firebase.google.com/docs/reference/js/firestore_.firestoredataconverter) function for your class. For example:
 
@@ -1756,7 +1756,7 @@ Not applicable for Ruby.
 
 ## Get multiple documents from a collection
 
-You can also retrieve multiple documents with one request by querying documents in a collection. For example, you can use `  where()  ` to query for all of the documents that meet a certain condition, then use `  get()  ` to retrieve the results:
+You can also retrieve multiple documents with one request by querying documents in a collection. For example, you can use `where()` to query for all of the documents that meet a certain condition, then use `get()` to retrieve the results:
 
 ### Web version 9
 
@@ -2018,7 +2018,7 @@ By default, Firestore retrieves all documents that satisfy the query in ascendin
 
 ### Get all documents in a collection
 
-In addition, you can retrieve *all* documents in a collection by omitting the `  where()  ` filter entirely:
+In addition, you can retrieve *all* documents in a collection by omitting the `where()` filter entirely:
 
 ### Web version 9
 
@@ -2384,11 +2384,11 @@ Android
 
 ### Get multiple documents from a collection group
 
-A collection group consists of all collections with the same ID. For example, if each document in your `  cities  ` collection has a subcollection called `  landmarks  ` , all of the `  landmarks  ` subcollections belong to the same collection group. By default, queries retrieve results from a single collection in your database. [Use a collection group query to retrieve results from a collection group](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#collection-group-query) instead of from a single collection.
+A collection group consists of all collections with the same ID. For example, if each document in your `cities` collection has a subcollection called `landmarks` , all of the `landmarks` subcollections belong to the same collection group. By default, queries retrieve results from a single collection in your database. [Use a collection group query to retrieve results from a collection group](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#collection-group-query) instead of from a single collection.
 
 ## List subcollections of a document
 
-The `  listCollections()  ` method of the Firestore server client libraries lists all subcollections of a document reference.
+The `listCollections()` method of the Firestore server client libraries lists all subcollections of a document reference.
 
 Retrieving a list of collections is not possible with the mobile/web client libraries. You should only look up collection names as part of administrative tasks in trusted server environments. If you find that you need this capability in the mobile/web client libraries, consider restructuring your data so that subcollection names are predictable.
 

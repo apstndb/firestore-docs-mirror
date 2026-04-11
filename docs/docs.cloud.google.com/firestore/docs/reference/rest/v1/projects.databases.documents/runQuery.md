@@ -97,7 +97,7 @@ eu
 us
 
   
-`  POST https://firestore.googleapis.com/v1/{parent=projects/*/databases/*/documents}:runQuery  `
+`POST https://firestore.googleapis.com/v1/{parent=projects/*/databases/*/documents}:runQuery`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -105,11 +105,11 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. The parent resource name. In the format: `  projects/{projectId}/databases/{databaseId}/documents  ` or `  projects/{projectId}/databases/{databaseId}/documents/{document_path}  ` . For example: `  projects/my-project/databases/my-database/documents  ` or `  projects/my-project/databases/my-database/documents/chatrooms/my-chatroom  `
+Required. The parent resource name. In the format: `projects/{projectId}/databases/{databaseId}/documents` or `projects/{projectId}/databases/{databaseId}/documents/{document_path}` . For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
 
 ### Request body
 
@@ -126,50 +126,32 @@ The request body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;explainOptions&quot;: {
-    object (ExplainOptions)
-  },
-
-  // Union field query_type can be only one of the following:
-  &quot;structuredQuery&quot;: {
-    object (StructuredQuery)
-  }
-  // End of list of possible types for union field query_type.
-
-  // Union field consistency_selector can be only one of the following:
-  &quot;transaction&quot;: string,
-  &quot;newTransaction&quot;: {
-    object (TransactionOptions)
-  },
-  &quot;readTime&quot;: string
-  // End of list of possible types for union field consistency_selector.
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;explainOptions&quot;: {object (ExplainOptions)},// Union field query_type can be only one of the following:&quot;structuredQuery&quot;: {object (StructuredQuery)}// End of list of possible types for union field query_type.// Union field consistency_selector can be only one of the following:&quot;transaction&quot;: string,&quot;newTransaction&quot;: {object (TransactionOptions)},&quot;readTime&quot;: string// End of list of possible types for union field consistency_selector.}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  explainOptions  `
+`explainOptions`
 
-`  object ( ExplainOptions  ` )
+` object ( ExplainOptions  ` )
 
 Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only query results will be returned.
 
-Union field `  query_type  ` . The query to run. `  query_type  ` can be only one of the following:
+Union field `query_type` . The query to run. `query_type` can be only one of the following:
 
-`  structuredQuery  `
+`structuredQuery`
 
-`  object ( StructuredQuery  ` )
+` object ( StructuredQuery  ` )
 
 A structured query.
 
-Union field `  consistency_selector  ` . The consistency mode for this transaction. If not set, defaults to strong consistency. `  consistency_selector  ` can be only one of the following:
+Union field `consistency_selector` . The consistency mode for this transaction. If not set, defaults to strong consistency. `consistency_selector` can be only one of the following:
 
-`  transaction  `
+`transaction`
 
-`  string ( bytes format)  `
+`string ( bytes format)`
 
 Run the query within an already active transaction.
 
@@ -177,21 +159,21 @@ The value here is the opaque transaction ID to execute the query in.
 
 A base64-encoded string.
 
-`  newTransaction  `
+`newTransaction`
 
-`  object ( TransactionOptions  ` )
+` object ( TransactionOptions  ` )
 
 Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new transaction ID will be returned as the first response in the stream.
 
-`  readTime  `
+`readTime`
 
-`  string ( Timestamp  ` format)
+` string ( Timestamp  ` format)
 
 Reads documents as they were at the given time.
 
 This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days.
 
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `  "2014-10-02T15:01:23Z"  ` , `  "2014-10-02T15:01:23.045123456Z"  ` or `  "2014-10-02T15:01:23+05:30"  ` .
+Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .
 
 ### Response body
 
@@ -210,68 +192,54 @@ If successful, the response body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;transaction&quot;: string,
-  &quot;document&quot;: {
-    object (Document)
-  },
-  &quot;readTime&quot;: string,
-  &quot;skippedResults&quot;: integer,
-  &quot;explainMetrics&quot;: {
-    object (ExplainMetrics)
-  },
-
-  // Union field continuation_selector can be only one of the following:
-  &quot;done&quot;: boolean
-  // End of list of possible types for union field continuation_selector.
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;transaction&quot;: string,&quot;document&quot;: {object (Document)},&quot;readTime&quot;: string,&quot;skippedResults&quot;: integer,&quot;explainMetrics&quot;: {object (ExplainMetrics)},// Union field continuation_selector can be only one of the following:&quot;done&quot;: boolean// End of list of possible types for union field continuation_selector.}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  transaction  `
+`transaction`
 
-`  string ( bytes format)  `
+`string ( bytes format)`
 
 The transaction that was started as part of this request. Can only be set in the first response, and only if `  RunQueryRequest.new_transaction  ` was set in the request. If set, no other fields will be set in this response.
 
 A base64-encoded string.
 
-`  document  `
+`document`
 
-`  object ( Document  ` )
+` object ( Document  ` )
 
 A query result, not set when reporting partial progress.
 
-`  readTime  `
+`readTime`
 
-`  string ( Timestamp  ` format)
+` string ( Timestamp  ` format)
 
-The time at which the document was read. This may be monotonically increasing; in this case, the previous documents in the result stream are guaranteed not to have changed between their `  readTime  ` and this one.
+The time at which the document was read. This may be monotonically increasing; in this case, the previous documents in the result stream are guaranteed not to have changed between their `readTime` and this one.
 
-If the query returns no results, a response with `  readTime  ` and no `  document  ` will be sent, and this represents the time at which the query was run.
+If the query returns no results, a response with `readTime` and no `document` will be sent, and this represents the time at which the query was run.
 
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `  "2014-10-02T15:01:23Z"  ` , `  "2014-10-02T15:01:23.045123456Z"  ` or `  "2014-10-02T15:01:23+05:30"  ` .
+Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .
 
-`  skippedResults  `
+`skippedResults`
 
-`  integer  `
+`integer`
 
 The number of results that have been skipped due to an offset between the last response and the current response.
 
-`  explainMetrics  `
+`explainMetrics`
 
-`  object ( ExplainMetrics  ` )
+` object ( ExplainMetrics  ` )
 
 Query explain metrics. This is only present when the `  RunQueryRequest.explain_options  ` is provided, and it is sent only once with the last response in the stream.
 
-Union field `  continuation_selector  ` . The continuation mode for the query. If present, it indicates the current query response stream has finished. This can be set with or without a `  document  ` present, but when set, no more results are returned. `  continuation_selector  ` can be only one of the following:
+Union field `continuation_selector` . The continuation mode for the query. If present, it indicates the current query response stream has finished. This can be set with or without a `document` present, but when set, no more results are returned. `continuation_selector` can be only one of the following:
 
-`  done  `
+`done`
 
-`  boolean  `
+`boolean`
 
 If present, Firestore has completely finished the request and no more documents will be returned.
 
@@ -279,7 +247,7 @@ If present, Firestore has completely finished the request and no more documents 
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

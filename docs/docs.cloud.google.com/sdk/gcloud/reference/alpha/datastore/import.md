@@ -4,27 +4,27 @@ gcloud alpha datastore import - import Cloud Datastore entities from Google Clou
 
 SYNOPSIS
 
-`  gcloud alpha datastore import  ` `  INPUT_URL  ` \[ `  --async  ` \] \[ `  --kinds  ` =\[ `  KIND  ` , …\]\] \[ `  --namespaces  ` =\[ `  NAMESPACE  ` , …\]\] \[ `  --operation-labels  ` =\[ `  OPERATION_LABEL  ` , …\]\] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud alpha datastore import` `  INPUT_URL  ` \[ `  --async  ` \] \[ `  --kinds  ` =\[ `  KIND  ` , …\]\] \[ `  --namespaces  ` =\[ `  NAMESPACE  ` , …\]\] \[ `  --operation-labels  ` =\[ `  OPERATION_LABEL  ` , …\]\] \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (ALPHA)  ` Imports entities into Google Cloud Datastore. Existing entities with the same key are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an Import operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Datastore. This data will not be removed.
+`(ALPHA)` Imports entities into Google Cloud Datastore. Existing entities with the same key are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an Import operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Datastore. This data will not be removed.
 
 EXAMPLES
 
-To import all data exported to the output URL `  gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata  ` , run:
+To import all data exported to the output URL `gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata` , run:
 
 ``` wrap-code
 gcloud alpha datastore import gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata
 ```
 
-To import all data exported to the output URL `  gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata  ` without waiting for the operation to complete, run:
+To import all data exported to the output URL `gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata` without waiting for the operation to complete, run:
 
 ``` wrap-code
 gcloud alpha datastore import gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata --async
 ```
 
-To import only the `  exampleKind  ` from the data exported to the output URL `  gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata  ` , run:
+To import only the `exampleKind` from the data exported to the output URL `gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata` , run:
 
 ``` wrap-code
 gcloud alpha datastore import gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata --kinds='exampleKind'
@@ -39,24 +39,24 @@ POSITIONAL ARGUMENTS
 
 FLAGS
 
-  - `  --async  `  
+  - `--async`  
     Return immediately, without waiting for the operation in progress to complete.
 
-  - `  --kinds  ` =\[ `  KIND  ` ,…\]  
+  - `--kinds` =\[ `  KIND  ` ,…\]  
     A list specifying what kinds will be included in the operation. When omitted, all Kinds are included. For example, to operate on only the 'Customer' and 'Order' Kinds:
     
     ``` wrap-code
     gcloud alpha datastore import --kinds='Customer','Order'
     ```
 
-  - `  --namespaces  ` =\[ `  NAMESPACE  ` ,…\]  
-    A list specifying what namespaces will be included in the operation. When omitted, all namespaces are included in the operation, including the default namespace. To specify that `  only  ` the default namespace should be operated on, use the special symbol '(default)'. For example, to operate on entities from both the 'customers' and default namespaces:
+  - `--namespaces` =\[ `  NAMESPACE  ` ,…\]  
+    A list specifying what namespaces will be included in the operation. When omitted, all namespaces are included in the operation, including the default namespace. To specify that `only` the default namespace should be operated on, use the special symbol '(default)'. For example, to operate on entities from both the 'customers' and default namespaces:
     
     ``` wrap-code
     gcloud alpha datastore import --namespaces='(default)','customers'
     ```
 
-  - `  --operation-labels  ` =\[ `  OPERATION_LABEL  ` ,…\]  
+  - `--operation-labels` =\[ `  OPERATION_LABEL  ` ,…\]  
     A string:string map of custom labels to associate with this operation. For example:
     
     ``` wrap-code
@@ -67,7 +67,7 @@ GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 NOTES
 

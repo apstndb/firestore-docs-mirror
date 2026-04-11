@@ -104,15 +104,15 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc BatchGetDocuments(                         BatchGetDocumentsRequest            </code> ) returns ( <code dir="ltr" translate="no">              BatchGetDocumentsResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc BatchGetDocuments(              BatchGetDocumentsRequest            </code> ) returns ( <code dir="ltr" translate="no">             BatchGetDocumentsResponse            </code> )</p>
 <p>Gets multiple documents.</p>
 <p>Documents returned by this method are not guaranteed to be returned in the same order that they were requested.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -132,16 +132,16 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc BatchWrite(                         BatchWriteRequest            </code> ) returns ( <code dir="ltr" translate="no">              BatchWriteResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc BatchWrite(              BatchWriteRequest            </code> ) returns ( <code dir="ltr" translate="no">             BatchWriteResponse            </code> )</p>
 <p>Applies a batch of write operations.</p>
-<p>The BatchWrite method does not apply the write operations atomically and can apply them out of order. Method does not allow more than one write per document. Each write succeeds or fails independently. See the <code dir="ltr" translate="no">             BatchWriteResponse           </code> for the success status of each write.</p>
-<p>If you require an atomically applied set of writes, use <code dir="ltr" translate="no">             Commit           </code> instead.</p>
+<p>The BatchWrite method does not apply the write operations atomically and can apply them out of order. Method does not allow more than one write per document. Each write succeeds or fails independently. See the <code dir="ltr" translate="no">            BatchWriteResponse           </code> for the success status of each write.</p>
+<p>If you require an atomically applied set of writes, use <code dir="ltr" translate="no">            Commit           </code> instead.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -161,14 +161,14 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc BeginTransaction(                         BeginTransactionRequest            </code> ) returns ( <code dir="ltr" translate="no">              BeginTransactionResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc BeginTransaction(              BeginTransactionRequest            </code> ) returns ( <code dir="ltr" translate="no">             BeginTransactionResponse            </code> )</p>
 <p>Starts a new transaction.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -188,14 +188,14 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc Commit(                         CommitRequest            </code> ) returns ( <code dir="ltr" translate="no">              CommitResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc Commit(              CommitRequest            </code> ) returns ( <code dir="ltr" translate="no">             CommitResponse            </code> )</p>
 <p>Commits a transaction, while optionally updating documents.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -215,14 +215,14 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc CreateDocument(                         CreateDocumentRequest            </code> ) returns ( <code dir="ltr" translate="no">              Document            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc CreateDocument(              CreateDocumentRequest            </code> ) returns ( <code dir="ltr" translate="no">             Document            </code> )</p>
 <p>Creates a new document.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -242,14 +242,14 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc DeleteDocument(                         DeleteDocumentRequest            </code> ) returns ( <code dir="ltr" translate="no">              Empty            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc DeleteDocument(              DeleteDocumentRequest            </code> ) returns ( <code dir="ltr" translate="no">             Empty            </code> )</p>
 <p>Deletes a document.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -269,14 +269,14 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ExecutePipeline(                         ExecutePipelineRequest            </code> ) returns ( <code dir="ltr" translate="no">              ExecutePipelineResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ExecutePipeline(              ExecutePipelineRequest            </code> ) returns ( <code dir="ltr" translate="no">             ExecutePipelineResponse            </code> )</p>
 <p>Executes a pipeline query.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -296,14 +296,14 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc GetDocument(                         GetDocumentRequest            </code> ) returns ( <code dir="ltr" translate="no">              Document            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc GetDocument(              GetDocumentRequest            </code> ) returns ( <code dir="ltr" translate="no">             Document            </code> )</p>
 <p>Gets a single document.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -323,14 +323,14 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ListCollectionIds(                         ListCollectionIdsRequest            </code> ) returns ( <code dir="ltr" translate="no">              ListCollectionIdsResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ListCollectionIds(              ListCollectionIdsRequest            </code> ) returns ( <code dir="ltr" translate="no">             ListCollectionIdsResponse            </code> )</p>
 <p>Lists all the collection IDs underneath a document.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -350,14 +350,14 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ListDocuments(                         ListDocumentsRequest            </code> ) returns ( <code dir="ltr" translate="no">              ListDocumentsResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ListDocuments(              ListDocumentsRequest            </code> ) returns ( <code dir="ltr" translate="no">             ListDocumentsResponse            </code> )</p>
 <p>Lists documents.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -377,14 +377,14 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc Listen(                         ListenRequest            </code> ) returns ( <code dir="ltr" translate="no">              ListenResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc Listen(              ListenRequest            </code> ) returns ( <code dir="ltr" translate="no">             ListenResponse            </code> )</p>
 <p>Listens to changes. This method is only available via gRPC or WebChannel (not REST).</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -404,14 +404,14 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc PartitionQuery(                         PartitionQueryRequest            </code> ) returns ( <code dir="ltr" translate="no">              PartitionQueryResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc PartitionQuery(              PartitionQueryRequest            </code> ) returns ( <code dir="ltr" translate="no">             PartitionQueryResponse            </code> )</p>
 <p>Partitions a query by returning partition cursors that can be used to run the query in parallel. The returned partition cursors are split points that can be used by RunQuery as starting/end points for the query results.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -431,14 +431,14 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc Rollback(                         RollbackRequest            </code> ) returns ( <code dir="ltr" translate="no">              Empty            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc Rollback(              RollbackRequest            </code> ) returns ( <code dir="ltr" translate="no">             Empty            </code> )</p>
 <p>Rolls back a transaction.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -458,9 +458,9 @@ Cloud Firestore is a fast, fully managed, serverless, cloud-native NoSQL documen
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc RunAggregationQuery(                         RunAggregationQueryRequest            </code> ) returns ( <code dir="ltr" translate="no">              RunAggregationQueryResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc RunAggregationQuery(              RunAggregationQueryRequest            </code> ) returns ( <code dir="ltr" translate="no">             RunAggregationQueryResponse            </code> )</p>
 <p>Runs an aggregation query.</p>
-<p>Rather than producing <code dir="ltr" translate="no">             Document           </code> results like <code dir="ltr" translate="no">             Firestore.RunQuery           </code> , this API allows running an aggregation to produce a series of <code dir="ltr" translate="no">             AggregationResult           </code> server-side.</p>
+<p>Rather than producing <code dir="ltr" translate="no">            Document           </code> results like <code dir="ltr" translate="no">            Firestore.RunQuery           </code> , this API allows running an aggregation to produce a series of <code dir="ltr" translate="no">            AggregationResult           </code> server-side.</p>
 <p>High-Level Example:</p>
 <pre dir="ltr" data-is-upgraded="" translate="no"><code>-- Return the number of documents in table given a filter.
 SELECT COUNT(*) FROM ( SELECT * FROM k where a = true );</code></pre>
@@ -468,8 +468,8 @@ SELECT COUNT(*) FROM ( SELECT * FROM k where a = true );</code></pre>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -489,14 +489,14 @@ SELECT COUNT(*) FROM ( SELECT * FROM k where a = true );</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc RunQuery(                         RunQueryRequest            </code> ) returns ( <code dir="ltr" translate="no">              RunQueryResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc RunQuery(              RunQueryRequest            </code> ) returns ( <code dir="ltr" translate="no">             RunQueryResponse            </code> )</p>
 <p>Runs a query.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -516,14 +516,14 @@ SELECT COUNT(*) FROM ( SELECT * FROM k where a = true );</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc UpdateDocument(                         UpdateDocumentRequest            </code> ) returns ( <code dir="ltr" translate="no">              Document            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc UpdateDocument(              UpdateDocumentRequest            </code> ) returns ( <code dir="ltr" translate="no">             Document            </code> )</p>
 <p>Updates or inserts a document.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -543,14 +543,14 @@ SELECT COUNT(*) FROM ( SELECT * FROM k where a = true );</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc Write(                         WriteRequest            </code> ) returns ( <code dir="ltr" translate="no">              WriteResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc Write(              WriteRequest            </code> ) returns ( <code dir="ltr" translate="no">             WriteResponse            </code> )</p>
 <p>Streams batches of document updates and deletes, in order. This method is only available via gRPC or WebChannel (not REST).</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -563,15 +563,15 @@ SELECT COUNT(*) FROM ( SELECT * FROM k where a = true );</code></pre>
 
 The result of a single bucket from a Firestore aggregation query.
 
-The keys of `  aggregate_fields  ` are the same for all results in an aggregation query, unlike document queries which can have different fields present for each result.
+The keys of `aggregate_fields` are the same for all results in an aggregation query, unlike document queries which can have different fields present for each result.
 
 Fields
 
-`  aggregate_fields  `
+`aggregate_fields`
 
-`  map<string, Value  ` \>
+` map<string, Value  ` \>
 
-The result of the aggregation functions, ex: `  COUNT(*) AS total_docs  ` .
+The result of the aggregation functions, ex: `COUNT(*) AS total_docs` .
 
 The key is the `  alias  ` assigned to the aggregation function on input and the size of this map equals the number of aggregation functions in the query.
 
@@ -581,7 +581,7 @@ An array value.
 
 Fields
 
-`  values[]  `
+`values[]`
 
 `  Value  `
 
@@ -593,19 +593,19 @@ The request for `  Firestore.BatchGetDocuments  ` .
 
 Fields
 
-`  database  `
+`database`
 
-`  string  `
+`string`
 
-Required. The database name. In the format: `  projects/{project_id}/databases/{database_id}  ` .
+Required. The database name. In the format: `projects/{project_id}/databases/{database_id}` .
 
-`  documents[]  `
+`documents[]`
 
-`  string  `
+`string`
 
-The names of the documents to retrieve. In the format: `  projects/{project_id}/databases/{database_id}/documents/{document_path}  ` . The request will fail if any of the document is not a child resource of the given `  database  ` . Duplicate names will be elided.
+The names of the documents to retrieve. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}` . The request will fail if any of the document is not a child resource of the given `database` . Duplicate names will be elided.
 
-`  mask  `
+`mask`
 
 `  DocumentMask  `
 
@@ -613,21 +613,21 @@ The fields to return. If not set, returns all fields.
 
 If a document has a field that is not present in this mask, that field will not be returned in the response.
 
-Union field `  consistency_selector  ` . The consistency mode for this transaction. If not set, defaults to strong consistency. `  consistency_selector  ` can be only one of the following:
+Union field `consistency_selector` . The consistency mode for this transaction. If not set, defaults to strong consistency. `consistency_selector` can be only one of the following:
 
-`  transaction  `
+`transaction`
 
-`  bytes  `
+`bytes`
 
 Reads documents in a transaction.
 
-`  new_transaction  `
+`new_transaction`
 
 `  TransactionOptions  `
 
 Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new transaction ID will be returned as the first response in the stream.
 
-`  read_time  `
+`read_time`
 
 `  Timestamp  `
 
@@ -641,31 +641,31 @@ The streamed response for `  Firestore.BatchGetDocuments  ` .
 
 Fields
 
-`  transaction  `
+`transaction`
 
-`  bytes  `
+`bytes`
 
 The transaction that was started as part of this request. Will only be set in the first response, and only if `  BatchGetDocumentsRequest.new_transaction  ` was set in the request.
 
-`  read_time  `
+`read_time`
 
 `  Timestamp  `
 
 The time at which the document was read. This may be monotically increasing, in this case the previous documents in the result stream are guaranteed not to have changed between their read\_time and this one.
 
-Union field `  result  ` . A single result. This can be empty if the server is just returning a transaction. `  result  ` can be only one of the following:
+Union field `result` . A single result. This can be empty if the server is just returning a transaction. `result` can be only one of the following:
 
-`  found  `
+`found`
 
 `  Document  `
 
 A document that was requested.
 
-`  missing  `
+`missing`
 
-`  string  `
+`string`
 
-A document name that was requested but does not exist. In the format: `  projects/{project_id}/databases/{database_id}/documents/{document_path}  ` .
+A document name that was requested but does not exist. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}` .
 
 ## BatchWriteRequest
 
@@ -673,13 +673,13 @@ The request for `  Firestore.BatchWrite  ` .
 
 Fields
 
-`  database  `
+`database`
 
-`  string  `
+`string`
 
-Required. The database name. In the format: `  projects/{project_id}/databases/{database_id}  ` .
+Required. The database name. In the format: `projects/{project_id}/databases/{database_id}` .
 
-`  writes[]  `
+`writes[]`
 
 `  Write  `
 
@@ -687,9 +687,9 @@ The writes to apply.
 
 Method does not apply writes atomically and does not guarantee ordering. Each write succeeds or fails independently. You cannot write to the same document more than once per request.
 
-`  labels  `
+`labels`
 
-`  map<string, string>  `
+`map<string, string>`
 
 Labels associated with this batch write.
 
@@ -699,7 +699,7 @@ The response from `  Firestore.BatchWrite  ` .
 
 Fields
 
-`  write_results[]  `
+`write_results[]`
 
 `  WriteResult  `
 
@@ -707,7 +707,7 @@ The result of applying the writes.
 
 This i-th write result corresponds to the i-th write in the request.
 
-`  status[]  `
+`status[]`
 
 `  Status  `
 
@@ -721,13 +721,13 @@ The request for `  Firestore.BeginTransaction  ` .
 
 Fields
 
-`  database  `
+`database`
 
-`  string  `
+`string`
 
-Required. The database name. In the format: `  projects/{project_id}/databases/{database_id}  ` .
+Required. The database name. In the format: `projects/{project_id}/databases/{database_id}` .
 
-`  options  `
+`options`
 
 `  TransactionOptions  `
 
@@ -739,9 +739,9 @@ The response for `  Firestore.BeginTransaction  ` .
 
 Fields
 
-`  transaction  `
+`transaction`
 
-`  bytes  `
+`bytes`
 
 The transaction that was started.
 
@@ -749,25 +749,25 @@ The transaction that was started.
 
 A sequence of bits, encoded in a byte array.
 
-Each byte in the `  bitmap  ` byte array stores 8 bits of the sequence. The only exception is the last byte, which may store 8 *or fewer* bits. The `  padding  ` defines the number of bits of the last byte to be ignored as "padding". The values of these "padding" bits are unspecified and must be ignored.
+Each byte in the `bitmap` byte array stores 8 bits of the sequence. The only exception is the last byte, which may store 8 *or fewer* bits. The `padding` defines the number of bits of the last byte to be ignored as "padding". The values of these "padding" bits are unspecified and must be ignored.
 
-To retrieve the first bit, bit 0, calculate: `  (bitmap[0] & 0x01) != 0  ` . To retrieve the second bit, bit 1, calculate: `  (bitmap[0] & 0x02) != 0  ` . To retrieve the third bit, bit 2, calculate: `  (bitmap[0] & 0x04) != 0  ` . To retrieve the fourth bit, bit 3, calculate: `  (bitmap[0] & 0x08) != 0  ` . To retrieve bit n, calculate: `  (bitmap[n / 8] & (0x01 << (n % 8))) != 0  ` .
+To retrieve the first bit, bit 0, calculate: `(bitmap[0] & 0x01) != 0` . To retrieve the second bit, bit 1, calculate: `(bitmap[0] & 0x02) != 0` . To retrieve the third bit, bit 2, calculate: `(bitmap[0] & 0x04) != 0` . To retrieve the fourth bit, bit 3, calculate: `(bitmap[0] & 0x08) != 0` . To retrieve bit n, calculate: `(bitmap[n / 8] & (0x01 << (n % 8))) != 0` .
 
-The "size" of a `  BitSequence  ` (the number of bits it contains) is calculated by this formula: `  (bitmap.length * 8) - padding  ` .
+The "size" of a `BitSequence` (the number of bits it contains) is calculated by this formula: `(bitmap.length * 8) - padding` .
 
 Fields
 
-`  bitmap  `
+`bitmap`
 
-`  bytes  `
+`bytes`
 
 The bytes that encode the bit sequence. May have a length of zero.
 
-`  padding  `
+`padding`
 
-`  int32  `
+`int32`
 
-The number of bits of the last byte in `  bitmap  ` to ignore as "padding". If the length of `  bitmap  ` is zero, then this value must be `  0  ` . Otherwise, this value must be between 0 and 7, inclusive.
+The number of bits of the last byte in `bitmap` to ignore as "padding". If the length of `bitmap` is zero, then this value must be `0` . Otherwise, this value must be between 0 and 7, inclusive.
 
 ## BloomFilter
 
@@ -775,7 +775,7 @@ A bloom filter ( <https://en.wikipedia.org/wiki/Bloom_filter)> .
 
 The bloom filter hashes the entries with MD5 and treats the resulting 128-bit hash as 2 distinct 64-bit hash values, interpreted as unsigned integers using 2's complement encoding.
 
-These two hash values, named `  h1  ` and `  h2  ` , are then used to compute the `  hash_count  ` hash values using the formula, starting at `  i=0  ` :
+These two hash values, named `h1` and `h2` , are then used to compute the `hash_count` hash values using the formula, starting at `i=0` :
 
     h(i) = h1 + (i * h2)
 
@@ -783,15 +783,15 @@ These resulting values are then taken modulo the number of bits in the bloom fil
 
 Fields
 
-`  bits  `
+`bits`
 
 `  BitSequence  `
 
 The bloom filter data.
 
-`  hash_count  `
+`hash_count`
 
-`  int32  `
+`int32`
 
 The number of hashes used by the algorithm.
 
@@ -801,13 +801,13 @@ The request for `  Firestore.Commit  ` .
 
 Fields
 
-`  database  `
+`database`
 
-`  string  `
+`string`
 
-Required. The database name. In the format: `  projects/{project_id}/databases/{database_id}  ` .
+Required. The database name. In the format: `projects/{project_id}/databases/{database_id}` .
 
-`  writes[]  `
+`writes[]`
 
 `  Write  `
 
@@ -815,9 +815,9 @@ The writes to apply.
 
 Always executed atomically and in order.
 
-`  transaction  `
+`transaction`
 
-`  bytes  `
+`bytes`
 
 If set, applies all writes in this transaction, and commits it.
 
@@ -827,7 +827,7 @@ The response for `  Firestore.Commit  ` .
 
 Fields
 
-`  write_results[]  `
+`write_results[]`
 
 `  WriteResult  `
 
@@ -835,11 +835,11 @@ The result of applying the writes.
 
 This i-th write result corresponds to the i-th write in the request.
 
-`  commit_time  `
+`commit_time`
 
 `  Timestamp  `
 
-The time at which the commit occurred. Any read with an equal or greater `  read_time  ` is guaranteed to see the effects of the commit.
+The time at which the commit occurred. Any read with an equal or greater `read_time` is guaranteed to see the effects of the commit.
 
 ## CreateDocumentRequest
 
@@ -847,33 +847,33 @@ The request for `  Firestore.CreateDocument  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. The parent resource. For example: `  projects/{project_id}/databases/{database_id}/documents  ` or `  projects/{project_id}/databases/{database_id}/documents/chatrooms/{chatroom_id}  `
+Required. The parent resource. For example: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/chatrooms/{chatroom_id}`
 
-`  collection_id  `
+`collection_id`
 
-`  string  `
+`string`
 
-Required. The collection ID, relative to `  parent  ` , to list. For example: `  chatrooms  ` .
+Required. The collection ID, relative to `parent` , to list. For example: `chatrooms` .
 
-`  document_id  `
+`document_id`
 
-`  string  `
+`string`
 
 The client-assigned document ID to use for this document.
 
 Optional. If not specified, an ID will be assigned by the service.
 
-`  document  `
+`document`
 
 `  Document  `
 
-Required. The document to create. `  name  ` must not be set.
+Required. The document to create. `name` must not be set.
 
-`  mask  `
+`mask`
 
 `  DocumentMask  `
 
@@ -887,7 +887,7 @@ A position in a query result set.
 
 Fields
 
-`  values[]  `
+`values[]`
 
 `  Value  `
 
@@ -895,9 +895,9 @@ The values that represent a position, in the order they appear in the order by c
 
 Can contain fewer values than specified in the order by clause.
 
-`  before  `
+`before`
 
-`  bool  `
+`bool`
 
 If the position is just before or just after the given values, relative to the sort order defined by the query.
 
@@ -907,13 +907,13 @@ The request for `  Firestore.DeleteDocument  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Required. The resource name of the Document to delete. In the format: `  projects/{project_id}/databases/{database_id}/documents/{document_path}  ` .
+Required. The resource name of the Document to delete. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}` .
 
-`  current_document  `
+`current_document`
 
 `  Precondition  `
 
@@ -927,43 +927,43 @@ Must not exceed 1 MiB - 4 bytes.
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-The resource name of the document, for example `  projects/{project_id}/databases/{database_id}/documents/{document_path}  ` .
+The resource name of the document, for example `projects/{project_id}/databases/{database_id}/documents/{document_path}` .
 
-`  fields  `
+`fields`
 
-`  map<string, Value  ` \>
+` map<string, Value  ` \>
 
 The document's fields.
 
 The map keys represent field names.
 
-Field names matching the regular expression `  __.*__  ` are reserved. Reserved field names are forbidden except in certain documented contexts. The field names, represented as UTF-8, must not exceed 1,500 bytes and cannot be empty.
+Field names matching the regular expression `__.*__` are reserved. Reserved field names are forbidden except in certain documented contexts. The field names, represented as UTF-8, must not exceed 1,500 bytes and cannot be empty.
 
-Field paths may be used in other contexts to refer to structured fields defined here. For `  map_value  ` , the field path is represented by a dot-delimited ( `  .  ` ) string of segments. Each segment is either a simple field name (defined below) or a quoted field name. For example, the structured field `  "foo" : { map_value: { "x&y" : { string_value: "hello" }}}  ` would be represented by the field path ``  foo.`x&y`  `` .
+Field paths may be used in other contexts to refer to structured fields defined here. For `map_value` , the field path is represented by a dot-delimited ( `.` ) string of segments. Each segment is either a simple field name (defined below) or a quoted field name. For example, the structured field `"foo" : { map_value: { "x&y" : { string_value: "hello" }}}` would be represented by the field path `` foo.`x&y` `` .
 
-A simple field name contains only characters `  a  ` to `  z  ` , `  A  ` to `  Z  ` , `  0  ` to `  9  ` , or `  _  ` , and must not start with `  0  ` to `  9  ` . For example, `  foo_bar_17  ` .
+A simple field name contains only characters `a` to `z` , `A` to `Z` , `0` to `9` , or `_` , and must not start with `0` to `9` . For example, `foo_bar_17` .
 
-A quoted field name starts and ends with ``  `  `` and may contain any character. Some characters, including ``  `  `` , must be escaped using a `  \  ` . For example, ``  `x&y`  `` represents `  x&y  ` and ``  `bak\`tik`  `` represents ``  bak`tik  `` .
+A quoted field name starts and ends with `` ` `` and may contain any character. Some characters, including `` ` `` , must be escaped using a `\` . For example, `` `x&y` `` represents `x&y` and `` `bak\`tik` `` represents ``bak`tik`` .
 
-`  create_time  `
+`create_time`
 
 `  Timestamp  `
 
 Output only. The time at which the document was created.
 
-This value increases monotonically when a document is deleted then recreated. It can also be compared to values from other documents and the `  read_time  ` of a query.
+This value increases monotonically when a document is deleted then recreated. It can also be compared to values from other documents and the `read_time` of a query.
 
-`  update_time  `
+`update_time`
 
 `  Timestamp  `
 
 Output only. The time at which the document was last changed.
 
-This value is initially set to the `  create_time  ` then increases monotonically with each change to the document. It can also be compared to values from other documents and the `  read_time  ` of a query.
+This value is initially set to the `create_time` then increases monotonically with each change to the document. It can also be compared to values from other documents and the `read_time` of a query.
 
 ## DocumentChange
 
@@ -975,23 +975,23 @@ Multiple `  DocumentChange  ` messages may be returned for the same logical chan
 
 Fields
 
-`  document  `
+`document`
 
 `  Document  `
 
 The new state of the `  Document  ` .
 
-If `  mask  ` is set, contains only fields that were updated or added.
+If `mask` is set, contains only fields that were updated or added.
 
-`  target_ids[]  `
+`target_ids[]`
 
-`  int32  `
+`int32`
 
 A set of target IDs of targets that match this document.
 
-`  removed_target_ids[]  `
+`removed_target_ids[]`
 
-`  int32  `
+`int32`
 
 A set of target IDs for targets that no longer match this document.
 
@@ -1005,25 +1005,25 @@ Multiple `  DocumentDelete  ` messages may be returned for the same logical dele
 
 Fields
 
-`  document  `
+`document`
 
-`  string  `
+`string`
 
 The resource name of the `  Document  ` that was deleted.
 
-`  removed_target_ids[]  `
+`removed_target_ids[]`
 
-`  int32  `
+`int32`
 
 A set of target IDs for targets that previously matched this entity.
 
-`  read_time  `
+`read_time`
 
 `  Timestamp  `
 
 The read timestamp at which the delete was observed.
 
-Greater or equal to the `  commit_time  ` of the delete.
+Greater or equal to the `commit_time` of the delete.
 
 ## DocumentMask
 
@@ -1031,9 +1031,9 @@ A set of field paths on a document. Used to restrict a get or update operation o
 
 Fields
 
-`  field_paths[]  `
+`field_paths[]`
 
-`  string  `
+`string`
 
 The list of field paths in the mask. See `  Document.fields  ` for a field path syntax reference.
 
@@ -1047,25 +1047,25 @@ Multiple `  DocumentRemove  ` messages may be returned for the same logical writ
 
 Fields
 
-`  document  `
+`document`
 
-`  string  `
+`string`
 
 The resource name of the `  Document  ` that has gone out of view.
 
-`  removed_target_ids[]  `
+`removed_target_ids[]`
 
-`  int32  `
+`int32`
 
 A set of target IDs for targets that previously matched this document.
 
-`  read_time  `
+`read_time`
 
 `  Timestamp  `
 
 The read timestamp at which the remove was observed.
 
-Greater or equal to the `  commit_time  ` of the change/delete/remove.
+Greater or equal to the `commit_time` of the change/delete/remove.
 
 ## DocumentTransform
 
@@ -1073,13 +1073,13 @@ A transformation of a document.
 
 Fields
 
-`  document  `
+`document`
 
-`  string  `
+`string`
 
 The name of the document to transform.
 
-`  field_transforms[]  `
+`field_transforms[]`
 
 `  FieldTransform  `
 
@@ -1091,21 +1091,21 @@ A transformation of a field of the document.
 
 Fields
 
-`  field_path  `
+`field_path`
 
-`  string  `
+`string`
 
 The path of the field. See `  Document.fields  ` for the field path syntax reference.
 
-Union field `  transform_type  ` . The transformation to apply on the field. `  transform_type  ` can be only one of the following:
+Union field `transform_type` . The transformation to apply on the field. `transform_type` can be only one of the following:
 
-`  set_to_server_value  `
+`set_to_server_value`
 
 `  ServerValue  `
 
 Sets the field to the given server value.
 
-`  increment  `
+`increment`
 
 `  Value  `
 
@@ -1113,7 +1113,7 @@ Adds the given value to the field's current value.
 
 This must be an integer or a double value. If the field is not an integer or double, or if the field does not yet exist, the transformation will set the field to the given value. If either of the given value or the current field value are doubles, both values will be interpreted as doubles. Double arithmetic and representation of double values follow IEEE 754 semantics. If there is positive/negative integer overflow, the field is resolved to the largest magnitude positive/negative integer.
 
-`  maximum  `
+`maximum`
 
 `  Value  `
 
@@ -1121,7 +1121,7 @@ Sets the field to the maximum of its current value and the given value.
 
 This must be an integer or a double value. If the field is not an integer or double, or if the field does not yet exist, the transformation will set the field to the given value. If a maximum operation is applied where the field and the input value are of mixed types (that is - one is an integer and one is a double) the field takes on the type of the larger operand. If the operands are equivalent (e.g. 3 and 3.0), the field does not change. 0, 0.0, and -0.0 are all zero. The maximum of a zero stored value and zero input value is always the stored value. The maximum of any numeric value x and NaN is NaN.
 
-`  minimum  `
+`minimum`
 
 `  Value  `
 
@@ -1129,7 +1129,7 @@ Sets the field to the minimum of its current value and the given value.
 
 This must be an integer or a double value. If the field is not an integer or double, or if the field does not yet exist, the transformation will set the field to the input value. If a minimum operation is applied where the field and the input value are of mixed types (that is - one is an integer and one is a double) the field takes on the type of the smaller operand. If the operands are equivalent (e.g. 3 and 3.0), the field does not change. 0, 0.0, and -0.0 are all zero. The minimum of a zero stored value and zero input value is always the stored value. The minimum of any numeric value x and NaN is NaN.
 
-`  append_missing_elements  `
+`append_missing_elements`
 
 `  ArrayValue  `
 
@@ -1139,7 +1139,7 @@ Equivalent numbers of different types (e.g. 3L and 3.0) are considered equal whe
 
 The corresponding transform\_result will be the null value.
 
-`  remove_all_from_array  `
+`remove_all_from_array`
 
 `  ArrayValue  `
 
@@ -1155,11 +1155,11 @@ A value that is calculated by the server.
 
 Enums
 
-`  SERVER_VALUE_UNSPECIFIED  `
+`SERVER_VALUE_UNSPECIFIED`
 
 Unspecified. This value must not be used.
 
-`  REQUEST_TIME  `
+`REQUEST_TIME`
 
 The time at which the server processed the request, with millisecond precision. If used on multiple fields (same or different documents) in a transaction, all the fields will get the same server timestamp.
 
@@ -1169,33 +1169,33 @@ The request for `  Firestore.ExecutePipeline  ` .
 
 Fields
 
-`  database  `
+`database`
 
-`  string  `
+`string`
 
-Required. Database identifier, in the form `  projects/{project}/databases/{database}  ` .
+Required. Database identifier, in the form `projects/{project}/databases/{database}` .
 
-Union field `  pipeline_type  ` .
+Union field `pipeline_type` .
 
-`  pipeline_type  ` can be only one of the following:
+`pipeline_type` can be only one of the following:
 
-`  structured_pipeline  `
+`structured_pipeline`
 
 `  StructuredPipeline  `
 
 A pipelined operation.
 
-Union field `  consistency_selector  ` . Optional consistency arguments, defaults to strong consistency. `  consistency_selector  ` can be only one of the following:
+Union field `consistency_selector` . Optional consistency arguments, defaults to strong consistency. `consistency_selector` can be only one of the following:
 
-`  transaction  `
+`transaction`
 
-`  bytes  `
+`bytes`
 
 Run the query within an already active transaction.
 
 The value here is the opaque transaction ID to execute the query in.
 
-`  new_transaction  `
+`new_transaction`
 
 `  TransactionOptions  `
 
@@ -1203,7 +1203,7 @@ Execute the pipeline in a new transaction.
 
 The identifier of the newly created transaction will be returned in the first response on the stream. This defaults to a read-only transaction.
 
-`  read_time  `
+`read_time`
 
 `  Timestamp  `
 
@@ -1217,15 +1217,15 @@ The response for \[Firestore.Execute\]\[\].
 
 Fields
 
-`  transaction  `
+`transaction`
 
-`  bytes  `
+`bytes`
 
 Newly created transaction identifier.
 
-This field is only specified as part of the first response from the server, alongside the `  results  ` field when the original request specified \[ExecuteRequest.new\_transaction\]\[\].
+This field is only specified as part of the first response from the server, alongside the `results` field when the original request specified \[ExecuteRequest.new\_transaction\]\[\].
 
-`  results[]  `
+`results[]`
 
 `  Document  `
 
@@ -1233,25 +1233,25 @@ An ordered batch of results returned executing a pipeline.
 
 The batch size is variable, and can even be zero for when only a partial progress message is returned.
 
-The fields present in the returned documents are only those that were explicitly requested in the pipeline, this includes those like `  __name__  ` and `  __update_time__  ` . This is explicitly a divergence from `  Firestore.RunQuery  ` / `  Firestore.GetDocument  ` RPCs which always return such fields even when they are not specified in the `  mask  ` .
+The fields present in the returned documents are only those that were explicitly requested in the pipeline, this includes those like `  __name__ ` and `  __update_time__ ` . This is explicitly a divergence from `Firestore.RunQuery` / `Firestore.GetDocument` RPCs which always return such fields even when they are not specified in the `  mask ` .
 
-`  execution_time  `
+`execution_time`
 
 `  Timestamp  `
 
 The time at which the results are valid.
 
-This is a (not strictly) monotonically increasing value across multiple responses in the same stream. The API guarantees that all previously returned results are still valid at the latest `  execution_time  ` . This allows the API consumer to treat the query if it ran at the latest `  execution_time  ` returned.
+This is a (not strictly) monotonically increasing value across multiple responses in the same stream. The API guarantees that all previously returned results are still valid at the latest `execution_time` . This allows the API consumer to treat the query if it ran at the latest `execution_time` returned.
 
-If the query returns no results, a response with `  execution_time  ` and no `  results  ` will be sent, and this represents the time at which the operation was run.
+If the query returns no results, a response with `execution_time` and no `results` will be sent, and this represents the time at which the operation was run.
 
-`  explain_stats  `
+`explain_stats`
 
 `  ExplainStats  `
 
 Query explain stats.
 
-This is present on the **last** response if the request configured explain to run in 'analyze' or 'explain' mode in the pipeline options. If the query does not return any results, a response with `  explain_stats  ` and no `  results  ` will still be sent.
+This is present on the **last** response if the request configured explain to run in 'analyze' or 'explain' mode in the pipeline options. If the query does not return any results, a response with `explain_stats` and no `results` will still be sent.
 
 ## ExecutionStats
 
@@ -1259,25 +1259,25 @@ Execution statistics for the query.
 
 Fields
 
-`  results_returned  `
+`results_returned`
 
-`  int64  `
+`int64`
 
 Total number of results returned, including documents, projections, aggregation results, keys.
 
-`  execution_duration  `
+`execution_duration`
 
 `  Duration  `
 
 Total time to execute the query in the backend.
 
-`  read_operations  `
+`read_operations`
 
-`  int64  `
+`int64`
 
 Total billable read operations.
 
-`  debug_stats  `
+`debug_stats`
 
 `  Struct  `
 
@@ -1289,27 +1289,27 @@ A digest of all the documents that match a given target.
 
 Fields
 
-`  target_id  `
+`target_id`
 
-`  int32  `
+`int32`
 
 The target ID to which this filter applies.
 
-`  count  `
+`count`
 
-`  int32  `
+`int32`
 
 The total count of documents that match `  target_id  ` .
 
 If different from the count of documents in the client that match, the client must manually determine which documents no longer match the target.
 
-The client can use the `  unchanged_names  ` bloom filter to assist with this determination by testing ALL the document names against the filter; if the document name is NOT in the filter, it means the document no longer matches the target.
+The client can use the `unchanged_names` bloom filter to assist with this determination by testing ALL the document names against the filter; if the document name is NOT in the filter, it means the document no longer matches the target.
 
-`  unchanged_names  `
+`unchanged_names`
 
 `  BloomFilter  `
 
-A bloom filter that, despite its name, contains the UTF-8 byte encodings of the resource names of ALL the documents that match `  target_id  ` , in the form `  projects/{project_id}/databases/{database_id}/documents/{document_path}  ` .
+A bloom filter that, despite its name, contains the UTF-8 byte encodings of the resource names of ALL the documents that match `  target_id  ` , in the form `projects/{project_id}/databases/{database_id}/documents/{document_path}` .
 
 This bloom filter may be omitted at the server's discretion, such as if it is deemed that the client will not make use of it or if it is too computationally expensive to calculate or transmit. Clients must gracefully handle this field being absent by falling back to the logic used before this field existed; that is, re-add the target without a resume token to figure out which documents in the client's cache are out of sync.
 
@@ -1319,13 +1319,13 @@ Explain metrics for the query.
 
 Fields
 
-`  plan_summary  `
+`plan_summary`
 
 `  PlanSummary  `
 
 Planning phase information for the query.
 
-`  execution_stats  `
+`execution_stats`
 
 `  ExecutionStats  `
 
@@ -1337,9 +1337,9 @@ Explain options for the query.
 
 Fields
 
-`  analyze  `
+`analyze`
 
-`  bool  `
+`bool`
 
 Optional. Whether to execute this query.
 
@@ -1355,19 +1355,19 @@ Depending on the explain options in the original request, this can contain the o
 
 Fields
 
-`  data  `
+`data`
 
 `  Any  `
 
-The format depends on the `  output_format  ` options in the request.
+The format depends on the `output_format` options in the request.
 
-Currently there are two supported options: `  TEXT  ` and `  JSON  ` . Both supply a `  google.protobuf.StringValue  ` .
+Currently there are two supported options: `TEXT` and `JSON` . Both supply a `google.protobuf.StringValue` .
 
 ## Function
 
 Represents an unevaluated scalar expression.
 
-For example, the expression `  like(user_name, "%alice%")  ` is represented as:
+For example, the expression `like(user_name, "%alice%")` is represented as:
 
     name: "like"
     args { field_reference: "user_name" }
@@ -1375,9 +1375,9 @@ For example, the expression `  like(user_name, "%alice%")  ` is represented as:
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
 Required. The name of the function to evaluate.
 
@@ -1385,15 +1385,15 @@ Required. The name of the function to evaluate.
 
   - must be in snake case (lower case with underscore separator).
 
-`  args[]  `
+`args[]`
 
 `  Value  `
 
 Optional. Ordered list of arguments the given function expects.
 
-`  options  `
+`options`
 
-`  map<string, Value  ` \>
+` map<string, Value  ` \>
 
 Optional. Optional named arguments that certain functions may support.
 
@@ -1403,13 +1403,13 @@ The request for `  Firestore.GetDocument  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Required. The resource name of the Document to get. In the format: `  projects/{project_id}/databases/{database_id}/documents/{document_path}  ` .
+Required. The resource name of the Document to get. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}` .
 
-`  mask  `
+`mask`
 
 `  DocumentMask  `
 
@@ -1417,15 +1417,15 @@ The fields to return. If not set, returns all fields.
 
 If the document has a field that is not present in this mask, that field will not be returned in the response.
 
-Union field `  consistency_selector  ` . The consistency mode for this transaction. If not set, defaults to strong consistency. `  consistency_selector  ` can be only one of the following:
+Union field `consistency_selector` . The consistency mode for this transaction. If not set, defaults to strong consistency. `consistency_selector` can be only one of the following:
 
-`  transaction  `
+`transaction`
 
-`  bytes  `
+`bytes`
 
 Reads the document in a transaction.
 
-`  read_time  `
+`read_time`
 
 `  Timestamp  `
 
@@ -1439,27 +1439,27 @@ The request for `  Firestore.ListCollectionIds  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. The parent document. In the format: `  projects/{project_id}/databases/{database_id}/documents/{document_path}  ` . For example: `  projects/my-project/databases/my-database/documents/chatrooms/my-chatroom  `
+Required. The parent document. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}` . For example: `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
 
-`  page_size  `
+`page_size`
 
-`  int32  `
+`int32`
 
 The maximum number of results to return.
 
-`  page_token  `
+`page_token`
 
-`  string  `
+`string`
 
 A page token. Must be a value from `  ListCollectionIdsResponse  ` .
 
-Union field `  consistency_selector  ` . The consistency mode for this request. If not set, defaults to strong consistency. `  consistency_selector  ` can be only one of the following:
+Union field `consistency_selector` . The consistency mode for this request. If not set, defaults to strong consistency. `consistency_selector` can be only one of the following:
 
-`  read_time  `
+`read_time`
 
 `  Timestamp  `
 
@@ -1473,15 +1473,15 @@ The response from `  Firestore.ListCollectionIds  ` .
 
 Fields
 
-`  collection_ids[]  `
+`collection_ids[]`
 
-`  string  `
+`string`
 
 The collection ids.
 
-`  next_page_token  `
+`next_page_token`
 
-`  string  `
+`string`
 
 A page token that may be used to continue the list.
 
@@ -1491,51 +1491,51 @@ The request for `  Firestore.ListDocuments  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. The parent resource name. In the format: `  projects/{project_id}/databases/{database_id}/documents  ` or `  projects/{project_id}/databases/{database_id}/documents/{document_path}  ` .
+Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}` .
 
-For example: `  projects/my-project/databases/my-database/documents  ` or `  projects/my-project/databases/my-database/documents/chatrooms/my-chatroom  `
+For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
 
-`  collection_id  `
+`collection_id`
 
-`  string  `
+`string`
 
-Optional. The collection ID, relative to `  parent  ` , to list.
+Optional. The collection ID, relative to `parent` , to list.
 
-For example: `  chatrooms  ` or `  messages  ` .
+For example: `chatrooms` or `messages` .
 
-This is optional, and when not provided, Firestore will list documents from all collections under the provided `  parent  ` .
+This is optional, and when not provided, Firestore will list documents from all collections under the provided `parent` .
 
-`  page_size  `
+`page_size`
 
-`  int32  `
+`int32`
 
 Optional. The maximum number of documents to return in a single response.
 
 Firestore may return fewer than this value.
 
-`  page_token  `
+`page_token`
 
-`  string  `
+`string`
 
-Optional. A page token, received from a previous `  ListDocuments  ` response.
+Optional. A page token, received from a previous `ListDocuments` response.
 
-Provide this to retrieve the subsequent page. When paginating, all other parameters (with the exception of `  page_size  ` ) must match the values set in the request that generated the page token.
+Provide this to retrieve the subsequent page. When paginating, all other parameters (with the exception of `page_size` ) must match the values set in the request that generated the page token.
 
-`  order_by  `
+`order_by`
 
-`  string  `
+`string`
 
 Optional. The optional ordering of the documents to return.
 
-For example: `  priority desc, __name__ desc  ` .
+For example: `priority desc, __name__ desc` .
 
-This mirrors the `  ORDER BY  ` used in Firestore queries but in a string representation. When absent, documents are ordered based on `  __name__ ASC  ` .
+This mirrors the `  ORDER BY ` used in Firestore queries but in a string representation. When absent, documents are ordered based on `__name__ ASC` .
 
-`  mask  `
+`mask`
 
 `  DocumentMask  `
 
@@ -1543,25 +1543,25 @@ Optional. The fields to return. If not set, returns all fields.
 
 If a document has a field that is not present in this mask, that field will not be returned in the response.
 
-`  show_missing  `
+`show_missing`
 
-`  bool  `
+`bool`
 
 If the list should show missing documents.
 
-A document is missing if it does not exist, but there are sub-documents nested underneath it. When true, such missing documents will be returned with a key but will not have fields, `  create_time  ` , or `  update_time  ` set.
+A document is missing if it does not exist, but there are sub-documents nested underneath it. When true, such missing documents will be returned with a key but will not have fields, `  create_time ` , or `  update_time ` set.
 
-Requests with `  show_missing  ` may not specify `  where  ` or `  order_by  ` .
+Requests with `show_missing` may not specify `where` or `order_by` .
 
-Union field `  consistency_selector  ` . The consistency mode for this transaction. If not set, defaults to strong consistency. `  consistency_selector  ` can be only one of the following:
+Union field `consistency_selector` . The consistency mode for this transaction. If not set, defaults to strong consistency. `consistency_selector` can be only one of the following:
 
-`  transaction  `
+`transaction`
 
-`  bytes  `
+`bytes`
 
 Perform the read as part of an already active transaction.
 
-`  read_time  `
+`read_time`
 
 `  Timestamp  `
 
@@ -1575,15 +1575,15 @@ The response for `  Firestore.ListDocuments  ` .
 
 Fields
 
-`  documents[]  `
+`documents[]`
 
 `  Document  `
 
 The Documents found.
 
-`  next_page_token  `
+`next_page_token`
 
-`  string  `
+`string`
 
 A token to retrieve the next page of documents.
 
@@ -1595,29 +1595,29 @@ A request for `  Firestore.Listen  `
 
 Fields
 
-`  database  `
+`database`
 
-`  string  `
+`string`
 
-Required. The database name. In the format: `  projects/{project_id}/databases/{database_id}  ` .
+Required. The database name. In the format: `projects/{project_id}/databases/{database_id}` .
 
-`  labels  `
+`labels`
 
-`  map<string, string>  `
+`map<string, string>`
 
 Labels associated with this target change.
 
-Union field `  target_change  ` . The supported target changes. `  target_change  ` can be only one of the following:
+Union field `target_change` . The supported target changes. `target_change` can be only one of the following:
 
-`  add_target  `
+`add_target`
 
 `  Target  `
 
 A target to add to this stream.
 
-`  remove_target  `
+`remove_target`
 
-`  int32  `
+`int32`
 
 The ID of a target to remove from this stream.
 
@@ -1627,33 +1627,33 @@ The response for `  Firestore.Listen  ` .
 
 Fields
 
-Union field `  response_type  ` . The supported responses. `  response_type  ` can be only one of the following:
+Union field `response_type` . The supported responses. `response_type` can be only one of the following:
 
-`  target_change  `
+`target_change`
 
 `  TargetChange  `
 
 Targets have changed.
 
-`  document_change  `
+`document_change`
 
 `  DocumentChange  `
 
 A `  Document  ` has changed.
 
-`  document_delete  `
+`document_delete`
 
 `  DocumentDelete  `
 
 A `  Document  ` has been deleted.
 
-`  document_remove  `
+`document_remove`
 
 `  DocumentRemove  `
 
 A `  Document  ` has been removed from a target (because it is no longer relevant to that target).
 
-`  filter  `
+`filter`
 
 `  ExistenceFilter  `
 
@@ -1667,13 +1667,13 @@ A map value.
 
 Fields
 
-`  fields  `
+`fields`
 
-`  map<string, Value  ` \>
+` map<string, Value  ` \>
 
 The map's fields.
 
-The map keys represent field names. Field names matching the regular expression `  __.*__  ` are reserved. Reserved field names are forbidden except in certain documented contexts. The map keys, represented as UTF-8, must not exceed 1,500 bytes and cannot be empty.
+The map keys represent field names. Field names matching the regular expression `__.*__` are reserved. Reserved field names are forbidden except in certain documented contexts. The map keys, represented as UTF-8, must not exceed 1,500 bytes and cannot be empty.
 
 ## PartitionQueryRequest
 
@@ -1681,25 +1681,25 @@ The request for `  Firestore.PartitionQuery  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. The parent resource name. In the format: `  projects/{project_id}/databases/{database_id}/documents  ` . Document resource names are not supported; only database resource names can be specified.
+Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` . Document resource names are not supported; only database resource names can be specified.
 
-`  partition_count  `
+`partition_count`
 
-`  int64  `
+`int64`
 
 The desired maximum number of partition points. The partitions may be returned across multiple pages of results. The number must be positive. The actual number of partitions returned may be fewer.
 
 For example, this may be set to one fewer than the number of parallel queries to be run, or in running a data pipeline job, one fewer than the number of workers or compute instances available.
 
-`  page_token  `
+`page_token`
 
-`  string  `
+`string`
 
-The `  next_page_token  ` value returned from a previous call to PartitionQuery that may be used to get an additional set of results. There are no ordering guarantees between sets of results. Thus, using multiple sets of results will require merging the different result sets.
+The `next_page_token` value returned from a previous call to PartitionQuery that may be used to get an additional set of results. There are no ordering guarantees between sets of results. Thus, using multiple sets of results will require merging the different result sets.
 
 For example, two subsequent calls using a page\_token may return:
 
@@ -1708,25 +1708,25 @@ For example, two subsequent calls using a page\_token may return:
 
 To obtain a complete result set ordered with respect to the results of the query supplied to PartitionQuery, the results sets should be merged: cursor A, cursor B, cursor M, cursor Q, cursor U, cursor W
 
-`  page_size  `
+`page_size`
 
-`  int32  `
+`int32`
 
-The maximum number of partitions to return in this call, subject to `  partition_count  ` .
+The maximum number of partitions to return in this call, subject to `partition_count` .
 
-For example, if `  partition_count  ` = 10 and `  page_size  ` = 8, the first call to PartitionQuery will return up to 8 partitions and a `  next_page_token  ` if more results exist. A second call to PartitionQuery will return up to 2 partitions, to complete the total of 10 specified in `  partition_count  ` .
+For example, if `partition_count` = 10 and `page_size` = 8, the first call to PartitionQuery will return up to 8 partitions and a `next_page_token` if more results exist. A second call to PartitionQuery will return up to 2 partitions, to complete the total of 10 specified in `partition_count` .
 
-Union field `  query_type  ` . The query to partition. `  query_type  ` can be only one of the following:
+Union field `query_type` . The query to partition. `query_type` can be only one of the following:
 
-`  structured_query  `
+`structured_query`
 
 `  StructuredQuery  `
 
 A structured query. Query must specify collection with all descendants and be ordered by name ascending. Other filters, order bys, limits, offsets, and start/end cursors are not supported.
 
-Union field `  consistency_selector  ` . The consistency mode for this request. If not set, defaults to strong consistency. `  consistency_selector  ` can be only one of the following:
+Union field `consistency_selector` . The consistency mode for this request. If not set, defaults to strong consistency. `consistency_selector` can be only one of the following:
 
-`  read_time  `
+`read_time`
 
 `  Timestamp  `
 
@@ -1740,7 +1740,7 @@ The response for `  Firestore.PartitionQuery  ` .
 
 Fields
 
-`  partitions[]  `
+`partitions[]`
 
 `  Cursor  `
 
@@ -1754,11 +1754,11 @@ For example, if a PartitionQuery request returns partition cursors A and B, runn
 
 An empty result may indicate that the query has too few results to be partitioned, or that the query is not yet supported for partitioning.
 
-`  next_page_token  `
+`next_page_token`
 
-`  string  `
+`string`
 
-A page token that may be used to request an additional set of results, up to the number specified by `  partition_count  ` in the PartitionQuery request. If blank, there are no more results.
+A page token that may be used to request an additional set of results, up to the number specified by `partition_count` in the PartitionQuery request. If blank, there are no more results.
 
 ## Pipeline
 
@@ -1766,7 +1766,7 @@ A Firestore query represented as an ordered list of operations / stages.
 
 Fields
 
-`  stages[]  `
+`stages[]`
 
 `  Stage  `
 
@@ -1778,7 +1778,7 @@ A single operation within a pipeline.
 
 A stage is made up of a unique name, and a list of arguments. The exact number of arguments & types is dependent on the stage type.
 
-To give an example, the stage `  filter(state = "MD")  ` would be encoded as:
+To give an example, the stage `filter(state = "MD")` would be encoded as:
 
     name: "filter"
     args {
@@ -1793,9 +1793,9 @@ See public documentation for the full list.
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
 Required. The name of the stage to evaluate.
 
@@ -1803,15 +1803,15 @@ Required. The name of the stage to evaluate.
 
   - must be in snake case (lower case with underscore separator).
 
-`  args[]  `
+`args[]`
 
 `  Value  `
 
 Optional. Ordered list of arguments the given stage expects.
 
-`  options  `
+`options`
 
-`  map<string, Value  ` \>
+` map<string, Value  ` \>
 
 Optional. Optional named arguments that certain functions may support.
 
@@ -1821,7 +1821,7 @@ Planning phase information for the query.
 
 Fields
 
-`  indexes_used[]  `
+`indexes_used[]`
 
 `  Struct  `
 
@@ -1833,15 +1833,15 @@ A precondition on a document, used for conditional operations.
 
 Fields
 
-Union field `  condition_type  ` . The type of precondition. `  condition_type  ` can be only one of the following:
+Union field `condition_type` . The type of precondition. `condition_type` can be only one of the following:
 
-`  exists  `
+`exists`
 
-`  bool  `
+`bool`
 
-When set to `  true  ` , the target document must exist. When set to `  false  ` , the target document must not exist.
+When set to `true` , the target document must exist. When set to `false` , the target document must not exist.
 
-`  update_time  `
+`update_time`
 
 `  Timestamp  `
 
@@ -1853,15 +1853,15 @@ The request for `  Firestore.Rollback  ` .
 
 Fields
 
-`  database  `
+`database`
 
-`  string  `
+`string`
 
-Required. The database name. In the format: `  projects/{project_id}/databases/{database_id}  ` .
+Required. The database name. In the format: `projects/{project_id}/databases/{database_id}` .
 
-`  transaction  `
+`transaction`
 
-`  bytes  `
+`bytes`
 
 Required. The transaction to roll back.
 
@@ -1871,37 +1871,37 @@ The request for `  Firestore.RunAggregationQuery  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. The parent resource name. In the format: `  projects/{project_id}/databases/{database_id}/documents  ` or `  projects/{project_id}/databases/{database_id}/documents/{document_path}  ` . For example: `  projects/my-project/databases/my-database/documents  ` or `  projects/my-project/databases/my-database/documents/chatrooms/my-chatroom  `
+Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}` . For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
 
-`  explain_options  `
+`explain_options`
 
 `  ExplainOptions  `
 
 Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only query results will be returned.
 
-Union field `  query_type  ` . The query to run. `  query_type  ` can be only one of the following:
+Union field `query_type` . The query to run. `query_type` can be only one of the following:
 
-`  structured_aggregation_query  `
+`structured_aggregation_query`
 
 `  StructuredAggregationQuery  `
 
 An aggregation query.
 
-Union field `  consistency_selector  ` . The consistency mode for the query, defaults to strong consistency. `  consistency_selector  ` can be only one of the following:
+Union field `consistency_selector` . The consistency mode for the query, defaults to strong consistency. `consistency_selector` can be only one of the following:
 
-`  transaction  `
+`transaction`
 
-`  bytes  `
+`bytes`
 
 Run the aggregation within an already active transaction.
 
 The value here is the opaque transaction ID to execute the query in.
 
-`  new_transaction  `
+`new_transaction`
 
 `  TransactionOptions  `
 
@@ -1909,7 +1909,7 @@ Starts a new transaction as part of the query, defaulting to read-only.
 
 The new transaction ID will be returned as the first response in the stream.
 
-`  read_time  `
+`read_time`
 
 `  Timestamp  `
 
@@ -1923,7 +1923,7 @@ The response for `  Firestore.RunAggregationQuery  ` .
 
 Fields
 
-`  result  `
+`result`
 
 `  AggregationResult  `
 
@@ -1931,23 +1931,23 @@ A single aggregation result.
 
 Not present when reporting partial progress.
 
-`  transaction  `
+`transaction`
 
-`  bytes  `
+`bytes`
 
 The transaction that was started as part of this request.
 
 Only present on the first response when the request requested to start a new transaction.
 
-`  read_time  `
+`read_time`
 
 `  Timestamp  `
 
-The time at which the aggregate result was computed. This is always monotonically increasing; in this case, the previous AggregationResult in the result stream are guaranteed not to have changed between their `  read_time  ` and this one.
+The time at which the aggregate result was computed. This is always monotonically increasing; in this case, the previous AggregationResult in the result stream are guaranteed not to have changed between their `read_time` and this one.
 
-If the query returns no results, a response with `  read_time  ` and no `  result  ` will be sent, and this represents the time at which the query was run.
+If the query returns no results, a response with `read_time` and no `result` will be sent, and this represents the time at which the query was run.
 
-`  explain_metrics  `
+`explain_metrics`
 
 `  ExplainMetrics  `
 
@@ -1959,43 +1959,43 @@ The request for `  Firestore.RunQuery  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. The parent resource name. In the format: `  projects/{project_id}/databases/{database_id}/documents  ` or `  projects/{project_id}/databases/{database_id}/documents/{document_path}  ` . For example: `  projects/my-project/databases/my-database/documents  ` or `  projects/my-project/databases/my-database/documents/chatrooms/my-chatroom  `
+Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}` . For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
 
-`  explain_options  `
+`explain_options`
 
 `  ExplainOptions  `
 
 Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only query results will be returned.
 
-Union field `  query_type  ` . The query to run. `  query_type  ` can be only one of the following:
+Union field `query_type` . The query to run. `query_type` can be only one of the following:
 
-`  structured_query  `
+`structured_query`
 
 `  StructuredQuery  `
 
 A structured query.
 
-Union field `  consistency_selector  ` . The consistency mode for this transaction. If not set, defaults to strong consistency. `  consistency_selector  ` can be only one of the following:
+Union field `consistency_selector` . The consistency mode for this transaction. If not set, defaults to strong consistency. `consistency_selector` can be only one of the following:
 
-`  transaction  `
+`transaction`
 
-`  bytes  `
+`bytes`
 
 Run the query within an already active transaction.
 
 The value here is the opaque transaction ID to execute the query in.
 
-`  new_transaction  `
+`new_transaction`
 
 `  TransactionOptions  `
 
 Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new transaction ID will be returned as the first response in the stream.
 
-`  read_time  `
+`read_time`
 
 `  Timestamp  `
 
@@ -2009,43 +2009,43 @@ The response for `  Firestore.RunQuery  ` .
 
 Fields
 
-`  transaction  `
+`transaction`
 
-`  bytes  `
+`bytes`
 
 The transaction that was started as part of this request. Can only be set in the first response, and only if `  RunQueryRequest.new_transaction  ` was set in the request. If set, no other fields will be set in this response.
 
-`  document  `
+`document`
 
 `  Document  `
 
 A query result, not set when reporting partial progress.
 
-`  read_time  `
+`read_time`
 
 `  Timestamp  `
 
-The time at which the document was read. This may be monotonically increasing; in this case, the previous documents in the result stream are guaranteed not to have changed between their `  read_time  ` and this one.
+The time at which the document was read. This may be monotonically increasing; in this case, the previous documents in the result stream are guaranteed not to have changed between their `read_time` and this one.
 
-If the query returns no results, a response with `  read_time  ` and no `  document  ` will be sent, and this represents the time at which the query was run.
+If the query returns no results, a response with `read_time` and no `document` will be sent, and this represents the time at which the query was run.
 
-`  skipped_results  `
+`skipped_results`
 
-`  int32  `
+`int32`
 
 The number of results that have been skipped due to an offset between the last response and the current response.
 
-`  explain_metrics  `
+`explain_metrics`
 
 `  ExplainMetrics  `
 
 Query explain metrics. This is only present when the `  RunQueryRequest.explain_options  ` is provided, and it is sent only once with the last response in the stream.
 
-Union field `  continuation_selector  ` . The continuation mode for the query. If present, it indicates the current query response stream has finished. This can be set with or without a `  document  ` present, but when set, no more results are returned. `  continuation_selector  ` can be only one of the following:
+Union field `continuation_selector` . The continuation mode for the query. If present, it indicates the current query response stream has finished. This can be set with or without a `document` present, but when set, no more results are returned. `continuation_selector` can be only one of the following:
 
-`  done  `
+`done`
 
-`  bool  `
+`bool`
 
 If present, Firestore has completely finished the request and no more documents will be returned.
 
@@ -2055,19 +2055,19 @@ Firestore query for running an aggregation over a `  StructuredQuery  ` .
 
 Fields
 
-`  aggregations[]  `
+`aggregations[]`
 
 `  Aggregation  `
 
-Optional. Series of aggregations to apply over the results of the `  structured_query  ` .
+Optional. Series of aggregations to apply over the results of the `structured_query` .
 
 Requires:
 
   - A minimum of one and maximum of five aggregations per query.
 
-Union field `  query_type  ` . The base query to aggregate over. `  query_type  ` can be only one of the following:
+Union field `query_type` . The base query to aggregate over. `query_type` can be only one of the following:
 
-`  structured_query  `
+`structured_query`
 
 `  StructuredQuery  `
 
@@ -2079,13 +2079,13 @@ Defines an aggregation that produces a single result.
 
 Fields
 
-`  alias  `
+`alias`
 
-`  string  `
+`string`
 
 Optional. Optional name of the field to store the result of the aggregation into.
 
-If not provided, Firestore will pick a default name following the format `  field_<incremental_id++>  ` . For example:
+If not provided, Firestore will pick a default name following the format `field_<incremental_id++>` . For example:
 
     AGGREGATE
       COUNT_UP_TO(1) AS count_up_to_1,
@@ -2112,21 +2112,21 @@ Requires:
   - Must be unique across all aggregation aliases.
   - Conform to `  document field name  ` limitations.
 
-Union field `  operator  ` . The type of aggregation to perform, required. `  operator  ` can be only one of the following:
+Union field `operator` . The type of aggregation to perform, required. `operator` can be only one of the following:
 
-`  count  `
+`count`
 
 `  Count  `
 
 Count aggregator.
 
-`  sum  `
+`sum`
 
 `  Sum  `
 
 Sum aggregator.
 
-`  avg  `
+`avg`
 
 `  Avg  `
 
@@ -2136,17 +2136,17 @@ Average aggregator.
 
 Average of the values of the requested field.
 
-  - Only numeric values will be aggregated. All non-numeric values including `  NULL  ` are skipped.
+  - Only numeric values will be aggregated. All non-numeric values including `NULL` are skipped.
 
-  - If the aggregated values contain `  NaN  ` , returns `  NaN  ` . Infinity math follows IEEE-754 standards.
+  - If the aggregated values contain `NaN` , returns `NaN` . Infinity math follows IEEE-754 standards.
 
-  - If the aggregated value set is empty, returns `  NULL  ` .
+  - If the aggregated value set is empty, returns `NULL` .
 
   - Always returns the result as a double.
 
 Fields
 
-`  field  `
+`field`
 
 `  FieldReference  `
 
@@ -2156,11 +2156,11 @@ The field to aggregate on.
 
 Count of documents that match the query.
 
-The `  COUNT(*)  ` aggregation function operates on the entire document so it does not require a field reference.
+The `COUNT(*)` aggregation function operates on the entire document so it does not require a field reference.
 
 Fields
 
-`  up_to  `
+`up_to`
 
 `  Int64Value  `
 
@@ -2182,9 +2182,9 @@ Requires:
 
 Sum of the values of the requested field.
 
-  - Only numeric values will be aggregated. All non-numeric values including `  NULL  ` are skipped.
+  - Only numeric values will be aggregated. All non-numeric values including `NULL` are skipped.
 
-  - If the aggregated values contain `  NaN  ` , returns `  NaN  ` . Infinity math follows IEEE-754 standards.
+  - If the aggregated values contain `NaN` , returns `NaN` . Infinity math follows IEEE-754 standards.
 
   - If the aggregated value set is empty, returns 0.
 
@@ -2194,7 +2194,7 @@ Sum of the values of the requested field.
 
 Fields
 
-`  field  `
+`field`
 
 `  FieldReference  `
 
@@ -2204,19 +2204,19 @@ The field to aggregate on.
 
 A Firestore query represented as an ordered list of operations / stages.
 
-This is considered the top-level function which plans and executes a query. It is logically equivalent to `  query(stages, options)  ` , but prevents the client from having to build a function wrapper.
+This is considered the top-level function which plans and executes a query. It is logically equivalent to `query(stages, options)` , but prevents the client from having to build a function wrapper.
 
 Fields
 
-`  pipeline  `
+`pipeline`
 
 `  Pipeline  `
 
 Required. The pipeline query to execute.
 
-`  options  `
+`options`
 
-`  map<string, Value  ` \>
+` map<string, Value  ` \>
 
 Optional. Optional query-level arguments.
 
@@ -2228,7 +2228,7 @@ The query stages are executed in the following order: 1. from 2. where 3. select
 
 Fields
 
-`  select  `
+`select`
 
 `  Projection  `
 
@@ -2236,19 +2236,19 @@ Optional sub-set of the fields to return.
 
 This acts as a `  DocumentMask  ` over the documents returned from a query. When not set, assumes that the caller wants all fields returned.
 
-`  from[]  `
+`from[]`
 
 `  CollectionSelector  `
 
 The collections to query.
 
-`  where  `
+`where`
 
 `  Filter  `
 
 The filter to apply.
 
-`  order_by[]  `
+`order_by[]`
 
 `  Order  `
 
@@ -2258,69 +2258,69 @@ Callers can provide a full ordering, a partial ordering, or no ordering at all. 
 
 In Standard edition, Firestore guarantees a stable ordering through the following rules:
 
-  - The `  order_by  ` is required to reference all fields used with an inequality filter.
-  - All fields that are required to be in the `  order_by  ` but are not already present are appended in lexicographical ordering of the field name.
-  - If an order on `  __name__  ` is not specified, it is appended by default.
+  - The `order_by` is required to reference all fields used with an inequality filter.
+  - All fields that are required to be in the `order_by` but are not already present are appended in lexicographical ordering of the field name.
+  - If an order on `__name__` is not specified, it is appended by default.
 
 Fields are appended with the same sort direction as the last order specified, or 'ASCENDING' if no order was specified. For example:
 
-  - `  ORDER BY a  ` becomes `  ORDER BY a ASC, __name__ ASC  `
-  - `  ORDER BY a DESC  ` becomes `  ORDER BY a DESC, __name__ DESC  `
-  - `  WHERE a > 1  ` becomes `  WHERE a > 1 ORDER BY a ASC, __name__ ASC  `
-  - `  WHERE __name__ > ... AND a > 1  ` becomes `  WHERE __name__ > ... AND a > 1 ORDER BY a ASC, __name__ ASC  `
+  - `ORDER BY a` becomes `ORDER BY a ASC, __name__ ASC`
+  - `ORDER BY a DESC` becomes `ORDER BY a DESC, __name__ DESC`
+  - `WHERE a > 1` becomes `WHERE a > 1 ORDER BY a ASC, __name__ ASC`
+  - `WHERE __name__ > ... AND a > 1` becomes `WHERE __name__ > ... AND a > 1 ORDER BY a ASC, __name__ ASC`
 
-In Enterprise edition, Firestore does not guarantee a stable ordering. Instead it will pick the most efficient ordering based on the indexes available at the time of query execution. This will result in a different ordering for queries that are otherwise identical. To ensure a stable ordering, always include a unique field in the `  order_by  ` clause, such as `  __name__  ` .
+In Enterprise edition, Firestore does not guarantee a stable ordering. Instead it will pick the most efficient ordering based on the indexes available at the time of query execution. This will result in a different ordering for queries that are otherwise identical. To ensure a stable ordering, always include a unique field in the `order_by` clause, such as `__name__` .
 
-`  start_at  `
+`start_at`
 
 `  Cursor  `
 
 A potential prefix of a position in the result set to start the query at.
 
-The ordering of the result set is based on the `  ORDER BY  ` clause of the original query.
+The ordering of the result set is based on the `ORDER BY` clause of the original query.
 
     SELECT * FROM k WHERE a = 1 AND b > 2 ORDER BY b ASC, __name__ ASC;
 
-This query's results are ordered by `  (b ASC, __name__ ASC)  ` .
+This query's results are ordered by `(b ASC, __name__ ASC)` .
 
-Cursors can reference either the full ordering or a prefix of the location, though it cannot reference more fields than what are in the provided `  ORDER BY  ` .
+Cursors can reference either the full ordering or a prefix of the location, though it cannot reference more fields than what are in the provided `ORDER BY` .
 
 Continuing off the example above, attaching the following start cursors will have varying impact:
 
-  - `  START BEFORE (2, /k/123)  ` : start the query right before `  a = 1 AND b > 2 AND __name__ > /k/123  ` .
-  - `  START AFTER (10)  ` : start the query right after `  a = 1 AND b > 10  ` .
+  - `START BEFORE (2, /k/123)` : start the query right before `a = 1 AND b > 2 AND __name__ > /k/123` .
+  - `START AFTER (10)` : start the query right after `a = 1 AND b > 10` .
 
-Unlike `  OFFSET  ` which requires scanning over the first N results to skip, a start cursor allows the query to begin at a logical position. This position is not required to match an actual result, it will scan forward from this position to find the next document.
+Unlike `OFFSET` which requires scanning over the first N results to skip, a start cursor allows the query to begin at a logical position. This position is not required to match an actual result, it will scan forward from this position to find the next document.
 
 Requires:
 
-  - The number of values cannot be greater than the number of fields specified in the `  ORDER BY  ` clause.
+  - The number of values cannot be greater than the number of fields specified in the `ORDER BY` clause.
 
-`  end_at  `
+`end_at`
 
 `  Cursor  `
 
 A potential prefix of a position in the result set to end the query at.
 
-This is similar to `  START_AT  ` but with it controlling the end position rather than the start position.
+This is similar to `START_AT` but with it controlling the end position rather than the start position.
 
 Requires:
 
-  - The number of values cannot be greater than the number of fields specified in the `  ORDER BY  ` clause.
+  - The number of values cannot be greater than the number of fields specified in the `ORDER BY` clause.
 
-`  offset  `
+`offset`
 
-`  int32  `
+`int32`
 
 The number of documents to skip before returning the first result.
 
-This applies after the constraints specified by the `  WHERE  ` , `  START AT  ` , & `  END AT  ` but before the `  LIMIT  ` clause.
+This applies after the constraints specified by the `WHERE` , `START AT` , & `END AT` but before the `LIMIT` clause.
 
 Requires:
 
   - The value must be greater than or equal to zero if specified.
 
-`  limit  `
+`limit`
 
 `  Int32Value  `
 
@@ -2332,7 +2332,7 @@ Requires:
 
   - The value must be greater than or equal to zero if specified.
 
-`  find_nearest  `
+`find_nearest`
 
 `  FindNearest  `
 
@@ -2344,21 +2344,21 @@ Finds the closest vector embeddings to the given query vector.
 
 ## CollectionSelector
 
-A selection of a collection, such as `  messages as m1  ` .
+A selection of a collection, such as `messages as m1` .
 
 Fields
 
-`  collection_id  `
+`collection_id`
 
-`  string  `
+`string`
 
 The collection ID. When set, selects only collections with this ID.
 
-`  all_descendants  `
+`all_descendants`
 
-`  bool  `
+`bool`
 
-When false, selects only collections that are immediate children of the `  parent  ` specified in the containing `  RunQueryRequest  ` . When true, selects all descendant collections.
+When false, selects only collections that are immediate children of the `parent` specified in the containing `RunQueryRequest` . When true, selects all descendant collections.
 
 ## CompositeFilter
 
@@ -2366,13 +2366,13 @@ A filter that merges multiple other filters using the given operator.
 
 Fields
 
-`  op  `
+`op`
 
 `  Operator  `
 
 The operator for combining multiple filters.
 
-`  filters[]  `
+`filters[]`
 
 `  Filter  `
 
@@ -2388,15 +2388,15 @@ A composite filter operator.
 
 Enums
 
-`  OPERATOR_UNSPECIFIED  `
+`OPERATOR_UNSPECIFIED`
 
 Unspecified. This value must not be used.
 
-`  AND  `
+`AND`
 
 Documents are required to satisfy all of the combined filters.
 
-`  OR  `
+`OR`
 
 Documents are required to satisfy at least one of the combined filters.
 
@@ -2406,15 +2406,15 @@ A sort direction.
 
 Enums
 
-`  DIRECTION_UNSPECIFIED  `
+`DIRECTION_UNSPECIFIED`
 
 Unspecified.
 
-`  ASCENDING  `
+`ASCENDING`
 
 Ascending.
 
-`  DESCENDING  `
+`DESCENDING`
 
 Descending.
 
@@ -2424,19 +2424,19 @@ A filter on a specific field.
 
 Fields
 
-`  field  `
+`field`
 
 `  FieldReference  `
 
 The field to filter by.
 
-`  op  `
+`op`
 
 `  Operator  `
 
 The operator to filter by.
 
-`  value  `
+`value`
 
 `  Value  `
 
@@ -2448,103 +2448,103 @@ A field filter operator.
 
 Enums
 
-`  OPERATOR_UNSPECIFIED  `
+`OPERATOR_UNSPECIFIED`
 
 Unspecified. This value must not be used.
 
-`  LESS_THAN  `
+`LESS_THAN`
 
-The given `  field  ` is less than the given `  value  ` .
-
-Requires:
-
-  - That `  field  ` come first in `  order_by  ` .
-
-`  LESS_THAN_OR_EQUAL  `
-
-The given `  field  ` is less than or equal to the given `  value  ` .
+The given `field` is less than the given `value` .
 
 Requires:
 
-  - That `  field  ` come first in `  order_by  ` .
+  - That `field` come first in `order_by` .
 
-`  GREATER_THAN  `
+`LESS_THAN_OR_EQUAL`
 
-The given `  field  ` is greater than the given `  value  ` .
-
-Requires:
-
-  - That `  field  ` come first in `  order_by  ` .
-
-`  GREATER_THAN_OR_EQUAL  `
-
-The given `  field  ` is greater than or equal to the given `  value  ` .
+The given `field` is less than or equal to the given `value` .
 
 Requires:
 
-  - That `  field  ` come first in `  order_by  ` .
+  - That `field` come first in `order_by` .
 
-`  EQUAL  `
+`GREATER_THAN`
 
-The given `  field  ` is equal to the given `  value  ` .
-
-`  NOT_EQUAL  `
-
-The given `  field  ` is not equal to the given `  value  ` .
+The given `field` is greater than the given `value` .
 
 Requires:
 
-  - No other `  NOT_EQUAL  ` , `  NOT_IN  ` , `  IS_NOT_NULL  ` , or `  IS_NOT_NAN  ` .
-  - That `  field  ` comes first in the `  order_by  ` .
+  - That `field` come first in `order_by` .
 
-`  ARRAY_CONTAINS  `
+`GREATER_THAN_OR_EQUAL`
 
-The given `  field  ` is an array that contains the given `  value  ` .
-
-`  IN  `
-
-The given `  field  ` is equal to at least one value in the given array.
+The given `field` is greater than or equal to the given `value` .
 
 Requires:
 
-  - That `  value  ` is a non-empty `  ArrayValue  ` , subject to disjunction limits.
-  - No `  NOT_IN  ` filters in the same query.
+  - That `field` come first in `order_by` .
 
-`  ARRAY_CONTAINS_ANY  `
+`EQUAL`
 
-The given `  field  ` is an array that contains any of the values in the given array.
+The given `field` is equal to the given `value` .
 
-Requires:
+`NOT_EQUAL`
 
-  - That `  value  ` is a non-empty `  ArrayValue  ` , subject to disjunction limits.
-  - No other `  ARRAY_CONTAINS_ANY  ` filters within the same disjunction.
-  - No `  NOT_IN  ` filters in the same query.
-
-`  NOT_IN  `
-
-The value of the `  field  ` is not in the given array.
+The given `field` is not equal to the given `value` .
 
 Requires:
 
-  - That `  value  ` is a non-empty `  ArrayValue  ` with at most 10 values.
-  - No other `  OR  ` , `  IN  ` , `  ARRAY_CONTAINS_ANY  ` , `  NOT_IN  ` , `  NOT_EQUAL  ` , `  IS_NOT_NULL  ` , or `  IS_NOT_NAN  ` .
-  - That `  field  ` comes first in the `  order_by  ` .
+  - No other `NOT_EQUAL` , `NOT_IN` , `IS_NOT_NULL` , or `IS_NOT_NAN` .
+  - That `field` comes first in the `order_by` .
+
+`ARRAY_CONTAINS`
+
+The given `field` is an array that contains the given `value` .
+
+`IN`
+
+The given `field` is equal to at least one value in the given array.
+
+Requires:
+
+  - That `value` is a non-empty `ArrayValue` , subject to disjunction limits.
+  - No `NOT_IN` filters in the same query.
+
+`ARRAY_CONTAINS_ANY`
+
+The given `field` is an array that contains any of the values in the given array.
+
+Requires:
+
+  - That `value` is a non-empty `ArrayValue` , subject to disjunction limits.
+  - No other `ARRAY_CONTAINS_ANY` filters within the same disjunction.
+  - No `NOT_IN` filters in the same query.
+
+`NOT_IN`
+
+The value of the `field` is not in the given array.
+
+Requires:
+
+  - That `value` is a non-empty `ArrayValue` with at most 10 values.
+  - No other `OR` , `IN` , `ARRAY_CONTAINS_ANY` , `NOT_IN` , `NOT_EQUAL` , `IS_NOT_NULL` , or `IS_NOT_NAN` .
+  - That `field` comes first in the `order_by` .
 
 ## FieldReference
 
-A reference to a field in a document, ex: `  stats.operations  ` .
+A reference to a field in a document, ex: `stats.operations` .
 
 Fields
 
-`  field_path  `
+`field_path`
 
-`  string  `
+`string`
 
 A reference to a field in a document.
 
 Requires:
 
-  - MUST be a dot-delimited ( `  .  ` ) string of segments, where each segment conforms to `  document field name  ` limitations.
+  - MUST be a dot-delimited ( `.` ) string of segments, where each segment conforms to `  document field name  ` limitations.
 
 ## Filter
 
@@ -2552,21 +2552,21 @@ A filter.
 
 Fields
 
-Union field `  filter_type  ` . The type of filter. `  filter_type  ` can be only one of the following:
+Union field `filter_type` . The type of filter. `filter_type` can be only one of the following:
 
-`  composite_filter  `
+`composite_filter`
 
 `  CompositeFilter  `
 
 A composite filter.
 
-`  field_filter  `
+`field_filter`
 
 `  FieldFilter  `
 
 A filter on a document field.
 
-`  unary_filter  `
+`unary_filter`
 
 `  UnaryFilter  `
 
@@ -2578,44 +2578,44 @@ Nearest Neighbors search config. The ordering provided by FindNearest supersedes
 
 Fields
 
-`  vector_field  `
+`vector_field`
 
 `  FieldReference  `
 
 Required. An indexed vector field to search upon. Only documents which contain vectors whose dimensionality match the query\_vector can be returned.
 
-`  query_vector  `
+`query_vector`
 
 `  Value  `
 
 Required. The query vector that we are searching on. Must be a vector of no more than 2048 dimensions.
 
-`  distance_measure  `
+`distance_measure`
 
 `  DistanceMeasure  `
 
 Required. The distance measure to use, required.
 
-`  limit  `
+`limit`
 
 `  Int32Value  `
 
 Required. The number of nearest neighbors to return. Must be a positive integer of no more than 1000.
 
-`  distance_result_field  `
+`distance_result_field`
 
-`  string  `
+`string`
 
 Optional. Optional name of the field to output the result of the vector distance calculation. Must conform to `  document field name  ` limitations.
 
-`  distance_threshold  `
+`distance_threshold`
 
 `  DoubleValue  `
 
-Optional. Option to specify a threshold for which no less similar documents will be returned. The behavior of the specified `  distance_measure  ` will affect the meaning of the distance threshold. Since DOT\_PRODUCT distances increase when the vectors are more similar, the comparison is inverted.
+Optional. Option to specify a threshold for which no less similar documents will be returned. The behavior of the specified `distance_measure` will affect the meaning of the distance threshold. Since DOT\_PRODUCT distances increase when the vectors are more similar, the comparison is inverted.
 
-  - For EUCLIDEAN, COSINE: `  WHERE distance <= distance_threshold  `
-  - For DOT\_PRODUCT: `  WHERE distance >= distance_threshold  `
+  - For EUCLIDEAN, COSINE: `WHERE distance <= distance_threshold`
+  - For DOT\_PRODUCT: `WHERE distance >= distance_threshold`
 
 ## DistanceMeasure
 
@@ -2623,19 +2623,19 @@ The distance measure to use when comparing vectors.
 
 Enums
 
-`  DISTANCE_MEASURE_UNSPECIFIED  `
+`DISTANCE_MEASURE_UNSPECIFIED`
 
 Should not be set.
 
-`  EUCLIDEAN  `
+`EUCLIDEAN`
 
 Measures the EUCLIDEAN distance between the vectors. See [Euclidean](https://en.wikipedia.org/wiki/Euclidean_distance) to learn more. The resulting distance decreases the more similar two vectors are.
 
-`  COSINE  `
+`COSINE`
 
 COSINE distance compares vectors based on the angle between them, which allows you to measure similarity that isn't based on the vectors magnitude. We recommend using DOT\_PRODUCT with unit normalized vectors instead of COSINE distance, which is mathematically equivalent with better performance. See [Cosine Similarity](https://en.wikipedia.org/wiki/Cosine_similarity) to learn more about COSINE similarity and COSINE distance. The resulting COSINE distance decreases the more similar two vectors are.
 
-`  DOT_PRODUCT  `
+`DOT_PRODUCT`
 
 Similar to cosine but is affected by the magnitude of the vectors. See [Dot Product](https://en.wikipedia.org/wiki/Dot_product) to learn more. The resulting distance increases the more similar two vectors are.
 
@@ -2645,17 +2645,17 @@ An order on a field.
 
 Fields
 
-`  field  `
+`field`
 
 `  FieldReference  `
 
 The field to order by.
 
-`  direction  `
+`direction`
 
 `  Direction  `
 
-The direction to order by. Defaults to `  ASCENDING  ` .
+The direction to order by. Defaults to `ASCENDING` .
 
 ## Projection
 
@@ -2663,13 +2663,13 @@ The projection of document's fields to return.
 
 Fields
 
-`  fields[]  `
+`fields[]`
 
 `  FieldReference  `
 
 The fields to return.
 
-If empty, all fields are returned. To only return the name of the document, use `  ['__name__']  ` .
+If empty, all fields are returned. To only return the name of the document, use `['__name__']` .
 
 ## UnaryFilter
 
@@ -2677,15 +2677,15 @@ A filter with a single operand.
 
 Fields
 
-`  op  `
+`op`
 
 `  Operator  `
 
 The unary operator to apply.
 
-Union field `  operand_type  ` . The argument to the filter. `  operand_type  ` can be only one of the following:
+Union field `operand_type` . The argument to the filter. `operand_type` can be only one of the following:
 
-`  field  `
+`field`
 
 `  FieldReference  `
 
@@ -2697,35 +2697,35 @@ A unary operator.
 
 Enums
 
-`  OPERATOR_UNSPECIFIED  `
+`OPERATOR_UNSPECIFIED`
 
 Unspecified. This value must not be used.
 
-`  IS_NAN  `
+`IS_NAN`
 
-The given `  field  ` is equal to `  NaN  ` .
+The given `field` is equal to `NaN` .
 
-`  IS_NULL  `
+`IS_NULL`
 
-The given `  field  ` is equal to `  NULL  ` .
+The given `field` is equal to `NULL` .
 
-`  IS_NOT_NAN  `
+`IS_NOT_NAN`
 
-The given `  field  ` is not equal to `  NaN  ` .
-
-Requires:
-
-  - No other `  NOT_EQUAL  ` , `  NOT_IN  ` , `  IS_NOT_NULL  ` , or `  IS_NOT_NAN  ` .
-  - That `  field  ` comes first in the `  order_by  ` .
-
-`  IS_NOT_NULL  `
-
-The given `  field  ` is not equal to `  NULL  ` .
+The given `field` is not equal to `NaN` .
 
 Requires:
 
-  - A single `  NOT_EQUAL  ` , `  NOT_IN  ` , `  IS_NOT_NULL  ` , or `  IS_NOT_NAN  ` .
-  - That `  field  ` comes first in the `  order_by  ` .
+  - No other `NOT_EQUAL` , `NOT_IN` , `IS_NOT_NULL` , or `IS_NOT_NAN` .
+  - That `field` comes first in the `order_by` .
+
+`IS_NOT_NULL`
+
+The given `field` is not equal to `NULL` .
+
+Requires:
+
+  - A single `NOT_EQUAL` , `NOT_IN` , `IS_NOT_NULL` , or `IS_NOT_NAN` .
+  - That `field` comes first in the `order_by` .
 
 ## Target
 
@@ -2733,63 +2733,63 @@ A specification of a set of documents to listen to.
 
 Fields
 
-`  target_id  `
+`target_id`
 
-`  int32  `
+`int32`
 
 The target ID that identifies the target on the stream. Must be a positive number and non-zero.
 
-If `  target_id  ` is 0 (or unspecified), the server will assign an ID for this target and return that in a `  TargetChange::ADD  ` event. Once a target with `  target_id=0  ` is added, all subsequent targets must also have `  target_id=0  ` . If an `  AddTarget  ` request with `  target_id != 0  ` is sent to the server after a target with `  target_id=0  ` is added, the server will immediately send a response with a `  TargetChange::Remove  ` event.
+If `target_id` is 0 (or unspecified), the server will assign an ID for this target and return that in a `TargetChange::ADD` event. Once a target with `target_id=0` is added, all subsequent targets must also have `target_id=0` . If an `AddTarget` request with `target_id != 0` is sent to the server after a target with `target_id=0` is added, the server will immediately send a response with a `TargetChange::Remove` event.
 
-Note that if the client sends multiple `  AddTarget  ` requests without an ID, the order of IDs returned in `  TargetChange.target_ids  ` are undefined. Therefore, clients should provide a target ID instead of relying on the server to assign one.
+Note that if the client sends multiple `AddTarget` requests without an ID, the order of IDs returned in `TargetChange.target_ids` are undefined. Therefore, clients should provide a target ID instead of relying on the server to assign one.
 
-If `  target_id  ` is non-zero, there must not be an existing active target on this stream with the same ID.
+If `target_id` is non-zero, there must not be an existing active target on this stream with the same ID.
 
-`  once  `
+`once`
 
-`  bool  `
+`bool`
 
 If the target should be removed once it is current and consistent.
 
-`  expected_count  `
+`expected_count`
 
 `  Int32Value  `
 
 The number of documents that last matched the query at the resume token or read time.
 
-This value is only relevant when a `  resume_type  ` is provided. This value being present and greater than zero signals that the client wants `  ExistenceFilter.unchanged_names  ` to be included in the response.
+This value is only relevant when a `resume_type` is provided. This value being present and greater than zero signals that the client wants `ExistenceFilter.unchanged_names` to be included in the response.
 
-Union field `  target_type  ` . The type of target to listen to. `  target_type  ` can be only one of the following:
+Union field `target_type` . The type of target to listen to. `target_type` can be only one of the following:
 
-`  query  `
+`query`
 
 `  QueryTarget  `
 
 A target specified by a query.
 
-`  documents  `
+`documents`
 
 `  DocumentsTarget  `
 
 A target specified by a set of document names.
 
-Union field `  resume_type  ` . When to start listening.
+Union field `resume_type` . When to start listening.
 
-If specified, only the matching Documents that have been updated AFTER the `  resume_token  ` or `  read_time  ` will be returned. Otherwise, all matching Documents are returned before any subsequent changes. `  resume_type  ` can be only one of the following:
+If specified, only the matching Documents that have been updated AFTER the `resume_token` or `read_time` will be returned. Otherwise, all matching Documents are returned before any subsequent changes. `resume_type` can be only one of the following:
 
-`  resume_token  `
+`resume_token`
 
-`  bytes  `
+`bytes`
 
 A resume token from a prior `  TargetChange  ` for an identical target.
 
 Using a resume token with a different target is unsupported and may fail.
 
-`  read_time  `
+`read_time`
 
 `  Timestamp  `
 
-Start listening after a specific `  read_time  ` .
+Start listening after a specific `read_time` .
 
 The client must know the state of matching documents at this time.
 
@@ -2799,11 +2799,11 @@ A target specified by a set of documents names.
 
 Fields
 
-`  documents[]  `
+`documents[]`
 
-`  string  `
+`string`
 
-The names of the documents to retrieve. In the format: `  projects/{project_id}/databases/{database_id}/documents/{document_path}  ` . The request will fail if any of the document is not a child resource of the given `  database  ` . Duplicate names will be elided.
+The names of the documents to retrieve. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}` . The request will fail if any of the document is not a child resource of the given `database` . Duplicate names will be elided.
 
 ## QueryTarget
 
@@ -2811,15 +2811,15 @@ A target specified by a query.
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-The parent resource name. In the format: `  projects/{project_id}/databases/{database_id}/documents  ` or `  projects/{project_id}/databases/{database_id}/documents/{document_path}  ` . For example: `  projects/my-project/databases/my-database/documents  ` or `  projects/my-project/databases/my-database/documents/chatrooms/my-chatroom  `
+The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}` . For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
 
-Union field `  query_type  ` . The query to run. `  query_type  ` can be only one of the following:
+Union field `query_type` . The query to run. `query_type` can be only one of the following:
 
-`  structured_query  `
+`structured_query`
 
 `  StructuredQuery  `
 
@@ -2831,15 +2831,15 @@ Targets being watched have changed.
 
 Fields
 
-`  target_change_type  `
+`target_change_type`
 
 `  TargetChangeType  `
 
 The type of change that occurred.
 
-`  target_ids[]  `
+`target_ids[]`
 
-`  int32  `
+`int32`
 
 The target IDs of targets that have changed.
 
@@ -2847,29 +2847,29 @@ If empty, the change applies to all targets.
 
 The order of the target IDs is not defined.
 
-`  cause  `
+`cause`
 
 `  Status  `
 
 The error that resulted in this change, if applicable.
 
-`  resume_token  `
+`resume_token`
 
-`  bytes  `
+`bytes`
 
-A token that can be used to resume the stream for the given `  target_ids  ` , or all targets if `  target_ids  ` is empty.
+A token that can be used to resume the stream for the given `target_ids` , or all targets if `target_ids` is empty.
 
 Not set on every target change.
 
-`  read_time  `
+`read_time`
 
 `  Timestamp  `
 
-The consistent `  read_time  ` for the given `  target_ids  ` (omitted when the target\_ids are not at a consistent snapshot).
+The consistent `read_time` for the given `target_ids` (omitted when the target\_ids are not at a consistent snapshot).
 
-The stream is guaranteed to send a `  read_time  ` with `  target_ids  ` empty whenever the entire stream reaches a new consistent snapshot. ADD, CURRENT, and RESET messages are guaranteed to (eventually) result in a new consistent snapshot (while NO\_CHANGE and REMOVE messages are not).
+The stream is guaranteed to send a `read_time` with `target_ids` empty whenever the entire stream reaches a new consistent snapshot. ADD, CURRENT, and RESET messages are guaranteed to (eventually) result in a new consistent snapshot (while NO\_CHANGE and REMOVE messages are not).
 
-For a given stream, `  read_time  ` is guaranteed to be monotonically increasing.
+For a given stream, `read_time` is guaranteed to be monotonically increasing.
 
 ## TargetChangeType
 
@@ -2877,31 +2877,31 @@ The type of change.
 
 Enums
 
-`  NO_CHANGE  `
+`NO_CHANGE`
 
-No change has occurred. Used only to send an updated `  resume_token  ` .
+No change has occurred. Used only to send an updated `resume_token` .
 
-`  ADD  `
+`ADD`
 
 The targets have been added.
 
-`  REMOVE  `
+`REMOVE`
 
 The targets have been removed.
 
-`  CURRENT  `
+`CURRENT`
 
 The targets reflect all changes committed before the targets were added to the stream.
 
-This will be sent after or with a `  read_time  ` that is greater than or equal to the time at which the targets were added.
+This will be sent after or with a `read_time` that is greater than or equal to the time at which the targets were added.
 
 Listeners can wait for this change if read-after-write semantics are desired.
 
-`  RESET  `
+`RESET`
 
 The targets have been reset, and a new initial state for the targets will be returned in subsequent changes.
 
-After the initial state is complete, `  CURRENT  ` will be returned even if the target was previously indicated to be `  CURRENT  ` .
+After the initial state is complete, `CURRENT` will be returned even if the target was previously indicated to be `CURRENT` .
 
 ## TransactionOptions
 
@@ -2909,15 +2909,15 @@ Options for creating a new transaction.
 
 Fields
 
-Union field `  mode  ` . The mode of the transaction. `  mode  ` can be only one of the following:
+Union field `mode` . The mode of the transaction. `mode` can be only one of the following:
 
-`  read_only  `
+`read_only`
 
 `  ReadOnly  `
 
 The transaction can only be used for read operations.
 
-`  read_write  `
+`read_write`
 
 `  ReadWrite  `
 
@@ -2929,9 +2929,9 @@ Options for a transaction that can only be used to read documents.
 
 Fields
 
-Union field `  consistency_selector  ` . The consistency mode for this transaction. If not set, defaults to strong consistency. `  consistency_selector  ` can be only one of the following:
+Union field `consistency_selector` . The consistency mode for this transaction. If not set, defaults to strong consistency. `consistency_selector` can be only one of the following:
 
-`  read_time  `
+`read_time`
 
 `  Timestamp  `
 
@@ -2947,9 +2947,9 @@ Firestore does not allow 3rd party auth requests to create read-write. transacti
 
 Fields
 
-`  retry_transaction  `
+`retry_transaction`
 
-`  bytes  `
+`bytes`
 
 An optional transaction to retry.
 
@@ -2959,13 +2959,13 @@ The request for `  Firestore.UpdateDocument  ` .
 
 Fields
 
-`  document  `
+`document`
 
 `  Document  `
 
 Required. The updated document. Creates the document if it does not already exist.
 
-`  update_mask  `
+`update_mask`
 
 `  DocumentMask  `
 
@@ -2973,7 +2973,7 @@ The fields to update. None of the field paths in the mask may contain a reserved
 
 If the document exists on the server and has fields not referenced in the mask, they are left unchanged. Fields referenced in the mask, but not present in the input document, are deleted from the document on the server.
 
-`  mask  `
+`mask`
 
 `  DocumentMask  `
 
@@ -2981,7 +2981,7 @@ The fields to return. If not set, returns all fields.
 
 If the document has a field that is not present in this mask, that field will not be returned in the response.
 
-`  current_document  `
+`current_document`
 
 `  Precondition  `
 
@@ -2993,33 +2993,33 @@ A message that can hold any of the supported value types.
 
 Fields
 
-Union field `  value_type  ` . Must have a value set. `  value_type  ` can be only one of the following:
+Union field `value_type` . Must have a value set. `value_type` can be only one of the following:
 
-`  null_value  `
+`null_value`
 
 `  NullValue  `
 
 A null value.
 
-`  boolean_value  `
+`boolean_value`
 
-`  bool  `
+`bool`
 
 A boolean value.
 
-`  integer_value  `
+`integer_value`
 
-`  int64  `
+`int64`
 
 An integer value.
 
-`  double_value  `
+`double_value`
 
-`  double  `
+`double`
 
 A double value.
 
-`  timestamp_value  `
+`timestamp_value`
 
 `  Timestamp  `
 
@@ -3027,35 +3027,35 @@ A timestamp value.
 
 Precise only to microseconds. When stored, any additional precision is rounded down.
 
-`  string_value  `
+`string_value`
 
-`  string  `
+`string`
 
 A string value.
 
 The string, represented as UTF-8, must not exceed 1 MiB - 89 bytes. Only the first 1,500 bytes of the UTF-8 representation are considered by queries.
 
-`  bytes_value  `
+`bytes_value`
 
-`  bytes  `
+`bytes`
 
 A bytes value.
 
 Must not exceed 1 MiB - 89 bytes. Only the first 1,500 bytes are considered by queries.
 
-`  reference_value  `
+`reference_value`
 
-`  string  `
+`string`
 
-A reference to a document. For example: `  projects/{project_id}/databases/{database_id}/documents/{document_path}  ` .
+A reference to a document. For example: `projects/{project_id}/databases/{database_id}/documents/{document_path}` .
 
-`  geo_point_value  `
+`geo_point_value`
 
 `  LatLng  `
 
 A geo point value representing a point on the surface of Earth.
 
-`  array_value  `
+`array_value`
 
 `  ArrayValue  `
 
@@ -3063,15 +3063,15 @@ An array value.
 
 Cannot directly contain another array value, though can contain a map which contains another array.
 
-`  map_value  `
+`map_value`
 
 `  MapValue  `
 
 A map value.
 
-`  field_reference_value  `
+`field_reference_value`
 
-`  string  `
+`string`
 
 Value which references a field.
 
@@ -3083,15 +3083,15 @@ This is considered relative (vs absolute) since it only refers to a field and no
 
   - Not allowed to be used when writing documents.
 
-`  variable_reference_value  `
+`variable_reference_value`
 
-`  string  `
+`string`
 
 Pointer to a variable defined elsewhere in a pipeline.
 
-Unlike `  field_reference_value  ` which references a field within a document, this refers to a variable, defined in a separate namespace than the fields of a document.
+Unlike `field_reference_value` which references a field within a document, this refers to a variable, defined in a separate namespace than the fields of a document.
 
-`  function_value  `
+`function_value`
 
 `  Function  `
 
@@ -3101,7 +3101,7 @@ A value that represents an unevaluated expression.
 
   - Not allowed to be used when writing documents.
 
-`  pipeline_value  `
+`pipeline_value`
 
 `  Pipeline  `
 
@@ -3117,23 +3117,23 @@ A write on a document.
 
 Fields
 
-`  update_mask  `
+`update_mask`
 
 `  DocumentMask  `
 
 The fields to update in this write.
 
-This field can be set only when the operation is `  update  ` . If the mask is not set for an `  update  ` and the document exists, any existing data will be overwritten. If the mask is set and the document on the server has fields not covered by the mask, they are left unchanged. Fields referenced in the mask, but not present in the input document, are deleted from the document on the server. The field paths in this mask must not contain a reserved field name.
+This field can be set only when the operation is `update` . If the mask is not set for an `update` and the document exists, any existing data will be overwritten. If the mask is set and the document on the server has fields not covered by the mask, they are left unchanged. Fields referenced in the mask, but not present in the input document, are deleted from the document on the server. The field paths in this mask must not contain a reserved field name.
 
-`  update_transforms[]  `
+`update_transforms[]`
 
 `  FieldTransform  `
 
 The transforms to perform after update.
 
-This field can be set only when the operation is `  update  ` . If present, this write is equivalent to performing `  update  ` and `  transform  ` to the same document atomically and in order.
+This field can be set only when the operation is `update` . If present, this write is equivalent to performing `update` and `transform` to the same document atomically and in order.
 
-`  current_document  `
+`current_document`
 
 `  Precondition  `
 
@@ -3141,21 +3141,21 @@ An optional precondition on the document.
 
 The write will fail if this is set and not met by the target document.
 
-Union field `  operation  ` . The operation to execute. `  operation  ` can be only one of the following:
+Union field `operation` . The operation to execute. `operation` can be only one of the following:
 
-`  update  `
+`update`
 
 `  Document  `
 
 A document to write.
 
-`  delete  `
+`delete`
 
-`  string  `
+`string`
 
-A document name to delete. In the format: `  projects/{project_id}/databases/{database_id}/documents/{document_path}  ` .
+A document name to delete. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}` .
 
-`  transform  `
+`transform`
 
 `  DocumentTransform  `
 
@@ -3173,19 +3173,19 @@ When resuming a stream, the server first streams any responses later than the gi
 
 Fields
 
-`  database  `
+`database`
 
-`  string  `
+`string`
 
-Required. The database name. In the format: `  projects/{project_id}/databases/{database_id}  ` . This is only required in the first message.
+Required. The database name. In the format: `projects/{project_id}/databases/{database_id}` . This is only required in the first message.
 
-`  stream_id  `
+`stream_id`
 
-`  string  `
+`string`
 
 The ID of the write stream to resume. This may only be set in the first message. When left empty, a new write stream will be created.
 
-`  writes[]  `
+`writes[]`
 
 `  Write  `
 
@@ -3193,9 +3193,9 @@ The writes to apply.
 
 Always executed atomically and in order. This must be empty on the first request. This may be empty on the last request. This must not be empty on all other requests.
 
-`  stream_token  `
+`stream_token`
 
-`  bytes  `
+`bytes`
 
 A stream token that was previously sent by the server.
 
@@ -3203,13 +3203,13 @@ The client should set this field to the token from the most recent `  WriteRespo
 
 The server may close the stream if there are too many unacknowledged responses.
 
-Leave this field unset when creating a new stream. To resume a stream at a specific point, set this field and the `  stream_id  ` field.
+Leave this field unset when creating a new stream. To resume a stream at a specific point, set this field and the `stream_id` field.
 
 Leave this field unset when creating a new stream.
 
-`  labels  `
+`labels`
 
-`  map<string, string>  `
+`map<string, string>`
 
 Labels associated with this write request.
 
@@ -3219,21 +3219,21 @@ The response for `  Firestore.Write  ` .
 
 Fields
 
-`  stream_id  `
+`stream_id`
 
-`  string  `
+`string`
 
 The ID of the stream. Only set on the first message, when a new stream was created.
 
-`  stream_token  `
+`stream_token`
 
-`  bytes  `
+`bytes`
 
 A token that represents the position of this response in the stream. This can be used by a client to resume the stream at this point.
 
 This field is always set.
 
-`  write_results[]  `
+`write_results[]`
 
 `  WriteResult  `
 
@@ -3241,11 +3241,11 @@ The result of applying the writes.
 
 This i-th write result corresponds to the i-th write in the request.
 
-`  commit_time  `
+`commit_time`
 
 `  Timestamp  `
 
-The time at which the commit occurred. Any read with an equal or greater `  read_time  ` is guaranteed to see the effects of the write.
+The time at which the commit occurred. Any read with an equal or greater `read_time` is guaranteed to see the effects of the write.
 
 ## WriteResult
 
@@ -3253,15 +3253,15 @@ The result of applying a write.
 
 Fields
 
-`  update_time  `
+`update_time`
 
 `  Timestamp  `
 
-The last update time of the document after applying the write. Not set after a `  delete  ` .
+The last update time of the document after applying the write. Not set after a `delete` .
 
 If the write did not actually change the document, this will be the previous update\_time.
 
-`  transform_results[]  `
+`transform_results[]`
 
 `  Value  `
 

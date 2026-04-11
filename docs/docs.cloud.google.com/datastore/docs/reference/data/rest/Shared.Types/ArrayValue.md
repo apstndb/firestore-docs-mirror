@@ -13,21 +13,15 @@ An array value.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;values&quot;: [
-    {
-      object (Value)
-    }
-  ]
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;values&quot;: [{object (Value)}]}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  values[]  `
+`values[]`
 
-`  object ( Value  ` )
+` object ( Value  ` )
 
 Values in the array. The order of values in an array is preserved as long as all values have identical settings for 'excludeFromIndexes'.

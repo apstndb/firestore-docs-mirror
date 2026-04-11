@@ -6,9 +6,9 @@ This page describes the first stage of the [migration process](https://docs.clou
 
 In addition to usual command-line flags, creating a stream requires two configuration files in the YAML format:
 
-  - The `  mongo_source_config.yaml  ` file configures the selection of specific resources for migration, such as the database name. Mongo connectivity parameters such as the hostname, username, and password are all properties of the connection profile. However, the database (and any specific collections within that database) are a property of the stream.
+  - The `mongo_source_config.yaml` file configures the selection of specific resources for migration, such as the database name. Mongo connectivity parameters such as the hostname, username, and password are all properties of the connection profile. However, the database (and any specific collections within that database) are a property of the stream.
 
-  - The `  gcs_dst_config.yaml  ` file configures the data placement within Cloud Storage. The Cloud Storage bucket and the root path within the bucket are properties of the connection profile. However, the data format and the data placement within the Cloud Storage bucket structure are a property of the stream.
+  - The `gcs_dst_config.yaml` file configures the data placement within Cloud Storage. The Cloud Storage bucket and the root path within the bucket are properties of the connection profile. However, the data format and the data placement within the Cloud Storage bucket structure are a property of the stream.
 
 The following command examples create these files and populate them with values from the [environment variables](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-env-vars) that you've set earlier. As an alternative, you can create these files in any text editor and substitute the values manually.
 
@@ -25,7 +25,7 @@ The following command examples create these files and populate them with values 
     EOF
     )" > gcs_dst_config.yaml
 
-The previous example configures the full contents of $MONGODB\_DATABASE\_NAME for migration. It is also possible to limit the migration to specific collections within the database. For example, to migrate only the collections `  users  ` and `  chats  ` use the following:
+The previous example configures the full contents of $MONGODB\_DATABASE\_NAME for migration. It is also possible to limit the migration to specific collections within the database. For example, to migrate only the collections `users` and `chats` use the following:
 
     includeObjects:
       databases:

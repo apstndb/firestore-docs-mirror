@@ -53,7 +53,7 @@ An Operation that is not yet done may be cancelled. The request to cancel is asy
 
 An Operation that is done may be deleted so that it is no longer listed as part of the Operation collection.
 
-Operations are created by service `  FirestoreAdmin  ` , but are accessed via service `  google.longrunning.Operations  ` .
+Operations are created by service `FirestoreAdmin` , but are accessed via service `google.longrunning.Operations` .
 
 <table>
 <colgroup>
@@ -66,16 +66,16 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc CreateIndex(                         CreateIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
-<p>Creates the specified index. A newly created index's initial state is <code dir="ltr" translate="no">           CREATING          </code> . On completion of the returned <code dir="ltr" translate="no">             google.longrunning.Operation           </code> , the state will be <code dir="ltr" translate="no">           READY          </code> . If the index already exists, the call will return an <code dir="ltr" translate="no">           ALREADY_EXISTS          </code> status.</p>
-<p>During creation, the process could result in an error, in which case the index will move to the <code dir="ltr" translate="no">           ERROR          </code> state. The process can be recovered by fixing the data that caused the error, removing the index with <code dir="ltr" translate="no">             delete           </code> , then re-creating the index with <code dir="ltr" translate="no">             create           </code> .</p>
+<td><p><code dir="ltr" translate="no">rpc CreateIndex(              CreateIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
+<p>Creates the specified index. A newly created index's initial state is <code dir="ltr" translate="no">CREATING</code> . On completion of the returned <code dir="ltr" translate="no">            google.longrunning.Operation           </code> , the state will be <code dir="ltr" translate="no">READY</code> . If the index already exists, the call will return an <code dir="ltr" translate="no">ALREADY_EXISTS</code> status.</p>
+<p>During creation, the process could result in an error, in which case the index will move to the <code dir="ltr" translate="no">ERROR</code> state. The process can be recovered by fixing the data that caused the error, removing the index with <code dir="ltr" translate="no">            delete           </code> , then re-creating the index with <code dir="ltr" translate="no">            create           </code> .</p>
 <p>Indexes with a single field cannot be created.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -95,14 +95,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc DeleteIndex(                         DeleteIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">              Empty            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc DeleteIndex(              DeleteIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">             Empty            </code> )</p>
 <p>Deletes an index.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -122,14 +122,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ExportDocuments(                         ExportDocumentsRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ExportDocuments(              ExportDocumentsRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
 <p>Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage. Recent updates to documents may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -149,14 +149,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc GetIndex(                         GetIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">              Index            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc GetIndex(              GetIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">             Index            </code> )</p>
 <p>Gets an index.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -176,14 +176,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ImportDocuments(                         ImportDocumentsRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ImportDocuments(              ImportDocumentsRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
 <p>Imports documents into Google Cloud Firestore. Existing documents with the same name are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an ImportDocuments operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Firestore.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -203,14 +203,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ListIndexes(                         ListIndexesRequest            </code> ) returns ( <code dir="ltr" translate="no">              ListIndexesResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ListIndexes(              ListIndexesRequest            </code> ) returns ( <code dir="ltr" translate="no">             ListIndexesResponse            </code> )</p>
 <p>Lists the indexes that match the specified filters.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -225,13 +225,13 @@ The request for `  FirestoreAdmin.CreateIndex  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-The name of the database this index will apply to. For example: `  projects/{project_id}/databases/{database_id}  `
+The name of the database this index will apply to. For example: `projects/{project_id}/databases/{database_id}`
 
-`  index  `
+`index`
 
 `  Index  `
 
@@ -243,11 +243,11 @@ The request for `  FirestoreAdmin.DeleteIndex  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-The index name. For example: `  projects/{project_id}/databases/{database_id}/indexes/{index_id}  `
+The index name. For example: `projects/{project_id}/databases/{database_id}/indexes/{index_id}`
 
 ## ExportDocumentsMetadata
 
@@ -255,45 +255,45 @@ Metadata for ExportDocuments operations.
 
 Fields
 
-`  start_time  `
+`start_time`
 
 `  Timestamp  `
 
 The time that work began on the operation.
 
-`  end_time  `
+`end_time`
 
 `  Timestamp  `
 
 The time the operation ended, either successfully or otherwise. Unset if the operation is still active.
 
-`  operation_state  `
+`operation_state`
 
 `  OperationState  `
 
 The state of the export operation.
 
-`  progress_documents  `
+`progress_documents`
 
 `  Progress  `
 
 An estimate of the number of documents processed.
 
-`  progress_bytes  `
+`progress_bytes`
 
 `  Progress  `
 
 An estimate of the number of bytes processed.
 
-`  collection_ids[]  `
+`collection_ids[]`
 
-`  string  `
+`string`
 
 Which collection ids are being exported.
 
-`  output_uri_prefix  `
+`output_uri_prefix`
 
-`  string  `
+`string`
 
 Where the entities are being exported to.
 
@@ -303,23 +303,23 @@ The request for `  FirestoreAdmin.ExportDocuments  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Database to export. Should be of the form: `  projects/{project_id}/databases/{database_id}  ` .
+Database to export. Should be of the form: `projects/{project_id}/databases/{database_id}` .
 
-`  collection_ids[]  `
+`collection_ids[]`
 
-`  string  `
+`string`
 
 Which collection ids to export. Unspecified means all collections.
 
-`  output_uri_prefix  `
+`output_uri_prefix`
 
-`  string  `
+`string`
 
-The output URI. Currently only supports Google Cloud Storage URIs of the form: `  gs://BUCKET_NAME[/NAMESPACE_PATH]  ` , where `  BUCKET_NAME  ` is the name of the Google Cloud Storage bucket and `  NAMESPACE_PATH  ` is an optional Google Cloud Storage namespace path. When choosing a name, be sure to consider Google Cloud Storage naming guidelines: <https://cloud.google.com/storage/docs/naming> . If the URI is a bucket (without a namespace path), a prefix will be generated based on the start time.
+The output URI. Currently only supports Google Cloud Storage URIs of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]` , where `BUCKET_NAME` is the name of the Google Cloud Storage bucket and `NAMESPACE_PATH` is an optional Google Cloud Storage namespace path. When choosing a name, be sure to consider Google Cloud Storage naming guidelines: <https://cloud.google.com/storage/docs/naming> . If the URI is a bucket (without a namespace path), a prefix will be generated based on the start time.
 
 ## ExportDocumentsResponse
 
@@ -327,9 +327,9 @@ Returned in the `  google.longrunning.Operation  ` response field.
 
 Fields
 
-`  output_uri_prefix  `
+`output_uri_prefix`
 
-`  string  `
+`string`
 
 Location of the output files. This can be used to begin an import into Cloud Firestore (this project or another project) after the operation completes successfully.
 
@@ -339,11 +339,11 @@ The request for `  FirestoreAdmin.GetIndex  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-The name of the index. For example: `  projects/{project_id}/databases/{database_id}/indexes/{index_id}  `
+The name of the index. For example: `projects/{project_id}/databases/{database_id}/indexes/{index_id}`
 
 ## ImportDocumentsMetadata
 
@@ -351,45 +351,45 @@ Metadata for ImportDocuments operations.
 
 Fields
 
-`  start_time  `
+`start_time`
 
 `  Timestamp  `
 
 The time that work began on the operation.
 
-`  end_time  `
+`end_time`
 
 `  Timestamp  `
 
 The time the operation ended, either successfully or otherwise. Unset if the operation is still active.
 
-`  operation_state  `
+`operation_state`
 
 `  OperationState  `
 
 The state of the import operation.
 
-`  progress_documents  `
+`progress_documents`
 
 `  Progress  `
 
 An estimate of the number of documents processed.
 
-`  progress_bytes  `
+`progress_bytes`
 
 `  Progress  `
 
 An estimate of the number of bytes processed.
 
-`  collection_ids[]  `
+`collection_ids[]`
 
-`  string  `
+`string`
 
 Which collection ids are being imported.
 
-`  input_uri_prefix  `
+`input_uri_prefix`
 
-`  string  `
+`string`
 
 The location of the documents being imported.
 
@@ -399,21 +399,21 @@ The request for `  FirestoreAdmin.ImportDocuments  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Database to import into. Should be of the form: `  projects/{project_id}/databases/{database_id}  ` .
+Database to import into. Should be of the form: `projects/{project_id}/databases/{database_id}` .
 
-`  collection_ids[]  `
+`collection_ids[]`
 
-`  string  `
+`string`
 
 Which collection ids to import. Unspecified means all collections included in the import.
 
-`  input_uri_prefix  `
+`input_uri_prefix`
 
-`  string  `
+`string`
 
 Location of the exported files. This must match the output\_uri\_prefix of an ExportDocumentsResponse from an export that has completed successfully. See: `  google.firestore.admin.v1beta1.ExportDocumentsResponse.output_uri_prefix  ` .
 
@@ -423,25 +423,25 @@ An index definition.
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
 The resource name of the index. Output only.
 
-`  collection_id  `
+`collection_id`
 
-`  string  `
+`string`
 
 The collection ID to which this index applies. Required.
 
-`  fields[]  `
+`fields[]`
 
 `  IndexField  `
 
 The fields to index.
 
-`  state  `
+`state`
 
 `  State  `
 
@@ -449,23 +449,23 @@ The state of the index. Output only.
 
 ## State
 
-The state of an index. During index creation, an index will be in the `  CREATING  ` state. If the index is created successfully, it will transition to the `  READY  ` state. If the index is not able to be created, it will transition to the `  ERROR  ` state.
+The state of an index. During index creation, an index will be in the `CREATING` state. If the index is created successfully, it will transition to the `READY` state. If the index is not able to be created, it will transition to the `ERROR` state.
 
 Enums
 
-`  STATE_UNSPECIFIED  `
+`STATE_UNSPECIFIED`
 
 The state is unspecified.
 
-`  CREATING  `
+`CREATING`
 
 The index is being created. There is an active long-running operation for the index. The index is updated when writing a document. Some index data may exist.
 
-`  READY  `
+`READY`
 
 The index is ready to be used. The index is updated when writing a document. The index is fully populated from all stored documents it applies to.
 
-`  ERROR  `
+`ERROR`
 
 The index was being created, but something went wrong. There is no active long-running operation for the index, and the most recently finished long-running operation failed. The index is not updated when writing a document. Some index data may exist.
 
@@ -475,13 +475,13 @@ A field of an index.
 
 Fields
 
-`  field_path  `
+`field_path`
 
-`  string  `
+`string`
 
-The path of the field. Must match the field path specification described by \[google.firestore.v1beta1.Document.fields\]\[fields\]. Special field path `  __name__  ` may be used by itself or at the end of a path. `  __type__  ` may be used only at the end of path.
+The path of the field. Must match the field path specification described by \[google.firestore.v1beta1.Document.fields\]\[fields\]. Special field path `__name__` may be used by itself or at the end of a path. `__type__` may be used only at the end of path.
 
-`  mode  `
+`mode`
 
 `  Mode  `
 
@@ -493,19 +493,19 @@ The mode determines how a field is indexed.
 
 Enums
 
-`  MODE_UNSPECIFIED  `
+`MODE_UNSPECIFIED`
 
 The mode is unspecified.
 
-`  ASCENDING  `
+`ASCENDING`
 
 The field's values are indexed so as to support sequencing in ascending order and also query by \<, \>, \<=, \>=, and =.
 
-`  DESCENDING  `
+`DESCENDING`
 
 The field's values are indexed so as to support sequencing in descending order and also query by \<, \>, \<=, \>=, and =.
 
-`  ARRAY_CONTAINS  `
+`ARRAY_CONTAINS`
 
 The field's array values are indexed so as to support membership using ARRAY\_CONTAINS queries.
 
@@ -515,37 +515,37 @@ Metadata for index operations. This metadata populates the metadata field of `  
 
 Fields
 
-`  start_time  `
+`start_time`
 
 `  Timestamp  `
 
 The time that work began on the operation.
 
-`  end_time  `
+`end_time`
 
 `  Timestamp  `
 
 The time the operation ended, either successfully or otherwise. Unset if the operation is still active.
 
-`  index  `
+`index`
 
-`  string  `
+`string`
 
-The index resource that this operation is acting on. For example: `  projects/{project_id}/databases/{database_id}/indexes/{index_id}  `
+The index resource that this operation is acting on. For example: `projects/{project_id}/databases/{database_id}/indexes/{index_id}`
 
-`  operation_type  `
+`operation_type`
 
 `  OperationType  `
 
 The type of index operation.
 
-`  cancelled  `
+`cancelled`
 
-`  bool  `
+`bool`
 
 True if the `  google.longrunning.Operation  ` was cancelled. If the cancellation is in progress, cancelled will be true but `  google.longrunning.Operation.done  ` will be false.
 
-`  document_progress  `
+`document_progress`
 
 `  Progress  `
 
@@ -557,13 +557,13 @@ The type of index operation.
 
 Enums
 
-`  OPERATION_TYPE_UNSPECIFIED  `
+`OPERATION_TYPE_UNSPECIFIED`
 
 Unspecified. Never set by server.
 
-`  CREATING_INDEX  `
+`CREATING_INDEX`
 
-The operation is creating the index. Initiated by a `  CreateIndex  ` call.
+The operation is creating the index. Initiated by a `CreateIndex` call.
 
 ## ListIndexesRequest
 
@@ -571,25 +571,25 @@ The request for `  FirestoreAdmin.ListIndexes  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-The database name. For example: `  projects/{project_id}/databases/{database_id}  `
+The database name. For example: `projects/{project_id}/databases/{database_id}`
 
-`  filter  `
+`filter`
 
-`  string  `
+`string`
 
-`  page_size  `
+`page_size`
 
-`  int32  `
+`int32`
 
 The standard List page size.
 
-`  page_token  `
+`page_token`
 
-`  string  `
+`string`
 
 The standard List page token.
 
@@ -599,15 +599,15 @@ The response for `  FirestoreAdmin.ListIndexes  ` .
 
 Fields
 
-`  indexes[]  `
+`indexes[]`
 
 `  Index  `
 
 The indexes.
 
-`  next_page_token  `
+`next_page_token`
 
-`  string  `
+`string`
 
 The standard List next-page token.
 
@@ -623,35 +623,35 @@ The various possible states for an ongoing Operation.
 
 Enums
 
-`  STATE_UNSPECIFIED  `
+`STATE_UNSPECIFIED`
 
 Unspecified.
 
-`  INITIALIZING  `
+`INITIALIZING`
 
 Request is being prepared for processing.
 
-`  PROCESSING  `
+`PROCESSING`
 
 Request is actively being processed.
 
-`  CANCELLING  `
+`CANCELLING`
 
 Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.
 
-`  FINALIZING  `
+`FINALIZING`
 
 Request has been processed and is in its finalization stage.
 
-`  SUCCESSFUL  `
+`SUCCESSFUL`
 
 Request has completed successfully.
 
-`  FAILED  `
+`FAILED`
 
 Request has finished being processed, but encountered an error.
 
-`  CANCELLED  `
+`CANCELLED`
 
 Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation.
 
@@ -661,14 +661,14 @@ Measures the progress of a particular metric.
 
 Fields
 
-`  work_completed  `
+`work_completed`
 
-`  int64  `
+`int64`
 
-An estimate of how much work has been completed. Note that this may be greater than `  work_estimated  ` .
+An estimate of how much work has been completed. Note that this may be greater than `work_estimated` .
 
-`  work_estimated  `
+`work_estimated`
 
-`  int64  `
+`int64`
 
 An estimate of how much work needs to be performed. Zero if the work estimate is unavailable. May change as work progresses.

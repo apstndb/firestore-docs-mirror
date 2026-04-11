@@ -4,26 +4,26 @@ gcloud alpha firestore indexes - manage indexes for Cloud Firestore
 
 SYNOPSIS
 
-`  gcloud alpha firestore indexes  ` `  GROUP  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud alpha firestore indexes` `  GROUP  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (ALPHA)  ` Manage indexes for Cloud Firestore.
+`(ALPHA)` Manage indexes for Cloud Firestore.
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 GROUPS
 
 `  GROUP  ` is one of the following:
 
   - `  composite  `  
-    `  (ALPHA)  ` Manage composite indexes for Cloud Firestore.
+    `(ALPHA)` Manage composite indexes for Cloud Firestore.
   - `  fields  `  
-    `  (ALPHA)  ` Manage single-field indexes for Cloud Firestore.
+    `(ALPHA)` Manage single-field indexes for Cloud Firestore.
 
 NOTES
 

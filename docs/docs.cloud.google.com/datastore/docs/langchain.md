@@ -19,9 +19,9 @@ Datastore mode offers the following LangChain interfaces:
 
 ## Document loader for Datastore mode
 
-The document loader saves, loads, and deletes a LangChain `  Document  ` objects. For example, you can load data for processing into embeddings and either store it in vector store or use it as a tool to provide specific context to chains.
+The document loader saves, loads, and deletes a LangChain `Document` objects. For example, you can load data for processing into embeddings and either store it in vector store or use it as a tool to provide specific context to chains.
 
-To load documents from document loader in Datastore mode, use the `  DatastoreLoader  ` class. `  FirestoreLoader  ` methods return one or more documents from a table. Use the `  DatastoreSaver  ` class to save and delete documents.
+To load documents from document loader in Datastore mode, use the `DatastoreLoader` class. `FirestoreLoader` methods return one or more documents from a table. Use the `DatastoreSaver` class to save and delete documents.
 
 For more information, see the [LangChain Document loaders](https://python.langchain.com/docs/modules/data_connection/document_loaders/) topic.
 
@@ -34,18 +34,18 @@ The [Datastore mode guide for document loader](https://github.com/googleapis/lan
   - Add a filter to the loader
   - Customize the connection and authentication
   - Customize Document construction by specifying customer content and metadata
-  - How to use and customize a `  DatastoreSaver  ` to store and delete documents
+  - How to use and customize a `DatastoreSaver` to store and delete documents
 
 ## Chat message history for Datastore mode
 
-Question and answer applications require a history of the things said in the conversation to give the application context for answering further questions from the user. The LangChain `  ChatMessageHistory  ` class lets the application save messages to a database and retrieve them when needed to formulate further answers. A message can be a question, an answer, a statement, a greeting or any other piece of text that the user or application gives during the conversation. `  ChatMessageHistory  ` stores each message and chains messages together for each conversation.
+Question and answer applications require a history of the things said in the conversation to give the application context for answering further questions from the user. The LangChain `ChatMessageHistory` class lets the application save messages to a database and retrieve them when needed to formulate further answers. A message can be a question, an answer, a statement, a greeting or any other piece of text that the user or application gives during the conversation. `ChatMessageHistory` stores each message and chains messages together for each conversation.
 
-Datastore mode extends this class with `  DatastoreChatMessageHistory  ` .
+Datastore mode extends this class with `DatastoreChatMessageHistory` .
 
 ### Chat message history procedure guide
 
 The [Datastore mode guide for chat message history](https://github.com/googleapis/langchain-google-datastore-python/blob/main/docs/chat_message_history.ipynb) shows you how to do the following:
 
   - Install LangChain and authenticate to Google Cloud
-  - Create a `  DatastoreChatMessageHistory  ` object and add messages
+  - Create a `DatastoreChatMessageHistory` object and add messages
   - Use a client to customize the connection and authentication

@@ -6,11 +6,11 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 ## **Type Functions**
 
-|                             |                                                                        |
-| --------------------------- | ---------------------------------------------------------------------- |
-| Name                        | Description                                                            |
-| `          TYPE        `    | Returns the type of the value as a `        STRING       ` .           |
-| `          IS_TYPE        ` | Returns `        true       ` if the value matches the specified type. |
+|                            |                                                         |
+| -------------------------- | ------------------------------------------------------- |
+| Name                       | Description                                             |
+| `         TYPE        `    | Returns the type of the value as a `STRING` .           |
+| `         IS_TYPE        ` | Returns `true` if the value matches the specified type. |
 
 ### TYPE
 
@@ -20,27 +20,27 @@ This feature is subject to the "Pre-GA Offerings Terms" in the General Service T
 
 **Description:**
 
-Returns a string representation of the `  input  ` type.
+Returns a string representation of the `input` type.
 
-If given an absent value, returns `  NULL  ` .
+If given an absent value, returns `NULL` .
 
 **Examples:**
 
-| `        input       `              | `        type(input)       ` |
-| ----------------------------------- | ---------------------------- |
-| NULL                                | "null"                       |
-| true                                | "boolean"                    |
-| 1                                   | "int32"                      |
-| \-3L                                | "int64"                      |
-| 3.14                                | "float64"                    |
-| 2024-01-01T00:00:00Z UTC            | "timestamp"                  |
-| "foo"                               | "string"                     |
-| b"foo"                              | "bytes"                      |
-| \[1, 2\]                            | "array"                      |
-| {"a": 1}                            | "map"                        |
-| `        path("c/d")       `        | "reference"                  |
-| `        vector([1.0, 2.0])       ` | "vector"                     |
-| ABSENT                              | NULL                         |
+| `input`                  | `type(input)` |
+| ------------------------ | ------------- |
+| NULL                     | "null"        |
+| true                     | "boolean"     |
+| 1                        | "int32"       |
+| \-3L                     | "int64"       |
+| 3.14                     | "float64"     |
+| 2024-01-01T00:00:00Z UTC | "timestamp"   |
+| "foo"                    | "string"      |
+| b"foo"                   | "bytes"       |
+| \[1, 2\]                 | "array"       |
+| {"a": 1}                 | "map"         |
+| `path("c/d")`            | "reference"   |
+| `vector([1.0, 2.0])`     | "vector"      |
+| ABSENT                   | NULL          |
 
 **Client examples**
 
@@ -110,45 +110,45 @@ Android
 
 **Description:**
 
-Returns `  true  ` if the `  input  ` matches the specified `  type  ` , otherwise `  false  ` . If given an absent `  input  ` , returns `  NULL  ` .
+Returns `true` if the `input` matches the specified `type` , otherwise `false` . If given an absent `input` , returns `NULL` .
 
-Supported `  type  ` strings are:
+Supported `type` strings are:
 
-  - `  "null"  `
-  - `  "boolean"  `
-  - `  "int32"  `
-  - `  "int64"  `
-  - `  "float64"  `
-  - `  "decimal128"  `
-  - `  "number"  `
-  - `  "timestamp"  `
-  - `  "string"  `
-  - `  "bytes"  `
-  - `  "array"  `
-  - `  "map"  `
-  - `  "reference"  `
-  - `  "vector"  `
-  - `  "geo_point"  `
-  - `  "max_key"  `
-  - `  "min_key"  `
-  - `  "object_id"  `
-  - `  "regex"  `
-  - `  "bson_timestamp"  `
+  - `"null"`
+  - `"boolean"`
+  - `"int32"`
+  - `"int64"`
+  - `"float64"`
+  - `"decimal128"`
+  - `"number"`
+  - `"timestamp"`
+  - `"string"`
+  - `"bytes"`
+  - `"array"`
+  - `"map"`
+  - `"reference"`
+  - `"vector"`
+  - `"geo_point"`
+  - `"max_key"`
+  - `"min_key"`
+  - `"object_id"`
+  - `"regex"`
+  - `"bson_timestamp"`
 
 **Examples:**
 
-| `        input       `              | `        type       ` | `        is_type(input, type)       ` |
-| :---------------------------------- | :-------------------- | :------------------------------------ |
-| NULL                                | "null"                | true                                  |
-| true                                | "boolean"             | true                                  |
-| 3.14                                | "float64"             | true                                  |
-| "foo"                               | "string"              | true                                  |
-| b"foo"                              | "string"              | false                                 |
-| \[1, 2\]                            | "array"               | true                                  |
-| {"a": 1}                            | "map"                 | true                                  |
-| `        vector([1.0, 2.0])       ` | "vector"              | true                                  |
-| ABSENT                              | "string"              | NULL                                  |
-| "bar"                               | "other"               | ERROR                                 |
+| `input`              | `type`    | `is_type(input, type)` |
+| :------------------- | :-------- | :--------------------- |
+| NULL                 | "null"    | true                   |
+| true                 | "boolean" | true                   |
+| 3.14                 | "float64" | true                   |
+| "foo"                | "string"  | true                   |
+| b"foo"               | "string"  | false                  |
+| \[1, 2\]             | "array"   | true                   |
+| {"a": 1}             | "map"     | true                   |
+| `vector([1.0, 2.0])` | "vector"  | true                   |
+| ABSENT               | "string"  | NULL                   |
+| "bar"                | "other"   | ERROR                  |
 
 ## What's next
 

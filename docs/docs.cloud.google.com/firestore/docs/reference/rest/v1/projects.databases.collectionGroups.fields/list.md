@@ -1,6 +1,6 @@
 Lists the field configuration and metadata for this database.
 
-Currently, `  FirestoreAdmin.ListFields  ` only supports listing fields that have been explicitly overridden. To issue this query, call `  FirestoreAdmin.ListFields  ` with the filter set to `  indexConfig.usesAncestorConfig:false  ` or `  ttlConfig:*  ` .
+Currently, `  FirestoreAdmin.ListFields  ` only supports listing fields that have been explicitly overridden. To issue this query, call `  FirestoreAdmin.ListFields  ` with the filter set to `indexConfig.usesAncestorConfig:false` or `ttlConfig:*` .
 
 ### HTTP request
 
@@ -99,7 +99,7 @@ eu
 us
 
   
-`  GET https://firestore.googleapis.com/v1/{parent=projects/*/databases/*/collectionGroups/*}/fields  `
+`GET https://firestore.googleapis.com/v1/{parent=projects/*/databases/*/collectionGroups/*}/fields`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -107,31 +107,31 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-Required. A parent name of the form `  projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId}  `
+Required. A parent name of the form `projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId}`
 
 ### Query parameters
 
 Parameters
 
-`  filter  `
+`filter`
 
-`  string  `
+`string`
 
-The filter to apply to list results. Currently, `  FirestoreAdmin.ListFields  ` only supports listing fields that have been explicitly overridden. To issue this query, call `  FirestoreAdmin.ListFields  ` with a filter that includes `  indexConfig.usesAncestorConfig:false  ` or `  ttlConfig:*  ` .
+The filter to apply to list results. Currently, `  FirestoreAdmin.ListFields  ` only supports listing fields that have been explicitly overridden. To issue this query, call `  FirestoreAdmin.ListFields  ` with a filter that includes `indexConfig.usesAncestorConfig:false` or `ttlConfig:*` .
 
-`  pageSize  `
+`pageSize`
 
-`  integer  `
+`integer`
 
 The number of results to return.
 
-`  pageToken  `
+`pageToken`
 
-`  string  `
+`string`
 
 A page token, returned from a previous call to `  FirestoreAdmin.ListFields  ` , that may be used to get the next page of results.
 
@@ -156,29 +156,22 @@ If successful, the response body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;fields&quot;: [
-    {
-      object (Field)
-    }
-  ],
-  &quot;nextPageToken&quot;: string
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;fields&quot;: [{object (Field)}],&quot;nextPageToken&quot;: string}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  fields[]  `
+`fields[]`
 
-`  object ( Field  ` )
+` object ( Field  ` )
 
 The requested fields.
 
-`  nextPageToken  `
+`nextPageToken`
 
-`  string  `
+`string`
 
 A page token that may be used to request another page of results. If blank, this is the last page.
 
@@ -186,7 +179,7 @@ A page token that may be used to request another page of results. If blank, this
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

@@ -10,7 +10,7 @@ Returns documents by looking up a fixed set of predefined documents.
 
 The stage must take one or more documents as input and cannot contain documents with duplicate paths. If a referenced document does not exist, no results will be produced for that document path.
 
-This stage behaves similar to Firestore's `  batchGet  ` and allows filtering on the results directly rather than performing post-filtering steps after the batch operation.
+This stage behaves similar to Firestore's `batchGet` and allows filtering on the results directly rather than performing post-filtering steps after the batch operation.
 
 ## Examples
 
@@ -82,9 +82,9 @@ Android
 
 ## Behavior
 
-In order to use the `  documents(...)  ` stage, it must appear as the first stage in the pipeline.
+In order to use the `documents(...)` stage, it must appear as the first stage in the pipeline.
 
-The order of documents returned from the `  documents(...)  ` stage is unstable and cannot be relied upon. A subsequent sort stage can be used to obtain a deterministic ordering.
+The order of documents returned from the `documents(...)` stage is unstable and cannot be relied upon. A subsequent sort stage can be used to obtain a deterministic ordering.
 
 For example, for the following documents:
 
@@ -94,7 +94,7 @@ For example, for the following documents:
     await db.collection("cities").doc("NYC").set({name: "New York City", state: "New York"});
     await db.collection("cities").doc("CHI").set({name: "Chicago", state: "Illinois"});
 
-The `  documents(...)  ` stage can be used to retrieve only the `  SF  ` and `  NYC  ` documents and then sort them in ascending order of name.
+The `documents(...)` stage can be used to retrieve only the `SF` and `NYC` documents and then sort them in ascending order of name.
 
 ### Node.js
 

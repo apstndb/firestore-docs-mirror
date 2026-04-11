@@ -4,15 +4,15 @@ When you use the server client libraries for Firestore, you can manage access to
 
 IAM lets you adopt the [security principle of least privilege](https://wikipedia.org/wiki/Principle_of_least_privilege) , so you grant only the necessary access to your resources.
 
-IAM lets you control **who (user)** has **what (role)** permission for **which** resources by setting IAM policies. IAM policies grant one or more roles to a user, giving the user certain permissions. For example, you can grant the `  datastore.indexAdmin  ` role to a user, which allows the user to create, modify, delete, list, or view indexes.
+IAM lets you control **who (user)** has **what (role)** permission for **which** resources by setting IAM policies. IAM policies grant one or more roles to a user, giving the user certain permissions. For example, you can grant the `datastore.indexAdmin` role to a user, which allows the user to create, modify, delete, list, or view indexes.
 
 ## Permissions and roles
 
 This section summarizes the permissions and roles that Firestore supports.
 
-**Note:** Some Firestore permissions differ from the standard IAM model permissions. For example, in the IAM model, the `  datastore.databases.get  ` permission lets you return a database object while, in Firestore, `  datastore.databases.get  ` lets you begin or roll back a transaction. To retrieve a database object's information, use the `  datastore.databases.getMetadata  ` permission.
+**Note:** Some Firestore permissions differ from the standard IAM model permissions. For example, in the IAM model, the `datastore.databases.get` permission lets you return a database object while, in Firestore, `datastore.databases.get` lets you begin or roll back a transaction. To retrieve a database object's information, use the `datastore.databases.getMetadata` permission.
 
-The `  datastore.schemas.*  ` permissions were previously named `  datastore.indexes.*  ` . You can still use `  datastore.indexes  ` as an alias for `  datastore.schemas  ` .
+The `datastore.schemas.*` permissions were previously named `datastore.indexes.*` . You can still use `datastore.indexes` as an alias for `datastore.schemas` .
 
 ### Required permissions for API methods
 
@@ -22,228 +22,228 @@ Method
 
 Required permissions
 
-`  projects.databases.documents  `
+`projects.databases.documents`
 
-[`  batchGet  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/batchGet)
+[`batchGet`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/batchGet)
 
-`  datastore.entities.get  `
+`datastore.entities.get`
 
-[`  batchWrite  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/batchWrite) update or transform with [exists precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition) set to `  false  `
+[`batchWrite`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/batchWrite) update or transform with [exists precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition) set to `false`
 
-`  datastore.entities.create  `
+`datastore.entities.create`
 
-[`  batchWrite  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/batchWrite) update or transform with [exists precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition) set to `  true  `
+[`batchWrite`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/batchWrite) update or transform with [exists precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition) set to `true`
 
-`  datastore.entities.create  `
+`datastore.entities.create`
 
-[`  batchWrite  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/batchWrite) update or transform with no [precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition)
+[`batchWrite`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/batchWrite) update or transform with no [precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition)
 
-`  datastore.entities.create datastore.entities.update  `
+`datastore.entities.create datastore.entities.update`
 
-[`  beginTransaction  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/beginTransaction)
+[`beginTransaction`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/beginTransaction)
 
-`  datastore.databases.get  `
+`datastore.databases.get`
 
-[`  commit  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/commit) update or transform with [exists precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition) set to `  false  `
+[`commit`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/commit) update or transform with [exists precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition) set to `false`
 
-`  datastore.entities.create  `
+`datastore.entities.create`
 
-[`  commit  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/commit) update or transform with [exists precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition) set to `  true  `
+[`commit`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/commit) update or transform with [exists precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition) set to `true`
 
-`  datastore.entities.update  `
+`datastore.entities.update`
 
-[`  commit  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/commit) update or transform with no [precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition)
+[`commit`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/commit) update or transform with no [precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition)
 
-`  datastore.entities.create datastore.entities.update  `
+`datastore.entities.create datastore.entities.update`
 
-[`  commit  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/commit) delete
+[`commit`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/commit) delete
 
-`  datastore.entities.delete  `
+`datastore.entities.delete`
 
-[`  createDocument  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/createDocument)
+[`createDocument`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/createDocument)
 
-`  datastore.entities.create  `
+`datastore.entities.create`
 
-[`  delete  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/delete)
+[`delete`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/delete)
 
-`  datastore.entities.delete  `
+`datastore.entities.delete`
 
-[`  get  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/get)
+[`get`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/get)
 
-`  datastore.entities.get  `
+`datastore.entities.get`
 
-[`  list  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/list)
+[`list`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/list)
 
-`  datastore.entities.get  `  
-`  datastore.entities.list  `
+`datastore.entities.get`  
+`datastore.entities.list`
 
-[`  listCollectionIds  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/listCollectionIds)
+[`listCollectionIds`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/listCollectionIds)
 
-`  datastore.entities.list  `
+`datastore.entities.list`
 
-[`  partitionQuery  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/partitionQuery)
+[`partitionQuery`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/partitionQuery)
 
-`  datastore.entities.get datastore.entities.list  `
+`datastore.entities.get datastore.entities.list`
 
-[`  patch  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/patch)
+[`patch`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/patch)
 
-`  datastore.entities.update  `
+`datastore.entities.update`
 
-[`  rollback  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/rollback)
+[`rollback`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/rollback)
 
-`  datastore.databases.get  `
+`datastore.databases.get`
 
-[`  runAggregationQuery  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/runAggregationQuery)
+[`runAggregationQuery`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/runAggregationQuery)
 
-`  datastore.entities.get datastore.entities.list  `
+`datastore.entities.get datastore.entities.list`
 
-[`  runQuery  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/runQuery)
+[`runQuery`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/runQuery)
 
-`  datastore.entities.get datastore.entities.list  `
+`datastore.entities.get datastore.entities.list`
 
-[`  executePipeline (RPC)  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/executePipeline)  
+[`executePipeline (RPC)`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/executePipeline)  
   
 with any of the following stages:  
-\- `  collection(...)  `  
-\- `  collection_group(...)  `  
-\- `  database()  `
+\- `collection(...)`  
+\- `collection_group(...)`  
+\- `database()`
 
-`  datastore.entities.get datastore.entities.list  `
+`datastore.entities.get datastore.entities.list`
 
-[`  executePipeline (RPC)  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/executePipeline)  
+[`executePipeline (RPC)`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/executePipeline)  
   
 with any of the following stages:  
-\- `  documents(...)  `  
+\- `documents(...)`  
 
-`  datastore.entities.get  `
+`datastore.entities.get`
 
-[`  write (RPC)  `](https://docs.cloud.google.com/firestore/native/docs/reference/rpc/google.firestore.v1#write) update or transform with [exists precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition) set to `  false  `
+[`write (RPC)`](https://docs.cloud.google.com/firestore/native/docs/reference/rpc/google.firestore.v1#write) update or transform with [exists precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition) set to `false`
 
-`  datastore.entities.create  `
+`datastore.entities.create`
 
-[`  write (RPC)  `](https://docs.cloud.google.com/firestore/native/docs/reference/rpc/google.firestore.v1#write) update or transform with [exists precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition) set to `  true  `
+[`write (RPC)`](https://docs.cloud.google.com/firestore/native/docs/reference/rpc/google.firestore.v1#write) update or transform with [exists precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition) set to `true`
 
-`  datastore.entities.update  `
+`datastore.entities.update`
 
-[`  write (RPC)  `](https://docs.cloud.google.com/firestore/native/docs/reference/rpc/google.firestore.v1#write) update or transform with no [precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition)
+[`write (RPC)`](https://docs.cloud.google.com/firestore/native/docs/reference/rpc/google.firestore.v1#write) update or transform with no [precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition)
 
-`  datastore.entities.create datastore.entities.update  `
+`datastore.entities.create datastore.entities.update`
 
-[`  write (RPC)  `](https://docs.cloud.google.com/firestore/native/docs/reference/rpc/google.firestore.v1#write) delete
+[`write (RPC)`](https://docs.cloud.google.com/firestore/native/docs/reference/rpc/google.firestore.v1#write) delete
 
-`  datastore.entities.delete  `
+`datastore.entities.delete`
 
-`  projects.databases.indexes  `
+`projects.databases.indexes`
 
-[`  create  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.indexes/create)
+[`create`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.indexes/create)
 
-`  datastore.schemas.create  `
+`datastore.schemas.create`
 
-[`  delete  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.indexes/delete)
+[`delete`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.indexes/delete)
 
-`  datastore.schemas.delete  `
+`datastore.schemas.delete`
 
-[`  get  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.indexes/get)
+[`get`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.indexes/get)
 
-`  datastore.schemas.get  `
+`datastore.schemas.get`
 
-[`  list  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.indexes/list)
+[`list`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.indexes/list)
 
-`  datastore.schemas.list  `
+`datastore.schemas.list`
 
-`  projects.databases  `
+`projects.databases`
 
-[`  create  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/create)
+[`create`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/create)
 
-`  datastore.databases.create  `  
+`datastore.databases.create`  
 
-If your `  create  ` request contains a `  tags  ` value, then the following additional permissions are required:
+If your `create` request contains a `tags` value, then the following additional permissions are required:
 
-  - `  datastore.databases.createTagBinding  `
+  - `datastore.databases.createTagBinding`
 
 If you would like to verify whether the tag bindings are set successfully by listing the bindings, then the following additional permissions are required:
 
-  - `  datastore.databases.listTagBindings  `
-  - `  datastore.databases.listEffectiveTags  `
+  - `datastore.databases.listTagBindings`
+  - `datastore.databases.listEffectiveTags`
 
-[`  delete  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/delete)
+[`delete`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/delete)
 
-`  datastore.databases.delete  `
+`datastore.databases.delete`
 
-[`  get  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/get)
+[`get`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/get)
 
-`  datastore.databases.getMetadata  `
+`datastore.databases.getMetadata`
 
-[`  list  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/list)
+[`list`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/list)
 
-`  datastore.databases.list  `
+`datastore.databases.list`
 
-[`  patch  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/patch)
+[`patch`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/patch)
 
-`  datastore.databases.update  `
+`datastore.databases.update`
 
 restore
 
-`  datastore.backups.restoreDatabase  `
+`datastore.backups.restoreDatabase`
 
-[`  clone  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/clone)
+[`clone`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/clone)
 
-`  datastore.databases.clone  `  
+`datastore.databases.clone`  
 
-If your `  clone  ` request contains a `  tags  ` value, then the following additional permissions are required:
+If your `clone` request contains a `tags` value, then the following additional permissions are required:
 
-  - `  datastore.databases.createTagBinding  `
+  - `datastore.databases.createTagBinding`
 
 If you would like to verify whether the tag bindings are set successfully by listing the bindings, then the following additional permissions are required:
 
-  - `  datastore.databases.listTagBindings  `
-  - `  datastore.databases.listEffectiveTags  `
+  - `datastore.databases.listTagBindings`
+  - `datastore.databases.listEffectiveTags`
 
-`  projects.locations  `
+`projects.locations`
 
-[`  get  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.locations/get)
+[`get`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.locations/get)
 
-`  datastore.locations.get  `
+`datastore.locations.get`
 
-[`  list  `](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.locations/list)
+[`list`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.locations/list)
 
-`  datastore.locations.list  `
+`datastore.locations.list`
 
-`  projects.databases.backupschedules  `
+`projects.databases.backupschedules`
 
 get
 
-`  datastore.backupSchedules.get  `
+`datastore.backupSchedules.get`
 
 list
 
-`  datastore.backupSchedules.list  `
+`datastore.backupSchedules.list`
 
 create
 
-`  datastore.backupSchedules.create  `
+`datastore.backupSchedules.create`
 
 update
 
-`  datastore.backupSchedules.update  `
+`datastore.backupSchedules.update`
 
 delete
 
-`  datastore.backupSchedules.delete  `
+`datastore.backupSchedules.delete`
 
-`  projects.locations.backups  `
+`projects.locations.backups`
 
 get
 
-`  datastore.backups.get  `
+`datastore.backups.get`
 
 list
 
-`  datastore.backups.list  `
+`datastore.backups.list`
 
 delete
 
-`  datastore.backups.delete  `
+`datastore.backups.delete`
 
 ### Predefined roles
 
@@ -266,169 +266,169 @@ The following table lists the Firestore IAM roles. You can grant multiple roles 
 </thead>
 <tbody>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       roles/datastore.owner      </code></td>
-<td><code dir="ltr" translate="no">       appengine.applications.get      </code><br />
+<td><code dir="ltr" translate="no">roles/datastore.owner</code></td>
+<td><code dir="ltr" translate="no">appengine.applications.get</code><br />
 <br />
-<code dir="ltr" translate="no">       datastore.*      </code><br />
+<code dir="ltr" translate="no">datastore.*</code><br />
 <br />
-<code dir="ltr" translate="no">       resourcemanager.projects.get      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.list      </code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.get</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.list</code><br />
 </td>
 <td>Full access to Firestore.</td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       roles/datastore.user      </code></td>
-<td><code dir="ltr" translate="no">       appengine.applications.get      </code><br />
+<td><code dir="ltr" translate="no">roles/datastore.user</code></td>
+<td><code dir="ltr" translate="no">appengine.applications.get</code><br />
 <br />
-<code dir="ltr" translate="no">       datastore.databases.get      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.list      </code><br />
-<code dir="ltr" translate="no">       datastore.entities.*      </code><br />
-<code dir="ltr" translate="no">       datastore.schemas.list      </code><br />
-<code dir="ltr" translate="no">       datastore.namespaces.get      </code><br />
-<code dir="ltr" translate="no">       datastore.namespaces.list      </code><br />
-<code dir="ltr" translate="no">       datastore.statistics.get      </code><br />
-<code dir="ltr" translate="no">       datastore.statistics.list      </code><br />
+<code dir="ltr" translate="no">datastore.databases.get</code><br />
+<code dir="ltr" translate="no">datastore.databases.getMetadata</code><br />
+<code dir="ltr" translate="no">datastore.databases.list</code><br />
+<code dir="ltr" translate="no">datastore.entities.*</code><br />
+<code dir="ltr" translate="no">datastore.schemas.list</code><br />
+<code dir="ltr" translate="no">datastore.namespaces.get</code><br />
+<code dir="ltr" translate="no">datastore.namespaces.list</code><br />
+<code dir="ltr" translate="no">datastore.statistics.get</code><br />
+<code dir="ltr" translate="no">datastore.statistics.list</code><br />
 <br />
-<code dir="ltr" translate="no">       resourcemanager.projects.get      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.list      </code></td>
+<code dir="ltr" translate="no">resourcemanager.projects.get</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.list</code></td>
 <td>Read/write access to data in a Firestore database. Intended for application developers and service accounts.</td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       roles/datastore.viewer      </code></td>
-<td><code dir="ltr" translate="no">       appengine.applications.get      </code><br />
+<td><code dir="ltr" translate="no">roles/datastore.viewer</code></td>
+<td><code dir="ltr" translate="no">appengine.applications.get</code><br />
 <br />
-<code dir="ltr" translate="no">       datastore.databases.get      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.list      </code><br />
-<code dir="ltr" translate="no">       datastore.entities.get      </code><br />
-<code dir="ltr" translate="no">       datastore.entities.list      </code><br />
-<code dir="ltr" translate="no">       datastore.schemas.get      </code><br />
-<code dir="ltr" translate="no">       datastore.schemas.list      </code><br />
-<code dir="ltr" translate="no">       datastore.namespaces.get      </code><br />
-<code dir="ltr" translate="no">       datastore.namespaces.list      </code><br />
-<code dir="ltr" translate="no">       datastore.statistics.get      </code><br />
-<code dir="ltr" translate="no">       datastore.statistics.list      </code><br />
+<code dir="ltr" translate="no">datastore.databases.get</code><br />
+<code dir="ltr" translate="no">datastore.databases.getMetadata</code><br />
+<code dir="ltr" translate="no">datastore.databases.list</code><br />
+<code dir="ltr" translate="no">datastore.entities.get</code><br />
+<code dir="ltr" translate="no">datastore.entities.list</code><br />
+<code dir="ltr" translate="no">datastore.schemas.get</code><br />
+<code dir="ltr" translate="no">datastore.schemas.list</code><br />
+<code dir="ltr" translate="no">datastore.namespaces.get</code><br />
+<code dir="ltr" translate="no">datastore.namespaces.list</code><br />
+<code dir="ltr" translate="no">datastore.statistics.get</code><br />
+<code dir="ltr" translate="no">datastore.statistics.list</code><br />
 <br />
-<code dir="ltr" translate="no">       resourcemanager.projects.get      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.list      </code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.get</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.list</code><br />
 <br />
-<code dir="ltr" translate="no">       datastore.insights.get      </code></td>
+<code dir="ltr" translate="no">datastore.insights.get</code></td>
 <td>Read access to all Firestore resources.</td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       roles/datastore.importExportAdmin      </code></td>
-<td><code dir="ltr" translate="no">       appengine.applications.get      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.export      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.import      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.cancel      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.get      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.list      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.get      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.list      </code></td>
+<td><code dir="ltr" translate="no">roles/datastore.importExportAdmin</code></td>
+<td><code dir="ltr" translate="no">appengine.applications.get</code><br />
+<code dir="ltr" translate="no">datastore.databases.export</code><br />
+<code dir="ltr" translate="no">datastore.databases.getMetadata</code><br />
+<code dir="ltr" translate="no">datastore.databases.import</code><br />
+<code dir="ltr" translate="no">datastore.operations.cancel</code><br />
+<code dir="ltr" translate="no">datastore.operations.get</code><br />
+<code dir="ltr" translate="no">datastore.operations.list</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.get</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.list</code></td>
 <td>Full access to manage imports and exports.</td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       roles/datastore.bulkAdmin      </code></td>
-<td><code dir="ltr" translate="no">       resourcemanager.projects.get      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.list      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.bulkDelete      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.cancel      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.get      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.list      </code></td>
+<td><code dir="ltr" translate="no">roles/datastore.bulkAdmin</code></td>
+<td><code dir="ltr" translate="no">resourcemanager.projects.get</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.list</code><br />
+<code dir="ltr" translate="no">datastore.databases.getMetadata</code><br />
+<code dir="ltr" translate="no">datastore.databases.bulkDelete</code><br />
+<code dir="ltr" translate="no">datastore.operations.cancel</code><br />
+<code dir="ltr" translate="no">datastore.operations.get</code><br />
+<code dir="ltr" translate="no">datastore.operations.list</code></td>
 <td>Full access to manage bulk operations.</td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       roles/datastore.indexAdmin      </code></td>
-<td><code dir="ltr" translate="no">       appengine.applications.get      </code><br />
+<td><code dir="ltr" translate="no">roles/datastore.indexAdmin</code></td>
+<td><code dir="ltr" translate="no">appengine.applications.get</code><br />
 <br />
-<code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
+<code dir="ltr" translate="no">datastore.databases.getMetadata</code><br />
 <br />
-<code dir="ltr" translate="no">       datastore.schemas.*      </code><br />
+<code dir="ltr" translate="no">datastore.schemas.*</code><br />
 <br />
-<code dir="ltr" translate="no">       datastore.operations.list      </code><br />
+<code dir="ltr" translate="no">datastore.operations.list</code><br />
 <br />
-<code dir="ltr" translate="no">       datastore.operations.get      </code><br />
+<code dir="ltr" translate="no">datastore.operations.get</code><br />
 <br />
-<code dir="ltr" translate="no">       resourcemanager.projects.get      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.list      </code></td>
+<code dir="ltr" translate="no">resourcemanager.projects.get</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.list</code></td>
 <td>Full access to manage index definitions.</td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       roles/datastore.keyVisualizerViewer      </code></td>
-<td><code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
-<code dir="ltr" translate="no">       datastore.keyVisualizerScans.get      </code><br />
-<code dir="ltr" translate="no">       datastore.keyVisualizerScans.list      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.get      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.list      </code></td>
+<td><code dir="ltr" translate="no">roles/datastore.keyVisualizerViewer</code></td>
+<td><code dir="ltr" translate="no">datastore.databases.getMetadata</code><br />
+<code dir="ltr" translate="no">datastore.keyVisualizerScans.get</code><br />
+<code dir="ltr" translate="no">datastore.keyVisualizerScans.list</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.get</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.list</code></td>
 <td>Full access to Key Visualizer scans.</td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       roles/datastore.backupSchedulesViewer      </code></td>
-<td><code dir="ltr" translate="no">       datastore.backupSchedules.get      </code><br />
-<code dir="ltr" translate="no">       datastore.backupSchedules.list      </code></td>
+<td><code dir="ltr" translate="no">roles/datastore.backupSchedulesViewer</code></td>
+<td><code dir="ltr" translate="no">datastore.backupSchedules.get</code><br />
+<code dir="ltr" translate="no">datastore.backupSchedules.list</code></td>
 <td>Read access to backup schedules in a Firestore database.</td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       roles/datastore.backupSchedulesAdmin      </code></td>
-<td><code dir="ltr" translate="no">       datastore.backupSchedules.get      </code><br />
-<code dir="ltr" translate="no">       datastore.backupSchedules.list      </code><br />
-<code dir="ltr" translate="no">       datastore.backupSchedules.create      </code><br />
-<code dir="ltr" translate="no">       datastore.backupSchedules.update      </code><br />
-<code dir="ltr" translate="no">       datastore.backupSchedules.delete      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.list      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.getMetadata      </code></td>
+<td><code dir="ltr" translate="no">roles/datastore.backupSchedulesAdmin</code></td>
+<td><code dir="ltr" translate="no">datastore.backupSchedules.get</code><br />
+<code dir="ltr" translate="no">datastore.backupSchedules.list</code><br />
+<code dir="ltr" translate="no">datastore.backupSchedules.create</code><br />
+<code dir="ltr" translate="no">datastore.backupSchedules.update</code><br />
+<code dir="ltr" translate="no">datastore.backupSchedules.delete</code><br />
+<code dir="ltr" translate="no">datastore.databases.list</code><br />
+<code dir="ltr" translate="no">datastore.databases.getMetadata</code></td>
 <td>Full access to backup schedules in a Firestore database.</td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       roles/datastore.backupsViewer      </code></td>
-<td><code dir="ltr" translate="no">       datastore.backups.get      </code><br />
-<code dir="ltr" translate="no">       datastore.backups.list      </code></td>
+<td><code dir="ltr" translate="no">roles/datastore.backupsViewer</code></td>
+<td><code dir="ltr" translate="no">datastore.backups.get</code><br />
+<code dir="ltr" translate="no">datastore.backups.list</code></td>
 <td>Read access to backup information in a Firestore location.</td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       roles/datastore.backupsAdmin      </code></td>
-<td><code dir="ltr" translate="no">       datastore.backups.get      </code><br />
-<code dir="ltr" translate="no">       datastore.backups.list      </code><br />
-<code dir="ltr" translate="no">       datastore.backups.delete      </code></td>
+<td><code dir="ltr" translate="no">roles/datastore.backupsAdmin</code></td>
+<td><code dir="ltr" translate="no">datastore.backups.get</code><br />
+<code dir="ltr" translate="no">datastore.backups.list</code><br />
+<code dir="ltr" translate="no">datastore.backups.delete</code></td>
 <td>Full access to backups in a Firestore location.</td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       roles/datastore.restoreAdmin      </code></td>
-<td><code dir="ltr" translate="no">       datastore.backups.get      </code><br />
-<code dir="ltr" translate="no">       datastore.backups.list      </code><br />
-<code dir="ltr" translate="no">       datastore.backups.restoreDatabase      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.list      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.create      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.list      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.get      </code><br />
+<td><code dir="ltr" translate="no">roles/datastore.restoreAdmin</code></td>
+<td><code dir="ltr" translate="no">datastore.backups.get</code><br />
+<code dir="ltr" translate="no">datastore.backups.list</code><br />
+<code dir="ltr" translate="no">datastore.backups.restoreDatabase</code><br />
+<code dir="ltr" translate="no">datastore.databases.list</code><br />
+<code dir="ltr" translate="no">datastore.databases.create</code><br />
+<code dir="ltr" translate="no">datastore.databases.getMetadata</code><br />
+<code dir="ltr" translate="no">datastore.operations.list</code><br />
+<code dir="ltr" translate="no">datastore.operations.get</code><br />
 </td>
 <td>Ability to restore a Firestore backup into a new database. This role also gives the ability to create new databases, not necessarily by restoring from a backup.</td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       roles/datastore.cloneAdmin      </code></td>
-<td><code dir="ltr" translate="no">       datastore.databases.clone      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.list      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.create      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.list      </code><br />
-<code dir="ltr" translate="no">       datastore.operations.get      </code><br />
+<td><code dir="ltr" translate="no">roles/datastore.cloneAdmin</code></td>
+<td><code dir="ltr" translate="no">datastore.databases.clone</code><br />
+<code dir="ltr" translate="no">datastore.databases.list</code><br />
+<code dir="ltr" translate="no">datastore.databases.create</code><br />
+<code dir="ltr" translate="no">datastore.databases.getMetadata</code><br />
+<code dir="ltr" translate="no">datastore.operations.list</code><br />
+<code dir="ltr" translate="no">datastore.operations.get</code><br />
 </td>
 <td>Ability to clone a Firestore database into a new database. This role also gives the ability to create new databases, not necessarily by cloning.</td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       roles/datastore.statisticsViewer      </code></td>
-<td><code dir="ltr" translate="no">       resourcemanager.projects.get      </code><br />
-<code dir="ltr" translate="no">       resourcemanager.projects.list      </code><br />
-<code dir="ltr" translate="no">       datastore.databases.getMetadata      </code><br />
-<code dir="ltr" translate="no">       datastore.insights.get      </code><br />
-<code dir="ltr" translate="no">       datastore.keyVisualizerScans.get      </code><br />
-<code dir="ltr" translate="no">       datastore.keyVisualizerScans.list      </code><br />
-<code dir="ltr" translate="no">       datastore.statistics.list      </code><br />
-<code dir="ltr" translate="no">       datastore.statistics.get      </code><br />
+<td><code dir="ltr" translate="no">roles/datastore.statisticsViewer</code></td>
+<td><code dir="ltr" translate="no">resourcemanager.projects.get</code><br />
+<code dir="ltr" translate="no">resourcemanager.projects.list</code><br />
+<code dir="ltr" translate="no">datastore.databases.getMetadata</code><br />
+<code dir="ltr" translate="no">datastore.insights.get</code><br />
+<code dir="ltr" translate="no">datastore.keyVisualizerScans.get</code><br />
+<code dir="ltr" translate="no">datastore.keyVisualizerScans.list</code><br />
+<code dir="ltr" translate="no">datastore.statistics.list</code><br />
+<code dir="ltr" translate="no">datastore.statistics.get</code><br />
 </td>
 <td>Read access to Insights, Stats, and Key Visualizer scans.</td>
 </tr>
@@ -450,14 +450,14 @@ The following listed permissions are required.
 
 ##### View tags
 
-  - `  datastore.databases.listTagBindings  `
-  - `  datastore.databases.listEffectiveTags  `
+  - `datastore.databases.listTagBindings`
+  - `datastore.databases.listEffectiveTags`
 
 ##### Manage tags on resources
 
 The following permission is required for the database resource you're attaching the tag value.
 
-  - `  datastore.databases.createTagBinding  `
+  - `datastore.databases.createTagBinding`
 
 ### Permissions
 
@@ -478,72 +478,72 @@ The following table lists the permissions that Firestore supports.
 </thead>
 <tbody>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.databases.get      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.get</code></td>
 <td>Begin or rollback a transaction.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.databases.import      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.import</code></td>
 <td>Import entities into a database.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.databases.export      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.export</code></td>
 <td>Export entities from a database.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.databases.bulkDelete      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.bulkDelete</code></td>
 <td>Bulk delete entities from a database.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.databases.getMetadata      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.getMetadata</code></td>
 <td>Read metadata from a database.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.databases.list      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.list</code></td>
 <td>List databases in a project.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.databases.create      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.create</code></td>
 <td>Create a database.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.databases.update      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.update</code></td>
 <td>Update a database.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.databases.delete      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.delete</code></td>
 <td>Delete a database.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.databases.clone      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.clone</code></td>
 <td>Clone a database.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.databases.createTagBinding      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.createTagBinding</code></td>
 <td>Create a tag binding for a database.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.databases.deleteTagBinding      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.deleteTagBinding</code></td>
 <td>Delete a tag binding for a database.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.databases.listTagBindings      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.listTagBindings</code></td>
 <td>List all tag bindings for a database.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.databases.listEffectiveTagBindings      </code></td>
+<td><code dir="ltr" translate="no">datastore.databases.listEffectiveTagBindings</code></td>
 <td>List effective tag bindings for a database.</td>
 <td></td>
 </tr>
@@ -553,28 +553,28 @@ The following table lists the permissions that Firestore supports.
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.entities.create      </code></td>
+<td><code dir="ltr" translate="no">datastore.entities.create</code></td>
 <td>Create a document.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.entities.delete      </code></td>
+<td><code dir="ltr" translate="no">datastore.entities.delete</code></td>
 <td>Delete a document.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.entities.get      </code></td>
+<td><code dir="ltr" translate="no">datastore.entities.get</code></td>
 <td>Read a document.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.entities.list      </code></td>
+<td><code dir="ltr" translate="no">datastore.entities.list</code></td>
 <td>List the names of documents in a project.<br />
-( <code dir="ltr" translate="no">       datastore.entities.get      </code> is required to access the document data.)</td>
+( <code dir="ltr" translate="no">datastore.entities.get</code> is required to access the document data.)</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.entities.update      </code></td>
+<td><code dir="ltr" translate="no">datastore.entities.update</code></td>
 <td>Update a document.</td>
 <td></td>
 </tr>
@@ -584,27 +584,27 @@ The following table lists the permissions that Firestore supports.
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.schemas.create      </code></td>
+<td><code dir="ltr" translate="no">datastore.schemas.create</code></td>
 <td>Create an index.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.schemas.delete      </code></td>
+<td><code dir="ltr" translate="no">datastore.schemas.delete</code></td>
 <td>Delete an index.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.schemas.get      </code></td>
+<td><code dir="ltr" translate="no">datastore.schemas.get</code></td>
 <td>Read metadata from an index.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.schemas.list      </code></td>
+<td><code dir="ltr" translate="no">datastore.schemas.list</code></td>
 <td>List the indexes in a project.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.schemas.update      </code></td>
+<td><code dir="ltr" translate="no">datastore.schemas.update</code></td>
 <td>Update an index.</td>
 <td></td>
 </tr>
@@ -614,22 +614,22 @@ The following table lists the permissions that Firestore supports.
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.operations.cancel      </code></td>
+<td><code dir="ltr" translate="no">datastore.operations.cancel</code></td>
 <td>Cancel a long-running operation.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.operations.delete      </code></td>
+<td><code dir="ltr" translate="no">datastore.operations.delete</code></td>
 <td>Delete a long-running operation.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.operations.get      </code></td>
+<td><code dir="ltr" translate="no">datastore.operations.get</code></td>
 <td>Gets the latest state of a long-running operation.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.operations.list      </code></td>
+<td><code dir="ltr" translate="no">datastore.operations.list</code></td>
 <td>List long-running operations.</td>
 <td></td>
 </tr>
@@ -639,12 +639,12 @@ The following table lists the permissions that Firestore supports.
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       resourcemanager.projects.get      </code></td>
+<td><code dir="ltr" translate="no">resourcemanager.projects.get</code></td>
 <td>Browse resources in the project.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       resourcemanager.projects.list      </code></td>
+<td><code dir="ltr" translate="no">resourcemanager.projects.list</code></td>
 <td>List owned projects.</td>
 <td></td>
 </tr>
@@ -654,12 +654,12 @@ The following table lists the permissions that Firestore supports.
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.locations.get      </code></td>
+<td><code dir="ltr" translate="no">datastore.locations.get</code></td>
 <td>Get details about a database location. Required to create a new database.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.locations.list      </code></td>
+<td><code dir="ltr" translate="no">datastore.locations.list</code></td>
 <td>List available database locations. Required to create a new database.</td>
 <td></td>
 </tr>
@@ -669,12 +669,12 @@ The following table lists the permissions that Firestore supports.
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.keyVisualizerScans.get      </code></td>
+<td><code dir="ltr" translate="no">datastore.keyVisualizerScans.get</code></td>
 <td>Get details about Key Visualizer scans.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.keyVisualizerScans.list      </code></td>
+<td><code dir="ltr" translate="no">datastore.keyVisualizerScans.list</code></td>
 <td>List available Key Visualizer scans.</td>
 <td></td>
 </tr>
@@ -684,27 +684,27 @@ The following table lists the permissions that Firestore supports.
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.backupSchedules.get      </code></td>
+<td><code dir="ltr" translate="no">datastore.backupSchedules.get</code></td>
 <td>Get details about a backup schedule.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.backupSchedules.list      </code></td>
+<td><code dir="ltr" translate="no">datastore.backupSchedules.list</code></td>
 <td>List available backup schedules.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.backupSchedules.create      </code></td>
+<td><code dir="ltr" translate="no">datastore.backupSchedules.create</code></td>
 <td>Create a backup schedule.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.backupSchedules.update      </code></td>
+<td><code dir="ltr" translate="no">datastore.backupSchedules.update</code></td>
 <td>Update a backup schedule.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.backupSchedules.delete      </code></td>
+<td><code dir="ltr" translate="no">datastore.backupSchedules.delete</code></td>
 <td>Delete a backup schedule.</td>
 <td></td>
 </tr>
@@ -714,22 +714,22 @@ The following table lists the permissions that Firestore supports.
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.backups.get      </code></td>
+<td><code dir="ltr" translate="no">datastore.backups.get</code></td>
 <td>Get details about a backup.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.backups.list      </code></td>
+<td><code dir="ltr" translate="no">datastore.backups.list</code></td>
 <td>List available backups.</td>
 <td></td>
 </tr>
 <tr class="even">
-<td><code dir="ltr" translate="no">       datastore.backups.delete      </code></td>
+<td><code dir="ltr" translate="no">datastore.backups.delete</code></td>
 <td>Delete a backup.</td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.backups.restoreDatabase      </code></td>
+<td><code dir="ltr" translate="no">datastore.backups.restoreDatabase</code></td>
 <td>Restore a database from a backup.</td>
 <td></td>
 </tr>
@@ -739,7 +739,7 @@ The following table lists the permissions that Firestore supports.
 <td></td>
 </tr>
 <tr class="odd">
-<td><code dir="ltr" translate="no">       datastore.insights.get      </code></td>
+<td><code dir="ltr" translate="no">datastore.insights.get</code></td>
 <td>Get insights of a resource</td>
 <td></td>
 </tr>
@@ -752,13 +752,13 @@ Firestore caches IAM permissions for 5 minutes, so it takes up to 5 minutes for 
 
 ## Manage Firestore IAM
 
-You can get and set IAM policies using the Google Cloud console, the IAM API, or the `  gcloud  ` command-line tool. See [Granting, Changing, and Revoking Access to Project Members](https://cloud.google.com/iam/docs/granting-changing-revoking-access) for details.
+You can get and set IAM policies using the Google Cloud console, the IAM API, or the `gcloud` command-line tool. See [Granting, Changing, and Revoking Access to Project Members](https://cloud.google.com/iam/docs/granting-changing-revoking-access) for details.
 
 ## Configure conditional access permissions
 
 You can use [IAM Conditions](https://cloud.google.com/iam/docs/conditions-overview) to define and enforce conditional access control.
 
-For example, the following condition assigns a principal the `  datastore.user  ` role up until a specified date:
+For example, the following condition assigns a principal the `datastore.user` role up until a specified date:
 
     {
       "role": "roles/datastore.user",
@@ -781,11 +781,11 @@ To learn how to configure IAM Conditions for access to one or more databases, se
 
 [Firestore Security Rules](https://docs.cloud.google.com/firestore/docs/security/get-started) for mobile/web clients depend on the following service account and IAM binding:
 
-| Service account                                                                                             | IAM role                                    |
-| ----------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
-| `        service-               project_number              @firebase-rules.iam.gserviceaccount.com       ` | `        roles/firebaserules.system       ` |
+| Service account                                                                  | IAM role                     |
+| -------------------------------------------------------------------------------- | ---------------------------- |
+| `service-         project_number        @firebase-rules.iam.gserviceaccount.com` | `roles/firebaserules.system` |
 
-Firebase automatically sets up this service account for you. If you remove the `  firebaserules.system  ` role from this service account, your security rules will deny all requests. To restore this IAM binding, use the following [gcloud CLI](https://cloud.google.com/sdk) command:
+Firebase automatically sets up this service account for you. If you remove the `firebaserules.system` role from this service account, your security rules will deny all requests. To restore this IAM binding, use the following [gcloud CLI](https://cloud.google.com/sdk) command:
 
     gcloud projects add-iam-policy-binding project_id \
     --member=serviceAccount:service-project_number@firebase-rules.iam.gserviceaccount.com \
@@ -793,7 +793,7 @@ Firebase automatically sets up this service account for you. If you remove the `
 
 To determine your project\_id and project\_number , see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) .
 
-Use the Google Cloud CLI instead of the Google Cloud console, because the `  firebaserules.system  ` role is hidden in the console by default.
+Use the Google Cloud CLI instead of the Google Cloud console, because the `firebaserules.system` role is hidden in the console by default.
 
 ## What's next
 

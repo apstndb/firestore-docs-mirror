@@ -4,7 +4,7 @@
 
 The following are required for Firestore with MongoDB compatibility clients:
 
-  - Drivers must connect in `  load balanced  ` mode. This prevents the drivers from trying to understand the exact server topology they are connecting to.
+  - Drivers must connect in `load balanced` mode. This prevents the drivers from trying to understand the exact server topology they are connecting to.
   - Drivers must connect with SSL enabled.
   - Drivers must disable retryable writes. Firestore with MongoDB compatibility doesn't support retryable writes. You don't need to disable retryable reads as they are supported.
 
@@ -34,7 +34,7 @@ You can obtain the base connection string in one of the following ways:
 
 ##### gcloud
 
-Use `  gcloud firestore database describe  ` to retrieve the UID and location information:
+Use `gcloud firestore database describe` to retrieve the UID and location information:
 
 ``` suppresswarning
 gcloud firestore databases describe \
@@ -59,7 +59,7 @@ Follow these steps to create a user credential for your database and connect to 
 
 ### Before you begin
 
-To get the permissions that you need to create a user, ask your administrator to grant you the [userCredsAdmin](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.userCredsAdmin) ( `  roles/datastore.userCredsAdmin  ` ) IAM role on your database. For more information about granting roles, see [Manage access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
+To get the permissions that you need to create a user, ask your administrator to grant you the [userCredsAdmin](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.userCredsAdmin) ( `roles/datastore.userCredsAdmin` ) IAM role on your database. For more information about granting roles, see [Manage access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
 
 You might also be able to get the required permissions through [custom roles](https://docs.cloud.google.com/iam/docs/creating-custom-roles) or other [predefined roles](https://docs.cloud.google.com/iam/docs/roles-overview#predefined) .
 
@@ -91,7 +91,7 @@ To create a user for your Firestore with MongoDB compatibility database, use one
 
 ##### gcloud CLI
 
-1.  To authenticate with SCRAM, you must first create a user credential. Use the `  gcloud firestore user-creds  ` command:
+1.  To authenticate with SCRAM, you must first create a user credential. Use the `gcloud firestore user-creds` command:
     
     ``` suppresswarning
     gcloud firestore user-creds create USERNAME --database=DATABASE_ID
@@ -115,7 +115,7 @@ To create a user for your Firestore with MongoDB compatibility database, use one
     securePassword: PASSWORD
     ```
 
-2.  By default, this new user credential does not have any permissions. For read and write access to the database, add the `  roles/datastore.user  ` role for this specific database:
+2.  By default, this new user credential does not have any permissions. For read and write access to the database, add the `roles/datastore.user` role for this specific database:
     
     ``` suppresswarning
     gcloud projects add-iam-policy-binding PROJECT_NAME \
@@ -456,7 +456,7 @@ See the instructions in the [Configure credentials](https://docs.cloud.google.co
 
 ### Configure credentials
 
-To grant the service account the `  roles/datastore.user  ` role for read and write to Firestore, run the following command:
+To grant the service account the `roles/datastore.user` role for read and write to Firestore, run the following command:
 
 ``` suppresswarning
 gcloud projects add-iam-policy-binding PROJECT_NAME --member="serviceAccount:SERVICE_ACCOUNT_EMAIL" --role=roles/datastore.user
@@ -485,9 +485,9 @@ For more information on retrieving the UID and location, see [Retrieve the conne
 
 ## Connect with a temporary access token
 
-You can use a temporary Google Cloud access token to run diagnostic tools such as `  mongosh  ` . You can use [`  gcloud auth print-access-token  `](https://cloud.google.com/sdk/gcloud/reference/auth/print-access-token) to authenticate with a short-term access token. This token is valid for one hour.
+You can use a temporary Google Cloud access token to run diagnostic tools such as `mongosh` . You can use [`gcloud auth print-access-token`](https://cloud.google.com/sdk/gcloud/reference/auth/print-access-token) to authenticate with a short-term access token. This token is valid for one hour.
 
-For example, use the following command to connect to your database with `  mongosh  ` :
+For example, use the following command to connect to your database with `mongosh` :
 
 ``` suppresswarning
 mongosh --tls \

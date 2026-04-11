@@ -220,7 +220,7 @@ Before you create a vector index, upgrade to the latest version of the Google Cl
 
     gcloud components update
 
-To create a vector index, use [`  gcloud firestore indexes composite create  `](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/composite/create) :
+To create a vector index, use [`gcloud firestore indexes composite create`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/composite/create) :
 
     gcloud firestore indexes composite create \
     --collection-group=collection-group \
@@ -233,9 +233,9 @@ where:
   - collection-group is the ID of the collection group.
   - vector-field is the name of the field that contains the vector embedding.
   - database-id is the ID of the database.
-  - vector-configuration includes the vector `  dimension  ` and index type. The `  dimension  ` is an integer up to 2048. The index type must be `  flat  ` . Format the index configuration as follows: `  {"dimension":" DIMENSION ", "flat": "{}"}  ` .
+  - vector-configuration includes the vector `dimension` and index type. The `dimension` is an integer up to 2048. The index type must be `flat` . Format the index configuration as follows: `{"dimension":" DIMENSION ", "flat": "{}"}` .
 
-The following example creates a composite index, including a vector index for field `  vector-field  ` and an ascending index for field `  color  ` . You can use this type of index to [pre-filter data](https://docs.cloud.google.com/firestore/native/docs/vector-search#pre-filter-documents) before a nearest neighbor search.
+The following example creates a composite index, including a vector index for field `vector-field` and an ascending index for field `color` . You can use this type of index to [pre-filter data](https://docs.cloud.google.com/firestore/native/docs/vector-search#pre-filter-documents) before a nearest neighbor search.
 
     gcloud firestore indexes composite create \
     --collection-group=collection-group \
@@ -299,7 +299,7 @@ where:
 
 where:
 
-  - index-id is the ID of the index to delete. Use [`  indexes composite list  `](https://docs.cloud.google.com/firestore/native/docs/vector-search#list) to retrieve the index ID.
+  - index-id is the ID of the index to delete. Use [`indexes composite list`](https://docs.cloud.google.com/firestore/native/docs/vector-search#list) to retrieve the index ID.
   - database-id is the ID of the database.
 
 ## Make a nearest-neighbor query
@@ -408,9 +408,9 @@ VectorQuerySnapshot vectorQuerySnapshot = future.get();
 
 Nearest-neighbor queries support the following options for vector distance:
 
-  - `  EUCLIDEAN  ` : Measures the `  EUCLIDEAN  ` distance between the vectors. To learn more, see [Euclidean](https://en.wikipedia.org/wiki/Euclidean_distance) .
-  - `  COSINE  ` : Compares vectors based on the angle between them which lets you measure similarity that isn't based on the vectors magnitude. We recommend using `  DOT_PRODUCT  ` with unit normalized vectors instead of COSINE distance, which is mathematically equivalent with better performance. To learn more, see [Cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity) .
-  - `  DOT_PRODUCT  ` : Similar to `  COSINE  ` but is affected by the magnitude of the vectors. To learn more, see [Dot product](https://en.wikipedia.org/wiki/Dot_product) .
+  - `EUCLIDEAN` : Measures the `EUCLIDEAN` distance between the vectors. To learn more, see [Euclidean](https://en.wikipedia.org/wiki/Euclidean_distance) .
+  - `COSINE` : Compares vectors based on the angle between them which lets you measure similarity that isn't based on the vectors magnitude. We recommend using `DOT_PRODUCT` with unit normalized vectors instead of COSINE distance, which is mathematically equivalent with better performance. To learn more, see [Cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity) .
+  - `DOT_PRODUCT` : Similar to `COSINE` but is affected by the magnitude of the vectors. To learn more, see [Dot product](https://en.wikipedia.org/wiki/Dot_product) .
 
 ### Choose the distance measure
 
@@ -420,19 +420,19 @@ In addition, if you know which distance measure your model was trained with, use
 
 **Normalized data**
 
-If you have a dataset where all vector embeddings are normalized, then all three distance measures provide the same semantic search results. In essence, although each distance measure returns a different value, those values sort the same way. When embeddings are normalized, `  DOT_PRODUCT  ` is usually the most computationally efficient, but the difference is negligible in most cases. However, if your application is highly performance sensitive, `  DOT_PRODUCT  ` might help with performance tuning.
+If you have a dataset where all vector embeddings are normalized, then all three distance measures provide the same semantic search results. In essence, although each distance measure returns a different value, those values sort the same way. When embeddings are normalized, `DOT_PRODUCT` is usually the most computationally efficient, but the difference is negligible in most cases. However, if your application is highly performance sensitive, `DOT_PRODUCT` might help with performance tuning.
 
 **Non-normalized data**
 
-If you have a dataset where vector embeddings aren't normalized, then it's not mathematically correct to use `  DOT_PRODUCT  ` as a distance measure because dot product doesn't measure distance. Depending on how the embeddings were generated and what type of search is preferred, either the `  COSINE  ` or `  EUCLIDEAN  ` distance measure produces search results that are subjectively better than the other distance measures. Experimentation with either `  COSINE  ` or `  EUCLIDEAN  ` might be necessary to determine which is best for your use case.
+If you have a dataset where vector embeddings aren't normalized, then it's not mathematically correct to use `DOT_PRODUCT` as a distance measure because dot product doesn't measure distance. Depending on how the embeddings were generated and what type of search is preferred, either the `COSINE` or `EUCLIDEAN` distance measure produces search results that are subjectively better than the other distance measures. Experimentation with either `COSINE` or `EUCLIDEAN` might be necessary to determine which is best for your use case.
 
 **Unsure if data is normalized or non-normalized**
 
-If you're unsure whether or not your data is normalized and you want to use `  DOT_PRODUCT  ` , we recommend that you use `  COSINE  ` instead. `  COSINE  ` is like `  DOT_PRODUCT  ` with normalization built in. Distance measured using `  COSINE  ` ranges from `  0  ` to `  2  ` . A result that is close to `  0  ` indicates the vectors are very similar.
+If you're unsure whether or not your data is normalized and you want to use `DOT_PRODUCT` , we recommend that you use `COSINE` instead. `COSINE` is like `DOT_PRODUCT` with normalization built in. Distance measured using `COSINE` ranges from `0` to `2` . A result that is close to `0` indicates the vectors are very similar.
 
 ### Pre-filter documents
 
-To pre-filter documents before finding the nearest neighbors, you can combine a similarity search with other query operators. The `  and  ` and `  or  ` composite filters are supported. For more information about supported field filters, see [Query operators](https://cloud.google.com/firestore/docs/query-data/queries#query_operators) .
+To pre-filter documents before finding the nearest neighbors, you can combine a similarity search with other query operators. The `and` and `or` composite filters are supported. For more information about supported field filters, see [Query operators](https://cloud.google.com/firestore/docs/query-data/queries#query_operators) .
 
 ##### Python
 
@@ -532,7 +532,7 @@ VectorQuerySnapshot vectorQuerySnapshot = future.get();
 
 ## Retrieve the calculated vector distance
 
-You can retrieve the calculated vector distance by assigning a `  distance_result_field  ` output property name on the `  FindNearest  ` query, as shown in the following example:
+You can retrieve the calculated vector distance by assigning a `distance_result_field` output property name on the `FindNearest` query, as shown in the following example:
 
 ##### Python
 
@@ -639,7 +639,7 @@ for (DocumentSnapshot document : vectorQuerySnapshot.getDocuments()) {
 }
 ```
 
-If you want to use a field mask to return a subset of document fields along with a `  distanceResultField  ` , then you must also include the value of `  distanceResultField  ` in the field mask, as shown in the following example:
+If you want to use a field mask to return a subset of document fields along with a `distanceResultField` , then you must also include the value of `distanceResultField` in the field mask, as shown in the following example:
 
 ##### Python
 
@@ -740,10 +740,10 @@ for (DocumentSnapshot document : vectorQuerySnapshot.getDocuments()) {
 
 You can specify a similarity threshold that returns only documents within the threshold. The behavior of the threshold field depends on the distance measure you choose:
 
-  - `  EUCLIDEAN  ` and `  COSINE  ` distances limit the threshold to documents where distance is less than or equal to the specified threshold. These distance measures decrease as the vectors become more similar.
-  - `  DOT_PRODUCT  ` distance limits the threshold to documents where distance is greater than or equal to the specified threshold. Dot product distances increase as the vectors become more similar.
+  - `EUCLIDEAN` and `COSINE` distances limit the threshold to documents where distance is less than or equal to the specified threshold. These distance measures decrease as the vectors become more similar.
+  - `DOT_PRODUCT` distance limits the threshold to documents where distance is greater than or equal to the specified threshold. Dot product distances increase as the vectors become more similar.
 
-The following example shows how to specify a distance threshold to return up to 10 nearest documents that are, at most, 4.5 units away using the `  EUCLIDEAN  ` distance metric:
+The following example shows how to specify a distance threshold to return up to 10 nearest documents that are, at most, 4.5 units away using the `EUCLIDEAN` distance metric:
 
 ##### Python
 

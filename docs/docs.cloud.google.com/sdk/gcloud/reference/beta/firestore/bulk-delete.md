@@ -4,19 +4,18 @@ gcloud beta firestore bulk-delete - bulk delete Cloud Firestore documents
 
 SYNOPSIS
 
-`  gcloud beta firestore bulk-delete  ` \[ `  --async  ` \] \[ `  --collection-ids  ` =\[ `  COLLECTION_GROUP_IDS  ` , …\]\] \[ `  --database  ` = `  DATABASE  ` ; default="(default)"\] \[ `  --namespace-ids  ` =\[ `  NAMESPACE_IDS  ` , …\]\] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud beta firestore bulk-delete` \[ `  --async  ` \] \[ `  --collection-ids  ` =\[ `  COLLECTION_GROUP_IDS  ` , …\]\] \[ `  --database  ` = `  DATABASE  ` ; default="(default)"\] \[ `  --namespace-ids  ` =\[ `  NAMESPACE_IDS  ` , …\]\] \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (BETA)  ` bulk delete Cloud Firestore documents.
+`(BETA)` bulk delete Cloud Firestore documents.
 
 EXAMPLES
 
 To bulk delete a specific set of collections groups asynchronously, run:
 
 ``` wrap-code
-gcloud beta firestore bulk-delete --collection-ids='specific collection group1','specific
- collection group2' --async
+gcloud beta firestore bulk-delete --collection-ids='specific collection group1','specific collection group2' --async
 ```
 
 To bulk delete all collection groups from certain namespace, run:
@@ -27,33 +26,33 @@ gcloud beta firestore bulk-delete --namespace-ids='specific namespace id'
 
 FLAGS
 
-  - `  --async  `  
+  - `--async`  
     Return immediately, without waiting for the operation in progress to complete.
 
-  - `  --collection-ids  ` =\[ `  COLLECTION_GROUP_IDS  ` ,…\]  
+  - `--collection-ids` =\[ `  COLLECTION_GROUP_IDS  ` ,…\]  
     List specifying which collection groups will be included in the operation. When omitted, all collection groups are included.
     
-    For example, to operate on only the `  customers  ` and `  orders  ` collections groups:
+    For example, to operate on only the `customers` and `orders` collections groups:
     
     ``` wrap-code
     gcloud beta firestore bulk-delete --collection-ids='customers','orders'
     ```
 
-  - `  --database  ` = `  DATABASE  ` ; default="(default)"  
-    The database to operate on. The default value is `  (default)  ` .
+  - `--database` = `  DATABASE  ` ; default="(default)"  
+    The database to operate on. The default value is `(default)` .
     
-    For example, to operate on database `  foo  ` :
+    For example, to operate on database `foo` :
     
     ``` wrap-code
     gcloud beta firestore bulk-delete --database='foo'
     ```
 
-  - `  --namespace-ids  ` =\[ `  NAMESPACE_IDS  ` ,…\]  
+  - `--namespace-ids` =\[ `  NAMESPACE_IDS  ` ,…\]  
     List specifying which namespaces will be included in the operation. When omitted, all namespaces are included.
     
     This is only supported for Datastore Mode databases.
     
-    For example, to operate on only the `  customers  ` and `  orders  ` namespaces:
+    For example, to operate on only the `customers` and `orders` namespaces:
     
     ``` wrap-code
     gcloud beta firestore bulk-delete --namespaces-ids='customers','orders'
@@ -63,7 +62,7 @@ GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 NOTES
 

@@ -1,6 +1,6 @@
 # Best practices for bulk data loading
 
-This page describes the best practices when bulk loading data to Firestore with MongoDB compatibility with tools like `  mongoimport  ` .
+This page describes the best practices when bulk loading data to Firestore with MongoDB compatibility with tools like `mongoimport` .
 
 Firestore is a highly distributed system offering automatic scaling to meet the needs of your business. Firestore dynamically splits and combines your data based on the load received by the system.
 
@@ -12,9 +12,9 @@ Firestore's distributed nature can require changing some design choices to chang
 
 Workloads that process large amounts of data in a single threaded client can create a bottleneck. Clients might be able to use single threading to bulk load data, as the throughput of the client and server are similarly matched. A Firestore database can handle significantly more parallelism, but this requires that you configure clients to send requests in parallel.
 
-### `     mongoimport    `
+### `mongoimport`
 
-When using the `  mongoimport  ` tool, requests are made sequentially by default. To improve the load time into Firestore, set the number of workers with the `  --numInsertionWorkers  ` flag. The correct setting might require tuning based on the size of your client, but we generally recommend starting with at least `  32  ` .
+When using the `mongoimport` tool, requests are made sequentially by default. To improve the load time into Firestore, set the number of workers with the `--numInsertionWorkers` flag. The correct setting might require tuning based on the size of your client, but we generally recommend starting with at least `32` .
 
 ### async programming
 
@@ -29,4 +29,4 @@ When working with a large distributed system like Firestore, you might encounter
 
 When bulk loading large amounts of information, it's important to maintain a retry strategy for failed writes without failing the larger bulk load operation.
 
-**Note:** Firestore with MongoDB compatibility does not support `  retryWrites  ` . We recommend using transactions to ensure your application guarantees idempotency.
+**Note:** Firestore with MongoDB compatibility does not support `retryWrites` . We recommend using transactions to ensure your application guarantees idempotency.

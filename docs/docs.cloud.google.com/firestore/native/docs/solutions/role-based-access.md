@@ -18,9 +18,9 @@ Suppose you are building a collaborative writing application in which users can 
 
 ### Data Structure
 
-Assume your app has a `  stories  ` collection where each document represents a story. Each story also has a `  comments  ` subcollection where each document is a comment on that story.
+Assume your app has a `stories` collection where each document represents a story. Each story also has a `comments` subcollection where each document is a comment on that story.
 
-To keep track of access roles, add a `  roles  ` field which is a map of user IDs to roles:
+To keep track of access roles, add a `roles` field which is a map of user IDs to roles:
 
 **/stories/{storyid}**
 
@@ -47,7 +47,7 @@ Comments contain only two fields, the author's user ID and some content:
 
 ### Rules
 
-Now that you have users' roles recorded in the database, you need to write Security Rules to validate them. These rules assume the app uses [Firebase Auth](https://firebase.google.com/docs/auth/) so that the `  request.auth.uid  ` variable is the user's ID.
+Now that you have users' roles recorded in the database, you need to write Security Rules to validate them. These rules assume the app uses [Firebase Auth](https://firebase.google.com/docs/auth/) so that the `request.auth.uid` variable is the user's ID.
 
 **Step 1** : Start with a basic rules file, which includes empty rules for stories and comments:
 
@@ -63,7 +63,7 @@ Now that you have users' roles recorded in the database, you need to write Secur
        }
     }step1-invalid.rules
 
-**Step 2** : Add a simple `  write  ` rule that gives owners complete control over stories. The functions defined help determine a user's roles and if new documents are valid:
+**Step 2** : Add a simple `write` rule that gives owners complete control over stories. The functions defined help determine a user's roles and if new documents are valid:
 
     service cloud.firestore {
        match /databases/{database}/documents {
@@ -133,7 +133,7 @@ Now that you have users' roles recorded in the database, you need to write Secur
        }
     }step3.rules
 
-**Step 4** : Allow story writers, commenters, and owners to post comments. Note that this rule also validates that the `  owner  ` of the comment matches the requesting user, which prevents users from writing over each other's comments:
+**Step 4** : Allow story writers, commenters, and owners to post comments. Note that this rule also validates that the `owner` of the comment matches the requesting user, which prevents users from writing over each other's comments:
 
     service cloud.firestore {
        match /databases/{database}/documents {
@@ -177,7 +177,7 @@ Now that you have users' roles recorded in the database, you need to write Secur
     }
     step4.rules
 
-**Step 5** : Give writers the ability to edit story content, but not to edit story roles or change any other properties of the document. This requires splitting the stories `  write  ` rule into separate rules for `  create  ` , `  update  ` , and `  delete  ` since writers can only update stories:
+**Step 5** : Give writers the ability to edit story content, but not to edit story roles or change any other properties of the document. This requires splitting the stories `write` rule into separate rules for `create` , `update` , and `delete` since writers can only update stories:
 
     service cloud.firestore {
        match /databases/{database}/documents {

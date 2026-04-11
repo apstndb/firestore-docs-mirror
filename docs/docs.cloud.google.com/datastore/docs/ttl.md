@@ -31,7 +31,7 @@ Note the following key behaviors of TTL-driven deletion:
 
   - Datastore mode will always honor the latest TTL field to determine the expiration. For example, if an expired but not-yet-deleted entity has its TTL field updated to a later date, the entity will not be expired and the new date will be used.
 
-  - Datastore mode will only expire a document when the TTL field is set to a `  Timestamp  ` type. Leaving the field absent or set to a value like `  null  ` allows expirations to be disabled on a per-document basis.
+  - Datastore mode will only expire a document when the TTL field is set to a `Timestamp` type. Leaving the field absent or set to a value like `null` allows expirations to be disabled on a per-document basis.
 
   - TTL is designed to minimize impact on other database activities. Deletions driven by TTL are treated with a lower priority. Other strategies are also in place to smooth out traffic spikes from TTL-driven deletes.
 
@@ -47,15 +47,15 @@ By default, Datastore creates a built-in index for all properties. You can [excl
 
 The principal configuring a TTL policy requires the following permission in the project:
 
-  - Viewing TTL policies requires the `  datastore.indexes.list  ` and `  datastore.indexes.get  ` permissions.
-  - Modifying TTL policies requires the `  datastore.indexes.update  ` permission.
-  - Checking the status of TTL operations requires `  datastore.operations.list  ` and `  datastore.operations.get  ` .
+  - Viewing TTL policies requires the `datastore.indexes.list` and `datastore.indexes.get` permissions.
+  - Modifying TTL policies requires the `datastore.indexes.update` permission.
+  - Checking the status of TTL operations requires `datastore.operations.list` and `datastore.operations.get` .
 
 For roles that assign these permissions, see [Datastore Identity and Access Management roles](https://docs.cloud.google.com/datastore/docs/access/iam#iam_roles) .
 
 ## Before you begin
 
-Before you use the gcloud CLI to manage TTL policies, use the [`  gcloud components update  `](https://docs.cloud.google.com/sdk/gcloud/reference/components/update) command to update components to the latest available version:
+Before you use the gcloud CLI to manage TTL policies, use the [`gcloud components update`](https://docs.cloud.google.com/sdk/gcloud/reference/components/update) command to update components to the latest available version:
 
     gcloud components update
 
@@ -63,11 +63,11 @@ Before you use the gcloud CLI to manage TTL policies, use the [`  gcloud compone
 
 When you create a TTL policy, you designate an entity property as the expiration time for entities in a kind. The TTL policy applies to the specified kind in all namespaces.
 
-TTL uses a specified property to identify entities that are eligible for deletion. This TTL property must be of type `  Date and time  ` . You can select a property that already exists or you can designate a property that you plan to add later.
+TTL uses a specified property to identify entities that are eligible for deletion. This TTL property must be of type `Date and time` . You can select a property that already exists or you can designate a property that you plan to add later.
 
 Consider the following before you set the TTL property value:
 
-  - The TTL property value can be a time in the future, now, or in the past. If the value is a time in the past, the entity is immediately eligible for deletion. For example, you might create a TTL policy with the property `  expireAt  ` , which you then add to existing entities.
+  - The TTL property value can be a time in the future, now, or in the past. If the value is a time in the past, the entity is immediately eligible for deletion. For example, you might create a TTL policy with the property `expireAt` , which you then add to existing entities.
 
   - Using any other data type or not setting the TTL property value will disable the TTL for the individual entity.
 
@@ -99,7 +99,7 @@ The console returns to the **Time-to-live** page. If the operation successfully 
     
     At the bottom of the Google Cloud console, a [Cloud Shell](https://docs.cloud.google.com/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
 
-2.  Use the [`  firestore fields ttls update  `](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update) command to configure a TTL policy. Add the `  --async  ` flag to prevent the gcloud CLI from waiting for the operation to complete.
+2.  Use the [`firestore fields ttls update`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update) command to configure a TTL policy. Add the `--async` flag to prevent the gcloud CLI from waiting for the operation to complete.
     
     ``` notranslate
     gcloud firestore fields ttls update ttl_field --collection-group=collection_group_name --enable-ttl
@@ -131,7 +131,7 @@ The Google Cloud console lists TTL policies for your database and includes each 
     
     At the bottom of the Google Cloud console, a [Cloud Shell](https://docs.cloud.google.com/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
 
-2.  Use the [`  firestore fields ttls list  `](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/list) command to view a TTL policy. The following command lists all TTL policies.
+2.  Use the [`firestore fields ttls list`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/list) command to view a TTL policy. The following command lists all TTL policies.
     
     ``` notranslate
     gcloud firestore fields ttls list
@@ -145,9 +145,9 @@ The Google Cloud console lists TTL policies for your database and includes each 
 
 ### View operation details
 
-You can use the gcloud CLI to view more details about a TTL policy that is in the `  CREATING  ` state.
+You can use the gcloud CLI to view more details about a TTL policy that is in the `CREATING` state.
 
-Use the [`  operations list  `](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command to see all running and recently completed operations:
+Use the [`operations list`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command to see all running and recently completed operations:
 
 ``` notranslate
 gcloud firestore operations list
@@ -183,7 +183,7 @@ The Google Cloud console returns to the **Time-to-live** page. On success, Datas
     
     At the bottom of the Google Cloud console, a [Cloud Shell](https://docs.cloud.google.com/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
 
-2.  Use the [`  firestore fields ttls update  `](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update) command to configure a TTL policy. Add the `  --async  ` flag to prevent the gcloud CLI from waiting for the operation to complete.
+2.  Use the [`firestore fields ttls update`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update) command to configure a TTL policy. Add the `--async` flag to prevent the gcloud CLI from waiting for the operation to complete.
     
     ``` notranslate
     gcloud firestore fields ttls update ttl_field --collection-group=collection_group_name --disable-ttl

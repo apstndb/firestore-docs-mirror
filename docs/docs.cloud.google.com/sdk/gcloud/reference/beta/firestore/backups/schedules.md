@@ -4,32 +4,32 @@ gcloud beta firestore backups schedules - manage the backup schedules for a Clou
 
 SYNOPSIS
 
-`  gcloud beta firestore backups schedules  ` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud beta firestore backups schedules` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (BETA)  ` Manage the backup schedules for a Cloud Firestore Database.
+`(BETA)` Manage the backup schedules for a Cloud Firestore Database.
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 COMMANDS
 
 `  COMMAND  ` is one of the following:
 
   - `  create  `  
-    `  (BETA)  ` Creates a Cloud Firestore backup schedule.
+    `(BETA)` Creates a Cloud Firestore backup schedule.
   - `  delete  `  
-    `  (BETA)  ` Deletes a Cloud Firestore backup schedule.
+    `(BETA)` Deletes a Cloud Firestore backup schedule.
   - `  describe  `  
-    `  (BETA)  ` Describes a Cloud Firestore backup schedule.
+    `(BETA)` Describes a Cloud Firestore backup schedule.
   - `  list  `  
-    `  (BETA)  ` Lists backup schedules under a Cloud Firestore database.
+    `(BETA)` Lists backup schedules under a Cloud Firestore database.
   - `  update  `  
-    `  (BETA)  ` Updates a Cloud Firestore backup schedule.
+    `(BETA)` Updates a Cloud Firestore backup schedule.
 
 NOTES
 

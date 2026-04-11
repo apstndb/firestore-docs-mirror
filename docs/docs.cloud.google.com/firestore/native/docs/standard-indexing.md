@@ -24,18 +24,18 @@ Before you can create an index in Firestore Standard edition, make sure that you
 
 **Note:** The following roles are managed through Identity and Access Management (IAM). For more information about roles and associated permissions, see [Predefined roles](https://cloud.google.com/firestore/docs/security/iam#predefined_roles) .
 
-  - `  roles/datastore.owner  `
-  - `  roles/datastore.indexAdmin  `
-  - `  roles/editor  `
-  - `  roles/owner  `
+  - `roles/datastore.owner`
+  - `roles/datastore.indexAdmin`
+  - `roles/editor`
+  - `roles/owner`
 
 If you have defined custom roles, assign all of the following permissions to create indexes:
 
-  - `  datastore.indexes.create  `
-  - `  datastore.indexes.delete  `
-  - `  datastore.indexes.get  `
-  - `  datastore.indexes.list  `
-  - `  datastore.indexes.update  `
+  - `datastore.indexes.create`
+  - `datastore.indexes.delete`
+  - `datastore.indexes.get`
+  - `datastore.indexes.list`
+  - `datastore.indexes.update`
 
 ## Use the Google Cloud console
 
@@ -109,7 +109,7 @@ To define a single-field index exemption that applies to all fields under a coll
 
 1.  Click **Add Exemption** .
 
-2.  Enter a **Collection ID** for the collection group and set **Field path** as `  *  ` .
+2.  Enter a **Collection ID** for the collection group and set **Field path** as `*` .
     
     ![Choose field to exempt](https://docs.cloud.google.com/static/firestore/native/docs/images/firestore-console-collection-level-exemption.png)
 
@@ -137,9 +137,9 @@ To delete a automatic indexing exemption, do the following:
 
 ## Use the Firebase CLI
 
-You can also deploy indexes with the [Firebase CLI](https://firebase.google.com/docs/cli) . To get started, run `  firebase init firestore  ` in your project directory. During setup, the Firebase CLI generates a JSON file with the default indexes in the correct format. Edit the file to add more indexes and deploy it with the `  firebase deploy  ` command.
+You can also deploy indexes with the [Firebase CLI](https://firebase.google.com/docs/cli) . To get started, run `firebase init firestore` in your project directory. During setup, the Firebase CLI generates a JSON file with the default indexes in the correct format. Edit the file to add more indexes and deploy it with the `firebase deploy` command.
 
-To deploy Firestore Standard edition indexes and rules only, add the `  --only firestore  ` flag.
+To deploy Firestore Standard edition indexes and rules only, add the `--only firestore` flag.
 
 If you make edits to the indexes using the Firebase console, make sure you also update your local indexes file. Refer to the [JSON index definition reference](https://firebase.google.com/docs/reference/firestore/indexes/) .
 
@@ -147,13 +147,13 @@ If you make edits to the indexes using the Firebase console, make sure you also 
 
 ### Creating indexes in the database
 
-Firestore Standard edition databases can include both single-field (automatic) and composite (manual) indexes. You can edit the Terraform configuration file to create an index for your database. Automatic and manual indexes use distinct Terraform resource types ( [`  google_firestore_index  `](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_index) and [`  google_firestore_field  `](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_field) ).
+Firestore Standard edition databases can include both single-field (automatic) and composite (manual) indexes. You can edit the Terraform configuration file to create an index for your database. Automatic and manual indexes use distinct Terraform resource types ( [`google_firestore_index`](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_index) and [`google_firestore_field`](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_field) ).
 
 Both Native mode and Datastore mode indexes are supported.
 
 #### Single-field (automatic) index
 
-The following example Terraform configuration file creates a single-field index on the `  name  ` field in the `  chatrooms  ` collection:
+The following example Terraform configuration file creates a single-field index on the `name` field in the `chatrooms` collection:
 
 **firestore.tf**
 
@@ -187,7 +187,7 @@ resource "google_firestore_field" "single-index" {
 
 #### Composite (manual) index
 
-The following example Terraform configuration file creates a composite index for a combination of the `  name  ` field and the `  description  ` field in the `  chatrooms  ` collection:
+The following example Terraform configuration file creates a composite index for a combination of the `name` field and the `description` field in the `chatrooms` collection:
 
 **firestore.tf**
 
@@ -216,7 +216,7 @@ resource "google_firestore_index" "composite-index" {
 
 #### Vector index
 
-The following example Terraform configuration file creates a vector index on the `  embedding  ` field in the `  chatrooms  ` collection:
+The following example Terraform configuration file creates a vector index on the `embedding` field in the `chatrooms` collection:
 
 **firestore.tf**
 
@@ -274,19 +274,19 @@ resource "google_firestore_index" "datastore-mode-index" {
 
 ##### Migrate from google\_datastore\_index
 
-The `  google_datastore_index  ` resource is deprecated and will be unavailable in terraform-provider-google version 6.0.0 and later.
+The `google_datastore_index` resource is deprecated and will be unavailable in terraform-provider-google version 6.0.0 and later.
 
-If you were previously using the `  google_datastore_index  ` resource, you can migrate to `  google_firestore_index  ` . You can migrate by doing the following:
+If you were previously using the `google_datastore_index` resource, you can migrate to `google_firestore_index` . You can migrate by doing the following:
 
-1.  Write an equivalent `  google_firestore_index  ` resource.
+1.  Write an equivalent `google_firestore_index` resource.
 2.  Import your existing Datastore mode index into the new resource.
-3.  Remove references to the old `  google_datastore_index  ` resource.
-4.  Remove the old `  google_datastore_index  ` resource from Terraform's state.
-5.  Running `  terraform apply  ` to apply any changes.
+3.  Remove references to the old `google_datastore_index` resource.
+4.  Remove the old `google_datastore_index` resource from Terraform's state.
+5.  Running `terraform apply` to apply any changes.
 
 More detailed instructions follow:
 
-Write a replacement `  google_firestore_index  ` based on your existing `  google_datastore_index  ` resource. See [below](https://docs.cloud.google.com/firestore/native/docs/standard-indexing#translate-your-index) for the required changes.
+Write a replacement `google_firestore_index` based on your existing `google_datastore_index` resource. See [below](https://docs.cloud.google.com/firestore/native/docs/standard-indexing#translate-your-index) for the required changes.
 
 Determine the Firestore resource path of your index:
 
@@ -294,7 +294,7 @@ Determine the Firestore resource path of your index:
 
 Replace datastore-index-resource-name with the Terraform name of your existing resource.
 
-Import your existing Datastore mode index to the `  google_firestore_index  ` resource you created above:
+Import your existing Datastore mode index to the `google_firestore_index` resource you created above:
 
     terraform import google_firestore_index.firestore-index-resource-name $INDEX_RESOURCE_PATH
 
@@ -302,15 +302,15 @@ Replace firestore-index-resource-name with the Terraform name of your existing r
 
 For more information on importing Firestore index resources, see [the google\_firestore\_index reference documentation](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_index#import) .
 
-Delete the existing `  google_datastore_index  ` resource from your Terraform configuration file.
+Delete the existing `google_datastore_index` resource from your Terraform configuration file.
 
-Remove the existing `  google_datastore_index  ` resource from Terraform state:
+Remove the existing `google_datastore_index` resource from Terraform state:
 
     terraform state rm google_datastore_index.datastore-index-resource-name
 
 For more information on removing resources, see the Terraform page on [Removing Resources](https://developer.hashicorp.com/terraform/language/resources/syntax#removing-resources) .
 
-Run `  terraform plan  ` . Verify the output to confirm that you are neither creating nor destroying any resources.
+Run `terraform plan` . Verify the output to confirm that you are neither creating nor destroying any resources.
 
 Inspect the output to ensure the import completed successfully. If the output shows any fields changing, ensure these changes are intended. If the output includes a line similar to:
 
@@ -328,13 +328,13 @@ Once you are satisfied with the Terraform plan output, run:
 
 To translate a google\_datastore\_index resource to the equivalent google\_firestore\_index resource, copy it and make the following changes:
 
-  - Replace `  google_datastore_index  ` with `  google_firestore_index  ` .
-  - Replace the argument name `  kind  ` with `  collection  ` , but keep the argument value the same.
-  - Replace the argument name `  ancestor  ` with `  query_scope  ` . Replace the argument value `  ALL_ANCESTORS  ` with `  COLLECTION_RECURSIVE  ` and any other value with `  COLLECTION_GROUP  ` . If there was no `  ancestor  ` argument, add a `  query_scope  ` argument with value `  COLLECTION_GROUP  ` .
-  - Add the argument `  api_scope  ` with value `  DATASTORE_MODE_API  ` .
-  - For each instance of `  properties  ` , replace it with a corresponding instance of `  fields  ` . Replace each instance of `  name  ` with `  field_path  ` and each instance of `  direction  ` with `  order  ` .
+  - Replace `google_datastore_index` with `google_firestore_index` .
+  - Replace the argument name `kind` with `collection` , but keep the argument value the same.
+  - Replace the argument name `ancestor` with `query_scope` . Replace the argument value `ALL_ANCESTORS` with `COLLECTION_RECURSIVE` and any other value with `COLLECTION_GROUP` . If there was no `ancestor` argument, add a `query_scope` argument with value `COLLECTION_GROUP` .
+  - Add the argument `api_scope` with value `DATASTORE_MODE_API` .
+  - For each instance of `properties` , replace it with a corresponding instance of `fields` . Replace each instance of `name` with `field_path` and each instance of `direction` with `order` .
 
-For example, consider this `  google_datastore_index  ` resource:
+For example, consider this `google_datastore_index` resource:
 
 **datastore.tf**
 
@@ -354,7 +354,7 @@ resource "google_datastore_index" "legacy" {
 }
 ```
 
-The equivalent `  google_firestore_index  ` resource would be:
+The equivalent `google_firestore_index` resource would be:
 
 ``` pretty-print
 resource "google_firestore_index" "new" {
@@ -397,13 +397,13 @@ Index builds are *long-running operations* .
 
 **Key Term:** Firestore Standard edition supports several administrative operations that can take a long time to complete. These operations are called ***long-running operations*** . Firestore Standard edition includes features to execute and manage long- running operations. Supported long-running operations include index builds and export operations.
 
-After you start an index build, Firestore Standard edition assigns the operation a unique name. Operation names are prefixed with `  projects/[PROJECT_ID]/databases/(default)/operations/  ` , for example:
+After you start an index build, Firestore Standard edition assigns the operation a unique name. Operation names are prefixed with `projects/[PROJECT_ID]/databases/(default)/operations/` , for example:
 
 ``` notranslate
 projects/project-id/databases/(default)/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
 ```
 
-However, you can leave out the prefix when specifying an operation name for the `  describe  ` command.
+However, you can leave out the prefix when specifying an operation name for the `describe` command.
 
 ### Listing all long-running operations
 
@@ -423,11 +423,11 @@ gcloud firestore operations describe operation-name
 
 ### Estimating the completion time
 
-As your operation runs, see the value of the [`  state  ` field](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#state) for the overall status of the operation.
+As your operation runs, see the value of the [`state` field](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#state) for the overall status of the operation.
 
-A request for the status of a long-running operation also returns the metrics `  workEstimated  ` and `  workCompleted  ` . These metrics are returned for the number of documents. `  workEstimated  ` shows the estimated total number of documents an operation will process. `  workCompleted  ` shows the number of documents processed so far. After the operation completes, `  workCompleted  ` reflects the total number of documents that were actually processed, which might be different than the value of `  workEstimated  ` .
+A request for the status of a long-running operation also returns the metrics `workEstimated` and `workCompleted` . These metrics are returned for the number of documents. `workEstimated` shows the estimated total number of documents an operation will process. `workCompleted` shows the number of documents processed so far. After the operation completes, `workCompleted` reflects the total number of documents that were actually processed, which might be different than the value of `workEstimated` .
 
-Divide `  workCompleted  ` by `  workEstimated  ` for a rough progress estimate. The estimate might be inaccurate because it depends on delayed statistics collection.
+Divide `workCompleted` by `workEstimated` for a rough progress estimate. The estimate might be inaccurate because it depends on delayed statistics collection.
 
 For example, here is the progress status of an index build:
 
@@ -452,7 +452,7 @@ For example, here is the progress status of an index build:
     ...
 ```
 
-When an operation is done, the operation description will contain [`  "done": true  `](https://docs.cloud.google.com/firestore/docs/reference//reference/rpc/google.longrunning#operation) . See the value of the [`  state  ` field](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#state) for the result of the operation. If the `  done  ` field is not set in the response, then its value is `  false  ` . Do not depend on the existence of the `  done  ` value for in-progress operations.
+When an operation is done, the operation description will contain [`"done": true`](https://docs.cloud.google.com/firestore/docs/reference//reference/rpc/google.longrunning#operation) . See the value of the [`state` field](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#state) for the result of the operation. If the `done` field is not set in the response, then its value is `false` . Do not depend on the existence of the `done` value for in-progress operations.
 
 <span id="index-build-error"></span> <span id="exemption-errors"></span>
 

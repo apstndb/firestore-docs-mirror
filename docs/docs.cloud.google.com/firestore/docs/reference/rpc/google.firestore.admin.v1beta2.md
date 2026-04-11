@@ -32,7 +32,7 @@
 
 ## FirestoreAdmin
 
-Operations are created by service `  FirestoreAdmin  ` , but are accessed via service `  google.longrunning.Operations  ` .
+Operations are created by service `FirestoreAdmin` , but are accessed via service `google.longrunning.Operations` .
 
 <table>
 <colgroup>
@@ -45,14 +45,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc CreateIndex(                         CreateIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
-<p>Creates a composite index. This returns a <code dir="ltr" translate="no">             google.longrunning.Operation           </code> which may be used to track the status of the creation. The metadata for the operation will be the type <code dir="ltr" translate="no">             IndexOperationMetadata           </code> .</p>
+<td><p><code dir="ltr" translate="no">rpc CreateIndex(              CreateIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
+<p>Creates a composite index. This returns a <code dir="ltr" translate="no">            google.longrunning.Operation           </code> which may be used to track the status of the creation. The metadata for the operation will be the type <code dir="ltr" translate="no">            IndexOperationMetadata           </code> .</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -72,14 +72,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc DeleteIndex(                         DeleteIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">              Empty            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc DeleteIndex(              DeleteIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">             Empty            </code> )</p>
 <p>Deletes a composite index.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -99,14 +99,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ExportDocuments(                         ExportDocumentsRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ExportDocuments(              ExportDocumentsRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
 <p>Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage. Recent updates to documents may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -126,14 +126,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc GetField(                         GetFieldRequest            </code> ) returns ( <code dir="ltr" translate="no">              Field            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc GetField(              GetFieldRequest            </code> ) returns ( <code dir="ltr" translate="no">             Field            </code> )</p>
 <p>Gets the metadata and configuration for a Field.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -153,14 +153,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc GetIndex(                         GetIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">              Index            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc GetIndex(              GetIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">             Index            </code> )</p>
 <p>Gets a composite index.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -180,14 +180,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ImportDocuments(                         ImportDocumentsRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ImportDocuments(              ImportDocumentsRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
 <p>Imports documents into Google Cloud Firestore. Existing documents with the same name are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an ImportDocuments operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Firestore.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -207,15 +207,15 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ListFields(                         ListFieldsRequest            </code> ) returns ( <code dir="ltr" translate="no">              ListFieldsResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ListFields(              ListFieldsRequest            </code> ) returns ( <code dir="ltr" translate="no">             ListFieldsResponse            </code> )</p>
 <p>Lists the field configuration and metadata for this database.</p>
-<p>Currently, <code dir="ltr" translate="no">             FirestoreAdmin.ListFields           </code> only supports listing fields that have been explicitly overridden. To issue this query, call <code dir="ltr" translate="no">             FirestoreAdmin.ListFields           </code> with the filter set to <code dir="ltr" translate="no">           indexConfig.usesAncestorConfig:false          </code> .</p>
+<p>Currently, <code dir="ltr" translate="no">            FirestoreAdmin.ListFields           </code> only supports listing fields that have been explicitly overridden. To issue this query, call <code dir="ltr" translate="no">            FirestoreAdmin.ListFields           </code> with the filter set to <code dir="ltr" translate="no">indexConfig.usesAncestorConfig:false</code> .</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -235,14 +235,14 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ListIndexes(                         ListIndexesRequest            </code> ) returns ( <code dir="ltr" translate="no">              ListIndexesResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ListIndexes(              ListIndexesRequest            </code> ) returns ( <code dir="ltr" translate="no">             ListIndexesResponse            </code> )</p>
 <p>Lists composite indexes.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -262,16 +262,16 @@ Operations are created by service `  FirestoreAdmin  ` , but are accessed via se
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc UpdateField(                         UpdateFieldRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
-<p>Updates a field configuration. Currently, field updates apply only to single field index configuration. However, calls to <code dir="ltr" translate="no">             FirestoreAdmin.UpdateField           </code> should provide a field mask to avoid changing any configuration that the caller isn't aware of. The field mask should be specified as: <code dir="ltr" translate="no">           { paths: "index_config" }          </code> .</p>
-<p>This call returns a <code dir="ltr" translate="no">             google.longrunning.Operation           </code> which may be used to track the status of the field update. The metadata for the operation will be the type <code dir="ltr" translate="no">             FieldOperationMetadata           </code> .</p>
-<p>To configure the default field settings for the database, use the special <code dir="ltr" translate="no">           Field          </code> with resource name: <code dir="ltr" translate="no">           projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*          </code> .</p>
+<td><p><code dir="ltr" translate="no">rpc UpdateField(              UpdateFieldRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
+<p>Updates a field configuration. Currently, field updates apply only to single field index configuration. However, calls to <code dir="ltr" translate="no">            FirestoreAdmin.UpdateField           </code> should provide a field mask to avoid changing any configuration that the caller isn't aware of. The field mask should be specified as: <code dir="ltr" translate="no">{ paths: "index_config" }</code> .</p>
+<p>This call returns a <code dir="ltr" translate="no">            google.longrunning.Operation           </code> which may be used to track the status of the field update. The metadata for the operation will be the type <code dir="ltr" translate="no">            FieldOperationMetadata           </code> .</p>
+<p>To configure the default field settings for the database, use the special <code dir="ltr" translate="no">Field</code> with resource name: <code dir="ltr" translate="no">projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*</code> .</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -286,13 +286,13 @@ The request for `  FirestoreAdmin.CreateIndex  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-A parent name of the form `  projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}  `
+A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`
 
-`  index  `
+`index`
 
 `  Index  `
 
@@ -304,11 +304,11 @@ The request for `  FirestoreAdmin.DeleteIndex  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-A name of the form `  projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}  `
+A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`
 
 ## ExportDocumentsMetadata
 
@@ -316,45 +316,45 @@ Metadata for `  google.longrunning.Operation  ` results from `  FirestoreAdmin.E
 
 Fields
 
-`  start_time  `
+`start_time`
 
 `  Timestamp  `
 
 The time this operation started.
 
-`  end_time  `
+`end_time`
 
 `  Timestamp  `
 
 The time this operation completed. Will be unset if operation still in progress.
 
-`  operation_state  `
+`operation_state`
 
 `  OperationState  `
 
 The state of the export operation.
 
-`  progress_documents  `
+`progress_documents`
 
 `  Progress  `
 
 The progress, in documents, of this operation.
 
-`  progress_bytes  `
+`progress_bytes`
 
 `  Progress  `
 
 The progress, in bytes, of this operation.
 
-`  collection_ids[]  `
+`collection_ids[]`
 
-`  string  `
+`string`
 
 Which collection ids are being exported.
 
-`  output_uri_prefix  `
+`output_uri_prefix`
 
-`  string  `
+`string`
 
 Where the entities are being exported to.
 
@@ -364,23 +364,23 @@ The request for `  FirestoreAdmin.ExportDocuments  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Database to export. Should be of the form: `  projects/{project_id}/databases/{database_id}  ` .
+Database to export. Should be of the form: `projects/{project_id}/databases/{database_id}` .
 
-`  collection_ids[]  `
+`collection_ids[]`
 
-`  string  `
+`string`
 
 Which collection ids to export. Unspecified means all collections.
 
-`  output_uri_prefix  `
+`output_uri_prefix`
 
-`  string  `
+`string`
 
-The output URI. Currently only supports Google Cloud Storage URIs of the form: `  gs://BUCKET_NAME[/NAMESPACE_PATH]  ` , where `  BUCKET_NAME  ` is the name of the Google Cloud Storage bucket and `  NAMESPACE_PATH  ` is an optional Google Cloud Storage namespace path. When choosing a name, be sure to consider Google Cloud Storage naming guidelines: <https://cloud.google.com/storage/docs/naming> . If the URI is a bucket (without a namespace path), a prefix will be generated based on the start time.
+The output URI. Currently only supports Google Cloud Storage URIs of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]` , where `BUCKET_NAME` is the name of the Google Cloud Storage bucket and `NAMESPACE_PATH` is an optional Google Cloud Storage namespace path. When choosing a name, be sure to consider Google Cloud Storage naming guidelines: <https://cloud.google.com/storage/docs/naming> . If the URI is a bucket (without a namespace path), a prefix will be generated based on the start time.
 
 ## ExportDocumentsResponse
 
@@ -388,9 +388,9 @@ Returned in the `  google.longrunning.Operation  ` response field.
 
 Fields
 
-`  output_uri_prefix  `
+`output_uri_prefix`
 
-`  string  `
+`string`
 
 Location of the output files. This can be used to begin an import into Cloud Firestore (this project or another project) after the operation completes successfully.
 
@@ -402,25 +402,25 @@ Fields are grouped by their "Collection Group", which represent all collections 
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-A field name of the form `  projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}  `
+A field name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`
 
-A field path may be a simple field name, e.g. `  address  ` or a path to fields within map\_value , e.g. `  address.city  ` , or a special field path. The only valid special field is `  *  ` , which represents any field.
+A field path may be a simple field name, e.g. `address` or a path to fields within map\_value , e.g. `address.city` , or a special field path. The only valid special field is `*` , which represents any field.
 
-Field paths may be quoted using `  (backtick). The only character that needs to be escaped within a quoted field path is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted include:  ` \* `  ,  ` . `  , ``` (backtick),  ` \[ `  ,  ` \]\`, as well as any ascii symbolic characters.
+Field paths may be quoted using `(backtick). The only character that needs to be escaped within a quoted field path is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted include:` \* `,` . `, ``` (backtick),` \[ `,` \]\`, as well as any ascii symbolic characters.
 
-Examples: (Note: Comments here are written in markdown syntax, so there is an additional layer of backticks to represent a code block) `  \  ` address.city\` `  represents a field named  ` address.city `  , not the map key  ` city `  in the field  ` address `  .  ` \`\*\` `  represents a field named  ` \*\`, not any field.
+Examples: (Note: Comments here are written in markdown syntax, so there is an additional layer of backticks to represent a code block) `\` address.city\` `represents a field named` address.city `, not the map key` city `in the field` address `.` \`\*\` `represents a field named` \*\`, not any field.
 
-A special `  Field  ` contains the default indexing settings for all fields. This field's resource name is: `  projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*  ` Indexes defined on this `  Field  ` will be applied to all fields which do not have their own `  Field  ` index configuration.
+A special `Field` contains the default indexing settings for all fields. This field's resource name is: `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*` Indexes defined on this `Field` will be applied to all fields which do not have their own `Field` index configuration.
 
-`  index_config  `
+`index_config`
 
 `  IndexConfig  `
 
-The index configuration for this field. If unset, field indexing will revert to the configuration defined by the `  ancestor_field  ` . To explicitly remove all indexes for this field, specify an index config with an empty list of indexes.
+The index configuration for this field. If unset, field indexing will revert to the configuration defined by the `ancestor_field` . To explicitly remove all indexes for this field, specify an index config with an empty list of indexes.
 
 ## IndexConfig
 
@@ -428,29 +428,29 @@ The index configuration for this field.
 
 Fields
 
-`  indexes[]  `
+`indexes[]`
 
 `  Index  `
 
 The indexes supported for this field.
 
-`  uses_ancestor_config  `
+`uses_ancestor_config`
 
-`  bool  `
+`bool`
 
-Output only. When true, the `  Field  ` 's index configuration is set from the configuration specified by the `  ancestor_field  ` . When false, the `  Field  ` 's index configuration is defined explicitly.
+Output only. When true, the `Field` 's index configuration is set from the configuration specified by the `ancestor_field` . When false, the `Field` 's index configuration is defined explicitly.
 
-`  ancestor_field  `
+`ancestor_field`
 
-`  string  `
+`string`
 
-Output only. Specifies the resource name of the `  Field  ` from which this field's index configuration is set (when `  uses_ancestor_config  ` is true), or from which it *would* be set if this field had no index configuration (when `  uses_ancestor_config  ` is false).
+Output only. Specifies the resource name of the `Field` from which this field's index configuration is set (when `uses_ancestor_config` is true), or from which it *would* be set if this field had no index configuration (when `uses_ancestor_config` is false).
 
-`  reverting  `
+`reverting`
 
-`  bool  `
+`bool`
 
-Output only When true, the `  Field  ` 's index configuration is in the process of being reverted. Once complete, the index config will transition to the same state as the field specified by `  ancestor_field  ` , at which point `  uses_ancestor_config  ` will be `  true  ` and `  reverting  ` will be `  false  ` .
+Output only When true, the `Field` 's index configuration is in the process of being reverted. Once complete, the index config will transition to the same state as the field specified by `ancestor_field` , at which point `uses_ancestor_config` will be `true` and `reverting` will be `false` .
 
 ## FieldOperationMetadata
 
@@ -458,43 +458,43 @@ Metadata for `  google.longrunning.Operation  ` results from `  FirestoreAdmin.U
 
 Fields
 
-`  start_time  `
+`start_time`
 
 `  Timestamp  `
 
 The time this operation started.
 
-`  end_time  `
+`end_time`
 
 `  Timestamp  `
 
 The time this operation completed. Will be unset if operation still in progress.
 
-`  field  `
+`field`
 
-`  string  `
+`string`
 
-The field resource that this operation is acting on. For example: `  projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}  `
+The field resource that this operation is acting on. For example: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`
 
-`  index_config_deltas[]  `
+`index_config_deltas[]`
 
 `  IndexConfigDelta  `
 
 A list of `  IndexConfigDelta  ` , which describe the intent of this operation.
 
-`  state  `
+`state`
 
 `  OperationState  `
 
 The state of the operation.
 
-`  document_progress  `
+`document_progress`
 
 `  Progress  `
 
 The progress, in documents, of this operation.
 
-`  bytes_progress  `
+`bytes_progress`
 
 `  Progress  `
 
@@ -506,13 +506,13 @@ Information about an index configuration change.
 
 Fields
 
-`  change_type  `
+`change_type`
 
 `  ChangeType  `
 
 Specifies how the index is changing.
 
-`  index  `
+`index`
 
 `  Index  `
 
@@ -524,15 +524,15 @@ Specifies how the index is changing.
 
 Enums
 
-`  CHANGE_TYPE_UNSPECIFIED  `
+`CHANGE_TYPE_UNSPECIFIED`
 
 The type of change is not specified or known.
 
-`  ADD  `
+`ADD`
 
 The single field index is being added.
 
-`  REMOVE  `
+`REMOVE`
 
 The single field index is being removed.
 
@@ -542,11 +542,11 @@ The request for `  FirestoreAdmin.GetField  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-A name of the form `  projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_id}  `
+A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_id}`
 
 ## GetIndexRequest
 
@@ -554,11 +554,11 @@ The request for `  FirestoreAdmin.GetIndex  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-A name of the form `  projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}  `
+A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`
 
 ## ImportDocumentsMetadata
 
@@ -566,45 +566,45 @@ Metadata for `  google.longrunning.Operation  ` results from `  FirestoreAdmin.I
 
 Fields
 
-`  start_time  `
+`start_time`
 
 `  Timestamp  `
 
 The time this operation started.
 
-`  end_time  `
+`end_time`
 
 `  Timestamp  `
 
 The time this operation completed. Will be unset if operation still in progress.
 
-`  operation_state  `
+`operation_state`
 
 `  OperationState  `
 
 The state of the import operation.
 
-`  progress_documents  `
+`progress_documents`
 
 `  Progress  `
 
 The progress, in documents, of this operation.
 
-`  progress_bytes  `
+`progress_bytes`
 
 `  Progress  `
 
 The progress, in bytes, of this operation.
 
-`  collection_ids[]  `
+`collection_ids[]`
 
-`  string  `
+`string`
 
 Which collection ids are being imported.
 
-`  input_uri_prefix  `
+`input_uri_prefix`
 
-`  string  `
+`string`
 
 The location of the documents being imported.
 
@@ -614,21 +614,21 @@ The request for `  FirestoreAdmin.ImportDocuments  ` .
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Database to import into. Should be of the form: `  projects/{project_id}/databases/{database_id}  ` .
+Database to import into. Should be of the form: `projects/{project_id}/databases/{database_id}` .
 
-`  collection_ids[]  `
+`collection_ids[]`
 
-`  string  `
+`string`
 
 Which collection ids to import. Unspecified means all collections included in the import.
 
-`  input_uri_prefix  `
+`input_uri_prefix`
 
-`  string  `
+`string`
 
 Location of the exported files. This must match the output\_uri\_prefix of an ExportDocumentsResponse from an export that has completed successfully. See: `  google.firestore.admin.v1beta2.ExportDocumentsResponse.output_uri_prefix  ` .
 
@@ -638,13 +638,13 @@ Cloud Firestore indexes enable simple and complex queries against documents in a
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
-Output only. A server defined name for this index. The form of this name for composite indexes will be: `  projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}  ` For single field indexes, this field will be empty.
+Output only. A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
 
-`  query_scope  `
+`query_scope`
 
 `  QueryScope  `
 
@@ -652,17 +652,17 @@ Indexes with a collection query scope specified allow queries against a collecti
 
 Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
 
-`  fields[]  `
+`fields[]`
 
 `  IndexField  `
 
 The fields supported by this index.
 
-For composite indexes, this is always 2 or more fields. The last field entry is always for the field path `  __name__  ` . If, on creation, `  __name__  ` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `  __name__  ` will be ordered ASCENDING (unless explicitly specified).
+For composite indexes, this is always 2 or more fields. The last field entry is always for the field path `__name__` . If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified).
 
 For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
 
-`  state  `
+`state`
 
 `  State  `
 
@@ -674,25 +674,25 @@ A field in an index. The field\_path describes which field is indexed, the value
 
 Fields
 
-`  field_path  `
+`field_path`
 
-`  string  `
+`string`
 
 Can be **name** . For single field indexes, this must match the name of the field or may be omitted.
 
-Union field `  value_mode  ` . How the field value is indexed. `  value_mode  ` can be only one of the following:
+Union field `value_mode` . How the field value is indexed. `value_mode` can be only one of the following:
 
-`  order  `
+`order`
 
 `  Order  `
 
 Indicates that this field supports ordering by the specified order or comparing using =, \<, \<=, \>, \>=.
 
-`  array_config  `
+`array_config`
 
 `  ArrayConfig  `
 
-Indicates that this field supports operations on `  array_value  ` s.
+Indicates that this field supports operations on `array_value` s.
 
 ## ArrayConfig
 
@@ -700,11 +700,11 @@ The supported array value configurations.
 
 Enums
 
-`  ARRAY_CONFIG_UNSPECIFIED  `
+`ARRAY_CONFIG_UNSPECIFIED`
 
 The index does not support additional array queries.
 
-`  CONTAINS  `
+`CONTAINS`
 
 The index supports array containment queries.
 
@@ -714,55 +714,55 @@ The supported orderings.
 
 Enums
 
-`  ORDER_UNSPECIFIED  `
+`ORDER_UNSPECIFIED`
 
 The ordering is unspecified. Not a valid option.
 
-`  ASCENDING  `
+`ASCENDING`
 
 The field is ordered by ascending field value.
 
-`  DESCENDING  `
+`DESCENDING`
 
 The field is ordered by descending field value.
 
 ## QueryScope
 
-Query Scope defines the scope at which a query is run. This is specified on a StructuredQuery's `  from  ` field.
+Query Scope defines the scope at which a query is run. This is specified on a StructuredQuery's `from` field.
 
 Enums
 
-`  QUERY_SCOPE_UNSPECIFIED  `
+`QUERY_SCOPE_UNSPECIFIED`
 
 The query scope is unspecified. Not a valid option.
 
-`  COLLECTION  `
+`COLLECTION`
 
 Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the collection id specified by the index.
 
-`  COLLECTION_GROUP  `
+`COLLECTION_GROUP`
 
 Indexes with a collection group query scope specified allow queries against all collections that has the collection id specified by the index.
 
 ## State
 
-The state of an index. During index creation, an index will be in the `  CREATING  ` state. If the index is created successfully, it will transition to the `  READY  ` state. If the index creation encounters a problem, the index will transition to the `  NEEDS_REPAIR  ` state.
+The state of an index. During index creation, an index will be in the `CREATING` state. If the index is created successfully, it will transition to the `READY` state. If the index creation encounters a problem, the index will transition to the `NEEDS_REPAIR` state.
 
 Enums
 
-`  STATE_UNSPECIFIED  `
+`STATE_UNSPECIFIED`
 
 The state is unspecified.
 
-`  CREATING  `
+`CREATING`
 
 The index is being created. There is an active long-running operation for the index. The index is updated when writing a document. Some index data may exist.
 
-`  READY  `
+`READY`
 
 The index is ready to be used. The index is updated when writing a document. The index is fully populated from all stored documents it applies to.
 
-`  NEEDS_REPAIR  `
+`NEEDS_REPAIR`
 
 The index was being created, but something went wrong. There is no active long-running operation for the index, and the most recently finished long-running operation failed. The index is not updated when writing a document. Some index data may exist. Use the google.longrunning.Operations API to determine why the operation that last attempted to create this index failed, then re-create the index.
 
@@ -772,37 +772,37 @@ Metadata for `  google.longrunning.Operation  ` results from `  FirestoreAdmin.C
 
 Fields
 
-`  start_time  `
+`start_time`
 
 `  Timestamp  `
 
 The time this operation started.
 
-`  end_time  `
+`end_time`
 
 `  Timestamp  `
 
 The time this operation completed. Will be unset if operation still in progress.
 
-`  index  `
+`index`
 
-`  string  `
+`string`
 
-The index resource that this operation is acting on. For example: `  projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}  `
+The index resource that this operation is acting on. For example: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`
 
-`  state  `
+`state`
 
 `  OperationState  `
 
 The state of the operation.
 
-`  progress_documents  `
+`progress_documents`
 
 `  Progress  `
 
 The progress, in documents, of this operation.
 
-`  progress_bytes  `
+`progress_bytes`
 
 `  Progress  `
 
@@ -814,27 +814,27 @@ The request for `  FirestoreAdmin.ListFields  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-A parent name of the form `  projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}  `
+A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`
 
-`  filter  `
+`filter`
 
-`  string  `
+`string`
 
-The filter to apply to list results. Currently, `  FirestoreAdmin.ListFields  ` only supports listing fields that have been explicitly overridden. To issue this query, call `  FirestoreAdmin.ListFields  ` with the filter set to `  indexConfig.usesAncestorConfig:false  ` .
+The filter to apply to list results. Currently, `  FirestoreAdmin.ListFields  ` only supports listing fields that have been explicitly overridden. To issue this query, call `  FirestoreAdmin.ListFields  ` with the filter set to `indexConfig.usesAncestorConfig:false` .
 
-`  page_size  `
+`page_size`
 
-`  int32  `
+`int32`
 
 The number of results to return.
 
-`  page_token  `
+`page_token`
 
-`  string  `
+`string`
 
 A page token, returned from a previous call to `  FirestoreAdmin.ListFields  ` , that may be used to get the next page of results.
 
@@ -844,15 +844,15 @@ The response for `  FirestoreAdmin.ListFields  ` .
 
 Fields
 
-`  fields[]  `
+`fields[]`
 
 `  Field  `
 
 The requested fields.
 
-`  next_page_token  `
+`next_page_token`
 
-`  string  `
+`string`
 
 A page token that may be used to request another page of results. If blank, this is the last page.
 
@@ -862,27 +862,27 @@ The request for `  FirestoreAdmin.ListIndexes  ` .
 
 Fields
 
-`  parent  `
+`parent`
 
-`  string  `
+`string`
 
-A parent name of the form `  projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}  `
+A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`
 
-`  filter  `
+`filter`
 
-`  string  `
+`string`
 
 The filter to apply to list results.
 
-`  page_size  `
+`page_size`
 
-`  int32  `
+`int32`
 
 The number of results to return.
 
-`  page_token  `
+`page_token`
 
-`  string  `
+`string`
 
 A page token, returned from a previous call to `  FirestoreAdmin.ListIndexes  ` , that may be used to get the next page of results.
 
@@ -892,15 +892,15 @@ The response for `  FirestoreAdmin.ListIndexes  ` .
 
 Fields
 
-`  indexes[]  `
+`indexes[]`
 
 `  Index  `
 
 The requested indexes.
 
-`  next_page_token  `
+`next_page_token`
 
-`  string  `
+`string`
 
 A page token that may be used to request another page of results. If blank, this is the last page.
 
@@ -910,35 +910,35 @@ Describes the state of the operation.
 
 Enums
 
-`  OPERATION_STATE_UNSPECIFIED  `
+`OPERATION_STATE_UNSPECIFIED`
 
 Unspecified.
 
-`  INITIALIZING  `
+`INITIALIZING`
 
 Request is being prepared for processing.
 
-`  PROCESSING  `
+`PROCESSING`
 
 Request is actively being processed.
 
-`  CANCELLING  `
+`CANCELLING`
 
 Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.
 
-`  FINALIZING  `
+`FINALIZING`
 
 Request has been processed and is in its finalization stage.
 
-`  SUCCESSFUL  `
+`SUCCESSFUL`
 
 Request has completed successfully.
 
-`  FAILED  `
+`FAILED`
 
 Request has finished being processed, but encountered an error.
 
-`  CANCELLED  `
+`CANCELLED`
 
 Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation.
 
@@ -948,15 +948,15 @@ Describes the progress of the operation. Unit of work is generic and must be int
 
 Fields
 
-`  estimated_work  `
+`estimated_work`
 
-`  int64  `
+`int64`
 
 The amount of work estimated.
 
-`  completed_work  `
+`completed_work`
 
-`  int64  `
+`int64`
 
 The amount of work completed.
 
@@ -966,13 +966,13 @@ The request for `  FirestoreAdmin.UpdateField  ` .
 
 Fields
 
-`  field  `
+`field`
 
 `  Field  `
 
 The field to be updated.
 
-`  update_mask  `
+`update_mask`
 
 `  FieldMask  `
 

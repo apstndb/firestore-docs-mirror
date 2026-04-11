@@ -18,13 +18,13 @@ If a heatmap shows a fine-grained mix of dark and bright colors, then reads and 
 
 A heatmap with a single bright diagonal line can indicate a database that uses strictly increasing or decreasing keys. Sequential keys are an anti-pattern that can create hotspots. To learn more about hotspots, see the [best practices page](https://docs.cloud.google.com/firestore/docs/best-practices#high_read_write_and_delete_rates_to_a_narrow_document_range) .
 
-When hotspotting, you might observe corresponding elevated latencies when you compare a `  Ops/s  ` metric with a latency metric.
+When hotspotting, you might observe corresponding elevated latencies when you compare a `Ops/s` metric with a latency metric.
 
 ## Sudden traffic increase
 
 ![Heatmap showing a sudden increase](https://docs.cloud.google.com/static/firestore/native/docs/images/keyvis-patterns-inflection.png)
 
-A heatmap with a key range that suddenly changes from dark to bright indicates a sudden spike in load. If `  Ops  ` traffic increases faster than Firestore can auto-scale resources, you might see corresponding elevated `  latency  ` metrics.
+A heatmap with a key range that suddenly changes from dark to bright indicates a sudden spike in load. If `Ops` traffic increases faster than Firestore can auto-scale resources, you might see corresponding elevated `latency` metrics.
 
 ## What's next
 

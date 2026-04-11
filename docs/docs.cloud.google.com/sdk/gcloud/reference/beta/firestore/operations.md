@@ -4,30 +4,30 @@ gcloud beta firestore operations - manage Long Running Operations for Cloud Fire
 
 SYNOPSIS
 
-`  gcloud beta firestore operations  ` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud beta firestore operations` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (BETA)  ` Manage Long Running Operations for Cloud Firestore.
+`(BETA)` Manage Long Running Operations for Cloud Firestore.
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 COMMANDS
 
 `  COMMAND  ` is one of the following:
 
   - `  cancel  `  
-    `  (BETA)  ` Cancel a currently-running Cloud Firestore admin operation.
+    `(BETA)` Cancel a currently-running Cloud Firestore admin operation.
   - `  delete  `  
-    `  (BETA)  ` Delete a completed Cloud Firestore admin operation.
+    `(BETA)` Delete a completed Cloud Firestore admin operation.
   - `  describe  `  
-    `  (BETA)  ` Retrieves information about a Cloud Firestore admin operation.
+    `(BETA)` Retrieves information about a Cloud Firestore admin operation.
   - `  list  `  
-    `  (BETA)  ` List pending Cloud Firestore admin operations and their status.
+    `(BETA)` List pending Cloud Firestore admin operations and their status.
 
 NOTES
 

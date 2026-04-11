@@ -4,26 +4,26 @@ gcloud beta firestore fields ttls - manage Time-to-live metadata for Cloud Fires
 
 SYNOPSIS
 
-`  gcloud beta firestore fields ttls  ` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud beta firestore fields ttls` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (BETA)  ` Manage Time-to-live metadata for Cloud Firestore.
+`(BETA)` Manage Time-to-live metadata for Cloud Firestore.
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 COMMANDS
 
 `  COMMAND  ` is one of the following:
 
   - `  list  `  
-    `  (BETA)  ` List all fields used as a Time To Live expiration setting.
+    `(BETA)` List all fields used as a Time To Live expiration setting.
   - `  update  `  
-    `  (BETA)  ` Update the TTL configuration of the given field.
+    `(BETA)` Update the TTL configuration of the given field.
 
 NOTES
 

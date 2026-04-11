@@ -5,7 +5,7 @@ There are two types of indexes:
   - <span id="built_in_indexes"></span> *Built-in indexes*  
     By default, a Datastore mode database automatically predefines an index for each property of each entity kind. These single property indexes are suitable for simple types of queries.
   - <span id="composite_indexes"></span> *Composite indexes*  
-    Composite indexes index multiple property values per indexed entity. Composite indexes support complex queries and are defined in an [index configuration file](https://docs.cloud.google.com/datastore/docs/tools/indexconfig) ( `  index.yaml  ` ).
+    Composite indexes index multiple property values per indexed entity. Composite indexes support complex queries and are defined in an [index configuration file](https://docs.cloud.google.com/datastore/docs/tools/indexconfig) ( `index.yaml` ).
 
 The types of indexes are discussed in more detail later.
 
@@ -17,7 +17,7 @@ An index is defined on a list of properties of a given [entity kind](https://doc
 
 An index contains entries for every property named in the index's definition. Each entry of the index represents an entity that is a potential result for queries based on the index. An entity is included in the index only if it has an indexed value set for every property used in the index; if the index definition refers to a property for which the entity has no value, that entity won't appear in the index and hence will never be returned as a result for any query based on the index.
 
-**Note:** Datastore mode databases distinguish between an entity that does not possess a property and one that possesses the property with a null value ( `  None  ` ). If you explicitly assign a null value to an entity's property, that entity may be included in the results of a query referring to that property.
+**Note:** Datastore mode databases distinguish between an entity that does not possess a property and one that possesses the property with a null value ( `None` ). If you explicitly assign a null value to an entity's property, that entity may be included in the results of a query referring to that property.
 
 The composite index is sorted first by ancestor and then by property values, in the order specified in the index definition. Based on this understanding, you can create the [perfect index](https://docs.cloud.google.com/datastore/docs/concepts/optimize-indexes#finding_the_perfect_index) that enables efficient querying.
 
@@ -45,7 +45,7 @@ For more complex queries, an application must define *composite* , or manual, in
   - Queries with multiple sort orders
   - Queries with one or more filters and one or more sort orders
 
-Composite indexes are defined in the application's [index configuration file](https://docs.cloud.google.com/datastore/docs/tools/indexconfig) ( `  index.yaml  ` ). (Built-in indexes are not contained in the index configuration file.)
+Composite indexes are defined in the application's [index configuration file](https://docs.cloud.google.com/datastore/docs/tools/indexconfig) ( `index.yaml` ). (Built-in indexes are not contained in the index configuration file.)
 
 Composite indexes are composed of multiple properties and require that each individual property must not be [excluded from your indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes#unindexed_properties) .
 
@@ -57,13 +57,13 @@ The Datastore mode API automatically suggests indexes that are appropriate for m
 
 The [Datastore emulator](https://docs.cloud.google.com/datastore/docs/tools/datastore-emulator) can help make it easier to manage your index configuration file. Instead of failing to execute a query that requires an index and does not have one, the Datastore emulator can generate an index configuration that would allow the query to succeed. If your local testing of an application exercises every possible query the application will issue, using every combination of filter and sort order, the generated entries will represent a complete set of indexes. If your testing does not exercise every possible query form, you can review and adjust the index configuration file before updating indexes.
 
-You can learn more about `  index.yaml  ` at [Index Configuration](https://docs.cloud.google.com/datastore/docs/tools/indexconfig) .
+You can learn more about `index.yaml` at [Index Configuration](https://docs.cloud.google.com/datastore/docs/tools/indexconfig) .
 
 ## Deploying or deleting indexes
 
-When you are done modifying your index configuration file, run the [`  gcloud datastore indexes create  `](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/indexes/create) command to place the indexes into service. Learn more at [updating your indexes](https://docs.cloud.google.com/datastore/docs/tools/indexconfig#Datastore_Updating_indexes) .
+When you are done modifying your index configuration file, run the [`gcloud datastore indexes create`](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/indexes/create) command to place the indexes into service. Learn more at [updating your indexes](https://docs.cloud.google.com/datastore/docs/tools/indexconfig#Datastore_Updating_indexes) .
 
-**Note:** If you use the `  appcfg.py  ` or `  appcfg.sh  ` commands to deploy an application to App Engine, the index configuration file is automatically deployed. If you use the [`  gcloud app deploy  `](https://docs.cloud.google.com/sdk/gcloud/reference/app/deploy) command to deploy your application, the index configuration file is not automatically deployed. You must either specifically list `  index.yaml  ` as an argument to `  gcloud app deploy  ` or run `  gcloud datastore indexes create  ` to deploy the index configuration file.
+**Note:** If you use the `appcfg.py` or `appcfg.sh` commands to deploy an application to App Engine, the index configuration file is automatically deployed. If you use the [`gcloud app deploy`](https://docs.cloud.google.com/sdk/gcloud/reference/app/deploy) command to deploy your application, the index configuration file is not automatically deployed. You must either specifically list `index.yaml` as an argument to `gcloud app deploy` or run `gcloud datastore indexes create` to deploy the index configuration file.
 
 If you previously deployed indexes that are no longer needed, you can [delete the unused indexes](https://docs.cloud.google.com/datastore/docs/tools/indexconfig#Datastore_Deleting_unused_indexes) .
 
@@ -81,17 +81,17 @@ Here are a few special considerations to keep in mind about indexes and how they
 
 ### Properties with mixed value types
 
-When two entities have properties of the same name but different value types, an index of the property sorts the entities first by [value type](https://docs.cloud.google.com/datastore/docs/concepts/entities#value_type_ordering) and then by a secondary ordering appropriate to each type. For example, if two entities each have a property named `  age  ` , one with an integer value and one with a string value, the entity with the integer value always precedes the one with the string value when sorted by the `  age  ` property, regardless of the property values themselves.
+When two entities have properties of the same name but different value types, an index of the property sorts the entities first by [value type](https://docs.cloud.google.com/datastore/docs/concepts/entities#value_type_ordering) and then by a secondary ordering appropriate to each type. For example, if two entities each have a property named `age` , one with an integer value and one with a string value, the entity with the integer value always precedes the one with the string value when sorted by the `age` property, regardless of the property values themselves.
 
-This is especially worth noting in the case of integers and floating-point numbers, which are treated as separate types by Datastore mode. Because all integers are sorted before all floats, a property with the integer value `  38  ` is sorted before one with the floating-point value `  37.5  ` .
+This is especially worth noting in the case of integers and floating-point numbers, which are treated as separate types by Datastore mode. Because all integers are sorted before all floats, a property with the integer value `38` is sorted before one with the floating-point value `37.5` .
 
 ### Excluded properties
 
 If you know you will never have to filter or sort on a particular property, you can tell your Datastore mode database not to maintain index entries for that property by excluding it from indexes. This lowers the cost of running your application by reducing the [storage size](https://docs.cloud.google.com/datastore/docs/concepts/storage-size) needed for index entries. This can also improve write latency. An entity with an excluded property behaves as if the property were not set: queries with a filter or sort order on the excluded property will never match that entity.
 
-**Note:** If a property appears in a composite index, then excluding the property will disable it in the composite index. For example, suppose that an entity has properties **priority** and **done** and that you want to create an index able to satisfy queries like `  WHERE priority = 4 AND done = FALSE  ` . Also suppose that you don't care about the queries `  WHERE priority = 4  ` and `  WHERE done = FALSE  ` . If you exclude **priority** from indexes and create an index for **priority** and **done** , Datastore mode won't create index entries for the **priority** and **done** index and so the `  WHERE priority = 4 AND done = FALSE  ` query won't work. For your database to create entries for the **priority** and **done** indexes, both **priority** and **done** must be indexed.
+**Note:** If a property appears in a composite index, then excluding the property will disable it in the composite index. For example, suppose that an entity has properties **priority** and **done** and that you want to create an index able to satisfy queries like `WHERE priority = 4 AND done = FALSE` . Also suppose that you don't care about the queries `WHERE priority = 4` and `WHERE done = FALSE` . If you exclude **priority** from indexes and create an index for **priority** and **done** , Datastore mode won't create index entries for the **priority** and **done** index and so the `WHERE priority = 4 AND done = FALSE` query won't work. For your database to create entries for the **priority** and **done** indexes, both **priority** and **done** must be indexed.
 
-The `  description  ` property in the following example is excluded from indexes:
+The `description` property in the following example is excluded from indexes:
 
 ### C\#
 
@@ -256,7 +256,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
 Not Applicable
 
-The query in the following example won't return any results if the `  description  ` property was excluded:
+The query in the following example won't return any results if the `description` property was excluded:
 
 ### C\#
 
@@ -356,7 +356,7 @@ Similarly, changing a property from indexed to excluded only affects entities su
 
 Firestore in Datastore mode imposes limits on the number and overall size of index entries that can be associated with a single entity. These limits are large, and most applications are not affected. However, there are circumstances in which you might encounter the limits.
 
-As described [above](https://docs.cloud.google.com/datastore/docs/concepts/indexes#index_configuration) , a Datastore mode database creates an entry in a predefined index for every property of every entity except those you have explicitly declared as [excluded from your indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes#unindexed_properties) . The property may also be included in additional, custom indexes declared in your [index configuration file](https://docs.cloud.google.com/datastore/docs/tools/indexconfig) ( `  index.yaml  ` ). Provided that an entity has no list properties, it will have at most one entry in each such custom index (for non-ancestor indexes) or one for each of the entity's ancestors (for ancestor indexes). Each of these index entries must be updated every time the value of the property changes.
+As described [above](https://docs.cloud.google.com/datastore/docs/concepts/indexes#index_configuration) , a Datastore mode database creates an entry in a predefined index for every property of every entity except those you have explicitly declared as [excluded from your indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes#unindexed_properties) . The property may also be included in additional, custom indexes declared in your [index configuration file](https://docs.cloud.google.com/datastore/docs/tools/indexconfig) ( `index.yaml` ). Provided that an entity has no list properties, it will have at most one entry in each such custom index (for non-ancestor indexes) or one for each of the entity's ancestors (for ancestor indexes). Each of these index entries must be updated every time the value of the property changes.
 
 For a property that has a single value for each entity, each possible value needs to be stored just once per entity in the property's predefined index. Even so, it is possible for an entity with a large number of such single-valued properties to exceed the index entry or size limit. Similarly, an entity that can have multiple values for the same property requires a separate index entry for each value; again, if the number of possible values is large, such an entity can exceed the entry limit.
 
@@ -473,19 +473,19 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
 Not Applicable
 
-It creates a `  Task  ` entity with three values for property `  tags  ` , three values for property `  collaborators  ` , and `  created  ` set to the current date. This will require 9 index entries, one for each possible combination of property values:
+It creates a `Task` entity with three values for property `tags` , three values for property `collaborators` , and `created` set to the current date. This will require 9 index entries, one for each possible combination of property values:
 
-( `  'fun'  ` , `  'alice'  ` , `  NOW()  ` )  
-( `  'fun'  ` , `  'bob'  ` , `  NOW()  ` )  
-( `  'fun'  ` , `  'charlie'  ` , `  NOW()  ` )
+( `'fun'` , `'alice'` , `NOW()` )  
+( `'fun'` , `'bob'` , `NOW()` )  
+( `'fun'` , `'charlie'` , `NOW()` )
 
-( `  'programming'  ` , `  'alice'  ` , `  NOW()  ` )  
-( `  'programming'  ` , `  'bob'  ` , `  NOW()  ` )  
-( `  'programming'  ` , `  'charlie'  ` , `  NOW()  ` )
+( `'programming'` , `'alice'` , `NOW()` )  
+( `'programming'` , `'bob'` , `NOW()` )  
+( `'programming'` , `'charlie'` , `NOW()` )
 
-( `  'learn'  ` , `  'alice'  ` , `  NOW()  ` )  
-( `  'learn'  ` , `  'bob'  ` , `  NOW()  ` )  
-( `  'learn'  ` , `  'charlie'  ` , `  NOW()  ` )
+( `'learn'` , `'alice'` , `NOW()` )  
+( `'learn'` , `'bob'` , `NOW()` )  
+( `'learn'` , `'charlie'` , `NOW()` )
 
 When the same property is repeated multiple times, Firestore in Datastore mode can detect exploding indexes and suggest an alternative index. However, in all other circumstances (such as the query defined in this example), a Datastore mode database will generate an exploding index. In this case, you can circumvent the exploding index by manually configuring an index in your index configuration file:
 
@@ -499,31 +499,31 @@ When the same property is repeated multiple times, Firestore in Datastore mode c
       - name: collaborators
       - name: created
 
-This reduces the number of entries needed to only `  (|tags|  ` `  *  ` `  |created|  ` `  +  ` `  |collaborators|  ` `  *  ` `  |created|)  ` , or 6 entries instead of 9:
+This reduces the number of entries needed to only `(|tags|` `*` `|created|` `+` `|collaborators|` `*` `|created|)` , or 6 entries instead of 9:
 
-( `  'fun'  ` , `  NOW()  ` )  
-( `  'programming'  ` , `  NOW()  ` )  
-( `  'learn'  ` , `  NOW()  ` )
+( `'fun'` , `NOW()` )  
+( `'programming'` , `NOW()` )  
+( `'learn'` , `NOW()` )
 
-( `  'alice'  ` , `  NOW()  ` )  
-( `  'bob'  ` , `  NOW()  ` )  
-( `  'charlie'  ` , `  NOW()  ` )
+( `'alice'` , `NOW()` )  
+( `'bob'` , `NOW()` )  
+( `'charlie'` , `NOW()` )
 
-Any `  commit  ` operation that would cause an index to exceed the index entry or size limit will fail. The text of the error describes which limit was exceeded ( `  "Too many indexed properties"  ` or `  "Index entries too large"  ` ) and which custom index was the cause. If you create a new index that would exceed the limits for any entity when built, queries against the index will fail and the index will appear in the `  Error  ` state in the Google Cloud console. To handle such `  Error  ` indexes,
+Any `commit` operation that would cause an index to exceed the index entry or size limit will fail. The text of the error describes which limit was exceeded ( `"Too many indexed properties"` or `"Index entries too large"` ) and which custom index was the cause. If you create a new index that would exceed the limits for any entity when built, queries against the index will fail and the index will appear in the `Error` state in the Google Cloud console. To handle such `Error` indexes,
 
-1.  Remove the index from your index configuration file ( `  index.yaml  ` ).
-2.  Using the Google Cloud CLI, remove the index from the database using the `  datastore indexes cleanup  ` command, as described in [Deleting unused indexes](https://docs.cloud.google.com/datastore/docs/tools/indexconfig#Datastore_Deleting_unused_indexes) .
+1.  Remove the index from your index configuration file ( `index.yaml` ).
+2.  Using the Google Cloud CLI, remove the index from the database using the `datastore indexes cleanup` command, as described in [Deleting unused indexes](https://docs.cloud.google.com/datastore/docs/tools/indexconfig#Datastore_Deleting_unused_indexes) .
 3.  Either
       - reformulate the index definition and corresponding queries, or
       - remove the entities that are causing the index to explode.
-4.  Add the index back to `  index.yaml  ` .
-5.  Using the Google Cloud CLI, add the index to the database by running the `  datastore indexes create  ` command, as described in [Updating Indexes](https://docs.cloud.google.com/datastore/docs/tools/indexconfig#Datastore_Updating_indexes) .
+4.  Add the index back to `index.yaml` .
+5.  Using the Google Cloud CLI, add the index to the database by running the `datastore indexes create` command, as described in [Updating Indexes](https://docs.cloud.google.com/datastore/docs/tools/indexconfig#Datastore_Updating_indexes) .
 
 You can avoid exploding indexes by avoiding queries that would require a custom index using a list property. As described earlier, this includes queries with multiple sort orders or queries with a mix of equality and inequality filters.
 
 ## Indexes for projections
 
-[Projection queries](https://docs.cloud.google.com/datastore/docs/concepts/queries#projection_queries) require all properties specified in the projection to be included in an index. The [Datastore emulator](https://docs.cloud.google.com/datastore/docs/tools/datastore-emulator) automatically generates the needed indexes for you in the index configuration file, `  index.yaml  ` , which is uploaded with your application.
+[Projection queries](https://docs.cloud.google.com/datastore/docs/concepts/queries#projection_queries) require all properties specified in the projection to be included in an index. The [Datastore emulator](https://docs.cloud.google.com/datastore/docs/tools/datastore-emulator) automatically generates the needed indexes for you in the index configuration file, `index.yaml` , which is uploaded with your application.
 
 One way to minimize the number of indexes required is to project the same properties consistently, even when not all of them are always needed. For example, these queries require two separate indexes:
 
@@ -531,7 +531,7 @@ One way to minimize the number of indexes required is to project the same proper
     
     SELECT priority, percent_complete, created FROM Task
 
-However, if you always project properties `  priority  ` , `  percent_complete  ` , `  created  ` , even when `  created  ` is not required, only one index will be needed.
+However, if you always project properties `priority` , `percent_complete` , `created` , even when `created` is not required, only one index will be needed.
 
 Converting an existing query into a projection query may require building a new index if the properties in the projection are not already included in another part of the query. For example, suppose you had an existing query like
 
@@ -557,7 +557,7 @@ Converting this to either of the projection queries
     WHERE priority > 1
     ORDER BY priority, percent_complete
 
-introduces a new property ( `  created  ` ) and thus will require building a new index:
+introduces a new property ( `created` ) and thus will require building a new index:
 
     indexes:
     - kind: Task
@@ -572,11 +572,11 @@ However,
     WHERE priority > 1
     ORDER BY priority, percent_complete
 
-would *not* change the required index, since the projected properties `  priority  ` and `  percent_complete  ` were already included in the existing query.
+would *not* change the required index, since the projected properties `priority` and `percent_complete` were already included in the existing query.
 
 ## Multiple databases
 
-You can use `  gcloud firestore  ` to manage a single index for Datastore mode or use `  gcloud datastore  ` with an index.yaml file to manage all the indexes under a database.
+You can use `gcloud firestore` to manage a single index for Datastore mode or use `gcloud datastore` with an index.yaml file to manage all the indexes under a database.
 
 ##### gcloud firestore
 
@@ -593,4 +593,4 @@ gcloud alpha datastore indexes create index.yaml --database=DATABASE_ID
 Replace the following:
 
   - DATABASE\_ID : a database ID.
-  - QUERY\_SCOPE : either `  collection-recursive  ` for ancestor indexes or `  collection-group  ` for non-ancestor indexes.
+  - QUERY\_SCOPE : either `collection-recursive` for ancestor indexes or `collection-group` for non-ancestor indexes.

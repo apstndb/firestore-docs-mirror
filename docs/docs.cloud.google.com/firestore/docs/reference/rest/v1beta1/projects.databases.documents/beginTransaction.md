@@ -97,7 +97,7 @@ eu
 us
 
   
-`  POST https://firestore.googleapis.com/v1beta1/{database=projects/*/databases/*}/documents:beginTransaction  `
+`POST https://firestore.googleapis.com/v1beta1/{database=projects/*/databases/*}/documents:beginTransaction`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -105,11 +105,11 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  database  `
+`database`
 
-`  string  `
+`string`
 
-Required. The database name. In the format: `  projects/{projectId}/databases/{databaseId}  ` .
+Required. The database name. In the format: `projects/{projectId}/databases/{databaseId}` .
 
 ### Request body
 
@@ -126,20 +126,16 @@ The request body contains data with the following structure:
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;options&quot;: {
-    object (TransactionOptions)
-  }
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;options&quot;: {object (TransactionOptions)}}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  options  `
+`options`
 
-`  object ( TransactionOptions  ` )
+` object ( TransactionOptions  ` )
 
 The options for the transaction. Defaults to a read-write transaction.
 
@@ -169,9 +165,9 @@ If successful, the response body contains data with the following structure:
 
 Fields
 
-`  transaction  `
+`transaction`
 
-`  string ( bytes format)  `
+`string ( bytes format)`
 
 The transaction that was started.
 
@@ -181,7 +177,7 @@ A base64-encoded string.
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

@@ -11,61 +11,50 @@ Metadata for the `  long-running operation  ` from the \[databases.clone\]\[goog
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;startTime&quot;: string,
-  &quot;endTime&quot;: string,
-  &quot;operationState&quot;: enum (OperationState),
-  &quot;database&quot;: string,
-  &quot;pitrSnapshot&quot;: {
-    object (PitrSnapshot)
-  },
-  &quot;progressPercentage&quot;: {
-    object (Progress)
-  }
-}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;startTime&quot;: string,&quot;endTime&quot;: string,&quot;operationState&quot;: enum (OperationState),&quot;database&quot;: string,&quot;pitrSnapshot&quot;: {object (PitrSnapshot)},&quot;progressPercentage&quot;: {object (Progress)}}</code></pre></td>
 </tr>
 </tbody>
 </table>
 
 Fields
 
-`  startTime  `
+`startTime`
 
-`  string ( Timestamp  ` format)
+` string ( Timestamp  ` format)
 
 The time the clone was started.
 
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `  "2014-10-02T15:01:23Z"  ` , `  "2014-10-02T15:01:23.045123456Z"  ` or `  "2014-10-02T15:01:23+05:30"  ` .
+Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .
 
-`  endTime  `
+`endTime`
 
-`  string ( Timestamp  ` format)
+` string ( Timestamp  ` format)
 
 The time the clone finished, unset for ongoing clones.
 
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `  "2014-10-02T15:01:23Z"  ` , `  "2014-10-02T15:01:23.045123456Z"  ` or `  "2014-10-02T15:01:23+05:30"  ` .
+Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .
 
-`  operationState  `
+`operationState`
 
-`  enum ( OperationState  ` )
+` enum ( OperationState  ` )
 
 The operation state of the clone.
 
-`  database  `
+`database`
 
-`  string  `
+`string`
 
 The name of the database being cloned to.
 
-`  pitrSnapshot  `
+`pitrSnapshot`
 
-`  object ( PitrSnapshot  ` )
+` object ( PitrSnapshot  ` )
 
 The snapshot from which this database was cloned.
 
-`  progressPercentage  `
+`progressPercentage`
 
-`  object ( Progress  ` )
+` object ( Progress  ` )
 
 How far along the clone is as an estimated percentage of remaining time.
 
@@ -95,24 +84,24 @@ A consistent snapshot of a database at a specific point in time. A PITR (Point-i
 
 Fields
 
-`  database  `
+`database`
 
-`  string  `
+`string`
 
-Required. The name of the database that this was a snapshot of. Format: `  projects/{project}/databases/{database}  ` .
+Required. The name of the database that this was a snapshot of. Format: `projects/{project}/databases/{database}` .
 
-`  databaseUid  `
+`databaseUid`
 
-`  string ( bytes format)  `
+`string ( bytes format)`
 
 Output only. Public UUID of the database the snapshot was associated with.
 
 A base64-encoded string.
 
-`  snapshotTime  `
+`snapshotTime`
 
-`  string ( Timestamp  ` format)
+` string ( Timestamp  ` format)
 
 Required. Snapshot time of the database.
 
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `  "2014-10-02T15:01:23Z"  ` , `  "2014-10-02T15:01:23.045123456Z"  ` or `  "2014-10-02T15:01:23+05:30"  ` .
+Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .

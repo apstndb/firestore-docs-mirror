@@ -41,11 +41,11 @@ Before you begin:
 
   - Make sure you set up the service account under which your app writes traces to your observability backend with the necessary [Identity and Access Management roles](https://docs.cloud.google.com/trace/docs/iam) :
     
-    | Trace operation   | IAM role                                    |
-    | ----------------- | ------------------------------------------- |
-    | Read traces       | `          roles/cloudtrace.user         `  |
-    | Write traces      | `          roles/cloudtrace.agent         ` |
-    | Read/write traces | `          roles/cloudtrace.admin         ` |
+    | Trace operation   | IAM role                 |
+    | ----------------- | ------------------------ |
+    | Read traces       | `roles/cloudtrace.user`  |
+    | Write traces      | `roles/cloudtrace.agent` |
+    | Read/write traces | `roles/cloudtrace.admin` |
     
 
   - Verify Trace API is enabled on this project.
@@ -57,7 +57,7 @@ This section provides example configurations for client-side traces. You can exp
   - You can configure traces with the OpenTelemetry APIs. This requires code changes to your application. See the following examples:
       - [Export to a Collector with OpenTelemetry APIs](https://docs.cloud.google.com/datastore/docs/client-side-traces#export_to_collector)
       - [Export directly to an observability backend with OpenTelemetry APIs](https://docs.cloud.google.com/datastore/docs/client-side-traces#export_to_backend)
-  - You can configure traces without code changes using auto agents. You need to set the environment variable `  DATASTORE_ENABLE_TRACING=ON  ` . You also need to set other configuration settings as described in [Agent Configuration](https://opentelemetry.io/docs/languages/java/automatic/configuration/) . See the following examples:
+  - You can configure traces without code changes using auto agents. You need to set the environment variable `DATASTORE_ENABLE_TRACING=ON` . You also need to set other configuration settings as described in [Agent Configuration](https://opentelemetry.io/docs/languages/java/automatic/configuration/) . See the following examples:
       - [Export to a Collector with Auto Agents](https://docs.cloud.google.com/datastore/docs/client-side-traces#export_to_collector_auto_agent)
       - [Export directly to an observability backend with Auto Agents](https://docs.cloud.google.com/datastore/docs/client-side-traces#export_to_backend_auto_agent)
 
@@ -103,13 +103,12 @@ DatastoreOptions datastoreOptions = DatastoreOptions
   .build();
 
 Datastore datastore = datastoreOptions.getService();
-
     
 ```
 
 ### Export directly to an observability backend with OpenTelemetry APIs
 
-The following code configures the Java client library to directly export trace spans to Cloud Trace with a 10% trace sampling ratio. You can use other observability service providers' exporters to directly export to their backend. If your observability backend supports OTLP ingestion, you can use OpenTelemetry `  OtlpGrpcSpanExporter  ` to export to your backend rather than using a custom exporter.
+The following code configures the Java client library to directly export trace spans to Cloud Trace with a 10% trace sampling ratio. You can use other observability service providers' exporters to directly export to their backend. If your observability backend supports OTLP ingestion, you can use OpenTelemetry `OtlpGrpcSpanExporter` to export to your backend rather than using a custom exporter.
 
 ##### Java
 
@@ -147,13 +146,12 @@ DatastoreOptions datastoreOptions = DatastoreOptions
   .build();
 
 Datastore datastore = datastoreOptions.getService();
-
     
 ```
 
 ### Export to a Collector with Auto Agents
 
-Run your OpenTelemetry Collector with OTLP gRPC receivers enabled. Set the agent's exporter to `  otlp  ` and specify the endpoint where the agent should export the data. The following example uses a 10% sampling ratio and sends traces to the Collector that listens on localhost port `  4317  ` .
+Run your OpenTelemetry Collector with OTLP gRPC receivers enabled. Set the agent's exporter to `otlp` and specify the endpoint where the agent should export the data. The following example uses a 10% sampling ratio and sends traces to the Collector that listens on localhost port `4317` .
 
 ##### Terminal
 
@@ -167,13 +165,12 @@ java                                                   \
 -Dotel.traces.sampler.arg=0.1                          \
 -Dotel.service.name="My App"                           \
 -jar myapp.jar
-
     
 ```
 
 ### Export directly to an observability backend with Auto Agents
 
-In addition to setting the environment variable `  DATASTORE_ENABLE_TRACING=ON  ` , you need to add the OpenTelemetry Java agent extension for your specific backend. The following example uses the [Trace exporter extension](https://github.com/GoogleCloudPlatform/opentelemetry-operations-java/blob/main/exporters/auto/README.md#autoinstrumentation-setup) and a 10% trace sampling ratio.
+In addition to setting the environment variable `DATASTORE_ENABLE_TRACING=ON` , you need to add the OpenTelemetry Java agent extension for your specific backend. The following example uses the [Trace exporter extension](https://github.com/GoogleCloudPlatform/opentelemetry-operations-java/blob/main/exporters/auto/README.md#autoinstrumentation-setup) and a 10% trace sampling ratio.
 
 ##### Terminal
 
@@ -187,7 +184,6 @@ java                                                                       \
 -Dotel.traces.sampler.arg=0.1                                              \
 -Dotel.service.name="My Application"                                       \
 -jar myapp.jar
-
     
 ```
 

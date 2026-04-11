@@ -22,12 +22,12 @@ A reference to a property relative to the kind expressions.
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
 A reference to a property.
 
 Requires:
 
-  - MUST be a dot-delimited ( `  .  ` ) string of segments, where each segment conforms to `  entity property name  ` limitations.
+  - MUST be a dot-delimited ( `.` ) string of segments, where each segment conforms to `entity property name` limitations.

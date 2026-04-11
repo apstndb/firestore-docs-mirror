@@ -147,9 +147,9 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
       t["description"] = "Learn Cloud Datastore"
     end
 
-You can save the entity to the database by using `  upsert  ` (which will overwrite an entity if it already exists in Datastore mode) or `  insert  ` (which requires that the entity key not already exist).
+You can save the entity to the database by using `upsert` (which will overwrite an entity if it already exists in Datastore mode) or `insert` (which requires that the entity key not already exist).
 
-Here's how you `  upsert  ` an entity:
+Here's how you `upsert` an entity:
 
 ### C\#
 
@@ -256,7 +256,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
     end
     datastore.save task
 
-Here's how you `  insert  ` an entity:
+Here's how you `insert` an entity:
 
 ### C\#
 
@@ -466,7 +466,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
 ### Update an entity
 
-To `  update  ` an existing entity, modify the properties of the entity previously retrieved and store it using the key:
+To `update` an existing entity, modify the properties of the entity previously retrieved and store it using the key:
 
 ### C\#
 
@@ -586,13 +586,13 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
       datastore.save task
     end
 
-The provided data overwrites the existing entity. The entire object must be sent to the database. If the entity does not exist, the update will fail. If you want to update-or-create an entity, use `  upsert  ` as described previously. Using a [transaction](https://docs.cloud.google.com/datastore/docs/concepts/transactions#uses_for_transactions) lets you perform the `  get  ` and `  update  ` operations in a single atomic transaction.
+The provided data overwrites the existing entity. The entire object must be sent to the database. If the entity does not exist, the update will fail. If you want to update-or-create an entity, use `upsert` as described previously. Using a [transaction](https://docs.cloud.google.com/datastore/docs/concepts/transactions#uses_for_transactions) lets you perform the `get` and `update` operations in a single atomic transaction.
 
 **Note:** To delete a property, remove the property from the entity, then save the entity.
 
 ### Delete an entity
 
-Given an entity's key, you can `  delete  ` the entity:
+Given an entity's key, you can `delete` the entity:
 
 ### C\#
 
@@ -668,7 +668,7 @@ Firestore in Datastore mode supports batch versions of the operations which allo
 
 Such batch calls are faster than making separate calls for each individual entity because they incur the overhead for only one service call. If multiple entity groups are involved, the work for all the groups is performed in parallel on the server side.
 
-For example, you can `  upsert  ` multiple entities:
+For example, you can `upsert` multiple entities:
 
 ### C\#
 
@@ -1017,20 +1017,20 @@ Batch operations don't change your read, write, or delete costs, which are docum
 
 The size of the entities involved in an operation does not affect the read, write, or delete costs. However, the size of entities does impact your [storage size costs](https://docs.cloud.google.com/datastore/docs/concepts/storage-size) .
 
-**Note:** The multiple updates specified in a non-transactional `  commit()  ` are **not** performed transactionally. So if the `  commit  ` ends with an error, it is possible that some, none, or all of the requested operations have been performed. If you need transactional batch updates, use the [transactional API](https://docs.cloud.google.com/datastore/docs/concepts/transactions) .
+**Note:** The multiple updates specified in a non-transactional `commit()` are **not** performed transactionally. So if the `commit` ends with an error, it is possible that some, none, or all of the requested operations have been performed. If you need transactional batch updates, use the [transactional API](https://docs.cloud.google.com/datastore/docs/concepts/transactions) .
 
 ### Increment and other property transforms
 
-Use property transforms like `  increment  ` to make server-side updates to a property. A property transform avoids an additional client-side read operation to get the current value and avoids a client-side calculation to determine the new value.
+Use property transforms like `increment` to make server-side updates to a property. A property transform avoids an additional client-side read operation to get the current value and avoids a client-side calculation to determine the new value.
 
 Datastore mode supports the following property transforms:
 
-  - `  increment  `
-  - `  maximum  `
-  - `  minimum  `
-  - `  appendMissingElements  `
-  - `  removeAllFromArray  `
-  - `  setToServerValue(REQUEST_TIME)  `
+  - `increment`
+  - `maximum`
+  - `minimum`
+  - `appendMissingElements`
+  - `removeAllFromArray`
+  - `setToServerValue(REQUEST_TIME)`
 
 **Note:** Each of these operation is billed for one read operation and one write operation.
 
@@ -1136,17 +1136,17 @@ The following example appends array elements if they are missing.
       ]
     }
 
-#### Mixed types with `     maximum    ` and `     minimum    `
+#### Mixed types with `maximum` and `minimum`
 
-The `  maximum  ` and `  minimum  ` property transforms take either an integer or a double (floating-point number) value as input. The value in the target property can also be an integer or a double value.
+The `maximum` and `minimum` property transforms take either an integer or a double (floating-point number) value as input. The value in the target property can also be an integer or a double value.
 
-If the property is not an integer or double, or if the property doesn't exist, the transformation sets the property to the given input value and type. If a `  maximum  ` operation is applied where the property and the input value are of mixed types (that is, one is an integer and one is a double) the property takes on the type of the larger operand. For `  minimum  ` , the property takes on the type of the smaller operand.
+If the property is not an integer or double, or if the property doesn't exist, the transformation sets the property to the given input value and type. If a `maximum` operation is applied where the property and the input value are of mixed types (that is, one is an integer and one is a double) the property takes on the type of the larger operand. For `minimum` , the property takes on the type of the smaller operand.
 
-If the operands are equivalent (e.g. 3 and 3.0), the property does not change. 0, 0.0, and -0.0 are all zero. The `  maximum  ` or `  minimum  ` of a zero stored value and zero input value is always the stored value. The `  maximum  ` or `  minimum  ` of any numeric value and NaN is NaN.
+If the operands are equivalent (e.g. 3 and 3.0), the property does not change. 0, 0.0, and -0.0 are all zero. The `maximum` or `minimum` of a zero stored value and zero input value is always the stored value. The `maximum` or `minimum` of any numeric value and NaN is NaN.
 
-#### Multiple mutations and `     PropertyMask    `
+#### Multiple mutations and `PropertyMask`
 
-Property transforms are sequentially applied after any additional mutations in the request. A [`  PropertyMask  `](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/PropertyMask) restricts `  insert  ` , `  update  ` , and `  upsert  ` mutations to the specified properties, but does not restrict property transforms.
+Property transforms are sequentially applied after any additional mutations in the request. A [`PropertyMask`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/PropertyMask) restricts `insert` , `update` , and `upsert` mutations to the specified properties, but does not restrict property transforms.
 
 For example, starting with the following entity:
 
@@ -1168,7 +1168,7 @@ For example, starting with the following entity:
       }
     }
 
-The following request updates both `  a  ` and `  b  ` and then applies a property transform to property `  b  ` :
+The following request updates both `a` and `b` and then applies a property transform to property `b` :
 
     POST https://datastore.googleapis.com/v1/projects/{projectId}:commit
     {
@@ -1224,9 +1224,9 @@ The result is the following:
 
 ## Kinds and identifiers
 
-Each entity is of a particular *kind* , which categorizes the entity for the purpose of queries. For example, a task list application might represent each task to complete with an entity of kind `  Task  ` .
+Each entity is of a particular *kind* , which categorizes the entity for the purpose of queries. For example, a task list application might represent each task to complete with an entity of kind `Task` .
 
-All kind names that begin with two underscores ( `  __  ` ) are reserved and may not be used.
+All kind names that begin with two underscores ( `__` ) are reserved and may not be used.
 
 ### Assign identifiers
 
@@ -1240,7 +1240,7 @@ In addition to a kind, each entity has an *identifier* , assigned when the entit
 
   - For best practices on assigning identifiers, see the [Keys section in the best practices](https://docs.cloud.google.com/datastore/docs/best-practices#keys) .
 
-The following example creates a key with kind `  Task  ` that uses a key name, "sampleTask", as the identifier:
+The following example creates a key with kind `Task` that uses a key name, "sampleTask", as the identifier:
 
 ### C\#
 
@@ -1307,7 +1307,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
 Datastore mode can also automatically assign IDs. Datastore mode generates a random sequence of unused IDs that are approximately uniformly distributed. Each ID can be up to 16 decimal digits long.
 
-The following example creates a key with kind `  Task  ` , without using a key name. The full key (including the automatically assigned ID) of the entity will be returned when an entity with the incomplete key is saved to Datastore mode:
+The following example creates a key with kind `Task` , without using a key name. The full key (including the automatically assigned ID) of the entity will be returned when an entity with the incomplete key is saved to Datastore mode:
 
 ### C\#
 
@@ -1378,11 +1378,11 @@ If you want to display the entity IDs to the user, and/or depend upon their orde
 
 #### Assign your own numeric ID
 
-Instead of using key name strings or generating numeric IDs automatically, advanced applications may sometimes assign their own numeric IDs manually to the entities they create. Be aware, however, that there is nothing to prevent a Datastore mode database from assigning one of your manual numeric IDs to another entity. The only way to avoid such conflicts is to have your application obtain a block of IDs with the `  allocateIds()  ` method.
+Instead of using key name strings or generating numeric IDs automatically, advanced applications may sometimes assign their own numeric IDs manually to the entities they create. Be aware, however, that there is nothing to prevent a Datastore mode database from assigning one of your manual numeric IDs to another entity. The only way to avoid such conflicts is to have your application obtain a block of IDs with the `allocateIds()` method.
 
-Datastore mode's automatic ID generator will keep track of IDs that have been allocated with these methods and will avoid reusing them for another entity, so you can safely use such IDs without conflict. You can't manually choose which values are returned by the `  allocateIds()  ` method. The values returned by `  allocateIds()  ` are assigned by Datastore mode.
+Datastore mode's automatic ID generator will keep track of IDs that have been allocated with these methods and will avoid reusing them for another entity, so you can safely use such IDs without conflict. You can't manually choose which values are returned by the `allocateIds()` method. The values returned by `allocateIds()` are assigned by Datastore mode.
 
-**Important:** Don't use the value `  0  ` (zero) for the ID. If you do, you will get an automatically allocated ID.
+**Important:** Don't use the value `0` (zero) for the ID. If you do, you will get an automatically allocated ID.
 
 ## Ancestor paths
 
@@ -1398,7 +1398,7 @@ For a root entity, the ancestor path is empty and the key consists solely of the
 
 ### Levels of parents
 
-Use levels of parents to organize your data. For example, if your application organizes `  Task  ` entities by `  TaskList  ` entities, use one level of parent:
+Use levels of parents to organize your data. For example, if your application organizes `Task` entities by `TaskList` entities, use one level of parent:
 
 ### C\#
 
@@ -1480,7 +1480,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
     # task_name = "sampleTask"
     task_key = datastore.key [["TaskList", task_list_name], ["Task", task_name]]
 
-If your application organizes `  Task  ` entities first by `  User  ` entities and then by `  TaskList  ` entities, use multiple levels of parents:
+If your application organizes `Task` entities first by `User` entities and then by `TaskList` entities, use multiple levels of parents:
 
 ### C\#
 
@@ -1571,11 +1571,11 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
 As shown in the earlier example, when you create an entity with a parent, you specify the parent's complete ancestor path.
 
-An application that maintains user profiles may require only one level of parent for the user profile data. For example, use a single level `  User  ` ancestor path for `  Profile  ` entities:
+An application that maintains user profiles may require only one level of parent for the user profile data. For example, use a single level `User` ancestor path for `Profile` entities:
 
     [User:alice, Profile:public]
 
-An application that provides conference room scheduling may require multiple levels of parents, such as a multiple level `  Building/Floor  ` ancestor path for `  Room  ` entities:
+An application that provides conference room scheduling may require multiple levels of parents, such as a multiple level `Building/Floor` ancestor path for `Room` entities:
 
     [Building:C, Floor:1, Room:123]
 
@@ -1752,7 +1752,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
 ### Array properties
 
-A property with more than one value is called an *array property* . This example contains two array properties. The first is named `  tags  ` with values `  fun  ` and `  programming  ` . The second is named `  collaborators  ` with values `  alice  ` and `  bob  ` .
+A property with more than one value is called an *array property* . This example contains two array properties. The first is named `tags` with values `fun` and `programming` . The second is named `collaborators` with values `alice` and `bob` .
 
 ### C\#
 
@@ -1851,55 +1851,55 @@ Array properties can be useful, for example, when performing queries with equali
 
 ## Supported value types
 
-Properties are stored as a `  string/value  ` map that contains the entity's property names and values. <span id="value_types"></span> The following types are supported for values:
+Properties are stored as a `string/value` map that contains the entity's property names and values. <span id="value_types"></span> The following types are supported for values:
 
 ### Array
 
   - REST API
     
-      - field name: `  arrayValue  `
-      - type: an `  ArrayValue  ` object that contains an array of JSON Value objects
-      - An array property can be assigned by using the `  arrayValue  ` field, which is of type [ArrayValue](https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/ArrayValue) , and setting its `  values  ` field to an array of values. For a property to be unindexed, set the `  excludeFromIndexes  ` field of the property's value object to `  true  ` .
+      - field name: `arrayValue`
+      - type: an `ArrayValue` object that contains an array of JSON Value objects
+      - An array property can be assigned by using the `arrayValue` field, which is of type [ArrayValue](https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/ArrayValue) , and setting its `values` field to an array of values. For a property to be unindexed, set the `excludeFromIndexes` field of the property's value object to `true` .
 
   - RPC API
     
-      - field name: `  array_value  `
-      - type: an `  ArrayValue  ` message that contains one or more `  Value  ` messages
-      - An array property can be assigned by using the `  array_value  ` field, which is of type [ArrayValue](https://docs.cloud.google.com/datastore/reference/rpc/google.datastore.v1#google.datastore.v1.ArrayValue) , and populating its `  values  ` field with multiple `  Value  ` objects. For a property to be unindexed, set the `  exclude_from_indexes  ` field of `  Value  ` to `  true  ` .
+      - field name: `array_value`
+      - type: an `ArrayValue` message that contains one or more `Value` messages
+      - An array property can be assigned by using the `array_value` field, which is of type [ArrayValue](https://docs.cloud.google.com/datastore/reference/rpc/google.datastore.v1#google.datastore.v1.ArrayValue) , and populating its `values` field with multiple `Value` objects. For a property to be unindexed, set the `exclude_from_indexes` field of `Value` to `true` .
 
   - Sort order: None
 
-  - Notes: Cannot contain another array value. The value instance must not set `  meaning  ` or `  exclude_from_indexes  ` .
+  - Notes: Cannot contain another array value. The value instance must not set `meaning` or `exclude_from_indexes` .
 
 ### Boolean
 
   - REST API
-      - field name: `  booleanValue  `
-      - type: `  true  ` or `  false  `
+      - field name: `booleanValue`
+      - type: `true` or `false`
   - RPC API
-      - field name: `  boolean_value  `
-      - type: `  bool  `
-  - Sort order: `  false  ` \< `  true  `
+      - field name: `boolean_value`
+      - type: `bool`
+  - Sort order: `false` \< `true`
 
 ### Blob
 
   - REST API
-      - field name: `  blobValue  `
+      - field name: `blobValue`
       - type: string. Must be base64-encoded.
   - RPC API
-      - field name: `  blob_value  `
-      - type: `  bytes  `
+      - field name: `blob_value`
+      - type: `bytes`
   - Sort order: Byte order
   - Notes: Up to 1,500 bytes if property is indexed, up to 1,048,487 bytes (1 MiB - 89 bytes) otherwise.
 
 ### Date and time
 
   - REST API
-      - field name: `  timestampValue  `
-      - type: string (RFC 3339 formatted, with milliseconds, for instance `  2013-05-14T00:01:00.234Z  ` )
+      - field name: `timestampValue`
+      - type: string (RFC 3339 formatted, with milliseconds, for instance `2013-05-14T00:01:00.234Z` )
   - RPC API
-      - field name: `  timestamp_value  `
-      - type: `  Timestamp  `
+      - field name: `timestamp_value`
+      - type: `Timestamp`
   - Sort order: Chronological
   - Notes:
       - When stored in Datastore mode, precise only to microseconds; any additional precision is rounded down.
@@ -1908,73 +1908,73 @@ Properties are stored as a `  string/value  ` map that contains the entity's pro
 ### Embedded entity
 
   - REST API
-      - field name: `  entityValue  `
+      - field name: `entityValue`
       - type: a JSON entity
   - RPC API
-      - field name: `  entity_value  `
-      - type: an `  Entity  ` message
+      - field name: `entity_value`
+      - type: an `Entity` message
   - Sort order: None
   - Notes: When indexed, you can query on subproperties. If you exclude this value from indexing, then all subproperties are also excluded from indexing.
 
 ### Floating-point number
 
   - REST API
-      - field name: `  doubleValue  `
+      - field name: `doubleValue`
       - type: number
   - RPC API
-      - field name: `  double_value  `
-      - type: `  double  `
+      - field name: `double_value`
+      - type: `double`
   - Sort order: Numeric
   - Notes: 64-bit double precision, IEEE 754
 
 ### Geographical point
 
   - REST API
-      - field name: `  geoPointValue  `
+      - field name: `geoPointValue`
       - type: a JSON latitude/longitude pair
   - RPC API
-      - field name: `  geo_point_value  `
-      - type: a `  LatLng  ` message
+      - field name: `geo_point_value`
+      - type: a `LatLng` message
   - Sort order: By latitude, then longitude
 
 ### Integer
 
   - REST API
-      - field name: `  integerValue  `
+      - field name: `integerValue`
       - type: number or string. Use strings for integers that cannot be exactly represented as numbers.
   - RPC API
-      - field name: `  integer_value  `
-      - type: `  int64  `
+      - field name: `integer_value`
+      - type: `int64`
   - Sort order: Numeric
 
 ### Key
 
   - REST API
-      - field name: `  keyValue  `
+      - field name: `keyValue`
       - type: a JSON Datastore mode key
   - RPC API
-      - field name: `  key_value  `
-      - type: a `  Key  ` message
+      - field name: `key_value`
+      - type: a `Key` message
   - Sort order: By path elements (kind, identifier, kind, identifier...)
 
 ### Null
 
   - REST API
-      - field name: `  nullValue  `
+      - field name: `nullValue`
       - type: null
   - RPC API
-      - field name: `  null_value  `
-      - type: `  NullValue  `
+      - field name: `null_value`
+      - type: `NullValue`
   - Sort order: None
 
 ### Text string
 
   - REST API
-      - field name: `  stringValue  `
+      - field name: `stringValue`
       - type: string
   - RPC API
-      - field name: `  string_value  `
-      - type: `  string  `
+      - field name: `string_value`
+      - type: `string`
   - Sort order: UTF-8 encoded byte order
   - Notes: Up to 1,500 bytes if property is indexed, up to 1,048,487 bytes (1 MiB - 89 bytes) otherwise.
 
@@ -1994,4 +1994,4 @@ When a query involves a property with values of mixed types, a Datastore mode da
 8.  Geographical points
 9.  Datastore mode keys
 
-**Note:** Integers and floating-point numbers are considered separate types in Datastore mode. If an entity uses a mix of integers and floats for the same property, all integers will be sorted before all floats, for example: `  7  ` \< `  3.2  ` .
+**Note:** Integers and floating-point numbers are considered separate types in Datastore mode. If an entity uses a mix of integers and floats for the same property, all integers will be sorted before all floats, for example: `7` \< `3.2` .

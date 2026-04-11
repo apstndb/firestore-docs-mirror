@@ -74,16 +74,16 @@ Operation Service:
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc CreateIndex(                         CreateIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
-<p>Creates the specified index. A newly created index's initial state is <code dir="ltr" translate="no">           CREATING          </code> . On completion of the returned <code dir="ltr" translate="no">             google.longrunning.Operation           </code> , the state will be <code dir="ltr" translate="no">           READY          </code> . If the index already exists, the call will return an <code dir="ltr" translate="no">           ALREADY_EXISTS          </code> status.</p>
-<p>During index creation, the process could result in an error, in which case the index will move to the <code dir="ltr" translate="no">           ERROR          </code> state. The process can be recovered by fixing the data that caused the error, removing the index with <code dir="ltr" translate="no">             delete           </code> , then re-creating the index with <code dir="ltr" translate="no">             create           </code> .</p>
+<td><p><code dir="ltr" translate="no">rpc CreateIndex(              CreateIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
+<p>Creates the specified index. A newly created index's initial state is <code dir="ltr" translate="no">CREATING</code> . On completion of the returned <code dir="ltr" translate="no">            google.longrunning.Operation           </code> , the state will be <code dir="ltr" translate="no">READY</code> . If the index already exists, the call will return an <code dir="ltr" translate="no">ALREADY_EXISTS</code> status.</p>
+<p>During index creation, the process could result in an error, in which case the index will move to the <code dir="ltr" translate="no">ERROR</code> state. The process can be recovered by fixing the data that caused the error, removing the index with <code dir="ltr" translate="no">            delete           </code> , then re-creating the index with <code dir="ltr" translate="no">            create           </code> .</p>
 <p>Indexes with a single property cannot be created.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -103,15 +103,15 @@ Operation Service:
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc DeleteIndex(                         DeleteIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
-<p>Deletes an existing index. An index can only be deleted if it is in a <code dir="ltr" translate="no">           READY          </code> or <code dir="ltr" translate="no">           ERROR          </code> state. On successful execution of the request, the index will be in a <code dir="ltr" translate="no">           DELETING          </code> <code dir="ltr" translate="no">             state           </code> . And on completion of the returned <code dir="ltr" translate="no">             google.longrunning.Operation           </code> , the index will be removed.</p>
-<p>During index deletion, the process could result in an error, in which case the index will move to the <code dir="ltr" translate="no">           ERROR          </code> state. The process can be recovered by fixing the data that caused the error, followed by calling <code dir="ltr" translate="no">             delete           </code> again.</p>
+<td><p><code dir="ltr" translate="no">rpc DeleteIndex(              DeleteIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
+<p>Deletes an existing index. An index can only be deleted if it is in a <code dir="ltr" translate="no">READY</code> or <code dir="ltr" translate="no">ERROR</code> state. On successful execution of the request, the index will be in a <code dir="ltr" translate="no">DELETING</code> <code dir="ltr" translate="no">            state           </code> . And on completion of the returned <code dir="ltr" translate="no">            google.longrunning.Operation           </code> , the index will be removed.</p>
+<p>During index deletion, the process could result in an error, in which case the index will move to the <code dir="ltr" translate="no">ERROR</code> state. The process can be recovered by fixing the data that caused the error, followed by calling <code dir="ltr" translate="no">            delete           </code> again.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -131,14 +131,14 @@ Operation Service:
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ExportEntities(                         ExportEntitiesRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ExportEntities(              ExportEntitiesRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
 <p>Exports a copy of all or a subset of entities from Google Cloud Datastore to another storage system, such as Google Cloud Storage. Recent updates to entities may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -158,14 +158,14 @@ Operation Service:
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc GetIndex(                         GetIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">              Index            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc GetIndex(              GetIndexRequest            </code> ) returns ( <code dir="ltr" translate="no">             Index            </code> )</p>
 <p>Gets an index.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -185,14 +185,14 @@ Operation Service:
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ImportEntities(                         ImportEntitiesRequest            </code> ) returns ( <code dir="ltr" translate="no">              Operation            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ImportEntities(              ImportEntitiesRequest            </code> ) returns ( <code dir="ltr" translate="no">             Operation            </code> )</p>
 <p>Imports entities into Google Cloud Datastore. Existing entities with the same key are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an ImportEntities operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Datastore.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -212,14 +212,14 @@ Operation Service:
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">           rpc ListIndexes(                         ListIndexesRequest            </code> ) returns ( <code dir="ltr" translate="no">              ListIndexesResponse            </code> )</p>
+<td><p><code dir="ltr" translate="no">rpc ListIndexes(              ListIndexesRequest            </code> ) returns ( <code dir="ltr" translate="no">             ListIndexesResponse            </code> )</p>
 <p>Lists the indexes that match the specified filters. Datastore uses an eventually consistent query to fetch the list of indexes and may occasionally return stale results.</p>
 <dl>
 <dt>Authorization scopes</dt>
 <dd><p>Requires one of the following OAuth scopes:</p>
 <ul>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/datastore             </code></li>
-<li><code dir="ltr" translate="no">              https://www.googleapis.com/auth/cloud-platform             </code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/datastore</code></li>
+<li><code dir="ltr" translate="no">https://www.googleapis.com/auth/cloud-platform</code></li>
 </ul>
 <p>For more information, see the <a href="https://docs.cloud.google.com/docs/authentication#authorization-gcp">Authentication Overview</a> .</p>
 </dd>
@@ -234,31 +234,31 @@ Metadata common to all Datastore Admin operations.
 
 Fields
 
-`  start_time  `
+`start_time`
 
 `  Timestamp  `
 
 The time that work began on the operation.
 
-`  end_time  `
+`end_time`
 
 `  Timestamp  `
 
 The time the operation ended, either successfully or otherwise.
 
-`  operation_type  `
+`operation_type`
 
 `  OperationType  `
 
 The type of the operation. Can be used as a filter in ListOperationsRequest.
 
-`  labels  `
+`labels`
 
-`  map<string, string>  `
+`map<string, string>`
 
 The client-assigned labels which were provided when the operation was created. May also include additional labels.
 
-`  state  `
+`state`
 
 `  State  `
 
@@ -270,35 +270,35 @@ The various possible states for an ongoing Operation.
 
 Enums
 
-`  STATE_UNSPECIFIED  `
+`STATE_UNSPECIFIED`
 
 Unspecified.
 
-`  INITIALIZING  `
+`INITIALIZING`
 
 Request is being prepared for processing.
 
-`  PROCESSING  `
+`PROCESSING`
 
 Request is actively being processed.
 
-`  CANCELLING  `
+`CANCELLING`
 
 Request is in the process of being cancelled after user called google.longrunning.Operations.CancelOperation on the operation.
 
-`  FINALIZING  `
+`FINALIZING`
 
 Request has been processed and is in its finalization stage.
 
-`  SUCCESSFUL  `
+`SUCCESSFUL`
 
 Request has completed successfully.
 
-`  FAILED  `
+`FAILED`
 
 Request has finished being processed, but encountered an error.
 
-`  CANCELLED  `
+`CANCELLED`
 
 Request has finished being cancelled after user called google.longrunning.Operations.CancelOperation.
 
@@ -308,13 +308,13 @@ The request for `  google.datastore.admin.v1.DatastoreAdmin.CreateIndex  ` .
 
 Fields
 
-`  project_id  `
+`project_id`
 
-`  string  `
+`string`
 
 Project ID against which to make the request.
 
-`  index  `
+`index`
 
 `  Index  `
 
@@ -330,13 +330,13 @@ This singleton resource can be accessed at: "projects/{project\_id}/operations/d
 
 Fields
 
-`  migration_state  `
+`migration_state`
 
 `  MigrationState  `
 
 The current state of migration from Cloud Datastore to Cloud Firestore in Datastore mode.
 
-`  migration_step  `
+`migration_step`
 
 `  MigrationStep  `
 
@@ -348,15 +348,15 @@ The request for `  google.datastore.admin.v1.DatastoreAdmin.DeleteIndex  ` .
 
 Fields
 
-`  project_id  `
+`project_id`
 
-`  string  `
+`string`
 
 Project ID against which to make the request.
 
-`  index_id  `
+`index_id`
 
-`  string  `
+`string`
 
 The resource ID of the index to delete.
 
@@ -376,15 +376,15 @@ The entire Baz namespace: kinds=\[\], namespace\_ids=\['Baz'\]
 
 Fields
 
-`  kinds[]  `
+`kinds[]`
 
-`  string  `
+`string`
 
 If empty, then this represents all kinds.
 
-`  namespace_ids[]  `
+`namespace_ids[]`
 
-`  string  `
+`string`
 
 An empty list represents all namespaces. This is the preferred usage for projects that don't use namespaces.
 
@@ -396,33 +396,33 @@ Metadata for ExportEntities operations.
 
 Fields
 
-`  common  `
+`common`
 
 `  CommonMetadata  `
 
 Metadata common to all Datastore Admin operations.
 
-`  progress_entities  `
+`progress_entities`
 
 `  Progress  `
 
 An estimate of the number of entities processed.
 
-`  progress_bytes  `
+`progress_bytes`
 
 `  Progress  `
 
 An estimate of the number of bytes processed.
 
-`  entity_filter  `
+`entity_filter`
 
 `  EntityFilter  `
 
 Description of which entities are being exported.
 
-`  output_url_prefix  `
+`output_url_prefix`
 
-`  string  `
+`string`
 
 Location for the export metadata and data files. This will be the same value as the `  google.datastore.admin.v1.ExportEntitiesRequest.output_url_prefix  ` field. The final output location is provided in `  google.datastore.admin.v1.ExportEntitiesResponse.output_url  ` .
 
@@ -432,31 +432,31 @@ The request for `  google.datastore.admin.v1.DatastoreAdmin.ExportEntities  ` .
 
 Fields
 
-`  project_id  `
+`project_id`
 
-`  string  `
+`string`
 
 Required. Project ID against which to make the request.
 
-`  labels  `
+`labels`
 
-`  map<string, string>  `
+`map<string, string>`
 
 Client-assigned labels.
 
-`  entity_filter  `
+`entity_filter`
 
 `  EntityFilter  `
 
 Description of what data from the project is included in the export.
 
-`  output_url_prefix  `
+`output_url_prefix`
 
-`  string  `
+`string`
 
 Required. Location for the export metadata and data files.
 
-The full resource URL of the external storage location. Currently, only Google Cloud Storage is supported. So output\_url\_prefix should be of the form: `  gs://BUCKET_NAME[/NAMESPACE_PATH]  ` , where `  BUCKET_NAME  ` is the name of the Cloud Storage bucket and `  NAMESPACE_PATH  ` is an optional Cloud Storage namespace path (this is not a Cloud Datastore namespace). For more information about Cloud Storage namespace paths, see [Object name considerations](https://cloud.google.com/storage/docs/naming#object-considerations) .
+The full resource URL of the external storage location. Currently, only Google Cloud Storage is supported. So output\_url\_prefix should be of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]` , where `BUCKET_NAME` is the name of the Cloud Storage bucket and `NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is not a Cloud Datastore namespace). For more information about Cloud Storage namespace paths, see [Object name considerations](https://cloud.google.com/storage/docs/naming#object-considerations) .
 
 The resulting files will be nested deeper than the specified URL prefix. The final output URL will be provided in the `  google.datastore.admin.v1.ExportEntitiesResponse.output_url  ` field. That value should be used for subsequent ImportEntities operations.
 
@@ -468,9 +468,9 @@ The response for `  google.datastore.admin.v1.DatastoreAdmin.ExportEntities  ` .
 
 Fields
 
-`  output_url  `
+`output_url`
 
-`  string  `
+`string`
 
 Location of the output metadata file. This can be used to begin an import into Cloud Datastore (this project or another project). See `  google.datastore.admin.v1.ImportEntitiesRequest.input_url  ` . Only present if the operation completed successfully.
 
@@ -480,15 +480,15 @@ The request for `  google.datastore.admin.v1.DatastoreAdmin.GetIndex  ` .
 
 Fields
 
-`  project_id  `
+`project_id`
 
-`  string  `
+`string`
 
 Project ID against which to make the request.
 
-`  index_id  `
+`index_id`
 
-`  string  `
+`string`
 
 The resource ID of the index to get.
 
@@ -498,33 +498,33 @@ Metadata for ImportEntities operations.
 
 Fields
 
-`  common  `
+`common`
 
 `  CommonMetadata  `
 
 Metadata common to all Datastore Admin operations.
 
-`  progress_entities  `
+`progress_entities`
 
 `  Progress  `
 
 An estimate of the number of entities processed.
 
-`  progress_bytes  `
+`progress_bytes`
 
 `  Progress  `
 
 An estimate of the number of bytes processed.
 
-`  entity_filter  `
+`entity_filter`
 
 `  EntityFilter  `
 
 Description of which entities are being imported.
 
-`  input_url  `
+`input_url`
 
-`  string  `
+`string`
 
 The location of the import metadata file. This will be the same value as the `  google.datastore.admin.v1.ExportEntitiesResponse.output_url  ` field.
 
@@ -534,27 +534,27 @@ The request for `  google.datastore.admin.v1.DatastoreAdmin.ImportEntities  ` .
 
 Fields
 
-`  project_id  `
+`project_id`
 
-`  string  `
+`string`
 
 Required. Project ID against which to make the request.
 
-`  labels  `
+`labels`
 
-`  map<string, string>  `
+`map<string, string>`
 
 Client-assigned labels.
 
-`  input_url  `
+`input_url`
 
-`  string  `
+`string`
 
-Required. The full resource URL of the external storage location. Currently, only Google Cloud Storage is supported. So input\_url should be of the form: `  gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE  ` , where `  BUCKET_NAME  ` is the name of the Cloud Storage bucket, `  NAMESPACE_PATH  ` is an optional Cloud Storage namespace path (this is not a Cloud Datastore namespace), and `  OVERALL_EXPORT_METADATA_FILE  ` is the metadata file written by the ExportEntities operation. For more information about Cloud Storage namespace paths, see [Object name considerations](https://cloud.google.com/storage/docs/naming#object-considerations) .
+Required. The full resource URL of the external storage location. Currently, only Google Cloud Storage is supported. So input\_url should be of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE` , where `BUCKET_NAME` is the name of the Cloud Storage bucket, `NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is not a Cloud Datastore namespace), and `OVERALL_EXPORT_METADATA_FILE` is the metadata file written by the ExportEntities operation. For more information about Cloud Storage namespace paths, see [Object name considerations](https://cloud.google.com/storage/docs/naming#object-considerations) .
 
 For more information, see `  google.datastore.admin.v1.ExportEntitiesResponse.output_url  ` .
 
-`  entity_filter  `
+`entity_filter`
 
 `  EntityFilter  `
 
@@ -566,31 +566,31 @@ Datastore composite index definition.
 
 Fields
 
-`  project_id  `
+`project_id`
 
-`  string  `
+`string`
 
 Output only. Project ID.
 
-`  index_id  `
+`index_id`
 
-`  string  `
+`string`
 
 Output only. The resource ID of the index.
 
-`  kind  `
+`kind`
 
-`  string  `
+`string`
 
 Required. The entity kind to which this index applies.
 
-`  ancestor  `
+`ancestor`
 
 `  AncestorMode  `
 
 Required. The index's ancestor mode. Must not be ANCESTOR\_MODE\_UNSPECIFIED.
 
-`  properties[]  `
+`properties[]`
 
 `  IndexedProperty  `
 
@@ -600,7 +600,7 @@ Requires:
 
   - A maximum of 100 properties.
 
-`  state  `
+`state`
 
 `  State  `
 
@@ -612,15 +612,15 @@ For an ordered index, specifies whether each of the entity's ancestors will be i
 
 Enums
 
-`  ANCESTOR_MODE_UNSPECIFIED  `
+`ANCESTOR_MODE_UNSPECIFIED`
 
 The ancestor mode is unspecified.
 
-`  NONE  `
+`NONE`
 
 Do not include the entity's ancestors in the index.
 
-`  ALL_ANCESTORS  `
+`ALL_ANCESTORS`
 
 Include all the entity's ancestors in the index.
 
@@ -630,15 +630,15 @@ The direction determines how a property is indexed.
 
 Enums
 
-`  DIRECTION_UNSPECIFIED  `
+`DIRECTION_UNSPECIFIED`
 
 The direction is unspecified.
 
-`  ASCENDING  `
+`ASCENDING`
 
 The property's values are indexed so as to support sequencing in ascending order and also query by \<, \>, \<=, \>=, and =.
 
-`  DESCENDING  `
+`DESCENDING`
 
 The property's values are indexed so as to support sequencing in descending order and also query by \<, \>, \<=, \>=, and =.
 
@@ -648,13 +648,13 @@ A property of an index.
 
 Fields
 
-`  name  `
+`name`
 
-`  string  `
+`string`
 
 Required. The property name to index.
 
-`  direction  `
+`direction`
 
 `  Direction  `
 
@@ -666,23 +666,23 @@ The possible set of states of an index.
 
 Enums
 
-`  STATE_UNSPECIFIED  `
+`STATE_UNSPECIFIED`
 
 The state is unspecified.
 
-`  CREATING  `
+`CREATING`
 
 The index is being created, and cannot be used by queries. There is an active long-running operation for the index. The index is updated when writing an entity. Some index data may exist.
 
-`  READY  `
+`READY`
 
 The index is ready to be used. The index is updated when writing an entity. The index is fully populated from all stored entities it applies to.
 
-`  DELETING  `
+`DELETING`
 
 The index is being deleted, and cannot be used by queries. There is an active long-running operation for the index. The index is not updated when writing an entity. Some index data may exist.
 
-`  ERROR  `
+`ERROR`
 
 The index was being created or deleted, but something went wrong. The index cannot by used by queries. There is no active long-running operation for the index, and the most recently finished long-running operation failed. The index is not updated when writing an entity. Some index data may exist.
 
@@ -692,21 +692,21 @@ Metadata for Index operations.
 
 Fields
 
-`  common  `
+`common`
 
 `  CommonMetadata  `
 
 Metadata common to all Datastore Admin operations.
 
-`  progress_entities  `
+`progress_entities`
 
 `  Progress  `
 
 An estimate of the number of entities processed.
 
-`  index_id  `
+`index_id`
 
-`  string  `
+`string`
 
 The index resource ID that this operation is acting on.
 
@@ -716,25 +716,25 @@ The request for `  google.datastore.admin.v1.DatastoreAdmin.ListIndexes  ` .
 
 Fields
 
-`  project_id  `
+`project_id`
 
-`  string  `
+`string`
 
 Project ID against which to make the request.
 
-`  filter  `
+`filter`
 
-`  string  `
+`string`
 
-`  page_size  `
+`page_size`
 
-`  int32  `
+`int32`
 
 The maximum number of items to return. If zero, then all results will be returned.
 
-`  page_token  `
+`page_token`
 
-`  string  `
+`string`
 
 The next\_page\_token value returned from a previous List request, if any.
 
@@ -744,15 +744,15 @@ The response for `  google.datastore.admin.v1.DatastoreAdmin.ListIndexes  ` .
 
 Fields
 
-`  indexes[]  `
+`indexes[]`
 
 `  Index  `
 
 The indexes.
 
-`  next_page_token  `
+`next_page_token`
 
-`  string  `
+`string`
 
 The standard List next-page token.
 
@@ -762,27 +762,27 @@ An event signifying the start of a new step in a [migration from Cloud Datastore
 
 Fields
 
-`  step  `
+`step`
 
 `  MigrationStep  `
 
 The step that is starting.
 
-An event with step set to `  START  ` indicates that the migration has been reverted back to the initial pre-migration state.
+An event with step set to `START` indicates that the migration has been reverted back to the initial pre-migration state.
 
-Union field `  step_details  ` . Details about this step. `  step_details  ` can be only one of the following:
+Union field `step_details` . Details about this step. `step_details` can be only one of the following:
 
-`  prepare_step_details  `
+`prepare_step_details`
 
 `  PrepareStepDetails  `
 
-Details for the `  PREPARE  ` step.
+Details for the `PREPARE` step.
 
-`  redirect_writes_step_details  `
+`redirect_writes_step_details`
 
 `  RedirectWritesStepDetails  `
 
-Details for the `  REDIRECT_WRITES  ` step.
+Details for the `REDIRECT_WRITES` step.
 
 ## ConcurrencyMode
 
@@ -790,41 +790,41 @@ Concurrency modes for transactions in Cloud Firestore.
 
 Enums
 
-`  CONCURRENCY_MODE_UNSPECIFIED  `
+`CONCURRENCY_MODE_UNSPECIFIED`
 
 Unspecified.
 
-`  PESSIMISTIC  `
+`PESSIMISTIC`
 
 Pessimistic concurrency.
 
-`  OPTIMISTIC  `
+`OPTIMISTIC`
 
 Optimistic concurrency.
 
-`  OPTIMISTIC_WITH_ENTITY_GROUPS  `
+`OPTIMISTIC_WITH_ENTITY_GROUPS`
 
 Optimistic concurrency with entity groups.
 
 ## PrepareStepDetails
 
-Details for the `  PREPARE  ` step.
+Details for the `PREPARE` step.
 
 Fields
 
-`  concurrency_mode  `
+`concurrency_mode`
 
 `  ConcurrencyMode  `
 
-The concurrency mode this database will use when it reaches the `  REDIRECT_WRITES  ` step.
+The concurrency mode this database will use when it reaches the `REDIRECT_WRITES` step.
 
 ## RedirectWritesStepDetails
 
-Details for the `  REDIRECT_WRITES  ` step.
+Details for the `REDIRECT_WRITES` step.
 
 Fields
 
-`  concurrency_mode  `
+`concurrency_mode`
 
 `  ConcurrencyMode  `
 
@@ -836,19 +836,19 @@ States for a migration.
 
 Enums
 
-`  MIGRATION_STATE_UNSPECIFIED  `
+`MIGRATION_STATE_UNSPECIFIED`
 
 Unspecified.
 
-`  RUNNING  `
+`RUNNING`
 
 The migration is running.
 
-`  PAUSED  `
+`PAUSED`
 
 The migration is paused.
 
-`  COMPLETE  `
+`COMPLETE`
 
 The migration is complete.
 
@@ -858,7 +858,7 @@ An event signifying a change in state of a [migration from Cloud Datastore to Cl
 
 Fields
 
-`  state  `
+`state`
 
 `  MigrationState  `
 
@@ -870,35 +870,35 @@ Steps in a migration.
 
 Enums
 
-`  MIGRATION_STEP_UNSPECIFIED  `
+`MIGRATION_STEP_UNSPECIFIED`
 
 Unspecified.
 
-`  PREPARE  `
+`PREPARE`
 
 Pre-migration: the database is prepared for migration.
 
-`  START  `
+`START`
 
 Start of migration.
 
-`  APPLY_WRITES_SYNCHRONOUSLY  `
+`APPLY_WRITES_SYNCHRONOUSLY`
 
 Writes are applied synchronously to at least one replica.
 
-`  COPY_AND_VERIFY  `
+`COPY_AND_VERIFY`
 
 Data is copied to Cloud Firestore and then verified to match the data in Cloud Datastore.
 
-`  REDIRECT_EVENTUALLY_CONSISTENT_READS  `
+`REDIRECT_EVENTUALLY_CONSISTENT_READS`
 
 Eventually-consistent reads are redirected to Cloud Firestore.
 
-`  REDIRECT_STRONGLY_CONSISTENT_READS  `
+`REDIRECT_STRONGLY_CONSISTENT_READS`
 
 Strongly-consistent reads are redirected to Cloud Firestore.
 
-`  REDIRECT_WRITES  `
+`REDIRECT_WRITES`
 
 Writes are redirected to Cloud Firestore.
 
@@ -908,23 +908,23 @@ Operation types.
 
 Enums
 
-`  OPERATION_TYPE_UNSPECIFIED  `
+`OPERATION_TYPE_UNSPECIFIED`
 
 Unspecified.
 
-`  EXPORT_ENTITIES  `
+`EXPORT_ENTITIES`
 
 ExportEntities.
 
-`  IMPORT_ENTITIES  `
+`IMPORT_ENTITIES`
 
 ImportEntities.
 
-`  CREATE_INDEX  `
+`CREATE_INDEX`
 
 CreateIndex.
 
-`  DELETE_INDEX  `
+`DELETE_INDEX`
 
 DeleteIndex.
 
@@ -934,14 +934,14 @@ Measures the progress of a particular metric.
 
 Fields
 
-`  work_completed  `
+`work_completed`
 
-`  int64  `
+`int64`
 
 The amount of work that has been completed. Note that this may be greater than work\_estimated.
 
-`  work_estimated  `
+`work_estimated`
 
-`  int64  `
+`int64`
 
 An estimate of how much work needs to be performed. May be zero if the work estimate is unavailable.

@@ -2,14 +2,14 @@ The supported orderings.
 
 Enums
 
-`  ORDER_UNSPECIFIED  `
+`ORDER_UNSPECIFIED`
 
 The ordering is unspecified. Not a valid option.
 
-`  ASCENDING  `
+`ASCENDING`
 
 The field is ordered by ascending field value.
 
-`  DESCENDING  `
+`DESCENDING`
 
 The field is ordered by descending field value.

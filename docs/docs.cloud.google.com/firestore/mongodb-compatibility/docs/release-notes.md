@@ -28,7 +28,7 @@ For the cloning and restore statuses, the status column updates upon completion.
 
 Feature
 
-Support for Object as document `  _id  ` identifier.
+Support for Object as document `_id` identifier.
 
 ## October 27, 2025
 
@@ -46,12 +46,12 @@ You can [create, save, and manage queries](https://cloud.google.com/firestore/mo
 
 Feature
 
-The `  $lookup  ` operator now supports the following fields:
+The `$lookup` operator now supports the following fields:
 
-  - `  from  `
-  - `  localField  `
-  - `  foreignField  `
-  - `  as  `
+  - `from`
+  - `localField`
+  - `foreignField`
+  - `as`
 
 For the full list of supported operators see [Supported features](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80) .
 
@@ -61,14 +61,14 @@ Feature
 
 Support for the following query features. For the full list of supported operators see [Supported features](https://cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80) .
 
-  - `  $facet  `
-  - `  $unionWith  `
-  - `  $minN  `
-  - `  $firstN  `
-  - `  $lastN  `
-  - `  $toString  `
-  - `  $median  `
-  - `  $percentile  `
+  - `$facet`
+  - `$unionWith`
+  - `$minN`
+  - `$firstN`
+  - `$lastN`
+  - `$toString`
+  - `$median`
+  - `$percentile`
 
 ## September 02, 2025
 
@@ -100,7 +100,7 @@ Support for [explaining queries](https://cloud.google.com/firestore/mongodb-comp
 
 Feature
 
-Support for `  int32  ` , binary, and double types as document `  _id  ` identifier.
+Support for `int32` , binary, and double types as document `_id` identifier.
 
 Feature
 
@@ -126,70 +126,70 @@ Feature
 
 Support for the following query features. For the full list of supported operators see [Supported features](https://cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80) .
 
-  - `  $  ` projection operator
+  - `$` projection operator
   - Update array operators:
-      - `  $  `
-      - `  $[]  `
-      - `  $[<identifier>]  `
-      - `  $addToSet  `
-      - `  $pop  `
-      - `  $pullAll  `
+      - `$`
+      - `$[]`
+      - `$[<identifier>]`
+      - `$addToSet`
+      - `$pop`
+      - `$pullAll`
   - Update modifiers:
-      - `  $each  `
-      - `  $position  `
-      - `  $slice  `
-      - `  $sort  `
-  - `  $addToSet  ` aggregation pipeline accumulator expression
+      - `$each`
+      - `$position`
+      - `$slice`
+      - `$sort`
+  - `$addToSet` aggregation pipeline accumulator expression
   - Aggregation pipeline arithmetic operators:
-      - `  $exp  `
-      - `  $ln  `
-      - `  $log  `
-      - `  $log10  `
-      - `  $pow  `
-      - `  $sqrt  `
-      - `  $trunc  `
+      - `$exp`
+      - `$ln`
+      - `$log`
+      - `$log10`
+      - `$pow`
+      - `$sqrt`
+      - `$trunc`
   - Aggregation pipeline array operators
-      - `  $filter  `
-      - `  $firstN  `
-      - `  $in  `
-      - `  $indexOfArray  `
-      - `  $lastN  `
-      - `  $maxN  `
-      - `  $minN  `
-      - `  $objectToArray  `
-      - `  $range  `
-      - `  $reduce  `
-      - `  $sortArray  `
-      - `  $zip  `
-  - `  $binarySize  ` and `  $bsonSize  ` aggregation pipeline data size operators
-  - `  $dateTrunc  ` aggregation pipeline date operator
+      - `$filter`
+      - `$firstN`
+      - `$in`
+      - `$indexOfArray`
+      - `$lastN`
+      - `$maxN`
+      - `$minN`
+      - `$objectToArray`
+      - `$range`
+      - `$reduce`
+      - `$sortArray`
+      - `$zip`
+  - `$binarySize` and `$bsonSize` aggregation pipeline data size operators
+  - `$dateTrunc` aggregation pipeline date operator
   - Aggregation pipeline operators:
-      - `  $mergeObjects  `
-      - `  $natural  ` (ascending)
+      - `$mergeObjects`
+      - `$natural` (ascending)
   - Aggregation pipeline set operators:
-      - `  $allElementsTrue  `
-      - `  $anyElementsTrue  `
-      - `  $anyElementTrue  `
-      - `  $setDifference  `
-      - `  $setEquals  `
-      - `  $setIntersection  `
-      - `  $setIsSubset  `
-      - `  $setIntersection  `
-      - `  $setIsSubset  `
-      - `  $setUnion  `
-  - `  $bucket  ` aggregation pipeline stage operator
+      - `$allElementsTrue`
+      - `$anyElementsTrue`
+      - `$anyElementTrue`
+      - `$setDifference`
+      - `$setEquals`
+      - `$setIntersection`
+      - `$setIsSubset`
+      - `$setIntersection`
+      - `$setIsSubset`
+      - `$setUnion`
+  - `$bucket` aggregation pipeline stage operator
   - Aggregation pipeline type conversion operators:
-      - `  $convert  `
-      - `  $toDate  `
-      - `  $toDecimal  `
-      - `  $toDouble  `
-      - `  $toInt  `
-      - `  $toLong  `
-      - `  $toObjectId  `
-      - `  $toString  `
-      - `  $type  `
-  - `  $let  ` and `  $map  ` aggregation pipeline variable operators
-  - `  $lookup  ` aggregation pipeline stage operator, limited to `  _id  ` in the `  foreignField  `
+      - `$convert`
+      - `$toDate`
+      - `$toDecimal`
+      - `$toDouble`
+      - `$toInt`
+      - `$toLong`
+      - `$toObjectId`
+      - `$toString`
+      - `$type`
+  - `$let` and `$map` aggregation pipeline variable operators
+  - `$lookup` aggregation pipeline stage operator, limited to `_id` in the `foreignField`
 
 Feature
 
@@ -213,7 +213,7 @@ You can [clone an existing database](https://cloud.google.com/firestore/mongodb-
 
 Feature
 
-Support for [`  explain()  `](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain#use_query_explain) in the Firestore with MongoDB compatibility API is now available in [Preview](https://cloud.google.com/products#product-launch-stages) . You can now use `  explain()  ` in tools such as MongoDB Shell and Compass.
+Support for [`explain()`](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain#use_query_explain) in the Firestore with MongoDB compatibility API is now available in [Preview](https://cloud.google.com/products#product-launch-stages) . You can now use `explain()` in tools such as MongoDB Shell and Compass.
 
 ## July 21, 2025
 
@@ -237,15 +237,15 @@ Feature
 
 Feature
 
-Array update operators `  $push  ` and `  $pull  ` are now available in Preview.
+Array update operators `$push` and `$pull` are now available in Preview.
 
 Feature
 
 Performance improvements:
 
-  - Performance improvements on disjunction `  $in  ` queries and keys only index scans due to query optimizer tuning is now available in Preview.
+  - Performance improvements on disjunction `$in` queries and keys only index scans due to query optimizer tuning is now available in Preview.
   - Performance improvements on bulk insertions is now available in Preview.
-  - Performance improvements on `  $elemMatch  ` queries with indexes due to query optimizer tuning is now available in Preview.
+  - Performance improvements on `$elemMatch` queries with indexes due to query optimizer tuning is now available in Preview.
 
 ## April 09, 2025
 

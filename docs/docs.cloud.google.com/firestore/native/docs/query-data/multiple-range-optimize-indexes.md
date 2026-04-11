@@ -44,7 +44,7 @@ The following example shows how the use of correct index ordering reduces the nu
 
 ### Simple queries
 
-With the [earlier example](https://docs.cloud.google.com/firestore/native/docs/query-data/multiple-range-fields#indexing_considerations) of a collection of employees, the simple query that runs with the `  (experience ASC, salary ASC)  ` index is as follows:
+With the [earlier example](https://docs.cloud.google.com/firestore/native/docs/query-data/multiple-range-fields#indexing_considerations) of a collection of employees, the simple query that runs with the `(experience ASC, salary ASC)` index is as follows:
 
 ### Java
 
@@ -81,7 +81,7 @@ The query scans 95000 index entries only to return five documents. Since the que
         }
     }
 
-You can infer from domain expertise that most employees will have at least some experience but few will have a salary that is more than 100000. Given this insight, you can see that the `  salary  ` constraint is more selective than the `  experience  ` constraint. To influence the index that Firestore uses to execute the query, specify an `  orderBy  ` clause that orders the `  salary  ` constraint before the `  experience  ` constraint.
+You can infer from domain expertise that most employees will have at least some experience but few will have a salary that is more than 100000. Given this insight, you can see that the `salary` constraint is more selective than the `experience` constraint. To influence the index that Firestore uses to execute the query, specify an `orderBy` clause that orders the `salary` constraint before the `experience` constraint.
 
 ### Java
 
@@ -91,7 +91,7 @@ You can infer from domain expertise that most employees will have at least some 
       .orderBy("salary")
       .orderBy("experience");
 
-When you explicitly use the `  orderBy()  ` clause to add the predicates, Firestore uses the `  (salary ASC, experience ASC)  ` index to run the query. Since the selectivity of the first range filter is higher in this query compared to the earlier query, the query runs faster and is more cost efficient.
+When you explicitly use the `orderBy()` clause to add the predicates, Firestore uses the `(salary ASC, experience ASC)` index to run the query. Since the selectivity of the first range filter is higher in this query compared to the earlier query, the query runs faster and is more cost efficient.
 
     // Output query planning info
     {

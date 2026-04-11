@@ -24,9 +24,9 @@ Follow the steps below to create a Node.js Cloud Function that initiates a Fires
     
     1.  Select **JavaScript** for the language.
     2.  Optionally, enable ESLint.
-    3.  Enter `  y  ` to install dependencies.
+    3.  Enter `y` to install dependencies.
 
-2.  Replace the code in the `  functions/index.js  ` file with the following:
+2.  Replace the code in the `functions/index.js` file with the following:
     
         const functions = require('firebase-functions');
         const firestore = require('@google-cloud/firestore');
@@ -67,9 +67,9 @@ Follow the steps below to create a Node.js Cloud Function that initiates a Fires
     
       - Replace `  YOUR_PROJECT_ID  ` with your project Id
     
-      - Modify `  every 24 hours  ` to set your export schedule. Use either [AppEngine cron.yaml syntax](https://cloud.google.com/appengine/docs/standard/python/config/cronref#schedule_format) or the [unix-cron format](https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules) ( `  * * * * *  ` ).
+      - Modify `every 24 hours` to set your export schedule. Use either [AppEngine cron.yaml syntax](https://cloud.google.com/appengine/docs/standard/python/config/cronref#schedule_format) or the [unix-cron format](https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules) ( `* * * * *` ).
     
-      - Modify `  collectionIds: []  ` to export only the specified collection groups. Leave as is to export all collection groups.
+      - Modify `collectionIds: []` to export only the specified collection groups. Leave as is to export all collection groups.
         
         **Note:** If you export all collections, any follow-up import operations must import all collections in the export data files.
 
@@ -87,13 +87,13 @@ Follow the steps below to create a Node.js Cloud Function that initiates a Fires
 
 2.  Click **Write a function**
 
-3.  Enter a function name such as `  firestore-export  `
+3.  Enter a function name such as `firestore-export`
 
 4.  Under **Trigger** , select **Cloud Pub/Sub**
 
-5.  Under **Topic** , select **Create new Topic** . Enter a name for the pub/sub topic, such as `  initiateFirestoreExport  ` . Take note of the topic name as you need it to create your Cloud Scheduler job.
+5.  Under **Topic** , select **Create new Topic** . Enter a name for the pub/sub topic, such as `initiateFirestoreExport` . Take note of the topic name as you need it to create your Cloud Scheduler job.
 
-6.  Under **Source code** , select **Inline editor** . Enter the following code under `  index.js  ` :
+6.  Under **Source code** , select **Inline editor** . Enter the following code under `index.js` :
     
         const firestore = require('@google-cloud/firestore');
         const client = new firestore.v1.FirestoreAdminClient();
@@ -129,11 +129,11 @@ Follow the steps below to create a Node.js Cloud Function that initiates a Fires
     
       - Replace `  BUCKET_NAME  ` with the name of your bucket.
     
-      - Modify `  collectionIds: []  ` to export only the specified collection groups. Leave as is to export all collection groups.
+      - Modify `collectionIds: []` to export only the specified collection groups. Leave as is to export all collection groups.
         
         **Note:** If you export all collection groups, any follow-up import operations must import all collection groups in the export data files.
 
-7.  Under `  package.json  ` , add the following dependency:
+7.  Under `package.json` , add the following dependency:
     
         {
           "dependencies": {
@@ -141,7 +141,7 @@ Follow the steps below to create a Node.js Cloud Function that initiates a Fires
           }
         }
 
-8.  Under **Function to execute** , enter `  scheduledFirestoreExport  ` , the name of the function in `  index.js  ` .
+8.  Under **Function to execute** , enter `scheduledFirestoreExport` , the name of the function in `index.js` .
 
 9.  Click **Create** to deploy the Cloud Function.
 
@@ -155,15 +155,15 @@ Next, create a Cloud Scheduler job that calls your Cloud Function:
 
 2.  Click **Create Job** .
 
-3.  Enter a **Name** for the job such as `  scheduledFirestoreExport  ` .
+3.  Enter a **Name** for the job such as `scheduledFirestoreExport` .
 
-4.  Enter a **Frequency** , for example, `  every 24 hours  ` .
+4.  Enter a **Frequency** , for example, `every 24 hours` .
 
 5.  Select a **Timezone** .
 
-6.  Under **Target** , select **Pub/Sub** . In the **Topic** field, enter the name of the pub/sub topic you defined alongside your Cloud Function, `  initiateFirestoreExport  ` in the example above.
+6.  Under **Target** , select **Pub/Sub** . In the **Topic** field, enter the name of the pub/sub topic you defined alongside your Cloud Function, `initiateFirestoreExport` in the example above.
 
-7.  In the **Payload** field, enter `  start export  ` . The job requires a payload defined, but the Cloud Function above does not actually use this value.
+7.  In the **Payload** field, enter `start export` . The job requires a payload defined, but the Cloud Function above does not actually use this value.
 
 8.  Click **Create** .
 
@@ -179,11 +179,11 @@ This Cloud Function uses your project's default service account to authenticate 
 
 This service account requires permission to start an export operation and to write to your Cloud Storage bucket. To grant these permissions, assign the following IAM roles to the default service account:
 
-  - `  Cloud Datastore Import Export Admin  `
+  - `Cloud Datastore Import Export Admin`
     **Note:** This Datastore role also grants permissions for Firestore.
-  - `  Owner  ` or `  Storage Admin  ` role on the bucket
+  - `Owner` or `Storage Admin` role on the bucket
 
-You can use the `  gcloud  ` and `  gsutil  ` command-line tools to assign these roles.
+You can use the `gcloud` and `gsutil` command-line tools to assign these roles.
 
 If not already installed, you can access these tools from [Cloud Shell](https://cloud.google.com/shell/) in the Google Cloud console:  
 [Start Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
@@ -232,7 +232,7 @@ Go to the **Cloud Run functions** page in the Google Cloud console.
 
 ## View export progress
 
-You can use the `  gcloud firestore operations list  ` command to view the progress of your export operations, see [managing export and import operations](https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import#managing_export_and_import_operations) .
+You can use the `gcloud firestore operations list` command to view the progress of your export operations, see [managing export and import operations](https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import#managing_export_and_import_operations) .
 
 After an export operation completes, you can view the output files in your Cloud Storage bucket:
 

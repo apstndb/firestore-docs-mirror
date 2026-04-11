@@ -7,7 +7,7 @@ You can use [Eventarc](https://docs.cloud.google.com/eventarc/docs/overview) and
 
 Eventarc offers a standardized solution to manage the flow of state changes, called *events* , between decoupled microservices. When triggered, Eventarc routes these events to various destinations while managing delivery, security, authorization, observability, and error-handling for you.
 
-**Note:** Eventarc events use the [`  CloudEvents  `](https://cloudevents.io/) specification.
+**Note:** Eventarc events use the [`CloudEvents`](https://cloudevents.io/) specification.
 
 ## Example use cases
 
@@ -47,10 +47,10 @@ Note the following limitations for Datastore mode triggers for Eventarc:
 
 Eventarc does not support multi-regions for Firestore event triggers, but you can still create triggers for Firestore databases in multi-region locations. Eventarc maps Firestore multi-region locations to the following Eventarc regions:
 
-| Firestore multi-region | Eventarc region               |
-| ---------------------- | ----------------------------- |
-| `        nam5       `  | `        us-central1       `  |
-| `        eur3       `  | `        europe-west4       ` |
+| Firestore multi-region | Eventarc region |
+| ---------------------- | --------------- |
+| `nam5`                 | `us-central1`   |
+| `eur3`                 | `europe-west4`  |
 
 ## Datastore mode and Native mode event interoperability
 
@@ -62,8 +62,8 @@ Event interoperability lets you share Eventarc code across Firestore databases o
 
 If you apply a Native mode event trigger to a Datastore mode database, Eventarc makes the following conversions:
 
-  - The namespace of the entity is stored in the event's `  PartitionId  ` attribute.
-  - Embedded entities are converted to Native mode `  map  ` types.
+  - The namespace of the entity is stored in the event's `PartitionId` attribute.
+  - Embedded entities are converted to Native mode `map` types.
 
 ## What's next
 

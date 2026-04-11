@@ -72,11 +72,11 @@ This page assumes you have already created an entity that is stored in Firestore
 
 ## Complex properties
 
-The entity editor supports properties with complex types such as `  Array  ` and `  Embedded entity  ` .
+The entity editor supports properties with complex types such as `Array` and `Embedded entity` .
 
 ### Array properties
 
-When you add or modify the value of an `  Array  ` property, provide a value in JSON format.
+When you add or modify the value of an `Array` property, provide a value in JSON format.
 
 ![An example of valid JSON for an array property.](https://docs.cloud.google.com/static/datastore/images/array_property.png)
 
@@ -84,7 +84,7 @@ If you enter invalid JSON for the **Value** field you will receive an error mess
 
 ### Embedded entity properties
 
-When you add or modify the value of an `  Embedded entity  ` property, provide a value in JSON format.
+When you add or modify the value of an `Embedded entity` property, provide a value in JSON format.
 
 ![An example of valid JSON for an embedded entity property](https://docs.cloud.google.com/static/datastore/images/embedded_entity_property.png)
 

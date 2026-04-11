@@ -4,30 +4,30 @@ gcloud alpha firestore indexes composite - manage composite indexes for Cloud Fi
 
 SYNOPSIS
 
-`  gcloud alpha firestore indexes composite  ` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud alpha firestore indexes composite` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (ALPHA)  ` Manage composite indexes for Cloud Firestore.
+`(ALPHA)` Manage composite indexes for Cloud Firestore.
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 COMMANDS
 
 `  COMMAND  ` is one of the following:
 
   - `  create  `  
-    `  (ALPHA)  ` Create a new composite index.
+    `(ALPHA)` Create a new composite index.
   - `  delete  `  
-    `  (ALPHA)  ` Delete the given composite index.
+    `(ALPHA)` Delete the given composite index.
   - `  describe  `  
-    `  (ALPHA)  ` Describe the given composite index.
+    `(ALPHA)` Describe the given composite index.
   - `  list  `  
-    `  (ALPHA)  ` List composite indexes.
+    `(ALPHA)` List composite indexes.
 
 NOTES
 

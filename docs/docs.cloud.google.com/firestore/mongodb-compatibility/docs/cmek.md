@@ -41,7 +41,7 @@ When you create a Firestore with MongoDB compatibility CMEK-protected database, 
 
 Encrypt and decrypt operations are not issued on every data request. Instead, the Firestore with MongoDB compatibility system polls Cloud KMS every 5 minutes to check if the key is still available and then performs encrypt and decrypt operations if the key is available.
 
-If the system detects that the key is unavailable, within 10 minutes any subsequent calls to the Firestore with MongoDB compatibility database, including reads, writes, and queries, return a `  INVALID_ARGUMENT  ` error with the following message:
+If the system detects that the key is unavailable, within 10 minutes any subsequent calls to the Firestore with MongoDB compatibility database, including reads, writes, and queries, return a `INVALID_ARGUMENT` error with the following message:
 
     The customer-managed encryption key required by the requested
     resource is not accessible.
@@ -77,7 +77,7 @@ When you use a Cloud EKM key, Google has no control over the availability of you
 
 If an externally-managed key is unavailable, Firestore with MongoDB compatibility continues to support full database operations using a cached version of the key, for up to one hour.
 
-After an hour, if Firestore with MongoDB compatibility is still unable to connect with Cloud KMS, Firestore with MongoDB compatibility begins taking the database offline as a protective measure. Calls to the database will fail with a `  INVALID_ARGUMENT  ` error that includes additional details.
+After an hour, if Firestore with MongoDB compatibility is still unable to connect with Cloud KMS, Firestore with MongoDB compatibility begins taking the database offline as a protective measure. Calls to the database will fail with a `INVALID_ARGUMENT` error that includes additional details.
 
 See the [Cloud External Key Manager documentation](https://cloud.google.com/kms/docs/ekm#considerations) for more considerations when using external keys.
 
@@ -123,7 +123,7 @@ When keys are unavailable or disabled, be aware of the following behaviors that 
 
   - You can delete a CMEK database that has unavailable keys.
 
-  - When you create a CMEK-enabled database, disabled keys don't show on the list of available keys in the Google Cloud console. If you manually input a disabled key, the database creation process will fail with a `  INVALID_ARGUMENT  ` error 400.
+  - When you create a CMEK-enabled database, disabled keys don't show on the list of available keys in the Google Cloud console. If you manually input a disabled key, the database creation process will fail with a `INVALID_ARGUMENT` error 400.
 
 ## Limitations
 

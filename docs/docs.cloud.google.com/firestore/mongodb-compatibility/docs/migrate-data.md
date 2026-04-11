@@ -61,7 +61,7 @@ As an alternative, you can replace the variables in command examples with the sa
 Before you begin, review the [differences between Firestore with MongoDB compatibility and MongoDB](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences) . Pay special attention to the following:
 
   - [Unsupported data types](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences#values)
-  - [Restrictions on `  _id  `](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences#_id)
+  - [Restrictions on `_id`](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences#_id)
   - [Document size limits](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences#documents)
 
 If any of your data doesn't meet restrictions in the preceding categories:

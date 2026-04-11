@@ -4,11 +4,11 @@ gcloud beta firestore - manage your Cloud Firestore resources
 
 SYNOPSIS
 
-`  gcloud beta firestore  ` `  GROUP  ` | `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud beta firestore` `  GROUP  ` | `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (BETA)  ` export -- Export data to Google Cloud Storage
+`(BETA)` export -- Export data to Google Cloud Storage
 
 import -- Import data from Google Cloud Storage
 
@@ -22,37 +22,37 @@ GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 GROUPS
 
 `  GROUP  ` is one of the following:
 
   - `  backups  `  
-    `  (BETA)  ` The set of commands to manage backups for Cloud Firestore.
+    `(BETA)` The set of commands to manage backups for Cloud Firestore.
   - `  databases  `  
-    `  (BETA)  ` Manage Creation of Cloud Firestore in Native mode Database.
+    `(BETA)` Manage Creation of Cloud Firestore in Native mode Database.
   - `  fields  `  
-    `  (BETA)  ` Manage field metadata for Cloud Firestore.
+    `(BETA)` Manage field metadata for Cloud Firestore.
   - `  indexes  `  
-    `  (BETA)  ` Manage indexes for Cloud Firestore.
+    `(BETA)` Manage indexes for Cloud Firestore.
   - `  locations  `  
-    `  (BETA)  ` The set of commands to manage Locations for Cloud Firestore.
+    `(BETA)` The set of commands to manage Locations for Cloud Firestore.
   - `  operations  `  
-    `  (BETA)  ` Manage Long Running Operations for Cloud Firestore.
+    `(BETA)` Manage Long Running Operations for Cloud Firestore.
   - `  user-creds  `  
-    `  (BETA)  ` Manage the user creds for a Cloud Firestore Database.
+    `(BETA)` Manage the user creds for a Cloud Firestore Database.
 
 COMMANDS
 
 `  COMMAND  ` is one of the following:
 
   - `  bulk-delete  `  
-    `  (BETA)  ` bulk delete Cloud Firestore documents.
+    `(BETA)` bulk delete Cloud Firestore documents.
   - `  export  `  
-    `  (BETA)  ` export Cloud Firestore documents to Google Cloud Storage.
+    `(BETA)` export Cloud Firestore documents to Google Cloud Storage.
   - `  import  `  
-    `  (BETA)  ` import Cloud Firestore documents from Google Cloud Storage.
+    `(BETA)` import Cloud Firestore documents from Google Cloud Storage.
 
 NOTES
 

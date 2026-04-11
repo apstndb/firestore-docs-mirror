@@ -4,15 +4,15 @@ gcloud beta firestore operations delete - delete a completed Cloud Firestore adm
 
 SYNOPSIS
 
-`  gcloud beta firestore operations delete  ` `  NAME  ` \[ `  --database  ` = `  DATABASE  ` ; default="(default)"\] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud beta firestore operations delete` `  NAME  ` \[ `  --database  ` = `  DATABASE  ` ; default="(default)"\] \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (BETA)  ` Delete a completed Cloud Firestore admin operation.
+`(BETA)` Delete a completed Cloud Firestore admin operation.
 
 EXAMPLES
 
-To delete the completed `  exampleOperationId  ` operation, run:
+To delete the completed `exampleOperationId` operation, run:
 
 ``` wrap-code
 gcloud beta firestore operations delete exampleOperationId
@@ -31,10 +31,10 @@ POSITIONAL ARGUMENTS
 
 FLAGS
 
-  - `  --database  ` = `  DATABASE  ` ; default="(default)"  
-    The database to operate on. The default value is `  (default)  ` .
+  - `--database` = `  DATABASE  ` ; default="(default)"  
+    The database to operate on. The default value is `(default)` .
     
-    For example, to operate on database `  foo  ` :
+    For example, to operate on database `foo` :
     
     ``` wrap-code
     gcloud beta firestore operations delete --database='foo'
@@ -44,7 +44,7 @@ GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 NOTES
 

@@ -97,7 +97,7 @@ eu
 us
 
   
-`  POST https://firestore.googleapis.com/v1/{database=projects/*/databases/*}/documents:rollback  `
+`POST https://firestore.googleapis.com/v1/{database=projects/*/databases/*}/documents:rollback`
 
 The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
@@ -105,11 +105,11 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 Parameters
 
-`  database  `
+`database`
 
-`  string  `
+`string`
 
-Required. The database name. In the format: `  projects/{projectId}/databases/{databaseId}  ` .
+Required. The database name. In the format: `projects/{projectId}/databases/{databaseId}` .
 
 ### Request body
 
@@ -135,9 +135,9 @@ The request body contains data with the following structure:
 
 Fields
 
-`  transaction  `
+`transaction`
 
-`  string ( bytes format)  `
+`string ( bytes format)`
 
 Required. The transaction to roll back.
 
@@ -151,7 +151,7 @@ If successful, the response body is an empty JSON object.
 
 Requires one of the following OAuth scopes:
 
-  - `  https://www.googleapis.com/auth/datastore  `
-  - `  https://www.googleapis.com/auth/cloud-platform  `
+  - `https://www.googleapis.com/auth/datastore`
+  - `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

@@ -103,7 +103,7 @@ service cloud.firestore {
 
 ### Access for any authenticated user
 
-Sometimes, Firestore Security Rules check that a user is logged in, but don't further restrict access based on that authentication. If one of your rules includes `  auth != null  ` , confirm that you want any logged-in user to have access to the data.
+Sometimes, Firestore Security Rules check that a user is logged in, but don't further restrict access based on that authentication. If one of your rules includes `auth != null` , confirm that you want any logged-in user to have access to the data.
 
 |                                                                                        |
 | -------------------------------------------------------------------------------------- |

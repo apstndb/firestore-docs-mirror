@@ -4,35 +4,35 @@ gcloud beta firestore backups - the set of commands to manage backups for Cloud 
 
 SYNOPSIS
 
-`  gcloud beta firestore backups  ` `  GROUP  ` | `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud beta firestore backups` `  GROUP  ` | `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
-`  (BETA)  ` The set of commands to manage backups for Cloud Firestore.
+`(BETA)` The set of commands to manage backups for Cloud Firestore.
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --help  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 GROUPS
 
 `  GROUP  ` is one of the following:
 
   - `  schedules  `  
-    `  (BETA)  ` Manage the backup schedules for a Cloud Firestore Database.
+    `(BETA)` Manage the backup schedules for a Cloud Firestore Database.
 
 COMMANDS
 
 `  COMMAND  ` is one of the following:
 
   - `  delete  `  
-    `  (BETA)  ` Deletes a Cloud Firestore backup.
+    `(BETA)` Deletes a Cloud Firestore backup.
   - `  describe  `  
-    `  (BETA)  ` Retrieves information about a Cloud Firestore backup.
+    `(BETA)` Retrieves information about a Cloud Firestore backup.
   - `  list  `  
-    `  (BETA)  ` List backups available to Cloud Firestore.
+    `(BETA)` List backups available to Cloud Firestore.
 
 NOTES
 

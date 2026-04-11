@@ -18,11 +18,11 @@ By replicating the data between multiple regions, data can continue to be served
 
 The following multi-region locations are available:
 
-| Multi-Region Name     | Multi-Region Description         | Read-Write Regions                                                                                       | Witness Region                                                      |
-| --------------------- | -------------------------------- | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `        eur3       ` | Europe                           | `        europe-west1       ` (Belgium), `        europe-west4       ` (Netherlands)                     | `        europe-north1       ` (Finland)                            |
-| `        nam5       ` | United States (Central)          | `        us-central1       ` (Iowa), `        us-central2       ` (Oklahoma—private Google Cloud region) | `        us-east1       ` (South Carolina)                          |
-| `        nam7       ` | United States (Central and East) | `        us-central1       ` (Iowa), `        us-east4       ` (Northern Virginia)                       | `        us-central2       ` (Oklahoma—private Google Cloud region) |
+| Multi-Region Name | Multi-Region Description         | Read-Write Regions                                                         | Witness Region                                       |
+| ----------------- | -------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `eur3`            | Europe                           | `europe-west1` (Belgium), `europe-west4` (Netherlands)                     | `europe-north1` (Finland)                            |
+| `nam5`            | United States (Central)          | `us-central1` (Iowa), `us-central2` (Oklahoma—private Google Cloud region) | `us-east1` (South Carolina)                          |
+| `nam7`            | United States (Central and East) | `us-central1` (Iowa), `us-east4` (Northern Virginia)                       | `us-central2` (Oklahoma—private Google Cloud region) |
 
 **Note:** For Legacy Cloud Datastore databases not yet upgraded to Firestore in Datastore mode, see [Multi-region locations (Legacy Cloud Datastore)](https://docs.cloud.google.com/datastore/docs/pre-migration/multi-r) .
 
@@ -54,77 +54,77 @@ A regional location is a specific geographic place, such as South Carolina. The 
 </tr>
 <tr class="even">
 <td></td>
-<td><code dir="ltr" translate="no">       us-west1      </code></td>
+<td><code dir="ltr" translate="no">us-west1</code></td>
 <td>Oregon</td>
 <td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td><code dir="ltr" translate="no">       us-west2      </code></td>
+<td><code dir="ltr" translate="no">us-west2</code></td>
 <td>Los Angeles</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td><code dir="ltr" translate="no">       us-west3      </code></td>
+<td><code dir="ltr" translate="no">us-west3</code></td>
 <td>Salt Lake City</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td><code dir="ltr" translate="no">       us-west4      </code></td>
+<td><code dir="ltr" translate="no">us-west4</code></td>
 <td>Las Vegas</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td><p><code dir="ltr" translate="no">        us-central1       </code></p>
+<td><p><code dir="ltr" translate="no">us-central1</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Iowa</td>
 <td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td><code dir="ltr" translate="no">       northamerica-northeast1      </code></td>
+<td><code dir="ltr" translate="no">northamerica-northeast1</code></td>
 <td>Montréal</td>
 <td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
 </tr>
 <tr class="even">
 <td></td>
-<td><p><code dir="ltr" translate="no">        northamerica-northeast2       </code></p>
+<td><p><code dir="ltr" translate="no">northamerica-northeast2</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Toronto</td>
 <td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td><p><code dir="ltr" translate="no">        northamerica-south1       </code></p>
+<td><p><code dir="ltr" translate="no">northamerica-south1</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Queretaro</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td><code dir="ltr" translate="no">       us-east1      </code></td>
+<td><code dir="ltr" translate="no">us-east1</code></td>
 <td>South Carolina</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td><code dir="ltr" translate="no">       us-east4      </code></td>
+<td><code dir="ltr" translate="no">us-east4</code></td>
 <td>Northern Virginia</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td><p><code dir="ltr" translate="no">        us-east5       </code></p>
+<td><p><code dir="ltr" translate="no">us-east5</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Columbus</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td><p><code dir="ltr" translate="no">        us-south1       </code></p>
+<td><p><code dir="ltr" translate="no">us-south1</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Dallas</td>
 <td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
@@ -137,14 +137,14 @@ A regional location is a specific geographic place, such as South Carolina. The 
 </tr>
 <tr class="odd">
 <td></td>
-<td><p><code dir="ltr" translate="no">        southamerica-west1       </code></p>
+<td><p><code dir="ltr" translate="no">southamerica-west1</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Santiago</td>
 <td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
 </tr>
 <tr class="even">
 <td></td>
-<td><code dir="ltr" translate="no">       southamerica-east1      </code></td>
+<td><code dir="ltr" translate="no">southamerica-east1</code></td>
 <td>São Paulo</td>
 <td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
 </tr>
@@ -156,86 +156,86 @@ A regional location is a specific geographic place, such as South Carolina. The 
 </tr>
 <tr class="even">
 <td></td>
-<td><code dir="ltr" translate="no">       europe-west2      </code></td>
+<td><code dir="ltr" translate="no">europe-west2</code></td>
 <td>London</td>
 <td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td><code dir="ltr" translate="no">       europe-west1      </code></td>
+<td><code dir="ltr" translate="no">europe-west1</code></td>
 <td>Belgium</td>
 <td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
 </tr>
 <tr class="even">
 <td></td>
-<td><p><code dir="ltr" translate="no">        europe-west4       </code></p>
+<td><p><code dir="ltr" translate="no">europe-west4</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Netherlands</td>
 <td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td><code dir="ltr" translate="no">       europe-west3      </code></td>
+<td><code dir="ltr" translate="no">europe-west3</code></td>
 <td>Frankfurt</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td><p><code dir="ltr" translate="no">        europe-west8       </code></p>
+<td><p><code dir="ltr" translate="no">europe-west8</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Milan</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td><p><code dir="ltr" translate="no">        europe-southwest1       </code></p>
+<td><p><code dir="ltr" translate="no">europe-southwest1</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Madrid</td>
 <td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
 </tr>
 <tr class="even">
 <td></td>
-<td><p><code dir="ltr" translate="no">        europe-west9       </code></p>
+<td><p><code dir="ltr" translate="no">europe-west9</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Paris</td>
 <td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td><p><code dir="ltr" translate="no">        europe-west12       </code></p>
+<td><p><code dir="ltr" translate="no">europe-west12</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Turin</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td><p><code dir="ltr" translate="no">        europe-west10       </code></p>
+<td><p><code dir="ltr" translate="no">europe-west10</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Berlin</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td><code dir="ltr" translate="no">       europe-north1      </code></td>
+<td><code dir="ltr" translate="no">europe-north1</code></td>
 <td>Finland</td>
 <td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
 </tr>
 <tr class="even">
 <td></td>
-<td><p><code dir="ltr" translate="no">        europe-north2       </code></p>
+<td><p><code dir="ltr" translate="no">europe-north2</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Stockholm</td>
 <td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td><code dir="ltr" translate="no">       europe-central2      </code></td>
+<td><code dir="ltr" translate="no">europe-central2</code></td>
 <td>Warsaw</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td><code dir="ltr" translate="no">       europe-west6      </code></td>
+<td><code dir="ltr" translate="no">europe-west6</code></td>
 <td>Zürich</td>
 <td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
 </tr>
@@ -247,21 +247,21 @@ A regional location is a specific geographic place, such as South Carolina. The 
 </tr>
 <tr class="even">
 <td></td>
-<td><p><code dir="ltr" translate="no">        me-central1       </code></p>
+<td><p><code dir="ltr" translate="no">me-central1</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Doha</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td><p><code dir="ltr" translate="no">        me-central2       </code></p>
+<td><p><code dir="ltr" translate="no">me-central2</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Dammam</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td><p><code dir="ltr" translate="no">        me-west1       </code></p>
+<td><p><code dir="ltr" translate="no">me-west1</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Tel Aviv</td>
 <td></td>
@@ -274,56 +274,56 @@ A regional location is a specific geographic place, such as South Carolina. The 
 </tr>
 <tr class="even">
 <td></td>
-<td><code dir="ltr" translate="no">       asia-south1      </code></td>
+<td><code dir="ltr" translate="no">asia-south1</code></td>
 <td>Mumbai</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td><p><code dir="ltr" translate="no">        asia-south2       </code></p>
+<td><p><code dir="ltr" translate="no">asia-south2</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Delhi</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td><code dir="ltr" translate="no">       asia-southeast1      </code></td>
+<td><code dir="ltr" translate="no">asia-southeast1</code></td>
 <td>Singapore</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td><code dir="ltr" translate="no">       asia-southeast2      </code></td>
+<td><code dir="ltr" translate="no">asia-southeast2</code></td>
 <td>Jakarta</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td><code dir="ltr" translate="no">       asia-east2      </code></td>
+<td><code dir="ltr" translate="no">asia-east2</code></td>
 <td>Hong Kong</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td><code dir="ltr" translate="no">       asia-east1      </code></td>
+<td><code dir="ltr" translate="no">asia-east1</code></td>
 <td>Taiwan</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td><code dir="ltr" translate="no">       asia-northeast1      </code></td>
+<td><code dir="ltr" translate="no">asia-northeast1</code></td>
 <td>Tokyo</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td><code dir="ltr" translate="no">       asia-northeast2      </code></td>
+<td><code dir="ltr" translate="no">asia-northeast2</code></td>
 <td>Osaka</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td><code dir="ltr" translate="no">       asia-northeast3      </code></td>
+<td><code dir="ltr" translate="no">asia-northeast3</code></td>
 <td>Seoul</td>
 <td></td>
 </tr>
@@ -335,13 +335,13 @@ A regional location is a specific geographic place, such as South Carolina. The 
 </tr>
 <tr class="even">
 <td></td>
-<td><code dir="ltr" translate="no">       australia-southeast1      </code></td>
+<td><code dir="ltr" translate="no">australia-southeast1</code></td>
 <td>Sydney</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td></td>
-<td><p><code dir="ltr" translate="no">        australia-southeast2       </code></p>
+<td><p><code dir="ltr" translate="no">australia-southeast2</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Melbourne</td>
 <td></td>
@@ -354,7 +354,7 @@ A regional location is a specific geographic place, such as South Carolina. The 
 </tr>
 <tr class="odd">
 <td></td>
-<td><p><code dir="ltr" translate="no">        africa-south1       </code></p>
+<td><p><code dir="ltr" translate="no">africa-south1</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Johannesburg</td>
 <td></td>
@@ -377,7 +377,7 @@ If you have not yet selected a location for your project, you will be asked to s
 
 Use one of the following methods to find out which location you selected for your project:
 
-  - Run the `  gcloud app describe  ` command.
+  - Run the `gcloud app describe` command.
 
   - If you have at least one version of an App Engine app deployed, open the [App Engine Dashboard](https://console.cloud.google.com/appengine) in the Google Cloud console. The location information in the upper right-hand corner of the dashboard applies to both App Engine and Firestore in Datastore mode.
     

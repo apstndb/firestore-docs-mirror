@@ -4,17 +4,17 @@ gcloud beta firestore databases connection-string - prints the mongo connection 
 
 SYNOPSIS
 
-`  gcloud beta firestore databases connection-string  ` `  --database  ` = `  DATABASE  ` \[ `  --auth  ` = `  AUTH  ` ; default="none" | `  --validate  ` = `  VALIDATE  ` \] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud beta firestore databases connection-string` `  --database  ` = `  DATABASE  ` \[ `  --auth  ` = `  AUTH  ` ; default="none" | `  --validate  ` = `  VALIDATE  ` \] \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 EXAMPLES
 
-To get the connection string for a Firestore database with a databaseId `  testdb  ` without auth configuration.
+To get the connection string for a Firestore database with a databaseId `testdb` without auth configuration.
 
 ``` wrap-code
 gcloud beta firestore databases connection-string --database=testdb --auth=none
 ```
 
-To get the connection string for a Firestore database with a databaseId `  testdb  ` with Google Compute Engine VM auth.
+To get the connection string for a Firestore database with a databaseId `testdb` with Google Compute Engine VM auth.
 
 ``` wrap-code
 gcloud beta firestore databases connection-string --database=testdb --auth=gce-vm
@@ -22,10 +22,10 @@ gcloud beta firestore databases connection-string --database=testdb --auth=gce-v
 
 REQUIRED FLAGS
 
-  - `  --database  ` = `  DATABASE  `  
+  - `--database` = `  DATABASE  `  
     The database to operate on.
     
-    For example, to operate on database `  foo  ` :
+    For example, to operate on database `foo` :
     
     ``` wrap-code
     gcloud beta firestore databases connection-string --database='foo'
@@ -35,21 +35,21 @@ OPTIONAL FLAGS
 
 At most one of these can be specified:
 
-  - `  --auth  ` = `  AUTH  ` ; default="none"  
+  - `--auth` = `  AUTH  ` ; default="none"  
     The auth configuration for the connection string.
     
-    If connecting from a Google Compute Engine VM, use `  gce-vm  ` . For short term access using the gcloud CLI's access token, use `  access-token  ` . For password auth use scram-sha-256. Otherwise, use `  none  ` and configure auth manually.
+    If connecting from a Google Compute Engine VM, use `gce-vm` . For short term access using the gcloud CLI's access token, use `access-token` . For password auth use scram-sha-256. Otherwise, use `none` and configure auth manually.
     
-    `  AUTH  ` must be one of: `  none  ` , `  gce-vm  ` , `  access-token  ` , `  scram-sha-256  ` .
+    `  AUTH  ` must be one of: `none` , `gce-vm` , `access-token` , `scram-sha-256` .
 
-  - `  --validate  ` = `  VALIDATE  `  
+  - `--validate` = `  VALIDATE  `  
     Validate the specified connection string for the current database. This command checks that the connection string is well formed, contains the required parameters, and specifies correct configuration values for the current database.
 
 GCLOUD WIDE FLAGS
 
 These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
 
-Run `  $ gcloud help  ` for details.
+Run ` $ gcloud help  ` for details.
 
 NOTES
 

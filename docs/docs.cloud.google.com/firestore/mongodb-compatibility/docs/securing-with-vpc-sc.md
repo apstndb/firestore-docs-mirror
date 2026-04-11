@@ -6,19 +6,19 @@
 
 The following APIs are bundled together in VPC Service Controls:
 
-  - `  firestore.googleapis.com  `
-  - `  datastore.googleapis.com  `
-  - `  firestorekeyvisualizer.googleapis.com  `
+  - `firestore.googleapis.com`
+  - `datastore.googleapis.com`
+  - `firestorekeyvisualizer.googleapis.com`
 
-When you restrict the `  firestore.googleapis.com  ` service in a perimeter, the perimeter also restricts the `  datastore.googleapis.com  ` and `  firestorekeyvisualizer.googleapis.com  ` services.
+When you restrict the `firestore.googleapis.com` service in a perimeter, the perimeter also restricts the `datastore.googleapis.com` and `firestorekeyvisualizer.googleapis.com` services.
 
 ### Restrict the datastore.googleapis.com service
 
-The `  datastore.googleapis.com  ` service is bundled under the `  firestore.googleapis.com  ` service. To restrict the `  datastore.googleapis.com  ` service, you must restrict the `  firestore.googleapis.com  ` service as follows:
+The `datastore.googleapis.com` service is bundled under the `firestore.googleapis.com` service. To restrict the `datastore.googleapis.com` service, you must restrict the `firestore.googleapis.com` service as follows:
 
   - When creating a service perimeter using the Google Cloud console, add Firestore as the restricted service.
 
-  - When creating a service perimeter using the Google Cloud CLI, use `  firestore.googleapis.com  ` instead of `  datastore.googleapis.com  ` .
+  - When creating a service perimeter using the Google Cloud CLI, use `firestore.googleapis.com` instead of `datastore.googleapis.com` .
     
         --perimeter-restricted-services=firestore.googleapis.com
 
