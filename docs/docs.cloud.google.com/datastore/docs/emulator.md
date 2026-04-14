@@ -46,7 +46,7 @@ You can import entities into the emulator in two ways. The first is to add the f
 
 ### Protocol
 
-``` notranslate lang-sh
+``` lang-sh notranslate
 curl -X POST http://localhost:8080/emulator/v1/projects/PROJECT_ID:import \
 -H 'Content-Type: application/json' \
 -d '{"database":"DATABASE", "export_directory":"EXPORT_DIRECTORY"}'
@@ -56,7 +56,7 @@ Modify `localhost:8080` if the emulator uses a different port.
 
 ### CLI Flag
 
-``` notranslate lang-sh
+``` lang-sh notranslate
 gcloud emulators firestore start --database-mode=datastore-mode --import-data=EXPORT_DIRECTORY
 ```
 
@@ -82,7 +82,7 @@ You can export entities from the emulator in two ways. The first is to add the f
 
 ### Protocol
 
-``` notranslate lang-sh
+``` lang-sh notranslate
 curl -X POST http://localhost:8080/emulator/v1/projects/PROJECT_ID:export \
 -H 'Content-Type: application/json' \
 -d '{"database":"DATABASE_PATH", "export_directory":"EXPORT_DIRECTORY"}'
@@ -92,7 +92,7 @@ Modify `localhost:8080` if the emulator uses a different port.
 
 ### CLI Flag
 
-``` notranslate lang-sh
+``` lang-sh notranslate
 gcloud emulators firestore start --database-mode=datastore-mode --export-on-exit=EXPORT_DIRECTORY
 ```
 
