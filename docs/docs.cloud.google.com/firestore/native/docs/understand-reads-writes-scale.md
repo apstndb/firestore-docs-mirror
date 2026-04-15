@@ -36,7 +36,7 @@ Firestore is a NoSQL, document-oriented database. You store data in *documents* 
 
 A typical Firestore database is too large to fit on a single physical machine. There are also scenarios where the workload on the data is too heavy for one machine to handle. To handle large workloads, Firestore partitions the data into separate pieces that can be stored on and served from multiple machines or *storage servers* . These partitions are made on the database tables in blocks of key ranges called splits.
 
-**Key Point:** Understanding how Firestore manages key ranges and splits is important for scalable data modeling.
+> **Key Point:** Understanding how Firestore manages key ranges and splits is important for scalable data modeling.
 
 #### Synchronous Replication
 
@@ -44,7 +44,7 @@ It is important to note that the database is always being replicated automatical
 
 The overall result of this is a scalable and highly available system that provides low latencies for both reads and writes, irrespective of heavy workloads and at very large scale.
 
-**Key Point:** Understanding how Firestore manages replication is important to comprehend consistency, availability, and reliability of Firestore.
+> **Key Point:** Understanding how Firestore manages replication is important to comprehend consistency, availability, and reliability of Firestore.
 
 #### Data layout
 
@@ -69,7 +69,7 @@ For more information about the locations of a region, see [Firestore locations](
 
 ![Single region versus multi-region](https://docs.cloud.google.com/static/firestore/native/docs/images/single-multi-region.png)
 
-**Key Point:** Choosing between single region versus multi-region configurations has key performance, availability, and cost trade-offs.
+> **Key Point:** Choosing between single region versus multi-region configurations has key performance, availability, and cost trade-offs.
 
 ## Understand life of a write in Firestore
 
@@ -93,7 +93,7 @@ To calculate the mutations mentioned earlier, Firestore reads the *indexing conf
 
 Once the mutations are calculated, Firestore collects them inside a transaction and then commits it.
 
-**Key Point:** Firestore internally always uses transactions to provide ACID properties for writes.
+> **Key Point:** Firestore internally always uses transactions to provide ACID properties for writes.
 
 ### Understand a write transaction in the storage layer
 
@@ -147,12 +147,12 @@ We configure the replicas in a way that leadership for splits always stays in th
 
 Each write in Firestore also involves some interaction with the real-time engine in Firestore. For more information about real-time queries, see [Understand real-time queries at scale](https://docs.cloud.google.com/firestore/native/docs/real-time_queries_at_scale) .
 
-**Key Point:** Firestore uses transactions to do writes, which requires acquiring shared locks for read and exclusive locks for write. When a transaction reads many rows no other transaction can write to that set of rows till this transaction either commits or aborts, causing higher latencies and/or lock contention errors. Hence, try to avoid large reads inside a transaction.
+> **Key Point:** Firestore uses transactions to do writes, which requires acquiring shared locks for read and exclusive locks for write. When a transaction reads many rows no other transaction can write to that set of rows till this transaction either commits or aborts, causing higher latencies and/or lock contention errors. Hence, try to avoid large reads inside a transaction.
 
-**Key Point:** Write/transaction latency increases as the number of splits/participants increases. There is no explicit mechanism to control the number of participants. However, you can do the following to reduce the number of participants:
-
-  - High index fanout is when many index entries need to be written. High index fanout for a document write increases the number or database rows to be mutated, which increases the number of participants. Explicitly stop indexing on fields not used for querying.
-  - The number of participants increases as the number of documents updated in a write transaction increase. For lower latency, keep the number of documents updated in a single write transaction low.
+> **Key Point:** Write/transaction latency increases as the number of splits/participants increases. There is no explicit mechanism to control the number of participants. However, you can do the following to reduce the number of participants:
+> 
+>   - High index fanout is when many index entries need to be written. High index fanout for a document write increases the number or database rows to be mutated, which increases the number of participants. Explicitly stop indexing on fields not used for querying.
+>   - The number of participants increases as the number of documents updated in a write transaction increase. For lower latency, keep the number of documents updated in a single write transaction low.
 
 ## Understand the life of a read in Firestore
 
@@ -191,7 +191,7 @@ Firestore then returns the response to its client.
 
 In the situation where the reads have to be done from multiple splits, the same mechanism happens across all the splits. Once the data has been returned from all the splits, the storage client in Firestore combines the results. Firestore then responds to its client with this data.
 
-**Key Point:** The latency overhead increases as the number of splits involved in a read increase. Keeping your queries' result sets small, whenever possible, will help.
+> **Key Point:** The latency overhead increases as the number of splits involved in a read increase. Keeping your queries' result sets small, whenever possible, will help.
 
 #### Stale reads
 
@@ -199,7 +199,7 @@ Strong reads are the default mode in Firestore. However, it comes at a cost of p
 
 In such a case, the client may opt to receive stale reads by using the `read_time` read options. In this case, reads are done as the data was at `read_time` , and the closest replica is highly likely to already have verified it has data at the specified `read_time` . For noticeably better performance, 15 seconds is a reasonable staleness value. Even for stale reads, rows yielded are consistent with each other.
 
-**Key Point:** Strong reads ensure reads see the latest data. However, it may come with the extra round trip latency overhead of a replica having to communicate with the leader, and also potentially having to wait for write transactions to be applied. For better performance, use reads that allow the return of stale data.
+> **Key Point:** Strong reads ensure reads see the latest data. However, it may come with the extra round trip latency overhead of a replica having to communicate with the leader, and also potentially having to wait for write transactions to be applied. For better performance, use reads that allow the return of stale data.
 
 ## Avoid hotspots
 
@@ -207,19 +207,19 @@ The *splits* in Firestore are automatically broken into smaller pieces to distri
 
 Splitting storage and load takes time, and ramping up traffic too fast may cause high latency or deadline exceeded errors, commonly referred to as ***hotspots*** , while the service adjusts. The best practice is to distribute operations across the key range, while ramping up traffic on a collection in a database with 500 operations per second. After this gradual ramp up, increase the traffic by up to 50% every five minutes. This process is called the **500/50/5** rule and positions the database to optimally scale to meet your workload.
 
-**Key Point:** Traffic should be ramped up following the 500/50/5 rule for most optimal scaling.
+> **Key Point:** Traffic should be ramped up following the 500/50/5 rule for most optimal scaling.
 
 Though splits are created automatically with increasing load, Firestore can split a key range only until it's serving a single document using a dedicated set of replicated storage servers. As a result, high and sustained volumes of concurrent operations on a single document may lead to a hotspot on that document. If you encounter sustained high latencies on a single document, you should consider modifying your data model to split or replicate the data across multiple documents.
 
 Contention errors happen when multiple operations try to read and/or write the same document simultaneously.
 
-**Key Point:** Avoid high read or write rates to a single document, or documents in a key range containing a few documents, or your application will experience high latency and/or contention errors.
+> **Key Point:** Avoid high read or write rates to a single document, or documents in a key range containing a few documents, or your application will experience high latency and/or contention errors.
 
 Another special case of hotspotting happens when a sequentially increasing/decreasing key is used as the document ID in Firestore, and there is a considerably high number of operations per second. Creating more splits doesn’t help here since the surge of traffic simply moves to the newly created split. Since Firestore automatically indexes all fields in the document by default, such moving hotspots may also be created on the index space for a document field that contains a sequentially increasing/decreasing value like a timestamp.
 
-**Key Point:** Avoid creating documents at a high rate while assigning monotonically increasing/decreasing document IDs as it can create hotspots. To avoid hotspotting, you may leverage Firestore automatic document IDs that use a scatter algorithm so that they are lexicographically spread.
+> **Key Point:** Avoid creating documents at a high rate while assigning monotonically increasing/decreasing document IDs as it can create hotspots. To avoid hotspotting, you may leverage Firestore automatic document IDs that use a scatter algorithm so that they are lexicographically spread.
 
-**Key Point:** Indexing fields with monotonically increasing/decreasing values, such as timestamps, can lead to hotspots which affect latency for applications with high read and write rates. If you don't query based on the field with sequential values, you can exempt the field from indexing to bypass this limit.
+> **Key Point:** Indexing fields with monotonically increasing/decreasing values, such as timestamps, can lead to hotspots which affect latency for applications with high read and write rates. If you don't query based on the field with sequential values, you can exempt the field from indexing to bypass this limit.
 
 Note that by following the practices outlined above, Firestore can scale to serve arbitrarily large workloads without you having to adjust any configuration.
 

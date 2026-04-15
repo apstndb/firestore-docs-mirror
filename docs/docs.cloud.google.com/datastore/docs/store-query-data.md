@@ -14,7 +14,6 @@ This page shows you how to store and query data in Firestore in Datastore mode u
 ## Create a database
 
 1.  To create a new database instance, open the Datastore section in the Google Cloud console:  
-    [Go to the Datastore page](https://console.cloud.google.com/datastore/welcome)
 
 2.  Select a database mode.
     
@@ -36,15 +35,13 @@ This page shows you how to store and query data in Firestore in Datastore mode u
     
     A multi-region location maximizes availability and durability. Regional locations offer lower write latency. To learn more about location types, see [Datastore mode locations](https://docs.cloud.google.com/datastore/docs/locations) . The location applies to both Datastore mode databases and App Engine apps for your Google Cloud project.
     
-    **Warning:** Once you create your database, you cannot change the location.
+    > **Warning:** Once you create your database, you cannot change the location.
     
     Click **Create database** . After your database finishes initializing, the Google Cloud console directs you to the Datastore Entities page.
 
 ## Store data
 
 1.  Go to the Datastore Entities page in the Google Cloud console.
-    
-    [Go to the Entities page](https://console.cloud.google.com/datastore/entities/query)
     
     This page lets you store, query, update, and delete data.
 
@@ -97,9 +94,9 @@ Next, add a query clause to restrict the results to entities that meet specific 
 
 The query results show the `Task` entity that you created.
 
-**Tip**
-
-The GQL query editor supports autocompletion for kinds: When you need to type a kind name, press Ctrl+Space to see a list of the available kinds. Up to 300 alphabetically sorted kinds can appear in the list. For better matches of kinds, type one or more characters.
+> **Tip**
+> 
+> The GQL query editor supports autocompletion for kinds: When you need to type a kind name, press Ctrl+Space to see a list of the available kinds. Up to 300 alphabetically sorted kinds can appear in the list. For better matches of kinds, type one or more characters.
 
 Add a query filter to restrict the results to entities that meet specific criteria:
 

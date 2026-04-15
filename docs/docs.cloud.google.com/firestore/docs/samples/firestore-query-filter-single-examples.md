@@ -4,7 +4,6 @@ Querying Firestore collections with one range
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Perform simple and compound queries in Cloud Firestore](https://firebase.google.com/docs/firestore/query-data/queries)
   - [Query and filter data](https://docs.cloud.google.com/firestore/native/docs/query-data/queries)
 
 ## Code sample

@@ -123,7 +123,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
     WHERE done = FALSE AND priority >= 4
     ORDER BY priority DESC
 
-**Note:** The properties being filtered on must have a corresponding predefined index which can be defined in your [index configuration file](https://docs.cloud.google.com/datastore/docs/tools/indexconfig) ( `index.yaml` ).
+> **Note:** The properties being filtered on must have a corresponding predefined index which can be defined in your [index configuration file](https://docs.cloud.google.com/datastore/docs/tools/indexconfig) ( `index.yaml` ).
 
 The following example shows how to run a query:
 
@@ -1088,7 +1088,7 @@ This query returns every `Task` entity where the `category` property exists and 
 
 This query doesn't return entities where the `category` property doesn't exist. Not-equal ( `!=` ) and `NOT_IN` queries exclude entities where the given property doesn't exist or where the property is excluded from indexing. A property exists when it's set to any value, including an empty string or `null` .
 
-**Note:** This features is available for Firestore in Datastore mode. It is not available for pre-migration [Datastore databases](https://docs.cloud.google.com/datastore/docs/upgrade-to-firestore) .
+> **Note:** This features is available for Firestore in Datastore mode. It is not available for pre-migration [Datastore databases](https://docs.cloud.google.com/datastore/docs/upgrade-to-firestore) .
 
 #### Limitations
 
@@ -1207,7 +1207,7 @@ Not Applicable
 
 This query returns every `Task` entity where the `tag` property is set to `learn` or `study` . This includes `Task` entities where the `tag` property includes one of these values but not the other.
 
-**Note:** This features is available for Firestore in Datastore mode. It is not available for pre-migration [Datastore databases](https://docs.cloud.google.com/datastore/docs/upgrade-to-firestore) .
+> **Note:** This features is available for Firestore in Datastore mode. It is not available for pre-migration [Datastore databases](https://docs.cloud.google.com/datastore/docs/upgrade-to-firestore) .
 
 ### `NOT_IN`
 
@@ -1319,7 +1319,7 @@ Not Applicable
 
 This query doesn't return entities where the `category` entity doesn't exist. Not-equal ( `!=` ) and `NOT_IN` queries exclude entities where the given property doesn't exist. A property exists when it's set to any value, including an empty string or `null` .
 
-**Note:** This features is available for Firestore in Datastore mode. It is not available for pre-migration [Datastore databases](https://docs.cloud.google.com/datastore/docs/upgrade-to-firestore) .
+> **Note:** This features is available for Firestore in Datastore mode. It is not available for pre-migration [Datastore databases](https://docs.cloud.google.com/datastore/docs/upgrade-to-firestore) .
 
 #### Limitations
 
@@ -2265,7 +2265,7 @@ will return four entities with the following combinations of values:
 `tag` = `'programming'` , `collaborators` = `'alice'`  
 `tag` = `'programming'` , `collaborators` = `'bob'`
 
-**Warning:** Including more than one array-valued property in a projection will result in an [exploding index](https://docs.cloud.google.com/datastore/docs/concepts/indexes#index_limits) .
+> **Warning:** Including more than one array-valued property in a projection will result in an [exploding index](https://docs.cloud.google.com/datastore/docs/concepts/indexes#index_limits) .
 
 ## Cursors, limits, and offsets
 
@@ -2543,7 +2543,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
 Not Applicable
 
-**Caution:** Be careful when passing a cursor to a client, such as in a web form. Although the client cannot change the cursor value to access results outside of the original query, it is possible for it to decode the cursor to expose information about result entities, such as the project ID, entity kind, key name or numeric ID, ancestor keys, and properties used in the query's filters and sort orders. If you don't want users to have access to that information, you can encrypt the cursor, or store it and provide the user with an opaque key.
+> **Caution:** Be careful when passing a cursor to a client, such as in a web form. Although the client cannot change the cursor value to access results outside of the original query, it is possible for it to decode the cursor to expose information about result entities, such as the project ID, entity kind, key name or numeric ID, ancestor keys, and properties used in the query's filters and sort orders. If you don't want users to have access to that information, you can encrypt the cursor, or store it and provide the user with an opaque key.
 
 **Although Datastore mode databases support integer offsets, you should avoid using them.** Instead, use cursors. Using an offset only avoids returning the skipped entities to your application, but these entities are still retrieved internally. The skipped entities do affect the latency of the query, and your application is billed for the read operations required to retrieve them. Using cursors instead of offsets lets you avoid all these costs.
 
@@ -2581,7 +2581,7 @@ The nature of the index query mechanism imposes certain restrictions on what a q
 
 Entities of the same kind need not have the same properties. To be eligible as a query result, an entity must possess a value (possibly null) for every property named in the query's filters and sort orders. If not, the entity is omitted from the indexes used to execute the query and consequently won't be included in the query's results.
 
-**Note:** It is not possible to query for entities that are specifically *lacking* a given property. One alternative is to add the property with a null value, then filter for entities with null as the value of that property.
+> **Note:** It is not possible to query for entities that are specifically *lacking* a given property. One alternative is to add the property with a null value, then filter for entities with null as the value of that property.
 
 #### Filtering on unindexed properties returns no results
 

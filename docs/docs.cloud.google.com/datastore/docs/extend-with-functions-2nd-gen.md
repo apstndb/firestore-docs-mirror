@@ -153,8 +153,6 @@ You can deploy a function using either the gcloud CLI or the Google Cloud consol
 
 1.  In the Google Cloud console, activate Cloud Shell.
     
-    [Activate Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
-    
     At the bottom of the Google Cloud console, a [Cloud Shell](https://docs.cloud.google.com/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
 
 2.  Use the [`gcloud functions deploy`](https://docs.cloud.google.com/sdk/gcloud/reference/functions/deploy) command to deploy a function:
@@ -170,7 +168,7 @@ You can deploy a function using either the gcloud CLI or the Google Cloud consol
     --trigger-event-filters="type=EVENT_FILTER_TYPE" \
     --trigger-event-filters="database=DATABASE" \
     --trigger-event-filters="namespace=NAMESPACE" \
-    --trigger-event-filters-path-pattern="entity=ENTITY_OR_PATH" \
+    --trigger-event-filters-path-pattern="entity=ENTITY_OR_PATH"
     ```
     
     The first argument, FUNCTION\_NAME , is a name for your deployed function. The function name must start with a letter followed by up to 62 letters, numbers, hyphens, or underscores, and must end with a letter or a number. Replace FUNCTION\_NAME with a valid function name. Then, add the following flags:
@@ -214,7 +212,7 @@ You can deploy a function using either the gcloud CLI or the Google Cloud consol
         
           - ` namespace= NAMESPACE  ` : the database [namespace](https://docs.cloud.google.com/datastore/docs/concepts/multitenancy) . For the default database name, set NAMESPACE to `(default)` . Remove the flag to match any namespace.
             
-            **Note:** Set exactly to `(default)` for the default namespace. This is a non-canonical resource name used only for Eventarc. Do not set to `[default]` as shown in the Google Cloud console.
+            > **Note:** Set exactly to `(default)` for the default namespace. This is a non-canonical resource name used only for Eventarc. Do not set to `[default]` as shown in the Google Cloud console.
         
           - ` entity= ENTITY_OR_PATH  ` : the database path that triggers events when data is created, updated, or deleted. Accepted values for ENTITY\_OR\_PATH are:
             

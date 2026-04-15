@@ -197,8 +197,6 @@ Before you can perform a nearest neighbor search with your vector embeddings, yo
 To manually create a new index from the Google Cloud console:
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -251,8 +249,6 @@ The following example creates a composite index, including a vector index for fi
 ### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -282,8 +278,6 @@ where:
 ### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 

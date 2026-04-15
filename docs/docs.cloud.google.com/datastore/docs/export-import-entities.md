@@ -42,8 +42,6 @@ If you plan to use `gcloud` to start your import and export operations, set up `
 
   - Access `gcloud` from the Google Cloud console using [Cloud Shell](https://docs.cloud.google.com/shell) .
     
-    [Start Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
-    
     Configure the gcloud CLI to use your current project:
     
         gcloud config set project project-id
@@ -74,9 +72,9 @@ Export and import operations use a Firestore service agent to authorize Cloud St
 
 To learn more about service agents, see [Service agents](https://cloud.google.com/iam/docs/service-agents) .
 
-**Note:** Firestore previously used the App Engine default service account instead of the Firestore service agent. If your database still uses the App Engine service account to import or export data, we recommend that you [migrate to the service specific Firestore service agent](https://docs.cloud.google.com/datastore/docs/export-import-entities#service_agent_migration) . You can [view which account your import and export operations use](https://docs.cloud.google.com/datastore/docs/export-import-entities#view_service_agent_name) in the Google Cloud console.  
-  
-If you use VPC Service Controls, you must use the service-specific Firestore service agent to fully protect import and export operations. VPC Service Controls are not compatible with the App Engine service account.
+> **Note:** Firestore previously used the App Engine default service account instead of the Firestore service agent. If your database still uses the App Engine service account to import or export data, we recommend that you [migrate to the service specific Firestore service agent](https://docs.cloud.google.com/datastore/docs/export-import-entities#service_agent_migration) . You can [view which account your import and export operations use](https://docs.cloud.google.com/datastore/docs/export-import-entities#view_service_agent_name) in the Google Cloud console.  
+>   
+> If you use VPC Service Controls, you must use the service-specific Firestore service agent to fully protect import and export operations. VPC Service Controls are not compatible with the App Engine service account.
 
 The Firestore service agent requires access to the Cloud Storage bucket used in an export or import operation. **If your Cloud Storage bucket is in the same project as your Firestore database, then the Firestore service agent can access the bucket by default** .
 
@@ -98,8 +96,6 @@ Alternatively, you can [assign this role using the Google Cloud console](https:/
 You can view the account that your import and export operations use to authorize requests from the **Import/Export** page in the Google Cloud console. You can also view whether your database uses the Firestore service agent or the legacy App Engine service account.
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -139,13 +135,11 @@ This section describes how to start a managed export or import operation.
 
 ### Exporting all entities
 
-**Warning:** You cannot import a subset of kinds and namespaces from an export of all entities. You also cannot import an export of all entities into BigQuery. If you need to import only a subset of entities or need to import data to BigQuery, [add an entity filter](https://docs.cloud.google.com/datastore/docs/export-import-entities#entity_filter) to your export operation.
+> **Warning:** You cannot import a subset of kinds and namespaces from an export of all entities. You also cannot import an export of all entities into BigQuery. If you need to import only a subset of entities or need to import data to BigQuery, [add an entity filter](https://docs.cloud.google.com/datastore/docs/export-import-entities#entity_filter) to your export operation.
 
 ### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -194,7 +188,7 @@ To send your request, expand one of these options:
 
 #### curl (Linux, macOS, or Cloud Shell)
 
-**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+> **Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Save the request body in a file named `request.json` , and execute the following command:
 
@@ -206,7 +200,7 @@ Save the request body in a file named `request.json` , and execute the following
 
 #### PowerShell (Windows)
 
-**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+> **Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Save the request body in a file named `request.json` , and execute the following command:
 
@@ -253,8 +247,6 @@ In the console, you can select either all kinds or one specific kind. Similarly,
 To specify a list of namespaces and kinds to export, use `gcloud` instead.
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -315,7 +307,7 @@ To send your request, expand one of these options:
 
 #### curl (Linux, macOS, or Cloud Shell)
 
-**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+> **Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Save the request body in a file named `request.json` , and execute the following command:
 
@@ -327,7 +319,7 @@ Save the request body in a file named `request.json` , and execute the following
 
 #### PowerShell (Windows)
 
-**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+> **Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Save the request body in a file named `request.json` , and execute the following command:
 
@@ -383,8 +375,6 @@ protoc --decode_raw < export0.export_metadata
 ### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -440,7 +430,7 @@ To send your request, expand one of these options:
 
 #### curl (Linux, macOS, or Cloud Shell)
 
-**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+> **Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Save the request body in a file named `request.json` , and execute the following command:
 
@@ -452,7 +442,7 @@ Save the request body in a file named `request.json` , and execute the following
 
 #### PowerShell (Windows)
 
-**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+> **Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Save the request body in a file named `request.json` , and execute the following command:
 
@@ -490,8 +480,6 @@ The response is a [long-running operation](https://docs.cloud.google.com/datasto
 
 You can determine the value to use for the import location by using the Cloud Storage browser in the Google Cloud console:
 
-[Open the Cloud Storage Browser](https://console.cloud.google.com/storage/browser)
-
 You can also [list and describe completed operations](https://docs.cloud.google.com/datastore/docs/export-import-entities#long-running-operation) . The `outputURL` field shows the name of the `overall_export_metadata` file:
 
 ``` notranslate
@@ -511,8 +499,6 @@ In the console, you can select either all kinds or one specific kind. Similarly,
 To specify a list of namespaces and kinds to import, use `gcloud` instead.
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -576,7 +562,7 @@ To send your request, expand one of these options:
 
 #### curl (Linux, macOS, or Cloud Shell)
 
-**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+> **Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Save the request body in a file named `request.json` , and execute the following command:
 
@@ -588,7 +574,7 @@ Save the request body in a file named `request.json` , and execute the following
 
 #### PowerShell (Windows)
 
-**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+> **Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Save the request body in a file named `request.json` , and execute the following command:
 
@@ -644,8 +630,6 @@ Note the following points before exporting PITR data:
 ### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select a database from the list of databases.
 
@@ -709,8 +693,6 @@ You can view ongoing and recently completed operations in the following ways. Op
 You can view a list of the long-running operations in the **Import/Export** page of the Google Cloud console.
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -777,7 +759,7 @@ To send your request, expand one of these options:
 
 #### curl (Linux, macOS, or Cloud Shell)
 
-**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+> **Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Execute the following command:
 
@@ -787,7 +769,7 @@ Execute the following command:
 
 #### PowerShell (Windows)
 
-**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+> **Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Execute the following command:
 
@@ -849,8 +831,6 @@ To view the status of a long-running operation:
 You can view a list of the most recent export and import operations in the **Import/Export** page of the Google Cloud console.
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -879,7 +859,7 @@ To send your request, expand one of these options:
 
 #### curl (Linux, macOS, or Cloud Shell)
 
-**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+> **Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) , or by using [Cloud Shell](https://docs.cloud.google.com/shell/docs) , which automatically logs you into the `gcloud` CLI . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Execute the following command:
 
@@ -889,7 +869,7 @@ Execute the following command:
 
 #### PowerShell (Windows)
 
-**Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
+> **Note:** The following command assumes that you have logged in to the `gcloud` CLI with your user account by running [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) or [`gcloud auth login`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/login) . You can check the currently active account by running [`gcloud auth list`](https://docs.cloud.google.com/sdk/gcloud/reference/auth/list) .
 
 Execute the following command:
 
@@ -975,8 +955,6 @@ When an operation completes, the operation description contains [`"done": true`]
 You can cancel a running export or import operation in the **Import/Export** page of the Google Cloud console.
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -1021,7 +999,7 @@ Export and import operations apply the `goog-firestoremanaged:exportimport` labe
 
 ![Access the goog-firestoremanaged label from the filters menu.](https://docs.cloud.google.com/static/firestore/native/docs/images/firestore-import-export-billing-label.png)
 
-**Note:** Export and import operations executed before September 8th, 2020 did not apply the `goog-firestoremanaged` label.
+> **Note:** Export and import operations executed before September 8th, 2020 did not apply the `goog-firestoremanaged` label.
 
 ## Differences from Datastore Admin backups
 
@@ -1061,15 +1039,13 @@ Firestore previously used the App Engine default service account instead of the 
 
 The Firestore service agent is preferable because it is specific to Firestore. The App Engine service account is shared by more than one service.
 
-**Note:** If you use VPC Service Controls, you must use the Firestore service agent to fully protect import and export operations. VPC Service Controls is not compatible with the App Engine service account.
+> **Note:** If you use VPC Service Controls, you must use the Firestore service agent to fully protect import and export operations. VPC Service Controls is not compatible with the App Engine service account.
 
 ### View authorization account
 
 You can view which account your import and export operations use to authorize requests from the **Import/Export** page in the Google Cloud console. You can also view if your database already uses the Firestore service agent.
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -1108,8 +1084,6 @@ The migration process described in the following section helps you identify Clou
 Complete the following steps to migrate from the App Engine service account to the Firestore service agent. Once completed, the migration can't be undone.
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -1150,8 +1124,6 @@ Complete the following steps to migrate from the App Engine service account to t
 To verify your project's migration status:
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 

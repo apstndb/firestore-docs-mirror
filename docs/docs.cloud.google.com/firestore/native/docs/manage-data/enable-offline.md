@@ -1,13 +1,15 @@
 # Enable offline data
 
+[Video](https://www.youtube.com/watch?v=oDvdAFP6OhQ)
+
 Firestore supports offline data persistence. This feature caches a copy of the Firestore data that your app is actively using, so your app can access the data when the device is offline. You can write, read, listen to, and query the cached data.
 
 When the device comes back online, Firestore synchronizes any local changes made by your app to the Firestore backend. For multiple changes to the same document, it's last write wins.
 
-**Note:**
-
-  - Offline persistence is supported only in Android, Apple, and web apps.
-  - [Pipeline operations](https://docs.cloud.google.com/firestore/native/docs/query-data/understanding-core-pipelines) don't support offline persistence. To use offline persistence with Enterprise edition databases, use Core operations as described on this page.
+> **Note:**
+> 
+>   - Offline persistence is supported only in Android, Apple, and web apps.
+>   - [Pipeline operations](https://docs.cloud.google.com/firestore/native/docs/query-data/understanding-core-pipelines) don't support offline persistence. To use offline persistence with Enterprise edition databases, use Core operations as described on this page.
 
 To use offline persistence, you don't need to make any changes to the code that you use to access Firestore data. With offline persistence enabled, the Firestore client library automatically manages online and offline data access and synchronizes local data when the device is back online.
 
@@ -18,11 +20,11 @@ When you initialize Firestore, you can enable or disable offline persistence:
   - For Android and Apple platforms, offline persistence is enabled by default. To disable persistence, set the `PersistenceEnabled` option to `false` .
   - For the web, offline persistence is disabled by default. To enable persistence, call the `enablePersistence` method. Firestore's cache isn't automatically cleared between sessions. Consequently, if your web app handles sensitive information, make sure to ask the user if they're on a trusted device before enabling persistence.
 
-**Important:** For the web, offline persistence is supported only by the Chrome, Safari, and Firefox web browsers.
+> **Important:** For the web, offline persistence is supported only by the Chrome, Safari, and Firefox web browsers.
 
 ### Web version 9
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
 ``` 
 // Memory cache is the default if no config is specified.
@@ -51,7 +53,7 @@ initializeFirestore(app,
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
     firebase.firestore().enablePersistence()
       .catch((err) => {
@@ -156,7 +158,7 @@ When persistence is enabled, Firestore caches every document received from the b
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     firebase.firestore().settings({
         cacheSizeBytes: firebase.firestore.CACHE_SIZE_UNLIMITED
@@ -245,7 +247,7 @@ By default, no event is raised if *only* the `SnapshotMetadata` changed. If you 
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     db.collection("cities").where("state", "==", "CA")
       .onSnapshot({ includeMetadataChanges: true }, (snapshot) => {
@@ -461,7 +463,7 @@ You can use the method below to disable network access for your Firestore client
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     firebase.firestore().disableNetwork()
         .then(() => {
@@ -525,7 +527,7 @@ Use the following method to re-enable network access:
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     firebase.firestore().enableNetwork()
         .then(() => {

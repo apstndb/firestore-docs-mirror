@@ -55,7 +55,7 @@ Finally, activate the new stream.
 
 As the stream begins pulling data and streaming changes from the Mongo source, you can observe new directories and files created in the Cloud Storage bucket, under the path configured in the connection profile and the stream.
 
-**Important:** At this point your MongoDB-compatible source database is **still the source of truth** for your application workloads. The database must continue to receive queries and updates until the migration [reaches a specific milestone](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-traffic) described later.
+> **Important:** At this point your MongoDB-compatible source database is **still the source of truth** for your application workloads. The database must continue to receive queries and updates until the migration [reaches a specific milestone](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-traffic) described later.
 
 To activate the stream, run the following command:
 

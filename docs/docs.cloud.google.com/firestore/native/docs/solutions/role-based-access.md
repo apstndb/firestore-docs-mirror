@@ -2,7 +2,7 @@
 
 Many collaborative apps allow users to read and write different pieces of data based on a set of permissions. In a document editing app, for example, users may want to allow a few users to read and write their documents while blocking unwanted access.
 
-**Note:** The server client libraries bypass all Firestore Security Rules and instead authenticate through [Google Application Default Credentials](https://cloud.google.com/docs/authentication/production) . If you're using the server client libraries or the REST or RPC APIs, make sure to set up [Identity and Access Management (IAM) for Firestore](https://cloud.google.com/firestore/docs/security/iam) .
+> **Note:** The server client libraries bypass all Firestore Security Rules and instead authenticate through [Google Application Default Credentials](https://cloud.google.com/docs/authentication/production) . If you're using the server client libraries or the REST or RPC APIs, make sure to set up [Identity and Access Management (IAM) for Firestore](https://cloud.google.com/firestore/docs/security/iam) .
 
 ## Solution: Role-Based Access Control
 

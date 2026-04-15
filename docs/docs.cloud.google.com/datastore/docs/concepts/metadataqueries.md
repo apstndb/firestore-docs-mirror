@@ -834,4 +834,4 @@ will collect the following kind, property name pairs:
 
 Notice that the results include properties from kinds `Task` and `TaskList` , but do not include the `created` property of kind `Task` , because it falls outside the range specified for the query.
 
-**Note:** Since the `__key__` kind filters on kind-property pairs, you can't use a single query for the same property name in different kinds. You can query for all properties in all kinds (or in a range of kinds), but you cannot construct a single query that retrieves, for example, all properties with names between *m* and *q* in all kinds (or in kinds *A* and *B* ).
+> **Note:** Since the `__key__` kind filters on kind-property pairs, you can't use a single query for the same property name in different kinds. You can query for all properties in all kinds (or in a range of kinds), but you cannot construct a single query that retrieves, for example, all properties with names between *m* and *q* in all kinds (or in kinds *A* and *B* ).

@@ -241,7 +241,7 @@ and
     WHERE category = 'Work'
     ORDER BY priority ASC, created ASC
 
-**Caution:** Using a perfect index can significantly increase [storage size](https://docs.cloud.google.com/datastore/docs/concepts/storage-size) and write latency, especially in the case of [exploding indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes#index_limits) .
+> **Caution:** Using a perfect index can significantly increase [storage size](https://docs.cloud.google.com/datastore/docs/concepts/storage-size) and write latency, especially in the case of [exploding indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes#index_limits) .
 
 ## Optimizing your index selection
 
@@ -274,19 +274,19 @@ Four things mitigate this risk:
 
 When Firestore in Datastore mode merges indexes, each index scan often maps to a single filter in the query. You can improve query performance by adding composite indexes that match multiple filters in the query.
 
-**Note:** For brevity, this section uses a shorthand notation for index definitions. The following definition denotes an index of kind `model` , with property `prop1` ascending and `prop2` descending:
-
-    Index(model, prop1, -prop2)
-
-This is equivalent to the following configuration in `index.yaml` :
-
-    indexes:
-    - kind: model
-      ancestor: no
-      properties:
-      - name: prop1
-      - name: prop2
-        direction: desc
+> **Note:** For brevity, this section uses a shorthand notation for index definitions. The following definition denotes an index of kind `model` , with property `prop1` ascending and `prop2` descending:
+> 
+>     Index(model, prop1, -prop2)
+> 
+> This is equivalent to the following configuration in `index.yaml` :
+> 
+>     indexes:
+>     - kind: model
+>       ancestor: no
+>       properties:
+>       - name: prop1
+>       - name: prop2
+>         direction: desc
 
 Consider this query:
 

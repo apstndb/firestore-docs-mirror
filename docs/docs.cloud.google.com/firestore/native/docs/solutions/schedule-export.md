@@ -2,14 +2,16 @@
 
 This page describes how to schedule exports of your Firestore data. To run exports on a schedule, we recommend using Cloud Run functions and Cloud Scheduler.
 
-**Caution:** Exporting data from Firestore will incur one read operation per document exported. However, these reads will not appear in the usage section of the console. Make sure you understand this before setting up recurring exports to avoid an unexpected bill.
+> **Caution:** Exporting data from Firestore will incur one read operation per document exported. However, these reads will not appear in the usage section of the console. Make sure you understand this before setting up recurring exports to avoid an unexpected bill.
 
 ## Before you begin
 
 Before you schedule managed data exports, you must complete the following tasks:
 
 1.  [Enable billing for your Google Cloud project.](https://cloud.google.com/billing/docs/how-to/modify-project) Only Google Cloud projects with billing enabled can use the export and import feature.
-    **Note:** Firebase projects must be on the [Blaze plan](https://firebase.google.com/pricing/?authuser=0) to use the managed export and import feature. Enabling billing for the Google Cloud automatically upgrades your Firebase project to the Blaze plan.
+    
+    > **Note:** Firebase projects must be on the [Blaze plan](https://firebase.google.com/pricing/?authuser=0) to use the managed export and import feature. Enabling billing for the Google Cloud automatically upgrades your Firebase project to the Blaze plan.
+
 2.  Export operations require a destination Cloud Storage bucket. [Create a Cloud Storage bucket](https://cloud.google.com/storage/docs/creating-buckets) in a location near [your Firestore database location](https://docs.cloud.google.com/firestore/native/docs/locations#view-settings) . You cannot use a Requester Pays bucket for export operations.
 
 ## Create a Cloud Function and a Cloud Scheduler job
@@ -71,7 +73,7 @@ Follow the steps below to create a Node.js Cloud Function that initiates a Fires
     
       - Modify `collectionIds: []` to export only the specified collection groups. Leave as is to export all collection groups.
         
-        **Note:** If you export all collections, any follow-up import operations must import all collections in the export data files.
+        > **Note:** If you export all collections, any follow-up import operations must import all collections in the export data files.
 
 4.  Deploy the scheduled function:
     
@@ -82,8 +84,6 @@ Follow the steps below to create a Node.js Cloud Function that initiates a Fires
 ###### Create a Cloud Function
 
 1.  Go to the **Cloud Functions** page in the Google Cloud console:
-    
-    [Go to Cloud Functions](https://console.cloud.google.com/functions/list)
 
 2.  Click **Write a function**
 
@@ -131,7 +131,7 @@ Follow the steps below to create a Node.js Cloud Function that initiates a Fires
     
       - Modify `collectionIds: []` to export only the specified collection groups. Leave as is to export all collection groups.
         
-        **Note:** If you export all collection groups, any follow-up import operations must import all collection groups in the export data files.
+        > **Note:** If you export all collection groups, any follow-up import operations must import all collection groups in the export data files.
 
 7.  Under `package.json` , add the following dependency:
     
@@ -150,8 +150,6 @@ Follow the steps below to create a Node.js Cloud Function that initiates a Fires
 Next, create a Cloud Scheduler job that calls your Cloud Function:
 
 1.  Go to the **Cloud Scheduler** page in the Google Cloud console:
-    
-    [Go to Cloud Scheduler](https://console.cloud.google.com/cloudscheduler)
 
 2.  Click **Create Job** .
 
@@ -180,13 +178,14 @@ This Cloud Function uses your project's default service account to authenticate 
 This service account requires permission to start an export operation and to write to your Cloud Storage bucket. To grant these permissions, assign the following IAM roles to the default service account:
 
   - `Cloud Datastore Import Export Admin`
-    **Note:** This Datastore role also grants permissions for Firestore.
+    
+    > **Note:** This Datastore role also grants permissions for Firestore.
+
   - `Owner` or `Storage Admin` role on the bucket
 
 You can use the `gcloud` and `gsutil` command-line tools to assign these roles.
 
 If not already installed, you can access these tools from [Cloud Shell](https://cloud.google.com/shell/) in the Google Cloud console:  
-[Start Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
 
 1.  Assign the **Cloud Datastore Import Export Admin** role. Replace PROJECT\_ID , and run the following command:
     
@@ -206,7 +205,6 @@ If you disable or delete your App Engine default service account, your App Engin
 You can test your Cloud Scheduler job in the **Cloud Scheduler** page of the Google Cloud console.
 
 1.  Go to the **Cloud Scheduler** page in the Google Cloud console.  
-    [Go to Cloud Scheduler](https://console.cloud.google.com/cloudscheduler)
 
 2.  In the row for your new Cloud Scheduler job, click **Run now** .
     
@@ -222,18 +220,12 @@ To see if the Cloud Function successfully started an export operation, open the 
 
 Go to the **Cloud Run functions** page in the Firebase console.
 
-[Go to Function Logs](https://console.firebase.google.com/project/_/functions/logs)
-
 ### GCP Console
 
 Go to the **Cloud Run functions** page in the Google Cloud console.
-
-[Go to Logs Viewer](https://console.cloud.google.com/logs/viewer?resource=cloud_function)
 
 ## View export progress
 
 You can use the `gcloud firestore operations list` command to view the progress of your export operations, see [managing export and import operations](https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import#managing_export_and_import_operations) .
 
 After an export operation completes, you can view the output files in your Cloud Storage bucket:
-
-[Open the Cloud Storage browser](https://console.cloud.google.com/storage/browser)

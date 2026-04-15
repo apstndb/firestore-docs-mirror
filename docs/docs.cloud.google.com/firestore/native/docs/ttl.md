@@ -70,7 +70,7 @@ When you create a TTL policy, you designate a document field as the expiration t
 
 TTL uses a specified field to identify documents that are eligible for deletion. For Standard edition databases, the TTL field must be set to a `Date and time` value. For Enterprise edition databases, it must be set to either a `Date and time` value or an `Array` value containing a `Date and time` value. You can select a field that already exists or you can designate a field that you plan to add later.
 
-**Note:** Some TTL policies in Enterprise edition databases created before February 2026 don't apply to `Date and time` values inside of `Array` values. To update the policy to apply to `Array` values, disable and re-enable the policy.
+> **Note:** Some TTL policies in Enterprise edition databases created before February 2026 don't apply to `Date and time` values inside of `Array` values. To update the policy to apply to `Array` values, disable and re-enable the policy.
 
 Consider the following before you set the TTL field value:
 
@@ -83,8 +83,6 @@ To create a TTL policy, follow these steps:
 ### Google Cloud Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -101,8 +99,6 @@ The console returns to the **Time-to-live** page. If the operation successfully 
 ### gcloud
 
 1.  In the Google Cloud console, activate Cloud Shell.
-    
-    [Activate Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
     
     At the bottom of the Google Cloud console, a [Cloud Shell](https://docs.cloud.google.com/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
 
@@ -125,8 +121,6 @@ To view TTL policies and their statuses, follow these steps:
 ### Google Cloud Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -137,8 +131,6 @@ The console lists TTL policies for your database and includes each policy's stat
 ### gcloud
 
 1.  In the Google Cloud console, activate Cloud Shell.
-    
-    [Activate Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
     
     At the bottom of the Google Cloud console, a [Cloud Shell](https://docs.cloud.google.com/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
 
@@ -173,8 +165,6 @@ To disable a TTL policy, follow these steps:
 ### Google Cloud Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -189,8 +179,6 @@ The console returns to the **Time-to-live** page. On success, Firestore removes 
 ### gcloud
 
 1.  In the Google Cloud console, activate Cloud Shell.
-    
-    [Activate Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
     
     At the bottom of the Google Cloud console, a [Cloud Shell](https://docs.cloud.google.com/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
 

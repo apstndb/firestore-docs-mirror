@@ -24,7 +24,7 @@ The Cloud Function below deletes a collection and all of its descendants.
 
 Instead of implementing your own recursive delete logic for your Cloud Function, you can take advantage of the `firestore:delete` command in the Firebase Command Line Interface (CLI). You can import any function of the Firebase CLI into your Node.js application using the `firebase-tools` package.
 
-**Note:** Deleting data with the Firebase CLI incurs read and delete costs. For more information, see [Pricing](https://firebase.google.com/docs/firestore/pricing) .
+> **Note:** Deleting data with the Firebase CLI incurs read and delete costs. For more information, see [Pricing](https://firebase.google.com/docs/firestore/pricing) .
 
 The Firebase CLI uses the Firestore REST API to find all documents under the specified path and delete them individually. This implementation requires no knowledge of your app's specific data hierarchy and will even find and delete "orphaned" documents that no longer have a parent.
 
@@ -168,7 +168,7 @@ Android
 
 By using the client SDK for callable cloud functions, the users's authentication state and the `path` parameter are seamlessly passed to the remote function. When the function completes, the client will receive a callback with the result or an exception. To learn about how to call a cloud function from Android, Apple, or another platform, read [the documentation](https://firebase.google.com/docs/functions/callable#call_the_function) .
 
-**Warning:** Callable functions are not secure by default\! Make sure that your callable functions check the user's authorization before performing any sensitive actions like writing or deleting documents.
+> **Warning:** Callable functions are not secure by default\! Make sure that your callable functions check the user's authorization before performing any sensitive actions like writing or deleting documents.
 
 ## Limitations
 

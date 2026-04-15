@@ -5,7 +5,6 @@ Use start cursors and limits to paginate Firestore collections (async).
 For detailed documentation that includes this code sample, see the following:
 
   - [Paginate data with query cursors](https://docs.cloud.google.com/firestore/native/docs/query-data/query-cursors)
-  - [Paginate data with query cursors](https://firebase.google.com/docs/firestore/query-data/query-cursors)
 
 ## Code sample
 

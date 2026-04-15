@@ -6,7 +6,7 @@ Don't use the emulator for production deployments. Because the emulator stores d
 
 ## Install the emulator
 
-**Note:** The Firestore emulator will be updated to require Java 21 in the upcoming Google Cloud CLI release 528.0.0. Upgrade to Java 21 or later to continue using the latest version of the emulator.
+> **Note:** The Firestore emulator will be updated to require Java 21 in the upcoming Google Cloud CLI release 528.0.0. Upgrade to Java 21 or later to continue using the latest version of the emulator.
 
 To install the Firestore emulator, install and update the gcloud CLI:
 
@@ -30,7 +30,7 @@ To install the Firestore emulator, install and update the gcloud CLI:
 
 2.  Use the keyboard shortcut `Control + C` to stop the emulator.
 
-**Note:** The default port for the emulator is `8080` . This differs from the legacy Cloud Datastore emulator which used default port `8081` .
+> **Note:** The default port for the emulator is `8080` . This differs from the legacy Cloud Datastore emulator which used default port `8081` .
 
 ## Connect to the emulator
 
@@ -72,7 +72,7 @@ where:
     
     `{"export_directory":"/home/user/myexports/2024-03-26T19:39:33_443/2024-03-26T19:39:33_443.overall_export_metadata"}`
 
-**Note:** Exporting entities of specific kinds or namespaces is not supported.
+> **Note:** Exporting entities of specific kinds or namespaces is not supported.
 
 ## Export entities in the emulator
 
@@ -108,7 +108,7 @@ where:
     
     `{"export_directory":"/home/user/myexports/2024-03-26/"}`
 
-**Note:** Exporting entities of specific kinds or namespaces is not supported.
+> **Note:** Exporting entities of specific kinds or namespaces is not supported.
 
 ## Persist data in the emulator
 

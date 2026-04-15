@@ -2,7 +2,7 @@
 
 This page describes how to perform tasks related to [customer-managed encryption keys (CMEK) for Firestore](https://docs.cloud.google.com/firestore/native/docs/cmek) . For more information about CMEK in general, including when and why to enable it, see the [Cloud KMS documentation](https://cloud.google.com/kms/docs/cmek) .
 
-**Note:** For information about access to this release, see the [access request form](https://docs.google.com/forms/d/e/1FAIpQLSfKs8wJf4IXu1NizvfyU2vT59JDbdPvkehMVZ2ab5l_aDLIIA/viewform?resourcekey=0-O15dlRFvA0JIDmh6VFUEcA) .
+> **Note:** For information about access to this release, see the [access request form](https://docs.google.com/forms/d/e/1FAIpQLSfKs8wJf4IXu1NizvfyU2vT59JDbdPvkehMVZ2ab5l_aDLIIA/viewform?resourcekey=0-O15dlRFvA0JIDmh6VFUEcA) .
 
 ## Prepare your CMEK keys
 
@@ -15,7 +15,7 @@ Before you can create a CMEK-protected Firestore database, you must complete the
 
 Complete these steps for each project that will contain CMEK-protected Firestore databases. If you later create a new CMEK key, you must configure IAM settings for that key.
 
-**Note:** The `gcloud` commands on this page show placeholders for two Google Cloud projects: the project that contains Firestore databases, `  FIRESTORE_PROJECT  ` , and the project that contains your CMEK key(s), `  KMS_PROJECT  ` . However, you can use the same project for your Firestore databases and CMEK keys.
+> **Note:** The `gcloud` commands on this page show placeholders for two Google Cloud projects: the project that contains Firestore databases, `  FIRESTORE_PROJECT  ` , and the project that contains your CMEK key(s), `  KMS_PROJECT  ` . However, you can use the same project for your Firestore databases and CMEK keys.
 
 ### Request access
 
@@ -69,8 +69,6 @@ In the Google Cloud project where you want to manage your keys, complete the fol
 To grant an Cloud KMS role to your service agent, do the following. You are also able to grant permission at the key or key-ring level if you want lower granularity.
 
 1.  In the Google Cloud console, go to the **IAM** page.
-    
-    [Go to the IAM page](https://console.cloud.google.com/iam-admin/iam)
 
 2.  Click **Add** .
 
@@ -117,8 +115,6 @@ You can choose an encryption type and key only when you create a CMEK-enabled da
 ### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to the Databases page](https://console.cloud.google.com/firestore/databases)
 
 2.  Click **Create Database** .
 
@@ -132,7 +128,7 @@ You can choose an encryption type and key only when you create a CMEK-enabled da
 
 7.  Select or enter the resource name for the CMEK key that you want to use for the database.
     
-    **Note:** You can't add or change the CMEK key later.
+    > **Note:** You can't add or change the CMEK key later.
 
 8.  The list of keys is limited to the current Google Cloud project and the database location that you selected. To use a key from a different Google Cloud project, click **Switch Project** or **Enter Key Manually** .
 
@@ -529,8 +525,6 @@ You can set up and interact with the audit logs in the [Google Cloud console](ht
 1.  Make sure that [logging is enabled](https://cloud.google.com/logging/docs/audit/configure-data-access#config-console-enable) for the Cloud KMS API in your project.
 
 2.  Go to **Cloud Logging** in the Google Cloud console.
-    
-    [Go to Cloud Logging](https://console.cloud.google.com/logs/query)
 
 3.  Limit the log entries to your Cloud KMS key by adding the following lines to the Query builder:
     

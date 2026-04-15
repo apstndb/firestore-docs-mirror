@@ -1,8 +1,8 @@
 # Find Nearest (Transformation Stage)
 
-**Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
-
-This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+> **Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
+> 
+> This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
 ## Description
 
@@ -49,7 +49,7 @@ Android
         .collection("cities")
         .findNearest(
             "embedding",
-            FieldValue.vector(doubleArrayOf(1.5, 2.345)),
+            doubleArrayOf(1.5, 2.345),
             FindNearestStage.DistanceMeasure.EUCLIDEAN
         )
         .execute()DocSnippets.kt

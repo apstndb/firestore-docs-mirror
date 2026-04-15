@@ -999,7 +999,7 @@ As you work with aggregation queries, note the following behavior and limitation
 
   - If an aggregation query cannot resolve within 60 seconds, it returns a `DEADLINE_EXCEEDED` error. Performance depends on your index configuration and on the size of the dataset.
     
-    **Note:** Most queries scale based on the on the size of the result set, not the dataset. However, aggregation queries scale based on the size of the dataset and the number of index entries scanned.
+    > **Note:** Most queries scale based on the on the size of the result set, not the dataset. However, aggregation queries scale based on the size of the dataset and the number of index entries scanned.
     
     If the operation cannot be completed within the 60 second deadline, a possible workaround is to use [cursors](https://docs.cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets) to merge multiple aggregations.
 

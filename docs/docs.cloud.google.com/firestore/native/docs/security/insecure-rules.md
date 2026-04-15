@@ -2,19 +2,19 @@
 
 Use this guide to understand common vulnerabilities in Firestore Security Rules configurations, review and better secure your own rules, and test your changes before deploying them.
 
-**Note:** The server client libraries bypass all Firestore Security Rules and instead authenticate through [Google Application Default Credentials](https://cloud.google.com/docs/authentication/production) . If you're using the server client libraries or the REST or RPC APIs, make sure to set up [Identity and Access Management (IAM) for Firestore](https://cloud.google.com/firestore/docs/security/iam) .
+> **Note:** The server client libraries bypass all Firestore Security Rules and instead authenticate through [Google Application Default Credentials](https://cloud.google.com/docs/authentication/production) . If you're using the server client libraries or the REST or RPC APIs, make sure to set up [Identity and Access Management (IAM) for Firestore](https://cloud.google.com/firestore/docs/security/iam) .
 
 If you receive an alert that your Firestore in Native Mode database isn't properly secured, you can resolve the vulnerabilities by modifying and testing your Firestore Security Rules.
 
 To view your existing Security Rules, go to the [Rules tab](https://console.firebase.google.com/project/_/firestore/_/rules) in the Firebase console.
 
-**Note:** If you manage your Security Rules from the Firebase CLI, go to the rules file noted in your [firebase.json file](https://firebase.google.com/docs/cli/#the_firebasejson_file) .
+> **Note:** If you manage your Security Rules from the Firebase CLI, go to the rules file noted in your [firebase.json file](https://firebase.google.com/docs/cli/#the_firebasejson_file) .
 
-#### For Firestore in Native Mode instances created in the Google Cloud console
-
-If you created your Firestore in Native Mode database in the Google Cloud console, and haven't connected it to a Firebase project, you don't need Firestore Security Rules. Those Firestore in Native Mode instances will only accept and return requests through your application layer. Firestore in Native Mode instances tied to a Firebase project (created in the Firebase console) allow clients to connect directly to the database and employ access control through Firestore Security Rules. To enable direct access for clients, [import your Google Cloud project in the Firebase console](https://firebase.google.com/docs/guides) . If you've already added your Google Cloud project to a Firebase project, it's important that you properly configure your Security Rules.
-
-**The following documentation only applies to Firestore in Native Mode instances that were created with Firebase or have been added to a Firebase project.** All Firestore in Native Mode instances tied to Firebase projects must have properly configured Security Rules to protect your data.
+> #### For Firestore in Native Mode instances created in the Google Cloud console
+> 
+> If you created your Firestore in Native Mode database in the Google Cloud console, and haven't connected it to a Firebase project, you don't need Firestore Security Rules. Those Firestore in Native Mode instances will only accept and return requests through your application layer. Firestore in Native Mode instances tied to a Firebase project (created in the Firebase console) allow clients to connect directly to the database and employ access control through Firestore Security Rules. To enable direct access for clients, [import your Google Cloud project in the Firebase console](https://firebase.google.com/docs/guides) . If you've already added your Google Cloud project to a Firebase project, it's important that you properly configure your Security Rules.
+> 
+> **The following documentation only applies to Firestore in Native Mode instances that were created with Firebase or have been added to a Firebase project.** All Firestore in Native Mode instances tied to Firebase projects must have properly configured Security Rules to protect your data.
 
 ## Understand your Firestore Security Rules
 

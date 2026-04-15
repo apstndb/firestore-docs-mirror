@@ -1002,7 +1002,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
       end
     end
 
-**Note:** You can also query using the SQL-like [GQL](https://docs.cloud.google.com/datastore/docs/reference/gql_reference) .
+> **Note:** You can also query using the SQL-like [GQL](https://docs.cloud.google.com/datastore/docs/reference/gql_reference) .
 
 ## Next Steps
 

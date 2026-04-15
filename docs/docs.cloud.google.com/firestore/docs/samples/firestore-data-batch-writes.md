@@ -5,7 +5,6 @@ Performs a batch update on a Firestore document
 For detailed documentation that includes this code sample, see the following:
 
   - [Transactions and batched writes](https://docs.cloud.google.com/firestore/native/docs/manage-data/transactions)
-  - [Transactions and batched writes](https://firebase.google.com/docs/firestore/manage-data/transactions)
 
 ## Code sample
 

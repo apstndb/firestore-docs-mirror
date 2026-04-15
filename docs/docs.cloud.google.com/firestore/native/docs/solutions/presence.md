@@ -76,7 +76,7 @@ Next you'll synchronize the presence state to Firestore through the following me
 1.  Locally, to the offline device's Firestore cache so that the app knows it's offline.
 2.  Globally, using a Cloud Function so that all other devices accessing Firestore know this specific device is offline.
 
-**Note:** Remember that whenever you lose internet connectivity, you have no way to synchronize data, so you must write the same data to the same location, as shown in the following examples. This is necessary to ensure all devices receive the change in online status.
+> **Note:** Remember that whenever you lose internet connectivity, you have no way to synchronize data, so you must write the same data to the same location, as shown in the following examples. This is necessary to ensure all devices receive the change in online status.
 
 The functions recommended in this tutorial **cannot run in a client app** . They must be deployed to Cloud Functions for Firebase, and they require server-side logic from the Firebase Admin SDK. For detailed guidance, see the [Cloud Functions documentation](https://firebase.google.com/docs/functions/get-started?gen=2nd) .
 

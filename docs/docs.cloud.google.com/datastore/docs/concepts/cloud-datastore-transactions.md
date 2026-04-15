@@ -1,6 +1,6 @@
-**Note:** This page describes system behavior for Datastore databases that have not yet upgraded to Firestore in Datastore mode.
-
-[Firestore](https://docs.cloud.google.com/firestore) is the new version of Datastore and [removes several Datastore limitations](https://docs.cloud.google.com/datastore/docs/firestore-or-datastore#in_datastore_mode) .
+> **Note:** This page describes system behavior for Datastore databases that have not yet upgraded to Firestore in Datastore mode.
+> 
+> [Firestore](https://docs.cloud.google.com/firestore) is the new version of Datastore and [removes several Datastore limitations](https://docs.cloud.google.com/datastore/docs/firestore-or-datastore#in_datastore_mode) .
 
 A *transaction* is a set of Datastore operations on one or more entities in up to 25 entity groups. Each transaction is guaranteed to be atomic, which means that transactions are never partially applied. Either all of the operations in the transaction are applied, or none of them are applied.
 
@@ -16,7 +16,7 @@ An operation may fail when:
 
 In all these cases, the Datastore API returns an error.
 
-**Note:** If your application receives an exception when committing a transaction, it does not always mean that the transaction failed. You can receive errors in cases where transactions have been committed and eventually will be applied successfully. Whenever possible, make your Datastore transactions idempotent so that if you repeat a transaction, the end result will be the same.
+> **Note:** If your application receives an exception when committing a transaction, it does not always mean that the transaction failed. You can receive errors in cases where transactions have been committed and eventually will be applied successfully. Whenever possible, make your Datastore transactions idempotent so that if you repeat a transaction, the end result will be the same.
 
 Transactions are an optional feature of Datastore; you're not required to use transactions to perform Datastore operations.
 
@@ -563,7 +563,7 @@ As before, a transaction is necessary to handle the case where another user is a
 
 When a transaction fails, you can have your app retry the transaction until it succeeds, or you can let your users deal with the error by propagating it to your app's user interface level. You do not have to create a retry loop around every transaction.
 
-**Note:** A transaction should happen as quickly as possible to reduce the likelihood that the entities used by the transaction will change, causing the transaction to fail. As much as possible, prepare data outside of the transaction, then execute the transaction to perform Datastore operations that depend on a consistent state. The application should prepare keys for objects used outside the transaction, then fetch the entities inside the transaction.
+> **Note:** A transaction should happen as quickly as possible to reduce the likelihood that the entities used by the transaction will change, causing the transaction to fail. As much as possible, prepare data outside of the transaction, then execute the transaction to perform Datastore operations that depend on a consistent state. The application should prepare keys for objects used outside the transaction, then fetch the entities inside the transaction.
 
 Finally, you can use a transaction to read a consistent snapshot of Datastore. This can be useful when multiple reads are needed to render a page or export data that must be consistent. These kinds of transactions are often called *read-only* transactions, since they perform no writes. Read-only single-group transactions never fail due to concurrent modifications, so you don't have to implement retries upon failure. However, multi-entity-group transactions can fail due to concurrent modifications, so these should have retries.
 
@@ -717,11 +717,11 @@ An entity group is a set of entities connected through ancestry to a common root
 
   - There is a write throughput limit of about one transaction per second within a single entity group. This limitation exists because Datastore performs masterless, synchronous replication of each entity group over a wide geographic area to provide high reliability and fault tolerance.
     
-    **Warning:** Exceeding the write throughput limit of one transaction per second within a single entity group can lead to read and write contention on all entity groups involved in your transactions.
+    > **Warning:** Exceeding the write throughput limit of one transaction per second within a single entity group can lead to read and write contention on all entity groups involved in your transactions.
 
 In many applications, it is acceptable to use eventual consistency (i.e. a non-ancestor query spanning multiple entity groups, which may at times return slightly stale data) when obtaining a broad view of unrelated data, and then to use strong consistency (an ancestor query, or a `lookup` of a single entity) when viewing or editing a single set of highly related data. In such applications, it is usually a good approach to use a separate entity group for each set of highly related data. For more information, see [Data Consistency](https://docs.cloud.google.com/datastore/docs/concepts/structuring_for_strong_consistency) .
 
-**Note:** Avoid storing sensitive information in the entity group key. Entity group keys may be retained after the entity group is deleted in order to provide fast and reliable service across Datastore.
+> **Note:** Avoid storing sensitive information in the entity group key. Entity group keys may be retained after the entity group is deleted in order to provide fast and reliable service across Datastore.
 
 ## What's next
 

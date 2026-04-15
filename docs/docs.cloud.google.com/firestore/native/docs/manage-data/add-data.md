@@ -10,7 +10,7 @@ You can write data to Firestore in one of the following ways:
   - Add a new document to a collection. In this case, Firestore automatically generates the document identifier.
   - Create an empty document with an automatically generated identifier, and assign data to it later.
 
-**Note:** While the code samples cover multiple languages, the text explaining the samples refers to the Web method names.
+> **Note:** While the code samples cover multiple languages, the text explaining the samples refers to the Web method names.
 
 ## Before you begin
 
@@ -533,7 +533,7 @@ If the document does not exist, it will be created. If the document does exist, 
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     var cityRef = db.collection('cities').doc('BJ');
     
@@ -709,7 +709,7 @@ Firestore lets you write a variety of data types inside a document, including st
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     var docData = {
         stringExample: "Hello world!",
@@ -1104,7 +1104,7 @@ Using custom classes, you can rewrite the initial example in the following way:
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     class City {
         constructor (name, state, country ) {
@@ -1495,7 +1495,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     // Set with cityConverter
     db.collection("cities").doc("LA")
@@ -1663,7 +1663,7 @@ When you use `set()` to create a document, you must specify an ID for the docume
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     db.collection("cities").doc("new-city-id").set(data);test.firestore.js
 
@@ -2007,7 +2007,7 @@ Use the `add()` method:
 
 The examples show adding data to a top-level collection like `cities` . Firestore also supports subcollections inside documents such as `cities/LA/landmarks` . The same `set()` , `add()` , and `update()` methods apply when working with subcollections.
 
-**Important:** Unlike "push IDs" in the Firebase Realtime Database, Firestore auto-generated IDs don't provide any automatic ordering. If you want to order your documents by creation date, store a timestamp as a field in the documents.
+> **Important:** Unlike "push IDs" in the Firebase Realtime Database, Firestore auto-generated IDs don't provide any automatic ordering. If you want to order your documents by creation date, store a timestamp as a field in the documents.
 
 In some cases, it can be useful to create a document reference with an auto-generated ID, then use the reference later. For this use case, you can call `doc()` in the following way:
 
@@ -2023,7 +2023,7 @@ In some cases, it can be useful to create a document reference with an auto-gene
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     // Add a new document with a generated id.
     var newCityRef = db.collection("cities").doc();
@@ -2452,7 +2452,7 @@ You can set a field in your document to a server timestamp which tracks when the
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     var docRef = db.collection('objects').doc('some-id');
     
@@ -2647,7 +2647,7 @@ If your document contains nested objects, you can use the *dot notation* to refe
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     // Create an initial document to update.
     var frankDocRef = db.collection("users").doc("frank");
@@ -3058,7 +3058,7 @@ If your document contains an array field, you can use `arrayUnion()` and `arrayR
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     var washingtonRef = db.collection("cities").doc("DC");
     
@@ -3249,7 +3249,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 You can increment or decrement a numeric field value as shown in the following example. An increment operation increases or decreases the current value of a field by the given amount.
 
-**Note:** If the field doesn't exist or if the current field value is not a numeric value, the operation sets the field to the given value.
+> **Note:** If the field doesn't exist or if the current field value is not a numeric value, the operation sets the field to the given value.
 
 ### Web version 9
 
@@ -3264,7 +3264,7 @@ You can increment or decrement a numeric field value as shown in the following e
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     var washingtonRef = db.collection('cities').doc('DC');
     

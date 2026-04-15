@@ -1,8 +1,8 @@
 # Manage Enterprise edition indexes
 
-**Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
-
-This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+> **Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
+> 
+> This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
 Indexing behavior depends on the edition of the database. This page describes how to manage your indexes for Firestore Enterprise edition. For Firestore Standard edition, see [Firestore Standard edition index overview](https://docs.cloud.google.com/firestore/native/docs/standard-indexing) .
 
@@ -34,8 +34,6 @@ To create an index, complete the following steps:
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select a database from the list of databases.
 
@@ -125,8 +123,6 @@ To delete an index, complete the following steps:
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  From the list of databases, select a database.
 
@@ -173,7 +169,7 @@ To build an index, Firestore must create the index and then backfill the index e
 
 Index builds are *long-running operations* . The following sections describe how to work with long-running operations for indexes.
 
-**Key Term:** Firestore supports several administrative operations that can take a long time to complete. These operations are called ***long-running operations*** . Firestore includes features to execute and manage long- running operations. Supported long-running operations include index builds and export operations.
+> **Key Term:** Firestore supports several administrative operations that can take a long time to complete. These operations are called ***long-running operations*** . Firestore includes features to execute and manage long- running operations. Supported long-running operations include index builds and export operations.
 
 After you start to create an index, Firestore assigns the operation a unique name. Operation names are prefixed with `projects/ PROJECT_ID /databases/ DATABASE_ID /operations/` , for example:
 
@@ -207,7 +203,7 @@ A request for the status of a long-running operation also returns the metrics `w
 
 To estimate an operation's progress, divide `workCompleted` by `workEstimated` .
 
-**Note:** The estimate might be inaccurate because it depends on delayed statistics collection.
+> **Note:** The estimate might be inaccurate because it depends on delayed statistics collection.
 
 The following is an example of the progress of creating an index:
 

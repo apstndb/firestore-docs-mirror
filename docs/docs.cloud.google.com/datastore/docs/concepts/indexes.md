@@ -9,7 +9,7 @@ There are two types of indexes:
 
 The types of indexes are discussed in more detail later.
 
-**Note:** The index-based query mechanism supports a wide range of queries and is suitable for most applications. However, it does not support some kinds of query common in other database technologies: in particular, joins and aggregate queries aren't supported within the Datastore mode query engine. See [Restrictions on queries](https://docs.cloud.google.com/datastore/docs/concepts/queries#restrictions_on_queries) for limitations on Datastore mode queries.
+> **Note:** The index-based query mechanism supports a wide range of queries and is suitable for most applications. However, it does not support some kinds of query common in other database technologies: in particular, joins and aggregate queries aren't supported within the Datastore mode query engine. See [Restrictions on queries](https://docs.cloud.google.com/datastore/docs/concepts/queries#restrictions_on_queries) for limitations on Datastore mode queries.
 
 ## Index definition and structure
 
@@ -17,7 +17,7 @@ An index is defined on a list of properties of a given [entity kind](https://doc
 
 An index contains entries for every property named in the index's definition. Each entry of the index represents an entity that is a potential result for queries based on the index. An entity is included in the index only if it has an indexed value set for every property used in the index; if the index definition refers to a property for which the entity has no value, that entity won't appear in the index and hence will never be returned as a result for any query based on the index.
 
-**Note:** Datastore mode databases distinguish between an entity that does not possess a property and one that possesses the property with a null value ( `None` ). If you explicitly assign a null value to an entity's property, that entity may be included in the results of a query referring to that property.
+> **Note:** Datastore mode databases distinguish between an entity that does not possess a property and one that possesses the property with a null value ( `None` ). If you explicitly assign a null value to an entity's property, that entity may be included in the results of a query referring to that property.
 
 The composite index is sorted first by ancestor and then by property values, in the order specified in the index definition. Based on this understanding, you can create the [perfect index](https://docs.cloud.google.com/datastore/docs/concepts/optimize-indexes#finding_the_perfect_index) that enables efficient querying.
 
@@ -63,7 +63,7 @@ You can learn more about `index.yaml` at [Index Configuration](https://docs.clou
 
 When you are done modifying your index configuration file, run the [`gcloud datastore indexes create`](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/indexes/create) command to place the indexes into service. Learn more at [updating your indexes](https://docs.cloud.google.com/datastore/docs/tools/indexconfig#Datastore_Updating_indexes) .
 
-**Note:** If you use the `appcfg.py` or `appcfg.sh` commands to deploy an application to App Engine, the index configuration file is automatically deployed. If you use the [`gcloud app deploy`](https://docs.cloud.google.com/sdk/gcloud/reference/app/deploy) command to deploy your application, the index configuration file is not automatically deployed. You must either specifically list `index.yaml` as an argument to `gcloud app deploy` or run `gcloud datastore indexes create` to deploy the index configuration file.
+> **Note:** If you use the `appcfg.py` or `appcfg.sh` commands to deploy an application to App Engine, the index configuration file is automatically deployed. If you use the [`gcloud app deploy`](https://docs.cloud.google.com/sdk/gcloud/reference/app/deploy) command to deploy your application, the index configuration file is not automatically deployed. You must either specifically list `index.yaml` as an argument to `gcloud app deploy` or run `gcloud datastore indexes create` to deploy the index configuration file.
 
 If you previously deployed indexes that are no longer needed, you can [delete the unused indexes](https://docs.cloud.google.com/datastore/docs/tools/indexconfig#Datastore_Deleting_unused_indexes) .
 
@@ -89,7 +89,7 @@ This is especially worth noting in the case of integers and floating-point numbe
 
 If you know you will never have to filter or sort on a particular property, you can tell your Datastore mode database not to maintain index entries for that property by excluding it from indexes. This lowers the cost of running your application by reducing the [storage size](https://docs.cloud.google.com/datastore/docs/concepts/storage-size) needed for index entries. This can also improve write latency. An entity with an excluded property behaves as if the property were not set: queries with a filter or sort order on the excluded property will never match that entity.
 
-**Note:** If a property appears in a composite index, then excluding the property will disable it in the composite index. For example, suppose that an entity has properties **priority** and **done** and that you want to create an index able to satisfy queries like `WHERE priority = 4 AND done = FALSE` . Also suppose that you don't care about the queries `WHERE priority = 4` and `WHERE done = FALSE` . If you exclude **priority** from indexes and create an index for **priority** and **done** , Datastore mode won't create index entries for the **priority** and **done** index and so the `WHERE priority = 4 AND done = FALSE` query won't work. For your database to create entries for the **priority** and **done** indexes, both **priority** and **done** must be indexed.
+> **Note:** If a property appears in a composite index, then excluding the property will disable it in the composite index. For example, suppose that an entity has properties **priority** and **done** and that you want to create an index able to satisfy queries like `WHERE priority = 4 AND done = FALSE` . Also suppose that you don't care about the queries `WHERE priority = 4` and `WHERE done = FALSE` . If you exclude **priority** from indexes and create an index for **priority** and **done** , Datastore mode won't create index entries for the **priority** and **done** index and so the `WHERE priority = 4 AND done = FALSE` query won't work. For your database to create entries for the **priority** and **done** indexes, both **priority** and **done** must be indexed.
 
 The `description` property in the following example is excluded from indexes:
 

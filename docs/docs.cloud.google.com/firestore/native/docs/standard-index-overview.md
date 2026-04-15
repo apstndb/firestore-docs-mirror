@@ -28,7 +28,7 @@ Firestore Standard edition includes features that reduce the amount of time that
 
 Firestore Standard edition uses two types of indexes: *automatic* and *manual* . Manual and automatic indexes differ in how you manage them.
 
-**Note:** Automatic and manual indexes were previously known as *single-field* and *composite indexes* , respectively. We updated the names to reflect additional indexing features.
+> **Note:** Automatic and manual indexes were previously known as *single-field* and *composite indexes* , respectively. We updated the names to reflect additional indexing features.
 
 <span id="single-field_indexes"></span>
 
@@ -69,7 +69,7 @@ Use the `*` field path value to add collection-level index exemptions on all fie
 
 If you create an index exemption for a map field, the map's subfields inherit those settings. You can, however, define index exemptions for specific subfields. If you delete an exemption for a subfield, the subfield will inherit its parent's exemption settings, if they exist, or the database-wide settings if no parent exemptions exist.
 
-**Note:** An exemption only applies to automatic index settings. A field exempted from automatic indexing can still be indexed as part of a manual index.
+> **Note:** An exemption only applies to automatic index settings. A field exempted from automatic indexing can still be indexed as part of a manual index.
 
 To create and manage automatic index exemptions, see [Manage indexes](https://docs.cloud.google.com/firestore/native/docs/query-data/indexing#exemptions) .
 
@@ -79,7 +79,7 @@ To create and manage automatic index exemptions, see [Manage indexes](https://do
 
 A manual index stores a sorted mapping of all the documents in a collection, based on an ordered list of fields to index.
 
-**Note:** You can have at most one array field per index.
+> **Note:** You can have at most one array field per index.
 
 Firestore Standard edition uses manual indexes to support queries not already supported by automatic indexes.
 

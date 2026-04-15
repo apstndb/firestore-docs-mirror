@@ -11,7 +11,7 @@ Query Explain:
   - Provides insights on the query planning phase so you can adjust your query indexes and boost efficiency.
   - Using the analyze option, helps you understand your cost and performance on a per-query basis and lets you quickly iterate through different query patterns in order to optimize their usage.
 
-**Note:** Query Explain supports polled queries. Streaming queries are not yet supported.
+> **Note:** Query Explain supports polled queries. Streaming queries are not yet supported.
 
 ## Understand Query Explain options: default and analyze
 
@@ -75,7 +75,7 @@ You can use the client libraries to submit an analyze option request.
 
 Note that requests are authenticated with IAM, using the same permissions for regular query operations. Other authentication techniques, like Firebase Authentication, are ignored. For more information, see the guide on [IAM for server client libraries](https://cloud.google.com/firestore/docs/security/iam) .
 
-**Note:** One query execution is analyzed at a time; therefore, query timing results may vary from request to request. The tool can help you spot significant structural inefficiencies, but is not intended to provide aggregate statistics on query performance.
+> **Note:** One query execution is analyzed at a time; therefore, query timing results may vary from request to request. The tool can help you spot significant structural inefficiencies, but is not intended to provide aggregate statistics on query performance.
 
 ##### Java (Admin)
 
@@ -134,7 +134,7 @@ For more information, see the [Query Explain report reference](https://docs.clou
 
 Let's look at an example scenario in which we query movies by genre and country of production.
 
-**Note:** Query Explain is designed for useful ad hoc analysis; its report format will evolve to maximize ease of reading and understanding, not suitability for machine processing. Some metrics are expected to change as Firestore in Native Mode evolves (i.e., metrics may be added, removed, or updated) and are not covered by the same deprecation policy as other Firestore in Native Mode APIs. For more information, see the [Query Explain report reference](https://docs.cloud.google.com/firestore/native/docs/query-explain-report-reference) .
+> **Note:** Query Explain is designed for useful ad hoc analysis; its report format will evolve to maximize ease of reading and understanding, not suitability for machine processing. Some metrics are expected to change as Firestore in Native Mode evolves (i.e., metrics may be added, removed, or updated) and are not covered by the same deprecation policy as other Firestore in Native Mode APIs. For more information, see the [Query Explain report reference](https://docs.cloud.google.com/firestore/native/docs/query-explain-report-reference) .
 
 For illustration, assume the equivalent of this SQL query.
 

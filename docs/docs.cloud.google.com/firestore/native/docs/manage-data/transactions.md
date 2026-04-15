@@ -1,5 +1,7 @@
 # Transactions and batched writes
 
+[Video](https://www.youtube.com/watch?v=dOVSr0OsAoU)
+
 Firestore supports atomic operations for reading and writing data. In a set of atomic operations, either all of the operations succeed, or none of them are applied. There are two types of atomic operations in Firestore:
 
   - **Transactions** : a [transaction](https://docs.cloud.google.com/firestore/native/docs/manage-data/transactions#transactions) is a set of read and write operations on one or more documents.
@@ -43,7 +45,7 @@ The following example shows how to create and run a transaction:
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     // Create a reference to the SF doc.
     var sfDocRef = db.collection("cities").doc("SF");
@@ -425,7 +427,7 @@ Do not modify application state inside of your transaction functions. Doing so w
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     // Create a reference to the SF doc.
     var sfDocRef = db.collection("cities").doc("SF");
@@ -885,7 +887,7 @@ If you do not need to read any documents in your operation set, you can execute 
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     // Get a new write batch
     var batch = db.batch();
@@ -1278,7 +1280,7 @@ Like transactions, batched writes are atomic. Unlike transactions, batched write
 
 A batched write with hundreds of documents might require many index updates and might exceed the limit on transaction size. In this case, reduce the number of documents per batch. To write a large number of documents, consider using a bulk writer or parallelized individual writes instead.
 
-**Note:** For bulk data entry, use a [server client library](https://docs.cloud.google.com/firestore/docs/reference/libraries#server_client_libraries) with parallelized individual writes. Batched writes perform better than serialized writes but not better than parallel writes. You should use a server client library for bulk data operations and not a mobile/web SDK.
+> **Note:** For bulk data entry, use a [server client library](https://docs.cloud.google.com/firestore/docs/reference/libraries#server_client_libraries) with parallelized individual writes. Batched writes perform better than serialized writes but not better than parallel writes. You should use a server client library for bulk data operations and not a mobile/web SDK.
 
 ## Data validation for atomic operations
 

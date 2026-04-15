@@ -243,6 +243,7 @@ https://docs.cloud.google.com/datastore/docs/troubleshoot-java-client
 https://docs.cloud.google.com/datastore/docs/troubleshooting
 https://docs.cloud.google.com/datastore/docs/ttl
 https://docs.cloud.google.com/datastore/docs/understand-performance-monitoring
+https://docs.cloud.google.com/datastore/docs/usage-insights
 https://docs.cloud.google.com/datastore/docs/use-cmek
 https://docs.cloud.google.com/datastore/docs/use-monitoring-dashboard
 https://docs.cloud.google.com/datastore/docs/use-pitr
@@ -597,9 +598,11 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/tags
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-error-codes
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-reads-writes-scale
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/usage-insights
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-cmek
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-pitr
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/write-mql-gemini
 https://docs.cloud.google.com/firestore/mongodb-compatibility/quotas
 https://docs.cloud.google.com/firestore/native/docs
 https://docs.cloud.google.com/firestore/native/docs/apis
@@ -746,6 +749,7 @@ https://docs.cloud.google.com/firestore/native/docs/understand-error-codes
 https://docs.cloud.google.com/firestore/native/docs/understand-performance-monitoring
 https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale
 https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale-enterprise
+https://docs.cloud.google.com/firestore/native/docs/usage-insights
 https://docs.cloud.google.com/firestore/native/docs/use-cmek
 https://docs.cloud.google.com/firestore/native/docs/use-firestore-mcp
 https://docs.cloud.google.com/firestore/native/docs/use-monitoring-dashboard

@@ -46,15 +46,13 @@ Firestore previously used the App Engine default service account instead of the 
 
 The Firestore service agent is preferable because it is specific to Firestore. The App Engine service account is shared by more than one service.
 
-**Note:** If you use VPC Service Controls, you must use the Firestore service agent to fully protect import and export operations. VPC Service Controls is not compatible with the App Engine service account.
+> **Note:** If you use VPC Service Controls, you must use the Firestore service agent to fully protect import and export operations. VPC Service Controls is not compatible with the App Engine service account.
 
 ### View authorization account
 
 You can view which account your import and export operations use to authorize requests from the **Import/Export** page in the Google Cloud console. You can also view if your database already uses the Firestore service agent.
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -93,8 +91,6 @@ The migration process described in the following section helps you identify Clou
 Complete the following steps to migrate from the App Engine service account to the Firestore service agent. Once completed, the migration can't be undone.
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -135,8 +131,6 @@ Complete the following steps to migrate from the App Engine service account to t
 To verify your project's migration status:
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 

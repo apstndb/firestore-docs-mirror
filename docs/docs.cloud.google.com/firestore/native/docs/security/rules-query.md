@@ -2,19 +2,19 @@
 
 This page builds on the concepts in [Structuring Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/rules-structure) and [Writing Conditions for Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/rules-conditions) to explain how Firestore Security Rules interact with queries. It takes a closer look at how security rules affect the queries you can write and describes how to ensure your queries use the same constraints as your security rules. This page also describes how to write security rules to allow or deny queries based on query properties like `limit` and `orderBy` .
 
-**Note:** The server client libraries bypass all Firestore Security Rules and instead authenticate through [Google Application Default Credentials](https://cloud.google.com/docs/authentication/production) . If you're using the server client libraries or the REST or RPC APIs, make sure to set up [Identity and Access Management (IAM) for Firestore](https://cloud.google.com/firestore/docs/security/iam) .
+> **Note:** The server client libraries bypass all Firestore Security Rules and instead authenticate through [Google Application Default Credentials](https://cloud.google.com/docs/authentication/production) . If you're using the server client libraries or the REST or RPC APIs, make sure to set up [Identity and Access Management (IAM) for Firestore](https://cloud.google.com/firestore/docs/security/iam) .
 
 ### Rules are not filters
 
 When writing queries to retrieve documents, keep in mind that security rules are not filters—queries are all or nothing. To save you time and resources, Firestore evaluates a query against its potential result set instead of the actual field values for all of your documents. If a query could potentially return documents that the client does not have permission to read, the entire request fails.
 
-**Note:** This behavior applies to queries that retrieve one or more documents from a collection and not to individual document retrievals. When you use a document ID to retrieve a single document, Firestore reads the document and evaluates the request using your security rules and the actual document properties.
+> **Note:** This behavior applies to queries that retrieve one or more documents from a collection and not to individual document retrievals. When you use a document ID to retrieve a single document, Firestore reads the document and evaluates the request using your security rules and the actual document properties.
 
 ## Queries and security rules
 
 As the examples below demonstrate, you must write your queries to fit the constraints of your security rules.
 
-**Note:** The same rules apply to both normal queries that return documents and [aggregation queries](https://docs.cloud.google.com/firestore/native/docs/query-data/aggregation-queries) . In other words, security rules control what conditions are allowed, not how data is returned.
+> **Note:** The same rules apply to both normal queries that return documents and [aggregation queries](https://docs.cloud.google.com/firestore/native/docs/query-data/aggregation-queries) . In other words, security rules control what conditions are allowed, not how data is returned.
 
 ### Secure and query documents based on `auth.uid`
 
@@ -121,7 +121,7 @@ Your security rules can also accept or deny queries based on their constraints. 
 
     allow list: if request.query.limit <= 10;
 
-**Note:** [You can break `read` rules into `get` and `list` rules](https://docs.cloud.google.com/firestore/native/docs/security/rules-structure#granular_operations) . Rules for `get` apply to requests for single documents, and rules for `list` apply to queries and requests for collections.
+> **Note:** [You can break `read` rules into `get` and `list` rules](https://docs.cloud.google.com/firestore/native/docs/security/rules-structure#granular_operations) . Rules for `get` apply to requests for single documents, and rules for `list` apply to queries and requests for collections.
 
 The following ruleset demonstrates how to write security rules that evaluate constraints placed on queries. This example expands the previous `stories` ruleset with the following changes:
 
@@ -205,7 +205,7 @@ But what if you want to show the current user their posts across all forums? You
     
     db.collectionGroup("posts").where("author", "==", user.uid).get()
 
-**Note:** This query requires an index on the `posts` collection for field `author` and with collection group scope. If you haven't enabled this index, the query will return an error link you can follow to create the required index.
+> **Note:** This query requires an index on the `posts` collection for field `author` and with collection group scope. If you haven't enabled this index, the query will return an error link you can follow to create the required index.
 
 In your security rules, you must allow this query by writing a read or list rule for the `posts` collection group:
 

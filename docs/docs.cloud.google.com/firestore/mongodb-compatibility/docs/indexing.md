@@ -55,8 +55,6 @@ Note the following limitations:
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select a database from the list of databases.
 
@@ -162,8 +160,6 @@ Use the [`dropIndex()`](https://www.mongodb.com/docs/manual/reference/method/db.
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  From the list of databases, select a database.
 
@@ -210,7 +206,7 @@ To build an index, Firestore with MongoDB compatibility must create the index an
 
 Index builds are *long-running operations* . The following sections describe how to work with long-running operations for indexes.
 
-**Key Term:** Firestore with MongoDB compatibility supports several administrative operations that can take a long time to complete. These operations are called ***long-running operations*** . Firestore with MongoDB compatibility includes features to execute and manage long- running operations. Supported long-running operations include index builds and export operations.
+> **Key Term:** Firestore with MongoDB compatibility supports several administrative operations that can take a long time to complete. These operations are called ***long-running operations*** . Firestore with MongoDB compatibility includes features to execute and manage long- running operations. Supported long-running operations include index builds and export operations.
 
 After you start to create an index, Firestore with MongoDB compatibility assigns the operation a unique name. Operation names are prefixed with `projects/ PROJECT_ID /databases/ DATABASE_ID /operations/` , for example:
 
@@ -244,7 +240,7 @@ A request for the status of a long-running operation also returns the metrics `w
 
 To estimate an operation's progress, divide `workCompleted` by `workEstimated` .
 
-**Note:** The estimate might be inaccurate because it depends on delayed statistics collection.
+> **Note:** The estimate might be inaccurate because it depends on delayed statistics collection.
 
 The following is an example of the progress of creating an index:
 

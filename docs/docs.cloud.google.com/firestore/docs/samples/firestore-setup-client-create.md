@@ -5,11 +5,8 @@ Creating a Firestore client
 For detailed documentation that includes this code sample, see the following:
 
   - [Add and update data](https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data)
-  - [Add data to Cloud Firestore](https://firebase.google.com/docs/firestore/manage-data/add-data)
-  - [Create a Firestore database by using a server client library](https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library)
-  - [Get data with Cloud Firestore](https://firebase.google.com/docs/firestore/query-data/get-data)
-  - [Get started with Cloud Firestore](https://firebase.google.com/docs/firestore/quickstart)
   - [Getting data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data)
+  - [Quickstart: Create a Firestore database by using a server client library](https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library)
 
 ## Code sample
 

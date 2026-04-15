@@ -14,9 +14,9 @@ When you use Firestore client libraries, you can use any of the following endpoi
 
 The method for configuring a regional or multi-regional endpoint is the same: you provide the endpoint string when initializing the client library. The following examples show how to set the endpoint string using a regional endpoint ( `firestore.us-central1.rep.googleapis.com` ). To use a multi-regional endpoint, provide a multi-regional endpoint string corresponding to your database's location (for example, `firestore.us.rep.googleapis.com` for `nam5` ).
 
-**Note:** You can set regional and multi-regional endpoints in the server client libraries, namely C\#, Go, Java, Node.js, PHP, Python, and Ruby. The mobile and web SDKs, namely, Android, IOS, and Web are not supported.
+> **Note:** You can set regional and multi-regional endpoints in the server client libraries, namely C\#, Go, Java, Node.js, PHP, Python, and Ruby. The mobile and web SDKs, namely, Android, IOS, and Web are not supported.
 
-**Note:** Setting an endpoint for a location other than where your data resides might result in a `PermissionDeniedError` .
+> **Note:** Setting an endpoint for a location other than where your data resides might result in a `PermissionDeniedError` .
 
 ### Java
 

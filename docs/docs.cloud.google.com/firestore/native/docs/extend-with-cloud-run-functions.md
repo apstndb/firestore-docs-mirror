@@ -4,7 +4,7 @@
 
 With Cloud Run functions, you can deploy code to handle events triggered by changes in your Cloud Run database. This lets you add server-side functionality without running your own servers.
 
-**Note:** This feature is also available through Cloud Functions for Firebase (2nd gen). To see examples that use the Firebase SDK, see [Extend Cloud Run with Cloud Functions for Firebase (2nd gen)](https://firebase.google.com/docs/firestore/extend-with-functions-2nd-gen) .
+> **Note:** This feature is also available through Cloud Functions for Firebase (2nd gen). To see examples that use the Firebase SDK, see [Extend Cloud Run with Cloud Functions for Firebase (2nd gen)](https://firebase.google.com/docs/firestore/extend-with-functions-2nd-gen) .
 
 This guide describes how to create triggers for Cloud Run functions from Firestore events.
 
@@ -23,8 +23,6 @@ The process of Firestore events triggering a Cloud Run function consists of the 
 1.  Make sure you have set up a new project for Cloud Run as described in the [setup](https://docs.cloud.google.com/run/docs/setup) page.
 
 2.  Enable the Artifact Registry, Cloud Build, Cloud Run Admin API, Eventarc, Firestore Cloud Logging, and Pub/Sub APIs:
-    
-    [Enable the APIs](https://console.cloud.google.com/flows/enableapi?apiid=cloudbuild.googleapis.com,artifactregistry.googleapis.com,eventarc.googleapis.com,run.googleapis.com,logging.googleapis.com,pubsub.googleapis.com,firestore.googleapis.com)
 
 ### Required roles
 
@@ -62,13 +60,13 @@ Note that by default, [Cloud Build permissions include permissions to upload and
     
     For production environments, we strongly recommend [creating a new service account](https://docs.cloud.google.com/iam/docs/service-accounts-create) and granting it one or more IAM roles that contain the [minimum permissions required](https://docs.cloud.google.com/iam/docs/best-practices-service-accounts#limit-service-account-privileges) and follow the principle of [least privilege](https://docs.cloud.google.com/iam/docs/using-iam-securely#least_privilege) .
     
-    **Note:**
-    
-    The [`iam.automaticIamGrantsForDefaultServiceAccounts` organization policy constraint](https://docs.cloud.google.com/resource-manager/docs/organization-policy/restricting-service-accounts#disable_service_account_default_grants) prevents the Editor role from being automatically granted to default service accounts. If you created your organization after May 3, 2024, this constraint is enforced by default.
-    
-    We strongly recommend that you enforce this constraint to disable the automatic role grant. If you disable the automatic role grant, you must decide which roles to grant to the default service accounts, and then [grant these roles](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) yourself.
-    
-    If the default service account already has the Editor role, we recommend that you replace the Editor role with less permissive roles.To safely modify the service account's roles, use [Policy Simulator](https://docs.cloud.google.com/policy-intelligence/docs/simulate-iam-policies) to see the impact of the change, and then [grant and revoke the appropriate roles](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
+    > **Note:**
+    > 
+    > The [`iam.automaticIamGrantsForDefaultServiceAccounts` organization policy constraint](https://docs.cloud.google.com/resource-manager/docs/organization-policy/restricting-service-accounts#disable_service_account_default_grants) prevents the Editor role from being automatically granted to default service accounts. If you created your organization after May 3, 2024, this constraint is enforced by default.
+    > 
+    > We strongly recommend that you enforce this constraint to disable the automatic role grant. If you disable the automatic role grant, you must decide which roles to grant to the default service accounts, and then [grant these roles](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) yourself.
+    > 
+    > If the default service account already has the Editor role, we recommend that you replace the Editor role with less permissive roles.To safely modify the service account's roles, use [Policy Simulator](https://docs.cloud.google.com/policy-intelligence/docs/simulate-iam-policies) to see the impact of the change, and then [grant and revoke the appropriate roles](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
 
 2.  By default, Cloud Run services are only callable by Project Owners, Project Editors, and Cloud Run Admins and Invokers. You can [control access on a per-service basis](https://docs.cloud.google.com/run/docs/securing/managing-access#control-service-or-job-access) ; however, for testing purposes, grant the [Cloud Run Invoker role](https://docs.cloud.google.com/iam/docs/roles-permissions/run#run.invoker) ( `run.invoker` ) on the Google Cloud project to the Compute Engine service account. This grants the role on all Cloud Run services and jobs in a project.
     
@@ -135,7 +133,7 @@ Firestore supports `create` , `update` , `delete` , and `write` events. The `wri
 | `google.cloud.firestore.document.v1.deleted.withAuthContext` | Same as `deleted` but adds authentication information.              |
 | `google.cloud.firestore.document.v1.written.withAuthContext` | Same as `written` but adds authentication information.              |
 
-**Note:** You set triggers at the document level. It is not possible to create a trigger activated by changes to a specific field or collection.
+> **Note:** You set triggers at the document level. It is not possible to create a trigger activated by changes to a specific field or collection.
 
 Wildcards are written in triggers using curly braces, for example: `projects/ YOUR_PROJECT_ID /databases/(default)/documents/collection/{document_wildcard}`
 
@@ -263,8 +261,6 @@ Click the tab for instructions using the tool of your choice.
 When you use the Google Cloud console to create a function, you can also add a trigger to your function. Follow these steps to create a trigger for your function:
 
 1.  In the Google Cloud console, go to Cloud Run:
-    
-    [Go to Cloud Run](https://console.cloud.google.com/run/services)
 
 2.  Click **Write a function** , and enter the function details. For more information about configuring functions during deployment, see [Deploy functions](https://docs.cloud.google.com/run/docs/deploy-functions#console) .
 
@@ -542,8 +538,6 @@ To deploy the function, see [Create triggers for functions](https://docs.cloud.g
 To test the `Hello Firestore` function, set up a collection called `users` in your [Firestore database](https://docs.cloud.google.com/run/docs/triggering/firestore-triggers#set_up_your_database) :
 
 1.  In the Google Cloud console, go to the Firestore databases page:
-    
-    [Go to Firestore](https://console.cloud.google.com/firestore/data)
 
 2.  Click **Start a collection** .
 
@@ -891,7 +885,7 @@ Use [protobufjs](https://www.npmjs.com/package/protobufjs) to decode the event d
         }
     }
 
-**Note:** Updating the function-triggering Firestore document might create subsequent `updated` events, which might cascade into an infinite loop within your function. To solve this problem, use trigger types that ignore updates (such as `created` ), or configure your function to only write to Firestore if the underlying value has changed.
+> **Note:** Updating the function-triggering Firestore document might create subsequent `updated` events, which might cascade into an infinite loop within your function. To solve this problem, use trigger types that ignore updates (such as `created` ), or configure your function to only write to Firestore if the underlying value has changed.
 
 #### Deploy the function
 
@@ -906,8 +900,6 @@ To deploy the function, see [Create triggers for functions](https://docs.cloud.g
 To test the `Convert to Uppercase` function you just deployed, set up a collection called `messages` in your [Firestore database](https://docs.cloud.google.com/run/docs/triggering/firestore-triggers#set_up_your_database) :
 
 1.  In the Google Cloud console, go to the Firestore databases page:
-    
-    [Go to Firestore](https://console.cloud.google.com/firestore/data)
 
 2.  Click **Start a collection** .
 

@@ -1,16 +1,10 @@
 # Firestore with MongoDB compatibility documentation
 
-[Read product documentation](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/overview)
-
 Firestore with MongoDB compatibility is a serverless, document database service that maximizes developer productivity and includes MongoDB Application Programming Interface (API) compatibility. Firestore with MongoDB compatibility is backed by a serverless infrastructure featuring single-digit milliseconds read performance, automatic scaling, high availability, integration into Google Cloud centralized governance, and pay-per-use pricing.
 
 [Go to the Firestore product page for more.](https://cloud.google.com/products/firestore/)
 
 Not sure what database option is right for you? Learn more about our [database services](https://cloud.google.com/products/databases/) .
-
-## Documentation resources
-
-Find quickstarts and guides, review key references, and get help with common issues.
 
 format\_list\_numbered
 

@@ -25,7 +25,7 @@ Gemini CLI is highly extensible, allowing for the addition of new tools and capa
 
 ## Use the Gemini CLI extension for Firestore
 
-**Note:** The Firestore Gemini CLI extension is based on MCP Toolbox for Databases. MCP Toolbox for Databases is currently in beta (pre-v1.0), and may see breaking changes until the first stable release (v1.0).
+> **Note:** The Firestore Gemini CLI extension is based on MCP Toolbox for Databases. MCP Toolbox for Databases is currently in beta (pre-v1.0), and may see breaking changes until the first stable release (v1.0).
 
 The integration with Gemini CLI is through a dedicated extension that offers additional capabilities compared to the standard MCP Toolbox connection. The extension offers a streamlined installation process and a set of tools. The open-source extension contains detailed information on installation, configuration, and usage examples. For more information, see the [Gemini CLI Extension - Firestore](https://github.com/gemini-cli-extensions/firestore-native) .
 

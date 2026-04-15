@@ -45,7 +45,7 @@ The following metrics can be used to understand whether your database is read he
   - `document/read_ops_count` : The number of successful document reads from queries or lookups.
   - `document/write_ops_count` : The number of successful document writes.
 
-**Note:** The `document/delete_ops_count` metric doesn't include documents deleted because of TTL policies. For information about metrics that capture deletes due to TTL policies, see [TTL Metrics](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard#ttl_metrics) .
+> **Note:** The `document/delete_ops_count` metric doesn't include documents deleted because of TTL policies. For information about metrics that capture deletes due to TTL policies, see [TTL Metrics](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard#ttl_metrics) .
 
 ### Billing metrics
 
@@ -85,8 +85,6 @@ The usage dashboards require the `monitoring.timeSeries.list` Identity and Acces
 To view usage metrics for a Firestore with MongoDB compatibility database, do the following.
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -105,8 +103,6 @@ Import and export operations cause discrepancies between the usage dashboard and
 The **Monitoring** page in the Firestore section of the Google Cloud console includes predefined monitoring dashboards such as **Request Latencies (P50 and P99)** , **Response Codes** , and **Query stats (P50)** . You can also create up to one custom dashboard. To access the **Monitoring** page for a database, follow these steps:
 
 1.  In the Google Cloud console, open the Firestore **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select a database from the list.
 
@@ -129,8 +125,6 @@ Consider the following example where we create a latency alert policy. The alert
 ### Console
 
 1.  In the Google Cloud console, go to the **Monitoring** page then select *notifications* **Alerting** .
-    
-    [Go to Monitoring](https://console.cloud.google.com/monitoring/alerting)
 
 2.  Select **Create policy** .
 

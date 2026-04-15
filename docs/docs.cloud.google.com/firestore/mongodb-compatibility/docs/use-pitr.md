@@ -44,8 +44,6 @@ To enable PITR for your database:
 ### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -89,8 +87,6 @@ Replace the values as follows:
 ### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -156,7 +152,7 @@ You can read PITR data using the snapshot session in various MongoDB client driv
   collection.distinct(session, <field>, <return value type class>).toList();
 ```
 
-**Note:** **Firestore interpretes snapshot timestamp differently from MongoDB** . Except for this difference, Firestore with MongoDB compatibility supports this MongoDB client driver feature and does not require you to use a non-standard client to access your database.
+> **Note:** **Firestore interpretes snapshot timestamp differently from MongoDB** . Except for this difference, Firestore with MongoDB compatibility supports this MongoDB client driver feature and does not require you to use a non-standard client to access your database.
 
 In MongoDB, the `BsonTimestamp` is a MongoDB internal only BSON type of 64 bits. The first 32 bits represents the epoch timestamp seconds and the latter 32 bits represents an ordinal operation count within a MongoDB cluster.
 
@@ -178,13 +174,11 @@ You can clone an existing database at a selected timestamp into a new database:
       - If PITR isn't enabled, you can select any minute in the past hour.
       - You can check the earliest timestamp that you can pick [in your database's description](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-pitr#get-period) .
 
-**Note:** To clone databases, your Google Account must have the [`datastore.databases.clone` IAM permission](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-pitr#permissions) .
+> **Note:** To clone databases, your Google Account must have the [`datastore.databases.clone` IAM permission](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-pitr#permissions) .
 
 ### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Click more\_vert **View more** in the table row for the database that you want to clone. Click **Clone** . The **Create a clone** dialog appears.
 
@@ -196,7 +190,7 @@ You can clone an existing database at a selected timestamp into a new database:
 
 4.  Click **Create clone** .
 
-**Note:** The cloned database will have the **same encryption configuration** as the source database. If you want to specify a different encryption configuration for the cloned database, you can use Google Cloud CLI commands.
+> **Note:** The cloned database will have the **same encryption configuration** as the source database. If you want to specify a different encryption configuration for the cloned database, you can use Google Cloud CLI commands.
 
 ### gcloud
 

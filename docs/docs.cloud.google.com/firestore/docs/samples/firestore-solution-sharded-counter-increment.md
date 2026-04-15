@@ -4,7 +4,6 @@ Incrementing a Firestore document field while using shards
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Distributed counters](https://firebase.google.com/docs/firestore/solutions/counters)
   - [Support frequent and distributed counters](https://docs.cloud.google.com/firestore/native/docs/solutions/counters)
 
 ## Code sample
@@ -41,16 +40,6 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
      return shardRef.Update(ctx, []firestore.Update{
          {Path: "Count", Value: firestore.Increment(1)},
      })
-    }
-
-### Node.js
-
-To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
-
-    function incrementCounter(docRef, numShards) {
-      const shardId = Math.floor(Math.random() * numShards);
-      const shardRef = docRef.collection('shards').doc(shardId.toString());
-      return shardRef.set({count: FieldValue.increment(1)}, {merge: true});
     }
 
 ### PHP

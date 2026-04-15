@@ -6,9 +6,9 @@ You can optionally [create multiple databases](https://docs.cloud.google.com/fir
 
 Be aware that once you provision a database instance, you cannot change its location setting.
 
-**Important** : The location setting for your *default* Firestore database instance has a [dependency on the "location of default Google Cloud resources"](https://docs.cloud.google.com/firestore/native/docs/locations#default-cloud-location) . This means that when you provision your default Firestore database, its location might have already been set, either during project creation or when setting up another service that shares this location dependency.
-
-Any non-default Firestore database instances in your project do not share this location dependency.
+> **Important** : The location setting for your *default* Firestore database instance has a [dependency on the "location of default Google Cloud resources"](https://docs.cloud.google.com/firestore/native/docs/locations#default-cloud-location) . This means that when you provision your default Firestore database, its location might have already been set, either during project creation or when setting up another service that shares this location dependency.
+> 
+> Any non-default Firestore database instances in your project do not share this location dependency.
 
 ## Types of locations
 
@@ -40,7 +40,7 @@ Firestore supports the following multi-region locations:
 | `nam5`            | United States (Central)          | `us-central1` (Iowa), `us-central2` (Oklahoma—private GCP region) | `us-east1` (South Carolina)                          |
 | `nam7`            | United States (Central and East) | `us-central1` (Iowa), `us-east4` (Northern Virginia)              | `us-central2` (Oklahoma—private Google Cloud region) |
 
-**Note:** If your project already has an App Engine app with a location of either `us-central` or `europe-west` , then your *default* Firestore database will be considered [multi-regional](https://docs.cloud.google.com/firestore/native/docs/locations#location-mr) .
+> **Note:** If your project already has an App Engine app with a location of either `us-central` or `europe-west` , then your *default* Firestore database will be considered [multi-regional](https://docs.cloud.google.com/firestore/native/docs/locations#location-mr) .
 
 ### Regional locations
 
@@ -546,13 +546,13 @@ The "location for default Google Cloud resources" is the location setting for an
   - default Cloud Storage for Firebase bucket with the name format of `*.appspot.com`
   - Google Cloud Scheduler used specifically with 1st gen scheduled functions
 
-**Note:** None of the other resources in your project share this location dependency, including the following: Realtime Database instances, non-default Firestore instances, non-default Cloud Storage buckets, default Cloud Storage buckets with the name format of `*.firebasestorage.app` , non-scheduled functions, and 2nd gen scheduled functions.
+> **Note:** None of the other resources in your project share this location dependency, including the following: Realtime Database instances, non-default Firestore instances, non-default Cloud Storage buckets, default Cloud Storage buckets with the name format of `*.firebasestorage.app` , non-scheduled functions, and 2nd gen scheduled functions.
 
 This "location for default Google Cloud resources" is an immutable setting. Also, when you set the location for one of the associated resources, you indirectly set the location for all of them due to their common association with App Engine.
 
 However, with many changes to the Firebase and Google Cloud ecosystem over the years, the associations of resources to App Engine have been changing. Most notably, starting October 30, 2024 , all newly provisioned default Cloud Storage for Firebase buckets have the name format `*.firebasestorage.app` , and they are *not* associated with App Engine.
 
-**Key Point:** Starting October 30, 2024 , provisioning the default Cloud Storage for Firebase bucket does not set the "location for default Google Cloud resources" (like the location for the project's default Firestore instance). Also, provisioning the default Firestore instance no longer sets the location for a new default Cloud Storage for Firebase bucket (with name format of `*.firebasestorage.app` ).
+> **Key Point:** Starting October 30, 2024 , provisioning the default Cloud Storage for Firebase bucket does not set the "location for default Google Cloud resources" (like the location for the project's default Firestore instance). Also, provisioning the default Firestore instance no longer sets the location for a new default Cloud Storage for Firebase bucket (with name format of `*.firebasestorage.app` ).
 
 Here are the details of what changed in the possible **location dependencies** :
 

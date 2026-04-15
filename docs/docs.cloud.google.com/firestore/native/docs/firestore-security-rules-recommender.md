@@ -70,8 +70,6 @@ You can view your recommendations by doing following:
 
 Go to the Google Cloud console, or use the following button:
 
-[Go to Google Cloud console](https://console.cloud.google.com/)
-
 Recommendations can be viewed on **Recommendation Hub** or **Database Center** page.
 
 1.  Search for **Recommendations** which will lead to the Recommendation Hub page. You can select specific category of recommendation and view them.

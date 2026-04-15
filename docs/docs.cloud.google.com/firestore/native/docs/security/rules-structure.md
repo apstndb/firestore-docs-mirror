@@ -4,7 +4,7 @@ Firestore Security Rules allow you to control access to documents and collection
 
 This guide describes the basic syntax and structure of security rules. Combine this syntax with [security rules conditions](https://docs.cloud.google.com/firestore/native/docs/security/rules-conditions) to create complete rulesets.
 
-**Note:** The server client libraries bypass all Firestore Security Rules and instead authenticate through [Google Application Default Credentials](https://cloud.google.com/docs/authentication/production) . If you're using the server client libraries or the REST or RPC APIs, make sure to set up [Identity and Access Management (IAM) for Firestore](https://cloud.google.com/firestore/docs/security/iam) .
+> **Note:** The server client libraries bypass all Firestore Security Rules and instead authenticate through [Google Application Default Credentials](https://cloud.google.com/docs/authentication/production) . If you're using the server client libraries or the REST or RPC APIs, make sure to set up [Identity and Access Management (IAM) for Firestore](https://cloud.google.com/firestore/docs/security/iam) .
 
 ## Service and database declaration
 
@@ -43,7 +43,7 @@ All match statements should point to documents, not collections. A match stateme
 
 In the example above, the match statement uses the `{city}` wildcard syntax. This means the rule applies to any document in the `cities` collection, such as `/cities/SF` or `/cities/NYC` . When the `allow` expressions in the match statement are evaluated, the `city` variable will resolve to the city document name, such as `SF` or `NYC` .
 
-**Note:** You can only access documents that your security rules specifically allow you to access. For example, the rules shown above allow access only to documents in the `cities` collection; as a result, they also deny access to documents in all other collections.
+> **Note:** You can only access documents that your security rules specifically allow you to access. For example, the rules shown above allow access only to documents in the `cities` collection; as a result, they also deny access to documents in all other collections.
 
 ## Granular operations
 

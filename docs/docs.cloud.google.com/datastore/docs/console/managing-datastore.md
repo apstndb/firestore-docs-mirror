@@ -3,8 +3,6 @@ This page describes how to view and manage the entities, indexes, and statistics
 ## Viewing Datastore statistics
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -19,8 +17,6 @@ For more information about the statistics on this page, see [Viewing Statistics 
 ## Viewing indexes
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -31,8 +27,6 @@ For each index, you should see its status, such as whether it is ready to serve 
 ## Viewing entities
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -44,7 +38,7 @@ You should see:
 
 You can also create, update, delete, and query entities on this page. Learn how in the [Quickstart](https://docs.cloud.google.com/datastore/docs/store-query-data) .
 
-**Note:** While individual entities are removed almost immediately, a namespace container may remain visible for several days to a week after the final entity within it is removed.
+> **Note:** While individual entities are removed almost immediately, a namespace container may remain visible for several days to a week after the final entity within it is removed.
 
 ## What's next?
 

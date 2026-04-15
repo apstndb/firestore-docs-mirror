@@ -16,7 +16,7 @@ A heatmap with a single bright diagonal line can indicate an index that is on a 
 
 Some examples of common hotspots on index are as follows:
 
-**Note:** In the following heatmap example, for Datastore mode, the x-axis of the heatmap represents time, and the y-axis represents index keys.
+> **Note:** In the following heatmap example, for Datastore mode, the x-axis of the heatmap represents time, and the y-axis represents index keys.
 
 ### Hotspotting due to increasing timestamp
 
@@ -58,8 +58,6 @@ From the earlier example, identify the properties from the **PROPERTIES** value 
 To find the index, complete the following steps:
 
 1.  Go to the **Datastore mode Indexes** page in Google Cloud console.
-    
-    [Go to Datastore mode Indexes](https://console.cloud.google.com/datastore/indexes)
     
     You can identify the type of index by analyzing the **PROPERTIES** field. See [examples of index keys](https://docs.cloud.google.com/datastore/docs/keyvis-patterns-index#examples_of_index_key_entries_on_the_heatmap) for more information.
 

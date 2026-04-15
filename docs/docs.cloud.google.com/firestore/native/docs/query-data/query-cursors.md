@@ -1,6 +1,8 @@
 # Paginate data with query cursors
 
-**Tip:** This page applies to Core operations. To paginate results with Pipeline operations for Enterprise edition, see [paginate results with Pipeline operations](https://docs.cloud.google.com/firestore/native/docs/pipeline/overview#pagination) .
+[Video](https://www.youtube.com/watch?v=poqTHxtDXwU)
+
+> **Tip:** This page applies to Core operations. To paginate results with Pipeline operations for Enterprise edition, see [paginate results with Pipeline operations](https://docs.cloud.google.com/firestore/native/docs/pipeline/overview#pagination) .
 
 With query cursors in Firestore, you can split data returned by a query into batches according to the parameters you define in your query.
 
@@ -25,7 +27,7 @@ For example, if you use `startAt(A)` in a query, it returns the entire alphabet.
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     citiesRef.orderBy("population").startAt(1000000);test.firestore.js
 
@@ -132,7 +134,7 @@ Similarly, use the `endAt()` or `endBefore()` methods to define an end point for
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     citiesRef.orderBy("population").endAt(1000000);test.firestore.js
 
@@ -248,7 +250,7 @@ For example, take a snapshot of a "San Francisco" document in your data set of c
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     var citiesRef = db.collection("cities");
     
@@ -461,7 +463,7 @@ Paginate queries by combining query cursors with the `limit()` method. For examp
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     var first = db.collection("cities")
             .orderBy("population")
@@ -861,7 +863,7 @@ To start at a specific Springfield, you could add the state as a secondary condi
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     // Will return all Springfields
     db.collection("cities")

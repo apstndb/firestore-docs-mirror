@@ -1,6 +1,6 @@
 Google Cloud offers Identity and Access Management (IAM), which lets you give more granular access to specific Google Cloud resources and prevents unwanted access to other resources. This page describes the Firestore in Datastore mode IAM roles. For a detailed description of IAM, read the [IAM documentation](https://docs.cloud.google.com/iam/docs) .
 
-**Note:** App Engine applications [require IAM permissions to access Datastore mode databases](https://docs.cloud.google.com/datastore/docs/activate#datastore-permissions-for-app-engine) .
+> **Note:** App Engine applications [require IAM permissions to access Datastore mode databases](https://docs.cloud.google.com/datastore/docs/activate#datastore-permissions-for-app-engine) .
 
 IAM lets you adopt the [security principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) , so you grant only the necessary access to your resources.
 
@@ -10,9 +10,9 @@ IAM lets you control **who (users)** has **what (roles)** permission to **which*
 
 This section summarizes the permissions and roles Firestore in Datastore mode supports.
 
-**Note:** Some Datastore mode permissions differ from the standard IAM model permissions. For example, in the IAM model, the `datastore.databases.get` permission lets you return a database object while, in Datastore mode, `datastore.databases.get` lets you begin or roll back a transaction. To retrieve a database object's information, use the `datastore.databases.getMetadata` permission.
-
-The `datastore.schemas.*` permissions were previously named `datastore.indexes.*` . You can still use `datastore.indexes` as an alias for `datastore.schemas` .
+> **Note:** Some Datastore mode permissions differ from the standard IAM model permissions. For example, in the IAM model, the `datastore.databases.get` permission lets you return a database object while, in Datastore mode, `datastore.databases.get` lets you begin or roll back a transaction. To retrieve a database object's information, use the `datastore.databases.getMetadata` permission.
+> 
+> The `datastore.schemas.*` permissions were previously named `datastore.indexes.*` . You can still use `datastore.indexes` as an alias for `datastore.schemas` .
 
 ### Permissions
 
@@ -535,7 +535,7 @@ For <a href="https://docs.cloud.google.com/datastore/docs/console/datastore-admi
 </tbody>
 </table>
 
-**Warning:** The App Engine [Owner, Editor, and Viewer](https://docs.cloud.google.com/appengine/docs/standard/java/roles#basic_roles) basic roles and the [App Engine Admin](https://docs.cloud.google.com/appengine/docs/java/access-control#predefined_app_engine_roles) predefined role have access to some of the functionality on the [Datastore Admin page](https://docs.cloud.google.com/datastore/docs/console/datastore-admin-console) .
+> **Warning:** The App Engine [Owner, Editor, and Viewer](https://docs.cloud.google.com/appengine/docs/standard/java/roles#basic_roles) basic roles and the [App Engine Admin](https://docs.cloud.google.com/appengine/docs/java/access-control#predefined_app_engine_roles) predefined role have access to some of the functionality on the [Datastore Admin page](https://docs.cloud.google.com/datastore/docs/console/datastore-admin-console) .
 
 ### Custom roles
 

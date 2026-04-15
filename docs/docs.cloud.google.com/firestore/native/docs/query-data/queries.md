@@ -2,7 +2,7 @@
 
 Firestore provides powerful query functionality for specifying which documents you want to retrieve from a collection or collection group. These queries can also be used with either `get()` or `addSnapshotListener()` , as described in [Get Data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data) and [Get Realtime Updates](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) .
 
-**Note:** While the code samples cover multiple languages, the text explaining the samples refers to the Web method names.
+> **Note:** While the code samples cover multiple languages, the text explaining the samples refers to the Web method names.
 
 ## Example data
 
@@ -37,7 +37,7 @@ To get started, write some data about cities so we can look at different ways to
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     var citiesRef = db.collection("cities");
     
@@ -806,7 +806,7 @@ The following query returns all cities with state `CA` :
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     // Create a reference to the cities collection
     var citiesRef = db.collection("cities");
@@ -960,7 +960,7 @@ The following query returns all the capital cities:
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     var citiesRef = db.collection("cities");
     
@@ -1098,7 +1098,7 @@ After creating a query object, use the `get()` function to retrieve the results:
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     db.collection("cities").where("capital", "==", true)
         .get()
@@ -1359,7 +1359,7 @@ The `where()` method takes three parameters: a field to filter on, a comparison 
   - [`in`](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#in_and_array-contains-any)
   - [`not-in`](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#in_and_array-contains-any)
 
-**Note:** For Apple, Android, and Java, the comparison operator is explicitly named in the method.
+> **Note:** For Apple, Android, and Java, the comparison operator is explicitly named in the method.
 
 For example:
 
@@ -1371,7 +1371,7 @@ For example:
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     const stateQuery = citiesRef.where("state", "==", "CA");
     const populationQuery = citiesRef.where("population", "<", 100000);
@@ -1493,7 +1493,7 @@ Use the not equal ( `!=` ) operator to return documents where the given field ex
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     citiesRef.where("capital", "!=", false);test.firestore.js
 
@@ -1570,7 +1570,7 @@ This query does not return `city` documents where the `capital` field does not e
 
 A field exists when it's set to any value, including an empty string ( `""` ), `null` , and `NaN` (not a number). Note that `null` field values do not match `!=` clauses, because `x != null` evaluates to `undefined` .
 
-**Warning:** A `!=` query clause might match many documents in a collection. To control the number of results returned, use a [limit clause](https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data) or [paginate your query](https://docs.cloud.google.com/firestore/native/docs/query-data/query-cursors#paginate_a_query) .
+> **Warning:** A `!=` query clause might match many documents in a collection. To control the number of results returned, use a [limit clause](https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data) or [paginate your query](https://docs.cloud.google.com/firestore/native/docs/query-data/query-cursors#paginate_a_query) .
 
 #### Standard edition limitations
 
@@ -1592,7 +1592,7 @@ You can use the `array-contains` operator to filter based on array values. For e
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     citiesRef.where("regions", "array-contains", "west_coast");test.firestore.js
 
@@ -1703,7 +1703,7 @@ Use the `in` operator to combine [up to 30](https://docs.cloud.google.com/firest
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     citiesRef.where('country', 'in', ['USA', 'Japan']);test.firestore.js
 
@@ -1816,7 +1816,7 @@ Use the `not-in` operator to combine up to 10 not equal ( `!=` ) clauses on the 
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     citiesRef.where('country', 'not-in', ['USA', 'Japan']);test.firestore.js
 
@@ -1898,7 +1898,7 @@ This query returns every `city` document where the `country` field exists and is
 
 **`not-in` queries exclude documents where the given field does not exist.** A field exists when it's set to any value, including an empty string ( `""` ), `null` , and `NaN` (not a number). Note that `x != null` evaluates to `undefined` . A `not-in` query with `null` as one of the comparison values does not match any documents.
 
-**Warning:** A `not-in` query clause might match many documents in a collection. To control the number of results returned, use a [limit clause](https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data) or [paginate your query](https://docs.cloud.google.com/firestore/native/docs/query-data/query-cursors#paginate_a_query) .
+> **Warning:** A `not-in` query clause might match many documents in a collection. To control the number of results returned, use a [limit clause](https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data) or [paginate your query](https://docs.cloud.google.com/firestore/native/docs/query-data/query-cursors#paginate_a_query) .
 
 #### `array-contains-any`
 
@@ -1913,7 +1913,7 @@ Use the `array-contains-any` operator to combine [up to 30](https://docs.cloud.g
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     citiesRef.where('regions', 'array-contains-any',
         [['west_coast'], ['east_coast']]);test.firestore.js
@@ -2041,7 +2041,7 @@ You can use an array value as a comparison value for `in` , but unlike `array-co
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     citiesRef.where('regions', 'in',
         [['west_coast'], ['east_coast']]);test.firestore.js
@@ -2167,7 +2167,7 @@ You can combine constraints with a logical `AND` by chaining multiple equality o
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     const q1 = citiesRef.where("state", "==", "CO").where("name", "==", "Denver");
     const q2 = citiesRef.where("state", "==", "CA").where("population", "<", 1000000);test.firestore.js
@@ -2677,7 +2677,7 @@ For example, you can create a `landmarks` collection group by adding a landmarks
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     var citiesRef = db.collection('cities');
     
@@ -3903,7 +3903,7 @@ The `landmarks` collection group consists of all collections with the ID `landma
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     var museums = db.collectionGroup('landmarks').where('type', '==', 'museum');
     museums.get().then((querySnapshot) => {
@@ -4127,7 +4127,7 @@ Firestore converts queries to disjunctive normal form by applying two rules:
 
 When applying these rules to `in` and `array-contains-any` queries, remember that these operators are shorthands for `OR` . For example, `a in [1,2]` is shorthand for `a = 1 OR a = 2` .
 
-**Warning:** Due to the multiplicative nature of conversions to disjunctive normal form, you are more likely to reach the limit when performing an `AND` of multiple `OR` groups.
+> **Warning:** Due to the multiplicative nature of conversions to disjunctive normal form, you are more likely to reach the limit when performing an `AND` of multiple `OR` groups.
 
 The following examples show the number of disjunctions for different queries:
 

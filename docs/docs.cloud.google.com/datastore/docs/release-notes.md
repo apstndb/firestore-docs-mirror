@@ -2852,7 +2852,7 @@ Feature
 
 Feature
 
-**Note:** This feature has been disabled and moved to a future release.
+> **Note:** This feature has been disabled and moved to a future release.
 
 In the Google Cloud console, updated the pages for editing an entity. See [Edit an entity in the console](https://docs.cloud.google.com/datastore/docs/editing_entity_console) .
 
@@ -2902,7 +2902,7 @@ Not-equal (\!=), IN, and NOT\_IN query filters now available in all client libra
   - Go
   - Ruby
 
-**Note:** This feature is available for Firestore in Datastore mode. It is not available in Legacy Cloud Datastore.
+> **Note:** This feature is available for Firestore in Datastore mode. It is not available in Legacy Cloud Datastore.
 
 ## June 17, 2022
 
@@ -2915,7 +2915,7 @@ Feature
   - PHP
   - Node.js
 
-**Note:** This feature is available for Firestore in Datastore mode. It is not available in Legacy Cloud Datastore.
+> **Note:** This feature is available for Firestore in Datastore mode. It is not available in Legacy Cloud Datastore.
 
 ## June 01, 2022
 

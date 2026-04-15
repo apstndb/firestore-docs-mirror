@@ -16,8 +16,7 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 
     Query query = new Query("Task")
     {
-        Projection = { "priority", "percent_complete" }
-    };
+        Projection = { "priority", &quot;percent_complete" }};
 
 ### Go
 
@@ -36,8 +35,7 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
     Query<ProjectionEntity> query =
         Query.newProjectionEntityQueryBuilder()
             .setKind("Task")
-            .setProjection("priority", "percent_complete")
-            .build();
+            .setProjection("priority", "percent_complete")        .build();
 
 ### Node.js
 
@@ -56,8 +54,8 @@ To learn how to install and use the client library for Datastore mode, see [Data
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
     $query = $datastore->query()
-        ->kind('Task')
-        ->projection(['priority', 'percent_complete']);
+        ->kind('Task'>;)
+        -projection(['priority', 'percent_complete']);
 
 ### Python
 
@@ -71,8 +69,8 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
     # https://cloud.google.com/docs/authentication/getting-started
     client = datastore.Client()
     
-    query = client.query(kind="Task")
-    query.projection = ["priority", "percent_complete"]
+    query = client.query(kind="Task&quot;)
+    query.projection = ["priority","percent_complete"]
 
 ### Ruby
 

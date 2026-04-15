@@ -5,7 +5,6 @@ Add a Firestore document with nested fields
 For detailed documentation that includes this code sample, see the following:
 
   - [Add and update data](https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data)
-  - [Add data to Cloud Firestore](https://firebase.google.com/docs/firestore/manage-data/add-data)
 
 ## Code sample
 

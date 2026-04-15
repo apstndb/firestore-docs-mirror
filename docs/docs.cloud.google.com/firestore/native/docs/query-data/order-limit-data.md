@@ -1,16 +1,16 @@
 # Order and limit data
 
-**Tip:** This page applies to the Core operations interface. To order and limit data in the Pipeline operations interface for Enterprise edition, see [Pipeline operation `limit` stage](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/limit) .
+> **Tip:** This page applies to the Core operations interface. To order and limit data in the Pipeline operations interface for Enterprise edition, see [Pipeline operation `limit` stage](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/limit) .
 
 Firestore provides powerful query functionality for specifying which documents you want to retrieve from a collection. These queries can also be used with either `get()` or `addSnapshotListener()` , as described in [Get Data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data) .
 
-**Note:** While the code samples cover multiple languages, the text explaining the samples refers to the Web method names.
+> **Note:** While the code samples cover multiple languages, the text explaining the samples refers to the Web method names.
 
 ## Order and limit data
 
 By default, a query retrieves all documents that satisfy the query in ascending order by document ID. You can specify the sort order for your data using `orderBy()` , and you can limit the number of documents retrieved using `limit()` . If you specify a `limit()` , the value must be greater than or equal to zero.
 
-**Note:** An `orderBy()` clause also [filters for existence of the given field](https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data#orderby_and_existence) . The result set will not include documents that do not contain the given field.
+> **Note:** An `orderBy()` clause also [filters for existence of the given field](https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data#orderby_and_existence) . The result set will not include documents that do not contain the given field.
 
 For example, you could query for the first 3 cities alphabetically with:
 
@@ -22,7 +22,7 @@ For example, you could query for the first 3 cities alphabetically with:
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     citiesRef.orderBy("name").limit(3);test.firestore.js
 
@@ -114,7 +114,7 @@ You could also sort in descending order to get the *last* 3 cities:
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     citiesRef.orderBy("name", "desc").limit(3);test.firestore.js
 
@@ -204,7 +204,7 @@ You can also order by multiple fields. For example, if you wanted to order by st
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     citiesRef.orderBy("state").orderBy("population", "desc");test.firestore.js
 
@@ -298,7 +298,7 @@ You can combine `where()` filters with `orderBy()` and `limit()` . In the follow
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     citiesRef.where("population", ">", 100000).orderBy("population").limit(2);test.firestore.js
 

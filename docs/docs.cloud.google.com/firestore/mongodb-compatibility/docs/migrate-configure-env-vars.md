@@ -82,7 +82,7 @@ Replace the following:
 
   - Datastream data placement parameters:
     
-    **Note:** Wildcards are not supported in the Cloud Storage paths.
+    > **Note:** Wildcards are not supported in the Cloud Storage paths.
     
       - GCS\_BUCKET\_NAME : the name of the Cloud Storage bucket that you've [created earlier](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-resources#create-bucket) . Example: `mongo-migration-bucket` .
         
@@ -191,7 +191,7 @@ Replace the following:
 
   - BASTION\_SSH\_PRIVATE\_KEY : The full payload of the SSH private key. For example, for an RSA key, this payload would include the `-----BEGIN RSA PRIVATE KEY-----` header and the `-----END RSA PRIVATE KEY-----` footer. Example: `BASTION_SSH_PRIVATE_KEY=$(cat ~/.ssh/private_key)`
     
-    **Note:** Datastream also accepts an SSH password. This alternative is described in the [Connection Profile](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-create-connection-profiles#connection-profile-source) section.
+    > **Note:** Datastream also accepts an SSH password. This alternative is described in the [Connection Profile](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-create-connection-profiles#connection-profile-source) section.
 
 ### Amazon DocumentDB
 

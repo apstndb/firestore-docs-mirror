@@ -13,21 +13,19 @@ Before you can use the managed export and import service, you must complete the 
 
 1.  [Enable billing for both your source project and destination project.](https://cloud.google.com/billing/docs/how-to/modify-project#enable_billing_for_a_project) Only Google Cloud projects with billing enabled can use the export and import functionality.
     
-    **Note:** Firebase projects must be on the [Blaze plan](https://firebase.google.com/pricing/?authuser=0) to use the managed export and import service. Enabling billing for the Google Cloud automatically upgrades your Firebase project to the Blaze plan.
+    > **Note:** Firebase projects must be on the [Blaze plan](https://firebase.google.com/pricing/?authuser=0) to use the managed export and import service. Enabling billing for the Google Cloud automatically upgrades your Firebase project to the Blaze plan.
 
 2.  Make sure your account has the necessary IAM permissions in your source project and destination project. **If you are a project owner for both projects, your account has the required permissions.** Otherwise, the following IAM roles grant the necessary permissions for Firestore export and import operations:
     
     `Owner` , `Cloud Datastore Owner` , or `Cloud Datastore Import Export Admin`
     
-    **Note:** These roles grant permissions for both Datastore and Firestore.
+    > **Note:** These roles grant permissions for both Datastore and Firestore.
     
     A project owner can grant one of these roles by following the steps in [Grant access](https://cloud.google.com/iam/docs/granting-changing-revoking-access#grant_access) .
 
 3.  Set up the `gcloud` command-line tool and connect to your project in one of the following ways:
     
       - Access `gcloud` from the Google Cloud console using [Cloud Shell](https://cloud.google.com/shell/) .
-        
-        [Start Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
         
         Make sure `gcloud` is configured for the correct project:
         
@@ -48,8 +46,6 @@ Export your data by creating a Cloud Storage bucket for your Firestore export fi
 **If your Cloud Storage bucket is not in your source project** , you must give the source project's default service account access to the bucket. Each Google Cloud project has an automatically created default service account with the name `  PROJECT_ID @appspot.gserviceaccount.com ` . Firestore export operations use this default service account to authorize Cloud Storage bucket operations. To give the default service account access to your source bucket, grant it the [`Storage Admin`](https://cloud.google.com/storage/docs/access-control/iam-roles) role.
 
 You can grant this role with the [`gsutil` tool](https://cloud.google.com/storage/docs/gsutil) available in Cloud Shell:
-
-[Start Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
 
     gsutil iam ch serviceAccount:[service-PROJECT_NUMBER]@gcp-sa-firestore.iam.gserviceaccount.com :roles/storage.admin\
     gs://[BUCKET_NAME]@
@@ -126,8 +122,6 @@ Move your data files to another Cloud Storage bucket by following the steps in [
 If your source bucket is not in your destination project, then you must give the destination project's default service account access to your source bucket. The default service account is named `  [DESTINATION_PROJECT_ID] @appspot.gserviceaccount.com ` . To give the default service account access to your source bucket, grant it the proper permissions to access the bucket.
 
 You can grant the necessary roles with the [`gsutil` tool](https://cloud.google.com/storage/docs/gsutil) available in Cloud Shell:
-
-[Start Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
 
     gsutil iam ch serviceAccount:[DESTINATION_PROJECT_ID]@appspot.gserviceaccount.com:legacyBucketReader,legacyObjectReader \
     gs://[SOURCE_BUCKET]

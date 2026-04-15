@@ -1,12 +1,10 @@
-## Datastore mode client libraries
-
   - [](https://docs.cloud.google.com/datastore/docs/reference/libraries)
     
     ### Datastore mode Client Libraries
     
     Get started with Firestore in Datastore mode in your language of choice.
 
-## Datastore Data API
+<!-- end list -->
 
   - [](https://docs.cloud.google.com/datastore/reference/data/rest)
     
@@ -20,7 +18,7 @@
     
     The RPC Data API reference for Datastore mode.
 
-## Datastore Admin API
+<!-- end list -->
 
   - [](https://docs.cloud.google.com/datastore/reference/admin/rest)
     
@@ -34,7 +32,7 @@
     
     The RPC Admin API reference for Datastore mode.
 
-## GQL
+<!-- end list -->
 
   - [](https://docs.cloud.google.com/datastore/docs/reference/gql_reference)
     

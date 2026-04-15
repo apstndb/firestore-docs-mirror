@@ -4,11 +4,11 @@ The [Google Cloud CLI](https://docs.cloud.google.com/sdk) provides a local, in-m
 
 Do not use the emulator for production deployments. Because the emulator stores data only in memory, it will not persist data across runs.
 
-**Tip:** The instructions on this page show you how to run the Firestore emulator using the gcloud CLI. The same Firestore emulator is also available through the [Firebase Local Emulator Suite](https://firebase.google.com/docs/emulator-suite#what-is-emulator-suite) . The emulator suite bundles several emulators and helps you test these services together. To access the Firestore emulator through the emulator suite, see [Introduction to Firebase Local Emulator Suite](https://firebase.google.com/docs/emulator-suite) .
+> **Tip:** The instructions on this page show you how to run the Firestore emulator using the gcloud CLI. The same Firestore emulator is also available through the [Firebase Local Emulator Suite](https://firebase.google.com/docs/emulator-suite#what-is-emulator-suite) . The emulator suite bundles several emulators and helps you test these services together. To access the Firestore emulator through the emulator suite, see [Introduction to Firebase Local Emulator Suite](https://firebase.google.com/docs/emulator-suite) .
 
 ## Install the emulator
 
-**Note:** The Firestore emulator will be updated to require Java 21 in the upcoming Google Cloud CLI release 528.0.0. Upgrade to Java 21 or later to continue using the latest version of the emulator.
+> **Note:** The Firestore emulator will be updated to require Java 21 in the upcoming Google Cloud CLI release 528.0.0. Upgrade to Java 21 or later to continue using the latest version of the emulator.
 
 To install the Firestore emulator, install and update the gcloud CLI:
 
@@ -33,6 +33,14 @@ To install the Firestore emulator, install and update the gcloud CLI:
 2.  Type `Control + C` to stop the emulator. The emulator may also be stopped with a POST to `/shutdown` . For example:
     
         curl -d '' HOST:PORT/shutdown
+
+## Starting emulator in specific edition
+
+To start up the emulator in Enterprise edition, use the optional `--edition` flag. The valid values are `standard` and `enterprise` . By default, the emulator starts up in Standard Edition if the flag is not provided.
+
+``` 
+    gcloud emulators firestore start --edition=enterprise
+```
 
 ## Connect to the emulator
 
@@ -78,7 +86,7 @@ The following examples demonstrate how to connect the Android, Apple platforms, 
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     // Firebase previously initialized using firebase.initializeApp().
     var db = firebase.firestore();

@@ -1,6 +1,6 @@
-**Note:** This page describes system behavior for Datastore databases that have not yet upgraded to Firestore in Datastore mode.
-
-[Firestore](https://docs.cloud.google.com/firestore) is the new version of Datastore and [removes several Datastore limitations](https://docs.cloud.google.com/datastore/docs/firestore-or-datastore#in_datastore_mode) .
+> **Note:** This page describes system behavior for Datastore databases that have not yet upgraded to Firestore in Datastore mode.
+> 
+> [Firestore](https://docs.cloud.google.com/firestore) is the new version of Datastore and [removes several Datastore limitations](https://docs.cloud.google.com/datastore/docs/firestore-or-datastore#in_datastore_mode) .
 
 Datastore provides high availability, scalability and durability by distributing data over many machines and using masterless, synchronous replication over a wide geographic area. However, a tradeoff in this design is the write throughput for any single [entity group](https://docs.cloud.google.com/datastore/docs/concepts/entities#entity_groups) is limited to about one commit per second. There are also limitations on queries or transactions that span multiple entity groups. This page describes these limitations in more detail and discusses best practices for structuring your data to support strong consistency while still meeting your application's write throughput requirements.
 
@@ -577,7 +577,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
 This approach achieves strong consistency by writing to a single entity group per task list, but it also limits changes to the task list to no more than 1 write per second (the supported limit for entity groups). If your application is likely to encounter heavier write usage, you may need to consider using other means. For example, if your application is a guestbook that lets users post messages to a public message board, you might put recent posts in memcache with an expiration and display a mix of recent posts from memcache and Datastore, or you might cache them in a cookie, put some state in the URL, or something else entirely. The goal is to find a caching solution that provides the data for the current user during the period of time in which the user is posting to your application. Remember, if you do a `lookup` , an ancestor query (assuming the read policy is not set to eventually consistent), or any operation within a transaction, you will always see the most recently written data.
 
-**Note:** If your application receives an exception when attempting to commit a transaction, it does not necessarily mean that the transaction has failed. It is possible to receive exceptions or errors even when a transaction has been committed. Whenever possible, structure your Datastore transactions so that the end result will be unaffected if your code retry logic applies the same transaction more than once.
+> **Note:** If your application receives an exception when attempting to commit a transaction, it does not necessarily mean that the transaction has failed. It is possible to receive exceptions or errors even when a transaction has been committed. Whenever possible, structure your Datastore transactions so that the end result will be unaffected if your code retry logic applies the same transaction more than once.
 
 For additional examples of how to use transactions, go [here](https://docs.cloud.google.com/datastore/docs/concepts/transactions#using_transactions) .
 
@@ -589,6 +589,6 @@ The organization of data into entity groups can limit what transactions can be p
   - If you want to use queries within a transaction, your data must be organized into entity groups in such a way that you can specify ancestor filters that will match the right data.
   - There is a write throughput limit of about one transaction per second for a single entity group. This limitation exists because Datastore performs masterless, synchronous replication of each entity group over a wide geographic area to provide high reliability and fault tolerance.
 
-**Note:** Avoid storing sensitive information in the entity group key. Entity group keys may be retained after the entity group is deleted in order to provide fast and reliable service across Datastore.
+> **Note:** Avoid storing sensitive information in the entity group key. Entity group keys may be retained after the entity group is deleted in order to provide fast and reliable service across Datastore.
 
 For more information on how entities and indexes are updated, see the [Transaction Isolation](https://docs.cloud.google.com/datastore/docs/articles/transaction_isolation) article.

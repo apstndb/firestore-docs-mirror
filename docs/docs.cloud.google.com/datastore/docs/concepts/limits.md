@@ -1,6 +1,6 @@
 This page describes production limits for Firestore in Datastore mode.
 
-**Note:** These values are subject to change.
+> **Note:** These values are subject to change.
 
 ## Firestore in Datastore mode limits
 

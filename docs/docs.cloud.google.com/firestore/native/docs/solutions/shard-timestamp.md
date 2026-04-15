@@ -329,16 +329,12 @@ To remove the 500 writes per second constraint, delete the existing single-field
 ### Firebase Console
 
 1.  Open the ***Firestore Composite Indexes*** page in the Firebase console.
-    
-    [Go to Composite Indexes](https://console.firebase.google.com/project/_/firestore/indexes)
 
 2.  For each index that contains the `timestamp` field, click the more\_vert button and click ***Delete*** .
 
 ### GCP Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -413,8 +409,6 @@ To remove the 500 writes per second constraint, delete the existing single-field
 ### Firebase Console
 
 1.  Open the ***Firestore Single Field Indexes*** page in the Firebase console.
-    
-    [Go to Single Field Indexes](https://console.firebase.google.com/project/_/firestore/indexes/single-field/manage)
 
 2.  Click ***Add Exemption*** .
 
@@ -431,8 +425,6 @@ To remove the 500 writes per second constraint, delete the existing single-field
 ### GCP Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 

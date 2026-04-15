@@ -33,8 +33,6 @@ Consider the following example where we create a latency alert policy. The alert
 ### Console
 
 1.  In the Google Cloud console, go to the **Monitoring** page then select *notifications* **Alerting** .
-    
-    [Go to Monitoring](https://console.cloud.google.com/monitoring/alerting)
 
 2.  Select **Create policy** .
 

@@ -1,8 +1,8 @@
 # Enterprise edition index overview
 
-**Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
-
-This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+> **Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
+> 
+> This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
 Indexing behavior depends on the edition of the database. This page describes indexing for Firestore Enterprise edition. For Firestore Standard edition, see [Firestore Standard edition index overview](https://docs.cloud.google.com/firestore/docs/pipeline/concepts/standard-index-overview) .
 
@@ -64,4 +64,4 @@ You might encounter index building errors when managing your indexes. An indexin
   - You have reached an index limit. For example, the operation may have reached the maximum number of index entries per document. If index creation fails, you see an error message. If you have not reached an index limit, retry the index operation.
   - You set the unique index option and the data of the indexed fields would create duplicate index entries. To proceed, remove duplicate combinations of values from the data.
 
-**Warning:** An ongoing index building error might impact creation of new indexes. Resolving the errors before creating indexes under the same collection.
+> **Warning:** An ongoing index building error might impact creation of new indexes. Resolving the errors before creating indexes under the same collection.

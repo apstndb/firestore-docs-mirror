@@ -2,7 +2,7 @@
 
 This page describes the last stage of the [migration process](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-data) where you monitor the migration and determine when to switch traffic to minimize the downtime of your application.
 
-**Caution:** There are several critical steps in the migration process that must be orchestrated correctly **to ensure no data loss and minimize application downtime** .
+> **Caution:** There are several critical steps in the migration process that must be orchestrated correctly **to ensure no data loss and minimize application downtime** .
 
 These steps are:
 
@@ -16,8 +16,6 @@ These steps are:
 The instructions in this section require access to Dataflow within the Google Cloud console.
 
 In the Google Cloud console, go to the **Dataflow** page:
-
-[Go to Dataflow](https://console.cloud.google.com/dataflow/jobs)
 
 ### Source database is receiving all read and write traffic
 
@@ -35,7 +33,7 @@ After the data transfer reaches this steady state, advance to the next step.
 
 ### Shut down write traffic to the source database
 
-**Caution:** This part of the procedure will require a short period of write unavailability.
+> **Caution:** This part of the procedure will require a short period of write unavailability.
 
 After you've determined that the Datastream stream have completed the bulk backfill, and the Dataflow template is doing transactional write at a steady speed only for live changes of the source database, you can begin the cutover process. This process will require a small amount of downtime to allow for all remaining traffic to be replicated to the target Firestore with MongoDB compatibility database.
 
@@ -43,7 +41,7 @@ After you've determined that the Datastream stream have completed the bulk backf
 
 2.  Monitor the Datastream throughput and logs, and the Dataflow throughput, data lag, and logs to ensure the last of the write traffic was processed.
     
-    **Caution:** Wait at least 20 minutes to **ensure the last of the traffic is fetched from the source database** .
+    > **Caution:** Wait at least 20 minutes to **ensure the last of the traffic is fetched from the source database** .
 
 3.  [Inspect the Dead Letter Queue](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-troubleshooting#non-retryable-errors) . Determine if any documents couldn't be written to the destination database during the migration, and make a decision about whether to continue with the migration.
 
@@ -71,7 +69,7 @@ Pause the Datastream stream:
     --state=PAUSED \
     --update-mask=state
 
-**Note:** If required, you can [delete the stream](https://docs.cloud.google.com/datastream/docs/delete-a-stream) after the migration completes.
+> **Note:** If required, you can [delete the stream](https://docs.cloud.google.com/datastream/docs/delete-a-stream) after the migration completes.
 
 To shut down the Dataflow pipeline:
 

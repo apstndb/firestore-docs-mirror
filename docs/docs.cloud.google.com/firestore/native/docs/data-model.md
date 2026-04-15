@@ -1,5 +1,7 @@
 # Data model
 
+[Video](https://www.youtube.com/watch?v=v_hR4K4auoQ)
+
 Firestore is a NoSQL, document-oriented database. Unlike a SQL database, there are no tables or rows. Instead, you store data in *documents* , which are organized into *collections* .
 
 Each *document* contains a set of key-value pairs. Firestore is optimized for storing large collections of small documents.
@@ -20,7 +22,7 @@ A document representing a user `alovelace` might look like this:
     `last : "Lovelace"`  
     `born : 1815`  
 
-**Note:** Firestore supports a variety of data types for values: boolean, number, string, geo point, binary blob, and timestamp. You can also use arrays or nested objects, called maps, to structure data within a document.
+> **Note:** Firestore supports a variety of data types for values: boolean, number, string, geo point, binary blob, and timestamp. You can also use arrays or nested objects, called maps, to structure data within a document.
 
 Complex, nested objects in a document are called maps. For example, you could structure the user's name from the example above with a map, like this:
 
@@ -73,7 +75,7 @@ Every document in Firestore is uniquely identified by its location within the da
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     var alovelaceDocumentRef = db.collection('users').doc('alovelace');test.firestore.js
 
@@ -177,7 +179,7 @@ You can also create references to *collections* :
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     var usersCollectionRef = db.collection('users');test.firestore.js
 
@@ -266,7 +268,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
     collection_ref = firestore.col "users"data_model.rb
 
-**Note:** *Collection references* and *document references* are two distinct types of references and let you perform different operations. For example, you could use a collection reference for querying the documents in the collection, and you could use a document reference to read or write an individual document.
+> **Note:** *Collection references* and *document references* are two distinct types of references and let you perform different operations. For example, you could use a collection reference for querying the documents in the collection, and you could use a document reference to read or write an individual document.
 
 For convenience, you can also create references by specifying the path to a document or collection as a string, with path components separated by a forward slash ( `/` ). For example, to create a reference to the `alovelace` document:
 
@@ -278,7 +280,7 @@ For convenience, you can also create references by specifying the path to a docu
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     var alovelaceDocumentRef = db.doc('users/alovelace');test.firestore.js
 
@@ -391,7 +393,7 @@ Now that you have chat rooms, decide how to store your messages. You might not w
 
 The best way to store messages in this scenario is by using subcollections. A subcollection is a collection associated with a specific document.
 
-**Note:** You can query across subcollections with the same collection ID by using [Collection Group Queries](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#collection-group-query) .
+> **Note:** You can query across subcollections with the same collection ID by using [Collection Group Queries](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#collection-group-query) .
 
 You can create a subcollection called `messages` for every room document in your `rooms` collection:
 
@@ -426,7 +428,7 @@ In this example, you would create a reference to a message in the subcollection 
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     var messageRef = db.collection('rooms').doc('roomA')
                     .collection('messages').doc('message1');test.firestore.js
@@ -550,6 +552,6 @@ Subcollections allow you to structure data hierarchically, making data easier to
 
 Documents in subcollections can contain subcollections as well, allowing you to further nest data. You can nest data up to 100 levels deep.
 
-**Warning:** Deleting a document does not delete its subcollections\!  
-  
-When you delete a document that has subcollections, those subcollections are not deleted. For example, there may be a document located at `coll/doc/subcoll/subdoc` even though the document `coll/doc` no longer exists. If you want to delete documents in subcollections when deleting a parent document, you must do so manually, as shown in [Delete Collections](https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data#collections) .
+> **Warning:** Deleting a document does not delete its subcollections\!  
+>   
+> When you delete a document that has subcollections, those subcollections are not deleted. For example, there may be a document located at `coll/doc/subcoll/subdoc` even though the document `coll/doc` no longer exists. If you want to delete documents in subcollections when deleting a parent document, you must do so manually, as shown in [Delete Collections](https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data#collections) .

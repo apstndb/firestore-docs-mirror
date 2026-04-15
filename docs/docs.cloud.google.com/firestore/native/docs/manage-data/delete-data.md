@@ -182,7 +182,7 @@ Use the `delete()` method:
     city_ref = firestore.doc "#{collection_path}/DC"
     city_ref.deletedelete_data.rb
 
-**Warning:** Deleting a document does not delete its subcollections\!
+> **Warning:** Deleting a document does not delete its subcollections\!
 
 When you delete a document, Firestore does not automatically delete the documents within its subcollections. You can still access the subcollection documents by reference. For example, you can access the document at path `/mycoll/mydoc/mysubcoll/mysubdoc` even if you delete the parent document at `/mycoll/mydoc` .
 
@@ -623,7 +623,7 @@ For information about setting TTL, see [Manage data retention with TTL policies]
 
 Firestore supports several tools for bulk deletion. You should select a tool based on the number of documents you need to delete and the level of configurability you need.
 
-**Note:** Deleting a large number of documents [can impact latency](https://docs.cloud.google.com/firestore/native/docs/best-practices#avoid-skipping) . If latency is caused by too many recent deletes, the issue should automatically resolve after some time. If the issue does not resolve, [contact support](https://cloud.google.com/support-hub) .
+> **Note:** Deleting a large number of documents [can impact latency](https://docs.cloud.google.com/firestore/native/docs/best-practices#avoid-skipping) . If latency is caused by too many recent deletes, the issue should automatically resolve after some time. If the issue does not resolve, [contact support](https://cloud.google.com/support-hub) .
 
 For smaller jobs of thousands of documents, use the console or the Firebase CLI. For larger jobs, these tools might start to timeout and require you to run the tool multiple times.
 
@@ -635,7 +635,7 @@ You can [delete documents and collections from the Firestore page in the console
 
 You can also use the [Firebase CLI](https://firebase.google.com/docs/cli) to delete documents and collections. Use the following command to delete data:
 
-**Note:** Deleting data with the Firebase CLI incurs read and delete costs. For more information, see [Pricing](https://firebase.google.com/docs/firestore/pricing#pricing_by_location) .
+> **Note:** Deleting data with the Firebase CLI incurs read and delete costs. For more information, see [Pricing](https://firebase.google.com/docs/firestore/pricing#pricing_by_location) .
 
     firebase firestore:delete  --database=DATABASE_ID PATH
 

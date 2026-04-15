@@ -18,7 +18,7 @@ To import entities into the emulator, send a `POST` import request to the emulat
 
 ### Protocol
 
-``` lang-sh notranslate
+``` notranslate lang-sh
 curl -X POST localhost:8081/v1/projects/[PROJECT_ID]:import \
 -H 'Content-Type: application/json' \
 -d '{"input_url":"[ENTITY_EXPORT_FILES]"}'
@@ -42,7 +42,7 @@ Specify kinds or namespaces in an entity filter:
 
 ### Protocol
 
-``` lang-sh notranslate
+``` notranslate lang-sh
 curl -X POST localhost:8081/v1/projects/[PROJECT_ID]:import \
 -H 'Content-Type: application/json' \
 -d '{"input_url":"[ENTITY_EXPORT_FILES]",
@@ -73,7 +73,7 @@ To export entities in an emulator instance, send a `POST` export request to the 
 
 ### Protocol
 
-``` lang-sh notranslate
+``` notranslate lang-sh
 curl -X POST localhost:8081/v1/projects/[PROJECT_ID]:export \
 -H 'Content-Type: application/json' \
 -d '{"output_url_prefix":"EXPORT_DIRECTORY"}'
@@ -89,7 +89,7 @@ where:
     
     `{"output_url_prefix":"/home/user/myexports/2019-02-04/"}`
 
-**Note:** If you intend to use an entity filter when importing entities from your entity export files, you must [specify an entity filter in your export operation](https://docs.cloud.google.com/datastore/docs/tools/emulator-export-import#export-with-entity-filter) .
+> **Note:** If you intend to use an entity filter when importing entities from your entity export files, you must [specify an entity filter in your export operation](https://docs.cloud.google.com/datastore/docs/tools/emulator-export-import#export-with-entity-filter) .
 
 <span id="export-with-entity-filter"></span>
 
@@ -103,7 +103,7 @@ Specify kinds or namespaces in an entity filter:
 
 ### Protocol
 
-``` lang-sh notranslate
+``` notranslate lang-sh
 curl -X POST localhost:8081/v1/projects/[PROJECT_ID]:export \
 -H 'Content-Type: application/json' \
 -d '{"output_url_prefix":"EXPORT_DIRECTORY",

@@ -1,6 +1,6 @@
 Before you use Firestore in Datastore mode, you must choose a *location* where the project's data is stored. To reduce latency and increase availability, store your data close to the users and services that need it.
 
-**Warning:** Once you select a location for your project, you cannot change it. [Your project's location setting applies to more than one product.](https://docs.cloud.google.com/datastore/docs/locations#selecting_a_location)
+> **Warning:** Once you select a location for your project, you cannot change it. [Your project's location setting applies to more than one product.](https://docs.cloud.google.com/datastore/docs/locations#selecting_a_location)
 
 ## Types of locations
 
@@ -24,7 +24,7 @@ The following multi-region locations are available:
 | `nam5`            | United States (Central)          | `us-central1` (Iowa), `us-central2` (Oklahoma—private Google Cloud region) | `us-east1` (South Carolina)                          |
 | `nam7`            | United States (Central and East) | `us-central1` (Iowa), `us-east4` (Northern Virginia)                       | `us-central2` (Oklahoma—private Google Cloud region) |
 
-**Note:** For Legacy Cloud Datastore databases not yet upgraded to Firestore in Datastore mode, see [Multi-region locations (Legacy Cloud Datastore)](https://docs.cloud.google.com/datastore/docs/pre-migration/multi-r) .
+> **Note:** For Legacy Cloud Datastore databases not yet upgraded to Firestore in Datastore mode, see [Multi-region locations (Legacy Cloud Datastore)](https://docs.cloud.google.com/datastore/docs/pre-migration/multi-r) .
 
 ### Regional location
 
@@ -366,7 +366,7 @@ A regional location is a specific geographic place, such as South Carolina. The 
 
 The location setting for your Google Cloud project applies to both Firestore in Datastore mode and App Engine. When you select a location in either product, you set the location for your entire Google Cloud project.
 
-**Important:** After you select the location of your project, you cannot change it.
+> **Important:** After you select the location of your project, you cannot change it.
 
 If you have not yet selected a location for your project, you will be asked to select the location when you complete any of the following tasks:
 

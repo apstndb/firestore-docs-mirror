@@ -9,8 +9,6 @@ To view the different Firestore metrics and create charts, use one the following
   - The **Monitoring** page in the Firestore section of the Google Cloud console. This page includes a pre-defined monitoring dashboard. You can also create up to one custom dashboard. To access the **Monitoring** page for a database, follow these steps:
     
     1.  In the Google Cloud console, open the Firestore **Databases** page.
-        
-        [Go to Databases](https://console.cloud.google.com/firestore/databases)
     
     2.  Select a database from the list.
     
@@ -47,8 +45,6 @@ Consider the following example where we create a latency alert policy. The alert
 ### Console
 
 1.  In the Google Cloud console, go to the **Monitoring** page then select *notifications* **Alerting** .
-    
-    [Go to Monitoring](https://console.cloud.google.com/monitoring/alerting)
 
 2.  Select **Create policy** .
 

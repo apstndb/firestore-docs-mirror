@@ -9,7 +9,7 @@ You can use [Eventarc](https://docs.cloud.google.com/eventarc/docs/overview) and
 
 Eventarc offers a standardized solution to manage the flow of state changes, called *events* , between decoupled microservices. When triggered, Eventarc routes these events to various destinations while managing delivery, security, authorization, observability, and error-handling for you.
 
-**Note:** Eventarc events use the [`CloudEvents`](https://cloudevents.io/) specification.
+> **Note:** Eventarc events use the [`CloudEvents`](https://cloudevents.io/) specification.
 
 ## Limitations
 

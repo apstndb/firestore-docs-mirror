@@ -46,7 +46,7 @@ DatastoreOptions datastoreOptions =
                     .build();
 ```
 
-**Note:** Only clients that explicitly set `GrpcTransportOptions` change behavior with the release of this feature. Client instantiations that already use `setTransportOptions` with `HttpTransportOptions` won't change behavior due to this feature.
+> **Note:** Only clients that explicitly set `GrpcTransportOptions` change behavior with the release of this feature. Client instantiations that already use `setTransportOptions` with `HttpTransportOptions` won't change behavior due to this feature.
 
 ### Verify transport options
 

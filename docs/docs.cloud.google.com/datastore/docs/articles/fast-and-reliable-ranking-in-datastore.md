@@ -1,6 +1,6 @@
-**Note:** This page describes system behavior for Datastore databases that have not yet upgraded to Firestore in Datastore mode.
-
-[Firestore](https://docs.cloud.google.com/firestore) is the new version of Datastore and [removes several Datastore limitations](https://docs.cloud.google.com/datastore/docs/firestore-or-datastore#in_datastore_mode) .
+> **Note:** This page describes system behavior for Datastore databases that have not yet upgraded to Firestore in Datastore mode.
+> 
+> [Firestore](https://docs.cloud.google.com/firestore) is the new version of Datastore and [removes several Datastore limitations](https://docs.cloud.google.com/datastore/docs/firestore-or-datastore#in_datastore_mode) .
 
 ## Ranking: A simple and yet very hard problem
 

@@ -10,9 +10,9 @@ IAM lets you control **who (user)** has **what (role)** permission for **which**
 
 This section summarizes the permissions and roles that Firestore supports.
 
-**Note:** Some Firestore permissions differ from the standard IAM model permissions. For example, in the IAM model, the `datastore.databases.get` permission lets you return a database object while, in Firestore, `datastore.databases.get` lets you begin or roll back a transaction. To retrieve a database object's information, use the `datastore.databases.getMetadata` permission.
-
-The `datastore.schemas.*` permissions were previously named `datastore.indexes.*` . You can still use `datastore.indexes` as an alias for `datastore.schemas` .
+> **Note:** Some Firestore permissions differ from the standard IAM model permissions. For example, in the IAM model, the `datastore.databases.get` permission lets you return a database object while, in Firestore, `datastore.databases.get` lets you begin or roll back a transaction. To retrieve a database object's information, use the `datastore.databases.getMetadata` permission.
+> 
+> The `datastore.schemas.*` permissions were previously named `datastore.indexes.*` . You can still use `datastore.indexes` as an alias for `datastore.schemas` .
 
 ### Required permissions for API methods
 

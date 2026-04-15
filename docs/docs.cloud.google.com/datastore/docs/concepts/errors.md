@@ -1,6 +1,6 @@
 When a Firestore in Datastore mode request is successful, the API will return an HTTP `200 OK` status code along with the requested data in the body of the response.
 
-**Note:** The errors and status codes described in this page are returned by the low-level Datastore API. Note that client libraries may or may not return these same values.
+> **Note:** The errors and status codes described in this page are returned by the low-level Datastore API. Note that client libraries may or may not return these same values.
 
 When a request fails, the Datastore API will return an HTTP `4xx` or `5xx` status code that generically identifies the failure as well as a response that provides more specific information about the error(s) that caused the failure.
 
@@ -36,7 +36,7 @@ Here's an example of an error response for a JSON request:
 
 If a request made with a content type of `application/x-protobuf` results in an error, it will return a serialized [`google.rpc.Status`](https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto) message as the payload.
 
-**Note:** The text provided in the message could change at any time so applications should not depend on the actual text.
+> **Note:** The text provided in the message could change at any time so applications should not depend on the actual text.
 
 ## Error Codes
 

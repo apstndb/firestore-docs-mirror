@@ -18,7 +18,7 @@ A heatmap with a single bright diagonal line can indicate an index that is on a 
 
 Some examples of common hotspots on index are as follows:
 
-**Note:** In the following heatmap example, for Firestore, the x-axis of the heatmap represents time, and the y-axis represents index keys.
+> **Note:** In the following heatmap example, for Firestore, the x-axis of the heatmap represents time, and the y-axis represents index keys.
 
 ### Hotspotting due to increasing timestamp
 
@@ -57,8 +57,6 @@ From the earlier example, identify the fields from the **PROPERTIES** value to f
 To find the index, complete the following steps:
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 

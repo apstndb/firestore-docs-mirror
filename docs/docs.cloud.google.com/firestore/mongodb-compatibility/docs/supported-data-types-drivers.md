@@ -116,7 +116,7 @@ Firestore with MongoDB compatibility supports third-party tools described in thi
 | [Mongoose](https://mongoosejs.com/)                                       | MongoDB object modeling tool  |
 | [MongoDB Compass](https://www.mongodb.com/products/tools/compass)         | GUI tool for data exploration |
 
-**Note:** Some third-party tools require a connection string. To obtain a connection string for your Firestore with MongoDB compatibility database, you can run the [`firestore databases connection-string` command](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/connection-string) using Google Cloud CLI.
+> **Note:** Some third-party tools require a connection string. To obtain a connection string for your Firestore with MongoDB compatibility database, you can run the [`firestore databases connection-string` command](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/connection-string) using Google Cloud CLI.
 
 ## What's next
 

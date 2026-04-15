@@ -75,7 +75,7 @@ You might encounter index building errors when managing your indexes. An indexin
   - An operation attempts to index multiple fields with array values. You cannot have more than one field with an array value in a multikey index. To proceed, modify your data model or your index definitions.
   - You set the unique index option and the data of the indexed fields would create duplicate index entries. To proceed, remove duplicate combinations of values from the data.
 
-**Warning:** An ongoing index building error might impact creation of new indexes. Resolving the errors before creating indexes under the same collection.
+> **Warning:** An ongoing index building error might impact creation of new indexes. Resolving the errors before creating indexes under the same collection.
 
 ## What's next
 

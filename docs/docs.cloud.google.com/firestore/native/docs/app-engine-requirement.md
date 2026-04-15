@@ -26,8 +26,6 @@ In the response, look at the value of `appEngineIntegrationMode` . If the value 
 
 If you disable a linked App Engine app, you also disable read and write access to your database. If this happens, the **Firestore Data** page in Google Cloud console presents the option to unlink your database from the App Engine app. Click **Unlink Database** to begin the process.
 
-[Go to Firestore Data](https://console.cloud.google.com/firestore/data)
-
 You can also unlink your database using the REST API:
 
     curl -X PATCH \
@@ -85,7 +83,7 @@ Inspect the output to ensure the import completed successfully. If the output sh
 
 then inspect your Terraform configuration file to see if there were any mistakes, particularly in the project , location , or name fields, and then run `terraform plan` again. Any fields that are requiring Terraform to replace your database will be marked with `# forces replacement` in the plan output.
 
-**Warning:** Do not run `terraform apply` if you see any database resources requiring replacement. Doing so may cause the loss of your Firestore data.
+> **Warning:** Do not run `terraform apply` if you see any database resources requiring replacement. Doing so may cause the loss of your Firestore data.
 
 Once you are satisfied with the Terraform plan output, run:
 

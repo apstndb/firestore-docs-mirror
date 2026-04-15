@@ -14,7 +14,7 @@ For information about managing keys yourself, see [CMEK for Firestore with Mongo
 
 Server-side encryption can be used in combination with client-side encryption. In client-side encryption, you manage your own encryption keys and encrypt data before writing it to Firestore with MongoDB compatibility. In this case, your data is encrypted twice, once with your keys and once with the server-side keys.
 
-**Warning:** Firestore with MongoDB compatibility does not know if your data has already been encrypted client-side, nor does Firestore with MongoDB compatibility have any knowledge of your client-side encryption keys. If you use client-side encryption, you must securely manage your encryption keys.
+> **Warning:** Firestore with MongoDB compatibility does not know if your data has already been encrypted client-side, nor does Firestore with MongoDB compatibility have any knowledge of your client-side encryption keys. If you use client-side encryption, you must securely manage your encryption keys.
 
 To protect your data as it travels over the Internet during read and write operations, we use Transport Layer Security (TLS). For more information about the supported TLS versions, see [Encryption in transit in Google Cloud](https://cloud.google.com/docs/security/encryption-in-transit#user_to_google_front_end_encryption) .
 

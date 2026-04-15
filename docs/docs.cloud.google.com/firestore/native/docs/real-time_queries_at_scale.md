@@ -16,7 +16,7 @@ When an app that is running on a user's device (mobile or web) establishes a con
 
 The distance between a user's physical location and the Firestore database location affects the latency experienced by the user. For example, a user in India whose app talks to a database in a Google Cloud region in North America might find the experience slower and the app less snappy than if the database was instead located closer, such as in India or in another part of Asia.
 
-**Key Point:** For the best user experience, pick a region as close as possible to where your users are located.
+> **Key Point:** For the best user experience, pick a region as close as possible to where your users are located.
 
 ## Design for reliability
 
@@ -87,7 +87,7 @@ Automatic scaling allows you to increase your write traffic without limits, but 
 
 Many apps have predictable organic growth, which Firestore can accommodate without precautions. Batch workloads like importing a large dataset, however, can ramp up writes too quickly. As you design your app, stay aware of where your write traffic comes from.
 
-**Key Point:** Firestore scales automatically but ramping up writes too quickly leads to contention and performance problems. Make sure to follow the [5-5-5 rule](https://docs.cloud.google.com/firestore/native/docs/best-practices#ramping_up_traffic) to avoid creating a write hotspot.
+> **Key Point:** Firestore scales automatically but ramping up writes too quickly leads to contention and performance problems. Make sure to follow the [5-5-5 rule](https://docs.cloud.google.com/firestore/native/docs/best-practices#ramping_up_traffic) to avoid creating a write hotspot.
 
 ### Understand how writes and reads interact
 
@@ -95,7 +95,7 @@ You can think of the real-time query system as a pipeline connecting write opera
 
 This connected pipeline means that a write operation causing hotspots or lock contention can negatively affect read operations. When write operations fail or experience throttling, a read might stall waiting for consistent data from the changelog. If this happens in your app, you might see both slow write operations and correlated slow response times for queries. Avoiding hotspots is the key to steering clear of this problem.
 
-**Key Point:** Writes and snapshot listeners are connected. A problem with write operations might cause slower response times.
+> **Key Point:** Writes and snapshot listeners are connected. A problem with write operations might cause slower response times.
 
 ### Keep documents and write operations small
 
@@ -103,7 +103,7 @@ When building apps with snapshot listeners, you typically want users to find out
 
 Likewise, favor short, fast commit and write operations to keep latency low. Large batches might give you higher throughput from the writer's perspective but might actually increase the notification time for snapshot listeners. This is often counterintuitive compared to using other database systems where you might use batching to improve performance.
 
-**Key Point:** Small documents and write operations are faster to process, and lead to more responsive apps.
+> **Key Point:** Small documents and write operations are faster to process, and lead to more responsive apps.
 
 ### Use efficient listeners
 
@@ -115,7 +115,7 @@ To avoid these slower responses, design your schema and app so that the system c
 
 This is similar to thinking about the performance queries in a relational database that require full table scans. In a relational database, a query that requires a full table scan is the equivalent of a snapshot listener that watches a high-churn collection. It might perform slowly compared to a query that the database can serve using a more specific index. A query with a more specific index is like a snapshot listener that watches a single document or a collection that changes less often. You should load test your app to best understand the behavior and need of your use case.
 
-**Key Point:** Snapshot listeners that try to filter too much incoming data might be slow even if the result set is small.
+> **Key Point:** Snapshot listeners that try to filter too much incoming data might be slow even if the result set is small.
 
 ### Keep polling queries fast
 
@@ -129,7 +129,7 @@ A listener might also move back from a listening state to a polling state under 
 
 If your polling queries are fast enough, a polling state becomes transparent to your app's users.
 
-**Key Point:** To build responsive apps, it's important to keep polling queries fast. Keep the datasets for real-time queries small.
+> **Key Point:** To build responsive apps, it's important to keep polling queries fast. Keep the datasets for real-time queries small.
 
 ### Favor long-lived listeners
 
@@ -137,7 +137,7 @@ Opening and keeping listeners alive for as long as possible is often the most co
 
 In cases where your app must consume a high rate of data, snapshot listeners might not be appropriate. For example, if your use case pushes many documents per second through a connection for an extended period of time, it might be better to opt for one-shot queries that run at a lower frequency.
 
-**Key Point:** For responsive apps, long-lived snapshot listeners are the most efficient way to consume data.
+> **Key Point:** For responsive apps, long-lived snapshot listeners are the most efficient way to consume data.
 
 ## What's Next
 

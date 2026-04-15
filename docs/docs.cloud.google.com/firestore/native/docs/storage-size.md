@@ -25,7 +25,7 @@ For example:
 
 The size of a document ID is either the [string size](https://docs.cloud.google.com/firestore/native/docs/storage-size#string-size) for a string ID or 8 bytes for an integer ID.
 
-**Note:** The Firestore client libraries always use string document IDs.
+> **Note:** The Firestore client libraries always use string document IDs.
 
 ## Document name size
 
@@ -42,7 +42,7 @@ For a document in the subcollection `users/jeff/tasks` with a string document ID
   - 11 bytes for the `my_task_id` document ID
   - 16 additional bytes
 
-**Note:** Any documents in subcollections under the document, for example `users/jeff/tasks/my_task_id/comments/D8PvloqiczrzXik3SWjZ` , aren't counted towards the document name size or the 1 MiB limit for the `users/jeff/tasks/my_task_id` document.
+> **Note:** Any documents in subcollections under the document, for example `users/jeff/tasks/my_task_id/comments/D8PvloqiczrzXik3SWjZ` , aren't counted towards the document name size or the 1 MiB limit for the `users/jeff/tasks/my_task_id` document.
 
 ## Field value size
 
@@ -68,7 +68,7 @@ For example, a boolean field named `done` would use 6 bytes:
   - 5 bytes for the `done` field name
   - 1 byte for the boolean value
 
-**Note:** Field values in an index are truncated after 1500 bytes, see [indexing limits](https://docs.cloud.google.com/firestore/native/docs/quotas#indexes) .
+> **Note:** Field values in an index are truncated after 1500 bytes, see [indexing limits](https://docs.cloud.google.com/firestore/native/docs/quotas#indexes) .
 
 ## Document size
 
@@ -131,7 +131,7 @@ So the document size is 44 + 71 + 32 = 147 bytes:
   - 71 bytes for the fields
   - 32 additional bytes
 
-**Note:** Any documents in subcollections under the document, for example `users/jeff/tasks/my_task_id/comments/D8PvloqiczrzXik3SWjZ` , aren't counted towards the document name size or the 1 MiB limit for the `users/jeff/tasks/my_task_id` document.
+> **Note:** Any documents in subcollections under the document, for example `users/jeff/tasks/my_task_id/comments/D8PvloqiczrzXik3SWjZ` , aren't counted towards the document name size or the 1 MiB limit for the `users/jeff/tasks/my_task_id` document.
 
 ## Index entry size
 

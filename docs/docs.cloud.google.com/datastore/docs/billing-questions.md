@@ -8,4 +8,4 @@ Use the following resources to get help with billing questions:
 
   - To change or disable billing on a project, go to the **Billing** page in the Google Cloud console. For more information, see [Modify a Project's Billing Settings](https://support.google.com/cloud/answer/6293499?hl=en&ref_topic=6288636) in the Google Cloud console Help.
     
-    **Caution:** When you disable billing for a project, you also disable all product resources in that project.
+    > **Caution:** When you disable billing for a project, you also disable all product resources in that project.

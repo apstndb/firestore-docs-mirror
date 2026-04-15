@@ -53,8 +53,6 @@ Use one of the following tools to create a backup schedule.
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists.
 
@@ -66,7 +64,7 @@ Use one of the following tools to create a backup schedule.
 
 To create a backup schedule for a database, use the [`gcloud firestore backups schedules create`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/create) command. To create a daily backup schedule, set the `--recurrence` flag to `daily` :
 
-``` lang-sh pretty-print
+``` pretty-print lang-sh
 gcloud firestore backups schedules create \
 --database='DATABASE_ID' \
 --recurrence=daily \
@@ -104,8 +102,6 @@ Replace the following:
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists.
 
@@ -117,7 +113,7 @@ Replace the following:
 
 To create a weekly backup schedule, set the `--recurrence` flag to `weekly` :
 
-``` lang-sh pretty-print
+``` pretty-print lang-sh
 gcloud firestore backups schedules create \
 --database='DATABASE_ID' \
 --recurrence=weekly \
@@ -176,8 +172,6 @@ To list all backup schedules for a database, use one of the following methods:
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists.
 
@@ -187,7 +181,7 @@ To list all backup schedules for a database, use one of the following methods:
 
 Use the [`gcloud firestore backups schedules list`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/list) command.
 
-``` lang-sh pretty-print
+``` pretty-print lang-sh
 gcloud firestore backups schedules list \
 --database='DATABASE_ID'
 ```
@@ -201,8 +195,6 @@ To retrieve information about a backup schedule, use one of the following method
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists.
 
@@ -212,7 +204,7 @@ To retrieve information about a backup schedule, use one of the following method
 
 Use the [`gcloud firestore backups schedules describe`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/describe) command:
 
-``` lang-sh pretty-print
+``` pretty-print lang-sh
 gcloud firestore backups schedules describe \
 --database='DATABASE_ID' \
 --backup-schedule=BACKUP_SCHEDULE_ID
@@ -230,8 +222,6 @@ To update the retention period of a backup schedule, use one of the following me
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** .
 
@@ -243,7 +233,7 @@ To update the retention period of a backup schedule, use one of the following me
 
 Use the [`gcloud firestore backups schedules update`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/update) command:
 
-``` lang-sh pretty-print
+``` pretty-print lang-sh
 gcloud firestore backups schedules update \
 --database='DATABASE_ID' \
 --backup-schedule=BACKUP_SCHEDULE_ID \
@@ -265,8 +255,6 @@ To delete a backup schedule, use one of the following methods:
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists.
 
@@ -278,7 +266,7 @@ To delete a backup schedule, use one of the following methods:
 
 Use the [`gcloud firestore backups schedules delete`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/delete) command:
 
-``` lang-sh pretty-print
+``` pretty-print lang-sh
 gcloud firestore backups schedules delete \
 --database='DATABASE_ID' \
 --backup-schedule=BACKUP_SCHEDULE_ID
@@ -300,8 +288,6 @@ To list available backups, use one of the following methods:
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists.
 
@@ -313,14 +299,14 @@ To list available backups, use one of the following methods:
 
 Use the [`gcloud firestore backups list`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/list) command:
 
-``` lang-sh pretty-print
+``` pretty-print lang-sh
 gcloud firestore backups list \
 --format="table(name, database, state)"
 ```
 
 The `--format="table(name, database, state)"` flag formats the output into a more readable format. To list only the backups from a specific location, use the `--location` flag:
 
-``` lang-sh pretty-print
+``` pretty-print lang-sh
 gcloud firestore backups list \
 --location=LOCATION \
 --format="table(name, database, state)"
@@ -335,8 +321,6 @@ To view details about a backup, use one of the following methods:
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists.
 
@@ -346,7 +330,7 @@ To view details about a backup, use one of the following methods:
 
 Use the [`gcloud firestore backups describe`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/describe) command:
 
-``` lang-sh pretty-print
+``` pretty-print lang-sh
 gcloud firestore backups describe \
 --location=LOCATION \
 --backup=BACKUP_ID
@@ -361,13 +345,11 @@ Replace the following:
 
 To delete a backup, use one of the following methods.
 
-**Warning:** You cannot recover a deleted backup.
+> **Warning:** You cannot recover a deleted backup.
 
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists. The **Disaster recovery** page opens. This page describes backup schedules and lists available backups.
 
@@ -379,7 +361,7 @@ To delete a backup, use one of the following methods.
 
 Use the [`gcloud firestore backups delete`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/delete) command:
 
-``` lang-sh pretty-print
+``` pretty-print lang-sh
 gcloud firestore backups delete \
 --location=LOCATION \
 --backup=BACKUP_ID
@@ -390,7 +372,7 @@ Replace the following:
   - LOCATION : The location of the database.
   - BACKUP\_ID : The ID of a backup. You can view the ID of each backup when you [list all backups](https://docs.cloud.google.com/datastore/docs/backups#list_backups) .
 
-**Note:** Firestore stores metadata related to backups and backup schedules related to a database. Firestore retains this metadata until **all** backups for the database expire or are deleted.
+> **Note:** Firestore stores metadata related to backups and backup schedules related to a database. Firestore retains this metadata until **all** backups for the database expire or are deleted.
 
 ## Restore data from a database backup
 
@@ -401,8 +383,6 @@ To begin a restore operation, use one of the following methods:
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists. The **Disaster recovery** page opens. This page describes backup schedules and lists available backups.
 
@@ -416,7 +396,7 @@ To begin a restore operation, use one of the following methods:
 
 Use the [`gcloud firestore databases restore`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/restore) command:
 
-``` lang-sh pretty-print
+``` pretty-print lang-sh
 gcloud firestore databases restore \
 --source-backup=projects/PROJECT_ID/locations/LOCATION/backups/BACKUP_ID \
 --destination-database='DATABASE_ID \
@@ -455,13 +435,13 @@ response:
 
 The `metadata` field includes a `progressPercentage` component, detailing the estimated progress of the restore thus far, and an `operationState` specifying the overall state of the restore. To retrieve this information again, use `  gcloud firestore operations list  ` :
 
-``` lang-sh pretty-print
+``` pretty-print lang-sh
 gcloud firestore operations list --database=DATABASE_ID
 ```
 
 or, using the `name` field from the output described above, with `  gcloud firestore operations describe  ` :
 
-``` lang-sh pretty-print
+``` pretty-print lang-sh
 gcloud firestore operations describe OPERATION_NAME
 ```
 

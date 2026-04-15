@@ -2,6 +2,8 @@
 
 An aggregation query processes the data from multiple index entries to return a single summary value.
 
+[Video](https://www.youtube.com/watch?v=JiDdBIqhWKc)
+
 Firestore supports the following aggregation queries:
 
   - `count()`
@@ -12,7 +14,7 @@ Firestore calculates the aggregation and transmits only the result back to your 
 
 Aggregation queries rely on the existing index configuration that your queries already use, and scale proportionally to the number of index entries scanned. Latency increases with the number of items in the aggregation.
 
-**Note:** While the code samples cover multiple languages, the text explaining the samples refers to the Web method names.
+> **Note:** While the code samples cover multiple languages, the text explaining the samples refers to the Web method names.
 
 ## Use the `count()` aggregation
 
@@ -24,7 +26,7 @@ The following `count()` aggregation returns the total number of cities in the `c
 
 ### Web version 9
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
     const coll = collection(db, "cities");
     const snapshot = await getCountFromServer(coll);
@@ -199,7 +201,7 @@ The `count()` aggregation takes into account any filters on the query and any `l
 
 ### Web version 9
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
     const coll = collection(db, "cities");
     const q = query(coll, where("state", "==", "CA"));
@@ -382,7 +384,7 @@ Use the `sum()` aggregation to return the total sum of numeric values that match
 
 ### Web version 9
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
 ``` 
 const coll = collection(firestore, 'cities');
@@ -537,7 +539,7 @@ The `sum()` aggregation takes into account any filters on the query and any limi
 
 ### Web version 9
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
 ``` 
 const coll = collection(firestore, 'cities');
@@ -704,7 +706,7 @@ Use the `average()` aggregation to return the average of numeric values that mat
 
 ### Web version 9
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
 ``` 
 const coll = collection(firestore, 'cities');
@@ -859,7 +861,7 @@ The `average()` aggregation takes into account any filters on the query and any 
 
 ### Web version 9
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
 ``` 
 const coll = collection(firestore, 'cities');
@@ -1028,7 +1030,7 @@ The following example performs multiple aggregations in a single aggregation que
 
 ### Web version 9
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
 ``` 
 const coll = collection(firestore, 'cities');
@@ -1229,7 +1231,7 @@ As you work with aggregation queries, note the following behavior and limitation
 
   - If an aggregation can't resolve within 60 seconds, it returns a `DEADLINE_EXCEEDED` error. Performance depends on your index configuration and on the size of the dataset.
     
-    **Note:** Most queries scale based on the on the size of the result set, not the dataset. However, aggregation queries scale based on the size of the dataset and the number of index entries scanned.
+    > **Note:** Most queries scale based on the on the size of the result set, not the dataset. However, aggregation queries scale based on the size of the dataset and the number of index entries scanned.
     
     If the operation can't be completed within the 60 second deadline, a possible workaround is to use [counters](https://docs.cloud.google.com/firestore/native/docs/solutions/counters) for large datasets.
 

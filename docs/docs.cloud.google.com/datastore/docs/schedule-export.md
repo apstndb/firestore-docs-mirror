@@ -14,8 +14,6 @@ Follow the steps below to create a Cloud Function that initiates data exports an
 ### Create a `datastore_export` Cloud Function
 
 1.  Go to the **Cloud Functions** page in the Google Cloud console:
-    
-    [Go to Cloud Functions](https://console.cloud.google.com/functions/list)
 
 2.  Click **Create Function**
 
@@ -111,7 +109,6 @@ This service account needs permission to start export operations and to write to
   - `Storage Object User` role on the bucket
 
 You can use the Google Cloud CLI to assign these roles. You can access this tool from [Cloud Shell](https://docs.cloud.google.com/shell) in the Google Cloud console:  
-[Start Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
 
 1.  Assign the **Cloud Datastore Import Export Admin** role. Replace project\_id , and run the following command:
     
@@ -130,8 +127,6 @@ You can use the Google Cloud CLI to assign these roles. You can access this tool
 Next, create a Cloud Scheduler job that calls the `datastore_export` Cloud Function:
 
 1.  Go to the **Cloud Scheduler** page in the Google Cloud console:
-    
-    [Go to Cloud Scheduler](https://console.cloud.google.com/cloudscheduler)
 
 2.  Click **Create Job** .
 
@@ -184,7 +179,6 @@ Next, create a Cloud Scheduler job that calls the `datastore_export` Cloud Funct
 To test your Cloud Function and Cloud Scheduler job, run your Cloud Scheduler job in the **Cloud Scheduler** page of the Google Cloud console. If successful, this initiates a real export operation.
 
 1.  Go to the **Cloud Scheduler** page in the Google Cloud console.  
-    [Go to Cloud Scheduler](https://console.cloud.google.com/cloudscheduler)
 
 2.  In the row for your new Cloud Scheduler job, click **Run now** .
     
@@ -196,8 +190,6 @@ The Cloud Scheduler page confirms only that the job sent a message to the pub/su
 
 To see if the Cloud Function successfully started an export operation, see the **Logs Explorer** page in the Google Cloud console.
 
-[Go to Logs Explorer](https://console.cloud.google.com/logs/viewer?resource=cloud_function)
-
 The log for the Cloud Function reports errors and successful export initiations.
 
 ### View export progress
@@ -205,5 +197,3 @@ The log for the Cloud Function reports errors and successful export initiations.
 You can use the `gcloud datastore operations list` command to view the progress of your export operations, see [listing all long-running operations](https://docs.cloud.google.com/datastore/docs/export-import-entities#listing_all_long-running_operations) .
 
 After an export operation completes, you can view the output files in your Cloud Storage bucket. The managed export service uses a timestamp to organize your export operations:
-
-[Go to Cloud Storage](https://console.cloud.google.com/storage/browser)

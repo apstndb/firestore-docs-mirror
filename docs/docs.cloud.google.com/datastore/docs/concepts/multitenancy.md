@@ -14,7 +14,7 @@ Datastore mode enables multitenancy by providing *namespaces* .
 
 Datastore mode uses *partitions* to silo data for each tenant. The combination of a project ID and a namespace ID forms a *partition ID* , which identifies each partition. An entity belongs to a single partition, and queries are scoped to a single partition.
 
-**Note:** Namespaces are not a security mechanism in Datastore mode. A user with access to one partition in a project has access to all partitions in the project. Namespaces provide a way to organize your entities within a project.
+> **Note:** Namespaces are not a security mechanism in Datastore mode. A user with access to one partition in a project has access to all partitions in the project. Namespaces provide a way to organize your entities within a project.
 
 ## Specifying a namespace for an entity
 

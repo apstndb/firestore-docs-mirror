@@ -1,11 +1,13 @@
 # Get real-time updates
 
+[Video](https://www.youtube.com/watch?v=3aoxOtMM2rc)
+
 You can *listen* to a document with the `onSnapshot()` method. An initial call using the callback you provide creates a document snapshot immediately with the current contents of the single document. Then, each time the contents change, another call updates the document snapshot.
 
-**Note:**
-
-  - [Pipeline operations](https://docs.cloud.google.com/firestore/native/docs/query-data/understanding-core-pipelines) don't support realtime listeners. To use Real-time Listen queries with Enterprise edition databases, use Core operations as described on this page.
-  - Realtime listeners are not supported in the PHP client library.
+> **Note:**
+> 
+>   - [Pipeline operations](https://docs.cloud.google.com/firestore/native/docs/query-data/understanding-core-pipelines) don't support realtime listeners. To use Real-time Listen queries with Enterprise edition databases, use Core operations as described on this page.
+>   - Realtime listeners are not supported in the PHP client library.
 
 ### Web version 9
 
@@ -17,7 +19,7 @@ You can *listen* to a document with the `onSnapshot()` method. An initial call u
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     db.collection("cities").doc("SF")
         .onSnapshot((doc) => {
@@ -313,7 +315,7 @@ Retrieved documents have a `metadata.hasPendingWrites` property that indicates w
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     db.collection("cities").doc("SF")
         .onSnapshot((doc) => {
@@ -488,7 +490,7 @@ By default, listeners are not notified of changes that only affect metadata. Con
 
 If you want to receive snapshot events when the document or query metadata changes, pass a listen options object when attaching your listener.
 
-**Note:** You can pass listener options as shown in the following samples. You can also use the configuration interfaces for snapshot options [described below](https://docs.cloud.google.com/firestore/native/docs/query-data/listen#events-local-only) to explicitly configure events for metadata changes. For more information, see the reference documentation for [Kotlin + KTX Android]() , [Java Android]() , [Swift]() , [Objective-C]() , and [Web modular]() .
+> **Note:** You can pass listener options as shown in the following samples. You can also use the configuration interfaces for snapshot options [described below](https://docs.cloud.google.com/firestore/native/docs/query-data/listen#events-local-only) to explicitly configure events for metadata changes. For more information, see the reference documentation for [Kotlin + KTX Android]() , [Java Android]() , [Swift]() , [Objective-C]() , and [Web modular]() .
 
 ### Web version 9
 
@@ -503,7 +505,7 @@ If you want to receive snapshot events when the document or query metadata chang
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     db.collection("cities").doc("SF")
         .onSnapshot({
@@ -606,7 +608,7 @@ Android
 
     // Not yet supported in the Ruby client library
 
-**Note:** If you just want to know when your write has completed, you can listen to the completion callback rather than using `hasPendingWrites` . In JavaScript, use the `Promise` returned from your write operation by attaching a `.then()` callback. In Swift, pass a completion callback to your write function.
+> **Note:** If you just want to know when your write has completed, you can listen to the completion callback rather than using `hasPendingWrites` . In JavaScript, use the `Promise` returned from your write operation by attaching a `.then()` callback. In Swift, pass a completion callback to your write function.
 
 ### Configure listeners for local changes only
 
@@ -618,7 +620,7 @@ Here, snapshot options are set in client code to allow listening for local chang
 
 ### Web version 9
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from the namespaced API.
 
     const unsubscribe = onSnapshot(
        doc(db, "cities", "SF"),
@@ -631,7 +633,7 @@ Here, snapshot options are set in client code to allow listening for local chang
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from the namespaced API.
 
     // Not yet supported in the Web namespaced API
 
@@ -748,7 +750,7 @@ As with documents, you can use `onSnapshot()` instead of `get()` to listen to th
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     db.collection("cities").where("state", "==", "CA")
         .onSnapshot((querySnapshot) => {
@@ -1020,7 +1022,7 @@ Android
 
 The snapshot handler will receive a new query snapshot every time the query results change (that is, when a document is added, removed, or modified).
 
-**Important:** As explained above under [Events for local changes](https://docs.cloud.google.com/firestore/native/docs/query-data/listen#events-local-changes) , you will receive events *immediately* for your local writes. Your listener can use the `metadata.hasPendingWrites` field on each document to determine whether the document has local changes that have not yet been written to the backend.
+> **Important:** As explained above under [Events for local changes](https://docs.cloud.google.com/firestore/native/docs/query-data/listen#events-local-changes) , you will receive events *immediately* for your local writes. Your listener can use the `metadata.hasPendingWrites` field on each document to determine whether the document has local changes that have not yet been written to the backend.
 
 ## View changes between snapshots
 
@@ -1047,7 +1049,7 @@ It is often useful to see the actual changes to query results between query snap
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     db.collection("cities").where("state", "==", "CA")
         .onSnapshot((snapshot) => {
@@ -1410,7 +1412,7 @@ Android
       end
     endquery_watch.rb
 
-**Important:** The first query snapshot contains `added` events for all existing documents that match the query. This is because you're getting a set of changes that bring your query snapshot current with the initial state of the query. This allows you, for instance, to directly populate your UI from the changes you receive in the first query snapshot, without needing to add special logic for handling the initial state.
+> **Important:** The first query snapshot contains `added` events for all existing documents that match the query. This is because you're getting a set of changes that bring your query snapshot current with the initial state of the query. This allows you, for instance, to directly populate your UI from the changes you receive in the first query snapshot, without needing to add special logic for handling the initial state.
 
 The initial state can come from the server directly, or from a local cache. If there is state available in a local cache, the query snapshot will be initially populated with the cached data, then updated with the server's data when the client has caught up with the server's state.
 
@@ -1434,7 +1436,7 @@ When you are no longer interested in listening to your data, you must detach you
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     var unsubscribe = db.collection("cities")
         .onSnapshot(() => {
@@ -1588,7 +1590,7 @@ A listen may occasionally fail — for example, due to security permissions, or 
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     db.collection("cities")
         .onSnapshot((snapshot) => {

@@ -74,7 +74,7 @@ The following metrics can be used to understand whether your database is read he
   - `document/read_ops_count` : The number of successful document reads from queries or lookups.
   - `document/write_ops_count` : The number of successful document writes.
 
-**Note:** The `document/delete_ops_count` metric doesn't include documents deleted due to TTL policies. For information about metrics that capture deletes due to TTL policies, see [TTL Metrics](https://docs.cloud.google.com/firestore/native/docs/understand-performance-monitoring#ttl_metrics) .
+> **Note:** The `document/delete_ops_count` metric doesn't include documents deleted due to TTL policies. For information about metrics that capture deletes due to TTL policies, see [TTL Metrics](https://docs.cloud.google.com/firestore/native/docs/understand-performance-monitoring#ttl_metrics) .
 
 ![**Figure 6.** Create a ratio of documents read vs documents written (click to enlarge).](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-doc-operation.png)
 

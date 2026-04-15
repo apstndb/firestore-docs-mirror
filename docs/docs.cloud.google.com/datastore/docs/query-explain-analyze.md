@@ -29,7 +29,7 @@ You can use a client library to submit a default option request.
 
 Note that query explain results are authenticated with [Identity and Access Management](https://docs.cloud.google.com/datastore/docs/access/iam) , using the same permissions for regular query operations.
 
-**Note:** One query execution is analyzed at a time; therefore, query explain timing results may vary from request to request. The tool can help you spot significant structural inefficiencies, but is not intended to provide aggregate statistics on query performance.
+> **Note:** One query execution is analyzed at a time; therefore, query explain timing results may vary from request to request. The tool can help you spot significant structural inefficiencies, but is not intended to provide aggregate statistics on query performance.
 
 ### Java
 
@@ -86,7 +86,7 @@ You can use a client library to submit a default option request.
 
 Note that query analyze results are authenticated with [Identity and Access Management (IAM)](https://docs.cloud.google.com/datastore/docs/access/iam) , using the same permissions for regular query operations.
 
-**Note:** One query execution is analyzed at a time; therefore, query timing results may vary from request to request. The tool can help you spot significant structural inefficiencies, but is not intended to provide aggregate statistics on query performance.
+> **Note:** One query execution is analyzed at a time; therefore, query timing results may vary from request to request. The tool can help you spot significant structural inefficiencies, but is not intended to provide aggregate statistics on query performance.
 
 ### Java
 
@@ -182,7 +182,7 @@ For more information about the report, see the [report reference](https://docs.c
 
 The following example scenario queries movies by genre and country of production and demonstrates how to optimize the indexes used by the query.
 
-**Note:** Query Explain is designed for useful ad hoc analysis; its report format will evolve to maximize ease of reading and understanding, not suitability for machine processing. Some returned metrics are expected to change as Datastore mode evolves (metrics may be added, removed, or updated) and are not covered by the same deprecation policy as other Datastore mode APIs.
+> **Note:** Query Explain is designed for useful ad hoc analysis; its report format will evolve to maximize ease of reading and understanding, not suitability for machine processing. Some returned metrics are expected to change as Datastore mode evolves (metrics may be added, removed, or updated) and are not covered by the same deprecation policy as other Datastore mode APIs.
 
 For more information about the report, see the [Query Explain report reference](https://docs.cloud.google.com/datastore/docs/query-explain-analyze-report-reference) .
 

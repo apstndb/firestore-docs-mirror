@@ -134,7 +134,7 @@ Every GQL query string always begins with `SELECT <something>` , where `<somethi
 
 Similar to SQL, GQL keywords are case insensitive. Kind and property names are case sensitive.
 
-**Note:** When a query string consists of `SELECT <property-list>` , the query is a [projection query](https://docs.cloud.google.com/datastore/docs/concepts/queries#projection_queries) .
+> **Note:** When a query string consists of `SELECT <property-list>` , the query is a [projection query](https://docs.cloud.google.com/datastore/docs/concepts/queries#projection_queries) .
 
 A GQL query returns zero or more entity results of the requested kind, with each result consisting of an entire entity or some subset of the properties of the entity, or even just the entity [key](https://docs.cloud.google.com/datastore/docs/concepts/entities) . For example,
 
@@ -160,7 +160,7 @@ But this would not match any results:
 
     SELECT Product.Name FROM Product
 
-**Tip:** `SELECT __key__` or `SELECT <property-list>` queries are faster than `SELECT *` queries, and are cheaper, because they are charged at the less expensive [small operations](https://docs.cloud.google.com/datastore/docs/pricing) rates, rather than at the read rates. See also [projection queries](https://docs.cloud.google.com/datastore/docs/concepts/queries#projection_queries) .
+> **Tip:** `SELECT __key__` or `SELECT <property-list>` queries are faster than `SELECT *` queries, and are cheaper, because they are charged at the less expensive [small operations](https://docs.cloud.google.com/datastore/docs/pricing) rates, rather than at the read rates. See also [projection queries](https://docs.cloud.google.com/datastore/docs/concepts/queries#projection_queries) .
 
 Only `SELECT` is supported by GQL, you must use a [client library](https://docs.cloud.google.com/datastore/docs/reference/libraries) or the [API](https://docs.cloud.google.com/datastore/docs/reference/data/rest) for mutation operations.
 

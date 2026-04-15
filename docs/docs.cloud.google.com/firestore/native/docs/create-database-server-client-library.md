@@ -4,13 +4,13 @@ This quickstart shows you how to set up Firestore, add data, and read data by us
 
 ## Before you begin
 
-**Firestore and App Engine:** You can't use both Firestore and Datastore in the same project, which might affect apps using App Engine. Try using Firestore with a different project if you need to use Datastore.
+> **Firestore and App Engine:** You can't use both Firestore and Datastore in the same project, which might affect apps using App Engine. Try using Firestore with a different project if you need to use Datastore.
 
 ## Create a Firestore in Native Mode in Native mode database
 
 If this is a new project, you need to create a Firestore database instance.
 
-1.  [Go to the Firestore viewer](https://console.cloud.google.com/firestore/data) .
+1.  .
 
 2.  From the ***Select a database service*** screen, choose *Firestore in Native mode* .
 
@@ -72,11 +72,11 @@ Add the Firestore Java library to your app:
 
 Add the Firestore Python library to your app:
 
-**Note:** We recommend that you use a [virtual Python environment](https://virtualenv.pypa.io/en/stable/) to install the Firestore Python library:
-
-    pip install virtualenv
-    virtualenv env
-    source env/bin/activate
+> **Note:** We recommend that you use a [virtual Python environment](https://virtualenv.pypa.io/en/stable/) to install the Firestore Python library:
+> 
+>     pip install virtualenv
+>     virtualenv env
+>     source env/bin/activate
 
     pip install --upgrade google-cloud-firestore
 

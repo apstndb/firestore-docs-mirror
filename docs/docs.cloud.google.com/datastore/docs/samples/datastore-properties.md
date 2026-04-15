@@ -164,9 +164,7 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
       t["done"] = false
       t["priority"] = 4
       t["percent_complete"] = 10.0
-      t["description"] = "Learn Cloud Datastore"
-      t.exclude_from_indexes! "description", true
-    end
+      t["description&quot;] = "Learn Cloud Datastore"  t.exclude_from_indexes! "description", trueend
 
 ## What's next
 

@@ -12,8 +12,6 @@ To use Key Visualizer for Datastore mode, you must enable the Firestore Key Visu
 
 To enable APIs, you need the Service Usage Admin IAM role ( `roles/serviceusage.serviceUsageAdmin` ), which contains the `serviceusage.services.enable` permission. [Learn how to grant roles](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
 
-[Enable the API](https://console.cloud.google.com/flows/enableapi?apiid=firestorekeyvisualizer.googleapis.com&redirect=https://console.cloud.google.com)
-
 ### Required roles
 
 Make sure that your account is granted one of the following IAM roles:
@@ -39,8 +37,6 @@ Each Key Visualizer scan covers a two hour period. A scan for a given period is 
 To launch Key Visualizer:
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 

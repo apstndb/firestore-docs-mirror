@@ -37,7 +37,7 @@ The default for Standard edition is `PESSIMISTIC` . The default for Enterprise e
 
   - The server client libraries use concurrency controls of the database setting.
 
-**Key Term:** In database systems, *concurrency controls* describe how the system resolves data contention between concurrent operations. Systems can implement optimistic or pessimistic concurrency controls.
+> **Key Term:** In database systems, *concurrency controls* describe how the system resolves data contention between concurrent operations. Systems can implement optimistic or pessimistic concurrency controls.
 
 ## Data contention in the mobile/web SDKs
 
@@ -53,7 +53,7 @@ Server client libraries (C\#, Go, Java, Node.js, PHP, Python, Ruby) use the [bui
 
   - Standard edition uses pessimistic concurrency controls and assumes low latency and a reliable connection to the database.
 
-**Note:** To best ensure low latency, use server client libraries from a [Google Cloud compute product as close to your Firestore database as possible](https://cloud.google.com/about/locations#products-available-by-location) . A server client library with a high latency connection can run into issues with locking and data contention.
+> **Note:** To best ensure low latency, use server client libraries from a [Google Cloud compute product as close to your Firestore database as possible](https://cloud.google.com/about/locations#products-available-by-location) . A server client library with a high latency connection can run into issues with locking and data contention.
 
 ## Serializable isolation
 
@@ -88,7 +88,7 @@ In the case of data contention between concurrent operations, [Firestore uses op
 
 Transaction isolation also applies to write operations within a transaction. Queries and reads inside a transaction do not see the results of previous writes inside that transaction. Even if you modify or delete a document within a transaction, all document reads in that transaction return the version of the document at commit time, before the transaction's write operations. Read operations return nothing if the document did not exist then.
 
-**Note:** Document reads must come before document writes.
+> **Note:** Document reads must come before document writes.
 
 ### Issues with data contention
 

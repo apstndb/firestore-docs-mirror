@@ -12,7 +12,7 @@ By default, when a Compute Engine VM lacks an external IP address assigned to it
 
   - The default and VIP domains used by the Firestore with MongoDB compatibility and their IP ranges support only the MongoDB protocol on port 443. All other protocols aren't supported.
 
-**Note:** To configure Private Google Access for Firestore and other services, see [Configure Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access) .
+> **Note:** To configure Private Google Access for Firestore and other services, see [Configure Private Google Access](https://cloud.google.com/vpc/docs/configure-private-google-access) .
 
 ### Network requirements
 
@@ -93,7 +93,7 @@ This section describes how to configure your network to access the Firestore wit
 
 ### DNS configuration
 
-**Note:** There are public DNS records `restricted.firestore.goog` . However, you can't use the public records when you configure Private Google Access. You must create a private DNS zone and records.
+> **Note:** There are public DNS records `restricted.firestore.goog` . However, you can't use the public records when you configure Private Google Access. You must create a private DNS zone and records.
 
 Unlike other Google APIs, the Firestore with MongoDB compatibility API uses different domain names and IP addresses for Private Google Access:
 

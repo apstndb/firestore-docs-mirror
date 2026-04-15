@@ -44,8 +44,6 @@ To enable PITR for your database:
 ### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -89,8 +87,6 @@ Replace the values as follows:
 ### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -141,7 +137,7 @@ You can read PITR data using the client libraries, REST API methods, or Firestor
 
 ### Client libraries
 
-**Note:** You can read from PITR data in the server client libraries, namely Go, Java, Node.js, and PHP. The mobile and web SDKs, namely, Android, IOS, and Web are not supported.
+> **Note:** You can read from PITR data in the server client libraries, namely Go, Java, Node.js, and PHP. The mobile and web SDKs, namely, Android, IOS, and Web are not supported.
 
 ### Java
 
@@ -249,13 +245,11 @@ You can clone an existing database at a selected timestamp into a new database:
       - If PITR isn't enabled, you can select any minute in the past hour.
       - You can check the earliest timestamp that you can pick [in your database's description](https://docs.cloud.google.com/firestore/native/docs/use-pitr#get-period) .
 
-**Note:** To clone databases, your Google Account must have the [`datastore.databases.clone` IAM permission](https://docs.cloud.google.com/firestore/native/docs/use-pitr#permissions) .
+> **Note:** To clone databases, your Google Account must have the [`datastore.databases.clone` IAM permission](https://docs.cloud.google.com/firestore/native/docs/use-pitr#permissions) .
 
 ### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Click more\_vert **View more** in the table row for the database that you want to clone. Click **Clone** . The **Create a clone** dialog appears.
 
@@ -267,7 +261,7 @@ You can clone an existing database at a selected timestamp into a new database:
 
 4.  Click **Create clone** .
 
-**Note:** The cloned database will have the **same encryption configuration** as the source database. If you want to specify a different encryption configuration for the cloned database, you can use Google Cloud CLI commands.
+> **Note:** The cloned database will have the **same encryption configuration** as the source database. If you want to specify a different encryption configuration for the cloned database, you can use Google Cloud CLI commands.
 
 ### gcloud
 

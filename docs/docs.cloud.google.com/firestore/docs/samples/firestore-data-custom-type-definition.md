@@ -5,10 +5,7 @@ Use a custom type on the client for Firestore documents
 For detailed documentation that includes this code sample, see the following:
 
   - [Add and update data](https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data)
-  - [Add data to Cloud Firestore](https://firebase.google.com/docs/firestore/manage-data/add-data)
-  - [Get data with Cloud Firestore](https://firebase.google.com/docs/firestore/query-data/get-data)
   - [Getting data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data)
-  - [Perform simple and compound queries in Cloud Firestore](https://firebase.google.com/docs/firestore/query-data/queries)
   - [Query and filter data](https://docs.cloud.google.com/firestore/native/docs/query-data/queries)
 
 ## Code sample

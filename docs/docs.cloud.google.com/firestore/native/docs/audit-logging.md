@@ -23,8 +23,6 @@ Individual writes from import, bulk delete operations and TTL are not audit logg
 To view the Firestore audit logs, do the following:
 
 1.  In the Google Cloud console, go to the Logs Explorer page:
-    
-    [Go to Logs Explorer](https://console.cloud.google.com/logs/query)
 
 2.  Copy and paste the following query into the **Query** field of the Logs Explorer, and then click **Run query** .
     
@@ -35,10 +33,10 @@ To view the Firestore audit logs, do the following:
 
 ## Methods by permission type
 
-Firestore also includes the following operations as part of the [Key Visualizer](https://docs.cloud.google.com/firestore/docs/key-visualizer) diagnostic tool. These are [Data Access](https://docs.cloud.google.com/logging/docs/audit#data-access) audit logs and have the service name `firestorekeyvisualizer.googleapis.com` . They are enabled by turning on `DATA_READ` for the `firestore.googleapis.com` service.
-
-  - `google.cloud.keyvisualizer.KeyVisualizer.GetScan`
-  - `google.cloud.keyvisualizer.KeyVisualizer.ListScans`
+> Firestore also includes the following operations as part of the [Key Visualizer](https://docs.cloud.google.com/firestore/docs/key-visualizer) diagnostic tool. These are [Data Access](https://docs.cloud.google.com/logging/docs/audit#data-access) audit logs and have the service name `firestorekeyvisualizer.googleapis.com` . They are enabled by turning on `DATA_READ` for the `firestore.googleapis.com` service.
+> 
+>   - `google.cloud.keyvisualizer.KeyVisualizer.GetScan`
+>   - `google.cloud.keyvisualizer.KeyVisualizer.ListScans`
 
 Each IAM permission has a `type` property, whose value is an enum that can be one of four values: `ADMIN_READ` , `ADMIN_WRITE` , `DATA_READ` , or `DATA_WRITE` . When you call a method, Firestore generates an audit log whose category is dependent on the `type` property of the permission required to perform the method. Methods that require an IAM permission with the `type` property value of `DATA_READ` , `DATA_WRITE` , or `ADMIN_READ` generate [Data Access](https://docs.cloud.google.com/logging/docs/audit#data-access) audit logs. Methods that require an IAM permission with the `type` property value of `ADMIN_WRITE` generate [Admin Activity](https://docs.cloud.google.com/logging/docs/audit#admin-activity) audit logs.
 
@@ -692,7 +690,7 @@ The following audit logs are associated with methods belonging to `google.firest
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `protoPayload.methodName="google.firestore.v1.Firestore.ExecutePipeline"`  
 
-**Note:** `  ExecutePipeline  ` is a short-lived streaming RPC and emits a log entry when the last message (document) is sent.
+> **Note:** `  ExecutePipeline  ` is a short-lived streaming RPC and emits a log entry when the last message (document) is sent.
 
 #### `GetDocument`
 
@@ -732,14 +730,14 @@ The following audit logs are associated with methods belonging to `google.firest
   - **Method is a long-running or streaming operation** : [**Streaming RPC**](https://docs.cloud.google.com/logging/docs/audit/understanding-audit-logs#streaming)  
   - **Filter for this method** : `protoPayload.methodName="google.firestore.v1.Firestore.Listen"`  
 
-**Note:**
-
-`Listen` is a long-lived RPC that combines multiple streaming targets. Each target is a query or a set of document keys. The stream for each target includes an initial result set and a sequence of updates, additions, and removals to the result set. The targets are the relevant audit unit. Firestore audits each target as follows:
-
-  - When the target is added, emit a log entry with the targets query or document key set. In these entries, [`operation.first`](https://docs.cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#logentryoperation) is true. This audit log is **omitted** when the stream is a resumption of an earlier Listen target stream.
-  - Emit periodic updates reporting the count of updates since the last audit log for this target.
-  - Emit a log entry when the target is removed from the stream, either explicitly or due to the termination for the `Listen` RPC. This log entry reports the count of updates since the last audit log for this target. In these entries, [`operation.last`](https://docs.cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#logentryoperation) is true.
-  - The emitted log entries use the same [`operation.id`](https://docs.cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#logentryoperation) .
+> **Note:**
+> 
+> `Listen` is a long-lived RPC that combines multiple streaming targets. Each target is a query or a set of document keys. The stream for each target includes an initial result set and a sequence of updates, additions, and removals to the result set. The targets are the relevant audit unit. Firestore audits each target as follows:
+> 
+>   - When the target is added, emit a log entry with the targets query or document key set. In these entries, [`operation.first`](https://docs.cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#logentryoperation) is true. This audit log is **omitted** when the stream is a resumption of an earlier Listen target stream.
+>   - Emit periodic updates reporting the count of updates since the last audit log for this target.
+>   - Emit a log entry when the target is removed from the stream, either explicitly or due to the termination for the `Listen` RPC. This log entry reports the count of updates since the last audit log for this target. In these entries, [`operation.last`](https://docs.cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#logentryoperation) is true.
+>   - The emitted log entries use the same [`operation.id`](https://docs.cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#logentryoperation) .
 
 #### `PartitionQuery`
 
@@ -770,7 +768,7 @@ The following audit logs are associated with methods belonging to `google.firest
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `protoPayload.methodName="google.firestore.v1.Firestore.RunAggregationQuery"`  
 
-**Note:** `  RunAggregationQuery  ` is a short-lived streaming RPC and emits a log entry when the last message (document) is sent.
+> **Note:** `  RunAggregationQuery  ` is a short-lived streaming RPC and emits a log entry when the last message (document) is sent.
 
 #### `RunQuery`
 
@@ -782,7 +780,7 @@ The following audit logs are associated with methods belonging to `google.firest
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `protoPayload.methodName="google.firestore.v1.Firestore.RunQuery"`  
 
-**Note:** `  RunQuery  ` is a short-lived streaming RPC and emits a log entry when the last message (document) is sent.
+> **Note:** `  RunQuery  ` is a short-lived streaming RPC and emits a log entry when the last message (document) is sent.
 
 #### `UpdateDocument`
 
@@ -805,7 +803,7 @@ The following audit logs are associated with methods belonging to `google.firest
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `protoPayload.methodName="google.firestore.v1.Firestore.Write"`  
 
-**Note:** `  Write  ` emits a log entry for every message received as each message corresponds to an independent write to the database. The emitted log entries use the same [`operation.id`](https://docs.cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#logentryoperation) .
+> **Note:** `  Write  ` emits a log entry for every message received as each message corresponds to an independent write to the database. The emitted log entries use the same [`operation.id`](https://docs.cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry#logentryoperation) .
 
 ### `google.firestore.v1beta1.Firestore`
 
@@ -936,7 +934,7 @@ The following audit logs are associated with methods belonging to `google.firest
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `protoPayload.methodName="google.firestore.v1beta1.Firestore.RunAggregationQuery"`  
 
-**Note:** `  RunAggregationQuery  ` is a short-lived streaming RPC and emits a log entry when the last message (document) is sent.
+> **Note:** `  RunAggregationQuery  ` is a short-lived streaming RPC and emits a log entry when the last message (document) is sent.
 
 #### `RunQuery`
 
@@ -948,7 +946,7 @@ The following audit logs are associated with methods belonging to `google.firest
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `protoPayload.methodName="google.firestore.v1beta1.Firestore.RunQuery"`  
 
-**Note:** `  RunQuery  ` is a short-lived streaming RPC and emits a log entry when the last message (document) is sent.
+> **Note:** `  RunQuery  ` is a short-lived streaming RPC and emits a log entry when the last message (document) is sent.
 
 #### `UpdateDocument`
 

@@ -2,7 +2,7 @@
 
 This quickstart shows you how to set up Firestore, add data, and read data by using the Android, Apple platforms, Web, Unity, or C++ client library.
 
-**Note:** This quickstart uses the Firebase console instead of the Google Cloud console.
+> **Note:** This quickstart uses the Firebase console instead of the Google Cloud console.
 
 1.  If you haven't already, create a Firebase project: In the [Firebase console](https://console.firebase.google.com) , click **Add project** , then follow the on-screen instructions to create a Firebase project or to add Firebase services to an existing Google Cloud project.
 
@@ -30,7 +30,7 @@ This quickstart shows you how to set up Firestore, add data, and read data by us
 
 6.  Click **Create** .
 
-**Firestore and App Engine:** You can't use both Firestore and Datastore in the same App Engine app. If you need to use Datastore with App Engine, we recommend that you use Firestore with a different project.
+> **Firestore and App Engine:** You can't use both Firestore and Datastore in the same App Engine app. If you need to use Datastore with App Engine, we recommend that you use Firestore with a different project.
 
 When you enable Firestore, it also enables the API in the [Cloud API Manager](https://console.cloud.google.com/projectselector/apis/api/firestore.googleapis.com/overview) .
 
@@ -47,7 +47,7 @@ Add the required dependencies and client libraries to your app.
         import { initializeApp } from "firebase/app";
         import { getFirestore } from "firebase/firestore";
 
-Looking for a compact Firestore library, and only need simple REST/CRUD capabilities? Try the [Firestore Lite SDK](https://firebase.google.com/docs/firestore/solutions/firestore-lite) , available only via npm.
+> Looking for a compact Firestore library, and only need simple REST/CRUD capabilities? Try the [Firestore Lite SDK](https://firebase.google.com/docs/firestore/solutions/firestore-lite) , available only via npm.
 
 ### Web version 8
 
@@ -74,7 +74,7 @@ Follow the instructions to [add Firebase to your Apple app](https://firebase.goo
 
 Use Swift Package Manager to install and manage Firebase dependencies.
 
-Visit [our installation guide](https://firebase.google.com/docs/ios/installation-methods) to learn about the different ways you can add Firebase SDKs to your Apple project, including importing frameworks directly and using CocoaPods.
+> Visit [our installation guide](https://firebase.google.com/docs/ios/installation-methods) to learn about the different ways you can add Firebase SDKs to your Apple project, including importing frameworks directly and using CocoaPods.
 
 1.  In Xcode, with your app project open, navigate to **File \> Swift Packages \> Add Package Dependency** .
 2.  When prompted, add the Firebase Apple platforms SDK repository:
@@ -87,7 +87,7 @@ Visit [our installation guide](https://firebase.google.com/docs/ios/installation
 
 2.  Declare the dependency for the Firestore library for Android in your module (app-level) Gradle file (usually `app/build.gradle.kts` or `app/build.gradle` ):
     
-        implementation("com.google.firebase:firebase-firestore:26.1.2")
+        implementation("com.google.firebase:firebase-firestore:26.2.0")
     
     If your app uses multiple Firebase libraries, consider using the [Firebase Android BoM](https://firebase.google.com/docs/android/learn-more#bom) , which ensures that your app's Firebase library versions are always compatible.
     
@@ -266,7 +266,7 @@ Create a new collection and a document using the following example code.
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     db.collection("users").add({
         first: "Ada",
@@ -424,7 +424,7 @@ Now add another document to the `users` collection. Notice that this document in
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     // Add a second document with a generated ID.
     db.collection("users").add({
@@ -585,7 +585,7 @@ You can also use the `get` method to retrieve the entire collection.
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     db.collection("users").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -748,9 +748,15 @@ For detailed guidance on getting started with the Firestore mobile and web clien
 
 ##### Web
 
+[Video](https://www.youtube.com/watch?v=BjtxPj6jRM8)
+
 ##### iOS
 
+[Video](https://www.youtube.com/watch?v=rvxYRm6n_NM)
+
 ##### Android
+
+[Video](https://www.youtube.com/watch?v=kDZYIhNkQoM)
 
 You can find more videos in the Firebase [YouTube channel](https://www.youtube.com/firebase) .
 

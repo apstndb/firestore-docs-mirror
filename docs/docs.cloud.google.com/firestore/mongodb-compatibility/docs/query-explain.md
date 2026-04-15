@@ -13,8 +13,6 @@ You can use Query Explain through the Google Cloud console or the `explain` comm
 Execute a query in the Query Editor and open the **Explanation** tab:
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  From the list of databases, select a Firestore with MongoDB compatibility database. The Google Cloud console opens the **Firestore Explorer** for that database.
 

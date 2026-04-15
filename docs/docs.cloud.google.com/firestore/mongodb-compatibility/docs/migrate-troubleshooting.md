@@ -27,8 +27,6 @@ You can examine Datastream connection profiles and other Datastream artifacts in
 
 In the Google Cloud console, go to the **Datastream** page:
 
-[Go to Datastream](https://console.cloud.google.com/datastream/connection-profiles)
-
 ## Troubleshooting a Datastream stream
 
 When you create a Datastream stream with the `gcloud datastream streams create` command, it returns metadata that is similar to the following example:
@@ -56,15 +54,11 @@ You can examine Datastream streams and other Datastream artifacts in Google Clou
 
 In the Google Cloud console, go to the **Datastream** page:
 
-[Go to Datastream](https://console.cloud.google.com/datastream/streams)
-
 ## Troubleshooting the Dataflow pipeline
 
 You can monitor the Dataflow pipeline execution in Google Cloud console.
 
 In the Google Cloud console, go to the **Dataflow** page:
-
-[Go to Dataflow](https://console.cloud.google.com/dataflow/jobs)
 
 ### Troubleshooting retryable errors
 

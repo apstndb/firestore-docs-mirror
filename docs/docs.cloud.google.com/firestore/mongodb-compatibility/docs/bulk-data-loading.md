@@ -29,4 +29,4 @@ When working with a large distributed system like Firestore, you might encounter
 
 When bulk loading large amounts of information, it's important to maintain a retry strategy for failed writes without failing the larger bulk load operation.
 
-**Note:** Firestore with MongoDB compatibility does not support `retryWrites` . We recommend using transactions to ensure your application guarantees idempotency.
+> **Note:** Firestore with MongoDB compatibility does not support `retryWrites` . We recommend using transactions to ensure your application guarantees idempotency.

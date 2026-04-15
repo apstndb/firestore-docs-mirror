@@ -10,11 +10,11 @@ Firestore Standard edition ensures query performance by requiring an index for e
 
 If you attempt a compound query with a range clause that doesn't map to an existing index, you receive an error. The error message includes a direct link to create the missing index in the Firebase console.
 
-**Note:** You can manage Firestore Standard edition through the Firebase console or the Google Cloud console, but these links will always open in the Firebase console.
+> **Note:** You can manage Firestore Standard edition through the Firebase console or the Google Cloud console, but these links will always open in the Firebase console.
 
 Follow the generated link to the Firebase console, review the automatically populated info, and click **Create** .
 
-**Note:** For non-array and non-map fields, you must select **ascending** or **descending** ordering, even if you don't need the field for ordering. Your choice doesn't impact the behavior of equalities in the query.
+> **Note:** For non-array and non-map fields, you must select **ascending** or **descending** ordering, even if you don't need the field for ordering. Your choice doesn't impact the behavior of equalities in the query.
 
 In the case that a vector index is required, the error message will include a Google Cloud CLI command to create the missing vector index. Run the command to create the missing index.
 
@@ -22,7 +22,7 @@ In the case that a vector index is required, the error message will include a Go
 
 Before you can create an index in Firestore Standard edition, make sure that you are assigned either of the following roles:
 
-**Note:** The following roles are managed through Identity and Access Management (IAM). For more information about roles and associated permissions, see [Predefined roles](https://cloud.google.com/firestore/docs/security/iam#predefined_roles) .
+> **Note:** The following roles are managed through Identity and Access Management (IAM). For more information about roles and associated permissions, see [Predefined roles](https://cloud.google.com/firestore/docs/security/iam#predefined_roles) .
 
   - `roles/datastore.owner`
   - `roles/datastore.indexAdmin`
@@ -46,8 +46,6 @@ From the Google Cloud console, you can manage automatic indexing exemptions and 
 To manually create a new index from the Google Cloud console:
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -70,8 +68,6 @@ Your new index will show up in the list of manual indexes and Firestore Standard
 To delete a manual index:
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -88,8 +84,6 @@ To delete a manual index:
 Automatic indexing exemptions allow you to override [automatic index settings](https://docs.cloud.google.com/firestore/native/docs/standard-index-overview#automatic_indexes) for specific fields in a collection. You can add an automatic indexing exemption from the console:
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -122,8 +116,6 @@ To define a single-field index exemption that applies to all fields under a coll
 To delete a automatic indexing exemption, do the following:
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -318,7 +310,7 @@ Inspect the output to ensure the import completed successfully. If the output sh
 
 then inspect your Terraform configuration file to see if there were any mistakes.
 
-**Warning:** Do not run terraform apply if you see any index resources requiring replacement or any index resources being deleted. Doing so may cause the loss of your index, possibly resulting in downtime for your application.
+> **Warning:** Do not run terraform apply if you see any index resources requiring replacement or any index resources being deleted. Doing so may cause the loss of your index, possibly resulting in downtime for your application.
 
 Once you are satisfied with the Terraform plan output, run:
 
@@ -395,7 +387,7 @@ To build an index, Firestore Standard edition must set up the index and then bac
 
 Index builds are *long-running operations* .
 
-**Key Term:** Firestore Standard edition supports several administrative operations that can take a long time to complete. These operations are called ***long-running operations*** . Firestore Standard edition includes features to execute and manage long- running operations. Supported long-running operations include index builds and export operations.
+> **Key Term:** Firestore Standard edition supports several administrative operations that can take a long time to complete. These operations are called ***long-running operations*** . Firestore Standard edition includes features to execute and manage long- running operations. Supported long-running operations include index builds and export operations.
 
 After you start an index build, Firestore Standard edition assigns the operation a unique name. Operation names are prefixed with `projects/[PROJECT_ID]/databases/(default)/operations/` , for example:
 

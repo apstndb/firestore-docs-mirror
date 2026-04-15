@@ -24,19 +24,19 @@ To accomplish these goals, Key Visualizer can help you complete the following ta
   - Check the structure of index keys to identify the index definitions that cause index load problems.
   - Use the index keys visualization to make better workload pattern predictions.
 
-**Key Term:** Document key
+> **Key Term:** Document key
+> 
+> In Key Visualizer, the term **Document Key** refers to a document's unique identifier. This is the same as the complete path to a specific document, which is also known as the document name. For example, the following document names are also document keys:
+> 
+>   - `projects/PROJECT_ID/databases/(default)/documents/cities/SF`
+>   - `projects/PROJECT_ID/databases/(default)/documents/companies/my_company/employees/007RGlCzsx59bakkuTGz`
 
-In Key Visualizer, the term **Document Key** refers to a document's unique identifier. This is the same as the complete path to a specific document, which is also known as the document name. For example, the following document names are also document keys:
-
-  - `projects/PROJECT_ID/databases/(default)/documents/cities/SF`
-  - `projects/PROJECT_ID/databases/(default)/documents/companies/my_company/employees/007RGlCzsx59bakkuTGz`
-
-**Key Term:** Index key
-
-In Key Visualizer, the term **Index Key** refers to a index's unique identifier. These can be single-field indexes or composite indexes.For example, the following indexes are some examples of index keys as seen on the Key Visualizer tool:
-
-  - `COLLECTION: projects/PROJECT_ID/databases/default/documents/Users PROPERTIES: (timestamp: ASC) VALUES: (1686162996397845) DOCUMENT: projects/PROJECT_ID/databases/default/documents/Users/QstCrsaGuq9ybj81dNse`
-  - `COLLECTION: projects/PROJECT_ID/databases/default/documents/Users PROPERTIES: (Timestamp: ASC, Name: ASC,Country: ARRAY) VALUES: (16500000000000001L, 'Alice', 'USA') DOCUMENT: (projects/PROJECT_ID/databases/default/documents/Users/5000000000000001)`
+> **Key Term:** Index key
+> 
+> In Key Visualizer, the term **Index Key** refers to a index's unique identifier. These can be single-field indexes or composite indexes.For example, the following indexes are some examples of index keys as seen on the Key Visualizer tool:
+> 
+>   - `COLLECTION: projects/PROJECT_ID/databases/default/documents/Users PROPERTIES: (timestamp: ASC) VALUES: (1686162996397845) DOCUMENT: projects/PROJECT_ID/databases/default/documents/Users/QstCrsaGuq9ybj81dNse`
+>   - `COLLECTION: projects/PROJECT_ID/databases/default/documents/Users PROPERTIES: (Timestamp: ASC, Name: ASC,Country: ARRAY) VALUES: (16500000000000001L, 'Alice', 'USA') DOCUMENT: (projects/PROJECT_ID/databases/default/documents/Users/5000000000000001)`
 
 ## Scan eligibility
 

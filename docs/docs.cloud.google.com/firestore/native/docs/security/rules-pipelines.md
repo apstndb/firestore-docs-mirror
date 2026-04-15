@@ -20,7 +20,7 @@ Here are some examples:
   - `where(lt("foo", 2))`
   - `documents("/user/1", "/user/2").where(...)`
 
-**Note:** Complex expressions, such as arithmetic within a filter (for example, `where(eq("foo" * 2, 10))` ) or string functions like `strContains` , are not recognized for constraining queries.
+> **Note:** Complex expressions, such as arithmetic within a filter (for example, `where(eq("foo" * 2, 10))` ) or string functions like `strContains` , are not recognized for constraining queries.
 
 ## Request Properties
 

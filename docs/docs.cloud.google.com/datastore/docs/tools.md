@@ -1,6 +1,6 @@
 You can use the Google Cloud CLI to test your application locally and to manage indexes for your production Firestore in Datastore mode instance. This page describes the typical workflow for these activities.
 
-**Note:** This discussion assumes that you have already [enabled](https://docs.cloud.google.com/datastore/docs/activate) the Datastore API for your project; [downloaded](https://docs.cloud.google.com/sdk) the Google Cloud CLI, which contains the gcloud CLI; and set up the gcloud CLI using [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) .
+> **Note:** This discussion assumes that you have already [enabled](https://docs.cloud.google.com/datastore/docs/activate) the Datastore API for your project; [downloaded](https://docs.cloud.google.com/sdk) the Google Cloud CLI, which contains the gcloud CLI; and set up the gcloud CLI using [`gcloud init`](https://docs.cloud.google.com/sdk/gcloud/reference/init) .
 
 The gcloud CLI supports the following workflow:
 

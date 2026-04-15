@@ -58,7 +58,6 @@ Compute Engine apps can access a Datastore mode database in the same project by 
 To access your database from a Compute Engine instance, complete the following steps:
 
 1.  Enable the Google Compute Engine API for your project.  
-    [Enable the Compute Engine API](https://console.cloud.google.com/flows/enableapi?apiid=compute.googleapis.com)
 
 2.  [Verify that billing is enabled for your Google Cloud project](https://docs.cloud.google.com/billing/docs/how-to/verify-billing-enabled#confirm_billing_is_enabled_on_a_project) .
 
@@ -98,8 +97,6 @@ This section shows how to access your Datastore mode database from an external a
 First, create a service account:
 
 1.  In the Google Cloud console, go to the **Create service account** page.
-    
-    [Go to Create service account](https://console.cloud.google.com/projectselector/iam-admin/serviceaccounts/create?supportedpurview=project)
 
 2.  Select a project.
 

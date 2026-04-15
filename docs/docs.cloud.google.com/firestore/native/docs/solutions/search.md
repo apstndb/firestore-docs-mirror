@@ -13,9 +13,3 @@ Before continuing, research then choose one of the search providers below:
   - [Typesense](https://typesense.org/)
 
 ## Solution: External search service
-
-Elastic
-
-Algolia
-
-Typesense

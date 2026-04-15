@@ -333,11 +333,11 @@ In the example below, we limit the query to new chats using a timestamp of each 
 
 Assume there are an average of 10 updated chats each time the user checks the app. This query only incurs 10 document reads.
 
-#### Billed usage: Check chat list
-
-  - Operations: 50 reads / user / day
-  - Storage: None
-  - Networking: 25KB / user / day
+> #### Billed usage: Check chat list
+> 
+>   - Operations: 50 reads / user / day
+>   - Storage: None
+>   - Networking: 25KB / user / day
 
 #### Read messages in a chat
 
@@ -354,11 +354,11 @@ Assume the typical user performs this action 5 times daily (once for every time 
 
 Assume that a user gets about 30 messages a day across all chats. Since you've limited the query to fetch new messages, this translates to just 30 retrieved messages/day.
 
-#### Billed usage: Read messages
-
-  - Operations: 30 reads / user / day
-  - Storage: None
-  - Networking: 7.5KB / user / day
+> #### Billed usage: Read messages
+> 
+>   - Operations: 30 reads / user / day
+>   - Storage: None
+>   - Networking: 7.5KB / user / day
 
 #### Send a message to a chat
 
@@ -368,11 +368,11 @@ Each sent message will cause two document writes: one write to the `messages` su
 
 Note that the cost of reading these messages has been accounted for in the other journeys, so the totals below only consider this write cost.
 
-#### Billed usage: Sending messages
-
-  - Operations: 20 writes / user / day
-  - Storage: 15KB / user / day
-  - Networking: No-cost (ingress)
+> #### Billed usage: Sending messages
+> 
+>   - Operations: 20 writes / user / day
+>   - Storage: 15KB / user / day
+>   - Networking: No-cost (ingress)
 
 ## Billed usage for administrator tasks
 

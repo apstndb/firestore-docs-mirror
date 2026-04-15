@@ -61,7 +61,7 @@ If you're using Visual Studio Code or IntelliJ, you can add client libraries to 
 
 The plugins provide additional functionality, such as key management for service accounts. Refer to each plugin's documentation for details.
 
-**Note:** Cloud Java client libraries do not currently support Android.
+> **Note:** Cloud Java client libraries do not currently support Android.
 
 For more information, see [Setting Up a Java Development Environment](https://docs.cloud.google.com/java/docs/setup) .
 
@@ -459,7 +459,7 @@ Integrate Firestore in Datastore mode with your App Engine Standard Environment 
 | Python 3 | [Google Cloud Datastore client library](https://docs.cloud.google.com/datastore/docs/reference/libraries#installing_the_client_library) or the [Google Cloud NDB Client Library](https://cloud.google.com/appengine/docs/standard/python3/migrating-to-cloud-ndb) . |
 | Python 2 | [Google Cloud NDB Client Library](https://cloud.google.com/appengine/docs/standard/python3/migrating-to-cloud-ndb)                                                                                                                                                  |
 
-**Warning:** For App Engine applications that are written in Python 2, the Google Datastore DB Client Library and the App Engine NDB Library are no longer recommended; use the Google Cloud NDB Client Library instead. See [Migrating to Cloud NDB](https://docs.cloud.google.com/appengine/docs/standard/python3/migrating-to-cloud-ndb) .
+> **Warning:** For App Engine applications that are written in Python 2, the Google Datastore DB Client Library and the App Engine NDB Library are no longer recommended; use the Google Cloud NDB Client Library instead. See [Migrating to Cloud NDB](https://docs.cloud.google.com/appengine/docs/standard/python3/migrating-to-cloud-ndb) .
 
 <span id="third-party_client_libraries"></span>
 

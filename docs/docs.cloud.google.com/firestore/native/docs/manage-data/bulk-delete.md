@@ -4,7 +4,7 @@ Use the managed bulk delete service to delete data from your database. This feat
 
 This page describes how to delete documents in bulk using the managed bulk delete service. The Firestore managed bulk delete service is available through the [`gcloud`](https://cloud.google.com/sdk/gcloud/) command-line tool and the Firestore [REST API](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/bulkDeleteDocuments) .
 
-**Caution:** Bulk deleting data from Firestore incurs one delete operation per document deleted and some read operations based on a fraction of total documents read. However, these operations don't appear in the usage section of the console. Make sure that you understand this before issuing bulk deletes to avoid billed charges.
+> **Caution:** Bulk deleting data from Firestore incurs one delete operation per document deleted and some read operations based on a fraction of total documents read. However, these operations don't appear in the usage section of the console. Make sure that you understand this before issuing bulk deletes to avoid billed charges.
 
 ## Before you begin
 
@@ -15,15 +15,14 @@ Before you can use the managed bulk delete service, you must complete the follow
 2.  Make sure your account has the necessary permissions for Firestore. **If you are the project owner, your account has the required permissions.** Otherwise, the following roles grant the necessary permissions for bulk delete operations:
     
       - [Firestore roles:](https://cloud.google.com/firestore/docs/security/iam#predefined_roles) `Owner` , `Cloud Datastore Owner` , or `Cloud Datastore Bulk Admin`
-        **Note:** These Datastore roles also grant permissions in Firestore.
+        
+        > **Note:** These Datastore roles also grant permissions in Firestore.
 
 ### Set up `gcloud` for your project
 
 You can initiate bulk delete operations through the Google Cloud console or the `gcloud` command-line tool. To use `gcloud` , set up the command-line tool and connect to your project in one of the following ways:
 
   - Access `gcloud` from the Google Cloud console using [Cloud Shell](https://cloud.google.com/shell/) .
-    
-    [Start Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
     
     Make sure `gcloud` is configured for the correct project:
     
@@ -35,7 +34,7 @@ You can initiate bulk delete operations through the Google Cloud console or the 
 
 A bulk delete operation first finds all applicable documents in your database and deletes them in batches. You may still query or read these documents while the results may vary based on the progress made. Bulk delete doesn't delete any documents added or modified after the operation starts.
 
-**Note:** If you plan to delete all documents in the database, see the [database deletion feature](https://docs.cloud.google.com/firestore/docs/manage-databases#delete-database) instead.
+> **Note:** If you plan to delete all documents in the database, see the [database deletion feature](https://docs.cloud.google.com/firestore/docs/manage-databases#delete-database) instead.
 
 ### Bulk delete specific collection groups
 
@@ -43,7 +42,7 @@ A bulk delete operation first finds all applicable documents in your database an
 
 To bulk delete specific collection groups, use the [`--collection-ids`](https://cloud.google.com/sdk/gcloud/reference/beta/firestore/bulk-delete#FLAGS) flag. The operation deletes only the collection groups with the given IDs.
 
-**Note:** Bulk deleting a collection won't automatically delete all the child collections. You also need to specify the child collection groups.
+> **Note:** Bulk deleting a collection won't automatically delete all the child collections. You also need to specify the child collection groups.
 
 ``` notranslate
 gcloud firestore bulk-delete \

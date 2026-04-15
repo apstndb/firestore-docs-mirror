@@ -14,7 +14,7 @@ You can read data for a timestamp based on when PITR was enabled:
 | enabled within 7 days        | 1 hour before PITR was enabled         |  |
 | enabled more than 7 days ago | 7 days before the time of read request |  |
 
-**Note:** You can't start reading from seven days in the past immediately after you enable PITR.
+> **Note:** You can't start reading from seven days in the past immediately after you enable PITR.
 
 A single version per minute is retained in the PITR window. You can read documents at minute granularity using a whole minute timestamp. Only one version of a document is retained in case of multiple writes. For example, if a document had multiple writes ranging from `v1, v2, ... vk` between `2023-05-30 09:00:00AM` (exclusive) and `2023-05-30 09:01:00AM` (inclusive) timestamp, a read request at timestamp `2023-05-30 09:01:00AM` returns the `vk` version of the document.
 

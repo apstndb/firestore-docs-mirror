@@ -9,8 +9,6 @@ This page assumes you have already created an entity that is stored in Firestore
 ## Select an entity to edit
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -26,7 +24,7 @@ This page assumes you have already created an entity that is stored in Firestore
 
 1.  Open the **Edit Entity** page for an entity. Under **Properties** , click **Edit** edit for the property you want to edit.
     
-    **Tip:** You can filter the properties table. Click **Filter properties** at the top of the table.
+    > **Tip:** You can filter the properties table. Click **Filter properties** at the top of the table.
 
 2.  In the **Edit property** pane, modify the property's **Name** , **Type** , or **Value** . You can also modify whether the property is indexed. To learn about the impact of including or excluding a property from indexes, see [Excluded properties](https://docs.cloud.google.com/datastore/docs/concepts/indexes#unindexed_properties) .
     

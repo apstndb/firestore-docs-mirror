@@ -26,8 +26,6 @@ You can view recent import and export operations using the console or `gcloud` .
 
 You can view a list of recent export and import operations in the **Firestore Import/Export** page of the Google Cloud console.
 
-[Go to the Import/Export page](https://console.cloud.google.com/firestore/import-export)
-
 ### gcloud
 
 Use the [`operations list`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command to see all running and recently completed export and import operations:

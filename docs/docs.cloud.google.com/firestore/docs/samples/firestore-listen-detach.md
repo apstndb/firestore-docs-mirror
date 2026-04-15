@@ -5,7 +5,6 @@ Unsubscribe from a Firestore watch listener
 For detailed documentation that includes this code sample, see the following:
 
   - [Get real-time updates](https://docs.cloud.google.com/firestore/native/docs/query-data/listen)
-  - [Get realtime updates with Cloud Firestore](https://firebase.google.com/docs/firestore/query-data/listen)
 
 ## Code sample
 

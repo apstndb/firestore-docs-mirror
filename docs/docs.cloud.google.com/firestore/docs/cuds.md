@@ -4,7 +4,7 @@ Committed use discounts (CUDs) provide deeply discounted prices in exchange for 
 
 CUDs are ideal when your spending on Firestore operations involves a predictable minimum that you can commit to for at least a year.
 
-**Note** : This document discusses some spend-based committed use discounts (CUDs) that automatically migrate to a new consumption model, which leverages discounts rather than credits. The migration date is indicated by a notification in the Google Cloud console Billing Overview page. For more information about the improvements, the affected CUDs, and any required actions on your part, see [Spend-based CUDs](https://docs.cloud.google.com/docs/cuds-multiprice) .
+> **Note** : This document discusses some spend-based committed use discounts (CUDs) that automatically migrate to a new consumption model, which leverages discounts rather than credits. The migration date is indicated by a notification in the Google Cloud console Billing Overview page. For more information about the improvements, the affected CUDs, and any required actions on your part, see [Spend-based CUDs](https://docs.cloud.google.com/docs/cuds-multiprice) .
 
 ## Firestore CUD pricing
 
@@ -37,7 +37,7 @@ After you purchase a commitment, the discount goes into effect within the next h
 
 Make sure that the size and duration of your commitment aligns with both your historical and your expected minimum expenditure on Firestore operations.
 
-**Caution:** After you purchase a commitment, you can't cancel the CUD.
+> **Caution:** After you purchase a commitment, you can't cancel the CUD.
 
 To purchase or manage CUDs for a Cloud Billing account, follow the instructions at [Purchasing spend-based commitments](https://cloud.google.com/docs/cuds-spend-based#purchasing) .
 
@@ -45,7 +45,7 @@ To purchase or manage CUDs for a Cloud Billing account, follow the instructions 
 
 Ideally, your commitment represents at least your expected minimum hourly expenditure on Firestore Read/Write/Delete operations across your projects over the next one or three years.
 
-**Note:** The prices in this section are examples. See [Firestore Pricing](https://docs.cloud.google.com/firestore/pricing) for current prices.
+> **Note:** The prices in this section are examples. See [Firestore Pricing](https://docs.cloud.google.com/firestore/pricing) for current prices.
 
 As an example, say that you have a Firestore database that is in region: `us-central1` (Iowa).
 
@@ -56,7 +56,7 @@ From the [pricing page](https://docs.cloud.google.com/firestore/pricing) , you c
 
 If you expect to spend that minimum of $1.92 per hour continuously for the next year or more, then you can make a commitment for that amount. In other words, when purchasing that CUD, you would enter " `$1.92` " as the hourly commitment amount.
 
-In the legacy CUDs program, your commitment amount is the on-demand price instead. For more information about the differences between the legacy and new spend-based CUDs program, see [Improvements to the spend-based CUDs program](https://cloud.google.com/docs/cuds-multiprice) .
+> In the legacy CUDs program, your commitment amount is the on-demand price instead. For more information about the differences between the legacy and new spend-based CUDs program, see [Improvements to the spend-based CUDs program](https://cloud.google.com/docs/cuds-multiprice) .
 
 If, on the other hand, you expect to scale down the capacity occasionally, you can make a commitment for a lower amount. Any expenditure higher than that limit is charged at the on-demand rate.
 

@@ -4,7 +4,7 @@ You can use the managed export and import service to recover from accidental del
 
 This page describes how to export and import Firestore with MongoDB compatibility documents using the managed export and import service and [Cloud Storage](https://cloud.google.com/storage/) . The Firestore with MongoDB compatibility managed export and import service is available through the [`gcloud`](https://cloud.google.com/sdk/gcloud/) command-line tool and the Firestore with MongoDB compatibility API ( [REST](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases) , [RPC](https://cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1) ).
 
-**Caution:** Exporting data from Firestore with MongoDB compatibility will incur one read operation per document exported. However, these reads will not appear in the usage section of the console. Make sure you understand this before setting up recurring exports to avoid an unexpected bill.
+> **Caution:** Exporting data from Firestore with MongoDB compatibility will incur one read operation per document exported. However, these reads will not appear in the usage section of the console. Make sure you understand this before setting up recurring exports to avoid an unexpected bill.
 
 ## Before you begin
 
@@ -18,7 +18,7 @@ Before you can use the managed export and import service, you must complete the 
     
       - [Firestore with MongoDB compatibility roles:](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam#roles) `Owner` , `Cloud Datastore Owner` , or `Cloud Datastore Import Export Admin`
         
-        **Note:** These Datastore roles also grant permissions in Firestore with MongoDB compatibility.
+        > **Note:** These Datastore roles also grant permissions in Firestore with MongoDB compatibility.
     
       - [Cloud Storage roles:](https://cloud.google.com/storage/docs/access-control/iam-roles) `Owner` or `Storage Admin`
 
@@ -31,9 +31,9 @@ Export and import operations use a Firestore service agent to authorize Cloud St
 
 To learn more about service agents, see [Service agents](https://cloud.google.com/iam/docs/service-agents) .
 
-**Note:** Firestore previously used the App Engine default service account instead of the Firestore service agent. If your database still uses the App Engine service account to import or export data, we recommend that you [migrate to the service specific Firestore service agent](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import#service_agent_migration) . You can [view which account your import and export operations use](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import#view_service_agent_name) in the Google Cloud console.  
-  
-If you use VPC Service Controls, you must use the service-specific Firestore service agent to fully protect import and export operations. VPC Service Controls are not compatible with the App Engine service account.
+> **Note:** Firestore previously used the App Engine default service account instead of the Firestore service agent. If your database still uses the App Engine service account to import or export data, we recommend that you [migrate to the service specific Firestore service agent](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import#service_agent_migration) . You can [view which account your import and export operations use](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import#view_service_agent_name) in the Google Cloud console.  
+>   
+> If you use VPC Service Controls, you must use the service-specific Firestore service agent to fully protect import and export operations. VPC Service Controls are not compatible with the App Engine service account.
 
 The Firestore service agent requires access to the Cloud Storage bucket used in an export or import operation. **If your Cloud Storage bucket is in the same project as your Firestore database, then the Firestore service agent can access the bucket by default** .
 
@@ -63,8 +63,6 @@ The service agent needs the `Storage Admin` role for the Cloud Storage bucket to
 You can initiate import and export operations through the Google Cloud console or the `gcloud` command-line tool. To use `gcloud` , set up the command-line tool and connect to your project in one of the following ways:
 
   - Access `gcloud` from the Google Cloud console using [Cloud Shell](https://cloud.google.com/shell/) .
-    
-    [Start Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
     
     Make sure `gcloud` is configured for the correct project:
     
@@ -101,8 +99,6 @@ Once you have export files in Cloud Storage, you can import documents in those f
 ### Google Cloud Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select a database from the list of databases.
 
@@ -138,13 +134,11 @@ gcloud firestore import gs://my-bucket/2017-05-25T23:54:39_76544/ --database='cy
 
 You can confirm the location of your export files in the Cloud Storage browser in the Google Cloud console:
 
-[Open Cloud Storage browser](https://console.cloud.google.com/storage/browser)
-
 Once you start an import operation, closing the terminal does not cancel the operation, see [cancel an operation](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import#cancel_an_operation) .
 
 ### Import specific collections
 
-**Note:** To import specific collections, you must use the output of an export operation where you [exported specific collections](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import#export_specific_collections) .
+> **Note:** To import specific collections, you must use the output of an export operation where you [exported specific collections](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import#export_specific_collections) .
 
 ### Google Cloud Console
 
@@ -170,18 +164,16 @@ Use the same steps as in [Import all documents](https://docs.cloud.google.com/fi
 
 An export operation copies documents in your database to a set of files in a Cloud Storage bucket. Note that an export is not an exact database snapshot taken at the export start time. An export may include changes made while the operation was running.
 
-**Note:** You must [export specific collections](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import#export_specific_collections) if you plan to:
-
-  - [Import only specific collections](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import#import_specific_collections)
-  - [Load Firestore with MongoDB compatibility data into BigQuery](https://cloud.google.com/bigquery/docs/loading-data-cloud-firestore)
+> **Note:** You must [export specific collections](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import#export_specific_collections) if you plan to:
+> 
+>   - [Import only specific collections](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import#import_specific_collections)
+>   - [Load Firestore with MongoDB compatibility data into BigQuery](https://cloud.google.com/bigquery/docs/loading-data-cloud-firestore)
 
 ### Export all documents
 
 ### Google Cloud Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -221,8 +213,6 @@ Once you start an export operation, closing the terminal does not cancel the ope
 ### Google Cloud Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -271,8 +261,6 @@ Note the following points before exporting PITR data:
 ### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select a database from the list of databases.
 
@@ -324,8 +312,6 @@ However, you can leave out the prefix when specifying an operation name for the 
 You can view a list of recent export and import operations in the **Import/Export** page of the Google Cloud console.
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -346,8 +332,6 @@ gcloud firestore operations list
 You can view the status of a recent export or import operation in the **Import/Export** page of the Google Cloud console.
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -378,8 +362,6 @@ Divide `workCompleted` by `workEstimated` for a rough progress estimate. This es
 You can cancel a running export or import operation in the **Import/Export** page of the Google Cloud console.
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/datastore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -423,7 +405,7 @@ Export and import operations apply the `goog-firestoremanaged:exportimport` labe
 
 ![Access the goog-firestoremanaged label from the filters menu.](https://docs.cloud.google.com/static/firestore/mongodb-compatibility/docs/images/firestore-import-export-billing-label.png)
 
-**Note:** Export and import operations executed before September 8th, 2020 did not apply the `goog-firestoremanaged` label.
+> **Note:** Export and import operations executed before September 8th, 2020 did not apply the `goog-firestoremanaged` label.
 
 ## Export to BigQuery
 

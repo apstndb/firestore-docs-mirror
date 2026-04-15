@@ -1,5 +1,7 @@
 # Create and manage databases
 
+[Video](https://www.youtube.com/watch?v=Lx6pf2Bq5Hw)
+
 This page describes how to create, update, and delete Firestore databases. You can create multiple Firestore databases per project. You can use multiple databases to set up production and testing environments, to isolate customer data, and for data regionalization.
 
 ## Required roles and permissions
@@ -23,8 +25,6 @@ To create a database, use one of the following methods:
 ##### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Click **Create a Firestore database** .
 
@@ -156,7 +156,7 @@ Use the Firebase CLI to deploy Firestore Security Rules to each of your database
 
 A named database includes any database not named `(default)` . By default, the Firebase SDKs and Google API Client Libraries connect to the `(default)` Firestore database in a project. To create a client connected to a named database, set the database ID when you instantiate a client.
 
-**Note:** To work with multiple databases, be sure to update to the latest [Firebase Client SDKs](https://docs.cloud.google.com/firestore/native/docs/reference/libraries#mobile-web-sdks) and [Google API Client Libraries](https://docs.cloud.google.com/firestore/native/docs/reference/libraries#google-cloud-client-libraries) .
+> **Note:** To work with multiple databases, be sure to update to the latest [Firebase Client SDKs](https://docs.cloud.google.com/firestore/native/docs/reference/libraries#mobile-web-sdks) and [Google API Client Libraries](https://docs.cloud.google.com/firestore/native/docs/reference/libraries#google-cloud-client-libraries) .
 
 ## List databases
 
@@ -166,9 +166,7 @@ Use one of the following methods to list your databases:
 
 In the Google Cloud console, go to the **Databases** page.
 
-[Go to Databases](https://console.cloud.google.com/firestore/databases)
-
-**Note:** You can view and list your databases in the Google Cloud console. You can create the `(default)` database using the Google Cloud console, but you must use the [Google Cloud CLI or another method](https://docs.cloud.google.com/firestore/native/docs/manage-databases#create_a_database) to create a named database. To delete a database [use the Google Cloud CLI](https://docs.cloud.google.com/firestore/native/docs/manage-databases#delete-database) .
+> **Note:** You can view and list your databases in the Google Cloud console. You can create the `(default)` database using the Google Cloud console, but you must use the [Google Cloud CLI or another method](https://docs.cloud.google.com/firestore/native/docs/manage-databases#create_a_database) to create a named database. To delete a database [use the Google Cloud CLI](https://docs.cloud.google.com/firestore/native/docs/manage-databases#delete-database) .
 
 ##### gcloud
 
@@ -265,8 +263,6 @@ Deleting a database does not incur charges for delete operations.
 ##### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Click more\_vert **View more** in the table row for the database you want to delete. Click **Delete** . A dialog appears.
 
@@ -300,13 +296,11 @@ You can clone an existing database at a selected timestamp into a new database:
       - If PITR isn't enabled, you can select any minute in the past hour.
       - You can check the earliest timestamp that you can pick [in your database's description](https://docs.cloud.google.com/firestore/native/docs/use-pitr#get-period) .
 
-**Note:** To clone databases, your Google Account must have the [`datastore.databases.clone` IAM permission](https://docs.cloud.google.com/firestore/native/docs/manage-databases#permissions) .
+> **Note:** To clone databases, your Google Account must have the [`datastore.databases.clone` IAM permission](https://docs.cloud.google.com/firestore/native/docs/manage-databases#permissions) .
 
 ### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Click more\_vert **View more** in the table row for the database that you want to clone. Click **Clone** . The **Create a clone** dialog appears.
 
@@ -318,7 +312,7 @@ You can clone an existing database at a selected timestamp into a new database:
 
 4.  Click **Create clone** .
 
-**Note:** The cloned database will have the **same encryption configuration** as the source database. If you want to specify a different encryption configuration for the cloned database, you can use Google Cloud CLI commands.
+> **Note:** The cloned database will have the **same encryption configuration** as the source database. If you want to specify a different encryption configuration for the cloned database, you can use Google Cloud CLI commands.
 
 ### gcloud
 
@@ -372,7 +366,7 @@ The following example shows how to configure CMEK encryption for the cloned data
 
 You can use [Identity and Access Management Conditions](https://cloud.google.com/iam/docs/conditions-overview) to configure access permissions on a per-database level. The following examples use the Google Cloud CLI to assign conditional access for one or more databases. You can also [define IAM conditions in the Google Cloud console](https://cloud.google.com/iam/docs/managing-conditional-role-bindings) .
 
-**Warning:** The Google Cloud console does not allow/deny access to databases based on IAM conditions configured at the database level. This only applies to accessing databases with the Google Cloud console. IAM conditions are enforced when accessing databases outside of the Google Cloud console such as with the REST API or the client libraries.
+> **Warning:** The Google Cloud console does not allow/deny access to databases based on IAM conditions configured at the database level. This only applies to accessing databases with the Google Cloud console. IAM conditions are enforced when accessing databases outside of the Google Cloud console such as with the REST API or the client libraries.
 
 ### View existing IAM policies
 

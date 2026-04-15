@@ -4,7 +4,6 @@ Get Firestore documents in nested collections (async).
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Get data with Cloud Firestore](https://firebase.google.com/docs/firestore/query-data/get-data)
   - [Getting data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data)
 
 ## Code sample

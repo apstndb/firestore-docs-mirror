@@ -1,5 +1,7 @@
 # Query with range and inequality filters on multiple fields overview
 
+[Video](https://www.youtube.com/watch?v=qMZ_q-iHqsU)
+
 Firestore supports using range and inequality filters on multiple fields in a single query. You can have range and inequality conditions on multiple fields and simplify your application development by delegating implementation of post-filtering logic to Firestore.
 
 ## Range and inequality filters on multiple fields

@@ -11,7 +11,7 @@ This page describes CMEK for Firestore with MongoDB compatibility. For more info
 
 For instructions on performing CMEK-related tasks with Firestore with MongoDB compatibility, see [Use CMEK](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-cmek) .
 
-**Note:** For information about access to this release, see the [access request form](https://docs.google.com/forms/d/e/1FAIpQLSfKs8wJf4IXu1NizvfyU2vT59JDbdPvkehMVZ2ab5l_aDLIIA/viewform?resourcekey=0-O15dlRFvA0JIDmh6VFUEcA) .
+> **Note:** For information about access to this release, see the [access request form](https://docs.google.com/forms/d/e/1FAIpQLSfKs8wJf4IXu1NizvfyU2vT59JDbdPvkehMVZ2ab5l_aDLIIA/viewform?resourcekey=0-O15dlRFvA0JIDmh6VFUEcA) .
 
 ## Features
 
@@ -63,7 +63,7 @@ Reinstatement of a key involves the following, depending on the situation:
   - [Restoring](https://cloud.google.com/kms/docs/destroy-restore#restore) a destroyed key version. Before being permanently destroyed, a key version is scheduled for destruction. You can only restore a key during the period when a key version is scheduled for destruction. You cannot restore a key that has already been permanently destroyed.
   - [Re-granting](https://cloud.google.com/kms/docs/iam#granting_roles_on_a_resource) the Firestore service agent permission to access the key.
 
-**Warning:** Don't let your key become unavailable for longer than seven days. CMEK-protected databases with keys unavailable for more than 7 days may be deleted. In the event of a key being unavailable, to preserve data beyond the seven days limit, we recommend that you enable backups for your Firestore with MongoDB compatibility CMEK database with the required retention period. Before you revoke the key, verify a backup has been created, as a valid key is required for backup creation. Additional charges apply for backups. For backup pricing details, see [Firestore with MongoDB compatibility pricing](https://cloud.google.com/firestore/enterprise/pricing) .
+> **Warning:** Don't let your key become unavailable for longer than seven days. CMEK-protected databases with keys unavailable for more than 7 days may be deleted. In the event of a key being unavailable, to preserve data beyond the seven days limit, we recommend that you enable backups for your Firestore with MongoDB compatibility CMEK database with the required retention period. Before you revoke the key, verify a backup has been created, as a valid key is required for backup creation. Additional charges apply for backups. For backup pricing details, see [Firestore with MongoDB compatibility pricing](https://cloud.google.com/firestore/enterprise/pricing) .
 
 ## Key rotation considerations
 
@@ -81,9 +81,9 @@ After an hour, if Firestore with MongoDB compatibility is still unable to connec
 
 See the [Cloud External Key Manager documentation](https://cloud.google.com/kms/docs/ekm#considerations) for more considerations when using external keys.
 
-**Caution:** If a database remains disabled for more than 7 consecutive days, Firestore with MongoDB compatibility might automatically delete it. To avoid permanent data loss, don't leave external keys in an inaccessible state for an extended time.
+> **Caution:** If a database remains disabled for more than 7 consecutive days, Firestore with MongoDB compatibility might automatically delete it. To avoid permanent data loss, don't leave external keys in an inaccessible state for an extended time.
 
-**Warning:** If an external key is deleted and cannot be recovered, any Firestore with MongoDB compatibility database encrypted with that key becomes permanently inaccessible.
+> **Warning:** If an external key is deleted and cannot be recovered, any Firestore with MongoDB compatibility database encrypted with that key becomes permanently inaccessible.
 
 ## Backup and restore
 
@@ -91,7 +91,7 @@ A backup uses the same encryption mechanism as the database from which you creat
 
 Firestore with MongoDB compatibility creates the first backup of a CMEK database after 24 hours pass from the moment when you enable backup schedules.
 
-**Note:** Once the backup is created, you can't modify its key and key version, even if you rotate the Cloud KMS key.
+> **Note:** Once the backup is created, you can't modify its key and key version, even if you rotate the Cloud KMS key.
 
 For more information about Firestore with MongoDB compatibility backups, see [Back up and restore data](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/backups) .
 

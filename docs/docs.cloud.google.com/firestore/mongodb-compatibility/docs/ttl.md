@@ -63,7 +63,7 @@ When you create a TTL index, you designate a document field as the expiration ti
 
 TTL uses a specified field to identify documents that are eligible for deletion. The TTL field must be set to either a `Timestamp` / `BSON Date` value or an `Array` value containing a `Timestamp` / `BSON Date` value. You can select a field that already exists or you can designate a field that you plan to add later.
 
-**Note:** Some TTL indexes created before February 2026 don't apply to `Timestamp` / `BSON Date` values inside of `Array` values. To update the index to apply to `Array` values, drop and re-create the index.
+> **Note:** Some TTL indexes created before February 2026 don't apply to `Timestamp` / `BSON Date` values inside of `Array` values. To update the index to apply to `Array` values, drop and re-create the index.
 
 Consider the following before you set the TTL field value:
 
@@ -95,8 +95,6 @@ Note the following limitations:
 ### Google Cloud Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -113,8 +111,6 @@ The console returns to the **Time-to-live** page. If the operation successfully 
 ### gcloud
 
 1.  In the Google Cloud console, activate Cloud Shell.
-    
-    [Activate Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
     
     At the bottom of the Google Cloud console, a [Cloud Shell](https://docs.cloud.google.com/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
 
@@ -147,8 +143,6 @@ Note that the output will include both TTL indexes and non-TTL indexes. TTL inde
 ### Google Cloud Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -159,8 +153,6 @@ The console lists TTL indexes for your database and includes each index's status
 ### gcloud
 
 1.  In the Google Cloud console, activate Cloud Shell.
-    
-    [Activate Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
     
     At the bottom of the Google Cloud console, a [Cloud Shell](https://docs.cloud.google.com/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
 
@@ -209,8 +201,6 @@ Note that [Audit logs](https://docs.cloud.google.com/firestore/mongodb-compatibi
 ### Google Cloud Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -225,8 +215,6 @@ The console returns to the **Time-to-live** page. On success, Firestore with Mon
 ### gcloud
 
 1.  In the Google Cloud console, activate Cloud Shell.
-    
-    [Activate Cloud Shell](https://console.cloud.google.com/?cloudshell=true)
     
     At the bottom of the Google Cloud console, a [Cloud Shell](https://docs.cloud.google.com/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
 

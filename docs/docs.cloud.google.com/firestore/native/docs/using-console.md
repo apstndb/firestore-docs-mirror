@@ -5,15 +5,13 @@ You can manage Firestore Standard edition through the following actions in the G
   - View, query, add, edit, and delete data.
   - Manage indexes.
 
-**Note:** To manage your Security Rules, use the [Firebase console](https://firebase.google.com/docs/firestore/using-console) .
+> **Note:** To manage your Security Rules, use the [Firebase console](https://firebase.google.com/docs/firestore/using-console) .
 
 ## View data
 
 You can view all your Firestore Standard edition data in the Google Cloud console. From the Firestore Standard edition data viewer, click on a document or collection to open the data nested within that item.
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -34,7 +32,7 @@ A document can exist even if one or more its parents don't exist. For example, t
 
 ![Firestore data viewer in the console, showing a hierarchy of documents with a missing document highlighted and a warning message.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-console-non-existent-ancestor-document.png)
 
-**Warning:** Even though non-existent parent documents appear in the console, they do not appear in queries and snapshots. You must create the document to include it in query results.
+> **Warning:** Even though non-existent parent documents appear in the console, they do not appear in queries and snapshots. You must create the document to include it in query results.
 
 ### Filter data
 
@@ -57,8 +55,6 @@ To remove a collection filter, open the same menu and click **Clear filter** .
 You can query for documents in the ***Query Builder*** tab of the Firestore Studio page.
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
@@ -78,13 +74,13 @@ You can query for documents in the ***Query Builder*** tab of the Firestore Stud
     
     To remove a query clause, click it's remove button delete . To remove all query clauses, click ***Clear*** .
     
-    **Note:** Queries must meet Firestore Standard edition requirements and limitations for queries. Otherwise, the query fails and the page returns an error that describes why the query failed.
+    > **Note:** Queries must meet Firestore Standard edition requirements and limitations for queries. Otherwise, the query fails and the page returns an error that describes why the query failed.
 
 7.  Click ***Run*** to retrieve results from your database.
     
     ![Query builder displaying results of a query.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-query-builder.png)
 
-**Tip:** Queries that you run are stored in your browser history. During the session, you can move forward and back within the browser to access recent queries. You can bookmark queries that you want to access often or to share with others.
+> **Tip:** Queries that you run are stored in your browser history. During the session, you can move forward and back within the browser to access recent queries. You can bookmark queries that you want to access often or to share with others.
 
 ### Query requirements and limitations
 
@@ -109,14 +105,12 @@ In Firestore Standard edition, you store data in documents and organize your doc
 You can add, edit, and delete documents and collections from the Firebase console. To manage your data from the GCP console, go to the **Firestore Studio** page:
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 
 3.  In the navigation menu, click **Firestore Studio** .
 
-**Note:** Read, write, and delete operations performed in the console count towards your Firestore Standard edition usage.
+> **Note:** Read, write, and delete operations performed in the console count towards your Firestore Standard edition usage.
 
 ### Add data
 
@@ -134,7 +128,7 @@ You can add, edit, and delete documents and collections from the Firebase consol
 
 You can delete documents or collections from the data viewer.
 
-**Note:** In some cases, deleting a large number of documents might cause the data viewer to load slowly or to return a timeout error. This applies to delete operations performed through the data viewer and elsewhere.
+> **Note:** In some cases, deleting a large number of documents might cause the data viewer to load slowly or to return a timeout error. This applies to delete operations performed through the data viewer and elsewhere.
 
 To delete a collection:
 
@@ -178,8 +172,6 @@ The Firestore Security Rules feature is closely integrated with Firebase Auth an
 To view your Firestore Security Rules from the Google Cloud console, go to the ***Security Rules*** page:
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select the required database from the list of databases.
 

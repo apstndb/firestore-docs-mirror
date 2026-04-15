@@ -37,8 +37,6 @@ To create a Firestore with MongoDB compatibility database, use one of the follow
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Click **Create a Firestore Database** .
 
@@ -147,8 +145,6 @@ Use one of the following methods to list your databases:
 
 In the Google Cloud console, go to the **Databases** page.
 
-[Go to Databases](https://console.cloud.google.com/firestore/databases)
-
 ##### gcloud CLI
 
 Use the [`gcloud firestore databases list`](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/list) command to list all the databases in your project.
@@ -164,8 +160,6 @@ To view details about a single database, use one of the following methods:
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select a database from the list of databases.
 
@@ -216,8 +210,6 @@ If the database has the delete protection setting enabled, you must first [disab
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Click more\_vert **View more** in the **Actions** column for the database you want to delete. Click **Delete** . A dialog appears.
 
@@ -251,13 +243,11 @@ You can clone an existing database at a selected timestamp into a new database:
       - If PITR isn't enabled, you can select any minute in the past hour.
       - You can check the earliest timestamp that you can pick [in your database's description](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-pitr#get-period) .
 
-**Note:** To clone databases, your Google Account must have the [`datastore.databases.clone` IAM permission](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases#permissions) .
+> **Note:** To clone databases, your Google Account must have the [`datastore.databases.clone` IAM permission](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases#permissions) .
 
 ### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Click more\_vert **View more** in the table row for the database that you want to clone. Click **Clone** . The **Create a clone** dialog appears.
 
@@ -269,7 +259,7 @@ You can clone an existing database at a selected timestamp into a new database:
 
 4.  Click **Create clone** .
 
-**Note:** The cloned database will have the **same encryption configuration** as the source database. If you want to specify a different encryption configuration for the cloned database, you can use Google Cloud CLI commands.
+> **Note:** The cloned database will have the **same encryption configuration** as the source database. If you want to specify a different encryption configuration for the cloned database, you can use Google Cloud CLI commands.
 
 ### gcloud
 
@@ -324,7 +314,7 @@ The following example shows how to configure CMEK encryption for the cloned data
 
 You can use [Identity and Access Management Conditions](https://docs.cloud.google.com/iam/docs/conditions-overview) to configure access permissions on a per-database level. The following examples use the Google Cloud CLI to assign conditional access for one or more databases. You can also [define IAM conditions in the Google Cloud console](https://docs.cloud.google.com/iam/docs/managing-conditional-role-bindings) .
 
-**Warning:** The Google Cloud console does not allow nor deny access to databases based on IAM conditions configured at the database level. IAM conditions are enforced when accessing databases outside of the Google Cloud console such as with the REST API or the client libraries.
+> **Warning:** The Google Cloud console does not allow nor deny access to databases based on IAM conditions configured at the database level. IAM conditions are enforced when accessing databases outside of the Google Cloud console such as with the REST API or the client libraries.
 
 ### View existing IAM policies
 

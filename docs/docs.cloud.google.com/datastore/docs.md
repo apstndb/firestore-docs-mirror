@@ -1,7 +1,5 @@
 # Firestore in Datastore mode documentation
 
-[Read product documentation](https://docs.cloud.google.com/datastore/docs/concepts/overview)
-
 Firestore in Datastore mode is a NoSQL document database built for automatic scaling, high performance, and ease of application development.
 
 While the Datastore mode interface has many of the same features as traditional databases, as a NoSQL database it differs from them in the way it describes relationships between data objects.
@@ -9,10 +7,6 @@ While the Datastore mode interface has many of the same features as traditional 
 Not sure what database option is right for you? Learn more about our [database services](https://cloud.google.com/products/databases/) .
 
 [Go to the Firestore in Datastore mode product page for more.](https://cloud.google.com/datastore/)
-
-## Documentation resources
-
-Find quickstarts and guides, review key references, and get help with common issues.
 
 format\_list\_numbered
 

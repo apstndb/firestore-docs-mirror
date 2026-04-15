@@ -16,8 +16,6 @@ To run the samples, you must enable the Dataflow API:
 
 To enable APIs, you need the Service Usage Admin IAM role ( `roles/serviceusage.serviceUsageAdmin` ), which contains the `serviceusage.services.enable` permission. [Learn how to grant roles](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
 
-[Enable the API](https://console.cloud.google.com/flows/enableapi?apiid=dataflow.googleapis.com&redirect=https://console.cloud.google.com)
-
 ## Example Firestore pipelines
 
 The examples below demonstrate a pipeline that writes data and one that reads and filters data. You can use these samples as a starting point for your own pipelines.

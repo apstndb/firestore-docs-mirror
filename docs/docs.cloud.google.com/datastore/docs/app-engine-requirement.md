@@ -32,8 +32,6 @@ Before unlinking your database from App Engine, make sure you [enable the Firest
 
 To unlink your database, Go to the **Datastore Admin** page and click **Unlink database from app** . It may take up to five minutes for the unlinking operation to take effect.
 
-[Go to Datastore Admin](https://console.cloud.google.com/datastore/settings)
-
 ## Migrating Terraform App Engine Resources
 
 If you previously managed Datastore mode databases via the `google_app_engine_application` Terraform resource, you can use the `google_firestore_database` Terraform resource instead.
@@ -81,7 +79,7 @@ Inspect the output to ensure the import completed successfully. If the output sh
 
 then inspect your Terraform configuration file to see if there were any mistakes, particularly in the project , location , or name fields, and then run `terraform plan` again. Any fields that are requiring Terraform to replace your database will be marked with `# forces replacement` in the plan output.
 
-**Warning:** Do not run `terraform apply` if you see any database resources requiring replacement. Doing so may cause the loss of your Datastore mode data.
+> **Warning:** Do not run `terraform apply` if you see any database resources requiring replacement. Doing so may cause the loss of your Datastore mode data.
 
 Once you are satisfied with the Terraform plan output, run:
 

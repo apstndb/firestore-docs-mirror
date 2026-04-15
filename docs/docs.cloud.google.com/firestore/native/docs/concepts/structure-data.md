@@ -145,3 +145,7 @@ content : "..."<br />
 ## Videos
 
 To learn more, see the following videos:
+
+[Video](https://www.youtube.com/watch?v=haMOUb3KVSo)
+
+[Video](https://www.youtube.com/watch?v=o7d5Zeic63s)

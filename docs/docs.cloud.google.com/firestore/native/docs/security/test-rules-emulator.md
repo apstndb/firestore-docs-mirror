@@ -1,8 +1,10 @@
 # Test security rules
 
+[Video](https://www.youtube.com/watch?v=VDulvfBpzZE)
+
 As you're building your app, you might want to lock down access to your Firestore in Native Mode database. However, before you launch, you'll need more nuanced Firestore Security Rules. With the Firestore in Native Mode emulator, in addition to prototyping and testing your app's [general features and behavior](https://firebase.google.com/docs/emulator-suite/connect_and_prototype) , you can write unit tests that check the behavior of your Firestore Security Rules.
 
-**Note:** The server client libraries bypass all Firestore Security Rules and instead authenticate through [Google Application Default Credentials](https://cloud.google.com/docs/authentication/production) . If you're using the server client libraries or the REST or RPC APIs, make sure to set up [Identity and Access Management (IAM) for Firestore](https://cloud.google.com/firestore/docs/security/iam) .
+> **Note:** The server client libraries bypass all Firestore Security Rules and instead authenticate through [Google Application Default Credentials](https://cloud.google.com/docs/authentication/production) . If you're using the server client libraries or the REST or RPC APIs, make sure to set up [Identity and Access Management (IAM) for Firestore](https://cloud.google.com/firestore/docs/security/iam) .
 
 ## Quickstart
 
@@ -95,7 +97,7 @@ Once imported, implementing unit tests involves:
   - Setting up test suite and per-test before/after hooks with calls to clean up test data and environment, like `RulesTestEnvironment.cleanup()` or `RulesTestEnvironment.clearFirestore()` .
   - Implementing test cases that mimic authentication states using `RulesTestEnvironment.authenticatedContext` and `RulesTestEnvironment.unauthenticatedContext` .
 
-**Note:** A summary of the API for the Rules unit testing library is provided below. You can also review the [full API reference documentation](https://firebase.google.com/docs/reference/emulator-suite/rules-unit-testing/rules-unit-testing) .
+> **Note:** A summary of the API for the Rules unit testing library is provided below. You can also review the [full API reference documentation](https://firebase.google.com/docs/reference/emulator-suite/rules-unit-testing/rules-unit-testing) .
 
 ### Common methods and utility functions
 
@@ -114,7 +116,7 @@ The function accepts an optional object defining a `TestEnvironmentConfig` , whi
       },
     });
 
-Note: The emulators persist data between test invocations on a single emulator run. This might impact your results. To clear data between each test run, call the applicable clear emulator data method, e.g. `clearFirestoreData` , between tests.
+> Note: The emulators persist data between test invocations on a single emulator run. This might impact your results. To clear data between each test run, call the applicable clear emulator data method, e.g. `clearFirestoreData` , between tests.
 
 **`RulesTestEnvironment.authenticatedContext({ user_id: string, tokenOptions?: TokenOptions }) => RulesTestContext`**
 

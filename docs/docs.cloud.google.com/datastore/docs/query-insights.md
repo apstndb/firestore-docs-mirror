@@ -61,8 +61,6 @@ You might also be able to get this permission with [custom roles](https://docs.c
 To view query insights for a Firestore in Datastore mode database, open the database **Query insights** pane in the Google Cloud console.
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  From the list of databases, select a database.
 

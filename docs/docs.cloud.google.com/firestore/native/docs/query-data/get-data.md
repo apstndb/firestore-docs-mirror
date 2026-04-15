@@ -1,6 +1,8 @@
 # Getting data
 
-**Tip:** This page applies to Core operations. To get data with the Pipeline operations for Enterprise edition, see [Get data with Pipeline operations](https://docs.cloud.google.com/firestore/native/docs/pipeline/overview) .
+[Video](https://www.youtube.com/watch?v=Ofux_4c94FI)
+
+> **Tip:** This page applies to Core operations. To get data with the Pipeline operations for Enterprise edition, see [Get data with Pipeline operations](https://docs.cloud.google.com/firestore/native/docs/pipeline/overview) .
 
 There are three ways to retrieve data stored in Firestore. Any of these methods can be used with documents, collections of documents, or the results of queries:
 
@@ -10,7 +12,7 @@ There are three ways to retrieve data stored in Firestore. Any of these methods 
 
 When you set a listener, Firestore sends your listener an initial snapshot of the data, and then another snapshot each time the document changes.
 
-**Note:** While the code samples cover multiple languages, the text explaining the samples refers to the Web method names.
+> **Note:** While the code samples cover multiple languages, the text explaining the samples refers to the Web method names.
 
 ## Before you begin
 
@@ -273,7 +275,7 @@ To get started, write some data about cities so we can look at different ways to
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     var citiesRef = db.collection("cities");
     
@@ -977,7 +979,7 @@ The following example shows how to retrieve the contents of a single document us
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     var docRef = db.collection("cities").doc("SF");
     
@@ -1214,7 +1216,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
       puts "Document #{snapshot.document_id} does not exist!"
     endget_data.rb
 
-**Note:** If there is no document at the location referenced by `docRef` , the resulting `document` will be empty and calling `exists` on it will return `false` .
+> **Note:** If there is no document at the location referenced by `docRef` , the resulting `document` will be empty and calling `exists` on it will return `false` .
 
 ### Source Options
 
@@ -1243,7 +1245,7 @@ You can specify the `source` option in a `get()` call to change the default beha
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     var docRef = db.collection("cities").doc("SF");
     
@@ -1412,7 +1414,7 @@ To use custom objects, you must define a [FirestoreDataConverter](https://fireba
 
 ### Web version 9
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
     class City {
         constructor (name, state, country ) {
@@ -1444,7 +1446,7 @@ To use custom objects, you must define a [FirestoreDataConverter](https://fireba
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
     class City {
         constructor (name, state, country ) {
@@ -1476,7 +1478,7 @@ Call your data converter with your read operations. After conversion, you can ac
 
 ### Web version 9
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
     import { doc, getDoc} from "firebase/firestore"; 
     
@@ -1495,7 +1497,7 @@ Call your data converter with your read operations. After conversion, you can ac
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
     db.collection("cities").doc("LA")
       .withConverter(cityConverter)
@@ -1772,7 +1774,7 @@ You can also retrieve multiple documents with one request by querying documents 
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     db.collection("cities").where("capital", "==", true)
         .get()
@@ -2032,7 +2034,7 @@ In addition, you can retrieve *all* documents in a collection by omitting the `w
 
 ### Web version 8
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     db.collection("cities").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -2255,7 +2257,7 @@ To retrieve all the documents from a subcollection, create a reference with the 
 
 ### Web version 9
 
-[Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
+> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
     const { collection, getDocs } = require("firebase/firestore");
     // Query a reference to a subcollection

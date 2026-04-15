@@ -12,7 +12,7 @@ An operation may fail when:
 
 In all these cases, the Datastore API returns an error.
 
-**Note:** If your application receives an exception when committing a transaction, it does not always mean that the transaction failed. You can receive errors in cases where transactions have been committed. Whenever possible, make your transactions idempotent so that if you repeat a transaction, the end result will be the same.
+> **Note:** If your application receives an exception when committing a transaction, it does not always mean that the transaction failed. You can receive errors in cases where transactions have been committed. Whenever possible, make your transactions idempotent so that if you repeat a transaction, the end result will be the same.
 
 Transactions are an optional feature. You're not required to use transactions to perform database operations.
 
@@ -234,7 +234,7 @@ Firestore in Datastore mode supports three concurrency modes. The concurrency mo
     
     When two or more concurrent read-write transactions read or write the same data, only the first transaction to commit its changes succeeds. Other transactions that perform writes fail on commit.
     
-    **Note:** In the past, legacy Cloud Datastore databases were upgraded to Firestore in Datastore mode. Most upgraded databases were initially configured to use the optimistic concurrency mode.
+    > **Note:** In the past, legacy Cloud Datastore databases were upgraded to Firestore in Datastore mode. Most upgraded databases were initially configured to use the optimistic concurrency mode.
 
   - **Optimistic With Entity Groups**
     
@@ -244,7 +244,7 @@ Firestore in Datastore mode supports three concurrency modes. The concurrency mo
       - Writes to an entity group are limited to 1 per second.
       - Queries in transactions must be ancestor queries.
     
-    **Note:** In the past, legacy Cloud Datastore databases were upgraded to Firestore in Datastore mode. Databases that depended on entity group transactional semantics were initially configured to use the Optimistic With Entity Groups concurrency mode.
+    > **Note:** In the past, legacy Cloud Datastore databases were upgraded to Firestore in Datastore mode. Databases that depended on entity group transactional semantics were initially configured to use the Optimistic With Entity Groups concurrency mode.
     
     To remove `OPTIMISTIC_WITH_ENTITY_GROUPS` query, transaction and write throughput limitations, change your project's concurrency mode to Optimistic. To ensure this change is compatible with your project:
     
@@ -256,7 +256,7 @@ Firestore in Datastore mode supports three concurrency modes. The concurrency mo
     
     4.  [Change your main project's concurrency mode](https://docs.cloud.google.com/datastore/docs/concepts/transactions#change_concurrency_mode) from `OPTIMISTIC_WITH_ENTITY_GROUPS` to `OPTIMISTIC` .
     
-    **Note:** The [Remote API](https://docs.cloud.google.com/appengine/docs/standard/python/tools/remoteapi) library requires Entity Groups and will not work in the `OPTIMISTIC` concurrency mode. If you use the Remote API, either migrate off this API, or to continue using this library, keep your project in the `OPTIMISTIC_WITH_ENTITY_GROUPS` mode.
+    > **Note:** The [Remote API](https://docs.cloud.google.com/appengine/docs/standard/python/tools/remoteapi) library requires Entity Groups and will not work in the `OPTIMISTIC` concurrency mode. If you use the Remote API, either migrate off this API, or to continue using this library, keep your project in the `OPTIMISTIC_WITH_ENTITY_GROUPS` mode.
 
 ### View concurrency mode
 
@@ -622,7 +622,7 @@ As before, a transaction is necessary to handle the case where another user is a
 
 When a transaction fails, you can have your app retry the transaction until it succeeds, or you can let your users deal with the error by propagating it to your app's user interface level. You do not have to create a retry loop around every transaction.
 
-**Note:** A transaction should happen as quickly as possible to reduce contention with other transactions. Contention will either delay transactions or cause them to fail. As much as possible, prepare data outside of the transaction, then execute the transaction to perform operations that depend on a consistent state. The application should prepare keys for objects used outside the transaction, then fetch the entities inside the transaction.
+> **Note:** A transaction should happen as quickly as possible to reduce contention with other transactions. Contention will either delay transactions or cause them to fail. As much as possible, prepare data outside of the transaction, then execute the transaction to perform operations that depend on a consistent state. The application should prepare keys for objects used outside the transaction, then fetch the entities inside the transaction.
 
 ### Read-only transactions
 

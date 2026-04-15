@@ -55,8 +55,6 @@ Use one of the following tools to create a backup schedule.
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists.
 
@@ -106,8 +104,6 @@ Replace the following:
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists.
 
@@ -178,8 +174,6 @@ To list all backup schedules for a database, use one of the following methods:
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists.
 
@@ -203,8 +197,6 @@ To retrieve information about a backup schedule, use one of the following method
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists.
 
@@ -232,8 +224,6 @@ To update the retention period of a backup schedule, use one of the following me
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** .
 
@@ -267,8 +257,6 @@ To delete a backup schedule, use one of the following methods:
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists.
 
@@ -302,8 +290,6 @@ To list available backups, use one of the following methods:
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists.
 
@@ -337,8 +323,6 @@ To view details about a backup, use one of the following methods:
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists.
 
@@ -363,13 +347,11 @@ Replace the following:
 
 To delete a backup, use one of the following methods.
 
-**Warning:** You cannot recover a deleted backup.
+> **Warning:** You cannot recover a deleted backup.
 
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists. The **Disaster recovery** page opens. This page describes backup schedules and lists available backups.
 
@@ -392,7 +374,7 @@ Replace the following:
   - LOCATION : The location of the database.
   - BACKUP\_ID : The ID of a backup. You can view the ID of each backup when you [list all backups](https://docs.cloud.google.com/firestore/native/docs/backups#list_backups) .
 
-**Note:** Firestore stores metadata related to backups and backup schedules related to a database. Firestore retains this metadata until **all** backups for the database expire or are deleted.
+> **Note:** Firestore stores metadata related to backups and backup schedules related to a database. Firestore retains this metadata until **all** backups for the database expire or are deleted.
 
 ## Restore data from a database backup
 
@@ -403,8 +385,6 @@ To begin a restore operation, use one of the following methods:
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists. The **Disaster recovery** page opens. This page describes backup schedules and lists available backups.
 

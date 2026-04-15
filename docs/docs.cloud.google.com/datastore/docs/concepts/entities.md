@@ -27,7 +27,7 @@ The snippets on this page build upon the example at [Getting started with Firest
 
 Applications can use the Firestore in Datastore mode API to create, retrieve, update, and delete entities. If the application knows the complete key for an entity (or can derive it from its parent key, kind, and identifier), it can use the key to operate directly on the entity. An application can also obtain an entity's key as a result of a query; see the [Queries](https://docs.cloud.google.com/datastore/docs/concepts/queries) topic for more information.
 
-**Note:** If you want to learn about creating, modifying, or deleting entities in the Google Cloud console, see the [Quickstart](https://docs.cloud.google.com/datastore/docs/store-query-data) .
+> **Note:** If you want to learn about creating, modifying, or deleting entities in the Google Cloud console, see the [Quickstart](https://docs.cloud.google.com/datastore/docs/store-query-data) .
 
 ### Create an entity
 
@@ -588,7 +588,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
 The provided data overwrites the existing entity. The entire object must be sent to the database. If the entity does not exist, the update will fail. If you want to update-or-create an entity, use `upsert` as described previously. Using a [transaction](https://docs.cloud.google.com/datastore/docs/concepts/transactions#uses_for_transactions) lets you perform the `get` and `update` operations in a single atomic transaction.
 
-**Note:** To delete a property, remove the property from the entity, then save the entity.
+> **Note:** To delete a property, remove the property from the entity, then save the entity.
 
 ### Delete an entity
 
@@ -1017,7 +1017,7 @@ Batch operations don't change your read, write, or delete costs, which are docum
 
 The size of the entities involved in an operation does not affect the read, write, or delete costs. However, the size of entities does impact your [storage size costs](https://docs.cloud.google.com/datastore/docs/concepts/storage-size) .
 
-**Note:** The multiple updates specified in a non-transactional `commit()` are **not** performed transactionally. So if the `commit` ends with an error, it is possible that some, none, or all of the requested operations have been performed. If you need transactional batch updates, use the [transactional API](https://docs.cloud.google.com/datastore/docs/concepts/transactions) .
+> **Note:** The multiple updates specified in a non-transactional `commit()` are **not** performed transactionally. So if the `commit` ends with an error, it is possible that some, none, or all of the requested operations have been performed. If you need transactional batch updates, use the [transactional API](https://docs.cloud.google.com/datastore/docs/concepts/transactions) .
 
 ### Increment and other property transforms
 
@@ -1032,7 +1032,7 @@ Datastore mode supports the following property transforms:
   - `removeAllFromArray`
   - `setToServerValue(REQUEST_TIME)`
 
-**Note:** Each of these operation is billed for one read operation and one write operation.
+> **Note:** Each of these operation is billed for one read operation and one write operation.
 
 The following example demonstrate a property transform. This operation increments properties by the specified values:
 
@@ -1382,7 +1382,7 @@ Instead of using key name strings or generating numeric IDs automatically, advan
 
 Datastore mode's automatic ID generator will keep track of IDs that have been allocated with these methods and will avoid reusing them for another entity, so you can safely use such IDs without conflict. You can't manually choose which values are returned by the `allocateIds()` method. The values returned by `allocateIds()` are assigned by Datastore mode.
 
-**Important:** Don't use the value `0` (zero) for the ID. If you do, you will get an automatically allocated ID.
+> **Important:** Don't use the value `0` (zero) for the ID. If you do, you will get an automatically allocated ID.
 
 ## Ancestor paths
 
@@ -1994,4 +1994,4 @@ When a query involves a property with values of mixed types, a Datastore mode da
 8.  Geographical points
 9.  Datastore mode keys
 
-**Note:** Integers and floating-point numbers are considered separate types in Datastore mode. If an entity uses a mix of integers and floats for the same property, all integers will be sorted before all floats, for example: `7` \< `3.2` .
+> **Note:** Integers and floating-point numbers are considered separate types in Datastore mode. If an entity uses a mix of integers and floats for the same property, all integers will be sorted before all floats, for example: `7` \< `3.2` .

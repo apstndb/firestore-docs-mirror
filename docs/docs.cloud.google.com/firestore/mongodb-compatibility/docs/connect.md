@@ -12,7 +12,7 @@ The following are required for Firestore with MongoDB compatibility clients:
 
 The database connection string depends on the UID of the database, the location of database, and the authentication mechanism. The following instructions describe how the connection string is formed.
 
-**Note:** A database has both a database ID and UID. The database ID is the resource name you set when you create a database. The UID is a system-generated UUID4 for the database.
+> **Note:** A database has both a database ID and UID. The database ID is the resource name you set when you create a database. The UID is a system-generated UUID4 for the database.
 
 The exact connection string depends on the authentication mechanism, but the base connection string uses the following format:
 
@@ -25,8 +25,6 @@ You can obtain the base connection string in one of the following ways:
 ##### Console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  In the list of databases, click the database ID of the relevant database.
 
@@ -70,8 +68,6 @@ To create a user for your Firestore with MongoDB compatibility database, use one
 ##### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
-    
-    [Go to Databases](https://console.cloud.google.com/firestore/databases)
 
 2.  Select a database from the list of databases.
 
@@ -87,7 +83,7 @@ To create a user for your Firestore with MongoDB compatibility database, use one
     
     The new user's password will be displayed in the confirmation dialog.
     
-    **Caution:** The password is displayed once and is not retrievable. Store this password for future use.
+    > **Caution:** The password is displayed once and is not retrievable. Store this password for future use.
 
 ##### gcloud CLI
 
@@ -104,7 +100,7 @@ To create a user for your Firestore with MongoDB compatibility database, use one
     
     The output of this command includes the user's password.
     
-    **Caution:** The password is displayed once and is not retrievable. Store this password for future use.
+    > **Caution:** The password is displayed once and is not retrievable. Store this password for future use.
     
     The output resembles the following:
     

@@ -6,7 +6,7 @@ This page describes how to restore data in a backup to a database with the same 
 
 An in-place restore lets you restore a database from a backup to the source database that created the backup while the original database still exists. An in-place restore helps you avoid rerouting traffic or creating a database with a different name.
 
-**Warning:** Once you start the in-place restore process, the original database is permanently lost, and you can't undo this operation.
+> **Warning:** Once you start the in-place restore process, the original database is permanently lost, and you can't undo this operation.
 
 A restore operation must use a destination database that doesn't already exist. You can, however, simulate an in-place restore by deleting the source database and then restoring from a backup to a new database with the same name as the source database.
 

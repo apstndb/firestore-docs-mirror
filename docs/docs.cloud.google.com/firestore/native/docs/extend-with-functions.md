@@ -2,7 +2,7 @@
 
 With Cloud Functions, you can deploy Node.js code to handle events triggered by changes in your Firestore database. This allows you to easily add server-side functionality into your app without running your own servers.
 
-**Note:** The examples on this page use [Cloud Functions for Firebase](https://firebase.google.com/docs/functions/) , which has [some differences from Cloud Functions for Google Cloud](https://docs.cloud.google.com/functions/docs/concepts/functions-and-firebase) .
+> **Note:** The examples on this page use [Cloud Functions for Firebase](https://firebase.google.com/docs/functions/) , which has [some differences from Cloud Functions for Google Cloud](https://docs.cloud.google.com/functions/docs/concepts/functions-and-firebase) .
 
 For examples of use cases, see [What Can I Do with Cloud Functions?](https://firebase.google.com/docs/functions/use-cases) or the [Functions Samples](https://github.com/firebase/functions-samples) GitHub repository.
 
@@ -23,7 +23,7 @@ The Cloud Functions for Firebase SDK exports a [`functions.firestore`](https://f
 | [`onDelete`](https://firebase.google.com/docs/reference/functions/firebase-functions.firestore.documentbuilder.md#firestoredocumentbuilderondelete) |           Triggered when a document with data is deleted.           |
 | [`onWrite`](https://firebase.google.com/docs/reference/functions/firebase-functions.firestore.documentbuilder.md#firestoredocumentbuilderonwrite)   | Triggered when `onCreate` , `onUpdate` or `onDelete` is triggered.  |
 
-**Note:** Firestore events will trigger only on document changes. An update to a Firestore document, where data is unchanged (a no-op write), will not generate an update or write event. It is not possible to add events to specific fields.
+> **Note:** Firestore events will trigger only on document changes. An update to a Firestore document, where data is unchanged (a no-op write), will not generate an update or write event. It is not possible to add events to specific fields.
 
 If you don't have a project enabled for Cloud Functions for Firebase yet, then read [Get Started: Write and Deploy Your First Functions](https://firebase.google.com/docs/functions/get-started) to configure and set up your Cloud Functions for Firebase project.
 
@@ -43,7 +43,7 @@ To define a Firestore trigger, specify a document path and an event type:
 
 Document paths can reference either a [specific document](https://docs.cloud.google.com/firestore/native/docs/extend-with-functions#specific-documents) or a [wildcard pattern](https://docs.cloud.google.com/firestore/native/docs/extend-with-functions#wildcards-parameters) .
 
-**Important:** Document paths must **not** contain trailing slashes.
+> **Important:** Document paths must **not** contain trailing slashes.
 
 ### Specify a single document
 
@@ -93,7 +93,7 @@ Wildcard matches are extracted from the document path and stored into `context.p
           // change.after.data() == {body: "Hello"}
         });index.js
 
-**Note:** Your trigger must *always* point to a document, even if you're using a wildcard. For example, `users/{userId}/{messageCollectionId}` is not valid because `{messageCollectionId}` is a collection. However, `users/{userId}/{messageCollectionId}/{messageId}` *is* valid because `{messageId}` will always point to a document.
+> **Note:** Your trigger must *always* point to a document, even if you're using a wildcard. For example, `users/{userId}/{messageCollectionId}` is not valid because `{messageCollectionId}` is a collection. However, `users/{userId}/{messageCollectionId}/{messageId}` *is* valid because `{messageId}` will always point to a document.
 
 ## Event Triggers
 
@@ -240,7 +240,7 @@ This `DocumentReference` comes from the [Firestore Node.js SDK](https://docs.clo
           }, {merge: true});
         });index.js
 
-**Note:** Any time you write to the same document that triggered a function, you are at risk of creating an infinite loop. Use caution and ensure that you safely exit the function when no change is needed.
+> **Note:** Any time you write to the same document that triggered a function, you are at risk of creating an infinite loop. Use caution and ensure that you safely exit the function when no change is needed.
 
 ### Data outside the trigger event
 
@@ -259,7 +259,7 @@ Cloud Functions execute in a trusted environment, which means they are authorize
         db.doc('some/otherdoc').set({ ... });
       });
 
-**Note:** Reads and writes performed in Cloud Functions are not controlled by your security rules, they can access any part of your database.
+> **Note:** Reads and writes performed in Cloud Functions are not controlled by your security rules, they can access any part of your database.
 
 ## Limitations
 

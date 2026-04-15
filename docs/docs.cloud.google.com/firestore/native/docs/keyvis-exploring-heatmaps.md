@@ -95,7 +95,7 @@ To compare different metrics for a key bucket at the same point in time, you can
 2.  Click to pin the tooltip. The values in the side pane stay fixed to the key bucket and point in time you've pinned.
 3.  To display a metric in the large heatmap, click the solid arrow on the left for that metric. The tooltip in the main window shows you the full details for that metric.
 
-**Note:** Index keys provide only the **Index Write Ops/s** metric.
+> **Note:** Index keys provide only the **Index Write Ops/s** metric.
 
 ## What's next
 

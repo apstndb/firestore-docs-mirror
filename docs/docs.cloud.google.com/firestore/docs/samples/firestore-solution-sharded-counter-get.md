@@ -4,7 +4,6 @@ Getting a Firestore document while using shards
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Distributed counters](https://firebase.google.com/docs/firestore/solutions/counters)
   - [Support frequent and distributed counters](https://docs.cloud.google.com/firestore/native/docs/solutions/counters)
 
 ## Code sample
@@ -49,21 +48,6 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
          total += shardCount
      }
      return total, nil
-    }
-
-### Node.js
-
-To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
-
-    async function getCount(docRef) {
-      const querySnapshot = await docRef.collection('shards').get();
-      const documents = querySnapshot.docs;
-    
-      let count = 0;
-      for (const doc of documents) {
-        count += doc.get('count');
-      }
-      return count;
     }
 
 ### PHP

@@ -1,8 +1,8 @@
-**Note:** This content applies to the emulator for legacy Cloud Datastore. To emulate Firestore in Datastore mode, [use `gcloud emulators firestore start --database-mode=datastore-mode`](https://docs.cloud.google.com/datastore/docs/emulator) instead.
+> **Note:** This content applies to the emulator for legacy Cloud Datastore. To emulate Firestore in Datastore mode, [use `gcloud emulators firestore start --database-mode=datastore-mode`](https://docs.cloud.google.com/datastore/docs/emulator) instead.
 
 The Datastore emulator provides local emulation of the production Datastore environment. You can use the emulator to develop and test your application locally. In addition, the emulator can help you generate indexes for your production Datastore instance and delete unneeded indexes. This page guides you through installing the emulator, starting the emulator, and setting environment variables to connect your application to the emulator.
 
-**Note:** To access the emulator from App Engine, see [Using the Local Development Server](https://docs.cloud.google.com/appengine/docs/standard/python/tools/using-local-server#using_the_local_datastore) .
+> **Note:** To access the emulator from App Engine, see [Using the Local Development Server](https://docs.cloud.google.com/appengine/docs/standard/python/tools/using-local-server#using_the_local_datastore) .
 
 ## Known issues
 
@@ -66,7 +66,7 @@ After you start the emulator, you need to set environment variables so that your
 
 You need to set the environment variables each time you start the emulator. The environment variables depend on dynamically assigned port numbers that could change when you restart the emulator.
 
-**Note:** If you use the .NET client library, [use this method to read the environment variables and connect to the emulator](https://googleapis.github.io/google-cloud-dotnet/docs/Google.Cloud.Datastore.V1/#using-the-datastore-emulator) .
+> **Note:** If you use the .NET client library, [use this method to read the environment variables and connect to the emulator](https://googleapis.github.io/google-cloud-dotnet/docs/Google.Cloud.Datastore.V1/#using-the-datastore-emulator) .
 
 ### Automatically setting the variables
 
@@ -96,15 +96,11 @@ If your application and the emulator run on different machines, set the environm
 
 2.  On the machine that runs your application, set the environment variables and values as directed by the output of the `env-init` command. For example:
     
-    Linux / macOS
-    
         export DATASTORE_DATASET=my-project-id
         export DATASTORE_EMULATOR_HOST=::1:8432
         export DATASTORE_EMULATOR_HOST_PATH=::1:8432/datastore
         export DATASTORE_HOST=http://::1:8432
         export DATASTORE_PROJECT_ID=my-project-id
-    
-    Windows
     
         set DATASTORE_DATASET=my-project-id
         set DATASTORE_EMULATOR_HOST=::1:8432
@@ -150,15 +146,11 @@ If your application and the emulator run on different machines, remove the envir
 
 2.  On the machine that runs your application, remove the environment variables as directed by the output of the `env-unset` command. For example:
     
-    Linux / macOS
-    
         unset DATASTORE_DATASET
         unset DATASTORE_EMULATOR_HOST
         unset DATASTORE_EMULATOR_HOST_PATH
         unset DATASTORE_HOST
         unset DATASTORE_PROJECT_ID
-    
-    Windows
     
         set DATASTORE_DATASET=
         set DATASTORE_EMULATOR_HOST=

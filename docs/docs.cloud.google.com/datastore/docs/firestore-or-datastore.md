@@ -214,7 +214,7 @@ See [Create and manage databases](https://docs.cloud.google.com/datastore/docs/m
 
 If your database is empty, you can change between Native mode and Datastore mode.
 
-**Warning:** Mode changes are only allowed if the database is empty of all entities and documents. A mode change takes a few minutes to take effect during which time the database will reject writes.
+> **Warning:** Mode changes are only allowed if the database is empty of all entities and documents. A mode change takes a few minutes to take effect during which time the database will reject writes.
 
 Change database to **Native mode** :
 

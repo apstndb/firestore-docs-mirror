@@ -1,10 +1,12 @@
 # Getting started with security rules
 
+[Video](https://www.youtube.com/watch?v=eW5MdE3ZcAw)
+
 With Firestore Security Rules, you can focus on building a great user experience without having to manage infrastructure or write server-side authentication and authorization code.
 
 Security rules provide access control and data validation in a simple yet expressive format. To build user-based and role-based access systems that keep your users' data safe, you need to use [Firebase Authentication](https://firebase.google.com/docs/auth/) with Firestore Security Rules.
 
-**Note:** The server client libraries bypass all Firestore Security Rules and instead authenticate through [Google Application Default Credentials](https://cloud.google.com/docs/authentication/production) . If you're using the server client libraries or the REST or RPC APIs, make sure to set up [Identity and Access Management (IAM) for Firestore](https://cloud.google.com/firestore/docs/security/iam) .
+> **Note:** The server client libraries bypass all Firestore Security Rules and instead authenticate through [Google Application Default Credentials](https://cloud.google.com/docs/authentication/production) . If you're using the server client libraries or the REST or RPC APIs, make sure to set up [Identity and Access Management (IAM) for Firestore](https://cloud.google.com/firestore/docs/security/iam) .
 
 ## Security rules version 2
 
@@ -81,7 +83,7 @@ Before you can start using Firestore from your mobile app, you will need to depl
 
 Updates to Firestore Security Rules can take up to a minute to affect new queries and listeners. However, it can take up to 10 minutes to fully propagate the changes and affect any active listeners.
 
-**Note:** **When you [deploy security rules using the Firebase CLI](https://firebase.google.com/docs/cli/#deployment) , the rules defined in your project directory overwrite any existing rules in the Firebase console.** So, if you choose to define or edit your security rules using the Firebase console, make sure that you also update the rules defined in your project directory.
+> **Note:** **When you [deploy security rules using the Firebase CLI](https://firebase.google.com/docs/cli/#deployment) , the rules defined in your project directory overwrite any existing rules in the Firebase console.** So, if you choose to define or edit your security rules using the Firebase console, make sure that you also update the rules defined in your project directory.
 
 ### Use the Firebase console
 
@@ -89,7 +91,7 @@ To set up and deploy your first set of rules, for the default database in your p
 
 Write your rules in the online editor, then click **Publish** .
 
-**Note:** The Firebase console currently supports deployment of Firestore Security Rules to your project's default database. Future updates will allow you to deploy Rules to additional databases in your project. You can use the [Firebase CLI](https://docs.cloud.google.com/firestore/native/docs/security/get-started#use_the_cli) to work with Rules in your multi-database projects.
+> **Note:** The Firebase console currently supports deployment of Firestore Security Rules to your project's default database. Future updates will allow you to deploy Rules to additional databases in your project. You can use the [Firebase CLI](https://docs.cloud.google.com/firestore/native/docs/security/get-started#use_the_cli) to work with Rules in your multi-database projects.
 
 ### Use the Firebase CLI
 

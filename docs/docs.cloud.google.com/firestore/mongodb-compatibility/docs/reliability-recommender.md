@@ -65,8 +65,6 @@ You can view reliability recommendations only if you have non-empty, in-use data
 You can view your recommendations by doing following:
 
 1.  Go to the Google Cloud console, or use the following button:
-    
-    [Go to Google Cloud console](https://console.cloud.google.com/)
 
 2.  Select the **Recommendations** tab.
 
