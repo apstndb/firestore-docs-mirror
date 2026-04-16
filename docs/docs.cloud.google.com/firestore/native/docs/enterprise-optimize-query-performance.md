@@ -98,5 +98,5 @@ You can use [Query Explain](https://docs.cloud.google.com/firestore/native/docs/
 While `forceIndex` provides more control over query execution, Firestore in Native Mode's query optimizer is generally efficient for most use cases. Consider the following best practices when using `forceIndex` :
 
   - Use `forceIndex` judiciously. If you observe suboptimal performance with the default query plan, use [Query Explain](https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain) to diagnose the issue before forcing an index.
-  - When using `forceIndex` , make sure to test your queries with realistic data volumes to understand their performance and cost characteristics.ß
+  - When using `forceIndex` , make sure to test your queries with realistic data volumes to understand their performance and cost characteristics.
   - Avoid using `forceIndex: "primary"` on large collections in production environments.

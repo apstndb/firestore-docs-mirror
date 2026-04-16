@@ -6,9 +6,7 @@
 
 ## Background
 
-Pipeline operations are a new query interface for Firestore. This interface provides advanced query functionality that includes complex expressions. It also adds support for many new functions like `min, max, substring, regex_match` and `array_contains_all` .
-
-With Pipeline operations, index creation is also completely optional, streamlining the process of developing new queries. Pipeline operations also remove many limitations on query shape allowing you to specify large `in` or `or` queries.
+Pipeline operations provide a new query interface for Firestore that supports advanced query functionality and complex expressions. It introduces many new functions, including `min(...)` , `max(...)` , `substring(...)` , `regex_match(...)` , and `array_contains_all(...)` , and stages to be able to perform complex transformations.
 
 ## Getting Started
 

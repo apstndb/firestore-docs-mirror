@@ -236,7 +236,7 @@ print(f"Auth information: {cloud_event['authtype']}")
 
 This trigger invokes your service with an event similar to:
 
-``` notranslate suppresswarning
+``` suppresswarning notranslate
 {
     "oldValue": { // Update and Delete operations only
         A Document object containing a pre-operation document snapshot

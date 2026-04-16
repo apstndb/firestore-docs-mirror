@@ -94,7 +94,7 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 
     query = datastore.query("Task")
                      .where("done", "=", false)
-                 .where("priority", "=", 4)
+                     .where("priority", "=", 4)
 
 ## What's next
 

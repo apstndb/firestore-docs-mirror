@@ -4,6 +4,14 @@ You can see the latest product updates for all of Google Cloud on the [Google Cl
 
 To get the latest product updates delivered to you, add the URL of this page to your [feed reader](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the [feed URL](https://docs.cloud.google.com/feeds/fs-release-notes.xml) directly.
 
+## April 13, 2026
+
+Feature
+
+  - You can now use the **Usage Insights** dashboard in the Google Cloud console to monitor and analyze your billable usage for specific Firestore databases. Usage insights help you track granular usage data, optimize costs, and monitor historical trends.
+    
+    To learn more, see the guide to analyze usage insights for [Native mode](https://docs.cloud.google.com/firestore/native/docs/usage-insights) and [MongoDB compabatibility mode](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/usage-insights) .
+
 ## March 23, 2026
 
 Feature

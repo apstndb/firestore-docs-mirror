@@ -585,7 +585,6 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/saved-queries
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/securing-with-vpc-sc
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/server-side-encryption
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/shredded-fields
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-data-types-drivers
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-36
@@ -632,7 +631,6 @@ https://docs.cloud.google.com/firestore/native/docs/enterprise-optimize-query-pe
 https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain
 https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain-reference
 https://docs.cloud.google.com/firestore/native/docs/enterprise-query-insights
-https://docs.cloud.google.com/firestore/native/docs/enterprise-shredded-fields
 https://docs.cloud.google.com/firestore/native/docs/eventarc
 https://docs.cloud.google.com/firestore/native/docs/extend-with-cloud-run-functions
 https://docs.cloud.google.com/firestore/native/docs/extend-with-functions

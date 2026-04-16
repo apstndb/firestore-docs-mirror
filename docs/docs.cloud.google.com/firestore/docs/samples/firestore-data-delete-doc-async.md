@@ -12,7 +12,7 @@ For detailed documentation that includes this code sample, see the following:
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    await db.collection("cities").document(&quot;DC").delete()
+    await db.collection("cities").document("DC").delete()
 
 ## What's next
 
