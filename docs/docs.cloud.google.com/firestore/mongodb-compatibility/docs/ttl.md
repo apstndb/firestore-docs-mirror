@@ -8,7 +8,7 @@ Use TTL indexes to automatically remove stale data from your databases. A TTL in
 
 ### Pricing
 
-TTL delete operations count towards your document delete costs. For pricing of delete operations, see [Firestore Enterprise edition pricing](https://cloud.google.com/firestore/enterprise/pricing) .
+TTL delete operations use managed delete units. For pricing, see [Firestore Enterprise edition pricing](https://cloud.google.com/firestore/enterprise/pricing) .
 
 ### Limits and constraints
 
@@ -35,9 +35,11 @@ Note the following key behaviors of TTL-driven deletion:
 
   - TTL is designed to minimize impact on other database activities. Deletions driven by TTL are treated with a lower priority. Other strategies are also in place to smooth out traffic spikes from TTL-driven deletes.
 
-### TTL fields and non-TTL indexes
+### Differences with TTL indexes
 
-A TTL field can be indexed or unindexed. However, because a TTL field is a timestamp, including the field in a non-TTL index can affect performance at higher traffic rates. Including a timestamp field in a non-TTL index can create hotspots which is against best practices. Hotspots are high read, write, and delete rates to a narrow document range.
+Unlike other Firestore indexes, TTL indexes are not used during query planning to enhance performance. To improve query performance on a field used with TTL, you must add it to a separate non-TTL index.
+
+It is important to note that since TTL fields use timestamps, adding them to a non-TTL index may lead to hotspots. Hotspots occur when high rates of writes and deletes are concentrated within a narrow range of documents, which can negatively impact scaling performance during periods of heavy write traffic.
 
 ## Permissions
 
@@ -49,12 +51,6 @@ The principal creating or dropping a TTL index requires the following permission
 
 For roles that assign these permissions, see [Firestore Identity and Access Management roles](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam#predefined_roles) .
 
-## Before you begin
-
-Before you use the gcloud CLI to manage TTL indexes, use the [`gcloud components update`](https://cloud.google.com/sdk/gcloud/reference/components/update) command to update components to the latest available version:
-
-    gcloud components update
-
 <span id="create_ttl_policy"></span>
 
 ## Create a TTL index
@@ -63,7 +59,7 @@ When you create a TTL index, you designate a document field as the expiration ti
 
 TTL uses a specified field to identify documents that are eligible for deletion. The TTL field must be set to either a `Timestamp` / `BSON Date` value or an `Array` value containing a `Timestamp` / `BSON Date` value. You can select a field that already exists or you can designate a field that you plan to add later.
 
-> **Note:** Some TTL indexes created before February 2026 don't apply to `Timestamp` / `BSON Date` values inside of `Array` values. To update the index to apply to `Array` values, drop and re-create the index.
+> **Note:** Some TTL indexes created before February 2026 don't apply to `Timestamp` / `BSON Date` values inside of `Array` values. To update the TTL index to apply to `Array` values, drop and re-create the index.
 
 Consider the following before you set the TTL field value:
 
@@ -88,7 +84,7 @@ For example:
 Note the following limitations:
 
   - TTL indexes must include exactly one field.
-  - TTL indexes are not usable in queries.
+  - TTL indexes are not used in query planning, and do not improve the performance of queries.
   - You can create only one TTL index per collection.
   - [Audit logs](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/audit-logging) for TTL index creation with the MongoDB API use the method name `google.firestore.admin.v1.FirestoreAdmin.UpdateField` .
 
@@ -116,7 +112,7 @@ The console returns to the **Time-to-live** page. If the operation successfully 
 
 2.  Use the [`firestore fields ttls update`](https://cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update) command to configure a TTL index. Add the `--async` flag to prevent the gcloud CLI from waiting for the operation to complete.
     
-    ``` notranslate
+    ``` 
      gcloud firestore fields ttls update
     ttl_field --collection-group=collection_name
     --enable-ttl 
@@ -126,7 +122,7 @@ The console returns to the **Time-to-live** page. If the operation successfully 
 
 ### TTL index creation duration
 
-Even on an empty database, it can take ten minutes or more to create a TTL index. Once you start an operation, closing the terminal does not cancel the operation.
+It can take a minimum of ten minutes or more to create a TTL index. Once you start an operation, closing the terminal does not cancel the operation.
 
 ## View TTL indexes
 
@@ -158,15 +154,11 @@ The console lists TTL indexes for your database and includes each index's status
 
 2.  Use the [`firestore fields ttls list`](https://cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/list) command to configure a TTL index. The following command lists all TTL indexes.
     
-    ``` notranslate
-    gcloud firestore fields ttls list
-    ```
+        gcloud firestore fields ttls list
     
     To list TTL indexes under a specific collection, use the following:
     
-    ``` notranslate
-    gcloud firestore fields ttls list  --collection-group=collection_name
-    ```
+        gcloud firestore fields ttls list  --collection-group=collection_name
 
 ### View operation details
 
@@ -174,9 +166,7 @@ You can use the gcloud CLI to view more details about a TTL index that is in the
 
 Use the [`operations list`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command to see all running and recently completed operations:
 
-``` notranslate
-gcloud firestore operations list
-```
+    gcloud firestore operations list
 
 The response includes an estimate of the operation's progress.
 
@@ -220,9 +210,7 @@ The console returns to the **Time-to-live** page. On success, Firestore with Mon
 
 2.  Use the [`firestore fields ttls update`](https://cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update) command to configure a TTL index. Add the `--async` flag to prevent the gcloud CLI from waiting for the operation to complete.
     
-    ``` notranslate
-    gcloud firestore fields ttls update ttl_field --collection-group=collection_name --disable-ttl
-    ```
+        gcloud firestore fields ttls update ttl_field --collection-group=collection_name --disable-ttl
 
 ## Monitor TTL deletions
 

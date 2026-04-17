@@ -14,9 +14,7 @@ EXAMPLES
 
 To describe the index with id `exampleIndexId` , run:
 
-``` wrap-code
-gcloud beta datastore indexes describe exampleIndexId
-```
+    gcloud beta datastore indexes describe exampleIndexId
 
 POSITIONAL ARGUMENTS
 
@@ -51,10 +49,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud datastore indexes describe
-```
+    gcloud datastore indexes describe
 
-``` wrap-code
-gcloud alpha datastore indexes describe
-```
+    gcloud alpha datastore indexes describe

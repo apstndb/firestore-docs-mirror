@@ -10,15 +10,11 @@ EXAMPLES
 
 To list all backups in location us-east1.
 
-``` wrap-code
-gcloud alpha firestore backups list --location=us-east1 --format="table(name, database, state)"
-```
+    gcloud alpha firestore backups list --location=us-east1 --format="table(name, database, state)"
 
 To list all backups in all location.
 
-``` wrap-code
-gcloud alpha firestore backups list --format="table(name, database, state)"
-```
+    gcloud alpha firestore backups list --format="table(name, database, state)"
 
 FLAGS
 
@@ -27,9 +23,7 @@ FLAGS
     
     For example, to operate on location `us-east1` :
     
-    ``` wrap-code
-    gcloud alpha firestore backups list --location='us-east1'
-    ```
+        gcloud alpha firestore backups list --location='us-east1'
 
 LIST COMMAND FLAGS
 
@@ -54,10 +48,6 @@ NOTES
 
 This command is currently in alpha and might change without notice. If this command fails with API permission errors despite specifying the correct project, you might be trying to access an API with an invitation-only early access allowlist. These variants are also available:
 
-``` wrap-code
-gcloud firestore backups list
-```
+    gcloud firestore backups list
 
-``` wrap-code
-gcloud beta firestore backups list
-```
+    gcloud beta firestore backups list

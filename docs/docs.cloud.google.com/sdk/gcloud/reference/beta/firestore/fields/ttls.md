@@ -29,10 +29,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore fields ttls
-```
+    gcloud firestore fields ttls
 
-``` wrap-code
-gcloud alpha firestore fields ttls
-```
+    gcloud alpha firestore fields ttls

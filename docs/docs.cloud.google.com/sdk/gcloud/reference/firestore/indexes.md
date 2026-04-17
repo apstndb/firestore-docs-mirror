@@ -29,10 +29,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha firestore indexes
-```
+    gcloud alpha firestore indexes
 
-``` wrap-code
-gcloud beta firestore indexes
-```
+    gcloud beta firestore indexes

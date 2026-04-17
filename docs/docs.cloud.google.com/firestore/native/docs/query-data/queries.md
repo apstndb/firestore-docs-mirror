@@ -4220,25 +4220,19 @@ For example, the following query would not return any documents where the `popul
 
 ##### Java
 
-``` suppresswarning
-db.collection("cities").whereEqualTo("country", “USA”).orderBy(“population”);
-```
+    db.collection("cities").whereEqualTo("country", “USA”).orderBy(“population”);
 
 A related effect applies to inequalities. A query with an inequality filter on a field also implies ordering by that field. The following query does not return documents without a `population` field even if `country = USA` in that document . As a workaround, you can execute separate queries for each ordering or you can assign a value for all fields that you order by.
 
 ##### Java
 
-``` suppresswarning
-db.collection(“cities”).where(or(“country”, USA”), greaterThan(“population”, 250000));
-```
+    db.collection(“cities”).where(or(“country”, USA”), greaterThan(“population”, 250000));
 
 The query above includes an implied order-by on the inequality and is equivalent to the following:
 
 ##### Java
 
-``` suppresswarning
-db.collection(“cities”).where(or(“country”, USA”), greaterThan(“population”, 250000)).orderBy(“population”);
-```
+    db.collection(“cities”).where(or(“country”, USA”), greaterThan(“population”, 250000)).orderBy(“population”);
 
 ## What's next
 

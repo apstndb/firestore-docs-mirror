@@ -10,15 +10,11 @@ EXAMPLES
 
 To list all active Firestore databases.
 
-``` wrap-code
-gcloud alpha firestore databases list
-```
+    gcloud alpha firestore databases list
 
 To list all Firestore databases including deleted databases.
 
-``` wrap-code
-gcloud alpha firestore databases list --show-deleted
-```
+    gcloud alpha firestore databases list --show-deleted
 
 FLAGS
 
@@ -48,10 +44,6 @@ NOTES
 
 This command is currently in alpha and might change without notice. If this command fails with API permission errors despite specifying the correct project, you might be trying to access an API with an invitation-only early access allowlist. These variants are also available:
 
-``` wrap-code
-gcloud firestore databases list
-```
+    gcloud firestore databases list
 
-``` wrap-code
-gcloud beta firestore databases list
-```
+    gcloud beta firestore databases list

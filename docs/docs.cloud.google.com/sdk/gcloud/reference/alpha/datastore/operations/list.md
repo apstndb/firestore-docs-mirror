@@ -20,27 +20,19 @@ EXAMPLES
 
 To see the list of all operations, run:
 
-``` wrap-code
-gcloud alpha datastore operations list
-```
+    gcloud alpha datastore operations list
 
 To see the list of all export operations, run:
 
-``` wrap-code
-gcloud alpha datastore operations list --filter='type:export_entities'
-```
+    gcloud alpha datastore operations list --filter='type:export_entities'
 
 To see the list of all export operations for kind 'MyKind', run:
 
-``` wrap-code
-gcloud alpha datastore operations list --filter='type:export_entities AND kind:MyKind'
-```
+    gcloud alpha datastore operations list --filter='type:export_entities AND kind:MyKind'
 
 To see the list of all operations with particular labels, run:
 
-``` wrap-code
-gcloud alpha datastore operations list --filter='labels.run = daily'
-```
+    gcloud alpha datastore operations list --filter='labels.run = daily'
 
 LIST COMMAND FLAGS
 
@@ -65,10 +57,6 @@ NOTES
 
 This command is currently in alpha and might change without notice. If this command fails with API permission errors despite specifying the correct project, you might be trying to access an API with an invitation-only early access allowlist. These variants are also available:
 
-``` wrap-code
-gcloud datastore operations list
-```
+    gcloud datastore operations list
 
-``` wrap-code
-gcloud beta datastore operations list
-```
+    gcloud beta datastore operations list

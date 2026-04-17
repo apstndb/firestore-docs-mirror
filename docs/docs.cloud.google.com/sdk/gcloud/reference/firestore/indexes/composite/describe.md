@@ -14,13 +14,9 @@ EXAMPLES
 
 The following command describes the composite index with ID `3421ef` :
 
-``` wrap-code
-gcloud firestore indexes composite describe 3421ef
-```
+    gcloud firestore indexes composite describe 3421ef
 
-``` wrap-code
-gcloud firestore indexes composite describe 3421ef --database=(default)
-```
+    gcloud firestore indexes composite describe 3421ef --database=(default)
 
 POSITIONAL ARGUMENTS
 
@@ -69,10 +65,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha firestore indexes composite describe
-```
+    gcloud alpha firestore indexes composite describe
 
-``` wrap-code
-gcloud beta firestore indexes composite describe
-```
+    gcloud beta firestore indexes composite describe

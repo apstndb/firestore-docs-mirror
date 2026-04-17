@@ -49,13 +49,11 @@ Use the [`gcloud firestore databases create`](https://cloud.google.com/sdk/gclou
 
   - To create a Firestore Standard edition database:
     
-    ``` suppresswarning
-    gcloud firestore databases create \
-    --database=DATABASE_ID \
-    --location=LOCATION \
-    --edition=standard
-    --type=DATABASE_TYPE
-    ```
+        gcloud firestore databases create \
+        --database=DATABASE_ID \
+        --location=LOCATION \
+        --edition=standard
+        --type=DATABASE_TYPE
     
     Replace the following:
     
@@ -72,11 +70,9 @@ To add [tags](https://cloud.google.com/firestore/docs/tags) to the database, use
 
 ##### Firebase CLI
 
-``` suppresswarning
-firebase firestore:databases:create DATABASE_ID \
---location=LOCATION \
-[--delete-protection DELETE_PROTECTION_ENABLEMENT]
-```
+    firebase firestore:databases:create DATABASE_ID \
+    --location=LOCATION \
+    [--delete-protection DELETE_PROTECTION_ENABLEMENT]
 
 Replace the following:
 
@@ -88,17 +84,15 @@ Replace the following:
 
 ##### Terraform
 
-``` suppresswarning
-resource "google_firestore_database" "database" {
-  project     = "project-id"
-  name        = DATABASE_ID
-  location_id = LOCATION
-  type        = DATABASE_TYPE
-
-  // Optional
-  delete_protection_state = DELETE_PROTECTION_STATE
-}
-```
+    resource "google_firestore_database" "database" {
+      project     = "project-id"
+      name        = DATABASE_ID
+      location_id = LOCATION
+      type        = DATABASE_TYPE
+    
+      // Optional
+      delete_protection_state = DELETE_PROTECTION_STATE
+    }
 
 Replace the following:
 
@@ -149,17 +143,13 @@ In the Google Cloud console, go to the **Databases** page.
 
 Use the [`gcloud firestore databases list`](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/list) command to list all the databases in your project.
 
-``` suppresswarning
-gcloud firestore databases list
-```
+    gcloud firestore databases list
 
 ##### Firebase CLI
 
 Use the `firebase firestore:databases:list` command to list all the databases in your project.
 
-``` suppresswarning
-firebase firestore:databases:list
-```
+    firebase firestore:databases:list
 
 ### View database details
 
@@ -169,17 +159,13 @@ To view details about a single database, use one of the following methods:
 
 Use the [`gcloud firestore databases describe`](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/describe) command:
 
-``` suppresswarning
-gcloud firestore databases describe --database=DATABASE_ID
-```
+    gcloud firestore databases describe --database=DATABASE_ID
 
 ##### Firebase CLI
 
 Use the `firebase firestore:databases:get` command:
 
-``` suppresswarning
-firebase firestore:databases:get DATABASE_ID
-```
+    firebase firestore:databases:get DATABASE_ID
 
 Replace DATABASE\_ID with a database ID.
 
@@ -193,10 +179,8 @@ To update the type of a database, use the `gcloud firestore databases update` co
 
 ##### gcloud
 
-``` suppresswarning
-gcloud firestore databases update --database=DATABASE_ID \
---type=DATABASE_TYPE
-```
+    gcloud firestore databases update --database=DATABASE_ID \
+    --type=DATABASE_TYPE
 
 Replace the following:
 
@@ -209,9 +193,7 @@ To enable delete protection on a database, use the `gcloud firestore databases u
 
 ##### gcloud
 
-``` suppresswarning
-gcloud firestore databases update --database=DATABASE_ID --delete-protection
-```
+    gcloud firestore databases update --database=DATABASE_ID --delete-protection
 
 Replace DATABASE\_ID with a database ID.
 
@@ -219,9 +201,7 @@ To disable delete protection on a database, use the `gcloud firestore databases 
 
 ##### gcloud
 
-``` suppresswarning
-gcloud firestore databases update --database=DATABASE_ID --no-delete-protection
-```
+    gcloud firestore databases update --database=DATABASE_ID --no-delete-protection
 
 Replace DATABASE\_ID with a database ID.
 
@@ -251,9 +231,7 @@ Deleting a database does not incur charges for delete operations.
 
 Use the [\`gcloud firestore databases delete\`](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/delete) command.
 
-``` suppresswarning
-gcloud firestore databases delete --database=DATABASE_ID
-```
+    gcloud firestore databases delete --database=DATABASE_ID
 
 Replace DATABASE\_ID with the ID of the database to delete. To delete the default database use the ID `'(default)'`
 

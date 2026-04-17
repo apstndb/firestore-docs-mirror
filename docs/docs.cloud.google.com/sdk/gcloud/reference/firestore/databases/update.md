@@ -14,9 +14,7 @@ EXAMPLES
 
 The following command updates the database type of a Cloud Firestore database.
 
-``` wrap-code
-gcloud firestore databases update --type=firestore-native
-```
+    gcloud firestore databases update --type=firestore-native
 
 FLAGS
 
@@ -68,10 +66,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha firestore databases update
-```
+    gcloud alpha firestore databases update
 
-``` wrap-code
-gcloud beta firestore databases update
-```
+    gcloud beta firestore databases update

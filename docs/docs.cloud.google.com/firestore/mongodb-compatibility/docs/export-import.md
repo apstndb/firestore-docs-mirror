@@ -116,9 +116,7 @@ The console returns to the **Import/Export** page. If the operation successfully
 
 Use the [`firestore import`](https://cloud.google.com/sdk/gcloud/reference/firestore/import) command to import documents from a previous export operation.
 
-``` notranslate
-gcloud firestore import gs://[BUCKET_NAME]/[EXPORT_PREFIX]/ --database=[DATABASE]
-```
+    gcloud firestore import gs://[BUCKET_NAME]/[EXPORT_PREFIX]/ --database=[DATABASE]
 
 Replace the following:
 
@@ -128,9 +126,7 @@ Replace the following:
 
 For example:
 
-``` notranslate
-gcloud firestore import gs://my-bucket/2017-05-25T23:54:39_76544/ --database='cymbal'
-```
+    gcloud firestore import gs://my-bucket/2017-05-25T23:54:39_76544/ --database='cymbal'
 
 You can confirm the location of your export files in the Cloud Storage browser in the Google Cloud console:
 
@@ -150,7 +146,7 @@ To import specific collections from a set of export files, use the [`--collectio
 
 Only an export of specific collections supports an import of specific collections. You cannot import specific collections from an export of all documents.
 
-``` notranslate
+``` 
   gcloud firestore import gs://[BUCKET_NAME]/[EXPORT_PREFIX]/ \
   --collection-ids=[COLLECTION_ID_1],[COLLECTION_ID_2] \
   --database=[DATABASE]
@@ -195,7 +191,7 @@ The console returns to the **Import/Export** page. If the operation successfully
 
 Use the [`firestore export`](https://cloud.google.com/sdk/gcloud/reference/firestore/export) command to export all the documents in your database, replacing `[BUCKET_NAME]` with the name of your Cloud Storage bucket. Add the `--async` flag to prevent the `gcloud` tool from waiting for the operation to complete.
 
-``` notranslate
+``` 
   gcloud firestore export gs://[BUCKET_NAME] \
   --database=[DATABASE]
 ```
@@ -234,11 +230,9 @@ The console returns to the **Import/Export** page. If the operation successfully
 
 To export specific collections, use the [`--collection-ids`](https://cloud.google.com/sdk/gcloud/reference/firestore/export#FLAGS) flag. The operation exports only the collections with the given collection IDs.
 
-``` notranslate
-gcloud firestore export gs://[BUCKET_NAME] \
---collection-ids=[COLLECTION_ID_1],[COLLECTION_ID_2] \
---database=[DATABASE]
-```
+    gcloud firestore export gs://[BUCKET_NAME] \
+    --collection-ids=[COLLECTION_ID_1],[COLLECTION_ID_2] \
+    --database=[DATABASE]
 
 For example, you can design a `restaurants` collection in the `foo` database to include additional collections, such as `ratings` , `reviews` , or `outlets` . To export specific collection `restaurants` and `reviews` , your command looks as follows:
 
@@ -299,9 +293,7 @@ After you start an export or import operation, Firestore with MongoDB compatibil
 
 Operation names are prefixed with `projects/[PROJECT_ID]/databases/[DATABASE_ID]/operations/` , for example:
 
-``` notranslate
-projects/my-project/databases/my-database/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
-```
+    projects/my-project/databases/my-database/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
 
 However, you can leave out the prefix when specifying an operation name for the `describe` , `cancel` , and `delete` commands.
 
@@ -321,9 +313,7 @@ You can view a list of recent export and import operations in the **Import/Expor
 
 Use the [`operations list`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command to see all running and recently completed export and import operations:
 
-``` notranslate
-gcloud firestore operations list
-```
+    gcloud firestore operations list
 
 ### Check operation status
 
@@ -341,9 +331,7 @@ You can view the status of a recent export or import operation in the **Import/E
 
 Use the [`operations describe`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/describe) command to show the status of an export or import operation.
 
-``` notranslate
-gcloud firestore operations describe [OPERATION_NAME]
-```
+    gcloud firestore operations describe [OPERATION_NAME]
 
 #### Estimate the completion time
 
@@ -375,9 +363,7 @@ In the *Recent imports and exports* table, currently running operations include 
 
 Use the [`operations cancel`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/cancel) command to stop an operation in progress:
 
-``` notranslate
-gcloud firestore operations cancel [OPERATION_NAME]
-```
+    gcloud firestore operations cancel [OPERATION_NAME]
 
 Cancelling a running operation does not undo the operation. A cancelled export operation will leave documents already exported in Cloud Storage, and a cancelled import operation will leave in place updates already made to your database. You cannot import a partially completed export.
 
@@ -385,9 +371,7 @@ Cancelling a running operation does not undo the operation. A cancelled export o
 
 Use the [`gcloud firestore operations delete`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/delete) command to remove an operation from the list of recent operations. This command will not delete export files from Cloud Storage.
 
-``` notranslate
-gcloud firestore operations delete [OPERATION_NAME]
-```
+    gcloud firestore operations delete [OPERATION_NAME]
 
 ## Billing and pricing for export and import operations
 
@@ -429,6 +413,4 @@ An export operation creates a metadata file for each collection you specify. Met
 
 The metadata files are protocol buffers and you can decode them with the [`protoc` protocol compiler](https://github.com/protocolbuffers/protobuf#readme) . For example, you can decode a metadata file to determine the collections the export files contain:
 
-``` notranslate
-protoc --decode_raw < export0.export_metadata
-```
+    protoc --decode_raw < export0.export_metadata

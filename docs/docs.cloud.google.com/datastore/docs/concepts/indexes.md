@@ -580,15 +580,11 @@ You can use `gcloud firestore` to manage a single index for Datastore mode or us
 
 ##### gcloud firestore
 
-``` suppresswarning
-gcloud firestore indexes composite create --api-scope=datastore-mode-api  --query-scope=QUERY_SCOPE --database=DATABASE_ID
-```
+    gcloud firestore indexes composite create --api-scope=datastore-mode-api  --query-scope=QUERY_SCOPE --database=DATABASE_ID
 
 ##### gcloud datastore
 
-``` suppresswarning
-gcloud alpha datastore indexes create index.yaml --database=DATABASE_ID
-```
+    gcloud alpha datastore indexes create index.yaml --database=DATABASE_ID
 
 Replace the following:
 

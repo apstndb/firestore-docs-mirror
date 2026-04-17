@@ -33,10 +33,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha firestore operations
-```
+    gcloud alpha firestore operations
 
-``` wrap-code
-gcloud beta firestore operations
-```
+    gcloud beta firestore operations

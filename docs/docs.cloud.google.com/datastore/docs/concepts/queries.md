@@ -561,17 +561,15 @@ Snippet not available.
 
 ##### Java
 
-``` suppresswarning
-Query<Entity> query =
-    Query.newEntityQueryBuilder()
-        .setKind("Task")
-        .setFilter(CompositeFilter.or(
-            PropertyFilter.eq("starred", true)),
-            CompositeFilter.and(
-                PropertyFilter.eq("done", false),
-                PropertyFilter.eq("priority", 4)))
-        .build();
-```
+    Query<Entity> query =
+        Query.newEntityQueryBuilder()
+            .setKind("Task")
+            .setFilter(CompositeFilter.or(
+                PropertyFilter.eq("starred", true)),
+                CompositeFilter.and(
+                    PropertyFilter.eq("done", false),
+                    PropertyFilter.eq("priority", 4)))
+            .build();
 
 ##### Node.js
 
@@ -583,25 +581,23 @@ Snippet not available.
 
 ##### Python
 
-``` suppresswarning
-and_or_query = client.query(kind="Task")
-
-query_filter = query.Or(
-    [
-        query.PropertyFilter("starred", "=", True),
-        query.And([query.PropertyFilter("done", "=", False),
-                    query.PropertyFilter("priority", "=", 4,),
+    and_or_query = client.query(kind="Task")
+    
+    query_filter = query.Or(
+        [
+            query.PropertyFilter("starred", "=", True),
+            query.And([query.PropertyFilter("done", "=", False),
+                        query.PropertyFilter("priority", "=", 4,),
+            ]
+            )
         ]
-        )
-    ]
-)
-
-and_or_query.add_filter(filter=query_filter)
-
-results = and_or_query.fetch()
-for result in results:
-    print(result["description"])
-```
+    )
+    
+    and_or_query.add_filter(filter=query_filter)
+    
+    results = and_or_query.fetch()
+    for result in results:
+        print(result["description"])
 
 ##### Ruby
 
@@ -3029,43 +3025,37 @@ For example, the following query wouldn't return any entities where the `priorit
 
 ##### Java
 
-``` suppresswarning
-Query<Entity> query =
-    Query.newEntityQueryBuilder().setKind("Task")
-                                 .setFilter(PropertyFilter.eq("done", false))
-                                 .setOrderBy(OrderBy.desc("priority"))
-                                 .build();
-```
+    Query<Entity> query =
+        Query.newEntityQueryBuilder().setKind("Task")
+                                     .setFilter(PropertyFilter.eq("done", false))
+                                     .setOrderBy(OrderBy.desc("priority"))
+                                     .build();
 
 A related effect applies to inequalities. A query with an inequality filter on a property also implies ordering by that property. The following query doesn't return entities without a `priority` property even if `starred = true` in that entity. As a workaround, you can execute separate queries for each ordering or you can assign a value for all properties that you order by.
 
 ##### Java
 
-``` suppresswarning
-Query<Entity> query =
-    Query.newEntityQueryBuilder()
-        .setKind("Task")
-        .setFilter(CompositeFilter.or(
-            PropertyFilter.eq("starred", true)),
-            PropertyFilter.ge("priority", 4))
-        .build();
-```
+    Query<Entity> query =
+        Query.newEntityQueryBuilder()
+            .setKind("Task")
+            .setFilter(CompositeFilter.or(
+                PropertyFilter.eq("starred", true)),
+                PropertyFilter.ge("priority", 4))
+            .build();
 
 The earlier query includes an implied order-by on the inequality such as the following. The direction of the implied order-by depends on available indexes:
 
 ##### Java
 
-``` suppresswarning
-Query<Entity> query =
-    Query.newEntityQueryBuilder()
-        .setKind("Task")
-        .setFilter(CompositeFilter.or(
-            PropertyFilter.eq("starred", true)),
-            PropertyFilter.ge("priority", 4)
-        )
-        .setOrderBy(OrderBy.asc("priority"))
-        .build();
-```
+    Query<Entity> query =
+        Query.newEntityQueryBuilder()
+            .setKind("Task")
+            .setFilter(CompositeFilter.or(
+                PropertyFilter.eq("starred", true)),
+                PropertyFilter.ge("priority", 4)
+            )
+            .setOrderBy(OrderBy.asc("priority"))
+            .build();
 
 #### Limitations on projections
 

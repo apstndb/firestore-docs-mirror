@@ -39,10 +39,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore user-creds
-```
+    gcloud firestore user-creds
 
-``` wrap-code
-gcloud alpha firestore user-creds
-```
+    gcloud alpha firestore user-creds

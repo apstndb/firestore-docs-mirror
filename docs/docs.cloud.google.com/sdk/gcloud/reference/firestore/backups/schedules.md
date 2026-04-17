@@ -35,10 +35,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha firestore backups schedules
-```
+    gcloud alpha firestore backups schedules
 
-``` wrap-code
-gcloud beta firestore backups schedules
-```
+    gcloud beta firestore backups schedules

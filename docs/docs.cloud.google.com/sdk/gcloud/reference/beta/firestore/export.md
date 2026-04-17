@@ -14,27 +14,19 @@ EXAMPLES
 
 To export all collection groups to `mybucket` in objects prefixed with `my/path` , run:
 
-``` wrap-code
-gcloud beta firestore export gs://mybucket/my/path
-```
+    gcloud beta firestore export gs://mybucket/my/path
 
 To export a specific set of collections groups asynchronously, run:
 
-``` wrap-code
-gcloud beta firestore export gs://mybucket/my/path --collection-ids='specific collection group1','specific collection group2' --async
-```
+    gcloud beta firestore export gs://mybucket/my/path --collection-ids='specific collection group1','specific collection group2' --async
 
 To export all collection groups from certain namespace, run:
 
-``` wrap-code
-gcloud beta firestore export gs://mybucket/my/path --namespace-ids='specific namespace id'
-```
+    gcloud beta firestore export gs://mybucket/my/path --namespace-ids='specific namespace id'
 
 To export from a snapshot at '2023-05-26T10:20:00.00Z', run:
 
-``` wrap-code
-gcloud beta firestore export gs://mybucket/my/path --snapshot-time='2023-05-26T10:20:00.00Z'
-```
+    gcloud beta firestore export gs://mybucket/my/path --snapshot-time='2023-05-26T10:20:00.00Z'
 
 POSITIONAL ARGUMENTS
 
@@ -43,9 +35,7 @@ POSITIONAL ARGUMENTS
     
     For example:
     
-    ``` wrap-code
-    gcloud beta firestore export gs://mybucket/my/path
-    ```
+        gcloud beta firestore export gs://mybucket/my/path
     
     Will place the export in the `mybucket` bucket in objects prefixed with `my/path` .
 
@@ -59,18 +49,14 @@ FLAGS
     
     For example, to operate on only the `customers` and `orders` collections groups:
     
-    ``` wrap-code
-    gcloud beta firestore export --collection-ids='customers','orders'
-    ```
+        gcloud beta firestore export --collection-ids='customers','orders'
 
   - `--database` = `  DATABASE  ` ; default="(default)"  
     The database to operate on. The default value is `(default)` .
     
     For example, to operate on database `foo` :
     
-    ``` wrap-code
-    gcloud beta firestore export --database='foo'
-    ```
+        gcloud beta firestore export --database='foo'
 
   - `--namespace-ids` =\[ `  NAMESPACE_IDS  ` ,…\]  
     List specifying which namespaces will be included in the operation. When omitted, all namespaces are included.
@@ -79,9 +65,7 @@ FLAGS
     
     For example, to operate on only the `customers` and `orders` namespaces:
     
-    ``` wrap-code
-    gcloud beta firestore export --namespaces-ids='customers','orders'
-    ```
+        gcloud beta firestore export --namespaces-ids='customers','orders'
 
   - `--snapshot-time` = `  SNAPSHOT_TIME  `  
     The version of the database to export.
@@ -90,9 +74,7 @@ FLAGS
     
     For example, to operate on snapshot time `2023-05-26T10:20:00.00Z` :
     
-    ``` wrap-code
-    gcloud beta firestore export --snapshot-time='2023-05-26T10:20:00.00Z'
-    ```
+        gcloud beta firestore export --snapshot-time='2023-05-26T10:20:00.00Z'
 
 GCLOUD WIDE FLAGS
 
@@ -104,10 +86,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore export
-```
+    gcloud firestore export
 
-``` wrap-code
-gcloud alpha firestore export
-```
+    gcloud alpha firestore export

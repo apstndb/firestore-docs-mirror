@@ -43,10 +43,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore databases
-```
+    gcloud firestore databases
 
-``` wrap-code
-gcloud alpha firestore databases
-```
+    gcloud alpha firestore databases

@@ -14,21 +14,15 @@ EXAMPLES
 
 To import all data exported to the output URL `gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata` , run:
 
-``` wrap-code
-gcloud datastore import gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata
-```
+    gcloud datastore import gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata
 
 To import all data exported to the output URL `gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata` without waiting for the operation to complete, run:
 
-``` wrap-code
-gcloud datastore import gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata --async
-```
+    gcloud datastore import gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata --async
 
 To import only the `exampleKind` from the data exported to the output URL `gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata` , run:
 
-``` wrap-code
-gcloud datastore import gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata --kinds='exampleKind'
-```
+    gcloud datastore import gs://exampleBucket/exampleExport/exampleExport.overall_export_metadata --kinds='exampleKind'
 
 POSITIONAL ARGUMENTS
 
@@ -45,23 +39,17 @@ FLAGS
   - `--kinds` =\[ `  KIND  ` ,…\]  
     A list specifying what kinds will be included in the operation. When omitted, all Kinds are included. For example, to operate on only the 'Customer' and 'Order' Kinds:
     
-    ``` wrap-code
-    gcloud datastore import --kinds='Customer','Order'
-    ```
+        gcloud datastore import --kinds='Customer','Order'
 
   - `--namespaces` =\[ `  NAMESPACE  ` ,…\]  
     A list specifying what namespaces will be included in the operation. When omitted, all namespaces are included in the operation, including the default namespace. To specify that `only` the default namespace should be operated on, use the special symbol '(default)'. For example, to operate on entities from both the 'customers' and default namespaces:
     
-    ``` wrap-code
-    gcloud datastore import --namespaces='(default)','customers'
-    ```
+        gcloud datastore import --namespaces='(default)','customers'
 
   - `--operation-labels` =\[ `  OPERATION_LABEL  ` ,…\]  
     A string:string map of custom labels to associate with this operation. For example:
     
-    ``` wrap-code
-    gcloud datastore import --operation-labels=comment='customer orders','sales rep'=pending
-    ```
+        gcloud datastore import --operation-labels=comment='customer orders','sales rep'=pending
 
 GCLOUD WIDE FLAGS
 
@@ -73,10 +61,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha datastore import
-```
+    gcloud alpha datastore import
 
-``` wrap-code
-gcloud beta datastore import
-```
+    gcloud beta datastore import

@@ -10,63 +10,43 @@ EXAMPLES
 
 To create a Firestore Enterprise database named foo in nam5 for use with MongoDB Compatible API with Data Access Mode enabled.
 
-``` wrap-code
-gcloud beta firestore databases create --database=foo --edition=enterprise --location=nam5 --enable-mongodb-compatible-data-access
-```
+    gcloud beta firestore databases create --database=foo --edition=enterprise --location=nam5 --enable-mongodb-compatible-data-access
 
 To create a Firestore Enterprise database named foo in nam5 for use with Firestore API Data Access Mode enabled and Realtime Updates disabled.
 
-``` wrap-code
-gcloud beta firestore databases create --database=foo --edition=enterprise --location=nam5 --enable-firestore-data-access
-```
+    gcloud beta firestore databases create --database=foo --edition=enterprise --location=nam5 --enable-firestore-data-access
 
 To create a Firestore Enterprise database named foo in nam5 for use with Firestore API Data Access Mode enabled and Realtime Updates enabled.
 
-``` wrap-code
-gcloud beta firestore databases create --database=foo --edition=enterprise --location=nam5 --enable-firestore-data-access --enable-realtime-updates
-```
+    gcloud beta firestore databases create --database=foo --edition=enterprise --location=nam5 --enable-firestore-data-access --enable-realtime-updates
 
 To create a Firestore Native database in `nam5` .
 
-``` wrap-code
-gcloud beta firestore databases create --location=nam5
-```
+    gcloud beta firestore databases create --location=nam5
 
 To create a Firestore Native database in `us-central1` with tags.
 
-``` wrap-code
-gcloud beta firestore databases create --location=us-central1 --tags=key1=value1,key2=value2
-```
+    gcloud beta firestore databases create --location=us-central1 --tags=key1=value1,key2=value2
 
 To create a Datastore Mode database in `us-east1` .
 
-``` wrap-code
-gcloud beta firestore databases create --location=us-east1 --type=datastore-mode
-```
+    gcloud beta firestore databases create --location=us-east1 --type=datastore-mode
 
 To create a Datastore Mode database in `us-east1` with a databaseId `foo` .
 
-``` wrap-code
-gcloud beta firestore databases create --database=foo --location=us-east1 --type=datastore-mode
-```
+    gcloud beta firestore databases create --database=foo --location=us-east1 --type=datastore-mode
 
 To create a Firestore Native database in `nam5` with delete protection enabled.
 
-``` wrap-code
-gcloud beta firestore databases create --location=nam5 --delete-protection
-```
+    gcloud beta firestore databases create --location=nam5 --delete-protection
 
 To create a Firestore Native database in `nam5` with Point In Time Recovery (PITR) enabled.
 
-``` wrap-code
-gcloud beta firestore databases create --location=nam5 --enable-pitr
-```
+    gcloud beta firestore databases create --location=nam5 --enable-pitr
 
 To create a Firestore Native database in `nam5` encrypted by a Customer-managed encryption key (CMEK).
 
-``` wrap-code
-gcloud beta firestore databases create --location=nam5 --kms-key-name=projects/PROJECT_ID/locations/us/keyRings/KEY_RING_ID/cryptoKeys/CRYPTO_KEY_ID
-```
+    gcloud beta firestore databases create --location=nam5 --kms-key-name=projects/PROJECT_ID/locations/us/keyRings/KEY_RING_ID/cryptoKeys/CRYPTO_KEY_ID
 
 REQUIRED FLAGS
 
@@ -75,9 +55,7 @@ REQUIRED FLAGS
     
     For example, to operate on location `us-east1` :
     
-    ``` wrap-code
-    gcloud beta firestore databases create --location='us-east1'
-    ```
+        gcloud beta firestore databases create --location='us-east1'
 
 OPTIONAL FLAGS
 
@@ -145,10 +123,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore databases create
-```
+    gcloud firestore databases create
 
-``` wrap-code
-gcloud alpha firestore databases create
-```
+    gcloud alpha firestore databases create

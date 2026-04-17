@@ -14,15 +14,11 @@ EXAMPLES
 
 To cancel the currently-running operation with id `exampleId` , run:
 
-``` wrap-code
-gcloud beta datastore operations cancel exampleId
-```
+    gcloud beta datastore operations cancel exampleId
 
 or
 
-``` wrap-code
-gcloud beta datastore operations cancel projects/your-project-id/operations/exampleId
-```
+    gcloud beta datastore operations cancel projects/your-project-id/operations/exampleId
 
 POSITIONAL ARGUMENTS
 
@@ -45,10 +41,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud datastore operations cancel
-```
+    gcloud datastore operations cancel
 
-``` wrap-code
-gcloud alpha datastore operations cancel
-```
+    gcloud alpha datastore operations cancel

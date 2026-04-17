@@ -105,20 +105,18 @@ Copy the request body and open the [method reference page](https://docs.cloud.go
 
 You should receive a JSON response similar to the following:
 
-``` readonly
-{
-  "name": "projects/project-id/operations/S01vcFVpSmdBQ0lDDCoDIDgxZGVhZDM0ZDc4MS1jMjJhLWQ1ZTQtYmMyNS1iYjY2NWVlZCQadGx1YWZlZAcSMXJoLXJleGVkbmktbmltZGERClIS",
-  "metadata": {
-    "@type": "type.googleapis.com/google.datastore.admin.v1.IndexOperationMetadata",
-    "common": {
-      "startTime": "2019-12-05T22:27:19.238Z",
-      "operationType": "CREATE_INDEX",
-      "state": "INITIALIZING"
-    },
-    "indexId": "CICAgJiUpoMK"
-  }
-}
-```
+    {
+      "name": "projects/project-id/operations/S01vcFVpSmdBQ0lDDCoDIDgxZGVhZDM0ZDc4MS1jMjJhLWQ1ZTQtYmMyNS1iYjY2NWVlZCQadGx1YWZlZAcSMXJoLXJleGVkbmktbmltZGERClIS",
+      "metadata": {
+        "@type": "type.googleapis.com/google.datastore.admin.v1.IndexOperationMetadata",
+        "common": {
+          "startTime": "2019-12-05T22:27:19.238Z",
+          "operationType": "CREATE_INDEX",
+          "state": "INITIALIZING"
+        },
+        "indexId": "CICAgJiUpoMK"
+      }
+    }
 
 ## Getting index status
 
@@ -165,25 +163,23 @@ Open the [method reference page](https://docs.cloud.google.com/datastore/docs/re
 
 You should receive a JSON response similar to the following:
 
-``` readonly
-{
-  "projectId": "project-id",
-  "indexId": "index-id",
-  "kind": "Task",
-  "ancestor": "NONE",
-  "properties": [
     {
-      "name": "done",
-      "direction": "ASCENDING"
-    },
-    {
-      "name": "priority",
-      "direction": "ASCENDING"
+      "projectId": "project-id",
+      "indexId": "index-id",
+      "kind": "Task",
+      "ancestor": "NONE",
+      "properties": [
+        {
+          "name": "done",
+          "direction": "ASCENDING"
+        },
+        {
+          "name": "priority",
+          "direction": "ASCENDING"
+        }
+      ],
+      "state": "READY"
     }
-  ],
-  "state": "READY"
-}
-```
 
 ### Index state
 
@@ -276,43 +272,41 @@ Open the [method reference page](https://docs.cloud.google.com/datastore/docs/re
 
 You should receive a JSON response similar to the following:
 
-``` readonly
-{
- "indexes": [
-  {
-   "projectId": "project-id",
-   "indexId": "CICAgOjXh4EK",
-   "kind": "Task",
-   "ancestor": "NONE",
-   "properties": [
     {
-     "name": "done",
-     "direction": "ASCENDING"
-    },
-    {
-     "name": "priority",
-     "direction": "ASCENDING"
+     "indexes": [
+      {
+       "projectId": "project-id",
+       "indexId": "CICAgOjXh4EK",
+       "kind": "Task",
+       "ancestor": "NONE",
+       "properties": [
+        {
+         "name": "done",
+         "direction": "ASCENDING"
+        },
+        {
+         "name": "priority",
+         "direction": "ASCENDING"
+        }
+       ],
+       "state": "READY"
+      },
+      {
+       "projectId": "project-id",
+       "indexId": "CICAgNiroIEK",
+       "kind": "Task",
+       "ancestor": "NONE",
+       "properties": [
+        {
+         "name": "due-date",
+         "direction": "DESCENDING"
+        },
+        {
+         "name": "priority",
+         "direction": "ASCENDING"
+        }
+       ],
+       "state": "CREATING"
+      }
+     ]
     }
-   ],
-   "state": "READY"
-  },
-  {
-   "projectId": "project-id",
-   "indexId": "CICAgNiroIEK",
-   "kind": "Task",
-   "ancestor": "NONE",
-   "properties": [
-    {
-     "name": "due-date",
-     "direction": "DESCENDING"
-    },
-    {
-     "name": "priority",
-     "direction": "ASCENDING"
-    }
-   ],
-   "state": "CREATING"
-  }
- ]
-}
-```

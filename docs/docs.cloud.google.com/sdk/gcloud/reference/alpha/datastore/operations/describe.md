@@ -14,15 +14,11 @@ EXAMPLES
 
 To see information on the operation with id `exampleId` , run:
 
-``` wrap-code
-gcloud alpha datastore operations describe exampleId
-```
+    gcloud alpha datastore operations describe exampleId
 
 or
 
-``` wrap-code
-gcloud alpha datastore operations describe projects/your-project-id/operations/exampleId
-```
+    gcloud alpha datastore operations describe projects/your-project-id/operations/exampleId
 
 POSITIONAL ARGUMENTS
 
@@ -45,10 +41,6 @@ NOTES
 
 This command is currently in alpha and might change without notice. If this command fails with API permission errors despite specifying the correct project, you might be trying to access an API with an invitation-only early access allowlist. These variants are also available:
 
-``` wrap-code
-gcloud datastore operations describe
-```
+    gcloud datastore operations describe
 
-``` wrap-code
-gcloud beta datastore operations describe
-```
+    gcloud beta datastore operations describe

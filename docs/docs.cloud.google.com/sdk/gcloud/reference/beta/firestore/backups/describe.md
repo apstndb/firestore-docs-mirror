@@ -10,9 +10,7 @@ EXAMPLES
 
 To retrieve information about the `cf9f748a-7980-4703-b1a1-d1ffff591db0` backup in us-east1.
 
-``` wrap-code
-gcloud beta firestore backups describe --location=us-east1 --backup=cf9f748a-7980-4703-b1a1-d1ffff591db0
-```
+    gcloud beta firestore backups describe --location=us-east1 --backup=cf9f748a-7980-4703-b1a1-d1ffff591db0
 
 REQUIRED FLAGS
 
@@ -21,18 +19,14 @@ REQUIRED FLAGS
     
     For example, to operate on backup `cf9f748a-7980-4703-b1a1-d1ffff591db0` :
     
-    ``` wrap-code
-    gcloud beta firestore backups describe --backup='cf9f748a-7980-4703-b1a1-d1ffff591db0'
-    ```
+        gcloud beta firestore backups describe --backup='cf9f748a-7980-4703-b1a1-d1ffff591db0'
 
   - `--location` = `  LOCATION  `  
     The location to operate on. Available locations are listed at <https://cloud.google.com/firestore/docs/locations> .
     
     For example, to operate on location `us-east1` :
     
-    ``` wrap-code
-    gcloud beta firestore backups describe --location='us-east1'
-    ```
+        gcloud beta firestore backups describe --location='us-east1'
 
 GCLOUD WIDE FLAGS
 
@@ -44,10 +38,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore backups describe
-```
+    gcloud firestore backups describe
 
-``` wrap-code
-gcloud alpha firestore backups describe
-```
+    gcloud alpha firestore backups describe

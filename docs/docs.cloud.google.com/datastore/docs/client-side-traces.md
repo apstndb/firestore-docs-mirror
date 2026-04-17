@@ -67,7 +67,7 @@ The following code configures the Datastore Java client library to export spans 
 
 ##### Java
 
-``` suppresswarning
+``` 
 Resource resource = Resource
   .getDefault().merge(Resource.builder().put(SERVICE_NAME, "My App").build());
 
@@ -112,7 +112,7 @@ The following code configures the Java client library to directly export trace s
 
 ##### Java
 
-``` suppresswarning
+``` 
 // TraceExporter needed for this use case
 import com.google.cloud.opentelemetry.trace.TraceExporter;
 
@@ -155,7 +155,7 @@ Run your OpenTelemetry Collector with OTLP gRPC receivers enabled. Set the agent
 
 ##### Terminal
 
-``` suppresswarning
+``` 
 DATASTORE_ENABLE_TRACING=ON                            \
 java                                                   \
 -javaagent:path/to/opentelemetry-javaagent.jar         \
@@ -174,7 +174,7 @@ In addition to setting the environment variable `DATASTORE_ENABLE_TRACING=ON` , 
 
 ##### Terminal
 
-``` suppresswarning
+``` 
 DATASTORE_ENABLE_TRACING=ON                                                \
 java                                                                       \
 -javaagent:path/to/opentelemetry-javaagent.jar                             \

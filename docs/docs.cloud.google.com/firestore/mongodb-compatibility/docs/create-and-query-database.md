@@ -69,9 +69,7 @@ In the Google Cloud console, create a new Firestore Enterprise edition database.
 
 The connection string depends on the UID of the database (system-generated) and the location of database:
 
-``` suppresswarning
-UID.LOCATION.firestore.goog
-```
+    UID.LOCATION.firestore.goog
 
 ## Create a user for SCRAM authentication
 
@@ -95,9 +93,7 @@ In the Google Cloud console, create a new database user and assign the user Iden
 
 Use the connection string, username, and password to connect to your database, run `mongosh` locally with the following configuration options.
 
-``` suppresswarning
-mongosh 'mongodb://USERNAME:PASSWORD@CONNECTION_STRING:443/DATABASE_ID?loadBalanced=true&authMechanism=SCRAM-SHA-256&tls=true&retryWrites=false'
-```
+    mongosh 'mongodb://USERNAME:PASSWORD@CONNECTION_STRING:443/DATABASE_ID?loadBalanced=true&authMechanism=SCRAM-SHA-256&tls=true&retryWrites=false'
 
 Replace the following:
 
@@ -108,11 +104,9 @@ Replace the following:
 
 Once connected, you can create and read data, for example:
 
-``` suppresswarning
-db.pages.insertOne({ message: "Hello World!"})
-db.pages.find({})
-exit
-```
+    db.pages.insertOne({ message: "Hello World!"})
+    db.pages.find({})
+    exit
 
 ## What's next
 

@@ -133,17 +133,15 @@ Each event includes [data attributes](https://docs.cloud.google.com/eventarc/doc
 
 ##### Java
 
-``` suppresswarning
-logger.info("Event time " + event.getTime());
-logger.info("Event project: " + event.getExtension("project"));
-logger.info("Event location: " + event.getExtension("location"));
-logger.info("Database name: " + event.getExtension("database"));
-logger.info("Database namespace: " + event.getExtension("namespace"));
-logger.info("Database entity: " + event.getExtension("entity"));
-// For withAuthContext events
-logger.info("Auth information: " + event.getExtension("authid"));
-logger.info("Auth information: " + event.getExtension("authtype"));
-```
+    logger.info("Event time " + event.getTime());
+    logger.info("Event project: " + event.getExtension("project"));
+    logger.info("Event location: " + event.getExtension("location"));
+    logger.info("Database name: " + event.getExtension("database"));
+    logger.info("Database namespace: " + event.getExtension("namespace"));
+    logger.info("Database entity: " + event.getExtension("entity"));
+    // For withAuthContext events
+    logger.info("Auth information: " + event.getExtension("authid"));
+    logger.info("Auth information: " + event.getExtension("authtype"));
 
 ## Deploy a function
 
@@ -157,7 +155,7 @@ You can deploy a function using either the gcloud CLI or the Google Cloud consol
 
 2.  Use the [`gcloud functions deploy`](https://docs.cloud.google.com/sdk/gcloud/reference/functions/deploy) command to deploy a function:
     
-    ``` lang-sh
+    ```sh
     gcloud functions deploy FUNCTION_NAME \
     --gen2 \
     --region=FUNCTION_LOCATION \

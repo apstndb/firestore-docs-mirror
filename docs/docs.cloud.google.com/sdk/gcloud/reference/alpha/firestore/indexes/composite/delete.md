@@ -14,13 +14,9 @@ EXAMPLES
 
 The following command deletes the composite index with ID `3421ef` :
 
-``` wrap-code
-gcloud alpha firestore indexes composite delete 3421ef
-```
+    gcloud alpha firestore indexes composite delete 3421ef
 
-``` wrap-code
-gcloud alpha firestore indexes composite delete 3421ef --database=(default)
-```
+    gcloud alpha firestore indexes composite delete 3421ef --database=(default)
 
 POSITIONAL ARGUMENTS
 
@@ -69,10 +65,6 @@ NOTES
 
 This command is currently in alpha and might change without notice. If this command fails with API permission errors despite specifying the correct project, you might be trying to access an API with an invitation-only early access allowlist. These variants are also available:
 
-``` wrap-code
-gcloud firestore indexes composite delete
-```
+    gcloud firestore indexes composite delete
 
-``` wrap-code
-gcloud beta firestore indexes composite delete
-```
+    gcloud beta firestore indexes composite delete

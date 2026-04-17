@@ -33,10 +33,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore indexes composite
-```
+    gcloud firestore indexes composite
 
-``` wrap-code
-gcloud alpha firestore indexes composite
-```
+    gcloud alpha firestore indexes composite

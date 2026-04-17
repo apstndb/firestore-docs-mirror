@@ -10,15 +10,11 @@ EXAMPLES
 
 To clone a database from another:
 
-``` wrap-code
-gcloud alpha firestore databases clone --source-database=projects/PROJECT_ID/databases/SOURCE_DATABASE --snapshot-time=2025-05-26T10:20:00.00Z --destination-database=DATABASE_ID
-```
+    gcloud alpha firestore databases clone --source-database=projects/PROJECT_ID/databases/SOURCE_DATABASE --snapshot-time=2025-05-26T10:20:00.00Z --destination-database=DATABASE_ID
 
 To clone to a CMEK-enabled database:
 
-``` wrap-code
-gcloud alpha firestore databases clone --source-database=projects/PROJECT_ID/databases/SOURCE_DATABASE --snapshot-time=2025-05-26T10:20:00.00Z --destination-database=DATABASE_ID --encryption-type=customer-managed-encryption --kms-key-name=projects/PROJECT_ID/locations/LOCATION_ID/keyRings/KEY_RING_ID/cryptoKeys/CRYPTO_KEY_ID
-```
+    gcloud alpha firestore databases clone --source-database=projects/PROJECT_ID/databases/SOURCE_DATABASE --snapshot-time=2025-05-26T10:20:00.00Z --destination-database=DATABASE_ID --encryption-type=customer-managed-encryption --kms-key-name=projects/PROJECT_ID/locations/LOCATION_ID/keyRings/KEY_RING_ID/cryptoKeys/CRYPTO_KEY_ID
 
 REQUIRED FLAGS
 
@@ -31,27 +27,21 @@ REQUIRED FLAGS
     
     For example, to clone to database `testdb` :
     
-    ``` wrap-code
-    gcloud alpha firestore databases clone --destination-database=testdb
-    ```
+        gcloud alpha firestore databases clone --destination-database=testdb
 
   - `--snapshot-time` = `  SNAPSHOT_TIME  `  
     Snapshot time at which to clone. This must be a whole minute, in the past, and not earlier than the source database's earliest\_version\_time. Additionally, if older than one hour in the past, PITR must be enabled on the source database.
     
     For example, to restore from snapshot `2025-05-26T10:20:00.00Z` of source database `source-db` :
     
-    ``` wrap-code
-    gcloud alpha firestore databases clone --source-database=projects/PROJECT_ID/databases/source-db --snapshot-time=2025-05-26T10:20:00.00Z
-    ```
+        gcloud alpha firestore databases clone --source-database=projects/PROJECT_ID/databases/source-db --snapshot-time=2025-05-26T10:20:00.00Z
 
   - `--source-database` = `  SOURCE_DATABASE  `  
     The source database to clone from.
     
     For example, to clone from database source-db:
     
-    ``` wrap-code
-    gcloud alpha firestore databases clone --source-database=projects/PROJECT_ID/databases/source-db
-    ```
+        gcloud alpha firestore databases clone --source-database=projects/PROJECT_ID/databases/source-db
 
 OPTIONAL FLAGS
 
@@ -67,21 +57,15 @@ The encryption configuration of the new database being created from the database
 
 To create a CMEK-enabled database:
 
-``` wrap-code
-gcloud alpha firestore databases clone --encryption-type=customer-managed-encryption --kms-key-name=projects/PROJECT_ID/locations/LOCATION_ID/keyRings/KEY_RING_ID/cryptoKeys/CRYPTO_KEY_ID
-```
+    gcloud alpha firestore databases clone --encryption-type=customer-managed-encryption --kms-key-name=projects/PROJECT_ID/locations/LOCATION_ID/keyRings/KEY_RING_ID/cryptoKeys/CRYPTO_KEY_ID
 
 To create a Google-default-encrypted database:
 
-``` wrap-code
-gcloud alpha firestore databases clone --encryption-type=google-default-encryption
-```
+    gcloud alpha firestore databases clone --encryption-type=google-default-encryption
 
 To create a database using the same encryption settings as the database:
 
-``` wrap-code
-gcloud alpha firestore databases clone --encryption-type=use-source-encryption
-```
+    gcloud alpha firestore databases clone --encryption-type=use-source-encryption
 
 `--encryption-type` = `  ENCRYPTION_TYPE  `
 
@@ -107,10 +91,6 @@ NOTES
 
 This command is currently in alpha and might change without notice. If this command fails with API permission errors despite specifying the correct project, you might be trying to access an API with an invitation-only early access allowlist. These variants are also available:
 
-``` wrap-code
-gcloud firestore databases clone
-```
+    gcloud firestore databases clone
 
-``` wrap-code
-gcloud beta firestore databases clone
-```
+    gcloud beta firestore databases clone

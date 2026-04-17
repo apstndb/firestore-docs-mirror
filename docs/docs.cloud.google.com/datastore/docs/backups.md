@@ -64,7 +64,7 @@ Use one of the following tools to create a backup schedule.
 
 To create a backup schedule for a database, use the [`gcloud firestore backups schedules create`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/create) command. To create a daily backup schedule, set the `--recurrence` flag to `daily` :
 
-``` lang-sh pretty-print
+```sh
 gcloud firestore backups schedules create \
 --database='DATABASE_ID' \
 --recurrence=daily \
@@ -80,16 +80,14 @@ Replace the following:
 
 To create a daily backup schedule, create a `  google_firestore_backup_schedule  ` resource.
 
-``` suppresswarning
-resource "google_firestore_backup_schedule" "daily-backup" {
-  project  = PROJECT_ID
-  database = DATABASE_ID
-
-  retention = RETENTION_PERIOD_SECONDS
-
-  daily_recurrence {}
-}
-```
+    resource "google_firestore_backup_schedule" "daily-backup" {
+      project  = PROJECT_ID
+      database = DATABASE_ID
+    
+      retention = RETENTION_PERIOD_SECONDS
+    
+      daily_recurrence {}
+    }
 
 Replace the following:
 
@@ -113,7 +111,7 @@ Replace the following:
 
 To create a weekly backup schedule, set the `--recurrence` flag to `weekly` :
 
-``` lang-sh pretty-print
+```sh
 gcloud firestore backups schedules create \
 --database='DATABASE_ID' \
 --recurrence=weekly \
@@ -138,18 +136,16 @@ Replace the following:
 
 To create a weekly backup schedule, create a `  google_firestore_backup_schedule  ` resource.
 
-``` suppresswarning
-resource "google_firestore_backup_schedule" "weekly-backup" {
-  project  = PROJECT_ID
-  database = DATABASE_ID
-
-  retention = RETENTION_PERIOD_SECONDS
-
-  weekly_recurrence {
-    day = DAY
-  }
-}
-```
+    resource "google_firestore_backup_schedule" "weekly-backup" {
+      project  = PROJECT_ID
+      database = DATABASE_ID
+    
+      retention = RETENTION_PERIOD_SECONDS
+    
+      weekly_recurrence {
+        day = DAY
+      }
+    }
 
 Replace the following:
 
@@ -181,7 +177,7 @@ To list all backup schedules for a database, use one of the following methods:
 
 Use the [`gcloud firestore backups schedules list`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/list) command.
 
-``` lang-sh pretty-print
+```sh
 gcloud firestore backups schedules list \
 --database='DATABASE_ID'
 ```
@@ -204,7 +200,7 @@ To retrieve information about a backup schedule, use one of the following method
 
 Use the [`gcloud firestore backups schedules describe`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/describe) command:
 
-``` lang-sh pretty-print
+```sh
 gcloud firestore backups schedules describe \
 --database='DATABASE_ID' \
 --backup-schedule=BACKUP_SCHEDULE_ID
@@ -233,7 +229,7 @@ To update the retention period of a backup schedule, use one of the following me
 
 Use the [`gcloud firestore backups schedules update`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/update) command:
 
-``` lang-sh pretty-print
+```sh
 gcloud firestore backups schedules update \
 --database='DATABASE_ID' \
 --backup-schedule=BACKUP_SCHEDULE_ID \
@@ -266,7 +262,7 @@ To delete a backup schedule, use one of the following methods:
 
 Use the [`gcloud firestore backups schedules delete`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/delete) command:
 
-``` lang-sh pretty-print
+```sh
 gcloud firestore backups schedules delete \
 --database='DATABASE_ID' \
 --backup-schedule=BACKUP_SCHEDULE_ID
@@ -299,14 +295,14 @@ To list available backups, use one of the following methods:
 
 Use the [`gcloud firestore backups list`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/list) command:
 
-``` lang-sh pretty-print
+```sh
 gcloud firestore backups list \
 --format="table(name, database, state)"
 ```
 
 The `--format="table(name, database, state)"` flag formats the output into a more readable format. To list only the backups from a specific location, use the `--location` flag:
 
-``` lang-sh pretty-print
+```sh
 gcloud firestore backups list \
 --location=LOCATION \
 --format="table(name, database, state)"
@@ -330,7 +326,7 @@ To view details about a backup, use one of the following methods:
 
 Use the [`gcloud firestore backups describe`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/describe) command:
 
-``` lang-sh pretty-print
+```sh
 gcloud firestore backups describe \
 --location=LOCATION \
 --backup=BACKUP_ID
@@ -361,7 +357,7 @@ To delete a backup, use one of the following methods.
 
 Use the [`gcloud firestore backups delete`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/delete) command:
 
-``` lang-sh pretty-print
+```sh
 gcloud firestore backups delete \
 --location=LOCATION \
 --backup=BACKUP_ID
@@ -396,7 +392,7 @@ To begin a restore operation, use one of the following methods:
 
 Use the [`gcloud firestore databases restore`](https://cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/restore) command:
 
-``` lang-sh pretty-print
+```sh
 gcloud firestore databases restore \
 --source-backup=projects/PROJECT_ID/locations/LOCATION/backups/BACKUP_ID \
 --destination-database='DATABASE_ID \
@@ -415,33 +411,31 @@ Replace the following:
 
 The database mode will match that of the backup. The output will include `metadata` , `name` , and `response` components:
 
-``` pretty-print
-metadata:
-  '@type': type.googleapis.com/google.firestore.admin.v1.RestoreDatabaseMetadata
-  backup: projects/PROJECT_ID/locations/LOCATION/backups/BACKUP_ID
-  database: projects/PROJECT_ID/databases/DATABASE_ID
-  operationState: PROCESSING
-  progressPercentage:
-    completedWork: '20'
-    estimatedWork: '100'
-  startTime: '2023-12-06T14:20:17.398325Z'
-name: projects/PROJECT_ID/databases/DATABASE_ID/operations/operation_uuid
-response:
-  '@type': type.googleapis.com/google.firestore.admin.v1.Database
-  createTime: '2023-12-06T14:20:17.398325Z'
-  name: projects/PROJECT_ID/databases/DATABASE_ID
-  ...
-```
+    metadata:
+      '@type': type.googleapis.com/google.firestore.admin.v1.RestoreDatabaseMetadata
+      backup: projects/PROJECT_ID/locations/LOCATION/backups/BACKUP_ID
+      database: projects/PROJECT_ID/databases/DATABASE_ID
+      operationState: PROCESSING
+      progressPercentage:
+        completedWork: '20'
+        estimatedWork: '100'
+      startTime: '2023-12-06T14:20:17.398325Z'
+    name: projects/PROJECT_ID/databases/DATABASE_ID/operations/operation_uuid
+    response:
+      '@type': type.googleapis.com/google.firestore.admin.v1.Database
+      createTime: '2023-12-06T14:20:17.398325Z'
+      name: projects/PROJECT_ID/databases/DATABASE_ID
+      ...
 
 The `metadata` field includes a `progressPercentage` component, detailing the estimated progress of the restore thus far, and an `operationState` specifying the overall state of the restore. To retrieve this information again, use `  gcloud firestore operations list  ` :
 
-``` lang-sh pretty-print
+```sh
 gcloud firestore operations list --database=DATABASE_ID
 ```
 
 or, using the `name` field from the output described above, with `  gcloud firestore operations describe  ` :
 
-``` lang-sh pretty-print
+```sh
 gcloud firestore operations describe OPERATION_NAME
 ```
 

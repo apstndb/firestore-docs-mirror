@@ -18,15 +18,11 @@ EXAMPLES
 
 To retrieve information about recent operations, run:
 
-``` wrap-code
-gcloud firestore operations list
-```
+    gcloud firestore operations list
 
 To only list operations that are done, run:
 
-``` wrap-code
-gcloud firestore operations list --filter="done:true"
-```
+    gcloud firestore operations list --filter="done:true"
 
 FLAGS
 
@@ -35,9 +31,7 @@ FLAGS
     
     For example, to operate on database `foo` :
     
-    ``` wrap-code
-    gcloud firestore operations list --database='foo'
-    ```
+        gcloud firestore operations list --database='foo'
 
 LIST COMMAND FLAGS
 
@@ -62,10 +56,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha firestore operations list
-```
+    gcloud alpha firestore operations list
 
-``` wrap-code
-gcloud beta firestore operations list
-```
+    gcloud beta firestore operations list

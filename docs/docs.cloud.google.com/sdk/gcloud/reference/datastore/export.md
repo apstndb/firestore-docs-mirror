@@ -14,36 +14,26 @@ EXAMPLES
 
 To export all kinds in the `exampleNs` namespace in the `exampleProject` project to the `exampleBucket` , run:
 
-``` wrap-code
-gcloud datastore export gs://exampleBucket --namespaces='exampleNs' --project='exampleProject'
-```
+    gcloud datastore export gs://exampleBucket --namespaces='exampleNs' --project='exampleProject'
 
 To export the `exampleKind` and `otherKind` kinds in the `exampleNs` namespace in the `exampleProject` project to the `exampleBucket` , run:
 
-``` wrap-code
-gcloud datastore export gs://exampleBucket --kinds='exampleKind','otherKind' --namespaces='exampleNs' --project='exampleProject'
-```
+    gcloud datastore export gs://exampleBucket --kinds='exampleKind','otherKind' --namespaces='exampleNs' --project='exampleProject'
 
 To export all namespaces and kinds in the currently set project to the `exampleBucket` without waiting for the operation to complete, run:
 
-``` wrap-code
-gcloud datastore export gs://exampleBucket --async
-```
+    gcloud datastore export gs://exampleBucket --async
 
 To export the `exampleKind` in all namespaces in the currently set project to the `exampleBucket` , and output the result in JSON, run:
 
-``` wrap-code
-gcloud datastore export gs://exampleBucket --kinds='exampleKind' --format=json
-```
+    gcloud datastore export gs://exampleBucket --kinds='exampleKind' --format=json
 
 POSITIONAL ARGUMENTS
 
   - `  OUTPUT_URL_PREFIX  `  
     Location for the export metadata and data files. Must be a valid Google Cloud Storage bucket with an optional path prefix. For example:
     
-    ``` wrap-code
-    gcloud datastore export gs://mybucket/my/path
-    ```
+        gcloud datastore export gs://mybucket/my/path
     
     Will place the export in the `mybucket` bucket in objects prefixed with `my/path` .
 
@@ -55,23 +45,17 @@ FLAGS
   - `--kinds` =\[ `  KIND  ` ,…\]  
     A list specifying what kinds will be included in the operation. When omitted, all Kinds are included. For example, to operate on only the 'Customer' and 'Order' Kinds:
     
-    ``` wrap-code
-    gcloud datastore export --kinds='Customer','Order'
-    ```
+        gcloud datastore export --kinds='Customer','Order'
 
   - `--namespaces` =\[ `  NAMESPACE  ` ,…\]  
     A list specifying what namespaces will be included in the operation. When omitted, all namespaces are included in the operation, including the default namespace. To specify that `only` the default namespace should be operated on, use the special symbol '(default)'. For example, to operate on entities from both the 'customers' and default namespaces:
     
-    ``` wrap-code
-    gcloud datastore export --namespaces='(default)','customers'
-    ```
+        gcloud datastore export --namespaces='(default)','customers'
 
   - `--operation-labels` =\[ `  OPERATION_LABEL  ` ,…\]  
     A string:string map of custom labels to associate with this operation. For example:
     
-    ``` wrap-code
-    gcloud datastore export --operation-labels=comment='customer orders','sales rep'=pending
-    ```
+        gcloud datastore export --operation-labels=comment='customer orders','sales rep'=pending
 
 GCLOUD WIDE FLAGS
 
@@ -83,10 +67,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha datastore export
-```
+    gcloud alpha datastore export
 
-``` wrap-code
-gcloud beta datastore export
-```
+    gcloud beta datastore export

@@ -33,10 +33,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore operations
-```
+    gcloud firestore operations
 
-``` wrap-code
-gcloud alpha firestore operations
-```
+    gcloud alpha firestore operations

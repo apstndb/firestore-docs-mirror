@@ -14,9 +14,7 @@ EXAMPLES
 
 To cancel the currently-running `exampleOperationId` operation, run:
 
-``` wrap-code
-gcloud firestore operations cancel exampleOperationId
-```
+    gcloud firestore operations cancel exampleOperationId
 
 POSITIONAL ARGUMENTS
 
@@ -36,9 +34,7 @@ FLAGS
     
     For example, to operate on database `foo` :
     
-    ``` wrap-code
-    gcloud firestore operations cancel --database='foo'
-    ```
+        gcloud firestore operations cancel --database='foo'
 
 GCLOUD WIDE FLAGS
 
@@ -50,10 +46,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha firestore operations cancel
-```
+    gcloud alpha firestore operations cancel
 
-``` wrap-code
-gcloud beta firestore operations cancel
-```
+    gcloud beta firestore operations cancel

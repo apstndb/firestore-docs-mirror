@@ -10,9 +10,7 @@ EXAMPLES
 
 To enable user creds 'test-user-creds-id' under database testdb.
 
-``` wrap-code
-gcloud beta firestore user-creds enable test-user-creds-id --database='testdb'
-```
+    gcloud beta firestore user-creds enable test-user-creds-id --database='testdb'
 
 POSITIONAL ARGUMENTS
 
@@ -21,9 +19,7 @@ POSITIONAL ARGUMENTS
     
     For example, to operate on user creds `creds-name-1` :
     
-    ``` wrap-code
-    gcloud beta firestore user-creds enable creds-name-1
-    ```
+        gcloud beta firestore user-creds enable creds-name-1
 
 REQUIRED FLAGS
 
@@ -32,9 +28,7 @@ REQUIRED FLAGS
     
     For example, to operate on database `foo` :
     
-    ``` wrap-code
-    gcloud beta firestore user-creds enable --database='foo'
-    ```
+        gcloud beta firestore user-creds enable --database='foo'
 
 GCLOUD WIDE FLAGS
 
@@ -46,10 +40,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore user-creds enable
-```
+    gcloud firestore user-creds enable
 
-``` wrap-code
-gcloud alpha firestore user-creds enable
-```
+    gcloud alpha firestore user-creds enable

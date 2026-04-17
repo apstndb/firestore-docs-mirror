@@ -14,9 +14,7 @@ EXAMPLES
 
 To remove unused indexes based on your local configuration, run:
 
-``` wrap-code
-gcloud beta datastore indexes cleanup ~/myapp/index.yaml
-```
+    gcloud beta datastore indexes cleanup ~/myapp/index.yaml
 
 POSITIONAL ARGUMENTS
 
@@ -30,9 +28,7 @@ FLAGS
     
     For example, to operate on database `testdb` :
     
-    ``` wrap-code
-    gcloud beta datastore indexes cleanup --database='testdb'
-    ```
+        gcloud beta datastore indexes cleanup --database='testdb'
 
 GCLOUD WIDE FLAGS
 
@@ -44,10 +40,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud datastore indexes cleanup
-```
+    gcloud datastore indexes cleanup
 
-``` wrap-code
-gcloud alpha datastore indexes cleanup
-```
+    gcloud alpha datastore indexes cleanup

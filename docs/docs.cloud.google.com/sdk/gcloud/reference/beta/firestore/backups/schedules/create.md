@@ -10,15 +10,11 @@ EXAMPLES
 
 To create a backup schedule with 7 days retention and daily recurrence under database testdb.
 
-``` wrap-code
-gcloud beta firestore backups schedules create --database=testdb --retention=7d --recurrence=daily
-```
+    gcloud beta firestore backups schedules create --database=testdb --retention=7d --recurrence=daily
 
 To create a backup schedule with 7 days retention and weekly recurrence on Monday under database testdb.
 
-``` wrap-code
-gcloud beta firestore backups schedules create --database=testdb --retention=7d --recurrence=weekly --day-of-week=MON
-```
+    gcloud beta firestore backups schedules create --database=testdb --retention=7d --recurrence=weekly --day-of-week=MON
 
 REQUIRED FLAGS
 
@@ -28,9 +24,7 @@ The database to operate on.
 
 For example, to operate on database `foo` :
 
-``` wrap-code
-gcloud beta firestore backups schedules create --database='foo'
-```
+    gcloud beta firestore backups schedules create --database='foo'
 
 `--retention` = `  RETENTION  `
 
@@ -38,9 +32,7 @@ The rention of the backup. At what relative time in the future, compared to the 
 
 For example, to set retention as 7 days.
 
-``` wrap-code
-gcloud beta firestore backups schedules create --retention=7d
-```
+    gcloud beta firestore backups schedules create --retention=7d
 
 Recurrence settings of a backup schedule.
 
@@ -55,9 +47,7 @@ This must be specified.
     
     For example, to create a weekly backup schedule which creates backups on Monday.
     
-    ``` wrap-code
-    gcloud beta firestore backups schedules create --recurrence=weekly --day-of-week=MON
-    ```
+        gcloud beta firestore backups schedules create --recurrence=weekly --day-of-week=MON
     
     This flag argument must be specified if any of the other arguments in this group are specified.
 
@@ -81,10 +71,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore backups schedules create
-```
+    gcloud firestore backups schedules create
 
-``` wrap-code
-gcloud alpha firestore backups schedules create
-```
+    gcloud alpha firestore backups schedules create

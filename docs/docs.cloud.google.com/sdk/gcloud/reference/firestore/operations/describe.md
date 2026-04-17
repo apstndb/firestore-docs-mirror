@@ -14,9 +14,7 @@ EXAMPLES
 
 To retrieve information about the `exampleOperationId` operation, run:
 
-``` wrap-code
-gcloud firestore operations describe exampleOperationId
-```
+    gcloud firestore operations describe exampleOperationId
 
 POSITIONAL ARGUMENTS
 
@@ -36,9 +34,7 @@ FLAGS
     
     For example, to operate on database `foo` :
     
-    ``` wrap-code
-    gcloud firestore operations describe --database='foo'
-    ```
+        gcloud firestore operations describe --database='foo'
 
 GCLOUD WIDE FLAGS
 
@@ -50,10 +46,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha firestore operations describe
-```
+    gcloud alpha firestore operations describe
 
-``` wrap-code
-gcloud beta firestore operations describe
-```
+    gcloud beta firestore operations describe

@@ -10,9 +10,7 @@ EXAMPLES
 
 To list all user creds under database testdb.
 
-``` wrap-code
-gcloud alpha firestore user-creds list --database='testdb'
-```
+    gcloud alpha firestore user-creds list --database='testdb'
 
 REQUIRED FLAGS
 
@@ -21,9 +19,7 @@ REQUIRED FLAGS
     
     For example, to operate on database `foo` :
     
-    ``` wrap-code
-    gcloud alpha firestore user-creds list --database='foo'
-    ```
+        gcloud alpha firestore user-creds list --database='foo'
 
 LIST COMMAND FLAGS
 
@@ -48,10 +44,6 @@ NOTES
 
 This command is currently in alpha and might change without notice. If this command fails with API permission errors despite specifying the correct project, you might be trying to access an API with an invitation-only early access allowlist. These variants are also available:
 
-``` wrap-code
-gcloud firestore user-creds list
-```
+    gcloud firestore user-creds list
 
-``` wrap-code
-gcloud beta firestore user-creds list
-```
+    gcloud beta firestore user-creds list

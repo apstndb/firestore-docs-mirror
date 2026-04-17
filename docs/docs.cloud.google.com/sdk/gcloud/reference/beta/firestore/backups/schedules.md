@@ -35,10 +35,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore backups schedules
-```
+    gcloud firestore backups schedules
 
-``` wrap-code
-gcloud alpha firestore backups schedules
-```
+    gcloud alpha firestore backups schedules

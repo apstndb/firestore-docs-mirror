@@ -38,10 +38,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore backups
-```
+    gcloud firestore backups
 
-``` wrap-code
-gcloud alpha firestore backups
-```
+    gcloud alpha firestore backups

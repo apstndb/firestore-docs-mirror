@@ -27,10 +27,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore locations
-```
+    gcloud firestore locations
 
-``` wrap-code
-gcloud alpha firestore locations
-```
+    gcloud alpha firestore locations

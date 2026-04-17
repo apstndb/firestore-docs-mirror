@@ -10,9 +10,7 @@ EXAMPLES
 
 To create a user creds called test-user-creds-id under database testdb.
 
-``` wrap-code
-gcloud beta firestore user-creds create test-user-creds-id --database=testdb
-```
+    gcloud beta firestore user-creds create test-user-creds-id --database=testdb
 
 POSITIONAL ARGUMENTS
 
@@ -21,9 +19,7 @@ POSITIONAL ARGUMENTS
     
     For example, to operate on user creds `creds-name-1` :
     
-    ``` wrap-code
-    gcloud beta firestore user-creds create creds-name-1
-    ```
+        gcloud beta firestore user-creds create creds-name-1
 
 REQUIRED FLAGS
 
@@ -32,9 +28,7 @@ REQUIRED FLAGS
     
     For example, to operate on database `foo` :
     
-    ``` wrap-code
-    gcloud beta firestore user-creds create --database='foo'
-    ```
+        gcloud beta firestore user-creds create --database='foo'
 
 GCLOUD WIDE FLAGS
 
@@ -46,10 +40,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore user-creds create
-```
+    gcloud firestore user-creds create
 
-``` wrap-code
-gcloud alpha firestore user-creds create
-```
+    gcloud alpha firestore user-creds create

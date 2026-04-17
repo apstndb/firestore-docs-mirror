@@ -14,9 +14,7 @@ EXAMPLES
 
 To delete the completed `exampleOperationId` operation, run:
 
-``` wrap-code
-gcloud beta firestore operations delete exampleOperationId
-```
+    gcloud beta firestore operations delete exampleOperationId
 
 POSITIONAL ARGUMENTS
 
@@ -36,9 +34,7 @@ FLAGS
     
     For example, to operate on database `foo` :
     
-    ``` wrap-code
-    gcloud beta firestore operations delete --database='foo'
-    ```
+        gcloud beta firestore operations delete --database='foo'
 
 GCLOUD WIDE FLAGS
 
@@ -50,10 +46,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore operations delete
-```
+    gcloud firestore operations delete
 
-``` wrap-code
-gcloud alpha firestore operations delete
-```
+    gcloud alpha firestore operations delete

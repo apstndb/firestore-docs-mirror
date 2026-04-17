@@ -468,7 +468,7 @@ Android
 
 ##### Java
 
-``` suppreswarning
+``` 
 collection = db.collection("cities");
 snapshot = collection.aggregate(sum("population")).get().get();
 System.out.println("Sum: " + snapshot.get(sum("population")));
@@ -630,7 +630,7 @@ Android
 
 ##### Java
 
-``` suppreswarning
+``` 
 collection = db.collection("cities");
 query = collection.whereEqualTo("state", "CA");
 snapshot = query.aggregate(sum("population")).get().get();
@@ -790,7 +790,7 @@ Android
 
 ##### Java
 
-``` suppreswarning
+``` 
 collection = db.collection("cities");
 snapshot = collection.aggregate(average("population")).get().get();
 System.out.println("Average: " + snapshot.get(average("population")));
@@ -952,7 +952,7 @@ Android
 
 ##### Java
 
-``` suppreswarning
+``` 
 collection = db.collection("cities");
 query = collection.whereEqualTo("state", "CA");
 snapshot = query.aggregate(average("population")).get().get();
@@ -1150,7 +1150,7 @@ Android
 
 ##### Java
 
-``` suppreswarning
+``` 
 collection = db.collection("cities");
 query = collection.whereEqualTo("state", "CA");
 AggregateQuery aggregateQuery = query.aggregate(count(), sum("population"), average("population"));

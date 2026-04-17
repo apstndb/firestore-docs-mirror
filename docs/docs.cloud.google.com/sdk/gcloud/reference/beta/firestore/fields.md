@@ -27,10 +27,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore fields
-```
+    gcloud firestore fields
 
-``` wrap-code
-gcloud alpha firestore fields
-```
+    gcloud alpha firestore fields

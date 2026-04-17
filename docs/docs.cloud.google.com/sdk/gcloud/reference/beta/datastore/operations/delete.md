@@ -14,15 +14,11 @@ EXAMPLES
 
 To delete the completed operation with id `exampleId` , run:
 
-``` wrap-code
-gcloud beta datastore operations delete exampleId
-```
+    gcloud beta datastore operations delete exampleId
 
 or
 
-``` wrap-code
-gcloud beta datastore operations delete projects/your-project-id/operations/exampleId
-```
+    gcloud beta datastore operations delete projects/your-project-id/operations/exampleId
 
 POSITIONAL ARGUMENTS
 
@@ -45,10 +41,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud datastore operations delete
-```
+    gcloud datastore operations delete
 
-``` wrap-code
-gcloud alpha datastore operations delete
-```
+    gcloud alpha datastore operations delete

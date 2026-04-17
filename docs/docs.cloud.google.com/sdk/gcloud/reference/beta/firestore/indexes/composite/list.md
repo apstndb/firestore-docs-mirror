@@ -14,19 +14,13 @@ EXAMPLES
 
 The following command lists all composite indexes in the database:
 
-``` wrap-code
-gcloud beta firestore indexes composite list
-```
+    gcloud beta firestore indexes composite list
 
-``` wrap-code
-gcloud beta firestore indexes composite list --database=(default)
-```
+    gcloud beta firestore indexes composite list --database=(default)
 
 The following command lists composite indexes in the `Events` collection group:
 
-``` wrap-code
-gcloud beta firestore indexes composite list --filter=COLLECTION_GROUP:Events
-```
+    gcloud beta firestore indexes composite list --filter=COLLECTION_GROUP:Events
 
 FLAGS
 
@@ -77,10 +71,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore indexes composite list
-```
+    gcloud firestore indexes composite list
 
-``` wrap-code
-gcloud alpha firestore indexes composite list
-```
+    gcloud alpha firestore indexes composite list

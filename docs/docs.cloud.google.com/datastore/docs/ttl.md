@@ -53,12 +53,6 @@ The principal configuring a TTL policy requires the following permission in the 
 
 For roles that assign these permissions, see [Datastore Identity and Access Management roles](https://docs.cloud.google.com/datastore/docs/access/iam#iam_roles) .
 
-## Before you begin
-
-Before you use the gcloud CLI to manage TTL policies, use the [`gcloud components update`](https://docs.cloud.google.com/sdk/gcloud/reference/components/update) command to update components to the latest available version:
-
-    gcloud components update
-
 ## Create a TTL policy
 
 When you create a TTL policy, you designate an entity property as the expiration time for entities in a kind. The TTL policy applies to the specified kind in all namespaces.
@@ -97,11 +91,9 @@ The console returns to the **Time-to-live** page. If the operation successfully 
 
 2.  Use the [`firestore fields ttls update`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update) command to configure a TTL policy. Add the `--async` flag to prevent the gcloud CLI from waiting for the operation to complete.
     
-    ``` notranslate
-    gcloud firestore fields ttls update ttl_field --collection-group=collection_group_name --enable-ttl
-    ```
+        gcloud firestore fields ttls update ttl_field --collection-group=collection_group_name --enable-ttl
 
-Even on an empty database, it can take ten minutes or more to enable a TTL policy. After you start an operation, closing the terminal does not cancel the operation.
+It can take a minimum of ten minutes or more to enable a TTL policy. Once you start an operation, closing the terminal does not cancel the operation.
 
 ## View TTL policies
 
@@ -125,15 +117,11 @@ The Google Cloud console lists TTL policies for your database and includes each 
 
 2.  Use the [`firestore fields ttls list`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/list) command to view a TTL policy. The following command lists all TTL policies.
     
-    ``` notranslate
-    gcloud firestore fields ttls list
-    ```
+        gcloud firestore fields ttls list
     
     To list TTL policies under a specific kind, use the following:
     
-    ``` notranslate
-    gcloud firestore fields ttls list  --collection-group=collection_group_name
-    ```
+        gcloud firestore fields ttls list  --collection-group=collection_group_name
 
 ### View operation details
 
@@ -141,9 +129,7 @@ You can use the gcloud CLI to view more details about a TTL policy that is in th
 
 Use the [`operations list`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command to see all running and recently completed operations:
 
-``` notranslate
-gcloud firestore operations list
-```
+    gcloud firestore operations list
 
 The response includes an estimate of the operation's progress.
 
@@ -173,9 +159,7 @@ The Google Cloud console returns to the **Time-to-live** page. On success, Datas
 
 2.  Use the [`firestore fields ttls update`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update) command to configure a TTL policy. Add the `--async` flag to prevent the gcloud CLI from waiting for the operation to complete.
     
-    ``` notranslate
-    gcloud firestore fields ttls update ttl_field --collection-group=collection_group_name --disable-ttl
-    ```
+        gcloud firestore fields ttls update ttl_field --collection-group=collection_group_name --disable-ttl
 
 ## Monitor TTL deletions
 

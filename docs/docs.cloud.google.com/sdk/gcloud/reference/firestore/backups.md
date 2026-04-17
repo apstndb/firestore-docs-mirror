@@ -38,10 +38,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha firestore backups
-```
+    gcloud alpha firestore backups
 
-``` wrap-code
-gcloud beta firestore backups
-```
+    gcloud beta firestore backups

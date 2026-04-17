@@ -29,10 +29,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore indexes
-```
+    gcloud firestore indexes
 
-``` wrap-code
-gcloud alpha firestore indexes
-```
+    gcloud alpha firestore indexes

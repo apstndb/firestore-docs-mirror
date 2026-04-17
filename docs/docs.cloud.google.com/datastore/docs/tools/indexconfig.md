@@ -105,9 +105,7 @@ Composite index builds are *long-running operations* and can take a substantial 
 
 After you start a composite index build, Datastore mode assigns the operation a unique name. Operation names are prefixed with `projects/[PROJECT_ID]/databases/(default)/operations/` , for example:
 
-``` notranslate
-projects/project-id/databases/(default)/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
-```
+    projects/project-id/databases/(default)/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
 
 However, you can leave out the prefix when specifying an operation name for the `describe` command.
 
@@ -117,9 +115,7 @@ To list long-running operations, use the [gcloud datastore operations list](http
 
 ### gcloud
 
-``` notranslate
-gcloud datastore operations list
-```
+    gcloud datastore operations list
 
 ### rest
 
@@ -161,52 +157,50 @@ See information about the response below.
 
 For example, a recently completed composite index build shows the following information:
 
-``` notranslate
-{
-  "operations": [
-  {
-    "name": "projects/project-id/operations/S01vcFVpSmdBQ0lDDCoDIGRiNTdiZDQNmE4YS0yMTVmNWUzZSQadGx1YWZlZAcSMXRzYWVzdS1yZXhlZG5pLW5pbWRhFQpWEg",
-    "done": true,
-    "metadata": {
-      "@type": "type.googleapis.com/google.datastore.admin.v1.IndexOperationMetadata",
-      "common": {
-        "endTime": "2020-06-23T16:55:29.923562Z",
-        "operationType": "CREATE_INDEX",
-        "startTime": "2020-06-23T16:55:10Z",
-        "state": "SUCCESSFUL"
-      },
-      "indexId": "CICAJiUpoMK",
-      "progressEntities": {
-        "workCompleted": "2193027",
-        "workEstimated": "2198182"
-      }
-    },
-    "response": {
-      "@type": "type.googleapis.com/google.datastore.admin.v1.Index",
-      "ancestor": "NONE",
-      "indexId": "CICAJiUpoMK",
-      "kind": "Task",
-      "projectId": "project-id",
-           "properties": [
-        {
-          "direction": "ASCENDING",
-          "name": "priority"
+    {
+      "operations": [
+      {
+        "name": "projects/project-id/operations/S01vcFVpSmdBQ0lDDCoDIGRiNTdiZDQNmE4YS0yMTVmNWUzZSQadGx1YWZlZAcSMXRzYWVzdS1yZXhlZG5pLW5pbWRhFQpWEg",
+        "done": true,
+        "metadata": {
+          "@type": "type.googleapis.com/google.datastore.admin.v1.IndexOperationMetadata",
+          "common": {
+            "endTime": "2020-06-23T16:55:29.923562Z",
+            "operationType": "CREATE_INDEX",
+            "startTime": "2020-06-23T16:55:10Z",
+            "state": "SUCCESSFUL"
+          },
+          "indexId": "CICAJiUpoMK",
+          "progressEntities": {
+            "workCompleted": "2193027",
+            "workEstimated": "2198182"
+          }
         },
-        {
-          "direction": "ASCENDING",
-          "name": "done"
-        },
-        {
-          "direction": "DESCENDING",
-          "name": "created"
+        "response": {
+          "@type": "type.googleapis.com/google.datastore.admin.v1.Index",
+          "ancestor": "NONE",
+          "indexId": "CICAJiUpoMK",
+          "kind": "Task",
+          "projectId": "project-id",
+               "properties": [
+            {
+              "direction": "ASCENDING",
+              "name": "priority"
+            },
+            {
+              "direction": "ASCENDING",
+              "name": "done"
+            },
+            {
+              "direction": "DESCENDING",
+              "name": "created"
+            }
+          ],
+          "state": "READY"
         }
-      ],
-      "state": "READY"
+      },
+      ]
     }
-  },
-  ]
-}
-```
 
 ### Describing a single operation
 
@@ -216,9 +210,7 @@ Instead of listing all long-running operations, you can list the details of a si
 
 Use the [`operations describe`](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/describe) command to show the status of a composite index build.
 
-``` notranslate
-gcloud datastore operations describe operation-name
-```
+    gcloud datastore operations describe operation-name
 
 ### rest
 
@@ -268,25 +260,23 @@ Divide `workCompleted` by `workEstimated` for a rough progress estimate. The est
 
 For example, here is the progress status of a composite index build:
 
-``` notranslate
-{
-  "operations": [
     {
-      "name": "projects/project-id/operations/AyAyMDBiM2U5NTgwZDAtZGIyYi0zYjc0LTIzYWEtZjg1ZGdWFmZWQHEjF0c2Flc3UtcmV4ZWRuaS1uaW1kYRUKSBI",
-      "metadata": {
-        "@type": "type.googleapis.com/google.datastore.admin.v1.IndexOperationMetadata",
-        "common": {
-          "operationType": "CREATE_INDEX",
-          "startTime": "2020-06-23T16:52:25.697539Z",
-          "state": "PROCESSING"
+      "operations": [
+        {
+          "name": "projects/project-id/operations/AyAyMDBiM2U5NTgwZDAtZGIyYi0zYjc0LTIzYWEtZjg1ZGdWFmZWQHEjF0c2Flc3UtcmV4ZWRuaS1uaW1kYRUKSBI",
+          "metadata": {
+            "@type": "type.googleapis.com/google.datastore.admin.v1.IndexOperationMetadata",
+            "common": {
+              "operationType": "CREATE_INDEX",
+              "startTime": "2020-06-23T16:52:25.697539Z",
+              "state": "PROCESSING"
+            },
+            "progressEntities": {
+              "workCompleted": "219327",
+              "workEstimated": "2198182"
+            }
+           },
         },
-        "progressEntities": {
-          "workCompleted": "219327",
-          "workEstimated": "2198182"
-        }
-       },
-    },
-    ...
-```
+        ...
 
 When an operation is done, the operation description will contain [`"done": true`](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.longrunning#operation) . See the value of the [`state` field](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1#state) for the result of the operation. If the `done` field is not set in the response, then its value is `false` . Do not depend on the existence of the `done` value for in-progress operations.

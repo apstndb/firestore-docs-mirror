@@ -14,9 +14,7 @@ EXAMPLES
 
 To list all composite indexes in the database, run:
 
-``` wrap-code
-gcloud beta datastore indexes list
-```
+    gcloud beta datastore indexes list
 
 LIST COMMAND FLAGS
 
@@ -45,10 +43,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud datastore indexes list
-```
+    gcloud datastore indexes list
 
-``` wrap-code
-gcloud alpha datastore indexes list
-```
+    gcloud alpha datastore indexes list

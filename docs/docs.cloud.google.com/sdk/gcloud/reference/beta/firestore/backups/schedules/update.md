@@ -10,9 +10,7 @@ EXAMPLES
 
 To update backup schedule 'cf9f748a-7980-4703-b1a1-d1ffff591db0' under database testdb to 7 days retention.
 
-``` wrap-code
-gcloud beta firestore backups schedules update --database='testdb' --backup-schedule='cf9f748a-7980-4703-b1a1-d1ffff591db0' --retention='7d'
-```
+    gcloud beta firestore backups schedules update --database='testdb' --backup-schedule='cf9f748a-7980-4703-b1a1-d1ffff591db0' --retention='7d'
 
 REQUIRED FLAGS
 
@@ -21,18 +19,14 @@ REQUIRED FLAGS
     
     For example, to operate on backup schedule `091a49a0-223f-4c98-8c69-a284abbdb26b` :
     
-    ``` wrap-code
-    gcloud beta firestore backups schedules update --backup-schedule='091a49a0-223f-4c98-8c69-a284abbdb26b'
-    ```
+        gcloud beta firestore backups schedules update --backup-schedule='091a49a0-223f-4c98-8c69-a284abbdb26b'
 
   - `--database` = `  DATABASE  `  
     The database to operate on.
     
     For example, to operate on database `foo` :
     
-    ``` wrap-code
-    gcloud beta firestore backups schedules update --database='foo'
-    ```
+        gcloud beta firestore backups schedules update --database='foo'
 
 OPTIONAL FLAGS
 
@@ -41,9 +35,7 @@ OPTIONAL FLAGS
     
     For example, to set retention as 7 days.
     
-    ``` wrap-code
-    gcloud beta firestore backups schedules update --retention=7d
-    ```
+        gcloud beta firestore backups schedules update --retention=7d
 
 GCLOUD WIDE FLAGS
 
@@ -55,10 +47,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore backups schedules update
-```
+    gcloud firestore backups schedules update
 
-``` wrap-code
-gcloud alpha firestore backups schedules update
-```
+    gcloud alpha firestore backups schedules update

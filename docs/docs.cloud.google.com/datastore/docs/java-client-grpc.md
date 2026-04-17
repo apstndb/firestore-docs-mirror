@@ -10,14 +10,12 @@ To enable the gRPC transport behavior, add `setTransportOptions` to your client 
 
 ##### Java
 
-``` suppress-warning
-DatastoreOptions datastoreOptions =
-       DatastoreOptions.newBuilder()
-               .setProjectId("my-project")
-               .setDatabaseId("my-database")
-               .setTransportOptions(GrpcTransportOptions.newBuilder().build())
-               .build();
-```
+    DatastoreOptions datastoreOptions =
+           DatastoreOptions.newBuilder()
+                   .setProjectId("my-project")
+                   .setDatabaseId("my-database")
+                   .setTransportOptions(GrpcTransportOptions.newBuilder().build())
+                   .build();
 
 Setting the transport options explicitly to `GrpcTransportOptions` configures the client to use gRPC instead of HTTP when making calls to the server.
 
@@ -27,24 +25,22 @@ You can deactivate the gRPC transport behavior by reverting to the HTTP transpor
 
 ##### Java
 
-``` suppress-warning
-// Use this code to deactivate the gRPC transport behavior
-// by reverting to the HTTP transport behavior.
-DatastoreOptions datastoreOptions = DatastoreOptions.newBuilder()
-            .setProjectId("my-project")
-            .setDatabaseId("my-database")
-            .build();
-
-// You can also use this code to revert to the HTTP transport behavior
-DatastoreOptions datastoreOptions =
-            DatastoreOptions.newBuilder()
-                    .setProjectId("my-project")
-                    .setDatabaseId("my-database")
-                    .setTransportOptions(HttpTransportOptions.newBuilder()
-                            .setConnectTimeout(1000)
-                            .build())
-                    .build();
-```
+    // Use this code to deactivate the gRPC transport behavior
+    // by reverting to the HTTP transport behavior.
+    DatastoreOptions datastoreOptions = DatastoreOptions.newBuilder()
+                .setProjectId("my-project")
+                .setDatabaseId("my-database")
+                .build();
+    
+    // You can also use this code to revert to the HTTP transport behavior
+    DatastoreOptions datastoreOptions =
+                DatastoreOptions.newBuilder()
+                        .setProjectId("my-project")
+                        .setDatabaseId("my-database")
+                        .setTransportOptions(HttpTransportOptions.newBuilder()
+                                .setConnectTimeout(1000)
+                                .build())
+                        .build();
 
 > **Note:** Only clients that explicitly set `GrpcTransportOptions` change behavior with the release of this feature. Client instantiations that already use `setTransportOptions` with `HttpTransportOptions` won't change behavior due to this feature.
 
@@ -54,13 +50,11 @@ To verify which type of `TransportOptions` the client uses, examine the transpor
 
 ##### Java
 
-``` suppress-warning
-// Compares datastore transport options type
-
-boolean isGRPC = datastore.getOptions().getTransportOptions() instanceof GrpcTransportOptions;
-
-boolean isHTTP = datastore.getOptions().getTransportOptions() instanceof HTTPTransportOptions;
-```
+    // Compares datastore transport options type
+    
+    boolean isGRPC = datastore.getOptions().getTransportOptions() instanceof GrpcTransportOptions;
+    
+    boolean isHTTP = datastore.getOptions().getTransportOptions() instanceof HTTPTransportOptions;
 
 ## Connection pool configuration
 
@@ -103,22 +97,20 @@ The following code sample demonstrates how to configure the connection pool in t
 
 ##### Java
 
-``` suppress-warning
-InstantiatingGrpcChannelProvider channelProvider =
-        DatastoreSettings.defaultGrpcTransportProviderBuilder()
-                .setChannelPoolSettings(
-                       ChannelPoolSettings.builder()
-                                .setInitialChannelCount(MIN_VAL)
-                                .setMaxChannelCount(MAX_VAL)
-                                .build())
-                .build();
-
-DatastoreOptions options = DatastoreOptions.newBuilder()
-         .setProjectId("my-project")
-         .setChannelProvider(channelProvider)
-         .setTransportOptions(GrpcTransportOptions.newBuilder().build())
-         .build();
-```
+    InstantiatingGrpcChannelProvider channelProvider =
+            DatastoreSettings.defaultGrpcTransportProviderBuilder()
+                    .setChannelPoolSettings(
+                           ChannelPoolSettings.builder()
+                                    .setInitialChannelCount(MIN_VAL)
+                                    .setMaxChannelCount(MAX_VAL)
+                                    .build())
+                    .build();
+    
+    DatastoreOptions options = DatastoreOptions.newBuilder()
+             .setProjectId("my-project")
+             .setChannelProvider(channelProvider)
+             .setTransportOptions(GrpcTransportOptions.newBuilder().build())
+             .build();
 
 ## What's next
 

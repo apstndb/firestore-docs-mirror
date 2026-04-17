@@ -83,15 +83,11 @@ Use the `gcloud firestore export` command to export data from your source projec
 
   - Export all data
     
-    ``` notranslate
-    gcloud firestore export gs://[SOURCE_BUCKET] --async
-    ```
+        gcloud firestore export gs://[SOURCE_BUCKET] --async
 
   - Export specific collection groups
     
-    ``` notranslate
-    gcloud firestore export gs://[SOURCE_BUCKET] --collection-ids=[COLLECTION_GROUP_ID_1],[COLLECTION_GROUP_ID_2] --async
-    ```
+        gcloud firestore export gs://[SOURCE_BUCKET] --collection-ids=[COLLECTION_GROUP_ID_1],[COLLECTION_GROUP_ID_2] --async
 
 Take note of your export operation's `outputURIPrefix` as you will use this later on. By default, Firestore adds a pre-fix to your export files based on a timestamp:
 
@@ -99,9 +95,7 @@ Take note of your export operation's `outputURIPrefix` as you will use this late
 
 As the export operation runs, you can use the `firestore operations list` command to view your operation's progress:
 
-``` notranslate
-gcloud firestore operations list
-```
+    gcloud firestore operations list
 
 ## Import data into the destination project
 
@@ -136,18 +130,12 @@ Before starting the import operation, make sure `gcloud` is configured for the c
 
 Use the `gcloud firestore import` command to import the data in your source bucket into your destination project:
 
-``` notranslate
-gcloud firestore import gs://[SOURCE_BUCKET]/[EXPORT_PREFIX] --async
-```
+    gcloud firestore import gs://[SOURCE_BUCKET]/[EXPORT_PREFIX] --async
 
 Where `[EXPORT_PREFIX]` matches the prefix in your export operation's `outputUriPrefix` . For example:
 
-``` notranslate
-gcloud firestore import gs://[SOURCE_BUCKET]/2019-03-05T20:58:23_56418 --async
-```
+    gcloud firestore import gs://[SOURCE_BUCKET]/2019-03-05T20:58:23_56418 --async
 
 As the export operation runs, you can use the `firestore operations list` command to view your operation's progress:
 
-``` notranslate
-gcloud firestore operations list
-```
+    gcloud firestore operations list

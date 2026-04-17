@@ -14,25 +14,17 @@ EXAMPLES
 
 The following command lists all fields with custom index settings:
 
-``` wrap-code
-gcloud alpha firestore indexes fields list
-```
+    gcloud alpha firestore indexes fields list
 
-``` wrap-code
-gcloud alpha firestore indexes fields list --database=(default)
-```
+    gcloud alpha firestore indexes fields list --database=(default)
 
 The following command lists fields with custom index settings in the `Events` collection group:
 
-``` wrap-code
-gcloud alpha firestore indexes fields list --collection-group=Events
-```
+    gcloud alpha firestore indexes fields list --collection-group=Events
 
 The following command lists the indexes of all fields with custom index settings:
 
-``` wrap-code
-gcloud alpha firestore indexes fields list --format="table[box](name,indexConfig.indexes:format='table[title=INDEXES,box](fields.order.flatten(),fields.arrayConfig.flatten(),queryScope,state)')"
-```
+    gcloud alpha firestore indexes fields list --format="table[box](name,indexConfig.indexes:format='table[title=INDEXES,box](fields.order.flatten(),fields.arrayConfig.flatten(),queryScope,state)')"
 
 FLAGS
 
@@ -92,10 +84,6 @@ NOTES
 
 This command is currently in alpha and might change without notice. If this command fails with API permission errors despite specifying the correct project, you might be trying to access an API with an invitation-only early access allowlist. These variants are also available:
 
-``` wrap-code
-gcloud firestore indexes fields list
-```
+    gcloud firestore indexes fields list
 
-``` wrap-code
-gcloud beta firestore indexes fields list
-```
+    gcloud beta firestore indexes fields list

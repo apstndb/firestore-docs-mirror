@@ -39,20 +39,18 @@ The following example shows how to store a vector embedding in a Firestore docum
 
 ##### Node.js
 
-``` suppresswarning
-import {
-  Firestore,
-  FieldValue,
-} from "@google-cloud/firestore";
-
-const db = new Firestore();
-const coll = db.collection('coffee-beans');
-await coll.add({
-  name: "Kahawa coffee beans",
-  description: "Information about the Kahawa coffee beans.",
-  embedding_field: FieldValue.vector([1.0 , 2.0, 3.0])
-});
-```
+    import {
+      Firestore,
+      FieldValue,
+    } from "@google-cloud/firestore";
+    
+    const db = new Firestore();
+    const coll = db.collection('coffee-beans');
+    await coll.add({
+      name: "Kahawa coffee beans",
+      description: "Information about the Kahawa coffee beans.",
+      embedding_field: FieldValue.vector([1.0 , 2.0, 3.0])
+    });
 
 ##### Go
 
@@ -100,22 +98,20 @@ await coll.add({
 
 ##### Java
 
-``` suppresswarning
-import com.google.cloud.firestore.CollectionReference;
-import com.google.cloud.firestore.DocumentReference;
-import com.google.cloud.firestore.FieldValue;
-import com.google.cloud.firestore.VectorQuery;
-
-CollectionReference coll = firestore.collection("coffee-beans");
-
-Map<String, Object> docData = new HashMap<>();
-docData.put("name", "Kahawa coffee beans");
-docData.put("description", "Information about the Kahawa coffee beans.");
-docData.put("embedding_field", FieldValue.vector(new double[] {1.0, 2.0, 3.0}));
-
-ApiFuture<DocumentReference> future = coll.add(docData);
-DocumentReference documentReference = future.get();
-```
+    import com.google.cloud.firestore.CollectionReference;
+    import com.google.cloud.firestore.DocumentReference;
+    import com.google.cloud.firestore.FieldValue;
+    import com.google.cloud.firestore.VectorQuery;
+    
+    CollectionReference coll = firestore.collection("coffee-beans");
+    
+    Map<String, Object> docData = new HashMap<>();
+    docData.put("name", "Kahawa coffee beans");
+    docData.put("description", "Information about the Kahawa coffee beans.");
+    docData.put("embedding_field", FieldValue.vector(new double[] {1.0, 2.0, 3.0}));
+    
+    ApiFuture<DocumentReference> future = coll.add(docData);
+    DocumentReference documentReference = future.get();
 
 ### Compute vector embeddings with a Cloud Function
 
@@ -123,66 +119,62 @@ To calculate and store vector embeddings whenever a document is updated or creat
 
 ##### Python
 
-``` suppresswarning
-@functions_framework.cloud_event
-def store_embedding(cloud_event) -> None:
-  """Triggers by a change to a Firestore document.
-  """
-  firestore_payload = firestore.DocumentEventData()
-  payload = firestore_payload._pb.ParseFromString(cloud_event.data)
-
-  collection_id, doc_id = from_payload(payload)
-  # Call a function to calculate the embedding
-  embedding = calculate_embedding(payload)
-  # Update the document
-  doc = firestore_client.collection(collection_id).document(doc_id)
-  doc.set({"embedding_field": embedding}, merge=True)
-```
+    @functions_framework.cloud_event
+    def store_embedding(cloud_event) -> None:
+      """Triggers by a change to a Firestore document.
+      """
+      firestore_payload = firestore.DocumentEventData()
+      payload = firestore_payload._pb.ParseFromString(cloud_event.data)
+    
+      collection_id, doc_id = from_payload(payload)
+      # Call a function to calculate the embedding
+      embedding = calculate_embedding(payload)
+      # Update the document
+      doc = firestore_client.collection(collection_id).document(doc_id)
+      doc.set({"embedding_field": embedding}, merge=True)
 
 ##### Node.js
 
-``` suppresswarning
-/**
- * A vector embedding will be computed from the
- * value of the `content` field. The vector value
- * will be stored in the `embedding` field. The
- * field names `content` and `embedding` are arbitrary
- * field names chosen for this example.
- */
-async function storeEmbedding(event: FirestoreEvent<any>): Promise<void> {
-  // Get the previous value of the document's `content` field.
-  const previousDocumentSnapshot = event.data.before as QueryDocumentSnapshot;
-  const previousContent = previousDocumentSnapshot.get("content");
-
-  // Get the current value of the document's `content` field.
-  const currentDocumentSnapshot = event.data.after as QueryDocumentSnapshot;
-  const currentContent = currentDocumentSnapshot.get("content");
-
-  // Don't update the embedding if the content field did not change
-  if (previousContent === currentContent) {
-    return;
-  }
-
-  // Call a function to calculate the embedding for the value
-  // of the `content` field.
-  const embeddingVector = calculateEmbedding(currentContent);
-
-  // Update the `embedding` field on the document.
-  await currentDocumentSnapshot.ref.update({
-    embedding: embeddingVector,
-  });
-}
-```
+    /**
+     * A vector embedding will be computed from the
+     * value of the `content` field. The vector value
+     * will be stored in the `embedding` field. The
+     * field names `content` and `embedding` are arbitrary
+     * field names chosen for this example.
+     */
+    async function storeEmbedding(event: FirestoreEvent<any>): Promise<void> {
+      // Get the previous value of the document's `content` field.
+      const previousDocumentSnapshot = event.data.before as QueryDocumentSnapshot;
+      const previousContent = previousDocumentSnapshot.get("content");
+    
+      // Get the current value of the document's `content` field.
+      const currentDocumentSnapshot = event.data.after as QueryDocumentSnapshot;
+      const currentContent = currentDocumentSnapshot.get("content");
+    
+      // Don't update the embedding if the content field did not change
+      if (previousContent === currentContent) {
+        return;
+      }
+    
+      // Call a function to calculate the embedding for the value
+      // of the `content` field.
+      const embeddingVector = calculateEmbedding(currentContent);
+    
+      // Update the `embedding` field on the document.
+      await currentDocumentSnapshot.ref.update({
+        embedding: embeddingVector,
+      });
+    }
 
 ##### Go
 
-``` suppresswarning
+``` 
   // Not yet supported in the Go client library
 ```
 
 ##### Java
 
-``` suppresswarning
+``` 
   // Not yet supported in the Java client library
 ```
 
@@ -319,24 +311,22 @@ The following example finds 10 nearest neighbors of the query vector.
 
 ##### Node.js
 
-``` suppresswarning
-import {
-  Firestore,
-  FieldValue,
-  VectorQuery,
-  VectorQuerySnapshot,
-} from "@google-cloud/firestore";
-
-// Requires a single-field vector index
-const vectorQuery: VectorQuery = coll.findNearest({
-  vectorField: 'embedding_field',
-  queryVector: [3.0, 1.0, 2.0],
-  limit: 10,
-  distanceMeasure: 'EUCLIDEAN'
-});
-
-const vectorQuerySnapshot: VectorQuerySnapshot = await vectorQuery.get();
-```
+    import {
+      Firestore,
+      FieldValue,
+      VectorQuery,
+      VectorQuerySnapshot,
+    } from "@google-cloud/firestore";
+    
+    // Requires a single-field vector index
+    const vectorQuery: VectorQuery = coll.findNearest({
+      vectorField: 'embedding_field',
+      queryVector: [3.0, 1.0, 2.0],
+      limit: 10,
+      distanceMeasure: 'EUCLIDEAN'
+    });
+    
+    const vectorQuerySnapshot: VectorQuerySnapshot = await vectorQuery.get();
 
 ##### Go
 
@@ -384,19 +374,17 @@ const vectorQuerySnapshot: VectorQuerySnapshot = await vectorQuery.get();
 
 ##### Java
 
-``` suppresswarning
-import com.google.cloud.firestore.VectorQuery;
-import com.google.cloud.firestore.VectorQuerySnapshot;
-
-VectorQuery vectorQuery = coll.findNearest(
-        "embedding_field",
-        new double[] {3.0, 1.0, 2.0},
-        /* limit */ 10,
-        VectorQuery.DistanceMeasure.EUCLIDEAN);
-
-ApiFuture<VectorQuerySnapshot> future = vectorQuery.get();
-VectorQuerySnapshot vectorQuerySnapshot = future.get();
-```
+    import com.google.cloud.firestore.VectorQuery;
+    import com.google.cloud.firestore.VectorQuerySnapshot;
+    
+    VectorQuery vectorQuery = coll.findNearest(
+            "embedding_field",
+            new double[] {3.0, 1.0, 2.0},
+            /* limit */ 10,
+            VectorQuery.DistanceMeasure.EUCLIDEAN);
+    
+    ApiFuture<VectorQuerySnapshot> future = vectorQuery.get();
+    VectorQuerySnapshot vectorQuerySnapshot = future.get();
 
 ### Vector distances
 
@@ -446,20 +434,18 @@ To pre-filter documents before finding the nearest neighbors, you can combine a 
 
 ##### Node.js
 
-``` suppresswarning
-// Similarity search with pre-filter
-// Requires composite vector index
-const preFilteredVectorQuery: VectorQuery = coll
-    .where("color", "==", "red")
-    .findNearest({
-      vectorField: "embedding_field",
-      queryVector: [3.0, 1.0, 2.0],
-      limit: 5,
-      distanceMeasure: "EUCLIDEAN",
-    });
-
-const vectorQueryResults = await preFilteredVectorQuery.get();
-```
+    // Similarity search with pre-filter
+    // Requires composite vector index
+    const preFilteredVectorQuery: VectorQuery = coll
+        .where("color", "==", "red")
+        .findNearest({
+          vectorField: "embedding_field",
+          queryVector: [3.0, 1.0, 2.0],
+          limit: 5,
+          distanceMeasure: "EUCLIDEAN",
+        });
+    
+    const vectorQueryResults = await preFilteredVectorQuery.get();
 
 ##### Go
 
@@ -508,21 +494,19 @@ const vectorQueryResults = await preFilteredVectorQuery.get();
 
 ##### Java
 
-``` suppresswarning
-import com.google.cloud.firestore.VectorQuery;
-import com.google.cloud.firestore.VectorQuerySnapshot;
-
-VectorQuery preFilteredVectorQuery = coll
-        .whereEqualTo("color", "red")
-        .findNearest(
-                "embedding_field",
-                new double[] {3.0, 1.0, 2.0},
-                /* limit */ 10,
-                VectorQuery.DistanceMeasure.EUCLIDEAN);
-
-ApiFuture<VectorQuerySnapshot> future = preFilteredVectorQuery.get();
-VectorQuerySnapshot vectorQuerySnapshot = future.get();
-```
+    import com.google.cloud.firestore.VectorQuery;
+    import com.google.cloud.firestore.VectorQuerySnapshot;
+    
+    VectorQuery preFilteredVectorQuery = coll
+            .whereEqualTo("color", "red")
+            .findNearest(
+                    "embedding_field",
+                    new double[] {3.0, 1.0, 2.0},
+                    /* limit */ 10,
+                    VectorQuery.DistanceMeasure.EUCLIDEAN);
+    
+    ApiFuture<VectorQuerySnapshot> future = preFilteredVectorQuery.get();
+    VectorQuerySnapshot vectorQuerySnapshot = future.get();
 
 ## Retrieve the calculated vector distance
 
@@ -550,22 +534,20 @@ You can retrieve the calculated vector distance by assigning a `distance_result_
 
 ##### Node.js
 
-``` suppresswarning
-const vectorQuery: VectorQuery = coll.findNearest(
-    {
-      vectorField: 'embedding_field',
-      queryVector: [3.0, 1.0, 2.0],
-      limit: 10,
-      distanceMeasure: 'EUCLIDEAN',
-      distanceResultField: 'vector_distance'
+    const vectorQuery: VectorQuery = coll.findNearest(
+        {
+          vectorField: 'embedding_field',
+          queryVector: [3.0, 1.0, 2.0],
+          limit: 10,
+          distanceMeasure: 'EUCLIDEAN',
+          distanceResultField: 'vector_distance'
+        });
+    
+    const snapshot: VectorQuerySnapshot = await vectorQuery.get();
+    
+    snapshot.forEach((doc) => {
+      console.log(doc.id, ' Distance: ', doc.get('vector_distance'));
     });
-
-const snapshot: VectorQuerySnapshot = await vectorQuery.get();
-
-snapshot.forEach((doc) => {
-  console.log(doc.id, ' Distance: ', doc.get('vector_distance'));
-});
-```
 
 ##### Go
 
@@ -613,25 +595,23 @@ snapshot.forEach((doc) => {
 
 ##### Java
 
-``` suppresswarning
-import com.google.cloud.firestore.VectorQuery;
-import com.google.cloud.firestore.VectorQueryOptions;
-import com.google.cloud.firestore.VectorQuerySnapshot;
-
-VectorQuery vectorQuery = coll.findNearest(
-        "embedding_field",
-        new double[] {3.0, 1.0, 2.0},
-        /* limit */ 10,
-        VectorQuery.DistanceMeasure.EUCLIDEAN,
-        VectorQueryOptions.newBuilder().setDistanceResultField("vector_distance").build());
-
-ApiFuture<VectorQuerySnapshot> future = vectorQuery.get();
-VectorQuerySnapshot vectorQuerySnapshot = future.get();
-
-for (DocumentSnapshot document : vectorQuerySnapshot.getDocuments()) {
-    System.out.println(document.getId() + " Distance: " + document.get("vector_distance"));
-}
-```
+    import com.google.cloud.firestore.VectorQuery;
+    import com.google.cloud.firestore.VectorQueryOptions;
+    import com.google.cloud.firestore.VectorQuerySnapshot;
+    
+    VectorQuery vectorQuery = coll.findNearest(
+            "embedding_field",
+            new double[] {3.0, 1.0, 2.0},
+            /* limit */ 10,
+            VectorQuery.DistanceMeasure.EUCLIDEAN,
+            VectorQueryOptions.newBuilder().setDistanceResultField("vector_distance").build());
+    
+    ApiFuture<VectorQuerySnapshot> future = vectorQuery.get();
+    VectorQuerySnapshot vectorQuerySnapshot = future.get();
+    
+    for (DocumentSnapshot document : vectorQuerySnapshot.getDocuments()) {
+        System.out.println(document.getId() + " Distance: " + document.get("vector_distance"));
+    }
 
 If you want to use a field mask to return a subset of document fields along with a `distanceResultField` , then you must also include the value of `distanceResultField` in the field mask, as shown in the following example:
 
@@ -647,17 +627,15 @@ If you want to use a field mask to return a subset of document fields along with
 
 ##### Node.js
 
-``` suppresswarning
-const vectorQuery: VectorQuery = coll
-    .select('name', 'description', 'vector_distance')
-    .findNearest({
-      vectorField: 'embedding_field',
-      queryVector: [3.0, 1.0, 2.0],
-      limit: 10,
-      distanceMeasure: 'EUCLIDEAN',
-      distanceResultField: 'vector_distance'
-    });
-```
+    const vectorQuery: VectorQuery = coll
+        .select('name', 'description', 'vector_distance')
+        .findNearest({
+          vectorField: 'embedding_field',
+          queryVector: [3.0, 1.0, 2.0],
+          limit: 10,
+          distanceMeasure: 'EUCLIDEAN',
+          distanceResultField: 'vector_distance'
+        });
 
 ##### Go
 
@@ -706,29 +684,27 @@ const vectorQuery: VectorQuery = coll
 
 ##### Java
 
-``` suppresswarning
-import com.google.cloud.firestore.VectorQuery;
-import com.google.cloud.firestore.VectorQueryOptions;
-import com.google.cloud.firestore.VectorQuerySnapshot;
-
-VectorQuery vectorQuery = coll
-        .select("name", "description", "vector_distance")
-        .findNearest(
-          "embedding_field",
-          new double[] {3.0, 1.0, 2.0},
-          /* limit */ 10,
-          VectorQuery.DistanceMeasure.EUCLIDEAN,
-          VectorQueryOptions.newBuilder()
-            .setDistanceResultField("vector_distance")
-            .build());
-
-ApiFuture<VectorQuerySnapshot> future = vectorQuery.get();
-VectorQuerySnapshot vectorQuerySnapshot = future.get();
-
-for (DocumentSnapshot document : vectorQuerySnapshot.getDocuments()) {
-    System.out.println(document.getId() + " Distance: " + document.get("vector_distance"));
-}
-```
+    import com.google.cloud.firestore.VectorQuery;
+    import com.google.cloud.firestore.VectorQueryOptions;
+    import com.google.cloud.firestore.VectorQuerySnapshot;
+    
+    VectorQuery vectorQuery = coll
+            .select("name", "description", "vector_distance")
+            .findNearest(
+              "embedding_field",
+              new double[] {3.0, 1.0, 2.0},
+              /* limit */ 10,
+              VectorQuery.DistanceMeasure.EUCLIDEAN,
+              VectorQueryOptions.newBuilder()
+                .setDistanceResultField("vector_distance")
+                .build());
+    
+    ApiFuture<VectorQuerySnapshot> future = vectorQuery.get();
+    VectorQuerySnapshot vectorQuerySnapshot = future.get();
+    
+    for (DocumentSnapshot document : vectorQuerySnapshot.getDocuments()) {
+        System.out.println(document.getId() + " Distance: " + document.get("vector_distance"));
+    }
 
 ## Specify a distance threshold
 
@@ -761,21 +737,19 @@ The following example shows how to specify a distance threshold to return up to 
 
 ##### Node.js
 
-``` suppresswarning
-const vectorQuery: VectorQuery = coll.findNearest({
-  vectorField: 'embedding_field',
-  queryVector: [3.0, 1.0, 2.0],
-  limit: 10,
-  distanceMeasure: 'EUCLIDEAN',
-  distanceThreshold: 4.5
-});
-
-const snapshot: VectorQuerySnapshot = await vectorQuery.get();
-
-snapshot.forEach((doc) => {
-  console.log(doc.id);
-});
-```
+    const vectorQuery: VectorQuery = coll.findNearest({
+      vectorField: 'embedding_field',
+      queryVector: [3.0, 1.0, 2.0],
+      limit: 10,
+      distanceMeasure: 'EUCLIDEAN',
+      distanceThreshold: 4.5
+    });
+    
+    const snapshot: VectorQuerySnapshot = await vectorQuery.get();
+    
+    snapshot.forEach((doc) => {
+      console.log(doc.id);
+    });
 
 ##### Go
 
@@ -823,27 +797,25 @@ snapshot.forEach((doc) => {
 
 ##### Java
 
-``` suppresswarning
-import com.google.cloud.firestore.VectorQuery;
-import com.google.cloud.firestore.VectorQueryOptions;
-import com.google.cloud.firestore.VectorQuerySnapshot;
-
-VectorQuery vectorQuery = coll.findNearest(
-        "embedding_field",
-        new double[] {3.0, 1.0, 2.0},
-        /* limit */ 10,
-        VectorQuery.DistanceMeasure.EUCLIDEAN,
-        VectorQueryOptions.newBuilder()
-          .setDistanceThreshold(4.5)
-          .build());
-
-ApiFuture<VectorQuerySnapshot> future = vectorQuery.get();
-VectorQuerySnapshot vectorQuerySnapshot = future.get();
-
-for (DocumentSnapshot document : vectorQuerySnapshot.getDocuments()) {
-    System.out.println(document.getId());
-}
-```
+    import com.google.cloud.firestore.VectorQuery;
+    import com.google.cloud.firestore.VectorQueryOptions;
+    import com.google.cloud.firestore.VectorQuerySnapshot;
+    
+    VectorQuery vectorQuery = coll.findNearest(
+            "embedding_field",
+            new double[] {3.0, 1.0, 2.0},
+            /* limit */ 10,
+            VectorQuery.DistanceMeasure.EUCLIDEAN,
+            VectorQueryOptions.newBuilder()
+              .setDistanceThreshold(4.5)
+              .build());
+    
+    ApiFuture<VectorQuerySnapshot> future = vectorQuery.get();
+    VectorQuerySnapshot vectorQuerySnapshot = future.get();
+    
+    for (DocumentSnapshot document : vectorQuerySnapshot.getDocuments()) {
+        System.out.println(document.getId());
+    }
 
 ## Limitations
 

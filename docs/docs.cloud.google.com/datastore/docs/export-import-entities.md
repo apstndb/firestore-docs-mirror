@@ -157,7 +157,7 @@ The console returns to the **Import/Export** page. An alert reports the success 
 
 Use the [`gcloud firestore export`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/export) command to export all entities in your database.
 
-``` notranslate
+``` 
  gcloud firestore export gs://bucket-name --async --database=DATABASE
 ```
 
@@ -216,21 +216,19 @@ Save the request body in a file named `request.json` , and execute the following
 
 You should receive a JSON response similar to the following:
 
-``` readonly
-{
-  "name": "projects/project-id/operations/operation-id",
-  "metadata": {
-    "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesMetadata",
-    "common": {
-      "startTime": "2019-09-18T18:42:26.591949Z",
-      "operationType": "EXPORT_ENTITIES",
-      "state": "PROCESSING"
-    },
-    "entityFilter": {},
-    "outputUrlPrefix": "gs://bucket-name/2019-09-18T18:42:26_85726"
-  }
-}
-```
+    {
+      "name": "projects/project-id/operations/operation-id",
+      "metadata": {
+        "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesMetadata",
+        "common": {
+          "startTime": "2019-09-18T18:42:26.591949Z",
+          "operationType": "EXPORT_ENTITIES",
+          "state": "PROCESSING"
+        },
+        "entityFilter": {},
+        "outputUrlPrefix": "gs://bucket-name/2019-09-18T18:42:26_85726"
+      }
+    }
 
 The response is a [long-running operation](https://docs.cloud.google.com/datastore/docs/export-import-entities#long-running-operation) , which you can check for completion.
 
@@ -266,7 +264,7 @@ The console returns to the **Import/Export** page. An alert reports the success 
 
 ### gcloud
 
-``` notranslate
+``` 
   gcloud firestore export --collection-ids="KIND1,KIND2" \
   --namespaces="(default),NAMESPACE2" \
   gs://bucket-name \
@@ -335,28 +333,26 @@ Save the request body in a file named `request.json` , and execute the following
 
 You should receive a JSON response similar to the following:
 
-``` readonly
-{
-  "name": "projects/project-id/operations/operation-id",
-  "metadata": {
-    "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesMetadata",
-    "common": {
-      "startTime": "2019-09-18T21:17:36.232704Z",
-      "operationType": "EXPORT_ENTITIES",
-      "state": "PROCESSING"
-    },
-    "entityFilter": {
-      "kinds": [
-        "Task"
-      ],
-      "namespaceIds": [
-        ""
-      ]
-    },
-    "outputUrlPrefix": "gs://bucket-name/2019-09-18T21:17:36_82974"
-  }
-}
-```
+    {
+      "name": "projects/project-id/operations/operation-id",
+      "metadata": {
+        "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesMetadata",
+        "common": {
+          "startTime": "2019-09-18T21:17:36.232704Z",
+          "operationType": "EXPORT_ENTITIES",
+          "state": "PROCESSING"
+        },
+        "entityFilter": {
+          "kinds": [
+            "Task"
+          ],
+          "namespaceIds": [
+            ""
+          ]
+        },
+        "outputUrlPrefix": "gs://bucket-name/2019-09-18T21:17:36_82974"
+      }
+    }
 
 The response is a [long-running operation](https://docs.cloud.google.com/datastore/docs/export-import-entities#long-running-operation) , which you can check for completion.
 
@@ -366,9 +362,7 @@ An export operation creates a metadata file for each namespace-kind pair specifi
 
 The metadata files are protocol buffers and can be decoded with the [`protoc` protocol compiler](https://github.com/protocolbuffers/protobuf#readme) . For example, you can decode a metadata file to determine the namespace and kinds the export files contain:
 
-``` notranslate
-protoc --decode_raw < export0.export_metadata
-```
+    protoc --decode_raw < export0.export_metadata
 
 ### Importing all entities
 
@@ -396,11 +390,9 @@ The console returns to the **Import/Export** page. An alert reports the success 
 
 Use the [gcloud firestore import](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/import) command to import all entities that were previously exported with the managed export service.
 
-``` notranslate
-gcloud firestore import gs://bucket-name/file-path/file-name.overall_export_metadata \
---async \
---database=DATABASE
-```
+    gcloud firestore import gs://bucket-name/file-path/file-name.overall_export_metadata \
+    --async \
+    --database=DATABASE
 
 where bucket-name/file-path/file-name is the path to your `overall_export_metadata` file within your Cloud Storage bucket.
 
@@ -458,21 +450,19 @@ Save the request body in a file named `request.json` , and execute the following
 
 You should receive a JSON response similar to the following:
 
-``` readonly
-{
-  "name": "projects/project-id/operations/operation-id",
-  "metadata": {
-    "@type": "type.googleapis.com/google.datastore.admin.v1.ImportEntitiesMetadata",
-    "common": {
-      "startTime": "2019-09-18T21:25:02.863621Z",
-      "operationType": "IMPORT_ENTITIES",
-      "state": "PROCESSING"
-    },
-    "entityFilter": {},
-    "inputUrl": "gs://bucket-name/2019-09-18T18:42:26_85726/2019-09-18T18:42:26_85726.overall_export_metadata"
-  }
-}
-```
+    {
+      "name": "projects/project-id/operations/operation-id",
+      "metadata": {
+        "@type": "type.googleapis.com/google.datastore.admin.v1.ImportEntitiesMetadata",
+        "common": {
+          "startTime": "2019-09-18T21:25:02.863621Z",
+          "operationType": "IMPORT_ENTITIES",
+          "state": "PROCESSING"
+        },
+        "entityFilter": {},
+        "inputUrl": "gs://bucket-name/2019-09-18T18:42:26_85726/2019-09-18T18:42:26_85726.overall_export_metadata"
+      }
+    }
 
 The response is a [long-running operation](https://docs.cloud.google.com/datastore/docs/export-import-entities#long-running-operation) , which you can check for completion.
 
@@ -482,9 +472,7 @@ You can determine the value to use for the import location by using the Cloud St
 
 You can also [list and describe completed operations](https://docs.cloud.google.com/datastore/docs/export-import-entities#long-running-operation) . The `outputURL` field shows the name of the `overall_export_metadata` file:
 
-``` notranslate
-"outputUrl": "gs://bucket-name/2017-05-25T23:54:39_76544/2017-05-25T23:54:39_76544.overall_export_metadata",
-```
+    "outputUrl": "gs://bucket-name/2017-05-25T23:54:39_76544/2017-05-25T23:54:39_76544.overall_export_metadata",
 
 ### Importing specific kinds or namespaces
 
@@ -520,7 +508,7 @@ The console returns to the **Import/Export** page. An alert reports the success 
 
 ### gcloud
 
-``` notranslate
+``` 
   gcloud firestore import --collection-ids="KIND1,KIND2" \
   --namespaces="(default),NAMESPACE2" \
   gs://bucket-name/file-path/file-nameoverall_export_metadata \
@@ -590,28 +578,26 @@ Save the request body in a file named `request.json` , and execute the following
 
 You should receive a JSON response similar to the following:
 
-``` readonly
-{
-  "name": "projects/project-id/operations/operation-id",
-  "metadata": {
-    "@type": "type.googleapis.com/google.datastore.admin.v1.ImportEntitiesMetadata",
-    "common": {
-      "startTime": "2019-09-18T21:51:02.830608Z",
-      "operationType": "IMPORT_ENTITIES",
-      "state": "PROCESSING"
-    },
-    "entityFilter": {
-      "kinds": [
-        "Task"
-      ],
-      "namespaceIds": [
-        ""
-      ]
-    },
-    "inputUrl": "gs://bucket-name/2019-09-18T21:49:25_96833/2019-09-18T21:49:25_96833.overall_export_metadata"
-  }
-}
-```
+    {
+      "name": "projects/project-id/operations/operation-id",
+      "metadata": {
+        "@type": "type.googleapis.com/google.datastore.admin.v1.ImportEntitiesMetadata",
+        "common": {
+          "startTime": "2019-09-18T21:51:02.830608Z",
+          "operationType": "IMPORT_ENTITIES",
+          "state": "PROCESSING"
+        },
+        "entityFilter": {
+          "kinds": [
+            "Task"
+          ],
+          "namespaceIds": [
+            ""
+          ]
+        },
+        "inputUrl": "gs://bucket-name/2019-09-18T21:49:25_96833/2019-09-18T21:49:25_96833.overall_export_metadata"
+      }
+    }
 
 The response is a [long-running operation](https://docs.cloud.google.com/datastore/docs/export-import-entities#long-running-operation) , which you can check for completion.
 
@@ -678,9 +664,7 @@ After you start an export or import operation, Datastore mode assigns the operat
 
 Operation names are prefixed with `projects/[PROJECT_ID]/databases/(default)/operations/` , for example:
 
-``` notranslate
-projects/project-id/databases/(default)/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
-```
+    projects/project-id/databases/(default)/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
 
 You can leave out the prefix when specifying an operation name for `gcloud` commands.
 
@@ -702,48 +686,44 @@ You can view a list of the long-running operations in the **Import/Export** page
 
 To list long-running operations, use the [gcloud datastore operations list](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/list) command.
 
-``` notranslate
-gcloud datastore operations list
-```
+    gcloud datastore operations list
 
 For example, a recently completed export operation shows the following information:
 
-``` notranslate
-{
-  "operations": [
     {
-      "name": "projects/project-id/operations/ASAyMDAwOTEzBxp0bHVhZmVkBxJsYXJ0bmVjc3Utc2Jvai1uaW1kYRQKKhI",
-      "metadata": {
-        "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesMetadata",
-        "common": {
-          "startTime": "2017-12-05T23:01:39.583780Z",
-          "endTime": "2017-12-05T23:54:58.474750Z",
-          "operationType": "EXPORT_ENTITIES"
-        },
-        "progressEntities": {
-          "workCompleted": "21933027",
-          "workEstimated": "21898182"
-        },
-        "progressBytes": {
-          "workCompleted": "12421451292",
-          "workEstimated": "9759724245"
-        },
-        "entityFilter": {
-          "namespaceIds": [
-            ""
-          ]
-        },
-        "outputUrlPrefix": "gs://bucket-name"
-      },
-      "done": true,
-      "response": {
-        "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesResponse",
-        "outputUrl": "gs://bucket-name/2017-05-25T23:54:39_76544/2017-05-25T23:54:39_76544.overall_export_metadata"
-      }
+      "operations": [
+        {
+          "name": "projects/project-id/operations/ASAyMDAwOTEzBxp0bHVhZmVkBxJsYXJ0bmVjc3Utc2Jvai1uaW1kYRQKKhI",
+          "metadata": {
+            "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesMetadata",
+            "common": {
+              "startTime": "2017-12-05T23:01:39.583780Z",
+              "endTime": "2017-12-05T23:54:58.474750Z",
+              "operationType": "EXPORT_ENTITIES"
+            },
+            "progressEntities": {
+              "workCompleted": "21933027",
+              "workEstimated": "21898182"
+            },
+            "progressBytes": {
+              "workCompleted": "12421451292",
+              "workEstimated": "9759724245"
+            },
+            "entityFilter": {
+              "namespaceIds": [
+                ""
+              ]
+            },
+            "outputUrlPrefix": "gs://bucket-name"
+          },
+          "done": true,
+          "response": {
+            "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesResponse",
+            "outputUrl": "gs://bucket-name/2017-05-25T23:54:39_76544/2017-05-25T23:54:39_76544.overall_export_metadata"
+          }
+        }
+      ]
     }
-  ]
-}
-```
 
 ### rest
 
@@ -785,42 +765,40 @@ See information about the response below.
 
 For example, a recently completed export operation shows the following information:
 
-``` notranslate
-{
-  "operations": [
     {
-      "name": "projects/project-id/operations/ASAyMDAwOTEzBxp0bHVhZmVkBxJsYXJ0bmVjc3Utc2Jvai1uaW1kYRQKKhI",
-      "metadata": {
-        "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesMetadata",
-        "common": {
-          "startTime": "2017-12-05T23:01:39.583780Z",
-          "endTime": "2017-12-05T23:54:58.474750Z",
-          "operationType": "EXPORT_ENTITIES"
-        },
-        "progressEntities": {
-          "workCompleted": "21933027",
-          "workEstimated": "21898182"
-        },
-        "progressBytes": {
-          "workCompleted": "12421451292",
-          "workEstimated": "9759724245"
-        },
-        "entityFilter": {
-          "namespaceIds": [
-            ""
-          ]
-        },
-        "outputUrlPrefix": "gs://bucket-name"
-      },
-      "done": true,
-      "response": {
-        "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesResponse",
-        "outputUrl": "gs://bucket-name/2017-05-25T23:54:39_76544/2017-05-25T23:54:39_76544.overall_export_metadata"
-      }
+      "operations": [
+        {
+          "name": "projects/project-id/operations/ASAyMDAwOTEzBxp0bHVhZmVkBxJsYXJ0bmVjc3Utc2Jvai1uaW1kYRQKKhI",
+          "metadata": {
+            "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesMetadata",
+            "common": {
+              "startTime": "2017-12-05T23:01:39.583780Z",
+              "endTime": "2017-12-05T23:54:58.474750Z",
+              "operationType": "EXPORT_ENTITIES"
+            },
+            "progressEntities": {
+              "workCompleted": "21933027",
+              "workEstimated": "21898182"
+            },
+            "progressBytes": {
+              "workCompleted": "12421451292",
+              "workEstimated": "9759724245"
+            },
+            "entityFilter": {
+              "namespaceIds": [
+                ""
+              ]
+            },
+            "outputUrlPrefix": "gs://bucket-name"
+          },
+          "done": true,
+          "response": {
+            "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesResponse",
+            "outputUrl": "gs://bucket-name/2017-05-25T23:54:39_76544/2017-05-25T23:54:39_76544.overall_export_metadata"
+          }
+        }
+      ]
     }
-  ]
-}
-```
 
 ### Check operation status
 
@@ -840,9 +818,7 @@ You can view a list of the most recent export and import operations in the **Imp
 
 Use the [`operations describe`](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/describe) command to show the status of a long-running operation.
 
-``` notranslate
-gcloud datastore operations describe operation-name
-```
+    gcloud datastore operations describe operation-name
 
 ### rest
 
@@ -883,35 +859,33 @@ Execute the following command:
 
 You should receive a JSON response similar to the following:
 
-``` readonly
-{
-  "name": "projects/project-id/operations/ASA3ODAwMzQxNjIyChp0bHVhZmVkBxJsYXJ0bmVjc3Utc2Jvai1uaW1kYRQKLRI",
-  "metadata": {
-    "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesMetadata",
-    "common": {
-      "startTime": "2019-10-08T20:07:28.105236Z",
-      "endTime": "2019-10-08T20:07:36.310653Z",
-      "operationType": "EXPORT_ENTITIES",
-      "state": "SUCCESSFUL"
-    },
-    "progressEntities": {
-      "workCompleted": "21",
-      "workEstimated": "21"
-    },
-    "progressBytes": {
-      "workCompleted": "2272",
-      "workEstimated": "2065"
-    },
-    "entityFilter": {},
-    "outputUrlPrefix": "gs://bucket-name/2019-10-08T20:07:28_28481"
-  },
-  "done": true,
-  "response": {
-    "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesResponse",
-    "outputUrl": "gs://bucket-name/2019-10-08T20:07:28_28481/2019-10-08T20:07:28_28481.overall_export_metadata"
-  }
-}
-```
+    {
+      "name": "projects/project-id/operations/ASA3ODAwMzQxNjIyChp0bHVhZmVkBxJsYXJ0bmVjc3Utc2Jvai1uaW1kYRQKLRI",
+      "metadata": {
+        "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesMetadata",
+        "common": {
+          "startTime": "2019-10-08T20:07:28.105236Z",
+          "endTime": "2019-10-08T20:07:36.310653Z",
+          "operationType": "EXPORT_ENTITIES",
+          "state": "SUCCESSFUL"
+        },
+        "progressEntities": {
+          "workCompleted": "21",
+          "workEstimated": "21"
+        },
+        "progressBytes": {
+          "workCompleted": "2272",
+          "workEstimated": "2065"
+        },
+        "entityFilter": {},
+        "outputUrlPrefix": "gs://bucket-name/2019-10-08T20:07:28_28481"
+      },
+      "done": true,
+      "response": {
+        "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesResponse",
+        "outputUrl": "gs://bucket-name/2019-10-08T20:07:28_28481/2019-10-08T20:07:28_28481.overall_export_metadata"
+      }
+    }
 
 ### Estimating the completion time
 
@@ -927,24 +901,22 @@ Divide `workCompleted` by `workEstimated` for a rough progress estimate. This es
 
 For example, here is the progress status of an export operation:
 
-``` notranslate
-{
-  "operations": [
     {
-      "name": "projects/project-id/operations/ASAyMDAwOTEzBxp0bHVhZmVkBxJsYXJ0bmVjc3Utc2Jvai1uaW1kYRQKKhI",
-      "metadata": {
-        "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesMetadata",
-        ...
-        "progressEntities": {
-          "workCompleted": "1",
-          "workEstimated": "3"
-        },
-        "progressBytes": {
-          "workCompleted": "85",
-          "workEstimated": "257"
-        },
-        ...
-```
+      "operations": [
+        {
+          "name": "projects/project-id/operations/ASAyMDAwOTEzBxp0bHVhZmVkBxJsYXJ0bmVjc3Utc2Jvai1uaW1kYRQKKhI",
+          "metadata": {
+            "@type": "type.googleapis.com/google.datastore.admin.v1.ExportEntitiesMetadata",
+            ...
+            "progressEntities": {
+              "workCompleted": "1",
+              "workEstimated": "3"
+            },
+            "progressBytes": {
+              "workCompleted": "85",
+              "workEstimated": "257"
+            },
+            ...
 
 When an operation completes, the operation description contains [`"done": true`](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.longrunning#operation) . See the value of the [`state` field](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1#state) for the result of the operation. If the `done` field is not set in the response, then its value is `false` . Don't depend on the existence of the `done` value for in-progress operations.
 
@@ -968,9 +940,7 @@ In the *Recent imports and exports* table, currently running operations include 
 
 Use the [`operations cancel`](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/cancel) command to stop an operation in progress:
 
-``` notranslate
-gcloud datastore operations cancel operation-name
-```
+    gcloud datastore operations cancel operation-name
 
 Cancelling a running operation does not undo the operation. A cancelled export operation leaves documents already exported in Cloud Storage, and a cancelled import operation leaves in place updates already made to your database. You cannot import a partially completed export.
 
@@ -980,9 +950,7 @@ Cancelling a running operation does not undo the operation. A cancelled export o
 
 Use the [`operations delete`](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/delete) command to remove an operation from the list of recent operations. This command won't delete export files from Cloud Storage.
 
-``` notranslate
-gcloud datastore operations delete operation-name
-```
+    gcloud datastore operations delete operation-name
 
 ## Billing and pricing for managed exports and imports
 

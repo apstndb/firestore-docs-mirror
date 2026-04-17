@@ -14,9 +14,7 @@ EXAMPLES
 
 To create new indexes based on your local configuration, run:
 
-``` wrap-code
-gcloud beta datastore indexes create ~/myapp/index.yaml
-```
+    gcloud beta datastore indexes create ~/myapp/index.yaml
 
 Detailed information about index configuration can be found at the [index.yaml reference](https://cloud.google.com/datastore/docs/tools/indexconfig) .
 
@@ -32,9 +30,7 @@ FLAGS
     
     For example, to operate on database `testdb` :
     
-    ``` wrap-code
-    gcloud beta datastore indexes create --database='testdb'
-    ```
+        gcloud beta datastore indexes create --database='testdb'
 
 GCLOUD WIDE FLAGS
 
@@ -46,10 +42,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud datastore indexes create
-```
+    gcloud datastore indexes create
 
-``` wrap-code
-gcloud alpha datastore indexes create
-```
+    gcloud alpha datastore indexes create

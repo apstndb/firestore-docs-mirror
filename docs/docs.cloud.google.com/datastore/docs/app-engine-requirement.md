@@ -44,20 +44,18 @@ In your Terraform configuration file, create a new `google_firestore_database` r
 
 #### datastore.tf
 
-``` pretty-print
-resource "google_firestore_database" "database" {
-  project     = "project"
-  name        = "(default)"
-  location_id = "location"
-  
-  type = "DATASTORE_MODE"
-  
-  app_engine_integration_mode = "DISABLED"
-
-  // Optional, but recommended for safety
-  delete_protection_state = "DELETE_PROTECTION_ENABLED"
-}
-```
+    resource "google_firestore_database" "database" {
+      project     = "project"
+      name        = "(default)"
+      location_id = "location"
+      
+      type = "DATASTORE_MODE"
+      
+      app_engine_integration_mode = "DISABLED"
+    
+      // Optional, but recommended for safety
+      delete_protection_state = "DELETE_PROTECTION_ENABLED"
+    }
 
 See [Datastore locations](https://cloud.google.com/datastore/docs/locations) for the list of available locations. Choose the location corresponding to that of your existing database.
 
@@ -136,18 +134,14 @@ If you previously defined a custom role for Datastore, it might lack the `datast
 
 If you wish, you can also enable the Firestore API via Terraform:
 
-``` pretty-print
-resource "google_project_service" "firestore" {
-  project = "project"
-  service = "firestore.googleapis.com"
-}
-```
+    resource "google_project_service" "firestore" {
+      project = "project"
+      service = "firestore.googleapis.com"
+    }
 
 If you have a `google_firestore_database` resource, you can add a dependency on the `google_project_service` resource to ensure that the API is enabled before Terraform attempts to create the database:
 
-``` pretty-print
-resource "google_firestore_database" "database" {
-  // ...
-  depends_on = [google_project_service.firestore]
-}
-```
+    resource "google_firestore_database" "database" {
+      // ...
+      depends_on = [google_project_service.firestore]
+    }

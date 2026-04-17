@@ -31,10 +31,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha firestore indexes fields
-```
+    gcloud alpha firestore indexes fields
 
-``` wrap-code
-gcloud beta firestore indexes fields
-```
+    gcloud beta firestore indexes fields

@@ -10,21 +10,15 @@ EXAMPLES
 
 To delete a Firestore database test.
 
-``` wrap-code
-gcloud firestore databases delete --database=test
-```
+    gcloud firestore databases delete --database=test
 
 To delete the Firestore (default) database.
 
-``` wrap-code
-gcloud firestore databases delete --database=(default)
-```
+    gcloud firestore databases delete --database=(default)
 
 To delete a Firestore database test providing etag.
 
-``` wrap-code
-gcloud firestore databases delete --database=test --etag=etag
-```
+    gcloud firestore databases delete --database=test --etag=etag
 
 REQUIRED FLAGS
 
@@ -46,10 +40,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha firestore databases delete
-```
+    gcloud alpha firestore databases delete
 
-``` wrap-code
-gcloud beta firestore databases delete
-```
+    gcloud beta firestore databases delete

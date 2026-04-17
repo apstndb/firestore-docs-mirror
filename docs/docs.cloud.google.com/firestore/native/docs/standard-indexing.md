@@ -149,30 +149,28 @@ The following example Terraform configuration file creates a single-field index 
 
 **firestore.tf**
 
-``` pretty-print
-resource "random_id" "variable"{
-  byte_length = 8
-}
-
-resource "google_firestore_field" "single-index" {
-  project = "project-id"
-  database = "database-id"
-  collection = "chatrooms_${random_id.variable.hex}"
-  field = "name"
-
-  index_config {
-    indexes {
-        order = "ASCENDING"
-        query_scope = "COLLECTION_GROUP"
+    resource "random_id" "variable"{
+      byte_length = 8
     }
-    indexes {
-        array_config = "CONTAINS"
+    
+    resource "google_firestore_field" "single-index" {
+      project = "project-id"
+      database = "database-id"
+      collection = "chatrooms_${random_id.variable.hex}"
+      field = "name"
+    
+      index_config {
+        indexes {
+            order = "ASCENDING"
+            query_scope = "COLLECTION_GROUP"
+        }
+        indexes {
+            array_config = "CONTAINS"
+        }
+      }
+    
+      ttl_config {}
     }
-  }
-
-  ttl_config {}
-}
-```
 
   - Replace project-id with your project ID. Project IDs must be unique.
   - Replace database-id with your database ID.
@@ -183,25 +181,23 @@ The following example Terraform configuration file creates a composite index for
 
 **firestore.tf**
 
-``` pretty-print
-resource "google_firestore_index" "composite-index" {
-  project = "project-id"
-  database = "database-id"
-
-  collection = "chatrooms"
-
-  fields {
-    field_path = "name"
-    order      = "ASCENDING"
-  }
-
-  fields {
-    field_path = "description"
-    order      = "DESCENDING"
-  }
-
-}
-```
+    resource "google_firestore_index" "composite-index" {
+      project = "project-id"
+      database = "database-id"
+    
+      collection = "chatrooms"
+    
+      fields {
+        field_path = "name"
+        order      = "ASCENDING"
+      }
+    
+      fields {
+        field_path = "description"
+        order      = "DESCENDING"
+      }
+    
+    }
 
   - Replace project-id with your project ID. Project IDs must be unique.
   - Replace database-id with your database ID.
@@ -212,26 +208,24 @@ The following example Terraform configuration file creates a vector index on the
 
 **firestore.tf**
 
-``` pretty-print
-resource "google_firestore_index" "vector-index" {
-  project = "project-id"
-  database = "database-id"
-  collection = "chatrooms"
-
-  fields {
-    field_path = "__name__"
-    order = "ASCENDING"
-  }
-
-  fields {
-    field_path = "embedding"
-    vector_config {
-      dimension = 128
-      flat {}
+    resource "google_firestore_index" "vector-index" {
+      project = "project-id"
+      database = "database-id"
+      collection = "chatrooms"
+    
+      fields {
+        field_path = "__name__"
+        order = "ASCENDING"
+      }
+    
+      fields {
+        field_path = "embedding"
+        vector_config {
+          dimension = 128
+          flat {}
+        }
+      }
     }
-  }
-}
-```
 
   - Replace project-id with your project ID. Project IDs must be unique.
   - Replace database-id with your database ID.
@@ -242,27 +236,25 @@ You can also create Datastore Mode indexes using Terraform.
 
 **datastore.tf**
 
-``` pretty-print
-resource "google_firestore_index" "datastore-mode-index" {
-  project = "project-id"
-  database = "database-id"
-
-  collection = "chatrooms"
-
-  fields {
-    field_path = "name"
-    order      = "ASCENDING"
-  }
-
-  fields {
-    field_path = "description"
-    order      = "DESCENDING"
-  }
-
-  query_scope = "COLLECTION_GROUP"
-  api_scope   = "DATASTORE_MODE_API"
-}
-```
+    resource "google_firestore_index" "datastore-mode-index" {
+      project = "project-id"
+      database = "database-id"
+    
+      collection = "chatrooms"
+    
+      fields {
+        field_path = "name"
+        order      = "ASCENDING"
+      }
+    
+      fields {
+        field_path = "description"
+        order      = "DESCENDING"
+      }
+    
+      query_scope = "COLLECTION_GROUP"
+      api_scope   = "DATASTORE_MODE_API"
+    }
 
 ##### Migrate from google\_datastore\_index
 
@@ -330,50 +322,46 @@ For example, consider this `google_datastore_index` resource:
 
 **datastore.tf**
 
-``` pretty-print
-resource "google_datastore_index" "legacy" {
-  kind = "foo"
-
-  properties {
-    name = "property_a"
-    direction = "ASCENDING"
-  }
-
-  properties {
-    name = "property_b"
-    direction = "ASCENDING"
-  }
-}
-```
+    resource "google_datastore_index" "legacy" {
+      kind = "foo"
+    
+      properties {
+        name = "property_a"
+        direction = "ASCENDING"
+      }
+    
+      properties {
+        name = "property_b"
+        direction = "ASCENDING"
+      }
+    }
 
 The equivalent `google_firestore_index` resource would be:
 
-``` pretty-print
-resource "google_firestore_index" "new" {
-  // note: defaults to the provider project
-  project = project
-
-  // note: defaults to the (default) database
-  database = "(default)"
-
-  collection = "foo"
-
-  api_scope = "DATASTORE_MODE_API"
-
-  // since there was no "ancestor" property set above, use COLLECTION_GROUP here
-  query_scope = "COLLECTION_GROUP"
-
-  fields {
-    field_path = "property_a"
-    order  = "ASCENDING"
-  }
-
-  fields {
-    field_path = "property_b"
-    order = "ASCENDING"
-  }
-}
-```
+    resource "google_firestore_index" "new" {
+      // note: defaults to the provider project
+      project = project
+    
+      // note: defaults to the (default) database
+      database = "(default)"
+    
+      collection = "foo"
+    
+      api_scope = "DATASTORE_MODE_API"
+    
+      // since there was no "ancestor" property set above, use COLLECTION_GROUP here
+      query_scope = "COLLECTION_GROUP"
+    
+      fields {
+        field_path = "property_a"
+        order  = "ASCENDING"
+      }
+    
+      fields {
+        field_path = "property_b"
+        order = "ASCENDING"
+      }
+    }
 
 <span id="index-build-time"></span>
 
@@ -391,9 +379,7 @@ Index builds are *long-running operations* .
 
 After you start an index build, Firestore Standard edition assigns the operation a unique name. Operation names are prefixed with `projects/[PROJECT_ID]/databases/(default)/operations/` , for example:
 
-``` notranslate
-projects/project-id/databases/(default)/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
-```
+    projects/project-id/databases/(default)/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
 
 However, you can leave out the prefix when specifying an operation name for the `describe` command.
 
@@ -401,17 +387,13 @@ However, you can leave out the prefix when specifying an operation name for the 
 
 To list long-running operations, use the [gcloud firestore operations list](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command. This command lists ongoing and recently completed operations. Operations are listed for a few days after completion:
 
-``` notranslate
-gcloud firestore operations list
-```
+    gcloud firestore operations list
 
 ### Check operation status
 
 Instead of listing all long-running operations, you can list the details of a single operation:
 
-``` notranslate
-gcloud firestore operations describe operation-name
-```
+    gcloud firestore operations describe operation-name
 
 ### Estimating the completion time
 
@@ -423,26 +405,24 @@ Divide `workCompleted` by `workEstimated` for a rough progress estimate. The est
 
 For example, here is the progress status of an index build:
 
-``` notranslate
-{
-  "operations": [
     {
-      "name": "projects/project-id/operations/AyAyMDBiM2U5NTgwZDAtZGIyYi0zYjc0LTIzYWEtZjg1ZGdWFmZWQHEjF0c2Flc3UtcmV4ZWRuaS1uaW1kYRUKSBI",
-      "metadata": {
-        "@type": "type.googleapis.com/google.firestore.admin.v1.IndexOperationMetadata",
-        "common": {
-          "operationType": "CREATE_INDEX",
-          "startTime": "2020-06-23T16:52:25.697539Z",
-          "state": "PROCESSING"
+      "operations": [
+        {
+          "name": "projects/project-id/operations/AyAyMDBiM2U5NTgwZDAtZGIyYi0zYjc0LTIzYWEtZjg1ZGdWFmZWQHEjF0c2Flc3UtcmV4ZWRuaS1uaW1kYRUKSBI",
+          "metadata": {
+            "@type": "type.googleapis.com/google.firestore.admin.v1.IndexOperationMetadata",
+            "common": {
+              "operationType": "CREATE_INDEX",
+              "startTime": "2020-06-23T16:52:25.697539Z",
+              "state": "PROCESSING"
+            },
+            "progressDocuments": {
+              "workCompleted": "219327",
+              "workEstimated": "2198182"
+            }
+           },
         },
-        "progressDocuments": {
-          "workCompleted": "219327",
-          "workEstimated": "2198182"
-        }
-       },
-    },
-    ...
-```
+        ...
 
 When an operation is done, the operation description will contain [`"done": true`](https://docs.cloud.google.com/firestore/docs/reference//reference/rpc/google.longrunning#operation) . See the value of the [`state` field](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#state) for the result of the operation. If the `done` field is not set in the response, then its value is `false` . Do not depend on the existence of the `done` value for in-progress operations.
 

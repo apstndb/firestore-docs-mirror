@@ -10,15 +10,11 @@ EXAMPLES
 
 To list all Firestore locations with table.
 
-``` wrap-code
-gcloud beta firestore locations list --format="table(locationId, displayName)"
-```
+    gcloud beta firestore locations list --format="table(locationId, displayName)"
 
 To list Firestore locations with a filter.
 
-``` wrap-code
-gcloud beta firestore locations list --filter="locationId:us-west1"
-```
+    gcloud beta firestore locations list --filter="locationId:us-west1"
 
 LIST COMMAND FLAGS
 
@@ -43,10 +39,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore locations list
-```
+    gcloud firestore locations list
 
-``` wrap-code
-gcloud alpha firestore locations list
-```
+    gcloud alpha firestore locations list

@@ -14,21 +14,15 @@ EXAMPLES
 
 To import all collection groups from `mybucket/my/path` , run:
 
-``` wrap-code
-gcloud alpha firestore import gs://mybucket/my/path
-```
+    gcloud alpha firestore import gs://mybucket/my/path
 
 To import a specific set of collections groups asynchronously, run:
 
-``` wrap-code
-gcloud alpha firestore import gs://mybucket/my/path --collection-ids='specific collection group1','specific collection group2' --async
-```
+    gcloud alpha firestore import gs://mybucket/my/path --collection-ids='specific collection group1','specific collection group2' --async
 
 To import all collection groups from certain namespace, run:
 
-``` wrap-code
-gcloud alpha firestore import gs://mybucket/my/path --namespace-ids='specific namespace id'
-```
+    gcloud alpha firestore import gs://mybucket/my/path --namespace-ids='specific namespace id'
 
 POSITIONAL ARGUMENTS
 
@@ -47,18 +41,14 @@ FLAGS
     
     For example, to operate on only the `customers` and `orders` collections groups:
     
-    ``` wrap-code
-    gcloud alpha firestore import --collection-ids='customers','orders'
-    ```
+        gcloud alpha firestore import --collection-ids='customers','orders'
 
   - `--database` = `  DATABASE  ` ; default="(default)"  
     The database to operate on. The default value is `(default)` .
     
     For example, to operate on database `foo` :
     
-    ``` wrap-code
-    gcloud alpha firestore import --database='foo'
-    ```
+        gcloud alpha firestore import --database='foo'
 
   - `--namespace-ids` =\[ `  NAMESPACE_IDS  ` ,…\]  
     List specifying which namespaces will be included in the operation. When omitted, all namespaces are included.
@@ -67,9 +57,7 @@ FLAGS
     
     For example, to operate on only the `customers` and `orders` namespaces:
     
-    ``` wrap-code
-    gcloud alpha firestore import --namespaces-ids='customers','orders'
-    ```
+        gcloud alpha firestore import --namespaces-ids='customers','orders'
 
 GCLOUD WIDE FLAGS
 
@@ -81,10 +69,6 @@ NOTES
 
 This command is currently in alpha and might change without notice. If this command fails with API permission errors despite specifying the correct project, you might be trying to access an API with an invitation-only early access allowlist. These variants are also available:
 
-``` wrap-code
-gcloud firestore import
-```
+    gcloud firestore import
 
-``` wrap-code
-gcloud beta firestore import
-```
+    gcloud beta firestore import

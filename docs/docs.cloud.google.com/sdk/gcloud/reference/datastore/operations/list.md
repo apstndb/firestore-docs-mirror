@@ -20,27 +20,19 @@ EXAMPLES
 
 To see the list of all operations, run:
 
-``` wrap-code
-gcloud datastore operations list
-```
+    gcloud datastore operations list
 
 To see the list of all export operations, run:
 
-``` wrap-code
-gcloud datastore operations list --filter='type:export_entities'
-```
+    gcloud datastore operations list --filter='type:export_entities'
 
 To see the list of all export operations for kind 'MyKind', run:
 
-``` wrap-code
-gcloud datastore operations list --filter='type:export_entities AND kind:MyKind'
-```
+    gcloud datastore operations list --filter='type:export_entities AND kind:MyKind'
 
 To see the list of all operations with particular labels, run:
 
-``` wrap-code
-gcloud datastore operations list --filter='labels.run = daily'
-```
+    gcloud datastore operations list --filter='labels.run = daily'
 
 LIST COMMAND FLAGS
 
@@ -65,10 +57,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha datastore operations list
-```
+    gcloud alpha datastore operations list
 
-``` wrap-code
-gcloud beta datastore operations list
-```
+    gcloud beta datastore operations list

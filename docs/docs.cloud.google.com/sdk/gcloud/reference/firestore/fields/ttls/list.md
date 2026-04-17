@@ -14,9 +14,7 @@ EXAMPLES
 
 The following command lists all TTL fields for the whole database:
 
-``` wrap-code
-gcloud firestore fields ttls list
-```
+    gcloud firestore fields ttls list
 
 FLAGS
 
@@ -76,10 +74,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha firestore fields ttls list
-```
+    gcloud alpha firestore fields ttls list
 
-``` wrap-code
-gcloud beta firestore fields ttls list
-```
+    gcloud beta firestore fields ttls list

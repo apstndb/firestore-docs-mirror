@@ -33,10 +33,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha datastore operations
-```
+    gcloud alpha datastore operations
 
-``` wrap-code
-gcloud beta datastore operations
-```
+    gcloud beta datastore operations

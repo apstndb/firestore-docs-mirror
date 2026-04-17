@@ -48,10 +48,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud datastore
-```
+    gcloud datastore
 
-``` wrap-code
-gcloud alpha datastore
-```
+    gcloud alpha datastore

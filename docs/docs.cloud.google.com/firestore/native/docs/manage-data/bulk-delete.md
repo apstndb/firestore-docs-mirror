@@ -44,11 +44,9 @@ To bulk delete specific collection groups, use the [`--collection-ids`](https://
 
 > **Note:** Bulk deleting a collection won't automatically delete all the child collections. You also need to specify the child collection groups.
 
-``` notranslate
-gcloud firestore bulk-delete \
---collection-ids=[COLLECTION_GROUP_ID_1_OR_KIND_1],[COLLECTION_GROUP_ID_2_OR_KIND_2],[SUBCOLLECTION_GROUP_ID_1_OR_KIND_3] \
---database=[DATABASE]
-```
+    gcloud firestore bulk-delete \
+    --collection-ids=[COLLECTION_GROUP_ID_1_OR_KIND_1],[COLLECTION_GROUP_ID_2_OR_KIND_2],[SUBCOLLECTION_GROUP_ID_1_OR_KIND_3] \
+    --database=[DATABASE]
 
 ## Manage bulk delete operations
 
@@ -56,9 +54,7 @@ After you start a bulk delete operation, Firestore assigns the operation a uniqu
 
 Operation names are prefixed with `projects/[PROJECT_ID]/databases/[DATABASE_ID]/operations/` , for example:
 
-``` notranslate
-projects/my-project/databases/(default)/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
-```
+    projects/my-project/databases/(default)/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
 
 However, you can leave out the prefix when specifying an operation name for the `describe` , `cancel` , and `delete` commands.
 
@@ -68,9 +64,7 @@ However, you can leave out the prefix when specifying an operation name for the 
 
 Use the [`operations list`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command to see all running and recently completed operations, including bulk delete operations:
 
-``` notranslate
-gcloud firestore operations list
-```
+    gcloud firestore operations list
 
 ### Check operation status
 
@@ -78,9 +72,7 @@ gcloud firestore operations list
 
 Use the [`operations describe`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/describe) command to show the status of a bulk delete operation.
 
-``` notranslate
-gcloud firestore operations describe [OPERATION_NAME]
-```
+    gcloud firestore operations describe [OPERATION_NAME]
 
 #### Estimate the completion time
 
@@ -98,9 +90,7 @@ Divide `workCompleted` by `workEstimated` for a rough progress estimate. This es
 
 Use the [`operations cancel`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/cancel) command to stop an operation in progress:
 
-``` notranslate
-gcloud firestore operations cancel [OPERATION_NAME]
-```
+    gcloud firestore operations cancel [OPERATION_NAME]
 
 Cancelling a running operation doesn't undo the operation. A cancelled bulk delete operation doesn't recover the deleted documents.
 
@@ -108,9 +98,7 @@ Cancelling a running operation doesn't undo the operation. A cancelled bulk dele
 
 Use the [`gcloud firestore operations delete`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/delete) command to remove a completed operation from the list of recent operations. To cancel a running operation, use the earlier cancellation operation.
 
-``` notranslate
-gcloud firestore operations delete [OPERATION_NAME]
-```
+    gcloud firestore operations delete [OPERATION_NAME]
 
 ## Billing and pricing for bulk delete operations
 

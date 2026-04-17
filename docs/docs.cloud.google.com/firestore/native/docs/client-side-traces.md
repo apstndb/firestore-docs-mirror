@@ -70,7 +70,7 @@ The following code configures the client library to export spans with a 10% samp
 
 ##### Java (Admin)
 
-``` suppresswarning
+``` 
 Resource resource = Resource
   .getDefault().merge(Resource.builder().put(SERVICE_NAME, "My App").build());
 
@@ -109,7 +109,7 @@ Firestore firestore = FirestoreOptions
 
 ##### Node.js (Admin)
 
-``` suppresswarning
+``` 
 import { trace } from "@opentelemetry/api";
 import {GrpcInstrumentation} from '@opentelemetry/instrumentation-grpc';
 
@@ -166,7 +166,7 @@ If your observability service provider supports OTLP ingestion, you can use thei
 
 ##### Java (Admin)
 
-``` suppresswarning
+``` 
 // TraceExporter needed for this use case
 import com.google.cloud.opentelemetry.trace.TraceExporter;
 
@@ -202,7 +202,7 @@ Firestore firestore = FirestoreOptions
 
 ##### Node.js (Admin)
 
-``` suppresswarning
+``` 
 import { trace } from "@opentelemetry/api";
 import {GrpcInstrumentation} from '@opentelemetry/instrumentation-grpc';
 import { TraceExporter } from "@google-cloud/opentelemetry-cloud-trace-exporter";
@@ -266,23 +266,21 @@ You can configure traces without code changes using auto agents. You need to set
 
 Run your OpenTelemetry Collector with OTLP gRPC receivers enabled. Set the agent's exporter to `otlp` and specify the endpoint where the agent should export the data. The following example uses a 10% sampling ratio and sends traces to the Collector that listens on localhost port `4317` .
 
-``` suppresswarning
-FIRESTORE_ENABLE_TRACING=ON                            \
-java                                                   \
--javaagent:path/to/opentelemetry-javaagent.jar         \
--Dotel.traces.exporter=otlp                            \
--Dotel.exporter.otlp.endpoint="http://localhost:4317"  \
--Dotel.traces.sampler=traceidratio                     \
--Dotel.traces.sampler.arg=0.1                          \
--Dotel.service.name="My App"                           \
--jar myapp.jar
-```
+    FIRESTORE_ENABLE_TRACING=ON                            \
+    java                                                   \
+    -javaagent:path/to/opentelemetry-javaagent.jar         \
+    -Dotel.traces.exporter=otlp                            \
+    -Dotel.exporter.otlp.endpoint="http://localhost:4317"  \
+    -Dotel.traces.sampler=traceidratio                     \
+    -Dotel.traces.sampler.arg=0.1                          \
+    -Dotel.service.name="My App"                           \
+    -jar myapp.jar
 
 ### Export directly to an observability backend with Auto Agents
 
 In addition to setting the environment variable `FIRESTORE_ENABLE_TRACING=ON` , you need to add the OpenTelemetry Java agent extension for your specific backend. The following example uses the Trace exporter extension and a 10% trace sampling ratio.
 
-``` suppresswarning
+``` 
 FIRESTORE_ENABLE_TRACING=ON                                                \
 java                                                                       \
 -javaagent:path/to/opentelemetry-javaagent.jar                             \
@@ -297,7 +295,7 @@ java                                                                       \
 
 To set up zero-code instrumentation, [follow the OpenTelemetry instructions for JavaScript instrumentation](https://opentelemetry.io/docs/zero-code/js/) . The following example code snippet enables instrumentation and sends traces to an OpenTelemetry collector:
 
-``` suppresswarning
+``` 
 npm install @opentelemetry/api
 npm install @opentelemetry/auto-instrumentations-node
 

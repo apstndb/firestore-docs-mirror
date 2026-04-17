@@ -39,10 +39,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha firestore user-creds
-```
+    gcloud alpha firestore user-creds
 
-``` wrap-code
-gcloud beta firestore user-creds
-```
+    gcloud beta firestore user-creds

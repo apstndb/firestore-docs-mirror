@@ -48,10 +48,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha datastore
-```
+    gcloud alpha datastore
 
-``` wrap-code
-gcloud beta datastore
-```
+    gcloud beta datastore

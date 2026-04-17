@@ -16,9 +16,7 @@ The database connection string depends on the UID of the database, the location 
 
 The exact connection string depends on the authentication mechanism, but the base connection string uses the following format:
 
-``` suppresswarning
-mongodb://UID.LOCATION.firestore.goog:443/DATABASE_ID?loadBalanced=true&tls=true&retryWrites=false
-```
+    mongodb://UID.LOCATION.firestore.goog:443/DATABASE_ID?loadBalanced=true&tls=true&retryWrites=false
 
 You can obtain the base connection string in one of the following ways:
 
@@ -34,11 +32,9 @@ You can obtain the base connection string in one of the following ways:
 
 Use `gcloud firestore database describe` to retrieve the UID and location information:
 
-``` suppresswarning
-gcloud firestore databases describe \
---database=DATABASE_ID \
---format='yaml(locationId, uid)'
-```
+    gcloud firestore databases describe \
+    --database=DATABASE_ID \
+    --format='yaml(locationId, uid)'
 
 Replace DATABASE\_ID with the database ID.
 
@@ -89,9 +85,7 @@ To create a user for your Firestore with MongoDB compatibility database, use one
 
 1.  To authenticate with SCRAM, you must first create a user credential. Use the `gcloud firestore user-creds` command:
     
-    ``` suppresswarning
-    gcloud firestore user-creds create USERNAME --database=DATABASE_ID
-    ```
+        gcloud firestore user-creds create USERNAME --database=DATABASE_ID
     
     Replace the following:
     
@@ -104,21 +98,17 @@ To create a user for your Firestore with MongoDB compatibility database, use one
     
     The output resembles the following:
     
-    ``` suppresswarning
-    name: projects/PROJECT_NAME/databases/DATABASE_ID/userCreds/USERNAME
-    resourceIdentity:
-      principal: principal://firestore.googleapis.com/projects/PROJECT_NUMBER/name/databases/DATABASE_ID/userCreds/USERNAME
-    securePassword: PASSWORD
-    ```
+        name: projects/PROJECT_NAME/databases/DATABASE_ID/userCreds/USERNAME
+        resourceIdentity:
+          principal: principal://firestore.googleapis.com/projects/PROJECT_NUMBER/name/databases/DATABASE_ID/userCreds/USERNAME
+        securePassword: PASSWORD
 
 2.  By default, this new user credential does not have any permissions. For read and write access to the database, add the `roles/datastore.user` role for this specific database:
     
-    ``` suppresswarning
-    gcloud projects add-iam-policy-binding PROJECT_NAME \
-    --member='principal://firestore.googleapis.com/projects/PROJECT_NUMBER/name/databases/DATABASE_ID/userCreds/USERNAME' \
-    --role=roles/datastore.user \
-    --condition='expression=resource.name == "projects/PROJECT_NAME/databases/DATABASE_ID",title="CONDITION_TITLE"'
-    ```
+        gcloud projects add-iam-policy-binding PROJECT_NAME \
+        --member='principal://firestore.googleapis.com/projects/PROJECT_NUMBER/name/databases/DATABASE_ID/userCreds/USERNAME' \
+        --role=roles/datastore.user \
+        --condition='expression=resource.name == "projects/PROJECT_NAME/databases/DATABASE_ID",title="CONDITION_TITLE"'
     
     Replace the following:
     
@@ -134,108 +124,104 @@ This section provides a code example for creating user credentials and configuri
 
 For Maven builds, you can use the following coordinates:
 
-``` suppresswarning
-com.google.cloud:google-cloud-firestore-admin:3.33.1
-com.google.cloud:google-cloud-resourcemanager:1.76.0
-```
+    com.google.cloud:google-cloud-firestore-admin:3.33.1
+    com.google.cloud:google-cloud-resourcemanager:1.76.0
 
 Provision user credentials and an IAM policy:
 
-``` suppresswarning
-import com.google.cloud.firestore.v1.FirestoreAdminClient;
-import com.google.cloud.resourcemanager.v3.ProjectName;
-import com.google.cloud.resourcemanager.v3.ProjectsClient;
-import com.google.firestore.admin.v1.CreateUserCredsRequest;
-import com.google.firestore.admin.v1.GetUserCredsRequest;
-import com.google.firestore.admin.v1.UserCreds;
-import com.google.iam.v1.Binding;
-import com.google.iam.v1.GetIamPolicyRequest;
-import com.google.iam.v1.GetPolicyOptions;
-import com.google.iam.v1.Policy;
-import com.google.iam.v1.SetIamPolicyRequest;
-import com.google.protobuf.FieldMask;
-import com.google.type.Expr;
-
-public class FirestoreUserCredsExample {
-  /**
-   * Provision user credentials and configure an IAM policy to allow SCRAM authentication into the
-   * specified Firestore with Mongo Compatibility database.
-   */
-  private static void provisionFirestoreUserCredsAndIAM(
-      String projectId, String databaseId, String userName) throws Exception {
-    UserCreds userCreds = createUserCreds(projectId, databaseId, userName);
-
-    // Note the password returned in the UserCreds proto - it cannot be retrieved again
-    // after the initial call to the createUserCreds API.
-    System.out.printf(
-        "Created credentials for username: %s:\nIAM principal: %s\nPassword: [%s]\n",
-        userName, userCreds.getResourceIdentity().getPrincipal(), userCreds.getSecurePassword());
-
-    // Provision an IAM binding for the principal associated with these user credentials.
-    updateIamPolicyForUserCreds(projectId, databaseId, userName, userCreds);
-
-    // Emit the password again.
-    System.out.printf(
-        "Successfully configured IAM policy for database: %s, username: %s\n",
-        databaseId, userName);
-    System.out.printf("Please make a note of the password: [%s]\n", userCreds.getSecurePassword());
-  }
-
-  /** Provision new user credentials using the FirestoreAdminClient. */
-  private static UserCreds createUserCreds(String projectId, String databaseId, String userName)
-      throws Exception {
-    FirestoreAdminClient firestoreAdminClient = FirestoreAdminClient.create();
-    return firestoreAdminClient.createUserCreds(
-        CreateUserCredsRequest.newBuilder()
-            .setParent(String.format("projects/%s/databases/%s", projectId, databaseId))
-            .setUserCredsId(userName)
-            .build());
-  }
-
-  /** Update the IAM policy using the Resource Manager ProjectsClient. */
-  private static void updateIamPolicyForUserCreds(
-      String projectId, String databaseId, String userName, UserCreds userCreds) throws Exception {
-    try (ProjectsClient projectsClient = ProjectsClient.create()) {
-      ProjectName projectName = ProjectName.of(projectId);
-
-      // Get the current IAM policy.
-      Policy currentPolicy =
-          projectsClient.getIamPolicy(
-              GetIamPolicyRequest.newBuilder()
+    import com.google.cloud.firestore.v1.FirestoreAdminClient;
+    import com.google.cloud.resourcemanager.v3.ProjectName;
+    import com.google.cloud.resourcemanager.v3.ProjectsClient;
+    import com.google.firestore.admin.v1.CreateUserCredsRequest;
+    import com.google.firestore.admin.v1.GetUserCredsRequest;
+    import com.google.firestore.admin.v1.UserCreds;
+    import com.google.iam.v1.Binding;
+    import com.google.iam.v1.GetIamPolicyRequest;
+    import com.google.iam.v1.GetPolicyOptions;
+    import com.google.iam.v1.Policy;
+    import com.google.iam.v1.SetIamPolicyRequest;
+    import com.google.protobuf.FieldMask;
+    import com.google.type.Expr;
+    
+    public class FirestoreUserCredsExample {
+      /**
+       * Provision user credentials and configure an IAM policy to allow SCRAM authentication into the
+       * specified Firestore with Mongo Compatibility database.
+       */
+      private static void provisionFirestoreUserCredsAndIAM(
+          String projectId, String databaseId, String userName) throws Exception {
+        UserCreds userCreds = createUserCreds(projectId, databaseId, userName);
+    
+        // Note the password returned in the UserCreds proto - it cannot be retrieved again
+        // after the initial call to the createUserCreds API.
+        System.out.printf(
+            "Created credentials for username: %s:\nIAM principal: %s\nPassword: [%s]\n",
+            userName, userCreds.getResourceIdentity().getPrincipal(), userCreds.getSecurePassword());
+    
+        // Provision an IAM binding for the principal associated with these user credentials.
+        updateIamPolicyForUserCreds(projectId, databaseId, userName, userCreds);
+    
+        // Emit the password again.
+        System.out.printf(
+            "Successfully configured IAM policy for database: %s, username: %s\n",
+            databaseId, userName);
+        System.out.printf("Please make a note of the password: [%s]\n", userCreds.getSecurePassword());
+      }
+    
+      /** Provision new user credentials using the FirestoreAdminClient. */
+      private static UserCreds createUserCreds(String projectId, String databaseId, String userName)
+          throws Exception {
+        FirestoreAdminClient firestoreAdminClient = FirestoreAdminClient.create();
+        return firestoreAdminClient.createUserCreds(
+            CreateUserCredsRequest.newBuilder()
+                .setParent(String.format("projects/%s/databases/%s", projectId, databaseId))
+                .setUserCredsId(userName)
+                .build());
+      }
+    
+      /** Update the IAM policy using the Resource Manager ProjectsClient. */
+      private static void updateIamPolicyForUserCreds(
+          String projectId, String databaseId, String userName, UserCreds userCreds) throws Exception {
+        try (ProjectsClient projectsClient = ProjectsClient.create()) {
+          ProjectName projectName = ProjectName.of(projectId);
+    
+          // Get the current IAM policy.
+          Policy currentPolicy =
+              projectsClient.getIamPolicy(
+                  GetIamPolicyRequest.newBuilder()
+                      .setResource(projectName.toString())
+                      .setOptions(GetPolicyOptions.newBuilder().setRequestedPolicyVersion(3).build())
+                      .build());
+    
+          String role = "roles/datastore.user";
+          String title = String.format("Conditional IAM binding for %s", userName);
+          String expression =
+              String.format("resource.name == \"projects/%s/databases/%s\"", projectId, databaseId);
+    
+          // Construct an updated IAM policy with an additional binding for the user credentials.
+          Policy.Builder policyBuilder = currentPolicy.toBuilder();
+          Binding newBinding =
+              Binding.newBuilder()
+                  .setRole(role)
+                  .setCondition(Expr.newBuilder().setTitle(title).setExpression(expression).build())
+                  .addMembers(userCreds.getResourceIdentity().getPrincipal())
+                  .build();
+          policyBuilder.addBindings(newBinding);
+    
+          // Update the policy
+          SetIamPolicyRequest request =
+              SetIamPolicyRequest.newBuilder()
                   .setResource(projectName.toString())
-                  .setOptions(GetPolicyOptions.newBuilder().setRequestedPolicyVersion(3).build())
-                  .build());
-
-      String role = "roles/datastore.user";
-      String title = String.format("Conditional IAM binding for %s", userName);
-      String expression =
-          String.format("resource.name == \"projects/%s/databases/%s\"", projectId, databaseId);
-
-      // Construct an updated IAM policy with an additional binding for the user credentials.
-      Policy.Builder policyBuilder = currentPolicy.toBuilder();
-      Binding newBinding =
-          Binding.newBuilder()
-              .setRole(role)
-              .setCondition(Expr.newBuilder().setTitle(title).setExpression(expression).build())
-              .addMembers(userCreds.getResourceIdentity().getPrincipal())
-              .build();
-      policyBuilder.addBindings(newBinding);
-
-      // Update the policy
-      SetIamPolicyRequest request =
-          SetIamPolicyRequest.newBuilder()
-              .setResource(projectName.toString())
-              .setPolicy(policyBuilder.build())
-              .setUpdateMask(FieldMask.newBuilder().addPaths("bindings").addPaths("etag").build())
-              .build();
-      System.out.println(request);
-
-      Policy updatedPolicy = projectsClient.setIamPolicy(request);
-      System.out.println("Policy updated successfully: " + updatedPolicy);
+                  .setPolicy(policyBuilder.build())
+                  .setUpdateMask(FieldMask.newBuilder().addPaths("bindings").addPaths("etag").build())
+                  .build();
+          System.out.println(request);
+    
+          Policy updatedPolicy = projectsClient.setIamPolicy(request);
+          System.out.println("Policy updated successfully: " + updatedPolicy);
+        }
+      }
     }
-  }
-}
-```
 
 ##### Python
 
@@ -243,103 +229,97 @@ This section provides a code example for creating user credentials and configuri
 
 The required Python libraries can be installed with the pip tool:
 
-``` suppresswarning
-pip install google-cloud-iam
-pip install google-cloud-firestore
-pip install google-cloud-resource-manager
-```
+    pip install google-cloud-iam
+    pip install google-cloud-firestore
+    pip install google-cloud-resource-manager
 
 Provision user credentials and an IAM policy:
 
-``` suppresswarning
-from google.cloud import resourcemanager_v3
-from google.cloud.firestore_admin_v1 import FirestoreAdminClient
-from google.cloud.firestore_admin_v1 import types
-from google.iam.v1 import iam_policy_pb2
-from google.iam.v1 import policy_pb2
-from google.type import expr_pb2
-
-
-def create_user_creds(project_id: str, database_id: str, user_name: str):
-  """Provision new user credentials using the FirestoreAdminClient."""
-  client = FirestoreAdminClient()
-  request = types.CreateUserCredsRequest(
-      parent=f'projects/{project_id}/databases/{database_id}',
-      user_creds_id=user_name,
-  )
-  response = client.create_user_creds(request)
-  return response
-
-
-def update_iam_policy_for_user_creds(
-    project_id: str, database_id: str, user_name: str, user_creds
-):
-  """Update the IAM policy using the Resource Manager ProjectsClient."""
-  client = resourcemanager_v3.ProjectsClient()
-  request = iam_policy_pb2.GetIamPolicyRequest()
-  request.resource = f'projects/{project_id}'
-  request.options.requested_policy_version = 3
-
-  # Get the current IAM policy
-  current_policy = client.get_iam_policy(request)
-
-  # Construct an updated IAM policy with an additional binding
-  # for the user credentials.
-  updated_policy = policy_pb2.Policy()
-  binding = policy_pb2.Binding()
-  iam_condition = expr_pb2.Expr()
-
-  iam_condition.title = f'Conditional IAM binding for {user_name}'
-  iam_condition.expression = (
-      f'resource.name == "projects/{project_id}/databases/{database_id}"'
-  )
-
-  binding.role = 'roles/datastore.user'
-  binding.condition.CopyFrom(iam_condition)
-  binding.members.append(user_creds.resource_identity.principal)
-  updated_policy.bindings.append(binding)
-
-  # Update the policy
-  updated_policy.MergeFrom(current_policy)
-  set_policy_request = iam_policy_pb2.SetIamPolicyRequest()
-  set_policy_request.resource = f'projects/{project_id}'
-  set_policy_request.policy.CopyFrom(updated_policy)
-
-  final_policy = client.set_iam_policy(set_policy_request)
-  print(f'Policy updated successfully {final_policy}')
-
-
-def provision_firestore_user_creds_and_iam(
-    project_id: str, database_id: str, user_name: str
-):
-  """Provision user credentials and configure an IAM policy."""
-  user_creds = create_user_creds(project_id, database_id, user_name)
-
-  # Note the password returned in the UserCreds proto - it cannot be
-  # retrieved again after the initial call to the create_user_creds API.
-  print(f'Created credentials for username: {user_name}')
-  print(f'IAM principal: {user_creds.resource_identity.principal}')
-  print(f'Password: [{user_creds.secure_password}]')
-
-  # Provision an IAM binding for the principal associated with
-  # these user credentials.
-  update_iam_policy_for_user_creds(
-      project_id, database_id, user_name, user_creds
-  )
-
-  # Emit the password again
-  print(
-      f'Successfully configured IAM policy for database: {database_id},'
-      f' username: {user_name}'
-  )
-  print(f'Please make a note of the password: [{user_creds.secure_password}]')
-```
+    from google.cloud import resourcemanager_v3
+    from google.cloud.firestore_admin_v1 import FirestoreAdminClient
+    from google.cloud.firestore_admin_v1 import types
+    from google.iam.v1 import iam_policy_pb2
+    from google.iam.v1 import policy_pb2
+    from google.type import expr_pb2
+    
+    
+    def create_user_creds(project_id: str, database_id: str, user_name: str):
+      """Provision new user credentials using the FirestoreAdminClient."""
+      client = FirestoreAdminClient()
+      request = types.CreateUserCredsRequest(
+          parent=f'projects/{project_id}/databases/{database_id}',
+          user_creds_id=user_name,
+      )
+      response = client.create_user_creds(request)
+      return response
+    
+    
+    def update_iam_policy_for_user_creds(
+        project_id: str, database_id: str, user_name: str, user_creds
+    ):
+      """Update the IAM policy using the Resource Manager ProjectsClient."""
+      client = resourcemanager_v3.ProjectsClient()
+      request = iam_policy_pb2.GetIamPolicyRequest()
+      request.resource = f'projects/{project_id}'
+      request.options.requested_policy_version = 3
+    
+      # Get the current IAM policy
+      current_policy = client.get_iam_policy(request)
+    
+      # Construct an updated IAM policy with an additional binding
+      # for the user credentials.
+      updated_policy = policy_pb2.Policy()
+      binding = policy_pb2.Binding()
+      iam_condition = expr_pb2.Expr()
+    
+      iam_condition.title = f'Conditional IAM binding for {user_name}'
+      iam_condition.expression = (
+          f'resource.name == "projects/{project_id}/databases/{database_id}"'
+      )
+    
+      binding.role = 'roles/datastore.user'
+      binding.condition.CopyFrom(iam_condition)
+      binding.members.append(user_creds.resource_identity.principal)
+      updated_policy.bindings.append(binding)
+    
+      # Update the policy
+      updated_policy.MergeFrom(current_policy)
+      set_policy_request = iam_policy_pb2.SetIamPolicyRequest()
+      set_policy_request.resource = f'projects/{project_id}'
+      set_policy_request.policy.CopyFrom(updated_policy)
+    
+      final_policy = client.set_iam_policy(set_policy_request)
+      print(f'Policy updated successfully {final_policy}')
+    
+    
+    def provision_firestore_user_creds_and_iam(
+        project_id: str, database_id: str, user_name: str
+    ):
+      """Provision user credentials and configure an IAM policy."""
+      user_creds = create_user_creds(project_id, database_id, user_name)
+    
+      # Note the password returned in the UserCreds proto - it cannot be
+      # retrieved again after the initial call to the create_user_creds API.
+      print(f'Created credentials for username: {user_name}')
+      print(f'IAM principal: {user_creds.resource_identity.principal}')
+      print(f'Password: [{user_creds.secure_password}]')
+    
+      # Provision an IAM binding for the principal associated with
+      # these user credentials.
+      update_iam_policy_for_user_creds(
+          project_id, database_id, user_name, user_creds
+      )
+    
+      # Emit the password again
+      print(
+          f'Successfully configured IAM policy for database: {database_id},'
+          f' username: {user_name}'
+      )
+      print(f'Please make a note of the password: [{user_creds.secure_password}]')
 
 Use the following connection string to connect to your database with SCRAM:
 
-``` suppresswarning
-mongodb://USERNAME:PASSWORD@UID.LOCATION.firestore.goog:443/DATABASE_ID?loadBalanced=true&authMechanism=SCRAM-SHA-256&tls=true&retryWrites=false
-```
+    mongodb://USERNAME:PASSWORD@UID.LOCATION.firestore.goog:443/DATABASE_ID?loadBalanced=true&authMechanism=SCRAM-SHA-256&tls=true&retryWrites=false
 
 Replace the following:
 
@@ -369,52 +349,50 @@ This requires [adding the auth library as a dependency](https://github.com/googl
 
 The following code sample demonstrates how to connect:
 
-``` suppresswarning
-val db = MongoClients.create(
-    clientSettings(
-      "DATABASE_UID",
-      "LOCATION"
-    ).build()
-  ).getDatabase("DATABASE_ID")
-
-
-/**
- * Creates a connection to a Firestore with MongoDB Compatibility database.
- * @param databaseUid The uid of the database to connect to as a string. For example: f116f93a-519c-208a-9a72-3ef6c9a1f081
- * @param locationId The location of the database to connect to, for example: nam5, us-central1, us-east4 etc...
- * @param environment Determines whether to try and fetch an authentication credential from the
- * Compute Engine VM metadata service or whether to call gcloud.
- */
-private static MongoClientSettings.Builder clientSettings(
-  String databaseUid: String
-  String locationId:String
-): MongoClientSettings.Builder {
-  MongoCredential credential =
-    MongoCredential.createOidcCredential(null)
-      .withMechanismProperty(
-        MongoCredential.OIDC_CALLBACK_KEY,
-        new MongoCredential.OidcCallback() {
-          @Override
-          MongoCredential.OidcCallbackResult onRequest(
-MongoCredential.OidcCallbackContext context) {
-     // Customize this credential builder for additional credential types.
-     GoogleCredentials credentials = GoogleCredentials.getApplicationDefault();
-            return new MongoCredential.OidcCallbackResult(
-         credentials.getAccessToken().getTokenValue(),
-         Duration.between(Instant.now(),
-credentials.getAccessToken().getExpirationTime().toInstant()));
-          }
-        },
-      );
-  return MongoClientSettings.builder()
-    .hosts(listOf(ServerAddress(
-        "$databaseUid.$locationId.firestore.goog", 443)))
-    .credential(credential)
-    .applyToClusterSettings(builder ->
-         builder.mode(ClusterConnectionMode.LOAD_BALANCED))
-    ).applyToSslSettings(ssl -> ssl.enabled(true)).retryWrites(false);
-}
-```
+    val db = MongoClients.create(
+        clientSettings(
+          "DATABASE_UID",
+          "LOCATION"
+        ).build()
+      ).getDatabase("DATABASE_ID")
+    
+    
+    /**
+     * Creates a connection to a Firestore with MongoDB Compatibility database.
+     * @param databaseUid The uid of the database to connect to as a string. For example: f116f93a-519c-208a-9a72-3ef6c9a1f081
+     * @param locationId The location of the database to connect to, for example: nam5, us-central1, us-east4 etc...
+     * @param environment Determines whether to try and fetch an authentication credential from the
+     * Compute Engine VM metadata service or whether to call gcloud.
+     */
+    private static MongoClientSettings.Builder clientSettings(
+      String databaseUid: String
+      String locationId:String
+    ): MongoClientSettings.Builder {
+      MongoCredential credential =
+        MongoCredential.createOidcCredential(null)
+          .withMechanismProperty(
+            MongoCredential.OIDC_CALLBACK_KEY,
+            new MongoCredential.OidcCallback() {
+              @Override
+              MongoCredential.OidcCallbackResult onRequest(
+    MongoCredential.OidcCallbackContext context) {
+         // Customize this credential builder for additional credential types.
+         GoogleCredentials credentials = GoogleCredentials.getApplicationDefault();
+                return new MongoCredential.OidcCallbackResult(
+             credentials.getAccessToken().getTokenValue(),
+             Duration.between(Instant.now(),
+    credentials.getAccessToken().getExpirationTime().toInstant()));
+              }
+            },
+          );
+      return MongoClientSettings.builder()
+        .hosts(listOf(ServerAddress(
+            "$databaseUid.$locationId.firestore.goog", 443)))
+        .credential(credential)
+        .applyToClusterSettings(builder ->
+             builder.mode(ClusterConnectionMode.LOAD_BALANCED))
+        ).applyToSslSettings(ssl -> ssl.enabled(true)).retryWrites(false);
+    }
 
 Replace the following:
 
@@ -454,9 +432,7 @@ See the instructions in the [Configure credentials](https://docs.cloud.google.co
 
 To grant the service account the `roles/datastore.user` role for read and write to Firestore, run the following command:
 
-``` suppresswarning
-gcloud projects add-iam-policy-binding PROJECT_NAME --member="serviceAccount:SERVICE_ACCOUNT_EMAIL" --role=roles/datastore.user
-```
+    gcloud projects add-iam-policy-binding PROJECT_NAME --member="serviceAccount:SERVICE_ACCOUNT_EMAIL" --role=roles/datastore.user
 
 Replace the following:
 
@@ -467,9 +443,7 @@ Replace the following:
 
 Use the following format to construct the connection string:
 
-``` suppresswarning
-mongodb://DATABASE_UID.LOCATION.firestore.goog:443/DATABASE_ID?loadBalanced=true&tls=true&retryWrites=false&authMechanism=MONGODB-OIDC&authMechanismProperties=ENVIRONMENT:gcp,TOKEN_RESOURCE:FIRESTORE
-```
+    mongodb://DATABASE_UID.LOCATION.firestore.goog:443/DATABASE_ID?loadBalanced=true&tls=true&retryWrites=false&authMechanism=MONGODB-OIDC&authMechanismProperties=ENVIRONMENT:gcp,TOKEN_RESOURCE:FIRESTORE
 
 Replace the following:
 
@@ -485,11 +459,9 @@ You can use a temporary Google Cloud access token to run diagnostic tools such a
 
 For example, use the following command to connect to your database with `mongosh` :
 
-``` suppresswarning
-mongosh --tls \
-      --username access_token --password $(gcloud auth print-access-token) \
-      'mongodb://UID.LOCATION.firestore.goog:443/DATABASE_ID?loadBalanced=true&authMechanism=PLAIN&authSource=$external&retryWrites=false'
-```
+    mongosh --tls \
+          --username access_token --password $(gcloud auth print-access-token) \
+          'mongodb://UID.LOCATION.firestore.goog:443/DATABASE_ID?loadBalanced=true&authMechanism=PLAIN&authSource=$external&retryWrites=false'
 
 Replace the following:
 

@@ -10,21 +10,15 @@ EXAMPLES
 
 To restore a database from a backup.
 
-``` wrap-code
-gcloud alpha firestore databases restore --source-backup=projects/PROJECT_ID/locations/LOCATION_ID/backups/BACKUP_ID --destination-database=DATABASE_ID
-```
+    gcloud alpha firestore databases restore --source-backup=projects/PROJECT_ID/locations/LOCATION_ID/backups/BACKUP_ID --destination-database=DATABASE_ID
 
 To restore a database from a backup with tags.
 
-``` wrap-code
-gcloud alpha firestore databases restore --source-backup=projects/PROJECT_ID/locations/LOCATION_ID/backups/BACKUP_ID --destination-database=DATABASE_ID --tags=key1=value1,key2=value2
-```
+    gcloud alpha firestore databases restore --source-backup=projects/PROJECT_ID/locations/LOCATION_ID/backups/BACKUP_ID --destination-database=DATABASE_ID --tags=key1=value1,key2=value2
 
 To restore to a CMEK-enabled database.
 
-``` wrap-code
-gcloud alpha firestore databases restore --source-backup=projects/PROJECT_ID/locations/LOCATION_ID/backups/BACKUP_ID --destination-database=DATABASE_ID --encryption-type=customer-managed-encryption --kms-key-name=projects/PROJECT_ID/locations/LOCATION_ID/keyRings/KEY_RING_ID/cryptoKeys/CRYPTO_KEY_ID
-```
+    gcloud alpha firestore databases restore --source-backup=projects/PROJECT_ID/locations/LOCATION_ID/backups/BACKUP_ID --destination-database=DATABASE_ID --encryption-type=customer-managed-encryption --kms-key-name=projects/PROJECT_ID/locations/LOCATION_ID/keyRings/KEY_RING_ID/cryptoKeys/CRYPTO_KEY_ID
 
 REQUIRED FLAGS
 
@@ -37,18 +31,14 @@ REQUIRED FLAGS
     
     For example, to restore to database `testdb` :
     
-    ``` wrap-code
-    gcloud alpha firestore databases restore --destination-database=testdb
-    ```
+        gcloud alpha firestore databases restore --destination-database=testdb
 
   - `--source-backup` = `  SOURCE_BACKUP  `  
     The source backup to restore from.
     
     For example, to restore from backup `cf9f748a-7980-4703-b1a1-d1ffff591db0` in us-east1:
     
-    ``` wrap-code
-    gcloud alpha firestore databases restore --source-backup=projects/PROJECT_ID/locations/us-east1/backups/cf9f748a-7980-4703-b1a1-d1ffff591db0
-    ```
+        gcloud alpha firestore databases restore --source-backup=projects/PROJECT_ID/locations/us-east1/backups/cf9f748a-7980-4703-b1a1-d1ffff591db0
 
 OPTIONAL FLAGS
 
@@ -64,21 +54,15 @@ The encryption configuration of the new database being created from the backup. 
 
 To create a CMEK-enabled database:
 
-``` wrap-code
-gcloud alpha firestore databases restore --encryption-type=customer-managed-encryption --kms-key-name=projects/PROJECT_ID/locations/LOCATION_ID/keyRings/KEY_RING_ID/cryptoKeys/CRYPTO_KEY_ID
-```
+    gcloud alpha firestore databases restore --encryption-type=customer-managed-encryption --kms-key-name=projects/PROJECT_ID/locations/LOCATION_ID/keyRings/KEY_RING_ID/cryptoKeys/CRYPTO_KEY_ID
 
 To create a Google-default-encrypted database:
 
-``` wrap-code
-gcloud alpha firestore databases restore --encryption-type=google-default-encryption
-```
+    gcloud alpha firestore databases restore --encryption-type=google-default-encryption
 
 To create a database using the same encryption settings as the backup:
 
-``` wrap-code
-gcloud alpha firestore databases restore --encryption-type=use-source-encryption
-```
+    gcloud alpha firestore databases restore --encryption-type=use-source-encryption
 
 `--encryption-type` = `  ENCRYPTION_TYPE  `
 
@@ -104,10 +88,6 @@ NOTES
 
 This command is currently in alpha and might change without notice. If this command fails with API permission errors despite specifying the correct project, you might be trying to access an API with an invitation-only early access allowlist. These variants are also available:
 
-``` wrap-code
-gcloud firestore databases restore
-```
+    gcloud firestore databases restore
 
-``` wrap-code
-gcloud beta firestore databases restore
-```
+    gcloud beta firestore databases restore

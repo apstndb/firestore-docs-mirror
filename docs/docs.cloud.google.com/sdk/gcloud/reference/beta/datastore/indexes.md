@@ -33,10 +33,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud datastore indexes
-```
+    gcloud datastore indexes
 
-``` wrap-code
-gcloud alpha datastore indexes
-```
+    gcloud alpha datastore indexes

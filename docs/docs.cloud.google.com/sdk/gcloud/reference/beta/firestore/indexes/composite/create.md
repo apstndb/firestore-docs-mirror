@@ -14,13 +14,9 @@ EXAMPLES
 
 The following command creates a composite index with fields `user_id` (in descending order) followed by `timestamp` (in descending order) in the `Events` collection group.
 
-``` wrap-code
-gcloud beta firestore indexes composite create --collection-group=Events --field-config=field-path=user-id,order=descending --field-config=field-path=timestamp,order=descending
-```
+    gcloud beta firestore indexes composite create --collection-group=Events --field-config=field-path=user-id,order=descending --field-config=field-path=timestamp,order=descending
 
-``` wrap-code
-gcloud beta firestore indexes composite create --database=(default) --collection-group=Events --field-config=field-path=user-id,order=descending --field-config=field-path=timestamp,order=descending
-```
+    gcloud beta firestore indexes composite create --database=(default) --collection-group=Events --field-config=field-path=user-id,order=descending --field-config=field-path=timestamp,order=descending
 
 REQUIRED FLAGS
 
@@ -108,10 +104,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore indexes composite create
-```
+    gcloud firestore indexes composite create
 
-``` wrap-code
-gcloud alpha firestore indexes composite create
-```
+    gcloud alpha firestore indexes composite create

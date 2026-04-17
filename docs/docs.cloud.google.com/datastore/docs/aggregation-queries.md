@@ -99,17 +99,15 @@ Use the `count()` aggregation to return the total number of indexed entities tha
 
 ##### Go
 
-``` suppresswarning
-aggregationCountQuery := datastore.NewQuery("Task").
-  NewAggregationQuery().
-  WithCount("total_tasks")
-
-countResults, err := client.RunAggregationQuery(ctx, aggregationCountQuery)
-
-count := countResults["total_tasks"]
-countValue := count.(*datastorepb.Value)
-fmt.Printf("Number of results from query: %d\n", countValue.GetIntegerValue())
-```
+    aggregationCountQuery := datastore.NewQuery("Task").
+      NewAggregationQuery().
+      WithCount("total_tasks")
+    
+    countResults, err := client.RunAggregationQuery(ctx, aggregationCountQuery)
+    
+    count := countResults["total_tasks"]
+    countValue := count.(*datastorepb.Value)
+    fmt.Printf("Number of results from query: %d\n", countValue.GetIntegerValue())
 
 ##### GQL
 
@@ -233,18 +231,16 @@ The `count()` aggregation takes into account any filters on the query and any `l
 
 ##### Go
 
-``` suppresswarning
-aggregationCountQuery := datastore.NewQuery("Task").
-  FilterField("done", "=", true).
-  NewAggregationQuery().
-  WithCount("total_tasks_done")
-
-countResults, err := client.RunAggregationQuery(ctx, aggregationCountQuery)
-
-count := countResults["total_tasks_done"]
-countValue := count.(*datastorepb.Value)
-fmt.Printf("Number of results from query: %d\n", countValue.GetIntegerValue())
-```
+    aggregationCountQuery := datastore.NewQuery("Task").
+      FilterField("done", "=", true).
+      NewAggregationQuery().
+      WithCount("total_tasks_done")
+    
+    countResults, err := client.RunAggregationQuery(ctx, aggregationCountQuery)
+    
+    count := countResults["total_tasks_done"]
+    countValue := count.(*datastorepb.Value)
+    fmt.Printf("Number of results from query: %d\n", countValue.GetIntegerValue())
 
 ##### GQL
 
@@ -326,18 +322,16 @@ This example shows how to count up to a certain value. You can use this to, for 
 
 ##### Go
 
-``` suppresswarning
-aggregationCountQuery := datastore.NewQuery("Task").
-  Limit(2).
-  NewAggregationQuery().
-  WithCount("at_least")
-
-countResults, err := client.RunAggregationQuery(ctx, aggregationCountQuery)
-
-count := countResults["at_least"]
-countValue := count.(*datastorepb.Value)
-fmt.Printf("We have at least %d tasks\n", countValue.GetIntegerValue())
-```
+    aggregationCountQuery := datastore.NewQuery("Task").
+      Limit(2).
+      NewAggregationQuery().
+      WithCount("at_least")
+    
+    countResults, err := client.RunAggregationQuery(ctx, aggregationCountQuery)
+    
+    count := countResults["at_least"]
+    countValue := count.(*datastorepb.Value)
+    fmt.Printf("We have at least %d tasks\n", countValue.GetIntegerValue())
 
 ##### GQL
 
@@ -440,16 +434,14 @@ Use the `sum()` aggregation to return the total sum of numeric values that match
 
 ##### Go
 
-``` suppresswarning
-aggregationSumQuery := datastore.NewQuery("Task").
-  NewAggregationQuery().
-  WithSum("hours", "total_hours")
-sumResults, err := client.RunAggregationQuery(ctx, aggregationSumQuery)
-
-sum := sumResults["total_hours"]
-sumValue := sum.(*datastorepb.Value)
-fmt.Printf("Sum of results from query: %d\n", sumValue.GetIntegerValue())
-```
+    aggregationSumQuery := datastore.NewQuery("Task").
+      NewAggregationQuery().
+      WithSum("hours", "total_hours")
+    sumResults, err := client.RunAggregationQuery(ctx, aggregationSumQuery)
+    
+    sum := sumResults["total_hours"]
+    sumValue := sum.(*datastorepb.Value)
+    fmt.Printf("Sum of results from query: %d\n", sumValue.GetIntegerValue())
 
 ##### GQL
 
@@ -568,18 +560,16 @@ This query requires an index such as:
 
 ##### Go
 
-``` suppresswarning
-aggregationSumQuery := datastore.NewQuery("Task").
-  FilterField("done", "=", false).
-  FilterField("tag", "=", "house").
-  NewAggregationQuery().
-  WithSum("hours", "total_hours")
-sumResults, err := client.RunAggregationQuery(ctx, aggregationSumQuery)
-
-sum := sumResults["total_hours"]
-sumValue := sum.(*datastorepb.Value)
-fmt.Printf("Sum of results from query: %d\n", sumValue.GetIntegerValue())
-```
+    aggregationSumQuery := datastore.NewQuery("Task").
+      FilterField("done", "=", false).
+      FilterField("tag", "=", "house").
+      NewAggregationQuery().
+      WithSum("hours", "total_hours")
+    sumResults, err := client.RunAggregationQuery(ctx, aggregationSumQuery)
+    
+    sum := sumResults["total_hours"]
+    sumValue := sum.(*datastorepb.Value)
+    fmt.Printf("Sum of results from query: %d\n", sumValue.GetIntegerValue())
 
 ##### GQL
 
@@ -690,16 +680,14 @@ Use the `avg()` aggregation to return the average of numeric values that match a
 
 ##### Go
 
-``` suppresswarning
-aggregationAvgQuery := datastore.NewQuery("Task").
-  NewAggregationQuery().
-  WithAvg("hours", "avg_hours")
-avgResults, err := client.RunAggregationQuery(ctx, aggregationAvgQuery)
-
-avg := avgResults["avg_hours"]
-avgValue := avg.(*datastorepb.Value)
-fmt.Printf("average hours: %f\n", avgValue.GetDoubleValue())
-```
+    aggregationAvgQuery := datastore.NewQuery("Task").
+      NewAggregationQuery().
+      WithAvg("hours", "avg_hours")
+    avgResults, err := client.RunAggregationQuery(ctx, aggregationAvgQuery)
+    
+    avg := avgResults["avg_hours"]
+    avgValue := avg.(*datastorepb.Value)
+    fmt.Printf("average hours: %f\n", avgValue.GetDoubleValue())
 
 ##### GQL
 
@@ -818,18 +806,16 @@ This query requires an index such as:
 
 ##### Go
 
-``` suppresswarning
-aggregationAvgQuery := datastore.NewQuery("Task").
-  FilterField("done", "=", false).
-  FilterField("tag", "=", "house").
-  NewAggregationQuery().
-  WithAvg("hours", "avg_hours")
-avgResults, err := client.RunAggregationQuery(ctx, aggregationAvgQuery)
-
-avg := avgResults["avg_hours"]
-avgValue := avg.(*datastorepb.Value)
-fmt.Printf("average hours: %f\n", avgValue.GetDoubleValue())
-```
+    aggregationAvgQuery := datastore.NewQuery("Task").
+      FilterField("done", "=", false).
+      FilterField("tag", "=", "house").
+      NewAggregationQuery().
+      WithAvg("hours", "avg_hours")
+    avgResults, err := client.RunAggregationQuery(ctx, aggregationAvgQuery)
+    
+    avg := avgResults["avg_hours"]
+    avgValue := avg.(*datastorepb.Value)
+    fmt.Printf("average hours: %f\n", avgValue.GetDoubleValue())
 
 ##### GQL
 
@@ -953,18 +939,16 @@ The following example performs multiple aggregations in a single aggregation que
 
 ##### Go
 
-``` suppresswarning
-aggregationQuery := datastore.NewQuery("Task").
-  NewAggregationQuery().
-  WithCount("total_tasks").
-  WithSum("hours", "total_hours").
-  WithAvg("hours", "avg_hours")
-Results, err := client.RunAggregationQuery(ctx, aggregationQuery)
-
-fmt.Printf("Number of results from query: %d\n", Results["total_tasks"].(*datastorepb.Value).GetIntegerValue())
-fmt.Printf("Sum of results from query: %d\n", Results["total_hours"].(*datastorepb.Value).GetIntegerValue())
-fmt.Printf("Avg of results from query: %f\n", Results["avg_hours"].(*datastorepb.Value).GetDoubleValue())
-```
+    aggregationQuery := datastore.NewQuery("Task").
+      NewAggregationQuery().
+      WithCount("total_tasks").
+      WithSum("hours", "total_hours").
+      WithAvg("hours", "avg_hours")
+    Results, err := client.RunAggregationQuery(ctx, aggregationQuery)
+    
+    fmt.Printf("Number of results from query: %d\n", Results["total_tasks"].(*datastorepb.Value).GetIntegerValue())
+    fmt.Printf("Sum of results from query: %d\n", Results["total_hours"].(*datastorepb.Value).GetIntegerValue())
+    fmt.Printf("Avg of results from query: %f\n", Results["avg_hours"].(*datastorepb.Value).GetDoubleValue())
 
 ##### GQL
 

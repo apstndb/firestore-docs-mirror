@@ -14,9 +14,7 @@ EXAMPLES
 
 To wait a Cloud Firestore admin operation `exampleOperationId` to complete, run:
 
-``` wrap-code
-gcloud alpha firestore operations wait exampleOperationId
-```
+    gcloud alpha firestore operations wait exampleOperationId
 
 POSITIONAL ARGUMENTS
 

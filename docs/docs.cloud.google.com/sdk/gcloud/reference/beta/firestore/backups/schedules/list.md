@@ -10,9 +10,7 @@ EXAMPLES
 
 To list all backup schedules under database testdb.
 
-``` wrap-code
-gcloud beta firestore backups schedules list --database='testdb'
-```
+    gcloud beta firestore backups schedules list --database='testdb'
 
 REQUIRED FLAGS
 
@@ -21,9 +19,7 @@ REQUIRED FLAGS
     
     For example, to operate on database `foo` :
     
-    ``` wrap-code
-    gcloud beta firestore backups schedules list --database='foo'
-    ```
+        gcloud beta firestore backups schedules list --database='foo'
 
 LIST COMMAND FLAGS
 
@@ -48,10 +44,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore backups schedules list
-```
+    gcloud firestore backups schedules list
 
-``` wrap-code
-gcloud alpha firestore backups schedules list
-```
+    gcloud alpha firestore backups schedules list

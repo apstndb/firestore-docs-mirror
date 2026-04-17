@@ -14,15 +14,11 @@ EXAMPLES
 
 To describe a Firestore database with a databaseId `testdb` .
 
-``` wrap-code
-gcloud alpha firestore databases describe --database=testdb
-```
+    gcloud alpha firestore databases describe --database=testdb
 
 If databaseId is not specified, the command will describe information about the `(default)` database.
 
-``` wrap-code
-gcloud alpha firestore databases describe
-```
+    gcloud alpha firestore databases describe
 
 FLAGS
 
@@ -31,9 +27,7 @@ FLAGS
     
     For example, to operate on database `foo` :
     
-    ``` wrap-code
-    gcloud alpha firestore databases describe --database='foo'
-    ```
+        gcloud alpha firestore databases describe --database='foo'
 
 GCLOUD WIDE FLAGS
 
@@ -45,10 +39,6 @@ NOTES
 
 This command is currently in alpha and might change without notice. If this command fails with API permission errors despite specifying the correct project, you might be trying to access an API with an invitation-only early access allowlist. These variants are also available:
 
-``` wrap-code
-gcloud firestore databases describe
-```
+    gcloud firestore databases describe
 
-``` wrap-code
-gcloud beta firestore databases describe
-```
+    gcloud beta firestore databases describe

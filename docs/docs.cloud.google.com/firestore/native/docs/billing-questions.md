@@ -30,9 +30,7 @@ You can view a list of recent export and import operations in the **Firestore Im
 
 Use the [`operations list`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command to see all running and recently completed export and import operations:
 
-``` notranslate
-gcloud firestore operations list
-```
+    gcloud firestore operations list
 
 ### Audit Logs for admin operations
 

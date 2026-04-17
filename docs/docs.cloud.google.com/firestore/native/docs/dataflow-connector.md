@@ -92,13 +92,11 @@ The following example creates documents in the `cities-beam-sample` collection:
 
 The example uses the following arguments to configure and run a pipeline:
 
-``` pretty-print
-GOOGLE_CLOUD_PROJECT=project-id
-REGION=region
-TEMP_LOCATION=gs://temp-bucket/temp/
-NUM_WORKERS=number-workers
-MAX_NUM_WORKERS=max-number-workers
-```
+    GOOGLE_CLOUD_PROJECT=project-id
+    REGION=region
+    TEMP_LOCATION=gs://temp-bucket/temp/
+    NUM_WORKERS=number-workers
+    MAX_NUM_WORKERS=max-number-workers
 
 ### Example `Read` Pipeline
 
@@ -204,13 +202,11 @@ The following example pipeline reads documents from the `cities-beam-sample` col
 
 The example uses the following arguments to configure and run a pipeline:
 
-``` pretty-print
-GOOGLE_CLOUD_PROJECT=project-id
-REGION=region
-TEMP_LOCATION=gs://temp-bucket/temp/
-NUM_WORKERS=number-workers
-MAX_NUM_WORKERS=max-number-workers
-```
+    GOOGLE_CLOUD_PROJECT=project-id
+    REGION=region
+    TEMP_LOCATION=gs://temp-bucket/temp/
+    NUM_WORKERS=number-workers
+    MAX_NUM_WORKERS=max-number-workers
 
 ## Pricing
 

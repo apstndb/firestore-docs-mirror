@@ -10,9 +10,7 @@ EXAMPLES
 
 To time the connection and ping times for a Firestore with MongoDB compatibility database `testdb` :
 
-``` wrap-code
-gcloud beta firestore databases ping --database=testdb
-```
+    gcloud beta firestore databases ping --database=testdb
 
 REQUIRED FLAGS
 
@@ -21,9 +19,7 @@ REQUIRED FLAGS
     
     For example, to operate on database `foo` :
     
-    ``` wrap-code
-    gcloud beta firestore databases ping --database='foo'
-    ```
+        gcloud beta firestore databases ping --database='foo'
 
 GCLOUD WIDE FLAGS
 
@@ -35,10 +31,6 @@ NOTES
 
 This command is currently in beta and might change without notice. These variants are also available:
 
-``` wrap-code
-gcloud firestore databases ping
-```
+    gcloud firestore databases ping
 
-``` wrap-code
-gcloud alpha firestore databases ping
-```
+    gcloud alpha firestore databases ping

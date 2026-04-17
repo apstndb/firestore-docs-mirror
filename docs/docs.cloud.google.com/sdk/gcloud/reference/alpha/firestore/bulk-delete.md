@@ -14,15 +14,11 @@ EXAMPLES
 
 To bulk delete a specific set of collections groups asynchronously, run:
 
-``` wrap-code
-gcloud alpha firestore bulk-delete --collection-ids='specific collection group1','specific collection group2' --async
-```
+    gcloud alpha firestore bulk-delete --collection-ids='specific collection group1','specific collection group2' --async
 
 To bulk delete all collection groups from certain namespace, run:
 
-``` wrap-code
-gcloud alpha firestore bulk-delete --namespace-ids='specific namespace id'
-```
+    gcloud alpha firestore bulk-delete --namespace-ids='specific namespace id'
 
 FLAGS
 
@@ -34,18 +30,14 @@ FLAGS
     
     For example, to operate on only the `customers` and `orders` collections groups:
     
-    ``` wrap-code
-    gcloud alpha firestore bulk-delete --collection-ids='customers','orders'
-    ```
+        gcloud alpha firestore bulk-delete --collection-ids='customers','orders'
 
   - `--database` = `  DATABASE  ` ; default="(default)"  
     The database to operate on. The default value is `(default)` .
     
     For example, to operate on database `foo` :
     
-    ``` wrap-code
-    gcloud alpha firestore bulk-delete --database='foo'
-    ```
+        gcloud alpha firestore bulk-delete --database='foo'
 
   - `--namespace-ids` =\[ `  NAMESPACE_IDS  ` ,…\]  
     List specifying which namespaces will be included in the operation. When omitted, all namespaces are included.
@@ -54,9 +46,7 @@ FLAGS
     
     For example, to operate on only the `customers` and `orders` namespaces:
     
-    ``` wrap-code
-    gcloud alpha firestore bulk-delete --namespaces-ids='customers','orders'
-    ```
+        gcloud alpha firestore bulk-delete --namespaces-ids='customers','orders'
 
 GCLOUD WIDE FLAGS
 
@@ -68,10 +58,6 @@ NOTES
 
 This command is currently in alpha and might change without notice. If this command fails with API permission errors despite specifying the correct project, you might be trying to access an API with an invitation-only early access allowlist. These variants are also available:
 
-``` wrap-code
-gcloud firestore bulk-delete
-```
+    gcloud firestore bulk-delete
 
-``` wrap-code
-gcloud beta firestore bulk-delete
-```
+    gcloud beta firestore bulk-delete

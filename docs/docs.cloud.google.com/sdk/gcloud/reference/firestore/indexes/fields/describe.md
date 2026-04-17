@@ -14,19 +14,13 @@ EXAMPLES
 
 The following command describes the database-wide default index settings:
 
-``` wrap-code
-gcloud firestore indexes fields describe
-```
+    gcloud firestore indexes fields describe
 
-``` wrap-code
-gcloud firestore indexes fields describe --database=(default)
-```
+    gcloud firestore indexes fields describe --database=(default)
 
 The following command describes the index configuration of the `timestamp` field in the `Events` collection group.
 
-``` wrap-code
-gcloud firestore indexes fields describe timestamp --collection-group=Events
-```
+    gcloud firestore indexes fields describe timestamp --collection-group=Events
 
 POSITIONAL ARGUMENTS
 
@@ -82,10 +76,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha firestore indexes fields describe
-```
+    gcloud alpha firestore indexes fields describe
 
-``` wrap-code
-gcloud beta firestore indexes fields describe
-```
+    gcloud beta firestore indexes fields describe

@@ -43,10 +43,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha firestore databases
-```
+    gcloud alpha firestore databases
 
-``` wrap-code
-gcloud beta firestore databases
-```
+    gcloud beta firestore databases

@@ -189,66 +189,58 @@ Each event includes [data attributes](https://docs.cloud.google.com/eventarc/doc
 
 ##### Java
 
-``` suppresswarning
-logger.info("Function triggered by event on: " + event.getSource());
-logger.info("Event type: " + event.getType());
-logger.info("Event time " + event.getTime());
-logger.info("Event project: " + event.getExtension("project"));
-logger.info("Event location: " + event.getExtension("location"));
-logger.info("Database name: " + event.getExtension("database"));
-logger.info("Database document: " + event.getExtension("document"));
-// For withAuthContext events
-logger.info("Auth information: " + event.getExtension("authid"));
-logger.info("Auth information: " + event.getExtension("authtype"));
-```
+    logger.info("Function triggered by event on: " + event.getSource());
+    logger.info("Event type: " + event.getType());
+    logger.info("Event time " + event.getTime());
+    logger.info("Event project: " + event.getExtension("project"));
+    logger.info("Event location: " + event.getExtension("location"));
+    logger.info("Database name: " + event.getExtension("database"));
+    logger.info("Database document: " + event.getExtension("document"));
+    // For withAuthContext events
+    logger.info("Auth information: " + event.getExtension("authid"));
+    logger.info("Auth information: " + event.getExtension("authtype"));
 
 ##### Node.js
 
-``` suppresswarning
-console.log(`Function triggered by event on: ${cloudEvent.source}`);
-console.log(`Event type: ${cloudEvent.type}`);
-console.log(`Event time: ${cloudEvent.time}`);
-console.log(`Event project: ${cloudEvent.project}`);
-console.log(`Event location: ${cloudEvent.location}`);
-console.log(`Database name: ${cloudEvent.database}`);
-console.log(`Document name: ${cloudEvent.document}`);
-// For withAuthContext events
-console.log(`Auth information: ${cloudEvent.authid}`);
-console.log(`Auth information: ${cloudEvent.authtype}`);
-```
+    console.log(`Function triggered by event on: ${cloudEvent.source}`);
+    console.log(`Event type: ${cloudEvent.type}`);
+    console.log(`Event time: ${cloudEvent.time}`);
+    console.log(`Event project: ${cloudEvent.project}`);
+    console.log(`Event location: ${cloudEvent.location}`);
+    console.log(`Database name: ${cloudEvent.database}`);
+    console.log(`Document name: ${cloudEvent.document}`);
+    // For withAuthContext events
+    console.log(`Auth information: ${cloudEvent.authid}`);
+    console.log(`Auth information: ${cloudEvent.authtype}`);
 
 ##### Python
 
-``` suppresswarning
-print(f"Function triggered by change to: {cloud_event['source']}")
-print(f"Event type: {cloud_event['type']}")
-print(f"Event time: {cloud_event['time']}")
-print(f"Event project: {cloud_event['project']}")
-print(f"Location: {cloud_event['location']}")
-print(f"Database name: {cloud_event['database']}")
-print(f"Document: {cloud_event['document']}")
-// For withAuthContext events
-print(f"Auth information: {cloud_event['authid']}")
-print(f"Auth information: {cloud_event['authtype']}")
-```
+    print(f"Function triggered by change to: {cloud_event['source']}")
+    print(f"Event type: {cloud_event['type']}")
+    print(f"Event time: {cloud_event['time']}")
+    print(f"Event project: {cloud_event['project']}")
+    print(f"Location: {cloud_event['location']}")
+    print(f"Database name: {cloud_event['database']}")
+    print(f"Document: {cloud_event['document']}")
+    // For withAuthContext events
+    print(f"Auth information: {cloud_event['authid']}")
+    print(f"Auth information: {cloud_event['authtype']}")
 
 ## Event structures
 
 This trigger invokes your service with an event similar to:
 
-``` suppresswarning notranslate
-{
-    "oldValue": { // Update and Delete operations only
-        A Document object containing a pre-operation document snapshot
-    },
-    "updateMask": { // Update operations only
-        A DocumentMask object that lists changed fields.
-    },
-    "value": {
-        // A Document object containing a post-operation document snapshot
+    {
+        "oldValue": { // Update and Delete operations only
+            A Document object containing a pre-operation document snapshot
+        },
+        "updateMask": { // Update operations only
+            A DocumentMask object that lists changed fields.
+        },
+        "value": {
+            // A Document object containing a post-operation document snapshot
+        }
     }
-}
-```
 
 Each `Document` object contains one or more `Value` objects. See the [`Value` documentation](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/Value) for type references.
 

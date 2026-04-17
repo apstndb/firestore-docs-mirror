@@ -14,15 +14,11 @@ EXAMPLES
 
 To see information on the operation with id `exampleId` , run:
 
-``` wrap-code
-gcloud datastore operations describe exampleId
-```
+    gcloud datastore operations describe exampleId
 
 or
 
-``` wrap-code
-gcloud datastore operations describe projects/your-project-id/operations/exampleId
-```
+    gcloud datastore operations describe projects/your-project-id/operations/exampleId
 
 POSITIONAL ARGUMENTS
 
@@ -45,10 +41,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha datastore operations describe
-```
+    gcloud alpha datastore operations describe
 
-``` wrap-code
-gcloud beta datastore operations describe
-```
+    gcloud beta datastore operations describe

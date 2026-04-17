@@ -16,15 +16,11 @@ EXAMPLES
 
 The following command sets the `expiry` field of the `Events` collection group (kind) to be the TTL field:
 
-``` wrap-code
-gcloud firestore fields ttls update expiry --collection-group=Events --enable-ttl
-```
+    gcloud firestore fields ttls update expiry --collection-group=Events --enable-ttl
 
 The following command disables the `expiry` field so it is no longer the TTL for the `Events` collection group (kind):
 
-``` wrap-code
-gcloud firestore fields ttls update expiry --collection-group=Events --disable-ttl
-```
+    gcloud firestore fields ttls update expiry --collection-group=Events --disable-ttl
 
 POSITIONAL ARGUMENTS
 
@@ -88,10 +84,6 @@ NOTES
 
 These variants are also available:
 
-``` wrap-code
-gcloud alpha firestore fields ttls update
-```
+    gcloud alpha firestore fields ttls update
 
-``` wrap-code
-gcloud beta firestore fields ttls update
-```
+    gcloud beta firestore fields ttls update
