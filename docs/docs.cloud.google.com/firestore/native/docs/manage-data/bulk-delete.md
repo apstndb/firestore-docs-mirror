@@ -10,7 +10,7 @@ This page describes how to delete documents in bulk using the managed bulk delet
 
 Before you can use the managed bulk delete service, you must complete the following tasks:
 
-1.  [Enable billing for your Google Cloud project.](https://cloud.google.com/billing/docs/how-to/modify-project) Only Google Cloud projects with billing enabled can use the bulk delete functionality.
+1.  [For bulk document deletion, enable billing for your Google Cloud project.](https://cloud.google.com/billing/docs/how-to/modify-project) Only Google Cloud projects with billing enabled can use the bulk delete functionality.
 
 2.  Make sure your account has the necessary permissions for Firestore. **If you are the project owner, your account has the required permissions.** Otherwise, the following roles grant the necessary permissions for bulk delete operations:
     

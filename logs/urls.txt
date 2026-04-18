@@ -548,6 +548,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/backups
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/bulk-data-loading
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/bulk-delete
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/change-streams
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/cmek
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect

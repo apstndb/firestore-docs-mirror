@@ -141,6 +141,8 @@ Replace the following:
 
 To delete an index, complete the following steps:
 
+> **Note:** Dropping an entire collection using the `drop()` command also deletes all associated indexes for that collection. Drop collection is in **Preview** .
+
 ##### MongoDB API
 
 Use the [`dropIndex()`](https://www.mongodb.com/docs/manual/reference/method/db.collection.dropIndex/) method to delete an index. For example:

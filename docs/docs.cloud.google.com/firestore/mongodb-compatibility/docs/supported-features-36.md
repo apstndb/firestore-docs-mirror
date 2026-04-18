@@ -607,7 +607,7 @@ Firestore with MongoDB compatibility supports the following administrative comma
 </tr>
 <tr class="odd">
 <td><code dir="ltr" translate="no">drop</code></td>
-<td>No</td>
+<td>Yes</td>
 </tr>
 <tr class="even">
 <td><code dir="ltr" translate="no">dropDatabase</code></td>

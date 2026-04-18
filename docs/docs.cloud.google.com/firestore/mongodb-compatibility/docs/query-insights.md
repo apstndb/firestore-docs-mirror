@@ -60,18 +60,6 @@ You might also be able to get this permission with [custom roles](https://docs.c
 
 ## View Query insights
 
-To view query insights for a Firestore with MongoDB compatibility database, open the database **Query insights** pane in the Google Cloud console.
-
-1.  In the Google Cloud console, go to the **Databases** page.
-
-2.  From the list of databases, select a database.
-
-3.  In the navigation menu, click **Query insights** .
-    
-    ![The Firestore with MongoDB compatibility database usage dashboard in the Google Cloud console.](https://docs.cloud.google.com/static/firestore/mongodb-compatibility/docs/images/firestore-query-insights.png)
-    
-    Use the **Load type** drop-down to find the top queries by either latency or number of read operations.
-
 ## What's next
 
   - [Monitor usage](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard)

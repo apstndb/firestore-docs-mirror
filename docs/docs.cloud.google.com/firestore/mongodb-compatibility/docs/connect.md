@@ -53,7 +53,11 @@ Follow these steps to create a user credential for your database and connect to 
 
 ### Before you begin
 
-To get the permissions that you need to create a user, ask your administrator to grant you the [userCredsAdmin](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.userCredsAdmin) ( `roles/datastore.userCredsAdmin` ) IAM role on your database. For more information about granting roles, see [Manage access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
+To get the permissions that you need to create a user, ask your administrator to grant you the following IAM roles on your database:
+
+  - All: [userCredsAdmin](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.userCredsAdmin) ( `roles/datastore.userCredsAdmin` )
+
+For more information about granting roles, see [Manage access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
 
 You might also be able to get the required permissions through [custom roles](https://docs.cloud.google.com/iam/docs/creating-custom-roles) or other [predefined roles](https://docs.cloud.google.com/iam/docs/roles-overview#predefined) .
 
@@ -145,8 +149,8 @@ Provision user credentials and an IAM policy:
     
     public class FirestoreUserCredsExample {
       /**
-       * Provision user credentials and configure an IAM policy to allow SCRAM authentication into the
-       * specified Firestore with Mongo Compatibility database.
+       *   Provision user credentials and configure an IAM policy to allow SCRAM authentication into the
+       *   specified Firestore with Mongo Compatibility database.
        */
       private static void provisionFirestoreUserCredsAndIAM(
           String projectId, String databaseId, String userName) throws Exception {
@@ -242,7 +246,6 @@ Provision user credentials and an IAM policy:
     from google.iam.v1 import policy_pb2
     from google.type import expr_pb2
     
-    
     def create_user_creds(project_id: str, database_id: str, user_name: str):
       """Provision new user credentials using the FirestoreAdminClient."""
       client = FirestoreAdminClient()
@@ -252,7 +255,6 @@ Provision user credentials and an IAM policy:
       )
       response = client.create_user_creds(request)
       return response
-    
     
     def update_iam_policy_for_user_creds(
         project_id: str, database_id: str, user_name: str, user_creds
@@ -290,7 +292,6 @@ Provision user credentials and an IAM policy:
     
       final_policy = client.set_iam_policy(set_policy_request)
       print(f'Policy updated successfully {final_policy}')
-    
     
     def provision_firestore_user_creds_and_iam(
         project_id: str, database_id: str, user_name: str
@@ -356,13 +357,12 @@ The following code sample demonstrates how to connect:
         ).build()
       ).getDatabase("DATABASE_ID")
     
-    
     /**
-     * Creates a connection to a Firestore with MongoDB Compatibility database.
-     * @param databaseUid The uid of the database to connect to as a string. For example: f116f93a-519c-208a-9a72-3ef6c9a1f081
-     * @param locationId The location of the database to connect to, for example: nam5, us-central1, us-east4 etc...
-     * @param environment Determines whether to try and fetch an authentication credential from the
-     * Compute Engine VM metadata service or whether to call gcloud.
+     *   Creates a connection to a Firestore with MongoDB Compatibility database.
+     *   @param databaseUid The uid of the database to connect to as a string. For example: f116f93a-519c-208a-9a72-3ef6c9a1f081
+     *   @param locationId The location of the database to connect to, for example: nam5, us-central1, us-east4 etc...
+     *   @param environment Determines whether to try and fetch an authentication credential from the
+     *   Compute Engine VM metadata service or whether to call gcloud.
      */
     private static MongoClientSettings.Builder clientSettings(
       String databaseUid: String
@@ -413,7 +413,7 @@ You can authenticate and connect to your database using a Compute Engine service
 Configure a user-managed service account for your VM:
 
   - To configure service account during VM creation, see [Create a VM that uses a user-managed service account](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances) .
-  - To configure service account on an existing VM, see [Change the attached service account](https://cloud.google.com/compute/docs/instances/change-service-account) .
+      - To configure service account on an existing VM, see [Change the attached service account](https://cloud.google.com/compute/docs/instances/change-service-account) .
 
 See the instructions in the [Configure credentials](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect#configure-creds) sections to complete the IAM policy configuration for your Compute Engine service account.
 
@@ -424,7 +424,7 @@ You can authenticate and connect to your database using a Cloud Run service acco
 #### Before you begin
 
   - To configure the service account for Cloud Run, see [Configure service identity](https://cloud.google.com/run/docs/configuring/services/service-identity#configure-service-identity)
-  - To determine the service account that is already associated with your Cloud Run service, see [gcloud run services describe](https://cloud.google.com/sdk/gcloud/reference/run/services/describe)
+      - To determine the service account that is already associated with your Cloud Run service, see [gcloud run services describe](https://cloud.google.com/sdk/gcloud/reference/run/services/describe)
 
 See the instructions in the [Configure credentials](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect#configure-creds) sections to complete the IAM policy configuration for your Cloud Run service account.
 

@@ -98,6 +98,10 @@ The same permissions that were required by the call that created the cursor.
 
 `datastore.entities.create`
 
+`DropCollection`
+
+`datastore.schemas.delete`
+
 `projects.databases.indexes`
 
 [`create`](https://cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.indexes/create)

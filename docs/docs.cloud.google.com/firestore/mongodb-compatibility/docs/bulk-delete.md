@@ -2,6 +2,8 @@
 
 Use the managed bulk delete service to delete data from your database. This feature supports deletion against one or more collection groups.
 
+> **Note:** For Firestore Enterprise edition databases with MongoDB compatibility, use the MongoDB `drop()` command as the primary way to delete an entire collection. Drop collection is in **Preview** .
+
 This page describes how to delete documents in bulk using the managed bulk delete service. The Firestore with MongoDB compatibility managed bulk delete service is available through the [`gcloud`](https://cloud.google.com/sdk/gcloud/) command-line tool and the Firestore [REST API](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/bulkDeleteDocuments) .
 
 > **Caution:** Bulk deleting data from Firestore with MongoDB compatibility incurs one delete operation per document deleted and some read operations based on a fraction of total documents read. However, these operations don't appear in the usage section of the console. Make sure that you understand this before issuing bulk deletes to avoid billed charges.
@@ -10,7 +12,7 @@ This page describes how to delete documents in bulk using the managed bulk delet
 
 Before you can use the managed bulk delete service, you must complete the following tasks:
 
-1.  [Enable billing for your Google Cloud project.](https://cloud.google.com/billing/docs/how-to/modify-project) Only Google Cloud projects with billing enabled can use the bulk delete functionality.
+1.  [For bulk document deletion, enable billing for your Google Cloud project.](https://cloud.google.com/billing/docs/how-to/modify-project) Only Google Cloud projects with billing enabled can use the bulk delete functionality.
 
 2.  Make sure your account has the necessary permissions for Firestore with MongoDB compatibility. **If you are the project owner, your account has the required permissions.** Otherwise, the following roles grant the necessary permissions for bulk delete operations:
     

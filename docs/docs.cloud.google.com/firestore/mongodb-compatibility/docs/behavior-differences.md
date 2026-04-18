@@ -335,8 +335,23 @@ The following behavior differences apply to specific commands.
 <br />
 <code dir="ltr" translate="no">capped</code> must be false if provided.</td>
 </tr>
+<tr class="odd">
+<td><p><code dir="ltr" translate="no">drop</code></p></td>
+<td><p>(none)</p></td>
+<td></td>
+</tr>
 </tbody>
 </table>
+
+### Drop collection limitations
+
+> **Note:** Drop collection is in **Preview** .
+
+The following limitations apply when you drop a collection:
+
+  - **Index recreation:** You cannot create the same index configuration immediately after a drop. You must wait for the background deletion to finish.
+  - **Size limit:** Dropping large collections may result in connection timeouts. Increase the connection deadline if you see timeouts. You can use [bulk delete](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/bulk-delete) as an alternative.
+  - **Events:** Drop collection events are not generated for Eventarc when using the `drop` command.
 
 ## What's next
 
