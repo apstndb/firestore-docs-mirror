@@ -1,10 +1,8 @@
 # Use the Firestore remote MCP server
 
-> **Preview**
-> 
-> This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) , and the [Additional Terms for Generative AI Preview Products](https://cloud.google.com/trustedtester/aitos) . Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+This document shows you how to use the Firestore remote Model Context Protocol (MCP) server to connect with AI applications including Gemini CLI, ChatGPT, Claude, and custom applications you are developing. The Firestore remote MCP server lets you interact with documents stored in a Firestore database from you AI application. .
 
-This document describes how to use the Firestore remote Model Context Protocol (MCP) server to connect to Firestore from AI applications such as Gemini CLI, Claude, or in AI applications that you're developing. The Firestore remote MCP server lets you interact with documents stored in a Firestore database from you AI application. .
+The Firestore remote MCP server is enabled when you enable the Firestore API.
 
 [Model Context Protocol](https://modelcontextprotocol.io/docs/getting-started/intro) (MCP) standardizes how large language models (LLMs) and AI applications or agents connect to external data sources. MCP servers let you use their tools, resources, and prompts to take actions and get updated data from their backend service.
 
@@ -47,7 +45,7 @@ You might also be able to get these permissions with [custom roles](https://docs
 
 ## Authentication and authorization
 
-Firestore MCP servers use the [OAuth 2.0](https://developers.google.com/identity/protocols/oauth2) protocol with [Identity and Access Management (IAM)](https://docs.cloud.google.com/iam/docs/overview) for authentication and authorization. All [Google Cloud identities](https://docs.cloud.google.com/docs/authentication/identity-products) are supported for authentication to MCP servers.
+The Firestore remote MCP server uses the [OAuth 2.0](https://developers.google.com/identity/protocols/oauth2) protocol with [Identity and Access Management (IAM)](https://docs.cloud.google.com/iam/docs/overview) for authentication and authorization. All [Google Cloud identities](https://docs.cloud.google.com/docs/authentication/identity-products) are supported for authentication to MCP servers.
 
 We recommend creating a separate identity for agents using MCP tools so that access to resources can be controlled and monitored. For more information on authentication, see [Authenticate to MCP servers](https://docs.cloud.google.com/mcp/authenticate-mcp) .
 
@@ -65,7 +63,7 @@ Additional scopes might be required on the resources accessed during a tool call
 
 ## Configure an MCP client to use the Firestore MCP server
 
-AI applications and agents, such as Claude or Gemini CLI, can instantiate an MCP client that connects to a single MCP server. An AI application can have multiple clients that connect to different MCP servers. To connect to a remote MCP server, the MCP client must know at a minimum the URL of the remote MCP server.
+AI applications and agents, such as Claude or Gemini CLI, can instantiate an MCP client that connects to a single MCP server. An AI application can have multiple clients that connect to different MCP servers. To connect to a remote MCP server, the MCP client must know the remote MCP server's URL.
 
 In your AI application, look for a way to connect to a remote MCP server. You are prompted to enter details about the server, such as its name and URL.
 
@@ -74,7 +72,7 @@ For the Firestore MCP server, enter the following as required:
   - **Server name** : Firestore MCP server
   - **Server URL** or **Endpoint** : https://firestore.googleapis.com/mcp
   - **Transport** : HTTP
-  - **Authentication details** : Depending on how you want to authenticate, you can enter your Google Cloud credentials, your OAuth Client ID and secret, or an agent identity and credentials. For more information on authentication, see [Authenticate to MCP servers](https://docs.cloud.google.com/mcp/authenticate-mcp) .
+  - **Authentication details** : Depending on how you want to authenticate, you can enter your Google Cloud credentials, your OAuth Client ID and secret, or an agent identity and credentials. For more information about authentication, see [Authenticate to MCP servers](https://docs.cloud.google.com/mcp/authenticate-mcp) .
   - **OAuth scope** : the [OAuth 2.0 scope](https://developers.google.com/identity/protocols/oauth2/scopes) that you want to use when connecting to the Firestore MCP server.
 
 For host specific guidance, see the following:
@@ -115,10 +113,13 @@ The following are sample use cases and prompts for the Firestore MCP server:
   - "List all books under the book collection."
   - "List all collections IDs under the root of the "my-database" Firestore database."
   - "Delete the document 3VyGFIAPRHUNeuH5h2eb under the book collection."
+  - "List all databases under the project."
+  - "Create a Firestore Enterprise database with MongoDB compatibility mode in nam5."
+  - "List all indexes entries for collection group users."
 
 ## Optional security and safety configurations
 
-MCP introduces new security risks and considerations due to the wide variety of actions that can be taken with MCP tools. To minimize and manage these risks, Google Cloud offers defaults and customizable policies to control the use of MCP tools in your Google Cloud organization or project.
+MCP introduces new security risks and considerations due to the wide variety of actions that you can do with the MCP tools. To minimize and manage these risks, Google Cloud offers default settings and customizable policies to control the use of MCP tools in your Google Cloud organization or project.
 
 For more information about MCP security and governance, see [AI security and safety](https://docs.cloud.google.com/mcp/ai-security-safety) .
 

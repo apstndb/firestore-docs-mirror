@@ -100,7 +100,7 @@ The following tables show the limits that apply to Firestore with MongoDB compat
 </tr>
 <tr class="odd">
 <td>Maximum size for a document</td>
-<td>4 MiB</td>
+<td>16 MiB</td>
 </tr>
 <tr class="even">
 <td>Constraints on field names</td>

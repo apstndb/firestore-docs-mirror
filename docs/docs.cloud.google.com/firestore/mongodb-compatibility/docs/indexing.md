@@ -137,6 +137,278 @@ Replace the following:
   - ORDER : One of `ASCENDING` or `DESCENDING`
   - DENSITY : One of `SPARSE_ANY` or `DENSE`
 
+## Create a text index
+
+Create a text index if you want to perform a text search for specific strings within a collection.
+
+To create a text index for your collection, complete the following steps:
+
+### MongoDB API
+
+Use the [`createIndex()`](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/) method to create a text index. In the following example, when a document is written to the `cities` collection with the `country` , or `food` fields populated, these fields are indexed for searching purposes.
+
+    db.cities.createIndex({"country": "text", "food": "text"})
+
+A field must be a string or an array of strings to be indexed. Array indexes are not search-indexed. As a result, indexing `a.1.b` will index `something` in `{a: {1: {b: something}}}` , but not in `{a: [one, {b: something}]}` .
+
+You can also create indexes with `db.runCommand()` . You can have only one text index per collection, but you can create multiple indexes of different types in one `db.runCommand()` . The following example uses `db.runCommand()` to create a text index:
+
+    db.runCommand({
+      createIndexes: "cities",
+      indexes: [
+        {
+          key: { "country": "text", "food": "text" },
+          name: "country_text_food_text"
+        }
+      ]
+    })
+
+### Specify a default language
+
+You can also optionally specify a default language, or a field path in your document that will contain the default language.
+
+In the following example, `myLanguageField` is specified as the `language_override` . When a document in the `cities` collection contains a field named `myLanguageField` , the value of that field is used to determine the language for indexing the `country` field for that specific document. That value overrides the default language of `french` .
+
+    db.cities.createIndex({"country": "text"}, {"default_language": "french", "language_override": "myLanguageField"})
+
+  - You can enter a language as either its long form name ( `english` ) or its two-letter ISO language code ( `en` ).
+  - If the default language is left unset, then Firestore defaults to English.
+  - The language override field must be a top-level field. If left unset, the language override field defaults to `language` .
+  - If you set the default language to the `null` character, then Firestore with MongoDB compatibility doesn't use any field as a language override.
+
+#### Expand for a list of supported languages
+
+| Language Code | Language Name        |
+| ------------- | -------------------- |
+| "und"         | Autodetect           |
+| "af"          | Afrikaans            |
+| "ak"          | Akan                 |
+| "sq"          | Albanian             |
+| "am"          | Amharic              |
+| "ar"          | Arabic               |
+| "hy"          | Armenian             |
+| "az"          | Azerbaijani          |
+| "eu"          | Basque               |
+| "be"          | Belarusian           |
+| "bn"          | Bangla               |
+| "bs"          | Bosnian              |
+| "bg"          | Bulgarian            |
+| "my"          | Burmese              |
+| "ca"          | Catalan              |
+| "ceb"         | Cebuano              |
+| "chr"         | Cherokee             |
+| "zh"          | Chinese              |
+| "zh-Hant"     | Chinese\_Traditional |
+| "hr"          | Croatian             |
+| "cs"          | Czech                |
+| "da"          | Danish               |
+| "nl"          | Dutch                |
+| "en"          | English              |
+| "eo"          | Esperanto            |
+| "et"          | Estonian             |
+| "fil"         | Filipino             |
+| "fi"          | Finnish              |
+| "fr"          | French               |
+| "gl"          | Galician             |
+| "ka"          | Georgian             |
+| "de"          | German               |
+| "el"          | Greek                |
+| "gu"          | Gujarati             |
+| "ht"          | Haitian\_Creole      |
+| "ha"          | Hausa                |
+| "haw"         | Hawaiian             |
+| "iw"          | Hebrew               |
+| "hi"          | Hindi                |
+| "hmn"         | Hmong                |
+| "hu"          | Hungarian            |
+| "is"          | Icelandic            |
+| "ig"          | Igbo                 |
+| "id"          | Indonesian           |
+| "ga"          | Irish                |
+| "it"          | Italian              |
+| "ja"          | Japanese             |
+| "jv"          | Javanese             |
+| "kn"          | Kannada              |
+| "kk"          | Kazakh               |
+| "km"          | Khmer                |
+| "ko"          | Korean               |
+| "lo"          | Lao                  |
+| "la"          | Latin                |
+| "lv"          | Latvian              |
+| "lt"          | Lithuanian           |
+| "lb"          | Luxembourgish        |
+| "mk"          | Macedonian           |
+| "mg"          | Malagasy             |
+| "ms"          | Malay                |
+| "ml"          | Malayalam            |
+| "mt"          | Maltese              |
+| "mi"          | Maori                |
+| "mr"          | Marathi              |
+| "mfe"         | Morisyen             |
+| "mn"          | Mongolian            |
+| "sr-ME"       | Serbian\_Montenegro  |
+| "ne"          | Nepali               |
+| "no"          | Norwegian            |
+| "ny"          | Nyanja               |
+| "or"          | Odia                 |
+| "fa"          | Persian              |
+| "pl"          | Polish               |
+| "pt-BR"       | Portuguese\_Brazil   |
+| "pt-PT"       | Portuguese\_Portugal |
+| "pa"          | Punjabi              |
+| "ro"          | Romanian             |
+| "ru"          | Russian              |
+| "gd"          | Scottish Gaelic      |
+| "sr"          | Serbian              |
+| "st"          | Southern Sotho       |
+| "si"          | Sinhala              |
+| "sk"          | Slovak               |
+| "sl"          | Slovenian            |
+| "so"          | Somali               |
+| "es"          | Spanish              |
+| "su"          | Sundanese            |
+| "sw"          | Swahili              |
+| "sv"          | Swedish              |
+| "tg"          | Tajik                |
+| "ta"          | Tamil                |
+| "te"          | Telugu               |
+| "th"          | Thai                 |
+| "tr"          | Turkish              |
+| "uk"          | Ukrainian            |
+| "ur"          | Urdu                 |
+| "uz"          | Uzbek                |
+| "vi"          | Vietnamese           |
+| "cy"          | Welsh                |
+| "yi"          | Yiddish              |
+| "yo"          | Yoruba               |
+| "zu"          | Zulu                 |
+
+### Partition a text index
+
+You can also partition your index using a field so that you can filter queries by a specific field value. This configuration lets you run more peformant queries if you always need a specific field filtered in the index you're querying.
+
+To create an index with a partition, configure the `firestoreOptions` field as follows:
+
+    db.runCommand({
+      createIndexes: "cities",
+      indexes: [
+        {
+          key: { "country": "text", "food": "text"},
+          name: "country_text_food_text"
+          firestoreOptions: {"customPartitionFields": ["PARTITIONED_FIELD"]
+        }
+      ]
+    })
+
+Where:
+
+  - `  PARTITIONED_FIELD  ` is the name of the field used for the partition. This value must be a string and must refer to a top-level field. When you run a query against a partitioned index, you can filter the results based on a value of this field. For example, you could partition your index using `city` . If a `city` field is defined in your text index, then users can query against a specific city.
+    
+    The partition must be only one field. If you partition an index, then you can run only queries where the partitioned field is specified.
+
+**Limitations**
+
+  - You can create only one index per request.
+  - [Audit logs](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/audit-logging) for index creation with the MongoDB API use the method name `google.firestore.admin.v1.FirestoreAdmin.CreateIndex` .
+  - For supported index options, see [indexes and index properties](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80#indexes_and_index_properties) .
+
+### Google Cloud console
+
+1.  In the **Google Cloud console** , go to the **Databases** page.
+
+2.  Select a database from the list of databases.
+
+3.  In the navigation menu, click **Indexes** .
+
+4.  Click **Create Index** , and then click **Create search index** .
+
+5.  (Optional) Enter a name for the index.
+
+6.  Go to **Search Type** and select **Text** .
+
+7.  Enter a **Collection ID** .
+
+8.  Enter at least one **Field path** .
+
+9.  Optional: Specify a default language.
+    
+    For example, you set the language override path to `myLanguageField` . When a document in your collection contains a field named `myLanguageField` , the value of that field is used to determine the language for indexing the fields defined within your index. That value overrides the default language of your index.
+
+10. Click **Create** .
+
+11. Your new index is displayed in the list of indexes and MongoDB compatible operations begins creating your index. When your index is created, you will see a green check mark next to the index. If index is not created, see [Index building errors](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview#index-building-errors) for possible causes.
+
+## Create a 2dsphere index
+
+Create a 2dsphere index to perform geospatial queries and search for documents that exist within a certain range from a specific longitude and latitude.
+
+To create a 2dsphere index for your collection, complete the following steps:
+
+### MongoDB API
+
+Use the [`createIndex()`](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/) method to create an index. For example:
+
+    db.restaurants.createIndex({"location" : "2dsphere", "region": "2dsphere"})
+
+Index creation with `db.runCommand()` is also supported with at most one index:
+
+    db.runCommand({
+      createIndexes: "restaurants",
+      indexes: [
+        {
+          key: { "location": "2dsphere", "region": "2dsphere" },
+          name: "location_2dsphere_region_2dsphere"
+        }
+      ]
+    })
+
+### Partition a 2dsphere index
+
+You can also partition your index using a field so that you can filter queries by a specific field value. This configuration lets you run more peformant queries if you always need a specific field filtered in the index you're querying.
+
+To create an index with a partition, configure the `firestoreOptions` field as follows:
+
+    db.runCommand({
+      createIndexes: "restaurants",
+      indexes: [
+        {
+          key: { "location": "2dsphere", "region": "2dsphere" },
+          name: "location_2dsphere_region_2dsphere"
+          firestoreOptions: {"customPartitionFields": ["PARTITIONED_FIELD"]
+        }
+      ]
+    })
+
+Where:
+
+  - `  PARTITIONED_FIELD  ` is the name of the field used for the partition. When you run a query against a partitioned index, you can filter the results based on a value of this field. For example, if your index has a `region` field for regional locations, you could partition your index using `region` so that users can query against restaurants in their region.
+    
+    If you partition an index, then you can only run queries where the partitioned field is specified.
+
+**Limitations**
+
+  - You can create only one index per request.
+  - [Audit logs](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/audit-logging) for index creation with the MongoDB API use the method name `google.firestore.admin.v1.FirestoreAdmin.CreateIndex` .
+  - For supported index options, see [indexes and index properties](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80#indexes_and_index_properties) .
+
+### Google Cloud console
+
+1.  In the **Google Cloud console** , go to the **Databases** page.
+
+2.  Select a database from the list of databases.
+
+3.  In the navigation menu, click **Indexes** .
+
+4.  Click **Create Index** , and then click **Create search index** .
+
+5.  Enter a **Collection ID** .
+
+6.  Go to **Search Type** and select **Geo (2dsphere)** .
+
+7.  Click **Create** .
+
+8.  Your new index is displayed in the list of indexes and MongoDB compatible operations begins creating your index. When your index is created, you will see a green check mark next to the index. If index is not created, see [Index building errors](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview#index-building-errors) for possible causes.
+
 ## Delete an index
 
 To delete an index, complete the following steps:

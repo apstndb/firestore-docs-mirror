@@ -1,9 +1,5 @@
 # Get started with Pipeline Queries
 
-> **Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
-> 
-> This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
-
 ## Background
 
 Pipeline operations provide a new query interface for Firestore that supports advanced query functionality and complex expressions. It introduces many new functions, including `min(...)` , `max(...)` , `substring(...)` , `regex_match(...)` , and `array_contains_all(...)` , and stages to be able to perform complex transformations.
@@ -21,7 +17,7 @@ The following sections give an overview of the syntax for Pipeline operations.
 
 ### Concepts
 
-One notable difference with Pipeline operations is the introduction of explicit "stage" ordering. This makes it possible to express more complex queries. However, it is a notable deviation from the existing query interface using Core operations. where the ordering of stages was implied. Consider the following Pipeline operations example:
+One notable difference with Pipeline operations is the introduction of explicit "stage" ordering. This makes it possible to express more complex queries. However, it is a notable deviation from the existing query interface using Core operations where the ordering of stages was implied. Consider the following Pipeline operations example:
 
 ##### Node.js
 
@@ -37,7 +33,7 @@ One notable difference with Pipeline operations is the introduction of explicit 
     
 ```
 
-### Web
+### Web version 9
 
     const pipeline = db.pipeline()
       // Step 1: Start a query with collection scope
@@ -125,13 +121,17 @@ Pipeline operations have a very familiar syntax coming from existing Firestore q
 
 ### Structure
 
-There are a few terms that are important to understand when creating Pipeline operations: stages, expressions, and functions.
+There are a few terms that are important to understand when creating Pipeline operations: stages, expressions, and functions and subquery wrappers.
 
 ![Example demonstrating stages and expressions in a query](https://docs.cloud.google.com//firestore/native/docs/images/pipeline-queries/pipeline_query_stage_expression.jpg)
 
-**Stages:** A pipeline may consist of one or more stages. Logically, these represent the series of steps (or stages) taken to execute the query. Note: In practice, stages may be executed out of order to improve performance. However, this does not modify the intent or correctness of the query.
+**Stages:** A pipeline may consist of one or more stages. Logically, these represent the series of steps (or stages) taken to execute the query.
+
+> **Note:** In practice, stages may be executed out of order to improve performance. However, this does not modify the intent or correctness of the query.
 
 **Expressions:** Stages will often accept an expression allowing you to express more complex queries. Expression may be simple and consist of a single function like `eq("a", 1)` . You can also express more complex expressions by nesting expressions like `and(eq("a", 1), eq("b", 2)).`
+
+**Subquery Wrappers:** Functions like `array()` and `scalar()` allow you to embed a nested pipeline as an expression within a stage.
 
 ### Field vs. Constant References
 
@@ -161,7 +161,7 @@ Pipeline operations support complex expressions. As such, it may be necessary to
     
 ```
 
-### Web
+### Web version 9
 
     const pipeline = db.pipeline()
       .collection("cities")
@@ -231,7 +231,7 @@ The input stage represents the first stage of a query. It defines the initial se
     
 ```
 
-### Web
+### Web version 9
 
     let results;
     
@@ -335,7 +335,7 @@ Android
         .execute()
     )firestore_pipelines.py
 
-As with all other stages, the order of results from these input stages is not stable. A `sort(...)` operator should always be added if a specific ordering is desired.
+As with all other stages, the order of results from these input stages is not stable. A `sort(...)` operator should always be added if a specific ordering is required.
 
 ### Where
 
@@ -361,7 +361,7 @@ Multiple `where(...)` statements can be chained together, and act as an `and(...
     
 ```
 
-### Web
+### Web version 9
 
     let results;
     
@@ -442,7 +442,7 @@ Android
 
 The `select(...)` , `add_fields(...)` , & `remove_fields(...)` all allow you to modify the fields being returned from a previous stage. These three are generally referred to as projection-style stages.
 
-The `select(...)` and `add_fields(...)` allow you to specify the result of an expression to a user-provided field name. An expression that results in an error will result in a `null` value. The `select(...)` will only return the documents with specified field names while `add_fields(...)` extends the schema of the previous stage (potentially overwriting values with identical field names).
+The `select(...)` and `add_fields(...)` allow you to specify the result of an expression to a user-provided field name. The `select(...)` will only return the documents with specified field names while `add_fields(...)` extends the schema of the previous stage (potentially overwriting values with identical field names).
 
 The `remove_fields(...)` allows specifying a set of fields to remove from the previous stage. Specifying field names that don't exist is a no-op.
 
@@ -465,7 +465,7 @@ The `aggregate(...)` stage lets you perform a series of aggregations over the in
     
 ```
 
-### Web
+### Web version 9
 
     const results = await execute(db.pipeline()
       .collection("books")
@@ -524,7 +524,7 @@ Android
 
 When `groupings` is not specified, this stage will produce only a single document, otherwise a document will be generated for each unique combination of `groupings` values.
 
-The `distinct(...)` stage is a simplified aggregation operator which allows generating just the unique `groupings` without any accumulators. It behaves identically to that of `aggregate(...)` in all other regards. An example is given below:
+The `distinct(...)` stage is a simplified aggregation operator which allows generating just the unique `groupings` without any accumulators. It behaves identically to that of `aggregate(...)` in all other regards. The following example shows:
 
 ##### Node.js
 
@@ -536,7 +536,7 @@ The `distinct(...)` stage is a simplified aggregation operator which allows gene
     
 ```
 
-### Web
+### Web version 9
 
     const results = await execute(db.pipeline()
       .collection("books")
@@ -618,7 +618,7 @@ Many stages accept expressions which contain one or more functions. The most com
     
 ```
 
-### Web
+### Web version 9
 
     let results;
     
@@ -716,9 +716,9 @@ Android
 
 ## Limits
 
-For the most part Enterprise Edition doesn't impose limits on the shape of the query. In other words, you're not limited to a small number of values in an `IN` or `OR` query. Instead, there are two primary limits you should be aware of:
+For the most part Enterprise edition doesn't impose limits on the shape of the query. In other words, you're not limited to a small number of values in an `IN` or `OR` query. Instead, there are two primary limits you should be aware of:
 
-  - **Deadline:** 60 seconds (identical to Standard Edition).
+  - **Deadline:** 60 seconds (identical to Standard edition).
   - **Memory Usage:** 128 MiB limit on the amount of materialized data during query execution.
 
 ## Errors
@@ -734,7 +734,7 @@ You may encounter failed queries for a number of reasons. Here is a link to [com
 
 ## Performance
 
-Unlike existing queries, Pipeline operations do not require that an index is always present. This means that a query can exhibit higher latency compared to existing queries which would have just failed immediately with a `FAILED_PRECONDITION` missing index error. To improve the performance of Pipeline operations, there are a couple of steps you can take.
+Enterprise edition databases do not require that an index is always present. This means that a query can exhibit higher latency compared to existing queries which would have just failed immediately with a `FAILED_PRECONDITION` missing index error. To improve the performance of Pipeline operations, there are a couple of steps you can take.
 
 ### Create Indexes
 
@@ -765,7 +765,7 @@ const results = await db.pipeline()
     
 ```
 
-### Web
+### Web version 9
 
     const results = await execute(db.pipeline()
       .collection("books")
@@ -844,7 +844,7 @@ const results = await db.pipeline()
     
 ```
 
-### Web
+### Web version 9
 
     const results = await execute(db.pipeline()
       .collection("books")
@@ -942,7 +942,7 @@ Support for easily [paginating](https://docs.cloud.google.com/firestore/docs/que
     
 ```
 
-### Web
+### Web version 9
 
     // Existing pagination via `startAt()`
     const q =
@@ -1041,3 +1041,4 @@ Pipeline operations don't have realtime and offline capabilities yet.
 ## What's next
 
   - See the [Functions reference](https://docs.cloud.google.com/firestore/docs/pipeline/functions/all_functions) .
+  - Learn how to [Perform joins with subqueries](https://docs.cloud.google.com/firestore/docs/pipeline/perform-joins-with-subqueries) .

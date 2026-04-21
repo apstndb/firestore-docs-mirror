@@ -27,7 +27,9 @@ Note the following limitations for Firestore with MongoDB compatibility triggers
 
   - Firestore with MongoDB compatibility supports Cloud Run functions (2nd gen) and doesn't support Cloud Run functions (1st gen).
 
-  - Firestore Enterprise edition databases do not support Datastore entity event types.
+  - Firestore Enterprise edition databases don't support Datastore entity event types.
+
+  - Documents larger than 10 MiB aren't included in the event payload. To retrieve the versioned document, use a [point-in-time recovery read time](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-pitr#read-pitr) .
 
 ## What's next
 

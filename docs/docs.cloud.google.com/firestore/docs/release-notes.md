@@ -4,13 +4,43 @@ You can see the latest product updates for all of Google Cloud on the [Google Cl
 
 To get the latest product updates delivered to you, add the URL of this page to your [feed reader](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the [feed URL](https://docs.cloud.google.com/feeds/fs-release-notes.xml) directly.
 
+## April 20, 2026
+
+Feature
+
+The Firestore emulator now supports Enterprise edition. See [Start emulator in specific edition](https://docs.cloud.google.com/firestore/native/docs/emulator#starting_emulator_in_specific_edition) .
+
+Feature
+
+Firestore Enterprise edition in Native mode and the Pipeline operations interface are now supported at the General Availability ( [GA](https://cloud.google.com/products#product-launch-stages) ) level.
+
+Feature
+
+Firestore Enterprise edition now supports [Text search](https://docs.cloud.google.com/firestore/native/docs/text-search) and [Geospatial search](https://docs.cloud.google.com/firestore/native/docs/geospatial-search) .
+
+These features are in [Preview](https://cloud.google.com/products/#product-launch-stages) .
+
+Feature
+
+The [Firestore remote MCP server](https://docs.cloud.google.com/firestore/native/docs/use-firestore-mcp) is now supported at the General Availability ( [GA](https://cloud.google.com/products#product-launch-stages) ) level.
+
+Feature
+
+You can now use pipeline operations to perform joins with subqueries. To learn more, see [Perform joins with subqueries](https://docs.cloud.google.com/firestore/native/docs/pipeline/perform-joins-with-sub-pipelines) .
+
+Feature
+
+Firestore Enterprise edition now supports the `update(...)` and `delete()` pipeline operation stages. Use these stages to [Modify data with Pipeline operations](https://docs.cloud.google.com/firestore/native/docs/pipeline/dml) .
+
+This feature is in [Preview](https://cloud.google.com/products/#product-launch-stages) .
+
 ## April 13, 2026
 
 Feature
 
-  - You can now use the **Usage Insights** dashboard in the Google Cloud console to monitor and analyze your billable usage for specific Firestore databases. Usage insights help you track granular usage data, optimize costs, and monitor historical trends.
-    
-    To learn more, see the guide to analyze usage insights for [Native mode](https://docs.cloud.google.com/firestore/native/docs/usage-insights) and [MongoDB compabatibility mode](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/usage-insights) .
+You can now use the **Usage Insights** dashboard in the Google Cloud console to monitor and analyze your billable usage for specific Firestore databases. Usage insights help you track granular usage data, optimize costs, and monitor historical trends.
+
+To learn more, see the guide to analyze usage insights for [Native mode](https://docs.cloud.google.com/firestore/native/docs/usage-insights) and [MongoDB compatibility mode](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/usage-insights) .
 
 ## March 23, 2026
 

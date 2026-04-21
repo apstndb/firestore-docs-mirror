@@ -87,17 +87,16 @@ To add [tags](https://cloud.google.com/firestore/docs/tags) to the database, use
 
 ##### Firebase CLI
 
-    firebase firestore:databases:create DATABASE_ID \
-    --location=LOCATION \
-    [--delete-protection DELETE_PROTECTION_ENABLEMENT]
+    firebase firestore:databases:create DATABASE_ID \n--location=LOCATION \n[--edition EDITION] \n[--firestore-data-access FIRESTORE_ACCESS] \n[--realtime-updates REALTIME_UPDATES] \n[--delete-protection DELETE_PROTECTION_ENABLEMENT]
 
 Replace the following:
 
   - DATABASE\_ID : a [valid database ID](https://docs.cloud.google.com/firestore/native/docs/manage-databases#database_id) .
   - LOCATION : the name of a [Firestore multi-region or region](https://docs.cloud.google.com/firestore/native/docs/locations#types) .
+  - EDITION : For Enterprise features, set to `enterprise` .
+  - FIRESTORE\_ACCESS : (Enterprise only) `ENABLED` or `DISABLED` .
+  - REALTIME\_UPDATES : (Enterprise only) `ENABLED` or `DISABLED` .
   - DELETE\_PROTECTION\_ENABLEMENT : Either `ENABLED` or `DISABLED` .
-
-` --delete-protection  ` is an optional argument to enable deletion protection. You cannot delete a database with deletion protection enabled until you disable this setting. This setting is disabled by default.
 
 ##### Terraform
 
@@ -187,6 +186,13 @@ Use the [`gcloud firestore databases describe`](https://cloud.google.com/sdk/gcl
 Use the `firebase firestore:databases:get` command:
 
     firebase firestore:databases:get DATABASE_ID
+
+The output for an Enterprise database includes the following fields:
+
+  - `Edition` : `ENTERPRISE`
+  - `Firestore Data Access` : `DATA_ACCESS_MODE_ENABLED` or `DATA_ACCESS_MODE_DISABLED`
+  - `MongoDB Compatible Data Access` : `DATA_ACCESS_MODE_ENABLED` or `DATA_ACCESS_MODE_DISABLED`
+  - `Realtime Updates` : `REALTIME_UPDATES_ENABLED` or `REALTIME_UPDATES_DISABLED`
 
 Replace DATABASE\_ID with a database ID.
 
@@ -278,15 +284,17 @@ You can clone an existing database at a selected timestamp into a new database:
 
 1.  In the Google Cloud console, go to the **Databases** page.
 
-2.  Click more\_vert **View more** in the table row for the database that you want to clone. Click **Clone** . The **Create a clone** dialog appears.
+<!-- end list -->
 
-3.  In the **Create a clone** dialog, provide parameters for cloning the database:
+1.  Click more\_vert **View more** in the table row for the database that you want to clone. Click **Clone** . The **Create a clone** dialog appears.
+
+2.  In the **Create a clone** dialog, provide parameters for cloning the database:
     
     1.  In the **Give the clone an ID** field, a [database ID](https://docs.cloud.google.com/firestore/native/docs/manage-databases#database_id) for a new cloned database. This database ID must not be associated with an existing database.
     
     2.  In the **Clone from** field, select a point in time to use for cloning. The selected time corresponds to a PITR timestamp, at the minute granularity.
 
-4.  Click **Create clone** .
+3.  Click **Create clone** .
 
 > **Note:** The cloned database will have the **same encryption configuration** as the source database. If you want to specify a different encryption configuration for the cloned database, you can use Google Cloud CLI commands.
 
@@ -342,7 +350,7 @@ The following example shows how to configure CMEK encryption for the cloned data
 
 You can use [Identity and Access Management Conditions](https://cloud.google.com/iam/docs/conditions-overview) to configure access permissions on a per-database level. The following examples use the Google Cloud CLI to assign conditional access for one or more databases. You can also [define IAM conditions in the Google Cloud console](https://cloud.google.com/iam/docs/managing-conditional-role-bindings) .
 
-> **Warning:** The Google Cloud console does not allow/deny access to databases based on IAM conditions configured at the database level. This only applies to accessing databases with the Google Cloud console. IAM conditions are enforced when accessing databases outside of the Google Cloud console such as with the REST API or the client libraries.
+> **Warning:** The Google Cloud console does not allow or deny access to databases based on IAM conditions configured at the database level. This only applies to accessing databases with the Google Cloud console. IAM conditions are enforced when accessing databases outside of the Google Cloud console such as with the REST API or the client libraries.
 
 ### View existing IAM policies
 

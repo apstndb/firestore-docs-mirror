@@ -4,6 +4,34 @@ You can see the latest product updates for all of Google Cloud on the [Google Cl
 
 To get the latest product updates delivered to you, add the URL of this page to your [feed reader](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the [feed URL](https://docs.cloud.google.com/feeds/firestore-with-mongodb-compatibility-release-notes.xml) directly.
 
+## April 20, 2026
+
+Feature
+
+The maximum document size has been increased to 16 MiB. To learn more, see [Behavior differences](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences#documents) .
+
+Feature
+
+Support for text and geospatial search. You can create text indexes, perform text and geospatial search queries using the `$text` and `$near` operators, handle language settings, and calculate relevance scores. To learn more, see [Text search](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/text-query) and [Geospatial search](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/geo-query) .
+
+These features are available in [Preview](https://cloud.google.com/products#product-launch-stages) .
+
+Feature
+
+`$lookup` now supports `let` and `pipeline` .
+
+Feature
+
+Support for [Change Streams](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/change-streams) . Change streams let applications access real-time changes (inserts, updates, and deletes) made to a collection or to an entire database.
+
+This feature is available in [Preview](https://cloud.google.com/products#product-launch-stages) .
+
+Feature
+
+Support for the `drop()` command to delete entire collections.
+
+This feature is available in [Preview](https://cloud.google.com/products#product-launch-stages) .
+
 ## April 09, 2026
 
 Feature

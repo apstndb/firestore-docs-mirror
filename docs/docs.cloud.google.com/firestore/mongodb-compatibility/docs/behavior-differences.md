@@ -29,10 +29,11 @@ The following differences apply to naming parts of your data model.
 
 ## Documents
 
-  - The maximum document size is 4 MiB.
+  - The maximum document size is 16 MiB.
   - The maximum nesting depth of fields is 20. Each Array and Object-typed field adds one level to the overall depth.
+  - In Eventarc events, documents larger than 10 MiB are not included in the event payload.
 
-### `_id`
+### `_id` field
 
   - The top-level `_id` field must be an ObjectId, String, 64-bit integer, 32-bit integer, Double, Binary, or Object. Other BSON types are not supported.
 
@@ -111,7 +112,9 @@ The following behavior differences apply to specific commands.
   - `comment` is accepted by most commands but is ignored.
   - `maxTimeMS` is accepted by most commands but may be ignored.
 
-### Queries and writes
+### Queries
+
+and writes
 
 <table>
 <colgroup>
@@ -233,7 +236,9 @@ The following behavior differences apply to specific commands.
 </tbody>
 </table>
 
-### Transactions and sessions
+### Transactions
+
+and sessions
 
 | **Command**         | **Unsupported Fields** |
 | ------------------- | ---------------------- |

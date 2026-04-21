@@ -1,5 +1,7 @@
 # Manage Enterprise edition indexes
 
+  
+
 > **Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
 > 
 > This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
@@ -111,6 +113,58 @@ Replace the following:
   - FIELD\_PATH : The name of the field to index
   - ORDER : One of `ASCENDING` or `DESCENDING`
   - DENSITY : One of `SPARSE_ANY` or `DENSE`
+
+### Create a text index
+
+Use the Google Cloud console to create a text index.
+
+1.  In the **Google Cloud console** , go to the **Databases** page.
+
+2.  Select a database from the list of databases.
+
+3.  In the navigation menu, click **Indexes** .
+
+4.  Optional: Enter a name for the index.
+
+5.  Go to **Search Type** and select **Text** .
+
+6.  Enter a **Collection ID** .
+
+7.  Configure one or more fields to index.
+
+8.  Set the query scope for the index.
+
+9.  Select a default language.
+
+10. Optional: Set a language override path to a field name that contains a document's language setting.
+
+11. Click **Create** .
+
+12. Your new index is displayed in the list of indexes and Firestore begins creating your index. When your index is created, a green check mark next to the index is displayed.
+
+### Create a geospatial index
+
+Use the Google Cloud console to create a geospatial index.
+
+1.  In the **Google Cloud console** , go to the **Databases** page.
+
+2.  Select a database from the list of databases.
+
+3.  In the navigation menu, click **Indexes** .
+
+4.  Optional: Enter a name for the index.
+
+5.  Go to **Search Type** and select **Geo (2dsphere)** .
+
+6.  Enter a **Collection ID** .
+
+7.  Configure one or more fields to index.
+
+8.  Set the query scope for the index.
+
+9.  Click **Create** .
+    
+    Your new index is displayed in the list of indexes and Firestore begins creating your index. When your index is created, a green check mark next to the index is displayed.
 
 ## Delete an index
 

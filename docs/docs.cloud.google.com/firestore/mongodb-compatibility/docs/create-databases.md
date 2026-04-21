@@ -54,8 +54,17 @@ To create a Firestore with MongoDB compatibility database, use one of the follow
 
 ##### Firebase CLI
 
-    firebase firestore:databases:create --edition EDITION DATABASE_ID \
-    --location=LOCATION
+    firebase firestore:databases:create --edition enterprise DATABASE_ID \n--location=LOCATION \n[--firestore-data-access FIRESTORE_ACCESS] \n[--mongodb-compatible-data-access MONGODB_ACCESS] \n[--realtime-updates REALTIME_UPDATES]
+
+Replace the following:
+
+  - DATABASE\_ID : a [valid database ID](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases#database_id) .
+  - LOCATION : the name of a [Firestore with MongoDB compatibility multi-region or region](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/locations#types) .
+  - FIRESTORE\_ACCESS : Either `ENABLED` or `DISABLED` . Defaults to `ENABLED` .
+  - MONGODB\_ACCESS : Either `ENABLED` or `DISABLED` . Defaults to `DISABLED` .
+  - REALTIME\_UPDATES : Either `ENABLED` or `DISABLED` . Defaults to `ENABLED` if `firestore-data-access` is enabled.
+
+> **Note:** `realtime-updates` can only be configured if `firestore-data-access` is `ENABLED` .
 
 ##### gcloud CLI
 

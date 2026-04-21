@@ -1,9 +1,5 @@
 # Subcollection (Input Stage)
 
-> **Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
-> 
-> This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
-
 ## Description
 
 The `subcollection(...)` input stage makes it easy to perform parent-child joins using the built-in `__name__` field.
@@ -23,7 +19,7 @@ Additional stages can be chained onto the `subcollection(...)` stage to perform 
 
 ## Behavior
 
-The `subcollection(...)` stage must be used within the context of a sub-pipeline. It uses the `__name__` (the document reference) of the current document in the parent scope to determine which sub-collection to fetch. For example, if the parent document is `/restaurants/pizza-place` , then `subcollection("reviews")` returns all documents from the `/restaurants/pizza-place/reviews` collection.
+The `subcollection(...)` stage must be used within the context of a subquery. It uses the `__name__` (the document reference) of the current document in the parent scope to determine which sub-collection to fetch. For example, if the parent document is `/restaurants/pizza-place` , then `subcollection("reviews")` returns all documents from the `/restaurants/pizza-place/reviews` collection.
 
 If the document reference has been renamed, or it is not possible to define a field with `__name__` then manually writing the join like:
 

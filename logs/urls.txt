@@ -560,6 +560,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/disaster-reco
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/eventarc
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/extend-with-cloud-run-functions
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/geo-query
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/locations
@@ -595,6 +596,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-fea
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-70
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/tags
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/text-query
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-error-codes
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-reads-writes-scale
@@ -636,6 +638,7 @@ https://docs.cloud.google.com/firestore/native/docs/eventarc
 https://docs.cloud.google.com/firestore/native/docs/extend-with-cloud-run-functions
 https://docs.cloud.google.com/firestore/native/docs/extend-with-functions
 https://docs.cloud.google.com/firestore/native/docs/firestore-security-rules-recommender
+https://docs.cloud.google.com/firestore/native/docs/geospatial-search
 https://docs.cloud.google.com/firestore/native/docs/getting-support
 https://docs.cloud.google.com/firestore/native/docs/key-visualizer
 https://docs.cloud.google.com/firestore/native/docs/keyvis-exploring-heatmaps
@@ -654,6 +657,7 @@ https://docs.cloud.google.com/firestore/native/docs/manage-data/transactions
 https://docs.cloud.google.com/firestore/native/docs/manage-databases
 https://docs.cloud.google.com/firestore/native/docs/monitor-usage
 https://docs.cloud.google.com/firestore/native/docs/overview
+https://docs.cloud.google.com/firestore/native/docs/pipeline/dml
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/aggregate_functions
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions
@@ -669,12 +673,15 @@ https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/timestamp
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/type_functions
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/vector_functions
 https://docs.cloud.google.com/firestore/native/docs/pipeline/overview
+https://docs.cloud.google.com/firestore/native/docs/pipeline/perform-joins-with-sub-pipelines
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection_group
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/database
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/documents
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/literals
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/subcollection
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/output/delete
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/output/update
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/add_fields
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/aggregate
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/distinct
@@ -740,6 +747,7 @@ https://docs.cloud.google.com/firestore/native/docs/standard-index-overview
 https://docs.cloud.google.com/firestore/native/docs/standard-indexing
 https://docs.cloud.google.com/firestore/native/docs/storage-size
 https://docs.cloud.google.com/firestore/native/docs/tags
+https://docs.cloud.google.com/firestore/native/docs/text-search
 https://docs.cloud.google.com/firestore/native/docs/trace-span-references
 https://docs.cloud.google.com/firestore/native/docs/transaction-data-contention
 https://docs.cloud.google.com/firestore/native/docs/ttl

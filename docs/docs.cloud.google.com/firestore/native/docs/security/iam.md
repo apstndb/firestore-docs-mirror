@@ -117,6 +117,20 @@ with any of the following stages:
 
 `datastore.entities.get`
 
+[`executePipeline (RPC)`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/executePipeline)  
+  
+with any of the following stages:  
+\- `update(...)`  
+
+`datastore.entities.update`
+
+[`executePipeline (RPC)`](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/executePipeline)  
+  
+with any of the following stages:  
+\- `delete(...)`  
+
+`datastore.entities.delete`
+
 [`write (RPC)`](https://docs.cloud.google.com/firestore/native/docs/reference/rpc/google.firestore.v1#write) update or transform with [exists precondition](https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition) set to `false`
 
 `datastore.entities.create`

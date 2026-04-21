@@ -247,6 +247,56 @@ For a composite index with collection group scope that indexes the `done` and `p
   - 8 bytes for the integer field value
   - 32 additional bytes
 
+## Text search index entry size
+
+The size of a text search index entry in an index is the sum of:
+
+  - The string size of the collection name
+  - The size of the document ID value
+  - The sum of bytes from indexed field values (x2)
+  - 48 additional bytes for general metadata
+
+Consider an example for an insert event for a document with document ID `my_task_id` in the `tasks` collection:
+
+    {
+         "type": "Personal",
+         "done": false,
+         "priority": 1,
+         "description": "Learn Cloud Firestore"
+    }
+
+The total size of a text search index entry on `description` is 105 bytes based on:
+
+  - 6 bytes for the collection name `tasks`
+  - 11 bytes for the document ID value
+  - 44 bytes, based on 22 bytes for the `description` field x2
+  - 48 additional bytes for general metadata
+
+## Geospatial index entry size
+
+The size of a geospatial index entry in an index is the sum of:
+
+  - The string size of the collection name
+  - The size of the document ID value
+  - 128 bytes for each indexed geo point
+  - 48 additional bytes for general metadata
+
+Consider an example for an insert event for a document with document ID `my_place` in the `places` collection:
+
+    {
+         "type": "Restaurant",
+         "visited": false,
+         "priority": 1,
+         "location": GeoPoint(longitude, latitude)
+    }
+
+The total size of a geospatial index entry on `location` is 192 bytes based on:
+
+  - 7 bytes for the collection name `places`
+  - 9 bytes for the document ID
+  - 128 bytes for the `location` field
+  - 48 additional bytes for general metadata
+
 ## What's next
 
 Learn about [Firestore pricing](https://docs.cloud.google.com/firestore/pricing) .

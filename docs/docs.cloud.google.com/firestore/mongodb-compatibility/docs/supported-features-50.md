@@ -57,7 +57,7 @@ Firestore with MongoDB compatibility supports the following query and projection
 | `$jsonSchema` | No            |
 | `$mod`        | Yes           |
 | `$regex`      | Yes           |
-| `$text`       | No            |
+| `$text`       | Yes           |
 | `$where`      | No            |
 
 ### Logical operators
@@ -385,7 +385,7 @@ Firestore with MongoDB compatibility supports the following aggregation pipeline
 
 | **Operator** | **Supported** |
 | ------------ | ------------- |
-| `$meta`      | No            |
+| `$meta`      | Yes           |
 
 ### Trigonometry operators
 
@@ -452,7 +452,7 @@ Firestore with MongoDB compatibility supports the following Geospatial operators
 | ---------------- | ------------- |
 | `$geoIntersects` | No            |
 | `$geoWithin`     | No            |
-| `$near`          | No            |
+| `$near`          | Yes           |
 | `$nearSphere`    | No            |
 | `$nearSphere`    | No            |
 | `$uniqueDocs`    | No            |
@@ -466,12 +466,12 @@ Firestore with MongoDB compatibility supports the following indexes and index op
 | **Index type** | **Supported** |
 | -------------- | ------------- |
 | 2d             | No            |
-| 2dsphere       | No            |
+| 2dsphere       | Yes           |
 | Compound       | Yes           |
 | Hashed         | No            |
 | Multikey       | Yes           |
 | Single Field   | Yes           |
-| Text           | No            |
+| Text           | Yes           |
 
 ### Index properties
 
@@ -483,7 +483,7 @@ Firestore with MongoDB compatibility supports the following indexes and index op
 | Partial          | No            |
 | Non-Sparse       | Yes           |
 | Sparse           | Yes           |
-| Text             | No            |
+| Text             | Yes           |
 | TTL              | Yes           |
 | Unique           | Yes           |
 | Wildcard         | No            |
