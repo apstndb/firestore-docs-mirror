@@ -109,7 +109,7 @@ When the query contains multiple consecutive sort stages, only the last sort sta
 
 ### Top-N Sort Optimization
 
-When a `limit` is used after a `sort` , a top-n sort may be used. This optimization bounds the memory use of the sort stage by allowing it to only store `N` documents at a time—as defined by `limit` —making the sort more memory-efficient.
+When a [`limit(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/limit) is used after a `sort` , a top-n sort may be used. This optimization bounds the memory use of the sort stage by allowing it to only store `N` documents at a time—as defined by [`limit(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/limit) —making the sort more memory-efficient.
 
 ### Null and Absent values
 

@@ -93,7 +93,7 @@ which gives:
 
 ### Complex Expressions on Grouping
 
-Beyond grouping by only field values, the `aggregate(...)` stage supports grouping by results of complex expressions. Any expression that is valid in a `select` stage can be used as a grouping key. This allows for flexible grouping based on calculated values or conditions.
+Beyond grouping by only field values, the `aggregate(...)` stage supports grouping by results of complex expressions. Any expression that is valid in a [`select(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/select) stage can be used as a grouping key. This allows for flexible grouping based on calculated values or conditions.
 
 For example, to group by whether the state field is null, and find out the total population in each group:
 

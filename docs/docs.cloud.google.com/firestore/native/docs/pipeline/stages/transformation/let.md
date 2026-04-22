@@ -4,7 +4,7 @@
 
 Define temporary variables that can be referenced in subsequent stages of the pipeline.
 
-Variables created in the `let(...)` stage are not included in the final results unless they are explicitly assigned to a field in a later stage (e.g., using `add_fields(...)` or `select(...)` ). This lets you simplify complex logic by breaking it into smaller, reusable components without cluttering the output documents. The `let(...)` stage is particularly useful for **correlated sub-pipelines** , where a sub-pipeline needs to reference a value from the parent document's scope.
+Variables created in the `let(...)` stage are not included in the final results unless they are explicitly assigned to a field in a later stage (e.g., using [`add_fields(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/add_fields) or [`select(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/select) ). This lets you simplify complex logic by breaking it into smaller, reusable components without cluttering the output documents. The `let(...)` stage is particularly useful for **correlated sub-pipelines** , where a sub-pipeline needs to reference a value from the parent document's scope.
 
 ## Examples
 
@@ -36,7 +36,7 @@ While **fields** represent data stored within documents, **variables** are tempo
 
 **Scope:**
 
-While fields are scoped to the local document, variables are defined in a separate scope and remain accessible across stages until the first occurrence of a stage that "merges" multiple documents together (like `aggregate(...)` or `distinct(...)` ). Stages that "merges" multiple documents don't allow variable references to be used afterwards as by merging the previous stage's results together there is no longer one value for the variable.
+While fields are scoped to the local document, variables are defined in a separate scope and remain accessible across stages until the first occurrence of a stage that "merges" multiple documents together (like [`aggregate(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/aggregate) or [`distinct(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/distinct) ). Stages that "merges" multiple documents don't allow variable references to be used afterwards as by merging the previous stage's results together there is no longer one value for the variable.
 
 Do : Reference a variable after filtering the document's fields.
 

@@ -188,7 +188,7 @@ For example, for the following collection:
     await db.collection("cities").doc("CHI").set({name: "Chicago", state: "Illinois"});
     await db.collection("cities").doc("ATL").set({name: "Atlanta", state: "Georgia"});
 
-The sample stage in percent mode can be used to retrieve (on average) 50% of the documents from the collection stage.
+The sample stage in percent mode can be used to retrieve (on average) 50% of the documents from the [`collection(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection) stage.
 
 ### Node.js
 

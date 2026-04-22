@@ -47,7 +47,7 @@ For example, the following pipeline deletes all `users` documents with `address.
 
 ## Behavior
 
-All data manipulation language (DML) stages must come at the end of the pipeline. The documents coming into this stage must include the `__name__` field to identify which documents to delete. Most Input stages (like `collection(...)` , `collection_group(...)` , `database(...)` , and `documents(...)` ) include the `__name__` field by default.
+All data manipulation language (DML) stages must come at the end of the pipeline. The documents coming into this stage must include the `__name__` field to identify which documents to delete. Most Input stages (like [`collection(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection) , [`collection_group(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection_group) , [`database(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/database) , and [`documents(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/documents) ) include the `__name__` field by default.
 
 The response includes a summary of the number of documents modified. For example, the following response confirms that the pipeline modified three documents:
 

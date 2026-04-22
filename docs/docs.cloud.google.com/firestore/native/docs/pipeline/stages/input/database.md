@@ -60,7 +60,7 @@ Task<Pipeline.Snapshot> results = db.pipeline()
 
 In order to use the `database(...)` stage, it must appear as the first stage in the pipeline.
 
-The order of documents returned from the `database(...)` stage is unstable and cannot be relied upon. A subsequent sort stage can be used to obtain a deterministic ordering.
+The order of documents returned from the `database(...)` stage is unstable and cannot be relied upon. A subsequent [`sort(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/sort) stage can be used to obtain a deterministic ordering.
 
 For example, for the following documents:
 

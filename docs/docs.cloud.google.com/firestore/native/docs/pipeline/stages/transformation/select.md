@@ -102,7 +102,7 @@ Which produces the following documents:
 
     { name: "Toronto, Canada", population: 3000000 },
 
-However, if the `select(...)` stage is instead placed before the `where(...)` stage, like:
+However, if the `select(...)` stage is instead placed before the [`where(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/where) stage, like:
 
 ### Node.js
 
@@ -112,7 +112,7 @@ However, if the `select(...)` stage is instead placed before the `where(...)` st
       .where(equal(field("location.country"), "Canada"))
       .execute();
 
-No documents will be produced, because `location.country` has been removed from the document before the execution of the `where(...)` stage.
+No documents will be produced, because `location.country` has been removed from the document before the execution of the [`where(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/where) stage.
 
 ### Select Nested Fields
 
@@ -158,7 +158,7 @@ Which produces the following documents:
     { city: "Toronto", country: "Canada", topLandmark: "CN Tower" },
     { city: "Atlantis" }
 
-If a nested map value or array value does not exist, it is not included in the resulting document. Array and map access in the select stage behaves identically to the `offset(...)` and `get_field(...)` functions, respectively.
+If a nested map value or array value does not exist, it is not included in the resulting document. Array and map access in the select stage behaves identically to the [`offset(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/offset) and `get_field(...)` functions, respectively.
 
 ### Assign Nested Fields
 

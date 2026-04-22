@@ -53,4 +53,4 @@ Android
 
 ## Behavior
 
-The `offset(...)` stage will skip the first `N` input documents. Unless a `sort(...)` stage is used before the offset, the order in which documents are returned is unstable and repeated executions might produce different results.
+The `offset(...)` stage will skip the first `N` input documents. Unless a [`sort(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/sort) stage is used before the offset, the order in which documents are returned is unstable and repeated executions might produce different results.

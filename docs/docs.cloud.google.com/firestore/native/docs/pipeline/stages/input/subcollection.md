@@ -4,7 +4,7 @@
 
 The `subcollection(...)` input stage makes it easy to perform parent-child joins using the built-in `__name__` field.
 
-Additional stages can be chained onto the `subcollection(...)` stage to perform filtering or aggregation over the nested documents. Note that any field references used in subsequent stages refer to the documents from the nested collection, not the parent document. To refer to fields in the parent scope, first use the `let` stage to define variables, then reference those variables in the local scope.
+Additional stages can be chained onto the `subcollection(...)` stage to perform filtering or aggregation over the nested documents. Note that any field references used in subsequent stages refer to the documents from the nested collection, not the parent document. To refer to fields in the parent scope, first use the [`let(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/let) stage to define variables, then reference those variables in the local scope.
 
 ## Examples
 

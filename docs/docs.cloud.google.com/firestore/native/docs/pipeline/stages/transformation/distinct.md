@@ -4,7 +4,7 @@
 
 Find all the distinct combination of values for a series of expressions.
 
-The `distinct(...)` stage has similar syntax as `select(...)` as it takes one or more selectable expressions. Strings can be used when the expression is just a field reference:
+The `distinct(...)` stage has similar syntax as [`select(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/select) as it takes one or more selectable expressions. Strings can be used when the expression is just a field reference:
 
 ## Examples
 
@@ -104,7 +104,7 @@ Android
 
 ## Behavior
 
-The `distinct(...)` stage works similarly to an aggregate stage without groups. See also [Aggregate Stage](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/aggregate) and [Select Stage](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/select) .
+The `distinct(...)` stage works similarly to an [`aggregate(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/aggregate) stage without groups. See also [`aggregate(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/aggregate) and [`select(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/select) .
 
 ### Find Distinct Field Values
 

@@ -133,9 +133,20 @@ There are a few terms that are important to understand when creating Pipeline op
 
 **Subquery Wrappers:** Functions like `array()` and `scalar()` allow you to embed a nested pipeline as an expression within a stage.
 
-### Field vs. Constant References
+### Fields / Constants / Variables
 
-Pipeline operations support complex expressions. As such, it may be necessary to differentiate whether a value represents a **field** or a **constant** . Consider the following example:
+Pipeline operations support complex expressions. As such, it is important to differentiate whether a value represents a **field** , a **constant** , or a **variable** .
+
+While **fields** refer to data within documents, and **constants** allow specifying any value as an argument to an expression, **variables** allow defining & using temporary values that are scoped to the query execution rather than the documents being processed. The following provides an overview of these concepts, see the [`let(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/let) stage for more information on how to read & write **variables** during query execution.
+
+|                         | Fields                                | Constants             | Variables                                      |
+| :---------------------- | :------------------------------------ | :-------------------- | :--------------------------------------------- |
+| **Purpose**             | access or store fields into documents | specify a fixed value | use temporary values during pipeline execution |
+| **SDK Usage**           | `field("name")`                       | `constant("val")`     | `variable("name")`                             |
+| **Scope**               | local to current document             | global                | global to pipeline and sub-pipelines           |
+| **Undefined Reference** | evaluates to `absent`                 | N/A                   | generates runtime error                        |
+
+**Examples:**
 
 ##### Node.js
 
@@ -201,7 +212,7 @@ Android
 
 ### Input Stages
 
-The input stage represents the first stage of a query. It defines the initial set of documents you are querying over. For Pipeline operations, this largely is similar to existing queries, where most queries start with either a `collection(...)` or `collection_group(...)` stage. Two new input stages are `database()` and `documents(...)` where `database()` allows returning **all** documents in the database, while `documents(...)` acts identical to a batch read.
+The input stage represents the first stage of a query. It defines the initial set of documents you are querying over. For Pipeline operations, this largely is similar to existing queries, where most queries start with either a [`collection(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection) or [`collection_group(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection_group) stage. Two new input stages are [`database()`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/database) and [`documents(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/documents) where [`database()`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/database) allows returning **all** documents in the database, while [`documents(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/documents) acts identical to a batch read.
 
 ##### Node.js
 
@@ -335,13 +346,13 @@ Android
         .execute()
     )firestore_pipelines.py
 
-As with all other stages, the order of results from these input stages is not stable. A `sort(...)` operator should always be added if a specific ordering is required.
+As with all other stages, the order of results from these input stages is not stable. A [`sort(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/sort) operator should always be added if a specific ordering is required.
 
 ### Where
 
-The `where(...)` stage acts as a traditional filter operation over documents generated from the previous stage and mostly mirrors the existing "where" syntax for existing queries. Any document for where a given expression evaluates to a non- `true` value is filtered out from the returned documents.
+The [`where(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/where) stage acts as a standard filter operation over documents generated from the previous stage and mostly mirrors the existing "where" syntax for existing queries. Any document for where a given expression evaluates to a non- `true` value is filtered out from the returned documents.
 
-Multiple `where(...)` statements can be chained together, and act as an `and(...)` expression. For example the following two queries are logically equivalent and can be used interchangeably.
+Multiple [`where(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/where) statements can be chained together, and act as an `and(...)` expression. For example the following two queries are logically equivalent and can be used interchangeably.
 
 ##### Node.js
 
@@ -440,17 +451,17 @@ Android
 
 ### Select / Add & Remove Fields
 
-The `select(...)` , `add_fields(...)` , & `remove_fields(...)` all allow you to modify the fields being returned from a previous stage. These three are generally referred to as projection-style stages.
+The [`select(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/select) , [`add_fields(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/add_fields) , & [`remove_fields(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/remove_fields) all allow you to modify the fields being returned from a previous stage. These three are generally referred to as projection-style stages.
 
-The `select(...)` and `add_fields(...)` allow you to specify the result of an expression to a user-provided field name. The `select(...)` will only return the documents with specified field names while `add_fields(...)` extends the schema of the previous stage (potentially overwriting values with identical field names).
+The [`select(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/select) and [`add_fields(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/add_fields) allow you to specify the result of an expression to a user-provided field name. The [`select(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/select) will only return the documents with specified field names while [`add_fields(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/add_fields) extends the schema of the previous stage (potentially overwriting values with identical field names).
 
-The `remove_fields(...)` allows specifying a set of fields to remove from the previous stage. Specifying field names that don't exist is a no-op.
+The [`remove_fields(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/remove_fields) allows specifying a set of fields to remove from the previous stage. Specifying field names that don't exist is a no-op.
 
 See the [Restrict the Fields to Return](https://docs.cloud.google.com/firestore/native/docs/pipeline/overview#restrict_the_fields_to_return) section below but in general using such a stage to restrict the result to only the fields needed in the client is helpful in reducing the cost and latency for most queries.
 
 ### Aggregate / Distinct
 
-The `aggregate(...)` stage lets you perform a series of aggregations over the input documents. By default, all documents are aggregated together, but an optional `grouping` argument can be provided, allowing the input documents aggregated into different buckets.
+The [`aggregate(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/aggregate) stage lets you perform a series of aggregations over the input documents. By default, all documents are aggregated together, but an optional `grouping` argument can be provided, allowing the input documents aggregated into different buckets.
 
 ##### Node.js
 
@@ -524,7 +535,7 @@ Android
 
 When `groupings` is not specified, this stage will produce only a single document, otherwise a document will be generated for each unique combination of `groupings` values.
 
-The `distinct(...)` stage is a simplified aggregation operator which allows generating just the unique `groupings` without any accumulators. It behaves identically to that of `aggregate(...)` in all other regards. The following example shows:
+The [`distinct(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/distinct) stage is a simplified aggregation operator which allows generating just the unique `groupings` without any accumulators. It behaves identically to that of [`aggregate(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/aggregate) in all other regards. The following example shows:
 
 ##### Node.js
 
@@ -595,7 +606,7 @@ Functions are a building block for creating expressions and complex queries. For
 
 ![Example demonstrating stages and functions in a query](https://docs.cloud.google.com/firestore/native/docs/images/pipeline-queries/pipeline_query_stage_expression.jpg)
 
-Many stages accept expressions which contain one or more functions. The most common function usage will be found in the `where(...)` and `select(...)` stages. There are two main types of functions that you should be familiar with:
+Many stages accept expressions which contain one or more functions. The most common function usage will be found in the [`where(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/where) and [`select(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/select) stages. There are two main types of functions that you should be familiar with:
 
 ##### Node.js
 
@@ -613,7 +624,7 @@ Many stages accept expressions which contain one or more functions. The most com
 
   const results = await db.pipeline()
     .collection("books")
-    .aggregate(min(Field.of("price"))
+    .aggregate(min(Field.of("price")))
     .execute();
     
 ```
@@ -904,7 +915,7 @@ If the database already has a collection scope index on `books` for `(category [
 
 ### Restrict the Fields to Return
 
-By default, a Firestore query returns all fields in a document, analogous to a `SELECT *` in traditional systems. If however your application only needs a subset of the fields, the `select(...)` or `restrict(...)` stages can be used to push this filtering server-side. This will decrease both the response size (decreasing the network egress cost) as well as improving latency.
+By default, a Firestore query returns all fields in a document, analogous to a `SELECT *` in relational systems. If however your application only needs a subset of the fields, the [`select(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/select) or `restrict(...)` stages can be used to push this filtering server-side. This will decrease both the response size (decreasing the network egress cost) as well as improving latency.
 
 ## Troubleshooting Tools
 
@@ -924,7 +935,7 @@ Pipeline operations do not yet support existing `array-contains` & `vector` [ind
 
 ### Pagination
 
-Support for easily [paginating](https://docs.cloud.google.com/firestore/docs/query-data/query-cursors) over a result set is not supported during the private preview. This can be worked around by chaining up equivalent `where(...)` & `sort(...)` stages as shown below.
+Support for easily [paginating](https://docs.cloud.google.com/firestore/docs/query-data/query-cursors) over a result set is not supported during the private preview. This can be worked around by chaining up equivalent [`where(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/where) & [`sort(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/sort) stages as shown below.
 
 ##### Node.js
 

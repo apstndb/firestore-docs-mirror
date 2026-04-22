@@ -153,11 +153,11 @@ The order of stages is important as it can change the query evaluation order. Fo
       .where(field("location.country").equals("USA"))
       .execute();
 
-will only filter on `location.country` for a (potentially random) set of 10 documents as the prior `limit(...)` stage is restricting the documents that are ever provided to the `where(...)` stage. Given this, the rule of thumb is to put the `where(...)` stages as early in the query as possible.
+will only filter on `location.country` for a (potentially random) set of 10 documents as the prior [`limit(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/limit) stage is restricting the documents that are ever provided to the `where(...)` stage. Given this, the rule of thumb is to put the `where(...)` stages as early in the query as possible.
 
 **`HAVING` -Like Functionality:**
 
-The `where(...)` stage can come after any stage that changes the schema of the documents, like `select(...)` or `aggregate(...)` and will refer to the fields produced from those stages. Importantly for `aggregate(...)` , a following `where(...)` clause that refers to the accumulated fields acts like a `HAVING` clause in a typical SQL system. For example:
+The `where(...)` stage can come after any stage that changes the schema of the documents, like [`select(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/select) or [`aggregate(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/aggregate) and will refer to the fields produced from those stages. Importantly for [`aggregate(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/aggregate) , a following `where(...)` clause that refers to the accumulated fields acts like a `HAVING` clause in a typical SQL system. For example:
 
 ### Node.js
 

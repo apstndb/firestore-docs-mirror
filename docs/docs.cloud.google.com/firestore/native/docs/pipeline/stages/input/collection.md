@@ -61,7 +61,7 @@ Android
 
 In order to use the `collection(...)` stage, it must appear as the first stage in the pipeline (or sub-pipeline).
 
-The order of documents returned from the `collection(...)` stage is unstable and cannot be relied upon. Firestore will attempt to execute the query in the most efficient way possible, which can change the order depending on the schema or index configuration. A subsequent `sort(...)` stage can be used to obtain a deterministic ordering.
+The order of documents returned from the `collection(...)` stage is unstable and cannot be relied upon. Firestore will attempt to execute the query in the most efficient way possible, which can change the order depending on the schema or index configuration. A subsequent [`sort(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/sort) stage can be used to obtain a deterministic ordering.
 
 For example, for the following documents:
 

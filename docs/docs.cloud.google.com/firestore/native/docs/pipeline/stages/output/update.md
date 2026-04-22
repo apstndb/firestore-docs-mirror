@@ -48,7 +48,7 @@ For example, the following operation backfills a data model change to all docume
 
 All data manipulation language (DML) stages must come at the end of the pipeline.
 
-The documents coming into this stage must include the `__name__` field to identify which documents to update. The operation fails if any of the documents don't exist. Most Input stages (like `collection(...)` , `collection_group(...)` , `database(...)` , and `documents(...)` ) include the `__name__` field by default.
+The documents coming into this stage must include the `__name__` field to identify which documents to update. The operation fails if any of the documents don't exist. Most Input stages (like [`collection(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection) , [`collection_group(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection_group) , [`database(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/database) , and [`documents(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/documents) ) include the `__name__` field by default.
 
 You can optionally provide `transformations` to apply right before writing the documents. These act identically to adding an [`add_fields(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/add_fields) right before the final output stage and the expressions run in the context of the previous documents.
 
