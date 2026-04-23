@@ -596,6 +596,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-fea
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-70
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/tags
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/text-search
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-error-codes
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-reads-writes-scale

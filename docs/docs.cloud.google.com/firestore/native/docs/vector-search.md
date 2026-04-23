@@ -8,11 +8,11 @@ This page shows you how to use Firestore to perform K-nearest neighbor (KNN) vec
 
 ## Before you begin
 
-Before you store embeddings in Firestore, you must generate vector embeddings. Firestore does not generate the embeddings. You can use a service such as Vertex AI to create vector values, for example, [text embeddings](https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/get-text-embeddings) from your Firestore data. You can then store these embeddings back in Firestore documents.
+Before you store embeddings in Firestore, you must generate vector embeddings. Firestore does not generate the embeddings. You can use a service such as Agent Platform to create vector values, for example, [text embeddings](https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/get-text-embeddings) from your Firestore data. You can then store these embeddings back in Firestore documents.
 
 To learn more about embeddings, see [What are embeddings?](https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings#embedding-types)
 
-To learn how to get text embeddings with Vertex AI, see [Get text embeddings](https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/get-text-embeddings) .
+To learn how to get text embeddings with Agent Platform, see [Get text embeddings](https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/get-text-embeddings) .
 
 ## Store vector embeddings
 

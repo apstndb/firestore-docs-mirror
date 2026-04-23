@@ -137,7 +137,7 @@ Firestore provides Model Armor to enforce safety boundaries at the platform leve
 
 Use the Google Cloud CLI to enable Model Armor on your model deployment. This activates built-in protection against known attack vectors like injection and jailbreaking.
 
-The following example enables Model Armor on a Vertex AI endpoint.
+The following example enables Model Armor on a Agent Platform endpoint.
 
     # Example: Enable Model Armor on a Vertex AI endpoint
     gcloud ai endpoints update ENDPOINT_ID \

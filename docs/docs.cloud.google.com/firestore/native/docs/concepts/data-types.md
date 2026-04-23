@@ -51,7 +51,7 @@ The following table lists the data types supported by Firestore. It also describ
 <tr class="even">
 <td>Geographical point</td>
 <td>By latitude, then longitude</td>
-<td>At this time we do not recommend using this data type due to querying limitations. It is generally better to store latitude and longitude as separate numeric fields. If your app needs simple distance-based geoqueries, see <a href="https://docs.cloud.google.com/firestore/native/docs/solutions/geoqueries">Geo queries</a></td>
+<td>To search based on distance, see <a href="https://docs.cloud.google.com/firestore/native/docs/geospatial-search">Geospatial search</a> .</td>
 </tr>
 <tr class="odd">
 <td>Integer</td>

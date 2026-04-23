@@ -56,13 +56,23 @@ The following table summarizes the features available for each edition:
 </tr>
 <tr class="even">
 <td>Supports Firestore in Native mode: server-side, web, and mobile SDKs with real-time and offline support</td>
-<td>Yes (Preview)</td>
+<td>Yes</td>
 <td>Yes</td>
 </tr>
 <tr class="odd">
 <td>Indexing</td>
 <td>Fully customizable, with support for advanced indexes like unique, dense, and sparse.</td>
 <td>Automatic, basic indexing on all document fields</td>
+</tr>
+<tr class="even">
+<td>Text search</td>
+<td>Yes (Preview)</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Geospatial search</td>
+<td>Yes (Preview)</td>
+<td>No</td>
 </tr>
 <tr class="even">
 <td>Change data capture</td>
