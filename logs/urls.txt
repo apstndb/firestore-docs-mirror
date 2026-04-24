@@ -638,7 +638,6 @@ https://docs.cloud.google.com/firestore/native/docs/eventarc
 https://docs.cloud.google.com/firestore/native/docs/extend-with-cloud-run-functions
 https://docs.cloud.google.com/firestore/native/docs/extend-with-functions
 https://docs.cloud.google.com/firestore/native/docs/firestore-security-rules-recommender
-https://docs.cloud.google.com/firestore/native/docs/geospatial-search
 https://docs.cloud.google.com/firestore/native/docs/getting-support
 https://docs.cloud.google.com/firestore/native/docs/key-visualizer
 https://docs.cloud.google.com/firestore/native/docs/keyvis-exploring-heatmaps
