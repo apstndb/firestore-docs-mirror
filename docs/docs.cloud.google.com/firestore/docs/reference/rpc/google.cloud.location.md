@@ -50,7 +50,7 @@ An abstract interface that provides location-related information for a service. 
 <tr class="odd">
 <td><p><code dir="ltr" translate="no">rpc ListLocations(              ListLocationsRequest            </code> ) returns ( <code dir="ltr" translate="no">             ListLocationsResponse            </code> )</p>
 <p>Lists information about the supported locations for this service.</p>
-<p>This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field:</p>
+<p>This method lists locations based on the resource scope provided in the <code dir="ltr" translate="no">            ListLocationsRequest.name           </code> field:</p>
 <ul>
 <li><strong>Global locations</strong> : If <code dir="ltr" translate="no">name</code> is empty, the method lists the public locations available to all projects.</li>
 <li><strong>Project-specific locations</strong> : If <code dir="ltr" translate="no">name</code> follows the format <code dir="ltr" translate="no">projects/{project}</code> , the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project.</li>
@@ -116,7 +116,7 @@ A page token received from the `next_page_token` field in the response. Send tha
 
 `string`
 
-Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
+Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.
 
 ## ListLocationsResponse
 

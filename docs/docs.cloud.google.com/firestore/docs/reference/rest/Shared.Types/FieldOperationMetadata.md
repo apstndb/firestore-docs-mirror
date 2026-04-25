@@ -119,7 +119,7 @@ Information about a TTL configuration change.
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;changeType&quot;: enum (ChangeType)}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;changeType&quot;: enum (ChangeType),&quot;expirationOffset&quot;: string}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -131,3 +131,11 @@ Fields
 `enum ( ChangeType` )
 
 Specifies how the TTL configuration is changing.
+
+`expirationOffset`
+
+` string ( Duration  ` format)
+
+The offset, relative to the timestamp value in the TTL-enabled field, used determine the document's expiration time.
+
+A duration in seconds with up to nine fractional digits, ending with ' `s` '. Example: `"3.5s"` .

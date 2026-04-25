@@ -98,9 +98,11 @@ Output only When true, the `Field` 's index configuration is in the process of b
 
 The TTL (time-to-live) configuration for documents that have this `Field` set.
 
-Storing a timestamp value into a TTL-enabled field will be treated as the document's absolute expiration time. For Enterprise edition databases, the timestamp value may also be stored in an array value in the TTL-enabled field.
+A timestamp stored in a TTL-enabled field will be used to determine the expiration time of the document. The expiration time is the sum of the timestamp value and the `expirationOffset` .
 
-Timestamp values in the past indicate that the document is eligible for immediate expiration. Using any other data type or leaving the field absent will disable expiration for the individual document.
+For Enterprise edition databases, the timestamp value may alternatively be stored in an array value in the TTL-enabled field.
+
+An expiration time in the past indicates that the document is eligible for immediate expiration. Using any other data type or leaving the field absent will disable expiration for the individual document.
 
 <table>
 <colgroup>
@@ -113,7 +115,7 @@ Timestamp values in the past indicate that the document is eligible for immediat
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;state&quot;: enum (State)}</code></pre></td>
+<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;state&quot;: enum (State),&quot;expirationOffset&quot;: string}</code></pre></td>
 </tr>
 </tbody>
 </table>
@@ -125,6 +127,18 @@ Fields
 ` enum ( State  ` )
 
 Output only. The state of the TTL configuration.
+
+`expirationOffset`
+
+` string ( Duration  ` format)
+
+Optional. The offset, relative to the timestamp value from the TTL-enabled field, used to determine the document's expiration time.
+
+`expirationOffset.seconds` must be between 0 and 2,147,483,647 inclusive. Values more precise than seconds are rejected.
+
+If unset, defaults to 0, in which case the expiration time is the same as the timestamp value from the TTL-enabled field.
+
+A duration in seconds with up to nine fractional digits, ending with ' `s` '. Example: `"3.5s"` .
 
 ## State
 

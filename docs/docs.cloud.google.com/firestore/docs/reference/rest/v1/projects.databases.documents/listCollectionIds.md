@@ -19,6 +19,8 @@ Parameters
 
 Required. The parent document. In the format: `projects/{projectId}/databases/{databaseId}/documents/{document_path}` . For example: `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
 
+Use `projects/{projectId}/databases/{databaseId}/documents` to list top-level collections.
+
 ### Request body
 
 The request body contains data with the following structure:

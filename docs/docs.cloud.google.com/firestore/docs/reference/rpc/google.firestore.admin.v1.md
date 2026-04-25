@@ -64,9 +64,16 @@
   - `  Index.IndexField  ` (message)
   - `  Index.IndexField.ArrayConfig  ` (enum)
   - `  Index.IndexField.Order  ` (enum)
+  - `  Index.IndexField.SearchConfig  ` (message)
+  - `  Index.IndexField.SearchConfig.SearchGeoSpec  ` (message)
+  - `  Index.IndexField.SearchConfig.SearchTextIndexSpec  ` (message)
+  - `  Index.IndexField.SearchConfig.SearchTextSpec  ` (message)
+  - `  Index.IndexField.SearchConfig.TextIndexType  ` (enum)
+  - `  Index.IndexField.SearchConfig.TextMatchType  ` (enum)
   - `  Index.IndexField.VectorConfig  ` (message)
   - `  Index.IndexField.VectorConfig.FlatIndex  ` (message)
   - `  Index.QueryScope  ` (enum)
+  - `  Index.SearchIndexOptions  ` (message)
   - `  Index.State  ` (enum)
   - `  IndexOperationMetadata  ` (message)
   - `  ListBackupSchedulesRequest  ` (message)
@@ -2110,9 +2117,11 @@ Output only When true, the `Field` 's index configuration is in the process of b
 
 The TTL (time-to-live) configuration for documents that have this `Field` set.
 
-Storing a timestamp value into a TTL-enabled field will be treated as the document's absolute expiration time. For Enterprise edition databases, the timestamp value may also be stored in an array value in the TTL-enabled field.
+A timestamp stored in a TTL-enabled field will be used to determine the expiration time of the document. The expiration time is the sum of the timestamp value and the `expiration_offset` .
 
-Timestamp values in the past indicate that the document is eligible for immediate expiration. Using any other data type or leaving the field absent will disable expiration for the individual document.
+For Enterprise edition databases, the timestamp value may alternatively be stored in an array value in the TTL-enabled field.
+
+An expiration time in the past indicates that the document is eligible for immediate expiration. Using any other data type or leaving the field absent will disable expiration for the individual document.
 
 Fields
 
@@ -2121,6 +2130,16 @@ Fields
 `  State  `
 
 Output only. The state of the TTL configuration.
+
+`expiration_offset`
+
+`  Duration  `
+
+Optional. The offset, relative to the timestamp value from the TTL-enabled field, used to determine the document's expiration time.
+
+`expiration_offset.seconds` must be between 0 and 2,147,483,647 inclusive. Values more precise than seconds are rejected.
+
+If unset, defaults to 0, in which case the expiration time is the same as the timestamp value from the TTL-enabled field.
 
 ## State
 
@@ -2245,6 +2264,12 @@ Fields
 `  ChangeType  `
 
 Specifies how the TTL configuration is changing.
+
+`expiration_offset`
+
+`  Duration  `
+
+The offset, relative to the timestamp value in the TTL-enabled field, used determine the document's expiration time.
 
 ## ChangeType
 
@@ -2494,6 +2519,12 @@ Optional. The number of shards for the index.
 
 Optional. Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.
 
+`search_index_options`
+
+`  SearchIndexOptions  `
+
+Optional. Options for search indexes that are at the index definition level.
+
 ## ApiScope
 
 API Scope defines the APIs (Firestore Native, or Firestore in Datastore Mode) that are supported for queries.
@@ -2600,6 +2631,12 @@ Indicates that this field supports operations on `array_value` s.
 
 Indicates that this field supports nearest neighbor and distance operations on vector.
 
+`search_config`
+
+`  SearchConfig  `
+
+Indicates that this field supports search operations.
+
 ## ArrayConfig
 
 The supported array value configurations.
@@ -2631,6 +2668,94 @@ The field is ordered by ascending field value.
 `DESCENDING`
 
 The field is ordered by descending field value.
+
+## SearchConfig
+
+The configuration for how to index a field for search.
+
+Fields
+
+`text_spec`
+
+`  SearchTextSpec  `
+
+Optional. The specification for building a text search index for a field.
+
+`geo_spec`
+
+`  SearchGeoSpec  `
+
+Optional. The specification for building a geo search index for a field.
+
+## SearchGeoSpec
+
+The specification for how to build a geo search index for a field.
+
+Fields
+
+`geo_json_indexing_disabled`
+
+`bool`
+
+Optional. Disables geoJSON indexing for the field. By default, geoJSON points are indexed.
+
+## SearchTextIndexSpec
+
+Specification of how the field should be indexed for search text indexes.
+
+Fields
+
+`index_type`
+
+`  TextIndexType  `
+
+Required. How to index the text field value.
+
+`match_type`
+
+`  TextMatchType  `
+
+Required. How to match the text field value.
+
+## SearchTextSpec
+
+The specification for how to build a text search index for a field.
+
+Fields
+
+`index_specs[]`
+
+`  SearchTextIndexSpec  `
+
+Required. Specifications for how the field should be indexed. Repeated so that the field can be indexed in multiple ways.
+
+## TextIndexType
+
+Ways to index the text field value.
+
+Enums
+
+`TEXT_INDEX_TYPE_UNSPECIFIED`
+
+The index type is unspecified. Not a valid option.
+
+`TOKENIZED`
+
+Field values are tokenized.
+
+## TextMatchType
+
+Types of text matches that are supported for the field.
+
+Enums
+
+`TEXT_MATCH_TYPE_UNSPECIFIED`
+
+The match type is unspecified. Not a valid option.
+
+`MATCH_GLOBALLY`
+
+Match on any indexed field.
 
 ## VectorConfig
 
@@ -2681,6 +2806,24 @@ Indexes with a collection group query scope specified allow queries against all 
 `COLLECTION_RECURSIVE`
 
 Include all the collections's ancestor in the index. Only available for Datastore Mode databases.
+
+## SearchIndexOptions
+
+Options for search indexes at the definition level.
+
+Fields
+
+`text_language`
+
+`string`
+
+Optional. The language to use for text search indexes. Used as the default language if not overridden at the document level by specifying the `text_language_override_field` . The language is specified as a BCP 47 language code. For indexes with MONGODB\_COMPATIBLE\_API ApiScope: If unspecified, the default language is English. For indexes with `ANY_API` ApiScope: If unspecified, the default behavior is autodetect.
+
+`text_language_override_field_path`
+
+`string`
+
+Optional. The field in the document that specifies which language to use for that specific document. For indexes with MONGODB\_COMPATIBLE\_API ApiScope: if unspecified, the language is taken from the "language" field if it exists or from `text_language` if it does not.
 
 ## State
 
