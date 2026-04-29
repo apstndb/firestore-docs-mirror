@@ -4,7 +4,7 @@ gcloud alpha firestore fields ttls update - update the TTL configuration of the 
 
 SYNOPSIS
 
-`gcloud alpha firestore fields ttls update` ( `  FIELD  ` : `  --collection-group  ` = `  COLLECTION_GROUP  ` `  --database  ` = `  DATABASE  ` ) ( `  --disable-ttl  ` | `  --enable-ttl  ` ) \[ `  --async  ` \] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud alpha firestore fields ttls update` ( `  FIELD  ` : `  --collection-group  ` = `  COLLECTION_GROUP  ` `  --database  ` = `  DATABASE  ` ) ( `  --disable-ttl  ` | \[ `  --enable-ttl  ` : `  --expiration-offset  ` = `  EXPIRATION_OFFSET  ` \]) \[ `  --async  ` \] \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 DESCRIPTION
 
@@ -21,6 +21,10 @@ The following command sets the `expiry` field of the `Events` collection group (
 The following command disables the `expiry` field so it is no longer the TTL for the `Events` collection group (kind):
 
     gcloud alpha firestore fields ttls update expiry --collection-group=Events --disable-ttl
+
+The following command sets the `expiry` field of the `Events` collection group (kind) to be the TTL field, with an expiration offset of one week:
+
+    gcloud alpha firestore fields ttls update expiry --collection-group=Events --enable-ttl --expiration-offset=7d
 
 POSITIONAL ARGUMENTS
 
@@ -60,10 +64,19 @@ REQUIRED FLAGS
 
 Exactly one of these must be specified:
 
-  - `--disable-ttl`  
-    Set to make this field no longer the TTL for its collection group.
+`--disable-ttl`
+
+Set to make this field no longer the TTL for its collection group.
+
+Or at least one of these can be specified:
+
   - `--enable-ttl`  
     Set to enable this field as the TTL for its collection group.
+    
+    This flag argument must be specified if any of the other arguments in this group are specified.
+
+  - `--expiration-offset` = `  EXPIRATION_OFFSET  `  
+    The offset, relative to the timestamp value from the TTL-enabled field, used to determine the document's expiration time. If unset, defaults to 0.
 
 OPTIONAL FLAGS
 

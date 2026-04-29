@@ -4,7 +4,7 @@ gcloud firestore databases create - create a Google Cloud Firestore database via
 
 SYNOPSIS
 
-`gcloud firestore databases create` `  --location  ` = `  LOCATION  ` \[ `  --database  ` = `  DATABASE  ` ; default="(default)"\] \[ `  --delete-protection  ` \] \[ `  --edition  ` = `  EDITION  ` ; default="standard"\] \[ `  --enable-firestore-data-access  ` \] \[ `  --enable-mongodb-compatible-data-access  ` \] \[ `  --enable-pitr  ` \] \[ `  --enable-realtime-updates  ` \] \[ `  --kms-key-name  ` = `  KMS_KEY_NAME  ` \] \[ `  --tags  ` =\[ `  KEY  ` = `  VALUE  ` , …\]\] \[ `  --type  ` = `  TYPE  ` ; default="firestore-native"\] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud firestore databases create` `  --location  ` = `  LOCATION  ` \[ `  --concurrency-mode  ` = `  CONCURRENCY_MODE  ` \] \[ `  --database  ` = `  DATABASE  ` ; default="(default)"\] \[ `  --delete-protection  ` \] \[ `  --edition  ` = `  EDITION  ` ; default="standard"\] \[ `  --enable-firestore-data-access  ` \] \[ `  --enable-mongodb-compatible-data-access  ` \] \[ `  --enable-pitr  ` \] \[ `  --enable-realtime-updates  ` \] \[ `  --kms-key-name  ` = `  KMS_KEY_NAME  ` \] \[ `  --tags  ` =\[ `  KEY  ` = `  VALUE  ` , …\]\] \[ `  --type  ` = `  TYPE  ` ; default="firestore-native"\] \[ `  GCLOUD_WIDE_FLAG …  ` \]
 
 EXAMPLES
 
@@ -58,6 +58,13 @@ REQUIRED FLAGS
         gcloud firestore databases create --location='us-east1'
 
 OPTIONAL FLAGS
+
+  - `--concurrency-mode` = `  CONCURRENCY_MODE  `  
+    The concurrency control mode to use for this database.
+    
+    When not specified, Firestore will pick a default concurrency mode based on the database edition.
+    
+    `  CONCURRENCY_MODE  ` must be one of: `optimistic` , `pessimistic` .
 
   - `--database` = `  DATABASE  ` ; default="(default)"  
     The ID to use for the database, which will become the final component of the database's resource name. If database ID is not provided, (default) will be used as database ID.
