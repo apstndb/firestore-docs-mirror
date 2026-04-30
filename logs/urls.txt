@@ -743,7 +743,6 @@ https://docs.cloud.google.com/firestore/native/docs/solutions/geoqueries
 https://docs.cloud.google.com/firestore/native/docs/solutions/presence
 https://docs.cloud.google.com/firestore/native/docs/solutions/role-based-access
 https://docs.cloud.google.com/firestore/native/docs/solutions/schedule-export
-https://docs.cloud.google.com/firestore/native/docs/solutions/search
 https://docs.cloud.google.com/firestore/native/docs/solutions/shard-timestamp
 https://docs.cloud.google.com/firestore/native/docs/solutions/workflows
 https://docs.cloud.google.com/firestore/native/docs/standard-index-overview

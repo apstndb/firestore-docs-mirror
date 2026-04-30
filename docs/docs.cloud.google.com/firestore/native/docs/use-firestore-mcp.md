@@ -1,8 +1,6 @@
 # Use the Firestore remote MCP server
 
-This document shows you how to use the Firestore remote Model Context Protocol (MCP) server to connect with AI applications including Gemini CLI, ChatGPT, Claude, and custom applications you are developing. The Firestore remote MCP server lets you interact with documents stored in a Firestore database from you AI application. .
-
-The Firestore remote MCP server is enabled when you enable the Firestore API.
+This document shows you how to use the Firestore remote Model Context Protocol (MCP) server to connect with AI applications including Gemini CLI, ChatGPT, Claude, and custom applications you are developing. The Firestore remote MCP server lets you interact with documents stored in a Firestore database from you AI application. The Firestore remote MCP server is enabled when you enable the Firestore API.
 
 [Model Context Protocol](https://modelcontextprotocol.io/docs/getting-started/intro) (MCP) standardizes how large language models (LLMs) and AI applications or agents connect to external data sources. MCP servers let you use their tools, resources, and prompts to take actions and get updated data from their backend service.
 

@@ -16,7 +16,7 @@ The index is sorted by field values, in the order specified in the index definit
 
 #### An index behind every query
 
-If no index exists for a query, most databases crawl through their contents item by item, a slow process that slows down even more as the database grows. Firestore Standard edition guarantees high query performance by using indexes for *all* queries. As a result, query performance depends on the size of the result set and not on the number of items in the database.
+If no index exists for a query, most databases crawl through their contents item by item, a slow process that slows down even more as the database grows. Firestore Standard edition helps provide high query performance by using indexes for *all* queries. As a result, query performance depends on the size of the result set and not on the number of items in the database.
 
 #### Less index management, more app development
 
@@ -224,7 +224,7 @@ You can also create `in` and compound equality ( `==` ) queries:
 
 If you need to run a compound query that uses a range comparison ( `<` , `<=` , `>` , or `>=` ) or if you need to sort by a different field, you must create a [manual index](https://docs.cloud.google.com/firestore/native/docs/standard-index-overview#manual_indexes) for that query.
 
-The `array-contains` index allows you to query the `regions` array field:
+The `array-contains` index lets you query the `regions` array field:
 
 ##### Web
 
@@ -443,7 +443,7 @@ This app uses queries like the following. The app uses combinations of equality 
                                 .orderBy("star_rating")
     
     db.collection("restaurants").where("category", "==", "burgers")
-                                .where("city", "==" "San Francisco")
+                                .where("city", "==", "San Francisco")
                                 .where("editors_pick", "==", true )
                                 .orderBy("star_rating")
 
@@ -569,6 +569,6 @@ Large array or map fields
 
 Large array or map fields can approach the limit of 40,000 index entries per document. If you are not querying based on a large array or map field, you should exempt it from indexing.
 
-If you are using queries with range and inequality operators on multiple fields, see the [indexing considerations](https://docs.cloud.google.com/firestore/native/docs/query-data/multiple-range-fields#best-practices) that you should consider to optimize the performance and cost of Firestore Standard edition queries
+If you are using queries with range and inequality operators on multiple fields, see the [indexing considerations](https://docs.cloud.google.com/firestore/native/docs/query-data/multiple-range-fields#best-practices) that you should consider to optimize the performance and cost of Firestore Standard edition queries.
 
 For more information about how to resolve indexing issues (index fanout, `INVALID_ARGUMENT` errors) see the [troubleshooting page](https://cloud.google.com/firestore/docs/troubleshooting) .

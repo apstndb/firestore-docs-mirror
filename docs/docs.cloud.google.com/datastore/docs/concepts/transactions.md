@@ -260,26 +260,26 @@ Firestore in Datastore mode supports three concurrency modes. The concurrency mo
 
 ### View concurrency mode
 
-Use the Firestore [projects.databases](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases) REST resource to view your database's concurrency mode:
+Run the [`gcloud firestore databases describe`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/describe) command to view your database's concurrency mode:
 
-    curl -X GET -H "Authorization: Bearer "$(gcloud auth print-access-token) \
-    "https://firestore.googleapis.com/v1/projects/PROJECT_ID/databases"
+    gcloud firestore databases describe \
+      --project=PROJECT_ID \
+      --database=DATABASE_ID
 
 ### Change concurrency mode
 
-To change your database's concurrency mode, send a `PATCH` request to the Firestore [projects.databases](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases) REST resource:
+Run the [`gcloud firestore databases update`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/update) command to change your database's concurrency mode:
 
-    curl --request PATCH \
-    --header "Authorization: Bearer "$(gcloud auth print-access-token) \
-    --header 'Accept: application/json' \
-    --header 'Content-Type: application/json' \
-    --data '{"concurrencyMode":"CONCURRENCY_MODE"}' \
-    "https://firestore.googleapis.com/v1/projects/PROJECT_ID/databases/(default)?updateMask=concurrencyMode"
+    gcloud firestore databases update \
+      --project=PROJECT_ID \
+      --database=DATABASE_ID \
+      --concurrency-mode=CONCURRENCY_MODE
 
 where:
 
   - CONCURRENCY\_MODE is `PESSIMISTIC` , `OPTIMISTIC` , or `OPTIMISTIC_WITH_ENTITY_GROUPS` .
   - PROJECT\_ID is the ID of your Google Cloud project.
+  - DATABASE\_ID is the ID of your Datastore mode database.
 
 ## Uses for transactions
 

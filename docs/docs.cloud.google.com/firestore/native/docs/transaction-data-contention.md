@@ -33,9 +33,31 @@ The concurrency mode is a configurable database option. Firestore supports the f
 
 The default for Standard edition is `PESSIMISTIC` . The default for Enterprise edition is `OPTIMISTIC` . However, the behaviour also depends on the type of client library:
 
-  - The mobile/web SDKs use optimistic concurrency controls. The mobile and web SDKs behave independently of this setting as they always emulate optimistic concurrency.
-
+  - The mobile / web SDKs use optimistic concurrency controls. The mobile and web SDKs behave independently of this setting as they always emulate optimistic concurrency.
   - The server client libraries use concurrency controls of the database setting.
+
+### View concurrency mode
+
+Run the [`gcloud firestore databases describe`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/describe) command to view your database's server-side concurrency mode:
+
+    gcloud firestore databases describe \
+      --project=PROJECT_ID \
+      --database=DATABASE_ID
+
+### Change concurrency mode
+
+Run the [`gcloud firestore databases update`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/update) command to change your database's server-side concurrency mode:
+
+    gcloud firestore databases update \
+      --project=PROJECT_ID \
+      --database=DATABASE_ID \
+      --concurrency-mode=CONCURRENCY_MODE
+
+where:
+
+  - CONCURRENCY\_MODE is `PESSIMISTIC` or `OPTIMISTIC` .
+  - PROJECT\_ID is the ID of your Google Cloud project.
+  - DATABASE\_ID is the ID of your Firestore database.
 
 > **Key Term:** In database systems, *concurrency controls* describe how the system resolves data contention between concurrent operations. Systems can implement optimistic or pessimistic concurrency controls.
 
