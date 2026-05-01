@@ -12,7 +12,7 @@ Before you can use the managed export and import service, you must complete the 
 
 1.  [Enable billing for your Google Cloud project.](https://cloud.google.com/billing/docs/how-to/modify-project) Only Google Cloud projects with billing enabled can use the export and import functionality.
 
-2.  [Create a Cloud Storage bucket for your project](https://cloud.google.com/storage/docs/creating-buckets) in a location near [your Firestore with MongoDB compatibility database location](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/locations#project_location_setting) . You cannot use a Requester Pays bucket for export and import operations.
+2.  [Create a Cloud Storage bucket for your project](https://cloud.google.com/storage/docs/creating-buckets) in a location near [your Firestore with MongoDB compatibility database location](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/locations#project_location_setting) . You cannot use a Requester Pays bucket or a [Rapid bucket](https://docs.cloud.google.com/storage/docs/rapid/rapid-bucket) for export and import operations.
 
 3.  Make sure your account has the necessary permissions for Firestore with MongoDB compatibility and Cloud Storage. **If you are the project owner, your account has the required permissions.** Otherwise, the following roles grant the necessary permissions for export and import operations and for access to Cloud Storage:
     

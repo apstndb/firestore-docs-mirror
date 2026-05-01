@@ -41,7 +41,7 @@ Export your data by creating a Cloud Storage bucket for your Firestore export fi
 
 ### Create a Cloud Storage bucket
 
-[Create a Cloud Storage bucket](https://cloud.google.com/storage/docs/creating-buckets) in the same location as your Firestore database. To view your database location, see your [project location setting](https://docs.cloud.google.com/firestore/native/docs/locations#project_location_setting) . You cannot use a Requester Pays bucket for export and import operations.
+[Create a Cloud Storage bucket](https://cloud.google.com/storage/docs/creating-buckets) in the same location as your Firestore database. To view your database location, see your [project location setting](https://docs.cloud.google.com/firestore/native/docs/locations#project_location_setting) . You cannot use a Requester Pays bucket or a [Rapid bucket](https://docs.cloud.google.com/storage/docs/rapid/rapid-bucket) for export and import operations.
 
 **If your Cloud Storage bucket is not in your source project** , you must give the source project's default service account access to the bucket. Each Google Cloud project has an automatically created default service account with the name `  PROJECT_ID @appspot.gserviceaccount.com ` . Firestore export operations use this default service account to authorize Cloud Storage bucket operations. To give the default service account access to your source bucket, grant it the [`Storage Admin`](https://cloud.google.com/storage/docs/access-control/iam-roles) role.
 

@@ -30,7 +30,7 @@ Before you can use the managed export and import service, you must complete the 
 
 1.  [Enable billing for your Google Cloud project](https://docs.cloud.google.com/billing/docs/how-to/modify-project#enable_billing_for_a_project) . Only Google Cloud projects with billing enabled can use the export and import features.
 
-2.  [Create a Cloud Storage bucket](https://docs.cloud.google.com/storage/docs/creating-buckets) in the same location as your [Firestore in Datastore mode database](https://docs.cloud.google.com/datastore/docs/locations#location-chosen) . You cannot use a Requester Pays bucket for export and import operations.
+2.  [Create a Cloud Storage bucket](https://docs.cloud.google.com/storage/docs/creating-buckets) in the same location as your [Firestore in Datastore mode database](https://docs.cloud.google.com/datastore/docs/locations#location-chosen) . You cannot use a Requester Pays bucket or a [Rapid bucket](https://docs.cloud.google.com/storage/docs/rapid/rapid-bucket) for export and import operations.
 
 3.  Assign an [IAM role](https://docs.cloud.google.com/datastore/docs/access/iam) to your user account that grants the `datastore.databases.export` permission, if you are exporting data, or the `datastore.databases.import` permission, if you are importing data. The `Datastore Import Export Admin` [role](https://docs.cloud.google.com/datastore/docs/access/iam#iam_roles) , for example, grants both permissions.
 

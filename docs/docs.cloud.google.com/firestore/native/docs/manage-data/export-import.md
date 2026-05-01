@@ -14,7 +14,7 @@ Before you can use the managed export and import service, you must complete the 
     
     > **Note:** Firebase projects must be on the [Blaze plan](https://firebase.google.com/pricing/?authuser=0) to use the managed export and import service. Enabling billing for the Google Cloud automatically upgrades your Firebase project to the Blaze plan.
 
-2.  [Create a Cloud Storage bucket for your project](https://cloud.google.com/storage/docs/creating-buckets) in a location near [your Firestore database location](https://docs.cloud.google.com/firestore/native/docs/locations#project_location_setting) . You cannot use a Requester Pays bucket for export and import operations.
+2.  [Create a Cloud Storage bucket for your project](https://cloud.google.com/storage/docs/creating-buckets) in a location near [your Firestore database location](https://docs.cloud.google.com/firestore/native/docs/locations#project_location_setting) . You cannot use a Requester Pays bucket or a [Rapid bucket](https://docs.cloud.google.com/storage/docs/rapid/rapid-bucket) for export and import operations.
 
 3.  Make sure your account has the necessary permissions for Firestore and Cloud Storage. **If you are the project owner, your account has the required permissions.** Otherwise, the following roles grant the necessary permissions for export and import operations and for access to Cloud Storage:
     
