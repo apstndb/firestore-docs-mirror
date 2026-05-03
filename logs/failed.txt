@@ -3,6 +3,8 @@
 200 https://cloud.google.com/firestore/enterprise/pricing
 200 https://cloud.google.com/firestore/pricing
 200 https://cloud.google.com/firestore/sla
+200 https://docs.cloud.google.com/datastore/docs/access/iam
+200 https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/import
 404 https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Index
 404 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/listen
 404 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/write
