@@ -1,4 +1,5 @@
 https://docs.cloud.google.com/datastore/docs
+https://docs.cloud.google.com/datastore/docs/access/iam
 https://docs.cloud.google.com/datastore/docs/activate
 https://docs.cloud.google.com/datastore/docs/aggregation-queries
 https://docs.cloud.google.com/datastore/docs/apis
@@ -874,6 +875,7 @@ https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/fields
 https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/fields/ttls
 https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/fields/ttls/list
 https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/fields/ttls/update
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/import
 https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes
 https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/composite
 https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/composite/create
