@@ -13,20 +13,20 @@ The generated documents will contain all fields from the previous stage except f
     const results = await db.pipeline()
       .collection("cities")
       .removeFields("population", "location.state")
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const results = await execute(db.pipeline()
       .collection("cities")
-      .removeFields("population", "location.state"));test.firestore.js
+      .removeFields("population", "location.state"));
 
 ##### Swift
 
     let results = try await db.pipeline()
       .collection("cities")
       .removeFields(["population", "location.state"])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -34,7 +34,7 @@ Android
     val results = db.pipeline()
         .collection("cities")
         .removeFields("population", "location.state")
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -42,7 +42,7 @@ Android
     Task<Pipeline.Snapshot> results = db.pipeline()
             .collection("cities")
             .removeFields("population", "location.state")
-            .execute();DocSnippets.java
+            .execute();
 
 ##### Python
 
@@ -51,7 +51,7 @@ Android
         .collection("cities")
         .remove_fields("population", "location.state")
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -61,7 +61,7 @@ Android
             .collection("cities")
             .removeFields("population", "location.state")
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ## Behavior
 

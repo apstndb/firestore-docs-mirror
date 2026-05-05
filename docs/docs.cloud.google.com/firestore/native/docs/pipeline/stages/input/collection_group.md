@@ -11,14 +11,14 @@ Returns all documents from any collection with the specified collection ID, rega
     const results = await execute(db.pipeline()
       .collectionGroup("games")
       .sort(field("name").ascending())
-      );test.firestore.js
+      );
 
 ##### Swift
 
     let results = try await db.pipeline()
       .collectionGroup("games")
       .sort([Field("name").ascending()])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -26,7 +26,7 @@ Android
     val results = db.pipeline()
         .collectionGroup("games")
         .sort(field("name").ascending())
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -35,7 +35,7 @@ Android
       Task<Pipeline.Snapshot> results = db.pipeline()
     .collectionGroup("games")
     .sort(field("name").ascending())
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -48,7 +48,7 @@ Android
         .collection_group("games")
         .sort(Field.of("name").ascending())
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -58,7 +58,7 @@ Android
             .collectionGroup("games")
             .sort(ascending(field("name")))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ## Behavior
 

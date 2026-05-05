@@ -88,7 +88,7 @@ The following example creates documents in the `cities-beam-sample` collection:
     
         return documentPath + "/" + collectionId + "/" + cityDocId;
       }
-    }ExampleFirestoreBeamWrite.java
+    }
 
 The example uses the following arguments to configure and run a pipeline:
 
@@ -198,7 +198,7 @@ The following example pipeline reads documents from the `cities-beam-sample` col
                   }));
         }
       }
-    }ExampleFirestoreBeamRead.java
+    }
 
 The example uses the following arguments to configure and run a pipeline:
 

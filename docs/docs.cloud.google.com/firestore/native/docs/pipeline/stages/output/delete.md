@@ -17,7 +17,7 @@ For example, the following query deletes all `users` documents with `address.use
       .where(field("address.country").equal("USA"))
       .where(field("__create_time__").timestampAdd("day", 10).lessThan(currentTimestamp()))
       .delete();
-    await pipeline.execute();test.firestore.js
+    await pipeline.execute();
 
 ##### Python
 
@@ -34,7 +34,7 @@ For example, the following query deletes all `users` documents with `address.use
         )
         .delete()
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -43,7 +43,7 @@ For example, the following query deletes all `users` documents with `address.use
       .where(field("address.country").equal("USA"))
       .where(field("__create_time__").add(constant(10)).lessThan(currentTimestamp()))
       .delete()
-      .execute().get();PipelineSnippets.java
+      .execute().get();
 
 ## Behavior
 

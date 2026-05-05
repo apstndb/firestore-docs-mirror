@@ -12,7 +12,7 @@ Use the `deleteDoc()` method:
 
     import { doc, deleteDoc } from "firebase/firestore";
     
-    await deleteDoc(doc(db, "cities", "DC"));delete_document.js
+    await deleteDoc(doc(db, "cities", "DC"));
 
 ### Web version 8
 
@@ -22,7 +22,7 @@ Use the `delete()` method:
         console.log("Document successfully deleted!");
     }).catch((error) => {
         console.error("Error removing document: ", error);
-    });test.firestore.js
+    });
 
 ##### Swift
 
@@ -35,7 +35,7 @@ Use the `delete()` method:
       print("Document successfully removed!")
     } catch {
       print("Error removing document: \(error)")
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -50,7 +50,7 @@ Use the `deleteDocumentWithCompletion:` method:
           } else {
             NSLog(@"Document successfully removed!");
           }
-    }];ViewController.m
+    }];
 
 ##### Kotlin  
 Android
@@ -60,7 +60,7 @@ Use the `delete()` method:
     db.collection("cities").document("DC")
         .delete()
         .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
-        .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }DocSnippets.kt
+        .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
 
 ##### Java  
 Android
@@ -80,7 +80,7 @@ Use the `delete()` method:
                 public void onFailure(@NonNull Exception e) {
                     Log.w(TAG, "Error deleting document", e);
                 }
-            });DocSnippets.java
+            });
 
 ### Dart
 
@@ -89,7 +89,7 @@ Use the `delete()` method:
     db.collection("cities").doc("DC").delete().then(
           (doc) => print("Document deleted"),
           onError: (e) => print("Error updating document $e"),
-        );firestore.dart
+        );
 
 ##### Java
 
@@ -98,20 +98,20 @@ Use the `delete()` method:
     // asynchronously delete a document
     ApiFuture<WriteResult> writeResult = db.collection("cities").document("DC").delete();
     // ...
-    System.out.println("Update time : " + writeResult.get().getUpdateTime());ManageDataSnippets.java
+    System.out.println("Update time : " + writeResult.get().getUpdateTime());
 
 ##### Python
 
 Use the `delete()` method:
 
-    db.collection("cities").document("DC").delete()snippets.py
+    db.collection("cities").document("DC").delete()
 
 ##### Python  
 (Async)
 
 Use the `delete()` method:
 
-    await db.collection("cities").document("DC").delete()snippets.py
+    await db.collection("cities").document("DC").delete()
 
 ##### C++
 
@@ -125,13 +125,13 @@ Use the `Delete()` method:
             std::cout << "Error deleting document: " << future.error_message()
                       << std::endl;
           }
-        });snippets.cpp
+        });
 
 ##### Node.js
 
 Use the `delete()` method:
 
-    const res = await db.collection('cities').doc('DC').delete();index.js
+    const res = await db.collection('cities').doc('DC').delete();
 
 ##### Go
 
@@ -153,13 +153,12 @@ Use the `Delete()` method:
     
      return err
     }
-    save_data_delete_doc.go
 
 ##### PHP
 
 Use the `delete()` method:
 
-    $db->collection('samples/php/cities')->document('DC')->delete();data_delete_doc.php
+    $db->collection('samples/php/cities')->document('DC')->delete();
 
 ##### Unity
 
@@ -173,14 +172,14 @@ Use the `DeleteAsync()` method:
 Use the `DeleteAsync()` method:
 
     DocumentReference cityRef = db.Collection("cities").Document("DC");
-    await cityRef.DeleteAsync();Program.cs
+    await cityRef.DeleteAsync();
 
 ##### Ruby
 
 Use the `delete()` method:
 
     city_ref = firestore.doc "#{collection_path}/DC"
-    city_ref.deletedelete_data.rb
+    city_ref.delete
 
 > **Warning:** Deleting a document does not delete its subcollections\!
 
@@ -205,7 +204,7 @@ Use the `deleteField()` method:
     // Remove the 'capital' field from the document
     await updateDoc(cityRef, {
         capital: deleteField()
-    });update_delete_field.js
+    });
 
 ### Web version 8
 
@@ -216,7 +215,7 @@ Use the `FieldValue.delete()` method:
     // Remove the 'capital' field from the document
     var removeCapital = cityRef.update({
         capital: firebase.firestore.FieldValue.delete()
-    });test.firestore.js
+    });
 
 ##### Swift
 
@@ -232,7 +231,7 @@ Use the `FieldValue.delete()` method:
       print("Document successfully updated")
     } catch {
       print("Error updating document: \(error)")
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -248,7 +247,7 @@ Use the `fieldValueForDelete:` method:
       } else {
         NSLog(@"Document successfully updated");
       }
-    }];ViewController.m
+    }];
 
 ##### Kotlin  
 Android
@@ -262,7 +261,7 @@ Use the `FieldValue.delete()` method:
         "capital" to FieldValue.delete(),
     )
     
-    docRef.update(updates).addOnCompleteListener { }DocSnippets.kt
+    docRef.update(updates).addOnCompleteListener { }
 
 ##### Java  
 Android
@@ -277,7 +276,7 @@ Use the `FieldValue.delete()` method:
     
     docRef.update(updates).addOnCompleteListener(new OnCompleteListener<Void>() {
         // ...
-        // ...DocSnippets.java
+        // ...
 
 ### Dart
 
@@ -290,7 +289,7 @@ Use the `FieldValue.delete()` method:
       "capital": FieldValue.delete(),
     };
     
-    docRef.update(updates);firestore.dart
+    docRef.update(updates);
 
 ##### Java
 
@@ -301,14 +300,14 @@ Use the `FieldValue.delete()` method:
     updates.put("capital", FieldValue.delete());
     // Update and delete the "capital" field in the document
     ApiFuture<WriteResult> writeResult = docRef.update(updates);
-    System.out.println("Update time : " + writeResult.get());ManageDataSnippets.java
+    System.out.println("Update time : " + writeResult.get());
 
 ##### Python
 
 Use the `firestore.DELETE_FIELD` method:
 
     city_ref = db.collection("cities").document("BJ")
-    city_ref.update({"capital": firestore.DELETE_FIELD})snippets.py
+    city_ref.update({"capital": firestore.DELETE_FIELD})
 
 ##### Python  
 (Async)
@@ -316,7 +315,7 @@ Use the `firestore.DELETE_FIELD` method:
 Use the `firestore.DELETE_FIELD` method:
 
     city_ref = db.collection("cities").document("BJ")
-    await city_ref.update({"capital": firestore.DELETE_FIELD})snippets.py
+    await city_ref.update({"capital": firestore.DELETE_FIELD})
 
 ##### C++
 
@@ -324,7 +323,7 @@ Use the `FieldValue::Delete()` method:
 
     DocumentReference doc_ref = db->Collection("cities").Document("BJ");
     doc_ref.Update({{"capital", FieldValue::Delete()}})
-        .OnCompletion([](const Future<void>& future) { /*...*/ });snippets.cpp
+        .OnCompletion([](const Future<void>& future) { /*...*/ });
 
 ##### Node.js
 
@@ -336,7 +335,7 @@ Use the `FieldValue.delete()` method:
     // Remove the 'capital' field from the document
     const res = await cityRef.update({
       capital: FieldValue.delete()
-    });index.js
+    });
 
 ##### Go
 
@@ -364,7 +363,6 @@ Use the `firestore.Delete` method:
      // ...
      return err
     }
-    save_data_delete_field.go
 
 ##### PHP
 
@@ -373,7 +371,7 @@ Use the `FieldValue::deleteField()` method:
     $cityRef = $db->collection('samples/php/cities')->document('BJ');
     $cityRef->update([
         ['path' => 'capital', 'value' => FieldValue::deleteField()]
-    ]);data_delete_field.php
+    ]);
 
 ##### Unity
 
@@ -394,14 +392,14 @@ Use the `FieldValue.Delete` method:
     {
         { "Capital", FieldValue.Delete }
     };
-    await cityRef.UpdateAsync(updates);Program.cs
+    await cityRef.UpdateAsync(updates);
 
 ##### Ruby
 
 Use the `firestore.field_delete` method:
 
     city_ref = firestore.doc "#{collection_path}/BJ"
-    city_ref.update({ capital: firestore.field_delete })delete_data.rb
+    city_ref.update({ capital: firestore.field_delete })
 
 ## Delete collections
 
@@ -469,7 +467,6 @@ Deleting collections from the client is not recommended.
         System.err.println("Error deleting collection : " + e.getMessage());
       }
     }
-    ManageDataSnippets.java
 
 ##### Python
 
@@ -477,7 +474,6 @@ Deleting collections from the client is not recommended.
     
         print(f"Recursively deleting collection: {coll_ref}")
         db.recursive_delete(coll_ref)
-    snippets.py
 
 ##### Python  
 (Async)
@@ -485,7 +481,6 @@ Deleting collections from the client is not recommended.
     async def delete_collection(coll_ref):
     
         await db.recursive_delete(coll_ref)
-    snippets.py
 
 ##### C++
 
@@ -500,7 +495,6 @@ Deleting collections from the client is not recommended.
       const collectionRef = db.collection(collectionPath);
       return await db.recursiveDelete(collectionRef);
     }
-    index.js
 
 ##### Go
 
@@ -558,7 +552,6 @@ Deleting collections from the client is not recommended.
      fmt.Fprintf(w, "Deleted collection \"%s\"", collectionName)
      return nil
     }
-    save_data_delete_collection.go
 
 ##### PHP
 
@@ -577,7 +570,7 @@ Deleting collections from the client is not recommended.
             }
             $documents = $collectionReference->limit($batchSize)->documents();
         }
-    }data_delete_collection.php
+    }
 
 ##### Unity
 
@@ -600,7 +593,7 @@ Deleting collections from the client is not recommended.
             documents = snapshot.Documents;
         }
         Console.WriteLine("Finished deleting all documents from the collection.");
-    }Program.cs
+    }
 
 ##### Ruby
 
@@ -611,7 +604,7 @@ Deleting collections from the client is not recommended.
       puts "Deleting document #{document_snapshot.document_id}."
       document_ref = document_snapshot.ref
       document_ref.delete
-    enddelete_data.rb
+    end
 
 ## Delete data with TTL policies
 

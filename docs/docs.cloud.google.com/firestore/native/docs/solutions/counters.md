@@ -43,7 +43,7 @@ Write throughput increases linearly with the number of shards, so a distributed 
       init(count: Int) {
         self.count = count
       }
-    }SolutionCountersViewController.swift
+    }
 
 ### Objective-C
 
@@ -77,7 +77,7 @@ Write throughput increases linearly with the number of shards, so a distributed 
       }
       return self;
     }
-    @endFIRSolutionCountersViewController.m
+    @end
 
 ### Kotlin  
 Android
@@ -86,7 +86,7 @@ Android
     data class Counter(var numShards: Int)
     
     // counters/${ID}/shards/${NUM}
-    data class Shard(var count: Int)SolutionCounters.kt
+    data class Shard(var count: Int)
 
 ### Java  
 Android
@@ -107,7 +107,7 @@ Android
         public Shard(int count) {
             this.count = count;
         }
-    }SolutionCounters.java
+    }
 
 ### Python
 
@@ -139,7 +139,6 @@ Android
     
         def __init__(self, num_shards):
             self._num_shards = num_shards
-    distributed_counters.py
 
 ### Python  
 (Async)
@@ -172,7 +171,6 @@ Android
     
         def __init__(self, num_shards):
             self._num_shards = num_shards
-    distributed_counters.py
 
 ### Node.js
 
@@ -201,7 +199,6 @@ Not applicable, see the counter increment snippet below.
     type Shard struct {
      Count int
     }
-    solution_counters.go
 
 ### PHP
 
@@ -217,7 +214,7 @@ Not applicable, see the counter initialization snippet below.
     {
         [FirestoreProperty(name: "count")]
         public int Count { get; set; }
-    }Program.cs
+    }
 
 The following code initializes a distributed counter:
 
@@ -237,7 +234,7 @@ The following code initializes a distributed counter:
     
         // Commit the write batch
         return batch.commit();
-    }test.solution-counters.js
+    }
 
 ### Swift
 
@@ -252,7 +249,7 @@ The following code initializes a distributed counter:
       } catch {
         // ...
       }
-    }SolutionCountersViewController.swift
+    }
 
 ### Objective-C
 
@@ -267,7 +264,7 @@ The following code initializes a distributed counter:
               setData:@{ @"count": @(0) }];
         }
       }];
-    }FIRSolutionCountersViewController.m
+    }
 
 ### Kotlin  
 Android
@@ -293,7 +290,7 @@ Android
     
                 Tasks.whenAll(tasks)
             }
-    }SolutionCounters.kt
+    }
 
 ### Java  
 Android
@@ -322,7 +319,7 @@ Android
                         return Tasks.whenAll(tasks);
                     }
                 });
-    }SolutionCounters.java
+    }
 
 ### Python
 
@@ -337,7 +334,6 @@ Android
         for num in range(self._num_shards):
             shard = Shard()
             col_ref.document(str(num)).set(shard.to_dict())
-    distributed_counters.py
 
 ### Python  
 (Async)
@@ -353,7 +349,6 @@ Android
         for num in range(self._num_shards):
             shard = Shard()
             await col_ref.document(str(num)).set(shard.to_dict())
-    distributed_counters.py
 
 ### Node.js
 
@@ -376,7 +371,6 @@ Not applicable, see the counter increment snippet below.
      }
      return nil
     }
-    solution_counters.go
 
 ### PHP
 
@@ -385,7 +379,7 @@ Not applicable, see the counter increment snippet below.
     for ($i = 0; $i < $numShards; $i++) {
         $doc = $ref->document((string) $i);
         $doc->set(['Cnt' => 0]);
-    }solution_sharded_counter_create.php
+    }
 
 ### C\#
 
@@ -404,7 +398,7 @@ Not applicable, see the counter increment snippet below.
             tasks.Add(colRef.Document(i.ToString()).SetAsync(new Shard() { Count = 0 }));
         }
         await Task.WhenAll(tasks);
-    }Program.cs
+    }
 
 ### Ruby
 
@@ -423,7 +417,7 @@ Not applicable, see the counter increment snippet below.
       shards_ref.doc(i).set({ count: 0 })
     end
     
-    puts "Distributed counter shards collection created."distributed_counters.rb
+    puts "Distributed counter shards collection created."
 
 To increment the counter, choose a random shard and increment the count:
 
@@ -436,7 +430,7 @@ To increment the counter, choose a random shard and increment the count:
     
         // Update count
         return shard_ref.update("count", firebase.firestore.FieldValue.increment(1));
-    }test.solution-counters.js
+    }
 
 ### Swift
 
@@ -450,7 +444,7 @@ To increment the counter, choose a random shard and increment the count:
       shardRef.updateData([
         "count": FieldValue.increment(Int64(1))
       ])
-    }SolutionCountersViewController.swift
+    }
 
 ### Objective-C
 
@@ -467,7 +461,7 @@ To increment the counter, choose a random shard and increment the count:
       [shardReference updateData:@{
         @"count": [FIRFieldValue fieldValueForIntegerIncrement:1]
       }];
-    }FIRSolutionCountersViewController.m
+    }
 
 ### Kotlin  
 Android
@@ -477,7 +471,7 @@ Android
         val shardRef = ref.collection("shards").document(shardId.toString())
     
         return shardRef.update("count", FieldValue.increment(1))
-    }SolutionCounters.kt
+    }
 
 ### Java  
 Android
@@ -487,7 +481,7 @@ Android
         DocumentReference shardRef = ref.collection("shards").document(String.valueOf(shardId));
     
         return shardRef.update("count", FieldValue.increment(1));
-    }SolutionCounters.java
+    }
 
 ### Python
 
@@ -497,7 +491,6 @@ Android
     
         shard_ref = doc_ref.collection("shards").document(str(doc_id))
         return shard_ref.update({"count": firestore.Increment(1)})
-    distributed_counters.py
 
 ### Python  
 (Async)
@@ -508,7 +501,6 @@ Android
     
         shard_ref = doc_ref.collection("shards").document(str(doc_id))
         return await shard_ref.update({"count": firestore.Increment(1)})
-    distributed_counters.py
 
 ### Node.js
 
@@ -516,7 +508,7 @@ Android
       const shardId = Math.floor(Math.random() * numShards);
       const shardRef = docRef.collection('shards').doc(shardId.toString());
       return shardRef.set({count: FieldValue.increment(1)}, {merge: true});
-    }solution-counters.js
+    }
 
 ### Go
 
@@ -529,7 +521,6 @@ Android
          {Path: "Count", Value: firestore.Increment(1)},
      })
     }
-    solution_counters.go
 
 ### PHP
 
@@ -543,7 +534,7 @@ Android
     $doc = $ref->document((string) $shardIdx);
     $doc->update([
         ['path' => 'Cnt', 'value' => FieldValue::increment(1)]
-    ]);solution_sharded_counter_increment.php
+    ]);
 
 ### C\#
 
@@ -561,7 +552,7 @@ Android
         }
         var shardRef = docRef.Collection("shards").Document(documentId.ToString());
         await shardRef.UpdateAsync("count", FieldValue.Increment(1));
-    }Program.cs
+    }
 
 ### Ruby
 
@@ -580,7 +571,7 @@ Android
     # increment counter
     shard_ref.update({ count: firestore.field_increment(1) })
     
-    puts "Counter incremented."distributed_counters.rb
+    puts "Counter incremented."
 
 To get the total count, query for all shards and sum their `count` fields:
 
@@ -596,7 +587,7 @@ To get the total count, query for all shards and sum their `count` fields:
     
             return total_count;
         });
-    }test.solution-counters.js
+    }
 
 ### Swift
 
@@ -615,7 +606,7 @@ To get the total count, query for all shards and sum their `count` fields:
       } catch {
         // handle error
       }
-    }SolutionCountersViewController.swift
+    }
 
 ### Objective-C
 
@@ -638,7 +629,7 @@ To get the total count, query for all shards and sum their `count` fields:
               NSLog(@"Total count is %ld", (long)totalCount);
             }
       }];
-    }FIRSolutionCountersViewController.m
+    }
 
 ### Kotlin  
 Android
@@ -654,7 +645,7 @@ Android
                 }
                 count
             }
-    }SolutionCounters.kt
+    }
 
 ### Java  
 Android
@@ -673,7 +664,7 @@ Android
                         return count;
                     }
                 });
-    }SolutionCounters.java
+    }
 
 ### Python
 
@@ -684,7 +675,6 @@ Android
         for shard in shards:
             total += shard.get().to_dict().get("count", 0)
         return total
-    distributed_counters.py
 
 ### Python  
 (Async)
@@ -696,7 +686,6 @@ Android
         async for shard in shards:
             total += (await shard.get()).to_dict().get("count", 0)
         return total
-    distributed_counters.py
 
 ### Node.js
 
@@ -709,7 +698,7 @@ Android
         count += doc.get('count');
       }
       return count;
-    }solution-counters.js
+    }
 
 ### Go
 
@@ -735,7 +724,6 @@ Android
      }
      return total, nil
     }
-    solution_counters.go
 
 ### PHP
 
@@ -743,7 +731,7 @@ Android
     $docCollection = $db->collection('samples/php/distributedCounters')->documents();
     foreach ($docCollection as $doc) {
         $result += $doc->data()['Cnt'];
-    }solution_sharded_counter_get.php
+    }
 
 ### C\#
 
@@ -756,7 +744,7 @@ Android
     {
         var snapshotList = await docRef.Collection("shards").GetSnapshotAsync();
         return snapshotList.Sum(shard => shard.GetValue<int>("count"));
-    }Program.cs
+    }
 
 ### Ruby
 
@@ -774,7 +762,7 @@ Android
       count += doc_ref[:count]
     end
     
-    puts "Count value is #{count}."distributed_counters.rb
+    puts "Count value is #{count}."
 
 ## Limitations
 

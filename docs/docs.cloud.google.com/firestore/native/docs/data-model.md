@@ -71,63 +71,63 @@ Every document in Firestore is uniquely identified by its location within the da
 
     import { doc } from "firebase/firestore";
     
-    const alovelaceDocumentRef = doc(db, 'users', 'alovelace');doc_reference.js
+    const alovelaceDocumentRef = doc(db, 'users', 'alovelace');
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    var alovelaceDocumentRef = db.collection('users').doc('alovelace');test.firestore.js
+    var alovelaceDocumentRef = db.collection('users').doc('alovelace');
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    let alovelaceDocumentRef = db.collection("users").document("alovelace")ViewController.swift
+    let alovelaceDocumentRef = db.collection("users").document("alovelace")
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
     FIRDocumentReference *alovelaceDocumentRef =
-        [[self.db collectionWithPath:@"users"] documentWithPath:@"alovelace"];ViewController.m
+        [[self.db collectionWithPath:@"users"] documentWithPath:@"alovelace"];
 
 ##### Kotlin  
 Android
 
-    val alovelaceDocumentRef = db.collection("users").document("alovelace")DocSnippets.kt
+    val alovelaceDocumentRef = db.collection("users").document("alovelace")
 
 ##### Java  
 Android
 
-    DocumentReference alovelaceDocumentRef = db.collection("users").document("alovelace");DocSnippets.java
+    DocumentReference alovelaceDocumentRef = db.collection("users").document("alovelace");
 
 ### Dart
 
-    final alovelaceDocumentRef = db.collection("users").doc("alovelace");firestore.dart
+    final alovelaceDocumentRef = db.collection("users").doc("alovelace");
 
 ##### Java
 
     // Reference to a document with id "alovelace" in the collection "users"
-    DocumentReference document = db.collection("users").document("alovelace");References.java
+    DocumentReference document = db.collection("users").document("alovelace");
 
 ##### Python
 
-    a_lovelace_ref = db.collection("users").document("alovelace")snippets.py
+    a_lovelace_ref = db.collection("users").document("alovelace")
 
 ##### Python  
 (Async)
 
-    a_lovelace_ref = db.collection("users").document("alovelace")snippets.py
+    a_lovelace_ref = db.collection("users").document("alovelace")
 
 ##### C++
 
     DocumentReference alovelace_document_reference =
-        db->Collection("users").Document("alovelace");snippets.cpp
+        db->Collection("users").Document("alovelace");
 
 ##### Node.js
 
-    const alovelaceDocumentRef = db.collection('users').doc('alovelace');index.js
+    const alovelaceDocumentRef = db.collection('users').doc('alovelace');
 
 ##### Go
 
@@ -141,7 +141,6 @@ Android
     
      _ = alovelaceRef
     }
-    retrieve_data_reference_document.go
 
 ##### PHP
 
@@ -165,7 +164,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ##### Ruby
 
-    document_ref = firestore.col("users").doc("alovelace")data_model.rb
+    document_ref = firestore.col("users").doc("alovelace")
 
 A reference is a lightweight object that just points to a location in your database. You can create a reference whether or not data exists there, and creating a reference does not perform any network operations.
 
@@ -175,61 +174,61 @@ You can also create references to *collections* :
 
     import { collection } from "firebase/firestore";
     
-    const usersCollectionRef = collection(db, 'users');collection_reference.js
+    const usersCollectionRef = collection(db, 'users');
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    var usersCollectionRef = db.collection('users');test.firestore.js
+    var usersCollectionRef = db.collection('users');
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    let usersCollectionRef = db.collection("users")ViewController.swift
+    let usersCollectionRef = db.collection("users")
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    FIRCollectionReference *usersCollectionRef = [self.db collectionWithPath:@"users"];ViewController.m
+    FIRCollectionReference *usersCollectionRef = [self.db collectionWithPath:@"users"];
 
 ##### Kotlin  
 Android
 
-    val usersCollectionRef = db.collection("users")DocSnippets.kt
+    val usersCollectionRef = db.collection("users")
 
 ##### Java  
 Android
 
-    CollectionReference usersCollectionRef = db.collection("users");DocSnippets.java
+    CollectionReference usersCollectionRef = db.collection("users");
 
 ### Dart
 
-    final usersCollectionRef = db.collection("users");firestore.dart
+    final usersCollectionRef = db.collection("users");
 
 ##### Java
 
     // Reference to the collection "users"
-    CollectionReference collection = db.collection("users");References.java
+    CollectionReference collection = db.collection("users");
 
 ##### Python
 
-    users_ref = db.collection("users")snippets.py
+    users_ref = db.collection("users")
 
 ##### Python  
 (Async)
 
-    users_ref = db.collection("users")snippets.py
+    users_ref = db.collection("users")
 
 ##### C++
 
-    CollectionReference users_collection_reference = db->Collection("users");snippets.cpp
+    CollectionReference users_collection_reference = db->Collection("users");
 
 ##### Node.js
 
-    const usersCollectionRef = db.collection('users');index.js
+    const usersCollectionRef = db.collection('users');
 
 ##### Go
 
@@ -242,7 +241,6 @@ Android
     
      _ = usersRef
     }
-    retrieve_data_reference_collection.go
 
 ##### PHP
 
@@ -266,7 +264,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ##### Ruby
 
-    collection_ref = firestore.col "users"data_model.rb
+    collection_ref = firestore.col "users"
 
 > **Note:** *Collection references* and *document references* are two distinct types of references and let you perform different operations. For example, you could use a collection reference for querying the documents in the collection, and you could use a document reference to read or write an individual document.
 
@@ -276,62 +274,62 @@ For convenience, you can also create references by specifying the path to a docu
 
     import { doc } from "firebase/firestore"; 
     
-    const alovelaceDocumentRef = doc(db, 'users/alovelace');doc_reference_alternative.js
+    const alovelaceDocumentRef = doc(db, 'users/alovelace');
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    var alovelaceDocumentRef = db.doc('users/alovelace');test.firestore.js
+    var alovelaceDocumentRef = db.doc('users/alovelace');
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    let aLovelaceDocumentReference = db.document("users/alovelace")ViewController.swift
+    let aLovelaceDocumentReference = db.document("users/alovelace")
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
     FIRDocumentReference *aLovelaceDocumentReference =
-        [self.db documentWithPath:@"users/alovelace"];ViewController.m
+        [self.db documentWithPath:@"users/alovelace"];
 
 ##### Kotlin  
 Android
 
-    val alovelaceDocumentRef = db.document("users/alovelace")DocSnippets.kt
+    val alovelaceDocumentRef = db.document("users/alovelace")
 
 ##### Java  
 Android
 
-    DocumentReference alovelaceDocumentRef = db.document("users/alovelace");DocSnippets.java
+    DocumentReference alovelaceDocumentRef = db.document("users/alovelace");
 
 ### Dart
 
-    final aLovelaceDocRef = db.doc("users/alovelace");firestore.dart
+    final aLovelaceDocRef = db.doc("users/alovelace");
 
 ##### Java
 
     // Reference to a document with id "alovelace" in the collection "users"
-    DocumentReference document = db.document("users/alovelace");References.java
+    DocumentReference document = db.document("users/alovelace");
 
 ##### Python
 
-    a_lovelace_ref = db.document("users/alovelace")snippets.py
+    a_lovelace_ref = db.document("users/alovelace")
 
 ##### Python  
 (Async)
 
-    a_lovelace_ref = db.document("users/alovelace")snippets.py
+    a_lovelace_ref = db.document("users/alovelace")
 
 ##### C++
 
-    DocumentReference alovelace_document = db->Document("users/alovelace");snippets.cpp
+    DocumentReference alovelace_document = db->Document("users/alovelace");
 
 ##### Node.js
 
-    const alovelaceDocumentRef = db.doc('users/alovelace');index.js
+    const alovelaceDocumentRef = db.doc('users/alovelace');
 
 ##### Go
 
@@ -345,7 +343,6 @@ Android
     
      _ = alovelaceRef
     }
-    retrieve_data_reference_document_path.go
 
 ##### PHP
 
@@ -369,7 +366,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ##### Ruby
 
-    document_path_ref = firestore.doc "users/alovelace"data_model.rb
+    document_path_ref = firestore.doc "users/alovelace"
 
 ## Hierarchical Data
 
@@ -424,14 +421,14 @@ In this example, you would create a reference to a message in the subcollection 
 
     import { doc } from "firebase/firestore"; 
     
-    const messageRef = doc(db, "rooms", "roomA", "messages", "message1");subcollection_reference.js
+    const messageRef = doc(db, "rooms", "roomA", "messages", "message1");
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     var messageRef = db.collection('rooms').doc('roomA')
-                    .collection('messages').doc('message1');test.firestore.js
+                    .collection('messages').doc('message1');
 
 ##### Swift
 
@@ -439,7 +436,7 @@ In this example, you would create a reference to a message in the subcollection 
 
     let messageRef = db
       .collection("rooms").document("roomA")
-      .collection("messages").document("message1")ViewController.swift
+      .collection("messages").document("message1")
 
 ##### Objective-C
 
@@ -447,21 +444,21 @@ In this example, you would create a reference to a message in the subcollection 
 
     FIRDocumentReference *messageRef =
         [[[[self.db collectionWithPath:@"rooms"] documentWithPath:@"roomA"]
-        collectionWithPath:@"messages"] documentWithPath:@"message1"];ViewController.m
+        collectionWithPath:@"messages"] documentWithPath:@"message1"];
 
 ##### Kotlin  
 Android
 
     val messageRef = db
         .collection("rooms").document("roomA")
-        .collection("messages").document("message1")DocSnippets.kt
+        .collection("messages").document("message1")
 
 ##### Java  
 Android
 
     DocumentReference messageRef = db
             .collection("rooms").document("roomA")
-            .collection("messages").document("message1");DocSnippets.java
+            .collection("messages").document("message1");
 
 ### Dart
 
@@ -469,36 +466,36 @@ Android
         .collection("rooms")
         .doc("roomA")
         .collection("messages")
-        .doc("message1");firestore.dart
+        .doc("message1");
 
 ##### Java
 
     // Reference to a document in subcollection "messages"
     DocumentReference document =
-        db.collection("rooms").document("roomA").collection("messages").document("message1");References.java
+        db.collection("rooms").document("roomA").collection("messages").document("message1");
 
 ##### Python
 
     room_a_ref = db.collection("rooms").document("roomA")
-    message_ref = room_a_ref.collection("messages").document("message1")snippets.py
+    message_ref = room_a_ref.collection("messages").document("message1")
 
 ##### Python  
 (Async)
 
     room_a_ref = db.collection("rooms").document("roomA")
-    message_ref = room_a_ref.collection("messages").document("message1")snippets.py
+    message_ref = room_a_ref.collection("messages").document("message1")
 
 ##### C++
 
     DocumentReference message_reference = db->Collection("rooms")
         .Document("roomA")
         .Collection("messages")
-        .Document("message1");snippets.cpp
+        .Document("message1");
 
 ##### Node.js
 
     const messageRef = db.collection('rooms').doc('roomA')
-      .collection('messages').doc('message1');index.js
+      .collection('messages').doc('message1');
 
 ##### Go
 
@@ -512,7 +509,6 @@ Android
     
      _ = messageRef
     }
-    retrieve_data_reference_subcollection.go
 
 ##### PHP
 
@@ -544,7 +540,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ##### Ruby
 
-    message_ref = firestore.col("rooms").doc("roomA").col("messages").doc("message1")data_model.rb
+    message_ref = firestore.col("rooms").doc("roomA").col("messages").doc("message1")
 
 Notice the alternating pattern of collections and documents. Your collections and documents must always follow this pattern. You cannot reference a collection in a collection or a document in a document.
 

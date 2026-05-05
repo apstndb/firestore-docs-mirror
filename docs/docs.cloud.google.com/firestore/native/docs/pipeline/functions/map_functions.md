@@ -42,7 +42,7 @@ Returns the value in a map given a specified key. Returns an `ABSENT` value if t
       .select(
         field("awards").mapGet("pulitzer").as("hasPulitzerAward")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -51,7 +51,7 @@ Returns the value in a map given a specified key. Returns an `ABSENT` value if t
       .select(
         field("awards").mapGet("pulitzer").as("hasPulitzerAward")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -60,7 +60,7 @@ Returns the value in a map given a specified key. Returns an `ABSENT` value if t
       .select([
         Field("awards").mapGet("pulitzer").as("hasPulitzerAward")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -70,7 +70,7 @@ Android
         .select(
             field("awards").mapGet("pulitzer").alias("hasPulitzerAward")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -80,7 +80,7 @@ Android
         .select(
             field("awards").mapGet("pulitzer").alias("hasPulitzerAward")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -91,7 +91,7 @@ Android
         .collection("books")
         .select(Field.of("awards").map_get("pulitzer").as_("hasPulitzerAward"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -101,7 +101,7 @@ Android
             .collection("books")
             .select(mapGet(field("awards"), "pulitzer").as("hasPulitzerAward"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### MAP\_SET
 

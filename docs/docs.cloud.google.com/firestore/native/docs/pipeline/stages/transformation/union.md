@@ -30,7 +30,7 @@ Merges the documents from another pipeline with those in the current pipeline.
         .where(field("type").equal("Italian")))
       .where(field("rating").greaterThanOrEqual(4.5))
       .sort(field("__name__").descending())
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -42,7 +42,7 @@ Merges the documents from another pipeline with those in the current pipeline.
         .where(Field("type").equal("Italian")))
       .where(Field("rating").greaterThanOrEqual(4.5))
       .sort([Field("__name__").descending()])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -55,7 +55,7 @@ Android
             .where(field("type").equal("Italian")))
         .where(field("rating").greaterThanOrEqual(4.5))
         .sort(field("__name__").descending())
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -68,7 +68,7 @@ Android
             .where(field("type").equal("Italian")))
         .where(field("rating").greaterThanOrEqual(4.5))
         .sort(field("__name__").descending())
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -86,7 +86,7 @@ Android
         .where(Field.of("rating").greater_than_or_equal(4.5))
         .sort(Field.of("__name__").descending())
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -103,7 +103,7 @@ Android
             .where(field("rating").greaterThanOrEqual(4.5))
             .sort(descending(field("__name__")))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ## Behavior
 
@@ -139,7 +139,7 @@ Android
             .where(field("type").equal("Italian")))
         .where(field("rating").greaterThanOrEqual(4.5))
         .sort(field("__name__").descending())
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -152,7 +152,7 @@ Android
             .where(field("type").equal("Italian")))
         .where(field("rating").greaterThanOrEqual(4.5))
         .sort(field("__name__").descending())
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -170,7 +170,7 @@ Android
         .where(Field.of("rating").greater_than_or_equal(4.5))
         .sort(Field.of("__name__").descending())
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -187,7 +187,7 @@ Android
             .where(field("rating").greaterThanOrEqual(4.5))
             .sort(descending(field("__name__")))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### Duplicate Results
 

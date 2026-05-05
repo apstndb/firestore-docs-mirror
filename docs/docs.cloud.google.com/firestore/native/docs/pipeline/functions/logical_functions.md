@@ -49,7 +49,7 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
         and(field("rating").greaterThan(4), field("price").lessThan(10))
           .as("under10Recommendation")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -59,7 +59,7 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
         and(field("rating").greaterThan(4), field("price").lessThan(10))
           .as("under10Recommendation")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -69,7 +69,7 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
         (Field("rating").greaterThan(4) && Field("price").lessThan(10))
           .as("under10Recommendation")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -81,7 +81,7 @@ Android
               field("price").lessThan(10))
                 .alias("under10Recommendation")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -94,7 +94,7 @@ Android
                 field("price").lessThan(10)
             ).alias("under10Recommendation")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -109,7 +109,7 @@ Android
             ).as_("under10Recommendation")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -121,7 +121,7 @@ Android
                 and(greaterThan(field("rating"), 4), lessThan(field("price"), 10))
                     .as("under10Recommendation"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### OR
 
@@ -154,7 +154,7 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
         or(field("genre").equal("Fantasy"), field("tags").arrayContains("adventure"))
           .as("matchesSearchFilters")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -164,7 +164,7 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
         or(field("genre").equal("Fantasy"), field("tags").arrayContains("adventure"))
           .as("matchesSearchFilters")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -174,7 +174,7 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
         (Field("genre").equal("Fantasy") || Field("tags").arrayContains("adventure"))
           .as("matchesSearchFilters")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -186,7 +186,7 @@ Android
               field("tags").arrayContains("adventure"))
                 .alias("matchesSearchFilters")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -199,7 +199,7 @@ Android
                 field("tags").arrayContains("adventure")
             ).alias("matchesSearchFilters")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -215,7 +215,7 @@ Android
             ).as_("matchesSearchFilters")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -227,7 +227,7 @@ Android
                 or(equal(field("genre"), "Fantasy"), arrayContains(field("tags"), "adventure"))
                     .as("matchesSearchFilters"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### XOR
 
@@ -261,7 +261,7 @@ Returns `NULL` if any of the given values are `ABSENT` or `NULL` .
         xor(field("tags").arrayContains("magic"), field("tags").arrayContains("nonfiction"))
           .as("matchesSearchFilters")
       )
-    );test.firestore.js
+    );
 
 ### Web
 
@@ -271,7 +271,7 @@ Returns `NULL` if any of the given values are `ABSENT` or `NULL` .
         xor(field("tags").arrayContains("magic"), field("tags").arrayContains("nonfiction"))
           .as("matchesSearchFilters")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -281,7 +281,7 @@ Returns `NULL` if any of the given values are `ABSENT` or `NULL` .
         (Field("tags").arrayContains("magic") ^ Field("tags").arrayContains("nonfiction"))
           .as("matchesSearchFilters")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -293,7 +293,7 @@ Android
               field("tags").arrayContains("nonfiction"))
                 .alias("matchesSearchFilters")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -306,7 +306,7 @@ Android
                 field("tags").arrayContains("nonfiction")
             ).alias("matchesSearchFilters")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -324,7 +324,7 @@ Android
             ).as_("matchesSearchFilters")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -338,7 +338,7 @@ Android
                         arrayContains(field("tags"), "nonfiction"))
                     .as("matchesSearchFilters"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### NOR
 
@@ -382,7 +382,7 @@ Returns the logical NOT of a boolean value.
         field("tags").arrayContains("nonfiction").not()
           .as("isFiction")
       )
-    );test.firestore.js
+    );
 
 ### Web
 
@@ -392,7 +392,7 @@ Returns the logical NOT of a boolean value.
         field("tags").arrayContains("nonfiction").not()
           .as("isFiction")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -402,7 +402,7 @@ Returns the logical NOT of a boolean value.
         (!Field("tags").arrayContains("nonfiction"))
           .as("isFiction")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -414,7 +414,7 @@ Android
                 field("tags").arrayContains("nonfiction")
             ).alias("isFiction")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -426,7 +426,7 @@ Android
                 field("tags").arrayContains("nonfiction")
             ).alias("isFiction")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -437,7 +437,7 @@ Android
         .collection("books")
         .select(Not(Field.of("tags").array_contains("nonfiction")).as_("isFiction"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -447,7 +447,7 @@ Android
             .collection("books")
             .select(not(arrayContains(field("tags"), "nonfiction")).as("isFiction"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### CONDITIONAL
 
@@ -480,7 +480,7 @@ Evaluates and returns the `false_case` if the condition resolves to `FALSE` , `N
             .conditional(constant("longRead"), constant("shortRead"))
         ]).as("extendedTags")
       )
-    );test.firestore.js
+    );
 
 ### Web
 
@@ -492,7 +492,7 @@ Evaluates and returns the `false_case` if the condition resolves to `FALSE` , `N
             .conditional(constant("longRead"), constant("shortRead"))
         ]).as("extendedTags")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -507,7 +507,7 @@ Evaluates and returns the `false_case` if the condition resolves to `FALSE` , `N
           )
         ]).as("extendedTags")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -523,7 +523,7 @@ Android
                 )
             ).alias("extendedTags")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -539,7 +539,7 @@ Android
                 )
             ).alias("extendedTags")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -564,7 +564,7 @@ Android
             .as_("extendedTags")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -581,7 +581,7 @@ Android
                             constant("shortRead")))
                     .as("extendedTags"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### IF\_NULL
 
@@ -650,7 +650,7 @@ Returns `TRUE` if `value` is in the `search_space` array.
         field("genre").equalAny(["Science Fiction", "Psychological Thriller"])
           .as("matchesGenreFilters")
       )
-    );test.firestore.js
+    );
 
 ### Web
 
@@ -660,7 +660,7 @@ Returns `TRUE` if `value` is in the `search_space` array.
         field("genre").equalAny(["Science Fiction", "Psychological Thriller"])
           .as("matchesGenreFilters")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -670,7 +670,7 @@ Returns `TRUE` if `value` is in the `search_space` array.
         Field("genre").equalAny(["Science Fiction", "Psychological Thriller"])
           .as("matchesGenreFilters")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -681,7 +681,7 @@ Android
             field("genre").equalAny(listOf("Science Fiction", "Psychological Thriller"))
                 .alias("matchesGenreFilters")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -692,7 +692,7 @@ Android
             field("genre").equalAny(Arrays.asList("Science Fiction", "Psychological Thriller"))
                 .alias("matchesGenreFilters")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -707,7 +707,7 @@ Android
             .as_("matchesGenreFilters")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -719,7 +719,7 @@ Android
                 equalAny(field("genre"), Arrays.asList("Science Fiction", "Psychological Thriller"))
                     .as("matchesGenreFilters"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### NOT\_EQUAL\_ANY
 
@@ -750,7 +750,7 @@ Returns `TRUE` if `value` is not in the `search_space` array.
         field("author").notEqualAny(["George Orwell", "F. Scott Fitzgerald"])
           .as("byExcludedAuthors")
       )
-    );test.firestore.js
+    );
 
 ### Web
 
@@ -760,7 +760,7 @@ Returns `TRUE` if `value` is not in the `search_space` array.
         field("author").notEqualAny(["George Orwell", "F. Scott Fitzgerald"])
           .as("byExcludedAuthors")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -770,7 +770,7 @@ Returns `TRUE` if `value` is not in the `search_space` array.
         Field("author").notEqualAny(["George Orwell", "F. Scott Fitzgerald"])
           .as("byExcludedAuthors")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -781,7 +781,7 @@ Android
             field("author").notEqualAny(listOf("George Orwell", "F. Scott Fitzgerald"))
                 .alias("byExcludedAuthors")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -792,7 +792,7 @@ Android
             field("author").notEqualAny(Arrays.asList("George Orwell", "F. Scott Fitzgerald"))
                 .alias("byExcludedAuthors")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -807,7 +807,7 @@ Android
             .as_("byExcludedAuthors")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -819,7 +819,7 @@ Android
                 notEqualAny(field("author"), Arrays.asList("George Orwell", "F. Scott Fitzgerald"))
                     .as("byExcludedAuthors"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### MAXIMUM
 
@@ -853,14 +853,14 @@ If there are multiple maximum equivalent values, any one of those values can be 
     const result = await execute(db.pipeline()
       .collection("books")
       .aggregate(field("price").maximum().as("maximumPrice"))
-    );test.firestore.js
+    );
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .aggregate(field("price").maximum().as("maximumPrice"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -869,7 +869,7 @@ If there are multiple maximum equivalent values, any one of those values can be 
       .select([
         Field("rating").logicalMaximum([1]).as("flooredRating")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -879,7 +879,7 @@ Android
         .select(
             field("rating").logicalMaximum(1).alias("flooredRating")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -889,7 +889,7 @@ Android
         .select(
             field("rating").logicalMaximum(1).alias("flooredRating")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -900,7 +900,7 @@ Android
         .collection("books")
         .select(Field.of("rating").logical_maximum(1).as_("flooredRating"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -910,7 +910,7 @@ Android
             .collection("books")
             .select(logicalMaximum(field("rating"), 1).as("flooredRating"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### MINIMUM
 
@@ -944,14 +944,14 @@ If there are multiple minimum equivalent values, any one of those values can be 
     const result = await execute(db.pipeline()
       .collection("books")
       .aggregate(field("price").minimum().as("minimumPrice"))
-    );test.firestore.js
+    );
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .aggregate(field("price").minimum().as("minimumPrice"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -960,7 +960,7 @@ If there are multiple minimum equivalent values, any one of those values can be 
       .select([
         Field("rating").logicalMinimum([5]).as("cappedRating")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -970,7 +970,7 @@ Android
         .select(
             field("rating").logicalMinimum(5).alias("cappedRating")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -980,7 +980,7 @@ Android
         .select(
             field("rating").logicalMinimum(5).alias("cappedRating")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -991,7 +991,7 @@ Android
         .collection("books")
         .select(Field.of("rating").logical_minimum(5).as_("cappedRating"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -1001,7 +1001,7 @@ Android
             .collection("books")
             .select(logicalMinimum(field("rating"), 5).as("cappedRating"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ## What's next
 

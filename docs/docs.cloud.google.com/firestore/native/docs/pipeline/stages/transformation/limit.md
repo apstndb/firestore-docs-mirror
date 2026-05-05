@@ -17,7 +17,7 @@ Limits the number of documents returned by the pipeline.
       .sort(field("name").ascending())
       // Step 4: Return the top 10. Note applying the limit earlier in the
       // pipeline would have unintentional results.
-      .limit(10);test.firestore.js
+      .limit(10);
 
 ##### Swift
 
@@ -30,7 +30,7 @@ Limits the number of documents returned by the pipeline.
       .sort([Field("name").ascending()])
       // Step 4: Return the top 10. Note applying the limit earlier in the pipeline would have
       // unintentional results.
-      .limit(10)PipelineSnippets.swift
+      .limit(10)
 
 ##### Kotlin  
 Android
@@ -44,7 +44,7 @@ Android
         .sort(field("name").ascending())
         // Step 4: Return the top 10. Note applying the limit earlier in the pipeline would have
         // unintentional results.
-        .limit(10)DocSnippets.kt
+        .limit(10)
 
 ##### Java  
 Android
@@ -58,7 +58,7 @@ Android
         .sort(field("name").ascending())
         // Step 4: Return the top 10. Note applying the limit earlier in the pipeline would have
         // unintentional results.
-        .limit(10);DocSnippets.java
+        .limit(10);
 
 ##### Python
 
@@ -70,7 +70,7 @@ Android
         .where(Field.of("population").greater_than(100_000))
         .sort(Field.of("name").ascending())
         .limit(10)
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -80,7 +80,7 @@ Android
             .collection("cities")
             .where(field("population").greaterThan(100_000))
             .sort(ascending(field("name")))
-            .limit(10);PipelineSnippets.java
+            .limit(10);
 
 ## Behavior
 

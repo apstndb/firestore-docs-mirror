@@ -42,7 +42,7 @@ Returns the count of documents from the previous stage where `expression` evalua
     const countField = await db.pipeline()
       .collection("books")
       .aggregate(field("ratings").count().as("count"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -56,7 +56,7 @@ Returns the count of documents from the previous stage where `expression` evalua
     const countField = await execute(db.pipeline()
       .collection("books")
       .aggregate(field("ratings").count().as("count"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -70,7 +70,7 @@ Returns the count of documents from the previous stage where `expression` evalua
     let countField = try await db.pipeline()
       .collection("books")
       .aggregate([Field("ratings").count().as("count")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -85,7 +85,7 @@ Android
     val countField = db.pipeline()
         .collection("books")
         .aggregate(AggregateFunction.count("ratings").alias("count"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -100,7 +100,7 @@ Android
     Task<Pipeline.Snapshot> countField = db.pipeline()
         .collection("books")
         .aggregate(AggregateFunction.count("ratings").alias("count"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -117,7 +117,7 @@ Android
         .collection("books")
         .aggregate(Count("ratings").as_("count"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -132,7 +132,7 @@ Android
             .collection("books")
             .aggregate(count("ratings").as("count"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### COUNT\_IF
 
@@ -151,7 +151,7 @@ Returns the number of documents from the previous stage where `expression` evalu
       .aggregate(
         field("rating").greaterThan(4).countIf().as("filteredCount")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -160,7 +160,7 @@ Returns the number of documents from the previous stage where `expression` evalu
       .aggregate(
         field("rating").greaterThan(4).countIf().as("filteredCount")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -169,7 +169,7 @@ Returns the number of documents from the previous stage where `expression` evalu
       .aggregate([
         AggregateFunction("count_if", [Field("rating").greaterThan(4)]).as("filteredCount")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -179,7 +179,7 @@ Android
         .aggregate(
             AggregateFunction.countIf(field("rating").greaterThan(4)).alias("filteredCount")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -189,7 +189,7 @@ Android
         .aggregate(
             AggregateFunction.countIf(field("rating").greaterThan(4)).alias("filteredCount")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -200,7 +200,7 @@ Android
         .collection("books")
         .aggregate(Field.of("rating").greater_than(4).count_if().as_("filteredCount"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -210,7 +210,7 @@ Android
             .collection("books")
             .aggregate(countIf(field("rating").greaterThan(4)).as("filteredCount"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### COUNT\_DISTINCT
 
@@ -227,21 +227,21 @@ Returns the number of unique non- `NULL` , non- `ABSENT` values of `expression` 
     const result = await db.pipeline()
       .collection("books")
       .aggregate(field("author").countDistinct().as("unique_authors"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .aggregate(field("author").countDistinct().as("unique_authors"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .aggregate([AggregateFunction("count_distinct", [Field("author")]).as("unique_authors")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -249,7 +249,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .aggregate(AggregateFunction.countDistinct("author").alias("unique_authors"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -257,7 +257,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .aggregate(AggregateFunction.countDistinct("author").alias("unique_authors"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -268,7 +268,7 @@ Android
         .collection("books")
         .aggregate(Field.of("author").count_distinct().as_("unique_authors"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -278,7 +278,7 @@ Android
             .collection("books")
             .aggregate(countDistinct("author").as("unique_authors"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### SUM
 
@@ -299,21 +299,21 @@ The output will have the same type as the widest input type except in these case
     const result = await db.pipeline()
       .collection("cities")
       .aggregate(field("population").sum().as("totalPopulation"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("cities")
       .aggregate(field("population").sum().as("totalPopulation"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("cities")
       .aggregate([Field("population").sum().as("totalPopulation")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -321,7 +321,7 @@ Android
     val result = db.pipeline()
         .collection("cities")
         .aggregate(AggregateFunction.sum("population").alias("totalPopulation"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -329,7 +329,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("cities")
         .aggregate(AggregateFunction.sum("population").alias("totalPopulation"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -340,7 +340,7 @@ Android
         .collection("cities")
         .aggregate(Field.of("population").sum().as_("totalPopulation"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -350,7 +350,7 @@ Android
             .collection("cities")
             .aggregate(sum("population").as("totalPopulation"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### AVERAGE
 
@@ -371,21 +371,21 @@ The output will have the same type as the input type except in these cases:
     const result = await db.pipeline()
       .collection("cities")
       .aggregate(field("population").average().as("averagePopulation"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("cities")
       .aggregate(field("population").average().as("averagePopulation"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("cities")
       .aggregate([Field("population").average().as("averagePopulation")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -393,7 +393,7 @@ Android
     val result = db.pipeline()
         .collection("cities")
         .aggregate(AggregateFunction.average("population").alias("averagePopulation"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -401,7 +401,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("cities")
         .aggregate(AggregateFunction.average("population").alias("averagePopulation"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -412,7 +412,7 @@ Android
         .collection("cities")
         .aggregate(Field.of("population").average().as_("averagePopulation"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -422,7 +422,7 @@ Android
             .collection("cities")
             .aggregate(average("population").as("averagePopulation"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### MINIMUM
 
@@ -443,21 +443,21 @@ If there are multiple minimum equivalent values, any one of those values can be 
     const result = await db.pipeline()
       .collection("books")
       .aggregate(field("price").minimum().as("minimumPrice"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .aggregate(field("price").minimum().as("minimumPrice"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .aggregate([Field("price").minimum().as("minimumPrice")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -465,7 +465,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .aggregate(AggregateFunction.minimum("price").alias("minimumPrice"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -473,7 +473,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .aggregate(AggregateFunction.minimum("price").alias("minimumPrice"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -484,7 +484,7 @@ Android
         .collection("books")
         .aggregate(Field.of("price").minimum().as_("minimumPrice"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -494,7 +494,7 @@ Android
             .collection("books")
             .aggregate(minimum("price").as("minimumPrice"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### MAXIMUM
 
@@ -515,21 +515,21 @@ If there are multiple maximum equivalent values, any one of those values can be 
     const result = await db.pipeline()
       .collection("books")
       .aggregate(field("price").maximum().as("maximumPrice"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .aggregate(field("price").maximum().as("maximumPrice"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .aggregate([Field("price").maximum().as("maximumPrice")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -537,7 +537,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .aggregate(AggregateFunction.maximum("price").alias("maximumPrice"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -545,7 +545,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .aggregate(AggregateFunction.maximum("price").alias("maximumPrice"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -556,7 +556,7 @@ Android
         .collection("books")
         .aggregate(Field.of("price").maximum().as_("maximumPrice"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -566,7 +566,7 @@ Android
             .collection("books")
             .aggregate(maximum("price").as("maximumPrice"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### FIRST
 

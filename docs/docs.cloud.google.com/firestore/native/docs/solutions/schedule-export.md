@@ -61,7 +61,7 @@ Follow the steps below to create a Node.js Cloud Function that initiates a Fires
             console.error(err);
             throw new Error('Export operation failed');
           });
-        });index.js
+        });
 
 3.  In the code above, modify the following:
     

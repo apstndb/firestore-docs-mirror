@@ -67,7 +67,7 @@ initializeFirestore(app,
               // ...
           }
       });
-    // Subsequent queries will use persistence, if it was enabled successfullytest.firestore.js
+    // Subsequent queries will use persistence, if it was enabled successfully
 
 ##### Swift
 
@@ -87,7 +87,7 @@ initializeFirestore(app,
     
     // Enable offline data persistence
     let db = Firestore.firestore()
-    db.settings = settingsViewController.swift
+    db.settings = settings
 
 ##### Objective-C
 
@@ -109,7 +109,7 @@ initializeFirestore(app,
     
     // Enable offline data persistence
     FIRFirestore *db = [FIRFirestore firestore];
-    db.settings = settings;ViewController.m
+    db.settings = settings;
 
 ##### Kotlin  
 Android
@@ -120,7 +120,7 @@ Android
         // Use persistent disk cache (default)
         setLocalCacheSettings(persistentCacheSettings {})
     }
-    db.firestoreSettings = settingsDocSnippets.kt
+    db.firestoreSettings = settings
 
 ##### Java  
 Android
@@ -133,7 +133,7 @@ Android
         .setLocalCacheSettings(PersistentCacheSettings.newBuilder()
                                 .build())
         .build();
-    db.setFirestoreSettings(settings);DocSnippets.java
+    db.setFirestoreSettings(settings);
 
 ### Dart
 
@@ -142,7 +142,7 @@ Android
     
     // Web
     await db
-        .enablePersistence(const PersistenceSettings(synchronizeTabs: true));firestore.dart
+        .enablePersistence(const PersistenceSettings(synchronizeTabs: true));
 
 ### Configure cache size
 
@@ -154,7 +154,7 @@ When persistence is enabled, Firestore caches every document received from the b
     
     const firestoreDb = initializeFirestore(app, {
       cacheSizeBytes: CACHE_SIZE_UNLIMITED
-    });fs_setup_cache.js
+    });
 
 ### Web version 8
 
@@ -162,7 +162,7 @@ When persistence is enabled, Firestore caches every document received from the b
 
     firebase.firestore().settings({
         cacheSizeBytes: firebase.firestore.CACHE_SIZE_UNLIMITED
-    });test.firestore.js
+    });
 
 ##### Swift
 
@@ -174,7 +174,7 @@ When persistence is enabled, Firestore caches every document received from the b
     let settings = Firestore.firestore().settings
     // Set cache size to 100 MB
     settings.cacheSettings = PersistentCacheSettings(sizeBytes: 100 * 1024 * 1024 as NSNumber)
-    Firestore.firestore().settings = settingsViewController.swift
+    Firestore.firestore().settings = settings
 
 ##### Objective-C
 
@@ -188,7 +188,7 @@ FIRFirestoreSettings *settings = [FIRFirestore firestore].settings;
 // Set cache size to 100 MB
 settings.cacheSettings =
     [[FIRPersistentCacheSettings alloc] initWithSizeBytes:@(100 * 1024 * 1024)];
-[FIRFirestore firestore].settings = settings;ViewController.m
+[FIRFirestore firestore].settings = settings;
   
 ```
 
@@ -219,7 +219,7 @@ Android
     db.settings = const Settings(
       persistenceEnabled: true,
       cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED,
-    );firestore.dart
+    );
 
 ## Listen to offline data
 
@@ -243,7 +243,7 @@ By default, no event is raised if *only* the `SnapshotMetadata` changed. If you 
             const source = snapshot.metadata.fromCache ? "local cache" : "server";
             console.log("Data came from " + source);
         });
-    });use_from_cache.js
+    });
 
 ### Web version 8
 
@@ -259,7 +259,7 @@ By default, no event is raised if *only* the `SnapshotMetadata` changed. If you 
               var source = snapshot.metadata.fromCache ? "local cache" : "server";
               console.log("Data came from " + source);
           });
-      });test.firestore.js
+      });
 
 ##### Swift
 
@@ -282,7 +282,7 @@ By default, no event is raised if *only* the `SnapshotMetadata` changed. If you 
     
         let source = snapshot.metadata.isFromCache ? "local cache" : "server"
         print("Metadata: Data fetched from \(source)")
-      }ViewController.swift
+      }
 
 ##### Objective-C
 
@@ -305,7 +305,7 @@ By default, no event is raised if *only* the `SnapshotMetadata` changed. If you 
     
           NSString *source = snapshot.metadata.isFromCache ? @"local cache" : @"server";
           NSLog(@"Metadata: Data fetched from %@", source);
-        }];ViewController.m
+        }];
 
 ##### Kotlin  
 Android
@@ -329,7 +329,7 @@ Android
                 }
                 Log.d(TAG, "Data fetched from $source")
             }
-        }DocSnippets.kt
+        }
 
 ##### Java  
 Android
@@ -355,7 +355,7 @@ Android
                     }
     
                 }
-            });DocSnippets.java
+            });
 
 ### Dart
 
@@ -372,7 +372,7 @@ Android
           print("Data fetched from $source}");
         }
       }
-    });firestore.dart
+    });
 
 ## Get offline data
 
@@ -459,7 +459,7 @@ You can use the method below to disable network access for your Firestore client
     await disableNetwork(db);
     console.log("Network disabled!");
     // Do offline actions
-    // ...disable_network.js
+    // ...
 
 ### Web version 8
 
@@ -469,7 +469,7 @@ You can use the method below to disable network access for your Firestore client
         .then(() => {
             // Do offline actions
             // ...
-        });test.firestore.js
+        });
 
 ##### Swift
 
@@ -478,7 +478,7 @@ You can use the method below to disable network access for your Firestore client
     Firestore.firestore().disableNetwork { (error) in
       // Do offline things
       // ...
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -487,7 +487,7 @@ You can use the method below to disable network access for your Firestore client
     [[FIRFirestore firestore] disableNetworkWithCompletion:^(NSError *_Nullable error) {
       // Do offline actions
       // ...
-    }];ViewController.m
+    }];
 
 ##### Kotlin  
 Android
@@ -495,7 +495,7 @@ Android
     db.disableNetwork().addOnCompleteListener {
         // Do offline things
         // ...
-    }DocSnippets.kt
+    }
 
 ##### Java  
 Android
@@ -507,13 +507,13 @@ Android
                     // Do offline things
                     // ...
                 }
-            });DocSnippets.java
+            });
 
 ### Dart
 
     db.disableNetwork().then((_) {
       // Do offline things
-    });firestore.dart
+    });
 
 Use the following method to re-enable network access:
 
@@ -523,7 +523,7 @@ Use the following method to re-enable network access:
     
     await enableNetwork(db);
     // Do online actions
-    // ...enable_network.js
+    // ...
 
 ### Web version 8
 
@@ -533,7 +533,7 @@ Use the following method to re-enable network access:
         .then(() => {
             // Do online actions
             // ...
-        });test.firestore.js
+        });
 
 ##### Swift
 
@@ -542,7 +542,7 @@ Use the following method to re-enable network access:
     Firestore.firestore().enableNetwork { (error) in
       // Do online things
       // ...
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -551,7 +551,7 @@ Use the following method to re-enable network access:
     [[FIRFirestore firestore] enableNetworkWithCompletion:^(NSError *_Nullable error) {
       // Do online actions
       // ...
-    }];ViewController.m
+    }];
 
 ##### Kotlin  
 Android
@@ -559,7 +559,7 @@ Android
     db.enableNetwork().addOnCompleteListener {
         // Do online things
         // ...
-    }DocSnippets.kt
+    }
 
 ##### Java  
 Android
@@ -571,10 +571,10 @@ Android
                     // Do online things
                     // ...
                 }
-            });DocSnippets.java
+            });
 
 ### Dart
 
     db.enableNetwork().then((_) {
       // Back online
-    });firestore.dart
+    });

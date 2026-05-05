@@ -29,7 +29,7 @@ Returns the cosine distance between `x` and `y` .
       .select(
         field("embedding").cosineDistance(sampleVector).as("cosineDistance")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -37,7 +37,7 @@ Returns the cosine distance between `x` and `y` .
     const result = await execute(db.pipeline()
       .collection("books")
       .select(
-        field("embedding").cosineDistance(sampleVector).as("cosineDistance")));test.firestore.js
+        field("embedding").cosineDistance(sampleVector).as("cosineDistance")));
 
 ##### Swift
 
@@ -47,7 +47,7 @@ Returns the cosine distance between `x` and `y` .
       .select([
         Field("embedding").cosineDistance(sampleVector).as("cosineDistance")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -58,7 +58,7 @@ Android
         .select(
             field("embedding").cosineDistance(sampleVector).alias("cosineDistance")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -69,7 +69,7 @@ Android
         .select(
             field("embedding").cosineDistance(sampleVector).alias("cosineDistance")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -84,7 +84,7 @@ Android
             Field.of("embedding").cosine_distance(sample_vector).as_("cosineDistance")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -95,7 +95,7 @@ Android
             .collection("books")
             .select(cosineDistance(field("embedding"), sampleVector).as("cosineDistance"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### DOT\_PRODUCT
 
@@ -115,7 +115,7 @@ Returns the dot product of `x` and `y` .
       .select(
         field("embedding").dotProduct(sampleVector).as("dotProduct")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -125,7 +125,7 @@ Returns the dot product of `x` and `y` .
       .select(
         field("embedding").dotProduct(sampleVector).as("dotProduct")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -135,7 +135,7 @@ Returns the dot product of `x` and `y` .
       .select([
         Field("embedding").dotProduct(sampleVector).as("dotProduct")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -146,7 +146,7 @@ Android
         .select(
             field("embedding").dotProduct(sampleVector).alias("dotProduct")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -157,7 +157,7 @@ Android
         .select(
             field("embedding").dotProduct(sampleVector).alias("dotProduct")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -170,7 +170,7 @@ Android
         .collection("books")
         .select(Field.of("embedding").dot_product(sample_vector).as_("dotProduct"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -181,7 +181,7 @@ Android
             .collection("books")
             .select(dotProduct(field("embedding"), sampleVector).as("dotProduct"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### EUCLIDEAN\_DISTANCE
 
@@ -201,7 +201,7 @@ Computes the euclidean distance between `x` and `y` .
       .select(
         field("embedding").euclideanDistance(sampleVector).as("euclideanDistance")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -211,7 +211,7 @@ Computes the euclidean distance between `x` and `y` .
       .select(
         field("embedding").euclideanDistance(sampleVector).as("euclideanDistance")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -221,7 +221,7 @@ Computes the euclidean distance between `x` and `y` .
       .select([
         Field("embedding").euclideanDistance(sampleVector).as("euclideanDistance")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -232,7 +232,7 @@ Android
         .select(
             field("embedding").euclideanDistance(sampleVector).alias("euclideanDistance")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -243,7 +243,7 @@ Android
         .select(
             field("embedding").euclideanDistance(sampleVector).alias("euclideanDistance")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -260,7 +260,7 @@ Android
             .as_("euclideanDistance")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -271,7 +271,7 @@ Android
             .collection("books")
             .select(euclideanDistance(field("embedding"), sampleVector).as("euclideanDistance"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### MANHATTAN\_DISTANCE
 
@@ -300,7 +300,7 @@ Returns the number of elements in a `VECTOR` .
       .select(
         field("embedding").vectorLength().as("vectorLength")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -309,7 +309,7 @@ Returns the number of elements in a `VECTOR` .
       .select(
         field("embedding").vectorLength().as("vectorLength")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -318,7 +318,7 @@ Returns the number of elements in a `VECTOR` .
       .select([
         Field("embedding").vectorLength().as("vectorLength")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -328,7 +328,7 @@ Android
         .select(
             field("embedding").vectorLength().alias("vectorLength")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -338,7 +338,7 @@ Android
         .select(
             field("embedding").vectorLength().alias("vectorLength")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -349,7 +349,7 @@ Android
         .collection("books")
         .select(Field.of("embedding").vector_length().as_("vectorLength"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -359,7 +359,7 @@ Android
             .collection("books")
             .select(vectorLength(field("embedding")).as("vectorLength"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ## What's next
 

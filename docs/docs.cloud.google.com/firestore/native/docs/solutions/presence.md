@@ -61,7 +61,7 @@ First, consider how a traditional presence system works in Realtime Database.
             // server will mark us as offline once we lose connection.
             userStatusDatabaseRef.set(isOnlineForDatabase);
         });
-    });index.js
+    });
 
 This example is a complete Realtime Database presence system. It handles multiple disconnections, crashes and so on.
 
@@ -116,7 +116,7 @@ Let's take a look at the changes required to fulfill the first issue - updating 
             // We'll also add Firestore set here for when we come online.
             userStatusFirestoreRef.set(isOnlineForFirestore);
         });
-    });index.js
+    });
 
 With these changes we've now ensured that the *local* Firestore state will always reflect the online/offline status of the device. This means you can listen to the `/status/{uid}` document and use the data to change your UI to reflect connection status.
 
@@ -125,7 +125,7 @@ With these changes we've now ensured that the *local* Firestore state will alway
     userStatusFirestoreRef.onSnapshot(function(doc) {
         var isOnline = doc.data().state == 'online';
         // ... use isOnline
-    });index.js
+    });
 
 #### Updating Firestore globally
 
@@ -148,7 +148,7 @@ Although our application correctly reports online presence to itself, this statu
                     // ...
                 }
             });
-        });index.js
+        });
 
 Once you deploy this function, you'll have a complete presence system running with Firestore. Below is an example of monitoring for any users who come online or go offline using a `where()` query.
 
@@ -169,7 +169,7 @@ Once you deploy this function, you'll have a complete presence system running wi
                     // ...
                 }
             });
-        });index.js
+        });
 
 ## Limitations
 

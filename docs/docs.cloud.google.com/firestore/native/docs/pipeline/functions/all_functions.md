@@ -42,7 +42,7 @@ Returns the count of documents from the previous stage where `expression` evalua
     const countField = await db.pipeline()
       .collection("books")
       .aggregate(field("ratings").count().as("count"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -56,7 +56,7 @@ Returns the count of documents from the previous stage where `expression` evalua
     const countField = await execute(db.pipeline()
       .collection("books")
       .aggregate(field("ratings").count().as("count"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -70,7 +70,7 @@ Returns the count of documents from the previous stage where `expression` evalua
     let countField = try await db.pipeline()
       .collection("books")
       .aggregate([Field("ratings").count().as("count")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -85,7 +85,7 @@ Android
     val countField = db.pipeline()
         .collection("books")
         .aggregate(AggregateFunction.count("ratings").alias("count"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -100,7 +100,7 @@ Android
     Task<Pipeline.Snapshot> countField = db.pipeline()
         .collection("books")
         .aggregate(AggregateFunction.count("ratings").alias("count"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -117,7 +117,7 @@ Android
         .collection("books")
         .aggregate(Count("ratings").as_("count"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -132,7 +132,7 @@ Android
             .collection("books")
             .aggregate(count("ratings").as("count"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### COUNT\_IF
 
@@ -151,7 +151,7 @@ Returns the number of documents from the previous stage where `expression` evalu
       .aggregate(
         field("rating").greaterThan(4).countIf().as("filteredCount")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -160,7 +160,7 @@ Returns the number of documents from the previous stage where `expression` evalu
       .aggregate(
         field("rating").greaterThan(4).countIf().as("filteredCount")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -169,7 +169,7 @@ Returns the number of documents from the previous stage where `expression` evalu
       .aggregate([
         AggregateFunction("count_if", [Field("rating").greaterThan(4)]).as("filteredCount")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -179,7 +179,7 @@ Android
         .aggregate(
             AggregateFunction.countIf(field("rating").greaterThan(4)).alias("filteredCount")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -189,7 +189,7 @@ Android
         .aggregate(
             AggregateFunction.countIf(field("rating").greaterThan(4)).alias("filteredCount")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -200,7 +200,7 @@ Android
         .collection("books")
         .aggregate(Field.of("rating").greater_than(4).count_if().as_("filteredCount"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -210,7 +210,7 @@ Android
             .collection("books")
             .aggregate(countIf(field("rating").greaterThan(4)).as("filteredCount"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### COUNT\_DISTINCT
 
@@ -227,21 +227,21 @@ Returns the number of unique non- `NULL` , non- `ABSENT` values of `expression` 
     const result = await db.pipeline()
       .collection("books")
       .aggregate(field("author").countDistinct().as("unique_authors"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .aggregate(field("author").countDistinct().as("unique_authors"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .aggregate([AggregateFunction("count_distinct", [Field("author")]).as("unique_authors")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -249,7 +249,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .aggregate(AggregateFunction.countDistinct("author").alias("unique_authors"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -257,7 +257,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .aggregate(AggregateFunction.countDistinct("author").alias("unique_authors"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -268,7 +268,7 @@ Android
         .collection("books")
         .aggregate(Field.of("author").count_distinct().as_("unique_authors"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -278,7 +278,7 @@ Android
             .collection("books")
             .aggregate(countDistinct("author").as("unique_authors"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### SUM
 
@@ -299,21 +299,21 @@ The output will have the same type as the widest input type except in these case
     const result = await db.pipeline()
       .collection("cities")
       .aggregate(field("population").sum().as("totalPopulation"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("cities")
       .aggregate(field("population").sum().as("totalPopulation"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("cities")
       .aggregate([Field("population").sum().as("totalPopulation")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -321,7 +321,7 @@ Android
     val result = db.pipeline()
         .collection("cities")
         .aggregate(AggregateFunction.sum("population").alias("totalPopulation"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -329,7 +329,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("cities")
         .aggregate(AggregateFunction.sum("population").alias("totalPopulation"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -340,7 +340,7 @@ Android
         .collection("cities")
         .aggregate(Field.of("population").sum().as_("totalPopulation"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -350,7 +350,7 @@ Android
             .collection("cities")
             .aggregate(sum("population").as("totalPopulation"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### AVERAGE
 
@@ -371,21 +371,21 @@ The output will have the same type as the input type except in these cases:
     const result = await db.pipeline()
       .collection("cities")
       .aggregate(field("population").average().as("averagePopulation"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("cities")
       .aggregate(field("population").average().as("averagePopulation"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("cities")
       .aggregate([Field("population").average().as("averagePopulation")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -393,7 +393,7 @@ Android
     val result = db.pipeline()
         .collection("cities")
         .aggregate(AggregateFunction.average("population").alias("averagePopulation"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -401,7 +401,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("cities")
         .aggregate(AggregateFunction.average("population").alias("averagePopulation"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -412,7 +412,7 @@ Android
         .collection("cities")
         .aggregate(Field.of("population").average().as_("averagePopulation"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -422,7 +422,7 @@ Android
             .collection("cities")
             .aggregate(average("population").as("averagePopulation"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### MINIMUM
 
@@ -443,21 +443,21 @@ If there are multiple minimum equivalent values, any one of those values can be 
     const result = await db.pipeline()
       .collection("books")
       .aggregate(field("price").minimum().as("minimumPrice"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .aggregate(field("price").minimum().as("minimumPrice"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .aggregate([Field("price").minimum().as("minimumPrice")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -465,7 +465,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .aggregate(AggregateFunction.minimum("price").alias("minimumPrice"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -473,7 +473,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .aggregate(AggregateFunction.minimum("price").alias("minimumPrice"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -484,7 +484,7 @@ Android
         .collection("books")
         .aggregate(Field.of("price").minimum().as_("minimumPrice"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -494,7 +494,7 @@ Android
             .collection("books")
             .aggregate(minimum("price").as("minimumPrice"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### MAXIMUM
 
@@ -515,21 +515,21 @@ If there are multiple maximum equivalent values, any one of those values can be 
     const result = await db.pipeline()
       .collection("books")
       .aggregate(field("price").maximum().as("maximumPrice"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .aggregate(field("price").maximum().as("maximumPrice"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .aggregate([Field("price").maximum().as("maximumPrice")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -537,7 +537,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .aggregate(AggregateFunction.maximum("price").alias("maximumPrice"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -545,7 +545,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .aggregate(AggregateFunction.maximum("price").alias("maximumPrice"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -556,7 +556,7 @@ Android
         .collection("books")
         .aggregate(Field.of("price").maximum().as_("maximumPrice"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -566,7 +566,7 @@ Android
             .collection("books")
             .aggregate(maximum("price").as("maximumPrice"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### FIRST
 
@@ -697,21 +697,21 @@ Returns the value of `x + y` .
     const result = await db.pipeline()
       .collection("books")
       .select(field("soldBooks").add(field("unsoldBooks")).as("totalBooks"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("soldBooks").add(field("unsoldBooks")).as("totalBooks"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("soldBooks").add(Field("unsoldBooks")).as("totalBooks")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -719,7 +719,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(Expression.add(field("soldBooks"), field("unsoldBooks")).alias("totalBooks"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -728,7 +728,7 @@ Android
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.add(field("soldBooks"), field("unsoldBooks")).alias("totalBooks"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -741,7 +741,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("soldBooks").add(Field.of("unsoldBooks")).as_("totalBooks"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -751,7 +751,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(add(field("soldBooks"), field("unsoldBooks")).as("totalBooks"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### SUBTRACT
 
@@ -779,7 +779,7 @@ Returns the value of `x - y` .
     const result = await db.pipeline()
       .collection("books")
       .select(field("price").subtract(constant(storeCredit)).as("totalCost"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -787,7 +787,7 @@ Returns the value of `x - y` .
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("price").subtract(constant(storeCredit)).as("totalCost"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -795,7 +795,7 @@ Returns the value of `x - y` .
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("price").subtract(Constant(storeCredit)).as("totalCost")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -804,7 +804,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(Expression.subtract(field("price"), storeCredit).alias("totalCost"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -814,7 +814,7 @@ int storeCredit = 7;
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.subtract(field("price"), storeCredit).alias("totalCost"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -828,7 +828,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("price").subtract(store_credit).as_("totalCost"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -839,7 +839,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(subtract(field("price"), storeCredit).as("totalCost"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### MULTIPLY
 
@@ -867,21 +867,21 @@ Returns the value of `x * y` .
     const result = await db.pipeline()
       .collection("books")
       .select(field("price").multiply(field("soldBooks")).as("revenue"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("price").multiply(field("soldBooks")).as("revenue"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("price").multiply(Field("soldBooks")).as("revenue")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -889,7 +889,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(Expression.multiply(field("price"), field("soldBooks")).alias("revenue"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -898,7 +898,7 @@ Android
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.multiply(field("price"), field("soldBooks")).alias("revenue"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -911,7 +911,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("price").multiply(Field.of("soldBooks")).as_("revenue"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -921,7 +921,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(multiply(field("price"), field("soldBooks")).as("revenue"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### DIVIDE
 
@@ -949,21 +949,21 @@ Returns the value of `x / y` . Integer division is truncated.
     const result = await db.pipeline()
       .collection("books")
       .select(field("ratings").divide(field("soldBooks")).as("reviewRate"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("ratings").divide(field("soldBooks")).as("reviewRate"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("ratings").divide(Field("soldBooks")).as("reviewRate")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -971,7 +971,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(Expression.divide(field("ratings"), field("soldBooks")).alias("reviewRate"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -980,7 +980,7 @@ Android
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.divide(field("ratings"), field("soldBooks")).alias("reviewRate"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -993,7 +993,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("ratings").divide(Field.of("soldBooks")).as_("reviewRate"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -1003,7 +1003,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(divide(field("ratings"), field("soldBooks")).as("reviewRate"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### MOD
 
@@ -1037,7 +1037,7 @@ Returns the remainder of `x / y` .
     const result = await db.pipeline()
       .collection("books")
       .select(field("unsoldBooks").mod(constant(displayCapacity)).as("warehousedBooks"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -1045,7 +1045,7 @@ Returns the remainder of `x / y` .
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("unsoldBooks").mod(constant(displayCapacity)).as("warehousedBooks"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -1053,7 +1053,7 @@ Returns the remainder of `x / y` .
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("unsoldBooks").mod(Constant(displayCapacity)).as("warehousedBooks")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -1062,7 +1062,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(Expression.mod(field("unsoldBooks"), displayCapacity).alias("warehousedBooks"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -1072,7 +1072,7 @@ int displayCapacity = 1000;
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.mod(field("unsoldBooks"), displayCapacity).alias("warehousedBooks"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -1086,7 +1086,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("unsoldBooks").mod(display_capacity).as_("warehousedBooks"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -1097,7 +1097,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(mod(field("unsoldBooks"), displayCapacity).as("warehousedBooks"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### CEIL
 
@@ -1131,7 +1131,7 @@ Returns the smallest integer value that isn't less than `number` .
       .select(
         field("unsoldBooks").divide(constant(booksPerShelf)).ceil().as("requiredShelves")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -1141,7 +1141,7 @@ Returns the smallest integer value that isn't less than `number` .
       .select(
         field("unsoldBooks").divide(constant(booksPerShelf)).ceil().as("requiredShelves")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -1151,7 +1151,7 @@ Returns the smallest integer value that isn't less than `number` .
       .select([
         Field("unsoldBooks").divide(Constant(booksPerShelf)).ceil().as("requiredShelves")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -1162,7 +1162,7 @@ Android
         .select(
             Expression.divide(field("unsoldBooks"), booksPerShelf).ceil().alias("requiredShelves")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -1174,7 +1174,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
     .select(
         Expression.divide(field("unsoldBooks"), booksPerShelf).ceil().alias("requiredShelves")
     )
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -1193,7 +1193,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .as_("requiredShelves")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -1204,7 +1204,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(ceil(divide(field("unsoldBooks"), booksPerShelf)).as("requiredShelves"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### FLOOR
 
@@ -1237,7 +1237,7 @@ Returns the largest integer value that isn't greater than `number` .
       .addFields(
         field("wordCount").divide(field("pages")).floor().as("wordsPerPage")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -1246,7 +1246,7 @@ Returns the largest integer value that isn't greater than `number` .
       .addFields(
         field("wordCount").divide(field("pages")).floor().as("wordsPerPage")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -1255,7 +1255,7 @@ Returns the largest integer value that isn't greater than `number` .
       .addFields([
         Field("wordCount").divide(Field("pages")).floor().as("wordsPerPage")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -1265,7 +1265,7 @@ Android
         .addFields(
             Expression.divide(field("wordCount"), field("pages")).floor().alias("wordsPerPage")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -1276,7 +1276,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
     .addFields(
         Expression.divide(field("wordCount"), field("pages")).floor().alias("wordsPerPage")
     )
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -1291,7 +1291,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             Field.of("wordCount").divide(Field.of("pages")).floor().as_("wordsPerPage")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -1301,7 +1301,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .addFields(floor(divide(field("wordCount"), field("pages"))).as("wordsPerPage"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### ROUND
 
@@ -1338,7 +1338,7 @@ Rounds `places` digits off a `number` . Rounds digits from the right of the deci
       .collection("books")
       .select(field("soldBooks").multiply(field("price")).round().as("partialRevenue"))
       .aggregate(field("partialRevenue").sum().as("totalRevenue"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -1346,7 +1346,7 @@ Rounds `places` digits off a `number` . Rounds digits from the right of the deci
       .collection("books")
       .select(field("soldBooks").multiply(field("price")).round().as("partialRevenue"))
       .aggregate(field("partialRevenue").sum().as("totalRevenue"))
-      );test.firestore.js
+      );
 
 ##### Swift
 
@@ -1354,7 +1354,7 @@ Rounds `places` digits off a `number` . Rounds digits from the right of the deci
       .collection("books")
       .select([Field("soldBooks").multiply(Field("price")).round().as("partialRevenue")])
       .aggregate([Field("partialRevenue").sum().as("totalRevenue")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -1363,7 +1363,7 @@ Android
         .collection("books")
         .select(Expression.multiply(field("soldBooks"), field("price")).round().alias("partialRevenue"))
         .aggregate(AggregateFunction.sum("partialRevenue").alias("totalRevenue"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -1373,7 +1373,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.multiply(field("soldBooks"), field("price")).round().alias("partialRevenue"))
     .aggregate(AggregateFunction.sum("partialRevenue").alias("totalRevenue"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -1392,7 +1392,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         )
         .aggregate(Field.of("partialRevenue").sum().as_("totalRevenue"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -1403,7 +1403,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .select(round(multiply(field("soldBooks"), field("price"))).as("partialRevenue"))
             .aggregate(sum("partialRevenue").as("totalRevenue"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### TRUNC
 
@@ -1479,7 +1479,7 @@ Returns the value `base` raised to the power of `exponent` .
           // Inaccurate for large distances or close to poles
           .as("approximateDistanceToGoogle")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -1501,7 +1501,7 @@ Returns the value `base` raised to the power of `exponent` .
           // Inaccurate for large distances or close to poles
           .as("approximateDistanceToGoogle")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -1523,7 +1523,7 @@ Returns the value `base` raised to the power of `exponent` .
           // Inaccurate for large distances or close to poles
           .as("approximateDistanceToGoogle")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -1546,7 +1546,7 @@ Android
                 // Inaccurate for large distances or close to poles
                 .alias("approximateDistanceToGoogle")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -1570,7 +1570,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             // Inaccurate for large distances or close to poles
             .alias("approximateDistanceToGoogle")
     )
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -1603,7 +1603,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .as_("approximateDistanceToGoogle")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -1623,7 +1623,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
                     // Inaccurate for large distances or close to poles
                     .as("approximateDistanceToGoogle"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### SQRT
 
@@ -1669,7 +1669,7 @@ Returns the square root of a `number` .
           // Inaccurate for large distances or close to poles
           .as("approximateDistanceToGoogle")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -1691,7 +1691,7 @@ Returns the square root of a `number` .
           // Inaccurate for large distances or close to poles
           .as("approximateDistanceToGoogle")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -1713,7 +1713,7 @@ Returns the square root of a `number` .
           // Inaccurate for large distances or close to poles
           .as("approximateDistanceToGoogle")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -1736,7 +1736,7 @@ Android
                 // Inaccurate for large distances or close to poles
                 .alias("approximateDistanceToGoogle")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -1760,7 +1760,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             // Inaccurate for large distances or close to poles
             .alias("approximateDistanceToGoogle")
     )
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -1793,7 +1793,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .as_("approximateDistanceToGoogle")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -1813,7 +1813,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
                     // Inaccurate for large distances or close to poles
                     .as("approximateDistanceToGoogle"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### EXP
 
@@ -1839,21 +1839,21 @@ Returns the value of Euler's number raised to the power of `exponent` , also cal
     const result = await db.pipeline()
       .collection("books")
       .select(field("rating").exp().as("expRating"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("rating").exp().as("expRating"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("rating").exp().as("expRating")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -1861,7 +1861,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("rating").exp().alias("expRating"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -1870,7 +1870,7 @@ Android
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("rating").exp().alias("expRating"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -1883,7 +1883,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("rating").exp().as_("expRating"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -1893,7 +1893,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(exp(field("rating")).as("expRating"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### LN
 
@@ -1922,21 +1922,21 @@ Returns the natural logarithm of `number` . This function is equivalent to `log(
     const result = await db.pipeline()
       .collection("books")
       .select(field("rating").ln().as("lnRating"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("rating").ln().as("lnRating"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("rating").ln().as("lnRating")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -1944,7 +1944,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("rating").ln().alias("lnRating"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -1953,7 +1953,7 @@ Android
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("rating").ln().alias("lnRating"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -1966,7 +1966,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("rating").ln().as_("lnRating"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -1976,7 +1976,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(ln(field("rating")).as("lnRating"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### LOG
 
@@ -2106,14 +2106,14 @@ Concatenates two or more arrays into a single `ARRAY` .
     const result = await db.pipeline()
       .collection("books")
       .select(field("genre").arrayConcat([field("subGenre")]).as("allGenres"))
-      .execute();test.firestore.js
+      .execute();
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("genre").arrayConcat([Field("subGenre")]).as("allGenres")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -2121,7 +2121,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("genre").arrayConcat(field("subGenre")).alias("allGenres"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -2130,7 +2130,7 @@ Android
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("genre").arrayConcat(field("subGenre")).alias("allGenres"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -2143,7 +2143,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("genre").array_concat(Field.of("subGenre")).as_("allGenres"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -2153,7 +2153,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(arrayConcat(field("genre"), field("subGenre")).as("allGenres"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### ARRAY\_CONTAINS
 
@@ -2179,21 +2179,21 @@ Returns `TRUE` if `value` is found in the `array` , and `FALSE` otherwise.
     const result = await db.pipeline()
       .collection("books")
       .select(field("genre").arrayContains(constant("mystery")).as("isMystery"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("genre").arrayContains(constant("mystery")).as("isMystery"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("genre").arrayContains(Constant("mystery")).as("isMystery")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -2201,7 +2201,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("genre").arrayContains("mystery").alias("isMystery"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -2210,7 +2210,7 @@ Android
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("genre").arrayContains("mystery").alias("isMystery"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -2223,7 +2223,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("genre").array_contains("mystery").as_("isMystery"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -2233,7 +2233,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(arrayContains(field("genre"), "mystery").as("isMystery"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### ARRAY\_CONTAINS\_ALL
 
@@ -2265,7 +2265,7 @@ Returns `TRUE` if all `search_values` are found in the `array` , and `FALSE` oth
           .arrayContainsAll([constant("fantasy"), constant("adventure")])
           .as("isFantasyAdventure")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -2276,7 +2276,7 @@ Returns `TRUE` if all `search_values` are found in the `array` , and `FALSE` oth
           .arrayContainsAll([constant("fantasy"), constant("adventure")])
           .as("isFantasyAdventure")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -2287,7 +2287,7 @@ Returns `TRUE` if all `search_values` are found in the `array` , and `FALSE` oth
           .arrayContainsAll([Constant("fantasy"), Constant("adventure")])
           .as("isFantasyAdventure")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -2299,7 +2299,7 @@ Android
                 .arrayContainsAll(listOf("fantasy", "adventure"))
                 .alias("isFantasyAdventure")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -2312,7 +2312,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .arrayContainsAll(Arrays.asList("fantasy", "adventure"))
             .alias("isFantasyAdventure")
     )
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -2329,7 +2329,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .as_("isFantasyAdventure")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -2341,7 +2341,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
                 arrayContainsAll(field("genre"), Arrays.asList("fantasy", "adventure"))
                     .as("isFantasyAdventure"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### ARRAY\_CONTAINS\_ANY
 
@@ -2370,7 +2370,7 @@ Returns `TRUE` if any of the `search_values` are found in the `array` , and `FAL
           .arrayContainsAny([constant("fantasy"), constant("nonfiction")])
           .as("isMysteryOrFantasy")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -2381,7 +2381,7 @@ Returns `TRUE` if any of the `search_values` are found in the `array` , and `FAL
           .arrayContainsAny([constant("fantasy"), constant("nonfiction")])
           .as("isMysteryOrFantasy")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -2392,7 +2392,7 @@ Returns `TRUE` if any of the `search_values` are found in the `array` , and `FAL
           .arrayContainsAny([Constant("fantasy"), Constant("nonfiction")])
           .as("isMysteryOrFantasy")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -2404,7 +2404,7 @@ Android
                 .arrayContainsAny(listOf("fantasy", "nonfiction"))
                 .alias("isMysteryOrFantasy")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -2417,7 +2417,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .arrayContainsAny(Arrays.asList("fantasy", "nonfiction"))
             .alias("isMysteryOrFantasy")
     )
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -2434,7 +2434,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .as_("isMysteryOrFantasy")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -2446,7 +2446,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
                 arrayContainsAny(field("genre"), Arrays.asList("fantasy", "nonfiction"))
                     .as("isMysteryOrFantasy"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### ARRAY\_FILTER
 
@@ -2522,21 +2522,21 @@ Returns the number of elements in `array` .
     const result = await db.pipeline()
       .collection("books")
       .select(field("genre").arrayLength().as("genreCount"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("genre").arrayLength().as("genreCount"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("genre").arrayLength().as("genreCount")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -2544,7 +2544,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("genre").arrayLength().alias("genreCount"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -2553,7 +2553,7 @@ Android
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("genre").arrayLength().alias("genreCount"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -2566,7 +2566,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("genre").array_length().as_("genreCount"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -2576,7 +2576,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(arrayLength(field("genre")).as("genreCount"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### ARRAY\_REVERSE
 
@@ -2601,21 +2601,21 @@ Reverses the given `array` .
     const result = await db.pipeline()
       .collection("books")
       .select(arrayReverse(field("genre")).as("reversedGenres"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("genre").arrayReverse().as("reversedGenres"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("genre").arrayReverse().as("reversedGenres")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -2623,7 +2623,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("genre").arrayReverse().alias("reversedGenres"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ``` 
     Java
@@ -2631,7 +2631,7 @@ Android
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("genre").arrayReverse().alias("reversedGenres"))
-    .execute();DocSnippets.java
+    .execute();
   
 ```
 
@@ -2644,7 +2644,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("genre").array_reverse().as_("reversedGenres"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -2654,7 +2654,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(arrayReverse(field("genre")).as("reversedGenres"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### ARRAY\_FIRST
 
@@ -3010,21 +3010,21 @@ Returns `TRUE` if `x` and `y` are equal, and `FALSE` otherwise.
     const result = await db.pipeline()
       .collection("books")
       .select(field("rating").equal(5).as("hasPerfectRating"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("rating").equal(5).as("hasPerfectRating"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("rating").equal(5).as("hasPerfectRating")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -3032,7 +3032,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("rating").equal(5).alias("hasPerfectRating"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -3040,7 +3040,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(field("rating").equal(5).alias("hasPerfectRating"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -3051,7 +3051,7 @@ Android
         .collection("books")
         .select(Field.of("rating").equal(5).as_("hasPerfectRating"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -3061,7 +3061,7 @@ Android
             .collection("books")
             .select(equal(field("rating"), 5).as("hasPerfectRating"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### GREATER\_THAN
 
@@ -3093,21 +3093,21 @@ If `x` and `y` are not comparable, returns `FALSE` .
     const result = await db.pipeline()
       .collection("books")
       .select(field("rating").greaterThan(4).as("hasHighRating"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("rating").greaterThan(4).as("hasHighRating"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("rating").greaterThan(4).as("hasHighRating")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -3115,7 +3115,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("rating").greaterThan(4).alias("hasHighRating"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -3123,7 +3123,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(field("rating").greaterThan(4).alias("hasHighRating"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -3134,7 +3134,7 @@ Android
         .collection("books")
         .select(Field.of("rating").greater_than(4).as_("hasHighRating"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -3144,7 +3144,7 @@ Android
             .collection("books")
             .select(greaterThan(field("rating"), 4).as("hasHighRating"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### GREATER\_THAN\_OR\_EQUAL
 
@@ -3176,21 +3176,21 @@ If `x` and `y` are not comparable, returns `FALSE` .
     const result = await db.pipeline()
       .collection("books")
       .select(field("published").greaterThanOrEqual(1900).as("publishedIn20thCentury"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("published").greaterThanOrEqual(1900).as("publishedIn20thCentury"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("published").greaterThanOrEqual(1900).as("publishedIn20thCentury")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -3198,7 +3198,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("published").greaterThanOrEqual(1900).alias("publishedIn20thCentury"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -3206,7 +3206,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(field("published").greaterThanOrEqual(1900).alias("publishedIn20thCentury"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -3221,7 +3221,7 @@ Android
             .as_("publishedIn20thCentury")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -3231,7 +3231,7 @@ Android
             .collection("books")
             .select(greaterThanOrEqual(field("published"), 1900).as("publishedIn20thCentury"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### LESS\_THAN
 
@@ -3263,21 +3263,21 @@ If `x` and `y` are not comparable, returns `FALSE` .
     const result = await db.pipeline()
       .collection("books")
       .select(field("published").lessThan(1923).as("isPublicDomainProbably"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("published").lessThan(1923).as("isPublicDomainProbably"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("published").lessThan(1923).as("isPublicDomainProbably")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -3285,7 +3285,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("published").lessThan(1923).alias("isPublicDomainProbably"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -3293,7 +3293,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(field("published").lessThan(1923).alias("isPublicDomainProbably"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -3304,7 +3304,7 @@ Android
         .collection("books")
         .select(Field.of("published").less_than(1923).as_("isPublicDomainProbably"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -3314,7 +3314,7 @@ Android
             .collection("books")
             .select(lessThan(field("published"), 1923).as("isPublicDomainProbably"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### LESS\_THAN\_OR\_EQUAL
 
@@ -3346,21 +3346,21 @@ If `x` and `y` are not comparable, returns `FALSE` .
     const result = await db.pipeline()
       .collection("books")
       .select(field("rating").lessThanOrEqual(2).as("hasBadRating"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("rating").lessThanOrEqual(2).as("hasBadRating"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("rating").lessThanOrEqual(2).as("hasBadRating")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -3368,7 +3368,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("rating").lessThanOrEqual(2).alias("hasBadRating"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -3376,7 +3376,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(field("rating").lessThanOrEqual(2).alias("hasBadRating"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -3387,7 +3387,7 @@ Android
         .collection("books")
         .select(Field.of("rating").less_than_or_equal(2).as_("hasBadRating"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -3397,7 +3397,7 @@ Android
             .collection("books")
             .select(lessThanOrEqual(field("rating"), 2).as("hasBadRating"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### NOT\_EQUAL
 
@@ -3426,21 +3426,21 @@ Returns `TRUE` if `x` is not equal to `y` , and `FALSE` otherwise.
     const result = await db.pipeline()
       .collection("books")
       .select(field("title").notEqual("1984").as("not1984"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("title").notEqual("1984").as("not1984"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("title").notEqual("1984").as("not1984")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -3448,7 +3448,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("title").notEqual("1984").alias("not1984"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -3456,7 +3456,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(field("title").notEqual("1984").alias("not1984"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -3467,7 +3467,7 @@ Android
         .collection("books")
         .select(Field.of("title").not_equal("1984").as_("not1984"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -3477,7 +3477,7 @@ Android
             .collection("books")
             .select(notEqual(field("title"), "1984").as("not1984"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### CMP
 
@@ -3542,7 +3542,7 @@ Returns `TRUE` if `value` is not the absent value.
     const result = await db.pipeline()
       .collection("books")
       .select(field("rating").exists().as("hasRating"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -3551,14 +3551,14 @@ Returns `TRUE` if `value` is not the absent value.
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("rating").exists().as("hasRating"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("rating").exists().as("hasRating")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -3568,7 +3568,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("rating").exists().alias("hasRating"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -3578,7 +3578,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(field("rating").exists().alias("hasRating"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -3589,7 +3589,7 @@ Android
         .collection("books")
         .select(Field.of("rating").exists().as_("hasRating"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -3599,7 +3599,7 @@ Android
             .collection("books")
             .select(exists(field("rating")).as("hasRating"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### IS\_ABSENT
 
@@ -3811,7 +3811,7 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
         and(field("rating").greaterThan(4), field("price").lessThan(10))
           .as("under10Recommendation")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -3821,7 +3821,7 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
         and(field("rating").greaterThan(4), field("price").lessThan(10))
           .as("under10Recommendation")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -3831,7 +3831,7 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
         (Field("rating").greaterThan(4) && Field("price").lessThan(10))
           .as("under10Recommendation")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -3843,7 +3843,7 @@ Android
               field("price").lessThan(10))
                 .alias("under10Recommendation")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -3856,7 +3856,7 @@ Android
                 field("price").lessThan(10)
             ).alias("under10Recommendation")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -3871,7 +3871,7 @@ Android
             ).as_("under10Recommendation")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -3883,7 +3883,7 @@ Android
                 and(greaterThan(field("rating"), 4), lessThan(field("price"), 10))
                     .as("under10Recommendation"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### OR
 
@@ -3916,7 +3916,7 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
         or(field("genre").equal("Fantasy"), field("tags").arrayContains("adventure"))
           .as("matchesSearchFilters")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -3926,7 +3926,7 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
         or(field("genre").equal("Fantasy"), field("tags").arrayContains("adventure"))
           .as("matchesSearchFilters")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -3936,7 +3936,7 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
         (Field("genre").equal("Fantasy") || Field("tags").arrayContains("adventure"))
           .as("matchesSearchFilters")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -3948,7 +3948,7 @@ Android
               field("tags").arrayContains("adventure"))
                 .alias("matchesSearchFilters")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -3961,7 +3961,7 @@ Android
                 field("tags").arrayContains("adventure")
             ).alias("matchesSearchFilters")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -3977,7 +3977,7 @@ Android
             ).as_("matchesSearchFilters")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -3989,7 +3989,7 @@ Android
                 or(equal(field("genre"), "Fantasy"), arrayContains(field("tags"), "adventure"))
                     .as("matchesSearchFilters"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### XOR
 
@@ -4023,7 +4023,7 @@ Returns `NULL` if any of the given values are `ABSENT` or `NULL` .
         xor(field("tags").arrayContains("magic"), field("tags").arrayContains("nonfiction"))
           .as("matchesSearchFilters")
       )
-    );test.firestore.js
+    );
 
 ### Web
 
@@ -4033,7 +4033,7 @@ Returns `NULL` if any of the given values are `ABSENT` or `NULL` .
         xor(field("tags").arrayContains("magic"), field("tags").arrayContains("nonfiction"))
           .as("matchesSearchFilters")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -4043,7 +4043,7 @@ Returns `NULL` if any of the given values are `ABSENT` or `NULL` .
         (Field("tags").arrayContains("magic") ^ Field("tags").arrayContains("nonfiction"))
           .as("matchesSearchFilters")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -4055,7 +4055,7 @@ Android
               field("tags").arrayContains("nonfiction"))
                 .alias("matchesSearchFilters")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -4068,7 +4068,7 @@ Android
                 field("tags").arrayContains("nonfiction")
             ).alias("matchesSearchFilters")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -4086,7 +4086,7 @@ Android
             ).as_("matchesSearchFilters")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -4100,7 +4100,7 @@ Android
                         arrayContains(field("tags"), "nonfiction"))
                     .as("matchesSearchFilters"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### NOR
 
@@ -4144,7 +4144,7 @@ Returns the logical NOT of a boolean value.
         field("tags").arrayContains("nonfiction").not()
           .as("isFiction")
       )
-    );test.firestore.js
+    );
 
 ### Web
 
@@ -4154,7 +4154,7 @@ Returns the logical NOT of a boolean value.
         field("tags").arrayContains("nonfiction").not()
           .as("isFiction")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -4164,7 +4164,7 @@ Returns the logical NOT of a boolean value.
         (!Field("tags").arrayContains("nonfiction"))
           .as("isFiction")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -4176,7 +4176,7 @@ Android
                 field("tags").arrayContains("nonfiction")
             ).alias("isFiction")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -4188,7 +4188,7 @@ Android
                 field("tags").arrayContains("nonfiction")
             ).alias("isFiction")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -4199,7 +4199,7 @@ Android
         .collection("books")
         .select(Not(Field.of("tags").array_contains("nonfiction")).as_("isFiction"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -4209,7 +4209,7 @@ Android
             .collection("books")
             .select(not(arrayContains(field("tags"), "nonfiction")).as("isFiction"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### CONDITIONAL
 
@@ -4242,7 +4242,7 @@ Evaluates and returns the `false_case` if the condition resolves to `FALSE` , `N
             .conditional(constant("longRead"), constant("shortRead"))
         ]).as("extendedTags")
       )
-    );test.firestore.js
+    );
 
 ### Web
 
@@ -4254,7 +4254,7 @@ Evaluates and returns the `false_case` if the condition resolves to `FALSE` , `N
             .conditional(constant("longRead"), constant("shortRead"))
         ]).as("extendedTags")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -4269,7 +4269,7 @@ Evaluates and returns the `false_case` if the condition resolves to `FALSE` , `N
           )
         ]).as("extendedTags")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -4285,7 +4285,7 @@ Android
                 )
             ).alias("extendedTags")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -4301,7 +4301,7 @@ Android
                 )
             ).alias("extendedTags")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -4326,7 +4326,7 @@ Android
             .as_("extendedTags")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -4343,7 +4343,7 @@ Android
                             constant("shortRead")))
                     .as("extendedTags"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### IF\_NULL
 
@@ -4412,7 +4412,7 @@ Returns `TRUE` if `value` is in the `search_space` array.
         field("genre").equalAny(["Science Fiction", "Psychological Thriller"])
           .as("matchesGenreFilters")
       )
-    );test.firestore.js
+    );
 
 ### Web
 
@@ -4422,7 +4422,7 @@ Returns `TRUE` if `value` is in the `search_space` array.
         field("genre").equalAny(["Science Fiction", "Psychological Thriller"])
           .as("matchesGenreFilters")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -4432,7 +4432,7 @@ Returns `TRUE` if `value` is in the `search_space` array.
         Field("genre").equalAny(["Science Fiction", "Psychological Thriller"])
           .as("matchesGenreFilters")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -4443,7 +4443,7 @@ Android
             field("genre").equalAny(listOf("Science Fiction", "Psychological Thriller"))
                 .alias("matchesGenreFilters")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -4454,7 +4454,7 @@ Android
             field("genre").equalAny(Arrays.asList("Science Fiction", "Psychological Thriller"))
                 .alias("matchesGenreFilters")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -4469,7 +4469,7 @@ Android
             .as_("matchesGenreFilters")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -4481,7 +4481,7 @@ Android
                 equalAny(field("genre"), Arrays.asList("Science Fiction", "Psychological Thriller"))
                     .as("matchesGenreFilters"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### NOT\_EQUAL\_ANY
 
@@ -4512,7 +4512,7 @@ Returns `TRUE` if `value` is not in the `search_space` array.
         field("author").notEqualAny(["George Orwell", "F. Scott Fitzgerald"])
           .as("byExcludedAuthors")
       )
-    );test.firestore.js
+    );
 
 ### Web
 
@@ -4522,7 +4522,7 @@ Returns `TRUE` if `value` is not in the `search_space` array.
         field("author").notEqualAny(["George Orwell", "F. Scott Fitzgerald"])
           .as("byExcludedAuthors")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -4532,7 +4532,7 @@ Returns `TRUE` if `value` is not in the `search_space` array.
         Field("author").notEqualAny(["George Orwell", "F. Scott Fitzgerald"])
           .as("byExcludedAuthors")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -4543,7 +4543,7 @@ Android
             field("author").notEqualAny(listOf("George Orwell", "F. Scott Fitzgerald"))
                 .alias("byExcludedAuthors")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -4554,7 +4554,7 @@ Android
             field("author").notEqualAny(Arrays.asList("George Orwell", "F. Scott Fitzgerald"))
                 .alias("byExcludedAuthors")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -4569,7 +4569,7 @@ Android
             .as_("byExcludedAuthors")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -4581,7 +4581,7 @@ Android
                 notEqualAny(field("author"), Arrays.asList("George Orwell", "F. Scott Fitzgerald"))
                     .as("byExcludedAuthors"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### MAXIMUM
 
@@ -4615,14 +4615,14 @@ If there are multiple maximum equivalent values, any one of those values can be 
     const result = await execute(db.pipeline()
       .collection("books")
       .aggregate(field("price").maximum().as("maximumPrice"))
-    );test.firestore.js
+    );
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .aggregate(field("price").maximum().as("maximumPrice"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -4631,7 +4631,7 @@ If there are multiple maximum equivalent values, any one of those values can be 
       .select([
         Field("rating").logicalMaximum([1]).as("flooredRating")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -4641,7 +4641,7 @@ Android
         .select(
             field("rating").logicalMaximum(1).alias("flooredRating")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -4651,7 +4651,7 @@ Android
         .select(
             field("rating").logicalMaximum(1).alias("flooredRating")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -4662,7 +4662,7 @@ Android
         .collection("books")
         .select(Field.of("rating").logical_maximum(1).as_("flooredRating"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -4672,7 +4672,7 @@ Android
             .collection("books")
             .select(logicalMaximum(field("rating"), 1).as("flooredRating"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### MINIMUM
 
@@ -4706,14 +4706,14 @@ If there are multiple minimum equivalent values, any one of those values can be 
     const result = await execute(db.pipeline()
       .collection("books")
       .aggregate(field("price").minimum().as("minimumPrice"))
-    );test.firestore.js
+    );
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .aggregate(field("price").minimum().as("minimumPrice"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -4722,7 +4722,7 @@ If there are multiple minimum equivalent values, any one of those values can be 
       .select([
         Field("rating").logicalMinimum([5]).as("cappedRating")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -4732,7 +4732,7 @@ Android
         .select(
             field("rating").logicalMinimum(5).alias("cappedRating")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -4742,7 +4742,7 @@ Android
         .select(
             field("rating").logicalMinimum(5).alias("cappedRating")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -4753,7 +4753,7 @@ Android
         .collection("books")
         .select(Field.of("rating").logical_minimum(5).as_("cappedRating"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -4763,7 +4763,7 @@ Android
             .collection("books")
             .select(logicalMinimum(field("rating"), 5).as("cappedRating"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ## **Map Functions**
 
@@ -4807,7 +4807,7 @@ Returns the value in a map given a specified key. Returns an `ABSENT` value if t
       .select(
         field("awards").mapGet("pulitzer").as("hasPulitzerAward")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -4816,7 +4816,7 @@ Returns the value in a map given a specified key. Returns an `ABSENT` value if t
       .select(
         field("awards").mapGet("pulitzer").as("hasPulitzerAward")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -4825,7 +4825,7 @@ Returns the value in a map given a specified key. Returns an `ABSENT` value if t
       .select([
         Field("awards").mapGet("pulitzer").as("hasPulitzerAward")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -4835,7 +4835,7 @@ Android
         .select(
             field("awards").mapGet("pulitzer").alias("hasPulitzerAward")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -4845,7 +4845,7 @@ Android
         .select(
             field("awards").mapGet("pulitzer").alias("hasPulitzerAward")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -4856,7 +4856,7 @@ Android
         .collection("books")
         .select(Field.of("awards").map_get("pulitzer").as_("hasPulitzerAward"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -4866,7 +4866,7 @@ Android
             .collection("books")
             .select(mapGet(field("awards"), "pulitzer").as("hasPulitzerAward"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### MAP\_SET
 
@@ -5000,7 +5000,7 @@ Returns the number of `BYTES` in a `STRING` or `BYTES` value.
       .select(
         field("title").byteLength().as("titleByteLength")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -5009,7 +5009,7 @@ Returns the number of `BYTES` in a `STRING` or `BYTES` value.
       .select(
         field("title").byteLength().as("titleByteLength")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -5018,7 +5018,7 @@ Returns the number of `BYTES` in a `STRING` or `BYTES` value.
       .select([
         Field("title").byteLength().as("titleByteLength")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -5028,7 +5028,7 @@ Android
         .select(
             field("title").byteLength().alias("titleByteLength")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -5038,7 +5038,7 @@ Android
         .select(
             field("title").byteLength().alias("titleByteLength")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -5049,7 +5049,7 @@ Android
         .collection("books")
         .select(Field.of("title").byte_length().as_("titleByteLength"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -5059,7 +5059,7 @@ Android
             .collection("books")
             .select(byteLength(field("title")).as("titleByteLength"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### CHAR\_LENGTH
 
@@ -5086,7 +5086,7 @@ Returns the number of unicode code points in `STRING` value.
       .select(
         field("title").charLength().as("titleCharLength")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -5095,7 +5095,7 @@ Returns the number of unicode code points in `STRING` value.
       .select(
         field("title").charLength().as("titleCharLength")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -5104,7 +5104,7 @@ Returns the number of unicode code points in `STRING` value.
       .select([
         Field("title").charLength().as("titleCharLength")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -5114,7 +5114,7 @@ Android
         .select(
             field("title").charLength().alias("titleCharLength")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -5124,7 +5124,7 @@ Android
         .select(
             field("title").charLength().alias("titleCharLength")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -5135,7 +5135,7 @@ Android
         .collection("books")
         .select(Field.of("title").char_length().as_("titleCharLength"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -5145,7 +5145,7 @@ Android
             .collection("books")
             .select(charLength(field("title")).as("titleCharLength"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### STARTS\_WITH
 
@@ -5173,7 +5173,7 @@ Returns `TRUE` if `value` begins with `prefix` .
         field("title").startsWith("The")
           .as("needsSpecialAlphabeticalSort")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -5183,7 +5183,7 @@ Returns `TRUE` if `value` begins with `prefix` .
         field("title").startsWith("The")
           .as("needsSpecialAlphabeticalSort")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -5193,7 +5193,7 @@ Returns `TRUE` if `value` begins with `prefix` .
         Field("title").startsWith("The")
           .as("needsSpecialAlphabeticalSort")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -5204,7 +5204,7 @@ Android
             field("title").startsWith("The")
                 .alias("needsSpecialAlphabeticalSort")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -5215,7 +5215,7 @@ Android
             field("title").startsWith("The")
                 .alias("needsSpecialAlphabeticalSort")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -5228,7 +5228,7 @@ Android
             Field.of("title").starts_with("The").as_("needsSpecialAlphabeticalSort")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -5238,7 +5238,7 @@ Android
             .collection("books")
             .select(startsWith(field("title"), "The").as("needsSpecialAlphabeticalSort"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### ENDS\_WITH
 
@@ -5266,7 +5266,7 @@ Returns `TRUE` if `value` ends with `postfix` .
         field("name").endsWith("16 inch")
           .as("16InLaptops")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ##### Swift
 
@@ -5276,7 +5276,7 @@ Returns `TRUE` if `value` ends with `postfix` .
         Field("name").endsWith("16 inch")
           .as("16InLaptops")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -5287,7 +5287,7 @@ Android
             field("name").endsWith("16 inch")
                 .alias("16InLaptops")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -5298,7 +5298,7 @@ Android
             field("name").endsWith("16 inch")
                 .alias("16InLaptops")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -5309,7 +5309,7 @@ Android
         .collection("inventory/devices/laptops")
         .select(Field.of("name").ends_with("16 inch").as_("16InLaptops"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -5319,7 +5319,7 @@ Android
             .collection("inventory/devices/laptops")
             .select(endsWith(field("name"), "16 inch").as("16InLaptops"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### LIKE
 
@@ -5348,7 +5348,7 @@ Returns `TRUE` if `value` matches `pattern` .
         field("genre").like("%Fiction")
           .as("anyFiction")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -5358,7 +5358,7 @@ Returns `TRUE` if `value` matches `pattern` .
         field("genre").like("%Fiction")
           .as("anyFiction")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -5368,7 +5368,7 @@ Returns `TRUE` if `value` matches `pattern` .
         Field("genre").like("%Fiction")
           .as("anyFiction")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -5379,7 +5379,7 @@ Android
             field("genre").like("%Fiction")
                 .alias("anyFiction")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -5390,7 +5390,7 @@ Android
             field("genre").like("%Fiction")
                 .alias("anyFiction")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -5401,7 +5401,7 @@ Android
         .collection("books")
         .select(Field.of("genre").like("%Fiction").as_("anyFiction"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -5411,7 +5411,7 @@ Android
             .collection("books")
             .select(like(field("genre"), "%Fiction").as("anyFiction"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### REGEX\_CONTAINS
 
@@ -5441,7 +5441,7 @@ Regular expressions follow the syntax of the [re2](https://github.com/google/re2
         field("title").regexContains("Firestore (Enterprise|Standard)")
           .as("isFirestoreRelated")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -5451,7 +5451,7 @@ Regular expressions follow the syntax of the [re2](https://github.com/google/re2
         field("title").regexContains("Firestore (Enterprise|Standard)")
           .as("isFirestoreRelated")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -5461,7 +5461,7 @@ Regular expressions follow the syntax of the [re2](https://github.com/google/re2
         Field("title").regexContains("Firestore (Enterprise|Standard)")
           .as("isFirestoreRelated")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -5472,7 +5472,7 @@ Android
             field("title").regexContains("Firestore (Enterprise|Standard)")
                 .alias("isFirestoreRelated")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -5483,7 +5483,7 @@ Android
             field("title").regexContains("Firestore (Enterprise|Standard)")
                 .alias("isFirestoreRelated")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -5498,7 +5498,7 @@ Android
             .as_("isFirestoreRelated")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -5510,7 +5510,7 @@ Android
                 regexContains(field("title"), "Firestore (Enterprise|Standard)")
                     .as("isFirestoreRelated"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### REGEX\_MATCH
 
@@ -5540,7 +5540,7 @@ Regular expressions follow the syntax of the [re2](https://github.com/google/re2
         field("title").regexMatch("Firestore (Enterprise|Standard)")
           .as("isFirestoreExactly")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -5550,7 +5550,7 @@ Regular expressions follow the syntax of the [re2](https://github.com/google/re2
         field("title").regexMatch("Firestore (Enterprise|Standard)")
           .as("isFirestoreExactly")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -5560,7 +5560,7 @@ Regular expressions follow the syntax of the [re2](https://github.com/google/re2
         Field("title").regexMatch("Firestore (Enterprise|Standard)")
           .as("isFirestoreExactly")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -5571,7 +5571,7 @@ Android
             field("title").regexMatch("Firestore (Enterprise|Standard)")
                 .alias("isFirestoreExactly")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -5582,7 +5582,7 @@ Android
             field("title").regexMatch("Firestore (Enterprise|Standard)")
                 .alias("isFirestoreExactly")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -5597,7 +5597,7 @@ Android
             .as_("isFirestoreExactly")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -5609,7 +5609,7 @@ Android
                 regexMatch(field("title"), "Firestore (Enterprise|Standard)")
                     .as("isFirestoreExactly"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### STRING\_CONCAT
 
@@ -5638,7 +5638,7 @@ Concatenates two or more `STRING` values into a single result.
         field("title").stringConcat(" by ", field("author"))
           .as("fullyQualifiedTitle")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -5648,7 +5648,7 @@ Concatenates two or more `STRING` values into a single result.
         field("title").stringConcat(" by ", field("author"))
           .as("fullyQualifiedTitle")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -5658,7 +5658,7 @@ Concatenates two or more `STRING` values into a single result.
         Field("title").concat([" by ", Field("author")])
           .as("fullyQualifiedTitle")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -5669,7 +5669,7 @@ Android
             field("title").concat(" by ", field("author"))
                 .alias("fullyQualifiedTitle")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -5680,7 +5680,7 @@ Android
             field("title").concat(" by ", field("author"))
                 .alias("fullyQualifiedTitle")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -5695,7 +5695,7 @@ Android
             .as_("fullyQualifiedTitle")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -5705,7 +5705,7 @@ Android
             .collection("books")
             .select(stringConcat(field("title"), " by ", field("author")).as("fullyQualifiedTitle"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### STRING\_CONTAINS
 
@@ -5735,7 +5735,7 @@ Checks if `value` contains the literal String `substring` .
         field("body").stringContains("Firestore")
           .as("isFirestoreRelated")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -5745,7 +5745,7 @@ Checks if `value` contains the literal String `substring` .
         field("body").stringContains("Firestore")
           .as("isFirestoreRelated")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -5755,7 +5755,7 @@ Checks if `value` contains the literal String `substring` .
         Field("body").stringContains("Firestore")
           .as("isFirestoreRelated")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -5766,7 +5766,7 @@ Android
             field("body").stringContains("Firestore")
                 .alias("isFirestoreRelated")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -5777,7 +5777,7 @@ Android
             field("body").stringContains("Firestore")
                 .alias("isFirestoreRelated")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -5788,7 +5788,7 @@ Android
         .collection("articles")
         .select(Field.of("body").string_contains("Firestore").as_("isFirestoreRelated"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -5798,7 +5798,7 @@ Android
             .collection("articles")
             .select(stringContains(field("body"), "Firestore").as("isFirestoreRelated"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### STRING\_INDEX\_OF
 
@@ -5856,7 +5856,7 @@ If a byte or char does not correspond to a UTF-8 lowercase alphabetic character,
         field("name").toUpper()
           .as("uppercaseName")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -5866,7 +5866,7 @@ If a byte or char does not correspond to a UTF-8 lowercase alphabetic character,
         field("name").toUpper()
           .as("uppercaseName")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -5876,7 +5876,7 @@ If a byte or char does not correspond to a UTF-8 lowercase alphabetic character,
         Field("name").toUpper()
           .as("uppercaseName")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -5887,7 +5887,7 @@ Android
             field("name").toUpper()
                 .alias("uppercaseName")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -5898,7 +5898,7 @@ Android
             field("name").toUpper()
                 .alias("uppercaseName")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -5909,7 +5909,7 @@ Android
         .collection("authors")
         .select(Field.of("name").to_upper().as_("uppercaseName"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -5919,7 +5919,7 @@ Android
             .collection("authors")
             .select(toUpper(field("name")).as("uppercaseName"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### TO\_LOWER
 
@@ -5950,7 +5950,7 @@ If a byte or char does not correspond to a UTF-8 uppercase alphabetic character,
         field("genre").toLower().equal("fantasy")
           .as("isFantasy")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -5960,7 +5960,7 @@ If a byte or char does not correspond to a UTF-8 uppercase alphabetic character,
         field("genre").toLower().equal("fantasy")
           .as("isFantasy")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -5970,7 +5970,7 @@ If a byte or char does not correspond to a UTF-8 uppercase alphabetic character,
         Field("genre").toLower().equal("fantasy")
           .as("isFantasy")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -5981,7 +5981,7 @@ Android
             field("genre").toLower().equal("fantasy")
                 .alias("isFantasy")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -5992,7 +5992,7 @@ Android
             field("genre").toLower().equal("fantasy")
                 .alias("isFantasy")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -6003,7 +6003,7 @@ Android
         .collection("authors")
         .select(Field.of("genre").to_lower().equal("fantasy").as_("isFantasy"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -6013,7 +6013,7 @@ Android
             .collection("authors")
             .select(equal(toLower(field("genre")), "fantasy").as("isFantasy"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### SUBSTRING
 
@@ -6062,7 +6062,7 @@ When `length` is provided:
         field("title").substring(4)
           .as("titleWithoutLeadingThe")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -6073,7 +6073,7 @@ When `length` is provided:
         field("title").substring(4)
           .as("titleWithoutLeadingThe")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -6084,7 +6084,7 @@ When `length` is provided:
         Field("title").substring(position: 4)
           .as("titleWithoutLeadingThe")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -6098,7 +6098,7 @@ Android
                 field("title").charLength().subtract(4))
                 .alias("titleWithoutLeadingThe")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -6112,7 +6112,7 @@ Android
                 field("title").charLength().subtract(4))
                 .alias("titleWithoutLeadingThe")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -6124,7 +6124,7 @@ Android
         .where(Field.of("title").starts_with("The "))
         .select(Field.of("title").substring(4).as_("titleWithoutLeadingThe"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -6137,7 +6137,7 @@ Android
                 substring(field("title"), constant(4), field("title").charLength())
                     .as("titleWithoutLeadingThe"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### STRING\_REVERSE
 
@@ -6167,7 +6167,7 @@ Characters are delineated by Unicode code points when the input is a `STRING` , 
       .select(
         field("name").reverse().as("reversedName")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -6176,7 +6176,7 @@ Characters are delineated by Unicode code points when the input is a `STRING` , 
       .select(
         field("name").reverse().as("reversedName")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -6185,7 +6185,7 @@ Characters are delineated by Unicode code points when the input is a `STRING` , 
       .select([
         Field("name").reverse().as("reversedName")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -6195,7 +6195,7 @@ Android
         .select(
             field("name").reverse().alias("reversedName")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -6205,7 +6205,7 @@ Android
         .select(
             field("name").reverse().alias("reversedName")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -6216,7 +6216,7 @@ Android
         .collection("books")
         .select(Field.of("name").string_reverse().as_("reversedName"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -6226,7 +6226,7 @@ Android
             .collection("books")
             .select(reverse(field("name")).as("reversedName"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### STRING\_REPEAT
 
@@ -6342,7 +6342,7 @@ When `values_to_trim` is provided:
       .select(
         field("name").trim().as("whitespaceTrimmedName")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -6351,7 +6351,7 @@ When `values_to_trim` is provided:
       .select([
         Field("name").trim(" \n\t").as("whitespaceTrimmedName")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -6361,7 +6361,7 @@ Android
         .select(
             field("name").trim().alias("whitespaceTrimmedName")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -6371,7 +6371,7 @@ Android
         .select(
             field("name").trim().alias("whitespaceTrimmedName")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -6382,7 +6382,7 @@ Android
         .collection("books")
         .select(Field.of("name").trim().as_("whitespaceTrimmedName"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -6392,7 +6392,7 @@ Android
             .collection("books")
             .select(trim(field("name")).as("whitespaceTrimmedName"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### LTRIM
 
@@ -6593,7 +6593,7 @@ Converts `input` (interpreted as the number of microseconds since `1970-01-01 00
       .select(
         field("createdAtMicros").unixMicrosToTimestamp().as("createdAtString")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -6602,7 +6602,7 @@ Converts `input` (interpreted as the number of microseconds since `1970-01-01 00
       .select(
         field("createdAtMicros").unixMicrosToTimestamp().as("createdAtString")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -6611,7 +6611,7 @@ Converts `input` (interpreted as the number of microseconds since `1970-01-01 00
       .select([
         Field("createdAtMicros").unixMicrosToTimestamp().as("createdAtString")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -6621,7 +6621,7 @@ Android
         .select(
             field("createdAtMicros").unixMicrosToTimestamp().alias("createdAtString")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -6631,7 +6631,7 @@ Android
         .select(
             field("createdAtMicros").unixMicrosToTimestamp().alias("createdAtString")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -6646,7 +6646,7 @@ Android
             .as_("createdAtString")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -6656,7 +6656,7 @@ Android
             .collection("documents")
             .select(unixMicrosToTimestamp(field("createdAtMicros")).as("createdAtString"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### UNIX\_MILLIS\_TO\_TIMESTAMP
 
@@ -6683,7 +6683,7 @@ Converts `input` (interpreted as the number of milliseconds since `1970-01-01 00
       .select(
         field("createdAtMillis").unixMillisToTimestamp().as("createdAtString")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -6692,7 +6692,7 @@ Converts `input` (interpreted as the number of milliseconds since `1970-01-01 00
       .select(
         field("createdAtMillis").unixMillisToTimestamp().as("createdAtString")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -6701,7 +6701,7 @@ Converts `input` (interpreted as the number of milliseconds since `1970-01-01 00
       .select([
         Field("createdAtMillis").unixMillisToTimestamp().as("createdAtString")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -6711,7 +6711,7 @@ Android
         .select(
             field("createdAtMillis").unixMillisToTimestamp().alias("createdAtString")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -6721,7 +6721,7 @@ Android
         .select(
             field("createdAtMillis").unixMillisToTimestamp().alias("createdAtString")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -6736,7 +6736,7 @@ Android
             .as_("createdAtString")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -6746,7 +6746,7 @@ Android
             .collection("documents")
             .select(unixMillisToTimestamp(field("createdAtMillis")).as("createdAtString"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### UNIX\_SECONDS\_TO\_TIMESTAMP
 
@@ -6773,7 +6773,7 @@ Converts `input` (interpreted as the number of seconds since `1970-01-01 00:00:0
       .select(
         field("createdAtSeconds").unixSecondsToTimestamp().as("createdAtString")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -6782,7 +6782,7 @@ Converts `input` (interpreted as the number of seconds since `1970-01-01 00:00:0
       .select(
         field("createdAtSeconds").unixSecondsToTimestamp().as("createdAtString")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -6791,7 +6791,7 @@ Converts `input` (interpreted as the number of seconds since `1970-01-01 00:00:0
       .select([
         Field("createdAtSeconds").unixSecondsToTimestamp().as("createdAtString")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -6801,7 +6801,7 @@ Android
         .select(
             field("createdAtSeconds").unixSecondsToTimestamp().alias("createdAtString")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -6811,7 +6811,7 @@ Android
         .select(
             field("createdAtSeconds").unixSecondsToTimestamp().alias("createdAtString")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -6826,7 +6826,7 @@ Android
             .as_("createdAtString")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -6836,7 +6836,7 @@ Android
             .collection("documents")
             .select(unixSecondsToTimestamp(field("createdAtSeconds")).as("createdAtString"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### TIMESTAMP\_ADD
 
@@ -6874,7 +6874,7 @@ Throws an error if the resulting timestamp does not fit within the `TIMESTAMP` r
       .select(
         field("createdAt").timestampAdd("day", 3653).as("expiresAt")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -6883,7 +6883,7 @@ Throws an error if the resulting timestamp does not fit within the `TIMESTAMP` r
       .select(
         field("createdAt").timestampAdd("day", 3653).as("expiresAt")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -6892,7 +6892,7 @@ Throws an error if the resulting timestamp does not fit within the `TIMESTAMP` r
       .select([
         Field("createdAt").timestampAdd(3653, .day).as("expiresAt")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -6904,7 +6904,7 @@ Android
               .timestampAdd("day", 3653)
               .alias("expiresAt")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -6914,7 +6914,7 @@ Android
         .select(
             field("createdAt").timestampAdd("day", 3653).alias("expiresAt")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -6925,7 +6925,7 @@ Android
         .collection("documents")
         .select(Field.of("createdAt").timestamp_add("day", 3653).as_("expiresAt"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -6935,7 +6935,7 @@ Android
             .collection("documents")
             .select(timestampAdd(field("createdAt"), "day", 3653).as("expiresAt"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### TIMESTAMP\_SUB
 
@@ -6973,7 +6973,7 @@ Throws an error if the resulting timestamp does not fit within the `TIMESTAMP` r
       .select(
         field("expiresAt").timestampSubtract("day", 14).as("sendWarningTimestamp")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -6982,7 +6982,7 @@ Throws an error if the resulting timestamp does not fit within the `TIMESTAMP` r
       .select(
         field("expiresAt").timestampSubtract("day", 14).as("sendWarningTimestamp")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -6991,7 +6991,7 @@ Throws an error if the resulting timestamp does not fit within the `TIMESTAMP` r
       .select([
         Field("expiresAt").timestampSubtract(14, .day).as("sendWarningTimestamp")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -7003,7 +7003,7 @@ Android
               .timestampSubtract("day", 14)
               .alias("sendWarningTimestamp")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -7013,7 +7013,7 @@ Android
         .select(
             field("expiresAt").timestampSubtract("day", 14).alias("sendWarningTimestamp")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -7028,7 +7028,7 @@ Android
             .as_("sendWarningTimestamp")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -7038,7 +7038,7 @@ Android
             .collection("documents")
             .select(timestampSubtract(field("expiresAt"), "day", 14).as("sendWarningTimestamp"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### TIMESTAMP\_TO\_UNIX\_MICROS
 
@@ -7065,7 +7065,7 @@ Converts `input` to the number of microseconds since `1970-01-01 00:00:00 UTC` .
       .select(
         field("dateString").timestampToUnixMicros().as("unixMicros")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -7074,7 +7074,7 @@ Converts `input` to the number of microseconds since `1970-01-01 00:00:00 UTC` .
       .select(
         field("dateString").timestampToUnixMicros().as("unixMicros")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -7083,7 +7083,7 @@ Converts `input` to the number of microseconds since `1970-01-01 00:00:00 UTC` .
       .select([
         Field("dateString").timestampToUnixMicros().as("unixMicros")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -7093,7 +7093,7 @@ Android
         .select(
             field("dateString").timestampToUnixMicros().alias("unixMicros")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -7103,7 +7103,7 @@ Android
         .select(
             field("dateString").timestampToUnixMicros().alias("unixMicros")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -7114,7 +7114,7 @@ Android
         .collection("documents")
         .select(Field.of("dateString").timestamp_to_unix_micros().as_("unixMicros"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -7124,7 +7124,7 @@ Android
             .collection("documents")
             .select(timestampToUnixMicros(field("dateString")).as("unixMicros"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### TIMESTAMP\_TO\_UNIX\_MILLIS
 
@@ -7151,7 +7151,7 @@ Converts `input` to the number of milliseconds since `1970-01-01 00:00:00 UTC` .
       .select(
         field("dateString").timestampToUnixMillis().as("unixMillis")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -7160,7 +7160,7 @@ Converts `input` to the number of milliseconds since `1970-01-01 00:00:00 UTC` .
       .select(
         field("dateString").timestampToUnixMillis().as("unixMillis")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -7169,7 +7169,7 @@ Converts `input` to the number of milliseconds since `1970-01-01 00:00:00 UTC` .
       .select([
         Field("dateString").timestampToUnixMillis().as("unixMillis")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -7179,7 +7179,7 @@ Android
         .select(
             field("dateString").timestampToUnixMillis().alias("unixMillis")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -7189,7 +7189,7 @@ Android
         .select(
             field("dateString").timestampToUnixMillis().alias("unixMillis")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -7200,7 +7200,7 @@ Android
         .collection("documents")
         .select(Field.of("dateString").timestamp_to_unix_millis().as_("unixMillis"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -7210,7 +7210,7 @@ Android
             .collection("documents")
             .select(timestampToUnixMillis(field("dateString")).as("unixMillis"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### TIMESTAMP\_TO\_UNIX\_SECONDS
 
@@ -7237,7 +7237,7 @@ Converts `input` to the number of seconds since `1970-01-01 00:00:00 UTC` . Trun
       .select(
         field("dateString").timestampToUnixSeconds().as("unixSeconds")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -7246,7 +7246,7 @@ Converts `input` to the number of seconds since `1970-01-01 00:00:00 UTC` . Trun
       .select(
         field("dateString").timestampToUnixSeconds().as("unixSeconds")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -7255,7 +7255,7 @@ Converts `input` to the number of seconds since `1970-01-01 00:00:00 UTC` . Trun
       .select([
         Field("dateString").timestampToUnixSeconds().as("unixSeconds")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -7265,7 +7265,7 @@ Android
         .select(
             field("dateString").timestampToUnixSeconds().alias("unixSeconds")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -7275,7 +7275,7 @@ Android
         .select(
             field("dateString").timestampToUnixSeconds().alias("unixSeconds")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -7286,7 +7286,7 @@ Android
         .collection("documents")
         .select(Field.of("dateString").timestamp_to_unix_seconds().as_("unixSeconds"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -7296,7 +7296,7 @@ Android
             .collection("documents")
             .select(timestampToUnixSeconds(field("dateString")).as("unixSeconds"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### TIMESTAMP\_DIFF
 
@@ -7415,21 +7415,21 @@ If given an absent value, returns `NULL` .
     const result = await db.pipeline()
       .collection("books")
       .select(field("title").notEqual("1984").as("not1984"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("title").notEqual("1984").as("not1984"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("title").notEqual("1984").as("not1984")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -7437,7 +7437,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("title").notEqual("1984").alias("not1984"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -7445,7 +7445,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(field("title").notEqual("1984").alias("not1984"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -7456,7 +7456,7 @@ Android
         .collection("books")
         .select(Field.of("title").not_equal("1984").as_("not1984"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -7466,7 +7466,7 @@ Android
             .collection("books")
             .select(notEqual(field("title"), "1984").as("not1984"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### IS\_TYPE
 
@@ -7545,7 +7545,7 @@ Returns the cosine distance between `x` and `y` .
       .select(
         field("embedding").cosineDistance(sampleVector).as("cosineDistance")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -7553,7 +7553,7 @@ Returns the cosine distance between `x` and `y` .
     const result = await execute(db.pipeline()
       .collection("books")
       .select(
-        field("embedding").cosineDistance(sampleVector).as("cosineDistance")));test.firestore.js
+        field("embedding").cosineDistance(sampleVector).as("cosineDistance")));
 
 ##### Swift
 
@@ -7563,7 +7563,7 @@ Returns the cosine distance between `x` and `y` .
       .select([
         Field("embedding").cosineDistance(sampleVector).as("cosineDistance")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -7574,7 +7574,7 @@ Android
         .select(
             field("embedding").cosineDistance(sampleVector).alias("cosineDistance")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -7585,7 +7585,7 @@ Android
         .select(
             field("embedding").cosineDistance(sampleVector).alias("cosineDistance")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -7600,7 +7600,7 @@ Android
             Field.of("embedding").cosine_distance(sample_vector).as_("cosineDistance")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -7611,7 +7611,7 @@ Android
             .collection("books")
             .select(cosineDistance(field("embedding"), sampleVector).as("cosineDistance"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### DOT\_PRODUCT
 
@@ -7631,7 +7631,7 @@ Returns the dot product of `x` and `y` .
       .select(
         field("embedding").dotProduct(sampleVector).as("dotProduct")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -7641,7 +7641,7 @@ Returns the dot product of `x` and `y` .
       .select(
         field("embedding").dotProduct(sampleVector).as("dotProduct")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -7651,7 +7651,7 @@ Returns the dot product of `x` and `y` .
       .select([
         Field("embedding").dotProduct(sampleVector).as("dotProduct")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -7662,7 +7662,7 @@ Android
         .select(
             field("embedding").dotProduct(sampleVector).alias("dotProduct")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -7673,7 +7673,7 @@ Android
         .select(
             field("embedding").dotProduct(sampleVector).alias("dotProduct")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -7686,7 +7686,7 @@ Android
         .collection("books")
         .select(Field.of("embedding").dot_product(sample_vector).as_("dotProduct"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -7697,7 +7697,7 @@ Android
             .collection("books")
             .select(dotProduct(field("embedding"), sampleVector).as("dotProduct"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### EUCLIDEAN\_DISTANCE
 
@@ -7717,7 +7717,7 @@ Computes the euclidean distance between `x` and `y` .
       .select(
         field("embedding").euclideanDistance(sampleVector).as("euclideanDistance")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -7727,7 +7727,7 @@ Computes the euclidean distance between `x` and `y` .
       .select(
         field("embedding").euclideanDistance(sampleVector).as("euclideanDistance")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -7737,7 +7737,7 @@ Computes the euclidean distance between `x` and `y` .
       .select([
         Field("embedding").euclideanDistance(sampleVector).as("euclideanDistance")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -7748,7 +7748,7 @@ Android
         .select(
             field("embedding").euclideanDistance(sampleVector).alias("euclideanDistance")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -7759,7 +7759,7 @@ Android
         .select(
             field("embedding").euclideanDistance(sampleVector).alias("euclideanDistance")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -7776,7 +7776,7 @@ Android
             .as_("euclideanDistance")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -7787,7 +7787,7 @@ Android
             .collection("books")
             .select(euclideanDistance(field("embedding"), sampleVector).as("euclideanDistance"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### MANHATTAN\_DISTANCE
 
@@ -7816,7 +7816,7 @@ Returns the number of elements in a `VECTOR` .
       .select(
         field("embedding").vectorLength().as("vectorLength")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -7825,7 +7825,7 @@ Returns the number of elements in a `VECTOR` .
       .select(
         field("embedding").vectorLength().as("vectorLength")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -7834,7 +7834,7 @@ Returns the number of elements in a `VECTOR` .
       .select([
         Field("embedding").vectorLength().as("vectorLength")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -7844,7 +7844,7 @@ Android
         .select(
             field("embedding").vectorLength().alias("vectorLength")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -7854,7 +7854,7 @@ Android
         .select(
             field("embedding").vectorLength().alias("vectorLength")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -7865,7 +7865,7 @@ Android
         .collection("books")
         .select(Field.of("embedding").vector_length().as_("vectorLength"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -7875,7 +7875,7 @@ Android
             .collection("books")
             .select(vectorLength(field("embedding")).as("vectorLength"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ## What's next
 

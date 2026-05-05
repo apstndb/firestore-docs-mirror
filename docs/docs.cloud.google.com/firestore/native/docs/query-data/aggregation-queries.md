@@ -30,7 +30,7 @@ The following `count()` aggregation returns the total number of cities in the `c
 
     const coll = collection(db, "cities");
     const snapshot = await getCountFromServer(coll);
-    console.log('count: ', snapshot.data().count);count_aggregate_collection.js
+    console.log('count: ', snapshot.data().count);
 
 ##### Swift
 
@@ -43,7 +43,7 @@ The following `count()` aggregation returns the total number of cities in the `c
       print(snapshot.count)
     } catch {
       print(error)
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -58,7 +58,7 @@ The following `count()` aggregation returns the total number of cities in the `c
         } else {
             NSLog(@"Cities count: %@", snapshot.count);
         }
-    }];ViewController.m
+    }];
 
 ##### Java  
 Android
@@ -76,7 +76,7 @@ Android
                 Log.d(TAG, "Count failed: ", task.getException());
             }
         }
-    });DocSnippets.java
+    });
 
 ##### Kotlin  
 Android
@@ -91,7 +91,7 @@ Android
         } else {
             Log.d(TAG, "Count failed: ", task.getException())
         }
-    }DocSnippets.kt
+    }
 
 ### Dart
 
@@ -99,7 +99,7 @@ Android
     db.collection("cities").count().get().then(
           (res) => print(res.count),
           onError: (e) => print("Error completing: $e"),
-        );firestore.dart
+        );
 
 ##### Go
 
@@ -148,7 +148,6 @@ Android
      fmt.Fprintf(w, "Number of results from query: %d\n", countValue.GetIntegerValue())
      return nil
     }
-    aggregate_query_count.go
 
 ##### Java
 
@@ -194,8 +193,6 @@ console.log(snapshot.data().count);
         for result in results:
             print(f"Alias of results from query: {result[0].alias}")
             print(f"Number of results from query: {result[0].value}")
-    
-    aggregate_query_count.py
 
 The `count()` aggregation takes into account any filters on the query and any `limit` clauses.
 
@@ -206,7 +203,7 @@ The `count()` aggregation takes into account any filters on the query and any `l
     const coll = collection(db, "cities");
     const q = query(coll, where("state", "==", "CA"));
     const snapshot = await getCountFromServer(q);
-    console.log('count: ', snapshot.data().count);count_aggregate_query.js
+    console.log('count: ', snapshot.data().count);
 
 ##### Swift
 
@@ -219,7 +216,7 @@ The `count()` aggregation takes into account any filters on the query and any `l
       print(snapshot.count)
     } catch {
       print(error)
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -237,7 +234,7 @@ The `count()` aggregation takes into account any filters on the query and any `l
         } else {
             NSLog(@"Cities count: %@", snapshot.count);
         }
-    }];ViewController.m
+    }];
 
 ##### Java  
 Android
@@ -255,7 +252,7 @@ Android
                 Log.d(TAG, "Count failed: ", task.getException());
             }
         }
-    });DocSnippets.java
+    });
 
 ##### Kotlin  
 Android
@@ -270,7 +267,7 @@ Android
         } else {
             Log.d(TAG, "Count failed: ", task.getException())
         }
-    }DocSnippets.kt
+    }
 
 ### Dart
 
@@ -278,7 +275,7 @@ Android
     db.collection("cities").where("capital", isEqualTo: 10).count().get().then(
           (res) => print(res.count),
           onError: (e) => print("Error completing: $e"),
-        );firestore.dart
+        );
 
 ##### Go
 
@@ -327,7 +324,6 @@ Android
      fmt.Fprintf(w, "Number of results from query: %d\n", countValue.GetIntegerValue())
      return nil
     }
-    aggregate_query_count.go
 
 ##### Java
 
@@ -375,8 +371,6 @@ console.log(snapshot.data().count);
         for result in results:
             print(f"Alias of results from query: {result[0].alias}")
             print(f"Number of results from query: {result[0].value}")
-    
-    aggregate_query_count.py
 
 ## Use the `sum()` aggregation
 
@@ -407,7 +401,7 @@ console.log('totalPopulation: ', snapshot.data().totalPopulation);
       print(snapshot.get(AggregateField.sum("population")))
     } catch {
       print(error)
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -424,7 +418,7 @@ console.log('totalPopulation: ', snapshot.data().totalPopulation);
         } else {
             NSLog(@"Sum: %@", [snapshot valueForAggregateField:[FIRAggregateField aggregateFieldForSumOfField:@"population"]]);
         }
-    }];ViewController.m
+    }];
 
 ##### Java  
 Android
@@ -442,7 +436,7 @@ Android
                 Log.d(TAG, "Aggregation failed: ", task.getException());
             }
         }
-    });DocSnippets.java
+    });
 
 ##### Kotlin  
 Android
@@ -457,14 +451,14 @@ Android
         } else {
             Log.d(TAG, "Aggregate failed: ", task.getException())
         }
-    }DocSnippets.kt
+    }
 
 ### Dart
 
     db.collection("cities").aggregate(sum("population")).get().then(
           (res) => print(res.getAverage("population")),
           onError: (e) => print("Error completing: $e"),
-        );firestore.dart
+        );
 
 ##### Java
 
@@ -563,7 +557,7 @@ console.log('totalPopulation: ', snapshot.data().totalPopulation);
       print(snapshot.get(AggregateField.sum("population")))
     } catch {
       print(error)
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -581,7 +575,7 @@ console.log('totalPopulation: ', snapshot.data().totalPopulation);
         } else {
             NSLog(@"Sum: %@", [snapshot valueForAggregateField:[FIRAggregateField aggregateFieldForSumOfField:@"population"]]);
         }
-    }];ViewController.m
+    }];
 
 ##### Java  
 Android
@@ -599,7 +593,7 @@ Android
                 Log.d(TAG, "Aggregation failed: ", task.getException());
             }
         }
-    });DocSnippets.java
+    });
 
 ##### Kotlin  
 Android
@@ -614,7 +608,7 @@ Android
         } else {
             Log.d(TAG, "Aggregate failed: ", task.getException())
         }
-    }DocSnippets.kt
+    }
 
 ### Dart
 
@@ -626,7 +620,7 @@ Android
         .then(
           (res) => print(res.getAverage("population")),
           onError: (e) => print("Error completing: $e"),
-        );firestore.dart
+        );
 
 ##### Java
 
@@ -729,7 +723,7 @@ console.log('averagePopulation: ', snapshot.data().averagePopulation);
       print(snapshot.get(AggregateField.average("population")))
     } catch {
       print(error)
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -746,7 +740,7 @@ console.log('averagePopulation: ', snapshot.data().averagePopulation);
         } else {
             NSLog(@"Avg: %@", [snapshot valueForAggregateField:[FIRAggregateField aggregateFieldForAverageOfField:@"population"]]);
         }
-    }];ViewController.m
+    }];
 
 ##### Java  
 Android
@@ -764,7 +758,7 @@ Android
                 Log.d(TAG, "Aggregation failed: ", task.getException());
             }
         }
-    });DocSnippets.java
+    });
 
 ##### Kotlin  
 Android
@@ -779,14 +773,14 @@ Android
         } else {
             Log.d(TAG, "Aggregate failed: ", task.getException())
         }
-    }DocSnippets.kt
+    }
 
 ### Dart
 
     db.collection("cities").aggregate(average("population")).get().then(
           (res) => print(res.getAverage("population")),
           onError: (e) => print("Error completing: $e"),
-        );firestore.dart
+        );
 
 ##### Java
 
@@ -885,7 +879,7 @@ console.log('averagePopulation: ', snapshot.data().averagePopulation);
       print(snapshot.get(AggregateField.average("population")))
     } catch {
       print(error)
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -903,7 +897,7 @@ console.log('averagePopulation: ', snapshot.data().averagePopulation);
         } else {
             NSLog(@"Avg: %@", [snapshot valueForAggregateField:[FIRAggregateField aggregateFieldForAverageOfField:@"population"]]);
         }
-    }];ViewController.m
+    }];
 
 ##### Java  
 Android
@@ -921,7 +915,7 @@ Android
                 Log.d(TAG, "Aggregation failed: ", task.getException());
             }
         }
-    });DocSnippets.java
+    });
 
 ##### Kotlin  
 Android
@@ -936,7 +930,7 @@ Android
         } else {
             Log.d(TAG, "Aggregate failed: ", task.getException())
         }
-    }DocSnippets.kt
+    }
 
 ### Dart
 
@@ -948,7 +942,7 @@ Android
         .then(
           (res) => print(res.getAverage("population")),
           onError: (e) => print("Error completing: $e"),
-        );firestore.dart
+        );
 
 ##### Java
 
@@ -1062,7 +1056,7 @@ console.log('averagePopulation: ', snapshot.data().averagePopulation);
       print("Average: \(snapshot.get(AggregateField.average("population")))")
     } catch {
       print(error)
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -1083,7 +1077,7 @@ console.log('averagePopulation: ', snapshot.data().averagePopulation);
         NSLog(@"Sum: %@", [snapshot valueForAggregateField:[FIRAggregateField aggregateFieldForSumOfField:@"population"]]);
         NSLog(@"Avg: %@", [snapshot valueForAggregateField:[FIRAggregateField aggregateFieldForAverageOfField:@"population"]]);
       }
-    }];ViewController.m
+    }];
 
 ##### Java  
 Android
@@ -1106,7 +1100,7 @@ Android
                 Log.d(TAG, "Aggregation failed: ", task.getException());
             }
         }
-    });DocSnippets.java
+    });
 
 ##### Kotlin  
 Android
@@ -1127,7 +1121,7 @@ Android
         } else {
             Log.d(TAG, "Aggregate failed: ", task.getException())
         }
-    }DocSnippets.kt
+    }
 
 ### Dart
 
@@ -1146,7 +1140,7 @@ Android
         print(res.getAverage("population"));
       },
       onError: (e) => print("Error completing: $e"),
-    );firestore.dart
+    );
 
 ##### Java
 

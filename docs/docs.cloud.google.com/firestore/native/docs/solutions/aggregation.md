@@ -25,7 +25,7 @@ Consider a local recommendations app that helps users find great restaurants. Th
     db.collection("restaurants")
       .doc("arinell-pizza")
       .collection("ratings")
-      .get();test.solution-aggregation.js
+      .get();
 
 ### Swift
 
@@ -39,7 +39,7 @@ Consider a local recommendations app that helps users find great restaurants. Th
       print(snapshot)
     } catch {
       print(error)
-    }SolutionAggregationViewController.swift
+    }
 
 ### Objective-C
 
@@ -50,7 +50,7 @@ Consider a local recommendations app that helps users find great restaurants. Th
     [query getDocumentsWithCompletion:^(FIRQuerySnapshot * _Nullable snapshot,
                                         NSError * _Nullable error) {
       // ...
-    }];FIRSolutionAggregationViewController.m
+    }];
 
 ### Kotlin  
 Android
@@ -58,7 +58,7 @@ Android
     db.collection("restaurants")
         .document("arinell-pizza")
         .collection("ratings")
-        .get()SolutionAggregation.kt
+        .get()
 
 ### Java  
 Android
@@ -66,7 +66,7 @@ Android
     db.collection("restaurants")
             .document("arinell-pizza")
             .collection("ratings")
-            .get();SolutionAggregation.java
+            .get();
 
 Rather than fetching all ratings and then computing aggregate information, we can store this information on the restaurant document itself:
 
@@ -76,7 +76,7 @@ Rather than fetching all ratings and then computing aggregate information, we ca
       name: 'Arinell Pizza',
       avgRating: 4.65,
       numRatings: 683
-    };test.solution-aggregation.js
+    };
 
 ### Swift
 
@@ -90,7 +90,7 @@ Rather than fetching all ratings and then computing aggregate information, we ca
     
     }
     
-    let arinell = Restaurant(name: "Arinell Pizza", avgRating: 4.65, numRatings: 683)SolutionAggregationViewController.swift
+    let arinell = Restaurant(name: "Arinell Pizza", avgRating: 4.65, numRatings: 683)
 
 ### Objective-C
 
@@ -122,7 +122,7 @@ Rather than fetching all ratings and then computing aggregate information, we ca
       return self;
     }
     
-    @endFIRSolutionAggregationViewController.m
+    @end
 
 ### Kotlin  
 Android
@@ -134,7 +134,7 @@ Android
         internal var numRatings: Int = 0,
     )
 
-    val arinell = Restaurant("Arinell Pizza", 4.65, 683)SolutionAggregation.kt
+    val arinell = Restaurant("Arinell Pizza", 4.65, 683)
 
 ### Java  
 Android
@@ -151,7 +151,7 @@ Android
         }
     }
 
-    Restaurant arinell = new Restaurant("Arinell Pizza", 4.65, 683);SolutionAggregation.java
+    Restaurant arinell = new Restaurant("Arinell Pizza", 4.65, 683);
 
 In order to keep these aggregations consistent, they must be updated each time a new rating is added to the subcollection. One way to achieve consistency is to perform the add and the update in a single transaction:
 
@@ -183,7 +183,7 @@ In order to keep these aggregations consistent, they must be updated each time a
                 transaction.set(ratingRef, { rating: rating });
             });
         });
-    }test.firestore.js
+    }
 
 ### Swift
 
@@ -224,7 +224,7 @@ In order to keep these aggregations consistent, they must be updated each time a
       } catch {
         // ...
       }
-    }SolutionAggregationViewController.swift
+    }
 
 ### Objective-C
 
@@ -269,7 +269,7 @@ In order to keep these aggregations consistent, they must be updated each time a
       } completion:^(id  _Nullable result, NSError * _Nullable error) {
         // ...
       }];
-    }FIRSolutionAggregationViewController.m
+    }
 
 ### Kotlin  
 Android
@@ -304,7 +304,7 @@ Android
     
             null
         }
-    }SolutionAggregation.kt
+    }
 
 ### Java  
 Android
@@ -341,7 +341,7 @@ Android
                 return null;
             }
         });
-    }SolutionAggregation.java
+    }
 
 Using a transaction keeps your aggregate data consistent with the underlying collection. To read more about transactions in Firestore, see [Transactions and Batched Writes](https://docs.cloud.google.com/firestore/native/docs/manage-data/transactions) .
 
@@ -386,7 +386,7 @@ If client-side transactions are not suitable for your application, you can use a
               numRatings: newNumRatings
             });
           });
-        });index.js
+        });
 
 This solution offloads the work from the client to a hosted function, which means your mobile app can add ratings without waiting for a transaction to complete. Code executed in a Cloud Function is not bound by security rules, which means you no longer need to give clients write access to the aggregate data.
 

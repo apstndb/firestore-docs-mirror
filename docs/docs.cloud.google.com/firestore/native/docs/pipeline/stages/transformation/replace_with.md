@@ -40,7 +40,7 @@ Extract the nested location field, discarding all other data:
 ##### Java
 
     Pipeline.Snapshot names =
-        firestore.pipeline().collection("cities").replaceWith(field("location")).execute().get();PipelineSnippets.java
+        firestore.pipeline().collection("cities").replaceWith(field("location")).execute().get();
 
 Which produces the following documents:
 

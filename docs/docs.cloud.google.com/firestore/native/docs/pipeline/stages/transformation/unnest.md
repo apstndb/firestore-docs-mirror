@@ -57,7 +57,7 @@ In this case, `userScore` and `attempt` are both overwritten.
     let results = try await db.pipeline()
       .database()
       .unnest(Field("arrayField").as("unnestedArrayField"), indexField: "index")
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -65,7 +65,7 @@ Android
     val results = db.pipeline()
         .database()
         .unnest(field("arrayField").alias("unnestedArrayField"), UnnestOptions().withIndexField("index"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -73,7 +73,7 @@ Android
     Task<Pipeline.Snapshot> results = db.pipeline()
         .database()
         .unnest(field("arrayField").alias("unnestedArrayField"), new UnnestOptions().withIndexField("index"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -88,7 +88,7 @@ Android
             options=UnnestOptions(index_field="index"),
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -98,7 +98,7 @@ Android
             .database()
             .unnest("arrayField", "unnestedArrayField", new UnnestOptions().withIndexField("index"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### Non Array Values
 
@@ -216,7 +216,7 @@ This will now return document with user `bar` .
     // Output
     // { identifier: 1, neighbors: [ "Alice", "Cathy" ], unnestedNeighbors: "Alice", index: 0 }
     // { identifier: 1, neighbors: [ "Alice", "Cathy" ], unnestedNeighbors: "Cathy", index: 1 }
-    // { identifier: 3, neighbors: "Bob", index: null}PipelineSnippets.swift
+    // { identifier: 3, neighbors: "Bob", index: null}
 
 ##### Kotlin  
 Android
@@ -234,7 +234,7 @@ Android
     // Output
     // { identifier: 1, neighbors: [ "Alice", "Cathy" ], unnestedNeighbors: "Alice", index: 0 }
     // { identifier: 1, neighbors: [ "Alice", "Cathy" ], unnestedNeighbors: "Cathy", index: 1 }
-    // { identifier: 3, neighbors: "Bob", index: null}DocSnippets.kt
+    // { identifier: 3, neighbors: "Bob", index: null}
 
 ##### Java  
 Android
@@ -252,7 +252,7 @@ Android
     // Output
     // { identifier: 1, neighbors: [ "Alice", "Cathy" ], unnestedNeighbors: "Alice", index: 0 }
     // { identifier: 1, neighbors: [ "Alice", "Cathy" ], unnestedNeighbors: "Cathy", index: 1 }
-    // { identifier: 3, neighbors: "Bob", index: null}DocSnippets.java
+    // { identifier: 3, neighbors: "Bob", index: null}
 
 ##### Python
 
@@ -279,7 +279,7 @@ Android
     #   "unnestedNeighbors": "Alice", "index": 0 }
     # { "identifier": 1, "neighbors": [ "Alice", "Cathy" ],
     #   "unnestedNeighbors": "Cathy", "index": 1 }
-    # { "identifier": 3, "neighbors": "Bob", "index": null}firestore_pipelines.py
+    # { "identifier": 3, "neighbors": "Bob", "index": null}
 
 ##### Java
 
@@ -301,7 +301,7 @@ Android
     //   "unnestedNeighbors": "Alice", "index": 0 }
     // { "identifier": 1, "neighbors": [ "Alice", "Cathy" ],
     //   "unnestedNeighbors": "Cathy", "index": 1 }
-    // { "identifier": 3, "neighbors": "Bob", "index": null}PipelineSnippets.java
+    // { "identifier": 3, "neighbors": "Bob", "index": null}
 
 ### Nested Unnest
 

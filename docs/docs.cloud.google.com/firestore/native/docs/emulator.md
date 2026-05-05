@@ -66,7 +66,7 @@ The following examples demonstrate how to connect the Android, Apple platforms, 
     FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
             .setPersistenceEnabled(false)
             .build();
-    firestore.setFirestoreSettings(settings);EmulatorSuite.java
+    firestore.setFirestoreSettings(settings);
 
 ##### Swift
 
@@ -74,7 +74,7 @@ The following examples demonstrate how to connect the Android, Apple platforms, 
     settings.host = "127.0.0.1:8080"
     settings.cacheSettings = MemoryCacheSettings()
     settings.isSSLEnabled = false
-    Firestore.firestore().settings = settingsViewController.swift
+    Firestore.firestore().settings = settings
 
 ### Web version 9
 
@@ -82,7 +82,7 @@ The following examples demonstrate how to connect the Android, Apple platforms, 
     
     // firebaseApps previously initialized using initializeApp()
     const db = getFirestore();
-    connectFirestoreEmulator(db, '127.0.0.1', 8080);fs_emulator_connect.js
+    connectFirestoreEmulator(db, '127.0.0.1', 8080);
 
 ### Web version 8
 
@@ -92,7 +92,7 @@ The following examples demonstrate how to connect the Android, Apple platforms, 
     var db = firebase.firestore();
     if (location.hostname === "localhost") {
       db.useEmulator("127.0.0.1", 8080);
-    }emulator-suite.js
+    }
 
 The Firestore in Native Mode emulator clears database contents when shut down. Since the offline cache of the Firestore SDK is not automatically cleared, you may want to disable local persistence in your emulator configuration to avoid discrepancies between the emulated database and local caches; in the Web SDK, persistence is disabled by default.
 

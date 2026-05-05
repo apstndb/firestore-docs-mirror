@@ -1,8 +1,8 @@
 # Perform joins with subqueries
 
-## Background
+## Overview
 
-Pipeline operations are a new query interface for Firestore. This interface provides advanced query functionality that includes complex expressions. Firestore Enterprise edition supports relational-style joins through **correlated subqueries** . Unlike many NoSQL databases that often require denormalizing data or performing multiple client-side requests, subqueries allow you to combine and aggregate data from related collections or subcollections directly on the server.
+Firestore Enterprise edition supports relational-style joins through **correlated subqueries** . Unlike many NoSQL databases that often require denormalizing data or performing multiple client-side requests, subqueries allow you to combine and aggregate data from related collections or subcollections directly on the server.
 
 Subqueries are expressions that execute a nested pipeline for every document processed by the outer query. This enables complex data retrieval patterns, such as fetching a document alongside its related subcollection items or joining logically linked data across disparate root collections.
 
@@ -32,59 +32,6 @@ The following sections give an overview of the syntax for performing joins.
 
 The [`let(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/let) stage (referred to as `define(...)` in some SDKs) is a non-filtering stage that explicitly brings data from the parent scope into a named variable for use in subsequent nested scopes.
 
-### Web
-
-``` 
-    async function defineStageData() {
-      await setDoc(doc(collection(db, "Authors"), "author_123"), {
-        "id": "author_123",
-        "name": "Jane Austen"
-      });
-    }
-    
-```
-
-##### Swift
-
-``` 
-      func defineStageData() async throws {
-      try await db.collection("authors").document("author_123").setData([
-        "id": "author_123",
-        "name": "Jane Austen"
-      ])
-    }
-    
-```
-
-##### Kotlin  
-Android
-
-``` 
-    fun defineStageData() {
-        val author = hashMapOf(
-            "id" to "author_123",
-            "name" to "Jane Austen",
-        )
-
-        db.collection("Authors").document("author_123").set(author)
-    }
-  
-```
-
-##### Java  
-Android
-
-``` 
-    public void defineStageData() {
-        Map<String, Object> author = new HashMap<>();
-        author.put("id", "author_123");
-        author.put("name", "Jane Austen");
-
-        db.collection("Authors").document("author_123").set(author);
-    }
-  
-```
-
 ### Array Subqueries
 
 An Array subquery is a special case of expression subquery that materializes the entire result set of the subquery into an array. If the subquery returns zero rows, it evaluates to an empty array. It never returns a `null` array. Such queries are useful when the full results are required in the final result, such as when materializing a nested or correlated collection.
@@ -92,147 +39,6 @@ An Array subquery is a special case of expression subquery that materializes the
 Queries can filter, sort, & aggregate in the subquery to also reduce the amount of data that needs to be fetched and returned to help reduce the cost of the query. The order of the subquery is respected, meaning that a `sort(...)` stage in the subquery controls the order of results in the final array.
 
 Use the `toArrayExpression()` SDK wrapper to convert a query into an array.
-
-### Web
-
-``` 
-    async function toArrayExpressionStageData() {
-      await setDoc(doc(collection(db, "Projects"), "project_1"), {
-        "id": "project_1",
-        "name": "Alpha Build"
-      });
-      await addDoc(collection(db, "Tasks"), {
-        "project_id": "project_1",
-        "title": "System Architecture"
-      });
-      await addDoc(collection(db, "Tasks"), {
-        "project_id": "project_1",
-        "title": "Database Schema Design"
-      });
-    }
-  
-```
-
-**Response**
-
-``` 
-    {
-        id: "project_1",
-        name: "Alpha Build",
-        taskTitles: [
-          "System Architecture", "Database Schema Design"
-      ]
-    }
-    
-```
-
-##### Swift
-
-``` 
-    async function toArrayExpressionStageData() {
-      await setDoc(doc(collection(db, "Projects"), "project_1"), {
-        "id": "project_1",
-        "name": "Alpha Build"
-      });
-      await addDoc(collection(db, "Tasks"), {
-        "project_id": "project_1",
-        "title": "System Architecture"
-      });
-      await addDoc(collection(db, "Tasks"), {
-        "project_id": "project_1",
-        "title": "Database Schema Design"
-      });
-    }
-    
-```
-
-**Response**
-
-``` 
-    {
-      id: "project_1",
-      name: "Alpha Build",
-      taskTitles: [
-        "System Architecture", "Database Schema Design"
-      ]
-    }
-    
-```
-
-##### Kotlin  
-Android
-
-``` 
-    fun toArrayExpressionData() {
-        val project = hashMapOf(
-            "id" to "project_1",
-            "name" to "Alpha Build",
-        )
-        db.collection("Projects").document("project_1").set(project)
-
-        val task1 = hashMapOf(
-            "project_id" to "project_1",
-            "title" to "System Architecture",
-        )
-        db.collection("Tasks").add(task1)
-
-        val task2 = hashMapOf(
-            "project_id" to "project_1",
-            "title" to "Database Schema Design",
-        )
-        db.collection("Tasks").add(task2)
-    }
-  
-```
-
-**Response**
-
-``` 
-    {
-      id: "project_1",
-      name: "Alpha Build",
-      taskTitles: [
-        "System Architecture", "Database Schema Design"
-      ]
-    }
-    
-```
-
-##### Java  
-Android
-
-``` 
-      public void toArrayExpressionData() {
-        Map<String, Object> project = new HashMap<>();
-        project.put("id", "project_1");
-        project.put("name", "Alpha Build");
-        db.collection("Projects").document("project_1").set(project);
-
-        Map<String, Object> task1 = new HashMap<>();
-        task1.put("project_id", "project_1");
-        task1.put("title", "System Architecture");
-        db.collection("Tasks").add(task1);
-
-        Map<String, Object> task2 = new HashMap<>();
-        task2.put("project_id", "project_1");
-        task2.put("title", "Database Schema Design");
-        db.collection("Tasks").add(task2);
-    }
-  
-```
-
-**Response**
-
-``` 
-    {
-        id: "project_1",
-        name: "Alpha Build",
-        taskTitles: [
-          "System Architecture", "Database Schema Design"
-      ]
-    }
-    
-```
 
 ### Scalar Subqueries
 
@@ -244,145 +50,6 @@ When a scalar subquery produces only a single field per-result, the field is *el
 
 Use the `toScalarExpression()` SDK wrapper to convert a query into a scalar expression.
 
-### Web
-
-``` 
-            async function toScalarExpressionStageData() {
-              await setDoc(doc(collection(db, "Authors"), "author_202"), {
-                "id": "author_202",
-                "name": "Charles Dickens"
-              });
-              await addDoc(collection(db, "Books"), {
-                "author_id": "author_202",
-                "title": "Great Expectations",
-                "rating": 4.8
-              });
-              await addDoc(collection(db, "Books"), {
-                "author_id": "author_202",
-                "title": "Oliver Twist",
-                "rating": 4.5
-              });
-            }
-        
-```
-
-**Response**
-
-``` 
-        {
-            "id": "author_202",
-            "name": "Charles Dickens",
-            "averageBookRating": 4.65
-        }
-      
-```
-
-##### Swift
-
-``` 
-        try await db.collection("authors").document("author_202").setData([
-          "id": "author_202",
-          "name": "Charles Dickens"
-        ])
-        try await db.collection("books").document().setData([
-          "author_id": "author_202",
-          "title": "Great Expectations",
-          "rating": 4.8
-        ])
-        try await db.collection("books").document().setData([
-          "author_id": "author_202",
-          "title": "Oliver Twist",
-          "rating": 4.5
-        ])
-        
-```
-
-**Response**
-
-``` 
-        {
-            "id": "author_202",
-            "name": "Charles Dickens",
-            "averageBookRating": 4.65
-        }
-      
-```
-
-##### Kotlin  
-Android
-
-``` 
-        fun toScalarExpressionData() {
-        val author = hashMapOf(
-            "id" to "author_202",
-            "name" to "Charles Dickens",
-        )
-        db.collection("Authors").document("author_202").set(author)
-
-        val book1 = hashMapOf(
-            "author_id" to "author_202",
-            "title" to "Great Expectations",
-            "rating" to 4.8,
-        )
-        db.collection("Books").add(book1)
-
-        val book2 = hashMapOf(
-            "author_id" to "author_202",
-            "title" to "Oliver Twist",
-            "rating" to 4.5,
-        )
-        db.collection("Books").add(book2)
-    }
-  
-```
-
-**Response**
-
-``` 
-        {
-            "id": "author_202",
-            "name": "Charles Dickens",
-            "averageBookRating": 4.65
-        }
-      
-```
-
-##### Java  
-Android
-
-``` 
-       public void toScalarExpressionData() {
-        Map<String, Object> author = new HashMap<>();
-        author.put("id", "author_202");
-        author.put("name", "Charles Dickens");
-        db.collection("Authors").document("author_202").set(author);
-
-        Map<String, Object> book1 = new HashMap<>();
-        book1.put("author_id", "author_202");
-        book1.put("title", "Great Expectations");
-        book1.put("rating", 4.8);
-        db.collection("Books").add(book1);
-
-        Map<String, Object> book2 = new HashMap<>();
-        book2.put("author_id", "author_202");
-        book2.put("title", "Oliver Twist");
-        book2.put("rating", 4.5);
-        db.collection("Books").add(book2);
-    }
-  
-```
-
-**Response**
-
-``` 
-        {
-            "id": "author_202",
-            "name": "Charles Dickens",
-            "averageBookRating": 4.65
-        }
-      
-```
-
 ### `subcollection(...)` Subqueries
 
 While offered as a stage, the [`subcollection(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/subcollection) input stage allows performing joins over Firestore's hierarchical data model. In a hierarchical model, queries often need to retrieve a document alongside data from its own subcollections. While you can achieve this using a [`collection_group(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection_group) input stage followed by a filter on the parent reference, `subcollection(...)` provides a much more concise syntax.
@@ -390,6 +57,471 @@ While offered as a stage, the [`subcollection(...)`](https://docs.cloud.google.c
 Other than the implicit join condition, this acts similarly to an array subquery, returning an empty result if no documents are matched, even if the nested collection does not exist.
 
 It is fundamentally **syntactic sugar** : it automatically uses the `__name__` of the document in the outer scope as the join key to resolve the hierarchical relationship. This makes it the preferred way to perform lookups across collections linked in a parent-child relationship.
+
+## Examples
+
+### Example data
+
+The following loads a set of test data to use in all following examples.
+
+### Node.js
+
+    // Load set of cities.
+    const cities = collection(db, "cities");
+    
+    await setDoc(doc(cities, "SF"), {
+      name: "San Francisco",
+      state: "CA",
+      country: "USA",
+    });
+    await setDoc(doc(cities, "LA"), {
+      name: "Los Angeles",
+      state: "CA",
+      country: "USA"
+    });
+    await setDoc(doc(cities, "DC"), {
+      name: "Washington, D.C.",
+      state: null,
+      country: "USA"
+    });
+    await setDoc(doc(cities, "TOK"), {
+      name: "Tokyo",
+      state: null,
+      country: "Japan"
+    });
+    
+    // Load restaurants in various cities.
+    const sfRestaurants = collection(db, "cities", "SF", "restaurants");
+    const laRestaurants = collection(db, "cities", "LA", "restaurants");
+    const dcRestaurants = collection(db, "cities", "DC", "restaurants");
+    
+    const rest1 = await addDoc(sfRestaurants, {
+      name: "Golden Gate Pizza",
+      type: "pizza",
+      owner_id: "Mario Rossi"
+    });
+    const rest2 = await addDoc(sfRestaurants, {
+      name: "Bay Area Burger",
+      type: "burger",
+      owner_id: "Sarah Jenkins"
+    });
+    const rest3 = await addDoc(sfRestaurants, {
+      name: "Sunset Taco",
+      type: "mexican",
+      owner_id: "Edward"
+    });
+    
+    const rest4 = await addDoc(laRestaurants, {
+      name: "Hollywood Sushi",
+      type: "sushi",
+      owner_id: "Ken Kenji"
+    });
+    const rest5 = await addDoc(laRestaurants, {
+      name: "Venice Pizza",
+      type: "pizza",
+      owner_id: "Luigi Romano"
+    });
+    
+    const rest6 = await addDoc(dcRestaurants, {
+      name: "Capitol Tacos",
+      type: "mexican",
+      owner_id: "Maria Garcia"
+    });
+    const rest7 = await addDoc(dcRestaurants, {
+      name: "Georgetown Coffee",
+      type: "cafe",
+      owner_id: "David Kim"
+    });
+    
+    // Load collection of reviews.
+    const reviews = collection(db, "reviews");
+    
+    await addDoc(reviews, { restaurant: rest1, rating: 5, reviewer_id "Alice" });
+    await addDoc(reviews, { restaurant: rest1, rating: 4, reviewer_id "Bob" });
+    await addDoc(reviews, { restaurant: rest2, rating: 4, reviewer_id "Charlie" });
+    await addDoc(reviews, { restaurant: rest3, rating: 5, reviewer_id "Diana" });
+    await addDoc(reviews, { restaurant: rest3, rating: 4, reviewer_id "Edward" });
+    await addDoc(reviews, { restaurant: rest3, rating: 4, reviewer_id "Fiona" });
+    // rest4 has 0 reviews
+    await addDoc(reviews, { restaurant: rest5, rating: 3, reviewer_id "George" });
+    await addDoc(reviews, { restaurant: rest6, rating: 5, reviewer_id "Hannah" });
+    await addDoc(reviews, { restaurant: rest6, rating: 4, reviewer_id "Ian" });
+    await addDoc(reviews, { restaurant: rest7, rating: 5, reviewer_id "Julia" });
+
+### Lookup a Document in Another Collection
+
+The following query on the `reviews` collection group performs a lookup into the `restaurant` collection group using a primary key reference.
+
+### Node.js
+
+    let results = await execute(db.pipeline()
+      .collectionGroup("reviews")
+      .define(field("restaurant").as("restaurant_name"))
+      .addFields(db.pipeline()
+        .collectionGroup("restaurant")
+        .where(field("__name__").equal(variable("restaurant_name")))
+        .select("name", "type")
+        .toScalarExpression()
+        .as("restaurant")));
+
+**Response**
+
+    {
+      rating: 5,
+      reviewer_id "Alice",
+      restaurant: { name: "Golden Gate Pizza", type: "pizza" }
+    },
+    {
+      rating: 4,
+      reviewer_id "Bob",
+      restaurant: { name: "Golden Gate Pizza", type: "pizza" }
+    },
+    {
+      rating: 4,
+      reviewer_id "Charlie",
+      restaurant: { name: "Bay Area Burger", type: "burger" }
+    },
+    {
+      rating: 5,
+      reviewer_id "Diana",
+      restaurant: { name: "Sunset Taco", type: "mexican" }
+    },
+    {
+      rating: 4,
+      reviewer_id "Edward",
+      restaurant: { name: "Sunset Taco", type: "mexican" }
+    },
+    {
+      rating: 4,
+      reviewer_id "Fiona",
+      restaurant: { name: "Sunset Taco", type: "mexican" }
+    },
+    {
+      rating: 3,
+      reviewer_id "George",
+      restaurant: { name: "Venice Pizza", type: "pizza" }
+    },
+    {
+      rating: 5,
+      reviewer_id "Hannah",
+      restaurant: { name: "Capitol Tacos", type: "mexican" }
+    },
+    {
+      rating: 4,
+      reviewer_id "Ian",
+      restaurant: { name: "Capitol Tacos", type: "mexican" }
+    },
+    {
+      rating: 5,
+      reviewer_id "Julia",
+      restaurant: { name: "Georgetown Coffee", type: "cafe" }
+    }
+
+### Combine Multiple Collections
+
+The following query fetches all pizza places from the `restaurants` collection group, and uses an array subquery to fetch and embed their associated reviews directly into the response.
+
+### Node.js
+
+    let results = await execute(db.pipeline()
+      .collectionGroup("restaurants")
+      .where(field("type").equal("pizza"))
+      .define(field("__name__").as("restaurant_name"))
+      .select(
+        field("name"),
+        db.pipeline()
+          .collectionGroup("reviews")
+          .where(field("restaurant").equal(variable("restaurant_name")))
+          .select("rating", "reviewer_id")
+          .toArrayExpression()
+          .as("reviews")));
+
+**Response**
+
+    {
+      name: "Golden Gate Pizza",
+      reviews: [
+        { rating: 5, reviewer_id "Alice" },
+        { rating: 4, reviewer_id "Bob" }
+      ]
+    },
+    {
+      name: "Venice Pizza",
+      type: "pizza",
+      owner_id: "Luigi Romano",
+      reviews: [
+        { rating: 3, reviewer_id "George" }
+      ]
+    }
+
+### Aggregate Across Multiple Collections
+
+The following query on the `restaurants` collection group uses a correlated subquery to get the average rating for each restaurant from the `reviews` collection group.
+
+### Node.js
+
+    let results = await execute(db.pipeline()
+      .collectionGroup("restaurants")
+      .where(field("type").equal("pizza"))
+      .define(field("__name__").as("restaurant_name"))
+      .select(
+        field("name"),
+        db.pipeline()
+          .collectionGroup("reviews")
+          .where(field("restaurant").equal(variable("restaurant_name")))
+          .aggregate(average("rating").as("avg_rating"))
+          .toScalarExpression()
+          .as("avg_rating")));
+
+**Response**
+
+    {
+      name: "Golden Gate Pizza",
+      avg_rating: 4.5
+    },
+    {
+      name: "Venice Pizza",
+      avg_rating: 3.0
+    }
+
+### Top-N Per Group (Subquery with Limit)
+
+The following query fetches all documents from the `restaurants` collection group, and uses a correlated subquery to fetch the top 2 highest-rated reviews for each restaurant.
+
+This ensures that the array of reviews does not grow too large and hits the query's memory limit.
+
+### Node.js
+
+    let results = await execute(db.pipeline()
+      .collectionGroup("restaurants")
+      .define(field("__name__").as("restaurant_name"))
+      .select(
+        field("name"),
+        db.pipeline()
+          .collectionGroup("reviews")
+          .where(field("restaurant").equal(variable("restaurant_name")))
+          .sort(field("rating").descending())
+          .limit(2)
+          .select("rating", "reviewer_id")
+          .toArrayExpression()
+          .as("top_reviews")));
+
+**Response**
+
+    {
+      name: "Golden Gate Pizza",
+      top_reviews: [
+        { rating: 5, reviewer_id "Alice" },
+        { rating: 4, reviewer_id "Bob" }
+      ]
+    },
+    {
+      name: "Bay Area Burger",
+      top_reviews: [
+        { rating: 4, reviewer_id "Charlie" }
+      ]
+    },
+    {
+      name: "Sunset Taco",
+      top_reviews: [
+        { rating: 5, reviewer_id "Diana" },
+        { rating: 4, reviewer_id "Edward" }
+      ]
+    },
+    {
+      name: "Hollywood Sushi",
+      top_reviews: []
+    },
+    {
+      name: "Venice Pizza",
+      top_reviews: [
+        { rating: 3, reviewer_id "George" }
+      ]
+    },
+    {
+      name: "Capitol Tacos",
+      top_reviews: [
+        { rating: 5, reviewer_id "Hannah" },
+        { rating: 4, reviewer_id "Ian" }
+      ]
+    },
+    {
+      name: "Georgetown Coffee",
+      top_reviews: [
+        { rating: 5, reviewer_id "Julia" }
+      ]
+    }
+
+### Join Subcollections
+
+The following query scans the `cities` collection and uses the [`subcollection(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/subcollection) stage to implicitly join over documents from a nested collection to find the number of restaurants per city.
+
+### Node.js
+
+    let results = await execute(db.pipeline()
+      .collection("cities")
+      .addFields(subcollection("restaurants")
+        .toArrayExpression()
+        .length()
+        .as("restaurant_count")));
+
+**Response**
+
+    {
+      __name__: cities/SF,
+      name: "San Francisco",
+      state: "CA",
+      country: "USA",
+      restaurant_count: 3
+    },
+    {
+      __name__: cities/LA,
+      name: "Los Angeles",
+      state: "CA",
+      country: "USA",
+      restaurant_count: 2
+    },
+    {
+      __name__: cities/DC,
+      name: "Washington, D.C.",
+      state: null,
+      country: "USA",
+      restaurant_count: 2
+    },
+    {
+      __name__: cities/TOK,
+      name: "Tokyo",
+      state: null,
+      country: "Japan",
+      restaurant_count: 0
+    }
+
+### Express Multiple Join Conditions
+
+The following query scans the `restaurants` collection group and performs a multi-field join with the `reviews` collection group to find owners reviewing their own restaurants.
+
+### Node.js
+
+    let results = await execute(db.pipeline()
+      .collectionGroup("restaurants")
+      .define(field("owner_id"), field("__name__"))
+      .where(db.pipeline()
+        .collectionGroup("reviews")
+        .where(field("restaurant").equal(variable("__name__")))
+        .where(field("author").equal(variable("owner_id")))
+        .aggregate(count().as("c"))
+        .toScalarExpression()
+        .greaterThan(0)));
+
+**Response**
+
+    {
+      __name__: cities/SF/restaurants/X9An0HIlx29A9GPuRthS,
+      name: "Sunset Taco",
+      type: "mexican",
+      owner_id: "Edward"
+    }
+
+### Anti-Join ( `NOT EXISTS` )
+
+The following query scans the `restaurants` collection group and finds all restaurants that have no reviews yet.
+
+### Node.js
+
+    let results = await execute(db.pipeline()
+      .collectionGroup("restaurants")
+      .define(field("__name__").as("restaurant_name"))
+      .where(db.pipeline()
+        .collectionGroup("reviews")
+        .where(field("restaurant").equal(variable("restaurant_name")))
+        .aggregate(count().as("review_count"))
+        .toScalarExpression()
+        .equal(0)));
+
+**Response**
+
+    {
+      __name__: "cities/LA/restaurants/X9An0HIlx29A9GPuRthS",
+      name: "Hollywood Sushi",
+      type: "sushi",
+      owner_id: "Ken Kenji"
+    }
+
+### Subquery as Join
+
+The following query flattens the relationship between each pizza place and its reviews. By placing the subquery inside an [`unnest(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/unnest) stage, the server duplicates the outer restaurant document for each matching review, producing flat, joined documents (similar to a SQL `INNER JOIN` ).
+
+### Node.js
+
+    let results = await execute(db.pipeline()
+      .collectionGroup("restaurants")
+      .where(field("type").equal("pizza"))
+      .define(field("__name__").as("restaurant_name"))
+      .unnest(
+        db.pipeline()
+          .collectionGroup("reviews")
+          .where(field("restaurant").equal(variable("restaurant_name")))
+          .select("rating", "reviewer_id")
+          .toArrayExpression()
+          .as("review")));
+
+**Response**
+
+    {
+      __name__: "cities/SF/restaurants/xU4pu8nFpnJDPZOwcSPP",
+      name: "Golden Gate Pizza",
+      type: "pizza",
+      owner_id: "Mario Rossi"
+      review: { rating: 5, reviewer_id "Alice" }
+    },
+    {
+      __name__: "cities/SF/restaurants/xU4pu8nFpnJDPZOwcSPP",
+      name: "Golden Gate Pizza",
+      type: "pizza",
+      owner_id: "Mario Rossi",
+      review: { rating: 4, reviewer_id "Bob" }
+    },
+    {
+      __name__: "cities/LA/restaurants/6CYntvNgbYzgaW652Gq1",
+      name: "Venice Pizza",
+      type: "pizza",
+      owner_id: "Luigi Romano",
+      review: { rating: 3, reviewer_id "George" }
+    }
+
+### Uncorrelated Subquery as Filter
+
+The following query on the `reviews` collection performs filters using a uncorrelated subquery on itself to find reviews greater than the average rating.
+
+### Node.js
+
+    let results = await execute(db.pipeline()
+      .collection("reviews")
+      // Average review rating is 4.3
+      .where(field("rating").greaterThan(db.pipeline()
+        .collection("reviews")
+        .aggregate(average("rating").as("avg"))
+        .toScalarExpression())))
+      .select("rating", "reviewer_id");
+
+**Response**
+
+    {
+      rating: 5,
+      reviewer_id "Alice"
+    },
+    {
+      rating: 5,
+      reviewer_id "Diana"
+    },
+    {
+      rating: 5,
+      reviewer_id "Hannah"
+    },
+    {
+      rating: 5,
+      reviewer_id "Julia"
+    }
 
 ## Best practices
 

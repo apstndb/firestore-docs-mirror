@@ -195,7 +195,7 @@ The values for \`initializeApp\` can be found in your web app's [\`firebaseConfi
     
     FirebaseApp.configure()
     
-    let db = Firestore.firestore()AppDelegate.swift
+    let db = Firestore.firestore()
 
 ##### Objective-C
 
@@ -208,7 +208,7 @@ The values for \`initializeApp\` can be found in your web app's [\`firebaseConfi
 // Use Firebase library to configure APIs
 [FIRApp configure];
 
-FIRFirestore *defaultFirestore = [FIRFirestore firestore];AppDelegate.m
+FIRFirestore *defaultFirestore = [FIRFirestore firestore];
   
 ```
 
@@ -217,14 +217,14 @@ Android
 
 ``` 
   // Access a Firestore instance from your Activity
-  val db = Firebase.firestoreDocSnippets.kt
+  val db = Firebase.firestore
 ```
 
 ##### Java  
 Android
 
     // Access a Firestore instance from your Activity
-      FirebaseFirestore db = FirebaseFirestore.getInstance();DocSnippets.java
+      FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 ### Dart
 
@@ -234,7 +234,7 @@ Android
 
     // Make sure the call to `Create()` happens some time before you call Firestore::GetInstance().
     App::Create();
-    Firestore* db = Firestore::GetInstance();AppDelegate.mm
+    Firestore* db = Firestore::GetInstance();
 
 ##### Unity
 
@@ -262,7 +262,7 @@ Create a new collection and a document using the following example code.
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
-    }add_ada_lovelace.js
+    }
 
 ### Web version 8
 
@@ -278,7 +278,7 @@ Create a new collection and a document using the following example code.
     })
     .catch((error) => {
         console.error("Error adding document: ", error);
-    });test.firestore.js
+    });
 
 ##### Swift
 
@@ -294,7 +294,7 @@ Create a new collection and a document using the following example code.
       print("Document added with ID: \(ref.documentID)")
     } catch {
       print("Error adding document: \(error)")
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -312,7 +312,7 @@ Create a new collection and a document using the following example code.
           } else {
             NSLog(@"Document added with ID: %@", ref.documentID);
           }
-        }];ViewController.m
+        }];
 
 ##### Kotlin  
 Android
@@ -332,7 +332,7 @@ Android
         }
         .addOnFailureListener { e ->
             Log.w(TAG, "Error adding document", e)
-        }DocSnippets.kt
+        }
 
 ##### Java  
 Android
@@ -357,7 +357,7 @@ Android
                 public void onFailure(@NonNull Exception e) {
                     Log.w(TAG, "Error adding document", e);
                 }
-            });DocSnippets.java
+            });
 
 ### Dart
 
@@ -370,7 +370,7 @@ Android
     
     // Add a new document with a generated ID
     db.collection("users").add(user).then((DocumentReference doc) =>
-        print('DocumentSnapshot added with ID: ${doc.id}'));firestore.dart
+        print('DocumentSnapshot added with ID: ${doc.id}'));
 
 ##### C++
 
@@ -387,7 +387,7 @@ Android
       } else {
         std::cout << "Error adding document: " << future.error_message() << std::endl;
       }
-    });snippets.cpp
+    });
 
 ##### Unity
 
@@ -420,7 +420,7 @@ Now add another document to the `users` collection. Notice that this document in
       console.log("Document written with ID: ", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
-    }add_alan_turing.js
+    }
 
 ### Web version 8
 
@@ -438,7 +438,7 @@ Now add another document to the `users` collection. Notice that this document in
     })
     .catch((error) => {
         console.error("Error adding document: ", error);
-    });test.firestore.js
+    });
 
 ##### Swift
 
@@ -455,7 +455,7 @@ Now add another document to the `users` collection. Notice that this document in
       print("Document added with ID: \(ref.documentID)")
     } catch {
       print("Error adding document: \(error)")
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -474,7 +474,7 @@ Now add another document to the `users` collection. Notice that this document in
           } else {
             NSLog(@"Document added with ID: %@", ref.documentID);
           }
-        }];ViewController.m
+        }];
 
 ##### Kotlin  
 Android
@@ -495,7 +495,7 @@ Android
         }
         .addOnFailureListener { e ->
             Log.w(TAG, "Error adding document", e)
-        }DocSnippets.kt
+        }
 
 ##### Java  
 Android
@@ -521,7 +521,7 @@ Android
                 public void onFailure(@NonNull Exception e) {
                     Log.w(TAG, "Error adding document", e);
                 }
-            });DocSnippets.java
+            });
 
 ### Dart
 
@@ -535,7 +535,7 @@ Android
     
     // Add a new document with a generated ID
     db.collection("users").add(user).then((DocumentReference doc) =>
-        print('DocumentSnapshot added with ID: ${doc.id}'));firestore.dart
+        print('DocumentSnapshot added with ID: ${doc.id}'));
 
 ##### C++
 
@@ -552,7 +552,7 @@ Android
             std::cout << "Error adding document: " << future.error_message()
                       << std::endl;
           }
-        });snippets.cpp
+        });
 
 ##### Unity
 
@@ -581,7 +581,7 @@ You can also use the `get` method to retrieve the entire collection.
     const querySnapshot = await getDocs(collection(db, "users"));
     querySnapshot.forEach((doc) => {
       console.log(`${doc.id} => ${doc.data()}`);
-    });get_all_users.js
+    });
 
 ### Web version 8
 
@@ -591,7 +591,7 @@ You can also use the `get` method to retrieve the entire collection.
         querySnapshot.forEach((doc) => {
             console.log(`${doc.id} => ${doc.data()}`);
         });
-    });test.firestore.js
+    });
 
 ##### Swift
 
@@ -604,7 +604,7 @@ You can also use the `get` method to retrieve the entire collection.
       }
     } catch {
       print("Error getting documents: \(error)")
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -620,7 +620,7 @@ You can also use the `get` method to retrieve the entire collection.
               NSLog(@"%@ => %@", document.documentID, document.data);
             }
           }
-        }];ViewController.m
+        }];
 
 ##### Kotlin  
 Android
@@ -634,7 +634,7 @@ Android
         }
         .addOnFailureListener { exception ->
             Log.w(TAG, "Error getting documents.", exception)
-        }DocSnippets.kt
+        }
 
 ##### Java  
 Android
@@ -652,7 +652,7 @@ Android
                         Log.w(TAG, "Error getting documents.", task.getException());
                     }
                 }
-            });DocSnippets.java
+            });
 
 ### Dart
 
@@ -660,7 +660,7 @@ Android
       for (var doc in event.docs) {
         print("${doc.id} => ${doc.data()}");
       }
-    });firestore.dart
+    });
 
 ##### C++
 
@@ -674,7 +674,7 @@ Android
         std::cout << "Error getting documents: " << future.error_message()
                   << std::endl;
       }
-    });snippets.cpp
+    });
 
 ##### Unity
 

@@ -81,21 +81,21 @@ Returns the value of `x + y` .
     const result = await db.pipeline()
       .collection("books")
       .select(field("soldBooks").add(field("unsoldBooks")).as("totalBooks"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("soldBooks").add(field("unsoldBooks")).as("totalBooks"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("soldBooks").add(Field("unsoldBooks")).as("totalBooks")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -103,7 +103,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(Expression.add(field("soldBooks"), field("unsoldBooks")).alias("totalBooks"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -112,7 +112,7 @@ Android
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.add(field("soldBooks"), field("unsoldBooks")).alias("totalBooks"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -125,7 +125,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("soldBooks").add(Field.of("unsoldBooks")).as_("totalBooks"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -135,7 +135,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(add(field("soldBooks"), field("unsoldBooks")).as("totalBooks"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### SUBTRACT
 
@@ -163,7 +163,7 @@ Returns the value of `x - y` .
     const result = await db.pipeline()
       .collection("books")
       .select(field("price").subtract(constant(storeCredit)).as("totalCost"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -171,7 +171,7 @@ Returns the value of `x - y` .
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("price").subtract(constant(storeCredit)).as("totalCost"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -179,7 +179,7 @@ Returns the value of `x - y` .
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("price").subtract(Constant(storeCredit)).as("totalCost")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -188,7 +188,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(Expression.subtract(field("price"), storeCredit).alias("totalCost"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -198,7 +198,7 @@ int storeCredit = 7;
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.subtract(field("price"), storeCredit).alias("totalCost"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -212,7 +212,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("price").subtract(store_credit).as_("totalCost"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -223,7 +223,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(subtract(field("price"), storeCredit).as("totalCost"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### MULTIPLY
 
@@ -251,21 +251,21 @@ Returns the value of `x * y` .
     const result = await db.pipeline()
       .collection("books")
       .select(field("price").multiply(field("soldBooks")).as("revenue"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("price").multiply(field("soldBooks")).as("revenue"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("price").multiply(Field("soldBooks")).as("revenue")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -273,7 +273,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(Expression.multiply(field("price"), field("soldBooks")).alias("revenue"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -282,7 +282,7 @@ Android
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.multiply(field("price"), field("soldBooks")).alias("revenue"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -295,7 +295,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("price").multiply(Field.of("soldBooks")).as_("revenue"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -305,7 +305,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(multiply(field("price"), field("soldBooks")).as("revenue"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### DIVIDE
 
@@ -333,21 +333,21 @@ Returns the value of `x / y` . Integer division is truncated.
     const result = await db.pipeline()
       .collection("books")
       .select(field("ratings").divide(field("soldBooks")).as("reviewRate"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("ratings").divide(field("soldBooks")).as("reviewRate"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("ratings").divide(Field("soldBooks")).as("reviewRate")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -355,7 +355,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(Expression.divide(field("ratings"), field("soldBooks")).alias("reviewRate"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -364,7 +364,7 @@ Android
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.divide(field("ratings"), field("soldBooks")).alias("reviewRate"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -377,7 +377,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("ratings").divide(Field.of("soldBooks")).as_("reviewRate"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -387,7 +387,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(divide(field("ratings"), field("soldBooks")).as("reviewRate"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### MOD
 
@@ -421,7 +421,7 @@ Returns the remainder of `x / y` .
     const result = await db.pipeline()
       .collection("books")
       .select(field("unsoldBooks").mod(constant(displayCapacity)).as("warehousedBooks"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -429,7 +429,7 @@ Returns the remainder of `x / y` .
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("unsoldBooks").mod(constant(displayCapacity)).as("warehousedBooks"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -437,7 +437,7 @@ Returns the remainder of `x / y` .
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("unsoldBooks").mod(Constant(displayCapacity)).as("warehousedBooks")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -446,7 +446,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(Expression.mod(field("unsoldBooks"), displayCapacity).alias("warehousedBooks"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -456,7 +456,7 @@ int displayCapacity = 1000;
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.mod(field("unsoldBooks"), displayCapacity).alias("warehousedBooks"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -470,7 +470,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("unsoldBooks").mod(display_capacity).as_("warehousedBooks"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -481,7 +481,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(mod(field("unsoldBooks"), displayCapacity).as("warehousedBooks"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### CEIL
 
@@ -515,7 +515,7 @@ Returns the smallest integer value that isn't less than `number` .
       .select(
         field("unsoldBooks").divide(constant(booksPerShelf)).ceil().as("requiredShelves")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -525,7 +525,7 @@ Returns the smallest integer value that isn't less than `number` .
       .select(
         field("unsoldBooks").divide(constant(booksPerShelf)).ceil().as("requiredShelves")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -535,7 +535,7 @@ Returns the smallest integer value that isn't less than `number` .
       .select([
         Field("unsoldBooks").divide(Constant(booksPerShelf)).ceil().as("requiredShelves")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -546,7 +546,7 @@ Android
         .select(
             Expression.divide(field("unsoldBooks"), booksPerShelf).ceil().alias("requiredShelves")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -558,7 +558,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
     .select(
         Expression.divide(field("unsoldBooks"), booksPerShelf).ceil().alias("requiredShelves")
     )
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -577,7 +577,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .as_("requiredShelves")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -588,7 +588,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(ceil(divide(field("unsoldBooks"), booksPerShelf)).as("requiredShelves"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### FLOOR
 
@@ -621,7 +621,7 @@ Returns the largest integer value that isn't greater than `number` .
       .addFields(
         field("wordCount").divide(field("pages")).floor().as("wordsPerPage")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -630,7 +630,7 @@ Returns the largest integer value that isn't greater than `number` .
       .addFields(
         field("wordCount").divide(field("pages")).floor().as("wordsPerPage")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -639,7 +639,7 @@ Returns the largest integer value that isn't greater than `number` .
       .addFields([
         Field("wordCount").divide(Field("pages")).floor().as("wordsPerPage")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -649,7 +649,7 @@ Android
         .addFields(
             Expression.divide(field("wordCount"), field("pages")).floor().alias("wordsPerPage")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -660,7 +660,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
     .addFields(
         Expression.divide(field("wordCount"), field("pages")).floor().alias("wordsPerPage")
     )
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -675,7 +675,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             Field.of("wordCount").divide(Field.of("pages")).floor().as_("wordsPerPage")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -685,7 +685,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .addFields(floor(divide(field("wordCount"), field("pages"))).as("wordsPerPage"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### ROUND
 
@@ -722,7 +722,7 @@ Rounds `places` digits off a `number` . Rounds digits from the right of the deci
       .collection("books")
       .select(field("soldBooks").multiply(field("price")).round().as("partialRevenue"))
       .aggregate(field("partialRevenue").sum().as("totalRevenue"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -730,7 +730,7 @@ Rounds `places` digits off a `number` . Rounds digits from the right of the deci
       .collection("books")
       .select(field("soldBooks").multiply(field("price")).round().as("partialRevenue"))
       .aggregate(field("partialRevenue").sum().as("totalRevenue"))
-      );test.firestore.js
+      );
 
 ##### Swift
 
@@ -738,7 +738,7 @@ Rounds `places` digits off a `number` . Rounds digits from the right of the deci
       .collection("books")
       .select([Field("soldBooks").multiply(Field("price")).round().as("partialRevenue")])
       .aggregate([Field("partialRevenue").sum().as("totalRevenue")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -747,7 +747,7 @@ Android
         .collection("books")
         .select(Expression.multiply(field("soldBooks"), field("price")).round().alias("partialRevenue"))
         .aggregate(AggregateFunction.sum("partialRevenue").alias("totalRevenue"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -757,7 +757,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.multiply(field("soldBooks"), field("price")).round().alias("partialRevenue"))
     .aggregate(AggregateFunction.sum("partialRevenue").alias("totalRevenue"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -776,7 +776,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         )
         .aggregate(Field.of("partialRevenue").sum().as_("totalRevenue"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -787,7 +787,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .select(round(multiply(field("soldBooks"), field("price"))).as("partialRevenue"))
             .aggregate(sum("partialRevenue").as("totalRevenue"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### TRUNC
 
@@ -863,7 +863,7 @@ Returns the value `base` raised to the power of `exponent` .
           // Inaccurate for large distances or close to poles
           .as("approximateDistanceToGoogle")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -885,7 +885,7 @@ Returns the value `base` raised to the power of `exponent` .
           // Inaccurate for large distances or close to poles
           .as("approximateDistanceToGoogle")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -907,7 +907,7 @@ Returns the value `base` raised to the power of `exponent` .
           // Inaccurate for large distances or close to poles
           .as("approximateDistanceToGoogle")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -930,7 +930,7 @@ Android
                 // Inaccurate for large distances or close to poles
                 .alias("approximateDistanceToGoogle")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -954,7 +954,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             // Inaccurate for large distances or close to poles
             .alias("approximateDistanceToGoogle")
     )
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -987,7 +987,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .as_("approximateDistanceToGoogle")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -1007,7 +1007,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
                     // Inaccurate for large distances or close to poles
                     .as("approximateDistanceToGoogle"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### SQRT
 
@@ -1053,7 +1053,7 @@ Returns the square root of a `number` .
           // Inaccurate for large distances or close to poles
           .as("approximateDistanceToGoogle")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -1075,7 +1075,7 @@ Returns the square root of a `number` .
           // Inaccurate for large distances or close to poles
           .as("approximateDistanceToGoogle")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -1097,7 +1097,7 @@ Returns the square root of a `number` .
           // Inaccurate for large distances or close to poles
           .as("approximateDistanceToGoogle")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -1120,7 +1120,7 @@ Android
                 // Inaccurate for large distances or close to poles
                 .alias("approximateDistanceToGoogle")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -1144,7 +1144,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             // Inaccurate for large distances or close to poles
             .alias("approximateDistanceToGoogle")
     )
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -1177,7 +1177,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .as_("approximateDistanceToGoogle")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -1197,7 +1197,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
                     // Inaccurate for large distances or close to poles
                     .as("approximateDistanceToGoogle"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### EXP
 
@@ -1223,21 +1223,21 @@ Returns the value of Euler's number raised to the power of `exponent` , also cal
     const result = await db.pipeline()
       .collection("books")
       .select(field("rating").exp().as("expRating"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("rating").exp().as("expRating"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("rating").exp().as("expRating")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -1245,7 +1245,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("rating").exp().alias("expRating"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -1254,7 +1254,7 @@ Android
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("rating").exp().alias("expRating"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -1267,7 +1267,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("rating").exp().as_("expRating"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -1277,7 +1277,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(exp(field("rating")).as("expRating"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### LN
 
@@ -1306,21 +1306,21 @@ Returns the natural logarithm of `number` . This function is equivalent to `log(
     const result = await db.pipeline()
       .collection("books")
       .select(field("rating").ln().as("lnRating"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("rating").ln().as("lnRating"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("rating").ln().as("lnRating")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -1328,7 +1328,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("rating").ln().alias("lnRating"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -1337,7 +1337,7 @@ Android
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("rating").ln().alias("lnRating"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -1350,7 +1350,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("rating").ln().as_("lnRating"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -1360,7 +1360,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(ln(field("rating")).as("lnRating"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### LOG
 

@@ -68,7 +68,7 @@ For each document you want to index by location, you will need to store a Geohas
       geohash: hash,
       lat: lat,
       lng: lng
-    });fs_geo_add_hash.js
+    });
 
 ### Web version 8
 
@@ -86,7 +86,7 @@ For each document you want to index by location, you will need to store a Geohas
       lng: lng
     }).then(() => {
       // ...
-    });test.solution-geoqueries.js
+    });
 
 ### Swift
 
@@ -110,7 +110,7 @@ For each document you want to index by location, you will need to store a Geohas
     let londonRef = db.collection("cities").document("LON")
     londonRef.updateData(documentData) { error in
       // ...
-    }SolutionGeoPointViewController.swift
+    }
 
 ### Kotlin  
 Android
@@ -131,7 +131,7 @@ Android
     londonRef.update(updates)
         .addOnCompleteListener {
             // ...
-        }SolutionGeoqueries.kt
+        }
 
 ### Java  
 Android
@@ -155,7 +155,7 @@ Android
                 public void onComplete(@NonNull Task<Void> task) {
                     // ...
                 }
-            });SolutionGeoqueries.java
+            });
 
 ### Query Geohashes
 
@@ -203,7 +203,7 @@ Geohashes allow us to approximate area queries by joining a set of queries on th
           matchingDocs.push(doc);
         }
       }
-    }fs_geo_query_hashes.js
+    }
 
 ### Web version 8
 
@@ -249,7 +249,6 @@ Geohashes allow us to approximate area queries by joining a set of queries on th
       // Process the matching documents
       // ...
     });
-    test.solution-geoqueries.js
 
 ### Swift
 
@@ -308,7 +307,7 @@ Geohashes allow us to approximate area queries by joining a set of queries on th
       print("Docs matching geoquery: \(matchingDocs)")
     } catch {
       print("Unable to fetch snapshot data. \(error)")
-    }SolutionGeoPointViewController.swift
+    }
 
 ### Kotlin  
 Android
@@ -352,7 +351,7 @@ Android
     
             // matchingDocs contains the results
             // ...
-        }SolutionGeoqueries.kt
+        }
 
 ### Java  
 Android
@@ -401,7 +400,7 @@ Android
                     // matchingDocs contains the results
                     // ...
                 }
-            });SolutionGeoqueries.java
+            });
 
 ## Limitations
 

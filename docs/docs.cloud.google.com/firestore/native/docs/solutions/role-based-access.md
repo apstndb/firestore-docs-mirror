@@ -61,7 +61,7 @@ Now that you have users' roles recorded in the database, you need to write Secur
              }
          }
        }
-    }step1-invalid.rules
+    }
 
 **Step 2** : Add a simple `write` rule that gives owners complete control over stories. The functions defined help determine a user's roles and if new documents are valid:
 
@@ -95,7 +95,7 @@ Now that you have users' roles recorded in the database, you need to write Secur
              }
          }
        }
-    }step2.rules
+    }
 
 **Step 3** : Write rules that allow a user of any role to read stories and comments. Using the functions defined in the previous step keeps the rules concise and readable:
 
@@ -131,7 +131,7 @@ Now that you have users' roles recorded in the database, you need to write Secur
             }
          }
        }
-    }step3.rules
+    }
 
 **Step 4** : Allow story writers, commenters, and owners to post comments. Note that this rule also validates that the `owner` of the comment matches the requesting user, which prevents users from writing over each other's comments:
 
@@ -175,7 +175,6 @@ Now that you have users' roles recorded in the database, you need to write Secur
          }
        }
     }
-    step4.rules
 
 **Step 5** : Give writers the ability to edit story content, but not to edit story roles or change any other properties of the document. This requires splitting the stories `write` rule into separate rules for `create` , `update` , and `delete` since writers can only update stories:
 
@@ -225,7 +224,6 @@ Now that you have users' roles recorded in the database, you need to write Secur
          }
        }
     }
-    step5.rules
 
 ## Limitations
 

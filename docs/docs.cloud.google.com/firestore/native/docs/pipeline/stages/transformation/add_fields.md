@@ -13,14 +13,14 @@ The generated documents will contain all the fields from the previous stage alon
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("soldBooks").add(field("unsoldBooks")).as("totalBooks"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("soldBooks").add(Field("unsoldBooks")).as("totalBooks")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -28,7 +28,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(Expression.add(field("soldBooks"), field("unsoldBooks")).alias("totalBooks"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -37,7 +37,7 @@ Android
       Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.add(field("soldBooks"), field("unsoldBooks")).alias("totalBooks"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -50,7 +50,7 @@ Android
         .collection("books")
         .select(Field.of("soldBooks").add(Field.of("unsoldBooks")).as_("totalBooks"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -60,7 +60,7 @@ Android
             .collection("books")
             .select(add(field("soldBooks"), field("unsoldBooks")).as("totalBooks"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ## Behavior
 

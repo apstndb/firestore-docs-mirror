@@ -23,13 +23,13 @@ For example, if you use `startAt(A)` in a query, it returns the entire alphabet.
 
     import { query, orderBy, startAt } from "firebase/firestore";  
     
-    const q = query(citiesRef, orderBy("population"), startAt(1000000));order_and_start.js
+    const q = query(citiesRef, orderBy("population"), startAt(1000000));
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    citiesRef.orderBy("population").startAt(1000000);test.firestore.js
+    citiesRef.orderBy("population").startAt(1000000);
 
 ##### Swift
 
@@ -38,7 +38,7 @@ For example, if you use `startAt(A)` in a query, it returns the entire alphabet.
     // Get all cities with population over one million, ordered by population.
     db.collection("cities")
       .order(by: "population")
-      .start(at: [1000000])ViewController.swift
+      .start(at: [1000000])
 
 ##### Objective-C
 
@@ -47,7 +47,7 @@ For example, if you use `startAt(A)` in a query, it returns the entire alphabet.
     // Get all cities with population over one million, ordered by population.
     [[[db collectionWithPath:@"cities"]
         queryOrderedByField:@"population"]
-        queryStartingAtValues:@[ @1000000 ]];ViewController.m
+        queryStartingAtValues:@[ @1000000 ]];
 
 ##### Kotlin  
 Android
@@ -55,7 +55,7 @@ Android
     // Get all cities with a population >= 1,000,000, ordered by population,
     db.collection("cities")
         .orderBy("population")
-        .startAt(1000000)DocSnippets.kt
+        .startAt(1000000)
 
 ##### Java  
 Android
@@ -63,44 +63,44 @@ Android
     // Get all cities with a population >= 1,000,000, ordered by population,
     db.collection("cities")
             .orderBy("population")
-            .startAt(1000000);DocSnippets.java
+            .startAt(1000000);
 
 ### Dart
 
-    db.collection("cities").orderBy("population").startAt([1000000]);firestore.dart
+    db.collection("cities").orderBy("population").startAt([1000000]);
 
 ##### Java
 
-    Query query = cities.orderBy("population").startAt(4921000L);QueryDataSnippets.java
+    Query query = cities.orderBy("population").startAt(4921000L);
 
 ##### Python
 
     cities_ref = db.collection("cities")
-    query_start_at = cities_ref.order_by("population").start_at({"population": 1000000})snippets.py
+    query_start_at = cities_ref.order_by("population").start_at({"population": 1000000})
 
 ##### Python  
 (Async)
 
     cities_ref = db.collection("cities")
-    query_start_at = cities_ref.order_by("population").start_at({"population": 1000000})snippets.py
+    query_start_at = cities_ref.order_by("population").start_at({"population": 1000000})
 
 ##### C++
 
     // Get all cities with a population >= 1,000,000, ordered by population,
     db->Collection("cities")
         .OrderBy("population")
-        .StartAt({FieldValue::Integer(1000000)});snippets.cpp
+        .StartAt({FieldValue::Integer(1000000)});
 
 ##### Node.js
 
     const startAtRes = await db.collection('cities')
       .orderBy('population')
       .startAt(1000000)
-      .get();index.js
+      .get();
 
 ##### Go
 
-    query := client.Collection("cities").OrderBy("population", firestore.Asc).StartAt(1000000)query.go
+    query := client.Collection("cities").OrderBy("population", firestore.Asc).StartAt(1000000)
 
 ##### PHP
 
@@ -118,11 +118,11 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ##### C\#
 
-    Query query = citiesRef.OrderBy("Population").StartAt(1000000);Program.cs
+    Query query = citiesRef.OrderBy("Population").StartAt(1000000);
 
 ##### Ruby
 
-    query = cities_ref.order("population").start_at(1_000_000)paginate_data.rb
+    query = cities_ref.order("population").start_at(1_000_000)
 
 Similarly, use the `endAt()` or `endBefore()` methods to define an end point for your query results.
 
@@ -130,13 +130,13 @@ Similarly, use the `endAt()` or `endBefore()` methods to define an end point for
 
     import { query, orderBy, endAt } from "firebase/firestore";  
     
-    const q = query(citiesRef, orderBy("population"), endAt(1000000));order_and_end.js
+    const q = query(citiesRef, orderBy("population"), endAt(1000000));
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    citiesRef.orderBy("population").endAt(1000000);test.firestore.js
+    citiesRef.orderBy("population").endAt(1000000);
 
 ##### Swift
 
@@ -145,7 +145,7 @@ Similarly, use the `endAt()` or `endBefore()` methods to define an end point for
     // Get all cities with population less than one million, ordered by population.
     db.collection("cities")
       .order(by: "population")
-      .end(at: [1000000])ViewController.swift
+      .end(at: [1000000])
 
 ##### Objective-C
 
@@ -154,7 +154,7 @@ Similarly, use the `endAt()` or `endBefore()` methods to define an end point for
     // Get all cities with population less than one million, ordered by population.
     [[[db collectionWithPath:@"cities"]
         queryOrderedByField:@"population"]
-        queryEndingAtValues:@[ @1000000 ]];ViewController.m
+        queryEndingAtValues:@[ @1000000 ]];
 
 ##### Kotlin  
 Android
@@ -162,7 +162,7 @@ Android
     // Get all cities with a population <= 1,000,000, ordered by population,
     db.collection("cities")
         .orderBy("population")
-        .endAt(1000000)DocSnippets.kt
+        .endAt(1000000)
 
 ##### Java  
 Android
@@ -170,44 +170,44 @@ Android
     // Get all cities with a population <= 1,000,000, ordered by population,
     db.collection("cities")
             .orderBy("population")
-            .endAt(1000000);DocSnippets.java
+            .endAt(1000000);
 
 ### Dart
 
-    db.collection("cities").orderBy("population").endAt([1000000]);firestore.dart
+    db.collection("cities").orderBy("population").endAt([1000000]);
 
 ##### Java
 
-    Query query = cities.orderBy("population").endAt(4921000L);QueryDataSnippets.java
+    Query query = cities.orderBy("population").endAt(4921000L);
 
 ##### Python
 
     cities_ref = db.collection("cities")
-    query_end_at = cities_ref.order_by("population").end_at({"population": 1000000})snippets.py
+    query_end_at = cities_ref.order_by("population").end_at({"population": 1000000})
 
 ##### Python  
 (Async)
 
     cities_ref = db.collection("cities")
-    query_end_at = cities_ref.order_by("population").end_at({"population": 1000000})snippets.py
+    query_end_at = cities_ref.order_by("population").end_at({"population": 1000000})
 
 ##### C++
 
     // Get all cities with a population <= 1,000,000, ordered by population,
     db->Collection("cities")
         .OrderBy("population")
-        .EndAt({FieldValue::Integer(1000000)});snippets.cpp
+        .EndAt({FieldValue::Integer(1000000)});
 
 ##### Node.js
 
     const endAtRes = await db.collection('cities')
       .orderBy('population')
       .endAt(1000000)
-      .get();index.js
+      .get();
 
 ##### Go
 
-    query := client.Collection("cities").OrderBy("population", firestore.Asc).EndAt(1000000)query.go
+    query := client.Collection("cities").OrderBy("population", firestore.Asc).EndAt(1000000)
 
 ##### PHP
 
@@ -225,11 +225,11 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ##### C\#
 
-    Query query = citiesRef.OrderBy("Population").EndAt(1000000);Program.cs
+    Query query = citiesRef.OrderBy("Population").EndAt(1000000);
 
 ##### Ruby
 
-    query = cities_ref.order("population").end_at(1_000_000)paginate_data.rb
+    query = cities_ref.order("population").end_at(1_000_000)
 
 ## Use a document snapshot to define the query cursor
 
@@ -246,7 +246,7 @@ For example, take a snapshot of a "San Francisco" document in your data set of c
     
     // Get all cities with a population bigger than San Francisco
     const biggerThanSf = query(citiesRef, orderBy("population"), startAt(docSnap));
-    // ...start_doc.js
+    // ...
 
 ### Web version 8
 
@@ -261,7 +261,7 @@ For example, take a snapshot of a "San Francisco" document in your data set of c
             .startAt(doc);
     
         // ...
-    });test.firestore.js
+    });
 
 ##### Swift
 
@@ -279,7 +279,7 @@ For example, take a snapshot of a "San Francisco" document in your data set of c
         let sfSizeOrBigger = db.collection("cities")
           .order(by: "population")
           .start(atDocument: document)
-      }ViewController.swift
+      }
 
 ##### Objective-C
 
@@ -295,7 +295,7 @@ For example, take a snapshot of a "San Francisco" document in your data set of c
           FIRQuery *sfSizeOrBigger = [[[db collectionWithPath:@"cities"]
               queryOrderedByField:@"population"]
               queryStartingAtDocument:snapshot];
-        }];ViewController.m
+        }];
 
 ##### Kotlin  
 Android
@@ -310,7 +310,7 @@ Android
                 .startAt(documentSnapshot)
     
             // ...
-        }DocSnippets.kt
+        }
 
 ##### Java  
 Android
@@ -328,7 +328,7 @@ Android
     
                     // ...
                 }
-            });DocSnippets.java
+            });
 
 ### Dart
 
@@ -340,7 +340,7 @@ Android
             .startAtDocument(documentSnapshot);
       },
       onError: (e) => print("Error: $e"),
-    );firestore.dart
+    );
 
 ##### Java
 
@@ -349,7 +349,7 @@ Android
     DocumentSnapshot snapshot = future.get(30, TimeUnit.SECONDS);
     
     // Construct the query
-    Query query = db.collection("cities").orderBy("population").startAt(snapshot);QueryDataSnippets.java
+    Query query = db.collection("cities").orderBy("population").startAt(snapshot);
 
 ##### Python
 
@@ -358,7 +358,7 @@ Android
     snapshot = doc_ref.get()
     start_at_snapshot = (
         db.collection("cities").order_by("population").start_at(snapshot)
-    )snippets.py
+    )
 
 ##### Python  
 (Async)
@@ -368,7 +368,7 @@ Android
     snapshot = await doc_ref.get()
     start_at_snapshot = (
         db.collection("cities").order_by("population").start_at(snapshot)
-    )snippets.py
+    )
 
 ##### C++
 
@@ -381,7 +381,7 @@ Android
                                        .StartAt({document_snapshot});
             // ...
           }
-        });snippets.cpp
+        });
 
 ##### Node.js
 
@@ -391,7 +391,7 @@ Android
       .orderBy('population')
       .startAt(snapshot);
     
-    await startAtSnapshot.limit(10).get();index.js
+    await startAtSnapshot.limit(10).get();
 
 ##### Go
 
@@ -400,7 +400,7 @@ Android
     if err != nil {
      fmt.Println(err)
     }
-    query := cities.OrderBy("population", firestore.Asc).StartAt(dsnap.Data()["population"]).Documents(ctx)query.go
+    query := cities.OrderBy("population", firestore.Asc).StartAt(dsnap.Data()["population"]).Documents(ctx)
 
 ##### PHP
 
@@ -430,13 +430,13 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
     CollectionReference citiesRef = db.Collection("cities");
     DocumentReference docRef = citiesRef.Document("SF");
     DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
-    Query query = citiesRef.OrderBy("Population").StartAt(snapshot);Program.cs
+    Query query = citiesRef.OrderBy("Population").StartAt(snapshot);
 
 ##### Ruby
 
     doc_ref = firestore.doc "#{collection_path}/SF"
     snapshot = doc_ref.get
-    query = cities_ref.order("population").start_at(snapshot)paginate_data.rb
+    query = cities_ref.order("population").start_at(snapshot)
 
 ## Paginate a query
 
@@ -459,7 +459,7 @@ Paginate queries by combining query cursors with the `limit()` method. For examp
     const next = query(collection(db, "cities"),
         orderBy("population"),
         startAfter(lastVisible),
-        limit(25));paginate.js
+        limit(25));
 
 ### Web version 8
 
@@ -480,7 +480,7 @@ Paginate queries by combining query cursors with the `limit()` method. For examp
               .orderBy("population")
               .startAfter(lastVisible)
               .limit(25);
-    });test.firestore.js
+    });
 
 ##### Swift
 
@@ -510,7 +510,7 @@ Paginate queries by combining query cursors with the `limit()` method. For examp
     
       // Use the query for pagination.
       // ...
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -534,7 +534,7 @@ Paginate queries by combining query cursors with the `limit()` method. For examp
           queryStartingAfterDocument:lastSnapshot];
       // Use the query for pagination.
       // ...
-    }];ViewController.m
+    }];
 
 ##### Kotlin  
 Android
@@ -560,7 +560,7 @@ Android
     
             // Use the query for pagination
             // ...
-        }DocSnippets.kt
+        }
 
 ##### Java  
 Android
@@ -590,7 +590,7 @@ Android
                 // Use the query for pagination
                 // ...
             }
-        });DocSnippets.java
+        });
 
 ### Dart
 
@@ -614,7 +614,7 @@ Android
         // ...
       },
       onError: (e) => print("Error completing: $e"),
-    );firestore.dart
+    );
 
 ##### Java
 
@@ -631,7 +631,7 @@ Android
     Query secondPage = cities.orderBy("population").startAfter(lastDoc).limit(25);
     
     future = secondPage.get();
-    docs = future.get(30, TimeUnit.SECONDS).getDocuments();QueryDataSnippets.java
+    docs = future.get(30, TimeUnit.SECONDS).getDocuments();
 
 ##### Python
 
@@ -651,7 +651,7 @@ Android
         cities_ref.order_by("population").start_after({"population": last_pop}).limit(3)
     )
     # Use the query for pagination
-    # ...snippets.py
+    # ...
 
 ##### Python  
 (Async)
@@ -672,7 +672,7 @@ Android
         cities_ref.order_by("population").start_after({"population": last_pop}).limit(3)
     )
     # Use the query for pagination
-    # ...snippets.py
+    # ...
 
 ##### C++
 
@@ -699,7 +699,7 @@ Android
     
       // Use the query for pagination
       // ...
-    });snippets.cpp
+    });
 
 ##### Node.js
 
@@ -721,7 +721,7 @@ Android
       .limit(3);
     
     // Use the query for pagination
-    // ...index.js
+    // ...
 
 ##### Go
 
@@ -742,7 +742,7 @@ Android
      StartAfter(lastDoc.Data()["population"]).
      Limit(25)
     
-    // ...query.go
+    // ...
 
 ##### PHP
 
@@ -800,7 +800,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
     // Construct a new query starting at this document.
     // Note: this will not have the desired effect if multiple cities have the exact same population value
     Query secondQuery = citiesRef.OrderBy("Population").StartAfter(lastPopulation);
-    QuerySnapshot secondQuerySnapshot = await secondQuery.GetSnapshotAsync();Program.cs
+    QuerySnapshot secondQuerySnapshot = await secondQuery.GetSnapshotAsync();
 
 ##### Ruby
 
@@ -818,7 +818,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
     second_query = cities_ref.order("population").start_after(last_population)
     second_query.get do |city|
       puts "Document #{city.document_id} returned by paginated query cursor."
-    endpaginate_data.rb
+    end
 
 ## Set cursor based on multiple fields
 
@@ -859,7 +859,7 @@ To start at a specific Springfield, you could add the state as a secondary condi
     const q2 = query(collection(db, "cities"),
        orderBy("name"),
        orderBy("state"),
-       startAt("Springfield", "Missouri"));start_multiple_orderby.js
+       startAt("Springfield", "Missouri"));
 
 ### Web version 8
 
@@ -875,7 +875,7 @@ To start at a specific Springfield, you could add the state as a secondary condi
     db.collection("cities")
        .orderBy("name")
        .orderBy("state")
-       .startAt("Springfield", "Missouri");test.firestore.js
+       .startAt("Springfield", "Missouri");
 
 ##### Swift
 
@@ -891,7 +891,7 @@ To start at a specific Springfield, you could add the state as a secondary condi
     db.collection("cities")
       .order(by: "name")
       .order(by: "state")
-      .start(at: ["Springfield", "Missouri"])ViewController.swift
+      .start(at: ["Springfield", "Missouri"])
 
 ##### Objective-C
 
@@ -906,7 +906,7 @@ To start at a specific Springfield, you could add the state as a secondary condi
     [[[[db collectionWithPath:@"cities"]
        queryOrderedByField:@"name"]
        queryOrderedByField:@"state"]
-       queryStartingAtValues:@[ @"Springfield", @"Missouri" ]];ViewController.m
+       queryStartingAtValues:@[ @"Springfield", @"Missouri" ]];
 
 ##### Kotlin  
 Android
@@ -921,7 +921,7 @@ Android
     db.collection("cities")
         .orderBy("name")
         .orderBy("state")
-        .startAt("Springfield", "Missouri")DocSnippets.kt
+        .startAt("Springfield", "Missouri")
 
 ##### Java  
 Android
@@ -936,7 +936,7 @@ Android
     db.collection("cities")
             .orderBy("name")
             .orderBy("state")
-            .startAt("Springfield", "Missouri");DocSnippets.java
+            .startAt("Springfield", "Missouri");
 
 ### Dart
 
@@ -952,7 +952,7 @@ Android
         .collection("cities")
         .orderBy("name")
         .orderBy("state")
-        .startAt(["Springfield", "Missouri"]);firestore.dart
+        .startAt(["Springfield", "Missouri"]);
 
 ##### Java
 
@@ -961,7 +961,7 @@ Android
     
     // Will return "Springfield, Missouri" and "Springfield, Wisconsin"
     Query query2 =
-        db.collection("cities").orderBy("name").orderBy("state").startAt("Springfield", "Missouri");QueryDataSnippets.java
+        db.collection("cities").orderBy("name").orderBy("state").startAt("Springfield", "Missouri");
 
 ##### Python
 
@@ -974,7 +974,7 @@ Android
         .order_by("name")
         .order_by("state")
         .start_at({"name": "Springfield", "state": "Missouri"})
-    )snippets.py
+    )
 
 ##### Python  
 (Async)
@@ -991,7 +991,7 @@ Android
         .order_by("name")
         .order_by("state")
         .start_at({"name": "Springfield", "state": "Missouri"})
-    )snippets.py
+    )
 
 ##### C++
 
@@ -1011,7 +1011,7 @@ Android
       .orderBy('name')
       .orderBy('state')
       .startAt('Springfield', 'Missouri')
-      .get();index.js
+      .get();
 
 ##### Go
 
@@ -1025,7 +1025,7 @@ Android
     client.Collection("cities").
      OrderBy("name", firestore.Asc).
      OrderBy("state", firestore.Asc).
-     StartAt("Springfield", "Wisconsin")query.go
+     StartAt("Springfield", "Wisconsin")
 
 ##### PHP
 
@@ -1055,7 +1055,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 ##### C\#
 
     Query query1 = db.Collection("cities").OrderBy("Name").OrderBy("State").StartAt("Springfield");
-    Query query2 = db.Collection("cities").OrderBy("Name").OrderBy("State").StartAt("Springfield", "Missouri");Program.cs
+    Query query2 = db.Collection("cities").OrderBy("Name").OrderBy("State").StartAt("Springfield", "Missouri");
 
 ##### Ruby
 
@@ -1063,4 +1063,4 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
     query1 = firestore.col(collection_path).order("name").order("state").start_at("Springfield")
     
     # Will return "Springfield, Missouri" and "Springfield, Wisconsin"
-    query2 = firestore.col(collection_path).order("name").order("state").start_at(["Springfield", "Missouri"])paginate_data.rb
+    query2 = firestore.col(collection_path).order("name").order("state").start_at(["Springfield", "Missouri"])

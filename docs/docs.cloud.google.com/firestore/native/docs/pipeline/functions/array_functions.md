@@ -75,14 +75,14 @@ Concatenates two or more arrays into a single `ARRAY` .
     const result = await db.pipeline()
       .collection("books")
       .select(field("genre").arrayConcat([field("subGenre")]).as("allGenres"))
-      .execute();test.firestore.js
+      .execute();
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("genre").arrayConcat([Field("subGenre")]).as("allGenres")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -90,7 +90,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("genre").arrayConcat(field("subGenre")).alias("allGenres"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -99,7 +99,7 @@ Android
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("genre").arrayConcat(field("subGenre")).alias("allGenres"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -112,7 +112,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("genre").array_concat(Field.of("subGenre")).as_("allGenres"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -122,7 +122,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(arrayConcat(field("genre"), field("subGenre")).as("allGenres"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### ARRAY\_CONTAINS
 
@@ -148,21 +148,21 @@ Returns `TRUE` if `value` is found in the `array` , and `FALSE` otherwise.
     const result = await db.pipeline()
       .collection("books")
       .select(field("genre").arrayContains(constant("mystery")).as("isMystery"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("genre").arrayContains(constant("mystery")).as("isMystery"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("genre").arrayContains(Constant("mystery")).as("isMystery")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -170,7 +170,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("genre").arrayContains("mystery").alias("isMystery"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -179,7 +179,7 @@ Android
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("genre").arrayContains("mystery").alias("isMystery"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -192,7 +192,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("genre").array_contains("mystery").as_("isMystery"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -202,7 +202,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(arrayContains(field("genre"), "mystery").as("isMystery"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### ARRAY\_CONTAINS\_ALL
 
@@ -234,7 +234,7 @@ Returns `TRUE` if all `search_values` are found in the `array` , and `FALSE` oth
           .arrayContainsAll([constant("fantasy"), constant("adventure")])
           .as("isFantasyAdventure")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -245,7 +245,7 @@ Returns `TRUE` if all `search_values` are found in the `array` , and `FALSE` oth
           .arrayContainsAll([constant("fantasy"), constant("adventure")])
           .as("isFantasyAdventure")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -256,7 +256,7 @@ Returns `TRUE` if all `search_values` are found in the `array` , and `FALSE` oth
           .arrayContainsAll([Constant("fantasy"), Constant("adventure")])
           .as("isFantasyAdventure")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -268,7 +268,7 @@ Android
                 .arrayContainsAll(listOf("fantasy", "adventure"))
                 .alias("isFantasyAdventure")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -281,7 +281,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .arrayContainsAll(Arrays.asList("fantasy", "adventure"))
             .alias("isFantasyAdventure")
     )
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -298,7 +298,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .as_("isFantasyAdventure")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -310,7 +310,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
                 arrayContainsAll(field("genre"), Arrays.asList("fantasy", "adventure"))
                     .as("isFantasyAdventure"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### ARRAY\_CONTAINS\_ANY
 
@@ -339,7 +339,7 @@ Returns `TRUE` if any of the `search_values` are found in the `array` , and `FAL
           .arrayContainsAny([constant("fantasy"), constant("nonfiction")])
           .as("isMysteryOrFantasy")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -350,7 +350,7 @@ Returns `TRUE` if any of the `search_values` are found in the `array` , and `FAL
           .arrayContainsAny([constant("fantasy"), constant("nonfiction")])
           .as("isMysteryOrFantasy")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -361,7 +361,7 @@ Returns `TRUE` if any of the `search_values` are found in the `array` , and `FAL
           .arrayContainsAny([Constant("fantasy"), Constant("nonfiction")])
           .as("isMysteryOrFantasy")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -373,7 +373,7 @@ Android
                 .arrayContainsAny(listOf("fantasy", "nonfiction"))
                 .alias("isMysteryOrFantasy")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -386,7 +386,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .arrayContainsAny(Arrays.asList("fantasy", "nonfiction"))
             .alias("isMysteryOrFantasy")
     )
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -403,7 +403,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .as_("isMysteryOrFantasy")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -415,7 +415,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
                 arrayContainsAny(field("genre"), Arrays.asList("fantasy", "nonfiction"))
                     .as("isMysteryOrFantasy"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### ARRAY\_FILTER
 
@@ -491,21 +491,21 @@ Returns the number of elements in `array` .
     const result = await db.pipeline()
       .collection("books")
       .select(field("genre").arrayLength().as("genreCount"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("genre").arrayLength().as("genreCount"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("genre").arrayLength().as("genreCount")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -513,7 +513,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("genre").arrayLength().alias("genreCount"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -522,7 +522,7 @@ Android
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("genre").arrayLength().alias("genreCount"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -535,7 +535,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("genre").array_length().as_("genreCount"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -545,7 +545,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(arrayLength(field("genre")).as("genreCount"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### ARRAY\_REVERSE
 
@@ -570,21 +570,21 @@ Reverses the given `array` .
     const result = await db.pipeline()
       .collection("books")
       .select(arrayReverse(field("genre")).as("reversedGenres"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("genre").arrayReverse().as("reversedGenres"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("genre").arrayReverse().as("reversedGenres")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -592,7 +592,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("genre").arrayReverse().alias("reversedGenres"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ``` 
     Java
@@ -600,7 +600,7 @@ Android
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("genre").arrayReverse().alias("reversedGenres"))
-    .execute();DocSnippets.java
+    .execute();
   
 ```
 
@@ -613,7 +613,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(Field.of("genre").array_reverse().as_("reversedGenres"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -623,7 +623,7 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .collection("books")
             .select(arrayReverse(field("genre")).as("reversedGenres"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### ARRAY\_FIRST
 

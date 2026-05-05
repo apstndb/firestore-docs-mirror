@@ -38,6 +38,32 @@ To get the permissions that you need to manage custom organization policies, ask
 
 You might also be able to get the required permissions through [custom roles](https://docs.cloud.google.com/iam/docs/creating-custom-roles) or other [predefined roles](https://docs.cloud.google.com/iam/docs/roles-overview#predefined) .
 
+## Firestore supported resources
+
+The following table lists the Firestore resources that you can reference in custom constraints.
+
+Resource
+
+Field
+
+firestore.googleapis.com/Database
+
+`resource.appEngineIntegrationMode`
+
+`resource.cmekConfig.kmsKeyName`
+
+`resource.concurrencyMode`
+
+`resource.deleteProtectionState`
+
+`resource.locationId`
+
+`resource.name`
+
+`resource.pointInTimeRecoveryEnablement`
+
+`resource.type`
+
 ## Set up a custom constraint
 
 A custom constraint is defined in a YAML file by the resources, methods, conditions, and actions that are supported by the service on which you are enforcing the organization policy. Conditions for your custom constraints are defined using [Common Expression Language (CEL)](https://github.com/google/cel-spec/blob/master/doc/intro.md) . For more information about how to build conditions in custom constraints using CEL, see the CEL section of [Creating and managing custom constraints](https://docs.cloud.google.com/organization-policy/create-custom-constraints#common_expression_language) .
@@ -351,32 +377,6 @@ description: Only allow the creation and updating of databases with Standard Edi
 </tr>
 </tbody>
 </table>
-
-## Firestore supported resources
-
-The following table lists the Firestore resources that you can reference in custom constraints.
-
-Resource
-
-Field
-
-firestore.googleapis.com/Database
-
-`resource.appEngineIntegrationMode`
-
-`resource.cmekConfig.kmsKeyName`
-
-`resource.concurrencyMode`
-
-`resource.deleteProtectionState`
-
-`resource.locationId`
-
-`resource.name`
-
-`resource.pointInTimeRecoveryEnablement`
-
-`resource.type`
 
 ## What's next
 

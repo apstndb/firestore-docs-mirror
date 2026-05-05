@@ -11,14 +11,14 @@ Returns all documents from a given collection. The collection can be nested.
     const results = await execute(db.pipeline()
       .collection("users/bob/games")
       .sort(field("name").ascending())
-      );test.firestore.js
+      );
 
 ##### Swift
 
     let results = try await db.pipeline()
       .collection("users/bob/games")
       .sort([Field("name").ascending()])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -26,7 +26,7 @@ Android
     val results = db.pipeline()
         .collection("users/bob/games")
         .sort(field("name").ascending())
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -34,7 +34,7 @@ Android
     Task<Pipeline.Snapshot> results = db.pipeline()
         .collection("users/bob/games")
         .sort(field("name").ascending())
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -45,7 +45,7 @@ Android
         .collection("users/bob/games")
         .sort(Field.of("name").ascending())
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -55,7 +55,7 @@ Android
             .collection("users/bob/games")
             .sort(ascending(field("name")))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ## Behavior
 

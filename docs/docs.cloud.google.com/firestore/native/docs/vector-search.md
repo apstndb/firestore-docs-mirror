@@ -35,7 +35,7 @@ The following example shows how to store a vector embedding in a Firestore docum
         "embedding_field": Vector([0.18332680, 0.24160706, 0.3416704]),
     }
     
-    collection.add(doc)vector_search.py
+    collection.add(doc)
 
 ##### Node.js
 
@@ -94,7 +94,6 @@ The following example shows how to store a vector embedding in a Firestore docum
     
      return nil
     }
-    vector_store.go
 
 ##### Java
 
@@ -307,7 +306,7 @@ The following example finds 10 nearest neighbors of the query vector.
         query_vector=Vector([0.3416704, 0.18332680, 0.24160706]),
         distance_measure=DistanceMeasure.EUCLIDEAN,
         limit=5,
-    )vector_search.py
+    )
 
 ##### Node.js
 
@@ -370,7 +369,6 @@ The following example finds 10 nearest neighbors of the query vector.
      }
      return nil
     }
-    vector_search_basic.go
 
 ##### Java
 
@@ -430,7 +428,7 @@ To pre-filter documents before finding the nearest neighbors, you can combine a 
         query_vector=Vector([0.3416704, 0.18332680, 0.24160706]),
         distance_measure=DistanceMeasure.EUCLIDEAN,
         limit=5,
-    )vector_search.py
+    )
 
 ##### Node.js
 
@@ -490,7 +488,6 @@ To pre-filter documents before finding the nearest neighbors, you can combine a 
      }
      return nil
     }
-    vector_search_prefilter.go
 
 ##### Java
 
@@ -530,7 +527,7 @@ You can retrieve the calculated vector distance by assigning a `distance_result_
     docs = vector_query.stream()
     
     for doc in docs:
-        print(f"{doc.id}, Distance: {doc.get('vector_distance')}")vector_search.py
+        print(f"{doc.id}, Distance: {doc.get('vector_distance')}")
 
 ##### Node.js
 
@@ -591,7 +588,6 @@ You can retrieve the calculated vector distance by assigning a `distance_result_
      }
      return nil
     }
-    vector_search_result_field.go
 
 ##### Java
 
@@ -623,7 +619,7 @@ If you want to use a field mask to return a subset of document fields along with
         distance_measure=DistanceMeasure.EUCLIDEAN,
         limit=10,
         distance_result_field="vector_distance",
-    )vector_search.py
+    )
 
 ##### Node.js
 
@@ -680,7 +676,6 @@ If you want to use a field mask to return a subset of document fields along with
      }
      return nil
     }
-    vector_search_result_field_masked.go
 
 ##### Java
 
@@ -733,7 +728,7 @@ The following example shows how to specify a distance threshold to return up to 
     docs = vector_query.stream()
     
     for doc in docs:
-        print(f"{doc.id}")vector_search.py
+        print(f"{doc.id}")
 
 ##### Node.js
 
@@ -793,7 +788,6 @@ The following example shows how to specify a distance threshold to return up to 
      }
      return nil
     }
-    vector_search_distance_threshold.go
 
 ##### Java
 

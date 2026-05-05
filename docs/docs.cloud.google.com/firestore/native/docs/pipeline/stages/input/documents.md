@@ -18,7 +18,7 @@ This stage behaves similar to Firestore's `batchGet` and allows filtering on the
         doc(db, "cities", "DC"),
         doc(db, "cities", "NY")
       ])
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -27,7 +27,7 @@ This stage behaves similar to Firestore's `batchGet` and allows filtering on the
         db.collection("cities").document("SF"),
         db.collection("cities").document("DC"),
         db.collection("cities").document("NY")
-      ]).execute()PipelineSnippets.swift
+      ]).execute()
 
 ##### Kotlin  
 Android
@@ -37,7 +37,7 @@ Android
             db.collection("cities").document("SF"),
             db.collection("cities").document("DC"),
             db.collection("cities").document("NY")
-        ).execute()DocSnippets.kt
+        ).execute()
 
 ##### Java  
 Android
@@ -48,7 +48,7 @@ Android
         db.collection("cities").document("SF"),
         db.collection("cities").document("DC"),
         db.collection("cities").document("NY")
-    ).execute();DocSnippets.java
+    ).execute();
     
 ```
 
@@ -62,7 +62,7 @@ Android
             client.collection("cities").document("NY"),
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -74,7 +74,7 @@ Android
                 firestore.collection("cities").document("DC"),
                 firestore.collection("cities").document("NY"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ## Behavior
 

@@ -41,7 +41,7 @@ The following example shows how to create and run a transaction:
       console.log("Transaction successfully committed!");
     } catch (e) {
       console.log("Transaction failed: ", e);
-    }transaction.js
+    }
 
 ### Web version 8
 
@@ -70,7 +70,7 @@ The following example shows how to create and run a transaction:
         console.log("Transaction successfully committed!");
     }).catch((error) => {
         console.log("Transaction failed: ", error);
-    });test.firestore.js
+    });
 
 ##### Swift
 
@@ -108,7 +108,7 @@ The following example shows how to create and run a transaction:
       print("Transaction successfully committed!")
     } catch {
       print("Transaction failed: \(error)")
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -139,7 +139,7 @@ The following example shows how to create and run a transaction:
       } else {
         NSLog(@"Transaction successfully committed!");
       }
-    }];ViewController.m
+    }];
 
 ##### Kotlin  
 Android
@@ -157,7 +157,7 @@ Android
         // Success
         null
     }.addOnSuccessListener { Log.d(TAG, "Transaction success!") }
-        .addOnFailureListener { e -> Log.w(TAG, "Transaction failure.", e) }DocSnippets.kt
+        .addOnFailureListener { e -> Log.w(TAG, "Transaction failure.", e) }
 
 ##### Java  
 Android
@@ -188,7 +188,7 @@ Android
         public void onFailure(@NonNull Exception e) {
             Log.w(TAG, "Transaction failure.", e);
         }
-    });DocSnippets.java
+    });
 
 ### Dart
 
@@ -202,7 +202,7 @@ Android
     }).then(
       (value) => print("DocumentSnapshot successfully updated!"),
       onError: (e) => print("Error updating document $e"),
-    );firestore.dart
+    );
 
 ##### Java
 
@@ -223,7 +223,7 @@ Android
               transaction.update(docRef, "population", oldPopulation + 1);
               return null;
             });
-    // block on transaction operation using transaction.get()ManageDataSnippets.java
+    // block on transaction operation using transaction.get()
 
 ##### Python
 
@@ -235,7 +235,7 @@ Android
         snapshot = city_ref.get(transaction=transaction)
         transaction.update(city_ref, {"population": snapshot.get("population") + 1})
     
-    update_in_transaction(transaction, city_ref)snippets.py
+    update_in_transaction(transaction, city_ref)
 
 ##### Python  
 (Async)
@@ -248,7 +248,7 @@ Android
         snapshot = await city_ref.get(transaction=transaction)
         transaction.update(city_ref, {"population": snapshot.get("population") + 1})
     
-    await update_in_transaction(transaction, city_ref)snippets.py
+    await update_in_transaction(transaction, city_ref)
 
 ##### C++
 
@@ -275,7 +275,7 @@ Android
       } else {
         std::cout << "Transaction failure: " << future.error_message() << std::endl;
       }
-    });snippets.cpp
+    });
 
 ##### Node.js
 
@@ -303,7 +303,7 @@ Android
       console.log('Transaction success!');
     } catch (e) {
       console.log('Transaction failure:', e);
-    }index.js
+    }
 
 ##### Go
 
@@ -338,7 +338,6 @@ Android
     
      return err
     }
-    save_transaction_document_update.go
 
 ##### PHP
 
@@ -349,7 +348,7 @@ Android
         $transaction->update($cityRef, [
             ['path' => 'population', 'value' => $newPopulation]
         ]);
-    });transaction_document_update.php
+    });
 
 ##### Unity
 
@@ -380,7 +379,7 @@ Android
             { "Population", newPopulation}
         };
         transaction.Update(cityRef, updates);
-    });Program.cs
+    });
 
 ##### Ruby
 
@@ -390,7 +389,7 @@ Android
       new_population = tx.get(city_ref).data[:population] + 1
       puts "New population is #{new_population}."
       tx.update city_ref, { population: new_population }
-    endtransactions_and_batched_writes.rb
+    end
 
 ### Passing information out of transactions
 
@@ -423,7 +422,7 @@ Do not modify application state inside of your transaction functions. Doing so w
     } catch (e) {
       // This will be a "population is too big" error.
       console.error(e);
-    }transaction_promise.js
+    }
 
 ### Web version 8
 
@@ -451,7 +450,7 @@ Do not modify application state inside of your transaction functions. Doing so w
     }).catch((err) => {
         // This will be an "population is too big" error.
         console.error(err);
-    });test.firestore.js
+    });
 
 ##### Swift
 
@@ -500,7 +499,7 @@ Do not modify application state inside of your transaction functions. Doing so w
       print("Population increased to \(object!)")
     } catch {
       print("Error updating population: \(error)")
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -537,7 +536,7 @@ Do not modify application state inside of your transaction functions. Doing so w
       } else {
         NSLog(@"Population increased to %@", result);
       }
-    }];ViewController.m
+    }];
 
 ##### Kotlin  
 Android
@@ -560,7 +559,7 @@ Android
         Log.d(TAG, "Transaction success: $result")
     }.addOnFailureListener { e ->
         Log.w(TAG, "Transaction failure.", e)
-    }DocSnippets.kt
+    }
 
 ##### Java  
 Android
@@ -591,7 +590,7 @@ Android
         public void onFailure(@NonNull Exception e) {
             Log.w(TAG, "Transaction failure.", e);
         }
-    });DocSnippets.java
+    });
 
 ### Dart
 
@@ -605,7 +604,7 @@ Android
     }).then(
       (newPopulation) => print("Population increased to $newPopulation"),
       onError: (e) => print("Error updating document $e"),
-    );firestore.dart
+    );
 
 ##### Java
 
@@ -624,7 +623,7 @@ Android
               }
             });
     // Print information retrieved from transaction
-    System.out.println(futureTransaction.get());ManageDataSnippets.java
+    System.out.println(futureTransaction.get());
 
 ##### Python
 
@@ -646,7 +645,7 @@ Android
     if result:
         print("Population updated")
     else:
-        print("Sorry! Population is too big.")snippets.py
+        print("Sorry! Population is too big.")
 
 ##### Python  
 (Async)
@@ -669,7 +668,7 @@ Android
     if result:
         print("Population updated")
     else:
-        print("Sorry! Population is too big.")snippets.py
+        print("Sorry! Population is too big.")
 
 ##### C++
 
@@ -692,7 +691,7 @@ Android
       console.log('Transaction success', res);
     } catch (e) {
       console.log('Transaction failure:', e);
-    }index.js
+    }
 
 ##### Go
 
@@ -734,7 +733,6 @@ Android
      }
      return updatedPop, err
     }
-    save_transaction_document_update_conditional.go
 
 ##### PHP
 
@@ -756,7 +754,7 @@ Android
         printf('Population updated successfully.' . PHP_EOL);
     } else {
         printf('Sorry! Population is too big.' . PHP_EOL);
-    }transaction_document_update_conditional.php
+    }
 
 ##### Unity
 
@@ -821,7 +819,7 @@ Android
     else
     {
         Console.WriteLine("Sorry! Population is too big.");
-    }Program.cs
+    }
 
 ##### Ruby
 
@@ -839,7 +837,7 @@ Android
       puts "Population updated!"
     else
       puts "Sorry! Population is too big."
-    endtransactions_and_batched_writes.rb
+    end
 
 ### Transaction failure
 
@@ -883,7 +881,7 @@ If you do not need to read any documents in your operation set, you can execute 
     batch.delete(laRef);
     
     // Commit the batch
-    await batch.commit();write_batch.js
+    await batch.commit();
 
 ### Web version 8
 
@@ -907,7 +905,7 @@ If you do not need to read any documents in your operation set, you can execute 
     // Commit the batch
     batch.commit().then(() => {
         // ...
-    });test.firestore.js
+    });
 
 ##### Swift
 
@@ -934,7 +932,7 @@ If you do not need to read any documents in your operation set, you can execute 
       print("Batch write succeeded.")
     } catch {
       print("Error writing batch: \(error)")
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -965,7 +963,7 @@ If you do not need to read any documents in your operation set, you can execute 
       } else {
         NSLog(@"Batch write succeeded.");
       }
-    }];ViewController.m
+    }];
 
 ##### Kotlin  
 Android
@@ -986,7 +984,7 @@ Android
         batch.delete(laRef)
     }.addOnCompleteListener {
         // ...
-    }DocSnippets.kt
+    }
 
 ##### Java  
 Android
@@ -1012,7 +1010,7 @@ Android
         public void onComplete(@NonNull Task<Void> task) {
             // ...
         }
-    });DocSnippets.java
+    });
 
 ### Dart
 
@@ -1034,7 +1032,7 @@ Android
     // Commit the batch
     batch.commit().then((_) {
       // ...
-    });firestore.dart
+    });
 
 ##### Java
 
@@ -1059,7 +1057,7 @@ Android
     // future.get() blocks on batch commit operation
     for (WriteResult result : future.get()) {
       System.out.println("Update time : " + result.getUpdateTime());
-    }ManageDataSnippets.java
+    }
 
 ##### Python
 
@@ -1078,7 +1076,7 @@ Android
     batch.delete(den_ref)
     
     # Commit the batch
-    batch.commit()snippets.py
+    batch.commit()
 
 ##### Python  
 (Async)
@@ -1098,7 +1096,7 @@ Android
     batch.delete(den_ref)
     
     # Commit the batch
-    await batch.commit()snippets.py
+    await batch.commit()
 
 ##### C++
 
@@ -1124,7 +1122,7 @@ Android
       } else {
         std::cout << "Write batch failure: " << future.error_message() << std::endl;
       }
-    });snippets.cpp
+    });
 
 ##### Node.js
 
@@ -1144,7 +1142,7 @@ Android
     batch.delete(laRef);
     
     // Commit the batch
-    await batch.commit();index.js
+    await batch.commit();
 
 ##### Go
 
@@ -1184,7 +1182,6 @@ Android
     
      return err
     }
-    save_data_batch_writes.go
 
 ##### PHP
 
@@ -1207,7 +1204,7 @@ Android
     $batch->delete($laRef);
     
     # Commit the batch
-    $batch->commit();data_batch_writes.php
+    $batch->commit();
 
 ##### Unity
 
@@ -1261,7 +1258,7 @@ Android
     batch.Delete(laRef);
     
     // Commit the batch
-    await batch.CommitAsync();Program.cs
+    await batch.CommitAsync();
 
 ##### Ruby
 
@@ -1274,7 +1271,7 @@ Android
     
       # Delete LA
       b.delete "#{collection_path}/LA"
-    endtransactions_and_batched_writes.rb
+    end
 
 Like transactions, batched writes are atomic. Unlike transactions, batched writes do not need to ensure that read documents remain un-modified which leads to fewer failure cases. They are not subject to retries or to failures from too many retries. Batched writes execute even when the user's device is offline.
 

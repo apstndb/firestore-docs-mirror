@@ -33,7 +33,7 @@ To get started, write some data about cities so we can look at different ways to
     await setDoc(doc(citiesRef, "BJ"), {
         name: "Beijing", state: null, country: "China",
         capital: true, population: 21500000,
-        regions: ["jingjinji", "hebei"] });example_data.js
+        regions: ["jingjinji", "hebei"] });
 
 ### Web version 8
 
@@ -60,7 +60,7 @@ To get started, write some data about cities so we can look at different ways to
     citiesRef.doc("BJ").set({
         name: "Beijing", state: null, country: "China",
         capital: true, population: 21500000,
-        regions: ["jingjinji", "hebei"] });test.firestore.js
+        regions: ["jingjinji", "hebei"] });
 
 ##### Swift
 
@@ -104,7 +104,7 @@ To get started, write some data about cities so we can look at different ways to
       "capital": true,
       "population": 21500000,
       "regions": ["jingjinji", "hebei"]
-    ])ViewController.swift
+    ])
 
 ##### Objective-C
 
@@ -147,7 +147,7 @@ To get started, write some data about cities so we can look at different ways to
       @"capital": @(YES),
       @"population": @21500000,
       @"regions": @[@"jingjinji", @"hebei"]
-    }];ViewController.m
+    }];
 
 ##### Kotlin  
 Android
@@ -202,7 +202,7 @@ Android
         "population" to 21500000,
         "regions" to listOf("jingjinji", "hebei"),
     )
-    cities.document("BJ").set(data5)DocSnippets.kt
+    cities.document("BJ").set(data5)
 
 ##### Java  
 Android
@@ -252,7 +252,7 @@ Android
     data5.put("capital", true);
     data5.put("population", 21500000);
     data5.put("regions", Arrays.asList("jingjinji", "hebei"));
-    cities.document("BJ").set(data5);DocSnippets.java
+    cities.document("BJ").set(data5);
 
 ### Dart
 
@@ -305,7 +305,7 @@ Android
       "population": 21500000,
       "regions": ["jingjinji", "hebei"],
     };
-    cities.doc("BJ").set(data5);firestore.dart
+    cities.doc("BJ").set(data5);
 
 ##### Java
 
@@ -357,7 +357,7 @@ Android
                     21500000L,
                     Arrays.asList("jingjinji", "hebei"))));
     // (optional) block on documents successfully added
-    ApiFutures.allAsList(futures).get();QueryDataSnippets.java
+    ApiFutures.allAsList(futures).get();
 
 ##### Python
 
@@ -405,7 +405,7 @@ Android
     )
     cities_ref.document("TOK").set(
         City("Tokyo", None, "Japan", True, 9000000, ["kanto", "honshu"]).to_dict()
-    )snippets.py
+    )
 
 ##### Python  
 (Async)
@@ -454,7 +454,7 @@ Android
     )
     await cities_ref.document("TOK").set(
         City("Tokyo", None, "Japan", True, 9000000, ["kanto", "honshu"]).to_dict()
-    )snippets.py
+    )
 
 ##### C++
 
@@ -508,7 +508,7 @@ Android
         {"population", FieldValue::Integer(21500000)},
         {"regions", FieldValue::Array({FieldValue::String("jingjinji"),
                                        FieldValue::String("hebei")})},
-    });snippets.cpp
+    });
 
 ##### Node.js
 
@@ -538,7 +538,7 @@ Android
       name: 'Beijing', state: null, country: 'China',
       capital: true, population: 21500000,
       regions: ['jingjinji', 'hebei']
-    });index.js
+    });
 
 ##### Go
 
@@ -581,7 +581,7 @@ Android
      if _, err := client.Collection("cities").Doc(c.id).Set(ctx, c.c); err != nil {
          return err
      }
-    }query.go
+    }
 
 ##### PHP
 
@@ -631,7 +631,7 @@ Android
         'density' => 3500,
         'regions' => ['jingjinji', 'hebei']
     ]);
-    printf('Added example cities data to the cities collection.' . PHP_EOL);query_filter_dataset.php
+    printf('Added example cities data to the cities collection.' . PHP_EOL);
 
 ##### Unity
 
@@ -730,7 +730,7 @@ Android
         { "Density", 3500 },
         { "Regions", new[] {"jingjinji", "hebei"} }
     });
-    Console.WriteLine("Added example cities data to the cities collection.");Program.cs
+    Console.WriteLine("Added example cities data to the cities collection.");
 
 ##### Ruby
 
@@ -789,7 +789,7 @@ Android
         population: 21_500_000,
         regions:    ["jingjinji", "hebei"]
       }
-    )query_data.rb
+    )
 
 ## Simple queries
 
@@ -802,7 +802,7 @@ The following query returns all cities with state `CA` :
     const citiesRef = collection(db, "cities");
     
     // Create a query against the collection.
-    const q = query(citiesRef, where("state", "==", "CA"));simple_queries.js
+    const q = query(citiesRef, where("state", "==", "CA"));
 
 ### Web version 8
 
@@ -812,7 +812,7 @@ The following query returns all cities with state `CA` :
     var citiesRef = db.collection("cities");
     
     // Create a query against the collection.
-    var query = citiesRef.where("state", "==", "CA");test.firestore.js
+    var query = citiesRef.where("state", "==", "CA");
 
 ##### Swift
 
@@ -822,7 +822,7 @@ The following query returns all cities with state `CA` :
     let citiesRef = db.collection("cities")
     
     // Create a query against the collection.
-    let query = citiesRef.whereField("state", isEqualTo: "CA")ViewController.swift
+    let query = citiesRef.whereField("state", isEqualTo: "CA")
 
 ##### Objective-C
 
@@ -831,7 +831,7 @@ The following query returns all cities with state `CA` :
     // Create a reference to the cities collection
     FIRCollectionReference *citiesRef = [self.db collectionWithPath:@"cities"];
     // Create a query against the collection.
-    FIRQuery *query = [citiesRef queryWhereField:@"state" isEqualTo:@"CA"];ViewController.m
+    FIRQuery *query = [citiesRef queryWhereField:@"state" isEqualTo:@"CA"];
 
 ##### Kotlin  
 Android
@@ -840,7 +840,7 @@ Android
     val citiesRef = db.collection("cities")
     
     // Create a query against the collection.
-    val query = citiesRef.whereEqualTo("state", "CA")DocSnippets.kt
+    val query = citiesRef.whereEqualTo("state", "CA")
 
 ##### Java  
 Android
@@ -849,7 +849,7 @@ Android
     CollectionReference citiesRef = db.collection("cities");
     
     // Create a query against the collection.
-    Query query = citiesRef.whereEqualTo("state", "CA");DocSnippets.java
+    Query query = citiesRef.whereEqualTo("state", "CA");
 
 ### Dart
 
@@ -857,7 +857,7 @@ Android
     final citiesRef = db.collection("cities");
     
     // Create a query against the collection.
-    final query = citiesRef.where("state", isEqualTo: "CA");firestore.dart
+    final query = citiesRef.where("state", isEqualTo: "CA");
 
 ##### Java
 
@@ -870,7 +870,7 @@ Android
     
     for (DocumentSnapshot document : querySnapshot.get().getDocuments()) {
       System.out.println(document.getId());
-    }QueryDataSnippets.java
+    }
 
 ##### Python
 
@@ -878,7 +878,7 @@ Android
     cities_ref = db.collection("cities")
     
     # Create a query against the collection
-    query_ref = cities_ref.where(filter=FieldFilter("state", "==", "CA"))snippets.py
+    query_ref = cities_ref.where(filter=FieldFilter("state", "==", "CA"))
 
 ##### Python  
 (Async)
@@ -887,14 +887,14 @@ Android
     cities_ref = db.collection("cities")
     
     # Create a query against the collection
-    query_ref = cities_ref.where(filter=FieldFilter("state", "==", "CA"))snippets.py
+    query_ref = cities_ref.where(filter=FieldFilter("state", "==", "CA"))
 
 ##### C++
 
     CollectionReference cities_ref = db->Collection("cities");
     // Create a query against the collection.
     Query query_ca =
-        cities_ref.WhereEqualTo("state", FieldValue::String("CA"));snippets.cpp
+        cities_ref.WhereEqualTo("state", FieldValue::String("CA"));
 
 ##### Node.js
 
@@ -902,11 +902,11 @@ Android
     const citiesRef = db.collection('cities');
     
     // Create a query against the collection
-    const queryRef = citiesRef.where('state', '==', 'CA');index.js
+    const queryRef = citiesRef.where('state', '==', 'CA');
 
 ##### Go
 
-    query := client.Collection("cities").Where("state", "==", "CA")query.go
+    query := client.Collection("cities").Where("state", "==", "CA")
 
 ##### PHP
 
@@ -915,7 +915,7 @@ Android
     $snapshot = $query->documents();
     foreach ($snapshot as $document) {
         printf('Document %s returned by query state=CA' . PHP_EOL, $document->id());
-    }query_filter_eq_string.php
+    }
 
 ##### Unity
 
@@ -937,7 +937,7 @@ Android
     foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
     {
         Console.WriteLine("Document {0} returned by query State=CA", documentSnapshot.Id);
-    }Program.cs
+    }
 
 ##### Ruby
 
@@ -947,7 +947,7 @@ Android
     
     query.get do |city|
       puts "Document #{city.document_id} returned by query state=CA."
-    endquery_data.rb
+    end
 
 The following query returns all the capital cities:
 
@@ -956,7 +956,7 @@ The following query returns all the capital cities:
     import { collection, query, where } from "firebase/firestore";
     const citiesRef = collection(db, "cities");
     
-    const q = query(citiesRef, where("capital", "==", true));simple_queries_again.js
+    const q = query(citiesRef, where("capital", "==", true));
 
 ### Web version 8
 
@@ -964,35 +964,35 @@ The following query returns all the capital cities:
 
     var citiesRef = db.collection("cities");
     
-    var query = citiesRef.where("capital", "==", true);test.firestore.js
+    var query = citiesRef.where("capital", "==", true);
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    let capitalCities = db.collection("cities").whereField("capital", isEqualTo: true)ViewController.swift
+    let capitalCities = db.collection("cities").whereField("capital", isEqualTo: true)
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
     FIRQuery *capitalCities =
-        [[self.db collectionWithPath:@"cities"] queryWhereField:@"capital" isEqualTo:@YES];ViewController.m
+        [[self.db collectionWithPath:@"cities"] queryWhereField:@"capital" isEqualTo:@YES];
 
 ##### Kotlin  
 Android
 
-    val capitalCities = db.collection("cities").whereEqualTo("capital", true)DocSnippets.kt
+    val capitalCities = db.collection("cities").whereEqualTo("capital", true)
 
 ##### Java  
 Android
 
-    Query capitalCities = db.collection("cities").whereEqualTo("capital", true);DocSnippets.java
+    Query capitalCities = db.collection("cities").whereEqualTo("capital", true);
 
 ### Dart
 
     final capitalcities =
-        db.collection("cities").where("capital", isEqualTo: true);firestore.dart
+        db.collection("cities").where("capital", isEqualTo: true);
 
 ##### Java
 
@@ -1005,25 +1005,25 @@ Android
     
     for (DocumentSnapshot document : querySnapshot.get().getDocuments()) {
       System.out.println(document.getId());
-    }QueryDataSnippets.java
+    }
 
 ##### Python
 
     cities_ref = db.collection("cities")
     
-    query = cities_ref.where(filter=FieldFilter("capital", "==", True))snippets.py
+    query = cities_ref.where(filter=FieldFilter("capital", "==", True))
 
 ##### Python  
 (Async)
 
     cities_ref = db.collection("cities")
     
-    query = cities_ref.where(filter=FieldFilter("capital", "==", True))snippets.py
+    query = cities_ref.where(filter=FieldFilter("capital", "==", True))
 
 ##### C++
 
     Query capital_cities = db->Collection("cities").WhereEqualTo(
-        "capital", FieldValue::Boolean(true));snippets.cpp
+        "capital", FieldValue::Boolean(true));
 
 ##### Node.js
 
@@ -1031,11 +1031,11 @@ Android
     const citiesRef = db.collection('cities');
     
     // Create a query against the collection
-    const allCapitalsRes = citiesRef.where('capital', '==', true);index.js
+    const allCapitalsRes = citiesRef.where('capital', '==', true);
 
 ##### Go
 
-    query := client.Collection("cities").Where("capital", "==", true)query.go
+    query := client.Collection("cities").Where("capital", "==", true)
 
 ##### PHP
 
@@ -1044,7 +1044,7 @@ Android
     $snapshot = $query->documents();
     foreach ($snapshot as $document) {
         printf('Document %s returned by query capital=true' . PHP_EOL, $document->id());
-    }query_filter_eq_boolean.php
+    }
 
 ##### Unity
 
@@ -1066,7 +1066,7 @@ Android
     foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
     {
         Console.WriteLine("Document {0} returned by query Capital=true", documentSnapshot.Id);
-    }Program.cs
+    }
 
 ##### Ruby
 
@@ -1076,7 +1076,7 @@ Android
     
     query.get do |city|
       puts "Document #{city.document_id} returned by query capital=true."
-    endquery_data.rb
+    end
 
 <span id="query execute"></span>
 
@@ -1094,7 +1094,7 @@ After creating a query object, use the `get()` function to retrieve the results:
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
-    });get_multiple.js
+    });
 
 ### Web version 8
 
@@ -1110,7 +1110,7 @@ After creating a query object, use the `get()` function to retrieve the results:
         })
         .catch((error) => {
             console.log("Error getting documents: ", error);
-        });test.firestore.js
+        });
 
 ##### Swift
 
@@ -1124,7 +1124,7 @@ After creating a query object, use the `get()` function to retrieve the results:
       }
     } catch {
       print("Error getting documents: \(error)")
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -1139,7 +1139,7 @@ After creating a query object, use the `get()` function to retrieve the results:
               NSLog(@"%@ => %@", document.documentID, document.data);
             }
           }
-        }];ViewController.m
+        }];
 
 ##### Kotlin  
 Android
@@ -1154,7 +1154,7 @@ Android
         }
         .addOnFailureListener { exception ->
             Log.w(TAG, "Error getting documents: ", exception)
-        }DocSnippets.kt
+        }
 
 ##### Java  
 Android
@@ -1173,7 +1173,7 @@ Android
                         Log.d(TAG, "Error getting documents: ", task.getException());
                     }
                 }
-            });DocSnippets.java
+            });
 
 ### Dart
 
@@ -1185,7 +1185,7 @@ Android
         }
       },
       onError: (e) => print("Error completing: $e"),
-    );firestore.dart
+    );
 
 ##### Java
 
@@ -1195,7 +1195,7 @@ Android
     List<QueryDocumentSnapshot> documents = future.get().getDocuments();
     for (DocumentSnapshot document : documents) {
       System.out.println(document.getId() + " => " + document.toObject(City.class));
-    }RetrieveDataSnippets.java
+    }
 
 ##### Python
 
@@ -1207,7 +1207,7 @@ Android
     )
     
     for doc in docs:
-        print(f"{doc.id} => {doc.to_dict()}")snippets.py
+        print(f"{doc.id} => {doc.to_dict()}")
 
 ##### Python  
 (Async)
@@ -1220,7 +1220,7 @@ Android
     )
     
     async for doc in docs:
-        print(f"{doc.id} => {doc.to_dict()}")snippets.py
+        print(f"{doc.id} => {doc.to_dict()}")
 
 ##### C++
 
@@ -1237,7 +1237,7 @@ Android
             std::cout << "Error getting documents: " << future.error_message()
                       << std::endl;
           }
-        });snippets.cpp
+        });
 
 ##### Node.js
 
@@ -1250,7 +1250,7 @@ Android
     
     snapshot.forEach(doc => {
       console.log(doc.id, '=>', doc.data());
-    });index.js
+    });
 
 ##### Go
 
@@ -1277,7 +1277,6 @@ Android
      }
      return nil
     }
-    retrieve_data_query.go
 
 ##### PHP
 
@@ -1328,7 +1327,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
             Console.WriteLine("{0}: {1}", pair.Key, pair.Value);
         }
         Console.WriteLine("");
-    }Program.cs
+    }
 
 ##### Ruby
 
@@ -1338,7 +1337,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
     
     query.get do |city|
       puts "#{city.document_id} data: #{city.data}."
-    endget_data.rb
+    end
 
 See [Get Data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data) for more information on retrieving query results. You can also [add a listener](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) to a query to get the current results and listen for future updates.
 
@@ -1367,7 +1366,7 @@ For example:
 
     const stateQuery = query(citiesRef, where("state", "==", "CA"));
     const populationQuery = query(citiesRef, where("population", "<", 100000));
-    const nameQuery = query(citiesRef, where("name", ">=", "San Francisco"));example_filters.js
+    const nameQuery = query(citiesRef, where("name", ">=", "San Francisco"));
 
 ### Web version 8
 
@@ -1375,7 +1374,7 @@ For example:
 
     const stateQuery = citiesRef.where("state", "==", "CA");
     const populationQuery = citiesRef.where("population", "<", 100000);
-    const nameQuery = citiesRef.where("name", ">=", "San Francisco");test.firestore.js
+    const nameQuery = citiesRef.where("name", ">=", "San Francisco");
 
 ##### Swift
 
@@ -1383,7 +1382,7 @@ For example:
 
     let stateQuery = citiesRef.whereField("state", isEqualTo: "CA")
     let populationQuery = citiesRef.whereField("population", isLessThan: 100000)
-    let nameQuery = citiesRef.whereField("name", isGreaterThanOrEqualTo: "San Francisco")ViewController.swift
+    let nameQuery = citiesRef.whereField("name", isGreaterThanOrEqualTo: "San Francisco")
 
 ##### Objective-C
 
@@ -1391,34 +1390,34 @@ For example:
 
     FIRQuery *stateQuery = [citiesRef queryWhereField:@"state" isEqualTo:@"CA"];
     FIRQuery *populationQuery = [citiesRef queryWhereField:@"population" isLessThan:@100000];
-    FIRQuery *nameQuery = [citiesRef queryWhereField:@"name" isGreaterThanOrEqualTo:@"San Francisco"];ViewController.m
+    FIRQuery *nameQuery = [citiesRef queryWhereField:@"name" isGreaterThanOrEqualTo:@"San Francisco"];
 
 ##### Kotlin  
 Android
 
     val stateQuery = citiesRef.whereEqualTo("state", "CA")
     val populationQuery = citiesRef.whereLessThan("population", 100000)
-    val nameQuery = citiesRef.whereGreaterThanOrEqualTo("name", "San Francisco")DocSnippets.kt
+    val nameQuery = citiesRef.whereGreaterThanOrEqualTo("name", "San Francisco")
 
 ##### Java  
 Android
 
     Query stateQuery = citiesRef.whereEqualTo("state", "CA");
     Query populationQuery = citiesRef.whereLessThan("population", 100000);
-    Query nameQuery = citiesRef.whereGreaterThanOrEqualTo("name", "San Francisco");DocSnippets.java
+    Query nameQuery = citiesRef.whereGreaterThanOrEqualTo("name", "San Francisco");
 
 ### Dart
 
     final citiesRef = db.collection("cities");
     final stateQuery = citiesRef.where("state", isEqualTo: "CA");
     final populationQuery = citiesRef.where("population", isLessThan: 100000);
-    final nameQuery = citiesRef.where("name", isEqualTo: "San Francisco");firestore.dart
+    final nameQuery = citiesRef.where("name", isEqualTo: "San Francisco");
 
 ##### Java
 
     Query stateQuery = cities.whereEqualTo("state", "CA");
     Query populationQuery = cities.whereLessThan("population", 1000000L);
-    Query nameQuery = cities.whereGreaterThanOrEqualTo("name", "San Francisco");QueryDataSnippets.java
+    Query nameQuery = cities.whereGreaterThanOrEqualTo("name", "San Francisco");
 
 ##### Python
 
@@ -1426,7 +1425,7 @@ Android
     
     cities_ref.where(filter=FieldFilter("state", "==", "CA"))
     cities_ref.where(filter=FieldFilter("population", "<", 1000000))
-    cities_ref.where(filter=FieldFilter("name", ">=", "San Francisco"))snippets.py
+    cities_ref.where(filter=FieldFilter("name", ">=", "San Francisco"))
 
 ##### Python  
 (Async)
@@ -1435,32 +1434,32 @@ Android
     
     cities_ref.where(filter=FieldFilter("state", "==", "CA"))
     cities_ref.where(filter=FieldFilter("population", "<", 1000000))
-    cities_ref.where(filter=FieldFilter("name", ">=", "San Francisco"))snippets.py
+    cities_ref.where(filter=FieldFilter("name", ">=", "San Francisco"))
 
 ##### C++
 
     cities_ref.WhereEqualTo("state", FieldValue::String("CA"));
     cities_ref.WhereLessThan("population", FieldValue::Integer(100000));
     cities_ref.WhereGreaterThanOrEqualTo("name",
-                                         FieldValue::String("San Francisco"));snippets.cpp
+                                         FieldValue::String("San Francisco"));
 
 ##### Node.js
 
     const stateQueryRes = await citiesRef.where('state', '==', 'CA').get();
     const populationQueryRes = await citiesRef.where('population', '<', 1000000).get();
-    const nameQueryRes = await citiesRef.where('name', '>=', 'San Francisco').get();index.js
+    const nameQueryRes = await citiesRef.where('name', '>=', 'San Francisco').get();
 
 ##### Go
 
     countryQuery := cities.Where("state", "==", "CA")
     popQuery := cities.Where("population", "<", 1000000)
-    cityQuery := cities.Where("name", ">=", "San Francisco")query.go
+    cityQuery := cities.Where("name", ">=", "San Francisco")
 
 ##### PHP
 
     $stateQuery = $citiesRef->where('state', '=', 'CA');
     $populationQuery = $citiesRef->where('population', '>', 1000000);
-    $nameQuery = $citiesRef->where('name', '>=', 'San Francisco');query_filter_single_examples.php
+    $nameQuery = $citiesRef->where('name', '>=', 'San Francisco');
 
 ##### Unity
 
@@ -1473,13 +1472,13 @@ Android
     CollectionReference citiesRef = db.Collection("cities");
     Query stateQuery = citiesRef.WhereEqualTo("State", "CA");
     Query populationQuery = citiesRef.WhereGreaterThan("Population", 1000000);
-    Query nameQuery = citiesRef.WhereGreaterThanOrEqualTo("Name", "San Francisco");Program.cs
+    Query nameQuery = citiesRef.WhereGreaterThanOrEqualTo("Name", "San Francisco");
 
 ##### Ruby
 
     state_query      = cities_ref.where "state", "=", "CA"
     population_query = cities_ref.where "population", ">", 1_000_000
-    name_query       = cities_ref.where "name", ">=", "San Francisco"query_data.rb
+    name_query       = cities_ref.where "name", ">=", "San Francisco"
 
 <span id="not_equal"></span>
 
@@ -1489,46 +1488,46 @@ Use the not equal ( `!=` ) operator to return documents where the given field ex
 
 ### Web version 9
 
-    const notCapitalQuery = query(citiesRef, where("capital", "!=", false));simple_query_not_equal.js
+    const notCapitalQuery = query(citiesRef, where("capital", "!=", false));
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    citiesRef.where("capital", "!=", false);test.firestore.js
+    citiesRef.where("capital", "!=", false);
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    let notEqualQuery = citiesRef.whereField("capital", isNotEqualTo: false)ViewController.swift
+    let notEqualQuery = citiesRef.whereField("capital", isNotEqualTo: false)
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    query = [citiesRef queryWhereField:@"capital" isNotEqualTo:@NO];ViewController.m
+    query = [citiesRef queryWhereField:@"capital" isNotEqualTo:@NO];
 
 ##### Kotlin  
 Android
 
-    val notCapitalQuery = citiesRef.whereNotEqualTo("capital", false)DocSnippets.kt
+    val notCapitalQuery = citiesRef.whereNotEqualTo("capital", false)
 
 ##### Java  
 Android
 
-    Query notCapitalQuery = citiesRef.whereNotEqualTo("capital", false);DocSnippets.java
+    Query notCapitalQuery = citiesRef.whereNotEqualTo("capital", false);
 
 ### Dart
 
     final citiesRef = db.collection("cities");
-    final notCapitals = citiesRef.where("capital", isNotEqualTo: true);firestore.dart
+    final notCapitals = citiesRef.where("capital", isNotEqualTo: true);
 
 ##### Java
 
     CollectionReference citiesRef = db.collection("cities");
     
-    Query query = citiesRef.whereNotEqualTo("capital", false);QueryDataSnippets.java
+    Query query = citiesRef.whereNotEqualTo("capital", false);
 
 ##### Python
 
@@ -1540,7 +1539,7 @@ Android
 
 ##### Node.js
 
-    const capitalNotFalseRes = await citiesRef.where('capital', '!=', false).get();index.js
+    const capitalNotFalseRes = await citiesRef.where('capital', '!=', false).get();
 
 ##### Go
 
@@ -1548,7 +1547,7 @@ Android
 
 ##### PHP
 
-    $stateQuery = $citiesRef->where('capital', '!=', false);query_filter_not_eq.php
+    $stateQuery = $citiesRef->where('capital', '!=', false);
 
 ##### Unity
 
@@ -1562,7 +1561,7 @@ Android
 ##### Ruby
 
     cities_ref = firestore.col collection_path
-    query = cities_ref.where "capital", "!=", falsequery_data.rb
+    query = cities_ref.where "capital", "!=", false
 
 This query returns every `city` document where the `capital` field exists with a value other than `false` or `null` . This includes `city` documents where the `capital` field value equals `true` or any non-boolean value besides `null` .
 
@@ -1588,51 +1587,51 @@ You can use the `array-contains` operator to filter based on array values. For e
 ### Web version 9
 
     import { query, where } from "firebase/firestore";  
-    const q = query(citiesRef, where("regions", "array-contains", "west_coast"));array_contains_filter.js
+    const q = query(citiesRef, where("regions", "array-contains", "west_coast"));
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    citiesRef.where("regions", "array-contains", "west_coast");test.firestore.js
+    citiesRef.where("regions", "array-contains", "west_coast");
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
     citiesRef
-      .whereField("regions", arrayContains: "west_coast")ViewController.swift
+      .whereField("regions", arrayContains: "west_coast")
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    [citiesRef queryWhereField:@"state" arrayContains:@"west_coast"];ViewController.m
+    [citiesRef queryWhereField:@"state" arrayContains:@"west_coast"];
 
 ##### Kotlin  
 Android
 
     val citiesRef = db.collection("cities")
     
-    citiesRef.whereArrayContains("regions", "west_coast")DocSnippets.kt
+    citiesRef.whereArrayContains("regions", "west_coast")
 
 ##### Java  
 Android
 
     CollectionReference citiesRef = db.collection("cities");
     
-    citiesRef.whereArrayContains("regions", "west_coast");DocSnippets.java
+    citiesRef.whereArrayContains("regions", "west_coast");
 
 ### Dart
 
     final citiesRef = db.collection("cities");
     final westCoastcities =
-        citiesRef.where("regions", arrayContains: "west_coast");firestore.dart
+        citiesRef.where("regions", arrayContains: "west_coast");
 
 ##### Java
 
     CollectionReference citiesRef = db.collection("cities");
-    Query westCoastQuery = citiesRef.whereArrayContains("regions", "west_coast");QueryDataSnippets.java
+    Query westCoastQuery = citiesRef.whereArrayContains("regions", "west_coast");
 
 ##### Python
 
@@ -1640,7 +1639,7 @@ Android
     
     query = cities_ref.where(
         filter=FieldFilter("regions", "array_contains", "west_coast")
-    )snippets.py
+    )
 
 ##### Python  
 (Async)
@@ -1649,26 +1648,26 @@ Android
     
     query = cities_ref.where(
         filter=FieldFilter("regions", "array_contains", "west_coast")
-    )snippets.py
+    )
 
 ##### C++
 
     CollectionReference cities_ref = db->Collection("cities");
     
-    cities_ref.WhereArrayContains("region", FieldValue::String("west_coast"));snippets.cpp
+    cities_ref.WhereArrayContains("region", FieldValue::String("west_coast"));
 
 ##### Node.js
 
     const westCoastCities = citiesRef.where('regions', 'array-contains',
-      'west_coast').get();index.js
+      'west_coast').get();
 
 ##### Go
 
-    query := cities.Where("regions", "array-contains", "west_coast").Documents(ctx)query.go
+    query := cities.Where("regions", "array-contains", "west_coast").Documents(ctx)
 
 ##### PHP
 
-    $containsQuery = $citiesRef->where('regions', 'array-contains', 'west_coast');query_filter_array_contains.php
+    $containsQuery = $citiesRef->where('regions', 'array-contains', 'west_coast');
 
 ##### Unity
 
@@ -1678,12 +1677,12 @@ Android
 ##### C\#
 
     CollectionReference citiesRef = db.Collection("cities");
-    Query query = citiesRef.WhereArrayContains("Regions", "west_coast");Program.cs
+    Query query = citiesRef.WhereArrayContains("Regions", "west_coast");
 
 ##### Ruby
 
     cities_ref = firestore.col collection_path
-    cities = cities_ref.where "regions", "array-contains", "west_coast"query_data.rb
+    cities = cities_ref.where "regions", "array-contains", "west_coast"
 
 This query returns every `city` document where the `regions` field is an array that contains `west_coast` . If the array has multiple instances of the value you query on, the document is included in the results only once.
 
@@ -1699,13 +1698,13 @@ Use the `in` operator to combine [up to 30](https://docs.cloud.google.com/firest
 
     import { query, where } from "firebase/firestore";
     
-    const q = query(citiesRef, where('country', 'in', ['USA', 'Japan']));in_filter.js
+    const q = query(citiesRef, where('country', 'in', ['USA', 'Japan']));
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    citiesRef.where('country', 'in', ['USA', 'Japan']);test.firestore.js
+    citiesRef.where('country', 'in', ['USA', 'Japan']);
 
 ##### Swift
 
@@ -1713,7 +1712,7 @@ Use the `in` operator to combine [up to 30](https://docs.cloud.google.com/firest
 
     let citiesRef = db.collection("cities")
     
-    citiesRef.whereField("country", in: ["USA", "Japan"])ViewController.swift
+    citiesRef.whereField("country", in: ["USA", "Japan"])
 
 ##### Objective-C
 
@@ -1721,39 +1720,39 @@ Use the `in` operator to combine [up to 30](https://docs.cloud.google.com/firest
 
     FIRCollectionReference *citiesRef = [self.db collectionWithPath:@"cities"];
     
-    [citiesRef queryWhereField:@"country" in:@[@"USA", @"Japan"]];ViewController.m
+    [citiesRef queryWhereField:@"country" in:@[@"USA", @"Japan"]];
 
 ##### Kotlin  
 Android
 
     val citiesRef = db.collection("cities")
     
-    citiesRef.whereIn("country", listOf("USA", "Japan"))DocSnippets.kt
+    citiesRef.whereIn("country", listOf("USA", "Japan"))
 
 ##### Java  
 Android
 
     CollectionReference citiesRef = db.collection("cities");
     
-    citiesRef.whereIn("country", Arrays.asList("USA", "Japan"));DocSnippets.java
+    citiesRef.whereIn("country", Arrays.asList("USA", "Japan"));
 
 ### Dart
 
     final citiesRef = db.collection("cities");
-    final cities = citiesRef.where("country", whereIn: ["USA", "Japan"]);firestore.dart
+    final cities = citiesRef.where("country", whereIn: ["USA", "Japan"]);
 
 ##### Java
 
     CollectionReference citiesRef = db.collection("cities");
     
-    Query query = citiesRef.whereIn("country", Arrays.asList("USA", "Japan"));QueryDataSnippets.java
+    Query query = citiesRef.whereIn("country", Arrays.asList("USA", "Japan"));
 
 ##### Python
 
     cities_ref = db.collection("cities")
     
     query = cities_ref.where(filter=FieldFilter("country", "in", ["USA", "Japan"]))
-    return querysnippets.py
+    return query
 
 ##### Python  
 (Async)
@@ -1761,7 +1760,7 @@ Android
     cities_ref = db.collection("cities")
     
     query = cities_ref.where(filter=FieldFilter("country", "in", ["USA", "Japan"]))
-    return querysnippets.py
+    return query
 
 ##### C++
 
@@ -1770,20 +1769,20 @@ Android
     cities_ref.WhereIn("country", std::vector<FieldValue> {
       FieldValue::String("USA"),
       FieldValue::String("Japan")
-    });snippets.cpp
+    });
 
 ##### Node.js
 
-    const usaOrJapan = await citiesRef.where('country', 'in', ['USA', 'Japan']).get();index.js
+    const usaOrJapan = await citiesRef.where('country', 'in', ['USA', 'Japan']).get();
 
 ##### Go
 
     cities := client.Collection("cities")
-    query := cities.Where("country", "in", []string{"USA", "Japan"}).Documents(ctx)query.go
+    query := cities.Where("country", "in", []string{"USA", "Japan"}).Documents(ctx)
 
 ##### PHP
 
-    $rangeQuery = $citiesRef->where('country', 'in', ['USA', 'Japan']);query_filter_in.php
+    $rangeQuery = $citiesRef->where('country', 'in', ['USA', 'Japan']);
 
 ##### Unity
 
@@ -1795,12 +1794,12 @@ Android
 ##### C\#
 
     CollectionReference citiesRef = db.Collection("cities");
-    Query query = citiesRef.WhereIn("Country", new[] { "USA", "Japan" });Program.cs
+    Query query = citiesRef.WhereIn("Country", new[] { "USA", "Japan" });
 
 ##### Ruby
 
     cities_ref = firestore.col collection_path
-    usr_or_japan = cities_ref.where "country", "in", ["USA", "Japan"]query_data.rb
+    usr_or_japan = cities_ref.where "country", "in", ["USA", "Japan"]
 
 This query returns every `city` document where the `country` field is set to `USA` or `Japan` . From the example data, this includes the `SF` , `LA` , `DC` , and `TOK` documents.
 
@@ -1812,46 +1811,46 @@ Use the `not-in` operator to combine up to 10 not equal ( `!=` ) clauses on the 
 
     import { query, where } from "firebase/firestore";
     
-    const q = query(citiesRef, where('country', 'not-in', ['USA', 'Japan']));not_in_filter.js
+    const q = query(citiesRef, where('country', 'not-in', ['USA', 'Japan']));
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    citiesRef.where('country', 'not-in', ['USA', 'Japan']);test.firestore.js
+    citiesRef.where('country', 'not-in', ['USA', 'Japan']);
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    citiesRef.whereField("country", notIn: ["USA", "Japan"])ViewController.swift
+    citiesRef.whereField("country", notIn: ["USA", "Japan"])
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    [citiesRef queryWhereField:@"country" notIn:@[@"USA", @"Japan"]];ViewController.m
+    [citiesRef queryWhereField:@"country" notIn:@[@"USA", @"Japan"]];
 
 ##### Kotlin  
 Android
 
-    citiesRef.whereNotIn("country", listOf("USA", "Japan"))DocSnippets.kt
+    citiesRef.whereNotIn("country", listOf("USA", "Japan"))
 
 ##### Java  
 Android
 
-    citiesRef.whereNotIn("country", Arrays.asList("USA", "Japan"));DocSnippets.java
+    citiesRef.whereNotIn("country", Arrays.asList("USA", "Japan"));
 
 ### Dart
 
     final citiesRef = db.collection("cities");
-    final cities = citiesRef.where("country", whereNotIn: ["USA", "Japan"]);firestore.dart
+    final cities = citiesRef.where("country", whereNotIn: ["USA", "Japan"]);
 
 ##### Java
 
     CollectionReference citiesRef = db.collection("cities");
     
-    Query query = citiesRef.whereNotIn("country", Arrays.asList("USA", "Japan"));QueryDataSnippets.java
+    Query query = citiesRef.whereNotIn("country", Arrays.asList("USA", "Japan"));
 
 ##### Python
 
@@ -1862,11 +1861,11 @@ Android
     cities_ref.WhereNotIn("country", std::vector<FieldValue> {
       FieldValue::String("USA"),
       FieldValue::String("Japan")
-    });snippets.cpp
+    });
 
 ##### Node.js
 
-    const notUsaOrJapan = await citiesRef.where('country', 'not-in', ['USA', 'Japan']).get();index.js
+    const notUsaOrJapan = await citiesRef.where('country', 'not-in', ['USA', 'Japan']).get();
 
 ##### Go
 
@@ -1878,7 +1877,7 @@ Android
         'country',
         \Google\Cloud\Firestore\V1\StructuredQuery\FieldFilter\Operator::NOT_IN,
         ['USA', 'Japan']
-    );query_filter_not_in.php
+    );
 
 ##### Unity
 
@@ -1892,7 +1891,7 @@ Android
 ##### Ruby
 
     cities_ref = firestore.col collection_path
-    usr_or_japan = cities_ref.where "country", "not_in", ["USA", "Japan"]query_data.rb
+    usr_or_japan = cities_ref.where "country", "not_in", ["USA", "Japan"]
 
 This query returns every `city` document where the `country` field exists and is not set to `USA` , `Japan` , or `null` . From the example data, this includes the `London` and `Hong Kong` documents.
 
@@ -1909,21 +1908,21 @@ Use the `array-contains-any` operator to combine [up to 30](https://docs.cloud.g
     import { query, where } from "firebase/firestore";  
     
     const q = query(citiesRef, 
-      where('regions', 'array-contains-any', [['west_coast'], ['east_coast']]));array_contains_any_filter.js
+      where('regions', 'array-contains-any', [['west_coast'], ['east_coast']]));
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     citiesRef.where('regions', 'array-contains-any',
-        [['west_coast'], ['east_coast']]);test.firestore.js
+        [['west_coast'], ['east_coast']]);
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
     let citiesRef = db.collection("cities")
-    citiesRef.whereField("regions", arrayContainsAny: ["west_coast", "east_coast"])ViewController.swift
+    citiesRef.whereField("regions", arrayContainsAny: ["west_coast", "east_coast"])
 
 ##### Objective-C
 
@@ -1931,34 +1930,34 @@ Use the `array-contains-any` operator to combine [up to 30](https://docs.cloud.g
 
     FIRCollectionReference *citiesRef = [self.db collectionWithPath:@"cities"];
     
-    [citiesRef queryWhereField:@"regions" arrayContainsAny:@[@"west_coast", @"east_coast"]];ViewController.m
+    [citiesRef queryWhereField:@"regions" arrayContainsAny:@[@"west_coast", @"east_coast"]];
 
 ##### Kotlin  
 Android
 
     val citiesRef = db.collection("cities")
     
-    citiesRef.whereArrayContainsAny("regions", listOf("west_coast", "east_coast"))DocSnippets.kt
+    citiesRef.whereArrayContainsAny("regions", listOf("west_coast", "east_coast"))
 
 ##### Java  
 Android
 
     CollectionReference citiesRef = db.collection("cities");
     
-    citiesRef.whereArrayContainsAny("regions", Arrays.asList("west_coast", "east_coast"));DocSnippets.java
+    citiesRef.whereArrayContainsAny("regions", Arrays.asList("west_coast", "east_coast"));
 
 ### Dart
 
     final citiesRef = db.collection("cities");
     final cities = citiesRef
-        .where("regions", arrayContainsAny: ["west_coast", "east_coast"]);firestore.dart
+        .where("regions", arrayContainsAny: ["west_coast", "east_coast"]);
 
 ##### Java
 
     CollectionReference citiesRef = db.collection("cities");
     
     Query query =
-        citiesRef.whereArrayContainsAny("regions", Arrays.asList("west_coast", "east_coast"));QueryDataSnippets.java
+        citiesRef.whereArrayContainsAny("regions", Arrays.asList("west_coast", "east_coast"));
 
 ##### Python
 
@@ -1969,7 +1968,7 @@ Android
             "regions", "array_contains_any", ["west_coast", "east_coast"]
         )
     )
-    return querysnippets.py
+    return query
 
 ##### Python  
 (Async)
@@ -1981,7 +1980,7 @@ Android
             "regions", "array_contains_any", ["west_coast", "east_coast"]
         )
     )
-    return querysnippets.py
+    return query
 
 ##### C++
 
@@ -1990,21 +1989,21 @@ Android
     cities_ref.WhereArrayContainsAny("region", std::vector<FieldValue> {
       FieldValue::String("west_coast"),
       FieldValue::String("east_coast")
-    });snippets.cpp
+    });
 
 ##### Node.js
 
     const coastalCities = await citiesRef.where('regions', 'array-contains-any',
-        ['west_coast', 'east_coast']).get();index.js
+        ['west_coast', 'east_coast']).get();
 
 ##### Go
 
     cities := client.Collection("cities")
-    query := cities.Where("regions", "array-contains-any", []string{"west_coast", "east_coast"}).Documents(ctx)query.go
+    query := cities.Where("regions", "array-contains-any", []string{"west_coast", "east_coast"}).Documents(ctx)
 
 ##### PHP
 
-    $containsQuery = $citiesRef->where('regions', 'array-contains-any', ['west_coast', 'east_coast']);query_filter_array_contains_any.php
+    $containsQuery = $citiesRef->where('regions', 'array-contains-any', ['west_coast', 'east_coast']);
 
 ##### Unity
 
@@ -2018,12 +2017,12 @@ Android
 ##### C\#
 
     CollectionReference citiesRef = db.Collection("cities");
-    Query query = citiesRef.WhereArrayContainsAny("Regions", new[] { "west_coast", "east_coast" });Program.cs
+    Query query = citiesRef.WhereArrayContainsAny("Regions", new[] { "west_coast", "east_coast" });
 
 ##### Ruby
 
     cities_ref = firestore.col collection_path
-    costal_cities = cities_ref.where "regions", "array-contains-any", ["west_coast", "east_coast"]query_data.rb
+    costal_cities = cities_ref.where "regions", "array-contains-any", ["west_coast", "east_coast"]
 
 This query returns every city document where the `regions` field is an array that contains `west_coast` or `east_coast` . From the example data, this includes the `SF` , `LA` , and `DC` documents.
 
@@ -2037,36 +2036,36 @@ You can use an array value as a comparison value for `in` , but unlike `array-co
 
     import { query, where } from "firebase/firestore";  
     
-    const q = query(citiesRef, where('regions', 'in', [['west_coast'], ['east_coast']]));in_filter_with_array.js
+    const q = query(citiesRef, where('regions', 'in', [['west_coast'], ['east_coast']]));
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     citiesRef.where('regions', 'in',
-        [['west_coast'], ['east_coast']]);test.firestore.js
+        [['west_coast'], ['east_coast']]);
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    citiesRef.whereField("regions", in: [["west_coast"], ["east_coast"]])ViewController.swift
+    citiesRef.whereField("regions", in: [["west_coast"], ["east_coast"]])
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    [citiesRef queryWhereField:@"regions" in:@[@[@"west_coast"], @[@"east_coast"]]];ViewController.m
+    [citiesRef queryWhereField:@"regions" in:@[@[@"west_coast"], @[@"east_coast"]]];
 
 ##### Kotlin  
 Android
 
-    citiesRef.whereIn("regions", listOf(arrayOf("west_coast"), arrayOf("east_coast")))DocSnippets.kt
+    citiesRef.whereIn("regions", listOf(arrayOf("west_coast"), arrayOf("east_coast")))
 
 ##### Java  
 Android
 
-    citiesRef.whereIn("regions", Arrays.asList(new String[]{"west_coast"}, new String[]{"east_coast"}));DocSnippets.java
+    citiesRef.whereIn("regions", Arrays.asList(new String[]{"west_coast"}, new String[]{"east_coast"}));
 
 ### Dart
 
@@ -2074,7 +2073,7 @@ Android
     final cities = citiesRef.where("regions", whereIn: [
       ["west_coast"],
       ["east_coast"]
-    ]);firestore.dart
+    ]);
 
 ##### Java
 
@@ -2082,7 +2081,7 @@ Android
     
     Query query =
         citiesRef.whereIn(
-            "regions", Arrays.asList(Arrays.asList("west_coast"), Arrays.asList("east_coast")));QueryDataSnippets.java
+            "regions", Arrays.asList(Arrays.asList("west_coast"), Arrays.asList("east_coast")));
 
 ##### Python
 
@@ -2091,7 +2090,7 @@ Android
     query = cities_ref.where(
         filter=FieldFilter("regions", "in", [["west_coast"], ["east_coast"]])
     )
-    return querysnippets.py
+    return query
 
 ##### Python  
 (Async)
@@ -2101,28 +2100,28 @@ Android
     query = cities_ref.where(
         filter=FieldFilter("regions", "in", [["west_coast"], ["east_coast"]])
     )
-    return querysnippets.py
+    return query
 
 ##### C++
 
     cities_ref.WhereIn("region", std::vector<FieldValue> {
       FieldValue::String("west_coast"),
       FieldValue::String("east_coast")
-    });snippets.cpp
+    });
 
 ##### Node.js
 
     const exactlyOneCoast = await citiesRef.where('regions', 'in',
-        [['west_coast', 'east_coast']]).get();index.js
+        [['west_coast', 'east_coast']]).get();
 
 ##### Go
 
     cities := client.Collection("cities")
-    query := cities.Where("regions", "in", [][]string{{"west_coast"}, {"east_coast"}}).Documents(ctx)query.go
+    query := cities.Where("regions", "in", [][]string{{"west_coast"}, {"east_coast"}}).Documents(ctx)
 
 ##### PHP
 
-    $rangeQuery = $citiesRef->where('regions', 'in', [['west_coast'], ['east_coast']]);query_filter_in_with_array.php
+    $rangeQuery = $citiesRef->where('regions', 'in', [['west_coast'], ['east_coast']]);
 
 ##### Unity
 
@@ -2132,12 +2131,12 @@ Android
 
     CollectionReference citiesRef = db.Collection("cities");
     Query query = citiesRef.WhereIn("Regions",
-        new[] { new[] { "west_coast" }, new[] { "east_coast" } });Program.cs
+        new[] { new[] { "west_coast" }, new[] { "east_coast" } });
 
 ##### Ruby
 
     cities_ref = firestore.col collection_path
-    exactly_one_cost = cities_ref.where "regions", "in", [["west_coast"], ["east_coast"]]query_data.rb
+    exactly_one_cost = cities_ref.where "regions", "in", [["west_coast"], ["east_coast"]]
 
 This query returns every city document where the `regions` field is an array that contains exactly one element of either `west_coast` or `east_coast` . From the example data, only the `DC` document qualifies with its `regions` field of `["east_coast"]` . The `SF` document, however, does not match because its `regions` field is `["west_coast", "norcal"]` .
 
@@ -2163,14 +2162,14 @@ You can combine constraints with a logical `AND` by chaining multiple equality o
     import { query, where } from "firebase/firestore";  
     
     const q1 = query(citiesRef, where("state", "==", "CO"), where("name", "==", "Denver"));
-    const q2 = query(citiesRef, where("state", "==", "CA"), where("population", "<", 1000000));chain_filters.js
+    const q2 = query(citiesRef, where("state", "==", "CA"), where("population", "<", 1000000));
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
     const q1 = citiesRef.where("state", "==", "CO").where("name", "==", "Denver");
-    const q2 = citiesRef.where("state", "==", "CA").where("population", "<", 1000000);test.firestore.js
+    const q2 = citiesRef.where("state", "==", "CA").where("population", "<", 1000000);
 
 ##### Swift
 
@@ -2181,7 +2180,7 @@ You can combine constraints with a logical `AND` by chaining multiple equality o
       .whereField("name", isEqualTo: "Denver")
     citiesRef
       .whereField("state", isEqualTo: "CA")
-      .whereField("population", isLessThan: 1000000)ViewController.swift
+      .whereField("population", isLessThan: 1000000)
 
 ##### Objective-C
 
@@ -2190,19 +2189,19 @@ You can combine constraints with a logical `AND` by chaining multiple equality o
     [[citiesRef queryWhereField:@"state" isEqualTo:@"CO"]
         queryWhereField:@"name" isGreaterThanOrEqualTo:@"Denver"];
     [[citiesRef queryWhereField:@"state" isEqualTo:@"CA"]
-        queryWhereField:@"population" isLessThan:@1000000];ViewController.m
+        queryWhereField:@"population" isLessThan:@1000000];
 
 ##### Kotlin  
 Android
 
     citiesRef.whereEqualTo("state", "CO").whereEqualTo("name", "Denver")
-    citiesRef.whereEqualTo("state", "CA").whereLessThan("population", 1000000)DocSnippets.kt
+    citiesRef.whereEqualTo("state", "CA").whereLessThan("population", 1000000)
 
 ##### Java  
 Android
 
     citiesRef.whereEqualTo("state", "CO").whereEqualTo("name", "Denver");
-    citiesRef.whereEqualTo("state", "CA").whereLessThan("population", 1000000);DocSnippets.java
+    citiesRef.whereEqualTo("state", "CA").whereLessThan("population", 1000000);
 
 ### Dart
 
@@ -2212,11 +2211,11 @@ Android
         .where("name", isEqualTo: "Denver");
     citiesRef
         .where("state", isEqualTo: "CA")
-        .where("population", isLessThan: 1000000);firestore.dart
+        .where("population", isLessThan: 1000000);
 
 ##### Java
 
-    Query chainedQuery1 = cities.whereEqualTo("state", "CO").whereEqualTo("name", "Denver");QueryDataSnippets.java
+    Query chainedQuery1 = cities.whereEqualTo("state", "CO").whereEqualTo("name", "Denver");
 
 ##### Python
 
@@ -2227,7 +2226,7 @@ Android
     )
     large_us_cities_query = cities_ref.where(
         filter=FieldFilter("state", "==", "CA")
-    ).where(filter=FieldFilter("population", ">", 1000000))snippets.py
+    ).where(filter=FieldFilter("population", ">", 1000000))
 
 ##### Python  
 (Async)
@@ -2239,31 +2238,31 @@ Android
     )
     large_us_cities_query = cities_ref.where(
         filter=FieldFilter("state", "==", "CA")
-    ).where(filter=FieldFilter("population", ">", 1000000))snippets.py
+    ).where(filter=FieldFilter("population", ">", 1000000))
 
 ##### C++
 
     cities_ref.WhereEqualTo("state", FieldValue::String("CO"))
         .WhereEqualTo("name", FieldValue::String("Denver"));
     cities_ref.WhereEqualTo("state", FieldValue::String("CA"))
-        .WhereLessThan("population", FieldValue::Integer(1000000));snippets.cpp
+        .WhereLessThan("population", FieldValue::Integer(1000000));
 
 ##### Node.js
 
     citiesRef.where('state', '==', 'CO').where('name', '==', 'Denver');
-    citiesRef.where('state', '==', 'CA').where('population', '<', 1000000);index.js
+    citiesRef.where('state', '==', 'CA').where('population', '<', 1000000);
 
 ##### Go
 
     denverQuery := cities.Where("name", "==", "Denver").Where("state", "==", "CO")
     caliQuery := cities.Where("state", "==", "CA").Where("population", "<=", 1000000)
-    query := cities.Where("country", "==", "USA").Where("population", ">", 5000000)query.go
+    query := cities.Where("country", "==", "USA").Where("population", ">", 5000000)
 
 ##### PHP
 
     $chainedQuery = $citiesRef
         ->where('state', '=', 'CA')
-        ->where('name', '=', 'San Francisco');query_filter_compound_multi_eq.php
+        ->where('name', '=', 'San Francisco');
 
 ##### Unity
 
@@ -2276,11 +2275,11 @@ Android
     CollectionReference citiesRef = db.Collection("cities");
     Query chainedQuery = citiesRef
         .WhereEqualTo("State", "CA")
-        .WhereEqualTo("Name", "San Francisco");Program.cs
+        .WhereEqualTo("Name", "San Francisco");
 
 ##### Ruby
 
-    chained_query = cities_ref.where("state", "=", "CA").where("name", "=", "San Francisco")query_data.rb
+    chained_query = cities_ref.where("state", "=", "CA").where("name", "=", "San Francisco")
 
 ## `OR` queries
 
@@ -2351,7 +2350,7 @@ Query query = collection.where(Filter.or(
             Filter("capital", isEqualTo: true),
             Filter("population", isGreaterThan: 1000000),
           ),
-        );firestore.dart
+        );
 
 ##### Java
 
@@ -2371,7 +2370,7 @@ Snippet not available.
             ]
         )
     )
-    docs = query.stream()query_filter_or.py
+    docs = query.stream()
 
 ##### Python  
 (Async)
@@ -2391,7 +2390,7 @@ Snippet not available.
           Filter.where('population', '>=', 1000000)
         )
       )
-      .get();index.js
+      .get();
 
 ##### Go
 
@@ -2450,7 +2449,6 @@ Snippet not available.
     
      return nil
     }
-    query_filter_or.go
 
 ##### PHP
 
@@ -2490,7 +2488,7 @@ You can combine `OR` queries with compound queries to filter on combinations of 
         where('capital', '==', true),
         where('population', '>=', 1000000)
       )
-    ));test.firestore.js
+    ));
 
 ### Web version 8
 
@@ -2506,7 +2504,7 @@ Not available.
         Filter.whereField("capital", isEqualTo: true),
         Filter.whereField("population", isGreaterOrEqualTo: 1000000)
       ])
-    ]))ViewController.swift
+    ]))
 
 ##### Objective-C
 
@@ -2519,7 +2517,7 @@ Not available.
         [FIRFilter filterWhereField:@"capital" isEqualTo:@YES],
         [FIRFilter filterWhereField:@"population" isGreaterThanOrEqualTo:@1000000]
       ]]
-    ]]];ViewController.m
+    ]]];
 
 ##### Kotlin  
 Android
@@ -2530,7 +2528,7 @@ Android
             Filter.equalTo("capital", true),
             Filter.greaterThanOrEqualTo("population", 1000000)
         )
-    ))DocSnippets.kt
+    ))
 
 ##### Java  
 Android
@@ -2541,7 +2539,7 @@ Android
             Filter.equalTo("capital", true),
             Filter.greaterThanOrEqualTo("population", 1000000)
         )
-    ));DocSnippets.java
+    ));
 
 ### Dart
 
@@ -2553,7 +2551,7 @@ Android
               Filter("population", isGreaterThan: 1000000),
             ),
           ),
-        );firestore.dart
+        );
 
 ##### Java
 
@@ -2582,7 +2580,7 @@ Snippet not available.
           Filter.where('population', '>=', 1000000)
         )
       )
-      .get();index.js
+      .get();
 
 ##### Go
 
@@ -2673,7 +2671,7 @@ For example, you can create a `landmarks` collection group by adding a landmarks
             name: 'Beijing Ancient Observatory',
             type: 'museum'
         })
-    ]);fs_collection_group_query_data_setup.js
+    ]);
 
 ### Web version 8
 
@@ -2722,7 +2720,7 @@ For example, you can create a `landmarks` collection group by adding a landmarks
             name: 'Beijing Ancient Observatory',
             type: 'museum'
         })
-    ]);test.firestore.js
+    ]);
 
 ##### Swift
 
@@ -2758,7 +2756,7 @@ For example, you can create a `landmarks` collection group by adding a landmarks
     citiesRef.document("BJ").collection("landmarks").addDocument(data: data)
     
     data = ["name": "Beijing Ancient Observatory", "type": "museum"]
-    citiesRef.document("BJ").collection("landmarks").addDocument(data: data)ViewController.swift
+    citiesRef.document("BJ").collection("landmarks").addDocument(data: data)
 
 ##### Objective-C
 
@@ -2794,7 +2792,7 @@ For example, you can create a `landmarks` collection group by adding a landmarks
     [[[citiesRef documentWithPath:@"BJ"] collectionWithPath:@"landmarks"] addDocumentWithData:data];
     
     data = @{@"name": @"Beijing Ancient Observatory", @"type": @"museum"};
-    [[[citiesRef documentWithPath:@"BJ"] collectionWithPath:@"landmarks"] addDocumentWithData:data];ViewController.m
+    [[[citiesRef documentWithPath:@"BJ"] collectionWithPath:@"landmarks"] addDocumentWithData:data];
 
 ##### Kotlin  
 Android
@@ -2859,7 +2857,7 @@ Android
         "name" to "Beijing Ancient Observatory",
         "type" to "musuem",
     )
-    citiesRef.document("BJ").collection("landmarks").add(baoData)DocSnippets.kt
+    citiesRef.document("BJ").collection("landmarks").add(baoData)
 
 ##### Java  
 Android
@@ -2914,7 +2912,7 @@ Android
     Map<String, Object> baoData = new HashMap<>();
     baoData.put("name", "Beijing Ancient Observatory");
     baoData.put("type", "museum");
-    citiesRef.document("BJ").collection("landmarks").add(baoData);DocSnippets.java
+    citiesRef.document("BJ").collection("landmarks").add(baoData);
 
 ### Dart
 
@@ -2954,7 +2952,7 @@ Android
     citiesRef.doc("BJ").collection("landmarks").add(jpData);
     
     final baoData = {"name": "Beijing Ancient Observatory", "type": "musuem"};
-    citiesRef.doc("BJ").collection("landmarks").add(baoData);firestore.dart
+    citiesRef.doc("BJ").collection("landmarks").add(baoData);
 
 ##### Java
 
@@ -3072,7 +3070,7 @@ Android
                         put("type", "museum");
                       }
                     }));
-    final List<WriteResult> landmarks = ApiFutures.allAsList(futures).get();QueryDataSnippets.java
+    final List<WriteResult> landmarks = ApiFutures.allAsList(futures).get();
 
 ##### Python
 
@@ -3098,7 +3096,7 @@ Android
     bj_landmarks.document().set({"name": "Jingshan Park", "type": "park"})
     bj_landmarks.document().set(
         {"name": "Beijing Ancient Observatory", "type": "museum"}
-    )snippets.py
+    )
 
 ##### Python  
 (Async)
@@ -3125,7 +3123,7 @@ Android
     await bj_landmarks.document().set({"name": "Jingshan Park", "type": "park"})
     await bj_landmarks.document().set(
         {"name": "Beijing Ancient Observatory", "type": "museum"}
-    )snippets.py
+    )
 
 ##### C++
 
@@ -3204,7 +3202,7 @@ Android
     await citiesRef.doc('BJ').collection('landmarks').doc().set({ 
       name: 'Beijing Ancient Observatory',
       type: 'museum'
-    });index.js
+    });
 
 ##### Go
 
@@ -3252,7 +3250,6 @@ Android
     
      return nil
     }
-    collection_group_setup.go
 
 ##### PHP
 
@@ -3297,7 +3294,7 @@ Android
         'name' => 'Beijing Ancient Observatory',
         'type' => 'museum'
     ]);
-    print('Added example landmarks collections to the cities collection.' . PHP_EOL);query_collection_group_dataset.php
+    print('Added example landmarks collections to the cities collection.' . PHP_EOL);
 
 ##### Unity
 
@@ -3811,7 +3808,6 @@ Android
             }
         }
     }
-    Program.cs
 
 ##### Ruby
 
@@ -3885,7 +3881,7 @@ Android
         name: "Beijing Ancient Observatory",
         type: "museum"
       }
-    )query_data.rb
+    )
 
 We can use the simple and compound query described earlier to query a single city's `landmarks` subcollection, but you might also want to retrieve results from every city's `landmarks` subcollection at once.
 
@@ -3899,7 +3895,7 @@ The `landmarks` collection group consists of all collections with the ID `landma
     const querySnapshot = await getDocs(museums);
     querySnapshot.forEach((doc) => {
         console.log(doc.id, ' => ', doc.data());
-    });fs_collection_group_query.js
+    });
 
 ### Web version 8
 
@@ -3910,7 +3906,7 @@ The `landmarks` collection group consists of all collections with the ID `landma
         querySnapshot.forEach((doc) => {
             console.log(doc.id, ' => ', doc.data());
         });
-    });test.firestore.js
+    });
 
 ##### Swift
 
@@ -3918,7 +3914,7 @@ The `landmarks` collection group consists of all collections with the ID `landma
 
     db.collectionGroup("landmarks").whereField("type", isEqualTo: "museum").getDocuments { (snapshot, error) in
       // ...
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -3927,7 +3923,7 @@ The `landmarks` collection group consists of all collections with the ID `landma
     [[[self.db collectionGroupWithID:@"landmarks"] queryWhereField:@"type" isEqualTo:@"museum"]
         getDocumentsWithCompletion:^(FIRQuerySnapshot *snapshot, NSError *error) {
         // ...
-    }];ViewController.m
+    }];
 
 ##### Kotlin  
 Android
@@ -3935,7 +3931,7 @@ Android
     db.collectionGroup("landmarks").whereEqualTo("type", "museum").get()
         .addOnSuccessListener { queryDocumentSnapshots ->
             // ...
-        }DocSnippets.kt
+        }
 
 ##### Java  
 Android
@@ -3946,7 +3942,7 @@ Android
                 public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                     // ...
                 }
-            });DocSnippets.java
+            });
 
 ### Dart
 
@@ -3957,7 +3953,7 @@ Android
         .then(
           (res) => print("Successfully completed"),
           onError: (e) => print("Error completing: $e"),
-        );firestore.dart
+        );
 
 ##### Java
 
@@ -3965,7 +3961,7 @@ Android
     final ApiFuture<QuerySnapshot> querySnapshot = museums.get();
     for (DocumentSnapshot document : querySnapshot.get().getDocuments()) {
       System.out.println(document.getId());
-    }QueryDataSnippets.java
+    }
 
 ##### Python
 
@@ -3974,7 +3970,7 @@ Android
     )
     docs = museums.stream()
     for doc in docs:
-        print(f"{doc.id} => {doc.to_dict()}")snippets.py
+        print(f"{doc.id} => {doc.to_dict()}")
 
 ##### Python  
 (Async)
@@ -3984,7 +3980,7 @@ Android
     )
     docs = museums.stream()
     async for doc in docs:
-        print(f"{doc.id} => {doc.to_dict()}")snippets.py
+        print(f"{doc.id} => {doc.to_dict()}")
 
 ##### C++
 
@@ -4006,7 +4002,7 @@ Android
     const querySnapshot = await db.collectionGroup('landmarks').where('type', '==', 'museum').get();
     querySnapshot.forEach((doc) => {
       console.log(doc.id, ' => ', doc.data());
-    });index.js
+    });
 
 ##### Go
 
@@ -4044,14 +4040,13 @@ Android
     
      return nil
     }
-    collection_group_query.go
 
 ##### PHP
 
     $museums = $db->collectionGroup('landmarks')->where('type', '==', 'museum');
     foreach ($museums->documents() as $document) {
         printf('%s => %s' . PHP_EOL, $document->id(), $document->data()['name']);
-    }query_collection_group_filter_eq.php
+    }
 
 ##### Unity
 
@@ -4071,14 +4066,14 @@ Android
     foreach (DocumentSnapshot document in querySnapshot.Documents)
     {
         Console.WriteLine($"{document.Reference.Path}: {document.GetValue<string>("Name")}");
-    }Program.cs
+    }
 
 ##### Ruby
 
     museums = firestore.collection_group("landmarks").where("type", "==", "museum")
     museums.get do |museum|
       puts "#{museum[:type]} name is #{museum[:name]}."
-    endquery_data.rb
+    end
 
 Before using a collection group query, you must create an index that supports your collection group query. [You can create an index through an error message, the console, or the Firebase CLI](https://docs.cloud.google.com/firestore/native/docs/query-data/indexing) .
 

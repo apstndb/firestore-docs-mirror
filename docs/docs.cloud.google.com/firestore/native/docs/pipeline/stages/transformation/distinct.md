@@ -20,7 +20,7 @@ The `distinct(...)` stage has similar syntax as [`select(...)`](https://docs.clo
       .distinct(
         field("state").toLower().as("normalizedState"),
         field("country"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -32,7 +32,7 @@ The `distinct(...)` stage has similar syntax as [`select(...)`](https://docs.clo
       .collection("cities")
       .distinct(
         field("state").toLower().as("normalizedState"),
-        field("country")));test.firestore.js
+        field("country")));
 
 ##### Swift
 
@@ -42,7 +42,7 @@ The `distinct(...)` stage has similar syntax as [`select(...)`](https://docs.clo
         Field("author").toUpper().as("author"),
         Field("genre")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -58,7 +58,7 @@ Android
             field("state").toLower().alias("normalizedState"),
             field("country")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -74,7 +74,7 @@ Android
             .distinct(
                     field("state").toLower().alias("normalizedState"),
                     field("country"))
-            .execute();DocSnippets.java
+            .execute();
 
 ##### Python
 
@@ -87,7 +87,7 @@ Android
         .collection("cities")
         .distinct(Field.of("state").to_lower().as_("normalizedState"), "country")
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -100,7 +100,7 @@ Android
             .collection("cities")
             .distinct(toLower(field("state")).as("normalizedState"), field("country"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ## Behavior
 

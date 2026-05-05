@@ -29,7 +29,7 @@ There are two supported modes:
         doc(db, "cities", "DC"),
       ])
       .sample(3)
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -49,7 +49,7 @@ There are two supported modes:
         db.collection("cities").document("DC"),
       ])
       .sample(count: 3)
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -70,7 +70,7 @@ Android
             db.collection("cities").document("DC")
         )
         .sample(3)
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -91,7 +91,7 @@ Android
             db.collection("cities").document("DC")
         )
         .sample(3)
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -108,7 +108,7 @@ Android
         )
         .sample(3)
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -125,7 +125,7 @@ Android
                 firestore.collection("cities").document("DC"))
             .sample(3)
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ## Modes
 
@@ -216,7 +216,7 @@ In percent mode, because each document has the same probability of being selecte
     const results = await execute(db.pipeline()
       .database()
       .sample({ percentage: 0.5 })
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -224,7 +224,7 @@ In percent mode, because each document has the same probability of being selecte
     let results = try await db.pipeline()
       .database()
       .sample(percentage: 0.5)
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -233,7 +233,7 @@ Android
     val results = db.pipeline()
         .database()
         .sample(SampleStage.withPercentage(0.5))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -242,7 +242,7 @@ Android
     Task<Pipeline.Snapshot> results = db.pipeline()
         .database()
         .sample(SampleStage.withPercentage(0.5))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -251,10 +251,10 @@ Android
     # Get a sample of on average 50% of the documents in the database
     results = (
         client.pipeline().database().sample(SampleOptions.percentage(0.5)).execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
     // Get a sample of on average 50% of the documents in the database
     Pipeline.Snapshot results =
-        firestore.pipeline().database().sample(Sample.withPercentage(0.5)).execute().get();PipelineSnippets.java
+        firestore.pipeline().database().sample(Sample.withPercentage(0.5)).execute().get();

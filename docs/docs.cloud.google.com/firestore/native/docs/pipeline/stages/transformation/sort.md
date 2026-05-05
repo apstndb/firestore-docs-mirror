@@ -13,7 +13,7 @@ Sorts the input documents based on one or more specified sort orderings.
       .sort(
         field("release_date").descending(), field("author").ascending()
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -22,7 +22,7 @@ Sorts the input documents based on one or more specified sort orderings.
       .sort([
         Field("release_date").descending(), Field("author").ascending()
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -33,7 +33,7 @@ Android
             field("release_date").descending(),
             field("author").ascending()
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -44,7 +44,7 @@ Android
             field("release_date").descending(),
             field("author").ascending()
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -55,7 +55,7 @@ Android
         .collection("books")
         .sort(Field.of("release_date").descending(), Field.of("author").ascending())
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -65,7 +65,7 @@ Android
             .collection("books")
             .sort(descending(field("release_date")), ascending(field("author")))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ## Behavior
 

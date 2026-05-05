@@ -25,25 +25,25 @@ The operation searches only in the fields indexed with a text index. If multiple
     const result = await execute(db.pipeline().collection('restaurants')
       .search({
         query: documentMatches('waffles')
-      }));test.firestore.js
+      }));
 
 ##### iOS
 
     let snapshot = try await db.pipeline().collection("restaurants")
       .search(query: DocumentMatches("waffles"))
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
 
     val pipeline = db.pipeline().collection("restaurants")
-        .search(SearchStage.withQuery(documentMatches("waffles")))DocSnippets.kt
+        .search(SearchStage.withQuery(documentMatches("waffles")))
 
 ##### Java  
 Android
 
     Pipeline pipeline = db.pipeline().collection("restaurants")
-            .search(SearchStage.withQuery(documentMatches("waffles")));DocSnippets.java
+            .search(SearchStage.withQuery(documentMatches("waffles")));
 
 ##### Node.js
 
@@ -51,7 +51,7 @@ Android
       .search({
         query: documentMatches('waffles')
       })
-      .execute();test.firestore.js
+      .execute();
 
 ##### Python
 
@@ -62,21 +62,21 @@ Android
         .collection("restaurants")
         .search(DocumentMatches("waffles"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
     Pipeline.Snapshot results1 =
         firestore.pipeline().collection("restaurants")
             .search(Search.withQuery(documentMatches("waffles")))
-            .execute().get();PipelineSnippets.java
+            .execute().get();
 
 ##### Go
 
     snapshot := client.Pipeline().
      Collection("restaurants").
      Search(firestore.WithSearchQuery(firestore.DocumentMatches("waffles"))).
-     Execute(ctx)pipeline_snippets_search.go
+     Execute(ctx)
 
 ### Search for an exact term
 
@@ -87,25 +87,25 @@ To search for an exact term, enclose the term in quotes ( `"` ):
     const result = await execute(db.pipeline().collection('restaurants')
       .search({
         query: documentMatches('"belgian waffles"')
-      }));test.firestore.js
+      }));
 
 ##### iOS
 
     let snapshot = try await db.pipeline().collection("restaurants")
       .search(query: DocumentMatches("\"belgian waffles\""))
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
 
     val pipeline = db.pipeline().collection("restaurants")
-        .search(SearchStage.withQuery(documentMatches("\"belgian waffles\"")))DocSnippets.kt
+        .search(SearchStage.withQuery(documentMatches("\"belgian waffles\"")))
 
 ##### Java  
 Android
 
     Pipeline pipeline = db.pipeline().collection("restaurants")
-            .search(SearchStage.withQuery(documentMatches("\"belgian waffles\"")));DocSnippets.java
+            .search(SearchStage.withQuery(documentMatches("\"belgian waffles\"")));
 
 ##### Node.js
 
@@ -113,7 +113,7 @@ Android
       .search({
         query: documentMatches('"belgian waffles"')
       })
-      .execute();test.firestore.js
+      .execute();
 
 ##### Python
 
@@ -124,21 +124,21 @@ Android
         .collection("restaurants")
         .search(DocumentMatches('"belgian waffles"'))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
     Pipeline.Snapshot results2 =
         firestore.pipeline().collection("restaurants")
             .search(Search.withQuery(documentMatches("\"belgian waffles\"")))
-            .execute().get();PipelineSnippets.java
+            .execute().get();
 
 ##### Go
 
     snapshot := client.Pipeline().
      Collection("restaurants").
      Search(firestore.WithSearchQuery(firestore.DocumentMatches("\"belgian waffles\""))).
-     Execute(ctx)pipeline_snippets_search.go
+     Execute(ctx)
 
 ### Search for a term combination
 
@@ -149,25 +149,25 @@ To search for combination for terms (logical `AND` ), separate the terms with sp
     const result = await execute(db.pipeline().collection('restaurants')
       .search({
         query: documentMatches('waffles eggs')
-      }));test.firestore.js
+      }));
 
 ##### iOS
 
     let snapshot = try await db.pipeline().collection("restaurants")
       .search(query: DocumentMatches("waffles eggs"))
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
 
     val pipeline = db.pipeline().collection("restaurants")
-        .search(SearchStage.withQuery(documentMatches("waffles eggs")))DocSnippets.kt
+        .search(SearchStage.withQuery(documentMatches("waffles eggs")))
 
 ##### Java  
 Android
 
     Pipeline pipeline = db.pipeline().collection("restaurants")
-            .search(SearchStage.withQuery(documentMatches("waffles eggs")));DocSnippets.java
+            .search(SearchStage.withQuery(documentMatches("waffles eggs")));
 
 ##### Node.js
 
@@ -175,7 +175,7 @@ Android
       .search({
         query: documentMatches('waffles eggs')
       })
-      .execute();test.firestore.js
+      .execute();
 
 ##### Python
 
@@ -186,7 +186,7 @@ Android
         .collection("restaurants")
         .search(DocumentMatches("waffles eggs"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -197,14 +197,14 @@ Android
     Pipeline.Snapshot results3 =
         firestore.pipeline().collection("restaurants")
             .search(Search.withQuery(documentMatches("waffles eggs")))
-            .execute().get();PipelineSnippets.java
+            .execute().get();
 
 ##### Go
 
     snapshot := client.Pipeline().
      Collection("restaurants").
      Search(firestore.WithSearchQuery(firestore.DocumentMatches("waffles eggs"))).
-     Execute(ctx)pipeline_snippets_search.go
+     Execute(ctx)
 
 ### Exclude a term
 
@@ -215,25 +215,25 @@ To exclude a term, prefix the term with a hyphen ( `-` ):
     const result = await execute(db.pipeline().collection('restaurants')
       .search({
         query: documentMatches('coffee -waffles')
-      }));test.firestore.js
+      }));
 
 ##### iOS
 
     let snapshot = try await db.pipeline().collection("restaurants")
       .search(query: DocumentMatches("coffee -waffles"))
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
 
     val pipeline = db.pipeline().collection("restaurants")
-        .search(SearchStage.withQuery(documentMatches("waffles eggs")))DocSnippets.kt
+        .search(SearchStage.withQuery(documentMatches("waffles eggs")))
 
 ##### Java  
 Android
 
     Pipeline pipeline = db.pipeline().collection("restaurants")
-            .search(SearchStage.withQuery(documentMatches("coffee -waffles")));DocSnippets.java
+            .search(SearchStage.withQuery(documentMatches("coffee -waffles")));
 
 ##### Node.js
 
@@ -241,7 +241,7 @@ Android
       .search({
         query: documentMatches('-waffles')
       })
-      .execute();test.firestore.js
+      .execute();
 
 ##### Python
 
@@ -252,7 +252,7 @@ Android
         .collection("restaurants")
         .search(DocumentMatches("-waffles"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -263,14 +263,14 @@ Android
     Pipeline.Snapshot results4 =
         firestore.pipeline().collection("restaurants")
             .search(Search.withQuery(documentMatches("-waffles")))
-            .execute().get();PipelineSnippets.java
+            .execute().get();
 
 ##### Go
 
     snapshot := client.Pipeline().
      Collection("restaurants").
      Search(firestore.WithSearchQuery(firestore.DocumentMatches("-waffles"))).
-     Execute(ctx)pipeline_snippets_search.go
+     Execute(ctx)
 
 You can also exclude a phrase, for example, `pizza -"New York"` .
 
@@ -329,7 +329,7 @@ The following example adds the score field to the documents returned by the sear
         addFields: [
             score().as('score'),
         ]
-      }));test.firestore.js
+      }));
 
 ##### iOS
 
@@ -340,13 +340,13 @@ The following example adds the score field to the documents returned by the sear
           Score().as("score")
         ]
       )
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
 
     val pipeline = db.pipeline().collection("restaurants")
-        .search(SearchStage.withQuery(documentMatches("waffles eggs")))DocSnippets.kt
+        .search(SearchStage.withQuery(documentMatches("waffles eggs")))
 
 ##### Java  
 Android
@@ -354,7 +354,7 @@ Android
     Pipeline pipeline = db.pipeline().collection("restaurants")
             .search(
                     SearchStage.withQuery(documentMatches("menu:waffles"))
-                            .withAddFields(score().alias("score")));DocSnippets.java
+                            .withAddFields(score().alias("score")));
 
 ##### Node.js
 
@@ -364,7 +364,7 @@ Android
         addFields: [
             score().as('score'),
         ]
-      }).execute();test.firestore.js
+      }).execute();
 
 ##### Python
 
@@ -381,7 +381,7 @@ Android
             )
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -389,7 +389,7 @@ Android
         firestore.pipeline().collection("restaurants")
             .search(Search.withQuery(field("menu").regexMatch("waffles"))
                 .withAddFields(score().as("score")))
-            .execute().get();PipelineSnippets.java
+            .execute().get();
 
 ##### Go
 
@@ -399,4 +399,4 @@ Android
          firestore.WithSearchQuery(firestore.FieldOf("menu").RegexMatch("waffles")),
          firestore.WithSearchAddFields(firestore.Score().As("score")),
      ).
-     Execute(ctx)pipeline_snippets_search.go
+     Execute(ctx)

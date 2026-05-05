@@ -77,7 +77,7 @@ To persist data when the device loses its connection, see the [Enable Offline Da
 
     FirebaseApp.configure()
     
-    let db = Firestore.firestore()AppDelegate.swift
+    let db = Firestore.firestore()
 
 ##### Objective-C
 
@@ -92,21 +92,21 @@ To persist data when the device loses its connection, see the [Enable Offline Da
   
 ```
 
-    FIRFirestore *defaultFirestore = [FIRFirestore firestore];AppDelegate.m
+    FIRFirestore *defaultFirestore = [FIRFirestore firestore];
 
 ##### Kotlin  
 Android
 
     // Access a Firestore instance from your Activity
 
-    val db = Firebase.firestoreDocSnippets.kt
+    val db = Firebase.firestore
 
 ##### Java  
 Android
 
     // Access a Firestore instance from your Activity
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();DocSnippets.java
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 ### Dart
 
@@ -116,7 +116,7 @@ Android
 
     // Make sure the call to `Create()` happens some time before you call Firestore::GetInstance().
     App::Create();
-    Firestore* db = Firestore::GetInstance();AppDelegate.mm
+    Firestore* db = Firestore::GetInstance();
 
 ##### Unity
 
@@ -137,7 +137,7 @@ Android
             .setProjectId(projectId)
             .setCredentials(GoogleCredentials.getApplicationDefault())
             .build();
-    Firestore db = firestoreOptions.getService();Quickstart.java
+    Firestore db = firestoreOptions.getService();
 
 ##### Python
 
@@ -146,7 +146,7 @@ Android
     # The `project` parameter is optional and represents which project the client
     # will act on behalf of. If not supplied, the client falls back to the default
     # project inferred from the environment.
-    db = firestore.Client(project="my-project-id")snippets.py
+    db = firestore.Client(project="my-project-id")
 
 ##### Python  
 (Async)
@@ -156,7 +156,7 @@ Android
     # The `project` parameter is optional and represents which project the client
     # will act on behalf of. If not supplied, the client falls back to the default
     # project inferred from the environment.
-    db = firestore.AsyncClient(project="my-project-id")snippets.py
+    db = firestore.AsyncClient(project="my-project-id")
 
 ##### Node.js
 
@@ -192,7 +192,6 @@ Android
      // defer client.Close()
      return client
     }
-    main.go
 
 ##### PHP
 
@@ -240,7 +239,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
     # default project inferred from the environment.
     firestore = Google::Cloud::Firestore.new project_id: project_id
     
-    puts "Created Cloud Firestore client with given project ID."quickstart.rb
+    puts "Created Cloud Firestore client with given project ID."
 
 ## Example data
 
@@ -271,7 +270,7 @@ To get started, write some data about cities so we can look at different ways to
     await setDoc(doc(citiesRef, "BJ"), {
         name: "Beijing", state: null, country: "China",
         capital: true, population: 21500000,
-        regions: ["jingjinji", "hebei"] });example_data.js
+        regions: ["jingjinji", "hebei"] });
 
 ### Web version 8
 
@@ -298,7 +297,7 @@ To get started, write some data about cities so we can look at different ways to
     citiesRef.doc("BJ").set({
         name: "Beijing", state: null, country: "China",
         capital: true, population: 21500000,
-        regions: ["jingjinji", "hebei"] });test.firestore.js
+        regions: ["jingjinji", "hebei"] });
 
 ##### Swift
 
@@ -342,7 +341,7 @@ To get started, write some data about cities so we can look at different ways to
       "capital": true,
       "population": 21500000,
       "regions": ["jingjinji", "hebei"]
-    ])ViewController.swift
+    ])
 
 ##### Objective-C
 
@@ -385,7 +384,7 @@ To get started, write some data about cities so we can look at different ways to
       @"capital": @(YES),
       @"population": @21500000,
       @"regions": @[@"jingjinji", @"hebei"]
-    }];ViewController.m
+    }];
 
 ##### Kotlin  
 Android
@@ -440,7 +439,7 @@ Android
         "population" to 21500000,
         "regions" to listOf("jingjinji", "hebei"),
     )
-    cities.document("BJ").set(data5)DocSnippets.kt
+    cities.document("BJ").set(data5)
 
 ##### Java  
 Android
@@ -490,7 +489,7 @@ Android
     data5.put("capital", true);
     data5.put("population", 21500000);
     data5.put("regions", Arrays.asList("jingjinji", "hebei"));
-    cities.document("BJ").set(data5);DocSnippets.java
+    cities.document("BJ").set(data5);
 
 ### Dart
 
@@ -543,7 +542,7 @@ Android
       "population": 21500000,
       "regions": ["jingjinji", "hebei"],
     };
-    cities.doc("BJ").set(data5);firestore.dart
+    cities.doc("BJ").set(data5);
 
 ##### Java
 
@@ -595,7 +594,7 @@ Android
                     21500000L,
                     Arrays.asList("jingjinji", "hebei"))));
     // (optional) block on operation
-    ApiFutures.allAsList(futures).get();RetrieveDataSnippets.java
+    ApiFutures.allAsList(futures).get();
 
 ##### Python
 
@@ -643,7 +642,7 @@ Android
     )
     cities_ref.document("TOK").set(
         City("Tokyo", None, "Japan", True, 9000000, ["kanto", "honshu"]).to_dict()
-    )snippets.py
+    )
 
 ##### Python  
 (Async)
@@ -667,7 +666,7 @@ Android
     )
     await cities_ref.document("TOK").set(
         City("Tokyo", None, "Japan", True, 9000000, ["kanto", "honshu"]).to_dict()
-    )snippets.py
+    )
 
 ##### C++
 
@@ -721,7 +720,7 @@ Android
         {"population", FieldValue::Integer(21500000)},
         {"regions", FieldValue::Array({FieldValue::String("jingjinji"),
                                        FieldValue::String("hebei")})},
-    });snippets.cpp
+    });
 
 ##### Node.js
 
@@ -746,7 +745,7 @@ Android
     await citiesRef.doc('BJ').set({
       name: 'Beijing', state: null, country: 'China',
       capital: true, population: 21500000
-    });index.js
+    });
 
 ##### Go
 
@@ -775,7 +774,6 @@ Android
      }
      return nil
     }
-    retrieve_data_get_dataset.go
 
 ##### PHP
 
@@ -908,7 +906,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
         { "Capital", true },
         { "Population", 21500000 }
     });
-    Console.WriteLine("Added example cities data to the cities collection.");Program.cs
+    Console.WriteLine("Added example cities data to the cities collection.");
 
 ##### Ruby
 
@@ -957,7 +955,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
         capital:    true,
         population: 21_500_000
       }
-    )get_data.rb
+    )
 
 ## Get a document
 
@@ -975,7 +973,7 @@ The following example shows how to retrieve the contents of a single document us
     } else {
       // docSnap.data() will be undefined in this case
       console.log("No such document!");
-    }get_document.js
+    }
 
 ### Web version 8
 
@@ -992,7 +990,7 @@ The following example shows how to retrieve the contents of a single document us
         }
     }).catch((error) => {
         console.log("Error getting document:", error);
-    });test.firestore.js
+    });
 
 ##### Swift
 
@@ -1010,7 +1008,7 @@ The following example shows how to retrieve the contents of a single document us
       }
     } catch {
       print("Error getting document: \(error)")
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -1025,7 +1023,7 @@ The following example shows how to retrieve the contents of a single document us
       } else {
         NSLog(@"Document does not exist");
       }
-    }];ViewController.m
+    }];
 
 ##### Kotlin  
 Android
@@ -1041,7 +1039,7 @@ Android
         }
         .addOnFailureListener { exception ->
             Log.d(TAG, "get failed with ", exception)
-        }DocSnippets.kt
+        }
 
 ##### Java  
 Android
@@ -1061,7 +1059,7 @@ Android
                 Log.d(TAG, "get failed with ", task.getException());
             }
         }
-    });DocSnippets.java
+    });
 
 ### Dart
 
@@ -1072,7 +1070,7 @@ Android
         // ...
       },
       onError: (e) => print("Error getting document: $e"),
-    );firestore.dart
+    );
 
 ##### Java
 
@@ -1086,7 +1084,7 @@ Android
       System.out.println("Document data: " + document.getData());
     } else {
       System.out.println("No such document!");
-    }RetrieveDataSnippets.java
+    }
 
 ##### Python
 
@@ -1096,7 +1094,7 @@ Android
     if doc.exists:
         print(f"Document data: {doc.to_dict()}")
     else:
-        print("No such document!")snippets.py
+        print("No such document!")
 
 ##### Python  
 (Async)
@@ -1107,7 +1105,7 @@ Android
     if doc.exists:
         print(f"Document data: {doc.to_dict()}")
     else:
-        print("No such document!")snippets.py
+        print("No such document!")
 
 ##### C++
 
@@ -1123,7 +1121,7 @@ Android
       } else {
         std::cout << "Get failed with: " << future.error_message() << std::endl;
       }
-    });snippets.cpp
+    });
 
 ##### Node.js
 
@@ -1133,7 +1131,7 @@ Android
       console.log('No such document!');
     } else {
       console.log('Document data:', doc.data());
-    }index.js
+    }
 
 ##### Go
 
@@ -1153,7 +1151,6 @@ Android
      fmt.Printf("Document data: %#v\n", m)
      return m, nil
     }
-    retrieve_data_get_as_map.go
 
 ##### PHP
 
@@ -1204,7 +1201,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
     else
     {
         Console.WriteLine("Document {0} does not exist!", snapshot.Id);
-    }Program.cs
+    }
 
 ##### Ruby
 
@@ -1214,7 +1211,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
       puts "#{snapshot.document_id} data: #{snapshot.data}."
     else
       puts "Document #{snapshot.document_id} does not exist!"
-    endget_data.rb
+    end
 
 > **Note:** If there is no document at the location referenced by `docRef` , the resulting `document` will be empty and calling `exists` on it will return `false` .
 
@@ -1241,7 +1238,7 @@ You can specify the `source` option in a `get()` call to change the default beha
       console.log("Cached document data:", doc.data());
     } catch (e) {
       console.log("Error getting cached document:", e);
-    }get_document_options.js
+    }
 
 ### Web version 8
 
@@ -1263,7 +1260,7 @@ You can specify the `source` option in a `get()` call to change the default beha
         console.log("Cached document data:", doc.data());
     }).catch((error) => {
         console.log("Error getting cached document:", error);
-    });test.firestore.js
+    });
 
 ##### Swift
 
@@ -1283,7 +1280,7 @@ You can specify the `source` option in a `get()` call to change the default beha
       }
     } catch {
       print("Error getting document: \(error)")
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -1303,7 +1300,7 @@ You can specify the `source` option in a `get()` call to change the default beha
         // The document data was not found in the cache.
         NSLog(@"Document does not exist in cache: %@", error);
       }
-    }];ViewController.m
+    }];
 
 ##### Kotlin  
 Android
@@ -1322,7 +1319,7 @@ Android
         } else {
             Log.d(TAG, "Cached get failed: ", task.exception)
         }
-    }DocSnippets.kt
+    }
 
 ##### Java  
 Android
@@ -1344,7 +1341,7 @@ Android
                 Log.d(TAG, "Cached get failed: ", task.getException());
             }
         }
-    });DocSnippets.java
+    });
 
 ### Dart
 
@@ -1356,7 +1353,7 @@ Android
     docRef.get(const GetOptions(source: source)).then(
           (res) => print("Successfully completed"),
           onError: (e) => print("Error completing: $e"),
-        );firestore.dart
+        );
 
 ##### Java
 
@@ -1380,7 +1377,7 @@ Not supported in the Python SDK.
       } else {
         std::cout << "Cached get failed: " << future.error_message() << std::endl;
       }
-    });snippets.cpp
+    });
 
 ##### Node.js
 
@@ -1440,7 +1437,7 @@ To use custom objects, you must define a [FirestoreDataConverter](https://fireba
             const data = snapshot.data(options);
             return new City(data.name, data.state, data.country);
         }
-    };city_custom_object.js
+    };
 
 To use custom objects, you must define a [FirestoreDataConverter](https://firebase.google.com/docs/reference/js/v8/firebase.firestore.FirestoreDataConverter) function for your class. For example:
 
@@ -1472,7 +1469,7 @@ To use custom objects, you must define a [FirestoreDataConverter](https://fireba
             const data = snapshot.data(options);
             return new City(data.name, data.state, data.country);
         }
-    };test.firestore.js
+    };
 
 Call your data converter with your read operations. After conversion, you can access custom object methods:
 
@@ -1491,7 +1488,7 @@ Call your data converter with your read operations. After conversion, you can ac
       console.log(city.toString());
     } else {
       console.log("No such document!");
-    }get_custom_object.js
+    }
 
 Call your data converter with your read operations. After conversion, you can access custom object methods:
 
@@ -1511,7 +1508,7 @@ Call your data converter with your read operations. After conversion, you can ac
           console.log("No such document!");
         }}).catch((error) => {
           console.log("Error getting document:", error);
-        });test.firestore.js
+        });
 
 ##### Swift
 
@@ -1526,7 +1523,7 @@ To support automatic type serialization in Swift, your type must conform to the 
       print("City: \(city)")
     } catch {
       print("Error decoding city: \(error)")
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -1543,7 +1540,7 @@ In Objective-C you must do this manually.
       } else {
         NSLog(@"Document does not exist");
       }
-    }];ViewController.m
+    }];
 
 ##### Kotlin  
 Android
@@ -1551,7 +1548,7 @@ Android
     val docRef = db.collection("cities").document("BJ")
     docRef.get().addOnSuccessListener { documentSnapshot ->
         val city = documentSnapshot.toObject<City>()
-    }DocSnippets.kt
+    }
 
 ##### Java  
 Android
@@ -1564,7 +1561,7 @@ Important: Each custom class must have a public constructor that takes no argume
         public void onSuccess(DocumentSnapshot documentSnapshot) {
             City city = documentSnapshot.toObject(City.class);
         }
-    });DocSnippets.java
+    });
 
 ### Dart
 
@@ -1613,7 +1610,7 @@ To use custom objects, you must define Firestore data conversion functions for y
           if (regions != null) "regions": regions,
         };
       }
-    }firestore_add_data_custom_objects_snippet.dart
+    }
 
 Then, create a document reference with your data conversion functions. Any read operations you perform using this reference will return instances of your custom class:
 
@@ -1627,7 +1624,7 @@ Then, create a document reference with your data conversion functions. Any read 
       print(city);
     } else {
       print("No such document.");
-    }firestore.dart
+    }
 
 ##### Java
 
@@ -1645,7 +1642,7 @@ Each custom class must have a public constructor that takes no arguments. In add
       System.out.println(city);
     } else {
       System.out.println("No such document!");
-    }RetrieveDataSnippets.java
+    }
 
 ##### Python
 
@@ -1653,7 +1650,7 @@ Each custom class must have a public constructor that takes no arguments. In add
     
     doc = doc_ref.get()
     city = City.from_dict(doc.to_dict())
-    print(city)snippets.py
+    print(city)
 
 ##### Python  
 (Async)
@@ -1662,7 +1659,7 @@ Each custom class must have a public constructor that takes no arguments. In add
     
     doc = await doc_ref.get()
     city = City.from_dict(doc.to_dict())
-    print(city)snippets.py
+    print(city)
 
 ##### C++
 
@@ -1691,7 +1688,6 @@ Node.js uses JavaScript objects.
      fmt.Printf("Document data: %#v\n", c)
      return &c, nil
     }
-    retrieve_data_get_as_custom_type.go
 
 ##### PHP
 
@@ -1750,7 +1746,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
     else
     {
         Console.WriteLine("Document {0} does not exist!", snapshot.Id);
-    }Program.cs
+    }
 
 ##### Ruby
 
@@ -1770,7 +1766,7 @@ You can also retrieve multiple documents with one request by querying documents 
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
-    });get_multiple.js
+    });
 
 ### Web version 8
 
@@ -1786,7 +1782,7 @@ You can also retrieve multiple documents with one request by querying documents 
         })
         .catch((error) => {
             console.log("Error getting documents: ", error);
-        });test.firestore.js
+        });
 
 ##### Swift
 
@@ -1800,7 +1796,7 @@ You can also retrieve multiple documents with one request by querying documents 
       }
     } catch {
       print("Error getting documents: \(error)")
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -1815,7 +1811,7 @@ You can also retrieve multiple documents with one request by querying documents 
               NSLog(@"%@ => %@", document.documentID, document.data);
             }
           }
-        }];ViewController.m
+        }];
 
 ##### Kotlin  
 Android
@@ -1830,7 +1826,7 @@ Android
         }
         .addOnFailureListener { exception ->
             Log.w(TAG, "Error getting documents: ", exception)
-        }DocSnippets.kt
+        }
 
 ##### Java  
 Android
@@ -1849,7 +1845,7 @@ Android
                         Log.d(TAG, "Error getting documents: ", task.getException());
                     }
                 }
-            });DocSnippets.java
+            });
 
 ### Dart
 
@@ -1861,7 +1857,7 @@ Android
         }
       },
       onError: (e) => print("Error completing: $e"),
-    );firestore.dart
+    );
 
 ##### Java
 
@@ -1871,7 +1867,7 @@ Android
     List<QueryDocumentSnapshot> documents = future.get().getDocuments();
     for (DocumentSnapshot document : documents) {
       System.out.println(document.getId() + " => " + document.toObject(City.class));
-    }RetrieveDataSnippets.java
+    }
 
 ##### Python
 
@@ -1883,7 +1879,7 @@ Android
     )
     
     for doc in docs:
-        print(f"{doc.id} => {doc.to_dict()}")snippets.py
+        print(f"{doc.id} => {doc.to_dict()}")
 
 ##### Python  
 (Async)
@@ -1896,7 +1892,7 @@ Android
     )
     
     async for doc in docs:
-        print(f"{doc.id} => {doc.to_dict()}")snippets.py
+        print(f"{doc.id} => {doc.to_dict()}")
 
 ##### C++
 
@@ -1913,7 +1909,7 @@ Android
             std::cout << "Error getting documents: " << future.error_message()
                       << std::endl;
           }
-        });snippets.cpp
+        });
 
 ##### Node.js
 
@@ -1926,7 +1922,7 @@ Android
     
     snapshot.forEach(doc => {
       console.log(doc.id, '=>', doc.data());
-    });index.js
+    });
 
 ##### Go
 
@@ -1953,7 +1949,6 @@ Android
      }
      return nil
     }
-    retrieve_data_query.go
 
 ##### PHP
 
@@ -2004,7 +1999,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
             Console.WriteLine("{0}: {1}", pair.Key, pair.Value);
         }
         Console.WriteLine("");
-    }Program.cs
+    }
 
 ##### Ruby
 
@@ -2014,7 +2009,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
     
     query.get do |city|
       puts "#{city.document_id} data: #{city.data}."
-    endget_data.rb
+    end
 
 By default, Firestore retrieves all documents that satisfy the query in ascending order by document ID, but you can [order and limit the data returned](https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data) .
 
@@ -2030,7 +2025,7 @@ In addition, you can retrieve *all* documents in a collection by omitting the `w
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
-    });get_multiple_all.js
+    });
 
 ### Web version 8
 
@@ -2041,7 +2036,7 @@ In addition, you can retrieve *all* documents in a collection by omitting the `w
             // doc.data() is never undefined for query doc snapshots
             console.log(doc.id, " => ", doc.data());
         });
-    });test.firestore.js
+    });
 
 ##### Swift
 
@@ -2054,7 +2049,7 @@ In addition, you can retrieve *all* documents in a collection by omitting the `w
       }
     } catch {
       print("Error getting documents: \(error)")
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -2069,7 +2064,7 @@ In addition, you can retrieve *all* documents in a collection by omitting the `w
               NSLog(@"%@ => %@", document.documentID, document.data);
             }
           }
-        }];ViewController.m
+        }];
 
 ##### Kotlin  
 Android
@@ -2083,7 +2078,7 @@ Android
         }
         .addOnFailureListener { exception ->
             Log.d(TAG, "Error getting documents: ", exception)
-        }DocSnippets.kt
+        }
 
 ##### Java  
 Android
@@ -2101,7 +2096,7 @@ Android
                         Log.d(TAG, "Error getting documents: ", task.getException());
                     }
                 }
-            });DocSnippets.java
+            });
 
 ### Dart
 
@@ -2113,7 +2108,7 @@ Android
         }
       },
       onError: (e) => print("Error completing: $e"),
-    );firestore.dart
+    );
 
 ##### Java
 
@@ -2123,14 +2118,14 @@ Android
     List<QueryDocumentSnapshot> documents = future.get().getDocuments();
     for (QueryDocumentSnapshot document : documents) {
       System.out.println(document.getId() + " => " + document.toObject(City.class));
-    }RetrieveDataSnippets.java
+    }
 
 ##### Python
 
     docs = db.collection("cities").stream()
     
     for doc in docs:
-        print(f"{doc.id} => {doc.to_dict()}")snippets.py
+        print(f"{doc.id} => {doc.to_dict()}")
 
 ##### Python  
 (Async)
@@ -2138,7 +2133,7 @@ Android
     docs = db.collection("cities").stream()
     
     async for doc in docs:
-        print(f"{doc.id} => {doc.to_dict()}")snippets.py
+        print(f"{doc.id} => {doc.to_dict()}")
 
 ##### C++
 
@@ -2153,7 +2148,7 @@ Android
             std::cout << "Error getting documents: " << future.error_message()
                       << std::endl;
           }
-        });snippets.cpp
+        });
 
 ##### Node.js
 
@@ -2161,7 +2156,7 @@ Android
     const snapshot = await citiesRef.get();
     snapshot.forEach(doc => {
       console.log(doc.id, '=>', doc.data());
-    });index.js
+    });
 
 ##### Go
 
@@ -2189,7 +2184,6 @@ Android
      }
      return nil
     }
-    retrieve_data_get_all_documents.go
 
 ##### PHP
 
@@ -2242,14 +2236,14 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
             Console.WriteLine("{0}: {1}", pair.Key, pair.Value);
         }
         Console.WriteLine("");
-    }Program.cs
+    }
 
 ##### Ruby
 
     cities_ref = firestore.col collection_path
     cities_ref.get do |city|
       puts "#{city.document_id} data: #{city.data}."
-    endget_data.rb
+    end
 
 ### Get all documents in a subcollection
 
@@ -2265,7 +2259,7 @@ To retrieve all the documents from a subcollection, create a reference with the 
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
-    });test.firestore.js
+    });
 
 ### Web version 8
 
@@ -2280,7 +2274,7 @@ To retrieve all the documents from a subcollection, create a reference with the 
       }
     } catch {
       print("Error getting documents: \(error)")
-    }ViewController.swift
+    }
 
 ##### Objective-C
 
@@ -2293,7 +2287,7 @@ To retrieve all the documents from a subcollection, create a reference with the 
               NSLog(@"%@ => %@", document.documentID, document.data);
             }
           }
-        }];ViewController.m
+        }];
 
 ##### Kotlin  
 Android
@@ -2309,7 +2303,7 @@ Android
         }
         .addOnFailureListener { exception ->
             Log.d(TAG, "Error getting documents: ", exception)
-        }DocSnippets.kt
+        }
 
 ##### Java  
 Android
@@ -2329,7 +2323,7 @@ Android
                         Log.d(TAG, "Error getting documents: ", task.getException());
                     }
                 }
-            });DocSnippets.java
+            });
 
 ### Dart
 
@@ -2341,7 +2335,7 @@ Android
         }
       },
       onError: (e) => print("Error completing: $e"),
-    );firestore.dart
+    );
 
 ##### Java
 
@@ -2427,7 +2421,7 @@ Not available in the Flutter client library.
     
     for (CollectionReference collRef : collections) {
       System.out.println("Found subcollection with id: " + collRef.getId());
-    }RetrieveDataSnippets.java
+    }
 
 ##### Python
 
@@ -2435,7 +2429,7 @@ Not available in the Flutter client library.
     collections = city_ref.collections()
     for collection in collections:
         for doc in collection.stream():
-            print(f"{doc.id} => {doc.to_dict()}")snippets.py
+            print(f"{doc.id} => {doc.to_dict()}")
 
 ##### Python  
 (Async)
@@ -2443,7 +2437,7 @@ Not available in the Flutter client library.
     collections = db.collection("cities").document("SF").collections()
     async for collection in collections:
         async for doc in collection.stream():
-            print(f"{doc.id} => {doc.to_dict()}")snippets.py
+            print(f"{doc.id} => {doc.to_dict()}")
 
 ##### C++
 
@@ -2455,7 +2449,7 @@ Not available in the C++ client library.
     const collections = await sfRef.listCollections();
     collections.forEach(collection => {
       console.log('Found subcollection with id:', collection.id);
-    });index.js
+    });
 
 ##### Go
 
@@ -2481,7 +2475,6 @@ Not available in the C++ client library.
      }
      return nil
     }
-    retrieve_data_get_sub_collections.go
 
 ##### PHP
 
@@ -2508,14 +2501,14 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
     {
         CollectionReference subcollectionRef = subcollectionsEnumerator.Current;
         Console.WriteLine("Found subcollection with ID: {0}", subcollectionRef.Id);
-    }Program.cs
+    }
 
 ##### Ruby
 
     city_ref = firestore.doc "#{collection_path}/SF"
     city_ref.cols do |col|
       puts col.collection_id
-    endget_data.rb
+    end
 
 Learn more about different [types of queries](https://docs.cloud.google.com/firestore/native/docs/query-data/queries) .
 

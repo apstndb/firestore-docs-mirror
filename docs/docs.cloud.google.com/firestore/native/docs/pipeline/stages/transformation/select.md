@@ -12,7 +12,7 @@ Generates new documents, either by referencing a subset of existing fields, or b
       .collection("books")
       .select(field("soldBooks").multiply(field("price")).round().as("partialRevenue"))
       .aggregate(field("partialRevenue").sum().as("totalRevenue"))
-      );test.firestore.js
+      );
 
 ##### Swift
 
@@ -20,7 +20,7 @@ Generates new documents, either by referencing a subset of existing fields, or b
       .collection("books")
       .select([Field("soldBooks").multiply(Field("price")).round().as("partialRevenue")])
       .aggregate([Field("partialRevenue").sum().as("totalRevenue")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -29,7 +29,7 @@ Android
         .collection("books")
         .select(Expression.multiply(field("soldBooks"), field("price")).round().alias("partialRevenue"))
         .aggregate(AggregateFunction.sum("partialRevenue").alias("totalRevenue"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -38,7 +38,7 @@ Android
         .collection("books")
         .select(Expression.multiply(field("soldBooks"), field("price")).round().alias("partialRevenue"))
         .aggregate(AggregateFunction.sum("partialRevenue").alias("totalRevenue"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -55,7 +55,7 @@ Android
         )
         .aggregate(Field.of("partialRevenue").sum().as_("totalRevenue"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -66,7 +66,7 @@ Android
             .select(round(multiply(field("soldBooks"), field("price"))).as("partialRevenue"))
             .aggregate(sum("partialRevenue").as("totalRevenue"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ## Behavior
 

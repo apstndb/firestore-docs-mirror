@@ -15,7 +15,7 @@ You can *listen* to a document with the `onSnapshot()` method. An initial call u
     
     const unsub = onSnapshot(doc(db, "cities", "SF"), (doc) => {
         console.log("Current data: ", doc.data());
-    });listen_document.js
+    });
 
 ### Web version 8
 
@@ -24,7 +24,7 @@ You can *listen* to a document with the `onSnapshot()` method. An initial call u
     db.collection("cities").doc("SF")
         .onSnapshot((doc) => {
             console.log("Current data: ", doc.data());
-        });test.firestore.js
+        });
 
 ##### Swift
 
@@ -41,7 +41,7 @@ You can *listen* to a document with the `onSnapshot()` method. An initial call u
           return
         }
         print("Current data: \(data)")
-      }ViewController.swift
+      }
 
 ##### Objective-C
 
@@ -54,7 +54,7 @@ You can *listen* to a document with the `onSnapshot()` method. An initial call u
             return;
           }
           NSLog(@"Current data: %@", snapshot.data);
-        }];ViewController.m
+        }];
 
 ##### Kotlin  
 Android
@@ -71,7 +71,7 @@ Android
         } else {
             Log.d(TAG, "Current data: null")
         }
-    }DocSnippets.kt
+    }
 
 ##### Java  
 Android
@@ -92,7 +92,7 @@ Android
                 Log.d(TAG, "Current data: null");
             }
         }
-    });DocSnippets.java
+    });
 
 ### Dart
 
@@ -101,7 +101,6 @@ Android
           (event) => print("current data: ${event.data()}"),
           onError: (error) => print("Listen failed: $error"),
         );
-    firestore.dart
 
 Often, you want your UI to react to changes in the contents of a Firestore document or collection. You can do so with a `StreamBuilder` widget that consumes the Firestore snapshot stream:
 
@@ -143,7 +142,7 @@ Often, you want your UI to react to changes in the contents of a Firestore docum
           },
         );
       }
-    }user_info_streambuilder.dart
+    }
 
 ##### Java
 
@@ -163,7 +162,7 @@ Often, you want your UI to react to changes in the contents of a Firestore docum
               System.out.print("Current data: null");
             }
           }
-        });ListenDataSnippets.java
+        });
 
 ##### Python
 
@@ -179,7 +178,7 @@ Often, you want your UI to react to changes in the contents of a Firestore docum
     doc_ref = db.collection("cities").document("SF")
     
     # Watch the document
-    doc_watch = doc_ref.on_snapshot(on_snapshot)snippets.py
+    doc_watch = doc_ref.on_snapshot(on_snapshot)
 
 ##### C++
 
@@ -195,7 +194,7 @@ Often, you want your UI to react to changes in the contents of a Firestore docum
           } else {
             std::cout << "Listen failed: " << error << std::endl;
           }
-        });snippets.cpp
+        });
 
 ##### Node.js
 
@@ -206,7 +205,7 @@ Often, you want your UI to react to changes in the contents of a Firestore docum
       // ...
     }, err => {
       console.log(`Encountered error: ${err}`);
-    });index.js
+    });
 
 ##### Go
 
@@ -251,7 +250,6 @@ Often, you want your UI to react to changes in the contents of a Firestore docum
          fmt.Fprintf(w, "Received document snapshot: %v\n", snap.Data())
      }
     }
-    listen_document.go
 
 ##### PHP
 
@@ -285,7 +283,7 @@ Often, you want your UI to react to changes in the contents of a Firestore docum
                 Console.WriteLine("{0}: {1}", pair.Key, pair.Value);
             }
         }
-    });Program.cs
+    });
 
 ##### Ruby
 
@@ -296,7 +294,7 @@ Often, you want your UI to react to changes in the contents of a Firestore docum
     listener = doc_ref.listen do |snapshot|
       puts "Received document snapshot: #{snapshot.document_id}"
       snapshots << snapshot
-    endquery_watch.rb
+    end
 
 ### Events for local changes
 
@@ -311,7 +309,7 @@ Retrieved documents have a `metadata.hasPendingWrites` property that indicates w
     const unsub = onSnapshot(doc(db, "cities", "SF"), (doc) => {
       const source = doc.metadata.hasPendingWrites ? "Local" : "Server";
       console.log(source, " data: ", doc.data());
-    });listen_document_local.js
+    });
 
 ### Web version 8
 
@@ -321,7 +319,7 @@ Retrieved documents have a `metadata.hasPendingWrites` property that indicates w
         .onSnapshot((doc) => {
             var source = doc.metadata.hasPendingWrites ? "Local" : "Server";
             console.log(source, " data: ", doc.data());
-        });test.firestore.js
+        });
 
 ##### Swift
 
@@ -335,7 +333,7 @@ Retrieved documents have a `metadata.hasPendingWrites` property that indicates w
         }
         let source = document.metadata.hasPendingWrites ? "Local" : "Server"
         print("\(source) data: \(document.data() ?? [:])")
-      }ViewController.swift
+      }
 
 ##### Objective-C
 
@@ -349,7 +347,7 @@ Retrieved documents have a `metadata.hasPendingWrites` property that indicates w
           }
           NSString *source = snapshot.metadata.hasPendingWrites ? @"Local" : @"Server";
           NSLog(@"%@ data: %@", source, snapshot.data);
-        }];ViewController.m
+        }];
 
 ##### Kotlin  
 Android
@@ -372,7 +370,7 @@ Android
         } else {
             Log.d(TAG, "$source data: null")
         }
-    }DocSnippets.kt
+    }
 
 ##### Java  
 Android
@@ -396,7 +394,7 @@ Android
                 Log.d(TAG, source + " data: null");
             }
         }
-    });DocSnippets.java
+    });
 
 ### Dart
 
@@ -408,7 +406,6 @@ Android
       },
       onError: (error) => print("Listen failed: $error"),
     );
-    firestore.dart
 
 ##### Java
 
@@ -435,7 +432,7 @@ Android
       } else {
         std::cout << "Listen failed: " << error << std::endl;
       }
-    });snippets.cpp
+    });
 
 ##### Node.js
 
@@ -501,7 +498,7 @@ If you want to receive snapshot events when the document or query metadata chang
       { includeMetadataChanges: true }, 
       (doc) => {
         // ...
-      });listen_with_metadata.js
+      });
 
 ### Web version 8
 
@@ -513,7 +510,7 @@ If you want to receive snapshot events when the document or query metadata chang
             includeMetadataChanges: true
         }, (doc) => {
             // ...
-        });test.firestore.js
+        });
 
 ##### Swift
 
@@ -523,7 +520,7 @@ If you want to receive snapshot events when the document or query metadata chang
     db.collection("cities").document("SF")
       .addSnapshotListener(includeMetadataChanges: true) { documentSnapshot, error in
         // ...
-      }ViewController.swift
+      }
 
 ##### Objective-C
 
@@ -534,7 +531,7 @@ If you want to receive snapshot events when the document or query metadata chang
         addSnapshotListenerWithIncludeMetadataChanges:YES
                                              listener:^(FIRDocumentSnapshot *snapshot, NSError *error) {
        // ...
-    }];ViewController.m
+    }];
 
 ##### Kotlin  
 Android
@@ -543,7 +540,7 @@ Android
     val docRef = db.collection("cities").document("SF")
     docRef.addSnapshotListener(MetadataChanges.INCLUDE) { snapshot, e ->
         // ...
-    }DocSnippets.kt
+    }
 
 ##### Java  
 Android
@@ -556,14 +553,14 @@ Android
                             @Nullable FirebaseFirestoreException e) {
             // ...
         }
-    });DocSnippets.java
+    });
 
 ### Dart
 
     final docRef = db.collection("cities").doc("SF");
     docRef.snapshots(includeMetadataChanges: true).listen((event) {
       // ...
-    });firestore.dart
+    });
 
 ##### Java
 
@@ -578,7 +575,7 @@ Android
     DocumentReference doc_ref = db->Collection("cities").Document("SF");
     doc_ref.AddSnapshotListener(
         MetadataChanges::kInclude,
-        [](const DocumentSnapshot& snapshot, Error error, const std::string& errorMsg) { /* ... */ });snippets.cpp
+        [](const DocumentSnapshot& snapshot, Error error, const std::string& errorMsg) { /* ... */ });
 
 ##### Node.js
 
@@ -746,7 +743,7 @@ As with documents, you can use `onSnapshot()` instead of `get()` to listen to th
           cities.push(doc.data().name);
       });
       console.log("Current cities in CA: ", cities.join(", "));
-    });listen_multiple.js
+    });
 
 ### Web version 8
 
@@ -759,7 +756,7 @@ As with documents, you can use `onSnapshot()` instead of `get()` to listen to th
                 cities.push(doc.data().name);
             });
             console.log("Current cities in CA: ", cities.join(", "));
-        });test.firestore.js
+        });
 
 ##### Swift
 
@@ -773,7 +770,7 @@ As with documents, you can use `onSnapshot()` instead of `get()` to listen to th
         }
         let cities = documents.compactMap { $0["name"] }
         print("Current cities in CA: \(cities)")
-      }ViewController.swift
+      }
 
 ##### Objective-C
 
@@ -790,7 +787,7 @@ As with documents, you can use `onSnapshot()` instead of `get()` to listen to th
             [cities addObject:document.data[@"name"]];
           }
           NSLog(@"Current cities in CA: %@", cities);
-        }];ViewController.m
+        }];
 
 ##### Kotlin  
 Android
@@ -810,7 +807,7 @@ Android
                 }
             }
             Log.d(TAG, "Current cites in CA: $cities")
-        }DocSnippets.kt
+        }
 
 ##### Java  
 Android
@@ -834,7 +831,7 @@ Android
                     }
                     Log.d(TAG, "Current cites in CA: " + cities);
                 }
-            });DocSnippets.java
+            });
 
 ### Dart
 
@@ -848,7 +845,7 @@ Android
         cities.add(doc.data()["name"]);
       }
       print("cities in CA: ${cities.join(", ")}");
-    });firestore.dart
+    });
 
 ##### Java
 
@@ -872,7 +869,7 @@ Android
                 }
                 System.out.println("Current cites in CA: " + cities);
               }
-            });ListenDataSnippets.java
+            });
 
 ##### Python
 
@@ -891,7 +888,6 @@ Android
     
     # Watch the collection query
     query_watch = col_query.on_snapshot(on_snapshot)
-    snippets.py
 
 ##### C++
 
@@ -908,7 +904,7 @@ Android
           } else {
             std::cout << "Listen failed: " << error << std::endl;
           }
-        });snippets.cpp
+        });
 
 ##### Node.js
 
@@ -919,7 +915,7 @@ Android
       // ...
     }, err => {
       console.log(`Encountered error: ${err}`);
-    });index.js
+    });
 
 ##### Go
 
@@ -972,7 +968,6 @@ Android
          }
      }
     }
-    listen_multiple.go
 
 ##### PHP
 
@@ -1003,7 +998,7 @@ Android
         {
             Console.WriteLine(documentSnapshot.Id);
         }
-    });Program.cs
+    });
 
 ##### Ruby
 
@@ -1018,7 +1013,7 @@ Android
         puts doc.document_id
         docs << doc
       end
-    endquery_watch.rb
+    end
 
 The snapshot handler will receive a new query snapshot every time the query results change (that is, when a document is added, removed, or modified).
 
@@ -1045,7 +1040,7 @@ It is often useful to see the actual changes to query results between query snap
             console.log("Removed city: ", change.doc.data());
         }
       });
-    });listen_diffs.js
+    });
 
 ### Web version 8
 
@@ -1064,7 +1059,7 @@ It is often useful to see the actual changes to query results between query snap
                     console.log("Removed city: ", change.doc.data());
                 }
             });
-        });test.firestore.js
+        });
 
 ##### Swift
 
@@ -1087,7 +1082,7 @@ It is often useful to see the actual changes to query results between query snap
             print("Removed city: \(diff.document.data())")
           }
         }
-      }ViewController.swift
+      }
 
 ##### Objective-C
 
@@ -1110,7 +1105,7 @@ It is often useful to see the actual changes to query results between query snap
               NSLog(@"Removed city: %@", diff.document.data);
             }
           }
-        }];ViewController.m
+        }];
 
 ##### Kotlin  
 Android
@@ -1130,7 +1125,7 @@ Android
                     DocumentChange.Type.REMOVED -> Log.d(TAG, "Removed city: ${dc.document.data}")
                 }
             }
-        }DocSnippets.kt
+        }
 
 ##### Java  
 Android
@@ -1161,7 +1156,7 @@ Android
                     }
     
                 }
-            });DocSnippets.java
+            });
 
 ### Dart
 
@@ -1183,7 +1178,7 @@ Android
             break;
         }
       }
-    });firestore.dart
+    });
 
 ##### Java
 
@@ -1215,7 +1210,7 @@ Android
                   }
                 }
               }
-            });ListenDataSnippets.java
+            });
 
 ##### C++
 
@@ -1242,7 +1237,7 @@ Android
           } else {
             std::cout << "Listen failed: " << error << std::endl;
           }
-        });snippets.cpp
+        });
 
 ##### Python
 
@@ -1266,7 +1261,6 @@ Android
     
     # Watch the collection query
     query_watch = col_query.on_snapshot(on_snapshot)
-    snippets.py
 
 ##### Node.js
 
@@ -1283,7 +1277,7 @@ Android
             console.log('Removed city: ', change.doc.data());
           }
         });
-      });index.js
+      });
 
 ##### Go
 
@@ -1334,7 +1328,6 @@ Android
          }
      }
     }
-    listen_changes.go
 
 ##### PHP
 
@@ -1385,7 +1378,7 @@ Android
                 Console.WriteLine("Removed city: {0}", change.Document.Id);
             }
         }
-    });Program.cs
+    });
 
 ##### Ruby
 
@@ -1410,7 +1403,7 @@ Android
           removed << snapshot
         end
       end
-    endquery_watch.rb
+    end
 
 > **Important:** The first query snapshot contains `added` events for all existing documents that match the query. This is because you're getting a set of changes that bring your query snapshot current with the initial state of the query. This allows you, for instance, to directly populate your UI from the changes you receive in the first query snapshot, without needing to add special logic for handling the initial state.
 
@@ -1432,7 +1425,7 @@ When you are no longer interested in listening to your data, you must detach you
     // Later ...
     
     // Stop listening to changes
-    unsubscribe();detach_listener.js
+    unsubscribe();
 
 ### Web version 8
 
@@ -1447,7 +1440,7 @@ When you are no longer interested in listening to your data, you must detach you
     // Later ...
     
     // Stop listening to changes
-    unsubscribe();test.firestore.js
+    unsubscribe();
 
 ##### Swift
 
@@ -1460,7 +1453,7 @@ When you are no longer interested in listening to your data, you must detach you
     // ...
     
     // Stop listening to changes
-    listener.remove()ViewController.swift
+    listener.remove()
 
 ##### Objective-C
 
@@ -1474,7 +1467,7 @@ When you are no longer interested in listening to your data, you must detach you
     // ...
     
     // Stop listening to changes
-    [listener remove];ViewController.m
+    [listener remove];
 
 ##### Kotlin  
 Android
@@ -1487,7 +1480,7 @@ Android
     // ...
     
     // Stop listening to changes
-    registration.remove()DocSnippets.kt
+    registration.remove()
 
 ##### Java  
 Android
@@ -1501,7 +1494,7 @@ Android
     // ...
     
     // Stop listening to changes
-    registration.remove();DocSnippets.java
+    registration.remove();
 
 ### Dart
 
@@ -1509,7 +1502,7 @@ Android
     final listener = collection.snapshots().listen((event) {
       // ...
     });
-    listener.cancel();firestore.dart
+    listener.cancel();
 
 ##### Java
 
@@ -1523,12 +1516,12 @@ Android
     // ...
     
     // Stop listening to changes
-    registration.remove();ListenDataSnippets.java
+    registration.remove();
 
 ##### Python
 
     # Terminate watch on a document
-    doc_watch.unsubscribe()snippets.py
+    doc_watch.unsubscribe()
 
 ##### C++
 
@@ -1537,7 +1530,7 @@ Android
     ListenerRegistration registration = query.AddSnapshotListener(
         [](const QuerySnapshot& snapshot, Error error, const std::string& errorMsg) { /* ... */ });
     // Stop listening to changes
-    registration.Remove();snippets.cpp
+    registration.Remove();
 
 ##### Node.js
 
@@ -1547,13 +1540,13 @@ Android
     // ...
     
     // Stop listening for changes
-    unsub();index.js
+    unsub();
 
 ##### Go
 
     // Сontext with timeout stops listening to changes.
     ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
-    defer cancel()listen_document.go
+    defer cancel()
 
 ##### PHP
 
@@ -1565,11 +1558,11 @@ Android
 
 ##### C\#
 
-    await listener.StopAsync();Program.cs
+    await listener.StopAsync();
 
 ##### Ruby
 
-    listener.stopquery_watch.rb
+    listener.stop
 
 ## Handle listen errors
 
@@ -1586,7 +1579,7 @@ A listen may occasionally fail — for example, due to security permissions, or 
       },
       (error) => {
         // ...
-      });handle_listen_errors.js
+      });
 
 ### Web version 8
 
@@ -1597,7 +1590,7 @@ A listen may occasionally fail — for example, due to security permissions, or 
             // ...
         }, (error) => {
             // ...
-        });test.firestore.js
+        });
 
 ##### Swift
 
@@ -1608,7 +1601,7 @@ A listen may occasionally fail — for example, due to security permissions, or 
         if let error = error {
           print("Error retreiving collection: \(error)")
         }
-      }ViewController.swift
+      }
 
 ##### Objective-C
 
@@ -1619,7 +1612,7 @@ A listen may occasionally fail — for example, due to security permissions, or 
           if (error != nil) {
             NSLog(@"Error retreving collection: %@", error);
           }
-        }];ViewController.m
+        }];
 
 ##### Kotlin  
 Android
@@ -1636,7 +1629,7 @@ Android
                     Log.d(TAG, "New city: ${dc.document.data}")
                 }
             }
-        }DocSnippets.kt
+        }
 
 ##### Java  
 Android
@@ -1658,7 +1651,7 @@ Android
                     }
     
                 }
-            });DocSnippets.java
+            });
 
 ### Dart
 
@@ -1666,7 +1659,7 @@ Android
     docRef.snapshots().listen(
           (event) => print("listener attached"),
           onError: (error) => print("Listen failed: $error"),
-        );firestore.dart
+        );
 
 ##### Java
 
@@ -1687,7 +1680,7 @@ Android
                   }
                 }
               }
-            });ListenDataSnippets.java
+            });
 
 ##### Python
 
@@ -1704,7 +1697,7 @@ Android
         //...
       }, (error) => {
         //...
-      });index.js
+      });
 
 ##### Go
 
@@ -1751,7 +1744,6 @@ Android
          }
      }
     }
-    listen_errors.go
 
 ##### PHP
 
@@ -1793,7 +1785,7 @@ Android
     # Register to be notified when unhandled errors occur.
     listener.on_error do |error|
       puts "Listen failed: #{error.message}"
-    endquery_watch.rb
+    end
 
 ## Pricing
 

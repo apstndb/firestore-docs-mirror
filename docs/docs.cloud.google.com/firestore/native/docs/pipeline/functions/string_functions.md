@@ -52,7 +52,7 @@ Returns the number of `BYTES` in a `STRING` or `BYTES` value.
       .select(
         field("title").byteLength().as("titleByteLength")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -61,7 +61,7 @@ Returns the number of `BYTES` in a `STRING` or `BYTES` value.
       .select(
         field("title").byteLength().as("titleByteLength")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -70,7 +70,7 @@ Returns the number of `BYTES` in a `STRING` or `BYTES` value.
       .select([
         Field("title").byteLength().as("titleByteLength")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -80,7 +80,7 @@ Android
         .select(
             field("title").byteLength().alias("titleByteLength")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -90,7 +90,7 @@ Android
         .select(
             field("title").byteLength().alias("titleByteLength")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -101,7 +101,7 @@ Android
         .collection("books")
         .select(Field.of("title").byte_length().as_("titleByteLength"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -111,7 +111,7 @@ Android
             .collection("books")
             .select(byteLength(field("title")).as("titleByteLength"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### CHAR\_LENGTH
 
@@ -138,7 +138,7 @@ Returns the number of unicode code points in `STRING` value.
       .select(
         field("title").charLength().as("titleCharLength")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -147,7 +147,7 @@ Returns the number of unicode code points in `STRING` value.
       .select(
         field("title").charLength().as("titleCharLength")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -156,7 +156,7 @@ Returns the number of unicode code points in `STRING` value.
       .select([
         Field("title").charLength().as("titleCharLength")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -166,7 +166,7 @@ Android
         .select(
             field("title").charLength().alias("titleCharLength")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -176,7 +176,7 @@ Android
         .select(
             field("title").charLength().alias("titleCharLength")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -187,7 +187,7 @@ Android
         .collection("books")
         .select(Field.of("title").char_length().as_("titleCharLength"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -197,7 +197,7 @@ Android
             .collection("books")
             .select(charLength(field("title")).as("titleCharLength"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### STARTS\_WITH
 
@@ -225,7 +225,7 @@ Returns `TRUE` if `value` begins with `prefix` .
         field("title").startsWith("The")
           .as("needsSpecialAlphabeticalSort")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -235,7 +235,7 @@ Returns `TRUE` if `value` begins with `prefix` .
         field("title").startsWith("The")
           .as("needsSpecialAlphabeticalSort")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -245,7 +245,7 @@ Returns `TRUE` if `value` begins with `prefix` .
         Field("title").startsWith("The")
           .as("needsSpecialAlphabeticalSort")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -256,7 +256,7 @@ Android
             field("title").startsWith("The")
                 .alias("needsSpecialAlphabeticalSort")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -267,7 +267,7 @@ Android
             field("title").startsWith("The")
                 .alias("needsSpecialAlphabeticalSort")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -280,7 +280,7 @@ Android
             Field.of("title").starts_with("The").as_("needsSpecialAlphabeticalSort")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -290,7 +290,7 @@ Android
             .collection("books")
             .select(startsWith(field("title"), "The").as("needsSpecialAlphabeticalSort"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### ENDS\_WITH
 
@@ -318,7 +318,7 @@ Returns `TRUE` if `value` ends with `postfix` .
         field("name").endsWith("16 inch")
           .as("16InLaptops")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ##### Swift
 
@@ -328,7 +328,7 @@ Returns `TRUE` if `value` ends with `postfix` .
         Field("name").endsWith("16 inch")
           .as("16InLaptops")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -339,7 +339,7 @@ Android
             field("name").endsWith("16 inch")
                 .alias("16InLaptops")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -350,7 +350,7 @@ Android
             field("name").endsWith("16 inch")
                 .alias("16InLaptops")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -361,7 +361,7 @@ Android
         .collection("inventory/devices/laptops")
         .select(Field.of("name").ends_with("16 inch").as_("16InLaptops"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -371,7 +371,7 @@ Android
             .collection("inventory/devices/laptops")
             .select(endsWith(field("name"), "16 inch").as("16InLaptops"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### LIKE
 
@@ -400,7 +400,7 @@ Returns `TRUE` if `value` matches `pattern` .
         field("genre").like("%Fiction")
           .as("anyFiction")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -410,7 +410,7 @@ Returns `TRUE` if `value` matches `pattern` .
         field("genre").like("%Fiction")
           .as("anyFiction")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -420,7 +420,7 @@ Returns `TRUE` if `value` matches `pattern` .
         Field("genre").like("%Fiction")
           .as("anyFiction")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -431,7 +431,7 @@ Android
             field("genre").like("%Fiction")
                 .alias("anyFiction")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -442,7 +442,7 @@ Android
             field("genre").like("%Fiction")
                 .alias("anyFiction")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -453,7 +453,7 @@ Android
         .collection("books")
         .select(Field.of("genre").like("%Fiction").as_("anyFiction"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -463,7 +463,7 @@ Android
             .collection("books")
             .select(like(field("genre"), "%Fiction").as("anyFiction"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### REGEX\_CONTAINS
 
@@ -493,7 +493,7 @@ Regular expressions follow the syntax of the [re2](https://github.com/google/re2
         field("title").regexContains("Firestore (Enterprise|Standard)")
           .as("isFirestoreRelated")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -503,7 +503,7 @@ Regular expressions follow the syntax of the [re2](https://github.com/google/re2
         field("title").regexContains("Firestore (Enterprise|Standard)")
           .as("isFirestoreRelated")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -513,7 +513,7 @@ Regular expressions follow the syntax of the [re2](https://github.com/google/re2
         Field("title").regexContains("Firestore (Enterprise|Standard)")
           .as("isFirestoreRelated")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -524,7 +524,7 @@ Android
             field("title").regexContains("Firestore (Enterprise|Standard)")
                 .alias("isFirestoreRelated")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -535,7 +535,7 @@ Android
             field("title").regexContains("Firestore (Enterprise|Standard)")
                 .alias("isFirestoreRelated")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -550,7 +550,7 @@ Android
             .as_("isFirestoreRelated")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -562,7 +562,7 @@ Android
                 regexContains(field("title"), "Firestore (Enterprise|Standard)")
                     .as("isFirestoreRelated"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### REGEX\_MATCH
 
@@ -592,7 +592,7 @@ Regular expressions follow the syntax of the [re2](https://github.com/google/re2
         field("title").regexMatch("Firestore (Enterprise|Standard)")
           .as("isFirestoreExactly")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -602,7 +602,7 @@ Regular expressions follow the syntax of the [re2](https://github.com/google/re2
         field("title").regexMatch("Firestore (Enterprise|Standard)")
           .as("isFirestoreExactly")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -612,7 +612,7 @@ Regular expressions follow the syntax of the [re2](https://github.com/google/re2
         Field("title").regexMatch("Firestore (Enterprise|Standard)")
           .as("isFirestoreExactly")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -623,7 +623,7 @@ Android
             field("title").regexMatch("Firestore (Enterprise|Standard)")
                 .alias("isFirestoreExactly")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -634,7 +634,7 @@ Android
             field("title").regexMatch("Firestore (Enterprise|Standard)")
                 .alias("isFirestoreExactly")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -649,7 +649,7 @@ Android
             .as_("isFirestoreExactly")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -661,7 +661,7 @@ Android
                 regexMatch(field("title"), "Firestore (Enterprise|Standard)")
                     .as("isFirestoreExactly"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### STRING\_CONCAT
 
@@ -690,7 +690,7 @@ Concatenates two or more `STRING` values into a single result.
         field("title").stringConcat(" by ", field("author"))
           .as("fullyQualifiedTitle")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -700,7 +700,7 @@ Concatenates two or more `STRING` values into a single result.
         field("title").stringConcat(" by ", field("author"))
           .as("fullyQualifiedTitle")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -710,7 +710,7 @@ Concatenates two or more `STRING` values into a single result.
         Field("title").concat([" by ", Field("author")])
           .as("fullyQualifiedTitle")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -721,7 +721,7 @@ Android
             field("title").concat(" by ", field("author"))
                 .alias("fullyQualifiedTitle")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -732,7 +732,7 @@ Android
             field("title").concat(" by ", field("author"))
                 .alias("fullyQualifiedTitle")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -747,7 +747,7 @@ Android
             .as_("fullyQualifiedTitle")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -757,7 +757,7 @@ Android
             .collection("books")
             .select(stringConcat(field("title"), " by ", field("author")).as("fullyQualifiedTitle"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### STRING\_CONTAINS
 
@@ -787,7 +787,7 @@ Checks if `value` contains the literal String `substring` .
         field("body").stringContains("Firestore")
           .as("isFirestoreRelated")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -797,7 +797,7 @@ Checks if `value` contains the literal String `substring` .
         field("body").stringContains("Firestore")
           .as("isFirestoreRelated")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -807,7 +807,7 @@ Checks if `value` contains the literal String `substring` .
         Field("body").stringContains("Firestore")
           .as("isFirestoreRelated")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -818,7 +818,7 @@ Android
             field("body").stringContains("Firestore")
                 .alias("isFirestoreRelated")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -829,7 +829,7 @@ Android
             field("body").stringContains("Firestore")
                 .alias("isFirestoreRelated")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -840,7 +840,7 @@ Android
         .collection("articles")
         .select(Field.of("body").string_contains("Firestore").as_("isFirestoreRelated"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -850,7 +850,7 @@ Android
             .collection("articles")
             .select(stringContains(field("body"), "Firestore").as("isFirestoreRelated"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### STRING\_INDEX\_OF
 
@@ -908,7 +908,7 @@ If a byte or char does not correspond to a UTF-8 lowercase alphabetic character,
         field("name").toUpper()
           .as("uppercaseName")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -918,7 +918,7 @@ If a byte or char does not correspond to a UTF-8 lowercase alphabetic character,
         field("name").toUpper()
           .as("uppercaseName")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -928,7 +928,7 @@ If a byte or char does not correspond to a UTF-8 lowercase alphabetic character,
         Field("name").toUpper()
           .as("uppercaseName")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -939,7 +939,7 @@ Android
             field("name").toUpper()
                 .alias("uppercaseName")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -950,7 +950,7 @@ Android
             field("name").toUpper()
                 .alias("uppercaseName")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -961,7 +961,7 @@ Android
         .collection("authors")
         .select(Field.of("name").to_upper().as_("uppercaseName"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -971,7 +971,7 @@ Android
             .collection("authors")
             .select(toUpper(field("name")).as("uppercaseName"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### TO\_LOWER
 
@@ -1002,7 +1002,7 @@ If a byte or char does not correspond to a UTF-8 uppercase alphabetic character,
         field("genre").toLower().equal("fantasy")
           .as("isFantasy")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -1012,7 +1012,7 @@ If a byte or char does not correspond to a UTF-8 uppercase alphabetic character,
         field("genre").toLower().equal("fantasy")
           .as("isFantasy")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -1022,7 +1022,7 @@ If a byte or char does not correspond to a UTF-8 uppercase alphabetic character,
         Field("genre").toLower().equal("fantasy")
           .as("isFantasy")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -1033,7 +1033,7 @@ Android
             field("genre").toLower().equal("fantasy")
                 .alias("isFantasy")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -1044,7 +1044,7 @@ Android
             field("genre").toLower().equal("fantasy")
                 .alias("isFantasy")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -1055,7 +1055,7 @@ Android
         .collection("authors")
         .select(Field.of("genre").to_lower().equal("fantasy").as_("isFantasy"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -1065,7 +1065,7 @@ Android
             .collection("authors")
             .select(equal(toLower(field("genre")), "fantasy").as("isFantasy"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### SUBSTRING
 
@@ -1114,7 +1114,7 @@ When `length` is provided:
         field("title").substring(4)
           .as("titleWithoutLeadingThe")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -1125,7 +1125,7 @@ When `length` is provided:
         field("title").substring(4)
           .as("titleWithoutLeadingThe")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -1136,7 +1136,7 @@ When `length` is provided:
         Field("title").substring(position: 4)
           .as("titleWithoutLeadingThe")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -1150,7 +1150,7 @@ Android
                 field("title").charLength().subtract(4))
                 .alias("titleWithoutLeadingThe")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -1164,7 +1164,7 @@ Android
                 field("title").charLength().subtract(4))
                 .alias("titleWithoutLeadingThe")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -1176,7 +1176,7 @@ Android
         .where(Field.of("title").starts_with("The "))
         .select(Field.of("title").substring(4).as_("titleWithoutLeadingThe"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -1189,7 +1189,7 @@ Android
                 substring(field("title"), constant(4), field("title").charLength())
                     .as("titleWithoutLeadingThe"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### STRING\_REVERSE
 
@@ -1219,7 +1219,7 @@ Characters are delineated by Unicode code points when the input is a `STRING` , 
       .select(
         field("name").reverse().as("reversedName")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -1228,7 +1228,7 @@ Characters are delineated by Unicode code points when the input is a `STRING` , 
       .select(
         field("name").reverse().as("reversedName")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -1237,7 +1237,7 @@ Characters are delineated by Unicode code points when the input is a `STRING` , 
       .select([
         Field("name").reverse().as("reversedName")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -1247,7 +1247,7 @@ Android
         .select(
             field("name").reverse().alias("reversedName")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -1257,7 +1257,7 @@ Android
         .select(
             field("name").reverse().alias("reversedName")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -1268,7 +1268,7 @@ Android
         .collection("books")
         .select(Field.of("name").string_reverse().as_("reversedName"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -1278,7 +1278,7 @@ Android
             .collection("books")
             .select(reverse(field("name")).as("reversedName"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### STRING\_REPEAT
 
@@ -1394,7 +1394,7 @@ When `values_to_trim` is provided:
       .select(
         field("name").trim().as("whitespaceTrimmedName")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -1403,7 +1403,7 @@ When `values_to_trim` is provided:
       .select([
         Field("name").trim(" \n\t").as("whitespaceTrimmedName")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -1413,7 +1413,7 @@ Android
         .select(
             field("name").trim().alias("whitespaceTrimmedName")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -1423,7 +1423,7 @@ Android
         .select(
             field("name").trim().alias("whitespaceTrimmedName")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -1434,7 +1434,7 @@ Android
         .collection("books")
         .select(Field.of("name").trim().as_("whitespaceTrimmedName"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -1444,7 +1444,7 @@ Android
             .collection("books")
             .select(trim(field("name")).as("whitespaceTrimmedName"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### LTRIM
 

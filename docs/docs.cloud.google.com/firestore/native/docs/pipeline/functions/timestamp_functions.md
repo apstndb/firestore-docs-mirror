@@ -97,7 +97,7 @@ Converts `input` (interpreted as the number of microseconds since `1970-01-01 00
       .select(
         field("createdAtMicros").unixMicrosToTimestamp().as("createdAtString")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -106,7 +106,7 @@ Converts `input` (interpreted as the number of microseconds since `1970-01-01 00
       .select(
         field("createdAtMicros").unixMicrosToTimestamp().as("createdAtString")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -115,7 +115,7 @@ Converts `input` (interpreted as the number of microseconds since `1970-01-01 00
       .select([
         Field("createdAtMicros").unixMicrosToTimestamp().as("createdAtString")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -125,7 +125,7 @@ Android
         .select(
             field("createdAtMicros").unixMicrosToTimestamp().alias("createdAtString")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -135,7 +135,7 @@ Android
         .select(
             field("createdAtMicros").unixMicrosToTimestamp().alias("createdAtString")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -150,7 +150,7 @@ Android
             .as_("createdAtString")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -160,7 +160,7 @@ Android
             .collection("documents")
             .select(unixMicrosToTimestamp(field("createdAtMicros")).as("createdAtString"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### UNIX\_MILLIS\_TO\_TIMESTAMP
 
@@ -187,7 +187,7 @@ Converts `input` (interpreted as the number of milliseconds since `1970-01-01 00
       .select(
         field("createdAtMillis").unixMillisToTimestamp().as("createdAtString")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -196,7 +196,7 @@ Converts `input` (interpreted as the number of milliseconds since `1970-01-01 00
       .select(
         field("createdAtMillis").unixMillisToTimestamp().as("createdAtString")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -205,7 +205,7 @@ Converts `input` (interpreted as the number of milliseconds since `1970-01-01 00
       .select([
         Field("createdAtMillis").unixMillisToTimestamp().as("createdAtString")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -215,7 +215,7 @@ Android
         .select(
             field("createdAtMillis").unixMillisToTimestamp().alias("createdAtString")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -225,7 +225,7 @@ Android
         .select(
             field("createdAtMillis").unixMillisToTimestamp().alias("createdAtString")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -240,7 +240,7 @@ Android
             .as_("createdAtString")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -250,7 +250,7 @@ Android
             .collection("documents")
             .select(unixMillisToTimestamp(field("createdAtMillis")).as("createdAtString"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### UNIX\_SECONDS\_TO\_TIMESTAMP
 
@@ -277,7 +277,7 @@ Converts `input` (interpreted as the number of seconds since `1970-01-01 00:00:0
       .select(
         field("createdAtSeconds").unixSecondsToTimestamp().as("createdAtString")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -286,7 +286,7 @@ Converts `input` (interpreted as the number of seconds since `1970-01-01 00:00:0
       .select(
         field("createdAtSeconds").unixSecondsToTimestamp().as("createdAtString")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -295,7 +295,7 @@ Converts `input` (interpreted as the number of seconds since `1970-01-01 00:00:0
       .select([
         Field("createdAtSeconds").unixSecondsToTimestamp().as("createdAtString")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -305,7 +305,7 @@ Android
         .select(
             field("createdAtSeconds").unixSecondsToTimestamp().alias("createdAtString")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -315,7 +315,7 @@ Android
         .select(
             field("createdAtSeconds").unixSecondsToTimestamp().alias("createdAtString")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -330,7 +330,7 @@ Android
             .as_("createdAtString")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -340,7 +340,7 @@ Android
             .collection("documents")
             .select(unixSecondsToTimestamp(field("createdAtSeconds")).as("createdAtString"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### TIMESTAMP\_ADD
 
@@ -378,7 +378,7 @@ Throws an error if the resulting timestamp does not fit within the `TIMESTAMP` r
       .select(
         field("createdAt").timestampAdd("day", 3653).as("expiresAt")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -387,7 +387,7 @@ Throws an error if the resulting timestamp does not fit within the `TIMESTAMP` r
       .select(
         field("createdAt").timestampAdd("day", 3653).as("expiresAt")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -396,7 +396,7 @@ Throws an error if the resulting timestamp does not fit within the `TIMESTAMP` r
       .select([
         Field("createdAt").timestampAdd(3653, .day).as("expiresAt")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -408,7 +408,7 @@ Android
               .timestampAdd("day", 3653)
               .alias("expiresAt")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -418,7 +418,7 @@ Android
         .select(
             field("createdAt").timestampAdd("day", 3653).alias("expiresAt")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -429,7 +429,7 @@ Android
         .collection("documents")
         .select(Field.of("createdAt").timestamp_add("day", 3653).as_("expiresAt"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -439,7 +439,7 @@ Android
             .collection("documents")
             .select(timestampAdd(field("createdAt"), "day", 3653).as("expiresAt"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### TIMESTAMP\_SUB
 
@@ -477,7 +477,7 @@ Throws an error if the resulting timestamp does not fit within the `TIMESTAMP` r
       .select(
         field("expiresAt").timestampSubtract("day", 14).as("sendWarningTimestamp")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -486,7 +486,7 @@ Throws an error if the resulting timestamp does not fit within the `TIMESTAMP` r
       .select(
         field("expiresAt").timestampSubtract("day", 14).as("sendWarningTimestamp")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -495,7 +495,7 @@ Throws an error if the resulting timestamp does not fit within the `TIMESTAMP` r
       .select([
         Field("expiresAt").timestampSubtract(14, .day).as("sendWarningTimestamp")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -507,7 +507,7 @@ Android
               .timestampSubtract("day", 14)
               .alias("sendWarningTimestamp")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -517,7 +517,7 @@ Android
         .select(
             field("expiresAt").timestampSubtract("day", 14).alias("sendWarningTimestamp")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -532,7 +532,7 @@ Android
             .as_("sendWarningTimestamp")
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -542,7 +542,7 @@ Android
             .collection("documents")
             .select(timestampSubtract(field("expiresAt"), "day", 14).as("sendWarningTimestamp"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### TIMESTAMP\_TO\_UNIX\_MICROS
 
@@ -569,7 +569,7 @@ Converts `input` to the number of microseconds since `1970-01-01 00:00:00 UTC` .
       .select(
         field("dateString").timestampToUnixMicros().as("unixMicros")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -578,7 +578,7 @@ Converts `input` to the number of microseconds since `1970-01-01 00:00:00 UTC` .
       .select(
         field("dateString").timestampToUnixMicros().as("unixMicros")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -587,7 +587,7 @@ Converts `input` to the number of microseconds since `1970-01-01 00:00:00 UTC` .
       .select([
         Field("dateString").timestampToUnixMicros().as("unixMicros")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -597,7 +597,7 @@ Android
         .select(
             field("dateString").timestampToUnixMicros().alias("unixMicros")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -607,7 +607,7 @@ Android
         .select(
             field("dateString").timestampToUnixMicros().alias("unixMicros")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -618,7 +618,7 @@ Android
         .collection("documents")
         .select(Field.of("dateString").timestamp_to_unix_micros().as_("unixMicros"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -628,7 +628,7 @@ Android
             .collection("documents")
             .select(timestampToUnixMicros(field("dateString")).as("unixMicros"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### TIMESTAMP\_TO\_UNIX\_MILLIS
 
@@ -655,7 +655,7 @@ Converts `input` to the number of milliseconds since `1970-01-01 00:00:00 UTC` .
       .select(
         field("dateString").timestampToUnixMillis().as("unixMillis")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -664,7 +664,7 @@ Converts `input` to the number of milliseconds since `1970-01-01 00:00:00 UTC` .
       .select(
         field("dateString").timestampToUnixMillis().as("unixMillis")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -673,7 +673,7 @@ Converts `input` to the number of milliseconds since `1970-01-01 00:00:00 UTC` .
       .select([
         Field("dateString").timestampToUnixMillis().as("unixMillis")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -683,7 +683,7 @@ Android
         .select(
             field("dateString").timestampToUnixMillis().alias("unixMillis")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -693,7 +693,7 @@ Android
         .select(
             field("dateString").timestampToUnixMillis().alias("unixMillis")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -704,7 +704,7 @@ Android
         .collection("documents")
         .select(Field.of("dateString").timestamp_to_unix_millis().as_("unixMillis"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -714,7 +714,7 @@ Android
             .collection("documents")
             .select(timestampToUnixMillis(field("dateString")).as("unixMillis"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### TIMESTAMP\_TO\_UNIX\_SECONDS
 
@@ -741,7 +741,7 @@ Converts `input` to the number of seconds since `1970-01-01 00:00:00 UTC` . Trun
       .select(
         field("dateString").timestampToUnixSeconds().as("unixSeconds")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -750,7 +750,7 @@ Converts `input` to the number of seconds since `1970-01-01 00:00:00 UTC` . Trun
       .select(
         field("dateString").timestampToUnixSeconds().as("unixSeconds")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
@@ -759,7 +759,7 @@ Converts `input` to the number of seconds since `1970-01-01 00:00:00 UTC` . Trun
       .select([
         Field("dateString").timestampToUnixSeconds().as("unixSeconds")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -769,7 +769,7 @@ Android
         .select(
             field("dateString").timestampToUnixSeconds().alias("unixSeconds")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -779,7 +779,7 @@ Android
         .select(
             field("dateString").timestampToUnixSeconds().alias("unixSeconds")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -790,7 +790,7 @@ Android
         .collection("documents")
         .select(Field.of("dateString").timestamp_to_unix_seconds().as_("unixSeconds"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -800,7 +800,7 @@ Android
             .collection("documents")
             .select(timestampToUnixSeconds(field("dateString")).as("unixSeconds"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### TIMESTAMP\_DIFF
 

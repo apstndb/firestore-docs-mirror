@@ -80,7 +80,6 @@ As an example, imagine an app for near real-time analysis of financial instrumen
     
       await batch.commit();
     }
-    nonShardedTimestamps.js
 
 This app runs the following queries and orders by the `timestamp` field:
 
@@ -105,7 +104,6 @@ This app runs the following queries and orders by the `timestamp` field:
     function queryUSDInstruments() {
       return createQuery('price.currency', '==', 'USD');
     }
-    nonShardedTimestamps.js
 
     insertData()
         .then(() => {
@@ -137,7 +135,7 @@ This app runs the following queries and orders by the `timestamp` field:
                   }
               );
           return Promise.all([commonStock, exchange1Instruments, usdInstruments]);
-        });nonShardedTimestamps.js
+        });
 
 After some research, you determine that the app will receive between 1,000 and 1,500 instrument updates per second. This surpasses the 500 writes per second allowed for collections containing documents with indexed timestamp fields. To increase the write throughput, you need 3 shard values, `MAX_INSTRUMENT_UPDATES/500 = 3` . This example uses the shard values `x` , `y` , and `z` . You can also use numbers or other characters for your shard values.
 
@@ -169,7 +167,6 @@ Add a `shard` field to your documents. Set the `shard` field to values `x` , `y`
     function randomShard() {
       return shards[Math.floor(Math.random() * Math.floor(shards.length))];
     }
-    shardedTimestamps.js
 
     async function insertData() {
       const instruments = [
@@ -219,7 +216,6 @@ Add a `shard` field to your documents. Set the `shard` field to values `x` , `y`
     
       await batch.commit();
     }
-    shardedTimestamps.js
 
 ### Querying the sharded timestamp
 
@@ -286,7 +282,6 @@ Adding a `shard` field requires that you update your queries to aggregate sharde
     function queryUSDInstruments() {
       return createQuery('price.currency', '==', 'USD');
     }
-    shardedTimestamps.js
 
     insertData()
         .then(() => {
@@ -318,7 +313,7 @@ Adding a `shard` field requires that you update your queries to aggregate sharde
                   }
               );
           return Promise.all([commonStock, exchange1Instruments, usdInstruments]);
-        });shardedTimestamps.js
+        });
 
 ### Update index definitions
 

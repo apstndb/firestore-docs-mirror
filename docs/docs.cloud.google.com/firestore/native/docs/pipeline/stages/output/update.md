@@ -18,7 +18,7 @@ For example, the following operation backfills a data model change to all docume
        .addFields(constant(null).as("preferences.color"))
        .removeFields("color")
        .update()
-       .execute();test.firestore.js
+       .execute();
 
 ##### Python
 
@@ -32,7 +32,7 @@ For example, the following operation backfills a data model change to all docume
         .remove_fields("color")
         .update()
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -42,7 +42,7 @@ For example, the following operation backfills a data model change to all docume
        .addFields(constant((String) null).as("preferences.color"))
        .removeFields("color")
        .update()
-       .execute().get();PipelineSnippets.java
+       .execute().get();
 
 ## Behavior
 

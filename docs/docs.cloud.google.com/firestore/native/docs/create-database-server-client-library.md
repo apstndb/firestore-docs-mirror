@@ -52,7 +52,7 @@ Add the Firestore Java library to your app:
           <dependency>
             <groupId>com.google.cloud</groupId>
             <artifactId>google-cloud-firestore</artifactId>
-          </dependency>pom.xml
+          </dependency>
 
   - If you are using Gradle or setting up without BOM, see the [Firestore Client for Java README.](https://github.com/googleapis/java-firestore/tree/main#quickstart)
 
@@ -140,7 +140,7 @@ Initialize an instance of Firestore:
             .setProjectId(projectId)
             .setCredentials(GoogleCredentials.getApplicationDefault())
             .build();
-    Firestore db = firestoreOptions.getService();Quickstart.java
+    Firestore db = firestoreOptions.getService();
 
 ##### Python
 
@@ -149,7 +149,7 @@ Initialize an instance of Firestore:
     # The `project` parameter is optional and represents which project the client
     # will act on behalf of. If not supplied, the client falls back to the default
     # project inferred from the environment.
-    db = firestore.Client(project="my-project-id")snippets.py
+    db = firestore.Client(project="my-project-id")
 
 ##### Python  
 (Async)
@@ -159,7 +159,7 @@ Initialize an instance of Firestore:
     # The `project` parameter is optional and represents which project the client
     # will act on behalf of. If not supplied, the client falls back to the default
     # project inferred from the environment.
-    db = firestore.AsyncClient(project="my-project-id")snippets.py
+    db = firestore.AsyncClient(project="my-project-id")
 
 ##### Node.js
 
@@ -195,7 +195,6 @@ Initialize an instance of Firestore:
      // defer client.Close()
      return client
     }
-    main.go
 
 ##### PHP
 
@@ -219,12 +218,12 @@ Initialize an instance of Firestore:
             ]);
             printf('Created Cloud Firestore client with project ID: %s' . PHP_EOL, $projectId);
         }
-    }setup_client_create.php
+    }
 
 ##### C\#
 
     FirestoreDb db = FirestoreDb.Create(project);
-    Console.WriteLine("Created Cloud Firestore client with project ID: {0}", project);Program.cs
+    Console.WriteLine("Created Cloud Firestore client with project ID: {0}", project);
 
 ##### Ruby
 
@@ -235,7 +234,7 @@ Initialize an instance of Firestore:
     # default project inferred from the environment.
     firestore = Google::Cloud::Firestore.new project_id: project_id
     
-    puts "Created Cloud Firestore client with given project ID."quickstart.rb
+    puts "Created Cloud Firestore client with given project ID."
 
 ## Add data
 

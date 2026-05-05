@@ -15,7 +15,7 @@ Performs a nearest neighbor vector search on the given `embedding` field using t
           vectorValue: [1.5, 2.345],
           distanceMeasure: "euclidean"
       })
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -25,7 +25,7 @@ Performs a nearest neighbor vector search on the given `embedding` field using t
           field: "embedding",
           vectorValue: [1.5, 2.345],
           distanceMeasure: "euclidean"
-      }));test.firestore.js
+      }));
 
 ##### Swift
 
@@ -36,7 +36,7 @@ Performs a nearest neighbor vector search on the given `embedding` field using t
         vectorValue: VectorValue([1.5, 2.345]),
         distanceMeasure: .euclidean
       )
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -48,7 +48,7 @@ Android
             doubleArrayOf(1.5, 2.345),
             FindNearestStage.DistanceMeasure.EUCLIDEAN
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -60,7 +60,7 @@ Android
                 new double[] {1.5, 2.345},
                 FindNearestStage.DistanceMeasure.EUCLIDEAN
             )
-            .execute();DocSnippets.java
+            .execute();
 
 ##### Python
 
@@ -76,7 +76,7 @@ Android
             distance_measure=DistanceMeasure.EUCLIDEAN,
         )
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -90,7 +90,7 @@ Android
                 FindNearest.DistanceMeasure.EUCLIDEAN,
                 new FindNearestOptions())
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ## Behavior
 

@@ -55,30 +55,29 @@ Concatenates two or more values of same type.
 
 ##### Node.js
 
-    concat(constant("Author ID: "), field("authorId"));test.firestore.js
+    concat(constant("Author ID: "), field("authorId"));
 
 ### Web
 
-    concat(constant("Author ID: "), field("authorId"));test.firestore.js
+    concat(constant("Author ID: "), field("authorId"));
 
 ##### Swift
 
-    let displayString = Constant("Author ID: ").concat([Field("authorId")])PipelineSnippets.swift
+    let displayString = Constant("Author ID: ").concat([Field("authorId")])
 
 ##### Kotlin  
 Android
 
     val displayString = constant("Author ID: ").concat(field("authorId"))
-    DocSnippets.kt
 
 ##### Java  
 Android
 
-    Expression displayString = constant("Author ID: ").concat(field("authorId"));DocSnippets.java
+    Expression displayString = constant("Author ID: ").concat(field("authorId"));
 
 ##### Python
 
-    Constant.of("Author ID: ").concat(Field.of("authorId"))firestore_pipelines.py
+    Constant.of("Author ID: ").concat(Field.of("authorId"))
 
 ### LENGTH
 

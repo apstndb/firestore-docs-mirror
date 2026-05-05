@@ -11,20 +11,20 @@ Skips the first `N` input documents.
     const results = await db.pipeline()
       .collection("cities")
       .offset(10)
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const results = await execute(db.pipeline()
       .collection("cities")
-      .offset(10));test.firestore.js
+      .offset(10));
 
 ##### Swift
 
     let results = try await db.pipeline()
       .collection("cities")
       .offset(10)
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -32,7 +32,7 @@ Android
     val results = db.pipeline()
         .collection("cities")
         .offset(10)
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -40,16 +40,16 @@ Android
     Task<Pipeline.Snapshot> results = db.pipeline()
             .collection("cities")
             .offset(10)
-            .execute();DocSnippets.java
+            .execute();
 
 ##### Python
 
-    results = client.pipeline().collection("cities").offset(10).execute()firestore_pipelines.py
+    results = client.pipeline().collection("cities").offset(10).execute()
 
 ##### Java
 
     Pipeline.Snapshot results =
-        firestore.pipeline().collection("cities").offset(10).execute().get();PipelineSnippets.java
+        firestore.pipeline().collection("cities").offset(10).execute().get();
 
 ## Behavior
 

@@ -12,7 +12,7 @@ Returns all the documents within a database across different collections and nes
     const results = await execute(db.pipeline()
       .database()
       .aggregate(countAll().as("total"))
-      );test.firestore.js
+      );
 
 ##### Swift
 
@@ -20,7 +20,7 @@ Returns all the documents within a database across different collections and nes
     let results = try await db.pipeline()
       .database()
       .aggregate([CountAll().as("total")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -29,7 +29,7 @@ Android
     val results = db.pipeline()
         .database()
         .aggregate(AggregateFunction.countAll().alias("total"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -39,7 +39,7 @@ Android
 Task<Pipeline.Snapshot> results = db.pipeline()
     .database()
     .aggregate(AggregateFunction.countAll().alias("total"))
-    .execute();DocSnippets.java
+    .execute();
     
 ```
 
@@ -48,13 +48,13 @@ Task<Pipeline.Snapshot> results = db.pipeline()
     from google.cloud.firestore_v1.pipeline_expressions import Count
     
     # Count all documents in the database
-    results = client.pipeline().database().aggregate(Count().as_("total")).execute()firestore_pipelines.py
+    results = client.pipeline().database().aggregate(Count().as_("total")).execute()
 
 ##### Java
 
     // Count all documents in the database
     Pipeline.Snapshot results =
-        firestore.pipeline().database().aggregate(countAll().as("total")).execute().get();PipelineSnippets.java
+        firestore.pipeline().database().aggregate(countAll().as("total")).execute().get();
 
 ## Behavior
 

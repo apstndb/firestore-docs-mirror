@@ -74,7 +74,7 @@ The Firebase CLI uses the Firestore REST API to find all documents under the spe
         return {
           path: path 
         };
-      });index.js
+      });
 
 ### Client Invocation
 
@@ -96,7 +96,7 @@ To call the function, get a reference to the function from the Firebase SDK and 
                 logMessage('Delete failed, see console,');
                 console.warn(err);
             });
-    }index.js
+    }
 
 ##### Swift
 
@@ -134,7 +134,7 @@ Android
                 // Delete Failed
                 // ...
             }
-    }SolutionDeletes.kt
+    }
 
 ##### Java  
 Android
@@ -164,7 +164,7 @@ Android
                         // ...
                     }
                 });
-    }SolutionDeletes.java
+    }
 
 By using the client SDK for callable cloud functions, the users's authentication state and the `path` parameter are seamlessly passed to the remote function. When the function completes, the client will receive a callback with the result or an exception. To learn about how to call a cloud function from Android, Apple, or another platform, read [the documentation](https://firebase.google.com/docs/functions/callable#call_the_function) .
 

@@ -179,7 +179,7 @@ To illustrate, examine the following examples from the point of view of index cr
     citiesRef.doc("BJ").set({
         name: "Beijing", state: null, country: "China",
         capital: true, population: 21500000,
-        regions: ["jingjinji", "hebei"] });test.firestore.js
+        regions: ["jingjinji", "hebei"] });
 
 Assuming the default automatic indexing settings, Firestore Standard edition updates one ascending single-field index per field, one descending single- field index per field, and one array-contains single-field index for the array field. Each row in the following table represents an entry in a single-field index:
 
@@ -207,7 +207,7 @@ Using these automatically created single-field indexes, you can run simple queri
 
     const stateQuery = citiesRef.where("state", "==", "CA");
     const populationQuery = citiesRef.where("population", "<", 100000);
-    const nameQuery = citiesRef.where("name", ">=", "San Francisco");test.firestore.js
+    const nameQuery = citiesRef.where("name", ">=", "San Francisco");
 
 You can also create `in` and compound equality ( `==` ) queries:
 

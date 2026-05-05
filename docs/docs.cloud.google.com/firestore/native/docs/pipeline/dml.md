@@ -30,7 +30,7 @@ For example, the following operation backfills a data model change to all docume
        .addFields(constant(null).as("preferences.color"))
        .removeFields("color")
        .update()
-       .execute();test.firestore.js
+       .execute();
 
 ##### Python
 
@@ -44,7 +44,7 @@ For example, the following operation backfills a data model change to all docume
         .remove_fields("color")
         .update()
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -54,7 +54,7 @@ For example, the following operation backfills a data model change to all docume
        .addFields(constant((String) null).as("preferences.color"))
        .removeFields("color")
        .update()
-       .execute().get();PipelineSnippets.java
+       .execute().get();
 
 ## Delete documents
 
@@ -69,7 +69,7 @@ For example, the following pipeline deletes all `users` documents with `address.
       .where(field("address.country").equal("USA"))
       .where(field("__create_time__").timestampAdd("day", 10).lessThan(currentTimestamp()))
       .delete();
-    await pipeline.execute();test.firestore.js
+    await pipeline.execute();
 
 ##### Python
 
@@ -86,7 +86,7 @@ For example, the following pipeline deletes all `users` documents with `address.
         )
         .delete()
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -95,7 +95,7 @@ For example, the following pipeline deletes all `users` documents with `address.
       .where(field("address.country").equal("USA"))
       .where(field("__create_time__").add(constant(10)).lessThan(currentTimestamp()))
       .delete()
-      .execute().get();PipelineSnippets.java
+      .execute().get();
 
 ## Consistency
 

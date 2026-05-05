@@ -18,71 +18,71 @@ For example, you could query for the first 3 cities alphabetically with:
 
     import { query, orderBy, limit } from "firebase/firestore";  
     
-    const q = query(citiesRef, orderBy("name"), limit(3));order_and_limit.js
+    const q = query(citiesRef, orderBy("name"), limit(3));
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    citiesRef.orderBy("name").limit(3);test.firestore.js
+    citiesRef.orderBy("name").limit(3);
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    citiesRef.order(by: "name").limit(to: 3)ViewController.swift
+    citiesRef.order(by: "name").limit(to: 3)
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    [[citiesRef queryOrderedByField:@"name"] queryLimitedTo:3];ViewController.m
+    [[citiesRef queryOrderedByField:@"name"] queryLimitedTo:3];
 
 ##### Kotlin  
 Android
 
-    citiesRef.orderBy("name").limit(3)DocSnippets.kt
+    citiesRef.orderBy("name").limit(3)
 
 ##### Java  
 Android
 
-    citiesRef.orderBy("name").limit(3);DocSnippets.java
+    citiesRef.orderBy("name").limit(3);
 
 ### Dart
 
     final citiesRef = db.collection("cities");
-    citiesRef.orderBy("name").limit(3);firestore.dart
+    citiesRef.orderBy("name").limit(3);
 
 ##### Java
 
     Query query = cities.orderBy("name").limit(3);
-    Query query = cities.orderBy("name").limitToLast(3);QueryDataSnippets.java
+    Query query = cities.orderBy("name").limitToLast(3);
 
 ##### Python
 
     cities_ref = db.collection("cities")
     query = cities_ref.order_by("name").limit_to_last(2)
-    results = query.get()snippets.py
+    results = query.get()
 
 ##### Python  
 (Async)
 
     cities_ref = db.collection("cities")
     query = cities_ref.order_by("name").limit_to_last(2)
-    results = await query.get()snippets.py
+    results = await query.get()
 
 ##### C++
 
-    cities_ref.OrderBy("name").Limit(3);snippets.cpp
+    cities_ref.OrderBy("name").Limit(3);
 
 ##### Node.js
 
-    const firstThreeRes = await citiesRef.orderBy('name').limit(3).get();index.js
+    const firstThreeRes = await citiesRef.orderBy('name').limit(3).get();
 
 ##### Go
 
     query := cities.OrderBy("name", firestore.Asc).Limit(3)
-    query := cities.OrderBy("name", firestore.Asc).LimitToLast(3)query.go
+    query := cities.OrderBy("name", firestore.Asc).LimitToLast(3)
 
 ##### PHP
 
@@ -98,11 +98,11 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ##### C\#
 
-    Query query = citiesRef.OrderBy("Name").Limit(3);Program.cs
+    Query query = citiesRef.OrderBy("Name").Limit(3);
 
 ##### Ruby
 
-    query = cities_ref.order("name").limit(3)order_limit_data.rb
+    query = cities_ref.order("name").limit(3)
 
 You could also sort in descending order to get the *last* 3 cities:
 
@@ -110,69 +110,69 @@ You could also sort in descending order to get the *last* 3 cities:
 
     import { query, orderBy, limit } from "firebase/firestore";  
     
-    const q = query(citiesRef, orderBy("name", "desc"), limit(3));order_and_limit_desc.js
+    const q = query(citiesRef, orderBy("name", "desc"), limit(3));
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    citiesRef.orderBy("name", "desc").limit(3);test.firestore.js
+    citiesRef.orderBy("name", "desc").limit(3);
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    citiesRef.order(by: "name", descending: true).limit(to: 3)ViewController.swift
+    citiesRef.order(by: "name", descending: true).limit(to: 3)
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    [[citiesRef queryOrderedByField:@"name" descending:YES] queryLimitedTo:3];ViewController.m
+    [[citiesRef queryOrderedByField:@"name" descending:YES] queryLimitedTo:3];
 
 ##### Kotlin  
 Android
 
-    citiesRef.orderBy("name", Query.Direction.DESCENDING).limit(3)DocSnippets.kt
+    citiesRef.orderBy("name", Query.Direction.DESCENDING).limit(3)
 
 ##### Java  
 Android
 
-    citiesRef.orderBy("name", Direction.DESCENDING).limit(3);DocSnippets.java
+    citiesRef.orderBy("name", Direction.DESCENDING).limit(3);
 
 ### Dart
 
     final citiesRef = db.collection("cities");
-    citiesRef.orderBy("name", descending: true).limit(3);firestore.dart
+    citiesRef.orderBy("name", descending: true).limit(3);
 
 ##### Java
 
-    Query query = cities.orderBy("name", Direction.DESCENDING).limit(3);QueryDataSnippets.java
+    Query query = cities.orderBy("name", Direction.DESCENDING).limit(3);
 
 ##### Python
 
     cities_ref = db.collection("cities")
     query = cities_ref.order_by("name", direction=firestore.Query.DESCENDING).limit(3)
-    results = query.stream()snippets.py
+    results = query.stream()
 
 ##### Python  
 (Async)
 
     cities_ref = db.collection("cities")
     query = cities_ref.order_by("name", direction=firestore.Query.DESCENDING).limit(3)
-    results = query.stream()snippets.py
+    results = query.stream()
 
 ##### C++
 
-    cities_ref.OrderBy("name", Query::Direction::kDescending).Limit(3);snippets.cpp
+    cities_ref.OrderBy("name", Query::Direction::kDescending).Limit(3);
 
 ##### Node.js
 
-    const lastThreeRes = await citiesRef.orderBy('name', 'desc').limit(3).get();index.js
+    const lastThreeRes = await citiesRef.orderBy('name', 'desc').limit(3).get();
 
 ##### Go
 
-    query := cities.OrderBy("name", firestore.Desc).Limit(3)query.go
+    query := cities.OrderBy("name", firestore.Desc).Limit(3)
 
 ##### PHP
 
@@ -188,11 +188,11 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ##### C\#
 
-    Query query = citiesRef.OrderByDescending("Name").Limit(3);Program.cs
+    Query query = citiesRef.OrderByDescending("Name").Limit(3);
 
 ##### Ruby
 
-    query = cities_ref.order("name", "desc").limit(3)order_limit_data.rb
+    query = cities_ref.order("name", "desc").limit(3)
 
 You can also order by multiple fields. For example, if you wanted to order by state, and within each state order by population in descending order:
 
@@ -200,13 +200,13 @@ You can also order by multiple fields. For example, if you wanted to order by st
 
     import { query, orderBy } from "firebase/firestore";  
     
-    const q = query(citiesRef, orderBy("state"), orderBy("population", "desc"));order_multiple.js
+    const q = query(citiesRef, orderBy("state"), orderBy("population", "desc"));
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    citiesRef.orderBy("state").orderBy("population", "desc");test.firestore.js
+    citiesRef.orderBy("state").orderBy("population", "desc");
 
 ##### Swift
 
@@ -214,39 +214,39 @@ You can also order by multiple fields. For example, if you wanted to order by st
 
     citiesRef
       .order(by: "state")
-      .order(by: "population", descending: true)ViewController.swift
+      .order(by: "population", descending: true)
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    [[citiesRef queryOrderedByField:@"state"] queryOrderedByField:@"population" descending:YES];ViewController.m
+    [[citiesRef queryOrderedByField:@"state"] queryOrderedByField:@"population" descending:YES];
 
 ##### Kotlin  
 Android
 
-    citiesRef.orderBy("state").orderBy("population", Query.Direction.DESCENDING)DocSnippets.kt
+    citiesRef.orderBy("state").orderBy("population", Query.Direction.DESCENDING)
 
 ##### Java  
 Android
 
-    citiesRef.orderBy("state").orderBy("population", Direction.DESCENDING);DocSnippets.java
+    citiesRef.orderBy("state").orderBy("population", Direction.DESCENDING);
 
 ### Dart
 
     final citiesRef = db.collection("cities");
-    citiesRef.orderBy("state").orderBy("population", descending: true);firestore.dart
+    citiesRef.orderBy("state").orderBy("population", descending: true);
 
 ##### Java
 
-    Query query = cities.orderBy("state").orderBy("population", Direction.DESCENDING);QueryDataSnippets.java
+    Query query = cities.orderBy("state").orderBy("population", Direction.DESCENDING);
 
 ##### Python
 
     cities_ref = db.collection("cities")
     ordered_city_ref = cities_ref.order_by("state").order_by(
         "population", direction=firestore.Query.DESCENDING
-    )snippets.py
+    )
 
 ##### Python  
 (Async)
@@ -254,19 +254,19 @@ Android
     cities_ref = db.collection("cities")
     cities_ref.order_by("state").order_by(
         "population", direction=firestore.Query.DESCENDING
-    )snippets.py
+    )
 
 ##### C++
 
-    cities_ref.OrderBy("state").OrderBy("name", Query::Direction::kDescending);snippets.cpp
+    cities_ref.OrderBy("state").OrderBy("name", Query::Direction::kDescending);
 
 ##### Node.js
 
-    const byStateByPopRes = await citiesRef.orderBy('state').orderBy('population', 'desc').get();index.js
+    const byStateByPopRes = await citiesRef.orderBy('state').orderBy('population', 'desc').get();
 
 ##### Go
 
-    query := client.Collection("cities").OrderBy("state", firestore.Asc).OrderBy("population", firestore.Desc)query.go
+    query := client.Collection("cities").OrderBy("state", firestore.Asc).OrderBy("population", firestore.Desc)
 
 ##### PHP
 
@@ -282,11 +282,11 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ##### C\#
 
-    Query query = citiesRef.OrderBy("State").OrderByDescending("Population");Program.cs
+    Query query = citiesRef.OrderBy("State").OrderByDescending("Population");
 
 ##### Ruby
 
-    query = cities_ref.order("state").order("population", "desc")order_limit_data.rb
+    query = cities_ref.order("state").order("population", "desc")
 
 You can combine `where()` filters with `orderBy()` and `limit()` . In the following example, the queries define a population threshold, sort by population in ascending order, and return only the first few results that exceed the threshold:
 
@@ -294,13 +294,13 @@ You can combine `where()` filters with `orderBy()` and `limit()` . In the follow
 
     import { query, where, orderBy, limit } from "firebase/firestore";  
     
-    const q = query(citiesRef, where("population", ">", 100000), orderBy("population"), limit(2));filter_and_order.js
+    const q = query(citiesRef, where("population", ">", 100000), orderBy("population"), limit(2));
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    citiesRef.where("population", ">", 100000).orderBy("population").limit(2);test.firestore.js
+    citiesRef.where("population", ">", 100000).orderBy("population").limit(2);
 
 ##### Swift
 
@@ -309,7 +309,7 @@ You can combine `where()` filters with `orderBy()` and `limit()` . In the follow
     citiesRef
       .whereField("population", isGreaterThan: 100000)
       .order(by: "population")
-      .limit(to: 2)ViewController.swift
+      .limit(to: 2)
 
 ##### Objective-C
 
@@ -317,17 +317,17 @@ You can combine `where()` filters with `orderBy()` and `limit()` . In the follow
 
     [[[citiesRef queryWhereField:@"population" isGreaterThan:@100000]
         queryOrderedByField:@"population"]
-        queryLimitedTo:2];ViewController.m
+        queryLimitedTo:2];
 
 ##### Kotlin  
 Android
 
-    citiesRef.whereGreaterThan("population", 100000).orderBy("population").limit(2)DocSnippets.kt
+    citiesRef.whereGreaterThan("population", 100000).orderBy("population").limit(2)
 
 ##### Java  
 Android
 
-    citiesRef.whereGreaterThan("population", 100000).orderBy("population").limit(2);DocSnippets.java
+    citiesRef.whereGreaterThan("population", 100000).orderBy("population").limit(2);
 
 ### Dart
 
@@ -335,11 +335,11 @@ Android
     citiesRef
         .where("population", isGreaterThan: 100000)
         .orderBy("population")
-        .limit(2);firestore.dart
+        .limit(2);
 
 ##### Java
 
-    Query query = cities.whereGreaterThan("population", 2500000L).orderBy("population").limit(2);QueryDataSnippets.java
+    Query query = cities.whereGreaterThan("population", 2500000L).orderBy("population").limit(2);
 
 ##### Python
 
@@ -349,7 +349,7 @@ Android
         .order_by("population")
         .limit(2)
     )
-    results = query.stream()snippets.py
+    results = query.stream()
 
 ##### Python  
 (Async)
@@ -360,22 +360,22 @@ Android
         .order_by("population")
         .limit(2)
     )
-    results = query.stream()snippets.py
+    results = query.stream()
 
 ##### C++
 
     cities_ref.WhereGreaterThan("population", FieldValue::Integer(100000))
         .OrderBy("population")
-        .Limit(2);snippets.cpp
+        .Limit(2);
 
 ##### Node.js
 
     const biggestRes = await citiesRef.where('population', '>', 2500000)
-      .orderBy('population').limit(2).get();index.js
+      .orderBy('population').limit(2).get();
 
 ##### Go
 
-    query := cities.Where("population", ">", 2500000).OrderBy("population", firestore.Desc).Limit(2)query.go
+    query := cities.Where("population", ">", 2500000).OrderBy("population", firestore.Desc).Limit(2)
 
 ##### PHP
 
@@ -400,11 +400,11 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
     Query query = citiesRef
         .WhereGreaterThan("Population", 2500000)
         .OrderBy("Population")
-        .Limit(2);Program.cs
+        .Limit(2);
 
 ##### Ruby
 
-    query = cities_ref.where("population", ">", 2_500_000).order("population").limit(2)order_limit_data.rb
+    query = cities_ref.where("population", ">", 2_500_000).order("population").limit(2)
 
 However, if you have a filter with a range comparison ( `<` , `<=` , `>` , `>=` ), your first ordering must be on the same field, see the list of `orderBy()` limitations below.
 

@@ -45,21 +45,21 @@ If given an absent value, returns `NULL` .
     const result = await db.pipeline()
       .collection("books")
       .select(field("title").notEqual("1984").as("not1984"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("title").notEqual("1984").as("not1984"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("title").notEqual("1984").as("not1984")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -67,7 +67,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("title").notEqual("1984").alias("not1984"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -75,7 +75,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(field("title").notEqual("1984").alias("not1984"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -86,7 +86,7 @@ Android
         .collection("books")
         .select(Field.of("title").not_equal("1984").as_("not1984"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -96,7 +96,7 @@ Android
             .collection("books")
             .select(notEqual(field("title"), "1984").as("not1984"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### IS\_TYPE
 

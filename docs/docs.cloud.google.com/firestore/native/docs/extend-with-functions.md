@@ -55,7 +55,7 @@ If you want to trigger an event for *any* change to a specific document then you
     exports.myFunctionName = functions.firestore
         .document('users/marie').onWrite((change, context) => {
           // ... Your code here
-        });index.js
+        });
 
 ### Specify a group of documents using wildcards
 
@@ -71,7 +71,7 @@ If you want to attach a trigger to a group of documents, such as any document in
           // context.params.userId == "marie"
           // ... and ...
           // change.after.data() == {name: "Marie"}
-        });index.js
+        });
 
 In this example, when any field on any document in `users` is changed, it matches a wildcard called `userId` .
 
@@ -91,7 +91,7 @@ Wildcard matches are extracted from the document path and stored into `context.p
           // context.params.messageId == "134";
           // ... and ...
           // change.after.data() == {body: "Hello"}
-        });index.js
+        });
 
 > **Note:** Your trigger must *always* point to a document, even if you're using a wildcard. For example, `users/{userId}/{messageCollectionId}` is not valid because `{messageCollectionId}` is a collection. However, `users/{userId}/{messageCollectionId}/{messageId}` *is* valid because `{messageId}` will always point to a document.
 
@@ -114,7 +114,7 @@ You can trigger a function to fire any time a new document is created in a colle
           const name = newValue.name;
     
           // perform desired operations ...
-        });index.js
+        });
 
 ### Trigger a function when a document is updated
 
@@ -136,7 +136,7 @@ You can also trigger a function to fire when a document is updated using the `on
           const name = newValue.name;
     
           // perform desired operations ...
-        });index.js
+        });
 
 ### Trigger a function when a document is deleted
 
@@ -152,7 +152,7 @@ You can also trigger a function when a document is deleted using the `onDelete()
           const deletedValue = snap.data();
     
           // perform desired operations ...
-        });index.js
+        });
 
 ### Trigger a function for all changes to a document
 
@@ -171,7 +171,7 @@ If you don't care about the type of event being fired, you can listen for all ch
           const oldDocument = change.before.data();
     
           // perform desired operations ...
-        });index.js
+        });
 
 ## Reading and Writing Data
 
@@ -193,7 +193,7 @@ When a function is triggered, you might want to get data from a document that wa
     
           // ...or the previous value before this update
           const previousValue = change.before.data();
-        });index.js
+        });
 
 You can access properties as you would in any other object. Alternatively, you can use the `get` function to access specific fields:
 
@@ -204,7 +204,7 @@ You can access properties as you would in any other object. Alternatively, you c
     const name = snap.data()['name'];
     
     // Fetch data using built in accessor
-    const experience = snap.get('experience');index.js
+    const experience = snap.get('experience');
 
 #### Writing Data
 
@@ -238,7 +238,7 @@ This `DocumentReference` comes from the [Firestore Node.js SDK](https://docs.clo
           return change.after.ref.set({
             name_change_count: count + 1
           }, {merge: true});
-        });index.js
+        });
 
 > **Note:** Any time you write to the same document that triggered a function, you are at risk of creating an infinite loop. Use caution and ensure that you safely exit the function when no change is needed.
 

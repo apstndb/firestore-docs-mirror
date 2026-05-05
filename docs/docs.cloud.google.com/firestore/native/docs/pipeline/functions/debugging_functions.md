@@ -36,7 +36,7 @@ Returns `TRUE` if `value` is not the absent value.
     const result = await db.pipeline()
       .collection("books")
       .select(field("rating").exists().as("hasRating"))
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
@@ -45,14 +45,14 @@ Returns `TRUE` if `value` is not the absent value.
     const result = await execute(db.pipeline()
       .collection("books")
       .select(field("rating").exists().as("hasRating"))
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([Field("rating").exists().as("hasRating")])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -62,7 +62,7 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(field("rating").exists().alias("hasRating"))
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -72,7 +72,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(field("rating").exists().alias("hasRating"))
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -83,7 +83,7 @@ Android
         .collection("books")
         .select(Field.of("rating").exists().as_("hasRating"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -93,7 +93,7 @@ Android
             .collection("books")
             .select(exists(field("rating")).as("hasRating"))
             .execute()
-            .get();PipelineSnippets.java
+            .get();
 
 ### IS\_ABSENT
 
