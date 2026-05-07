@@ -44,7 +44,7 @@ The following table summarizes the features available for each edition:
 <tr class="even">
 <td>Document Size Limits</td>
 <td><ul>
-<li>4 MiB with MongoDB compatibility</li>
+<li>16 MiB with MongoDB compatibility</li>
 <li>1 MiB with Firestore in Native mode</li>
 </ul></td>
 <td>1 MiB</td>
