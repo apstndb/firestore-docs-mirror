@@ -427,54 +427,15 @@ The sum of the size of a document's composite index entries</td>
 
 ### Standard edition
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Limit</th>
-<th>Details</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Maximum number of TTL configurations for a database</td>
-<td><ul>
-<li><p>200 when you have not enabled billing for your Google Cloud project.</p>
-<p>If you need more quota, you must <a href="https://cloud.google.com/billing/docs/how-to/modify-project">enable billing for your Google Cloud project.</a></p></li>
-<li>1000 when you enable billing for your Google Cloud project.</li>
-</ul></td>
-</tr>
-</tbody>
-</table>
+| Limit                                               | Details |
+| --------------------------------------------------- | ------- |
+| Maximum number of TTL configurations for a database | 1000    |
 
 ### Enterprise edition
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Limit</th>
-<th>Details</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Maximum number of single-field configurations for a database</td>
-<td><ul>
-<li><p>200 when you have not enabled billing for your Google Cloud project.</p>
-<p>If you need more quota, you must <a href="https://cloud.google.com/billing/docs/how-to/modify-project">enable billing for your Google Cloud project.</a></p></li>
-<li>1000 when you enable billing for your Google Cloud project.</li>
-</ul>
-<p>One field level configuration can contain multiple configurations for the same field. For example, a single-field indexing exemption and a TTL policy on the same field count as one field configuration towards the limit.</p></td>
-</tr>
-</tbody>
-</table>
+| Limit                                               | Details |
+| --------------------------------------------------- | ------- |
+| Maximum number of TTL configurations for a database | 1000    |
 
 ### Export/Import
 

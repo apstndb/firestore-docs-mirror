@@ -11,7 +11,7 @@ TTL delete operations count towards your entity delete costs. For pricing of del
 ### Limits and constraints
 
   - You can mark only one property per kind as a TTL property.
-  - You can have a maximum of 500 TTL policies.
+  - You can have a maximum of 1000 TTL policies.
 
 ### TTL deletion
 

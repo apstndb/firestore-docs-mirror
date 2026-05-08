@@ -13,7 +13,7 @@ TTL delete operations count towards your document delete costs. For pricing of d
 ### Limits and constraints
 
   - You can mark only one field per collection group as a TTL field.
-  - You can have a maximum of 500 field level configurations are allowed. One field configuration can contain multiple configurations for the same field. For example, a single-field indexing exemption and a TTL policy on the same field count as one field configuration towards the limit.
+  - You can have a maximum of 1000 field level configurations. One field configuration can contain multiple configurations for the same field. For example, a single-field indexing exemption and a TTL policy on the same field count as one field configuration towards the limit.
   - For Firestore in Datastore mode customers, TTL cannot be used with a concurrency mode of [Optimistic With Entity Groups](https://cloud.google.com/datastore/docs/concepts/transactions#concurrency_modes) . Consider changing the concurrency mode to the [Optimistic concurrency mode](https://cloud.google.com/datastore/docs/upgrade-to-firestore#optimistic_with_entity_groups_concurrency_mode) .
 
 ### TTL deletion
