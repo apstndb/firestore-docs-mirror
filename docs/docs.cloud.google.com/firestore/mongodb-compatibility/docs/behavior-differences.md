@@ -66,7 +66,6 @@ The following differences apply to naming parts of your data model.
 
   - Aggregations are limited to 250 stages.
   - The `$merge` and `$out` stages are not supported. See the [commands](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences#commands) section for a complete list of supported stages and operators.
-  - The `$lookup` stage does not support the `let` and `pipeline` fields.
   - The `$facet` stage does not support `$rand` or `$sample` in the input stages because it's a volatile expression.
 
 ## Writes
