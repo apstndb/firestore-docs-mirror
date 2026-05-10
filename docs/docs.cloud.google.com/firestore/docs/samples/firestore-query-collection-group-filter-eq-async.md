@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-query-collection-group-filter-eq-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-collection-group-filter-eq-async
+title: Query a Firestore collection group with an eq filter (async)
+description: Query a Firestore collection group with an eq filter (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:02Z"
+---
+
 Query a Firestore collection group with an eq filter (async).
 
 ## Explore further

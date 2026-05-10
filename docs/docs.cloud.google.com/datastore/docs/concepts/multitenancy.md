@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/concepts/multitenancy
+uri: https://docs.cloud.google.com/datastore/docs/concepts/multitenancy
+title: Multitenancy
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:38Z"
+---
+
 You can support *multitenancy* in your application by providing separate data partitions for multiple client organizations, known as tenants. This allows you to customize *data values* for each tenant, while keeping the same *data schema* for all tenants. This makes provisioning new tenants more efficient because you don't have to change data structure when you add a tenant.
 
 ## Benefits of multitenancy

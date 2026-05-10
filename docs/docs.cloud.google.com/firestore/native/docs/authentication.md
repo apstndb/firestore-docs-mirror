@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/authentication
+uri: https://docs.cloud.google.com/firestore/native/docs/authentication
+title: Authenticate to Firestore
+description: Learn how to authenticate to Firestore.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:57Z"
+---
+
 This document describes how to authenticate to Firestore programmatically. How you authenticate to Firestore depends on the interface you use to access the API and the environment where your code is running.
 
 The information on this page applies when you use server client libraries and the REST and RPC APIs. If you are using client libraries for mobile or web clients, authentication is managed by a combination of Firestore security rules and Firebase Auth. For more information, see [Secure data for mobile and web clients](https://docs.cloud.google.com/firestore/docs/security/get-started) .

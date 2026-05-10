@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/standard-index-overview
+uri: https://docs.cloud.google.com/firestore/native/docs/standard-index-overview
+title: Standard edition index overview
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:51Z"
+---
+
 # Standard edition index overview
 
 Indexing behavior depends on the edition of the database. This page describes indexing for Firestore Standard edition. For Firestore Enterprise edition, see [Firestore Enterprise edition index overview](https://docs.cloud.google.com/firestore/docs/pipeline/concepts/enterprise-index-overview) .

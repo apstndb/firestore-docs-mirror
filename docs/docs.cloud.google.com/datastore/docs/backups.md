@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/backups
+uri: https://docs.cloud.google.com/datastore/docs/backups
+title: Back up and restore data
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:28Z"
+---
+
 This page describes how to use the Datastore mode scheduled backups feature. Use backups to protect your data from application-level data corruption or from accidental data deletion.
 
 Backups let you configure backup schedules to take daily or weekly backups of the specified database. You can then use these backups to restore data to a new database.

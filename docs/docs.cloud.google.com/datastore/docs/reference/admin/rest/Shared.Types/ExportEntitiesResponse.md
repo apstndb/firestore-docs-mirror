@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ExportEntitiesResponse
+uri: https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ExportEntitiesResponse
+title: ExportEntitiesResponse
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T22:06:14Z"
+---
+
   - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ExportEntitiesResponse#SCHEMA_REPRESENTATION)
 
 The response for `  google.datastore.admin.v1.DatastoreAdmin.ExportEntities  ` .

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-listen-document
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-listen-document
+title: Create a Firestore watch listener
+description: Create a Firestore watch listener
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:02Z"
+---
+
 Create a Firestore watch listener
 
 ## Explore further

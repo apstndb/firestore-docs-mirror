@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-get-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-get-async
+title: Getting a Firestore document while using shards (async)
+description: Getting a Firestore document while using shards (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:44Z"
+---
+
 Getting a Firestore document while using shards (async).
 
 ## Explore further

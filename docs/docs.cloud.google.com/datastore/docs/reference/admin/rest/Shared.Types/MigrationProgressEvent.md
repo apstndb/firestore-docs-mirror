@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/MigrationProgressEvent
+uri: https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/MigrationProgressEvent
+title: MigrationProgressEvent
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2025-12-05T18:21:43Z"
+---
+
   - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/MigrationProgressEvent#SCHEMA_REPRESENTATION)
   - [PrepareStepDetails](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/MigrationProgressEvent#PrepareStepDetails)
       - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/MigrationProgressEvent#PrepareStepDetails.SCHEMA_REPRESENTATION)

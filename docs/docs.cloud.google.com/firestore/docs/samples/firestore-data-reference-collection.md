@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-collection
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-collection
+title: Create a Firestore collection reference
+description: Create a Firestore collection reference
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:00Z"
+---
+
 Create a Firestore collection reference
 
 ## Explore further

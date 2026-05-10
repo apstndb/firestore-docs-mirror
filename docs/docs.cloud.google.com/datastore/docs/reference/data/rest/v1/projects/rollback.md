@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/rollback
+uri: https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/rollback
+title: 'Method: projects.rollback'
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-03-20T21:17:16Z"
+---
+
   - [HTTP request](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/rollback#body.HTTP_TEMPLATE)
   - [Path parameters](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/rollback#body.PATH_PARAMETERS)
   - [Request body](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/rollback#body.request_body)

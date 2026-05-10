@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-batch-upsert
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-batch-upsert
+title: Batch upsert
+description: Perform a batch upsert.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:25Z"
+---
+
 Perform a batch upsert.
 
 ## Explore further

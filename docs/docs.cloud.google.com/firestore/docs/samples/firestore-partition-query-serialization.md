@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-partition-query-serialization
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-partition-query-serialization
+title: Serialize a Firestore query for execution elsewhere
+description: Serialize a Firestore query for execution elsewhere
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:02Z"
+---
+
 Serialize a Firestore query for execution elsewhere
 
 ## Code sample

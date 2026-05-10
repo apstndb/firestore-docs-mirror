@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/regional-endpoints
+uri: https://docs.cloud.google.com/datastore/docs/regional-endpoints
+title: Configure data locality with regional endpoints
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:28Z"
+---
+
 This page describes how to configure the Firestore in Datastore mode client libraries to use a regional or multi-regional endpoint.
 
 When you use Firestore in Datastore mode client libraries, you can use any of the following endpoints:

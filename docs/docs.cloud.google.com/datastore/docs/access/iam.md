@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/access/iam
+uri: https://docs.cloud.google.com/datastore/docs/access/iam
+title: Identity and Access Management (IAM)
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:38Z"
+---
+
 Google Cloud offers Identity and Access Management (IAM), which lets you give more granular access to specific Google Cloud resources and prevents unwanted access to other resources. This page describes the Firestore in Datastore mode IAM roles. For a detailed description of IAM, read the [IAM documentation](https://docs.cloud.google.com/iam/docs) .
 
 > **Note:** App Engine applications [require IAM permissions to access Datastore mode databases](https://docs.cloud.google.com/datastore/docs/activate#datastore-permissions-for-app-engine) .

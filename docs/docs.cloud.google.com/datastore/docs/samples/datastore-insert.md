@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-insert
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-insert
+title: Insert
+description: Perform an insert.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:27Z"
+---
+
 Perform an insert.
 
 ## Explore further

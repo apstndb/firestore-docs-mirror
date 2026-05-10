@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/quotas
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/quotas
+title: Quotas and limits
+description: Learn about quotas and system limits for Firestore with MongoDB compatibility.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:44Z"
+---
+
 # Quotas and limits
 
 This page describes the request quotas and limits for Firestore with MongoDB compatibility.

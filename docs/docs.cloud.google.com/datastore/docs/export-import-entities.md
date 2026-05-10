@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/export-import-entities
+uri: https://docs.cloud.google.com/datastore/docs/export-import-entities
+title: Exporting and Importing Entities
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:28Z"
+---
+
 This page describes how to export and import Firestore in Datastore mode entities using the managed export and import service. The managed export and import service is available through the Google Cloud console, Google Cloud CLI, and the Datastore Admin API ( [REST](https://docs.cloud.google.com/datastore/docs/reference/admin/rest) , [RPC](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc) ).
 
 With the managed export and import service, you can recover from accidental deletion of data and export data for offline processing. You can export all entities or just specific kinds of entities. Likewise, you can import all data from an export or only specific kinds. As you use the managed export and import service, consider the following:

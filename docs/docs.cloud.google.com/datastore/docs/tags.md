@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/tags
+uri: https://docs.cloud.google.com/datastore/docs/tags
+title: Create and manage tags
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:28Z"
+---
+
 This guide describes how to create and manage tags on Datastore mode databases.
 
 ## About tags

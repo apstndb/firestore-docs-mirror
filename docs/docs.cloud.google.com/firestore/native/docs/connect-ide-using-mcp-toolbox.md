@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/connect-ide-using-mcp-toolbox
+uri: https://docs.cloud.google.com/firestore/native/docs/connect-ide-using-mcp-toolbox
+title: Use Firestore with MCP, Gemini CLI, and other agents
+description: Connect Firestore to IDEs using MCP Toolbox. Integrate developer tools with your database for query execution and interaction.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:57Z"
+---
+
 # Use Firestore with MCP, Gemini CLI, and other agents
 
 This page shows you how to connect your Firestore database to various developer tools.

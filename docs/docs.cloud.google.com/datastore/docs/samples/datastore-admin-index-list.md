@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-admin-index-list
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-admin-index-list
+title: List admin index
+description: List indexes within a Datastore project
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:25Z"
+---
+
 List indexes within a Datastore project
 
 ## Code sample

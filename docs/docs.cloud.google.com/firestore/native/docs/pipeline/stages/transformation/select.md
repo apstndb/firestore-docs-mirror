@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/select
+uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/select
+title: Select (Transformation Stage)
+description: Describes how to use the select stage in Firestore Pipeline Operations. Covers generating new documents by referencing fields or assigning expressions.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:59Z"
+---
+
 # Select (Transformation Stage)
 
 ## Description

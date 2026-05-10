@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields/list
+uri: https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields/list
+title: 'Method: projects.databases.collectionGroups.fields.list'
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-03-20T21:17:05Z"
+---
+
 Lists the field configuration and metadata for this database.
 
 Currently, `  FirestoreAdmin.ListFields  ` only supports listing fields that have been explicitly overridden. To issue this query, call `  FirestoreAdmin.ListFields  ` with the filter set to `indexConfig.usesAncestorConfig:false` or `ttlConfig:*` .

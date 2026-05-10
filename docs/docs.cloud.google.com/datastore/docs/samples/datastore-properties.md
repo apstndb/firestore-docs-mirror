@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-properties
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-properties
+title: Property types
+description: Use property types.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:27Z"
+---
+
 Use property types.
 
 ## Explore further

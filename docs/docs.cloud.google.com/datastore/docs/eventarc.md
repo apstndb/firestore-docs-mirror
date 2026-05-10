@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/eventarc
+uri: https://docs.cloud.google.com/datastore/docs/eventarc
+title: Overview of event-driven architectures with Eventarc
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:28Z"
+---
+
 You can use [Eventarc](https://docs.cloud.google.com/eventarc/docs/overview) and Firestore in Datastore mode to build event-driven architectures. Firestore in Datastore mode provides triggers for Eventarc that generate events from changes to a particular entity in your database. The trigger can route events to a [supported destination](https://docs.cloud.google.com/eventarc/docs/event-providers-targets) :
 
   - [Cloud Run functions (2nd gen)](https://docs.cloud.google.com/datastore/docs/extend-with-functions-2nd-gen)

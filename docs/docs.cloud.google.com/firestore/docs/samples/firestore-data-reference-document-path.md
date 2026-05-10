@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-document-path
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-document-path
+title: Create a Firestore document reference from a document path
+description: Create a Firestore document reference from a document path
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:00Z"
+---
+
 Create a Firestore document reference from a document path
 
 ## Explore further

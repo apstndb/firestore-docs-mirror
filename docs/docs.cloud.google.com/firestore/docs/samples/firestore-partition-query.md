@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-partition-query
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-partition-query
+title: Query a collection group using a partitioned query
+description: Query a collection group using a partitioned query
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:02Z"
+---
+
 Query a collection group using a partitioned query
 
 ## Code sample

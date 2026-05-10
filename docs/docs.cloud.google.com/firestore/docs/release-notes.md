@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/release-notes
+uri: https://docs.cloud.google.com/firestore/docs/release-notes
+title: Firestore release notes
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:53Z"
+---
+
 This page documents production updates to Firestore. You can periodically check this page for announcements about new or updated features, bug fixes, known issues, and deprecated functionality.
 
 You can see the latest product updates for all of Google Cloud on the [Google Cloud](https://docs.cloud.google.com/release-notes) page, browse and filter all release notes in the [Google Cloud console](https://console.cloud.google.com/release-notes) , or programmatically access release notes in [BigQuery](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=google_cloud_release_notes&t=release_notes&page=table) .

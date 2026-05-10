@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection-async
+title: Delete a Firestore collection (async)
+description: Delete a Firestore collection and documents within (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:00Z"
+---
+
 Delete a Firestore collection and documents within (async).
 
 ## Explore further

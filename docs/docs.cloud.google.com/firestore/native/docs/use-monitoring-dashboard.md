@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/use-monitoring-dashboard
+uri: https://docs.cloud.google.com/firestore/native/docs/use-monitoring-dashboard
+title: Use the Cloud Monitoring dashboard
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:51Z"
+---
+
 # Use the Cloud Monitoring dashboard
 
 This page describes how to use a Cloud Monitoring dashboard to view available metrics, create a custom dashboard, and set alerts.

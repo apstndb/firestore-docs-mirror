@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-data-get-dataset-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-dataset-async
+title: Get Firestore Documents created from custom classes (async)
+description: Get Firestore Documents created from custom classes (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:00Z"
+---
+
 Get Firestore Documents created from custom classes (async).
 
 ## Explore further

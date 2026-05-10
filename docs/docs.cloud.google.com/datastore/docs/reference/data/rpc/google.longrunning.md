@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/reference/data/rpc/google.longrunning
+uri: https://docs.cloud.google.com/datastore/docs/reference/data/rpc/google.longrunning
+title: Package google.longrunning
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-03-05T18:08:29Z"
+---
+
 ## Index
 
   - `  Operations  ` (interface)

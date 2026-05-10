@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.operations/get
+uri: https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.operations/get
+title: 'Method: projects.databases.operations.get'
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-03-20T21:17:05Z"
+---
+
 Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
 
 ### HTTP request

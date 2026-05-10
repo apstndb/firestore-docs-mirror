@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale
+uri: https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale
+title: Understand reads and writes at scale
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:51Z"
+---
+
 # Understand reads and writes at scale
 
 Read this document to make informed decisions on architecting your applications for high performance and reliability. This document includes advanced Firestore topics. If you're just starting out with Firestore, see the [quickstart guide](https://docs.cloud.google.com/firestore/docs/quickstarts) instead.

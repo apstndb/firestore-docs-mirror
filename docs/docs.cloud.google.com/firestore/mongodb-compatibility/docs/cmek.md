@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/cmek
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/cmek
+title: Customer-managed encryption keys (CMEK)
+description: Learn about customer-managed encryption keys (CMEK) for Firestore with MongoDB compatibility.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:37Z"
+---
+
 # Customer-managed encryption keys (CMEK)
 
 By default, all the data at rest in Firestore with MongoDB compatibility is encrypted using [Google's default encryption](https://cloud.google.com/security/encryption/default-encryption#googles_default_encryption) . Firestore with MongoDB compatibility handles and manages this encryption for you without any additional action on your part.

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/firestore/locations/list
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/firestore/locations/list
+title: gcloud firestore locations list
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T21:27:41Z"
+---
+
 NAME
 
 gcloud firestore locations list - list locations available to Google Cloud Firestore

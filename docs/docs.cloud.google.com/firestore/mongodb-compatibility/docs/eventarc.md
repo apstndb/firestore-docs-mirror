@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/eventarc
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/eventarc
+title: Create event-driven architectures with Eventarc
+description: Use Eventarc and Firestore with MongoDB compatibility to build event-driven architectures.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:37Z"
+---
+
 # Create event-driven architectures with Eventarc
 
 You can use [Eventarc](https://docs.cloud.google.com/eventarc/docs/overview) and Firestore with MongoDB compatibility to build [event-driven architectures](https://docs.cloud.google.com/eventarc/docs/event-driven-architectures) . Firestore with MongoDB compatibility triggers for Eventarc generate events from changes to a particular documents in your database. The trigger can route events to a [supported destination](https://docs.cloud.google.com/eventarc/docs/event-providers-targets) :

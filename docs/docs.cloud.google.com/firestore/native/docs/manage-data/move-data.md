@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/manage-data/move-data
+uri: https://docs.cloud.google.com/firestore/native/docs/manage-data/move-data
+title: Move data between projects
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:51Z"
+---
+
 # Move data between projects
 
 This page describes how to use the managed import and export features to move Firestore data from one project to another. This can be useful for setting up a development environment or as part of permanently migrating an app to another project. The example on this page demonstrates how to export data from a source project and then import that data into a destination project. Moving data between projects involves the following steps:

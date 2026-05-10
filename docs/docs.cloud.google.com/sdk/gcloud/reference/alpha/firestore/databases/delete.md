@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/delete
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/delete
+title: gcloud alpha firestore databases delete
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T21:26:12Z"
+---
+
 NAME
 
 gcloud alpha firestore databases delete - delete a Google Cloud Firestore database

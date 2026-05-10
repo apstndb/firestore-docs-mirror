@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-manage-saved-queries
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-manage-saved-queries
+title: Create and manage saved queries
+description: Use saved queries in Firestore with MongoDB compatibility.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:37Z"
+---
+
 # Create and manage saved queries
 
 > **Preview**

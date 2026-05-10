@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/security/rules-query
+uri: https://docs.cloud.google.com/firestore/native/docs/security/rules-query
+title: Securely querying data
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:50Z"
+---
+
 # Securely querying data
 
 This page builds on the concepts in [Structuring Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/rules-structure) and [Writing Conditions for Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/rules-conditions) to explain how Firestore Security Rules interact with queries. It takes a closer look at how security rules affect the queries you can write and describes how to ensure your queries use the same constraints as your security rules. This page also describes how to write security rules to allow or deny queries based on query properties like `limit` and `orderBy` .

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/concepts/transactions
+uri: https://docs.cloud.google.com/datastore/docs/concepts/transactions
+title: Transactions
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:38Z"
+---
+
 A *transaction* is a set of operations on one or more entities. Each transaction is guaranteed to be atomic, meaning that transactions are never partially applied. Either all of the operations in the transaction are applied, or none of them are applied.
 
 ## Using transactions

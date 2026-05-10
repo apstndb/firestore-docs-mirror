@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-custom-type
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-custom-type
+title: Add a Firestore document using a custom type
+description: Add a Firestore document using a custom type
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:02Z"
+---
+
 Add a Firestore document using a custom type
 
 ## Explore further

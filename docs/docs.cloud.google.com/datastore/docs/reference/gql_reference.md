@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/reference/gql_reference
+uri: https://docs.cloud.google.com/datastore/docs/reference/gql_reference
+title: GQL Reference
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:38Z"
+---
+
 With GQL, you can write SQL-like queries for Firestore in Datastore mode. GQL maps roughly to SQL: you can think of a GQL `kind` as a SQL table, a GQL `entity` as a SQL row, and a GQL `property` as a SQL column. However, a SQL row-column lookup is limited to a single value, whereas in GQL a property can be a multiple value property.
 
 The following Cloud Client Libraries for Firestore in Datastore mode support GQL:

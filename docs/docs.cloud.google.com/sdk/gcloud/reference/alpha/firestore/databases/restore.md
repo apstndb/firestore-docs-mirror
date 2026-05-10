@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/restore
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/restore
+title: gcloud alpha firestore databases restore
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2026-01-21T20:16:22Z"
+---
+
 NAME
 
 gcloud alpha firestore databases restore - restores a Cloud Firestore database from a backup

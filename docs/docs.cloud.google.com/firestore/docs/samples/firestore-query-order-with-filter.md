@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-query-order-with-filter
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-with-filter
+title: Ordering a Firestore query with a filter
+description: Ordering a Firestore query with a filter
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:44Z"
+---
+
 Ordering a Firestore query with a filter
 
 ## Code sample

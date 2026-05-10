@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/concepts/limits
+uri: https://docs.cloud.google.com/datastore/docs/concepts/limits
+title: Limits
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:38Z"
+---
+
 This page describes production limits for Firestore in Datastore mode.
 
 > **Note:** These values are subject to change.

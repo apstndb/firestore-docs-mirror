@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/clone
+uri: https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/clone
+title: 'Method: projects.databases.clone'
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-03-20T21:17:05Z"
+---
+
 Creates a new database by cloning an existing one.
 
 The new database must be in the same cloud region or multi-region location as the existing database. This behaves similar to `  FirestoreAdmin.CreateDatabase  ` except instead of creating a new empty database, a new database is created with the database type, index configuration, and documents from an existing database.

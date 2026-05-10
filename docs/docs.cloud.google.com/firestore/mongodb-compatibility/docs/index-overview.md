@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview
+title: Indexes overview
+description: Overview of indexes for Firestore with MongoDB compatibility.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:37Z"
+---
+
 # Indexes overview
 
 This page describes indexing for Firestore with MongoDB compatibility. Firestore with MongoDB compatibility does not create any indexes by default. To improve database performance, create indexes for your most commonly used queries.

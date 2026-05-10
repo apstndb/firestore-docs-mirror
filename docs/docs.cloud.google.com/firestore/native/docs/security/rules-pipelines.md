@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/security/rules-pipelines
+uri: https://docs.cloud.google.com/firestore/native/docs/security/rules-pipelines
+title: Security Rules for Pipeline operations
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:50Z"
+---
+
 # Security Rules for Pipeline operations
 
 [Pipeline operations](https://docs.cloud.google.com/firestore/native/docs/query-data/understanding-core-pipelines#pipeline_operations) rules let you match the filtering capabilities of the existing Rules engine. While Pipeline operations offer a rich set of features, the Rules engine is restricted to recognizing simple filters to ensure query satisfiability and security.

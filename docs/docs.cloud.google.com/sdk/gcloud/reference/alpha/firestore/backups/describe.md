@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/describe
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/describe
+title: gcloud alpha firestore backups describe
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T21:25:52Z"
+---
+
 NAME
 
 gcloud alpha firestore backups describe - retrieves information about a Cloud Firestore backup

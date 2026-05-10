@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-query-order-multi-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-multi-async
+title: Ordering a Firestore query on multiple fields (async)
+description: Ordering a Firestore query on multiple fields (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:44Z"
+---
+
 Ordering a Firestore query on multiple fields (async).
 
 ## Explore further

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-array-contains-any
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-array-contains-any
+title: Query a Firestore collection with an array_contains_any filter
+description: Query a Firestore collection with an array_contains_any filter
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:02Z"
+---
+
 Query a Firestore collection with an array\_contains\_any filter
 
 ## Explore further

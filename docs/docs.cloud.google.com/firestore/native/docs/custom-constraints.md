@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/custom-constraints
+uri: https://docs.cloud.google.com/firestore/native/docs/custom-constraints
+title: Manage Firestore resources using custom constraints
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:57Z"
+---
+
 # Manage Firestore resources using custom constraints
 
 This page shows you how to use Organization Policy Service custom constraints to restrict specific operations on the following Google Cloud resources:

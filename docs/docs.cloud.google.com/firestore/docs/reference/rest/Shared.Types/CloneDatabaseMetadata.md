@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/CloneDatabaseMetadata
+uri: https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/CloneDatabaseMetadata
+title: CloneDatabaseMetadata
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T23:18:49Z"
+---
+
 Metadata for the `  long-running operation  ` from the \[databases.clone\]\[google.firestore.admin.v1.CloneDatabase\] request.
 
 <table>

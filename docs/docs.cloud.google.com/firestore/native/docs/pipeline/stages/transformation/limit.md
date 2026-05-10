@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/limit
+uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/limit
+title: Limit (Transformation Stage)
+description: Describes how to use the limit stage in Firestore Pipeline Operations. Covers limiting the number of documents returned by the pipeline.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:59Z"
+---
+
 # Limit (Transformation Stage)
 
 ## Description

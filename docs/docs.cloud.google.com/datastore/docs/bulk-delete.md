@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/bulk-delete
+uri: https://docs.cloud.google.com/datastore/docs/bulk-delete
+title: Delete entities in bulk
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:28Z"
+---
+
 Use the managed bulk delete service to delete data from your database. This feature supports deletion against one or more kinds.
 
 This page describes how to delete entities in bulk using the managed bulk delete service. The Datastore mode managed bulk delete service is available through the [`gcloud`](https://cloud.google.com/sdk/gcloud/) command-line tool and the Firestore [REST API](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/bulkDeleteDocuments) .

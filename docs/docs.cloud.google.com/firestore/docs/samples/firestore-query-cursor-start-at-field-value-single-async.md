@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-start-at-field-value-single-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-start-at-field-value-single-async
+title: Query a Firestore collection with a cursor start at field filter (async)
+description: Query a Firestore collection with a cursor start at field filter (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:02Z"
+---
+
 Query a Firestore collection with a cursor start at field filter (async).
 
 ## Explore further

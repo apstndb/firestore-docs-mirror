@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/reference/libraries
+uri: https://docs.cloud.google.com/firestore/native/docs/reference/libraries
+title: Firestore client libraries
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:50Z"
+---
+
 # Firestore client libraries
 
 This page describes the SDKs and client libraries available for the Firestore API. While you can make direct HTTP and RPC calls to the Firestore API, the Firestore client libraries implement best practices for you and make it easier to access your database.

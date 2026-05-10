@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-range-invalid
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-range-invalid
+title: An example Firestore query with an invalid range
+description: An example Firestore query with an invalid range
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:44Z"
+---
+
 An example Firestore query with an invalid range
 
 ## Code sample

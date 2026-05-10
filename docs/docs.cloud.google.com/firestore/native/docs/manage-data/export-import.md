@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/manage-data/export-import
+uri: https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import
+title: Exporting and importing data
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:51Z"
+---
+
 # Exporting and importing data
 
 You can use the Firestore managed export and import service to recover from accidental deletion of data and to export data for offline processing. You can export all documents or just specific collection groups. Likewise, you can import all data from an export or only specific collection groups. Data exported from one Firestore database can be imported into another Firestore database. You can also [load Firestore exports into BigQuery](https://cloud.google.com/bigquery/docs/loading-data-cloud-firestore) .

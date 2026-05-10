@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/documents
+uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/documents
+title: Documents (Input Stage)
+description: Describes how to use the documents stage in Firestore Pipeline Operations. Covers returning documents by looking up a fixed set of predefined documents.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:59Z"
+---
+
 # Documents (Input Stage)
 
 ## Description

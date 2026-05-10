@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes
+uri: https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes
+title: 'REST Resource: projects.indexes'
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T22:06:14Z"
+---
+
   - [Resource: Index](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes#Index)
       - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes#Index.SCHEMA_REPRESENTATION)
   - [AncestorMode](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes#AncestorMode)

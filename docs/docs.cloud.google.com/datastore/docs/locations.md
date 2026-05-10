@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/locations
+uri: https://docs.cloud.google.com/datastore/docs/locations
+title: Firestore in Datastore mode Locations
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:28Z"
+---
+
 Before you use Firestore in Datastore mode, you must choose a *location* where the project's data is stored. To reduce latency and increase availability, store your data close to the users and services that need it.
 
 > **Warning:** Once you select a location for your project, you cannot change it. [Your project's location setting applies to more than one product.](https://docs.cloud.google.com/datastore/docs/locations#selecting_a_location)

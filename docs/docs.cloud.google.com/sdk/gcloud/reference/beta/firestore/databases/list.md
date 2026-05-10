@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/list
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/list
+title: gcloud beta firestore databases list
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T21:26:56Z"
+---
+
 NAME
 
 gcloud beta firestore databases list - lists all Firestore databases under the project

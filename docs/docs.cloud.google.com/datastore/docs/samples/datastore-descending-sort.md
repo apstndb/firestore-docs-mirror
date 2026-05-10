@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-descending-sort
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-descending-sort
+title: Descending sort
+description: Use descending sort.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:25Z"
+---
+
 Use descending sort.
 
 ## Explore further

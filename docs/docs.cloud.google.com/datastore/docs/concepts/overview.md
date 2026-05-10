@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/concepts/overview
+uri: https://docs.cloud.google.com/datastore/docs/concepts/overview
+title: Datastore Overview
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:38Z"
+---
+
 Firestore in Datastore mode (Datastore) is a NoSQL document database built for automatic scaling, high performance, and ease of application development. Datastore features include:
 
   - **Atomic transactions** . Datastore can execute a set of operations where either all succeed, or none occur.

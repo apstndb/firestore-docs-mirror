@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-data-set-array-operations-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-array-operations-async
+title: Update a Firestore document containing an array field (async)
+description: Update a Firestore document containing an array field (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:00Z"
+---
+
 Update a Firestore document containing an array field (async).
 
 ## Explore further

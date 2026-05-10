@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/concepts/queries
+uri: https://docs.cloud.google.com/datastore/docs/concepts/queries
+title: Datastore queries
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-02-26T03:56:03Z"
+---
+
 A *query* retrieves [*entities*](https://docs.cloud.google.com/datastore/docs/concepts/entities) from Firestore in Datastore mode that meet a specified set of conditions.
 
 The query operates on entities of a given [*kind*](https://docs.cloud.google.com/datastore/docs/concepts/entities#kinds_and_identifiers) ; it can specify [*filters*](https://docs.cloud.google.com/datastore/docs/concepts/queries#filters) on the entities' property values, keys, and ancestors, and can return zero or more entities as *results* . A query can also specify [*sort orders*](https://docs.cloud.google.com/datastore/docs/concepts/queries#sort_orders) to sequence the results by their property values. The results include all entities that have at least one value for every property named in the filters and sort orders, and whose property values meet all the specified filter criteria. The query can return entire entities, projected entities, or just entity keys.

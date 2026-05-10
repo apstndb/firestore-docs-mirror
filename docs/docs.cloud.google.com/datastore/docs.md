@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs
+uri: https://docs.cloud.google.com/datastore/docs
+title: Firestore in Datastore mode documentation
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:29Z"
+---
+
 # Firestore in Datastore mode documentation
 
 Firestore in Datastore mode is a NoSQL document database built for automatic scaling, high performance, and ease of application development.

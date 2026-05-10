@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/list
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/list
+title: gcloud firestore indexes composite list
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2026-01-21T20:17:16Z"
+---
+
 NAME
 
 gcloud firestore indexes composite list - list composite indexes

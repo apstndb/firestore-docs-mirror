@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-retrieve-entities
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-retrieve-entities
+title: Example datastore list tasks
+description: Example datastore list tasks
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:27Z"
+---
+
 Example datastore list tasks
 
 ## Explore further

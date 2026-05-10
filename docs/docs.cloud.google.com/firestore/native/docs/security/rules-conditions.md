@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/security/rules-conditions
+uri: https://docs.cloud.google.com/firestore/native/docs/security/rules-conditions
+title: Write conditions for security rules
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:50Z"
+---
+
 # Write conditions for security rules
 
 This guide builds on the [structuring security rules](https://docs.cloud.google.com/firestore/native/docs/security/rules-structure) guide to show how to add conditions to your Firestore Security Rules. If you are not familiar with the basics of Firestore Security Rules, see the [getting started](https://docs.cloud.google.com/firestore/native/docs/security/get-started) guide.

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-incomplete-key
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-incomplete-key
+title: Incomplete key
+description: Create an incomplete key.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:27Z"
+---
+
 Create an incomplete key.
 
 ## Explore further

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/usage-insights
+uri: https://docs.cloud.google.com/datastore/docs/usage-insights
+title: Analyze usage insights
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:38Z"
+---
+
 This page describes how to use the usage insights to analyze your billable usage for specific databases. You can break down this data by dimensions such as collections, collection groups, or namespaces (specific to Datastore mode) over a custom time period. The usage insights metrics displayed vary based on the edition or mode:
 
 <table>

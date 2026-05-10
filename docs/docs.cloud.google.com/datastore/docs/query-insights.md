@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/query-insights
+uri: https://docs.cloud.google.com/datastore/docs/query-insights
+title: Analyze query performance statistics
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:28Z"
+---
+
 This page describes how to use the Query insights dashboard to detect and analyze query performance.
 
 ## Query insights overview

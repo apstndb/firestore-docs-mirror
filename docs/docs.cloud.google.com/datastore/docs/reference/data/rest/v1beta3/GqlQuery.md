@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/GqlQuery
+uri: https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/GqlQuery
+title: GqlQuery
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T22:06:34Z"
+---
+
   - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/GqlQuery#SCHEMA_REPRESENTATION)
 
 A [GQL query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference) .

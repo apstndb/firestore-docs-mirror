@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-entity-with-parent
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-entity-with-parent
+title: Entity with parent
+description: Use entity with parent.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:25Z"
+---
+
 Use entity with parent.
 
 ## Explore further

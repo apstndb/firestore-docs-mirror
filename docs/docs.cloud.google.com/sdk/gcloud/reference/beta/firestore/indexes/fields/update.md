@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/fields/update
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/fields/update
+title: gcloud beta firestore indexes fields update
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T21:27:32Z"
+---
+
 NAME
 
 gcloud beta firestore indexes fields update - update the index configuration of the given field

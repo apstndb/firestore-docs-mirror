@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-custom-type-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-custom-type-async
+title: Create custom shard and counter types for Firestore distributed counters (async)
+description: Create custom shard and counter types for Firestore distributed counters (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:44Z"
+---
+
 Create custom shard and counter types for Firestore distributed counters (async).
 
 ## Explore further

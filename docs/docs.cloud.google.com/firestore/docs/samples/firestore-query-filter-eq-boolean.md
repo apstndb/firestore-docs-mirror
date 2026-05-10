@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-eq-boolean
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-eq-boolean
+title: Query a Firestore collection with a boolean eq filter
+description: Query a Firestore collection with a boolean eq filter
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:44Z"
+---
+
 Query a Firestore collection with a boolean eq filter
 
 ## Explore further

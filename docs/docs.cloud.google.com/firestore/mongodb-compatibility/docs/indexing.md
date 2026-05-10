@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing
+title: Manage indexes
+description: Manage indexes for Firestore with MongoDB compatibility.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:37Z"
+---
+
 # Manage indexes
 
 This page describes how to manage your indexes. To learn more about indexes, see [Indexes overview](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview) .

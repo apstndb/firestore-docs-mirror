@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/query-data/multiple-range-optimize-indexes
+uri: https://docs.cloud.google.com/firestore/native/docs/query-data/multiple-range-optimize-indexes
+title: Optimize queries with range and inequality filters on multiple fields
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:59Z"
+---
+
 # Optimize queries with range and inequality filters on multiple fields
 
 This page provides examples of indexing strategy that you can use for queries with range and inequality filters on multiple fields to create an efficient query experience.

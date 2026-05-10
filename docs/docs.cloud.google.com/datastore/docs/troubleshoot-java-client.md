@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/troubleshoot-java-client
+uri: https://docs.cloud.google.com/datastore/docs/troubleshoot-java-client
+title: Troubleshoot latency in the Java client library
+description: Troubleshoot latency in the Datastore mode Java client library.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:38Z"
+---
+
 ## Introduction
 
 If your app experiences higher-than-usual latency, poor throughput, or timeouts with the Java Datastore client, the issue might stem from the client-side gRPC configuration rather than the Firestore/Datastore backend. This guide will help diagnose and resolve common client-side throttling issues, improper channel pool settings, and excessive channel churn.

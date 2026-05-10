@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain-reference
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain-reference
+title: Query execution reference
+description: Understand the output of a query executed with Query Explain in Firestore with MongoDB compatibility.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:37Z"
+---
+
 # Query execution reference
 
 This page explains the output of a query executed with Query Explain. To learn how to execute a query with Query Explain, see [Analyze query execution with Query Explain](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain) .

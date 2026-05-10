@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/partitionQuery
+uri: https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/partitionQuery
+title: 'Method: projects.databases.documents.partitionQuery'
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-03-20T21:17:05Z"
+---
+
 Partitions a query by returning partition cursors that can be used to run the query in parallel. The returned partition cursors are split points that can be used by documents.runQuery as starting/end points for the query results.
 
 ### HTTP request

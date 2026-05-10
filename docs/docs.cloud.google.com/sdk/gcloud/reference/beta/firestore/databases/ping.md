@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/ping
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/ping
+title: gcloud beta firestore databases ping
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T21:26:05Z"
+---
+
 NAME
 
 gcloud beta firestore databases ping - times the connection and ping time for a Firestore with MongoDB compatibility database

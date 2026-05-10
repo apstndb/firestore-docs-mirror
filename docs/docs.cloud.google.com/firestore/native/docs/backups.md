@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/backups
+uri: https://docs.cloud.google.com/firestore/native/docs/backups
+title: Back up and restore data
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:57Z"
+---
+
 # Back up and restore data
 
 This page describes how to use the Firestore scheduled backups feature. Use backups to protect your data from application-level data corruption or from accidental data deletion.

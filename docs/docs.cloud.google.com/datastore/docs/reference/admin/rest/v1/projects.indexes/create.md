@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes/create
+uri: https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes/create
+title: 'Method: projects.indexes.create'
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-03-20T21:17:05Z"
+---
+
   - [HTTP request](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes/create#body.HTTP_TEMPLATE)
   - [Path parameters](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes/create#body.PATH_PARAMETERS)
   - [Request body](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes/create#body.request_body)

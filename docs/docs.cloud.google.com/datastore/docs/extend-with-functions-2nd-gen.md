@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/extend-with-functions-2nd-gen
+uri: https://docs.cloud.google.com/datastore/docs/extend-with-functions-2nd-gen
+title: Extend Datastore with Cloud Functions (2nd gen)
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:28Z"
+---
+
 With Cloud Run functions and Eventarc, you can deploy code to handle events triggered by changes in your Firestore in Datastore mode database. This allows you to add server-side functionality without running your own servers.
 
 ## Datastore mode triggers

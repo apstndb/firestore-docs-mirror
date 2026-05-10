@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/operations/describe
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/operations/describe
+title: gcloud beta datastore operations describe
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T21:28:02Z"
+---
+
 NAME
 
 gcloud beta datastore operations describe - retrieves information about a Cloud Datastore admin operation

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/use-firestore-mcp
+uri: https://docs.cloud.google.com/firestore/native/docs/use-firestore-mcp
+title: Use the Firestore remote MCP server
+description: Learn how to use the Firestore remote MCP server to edit and retrieve documents in a Firestore database.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:51Z"
+---
+
 # Use the Firestore remote MCP server
 
 This document shows you how to use the Firestore remote Model Context Protocol (MCP) server to connect with AI applications including Gemini CLI, ChatGPT, Claude, and custom applications you are developing. The Firestore remote MCP server lets you interact with documents stored in a Firestore database from you AI application. The Firestore remote MCP server is enabled when you enable the Firestore API.

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/real-time_queries_at_scale
+uri: https://docs.cloud.google.com/firestore/native/docs/real-time_queries_at_scale
+title: Understand real-time queries at scale
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:51Z"
+---
+
 # Understand real-time queries at scale
 
 Read this document for guidance on scaling your serverless app beyond thousands of operations per second or hundreds of thousands of concurrent users. This document includes advanced topics to help you understand the system in depth. If you are just starting out with Firestore, see the [quickstart guide](https://docs.cloud.google.com/firestore/docs/quickstarts) instead.

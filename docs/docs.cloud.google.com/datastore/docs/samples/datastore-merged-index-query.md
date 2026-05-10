@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-merged-index-query
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-merged-index-query
+title: Example datastore merged index query
+description: Example datastore merged index query
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:27Z"
+---
+
 Example datastore merged index query
 
 ## Explore further

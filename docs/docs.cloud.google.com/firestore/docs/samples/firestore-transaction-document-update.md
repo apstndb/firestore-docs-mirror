@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-transaction-document-update
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-transaction-document-update
+title: Updating a Firestore document in a transaction
+description: Updating a Firestore document in a transaction
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:44Z"
+---
+
 Updating a Firestore document in a transaction
 
 ## Explore further

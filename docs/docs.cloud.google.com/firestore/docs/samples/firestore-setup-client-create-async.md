@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-setup-client-create-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-client-create-async
+title: Creating a Firestore client (async)
+description: Creating a Firestore client (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:44Z"
+---
+
 Creating a Firestore client (async).
 
 ## Explore further

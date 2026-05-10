@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/list
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/list
+title: gcloud firestore backups schedules list
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T21:28:53Z"
+---
+
 NAME
 
 gcloud firestore backups schedules list - lists backup schedules under a Cloud Firestore database

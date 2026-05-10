@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/create-database-web-mobile-client-library
+uri: https://docs.cloud.google.com/firestore/native/docs/create-database-web-mobile-client-library
+title: 'Quickstart: Create a Firestore database by using a web or mobile client library'
+description: Set up Firestore to add or read data by using the Android, Apple platforms, Web, Unity, or C++ client library.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T10:46:21Z"
+---
+
 # Create a Firestore database by using a web or mobile client library
 
 This quickstart shows you how to set up Firestore, add data, and read data by using the Android, Apple platforms, Web, Unity, or C++ client library.

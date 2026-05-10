@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/reference/rpc/google.cloud.location
+uri: https://docs.cloud.google.com/firestore/docs/reference/rpc/google.cloud.location
+title: Package google.cloud.location
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-04-25T02:33:14Z"
+---
+
 ## Index
 
   - `  Locations  ` (interface)

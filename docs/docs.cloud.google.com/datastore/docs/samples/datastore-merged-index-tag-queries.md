@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-merged-index-tag-queries
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-merged-index-tag-queries
+title: Example datastore merged index tag queries
+description: Example datastore merged index tag queries
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:27Z"
+---
+
 Example datastore merged index tag queries
 
 ## Explore further

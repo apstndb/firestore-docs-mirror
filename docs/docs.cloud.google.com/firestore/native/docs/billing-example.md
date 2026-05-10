@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/billing-example
+uri: https://docs.cloud.google.com/firestore/native/docs/billing-example
+title: Billing example
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:57Z"
+---
+
 # Billing example
 
 Use this real-world example of a basic chat app to gauge your Firestore in Native Mode usage and costs. This is not an exact estimate, but it can help you better understand how your Firestore in Native Mode usage is billed.

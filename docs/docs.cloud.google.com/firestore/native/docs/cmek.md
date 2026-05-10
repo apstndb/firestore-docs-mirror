@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/cmek
+uri: https://docs.cloud.google.com/firestore/native/docs/cmek
+title: Customer-managed encryption keys (CMEK)
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:57Z"
+---
+
 # Customer-managed encryption keys (CMEK)
 
 By default, all the data at rest in Firestore is encrypted using [Google's default encryption](https://cloud.google.com/security/encryption/default-encryption#googles_default_encryption) . Firestore handles and manages this encryption for you without any additional action on your part.

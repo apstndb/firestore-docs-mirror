@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-data-get-as-custom-type
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-as-custom-type
+title: Get a Firestore document using custom types
+description: Get a Firestore document using custom types.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:00Z"
+---
+
 Get a Firestore document using custom types.
 
 ## Explore further

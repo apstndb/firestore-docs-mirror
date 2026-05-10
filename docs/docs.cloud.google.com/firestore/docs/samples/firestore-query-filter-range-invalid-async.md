@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-range-invalid-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-range-invalid-async
+title: An example Firestore query with an invalid range (async)
+description: An example Firestore query with an invalid range (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:44Z"
+---
+
 An example Firestore query with an invalid range (async).
 
 ## Code sample

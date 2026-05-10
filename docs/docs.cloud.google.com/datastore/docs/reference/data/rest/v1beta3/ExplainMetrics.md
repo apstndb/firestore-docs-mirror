@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/ExplainMetrics
+uri: https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/ExplainMetrics
+title: ExplainMetrics
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T22:06:14Z"
+---
+
   - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/ExplainMetrics#SCHEMA_REPRESENTATION)
   - [PlanSummary](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/ExplainMetrics#PlanSummary)
       - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/ExplainMetrics#PlanSummary.SCHEMA_REPRESENTATION)

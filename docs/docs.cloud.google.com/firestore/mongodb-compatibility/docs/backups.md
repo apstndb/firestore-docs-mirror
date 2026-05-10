@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/backups
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/backups
+title: Back up and restore data
+description: Back up and restore your data stored in Firestore with MongoDB compatibility.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:37Z"
+---
+
 # Back up and restore data
 
 This page describes how to use the Firestore with MongoDB compatibility scheduled backups feature. Use backups to protect your data from application-level data corruption or from accidental data deletion.

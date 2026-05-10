@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-query-order-field-invalid-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-field-invalid-async
+title: An example of an invalid order and limit Firestore query (async)
+description: An example of an invalid order and limit Firestore query (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:44Z"
+---
+
 An example of an invalid order and limit Firestore query (async).
 
 ## Code sample

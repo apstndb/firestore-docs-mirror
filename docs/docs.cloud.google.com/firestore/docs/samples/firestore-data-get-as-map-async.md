@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-data-get-as-map-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-as-map-async
+title: Retrieve Firestore Document as Map (async)
+description: Retrieve Firestore Document as Map (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:00Z"
+---
+
 Retrieve Firestore Document as Map (async).
 
 ## Explore further

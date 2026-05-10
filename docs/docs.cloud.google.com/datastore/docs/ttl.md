@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/ttl
+uri: https://docs.cloud.google.com/datastore/docs/ttl
+title: Manage data retention with TTL policies
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:38Z"
+---
+
 This page describes how to use the Google Cloud console and the Google Cloud CLI to configure time-to-live (TTL) policies. Before you read this page, you should understand the [Datastore mode data model](https://docs.cloud.google.com/datastore/docs/concepts/entities) .
 
 ## Time-to-live overview

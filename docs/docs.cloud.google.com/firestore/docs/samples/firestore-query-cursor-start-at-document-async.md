@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-start-at-document-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-start-at-document-async
+title: Query a Firestore collection with a cursor start at document filter (async)
+description: Query a Firestore collection with a cursor start at document filter (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:02Z"
+---
+
 Query a Firestore collection with a cursor start at document filter (async).
 
 ## Explore further

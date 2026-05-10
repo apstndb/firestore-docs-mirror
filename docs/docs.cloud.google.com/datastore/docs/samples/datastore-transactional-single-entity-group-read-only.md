@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-transactional-single-entity-group-read-only
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-transactional-single-entity-group-read-only
+title: Transactional single entity group read-only
+description: Use a read-only transaction.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:27Z"
+---
+
 Use a read-only transaction.
 
 ## Explore further

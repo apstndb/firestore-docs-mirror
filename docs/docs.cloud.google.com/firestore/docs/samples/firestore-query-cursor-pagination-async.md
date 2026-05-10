@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-pagination-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-pagination-async
+title: Use start cursors and limits to paginate Firestore collections (async)
+description: Use start cursors and limits to paginate Firestore collections (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:02Z"
+---
+
 Use start cursors and limits to paginate Firestore collections (async).
 
 ## Explore further

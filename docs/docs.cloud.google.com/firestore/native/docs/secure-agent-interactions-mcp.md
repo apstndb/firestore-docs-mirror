@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/secure-agent-interactions-mcp
+uri: https://docs.cloud.google.com/firestore/native/docs/secure-agent-interactions-mcp
+title: Best practices for securing agent interactions with Model Context Protocol
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:51Z"
+---
+
 # Best practices for securing agent interactions with Model Context Protocol
 
 Model Context Protocol (MCP) standardizes how generative AI agents connect to Firestore. Due to the inherent risks of autonomous agents, mitigating vulnerabilities like prompt injection requires a shared responsibility model, combining platform controls with secure application design.  

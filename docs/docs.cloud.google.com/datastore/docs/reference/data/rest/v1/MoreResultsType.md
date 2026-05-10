@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/reference/data/rest/v1/MoreResultsType
+uri: https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/MoreResultsType
+title: MoreResultsType
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T22:06:14Z"
+---
+
 The possible values for the `moreResults` field.
 
 Enums

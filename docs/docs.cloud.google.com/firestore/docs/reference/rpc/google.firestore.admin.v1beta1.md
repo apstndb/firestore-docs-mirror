@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta1
+uri: https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta1
+title: Package google.firestore.admin.v1beta1
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T23:18:49Z"
+---
+
 ## Index
 
   - `  FirestoreAdmin  ` (interface)

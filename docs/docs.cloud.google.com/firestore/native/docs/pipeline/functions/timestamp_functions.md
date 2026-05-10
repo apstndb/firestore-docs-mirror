@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/pipeline/functions/timestamp_functions
+uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/timestamp_functions
+title: Timestamp Functions Reference
+description: Explains how to use timestamp functions like CURRENT_TIMESTAMP, TIMESTAMP_ADD, and TIMESTAMP_DIFF in Firestore Pipeline operations.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:59Z"
+---
+
 # Timestamp Functions Reference
 
 ## **Timestamp Functions**

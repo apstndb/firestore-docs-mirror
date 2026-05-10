@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/locations
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/locations
+title: Firestore with MongoDB compatibility locations
+description: Learn about different types of locations for Firestore with MongoDB compatibility databases.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:37Z"
+---
+
 # Firestore with MongoDB compatibility locations
 
 When you provision a Firestore database, you must choose a *location* for it. To reduce latency and increase availability, store your data close to the users and services that need it.

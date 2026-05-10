@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/pitr
+uri: https://docs.cloud.google.com/datastore/docs/pitr
+title: Point-in-time recovery (PITR) overview
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:28Z"
+---
+
 Firestore in Datastore mode point-in-time recovery (PITR) provides protection against accidental deletion or writes. PITR maintains versions of your entities from past timestamps. For example, in the case of a developer pushing the incorrect data, accidental deletes or writes, PITR can recover the data to a point in time in the past (up to a maximum of 7 days) seamlessly.
 
 For any live database that follows [Best practices](https://docs.cloud.google.com/datastore/docs/best-practices) , use of PITR doesn't affect the performance of reads or writes.

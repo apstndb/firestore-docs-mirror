@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/union
+uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/union
+title: Union (Transformation Stage)
+description: Describes how to use the union stage in Firestore Pipeline Operations. Covers merging the documents from another pipeline with those in the current pipeline.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:59Z"
+---
+
 # Union (Transformation Stage)
 
 ## Description

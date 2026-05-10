@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/query-insights
+uri: https://docs.cloud.google.com/firestore/native/docs/query-insights
+title: Analyze query performance statistics
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:51Z"
+---
+
 # Analyze query performance statistics
 
 This page describes how to use the Query insights dashboard to detect and analyze query performance.

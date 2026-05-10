@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/executePipeline
+uri: https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/executePipeline
+title: 'Method: projects.databases.documents.executePipeline'
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-03-20T21:17:05Z"
+---
+
 Executes a pipeline query.
 
 ### HTTP request

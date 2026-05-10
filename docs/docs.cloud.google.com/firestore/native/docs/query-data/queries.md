@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/query-data/queries
+uri: https://docs.cloud.google.com/firestore/native/docs/query-data/queries
+title: Query and filter data
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T10:46:16Z"
+---
+
 # Query and filter data
 
 Firestore provides powerful query functionality for specifying which documents you want to retrieve from a collection or collection group. These queries can also be used with either `get()` or `addSnapshotListener()` , as described in [Get Data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data) and [Get Realtime Updates](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) .

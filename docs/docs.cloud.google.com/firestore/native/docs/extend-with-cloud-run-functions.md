@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/extend-with-cloud-run-functions
+uri: https://docs.cloud.google.com/firestore/native/docs/extend-with-cloud-run-functions
+title: Extend Firestore with event triggers using Cloud Run functions
+description: Use Cloud Run functions to deploy code triggered by changes in your Firestore database, adding server-side functionality without running your own servers.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:57Z"
+---
+
 # Extend Cloud Run with event triggers using Cloud Run functions
 
 [Video](https://www.youtube.com/watch?v=86AY-psXRmE)

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-compound-multi-ineq
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-compound-multi-ineq
+title: Compound query with range and inequality filters on multiple fields
+description: Please provide C# and Ruby samples that match Firestore and Datastore examples originally requested in the Firestore Doc Plan for Multiple Inequalities to GA and bug 351980346. The request is for turbo/469184.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:02Z"
+---
+
 Please provide C\# and Ruby samples that match Firestore and Datastore examples originally requested in the Firestore Doc Plan for Multiple Inequalities to GA and bug 351980346. The request is for turbo/469184.
 
 ## Explore further

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/pitr
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/pitr
+title: Point-in-time recovery (PITR) overview
+description: An overview of point-in-time recovery for Firestore with MongoDB compatibility.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:37Z"
+---
+
 # Point-in-time recovery (PITR) overview
 
 Point-in-time recovery (PITR) protects against accidental deletion or writes. PITR maintains versions of your documents from past timestamps. For example, in the case of a developer pushing any incorrect data, accidental deletes or writes, PITR can recover the data to a point in time in the past (up to a maximum of 7 days).

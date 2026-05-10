@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/java-client-grpc
+uri: https://docs.cloud.google.com/datastore/docs/java-client-grpc
+title: Use gRPC with the Java client library
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:28Z"
+---
+
 The [Java client for Datastore mode](https://github.com/googleapis/java-datastore) offers gRPC as a transport layer option. Using [gRPC connection pooling](https://grpc.io/docs/guides/performance/) enables distributing RPCs over multiple connections, which can improve performance.
 
 ## Before you begin

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam
+title: Identity and Access Management (IAM)
+description: How to use Identity and Access Management to manage access to Firestore with MongoDB compatibility databases.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:57Z"
+---
+
 # Identity and Access Management (IAM)
 
 Manage access to your resources with Identity and Access Management (IAM). IAM lets you give more granular access to specific Google Cloud resources and prevents unwanted access to other resources. This page describes the IAM permissions and roles for Firestore. For a detailed description of IAM, read the [IAM documentation](https://cloud.google.com/iam/docs/) .

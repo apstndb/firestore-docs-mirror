@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/solutions/enriched-media
+uri: https://docs.cloud.google.com/firestore/native/docs/solutions/enriched-media
+title: Enrich value of media
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:50Z"
+---
+
 # Enrich value of media
 
 Use Firestore in Native Mode and Firebase Extensions to unlock the value of your audio and image resources using AI models.

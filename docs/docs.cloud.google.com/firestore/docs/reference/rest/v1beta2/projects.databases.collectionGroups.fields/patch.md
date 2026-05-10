@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.fields/patch
+uri: https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.fields/patch
+title: 'Method: projects.databases.collectionGroups.fields.patch'
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-03-20T21:17:16Z"
+---
+
 Updates a field configuration. Currently, field updates apply only to single field index configuration. However, calls to `  FirestoreAdmin.UpdateField  ` should provide a field mask to avoid changing any configuration that the caller isn't aware of. The field mask should be specified as: `{ paths: "indexConfig" }` .
 
 This call returns a `  google.longrunning.Operation  ` which may be used to track the status of the field update. The metadata for the operation will be the type `FieldOperationMetadata` .

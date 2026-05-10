@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-ancestor-query
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-ancestor-query
+title: Ancestor query
+description: Ancestor query.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:25Z"
+---
+
 Ancestor query.
 
 ## Explore further

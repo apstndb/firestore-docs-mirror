@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/add_fields
+uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/add_fields
+title: Add Fields (Transformation Stage)
+description: Describes how to use the add_fields stage in Firestore Pipeline Operations. Covers adding new fields, modifying existing ones, and handling nested fields and overwrites in your documents.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:59Z"
+---
+
 # Add Fields (Transformation Stage)
 
 ## Description

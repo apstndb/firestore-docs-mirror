@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/solutions/counters
+uri: https://docs.cloud.google.com/firestore/native/docs/solutions/counters
+title: Support frequent and distributed counters
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:50Z"
+---
+
 # Support frequent and distributed counters
 
 Many realtime apps have documents that act as counters. For example, you might count 'likes' on a post, or 'favorites' of a specific item.

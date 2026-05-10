@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/pitr
+uri: https://docs.cloud.google.com/firestore/native/docs/pitr
+title: Point-in-time recovery (PITR) overview
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:51Z"
+---
+
 # Point-in-time recovery (PITR) overview
 
 Point-in-time recovery (PITR) protects against accidental deletion or writes. PITR maintains versions of your documents from past timestamps. For example, in the case of a developer pushing any incorrect data, accidental deletes or writes, PITR can recover the data to a point in time in the past (up to a maximum of 7 days).

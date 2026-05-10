@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/keyvis-exploring-heatmaps
+uri: https://docs.cloud.google.com/datastore/docs/keyvis-exploring-heatmaps
+title: Exploring heatmaps
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:28Z"
+---
+
 This page describes how to analyze the heatmap in a Key Visualizer scan so you can identify the source of a Firestore in Datastore mode performance issue.
 
 Before you read this page, you should be familiar with the [overview of Key Visualizer](https://docs.cloud.google.com/firestore/docs/key-visualizer) . You may also want to:

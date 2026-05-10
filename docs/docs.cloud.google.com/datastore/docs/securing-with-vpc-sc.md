@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/securing-with-vpc-sc
+uri: https://docs.cloud.google.com/datastore/docs/securing-with-vpc-sc
+title: VPC Service Controls
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:28Z"
+---
+
 [VPC Service Controls](https://cloud.google.com/vpc-service-controls/) lets organizations define a perimeter around Google Cloud resources to mitigate data exfiltration risks. With VPC Service Controls, you create perimeters that protect the resources and data of services that you explicitly specify.
 
 ## Bundled Firestore services

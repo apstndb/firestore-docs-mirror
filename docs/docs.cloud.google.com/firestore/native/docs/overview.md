@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/overview
+uri: https://docs.cloud.google.com/firestore/native/docs/overview
+title: Firestore overview
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:51Z"
+---
+
 # Firestore overview
 
 Firestore is a flexible, scalable database for mobile, web, and server development from Firebase and Google Cloud. Firestore keeps your data in sync across client apps through realtime listeners and offers offline support for mobile and web so you can build responsive apps that work regardless of network latency or Internet connectivity. Firestore in Native Mode also offers seamless integration with other Firebase and Google Cloud products, including Cloud Run functions.

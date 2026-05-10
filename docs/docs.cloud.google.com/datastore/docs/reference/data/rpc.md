@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/reference/data/rpc
+uri: https://docs.cloud.google.com/datastore/docs/reference/data/rpc
+title: Cloud Datastore API
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T22:06:14Z"
+---
+
 Accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application.
 
 ## Service: datastore.googleapis.com

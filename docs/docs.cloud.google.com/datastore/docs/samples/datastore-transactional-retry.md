@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-transactional-retry
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-transactional-retry
+title: Retry
+description: Retry a transaction.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:27Z"
+---
+
 Retry a transaction.
 
 ## Explore further

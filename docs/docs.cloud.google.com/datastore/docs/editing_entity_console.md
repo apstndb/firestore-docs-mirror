@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/editing_entity_console
+uri: https://docs.cloud.google.com/datastore/docs/editing_entity_console
+title: Edit an entity in the console
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:28Z"
+---
+
 This page describes how to edit an entity using the [Google Cloud console](https://console.cloud.google.com/) .
 
 To learn how to modify an entity programmatically, see [Updating an entity](https://docs.cloud.google.com/datastore/docs/concepts/entities#updating_an_entity) .

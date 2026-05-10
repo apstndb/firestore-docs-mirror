@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-compound-multi-eq
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-compound-multi-eq
+title: Query a Firestore collection with multiple eq filters
+description: Query a Firestore collection with multiple eq filters
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:02Z"
+---
+
 Query a Firestore collection with multiple eq filters
 
 ## Explore further

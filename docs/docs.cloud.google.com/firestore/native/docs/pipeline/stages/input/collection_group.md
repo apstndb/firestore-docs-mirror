@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection_group
+uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection_group
+title: Collection Group (Input Stage)
+description: Describes how to use the collection_group stage in Firestore Pipeline Operations. Covers returning all documents from a given collection ID, regardless of its parent.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:59Z"
+---
+
 # Collection Group (Input Stage)
 
 ## Description

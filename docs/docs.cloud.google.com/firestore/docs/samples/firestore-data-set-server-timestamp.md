@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-data-set-server-timestamp
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-server-timestamp
+title: Update a Firestore document Timestamp
+description: Update a Firestore document Timestamp
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:02Z"
+---
+
 Update a Firestore document Timestamp
 
 ## Explore further

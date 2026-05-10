@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-single-examples-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-single-examples-async
+title: Querying Firestore collections with one range (async)
+description: Querying Firestore collections with one range (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:44Z"
+---
+
 Querying Firestore collections with one range (async).
 
 ## Explore further

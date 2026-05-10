@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/StructuredQuery
+uri: https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/StructuredQuery
+title: StructuredQuery
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-03-05T19:16:04Z"
+---
+
 A Firestore query.
 
 The query stages are executed in the following order: 1. from 2. where 3. select 4. orderBy + startAt + endAt 5. offset 6. limit 7. findNearest

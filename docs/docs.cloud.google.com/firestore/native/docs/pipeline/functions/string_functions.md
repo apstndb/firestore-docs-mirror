@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/pipeline/functions/string_functions
+uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/string_functions
+title: String Functions Reference
+description: Explains how to use string functions like STARTS_WITH, ENDS_WITH, and LIKE in Firestore Pipeline operations.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:59Z"
+---
+
 # String Functions Reference
 
 ## **String Functions**

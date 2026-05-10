@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-increment-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-increment-async
+title: Incrementing a Firestore document field while using shards (async)
+description: Incrementing a Firestore document field while using shards (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:44Z"
+---
+
 Incrementing a Firestore document field while using shards (async).
 
 ## Explore further

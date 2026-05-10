@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/query-explain
+uri: https://docs.cloud.google.com/firestore/native/docs/query-explain
+title: Understand query performance using Query Explain
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:51Z"
+---
+
 # Understand query performance using Query Explain
 
 Query Explain allows you to submit Firestore in Native Mode queries to the backend and receive detailed performance statistics on backend query execution in return. It functions like the `EXPLAIN [ANALYZE]` operation in many relational database systems.

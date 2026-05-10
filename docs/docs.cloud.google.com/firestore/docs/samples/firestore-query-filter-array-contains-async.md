@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-array-contains-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-array-contains-async
+title: Query a Firestore collection with an array_contains filter (async)
+description: Query a Firestore collection with an array_contains filter (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:02Z"
+---
+
 Query a Firestore collection with an array\_contains filter (async).
 
 ## Explore further

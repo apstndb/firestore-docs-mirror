@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/pipeline/functions/comparison_functions
+uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/comparison_functions
+title: Comparison Functions Reference
+description: Explains how to use comparison functions like EQUAL, GREATER_THAN, and LESS_THAN in Firestore Pipeline operations.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:59Z"
+---
+
 # Comparison Functions Reference
 
 ## **Comparison Functions**

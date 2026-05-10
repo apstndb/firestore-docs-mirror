@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/find_nearest
+uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/find_nearest
+title: Find Nearest (Transformation Stage)
+description: Describes how to use the find_nearest stage in Firestore Pipeline Operations. Covers performing a nearest neighbor vector search on the given embedding field.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:59Z"
+---
+
 # Find Nearest (Transformation Stage)
 
 ## Description

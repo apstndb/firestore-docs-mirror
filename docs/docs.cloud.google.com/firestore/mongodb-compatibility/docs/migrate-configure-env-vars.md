@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-env-vars
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-env-vars
+title: Configure environment variables
+description: Configure environment variables for migrating data to Firestore with MongoDB compatibility, including common parameters and source-specific settings for various MongoDB deployments.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:37Z"
+---
+
 # Configure environment variables
 
 This page describes the preparation part of the [migration process](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-data) where you configure environment variables in your local environment. From this environment, you will later execute the commands that configure and actuate the migration process. Each of these commands will use one or more environment variables that you set at this stage.

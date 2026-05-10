@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/concepts/storage-size
+uri: https://docs.cloud.google.com/datastore/docs/concepts/storage-size
+title: Storage Size Calculations
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:38Z"
+---
+
 This page describes the storage size of entities, keys, properties, and index entries in Firestore in Datastore mode. You can learn about the costs of this storage at [Datastore mode Pricing](https://docs.cloud.google.com/datastore/docs/pricing) .
 
 ## String size

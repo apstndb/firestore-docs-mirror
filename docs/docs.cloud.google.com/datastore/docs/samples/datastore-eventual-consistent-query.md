@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-eventual-consistent-query
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-eventual-consistent-query
+title: Eventual consistent query read policy
+description: Use a read policy.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:25Z"
+---
+
 Use a read policy.
 
 ## Explore further

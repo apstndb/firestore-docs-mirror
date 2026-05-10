@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/indexes
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/indexes
+title: gcloud beta datastore indexes
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T21:26:25Z"
+---
+
 NAME
 
 gcloud beta datastore indexes - manage your Cloud Datastore indexes

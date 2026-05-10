@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/keyvis-getting-started
+uri: https://docs.cloud.google.com/datastore/docs/keyvis-getting-started
+title: Get started with Key Visualizer
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:28Z"
+---
+
 This page describes how to use Key Visualizer to check for performance issues that are related to your Firestore in Datastore mode usage patterns.
 
 ### Edition and mode requirements

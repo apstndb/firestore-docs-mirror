@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/keyvis-exploring-heatmaps
+uri: https://docs.cloud.google.com/firestore/native/docs/keyvis-exploring-heatmaps
+title: Exploring heatmaps
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:57Z"
+---
+
 # Exploring heatmaps
 
 This page describes how to analyze the heatmap in a Key Visualizer scan so you can identify the source of a Firestore performance issue.

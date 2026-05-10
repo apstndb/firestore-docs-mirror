@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/audit-logging
+uri: https://docs.cloud.google.com/datastore/docs/audit-logging
+title: Datastore audit logging
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:28Z"
+---
+
 This document describes audit logging for Datastore. Google Cloud services generate audit logs that record administrative and access activities within your Google Cloud resources. For more information about Cloud Audit Logs, see the following:
 
   - [Types of audit logs](https://docs.cloud.google.com/logging/docs/audit#types)

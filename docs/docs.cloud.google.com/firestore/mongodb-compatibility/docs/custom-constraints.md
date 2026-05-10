@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/custom-constraints
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/custom-constraints
+title: Manage Firestore with MongoDB compatibility resources using custom constraints
+description: Manage Firestore with MongoDB compatibility resources using custom constraints, including enforcing policies for database creation, location, point-in-time recovery, delete protection, and CMEK.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:37Z"
+---
+
 # Manage Firestore with MongoDB compatibility resources using custom constraints
 
 This page shows you how to use Organization Policy Service custom constraints to restrict specific operations on the following Google Cloud resources:

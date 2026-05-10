@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases
+title: Create and manage databases
+description: Create, update, and delete Firestore with MongoDB compatibility databases.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:37Z"
+---
+
 # Create and manage databases
 
 This page describes how to create, update, and delete Firestore with MongoDB compatibility databases. You can create multiple Firestore databases per project. You can use multiple databases to set up production and testing environments, to isolate customer data, and for data regionalization.

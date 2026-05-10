@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/delete
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/delete
+title: gcloud firestore backups schedules delete
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T21:27:18Z"
+---
+
 NAME
 
 gcloud firestore backups schedules delete - deletes a Cloud Firestore backup schedule

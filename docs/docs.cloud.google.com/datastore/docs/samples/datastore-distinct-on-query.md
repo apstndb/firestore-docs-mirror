@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-distinct-on-query
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-distinct-on-query
+title: Distinct on query
+description: Use distinct clause in a query.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:25Z"
+---
+
 Use distinct clause in a query.
 
 ## Explore further

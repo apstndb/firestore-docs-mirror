@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/dataflow-connector
+uri: https://docs.cloud.google.com/firestore/native/docs/dataflow-connector
+title: Process data in bulk with Dataflow
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:57Z"
+---
+
 # Process data in bulk with Dataflow
 
 This page gives examples of how to use [Dataflow](https://cloud.google.com/dataflow) to perform bulk Firestore operations in an Apache Beam [pipeline](https://cloud.google.com/dataflow/docs/concepts/beam-programming-model#concepts) . Apache Beam supports a connector for Firestore. You can use this connector to run batch and streaming operations in Dataflow.

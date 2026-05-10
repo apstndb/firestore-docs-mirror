@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size
+title: Storage size calculations
+description: Understand how storage size is calculated for documents, fields, and index entries in Firestore with MongoDB compatibility.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:37Z"
+---
+
 # Storage size calculations
 
 This page describes the storage size of documents, fields, and index entries in Firestore with MongoDB compatibility.

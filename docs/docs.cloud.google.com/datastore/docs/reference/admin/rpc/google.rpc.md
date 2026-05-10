@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.rpc
+uri: https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.rpc
+title: Package google.rpc
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2025-12-05T18:21:43Z"
+---
+
 ## Index
 
   - `  Status  ` (message)

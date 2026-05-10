@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/manage-databases
+uri: https://docs.cloud.google.com/datastore/docs/manage-databases
+title: Manage databases
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:28Z"
+---
+
 [Video](https://www.youtube.com/watch?v=Lx6pf2Bq5Hw)
 
 This page describes how to create, update, and delete Firestore in Datastore mode databases. You can create multiple Firestore databases per project. You can use multiple databases to set up production and testing environments, to isolate customer data, and for data regionalization.

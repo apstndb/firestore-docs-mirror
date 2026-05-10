@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/export
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/export
+title: gcloud beta firestore export
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2025-11-18T21:18:14Z"
+---
+
 NAME
 
 gcloud beta firestore export - export Cloud Firestore documents to Google Cloud Storage

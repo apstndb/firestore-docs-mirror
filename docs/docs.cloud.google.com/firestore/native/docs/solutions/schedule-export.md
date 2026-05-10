@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/solutions/schedule-export
+uri: https://docs.cloud.google.com/firestore/native/docs/solutions/schedule-export
+title: Schedule data exports
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:50Z"
+---
+
 # Schedule data exports
 
 This page describes how to schedule exports of your Firestore data. To run exports on a schedule, we recommend using Cloud Run functions and Cloud Scheduler.

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/app-engine-requirement
+uri: https://docs.cloud.google.com/firestore/native/docs/app-engine-requirement
+title: App Engine Requirement
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:57Z"
+---
+
 # App Engine Requirement
 
 Previously, all Firestore databases were linked to an App Engine app. When linked, your database requires an active App Engine app in the same project. Without the active App Engine app, read and write access to the database is disabled.

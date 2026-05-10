@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/create
+uri: https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/create
+title: 'Method: projects.databases.indexes.create'
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-03-20T21:17:05Z"
+---
+
 Creates the specified index. A newly created index's initial state is `CREATING` . On completion of the returned `  google.longrunning.Operation  ` , the state will be `READY` . If the index already exists, the call will return an `ALREADY_EXISTS` status.
 
 During creation, the process could result in an error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index with `  delete  ` , then re-creating the index with `  create  ` .

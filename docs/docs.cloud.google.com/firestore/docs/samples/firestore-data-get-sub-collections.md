@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-data-get-sub-collections
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-sub-collections
+title: Get Firestore documents in nested collections
+description: Get Firestore documents in nested collections
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:00Z"
+---
+
 Get Firestore documents in nested collections
 
 ## Explore further

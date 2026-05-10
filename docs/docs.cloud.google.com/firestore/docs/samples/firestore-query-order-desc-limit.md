@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-query-order-desc-limit
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-desc-limit
+title: Ordering and limiting Firestore queries in descending order
+description: Ordering and limiting Firestore queries in descending order
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:44Z"
+---
+
 Ordering and limiting Firestore queries in descending order
 
 ## Explore further

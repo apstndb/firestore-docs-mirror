@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection
+uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection
+title: Collection (Input Stage)
+description: Describes how to use the collection stage in Firestore Pipeline Operations. Covers returning all documents from a given collection.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:59Z"
+---
+
 # Collection (Input Stage)
 
 ## Description

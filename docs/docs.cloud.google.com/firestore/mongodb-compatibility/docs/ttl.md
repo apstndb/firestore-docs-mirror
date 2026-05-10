@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl
+title: Manage data retention with TTL indexes
+description: Manage data retention with TTL indexes in a Firestore with MongoDB compatibility database.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:57Z"
+---
+
 # Manage data retention with TTL indexes
 
 This page describes how to use the MongoDB API, the Google Cloud console, and the Google Cloud CLI to configure time to live (TTL) indexes.

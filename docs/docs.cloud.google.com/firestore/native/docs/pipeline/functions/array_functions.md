@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/pipeline/functions/array_functions
+uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/array_functions
+title: Array Functions Reference
+description: Explains how to use array functions like ARRAY_CONTAINS, ARRAY_LENGTH, and ARRAY_GET in Firestore Pipeline operations.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:59Z"
+---
+
 # Array Functions Reference
 
 ## **Array Functions**

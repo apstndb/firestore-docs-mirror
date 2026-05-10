@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-query-order-field-invalid
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-field-invalid
+title: An example of an invalid order and limit Firestore query
+description: An example of an invalid order and limit Firestore query
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:44Z"
+---
+
 An example of an invalid order and limit Firestore query
 
 ## Code sample

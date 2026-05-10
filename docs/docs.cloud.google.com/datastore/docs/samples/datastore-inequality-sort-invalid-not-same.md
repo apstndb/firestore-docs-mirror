@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort-invalid-not-same
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort-invalid-not-same
+title: Inequality sort invalid because it's not sorted by the same property
+description: Inequality sort must be sorted by the same property and first. Use inequality sort constraints.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:27Z"
+---
+
 Inequality sort must be sorted by the same property and first. Use inequality sort constraints.
 
 ## Explore further

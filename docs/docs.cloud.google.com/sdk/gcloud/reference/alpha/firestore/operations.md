@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/operations
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/operations
+title: gcloud alpha firestore operations
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T21:28:32Z"
+---
+
 NAME
 
 gcloud alpha firestore operations - manage Long Running Operations for Cloud Firestore

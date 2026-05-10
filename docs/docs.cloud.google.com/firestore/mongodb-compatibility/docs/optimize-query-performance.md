@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/optimize-query-performance
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/optimize-query-performance
+title: Optimize query performance
+description: Optimize query performance in a Firestore with MongoDB compatibility database.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:37Z"
+---
+
 # Optimize query performance
 
 To troubleshoot slow queries, use [Query Explain](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain) to obtain the query execution plan and the runtime execution profile. The following section describe steps you can take to optimize query performance depending on the execution profile:

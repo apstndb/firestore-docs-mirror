@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-key-with-multilevel-parent
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-key-with-multilevel-parent
+title: Key with ancestors
+description: Make a key with ancestors.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:27Z"
+---
+
 Make a key with ancestors.
 
 ## Explore further

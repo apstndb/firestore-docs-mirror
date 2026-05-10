@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-36
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-36
+title: 'Supported features: 3.6'
+description: Explore the MongoDB 3.6 features supported by Firestore with MongoDB compatibility, including query and projection operators, update operators, aggregation pipeline operators, and database commands.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:37Z"
+---
+
 # Supported features: 3.6
 
 The following tables include a breakdown of MongoDB 3.6 features supported by Firestore with MongoDB compatibility. For differences in behavior, see [Behavior differences](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences) .

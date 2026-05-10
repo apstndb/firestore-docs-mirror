@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-range-valid-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-range-valid-async
+title: Use two ranges for a Firestore query (async)
+description: Use two ranges for a Firestore query (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:44Z"
+---
+
 Use two ranges for a Firestore query (async).
 
 ## Code sample

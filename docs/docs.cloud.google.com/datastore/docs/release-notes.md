@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/release-notes
+uri: https://docs.cloud.google.com/datastore/docs/release-notes
+title: Datastore release notes
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:36Z"
+---
+
 This page documents production updates to Datastore. You can periodically check this page for announcements about new or updated features, bug fixes, known issues, and deprecated functionality.
 
 You can see the latest product updates for all of Google Cloud on the [Google Cloud](https://docs.cloud.google.com/release-notes) page, browse and filter all release notes in the [Google Cloud console](https://console.cloud.google.com/release-notes) , or programmatically access release notes in [BigQuery](https://console.cloud.google.com/bigquery?p=bigquery-public-data&d=google_cloud_release_notes&t=release_notes&page=table) .

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/export
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/export
+title: gcloud alpha datastore export
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T21:27:21Z"
+---
+
 NAME
 
 gcloud alpha datastore export - export Cloud Datastore entities to Google Cloud Storage

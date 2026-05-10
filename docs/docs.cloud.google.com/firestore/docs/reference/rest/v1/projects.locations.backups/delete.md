@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations.backups/delete
+uri: https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations.backups/delete
+title: 'Method: projects.locations.backups.delete'
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-03-20T21:17:05Z"
+---
+
 Deletes a backup.
 
 ### HTTP request

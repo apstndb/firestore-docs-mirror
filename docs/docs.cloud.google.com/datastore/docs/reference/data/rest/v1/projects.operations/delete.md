@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/delete
+uri: https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/delete
+title: 'Method: projects.operations.delete'
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-03-20T21:17:05Z"
+---
+
   - [HTTP request](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/delete#body.HTTP_TEMPLATE)
   - [Path parameters](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/delete#body.PATH_PARAMETERS)
   - [Request body](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/delete#body.request_body)

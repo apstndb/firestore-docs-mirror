@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/understand-performance-monitoring
+uri: https://docs.cloud.google.com/datastore/docs/understand-performance-monitoring
+title: Understand performance monitoring in Firestore in Datastore mode
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:38Z"
+---
+
 [Cloud Monitoring](https://docs.cloud.google.com/monitoring/docs) collects metrics, events, and metadata from Google Cloud products. With Cloud Monitoring, you can also set up custom dashboards and usage alerts.
 
 This document guides you through using metrics, learning about custom metrics dashboard, and setting alerts.

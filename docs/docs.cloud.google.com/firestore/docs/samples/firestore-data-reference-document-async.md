@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-document-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-document-async
+title: Create a Firestore document reference (async)
+description: Create a Firestore document reference (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:00Z"
+---
+
 Create a Firestore document reference (async).
 
 ## Explore further

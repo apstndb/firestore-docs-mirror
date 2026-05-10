@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update
+title: gcloud firestore fields ttls update
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2026-04-28T18:46:31Z"
+---
+
 NAME
 
 gcloud firestore fields ttls update - update the TTL configuration of the given field

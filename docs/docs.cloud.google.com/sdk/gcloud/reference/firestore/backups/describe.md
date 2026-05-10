@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/describe
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/describe
+title: gcloud firestore backups describe
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T21:26:01Z"
+---
+
 NAME
 
 gcloud firestore backups describe - retrieves information about a Cloud Firestore backup

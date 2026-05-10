@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/reference/admin/rest
+uri: https://docs.cloud.google.com/datastore/docs/reference/admin/rest
+title: Cloud Datastore API
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-03-20T21:17:16Z"
+---
+
 Accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application.
 
   - [REST Resource: v1beta1.projects](https://docs.cloud.google.com/datastore/docs/reference/admin/rest#v1beta1.projects)

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-delete
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-delete
+title: Delete an entity
+description: Delete an entity.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:25Z"
+---
+
 Delete an entity.
 
 ## Explore further

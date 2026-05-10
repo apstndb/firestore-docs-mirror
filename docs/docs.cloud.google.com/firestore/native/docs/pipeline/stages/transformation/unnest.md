@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/unnest
+uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/unnest
+title: Unnest (Transformation Stage)
+description: Describes how to use the unnest stage in Firestore Pipeline Operations. Covers generating a new document for each element in an array.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:59Z"
+---
+
 # Unnest (Transformation Stage)
 
 ## Description

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/reference/rest/v1/Precondition
+uri: https://docs.cloud.google.com/firestore/docs/reference/rest/v1/Precondition
+title: Precondition
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T23:18:27Z"
+---
+
 A precondition on a document, used for conditional operations.
 
 <table>

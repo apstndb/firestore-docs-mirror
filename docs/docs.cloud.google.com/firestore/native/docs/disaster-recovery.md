@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/disaster-recovery
+uri: https://docs.cloud.google.com/firestore/native/docs/disaster-recovery
+title: Plan disaster recovery
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:57Z"
+---
+
 # Plan disaster recovery
 
 This page describes Firestore features that can help you create and implement disaster recovery plans.

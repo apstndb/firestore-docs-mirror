@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/best-practices
+uri: https://docs.cloud.google.com/datastore/docs/best-practices
+title: Best Practices
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:28Z"
+---
+
 You can use the best practices listed here as a quick reference of what to keep in mind when building an application that uses Firestore in Datastore mode. If you are just starting out with Datastore mode, this page might not be the best place to start, because it does not teach you the basics of how to use Datastore mode. If you are a new user, we suggest that you start with [Getting Started with Firestore in Datastore mode](https://docs.cloud.google.com/datastore/docs/datastore-api-tutorial) .
 
 ## General

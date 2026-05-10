@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-query-order-limit-field-valid-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-limit-field-valid-async
+title: Ordering and limiting Firestore queries with a filter (async)
+description: Ordering and limiting Firestore queries with a filter (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:44Z"
+---
+
 Ordering and limiting Firestore queries with a filter (async).
 
 ## Explore further

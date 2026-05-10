@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/create
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/create
+title: gcloud firestore databases create
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2026-04-28T18:46:17Z"
+---
+
 NAME
 
 gcloud firestore databases create - create a Google Cloud Firestore database via Firestore API

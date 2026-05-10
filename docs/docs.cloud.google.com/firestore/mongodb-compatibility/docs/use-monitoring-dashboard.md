@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard
+title: Monitor databases with Cloud Monitoring
+description: Monitor usage and performance metrics for Firestore with MongoDB compatibility.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:57Z"
+---
+
 # Monitor databases with Cloud Monitoring
 
 This page describes how to use Cloud Monitoring metrics for Firestore with MongoDB compatibility to monitor your database.

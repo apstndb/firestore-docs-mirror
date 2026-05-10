@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-array-value-equality
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-array-value-equality
+title: Filter array value with equality
+description: Filter array value with equality range.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:25Z"
+---
+
 Filter array value with equality range.
 
 ## Explore further

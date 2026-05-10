@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-transactional-update
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-transactional-update
+title: Update
+description: Use an update in a transaction.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:27Z"
+---
+
 Use an update in a transaction.
 
 ## Explore further

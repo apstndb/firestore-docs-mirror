@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/server-side-encryption
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/server-side-encryption
+title: Server-side encryption
+description: Learn about server-side encryption for Firestore with MongoDB compatibility, including automatic data encryption, Google-managed or customer-managed keys (CMEK), and how it can be combined with client-side encryption.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:37Z"
+---
+
 # Server-side encryption
 
 Firestore with MongoDB compatibility automatically encrypts all data before it is written to disk. There is no setup or configuration required and no need to modify the way you access the service. The data is automatically and transparently decrypted when read by an authorized user.

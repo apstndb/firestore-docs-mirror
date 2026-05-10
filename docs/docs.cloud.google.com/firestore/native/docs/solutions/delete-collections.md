@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/solutions/delete-collections
+uri: https://docs.cloud.google.com/firestore/native/docs/solutions/delete-collections
+title: Delete data with a callable Cloud Function
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:50Z"
+---
+
 # Delete data with a callable Cloud Function
 
 The page describes how to use a callable Cloud Function to delete data. Once you deploy this function, you can call it directly from your mobile app or website to recursively delete documents and collections. For example, you can use this solution to give select users the ability to delete entire collections.

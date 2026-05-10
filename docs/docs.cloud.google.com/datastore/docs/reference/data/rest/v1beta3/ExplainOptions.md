@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/ExplainOptions
+uri: https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/ExplainOptions
+title: ExplainOptions
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T22:06:34Z"
+---
+
   - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/ExplainOptions#SCHEMA_REPRESENTATION)
 
 Explain options for the query.

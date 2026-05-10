@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-create-connection-profiles
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-create-connection-profiles
+title: Create connection profiles
+description: Create Datastream connection profiles for migrating data from MongoDB-compatible sources to Firestore with MongoDB compatibility.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:37Z"
+---
+
 # Create connection profiles
 
 This page describes the preparation part of the [migration process](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-data) where you create Datastream connection profiles that will be used later from importing data from the MongoDB-compatible source database to the Cloud Storage bucket.

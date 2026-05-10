@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort-invalid-not-first
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort-invalid-not-first
+title: Inequality sort invalid because it's not first
+description: Inequality sort must be first. Use inequality sort constraints.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:27Z"
+---
+
 Inequality sort must be first. Use inequality sort constraints.
 
 ## Explore further

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-property-by-kind-run-query
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-property-by-kind-run-query
+title: Property by kind query
+description: Query property by kind.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:27Z"
+---
+
 Query property by kind.
 
 ## Explore further

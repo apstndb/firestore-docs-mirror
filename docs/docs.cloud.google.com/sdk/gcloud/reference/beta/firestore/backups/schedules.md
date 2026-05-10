@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/schedules
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/schedules
+title: gcloud beta firestore backups schedules
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T21:26:09Z"
+---
+
 NAME
 
 gcloud beta firestore backups schedules - manage the backup schedules for a Cloud Firestore Database

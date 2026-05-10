@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-write-to-destination
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-write-to-destination
+title: Write data to the Firestore database
+description: Write data to Firestore with MongoDB compatibility using a Dataflow pipeline.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:37Z"
+---
+
 # Write data to the Firestore database
 
 This page describes the second stage of the [migration process](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-data) where you set up a Dataflow pipeline and begin a concurrent data move from the Cloud Storage bucket into your destination Firestore with MongoDB compatibility database. This operation will run concurrently with the Datastream stream.

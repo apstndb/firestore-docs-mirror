@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields
+uri: https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields
+title: 'REST Resource: projects.databases.collectionGroups.fields'
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-04-25T02:33:14Z"
+---
+
 ## Resource: Field
 
 Represents a single field in the database.

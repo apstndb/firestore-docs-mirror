@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-add-entity
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-add-entity
+title: Add task
+description: Creates and saves an Entity of the hypothetical type &#34;Task&#34;
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:25Z"
+---
+
 Creates and saves an Entity of the hypothetical type "Task"
 
 ## Explore further

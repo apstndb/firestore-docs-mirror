@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/schedule-export
+uri: https://docs.cloud.google.com/datastore/docs/schedule-export
+title: Scheduling an Export
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-02-26T03:55:59Z"
+---
+
 This page describes how to schedule exports of your Firestore in Datastore mode data. To run exports on a schedule, we recommend using Cloud Run functions and Cloud Scheduler. Create a Cloud Function that initiates exports and use Cloud Scheduler to run your function.
 
 ## Before you begin

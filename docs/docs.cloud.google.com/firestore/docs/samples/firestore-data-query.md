@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-data-query
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-data-query
+title: Query a Firestore collection
+description: Query a Firestore collection
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:00Z"
+---
+
 Query a Firestore collection
 
 ## Explore further

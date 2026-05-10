@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-quickstart-python
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-quickstart-python
+title: NDB Context Usage
+description: Use Cloud NDB client context to query a Datastore model within a function
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:27Z"
+---
+
 Use Cloud NDB client context to query a Datastore model within a function
 
 ## Explore further

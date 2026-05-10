@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-create-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-create-async
+title: Create a Firestore sharded counter (async)
+description: Create a Firestore sharded counter (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:44Z"
+---
+
 Create a Firestore sharded counter (async).
 
 ## Explore further

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/Operation
+uri: https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/Operation
+title: Operation
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2025-12-05T18:21:43Z"
+---
+
   - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/Operation#SCHEMA_REPRESENTATION)
   - [Status](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/Operation#Status)
       - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/Operation#Status.SCHEMA_REPRESENTATION)

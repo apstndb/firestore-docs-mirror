@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-data-set-doc-upsert
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-doc-upsert
+title: Update a Firestore document using merge
+description: Update a Firestore document using merge
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:02Z"
+---
+
 Update a Firestore document using merge
 
 ## Explore further

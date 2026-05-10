@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/list
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/list
+title: gcloud firestore databases list
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T21:28:29Z"
+---
+
 NAME
 
 gcloud firestore databases list - lists all Firestore databases under the project

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale-enterprise
+uri: https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale-enterprise
+title: Understand reads and writes at scale
+description: Understand how Firestore scales to handle increasing traffic.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:51Z"
+---
+
 # Understand reads and writes at scale
 
 Read this document to make informed decisions on architecting your applications for high performance and reliability. This document includes advanced Firestore topics. If you're just starting out with Firestore, see the [quickstart guide](https://docs.cloud.google.com/firestore/native/docs/create-and-query-database) .

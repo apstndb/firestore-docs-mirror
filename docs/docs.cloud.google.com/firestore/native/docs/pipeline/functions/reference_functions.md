@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/pipeline/functions/reference_functions
+uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/reference_functions
+title: Reference Functions Reference
+description: Explains how to use reference functions like COLLECTION_ID, DOCUMENT_ID, and PARENT in Firestore Pipeline operations.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:59Z"
+---
+
 # Reference Functions Reference
 
 ## **Reference Functions**

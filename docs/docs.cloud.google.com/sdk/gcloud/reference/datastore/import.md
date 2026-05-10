@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/datastore/import
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/datastore/import
+title: gcloud datastore import
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T21:28:00Z"
+---
+
 NAME
 
 gcloud datastore import - import Cloud Datastore entities from Google Cloud Storage

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/emulator
+uri: https://docs.cloud.google.com/firestore/native/docs/emulator
+title: Use Firestore emulator locally
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:57Z"
+---
+
 # Use Firestore emulator locally
 
 The [Google Cloud CLI](https://docs.cloud.google.com/sdk) provides a local, in-memory emulator for Firestore that you can use to test your application. You can use the emulator with all Firestore client libraries. You should use the emulator only for local testing.

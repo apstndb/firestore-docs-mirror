@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_functions
+uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_functions
+title: Map Functions Reference
+description: Explains how to use map functions like MAP_GET, MAP_SET, and MAP_KEYS in Firestore Pipeline operations.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T10:46:16Z"
+---
+
 # Map Functions Reference
 
 ## **Map Functions**

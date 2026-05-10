@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases
+title: gcloud alpha firestore databases
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T21:27:15Z"
+---
+
 NAME
 
 gcloud alpha firestore databases - manage Creation of Cloud Firestore in Native mode Database

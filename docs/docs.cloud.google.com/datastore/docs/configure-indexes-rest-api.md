@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/configure-indexes-rest-api
+uri: https://docs.cloud.google.com/datastore/docs/configure-indexes-rest-api
+title: Configuring indexes with the REST API
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:28Z"
+---
+
 This page describes how to create, delete, and list Datastore mode composite indexes using the Datastore mode REST API.
 
 The Google Cloud CLI provides a convenient way to access the Datastore mode REST API and manage your composite indexes. However, you can directly access the Datastore mode REST API to create your own tools for managing your composite indexes. For example, you can create tools to automate index provisioning and management.

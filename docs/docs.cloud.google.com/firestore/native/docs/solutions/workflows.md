@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/solutions/workflows
+uri: https://docs.cloud.google.com/firestore/native/docs/solutions/workflows
+title: Firestore connector for Workflows
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:50Z"
+---
+
 # Firestore connector for Workflows
 
 [Workflows](https://docs.cloud.google.com/workflows/docs/overview) is a Google Cloud product you can use to create serverless workflows that link series of serverless tasks together in an order you define. Combine functionality from Google Cloud's APIs, serverless products like Cloud Run functions and Cloud Run, and calls to external APIs to create flexible serverless applications.

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-subcollection-async
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-subcollection-async
+title: Create a Firestore subcollection reference (async)
+description: Create a Firestore subcollection reference (async).
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:59:00Z"
+---
+
 Create a Firestore subcollection reference (async).
 
 ## Explore further

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/reliability-recommender
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/reliability-recommender
+title: Reliability recommender
+description: Use the Reliability recommender for Firestore with MongoDB compatibility to view recommendations and insights for improving database reliability, including enabling scheduled backups and disaster recovery planning.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:37Z"
+---
+
 # Reliability recommender
 
 The Reliability recommender supports the [Enable scheduled backups](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/backups) recommendation which is a part of [Disaster Recovery Plan](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/disaster-recovery) to protect your data against data disasters such as accidental deletion or modification of data.

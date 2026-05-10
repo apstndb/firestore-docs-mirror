@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/mongodb-compatibility/docs/securing-with-vpc-sc
+uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/securing-with-vpc-sc
+title: VPC Service Controls
+description: Secure Firestore with MongoDB compatibility using VPC Service Controls, including bundled services, restricted VIP configuration, and egress protection for import and export operations.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:37Z"
+---
+
 # VPC Service Controls
 
 [VPC Service Controls](https://cloud.google.com/vpc-service-controls/) lets organizations define a perimeter around Google Cloud resources to mitigate data exfiltration risks. With VPC Service Controls, you create perimeters that protect the resources and data of services that you explicitly specify.

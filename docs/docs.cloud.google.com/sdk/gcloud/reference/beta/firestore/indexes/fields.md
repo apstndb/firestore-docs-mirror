@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/fields
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/fields
+title: gcloud beta firestore indexes fields
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T21:26:12Z"
+---
+
 NAME
 
 gcloud beta firestore indexes fields - manage single-field indexes for Cloud Firestore

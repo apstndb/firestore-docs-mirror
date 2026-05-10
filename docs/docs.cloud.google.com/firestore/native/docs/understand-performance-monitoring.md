@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/understand-performance-monitoring
+uri: https://docs.cloud.google.com/firestore/native/docs/understand-performance-monitoring
+title: Understand performance monitoring in Firestore
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:51Z"
+---
+
 # Understand performance monitoring in Firestore
 
 [Cloud Monitoring](https://cloud.google.com/monitoring/docs/) collects metrics, events, and metadata from Google Cloud products. The data that is reported on the [Usage dashboard](https://firebase.google.com/docs/firestore/monitor-usage#usage_dashboard) and [Security rule usage](https://firebase.google.com/docs/firestore/monitor-usage#security_rule_usage) can also be accessed through Cloud Monitoring for more detailed analysis. With Cloud Monitoring, you can also set up custom dashboards and usage alerts.

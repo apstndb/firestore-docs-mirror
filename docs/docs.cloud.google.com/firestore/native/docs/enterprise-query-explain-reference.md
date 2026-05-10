@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/enterprise-query-explain-reference
+uri: https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain-reference
+title: Query execution reference
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:57Z"
+---
+
 # Query execution reference
 
 This page explains the output of a query executed with Query Explain. To learn how to execute a query with Query Explain, see [Analyze query execution with Query Explain](https://docs.cloud.google.com/firestore/docs/pipeline/enterprise-query-explain) .

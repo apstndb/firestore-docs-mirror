@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-range-valid
+uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-range-valid
+title: Use two ranges for a Firestore query
+description: Use two ranges for a Firestore query
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:44Z"
+---
+
 Use two ranges for a Firestore query
 
 ## Code sample

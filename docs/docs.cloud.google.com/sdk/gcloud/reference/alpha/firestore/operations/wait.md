@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/operations/wait
+uri: https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/operations/wait
+title: gcloud alpha firestore operations wait
+description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
+data_source: docs.cloud.google.com
+update_time: "2025-10-17T21:28:49Z"
+---
+
 NAME
 
 gcloud alpha firestore operations wait - waits a Cloud Firestore admin operation to complete

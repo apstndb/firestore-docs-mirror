@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/tags
+uri: https://docs.cloud.google.com/firestore/native/docs/tags
+title: Create and manage tags
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:51Z"
+---
+
 # Create and manage tags
 
 This guide describes how to create and manage tags on Firestore databases.

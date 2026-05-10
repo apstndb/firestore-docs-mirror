@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/understand-error-codes
+uri: https://docs.cloud.google.com/firestore/native/docs/understand-error-codes
+title: Understand error codes
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:51Z"
+---
+
 # Understand error codes
 
 This page lists error codes that you might encounter and provides suggestions for how to fix each of them.

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions
+uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions
+title: Arithmetic Functions Reference
+description: Explains how to use arithmetic functions like ABS, ADD, SUBTRACT, and MULTIPLY in Firestore Pipeline operations.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T06:58:59Z"
+---
+
 # Arithmetic Functions Reference
 
 ## **Arithmetic Functions**

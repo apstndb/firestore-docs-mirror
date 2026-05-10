@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/samples/datastore-ascending-sort
+uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-ascending-sort
+title: Ascending sort
+description: Ascending sort.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:25Z"
+---
+
 Ascending sort.
 
 ## Explore further

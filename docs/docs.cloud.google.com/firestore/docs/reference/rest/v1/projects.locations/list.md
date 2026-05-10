@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations/list
+uri: https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations/list
+title: 'Method: projects.locations.list'
+description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+data_source: docs.cloud.google.com
+update_time: "2026-04-25T02:33:14Z"
+---
+
 Lists information about the supported locations for this service.
 
 This method lists locations based on the resource scope provided in the `  ListLocationsRequest.name  ` field:

@@ -1,3 +1,12 @@
+---
+name: documents/docs.cloud.google.com/datastore/docs/concepts/stats
+uri: https://docs.cloud.google.com/datastore/docs/concepts/stats
+title: Datastore statistics
+description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
+data_source: docs.cloud.google.com
+update_time: "2026-05-09T05:18:38Z"
+---
+
 Firestore in Datastore mode (Datastore) maintains statistics about the data that you store in an application, such as how many entities there are, of what kind, or how much space is used by property values of a given type.
 
 You can view these statistics in the Google Cloud console in one of the following ways:
