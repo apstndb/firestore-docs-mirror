@@ -87,7 +87,7 @@ Use Swift Package Manager to install and manage Firebase dependencies.
 
 2.  Declare the dependency for the Firestore library for Android in your module (app-level) Gradle file (usually `app/build.gradle.kts` or `app/build.gradle` ):
     
-        implementation("com.google.firebase:firebase-firestore:26.2.0")
+        implementation("com.google.firebase:firebase-firestore:26.3.0")
     
     If your app uses multiple Firebase libraries, consider using the [Firebase Android BoM](https://firebase.google.com/docs/android/learn-more#bom) , which ensures that your app's Firebase library versions are always compatible.
     
