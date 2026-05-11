@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-composite-fi
 title: Composite filter
 description: Use a composite filter.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:25Z"
 ---
 
 Use a composite filter.

@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/app-engine-requirement
 title: App Engine Requirement
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:28Z"
 ---
 
 Previously, all Firestore in Datastore mode databases were linked to an App Engine app. When linked, your database requires an active App Engine app in the same project. Without the active App Engine app, read and write access to the database is disabled.

@@ -1,969 +1,969 @@
-https://docs.cloud.google.com/datastore/docs
-https://docs.cloud.google.com/datastore/docs/access/iam
-https://docs.cloud.google.com/datastore/docs/activate
-https://docs.cloud.google.com/datastore/docs/aggregation-queries
-https://docs.cloud.google.com/datastore/docs/apis
-https://docs.cloud.google.com/datastore/docs/app-engine-requirement
-https://docs.cloud.google.com/datastore/docs/articles/balancing-strong-and-eventual-consistency-with-google-cloud-datastore
-https://docs.cloud.google.com/datastore/docs/articles/fast-and-reliable-ranking-in-datastore
-https://docs.cloud.google.com/datastore/docs/audit-logging
-https://docs.cloud.google.com/datastore/docs/backups
-https://docs.cloud.google.com/datastore/docs/best-practices
-https://docs.cloud.google.com/datastore/docs/billing-questions
-https://docs.cloud.google.com/datastore/docs/bulk-delete
-https://docs.cloud.google.com/datastore/docs/client-side-traces
-https://docs.cloud.google.com/datastore/docs/cloud-datastore-best-practices
-https://docs.cloud.google.com/datastore/docs/cmek
-https://docs.cloud.google.com/datastore/docs/concepts/cloud-datastore-transactions
-https://docs.cloud.google.com/datastore/docs/concepts/encryption-at-rest
-https://docs.cloud.google.com/datastore/docs/concepts/entities
-https://docs.cloud.google.com/datastore/docs/concepts/errors
-https://docs.cloud.google.com/datastore/docs/concepts/indexes
-https://docs.cloud.google.com/datastore/docs/concepts/limits
-https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries
-https://docs.cloud.google.com/datastore/docs/concepts/multitenancy
-https://docs.cloud.google.com/datastore/docs/concepts/optimize-indexes
-https://docs.cloud.google.com/datastore/docs/concepts/overview
-https://docs.cloud.google.com/datastore/docs/concepts/queries
-https://docs.cloud.google.com/datastore/docs/concepts/stats
-https://docs.cloud.google.com/datastore/docs/concepts/storage-size
-https://docs.cloud.google.com/datastore/docs/concepts/structuring_for_strong_consistency
-https://docs.cloud.google.com/datastore/docs/concepts/transactions
-https://docs.cloud.google.com/datastore/docs/configure-indexes-rest-api
-https://docs.cloud.google.com/datastore/docs/console/datastore-statistics
-https://docs.cloud.google.com/datastore/docs/console/managing-datastore
-https://docs.cloud.google.com/datastore/docs/cuds
-https://docs.cloud.google.com/datastore/docs/datastore-api-tutorial
-https://docs.cloud.google.com/datastore/docs/disaster-recovery
-https://docs.cloud.google.com/datastore/docs/editing_entity_console
-https://docs.cloud.google.com/datastore/docs/emulator
-https://docs.cloud.google.com/datastore/docs/eventarc
-https://docs.cloud.google.com/datastore/docs/export-import-entities
-https://docs.cloud.google.com/datastore/docs/extend-with-functions-2nd-gen
-https://docs.cloud.google.com/datastore/docs/firestore-or-datastore
-https://docs.cloud.google.com/datastore/docs/getting-support
-https://docs.cloud.google.com/datastore/docs/java-client-grpc
-https://docs.cloud.google.com/datastore/docs/key-visualizer
-https://docs.cloud.google.com/datastore/docs/keyvis-exploring-heatmaps
-https://docs.cloud.google.com/datastore/docs/keyvis-getting-started
-https://docs.cloud.google.com/datastore/docs/keyvis-patterns
-https://docs.cloud.google.com/datastore/docs/keyvis-patterns-index
-https://docs.cloud.google.com/datastore/docs/langchain
-https://docs.cloud.google.com/datastore/docs/locations
-https://docs.cloud.google.com/datastore/docs/manage-databases
-https://docs.cloud.google.com/datastore/docs/multiple-range-fields
-https://docs.cloud.google.com/datastore/docs/multiple-range-optimize-indexes
-https://docs.cloud.google.com/datastore/docs/pitr
-https://docs.cloud.google.com/datastore/docs/query-explain-analyze
-https://docs.cloud.google.com/datastore/docs/query-explain-analyze-report-reference
-https://docs.cloud.google.com/datastore/docs/query-insights
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/CommonMetadata
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ConcurrencyMode
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/DatastoreFirestoreMigrationMetadata
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/EntityFilter
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ExportEntitiesMetadata
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ExportEntitiesResponse
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ImportEntitiesMetadata
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/IndexOperationMetadata
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/MigrationProgressEvent
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/MigrationState
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/MigrationStateEvent
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/MigrationStep
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/Operation
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/OperationType
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/Progress
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/State
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/WaitOperationRequest
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes/create
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes/delete
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes/get
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes/list
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations/cancel
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations/delete
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations/get
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations/list
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects/export
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects/import
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1beta1/projects
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1beta1/projects/export
-https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1beta1/projects/import
-https://docs.cloud.google.com/datastore/docs/reference/admin/rpc
-https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1
-https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1beta1
-https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.longrunning
-https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.rpc
-https://docs.cloud.google.com/datastore/docs/reference/data/rest
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/ArrayValue
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/GqlQueryParameter
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/LatLng
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/Value
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/WaitOperationRequest
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/EntityResult
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/ExplainMetrics
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/ExplainOptions
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/GqlQuery
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/MoreResultsType
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/PropertyMask
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/PropertyReference
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/Query
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/ReadOptions
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/TransactionOptions
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/cancel
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/delete
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/get
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/list
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/allocateIds
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/beginTransaction
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/commit
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/lookup
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/reserveIds
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/rollback
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/runAggregationQuery
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/runQuery
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/EntityResult
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/ExplainMetrics
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/ExplainOptions
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/GqlQuery
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/MoreResultsType
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/PropertyMask
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/PropertyReference
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/Query
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/ReadOptions
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/allocateIds
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/beginTransaction
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/lookup
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/reserveIds
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/rollback
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery
-https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runQuery
-https://docs.cloud.google.com/datastore/docs/reference/data/rpc
-https://docs.cloud.google.com/datastore/docs/reference/data/rpc/google.datastore.v1
-https://docs.cloud.google.com/datastore/docs/reference/data/rpc/google.datastore.v1beta3
-https://docs.cloud.google.com/datastore/docs/reference/data/rpc/google.longrunning
-https://docs.cloud.google.com/datastore/docs/reference/data/rpc/google.rpc
-https://docs.cloud.google.com/datastore/docs/reference/data/rpc/google.type
-https://docs.cloud.google.com/datastore/docs/reference/gql_reference
-https://docs.cloud.google.com/datastore/docs/reference/libraries
-https://docs.cloud.google.com/datastore/docs/regional-endpoints
-https://docs.cloud.google.com/datastore/docs/release-notes
-https://docs.cloud.google.com/datastore/docs/reliability-recommender
-https://docs.cloud.google.com/datastore/docs/resources
-https://docs.cloud.google.com/datastore/docs/restore-in-place
-https://docs.cloud.google.com/datastore/docs/samples
-https://docs.cloud.google.com/datastore/docs/samples/datastore-add-entity
-https://docs.cloud.google.com/datastore/docs/samples/datastore-admin-client-create
-https://docs.cloud.google.com/datastore/docs/samples/datastore-admin-entities-export
-https://docs.cloud.google.com/datastore/docs/samples/datastore-admin-entities-import
-https://docs.cloud.google.com/datastore/docs/samples/datastore-admin-index-get
-https://docs.cloud.google.com/datastore/docs/samples/datastore-admin-index-list
-https://docs.cloud.google.com/datastore/docs/samples/datastore-ancestor-query
-https://docs.cloud.google.com/datastore/docs/samples/datastore-array-value
-https://docs.cloud.google.com/datastore/docs/samples/datastore-array-value-equality
-https://docs.cloud.google.com/datastore/docs/samples/datastore-array-value-inequality-range
-https://docs.cloud.google.com/datastore/docs/samples/datastore-ascending-sort
-https://docs.cloud.google.com/datastore/docs/samples/datastore-basic-entity
-https://docs.cloud.google.com/datastore/docs/samples/datastore-basic-query
-https://docs.cloud.google.com/datastore/docs/samples/datastore-batch-delete
-https://docs.cloud.google.com/datastore/docs/samples/datastore-batch-lookup
-https://docs.cloud.google.com/datastore/docs/samples/datastore-batch-upsert
-https://docs.cloud.google.com/datastore/docs/samples/datastore-build-service
-https://docs.cloud.google.com/datastore/docs/samples/datastore-built-in-index-queries
-https://docs.cloud.google.com/datastore/docs/samples/datastore-composite-filter
-https://docs.cloud.google.com/datastore/docs/samples/datastore-cursor-paging
-https://docs.cloud.google.com/datastore/docs/samples/datastore-delete
-https://docs.cloud.google.com/datastore/docs/samples/datastore-delete-entity
-https://docs.cloud.google.com/datastore/docs/samples/datastore-descending-sort
-https://docs.cloud.google.com/datastore/docs/samples/datastore-distinct-on-query
-https://docs.cloud.google.com/datastore/docs/samples/datastore-entity-with-parent
-https://docs.cloud.google.com/datastore/docs/samples/datastore-equal-and-inequality-range
-https://docs.cloud.google.com/datastore/docs/samples/datastore-eventual-consistent-query
-https://docs.cloud.google.com/datastore/docs/samples/datastore-example-1
-https://docs.cloud.google.com/datastore/docs/samples/datastore-exploding-properties
-https://docs.cloud.google.com/datastore/docs/samples/datastore-incomplete-key
-https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-invalid
-https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-range
-https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort
-https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort-invalid-not-first
-https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort-invalid-not-same
-https://docs.cloud.google.com/datastore/docs/samples/datastore-insert
-https://docs.cloud.google.com/datastore/docs/samples/datastore-key-filter
-https://docs.cloud.google.com/datastore/docs/samples/datastore-key-with-multilevel-parent
-https://docs.cloud.google.com/datastore/docs/samples/datastore-key-with-parent
-https://docs.cloud.google.com/datastore/docs/samples/datastore-keys-only-query
-https://docs.cloud.google.com/datastore/docs/samples/datastore-kind-run-query
-https://docs.cloud.google.com/datastore/docs/samples/datastore-kindless-query
-https://docs.cloud.google.com/datastore/docs/samples/datastore-limit
-https://docs.cloud.google.com/datastore/docs/samples/datastore-lookup
-https://docs.cloud.google.com/datastore/docs/samples/datastore-merge-entity
-https://docs.cloud.google.com/datastore/docs/samples/datastore-merged-index-query
-https://docs.cloud.google.com/datastore/docs/samples/datastore-merged-index-tag-queries
-https://docs.cloud.google.com/datastore/docs/samples/datastore-multi-sort
-https://docs.cloud.google.com/datastore/docs/samples/datastore-named-key
-https://docs.cloud.google.com/datastore/docs/samples/datastore-namespace-run-query
-https://docs.cloud.google.com/datastore/docs/samples/datastore-owner-size-tag-query
-https://docs.cloud.google.com/datastore/docs/samples/datastore-projection-query
-https://docs.cloud.google.com/datastore/docs/samples/datastore-properties
-https://docs.cloud.google.com/datastore/docs/samples/datastore-property-by-kind-run-query
-https://docs.cloud.google.com/datastore/docs/samples/datastore-property-filter
-https://docs.cloud.google.com/datastore/docs/samples/datastore-property-filtering-run-query
-https://docs.cloud.google.com/datastore/docs/samples/datastore-property-run-query
-https://docs.cloud.google.com/datastore/docs/samples/datastore-query-filter-or
-https://docs.cloud.google.com/datastore/docs/samples/datastore-quickstart
-https://docs.cloud.google.com/datastore/docs/samples/datastore-quickstart-python
-https://docs.cloud.google.com/datastore/docs/samples/datastore-retrieve-entities
-https://docs.cloud.google.com/datastore/docs/samples/datastore-run-query
-https://docs.cloud.google.com/datastore/docs/samples/datastore-run-query-projection
-https://docs.cloud.google.com/datastore/docs/samples/datastore-size-coloration-query
-https://docs.cloud.google.com/datastore/docs/samples/datastore-transactional-get-or-create
-https://docs.cloud.google.com/datastore/docs/samples/datastore-transactional-retry
-https://docs.cloud.google.com/datastore/docs/samples/datastore-transactional-single-entity-group-read-only
-https://docs.cloud.google.com/datastore/docs/samples/datastore-transactional-update
-https://docs.cloud.google.com/datastore/docs/samples/datastore-unindexed-property-query
-https://docs.cloud.google.com/datastore/docs/samples/datastore-update
-https://docs.cloud.google.com/datastore/docs/samples/datastore-update-entity
-https://docs.cloud.google.com/datastore/docs/samples/datastore-upsert
-https://docs.cloud.google.com/datastore/docs/schedule-export
-https://docs.cloud.google.com/datastore/docs/securing-with-vpc-sc
-https://docs.cloud.google.com/datastore/docs/store-query-data
-https://docs.cloud.google.com/datastore/docs/tags
-https://docs.cloud.google.com/datastore/docs/tools
-https://docs.cloud.google.com/datastore/docs/tools/datastore-emulator
-https://docs.cloud.google.com/datastore/docs/tools/emulator-export-import
-https://docs.cloud.google.com/datastore/docs/tools/indexconfig
-https://docs.cloud.google.com/datastore/docs/trace-span-references
-https://docs.cloud.google.com/datastore/docs/troubleshoot-java-client
-https://docs.cloud.google.com/datastore/docs/troubleshooting
-https://docs.cloud.google.com/datastore/docs/ttl
-https://docs.cloud.google.com/datastore/docs/understand-performance-monitoring
-https://docs.cloud.google.com/datastore/docs/usage-insights
-https://docs.cloud.google.com/datastore/docs/use-cmek
-https://docs.cloud.google.com/datastore/docs/use-monitoring-dashboard
-https://docs.cloud.google.com/datastore/docs/use-pitr
-https://docs.cloud.google.com/firestore/docs/cuds
-https://docs.cloud.google.com/firestore/docs/reference/rest
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/ApiScope
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/ArrayConfig
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/ArrayValue
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/BulkDeleteDocumentsMetadata
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/BulkDeleteDocumentsResponse
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/ChangeType
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/CloneDatabaseMetadata
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/CreateDatabaseMetadata
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/CreateIndexRequest
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/DeleteDatabaseMetadata
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Density
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/ExportDocumentsMetadata
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/ExportDocumentsResponse
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/FieldOperationMetadata
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/ImportDocumentsMetadata
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/IndexOperationMetadata
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/LatLng
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/LocationMetadata
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Operation
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/OperationState
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/OperationType
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Order
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Progress
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/QueryScope
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/RestoreDatabaseMetadata
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/State
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/TextIndexType
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/TextMatchType
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/UpdateDatabaseMetadata
-https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/WaitOperationRequest
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/Cursor
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/DocumentMask
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/EncryptionConfig
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/ExplainMetrics
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/ExplainOptions
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/FieldReference
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/ListDocumentsResponse
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/Precondition
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/StructuredQuery
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/TransactionOptions
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/Write
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/WriteResult
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules/create
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules/delete
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules/get
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules/list
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules/patch
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields/get
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields/list
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields/patch
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes/delete
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes/get
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes/list
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/batchGet
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/batchWrite
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/beginTransaction
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/commit
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/createDocument
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/delete
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/executePipeline
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/get
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/list
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/listCollectionIds
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/listDocuments
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/partitionQuery
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/patch
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/rollback
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/runAggregationQuery
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/runQuery
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.operations
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.operations/cancel
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.operations/delete
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.operations/get
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.operations/list
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/create
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/delete
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/disable
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/enable
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/get
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/list
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/resetPassword
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/bulkDeleteDocuments
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/clone
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/create
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/delete
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/exportDocuments
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/get
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/importDocuments
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/list
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/patch
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/restore
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations.backups
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations.backups/delete
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations.backups/get
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations.backups/list
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations/get
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations/list
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/Cursor
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/DocumentMask
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/ExplainMetrics
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/ExplainOptions
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/FieldReference
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/ListDocumentsResponse
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/Precondition
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/StructuredQuery
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/TransactionOptions
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/Write
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/WriteResult
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/batchGet
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/batchWrite
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/beginTransaction
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/commit
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/createDocument
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/delete
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/executePipeline
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/get
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/list
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/listCollectionIds
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/listDocuments
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/partitionQuery
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/patch
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/rollback
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/runAggregationQuery
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/runQuery
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/create
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/delete
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/get
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/list
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases/exportDocuments
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases/importDocuments
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.fields
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.fields/get
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.fields/list
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.fields/patch
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.indexes
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.indexes/create
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.indexes/delete
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.indexes/get
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.indexes/list
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases/exportDocuments
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases/importDocuments
-https://docs.cloud.google.com/firestore/docs/reference/rpc
-https://docs.cloud.google.com/firestore/docs/reference/rpc/google.cloud.location
-https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1
-https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta1
-https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta2
-https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1
-https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1beta1
-https://docs.cloud.google.com/firestore/docs/reference/rpc/google.longrunning
-https://docs.cloud.google.com/firestore/docs/reference/rpc/google.rpc
-https://docs.cloud.google.com/firestore/docs/reference/rpc/google.type
-https://docs.cloud.google.com/firestore/docs/release-notes
-https://docs.cloud.google.com/firestore/docs/samples
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-custom-type-definition
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-custom-type-definition-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-doc
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-doc-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-field
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-field-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-all-documents
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-all-documents-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-as-custom-type
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-as-custom-type-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-as-map
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-as-map-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-dataset
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-dataset-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-sub-collections
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-sub-collections-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-query
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-query-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-collection
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-collection-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-document
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-document-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-document-path
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-document-path-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-subcollection
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-subcollection-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-array-operations
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-array-operations-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-doc-upsert
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-doc-upsert-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-field
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-field-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-custom-type
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-custom-type-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-map
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-map-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-map-nested
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-map-nested-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-id-random-collection
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-id-random-collection-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-id-random-document-ref
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-id-random-document-ref-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-id-specified
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-id-specified-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-nested-fields
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-nested-fields-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-numeric-increment
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-numeric-increment-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-server-timestamp
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-server-timestamp-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-listen-detach
-https://docs.cloud.google.com/firestore/docs/samples/firestore-listen-document
-https://docs.cloud.google.com/firestore/docs/samples/firestore-listen-handle-error
-https://docs.cloud.google.com/firestore/docs/samples/firestore-listen-query-changes
-https://docs.cloud.google.com/firestore/docs/samples/firestore-listen-query-snapshots
-https://docs.cloud.google.com/firestore/docs/samples/firestore-partition-query
-https://docs.cloud.google.com/firestore/docs/samples/firestore-partition-query-serialization
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-collection-group-dataset
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-collection-group-dataset-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-collection-group-filter-eq
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-collection-group-filter-eq-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-end-at-field-value-single
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-end-at-field-value-single-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-pagination
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-pagination-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-start-at-document
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-start-at-document-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-start-at-field-value-multi
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-start-at-field-value-multi-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-start-at-field-value-single
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-start-at-field-value-single-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-array-contains
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-array-contains-any
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-array-contains-any-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-array-contains-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-compound-multi-eq
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-compound-multi-eq-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-compound-multi-ineq
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-eq-boolean
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-eq-boolean-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-eq-string
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-eq-string-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-in
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-in-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-in-with-array
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-in-with-array-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-not-eq
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-not-in
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-range-invalid
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-range-invalid-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-range-valid
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-range-valid-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-single-examples
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-single-examples-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-desc-limit
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-desc-limit-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-field-invalid
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-field-invalid-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-limit
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-limit-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-limit-field-valid
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-limit-field-valid-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-multi
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-multi-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-with-filter
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-with-filter-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-subcollection
-https://docs.cloud.google.com/firestore/docs/samples/firestore-quickstart
-https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-client-create
-https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-client-create-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-client-create-with-project-id
-https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-dataset-pt1-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-dataset-pt2-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-dataset-read
-https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-create
-https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-create-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-custom-type
-https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-custom-type-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-get
-https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-get-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-increment
-https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-increment-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-transaction-document-update
-https://docs.cloud.google.com/firestore/docs/samples/firestore-transaction-document-update-async
-https://docs.cloud.google.com/firestore/docs/samples/firestore-transaction-document-update-conditional
-https://docs.cloud.google.com/firestore/docs/samples/firestore-transaction-document-update-conditional-async
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/apis
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/audit-logging
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/backups
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/bulk-data-loading
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/bulk-delete
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/change-streams
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/cmek
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-manage-saved-queries
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/custom-constraints
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/disaster-recovery
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/eventarc
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/extend-with-cloud-run-functions
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/geo-query
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/locations
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-env-vars
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-resources
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-create-connection-profiles
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-data
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-import-from-source
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-traffic
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-troubleshooting
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-write-to-destination
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/optimize-query-performance
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/overview
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/pitr
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain-reference
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-insights
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/release-notes
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/reliability-recommender
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/resolve-latency
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/resources
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/restore-in-place
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/saved-queries
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/securing-with-vpc-sc
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/server-side-encryption
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-data-types-drivers
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-36
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-40
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-50
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-60
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-70
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/tags
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/text-search
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-error-codes
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-reads-writes-scale
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/usage-insights
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-cmek
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-pitr
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/write-mql-gemini
-https://docs.cloud.google.com/firestore/mongodb-compatibility/quotas
-https://docs.cloud.google.com/firestore/native/docs
-https://docs.cloud.google.com/firestore/native/docs/apis
-https://docs.cloud.google.com/firestore/native/docs/app-engine-requirement
-https://docs.cloud.google.com/firestore/native/docs/audit-logging
-https://docs.cloud.google.com/firestore/native/docs/authentication
-https://docs.cloud.google.com/firestore/native/docs/backups
-https://docs.cloud.google.com/firestore/native/docs/best-practices
-https://docs.cloud.google.com/firestore/native/docs/billing-example
-https://docs.cloud.google.com/firestore/native/docs/billing-questions
-https://docs.cloud.google.com/firestore/native/docs/client-side-traces
-https://docs.cloud.google.com/firestore/native/docs/cmek
-https://docs.cloud.google.com/firestore/native/docs/concepts/data-types
-https://docs.cloud.google.com/firestore/native/docs/concepts/structure-data
-https://docs.cloud.google.com/firestore/native/docs/connect-ide-using-mcp-toolbox
-https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library
-https://docs.cloud.google.com/firestore/native/docs/create-database-web-mobile-client-library
-https://docs.cloud.google.com/firestore/native/docs/custom-constraints
-https://docs.cloud.google.com/firestore/native/docs/data-model
-https://docs.cloud.google.com/firestore/native/docs/dataflow-connector
-https://docs.cloud.google.com/firestore/native/docs/disaster-recovery
-https://docs.cloud.google.com/firestore/native/docs/editions-overview
-https://docs.cloud.google.com/firestore/native/docs/emulator
-https://docs.cloud.google.com/firestore/native/docs/enterprise-index-overview
-https://docs.cloud.google.com/firestore/native/docs/enterprise-indexing
-https://docs.cloud.google.com/firestore/native/docs/enterprise-optimize-query-performance
-https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain
-https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain-reference
-https://docs.cloud.google.com/firestore/native/docs/enterprise-query-insights
-https://docs.cloud.google.com/firestore/native/docs/eventarc
-https://docs.cloud.google.com/firestore/native/docs/extend-with-cloud-run-functions
-https://docs.cloud.google.com/firestore/native/docs/extend-with-functions
-https://docs.cloud.google.com/firestore/native/docs/firestore-security-rules-recommender
-https://docs.cloud.google.com/firestore/native/docs/geospatial-query
-https://docs.cloud.google.com/firestore/native/docs/getting-support
-https://docs.cloud.google.com/firestore/native/docs/key-visualizer
-https://docs.cloud.google.com/firestore/native/docs/keyvis-exploring-heatmaps
-https://docs.cloud.google.com/firestore/native/docs/keyvis-getting-started
-https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns
-https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns-index
-https://docs.cloud.google.com/firestore/native/docs/langchain
-https://docs.cloud.google.com/firestore/native/docs/locations
-https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data
-https://docs.cloud.google.com/firestore/native/docs/manage-data/bulk-delete
-https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data
-https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline
-https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import
-https://docs.cloud.google.com/firestore/native/docs/manage-data/move-data
-https://docs.cloud.google.com/firestore/native/docs/manage-data/transactions
-https://docs.cloud.google.com/firestore/native/docs/manage-databases
-https://docs.cloud.google.com/firestore/native/docs/monitor-usage
-https://docs.cloud.google.com/firestore/native/docs/overview
-https://docs.cloud.google.com/firestore/native/docs/pipeline/dml
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/aggregate_functions
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/array_functions
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/comparison_functions
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/debugging_functions
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/generic_functions
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/logical_functions
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_functions
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/reference_functions
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/string_functions
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/timestamp_functions
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/type_functions
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/vector_functions
-https://docs.cloud.google.com/firestore/native/docs/pipeline/overview
-https://docs.cloud.google.com/firestore/native/docs/pipeline/perform-joins-with-sub-pipelines
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection_group
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/database
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/documents
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/literals
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/subcollection
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/output/delete
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/output/update
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/add_fields
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/aggregate
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/distinct
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/find_nearest
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/let
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/limit
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/offset
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/remove_fields
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/replace_with
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/sample
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/search
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/select
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/sort
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/union
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/unnest
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/where
-https://docs.cloud.google.com/firestore/native/docs/pitr
-https://docs.cloud.google.com/firestore/native/docs/query-data/aggregation-queries
-https://docs.cloud.google.com/firestore/native/docs/query-data/get-data
-https://docs.cloud.google.com/firestore/native/docs/query-data/listen
-https://docs.cloud.google.com/firestore/native/docs/query-data/multiple-range-fields
-https://docs.cloud.google.com/firestore/native/docs/query-data/multiple-range-optimize-indexes
-https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data
-https://docs.cloud.google.com/firestore/native/docs/query-data/queries
-https://docs.cloud.google.com/firestore/native/docs/query-data/query-cursors
-https://docs.cloud.google.com/firestore/native/docs/query-data/understanding-core-pipelines
-https://docs.cloud.google.com/firestore/native/docs/query-explain
-https://docs.cloud.google.com/firestore/native/docs/query-insights
-https://docs.cloud.google.com/firestore/native/docs/real-time_queries_at_scale
-https://docs.cloud.google.com/firestore/native/docs/reference/libraries
-https://docs.cloud.google.com/firestore/native/docs/regional-endpoints
-https://docs.cloud.google.com/firestore/native/docs/reliability-recommender
-https://docs.cloud.google.com/firestore/native/docs/resolve-latency
-https://docs.cloud.google.com/firestore/native/docs/resources
-https://docs.cloud.google.com/firestore/native/docs/restore-in-place
-https://docs.cloud.google.com/firestore/native/docs/secure-agent-interactions-mcp
-https://docs.cloud.google.com/firestore/native/docs/securing-with-vpc-sc
-https://docs.cloud.google.com/firestore/native/docs/security/get-started
-https://docs.cloud.google.com/firestore/native/docs/security/iam
-https://docs.cloud.google.com/firestore/native/docs/security/insecure-rules
-https://docs.cloud.google.com/firestore/native/docs/security/rules-conditions
-https://docs.cloud.google.com/firestore/native/docs/security/rules-fields
-https://docs.cloud.google.com/firestore/native/docs/security/rules-pipelines
-https://docs.cloud.google.com/firestore/native/docs/security/rules-query
-https://docs.cloud.google.com/firestore/native/docs/security/rules-structure
-https://docs.cloud.google.com/firestore/native/docs/security/test-rules-emulator
-https://docs.cloud.google.com/firestore/native/docs/server-side-encryption
-https://docs.cloud.google.com/firestore/native/docs/solutions/aggregation
-https://docs.cloud.google.com/firestore/native/docs/solutions/ai-chatbot
-https://docs.cloud.google.com/firestore/native/docs/solutions/bigquery
-https://docs.cloud.google.com/firestore/native/docs/solutions/counters
-https://docs.cloud.google.com/firestore/native/docs/solutions/delete-collections
-https://docs.cloud.google.com/firestore/native/docs/solutions/enriched-media
-https://docs.cloud.google.com/firestore/native/docs/solutions/enriched-text
-https://docs.cloud.google.com/firestore/native/docs/solutions/generative-ai-index
-https://docs.cloud.google.com/firestore/native/docs/solutions/geoqueries
-https://docs.cloud.google.com/firestore/native/docs/solutions/presence
-https://docs.cloud.google.com/firestore/native/docs/solutions/role-based-access
-https://docs.cloud.google.com/firestore/native/docs/solutions/schedule-export
-https://docs.cloud.google.com/firestore/native/docs/solutions/shard-timestamp
-https://docs.cloud.google.com/firestore/native/docs/solutions/workflows
-https://docs.cloud.google.com/firestore/native/docs/standard-index-overview
-https://docs.cloud.google.com/firestore/native/docs/standard-indexing
-https://docs.cloud.google.com/firestore/native/docs/storage-size
-https://docs.cloud.google.com/firestore/native/docs/tags
-https://docs.cloud.google.com/firestore/native/docs/text-search
-https://docs.cloud.google.com/firestore/native/docs/trace-span-references
-https://docs.cloud.google.com/firestore/native/docs/transaction-data-contention
-https://docs.cloud.google.com/firestore/native/docs/ttl
-https://docs.cloud.google.com/firestore/native/docs/tutorials
-https://docs.cloud.google.com/firestore/native/docs/understand-error-codes
-https://docs.cloud.google.com/firestore/native/docs/understand-performance-monitoring
-https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale
-https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale-enterprise
-https://docs.cloud.google.com/firestore/native/docs/usage-insights
-https://docs.cloud.google.com/firestore/native/docs/use-cmek
-https://docs.cloud.google.com/firestore/native/docs/use-firestore-mcp
-https://docs.cloud.google.com/firestore/native/docs/use-monitoring-dashboard
-https://docs.cloud.google.com/firestore/native/docs/use-pitr
-https://docs.cloud.google.com/firestore/native/docs/use-rest-api
-https://docs.cloud.google.com/firestore/native/docs/using-console
-https://docs.cloud.google.com/firestore/native/docs/vector-search
-https://docs.cloud.google.com/firestore/quotas
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/export
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/import
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/indexes
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/indexes/cleanup
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/indexes/create
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/indexes/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/indexes/list
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/operations
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/operations/cancel
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/operations/delete
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/operations/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/operations/list
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/delete
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/list
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/create
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/delete
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/list
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/update
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/bulk-delete
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/clone
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/connection-string
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/create
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/delete
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/list
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/ping
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/restore
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/update
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/export
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/fields
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/fields/ttls
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/fields/ttls/list
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/fields/ttls/update
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/import
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/composite
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/composite/create
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/composite/delete
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/composite/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/composite/list
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/fields
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/fields/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/fields/list
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/fields/update
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/locations
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/locations/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/locations/list
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/operations
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/operations/cancel
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/operations/delete
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/operations/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/operations/list
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/operations/wait
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/user-creds
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/user-creds/create
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/user-creds/delete
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/user-creds/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/user-creds/disable
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/user-creds/enable
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/user-creds/list
-https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/user-creds/reset-password
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/export
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/import
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/indexes
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/indexes/cleanup
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/indexes/create
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/indexes/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/indexes/list
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/operations
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/operations/cancel
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/operations/delete
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/operations/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/operations/list
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/delete
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/list
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/schedules
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/schedules/create
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/schedules/delete
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/schedules/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/schedules/list
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/schedules/update
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/bulk-delete
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/clone
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/connection-string
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/create
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/delete
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/list
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/ping
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/restore
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/update
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/export
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/fields
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/fields/ttls
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/fields/ttls/list
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/fields/ttls/update
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/import
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/composite
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/composite/create
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/composite/delete
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/composite/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/composite/list
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/fields
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/fields/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/fields/list
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/fields/update
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/locations
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/locations/list
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/operations
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/operations/cancel
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/operations/delete
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/operations/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/operations/list
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/user-creds
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/user-creds/create
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/user-creds/delete
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/user-creds/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/user-creds/disable
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/user-creds/enable
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/user-creds/list
-https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/user-creds/reset-password
-https://docs.cloud.google.com/sdk/gcloud/reference/datastore
-https://docs.cloud.google.com/sdk/gcloud/reference/datastore/export
-https://docs.cloud.google.com/sdk/gcloud/reference/datastore/import
-https://docs.cloud.google.com/sdk/gcloud/reference/datastore/indexes
-https://docs.cloud.google.com/sdk/gcloud/reference/datastore/indexes/cleanup
-https://docs.cloud.google.com/sdk/gcloud/reference/datastore/indexes/create
-https://docs.cloud.google.com/sdk/gcloud/reference/datastore/indexes/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/datastore/indexes/list
-https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations
-https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/cancel
-https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/delete
-https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/list
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/delete
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/list
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/create
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/delete
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/list
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/update
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/bulk-delete
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/clone
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/connection-string
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/create
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/delete
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/list
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/ping
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/restore
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/update
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/export
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/list
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/import
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/create
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/delete
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/list
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/fields
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/fields/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/fields/list
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/fields/update
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/locations
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/locations/list
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/operations
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/operations/cancel
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/operations/delete
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/operations/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/operations/list
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/user-creds
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/user-creds/create
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/user-creds/delete
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/user-creds/describe
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/user-creds/disable
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/user-creds/enable
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/user-creds/list
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/user-creds/reset-password
+https://docs.cloud.google.com/datastore/docs	2026-05-09T05:18:29Z
+https://docs.cloud.google.com/datastore/docs/access/iam	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/activate	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/aggregation-queries	2026-02-26T03:55:50Z
+https://docs.cloud.google.com/datastore/docs/apis	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/app-engine-requirement	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/articles/balancing-strong-and-eventual-consistency-with-google-cloud-datastore	2026-05-09T05:18:36Z
+https://docs.cloud.google.com/datastore/docs/articles/fast-and-reliable-ranking-in-datastore	2026-05-09T05:18:36Z
+https://docs.cloud.google.com/datastore/docs/audit-logging	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/backups	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/best-practices	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/billing-questions	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/bulk-delete	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/client-side-traces	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/cloud-datastore-best-practices	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/cmek	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/concepts/cloud-datastore-transactions	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/concepts/encryption-at-rest	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/concepts/entities	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/concepts/errors	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/concepts/indexes	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/concepts/limits	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/concepts/multitenancy	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/concepts/optimize-indexes	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/concepts/overview	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/concepts/queries	2026-02-26T03:56:03Z
+https://docs.cloud.google.com/datastore/docs/concepts/stats	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/concepts/storage-size	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/concepts/structuring_for_strong_consistency	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/concepts/transactions	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/configure-indexes-rest-api	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/console/datastore-statistics	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/console/managing-datastore	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/cuds	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/datastore-api-tutorial	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/disaster-recovery	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/editing_entity_console	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/emulator	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/eventarc	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/export-import-entities	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/extend-with-functions-2nd-gen	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/firestore-or-datastore	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/getting-support	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/java-client-grpc	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/key-visualizer	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/keyvis-exploring-heatmaps	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/keyvis-getting-started	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/keyvis-patterns	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/keyvis-patterns-index	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/langchain	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/locations	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/manage-databases	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/multiple-range-fields	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/multiple-range-optimize-indexes	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/pitr	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/query-explain-analyze	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/query-explain-analyze-report-reference	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/query-insights	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest	2026-03-20T21:17:16Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/CommonMetadata	2025-12-05T18:21:43Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ConcurrencyMode	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/DatastoreFirestoreMigrationMetadata	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/EntityFilter	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ExportEntitiesMetadata	2025-12-05T18:21:43Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ExportEntitiesResponse	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ImportEntitiesMetadata	2025-12-05T18:21:43Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/IndexOperationMetadata	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/MigrationProgressEvent	2025-12-05T18:21:43Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/MigrationState	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/MigrationStateEvent	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/MigrationStep	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/Operation	2025-12-05T18:21:43Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/OperationType	2025-12-05T18:21:43Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/Progress	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/State	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/WaitOperationRequest	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects	2025-10-17T22:06:34Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes/create	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes/delete	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes/get	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes/list	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations	2025-12-05T18:21:43Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations/cancel	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations/delete	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations/get	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations/list	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects/export	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects/import	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1beta1/projects	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1beta1/projects/export	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1beta1/projects/import	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rpc	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1	2025-12-05T18:21:43Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1beta1	2025-12-05T18:21:43Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.longrunning	2025-12-05T18:21:43Z
+https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.rpc	2025-12-05T18:21:43Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/ArrayValue	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/GqlQueryParameter	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/LatLng	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/Value	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/WaitOperationRequest	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/EntityResult	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/ExplainMetrics	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/ExplainOptions	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/GqlQuery	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/MoreResultsType	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/PropertyMask	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/PropertyReference	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/Query	2025-10-17T22:06:34Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/ReadOptions	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/TransactionOptions	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations	2025-10-17T22:06:34Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/cancel	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/delete	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/get	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/list	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/allocateIds	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/beginTransaction	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/commit	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/lookup	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/reserveIds	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/rollback	2026-03-20T21:17:16Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/runAggregationQuery	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/runQuery	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/EntityResult	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/ExplainMetrics	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/ExplainOptions	2025-10-17T22:06:34Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/GqlQuery	2025-10-17T22:06:34Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/MoreResultsType	2025-10-17T22:06:34Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/PropertyMask	2025-10-17T22:06:34Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/PropertyReference	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/Query	2025-10-17T22:06:34Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/ReadOptions	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects	2025-10-17T22:06:34Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/allocateIds	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/beginTransaction	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/lookup	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/reserveIds	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/rollback	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runQuery	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rpc	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rpc/google.datastore.v1	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rpc/google.datastore.v1beta3	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rpc/google.longrunning	2026-03-05T18:08:29Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rpc/google.rpc	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/data/rpc/google.type	2025-10-17T22:06:14Z
+https://docs.cloud.google.com/datastore/docs/reference/gql_reference	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/reference/libraries	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/regional-endpoints	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/release-notes	2026-05-09T05:18:36Z
+https://docs.cloud.google.com/datastore/docs/reliability-recommender	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/resources	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/restore-in-place	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/samples	2026-05-09T05:18:36Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-add-entity	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-admin-client-create	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-admin-entities-export	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-admin-entities-import	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-admin-index-get	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-admin-index-list	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-ancestor-query	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-array-value	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-array-value-equality	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-array-value-inequality-range	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-ascending-sort	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-basic-entity	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-basic-query	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-batch-delete	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-batch-lookup	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-batch-upsert	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-build-service	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-built-in-index-queries	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-composite-filter	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-cursor-paging	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-delete	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-delete-entity	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-descending-sort	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-distinct-on-query	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-entity-with-parent	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-equal-and-inequality-range	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-eventual-consistent-query	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-example-1	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-exploding-properties	2026-05-09T05:18:25Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-incomplete-key	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-invalid	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-range	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort-invalid-not-first	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort-invalid-not-same	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-insert	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-key-filter	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-key-with-multilevel-parent	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-key-with-parent	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-keys-only-query	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-kind-run-query	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-kindless-query	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-limit	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-lookup	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-merge-entity	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-merged-index-query	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-merged-index-tag-queries	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-multi-sort	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-named-key	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-namespace-run-query	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-owner-size-tag-query	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-projection-query	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-properties	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-property-by-kind-run-query	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-property-filter	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-property-filtering-run-query	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-property-run-query	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-query-filter-or	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-quickstart	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-quickstart-python	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-retrieve-entities	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-run-query	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-run-query-projection	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-size-coloration-query	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-transactional-get-or-create	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-transactional-retry	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-transactional-single-entity-group-read-only	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-transactional-update	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-unindexed-property-query	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-update	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-update-entity	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-upsert	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/schedule-export	2026-02-26T03:55:59Z
+https://docs.cloud.google.com/datastore/docs/securing-with-vpc-sc	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/store-query-data	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/tags	2026-05-09T05:18:28Z
+https://docs.cloud.google.com/datastore/docs/tools	2026-05-09T05:18:36Z
+https://docs.cloud.google.com/datastore/docs/tools/datastore-emulator	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/tools/emulator-export-import	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/tools/indexconfig	2026-05-09T05:18:27Z
+https://docs.cloud.google.com/datastore/docs/trace-span-references	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/troubleshoot-java-client	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/troubleshooting	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/ttl	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/understand-performance-monitoring	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/usage-insights	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/use-cmek	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/use-monitoring-dashboard	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/datastore/docs/use-pitr	2026-05-09T05:18:38Z
+https://docs.cloud.google.com/firestore/docs/cuds	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/reference/rest	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/ApiScope	2025-10-17T23:18:41Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/ArrayConfig	2025-10-17T23:18:34Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/ArrayValue	2026-03-05T19:16:04Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/BulkDeleteDocumentsMetadata	2025-10-17T23:18:27Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/BulkDeleteDocumentsResponse	2025-10-17T23:18:41Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/ChangeType	2025-10-17T23:18:27Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/CloneDatabaseMetadata	2025-10-17T23:18:49Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/CreateDatabaseMetadata	2025-10-17T23:18:41Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/CreateIndexRequest	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/DeleteDatabaseMetadata	2025-10-17T23:18:41Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Density	2025-12-05T18:23:35Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/ExportDocumentsMetadata	2025-10-17T23:18:49Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/ExportDocumentsResponse	2025-10-17T23:18:27Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/FieldOperationMetadata	2026-04-25T02:33:14Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/ImportDocumentsMetadata	2025-10-17T23:18:27Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/IndexOperationMetadata	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/LatLng	2025-10-17T23:18:41Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/LocationMetadata	2026-03-05T19:16:04Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Operation	2025-10-17T23:18:41Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/OperationState	2025-10-17T23:18:41Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/OperationType	2025-10-17T23:18:34Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Order	2025-10-17T23:18:41Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Progress	2025-10-17T23:18:27Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/QueryScope	2025-10-17T23:18:41Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/RestoreDatabaseMetadata	2025-10-17T23:18:41Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/State	2025-10-17T23:18:49Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/TextIndexType	2026-04-25T02:33:14Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/TextMatchType	2026-04-25T02:33:14Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/UpdateDatabaseMetadata	2025-10-17T23:18:27Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/WaitOperationRequest	2025-10-17T23:18:41Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/Cursor	2025-10-17T23:18:41Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/DocumentMask	2025-10-17T23:18:34Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/EncryptionConfig	2025-12-05T18:23:35Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/ExplainMetrics	2025-10-17T23:18:34Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/ExplainOptions	2025-10-17T23:18:34Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/FieldReference	2025-10-17T23:18:34Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/ListDocumentsResponse	2025-10-17T23:18:49Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/Precondition	2025-10-17T23:18:27Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/StructuredQuery	2026-03-05T19:16:04Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/TransactionOptions	2025-10-17T23:18:27Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/Write	2025-10-17T23:18:49Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/WriteResult	2025-10-17T23:18:27Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases	2026-03-05T19:16:04Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules	2025-10-17T23:18:27Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules/create	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules/delete	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules/get	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules/list	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules/patch	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields	2026-04-25T02:33:14Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields/get	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields/list	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields/patch	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes/delete	2026-03-20T21:17:16Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes/get	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes/list	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents	2026-01-29T00:14:23Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/batchGet	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/batchWrite	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/beginTransaction	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/commit	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/createDocument	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/delete	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/executePipeline	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/get	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/list	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/listCollectionIds	2026-04-25T02:33:14Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/listDocuments	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/partitionQuery	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/patch	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/rollback	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/runAggregationQuery	2026-03-20T21:17:16Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/runQuery	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.operations	2025-10-17T23:18:27Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.operations/cancel	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.operations/delete	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.operations/get	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.operations/list	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds	2025-10-17T23:18:34Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/create	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/delete	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/disable	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/enable	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/get	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/list	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/resetPassword	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/bulkDeleteDocuments	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/clone	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/create	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/delete	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/exportDocuments	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/get	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/importDocuments	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/list	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/patch	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/restore	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations	2025-10-17T23:18:27Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations.backups	2026-03-05T19:16:04Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations.backups/delete	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations.backups/get	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations.backups/list	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations/get	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations/list	2026-04-25T02:33:14Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/Cursor	2025-10-17T23:18:49Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/DocumentMask	2025-10-17T23:18:27Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/ExplainMetrics	2025-10-17T23:18:27Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/ExplainOptions	2025-10-17T23:18:34Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/FieldReference	2025-10-17T23:18:49Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/ListDocumentsResponse	2025-10-17T23:18:49Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/Precondition	2025-10-17T23:18:34Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/StructuredQuery	2026-03-05T19:16:04Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/TransactionOptions	2025-10-17T23:18:49Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/Write	2025-10-17T23:18:34Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/WriteResult	2025-10-17T23:18:27Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases	2025-10-17T23:18:34Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents	2026-01-29T00:14:23Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/batchGet	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/batchWrite	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/beginTransaction	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/commit	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/createDocument	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/delete	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/executePipeline	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/get	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/list	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/listCollectionIds	2026-04-25T02:33:14Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/listDocuments	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/partitionQuery	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/patch	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/rollback	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/runAggregationQuery	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/runQuery	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes	2025-10-17T23:18:49Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/create	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/delete	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/get	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/list	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases/exportDocuments	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases/importDocuments	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases	2025-10-17T23:18:34Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.fields	2025-10-17T23:18:34Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.fields/get	2026-03-20T21:17:16Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.fields/list	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.fields/patch	2026-03-20T21:17:16Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.indexes	2025-10-17T23:18:49Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.indexes/create	2026-03-20T21:17:16Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.indexes/delete	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.indexes/get	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.indexes/list	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases/exportDocuments	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases/importDocuments	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rpc	2026-01-29T00:14:23Z
+https://docs.cloud.google.com/firestore/docs/reference/rpc/google.cloud.location	2026-04-25T02:33:14Z
+https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1	2026-04-25T02:33:14Z
+https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta1	2025-10-17T23:18:49Z
+https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta2	2025-10-17T23:18:34Z
+https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1	2026-04-25T02:33:14Z
+https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1beta1	2026-04-25T02:33:14Z
+https://docs.cloud.google.com/firestore/docs/reference/rpc/google.longrunning	2025-12-05T18:23:35Z
+https://docs.cloud.google.com/firestore/docs/reference/rpc/google.rpc	2025-10-17T23:18:41Z
+https://docs.cloud.google.com/firestore/docs/reference/rpc/google.type	2025-10-17T23:18:34Z
+https://docs.cloud.google.com/firestore/docs/release-notes	2026-05-09T06:58:53Z
+https://docs.cloud.google.com/firestore/docs/samples	2026-05-09T06:58:53Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes-async	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-custom-type-definition	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-custom-type-definition-async	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection-async	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-doc	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-doc-async	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-field	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-field-async	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-all-documents	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-all-documents-async	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-as-custom-type	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-as-custom-type-async	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-as-map	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-as-map-async	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-dataset	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-dataset-async	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-sub-collections	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-sub-collections-async	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-query	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-query-async	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-collection	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-collection-async	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-document	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-document-async	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-document-path	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-document-path-async	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-subcollection	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-subcollection-async	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-array-operations	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-array-operations-async	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-doc-upsert	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-doc-upsert-async	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-field	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-field-async	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-custom-type	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-custom-type-async	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-map	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-map-async	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-map-nested	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-map-nested-async	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-id-random-collection	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-id-random-collection-async	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-id-random-document-ref	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-id-random-document-ref-async	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-id-specified	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-id-specified-async	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-nested-fields	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-nested-fields-async	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-numeric-increment	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-numeric-increment-async	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-server-timestamp	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-server-timestamp-async	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-listen-detach	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-listen-document	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-listen-handle-error	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-listen-query-changes	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-listen-query-snapshots	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-partition-query	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-partition-query-serialization	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-collection-group-dataset	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-collection-group-dataset-async	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-collection-group-filter-eq	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-collection-group-filter-eq-async	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-end-at-field-value-single	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-end-at-field-value-single-async	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-pagination	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-pagination-async	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-start-at-document	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-start-at-document-async	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-start-at-field-value-multi	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-start-at-field-value-multi-async	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-start-at-field-value-single	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor-start-at-field-value-single-async	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-array-contains	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-array-contains-any	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-array-contains-any-async	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-array-contains-async	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-compound-multi-eq	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-compound-multi-eq-async	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-compound-multi-ineq	2026-05-09T06:59:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-eq-boolean	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-eq-boolean-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-eq-string	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-eq-string-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-in	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-in-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-in-with-array	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-in-with-array-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-not-eq	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-not-in	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-range-invalid	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-range-invalid-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-range-valid	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-range-valid-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-single-examples	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter-single-examples-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-desc-limit	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-desc-limit-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-field-invalid	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-field-invalid-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-limit	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-limit-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-limit-field-valid	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-limit-field-valid-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-multi	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-multi-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-with-filter	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-with-filter-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-subcollection	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-quickstart	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-client-create	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-client-create-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-client-create-with-project-id	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-dataset-pt1-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-dataset-pt2-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-dataset-read	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-create	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-create-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-custom-type	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-custom-type-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-get	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-get-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-increment	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-increment-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-transaction-document-update	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-transaction-document-update-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-transaction-document-update-conditional	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-transaction-document-update-conditional-async	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs	2026-05-09T06:58:53Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/apis	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/audit-logging	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/backups	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences	2026-05-08T18:02:56Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/bulk-data-loading	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/bulk-delete	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/change-streams	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/cmek	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-manage-saved-queries	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/custom-constraints	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/disaster-recovery	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/eventarc	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/extend-with-cloud-run-functions	2026-05-11T03:22:14Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/geo-query	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/locations	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-env-vars	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-resources	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-create-connection-profiles	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-data	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-import-from-source	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-traffic	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-troubleshooting	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-write-to-destination	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/optimize-query-performance	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/overview	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/pitr	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain-reference	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-insights	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/release-notes	2026-05-09T06:58:53Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/reliability-recommender	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/resolve-latency	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/resources	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/restore-in-place	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/saved-queries	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/securing-with-vpc-sc	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/server-side-encryption	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-data-types-drivers	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-36	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-40	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-50	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-60	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-70	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80	2026-05-09T06:58:37Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/tags	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/text-search	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-error-codes	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-reads-writes-scale	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/usage-insights	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-cmek	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-pitr	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/write-mql-gemini	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/quotas	2026-05-09T06:58:44Z
+https://docs.cloud.google.com/firestore/native/docs	2026-05-09T06:58:53Z
+https://docs.cloud.google.com/firestore/native/docs/apis	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/app-engine-requirement	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/audit-logging	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/authentication	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/backups	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/best-practices	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/billing-example	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/billing-questions	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/client-side-traces	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/cmek	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/concepts/data-types	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/concepts/structure-data	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/connect-ide-using-mcp-toolbox	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/create-database-web-mobile-client-library	2026-05-11T03:22:08Z
+https://docs.cloud.google.com/firestore/native/docs/custom-constraints	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/data-model	2026-05-11T03:22:08Z
+https://docs.cloud.google.com/firestore/native/docs/dataflow-connector	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/disaster-recovery	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/editions-overview	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/emulator	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/enterprise-index-overview	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/enterprise-indexing	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/enterprise-optimize-query-performance	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain-reference	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/enterprise-query-insights	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/eventarc	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/extend-with-cloud-run-functions	2026-05-11T03:22:08Z
+https://docs.cloud.google.com/firestore/native/docs/extend-with-functions	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/firestore-security-rules-recommender	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/geospatial-query	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/getting-support	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/key-visualizer	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/keyvis-exploring-heatmaps	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/keyvis-getting-started	2026-05-09T06:58:57Z
+https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns-index	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/langchain	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/locations	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data	2026-05-11T03:22:08Z
+https://docs.cloud.google.com/firestore/native/docs/manage-data/bulk-delete	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data	2026-05-11T03:22:08Z
+https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/manage-data/move-data	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/manage-data/transactions	2026-05-09T10:45:55Z
+https://docs.cloud.google.com/firestore/native/docs/manage-databases	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/monitor-usage	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/overview	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/dml	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/aggregate_functions	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions	2026-05-11T03:22:08Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions	2026-05-11T03:22:08Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/array_functions	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/comparison_functions	2026-05-11T03:22:08Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/debugging_functions	2026-05-09T10:46:16Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/generic_functions	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/logical_functions	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_functions	2026-05-11T03:22:08Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/reference_functions	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/string_functions	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/timestamp_functions	2026-05-11T03:22:08Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/type_functions	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/vector_functions	2026-05-11T03:22:08Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/overview	2026-05-11T03:22:08Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/perform-joins-with-sub-pipelines	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection_group	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/database	2026-05-09T10:46:16Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/documents	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/literals	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/subcollection	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/output/delete	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/output/update	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/add_fields	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/aggregate	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/distinct	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/find_nearest	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/let	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/limit	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/offset	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/remove_fields	2026-05-09T10:46:16Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/replace_with	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/sample	2026-05-11T03:22:08Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/search	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/select	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/sort	2026-05-11T03:22:08Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/union	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/unnest	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/where	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/pitr	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/query-data/aggregation-queries	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/query-data/get-data	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/query-data/listen	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/query-data/multiple-range-fields	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/query-data/multiple-range-optimize-indexes	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/query-data/queries	2026-05-09T10:46:16Z
+https://docs.cloud.google.com/firestore/native/docs/query-data/query-cursors	2026-05-11T03:26:24Z
+https://docs.cloud.google.com/firestore/native/docs/query-data/understanding-core-pipelines	2026-05-09T06:58:59Z
+https://docs.cloud.google.com/firestore/native/docs/query-explain	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/query-insights	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/real-time_queries_at_scale	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/reference/libraries	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/regional-endpoints	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/reliability-recommender	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/resolve-latency	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/resources	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/restore-in-place	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/secure-agent-interactions-mcp	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/securing-with-vpc-sc	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/security/get-started	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/security/iam	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/security/insecure-rules	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/security/rules-conditions	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/security/rules-fields	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/security/rules-pipelines	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/security/rules-query	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/security/rules-structure	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/security/test-rules-emulator	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/server-side-encryption	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/solutions/aggregation	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/solutions/ai-chatbot	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/solutions/bigquery	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/solutions/counters	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/solutions/delete-collections	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/solutions/enriched-media	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/solutions/enriched-text	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/solutions/generative-ai-index	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/solutions/geoqueries	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/solutions/presence	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/solutions/role-based-access	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/solutions/schedule-export	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/solutions/shard-timestamp	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/solutions/workflows	2026-05-09T06:58:50Z
+https://docs.cloud.google.com/firestore/native/docs/standard-index-overview	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/standard-indexing	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/storage-size	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/tags	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/text-search	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/trace-span-references	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/transaction-data-contention	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/ttl	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/tutorials	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/understand-error-codes	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/understand-performance-monitoring	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale-enterprise	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/usage-insights	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/use-cmek	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/use-firestore-mcp	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/use-monitoring-dashboard	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/use-pitr	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/use-rest-api	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/using-console	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/native/docs/vector-search	2026-05-09T06:58:51Z
+https://docs.cloud.google.com/firestore/quotas	2026-05-09T06:59:00Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore	2025-10-17T21:28:51Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/export	2025-10-17T21:27:21Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/import	2025-10-17T21:26:44Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/indexes	2025-10-17T21:25:49Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/indexes/cleanup	2025-10-17T21:26:59Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/indexes/create	2025-10-17T21:27:03Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/indexes/describe	2025-10-17T21:26:23Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/indexes/list	2025-10-17T21:25:54Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/operations	2025-10-17T21:28:32Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/operations/cancel	2025-10-17T21:26:27Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/operations/delete	2025-10-17T21:25:54Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/operations/describe	2025-10-17T21:26:01Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/datastore/operations/list	2025-10-17T21:26:23Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore	2025-10-17T21:26:18Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups	2025-10-17T21:28:38Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/delete	2025-10-17T21:26:01Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/describe	2025-10-17T21:25:52Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/list	2025-10-17T21:26:18Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules	2025-10-17T21:28:32Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/create	2025-10-17T21:27:43Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/delete	2025-10-17T21:27:38Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/describe	2025-10-17T21:26:53Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/list	2025-10-17T21:26:34Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/backups/schedules/update	2025-10-17T21:27:38Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/bulk-delete	2025-11-18T21:17:59Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases	2025-10-17T21:27:15Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/clone	2026-01-21T20:16:54Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/connection-string	2025-10-17T21:27:38Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/create	2026-04-28T18:46:42Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/delete	2025-10-17T21:26:12Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/describe	2025-10-17T21:28:04Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/list	2025-10-17T21:27:12Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/ping	2025-10-17T21:27:16Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/restore	2026-01-21T20:16:22Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/databases/update	2026-04-28T18:46:42Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/export	2025-11-18T21:17:59Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/fields	2025-10-17T21:28:29Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/fields/ttls	2025-10-17T21:28:11Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/fields/ttls/list	2026-01-21T20:17:00Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/fields/ttls/update	2026-04-28T18:46:17Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/import	2025-11-18T21:17:59Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes	2025-10-17T21:26:05Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/composite	2025-10-17T21:27:45Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/composite/create	2025-10-17T21:27:50Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/composite/delete	2025-10-17T21:25:56Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/composite/describe	2025-10-17T21:28:53Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/composite/list	2026-01-21T20:17:12Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/fields	2025-10-17T21:25:59Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/fields/describe	2026-01-21T20:16:22Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/fields/list	2026-01-21T20:16:35Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/indexes/fields/update	2025-10-17T21:27:07Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/locations	2025-10-17T21:27:45Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/locations/describe	2025-10-17T21:28:26Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/locations/list	2025-10-17T21:27:43Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/operations	2025-10-17T21:28:32Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/operations/cancel	2025-10-17T21:26:09Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/operations/delete	2025-10-17T21:27:01Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/operations/describe	2025-10-17T21:27:10Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/operations/list	2025-10-17T21:26:31Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/operations/wait	2025-10-17T21:28:49Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/user-creds	2025-10-17T21:27:53Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/user-creds/create	2025-10-17T21:26:44Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/user-creds/delete	2025-10-17T21:27:47Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/user-creds/describe	2025-10-17T21:26:44Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/user-creds/disable	2025-10-17T21:26:20Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/user-creds/enable	2025-10-17T21:27:26Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/user-creds/list	2025-10-17T21:25:59Z
+https://docs.cloud.google.com/sdk/gcloud/reference/alpha/firestore/user-creds/reset-password	2025-10-17T21:28:32Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore	2025-10-17T21:28:21Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/export	2025-10-17T21:28:58Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/import	2025-10-17T21:28:38Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/indexes	2025-10-17T21:26:25Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/indexes/cleanup	2025-10-17T21:25:52Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/indexes/create	2025-10-17T21:28:53Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/indexes/describe	2025-10-17T21:27:36Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/indexes/list	2025-10-17T21:26:51Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/operations	2025-10-17T21:27:16Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/operations/cancel	2025-10-17T21:27:43Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/operations/delete	2025-10-17T21:26:01Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/operations/describe	2025-10-17T21:28:02Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/datastore/operations/list	2025-10-17T21:28:55Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore	2025-10-17T21:27:21Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups	2025-10-17T21:27:57Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/delete	2025-10-17T21:26:12Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/describe	2025-10-17T21:28:21Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/list	2025-10-17T21:25:49Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/schedules	2025-10-17T21:26:09Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/schedules/create	2025-10-17T21:25:58Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/schedules/delete	2025-10-17T21:27:36Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/schedules/describe	2025-10-17T21:27:50Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/schedules/list	2025-10-17T21:28:29Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/backups/schedules/update	2025-10-17T21:26:46Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/bulk-delete	2025-11-18T21:17:59Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases	2025-11-04T17:51:23Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/clone	2026-01-21T20:16:49Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/connection-string	2025-10-17T21:26:53Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/create	2026-04-28T18:46:17Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/delete	2025-10-17T21:26:42Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/describe	2025-10-17T21:28:11Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/list	2025-10-17T21:26:56Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/ping	2025-10-17T21:26:05Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/restore	2026-01-21T20:17:16Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/databases/update	2026-04-28T18:46:31Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/export	2025-11-18T21:18:14Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/fields	2025-10-17T21:27:32Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/fields/ttls	2025-10-17T21:26:59Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/fields/ttls/list	2026-01-21T20:16:54Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/fields/ttls/update	2026-04-28T18:46:31Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/import	2025-11-18T21:18:14Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes	2025-10-17T21:25:58Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/composite	2025-10-17T21:26:31Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/composite/create	2025-10-17T21:26:44Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/composite/delete	2025-10-17T21:25:52Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/composite/describe	2025-10-17T21:28:18Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/composite/list	2026-01-21T20:17:00Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/fields	2025-10-17T21:26:12Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/fields/describe	2026-01-21T20:17:12Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/fields/list	2026-01-21T20:16:54Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/indexes/fields/update	2025-10-17T21:27:32Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/locations	2025-10-17T21:25:49Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/locations/list	2025-10-17T21:27:57Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/operations	2025-10-17T21:28:16Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/operations/cancel	2025-10-17T21:26:48Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/operations/delete	2025-10-17T21:26:14Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/operations/describe	2025-10-17T21:25:59Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/operations/list	2025-10-17T21:28:02Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/user-creds	2025-10-17T21:27:16Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/user-creds/create	2025-10-17T21:29:00Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/user-creds/delete	2025-10-17T21:27:32Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/user-creds/describe	2025-10-17T21:26:46Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/user-creds/disable	2025-10-17T21:28:11Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/user-creds/enable	2025-10-17T21:28:11Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/user-creds/list	2025-10-17T21:26:51Z
+https://docs.cloud.google.com/sdk/gcloud/reference/beta/firestore/user-creds/reset-password	2025-10-17T21:28:21Z
+https://docs.cloud.google.com/sdk/gcloud/reference/datastore	2025-10-17T21:26:39Z
+https://docs.cloud.google.com/sdk/gcloud/reference/datastore/export	2025-10-17T21:27:57Z
+https://docs.cloud.google.com/sdk/gcloud/reference/datastore/import	2025-10-17T21:28:00Z
+https://docs.cloud.google.com/sdk/gcloud/reference/datastore/indexes	2025-10-17T21:27:36Z
+https://docs.cloud.google.com/sdk/gcloud/reference/datastore/indexes/cleanup	2025-10-17T21:26:07Z
+https://docs.cloud.google.com/sdk/gcloud/reference/datastore/indexes/create	2025-10-17T21:26:56Z
+https://docs.cloud.google.com/sdk/gcloud/reference/datastore/indexes/describe	2025-10-17T21:26:34Z
+https://docs.cloud.google.com/sdk/gcloud/reference/datastore/indexes/list	2025-10-17T21:27:07Z
+https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations	2025-10-17T21:28:00Z
+https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/cancel	2025-10-17T21:27:10Z
+https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/delete	2025-10-17T21:28:11Z
+https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/describe	2025-10-17T21:26:14Z
+https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/list	2025-10-17T21:26:53Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore	2025-10-17T21:28:39Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups	2025-10-17T21:27:47Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/delete	2025-10-17T21:26:16Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/describe	2025-10-17T21:26:01Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/list	2025-10-17T21:28:21Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules	2025-10-17T21:28:06Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/create	2025-10-17T21:26:42Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/delete	2025-10-17T21:27:18Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/describe	2025-10-17T21:27:38Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/list	2025-10-17T21:28:53Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/update	2025-10-17T21:28:02Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/bulk-delete	2025-11-18T21:18:14Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases	2025-11-04T17:51:32Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/clone	2026-01-21T20:16:22Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/connection-string	2025-10-17T21:27:45Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/create	2026-04-28T18:46:17Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/delete	2025-10-17T21:28:26Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/describe	2025-10-17T21:27:41Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/list	2025-10-17T21:28:29Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/ping	2025-10-17T21:27:32Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/restore	2026-01-21T20:17:06Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/update	2026-04-28T18:46:31Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/export	2025-11-18T21:17:59Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields	2025-10-17T21:28:18Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls	2025-10-17T21:25:45Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/list	2026-01-21T20:17:06Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update	2026-04-28T18:46:31Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/import	2025-11-18T21:18:14Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes	2025-10-17T21:25:58Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite	2025-10-17T21:26:42Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/create	2025-10-17T21:28:35Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/delete	2025-10-17T21:25:48Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/describe	2025-10-17T21:28:11Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/list	2026-01-21T20:17:16Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/fields	2025-10-17T21:26:30Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/fields/describe	2026-01-21T20:16:22Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/fields/list	2026-01-21T20:16:49Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/fields/update	2025-10-17T21:26:59Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/locations	2025-10-17T21:27:43Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/locations/list	2025-10-17T21:27:41Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/operations	2025-10-17T21:27:23Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/operations/cancel	2025-10-17T21:28:32Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/operations/delete	2025-10-17T21:26:27Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/operations/describe	2025-10-17T21:27:47Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/operations/list	2025-10-17T21:28:16Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/user-creds	2025-10-17T21:28:06Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/user-creds/create	2025-10-17T21:26:39Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/user-creds/delete	2025-10-17T21:26:03Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/user-creds/describe	2025-10-17T21:28:06Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/user-creds/disable	2025-10-17T21:27:26Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/user-creds/enable	2025-10-17T21:26:27Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/user-creds/list	2025-10-17T21:26:39Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/user-creds/reset-password	2025-10-17T21:28:04Z

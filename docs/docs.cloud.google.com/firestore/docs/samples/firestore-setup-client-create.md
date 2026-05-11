@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-client
 title: Creating a Firestore client
 description: Creating a Firestore client
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:44Z"
 ---
 
 Creating a Firestore client

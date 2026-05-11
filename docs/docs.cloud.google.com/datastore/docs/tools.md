@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/tools
 title: Using the gcloud Tool to Test Applications and Manage Indexes
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:36Z"
 ---
 
 You can use the Google Cloud CLI to test your application locally and to manage indexes for your production Firestore in Datastore mode instance. This page describes the typical workflow for these activities.

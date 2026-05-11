@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-num
 title: Increment a Firestore document field
 description: Update a Firestore document field using Increment. If a field doesn&#39;t exist, Firestore creates the field, and then increments it.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:59:02Z"
 ---
 
 Update a Firestore document field using Increment. If a field doesn't exist, Firestore creates the field, and then increments it.

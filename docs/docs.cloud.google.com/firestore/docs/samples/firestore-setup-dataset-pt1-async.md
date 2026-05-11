@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-datase
 title: Add data to Firestore (async)
 description: Add data to Firestore (async).
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:44Z"
 ---
 
 Add data to Firestore (async).

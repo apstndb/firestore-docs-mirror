@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transfo
 title: Sort (Transformation Stage)
 description: Describes how to use the sort stage in Firestore Pipeline Operations. Covers sorting the input documents based on one or more specified sort orderings.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T10:46:16Z"
 ---
 
 # Sort (Transformation Stage)

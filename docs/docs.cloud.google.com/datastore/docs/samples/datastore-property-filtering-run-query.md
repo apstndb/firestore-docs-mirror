@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-property-fil
 title: Property filter query
 description: Use a property filter query.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:27Z"
 ---
 
 Use a property filter query.

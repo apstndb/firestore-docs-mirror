@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/use-cmek
 title: Use customer-managed encryption keys (CMEK)
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:38Z"
 ---
 
 This page describes how to perform tasks related to [customer-managed encryption keys (CMEK) for Firestore in Datastore mode](https://docs.cloud.google.com/datastore/docs/cmek) . For more information about CMEK in general, including when and why to enable it, see the [Cloud KMS documentation](https://cloud.google.com/kms/docs/cmek) .

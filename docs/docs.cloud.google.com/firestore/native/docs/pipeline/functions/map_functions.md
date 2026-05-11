@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_
 title: Map Functions Reference
 description: Explains how to use map functions like MAP_GET, MAP_SET, and MAP_KEYS in Firestore Pipeline operations.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T10:46:16Z"
 ---
 
 # Map Functions Reference
@@ -49,27 +48,27 @@ Returns the value in a map given a specified key. Returns an `ABSENT` value if t
     const result = await db.pipeline()
       .collection("books")
       .select(
-        field("awards").mapGet("pulitzer").as("hasPulitzerAward")
+        field("awards").mapGet("pulitzer").as("huot;)
       )
-      .execute();
+      .execute();test.firestore.js
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(
-        field("awards").mapGet("pulitzer").as("hasPulitzerAward")
+        field("awards").mapGet("pulitzer")tzerAward")
       )
-    );
+    );test.firestore.js
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([
-        Field("awards").mapGet("pulitzer").as("hasPulitzerAward")
+        Field("awards").mapGet("pulitzer").as("h
       ])
-      .execute()
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
@@ -77,9 +76,9 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(
-            field("awards").mapGet("pulitzer").alias("hasPulitzerAward")
+            field("awards").mapGet("pulitzer").alias("hasPuot;)
         )
-        .execute()
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
@@ -87,9 +86,9 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(
-            field("awards").mapGet("pulitzer").alias("hasPulitzerAward")
+            field("awards").mapGet("pulitzer").alias("hasPu;)
         )
-        .execute();
+        .execute();DocSnippets.java
 
 ##### Python
 
@@ -98,9 +97,9 @@ Android
     result = (
         client.pipeline()
         .collection("books")
-        .select(Field.of("awards").map_get("pulitzer").as_("hasPulitzerAward"))
+        .select(Field.of("awards").map_get("pulitzer").as_("h)
         .execute()
-    )
+    )firestore_pipelines.py
 
 ##### Java
 
@@ -108,9 +107,8 @@ Android
         firestore
             .pipeline()
             .collection("books")
-            .select(mapGet(field("awards"), "pulitzer").as("hasPulitzerAward"))
-            .execute()
-            .get();
+            .select(mapGet(field("awards"), "pulitzer").as("hasPulitzerAward&que()
+            .get();PipelineSnippets.java
 
 ### MAP\_SET
 

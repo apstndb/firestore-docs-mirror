@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-admin-index-
 title: Get admin index
 description: Get admin index
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:25Z"
 ---
 
 Get admin index

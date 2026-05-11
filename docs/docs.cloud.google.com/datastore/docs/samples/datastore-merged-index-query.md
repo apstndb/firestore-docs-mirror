@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-merged-index
 title: Example datastore merged index query
 description: Example datastore merged index query
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:27Z"
 ---
 
 Example datastore merged index query

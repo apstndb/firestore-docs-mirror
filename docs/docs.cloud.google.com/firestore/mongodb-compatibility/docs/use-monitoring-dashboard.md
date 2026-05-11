@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-moni
 title: Monitor databases with Cloud Monitoring
 description: Monitor usage and performance metrics for Firestore with MongoDB compatibility.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:57Z"
 ---
 
 # Monitor databases with Cloud Monitoring

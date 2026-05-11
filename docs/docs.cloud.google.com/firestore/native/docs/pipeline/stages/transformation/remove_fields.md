@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transfo
 title: Remove Fields (Transformation Stage)
 description: Describes how to use the remove_fields stage in Firestore Pipeline Operations. Covers removing fields from the documents produced by the previous stage.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T10:46:16Z"
 ---
 
 # Remove Fields (Transformation Stage)

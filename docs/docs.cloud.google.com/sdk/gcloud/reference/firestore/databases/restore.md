@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/rest
 title: gcloud firestore databases restore
 description: Offers tools and libraries that allow you to create and manage resources across Google Cloud.
 data_source: docs.cloud.google.com
-update_time: "2026-01-21T20:17:06Z"
 ---
 
 NAME

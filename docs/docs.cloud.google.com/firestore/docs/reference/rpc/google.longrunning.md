@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/reference/rpc/google.longrunni
 title: Package google.longrunning
 description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
 data_source: docs.cloud.google.com
-update_time: "2025-12-05T18:23:35Z"
 ---
 
 ## Index

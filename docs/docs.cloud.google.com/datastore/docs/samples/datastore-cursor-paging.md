@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-cursor-pagin
 title: Cursor paging
 description: Use cursor paging.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:25Z"
 ---
 
 Use cursor paging.

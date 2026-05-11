@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/time
 title: Timestamp Functions Reference
 description: Explains how to use timestamp functions like CURRENT_TIMESTAMP, TIMESTAMP_ADD, and TIMESTAMP_DIFF in Firestore Pipeline operations.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:59Z"
 ---
 
 # Timestamp Functions Reference
@@ -104,27 +103,23 @@ Converts `input` (interpreted as the number of microseconds since `1970-01-01 00
     const result = await db.pipeline()
       .collection("documents")
       .select(
-        field("createdAtMicros").unixMicrosToTimestamp().as("createdAtString")
-      )
-      .execute();
+        field("createdAtMicros").unixMicrosToTimestamp().as("createdAtS  .execute();test.firestore.js
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("documents")
       .select(
-        field("createdAtMicros").unixMicrosToTimestamp().as("createdAtString")
+        field("createdAtMicros").unixMicrosToTimestamp().as("quot;)
       )
-    );
+    );test.firestore.js
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("documents")
       .select([
-        Field("createdAtMicros").unixMicrosToTimestamp().as("createdAtString")
-      ])
-      .execute()
+        Field("createdAtMicros").unixMicrosToTimestamp().as("createdAtSxecute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
@@ -132,9 +127,8 @@ Android
     val result = db.pipeline()
         .collection("documents")
         .select(
-            field("createdAtMicros").unixMicrosToTimestamp().alias("createdAtString")
-        )
-        .execute()
+            field("createdAtMicros").unixMicrosToTimestamp().alias("createdAtStri)
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
@@ -142,9 +136,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("documents")
         .select(
-            field("createdAtMicros").unixMicrosToTimestamp().alias("createdAtString")
-        )
-        .execute();
+            field("createdAtMicros").unixMicrosToTimestamp().alias("createdAtStrin   .execute();DocSnippets.java
 
 ##### Python
 
@@ -156,10 +148,8 @@ Android
         .select(
             Field.of("createdAtMicros")
             .unix_micros_to_timestamp()
-            .as_("createdAtString")
-        )
-        .execute()
-    )
+            .as_("createdAtStringcute()
+    )firestore_pipelines.py
 
 ##### Java
 
@@ -168,8 +158,7 @@ Android
             .pipeline()
             .collection("documents")
             .select(unixMicrosToTimestamp(field("createdAtMicros")).as("createdAtString"))
-            .execute()
-            .get();
+          .get();PipelineSnippets.java
 
 ### UNIX\_MILLIS\_TO\_TIMESTAMP
 
@@ -194,27 +183,23 @@ Converts `input` (interpreted as the number of milliseconds since `1970-01-01 00
     const result = await db.pipeline()
       .collection("documents")
       .select(
-        field("createdAtMillis").unixMillisToTimestamp().as("createdAtString")
-      )
-      .execute();
+        field("createdAtMillis").unixMillisToTimestamp().as("createdAtS  .execute();test.firestore.js
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("documents")
       .select(
-        field("createdAtMillis").unixMillisToTimestamp().as("createdAtString")
+        field("createdAtMillis").unixMillisToTimestamp().as("quot;)
       )
-    );
+    );test.firestore.js
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("documents")
       .select([
-        Field("createdAtMillis").unixMillisToTimestamp().as("createdAtString")
-      ])
-      .execute()
+        Field("createdAtMillis").unixMillisToTimestamp().as("createdAtSxecute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
@@ -222,9 +207,8 @@ Android
     val result = db.pipeline()
         .collection("documents")
         .select(
-            field("createdAtMillis").unixMillisToTimestamp().alias("createdAtString")
-        )
-        .execute()
+            field("createdAtMillis").unixMillisToTimestamp().alias("createdAtStri)
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
@@ -232,9 +216,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("documents")
         .select(
-            field("createdAtMillis").unixMillisToTimestamp().alias("createdAtString")
-        )
-        .execute();
+            field("createdAtMillis").unixMillisToTimestamp().alias("createdAtStrin   .execute();DocSnippets.java
 
 ##### Python
 
@@ -246,10 +228,8 @@ Android
         .select(
             Field.of("createdAtMillis")
             .unix_millis_to_timestamp()
-            .as_("createdAtString")
-        )
-        .execute()
-    )
+            .as_("createdAtStringcute()
+    )firestore_pipelines.py
 
 ##### Java
 
@@ -258,8 +238,7 @@ Android
             .pipeline()
             .collection("documents")
             .select(unixMillisToTimestamp(field("createdAtMillis")).as("createdAtString"))
-            .execute()
-            .get();
+          .get();PipelineSnippets.java
 
 ### UNIX\_SECONDS\_TO\_TIMESTAMP
 
@@ -284,27 +263,23 @@ Converts `input` (interpreted as the number of seconds since `1970-01-01 00:00:0
     const result = await db.pipeline()
       .collection("documents")
       .select(
-        field("createdAtSeconds").unixSecondsToTimestamp().as("createdAtString")
-      )
-      .execute();
+        field("createdAtSeconds").unixSecondsToTimestamp().as("createdAtS  .execute();test.firestore.js
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("documents")
       .select(
-        field("createdAtSeconds").unixSecondsToTimestamp().as("createdAtString")
+        field("createdAtSeconds").unixSecondsToTimestamp().as("quot;)
       )
-    );
+    );test.firestore.js
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("documents")
       .select([
-        Field("createdAtSeconds").unixSecondsToTimestamp().as("createdAtString")
-      ])
-      .execute()
+        Field("createdAtSeconds").unixSecondsToTimestamp().as("createdAtSxecute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
@@ -312,9 +287,8 @@ Android
     val result = db.pipeline()
         .collection("documents")
         .select(
-            field("createdAtSeconds").unixSecondsToTimestamp().alias("createdAtString")
-        )
-        .execute()
+            field("createdAtSeconds").unixSecondsToTimestamp().alias("createdAtStri)
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
@@ -322,9 +296,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("documents")
         .select(
-            field("createdAtSeconds").unixSecondsToTimestamp().alias("createdAtString")
-        )
-        .execute();
+            field("createdAtSeconds").unixSecondsToTimestamp().alias("createdAtStrin   .execute();DocSnippets.java
 
 ##### Python
 
@@ -336,10 +308,8 @@ Android
         .select(
             Field.of("createdAtSeconds")
             .unix_seconds_to_timestamp()
-            .as_("createdAtString")
-        )
-        .execute()
-    )
+            .as_("createdAtStringcute()
+    )firestore_pipelines.py
 
 ##### Java
 
@@ -348,8 +318,7 @@ Android
             .pipeline()
             .collection("documents")
             .select(unixSecondsToTimestamp(field("createdAtSeconds")).as("createdAtString"))
-            .execute()
-            .get();
+          .get();PipelineSnippets.java
 
 ### TIMESTAMP\_ADD
 
@@ -385,27 +354,25 @@ Throws an error if the resulting timestamp does not fit within the `TIMESTAMP` r
     const result = await db.pipeline()
       .collection("documents")
       .select(
-        field("createdAt").timestampAdd("day", 3653).as("expiresAt")
+        field("createdAt").timestampAdd("day", 3653).as(uot;)
       )
-      .execute();
+      .execute();test.firestore.js
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("documents")
       .select(
-        field("createdAt").timestampAdd("day", 3653).as("expiresAt")
+        field("createdAt").timestampAdd("day"expiresAt")
       )
-    );
+    );test.firestore.js
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("documents")
       .select([
-        Field("createdAt").timestampAdd(3653, .day).as("expiresAt")
-      ])
-      .execute()
+        Field("createdAt").timestampAdd(3653, .day).as("expixecute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
@@ -415,9 +382,9 @@ Android
         .select(
             field("createdAt")
               .timestampAdd("day", 3653)
-              .alias("expiresAt")
+              .alias(&quuot;)
         )
-        .execute()
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
@@ -425,9 +392,9 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("documents")
         .select(
-            field("createdAt").timestampAdd("day", 3653).alias("expiresAt")
+            field("createdAt").timestampAdd("day", 3653).alias(&quo;)
         )
-        .execute();
+        .execute();DocSnippets.java
 
 ##### Python
 
@@ -436,9 +403,9 @@ Android
     result = (
         client.pipeline()
         .collection("documents")
-        .select(Field.of("createdAt").timestamp_add("day", 3653).as_("expiresAt"))
+        .select(Field.of("createdAt").timestamp_add("day", 3653).as_()
         .execute()
-    )
+    )firestore_pipelines.py
 
 ##### Java
 
@@ -446,9 +413,8 @@ Android
         firestore
             .pipeline()
             .collection("documents")
-            .select(timestampAdd(field("createdAt"), "day", 3653).as("expiresAt"))
-            .execute()
-            .get();
+            .select(timestampAdd(field("createdAt"), "day", 3653).as("expiresAt&que()
+            .get();PipelineSnippets.java
 
 ### TIMESTAMP\_SUB
 
@@ -484,27 +450,25 @@ Throws an error if the resulting timestamp does not fit within the `TIMESTAMP` r
     const result = await db.pipeline()
       .collection("documents")
       .select(
-        field("expiresAt").timestampSubtract("day", 14).as("sendWarningTimestamp")
+        field("expiresAt").timestampSubtract("day", 14).as("sendWuot;)
       )
-      .execute();
+      .execute();test.firestore.js
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("documents")
       .select(
-        field("expiresAt").timestampSubtract("day", 14).as("sendWarningTimestamp")
+        field("expiresAt").timestampSubtract("day", 14).as(Timestamp")
       )
-    );
+    );test.firestore.js
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("documents")
       .select([
-        Field("expiresAt").timestampSubtract(14, .day).as("sendWarningTimestamp")
-      ])
-      .execute()
+        Field("expiresAt").timestampSubtract(14, .day).as("sendWarningTimexecute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
@@ -514,9 +478,9 @@ Android
         .select(
             field("expiresAt")
               .timestampSubtract("day", 14)
-              .alias("sendWarningTimestamp")
+              .alias("sendWarnuot;)
         )
-        .execute()
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
@@ -524,9 +488,9 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("documents")
         .select(
-            field("expiresAt").timestampSubtract("day", 14).alias("sendWarningTimestamp")
+            field("expiresAt").timestampSubtract("day", 14).alias("sendWarni;)
         )
-        .execute();
+        .execute();DocSnippets.java
 
 ##### Python
 
@@ -538,10 +502,9 @@ Android
         .select(
             Field.of("expiresAt")
             .timestamp_subtract("day", 14)
-            .as_("sendWarningTimestamp")
-        )
+            .as_("sendWarnin)
         .execute()
-    )
+    )firestore_pipelines.py
 
 ##### Java
 
@@ -549,9 +512,8 @@ Android
         firestore
             .pipeline()
             .collection("documents")
-            .select(timestampSubtract(field("expiresAt"), "day", 14).as("sendWarningTimestamp"))
-            .execute()
-            .get();
+            .select(timestampSubtract(field("expiresAt"), "day", 14).as("sendWarningTimestamp&que()
+            .get();PipelineSnippets.java
 
 ### TIMESTAMP\_TO\_UNIX\_MICROS
 
@@ -576,27 +538,23 @@ Converts `input` to the number of microseconds since `1970-01-01 00:00:00 UTC` .
     const result = await db.pipeline()
       .collection("documents")
       .select(
-        field("dateString").timestampToUnixMicros().as("unixMicros")
-      )
-      .execute();
+        field("dateString").timestampToUnixMicros().as("unixM  .execute();test.firestore.js
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("documents")
       .select(
-        field("dateString").timestampToUnixMicros().as("unixMicros")
+        field("dateString").timestampToUnixMicros().as(quot;)
       )
-    );
+    );test.firestore.js
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("documents")
       .select([
-        Field("dateString").timestampToUnixMicros().as("unixMicros")
-      ])
-      .execute()
+        Field("dateString").timestampToUnixMicros().as("unixMxecute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
@@ -604,9 +562,8 @@ Android
     val result = db.pipeline()
         .collection("documents")
         .select(
-            field("dateString").timestampToUnixMicros().alias("unixMicros")
-        )
-        .execute()
+            field("dateString").timestampToUnixMicros().alias("unixMicr)
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
@@ -614,9 +571,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("documents")
         .select(
-            field("dateString").timestampToUnixMicros().alias("unixMicros")
-        )
-        .execute();
+            field("dateString").timestampToUnixMicros().alias("unixMicro   .execute();DocSnippets.java
 
 ##### Python
 
@@ -625,9 +580,8 @@ Android
     result = (
         client.pipeline()
         .collection("documents")
-        .select(Field.of("dateString").timestamp_to_unix_micros().as_("unixMicros"))
-        .execute()
-    )
+        .select(Field.of("dateString").timestamp_to_unix_micros().as_("unixMcute()
+    )firestore_pipelines.py
 
 ##### Java
 
@@ -636,8 +590,7 @@ Android
             .pipeline()
             .collection("documents")
             .select(timestampToUnixMicros(field("dateString")).as("unixMicros"))
-            .execute()
-            .get();
+          .get();PipelineSnippets.java
 
 ### TIMESTAMP\_TO\_UNIX\_MILLIS
 
@@ -662,27 +615,23 @@ Converts `input` to the number of milliseconds since `1970-01-01 00:00:00 UTC` .
     const result = await db.pipeline()
       .collection("documents")
       .select(
-        field("dateString").timestampToUnixMillis().as("unixMillis")
-      )
-      .execute();
+        field("dateString").timestampToUnixMillis().as("unixM  .execute();test.firestore.js
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("documents")
       .select(
-        field("dateString").timestampToUnixMillis().as("unixMillis")
+        field("dateString").timestampToUnixMillis().as(quot;)
       )
-    );
+    );test.firestore.js
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("documents")
       .select([
-        Field("dateString").timestampToUnixMillis().as("unixMillis")
-      ])
-      .execute()
+        Field("dateString").timestampToUnixMillis().as("unixMxecute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
@@ -690,9 +639,8 @@ Android
     val result = db.pipeline()
         .collection("documents")
         .select(
-            field("dateString").timestampToUnixMillis().alias("unixMillis")
-        )
-        .execute()
+            field("dateString").timestampToUnixMillis().alias("unixMill)
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
@@ -700,9 +648,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("documents")
         .select(
-            field("dateString").timestampToUnixMillis().alias("unixMillis")
-        )
-        .execute();
+            field("dateString").timestampToUnixMillis().alias("unixMilli   .execute();DocSnippets.java
 
 ##### Python
 
@@ -711,9 +657,8 @@ Android
     result = (
         client.pipeline()
         .collection("documents")
-        .select(Field.of("dateString").timestamp_to_unix_millis().as_("unixMillis"))
-        .execute()
-    )
+        .select(Field.of("dateString").timestamp_to_unix_millis().as_("unixMcute()
+    )firestore_pipelines.py
 
 ##### Java
 
@@ -722,8 +667,7 @@ Android
             .pipeline()
             .collection("documents")
             .select(timestampToUnixMillis(field("dateString")).as("unixMillis"))
-            .execute()
-            .get();
+          .get();PipelineSnippets.java
 
 ### TIMESTAMP\_TO\_UNIX\_SECONDS
 
@@ -748,27 +692,23 @@ Converts `input` to the number of seconds since `1970-01-01 00:00:00 UTC` . Trun
     const result = await db.pipeline()
       .collection("documents")
       .select(
-        field("dateString").timestampToUnixSeconds().as("unixSeconds")
-      )
-      .execute();
+        field("dateString").timestampToUnixSeconds().as("unixSe  .execute();test.firestore.js
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("documents")
       .select(
-        field("dateString").timestampToUnixSeconds().as("unixSeconds")
+        field("dateString").timestampToUnixSeconds().as(&quot;)
       )
-    );
+    );test.firestore.js
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("documents")
       .select([
-        Field("dateString").timestampToUnixSeconds().as("unixSeconds")
-      ])
-      .execute()
+        Field("dateString").timestampToUnixSeconds().as("unixSexecute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
@@ -776,9 +716,8 @@ Android
     val result = db.pipeline()
         .collection("documents")
         .select(
-            field("dateString").timestampToUnixSeconds().alias("unixSeconds")
-        )
-        .execute()
+            field("dateString").timestampToUnixSeconds().alias("unixSecon)
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
@@ -786,9 +725,7 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("documents")
         .select(
-            field("dateString").timestampToUnixSeconds().alias("unixSeconds")
-        )
-        .execute();
+            field("dateString").timestampToUnixSeconds().alias("unixSecond   .execute();DocSnippets.java
 
 ##### Python
 
@@ -797,9 +734,8 @@ Android
     result = (
         client.pipeline()
         .collection("documents")
-        .select(Field.of("dateString").timestamp_to_unix_seconds().as_("unixSeconds"))
-        .execute()
-    )
+        .select(Field.of("dateString").timestamp_to_unix_seconds().as_("unixSecute()
+    )firestore_pipelines.py
 
 ##### Java
 
@@ -808,8 +744,7 @@ Android
             .pipeline()
             .collection("documents")
             .select(timestampToUnixSeconds(field("dateString")).as("unixSeconds"))
-            .execute()
-            .get();
+          .get();PipelineSnippets.java
 
 ### TIMESTAMP\_DIFF
 

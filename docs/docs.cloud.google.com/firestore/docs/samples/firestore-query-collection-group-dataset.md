@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-collec
 title: Create a collection of Firestore documents
 description: Create a collection of Firestore documents
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:59:02Z"
 ---
 
 Create a collection of Firestore documents

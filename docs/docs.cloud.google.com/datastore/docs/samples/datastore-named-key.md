@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-named-key
 title: Named key
 description: Create a named key.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:27Z"
 ---
 
 Create a named key.

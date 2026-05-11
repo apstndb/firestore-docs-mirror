@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-run-query-pr
 title: Run projection query
 description: Run a projection query.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:27Z"
 ---
 
 Run a projection query.

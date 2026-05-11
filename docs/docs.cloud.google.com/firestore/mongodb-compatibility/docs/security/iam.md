@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security
 title: Identity and Access Management (IAM)
 description: How to use Identity and Access Management to manage access to Firestore with MongoDB compatibility databases.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:57Z"
 ---
 
 # Identity and Access Management (IAM)

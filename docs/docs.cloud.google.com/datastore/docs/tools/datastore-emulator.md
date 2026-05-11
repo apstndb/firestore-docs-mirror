@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/tools/datastore-emulator
 title: Running the Datastore Emulator
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:27Z"
 ---
 
 > **Note:** This content applies to the emulator for legacy Cloud Datastore. To emulate Firestore in Datastore mode, [use `gcloud emulators firestore start --database-mode=datastore-mode`](https://docs.cloud.google.com/datastore/docs/emulator) instead.

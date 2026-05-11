@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-collec
 title: Query a Firestore collection group with an eq filter
 description: Query a Firestore collection group with an eq filter
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:59:02Z"
 ---
 
 Query a Firestore collection group with an eq filter

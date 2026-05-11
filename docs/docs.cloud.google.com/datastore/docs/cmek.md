@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/cmek
 title: Customer-managed encryption keys (CMEK)
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:28Z"
 ---
 
 By default, all the data at rest in Firestore in Datastore mode is encrypted using [Google's default encryption](https://cloud.google.com/security/encryption/default-encryption#googles_default_encryption) . Datastore mode handles and manages this encryption for you without any additional action on your part.

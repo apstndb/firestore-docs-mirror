@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-cursor
 title: Query a Firestore collection with a cursor end at filter
 description: Query a Firestore collection with a cursor end at filter
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:59:02Z"
 ---
 
 Query a Firestore collection with a cursor end at filter

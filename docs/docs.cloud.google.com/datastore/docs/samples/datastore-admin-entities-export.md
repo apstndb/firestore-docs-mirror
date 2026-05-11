@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-admin-entiti
 title: Export a copy of all or a subset of entities
 description: Exports a copy of all or a subset of entities from Datastore to another storage system, such as Cloud Storage.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:25Z"
 ---
 
 Exports a copy of all or a subset of entities from Datastore to another storage system, such as Cloud Storage.

@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-basic-entity
 title: Create an entity
 description: Create a basic entity.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:25Z"
 ---
 
 Create a basic entity.

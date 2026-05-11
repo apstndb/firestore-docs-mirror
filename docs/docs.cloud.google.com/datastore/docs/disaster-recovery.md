@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/disaster-recovery
 title: Plan disaster recovery
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:28Z"
 ---
 
 This page describes Firestore in Datastore mode features that can help you create and implement disaster recovery plans.

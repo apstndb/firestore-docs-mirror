@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/concepts/optimize-indexes
 title: Optimizing Indexes
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:38Z"
 ---
 
 This page describes concepts to consider when selecting Firestore in Datastore mode indexes for your app.

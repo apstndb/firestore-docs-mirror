@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/release-notes
 title: Datastore release notes
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:36Z"
 ---
 
 This page documents production updates to Datastore. You can periodically check this page for announcements about new or updated features, bug fixes, known issues, and deprecated functionality.

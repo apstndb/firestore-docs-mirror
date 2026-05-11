@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/keyvis-patterns-index
 title: Heatmap patterns for index keys
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:28Z"
 ---
 
 This page shows examples of patterns that you might see in a Key Visualizer heatmap. These patterns can help you troubleshoot specific performance issues.

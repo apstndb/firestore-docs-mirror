@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-multi-sort
 title: Multiple sort
 description: Use multiple sort criteria.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:27Z"
 ---
 
 Use multiple sort criteria.

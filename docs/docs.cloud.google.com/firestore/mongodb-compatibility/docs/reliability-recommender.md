@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/reliabil
 title: Reliability recommender
 description: Use the Reliability recommender for Firestore with MongoDB compatibility to view recommendations and insights for improving database reliability, including enabling scheduled backups and disaster recovery planning.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:37Z"
 ---
 
 # Reliability recommender

@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-transaction-
 title: Conditionally updating a Firestore document in a transaction
 description: Conditionally updating a Firestore document in a transaction
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:44Z"
 ---
 
 Conditionally updating a Firestore document in a transaction

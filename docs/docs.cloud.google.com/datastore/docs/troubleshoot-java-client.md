@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/troubleshoot-java-client
 title: Troubleshoot latency in the Java client library
 description: Troubleshoot latency in the Datastore mode Java client library.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:38Z"
 ---
 
 ## Introduction

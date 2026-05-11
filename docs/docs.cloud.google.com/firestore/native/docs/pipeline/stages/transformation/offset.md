@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transfo
 title: Offset (Transformation Stage)
 description: Describes how to use the offset stage in Firestore Pipeline Operations. Covers skipping the first N documents produced from the previous stage.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:59Z"
 ---
 
 # Offset (Transformation Stage)

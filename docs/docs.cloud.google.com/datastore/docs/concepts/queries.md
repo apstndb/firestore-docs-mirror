@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/concepts/queries
 title: Datastore queries
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-02-26T03:56:03Z"
 ---
 
 A *query* retrieves [*entities*](https://docs.cloud.google.com/datastore/docs/concepts/entities) from Firestore in Datastore mode that meet a specified set of conditions.

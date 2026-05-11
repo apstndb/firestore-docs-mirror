@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transfo
 title: Sample (Transformation Stage)
 description: Describes how to use the sample stage in Firestore Pipeline Operations. Covers returning a non-deterministic sample from the results of the previous stage.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T10:46:16Z"
 ---
 
 # Sample (Transformation Stage)

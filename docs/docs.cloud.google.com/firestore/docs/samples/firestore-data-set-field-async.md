@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-fie
 title: Update a Firestore document field (async)
 description: Update a Firestore document field (async).
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:59:02Z"
 ---
 
 Update a Firestore document field (async).

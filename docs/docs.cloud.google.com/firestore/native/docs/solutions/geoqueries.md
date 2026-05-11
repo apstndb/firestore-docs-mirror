@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/native/docs/solutions/geoqueries
 title: Geo queries
 description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:50Z"
 ---
 
 # Geo queries

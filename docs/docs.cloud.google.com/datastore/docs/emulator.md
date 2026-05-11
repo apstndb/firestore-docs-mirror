@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/emulator
 title: Test Datastore Mode using the Firestore emulator
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:28Z"
 ---
 
 The [Google Cloud CLI](https://docs.cloud.google.com/sdk) provides a local, in-memory emulator for Firestore that you can use to test your Firestore in Datastore mode application. You can use the emulator with all Datastore mode client libraries. You should use the emulator only for local testing.

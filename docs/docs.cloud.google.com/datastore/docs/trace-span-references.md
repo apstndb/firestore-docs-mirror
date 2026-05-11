@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/trace-span-references
 title: Trace span attributes and events
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:38Z"
 ---
 
 [Client-side traces](https://docs.cloud.google.com/datastore/docs/client-side-traces) , which are collected by executing RPCs, provide several pieces of information for every request from a client, including spans with timestamps of when the client sent the RPC request and when the client received the RPC response. The spans include latency introduced by the network and client system.

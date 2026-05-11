@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/use-monitoring-dashboard
 title: Use the Cloud Monitoring dashboard
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:38Z"
 ---
 
 This page describes how to use the Cloud Monitoring dashboard to view the available metrics, create a custom dashboard, and set alerts.

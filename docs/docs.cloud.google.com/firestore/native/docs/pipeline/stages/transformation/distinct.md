@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transfo
 title: Distinct (Transformation Stage)
 description: Describes how to use the distinct stage in Firestore Pipeline Operations. Covers finding all the distinct combination of values for a series of expressions.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:59Z"
 ---
 
 # Distinct (Transformation Stage)

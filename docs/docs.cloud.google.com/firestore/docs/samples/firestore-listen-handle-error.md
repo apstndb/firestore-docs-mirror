@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-listen-handl
 title: Handle Firestore watch listener errors
 description: Handle Firestore watch listener errors
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:59:02Z"
 ---
 
 Handle Firestore watch listener errors

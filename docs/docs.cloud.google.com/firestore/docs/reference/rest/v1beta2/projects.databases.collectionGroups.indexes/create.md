@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/project
 title: 'Method: projects.databases.collectionGroups.indexes.create'
 description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
 data_source: docs.cloud.google.com
-update_time: "2026-03-20T21:17:16Z"
 ---
 
 Creates a composite index. This returns a `  google.longrunning.Operation  ` which may be used to track the status of the creation. The metadata for the operation will be the type `IndexOperationMetadata` .

@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projec
 title: 'REST Resource: projects.operations'
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2025-12-05T18:21:43Z"
 ---
 
   - [Resource: Operation](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations#Operation)

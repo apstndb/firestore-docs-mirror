@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/project
 title: 'Method: projects.databases.importDocuments'
 description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
 data_source: docs.cloud.google.com
-update_time: "2026-03-20T21:17:05Z"
 ---
 
 Imports documents into Google Cloud Firestore. Existing documents with the same name are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an databases.importDocuments operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Firestore.

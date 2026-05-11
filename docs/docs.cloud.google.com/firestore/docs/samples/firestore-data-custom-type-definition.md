@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-data-custom-
 title: Use a custom type on the client for Firestore documents
 description: Use a custom type on the client for Firestore documents
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:59:00Z"
 ---
 
 Use a custom type on the client for Firestore documents

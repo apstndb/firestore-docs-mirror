@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries
 title: Datastore Metadata
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:38Z"
 ---
 
 Firestore in Datastore mode provides access to metadata that includes information about entity groups, namespaces, entity kinds, properties, and [property representations](https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries#property_queries_property_representations) for each property. You can use metadata, for example, to build a custom datastore viewer for your application or for backend administrative functions.

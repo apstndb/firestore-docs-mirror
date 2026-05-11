@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/tools/emulator-export-import
 title: Exporting and importing emulator data
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:27Z"
 ---
 
 Using the import and export features of the Datastore emulator, you can export data from your database instance and load it into the emulator. You can also export data from the emulator and load it into your Datastore mode database.

@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-query-filter
 title: Create a union of two filters (OR operator)
 description: This snippet creates the union (logical OR) of two queries, where the results of each query is combined in the final results.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:27Z"
 ---
 
 This snippet creates the union (logical OR) of two queries, where the results of each query is combined in the final results.

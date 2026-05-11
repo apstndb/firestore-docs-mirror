@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/multiple-range-fields
 title: Query with range and inequality filters on multiple properties overview
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:28Z"
 ---
 
 Firestore in Datastore mode supports using range and inequality filters on multiple properties in a single query. This feature gives you range and inequality conditions on multiple properties and simplifies your application development by delegating implementation of post-filtering logic to Firestore in Datastore mode.

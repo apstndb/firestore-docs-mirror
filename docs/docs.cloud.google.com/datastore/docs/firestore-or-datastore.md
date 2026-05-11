@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/firestore-or-datastore
 title: Choosing between Native mode and Datastore mode
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:28Z"
 ---
 
 When you create a Firestore database, you must choose between two modes: Native mode or Datastore mode. This page explains the difference between the two modes.

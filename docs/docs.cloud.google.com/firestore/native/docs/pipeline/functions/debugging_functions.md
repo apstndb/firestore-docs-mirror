@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/debu
 title: Debugging Functions Reference
 description: Explains how to use debugging functions like EXISTS, IS_ABSENT, and ERROR in Firestore Pipeline operations.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T10:46:16Z"
 ---
 
 # Debugging Functions Reference

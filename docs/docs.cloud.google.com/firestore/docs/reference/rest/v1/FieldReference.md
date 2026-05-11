@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/reference/rest/v1/FieldReferen
 title: FieldReference
 description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
 data_source: docs.cloud.google.com
-update_time: "2025-10-17T23:18:34Z"
 ---
 
 A reference to a field in a document, ex: `stats.operations` .

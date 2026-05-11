@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-build-servic
 title: Build service
 description: Build a service by using various CRUD methods.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:25Z"
 ---
 
 Build a service by using various CRUD methods.

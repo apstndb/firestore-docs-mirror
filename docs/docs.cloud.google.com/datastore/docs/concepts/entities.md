@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/concepts/entities
 title: Entities, Properties, and Keys
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:38Z"
 ---
 
 Data objects in Firestore in Datastore mode are known as *entities* . An entity has one or more named *properties* , each of which can have one or more values. Entities of the same kind don't need to have the same properties, and an entity's values for a given property don't all need to be of the same data type. (If necessary, an application can establish and enforce such restrictions in its own data model.)

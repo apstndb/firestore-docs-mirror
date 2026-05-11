@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/cuds
 title: Committed use discounts
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:28Z"
 ---
 
 Committed use discounts (CUDs) provide deeply discounted prices in exchange for your commitment to continuously spend a certain amount on Firestore in Datastore mode operations — *Read/Write/Delete* — for one year or three years.

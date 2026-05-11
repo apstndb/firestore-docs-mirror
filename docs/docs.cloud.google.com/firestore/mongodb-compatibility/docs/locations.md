@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/location
 title: Firestore with MongoDB compatibility locations
 description: Learn about different types of locations for Firestore with MongoDB compatibility databases.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:37Z"
 ---
 
 # Firestore with MongoDB compatibility locations

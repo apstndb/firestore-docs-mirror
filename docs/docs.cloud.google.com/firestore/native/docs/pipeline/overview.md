@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/overview
 title: Get started with Pipeline Queries
 description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:59Z"
 ---
 
 # Get started with Pipeline Queries
@@ -52,8 +51,7 @@ One notable difference with Pipeline operations is the introduction of explicit 
       // Step 3: Sort the remaining documents
       .sort(field("name").ascending())
       // Step 4: Return the top 10. Note applying the limit earlier in the
-      // pipeline would have unintentional results.
-      .limit(10);
+      // pipeline would have uninte  .limit(10);test.firestore.js
 
 ##### Swift
 
@@ -65,8 +63,7 @@ One notable difference with Pipeline operations is the introduction of explicit 
       // Step 3: Sort the remaining documents
       .sort([Field("name").ascending()])
       // Step 4: Return the top 10. Note applying the limit earlier in the pipeline would have
-      // unintentional results.
-      .limit(10)
+      // unintimit(10)PipelineSnippets.swift
 
 ##### Kotlin  
 Android
@@ -79,8 +76,8 @@ Android
         // Step 3: Sort the remaining documents
         .sort(field("name").ascending())
         // Step 4: Return the top 10. Note applying the limit earlier in the pipeline would have
-        // unintentional results.
-        .limit(10)
+        // uninten.
+        .limit(10)DocSnippets.kt
 
 ##### Java  
 Android
@@ -93,8 +90,7 @@ Android
         // Step 3: Sort the remaining documents
         .sort(field("name").ascending())
         // Step 4: Return the top 10. Note applying the limit earlier in the pipeline would have
-        // unintentional results.
-        .limit(10);
+        // unintent   .limit(10);DocSnippets.java
 
 ##### Python
 
@@ -104,9 +100,8 @@ Android
         client.pipeline()
         .collection("cities")
         .where(Field.of("population").greater_than(100_000))
-        .sort(Field.of("name").ascending())
-        .limit(10)
-    )
+        .sort(Field.of("name")it(10)
+    )firestore_pipelines.py
 
 ### Initialization
 
@@ -115,7 +110,7 @@ Pipeline operations have a very familiar syntax coming from existing Firestore q
 ##### Node.js
 
 ``` 
-  const db = new Firestore({ projectId: '', databaseId: databaseId'})
+  const db = new Firestore({ projectId: &#39;', databaseId: databaseId'})
   db.pipeline()
     
 ```
@@ -185,27 +180,27 @@ While **fields** refer to data within documents, and **constants** allow specify
 
     const pipeline = db.pipeline()
       .collection("cities")
-      .where(field("name").equal(constant("Toronto")));
+      .where(field("name").equal(conto")));test.firestore.js
 
 ##### Swift
 
     let pipeline = db.pipeline()
       .collection("cities")
-      .where(Field("name").equal(Constant("Toronto")))
+      .where(Field("name").equal(Cquot;)))PipelineSnippets.swift
 
 ##### Kotlin  
 Android
 
     val pipeline = db.pipeline()
         .collection("cities")
-        .where(field("name").equal(constant("Toronto")))
+        .where(field("name").equal(cToronto")))DocSnippets.kt
 
 ##### Java  
 Android
 
     Pipeline pipeline = db.pipeline()
         .collection("cities")
-        .where(field("name").equal(constant("Toronto")));
+        .where(field("name").equal(coonto")));DocSnippets.java
 
 ##### Python
 
@@ -214,8 +209,8 @@ Android
     pipeline = (
         client.pipeline()
         .collection("cities")
-        .where(Field.of("name").equal(Constant.of("Toronto")))
-    )
+        .where(Field.of("name").equal(Constaot;)))
+    )firestore_pipelines.py
 
 ## Stages
 
@@ -267,9 +262,9 @@ The input stage represents the first stage of a query. It defines the initial se
     // Batch read of 3 documents
     results = await execute(db.pipeline().documents([
       doc(db, "cities", "SF"),
-      doc(db, "cities", "DC"),
+      doc(db, "ct;DC"),
       doc(db, "cities", "NY")
-    ]));
+    ]));test.firestore.js
 
 ##### Swift
 
@@ -287,9 +282,8 @@ The input stage represents the first stage of a query. It defines the initial se
     // Batch read of 3 documents
     results = try await db.pipeline().documents([
       db.collection("cities").document("SF"),
-      db.collection("cities").document("DC"),
-      db.collection("cities").document("NY")
-    ]).execute()
+      db.collection("cities").document("DC&q("cities").document("NY")
+    ]).execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
@@ -308,9 +302,8 @@ Android
     // Batch read of 3 documents
     results = db.pipeline().documents(
         db.collection("cities").document("SF"),
-        db.collection("cities").document("DC"),
-        db.collection("cities").document("NY")
-    ).execute()
+        db.collection("cities").document("DC&quollection("cities").document("NY")
+    ).execute()DocSnippets.kt
 
 ##### Java  
 Android
@@ -329,9 +322,8 @@ Android
     // Batch read of 3 documents
     results = db.pipeline().documents(
         db.collection("cities").document("SF"),
-        db.collection("cities").document("DC"),
-        db.collection("cities").document("NY")
-    ).execute();
+        db.collection("cities").document("DC&quoection("cities").document("NY")
+    ).execute();DocSnippets.java
 
 ##### Python
 
@@ -350,10 +342,10 @@ Android
         .documents(
             client.collection("cities").document("SF"),
             client.collection("cities").document("DC"),
-            client.collection("cities").document("NY"),
+            clientes").document("NY"),
         )
         .execute()
-    )
+    )firestore_pipelines.py
 
 As with all other stages, the order of results from these input stages is not stable. A [`sort(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/sort) operator should always be added if a specific ordering is required.
 
@@ -391,8 +383,8 @@ Multiple [`where(...)`](https://docs.cloud.google.com/firestore/native/docs/pipe
     );
     
     results = await execute(db.pipeline().collection("books")
-      .where(and(field("rating").equal(5), field("published").lessThan(1900)))
-    );
+      .where(and(field("rating"("published").lessThan(1900)))
+    );test.firestore.js
 
 ##### Swift
 
@@ -403,9 +395,9 @@ Multiple [`where(...)`](https://docs.cloud.google.com/firestore/native/docs/pipe
       .where(Field("published").lessThan(1900))
       .execute()
     
-    results = try await db.pipeline().collection("books")
-      .where(Field("rating").equal(5) && Field("published").lessThan(1900))
-      .execute()
+    results = try await db.pipeline().collection("books&q&&uot;)
+      .where(Field("rating").equal(5ed").lessThan(1900))
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
@@ -419,8 +411,8 @@ Android
     
     results = db.pipeline().collection("books")
         .where(Expression.and(field("rating").equal(5),
-          field("published").lessThan(1900)))
-        .execute()
+          blished").lessThan(1900)))
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
@@ -435,9 +427,9 @@ Android
     results = db.pipeline().collection("books")
         .where(Expression.and(
             field("rating").equal(5),
-            field("published").lessThan(1900)
+            field(quot;).lessThan(1900)
         ))
-        .execute();
+        .execute();DocSnippets.java
 
 ##### Python
 
@@ -454,9 +446,9 @@ Android
     results = (
         client.pipeline()
         .collection("books")
-        .where(And(Field.of("rating").equal(5), Field.of("published").less_than(1900)))
+        .where(And(Field.of("rating").equal(5), Field.t;).less_than(1900)))
         .execute()
-    )
+    )firestore_pipelines.py
 
 ### Select / Add & Remove Fields
 
@@ -492,8 +484,8 @@ The [`aggregate(...)`](https://docs.cloud.google.com/firestore/native/docs/pipel
       .aggregate(
         field("rating").average().as("avg_rating")
       )
-      .distinct(field("genre"))
-    );
+    ("genre"))
+    );test.firestore.js
 
 ##### Swift
 
@@ -502,9 +494,9 @@ The [`aggregate(...)`](https://docs.cloud.google.com/firestore/native/docs/pipel
       .aggregate([
         Field("rating").average().as("avg_rating")
       ], groups: [
-        Field("genre")
+        Fi
       ])
-      .execute()
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
@@ -514,9 +506,9 @@ Android
         .aggregate(
             AggregateStage
                 .withAccumulators(AggregateFunction.average("rating").alias("avg_rating"))
-                .withGroups(field("genre"))
+                .withGroups(field(ot;))
         )
-        .execute()
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
@@ -526,8 +518,8 @@ Android
         .aggregate(AggregateStage
             .withAccumulators(
                 AggregateFunction.average("rating").alias("avg_rating"))
-            .withGroups(field("genre")))
-        .execute();
+            .withGroups(fiquot;)))
+        .execute();DocSnippets.java
 
 ##### Python
 
@@ -537,10 +529,9 @@ Android
         client.pipeline()
         .collection("books")
         .aggregate(
-            Field.of("rating").average().as_("avg_rating"), groups=[Field.of("genre")]
-        )
+            Field.of("rating").average().as_("avg_rating"), groups=[Field.of(&q)
         .execute()
-    )
+    )firestore_pipelines.py
 
 When `groupings` is not specified, this stage will produce only a single document, otherwise a document will be generated for each unique combination of `groupings` values.
 
@@ -561,10 +552,9 @@ The [`distinct(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeli
     const results = await execute(db.pipeline()
       .collection("books")
       .distinct(
-        field("author").toUpper().as("author"),
-        field("genre")
+        field("author").toUpper().as("author&quouot;genre")
       )
-    );
+    );test.firestore.js
 
 ##### Swift
 
@@ -572,9 +562,9 @@ The [`distinct(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeli
       .collection("books")
       .distinct([
         Field("author").toUpper().as("author"),
-        Field("genre")
+        Fi
       ])
-      .execute()
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
@@ -583,9 +573,9 @@ Android
         .collection("books")
         .distinct(
             field("author").toUpper().alias("author"),
-            field("genre")
+            fielduot;)
         )
-        .execute()
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
@@ -594,9 +584,9 @@ Android
         .collection("books")
         .distinct(
             field("author").toUpper().alias("author"),
-            field("genre")
+            field(;)
         )
-        .execute();
+        .execute();DocSnippets.java
 
 ##### Python
 
@@ -605,9 +595,9 @@ Android
     results = (
         client.pipeline()
         .collection("books")
-        .distinct(Field.of("author").to_upper().as_("author"), "genre")
+        .distinct(Field.of("author").to_upper().as_("author&quo)
         .execute()
-    )
+    )firestore_pipelines.py
 
 ## Functions
 
@@ -651,8 +641,8 @@ Many stages accept expressions which contain one or more functions. The most com
     // Type 2: Aggregation (for use in aggregate stages)
     // Example: Return the min price of all books.
     results = await execute(db.pipeline().collection("books")
-      .aggregate(field("price").minimum().as("min_price"))
-    );
+      .aggr;price").minimum().as("min_price"))
+    );test.firestore.js
 
 ##### Swift
 
@@ -669,8 +659,8 @@ Many stages accept expressions which contain one or more functions. The most com
     // Type 2: Aggregation (for use in aggregate stages)
     // Example: Return the min price of all books.
     results = try await db.pipeline().collection("books")
-      .aggregate([Field("price").minimum().as("min_price")])
-      .execute()
+      .aggregate([Fieldnimum().as("min_price")])
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
@@ -688,8 +678,8 @@ Android
     // Type 2: Aggregation (for use in aggregate stages)
     // Example: Return the min price of all books.
     results = db.pipeline().collection("books")
-        .aggregate(AggregateFunction.minimum("price").alias("min_price"))
-        .execute()
+        .aggregate(AggregateFunction.mrice").alias("min_price"))
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
@@ -707,8 +697,8 @@ Android
     // Type 2: Aggregation (for use in aggregate stages)
     // Example: Return the min price of all books.
     results = db.pipeline().collection("books")
-        .aggregate(AggregateFunction.minimum("price").alias("min_price"))
-        .execute();
+        .aggregate(AggregateFunction.mie").alias("min_price"))
+        .execute();DocSnippets.java
 
 ##### Python
 
@@ -730,9 +720,9 @@ Android
     results = (
         client.pipeline()
         .collection("books")
-        .aggregate(Field.of("price").minimum().as_("min_price"))
+        .aggregate(Field.of(&qum().as_("min_price"))
         .execute()
-    )
+    )firestore_pipelines.py
 
 ## Limits
 
@@ -791,9 +781,8 @@ const results = await db.pipeline()
       .collection("books")
       .where(field("published").lessThan(1900))
       .where(field("genre").equal("Science Fiction"))
-      .where(field("rating").greaterThan(4.3))
-      .sort(field("published").descending())
-    );
+      .where(field("rating").greaterThaneld("published").descending())
+    );test.firestore.js
 
 ##### Swift
 
@@ -802,8 +791,8 @@ const results = await db.pipeline()
       .where(Field("published").lessThan(1900))
       .where(Field("genre").equal("Science Fiction"))
       .where(Field("rating").greaterThan(4.3))
-      .sort([Field("published").descending()])
-      .execute()
+      .sohed").descending()])
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
@@ -813,8 +802,8 @@ Android
         .where(field("published").lessThan(1900))
         .where(field("genre").equal("Science Fiction"))
         .where(field("rating").greaterThan(4.3))
-        .sort(field("published").descending())
-        .execute()
+        .so;published").descending())
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
@@ -824,8 +813,8 @@ Android
         .where(field("published").lessThan(1900))
         .where(field("genre").equal("Science Fiction"))
         .where(field("rating").greaterThan(4.3))
-        .sort(field("published").descending())
-        .execute();
+        .sorblished").descending())
+        .execute();DocSnippets.java
 
 ##### Python
 
@@ -837,9 +826,9 @@ Android
         .where(Field.of("published").less_than(1900))
         .where(Field.of("genre").equal("Science Fiction"))
         .where(Field.of("rating").greater_than(4.3))
-        .sort(Field.of("published").descending())
+        .sort(Fi").descending())
         .execute()
-    )
+    )firestore_pipelines.py
 
 The recommended index is a collection scope index on `books` for `(genre [...], published DESC, avg_rating DESC).`
 
@@ -870,9 +859,8 @@ const results = await db.pipeline()
       .collection("books")
       .where(field("category").like("%fantasy%"))
       .where(field("title").exists())
-      .where(field("author").exists())
-      .select(field("title"), field("author"))
-    );
+      .where(field("author").existeld("title"), field("author"))
+    );test.firestore.js
 
 ##### Swift
 
@@ -881,8 +869,8 @@ const results = await db.pipeline()
       .where(Field("category").like("%fantasy%"))
       .where(Field("title").exists())
       .where(Field("author").exists())
-      .select([Field("title"), Field("author")])
-      .execute()
+      .selequot;), Field("author")])
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
@@ -892,8 +880,8 @@ Android
         .where(field("category").like("%fantasy%"))
         .where(field("title").exists())
         .where(field("author").exists())
-        .select(field("title"), field("author"))
-        .execute()
+        .sele;title"), field("author"))
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
@@ -903,8 +891,8 @@ Android
         .where(field("category").like("%fantasy%"))
         .where(field("title").exists())
         .where(field("author").exists())
-        .select(field("title"), field("author"))
-        .execute();
+        .selectle"), field("author"))
+        .execute();DocSnippets.java
 
 ##### Python
 
@@ -915,10 +903,9 @@ Android
         .collection("books")
         .where(Field.of("category").like("%fantasy%"))
         .where(Field.of("title").exists())
-        .where(Field.of("author").exists())
-        .select("title", "author")
+        .where(Field.of("author").exists(itle", "author")
         .execute()
-    )
+    )firestore_pipelines.py
 
 If the database already has a collection scope index on `books` for `(category [...], title [...], author [...])` then it can avoid fetching anything from the main documents themselves. In this case the order in the index does not matter, `[...]` is used to signify that.
 

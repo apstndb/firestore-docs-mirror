@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-owner-size-t
 title: Example datastore owner size tag query
 description: Example datastore owner size tag query
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:27Z"
 ---
 
 Example datastore owner size tag query

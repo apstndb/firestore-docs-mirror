@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supporte
 title: 'Supported features: 4.0'
 description: Explore the MongoDB 4.0 features supported by Firestore with MongoDB compatibility, including query and projection operators, update operators, aggregation pipeline operators, and database commands.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:37Z"
 ---
 
 # Supported features: 4.0

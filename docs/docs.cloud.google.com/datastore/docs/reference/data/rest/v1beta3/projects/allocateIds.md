@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/pr
 title: 'Method: projects.allocateIds'
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-03-20T21:17:05Z"
 ---
 
   - [HTTP request](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/allocateIds#body.HTTP_TEMPLATE)

@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-
 title: Migration troubleshooting
 description: Troubleshoot common issues during data migration to Firestore with MongoDB compatibility.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:37Z"
 ---
 
 # Migration troubleshooting

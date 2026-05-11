@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-unindexed-pr
 title: Query on unindexed property
 description: Use a query on an unindexed property.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:27Z"
 ---
 
 Use a query on an unindexed property.

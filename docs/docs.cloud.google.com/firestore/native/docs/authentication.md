@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/native/docs/authentication
 title: Authenticate to Firestore
 description: Learn how to authenticate to Firestore.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:57Z"
 ---
 
 This document describes how to authenticate to Firestore programmatically. How you authenticate to Firestore depends on the interface you use to access the API and the environment where your code is running.

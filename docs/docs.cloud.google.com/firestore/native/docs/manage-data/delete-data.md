@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data
 title: Delete documents and fields
 description: Understand Firestore data deletion. Remove documents, fields, and collections using client SDKs, server-side operations, or bulk deletion tools.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:51Z"
 ---
 
 # Delete documents and fields

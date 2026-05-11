@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-in
 title: Analyze query performance statistics
 description: Identify the most frequently used queries and queries with high latencies that might require optimization for a Firestore with MongoDB compatibility database.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:37Z"
 ---
 
 # Analyze query performance statistics

@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Ty
 title: OperationType
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2025-12-05T18:21:43Z"
 ---
 
 Operation types.

@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/concepts/errors
 title: Errors and Error Handling
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:38Z"
 ---
 
 When a Firestore in Datastore mode request is successful, the API will return an HTTP `200 OK` status code along with the requested data in the body of the response.

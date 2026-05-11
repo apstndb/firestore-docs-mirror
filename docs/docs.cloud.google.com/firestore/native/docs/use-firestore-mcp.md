@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/native/docs/use-firestore-mcp
 title: Use the Firestore remote MCP server
 description: Learn how to use the Firestore remote MCP server to edit and retrieve documents in a Firestore database.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:51Z"
 ---
 
 # Use the Firestore remote MCP server

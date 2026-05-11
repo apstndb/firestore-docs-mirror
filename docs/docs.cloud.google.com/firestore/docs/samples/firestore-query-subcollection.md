@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-subcol
 title: Query a subcollection
 description: Demonstrates how to query a subcollection.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:44Z"
 ---
 
 Demonstrates how to query a subcollection.

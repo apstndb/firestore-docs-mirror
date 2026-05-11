@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/d
 title: Database (Input Stage)
 description: Describes how to use the database stage in Firestore Pipeline Operations. Covers returning all the documents within a database across different collections and nested levels.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T10:46:16Z"
 ---
 
 # Database (Input Stage)

@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter
 title: Query a Firestore collection with an array_contains_any filter (async)
 description: Query a Firestore collection with an array_contains_any filter (async).
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:59:02Z"
 ---
 
 Query a Firestore collection with an array\_contains\_any filter (async).

@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/troubleshooting
 title: Troubleshooting
 description: Resolve issues with Firestore in Datastore mode
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:38Z"
 ---
 
 This page shows you how to resolve issues with Firestore in Datastore mode.

@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1beta1/p
 title: 'Method: projects.import'
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-03-20T21:17:05Z"
 ---
 
   - [HTTP request](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1beta1/projects/import#body.HTTP_TEMPLATE)

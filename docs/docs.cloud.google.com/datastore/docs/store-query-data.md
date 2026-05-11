@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/store-query-data
 title: 'Quickstart: Store and query data in Firestore in Datastore mode'
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:28Z"
 ---
 
 # Store and query data in Firestore in Datastore mode

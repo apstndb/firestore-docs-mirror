@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/tags
 title: Create and manage tags
 description: Create and manage tags on Firestore with MongoDB compatibility databases.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:57Z"
 ---
 
 # Create and manage tags

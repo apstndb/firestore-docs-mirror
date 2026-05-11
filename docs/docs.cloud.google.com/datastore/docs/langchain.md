@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/langchain
 title: Build LLM-powered applications using LangChain
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:28Z"
 ---
 
 > **Preview — LangChain**

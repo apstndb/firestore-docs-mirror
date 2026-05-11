@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-query-filter
 title: Querying Firestore collections with one range
 description: Querying Firestore collections with one range
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:44Z"
 ---
 
 Querying Firestore collections with one range

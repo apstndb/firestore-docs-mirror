@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes
 title: Understand reads and writes at scale
 description: Understand how Firestore scales to handle increasing traffic.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:51Z"
 ---
 
 # Understand reads and writes at scale

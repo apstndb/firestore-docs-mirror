@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transfo
 title: Search (Transformation Stage)
 description: Describes how to use the search stage in Firestore Pipeline Operations. Covers running search queries.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:59Z"
 ---
 
 # Search (Transformation Stage)

@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/multiple-range-optimize-indexe
 title: Optimize queries with range and inequality filters on multiple properties
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:28Z"
 ---
 
 This page provides examples of indexing strategies that you can use for queries with range and inequality filters on multiple fields to create an efficient query experience.

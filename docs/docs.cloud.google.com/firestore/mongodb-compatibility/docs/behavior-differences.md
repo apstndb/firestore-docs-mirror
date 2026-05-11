@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior
 title: Behavior differences
 description: Get to know the behavior differences between Firestore with MongoDB compatibility and MongoDB.
 data_source: docs.cloud.google.com
-update_time: "2026-05-08T18:02:56Z"
 ---
 
 # Behavior differences

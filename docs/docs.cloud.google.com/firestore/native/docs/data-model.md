@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/native/docs/data-model
 title: Data model
 description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T10:46:21Z"
 ---
 
 # Data model

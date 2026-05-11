@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sha
 title: Create custom shard and counter types for Firestore distributed counters
 description: Create custom shard and counter types for Firestore distributed counters
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:44Z"
 ---
 
 Create custom shard and counter types for Firestore distributed counters

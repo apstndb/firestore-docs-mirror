@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/key-visualizer
 title: Overview of Key Visualizer
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:28Z"
 ---
 
 This page provides an overview of the Key Visualizer diagnostic tool for Firestore in Datastore mode.

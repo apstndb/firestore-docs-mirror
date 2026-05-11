@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-w
 title: Performs a batch update on a Firestore document
 description: Performs a batch update on a Firestore document
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:59:00Z"
 ---
 
 Performs a batch update on a Firestore document

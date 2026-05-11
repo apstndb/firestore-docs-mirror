@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/custom-c
 title: Manage Firestore with MongoDB compatibility resources using custom constraints
 description: Manage Firestore with MongoDB compatibility resources using custom constraints, including enforcing policies for database creation, location, point-in-time recovery, delete protection, and CMEK.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:37Z"
 ---
 
 # Manage Firestore with MongoDB compatibility resources using custom constraints

@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/release-
 title: Firestore with MongoDB compatibility release notes
 description: Stay up-to-date with the latest production updates for Firestore with MongoDB compatibility, including new features, bug fixes, known issues, and deprecated functionality.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:53Z"
 ---
 
 This page documents production updates to Firestore with MongoDB compatibility. You can periodically check this page for announcements about new or updated features, bug fixes, known issues, and deprecated functionality.

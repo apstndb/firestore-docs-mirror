@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transfo
 title: Replace With (Transformation Stage)
 description: Describes how to use the replace_with stage in Firestore Pipeline Operations. Covers replacing fields in the existing document with the fields in a given expression.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:59Z"
 ---
 
 # Replace With (Transformation Stage)

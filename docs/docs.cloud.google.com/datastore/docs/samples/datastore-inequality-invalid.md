@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-i
 title: Invalid inequality range filter
 description: An example of an invalid inequality range filter.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:27Z"
 ---
 
 An example of an invalid inequality range filter.

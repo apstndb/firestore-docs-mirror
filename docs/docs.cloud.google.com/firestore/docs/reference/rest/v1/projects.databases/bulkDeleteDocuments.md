@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.dat
 title: 'Method: projects.databases.bulkDeleteDocuments'
 description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
 data_source: docs.cloud.google.com
-update_time: "2026-03-20T21:17:05Z"
 ---
 
 Bulk deletes a subset of documents from Google Cloud Firestore. Documents created or updated after the underlying system starts to process the request will not be deleted. The bulk delete occurs in the background and its progress can be monitored and managed via the Operation resource that is created.

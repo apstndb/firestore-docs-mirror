@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/aggregation-queries
 title: Aggregation queries
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-02-26T03:55:50Z"
 ---
 
 An aggregation query processes the data from multiple indexed entities to return a single summary value. Firestore in Datastore mode supports the following aggregation queries:

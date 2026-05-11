@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/datastore-api-tutorial
 title: Getting started with the Firestore in Datastore mode API
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:28Z"
 ---
 
 This page provides a short exercise in building a command-line TaskList application with the Firestore in Datastore mode API. The TaskList application stores, lists, updates, and removes tasks.

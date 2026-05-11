@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/securing
 title: VPC Service Controls
 description: Secure Firestore with MongoDB compatibility using VPC Service Controls, including bundled services, restricted VIP configuration, and egress protection for import and export operations.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:37Z"
 ---
 
 # VPC Service Controls

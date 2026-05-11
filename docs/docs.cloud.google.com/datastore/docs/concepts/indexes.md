@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/concepts/indexes
 title: Indexes
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:38Z"
 ---
 
 Every Firestore in Datastore mode [query](https://docs.cloud.google.com/datastore/docs/concepts/queries) computes its results using one or more *indexes* which contain entity keys in a sequence specified by the index's properties and, optionally, the entity's ancestors. The indexes are updated to reflect any changes the application makes to its entities, so that the correct results of all queries are available with no further computation needed.

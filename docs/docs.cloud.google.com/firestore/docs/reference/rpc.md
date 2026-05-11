@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/reference/rpc
 title: Cloud Firestore API
 description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
 data_source: docs.cloud.google.com
-update_time: "2026-01-29T00:14:23Z"
 ---
 
 Accesses the NoSQL document database built for automatic scaling, high performance, and ease of application development.

@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/output/
 title: Delete (Output Stage)
 description: Learn how to use the delete stage in Firestore Pipeline Operations to remove documents based on query results.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:59Z"
 ---
 
 # Delete (Output Stage)

@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Pr
 title: Progress
 description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
 data_source: docs.cloud.google.com
-update_time: "2025-10-17T23:18:27Z"
 ---
 
 Describes the progress of the operation. Unit of work is generic and must be interpreted based on where `  Progress  ` is used.

@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-ex
 title: Analyze query execution with Query Explain
 description: Retrieve and analyze query execution information for Firestore with MongoDB compatibility.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T06:58:37Z"
 ---
 
 # Analyze query execution with Query Explain

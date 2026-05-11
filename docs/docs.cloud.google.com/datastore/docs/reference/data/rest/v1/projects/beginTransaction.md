@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/project
 title: 'Method: projects.beginTransaction'
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-03-20T21:17:05Z"
 ---
 
   - [HTTP request](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/beginTransaction#body.HTTP_TEMPLATE)

@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/tools/indexconfig
 title: Composite Index Configuration
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:27Z"
 ---
 
 Firestore in Datastore mode uses [indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes) for every query your application makes. These indexes are updated whenever an entity changes, so the results can be returned quickly when the application makes a query. Datastore mode provides [built-in](https://docs.cloud.google.com/datastore/docs/concepts/indexes#built_in_indexes) indexes automatically, but needs to know in advance which [composite indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes#composite_indexes) the application will require. You specify which composite indexes your application needs in a configuration file. The [Datastore emulator](https://docs.cloud.google.com/datastore/docs/tools/datastore-emulator) can generate the Datastore mode composite index configuration automatically as you test your application. The [`gcloud`](https://docs.cloud.google.com/sdk/gcloud/reference) command-line tool provides commands to update the indexes that are available to your production Datastore mode database.

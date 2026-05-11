@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/concepts/cloud-datastore-trans
 title: Cloud Datastore Transactions
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:38Z"
 ---
 
 > **Note:** This page describes system behavior for Datastore databases that have not yet upgraded to Firestore in Datastore mode.

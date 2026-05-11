@@ -4,7 +4,6 @@ uri: https://docs.cloud.google.com/datastore/docs/samples/datastore-size-colorat
 title: Example datastore size coloration query
 description: Example datastore size coloration query
 data_source: docs.cloud.google.com
-update_time: "2026-05-09T05:18:27Z"
 ---
 
 Example datastore size coloration query
