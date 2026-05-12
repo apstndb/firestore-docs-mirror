@@ -84,7 +84,7 @@ Note that by default, [Cloud Build permissions include permissions to upload and
     
     Note that if you create a trigger for an authenticated Cloud Run service without granting the Cloud Run Invoker role, the trigger is created successfully and is active. However, the trigger will not work as expected and a message similar to the following appears in the logs:
     
-    `The request was not authenticated. Either allow unauthenticated invocations or set the proper Authorization header.`
+    `The request was not authenticated. Either allow public access or set the proper Authorization header.`
 
 3.  Grant the [Eventarc Event Receiver role](https://docs.cloud.google.com/iam/docs/roles-permissions/eventarc#eventarc.eventReceiver) ( `roles/eventarc.eventReceiver` ) on the project to the Compute Engine default service account so that the Eventarc trigger can receive events from event providers.
     

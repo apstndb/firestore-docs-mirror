@@ -1928,10 +1928,6 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 
 ## August 07, 2023
 
-Feature
-
-You can now visualize heatmap pattern for entity keys and make better workload pattern predictions. To learn more, see [Key Visualizer](https://docs.cloud.google.com/datastore/docs/key-visualizer) . This feature is in [Preview](https://cloud.google.com/products/#product-launch-stages) .
-
 Libraries
 
 A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
@@ -1951,25 +1947,11 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
   - Update dependency com.google.cloud:google-cloud-shared-dependencies to v3.14.0 ( [\#1159](https://github.com/googleapis/java-datastore/issues/1159) ) ( [fcf07d4](https://github.com/googleapis/java-datastore/commit/fcf07d4b5b1f949f1d6b46861406cef88a9a052b) )
   - Update dependency com.google.errorprone:error\_prone\_core to v2.21.0 ( [\#1158](https://github.com/googleapis/java-datastore/issues/1158) ) ( [08dbb3a](https://github.com/googleapis/java-datastore/commit/08dbb3ab98870f74b78caa7d160271fccc134ae9) )
 
+Feature
+
+You can now visualize heatmap pattern for entity keys and make better workload pattern predictions. To learn more, see [Key Visualizer](https://docs.cloud.google.com/datastore/docs/key-visualizer) . This feature is in [Preview](https://cloud.google.com/products/#product-launch-stages) .
+
 ## July 31, 2023
-
-Libraries
-
-A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
-
-### Java
-
-### Changes for [google-cloud-datastore](https://github.com/googleapis/java-datastore)
-
-#### [2.15.1](https://github.com/googleapis/java-datastore/compare/v2.15.0...v2.15.1) (2023-07-28)
-
-##### Dependencies
-
-  - Shared-dependencies 3.13.0 ( [\#1146](https://github.com/googleapis/java-datastore/issues/1146) ) ( [542c628](https://github.com/googleapis/java-datastore/commit/542c6289d58f837b9b76e23f2b15d438cd54528c) )
-
-##### Documentation
-
-  - Fix javadoc errors ( [\#1126](https://github.com/googleapis/java-datastore/issues/1126) ) ( [\#1153](https://github.com/googleapis/java-datastore/issues/1153) ) ( [00c68b0](https://github.com/googleapis/java-datastore/commit/00c68b05da050c159a83b157cabfcee201f22c76) )
 
 Libraries
 
@@ -2009,6 +1991,24 @@ A weekly digest of client library updates from across the [Cloud SDK](https://do
 
   - Update dependency com.google.cloud:google-cloud-shared-dependencies to v3.13.1 ( [\#1136](https://github.com/googleapis/java-datastore/issues/1136) ) ( [f4d66af](https://github.com/googleapis/java-datastore/commit/f4d66aff3b86c656998443d12ff1eec301194cfd) )
   - Update dependency org.junit.vintage:junit-vintage-engine to v5.10.0 ( [\#1139](https://github.com/googleapis/java-datastore/issues/1139) ) ( [a170611](https://github.com/googleapis/java-datastore/commit/a170611e824d6ca6ea14c0ee57c35e3a4ab1eab0) )
+
+Libraries
+
+A weekly digest of client library updates from across the [Cloud SDK](https://docs.cloud.google.com/sdk) .
+
+### Java
+
+### Changes for [google-cloud-datastore](https://github.com/googleapis/java-datastore)
+
+#### [2.15.1](https://github.com/googleapis/java-datastore/compare/v2.15.0...v2.15.1) (2023-07-28)
+
+##### Dependencies
+
+  - Shared-dependencies 3.13.0 ( [\#1146](https://github.com/googleapis/java-datastore/issues/1146) ) ( [542c628](https://github.com/googleapis/java-datastore/commit/542c6289d58f837b9b76e23f2b15d438cd54528c) )
+
+##### Documentation
+
+  - Fix javadoc errors ( [\#1126](https://github.com/googleapis/java-datastore/issues/1126) ) ( [\#1153](https://github.com/googleapis/java-datastore/issues/1153) ) ( [00c68b0](https://github.com/googleapis/java-datastore/commit/00c68b05da050c159a83b157cabfcee201f22c76) )
 
 ## July 17, 2023
 

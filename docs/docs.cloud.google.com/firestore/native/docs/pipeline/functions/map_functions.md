@@ -48,27 +48,27 @@ Returns the value in a map given a specified key. Returns an `ABSENT` value if t
     const result = await db.pipeline()
       .collection("books")
       .select(
-        field("awards").mapGet("pulitzer").as("huot;)
+        field("awards").mapGet("pulitzer").as("hasPulitzerAward")
       )
-      .execute();test.firestore.js
+      .execute();
 
 ### Web
 
     const result = await execute(db.pipeline()
       .collection("books")
       .select(
-        field("awards").mapGet("pulitzer")tzerAward")
+        field("awards").mapGet("pulitzer").as("hasPulitzerAward")
       )
-    );test.firestore.js
+    );
 
 ##### Swift
 
     let result = try await db.pipeline()
       .collection("books")
       .select([
-        Field("awards").mapGet("pulitzer").as("h
+        Field("awards").mapGet("pulitzer").as("hasPulitzerAward")
       ])
-      .execute()PipelineSnippets.swift
+      .execute()
 
 ##### Kotlin  
 Android
@@ -76,9 +76,9 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(
-            field("awards").mapGet("pulitzer").alias("hasPuot;)
+            field("awards").mapGet("pulitzer").alias("hasPulitzerAward")
         )
-        .execute()DocSnippets.kt
+        .execute()
 
 ##### Java  
 Android
@@ -86,9 +86,9 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(
-            field("awards").mapGet("pulitzer").alias("hasPu;)
+            field("awards").mapGet("pulitzer").alias("hasPulitzerAward")
         )
-        .execute();DocSnippets.java
+        .execute();
 
 ##### Python
 
@@ -97,9 +97,9 @@ Android
     result = (
         client.pipeline()
         .collection("books")
-        .select(Field.of("awards").map_get("pulitzer").as_("h)
+        .select(Field.of("awards").map_get("pulitzer").as_("hasPulitzerAward"))
         .execute()
-    )firestore_pipelines.py
+    )
 
 ##### Java
 
@@ -107,8 +107,9 @@ Android
         firestore
             .pipeline()
             .collection("books")
-            .select(mapGet(field("awards"), "pulitzer").as("hasPulitzerAward&que()
-            .get();PipelineSnippets.java
+            .select(mapGet(field("awards"), "pulitzer").as("hasPulitzerAward"))
+            .execute()
+            .get();
 
 ### MAP\_SET
 
