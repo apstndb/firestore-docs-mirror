@@ -46,6 +46,8 @@ The previous example configures the full contents of $MONGODB\_DATABASE\_NAME fo
 
 Next, create a stream that connects the source and the destination:
 
+The stream label `json_canonical_mode=true` ensures that Datastream properly handles MongoDB document events that contain non-standard values like `Infinity` or `NaN` .
+
     gcloud datastream streams create "$DATASTREAM_NAME" \
     --display-name="$DATASTREAM_NAME" \
     --location="$LOCATION" \
@@ -53,6 +55,7 @@ Next, create a stream that connects the source and the destination:
     --destination="$DST_CONNECTION_PROFILE_NAME" \
     --mongodb-source-config=./mongo_source_config.yaml \
     --gcs-destination-config=./gcs_dst_config.yaml \
+    --labels="json_canonical_mode=true" \
     --backfill-all
 
 For more information about monitoring the Datastream stream creation, see [Troubleshooting](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-troubleshooting) .

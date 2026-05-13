@@ -92,7 +92,7 @@ OPTIONAL FLAGS
   - `--density` = `  DENSITY  `  
     Density of the index. `  DENSITY  ` must be one of: `dense` , `density-unspecified` , `sparse-all` , `sparse-any` .
   - `--multikey`  
-    Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to index with MONGODB\_COMPATIBLE\_API ApiScope.
+    Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to index with 'MONGODB\_COMPATIBLE\_API' ApiScope.
   - `--query-scope` = `  QUERY_SCOPE  ` ; default="collection"  
     Query scope the index applies to. `  QUERY_SCOPE  ` must be one of: `collection` , `collection-group` , `collection-recursive` .
   - `--unique`  
