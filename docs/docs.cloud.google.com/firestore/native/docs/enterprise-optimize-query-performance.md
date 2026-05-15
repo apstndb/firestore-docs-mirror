@@ -61,10 +61,31 @@ To force the query to use a specific index, provide the index ID as a string to 
 
 The following example forces the planner to use index with ID `CICAgOi36pgK` :
 
+##### Node.js
+
     // Force Planner to use Index ID CICAgOi36pgK
-    db.pipeline()
+    await db.pipeline()
       .collectionGroup({ collectionId: "customers", forceIndex: "CICAgOi36pgK" })
       .limit(100)
+      .execute();
+
+##### Java
+
+    // Force Planner to use Index ID CICAgOi36pgK
+    Pipeline.Snapshot results1 =
+        firestore.pipeline()
+          .collectionGroup("customers", new CollectionGroupOptions()
+              .withHints(new CollectionHints().withForceIndex("CICAgOi36pgK")))
+          .limit(100)
+          .execute().get();
+
+##### Go
+
+    // Force Planner to use Index ID CICAgOi36pgK
+    snapshot1 := client.Pipeline().
+     CollectionGroup("customers", firestore.WithForceIndex("CICAgOi36pgK")).
+     Limit(100).
+     Execute(ctx)
 
 Here are some use cases for forcing a specific index:
 
