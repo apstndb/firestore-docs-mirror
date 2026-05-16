@@ -52,16 +52,6 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 
     QueryResults<Entity> tasks = datastore.run(query);
 
-### Node.js
-
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Node.js API reference documentation](https://cloud.google.com/nodejs/docs/reference/datastore/latest) .
-
-To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
-
-    const [tasks] = await datastore.runQuery(query);
-    console.log('Tasks:');
-    tasks.forEach(task => console.log(task));
-
 ### PHP
 
 To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode PHP API reference documentation](https://googleapis.github.io/google-cloud-php/#/docs/cloud-datastore/latest) .

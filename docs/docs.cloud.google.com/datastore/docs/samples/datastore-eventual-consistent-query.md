@@ -54,17 +54,6 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
             .build();
     datastore.run(query, ReadOption.eventualConsistency());
 
-### Node.js
-
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Node.js API reference documentation](https://cloud.google.com/nodejs/docs/reference/datastore/latest) .
-
-To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
-
-    const ancestorKey = datastore.key(['TaskList', 'default']);
-    const query = datastore.createQuery('Task').hasAncestor(ancestorKey);
-    
-    query.run({consistency: 'eventual'});
-
 ### PHP
 
 To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode PHP API reference documentation](https://googleapis.github.io/google-cloud-php/#/docs/cloud-datastore/latest) .

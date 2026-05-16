@@ -91,38 +91,6 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
       }
     }
 
-### Node.js
-
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Node.js API reference documentation](https://cloud.google.com/nodejs/docs/reference/datastore/latest) .
-
-To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
-
-    async function transferFunds(fromKey, toKey, amount) {
-      const transaction = datastore.transaction();
-      await transaction.run();
-      const results = await Promise.all([
-        transaction.get(fromKey),
-        transaction.get(toKey),
-      ]);
-      const accounts = results.map(result => result[0]);
-    
-      accounts[0].balance -= amount;
-      accounts[1].balance += amount;
-    
-      transaction.save([
-        {
-          key: fromKey,
-          data: accounts[0],
-        },
-        {
-          key: toKey,
-          data: accounts[1],
-        },
-      ]);
-    
-      return await transaction.commit();
-    }
-
 ### PHP
 
 To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode PHP API reference documentation](https://googleapis.github.io/google-cloud-php/#/docs/cloud-datastore/latest) .

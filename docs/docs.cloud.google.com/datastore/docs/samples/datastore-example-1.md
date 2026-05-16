@@ -8,13 +8,6 @@ data_source: docs.cloud.google.com
 
 Datastore Example showing setup
 
-## Explore further
-
-For detailed documentation that includes this code sample, see the following:
-
-  - [Local Unit Testing for Go](https://docs.cloud.google.com/appengine/docs/legacy/standard/go111/tools/localunittesting)
-  - [Local Unit Testing for Python 2](https://docs.cloud.google.com/appengine/docs/legacy/standard/python/tools/localunittesting)
-
 ## Code sample
 
 ### Go

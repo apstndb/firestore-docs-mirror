@@ -100,45 +100,6 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
      return nil
     }
 
-### Node.js
-
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Node.js API reference documentation](https://cloud.google.com/nodejs/docs/reference/datastore/latest) .
-
-To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
-
-    const {Datastore} = require('@google-cloud/datastore');
-    const datastore = new Datastore();
-    
-    async function importEntities() {
-      /**
-       * TODO(developer): Uncomment these variables before running the sample.
-       */
-      // const file = 'YOUR_FILE_NAME';
-    
-      const [importOperation] = await datastore.import({file});
-    
-      // Uncomment to await the results of the operation.
-      // await importOperation.promise();
-    
-      // Or cancel the operation.
-      await importOperation.cancel();
-    
-      // You may also choose to include only specific kinds and namespaces.
-      const [specificImportOperation] = await datastore.import({
-        file,
-        kinds: ['Employee', 'Task'],
-        namespaces: ['Company'],
-      });
-    
-      // Uncomment to await the results of the operation.
-      // await specificImportOperation.promise();
-    
-      // Or cancel the operation.
-      await specificImportOperation.cancel();
-    }
-    
-    importEntities();
-
 ### Python
 
 To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Python API reference documentation](https://cloud.google.com/python/docs/reference/datastore/latest) .

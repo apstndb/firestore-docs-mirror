@@ -83,38 +83,6 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
       }
     }
 
-### Node.js
-
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Node.js API reference documentation](https://cloud.google.com/nodejs/docs/reference/datastore/latest) .
-
-To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
-
-    async function runPropertyByKindQuery() {
-      const ancestorKey = datastore.key(['__kind__', 'Account']);
-    
-      const query = datastore
-        .createQuery('__property__')
-        .hasAncestor(ancestorKey);
-      const [entities] = await datastore.runQuery(query);
-    
-      const representationsByProperty = {};
-    
-      entities.forEach(entity => {
-        const key = entity[datastore.KEY];
-        const propertyName = key.name;
-        const propertyType = entity.property_representation;
-    
-        representationsByProperty[propertyName] = propertyType;
-      });
-    
-      console.log('Task property representations:');
-      for (const key in representationsByProperty) {
-        console.log(key, representationsByProperty[key]);
-      }
-    
-      return representationsByProperty;
-    }
-
 ### PHP
 
 To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode PHP API reference documentation](https://googleapis.github.io/google-cloud-php/#/docs/cloud-datastore/latest) .

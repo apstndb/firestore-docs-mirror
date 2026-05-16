@@ -50,7 +50,7 @@ Use the [`createIndex()`](https://www.mongodb.com/docs/manual/reference/method/d
   - Index creation with `db.runCommand()` is also supported with at most one index.
     
     ``` 
-      db.runCommand({"createIndexes":"restaurant", "index": [{"key": {"cuisine":1}, {"name": "cuisine_index"}]})
+      db.runCommand({"createIndexes":"restaurant", "indexes": [{"key": {"cuisine":1}, "name": "cuisine_index"}]})
       
     ```
 

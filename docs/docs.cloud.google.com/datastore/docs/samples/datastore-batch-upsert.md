@@ -94,43 +94,6 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
     Key taskKey1 = tasks.get(0).getKey();
     Key taskKey2 = tasks.get(1).getKey();
 
-### Node.js
-
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Node.js API reference documentation](https://cloud.google.com/nodejs/docs/reference/datastore/latest) .
-
-To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
-
-    const taskKey1 = this.datastore.key(['Task', 1]);
-    const taskKey2 = this.datastore.key(['Task', 2]);
-    
-    const task1 = {
-      category: 'Personal',
-      done: false,
-      priority: 4,
-      description: 'Learn Cloud Datastore',
-    };
-    
-    const task2 = {
-      category: 'Work',
-      done: false,
-      priority: 8,
-      description: 'Integrate Cloud Datastore',
-    };
-    
-    const entities = [
-      {
-        key: taskKey1,
-        data: task1,
-      },
-      {
-        key: taskKey2,
-        data: task2,
-      },
-    ];
-    
-    await datastore.upsert(entities);
-    // Tasks inserted successfully.
-
 ### PHP
 
 To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode PHP API reference documentation](https://googleapis.github.io/google-cloud-php/#/docs/cloud-datastore/latest) .

@@ -6,4 +6,4 @@ description: A highly-scalable NoSQL database for your web and mobile applicatio
 data_source: docs.cloud.google.com
 ---
 
-Python C\# Node.js Ruby Go Java PHP
+Python C\# Go Ruby Java PHP

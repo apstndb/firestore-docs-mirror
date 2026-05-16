@@ -89,31 +89,6 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
      return index, nil
     }
 
-### Node.js
-
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Node.js API reference documentation](https://cloud.google.com/nodejs/docs/reference/datastore/latest) .
-
-To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
-
-    const {Datastore} = require('@google-cloud/datastore');
-    const datastore = new Datastore();
-    
-    async function getIndex() {
-      /**
-       * TODO(developer): Uncomment these variables before running the sample.
-       */
-      // const indexId = 'YOUR_INDEX_ID';
-    
-      // Create a reference to the index before performing operations on it.
-      const index = datastore.index(indexId);
-    
-      // Get the index's metadata, including its state, properties, and more.
-      const [metadata] = await index.getMetadata();
-      console.log('Properties:', metadata.properties);
-    }
-    
-    getIndex();
-
 ### Python
 
 To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Python API reference documentation](https://cloud.google.com/python/docs/reference/datastore/latest) .

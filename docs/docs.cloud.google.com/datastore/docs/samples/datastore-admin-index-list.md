@@ -99,37 +99,6 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
      return indices, nil
     }
 
-### Node.js
-
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Node.js API reference documentation](https://cloud.google.com/nodejs/docs/reference/datastore/latest) .
-
-To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
-
-    const {Datastore} = require('@google-cloud/datastore');
-    const datastore = new Datastore();
-    
-    async function listIndexes() {
-      const [indexes] = await datastore.getIndexes();
-    
-      console.log(`${indexes.length} indexes returned.`);
-    
-      // Each returned Index object includes metadata about the index.
-      const [firstIndex] = indexes;
-      console.log('Properties:', firstIndex.metadata.properties);
-    
-      // You may also get Index references as a readable object stream.
-      datastore
-        .getIndexesStream()
-        .on('data', index => {
-          console.log('Properties:', index.metadata.properties);
-        })
-        .on('end', () => {
-          // All matching Index objects have been returned.
-        });
-    }
-    
-    listIndexes();
-
 ### Python
 
 To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Python API reference documentation](https://cloud.google.com/python/docs/reference/datastore/latest) .

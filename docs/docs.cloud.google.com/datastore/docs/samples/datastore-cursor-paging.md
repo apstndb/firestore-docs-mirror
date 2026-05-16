@@ -87,39 +87,6 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
     }
     Cursor nextPageCursor = tasks.getCursorAfter();
 
-### Node.js
-
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Node.js API reference documentation](https://cloud.google.com/nodejs/docs/reference/datastore/latest) .
-
-To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
-
-    // By default, google-cloud-node will automatically paginate through all of
-    // the results that match a query. However, this sample implements manual
-    // pagination using limits and cursor tokens.
-    async function runPageQuery(pageCursor) {
-      let query = datastore.createQuery('Task').limit(pageSize);
-    
-      if (pageCursor) {
-        query = query.start(pageCursor);
-      }
-      const results = await datastore.runQuery(query);
-      const entities = results[0];
-      const info = results[1];
-    
-      if (info.moreResults !== Datastore.NO_MORE_RESULTS) {
-        // If there are more results to retrieve, the end cursor is
-        // automatically set on `info`. To get this value directly, access
-        // the `endCursor` property.
-        const results = await runPageQuery(info.endCursor);
-    
-        // Concatenate entities
-        results[0] = entities.concat(results[0]);
-        return results;
-      }
-    
-      return [entities, info];
-    }
-
 ### PHP
 
 To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode PHP API reference documentation](https://googleapis.github.io/google-cloud-php/#/docs/cloud-datastore/latest) .

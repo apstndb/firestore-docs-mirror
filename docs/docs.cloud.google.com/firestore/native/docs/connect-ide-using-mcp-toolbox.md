@@ -12,7 +12,7 @@ This page shows you how to connect your Firestore database to various developer 
 
 For an integrated experience, we recommend using the dedicated Firestore extension for [Gemini CLI](https://docs.cloud.google.com/gemini/docs/codeassist/gemini-cli) . As Google Cloud's next-generation command-line interface, Gemini CLI bundles the underlying MCP server directly into the extension, which removes the need for a separate server setup. You can configure Gemini Code Assist to use the Gemini CLI, offering similar setup benefits in your IDE.
 
-For other developer tools that support the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) , you can connect by manually configuring the [MCP Toolbox for Databases](https://github.com/googleapis/genai-toolbox) . MCP Toolbox is an open-source MCP server that connects AI agents to your data by managing tasks such as authentication and connection pooling. This lets you interact with your data using natural language directly from your IDE. For these tools, this method provides core database interaction capabilities. This page describes how to use the [MCP Toolbox for Databases](https://github.com/googleapis/genai-toolbox) to expose your developer assistance tools to a Firestore instance using the following IDEs:
+For other developer tools that support the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) , you can connect by manually configuring the [MCP Toolbox for Databases](https://github.com/googleapis/mcp-toolbox) . MCP Toolbox is an open-source MCP server that connects AI agents to your data by managing tasks such as authentication and connection pooling. This lets you interact with your data using natural language directly from your IDE. For these tools, this method provides core database interaction capabilities. This page describes how to use the [MCP Toolbox for Databases](https://github.com/googleapis/mcp-toolbox) to expose your developer assistance tools to a Firestore instance using the following IDEs:
 
   - [Gemini CLI](https://docs.cloud.google.com/firestore/native/docs/connect-ide-using-mcp-toolbox#configure-your-mcp-client)
   - [Gemini Code Assist](https://docs.cloud.google.com/firestore/native/docs/connect-ide-using-mcp-toolbox#configure-your-mcp-client)
@@ -109,7 +109,7 @@ To use the tools in the Gemini CLI extension for Firestore, you must have one of
 
 ## Configure the MCP client
 
-This section describes how to configure various developer tools to connect to your Firestore instance using the [MCP Toolbox for Databases](https://github.com/googleapis/genai-toolbox) . The toolbox acts as an open-source [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) server that sits between your IDE and your database, providing a secure and efficient control plane for your AI tools. Select the tab for one of the following tools to see the configuration instructions.
+This section describes how to configure various developer tools to connect to your Firestore instance using the [MCP Toolbox for Databases](https://github.com/googleapis/mcp-toolbox) . The toolbox acts as an open-source [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) server that sits between your IDE and your database, providing a secure and efficient control plane for your AI tools. Select the tab for one of the following tools to see the configuration instructions.
 
 ### Gemini CLI
 
@@ -144,29 +144,29 @@ We recommend to configure Gemini Code Assist to use the Gemini CLI, this approac
 
 #### Install MCP Toolbox for Databases
 
-1.  Download the latest version of Toolbox as a binary. Select the [binary](https://github.com/googleapis/genai-toolbox/releases) corresponding to your operating system (OS) and CPU architecture. You must use Toolbox version V0.15.0 or later.
+1.  Download the latest version of Toolbox as a binary. Select the [binary](https://github.com/googleapis/mcp-toolbox/releases) corresponding to your operating system (OS) and CPU architecture. You must use Toolbox version V0.15.0 or later.
     
     ### linux/amd64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/linux/amd64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/linux/amd64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/arm64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/arm64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/darwin/arm64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/amd64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/amd64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/darwin/amd64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### windows/amd64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/windows/amd64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/windows/amd64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
 
@@ -207,29 +207,29 @@ We recommend to configure Gemini Code Assist to use the Gemini CLI, this approac
 
 #### Install MCP Toolbox for Databases
 
-1.  Download the latest version of Toolbox as a binary. Select the [binary](https://github.com/googleapis/genai-toolbox/releases) corresponding to your operating system (OS) and CPU architecture. You must use Toolbox version V0.15.0 or later.
+1.  Download the latest version of Toolbox as a binary. Select the [binary](https://github.com/googleapis/mcp-toolbox/releases) corresponding to your operating system (OS) and CPU architecture. You must use Toolbox version V0.15.0 or later.
     
     ### linux/amd64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/linux/amd64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/linux/amd64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/arm64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/arm64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/darwin/arm64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/amd64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/amd64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/darwin/amd64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### windows/amd64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/windows/amd64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/windows/amd64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
 
@@ -271,29 +271,29 @@ We recommend to configure Gemini Code Assist to use the Gemini CLI, this approac
 
 #### Install MCP Toolbox for Databases
 
-1.  Download the latest version of Toolbox as a binary. Select the [binary](https://github.com/googleapis/genai-toolbox/releases) corresponding to your operating system (OS) and CPU architecture. You must use Toolbox version V0.15.0 or later.
+1.  Download the latest version of Toolbox as a binary. Select the [binary](https://github.com/googleapis/mcp-toolbox/releases) corresponding to your operating system (OS) and CPU architecture. You must use Toolbox version V0.15.0 or later.
     
     ### linux/amd64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/linux/amd64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/linux/amd64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/arm64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/arm64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/darwin/arm64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/amd64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/amd64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/darwin/amd64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### windows/amd64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/windows/amd64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/windows/amd64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
 
@@ -336,29 +336,29 @@ A green active status appears after the server connects successfully.
 
 #### Install MCP Toolbox for Databases
 
-1.  Download the latest version of Toolbox as a binary. Select the [binary](https://github.com/googleapis/genai-toolbox/releases) corresponding to your operating system (OS) and CPU architecture. You must use Toolbox version V0.15.0 or later.
+1.  Download the latest version of Toolbox as a binary. Select the [binary](https://github.com/googleapis/mcp-toolbox/releases) corresponding to your operating system (OS) and CPU architecture. You must use Toolbox version V0.15.0 or later.
     
     ### linux/amd64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/linux/amd64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/linux/amd64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/arm64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/arm64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/darwin/arm64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/amd64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/amd64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/darwin/amd64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### windows/amd64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/windows/amd64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/windows/amd64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
 
@@ -399,29 +399,29 @@ A green active status appears after the server connects successfully.
 
 #### Install MCP Toolbox for Databases
 
-1.  Download the latest version of Toolbox as a binary. Select the [binary](https://github.com/googleapis/genai-toolbox/releases) corresponding to your operating system (OS) and CPU architecture. You must use Toolbox version V0.15.0 or later.
+1.  Download the latest version of Toolbox as a binary. Select the [binary](https://github.com/googleapis/mcp-toolbox/releases) corresponding to your operating system (OS) and CPU architecture. You must use Toolbox version V0.15.0 or later.
     
     ### linux/amd64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/linux/amd64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/linux/amd64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/arm64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/arm64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/darwin/arm64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/amd64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/amd64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/darwin/amd64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### windows/amd64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/windows/amd64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/windows/amd64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
 
@@ -460,29 +460,29 @@ A green active status appears after the server connects successfully.
 
 #### Install MCP Toolbox for Databases
 
-1.  Download the latest version of Toolbox as a binary. Select the [binary](https://github.com/googleapis/genai-toolbox/releases) corresponding to your operating system (OS) and CPU architecture. You must use Toolbox version V0.15.0 or later.
+1.  Download the latest version of Toolbox as a binary. Select the [binary](https://github.com/googleapis/mcp-toolbox/releases) corresponding to your operating system (OS) and CPU architecture. You must use Toolbox version V0.15.0 or later.
     
     ### linux/amd64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/linux/amd64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/linux/amd64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/arm64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/arm64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/darwin/arm64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### darwin/amd64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/darwin/amd64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/darwin/amd64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
     
     ### windows/amd64
     
-        curl -O https://storage.googleapis.com/genai-toolbox/version/windows/amd64/toolbox
+        curl -O https://storage.googleapis.com/mcp-toolbox-for-databases/version/windows/amd64/toolbox
     
     Replace `  version  ` with the Toolbox version number, for example `v0.15.0` .
 

@@ -51,23 +51,6 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
                     PropertyFilter.lt("created", endDate)))
             .build();
 
-### Node.js
-
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Node.js API reference documentation](https://cloud.google.com/nodejs/docs/reference/datastore/latest) .
-
-To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
-
-    const query = datastore
-      .createQuery('Task')
-      .filter(
-        and([
-          new PropertyFilter('priority', '=', 4),
-          new PropertyFilter('done', '=', false),
-          new PropertyFilter('created', '>', new Date('1990-01-01T00:00:00z')),
-          new PropertyFilter('created', '<', new Date('2000-12-31T23:59:59z')),
-        ]),
-      );
-
 ### PHP
 
 To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode PHP API reference documentation](https://googleapis.github.io/google-cloud-php/#/docs/cloud-datastore/latest) .

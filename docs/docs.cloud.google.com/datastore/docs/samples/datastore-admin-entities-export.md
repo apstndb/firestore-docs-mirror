@@ -100,40 +100,6 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
      return resp, nil
     }
 
-### Node.js
-
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Node.js API reference documentation](https://cloud.google.com/nodejs/docs/reference/datastore/latest) .
-
-To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
-
-    const {Datastore} = require('@google-cloud/datastore');
-    const datastore = new Datastore();
-    
-    async function exportEntities() {
-      /**
-       * TODO(developer): Uncomment these variables before running the sample.
-       */
-      // const bucket = 'YOUR_BUCKET_NAME';
-    
-      const [exportOperation] = await datastore.export({bucket});
-      await exportOperation.promise();
-    
-      // The export operation has created a new file in your bucket, e.g.
-      // gs://{YOUR_BUCKET_NAME}/{timestamp}/{timestamp}.overall_export.metadata
-      console.log(`Export file created: ${exportOperation.result.outputUrl}`);
-    
-      // You may also choose to include only specific kinds and namespaces.
-      const [specificExportOperation] = await datastore.export({
-        bucket,
-        kinds: ['Employee', 'Task'],
-        namespaces: ['Company'],
-      });
-      await specificExportOperation.promise();
-      console.log(specificExportOperation.result.outputUrl);
-    }
-    
-    exportEntities();
-
 ### Python
 
 To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Python API reference documentation](https://cloud.google.com/python/docs/reference/datastore/latest) .

@@ -43,21 +43,6 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 
     Iterator<Entity> tasks = datastore.get(taskKey1, taskKey2);
 
-### Node.js
-
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Node.js API reference documentation](https://cloud.google.com/nodejs/docs/reference/datastore/latest) .
-
-To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
-
-    const taskKey1 = this.datastore.key(['Task', 1]);
-    const taskKey2 = this.datastore.key(['Task', 2]);
-    
-    const keys = [taskKey1, taskKey2];
-    
-    const [tasks] = await datastore.get(keys);
-    // Tasks retrieved successfully.
-    console.log(tasks);
-
 ### PHP
 
 To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode PHP API reference documentation](https://googleapis.github.io/google-cloud-php/#/docs/cloud-datastore/latest) .

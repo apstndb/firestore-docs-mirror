@@ -69,27 +69,6 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
       percentCompletes.add(task.getDouble("percent_complete"));
     }
 
-### Node.js
-
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Node.js API reference documentation](https://cloud.google.com/nodejs/docs/reference/datastore/latest) .
-
-To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
-
-    async function runProjectionQuery() {
-      const priorities = [];
-      const percentCompletes = [];
-      const [tasks] = await datastore.runQuery(query);
-      tasks.forEach(task => {
-        priorities.push(task.priority);
-        percentCompletes.push(task.percent_complete);
-      });
-    
-      return {
-        priorities: priorities,
-        percentCompletes: percentCompletes,
-      };
-    }
-
 ### PHP
 
 To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode PHP API reference documentation](https://googleapis.github.io/google-cloud-php/#/docs/cloud-datastore/latest) .

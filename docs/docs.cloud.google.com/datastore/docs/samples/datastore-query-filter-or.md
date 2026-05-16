@@ -61,40 +61,6 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
       }
     }
 
-### Node.js
-
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Node.js API reference documentation](https://cloud.google.com/nodejs/docs/reference/datastore/latest) .
-
-To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
-
-    /**
-     * TODO(developer): Uncomment these variables before running the sample.
-     */
-    // const projectId = "your Google Cloud project id";
-    
-    // Imports the Cloud Datastore
-    const {Datastore, PropertyFilter, or} = require('@google-cloud/datastore');
-    
-    async function queryFilterOr() {
-      // Instantiate the Datastore
-      const datastore = new Datastore();
-      const query = datastore
-        .createQuery('Task')
-        .filter(
-          or([
-            new PropertyFilter('description', '=', 'Buy milk'),
-            new PropertyFilter('description', '=', 'Feed cats'),
-          ]),
-        );
-    
-      const [entities] = await datastore.runQuery(query);
-      for (const entity of entities) {
-        console.log(`Entity found: ${entity['description']}`);
-      }
-    }
-    
-    queryFilterOr();
-
 ### Python
 
 To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Python API reference documentation](https://cloud.google.com/python/docs/reference/datastore/latest) .

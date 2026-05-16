@@ -43,6 +43,46 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
         return _db.Insert(task);
     }
 
+### Go
+
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Go API reference documentation](https://cloud.google.com/go/docs/reference/cloud.google.com/go/datastore/latest) .
+
+To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
+
+    import (
+     "context"
+     "log"
+     "time"
+    
+     "cloud.google.com/go/datastore"
+    )
+    
+    // Task is the model used to store tasks in the datastore.
+    type Task struct {
+     Desc    string    `datastore:"description"`
+     Created time.Time `datastore:"created"`
+     Done    bool      `datastore:"done"`
+     id      int64     // The integer ID used in the datastore.
+    }
+    
+    // AddTask adds a task with the given description to the datastore,
+    // returning the key of the newly created entity.
+    func AddTask(projectID string, desc string) (*datastore.Key, error) {
+     ctx := context.Background()
+     client, err := datastore.NewClient(ctx, projectID)
+     if err != nil {
+         log.Fatalf("Could not create datastore client: %v", err)
+     }
+     defer client.Close()
+     task := &Task{
+         Desc:    desc,
+         Created: time.Now(),
+     }
+     key := datastore.IncompleteKey("Task", nil)
+     return client.Put(ctx, key, task)
+    
+    }
+
 ### Java
 
 To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Java API reference documentation](https://cloud.google.com/java/docs/reference/google-cloud-datastore/latest/history) .
@@ -68,41 +108,6 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
               .build();
       datastore.put(task);
       return key;
-    }
-
-### Node.js
-
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Node.js API reference documentation](https://cloud.google.com/nodejs/docs/reference/datastore/latest) .
-
-To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
-
-    async function addTask(description) {
-      const taskKey = datastore.key('Task');
-      const entity = {
-        key: taskKey,
-        data: [
-          {
-            name: 'created',
-            value: new Date().toJSON(),
-          },
-          {
-            name: 'description',
-            value: description,
-            excludeFromIndexes: true,
-          },
-          {
-            name: 'done',
-            value: false,
-          },
-        ],
-      };
-    
-      try {
-        await datastore.save(entity);
-        console.log(`Task ${taskKey.id} created successfully.`);
-      } catch (err) {
-        console.error('ERROR:', err);
-      }
     }
 
 ### PHP

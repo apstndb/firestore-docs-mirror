@@ -64,21 +64,6 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
     // Create a Key factory to construct keys associated with this project.
     private final KeyFactory keyFactory = datastore.newKeyFactory().setKind("Task");
 
-### Node.js
-
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Node.js API reference documentation](https://cloud.google.com/nodejs/docs/reference/datastore/latest) .
-
-To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
-
-    // By default, the client will authenticate using the service account file
-    // specified by the GOOGLE_APPLICATION_CREDENTIALS environment variable and use
-    // the project specified by the GCLOUD_PROJECT environment variable. See
-    // https://googlecloudplatform.github.io/google-cloud-node/#/docs/datastore/latest/guides/authentication
-    const {Datastore} = require('@google-cloud/datastore');
-    
-    // Creates a client
-    const datastore = new Datastore();
-
 ### PHP
 
 To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode PHP API reference documentation](https://googleapis.github.io/google-cloud-php/#/docs/cloud-datastore/latest) .

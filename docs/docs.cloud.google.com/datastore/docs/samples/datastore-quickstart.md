@@ -154,42 +154,6 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
       }
     }
 
-### Node.js
-
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Node.js API reference documentation](https://cloud.google.com/nodejs/docs/reference/datastore/latest) .
-
-To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
-
-    // Imports the Google Cloud client library
-    const {Datastore} = require('@google-cloud/datastore');
-    
-    // Creates a client
-    const datastore = new Datastore();
-    
-    async function quickstart() {
-      // The kind for the new entity
-      const kind = 'Task';
-    
-      // The name/ID for the new entity
-      const name = 'sampletask1';
-    
-      // The Cloud Datastore key for the new entity
-      const taskKey = datastore.key([kind, name]);
-    
-      // Prepares the new entity
-      const task = {
-        key: taskKey,
-        data: {
-          description: 'Buy milk',
-        },
-      };
-    
-      // Saves the entity
-      await datastore.save(task);
-      console.log(`Saved ${task.key.name}: ${task.data.description}`);
-    }
-    quickstart();
-
 ### PHP
 
 To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode PHP API reference documentation](https://googleapis.github.io/google-cloud-php/#/docs/cloud-datastore/latest) .

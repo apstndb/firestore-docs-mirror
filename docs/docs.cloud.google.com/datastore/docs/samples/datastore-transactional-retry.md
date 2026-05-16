@@ -115,32 +115,6 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
     }
     // Retry handling can also be configured and automatically applied using google-cloud-java.
 
-### Node.js
-
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Node.js API reference documentation](https://cloud.google.com/nodejs/docs/reference/datastore/latest) .
-
-To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
-
-    async function transferFundsWithRetry() {
-      const maxTries = 5;
-    
-      async function tryRequest(currentAttempt, delay) {
-        try {
-          await transferFunds(fromKey, toKey, 10);
-        } catch (err) {
-          if (currentAttempt <= maxTries) {
-            // Use exponential backoff
-            setTimeout(async () => {
-              await tryRequest(currentAttempt + 1, delay * 2);
-            }, delay);
-          }
-          throw err;
-        }
-      }
-    
-      await tryRequest(1, 100);
-    }
-
 ### PHP
 
 To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode PHP API reference documentation](https://googleapis.github.io/google-cloud-php/#/docs/cloud-datastore/latest) .

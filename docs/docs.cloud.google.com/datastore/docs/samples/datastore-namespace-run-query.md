@@ -98,35 +98,6 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
       namespaces.add(results.next().getName());
     }
 
-### Node.js
-
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode Node.js API reference documentation](https://cloud.google.com/nodejs/docs/reference/datastore/latest) .
-
-To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
-
-    async function runNamespaceQuery(startNamespace, endNamespace) {
-      const startKey = datastore.key(['__namespace__', startNamespace]);
-      const endKey = datastore.key(['__namespace__', endNamespace]);
-    
-      const query = datastore
-        .createQuery('__namespace__')
-        .select('__key__')
-        .filter(
-          and([
-            new PropertyFilter('__key__', '>=', startKey),
-            new PropertyFilter('__key__', '<', endKey),
-          ]),
-        );
-    
-      const [entities] = await datastore.runQuery(query);
-      const namespaces = entities.map(entity => entity[datastore.KEY].name);
-    
-      console.log('Namespaces:');
-      namespaces.forEach(namespace => console.log(namespace));
-    
-      return namespaces;
-    }
-
 ### PHP
 
 To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode PHP API reference documentation](https://googleapis.github.io/google-cloud-php/#/docs/cloud-datastore/latest) .

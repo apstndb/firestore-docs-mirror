@@ -134,6 +134,10 @@ The emulator doesn't also attempt to mimic all of the [production limits](https:
 
 The emulator does not track composite indexes and will instead execute any valid query. Make sure to test your app against a real Firestore instance to determine which indexes you require.
 
+### Text search isn't supported
+
+The emulator doesn't support the `search(...)` stage.
+
 ### Limits
 
 The emulator does not enforce all limits enforced in production. For example, the emulator may allow transactions that would be rejected as too large by the production service. Make sure you are familiar with the [documented limits](https://docs.cloud.google.com/firestore/docs/quotas) and that you design your app to proactively avoid them.
