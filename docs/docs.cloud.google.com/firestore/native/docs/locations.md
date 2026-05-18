@@ -544,7 +544,7 @@ Use one of the following methods to view the location setting for your databases
 
   - Open the [database list](https://console.cloud.google.com/firestore/databases) in the Google Cloud console. The location for each database is in the location column.
 
-  - In the Firebase console, go to the [Firestore *Data* tab](https://console.firebase.google.com/project/_/firestore/databases/_/data) to view the list of your database instances and their locations.
+  - In the Firebase console, go to the **Databases & Storage** \> **Firestore** \> [**Data** tab](https://console.firebase.google.com/project/_/firestore/databases/_/data) to view the list of your database instances and their locations.
 
 ## Possible location dependencies due to "location for default Google Cloud resources"
 

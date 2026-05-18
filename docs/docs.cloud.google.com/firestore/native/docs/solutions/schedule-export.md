@@ -224,9 +224,9 @@ The Cloud Scheduler page only confirms that the job called your Cloud Function. 
 
 To see if the Cloud Function successfully started an export operation, open the function's logs:
 
-### Firebase Console
+### Firebase console
 
-Go to the **Cloud Run functions** page in the Firebase console.
+In the Firebase console, go to **Hosting & Serverless** \> **Functions** .
 
 ### GCP Console
 

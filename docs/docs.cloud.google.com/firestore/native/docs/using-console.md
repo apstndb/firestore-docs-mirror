@@ -189,8 +189,8 @@ To view your Firestore Security Rules from the Google Cloud console, go to the *
 
 ### Edit Security Rules
 
-To edit or delete your Firestore Security Rules, [use the Firebase CLI or Firebase console](https://docs.cloud.google.com/firestore/docs/security/get-started#deploying_rules) . In the Firebase console, go to the [**Rules** tab](https://console.firebase.google.com/project/_/firestore/rules) in the **Firestore in Native Mode** section. Learn more about [setting up and customizing rules](https://docs.cloud.google.com/firestore/native/docs/security/get-started) .
+To edit or delete your Firestore Security Rules, [use the Firebase CLI or Firebase console](https://docs.cloud.google.com/firestore/docs/security/get-started#deploying_rules) . In the Firebase console, go to the **Databases & Storage** \> **Firestore** \> [**Rules** tab](https://console.firebase.google.com/project/_/firestore/rules) . Learn more about [setting up and customizing rules](https://docs.cloud.google.com/firestore/native/docs/security/get-started) .
 
 ## Manage indexes
 
-To create new indexes for your queries and manage existing indexes from the Firebase console, go to the [**Indexes** tab](https://console.firebase.google.com/project/_/firestore/indexes) in the **Firestore in Native Mode** section. Learn more about [managing indexes](https://docs.cloud.google.com/firestore/native/docs/query-data/indexing) .
+To create new indexes for your queries and manage existing indexes from the Firebase console, go to the **Databases & Storage** \> **Firestore** \> [**Indexes** tab](https://console.firebase.google.com/project/_/firestore/indexes) . Learn more about [managing indexes](https://docs.cloud.google.com/firestore/native/docs/query-data/indexing) .

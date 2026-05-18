@@ -66,7 +66,9 @@ If your app continues to write to your database while you perform an export oper
 
 1.  Update security rules
     
-    In the Firestore [**Rules** tab](https://console.firebase.google.com/project/_/firestore/rules) of the console, update your source project security rules to deny all writes. For example:
+    In the Firebase console, go to the **Databases & Storage** \> **Firestore** \> [**Rules** tab](https://console.firebase.google.com/project/_/firestore/rules) .
+    
+    Update your source project security rules to deny all writes. For example:
     
     ``` 
       // Deny write access to all users under any conditions

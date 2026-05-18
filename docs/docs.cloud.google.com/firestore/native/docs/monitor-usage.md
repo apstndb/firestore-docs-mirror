@@ -74,7 +74,7 @@ The usage dashboard for deletes does not capture automatic expiration operations
 
 Additionally, the Firebase console provides a Firebase Security Rules evaluation dashboard, a useful, at-a-glance view of rules invocations. You can also monitor Firebase Security Rules usage through [Cloud Monitoring](https://cloud.google.com/monitoring/api/metrics_gcp#gcp-firestore) . This provides the same rule evaluation metrics, along with the ability to build custom dashboards, analyze trends, and configure alerts (for example, when denied requests spike). See the [Cloud Monitoring metrics reference](https://cloud.google.com/monitoring/api/metrics_gcp#gcp-firestore) for the complete list of available metrics.
 
-![Firestore Rules monitoring dashboard in the Firebase console.](https://docs.cloud.google.com/firestore/native/docs/images/firestore_rules_monitor.png)
+![Firestore Security Rules monitoring dashboard in the Firebase console.](https://docs.cloud.google.com/firestore/native/docs/images/firestore_rules_monitor.png)
 
 ## Cloud Monitoring metrics
 

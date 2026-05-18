@@ -12,9 +12,9 @@ This quickstart shows you how to set up Firestore, add data, and read data by us
 
 > **Note:** This quickstart uses the Firebase console instead of the Google Cloud console.
 
-1.  If you haven't already, create a Firebase project: In the [Firebase console](https://console.firebase.google.com) , click **Add project** , then follow the on-screen instructions to create a Firebase project or to add Firebase services to an existing Google Cloud project.
+1.  If you haven't already, create a Firebase project: In the [Firebase console](https://console.firebase.google.com/) , click **Add project** , then follow the on-screen instructions to create a Firebase project or to add Firebase services to an existing Google Cloud project.
 
-2.  Open your project in the Firebase console. In the left panel, expand **Build** and then select [**Firestore database**](https://console.firebase.google.com/project/_/firestore/) .
+2.  In the left panel, go to **Databases & Storage** \> [**Firestore**](https://console.firebase.google.com/project/_/firestore/) .
 
 3.  Click **Create database** .
 
@@ -711,7 +711,7 @@ Android
 
 Use [Firebase Authentication](https://firebase.google.com/docs/auth/) and [Firestore Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/get-started) to secure your data in Firestore in Native Mode.
 
-Here are some basic rule sets you can use to get started. You can modify your security rules in the [**Rules tab**](https://console.firebase.google.com/project/_/firestore/rules) of the Firebase console.
+Here are some basic rule sets you can use to get started. You can modify your security rules from the Firebase console in the **Databases & Storage** \> **Firestore** \> [**Rules** tab](https://console.firebase.google.com/project/_/firestore/rules) .
 
 ### Auth required
 

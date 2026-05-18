@@ -81,13 +81,13 @@ The `{document=**}` path used in the examples above matches any document in the 
 
 ## Testing rules
 
-Firestore provides a rules simulator that you can use to test your ruleset. You can access the simulator from the [**Rules** tab](https://console.firebase.google.com/project/_/firestore/rules) in the Firestore section of the Firebase console.
+Firestore provides a rules simulator that you can use to test your ruleset. You can access the simulator from the Firebase console in the **Databases & Storage** \> **Firestore** \> [**Rules** tab](https://console.firebase.google.com/project/_/firestore/rules) .
 
 The rules simulator lets you simulate authenticated and unauthenticated reads, writes, and deletes. When you simulate an authenticated request, you can build and preview authentication tokens from various providers. Simulated requests run against the ruleset in your editor, not your currently deployed ruleset.
 
 ## Deploying rules
 
-Before you can start using Firestore from your mobile app, you will need to deploy security rules. You can deploy rules in the Firebase console, using the Firebase CLI, or with the Firestore management REST API.
+Before you can start using Firestore from your mobile app, you'll need to deploy security rules. You can deploy rules in the Firebase console, using the Firebase CLI, or with the Firestore management REST API.
 
 Updates to Firestore Security Rules can take up to a minute to affect new queries and listeners. However, it can take up to 10 minutes to fully propagate the changes and affect any active listeners.
 
@@ -95,7 +95,7 @@ Updates to Firestore Security Rules can take up to a minute to affect new querie
 
 ### Use the Firebase console
 
-To set up and deploy your first set of rules, for the default database in your project, open the [**Rules** tab](https://console.firebase.google.com/project/_/firestore/rules) in the Firestore section of the Firebase console.
+To set up and deploy your first set of rules, for the default database in your project, go to the **Databases & Storage** \> **Firestore** \> [**Rules** tab](https://console.firebase.google.com/project/_/firestore/rules) in the Firebase console.
 
 Write your rules in the online editor, then click **Publish** .
 
