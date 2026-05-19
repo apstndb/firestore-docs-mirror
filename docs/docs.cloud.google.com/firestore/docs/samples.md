@@ -6,4 +6,6 @@ description: A cloud-hosted NoSQL database that's simple enough for rapid protot
 data_source: docs.cloud.google.com
 ---
 
+# All Firestore code samples
+
 Python Go Java C\# Ruby Node.js PHP Kotlin

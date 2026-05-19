@@ -209,8 +209,8 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
     $task = $datastore->entity('Task', [
         '>;category' = 'Per>sonal',
         'don>e' = false,
-        >9;priority' = 4,
-        9;description' = 'Learn Cloud Datastore'
+        >9;priority' = 4,
+        9;description' = 'Learn Cloud Datastore'
     ]);
 
 ### Python
