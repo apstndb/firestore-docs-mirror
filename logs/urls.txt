@@ -556,7 +556,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect	2026-
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database	2026-05-16T05:52:09Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases	2026-05-16T05:52:09Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-manage-saved-queries	2026-05-16T05:52:09Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/custom-constraints	2026-05-15T21:59:04Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/custom-constraints	2026-05-18T20:43:59Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/disaster-recovery	2026-05-16T05:52:09Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/eventarc	2026-05-16T05:52:09Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import	2026-05-16T05:52:09Z
@@ -623,7 +623,7 @@ https://docs.cloud.google.com/firestore/native/docs/concepts/structure-data	2026
 https://docs.cloud.google.com/firestore/native/docs/connect-ide-using-mcp-toolbox	2026-05-18T07:49:30Z
 https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library	2026-05-18T07:49:30Z
 https://docs.cloud.google.com/firestore/native/docs/create-database-web-mobile-client-library	2026-05-18T07:49:30Z
-https://docs.cloud.google.com/firestore/native/docs/custom-constraints	2026-05-18T07:49:46Z
+https://docs.cloud.google.com/firestore/native/docs/custom-constraints	2026-05-18T20:43:59Z
 https://docs.cloud.google.com/firestore/native/docs/data-model	2026-05-18T07:49:46Z
 https://docs.cloud.google.com/firestore/native/docs/dataflow-connector	2026-05-18T07:49:30Z
 https://docs.cloud.google.com/firestore/native/docs/disaster-recovery	2026-05-18T07:49:46Z
