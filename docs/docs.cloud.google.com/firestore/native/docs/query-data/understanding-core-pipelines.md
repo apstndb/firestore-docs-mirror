@@ -18,7 +18,7 @@ Native mode supports two interfaces for accessing data:
 
 The newer query interface for Firestore. Pipeline operations support a stage-based composable syntax. You construct an operation by defining a series of sequential stages that are executed in order. This allows for complex operations, such as filtering on the result of an aggregation, which was not previously possible in the original interface (Core operations).
 
-Pipeline operations are available only in Firestore Enterprise edition and are in the [Preview](https://cloud.google.com/products#product-launch-stages) launch stage.
+Pipeline operations are available only in Firestore Enterprise edition.
 
 ### Core operations
 

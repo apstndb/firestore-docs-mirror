@@ -30,7 +30,7 @@ To view usage metrics for a Firestore database, open the database **Usage** page
 
 4.  Click the link in the message that appears on the page to view your database usage.
     
-    ![The Firestore database usage dashboard in the Google Cloud console.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-database-usage-dashboard.png)
+    ![The database usage dashboard in the console.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-database-usage-dashboard.png)
 
 ### Aggregated usage dashboard
 
@@ -42,11 +42,11 @@ In the Google Cloud console, go to the **Project usage** page.
 
 The project usage dashboard shows document operations over time as follows:
 
-![The Firestore project usage dashboard in the Google Cloud console.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-usage-dashboard-cloud-console.png)
+![The project usage dashboard in the Google Cloud console.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-usage-dashboard-cloud-console.png)
 
 ### Firebase console
 
-![The Firestore usage dashboard in the Firebase console.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-usage-dashboard.png)
+![The usage dashboard in the Firebase console.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-usage-dashboard.png)
 
 ### Usage dashboard and billing reports
 
@@ -74,7 +74,7 @@ The usage dashboard for deletes does not capture automatic expiration operations
 
 Additionally, the Firebase console provides a Firebase Security Rules evaluation dashboard, a useful, at-a-glance view of rules invocations. You can also monitor Firebase Security Rules usage through [Cloud Monitoring](https://cloud.google.com/monitoring/api/metrics_gcp#gcp-firestore) . This provides the same rule evaluation metrics, along with the ability to build custom dashboards, analyze trends, and configure alerts (for example, when denied requests spike). See the [Cloud Monitoring metrics reference](https://cloud.google.com/monitoring/api/metrics_gcp#gcp-firestore) for the complete list of available metrics.
 
-![Firestore Security Rules monitoring dashboard in the Firebase console.](https://docs.cloud.google.com/firestore/native/docs/images/firestore_rules_monitor.png)
+![Security Rules monitoring dashboard in the Firebase console.](https://docs.cloud.google.com/firestore/native/docs/images/firestore_rules_monitor.png)
 
 ## Cloud Monitoring metrics
 

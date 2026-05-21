@@ -74,7 +74,7 @@ To view query insights for a Firestore in Datastore mode database, open the data
 
 3.  In the navigation menu, click **Query insights** .
     
-    ![The Datastore mode database usage dashboard in the Google Cloud console.](https://docs.cloud.google.com/static/firestore/native/docs/images/datastore-query-insights.png)
+    ![The database usage dashboard in the console.](https://docs.cloud.google.com/static/firestore/native/docs/images/datastore-query-insights.png)
     
     Use the **Load type** drop-down to find the top queries by either latency or number of read operations.
 

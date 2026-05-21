@@ -80,7 +80,7 @@ To view query insights for a Firestore database, open the database **Query insig
 
 3.  In the navigation menu, click **Query insights** .
     
-    ![The Firestore database usage dashboard in the Google Cloud console.](https://docs.cloud.google.com/static/firestore/native/docs/images/firestore-query-insights.png)
+    ![The database usage dashboard in the console.](https://docs.cloud.google.com/static/firestore/native/docs/images/firestore-query-insights.png)
     
     Use the **Load type** drop-down to find the top queries by either latency or number of read operations.
 

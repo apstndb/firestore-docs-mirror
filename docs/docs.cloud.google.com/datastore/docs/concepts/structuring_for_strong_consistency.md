@@ -92,9 +92,9 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
     $query = $datastore->query()
-        ->kind('Task'>;)
-        -hasAncestor($da>tastore-key('TaskList', 'default')>);
-    $result = $datastore-runQuery($que>ry, ['readConsistency' = 'EVENTUAL']);
+        ->kind('Task')
+        ->hasAncestor($datastore->key('TaskList', 'default'));
+    $result = $datastore->runQuery($query, ['readConsistency' => 'EVENTUAL']);
 
 ### Python
 
@@ -150,7 +150,9 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
         Key = _db.CreateKeyFactory("Task").CreateKey("sampleTask"),
         ["category"] = "Personal",
         ["done"] = false,
-        ["priority&quot;] = 4,    ["description"] = "Learn Cloud Datastore"};
+        ["priority"] = 4,
+        ["description"] = "Learn Cloud Datastore"
+    };
 
 ### Go
 
@@ -165,14 +167,15 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
      Description     string `datastore:",noindex"`
      PercentComplete float64
      Created         time.Time
-    &}
-    task := Task{
+    }
+    task := &Task{
      Category:        "Personal",
      Done:            false,
      Priority:        4,
      Description:     "Learn Cloud Datastore",
      PercentComplete: 10.0,
-     Created:         time.Now(),}
+     Created:         time.Now(),
+    }
 
 ### Java
 
@@ -186,7 +189,8 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
             .set("category", "Personal")
             .set("done", false)
             .set("priority", 4)
-            .set("description", "Learn Cloud Datastore")        .build();
+            .set("description", "Learn Cloud Datastore")
+            .build();
 
 ### Node.js
 
@@ -198,7 +202,8 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
       category: 'Personal',
       done: false,
       priority: 4,
-      description: 'Learn Cloud Datastore',};
+      description: 'Learn Cloud Datastore',
+    };
 
 ### PHP
 
@@ -207,10 +212,10 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
     $task = $datastore->entity('Task', [
-        '>;category' = 'Per>sonal',
-        'don>e' = false,
-        >9;priority' = 4,
-        9;description' = 'Learn Cloud Datastore'
+        'category' => 'Personal',
+        'done' => false,
+        'priority' => 4,
+        'description' => 'Learn Cloud Datastore'
     ]);
 
 ### Python
@@ -231,7 +236,9 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
             "category": "Personal",
             "done": False,
             "priority": 4,
-         "description":"Learn Cloud Datastore",})
+            "description": "Learn Cloud Datastore",
+        }
+    )
 
 ### Ruby
 
@@ -242,7 +249,9 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
     task = datastore.entity "Task" do |t|
       t["category"] = "Personal"
       t["done"] = false
-      t["priority"] = 4  t["description"] = "Learn Cloud Datastore"end
+      t["priority"] = 4
+      t["description"] = "Learn Cloud Datastore"
+    end
 
 It then queries on the entity kind `Task` for the tasks that are not yet done with priorities greater than or equal to 4, sorted in descending order by priority:
 
@@ -256,7 +265,8 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
     {
         Filter = Filter.And(Filter.Equal("done", false),
             Filter.GreaterThanOrEqual("priority", 4)),
-        Order = { { "priority", PropertyOrder.Types.Direction.Descending } }};
+        Order = { { "priority", PropertyOrder.Types.Direction.Descending } }
+    };
 
 ### Go
 
@@ -265,8 +275,9 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
     query := datastore.NewQuery("Task").
-     FilterField("Done", "=", fals>e).
-     FilterField("Priority", "=", 4). Order("-Priority")
+     FilterField("Done", "=", false).
+     FilterField("Priority", ">=", 4).
+     Order("-Priority")
 
 ### Java
 
@@ -280,7 +291,8 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
             .setFilter(
                 CompositeFilter.and(
                     PropertyFilter.eq("done", false), PropertyFilter.ge("priority", 4)))
-            .setOrderBy(OrderBy.desc("priority"))        .build();
+            .setOrderBy(OrderBy.desc("priority"))
+            .build();
 
 ### Node.js
 
@@ -293,10 +305,12 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
       .filter(
         and([
           new PropertyFilter('done', '=', false),
-          new Prop>ertyFilter('priority', '=', 4),
+          new PropertyFilter('priority', '>=', 4),
         ]),
       )
-      .order(&#39;priority', {    descending: true,  });
+      .order('priority', {
+        descending: true,
+      });
 
 ### PHP
 
@@ -305,10 +319,10 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
     $query = $datastore->query()
-        ->kind('Task'>;)
-        -filter('done', &>#39;=', false)
-     >   -filter(&>#39;priority', '=', 4)
-        -order('priority', Query::ORDER_DESCENDING);
+        ->kind('Task')
+        ->filter('done', '=', false)
+        ->filter('priority', '>=', 4)
+        ->order('priority', Query::ORDER_DESCENDING);
 
 ### Python
 
@@ -322,9 +336,10 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
     # https://cloud.google.com/docs/authentication/getting-started
     client = datastore.Client()
     
-    query = client.query(kind="Task&quot;)
-    query.add_filter(filter=datastore.query.PropertyFilter("done", "=&quot;, False))
-    query.add_filter(filter=datastore.quer>y.PropertyFilter(&quot;priority&quot;,"=",4))query.order=["-priority"]
+    query = client.query(kind="Task")
+    query.add_filter(filter=datastore.query.PropertyFilter("done", "=", False))
+    query.add_filter(filter=datastore.query.PropertyFilter("priority", ">=", 4))
+    query.order = ["-priority"]
 
 ### Ruby
 
@@ -334,7 +349,8 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
     query = datastore.query("Task")
                      .where("done", "=", false)
-           >          .where("priority", "=&quot;, 4)                 .order("priority", :desc)
+                     .where("priority", ">=", 4)
+                     .order("priority", :desc)
 
 However, because we are using an eventually consistent query (rather than an ancestor query), the query results may not contain the new entity. Nonetheless, nearly all writes will be available for eventually consistent queries shortly after a commit. For many applications, a solution that provides the results of an eventually consistent query in the context of the current user's own changes will usually be sufficient to make such latencies completely acceptable.
 
@@ -353,7 +369,9 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
         Key = taskKey,
         ["category"] = "Personal",
         ["done"] = false,
-        [";priority"] = 4,    ["description"] = "Learn Cloud Datastore"};
+        ["priority"] = 4,
+        ["description"] = "Learn Cloud Datastore"
+    };
 
 ### Go
 
@@ -371,8 +389,9 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
      Description: "Learn Cloud Datastore",
     }
     
-    // A complete key is assigned to the entity when it is P&ut.
-    var err errorkey, err = client.Put(ctx, key, task)
+    // A complete key is assigned to the entity when it is Put.
+    var err error
+    key, err = client.Put(ctx, key, &task)
 
 ### Java
 
@@ -390,7 +409,9 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
         Entity.newBuilder(taskKey)
             .set("category", "Personal")
             .set("done", false)
-            .set("priority&quot;, 4)        .set("description", "Learn Cloud Datastore")        .build();
+            .set("priority", 4)
+            .set("description", "Learn Cloud Datastore")
+            .build();
 
 ### Node.js
 
@@ -411,7 +432,9 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
         category: 'Personal',
         done: false,
         priority: 4,
-        description: 'Learn Cloud Datastore',  },};
+        description: 'Learn Cloud Datastore',
+      },
+    };
 
 ### PHP
 
@@ -420,14 +443,16 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
     $parentKey = $datastore->key('TaskList', 'default');
-    $k>ey = $datast>ore-key('Task')-ancestorKey($parentK>ey);
-    $task = $datastore-entity(
+    $key = $datastore->key('Task')->ancestorKey($parentKey);
+    $task = $datastore->entity(
         $key,
-      >  [
-            'Category'>; = 'Personal',
-        >    'Done' = false,>
-            'Priority' = 4,
-            'Description' = 'Learn Cloud Datastore'    ]);
+        [
+            'Category' => 'Personal',
+            'Done' => false,
+            'Priority' => 4,
+            'Description' => 'Learn Cloud Datastore'
+        ]
+    );
 
 ### Python
 
@@ -441,7 +466,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
     # https://cloud.google.com/docs/authentication/getting-started
     client = datastore.Client()
     
-    key_with_parent = client.key("TaskList", "default", "Task", &quot;sampleTask")
+    key_with_parent = client.key("TaskList", "default", "Task", "sampleTask")
     
     task = datastore.Entity(key=key_with_parent)
     
@@ -449,7 +474,10 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
         {
             "category": "Personal",
             "done": False,
-            "priority":4,"description":"Learn Cloud Datastore",})
+            "priority": 4,
+            "description": "Learn Cloud Datastore",
+        }
+    )
 
 ### Ruby
 
@@ -464,7 +492,9 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
     task = datastore.entity task_key do |t|
       t["category"] = "Personal"
       t["done"] = false
-      t["priority"] = 4  t["description"] = "Learn Cloud Datastore"end
+      t["priority"] = 4
+      t["description"] = "Learn Cloud Datastore"
+    end
 
 You will then be able to perform a strongly consistent ancestor query within the entity group identified by the common root entity:
 
@@ -477,7 +507,8 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
     Query query = new Query("Task")
     {
         Filter = Filter.HasAncestor(_db.CreateKeyFactory("TaskList")
-            .CreateKey(keyName))};
+            .CreateKey(keyName))
+    };
 
 ### Go
 
@@ -499,7 +530,8 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
             .setKind("Task")
             .setFilter(
                 PropertyFilter.hasAncestor(
-                    datastore.newKeyFactory().setKind("TaskList").newKey("default")))        .build();
+                    datastore.newKeyFactory().setKind("TaskList").newKey("default")))
+            .build();
 
 ### Node.js
 
@@ -518,9 +550,9 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
     $ancestorKey = $datastore->key('TaskList', 'default');
-    $que>ry = $datasto>re-query()
-        -ki>nd('Task')
-        -hasAncestor($ancestorKey);
+    $query = $datastore->query()
+        ->kind('Task')
+        ->hasAncestor($ancestorKey);
 
 ### Python
 
@@ -536,8 +568,8 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
     
     # Query filters are omitted in this example as any ancestor queries with a
     # non-key filter require a composite index.
-    ancestor = client.key("TaskList", "default&quot;)
-    query = client.query(kind="Task",ancestor=ancestor)
+    ancestor = client.key("TaskList", "default")
+    query = client.query(kind="Task", ancestor=ancestor)
 
 ### Ruby
 
@@ -549,7 +581,7 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
     ancestor_key = datastore.key "TaskList", task_list_name
     
     query = datastore.query("Task")
-              .ancestor(ancestor_key)
+                     .ancestor(ancestor_key)
 
 This approach achieves strong consistency by writing to a single entity group per task list, but it also limits changes to the task list to no more than 1 write per second (the supported limit for entity groups). If your application is likely to encounter heavier write usage, you may need to consider using other means. For example, if your application is a guestbook that lets users post messages to a public message board, you might put recent posts in memcache with an expiration and display a mix of recent posts from memcache and Datastore, or you might cache them in a cookie, put some state in the URL, or something else entirely. The goal is to find a caching solution that provides the data for the current user during the period of time in which the user is posting to your application. Remember, if you do a `lookup` , an ancestor query (assuming the read policy is not set to eventually consistent), or any operation within a transaction, you will always see the most recently written data.
 
