@@ -824,7 +824,7 @@ The following example shows how to specify a distance threshold to return up to 
 As you work with vector embeddings, note the following limitations:
 
   - The maximum supported embedding dimension is 2048. To store larger indexes, use [dimensionality reduction](https://en.wikipedia.org/wiki/Dimensionality_reduction) .
-  - The maximum number of documents to return from a nearest-neighbor query is 1000.
+  - The maximum number of documents to return from a nearest-neighbor query is 1000 (Standard edition limitation only).
   - Vector search does not support [real-time snapshot listeners](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) .
   - Only the Python, Node.js, Go, and Java client libraries support vector search.
 

@@ -22,7 +22,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
     cities_ref = db.collection("cities")
     query = cities_ref.order_by("name").limit_to_last(2)
-    results = await query.get()
+    results=awaitquery.get()
 
 ## What's next
 

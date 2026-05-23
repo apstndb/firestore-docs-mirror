@@ -939,7 +939,7 @@ Pipeline operations if fully integrated with existing [Firestore metrics](https:
 
 ### Specialized Indexes
 
-Pipeline operations do not yet support existing `array-contains` & `vector` [index types](https://docs.cloud.google.com/firestore/docs/concepts/index-overview#index_modes) . Instead of just rejecting such queries, Firestore will attempt to use other existing `ascending` & `descending` indexes. It is expected that during private preview Pipeline operations with such `array_contains` or `find_nearest` expressions will be slower than their existing equivalents due to this.
+Pipeline operations don't yet support existing `array-contains` & `vector` [index types](https://docs.cloud.google.com/firestore/docs/concepts/index-overview#index_modes) . Instead of just rejecting such queries, Firestore will attempt to use other existing `ascending` & `descending` indexes. It is expected that with such `array_contains` or `find_nearest` expressions will be slower than their existing equivalents due to this.
 
 ### Realtime and Offline Support
 

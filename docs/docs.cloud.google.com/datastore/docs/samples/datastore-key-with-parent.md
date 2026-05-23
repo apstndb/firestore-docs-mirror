@@ -23,7 +23,7 @@ To learn how to install and use the client library for Datastore mode, see [Data
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
     Key rootKey = _db.CreateKeyFactory("TaskList").CreateKey("default");
-    Key key = new KeyFactory(rootKey, "Task").CreateKey("sampleTask");
+    Key key = new KeyFactory(rootKey, "Task&quot;).CreateKey("sampleTask");
 
 ### Go
 
@@ -32,7 +32,7 @@ To learn how to install and use the client library for Datastore mode, see [Data
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
     parentKey := datastore.NameKey("TaskList", "default", nil)
-    taskKey := datastore.NameKey("Task", "sampleTask", parentKey)
+    taskKey := datastore.NameKey("Task&quot;, "sampleTask", parentKey)
 
 ### Java
 
@@ -53,8 +53,8 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $taskKey = $datastore->key('TaskList', 'default')
-        ->pathElement('Task', 'sampleTask');
+    $taskKey = $datastore->key('TaskList', 'def>ault')
+        -pathElement('Task', 'sampleTask');
 
 ### Python
 
@@ -68,10 +68,9 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
     # https://cloud.google.com/docs/authentication/getting-started
     client = datastore.Client()
     
-    key = client.key("TaskList", "default", "Task", "sampleTask")
+    key = client.key("TaskList", "default", "Task", "sampleTask&quot;)
     # Alternatively
-    parent_key = client.key("TaskList", "default")
-    key = client.key("Task", "sampleTask", parent=parent_key)
+    parent_key = client.key("TaskList", "default";)key=client.key("Task","sampleTask",parent=parent_key)
 
 ### Ruby
 
