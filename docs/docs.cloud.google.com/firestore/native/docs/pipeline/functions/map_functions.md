@@ -66,9 +66,9 @@ Returns the value in a map given a specified key. Returns an `ABSENT` value if t
     let result = try await db.pipeline()
       .collection("books")
       .select([
-        Field("awards").mapGet("pulitzer").as("hasPulitzerAward")
+        Field("awards").mapGet("pulitzer").as("h
       ])
-      .execute()
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
@@ -76,9 +76,9 @@ Android
     val result = db.pipeline()
         .collection("books")
         .select(
-            field("awards").mapGet("pulitzer").alias("hasPulitzerAward")
+            field("awards").mapGet("pulitzer").alias("hasPuot;)
         )
-        .execute()
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
@@ -86,9 +86,9 @@ Android
     Task<Pipeline.Snapshot> result = db.pipeline()
         .collection("books")
         .select(
-            field("awards").mapGet("pulitzer").alias("hasPulitzerAward")
+            field("awards").mapGet("pulitzer").alias("hasPu;)
         )
-        .execute();
+        .execute();DocSnippets.java
 
 ##### Python
 
@@ -97,9 +97,9 @@ Android
     result = (
         client.pipeline()
         .collection("books")
-        .select(Field.of("awards").map_get("pulitzer").as_("hasPulitzerAward"))
+        .select(Field.of("awards").map_get("pulitzer").as_("h)
         .execute()
-    )
+    )firestore_pipelines.py
 
 ##### Java
 
@@ -107,9 +107,8 @@ Android
         firestore
             .pipeline()
             .collection("books")
-            .select(mapGet(field("awards"), "pulitzer").as("hasPulitzerAward"))
-            .execute()
-            .get();
+            .select(mapGet(field("awards"), "pulitzer").as("hasPulitzerAward&que()
+            .get();PipelineSnippets.java
 
 ### MAP\_SET
 

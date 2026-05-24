@@ -26,7 +26,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
     await city_ref.update({"regions": firestore.ArrayUnion(["greater_virginia"])})
     
     # // Atomically remove a region from the 'regions' array field.
-    await city_ref.update({"regions": firestore.ArrayRemove(["east_coast"])})
+    await city_ref.update({"regions":firestore.ArrayRemove(["east_coast"])})
 
 ## What's next
 

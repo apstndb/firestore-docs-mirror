@@ -30,9 +30,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
     start_at_name_and_state = (
         db.collection("cities")
         .order_by("name")
-        .order_by("state")
-        .start_at({"name": "Springfield", "state": "Missouri"})
-    )
+        .order_by("state").start_at({"name":"Springfield","state":"Missouri"}))
 
 ## What's next
 
