@@ -125,7 +125,7 @@ The following query uses range filters on population and density to return all c
 
 ## Indexing considerations
 
-Before you run your queries, read about [queries](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data) and the Firestore [data model](https://docs.cloud.google.com/firestore/native/docs/data-model) .
+Before you run your queries, read about \[queries\]\[1\] and the Firestore \[data model\]\[2\].
 
 In Firestore, the `ORDER BY` clause of a query determines which indexes can be used to serve the query. For example, an `ORDER BY a ASC, b ASC` query requires a composite index on the `a ASC, b ASC` fields.
 
@@ -165,7 +165,7 @@ When optimizing indexes, note the following best practices.
 
 Firestore uses the leftmost fields of a composite index to satisfy the equality constraints and the range or inequality constraint, if any, on the first field of the `orderBy()` query. These constraints can reduce the number of index entries that Firestore scans. Firestore uses the remaining fields of the index to satisfy other range or inequality constraints of the query. These constraints don't reduce the number of index entries that Firestore scans but filter out unmatched documents so that the number of documents that are returned to the clients are reduced.
 
-For more information about creating efficient indexes, see [index properties](https://docs.cloud.google.com/firestore/native/docs/concepts/index-overview#index_properties) .
+For more information about creating efficient indexes, see \[index properties\]\[4\].
 
 #### Order fields in decreasing order of query constraint selectivity
 
@@ -212,17 +212,19 @@ While adding an ordering on `experience` to the query will yield the same set of
 
 Queries with range and inequality filters on multiple fields are billed based on documents read and index entries read.
 
-For detailed information, see the [Pricing](https://docs.cloud.google.com/firestore/native/docs/pricing) page.
+For detailed information, see the \[Pricing\]\[5\] page.
 
 ## Limitations
 
-Apart from the [query limitations](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#query_limitations) , note the following limitations before using queries with range and inequality filters on multiple fields:
+Apart from the \[query limitations\]\[6\], note the following limitations before using queries with range and inequality filters on multiple fields:
 
   - Queries with range or inequality filters on document fields and only equality constraints on the document key `(__name__)` aren't supported.
   - Firestore limits the number of range or inequality fields to 10. This is to prevent queries from becoming too expensive to run.
 
 ## What's next
 
-  - Learn about [optimizing your queries](https://docs.cloud.google.com/firestore/native/docs/query-data/multiple-range-optimize-indexes) .
-  - Learn more about [performing simple and compound queries](https://docs.cloud.google.com/firestore/native/docs/query-data/queries) .
-  - Understand how [Firestore uses indexes](https://docs.cloud.google.com/firestore/native/docs/concepts/index-overview) .
+  - Learn about \[optimizing your queries\]\[3\].
+  - Learn more about \[performing simple and compound queries\]\[8\].
+  - Understand how \[Firestore uses indexes\]\[9\].
+
+\[1\]: /firestore/native/docs/query-data/get-data \[2\]: /firestore/native/docs/data-model \[3\]: /firestore/native/docs/query-data/multiple-range-optimize-indexes \[4\]: /firestore/native/docs/concepts/index-overview\#index\_properties \[5\]: /firestore/native/docs/pricing \[6\]: /firestore/native/docs/query-data/queries\#query\_limitations \[7\]: https://en.wikipedia.org/wiki/Disjunctive\_normal\_form \[8\]: /firestore/native/docs/query-data/queries \[9\]: /firestore/native/docs/concepts/index-overview \[10\]: /firestore/native/docs/query-data/multiple-range-optimize-indexes

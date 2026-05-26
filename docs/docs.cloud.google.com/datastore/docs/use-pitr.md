@@ -78,7 +78,7 @@ Replace the values as follows:
   - `  DATABASE_ID  ` - set to the database ID or (default).
   - `  TYPE  ` - set to datastore-mode.
 
-You can disable PITR using the [`gcloud firestore databases update`](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/update) command as follows:
+You can disable PITR using the \[ `gcloud firestore databases update` \]\[update\] command as follows:
 
     gcloud firestore databases update\
       [--database=DATABASE_ID; default="(default)"]\
@@ -147,7 +147,7 @@ You can read PITR data using the client libraries, REST API methods, or Firestor
 
 ### Java
 
-You must use the `readTime` method in the `ReadOption` class to read PITR data. You cannot use the `ReadOnly` transaction to perform reads. See [ReadOption](https://github.com/googleapis/java-datastore/blob/main/google-cloud-datastore/src/main/java/com/google/cloud/datastore/ReadOption.java) sample code, for more information.
+You must use the `readTime` method in the `ReadOption` class to read PITR data. You cannot use the `ReadOnly` transaction to perform reads. See \[ReadOption\]\[readoption\] sample code, for more information.
 
 ``` 
   Datastore datastore = ...
@@ -166,7 +166,7 @@ You must use the `readTime` method in the `ReadOption` class to read PITR data. 
   Long count = getOnlyElement(datastore.runAggregation(countAggregationQuery, ReadOption.readTime(timestamp))).get("total_count");
 ```
 
-For a complete list of `readTime` examples, see the [GitHub repository](https://github.com/googleapis/java-datastore/blob/main/google-cloud-datastore/src/test/java/com/google/cloud/datastore/it/ITDatastoreTest.java) .
+For a complete list of `readTime` examples, see the \[GitHub repository\]\[GitHub-java\].
 
 ### Python
 
@@ -200,23 +200,23 @@ Use PITR read in Datastore mode Python SDK using the `readTime` method or use th
       iterator = query.fetch()
 ```
 
-For a complete list of `readTime` examples, see the [GitHub](https://github.com/googleapis/python-datastore/blob/main/tests/system/test_read_consistency.py) repository.
+For a complete list of `readTime` examples, see the \[GitHub\]\[GitHub-python\] repository.
 
 ### REST API
 
-PITR reads are supported in the Datastore mode V1 read methods, which are [lookup](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/lookup) , [runQuery](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/runQuery) , and [runAggregationQuery](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/runAggregationQuery) .
+PITR reads are supported in the Datastore mode V1 read methods, which are \[lookup\]\[lookup\], \[runQuery\]\[runQuery\], and \[runAggregationQuery\]\[runAggregationQuery\].
 
 To perform a read using the REST methods, try one of the following options:
 
 1.  In the your read method request, pass the `readTime` value as a supported PITR timestamp in the `readOptions` method. A PITR timestamp can be either a microsecond precision timestamp within the past hour or a whole minute timestamp beyond the past hour, but not earlier than the `earliestVersionTime` .
 
-2.  Use the `readTime` parameter together with the `BeginTransaction` method as part of a [`ReadOnly` transaction](https://docs.cloud.google.com/java/docs/reference/google-cloud-datastore/latest/com.google.datastore.v1#transactionoptions.readonly) for multiple PITR reads.
+2.  Use the `readTime` parameter together with the `BeginTransaction` method as part of a \[ `ReadOnly` transaction\]\[readonly\] for multiple PITR reads.
 
 ### Apache Beam
 
 Use the Datastore mode IO Apache Beam connector to read or write entities in a Datastore mode database at a large scale with Dataflow.
 
-Specify the `withReadTime(Instant readTime)` method on the [`DatastoreV1.Read`](https://beam.apache.org/releases/javadoc/current/org/apache/beam/sdk/io/gcp/datastore/DatastoreV1.Read.html) object. All the subsequent reads using the `DatastoreV1.Read` object read from the same `readTime` .
+Specify the `withReadTime(Instant readTime)` method on the \[ `DatastoreV1.Read` \]\[datastore-read\] object. All the subsequent reads using the `DatastoreV1.Read` object read from the same `readTime` .
 
 ### Java
 
@@ -238,7 +238,7 @@ The following code shows how to use the `withReadTime` method for PITR reads.
     ...
 ```
 
-For a complete list of `withReadTime` examples, see the [GitHub](https://github.com/apache/beam/blob/master/sdks/java/io/google-cloud-platform/src/test/java/org/apache/beam/sdk/io/gcp/datastore/V1ReadIT.java) repository.
+For a complete list of `withReadTime` examples, see the \[GitHub\]\[GitHub\] repository.
 
 ## Clone from a database
 
@@ -317,7 +317,7 @@ The following example shows how to configure CMEK encryption for the cloned data
 
 ## Export and import from PITR data
 
-You can export your database to Cloud Storage from PITR data using the [`gcloud firestore export`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/export) command. You can export PITR data where the timestamp is a whole minute timestamp within the past seven days, but not earlier than the `earliestVersionTime` . If data no longer exists at the specified timestamp, the export operation fails.
+You can export your database to Cloud Storage from PITR data using the \[ `gcloud firestore export` \]\[sdk\] command. You can export PITR data where the timestamp is a whole minute timestamp within the past seven days, but not earlier than the `earliestVersionTime` . If data no longer exists at the specified timestamp, the export operation fails.
 
 The PITR export operation supports all filters, including export of all entities and export of specific kinds or namespaces.
 
@@ -349,4 +349,6 @@ The PITR export operation supports all filters, including export of all entities
 
 2.  Import to a database.
     
-    Use the steps in [Import all entities](https://docs.cloud.google.com/datastore/docs/export-import-entities#importing_all_entities) to import your exported database. If any entity already exists in your database, it will be overwritten. [Importing a specific subset of kinds and/or namespaces with an entity filter](https://docs.cloud.google.com/datastore/docs/export-import-entities#importing_specific_kinds_or_namespaces) is also supported.
+    Use the steps in \[Import all entities\]\[import-export\] to import your exported database. If any entity already exists in your database, it will be overwritten. \[Importing a specific subset of kinds and/or namespaces with an entity filter\]\[import-kind\] is also supported.
+
+\[GitHub\]: https://github.com/apache/beam/blob/master/sdks/java/io/google-cloud-platform/src/test/java/org/apache/beam/sdk/io/gcp/datastore/V1ReadIT.java \[GitHub-java\]: https://github.com/googleapis/java-datastore/blob/main/google-cloud-datastore/src/test/java/com/google/cloud/datastore/it/ITDatastoreTest.java \[GitHub-python\]: https://github.com/googleapis/python-datastore/blob/main/tests/system/test\_read\_consistency.py \[lookup\]: /datastore/docs/reference/data/rest/v1/projects/lookup \[runQuery\]: /datastore/docs/reference/data/rest/v1/projects/runQuery \[runAggregationQuery\]: /datastore/docs/reference/data/rest/v1/projects/runAggregationQuery \[readonly\]: /java/docs/reference/google-cloud-datastore/latest/com.google.datastore.v1\#transactionoptions.readonly \[import-export\]: /datastore/docs/export-import-entities\#importing\_all\_entities \[update\]: https://cloud.google.com/sdk/gcloud/reference/firestore/databases/update \[datastore-read\]: https://beam.apache.org/releases/javadoc/current/org/apache/beam/sdk/io/gcp/datastore/DatastoreV1.Read.html \[readoption\]: https://github.com/googleapis/java-datastore/blob/main/google-cloud-datastore/src/main/java/com/google/cloud/datastore/ReadOption.java \[import-kind\]: /datastore/docs/export-import-entities\#importing\_specific\_kinds\_or\_namespaces \[sdk\]: /sdk/gcloud/reference/firestore/export

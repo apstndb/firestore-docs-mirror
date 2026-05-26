@@ -245,7 +245,7 @@ https://docs.cloud.google.com/datastore/docs/understand-performance-monitoring	2
 https://docs.cloud.google.com/datastore/docs/usage-insights	2026-05-21T04:21:31Z
 https://docs.cloud.google.com/datastore/docs/use-cmek	2026-05-21T04:21:31Z
 https://docs.cloud.google.com/datastore/docs/use-monitoring-dashboard	2026-05-21T04:21:31Z
-https://docs.cloud.google.com/datastore/docs/use-pitr	2026-05-21T04:21:31Z
+https://docs.cloud.google.com/datastore/docs/use-pitr	2026-05-26T04:59:07Z
 https://docs.cloud.google.com/firestore/docs/cuds	2026-05-22T01:01:56Z
 https://docs.cloud.google.com/firestore/docs/reference/rest	2026-03-20T21:17:05Z
 https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/ApiScope	2025-10-17T23:18:41Z
@@ -443,7 +443,7 @@ https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-do
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-subcollection	2026-05-22T01:01:37Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-reference-subcollection-async	2026-05-22T01:01:37Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-array-operations	2026-05-22T01:01:37Z
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-array-operations-async	2026-05-24T03:41:47Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-array-operations-async	2026-05-26T06:46:07Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-doc-upsert	2026-05-22T01:01:37Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-doc-upsert-async	2026-05-22T01:01:37Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-field	2026-05-22T01:01:37Z
@@ -704,7 +704,7 @@ https://docs.cloud.google.com/firestore/native/docs/pitr	2026-05-22T01:01:53Z
 https://docs.cloud.google.com/firestore/native/docs/query-data/aggregation-queries	2026-05-23T05:22:40Z
 https://docs.cloud.google.com/firestore/native/docs/query-data/get-data	2026-05-25T03:30:18Z
 https://docs.cloud.google.com/firestore/native/docs/query-data/listen	2026-05-23T03:34:24Z
-https://docs.cloud.google.com/firestore/native/docs/query-data/multiple-range-fields	2026-05-22T01:02:04Z
+https://docs.cloud.google.com/firestore/native/docs/query-data/multiple-range-fields	2026-05-26T06:46:43Z
 https://docs.cloud.google.com/firestore/native/docs/query-data/multiple-range-optimize-indexes	2026-05-22T01:02:04Z
 https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data	2026-05-25T03:30:18Z
 https://docs.cloud.google.com/firestore/native/docs/query-data/queries	2026-05-23T03:34:24Z
