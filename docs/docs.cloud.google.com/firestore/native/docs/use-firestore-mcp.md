@@ -91,6 +91,67 @@ For more general guidance, see the following resources:
   - [Connect to remote MCP servers](https://modelcontextprotocol.io/docs/develop/connect-remote-servers) .
   - [Configure MCP in an AI application](https://docs.cloud.google.com/mcp/configure-mcp-ai-application) .
 
+## Use the Firestore MCP server with ADK in Python
+
+You can use the Agent Development Kit (ADK) for Python to interact with the Firestore remote MCP server.
+
+The following example demonstrates how to configure an agent with the Firestore MCP server and run a prompt.
+
+    import os
+    import google.auth
+    from google.auth.transport.requests import Request
+    
+    from google.adk import Agent
+    from google.adk.tools.mcp_tool.mcp_toolset import McpToolset, StreamableHTTPConnectionParams
+    from google.adk.runners import InMemoryRunner, print_event
+    from google.genai import types
+    
+    # Set your project configuration
+    PROJECT_ID = os.environ.get("PROJECT_ID", "your-project-id")
+    TARGET_PROJECT_ID = os.environ.get("TARGET_PROJECT_ID", "your-target-project-id")
+    
+    # Authenticate and get token
+    credentials, _ = google.auth.default()
+    credentials.refresh(Request())
+    
+    # Configure the Firestore remote MCP server
+    mcp_toolset = McpToolset(
+        connection_params=StreamableHTTPConnectionParams(
+            url="https://firestore.googleapis.com/mcp",
+            headers={
+                "Accept": "text/event-stream, application/json",
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {credentials.token}"
+            },
+        ),
+    )
+    
+    model_path = f"projects/{PROJECT_ID}/locations/us-central1/publishers/google/models/gemini-2.5-flash"
+    
+    root_agent = Agent(
+        name="mcp_codelab_agent",
+        model=model_path,
+        instruction="You are a Firestore database assistant. Use the available Firestore MCP tools to query, retrieve, and manage documents in the database based on the user's request.",
+        tools=[mcp_toolset],
+    )
+    
+    if __name__ == "__main__":
+        prompt = f"Please list all Firestore databases under the project `{TARGET_PROJECT_ID}`"
+    
+        print("--- Running Agent ---")
+        runner = InMemoryRunner(agent=root_agent)
+        runner.auto_create_session = True
+        events = runner.run(
+            user_id="user",
+            session_id="session",
+            new_message=types.Content(
+                parts=[types.Part.from_text(text=prompt)]
+            )
+        )
+    
+        for event in events:
+            print_event(event, verbose=True)
+
 ## Available tools
 
 To view details of available MCP tools and their descriptions for the Firestore MCP server, see the [Firestore MCP reference](https://docs.cloud.google.com/firestore/docs/reference/mcp) .
