@@ -80,9 +80,9 @@ Operations that cause discrepancies between the usage dashboard and billed usage
 
   - Import and export operations. Reads and writes performed by these operations do not show up in the usage dashboard.
 
-  - No-op verify-only writes. Writes that only verify the existence or non-existence of a document contribute to billed read operations, but they show as `UPDATE_NOOP` and `DELETE_NOOP` respectively in the write usage dashboard.
+  - No-op verify-only writes. Writes that only verify the existence or non-existence of a document contribute to billed read operations, but they show as \`UPDATE\_NOOP\` and \`DELETE\_NOOP\` respectively in the write usage dashboard.
 
-  - No-op writes. Operations that do not result in a change to the database, such as an update that does not change field values or a write to a deleted document may show in the usage dashboard as `UPDATE_NOOP` or `DELETE_NOOP` . Even though they show as `NOOP` , they still contribute to billed operations.
+  - No-op writes. Operations that do not result in a change to the database, such as an update that does not change field values or a write to a deleted document may show in the usage dashboard as \`UPDATE\_NOOP\` or \`DELETE\_NOOP\`. Even though they show as \`NOOP\`, they still contribute to billed operations.
 
   - Collapsed writes. In cases with multiple writes to the same document in quick succession, the usage dashboard might collapse multiple writes together and count them as one. When billing usage, each write is still counted separately.
     
@@ -91,8 +91,6 @@ Operations that cause discrepancies between the usage dashboard and billed usage
   - Queries that return zero results. Queries with zero results incur a cost of one read operation. This usage is billed but does not appear in the usage dashboard.
 
   - Read operations from [index entries read](https://docs.cloud.google.com/firestore/pricing#index-reads) . This usage is billed but does not appear in the usage dashboard. For example, aggregation queries bill for index entries read but this usage does not appear in the usage dashboard.
-
-  - Requests to list collection IDs. The usage dashboard reports one read operation per collection ID which differs from [billing](https://cloud.google.com/firestore/pricing#:~:text=Queries%20other%20than,once%20per%20request) .
 
 ## What's next
 

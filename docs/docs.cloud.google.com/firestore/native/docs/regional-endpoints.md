@@ -72,7 +72,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ### Regional and multi-regional endpoint semantics
 
-**Regional Endpoints (REP):**
+**Regional endpoints:**
 
 Firestore supports regional endpoints for the regional locations listed here [Firestore locations](https://docs.cloud.google.com/firestore/docs/locations#location-r) .
 
@@ -107,7 +107,7 @@ Some examples of hostnames are:
   - `firestore.us-central1.rep.googleapis.com`
   - `firestore.europe-west1.rep.googleapis.com`
 
-**Multi-regional Endpoints (MREP)**
+**Multi-regional endpoints**
 
 For multi-regional endpoints, use `us` for locations `nam5` and `nam7` , and `eu` for location `eur3` (see [Multi-regional locations](https://docs.cloud.google.com/firestore/docs/locations#location-mr) ).
 

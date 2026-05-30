@@ -62,7 +62,7 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 
 ### Regional and multi-regional endpoint semantics
 
-**Regional Endpoints (REP):**
+**Regional endpoints**
 
 Firestore in Datastore mode supports regional endpoints for the regional locations listed here [Firestore in Datastore mode locations](https://docs.cloud.google.com/datastore/docs/locations#location-r) .
 
@@ -97,7 +97,7 @@ Some examples of hostnames are:
   - `datastore.us-central1.rep.googleapis.com`
   - `datastore.europe-west1.rep.googleapis.com`
 
-**Multi-regional Endpoints (MREP)**
+**Multi-regional endpoints**
 
 For multi-regional endpoints, use `us` for locations `nam5` and `nam7` , and `eu` for location `eur3` (see [Multi-regional locations](https://docs.cloud.google.com/datastore/docs/locations#location-mr) ).
 
