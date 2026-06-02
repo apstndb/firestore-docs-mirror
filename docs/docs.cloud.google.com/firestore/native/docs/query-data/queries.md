@@ -2624,7 +2624,7 @@ Note the following limitations for `or` queries. These limitations apply only to
 
   - You can't combine `not-in` with `in` , `array-contains-any` , or `or` in the same query.
 
-For a full description of limitations, see [Query limitations](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#query_limitations) .
+For a full description of limitations, see [Query limitations](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#standard_edition_query_limitations) .
 
 ## Collection group queries
 
