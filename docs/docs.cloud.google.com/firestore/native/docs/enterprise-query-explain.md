@@ -28,9 +28,17 @@ Execute a query in the Query Editor and open the **Explanation** tab:
 
 4.  Click the **Explanation** tab to view the query analysis output.
 
+## Explain modes
+
+Depending on what you want to debug, you can execute a query with Query Explain in different modes:
+
+  - **`analyze`** : Plans and executes the query. Returns planner information, runtime execution statistics and metrics, alongside the regular results produced by the query.
+
+  - **`explain`** : Plans the query, but does not execute it. Returns the planner information but no runtime statistics, metrics, or results. This is useful for debugging the behaviour of a query without running costly operations.
+
 ## Analysis
 
-The output of Query Explain contains two main components-the Summary Statistics and Execution Tree. Consider this query as an example:
+The output of Query Explain contains two main components - the Summary Statistics and Execution Tree. Consider this query as an example:
 
     db.pipeline().collection('/users').sort(field("status").ascending()).limit(100)
 

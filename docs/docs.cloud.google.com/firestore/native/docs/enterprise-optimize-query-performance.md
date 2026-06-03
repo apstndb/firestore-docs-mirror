@@ -112,11 +112,11 @@ You might use a table scan in the following cases:
 
 #### Use `forceIndex` with Query Explain
 
-You can use [Query Explain](https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain) , especially with the `analyze` option, to observe the effects of `forceIndex` :
+You can use [Query Explain](https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain) in the `explain` or `analyze` modes to observe the effects of `forceIndex` :
 
   - Verify that Firestore in Native Mode used the specified index in `forceIndex` by checking the leaf nodes of the execution tree for the index ID.
   - Confirm that a `TableScan` node appears in the plan when using `forceIndex: "primary"` .
-  - Compare the performance metrics—such as latency, documents scanned, and index entries scanned—with and without `forceIndex` to fine-tune query performance.
+  - With `analyze` mode, compare the performance metrics—such as latency, documents scanned, and index entries scanned—with and without `forceIndex` to fine-tune query performance.
 
 #### Best practices for `forceIndex`
 

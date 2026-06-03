@@ -631,8 +631,8 @@ https://docs.cloud.google.com/firestore/native/docs/editions-overview	2026-06-02
 https://docs.cloud.google.com/firestore/native/docs/emulator	2026-06-02T01:32:07Z
 https://docs.cloud.google.com/firestore/native/docs/enterprise-index-overview	2026-06-02T01:32:07Z
 https://docs.cloud.google.com/firestore/native/docs/enterprise-indexing	2026-06-02T01:32:07Z
-https://docs.cloud.google.com/firestore/native/docs/enterprise-optimize-query-performance	2026-06-02T01:32:07Z
-https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain	2026-06-02T01:32:07Z
+https://docs.cloud.google.com/firestore/native/docs/enterprise-optimize-query-performance	2026-06-02T17:13:28Z
+https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain	2026-06-02T17:13:28Z
 https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain-reference	2026-06-02T01:32:07Z
 https://docs.cloud.google.com/firestore/native/docs/enterprise-query-insights	2026-06-02T01:32:07Z
 https://docs.cloud.google.com/firestore/native/docs/eventarc	2026-06-02T01:32:07Z
@@ -650,7 +650,7 @@ https://docs.cloud.google.com/firestore/native/docs/langchain	2026-06-02T01:32:0
 https://docs.cloud.google.com/firestore/native/docs/locations	2026-06-02T01:32:07Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data	2026-06-02T01:31:43Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/bulk-delete	2026-06-02T01:31:43Z
-https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data	2026-06-02T01:31:43Z
+https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data	2026-06-02T15:26:56Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline	2026-06-02T01:31:43Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import	2026-06-02T01:31:43Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/move-data	2026-06-02T01:31:43Z
