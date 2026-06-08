@@ -8,7 +8,7 @@ data_source: docs.cloud.google.com
 
 # Query execution reference
 
-This page explains the output of a query executed with Query Explain. To learn how to execute a query with Query Explain, see [Analyze query execution with Query Explain](https://docs.cloud.google.com/firestore/docs/pipeline/enterprise-query-explain) .
+This page explains the output of a query executed with Query Explain. To learn how to execute a query with Query Explain, see [Analyze query execution with Query Explain](https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain) .
 
 ## Common Concepts
 
@@ -172,7 +172,7 @@ The `join_type` indicates the type of join. For example, `LEFT_OUTER` means all 
 
 ### HashAggregate
 
-Hash-backed implementation of aggregate operations. Requires materializing the full group in-memory before returning the result and must not exceed the the [query memory limit](https://docs.cloud.google.com/firestore/mongodb-compatibility/quotas#reads_writes_and_transactions) .
+Hash-backed implementation of aggregate operations. Requires materializing the full group in-memory before returning the result and must not exceed the the [query memory limit](https://docs.cloud.google.com/firestore/quotas#writes_and_transactions) .
 
     • HashAggregate
     |  aggregations: [sum($b_1) AS total]
@@ -191,7 +191,7 @@ Specialized aggregate node which only maintains state for a single group at a ti
 
 ### MajorSort
 
-Performs a sort operation on a fixed set of properties. Materializes all records in memory at once and returns the sorted values in order, the size of the sort set is limited by the [query memory limit](https://docs.cloud.google.com/firestore/mongodb-compatibility/quotas#reads_writes_and_transactions) .
+Performs a sort operation on a fixed set of properties. Materializes all records in memory at once and returns the sorted values in order, the size of the sort set is limited by the [query memory limit](https://docs.cloud.google.com/firestore/quotas#writes_and_transactions) .
 
 When a subsequent limit is provided, a top-k sorting algorithm is used to reduce the memory usage. With it, sorts can be performed on an arbitrarily large set of records so long as the memory used by storing the k considered elements does not exceed the limit.
 

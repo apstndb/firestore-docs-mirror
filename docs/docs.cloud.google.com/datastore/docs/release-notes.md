@@ -12,6 +12,12 @@ You can see the latest product updates for all of Google Cloud on the [Google Cl
 
 To get the latest product updates delivered to you, add the URL of this page to your [feed reader](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the [feed URL](https://docs.cloud.google.com/feeds/datastore-release-notes.xml) directly.
 
+## June 01, 2026
+
+Feature
+
+Support for searching for and managing your Datastore resources using Knowledge Catalog, which is a platform for storing, managing, and accessing your metadata. To learn more, see [View Knowledge Catalog insights](https://docs.cloud.google.com/datastore/docs/knowledge-catalog) .
+
 ## March 23, 2026
 
 Feature

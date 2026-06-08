@@ -48,6 +48,7 @@ https://docs.cloud.google.com/datastore/docs/keyvis-exploring-heatmaps	2026-06-0
 https://docs.cloud.google.com/datastore/docs/keyvis-getting-started	2026-06-01T23:19:21Z
 https://docs.cloud.google.com/datastore/docs/keyvis-patterns	2026-06-01T23:19:21Z
 https://docs.cloud.google.com/datastore/docs/keyvis-patterns-index	2026-06-01T23:19:21Z
+https://docs.cloud.google.com/datastore/docs/knowledge-catalog	2026-06-05T16:12:36Z
 https://docs.cloud.google.com/datastore/docs/langchain	2026-06-01T23:19:21Z
 https://docs.cloud.google.com/datastore/docs/locations	2026-06-01T23:19:21Z
 https://docs.cloud.google.com/datastore/docs/manage-databases	2026-06-01T23:19:21Z
@@ -153,7 +154,7 @@ https://docs.cloud.google.com/datastore/docs/reference/data/rpc/google.type	2025
 https://docs.cloud.google.com/datastore/docs/reference/gql_reference	2026-06-01T23:19:28Z
 https://docs.cloud.google.com/datastore/docs/reference/libraries	2026-06-01T23:19:28Z
 https://docs.cloud.google.com/datastore/docs/regional-endpoints	2026-06-01T23:19:21Z
-https://docs.cloud.google.com/datastore/docs/release-notes	2026-06-01T23:19:20Z
+https://docs.cloud.google.com/datastore/docs/release-notes	2026-06-05T16:21:43Z
 https://docs.cloud.google.com/datastore/docs/reliability-recommender	2026-06-01T23:19:21Z
 https://docs.cloud.google.com/datastore/docs/resources	2026-06-01T23:19:21Z
 https://docs.cloud.google.com/datastore/docs/restore-in-place	2026-06-01T23:19:21Z
@@ -410,7 +411,7 @@ https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1be
 https://docs.cloud.google.com/firestore/docs/reference/rpc/google.longrunning	2025-12-05T18:23:35Z
 https://docs.cloud.google.com/firestore/docs/reference/rpc/google.rpc	2025-10-17T23:18:41Z
 https://docs.cloud.google.com/firestore/docs/reference/rpc/google.type	2025-10-17T23:18:34Z
-https://docs.cloud.google.com/firestore/docs/release-notes	2026-06-03T15:21:55Z
+https://docs.cloud.google.com/firestore/docs/release-notes	2026-06-05T16:19:32Z
 https://docs.cloud.google.com/firestore/docs/samples	2026-06-03T16:33:46Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes	2026-06-03T16:33:46Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes-async	2026-06-03T16:33:46Z
@@ -452,7 +453,7 @@ https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-cus
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-custom-type-async	2026-06-03T16:33:46Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-map	2026-06-03T16:33:46Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-map-async	2026-06-03T16:33:46Z
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-map-nested	2026-06-03T16:33:46Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-map-nested	2026-06-04T06:00:35Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-map-nested-async	2026-06-03T16:33:46Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-id-random-collection	2026-06-03T16:33:46Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-id-random-collection-async	2026-06-03T15:21:35Z
@@ -564,6 +565,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/extend-with-c
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/geo-query	2026-06-02T01:31:48Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview	2026-06-02T01:31:48Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing	2026-06-02T01:31:48Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/knowledge-catalog	2026-06-05T16:12:36Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/locations	2026-06-02T01:31:48Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-env-vars	2026-06-02T01:31:48Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-resources	2026-06-02T01:31:48Z
@@ -579,7 +581,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/pitr	2026-06-
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain	2026-06-02T01:31:48Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain-reference	2026-06-02T01:31:48Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-insights	2026-06-02T01:31:48Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/release-notes	2026-06-02T01:32:22Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/release-notes	2026-06-05T16:17:14Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/reliability-recommender	2026-06-02T01:31:48Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/resolve-latency	2026-06-02T01:31:48Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/resources	2026-06-02T01:31:48Z
@@ -633,7 +635,7 @@ https://docs.cloud.google.com/firestore/native/docs/enterprise-index-overview	20
 https://docs.cloud.google.com/firestore/native/docs/enterprise-indexing	2026-06-03T15:21:35Z
 https://docs.cloud.google.com/firestore/native/docs/enterprise-optimize-query-performance	2026-06-03T15:21:46Z
 https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain	2026-06-03T15:21:35Z
-https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain-reference	2026-06-03T15:21:35Z
+https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain-reference	2026-06-04T16:34:00Z
 https://docs.cloud.google.com/firestore/native/docs/enterprise-query-insights	2026-06-03T15:21:35Z
 https://docs.cloud.google.com/firestore/native/docs/eventarc	2026-06-03T15:21:55Z
 https://docs.cloud.google.com/firestore/native/docs/extend-with-cloud-run-functions	2026-06-03T15:21:55Z
@@ -646,6 +648,7 @@ https://docs.cloud.google.com/firestore/native/docs/keyvis-exploring-heatmaps	20
 https://docs.cloud.google.com/firestore/native/docs/keyvis-getting-started	2026-06-03T15:21:35Z
 https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns	2026-06-03T15:21:55Z
 https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns-index	2026-06-03T15:21:46Z
+https://docs.cloud.google.com/firestore/native/docs/knowledge-catalog	2026-06-05T16:12:36Z
 https://docs.cloud.google.com/firestore/native/docs/langchain	2026-06-03T15:21:46Z
 https://docs.cloud.google.com/firestore/native/docs/locations	2026-06-03T15:21:35Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data	2026-06-03T15:21:55Z

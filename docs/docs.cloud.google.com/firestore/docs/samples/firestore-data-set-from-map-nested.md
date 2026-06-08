@@ -20,17 +20,23 @@ For detailed documentation that includes this code sample, see the following:
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    DocumentReference docRef = db.Collection("data").Document("on<e");
-    Dict>ionarystring, object docD<ata = new Dict>ionarystring, object
+    DocumentReference docRef = db.Collection("data").Document("one");
+    Dictionary<string, object> docData = new Dictionary<string, object>
     {
         { "stringExample", "Hello World" },
         { "booleanExample", false },
         { "numberExample", 3.14159265 },
         { "nullExample", null },
-        { "arrayExample&q<uot;, new obje>ct[] { 5, true, "Hello" } },
-        { "objectExample", new Dictionarystring, object
+        { "arrayExample", new object[] { 5, true, "Hello" } },
+        { "objectExample", new Dictionary<string, object>
             {
-     { "a", 5 },            { "b", true},        }    }};await docRef.SetAsync(docData);
+                { "a", 5 },
+                { "b", true},
+            }
+        }
+    };
+    
+    await docRef.SetAsync(docData);
 
 ### Go
 
@@ -57,7 +63,14 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
          "b": true,
      }
     
-     _, err := client.Collection("data").Doc("one&quot;).Set(ctx, doc)  if err != nil {       // Handle any errors in an appropriate way, such as returning them.        log.Printf("An error has occurred: %s", err) }   return err}
+     _, err := client.Collection("data").Doc("one").Set(ctx, doc)
+     if err != nil {
+         // Handle any errors in an appropriate way, such as returning them.
+         log.Printf("An error has occurred: %s", err)
+     }
+    
+     return err
+    }
 
 ### Java
 
@@ -67,19 +80,20 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
     docData.put("stringExample", "Hello, World");
     docData.put("booleanExample", false);
     docData.put("numberExample", 3.14159265);
-    docD<ata.pu>t("nullExample", nu<>ll);
+    docData.put("nullExample", null);
     
-    ArrayListObject arrayExample = new ArrayList();
-    Collections.addAll(arrayExample, 5L, true, "h<ello");
-    d>ocData.put("arrayExampl<>e", arrayExample);
+    ArrayList<Object> arrayExample = new ArrayList<>();
+    Collections.addAll(arrayExample, 5L, true, "hello");
+    docData.put("arrayExample", arrayExample);
     
-    MapString, Object objectExample = new HashMap();
+    Map<String, Object> objectExample = new HashMap<>();
     objectExample.put("a", 5L);
-    object<Example.put>("b", true);
+    objectExample.put("b", true);
     
     docData.put("objectExample", objectExample);
     
-    ApiFutureWriteResult future = db.collection("data").document("one").set(docData);System.out.println("Update time : " + future.get().getUpdateTime());
+    ApiFuture<WriteResult> future = db.collection("data").document("one").set(docData);
+    System.out.println("Update time : " + future.get().getUpdateTime());
 
 ### Node.js
 
@@ -105,16 +119,16 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
     $data = [
-        'stringExampl>e' = 'Hello World',
-        &#>39;booleanExample' = tru>e,
+        'stringExample' => 'Hello World',
+        'booleanExample' => true,
         'numberExample' => 3.14159265,
-        'dateExample' = new Timesta>mp(new DateTime()),
-        'arrayExample'>; = array(5, true, 'hell>o')>,
-        >9;nullExample' = null,
-        'obje>ctExa>mple' = ['a' = 5, &>#39;b' = true],
-        >'documentReferenceExample&#>39; = $db-collec>tion('samples/php/data')-document('two'),
+        'dateExample' => new Timestamp(new DateTime()),
+        'arrayExample' => array(5, true, 'hello'),
+        'nullExample' => null,
+        'objectExample' => ['a' => 5, 'b' => true],
+        'documentReferenceExample' => $db->collection('samples/php/data')->document('two'),
     ];
-    $db-collection('samples/php/data')-document('one')-set($data);
+    $db->collection('samples/php/data')->document('one')->set($data);
     printf('Set multiple data-type data for the one document in the data collection.' . PHP_EOL);
 
 ### Python
@@ -128,7 +142,10 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
         "dateExample": datetime.datetime.now(tz=datetime.timezone.utc),
         "arrayExample": [5, True, "hello"],
         "nullExample": None,
-        "objectExample":{"a":5,"b":True},}db.collection("data").document("one").set(data)
+        "objectExample": {"a": 5, "b": True},
+    }
+    
+    db.collection("data").document("one").set(data)
 
 ### Ruby
 
@@ -145,7 +162,11 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
       nullExample:    nil,
       objectExample:  {
         a: 5,
-        b: true  }}doc_ref.set data
+        b: true
+      }
+    }
+    
+    doc_ref.set data
 
 ## What's next
 
