@@ -21,7 +21,7 @@ For detailed documentation that includes this code sample, see the following:
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
     city = City(name="Los Angeles", state="CA", country="USA")
-    await db.collection("cities").document("LA").set(city.to_dict())
+    await db.collection("cities&quot;).document("LA").set(city.to_dict())
 
 ## What's next
 

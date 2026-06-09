@@ -137,6 +137,8 @@ API methods in the following list that are marked with (LRO) are long-running op
 <code dir="ltr" translate="no">google.firestore.v1beta1.Firestore.BatchGetDocuments</code><br />
 <code dir="ltr" translate="no">google.firestore.v1beta1.Firestore.BatchWrite</code><br />
 <code dir="ltr" translate="no">google.firestore.v1beta1.Firestore.BeginTransaction</code><br />
+<code dir="ltr" translate="no">google.firestore.v1beta1.Firestore.Commit</code><br />
+<code dir="ltr" translate="no">google.firestore.v1beta1.Firestore.ExecutePipeline</code><br />
 <code dir="ltr" translate="no">google.firestore.v1beta1.Firestore.GetDocument</code><br />
 <code dir="ltr" translate="no">google.firestore.v1beta1.Firestore.ListCollectionIds</code><br />
 <code dir="ltr" translate="no">google.firestore.v1beta1.Firestore.ListDocuments</code><br />
@@ -154,7 +156,6 @@ API methods in the following list that are marked with (LRO) are long-running op
 <code dir="ltr" translate="no">google.firestore.v1.Firestore.DeleteDocument</code><br />
 <code dir="ltr" translate="no">google.firestore.v1.Firestore.UpdateDocument</code><br />
 <code dir="ltr" translate="no">google.firestore.v1.Firestore.Write</code><br />
-<code dir="ltr" translate="no">google.firestore.v1beta1.Firestore.Commit</code><br />
 <code dir="ltr" translate="no">google.firestore.v1beta1.Firestore.CreateDocument</code><br />
 <code dir="ltr" translate="no">google.firestore.v1beta1.Firestore.DeleteDocument</code><br />
 <code dir="ltr" translate="no">google.firestore.v1beta1.Firestore.UpdateDocument</code><br />
@@ -692,7 +693,6 @@ The following audit logs are associated with methods belonging to `google.firest
   - **Method** : `  google.firestore.v1.Firestore.ExecutePipeline  `  
   - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
-      - `datastore.databases.get - DATA_READ`
       - `datastore.entities.get - DATA_READ`
       - `datastore.entities.list - DATA_READ`
   - **Method is a long-running or streaming operation** : No.  
@@ -752,6 +752,7 @@ The following audit logs are associated with methods belonging to `google.firest
   - **Method** : `  google.firestore.v1.Firestore.PartitionQuery  `  
   - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
+      - `datastore.databases.get - DATA_READ`
       - `datastore.entities.get - DATA_READ`
       - `datastore.entities.list - DATA_READ`
   - **Method is a long-running or streaming operation** : No.  
@@ -795,7 +796,6 @@ The following audit logs are associated with methods belonging to `google.firest
   - **Method** : `  google.firestore.v1.Firestore.UpdateDocument  `  
   - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
-      - `datastore.databases.get - DATA_READ`
       - `datastore.entities.create - DATA_WRITE`
       - `datastore.entities.update - DATA_WRITE`
   - **Method is a long-running or streaming operation** : No.  
@@ -807,6 +807,7 @@ The following audit logs are associated with methods belonging to `google.firest
   - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `datastore.entities.create - DATA_WRITE`
+      - `datastore.entities.delete - DATA_WRITE`
       - `datastore.entities.update - DATA_WRITE`
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `protoPayload.methodName="google.firestore.v1.Firestore.Write"`  
@@ -874,6 +875,18 @@ The following audit logs are associated with methods belonging to `google.firest
       - `datastore.entities.delete - DATA_WRITE`
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `protoPayload.methodName="google.firestore.v1beta1.Firestore.DeleteDocument"`  
+
+#### `ExecutePipeline`
+
+  - **Method** : `  google.firestore.v1beta1.Firestore.ExecutePipeline  `  
+  - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
+  - **Permissions** :
+      - `datastore.databases.get - DATA_READ`
+      - `datastore.entities.get - DATA_READ`
+      - `datastore.entities.list - DATA_READ`
+      - `datastore.entities.update - DATA_WRITE`
+  - **Method is a long-running or streaming operation** : No.  
+  - **Filter for this method** : `protoPayload.methodName="google.firestore.v1beta1.Firestore.ExecutePipeline"`  
 
 #### `GetDocument`
 
