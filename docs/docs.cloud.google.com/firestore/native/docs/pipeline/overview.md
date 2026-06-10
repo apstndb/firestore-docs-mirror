@@ -610,7 +610,7 @@ Android
 
 ## Functions
 
-Functions are a building block for creating expressions and complex queries. For a complete list of functions with examples, refer to the [Functions reference](https://docs.cloud.google.com/firestore/docs/pipeline/functions/all_functions) . As a quick reminder, consider the structure of a typical query:
+Functions are a building block for creating expressions and complex queries. For a complete list of functions with examples, refer to the [Functions reference](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions) . As a quick reminder, consider the structure of a typical query:
 
 ![Example demonstrating stages and functions in a query](https://docs.cloud.google.com/firestore/native/docs/images/pipeline-queries/pipeline_query_stage_expression.jpg)
 
@@ -947,5 +947,5 @@ Pipeline operations don't have realtime and offline capabilities.
 
 ## What's next
 
-  - See the [Functions reference](https://docs.cloud.google.com/firestore/docs/pipeline/functions/all_functions) .
-  - Learn how to [Perform joins with subqueries](https://docs.cloud.google.com/firestore/docs/pipeline/perform-joins-with-subqueries) .
+  - See the [Functions reference](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions) .
+  - Learn how to [Perform joins with subqueries](https://docs.cloud.google.com/firestore/native/docs/pipeline/perform-joins-with-sub-pipelines) .

@@ -104,7 +104,7 @@ The following differences apply to naming parts of your data model.
 ## Indexes
 
   - Wildcard indexes are not supported.
-  - Firestore with MongoDB compatibility does not automatically create an index on `_id` , but it ensures values of `_id` are unique within a collection.
+  - Firestore with MongoDB compatibility does not automatically create an index on `_id` , but it ensures values of `_id` are unique within a collection. To achieve similar sorting behavior, you need to explicitly create an ordered index on the `_id` field. However, be mindful of potential hotspot issues, especially if your `_id` values are monotonically increasing or decreasing (e.g., timestamps), as this can impact performance at scale.
   - Indexes without multi-key enabled are not automatically changed to [multi-key indexes](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview#multi-key_indexes_for_array_values) based on write operations. You must enable multi-key when you create the index and the option cannot be changed.
 
 ## Errors

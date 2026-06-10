@@ -116,7 +116,7 @@ Common non-retryable errors are:
   - Unsupported BSON types
   - Unsupported BSON types used as `_id`
   - Unsupported 0L as `_id`
-  - Document sizes larger than Firestore's 4MB limit
+  - Document sizes larger than Firestore's 16MB limit
 
 Non-retryable errors will be stored in the Cloud Storage bucket, in the location specified by the `deadLetterQueueDirectory` parameter of the Dataflow template.
 
@@ -146,7 +146,7 @@ For each row in each DLQ file you can:
 
   - Reassign 0L document `_id` to a new Long or to a different data type such as String. Reassigning to a different data type may require application logic changes if the existing code expectations are that the `_id` 's are all Longs.
 
-  - Documents that exceed the Firestore's 4MB limit can be separated into smaller documents or their contents can be compressed. However, this would require changes to the application logic to handle the data.
+  - Documents that exceed the Firestore's 16MB limit can be separated into smaller documents or their contents can be compressed. However, this would require changes to the application logic to handle the data.
 
   - Ignore the event by deleting the row from the DLQ file.
 

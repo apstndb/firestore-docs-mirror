@@ -46,7 +46,11 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
      })
      if err != nil {
          // Handle any errors in an appropriate way, such as returning them.
-         log.Printf("An error has occurred: %s", err) }   return err}
+         log.Printf("An error has occurred: %s", err)
+     }
+    
+     return err
+    }
 
 ### Java
 
@@ -55,8 +59,8 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
     // Add document data with auto-generated id.
     Map<String, Object> data = new HashMap<>();
     data.put("name", "Tokyo");
-    data.put("coun<try", ">Japan");
-    ApiFutureDocumentReference addedDocRef = db.collection("cities").add(data);
+    data.put("country", "Japan");
+    ApiFuture<DocumentReference> addedDocRef = db.collection("cities").add(data);
     System.out.println("Added document with ID: " + addedDocRef.get().getId());
 
 ### Node.js
@@ -76,18 +80,19 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
     $data = [
-        'nam>e' = 'Tokyo',>
-        'country' = 'J>apan'
+        'name' => 'Tokyo',
+        'country' => 'Japan'
     ];
-    $addedDocRef = $db-c>ollection('samples/php/cities')-add($data);
-    printf('Added do>cument with ID: %s' . PHP_EOL, $addedDocRef-id());
+    $addedDocRef = $db->collection('samples/php/cities')->add($data);
+    printf('Added document with ID: %s' . PHP_EOL, $addedDocRef->id());
 
 ### Python
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
     city = {"name": "Tokyo", "country": "Japan"}
-    update_time, city_ref = db.collection("cities").add(city)print(f"Added document with id {city_ref.id}")
+    update_time, city_ref = db.collection("cities").add(city)
+    print(f"Added document with id {city_ref.id}")
 
 ### Ruby
 

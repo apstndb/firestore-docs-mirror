@@ -42,9 +42,7 @@ For example, to set retention as 7 days.
 
     gcloud firestore backups schedules create --retention=7d
 
-Recurrence settings of a backup schedule.
-
-This must be specified.
+Recurrence settings of a backup schedule. This must be specified.
 
   - `--recurrence` = `  RECURRENCE  `  
     The recurrence settings of a backup schedule.
