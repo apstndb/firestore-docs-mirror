@@ -6,6 +6,10 @@ description: A highly-scalable NoSQL database for your web and mobile applicatio
 data_source: docs.cloud.google.com
 ---
 
+> **Preview**
+> 
+> This product or feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . Pre-GA products and features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+
 You can search for and manage your Firestore resources using Knowledge Catalog, which is a platform for storing, managing, and accessing your metadata. You can use Knowledge Catalog to analyze your Firestore metadata and help with tasks like:
 
   - Analysis, including dependencies and suitability for a use case
