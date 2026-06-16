@@ -344,6 +344,18 @@ actionType: ALLOW
 displayName: Firestore Enterprise Edition Required
 description: Only allow the creation and updating of databases with Enterprise Edition.</code></pre></td>
 </tr>
+<tr class="odd">
+<td>Database resource creation must be associated a specific tag.</td>
+<td><pre dir="ltr" data-is-upgraded="" data-syntax="YAML" translate="no"><code>name: organizations/ORGANIZATION_ID/customConstraints/custom.requireTagAtDbCreation
+resourceTypes:
+- firestore.googleapis.com/Database
+methodTypes:
+  - GOVERN_TAGS
+condition: &#39;!resource.matchDirectTag(&quot;ORGANIZATION_ID/TAG_KEY&quot;, &quot;TAG_VALUE&quot;)&#39;
+actionType: DENY
+displayName: Require a specific tag when databases get created
+description: Denies the database creation operations if the request does not contain the tag ORGANIZATION_ID/TAG_KEY with the value TAG_VALUE.</code></pre></td>
+</tr>
 </tbody>
 </table>
 

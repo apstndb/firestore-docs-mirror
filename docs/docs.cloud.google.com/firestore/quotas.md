@@ -309,6 +309,7 @@ A quoted field name starts and ends with the backtick character ( <code dir="ltr
 | Limit                                                                                                                          | Details                                            |
 | ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------- |
 | Maximum API request size                                                                                                       | 10 MiB                                             |
+| The memory limit for a query                                                                                                   | 128 MiB                                            |
 | Time limit for a transaction                                                                                                   | 270 seconds, with a 60-second idle expiration time |
 | Maximum number of field transformations that can be performed on a single document in a `Commit` operation or in a transaction | 500                                                |
 
