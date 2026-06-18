@@ -97,9 +97,9 @@ Updates to Firestore Security Rules can take up to a minute to affect new querie
 
 To set up and deploy your first set of rules, for the default database in your project, go to the **Databases & Storage** \> **Firestore** \> [**Rules** tab](https://console.firebase.google.com/project/_/firestore/rules) in the Firebase console.
 
-Write your rules in the online editor, then click **Publish** .
+If you create multiple databases for your project, you can deploy Firestore Security Rules for each database. In the Firebase console, use the database selector to switch between the default database and any additional databases.
 
-> **Note:** The Firebase console currently supports deployment of Firestore Security Rules to your project's default database. Future updates will allow you to deploy Rules to additional databases in your project. You can use the [Firebase CLI](https://docs.cloud.google.com/firestore/native/docs/security/get-started#use_the_cli) to work with Rules in your multi-database projects.
+Write your rules in the online editor, then click **Publish** .
 
 ### Use the Firebase CLI
 
