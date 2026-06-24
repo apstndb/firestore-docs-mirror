@@ -613,7 +613,7 @@ https://docs.cloud.google.com/firestore/native/docs	2026-06-20T06:02:30Z
 https://docs.cloud.google.com/firestore/native/docs/apis	2026-06-20T06:02:31Z
 https://docs.cloud.google.com/firestore/native/docs/app-engine-requirement	2026-06-20T06:02:31Z
 https://docs.cloud.google.com/firestore/native/docs/audit-logging	2026-06-20T06:02:31Z
-https://docs.cloud.google.com/firestore/native/docs/authentication	2026-06-20T06:02:31Z
+https://docs.cloud.google.com/firestore/native/docs/authentication	2026-06-23T13:48:01Z
 https://docs.cloud.google.com/firestore/native/docs/backups	2026-06-20T06:02:31Z
 https://docs.cloud.google.com/firestore/native/docs/best-practices	2026-06-20T06:02:31Z
 https://docs.cloud.google.com/firestore/native/docs/billing-example	2026-06-20T06:02:31Z
