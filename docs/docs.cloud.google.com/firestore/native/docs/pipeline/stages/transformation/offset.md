@@ -59,6 +59,10 @@ Android
     Pipeline.Snapshot results =
         firestore.pipeline().collection("cities").offset(10).execute().get();
 
+##### Go
+
+    snapshot := client.Pipeline().Collection("cities").Offset(10).Execute(ctx)
+
 ## Behavior
 
 The `offset(...)` stage will skip the first `N` input documents. Unless a [`sort(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/sort) stage is used before the offset, the order in which documents are returned is unstable and repeated executions might produce different results.

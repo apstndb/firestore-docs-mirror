@@ -76,6 +76,18 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Round(firestore.Multiply(firestore.FieldOf("soldBooks"), firestore.FieldOf("price"))).As("partialRevenue"),
+     )).
+     Aggregate(firestore.Accumulators(
+         firestore.Sum("partialRevenue").As("totalRevenue"),
+     )).
+     Execute(ctx)
+
 ## Behavior
 
 ### Position of a Select Stage

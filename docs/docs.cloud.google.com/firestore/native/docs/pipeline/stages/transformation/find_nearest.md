@@ -100,6 +100,12 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().Collection("cities").
+     FindNearest("embedding", []float64{1.5, 2.345}, firestore.PipelineDistanceMeasureEuclidean).
+     Execute(ctx)
+
 ## Behavior
 
 ### Distance Measure

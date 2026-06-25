@@ -71,6 +71,12 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().Collection("cities").
+     RemoveFields(firestore.Fields("population", "location.state")).
+     Execute(ctx)
+
 ## Behavior
 
 ### Remove Nested Fields

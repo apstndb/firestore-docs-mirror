@@ -108,6 +108,13 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Database().
+     UnnestWithAlias("arrayField", "unnestedArrayField", firestore.WithUnnestIndexField("index")).
+     Execute(ctx)
+
 ### Non Array Values
 
 If the input expression evaluates to a non-array value, then this stage will return the input document as is with the `index_field` set to `NULL` , if specified.
@@ -310,6 +317,29 @@ Android
     // { "identifier": 1, "neighbors": [ "Alice", "Cathy" ],
     //   "unnestedNeighbors": "Cathy", "index": 1 }
     // { "identifier": 3, "neighbors": "Bob", "index": null}
+
+##### Go
+
+    // Input
+    // { "identifier" : 1, "neighbors": [ "Alice", "Cathy" ] }
+    // { "identifier" : 2, "neighbors": []                   }
+    // { "identifier" : 3, "neighbors": "Bob"                }
+    
+    results, err := client.Pipeline().
+     Database().
+     UnnestWithAlias("neighbors", "unnestedNeighbors", firestore.WithUnnestIndexField("index")).
+     Execute(ctx).Results().GetAll()
+    if err != nil {
+     fmt.Fprintf(w, "GetAll failed: %v", err)
+     return err
+    }
+    
+    // Output
+    // { "identifier": 1, "neighbors": [ "Alice", "Cathy" ],
+    //   "unnestedNeighbors": "Alice", "index": 0 }
+    // { "identifier": 1, "neighbors": [ "Alice", "Cathy" ],
+    //   "unnestedNeighbors": "Cathy", "index": 1 }
+    // { "identifier": 3, "neighbors": "Bob", "index": nil}
 
 ### Nested Unnest
 

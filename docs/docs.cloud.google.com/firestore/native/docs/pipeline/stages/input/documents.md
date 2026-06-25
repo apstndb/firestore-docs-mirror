@@ -84,6 +84,16 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Documents([]*firestore.DocumentRef{
+         client.Collection("cities").Doc("SF"),
+         client.Collection("cities").Doc("DC"),
+         client.Collection("cities").Doc("NY"),
+     }).
+     Execute(ctx)
+
 ## Behavior
 
 In order to use the `documents(...)` stage, it must appear as the first stage in the pipeline.

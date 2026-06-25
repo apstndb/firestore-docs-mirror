@@ -170,6 +170,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("documents").
+     Select(firestore.Fields(
+         firestore.UnixMicrosToTimestamp(firestore.FieldOf("createdAtMicros")).As("createdAtString"),
+     )).
+     Execute(ctx)
+
 ### UNIX\_MILLIS\_TO\_TIMESTAMP
 
 **Syntax:**
@@ -260,6 +269,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("documents").
+     Select(firestore.Fields(
+         firestore.UnixMillisToTimestamp(firestore.FieldOf("createdAtMillis")).As("createdAtString"),
+     )).
+     Execute(ctx)
+
 ### UNIX\_SECONDS\_TO\_TIMESTAMP
 
 **Syntax:**
@@ -349,6 +367,15 @@ Android
             .select(unixSecondsToTimestamp(field("createdAtSeconds")).as("createdAtString"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("documents").
+     Select(firestore.Fields(
+         firestore.UnixSecondsToTimestamp(firestore.FieldOf("createdAtSeconds")).As("createdAtString"),
+     )).
+     Execute(ctx)
 
 ### TIMESTAMP\_ADD
 
@@ -448,6 +475,15 @@ Android
             .select(timestampAdd(field("createdAt"), "day", 3653).as("expiresAt"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("documents").
+     Select(firestore.Fields(
+         firestore.TimestampAdd(firestore.FieldOf("createdAt"), "day", 3653).As("expiresAt"),
+     )).
+     Execute(ctx)
 
 ### TIMESTAMP\_SUB
 
@@ -552,6 +588,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("documents").
+     Select(firestore.Fields(
+         firestore.TimestampSubtract(firestore.FieldOf("expiresAt"), "day", 14).As("sendWarningTimestamp"),
+     )).
+     Execute(ctx)
+
 ### TIMESTAMP\_TO\_UNIX\_MICROS
 
 **Syntax:**
@@ -637,6 +682,15 @@ Android
             .select(timestampToUnixMicros(field("dateString")).as("unixMicros"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("documents").
+     Select(firestore.Fields(
+         firestore.TimestampToUnixMicros(firestore.FieldOf("dateString")).As("unixMicros"),
+     )).
+     Execute(ctx)
 
 ### TIMESTAMP\_TO\_UNIX\_MILLIS
 
@@ -724,6 +778,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("documents").
+     Select(firestore.Fields(
+         firestore.TimestampToUnixMillis(firestore.FieldOf("dateString")).As("unixMillis"),
+     )).
+     Execute(ctx)
+
 ### TIMESTAMP\_TO\_UNIX\_SECONDS
 
 **Syntax:**
@@ -809,6 +872,15 @@ Android
             .select(timestampToUnixSeconds(field("dateString")).as("unixSeconds"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("documents").
+     Select(firestore.Fields(
+         firestore.TimestampToUnixSeconds(firestore.FieldOf("dateString")).As("unixSeconds"),
+     )).
+     Execute(ctx)
 
 ### TIMESTAMP\_DIFF
 

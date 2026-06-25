@@ -68,6 +68,13 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     CollectionGroup("games").
+     Sort(firestore.Orders(firestore.Ascending(firestore.FieldOf("name")))).
+     Execute(ctx)
+
 ## Behavior
 
 In order to use the `collection_group(...)` stage, it must appear as the first stage in the pipeline.

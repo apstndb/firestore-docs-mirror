@@ -12,9 +12,9 @@ This page describes how to retrieve query execution information when you execute
 
 ## Use Query Explain
 
-You can use Query Explain to understand how your queries are being executed. This provides details that you can use to [optimize your queries](https://docs.cloud.google.com/firestore/native/docs/enterprise-optimize-query-performance) .
+Use Query Explain to understand how your queries are being executed. This provides details that you can use to [optimize your queries](https://docs.cloud.google.com/firestore/native/docs/enterprise-optimize-query-performance) .
 
-You can use Query Explain through the Google Cloud console.
+You can use Query Explain through the Google Cloud console or using the [Firestore server client libraries](https://docs.cloud.google.com/firestore/docs/reference/libraries#server_client_libraries) .
 
 ##### Console
 
@@ -27,6 +27,42 @@ Execute a query in the Query Editor and open the **Explanation** tab:
 3.  Enter a query in the query editor and click **Run** .
 
 4.  Click the **Explanation** tab to view the query analysis output.
+
+##### Node.js (Admin)
+
+    const q = db.pipeline()
+            .collection('/users')
+            .sort(field('status').ascending())
+            .limit(100);
+    let results;
+    try {
+        results = await q.execute({
+            explainOptions: { mode: 'analyze', outputFormat: 'text' }
+        });
+    } catch (error) {
+        console.log(error);
+    }
+    const metrics = results?.explainStats?.text;
+    
+    console.log(metrics);
+
+##### Java (Admin)
+
+    Pipeline q = db.pipeline()
+            .collection("/users")
+            .sort(field("status").ascending())
+            .limit(100);
+    
+    PipelineExecuteOptions pipelineOpts = new PipelineExecuteOptions().withExplainOptions(
+            new ExplainOptions().withExecutionMode(ExplainOptions.ExecutionMode.ANALYZE)
+    );
+    Pipeline.Snapshot result = q.execute(pipelineOpts).get();
+    
+    String metrics = null;
+    if (result.getExplainStats() != null) {
+        metrics = result.getExplainStats().getText();
+        System.out.println(metrics);
+    }
 
 ## Explain modes
 

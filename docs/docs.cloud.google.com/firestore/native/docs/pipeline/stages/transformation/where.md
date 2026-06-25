@@ -110,6 +110,30 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    results1, err := client.Pipeline().
+     Collection("books").
+     Where(firestore.FieldOf("rating").Equal(5)).
+     Where(firestore.FieldOf("published").LessThan(1900)).
+     Execute(ctx).Results().GetAll()
+    if err != nil {
+     fmt.Fprintf(w, "GetAll failed: %v", err)
+     return err
+    }
+    
+    results2, err := client.Pipeline().
+     Collection("books").
+     Where(firestore.And(
+         firestore.FieldOf("rating").Equal(5),
+         firestore.FieldOf("published").LessThan(1900),
+     )).
+     Execute(ctx).Results().GetAll()
+    if err != nil {
+     fmt.Fprintf(w, "GetAll failed: %v", err)
+     return err
+    }
+
 ## Behavior
 
 ### Multiple Stages

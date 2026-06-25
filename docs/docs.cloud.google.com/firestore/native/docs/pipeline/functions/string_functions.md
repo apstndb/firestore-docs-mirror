@@ -121,6 +121,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.ByteLength(firestore.FieldOf("title")).As("titleByteLength"),
+     )).
+     Execute(ctx)
+
 ### CHAR\_LENGTH
 
 **Syntax:**
@@ -206,6 +215,15 @@ Android
             .select(charLength(field("title")).as("titleCharLength"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.CharLength(firestore.FieldOf("title")).As("titleCharLength"),
+     )).
+     Execute(ctx)
 
 ### STARTS\_WITH
 
@@ -300,6 +318,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.StartsWith(firestore.FieldOf("title"), "The").As("needsSpecialAlphabeticalSort"),
+     )).
+     Execute(ctx)
+
 ### ENDS\_WITH
 
 **Syntax:**
@@ -380,6 +407,15 @@ Android
             .select(endsWith(field("name"), "16 inch").as("16InLaptops"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("inventory/devices/laptops").
+     Select(firestore.Fields(
+         firestore.EndsWith(firestore.FieldOf("name"), "16 inch").As("`Laptops16in`"),
+     )).
+     Execute(ctx)
 
 ### LIKE
 
@@ -472,6 +508,15 @@ Android
             .select(like(field("genre"), "%Fiction").as("anyFiction"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Like(firestore.FieldOf("genre"), "%Fiction").As("anyFiction"),
+     )).
+     Execute(ctx)
 
 ### REGEX\_CONTAINS
 
@@ -572,6 +617,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("documents").
+     Select(firestore.Fields(
+         firestore.RegexContains(firestore.FieldOf("title"), "Firestore (Enterprise|Standard)").As("isFirestoreRelated"),
+     )).
+     Execute(ctx)
+
 ### REGEX\_MATCH
 
 **Syntax:**
@@ -671,6 +725,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("documents").
+     Select(firestore.Fields(
+         firestore.RegexMatch(firestore.FieldOf("title"), "Firestore (Enterprise|Standard)").As("isFirestoreExactly"),
+     )).
+     Execute(ctx)
+
 ### STRING\_CONCAT
 
 **Syntax:**
@@ -767,6 +830,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.StringConcat(firestore.FieldOf("title"), " by ", firestore.FieldOf("author")).As("fullyQualifiedTitle"),
+     )).
+     Execute(ctx)
+
 ### STRING\_CONTAINS
 
 **Syntax:**
@@ -859,6 +931,15 @@ Android
             .select(stringContains(field("body"), "Firestore").as("isFirestoreRelated"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("articles").
+     Select(firestore.Fields(
+         firestore.StringContains(firestore.FieldOf("body"), "Firestore").As("isFirestoreRelated"),
+     )).
+     Execute(ctx)
 
 ### STRING\_INDEX\_OF
 
@@ -981,6 +1062,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("authors").
+     Select(firestore.Fields(
+         firestore.ToUpper(firestore.FieldOf("name")).As("uppercaseName"),
+     )).
+     Execute(ctx)
+
 ### TO\_LOWER
 
 **Syntax:**
@@ -1074,6 +1164,15 @@ Android
             .select(equal(toLower(field("genre")), "fantasy").as("isFantasy"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("authors").
+     Select(firestore.Fields(
+         firestore.Equal(firestore.ToLower(firestore.FieldOf("genre")), "fantasy").As("isFantasy"),
+     )).
+     Execute(ctx)
 
 ### SUBSTRING
 
@@ -1199,6 +1298,16 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Where(firestore.StartsWith(firestore.FieldOf("title"), "The ")).
+     Select(firestore.Fields(
+         firestore.Substring(firestore.FieldOf("title"), firestore.ConstantOf(4), firestore.FieldOf("title").CharLength()).As("titleWithoutLeadingThe"),
+     )).
+     Execute(ctx)
+
 ### STRING\_REVERSE
 
 **Syntax:**
@@ -1287,6 +1396,15 @@ Android
             .select(reverse(field("name")).as("reversedName"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Reverse(firestore.FieldOf("name")).As("reversedName"),
+     )).
+     Execute(ctx)
 
 ### STRING\_REPEAT
 
@@ -1453,6 +1571,15 @@ Android
             .select(trim(field("name")).as("whitespaceTrimmedName"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Trim(firestore.FieldOf("name")).As("whitespaceTrimmedName"),
+     )).
+     Execute(ctx)
 
 ### LTRIM
 

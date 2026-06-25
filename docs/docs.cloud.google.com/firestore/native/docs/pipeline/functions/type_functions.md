@@ -106,6 +106,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.NotEqual(firestore.FieldOf("title"), "1984").As("not1984"),
+     )).
+     Execute(ctx)
+
 ### IS\_TYPE
 
 **Syntax:**

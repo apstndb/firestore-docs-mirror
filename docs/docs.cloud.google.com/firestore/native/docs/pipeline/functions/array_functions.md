@@ -132,6 +132,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.ArrayConcat(firestore.FieldOf("genre"), firestore.FieldOf("subGenre")).As("allGenres"),
+     )).
+     Execute(ctx)
+
 ### ARRAY\_CONTAINS
 
 **Syntax:**
@@ -211,6 +220,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .select(arrayContains(field("genre"), "mystery").as("isMystery"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.ArrayContains(firestore.FieldOf("genre"), "mystery").As("isMystery"),
+     )).
+     Execute(ctx)
 
 ### ARRAY\_CONTAINS\_ALL
 
@@ -320,6 +338,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.ArrayContainsAll(firestore.FieldOf("genre"), []string{"fantasy", "adventure"}).As("isFantasyAdventure"),
+     )).
+     Execute(ctx)
+
 ### ARRAY\_CONTAINS\_ANY
 
 **Syntax:**
@@ -424,6 +451,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
                     .as("isMysteryOrFantasy"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.ArrayContainsAny(firestore.FieldOf("genre"), []string{"fantasy", "nonfiction"}).As("isMysteryOrFantasy"),
+     )).
+     Execute(ctx)
 
 ### ARRAY\_FILTER
 
@@ -555,6 +591,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.ArrayLength(firestore.FieldOf("genre")).As("genreCount"),
+     )).
+     Execute(ctx)
+
 ### ARRAY\_REVERSE
 
 **Syntax:**
@@ -632,6 +677,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .select(arrayReverse(field("genre")).as("reversedGenres"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.ArrayReverse(firestore.FieldOf("genre")).As("reversedGenres"),
+     )).
+     Execute(ctx)
 
 ### ARRAY\_FIRST
 

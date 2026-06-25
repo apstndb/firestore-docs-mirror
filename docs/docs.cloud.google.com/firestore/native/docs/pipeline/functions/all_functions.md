@@ -142,6 +142,27 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    // Total number of books in the collection
+    countAll, err := client.Pipeline().Collection("books").
+     Aggregate(firestore.Accumulators(firestore.CountAll().As("count"))).
+     Execute(ctx).Results().GetAll()
+    if err != nil {
+     fmt.Fprintf(w, "GetAll failed: %v", err)
+     return err
+    }
+    
+    // Number of books with nonnull `ratings` field
+    countField, err := client.Pipeline().
+     Collection("books").
+     Aggregate(firestore.Accumulators(firestore.Count("ratings").As("count"))).
+     Execute(ctx).Results().GetAll()
+    if err != nil {
+     fmt.Fprintf(w, "GetAll failed: %v", err)
+     return err
+    }
+
 ### COUNT\_IF
 
 **Syntax:**
@@ -220,6 +241,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Aggregate(firestore.Accumulators(
+         firestore.CountIf(firestore.FieldOf("rating").GreaterThan(4)).As("filteredCount"),
+     )).
+     Execute(ctx)
+
 ### COUNT\_DISTINCT
 
 **Syntax:**
@@ -287,6 +317,15 @@ Android
             .aggregate(countDistinct("author").as("unique_authors"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Aggregate(firestore.Accumulators(
+         firestore.CountDistinct("author").As("unique_authors"),
+     )).
+     Execute(ctx)
 
 ### SUM
 
@@ -360,6 +399,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("cities").
+     Aggregate(firestore.Accumulators(
+         firestore.Sum("population").As("totalPopulation"),
+     )).
+     Execute(ctx)
+
 ### AVERAGE
 
 **Syntax:**
@@ -431,6 +479,15 @@ Android
             .aggregate(average("population").as("averagePopulation"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("cities").
+     Aggregate(firestore.Accumulators(
+         firestore.Average("population").As("averagePopulation"),
+     )).
+     Execute(ctx)
 
 ### MINIMUM
 
@@ -504,6 +561,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Aggregate(firestore.Accumulators(
+         firestore.Minimum("price").As("minimumPrice"),
+     )).
+     Execute(ctx)
+
 ### MAXIMUM
 
 **Syntax:**
@@ -575,6 +641,15 @@ Android
             .aggregate(maximum("price").as("maximumPrice"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Aggregate(firestore.Accumulators(
+         firestore.Maximum("price").As("maximumPrice"),
+     )).
+     Execute(ctx)
 
 ### FIRST
 
@@ -761,6 +836,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Add(firestore.FieldOf("soldBooks"), firestore.FieldOf("unsoldBooks")).As("totalBooks"),
+     )).
+     Execute(ctx)
+
 ### SUBTRACT
 
 **Syntax:**
@@ -849,6 +933,16 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .execute()
             .get();
 
+##### Go
+
+    storeCredit := 7
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Subtract(firestore.FieldOf("price"), storeCredit).As("totalCost"),
+     )).
+     Execute(ctx)
+
 ### MULTIPLY
 
 **Syntax:**
@@ -931,6 +1025,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Multiply(firestore.FieldOf("price"), firestore.FieldOf("soldBooks")).As("revenue"),
+     )).
+     Execute(ctx)
+
 ### DIVIDE
 
 **Syntax:**
@@ -1012,6 +1115,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .select(divide(field("ratings"), field("soldBooks")).as("reviewRate"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Divide(firestore.FieldOf("ratings"), firestore.FieldOf("soldBooks")).As("reviewRate"),
+     )).
+     Execute(ctx)
 
 ### MOD
 
@@ -1106,6 +1218,16 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .select(mod(field("unsoldBooks"), displayCapacity).as("warehousedBooks"))
             .execute()
             .get();
+
+##### Go
+
+    displayCapacity := 1000
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Mod(firestore.FieldOf("unsoldBooks"), displayCapacity).As("warehousedBooks"),
+     )).
+     Execute(ctx)
 
 ### CEIL
 
@@ -1214,6 +1336,16 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .execute()
             .get();
 
+##### Go
+
+    booksPerShelf := 100
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Ceil(firestore.Divide(firestore.FieldOf("unsoldBooks"), booksPerShelf)).As("requiredShelves"),
+     )).
+     Execute(ctx)
+
 ### FLOOR
 
 **Syntax:**
@@ -1310,6 +1442,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .addFields(floor(divide(field("wordCount"), field("pages"))).as("wordsPerPage"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     AddFields(firestore.Selectables(
+         firestore.Floor(firestore.Divide(firestore.FieldOf("wordCount"), firestore.FieldOf("pages"))).As("wordsPerPage"),
+     )).
+     Execute(ctx)
 
 ### ROUND
 
@@ -1412,6 +1553,18 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .aggregate(sum("partialRevenue").as("totalRevenue"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Round(firestore.Multiply(firestore.FieldOf("soldBooks"), firestore.FieldOf("price"))).As("partialRevenue"),
+     )).
+     Aggregate(firestore.Accumulators(
+         firestore.Sum("partialRevenue").As("totalRevenue"),
+     )).
+     Execute(ctx)
 
 ### TRUNC
 
@@ -1633,6 +1786,23 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .execute()
             .get();
 
+##### Go
+
+    googleplexLat := 37.4221
+    googleplexLng := -122.0853
+    snapshot := client.Pipeline().
+     Collection("cities").
+     AddFields(firestore.Selectables(
+         firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lat"), googleplexLat), 111), 2).As("latitudeDifference"),
+         firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lng"), googleplexLng), 111), 2).As("longitudeDifference"),
+     )).
+     Select(firestore.Fields(
+         firestore.Sqrt(firestore.Add(firestore.FieldOf("latitudeDifference"), firestore.FieldOf("longitudeDifference"))).
+             // Inaccurate for large distances or close to poles
+             As("approximateDistanceToGoogle"),
+     )).
+     Execute(ctx)
+
 ### SQRT
 
 **Syntax:**
@@ -1823,6 +1993,23 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .execute()
             .get();
 
+##### Go
+
+    googleplexLat := 37.4221
+    googleplexLng := -122.0853
+    snapshot := client.Pipeline().
+     Collection("cities").
+     AddFields(firestore.Selectables(
+         firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lat"), googleplexLat), 111), 2).As("latitudeDifference"),
+         firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lng"), googleplexLng), 111), 2).As("longitudeDifference"),
+     )).
+     Select(firestore.Fields(
+         firestore.Sqrt(firestore.Add(firestore.FieldOf("latitudeDifference"), firestore.FieldOf("longitudeDifference"))).
+             // Inaccurate for large distances or close to poles
+             As("approximateDistanceToGoogle"),
+     )).
+     Execute(ctx)
+
 ### EXP
 
 **Syntax:**
@@ -1902,6 +2089,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .select(exp(field("rating")).as("expRating"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Exp(firestore.FieldOf("rating")).As("expRating"),
+     )).
+     Execute(ctx)
 
 ### LN
 
@@ -1985,6 +2181,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .select(ln(field("rating")).as("lnRating"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Ln(firestore.FieldOf("rating")).As("lnRating"),
+     )).
+     Execute(ctx)
 
 ### LOG
 
@@ -2163,6 +2368,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.ArrayConcat(firestore.FieldOf("genre"), firestore.FieldOf("subGenre")).As("allGenres"),
+     )).
+     Execute(ctx)
+
 ### ARRAY\_CONTAINS
 
 **Syntax:**
@@ -2242,6 +2456,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .select(arrayContains(field("genre"), "mystery").as("isMystery"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.ArrayContains(firestore.FieldOf("genre"), "mystery").As("isMystery"),
+     )).
+     Execute(ctx)
 
 ### ARRAY\_CONTAINS\_ALL
 
@@ -2351,6 +2574,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.ArrayContainsAll(firestore.FieldOf("genre"), []string{"fantasy", "adventure"}).As("isFantasyAdventure"),
+     )).
+     Execute(ctx)
+
 ### ARRAY\_CONTAINS\_ANY
 
 **Syntax:**
@@ -2455,6 +2687,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
                     .as("isMysteryOrFantasy"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.ArrayContainsAny(firestore.FieldOf("genre"), []string{"fantasy", "nonfiction"}).As("isMysteryOrFantasy"),
+     )).
+     Execute(ctx)
 
 ### ARRAY\_FILTER
 
@@ -2586,6 +2827,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.ArrayLength(firestore.FieldOf("genre")).As("genreCount"),
+     )).
+     Execute(ctx)
+
 ### ARRAY\_REVERSE
 
 **Syntax:**
@@ -2663,6 +2913,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .select(arrayReverse(field("genre")).as("reversedGenres"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.ArrayReverse(firestore.FieldOf("genre")).As("reversedGenres"),
+     )).
+     Execute(ctx)
 
 ### ARRAY\_FIRST
 
@@ -3071,6 +3330,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Equal(firestore.FieldOf("rating"), 5).As("hasPerfectRating"),
+     )).
+     Execute(ctx)
+
 ### GREATER\_THAN
 
 **Syntax:**
@@ -3153,6 +3421,15 @@ Android
             .select(greaterThan(field("rating"), 4).as("hasHighRating"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.GreaterThan(firestore.FieldOf("rating"), 4).As("hasHighRating"),
+     )).
+     Execute(ctx)
 
 ### GREATER\_THAN\_OR\_EQUAL
 
@@ -3241,6 +3518,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.GreaterThanOrEqual(firestore.FieldOf("published"), 1900).As("publishedIn20thCentury"),
+     )).
+     Execute(ctx)
+
 ### LESS\_THAN
 
 **Syntax:**
@@ -3323,6 +3609,15 @@ Android
             .select(lessThan(field("published"), 1923).as("isPublicDomainProbably"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.LessThan(firestore.FieldOf("published"), 1923).As("isPublicDomainProbably"),
+     )).
+     Execute(ctx)
 
 ### LESS\_THAN\_OR\_EQUAL
 
@@ -3407,6 +3702,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.LessThanOrEqual(firestore.FieldOf("rating"), 2).As("hasBadRating"),
+     )).
+     Execute(ctx)
+
 ### NOT\_EQUAL
 
 **Syntax:**
@@ -3486,6 +3790,15 @@ Android
             .select(notEqual(field("title"), "1984").as("not1984"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.NotEqual(firestore.FieldOf("title"), "1984").As("not1984"),
+     )).
+     Execute(ctx)
 
 ### CMP
 
@@ -3608,6 +3921,15 @@ Android
             .select(exists(field("rating")).as("hasRating"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.FieldExists(firestore.FieldOf("rating")).As("hasRating"),
+     )).
+     Execute(ctx)
 
 ### IS\_ABSENT
 
@@ -3893,6 +4215,18 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.And(
+             firestore.GreaterThan(firestore.FieldOf("rating"), 4),
+             firestore.LessThan(firestore.FieldOf("price"), 10),
+         ).As("under10Recommendation"),
+     )).
+     Execute(ctx)
+
 ### OR
 
 **Syntax:**
@@ -3998,6 +4332,18 @@ Android
                     .as("matchesSearchFilters"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Or(
+             firestore.Equal(firestore.FieldOf("genre"), "Fantasy"),
+             firestore.ArrayContains(firestore.FieldOf("tags"), "adventure"),
+         ).As("matchesSearchFilters"),
+     )).
+     Execute(ctx)
 
 ### XOR
 
@@ -4110,6 +4456,18 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Xor(
+             firestore.ArrayContains(firestore.FieldOf("tags"), "magic"),
+             firestore.ArrayContains(firestore.FieldOf("tags"), "nonfiction"),
+         ).As("matchesSearchFilters"),
+     )).
+     Execute(ctx)
+
 ### NOR
 
 **Syntax:**
@@ -4218,6 +4576,15 @@ Android
             .select(not(arrayContains(field("tags"), "nonfiction")).as("isFiction"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Not(firestore.ArrayContains(firestore.FieldOf("tags"), "nonfiction")).As("isFiction"),
+     )).
+     Execute(ctx)
 
 ### CONDITIONAL
 
@@ -4352,6 +4719,22 @@ Android
                     .as("extendedTags"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.ArrayConcat(
+             firestore.FieldOf("tags"),
+             firestore.Conditional(
+                 firestore.GreaterThan(firestore.FieldOf("pages"), 100),
+                 firestore.ConstantOf("longRead"),
+                 firestore.ConstantOf("shortRead"),
+             ),
+         ).As("extendedTags"),
+     )).
+     Execute(ctx)
 
 ### IF\_NULL
 
@@ -4491,6 +4874,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.EqualAny(firestore.FieldOf("genre"), []string{"Science Fiction", "Psychological Thriller"}).As("matchesGenreFilters"),
+     )).
+     Execute(ctx)
+
 ### NOT\_EQUAL\_ANY
 
 **Syntax:**
@@ -4591,6 +4983,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.NotEqualAny(firestore.FieldOf("author"), []string{"George Orwell", "F. Scott Fitzgerald"}).As("byExcludedAuthors"),
+     )).
+     Execute(ctx)
+
 ### MAXIMUM
 
 **Syntax:**
@@ -4682,6 +5083,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.LogicalMaximum(firestore.FieldOf("rating"), 1).As("flooredRating"),
+     )).
+     Execute(ctx)
+
 ### MINIMUM
 
 **Syntax:**
@@ -4772,6 +5182,15 @@ Android
             .select(logicalMinimum(field("rating"), 5).as("cappedRating"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.LogicalMinimum(firestore.FieldOf("rating"), 5).As("cappedRating"),
+     )).
+     Execute(ctx)
 
 ## **Map Functions**
 
@@ -4875,6 +5294,15 @@ Android
             .select(mapGet(field("awards"), "pulitzer").as("hasPulitzerAward"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.MapGet(firestore.FieldOf("awards"), "pulitzer").As("hasPulitzerAward"),
+     )).
+     Execute(ctx)
 
 ### MAP\_SET
 
@@ -5069,6 +5497,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.ByteLength(firestore.FieldOf("title")).As("titleByteLength"),
+     )).
+     Execute(ctx)
+
 ### CHAR\_LENGTH
 
 **Syntax:**
@@ -5154,6 +5591,15 @@ Android
             .select(charLength(field("title")).as("titleCharLength"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.CharLength(firestore.FieldOf("title")).As("titleCharLength"),
+     )).
+     Execute(ctx)
 
 ### STARTS\_WITH
 
@@ -5248,6 +5694,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.StartsWith(firestore.FieldOf("title"), "The").As("needsSpecialAlphabeticalSort"),
+     )).
+     Execute(ctx)
+
 ### ENDS\_WITH
 
 **Syntax:**
@@ -5328,6 +5783,15 @@ Android
             .select(endsWith(field("name"), "16 inch").as("16InLaptops"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("inventory/devices/laptops").
+     Select(firestore.Fields(
+         firestore.EndsWith(firestore.FieldOf("name"), "16 inch").As("`Laptops16in`"),
+     )).
+     Execute(ctx)
 
 ### LIKE
 
@@ -5420,6 +5884,15 @@ Android
             .select(like(field("genre"), "%Fiction").as("anyFiction"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Like(firestore.FieldOf("genre"), "%Fiction").As("anyFiction"),
+     )).
+     Execute(ctx)
 
 ### REGEX\_CONTAINS
 
@@ -5520,6 +5993,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("documents").
+     Select(firestore.Fields(
+         firestore.RegexContains(firestore.FieldOf("title"), "Firestore (Enterprise|Standard)").As("isFirestoreRelated"),
+     )).
+     Execute(ctx)
+
 ### REGEX\_MATCH
 
 **Syntax:**
@@ -5619,6 +6101,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("documents").
+     Select(firestore.Fields(
+         firestore.RegexMatch(firestore.FieldOf("title"), "Firestore (Enterprise|Standard)").As("isFirestoreExactly"),
+     )).
+     Execute(ctx)
+
 ### STRING\_CONCAT
 
 **Syntax:**
@@ -5715,6 +6206,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.StringConcat(firestore.FieldOf("title"), " by ", firestore.FieldOf("author")).As("fullyQualifiedTitle"),
+     )).
+     Execute(ctx)
+
 ### STRING\_CONTAINS
 
 **Syntax:**
@@ -5807,6 +6307,15 @@ Android
             .select(stringContains(field("body"), "Firestore").as("isFirestoreRelated"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("articles").
+     Select(firestore.Fields(
+         firestore.StringContains(firestore.FieldOf("body"), "Firestore").As("isFirestoreRelated"),
+     )).
+     Execute(ctx)
 
 ### STRING\_INDEX\_OF
 
@@ -5929,6 +6438,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("authors").
+     Select(firestore.Fields(
+         firestore.ToUpper(firestore.FieldOf("name")).As("uppercaseName"),
+     )).
+     Execute(ctx)
+
 ### TO\_LOWER
 
 **Syntax:**
@@ -6022,6 +6540,15 @@ Android
             .select(equal(toLower(field("genre")), "fantasy").as("isFantasy"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("authors").
+     Select(firestore.Fields(
+         firestore.Equal(firestore.ToLower(firestore.FieldOf("genre")), "fantasy").As("isFantasy"),
+     )).
+     Execute(ctx)
 
 ### SUBSTRING
 
@@ -6147,6 +6674,16 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Where(firestore.StartsWith(firestore.FieldOf("title"), "The ")).
+     Select(firestore.Fields(
+         firestore.Substring(firestore.FieldOf("title"), firestore.ConstantOf(4), firestore.FieldOf("title").CharLength()).As("titleWithoutLeadingThe"),
+     )).
+     Execute(ctx)
+
 ### STRING\_REVERSE
 
 **Syntax:**
@@ -6235,6 +6772,15 @@ Android
             .select(reverse(field("name")).as("reversedName"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Reverse(firestore.FieldOf("name")).As("reversedName"),
+     )).
+     Execute(ctx)
 
 ### STRING\_REPEAT
 
@@ -6401,6 +6947,15 @@ Android
             .select(trim(field("name")).as("whitespaceTrimmedName"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Trim(firestore.FieldOf("name")).As("whitespaceTrimmedName"),
+     )).
+     Execute(ctx)
 
 ### LTRIM
 
@@ -6666,6 +7221,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("documents").
+     Select(firestore.Fields(
+         firestore.UnixMicrosToTimestamp(firestore.FieldOf("createdAtMicros")).As("createdAtString"),
+     )).
+     Execute(ctx)
+
 ### UNIX\_MILLIS\_TO\_TIMESTAMP
 
 **Syntax:**
@@ -6756,6 +7320,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("documents").
+     Select(firestore.Fields(
+         firestore.UnixMillisToTimestamp(firestore.FieldOf("createdAtMillis")).As("createdAtString"),
+     )).
+     Execute(ctx)
+
 ### UNIX\_SECONDS\_TO\_TIMESTAMP
 
 **Syntax:**
@@ -6845,6 +7418,15 @@ Android
             .select(unixSecondsToTimestamp(field("createdAtSeconds")).as("createdAtString"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("documents").
+     Select(firestore.Fields(
+         firestore.UnixSecondsToTimestamp(firestore.FieldOf("createdAtSeconds")).As("createdAtString"),
+     )).
+     Execute(ctx)
 
 ### TIMESTAMP\_ADD
 
@@ -6944,6 +7526,15 @@ Android
             .select(timestampAdd(field("createdAt"), "day", 3653).as("expiresAt"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("documents").
+     Select(firestore.Fields(
+         firestore.TimestampAdd(firestore.FieldOf("createdAt"), "day", 3653).As("expiresAt"),
+     )).
+     Execute(ctx)
 
 ### TIMESTAMP\_SUB
 
@@ -7048,6 +7639,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("documents").
+     Select(firestore.Fields(
+         firestore.TimestampSubtract(firestore.FieldOf("expiresAt"), "day", 14).As("sendWarningTimestamp"),
+     )).
+     Execute(ctx)
+
 ### TIMESTAMP\_TO\_UNIX\_MICROS
 
 **Syntax:**
@@ -7133,6 +7733,15 @@ Android
             .select(timestampToUnixMicros(field("dateString")).as("unixMicros"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("documents").
+     Select(firestore.Fields(
+         firestore.TimestampToUnixMicros(firestore.FieldOf("dateString")).As("unixMicros"),
+     )).
+     Execute(ctx)
 
 ### TIMESTAMP\_TO\_UNIX\_MILLIS
 
@@ -7220,6 +7829,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("documents").
+     Select(firestore.Fields(
+         firestore.TimestampToUnixMillis(firestore.FieldOf("dateString")).As("unixMillis"),
+     )).
+     Execute(ctx)
+
 ### TIMESTAMP\_TO\_UNIX\_SECONDS
 
 **Syntax:**
@@ -7305,6 +7923,15 @@ Android
             .select(timestampToUnixSeconds(field("dateString")).as("unixSeconds"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("documents").
+     Select(firestore.Fields(
+         firestore.TimestampToUnixSeconds(firestore.FieldOf("dateString")).As("unixSeconds"),
+     )).
+     Execute(ctx)
 
 ### TIMESTAMP\_DIFF
 
@@ -7476,6 +8103,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.NotEqual(firestore.FieldOf("title"), "1984").As("not1984"),
+     )).
+     Execute(ctx)
+
 ### IS\_TYPE
 
 **Syntax:**
@@ -7621,6 +8257,16 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    sampleVector := []float64{0.0, 1.0, 2.0, 3.0, 4.0, 5.0}
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.CosineDistance(firestore.FieldOf("embedding"), sampleVector).As("cosineDistance"),
+     )).
+     Execute(ctx)
+
 ### DOT\_PRODUCT
 
 **Syntax:**
@@ -7706,6 +8352,16 @@ Android
             .select(dotProduct(field("embedding"), sampleVector).as("dotProduct"))
             .execute()
             .get();
+
+##### Go
+
+    sampleVector := []float64{0.0, 1.0, 2.0, 3.0, 4.0, 5.0}
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.DotProduct(firestore.FieldOf("embedding"), sampleVector).As("dotProduct"),
+     )).
+     Execute(ctx)
 
 ### EUCLIDEAN\_DISTANCE
 
@@ -7797,6 +8453,16 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    sampleVector := []float64{0.0, 1.0, 2.0, 3.0, 4.0, 5.0}
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.EuclideanDistance(firestore.FieldOf("embedding"), sampleVector).As("euclideanDistance"),
+     )).
+     Execute(ctx)
+
 ### MANHATTAN\_DISTANCE
 
 **Syntax:**
@@ -7884,6 +8550,15 @@ Android
             .select(vectorLength(field("embedding")).as("vectorLength"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.VectorLength(firestore.FieldOf("embedding")).As("vectorLength"),
+     )).
+     Execute(ctx)
 
 ## What's next
 

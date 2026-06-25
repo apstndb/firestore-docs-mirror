@@ -142,6 +142,27 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    // Total number of books in the collection
+    countAll, err := client.Pipeline().Collection("books").
+     Aggregate(firestore.Accumulators(firestore.CountAll().As("count"))).
+     Execute(ctx).Results().GetAll()
+    if err != nil {
+     fmt.Fprintf(w, "GetAll failed: %v", err)
+     return err
+    }
+    
+    // Number of books with nonnull `ratings` field
+    countField, err := client.Pipeline().
+     Collection("books").
+     Aggregate(firestore.Accumulators(firestore.Count("ratings").As("count"))).
+     Execute(ctx).Results().GetAll()
+    if err != nil {
+     fmt.Fprintf(w, "GetAll failed: %v", err)
+     return err
+    }
+
 ### COUNT\_IF
 
 **Syntax:**
@@ -220,6 +241,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Aggregate(firestore.Accumulators(
+         firestore.CountIf(firestore.FieldOf("rating").GreaterThan(4)).As("filteredCount"),
+     )).
+     Execute(ctx)
+
 ### COUNT\_DISTINCT
 
 **Syntax:**
@@ -287,6 +317,15 @@ Android
             .aggregate(countDistinct("author").as("unique_authors"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Aggregate(firestore.Accumulators(
+         firestore.CountDistinct("author").As("unique_authors"),
+     )).
+     Execute(ctx)
 
 ### SUM
 
@@ -360,6 +399,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("cities").
+     Aggregate(firestore.Accumulators(
+         firestore.Sum("population").As("totalPopulation"),
+     )).
+     Execute(ctx)
+
 ### AVERAGE
 
 **Syntax:**
@@ -431,6 +479,15 @@ Android
             .aggregate(average("population").as("averagePopulation"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("cities").
+     Aggregate(firestore.Accumulators(
+         firestore.Average("population").As("averagePopulation"),
+     )).
+     Execute(ctx)
 
 ### MINIMUM
 
@@ -504,6 +561,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Aggregate(firestore.Accumulators(
+         firestore.Minimum("price").As("minimumPrice"),
+     )).
+     Execute(ctx)
+
 ### MAXIMUM
 
 **Syntax:**
@@ -575,6 +641,15 @@ Android
             .aggregate(maximum("price").as("maximumPrice"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Aggregate(firestore.Accumulators(
+         firestore.Maximum("price").As("maximumPrice"),
+     )).
+     Execute(ctx)
 
 ### FIRST
 

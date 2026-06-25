@@ -61,6 +61,12 @@ Knowledge Catalog is enabled by default on new and existing Firestore databases,
 
 ## Before you begin
 
+  - Enable the Knowledge Catalog API.
+    
+    **Roles required to enable APIs**
+    
+    To enable APIs, you need the Service Usage Admin IAM role ( `roles/serviceusage.serviceUsageAdmin` ), which contains the `serviceusage.services.enable` permission. [Learn how to grant roles](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
+
 To use Knowledge Catalog insights with Firestore, you must first have a Firestore database. For more information, see [Create and manage databases](https://docs.cloud.google.com/firestore/native/docs/manage-databases) .
 
 ### Required roles for accessing search results

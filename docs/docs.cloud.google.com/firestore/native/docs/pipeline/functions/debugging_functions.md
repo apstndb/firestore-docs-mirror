@@ -103,6 +103,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.FieldExists(firestore.FieldOf("rating")).As("hasRating"),
+     )).
+     Execute(ctx)
+
 ### IS\_ABSENT
 
 **Syntax:**

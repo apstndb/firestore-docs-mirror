@@ -113,6 +113,20 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("cities/SF/restaurants").
+     Where(firestore.FieldOf("type").Equal("Chinese")).
+     Union(
+         client.Pipeline().
+             Collection("cities/NY/restaurants").
+             Where(firestore.FieldOf("type").Equal("Italian")),
+     ).
+     Where(firestore.FieldOf("rating").GreaterThanOrEqual(4.5)).
+     Sort(firestore.Orders(firestore.Descending(firestore.FieldOf("__name__")))).
+     Execute(ctx)
+
 ## Behavior
 
 This stage runs multiple pipelines in parallel and concatenates the results together.
@@ -196,6 +210,20 @@ Android
             .sort(descending(field("__name__")))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("cities/SF/restaurants").
+     Where(firestore.FieldOf("type").Equal("Chinese")).
+     Union(
+         client.Pipeline().
+             Collection("cities/NY/restaurants").
+             Where(firestore.FieldOf("type").Equal("Italian")),
+     ).
+     Where(firestore.FieldOf("rating").GreaterThanOrEqual(4.5)).
+     Sort(firestore.Orders(firestore.Descending(firestore.FieldOf("__name__")))).
+     Execute(ctx)
 
 ### Duplicate Results
 

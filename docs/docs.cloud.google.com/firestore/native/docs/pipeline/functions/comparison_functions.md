@@ -100,6 +100,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Equal(firestore.FieldOf("rating"), 5).As("hasPerfectRating"),
+     )).
+     Execute(ctx)
+
 ### GREATER\_THAN
 
 **Syntax:**
@@ -182,6 +191,15 @@ Android
             .select(greaterThan(field("rating"), 4).as("hasHighRating"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.GreaterThan(firestore.FieldOf("rating"), 4).As("hasHighRating"),
+     )).
+     Execute(ctx)
 
 ### GREATER\_THAN\_OR\_EQUAL
 
@@ -270,6 +288,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.GreaterThanOrEqual(firestore.FieldOf("published"), 1900).As("publishedIn20thCentury"),
+     )).
+     Execute(ctx)
+
 ### LESS\_THAN
 
 **Syntax:**
@@ -352,6 +379,15 @@ Android
             .select(lessThan(field("published"), 1923).as("isPublicDomainProbably"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.LessThan(firestore.FieldOf("published"), 1923).As("isPublicDomainProbably"),
+     )).
+     Execute(ctx)
 
 ### LESS\_THAN\_OR\_EQUAL
 
@@ -436,6 +472,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.LessThanOrEqual(firestore.FieldOf("rating"), 2).As("hasBadRating"),
+     )).
+     Execute(ctx)
+
 ### NOT\_EQUAL
 
 **Syntax:**
@@ -515,6 +560,15 @@ Android
             .select(notEqual(field("title"), "1984").as("not1984"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.NotEqual(firestore.FieldOf("title"), "1984").As("not1984"),
+     )).
+     Execute(ctx)
 
 ### CMP
 

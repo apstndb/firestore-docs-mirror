@@ -52,6 +52,18 @@ For example, the following operation backfills a data model change to all docume
        .update()
        .execute().get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     CollectionGroup("users").
+     Where(firestore.Not(firestore.FieldExists(firestore.FieldOf("preferences.color")))).
+     AddFields(firestore.Selectables(
+         firestore.ConstantOfNull().As("preferences.color"),
+     )).
+     RemoveFields(firestore.Fields("color")).
+     Update().
+     Execute(ctx)
+
 ## Behavior
 
 All data manipulation language (DML) stages must come at the end of the pipeline.

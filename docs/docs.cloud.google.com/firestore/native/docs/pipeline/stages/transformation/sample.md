@@ -135,6 +135,29 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    // Get a sample of 100 documents in a database
+    results1, err := client.Pipeline().Database().Sample(firestore.WithDocLimit(100)).Execute(ctx).Results().GetAll()
+    if err != nil {
+     fmt.Fprintf(w, "GetAll failed: %v", err)
+     return err
+    }
+    
+    // Randomly shuffle a list of 3 documents
+    results2, err := client.Pipeline().
+     Documents([]*firestore.DocumentRef{
+         client.Collection("cities").Doc("SF"),
+         client.Collection("cities").Doc("NY"),
+         client.Collection("cities").Doc("DC"),
+     }).
+     Sample(firestore.WithDocLimit(3)).
+     Execute(ctx).Results().GetAll()
+    if err != nil {
+     fmt.Fprintf(w, "GetAll failed: %v", err)
+     return err
+    }
+
 ## Modes
 
 ### Documents Mode
@@ -266,3 +289,11 @@ Android
     // Get a sample of on average 50% of the documents in the database
     Pipeline.Snapshot results =
         firestore.pipeline().database().sample(Sample.withPercentage(0.5)).execute().get();
+
+##### Go
+
+    // Get a sample of on average 50% of the documents in the database
+    snapshot := client.Pipeline().
+     Database().
+     Sample(firestore.WithPercentage(0.5)).
+     Execute(ctx)

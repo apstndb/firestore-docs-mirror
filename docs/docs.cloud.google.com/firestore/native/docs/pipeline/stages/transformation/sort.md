@@ -75,6 +75,16 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Sort(firestore.Orders(
+         firestore.Descending(firestore.FieldOf("release_date")),
+         firestore.Ascending(firestore.FieldOf("author")),
+     )).
+     Execute(ctx)
+
 ## Behavior
 
 ### Sort order

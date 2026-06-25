@@ -53,6 +53,15 @@ For example, the following query deletes all `users` documents with `address.use
       .delete()
       .execute().get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     CollectionGroup("users").
+     Where(firestore.FieldOf("address.country").Equal("USA")).
+     Where(firestore.FieldOf("__create_time__").Add(firestore.ConstantOf(10)).LessThan(firestore.CurrentTimestamp())).
+     Delete().
+     Execute(ctx)
+
 ## Behavior
 
 ### Response

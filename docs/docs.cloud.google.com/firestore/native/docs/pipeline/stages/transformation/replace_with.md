@@ -50,6 +50,13 @@ Extract the nested location field, discarding all other data:
     Pipeline.Snapshot names =
         firestore.pipeline().collection("cities").replaceWith(field("location")).execute().get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("cities").
+     ReplaceWith(firestore.FieldOf("location")).
+     Execute(ctx)
+
 Which produces the following documents:
 
     { country: "USA", state: "California" },

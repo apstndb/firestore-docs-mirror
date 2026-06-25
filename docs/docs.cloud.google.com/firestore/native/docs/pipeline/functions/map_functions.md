@@ -111,6 +111,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.MapGet(firestore.FieldOf("awards"), "pulitzer").As("hasPulitzerAward"),
+     )).
+     Execute(ctx)
+
 ### MAP\_SET
 
 **Syntax:**

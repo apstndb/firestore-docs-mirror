@@ -145,6 +145,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Add(firestore.FieldOf("soldBooks"), firestore.FieldOf("unsoldBooks")).As("totalBooks"),
+     )).
+     Execute(ctx)
+
 ### SUBTRACT
 
 **Syntax:**
@@ -233,6 +242,16 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .execute()
             .get();
 
+##### Go
+
+    storeCredit := 7
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Subtract(firestore.FieldOf("price"), storeCredit).As("totalCost"),
+     )).
+     Execute(ctx)
+
 ### MULTIPLY
 
 **Syntax:**
@@ -315,6 +334,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Multiply(firestore.FieldOf("price"), firestore.FieldOf("soldBooks")).As("revenue"),
+     )).
+     Execute(ctx)
+
 ### DIVIDE
 
 **Syntax:**
@@ -396,6 +424,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .select(divide(field("ratings"), field("soldBooks")).as("reviewRate"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Divide(firestore.FieldOf("ratings"), firestore.FieldOf("soldBooks")).As("reviewRate"),
+     )).
+     Execute(ctx)
 
 ### MOD
 
@@ -490,6 +527,16 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .select(mod(field("unsoldBooks"), displayCapacity).as("warehousedBooks"))
             .execute()
             .get();
+
+##### Go
+
+    displayCapacity := 1000
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Mod(firestore.FieldOf("unsoldBooks"), displayCapacity).As("warehousedBooks"),
+     )).
+     Execute(ctx)
 
 ### CEIL
 
@@ -598,6 +645,16 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .execute()
             .get();
 
+##### Go
+
+    booksPerShelf := 100
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Ceil(firestore.Divide(firestore.FieldOf("unsoldBooks"), booksPerShelf)).As("requiredShelves"),
+     )).
+     Execute(ctx)
+
 ### FLOOR
 
 **Syntax:**
@@ -694,6 +751,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .addFields(floor(divide(field("wordCount"), field("pages"))).as("wordsPerPage"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     AddFields(firestore.Selectables(
+         firestore.Floor(firestore.Divide(firestore.FieldOf("wordCount"), firestore.FieldOf("pages"))).As("wordsPerPage"),
+     )).
+     Execute(ctx)
 
 ### ROUND
 
@@ -796,6 +862,18 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .aggregate(sum("partialRevenue").as("totalRevenue"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Round(firestore.Multiply(firestore.FieldOf("soldBooks"), firestore.FieldOf("price"))).As("partialRevenue"),
+     )).
+     Aggregate(firestore.Accumulators(
+         firestore.Sum("partialRevenue").As("totalRevenue"),
+     )).
+     Execute(ctx)
 
 ### TRUNC
 
@@ -1017,6 +1095,23 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .execute()
             .get();
 
+##### Go
+
+    googleplexLat := 37.4221
+    googleplexLng := -122.0853
+    snapshot := client.Pipeline().
+     Collection("cities").
+     AddFields(firestore.Selectables(
+         firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lat"), googleplexLat), 111), 2).As("latitudeDifference"),
+         firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lng"), googleplexLng), 111), 2).As("longitudeDifference"),
+     )).
+     Select(firestore.Fields(
+         firestore.Sqrt(firestore.Add(firestore.FieldOf("latitudeDifference"), firestore.FieldOf("longitudeDifference"))).
+             // Inaccurate for large distances or close to poles
+             As("approximateDistanceToGoogle"),
+     )).
+     Execute(ctx)
+
 ### SQRT
 
 **Syntax:**
@@ -1207,6 +1302,23 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .execute()
             .get();
 
+##### Go
+
+    googleplexLat := 37.4221
+    googleplexLng := -122.0853
+    snapshot := client.Pipeline().
+     Collection("cities").
+     AddFields(firestore.Selectables(
+         firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lat"), googleplexLat), 111), 2).As("latitudeDifference"),
+         firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lng"), googleplexLng), 111), 2).As("longitudeDifference"),
+     )).
+     Select(firestore.Fields(
+         firestore.Sqrt(firestore.Add(firestore.FieldOf("latitudeDifference"), firestore.FieldOf("longitudeDifference"))).
+             // Inaccurate for large distances or close to poles
+             As("approximateDistanceToGoogle"),
+     )).
+     Execute(ctx)
+
 ### EXP
 
 **Syntax:**
@@ -1286,6 +1398,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .select(exp(field("rating")).as("expRating"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Exp(firestore.FieldOf("rating")).As("expRating"),
+     )).
+     Execute(ctx)
 
 ### LN
 
@@ -1369,6 +1490,15 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .select(ln(field("rating")).as("lnRating"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Ln(firestore.FieldOf("rating")).As("lnRating"),
+     )).
+     Execute(ctx)
 
 ### LOG
 

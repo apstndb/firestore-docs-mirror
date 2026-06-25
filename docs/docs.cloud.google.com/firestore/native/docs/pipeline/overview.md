@@ -107,6 +107,14 @@ Android
         .limit(10)
     )
 
+##### Go
+
+    pipeline := client.Pipeline().
+     Collection("cities").
+     Where(firestore.FieldOf("population").GreaterThan(100000)).
+     Sort(firestore.Orders(firestore.Ascending(firestore.FieldOf("name")))).
+     Limit(10)
+
 ### Initialization
 
 Pipeline operations have a very familiar syntax coming from existing Firestore queries. To get started, you initialize a query by writing the following:
@@ -215,6 +223,11 @@ Android
         .collection("cities")
         .where(Field.of("name").equal(Constant.of("Toronto")))
     )
+
+##### Go
+
+    pipeline := client.Pipeline().Collection("cities").
+     Where(firestore.FieldOf("name").Equal(firestore.ConstantOf("Toronto")))
 
 ## Stages
 
@@ -354,6 +367,42 @@ Android
         .execute()
     )
 
+##### Go
+
+    // Return all restaurants in San Francisco
+    results1, err := client.Pipeline().Collection("cities/sf/restaurants").Execute(ctx).Results().GetAll()
+    if err != nil {
+     fmt.Fprintf(w, "GetAll failed: %v", err)
+     return err
+    }
+    
+    // Return all restaurants
+    results2, err := client.Pipeline().CollectionGroup("restaurants").Execute(ctx).Results().GetAll()
+    if err != nil {
+     fmt.Fprintf(w, "GetAll failed: %v", err)
+     return err
+    }
+    
+    // Return all documents across all collections in the database (the entire database)
+    results3, err := client.Pipeline().Database().Execute(ctx).Results().GetAll()
+    if err != nil {
+     fmt.Fprintf(w, "GetAll failed: %v", err)
+     return err
+    }
+    
+    // Batch read of 3 documents
+    results4, err := client.Pipeline().
+     Documents([]*firestore.DocumentRef{
+         client.Collection("cities").Doc("SF"),
+         client.Collection("cities").Doc("DC"),
+         client.Collection("cities").Doc("NY"),
+     }).
+     Execute(ctx).Results().GetAll()
+    if err != nil {
+     fmt.Fprintf(w, "GetAll failed: %v", err)
+     return err
+    }
+
 As with all other stages, the order of results from these input stages is not stable. A [`sort(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/sort) operator should always be added if a specific ordering is required.
 
 ### Where
@@ -457,6 +506,30 @@ Android
         .execute()
     )
 
+##### Go
+
+    results1, err := client.Pipeline().
+     Collection("books").
+     Where(firestore.FieldOf("rating").Equal(5)).
+     Where(firestore.FieldOf("published").LessThan(1900)).
+     Execute(ctx).Results().GetAll()
+    if err != nil {
+     fmt.Fprintf(w, "GetAll failed: %v", err)
+     return err
+    }
+    
+    results2, err := client.Pipeline().
+     Collection("books").
+     Where(firestore.And(
+         firestore.FieldOf("rating").Equal(5),
+         firestore.FieldOf("published").LessThan(1900),
+     )).
+     Execute(ctx).Results().GetAll()
+    if err != nil {
+     fmt.Fprintf(w, "GetAll failed: %v", err)
+     return err
+    }
+
 ### Select / Add & Remove Fields
 
 The [`select(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/select) , [`add_fields(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/add_fields) , & [`remove_fields(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/remove_fields) all allow you to modify the fields being returned from a previous stage. These three are generally referred to as projection-style stages.
@@ -541,6 +614,16 @@ Android
         .execute()
     )
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Aggregate(
+         firestore.Accumulators(firestore.Average("rating").As("avg_rating")),
+         firestore.WithAggregateGroups("genre"),
+     ).
+     Execute(ctx)
+
 When `groupings` is not specified, this stage will produce only a single document, otherwise a document will be generated for each unique combination of `groupings` values.
 
 The [`distinct(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/distinct) stage is a simplified aggregation operator which allows generating just the unique `groupings` without any accumulators. It behaves identically to that of [`aggregate(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/aggregate) in all other regards. The following example shows:
@@ -607,6 +690,16 @@ Android
         .distinct(Field.of("author").to_upper().as_("author"), "genre")
         .execute()
     )
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Distinct(firestore.Fields(
+         firestore.ToUpper(firestore.FieldOf("author")).As("author"),
+         firestore.FieldOf("genre"),
+     )).
+     Execute(ctx)
 
 ## Functions
 
@@ -733,6 +826,34 @@ Android
         .execute()
     )
 
+##### Go
+
+    // Type 1: Scalar (for use in non-aggregation stages)
+    // Example: Return the min store price for each book.
+    results1, err := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.LogicalMinimum(firestore.FieldOf("current"), firestore.FieldOf("updated")).As("price_min"),
+     )).
+     Execute(ctx).Results().GetAll()
+    if err != nil {
+     fmt.Fprintf(w, "GetAll failed: %v", err)
+     return err
+    }
+    
+    // Type 2: Aggregation (for use in aggregate stages)
+    // Example: Return the min price of all books.
+    results2, err := client.Pipeline().
+     Collection("books").
+     Aggregate(firestore.Accumulators(
+         firestore.Minimum("price").As("min_price"),
+     )).
+     Execute(ctx).Results().GetAll()
+    if err != nil {
+     fmt.Fprintf(w, "GetAll failed: %v", err)
+     return err
+    }
+
 ## Limits
 
 For the most part Enterprise edition doesn't impose limits on the shape of the query. In other words, you're not limited to a small number of values in an `IN` or `OR` query. Instead, there are two primary limits you should be aware of:
@@ -840,6 +961,16 @@ Android
         .execute()
     )
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Where(firestore.FieldOf("published").LessThan(1900)).
+     Where(firestore.FieldOf("genre").Equal("Science Fiction")).
+     Where(firestore.FieldOf("rating").GreaterThan(4.3)).
+     Sort(firestore.Orders(firestore.Descending(firestore.FieldOf("published")))).
+     Execute(ctx)
+
 The recommended index is a collection scope index on `books` for `(genre [...], published DESC, avg_rating DESC).`
 
 #### Index density
@@ -918,6 +1049,16 @@ Android
         .select("title", "author")
         .execute()
     )
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Where(firestore.FieldOf("category").Like("%fantasy%")).
+     Where(firestore.FieldOf("title").FieldExists()).
+     Where(firestore.FieldOf("author").FieldExists()).
+     Select(firestore.Fields("title", "author")).
+     Execute(ctx)
 
 If the database already has a collection scope index on `books` for `(category [...], title [...], author [...])` then it can avoid fetching anything from the main documents themselves. In this case the order in the index does not matter, `[...]` is used to signify that.
 

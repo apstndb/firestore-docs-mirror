@@ -105,6 +105,16 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    sampleVector := []float64{0.0, 1.0, 2.0, 3.0, 4.0, 5.0}
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.CosineDistance(firestore.FieldOf("embedding"), sampleVector).As("cosineDistance"),
+     )).
+     Execute(ctx)
+
 ### DOT\_PRODUCT
 
 **Syntax:**
@@ -190,6 +200,16 @@ Android
             .select(dotProduct(field("embedding"), sampleVector).as("dotProduct"))
             .execute()
             .get();
+
+##### Go
+
+    sampleVector := []float64{0.0, 1.0, 2.0, 3.0, 4.0, 5.0}
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.DotProduct(firestore.FieldOf("embedding"), sampleVector).As("dotProduct"),
+     )).
+     Execute(ctx)
 
 ### EUCLIDEAN\_DISTANCE
 
@@ -281,6 +301,16 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    sampleVector := []float64{0.0, 1.0, 2.0, 3.0, 4.0, 5.0}
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.EuclideanDistance(firestore.FieldOf("embedding"), sampleVector).As("euclideanDistance"),
+     )).
+     Execute(ctx)
+
 ### MANHATTAN\_DISTANCE
 
 **Syntax:**
@@ -368,6 +398,15 @@ Android
             .select(vectorLength(field("embedding")).as("vectorLength"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.VectorLength(firestore.FieldOf("embedding")).As("vectorLength"),
+     )).
+     Execute(ctx)
 
 ## What's next
 

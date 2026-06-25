@@ -64,6 +64,18 @@ For example, the following operation backfills a data model change to all docume
        .update()
        .execute().get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     CollectionGroup("users").
+     Where(firestore.Not(firestore.FieldExists(firestore.FieldOf("preferences.color")))).
+     AddFields(firestore.Selectables(
+         firestore.ConstantOfNull().As("preferences.color"),
+     )).
+     RemoveFields(firestore.Fields("color")).
+     Update().
+     Execute(ctx)
+
 ## Delete documents
 
 Use the [`delete(...)` stage](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/dml/delete) DML stages to construct data pipelines that can query for documents and then delete data. To prevent accidental bulk deletions, pipelines ending in `delete(...)` should include at least one `where(...)` stage. All DML stages must come at the end of the pipeline.
@@ -104,6 +116,15 @@ For example, the following pipeline deletes all `users` documents with `address.
       .where(field("__create_time__").add(constant(10)).lessThan(currentTimestamp()))
       .delete()
       .execute().get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     CollectionGroup("users").
+     Where(firestore.FieldOf("address.country").Equal("USA")).
+     Where(firestore.FieldOf("__create_time__").Add(firestore.ConstantOf(10)).LessThan(firestore.CurrentTimestamp())).
+     Delete().
+     Execute(ctx)
 
 ## Consistency
 

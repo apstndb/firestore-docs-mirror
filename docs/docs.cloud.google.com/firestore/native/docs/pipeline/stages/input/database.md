@@ -64,6 +64,14 @@ Task<Pipeline.Snapshot> results = db.pipeline()
     Pipeline.Snapshot results =
         firestore.pipeline().database().aggregate(countAll().as("total")).execute().get();
 
+##### Go
+
+    // Count all documents in the database
+    snapshot := client.Pipeline().
+     Database().
+     Aggregate(firestore.Accumulators(firestore.CountAll().As("total"))).
+     Execute(ctx)
+
 ## Behavior
 
 In order to use the `database(...)` stage, it must appear as the first stage in the pipeline.

@@ -131,6 +131,18 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.And(
+             firestore.GreaterThan(firestore.FieldOf("rating"), 4),
+             firestore.LessThan(firestore.FieldOf("price"), 10),
+         ).As("under10Recommendation"),
+     )).
+     Execute(ctx)
+
 ### OR
 
 **Syntax:**
@@ -236,6 +248,18 @@ Android
                     .as("matchesSearchFilters"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Or(
+             firestore.Equal(firestore.FieldOf("genre"), "Fantasy"),
+             firestore.ArrayContains(firestore.FieldOf("tags"), "adventure"),
+         ).As("matchesSearchFilters"),
+     )).
+     Execute(ctx)
 
 ### XOR
 
@@ -348,6 +372,18 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Xor(
+             firestore.ArrayContains(firestore.FieldOf("tags"), "magic"),
+             firestore.ArrayContains(firestore.FieldOf("tags"), "nonfiction"),
+         ).As("matchesSearchFilters"),
+     )).
+     Execute(ctx)
+
 ### NOR
 
 **Syntax:**
@@ -456,6 +492,15 @@ Android
             .select(not(arrayContains(field("tags"), "nonfiction")).as("isFiction"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.Not(firestore.ArrayContains(firestore.FieldOf("tags"), "nonfiction")).As("isFiction"),
+     )).
+     Execute(ctx)
 
 ### CONDITIONAL
 
@@ -590,6 +635,22 @@ Android
                     .as("extendedTags"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.ArrayConcat(
+             firestore.FieldOf("tags"),
+             firestore.Conditional(
+                 firestore.GreaterThan(firestore.FieldOf("pages"), 100),
+                 firestore.ConstantOf("longRead"),
+                 firestore.ConstantOf("shortRead"),
+             ),
+         ).As("extendedTags"),
+     )).
+     Execute(ctx)
 
 ### IF\_NULL
 
@@ -729,6 +790,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.EqualAny(firestore.FieldOf("genre"), []string{"Science Fiction", "Psychological Thriller"}).As("matchesGenreFilters"),
+     )).
+     Execute(ctx)
+
 ### NOT\_EQUAL\_ANY
 
 **Syntax:**
@@ -829,6 +899,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.NotEqualAny(firestore.FieldOf("author"), []string{"George Orwell", "F. Scott Fitzgerald"}).As("byExcludedAuthors"),
+     )).
+     Execute(ctx)
+
 ### MAXIMUM
 
 **Syntax:**
@@ -920,6 +999,15 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.LogicalMaximum(firestore.FieldOf("rating"), 1).As("flooredRating"),
+     )).
+     Execute(ctx)
+
 ### MINIMUM
 
 **Syntax:**
@@ -1010,6 +1098,15 @@ Android
             .select(logicalMinimum(field("rating"), 5).as("cappedRating"))
             .execute()
             .get();
+
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("books").
+     Select(firestore.Fields(
+         firestore.LogicalMinimum(firestore.FieldOf("rating"), 5).As("cappedRating"),
+     )).
+     Execute(ctx)
 
 ## What's next
 

@@ -90,6 +90,14 @@ Android
             .sort(ascending(field("name")))
             .limit(10);
 
+##### Go
+
+    pipeline := client.Pipeline().
+     Collection("cities").
+     Where(firestore.FieldOf("population").GreaterThan(100000)).
+     Sort(firestore.Orders(firestore.Ascending(firestore.FieldOf("name")))).
+     Limit(10)
+
 ## Behavior
 
 The `limit(...)` stage will only return the first `N` documents. Unless a [`sort(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/sort) stage is used before the limit, the order in which documents are returned is unstable and repeated executions may produce different results.

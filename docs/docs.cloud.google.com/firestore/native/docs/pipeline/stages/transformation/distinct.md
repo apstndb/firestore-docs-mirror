@@ -110,6 +110,25 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    cities1, err := client.Pipeline().Collection("cities").Distinct(firestore.Fields("country")).Execute(ctx).Results().GetAll()
+    if err != nil {
+     fmt.Fprintf(w, "GetAll failed: %v", err)
+     return err
+    }
+    
+    cities2, err := client.Pipeline().Collection("cities").
+     Distinct(firestore.Fields(
+         firestore.ToLower(firestore.FieldOf("state")).As("normalizedState"),
+         firestore.FieldOf("country"),
+     )).
+     Execute(ctx).Results().GetAll()
+    if err != nil {
+     fmt.Fprintf(w, "GetAll failed: %v", err)
+     return err
+    }
+
 ## Behavior
 
 The `distinct(...)` stage works similarly to an [`aggregate(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/aggregate) stage without groups. See also [`aggregate(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/aggregate) and [`select(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/select) .

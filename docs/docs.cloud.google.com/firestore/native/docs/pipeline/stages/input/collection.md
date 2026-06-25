@@ -65,6 +65,13 @@ Android
             .execute()
             .get();
 
+##### Go
+
+    snapshot := client.Pipeline().
+     Collection("users/bob/games").
+     Sort(firestore.Orders(firestore.Ascending(firestore.FieldOf("name")))).
+     Execute(ctx)
+
 ## Behavior
 
 In order to use the `collection(...)` stage, it must appear as the first stage in the pipeline (or sub-pipeline).
