@@ -187,7 +187,7 @@ To calculate and store vector embeddings whenever a document is updated or creat
 
 ## Create and manage vector indexes
 
-Before you can perform a nearest neighbor search with your vector embeddings, you must create a corresponding index. The following examples demonstrate how to create and manage vector indexes with the Google Cloud CLI and the console. Vector indexes can also be [managed with the Firebase CLI and Terraform](https://docs.cloud.google.com/docs/firestore/query-data/indexing) .
+Before you can perform a nearest neighbor search with your vector embeddings, you must create a corresponding index. The following examples demonstrate how to create and manage vector indexes with the Google Cloud CLI and the console. You can also manage vector indexes with the [Firebase CLI](https://firebase.google.com/docs/reference/firestore/indexes/) and [Terraform](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_index#example-usage---firestore-index-vector) .
 
 ### Create a vector index
 
@@ -240,8 +240,6 @@ The following example creates a composite index, including a vector index for fi
     --field-config=order=ASCENDING,field-path="color" \
     --field-config field-path=vector-field,vector-config='{"dimension":"1024", "flat": "{}"}' \
     --database=database-id
-
-[](https://docs.cloud.google.com/firestore/native/docs/describe_a_vector_index)
 
 ### List all vector indexes
 
