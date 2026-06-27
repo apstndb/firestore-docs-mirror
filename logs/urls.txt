@@ -48,7 +48,7 @@ https://docs.cloud.google.com/datastore/docs/keyvis-exploring-heatmaps	2026-06-1
 https://docs.cloud.google.com/datastore/docs/keyvis-getting-started	2026-06-18T14:27:58Z
 https://docs.cloud.google.com/datastore/docs/keyvis-patterns	2026-06-18T14:27:58Z
 https://docs.cloud.google.com/datastore/docs/keyvis-patterns-index	2026-06-18T14:27:58Z
-https://docs.cloud.google.com/datastore/docs/knowledge-catalog	2026-06-24T05:10:33Z
+https://docs.cloud.google.com/datastore/docs/knowledge-catalog	2026-06-26T21:25:52Z
 https://docs.cloud.google.com/datastore/docs/langchain	2026-06-18T14:27:58Z
 https://docs.cloud.google.com/datastore/docs/locations	2026-06-18T14:27:58Z
 https://docs.cloud.google.com/datastore/docs/manage-databases	2026-06-18T14:27:58Z
@@ -417,7 +417,7 @@ https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes-async	2026-06-20T06:02:13Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-custom-type-definition	2026-06-20T06:02:13Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-custom-type-definition-async	2026-06-20T06:02:13Z
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection	2026-06-20T06:02:13Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection	2026-06-26T20:46:28Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection-async	2026-06-20T06:02:13Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-doc	2026-06-20T06:02:13Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-doc-async	2026-06-20T06:02:13Z
@@ -565,7 +565,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/extend-with-c
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/geo-query	2026-06-18T16:01:26Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview	2026-06-18T16:01:26Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing	2026-06-18T16:01:26Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/knowledge-catalog	2026-06-24T07:45:24Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/knowledge-catalog	2026-06-26T21:25:52Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/locations	2026-06-18T16:01:26Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-env-vars	2026-06-18T16:01:26Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-resources	2026-06-18T16:01:26Z
@@ -602,7 +602,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/tags	2026-06-
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/text-search	2026-06-18T16:01:53Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl	2026-06-18T16:01:53Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-error-codes	2026-06-18T16:01:53Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-reads-writes-scale	2026-06-18T16:01:53Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-reads-writes-scale	2026-06-26T20:46:11Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/usage-insights	2026-06-18T16:01:53Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-cmek	2026-06-18T16:01:53Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard	2026-06-18T16:01:53Z
@@ -648,7 +648,7 @@ https://docs.cloud.google.com/firestore/native/docs/keyvis-exploring-heatmaps	20
 https://docs.cloud.google.com/firestore/native/docs/keyvis-getting-started	2026-06-20T06:02:31Z
 https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns	2026-06-20T06:02:31Z
 https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns-index	2026-06-20T06:02:31Z
-https://docs.cloud.google.com/firestore/native/docs/knowledge-catalog	2026-06-24T07:45:25Z
+https://docs.cloud.google.com/firestore/native/docs/knowledge-catalog	2026-06-26T21:25:52Z
 https://docs.cloud.google.com/firestore/native/docs/langchain	2026-06-20T06:02:31Z
 https://docs.cloud.google.com/firestore/native/docs/locations	2026-06-20T06:02:31Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data	2026-06-25T23:13:10Z
@@ -750,7 +750,7 @@ https://docs.cloud.google.com/firestore/native/docs/solutions/schedule-export	20
 https://docs.cloud.google.com/firestore/native/docs/solutions/shard-timestamp	2026-06-20T06:02:26Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/workflows	2026-06-20T06:02:26Z
 https://docs.cloud.google.com/firestore/native/docs/standard-index-overview	2026-06-20T06:02:31Z
-https://docs.cloud.google.com/firestore/native/docs/standard-indexing	2026-06-20T06:02:31Z
+https://docs.cloud.google.com/firestore/native/docs/standard-indexing	2026-06-26T20:46:12Z
 https://docs.cloud.google.com/firestore/native/docs/storage-size	2026-06-20T06:02:31Z
 https://docs.cloud.google.com/firestore/native/docs/tags	2026-06-20T06:02:31Z
 https://docs.cloud.google.com/firestore/native/docs/text-search	2026-06-20T06:02:31Z
@@ -761,7 +761,7 @@ https://docs.cloud.google.com/firestore/native/docs/tutorials	2026-06-20T06:02:3
 https://docs.cloud.google.com/firestore/native/docs/understand-error-codes	2026-06-20T06:02:31Z
 https://docs.cloud.google.com/firestore/native/docs/understand-performance-monitoring	2026-06-20T06:02:31Z
 https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale	2026-06-20T06:02:24Z
-https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale-enterprise	2026-06-20T06:02:24Z
+https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale-enterprise	2026-06-26T20:46:11Z
 https://docs.cloud.google.com/firestore/native/docs/usage-insights	2026-06-20T06:02:24Z
 https://docs.cloud.google.com/firestore/native/docs/use-cmek	2026-06-20T06:02:24Z
 https://docs.cloud.google.com/firestore/native/docs/use-firestore-mcp	2026-06-20T06:02:24Z

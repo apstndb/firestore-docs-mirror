@@ -432,7 +432,7 @@ For example, here is the progress status of an index build:
         },
         ...
 
-When an operation is done, the operation description will contain [`"done": true`](https://docs.cloud.google.com/firestore/docs/reference//reference/rpc/google.longrunning#operation) . See the value of the [`state` field](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#state) for the result of the operation. If the `done` field is not set in the response, then its value is `false` . Do not depend on the existence of the `done` value for in-progress operations.
+When an operation is done, the operation description will contain [`"done": true`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.longrunning#operation) . See the value of the [`state` field](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#state) for the result of the operation. If the `done` field is not set in the response, then its value is `false` . Do not depend on the existence of the `done` value for in-progress operations.
 
 <span id="index-build-error"></span> <span id="exemption-errors"></span>
 

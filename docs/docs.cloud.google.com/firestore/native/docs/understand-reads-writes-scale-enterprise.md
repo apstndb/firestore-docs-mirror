@@ -8,7 +8,7 @@ data_source: docs.cloud.google.com
 
 # Understand reads and writes at scale
 
-Read this document to make informed decisions on architecting your applications for high performance and reliability. This document includes advanced Firestore topics. If you're just starting out with Firestore, see the [quickstart guide](https://docs.cloud.google.com/firestore/native/docs/create-and-query-database) .
+Read this document to make informed decisions on architecting your applications for high performance and reliability. This document includes advanced Firestore topics. If you're just starting out with Firestore, see the [quickstart guide](https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library) .
 
 To make sure that your applications continue to perform well as your database size and traffic increase, it helps to understand the mechanics of reads and writes in the Firestore backend. You must also understand the interaction of your read and writes with the storage layer and the underlying constraints that may affect performance.
 
