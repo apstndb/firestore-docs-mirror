@@ -26,7 +26,7 @@ To export all kinds in the `exampleNs` namespace in the `exampleProject` project
 
 To export the `exampleKind` and `otherKind` kinds in the `exampleNs` namespace in the `exampleProject` project to the `exampleBucket` , run:
 
-    gcloud datastore export gs://exampleBucket --kinds='exampleKind','otherKind' --namespaces='exampleNs' --project='exampleProject'
+    gcloud datastore export gs://exampleBucket --kinds='exampleKind,otherKind' --namespaces='exampleNs' --project='exampleProject'
 
 To export all namespaces and kinds in the currently set project to the `exampleBucket` without waiting for the operation to complete, run:
 

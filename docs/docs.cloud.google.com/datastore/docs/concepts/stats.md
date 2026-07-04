@@ -85,7 +85,7 @@ For more information, see the <a href="https://docs.cloud.google.com/datastore/d
 Namespace specific entry:<br />
 <code dir="ltr" translate="no">__Stat_Ns_Kind_CompositeIndex__</code><br />
 </td>
-<td>Entries in the composite index table; one stat entity for each kind of entity stored. Additional properties:<br />
+<td>Information about the composite indexes in the database; one stat entity for each composite index. Additional properties:<br />
 <br />
 • <code dir="ltr" translate="no">alphanumeric_id</code> : the alphanumeric identifier of the index. The same identifier used in <code dir="ltr" translate="no">gcloud</code> and the API.<br />
 • <code dir="ltr" translate="no">index_id</code> : internal integer representation of the index ID. For <code dir="ltr" translate="no">gcloud</code> and API methods, use the <code dir="ltr" translate="no">alphanumeric_id</code> instead.<br />
