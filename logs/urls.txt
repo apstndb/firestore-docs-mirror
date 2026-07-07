@@ -553,7 +553,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/bulk-delete	2
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/change-streams	2026-06-30T15:17:54Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/cmek	2026-06-30T15:17:54Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access	2026-06-30T15:17:54Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect	2026-07-04T07:41:57Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect	2026-07-06T05:41:12Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database	2026-06-30T15:17:54Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases	2026-06-30T15:17:54Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-manage-saved-queries	2026-06-30T15:17:54Z
@@ -561,7 +561,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/custom-constr
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/disaster-recovery	2026-06-30T15:17:54Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/eventarc	2026-06-30T15:17:54Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import	2026-06-30T15:17:54Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/extend-with-cloud-run-functions	2026-07-04T07:42:04Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/extend-with-cloud-run-functions	2026-07-06T05:41:17Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/geo-query	2026-06-30T15:17:54Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview	2026-06-30T15:17:54Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing	2026-06-30T15:17:54Z
@@ -578,7 +578,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-write
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/optimize-query-performance	2026-06-30T15:17:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/overview	2026-06-30T15:17:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/pitr	2026-06-30T15:17:28Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain	2026-06-30T15:17:28Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain	2026-07-07T01:24:12Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain-reference	2026-06-30T15:17:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-insights	2026-06-30T15:17:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/release-notes	2026-06-30T15:16:40Z
@@ -638,7 +638,7 @@ https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain	202
 https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain-reference	2026-06-30T15:16:53Z
 https://docs.cloud.google.com/firestore/native/docs/enterprise-query-insights	2026-06-30T15:16:53Z
 https://docs.cloud.google.com/firestore/native/docs/eventarc	2026-06-30T22:24:01Z
-https://docs.cloud.google.com/firestore/native/docs/extend-with-cloud-run-functions	2026-07-04T07:42:13Z
+https://docs.cloud.google.com/firestore/native/docs/extend-with-cloud-run-functions	2026-07-06T05:46:16Z
 https://docs.cloud.google.com/firestore/native/docs/extend-with-functions	2026-06-30T22:24:01Z
 https://docs.cloud.google.com/firestore/native/docs/firestore-security-rules-recommender	2026-06-30T22:23:53Z
 https://docs.cloud.google.com/firestore/native/docs/geospatial-query	2026-06-30T22:23:45Z

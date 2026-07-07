@@ -50,17 +50,20 @@ Note the following limitations and differences:
     
         db.collection.aggregate(..., explain: true)
 
-  - Query Explain is only supported on the `find` , `aggregate` , `count` , and `distinct` commands.
+  - Query Explain is only supported on the `find` , `aggregate` , `count` , `distinct` , `update` , `delete` , and `findAndModify` commands.
 
-  - The `Verbosity` and `Comment` options of Query Explain are not supported through the MongoDB API. The behaviour matches the `executionStats` option. The `allPlansExecution` and `queryPlanner` options are ignored if provided.
+  - Query Explain supports the `executionStats` , `allPlansExecution` and `queryPlanner` verbosity modes.
     
-    If no verbosity is provided, the shell uses the `queryPlanner` verbosity and filters out execution stats. You must use the `executionStats` or `allPlansExecution` verbosity to see the full output.
+      - `queryPlanner` : Returns the execution plan only, without executing the query,
+      - `executionStats` and `allPlansExecution` : Returns the execution plan along with billing, memory, and execution statistics.
+    
+    If no verbosity mode is specified, the shell defaults to `queryPlanner` . To see the full execution statistics, you must specify the `executionStats` or `allPlansExecution` verbosity mode.
 
 ## Analysis
 
 The output of Query Explain contains two main components-the Summary Statistics and Execution Tree. Consider this query as an example:
 
-    db.order.aggregate(
+    db.orders.aggregate(
      [
        { "$match": { "user_id": 1234 } },
        { "$sort": { "date_placed": 1 } }
@@ -71,12 +74,15 @@ The output of Query Explain contains two main components-the Summary Statistics 
 
 The top of the explained output contains a summary of the execution statistics. Use these statistics to determine if a query has high latency or cost. It also contains memory statistics which let you know how close your query is to [memory limits](https://docs.cloud.google.com/firestore/mongodb-compatibility/quotas) .
 
-    Billing Metrics:
-    read units: 1
+    Execution:
+     results returned: 35
+     query id: 7e7b37ea1a259d79
+     request peak memory usage: 45.56 KiB (46,656 B)
+     data bytes read: 24.58 KiB (25,175 B)
+     entity row scanned: 265
     
-    Execution Metrics:
-    request peak memory usage: 4.00 KiB (4,096 B)
-    results returned: 1
+    Billing:
+     read units: 7
 
 ## Execution Tree
 
@@ -88,69 +94,69 @@ For details on how to use this information to optimize your queries, see [Optimi
 
 The following is an example of an execution tree:
 
+    Execution:
+     results returned: 35
+     query id: 7e7b37ea1a259d79
+     request peak memory usage: 45.56 KiB (46,656 B)
+     data bytes read: 24.58 KiB (25,175 B)
+     entity row scanned: 265
+    
+    Billing:
+     read units: 7
+    
+    Tree:
     • Compute
-    |  $out_1: map_set($record_1, "__id__", $__id___1, "__key__", $__key___1, "__row_id__", $__row_id___1, "__$0__", $__$0___2)
+    |  $out_1: map_set($record_1, "__id__", $__id___1, "__key__", unset)
     |  is query result: true
     |
     |  Execution:
-    |   records returned: 1
+    |   records returned: 35
+    |   latency: 204.87 ms (local 7.64 ms)
     |
     └── • Compute
-        |  $__$0___2: UNSET
+        |  $__id___1: _id($__key___2)
         |
         |  Execution:
-        |   records returned: 1
+        |   records returned: 35
+        |   latency: 197.23 ms (local 2.04 ms)
         |
-        └── • Compute
-            |  $__key___1: UNSET
-            |  $__row_id___1: UNSET
+        └── • MajorSort
+            |  fields: [$v_5 ASC]
+            |  output: [$__key___2, $record_1]
             |
             |  Execution:
-            |   records returned: 1
+            |   records returned: 35
+            |   latency: 195.20 ms (local 28.42 ms)
+            |   peak memory usage: 45.56 KiB (46,656 B)
             |
             └── • Compute
-                |  $__id___1: _id($record_1.__key__)
+                |  $v_5: offset($v_4, 0L)
                 |
                 |  Execution:
-                |   records returned: 1
+                |   records returned: 35
+                |   latency: 166.78 ms (local 14.84 ms)
                 |
-                └── • MajorSort
-                    |  fields: [$v_5 ASC]
-                    |  output: [$record_1]
+                └── • Compute
+                    |  $v_4: sortPaths(array($date_placed_1), [date_placed ASC])
                     |
                     |  Execution:
-                    |   records returned: 1
-                    |   peak memory usage: 4.00 KiB (4,096 B)
+                    |   records returned: 35
+                    |   latency: 151.94 ms (local 5.43 ms)
                     |
-                    └── • Compute
-                        |  $v_5: array_get($v_4, 0L)
-                        |
-                        |  Execution:
-                        |   records returned: 1
-                        |
-                        └── • Compute
-                            |  $v_4: sortPaths(array($record_1.date_placed), [date_placed ASC])
-                            |
-                            |  Execution:
-                            |   records returned: 1
-                            |
-                            └── • Filter
-                                |  expression: $eq($user_id_1, 1,234)
-                                |
-                                |  Execution:
-                                |   records returned: 1
-                                |
-                                └── • TableScan
-                                       source: **/my_collection
-                                       order: STABLE
-                                       properties: * - { __create_time__, __update_time__ }
-                                       output record: $record_1
-                                       output bindings: {$user_id_1=user_id}
-                                       variables: [$record_1, $user_id_1]
+                    └── • TableScan
+                           source: **/orders
+                           order: STABLE
+                           filter: $eq($user_id_1, 1,234)
+                           output bindings: {$__key___2=row().__key__, $date_placed_1=row().date_placed, $record_1=row[* - { __create_time__, __update_time__ }](), $user_id_1=row().user_id}
+                           output: [$__key___2, $date_placed_1, $record_1]
     
-                                       Execution:
-                                        records returned: 1
-                                        records scanned: 1
+                           Execution:
+                            records returned: 35
+                            latency: 146.50 ms
+                            data bytes returned: 3.25 KiB (3,325 B)
+                            post-filtered rows: 230
+                            records scanned: 265
+                            data bytes read: 24.58 KiB (25,175 B)
 
 ## What's next
 
