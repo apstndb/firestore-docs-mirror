@@ -167,7 +167,7 @@ https://docs.cloud.google.com/datastore/docs/samples/datastore-admin-index-get	2
 https://docs.cloud.google.com/datastore/docs/samples/datastore-admin-index-list	2026-06-30T13:30:42Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-ancestor-query	2026-06-30T13:30:42Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-array-value	2026-06-30T13:30:42Z
-https://docs.cloud.google.com/datastore/docs/samples/datastore-array-value-equality	2026-06-30T13:30:42Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-array-value-equality	2026-07-08T04:21:44Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-array-value-inequality-range	2026-06-30T13:30:42Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-ascending-sort	2026-06-30T13:30:42Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-basic-entity	2026-06-30T13:30:42Z
@@ -189,8 +189,8 @@ https://docs.cloud.google.com/datastore/docs/samples/datastore-eventual-consiste
 https://docs.cloud.google.com/datastore/docs/samples/datastore-example-1	2026-06-30T13:25:31Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-exploding-properties	2026-06-30T13:25:31Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-incomplete-key	2026-06-30T13:25:31Z
-https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-invalid	2026-06-30T13:25:31Z
-https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-range	2026-06-30T13:25:31Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-invalid	2026-07-08T04:21:44Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-range	2026-07-08T04:21:44Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort	2026-06-30T13:25:31Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort-invalid-not-first	2026-06-30T13:25:31Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort-invalid-not-same	2026-06-30T13:25:31Z
@@ -207,7 +207,7 @@ https://docs.cloud.google.com/datastore/docs/samples/datastore-merged-index-quer
 https://docs.cloud.google.com/datastore/docs/samples/datastore-merged-index-tag-queries	2026-06-30T13:25:31Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-multi-sort	2026-06-30T13:25:31Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-named-key	2026-06-30T13:25:31Z
-https://docs.cloud.google.com/datastore/docs/samples/datastore-namespace-run-query	2026-06-30T13:25:31Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-namespace-run-query	2026-07-08T04:21:44Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-owner-size-tag-query	2026-06-30T13:25:31Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-projection-query	2026-06-30T13:25:31Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-properties	2026-06-30T13:25:31Z
@@ -233,7 +233,7 @@ https://docs.cloud.google.com/datastore/docs/samples/datastore-upsert	2026-06-30
 https://docs.cloud.google.com/datastore/docs/schedule-export	2026-02-26T03:55:59Z
 https://docs.cloud.google.com/datastore/docs/securing-with-vpc-sc	2026-06-30T13:25:52Z
 https://docs.cloud.google.com/datastore/docs/store-query-data	2026-06-30T13:25:52Z
-https://docs.cloud.google.com/datastore/docs/tags	2026-06-30T13:25:52Z
+https://docs.cloud.google.com/datastore/docs/tags	2026-07-08T04:21:34Z
 https://docs.cloud.google.com/datastore/docs/tools	2026-06-30T13:26:08Z
 https://docs.cloud.google.com/datastore/docs/tools/datastore-emulator	2026-06-30T13:25:54Z
 https://docs.cloud.google.com/datastore/docs/tools/emulator-export-import	2026-06-30T13:25:54Z
@@ -417,7 +417,7 @@ https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes-async	2026-06-30T15:16:10Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-custom-type-definition	2026-06-30T15:16:10Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-custom-type-definition-async	2026-06-30T15:16:10Z
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection	2026-07-02T09:34:25Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection	2026-07-07T23:27:24Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection-async	2026-06-30T15:16:10Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-doc	2026-06-30T15:16:10Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-doc-async	2026-06-30T15:16:10Z
@@ -557,7 +557,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect	2026-
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database	2026-06-30T15:17:54Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases	2026-06-30T15:17:54Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-manage-saved-queries	2026-06-30T15:17:54Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/custom-constraints	2026-06-30T15:17:54Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/custom-constraints	2026-07-07T15:22:58Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/disaster-recovery	2026-06-30T15:17:54Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/eventarc	2026-06-30T15:17:54Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import	2026-06-30T15:17:54Z
@@ -598,7 +598,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-fea
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-60	2026-06-30T15:17:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-70	2026-06-30T15:17:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80	2026-06-30T15:17:28Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/tags	2026-06-30T15:17:28Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/tags	2026-07-08T04:24:24Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/text-search	2026-06-30T15:17:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl	2026-06-30T15:17:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-error-codes	2026-06-30T15:17:28Z
@@ -625,7 +625,7 @@ https://docs.cloud.google.com/firestore/native/docs/concepts/structure-data	2026
 https://docs.cloud.google.com/firestore/native/docs/connect-ide-using-mcp-toolbox	2026-06-30T22:22:50Z
 https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library	2026-07-04T07:42:13Z
 https://docs.cloud.google.com/firestore/native/docs/create-database-web-mobile-client-library	2026-07-04T07:42:13Z
-https://docs.cloud.google.com/firestore/native/docs/custom-constraints	2026-06-30T22:23:02Z
+https://docs.cloud.google.com/firestore/native/docs/custom-constraints	2026-07-07T15:22:58Z
 https://docs.cloud.google.com/firestore/native/docs/data-model	2026-07-04T07:42:13Z
 https://docs.cloud.google.com/firestore/native/docs/dataflow-connector	2026-06-30T22:23:02Z
 https://docs.cloud.google.com/firestore/native/docs/disaster-recovery	2026-06-30T22:22:50Z
@@ -655,7 +655,7 @@ https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data	2026-07
 https://docs.cloud.google.com/firestore/native/docs/manage-data/bulk-delete	2026-06-30T22:23:29Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data	2026-07-04T07:42:19Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline	2026-07-04T07:42:19Z
-https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import	2026-06-30T22:23:29Z
+https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import	2026-07-07T23:27:34Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/move-data	2026-06-30T22:23:45Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/transactions	2026-07-04T07:42:19Z
 https://docs.cloud.google.com/firestore/native/docs/manage-databases	2026-06-30T22:23:02Z
@@ -728,7 +728,7 @@ https://docs.cloud.google.com/firestore/native/docs/securing-with-vpc-sc	2026-06
 https://docs.cloud.google.com/firestore/native/docs/security/get-started	2026-06-30T22:23:37Z
 https://docs.cloud.google.com/firestore/native/docs/security/iam	2026-06-30T22:23:45Z
 https://docs.cloud.google.com/firestore/native/docs/security/insecure-rules	2026-06-30T22:23:12Z
-https://docs.cloud.google.com/firestore/native/docs/security/rules-conditions	2026-06-30T22:23:37Z
+https://docs.cloud.google.com/firestore/native/docs/security/rules-conditions	2026-07-08T04:24:24Z
 https://docs.cloud.google.com/firestore/native/docs/security/rules-fields	2026-06-30T22:22:50Z
 https://docs.cloud.google.com/firestore/native/docs/security/rules-pipelines	2026-06-30T22:23:37Z
 https://docs.cloud.google.com/firestore/native/docs/security/rules-query	2026-06-30T22:23:37Z
@@ -752,7 +752,7 @@ https://docs.cloud.google.com/firestore/native/docs/solutions/workflows	2026-06-
 https://docs.cloud.google.com/firestore/native/docs/standard-index-overview	2026-06-30T22:24:01Z
 https://docs.cloud.google.com/firestore/native/docs/standard-indexing	2026-06-30T22:22:50Z
 https://docs.cloud.google.com/firestore/native/docs/storage-size	2026-06-30T22:23:02Z
-https://docs.cloud.google.com/firestore/native/docs/tags	2026-06-30T22:23:29Z
+https://docs.cloud.google.com/firestore/native/docs/tags	2026-07-08T04:24:24Z
 https://docs.cloud.google.com/firestore/native/docs/text-search	2026-06-30T22:23:02Z
 https://docs.cloud.google.com/firestore/native/docs/trace-span-references	2026-06-30T22:23:02Z
 https://docs.cloud.google.com/firestore/native/docs/transaction-data-contention	2026-06-30T22:23:45Z

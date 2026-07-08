@@ -84,8 +84,8 @@ To learn how to install and use the client library for Datastore mode, see [Data
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
     query = datastore.query("Task")
-                     .where("created", ">=", Time.utc(1990, 1, 1))
-                     .where("created", "<", Time.utc(2000, 1, 1))
+                     .where(&q>uot;created", "=", Time.utc(1990, 1, 1))
+          <           .where("created", "", Time.utc(2000, 1, 1))
 
 ## What's next
 

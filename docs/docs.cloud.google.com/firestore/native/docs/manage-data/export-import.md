@@ -78,7 +78,7 @@ The service agent needs the `Storage Admin` role for the Cloud Storage bucket to
 
 You can initiate import and export operations through the Google Cloud console or the `gcloud` command-line tool. To use `gcloud` , set up the command-line tool and connect to your project in one of the following ways:
 
-  - Access `gcloud` from the Google Cloud Platform console using [Cloud Shell](https://cloud.google.com/shell/) .
+  - Access `gcloud` from the Google Cloud console using [Cloud Shell](https://cloud.google.com/shell/) .
     
     Make sure `gcloud` is configured for the correct project:
     
@@ -126,7 +126,7 @@ Use the [`firestore export`](https://cloud.google.com/sdk/gcloud/reference/fires
 
 Replace the following:
 
-  - `BUCKET_NAME` : organize your exports by adding a file prefix after the bucket name, for example, `BUCKET_NAME/my-exports-folder/export-name` . If you do not provide a file prefix, the managed export service creates one based on the current timestamp.
+  - `BUCKET_NAME` : organize your exports by adding a file prefix after the bucket name, for example, `BUCKET_NAME/my-exports-folder/export-name` . If you don't provide a file prefix, the managed export service creates one based on the current timestamp.
 
   - `DATABASE` : name of the database from which you want to export the documents. For the default database, use `--database='(default)'` .
 
@@ -144,7 +144,7 @@ Once you start an export operation, closing the terminal does not cancel the ope
 
 4.  Click **Export** .
 
-5.  Click the **Export one or more collection groups** option. Use the dropdown menu to select one or more collection groups.
+5.  Click the **Export one or more collection groups** option. Use the menu to select one or more collection groups.
 
 6.  Below **Choose Destination** , enter the name of a Cloud Storage bucket or use the **Browse** button to select a bucket.
 
@@ -223,17 +223,17 @@ Once you have export files in Cloud Storage, you can import documents in those f
 
   - When you import data, the required indexes are updated using your database's current index definitions. An export does not contain index definitions.
 
-  - Imports do not assign new document IDs. Imports use the IDs captured at the time of the export. As a document is being imported, its ID is reserved to prevent ID collisions. If a document with the same ID already exists, the import overwrites the existing document.
+  - Imports don't assign new document IDs. Imports use the IDs captured at the time of the export. As a document is being imported, its ID is reserved to prevent ID collisions. If a document with the same ID already exists, the import overwrites the existing document.
 
   - If a document in your database is not affected by an import, it will remain in your database after the import.
 
-  - Import operations do not trigger Cloud Functions. [Snapshot listeners](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) do receive updates related to import operations.
+  - Import operations don't trigger Cloud Functions. [Snapshot listeners](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) do receive updates related to import operations.
 
-  - The `.overall_export_metadata` file name must match the name of its parent folder:
+  - The `.overall_export_metadata` filename must match the name of its parent folder:
     
     `gs://BUCKET_NAME/OPTIONAL_NAMESPACE_PATH/ PARENT_FOLDER_NAME / PARENT_FOLDER_NAME .overall_export_metadata`
     
-    If you move or copy the output files of an export, keep the PARENT\_FOLDER\_NAME and `.overall_export_metadata` file name the same.
+    If you move or copy the output files of an export, keep the PARENT\_FOLDER\_NAME and `.overall_export_metadata` filename the same.
 
 ### Import all documents from an export
 
@@ -363,9 +363,7 @@ You can cancel a running export or import operation in the **Import/Export** pag
 
 2.  Select the required database from the list of databases.
 
-3.  In the navigation menu, click **Import/Export** .
-
-In the *Recent imports and exports* table, currently running operations include a **Cancel** button in the *Completed* column. Click the **Cancel** button to stop the operation. The button changes to a *Cancelling* message and then to *Cancelled* when the operation stops completely.
+3.  In the navigation menu, click **Import/Export** . In the *Recent imports and exports* table, currently running operations include a **Cancel** button in the *Completed* column. Click the **Cancel** button to stop the operation. The button changes to a *Cancelling* message and then to *Cancelled* when the operation stops completely.
 
 ![Recent imports and exports table in console showing an ongoing data import with a Cancel option to stop the operation.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-console-cancel-operation.png)
 
@@ -379,7 +377,7 @@ Cancelling a running operation does not undo the operation. A cancelled export o
 
 ### Delete an operation
 
-Use the [`gcloud firestore operations delete`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/delete) command to remove an operation from the list of recent operations. This command will not delete export files from Cloud Storage.
+Use the [`gcloud firestore operations delete`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/delete) command to remove an operation from the list of recent operations. This command won't delete export files from Cloud Storage.
 
     gcloud firestore operations delete [OPERATION_NAME]
 
@@ -391,7 +389,7 @@ Export and import operations are charged for document reads and writes at the ra
 
 Output files stored in Cloud Storage count towards your [Cloud Storage data storage costs](https://cloud.google.com/storage/pricing) .
 
-Export or import operations will not trigger your [Google Cloud budget](https://cloud.google.com/billing/docs/how-to/budgets) alerts until after completion. Export and import operations will not affect the usage shown in the usage section of the console.
+Export or import operations won't trigger your [Google Cloud budget](https://cloud.google.com/billing/docs/how-to/budgets) alerts until after completion. Export and import operations won't affect the usage shown in the usage section of the console.
 
 ### Viewing export and import costs
 
@@ -407,9 +405,7 @@ You can load data from a Firestore export into BigQuery, but only if you specifi
 
 ### BigQuery column limit
 
-BigQuery imposes a limit of 10,000 columns per table. Firestore export operations generate a BigQuery table schema for each collection group. In this schema, each unique field name within a collection group becomes a schema column.
-
-If a collection group's BigQuery schema surpasses 10,000 columns, the Firestore export operation attempts to stay under the column limit by treating map fields as bytes. If this conversion brings the number of columns below 10,000, you can load the data into BigQuery, but you cannot query the subfields within the map fields. If the number of columns still exceeds 10,000, the export operation does not generate a BigQuery schema for the collection group and you cannot load its data into BigQuery.
+BigQuery imposes a limit of 10,000 columns per table. Firestore export operations generate a BigQuery table schema for each collection group. In this schema, each unique field name within a collection group becomes a schema column. If a collection group's BigQuery schema surpasses 10,000 columns, the Firestore export operation attempts to stay under the column limit by treating map fields as bytes. If this conversion brings the number of columns below 10,000, you can load the data into BigQuery, but you cannot query the subfields within the map fields. If the number of columns still exceeds 10,000, the export operation does not generate a BigQuery schema for the collection group and you cannot load its data into BigQuery.
 
 ## Export format and metadata files
 

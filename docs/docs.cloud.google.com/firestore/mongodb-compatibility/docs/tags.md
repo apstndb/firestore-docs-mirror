@@ -37,7 +37,7 @@ Before you can attach a tag, you need to create a tag and configure its value. T
 
 ## Add tags during resource creation
 
-You can add tags at the time of creating databases. Adding tags during resource creation, lets you instantly provide essential metadata for your resources and also helps with better organization, cost tracking, and automated policy application.
+You can add tags at the time of creating databases. Adding tags lets you instantly provide essential metadata for your databases and also helps with better organization, cost tracking, and automated policy application.
 
 ### gcloud
 
@@ -99,7 +99,7 @@ To attach a tag to a database, you must create a tag binding resource by using t
 
 Replace the following:
 
-  - `  TAGVALUE_NAME  ` : the permanent ID or namespaced name of the tag value that is attached—for example, `tagValues/567890123456` .
+  - `  TAGVALUE_NAME  ` : the permanent ID or namespaced name of the tag value that you attach to a resource—for example, `tagValues/567890123456` .
   - `  RESOURCE_ID  ` is the full ID of the resource, including the API domain name to identify the type of resource ( `//firestore.googleapis.com/` ). For example, to attach a tag to a database in `projects/firestore-test-project` , the full ID is: `//firestore.googleapis.com/projects/firestore-test-project/databases/\(default\)` .
   - `  LOCATION  ` : the location of your resource. If you're attaching a tag to a global resource, such as a folder or a project, omit this flag. If you're attaching a tag to a regional or a zonal resource, you must specify the location—for example, `us-central1` (region) or `us-central1-a` (zone).
 
