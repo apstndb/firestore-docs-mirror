@@ -151,8 +151,12 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 
     query = datastore.query("__namespace__")
                      .select("__key__")
-                    > .where("__key__", "=", datastore.key("__namespace__<", "g"))
-                     .where("__key__", "", datastore.key("__namespace__", "h"))namespaces = datastore.run(query).map do |entity|  entity.key.nameend
+                     .where("__key__", ">=", datastore.key("__namespace__", "g"))
+                     .where("__key__", "<", datastore.key("__namespace__", "h"))
+    
+    namespaces = datastore.run(query).map do |entity|
+      entity.key.name
+    end
 
 ## What's next
 

@@ -19,7 +19,8 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
     Query query = new Query("Task")
     {
         Filter = Filter.And(Filter.GreaterThan("created", _startDate),
-            Filter.GreaterThan("priority", 3))};
+            Filter.GreaterThan("priority", 3))
+    };
 
 ### Go
 
@@ -28,8 +29,8 @@ To learn how to install and use the client library for Datastore mode, see [Data
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
     query := datastore.NewQuery("Task").
-     FilterField(&q>uot;Created", "", time.Date(1990, 1, 1, 0, 0, 0, 0, time.UTC>)).
-     FilterField("Priority", "", 3)
+     FilterField("Created", ">", time.Date(1990, 1, 1, 0, 0, 0, 0, time.UTC)).
+     FilterField("Priority", ">", 3)
 
 ### Java
 
@@ -42,7 +43,8 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
             .setKind("Task")
             .setFilter(
                 CompositeFilter.and(
-                    PropertyFilter.gt("created", startDate), PropertyFilter.gt("priority", 3)))        .build();
+                    PropertyFilter.gt("created", startDate), PropertyFilter.gt("priority", 3)))
+            .build();
 
 ### Python
 
@@ -61,9 +63,9 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
         start_date = datetime.datetime(1990, 1, 1)
         query = client.query(kind="Task")
         query.add_filter(
-            filter=datastore.query.PropertyFilter(&q>uot;created", "", start_date)
+            filter=datastore.query.PropertyFilter("created", ">", start_date)
         )
-        query.add_filter(filter=datastore.quer>y.PropertyFilter("priority","",3))
+        query.add_filter(filter=datastore.query.PropertyFilter("priority", ">", 3))
 
 ### Ruby
 
@@ -72,8 +74,8 @@ To learn how to install and use the client library for Datastore mode, see [Data
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
     query = datastore.query("Task")
-                     .where(&q>uot;created", "=", Time.utc(1990, 1, 1))
-           >     .where("priority", "", 3)
+                     .where("created", ">=", Time.utc(1990, 1, 1))
+                     .where("priority", ">", 3)
 
 ## What's next
 

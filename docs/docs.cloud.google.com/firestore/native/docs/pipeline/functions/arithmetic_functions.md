@@ -16,7 +16,9 @@ All arithmetic functions in Firestore have the following behaviors:
   - Evaluates to `NaN` if any of the arguments is `NaN` .
   - Generates an error if an overflow or underflow occurs.
 
-Additionally, when an arithmetic function takes multiple numeric arguments of different types (for example: `add(5.0, 6)` ), Firestore implicitly converts arguments to the widest input type. If only `INT32` inputs are provided, the return type will be `INT64` .
+Firestore performs **numeric type widening** based on the following hierarchy: `INT32` \< `INT64` \< `FLOAT64` \< `DECIMAL128` . When an arithmetic function takes multiple numeric arguments of different types (for example, `add(5.0D, 6L)` ), narrower types are implicitly converted to the widest type present among the operands. In the previous example, the `6L` is widened to `6.0D` resulting in the expression returning a `FLOAT64` type.
+
+An implicit coercion from `INT64` -\> `FLOAT64` can result in a loss of precision as the coerced value can lose of its least significant bits. The resulting value will be rounded version of the original integer value using IEEE 754 round-to-nearest mode.
 
 |                             |                                                          |
 | --------------------------- | -------------------------------------------------------- |

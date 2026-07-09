@@ -154,7 +154,10 @@ For example, take the following security rule:
         // Allow the user to read data if the document has the 'visibility'
         // field set to 'public'
         match /cities/{city} {
-          allow read: if resource.data.visibility == 'public';    }  }}
+          allow read: if resource.data.visibility == 'public';
+        }
+      }
+    }
 
 Denied : This rule rejects the following query because the result set can include documents where `visibility` is not `public` :
 
