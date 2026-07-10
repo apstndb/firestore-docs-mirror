@@ -19,7 +19,8 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
     Query query = new Query("Task")
     {
         Filter = Filter.And(Filter.GreaterThan("created", _startDate),
-            Filter.LessThan(&quot;created", _endDate))};
+            Filter.LessThan("created", _endDate))
+    };
 
 ### Go
 
@@ -28,8 +29,8 @@ To learn how to install and use the client library for Datastore mode, see [Data
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
     query := datastore.NewQuery("Task").
-     FilterField(&q>uot;Created", "", time.Date(1990, 1, 1, 0, 0, 0, 0, time.UT<C)).
-     FilterField("Created", "&quot;, time.Date(2000, 1, 1, 0, 0, 0, 0, time.UTC))
+     FilterField("Created", ">", time.Date(1990, 1, 1, 0, 0, 0, 0, time.UTC)).
+     FilterField("Created", "<", time.Date(2000, 1, 1, 0, 0, 0, 0, time.UTC))
 
 ### Java
 
@@ -42,7 +43,8 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
             .setKind("Task")
             .setFilter(
                 CompositeFilter.and(
-                    PropertyFilter.gt("created", startDate), PropertyFilter.lt("created", endDate)))        .build();
+                    PropertyFilter.gt("created", startDate), PropertyFilter.lt("created", endDate)))
+            .build();
 
 ### PHP
 
@@ -51,9 +53,9 @@ To learn how to install and use the client library for Datastore mode, see [Data
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
     $query = $datastore->query()
-        ->kind('Task'>;)
-        -filter('>;created', '', new DateTime('1>990-01-01T00:00:00z<'))
-        -filter('created', &#39;', new DateTime('2000-12-31T23:59:59z'));
+        ->kind('Task')
+        ->filter('created', '>', new DateTime('1990-01-01T00:00:00z'))
+        ->filter('created', '<', new DateTime('2000-12-31T23:59:59z'));
 
 ### Python
 
@@ -71,9 +73,9 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
     
     start_date = datetime.datetime(1990, 1, 1)
     end_date = datetime.datetime(2000, 1, 1)
-    query = client.query(kind="Task&quot;)
-    query.add_filter(filter=datastore.query.PropertyFilter(&q>uot;created", &quot;", start_date))
-    query.add_filter(filter=datastore.que<ry.PropertyFilter("created","",end_date))
+    query = client.query(kind="Task")
+    query.add_filter(filter=datastore.query.PropertyFilter("created", ">", start_date))
+    query.add_filter(filter=datastore.query.PropertyFilter("created", "<", end_date))
 
 ### Ruby
 
@@ -82,8 +84,8 @@ To learn how to install and use the client library for Datastore mode, see [Data
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
     query = datastore.query("Task")
-                     .where(&q>uot;created", "=", Time.utc(1990, 1, 1))
-          <           .where("created", "", Time.utc(2000, 1, 1))
+                     .where("created", ">=", Time.utc(1990, 1, 1))
+                     .where("created", "<", Time.utc(2000, 1, 1))
 
 ## What's next
 

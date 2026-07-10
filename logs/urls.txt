@@ -190,7 +190,7 @@ https://docs.cloud.google.com/datastore/docs/samples/datastore-example-1	2026-07
 https://docs.cloud.google.com/datastore/docs/samples/datastore-exploding-properties	2026-07-08T04:21:44Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-incomplete-key	2026-07-08T04:21:44Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-invalid	2026-07-08T06:26:14Z
-https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-range	2026-07-09T04:48:51Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-range	2026-07-10T06:01:42Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort	2026-07-08T04:21:44Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort-invalid-not-first	2026-07-08T04:21:44Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort-invalid-not-same	2026-07-08T04:21:44Z
@@ -417,7 +417,7 @@ https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes-async	2026-07-09T03:40:46Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-custom-type-definition	2026-07-09T03:40:46Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-custom-type-definition-async	2026-07-09T03:40:46Z
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection	2026-07-09T03:40:46Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection	2026-07-09T17:11:13Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection-async	2026-07-09T03:40:46Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-doc	2026-07-09T03:40:46Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-doc-async	2026-07-09T03:40:46Z
@@ -561,7 +561,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/custom-constr
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/disaster-recovery	2026-07-08T04:24:48Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/eventarc	2026-07-08T04:24:48Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import	2026-07-08T04:24:48Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/extend-with-cloud-run-functions	2026-07-09T03:39:14Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/extend-with-cloud-run-functions	2026-07-09T04:49:54Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/geo-query	2026-07-08T04:24:48Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview	2026-07-08T04:24:48Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing	2026-07-08T04:24:48Z
@@ -653,7 +653,7 @@ https://docs.cloud.google.com/firestore/native/docs/langchain	2026-07-09T03:38:5
 https://docs.cloud.google.com/firestore/native/docs/locations	2026-07-09T03:38:56Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data	2026-07-09T03:38:56Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/bulk-delete	2026-07-09T03:38:56Z
-https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data	2026-07-09T03:38:56Z
+https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data	2026-07-09T04:49:57Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline	2026-07-09T03:38:56Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import	2026-07-09T03:38:56Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/move-data	2026-07-09T03:38:56Z
@@ -675,7 +675,7 @@ https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_funct
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/reference_functions	2026-07-09T03:38:56Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/string_functions	2026-07-09T03:38:56Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/timestamp_functions	2026-07-09T03:38:56Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/type_functions	2026-07-09T03:38:56Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/type_functions	2026-07-09T04:49:57Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/vector_functions	2026-07-09T04:49:57Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/overview	2026-07-09T03:38:56Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/perform-joins-with-sub-pipelines	2026-07-09T03:38:56Z
@@ -700,17 +700,17 @@ https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformati
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/search	2026-07-09T03:39:48Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/select	2026-07-09T03:39:48Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/sort	2026-07-09T03:39:48Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/union	2026-07-09T03:39:48Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/union	2026-07-09T04:49:06Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/unnest	2026-07-09T03:39:48Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/where	2026-07-09T03:39:48Z
 https://docs.cloud.google.com/firestore/native/docs/pitr	2026-07-09T03:39:48Z
-https://docs.cloud.google.com/firestore/native/docs/query-data/aggregation-queries	2026-07-09T03:39:48Z
+https://docs.cloud.google.com/firestore/native/docs/query-data/aggregation-queries	2026-07-09T04:49:06Z
 https://docs.cloud.google.com/firestore/native/docs/query-data/get-data	2026-07-09T03:39:48Z
 https://docs.cloud.google.com/firestore/native/docs/query-data/listen	2026-07-09T04:49:06Z
 https://docs.cloud.google.com/firestore/native/docs/query-data/multiple-range-fields	2026-07-09T03:39:48Z
 https://docs.cloud.google.com/firestore/native/docs/query-data/multiple-range-optimize-indexes	2026-07-09T03:39:48Z
 https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data	2026-07-09T04:49:06Z
-https://docs.cloud.google.com/firestore/native/docs/query-data/queries	2026-07-09T03:39:48Z
+https://docs.cloud.google.com/firestore/native/docs/query-data/queries	2026-07-09T04:49:06Z
 https://docs.cloud.google.com/firestore/native/docs/query-data/query-cursors	2026-07-09T04:49:06Z
 https://docs.cloud.google.com/firestore/native/docs/query-data/understanding-core-pipelines	2026-07-09T03:39:48Z
 https://docs.cloud.google.com/firestore/native/docs/query-explain	2026-07-09T03:39:48Z
