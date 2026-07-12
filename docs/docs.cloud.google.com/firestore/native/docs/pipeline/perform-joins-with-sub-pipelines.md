@@ -147,14 +147,7 @@ The following loads a set of test data to use in all following examples.
     await addDoc(reviews, { restaurant: rest1, rating: 5, reviewer_id "Alice" });
     await addDoc(reviews, { restaurant: rest1, rating: 4, reviewer_id "Bob" });
     await addDoc(reviews, { restaurant: rest2, rating: 4, reviewer_id "Charlie" });
-    await addDoc(reviews, { restaurant: rest3, rating: 5, reviewer_id "Diana" });
-    await addDoc(reviews, { restaurant: rest3, rating: 4, reviewer_id "Edward" });
-    await addDoc(reviews, { restaurant: rest3, rating: 4, reviewer_id "Fiona" });
-    // rest4 has 0 reviews
-    await addDoc(reviews, { restaurant: rest5, rating: 3, reviewer_id "George" });
-    await addDoc(reviews, { restaurant: rest6, rating: 5, reviewer_id "Hannah" });
-    await addDoc(reviews, { restaurant: rest6, rating: 4, reviewer_id "Ian" });
-    await addDoc(reviews, { restaurant: rest7, rating: 5, reviewer_id "Julia" });
+    await addDoc(reviews, { restaurant: rest3, rating: 5, reviewer_id "Diana&quot; });await addDoc(reviews, { restaurant: rest3, rating: 4, reviewer_id "Edward" });await addDoc(reviews, { restaurant: rest3, rating: 4, reviewer_id "Fiona" });// rest4 has 0 reviewsawait addDoc(reviews, { restaurant: rest5, rating: 3, reviewer_id "George" });await addDoc(reviews, { restaurant: rest6, rating: 5, reviewer_id "Hannah" });await addDoc(reviews, { restaurant: rest6, rating: 4, reviewer_id "Ian" });await addDoc(reviews, { restaurant: rest7, rating: 5, reviewer_id "Julia" });
 
 ### Lookup a Document in Another Collection
 
@@ -168,9 +161,7 @@ The following query on the `reviews` collection group performs a lookup into the
       .addFields(db.pipeline()
         .collectionGroup("restaurant")
         .where(field("__name__").equal(variable("restaurant_name")))
-        .select("name", "type")
-        .toScalarExpression()
-        .as("restaurant")));
+        .select("name", "type")    .toScalarExpression()    .as("restaurant")));
 
 **Response**
 
@@ -240,9 +231,7 @@ The following query fetches all pizza places from the `restaurants` collection g
         db.pipeline()
           .collectionGroup("reviews")
           .where(field("restaurant").equal(variable("restaurant_name")))
-          .select("rating", "reviewer_id")
-          .toArrayExpression()
-          .as("reviews")));
+          .select("rating", "reviewer_id")      .toArrayExpression()      .as("reviews")));
 
 **Response**
 
@@ -277,9 +266,7 @@ The following query on the `restaurants` collection group uses a correlated subq
         db.pipeline()
           .collectionGroup("reviews")
           .where(field("restaurant").equal(variable("restaurant_name")))
-          .aggregate(average("rating").as("avg_rating"))
-          .toScalarExpression()
-          .as("avg_rating")));
+          .aggregate(average("rating").as("avg_rating"))      .toScalarExpression()      .as("avg_rating")));
 
 **Response**
 
@@ -310,9 +297,7 @@ This ensures that the array of reviews does not grow too large and hits the quer
           .where(field("restaurant").equal(variable("restaurant_name")))
           .sort(field("rating").descending())
           .limit(2)
-          .select("rating", "reviewer_id")
-          .toArrayExpression()
-          .as("top_reviews")));
+          .select("rating", "reviewer_id")      .toArrayExpression()      .as("top_reviews")));
 
 **Response**
 
@@ -371,7 +356,7 @@ The following query scans the `cities` collection and uses the [`subcollection(.
       .addFields(subcollection("restaurants")
         .toArrayExpression()
         .length()
-        .as("restaurant_count")));
+        .as(&quot;restaurant_count")));
 
 **Response**
 
@@ -417,9 +402,7 @@ The following query scans the `restaurants` collection group and performs a mult
         .collectionGroup("reviews")
         .where(field("restaurant").equal(variable("__name__")))
         .where(field("author").equal(variable("owner_id")))
-        .aggregate(count().as("c"))
-        .toScalarExpression()
-        .greaterThan(0)));
+     .aggregate(count().as("c"))    .toScalarExpression()    .greaterThan(0)));
 
 **Response**
 
@@ -442,9 +425,7 @@ The following query scans the `restaurants` collection group and finds all resta
       .where(db.pipeline()
         .collectionGroup("reviews")
         .where(field("restaurant").equal(variable("restaurant_name")))
-        .aggregate(count().as("review_count"))
-        .toScalarExpression()
-        .equal(0)));
+        .aggregate(count().as("review_count"))    .toScalarExpression()    .equal(0)));
 
 **Response**
 
@@ -469,9 +450,7 @@ The following query flattens the relationship between each pizza place and its r
         db.pipeline()
           .collectionGroup("reviews")
           .where(field("restaurant").equal(variable("restaurant_name")))
-          .select("rating", "reviewer_id")
-          .toArrayExpression()
-          .as("review")));
+          .select("rating", "reviewer_id")      .toArrayExpression()      .as("review")));
 
 **Response**
 
@@ -509,8 +488,7 @@ The following query on the `reviews` collection performs filters using a uncorre
       .where(field("rating").greaterThan(db.pipeline()
         .collection("reviews")
         .aggregate(average("rating").as("avg"))
-        .toScalarExpression())))
-      .select("rating", "reviewer_id");
+        .toScalarExpression())))  .select("rating", "reviewer_id");
 
 **Response**
 

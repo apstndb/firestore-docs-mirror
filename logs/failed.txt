@@ -1,4 +1,3 @@
 404 https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Index
 404 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/listen
 404 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/write
-404 https://docs.cloud.google.com/firestore/mongodb-compatibility/pricing-examples
