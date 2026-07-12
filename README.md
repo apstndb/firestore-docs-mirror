@@ -1,6 +1,10 @@
 # Google Cloud Firestore and Datastore Documentation Mirror
 
-This repository provides a local Markdown mirror of official Google Cloud documentation for **Cloud Firestore (Native and Datastore mode)**. It is designed to be automatically updated via GitHub Actions.
+This repository provides a local Markdown mirror of official Google Cloud documentation for **Cloud Firestore (Native and Datastore mode)**, the `gcloud` CLI reference, and the separate Firestore product page. It is designed to be automatically updated via GitHub Actions.
+
+The Developer Knowledge API treats `docs.cloud.google.com` and `cloud.google.com` as distinct corpora. The mirror preserves both hostnames in its output paths.
+
+The product-page seed requires `gcp-docs-mirror-tools` newer than v0.2.9 and becomes active when the workflow's `TOOL_VERSION` is bumped.
 
 ## API Key Setup
 
