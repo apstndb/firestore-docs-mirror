@@ -55,7 +55,7 @@ Suppose that your app includes a page that shows the user a list of `story` docu
 Invalid : Query constraints do not match security rules constraints
 
     // This query will fail
-    db.collection("stories&quot;).get()
+    db.collection("stories").get()
 
 The query fails ***even if*** the current user actually is the author of every `story` document. The reason for this behavior is that when Firestore applies your security rules, it evaluates the query against its *potential* result set, not against the *actual* properties of documents in your database. If a query could *potentially* include documents that violate your security rules, the query will fail.
 
@@ -65,7 +65,7 @@ Valid : Query constraints match security rules constraints
 
     var user = firebase.auth().currentUser;
     
-    db.collection("stories").where("author", &quot;==", user.uid).get()
+    db.collection("stories").where("author", "==", user.uid).get()
 
 ### Secure and query documents based on a field
 
@@ -107,7 +107,9 @@ Invalid : Query does not guarantee that `x > 5` for all potential documents
           )
         )
     
-    query(db.collection("mydocuments"),      where("x", "in", [1, 3, 6, 42, 99])    )
+    query(db.collection("mydocuments"),
+          where("x", "in", [1, 3, 6, 42, 99])
+        )
 
 Valid : Query guarantees that `x > 5` for all potential documents
 
@@ -117,7 +119,7 @@ Valid : Query guarantees that `x > 5` for all potential documents
           )
         )
     
-    query(db.collection("mydocuments&quot;),
+    query(db.collection("mydocuments"),
           where("x", "in", [6, 42, 99, 105, 200])
         )
 
@@ -153,7 +155,7 @@ The following ruleset demonstrates how to write security rules that evaluate con
           // Deny any query not limited to 10 or fewer documents
           // Anyone can query published stories
           // Authors can query their unpublished stories
-          allow list: if request.quer<y.lim&&it = 10 
+          allow list: if request.query.limit <= 10 &&
                          authorOrPublished();
     
           // Anyone can retrieve a published story
@@ -161,7 +163,11 @@ The following ruleset demonstrates how to write security rules that evaluate con
           allow get: if authorOrPublished();
     
           // Only a story's author can write to a story
-          allow write: if request.auth.uid == resource.data.author;    }  }}
+          allow write: if request.auth.uid == resource.data.author;
+        }
+    
+      }
+    }
 
 ## Collection group queries and security rules
 
@@ -199,13 +205,13 @@ In this application, we make posts editable by their owners and readable by auth
 
 Any authenticated user can retrieve the posts of any single forum:
 
-    db.collection("forums/technology/posts&quot;).get()
+    db.collection("forums/technology/posts").get()
 
 But what if you want to show the current user their posts across all forums? You can use a [collection group query](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#collection-group-query) to retrieve results from all `posts` collections:
 
     var user = firebase.auth().currentUser;
     
-    db.collectionGroup("posts").where("author", &quot;==", user.uid).get()
+    db.collectionGroup("posts").where("author", "==", user.uid).get()
 
 > **Note:** This query requires an index on the `posts` collection for field `author` and with collection group scope. If you haven't enabled this index, the query will return an error link you can follow to create the required index.
 
@@ -223,9 +229,11 @@ In your security rules, you must allow this query by writing a read or list rule
         }
         match /forums/{forumid}/posts/{postid} {
           // Only a post's author can write to a post
-          allow write: if request.a&&uth != null  request.auth.uid == resource.data.author;
+          allow write: if request.auth != null && request.auth.uid == resource.data.author;
     
-        }  }}
+        }
+      }
+    }
 
 Note, however, that these rules will apply to all collections with ID `posts` , regardless of hierarchy. For example, these rules apply to all of the following `posts` collections:
 
@@ -273,7 +281,9 @@ We can then write rules for the `posts` collection group based on the `published
         match /forums/{forumid}/posts/{postid} {
           // Only a post's author can write to a post
           allow write: if request.auth.uid == resource.data.author;
-        }  }}
+        }
+      }
+    }
 
 With these rules, Web, Apple, and Android clients can make the following queries:
 
@@ -283,13 +293,13 @@ With these rules, Web, Apple, and Android clients can make the following queries
 
   - Anyone can retrieve an author's published posts across all forums:
     
-        db.collectionGroup("posts").where("author", "==", "some_auth_id";).where('published', '==', true).get()
+        db.collectionGroup("posts").where("author", "==", "some_auth_id").where('published', '==', true).get()
 
   - Authors can retrieve all their published and unpublished posts across all forums:
     
         var user = firebase.auth().currentUser;
         
-        db.collectionGroup("posts").where("author", &quot;==", user.uid).get()
+        db.collectionGroup("posts").where("author", "==", user.uid).get()
 
 ### Secure and query documents based on collection group and document path
 
@@ -331,8 +341,10 @@ We enforce this restriction in our security rules and include data validation fo
         match /users/{userid}/exchange/{exchangeid}/transactions/{transaction} {
           // Authenticated users can write to their own transactions subcollections
           // Writes must populate the user field with the correct auth id
-          allow write: if userid == request.a&&uth.uid  request.data.user == request.auth.uid
-        }  }}
+          allow write: if userid == request.auth.uid && request.data.user == request.auth.uid
+        }
+      }
+    }
 
 ## Next steps
 

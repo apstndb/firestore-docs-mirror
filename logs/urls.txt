@@ -181,7 +181,7 @@ https://docs.cloud.google.com/datastore/docs/samples/datastore-built-in-index-qu
 https://docs.cloud.google.com/datastore/docs/samples/datastore-composite-filter	2026-07-12T04:15:04Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-cursor-paging	2026-07-12T04:15:04Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-delete	2026-07-12T04:15:04Z
-https://docs.cloud.google.com/datastore/docs/samples/datastore-delete-entity	2026-07-12T04:15:04Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-delete-entity	2026-07-14T04:55:30Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-descending-sort	2026-07-12T04:15:04Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-distinct-on-query	2026-07-12T04:15:04Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-entity-with-parent	2026-07-12T04:15:04Z
@@ -229,7 +229,7 @@ https://docs.cloud.google.com/datastore/docs/samples/datastore-transactional-sin
 https://docs.cloud.google.com/datastore/docs/samples/datastore-transactional-update	2026-07-12T04:14:57Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-unindexed-property-query	2026-07-12T04:14:57Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-update	2026-07-12T04:14:57Z
-https://docs.cloud.google.com/datastore/docs/samples/datastore-update-entity	2026-07-12T04:14:57Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-update-entity	2026-07-14T04:55:55Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-upsert	2026-07-12T04:14:57Z
 https://docs.cloud.google.com/datastore/docs/schedule-export	2026-02-26T03:55:59Z
 https://docs.cloud.google.com/datastore/docs/securing-with-vpc-sc	2026-07-12T04:14:57Z
@@ -517,7 +517,7 @@ https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-desc-
 https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-field-invalid	2026-07-12T04:17:55Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-field-invalid-async	2026-07-12T04:17:55Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-limit	2026-07-12T04:17:55Z
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-limit-async	2026-07-13T03:34:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-limit-async	2026-07-14T06:54:08Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-limit-field-valid	2026-07-12T04:17:55Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-limit-field-valid-async	2026-07-12T04:17:55Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-multi	2026-07-12T04:17:55Z
@@ -656,7 +656,7 @@ https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data	2026-07
 https://docs.cloud.google.com/firestore/native/docs/manage-data/bulk-delete	2026-07-12T04:17:55Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data	2026-07-12T04:17:55Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline	2026-07-12T04:17:55Z
-https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import	2026-07-12T04:17:55Z
+https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import	2026-07-13T13:51:19Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/move-data	2026-07-12T04:17:55Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/transactions	2026-07-12T04:17:55Z
 https://docs.cloud.google.com/firestore/native/docs/manage-databases	2026-07-12T04:17:55Z
@@ -679,7 +679,7 @@ https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/timestamp
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/type_functions	2026-07-12T04:17:50Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/vector_functions	2026-07-12T04:17:50Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/overview	2026-07-12T04:17:50Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/perform-joins-with-sub-pipelines	2026-07-12T04:17:50Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/perform-joins-with-sub-pipelines	2026-07-14T06:54:52Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection	2026-07-12T04:17:50Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection_group	2026-07-12T04:17:50Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/database	2026-07-12T04:17:50Z
@@ -732,7 +732,7 @@ https://docs.cloud.google.com/firestore/native/docs/security/insecure-rules	2026
 https://docs.cloud.google.com/firestore/native/docs/security/rules-conditions	2026-07-12T04:17:38Z
 https://docs.cloud.google.com/firestore/native/docs/security/rules-fields	2026-07-12T04:17:38Z
 https://docs.cloud.google.com/firestore/native/docs/security/rules-pipelines	2026-07-12T04:17:38Z
-https://docs.cloud.google.com/firestore/native/docs/security/rules-query	2026-07-12T04:17:38Z
+https://docs.cloud.google.com/firestore/native/docs/security/rules-query	2026-07-14T06:54:08Z
 https://docs.cloud.google.com/firestore/native/docs/security/rules-structure	2026-07-12T04:17:38Z
 https://docs.cloud.google.com/firestore/native/docs/security/test-rules-emulator	2026-07-12T04:17:38Z
 https://docs.cloud.google.com/firestore/native/docs/server-side-encryption	2026-07-12T04:17:38Z

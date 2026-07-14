@@ -229,6 +229,8 @@ Once you have export files in Cloud Storage, you can import documents in those f
 
   - Import operations don't trigger Cloud Functions. [Snapshot listeners](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) do receive updates related to import operations.
 
+  - You shouldn't add new Firestore documents that weren't in the original output files of an export or remove any existing documents from the GCS files before importing. If you do, the import will fail.
+
   - The `.overall_export_metadata` filename must match the name of its parent folder:
     
     `gs://BUCKET_NAME/OPTIONAL_NAMESPACE_PATH/ PARENT_FOLDER_NAME / PARENT_FOLDER_NAME .overall_export_metadata`
