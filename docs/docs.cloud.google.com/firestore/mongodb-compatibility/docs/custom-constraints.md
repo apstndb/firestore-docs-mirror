@@ -42,7 +42,7 @@ By default, organization policies are inherited by the descendants of the resour
 
 ### Required roles
 
-To get the permissions that you need to manage custom organization policies, ask your administrator to grant you the Organization Policy Administrator (\`roles/orgpolicy.policyAdmin\`) IAM role on the organization resource. For more information about granting roles, see [Manage access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
+To get the permissions that you need to manage custom organization policies, ask your administrator to grant you the [Organization Policy Administrator](https://docs.cloud.google.com/iam/docs/roles-permissions/orgpolicy#orgpolicy.policyAdmin) ( `roles/orgpolicy.policyAdmin` ) IAM role on the organization resource. For more information about granting roles, see [Manage access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
 
 You might also be able to get the required permissions through [custom roles](https://docs.cloud.google.com/iam/docs/creating-custom-roles) or other [predefined roles](https://docs.cloud.google.com/iam/docs/roles-overview#predefined) .
 
