@@ -100,27 +100,37 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    /**
-     * Delete a collection in batches to avoid out-of-memory errors. Batch size may be tuned based on
-     * document size (atmost 1MB) and application requirements.
-     */
-    void deleteCollection(CollectionReference collection, int batchSize) {
-      try {
-        // retrieve a small batch of documents to avoid out-of-memory errors
-        ApiFuture<QuerySnapshot> future = collection.limit(batchSize).get();
-        int deleted = 0;
-        // future.get() blocks on document retrieval
-        List<QueryDocumentSnapshot> documents = future.get().getDocuments();
-        for (QueryDocumentSnapshot document : documents) {
-          document.getReference().delete();
-          ++deleted;
+    import com.google.api.core.ApiFuture;
+    import com.google.cloud.firestore.CollectionReference;
+    import com.google.cloud.firestore.Firestore;
+    import com.google.cloud.firestore.FirestoreOptions;
+    
+    public class DeleteCollection {
+    
+      /**
+       * Delete a collection and all its subcollections.
+       *
+       * @param projectId The Google Cloud project ID
+       * @param collectionName The name of the collection to delete
+       */
+      public static void deleteCollection(String projectId, String collectionName) throws Exception {
+        FirestoreOptions firestoreOptions =
+            FirestoreOptions.getDefaultInstance().toBuilder().setProjectId(projectId).build();
+        try (Firestore db = firestoreOptions.getService()) {
+          CollectionReference collection = db.collection(collectionName);
+    
+          ApiFuture<Void> future = db.recursiveDelete(collection);
+    
+          future.get();
+          System.out.println("Collection and all its subcollections deleted successfully.");
         }
-        if (deleted >= batchSize) {
-          // retrieve and delete another batch
-          deleteCollection(collection, batchSize);
-        }
-      } catch (Exception e) {
-        System.err.println("Error deleting collection : " + e.getMessage());
+      }
+    
+      public static void main(String[] args) throws Exception {
+        String projectId = "example-project-id";
+        String collectionName = "example-collection-name";
+    
+        deleteCollection(projectId, collectionName);
       }
     }
 

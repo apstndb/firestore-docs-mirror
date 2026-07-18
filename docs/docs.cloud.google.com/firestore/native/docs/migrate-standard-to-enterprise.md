@@ -32,7 +32,9 @@ Use the following instructions to migrate data with the `firestore-to-firestore`
 
 1.  Before you start the data migration, make sure that [point-in-time recovery (PITR)](https://docs.cloud.google.com/firestore/native/docs/use-pitr#enable) is enabled on the source database. The Dataflow job uses PITR to read data at a PITR timestamp. If PITR is disabled, the job fails if it runs longer than one hour.
 
-2.  Assign the required roles described in the next section.
+2.  The `datastore.googleapis.com` API must be enabled to use this template.
+
+3.  Assign the required roles described in the next section.
 
 ### Required roles
 

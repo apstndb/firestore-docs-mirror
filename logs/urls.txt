@@ -418,7 +418,7 @@ https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes-async	2026-07-16T06:07:32Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-custom-type-definition	2026-07-16T06:07:04Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-custom-type-definition-async	2026-07-16T06:07:32Z
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection	2026-07-15T16:29:02Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection	2026-07-18T00:48:05Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection-async	2026-07-16T06:07:04Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-doc	2026-07-16T06:07:04Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-doc-async	2026-07-16T06:07:04Z
@@ -605,7 +605,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl	2026-07-1
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-error-codes	2026-07-12T04:18:03Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-reads-writes-scale	2026-07-12T04:18:03Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/usage-insights	2026-07-12T04:18:03Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-cmek	2026-07-12T04:18:03Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-cmek	2026-07-18T06:44:40Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard	2026-07-12T04:18:03Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-pitr	2026-07-12T04:18:03Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/write-mql-gemini	2026-07-12T04:18:03Z
@@ -660,7 +660,7 @@ https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import	20
 https://docs.cloud.google.com/firestore/native/docs/manage-data/move-data	2026-07-16T06:07:27Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/transactions	2026-07-16T06:07:27Z
 https://docs.cloud.google.com/firestore/native/docs/manage-databases	2026-07-16T06:07:03Z
-https://docs.cloud.google.com/firestore/native/docs/migrate-standard-to-enterprise	2026-07-16T06:07:03Z
+https://docs.cloud.google.com/firestore/native/docs/migrate-standard-to-enterprise	2026-07-18T01:39:00Z
 https://docs.cloud.google.com/firestore/native/docs/monitor-usage	2026-07-16T06:07:03Z
 https://docs.cloud.google.com/firestore/native/docs/overview	2026-07-16T06:07:03Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/dml	2026-07-16T06:07:27Z
