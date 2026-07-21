@@ -83,11 +83,11 @@ The `{document=**}` path used in the examples above matches any document in the 
 
 Firestore provides a rules simulator that you can use to test your ruleset. You can access the simulator from the Firebase console in the **Databases & Storage** \> **Firestore** \> [**Rules** tab](https://console.firebase.google.com/project/_/firestore/rules) .
 
-The rules simulator lets you simulate authenticated and unauthenticated reads, writes, and deletes. When you simulate an authenticated request, you can build and preview authentication tokens from various providers. Simulated requests run against the ruleset in your editor, not your currently deployed ruleset.
+The rules simulator lets you simulate authenticated and unauthenticated reads, writes, and deletes. When you simulate an authenticated request, you can build and preview authentication tokens from various providers. Simulated requests run against the ruleset in your editor, not your deployed ruleset.
 
 ## Deploying rules
 
-Before you can start using Firestore from your mobile app, you'll need to deploy security rules. You can deploy rules in the Firebase console, using the Firebase CLI, or with the Firestore management REST API.
+Before you can start using Firestore from your mobile app, you'll need to deploy security rules. You can deploy rules in the Firebase console, in the Google Cloud console, using the Firebase CLI, or with the Firestore management REST API.
 
 Updates to Firestore Security Rules can take up to a minute to affect new queries and listeners. However, it can take up to 10 minutes to fully propagate the changes and affect any active listeners.
 
@@ -100,6 +100,35 @@ To set up and deploy your first set of rules, for the default database in your p
 If you create multiple databases for your project, you can deploy Firestore Security Rules for each database. In the Firebase console, use the database selector to switch between the default database and any additional databases.
 
 Write your rules in the online editor, then click **Publish** .
+
+### Use the Google Cloud console
+
+You can manage and deploy Firestore Security Rules directly in the Google Cloud console. The rules editor is available for Firestore in Native mode in both the Standard and Enterprise editions.
+
+> **Note:** The Google Cloud console doesn't support deployment of Firestore Security Rules to the `(default)` database. To manage rules for the `(default)` database, use the [Firebase console](https://docs.cloud.google.com/firestore/native/docs/security/get-started#use-the-firebase-console) or the [Firebase CLI](https://docs.cloud.google.com/firestore/native/docs/security/get-started#use_the_cli) .
+
+#### Required permissions
+
+To manage and deploy security rules in the Google Cloud console, you need the following IAM permissions:
+
+  - `firebaserules.releases.create`
+  - `firebaserules.releases.delete`
+  - `firebaserules.releases.update`
+  - `firebaserules.rulesets.create`
+  - `firebaserules.rulesets.delete`
+  - `firebaserules.rulesets.list`
+  - `firebaserules.rulesets.test` (required to use the rules simulator)
+
+To deploy rules in the Google Cloud console:
+
+1.  In the Google Cloud console, go to the **Databases** page.
+2.  Click the ID of the database you want to manage.
+3.  In the navigation menu, click **Security** .
+4.  Click the **Firestore Rules** tab.
+5.  In the rules editor, view your rules. To edit, click **New ruleset** or **Clone ruleset** , and then modify your rules.
+6.  Click **Publish** to deploy your changes.
+
+You can also view previous rulesets in the timeline and clone or restore them.
 
 ### Use the Firebase CLI
 

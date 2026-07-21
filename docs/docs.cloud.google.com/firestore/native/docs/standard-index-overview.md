@@ -162,7 +162,7 @@ Firestore Standard edition computes the results for queries as follows:
 
 By automatically creating single-field indexes for you, Firestore Standard edition allows your application to quickly support the most basic database queries. Single-field indexes allow you to perform simple queries based on field values and the comparators `<` , `<=` , `==` , `>=` , `>` , and `in` . For array fields, they allow you to perform `array-contains` and `array-contains-any` queries.
 
-To illustrate, examine the following examples from the point of view of index creation. The following snippet creates a few `city` documents in a `cities` collection and sets `name` , `state` , `country` , `capital` , `population` , and `tags` fields for each document:
+To illustrate, examine the following examples from the point of view of index creation. The following snippet creates a few `city` documents in a `cities` collection and sets `name` , `state` , `country` , `capital` , `population` , and `regions` fields for each document:
 
 ##### Web
 

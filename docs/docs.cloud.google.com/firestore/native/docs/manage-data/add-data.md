@@ -690,7 +690,7 @@ If you're not sure whether the document exists, pass the option to merge the new
 
 ### Data types
 
-Firestore lets you write a variety of data types inside a document, including strings, booleans, numbers, dates, null, and nested arrays and objects. Firestore always stores numbers as doubles, regardless of what type of number you use in your code.
+Firestore lets you write a variety of data types inside a document, including strings, booleans, numbers, dates, null, and nested arrays and objects. Firestore stores numbers as either integers or doubles, depending on the type of number you use in your code.
 
 ### Web version 9
 

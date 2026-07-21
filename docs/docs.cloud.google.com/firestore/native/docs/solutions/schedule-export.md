@@ -18,13 +18,13 @@ Before you schedule managed data exports, you must complete the following tasks:
 
 1.  [Enable billing for your Google Cloud project.](https://cloud.google.com/billing/docs/how-to/modify-project) Only Google Cloud projects with billing enabled can use the export and import feature.
     
-    > **Note:** Firebase projects must be on the [Blaze plan](https://firebase.google.com/pricing/?authuser=0) to use the managed export and import feature. Enabling billing for the Google Cloud automatically upgrades your Firebase project to the Blaze plan.
+    > **Note:** Firebase projects must be on the [Blaze plan](https://firebase.google.com/pricing/) to use the managed export and import feature. Enabling billing for the Google Cloud automatically upgrades your Firebase project to the Blaze plan.
 
 2.  Export operations require a destination Cloud Storage bucket. [Create a Cloud Storage bucket](https://cloud.google.com/storage/docs/creating-buckets) in a location near [your Firestore database location](https://docs.cloud.google.com/firestore/native/docs/locations#view-settings) . You cannot use a Requester Pays bucket for export operations.
 
 ## Create a Cloud Function and a Cloud Scheduler job
 
-Follow the steps below to create a Node.js Cloud Function that initiates a Firestore data export and a Cloud Scheduler job to call that function:
+Follow these steps to create a Node.js Cloud Function that initiates a Firestore data export and a Cloud Scheduler job to call that function:
 
 ##### Firebase CLI
 
@@ -71,7 +71,7 @@ Follow the steps below to create a Node.js Cloud Function that initiates a Fires
           });
         });
 
-3.  In the code above, modify the following:
+3.  In the preceding code, modify the following:
     
       - Replace `  BUCKET_NAME  ` with the name of your bucket.
     
@@ -109,9 +109,15 @@ Follow the steps below to create a Node.js Cloud Function that initiates a Fires
         const bucket = 'gs://BUCKET_NAME'
         
         exports.scheduledFirestoreExport = (event, context) => {
+          // Access the GCLOUD_PROJECT environment variable set by the runtime.
+          const projectId =
+            process.env.GOOGLE_CLOUD_PROJECT || process.env.GCLOUD_PROJECT;
+          // Use the DATABASE_ID environment variable if set,
+          // otherwise default to '(default)'
+          const databaseId = process.env.DATABASE_ID || '(default)';
           const databaseName = client.databasePath(
-            YOUR_PROJECT_ID,
-            '(default)'
+            projectId,
+            databaseId
           );
         
           return client
@@ -133,13 +139,15 @@ Follow the steps below to create a Node.js Cloud Function that initiates a Fires
             });
         };
     
-    In the code above, modify the following:
+    In the preceding code, modify the following:
     
       - Replace `  BUCKET_NAME  ` with the name of your bucket.
     
       - Modify `collectionIds: []` to export only the specified collection groups. Leave as is to export all collection groups.
         
         > **Note:** If you export all collection groups, any follow-up import operations must import all collection groups in the export data files.
+    
+      - (Optional) If you are using a non-default database, ensure you set the `DATABASE_ID` environment variable when creating the Cloud Function. If you are using a runtime where `GOOGLE_CLOUD_PROJECT` is not automatically set, you may also need to set it manually or replace it with your project ID in the code.
 
 7.  Under `package.json` , add the following dependency:
     
@@ -167,9 +175,9 @@ Next, create a Cloud Scheduler job that calls your Cloud Function:
 
 5.  Select a **Timezone** .
 
-6.  Under **Target** , select **Pub/Sub** . In the **Topic** field, enter the name of the pub/sub topic you defined alongside your Cloud Function, `initiateFirestoreExport` in the example above.
+6.  Under **Target** , select **Pub/Sub** . In the **Topic** field, enter the name of the pub/sub topic you defined alongside your Cloud Function, `initiateFirestoreExport` in the preceding example.
 
-7.  In the **Payload** field, enter `start export` . The job requires a payload defined, but the Cloud Function above does not actually use this value.
+7.  In the **Payload** field, enter `start export` . The job requires a payload defined, but the preceding Cloud Function does not actually use this value.
 
 8.  Click **Create** .
 
@@ -179,32 +187,41 @@ At this point, you've deployed your Cloud Function and Cloud Scheduler job, but 
 
 Next, give the Cloud Function permission to start export operations and to write to your GCS bucket.
 
-This Cloud Function uses your project's default service account to authenticate and authorize its export operations. When you create a project, a default service account is created for you with the following name:
+This Cloud Run function uses a service account to authenticate and authorize its export operations. The service account used depends on your Cloud Run functions configuration:
 
-    PROJECT_ID@appspot.gserviceaccount.com
+  - **Cloud Functions (1st gen):** Uses the App Engine default service account: `  PROJECT_ID @appspot.gserviceaccount.com `
+  - **Cloud Run functions (2nd gen):** Uses the default Compute Engine service account: `  PROJECT_NUMBER -compute@developer.gserviceaccount.com `
 
-This service account requires permission to start an export operation and to write to your Cloud Storage bucket. To grant these permissions, assign the following IAM roles to the default service account:
+This service account requires permission to start an export operation and to write to your Cloud Storage bucket. To grant these permissions, assign the following IAM roles to the service account:
 
   - `Cloud Datastore Import Export Admin`
     
     > **Note:** This Datastore role also grants permissions for Firestore.
 
-  - `Owner` or `Storage Admin` role on the bucket
+  - `Storage Admin` role on the bucket
+
+  - `Cloud Run Invoker` (Required for Cloud Run functions (2nd gen) to allow the triggering service to invoke the function)
 
 You can use the `gcloud` and `gsutil` command-line tools to assign these roles.
 
 If not already installed, you can access these tools from [Cloud Shell](https://cloud.google.com/shell/) in the Google Cloud console:  
 
-1.  Assign the **Cloud Datastore Import Export Admin** role. Replace PROJECT\_ID , and run the following command:
+1.  Assign the **Cloud Datastore Import Export Admin** role. Replace PROJECT\_ID and SERVICE\_ACCOUNT (e.g., `  PROJECT_ID @appspot.gserviceaccount.com ` or `  PROJECT_NUMBER -compute@developer.gserviceaccount.com ` ), and run the following command:
     
         gcloud projects add-iam-policy-binding PROJECT_ID \
-            --member serviceAccount:PROJECT_ID@appspot.gserviceaccount.com \
+            --member serviceAccount:SERVICE_ACCOUNT \
             --role roles/datastore.importExportAdmin
 
-2.  Assign the **Storage Admin** role on your bucket. Replace PROJECT\_ID and BUCKET\_NAME , and run the following command:
+2.  Assign the **Storage Admin** role on your bucket. Replace SERVICE\_ACCOUNT and BUCKET\_NAME , and run the following command:
     
-        gsutil iam ch serviceAccount:PROJECT_ID@appspot.gserviceaccount.com:admin \
+        gsutil iam ch serviceAccount:SERVICE_ACCOUNT:admin \
             gs://BUCKET_NAME
+
+3.  (For Cloud Run functions (2nd gen)) Assign the **Cloud Run Invoker** role to the service account. Replace PROJECT\_ID and SERVICE\_ACCOUNT , and run the following command:
+    
+        gcloud projects add-iam-policy-binding PROJECT_ID \
+            --member serviceAccount:SERVICE_ACCOUNT \
+            --role roles/run.invoker
 
 If you disable or delete your App Engine default service account, your App Engine app will lose access to your Firestore database. If you disabled your App Engine service account, you can re-enable it, see [enabling a service account](https://cloud.google.com/iam/docs/creating-managing-service-accounts#enabling) . If you deleted your App Engine service account within the last 30 days, you can restore your service account, see [undeleting a service account](https://cloud.google.com/iam/docs/creating-managing-service-accounts#undeleting) .
 

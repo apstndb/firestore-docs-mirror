@@ -12,8 +12,7 @@ You can manage Firestore Standard edition through the following actions in the G
 
   - View, query, add, edit, and delete data.
   - Manage indexes.
-
-> **Note:** To manage your Security Rules, use the [Firebase console](https://firebase.google.com/docs/firestore/using-console) .
+  - Manage security rules.
 
 ## View data
 
@@ -165,31 +164,47 @@ To delete a specific field in a document:
 
 ## Manage Firestore Security Rules
 
-You can view your [Firestore Security Rules](https://docs.cloud.google.com/firestore/docs/security/get-started) from the Google Cloud console. To edit or delete your ruleset, enable Firebase, and [use the Firebase CLI or Firebase console](https://docs.cloud.google.com/firestore/docs/security/get-started#deploying_rules) .
+You can manage and deploy [Firestore Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/get-started) directly in the Google Cloud console. The rules editor is available for Firestore in Native mode in both the Standard and Enterprise editions.
+
+### Use the Google Cloud console
+
+> **Note:** The Google Cloud console doesn't support deployment of Firestore Security Rules to the `(default)` database. To manage rules for the `(default)` database, use the [Firebase console](https://docs.cloud.google.com/firestore/native/docs/security/get-started#use-the-firebase-console) or the [Firebase CLI](https://docs.cloud.google.com/firestore/native/docs/security/get-started#use_the_cli) .
+
+#### Required permissions
+
+To manage and deploy security rules in the Google Cloud console, you need the following IAM permissions:
+
+  - `firebaserules.releases.create`
+  - `firebaserules.releases.delete`
+  - `firebaserules.releases.update`
+  - `firebaserules.rulesets.create`
+  - `firebaserules.rulesets.delete`
+  - `firebaserules.rulesets.list`
+  - `firebaserules.rulesets.test` (required to use the rules simulator)
+
+To deploy rules in the Google Cloud console:
+
+1.  In the Google Cloud console, go to the **Databases** page.
+
+2.  Click the ID of the database you want to manage.
+
+3.  In the navigation menu, click **Security** .
+
+4.  Click the **Firestore Rules** tab.
+
+5.  In the rules editor, view your rules. To edit, click **New ruleset** or **Clone ruleset** , and then modify your rules.
+
+6.  Click **Publish** to deploy your changes.
+
+You can also view previous rulesets in the timeline and clone or restore them.
 
 ### Enabling Firebase
 
-To edit your Firestore Security Rules, you must enable Firebase for your Google Cloud project. If Firebase is not enabled, you can enable Firebase from the ***Security Rules*** page:
+To edit your `(default)` database's Firestore Security Rules using the Firebase console or Firebase CLI, you must enable Firebase for your Google Cloud project. If Firebase is not enabled, you can enable Firebase from the ***Security*** page in the Google Cloud console:
 
 ![If Firebase is not enabled in your project, the Enable Firebase SDK button appears.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-console-rules-enable-firebase.png)
 
 The Firestore Security Rules feature is closely integrated with Firebase Auth and the Firebase SDKs (Web, Android, Apple platforms). For more on Firebase and Firestore, see [getting started with Firebase](https://docs.cloud.google.com/firestore/docs/client/get-firebase) .
-
-### View Security Rules
-
-To view your Firestore Security Rules from the Google Cloud console, go to the ***Security Rules*** page:
-
-1.  In the Google Cloud console, go to the **Databases** page.
-
-2.  Select the required database from the list of databases.
-
-3.  In the navigation menu, click **Security Rules** .
-
-![Use the Rules page to view your ruleset.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-console-view-rules.png)
-
-### Edit Security Rules
-
-To edit or delete your Firestore Security Rules, [use the Firebase CLI or Firebase console](https://docs.cloud.google.com/firestore/docs/security/get-started#deploying_rules) . In the Firebase console, go to the **Databases & Storage** \> **Firestore** \> [**Rules** tab](https://console.firebase.google.com/project/_/firestore/rules) . Learn more about [setting up and customizing rules](https://docs.cloud.google.com/firestore/native/docs/security/get-started) .
 
 ## Manage indexes
 
