@@ -52,6 +52,8 @@ A bulk delete operation first finds all applicable documents in your database an
 
 To bulk delete specific collection groups, use the [`--collection-ids`](https://cloud.google.com/sdk/gcloud/reference/beta/firestore/bulk-delete#FLAGS) flag. The operation deletes only the collection groups with the given IDs.
 
+> **Note:** The \`--collection-ids\` flag accepts a maximum of 100 collection IDs.
+
     gcloud firestore bulk-delete \
     --collection-ids=[COLLECTION_GROUP_ID_1_OR_KIND_1],[COLLECTION_GROUP_ID_2_OR_KIND_2],[SUBCOLLECTION_GROUP_ID_1_OR_KIND_3] \
     --database=[DATABASE]

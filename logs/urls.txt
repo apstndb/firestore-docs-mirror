@@ -11,7 +11,7 @@ https://docs.cloud.google.com/datastore/docs/audit-logging	2026-07-18T04:46:54Z
 https://docs.cloud.google.com/datastore/docs/backups	2026-07-18T04:46:54Z
 https://docs.cloud.google.com/datastore/docs/best-practices	2026-07-18T04:46:54Z
 https://docs.cloud.google.com/datastore/docs/billing-questions	2026-07-18T04:46:54Z
-https://docs.cloud.google.com/datastore/docs/bulk-delete	2026-07-18T04:46:54Z
+https://docs.cloud.google.com/datastore/docs/bulk-delete	2026-07-22T08:11:35Z
 https://docs.cloud.google.com/datastore/docs/client-side-traces	2026-07-18T04:46:54Z
 https://docs.cloud.google.com/datastore/docs/cloud-datastore-best-practices	2026-07-18T04:51:37Z
 https://docs.cloud.google.com/datastore/docs/cmek	2026-07-18T04:51:37Z
@@ -550,7 +550,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/audit-logging
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/backups	2026-07-18T06:44:39Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences	2026-07-18T06:44:39Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/bulk-data-loading	2026-07-18T06:44:39Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/bulk-delete	2026-07-18T06:44:39Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/bulk-delete	2026-07-22T08:11:35Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/change-streams	2026-07-18T06:44:39Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/cmek	2026-07-18T06:44:39Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access	2026-07-18T06:44:39Z
@@ -653,7 +653,7 @@ https://docs.cloud.google.com/firestore/native/docs/knowledge-catalog	2026-07-21
 https://docs.cloud.google.com/firestore/native/docs/langchain	2026-07-21T10:21:06Z
 https://docs.cloud.google.com/firestore/native/docs/locations	2026-07-21T10:21:06Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data	2026-07-21T10:21:15Z
-https://docs.cloud.google.com/firestore/native/docs/manage-data/bulk-delete	2026-07-21T10:21:15Z
+https://docs.cloud.google.com/firestore/native/docs/manage-data/bulk-delete	2026-07-22T08:11:35Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data	2026-07-21T10:21:15Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline	2026-07-21T10:21:15Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import	2026-07-21T10:21:15Z

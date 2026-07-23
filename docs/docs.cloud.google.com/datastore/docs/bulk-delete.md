@@ -48,6 +48,8 @@ A bulk delete operation first finds all applicable entities in your database and
 
 To bulk delete specific kinds, use the [`--collection-ids`](https://cloud.google.com/sdk/gcloud/reference/beta/firestore/bulk-delete#FLAGS) flag. The flag uses Firestore terminology, but a collection group ID is the same as a kind ID. The operation deletes only the kinds with the given IDs. A kind includes all entities and nested entities (at any path) with the specified kinds.
 
+> **Note:** The \`--collection-ids\` flag accepts a maximum of 100 collection IDs.
+
     gcloud firestore bulk-delete \
     --collection-ids=[COLLECTION_GROUP_ID_1_OR_KIND_1],[COLLECTION_GROUP_ID_2_OR_KIND_2],[SUBCOLLECTION_GROUP_ID_1_OR_KIND_3] \
     --database=[DATABASE]

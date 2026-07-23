@@ -52,6 +52,8 @@ To bulk delete specific collection groups, use the [`--collection-ids`](https://
 
 > **Note:** Bulk deleting a collection won't automatically delete all the child collections. You also need to specify the child collection groups.
 
+> **Note:** The \`--collection-ids\` flag accepts a maximum of 100 collection IDs.
+
     gcloud firestore bulk-delete \
     --collection-ids=[COLLECTION_GROUP_ID_1_OR_KIND_1],[COLLECTION_GROUP_ID_2_OR_KIND_2],[SUBCOLLECTION_GROUP_ID_1_OR_KIND_3] \
     --database=[DATABASE]
