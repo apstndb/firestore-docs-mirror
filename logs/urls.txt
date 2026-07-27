@@ -155,7 +155,7 @@ https://docs.cloud.google.com/datastore/docs/reference/data/rpc/google.type	2025
 https://docs.cloud.google.com/datastore/docs/reference/gql_reference	2026-07-18T04:47:20Z
 https://docs.cloud.google.com/datastore/docs/reference/libraries	2026-07-18T04:47:20Z
 https://docs.cloud.google.com/datastore/docs/regional-endpoints	2026-07-18T04:51:37Z
-https://docs.cloud.google.com/datastore/docs/release-notes	2026-07-18T04:47:03Z
+https://docs.cloud.google.com/datastore/docs/release-notes	2026-07-27T03:39:36Z
 https://docs.cloud.google.com/datastore/docs/reliability-recommender	2026-07-18T04:51:37Z
 https://docs.cloud.google.com/datastore/docs/resources	2026-07-18T04:51:37Z
 https://docs.cloud.google.com/datastore/docs/restore-in-place	2026-07-18T04:51:37Z
@@ -412,7 +412,7 @@ https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1be
 https://docs.cloud.google.com/firestore/docs/reference/rpc/google.longrunning	2025-12-05T18:23:35Z
 https://docs.cloud.google.com/firestore/docs/reference/rpc/google.rpc	2025-10-17T23:18:41Z
 https://docs.cloud.google.com/firestore/docs/reference/rpc/google.type	2025-10-17T23:18:34Z
-https://docs.cloud.google.com/firestore/docs/release-notes	2026-07-21T10:20:58Z
+https://docs.cloud.google.com/firestore/docs/release-notes	2026-07-27T03:40:16Z
 https://docs.cloud.google.com/firestore/docs/samples	2026-07-21T10:20:58Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes	2026-07-21T10:20:57Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes-async	2026-07-21T10:20:57Z
@@ -582,7 +582,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/pitr	2026-07-
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain	2026-07-18T06:44:40Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain-reference	2026-07-18T06:44:40Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-insights	2026-07-18T06:44:40Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/release-notes	2026-07-18T06:44:53Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/release-notes	2026-07-27T03:39:36Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/reliability-recommender	2026-07-18T06:44:40Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/resolve-latency	2026-07-18T06:44:40Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/resources	2026-07-18T06:44:40Z
