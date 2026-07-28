@@ -418,7 +418,7 @@ https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes-async	2026-07-21T10:20:57Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-custom-type-definition	2026-07-21T10:20:57Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-custom-type-definition-async	2026-07-21T10:20:57Z
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection	2026-07-21T10:20:57Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection	2026-07-27T23:43:59Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection-async	2026-07-21T10:20:57Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-doc	2026-07-21T10:20:57Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-doc-async	2026-07-21T10:20:57Z
@@ -765,7 +765,7 @@ https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scal
 https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale-enterprise	2026-07-21T10:21:06Z
 https://docs.cloud.google.com/firestore/native/docs/usage-insights	2026-07-21T10:21:06Z
 https://docs.cloud.google.com/firestore/native/docs/use-cmek	2026-07-21T10:21:06Z
-https://docs.cloud.google.com/firestore/native/docs/use-firestore-mcp	2026-07-21T10:21:06Z
+https://docs.cloud.google.com/firestore/native/docs/use-firestore-mcp	2026-07-27T21:14:10Z
 https://docs.cloud.google.com/firestore/native/docs/use-monitoring-dashboard	2026-07-21T10:21:06Z
 https://docs.cloud.google.com/firestore/native/docs/use-pitr	2026-07-21T10:21:06Z
 https://docs.cloud.google.com/firestore/native/docs/use-rest-api	2026-07-21T10:21:06Z
