@@ -31,7 +31,7 @@ The following table lists the data types supported by Firestore. It also describ
 <tr class="odd">
 <td>Array</td>
 <td>By element values</td>
-<td><p>An array cannot contain another array value as one of its elements.</p>
+<td><p>In Standard edition databases, an array cannot contain another array value as one of its elements. In Enterprise edition databases, an array can contain an array value as one if its elements.</p>
 <p>Within an array, elements maintain the position assigned to them. When sorting two or more arrays, arrays are ordered based on their element values.</p>
 <p>When comparing two arrays, the first elements of each array are compared. If the first elements are equal, then the second elements are compared and so on until a difference is found. If an array runs out of elements to compare but is equal up to that point, then the shorter array is ordered before the longer array.</p>
 <p>For example, <code dir="ltr" translate="no">[1, 2, 3] &lt; [1, 2, 3, 1] &lt; [2]</code> . The array <code dir="ltr" translate="no">[2]</code> has the greatest first element value. The array <code dir="ltr" translate="no">[1, 2, 3]</code> has elements equal to the first three elements of <code dir="ltr" translate="no">[1, 2, 3, 1]</code> but is shorter in length.</p></td>
@@ -44,7 +44,7 @@ The following table lists the data types supported by Firestore. It also describ
 <tr class="odd">
 <td>Bytes</td>
 <td>Byte order</td>
-<td>Up to 1,048,487 bytes (1 MiB - 89 bytes). Only the first 1,500 bytes are considered by queries.</td>
+<td>In Standard edition databases, the value must not exceed 1,048,487 bytes (1 MiB - 89 bytes) and only the first 1,500 bytes are considered by queries. In Enterprise edition databases, there is no limit on the size of the value (other than document and index entry size limits) and the full value is considered by queries.</td>
 </tr>
 <tr class="even">
 <td>Date and time</td>
@@ -93,7 +93,7 @@ The following table lists the data types supported by Firestore. It also describ
 <tr class="odd">
 <td>Text string</td>
 <td>UTF-8 encoded byte order</td>
-<td>Up to 1,048,487 bytes (1 MiB - 89 bytes). Only the first 1,500 bytes of the UTF-8 representation are considered by queries.</td>
+<td>In Standard edition databases, the value must not exceed 1,048,487 bytes (1 MiB - 89 bytes) and only the first 1,500 bytes are considered by queries. In Enterprise edition databases, there is no limit on the size of the value (other than document and index entry size limits) and the full value is considered by queries.</td>
 </tr>
 <tr class="even">
 <td>Vector</td>

@@ -94,7 +94,9 @@ To create a TTL policy, follow these steps:
 
 5.  Enter a collection group name and a timestamp field name.
 
-6.  Click **Create** .
+6.  Optional: Configure an **Expiration offset** . Enter a value and select a unit (days, hours, minutes, or seconds). By default, the offset is 0.
+
+7.  Click **Create** .
 
 The console returns to the **Time-to-live** page. If the operation successfully starts, the page adds an entry to the TTL policies table. On failure, the page displays an error message.
 
@@ -107,10 +109,23 @@ The console returns to the **Time-to-live** page. If the operation successfully 
 2.  Use the [`firestore fields ttls update`](https://cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update) command to configure a TTL policy. Add the `--async` flag to prevent the gcloud CLI from waiting for the operation to complete.
     
     ``` 
-     gcloud firestore fields ttls update
-    ttl_field --collection-group=collection_group_name
-    --enable-ttl 
+     gcloud firestore fields ttls update \
+      ttl_field \
+      --collection-group=collection_group_name \
+      --enable-ttl 
     ```
+    
+    To enable TTL with an expiration offset, add the `--expiration-offset` flag:
+    
+    ``` 
+     gcloud firestore fields ttls update \
+      ttl_field \
+      --collection-group=collection_group_name \
+      --enable-ttl \
+      --expiration-offset=expiration_offset 
+    ```
+    
+    Replace expiration\_offset with a duration, for example, `7d` for 7 days or `24h` for 24 hours. If you omit this flag, the expiration offset defaults to 0.
 
 ### TTL policy enablement duration
 

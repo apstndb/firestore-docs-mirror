@@ -665,6 +665,7 @@ The following audit logs are associated with methods belonging to `google.firest
   - **Permissions** :
       - `datastore.databases.get - DATA_READ`
       - `datastore.entities.create - DATA_WRITE`
+      - `datastore.entities.delete - DATA_WRITE`
       - `datastore.entities.update - DATA_WRITE`
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `protoPayload.methodName="google.firestore.v1.Firestore.Commit"`  
@@ -881,10 +882,8 @@ The following audit logs are associated with methods belonging to `google.firest
   - **Method** : `  google.firestore.v1beta1.Firestore.ExecutePipeline  `  
   - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
-      - `datastore.databases.get - DATA_READ`
       - `datastore.entities.get - DATA_READ`
       - `datastore.entities.list - DATA_READ`
-      - `datastore.entities.update - DATA_WRITE`
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `protoPayload.methodName="google.firestore.v1beta1.Firestore.ExecutePipeline"`  
 

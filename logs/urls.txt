@@ -242,7 +242,7 @@ https://docs.cloud.google.com/datastore/docs/tools/indexconfig	2026-07-18T04:46:
 https://docs.cloud.google.com/datastore/docs/trace-span-references	2026-07-18T04:51:37Z
 https://docs.cloud.google.com/datastore/docs/troubleshoot-java-client	2026-07-18T04:51:37Z
 https://docs.cloud.google.com/datastore/docs/troubleshooting	2026-07-18T04:51:37Z
-https://docs.cloud.google.com/datastore/docs/ttl	2026-07-18T04:51:37Z
+https://docs.cloud.google.com/datastore/docs/ttl	2026-07-28T16:14:01Z
 https://docs.cloud.google.com/datastore/docs/understand-performance-monitoring	2026-07-18T04:51:37Z
 https://docs.cloud.google.com/datastore/docs/usage-insights	2026-07-18T04:51:37Z
 https://docs.cloud.google.com/datastore/docs/use-cmek	2026-07-18T04:51:37Z
@@ -601,7 +601,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-fea
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80	2026-07-18T06:44:40Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/tags	2026-07-18T06:44:40Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/text-search	2026-07-18T06:44:40Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl	2026-07-18T06:44:40Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl	2026-07-28T16:14:01Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-error-codes	2026-07-18T06:44:40Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-reads-writes-scale	2026-07-18T06:44:40Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/usage-insights	2026-07-18T06:44:40Z
@@ -613,7 +613,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/quotas	2026-07-18T
 https://docs.cloud.google.com/firestore/native/docs	2026-07-21T21:04:42Z
 https://docs.cloud.google.com/firestore/native/docs/apis	2026-07-21T10:21:06Z
 https://docs.cloud.google.com/firestore/native/docs/app-engine-requirement	2026-07-21T10:21:06Z
-https://docs.cloud.google.com/firestore/native/docs/audit-logging	2026-07-21T10:21:06Z
+https://docs.cloud.google.com/firestore/native/docs/audit-logging	2026-07-29T06:39:09Z
 https://docs.cloud.google.com/firestore/native/docs/authentication	2026-07-21T10:21:06Z
 https://docs.cloud.google.com/firestore/native/docs/backups	2026-07-21T10:21:06Z
 https://docs.cloud.google.com/firestore/native/docs/best-practices	2026-07-21T10:21:06Z
@@ -621,7 +621,7 @@ https://docs.cloud.google.com/firestore/native/docs/billing-example	2026-07-21T1
 https://docs.cloud.google.com/firestore/native/docs/billing-questions	2026-07-21T10:21:06Z
 https://docs.cloud.google.com/firestore/native/docs/client-side-traces	2026-07-21T10:21:06Z
 https://docs.cloud.google.com/firestore/native/docs/cmek	2026-07-21T10:21:06Z
-https://docs.cloud.google.com/firestore/native/docs/concepts/data-types	2026-07-21T10:21:15Z
+https://docs.cloud.google.com/firestore/native/docs/concepts/data-types	2026-07-28T16:02:23Z
 https://docs.cloud.google.com/firestore/native/docs/concepts/structure-data	2026-07-21T10:21:15Z
 https://docs.cloud.google.com/firestore/native/docs/connect-ide-using-mcp-toolbox	2026-07-21T10:21:06Z
 https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library	2026-07-21T10:21:06Z
@@ -757,7 +757,7 @@ https://docs.cloud.google.com/firestore/native/docs/tags	2026-07-21T10:21:06Z
 https://docs.cloud.google.com/firestore/native/docs/text-search	2026-07-21T10:21:06Z
 https://docs.cloud.google.com/firestore/native/docs/trace-span-references	2026-07-21T10:21:06Z
 https://docs.cloud.google.com/firestore/native/docs/transaction-data-contention	2026-07-21T10:21:06Z
-https://docs.cloud.google.com/firestore/native/docs/ttl	2026-07-21T10:21:06Z
+https://docs.cloud.google.com/firestore/native/docs/ttl	2026-07-28T16:14:01Z
 https://docs.cloud.google.com/firestore/native/docs/tutorials	2026-07-21T10:21:06Z
 https://docs.cloud.google.com/firestore/native/docs/understand-error-codes	2026-07-21T10:21:06Z
 https://docs.cloud.google.com/firestore/native/docs/understand-performance-monitoring	2026-07-21T10:21:06Z
