@@ -418,7 +418,7 @@ https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes-async	2026-07-21T10:20:57Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-custom-type-definition	2026-07-21T10:20:57Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-custom-type-definition-async	2026-07-21T10:20:57Z
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection	2026-07-27T23:43:59Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection	2026-07-29T23:51:16Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection-async	2026-07-21T10:20:57Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-doc	2026-07-21T10:20:57Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-doc-async	2026-07-21T10:20:57Z
