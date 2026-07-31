@@ -25,11 +25,11 @@ The [Firestore client libraries](https://docs.cloud.google.com/firestore/native/
 
 ### Google Cloud CLI
 
-When you use the [gcloud CLI](https://docs.cloud.google.com/sdk/gcloud/reference/firestore) to access Firestore, you [log in to the gcloud CLI](https://docs.cloud.google.com/sdk/docs/authorizing) with a user account, which provides the credentials used by the gcloud CLI commands.
+When you use the [gcloud CLI](https://docs.cloud.google.com/sdk/gcloud/reference/firestore) to access Firestore, you authenticate to Google Cloud as a principal, which provides the credentials used by the gcloud CLI commands.
 
 If your organization's security policies prevent user accounts from having the required permissions, you can use [service account impersonation](https://docs.cloud.google.com/firestore/native/docs/authentication#sa-impersonation) .
 
-For more information, see [Authenticate for using the gcloud CLI](https://docs.cloud.google.com/docs/authentication/gcloud) . For more information about using the gcloud CLI with Firestore, see [the gcloud CLI reference pages](https://docs.cloud.google.com/sdk/gcloud/reference/firestore) .
+For more information, see [Authenticate for the gcloud CLI](https://docs.cloud.google.com/sdk/docs/authenticate) . For more information about using the gcloud CLI with Firestore, see [the gcloud CLI reference pages](https://docs.cloud.google.com/sdk/gcloud/reference/firestore) .
 
 ## Set up authentication for Firestore
 
