@@ -22,7 +22,8 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
     cities_ref = db.collection("cities")
     
-    query = cities_ref.where(filter=FieldFilter("country", "in", ["USA","Japan"]))returnquery
+    query = cities_ref.where(filter=FieldFilter("country", "in", ["USA", "Japan"]))
+    return query
 
 ## What's next
 
