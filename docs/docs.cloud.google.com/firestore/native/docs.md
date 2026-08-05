@@ -10,7 +10,7 @@ data_source: docs.cloud.google.com
 
 Firestore in Native mode is a NoSQL document database built for automatic scaling, high performance, and ease of application development. While the Firestore interface has many of the same features as traditional databases, as a NoSQL database it differs from them in the way it describes relationships between data objects.
 
-> **Key Point:** Firestore now has MongoDB API compatibility. See [Firestore with MongoDB compatibility](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs) .
+> **Key Point:** Firestore now has MongoDB API compatibility. See [Firestore with MongoDB compatibility](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs?) .
 
 [Go to the Firestore product page for more.](https://cloud.google.com/products/firestore/)
 

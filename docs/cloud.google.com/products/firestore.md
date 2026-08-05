@@ -98,7 +98,7 @@ For mobile and web app backends, Firestore acts as a powerful, managed database 
 
 You can now significantly accelerate your build process and focus on delivering core application value to your users, rather than getting bogged down in complex backend infrastructure development and maintenance.
 
-[Mobile web apps compute diagram](https://cloud.google.com/products/firestore)
+[Mobile web apps compute diagram](https://cloud.google.com/products/firestore#)
 
   - [](https://cloud.google.com/firestore/docs/create-database-web-mobile-client-library)
     
@@ -122,7 +122,7 @@ For mobile and web app backends, Firestore acts as a powerful, managed database 
 
 You can now significantly accelerate your build process and focus on delivering core application value to your users, rather than getting bogged down in complex backend infrastructure development and maintenance.
 
-[Mobile web apps compute diagram](https://cloud.google.com/products/firestore)
+[Mobile web apps compute diagram](https://cloud.google.com/products/firestore#)
 
   - [](https://cloud.google.com/firestore/docs/create-database-web-mobile-client-library)
     
@@ -142,7 +142,7 @@ You can now significantly accelerate your build process and focus on delivering 
 
 Modern games demand high-performance, flexible databases to power immersive player experiences. Firestore offers a robust, scalable, and durable document database, perfectly suited for managing critical persistent data such as user profiles, in-game inventories, game state, and marketplace listings. Its real-time capabilities ensure consistent and synchronized player experiences across all platforms and at any scale, allowing you to focus on creating compelling gameplay without worrying about database limitations.
 
-[Gaming Use Case](https://cloud.google.com/products/firestore)
+[Gaming Use Case](https://cloud.google.com/products/firestore#)
 
   - [](https://www.youtube.com/watch?v=Z8NTrBTVifE)
     
@@ -164,7 +164,7 @@ Modern games demand high-performance, flexible databases to power immersive play
 
 Modern games demand high-performance, flexible databases to power immersive player experiences. Firestore offers a robust, scalable, and durable document database, perfectly suited for managing critical persistent data such as user profiles, in-game inventories, game state, and marketplace listings. Its real-time capabilities ensure consistent and synchronized player experiences across all platforms and at any scale, allowing you to focus on creating compelling gameplay without worrying about database limitations.
 
-[Gaming Use Case](https://cloud.google.com/products/firestore)
+[Gaming Use Case](https://cloud.google.com/products/firestore#)
 
   - [](https://www.youtube.com/watch?v=Z8NTrBTVifE)
     
@@ -186,7 +186,7 @@ Build powerful generative AI applications and Retrieval-Augmented Generation (RA
 
 By leveraging Firestore as a scalable vector database, you can store embeddings and contextual data enabling efficient semantic search to retrieve relevant information based on user queries. 
 
-[Gen AI Use Case](https://cloud.google.com/products/firestore)
+[Gen AI Use Case](https://cloud.google.com/products/firestore#)
 
   - [](https://cloud.google.com/firestore/docs/solutions/generative-ai-index)
     
@@ -210,7 +210,7 @@ Build powerful generative AI applications and Retrieval-Augmented Generation (RA
 
 By leveraging Firestore as a scalable vector database, you can store embeddings and contextual data enabling efficient semantic search to retrieve relevant information based on user queries. 
 
-[Gen AI Use Case](https://cloud.google.com/products/firestore)
+[Gen AI Use Case](https://cloud.google.com/products/firestore#)
 
   - [](https://cloud.google.com/firestore/docs/solutions/generative-ai-index)
     
@@ -230,7 +230,7 @@ By leveraging Firestore as a scalable vector database, you can store embeddings 
 
 Deliver highly personalized experiences at scale with Firestore. This flexible document database enables effortless management of diverse user data from your key channels (CRM, Web, Mobile), seamlessly integrating profiles, preferences, and activities. Build powerful personalization pipelines that adapt and scale with your understanding of your users, driving engagement and growth.
 
-[Personalization Use Case](https://cloud.google.com/products/firestore)
+[Personalization Use Case](https://cloud.google.com/products/firestore#)
 
   - [](https://www.youtube.com/watch?v=icuk1UiHx-Q)
     
@@ -248,7 +248,7 @@ Deliver highly personalized experiences at scale with Firestore. This flexible d
 
 Deliver highly personalized experiences at scale with Firestore. This flexible document database enables effortless management of diverse user data from your key channels (CRM, Web, Mobile), seamlessly integrating profiles, preferences, and activities. Build powerful personalization pipelines that adapt and scale with your understanding of your users, driving engagement and growth.
 
-[Personalization Use Case](https://cloud.google.com/products/firestore)
+[Personalization Use Case](https://cloud.google.com/products/firestore#)
 
   - [](https://www.youtube.com/watch?v=icuk1UiHx-Q)
     
@@ -264,7 +264,7 @@ Deliver highly personalized experiences at scale with Firestore. This flexible d
 
 Deliver rich and dynamic content experiences across all platforms with Firestore. This powerful and scalable document database acts as a central hub for managing diverse content, including rich media metadata and complex textual data. Its flexible document model ensures consistent and efficient delivery of structured, metadata-rich content to your mobile and web applications, allowing you to scale your content library and user base without compromising performance or data integrity.
 
-[Content Management Use Case](https://cloud.google.com/products/firestore)
+[Content Management Use Case](https://cloud.google.com/products/firestore#)
 
 ![book](https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/book/wght100fill1/20px.svg)
 
@@ -274,7 +274,7 @@ Deliver rich and dynamic content experiences across all platforms with Firestore
 
 Deliver rich and dynamic content experiences across all platforms with Firestore. This powerful and scalable document database acts as a central hub for managing diverse content, including rich media metadata and complex textual data. Its flexible document model ensures consistent and efficient delivery of structured, metadata-rich content to your mobile and web applications, allowing you to scale your content library and user base without compromising performance or data integrity.
 
-[Content Management Use Case](https://cloud.google.com/products/firestore)
+[Content Management Use Case](https://cloud.google.com/products/firestore#)
 
 Generate a solution
 

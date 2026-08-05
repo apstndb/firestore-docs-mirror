@@ -558,7 +558,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect	2026-
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database	2026-08-03T21:03:26Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases	2026-08-03T21:03:26Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-manage-saved-queries	2026-08-03T21:03:26Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/custom-constraints	2026-07-31T13:45:56Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/custom-constraints	2026-08-04T04:04:21Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/disaster-recovery	2026-08-03T21:03:26Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/eventarc	2026-08-03T21:03:26Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import	2026-08-03T21:03:26Z
@@ -626,7 +626,7 @@ https://docs.cloud.google.com/firestore/native/docs/concepts/structure-data	2026
 https://docs.cloud.google.com/firestore/native/docs/connect-ide-using-mcp-toolbox	2026-08-03T21:03:24Z
 https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library	2026-08-03T21:03:24Z
 https://docs.cloud.google.com/firestore/native/docs/create-database-web-mobile-client-library	2026-08-03T21:03:24Z
-https://docs.cloud.google.com/firestore/native/docs/custom-constraints	2026-08-03T21:03:24Z
+https://docs.cloud.google.com/firestore/native/docs/custom-constraints	2026-08-04T04:04:21Z
 https://docs.cloud.google.com/firestore/native/docs/data-model	2026-08-03T21:03:24Z
 https://docs.cloud.google.com/firestore/native/docs/dataflow-connector	2026-08-03T21:03:24Z
 https://docs.cloud.google.com/firestore/native/docs/disaster-recovery	2026-08-03T21:03:24Z
@@ -737,12 +737,9 @@ https://docs.cloud.google.com/firestore/native/docs/security/rules-structure	202
 https://docs.cloud.google.com/firestore/native/docs/security/test-rules-emulator	2026-08-03T21:03:25Z
 https://docs.cloud.google.com/firestore/native/docs/server-side-encryption	2026-08-03T21:03:24Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/aggregation	2026-08-03T21:03:25Z
-https://docs.cloud.google.com/firestore/native/docs/solutions/ai-chatbot	2026-08-03T21:03:25Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/bigquery	2026-08-03T21:03:25Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/counters	2026-08-03T21:03:25Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/delete-collections	2026-08-03T21:03:25Z
-https://docs.cloud.google.com/firestore/native/docs/solutions/enriched-media	2026-08-03T21:03:25Z
-https://docs.cloud.google.com/firestore/native/docs/solutions/enriched-text	2026-08-03T21:03:25Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/generative-ai-index	2026-08-03T21:03:25Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/geoqueries	2026-08-03T21:03:25Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/presence	2026-08-03T21:03:25Z
@@ -817,8 +814,8 @@ https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes	2026-05-27T
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite	2026-05-27T16:48:37Z
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/create	2026-05-27T16:48:46Z
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/delete	2026-05-27T16:48:12Z
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/describe	2026-05-27T16:48:47Z
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/list	2026-05-27T16:47:15Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/describe	2026-08-04T14:41:12Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/list	2026-08-04T14:40:37Z
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/fields	2026-05-27T16:47:25Z
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/fields/describe	2026-05-27T16:47:48Z
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/fields/list	2026-05-27T16:48:13Z

@@ -18,6 +18,8 @@ DESCRIPTION
 
 List composite indexes.
 
+By default, this command pretty prints a summary of the index specification. For the full index specification, please specify a format using the `--format=json|yaml|text|etc.` flag. For more information about format, run ` $ gcloud topic formats  ` .
+
 EXAMPLES
 
 The following command lists all composite indexes in the database:

@@ -61,7 +61,7 @@ For these reasons, it is important for developers to understand the non-relation
 
 The correct API must be selected when a strongly consistent view of data is required. The different varieties of Datastore query APIs and their corresponding consistency models are shown in Table 1.
 
-[](https://docs.cloud.google.com/datastore/docs/articles/balancing-strong-and-eventual-consistency-with-google-cloud-datastore) [](https://docs.cloud.google.com/datastore/docs/articles/balancing-strong-and-eventual-consistency-with-google-cloud-datastore)
+[](https://docs.cloud.google.com/datastore/docs/articles/balancing-strong-and-eventual-consistency-with-google-cloud-datastore#) [](https://docs.cloud.google.com/datastore/docs/articles/balancing-strong-and-eventual-consistency-with-google-cloud-datastore#)
 
 | Datastore API                                                                                                               | Read of entity value | Read of index        |
 | --------------------------------------------------------------------------------------------------------------------------- | -------------------- | -------------------- |
