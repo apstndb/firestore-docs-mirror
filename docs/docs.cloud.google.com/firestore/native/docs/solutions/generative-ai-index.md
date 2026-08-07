@@ -49,12 +49,6 @@ Once again, explore the workflow and more use cases in our [blog post](https://c
 
 **Use case:** This feature is used by the other tools and features.
 
-## Solution: extension for vector search with Firebase
-
-**Summary:** Use the Firebase extension to automatically embed and query your Firestore documents with the vector search feature.
-
-**Use case:** Perform automatic vector search in your Firebase projects.
-
 ## Solution: LangChain integrations
 
 **Summary:** Use Firestore as a vector store, document loader, or chat message history source for LangChain.

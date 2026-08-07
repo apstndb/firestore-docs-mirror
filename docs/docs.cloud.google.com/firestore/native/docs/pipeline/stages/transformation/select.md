@@ -90,6 +90,23 @@ Android
 
 ## Behavior
 
+### Document Metadata Fields
+
+The `select(...)` stage only emits the fields or expressions explicitly specified in the stage. This is a divergence from Core operations where the `select(...)` setting on a query acts as a property mask rather than a projection and also **always** includes the document's metadata fields of `__name__` , `__create_time__` , and `__update_time__` .
+
+To get Core operations-style behavior in a `select(...)` the fields must be explicitly specified like:
+
+### Node.js
+
+    const results = await db.pipeline()
+      .collection("/users")
+      .select(
+        field("__name__"),
+        field("__create_time__"),
+        field("__update_time__"),
+        field("email"))
+      .execute();
+
 ### Position of a Select Stage
 
 There are no restrictions on when a select stage can be used, but any fields not included in a select stage won't be accessible to subsequent stages in a pipeline. For example, to select only the `name` and `location` fields of all cities in Canada from the following dataset:

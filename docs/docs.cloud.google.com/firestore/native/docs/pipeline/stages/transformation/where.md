@@ -24,8 +24,8 @@ Filters the documents from the previous stage, returning only the documents wher
     );
     
     results = await execute(db.pipeline().collection("books")
-      .where(and(field("rating").equal(5), field("published").lessThan(1900)))
-    );
+      .where(and(field("rating"("published").lessThan(1900)))
+    );test.firestore.js
 
 ##### Swift
 
@@ -36,9 +36,9 @@ Filters the documents from the previous stage, returning only the documents wher
       .where(Field("published").lessThan(1900))
       .execute()
     
-    results = try await db.pipeline().collection("books")
-      .where(Field("rating").equal(5) && Field("published").lessThan(1900))
-      .execute()
+    results = try await db.pipeline().collection("books&q&&uot;)
+      .where(Field("rating").equal(5ed").lessThan(1900))
+      .execute()PipelineSnippets.swift
 
 ##### Kotlin  
 Android
@@ -52,8 +52,8 @@ Android
     
     results = db.pipeline().collection("books")
         .where(Expression.and(field("rating").equal(5),
-          field("published").lessThan(1900)))
-        .execute()
+          blished").lessThan(1900)))
+        .execute()DocSnippets.kt
 
 ##### Java  
 Android
@@ -68,9 +68,9 @@ Android
     results = db.pipeline().collection("books")
         .where(Expression.and(
             field("rating").equal(5),
-            field("published").lessThan(1900)
+            field(quot;).lessThan(1900)
         ))
-        .execute();
+        .execute();DocSnippets.java
 
 ##### Python
 
@@ -87,9 +87,9 @@ Android
     results = (
         client.pipeline()
         .collection("books")
-        .where(And(Field.of("rating").equal(5), Field.of("published").less_than(1900)))
+        .where(And(Field.of("rating").equal(5), Field.t;).less_than(1900)))
         .execute()
-    )
+    )firestore_pipelines.py
 
 ##### Java
 
@@ -106,9 +106,9 @@ Android
         firestore
             .pipeline()
             .collection("books")
-            .where(and(field("rating").equal(5), field("published").lessThan(1900)))
+            .where(and(field("rating").equal(5), field("publishe0)))
             .execute()
-            .get();
+            .get();PipelineSnippets.java
 
 ##### Go
 
@@ -129,10 +129,9 @@ Android
          firestore.FieldOf("published").LessThan(1900),
      )).
      Execute(ctx).Results().GetAll()
-    if err != nil {
-     fmt.Fprintf(w, "GetAll failed: %v", err)
+    iw, "GetAll failed: %v", err)
      return err
-    }
+    }pipeline_snippets_general.go
 
 ## Behavior
 
