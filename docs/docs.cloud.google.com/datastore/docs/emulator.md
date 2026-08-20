@@ -156,7 +156,13 @@ The emulator doesn't also attempt to mimic all of the [production limits](https:
 
 ### Indexes
 
-The emulator does not track composite indexes and instead executes any valid query. Make sure to test your app against a real Datastore mode instance to determine which indexes you require.
+By default, the emulator does not track composite indexes and instead executes any valid query.
+
+To test if composite index requirements are met, start the emulator with the `--require-indexes` and `--index-file` flags. When you start the emulator with these flags, it will check for and reject queries that require a composite index that is not defined in the specified index file.
+
+    gcloud emulators firestore start --database-mode=datastore-mode --require-indexes --index-file=./index.yaml
+
+See [Configuring Datastore Indexes with index.yaml](https://docs.cloud.google.com/datastore/docs/tools/indexconfig#Datastore_About_index_yaml) for more information on the `index-file` format.
 
 ### Limits
 

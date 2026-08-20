@@ -8,32 +8,77 @@ data_source: docs.cloud.google.com
 
 # Firestore overview
 
-Firestore is a flexible, scalable database for mobile, web, and server development from Firebase and Google Cloud. Firestore keeps your data in sync across client apps through realtime listeners and offers offline support for mobile and web so you can build responsive apps that work regardless of network latency or Internet connectivity. Firestore in Native Mode also offers seamless integration with other Firebase and Google Cloud products, including Cloud Run functions.
+Firestore is an enterprise-grade, fully-managed document database from Google Cloud that offers multi-region data replication, advanced query capabilities, and ACID compliant transactions. With a 99.999% availability SLA, and disaster recovery features like managed backups, Firestore is a highly available NoSQL database that can support mission-critical workloads.
+
+In addition to idiomatic Firestore client libraries, Firestore also provides a MongoDB-compatible API that lets you use Firestore with existing MongoDB applications. Firestore also supports (but doesn't require) integration with the Firebase mobile and web app development platform.
 
 ## Key capabilities
 
-|                     |                                                                                                                                                                                                                                                                                                                                                                                              |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Flexibility         | The Firestore in Native Mode data model supports flexible, hierarchical data structures. Store your data in documents, organized into collections. Documents can contain complex nested objects in addition to subcollections.                                                                                                                                                               |
-| Expressive querying | In Firestore in Native Mode, you can use queries to retrieve individual, specific documents or to retrieve all the documents in a collection that match your query parameters. Your queries can include multiple, chained filters and combine filtering and sorting. They're also indexed by default, so query performance is proportional to the size of your result set, not your dataset. |
-| Designed to scale   | Firestore in Native Mode brings you automatic multi-region data replication, strongly-consistent queries, atomic batch operations, and transaction support.                                                                                                                                                                                                                                  |
-| Realtime updates    | Firestore in Native Mode uses data synchronization to update data on any connected device. However, it's also designed to make simple, one-time fetch queries efficiently.                                                                                                                                                                                                                   |
-| Offline support     | Firestore in Native Mode caches data that your app is actively using, so the app can write, read, listen to, and query data even if the device is offline. When the device comes back online, Firestore in Native Mode synchronizes any local changes back to Firestore in Native Mode.                                                                                                      |
+No matter how you access Firestore, you gain access to the following key capabilities:
 
-## How does it work?
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Serverless infrastructure</strong></td>
+<td>Firestore uses a pay-per-use model. Firestore does not require any pre-provisioning of resources and auto scales to match your load.</td>
+</tr>
+<tr class="even">
+<td><strong>Virtually unlimited scale</strong></td>
+<td>Firestore seamlessly scales compute and storage on-demand without the need to configure capacity, sharding or provision storage &amp; I/O.</td>
+</tr>
+<tr class="odd">
+<td><strong>Industry-leading high availability</strong></td>
+<td>All Firestore databases offer high availability, with 99.99% availability for regional and 99.999% availability for multi-regional deployments.<br />
+<br />
+Firestore has automatic multi-region data replication, strongly-consistent queries, atomic batch operations, and transaction support.</td>
+</tr>
+<tr class="even">
+<td><strong>Low latency</strong></td>
+<td>Firestore offers single digit millisecond read latency.</td>
+</tr>
+<tr class="odd">
+<td><strong>Enterprise-grade security and monitoring</strong></td>
+<td>Secure Firestore with centralized Google Cloud governance encompassing Identity and Access Management (IAM),VPC Service Controls (VPC-SC), Access Transparency, Access Approval, Cloud Monitoring, and Cloud Logging. Achieve enhanced visibility and simplified management of your Firestore database fleet with our integrated Database Center. Benefit from a unified fleet view and simplified management through centralized control and AI assistance.</td>
+</tr>
+</tbody>
+</table>
 
-![](https://docs.cloud.google.com/static/firestore/native/docs/images/structure-data.png)
+You can interact with Firestore through multiple interfaces depending on your application's requirements.
 
-Firestore in Native Mode is a cloud-hosted, NoSQL database available in Node.js, Java, Python, Unity, C++ and Go client libraries, in addition to REST and RPC APIs. Apple, Android, and web apps can also access the database directly using the client libraries.
+## How do I set up an enterprise-grade serverless document database?
 
-Following Firestore in Native Mode's NoSQL data model, you store data in documents that contain fields mapping to values. These documents are stored in collections, which are containers for your documents that you can use to organize your data and build queries. Documents support many different [data types](https://docs.cloud.google.com/firestore/docs/concepts/data-types) , from simple strings and numbers, to complex, nested objects. You can also create subcollections within documents and build hierarchical data structures that scale as your database grows. The Firestore in Native Mode [data model](https://docs.cloud.google.com/firestore/docs/data-model) supports whatever data structure works best for your app.
+Use a Firestore database and connect with the Firestore client libraries, Google Cloud CLI, and Google Cloud console.
 
-Additionally, querying in Firestore in Native Mode is expressive, efficient, and flexible. Create shallow queries to retrieve data at the document level without needing to retrieve the entire collection, or any nested subcollections. Add sorting, filtering, and limits to your queries or cursors to paginate your results. To keep data in your apps current, without retrieving your entire database each time an update happens, add realtime listeners. Adding realtime listeners to your app notifies you with a data snapshot whenever the data your client apps are listening to changes, retrieving only the new changes.
+Recommended for developers looking for a document database. It is the best way to take advantage of the latest and most advanced Firestore capabilities, enterprise-grade configurability, observability and security. With its comprehensive client library support, Firestore fits into your enterprise architecture and development stack of choice.
 
-Protect access to your data in [Firestore in Native Mode with Identity and Access Management (IAM) for server-side](https://docs.cloud.google.com/firestore/docs/security/iam) languages. For Android, Apple platforms, and JavaScript protect your data with [Firebase Authentication and Firestore Security Rules](https://docs.cloud.google.com/firestore/docs/security/get-started) .
+[Get started with the Firestore client libraries](https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library) .
 
-## What's next
+## How do I migrate a MongoDB application to a serverless cloud database?
 
-  - [Get started](https://docs.cloud.google.com/firestore/docs/create-database-server-client-library) with Firestore in Native Mode — set up your database, then add data and start reading it.
-  - Learn more about the Firestore in Native Mode [data model](https://docs.cloud.google.com/firestore/docs/data-model) .
-  - [Create and manage databases](https://docs.cloud.google.com/firestore/docs/manage-databases) .
+Use Firestore with MongoDB compatibility and connect with MongoDB client libraries and tools.
+
+Recommended when migrating applications from MongoDB or if you're planning on multi or hybrid cloud deployments that rely on MongoDB outside of Google Cloud. Firestore's MongoDB wire-compatible APIs allow lift-and-shift migrations. You can interact with Firestore using familiar tools like mongosh, mongoimport, Compass in addition to MongoDB client libraries.
+
+[See supported features for Firestore with MongoDB compatibility](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80) .
+
+## How do I build a web or mobile app with a fully integrated, zero-config backend?
+
+Use Firestore and integrate the Firebase platform with your application.
+
+Recommended for those seeking a backend-as-a-service (BaaS) solution, as opposed to a standalone database. Firebase offers an opinionated, turnkey, end-to-end solution which includes application hosting and integrations with many Google Cloud services like Firestore, Cloud Storage, and Cloud Run functions. Close integration between products lets you interact with Firestore databases using the Firebase SDKs and the Firebase console.
+
+[Learn more about using Firestore with Firebase](https://firebase.google.com/docs/firestore) .
+
+While Firebase is great for development velocity, if your enterprise architecture and governance frameworks require fine-grained control over many aspects of your stack, you gain the most flexibility from working directly with individual Google Cloud products like Firestore.
+
+## How do I port a legacy Datastore app to use Firestore?
+
+Use Firestore with Datastore compatibility and the Datastore client libraries.
+
+Datastore compatibility mode supports legacy applications built on Datastore and App Engine. Datastore compatibility is an API layer on top of Firestore with the same availability, performance, consistency, and scalability. Beyond better integration with App Engine, Datastore compatibility doesn't offer any benefits over using Firestore directly.
+
+[Get started with Firestore with Datastore compatibility](https://docs.cloud.google.com/datastore/docs/store-query-data) .

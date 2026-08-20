@@ -12,6 +12,14 @@ You can see the latest product updates for all of Google Cloud on the [Google Cl
 
 To get the latest product updates delivered to you, add the URL of this page to your [feed reader](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the [feed URL](https://docs.cloud.google.com/feeds/datastore-release-notes.xml) directly.
 
+## August 11, 2026
+
+Feature
+
+Firestore in Datastore mode (Datastore) now supports the `asia-southeast3` Bangkok region.
+
+For a full list of supported locations, see [Locations](https://docs.cloud.google.com/datastore/docs/locations) .
+
 ## June 01, 2026
 
 Feature

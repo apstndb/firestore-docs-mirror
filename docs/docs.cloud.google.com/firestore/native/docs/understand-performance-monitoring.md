@@ -148,7 +148,7 @@ In figure 9, you can see the rate of documents deleted every minute over a perio
 
 In figure 10, you can see that this metric provides a distribution of the time in seconds that it took for Firestore to delete documents with TTL policies. It takes less than 0.5 seconds to delete TTL-expired documents at the 99th percentile. This implies the system is functioning normally. Firestore typically deletes expired documents within 24 hours, but this is not guaranteed. If you see it taking longer than 24 hours, [contact support](https://firebase.google.com/support/troubleshooter/contact) .
 
-## What' next
+## What's next
 
   - Learn about [using the Cloud Monitoring dashboard](https://docs.cloud.google.com/firestore/native/docs/use-monitoring-dashboard) to view metrics.
   - [Monitor usage](https://docs.cloud.google.com/firestore/native/docs/monitor-usage) to identify document reads, writes, and deletes over time.

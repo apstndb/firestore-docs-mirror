@@ -307,60 +307,66 @@ A regional location is a specific geographic place, such as South Carolina. The 
 </tr>
 <tr class="even">
 <td></td>
+<td><code dir="ltr" translate="no">asia-southeast3</code></td>
+<td>Bangkok</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
 <td><code dir="ltr" translate="no">asia-east2</code></td>
 <td>Hong Kong</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td><code dir="ltr" translate="no">asia-east1</code></td>
 <td>Taiwan</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td><code dir="ltr" translate="no">asia-northeast1</code></td>
 <td>Tokyo</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td><code dir="ltr" translate="no">asia-northeast2</code></td>
 <td>Osaka</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td><code dir="ltr" translate="no">asia-northeast3</code></td>
 <td>Seoul</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><strong>Australia</strong></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td></td>
 <td><code dir="ltr" translate="no">australia-southeast1</code></td>
 <td>Sydney</td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td><p><code dir="ltr" translate="no">australia-southeast2</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Melbourne</td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><strong>Africa</strong></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td></td>
 <td><p><code dir="ltr" translate="no">africa-south1</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>

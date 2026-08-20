@@ -192,6 +192,10 @@ Singapore
 
 Jakarta
 
+`asia-southeast3`
+
+Bangkok
+
 `asia-east2`
 
 Hong Kong

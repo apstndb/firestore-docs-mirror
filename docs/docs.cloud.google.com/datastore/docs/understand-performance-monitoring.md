@@ -101,6 +101,6 @@ The TTL metrics are available for both Firestore Native and Firestore in Datasto
     
     If you see that the TTL deletion delays are taking longer than 24 hours, [contact support](https://docs.cloud.google.com/datastore/docs/getting-support) .
 
-## What' next
+## What's next
 
   - Learn about [using the Cloud Monitoring dashboard](https://docs.cloud.google.com/datastore/docs/use-monitoring-dashboard) to view metrics.

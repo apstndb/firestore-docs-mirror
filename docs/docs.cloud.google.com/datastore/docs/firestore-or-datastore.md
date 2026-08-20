@@ -1,275 +1,38 @@
 ---
 name: documents/docs.cloud.google.com/datastore/docs/firestore-or-datastore
 uri: https://docs.cloud.google.com/datastore/docs/firestore-or-datastore
-title: Choosing between Native mode and Datastore mode
+title: Choose between Firestore APIs
 description: A highly-scalable NoSQL database for your web and mobile applications that automatically handles sharding and replication.
 data_source: docs.cloud.google.com
 ---
 
-When you create a Firestore database, you must choose between two modes: Native mode or Datastore mode. This page explains the difference between the two modes.
+When you create a Firestore database, you have the option to make it compatible with Datastore APIs. This is a database level setting for backwards compatibility that disables access to new Firestore capabilities. You don't have to enable Firestore in Datastore mode (Datastore) compatibility for all databases in a project.
 
-<span id="choosing_a_database"></span>
+We recommend that you use Datastore compatibility only for applications with a dependency on the Datastore APIs, such as legacy App Engine apps. Datastore compatibility is an API layer on top of Firestore with the same availability, performance, consistency, and scalability. Beyond better integration with App Engine, Datastore compatibility doesn't offer any benefits over using Firestore directly.
 
-## Choose a database mode
+## Firestore
 
-When you create a new Firestore database, you must select a database mode. You can have both Native mode and Datastore mode databases in the same project, but each database will be of a single type.
+Firestore is an enterprise-grade NoSQL document database with MongoDB compatibility, built for automatic scaling, high performance, and ease of application development. Firestore is the successor to Datastore. You can use Firestore for server-side backend architectures that handle millions of operations, as well as mobile and web apps.
 
-We recommend the following when choosing a database mode:
-
-  - **Use Firestore in Native mode for all new applications (server, mobile, and web).**
-    
-    Firestore in Native mode uses a document-based data model that aligns with industry standards. In addition to a strongly consistent and scalable database, Firestore in Native mode provides real-time data syncing and backend-as-a-service features.
-
-  - **Use Firestore in Datastore mode if your app depends on the Datastore API.**
-    
-    Datastore Mode is fully supported and is recommended for applications with a dependency on the Datastore API. Native mode and Datastore mode share an underlying storage layer with the same availability, consistency, and scaling capabilities.
-
-## Firestore in Native mode
-
-Firestore is the next major version of Datastore and a re-branding of the product. Taking the best of Datastore and the [Firebase Realtime Database](https://firebase.google.com/docs/database/rtdb-vs-firestore) , Firestore is a NoSQL document database built for automatic scaling, high performance, and ease of application development.
-
-Firestore introduces the following features:
+Firestore offers the following features beyond legacy Datastore capabilities:
 
   - A strongly consistent storage layer
   - A collection and document data model
   - Real-time updates
-  - Mobile and Web client libraries
+  - Mobile and web client libraries
 
-Firestore is backwards compatible with Datastore, but the new data model, real-time updates, and mobile and web client library features are not. To access all Firestore features, you must use Firestore in Native mode.
+Firestore is backward compatible with Datastore, but the new data model, real-time updates, and mobile and web client library features aren't. If you want to access all Firestore features, don't configure your database for Datastore compatibility.
 
-## Firestore in Datastore mode
+### Datastore compatibility limitations
 
-Firestore in Datastore mode uses Datastore system behavior but accesses Firestore's storage layer, removing the following Datastore limitations:
+Unless you're working with a legacy App Engine application built on Datastore, we recommend that you don't use Datastore compatibility as it blocks access to many valuable Firestore capabilities, such as the following:
 
-  - All Datastore queries are now strongly consistent, unless you explicitly request [eventual consistency](https://docs.cloud.google.com/datastore/docs/reference/data/rpc/google.datastore.v1#google.datastore.v1.ReadOptions) .
-  - Queries in transactions are no longer required to be ancestor queries.
-  - Transactions are no longer limited to 25 entity groups.
-  - Writes to an entity group are no longer limited to 1 per second.
+  - Rich query capabilities: the database accepts Datastore API requests and denies Firestore API requests which offer rich query capabilities.
+  - More index types: the database uses Datastore indexes instead of Firestore indexes which offer a wider variety of index types and higher configurability.
+  - Real-time capabilities: Firestore real-time capabilities won't be available.
 
-Datastore mode disables Firestore features that are not compatible with Datastore:
+## What's next
 
-  - The project will accept Datastore API requests and deny Firestore API requests.
-  - The project will use Datastore indexes instead of Firestore indexes.
-  - You can use Datastore client libraries with this project but not Firestore client libraries.
-  - Firestore real-time capabilities will not be available.
-  - In the Google Cloud console, the database will use the Datastore viewer.
+  - To get started with Firestore client libraries, see [Create a Firestore database and connect a server client library](https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library) .
 
-## Pricing and locations
-
-Native mode and Datastore mode databases use the same pricing structure and are available in the same locations. Pricing and locations are described in detail in the following pages:
-
-#### Firestore in Native mode
-
-  - [Firestore pricing](https://docs.cloud.google.com/firestore/pricing)
-  - [Firestore locations](https://docs.cloud.google.com/firestore/docs/locations)
-
-#### Firestore in Datastore mode
-
-  - [Firestore in Datastore mode pricing](https://docs.cloud.google.com/datastore/pricing)
-  - [Firestore in Datastore mode locations](https://docs.cloud.google.com/datastore/docs/locations)
-
-### Feature comparison
-
-The following table compares the system behavior of the database modes:
-
-Firestore in  
-Native mode
-
-Firestore in  
-Datastore mode
-
-**Data model**
-
-Document database organized into documents and collections.
-
-Entities organized into kinds and entity groups.
-
-**Storage Layer**
-
-A strongly consistent storage layer.
-
-A strongly consistent storage layer.
-
-**Queries and transactions**
-
-  - Strongly consistent queries across the entire database
-  - Transactions can access any number of collections and documents
-
-<!-- end list -->
-
-  - Removes the previous consistency limitations of Datastore
-  - Strongly consistent queries across the entire database
-  - Transactions can access any number of entity groups
-
-**[Datastore v1 API](https://docs.cloud.google.com/datastore/docs/reference/data/rest) support**
-
-No, requests are denied
-
-Yes
-
-**[Firestore v1 API](https://docs.cloud.google.com/firestore/docs/reference/rest) support**
-
-Yes
-
-No, requests are denied
-
-**Real-time updates**
-
-[Supports the ability to *listen* to a document or a set of documents for real-time updates.](https://docs.cloud.google.com/firestore/docs/query-data/listen)
-
-While listening to a document or set of documents, your clients are notified of any data changes and sent the newest set of data.
-
-Not supported
-
-**Offline data persistence**
-
-[The mobile and web client libraries support offline data persistence.](https://docs.cloud.google.com/firestore/docs/manage-data/enable-offline)
-
-Not supported
-
-**Client libraries**
-
-Firestore client libraries:
-
-  - Java
-  - Python
-  - PHP
-  - Go
-  - Ruby
-  - C\#
-  - Node.js
-  - Android
-  - iOS+
-  - Web
-  - C++
-  - Unity
-
-Datastore client libraries:
-
-  - Java
-  - Python
-  - PHP
-  - Go
-  - Ruby
-  - C\#
-  - Node.js
-  - C++
-
-**Security**
-
-  - Identity and Access Management (IAM) manages database access
-  - Firestore Security Rules support serverless authentication and authorization for the mobile and web client libraries
-
-IAM manages database access
-
-**SLA**
-
-[Firestore SLA](https://docs.cloud.google.com/firestore/sla)
-
-[Firestore SLA](https://docs.cloud.google.com/firestore/sla)
-
-**Locations**
-
-Both modes support the same locations. For a detailed list of locations, see the following pages:
-
-  - [Firestore in Native mode locations](https://docs.cloud.google.com/firestore/docs/locations)
-  - [Firestore in Datastore mode locations](https://docs.cloud.google.com/datastore/docs/locations)
-
-**Pricing**
-
-Both modes use the same pricing structure for entity and document operations.
-
-Firestore in Datastore mode does not charge for [small operations](https://docs.cloud.google.com/datastore/pricing#small_operations) .
-
-Both modes use the same pricing structure for stored data and network bandwidth.
-
-For more details about pricing, see the following pages:
-
-  - [Firestore in Native mode pricing](https://docs.cloud.google.com/firestore/pricing)
-  - [Firestore in Datastore mode pricing](https://docs.cloud.google.com/datastore/pricing)
-
-**Console**
-
-Firebase Console and Google Cloud console Firestore Viewer
-
-Google Cloud console Datastore Viewer
-
-**Namespaces**
-
-Not supported
-
-Namespaces supported
-
-**App Engine client library integration**
-
-Not supported in the App Engine standard environment Python 2.7 and PHP 5.5 runtimes
-
-Supported in the [App Engine standard environment](https://docs.cloud.google.com/appengine/docs/standard) , all other runtimes
-
-Supported in the [App Engine flexible environment](https://docs.cloud.google.com/appengine/docs/flexible) , all runtimes
-
-Supported in all runtimes
-
-## Create a new database
-
-You can create a new Firestore database in either Native mode or Datastore mode. This choice does not depend on the modes of any existing databases in your project.
-
-See [Create and manage databases](https://docs.cloud.google.com/datastore/docs/manage-databases) for more info.
-
-<span id="database mode change"></span>
-
-## Change between Native mode and Datastore mode
-
-If your database is empty, you can change between Native mode and Datastore mode.
-
-> **Warning:** Mode changes are only allowed if the database is empty of all entities and documents. A mode change takes a few minutes to take effect during which time the database will reject writes.
-
-Change database to **Native mode** :
-
-### gcloud
-
-Use the [gcloud firestore databases update](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/update) command to change your database to Native mode.
-
-    gcloud firestore databases update --type=firestore-native --database='DATABASE_ID'
-
-Replace DATABASE\_ID with the ID of your database.
-
-### rest
-
-    curl --request PATCH \
-    --header "Authorization: Bearer "$(gcloud auth print-access-token) \
-    --header 'Accept: application/json' \
-    --header 'Content-Type: application/json' \
-    --data '{"type":"FIRESTORE_NATIVE"}' \
-    "https://firestore.googleapis.com/v1/projects/PROJECT_ID/databases/DATABASE_ID?updateMask=type"
-
-Replace the following:
-
-  - PROJECT\_ID : the project ID
-  - DATABASE\_ID : the database ID
-
-Change database to **Datastore mode** :
-
-### gcloud
-
-Use the [gcloud firestore databases update](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/update) command to change your database to Datastore mode.
-
-``` 
- gcloud firestore databases update --type=datastore-mode --database='DATABASE_ID'
-```
-
-Replace DATABASE\_ID with the ID of your database.
-
-### rest
-
-    curl --request PATCH \
-    --header "Authorization: Bearer "$(gcloud auth print-access-token) \
-    --header 'Accept: application/json' \
-    --header 'Content-Type: application/json' \
-    --data '{"type":"DATASTORE_MODE"}' \
-    "https://firestore.googleapis.com/v1/projects/PROJECT_ID/databases/DATABASE_ID?updateMask=type"
-
-Replace the following:
-
-  - PROJECT\_ID : the project ID
-  - DATABASE\_ID : the database ID
+  - To get started with Firestore with Datastore compatibility, see [Get started with Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) .

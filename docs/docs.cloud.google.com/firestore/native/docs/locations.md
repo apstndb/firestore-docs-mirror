@@ -248,6 +248,10 @@ Singapore
 
 Jakarta
 
+`asia-southeast3`
+
+Bangkok
+
 `asia-east2`
 
 Hong Kong
@@ -477,6 +481,10 @@ Singapore
 `asia-southeast2`
 
 Jakarta
+
+`asia-southeast3`
+
+Bangkok
 
 `asia-east2`
 

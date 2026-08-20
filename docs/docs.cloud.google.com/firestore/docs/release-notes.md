@@ -12,11 +12,19 @@ You can see the latest product updates for all of Google Cloud on the [Google Cl
 
 To get the latest product updates delivered to you, add the URL of this page to your [feed reader](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the [feed URL](https://docs.cloud.google.com/feeds/fs-release-notes.xml) directly.
 
+## August 11, 2026
+
+Feature
+
+Firestore now supports the `asia-southeast3` Bangkok region.
+
+For a full list of supported locations, see [Locations](https://docs.cloud.google.com/firestore/docs/locations) .
+
 ## July 20, 2026
 
 Feature
 
-You can now view, manage, and deploy Firestore Security Rules directly in the Google Cloud console for Firestore in Native mode (Standard and Enterprise editions). You can create new rulesets and clone or restore rulesets from the timeline.
+You can now view, manage, and deploy Firestore Security Rules directly in the Google Cloud console for Firestore (Standard and Enterprise editions). You can create new rulesets and clone or restore rulesets from the timeline.
 
 To learn more, see [Manage Firestore Security Rules](https://docs.cloud.google.com/firestore/native/docs/using-console#manage-firestore-security-rules) or [Use the Google Cloud console](https://docs.cloud.google.com/firestore/native/docs/security/get-started#use-the-cloud-console) .
 
