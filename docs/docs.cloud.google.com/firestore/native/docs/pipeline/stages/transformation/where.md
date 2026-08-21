@@ -136,9 +136,11 @@ Android
 
 ## Behavior
 
-### Multiple Stages
+### Chained versus Nested Filters
 
-Multiple `where(...)` stages can be chained together, acting as an `and(...)` expression across each condition.
+Multiple `where(...)` stages can be chained together, which is logically equivalent to combining the filter conditions within a single `where(...)` stage using an `and(...)` expression. Both approaches produce the same execution plan and have no impact on query execution or performance.
+
+For example, chaining multiple `where(...)` stages:
 
 ### Node.js
 
@@ -148,13 +150,26 @@ Multiple `where(...)` stages can be chained together, acting as an `and(...)` ex
       .where(field("population").greaterThan(500000))
       .execute();
 
-Filtering based on a logical `or` of two conditions though need to be done as a single `where(...)` stage though.
+is equivalent to using a single `where(...)` stage with a compound `and(...)` :
 
 ### Node.js
 
     const cities = await db.pipeline()
       .collection("/cities")
-      .where(field("location.state").equals("NY").or(field("location.state").equals("CA")))
+      .where(
+        field("location.country").equals("USA")
+          .and(field("population").greaterThan(500000)))
+      .execute();
+
+However, filtering based on a logical `or(...)` of conditions cannot be split across multiple stages and must be done in a single `where(...)` stage:
+
+### Node.js
+
+    const cities = await db.pipeline()
+      .collection("/cities")
+      .where(
+        field("location.state").equals("NY")
+          .or(field("location.state").equals("CA")))
       .execute();
 
 ### Complex Expressions
