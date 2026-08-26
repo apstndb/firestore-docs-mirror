@@ -254,7 +254,7 @@ Each `Document` object contains one or more `Value` objects. See the [`Value` do
 
 ## Create triggers for functions
 
-Click the tab for instructions using the tool of your choice.
+After deploying a function, you can configure a trigger using the Google Cloud console, Google Cloud CLI, or Terraform.
 
 ### Console
 
@@ -289,6 +289,8 @@ When you use the Google Cloud console to create a function, you can also add a t
     7.  In the **Service account** field, select a service account. Eventarc triggers are linked to service accounts to use as an identity when invoking your function. Your Eventarc trigger's service account must have the permission to invoke your function. By default, Cloud Run uses the [Compute Engine default service account](https://docs.cloud.google.com/compute/docs/access/service-accounts#default_service_account) .
     
     8.  Optionally, specify the **Service URL path** to send the incoming request to. This is the relative path on the destination service to which the events for the trigger should be sent. For example: `/` , `/route` , `route` , and `route/subroute` .
+    
+    9.  Optionally, to enable retries if the delivery attempt fails, select the **Enable retry on failure** checkbox; otherwise, the default behavior is a single delivery attempt with no retries. For more information, see [Retry events](https://docs.cloud.google.com/eventarc/docs/retry-events) .
 
 6.  Once you've completed the required fields, click **Save trigger** .
 
@@ -303,22 +305,22 @@ When you create a function using the gcloud CLI, you must first [deploy](https:/
 1.  Run the following command in the directory that contains the sample code to deploy your function:
     
         gcloud run deploy FUNCTION \
-                --source . \
-                --function FUNCTION_ENTRYPOINT \
-                --base-image BASE_IMAGE_ID \
-                --region REGION
+            --source . \
+            --function FUNCTION_ENTRYPOINT \
+            --base-image BASE_IMAGE_ID \
+            --region REGION
     
-    Replace:
+    Replace the following:
     
-      - FUNCTION with the name of the function you are deploying. You can omit this parameter entirely, but you will be prompted for the name if you omit it.
+      - `  FUNCTION  ` : the name of the function you are deploying. You can omit this parameter entirely, but you will be prompted for the name if you omit it.
     
-      - FUNCTION\_ENTRYPOINT with the entry point to your function in your source code. This is the code Cloud Run executes when your function runs. The value of this flag must be a function name or fully-qualified class name that exists in your source code.
+      - `  FUNCTION_ENTRYPOINT  ` : the entry point to your function in your source code. This is the code Cloud Run executes when your function runs. The value of this flag must be a function name or fully-qualified class name that exists in your source code.
     
-      - BASE\_IMAGE\_ID with the base image environment for your function. For more details about base images and the packages included in each image, see [Runtimes base images](https://docs.cloud.google.com/run/docs/configuring/services/runtime-base-images#how_to_obtain_base_images) .
+      - `  BASE_IMAGE_ID  ` : the base image environment for your function. For more details about base images and the packages included in each image, see [Runtimes base images](https://docs.cloud.google.com/run/docs/configuring/services/runtime-base-images#how_to_obtain_base_images) .
     
-      - REGION with the Google Cloud [region](https://docs.cloud.google.com/run/docs/locations) where you want to deploy your function. For example, `europe-west1` .
+      - `  REGION  ` : the Google Cloud [region](https://docs.cloud.google.com/run/docs/locations) where you want to deploy your function. For example, `europe-west1` .
 
-2.  Run the following command to create a trigger that filters events:
+2.  Run the following command to create a trigger that filters and routes events:
     
         gcloud eventarc triggers create TRIGGER_NAME  \
             --location=EVENTARC_TRIGGER_LOCATION \
@@ -327,19 +329,32 @@ When you create a function using the gcloud CLI, you must first [deploy](https:/
             --event-filters="type=google.cloud.firestore.document.v1.created" \
             --service-account=PROJECT_NUMBER-compute@developer.gserviceaccount.com
     
-    Replace:
+    Replace the following:
     
-      - TRIGGER\_NAME with the name for your trigger.
+      - `  TRIGGER_NAME  ` : the ID of the trigger or a fully qualified identifier.
     
-      - EVENTARC\_TRIGGER\_LOCATION with the location for the Eventarc trigger. In general, the location of an Eventarc trigger should match the location of the Google Cloud resource that you want to monitor for events. In most scenarios, you should also deploy your function in the same region. For more information, see [Eventarc locations](https://docs.cloud.google.com/eventarc/docs/locations) .
+      - `  LOCATION  ` : the location of the Eventarc trigger. Alternatively, you can set the `eventarc/location` property; for example, `gcloud config set eventarc/location us-central1` .
+        
+        To avoid any performance and data residency issues, the location must match the location of the Google Cloud service that is generating events. For more information, see [Eventarc locations](https://docs.cloud.google.com/eventarc/docs/locations) .
     
-      - FUNCTION with the name of the function you are deploying.
+      - `  FUNCTION  ` : the name of the deployed Cloud Run function that receives the events for the trigger.
     
-      - REGION with the Cloud Run [region](https://docs.cloud.google.com/run/docs/locations) of the function.
+      - `  DESTINATION_RUN_REGION  ` : (optional) the [Cloud Run location](https://docs.cloud.google.com/run/docs/locations) in which the destination Cloud Run function can be found. If not specified, it is assumed that the function is in the same region as the trigger.
     
-      - PROJECT\_NUMBER with your Google Cloud project number. Eventarc triggers are linked to service accounts to use as an identity when invoking your function. Your Eventarc trigger's service account must have the permission to invoke your function. By default, Cloud Run uses the Default compute service account.
+      - `  EVENT_FILTER_TYPE  ` : the identifier of the event. An event is generated when an API call for the method succeeds. For long-running operations, the event is only generated at the end of the operation, and only if the action is performed successfully. For a list of supported event types, see [Google event types supported by Eventarc](https://docs.cloud.google.com/eventarc/docs/reference/supported-events#directly-from-a-google-cloud-source) .
     
-    Each `event-filters` flag specifies a type of event, with the function triggering only when an event meets all of the criteria specified in its `event-filters` flags. Each trigger must have an `event-filters` flag specifying a supported [event type](https://docs.cloud.google.com/eventarc/docs/reference/supported-events#directly-from-a-google-cloud-source) , such as a new document written to Firestore or a file uploaded to Cloud Storage. You can't change the event filter type after creation. To change the event filter type, you must create a new trigger and delete the old one. Optionally, you can repeat the `--event-filters` flag with a supported filter in the form `ATTRIBUTE=VALUE` to add more filters.
+      - `  SERVICE_ACCOUNT_NAME  ` : the name of your user-managed service account.
+    
+      - `  PROJECT_ID  ` : your Google Cloud project ID.
+    
+    Notes:
+    
+      - After a trigger is created, the event filter type can't be changed. For a different event type, you must create a new trigger.
+      - `--event-filters=type=google.cloud.firestore.document.v1.written` specifies that the function is triggered when a document is created, updated or deleted, per the [event type](https://docs.cloud.google.com/run/docs/triggering/firestore-triggers#event_types) .
+      - `--event-filters=database='(default)'` specifies the Firebase database. For the default database name, use `(default)` .
+      - `--event-filters-path-pattern=document='users/{username}'` provides the path pattern of the documents that should be monitored for relevant changes. This path pattern states that all documents in the `users` collection should be monitored. For more information, see [Understand path patterns](https://docs.cloud.google.com/eventarc/docs/path-patterns) .
+      - Optionally, to specify a single event delivery attempt with no retries, use the `--max-retry-attempts` flag. The only valid value is `1` . If you omit the flag, the standard retry behavior applies. For more information, see [Retry events](https://docs.cloud.google.com/eventarc/docs/retry-events) .
+      - Other flags are available. For more information, see [`gcloud eventarc triggers create`](https://docs.cloud.google.com/sdk/gcloud/reference/eventarc/triggers/create) .
 
 ### Terraform
 
@@ -527,15 +542,112 @@ The following sample prints the fields of a triggering Firestore event:
 
 #### Deploy the function
 
-To deploy the `Hello Firestore` function, run the following command:
+If you haven't already done so, set up your [Firestore database](https://docs.cloud.google.com/firestore/native/docs/extend-with-cloud-run-functions#set_up_your_database) .
 
-If you haven't already done so, set up your [Firestore database](https://docs.cloud.google.com/run/docs/triggering/firestore-triggers#set_up_your_database) .
+After deploying a function, you can configure a trigger using the Google Cloud console, Google Cloud CLI, or Terraform.
 
-To deploy the function, see [Create triggers for functions](https://docs.cloud.google.com/firestore/native/docs/extend-with-cloud-run-functions#trigger-functions) .
+### Console
+
+When you use the Google Cloud console to create a function, you can also add a trigger to your function. Follow these steps to create a trigger for your function:
+
+1.  In the Google Cloud console, go to Cloud Run:
+
+2.  Click **Write a function** , and enter the function details. For more information about configuring functions during deployment, see [Deploy functions](https://docs.cloud.google.com/run/docs/deploy-functions#console) .
+
+3.  In the **Trigger** section, click **Add trigger** .
+
+4.  Select **Firestore trigger** .
+
+5.  In the **Eventarc trigger** pane, modify the trigger details as follows:
+    
+    1.  Enter a name for the trigger in the **Trigger name** field, or use the default name.
+    
+    2.  Select a **Trigger type** from the list:
+        
+          - **Google Sources** to specify triggers for Pub/Sub, Cloud Storage, Firestore, and other Google event providers.
+        
+          - **Third-party** to integrate with non-Google providers that offer an Eventarc source. For more information, see [Third-party events in Eventarc](https://docs.cloud.google.com/eventarc/docs/third-parties/third-parties-overview) .
+    
+    3.  Select **Firestore** from the **Event provider** list, to select a product that provides the type of event for triggering your function. For the list of event providers, see [Event providers and destinations](https://docs.cloud.google.com/eventarc/docs/event-providers-targets) .
+    
+    4.  Select **type=google.cloud.firestore.document.v1.written** from the **Event type** list. Your trigger configuration varies depending on the supported event type. For more information, see [Event types](https://docs.cloud.google.com/eventarc/docs/event-types) .
+    
+    5.  In the Filters section, select a database, operation and attribute values, or use the default selections.
+    
+    6.  If the **Region** field is enabled, select a [location](https://docs.cloud.google.com/eventarc/docs/overview#trigger-location) for the Eventarc trigger. In general, the location of an Eventarc trigger should match the location of the Google Cloud resource that you want to monitor for events. In most scenarios, you should also deploy your function in the same region. See [Understand Eventarc locations](https://docs.cloud.google.com/eventarc/docs/understand-locations) for more details about Eventarc trigger locations.
+    
+    7.  In the **Service account** field, select a service account. Eventarc triggers are linked to service accounts to use as an identity when invoking your function. Your Eventarc trigger's service account must have the permission to invoke your function. By default, Cloud Run uses the [Compute Engine default service account](https://docs.cloud.google.com/compute/docs/access/service-accounts#default_service_account) .
+    
+    8.  Optionally, specify the **Service URL path** to send the incoming request to. This is the relative path on the destination service to which the events for the trigger should be sent. For example: `/` , `/route` , `route` , and `route/subroute` .
+    
+    9.  Optionally, to enable retries if the delivery attempt fails, select the **Enable retry on failure** checkbox; otherwise, the default behavior is a single delivery attempt with no retries. For more information, see [Retry events](https://docs.cloud.google.com/eventarc/docs/retry-events) .
+
+6.  Once you've completed the required fields, click **Save trigger** .
+
+7.  Click **Create** .
+
+8.  In the **Source** tab, edit the source code if needed, then select **Save and redeploy** .
+
+### gcloud
+
+When you create a function using the gcloud CLI, you must first [deploy](https://docs.cloud.google.com/run/docs/deploy-functions) your function, and then create a trigger. Follow these steps to create a trigger for your function:
+
+1.  Run the following command in the directory that contains the sample code to deploy your function:
+    
+        gcloud run deploy FUNCTION \
+            --source . \
+            --function FUNCTION_ENTRYPOINT \
+            --base-image BASE_IMAGE_ID \
+            --region REGION
+    
+    Replace the following:
+    
+      - `  FUNCTION  ` : the name of the function you are deploying. You can omit this parameter entirely, but you will be prompted for the name if you omit it.
+    
+      - `  FUNCTION_ENTRYPOINT  ` : the entry point to your function in your source code. This is the code Cloud Run executes when your function runs. The value of this flag must be a function name or fully-qualified class name that exists in your source code.
+    
+      - `  BASE_IMAGE_ID  ` : the base image environment for your function. For more details about base images and the packages included in each image, see [Runtimes base images](https://docs.cloud.google.com/run/docs/configuring/services/runtime-base-images#how_to_obtain_base_images) .
+    
+      - `  REGION  ` : the Google Cloud [region](https://docs.cloud.google.com/run/docs/locations) where you want to deploy your function. For example, `europe-west1` .
+
+2.  Run the following command to create a trigger that filters and routes events:
+    
+    `none gcloud eventarc triggers create TRIGGER_NAME \ --location= EVENTARC_TRIGGER_LOCATION \ --destination-run-service= FUNCTION \ --destination-run-region= REGION \ --event-filters=type=google.cloud.firestore.document.v1.written \ --event-filters=database='(default)' \ --event-data-content-type=application/protobuf \ --event-filters-path-pattern=document='users/{username}' \ --service-account= PROJECT_NUMBER -compute@developer.gserviceaccount.com`
+    
+    Replace the following:
+    
+      - `  TRIGGER_NAME  ` : the ID of the trigger or a fully qualified identifier.
+    
+      - `  LOCATION  ` : the location of the Eventarc trigger. Alternatively, you can set the `eventarc/location` property; for example, `gcloud config set eventarc/location us-central1` .
+        
+        To avoid any performance and data residency issues, the location must match the location of the Google Cloud service that is generating events. For more information, see [Eventarc locations](https://docs.cloud.google.com/eventarc/docs/locations) .
+    
+      - `  FUNCTION  ` : the name of the deployed Cloud Run function that receives the events for the trigger.
+    
+      - `  DESTINATION_RUN_REGION  ` : (optional) the [Cloud Run location](https://docs.cloud.google.com/run/docs/locations) in which the destination Cloud Run function can be found. If not specified, it is assumed that the function is in the same region as the trigger.
+    
+      - `  EVENT_FILTER_TYPE  ` : the identifier of the event. An event is generated when an API call for the method succeeds. For long-running operations, the event is only generated at the end of the operation, and only if the action is performed successfully. For a list of supported event types, see [Google event types supported by Eventarc](https://docs.cloud.google.com/eventarc/docs/reference/supported-events#directly-from-a-google-cloud-source) .
+    
+      - `  SERVICE_ACCOUNT_NAME  ` : the name of your user-managed service account.
+    
+      - `  PROJECT_ID  ` : your Google Cloud project ID.
+    
+    Notes:
+    
+      - After a trigger is created, the event filter type can't be changed. For a different event type, you must create a new trigger.
+      - `--event-filters=type=google.cloud.firestore.document.v1.written` specifies that the function is triggered when a document is created, updated or deleted, per the [event type](https://docs.cloud.google.com/run/docs/triggering/firestore-triggers#event_types) .
+      - `--event-filters=database='(default)'` specifies the Firebase database. For the default database name, use `(default)` .
+      - `--event-filters-path-pattern=document='users/{username}'` provides the path pattern of the documents that should be monitored for relevant changes. This path pattern states that all documents in the `users` collection should be monitored. For more information, see [Understand path patterns](https://docs.cloud.google.com/eventarc/docs/path-patterns) .
+      - Optionally, to specify a single event delivery attempt with no retries, use the `--max-retry-attempts` flag. The only valid value is `1` . If you omit the flag, the standard retry behavior applies. For more information, see [Retry events](https://docs.cloud.google.com/eventarc/docs/retry-events) .
+      - Other flags are available. For more information, see [`gcloud eventarc triggers create`](https://docs.cloud.google.com/sdk/gcloud/reference/eventarc/triggers/create) .
+
+### Terraform
+
+To create an Eventarc trigger for a Cloud Run function, see [Create a trigger using Terraform](https://docs.cloud.google.com/eventarc/docs/creating-triggers-terraform) .
 
 #### Test the function
 
-To test the `Hello Firestore` function, set up a collection called `users` in your [Firestore database](https://docs.cloud.google.com/run/docs/triggering/firestore-triggers#set_up_your_database) :
+To test the `Hello Firestore` function, set up a collection called `users` in your [Firestore database](https://docs.cloud.google.com/firestore/native/docs/extend-with-cloud-run-functions#set_up_your_database) :
 
 1.  In the Google Cloud console, go to the Firestore databases page:
 
@@ -889,15 +1001,120 @@ Use [protobufjs](https://www.npmjs.com/package/protobufjs) to decode the event d
 
 #### Deploy the function
 
-To deploy the `Convert to Uppercase` function, run the following command:
+If you haven't already done so, set up your [Firestore database](https://docs.cloud.google.com/firestore/native/docs/extend-with-cloud-run-functions#set_up_your_database) .
 
-If you haven't already done so, set up your [Firestore database](https://docs.cloud.google.com/run/docs/triggering/firestore-triggers#set_up_your_database) .
+After deploying a function, you can configure a trigger using the Google Cloud console, Google Cloud CLI, or Terraform.
 
-To deploy the function, see [Create triggers for functions](https://docs.cloud.google.com/firestore/native/docs/extend-with-cloud-run-functions#trigger-functions) .
+### Console
+
+When you use the Google Cloud console to create a function, you can also add a trigger to your function. Follow these steps to create a trigger for your function:
+
+1.  In the Google Cloud console, go to Cloud Run:
+
+2.  Click **Write a function** , and enter the function details. For more information about configuring functions during deployment, see [Deploy functions](https://docs.cloud.google.com/run/docs/deploy-functions#console) .
+
+3.  In the **Trigger** section, click **Add trigger** .
+
+4.  Select **Firestore trigger** .
+
+5.  In the **Eventarc trigger** pane, modify the trigger details as follows:
+    
+    1.  Enter a name for the trigger in the **Trigger name** field, or use the default name.
+    
+    2.  Select a **Trigger type** from the list:
+        
+          - **Google Sources** to specify triggers for Pub/Sub, Cloud Storage, Firestore, and other Google event providers.
+        
+          - **Third-party** to integrate with non-Google providers that offer an Eventarc source. For more information, see [Third-party events in Eventarc](https://docs.cloud.google.com/eventarc/docs/third-parties/third-parties-overview) .
+    
+    3.  Select **Firestore** from the **Event provider** list, to select a product that provides the type of event for triggering your function. For the list of event providers, see [Event providers and destinations](https://docs.cloud.google.com/eventarc/docs/event-providers-targets) .
+    
+    4.  Select **type=google.cloud.firestore.document.v1.written** from the **Event type** list. Your trigger configuration varies depending on the supported event type. For more information, see [Event types](https://docs.cloud.google.com/eventarc/docs/event-types) .
+    
+    5.  In the Filters section, select a database, operation and attribute values, or use the default selections.
+    
+    6.  If the **Region** field is enabled, select a [location](https://docs.cloud.google.com/eventarc/docs/overview#trigger-location) for the Eventarc trigger. In general, the location of an Eventarc trigger should match the location of the Google Cloud resource that you want to monitor for events. In most scenarios, you should also deploy your function in the same region. See [Understand Eventarc locations](https://docs.cloud.google.com/eventarc/docs/understand-locations) for more details about Eventarc trigger locations.
+    
+    7.  In the **Service account** field, select a service account. Eventarc triggers are linked to service accounts to use as an identity when invoking your function. Your Eventarc trigger's service account must have the permission to invoke your function. By default, Cloud Run uses the [Compute Engine default service account](https://docs.cloud.google.com/compute/docs/access/service-accounts#default_service_account) .
+    
+    8.  Optionally, specify the **Service URL path** to send the incoming request to. This is the relative path on the destination service to which the events for the trigger should be sent. For example: `/` , `/route` , `route` , and `route/subroute` .
+    
+    9.  Optionally, to enable retries if the delivery attempt fails, select the **Enable retry on failure** checkbox; otherwise, the default behavior is a single delivery attempt with no retries. For more information, see [Retry events](https://docs.cloud.google.com/eventarc/docs/retry-events) .
+
+6.  Once you've completed the required fields, click **Save trigger** .
+
+7.  Click **Create** .
+
+8.  In the **Source** tab, edit the source code if needed, then select **Save and redeploy** .
+
+### gcloud
+
+When you create a function using the gcloud CLI, you must first [deploy](https://docs.cloud.google.com/run/docs/deploy-functions) your function, and then create a trigger. Follow these steps to create a trigger for your function:
+
+1.  Run the following command in the directory that contains the sample code to deploy your function:
+    
+        gcloud run deploy FUNCTION \
+            --source . \
+            --function FUNCTION_ENTRYPOINT \
+            --base-image BASE_IMAGE_ID \
+            --region REGION
+    
+    Replace the following:
+    
+      - `  FUNCTION  ` : the name of the function you are deploying. You can omit this parameter entirely, but you will be prompted for the name if you omit it.
+    
+      - `  FUNCTION_ENTRYPOINT  ` : the entry point to your function in your source code. This is the code Cloud Run executes when your function runs. The value of this flag must be a function name or fully-qualified class name that exists in your source code.
+    
+      - `  BASE_IMAGE_ID  ` : the base image environment for your function. For more details about base images and the packages included in each image, see [Runtimes base images](https://docs.cloud.google.com/run/docs/configuring/services/runtime-base-images#how_to_obtain_base_images) .
+    
+      - `  REGION  ` : the Google Cloud [region](https://docs.cloud.google.com/run/docs/locations) where you want to deploy your function. For example, `europe-west1` .
+
+2.  Run the following command to create a trigger that filters and routes events:
+    
+        gcloud eventarc triggers create TRIGGER_NAME  \
+            --location=EVENTARC_TRIGGER_LOCATION \
+            --destination-run-service=FUNCTION  \
+            --destination-run-region=REGION \
+            --event-filters=type=google.cloud.firestore.document.v1.written \
+            --event-filters=database='(default)' \
+            --event-data-content-type=application/protobuf \
+            --event-filters-path-pattern=document='messages/{pushId}' \
+            --service-account=PROJECT_NUMBER-compute@developer.gserviceaccount.com
+    
+    Replace the following:
+    
+      - `  TRIGGER_NAME  ` : the ID of the trigger or a fully qualified identifier.
+    
+      - `  LOCATION  ` : the location of the Eventarc trigger. Alternatively, you can set the `eventarc/location` property; for example, `gcloud config set eventarc/location us-central1` .
+        
+        To avoid any performance and data residency issues, the location must match the location of the Google Cloud service that is generating events. For more information, see [Eventarc locations](https://docs.cloud.google.com/eventarc/docs/locations) .
+    
+      - `  FUNCTION  ` : the name of the deployed Cloud Run function that receives the events for the trigger.
+    
+      - `  DESTINATION_RUN_REGION  ` : (optional) the [Cloud Run location](https://docs.cloud.google.com/run/docs/locations) in which the destination Cloud Run function can be found. If not specified, it is assumed that the function is in the same region as the trigger.
+    
+      - `  EVENT_FILTER_TYPE  ` : the identifier of the event. An event is generated when an API call for the method succeeds. For long-running operations, the event is only generated at the end of the operation, and only if the action is performed successfully. For a list of supported event types, see [Google event types supported by Eventarc](https://docs.cloud.google.com/eventarc/docs/reference/supported-events#directly-from-a-google-cloud-source) .
+    
+      - `  SERVICE_ACCOUNT_NAME  ` : the name of your user-managed service account.
+    
+      - `  PROJECT_ID  ` : your Google Cloud project ID.
+    
+    Notes:
+    
+      - After a trigger is created, the event filter type can't be changed. For a different event type, you must create a new trigger.
+      - `--event-filters=type=google.cloud.firestore.document.v1.written` specifies that the function is triggered when a document is created, updated or deleted, per the [event type](https://docs.cloud.google.com/run/docs/triggering/firestore-triggers#event_types) .
+      - `--event-filters=database='(default)'` specifies the Firebase database. For the default database name, use `(default)` .
+      - `--event-filters-path-pattern=document='users/{username}'` provides the path pattern of the documents that should be monitored for relevant changes. This path pattern states that all documents in the `users` collection should be monitored. For more information, see [Understand path patterns](https://docs.cloud.google.com/eventarc/docs/path-patterns) .
+      - Optionally, to specify a single event delivery attempt with no retries, use the `--max-retry-attempts` flag. The only valid value is `1` . If you omit the flag, the standard retry behavior applies. For more information, see [Retry events](https://docs.cloud.google.com/eventarc/docs/retry-events) .
+      - Other flags are available. For more information, see [`gcloud eventarc triggers create`](https://docs.cloud.google.com/sdk/gcloud/reference/eventarc/triggers/create) .
+
+### Terraform
+
+To create an Eventarc trigger for a Cloud Run function, see [Create a trigger using Terraform](https://docs.cloud.google.com/eventarc/docs/creating-triggers-terraform) .
 
 #### Test the function
 
-To test the `Convert to Uppercase` function you just deployed, set up a collection called `messages` in your [Firestore database](https://docs.cloud.google.com/run/docs/triggering/firestore-triggers#set_up_your_database) :
+To test the `Convert to Uppercase` function you just deployed, set up a collection called `messages` in your [Firestore database](https://docs.cloud.google.com/firestore/native/docs/extend-with-cloud-run-functions#set_up_your_database) :
 
 1.  In the Google Cloud console, go to the Firestore databases page:
 
