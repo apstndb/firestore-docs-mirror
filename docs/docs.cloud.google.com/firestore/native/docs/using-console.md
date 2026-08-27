@@ -16,7 +16,7 @@ You can manage Firestore Standard edition through the following actions in the G
 
 ## View data
 
-You can view all your Firestore Standard edition data in the Google Cloud console. From the Firestore Standard edition data viewer, click on a document or collection to open the data nested within that item.
+You can view all your Firestore Standard edition data in the Google Cloud console. From the Firestore Standard edition data viewer, click a document or collection to open the data nested within that item.
 
 1.  In the Google Cloud console, go to the **Databases** page.
 
@@ -30,20 +30,45 @@ To open a document or collection at a specific path, use the **Edit path** butto
 
 ![Firestore Panel view in the console, with the Edit path button highlighted.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-console-edit-path.png)
 
+### Configure panel settings
+
+You can configure preferences for the data viewer in Firestore Studio. These preferences only affect your console view and don't change database metadata.
+
+To configure panel settings:
+
+1.  In the data viewer toolbar, click **Panel settings** settings .
+
+2.  In the **Project panel settings** panel, configure the following options:
+    
+      - **Show non-existent parents** : Toggle whether to show non-existent parent documents in the documents list. This setting is enabled by default.
+      - **Realtime updates enabled** : Toggle whether to receive live updates when documents change. This setting is enabled by default. Disabling real-time updates can help lower costs by reducing read operations.
+
+3.  Click **Save** .
+
+> **Note:** Panel settings apply to all databases in your project. Filtering data in the data viewer is supported only when real-time updates are enabled.
+
 ### Non-existent parent documents
 
-A document can exist even if one or more its parents don't exist. For example, the document at path `/mycoll/mydoc/mysubcoll/mysubdoc` can exist even if the parent document `/mycoll/mydoc` does not. The Firestore Standard edition data viewer displays non-existent parent documents as follows:
+A document can exist even if one or more of its parents don't exist. For example, the document at path `/mycoll/mydoc/mysubcoll/mysubdoc` can exist even if the parent document `/mycoll/mydoc` doesn't.
+
+By default, the Firestore Standard edition data viewer displays non-existent parent documents as follows:
 
   - In a collection's list of documents, the document IDs of non-existent parent documents are *italicized* .
-  - In a non-existent parent document's information panel, the data viewer points out that the document does not exist.
+  - In a non-existent parent document's information panel, the data viewer points out that the document doesn't exist.
 
 ![Firestore data viewer in the console, showing a hierarchy of documents with a missing document highlighted and a warning message.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-console-non-existent-ancestor-document.png)
 
-> **Warning:** Even though non-existent parent documents appear in the console, they do not appear in queries and snapshots. You must create the document to include it in query results.
+To hide non-existent parent documents from the collection documents list, disable **Show non-existent parents** in the [panel settings](https://docs.cloud.google.com/firestore/native/docs/using-console#configure-panel-settings) .
+
+> **Warning:** Even though non-existent parent documents appear in the console, they don't appear in queries and snapshots. You must create the document to include it in query results.
 
 ### Filter data
 
-You can filter documents in a collection based on field value and the `==` , `!-` , `>` , `>=` , `<` , `<=` , `in` , `not-in` , `array-contains` , `array-contains-any` conditions. For example, you can display only documents where the value of field `firstname` equals `Sam` . To apply a collection filter:
+You can filter documents in a collection based on field value and the `==` , `!-` , `>` , `>=` , `<` , `<=` , `in` , `not-in` , `array-contains` , `array-contains-any` conditions. For example, you can display only documents where the value of field `firstname` equals `Sam` .
+
+> **Note:** Filtering data in the data viewer is supported only when **Realtime updates enabled** is selected in [panel settings](https://docs.cloud.google.com/firestore/native/docs/using-console#configure-panel-settings) .
+
+To apply a collection filter:
 
 1.  Click the filter button filter\_list next to a collection ID:
     
