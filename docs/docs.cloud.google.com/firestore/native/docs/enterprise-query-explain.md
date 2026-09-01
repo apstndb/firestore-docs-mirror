@@ -68,9 +68,11 @@ Execute a query in the Query Editor and open the **Explanation** tab:
 
 Depending on what you want to debug, you can execute a query with Query Explain in different modes:
 
-  - **`analyze`** : Plans and executes the query. Returns planner information, runtime execution statistics and metrics, alongside the regular results produced by the query.
+  - **`analyze`** : Plans and executes the query. Returns planner information, runtime execution statistics, and metrics, alongside the regular results produced by the query.
 
   - **`explain`** : Plans the query, but does not execute it. Returns the planner information but no runtime statistics, metrics, or results. This is useful for debugging the behaviour of a query without running costly operations.
+
+  - **`stats`** : Plans and executes the query, but does not return results. Returns planner information, runtime execution statistics, and metrics.
 
 ## Analysis
 

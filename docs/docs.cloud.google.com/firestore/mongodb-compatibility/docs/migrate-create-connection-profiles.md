@@ -28,7 +28,10 @@ The migration procedure described in the subsequent sections uses the gcloud CLI
 
 Run the following command to create a Datastream connection profile to the MongoDB database hosted on Compute Engine.
 
-Omit the `--mongodb-replica-set` flag from the following command when connecting to a sharded cluster.
+  - Omit the `--mongodb-replica-set` flag from the following command when connecting to a sharded cluster.
+  - Omit the `--mongodb-additional-options=readPreference=secondary` flag only when connecting to a standalone instance without replica set secondaries.
+
+<!-- end list -->
 
     gcloud datastream connection-profiles create "$SRC_CONNECTION_PROFILE_NAME" \
     --display-name="$SRC_CONNECTION_PROFILE_NAME" \
@@ -40,7 +43,8 @@ Omit the `--mongodb-replica-set` flag from the following command when connecting
     --private-connection="$PRIVATE_CONNECTION_NAME" \
     --mongodb-standard-connection-format \
     --type=mongodb \
-    --mongodb-direct-connection
+    --mongodb-direct-connection \
+    --mongodb-additional-options=readPreference=secondary
 
 ### MongoDB over SSH
 
@@ -48,7 +52,8 @@ This example assumes you have already [configured SSH connectivity](https://docs
 
 Run the following command to create a Datastream connection profile to the MongoDB database hosted on Compute Engine.
 
-Omit the `--mongodb-replica-set` flag from the following command when connecting to a sharded cluster.
+  - Omit the `--mongodb-replica-set` flag from the following command when connecting to a sharded cluster.
+  - Omit the `--mongodb-additional-options=readPreference=secondary` flag only when connecting to a standalone instance without replica set secondaries.
 
 If you want to connect with an SSH password, pass the `--forward-ssh-password` flag instead of the `--forward-ssh-private-key` flag.
 
@@ -65,7 +70,8 @@ If you want to connect with an SSH password, pass the `--forward-ssh-password` f
     --forward-ssh-private-key="$BASTION_SSH_PRIVATE_KEY" \
     --mongodb-standard-connection-format \
     --type=mongodb \
-    --mongodb-direct-connection
+    --mongodb-direct-connection \
+    --mongodb-additional-options=readPreference=secondary
 
 ### Amazon DocumentDB
 
@@ -133,7 +139,8 @@ This example assumes that the source is accessible through a public DNS or IP ad
     --mongodb-host-addresses="$MONGODB_HOST_ADDRESS" \
     --mongodb-srv-connection-format \
     --type=mongodb \
-    --static-ip-connectivity
+    --static-ip-connectivity \
+    --mongodb-additional-options=readPreference=secondary
 
 For more information about monitoring the connection profile creation, see [Troubleshooting](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-troubleshooting) .
 
