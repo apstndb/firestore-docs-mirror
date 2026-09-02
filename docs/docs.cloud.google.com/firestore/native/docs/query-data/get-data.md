@@ -8,8 +8,6 @@ data_source: docs.cloud.google.com
 
 # Getting data
 
-[Video](https://www.youtube.com/watch?v=Ofux_4c94FI)
-
 > **Tip:** This page applies to Core operations. To get data with the Pipeline operations for Enterprise edition, see [Get data with Pipeline operations](https://docs.cloud.google.com/firestore/native/docs/pipeline/overview) .
 
 There are three ways to retrieve data stored in Firestore. Any of these methods can be used with documents, collections of documents, or the results of queries:

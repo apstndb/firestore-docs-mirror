@@ -8,8 +8,6 @@ data_source: docs.cloud.google.com
 
 # Create and manage databases
 
-[Video](https://www.youtube.com/watch?v=Lx6pf2Bq5Hw)
-
 This page describes how to create, update, and delete Firestore databases. You can create multiple Firestore databases per project. You can use multiple databases to set up production and testing environments, to isolate customer data, and for data regionalization.
 
 ## Required roles and permissions

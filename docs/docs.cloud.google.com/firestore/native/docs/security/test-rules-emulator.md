@@ -8,8 +8,6 @@ data_source: docs.cloud.google.com
 
 # Test security rules
 
-[Video](https://www.youtube.com/watch?v=VDulvfBpzZE)
-
 As you're building your app, you might want to lock down access to your Firestore in Native Mode database. However, before you launch, you'll need more nuanced Firestore Security Rules. With the Firestore in Native Mode emulator, in addition to prototyping and testing your app's [general features and behavior](https://firebase.google.com/docs/emulator-suite/connect_and_prototype) , you can write unit tests that check the behavior of your Firestore Security Rules.
 
 > **Note:** The server client libraries bypass all Firestore Security Rules and instead authenticate through [Google Application Default Credentials](https://cloud.google.com/docs/authentication/production) . If you're using the server client libraries or the REST or RPC APIs, make sure to set up [Identity and Access Management (IAM) for Firestore](https://cloud.google.com/firestore/docs/security/iam) .

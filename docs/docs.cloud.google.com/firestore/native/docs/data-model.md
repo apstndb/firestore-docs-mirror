@@ -8,8 +8,6 @@ data_source: docs.cloud.google.com
 
 # Data model
 
-[Video](https://www.youtube.com/watch?v=v_hR4K4auoQ)
-
 Firestore is a NoSQL, document-oriented database. Unlike a SQL database, there are no tables or rows. Instead, you store data in *documents* , which are organized into *collections* .
 
 Each *document* contains a set of key-value pairs. Firestore is optimized for storing large collections of small documents.

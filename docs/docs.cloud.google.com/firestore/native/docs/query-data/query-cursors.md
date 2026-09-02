@@ -8,8 +8,6 @@ data_source: docs.cloud.google.com
 
 # Paginate data with query cursors
 
-[Video](https://www.youtube.com/watch?v=poqTHxtDXwU)
-
 > **Tip:** This page applies to Core operations. To paginate results with Pipeline operations for Enterprise edition, see [paginate results with Pipeline operations](https://docs.cloud.google.com/firestore/native/docs/pipeline/overview#pagination) .
 
 With query cursors in Firestore, you can split data returned by a query into batches according to the parameters you define in your query.

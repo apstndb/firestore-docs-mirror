@@ -14,8 +14,8 @@ The following tables list supported MongoDB data types, drivers, and third-party
 
 | **BSON Type**           | **Supported** |
 | ----------------------- | ------------- |
-| 32-bit Integer (int)    | Yes           |
-| 64-bit Integer (long)   | Yes           |
+| 32-bit Integer          | Yes           |
+| 64-bit Integer          | Yes           |
 | Array                   | Yes           |
 | Binary Data             | Yes           |
 | Boolean                 | Yes           |
@@ -43,8 +43,8 @@ The top-level `_id` field in a document must be one of the following types:
 
   - ObjectId
   - String
-  - 64-bit Integer (long)
-  - 32-bit Integer (int)
+  - 64-bit Integer
+  - 32-bit Integer
   - Double
   - Binary
   - Object
@@ -114,15 +114,15 @@ The Java, Node.js, and Python drivers support OIDC authentication from Google Cl
 
 Firestore with MongoDB compatibility supports third-party tools described in this section.
 
-| **Tool**                                                                  | **Description**               |
-| ------------------------------------------------------------------------- | ----------------------------- |
-| [mongoimport](https://www.mongodb.com/docs/database-tools/mongoimport/)   | MongoDB Database Tools        |
-| [mongoexport](https://www.mongodb.com/docs/database-tools/mongoexport/)   | MongoDB Database Tools        |
-| [mongodump](https://www.mongodb.com/docs/database-tools/mongodump/)       | MongoDB Database Tools        |
-| [mongorestore](https://www.mongodb.com/docs/database-tools/mongorestore/) | MongoDB Database Tools        |
-| [mongosh](https://www.mongodb.com/docs/mongodb-shell/)                    | MongoDB Shell                 |
-| [Mongoose](https://mongoosejs.com/)                                       | MongoDB object modeling tool  |
-| [MongoDB Compass](https://www.mongodb.com/products/tools/compass)         | GUI tool for data exploration |
+| **Tool**                                                                  | **Description**               | **Notes**                                                                                                                  |
+| ------------------------------------------------------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| [mongoimport](https://www.mongodb.com/docs/database-tools/mongoimport/)   | MongoDB Database Tools        | See [Bulk data loading](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/bulk-data-loading#mongoimport)  |
+| [mongoexport](https://www.mongodb.com/docs/database-tools/mongoexport/)   | MongoDB Database Tools        |                                                                                                                            |
+| [mongodump](https://www.mongodb.com/docs/database-tools/mongodump/)       | MongoDB Database Tools        |                                                                                                                            |
+| [mongorestore](https://www.mongodb.com/docs/database-tools/mongorestore/) | MongoDB Database Tools        | See [Bulk data loading](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/bulk-data-loading#mongorestore) |
+| [mongosh](https://www.mongodb.com/docs/mongodb-shell/)                    | MongoDB Shell                 |                                                                                                                            |
+| [Mongoose](https://mongoosejs.com/)                                       | MongoDB object modeling tool  |                                                                                                                            |
+| [MongoDB Compass](https://www.mongodb.com/products/tools/compass)         | GUI tool for data exploration |                                                                                                                            |
 
 > **Note:** Some third-party tools require a connection string. To obtain a connection string for your Firestore with MongoDB compatibility database, you can run the [`firestore databases connection-string` command](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/connection-string) using Google Cloud CLI.
 

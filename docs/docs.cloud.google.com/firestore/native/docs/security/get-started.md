@@ -8,8 +8,6 @@ data_source: docs.cloud.google.com
 
 # Getting started with security rules
 
-[Video](https://www.youtube.com/watch?v=eW5MdE3ZcAw)
-
 With Firestore Security Rules, you can focus on building a great user experience without having to manage infrastructure or write server-side authentication and authorization code.
 
 Security rules provide access control and data validation in a simple yet expressive format. To build user-based and role-based access systems that keep your users' data safe, you need to use [Firebase Authentication](https://firebase.google.com/docs/auth/) with Firestore Security Rules.

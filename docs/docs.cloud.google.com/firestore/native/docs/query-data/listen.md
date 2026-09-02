@@ -8,8 +8,6 @@ data_source: docs.cloud.google.com
 
 # Get real-time updates
 
-[Video](https://www.youtube.com/watch?v=3aoxOtMM2rc)
-
 You can *listen* to a document with the `onSnapshot()` method. An initial call using the callback you provide creates a document snapshot immediately with the current contents of the single document. Then, each time the contents change, another call updates the document snapshot.
 
 > **Note:**

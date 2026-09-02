@@ -8,7 +8,7 @@ data_source: docs.cloud.google.com
 
 # Best practices for bulk data loading
 
-This page describes the best practices when bulk loading data to Firestore with MongoDB compatibility with tools like `mongoimport` .
+bulk loading data to Firestore with MongoDB compatibility with tools like `mongoimport` and `mongorestore` .
 
 Firestore is a highly distributed system offering automatic scaling to meet the needs of your business. Firestore dynamically splits and combines your data based on the load received by the system.
 
@@ -22,7 +22,15 @@ Workloads that process large amounts of data in a single threaded client can cre
 
 ### `mongoimport`
 
-When using the `mongoimport` tool, requests are made sequentially by default. To improve the load time into Firestore, set the number of workers with the `--numInsertionWorkers` flag. The correct setting might require tuning based on the size of your client, but we generally recommend starting with at least `32` .
+When using the `mongoimport` tool, requests are made sequentially by default. To improve the load time into Firestore, set the number of workers with the `--numInsertionWorkers` flag. The correct setting might require tuning based on the size of your client.
+
+### `mongorestore`
+
+When using the `mongorestore` tool, remove the `retryWrites=false` parameter from your connection string in order to improve resilience to transient failures.
+
+> **Note:** Support for `retryWrites` in Firestore with MongoDB compatibility is limited to the `mongorestore` tool.
+
+To improve the load time into Firestore, you can also increase the number of insertion workers per collection with the `--numInsertionWorkersPerCollection` flag and the number of parallel collections with the `--numParallelCollections` flag. The correct settings might require tuning based on the size of your client.
 
 ### async programming
 

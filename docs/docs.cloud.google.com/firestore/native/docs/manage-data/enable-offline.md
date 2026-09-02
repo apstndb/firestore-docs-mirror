@@ -8,8 +8,6 @@ data_source: docs.cloud.google.com
 
 # Enable offline data
 
-[Video](https://www.youtube.com/watch?v=oDvdAFP6OhQ)
-
 Firestore supports offline data persistence. This feature caches a copy of the Firestore data that your app is actively using, so your app can access the data when the device is offline. You can write, read, listen to, and query the cached data.
 
 When the device comes back online, Firestore synchronizes any local changes made by your app to the Firestore backend. For multiple changes to the same document, it's last write wins.

@@ -2,7 +2,7 @@
 name: documents/cloud.google.com/products/firestore
 uri: https://cloud.google.com/products/firestore
 title: Firestore
-description: Easily develop rich applications using a fully-managed, scalable, and serverless document database with JSON and BSON compatibility.
+description: Easily develop rich applications using a fully-managed, scalable and enterprise-grade serverless document database with MongoDB compatibility.
 data_source: cloud.google.com
 ---
 
@@ -34,13 +34,13 @@ New customers get $300 in free credits to spend on Firestore. All customers get 
 
   - [](https://cloud.google.com/products/firestore#features)
     
-    Single-digit milliseconds, read latency performance
+    Pipeline query API and indexes for advanced query patterns
 
 -----
 
   - [](https://www.youtube.com/watch?v=IemOAESlWKw)
     
-    ![Firestore Icon](https://www.gstatic.com/bricks/image/4d856cbe-95d4-4dc0-9b03-da0b79de8388.png)
+    ![Document database illustration](https://www.gstatic.com/bricks/image/89792e07-14ea-45c4-b383-1a6009b10928.png)
     
     Firestore in a minute video
     
@@ -54,7 +54,7 @@ Use a familiar MongoDB wire-compatible API on Firestore's serverless database se
 
 ### Real-time synchronization
 
-Develop rich applications utilizing advanced pipeline query capabilities, including full-text search, geospatial, and robust offline data handling. Built-in real-time sync facilitates offline-first or collaborative app development for mobile, web, and wearables. Power workloads in media, gaming, content management, messaging, location-based services, retail, hospitality, and business apps. [Learn more](https://firebase.google.com/docs/firestore/manage-data/enable-offline).
+Develop rich applications utilizing advanced pipeline query capabilities, including full-text search, geospatial, and robust offline data handling. Built-in real-time sync facilitates offline-first or collaborative app development for mobile, web, and wearables. Power workloads in media, gaming, content management, messaging, location-based services, retail, hospitality, and business apps. [Learn more](https://firebase.google.com/docs/firestore/query-data/listen).
 
 ### Serverless
 
@@ -78,11 +78,11 @@ Firestore seamlessly integrates with Cloud Identity and Access Management, Cloud
 
 ### Multi-region replication
 
-Firestore offers automatic multi-region replication with strong consistency and industry-leading high availability of up to 99.999% SLA. This ensures that your data is safe and available, even when disasters strike.
+Firestore offers automatic multi-region replication with strong consistency and industry-leading [SLA-backed](https://cloud.google.com/firestore/sla) high availability of 99.999%. This ensures that your data is safe and available, even when disasters strike.
 
 How It Works
 
-### Firestore is a flexible, scalable JSON database for mobile device, web, and server development from Google Cloud. It's very easy to get started with Firestore and write rich and powerful applications. Learn best practices for building apps that use Firestore, including data location, document IDs, field names, indexes, read and write operations, and designing for scale.
+### Firestore is a flexible, scalable JSON database for mobile device, web, and server development from Google Cloud. It's very easy to get started with Firestore and write rich and powerful applications. Learn best practices for building apps that use Firestore, including querying, indexes, offline-sync capabilities and designing for scale.
 
 [Documentation](https://cloud.google.com/firestore/docs/understand-reads-writes-scale)
 

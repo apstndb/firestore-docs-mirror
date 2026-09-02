@@ -10,8 +10,6 @@ data_source: docs.cloud.google.com
 
 An aggregation query processes the data from multiple index entries to return a single summary value.
 
-[Video](https://www.youtube.com/watch?v=JiDdBIqhWKc)
-
 Firestore supports the following aggregation queries:
 
   - `count()`

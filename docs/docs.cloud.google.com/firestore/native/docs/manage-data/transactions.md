@@ -8,8 +8,6 @@ data_source: docs.cloud.google.com
 
 # Transactions and batched writes
 
-[Video](https://www.youtube.com/watch?v=dOVSr0OsAoU)
-
 Firestore supports atomic operations for reading and writing data. In a set of atomic operations, either all of the operations succeed, or none of them are applied. There are two types of atomic operations in Firestore:
 
   - **Transactions** : a [transaction](https://docs.cloud.google.com/firestore/native/docs/manage-data/transactions#transactions) is a set of read and write operations on one or more documents.
