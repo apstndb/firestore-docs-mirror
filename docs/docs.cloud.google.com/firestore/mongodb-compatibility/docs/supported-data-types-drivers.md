@@ -21,7 +21,6 @@ The following tables list supported MongoDB data types, drivers, and third-party
 | Boolean                 | Yes           |
 | Date                    | Yes           |
 | DBPointer               | No            |
-| DBRef                   | No            |
 | Decimal128              | Yes           |
 | Double                  | Yes           |
 | JavaScript              | No            |
