@@ -8,11 +8,13 @@ data_source: docs.cloud.google.com
 
 Use the managed bulk delete service to delete data from your database. This feature supports deletion against one or more kinds.
 
-This page describes how to delete entities in bulk using the managed bulk delete service. The Datastore mode managed bulk delete service is available through the [`gcloud`](https://cloud.google.com/sdk/gcloud/) command-line tool and the Firestore [REST API](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/bulkDeleteDocuments) .
+## Managed bulk delete service
 
-> **Caution:** Bulk deleting data from Datastore mode incurs one delete operation per entity deleted and some read operations based on a fraction of total entities read. However, these operations don't appear in the usage section of the console. Make sure that you understand this before issuing bulk deletes to avoid billed charges.
+To delete entities in bulk, use the managed bulk delete service. The Datastore mode managed bulk delete service is available through the [`gcloud`](https://cloud.google.com/sdk/gcloud/) command-line tool and the Firestore [REST API](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/bulkDeleteDocuments) .
 
-## Before you begin
+> **Caution:** Deleting data with the managed bulk delete service incurs one delete operation per entity deleted and some read operations based on a fraction of total entities read. However, these operations don't appear in the usage section of the console. To avoid billed charges, make sure that you understand this before issuing managed bulk delete operations.
+
+### Before you begin
 
 Before you can use the managed bulk delete service, you must complete the following tasks:
 
@@ -24,7 +26,7 @@ Before you can use the managed bulk delete service, you must complete the follow
         
         > **Note:** These Datastore roles also grant permissions in Firestore.
 
-### Set up `gcloud` for your project
+#### Set up `gcloud` for your project
 
 You can initiate bulk delete operations through the Google Cloud console or the `gcloud` command-line tool. To use `gcloud` , set up the command-line tool and connect to your project in one of the following ways:
 
@@ -36,13 +38,13 @@ You can initiate bulk delete operations through the Google Cloud console or the 
 
   - [Install and initialize the Google Cloud SDK.](https://cloud.google.com/sdk/docs/quickstarts)
 
-## Bulk delete data
+### Delete data with the managed bulk delete service
 
 A bulk delete operation first finds all applicable entities in your database and deletes them in batches. You may still query or read these entities while the results may vary based on the progress made. Bulk delete doesn't delete any entities added or modified after the operation starts.
 
 > **Note:** If you plan to delete all entities in the database, see the [database deletion feature](https://docs.cloud.google.com/datastore/docs/manage-databases#delete-database) instead.
 
-### Bulk delete specific kinds
+#### Bulk delete specific kinds
 
 ### gcloud
 
@@ -54,7 +56,7 @@ To bulk delete specific kinds, use the [`--collection-ids`](https://cloud.google
     --collection-ids=[COLLECTION_GROUP_ID_1_OR_KIND_1],[COLLECTION_GROUP_ID_2_OR_KIND_2],[SUBCOLLECTION_GROUP_ID_1_OR_KIND_3] \
     --database=[DATABASE]
 
-## Manage bulk delete operations
+### Manage bulk delete operations
 
 After you start a bulk delete operation, Datastore mode assigns the operation a unique name. You can use the operation name to delete, cancel, or check the status of the operation.
 
@@ -64,7 +66,7 @@ Operation names are prefixed with `projects/[PROJECT_ID]/databases/[DATABASE_ID]
 
 However, you can leave out the prefix when specifying an operation name for the `describe` , `cancel` , and `delete` commands.
 
-### List all bulk delete operations
+#### List all bulk delete operations
 
 ### gcloud
 
@@ -72,7 +74,7 @@ Use the [`operations list`](https://cloud.google.com/sdk/gcloud/reference/firest
 
     gcloud firestore operations list
 
-### Check operation status
+#### Check operation status
 
 ### gcloud
 
@@ -80,7 +82,7 @@ Use the [`operations describe`](https://cloud.google.com/sdk/gcloud/reference/fi
 
     gcloud firestore operations describe [OPERATION_NAME]
 
-#### Estimate the completion time
+##### Estimate the completion time
 
 A request for the status of a long-running operation returns the metrics `workEstimated` and `workCompleted` . Each of these metrics is returned in both number of bytes and number of entities:
 
@@ -90,7 +92,7 @@ A request for the status of a long-running operation returns the metrics `workEs
 
 Divide `workCompleted` by `workEstimated` for a rough progress estimate. This estimate might be inaccurate, because it depends on delayed statistics collection.
 
-### Cancel an operation
+#### Cancel an operation
 
 ### gcloud
 
@@ -100,13 +102,13 @@ Use the [`operations cancel`](https://cloud.google.com/sdk/gcloud/reference/fire
 
 Cancelling a running operation doesn't undo the operation. A cancelled bulk delete operation doesn't recover the deleted entities.
 
-### Delete an operation
+#### Delete an operation
 
 Use the [`gcloud firestore operations delete`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/delete) command to remove a completed operation from the list of recent operations. To cancel a running operation, use the earlier cancellation operation.
 
     gcloud firestore operations delete [OPERATION_NAME]
 
-## Billing and pricing for bulk delete operations
+### Billing and pricing for managed bulk delete operations
 
 You are required to enable billing for your Google Cloud project before you use the managed bulk delete service.
 

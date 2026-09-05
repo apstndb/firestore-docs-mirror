@@ -223,6 +223,28 @@ To deploy rules in the Google Cloud console:
 
 You can also view previous rulesets in the timeline and clone or restore them.
 
+### Test rules with the rules simulator
+
+You can test draft security rules against simulated requests before deploying them.
+
+To test rules in the Google Cloud console:
+
+1.  In the Google Cloud console, go to the **Databases** page.
+
+2.  Click the ID of the database you want to test.
+
+3.  In the navigation menu, click **Security** .
+
+4.  Click the **Firestore Rules** tab, and then click the **Simulator** tab.
+
+5.  Select the **Simulation type** ( **get** , **create** , **update** , or **delete** ).
+
+6.  Enter the target document **Location** .
+
+7.  (Optional) Configure mock document data or authentication parameters.
+
+8.  Click **Run** to view evaluation results and line highlights in the rules editor.
+
 ### Enabling Firebase
 
 To edit your `(default)` database's Firestore Security Rules using the Firebase console or Firebase CLI, you must enable Firebase for your Google Cloud project. If Firebase is not enabled, you can enable Firebase from the ***Security*** page in the Google Cloud console:

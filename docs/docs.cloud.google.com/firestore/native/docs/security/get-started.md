@@ -79,9 +79,39 @@ The `{document=**}` path used in the examples above matches any document in the 
 
 ## Testing rules
 
-Firestore provides a rules simulator that you can use to test your ruleset. You can access the simulator from the Firebase console in the **Databases & Storage** \> **Firestore** \> [**Rules** tab](https://console.firebase.google.com/project/_/firestore/rules) .
+Firestore provides a rules simulator that you can use to test your ruleset. You can access the simulator in both the Google Cloud console and the Firebase console.
 
 The rules simulator lets you simulate authenticated and unauthenticated reads, writes, and deletes. When you simulate an authenticated request, you can build and preview authentication tokens from various providers. Simulated requests run against the ruleset in your editor, not your deployed ruleset.
+
+> **Note:** To fully validate your app's behavior and verify your security rules configurations, use the Local Emulator Suite to run and automate unit tests in a local environment.
+
+### Test rules in the Google Cloud console
+
+The rules simulator in the Google Cloud console is available for Firestore in Native mode in both the Standard and Enterprise editions.
+
+#### Required permissions
+
+To test security rules in the Google Cloud console, you need the following IAM permission:
+
+  - `firebaserules.rulesets.test`
+
+To simulate a database request in the Google Cloud console:
+
+1.  In the Google Cloud console, go to the **Databases** page.
+2.  Click the ID of the database you want to test.
+3.  In the navigation menu, click **Security** .
+4.  Click the **Simulator** tab.
+5.  In the **Simulation type** drop-down list, select an operation type: **get** , **create** , **update** , or **delete** .
+6.  In the **Location** field, enter the document path you want to test (for example, `users/user_123` ).
+7.  (Optional) For **create** and **update** requests, click **Build document** to configure the mock document payload.
+8.  (Optional) To simulate an authenticated request, turn on **Authentication** , select an authentication provider (such as **google.com** or **Anonymous** ), and configure the token payload fields.
+9.  Click **Run** .
+
+The evaluation panel displays whether the request was allowed or denied, detailed report items for each condition evaluated, and line-level highlights in the code editor.
+
+### Test rules in the Firebase console
+
+To test rules in the Firebase console, go to the **Databases & Storage** \> **Firestore** \> [**Rules** tab](https://console.firebase.google.com/project/_/firestore/rules) . Click **Rules Playground** to open the simulator settings, select your simulation options, and then click **Run** .
 
 ## Deploying rules
 

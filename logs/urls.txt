@@ -11,7 +11,7 @@ https://docs.cloud.google.com/datastore/docs/audit-logging	2026-08-27T04:20:24Z
 https://docs.cloud.google.com/datastore/docs/backups	2026-08-27T04:20:24Z
 https://docs.cloud.google.com/datastore/docs/best-practices	2026-08-27T04:20:24Z
 https://docs.cloud.google.com/datastore/docs/billing-questions	2026-08-27T04:20:24Z
-https://docs.cloud.google.com/datastore/docs/bulk-delete	2026-08-27T04:20:24Z
+https://docs.cloud.google.com/datastore/docs/bulk-delete	2026-09-04T23:48:47Z
 https://docs.cloud.google.com/datastore/docs/client-side-traces	2026-08-27T04:20:24Z
 https://docs.cloud.google.com/datastore/docs/cloud-datastore-best-practices	2026-08-27T04:20:24Z
 https://docs.cloud.google.com/datastore/docs/cmek	2026-08-27T04:20:24Z
@@ -550,7 +550,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/audit-logging
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/backups	2026-08-27T05:40:31Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences	2026-08-27T05:40:31Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/bulk-data-loading	2026-09-01T23:16:30Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/bulk-delete	2026-08-27T05:40:31Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/bulk-delete	2026-09-04T23:48:47Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/change-streams	2026-08-27T05:40:31Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/cmek	2026-08-27T05:40:31Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access	2026-08-27T05:40:31Z
@@ -653,7 +653,7 @@ https://docs.cloud.google.com/firestore/native/docs/knowledge-catalog	2026-09-01
 https://docs.cloud.google.com/firestore/native/docs/langchain	2026-09-01T00:42:11Z
 https://docs.cloud.google.com/firestore/native/docs/locations	2026-09-01T00:43:15Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data	2026-09-01T00:42:41Z
-https://docs.cloud.google.com/firestore/native/docs/manage-data/bulk-delete	2026-09-01T00:42:57Z
+https://docs.cloud.google.com/firestore/native/docs/manage-data/bulk-delete	2026-09-04T23:48:47Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data	2026-09-01T06:22:22Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline	2026-09-01T18:39:09Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import	2026-09-01T00:42:57Z
@@ -726,7 +726,7 @@ https://docs.cloud.google.com/firestore/native/docs/resources	2026-09-01T00:43:1
 https://docs.cloud.google.com/firestore/native/docs/restore-in-place	2026-09-01T00:42:41Z
 https://docs.cloud.google.com/firestore/native/docs/secure-agent-interactions-mcp	2026-09-01T00:43:21Z
 https://docs.cloud.google.com/firestore/native/docs/securing-with-vpc-sc	2026-09-01T00:43:18Z
-https://docs.cloud.google.com/firestore/native/docs/security/get-started	2026-09-01T18:39:09Z
+https://docs.cloud.google.com/firestore/native/docs/security/get-started	2026-09-04T08:37:01Z
 https://docs.cloud.google.com/firestore/native/docs/security/iam	2026-09-01T00:42:57Z
 https://docs.cloud.google.com/firestore/native/docs/security/insecure-rules	2026-09-01T00:41:55Z
 https://docs.cloud.google.com/firestore/native/docs/security/rules-conditions	2026-09-01T00:43:23Z
@@ -765,7 +765,7 @@ https://docs.cloud.google.com/firestore/native/docs/use-firestore-mcp	2026-09-01
 https://docs.cloud.google.com/firestore/native/docs/use-monitoring-dashboard	2026-09-01T00:43:15Z
 https://docs.cloud.google.com/firestore/native/docs/use-pitr	2026-09-01T00:43:21Z
 https://docs.cloud.google.com/firestore/native/docs/use-rest-api	2026-09-01T00:42:07Z
-https://docs.cloud.google.com/firestore/native/docs/using-console	2026-09-01T00:42:41Z
+https://docs.cloud.google.com/firestore/native/docs/using-console	2026-09-04T08:37:01Z
 https://docs.cloud.google.com/firestore/native/docs/vector-search	2026-09-01T00:43:26Z
 https://docs.cloud.google.com/firestore/quotas	2026-09-01T00:42:35Z
 https://docs.cloud.google.com/sdk/gcloud/reference/datastore	2026-05-27T16:47:56Z
