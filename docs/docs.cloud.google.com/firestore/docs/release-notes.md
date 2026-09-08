@@ -12,6 +12,14 @@ You can see the latest product updates for all of Google Cloud on the [Google Cl
 
 To get the latest product updates delivered to you, add the URL of this page to your [feed reader](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the [feed URL](https://docs.cloud.google.com/feeds/fs-release-notes.xml) directly.
 
+## September 04, 2026
+
+Feature
+
+The Security Rules simulator is now available in the Google Cloud console for Firestore (Standard and Enterprise editions). You can test draft security rules against simulated database requests and evaluate authentication tokens before deploying rules.
+
+For more information, see [Test rules with the rules simulator](https://docs.cloud.google.com/firestore/native/docs/using-console#test-rules-simulator) or [Test rules in the Google Cloud console](https://docs.cloud.google.com/firestore/native/docs/security/get-started#test-rules-cloud-console) .
+
 ## August 11, 2026
 
 Feature

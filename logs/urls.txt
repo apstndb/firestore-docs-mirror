@@ -412,7 +412,7 @@ https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1be
 https://docs.cloud.google.com/firestore/docs/reference/rpc/google.longrunning	2025-12-05T18:23:35Z
 https://docs.cloud.google.com/firestore/docs/reference/rpc/google.rpc	2025-10-17T23:18:41Z
 https://docs.cloud.google.com/firestore/docs/reference/rpc/google.type	2025-10-17T23:18:34Z
-https://docs.cloud.google.com/firestore/docs/release-notes	2026-09-01T00:42:22Z
+https://docs.cloud.google.com/firestore/docs/release-notes	2026-09-08T06:44:38Z
 https://docs.cloud.google.com/firestore/docs/samples	2026-09-01T00:42:44Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes	2026-09-01T00:42:28Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes-async	2026-09-01T00:43:11Z
