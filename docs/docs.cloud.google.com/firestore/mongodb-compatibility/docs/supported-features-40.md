@@ -767,16 +767,38 @@ Firestore with MongoDB compatibility supports the following administrative comma
 </tbody>
 </table>
 
+### User management commands
+
+To manage database access, see the following:
+
+  - [Authenticate and connect to a database](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect) .
+  - [Manage users](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam) .
+
+| **Command**                | **Supported** |
+| -------------------------- | ------------- |
+| `createUser`               | No            |
+| `dropAllUsersFromDatabase` | No            |
+| `dropUser`                 | No            |
+| `grantRolesToUser`         | No            |
+| `revokeRolesFromUser`      | No            |
+| `updateUser`               | No            |
+| `usersInfo`                | No            |
+
 ### Role management commands
 
-To manage database access, Firestore with MongoDB compatibility supports [Identity and Access Management roles and permissions](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam) .
+To manage database access, see the following:
+
+  - [Authenticate and connect to a database](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect) .
+  - [Manage users](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam) .
 
 | **Command**                | **Supported** |
 | -------------------------- | ------------- |
 | `createRole`               | No            |
-| `dropAllRolesFromDatabase` | No            |
 | `dropRole`                 | No            |
+| `dropAllRolesFromDatabase` | No            |
+| `grantPrivilegesToRole`    | No            |
 | `grantRolesToRole`         | No            |
+| `invalidateUserCache`      | No            |
 | `revokePrivilegesFromRole` | No            |
 | `revokeRolesFromRole`      | No            |
 | `rolesInfo`                | No            |
