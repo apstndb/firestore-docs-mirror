@@ -811,7 +811,7 @@ https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls/update	
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/import	2026-05-27T16:46:25Z
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes	2026-05-27T16:48:47Z
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite	2026-05-27T16:48:37Z
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/create	2026-05-27T16:48:46Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/create	2026-09-09T14:48:57Z
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/delete	2026-05-27T16:48:12Z
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/describe	2026-08-04T14:41:12Z
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/list	2026-08-04T14:40:37Z
