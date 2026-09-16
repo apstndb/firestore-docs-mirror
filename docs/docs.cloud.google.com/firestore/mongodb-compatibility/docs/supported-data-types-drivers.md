@@ -47,6 +47,7 @@ The top-level `_id` field in a document must be one of the following types:
   - Double
   - Binary
   - Object
+  - Boolean
 
 The total size of the `_id` must not exceed 1500 bytes.
 

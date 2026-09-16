@@ -70,7 +70,7 @@ A regional location is a specific geographic place, such as South Carolina. The 
 <td></td>
 <td><code dir="ltr" translate="no">us-west2</code></td>
 <td>Los Angeles</td>
-<td></td>
+<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
 </tr>
 <tr class="even">
 <td></td>
@@ -192,7 +192,7 @@ A regional location is a specific geographic place, such as South Carolina. The 
 <td><p><code dir="ltr" translate="no">europe-west8</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Milan</td>
-<td></td>
+<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
 </tr>
 <tr class="odd">
 <td></td>
@@ -213,7 +213,7 @@ A regional location is a specific geographic place, such as South Carolina. The 
 <td><p><code dir="ltr" translate="no">europe-west12</code></p>
 <p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
 <td>Turin</td>
-<td></td>
+<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
 </tr>
 <tr class="even">
 <td></td>
@@ -239,7 +239,7 @@ A regional location is a specific geographic place, such as South Carolina. The 
 <td></td>
 <td><code dir="ltr" translate="no">europe-central2</code></td>
 <td>Warsaw</td>
-<td></td>
+<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
 </tr>
 <tr class="even">
 <td></td>

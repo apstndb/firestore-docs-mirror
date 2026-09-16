@@ -51,7 +51,7 @@ https://docs.cloud.google.com/datastore/docs/keyvis-patterns	2026-09-08T04:53:07
 https://docs.cloud.google.com/datastore/docs/keyvis-patterns-index	2026-09-08T04:53:07Z
 https://docs.cloud.google.com/datastore/docs/knowledge-catalog	2026-09-08T04:53:07Z
 https://docs.cloud.google.com/datastore/docs/langchain	2026-09-08T04:53:07Z
-https://docs.cloud.google.com/datastore/docs/locations	2026-09-08T04:53:07Z
+https://docs.cloud.google.com/datastore/docs/locations	2026-09-15T20:28:47Z
 https://docs.cloud.google.com/datastore/docs/manage-databases	2026-09-08T04:48:14Z
 https://docs.cloud.google.com/datastore/docs/multiple-range-fields	2026-09-08T04:48:14Z
 https://docs.cloud.google.com/datastore/docs/multiple-range-optimize-indexes	2026-09-08T04:48:14Z
@@ -592,7 +592,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/securing-with
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam	2026-09-08T06:45:05Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/server-side-encryption	2026-09-08T06:45:05Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size	2026-09-08T06:45:05Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-data-types-drivers	2026-09-08T06:45:05Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-data-types-drivers	2026-09-16T06:17:55Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-36	2026-09-08T23:50:48Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-40	2026-09-08T23:50:48Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-50	2026-09-08T23:50:48Z
@@ -609,7 +609,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-cmek	2026
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard	2026-09-08T06:45:05Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-pitr	2026-09-08T06:45:05Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/write-mql-gemini	2026-09-08T06:45:05Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/quotas	2026-09-08T06:44:36Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/quotas	2026-09-15T19:30:56Z
 https://docs.cloud.google.com/firestore/native/docs	2026-09-09T01:17:52Z
 https://docs.cloud.google.com/firestore/native/docs/apis	2026-09-09T01:17:53Z
 https://docs.cloud.google.com/firestore/native/docs/app-engine-requirement	2026-09-09T01:17:53Z

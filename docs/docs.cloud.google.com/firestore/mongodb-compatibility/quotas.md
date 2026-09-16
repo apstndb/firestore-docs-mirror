@@ -128,7 +128,7 @@ The following tables show the limits that apply to Firestore with MongoDB compat
 </tr>
 <tr class="odd">
 <td>Maximum size of a field value</td>
-<td>4 MiB - 89 bytes</td>
+<td>16MiB - 89 bytes</td>
 </tr>
 <tr class="even">
 <td>Maximum depth of fields in a map or array</td>
