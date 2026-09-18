@@ -97,7 +97,7 @@ This also includes making necessary updates to the Indexes table as follows:
   - Fields that are being removed from the documents need corresponding deletes in the Indexes table.
   - Fields that are being modified in the documents, need both deletes (for old values) and inserts (for new values) in the Indexes table.
 
-To calculate the mutations mentioned earlier, Firestore reads the *indexing configuration* for the project. The indexing configuration stores information about the indexes for a project. Firestore uses two types of indexes: single-field and composite. For a detailed understanding of the indexes created in Firestore, see [Index types in Firestore](https://docs.cloud.google.com/firestore/docs/concepts/index-overview) .
+To calculate the mutations mentioned earlier, Firestore reads the *indexing configuration* for the database. The indexing configuration stores information about the indexes for a database. Firestore uses two types of indexes: single-field and composite. For a detailed understanding of the indexes created in Firestore, see [Index types in Firestore](https://docs.cloud.google.com/firestore/docs/concepts/index-overview) .
 
 Once the mutations are calculated, Firestore collects them inside a transaction and then commits it.
 
