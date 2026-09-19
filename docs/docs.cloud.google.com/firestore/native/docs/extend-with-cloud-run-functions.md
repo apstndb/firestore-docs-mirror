@@ -58,7 +58,7 @@ Note that by default, [Cloud Build permissions include permissions to upload and
 
 #### Required roles for the trigger identity
 
-1.  Make note of the [Compute Engine default service account](https://docs.cloud.google.com/iam/docs/service-account-types#default) as you will you attach it to an Eventarc trigger to represent the identity of the trigger for testing purposes. This service account is automatically created after enabling or using a Google Cloud service that uses Compute Engine, and with the following email format:
+1.  Make note of the [Compute Engine default service account](https://docs.cloud.google.com/iam/docs/service-account-types#default) as you will attach it to an Eventarc trigger to represent the identity of the trigger for testing purposes. This service account is automatically created after enabling or using a Google Cloud service that uses Compute Engine, and with the following email format:
     
         PROJECT_NUMBER-compute@developer.gserviceaccount.com
     
