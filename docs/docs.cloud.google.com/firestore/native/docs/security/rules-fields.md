@@ -10,11 +10,11 @@ data_source: docs.cloud.google.com
 
 This page builds on the concepts in [Structuring Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/rules-structure) and [Writing Conditions for Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/rules-conditions) to explain how you can use Firestore Security Rules to create rules that allow clients to perform operations on some fields in a document but not others.
 
-> **Note:** The server client libraries bypass all Firestore Security Rules and instead authenticate through [Google Application Default Credentials](https://cloud.google.com/docs/authentication/production) . If you're using the server client libraries or the REST or RPC APIs, make sure to set up [Identity and Access Management (IAM) for Firestore](https://cloud.google.com/firestore/docs/security/iam) .
-
 There may be times when you want to control changes to a document not at the document level but at the field level.
 
 For instance, you might want to allow a client to create or change a document, but not allow them to edit certain fields in that document. Or you may wish to enforce that any document that a client always creates contains a certain set of fields. This guide covers how you can accomplish some of these tasks using Firestore Security Rules.
+
+> **Note:** The server client libraries bypass all Firestore Security Rules and instead authenticate through [Google Application Default Credentials](https://cloud.google.com/docs/authentication/production) . If you're using the server client libraries or the REST or RPC APIs, make sure to set up [Identity and Access Management (IAM) for Firestore](https://cloud.google.com/firestore/docs/security/iam) .
 
 ## Allowing read access only for specific fields
 
