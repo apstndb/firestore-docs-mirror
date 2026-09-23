@@ -63,7 +63,7 @@ info
   - [Getting support](https://docs.cloud.google.com/firestore/docs/getting-support)
 
   - 
-Use case
+Architecture
 
 Use cases
 
