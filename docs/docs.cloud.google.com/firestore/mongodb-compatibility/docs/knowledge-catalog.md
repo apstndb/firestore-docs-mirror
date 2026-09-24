@@ -61,7 +61,7 @@ Knowledge Catalog is enabled by default on new and existing Firestore databases,
 
 ## Before you begin
 
-  - Enable the Knowledge Catalog API.
+  - Enable the Knowledge Catalog API, if it is not already enabled.
     
     **Roles required to enable APIs**
     

@@ -70,7 +70,7 @@ A regional location is a specific geographic place, such as South Carolina. The 
 <td></td>
 <td><code dir="ltr" translate="no">us-west2</code></td>
 <td>Los Angeles</td>
-<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
+<td></td>
 </tr>
 <tr class="even">
 <td></td>

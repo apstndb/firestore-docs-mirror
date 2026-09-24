@@ -15,7 +15,7 @@ If you have specific compliance or regulatory requirements related to the keys t
 This page describes CMEK for Firestore. For more information about CMEK in general, including when and why to enable it, see the following Cloud KMS documentation:
 
   - [Customer-managed encryption keys (CMEK)](https://cloud.google.com/kms/docs/cmek)
-  - [Best practices for using CMEKs](https://cloud.google.com/kms/docs/cmek-best-practices)
+  - [Recommended practices for using CMEKs](https://cloud.google.com/kms/docs/cmek-recommended-practices)
 
 For instructions on performing CMEK-related tasks with Firestore, see [Use CMEK](https://docs.cloud.google.com/firestore/native/docs/use-cmek) .
 
