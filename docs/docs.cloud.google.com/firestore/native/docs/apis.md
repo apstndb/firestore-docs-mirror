@@ -1,54 +1,14 @@
 ---
 name: documents/docs.cloud.google.com/firestore/native/docs/apis
 uri: https://docs.cloud.google.com/firestore/native/docs/apis
-title: APIs & server client library reference
+title: APIs and client libraries reference
 description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
 data_source: docs.cloud.google.com
 ---
 
-> **Beta**
-> 
-> This product is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . Pre-GA products are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
-
-  - [](https://docs.cloud.google.com/firestore/docs/client/get-firebase)
-    
-    ### Getting Started with Firebase
-    
-    Instructions for connecting your app to Firebase.
-
   - [](https://docs.cloud.google.com/firestore/docs/quickstart)
     
-    ### Getting Started with the Mobile and Web Client Libraries
-    
-    See the quickstart for instructions on getting started with the Firestore mobile and web client libraries.
-
-  - [](https://docs.cloud.google.com/firestore/docs/reference/security)
-    
-    ### Security Rules Server Client Library Reference
-    
-    Detailed reference for working with Firestore Security Rules.
-
-  - [](https://firebase.google.com/docs/reference/android/com/google/firebase/firestore/package-summary)
-    
-    ### Android Client Library Reference
-
-  - [](https://firebase.google.com/docs/reference/swift/firebasefirestore/api/reference/Classes)
-    
-    ### Swift Client Library Reference
-
-  - [](https://firebase.google.com/docs/reference/ios/firebasefirestore/api/reference/Classes)
-    
-    ### Objective-C Client Library Reference
-
-  - [](https://firebase.google.com/docs/reference/js/firebase.firestore)
-    
-    ### Web Client Library Reference
-
-<!-- end list -->
-
-  - [](https://docs.cloud.google.com/firestore/docs/quickstart)
-    
-    ### Getting Started with the Server Client Libraries
+    ### Get Started with the Server Client Libraries
     
     See the quickstart for instructions on getting started with the Firestore server client libraries.
 
@@ -76,9 +36,43 @@ data_source: docs.cloud.google.com
     
     ### Python Server Client Library Reference
 
-  - [](https://googleapis.dev/ruby/google-cloud-firestore/v0.21.1/Google/Firestore/V1beta1.html)
+  - [](https://googleapis.dev/ruby/google-cloud-firestore/latest/Google/Cloud/Firestore.html)
     
     ### Ruby Server Client Library Reference
+
+<!-- end list -->
+
+  - [](https://docs.cloud.google.com/firestore/docs/quickstart)
+    
+    ### Get Started with the Mobile and Web Client Libraries
+    
+    See the quickstart for instructions on getting started with the Firestore mobile and web client libraries.
+
+  - [](https://docs.cloud.google.com/firestore/docs/reference/security)
+    
+    ### Security Rules Client Library Reference
+    
+    Detailed reference for working with Firestore Security Rules.
+
+  - [](https://firebase.google.com/docs/reference/kotlin/com/google/firebase/firestore/package-summary)
+    
+    ### Android (Kotlin) Client Library Reference
+
+  - [](https://firebase.google.com/docs/reference/android/com/google/firebase/firestore/package-summary)
+    
+    ### Android (Java) Client Library Reference
+
+  - [](https://firebase.google.com/docs/reference/swift/firebasefirestore/api/reference/Classes)
+    
+    ### iOS (Swift) Client Library Reference
+
+  - [](https://firebase.google.com/docs/reference/ios/firebasefirestore/api/reference/Classes)
+    
+    ### iOS (Objective-C) Client Library Reference
+
+  - [](https://firebase.google.com/docs/reference/js/firebase.firestore)
+    
+    ### Web Client Library Reference
 
 <!-- end list -->
 
