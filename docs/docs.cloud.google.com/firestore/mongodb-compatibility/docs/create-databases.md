@@ -150,7 +150,7 @@ Use delete protection to prevent accidental deletion of a database. Delete prote
 
 Use one of the following methods to list your databases:
 
-##### Console
+##### Google Cloud console
 
 In the Google Cloud console, go to the **Databases** page.
 
@@ -244,7 +244,7 @@ You can clone an existing database at a selected timestamp into a new database:
 
 > **Note:** To clone databases, your Google Account must have the [`datastore.databases.clone` IAM permission](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases#permissions) .
 
-### Console
+### Google Cloud console
 
 1.  In the Google Cloud console, go to the **Databases** page.
 

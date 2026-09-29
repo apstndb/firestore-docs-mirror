@@ -7,7 +7,7 @@ https://docs.cloud.google.com/datastore/docs/apis	2026-09-25T05:48:39Z
 https://docs.cloud.google.com/datastore/docs/app-engine-requirement	2026-09-25T05:48:39Z
 https://docs.cloud.google.com/datastore/docs/articles/balancing-strong-and-eventual-consistency-with-google-cloud-datastore	2026-09-25T05:48:47Z
 https://docs.cloud.google.com/datastore/docs/articles/fast-and-reliable-ranking-in-datastore	2026-09-25T05:48:47Z
-https://docs.cloud.google.com/datastore/docs/audit-logging	2026-09-25T05:48:39Z
+https://docs.cloud.google.com/datastore/docs/audit-logging	2026-09-28T21:50:12Z
 https://docs.cloud.google.com/datastore/docs/backups	2026-09-25T05:48:39Z
 https://docs.cloud.google.com/datastore/docs/best-practices	2026-09-25T05:48:39Z
 https://docs.cloud.google.com/datastore/docs/billing-questions	2026-09-25T05:48:39Z
@@ -556,7 +556,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/cmek	2026-09-
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-private-google-access	2026-09-25T07:46:59Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect	2026-09-25T07:46:59Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database	2026-09-25T07:46:59Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases	2026-09-25T07:46:59Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases	2026-09-28T16:49:08Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-manage-saved-queries	2026-09-25T07:46:59Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/custom-constraints	2026-09-25T07:46:59Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/disaster-recovery	2026-09-25T07:46:59Z

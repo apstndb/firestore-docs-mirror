@@ -6,7 +6,7 @@ description: A highly-scalable NoSQL database for your web and mobile applicatio
 data_source: docs.cloud.google.com
 ---
 
-This document describes audit logging for Datastore. Google Cloud services generate audit logs that record administrative and access activities within your Google Cloud resources. For more information about Cloud Audit Logs, see the following:
+This document lists the audited methods for Datastore. Google Cloud services generate audit logs that record administrative and access activities within your Google Cloud resources. For more information about Cloud Audit Logs, see the following:
 
   - [Types of audit logs](https://docs.cloud.google.com/logging/docs/audit#types)
   - [Audit log entry structure](https://docs.cloud.google.com/logging/docs/audit#audit_log_entry_structure)
@@ -22,12 +22,16 @@ To view the time it took to process a `DATA_READ` or `DATA_WRITE` request, see t
 
 ## Service name
 
-Datastore audit logs use the service name `datastore.googleapis.com` . Filter for this service:
+To view the Datastore audit logs, do the following:
 
-``` 
-    protoPayload.serviceName="datastore.googleapis.com"
-  
-```
+1.  In the Google Cloud console, go to the Logs Explorer page:
+
+2.  Copy and paste the following query into the **Query** field of the Logs Explorer, and then click **Run query** .
+    
+    ``` 
+        protoPayload.serviceName="datastore.googleapis.com"
+      
+    ```
 
 ## Methods by permission type
 
@@ -283,7 +287,6 @@ The following audit logs are associated with methods belonging to `google.datast
   - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
   - **Permissions** :
       - `datastore.entities.create - DATA_WRITE`
-      - `datastore.entities.delete - DATA_WRITE`
       - `datastore.entities.update - DATA_WRITE`
   - **Method is a long-running or streaming operation** : No.  
   - **Filter for this method** : `protoPayload.methodName="google.datastore.v1beta3.Datastore.Commit"`  
