@@ -91,19 +91,6 @@ To add [tags](https://cloud.google.com/firestore/docs/tags) to the database, use
   - `--tags=123/environment=production,123/costCenter=marketing`
   - `--tags=tagKeys/333=tagValues/444`
 
-##### Firebase CLI
-
-    firebase firestore:databases:create DATABASE_ID \n--location=LOCATION \n[--edition EDITION] \n[--firestore-data-access FIRESTORE_ACCESS] \n[--realtime-updates REALTIME_UPDATES] \n[--delete-protection DELETE_PROTECTION_ENABLEMENT]
-
-Replace the following:
-
-  - DATABASE\_ID : a [valid database ID](https://docs.cloud.google.com/firestore/native/docs/manage-databases#database_id) .
-  - LOCATION : the name of a [Firestore multi-region or region](https://docs.cloud.google.com/firestore/native/docs/locations#types) .
-  - EDITION : For Enterprise features, set to `enterprise` .
-  - FIRESTORE\_ACCESS : (Enterprise only) `ENABLED` or `DISABLED` .
-  - REALTIME\_UPDATES : (Enterprise only) `ENABLED` or `DISABLED` .
-  - DELETE\_PROTECTION\_ENABLEMENT : Either `ENABLED` or `DISABLED` .
-
 ##### Terraform
 
     resource "google_firestore_database" "database" {
@@ -171,12 +158,6 @@ Use the [`gcloud firestore databases list`](https://cloud.google.com/sdk/gcloud/
 
     gcloud firestore databases list
 
-##### Firebase CLI
-
-Use the `firebase firestore:databases:list` command to list all the databases in your project.
-
-    firebase firestore:databases:list
-
 ### View database details
 
 To view details about a single database, use one of the following methods:
@@ -186,19 +167,6 @@ To view details about a single database, use one of the following methods:
 Use the [`gcloud firestore databases describe`](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/describe) command:
 
     gcloud firestore databases describe --database=DATABASE_ID
-
-##### Firebase CLI
-
-Use the `firebase firestore:databases:get` command:
-
-    firebase firestore:databases:get DATABASE_ID
-
-The output for an Enterprise database includes the following fields:
-
-  - `Edition` : `ENTERPRISE`
-  - `Firestore Data Access` : `DATA_ACCESS_MODE_ENABLED` or `DATA_ACCESS_MODE_DISABLED`
-  - `MongoDB Compatible Data Access` : `DATA_ACCESS_MODE_ENABLED` or `DATA_ACCESS_MODE_DISABLED`
-  - `Realtime Updates` : `REALTIME_UPDATES_ENABLED` or `REALTIME_UPDATES_DISABLED`
 
 Replace DATABASE\_ID with a database ID.
 

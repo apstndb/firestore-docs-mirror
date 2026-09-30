@@ -24,7 +24,7 @@ https://docs.cloud.google.com/datastore/docs/concepts/limits	2026-09-25T05:49:43
 https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries	2026-09-25T05:49:43Z
 https://docs.cloud.google.com/datastore/docs/concepts/multitenancy	2026-09-25T05:49:43Z
 https://docs.cloud.google.com/datastore/docs/concepts/optimize-indexes	2026-09-25T05:49:43Z
-https://docs.cloud.google.com/datastore/docs/concepts/overview	2026-09-25T05:49:43Z
+https://docs.cloud.google.com/datastore/docs/concepts/overview	2026-09-29T16:27:45Z
 https://docs.cloud.google.com/datastore/docs/concepts/queries	2026-02-26T03:56:03Z
 https://docs.cloud.google.com/datastore/docs/concepts/stats	2026-09-25T05:49:43Z
 https://docs.cloud.google.com/datastore/docs/concepts/storage-size	2026-09-25T05:49:43Z
@@ -52,7 +52,7 @@ https://docs.cloud.google.com/datastore/docs/keyvis-patterns-index	2026-09-25T05
 https://docs.cloud.google.com/datastore/docs/knowledge-catalog	2026-09-25T05:48:39Z
 https://docs.cloud.google.com/datastore/docs/langchain	2026-09-25T05:48:39Z
 https://docs.cloud.google.com/datastore/docs/locations	2026-09-25T05:48:39Z
-https://docs.cloud.google.com/datastore/docs/manage-databases	2026-09-25T05:48:39Z
+https://docs.cloud.google.com/datastore/docs/manage-databases	2026-09-29T16:27:55Z
 https://docs.cloud.google.com/datastore/docs/multiple-range-fields	2026-09-25T05:48:39Z
 https://docs.cloud.google.com/datastore/docs/multiple-range-optimize-indexes	2026-09-25T05:48:39Z
 https://docs.cloud.google.com/datastore/docs/pitr	2026-09-25T05:48:39Z
@@ -659,7 +659,7 @@ https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline	2
 https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import	2026-09-25T16:40:12Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/move-data	2026-09-25T16:40:12Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/transactions	2026-09-27T06:58:23Z
-https://docs.cloud.google.com/firestore/native/docs/manage-databases	2026-09-25T16:40:12Z
+https://docs.cloud.google.com/firestore/native/docs/manage-databases	2026-09-29T16:27:55Z
 https://docs.cloud.google.com/firestore/native/docs/migrate-standard-to-enterprise	2026-09-25T16:40:12Z
 https://docs.cloud.google.com/firestore/native/docs/monitor-usage	2026-09-25T16:40:12Z
 https://docs.cloud.google.com/firestore/native/docs/overview	2026-09-25T16:40:12Z

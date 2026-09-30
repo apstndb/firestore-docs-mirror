@@ -26,29 +26,6 @@ That role grants the following permissions that you need to create and manage da
 
 To create a database, use one of the following methods:
 
-##### Console
-
-1.  In the Google Cloud console, go to the **Databases** page.
-
-2.  Click **Create a Firestore database** .
-
-3.  Enter a database ID.
-
-4.  Select a Firestore edition. See the [editions overview](https://docs.cloud.google.com/firestore/native/docs/editions-overview) to learn more about each edition.
-
-5.  Select a data access mode. The data access mode configures which API and which client libraries you can use with your database.
-
-6.  If you select Firestore in Native mode:
-    
-      - Configure your initial security rules. Select **Restrictive** if you don't plan to use the Firebase mobile and web SDKs.
-      - If you selected Enterprise edition, enable or disable real-time updates for your database.
-
-7.  Select a location.
-
-8.  (Optional) If you need Customer-managed encryption keys (CMEK), expand and configure the **encryption options** .
-
-9.  Click **Create Database** .
-
 ##### gcloud
 
 Use the [`gcloud firestore databases create`](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/create) command.
@@ -73,19 +50,6 @@ To add [tags](https://cloud.google.com/firestore/docs/tags) to the database, use
 
   - `--tags=123/environment=production,123/costCenter=marketing`
   - `--tags=tagKeys/333=tagValues/444`
-
-##### Firebase CLI
-
-    firebase firestore:databases:create DATABASE_ID \n--location=LOCATION \n[--edition EDITION] \n[--firestore-data-access FIRESTORE_ACCESS] \n[--realtime-updates REALTIME_UPDATES] \n[--delete-protection DELETE_PROTECTION_ENABLEMENT]
-
-Replace the following:
-
-  - DATABASE\_ID : a [valid database ID](https://docs.cloud.google.com/datastore/docs/manage-databases#database_id) .
-  - LOCATION : the name of a [Datastore mode multi-region or region](https://docs.cloud.google.com/datastore/docs/locations#types) .
-  - EDITION : For Enterprise features, set to `enterprise` .
-  - FIRESTORE\_ACCESS : (Enterprise only) `ENABLED` or `DISABLED` .
-  - REALTIME\_UPDATES : (Enterprise only) `ENABLED` or `DISABLED` .
-  - DELETE\_PROTECTION\_ENABLEMENT : Either `ENABLED` or `DISABLED` .
 
 ##### Terraform
 
@@ -150,12 +114,6 @@ Use the [`gcloud firestore databases list`](https://cloud.google.com/sdk/gcloud/
 
     gcloud firestore databases list
 
-##### Firebase CLI
-
-Use the `firebase firestore:databases:list` command to list all the databases in your project.
-
-    firebase firestore:databases:list
-
 ### View database details
 
 To view details about a single database, use one of the following methods:
@@ -165,19 +123,6 @@ To view details about a single database, use one of the following methods:
 Use the [`gcloud firestore databases describe`](https://cloud.google.com/sdk/gcloud/reference/firestore/databases/describe) command:
 
     gcloud firestore databases describe --database=DATABASE_ID
-
-##### Firebase CLI
-
-Use the `firebase firestore:databases:get` command:
-
-    firebase firestore:databases:get DATABASE_ID
-
-The output for an Enterprise database includes the following fields:
-
-  - `Edition` : `ENTERPRISE`
-  - `Firestore Data Access` : `DATA_ACCESS_MODE_ENABLED` or `DATA_ACCESS_MODE_DISABLED`
-  - `MongoDB Compatible Data Access` : `DATA_ACCESS_MODE_ENABLED` or `DATA_ACCESS_MODE_DISABLED`
-  - `Realtime Updates` : `REALTIME_UPDATES_ENABLED` or `REALTIME_UPDATES_DISABLED`
 
 Replace DATABASE\_ID with a database ID.
 
