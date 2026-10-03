@@ -28,7 +28,7 @@ An example dashboard for calculating error rates can be created by calculating t
 
 ![**Figure 1.** Understand availability with error rate.](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-error-rate.png)
 
-In **Figure 1** , you can see how to visualize the error rate ratio using the **api/request\_count** metrics in the Metrics explorer.
+In **Figure 1** , you can see how to visualize the error rate ratio using the **api/request_count** metrics in the Metrics explorer.
 
 ## Create an alerting policy
 
@@ -47,15 +47,15 @@ Consider the following example where we create a latency alert policy. The alert
 3.  Select the **Request Latencies** metric from the **Consumed API** resource.
 
 4.  Add a service filter for `datastore.googleapis.com` . The `api/request_latencies` metric is monitored over the 5 min rolling window.
-    
-    ![**Figure 2.** Select the api/request\_latencies metric to create a trigger.](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-dashboard-latencies.png)
+
+    ![**Figure 2.** Select the api/request_latencies metric to create a trigger.](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-dashboard-latencies.png)
 
 5.  Click **Next** to configure the trigger.
 
 6.  Select the **Condition Types** as **Threshold** .
-    
+
     A threshold condition is set to a threshold value of 250ms. An alert is triggered when the p99 latency value stays the same for the entire period of the rolling window (5 min).
-    
+
     ![**Figure 3.** Add the threshold for the metric.](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-dashboard-alerts.png)
 
 7.  Set the **Threshold value** as **250** .
@@ -70,7 +70,7 @@ Consider the following example where we create a latency alert policy. The alert
 
 You can implement the same latency alert policy using a [Prometheus Query Language](https://docs.cloud.google.com/monitoring/promql) (PromQL) query.
 
-``` 
+```
   histogram_quantile(0.99,
     rate({
       "__name__"="serviceruntime.googleapis.com/api/request_latencies_bucket",

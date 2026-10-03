@@ -19,8 +19,10 @@ At this stage, you do the following:
 
 The migration procedure described in the subsequent sections uses the gcloud CLI to configure and actuate the migration steps. Begin by logging into Google Cloud and selecting the project that will host the migration pipeline.
 
-    gcloud auth login
-    gcloud config set project "$PROJECT_ID"
+```
+gcloud auth login
+gcloud config set project "$PROJECT_ID"
+```
 
 ## Create a connection profile for the source database
 
@@ -28,23 +30,23 @@ The migration procedure described in the subsequent sections uses the gcloud CLI
 
 Run the following command to create a Datastream connection profile to the MongoDB database hosted on Compute Engine.
 
-  - Omit the `--mongodb-replica-set` flag from the following command when connecting to a sharded cluster.
-  - Omit the `--mongodb-additional-options=readPreference=secondary` flag only when connecting to a standalone instance without replica set secondaries.
+- Omit the `--mongodb-replica-set` flag from the following command when connecting to a sharded cluster.
+- Omit the `--mongodb-additional-options=readPreference=secondary` flag only when connecting to a standalone instance without replica set secondaries.
 
-<!-- end list -->
-
-    gcloud datastream connection-profiles create "$SRC_CONNECTION_PROFILE_NAME" \
-    --display-name="$SRC_CONNECTION_PROFILE_NAME" \
-    --location="$LOCATION" \
-    --mongodb-username="$MONGODB_USERNAME" \
-    --mongodb-password="$MONGODB_PASSWORD" \
-    --mongodb-host-addresses="$MONGODB_IP_ADDRESS" \
-    --mongodb-replica-set="$REPLICA_SET" \
-    --private-connection="$PRIVATE_CONNECTION_NAME" \
-    --mongodb-standard-connection-format \
-    --type=mongodb \
-    --mongodb-direct-connection \
-    --mongodb-additional-options=readPreference=secondary
+```
+gcloud datastream connection-profiles create "$SRC_CONNECTION_PROFILE_NAME" \
+--display-name="$SRC_CONNECTION_PROFILE_NAME" \
+--location="$LOCATION" \
+--mongodb-username="$MONGODB_USERNAME" \
+--mongodb-password="$MONGODB_PASSWORD" \
+--mongodb-host-addresses="$MONGODB_IP_ADDRESS" \
+--mongodb-replica-set="$REPLICA_SET" \
+--private-connection="$PRIVATE_CONNECTION_NAME" \
+--mongodb-standard-connection-format \
+--type=mongodb \
+--mongodb-direct-connection \
+--mongodb-additional-options=readPreference=secondary
+```
 
 ### MongoDB over SSH
 
@@ -52,26 +54,28 @@ This example assumes you have already [configured SSH connectivity](https://docs
 
 Run the following command to create a Datastream connection profile to the MongoDB database hosted on Compute Engine.
 
-  - Omit the `--mongodb-replica-set` flag from the following command when connecting to a sharded cluster.
-  - Omit the `--mongodb-additional-options=readPreference=secondary` flag only when connecting to a standalone instance without replica set secondaries.
+- Omit the `--mongodb-replica-set` flag from the following command when connecting to a sharded cluster.
+- Omit the `--mongodb-additional-options=readPreference=secondary` flag only when connecting to a standalone instance without replica set secondaries.
 
 If you want to connect with an SSH password, pass the `--forward-ssh-password` flag instead of the `--forward-ssh-private-key` flag.
 
-    gcloud datastream connection-profiles create "$SRC_CONNECTION_PROFILE_NAME" \
-    --display-name="$SRC_CONNECTION_PROFILE_NAME" \
-    --location="$LOCATION" \
-    --mongodb-username="$MONGODB_USERNAME" \
-    --mongodb-password="$MONGODB_PASSWORD" \
-    --mongodb-host-addresses="$MONGODB_IP_ADDRESS" \
-    --mongodb-replica-set="$REPLICA_SET" \
-    --forward-ssh-hostname="$BASTION_IP_ADDRESS" \
-    --forward-ssh-port="$BASTION_SSH_PORT" \
-    --forward-ssh-username="$BASTION_SSH_USERNAME" \
-    --forward-ssh-private-key="$BASTION_SSH_PRIVATE_KEY" \
-    --mongodb-standard-connection-format \
-    --type=mongodb \
-    --mongodb-direct-connection \
-    --mongodb-additional-options=readPreference=secondary
+```
+gcloud datastream connection-profiles create "$SRC_CONNECTION_PROFILE_NAME" \
+--display-name="$SRC_CONNECTION_PROFILE_NAME" \
+--location="$LOCATION" \
+--mongodb-username="$MONGODB_USERNAME" \
+--mongodb-password="$MONGODB_PASSWORD" \
+--mongodb-host-addresses="$MONGODB_IP_ADDRESS" \
+--mongodb-replica-set="$REPLICA_SET" \
+--forward-ssh-hostname="$BASTION_IP_ADDRESS" \
+--forward-ssh-port="$BASTION_SSH_PORT" \
+--forward-ssh-username="$BASTION_SSH_USERNAME" \
+--forward-ssh-private-key="$BASTION_SSH_PRIVATE_KEY" \
+--mongodb-standard-connection-format \
+--type=mongodb \
+--mongodb-direct-connection \
+--mongodb-additional-options=readPreference=secondary
+```
 
 ### Amazon DocumentDB
 
@@ -81,22 +85,24 @@ Prior to creating a connection profile, explicitly enable change streams in the 
 
 Run the following command to create a Datastream connection profile to your DocumentDB database:
 
-    gcloud datastream connection-profiles create "$SRC_CONNECTION_PROFILE_NAME" \
-    --display-name="$SRC_CONNECTION_PROFILE_NAME" \
-    --location="$LOCATION" \
-    --mongodb-username="$MONGODB_USERNAME" \
-    --mongodb-password="$MONGODB_PASSWORD" \
-    --mongodb-host-addresses="$MONGODB_HOST_ADDRESS" \
-    --mongodb-replica-set="$REPLICA_SET" \
-    --forward-ssh-hostname="$BASTION_IP_ADDRESS" \
-    --forward-ssh-port="$BASTION_SSH_PORT" \
-    --forward-ssh-username="$BASTION_SSH_USERNAME" \
-    --forward-ssh-private-key="$BASTION_SSH_PRIVATE_KEY" \
-    --mongodb-ca-certificate="$DOCUMENT_DB_CA_CERTIFICATE" \
-    --mongodb-tls \
-    --mongodb-standard-connection-format \
-    --type=mongodb \
-    --mongodb-direct-connection
+```
+gcloud datastream connection-profiles create "$SRC_CONNECTION_PROFILE_NAME" \
+--display-name="$SRC_CONNECTION_PROFILE_NAME" \
+--location="$LOCATION" \
+--mongodb-username="$MONGODB_USERNAME" \
+--mongodb-password="$MONGODB_PASSWORD" \
+--mongodb-host-addresses="$MONGODB_HOST_ADDRESS" \
+--mongodb-replica-set="$REPLICA_SET" \
+--forward-ssh-hostname="$BASTION_IP_ADDRESS" \
+--forward-ssh-port="$BASTION_SSH_PORT" \
+--forward-ssh-username="$BASTION_SSH_USERNAME" \
+--forward-ssh-private-key="$BASTION_SSH_PRIVATE_KEY" \
+--mongodb-ca-certificate="$DOCUMENT_DB_CA_CERTIFICATE" \
+--mongodb-tls \
+--mongodb-standard-connection-format \
+--type=mongodb \
+--mongodb-direct-connection
+```
 
 ### Azure Cosmos DB
 
@@ -104,26 +110,30 @@ Explicitly enable change streams for MongoDB in Azure Cosmos DB's API to enable 
 
 This step requires [installing Azure CLI](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-resources#install-source-specific-tools) .
 
-    az resource patch --ids "/subscriptions/subscription_id/resourceGroups/resource_group_name/providers/Microsoft.DocumentDB/mongoClusters/vCore_cluster_name" \
-    --api-version 2024-10-01-preview \
-    --properties "{\"previewFeatures\": [ \"ChangeStreams\"]}"
+```
+az resource patch --ids "/subscriptions/subscription_id/resourceGroups/resource_group_name/providers/Microsoft.DocumentDB/mongoClusters/vCore_cluster_name" \
+--api-version 2024-10-01-preview \
+--properties "{\"previewFeatures\": [ \"ChangeStreams\"]}"
+```
 
-Replace subscription\_id , resource\_group\_name , and vCore\_cluster\_name with values corresponding to your Azure Cosmos DB deployment.
+Replace ` subscription_id ` , ` resource_group_name ` , and ` vCore_cluster_name ` with values corresponding to your Azure Cosmos DB deployment.
 
 Run the following command to create a Datastream connection profile to the source Azure Cosmos DB.
 
 This example assumes that the source is accessible through a public DNS or IP address that can be expressed in the [MongoDB SRV connection format](https://www.mongodb.com/docs/manual/reference/connection-string/) . The instructions also assume the Azure Cosmos DB server uses a combination of a username and password for authentication.
 
-    gcloud datastream connection-profiles create "$SRC_CONNECTION_PROFILE_NAME" \
-    --display-name="$SRC_CONNECTION_PROFILE_NAME" \
-    --location="$LOCATION" \
-    --mongodb-username="$MONGODB_USERNAME" \
-    --mongodb-password="$MONGODB_PASSWORD" \
-    --mongodb-host-addresses="$MONGODB_HOST_ADDRESS" \
-    --mongodb-srv-connection-format \
-    --type=mongodb \
-    --static-ip-connectivity \
-    --labels=skip_all_validations=true
+```
+gcloud datastream connection-profiles create "$SRC_CONNECTION_PROFILE_NAME" \
+--display-name="$SRC_CONNECTION_PROFILE_NAME" \
+--location="$LOCATION" \
+--mongodb-username="$MONGODB_USERNAME" \
+--mongodb-password="$MONGODB_PASSWORD" \
+--mongodb-host-addresses="$MONGODB_HOST_ADDRESS" \
+--mongodb-srv-connection-format \
+--type=mongodb \
+--static-ip-connectivity \
+--labels=skip_all_validations=true
+```
 
 ### MongoDB Atlas
 
@@ -131,16 +141,18 @@ Run the following command to create a Datastream connection profile to the sourc
 
 This example assumes that the source is accessible through a public DNS or IP address that can be expressed in the [MongoDB SRV connection format](https://www.mongodb.com/docs/manual/reference/connection-string/) . The instructions also assume that MongoDB Atlas server uses a combination of a username and password for authentication.
 
-    gcloud datastream connection-profiles create "$SRC_CONNECTION_PROFILE_NAME" \
-    --display-name="$SRC_CONNECTION_PROFILE_NAME" \
-    --location="$LOCATION" \
-    --mongodb-username="$MONGODB_USERNAME" \
-    --mongodb-password="$MONGODB_PASSWORD" \
-    --mongodb-host-addresses="$MONGODB_HOST_ADDRESS" \
-    --mongodb-srv-connection-format \
-    --type=mongodb \
-    --static-ip-connectivity \
-    --mongodb-additional-options=readPreference=secondary
+```
+gcloud datastream connection-profiles create "$SRC_CONNECTION_PROFILE_NAME" \
+--display-name="$SRC_CONNECTION_PROFILE_NAME" \
+--location="$LOCATION" \
+--mongodb-username="$MONGODB_USERNAME" \
+--mongodb-password="$MONGODB_PASSWORD" \
+--mongodb-host-addresses="$MONGODB_HOST_ADDRESS" \
+--mongodb-srv-connection-format \
+--type=mongodb \
+--static-ip-connectivity \
+--mongodb-additional-options=readPreference=secondary
+```
 
 For more information about monitoring the connection profile creation, see [Troubleshooting](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-troubleshooting) .
 
@@ -148,12 +160,14 @@ For more information about monitoring the connection profile creation, see [Trou
 
 Configure the Datastream connection profile for the Cloud Storage destination, which is the bucket that you've created earlier.
 
-    gcloud datastream connection-profiles create "$DST_CONNECTION_PROFILE_NAME" \
-    --display-name="$DST_CONNECTION_PROFILE_NAME" \
-    --location="$LOCATION" \
-    --type=google-cloud-storage \
-    --bucket="$GCS_BUCKET_NAME" \
-    --root-path="/$GCS_BUCKET_ROOT_PATH"
+```
+gcloud datastream connection-profiles create "$DST_CONNECTION_PROFILE_NAME" \
+--display-name="$DST_CONNECTION_PROFILE_NAME" \
+--location="$LOCATION" \
+--type=google-cloud-storage \
+--bucket="$GCS_BUCKET_NAME" \
+--root-path="/$GCS_BUCKET_ROOT_PATH"
+```
 
 For more information about monitoring the connection profile creation, see [Troubleshooting](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-troubleshooting) .
 

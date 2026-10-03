@@ -12,20 +12,22 @@ Use a keys-only query.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Datastore queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)
+- [Datastore queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Projection = { "__key__" }
-    };
+```csharp
+Query query = new Query("Task")
+{
+    Projection = { "__key__" }
+};
+```
 
 ### Go
 
@@ -33,7 +35,9 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").KeysOnly()
+```go
+query := datastore.NewQuery("Task").KeysOnly()
+```
 
 ### Java
 
@@ -41,7 +45,9 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Key> query = Query.newKeyQueryBuilder().setKind("Task").build();
+```java
+Query<Key> query = Query.newKeyQueryBuilder().setKind("Task").build();
+```
 
 ### PHP
 
@@ -49,8 +55,10 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->keysOnly();
+```php
+$query = $datastore->query()
+    ->keysOnly();
+```
 
 ### Python
 
@@ -58,14 +66,16 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query()
-    query.keys_only()
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query()
+query.keys_only()
+```
 
 ### Ruby
 
@@ -73,8 +83,10 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .select("__key__")
+```ruby
+query = datastore.query("Task")
+                 .select("__key__")
+```
 
 ## What's next
 

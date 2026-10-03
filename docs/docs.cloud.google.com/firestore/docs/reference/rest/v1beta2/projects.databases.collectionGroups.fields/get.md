@@ -19,13 +19,9 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 
-Parameters
-
-`name`
-
-`string`
-
-A name of the form `projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId}/fields/{field_id}`
+| Parameters |                                                                                                                             |
+|------------|-----------------------------------------------------------------------------------------------------------------------------|
+| `name`     | `string` A name of the form `projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId}/fields/{field_id}` |
 
 ### Request body
 
@@ -33,13 +29,13 @@ The request body must be empty.
 
 ### Response body
 
-If successful, the response body contains an instance of `  Field  ` .
+If successful, the response body contains an instance of [`Field`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.fields#Field) .
 
 ### Authorization scopes
 
 Requires one of the following OAuth scopes:
 
-  - `https://www.googleapis.com/auth/datastore`
-  - `https://www.googleapis.com/auth/cloud-platform`
+- `https://www.googleapis.com/auth/datastore`
+- `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

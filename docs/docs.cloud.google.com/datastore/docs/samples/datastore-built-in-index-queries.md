@@ -12,7 +12,7 @@ Query index using internal datastore features
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Optimizing Indexes](https://docs.cloud.google.com/datastore/docs/concepts/optimize-indexes)
+- [Optimizing Indexes](https://docs.cloud.google.com/datastore/docs/concepts/optimize-indexes)
 
 ## Code sample
 
@@ -22,17 +22,19 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query_owner_id = client.query(kind="Photo", filters=[("owner_id", "=", "user1234")])
-    
-    query_size = client.query(kind="Photo", filters=[("size", "=", 2)])
-    
-    query_coloration = client.query(kind="Photo", filters=[("coloration", "=", 2)])
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query_owner_id = client.query(kind="Photo", filters=[("owner_id", "=", "user1234")])
+
+query_size = client.query(kind="Photo", filters=[("size", "=", 2)])
+
+query_coloration = client.query(kind="Photo", filters=[("coloration", "=", 2)])
+```
 
 ## What's next
 

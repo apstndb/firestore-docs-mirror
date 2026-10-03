@@ -14,9 +14,9 @@ data_source: docs.cloud.google.com
 
 The following APIs are bundled together in VPC Service Controls:
 
-  - `firestore.googleapis.com`
-  - `datastore.googleapis.com`
-  - `firestorekeyvisualizer.googleapis.com`
+- `firestore.googleapis.com`
+- `datastore.googleapis.com`
+- `firestorekeyvisualizer.googleapis.com`
 
 When you restrict the `firestore.googleapis.com` service in a perimeter, the perimeter also restricts the `datastore.googleapis.com` and `firestorekeyvisualizer.googleapis.com` services.
 
@@ -24,19 +24,21 @@ When you restrict the `firestore.googleapis.com` service in a perimeter, the per
 
 The `datastore.googleapis.com` service is bundled under the `firestore.googleapis.com` service. To restrict the `datastore.googleapis.com` service, you must restrict the `firestore.googleapis.com` service as follows:
 
-  - When creating a service perimeter using the Google Cloud console, add Firestore as the restricted service.
+- When creating a service perimeter using the Google Cloud console, add Firestore as the restricted service.
 
-  - When creating a service perimeter using the Google Cloud CLI, use `firestore.googleapis.com` instead of `datastore.googleapis.com` .
-    
-        --perimeter-restricted-services=firestore.googleapis.com
+- When creating a service perimeter using the Google Cloud CLI, use `firestore.googleapis.com` instead of `datastore.googleapis.com` .
+
+  ```
+  --perimeter-restricted-services=firestore.googleapis.com
+  ```
 
 ### App Engine legacy bundled services for Datastore
 
 [App Engine legacy bundled services for Datastore](https://cloud.google.com/appengine/docs/standard/python/bundled-services-overview) don't support service perimeters. Protecting the Datastore service with a service perimeter blocks traffic from App Engine legacy bundled services. Legacy bundled services include:
 
-  - [Java 8 Datastore with App Engine APIs](https://cloud.google.com/appengine/docs/standard/java/datastore)
-  - [Python 2 NDB client library for Datastore](https://cloud.google.com/appengine/docs/standard/python/ndb/creating-entities)
-  - [Go 1.11 Datastore with App Engine APIs](https://cloud.google.com/appengine/docs/standard/go111/datastore)
+- [Java 8 Datastore with App Engine APIs](https://cloud.google.com/appengine/docs/standard/java/datastore)
+- [Python 2 NDB client library for Datastore](https://cloud.google.com/appengine/docs/standard/python/ndb/creating-entities)
+- [Go 1.11 Datastore with App Engine APIs](https://cloud.google.com/appengine/docs/standard/go111/datastore)
 
 ## Restricted VIP
 

@@ -6,54 +6,34 @@ description: A highly-scalable NoSQL database for your web and mobile applicatio
 data_source: docs.cloud.google.com
 ---
 
-  - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ImportEntitiesMetadata#SCHEMA_REPRESENTATION)
+- [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ImportEntitiesMetadata#SCHEMA_REPRESENTATION)
 
 Metadata for ImportEntities operations.
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>JSON representation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;common&quot;: {object (CommonMetadata)},&quot;progressEntities&quot;: {object (Progress)},&quot;progressBytes&quot;: {object (Progress)},&quot;entityFilter&quot;: {object (EntityFilter)},&quot;inputUrl&quot;: string}</code></pre></td>
-</tr>
-</tbody>
-</table>
+**JSON representation**
 
-Fields
+```
+{
+  "common": {
+    object (CommonMetadata)
+  },
+  "progressEntities": {
+    object (Progress)
+  },
+  "progressBytes": {
+    object (Progress)
+  },
+  "entityFilter": {
+    object (EntityFilter)
+  },
+  "inputUrl": string
+}
+```
 
-`common`
-
-` object ( CommonMetadata  ` )
-
-Metadata common to all Datastore Admin operations.
-
-`progressEntities`
-
-` object ( Progress  ` )
-
-An estimate of the number of entities processed.
-
-`progressBytes`
-
-` object ( Progress  ` )
-
-An estimate of the number of bytes processed.
-
-`entityFilter`
-
-` object ( EntityFilter  ` )
-
-Description of which entities are being imported.
-
-`inputUrl`
-
-`string`
-
-The location of the import metadata file. This will be the same value as the `  google.datastore.admin.v1.ExportEntitiesResponse.output_url  ` field.
+| Fields             |                                                                                                                                                                                                                                                                                       |
+|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `common`           | `object ( `[`CommonMetadata`](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/CommonMetadata)` )` Metadata common to all Datastore Admin operations.                                                                                                   |
+| `progressEntities` | `object ( `[`Progress`](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/Progress)` )` An estimate of the number of entities processed.                                                                                                                 |
+| `progressBytes`    | `object ( `[`Progress`](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/Progress)` )` An estimate of the number of bytes processed.                                                                                                                    |
+| `entityFilter`     | `object ( `[`EntityFilter`](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/EntityFilter)` )` Description of which entities are being imported.                                                                                                        |
+| `inputUrl`         | `string` The location of the import metadata file. This will be the same value as the [`google.datastore.admin.v1.ExportEntitiesResponse.output_url`](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ExportEntitiesResponse#FIELDS.output_url) field. |

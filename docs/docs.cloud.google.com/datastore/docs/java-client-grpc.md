@@ -18,12 +18,14 @@ To enable the gRPC transport behavior, add `setTransportOptions` to your client 
 
 ##### Java
 
-    DatastoreOptions datastoreOptions =
-           DatastoreOptions.newBuilder()
-                   .setProjectId("my-project")
-                   .setDatabaseId("my-database")
-                   .setTransportOptions(GrpcTransportOptions.newBuilder().build())
-                   .build();
+```
+DatastoreOptions datastoreOptions =
+       DatastoreOptions.newBuilder()
+               .setProjectId("my-project")
+               .setDatabaseId("my-database")
+               .setTransportOptions(GrpcTransportOptions.newBuilder().build())
+               .build();
+```
 
 Setting the transport options explicitly to `GrpcTransportOptions` configures the client to use gRPC instead of HTTP when making calls to the server.
 
@@ -33,22 +35,24 @@ You can deactivate the gRPC transport behavior by reverting to the HTTP transpor
 
 ##### Java
 
-    // Use this code to deactivate the gRPC transport behavior
-    // by reverting to the HTTP transport behavior.
-    DatastoreOptions datastoreOptions = DatastoreOptions.newBuilder()
-                .setProjectId("my-project")
-                .setDatabaseId("my-database")
-                .build();
-    
-    // You can also use this code to revert to the HTTP transport behavior
-    DatastoreOptions datastoreOptions =
-                DatastoreOptions.newBuilder()
-                        .setProjectId("my-project")
-                        .setDatabaseId("my-database")
-                        .setTransportOptions(HttpTransportOptions.newBuilder()
-                                .setConnectTimeout(1000)
-                                .build())
-                        .build();
+```
+// Use this code to deactivate the gRPC transport behavior
+// by reverting to the HTTP transport behavior.
+DatastoreOptions datastoreOptions = DatastoreOptions.newBuilder()
+            .setProjectId("my-project")
+            .setDatabaseId("my-database")
+            .build();
+
+// You can also use this code to revert to the HTTP transport behavior
+DatastoreOptions datastoreOptions =
+            DatastoreOptions.newBuilder()
+                    .setProjectId("my-project")
+                    .setDatabaseId("my-database")
+                    .setTransportOptions(HttpTransportOptions.newBuilder()
+                            .setConnectTimeout(1000)
+                            .build())
+                    .build();
+```
 
 > **Note:** Only clients that explicitly set `GrpcTransportOptions` change behavior with the release of this feature. Client instantiations that already use `setTransportOptions` with `HttpTransportOptions` won't change behavior due to this feature.
 
@@ -58,11 +62,13 @@ To verify which type of `TransportOptions` the client uses, examine the transpor
 
 ##### Java
 
-    // Compares datastore transport options type
-    
-    boolean isGRPC = datastore.getOptions().getTransportOptions() instanceof GrpcTransportOptions;
-    
-    boolean isHTTP = datastore.getOptions().getTransportOptions() instanceof HTTPTransportOptions;
+```
+// Compares datastore transport options type
+
+boolean isGRPC = datastore.getOptions().getTransportOptions() instanceof GrpcTransportOptions;
+
+boolean isHTTP = datastore.getOptions().getTransportOptions() instanceof HTTPTransportOptions;
+```
 
 ## Connection pool configuration
 
@@ -87,11 +93,13 @@ From your client-side metrics, gather the following information and make the fol
 
 To perform these steps, use the following equations:
 
-    (QPS sec ÷ (1,000 ÷ latency ms)) ÷ 50 streams = Minimum optimal number of
-    connections
-    
-    (QPS sec ÷ (1,000 ÷ latency ms)) ÷ 10 streams = Maximum optimal number of
-    connections
+```
+(QPS sec ÷ (1,000 ÷ latency ms)) ÷ 50 streams = Minimum optimal number of
+connections
+
+(QPS sec ÷ (1,000 ÷ latency ms)) ÷ 10 streams = Maximum optimal number of
+connections
+```
 
 For example, if your application typically sends 50,000 requests per second, and the average latency is 10 ms. Divide 1,000 by 10 ms to determine that you can send 100 requests serially per second. Divide that number into 50,000 to get the parallelism needed to send 50,000 QPS: 500.
 
@@ -105,24 +113,26 @@ The following code sample demonstrates how to configure the connection pool in t
 
 ##### Java
 
-    InstantiatingGrpcChannelProvider channelProvider =
-            DatastoreSettings.defaultGrpcTransportProviderBuilder()
-                    .setChannelPoolSettings(
-                           ChannelPoolSettings.builder()
-                                    .setInitialChannelCount(MIN_VAL)
-                                    .setMaxChannelCount(MAX_VAL)
-                                    .build())
-                    .build();
-    
-    DatastoreOptions options = DatastoreOptions.newBuilder()
-             .setProjectId("my-project")
-             .setChannelProvider(channelProvider)
-             .setTransportOptions(GrpcTransportOptions.newBuilder().build())
-             .build();
+```
+InstantiatingGrpcChannelProvider channelProvider =
+        DatastoreSettings.defaultGrpcTransportProviderBuilder()
+                .setChannelPoolSettings(
+                       ChannelPoolSettings.builder()
+                                .setInitialChannelCount(MIN_VAL)
+                                .setMaxChannelCount(MAX_VAL)
+                                .build())
+                .build();
+
+DatastoreOptions options = DatastoreOptions.newBuilder()
+         .setProjectId("my-project")
+         .setChannelProvider(channelProvider)
+         .setTransportOptions(GrpcTransportOptions.newBuilder().build())
+         .build();
+```
 
 ## What's next
 
 For more information about connection pools and best practices for performance, see:
 
-  - [ChannelPoolSettings](https://docs.cloud.google.com/java/docs/reference/gax/latest/com.google.api.gax.grpc.ChannelPoolSettings)
-  - [Performance Best Practices](https://grpc.io/docs/guides/performance/)
+- [ChannelPoolSettings](https://docs.cloud.google.com/java/docs/reference/gax/latest/com.google.api.gax.grpc.ChannelPoolSettings)
+- [Performance Best Practices](https://grpc.io/docs/guides/performance/)

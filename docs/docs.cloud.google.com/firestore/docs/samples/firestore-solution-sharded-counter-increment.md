@@ -12,91 +12,101 @@ Incrementing a Firestore document field while using shards
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Support frequent and distributed counters](https://docs.cloud.google.com/firestore/native/docs/solutions/counters)
+- [Support frequent and distributed counters](https://docs.cloud.google.com/firestore/native/docs/solutions/counters)
 
 ## Code sample
 
-### C\#
+### C#
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    /// <summary>
-    /// Increment a randomly picked shard by 1.
-    /// </summary>
-    /// <param name="docRef">The document reference <see cref="DocumentReference"/></param>
-    /// <returns>The <see cref="Task"/></returns>
-    private static async Task IncrementCounterAsync(DocumentReference docRef, int numOfShards)
+```csharp
+/// <summary>
+/// Increment a randomly picked shard by 1.
+/// </summary>
+/// <param name="docRef">The document reference <see cref="DocumentReference"/></param>
+/// <returns>The <see cref="Task"/></returns>
+private static async Task IncrementCounterAsync(DocumentReference docRef, int numOfShards)
+{
+    int documentId;
+    lock (s_randLock)
     {
-        int documentId;
-        lock (s_randLock)
-        {
-            documentId = s_rand.Next(numOfShards);
-        }
-        var shardRef = docRef.Collection("shards").Document(documentId.ToString());
-        await shardRef.UpdateAsync("count", FieldValue.Increment(1));
+        documentId = s_rand.Next(numOfShards);
     }
+    var shardRef = docRef.Collection("shards").Document(documentId.ToString());
+    await shardRef.UpdateAsync("count", FieldValue.Increment(1));
+}
+```
 
 ### Go
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    // incrementCounter increments a randomly picked shard.
-    func (c *Counter) incrementCounter(ctx context.Context, docRef *firestore.DocumentRef) (*firestore.WriteResult, error) {
-     docID := strconv.Itoa(rand.Intn(c.numShards))
-    
-     shardRef := docRef.Collection("shards").Doc(docID)
-     return shardRef.Update(ctx, []firestore.Update{
-         {Path: "Count", Value: firestore.Increment(1)},
-     })
-    }
+```go
+// incrementCounter increments a randomly picked shard.
+func (c *Counter) incrementCounter(ctx context.Context, docRef *firestore.DocumentRef) (*firestore.WriteResult, error) {
+    docID := strconv.Itoa(rand.Intn(c.numShards))
+
+    shardRef := docRef.Collection("shards").Doc(docID)
+    return shardRef.Update(ctx, []firestore.Update{
+        {Path: "Count", Value: firestore.Increment(1)},
+    })
+}
+```
 
 ### PHP
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $ref = $db->collection('samples/php/distributedCounters');
-    $numShards = 0;
-    $docCollection = $ref->documents();
-    foreach ($docCollection as $doc) {
-        $numShards++;
-    }
-    $shardIdx = random_int(0, max(1, $numShards) - 1);
-    $doc = $ref->document((string) $shardIdx);
-    $doc->update([
-        ['path' => 'Cnt', 'value' => FieldValue::increment(1)]
-    ]);
+```php
+$ref = $db->collection('samples/php/distributedCounters');
+$numShards = 0;
+$docCollection = $ref->documents();
+foreach ($docCollection as $doc) {
+    $numShards++;
+}
+$shardIdx = random_int(0, max(1, $numShards) - 1);
+$doc = $ref->document((string) $shardIdx);
+$doc->update([
+    ['path' => 'Cnt', 'value' => FieldValue::increment(1)]
+]);
+```
 
 ### Python
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    def increment_counter(self, doc_ref):
-        """Increment a randomly picked shard."""
-        doc_id = random.randint(0, self._num_shards - 1)
-    
-        shard_ref = doc_ref.collection("shards").document(str(doc_id))
-        return shard_ref.update({"count": firestore.Increment(1)})
+```python
+def increment_counter(self, doc_ref):
+    """Increment a randomly picked shard."""
+    doc_id = random.randint(0, self._num_shards - 1)
+
+    shard_ref = doc_ref.collection("shards").document(str(doc_id))
+    return shard_ref.update({"count": firestore.Increment(1)})
+```
 
 ### Ruby
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    # project_id = "Your Google Cloud Project ID"
-    # num_shards = "Number of shards for distributed counter"
-    # collection_path = "shards"
-    
-    require "google/cloud/firestore"
-    
-    firestore = Google::Cloud::Firestore.new project_id: project_id
-    
-    # Select a shard of the counter at random
-    shard_id = rand 0...num_shards
-    shard_ref = firestore.doc "#{collection_path}/#{shard_id}"
-    
-    # increment counter
-    shard_ref.update({ count: firestore.field_increment(1) })
-    
-    puts "Counter incremented."
+```ruby
+# project_id = "Your Google Cloud Project ID"
+# num_shards = "Number of shards for distributed counter"
+# collection_path = "shards"
+
+require "google/cloud/firestore"
+
+firestore = Google::Cloud::Firestore.new project_id: project_id
+
+# Select a shard of the counter at random
+shard_id = rand 0...num_shards
+shard_ref = firestore.doc "#{collection_path}/#{shard_id}"
+
+# increment counter
+shard_ref.update({ count: firestore.field_increment(1) })
+
+puts "Counter incremented."
+```
 
 ## What's next
 

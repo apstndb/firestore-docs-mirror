@@ -25,23 +25,23 @@ This page assumes you have already created an entity that is stored in Firestore
 4.  Find the entity you want to edit by specifying the namespace, kind, and/or filters for property values. To learn how, see [Run a query](https://docs.cloud.google.com/datastore/docs/store-query-data#run_a_query) .
 
 5.  Click on the **Name/ID** of an entity. Your screen should look similar to the following:
-    
+
     ![The entity overview page showing information about an entity.](https://docs.cloud.google.com/static/datastore/images/edit_entity.png)
 
 ### Edit a property
 
 1.  Open the **Edit Entity** page for an entity. Under **Properties** , click **Edit** edit for the property you want to edit.
-    
+
     > **Tip:** You can filter the properties table. Click **Filter properties** at the top of the table.
 
 2.  In the **Edit property** pane, modify the property's **Name** , **Type** , or **Value** . You can also modify whether the property is indexed. To learn about the impact of including or excluding a property from indexes, see [Excluded properties](https://docs.cloud.google.com/datastore/docs/concepts/indexes#unindexed_properties) .
-    
+
     ![Click the edit button to edit a property.](https://docs.cloud.google.com/static/datastore/images/edit_property.png)
 
 3.  Click **Done** . The **Edit property** pane closes and the properties table now shows your changes. Changes are not committed to the database until you click **Save** . The properties table highlights uncommitted changes with a blue dot next to the property name.
 
 4.  Make additional changes to other properties. When you complete your edits, click **Save** to commit your changes to the database.
-    
+
     The console commits your changes and takes you back to the **Datastore Studio** page.
 
 ### Add a property
@@ -55,23 +55,23 @@ This page assumes you have already created an entity that is stored in Firestore
 4.  Specify a value for the property.
 
 5.  Specify whether the property is indexed. To learn about the impact of including or excluding a property from indexes, see [Excluded properties](https://docs.cloud.google.com/datastore/docs/concepts/indexes#unindexed_properties) .
-    
+
     ![The add-a-property pane.](https://docs.cloud.google.com/static/datastore/images/add_property.png)
 
 6.  Click **Add** . The **Add a property** pane closes and the properties table now shows your changes. Changes are not committed to the database until you click **Save** . The properties table highlights uncommitted changes with a blue dot next to the property name.
 
 7.  Make additional changes to other properties. When you complete your edits, click **Save** to commit your changes to the database.
-    
+
     The console commits your changes and takes you back to the **Datastore Studio** page.
 
 ### Delete a property
 
 1.  Open the **Edit Entity** page for an entity. Under **Properties** , click **Delete** delete for the property you want to delete.
-    
+
     ![The delete button within the property table.](https://docs.cloud.google.com/static/datastore/images/delete_property.png)
 
 2.  The properties table now shows your changes. Changes are not committed to the database until you click **Save** . The properties table highlights uncommitted property deletions with crossed out names and property values.
-    
+
     You can undo an uncommitted deletion by clicking **Restore** in the property's table row.
 
 3.  Make additional changes to other properties. When you complete your edits, click **Save** to commit your changes to the database.
@@ -98,4 +98,4 @@ If you enter invalid JSON for the **Value** field you will receive an error mess
 
 ## What's next
 
-  - Learn about [best practices for entities](https://docs.cloud.google.com/datastore/docs/best-practices#entities) .
+- Learn about [best practices for entities](https://docs.cloud.google.com/datastore/docs/best-practices#entities) .

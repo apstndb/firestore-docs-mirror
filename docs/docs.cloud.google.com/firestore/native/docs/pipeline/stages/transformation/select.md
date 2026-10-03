@@ -16,77 +16,89 @@ Generates new documents, either by referencing a subset of existing fields, or b
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("soldBooks").multiply(field("price")).round().as("partialRevenue"))
-      .aggregate(field("partialRevenue").sum().as("totalRevenue"))
-      );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("soldBooks").multiply(field("price")).round().as("partialRevenue"))
+  .aggregate(field("partialRevenue").sum().as("totalRevenue"))
+  );
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("soldBooks").multiply(Field("price")).round().as("partialRevenue")])
-      .aggregate([Field("partialRevenue").sum().as("totalRevenue")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("soldBooks").multiply(Field("price")).round().as("partialRevenue")])
+  .aggregate([Field("partialRevenue").sum().as("totalRevenue")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(Expression.multiply(field("soldBooks"), field("price")).round().alias("partialRevenue"))
-        .aggregate(AggregateFunction.sum("partialRevenue").alias("totalRevenue"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(Expression.multiply(field("soldBooks"), field("price")).round().alias("partialRevenue"))
+    .aggregate(AggregateFunction.sum("partialRevenue").alias("totalRevenue"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(Expression.multiply(field("soldBooks"), field("price")).round().alias("partialRevenue"))
-        .aggregate(AggregateFunction.sum("partialRevenue").alias("totalRevenue"))
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(Expression.multiply(field("soldBooks"), field("price")).round().alias("partialRevenue"))
+    .aggregate(AggregateFunction.sum("partialRevenue").alias("totalRevenue"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Field.of("soldBooks")
-            .multiply(Field.of("price"))
-            .round()
-            .as_("partialRevenue")
-        )
-        .aggregate(Field.of("partialRevenue").sum().as_("totalRevenue"))
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Field.of("soldBooks")
+        .multiply(Field.of("price"))
+        .round()
+        .as_("partialRevenue")
     )
+    .aggregate(Field.of("partialRevenue").sum().as_("totalRevenue"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(round(multiply(field("soldBooks"), field("price"))).as("partialRevenue"))
-            .aggregate(sum("partialRevenue").as("totalRevenue"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(round(multiply(field("soldBooks"), field("price"))).as("partialRevenue"))
+        .aggregate(sum("partialRevenue").as("totalRevenue"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Round(firestore.Multiply(firestore.FieldOf("soldBooks"), firestore.FieldOf("price"))).As("partialRevenue"),
-     )).
-     Aggregate(firestore.Accumulators(
-         firestore.Sum("partialRevenue").As("totalRevenue"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Round(firestore.Multiply(firestore.FieldOf("soldBooks"), firestore.FieldOf("price"))).As("partialRevenue"),
+    )).
+    Aggregate(firestore.Accumulators(
+        firestore.Sum("partialRevenue").As("totalRevenue"),
+    )).
+    Execute(ctx)
+```
 
 ## Behavior
 
@@ -98,14 +110,16 @@ To get Core operations-style behavior in a `select(...)` the fields must be expl
 
 ### Node.js
 
-    const results = await db.pipeline()
-      .collection("/users")
-      .select(
-        field("__name__"),
-        field("__create_time__"),
-        field("__update_time__"),
-        field("email"))
-      .execute();
+```
+const results = await db.pipeline()
+  .collection("/users")
+  .select(
+    field("__name__"),
+    field("__create_time__"),
+    field("__update_time__"),
+    field("email"))
+  .execute();
+```
 
 ### Position of a Select Stage
 
@@ -113,41 +127,49 @@ There are no restrictions on when a select stage can be used, but any fields not
 
 ### Node.js
 
-    await db.collection("cities").doc("SF").set({
-      name: "San Francisco",
-      population: 800000,
-      location: {country: "USA", state: "California"}
-    });
-    
-    await db.collection("cities").doc("TO").set({
-      name: "Toronto",
-      population: 3000000,
-      location: {country: "Canada", province: "Ontario"}
-    });
+```
+await db.collection("cities").doc("SF").set({
+  name: "San Francisco",
+  population: 800000,
+  location: {country: "USA", state: "California"}
+});
+
+await db.collection("cities").doc("TO").set({
+  name: "Toronto",
+  population: 3000000,
+  location: {country: "Canada", province: "Ontario"}
+});
+```
 
 The following pipeline can be used:
 
 ### Node.js
 
-    const names = await db.pipeline()
-      .collection("/cities")
-      .where(equal(field("location.country"), "Canada"))
-      .select(stringConcat(field("name"), ", ", field("location.country")).as("name"), "population")
-      .execute();
+```
+const names = await db.pipeline()
+  .collection("/cities")
+  .where(equal(field("location.country"), "Canada"))
+  .select(stringConcat(field("name"), ", ", field("location.country")).as("name"), "population")
+  .execute();
+```
 
 Which produces the following documents:
 
-    { name: "Toronto, Canada", population: 3000000 },
+```
+{ name: "Toronto, Canada", population: 3000000 },
+```
 
 However, if the `select(...)` stage is instead placed before the [`where(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/where) stage, like:
 
 ### Node.js
 
-    const names = await db.pipeline()
-      .collection("/cities")
-      .select(stringConcat(field("name"), ",", field("location.country")).as("name"), "population")
-      .where(equal(field("location.country"), "Canada"))
-      .execute();
+```
+const names = await db.pipeline()
+  .collection("/cities")
+  .select(stringConcat(field("name"), ",", field("location.country")).as("name"), "population")
+  .where(equal(field("location.country"), "Canada"))
+  .execute();
+```
 
 No documents will be produced, because `location.country` has been removed from the document before the execution of the [`where(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/where) stage.
 
@@ -157,43 +179,49 @@ The `select(...)` stage can be used to select nested fields from both maps and a
 
 ### Node.js
 
-    await db.collection("cities").doc("SF").set({
-      name: "San Francisco",
-      population: 800000,
-      location: { country: "USA", state: "California" },
-      landmarks: [ "Golden Gate Bridge", "Alcatraz" ]
-    });
-    
-    await db.collection("cities").doc("TO").set({
-      name: "Toronto",
-      population:  3000000,
-      province: "ON",
-      location: { country: "Canada", province: "Ontario" },
-      landmarks: [ "CN Tower", "Casa Loma" ]
-    });
-    
-    await db.collection("cities").doc("AT").set({
-      name: "Atlantis",
-      population: null
-    });
+```
+await db.collection("cities").doc("SF").set({
+  name: "San Francisco",
+  population: 800000,
+  location: { country: "USA", state: "California" },
+  landmarks: [ "Golden Gate Bridge", "Alcatraz" ]
+});
+
+await db.collection("cities").doc("TO").set({
+  name: "Toronto",
+  population:  3000000,
+  province: "ON",
+  location: { country: "Canada", province: "Ontario" },
+  landmarks: [ "CN Tower", "Casa Loma" ]
+});
+
+await db.collection("cities").doc("AT").set({
+  name: "Atlantis",
+  population: null
+});
+```
 
 The following pipeline can be used:
 
 ### Node.js
 
-    const locations = await db.pipeline()
-      .collection("/cities")
-      .select(
-        field("name").as("city"),
-        field("location.country").as("country"),
-        field("landmarks").offset(0).as("topLandmark"))
-      .execute();
+```
+const locations = await db.pipeline()
+  .collection("/cities")
+  .select(
+    field("name").as("city"),
+    field("location.country").as("country"),
+    field("landmarks").offset(0).as("topLandmark"))
+  .execute();
+```
 
 Which produces the following documents:
 
-    { city: "San Francisco", country: "USA", topLandmark: "Golden Gate Bridge" },
-    { city: "Toronto", country: "Canada", topLandmark: "CN Tower" },
-    { city: "Atlantis" }
+```
+{ city: "San Francisco", country: "USA", topLandmark: "Golden Gate Bridge" },
+{ city: "Toronto", country: "Canada", topLandmark: "CN Tower" },
+{ city: "Atlantis" }
+```
 
 If a nested map value or array value does not exist, it is not included in the resulting document. Array and map access in the select stage behaves identically to the [`offset(...)`](https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/offset) and `get_field(...)` functions, respectively.
 
@@ -203,10 +231,12 @@ The result of an expression can also be assigned to a nested field, making it po
 
 ### Node.js
 
-    const results = await db.pipeline()
-      .collection("/users")
-      .addFields(
-        field("__name__"),
-        field("address.city").as("address.city"),
-        field("address.state").as("address.state"))
-      .execute();
+```
+const results = await db.pipeline()
+  .collection("/users")
+  .addFields(
+    field("__name__"),
+    field("address.city").as("address.city"),
+    field("address.state").as("address.state"))
+  .execute();
+```

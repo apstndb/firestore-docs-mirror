@@ -16,8 +16,8 @@ Merges the documents from another pipeline with those in the current pipeline.
 
 ##### Node.js
 
-``` 
-  const results = await db.pipeline()
+```
+const results = await db.pipeline()
     .collection("cities/SF/restaurants")
     .where(eq("type", "chinese"))
     .union(db.pipeline()
@@ -25,107 +25,118 @@ Merges the documents from another pipeline with those in the current pipeline.
       .where(eq("type", "italian")))
     .where(gte("rating", 4.5))
     .execute();
-    
 ```
 
 ### Web
 
-    const results = await execute(db.pipeline()
-      .collection("cities/SF/restaurants")
-      .where(field("type").equal("Chinese"))
-      .union(db.pipeline()
-        .collection("cities/NY/restaurants")
-        .where(field("type").equal("Italian")))
-      .where(field("rating").greaterThanOrEqual(4.5))
-      .sort(field("__name__").descending())
-    );
+```
+const results = await execute(db.pipeline()
+  .collection("cities/SF/restaurants")
+  .where(field("type").equal("Chinese"))
+  .union(db.pipeline()
+    .collection("cities/NY/restaurants")
+    .where(field("type").equal("Italian")))
+  .where(field("rating").greaterThanOrEqual(4.5))
+  .sort(field("__name__").descending())
+);
+```
 
 ##### Swift
 
-    let results = try await db.pipeline()
-      .collection("cities/SF/restaurants")
-      .where(Field("type").equal("Chinese"))
-      .union(with: db.pipeline()
+```
+let results = try await db.pipeline()
+  .collection("cities/SF/restaurants")
+  .where(Field("type").equal("Chinese"))
+  .union(with: db.pipeline()
+    .collection("cities/NY/restaurants")
+    .where(Field("type").equal("Italian")))
+  .where(Field("rating").greaterThanOrEqual(4.5))
+  .sort([Field("__name__").descending()])
+  .execute()
+```
+
+##### Kotlin Android
+
+```
+val results = db.pipeline()
+    .collection("cities/SF/restaurants")
+    .where(field("type").equal("Chinese"))
+    .union(db.pipeline()
         .collection("cities/NY/restaurants")
-        .where(Field("type").equal("Italian")))
-      .where(Field("rating").greaterThanOrEqual(4.5))
-      .sort([Field("__name__").descending()])
-      .execute()
+        .where(field("type").equal("Italian")))
+    .where(field("rating").greaterThanOrEqual(4.5))
+    .sort(field("__name__").descending())
+    .execute()
+```
 
-##### Kotlin  
-Android
+##### Java Android
 
-    val results = db.pipeline()
-        .collection("cities/SF/restaurants")
-        .where(field("type").equal("Chinese"))
-        .union(db.pipeline()
-            .collection("cities/NY/restaurants")
-            .where(field("type").equal("Italian")))
-        .where(field("rating").greaterThanOrEqual(4.5))
-        .sort(field("__name__").descending())
-        .execute()
-
-##### Java  
-Android
-
-    Task<Pipeline.Snapshot> results = db.pipeline()
-        .collection("cities/SF/restaurants")
-        .where(field("type").equal("Chinese"))
-        .union(db.pipeline()
-            .collection("cities/NY/restaurants")
-            .where(field("type").equal("Italian")))
-        .where(field("rating").greaterThanOrEqual(4.5))
-        .sort(field("__name__").descending())
-        .execute();
+```
+Task<Pipeline.Snapshot> results = db.pipeline()
+    .collection("cities/SF/restaurants")
+    .where(field("type").equal("Chinese"))
+    .union(db.pipeline()
+        .collection("cities/NY/restaurants")
+        .where(field("type").equal("Italian")))
+    .where(field("rating").greaterThanOrEqual(4.5))
+    .sort(field("__name__").descending())
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    results = (
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+results = (
+    client.pipeline()
+    .collection("cities/SF/restaurants")
+    .where(Field.of("type").equal("Chinese"))
+    .union(
         client.pipeline()
-        .collection("cities/SF/restaurants")
-        .where(Field.of("type").equal("Chinese"))
-        .union(
-            client.pipeline()
-            .collection("cities/NY/restaurants")
-            .where(Field.of("type").equal("Italian"))
-        )
-        .where(Field.of("rating").greater_than_or_equal(4.5))
-        .sort(Field.of("__name__").descending())
-        .execute()
+        .collection("cities/NY/restaurants")
+        .where(Field.of("type").equal("Italian"))
     )
+    .where(Field.of("rating").greater_than_or_equal(4.5))
+    .sort(Field.of("__name__").descending())
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot results =
-        firestore
-            .pipeline()
-            .collection("cities/SF/restaurants")
-            .where(field("type").equal("Chinese"))
-            .union(
-                firestore
-                    .pipeline()
-                    .collection("cities/NY/restaurants")
-                    .where(field("type").equal("Italian")))
-            .where(field("rating").greaterThanOrEqual(4.5))
-            .sort(descending(field("__name__")))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot results =
+    firestore
+        .pipeline()
+        .collection("cities/SF/restaurants")
+        .where(field("type").equal("Chinese"))
+        .union(
+            firestore
+                .pipeline()
+                .collection("cities/NY/restaurants")
+                .where(field("type").equal("Italian")))
+        .where(field("rating").greaterThanOrEqual(4.5))
+        .sort(descending(field("__name__")))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("cities/SF/restaurants").
-     Where(firestore.FieldOf("type").Equal("Chinese")).
-     Union(
-         client.Pipeline().
-             Collection("cities/NY/restaurants").
-             Where(firestore.FieldOf("type").Equal("Italian")),
-     ).
-     Where(firestore.FieldOf("rating").GreaterThanOrEqual(4.5)).
-     Sort(firestore.Orders(firestore.Descending(firestore.FieldOf("__name__")))).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("cities/SF/restaurants").
+    Where(firestore.FieldOf("type").Equal("Chinese")).
+    Union(
+        client.Pipeline().
+            Collection("cities/NY/restaurants").
+            Where(firestore.FieldOf("type").Equal("Italian")),
+    ).
+    Where(firestore.FieldOf("rating").GreaterThanOrEqual(4.5)).
+    Sort(firestore.Orders(firestore.Descending(firestore.FieldOf("__name__")))).
+    Execute(ctx)
+```
 
 ## Behavior
 
@@ -137,8 +148,8 @@ The order in which results are combined between the two pipelines is non-determi
 
 ##### Node.js
 
-``` 
-  const results = await db.pipeline()
+```
+const results = await db.pipeline()
     .collection("cities/SF/restaurants")
     .where(eq("type", "chinese"))
     .union(db.pipeline()
@@ -147,83 +158,90 @@ The order in which results are combined between the two pipelines is non-determi
     .where(gte("rating", 4.5))
     .sort(Field.of("__name__"))
     .execute();
-    
 ```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val results = db.pipeline()
-        .collection("cities/SF/restaurants")
-        .where(field("type").equal("Chinese"))
-        .union(db.pipeline()
-            .collection("cities/NY/restaurants")
-            .where(field("type").equal("Italian")))
-        .where(field("rating").greaterThanOrEqual(4.5))
-        .sort(field("__name__").descending())
-        .execute()
+```
+val results = db.pipeline()
+    .collection("cities/SF/restaurants")
+    .where(field("type").equal("Chinese"))
+    .union(db.pipeline()
+        .collection("cities/NY/restaurants")
+        .where(field("type").equal("Italian")))
+    .where(field("rating").greaterThanOrEqual(4.5))
+    .sort(field("__name__").descending())
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> results = db.pipeline()
-        .collection("cities/SF/restaurants")
-        .where(field("type").equal("Chinese"))
-        .union(db.pipeline()
-            .collection("cities/NY/restaurants")
-            .where(field("type").equal("Italian")))
-        .where(field("rating").greaterThanOrEqual(4.5))
-        .sort(field("__name__").descending())
-        .execute();
+```
+Task<Pipeline.Snapshot> results = db.pipeline()
+    .collection("cities/SF/restaurants")
+    .where(field("type").equal("Chinese"))
+    .union(db.pipeline()
+        .collection("cities/NY/restaurants")
+        .where(field("type").equal("Italian")))
+    .where(field("rating").greaterThanOrEqual(4.5))
+    .sort(field("__name__").descending())
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    results = (
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+results = (
+    client.pipeline()
+    .collection("cities/SF/restaurants")
+    .where(Field.of("type").equal("Chinese"))
+    .union(
         client.pipeline()
-        .collection("cities/SF/restaurants")
-        .where(Field.of("type").equal("Chinese"))
-        .union(
-            client.pipeline()
-            .collection("cities/NY/restaurants")
-            .where(Field.of("type").equal("Italian"))
-        )
-        .where(Field.of("rating").greater_than_or_equal(4.5))
-        .sort(Field.of("__name__").descending())
-        .execute()
+        .collection("cities/NY/restaurants")
+        .where(Field.of("type").equal("Italian"))
     )
+    .where(Field.of("rating").greater_than_or_equal(4.5))
+    .sort(Field.of("__name__").descending())
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot results =
-        firestore
-            .pipeline()
-            .collection("cities/SF/restaurants")
-            .where(field("type").equal("Chinese"))
-            .union(
-                firestore
-                    .pipeline()
-                    .collection("cities/NY/restaurants")
-                    .where(field("type").equal("Italian")))
-            .where(field("rating").greaterThanOrEqual(4.5))
-            .sort(descending(field("__name__")))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot results =
+    firestore
+        .pipeline()
+        .collection("cities/SF/restaurants")
+        .where(field("type").equal("Chinese"))
+        .union(
+            firestore
+                .pipeline()
+                .collection("cities/NY/restaurants")
+                .where(field("type").equal("Italian")))
+        .where(field("rating").greaterThanOrEqual(4.5))
+        .sort(descending(field("__name__")))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("cities/SF/restaurants").
-     Where(firestore.FieldOf("type").Equal("Chinese")).
-     Union(
-         client.Pipeline().
-             Collection("cities/NY/restaurants").
-             Where(firestore.FieldOf("type").Equal("Italian")),
-     ).
-     Where(firestore.FieldOf("rating").GreaterThanOrEqual(4.5)).
-     Sort(firestore.Orders(firestore.Descending(firestore.FieldOf("__name__")))).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("cities/SF/restaurants").
+    Where(firestore.FieldOf("type").Equal("Chinese")).
+    Union(
+        client.Pipeline().
+            Collection("cities/NY/restaurants").
+            Where(firestore.FieldOf("type").Equal("Italian")),
+    ).
+    Where(firestore.FieldOf("rating").GreaterThanOrEqual(4.5)).
+    Sort(firestore.Orders(firestore.Descending(firestore.FieldOf("__name__")))).
+    Execute(ctx)
+```
 
 ### Duplicate Results
 

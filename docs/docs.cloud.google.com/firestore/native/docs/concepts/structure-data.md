@@ -10,9 +10,9 @@ data_source: docs.cloud.google.com
 
 Remember, when you structure your data in Firestore, you have a few different options:
 
-  - Documents
-  - Multiple collections
-  - Subcollections within documents
+- Documents
+- Multiple collections
+- Subcollections within documents
 
 Consider the advantages of each option as they relate to your use case. A few example structures for hierarchical data are outlined in this guide.
 

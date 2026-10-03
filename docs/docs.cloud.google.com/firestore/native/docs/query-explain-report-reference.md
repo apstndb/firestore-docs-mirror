@@ -14,29 +14,29 @@ The following values are returned as results to operations performed with [Fires
 
 ## Plan records
 
-| Key           | Type                                                                                       | Field subject to change?                                        | Description                                                                                                                                                                     |
-| ------------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| indexes\_used | List of [Generic Structs](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) | Yes, the contents in the Struct response are subject to change. | List of indexes selected for this query. See [below](https://docs.cloud.google.com/firestore/native/docs/query-explain-report-reference#query-analyze-reference-indexes-used) . |
+| Key          | Type                                                                                       | Field subject to change?                                        | Description                                                                                                                                                                     |
+|--------------|--------------------------------------------------------------------------------------------|-----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| indexes_used | List of [Generic Structs](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) | Yes, the contents in the Struct response are subject to change. | List of indexes selected for this query. See [below](https://docs.cloud.google.com/firestore/native/docs/query-explain-report-reference#query-analyze-reference-indexes-used) . |
 
 ### Indexes used
 
 The contents of indexes used are subject to change as Firestore in Native Mode evolves.
 
-| Key          | Type   | Description                                                                                                  |
-| ------------ | ------ | ------------------------------------------------------------------------------------------------------------ |
-| query\_scope | String | The scope at which a query is run. For example: `Collection` , `Collection Group` and `Includes Ancestors` . |
-| properties   | String | The index fields in a format. For example: `(age ASC, __name__ ASC)` .                                       |
+| Key         | Type   | Description                                                                                                  |
+|-------------|--------|--------------------------------------------------------------------------------------------------------------|
+| query_scope | String | The scope at which a query is run. For example: `Collection` , `Collection Group` and `Includes Ancestors` . |
+| properties  | String | The index fields in a format. For example: `(age ASC, __name__ ASC)` .                                       |
 
 ## Execution statistics
 
 Aggregated execution statistics for the query.
 
-| Key                 | Type                                                                              | Field subject to change?                                        | Description                                                                                                                                                                                 |
-| ------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| results\_returned   | long                                                                              | No                                                              | Total number of results returned, including documents, projections, aggregation results, keys.                                                                                              |
-| execution\_duration | [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration)     | No                                                              | Total time to execute the query in the backend.                                                                                                                                             |
-| read\_operations    | long                                                                              | No                                                              | Total billable read operations.                                                                                                                                                             |
-| debug\_stats        | [Generic Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) | Yes, the contents in the Struct response are subject to change. | Debugging statistics from the execution of the query. See [below](https://docs.cloud.google.com/firestore/native/docs/query-explain-report-reference#query-analyze-reference-debug-stats) . |
+| Key                | Type                                                                              | Field subject to change?                                        | Description                                                                                                                                                                                 |
+|--------------------|-----------------------------------------------------------------------------------|-----------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| results_returned   | long                                                                              | No                                                              | Total number of results returned, including documents, projections, aggregation results, keys.                                                                                              |
+| execution_duration | [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration)     | No                                                              | Total time to execute the query in the backend.                                                                                                                                             |
+| read_operations    | long                                                                              | No                                                              | Total billable read operations.                                                                                                                                                             |
+| debug_stats        | [Generic Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) | Yes, the contents in the Struct response are subject to change. | Debugging statistics from the execution of the query. See [below](https://docs.cloud.google.com/firestore/native/docs/query-explain-report-reference#query-analyze-reference-debug-stats) . |
 
 ### Debug statistics
 
@@ -44,8 +44,8 @@ The following results are helpful for debugging use cases and analysis of raw, o
 
 The contents of debug statistics are subject to change as Firestore in Native Mode evolves.
 
-| Key                     | Type                                                                              | Description                                                                                                                                             |
-| ----------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| index\_entries\_scanned | String                                                                            | Total number of index entries inspected during the query.                                                                                               |
-| documents\_scanned      | String                                                                            | Total number of documents scanned during the query.                                                                                                     |
-| billing\_details        | [Generic Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) | Billing details including metrics like: "documents\_billable", "index\_entries\_billable", "knn\_vector\_index\_entries\_billable", "min\_query\_cost". |
+| Key                   | Type                                                                              | Description                                                                                                                                    |
+|-----------------------|-----------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| index_entries_scanned | String                                                                            | Total number of index entries inspected during the query.                                                                                      |
+| documents_scanned     | String                                                                            | Total number of documents scanned during the query.                                                                                            |
+| billing_details       | [Generic Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) | Billing details including metrics like: "documents_billable", "index_entries_billable", "knn_vector_index_entries_billable", "min_query_cost". |

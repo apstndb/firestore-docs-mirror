@@ -12,7 +12,7 @@ Getting a Firestore document while using shards (async).
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Support frequent and distributed counters](https://docs.cloud.google.com/firestore/native/docs/solutions/counters)
+- [Support frequent and distributed counters](https://docs.cloud.google.com/firestore/native/docs/solutions/counters)
 
 ## Code sample
 
@@ -20,13 +20,15 @@ For detailed documentation that includes this code sample, see the following:
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    async def get_count(self, doc_ref):
-        """Return a total count across all shards."""
-        total = 0
-        shards = doc_ref.collection("shards").list_documents()
-        async for shard in shards:
-            total += (await shard.get()).to_dict().get("count", 0)
-        return total
+```python
+async def get_count(self, doc_ref):
+    """Return a total count across all shards."""
+    total = 0
+    shards = doc_ref.collection("shards").list_documents()
+    async for shard in shards:
+        total += (await shard.get()).to_dict().get("count", 0)
+    return total
+```
 
 ## What's next
 

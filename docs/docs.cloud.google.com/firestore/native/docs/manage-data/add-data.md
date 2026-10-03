@@ -14,9 +14,9 @@ This document explains how to set, add, or update individual documents in Firest
 
 You can write data to Firestore in one of the following ways:
 
-  - Set the data of a document within a collection, explicitly specifying a document identifier.
-  - Add a new document to a collection. In this case, Firestore automatically generates the document identifier.
-  - Create an empty document with an automatically generated identifier, and assign data to it later.
+- Set the data of a document within a collection, explicitly specifying a document identifier.
+- Add a new document to a collection. In this case, Firestore automatically generates the document identifier.
+- Create an empty document with an automatically generated identifier, and assign data to it later.
 
 > **Note:** While the code samples cover multiple languages, the text explaining the samples refers to the Web method names.
 
@@ -24,9 +24,9 @@ You can write data to Firestore in one of the following ways:
 
 Before you can initialize Firestore to set, add, or update data, you must complete the following steps:
 
-  - Create a Firestore database. For more information, see one of the [Firestore quickstarts](https://docs.cloud.google.com/firestore/docs/quickstarts) .
-  - If you use the web or mobile client libraries, authenticate with security rules. For more information, see [Getting started with security rules](https://docs.cloud.google.com/firestore/native/docs/manage-data/firestore/docs/security/get-started) .
-  - If you use the server client libraries or REST API, authenticate with Identity and Access Management (IAM). For more information, see [Security for server client libraries](https://docs.cloud.google.com/firestore/docs/security/iam) .
+- Create a Firestore database. For more information, see one of the [Firestore quickstarts](https://docs.cloud.google.com/firestore/docs/quickstarts) .
+- If you use the web or mobile client libraries, authenticate with security rules. For more information, see [Getting started with security rules](https://docs.cloud.google.com/firestore/native/docs/manage-data/firestore/docs/security/get-started) .
+- If you use the server client libraries or REST API, authenticate with Identity and Access Management (IAM). For more information, see [Security for server client libraries](https://docs.cloud.google.com/firestore/docs/security/iam) .
 
 ## Initialize Firestore
 
@@ -36,45 +36,49 @@ Initialize an instance of Firestore:
 
 ### Web version 9
 
-    import { initializeApp } from "firebase/app";
-    import { getFirestore } from "firebase/firestore";
-    
-    // TODO: Replace the following with your app's Firebase project configuration
-    // See: https://support.google.com/firebase/answer/7015592
-    const firebaseConfig = {
-        FIREBASE_CONFIGURATION
-    };
-    
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    
-    
-    // Initialize Firestore and get a reference to the service
-    const db = getFirestore(app);
+```
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 
-Replace FIREBASE\_CONFIGURATION with your web app's [`firebaseConfig`](https://support.google.com/firebase/answer/7015592) .
+// TODO: Replace the following with your app's Firebase project configuration
+// See: https://support.google.com/firebase/answer/7015592
+const firebaseConfig = {
+    FIREBASE_CONFIGURATION
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+
+// Initialize Firestore and get a reference to the service
+const db = getFirestore(app);
+```
+
+Replace ` FIREBASE_CONFIGURATION ` with your web app's [`firebaseConfig`](https://support.google.com/firebase/answer/7015592) .
 
 To persist data when the device loses its connection, see the [Enable Offline Data](https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline) documentation.
 
 ### Web version 8
 
-    import firebase from "firebase/app";
-    import "firebase/firestore";
-    
-    // TODO: Replace the following with your app's Firebase project configuration
-    // See: https://support.google.com/firebase/answer/7015592
-    const firebaseConfig = {
-        FIREBASE_CONFIGURATION
-    };
-    
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    
-    
-    // Initialize Firestore and get a reference to the service
-    const db = firebase.firestore();
+```
+import firebase from "firebase/app";
+import "firebase/firestore";
 
-Replace FIREBASE\_CONFIGURATION with your web app's [`firebaseConfig`](https://support.google.com/firebase/answer/7015592) .
+// TODO: Replace the following with your app's Firebase project configuration
+// See: https://support.google.com/firebase/answer/7015592
+const firebaseConfig = {
+    FIREBASE_CONFIGURATION
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+
+// Initialize Firestore and get a reference to the service
+const db = firebase.firestore();
+```
+
+Replace ` FIREBASE_CONFIGURATION ` with your web app's [`firebaseConfig`](https://support.google.com/firebase/answer/7015592) .
 
 To persist data when the device loses its connection, see the [Enable Offline Data](https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline) documentation.
 
@@ -82,126 +86,156 @@ To persist data when the device loses its connection, see the [Enable Offline Da
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    import FirebaseCore
-    import FirebaseFirestore
+```
+import FirebaseCore
+import FirebaseFirestore
+```
 
-    FirebaseApp.configure()
-    
-    let db = Firestore.firestore()
+```
+FirebaseApp.configure()
+
+let db = Firestore.firestore()
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-``` 
+```
 @import FirebaseCore;
 @import FirebaseFirestore;
 
 // Use Firebase library to configure APIs
 [FIRApp configure];
-  
 ```
 
-    FIRFirestore *defaultFirestore = [FIRFirestore firestore];
+```
+FIRFirestore *defaultFirestore = [FIRFirestore firestore];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    // Access a Firestore instance from your Activity
+```
+// Access a Firestore instance from your Activity
+```
 
-    val db = Firebase.firestore
+```
+val db = Firebase.firestore
+```
 
-##### Java  
-Android
+##### Java Android
 
-    // Access a Firestore instance from your Activity
+```
+// Access a Firestore instance from your Activity
+```
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+```
+FirebaseFirestore db = FirebaseFirestore.getInstance();
+```
 
 ### Dart
 
-    db = FirebaseFirestore.instance;
+```
+db = FirebaseFirestore.instance;
+```
 
 ##### C++
 
-    // Make sure the call to `Create()` happens some time before you call Firestore::GetInstance().
-    App::Create();
-    Firestore* db = Firestore::GetInstance();
+```
+// Make sure the call to `Create()` happens some time before you call Firestore::GetInstance().
+App::Create();
+Firestore* db = Firestore::GetInstance();
+```
 
 ##### Unity
 
-    using Firebase.Firestore;
-    using Firebase.Extensions;
+```
+using Firebase.Firestore;
+using Firebase.Extensions;
+```
 
-    FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
+```
+FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
+```
 
 ### Server client libraries
 
 ##### Java
 
-    import com.google.cloud.firestore.Firestore;
-    import com.google.cloud.firestore.FirestoreOptions;
+```
+import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.FirestoreOptions;
+```
 
-    FirestoreOptions firestoreOptions =
-        FirestoreOptions.getDefaultInstance().toBuilder()
-            .setProjectId(projectId)
-            .setCredentials(GoogleCredentials.getApplicationDefault())
-            .build();
-    Firestore db = firestoreOptions.getService();
+```
+FirestoreOptions firestoreOptions =
+    FirestoreOptions.getDefaultInstance().toBuilder()
+        .setProjectId(projectId)
+        .setCredentials(GoogleCredentials.getApplicationDefault())
+        .build();
+Firestore db = firestoreOptions.getService();
+```
 
 ##### Python
 
-    from google.cloud import firestore
-    
-    # The `project` parameter is optional and represents which project the client
-    # will act on behalf of. If not supplied, the client falls back to the default
-    # project inferred from the environment.
-    db = firestore.Client(project="my-project-id")
+```
+from google.cloud import firestore
 
-##### Python  
-(Async)
+# The `project` parameter is optional and represents which project the client
+# will act on behalf of. If not supplied, the client falls back to the default
+# project inferred from the environment.
+db = firestore.Client(project="my-project-id")
+```
 
-    from google.cloud import firestore
-    
-    # The `project` parameter is optional and represents which project the client
-    # will act on behalf of. If not supplied, the client falls back to the default
-    # project inferred from the environment.
-    db = firestore.AsyncClient(project="my-project-id")
+##### Python (Async)
+
+```
+from google.cloud import firestore
+
+# The `project` parameter is optional and represents which project the client
+# will act on behalf of. If not supplied, the client falls back to the default
+# project inferred from the environment.
+db = firestore.AsyncClient(project="my-project-id")
+```
 
 ##### Node.js
 
-    const Firestore = require('@google-cloud/firestore');
-    
-    const db = new Firestore({
-      projectId: 'YOUR_PROJECT_ID',
-      keyFilename: '/path/to/keyfile.json',
-    });
+```
+const Firestore = require('@google-cloud/firestore');
+
+const db = new Firestore({
+  projectId: 'YOUR_PROJECT_ID',
+  keyFilename: '/path/to/keyfile.json',
+});
+```
 
 ##### Go
 
-    import (
-     "context"
-     "flag"
-     "fmt"
-     "log"
-    
-     "google.golang.org/api/iterator"
-    
-     "cloud.google.com/go/firestore"
-    )
-    
-    func createClient(ctx context.Context) *firestore.Client {
-     // Sets your Google Cloud Platform project ID.
-     projectID := "YOUR_PROJECT_ID"
-    
-     client, err := firestore.NewClient(ctx, projectID)
-     if err != nil {
-         log.Fatalf("Failed to create client: %v", err)
-     }
-     // Close client when done with
-     // defer client.Close()
-     return client
+```
+import (
+    "context"
+    "flag"
+    "fmt"
+    "log"
+
+    "google.golang.org/api/iterator"
+
+    "cloud.google.com/go/firestore"
+)
+
+func createClient(ctx context.Context) *firestore.Client {
+    // Sets your Google Cloud Platform project ID.
+    projectID := "YOUR_PROJECT_ID"
+
+    client, err := firestore.NewClient(ctx, projectID)
+    if err != nil {
+        log.Fatalf("Failed to create client: %v", err)
     }
+    // Close client when done with
+    // defer client.Close()
+    return client
+}
+```
 
 ##### PHP
 
@@ -209,47 +243,53 @@ Android
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    use Google\Cloud\Firestore\FirestoreClient;
-    
-    /**
-     * Initialize Cloud Firestore with default project ID.
-     */
-    function setup_client_create(string $projectId = null)
-    {
-        // Create the Cloud Firestore client
-        if (empty($projectId)) {
-            // The `projectId` parameter is optional and represents which project the
-            // client will act on behalf of. If not supplied, the client falls back to
-            // the default project inferred from the environment.
-            $db = new FirestoreClient();
-            printf('Created Cloud Firestore client with default project ID.' . PHP_EOL);
-        } else {
-            $db = new FirestoreClient([
-                'projectId' => $projectId,
-            ]);
-            printf('Created Cloud Firestore client with project ID: %s' . PHP_EOL, $projectId);
-        }
+```php
+use Google\Cloud\Firestore\FirestoreClient;
+
+/**
+ * Initialize Cloud Firestore with default project ID.
+ */
+function setup_client_create(string $projectId = null)
+{
+    // Create the Cloud Firestore client
+    if (empty($projectId)) {
+        // The `projectId` parameter is optional and represents which project the
+        // client will act on behalf of. If not supplied, the client falls back to
+        // the default project inferred from the environment.
+        $db = new FirestoreClient();
+        printf('Created Cloud Firestore client with default project ID.' . PHP_EOL);
+    } else {
+        $db = new FirestoreClient([
+            'projectId' => $projectId,
+        ]);
+        printf('Created Cloud Firestore client with project ID: %s' . PHP_EOL, $projectId);
     }
+}
+```
 
-##### C\#
+##### C#
 
-### C\#
+### C#
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    FirestoreDb db = FirestoreDb.Create(project);
-    Console.WriteLine("Created Cloud Firestore client with project ID: {0}", project);
+```csharp
+FirestoreDb db = FirestoreDb.Create(project);
+Console.WriteLine("Created Cloud Firestore client with project ID: {0}", project);
+```
 
 ##### Ruby
 
-    require "google/cloud/firestore"
-    
-    # The `project_id` parameter is optional and represents which project the
-    # client will act on behalf of. If not supplied, the client falls back to the
-    # default project inferred from the environment.
-    firestore = Google::Cloud::Firestore.new project_id: project_id
-    
-    puts "Created Cloud Firestore client with given project ID."
+```
+require "google/cloud/firestore"
+
+# The `project_id` parameter is optional and represents which project the
+# client will act on behalf of. If not supplied, the client falls back to the
+# default project inferred from the environment.
+firestore = Google::Cloud::Firestore.new project_id: project_id
+
+puts "Created Cloud Firestore client with given project ID."
+```
 
 ## Set a document
 
@@ -259,31 +299,35 @@ To create or overwrite a single document, use the following language-specific `s
 
 Use the `setDoc()` method:
 
-    import { doc, setDoc } from "firebase/firestore"; 
-    
-    // Add a new document in collection "cities"
-    await setDoc(doc(db, "cities", "LA"), {
-      name: "Los Angeles",
-      state: "CA",
-      country: "USA"
-    });
+```
+import { doc, setDoc } from "firebase/firestore"; 
+
+// Add a new document in collection "cities"
+await setDoc(doc(db, "cities", "LA"), {
+  name: "Los Angeles",
+  state: "CA",
+  country: "USA"
+});
+```
 
 ### Web version 8
 
 Use the `set()` method:
 
-    // Add a new document in collection "cities"
-    db.collection("cities").doc("LA").set({
-        name: "Los Angeles",
-        state: "CA",
-        country: "USA"
-    })
-    .then(() => {
-        console.log("Document successfully written!");
-    })
-    .catch((error) => {
-        console.error("Error writing document: ", error);
-    });
+```
+// Add a new document in collection "cities"
+db.collection("cities").doc("LA").set({
+    name: "Los Angeles",
+    state: "CA",
+    country: "USA"
+})
+.then(() => {
+    console.log("Document successfully written!");
+})
+.catch((error) => {
+    console.error("Error writing document: ", error);
+});
+```
 
 ##### Swift
 
@@ -291,17 +335,19 @@ Use the `setData()` method:
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    // Add a new document in collection "cities"
-    do {
-      try await db.collection("cities").document("LA").setData([
-        "name": "Los Angeles",
-        "state": "CA",
-        "country": "USA"
-      ])
-      print("Document successfully written!")
-    } catch {
-      print("Error writing document: \(error)")
-    }
+```
+// Add a new document in collection "cities"
+do {
+  try await db.collection("cities").document("LA").setData([
+    "name": "Los Angeles",
+    "state": "CA",
+    "country": "USA"
+  ])
+  print("Document successfully written!")
+} catch {
+  print("Error writing document: \(error)")
+}
+```
 
 ##### Objective-C
 
@@ -309,167 +355,184 @@ Use the `setData:` method:
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    // Add a new document in collection "cities"
-    [[[self.db collectionWithPath:@"cities"] documentWithPath:@"LA"] setData:@{
-      @"name": @"Los Angeles",
-      @"state": @"CA",
-      @"country": @"USA"
-    } completion:^(NSError * _Nullable error) {
-      if (error != nil) {
-        NSLog(@"Error writing document: %@", error);
-      } else {
-        NSLog(@"Document successfully written!");
-      }
-    }];
+```
+// Add a new document in collection "cities"
+[[[self.db collectionWithPath:@"cities"] documentWithPath:@"LA"] setData:@{
+  @"name": @"Los Angeles",
+  @"state": @"CA",
+  @"country": @"USA"
+} completion:^(NSError * _Nullable error) {
+  if (error != nil) {
+    NSLog(@"Error writing document: %@", error);
+  } else {
+    NSLog(@"Document successfully written!");
+  }
+}];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
 Use the `set()` method:
 
-    val city = hashMapOf(
-        "name" to "Los Angeles",
-        "state" to "CA",
-        "country" to "USA",
-    )
-    
-    db.collection("cities").document("LA")
+```
+val city = hashMapOf(
+    "name" to "Los Angeles",
+    "state" to "CA",
+    "country" to "USA",
+)
+
+db.collection("cities").document("LA")
+    .set(city)
+    .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+    .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+```
+
+##### Java Android
+
+Use the `set()` method:
+
+```
+Map<String, Object> city = new HashMap<>();
+city.put("name", "Los Angeles");
+city.put("state", "CA");
+city.put("country", "USA");
+
+db.collection("cities").document("LA")
         .set(city)
-        .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
-        .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
-
-##### Java  
-Android
-
-Use the `set()` method:
-
-    Map<String, Object> city = new HashMap<>();
-    city.put("name", "Los Angeles");
-    city.put("state", "CA");
-    city.put("country", "USA");
-    
-    db.collection("cities").document("LA")
-            .set(city)
-            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Log.d(TAG, "DocumentSnapshot successfully written!");
-                }
-            })
-            .addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.w(TAG, "Error writing document", e);
-                }
-            });
+        .addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d(TAG, "DocumentSnapshot successfully written!");
+            }
+        })
+        .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w(TAG, "Error writing document", e);
+            }
+        });
+```
 
 ### Dart
 
 Use the `set()` method:
 
-    final city = <String, String>{
-      "name": "Los Angeles",
-      "state": "CA",
-      "country": "USA"
-    };
-    
-    db
-        .collection("cities")
-        .doc("LA")
-        .set(city)
-        .onError((e, _) => print("Error writing document: $e"));
+```
+final city = <String, String>{
+  "name": "Los Angeles",
+  "state": "CA",
+  "country": "USA"
+};
+
+db
+    .collection("cities")
+    .doc("LA")
+    .set(city)
+    .onError((e, _) => print("Error writing document: $e"));
+```
 
 ##### Java
 
 Use the `set()` method:
 
-    // Create a Map to store the data we want to set
-    Map<String, Object> docData = new HashMap<>();
-    docData.put("name", "Los Angeles");
-    docData.put("state", "CA");
-    docData.put("country", "USA");
-    docData.put("regions", Arrays.asList("west_coast", "socal"));
-    // Add a new document (asynchronously) in collection "cities" with id "LA"
-    ApiFuture<WriteResult> future = db.collection("cities").document("LA").set(docData);
-    // ...
-    // future.get() blocks on response
-    System.out.println("Update time : " + future.get().getUpdateTime());
+```
+// Create a Map to store the data we want to set
+Map<String, Object> docData = new HashMap<>();
+docData.put("name", "Los Angeles");
+docData.put("state", "CA");
+docData.put("country", "USA");
+docData.put("regions", Arrays.asList("west_coast", "socal"));
+// Add a new document (asynchronously) in collection "cities" with id "LA"
+ApiFuture<WriteResult> future = db.collection("cities").document("LA").set(docData);
+// ...
+// future.get() blocks on response
+System.out.println("Update time : " + future.get().getUpdateTime());
+```
 
 ##### Python
 
 Use the `set()` method:
 
-    data = {"name": "Los Angeles", "state": "CA", "country": "USA"}
-    
-    # Add a new doc in collection 'cities' with ID 'LA'
-    db.collection("cities").document("LA").set(data)
+```
+data = {"name": "Los Angeles", "state": "CA", "country": "USA"}
 
-##### Python  
-(Async)
+# Add a new doc in collection 'cities' with ID 'LA'
+db.collection("cities").document("LA").set(data)
+```
+
+##### Python (Async)
 
 Use the `set()` method:
 
-    data = {"name": "Los Angeles", "state": "CA", "country": "USA"}
-    
-    # Add a new doc in collection 'cities' with ID 'LA'
-    await db.collection("cities").document("LA").set(data)
+```
+data = {"name": "Los Angeles", "state": "CA", "country": "USA"}
+
+# Add a new doc in collection 'cities' with ID 'LA'
+await db.collection("cities").document("LA").set(data)
+```
 
 ##### C++
 
 Use the `Set()` method:
 
-    // Add a new document in collection 'cities'
-    db->Collection("cities")
-        .Document("LA")
-        .Set({{"name", FieldValue::String("Los Angeles")},
-              {"state", FieldValue::String("CA")},
-              {"country", FieldValue::String("USA")}})
-        .OnCompletion([](const Future<void>& future) {
-          if (future.error() == Error::kErrorOk) {
-            std::cout << "DocumentSnapshot successfully written!" << std::endl;
-          } else {
-            std::cout << "Error writing document: " << future.error_message()
-                      << std::endl;
-          }
-        });
+```
+// Add a new document in collection 'cities'
+db->Collection("cities")
+    .Document("LA")
+    .Set({{"name", FieldValue::String("Los Angeles")},
+          {"state", FieldValue::String("CA")},
+          {"country", FieldValue::String("USA")}})
+    .OnCompletion([](const Future<void>& future) {
+      if (future.error() == Error::kErrorOk) {
+        std::cout << "DocumentSnapshot successfully written!" << std::endl;
+      } else {
+        std::cout << "Error writing document: " << future.error_message()
+                  << std::endl;
+      }
+    });
+```
 
 ##### Node.js
 
 Use the `set()` method:
 
-    const data = {
-      name: 'Los Angeles',
-      state: 'CA',
-      country: 'USA'
-    };
-    
-    // Add a new document in collection "cities" with ID 'LA'
-    const res = await db.collection('cities').doc('LA').set(data);
+```
+const data = {
+  name: 'Los Angeles',
+  state: 'CA',
+  country: 'USA'
+};
+
+// Add a new document in collection "cities" with ID 'LA'
+const res = await db.collection('cities').doc('LA').set(data);
+```
 
 ##### Go
 
 Use the `Set()` method:
 
-    import (
-     "context"
-     "log"
-    
-     "cloud.google.com/go/firestore"
-    )
-    
-    func addDocAsMap(ctx context.Context, client *firestore.Client) error {
-     _, err := client.Collection("cities").Doc("LA").Set(ctx, map[string]interface{}{
-         "name":    "Los Angeles",
-         "state":   "CA",
-         "country": "USA",
-     })
-     if err != nil {
-         // Handle any errors in an appropriate way, such as returning them.
-         log.Printf("An error has occurred: %s", err)
-     }
-    
-     return err
+```
+import (
+    "context"
+    "log"
+
+    "cloud.google.com/go/firestore"
+)
+
+func addDocAsMap(ctx context.Context, client *firestore.Client) error {
+    _, err := client.Collection("cities").Doc("LA").Set(ctx, map[string]interface{}{
+        "name":    "Los Angeles",
+        "state":   "CA",
+        "country": "USA",
+    })
+    if err != nil {
+        // Handle any errors in an appropriate way, such as returning them.
+        log.Printf("An error has occurred: %s", err)
     }
+
+    return err
+}
+```
 
 ##### PHP
 
@@ -479,178 +542,209 @@ Use the `set()` method:
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $data = [
-        'name' => 'Los Angeles',
-        'state' => 'CA',
-        'country' => 'USA'
-    ];
-    $db->collection('samples/php/cities')->document('LA')->set($data);
+```php
+$data = [
+    'name' => 'Los Angeles',
+    'state' => 'CA',
+    'country' => 'USA'
+];
+$db->collection('samples/php/cities')->document('LA')->set($data);
+```
 
 ##### Unity
 
 Use the `SetAsync()` method:
 
-    DocumentReference docRef = db.Collection("cities").Document("LA");
-    Dictionary<string, object> city = new Dictionary<string, object>
-    {
-     { "Name", "Los Angeles" },
-     { "State", "CA" },
-     { "Country", "USA" }
-    };
-    docRef.SetAsync(city).ContinueWithOnMainThread(task => {
-     Debug.Log("Added data to the LA document in the cities collection.");
-    });
+```
+DocumentReference docRef = db.Collection("cities").Document("LA");
+Dictionary<string, object> city = new Dictionary<string, object>
+{
+    { "Name", "Los Angeles" },
+    { "State", "CA" },
+    { "Country", "USA" }
+};
+docRef.SetAsync(city).ContinueWithOnMainThread(task => {
+    Debug.Log("Added data to the LA document in the cities collection.");
+});
+```
 
-##### C\#
+##### C#
 
 Use the `SetAsync()` method:
 
-    DocumentReference docRef = db.Collection("cities").Document("LA");
-    Dictionary<string, object> city = new Dictionary<string, object>
-    {
-        { "name", "Los Angeles" },
-        { "state", "CA" },
-        { "country", "USA" }
-    };
-    await docRef.SetAsync(city);
+```csharp
+DocumentReference docRef = db.Collection("cities").Document("LA");
+Dictionary<string, object> city = new Dictionary<string, object>
+{
+    { "name", "Los Angeles" },
+    { "state", "CA" },
+    { "country", "USA" }
+};
+await docRef.SetAsync(city);
+```
 
 ##### Ruby
 
 Use the `set()` method:
 
-    city_ref = firestore.doc "#{collection_path}/LA"
-    
-    data = {
-      name:    "Los Angeles",
-      state:   "CA",
-      country: "USA"
-    }
-    
-    city_ref.set data
+```
+city_ref = firestore.doc "#{collection_path}/LA"
+
+data = {
+  name:    "Los Angeles",
+  state:   "CA",
+  country: "USA"
+}
+
+city_ref.set data
+```
 
 If the document does not exist, it will be created. If the document does exist, its contents will be overwritten with the newly provided data, unless you specify that the data should be merged into the existing document, as follows:
 
 ### Web version 9
 
-    import { doc, setDoc } from "firebase/firestore"; 
-    
-    const cityRef = doc(db, 'cities', 'BJ');
-    setDoc(cityRef, { capital: true }, { merge: true });
+```
+import { doc, setDoc } from "firebase/firestore"; 
+
+const cityRef = doc(db, 'cities', 'BJ');
+setDoc(cityRef, { capital: true }, { merge: true });
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    var cityRef = db.collection('cities').doc('BJ');
-    
-    var setWithMerge = cityRef.set({
-        capital: true
-    }, { merge: true });
+```
+var cityRef = db.collection('cities').doc('BJ');
+
+var setWithMerge = cityRef.set({
+    capital: true
+}, { merge: true });
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    // Update one field, creating the document if it does not exist.
-    db.collection("cities").document("BJ").setData([ "capital": true ], merge: true)
+```
+// Update one field, creating the document if it does not exist.
+db.collection("cities").document("BJ").setData([ "capital": true ], merge: true)
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    // Write to the document reference, merging data with existing
-    // if the document already exists
-    [[[self.db collectionWithPath:@"cities"] documentWithPath:@"BJ"]
-         setData:@{ @"capital": @YES }
-         merge:YES
-         completion:^(NSError * _Nullable error) {
-           // ...
-         }];
+```
+// Write to the document reference, merging data with existing
+// if the document already exists
+[[[self.db collectionWithPath:@"cities"] documentWithPath:@"BJ"]
+     setData:@{ @"capital": @YES }
+     merge:YES
+     completion:^(NSError * _Nullable error) {
+       // ...
+     }];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    // Update one field, creating the document if it does not already exist.
-    val data = hashMapOf("capital" to true)
-    
-    db.collection("cities").document("BJ")
-        .set(data, SetOptions.merge())
+```
+// Update one field, creating the document if it does not already exist.
+val data = hashMapOf("capital" to true)
 
-##### Java  
-Android
+db.collection("cities").document("BJ")
+    .set(data, SetOptions.merge())
+```
 
-    // Update one field, creating the document if it does not already exist.
-    Map<String, Object> data = new HashMap<>();
-    data.put("capital", true);
-    
-    db.collection("cities").document("BJ")
-            .set(data, SetOptions.merge());
+##### Java Android
+
+```
+// Update one field, creating the document if it does not already exist.
+Map<String, Object> data = new HashMap<>();
+data.put("capital", true);
+
+db.collection("cities").document("BJ")
+        .set(data, SetOptions.merge());
+```
 
 ### Dart
 
-    // Update one field, creating the document if it does not already exist.
-    final data = {"capital": true};
-    
-    db.collection("cities").doc("BJ").set(data, SetOptions(merge: true));
+```
+// Update one field, creating the document if it does not already exist.
+final data = {"capital": true};
+
+db.collection("cities").doc("BJ").set(data, SetOptions(merge: true));
+```
 
 ##### Java
 
-    // asynchronously update doc, create the document if missing
-    Map<String, Object> update = new HashMap<>();
-    update.put("capital", true);
-    
-    ApiFuture<WriteResult> writeResult =
-        db.collection("cities").document("BJ").set(update, SetOptions.merge());
-    // ...
-    System.out.println("Update time : " + writeResult.get().getUpdateTime());
+```
+// asynchronously update doc, create the document if missing
+Map<String, Object> update = new HashMap<>();
+update.put("capital", true);
+
+ApiFuture<WriteResult> writeResult =
+    db.collection("cities").document("BJ").set(update, SetOptions.merge());
+// ...
+System.out.println("Update time : " + writeResult.get().getUpdateTime());
+```
 
 ##### Python
 
-    city_ref = db.collection("cities").document("BJ")
-    
-    city_ref.set({"capital": True}, merge=True)
+```
+city_ref = db.collection("cities").document("BJ")
 
-##### Python  
-(Async)
+city_ref.set({"capital": True}, merge=True)
+```
 
-    city_ref = db.collection("cities").document("BJ")
-    
-    await city_ref.set({"capital": True}, merge=True)
+##### Python (Async)
+
+```
+city_ref = db.collection("cities").document("BJ")
+
+await city_ref.set({"capital": True}, merge=True)
+```
 
 ##### C++
 
-    db->Collection("cities").Document("BJ").Set(
-        {{"capital", FieldValue::Boolean(true)}}, SetOptions::Merge());
+```
+db->Collection("cities").Document("BJ").Set(
+    {{"capital", FieldValue::Boolean(true)}}, SetOptions::Merge());
+```
 
 ##### Node.js
 
-    const cityRef = db.collection('cities').doc('BJ');
-    
-    const res = await cityRef.set({
-      capital: true
-    }, { merge: true });
+```
+const cityRef = db.collection('cities').doc('BJ');
+
+const res = await cityRef.set({
+  capital: true
+}, { merge: true });
+```
 
 ##### Go
 
-    import (
-     "context"
-     "log"
-    
-     "cloud.google.com/go/firestore"
-    )
-    
-    func updateDocCreateIfMissing(ctx context.Context, client *firestore.Client) error {
-     _, err := client.Collection("cities").Doc("BJ").Set(ctx, map[string]interface{}{
-         "capital": true,
-     }, firestore.MergeAll)
-    
-     if err != nil {
-         // Handle any errors in an appropriate way, such as returning them.
-         log.Printf("An error has occurred: %s", err)
-     }
-    
-     return err
+```
+import (
+    "context"
+    "log"
+
+    "cloud.google.com/go/firestore"
+)
+
+func updateDocCreateIfMissing(ctx context.Context, client *firestore.Client) error {
+    _, err := client.Collection("cities").Doc("BJ").Set(ctx, map[string]interface{}{
+        "capital": true,
+    }, firestore.MergeAll)
+
+    if err != nil {
+        // Handle any errors in an appropriate way, such as returning them.
+        log.Printf("An error has occurred: %s", err)
     }
+
+    return err
+}
+```
 
 ##### PHP
 
@@ -658,33 +752,41 @@ Android
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $cityRef = $db->collection('samples/php/cities')->document('BJ');
-    $cityRef->set([
-        'capital' => true
-    ], ['merge' => true]);
+```php
+$cityRef = $db->collection('samples/php/cities')->document('BJ');
+$cityRef->set([
+    'capital' => true
+], ['merge' => true]);
+```
 
 ##### Unity
 
-    DocumentReference docRef = db.Collection("cities").Document("LA");
-    Dictionary<string, object> update = new Dictionary<string, object>
-    {
-     { "capital", false }
-    };
-    docRef.SetAsync(update, SetOptions.MergeAll);
+```
+DocumentReference docRef = db.Collection("cities").Document("LA");
+Dictionary<string, object> update = new Dictionary<string, object>
+{
+    { "capital", false }
+};
+docRef.SetAsync(update, SetOptions.MergeAll);
+```
 
-##### C\#
+##### C#
 
-    DocumentReference docRef = db.Collection("cities").Document("LA");
-    Dictionary<string, object> update = new Dictionary<string, object>
-    {
-        { "capital", false }
-    };
-    await docRef.SetAsync(update, SetOptions.MergeAll);
+```csharp
+DocumentReference docRef = db.Collection("cities").Document("LA");
+Dictionary<string, object> update = new Dictionary<string, object>
+{
+    { "capital", false }
+};
+await docRef.SetAsync(update, SetOptions.MergeAll);
+```
 
 ##### Ruby
 
-    city_ref = firestore.doc "#{collection_path}/LA"
-    city_ref.set({ capital: false }, merge: true)
+```
+city_ref = firestore.doc "#{collection_path}/LA"
+city_ref.set({ capital: false }, merge: true)
+```
 
 If you're not sure whether the document exists, pass the option to merge the new data with any existing document to avoid overwriting entire documents. For documents that contain maps, if you specify a set with a field that contains an empty map, the map field of the target document is overwritten.
 
@@ -694,305 +796,328 @@ Firestore lets you write a variety of data types inside a document, including st
 
 ### Web version 9
 
-    import { doc, setDoc, Timestamp } from "firebase/firestore"; 
-    
-    const docData = {
-        stringExample: "Hello world!",
-        booleanExample: true,
-        numberExample: 3.14159265,
-        dateExample: Timestamp.fromDate(new Date("December 10, 1815")),
-        arrayExample: [5, true, "hello"],
-        nullExample: null,
-        objectExample: {
-            a: 5,
-            b: {
-                nested: "foo"
-            }
+```
+import { doc, setDoc, Timestamp } from "firebase/firestore"; 
+
+const docData = {
+    stringExample: "Hello world!",
+    booleanExample: true,
+    numberExample: 3.14159265,
+    dateExample: Timestamp.fromDate(new Date("December 10, 1815")),
+    arrayExample: [5, true, "hello"],
+    nullExample: null,
+    objectExample: {
+        a: 5,
+        b: {
+            nested: "foo"
         }
-    };
-    await setDoc(doc(db, "data", "one"), docData);
+    }
+};
+await setDoc(doc(db, "data", "one"), docData);
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    var docData = {
-        stringExample: "Hello world!",
-        booleanExample: true,
-        numberExample: 3.14159265,
-        dateExample: firebase.firestore.Timestamp.fromDate(new Date("December 10, 1815")),
-        arrayExample: [5, true, "hello"],
-        nullExample: null,
-        objectExample: {
-            a: 5,
-            b: {
-                nested: "foo"
-            }
+```
+var docData = {
+    stringExample: "Hello world!",
+    booleanExample: true,
+    numberExample: 3.14159265,
+    dateExample: firebase.firestore.Timestamp.fromDate(new Date("December 10, 1815")),
+    arrayExample: [5, true, "hello"],
+    nullExample: null,
+    objectExample: {
+        a: 5,
+        b: {
+            nested: "foo"
         }
-    };
-    db.collection("data").doc("one").set(docData).then(() => {
-        console.log("Document successfully written!");
-    });
+    }
+};
+db.collection("data").doc("one").set(docData).then(() => {
+    console.log("Document successfully written!");
+});
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    let docData: [String: Any] = [
-      "stringExample": "Hello world!",
-      "booleanExample": true,
-      "numberExample": 3.14159265,
-      "dateExample": Timestamp(date: Date()),
-      "arrayExample": [5, true, "hello"],
-      "nullExample": NSNull(),
-      "objectExample": [
-        "a": 5,
-        "b": [
-          "nested": "foo"
-        ]
-      ]
+```
+let docData: [String: Any] = [
+  "stringExample": "Hello world!",
+  "booleanExample": true,
+  "numberExample": 3.14159265,
+  "dateExample": Timestamp(date: Date()),
+  "arrayExample": [5, true, "hello"],
+  "nullExample": NSNull(),
+  "objectExample": [
+    "a": 5,
+    "b": [
+      "nested": "foo"
     ]
-    do {
-      try await db.collection("data").document("one").setData(docData)
-      print("Document successfully written!")
-    } catch {
-      print("Error writing document: \(error)")
-    }
+  ]
+]
+do {
+  try await db.collection("data").document("one").setData(docData)
+  print("Document successfully written!")
+} catch {
+  print("Error writing document: \(error)")
+}
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    NSDictionary *docData = @{
-      @"stringExample": @"Hello world!",
-      @"booleanExample": @YES,
-      @"numberExample": @3.14,
-      @"dateExample": [FIRTimestamp timestampWithDate:[NSDate date]],
-      @"arrayExample": @[@5, @YES, @"hello"],
-      @"nullExample": [NSNull null],
-      @"objectExample": @{
-        @"a": @5,
-        @"b": @{
-          @"nested": @"foo"
-        }
+```
+NSDictionary *docData = @{
+  @"stringExample": @"Hello world!",
+  @"booleanExample": @YES,
+  @"numberExample": @3.14,
+  @"dateExample": [FIRTimestamp timestampWithDate:[NSDate date]],
+  @"arrayExample": @[@5, @YES, @"hello"],
+  @"nullExample": [NSNull null],
+  @"objectExample": @{
+    @"a": @5,
+    @"b": @{
+      @"nested": @"foo"
+    }
+  }
+};
+
+[[[self.db collectionWithPath:@"data"] documentWithPath:@"one"] setData:docData
+    completion:^(NSError * _Nullable error) {
+      if (error != nil) {
+        NSLog(@"Error writing document: %@", error);
+      } else {
+        NSLog(@"Document successfully written!");
       }
-    };
-    
-    [[[self.db collectionWithPath:@"data"] documentWithPath:@"one"] setData:docData
-        completion:^(NSError * _Nullable error) {
-          if (error != nil) {
-            NSLog(@"Error writing document: %@", error);
-          } else {
-            NSLog(@"Document successfully written!");
-          }
-        }];
+    }];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val docData = hashMapOf(
-        "stringExample" to "Hello world!",
-        "booleanExample" to true,
-        "numberExample" to 3.14159265,
-        "dateExample" to Timestamp(Date()),
-        "listExample" to arrayListOf(1, 2, 3),
-        "nullExample" to null,
-    )
-    
-    val nestedData = hashMapOf(
-        "a" to 5,
-        "b" to true,
-    )
-    
-    docData["objectExample"] = nestedData
-    
-    db.collection("data").document("one")
+```
+val docData = hashMapOf(
+    "stringExample" to "Hello world!",
+    "booleanExample" to true,
+    "numberExample" to 3.14159265,
+    "dateExample" to Timestamp(Date()),
+    "listExample" to arrayListOf(1, 2, 3),
+    "nullExample" to null,
+)
+
+val nestedData = hashMapOf(
+    "a" to 5,
+    "b" to true,
+)
+
+docData["objectExample"] = nestedData
+
+db.collection("data").document("one")
+    .set(docData)
+    .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+    .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+```
+
+##### Java Android
+
+```
+Map<String, Object> docData = new HashMap<>();
+docData.put("stringExample", "Hello world!");
+docData.put("booleanExample", true);
+docData.put("numberExample", 3.14159265);
+docData.put("dateExample", new Timestamp(new Date()));
+docData.put("listExample", Arrays.asList(1, 2, 3));
+docData.put("nullExample", null);
+
+Map<String, Object> nestedData = new HashMap<>();
+nestedData.put("a", 5);
+nestedData.put("b", true);
+
+docData.put("objectExample", nestedData);
+
+db.collection("data").document("one")
         .set(docData)
-        .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
-        .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
-
-##### Java  
-Android
-
-    Map<String, Object> docData = new HashMap<>();
-    docData.put("stringExample", "Hello world!");
-    docData.put("booleanExample", true);
-    docData.put("numberExample", 3.14159265);
-    docData.put("dateExample", new Timestamp(new Date()));
-    docData.put("listExample", Arrays.asList(1, 2, 3));
-    docData.put("nullExample", null);
-    
-    Map<String, Object> nestedData = new HashMap<>();
-    nestedData.put("a", 5);
-    nestedData.put("b", true);
-    
-    docData.put("objectExample", nestedData);
-    
-    db.collection("data").document("one")
-            .set(docData)
-            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Log.d(TAG, "DocumentSnapshot successfully written!");
-                }
-            })
-            .addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.w(TAG, "Error writing document", e);
-                }
-            });
+        .addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d(TAG, "DocumentSnapshot successfully written!");
+            }
+        })
+        .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w(TAG, "Error writing document", e);
+            }
+        });
+```
 
 ### Dart
 
-    final docData = {
-      "stringExample": "Hello world!",
-      "booleanExample": true,
-      "numberExample": 3.14159265,
-      "dateExample": Timestamp.now(),
-      "listExample": [1, 2, 3],
-      "nullExample": null
-    };
-    
-    final nestedData = {
-      "a": 5,
-      "b": true,
-    };
-    
-    docData["objectExample"] = nestedData;
-    
-    db
-        .collection("data")
-        .doc("one")
-        .set(docData)
-        .onError((e, _) => print("Error writing document: $e"));
+```
+final docData = {
+  "stringExample": "Hello world!",
+  "booleanExample": true,
+  "numberExample": 3.14159265,
+  "dateExample": Timestamp.now(),
+  "listExample": [1, 2, 3],
+  "nullExample": null
+};
+
+final nestedData = {
+  "a": 5,
+  "b": true,
+};
+
+docData["objectExample"] = nestedData;
+
+db
+    .collection("data")
+    .doc("one")
+    .set(docData)
+    .onError((e, _) => print("Error writing document: $e"));
+```
 
 ##### Java
 
-    Map<String, Object> docData = new HashMap<>();
-    docData.put("stringExample", "Hello, World");
-    docData.put("booleanExample", false);
-    docData.put("numberExample", 3.14159265);
-    docData.put("nullExample", null);
-    
-    ArrayList<Object> arrayExample = new ArrayList<>();
-    Collections.addAll(arrayExample, 5L, true, "hello");
-    docData.put("arrayExample", arrayExample);
-    
-    Map<String, Object> objectExample = new HashMap<>();
-    objectExample.put("a", 5L);
-    objectExample.put("b", true);
-    
-    docData.put("objectExample", objectExample);
-    
-    ApiFuture<WriteResult> future = db.collection("data").document("one").set(docData);
-    System.out.println("Update time : " + future.get().getUpdateTime());
+```
+Map<String, Object> docData = new HashMap<>();
+docData.put("stringExample", "Hello, World");
+docData.put("booleanExample", false);
+docData.put("numberExample", 3.14159265);
+docData.put("nullExample", null);
+
+ArrayList<Object> arrayExample = new ArrayList<>();
+Collections.addAll(arrayExample, 5L, true, "hello");
+docData.put("arrayExample", arrayExample);
+
+Map<String, Object> objectExample = new HashMap<>();
+objectExample.put("a", 5L);
+objectExample.put("b", true);
+
+docData.put("objectExample", objectExample);
+
+ApiFuture<WriteResult> future = db.collection("data").document("one").set(docData);
+System.out.println("Update time : " + future.get().getUpdateTime());
+```
 
 ##### Python
 
-    data = {
-        "stringExample": "Hello, World!",
-        "booleanExample": True,
-        "numberExample": 3.14159265,
-        "dateExample": datetime.datetime.now(tz=datetime.timezone.utc),
-        "arrayExample": [5, True, "hello"],
-        "nullExample": None,
-        "objectExample": {"a": 5, "b": True},
-    }
-    
-    db.collection("data").document("one").set(data)
+```
+data = {
+    "stringExample": "Hello, World!",
+    "booleanExample": True,
+    "numberExample": 3.14159265,
+    "dateExample": datetime.datetime.now(tz=datetime.timezone.utc),
+    "arrayExample": [5, True, "hello"],
+    "nullExample": None,
+    "objectExample": {"a": 5, "b": True},
+}
 
-##### Python  
-(Async)
+db.collection("data").document("one").set(data)
+```
 
-    data = {
-        "stringExample": "Hello, World!",
-        "booleanExample": True,
-        "numberExample": 3.14159265,
-        "dateExample": datetime.datetime.now(tz=datetime.timezone.utc),
-        "arrayExample": [5, True, "hello"],
-        "nullExample": None,
-        "objectExample": {"a": 5, "b": True},
-    }
-    
-    await db.collection("data").document("one").set(data)
+##### Python (Async)
+
+```
+data = {
+    "stringExample": "Hello, World!",
+    "booleanExample": True,
+    "numberExample": 3.14159265,
+    "dateExample": datetime.datetime.now(tz=datetime.timezone.utc),
+    "arrayExample": [5, True, "hello"],
+    "nullExample": None,
+    "objectExample": {"a": 5, "b": True},
+}
+
+await db.collection("data").document("one").set(data)
+```
 
 ##### C++
 
-    MapFieldValue doc_data{
-        {"stringExample", FieldValue::String("Hello world!")},
-        {"booleanExample", FieldValue::Boolean(true)},
-        {"numberExample", FieldValue::Double(3.14159265)},
-        {"dateExample", FieldValue::Timestamp(Timestamp::Now())},
-        {"arrayExample", FieldValue::Array({FieldValue::Integer(1),
-                                            FieldValue::Integer(2),
-                                            FieldValue::Integer(3)})},
-        {"nullExample", FieldValue::Null()},
-        {"objectExample",
-         FieldValue::Map(
-             {{"a", FieldValue::Integer(5)},
-              {"b", FieldValue::Map(
-                        {{"nested", FieldValue::String("foo")}})}})},
-    };
-    
-    db->Collection("data").Document("one").Set(doc_data).OnCompletion(
-        [](const Future<void>& future) {
-          if (future.error() == Error::kErrorOk) {
-            std::cout << "DocumentSnapshot successfully written!" << std::endl;
-          } else {
-            std::cout << "Error writing document: " << future.error_message()
-                      << std::endl;
-          }
-        });
+```
+MapFieldValue doc_data{
+    {"stringExample", FieldValue::String("Hello world!")},
+    {"booleanExample", FieldValue::Boolean(true)},
+    {"numberExample", FieldValue::Double(3.14159265)},
+    {"dateExample", FieldValue::Timestamp(Timestamp::Now())},
+    {"arrayExample", FieldValue::Array({FieldValue::Integer(1),
+                                        FieldValue::Integer(2),
+                                        FieldValue::Integer(3)})},
+    {"nullExample", FieldValue::Null()},
+    {"objectExample",
+     FieldValue::Map(
+         {{"a", FieldValue::Integer(5)},
+          {"b", FieldValue::Map(
+                    {{"nested", FieldValue::String("foo")}})}})},
+};
+
+db->Collection("data").Document("one").Set(doc_data).OnCompletion(
+    [](const Future<void>& future) {
+      if (future.error() == Error::kErrorOk) {
+        std::cout << "DocumentSnapshot successfully written!" << std::endl;
+      } else {
+        std::cout << "Error writing document: " << future.error_message()
+                  << std::endl;
+      }
+    });
+```
 
 ##### Node.js
 
-    const data = {
-      stringExample: 'Hello, World!',
-      booleanExample: true,
-      numberExample: 3.14159265,
-      dateExample: Timestamp.fromDate(new Date('December 10, 1815')),
-      arrayExample: [5, true, 'hello'],
-      nullExample: null,
-      objectExample: {
-        a: 5,
-        b: true
-      }
-    };
-    
-    const res = await db.collection('data').doc('one').set(data);
+```
+const data = {
+  stringExample: 'Hello, World!',
+  booleanExample: true,
+  numberExample: 3.14159265,
+  dateExample: Timestamp.fromDate(new Date('December 10, 1815')),
+  arrayExample: [5, true, 'hello'],
+  nullExample: null,
+  objectExample: {
+    a: 5,
+    b: true
+  }
+};
+
+const res = await db.collection('data').doc('one').set(data);
+```
 
 ##### Go
 
-    import (
-     "context"
-     "log"
-     "time"
-    
-     "cloud.google.com/go/firestore"
-    )
-    
-    func addDocDataTypes(ctx context.Context, client *firestore.Client) error {
-     doc := make(map[string]interface{})
-     doc["stringExample"] = "Hello world!"
-     doc["booleanExample"] = true
-     doc["numberExample"] = 3.14159265
-     doc["dateExample"] = time.Now()
-     doc["arrayExample"] = []interface{}{5, true, "hello"}
-     doc["nullExample"] = nil
-     doc["objectExample"] = map[string]interface{}{
-         "a": 5,
-         "b": true,
-     }
-    
-     _, err := client.Collection("data").Doc("one").Set(ctx, doc)
-     if err != nil {
-         // Handle any errors in an appropriate way, such as returning them.
-         log.Printf("An error has occurred: %s", err)
-     }
-    
-     return err
+```
+import (
+    "context"
+    "log"
+    "time"
+
+    "cloud.google.com/go/firestore"
+)
+
+func addDocDataTypes(ctx context.Context, client *firestore.Client) error {
+    doc := make(map[string]interface{})
+    doc["stringExample"] = "Hello world!"
+    doc["booleanExample"] = true
+    doc["numberExample"] = 3.14159265
+    doc["dateExample"] = time.Now()
+    doc["arrayExample"] = []interface{}{5, true, "hello"}
+    doc["nullExample"] = nil
+    doc["objectExample"] = map[string]interface{}{
+        "a": 5,
+        "b": true,
     }
+
+    _, err := client.Collection("data").Doc("one").Set(ctx, doc)
+    if err != nil {
+        // Handle any errors in an appropriate way, such as returning them.
+        log.Printf("An error has occurred: %s", err)
+    }
+
+    return err
+}
+```
 
 ##### PHP
 
@@ -1000,77 +1125,85 @@ Android
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $data = [
-        'stringExample' => 'Hello World',
-        'booleanExample' => true,
-        'numberExample' => 3.14159265,
-        'dateExample' => new Timestamp(new DateTime()),
-        'arrayExample' => array(5, true, 'hello'),
-        'nullExample' => null,
-        'objectExample' => ['a' => 5, 'b' => true],
-        'documentReferenceExample' => $db->collection('samples/php/data')->document('two'),
-    ];
-    $db->collection('samples/php/data')->document('one')->set($data);
-    printf('Set multiple data-type data for the one document in the data collection.' . PHP_EOL);
+```php
+$data = [
+    'stringExample' => 'Hello World',
+    'booleanExample' => true,
+    'numberExample' => 3.14159265,
+    'dateExample' => new Timestamp(new DateTime()),
+    'arrayExample' => array(5, true, 'hello'),
+    'nullExample' => null,
+    'objectExample' => ['a' => 5, 'b' => true],
+    'documentReferenceExample' => $db->collection('samples/php/data')->document('two'),
+];
+$db->collection('samples/php/data')->document('one')->set($data);
+printf('Set multiple data-type data for the one document in the data collection.' . PHP_EOL);
+```
 
 ##### Unity
 
-    DocumentReference docRef = db.Collection("data").Document("one");
-    Dictionary<string, object> docData = new Dictionary<string, object>
-    {
-     { "stringExample", "Hello World" },
-     { "booleanExample", false },
-     { "numberExample", 3.14159265 },
-     { "nullExample", null },
-     { "arrayExample", new List<object>() { 5, true, "Hello" } },
-     { "objectExample", new Dictionary<string, object>
-         {
-             { "a", 5 },
-             { "b", true },
-         }
-     },
-    };
-    
-    docRef.SetAsync(docData);
-
-##### C\#
-
-    DocumentReference docRef = db.Collection("data").Document("one");
-    Dictionary<string, object> docData = new Dictionary<string, object>
-    {
-        { "stringExample", "Hello World" },
-        { "booleanExample", false },
-        { "numberExample", 3.14159265 },
-        { "nullExample", null },
-        { "arrayExample", new object[] { 5, true, "Hello" } },
-        { "objectExample", new Dictionary<string, object>
-            {
-                { "a", 5 },
-                { "b", true},
-            }
+```
+DocumentReference docRef = db.Collection("data").Document("one");
+Dictionary<string, object> docData = new Dictionary<string, object>
+{
+    { "stringExample", "Hello World" },
+    { "booleanExample", false },
+    { "numberExample", 3.14159265 },
+    { "nullExample", null },
+    { "arrayExample", new List<object>() { 5, true, "Hello" } },
+    { "objectExample", new Dictionary<string, object>
+        {
+            { "a", 5 },
+            { "b", true },
         }
-    };
-    
-    await docRef.SetAsync(docData);
+    },
+};
+
+docRef.SetAsync(docData);
+```
+
+##### C#
+
+```csharp
+DocumentReference docRef = db.Collection("data").Document("one");
+Dictionary<string, object> docData = new Dictionary<string, object>
+{
+    { "stringExample", "Hello World" },
+    { "booleanExample", false },
+    { "numberExample", 3.14159265 },
+    { "nullExample", null },
+    { "arrayExample", new object[] { 5, true, "Hello" } },
+    { "objectExample", new Dictionary<string, object>
+        {
+            { "a", 5 },
+            { "b", true},
+        }
+    }
+};
+
+await docRef.SetAsync(docData);
+```
 
 ##### Ruby
 
-    doc_ref = firestore.doc "#{collection_path}/one"
-    
-    data = {
-      stringExample:  "Hello, World!",
-      booleanExample: true,
-      numberExample:  3.14159265,
-      dateExample:    DateTime.now,
-      arrayExample:   [5, true, "hello"],
-      nullExample:    nil,
-      objectExample:  {
-        a: 5,
-        b: true
-      }
-    }
-    
-    doc_ref.set data
+```
+doc_ref = firestore.doc "#{collection_path}/one"
+
+data = {
+  stringExample:  "Hello, World!",
+  booleanExample: true,
+  numberExample:  3.14159265,
+  dateExample:    DateTime.now,
+  arrayExample:   [5, true, "hello"],
+  nullExample:    nil,
+  objectExample:  {
+    a: 5,
+    b: true
+  }
+}
+
+doc_ref.set data
+```
 
 ### Custom objects
 
@@ -1080,297 +1213,317 @@ Using custom classes, you can rewrite the initial example in the following way:
 
 ### Web version 9
 
-    class City {
-        constructor (name, state, country ) {
-            this.name = name;
-            this.state = state;
-            this.country = country;
-        }
-        toString() {
-            return this.name + ', ' + this.state + ', ' + this.country;
-        }
+```
+class City {
+    constructor (name, state, country ) {
+        this.name = name;
+        this.state = state;
+        this.country = country;
     }
-    
-    // Firestore data converter
-    const cityConverter = {
-        toFirestore: (city) => {
-            return {
-                name: city.name,
-                state: city.state,
-                country: city.country
-                };
-        },
-        fromFirestore: (snapshot, options) => {
-            const data = snapshot.data(options);
-            return new City(data.name, data.state, data.country);
-        }
-    };
+    toString() {
+        return this.name + ', ' + this.state + ', ' + this.country;
+    }
+}
+
+// Firestore data converter
+const cityConverter = {
+    toFirestore: (city) => {
+        return {
+            name: city.name,
+            state: city.state,
+            country: city.country
+            };
+    },
+    fromFirestore: (snapshot, options) => {
+        const data = snapshot.data(options);
+        return new City(data.name, data.state, data.country);
+    }
+};
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    class City {
-        constructor (name, state, country ) {
-            this.name = name;
-            this.state = state;
-            this.country = country;
-        }
-        toString() {
-            return this.name + ', ' + this.state + ', ' + this.country;
-        }
+```
+class City {
+    constructor (name, state, country ) {
+        this.name = name;
+        this.state = state;
+        this.country = country;
     }
-    
-    // Firestore data converter
-    var cityConverter = {
-        toFirestore: function(city) {
-            return {
-                name: city.name,
-                state: city.state,
-                country: city.country
-                };
-        },
-        fromFirestore: function(snapshot, options){
-            const data = snapshot.data(options);
-            return new City(data.name, data.state, data.country);
-        }
-    };
+    toString() {
+        return this.name + ', ' + this.state + ', ' + this.country;
+    }
+}
+
+// Firestore data converter
+var cityConverter = {
+    toFirestore: function(city) {
+        return {
+            name: city.name,
+            state: city.state,
+            country: city.country
+            };
+    },
+    fromFirestore: function(snapshot, options){
+        const data = snapshot.data(options);
+        return new City(data.name, data.state, data.country);
+    }
+};
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    public struct City: Codable, Sendable {
-    
-      let name: String
-      let state: String?
-      let country: String?
-      let isCapital: Bool?
-      let population: Int64?
-    
-      enum CodingKeys: String, CodingKey {
-        case name
-        case state
-        case country
-        case isCapital = "capital"
-        case population
-      }
-    
-    }
+```
+public struct City: Codable, Sendable {
+
+  let name: String
+  let state: String?
+  let country: String?
+  let isCapital: Bool?
+  let population: Int64?
+
+  enum CodingKeys: String, CodingKey {
+    case name
+    case state
+    case country
+    case isCapital = "capital"
+    case population
+  }
+
+}
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-``` 
+```
 // This isn't supported in Objective-C.
-  
 ```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    data class City(
-        val name: String? = null,
-        val state: String? = null,
-        val country: String? = null,
-        @field:JvmField // use this annotation if your Boolean field is prefixed with 'is'
-        val isCapital: Boolean? = null,
-        val population: Long? = null,
-        val regions: List<String>? = null,
-    )
+```
+data class City(
+    val name: String? = null,
+    val state: String? = null,
+    val country: String? = null,
+    @field:JvmField // use this annotation if your Boolean field is prefixed with 'is'
+    val isCapital: Boolean? = null,
+    val population: Long? = null,
+    val regions: List<String>? = null,
+)
+```
 
-##### Java  
-Android
+##### Java Android
 
 Each custom class must have a public constructor that takes no arguments. In addition, the class must include a public getter for each property.
 
-    public class City {
-    
-    
-        private String name;
-        private String state;
-        private String country;
-        private boolean capital;
-        private long population;
-        private List<String> regions;
-    
-        public City() {}
-    
-        public City(String name, String state, String country, boolean capital, long population, List<String> regions) {
-            // ...
-        }
-    
-        public String getName() {
-            return name;
-        }
-    
-        public String getState() {
-            return state;
-        }
-    
-        public String getCountry() {
-            return country;
-        }
-    
-        public boolean isCapital() {
-            return capital;
-        }
-    
-        public long getPopulation() {
-            return population;
-        }
-    
-        public List<String> getRegions() {
-            return regions;
-        }
-    
+```
+public class City {
+
+
+    private String name;
+    private String state;
+    private String country;
+    private boolean capital;
+    private long population;
+    private List<String> regions;
+
+    public City() {}
+
+    public City(String name, String state, String country, boolean capital, long population, List<String> regions) {
+        // ...
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public boolean isCapital() {
+        return capital;
+    }
+
+    public long getPopulation() {
+        return population;
+    }
+
+    public List<String> getRegions() {
+        return regions;
+    }
+
+}
+```
 
 ### Dart
 
-    class City {
-      final String? name;
-      final String? state;
-      final String? country;
-      final bool? capital;
-      final int? population;
-      final List<String>? regions;
-    
-      City({
-        this.name,
-        this.state,
-        this.country,
-        this.capital,
-        this.population,
-        this.regions,
-      });
-    
-      factory City.fromFirestore(
-        DocumentSnapshot<Map<String, dynamic>> snapshot,
-        SnapshotOptions? options,
-      ) {
-        final data = snapshot.data();
-        return City(
-          name: data?['name'],
-          state: data?['state'],
-          country: data?['country'],
-          capital: data?['capital'],
-          population: data?['population'],
-          regions:
-              data?['regions'] is Iterable ? List.from(data?['regions']) : null,
-        );
-      }
-    
-      Map<String, dynamic> toFirestore() {
-        return {
-          if (name != null) "name": name,
-          if (state != null) "state": state,
-          if (country != null) "country": country,
-          if (capital != null) "capital": capital,
-          if (population != null) "population": population,
-          if (regions != null) "regions": regions,
-        };
-      }
-    }
+```
+class City {
+  final String? name;
+  final String? state;
+  final String? country;
+  final bool? capital;
+  final int? population;
+  final List<String>? regions;
+
+  City({
+    this.name,
+    this.state,
+    this.country,
+    this.capital,
+    this.population,
+    this.regions,
+  });
+
+  factory City.fromFirestore(
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    final data = snapshot.data();
+    return City(
+      name: data?['name'],
+      state: data?['state'],
+      country: data?['country'],
+      capital: data?['capital'],
+      population: data?['population'],
+      regions:
+          data?['regions'] is Iterable ? List.from(data?['regions']) : null,
+    );
+  }
+
+  Map<String, dynamic> toFirestore() {
+    return {
+      if (name != null) "name": name,
+      if (state != null) "state": state,
+      if (country != null) "country": country,
+      if (capital != null) "capital": capital,
+      if (population != null) "population": population,
+      if (regions != null) "regions": regions,
+    };
+  }
+}
+```
 
 ##### Java
 
-    public City() {
-      // Must have a public no-argument constructor
-    }
-    
-    // Initialize all fields of a city
-    public City(
-        String name,
-        String state,
-        String country,
-        Boolean capital,
-        Long population,
-        List<String> regions) {
-      this.name = name;
-      this.state = state;
-      this.country = country;
-      this.capital = capital;
-      this.population = population;
-      this.regions = regions;
-    }
+```
+public City() {
+  // Must have a public no-argument constructor
+}
+
+// Initialize all fields of a city
+public City(
+    String name,
+    String state,
+    String country,
+    Boolean capital,
+    Long population,
+    List<String> regions) {
+  this.name = name;
+  this.state = state;
+  this.country = country;
+  this.capital = capital;
+  this.population = population;
+  this.regions = regions;
+}
+```
 
 ##### Python
 
-    class City:
-        def __init__(self, name, state, country, capital=False, population=0, regions=[]):
-            self.name = name
-            self.state = state
-            self.country = country
-            self.capital = capital
-            self.population = population
-            self.regions = regions
-    
-        @staticmethod
-        def from_dict(source):
-            # ...
-    
-        def to_dict(self):
-            # ...
-    
-        def __repr__(self):
-            return f"City(\
-                    name={self.name}, \
-                    country={self.country}, \
-                    population={self.population}, \
-                    capital={self.capital}, \
-                    regions={self.regions}\
-                )"
+```
+class City:
+    def __init__(self, name, state, country, capital=False, population=0, regions=[]):
+        self.name = name
+        self.state = state
+        self.country = country
+        self.capital = capital
+        self.population = population
+        self.regions = regions
 
-##### Python  
-(Async)
+    @staticmethod
+    def from_dict(source):
+        # ...
 
-    class City:
-        def __init__(self, name, state, country, capital=False, population=0, regions=[]):
-            self.name = name
-            self.state = state
-            self.country = country
-            self.capital = capital
-            self.population = population
-            self.regions = regions
-    
-        @staticmethod
-        def from_dict(source):
-            # ...
-    
-        def to_dict(self):
-            # ...
-    
-        def __repr__(self):
-            return f"City(\
-                    name={self.name}, \
-                    country={self.country}, \
-                    population={self.population}, \
-                    capital={self.capital}, \
-                    regions={self.regions}\
-                )"
+    def to_dict(self):
+        # ...
+
+    def __repr__(self):
+        return f"City(\
+                name={self.name}, \
+                country={self.country}, \
+                population={self.population}, \
+                capital={self.capital}, \
+                regions={self.regions}\
+            )"
+```
+
+##### Python (Async)
+
+```
+class City:
+    def __init__(self, name, state, country, capital=False, population=0, regions=[]):
+        self.name = name
+        self.state = state
+        self.country = country
+        self.capital = capital
+        self.population = population
+        self.regions = regions
+
+    @staticmethod
+    def from_dict(source):
+        # ...
+
+    def to_dict(self):
+        # ...
+
+    def __repr__(self):
+        return f"City(\
+                name={self.name}, \
+                country={self.country}, \
+                population={self.population}, \
+                capital={self.capital}, \
+                regions={self.regions}\
+            )"
+```
 
 ##### C++
 
-    // This is not yet supported.
+```
+// This is not yet supported.
+```
 
 ##### Node.js
 
-    // Node.js uses JavaScript objects
+```
+// Node.js uses JavaScript objects
+```
 
 ##### Go
 
-    // City represents a city.
-    type City struct {
-     Name       string   `firestore:"name,omitempty"`
-     State      string   `firestore:"state,omitempty"`
-     Country    string   `firestore:"country,omitempty"`
-     Capital    bool     `firestore:"capital,omitempty"`
-     Population int64    `firestore:"population,omitempty"`
-     Density    int64    `firestore:"density,omitempty"`
-     Regions    []string `firestore:"regions,omitempty"`
-    }
+```
+// City represents a city.
+type City struct {
+    Name       string   `firestore:"name,omitempty"`
+    State      string   `firestore:"state,omitempty"`
+    Country    string   `firestore:"country,omitempty"`
+    Capital    bool     `firestore:"capital,omitempty"`
+    Population int64    `firestore:"population,omitempty"`
+    Density    int64    `firestore:"density,omitempty"`
+    Regions    []string `firestore:"regions,omitempty"`
+}
+```
 
 ##### PHP
 
@@ -1378,275 +1531,311 @@ Each custom class must have a public constructor that takes no arguments. In add
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    class City
-    {
-        /** @var string */
-        public $name;
-        /** @var string */
-        public $state;
-        /** @var string */
-        public $country;
-        /** @var bool */
-        public $capital;
-        /** @var int */
-        public $population;
-        /** @var array<string> */
-        public $regions;
-    
-        /**
-         * @param array<string> $regions
-         */
-        public function __construct(
-            string $name,
-            string $state,
-            string $country,
-            bool $capital = false,
-            int $population = 0,
-            array $regions = []
-        ) {
-            $this->name = $name;
-            $this->state = $state;
-            $this->country = $country;
-            $this->capital = $capital;
-            $this->population = $population;
-            $this->regions = $regions;
-        }
-    
-        /**
-         * @param array<mixed> $source
-         */
-        public static function fromArray(array $source): City
-        {
-            // implementation of fromArray is excluded for brevity
-            # ...
-        }
-    
-        /**
-         * @return array<mixed>
-         */
-        public function toArray(): array
-        {
-            // implementation of toArray is excluded for brevity
-            # ...
-        }
-    
-        public function __toString()
-        {
-            // implementation of __toString is excluded for brevity
-            # ...
-        }
+```php
+class City
+{
+    /** @var string */
+    public $name;
+    /** @var string */
+    public $state;
+    /** @var string */
+    public $country;
+    /** @var bool */
+    public $capital;
+    /** @var int */
+    public $population;
+    /** @var array<string> */
+    public $regions;
+
+    /**
+     * @param array<string> $regions
+     */
+    public function __construct(
+        string $name,
+        string $state,
+        string $country,
+        bool $capital = false,
+        int $population = 0,
+        array $regions = []
+    ) {
+        $this->name = $name;
+        $this->state = $state;
+        $this->country = $country;
+        $this->capital = $capital;
+        $this->population = $population;
+        $this->regions = $regions;
     }
+
+    /**
+     * @param array<mixed> $source
+     */
+    public static function fromArray(array $source): City
+    {
+        // implementation of fromArray is excluded for brevity
+        # ...
+    }
+
+    /**
+     * @return array<mixed>
+     */
+    public function toArray(): array
+    {
+        // implementation of toArray is excluded for brevity
+        # ...
+    }
+
+    public function __toString()
+    {
+        // implementation of __toString is excluded for brevity
+        # ...
+    }
+}
+```
 
 ##### Unity
 
-    [FirestoreData]
-    public class City
-    {
-     [FirestoreProperty]
-     public string Name { get; set; }
-    
-     [FirestoreProperty]
-     public string State { get; set; }
-    
-     [FirestoreProperty]
-     public string Country { get; set; }
-    
-     [FirestoreProperty]
-     public bool Capital { get; set; }
-    
-     [FirestoreProperty]
-     public long Population { get; set; }
-    }
+```
+[FirestoreData]
+public class City
+{
+    [FirestoreProperty]
+    public string Name { get; set; }
 
-##### C\#
+    [FirestoreProperty]
+    public string State { get; set; }
 
-    [FirestoreData]
-    public class City
-    {
-        [FirestoreProperty]
-        public string Name { get; set; }
-    
-        [FirestoreProperty]
-        public string State { get; set; }
-    
-        [FirestoreProperty]
-        public string Country { get; set; }
-    
-        [FirestoreProperty]
-        public bool Capital { get; set; }
-    
-        [FirestoreProperty]
-        public long Population { get; set; }
-    }
+    [FirestoreProperty]
+    public string Country { get; set; }
+
+    [FirestoreProperty]
+    public bool Capital { get; set; }
+
+    [FirestoreProperty]
+    public long Population { get; set; }
+}
+```
+
+##### C#
+
+```csharp
+[FirestoreData]
+public class City
+{
+    [FirestoreProperty]
+    public string Name { get; set; }
+
+    [FirestoreProperty]
+    public string State { get; set; }
+
+    [FirestoreProperty]
+    public string Country { get; set; }
+
+    [FirestoreProperty]
+    public bool Capital { get; set; }
+
+    [FirestoreProperty]
+    public long Population { get; set; }
+}
+```
 
 ##### Ruby
 
-    // This isn't supported in Ruby
+```
+// This isn't supported in Ruby
+```
 
 ### Web version 9
 
-    import { doc, setDoc } from "firebase/firestore"; 
-    
-    // Set with cityConverter
-    const ref = doc(db, "cities", "LA").withConverter(cityConverter);
-    await setDoc(ref, new City("Los Angeles", "CA", "USA"));
+```
+import { doc, setDoc } from "firebase/firestore"; 
+
+// Set with cityConverter
+const ref = doc(db, "cities", "LA").withConverter(cityConverter);
+await setDoc(ref, new City("Los Angeles", "CA", "USA"));
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    // Set with cityConverter
-    db.collection("cities").doc("LA")
-      .withConverter(cityConverter)
-      .set(new City("Los Angeles", "CA", "USA"));
+```
+// Set with cityConverter
+db.collection("cities").doc("LA")
+  .withConverter(cityConverter)
+  .set(new City("Los Angeles", "CA", "USA"));
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    let city = City(name: "Los Angeles",
-                    state: "CA",
-                    country: "USA",
-                    isCapital: false,
-                    population: 5000000)
-    
-    do {
-      try db.collection("cities").document("LA").setData(from: city)
-    } catch let error {
-      print("Error writing city to Firestore: \(error)")
-    }
+```
+let city = City(name: "Los Angeles",
+                state: "CA",
+                country: "USA",
+                isCapital: false,
+                population: 5000000)
+
+do {
+  try db.collection("cities").document("LA").setData(from: city)
+} catch let error {
+  print("Error writing city to Firestore: \(error)")
+}
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-``` 
+```
 // This isn't supported in Objective-C.
-  
 ```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val city = City(
-        "Los Angeles",
-        "CA",
-        "USA",
-        false,
-        5000000L,
-        listOf("west_coast", "socal"),
-    )
-    db.collection("cities").document("LA").set(city)
+```
+val city = City(
+    "Los Angeles",
+    "CA",
+    "USA",
+    false,
+    5000000L,
+    listOf("west_coast", "socal"),
+)
+db.collection("cities").document("LA").set(city)
+```
 
-##### Java  
-Android
+##### Java Android
 
-    City city = new City("Los Angeles", "CA", "USA",
-            false, 5000000L, Arrays.asList("west_coast", "sorcal"));
-    db.collection("cities").document("LA").set(city);
+```
+City city = new City("Los Angeles", "CA", "USA",
+        false, 5000000L, Arrays.asList("west_coast", "sorcal"));
+db.collection("cities").document("LA").set(city);
+```
 
 ### Dart
 
-    final city = City(
-      name: "Los Angeles",
-      state: "CA",
-      country: "USA",
-      capital: false,
-      population: 5000000,
-      regions: ["west_coast", "socal"],
-    );
-    final docRef = db
-        .collection("cities")
-        .withConverter(
-          fromFirestore: City.fromFirestore,
-          toFirestore: (City city, options) => city.toFirestore(),
-        )
-        .doc("LA");
-    await docRef.set(city);
+```
+final city = City(
+  name: "Los Angeles",
+  state: "CA",
+  country: "USA",
+  capital: false,
+  population: 5000000,
+  regions: ["west_coast", "socal"],
+);
+final docRef = db
+    .collection("cities")
+    .withConverter(
+      fromFirestore: City.fromFirestore,
+      toFirestore: (City city, options) => city.toFirestore(),
+    )
+    .doc("LA");
+await docRef.set(city);
+```
 
 ##### Java
 
-    City city =
-        new City("Los Angeles", "CA", "USA", false, 3900000L, Arrays.asList("west_coast", "socal"));
-    ApiFuture<WriteResult> future = db.collection("cities").document("LA").set(city);
-    // block on response if required
-    System.out.println("Update time : " + future.get().getUpdateTime());
+```
+City city =
+    new City("Los Angeles", "CA", "USA", false, 3900000L, Arrays.asList("west_coast", "socal"));
+ApiFuture<WriteResult> future = db.collection("cities").document("LA").set(city);
+// block on response if required
+System.out.println("Update time : " + future.get().getUpdateTime());
+```
 
 ##### Python
 
-    city = City(name="Los Angeles", state="CA", country="USA")
-    db.collection("cities").document("LA").set(city.to_dict())
+```
+city = City(name="Los Angeles", state="CA", country="USA")
+db.collection("cities").document("LA").set(city.to_dict())
+```
 
-##### Python  
-(Async)
+##### Python (Async)
 
-    city = City(name="Los Angeles", state="CA", country="USA")
-    await db.collection("cities").document("LA").set(city.to_dict())
+```
+city = City(name="Los Angeles", state="CA", country="USA")
+await db.collection("cities").document("LA").set(city.to_dict())
+```
 
 ##### C++
 
-    // This is not yet supported.
+```
+// This is not yet supported.
+```
 
 ##### Node.js
 
-    // Node.js uses JavaScript objects
+```
+// Node.js uses JavaScript objects
+```
 
 ##### Go
 
-    import (
-     "context"
-     "log"
-    
-     "cloud.google.com/go/firestore"
-    )
-    
-    func addDocAsEntity(ctx context.Context, client *firestore.Client) error {
-     city := City{
-         Name:    "Los Angeles",
-         Country: "USA",
-     }
-     _, err := client.Collection("cities").Doc("LA").Set(ctx, city)
-     if err != nil {
-         // Handle any errors in an appropriate way, such as returning them.
-         log.Printf("An error has occurred: %s", err)
-     }
-    
-     return err
+```
+import (
+    "context"
+    "log"
+
+    "cloud.google.com/go/firestore"
+)
+
+func addDocAsEntity(ctx context.Context, client *firestore.Client) error {
+    city := City{
+        Name:    "Los Angeles",
+        Country: "USA",
     }
+    _, err := client.Collection("cities").Doc("LA").Set(ctx, city)
+    if err != nil {
+        // Handle any errors in an appropriate way, such as returning them.
+        log.Printf("An error has occurred: %s", err)
+    }
+
+    return err
+}
+```
 
 ##### PHP
 
-    // This isn't supported in PHP.
+```
+// This isn't supported in PHP.
+```
 
 ##### Unity
 
-    DocumentReference docRef = db.Collection("cities").Document("LA");
-    City city = new City
-    {
-     Name = "Los Angeles",
-     State = "CA",
-     Country = "USA",
-     Capital = false,
-     Population = 3900000L
-    };
-    docRef.SetAsync(city);
+```
+DocumentReference docRef = db.Collection("cities").Document("LA");
+City city = new City
+{
+    Name = "Los Angeles",
+    State = "CA",
+    Country = "USA",
+    Capital = false,
+    Population = 3900000L
+};
+docRef.SetAsync(city);
+```
 
-##### C\#
+##### C#
 
-    DocumentReference docRef = db.Collection("cities").Document("LA");
-    City city = new City
-    {
-        Name = "Los Angeles",
-        State = "CA",
-        Country = "USA",
-        Capital = false,
-        Population = 3900000L
-    };
-    await docRef.SetAsync(city);
+```csharp
+DocumentReference docRef = db.Collection("cities").Document("LA");
+City city = new City
+{
+    Name = "Los Angeles",
+    State = "CA",
+    Country = "USA",
+    Capital = false,
+    Population = 3900000L
+};
+await docRef.SetAsync(city);
+```
 
 ##### Ruby
 
-    // This isn't supported in Ruby.
+```
+// This isn't supported in Ruby.
+```
 
 ## Add a document
 
@@ -1654,84 +1843,107 @@ When you use `set()` to create a document, you must specify an ID for the docume
 
 ### Web version 9
 
-    import { doc, setDoc } from "firebase/firestore"; 
-    
-    await setDoc(doc(db, "cities", "new-city-id"), data);
+```
+import { doc, setDoc } from "firebase/firestore"; 
+
+await setDoc(doc(db, "cities", "new-city-id"), data);
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    db.collection("cities").doc("new-city-id").set(data);
+```
+db.collection("cities").doc("new-city-id").set(data);
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    db.collection("cities").document("new-city-id").setData(data)
+```
+db.collection("cities").document("new-city-id").setData(data)
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    [[[self.db collectionWithPath:@"cities"] documentWithPath:@"new-city-id"]
-        setData:data];
+```
+[[[self.db collectionWithPath:@"cities"] documentWithPath:@"new-city-id"]
+    setData:data];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    db.collection("cities").document("new-city-id").set(data)
+```
+db.collection("cities").document("new-city-id").set(data)
+```
 
-##### Java  
-Android
+##### Java Android
 
-    db.collection("cities").document("new-city-id").set(data);
+```
+db.collection("cities").document("new-city-id").set(data);
+```
 
 ### Dart
 
-    db.collection("cities").doc("new-city-id").set({"name": "Chicago"});
+```
+db.collection("cities").doc("new-city-id").set({"name": "Chicago"});
+```
 
 ##### Java
 
-    db.collection("cities").document("new-city-id").set(data);
+```
+db.collection("cities").document("new-city-id").set(data);
+```
 
 ##### Python
 
-    db.collection("cities").document("new-city-id").set(data)
+```
+db.collection("cities").document("new-city-id").set(data)
+```
 
-##### Python  
-(Async)
+##### Python (Async)
 
-    await db.collection("cities").document("new-city-id").set(data)
+```
+await db.collection("cities").document("new-city-id").set(data)
+```
 
 ##### C++
 
-    db->Collection("cities").Document("SF").Set({/*some data*/});
+```
+db->Collection("cities").Document("SF").Set({/*some data*/});
+```
 
 ##### Node.js
 
-    await db.collection('cities').doc('new-city-id').set(data);
+```
+await db.collection('cities').doc('new-city-id').set(data);
+```
 
 ##### Go
 
-    import (
-     "context"
-     "log"
-    
-     "cloud.google.com/go/firestore"
-    )
-    
-    func addDocWithID(ctx context.Context, client *firestore.Client) error {
-     var data = make(map[string]interface{})
-    
-     _, err := client.Collection("cities").Doc("new-city-id").Set(ctx, data)
-     if err != nil {
-         // Handle any errors in an appropriate way, such as returning them.
-         log.Printf("An error has occurred: %s", err)
-     }
-    
-     return err
+```
+import (
+    "context"
+    "log"
+
+    "cloud.google.com/go/firestore"
+)
+
+func addDocWithID(ctx context.Context, client *firestore.Client) error {
+    var data = make(map[string]interface{})
+
+    _, err := client.Collection("cities").Doc("new-city-id").Set(ctx, data)
+    if err != nil {
+        // Handle any errors in an appropriate way, such as returning them.
+        log.Printf("An error has occurred: %s", err)
     }
+
+    return err
+}
+```
 
 ##### PHP
 
@@ -1739,20 +1951,28 @@ Android
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $db->collection('samples/php/cities')->document('new-city-id')->set($data);
+```php
+$db->collection('samples/php/cities')->document('new-city-id')->set($data);
+```
 
 ##### Unity
 
-    db.Collection("cities").Document("new-city-id").SetAsync(city);
+```
+db.Collection("cities").Document("new-city-id").SetAsync(city);
+```
 
-##### C\#
+##### C#
 
-    await db.Collection("cities").Document("new-city-id").SetAsync(city);
+```csharp
+await db.Collection("cities").Document("new-city-id").SetAsync(city);
+```
 
 ##### Ruby
 
-    city_ref = firestore.doc "#{collection_path}/new-city-id"
-    city_ref.set data
+```
+city_ref = firestore.doc "#{collection_path}/new-city-id"
+city_ref.set data
+```
 
 If there isn't a meaningful ID for the document, Firestore can auto-generate an ID for you. You can call the following language-specific `add()` methods:
 
@@ -1760,30 +1980,34 @@ If there isn't a meaningful ID for the document, Firestore can auto-generate an 
 
 Use the `addDoc()` method:
 
-    import { collection, addDoc } from "firebase/firestore"; 
-    
-    // Add a new document with a generated id.
-    const docRef = await addDoc(collection(db, "cities"), {
-      name: "Tokyo",
-      country: "Japan"
-    });
-    console.log("Document written with ID: ", docRef.id);
+```
+import { collection, addDoc } from "firebase/firestore"; 
+
+// Add a new document with a generated id.
+const docRef = await addDoc(collection(db, "cities"), {
+  name: "Tokyo",
+  country: "Japan"
+});
+console.log("Document written with ID: ", docRef.id);
+```
 
 ### Web version 8
 
 Use the `add()` method:
 
-    // Add a new document with a generated id.
-    db.collection("cities").add({
-        name: "Tokyo",
-        country: "Japan"
-    })
-    .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
-    })
-    .catch((error) => {
-        console.error("Error adding document: ", error);
-    });
+```
+// Add a new document with a generated id.
+db.collection("cities").add({
+    name: "Tokyo",
+    country: "Japan"
+})
+.then((docRef) => {
+    console.log("Document written with ID: ", docRef.id);
+})
+.catch((error) => {
+    console.error("Error adding document: ", error);
+});
+```
 
 ##### Swift
 
@@ -1791,16 +2015,18 @@ Use the `addDocument()` method:
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    // Add a new document with a generated id.
-    do {
-      let ref = try await db.collection("cities").addDocument(data: [
-        "name": "Tokyo",
-        "country": "Japan"
-      ])
-      print("Document added with ID: \(ref.documentID)")
-    } catch {
-      print("Error adding document: \(error)")
-    }
+```
+// Add a new document with a generated id.
+do {
+  let ref = try await db.collection("cities").addDocument(data: [
+    "name": "Tokyo",
+    "country": "Japan"
+  ])
+  print("Document added with ID: \(ref.documentID)")
+} catch {
+  print("Error adding document: \(error)")
+}
+```
 
 ##### Objective-C
 
@@ -1808,142 +2034,159 @@ Use the `addDocumentWithData:` method:
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    // Add a new document with a generated id.
-    __block FIRDocumentReference *ref =
-        [[self.db collectionWithPath:@"cities"] addDocumentWithData:@{
-          @"name": @"Tokyo",
-          @"country": @"Japan"
-        } completion:^(NSError * _Nullable error) {
-          if (error != nil) {
-            NSLog(@"Error adding document: %@", error);
-          } else {
-            NSLog(@"Document added with ID: %@", ref.documentID);
-          }
-        }];
+```
+// Add a new document with a generated id.
+__block FIRDocumentReference *ref =
+    [[self.db collectionWithPath:@"cities"] addDocumentWithData:@{
+      @"name": @"Tokyo",
+      @"country": @"Japan"
+    } completion:^(NSError * _Nullable error) {
+      if (error != nil) {
+        NSLog(@"Error adding document: %@", error);
+      } else {
+        NSLog(@"Document added with ID: %@", ref.documentID);
+      }
+    }];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
 Use the `add()` method:
 
-    // Add a new document with a generated id.
-    val data = hashMapOf(
-        "name" to "Tokyo",
-        "country" to "Japan",
-    )
-    
-    db.collection("cities")
+```
+// Add a new document with a generated id.
+val data = hashMapOf(
+    "name" to "Tokyo",
+    "country" to "Japan",
+)
+
+db.collection("cities")
+    .add(data)
+    .addOnSuccessListener { documentReference ->
+        Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
+    }
+    .addOnFailureListener { e ->
+        Log.w(TAG, "Error adding document", e)
+    }
+```
+
+##### Java Android
+
+Use the `add()` method:
+
+```
+// Add a new document with a generated id.
+Map<String, Object> data = new HashMap<>();
+data.put("name", "Tokyo");
+data.put("country", "Japan");
+
+db.collection("cities")
         .add(data)
-        .addOnSuccessListener { documentReference ->
-            Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
-        }
-        .addOnFailureListener { e ->
-            Log.w(TAG, "Error adding document", e)
-        }
-
-##### Java  
-Android
-
-Use the `add()` method:
-
-    // Add a new document with a generated id.
-    Map<String, Object> data = new HashMap<>();
-    data.put("name", "Tokyo");
-    data.put("country", "Japan");
-    
-    db.collection("cities")
-            .add(data)
-            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                @Override
-                public void onSuccess(DocumentReference documentReference) {
-                    Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
-                }
-            })
-            .addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.w(TAG, "Error adding document", e);
-                }
-            });
+        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            @Override
+            public void onSuccess(DocumentReference documentReference) {
+                Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+            }
+        })
+        .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w(TAG, "Error adding document", e);
+            }
+        });
+```
 
 ### Dart
 
 Use the `add()` method:
 
-    // Add a new document with a generated id.
-    final data = {"name": "Tokyo", "country": "Japan"};
-    
-    db.collection("cities").add(data).then((documentSnapshot) =>
-        print("Added Data with ID: ${documentSnapshot.id}"));
+```
+// Add a new document with a generated id.
+final data = {"name": "Tokyo", "country": "Japan"};
+
+db.collection("cities").add(data).then((documentSnapshot) =>
+    print("Added Data with ID: ${documentSnapshot.id}"));
+```
 
 ##### Java
 
 Use the `add()` method:
 
-    // Add document data with auto-generated id.
-    Map<String, Object> data = new HashMap<>();
-    data.put("name", "Tokyo");
-    data.put("country", "Japan");
-    ApiFuture<DocumentReference> addedDocRef = db.collection("cities").add(data);
-    System.out.println("Added document with ID: " + addedDocRef.get().getId());
+```
+// Add document data with auto-generated id.
+Map<String, Object> data = new HashMap<>();
+data.put("name", "Tokyo");
+data.put("country", "Japan");
+ApiFuture<DocumentReference> addedDocRef = db.collection("cities").add(data);
+System.out.println("Added document with ID: " + addedDocRef.get().getId());
+```
 
 ##### Python
 
 Use the `add()` method:
 
-    city = {"name": "Tokyo", "country": "Japan"}
-    update_time, city_ref = db.collection("cities").add(city)
-    print(f"Added document with id {city_ref.id}")
+```
+city = {"name": "Tokyo", "country": "Japan"}
+update_time, city_ref = db.collection("cities").add(city)
+print(f"Added document with id {city_ref.id}")
+```
 
-##### Python  
-(Async)
+##### Python (Async)
 
 Use the `add()` method:
 
-    city = City(name="Tokyo", state=None, country="Japan")
-    await db.collection("cities").add(city.to_dict())
+```
+city = City(name="Tokyo", state=None, country="Japan")
+await db.collection("cities").add(city.to_dict())
+```
 
 ##### C++
 
 Use the `Add()` method:
 
-    db->Collection("cities").Add({/*some data*/});
+```
+db->Collection("cities").Add({/*some data*/});
+```
 
 ##### Node.js
 
 Use the `add()` method:
 
-    // Add a new document with a generated id.
-    const res = await db.collection('cities').add({
-      name: 'Tokyo',
-      country: 'Japan'
-    });
-    
-    console.log('Added document with ID: ', res.id);
+```
+// Add a new document with a generated id.
+const res = await db.collection('cities').add({
+  name: 'Tokyo',
+  country: 'Japan'
+});
+
+console.log('Added document with ID: ', res.id);
+```
 
 ##### Go
 
 Use the `Add()` method:
 
-    import (
-     "context"
-     "log"
-    
-     "cloud.google.com/go/firestore"
-    )
-    
-    func addDocWithoutID(ctx context.Context, client *firestore.Client) error {
-     _, _, err := client.Collection("cities").Add(ctx, map[string]interface{}{
-         "name":    "Tokyo",
-         "country": "Japan",
-     })
-     if err != nil {
-         // Handle any errors in an appropriate way, such as returning them.
-         log.Printf("An error has occurred: %s", err)
-     }
-    
-     return err
+```
+import (
+    "context"
+    "log"
+
+    "cloud.google.com/go/firestore"
+)
+
+func addDocWithoutID(ctx context.Context, client *firestore.Client) error {
+    _, _, err := client.Collection("cities").Add(ctx, map[string]interface{}{
+        "name":    "Tokyo",
+        "country": "Japan",
+    })
+    if err != nil {
+        // Handle any errors in an appropriate way, such as returning them.
+        log.Printf("An error has occurred: %s", err)
     }
+
+    return err
+}
+```
 
 ##### PHP
 
@@ -1953,52 +2196,60 @@ Use the `add()` method:
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $data = [
-        'name' => 'Tokyo',
-        'country' => 'Japan'
-    ];
-    $addedDocRef = $db->collection('samples/php/cities')->add($data);
-    printf('Added document with ID: %s' . PHP_EOL, $addedDocRef->id());
+```php
+$data = [
+    'name' => 'Tokyo',
+    'country' => 'Japan'
+];
+$addedDocRef = $db->collection('samples/php/cities')->add($data);
+printf('Added document with ID: %s' . PHP_EOL, $addedDocRef->id());
+```
 
 ##### Unity
 
 Use the `AddAsync()` method:
 
-    Dictionary<string, object> city = new Dictionary<string, object>
-    {
-     { "Name", "Tokyo" },
-     { "Country", "Japan" }
-    };
-    db.Collection("cities").AddAsync(city).ContinueWithOnMainThread(task => {
-     DocumentReference addedDocRef = task.Result;
-     Debug.Log(String.Format("Added document with ID: {0}.", addedDocRef.Id));
-    });
+```
+Dictionary<string, object> city = new Dictionary<string, object>
+{
+    { "Name", "Tokyo" },
+    { "Country", "Japan" }
+};
+db.Collection("cities").AddAsync(city).ContinueWithOnMainThread(task => {
+    DocumentReference addedDocRef = task.Result;
+    Debug.Log(String.Format("Added document with ID: {0}.", addedDocRef.Id));
+});
+```
 
-##### C\#
+##### C#
 
 Use the `AddAsync()` method:
 
-    Dictionary<string, object> city = new Dictionary<string, object>
-    {
-        { "Name", "Tokyo" },
-        { "Country", "Japan" }
-    };
-    DocumentReference addedDocRef = await db.Collection("cities").AddAsync(city);
-    Console.WriteLine("Added document with ID: {0}.", addedDocRef.Id);
+```csharp
+Dictionary<string, object> city = new Dictionary<string, object>
+{
+    { "Name", "Tokyo" },
+    { "Country", "Japan" }
+};
+DocumentReference addedDocRef = await db.Collection("cities").AddAsync(city);
+Console.WriteLine("Added document with ID: {0}.", addedDocRef.Id);
+```
 
 ##### Ruby
 
 Use the `add()` method:
 
-    data = {
-      name:    "Tokyo",
-      country: "Japan"
-    }
-    
-    cities_ref = firestore.col collection_path
-    
-    added_doc_ref = cities_ref.add data
-    puts "Added document with ID: #{added_doc_ref.document_id}."
+```
+data = {
+  name:    "Tokyo",
+  country: "Japan"
+}
+
+cities_ref = firestore.col collection_path
+
+added_doc_ref = cities_ref.add data
+puts "Added document with ID: #{added_doc_ref.document_id}."
+```
 
 The examples show adding data to a top-level collection like `cities` . Firestore also supports subcollections inside documents such as `cities/LA/landmarks` . The same `set()` , `add()` , and `update()` methods apply when working with subcollections.
 
@@ -2008,144 +2259,167 @@ In some cases, it can be useful to create a document reference with an auto-gene
 
 ### Web version 9
 
-    import { collection, doc, setDoc } from "firebase/firestore"; 
-    
-    // Add a new document with a generated id
-    const newCityRef = doc(collection(db, "cities"));
-    
-    // later...
-    await setDoc(newCityRef, data);
+```
+import { collection, doc, setDoc } from "firebase/firestore"; 
+
+// Add a new document with a generated id
+const newCityRef = doc(collection(db, "cities"));
+
+// later...
+await setDoc(newCityRef, data);
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    // Add a new document with a generated id.
-    var newCityRef = db.collection("cities").doc();
-    
-    // later...
-    newCityRef.set(data);
+```
+// Add a new document with a generated id.
+var newCityRef = db.collection("cities").doc();
+
+// later...
+newCityRef.set(data);
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    let newCityRef = db.collection("cities").document()
-    
-    // later...
-    newCityRef.setData([
-      // ...
-    ])
+```
+let newCityRef = db.collection("cities").document()
+
+// later...
+newCityRef.setData([
+  // ...
+])
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    FIRDocumentReference *newCityRef = [[self.db collectionWithPath:@"cities"] documentWithAutoID];
-    // later...
-    [newCityRef setData:@{ /* ... */ }];
+```
+FIRDocumentReference *newCityRef = [[self.db collectionWithPath:@"cities"] documentWithAutoID];
+// later...
+[newCityRef setData:@{ /* ... */ }];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val data = HashMap<String, Any>()
-    
-    val newCityRef = db.collection("cities").document()
-    
-    // Later...
-    newCityRef.set(data)
+```
+val data = HashMap<String, Any>()
 
-##### Java  
-Android
+val newCityRef = db.collection("cities").document()
 
-    Map<String, Object> data = new HashMap<>();
-    
-    DocumentReference newCityRef = db.collection("cities").document();
-    
-    // Later...
-    newCityRef.set(data);
+// Later...
+newCityRef.set(data)
+```
+
+##### Java Android
+
+```
+Map<String, Object> data = new HashMap<>();
+
+DocumentReference newCityRef = db.collection("cities").document();
+
+// Later...
+newCityRef.set(data);
+```
 
 ### Dart
 
-    // Add a new document with a generated id.
-    final data = <String, dynamic>{};
-    
-    final newCityRef = db.collection("cities").doc();
-    
-    // Later...
-    newCityRef.set(data);
+```
+// Add a new document with a generated id.
+final data = <String, dynamic>{};
+
+final newCityRef = db.collection("cities").doc();
+
+// Later...
+newCityRef.set(data);
+```
 
 ##### Java
 
-    // Add document data after generating an id.
-    DocumentReference addedDocRef = db.collection("cities").document();
-    System.out.println("Added document with ID: " + addedDocRef.getId());
-    
-    // later...
-    ApiFuture<WriteResult> writeResult = addedDocRef.set(data);
+```
+// Add document data after generating an id.
+DocumentReference addedDocRef = db.collection("cities").document();
+System.out.println("Added document with ID: " + addedDocRef.getId());
+
+// later...
+ApiFuture<WriteResult> writeResult = addedDocRef.set(data);
+```
 
 ##### Python
 
-    new_city_ref = db.collection("cities").document()
-    
-    # later...
-    new_city_ref.set(
-        {
-            # ...
-        }
-    )
+```
+new_city_ref = db.collection("cities").document()
 
-##### Python  
-(Async)
+# later...
+new_city_ref.set(
+    {
+        # ...
+    }
+)
+```
 
-    new_city_ref = db.collection("cities").document()
-    
-    # later...
-    await new_city_ref.set(
-        {
-            # ...
-        }
-    )
+##### Python (Async)
+
+```
+new_city_ref = db.collection("cities").document()
+
+# later...
+await new_city_ref.set(
+    {
+        # ...
+    }
+)
+```
 
 ##### C++
 
-    DocumentReference new_city_ref = db->Collection("cities").Document();
+```
+DocumentReference new_city_ref = db->Collection("cities").Document();
+```
 
 ##### Node.js
 
-    const newCityRef = db.collection('cities').doc();
-    
-    // Later...
-    const res = await newCityRef.set({
-      // ...
-    });
+```
+const newCityRef = db.collection('cities').doc();
+
+// Later...
+const res = await newCityRef.set({
+  // ...
+});
+```
 
 ##### Go
 
-    import (
-     "context"
-     "log"
-    
-     "cloud.google.com/go/firestore"
-    )
-    
-    func addDocAfterAutoGeneratedID(ctx context.Context, client *firestore.Client) error {
-     data := City{
-         Name:    "Sydney",
-         Country: "Australia",
-     }
-    
-     ref := client.Collection("cities").NewDoc()
-    
-     // later...
-     _, err := ref.Set(ctx, data)
-     if err != nil {
-         // Handle any errors in an appropriate way, such as returning them.
-         log.Printf("An error has occurred: %s", err)
-     }
-    
-     return err
+```
+import (
+    "context"
+    "log"
+
+    "cloud.google.com/go/firestore"
+)
+
+func addDocAfterAutoGeneratedID(ctx context.Context, client *firestore.Client) error {
+    data := City{
+        Name:    "Sydney",
+        Country: "Australia",
     }
+
+    ref := client.Collection("cities").NewDoc()
+
+    // later...
+    _, err := ref.Set(ctx, data)
+    if err != nil {
+        // Handle any errors in an appropriate way, such as returning them.
+        log.Printf("An error has occurred: %s", err)
+    }
+
+    return err
+}
+```
 
 ##### PHP
 
@@ -2153,33 +2427,41 @@ Android
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $addedDocRef = $db->collection('samples/php/cities')->newDocument();
-    printf('Added document with ID: %s' . PHP_EOL, $addedDocRef->id());
-    $addedDocRef->set($data);
+```php
+$addedDocRef = $db->collection('samples/php/cities')->newDocument();
+printf('Added document with ID: %s' . PHP_EOL, $addedDocRef->id());
+$addedDocRef->set($data);
+```
 
 ##### Unity
 
-    DocumentReference addedDocRef = db.Collection("cities").Document();
-    Debug.Log(String.Format("Added document with ID: {0}.", addedDocRef.Id));
-    addedDocRef.SetAsync(city).ContinueWithOnMainThread(task => {
-     Debug.Log(String.Format(
-         "Added data to the {0} document in the cities collection.", addedDocRef.Id));
-    });
+```
+DocumentReference addedDocRef = db.Collection("cities").Document();
+Debug.Log(String.Format("Added document with ID: {0}.", addedDocRef.Id));
+addedDocRef.SetAsync(city).ContinueWithOnMainThread(task => {
+    Debug.Log(String.Format(
+        "Added data to the {0} document in the cities collection.", addedDocRef.Id));
+});
+```
 
-##### C\#
+##### C#
 
-    DocumentReference addedDocRef = db.Collection("cities").Document();
-    Console.WriteLine("Added document with ID: {0}.", addedDocRef.Id);
-    await addedDocRef.SetAsync(city);
+```csharp
+DocumentReference addedDocRef = db.Collection("cities").Document();
+Console.WriteLine("Added document with ID: {0}.", addedDocRef.Id);
+await addedDocRef.SetAsync(city);
+```
 
 ##### Ruby
 
-    cities_ref = firestore.col collection_path
-    
-    added_doc_ref = cities_ref.doc
-    puts "Added document with ID: #{added_doc_ref.document_id}."
-    
-    added_doc_ref.set data
+```
+cities_ref = firestore.col collection_path
+
+added_doc_ref = cities_ref.doc
+puts "Added document with ID: #{added_doc_ref.document_id}."
+
+added_doc_ref.set data
+```
 
 In the backend, `.add(...)` and `.doc().set(...)` are equivalent, so you can use either option.
 
@@ -2191,32 +2473,36 @@ To update some fields of a document without overwriting the entire document, use
 
 Use the `updateDoc()` method:
 
-    import { doc, updateDoc } from "firebase/firestore";
-    
-    const washingtonRef = doc(db, "cities", "DC");
-    
-    // Set the "capital" field of the city 'DC'
-    await updateDoc(washingtonRef, {
-      capital: true
-    });
+```
+import { doc, updateDoc } from "firebase/firestore";
+
+const washingtonRef = doc(db, "cities", "DC");
+
+// Set the "capital" field of the city 'DC'
+await updateDoc(washingtonRef, {
+  capital: true
+});
+```
 
 ### Web version 8
 
 Use the `update()` method:
 
-    var washingtonRef = db.collection("cities").doc("DC");
-    
-    // Set the "capital" field of the city 'DC'
-    return washingtonRef.update({
-        capital: true
-    })
-    .then(() => {
-        console.log("Document successfully updated!");
-    })
-    .catch((error) => {
-        // The document probably doesn't exist.
-        console.error("Error updating document: ", error);
-    });
+```
+var washingtonRef = db.collection("cities").doc("DC");
+
+// Set the "capital" field of the city 'DC'
+return washingtonRef.update({
+    capital: true
+})
+.then(() => {
+    console.log("Document successfully updated!");
+})
+.catch((error) => {
+    // The document probably doesn't exist.
+    console.error("Error updating document: ", error);
+});
+```
 
 ##### Swift
 
@@ -2224,17 +2510,19 @@ Use the `updateData()` method:
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    let washingtonRef = db.collection("cities").document("DC")
-    
-    // Set the "capital" field of the city 'DC'
-    do {
-      try await washingtonRef.updateData([
-        "capital": true
-      ])
-      print("Document successfully updated")
-    } catch {
-      print("Error updating document: \(error)")
-    }
+```
+let washingtonRef = db.collection("cities").document("DC")
+
+// Set the "capital" field of the city 'DC'
+do {
+  try await washingtonRef.updateData([
+    "capital": true
+  ])
+  print("Document successfully updated")
+} catch {
+  print("Error updating document: \(error)")
+}
+```
 
 ##### Objective-C
 
@@ -2242,141 +2530,158 @@ Use the `updateData:` method:
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    FIRDocumentReference *washingtonRef =
-        [[self.db collectionWithPath:@"cities"] documentWithPath:@"DC"];
-    // Set the "capital" field of the city
-    [washingtonRef updateData:@{
-      @"capital": @YES
-    } completion:^(NSError * _Nullable error) {
-      if (error != nil) {
-        NSLog(@"Error updating document: %@", error);
-      } else {
-        NSLog(@"Document successfully updated");
-      }
-    }];
+```
+FIRDocumentReference *washingtonRef =
+    [[self.db collectionWithPath:@"cities"] documentWithPath:@"DC"];
+// Set the "capital" field of the city
+[washingtonRef updateData:@{
+  @"capital": @YES
+} completion:^(NSError * _Nullable error) {
+  if (error != nil) {
+    NSLog(@"Error updating document: %@", error);
+  } else {
+    NSLog(@"Document successfully updated");
+  }
+}];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
 Use the `update()` method:
 
-    val washingtonRef = db.collection("cities").document("DC")
-    
-    // Set the "isCapital" field of the city 'DC'
-    washingtonRef
+```
+val washingtonRef = db.collection("cities").document("DC")
+
+// Set the "isCapital" field of the city 'DC'
+washingtonRef
+    .update("capital", true)
+    .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully updated!") }
+    .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) }
+```
+
+##### Java Android
+
+Use the `update()` method:
+
+```
+DocumentReference washingtonRef = db.collection("cities").document("DC");
+
+// Set the "isCapital" field of the city 'DC'
+washingtonRef
         .update("capital", true)
-        .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully updated!") }
-        .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) }
-
-##### Java  
-Android
-
-Use the `update()` method:
-
-    DocumentReference washingtonRef = db.collection("cities").document("DC");
-    
-    // Set the "isCapital" field of the city 'DC'
-    washingtonRef
-            .update("capital", true)
-            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Log.d(TAG, "DocumentSnapshot successfully updated!");
-                }
-            })
-            .addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.w(TAG, "Error updating document", e);
-                }
-            });
+        .addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d(TAG, "DocumentSnapshot successfully updated!");
+            }
+        })
+        .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w(TAG, "Error updating document", e);
+            }
+        });
+```
 
 ### Dart
 
 Use the `update()` method:
 
-    final washingtonRef = db.collection("cites").doc("DC");
-    washingtonRef.update({"capital": true}).then(
-        (value) => print("DocumentSnapshot successfully updated!"),
-        onError: (e) => print("Error updating document $e"));
+```
+final washingtonRef = db.collection("cites").doc("DC");
+washingtonRef.update({"capital": true}).then(
+    (value) => print("DocumentSnapshot successfully updated!"),
+    onError: (e) => print("Error updating document $e"));
+```
 
 ##### Java
 
 Use the `update()` method:
 
-    // Update an existing document
-    DocumentReference docRef = db.collection("cities").document("DC");
-    
-    // (async) Update one field
-    ApiFuture<WriteResult> future = docRef.update("capital", true);
-    
-    // ...
-    WriteResult result = future.get();
-    System.out.println("Write result: " + result);
+```
+// Update an existing document
+DocumentReference docRef = db.collection("cities").document("DC");
+
+// (async) Update one field
+ApiFuture<WriteResult> future = docRef.update("capital", true);
+
+// ...
+WriteResult result = future.get();
+System.out.println("Write result: " + result);
+```
 
 ##### Python
 
 Use the `update()` method:
 
-    city_ref = db.collection("cities").document("DC")
-    
-    # Set the capital field
-    city_ref.update({"capital": True})
+```
+city_ref = db.collection("cities").document("DC")
 
-##### Python  
-(Async)
+# Set the capital field
+city_ref.update({"capital": True})
+```
+
+##### Python (Async)
 
 Use the `update()` method:
 
-    city_ref = db.collection("cities").document("DC")
-    
-    # Set the capital field
-    await city_ref.update({"capital": True})
+```
+city_ref = db.collection("cities").document("DC")
+
+# Set the capital field
+await city_ref.update({"capital": True})
+```
 
 ##### C++
 
 Use the `Update()` method:
 
-    DocumentReference washington_ref = db->Collection("cities").Document("DC");
-    // Set the "capital" field of the city "DC".
-    washington_ref.Update({{"capital", FieldValue::Boolean(true)}});
+```
+DocumentReference washington_ref = db->Collection("cities").Document("DC");
+// Set the "capital" field of the city "DC".
+washington_ref.Update({{"capital", FieldValue::Boolean(true)}});
+```
 
 ##### Node.js
 
 Use the `update()` method:
 
-    const cityRef = db.collection('cities').doc('DC');
-    
-    // Set the 'capital' field of the city
-    const res = await cityRef.update({capital: true});
+```
+const cityRef = db.collection('cities').doc('DC');
+
+// Set the 'capital' field of the city
+const res = await cityRef.update({capital: true});
+```
 
 ##### Go
 
 Use the `Update()` method:
 
-    import (
-     "context"
-     "log"
-    
-     "cloud.google.com/go/firestore"
-    )
-    
-    func updateDoc(ctx context.Context, client *firestore.Client) error {
-     // ...
-    
-     _, err := client.Collection("cities").Doc("DC").Update(ctx, []firestore.Update{
-         {
-             Path:  "capital",
-             Value: true,
-         },
-     })
-     if err != nil {
-         // Handle any errors in an appropriate way, such as returning them.
-         log.Printf("An error has occurred: %s", err)
-     }
-    
-     return err
+```
+import (
+    "context"
+    "log"
+
+    "cloud.google.com/go/firestore"
+)
+
+func updateDoc(ctx context.Context, client *firestore.Client) error {
+    // ...
+
+    _, err := client.Collection("cities").Doc("DC").Update(ctx, []firestore.Update{
+        {
+            Path:  "capital",
+            Value: true,
+        },
+    })
+    if err != nil {
+        // Handle any errors in an appropriate way, such as returning them.
+        log.Printf("An error has occurred: %s", err)
     }
+
+    return err
+}
+```
 
 ##### PHP
 
@@ -2386,46 +2691,54 @@ Use the `update()` method:
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $cityRef = $db->collection('samples/php/cities')->document('DC');
-    $cityRef->update([
-        ['path' => 'capital', 'value' => true]
-    ]);
+```php
+$cityRef = $db->collection('samples/php/cities')->document('DC');
+$cityRef->update([
+    ['path' => 'capital', 'value' => true]
+]);
+```
 
 ##### Unity
 
 Use the `UpdateAsync()` method:
 
-    DocumentReference cityRef = db.Collection("cities").Document("new-city-id");
-    Dictionary<string, object> updates = new Dictionary<string, object>
-    {
-     { "Capital", false }
-    };
-    
-    cityRef.UpdateAsync(updates).ContinueWithOnMainThread(task => {
-     Debug.Log(
-         "Updated the Capital field of the new-city-id document in the cities collection.");
-    });
-    // You can also update a single field with: cityRef.UpdateAsync("Capital", false);
+```
+DocumentReference cityRef = db.Collection("cities").Document("new-city-id");
+Dictionary<string, object> updates = new Dictionary<string, object>
+{
+    { "Capital", false }
+};
 
-##### C\#
+cityRef.UpdateAsync(updates).ContinueWithOnMainThread(task => {
+    Debug.Log(
+        "Updated the Capital field of the new-city-id document in the cities collection.");
+});
+// You can also update a single field with: cityRef.UpdateAsync("Capital", false);
+```
+
+##### C#
 
 Use the `UpdateAsync()` method:
 
-    DocumentReference cityRef = db.Collection("cities").Document("new-city-id");
-    Dictionary<string, object> updates = new Dictionary<string, object>
-    {
-        { "Capital", false }
-    };
-    await cityRef.UpdateAsync(updates);
-    
-    // You can also update a single field with: await cityRef.UpdateAsync("Capital", false);
+```csharp
+DocumentReference cityRef = db.Collection("cities").Document("new-city-id");
+Dictionary<string, object> updates = new Dictionary<string, object>
+{
+    { "Capital", false }
+};
+await cityRef.UpdateAsync(updates);
+
+// You can also update a single field with: await cityRef.UpdateAsync("Capital", false);
+```
 
 ##### Ruby
 
 Use the `update()` method:
 
-    city_ref = firestore.doc "#{collection_path}/DC"
-    city_ref.update({ capital: true })
+```
+city_ref = firestore.doc "#{collection_path}/DC"
+city_ref.update({ capital: true })
+```
 
 ### Server Timestamp
 
@@ -2433,153 +2746,176 @@ You can set a field in your document to a server timestamp which tracks when the
 
 ### Web version 9
 
-    import { updateDoc, serverTimestamp } from "firebase/firestore";
-    
-    const docRef = doc(db, 'objects', 'some-id');
-    
-    // Update the timestamp field with the value from the server
-    const updateTimestamp = await updateDoc(docRef, {
-        timestamp: serverTimestamp()
-    });
+```
+import { updateDoc, serverTimestamp } from "firebase/firestore";
+
+const docRef = doc(db, 'objects', 'some-id');
+
+// Update the timestamp field with the value from the server
+const updateTimestamp = await updateDoc(docRef, {
+    timestamp: serverTimestamp()
+});
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    var docRef = db.collection('objects').doc('some-id');
-    
-    // Update the timestamp field with the value from the server
-    var updateTimestamp = docRef.update({
-        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-    });
+```
+var docRef = db.collection('objects').doc('some-id');
+
+// Update the timestamp field with the value from the server
+var updateTimestamp = docRef.update({
+    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+});
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    do {
-      try await db.collection("objects").document("some-id").updateData([
-        "lastUpdated": FieldValue.serverTimestamp(),
-      ])
-      print("Document successfully updated")
-    } catch {
-      print("Error updating document: \(error)")
-    }
+```
+do {
+  try await db.collection("objects").document("some-id").updateData([
+    "lastUpdated": FieldValue.serverTimestamp(),
+  ])
+  print("Document successfully updated")
+} catch {
+  print("Error updating document: \(error)")
+}
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    [[[self.db collectionWithPath:@"objects"] documentWithPath:@"some-id"] updateData:@{
-      @"lastUpdated": [FIRFieldValue fieldValueForServerTimestamp]
-    } completion:^(NSError * _Nullable error) {
-      if (error != nil) {
-        NSLog(@"Error updating document: %@", error);
-      } else {
-        NSLog(@"Document successfully updated");
-      }
-    }];
+```
+[[[self.db collectionWithPath:@"objects"] documentWithPath:@"some-id"] updateData:@{
+  @"lastUpdated": [FIRFieldValue fieldValueForServerTimestamp]
+} completion:^(NSError * _Nullable error) {
+  if (error != nil) {
+    NSLog(@"Error updating document: %@", error);
+  } else {
+    NSLog(@"Document successfully updated");
+  }
+}];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    // If you're using custom Kotlin objects in Android, add an @ServerTimestamp
-    // annotation to a Date field for your custom object classes. This indicates
-    // that the Date field should be treated as a server timestamp by the object mapper.
-    val docRef = db.collection("objects").document("some-id")
-    
-    // Update the timestamp field with the value from the server
-    val updates = hashMapOf<String, Any>(
-        "timestamp" to FieldValue.serverTimestamp(),
-    )
-    
-    docRef.update(updates).addOnCompleteListener { }
+```
+// If you're using custom Kotlin objects in Android, add an @ServerTimestamp
+// annotation to a Date field for your custom object classes. This indicates
+// that the Date field should be treated as a server timestamp by the object mapper.
+val docRef = db.collection("objects").document("some-id")
 
-##### Java  
-Android
+// Update the timestamp field with the value from the server
+val updates = hashMapOf<String, Any>(
+    "timestamp" to FieldValue.serverTimestamp(),
+)
 
-    // If you're using custom Java objects in Android, add an @ServerTimestamp
-    // annotation to a Date field for your custom object classes. This indicates
-    // that the Date field should be treated as a server timestamp by the object mapper.
-    DocumentReference docRef = db.collection("objects").document("some-id");
-    
-    // Update the timestamp field with the value from the server
-    Map<String,Object> updates = new HashMap<>();
-    updates.put("timestamp", FieldValue.serverTimestamp());
-    
-    docRef.update(updates).addOnCompleteListener(new OnCompleteListener<Void>() {
-        // ...
-        // ...
+docRef.update(updates).addOnCompleteListener { }
+```
+
+##### Java Android
+
+```
+// If you're using custom Java objects in Android, add an @ServerTimestamp
+// annotation to a Date field for your custom object classes. This indicates
+// that the Date field should be treated as a server timestamp by the object mapper.
+DocumentReference docRef = db.collection("objects").document("some-id");
+
+// Update the timestamp field with the value from the server
+Map<String,Object> updates = new HashMap<>();
+updates.put("timestamp", FieldValue.serverTimestamp());
+
+docRef.update(updates).addOnCompleteListener(new OnCompleteListener<Void>() {
+    // ...
+    // ...
+```
 
 ### Dart
 
-    final docRef = db.collection("objects").doc("some-id");
-    final updates = <String, dynamic>{
-      "timestamp": FieldValue.serverTimestamp(),
-    };
-    
-    docRef.update(updates).then(
-        (value) => print("DocumentSnapshot successfully updated!"),
-        onError: (e) => print("Error updating document $e"));
+```
+final docRef = db.collection("objects").doc("some-id");
+final updates = <String, dynamic>{
+  "timestamp": FieldValue.serverTimestamp(),
+};
+
+docRef.update(updates).then(
+    (value) => print("DocumentSnapshot successfully updated!"),
+    onError: (e) => print("Error updating document $e"));
+```
 
 ##### Java
 
-    DocumentReference docRef = db.collection("objects").document("some-id");
-    // Update the timestamp field with the value from the server
-    ApiFuture<WriteResult> writeResult = docRef.update("timestamp", FieldValue.serverTimestamp());
-    System.out.println("Update time : " + writeResult.get());
+```
+DocumentReference docRef = db.collection("objects").document("some-id");
+// Update the timestamp field with the value from the server
+ApiFuture<WriteResult> writeResult = docRef.update("timestamp", FieldValue.serverTimestamp());
+System.out.println("Update time : " + writeResult.get());
+```
 
 ##### Python
 
-    city_ref = db.collection("objects").document("some-id")
-    city_ref.update({"timestamp": firestore.SERVER_TIMESTAMP})
+```
+city_ref = db.collection("objects").document("some-id")
+city_ref.update({"timestamp": firestore.SERVER_TIMESTAMP})
+```
 
-##### Python  
-(Async)
+##### Python (Async)
 
-    city_ref = db.collection("objects").document("some-id")
-    await city_ref.update({"timestamp": firestore.SERVER_TIMESTAMP})
+```
+city_ref = db.collection("objects").document("some-id")
+await city_ref.update({"timestamp": firestore.SERVER_TIMESTAMP})
+```
 
 ##### C++
 
-    DocumentReference doc_ref = db->Collection("objects").Document("some-id");
-    doc_ref.Update({{"timestamp", FieldValue::ServerTimestamp()}})
-        .OnCompletion([](const Future<void>& future) {
-          // ...
-        });
+```
+DocumentReference doc_ref = db->Collection("objects").Document("some-id");
+doc_ref.Update({{"timestamp", FieldValue::ServerTimestamp()}})
+    .OnCompletion([](const Future<void>& future) {
+      // ...
+    });
+```
 
 ##### Node.js
 
-    // Create a document reference
-    const docRef = db.collection('objects').doc('some-id');
-    
-    // Update the timestamp field with the value from the server
-    const res = await docRef.update({
-      timestamp: FieldValue.serverTimestamp()
-    });
+```
+// Create a document reference
+const docRef = db.collection('objects').doc('some-id');
+
+// Update the timestamp field with the value from the server
+const res = await docRef.update({
+  timestamp: FieldValue.serverTimestamp()
+});
+```
 
 ##### Go
 
-    import (
-     "context"
-     "log"
-    
-     "cloud.google.com/go/firestore"
-    )
-    
-    func updateDocServerTimestamp(ctx context.Context, client *firestore.Client) error {
-     // ...
-    
-     _, err := client.Collection("objects").Doc("some-id").Set(ctx, map[string]interface{}{
-         "timestamp": firestore.ServerTimestamp,
-     }, firestore.MergeAll)
-     if err != nil {
-         // Handle any errors in an appropriate way, such as returning them.
-         log.Printf("An error has occurred: %s", err)
-     }
-    
-     return err
+```
+import (
+    "context"
+    "log"
+
+    "cloud.google.com/go/firestore"
+)
+
+func updateDocServerTimestamp(ctx context.Context, client *firestore.Client) error {
+    // ...
+
+    _, err := client.Collection("objects").Doc("some-id").Set(ctx, map[string]interface{}{
+        "timestamp": firestore.ServerTimestamp,
+    }, firestore.MergeAll)
+    if err != nil {
+        // Handle any errors in an appropriate way, such as returning them.
+        log.Printf("An error has occurred: %s", err)
     }
+
+    return err
+}
+```
 
 ##### PHP
 
@@ -2587,30 +2923,38 @@ Android
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $docRef = $db->collection('samples/php/objects')->document('some-id');
-    $docRef->update([
-        ['path' => 'timestamp', 'value' => FieldValue::serverTimestamp()]
-    ]);
+```php
+$docRef = $db->collection('samples/php/objects')->document('some-id');
+$docRef->update([
+    ['path' => 'timestamp', 'value' => FieldValue::serverTimestamp()]
+]);
+```
 
 ##### Unity
 
-    DocumentReference cityRef = db.Collection("cities").Document("new-city-id");
-    cityRef.UpdateAsync("Timestamp", FieldValue.ServerTimestamp)
-     .ContinueWithOnMainThread(task => {
-         Debug.Log(
-             "Updated the Timestamp field of the new-city-id document in the cities "
-             + "collection.");
-     });
+```
+DocumentReference cityRef = db.Collection("cities").Document("new-city-id");
+cityRef.UpdateAsync("Timestamp", FieldValue.ServerTimestamp)
+    .ContinueWithOnMainThread(task => {
+        Debug.Log(
+            "Updated the Timestamp field of the new-city-id document in the cities "
+            + "collection.");
+    });
+```
 
-##### C\#
+##### C#
 
-    DocumentReference cityRef = db.Collection("cities").Document("new-city-id");
-    await cityRef.UpdateAsync("Timestamp", Timestamp.GetCurrentTimestamp());
+```csharp
+DocumentReference cityRef = db.Collection("cities").Document("new-city-id");
+await cityRef.UpdateAsync("Timestamp", Timestamp.GetCurrentTimestamp());
+```
 
 ##### Ruby
 
-    city_ref = firestore.doc "#{collection_path}/new-city-id"
-    city_ref.update({ timestamp: firestore.field_server_time })
+```
+city_ref = firestore.doc "#{collection_path}/new-city-id"
+city_ref.update({ timestamp: firestore.field_server_time })
+```
 
 When updating multiple timestamp fields inside of a [transaction](https://docs.cloud.google.com/firestore/native/docs/manage-data/transactions) , each field receives the same server timestamp value.
 
@@ -2620,270 +2964,293 @@ If your document contains nested objects, you can use the *dot notation* to refe
 
 ### Web version 9
 
-    import { doc, setDoc, updateDoc } from "firebase/firestore"; 
-    
-    // Create an initial document to update.
-    const frankDocRef = doc(db, "users", "frank");
-    await setDoc(frankDocRef, {
-        name: "Frank",
-        favorites: { food: "Pizza", color: "Blue", subject: "recess" },
-        age: 12
-    });
-    
-    // To update age and favorite color:
-    await updateDoc(frankDocRef, {
-        "age": 13,
-        "favorites.color": "Red"
-    });
+```
+import { doc, setDoc, updateDoc } from "firebase/firestore"; 
+
+// Create an initial document to update.
+const frankDocRef = doc(db, "users", "frank");
+await setDoc(frankDocRef, {
+    name: "Frank",
+    favorites: { food: "Pizza", color: "Blue", subject: "recess" },
+    age: 12
+});
+
+// To update age and favorite color:
+await updateDoc(frankDocRef, {
+    "age": 13,
+    "favorites.color": "Red"
+});
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    // Create an initial document to update.
-    var frankDocRef = db.collection("users").doc("frank");
-    frankDocRef.set({
-        name: "Frank",
-        favorites: { food: "Pizza", color: "Blue", subject: "recess" },
-        age: 12
-    });
-    
-    // To update age and favorite color:
-    db.collection("users").doc("frank").update({
-        "age": 13,
-        "favorites.color": "Red"
-    })
-    .then(() => {
-        console.log("Document successfully updated!");
-    });
+```
+// Create an initial document to update.
+var frankDocRef = db.collection("users").doc("frank");
+frankDocRef.set({
+    name: "Frank",
+    favorites: { food: "Pizza", color: "Blue", subject: "recess" },
+    age: 12
+});
+
+// To update age and favorite color:
+db.collection("users").doc("frank").update({
+    "age": 13,
+    "favorites.color": "Red"
+})
+.then(() => {
+    console.log("Document successfully updated!");
+});
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    // Create an initial document to update.
-    let frankDocRef = db.collection("users").document("frank")
-    do {
-      try await frankDocRef.setData([
-        "name": "Frank",
-        "favorites": [ "food": "Pizza", "color": "Blue", "subject": "recess" ],
-        "age": 12
-      ])
-    
-      // To update age and favorite color:
-      try await frankDocRef.updateData([
-        "age": 13,
-        "favorites.color": "Red"
-      ])
-      print("Document successfully updated")
-    } catch {
-      print("Error updating document: \(error)")
-    }
+```
+// Create an initial document to update.
+let frankDocRef = db.collection("users").document("frank")
+do {
+  try await frankDocRef.setData([
+    "name": "Frank",
+    "favorites": [ "food": "Pizza", "color": "Blue", "subject": "recess" ],
+    "age": 12
+  ])
+
+  // To update age and favorite color:
+  try await frankDocRef.updateData([
+    "age": 13,
+    "favorites.color": "Red"
+  ])
+  print("Document successfully updated")
+} catch {
+  print("Error updating document: \(error)")
+}
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    // Create an initial document to update.
-    FIRDocumentReference *frankDocRef =
-        [[self.db collectionWithPath:@"users"] documentWithPath:@"frank"];
-    [frankDocRef setData:@{
-      @"name": @"Frank",
-      @"favorites": @{
-        @"food": @"Pizza",
-        @"color": @"Blue",
-        @"subject": @"recess"
-      },
-      @"age": @12
-    }];
-    // To update age and favorite color:
-    [frankDocRef updateData:@{
-      @"age": @13,
-      @"favorites.color": @"Red",
-    } completion:^(NSError * _Nullable error) {
-      if (error != nil) {
-        NSLog(@"Error updating document: %@", error);
-      } else {
-        NSLog(@"Document successfully updated");
-      }
-    }];
+```
+// Create an initial document to update.
+FIRDocumentReference *frankDocRef =
+    [[self.db collectionWithPath:@"users"] documentWithPath:@"frank"];
+[frankDocRef setData:@{
+  @"name": @"Frank",
+  @"favorites": @{
+    @"food": @"Pizza",
+    @"color": @"Blue",
+    @"subject": @"recess"
+  },
+  @"age": @12
+}];
+// To update age and favorite color:
+[frankDocRef updateData:@{
+  @"age": @13,
+  @"favorites.color": @"Red",
+} completion:^(NSError * _Nullable error) {
+  if (error != nil) {
+    NSLog(@"Error updating document: %@", error);
+  } else {
+    NSLog(@"Document successfully updated");
+  }
+}];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    // Assume the document contains:
-    // {
-    //   name: "Frank",
-    //   favorites: { food: "Pizza", color: "Blue", subject: "recess" }
-    //   age: 12
-    // }
-    //
-    // To update age and favorite color:
-    db.collection("users").document("frank")
+```
+// Assume the document contains:
+// {
+//   name: "Frank",
+//   favorites: { food: "Pizza", color: "Blue", subject: "recess" }
+//   age: 12
+// }
+//
+// To update age and favorite color:
+db.collection("users").document("frank")
+    .update(
+        mapOf(
+            "age" to 13,
+            "favorites.color" to "Red",
+        ),
+    )
+```
+
+##### Java Android
+
+```
+// Assume the document contains:
+// {
+//   name: "Frank",
+//   favorites: { food: "Pizza", color: "Blue", subject: "recess" }
+//   age: 12
+// }
+//
+// To update age and favorite color:
+db.collection("users").document("frank")
         .update(
-            mapOf(
-                "age" to 13,
-                "favorites.color" to "Red",
-            ),
-        )
-
-##### Java  
-Android
-
-    // Assume the document contains:
-    // {
-    //   name: "Frank",
-    //   favorites: { food: "Pizza", color: "Blue", subject: "recess" }
-    //   age: 12
-    // }
-    //
-    // To update age and favorite color:
-    db.collection("users").document("frank")
-            .update(
-                    "age", 13,
-                    "favorites.color", "Red"
-            );
+                "age", 13,
+                "favorites.color", "Red"
+        );
+```
 
 ### Dart
 
-    // Assume the document contains:
-    // {
-    //   name: "Frank",
-    //   favorites: { food: "Pizza", color: "Blue", subject: "recess" }
-    //   age: 12
-    // }
-    db
-        .collection("users")
-        .doc("frank")
-        .update({"age": 13, "favorites.color": "Red"});
+```
+// Assume the document contains:
+// {
+//   name: "Frank",
+//   favorites: { food: "Pizza", color: "Blue", subject: "recess" }
+//   age: 12
+// }
+db
+    .collection("users")
+    .doc("frank")
+    .update({"age": 13, "favorites.color": "Red"});
+```
 
 ##### Java
 
-    // Create an initial document to update
-    DocumentReference frankDocRef = db.collection("users").document("frank");
-    Map<String, Object> initialData = new HashMap<>();
-    initialData.put("name", "Frank");
-    initialData.put("age", 12);
-    
-    Map<String, Object> favorites = new HashMap<>();
-    favorites.put("food", "Pizza");
-    favorites.put("color", "Blue");
-    favorites.put("subject", "Recess");
-    initialData.put("favorites", favorites);
-    
-    ApiFuture<WriteResult> initialResult = frankDocRef.set(initialData);
-    // Confirm that data has been successfully saved by blocking on the operation
-    initialResult.get();
-    
-    // Update age and favorite color
-    Map<String, Object> updates = new HashMap<>();
-    updates.put("age", 13);
-    updates.put("favorites.color", "Red");
-    
-    // Async update document
-    ApiFuture<WriteResult> writeResult = frankDocRef.update(updates);
-    // ...
-    System.out.println("Update time : " + writeResult.get().getUpdateTime());
+```
+// Create an initial document to update
+DocumentReference frankDocRef = db.collection("users").document("frank");
+Map<String, Object> initialData = new HashMap<>();
+initialData.put("name", "Frank");
+initialData.put("age", 12);
+
+Map<String, Object> favorites = new HashMap<>();
+favorites.put("food", "Pizza");
+favorites.put("color", "Blue");
+favorites.put("subject", "Recess");
+initialData.put("favorites", favorites);
+
+ApiFuture<WriteResult> initialResult = frankDocRef.set(initialData);
+// Confirm that data has been successfully saved by blocking on the operation
+initialResult.get();
+
+// Update age and favorite color
+Map<String, Object> updates = new HashMap<>();
+updates.put("age", 13);
+updates.put("favorites.color", "Red");
+
+// Async update document
+ApiFuture<WriteResult> writeResult = frankDocRef.update(updates);
+// ...
+System.out.println("Update time : " + writeResult.get().getUpdateTime());
+```
 
 ##### Python
 
-    # Create an initial document to update
-    frank_ref = db.collection("users").document("frank")
-    frank_ref.set(
-        {
-            "name": "Frank",
-            "favorites": {"food": "Pizza", "color": "Blue", "subject": "Recess"},
-            "age": 12,
-        }
-    )
-    
-    # Update age and favorite color
-    frank_ref.update({"age": 13, "favorites.color": "Red"})
+```
+# Create an initial document to update
+frank_ref = db.collection("users").document("frank")
+frank_ref.set(
+    {
+        "name": "Frank",
+        "favorites": {"food": "Pizza", "color": "Blue", "subject": "Recess"},
+        "age": 12,
+    }
+)
 
-##### Python  
-(Async)
+# Update age and favorite color
+frank_ref.update({"age": 13, "favorites.color": "Red"})
+```
 
-    # Create an initial document to update
-    frank_ref = db.collection("users").document("frank")
-    await frank_ref.set(
-        {
-            "name": "Frank",
-            "favorites": {"food": "Pizza", "color": "Blue", "subject": "Recess"},
-            "age": 12,
-        }
-    )
-    
-    # Update age and favorite color
-    await frank_ref.update({"age": 13, "favorites.color": "Red"})
+##### Python (Async)
+
+```
+# Create an initial document to update
+frank_ref = db.collection("users").document("frank")
+await frank_ref.set(
+    {
+        "name": "Frank",
+        "favorites": {"food": "Pizza", "color": "Blue", "subject": "Recess"},
+        "age": 12,
+    }
+)
+
+# Update age and favorite color
+await frank_ref.update({"age": 13, "favorites.color": "Red"})
+```
 
 ##### C++
 
-    // Assume the document contains:
-    // {
-    //   name: "Frank",
-    //   favorites: { food: "Pizza", color: "Blue", subject: "recess" }
-    //   age: 12
-    // }
-    //
-    // To update age and favorite color:
-    db->Collection("users").Document("frank").Update({
-        {"age", FieldValue::Integer(13)},
-        {"favorites.color", FieldValue::String("red")},
-    });
+```
+// Assume the document contains:
+// {
+//   name: "Frank",
+//   favorites: { food: "Pizza", color: "Blue", subject: "recess" }
+//   age: 12
+// }
+//
+// To update age and favorite color:
+db->Collection("users").Document("frank").Update({
+    {"age", FieldValue::Integer(13)},
+    {"favorites.color", FieldValue::String("red")},
+});
+```
 
 ##### Node.js
 
-    const initialData = {
-      name: 'Frank',
-      age: 12,
-      favorites: {
-        food: 'Pizza',
-        color: 'Blue',
-        subject: 'recess'
-      }
-    };
-    
-    // ...
-    const res = await db.collection('users').doc('Frank').update({
-      age: 13,
-      'favorites.color': 'Red'
-    });
+```
+const initialData = {
+  name: 'Frank',
+  age: 12,
+  favorites: {
+    food: 'Pizza',
+    color: 'Blue',
+    subject: 'recess'
+  }
+};
+
+// ...
+const res = await db.collection('users').doc('Frank').update({
+  age: 13,
+  'favorites.color': 'Red'
+});
+```
 
 ##### Go
 
-    import (
-     "context"
-     "log"
-    
-     "cloud.google.com/go/firestore"
-    )
-    
-    func updateDocNested(ctx context.Context, client *firestore.Client) error {
-     initialData := map[string]interface{}{
-         "name": "Frank",
-         "age":  12,
-         "favorites": map[string]interface{}{
-             "food":    "Pizza",
-             "color":   "Blue",
-             "subject": "recess",
-         },
-     }
-    
-     // ...
-    
-     _, err := client.Collection("users").Doc("frank").Set(ctx, map[string]interface{}{
-         "age": 13,
-         "favorites": map[string]interface{}{
-             "color": "Red",
-         },
-     }, firestore.MergeAll)
-     if err != nil {
-         // Handle any errors in an appropriate way, such as returning them.
-         log.Printf("An error has occurred: %s", err)
-     }
-    
-     return err
+```
+import (
+    "context"
+    "log"
+
+    "cloud.google.com/go/firestore"
+)
+
+func updateDocNested(ctx context.Context, client *firestore.Client) error {
+    initialData := map[string]interface{}{
+        "name": "Frank",
+        "age":  12,
+        "favorites": map[string]interface{}{
+            "food":    "Pizza",
+            "color":   "Blue",
+            "subject": "recess",
+        },
     }
+
+    // ...
+
+    _, err := client.Collection("users").Doc("frank").Set(ctx, map[string]interface{}{
+        "age": 13,
+        "favorites": map[string]interface{}{
+            "color": "Red",
+        },
+    }, firestore.MergeAll)
+    if err != nil {
+        // Handle any errors in an appropriate way, such as returning them.
+        log.Printf("An error has occurred: %s", err)
+    }
+
+    return err
+}
+```
 
 ##### PHP
 
@@ -2891,140 +3258,150 @@ Android
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    // Create an initial document to update
-    $frankRef = $db->collection('samples/php/users')->document('frank');
-    $frankRef->set([
-        'first' => 'Frank',
-        'last' => 'Franklin',
-        'favorites' => ['food' => 'Pizza', 'color' => 'Blue', 'subject' => 'Recess'],
-        'age' => 12
-    ]);
-    
-    // Update age and favorite color
-    $frankRef->update([
-        ['path' => 'age', 'value' => 13],
-        ['path' => 'favorites.color', 'value' => 'Red']
-    ]);
+```php
+// Create an initial document to update
+$frankRef = $db->collection('samples/php/users')->document('frank');
+$frankRef->set([
+    'first' => 'Frank',
+    'last' => 'Franklin',
+    'favorites' => ['food' => 'Pizza', 'color' => 'Blue', 'subject' => 'Recess'],
+    'age' => 12
+]);
+
+// Update age and favorite color
+$frankRef->update([
+    ['path' => 'age', 'value' => 13],
+    ['path' => 'favorites.color', 'value' => 'Red']
+]);
+```
 
 ##### Unity
 
-    DocumentReference frankDocRef = db.Collection("users").Document("frank");
-    Dictionary<string, object> initialData = new Dictionary<string, object>
-    {
-     { "Name", "Frank" },
-     { "Age", 12 }
-    };
-    
-    Dictionary<string, object> favorites = new Dictionary<string, object>
-    {
-     { "Food", "Pizza" },
-     { "Color", "Blue" },
-     { "Subject", "Recess" },
-    };
-    initialData.Add("Favorites", favorites);
-    frankDocRef.SetAsync(initialData).ContinueWithOnMainThread(task => {
-    
-     // Update age and favorite color
-     Dictionary<string, object> updates = new Dictionary<string, object>
-     {
-         { "Age", 13 },
-         { "Favorites.Color", "Red" },
-     };
-    
-     // Asynchronously update the document
-     return frankDocRef.UpdateAsync(updates);
-    }).ContinueWithOnMainThread(task => {
-     Debug.Log(
-         "Updated the age and favorite color fields of the Frank document in "
-         + "the users collection.");
-    });
+```
+DocumentReference frankDocRef = db.Collection("users").Document("frank");
+Dictionary<string, object> initialData = new Dictionary<string, object>
+{
+    { "Name", "Frank" },
+    { "Age", 12 }
+};
 
-##### C\#
+Dictionary<string, object> favorites = new Dictionary<string, object>
+{
+    { "Food", "Pizza" },
+    { "Color", "Blue" },
+    { "Subject", "Recess" },
+};
+initialData.Add("Favorites", favorites);
+frankDocRef.SetAsync(initialData).ContinueWithOnMainThread(task => {
 
-    DocumentReference frankDocRef = db.Collection("users").Document("frank");
-    Dictionary<string, object> initialData = new Dictionary<string, object>
-    {
-        { "Name", "Frank" },
-        { "Age", 12 }
-    };
-    
-    Dictionary<string, object> favorites = new Dictionary<string, object>
-    {
-        { "Food", "Pizza" },
-        { "Color", "Blue" },
-        { "Subject", "Recess" },
-    };
-    initialData.Add("Favorites", favorites);
-    await frankDocRef.SetAsync(initialData);
-    
     // Update age and favorite color
     Dictionary<string, object> updates = new Dictionary<string, object>
     {
         { "Age", 13 },
         { "Favorites.Color", "Red" },
     };
-    
+
     // Asynchronously update the document
-    await frankDocRef.UpdateAsync(updates);
+    return frankDocRef.UpdateAsync(updates);
+}).ContinueWithOnMainThread(task => {
+    Debug.Log(
+        "Updated the age and favorite color fields of the Frank document in "
+        + "the users collection.");
+});
+```
+
+##### C#
+
+```csharp
+DocumentReference frankDocRef = db.Collection("users").Document("frank");
+Dictionary<string, object> initialData = new Dictionary<string, object>
+{
+    { "Name", "Frank" },
+    { "Age", 12 }
+};
+
+Dictionary<string, object> favorites = new Dictionary<string, object>
+{
+    { "Food", "Pizza" },
+    { "Color", "Blue" },
+    { "Subject", "Recess" },
+};
+initialData.Add("Favorites", favorites);
+await frankDocRef.SetAsync(initialData);
+
+// Update age and favorite color
+Dictionary<string, object> updates = new Dictionary<string, object>
+{
+    { "Age", 13 },
+    { "Favorites.Color", "Red" },
+};
+
+// Asynchronously update the document
+await frankDocRef.UpdateAsync(updates);
+```
 
 ##### Ruby
 
-    # Create an initial document to update
-    frank_ref = firestore.doc "#{collection_path}/frank"
-    frank_ref.set(
-      {
-        name:      "Frank",
-        favorites: {
-          food:    "Pizza",
-          color:   "Blue",
-          subject: "Recess"
-        },
-        age:       12
-      }
-    )
-    
-    # Update age and favorite color
-    frank_ref.update({ age: 13, "favorites.color": "Red" })
+```
+# Create an initial document to update
+frank_ref = firestore.doc "#{collection_path}/frank"
+frank_ref.set(
+  {
+    name:      "Frank",
+    favorites: {
+      food:    "Pizza",
+      color:   "Blue",
+      subject: "Recess"
+    },
+    age:       12
+  }
+)
+
+# Update age and favorite color
+frank_ref.update({ age: 13, "favorites.color": "Red" })
+```
 
 Dot notation allows you to update a single nested field without overwriting other nested fields. If you update a nested field without dot notation, you will overwrite the entire map field, as shown in the following example:
 
 ##### Web
 
-    // Create our initial doc
-    db.collection("users").doc("frank").set({
-      name: "Frank",
-      favorites: {
-        food: "Pizza",
-        color: "Blue",
-        subject: "Recess"
-      },
-      age: 12
-    }).then(function() {
-      console.log("Frank created");
-    });
-    
-    // Update the doc without using dot notation.
-    // Notice the map value for favorites.
-    db.collection("users").doc("frank").update({
-      favorites: {
-        food: "Ice Cream"
-      }
-    }).then(function() {
-      console.log("Frank food updated");
-    });
-    
-    /*
-    Ending State, favorite.color and favorite.subject are no longer present:
-    /users
-        /frank
-            {
-                name: "Frank",
-                favorites: {
-                    food: "Ice Cream",
-                },
-                age: 12
-            }
-     */
+```
+// Create our initial doc
+db.collection("users").doc("frank").set({
+  name: "Frank",
+  favorites: {
+    food: "Pizza",
+    color: "Blue",
+    subject: "Recess"
+  },
+  age: 12
+}).then(function() {
+  console.log("Frank created");
+});
+
+// Update the doc without using dot notation.
+// Notice the map value for favorites.
+db.collection("users").doc("frank").update({
+  favorites: {
+    food: "Ice Cream"
+  }
+}).then(function() {
+  console.log("Frank food updated");
+});
+
+/*
+Ending State, favorite.color and favorite.subject are no longer present:
+/users
+    /frank
+        {
+            name: "Frank",
+            favorites: {
+                food: "Ice Cream",
+            },
+            age: 12
+        }
+ */
+```
 
 ### Update elements in an array
 
@@ -3032,169 +3409,192 @@ If your document contains an array field, you can use `arrayUnion()` and `arrayR
 
 ### Web version 9
 
-    import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
-    
-    const washingtonRef = doc(db, "cities", "DC");
-    
-    // Atomically add a new region to the "regions" array field.
-    await updateDoc(washingtonRef, {
-        regions: arrayUnion("greater_virginia")
-    });
-    
-    // Atomically remove a region from the "regions" array field.
-    await updateDoc(washingtonRef, {
-        regions: arrayRemove("east_coast")
-    });
+```
+import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+
+const washingtonRef = doc(db, "cities", "DC");
+
+// Atomically add a new region to the "regions" array field.
+await updateDoc(washingtonRef, {
+    regions: arrayUnion("greater_virginia")
+});
+
+// Atomically remove a region from the "regions" array field.
+await updateDoc(washingtonRef, {
+    regions: arrayRemove("east_coast")
+});
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    var washingtonRef = db.collection("cities").doc("DC");
-    
-    // Atomically add a new region to the "regions" array field.
-    washingtonRef.update({
-        regions: firebase.firestore.FieldValue.arrayUnion("greater_virginia")
-    });
-    
-    // Atomically remove a region from the "regions" array field.
-    washingtonRef.update({
-        regions: firebase.firestore.FieldValue.arrayRemove("east_coast")
-    });
+```
+var washingtonRef = db.collection("cities").doc("DC");
+
+// Atomically add a new region to the "regions" array field.
+washingtonRef.update({
+    regions: firebase.firestore.FieldValue.arrayUnion("greater_virginia")
+});
+
+// Atomically remove a region from the "regions" array field.
+washingtonRef.update({
+    regions: firebase.firestore.FieldValue.arrayRemove("east_coast")
+});
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    let washingtonRef = db.collection("cities").document("DC")
-    
-    // Atomically add a new region to the "regions" array field.
-    washingtonRef.updateData([
-      "regions": FieldValue.arrayUnion(["greater_virginia"])
-    ])
-    
-    // Atomically remove a region from the "regions" array field.
-    washingtonRef.updateData([
-      "regions": FieldValue.arrayRemove(["east_coast"])
-    ])
+```
+let washingtonRef = db.collection("cities").document("DC")
+
+// Atomically add a new region to the "regions" array field.
+washingtonRef.updateData([
+  "regions": FieldValue.arrayUnion(["greater_virginia"])
+])
+
+// Atomically remove a region from the "regions" array field.
+washingtonRef.updateData([
+  "regions": FieldValue.arrayRemove(["east_coast"])
+])
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    FIRDocumentReference *washingtonRef =
-        [[self.db collectionWithPath:@"cities"] documentWithPath:@"DC"];
-    
-    // Atomically add a new region to the "regions" array field.
-    [washingtonRef updateData:@{
-      @"regions": [FIRFieldValue fieldValueForArrayUnion:@[@"greater_virginia"]]
-    }];
-    
-    // Atomically remove a new region to the "regions" array field.
-    [washingtonRef updateData:@{
-      @"regions": [FIRFieldValue fieldValueForArrayRemove:@[@"east_coast"]]
-    }];
+```
+FIRDocumentReference *washingtonRef =
+    [[self.db collectionWithPath:@"cities"] documentWithPath:@"DC"];
 
-##### Kotlin  
-Android
+// Atomically add a new region to the "regions" array field.
+[washingtonRef updateData:@{
+  @"regions": [FIRFieldValue fieldValueForArrayUnion:@[@"greater_virginia"]]
+}];
 
-    val washingtonRef = db.collection("cities").document("DC")
-    
-    // Atomically add a new region to the "regions" array field.
-    washingtonRef.update("regions", FieldValue.arrayUnion("greater_virginia"))
-    
-    // Atomically remove a region from the "regions" array field.
-    washingtonRef.update("regions", FieldValue.arrayRemove("east_coast"))
+// Atomically remove a new region to the "regions" array field.
+[washingtonRef updateData:@{
+  @"regions": [FIRFieldValue fieldValueForArrayRemove:@[@"east_coast"]]
+}];
+```
 
-##### Java  
-Android
+##### Kotlin Android
 
-    DocumentReference washingtonRef = db.collection("cities").document("DC");
-    
-    // Atomically add a new region to the "regions" array field.
-    washingtonRef.update("regions", FieldValue.arrayUnion("greater_virginia"));
-    
-    // Atomically remove a region from the "regions" array field.
-    washingtonRef.update("regions", FieldValue.arrayRemove("east_coast"));
+```
+val washingtonRef = db.collection("cities").document("DC")
+
+// Atomically add a new region to the "regions" array field.
+washingtonRef.update("regions", FieldValue.arrayUnion("greater_virginia"))
+
+// Atomically remove a region from the "regions" array field.
+washingtonRef.update("regions", FieldValue.arrayRemove("east_coast"))
+```
+
+##### Java Android
+
+```
+DocumentReference washingtonRef = db.collection("cities").document("DC");
+
+// Atomically add a new region to the "regions" array field.
+washingtonRef.update("regions", FieldValue.arrayUnion("greater_virginia"));
+
+// Atomically remove a region from the "regions" array field.
+washingtonRef.update("regions", FieldValue.arrayRemove("east_coast"));
+```
 
 ### Dart
 
-    final washingtonRef = db.collection("cities").doc("DC");
-    
-    // Atomically add a new region to the "regions" array field.
-    washingtonRef.update({
-      "regions": FieldValue.arrayUnion(["greater_virginia"]),
-    });
-    
-    // Atomically remove a region from the "regions" array field.
-    washingtonRef.update({
-      "regions": FieldValue.arrayRemove(["east_coast"]),
-    });
+```
+final washingtonRef = db.collection("cities").doc("DC");
+
+// Atomically add a new region to the "regions" array field.
+washingtonRef.update({
+  "regions": FieldValue.arrayUnion(["greater_virginia"]),
+});
+
+// Atomically remove a region from the "regions" array field.
+washingtonRef.update({
+  "regions": FieldValue.arrayRemove(["east_coast"]),
+});
+```
 
 ##### Java
 
-    DocumentReference washingtonRef = db.collection("cities").document("DC");
-    
-    // Atomically add a new region to the "regions" array field.
-    ApiFuture<WriteResult> arrayUnion =
-        washingtonRef.update("regions", FieldValue.arrayUnion("greater_virginia"));
-    System.out.println("Update time : " + arrayUnion.get());
-    
-    // Atomically remove a region from the "regions" array field.
-    ApiFuture<WriteResult> arrayRm =
-        washingtonRef.update("regions", FieldValue.arrayRemove("east_coast"));
-    System.out.println("Update time : " + arrayRm.get());
+```
+DocumentReference washingtonRef = db.collection("cities").document("DC");
+
+// Atomically add a new region to the "regions" array field.
+ApiFuture<WriteResult> arrayUnion =
+    washingtonRef.update("regions", FieldValue.arrayUnion("greater_virginia"));
+System.out.println("Update time : " + arrayUnion.get());
+
+// Atomically remove a region from the "regions" array field.
+ApiFuture<WriteResult> arrayRm =
+    washingtonRef.update("regions", FieldValue.arrayRemove("east_coast"));
+System.out.println("Update time : " + arrayRm.get());
+```
 
 ##### Python
 
-    city_ref = db.collection("cities").document("DC")
-    
-    # Atomically add a new region to the 'regions' array field.
-    city_ref.update({"regions": firestore.ArrayUnion(["greater_virginia"])})
-    
-    # // Atomically remove a region from the 'regions' array field.
-    city_ref.update({"regions": firestore.ArrayRemove(["east_coast"])})
+```
+city_ref = db.collection("cities").document("DC")
 
-##### Python  
-(Async)
+# Atomically add a new region to the 'regions' array field.
+city_ref.update({"regions": firestore.ArrayUnion(["greater_virginia"])})
 
-    city_ref = db.collection("cities").document("DC")
-    
-    # Atomically add a new region to the 'regions' array field.
-    await city_ref.update({"regions": firestore.ArrayUnion(["greater_virginia"])})
-    
-    # // Atomically remove a region from the 'regions' array field.
-    await city_ref.update({"regions": firestore.ArrayRemove(["east_coast"])})
+# // Atomically remove a region from the 'regions' array field.
+city_ref.update({"regions": firestore.ArrayRemove(["east_coast"])})
+```
+
+##### Python (Async)
+
+```
+city_ref = db.collection("cities").document("DC")
+
+# Atomically add a new region to the 'regions' array field.
+await city_ref.update({"regions": firestore.ArrayUnion(["greater_virginia"])})
+
+# // Atomically remove a region from the 'regions' array field.
+await city_ref.update({"regions": firestore.ArrayRemove(["east_coast"])})
+```
 
 ##### C++
 
-    // This is not yet supported.
+```
+// This is not yet supported.
+```
 
 ##### Node.js
 
-    // ...
-    const washingtonRef = db.collection('cities').doc('DC');
-    
-    // Atomically add a new region to the "regions" array field.
-    const unionRes = await washingtonRef.update({
-      regions: FieldValue.arrayUnion('greater_virginia')
-    });
-    // Atomically remove a region from the "regions" array field.
-    const removeRes = await washingtonRef.update({
-      regions: FieldValue.arrayRemove('east_coast')
-    });
-    
-    // To add or remove multiple items, pass multiple arguments to arrayUnion/arrayRemove
-    const multipleUnionRes = await washingtonRef.update({
-      regions: FieldValue.arrayUnion('south_carolina', 'texas')
-      // Alternatively, you can use spread operator in ES6 syntax
-      // const newRegions = ['south_carolina', 'texas']
-      // regions: FieldValue.arrayUnion(...newRegions)
-    });
+```
+// ...
+const washingtonRef = db.collection('cities').doc('DC');
+
+// Atomically add a new region to the "regions" array field.
+const unionRes = await washingtonRef.update({
+  regions: FieldValue.arrayUnion('greater_virginia')
+});
+// Atomically remove a region from the "regions" array field.
+const removeRes = await washingtonRef.update({
+  regions: FieldValue.arrayRemove('east_coast')
+});
+
+// To add or remove multiple items, pass multiple arguments to arrayUnion/arrayRemove
+const multipleUnionRes = await washingtonRef.update({
+  regions: FieldValue.arrayUnion('south_carolina', 'texas')
+  // Alternatively, you can use spread operator in ES6 syntax
+  // const newRegions = ['south_carolina', 'texas']
+  // regions: FieldValue.arrayUnion(...newRegions)
+});
+```
 
 ##### Go
 
-    // Not supported yet
+```
+// Not supported yet
+```
 
 ##### PHP
 
@@ -3202,38 +3602,43 @@ Android
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $cityRef = $db->collection('samples/php/cities')->document('DC');
-    
-    // Atomically add a new region to the "regions" array field.
-    $cityRef->update([
-        ['path' => 'regions', 'value' => FieldValue::arrayUnion(['greater_virginia'])]
-    ]);
-    
-    // Atomically remove a region from the "regions" array field.
-    $cityRef->update([
-        ['path' => 'regions', 'value' => FieldValue::arrayRemove(['east_coast'])]
-    ]);
+```php
+$cityRef = $db->collection('samples/php/cities')->document('DC');
+
+// Atomically add a new region to the "regions" array field.
+$cityRef->update([
+    ['path' => 'regions', 'value' => FieldValue::arrayUnion(['greater_virginia'])]
+]);
+
+// Atomically remove a region from the "regions" array field.
+$cityRef->update([
+    ['path' => 'regions', 'value' => FieldValue::arrayRemove(['east_coast'])]
+]);
+```
 
 ##### Unity
 
-``` 
+```
 // This is not yet supported in the Unity SDK
-  
 ```
 
-##### C\#
+##### C#
 
-    DocumentReference washingtonRef = db.Collection("cities").Document("DC");
-    
-    // Atomically add a new region to the "regions" array field.
-    await washingtonRef.UpdateAsync("Regions", FieldValue.ArrayUnion("greater_virginia"));
-    
-    // Atomically remove a region from the "regions" array field.
-    await washingtonRef.UpdateAsync("Regions", FieldValue.ArrayRemove("east_coast"));
+```csharp
+DocumentReference washingtonRef = db.Collection("cities").Document("DC");
+
+// Atomically add a new region to the "regions" array field.
+await washingtonRef.UpdateAsync("Regions", FieldValue.ArrayUnion("greater_virginia"));
+
+// Atomically remove a region from the "regions" array field.
+await washingtonRef.UpdateAsync("Regions", FieldValue.ArrayRemove("east_coast"));
+```
 
 ##### Ruby
 
-    // Not supported yet
+```
+// Not supported yet
+```
 
 ### Increment a numeric value
 
@@ -3243,143 +3648,166 @@ You can increment or decrement a numeric field value as shown in the following e
 
 ### Web version 9
 
-    import { doc, updateDoc, increment } from "firebase/firestore";
-    
-    const washingtonRef = doc(db, "cities", "DC");
-    
-    // Atomically increment the population of the city by 50.
-    await updateDoc(washingtonRef, {
-        population: increment(50)
-    });
+```
+import { doc, updateDoc, increment } from "firebase/firestore";
+
+const washingtonRef = doc(db, "cities", "DC");
+
+// Atomically increment the population of the city by 50.
+await updateDoc(washingtonRef, {
+    population: increment(50)
+});
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    var washingtonRef = db.collection('cities').doc('DC');
-    
-    // Atomically increment the population of the city by 50.
-    washingtonRef.update({
-        population: firebase.firestore.FieldValue.increment(50)
-    });
+```
+var washingtonRef = db.collection('cities').doc('DC');
+
+// Atomically increment the population of the city by 50.
+washingtonRef.update({
+    population: firebase.firestore.FieldValue.increment(50)
+});
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    let washingtonRef = db.collection("cities").document("DC")
-    
-    // Atomically increment the population of the city by 50.
-    // Note that increment() with no arguments increments by 1.
-    washingtonRef.updateData([
-      "population": FieldValue.increment(Int64(50))
-    ])
+```
+let washingtonRef = db.collection("cities").document("DC")
+
+// Atomically increment the population of the city by 50.
+// Note that increment() with no arguments increments by 1.
+washingtonRef.updateData([
+  "population": FieldValue.increment(Int64(50))
+])
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    FIRDocumentReference *washingtonRef =
-        [[self.db collectionWithPath:@"cities"] documentWithPath:@"DC"];
-    
-    // Atomically increment the population of the city by 50.
-    // Note that increment() with no arguments increments by 1.
-    [washingtonRef updateData:@{
-      @"population": [FIRFieldValue fieldValueForIntegerIncrement:50]
-    }];
+```
+FIRDocumentReference *washingtonRef =
+    [[self.db collectionWithPath:@"cities"] documentWithPath:@"DC"];
 
-##### Kotlin  
-Android
+// Atomically increment the population of the city by 50.
+// Note that increment() with no arguments increments by 1.
+[washingtonRef updateData:@{
+  @"population": [FIRFieldValue fieldValueForIntegerIncrement:50]
+}];
+```
 
-    val washingtonRef = db.collection("cities").document("DC")
-    
-    // Atomically increment the population of the city by 50.
-    washingtonRef.update("population", FieldValue.increment(50))
+##### Kotlin Android
 
-##### Java  
-Android
+```
+val washingtonRef = db.collection("cities").document("DC")
 
-    DocumentReference washingtonRef = db.collection("cities").document("DC");
-    
-    // Atomically increment the population of the city by 50.
-    washingtonRef.update("population", FieldValue.increment(50));
+// Atomically increment the population of the city by 50.
+washingtonRef.update("population", FieldValue.increment(50))
+```
+
+##### Java Android
+
+```
+DocumentReference washingtonRef = db.collection("cities").document("DC");
+
+// Atomically increment the population of the city by 50.
+washingtonRef.update("population", FieldValue.increment(50));
+```
 
 ### Dart
 
-    var washingtonRef = db.collection('cities').doc('DC');
-    
-    // Atomically increment the population of the city by 50.
-    washingtonRef.update(
-      {"population": FieldValue.increment(50)},
-    );
+```
+var washingtonRef = db.collection('cities').doc('DC');
+
+// Atomically increment the population of the city by 50.
+washingtonRef.update(
+  {"population": FieldValue.increment(50)},
+);
+```
 
 ##### Java
 
-    DocumentReference washingtonRef = db.collection("cities").document("DC");
-    
-    // Atomically increment the population of the city by 50.
-    final ApiFuture<WriteResult> updateFuture =
-        washingtonRef.update("population", FieldValue.increment(50));
+```
+DocumentReference washingtonRef = db.collection("cities").document("DC");
+
+// Atomically increment the population of the city by 50.
+final ApiFuture<WriteResult> updateFuture =
+    washingtonRef.update("population", FieldValue.increment(50));
+```
 
 ##### Python
 
-    washington_ref = db.collection("cities").document("DC")
-    
-    washington_ref.update({"population": firestore.Increment(50)})
+```
+washington_ref = db.collection("cities").document("DC")
 
-##### Python  
-(Async)
+washington_ref.update({"population": firestore.Increment(50)})
+```
 
-    washington_ref = db.collection("cities").document("DC")
-    
-    await washington_ref.update({"population": firestore.Increment(50)})
+##### Python (Async)
+
+```
+washington_ref = db.collection("cities").document("DC")
+
+await washington_ref.update({"population": firestore.Increment(50)})
+```
 
 ##### C++
 
-    // This is not yet supported.
+```
+// This is not yet supported.
+```
 
 ##### Node.js
 
-    // ...
-    const washingtonRef = db.collection('cities').doc('DC');
-    
-    // Atomically increment the population of the city by 50.
-    const res = await washingtonRef.update({
-      population: FieldValue.increment(50)
-    });
+```
+// ...
+const washingtonRef = db.collection('cities').doc('DC');
+
+// Atomically increment the population of the city by 50.
+const res = await washingtonRef.update({
+  population: FieldValue.increment(50)
+});
+```
 
 ##### Go
 
-    import (
-     "context"
-     "fmt"
-    
-     "cloud.google.com/go/firestore"
-    )
-    
-    // updateDocumentIncrement increments the population of the city document in the
-    // cities collection by 50.
-    func updateDocumentIncrement(projectID, city string) error {
-     // projectID := "my-project"
-    
-     ctx := context.Background()
-    
-     client, err := firestore.NewClient(ctx, projectID)
-     if err != nil {
-         return fmt.Errorf("firestore.NewClient: %w", err)
-     }
-     defer client.Close()
-    
-     dc := client.Collection("cities").Doc(city)
-     _, err = dc.Update(ctx, []firestore.Update{
-         {Path: "population", Value: firestore.Increment(50)},
-     })
-     if err != nil {
-         return fmt.Errorf("Update: %w", err)
-     }
-    
-     return nil
+```
+import (
+    "context"
+    "fmt"
+
+    "cloud.google.com/go/firestore"
+)
+
+// updateDocumentIncrement increments the population of the city document in the
+// cities collection by 50.
+func updateDocumentIncrement(projectID, city string) error {
+    // projectID := "my-project"
+
+    ctx := context.Background()
+
+    client, err := firestore.NewClient(ctx, projectID)
+    if err != nil {
+        return fmt.Errorf("firestore.NewClient: %w", err)
     }
+    defer client.Close()
+
+    dc := client.Collection("cities").Doc(city)
+    _, err = dc.Update(ctx, []firestore.Update{
+        {Path: "population", Value: firestore.Increment(50)},
+    })
+    if err != nil {
+        return fmt.Errorf("Update: %w", err)
+    }
+
+    return nil
+}
+```
 
 ##### PHP
 
@@ -3387,30 +3815,35 @@ Android
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $cityRef = $db->collection('samples/php/cities')->document('DC');
-    
-    // Atomically increment the population of the city by 50.
-    $cityRef->update([
-        ['path' => 'regions', 'value' => FieldValue::increment(50)]
-    ]);
+```php
+$cityRef = $db->collection('samples/php/cities')->document('DC');
+
+// Atomically increment the population of the city by 50.
+$cityRef->update([
+    ['path' => 'regions', 'value' => FieldValue::increment(50)]
+]);
+```
 
 ##### Unity
 
-``` 
+```
 // This is not yet supported in the Unity SDK.
-  
 ```
 
-##### C\#
+##### C#
 
-    DocumentReference washingtonRef = db.Collection("cities").Document("DC");
-    
-    // Atomically increment the population of the city by 50.
-    await washingtonRef.UpdateAsync("Regions", FieldValue.Increment(50));
+```csharp
+DocumentReference washingtonRef = db.Collection("cities").Document("DC");
+
+// Atomically increment the population of the city by 50.
+await washingtonRef.UpdateAsync("Regions", FieldValue.Increment(50));
+```
 
 ##### Ruby
 
-    city_ref = firestore.doc "#{collection_path}/DC"
-    city_ref.update({ population: firestore.field_increment(50) })
+```
+city_ref = firestore.doc "#{collection_path}/DC"
+city_ref.update({ population: firestore.field_increment(50) })
+```
 
 Increment operations are useful for implementing counters. Note that updating a single document too quickly can [lead to contention or errors](https://docs.cloud.google.com/firestore/native/docs/best-practices#updates_to_a_single_document) . If you need to update your counter at a very high rate, see the [Distributed counters](https://docs.cloud.google.com/firestore/native/docs/solutions/counters) page.

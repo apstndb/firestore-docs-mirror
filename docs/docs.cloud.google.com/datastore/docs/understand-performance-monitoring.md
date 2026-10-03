@@ -17,7 +17,7 @@ A monitored resource in Cloud Monitoring represents a logical or physical entity
 Using the [Cloud Monitoring API](https://cloud.google.com/monitoring/api/resources) , Firestore in Datastore mode performance is monitored with the following resources:
 
 |                                                   |                                                                                                                                                                                                 |                             |
-| ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+|---------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------|
 | **Resources**                                     | **Description**                                                                                                                                                                                 | **Supported database mode** |
 | `firestore.googleapis.com/Database` (recommended) | Monitored resource type that provides breakdowns for `project` , `location` \* , and `database_id` . The `database_id` label will be `(default)` for databases created without a specific name. | Applies to both modes.      |
 | `datastore_request`                               | Monitored resource type for Datastore projects and does not provide breakdown for databases.                                                                                                    |                             |
@@ -36,39 +36,39 @@ An important resource label for the `serviceruntime` metrics is `method` . This 
 
 If you need to know what the underlying RPC method is for a given SDK method, see the [API documentation](https://docs.cloud.google.com/datastore/docs/reference/data/rpc/google.datastore.v1) .
 
-#### api/request\_count
+#### api/request_count
 
 This metric provides the count of completed requests, across protocol(request protocol, such as http, gRPC, etc.), response code ( [HTTP response code](https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto) ), `response_code_class` (response code class, such as 2xx, 4xx,etc.), and `grpc_status_code` ( [numeric gRPC response code](https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto) ). Use this metric to observe the overall API request and calculate the error rate.
 
-![**Figure 1.** api/request\_count metric (click to enlarge).](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-req-count.png)
+![**Figure 1.** api/request_count metric (click to enlarge).](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-req-count.png)
 
 In figure 1, requests that return a 2xx code grouped by service and method can be seen. 2xx codes are HTTP status codes that indicate the request was successful.
 
-![**Figure 2.** api/request\_count metric that return a 2xx code (click to enlarge).](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-req-count-1.png)
+![**Figure 2.** api/request_count metric that return a 2xx code (click to enlarge).](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-req-count-1.png)
 
 In figure 2, commits grouped by `response_code` can be seen. In this example, we only see HTTP 200 responses which implies that the database is healthy.
 
 Use the following service runtime metrics to monitor your database.
 
-##### api/request\_count in datastore\_request resource type
+##### api/request_count in datastore_request resource type
 
 The `api/request_count` metric is also available under the `datastore_request` resource type with `api_method` and `response_code` breakdowns. Use this metric instead to take advantage of the finer sampling period, which helps catch spikes.
 
-![**Figure 3.** api/request\_count metric under the datastore\_request resource (click to enlarge).](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-datastore-req-count.png)
+![**Figure 3.** api/request_count metric under the datastore_request resource (click to enlarge).](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-datastore-req-count.png)
 
-##### api/request\_latencies
+##### api/request_latencies
 
 The `api/request_latencies` metric provides latency distributions across all completed requests.
 
 Firestore records metrics from the **Firestore Service** component. Latency metrics include the time that Firestore receives the request to the time that Firestore finishes sending the response, including interactions with the storage layer. Due to this, round-trip latency (rtt) between the client and the Firestore service is not included in these metrics.
 
-![**Figure 4.** api/request\_latencies to calculate latency distribution.](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-req-latency.png)
+![**Figure 4.** api/request_latencies to calculate latency distribution.](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-req-latency.png)
 
-##### api/request\_sizes and api/response\_sizes
+##### api/request_sizes and api/response_sizes
 
 The `api/request_sizes` and `api/response_sizes` metrics respectively provide insights into payload sizes (in bytes). These can be useful for understanding write workloads that send large amounts of data or queries that are too broad, and return large payloads.
 
-![**Figure 5.** api/request\_sizes and api/response\_sizes metrics (click to enlarge).](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-req-size.png)
+![**Figure 5.** api/request_sizes and api/response_sizes metrics (click to enlarge).](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-req-size.png)
 
 In figure 5, a heatmap for response sizes for the `RunQuery` method can be seen. We can see that sizes are steady, 50 bytes median, and overall between 10 bytes and 100 bytes. Note that payload sizes are always measured in uncompressed bytes, exclusive of transmission control overheads.
 
@@ -78,14 +78,14 @@ These metrics provide distributions in bytes of payload sizes for reads (lookups
 
 For example, the entity operation metrics use the `datastore_request` monitored resource so there is no service or method breakdown.
 
-  - `entity/read_sizes` : Distribution of sizes of read entities, grouped by type.
-  - `entity/write_sizes` : Distribution of sizes of written entities, grouped by operations.
+- `entity/read_sizes` : Distribution of sizes of read entities, grouped by type.
+- `entity/write_sizes` : Distribution of sizes of written entities, grouped by operations.
 
 ### Index metrics
 
 Index write rates can be contrasted with the `document/write_ops_count` metric to understand the [index fanout ratio](https://docs.cloud.google.com/datastore/docs/concepts/indexes#exploding_index) .
 
-  - `index/write_count` : Count of index writes.
+- `index/write_count` : Count of index writes.
 
 ![**Figure 7.** Index write rate contrasted with document write rate (click to enlarge).](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-index-count.png)
 
@@ -95,12 +95,12 @@ In figure 7, you can see how index write rate can be contrasted with document wr
 
 The TTL metrics are available for both Firestore Native and Firestore in Datastore mode databases. Use these metrics to monitor the effect of the [TTL policy](https://docs.cloud.google.com/datastore/docs/ttl) enforced.
 
-  - `entity/ttl_deletion_count` : Total count of entities deleted by TTL services.
+- `entity/ttl_deletion_count` : Total count of entities deleted by TTL services.
 
-  - `entity/ttl_expiration_to_deletion_delays` : Time elapsed between when an entity with a TTL expired, and when it was actually deleted.
-    
-    If you see that the TTL deletion delays are taking longer than 24 hours, [contact support](https://docs.cloud.google.com/datastore/docs/getting-support) .
+- `entity/ttl_expiration_to_deletion_delays` : Time elapsed between when an entity with a TTL expired, and when it was actually deleted.
+
+  If you see that the TTL deletion delays are taking longer than 24 hours, [contact support](https://docs.cloud.google.com/datastore/docs/getting-support) .
 
 ## What's next
 
-  - Learn about [using the Cloud Monitoring dashboard](https://docs.cloud.google.com/datastore/docs/use-monitoring-dashboard) to view metrics.
+- Learn about [using the Cloud Monitoring dashboard](https://docs.cloud.google.com/datastore/docs/use-monitoring-dashboard) to view metrics.

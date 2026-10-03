@@ -12,7 +12,7 @@ gcloud firestore backups - the set of commands to manage backups for Cloud Fires
 
 SYNOPSIS
 
-`gcloud firestore backups` `  GROUP  ` | `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud firestore backups` [`GROUP`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups#GROUP) \| [`COMMAND`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups#COMMAND) \[ [`GCLOUD_WIDE_FLAG`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups#GCLOUD-WIDE-FLAGS)` …` \]
 
 DESCRIPTION
 
@@ -20,32 +20,38 @@ The set of commands to manage backups for Cloud Firestore.
 
 GCLOUD WIDE FLAGS
 
-These flags are available to all commands: `  --help  ` .
+These flags are available to all commands: [`--help`](https://docs.cloud.google.com/sdk/gcloud/reference#--help) .
 
-Run ` $ gcloud help  ` for details.
+Run `$ `[`gcloud help`](https://docs.cloud.google.com/sdk/gcloud/reference) for details.
 
 GROUPS
 
-`  GROUP  ` is one of the following:
+`GROUP` is one of the following:
 
-  - `  schedules  `  
-    Manage the backup schedules for a Cloud Firestore Database.
+[`schedules`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules)  
+Manage the backup schedules for a Cloud Firestore Database.
 
 COMMANDS
 
-`  COMMAND  ` is one of the following:
+`COMMAND` is one of the following:
 
-  - `  delete  `  
-    Deletes a Cloud Firestore backup.
-  - `  describe  `  
-    Retrieves information about a Cloud Firestore backup.
-  - `  list  `  
-    List backups available to Cloud Firestore.
+[`delete`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/delete)  
+Deletes a Cloud Firestore backup.
+
+[`describe`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/describe)  
+Retrieves information about a Cloud Firestore backup.
+
+[`list`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/list)  
+List backups available to Cloud Firestore.
 
 NOTES
 
 These variants are also available:
 
-    gcloud alpha firestore backups
+```
+gcloud alpha firestore backups
+```
 
-    gcloud beta firestore backups
+```
+gcloud beta firestore backups
+```

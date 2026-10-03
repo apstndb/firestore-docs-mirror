@@ -10,21 +10,23 @@ data_source: docs.cloud.google.com
 
 ## **Debugging Functions**
 
-|                              |                                                                             |
-| ---------------------------- | --------------------------------------------------------------------------- |
-| Name                         | Description                                                                 |
-| `         EXISTS        `    | Returns `TRUE` if the value is not an absent value                          |
-| `         IS_ABSENT        ` | Returns `TRUE` if the value is an absent value                              |
-| `         IF_ABSENT        ` | Replaces the value with an expression if it is absent                       |
-| `         IS_ERROR        `  | Catches and checks if an error has been thrown by the underlying expression |
-| `         IF_ERROR        `  | Replaces the value with an expression if it has thrown an error             |
-| `         ERROR        `     | Terminates evaluation and returns an error with the specified message       |
+|                                                                                                                     |                                                                             |
+|---------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| Name                                                                                                                | Description                                                                 |
+| [`EXISTS`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/debugging_functions#exists)       | Returns `TRUE` if the value is not an absent value                          |
+| [`IS_ABSENT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/debugging_functions#is_absent) | Returns `TRUE` if the value is an absent value                              |
+| [`IF_ABSENT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/debugging_functions#if_absent) | Replaces the value with an expression if it is absent                       |
+| [`IS_ERROR`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/debugging_functions#is_error)   | Catches and checks if an error has been thrown by the underlying expression |
+| [`IF_ERROR`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/debugging_functions#if_error)   | Replaces the value with an expression if it has thrown an error             |
+| [`ERROR`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/debugging_functions#error)         | Terminates evaluation and returns an error with the specified message       |
 
 ### EXISTS
 
 **Syntax:**
 
-    exists(value: ANY) -> BOOLEAN
+```
+exists(value: ANY) -> BOOLEAN
+```
 
 **Description:**
 
@@ -33,7 +35,7 @@ Returns `TRUE` if `value` is not the absent value.
 **Examples:**
 
 | `value`  | `exists(value)` |
-| :------- | :-------------- |
+|----------|-----------------|
 | 0L       | `TRUE`          |
 | "foo"    | `TRUE`          |
 | `NULL`   | `TRUE`          |
@@ -41,82 +43,98 @@ Returns `TRUE` if `value` is not the absent value.
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("rating").exists().as("hasRating"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("rating").exists().as("hasRating"))
+  .execute();
+```
 
 ### Web
 
 **Example:**
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("rating").exists().as("hasRating"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("rating").exists().as("hasRating"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("rating").exists().as("hasRating")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("rating").exists().as("hasRating")])
+  .execute()
+```
 
-##### Kotlin  
-Android
-
-**Example:**
-
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("rating").exists().alias("hasRating"))
-        .execute()
-
-##### Java  
-Android
+##### Kotlin Android
 
 **Example:**
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(field("rating").exists().alias("hasRating"))
-        .execute();
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("rating").exists().alias("hasRating"))
+    .execute()
+```
+
+##### Java Android
+
+**Example:**
+
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(field("rating").exists().alias("hasRating"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("rating").exists().as_("hasRating"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("rating").exists().as_("hasRating"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(exists(field("rating")).as("hasRating"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(exists(field("rating")).as("hasRating"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.FieldExists(firestore.FieldOf("rating")).As("hasRating"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.FieldExists(firestore.FieldOf("rating")).As("hasRating"),
+    )).
+    Execute(ctx)
+```
 
-### IS\_ABSENT
+### IS_ABSENT
 
 **Syntax:**
 
-    is_absent(value: ANY) -> BOOLEAN
+```
+is_absent(value: ANY) -> BOOLEAN
+```
 
 **Description:**
 
@@ -125,17 +143,19 @@ Returns `TRUE` if `value` is the absent value, and `FALSE` otherwise. Absent val
 **Examples:**
 
 | `value`  | `is_absent(value)` |
-| :------- | :----------------- |
+|----------|--------------------|
 | 0L       | `FALSE`            |
 | "foo"    | `FALSE`            |
 | `NULL`   | `FALSE`            |
 | `ABSENT` | `TRUE`             |
 
-### IF\_ABSENT
+### IF_ABSENT
 
 **Syntax:**
 
-    if_absent(value: ANY, replacement: ANY) -> ANY
+```
+if_absent(value: ANY, replacement: ANY) -> ANY
+```
 
 **Description:**
 
@@ -144,26 +164,30 @@ If `value` is an absent value, evaluates and returns `replacement` . Otherwise r
 **Examples:**
 
 | `value`  | `replacement` | `if_absent(value, replacement)` |
-| :------- | :------------ | :------------------------------ |
+|----------|---------------|---------------------------------|
 | 5L       | 0L            | 5L                              |
 | `NULL`   | 0L            | `NULL`                          |
 | `ABSENT` | 0L            | 0L                              |
 
-### IS\_ERROR
+### IS_ERROR
 
 **Syntax:**
 
-    is_error(try: ANY) -> BOOLEAN
+```
+is_error(try: ANY) -> BOOLEAN
+```
 
 **Description:**
 
 Returns `TRUE` if an error is thrown during the evaluation of `try` . Returns `FALSE` otherwise.
 
-### IF\_ERROR
+### IF_ERROR
 
 **Syntax:**
 
-    if_error(try: ANY, catch: ANY) -> ANY
+```
+if_error(try: ANY, catch: ANY) -> ANY
+```
 
 **Description:**
 
@@ -173,7 +197,9 @@ If an error is thrown during the evaluation of `try` , evaluates and returns `re
 
 **Syntax:**
 
-    error(message: STRING) -> ANY
+```
+error(message: STRING) -> ANY
+```
 
 **Description:**
 
@@ -182,10 +208,10 @@ Evaluation of the `error` function results in the evaluation of the pipeline to 
 **Examples:**
 
 | `cond`  | `res` | `switch_on(cond, res, error("no condition matched"))` |
-| :------ | :---- | :---------------------------------------------------- |
+|---------|-------|-------------------------------------------------------|
 | `TRUE`  | 1L    | 1L                                                    |
 | `FALSE` | 1L    | `ERROR ("no condition matched")`                      |
 
 ## What's next
 
-  - See the [Pipeline Queries overview](https://docs.cloud.google.com/firestore/docs/pipeline/overview)
+- See the [Pipeline Queries overview](https://docs.cloud.google.com/firestore/docs/pipeline/overview)

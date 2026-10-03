@@ -19,7 +19,7 @@ The migration process has the following stages:
 2.  **Import from the MongoDB-compatible source database** : You use the Datastream service to capture the contents of your MongoDB-compatible source database and transfer them into a Cloud Storage bucket.
 
 3.  **Write data to Firestore with MongoDB compatibility database** : You use the Dataflow service to transfer data from the Cloud Storage bucket into a Firestore with MongoDB compatibility database.
-    
+
     This Dataflow pipeline will run concurrently with the Datastream stream that is pulling data from the MongoDB-compatible source database.
 
 4.  **Migrate traffic to Firestore** : At the appropriate point in the procedure, you migrate your application read and write traffic to the Firestore with MongoDB compatibility database and stop the migration pipeline.
@@ -30,11 +30,11 @@ The following diagram summarizes the migration process:
 
 Your MongoDB-compatible source database remains in a serving state while the data transfer takes place:
 
-  - The Datastream process captures both data at rest and change events.
+- The Datastream process captures both data at rest and change events.
 
-  - There will be a short period of partial unavailability when you have to shut down write traffic to your source database. During this period, the remainder of the change events is replicated to Firestore.
+- There will be a short period of partial unavailability when you have to shut down write traffic to your source database. During this period, the remainder of the change events is replicated to Firestore.
 
-  - After the replication completes, the Firestore with MongoDB compatibility database can become the new source of truth for your application workload. All read and write traffic can be directed to the new database.
+- After the replication completes, the Firestore with MongoDB compatibility database can become the new source of truth for your application workload. All read and write traffic can be directed to the new database.
 
 ## Detailed migration steps
 
@@ -68,25 +68,25 @@ As an alternative, you can replace the variables in command examples with the sa
 
 Before you begin, review the [differences between Firestore with MongoDB compatibility and MongoDB](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences) . Pay special attention to the following:
 
-  - [Unsupported data types](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences#values)
-  - [Restrictions on `_id`](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences#_id)
-  - [Document size limits](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences#documents)
+- [Unsupported data types](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences#values)
+- [Restrictions on `_id`](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences#_id)
+- [Document size limits](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences#documents)
 
 If any of your data doesn't meet restrictions in the preceding categories:
 
-  - We recommend to address these conditions in your dataset before starting the migration process.
+- We recommend to address these conditions in your dataset before starting the migration process.
 
-  - If you choose to proceed without changes, then documents that are affected by the limitations will fail writing to Firestore and will be sidelined. You can decide on how these documents must be handled. If they are converted to supported types, values, or sizes, they can be reprocessed.
+- If you choose to proceed without changes, then documents that are affected by the limitations will fail writing to Firestore and will be sidelined. You can decide on how these documents must be handled. If they are converted to supported types, values, or sizes, they can be reprocessed.
 
 Datastream has the following requirements:
 
-  - The minimum major version of MongoDB supported by Datastream is 4.0. For some minor versions, there are minimum patch versions that are supported:
-    
-      - 4.0.X for patch version X \>= 21
-      - 4.2.X for patch version X \>= 10
-      - 4.4.X for patch version X \>= 2
+- The minimum major version of MongoDB supported by Datastream is 4.0. For some minor versions, there are minimum patch versions that are supported:
 
-  - Your MongoDB cluster must support Change Streams. Your MongoDB deployment must be configured as a [replica set](https://www.mongodb.com/docs/manual/replication/) or a [sharded cluster](https://www.mongodb.com/docs/manual/sharding/) for Change Streams to be enabled.
+  - 4.0.X for patch version X \>= 21
+  - 4.2.X for patch version X \>= 10
+  - 4.4.X for patch version X \>= 2
+
+- Your MongoDB cluster must support Change Streams. Your MongoDB deployment must be configured as a [replica set](https://www.mongodb.com/docs/manual/replication/) or a [sharded cluster](https://www.mongodb.com/docs/manual/sharding/) for Change Streams to be enabled.
 
 ## What's next
 

@@ -6,30 +6,22 @@ description: A highly-scalable NoSQL database for your web and mobile applicatio
 data_source: docs.cloud.google.com
 ---
 
-  - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/ArrayValue#SCHEMA_REPRESENTATION)
+- [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/ArrayValue#SCHEMA_REPRESENTATION)
 
 An array value.
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>JSON representation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;values&quot;: [{object (Value)}]}</code></pre></td>
-</tr>
-</tbody>
-</table>
+**JSON representation**
 
-Fields
+```
+{
+  "values": [
+    {
+      object (Value)
+    }
+  ]
+}
+```
 
-`values[]`
-
-` object ( Value  ` )
-
-Values in the array. The order of values in an array is preserved as long as all values have identical settings for 'excludeFromIndexes'.
+| Fields     |                                                                                                                                                                                                                                                         |
+|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `values[]` | `object ( `[`Value`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/Value)` )` Values in the array. The order of values in an array is preserved as long as all values have identical settings for 'excludeFromIndexes'. |

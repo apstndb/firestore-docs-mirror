@@ -18,10 +18,12 @@ This stage is commonly used for testing other stages in isolation, though it can
 
 ### Node.js
 
-    const results = await db.pipeline()
-      .literals({ name: "joe", age: 10 }, { name: "bob", age: 30 }, { name: "alice", age: 40 })
-      .where(field("age").lessThan(35))
-      .execute();
+```
+const results = await db.pipeline()
+  .literals({ name: "joe", age: 10 }, { name: "bob", age: 30 }, { name: "alice", age: 40 })
+  .where(field("age").lessThan(35))
+  .execute();
+```
 
 ## Behavior
 
@@ -33,13 +35,15 @@ For example, the following shows how to quickly test out the `length(...)` funct
 
 ### Node.js
 
-    const results = await db.pipeline()
-      .literals({ x: constant("foo-bar-baz").length() }, { x: constant("bar").length() })
-      .execute();
-    
-    ...
-    
-    [
-      { x: 11 },
-      { x: 3 }
-    ]
+```
+const results = await db.pipeline()
+  .literals({ x: constant("foo-bar-baz").length() }, { x: constant("bar").length() })
+  .execute();
+
+...
+
+[
+  { x: 11 },
+  { x: 3 }
+]
+```

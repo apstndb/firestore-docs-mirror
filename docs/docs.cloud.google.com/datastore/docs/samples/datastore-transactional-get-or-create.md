@@ -12,27 +12,29 @@ Get or create in a transaction.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Cloud Datastore Transactions](https://docs.cloud.google.com/datastore/docs/concepts/cloud-datastore-transactions)
-  - [Transactions](https://docs.cloud.google.com/datastore/docs/concepts/transactions)
+- [Cloud Datastore Transactions](https://docs.cloud.google.com/datastore/docs/concepts/cloud-datastore-transactions)
+- [Transactions](https://docs.cloud.google.com/datastore/docs/concepts/transactions)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Entity task;
-    using (var transaction = _db.BeginTransaction())
+```csharp
+Entity task;
+using (var transaction = _db.BeginTransaction())
+{
+    task = transaction.Lookup(_sampleTask.Key);
+    if (task == null)
     {
-        task = transaction.Lookup(_sampleTask.Key);
-        if (task == null)
-        {
-            transaction.Insert(_sampleTask);
-            transaction.Commit();
-        }
+        transaction.Insert(_sampleTask);
+        transaction.Commit();
     }
+}
+```
 
 ### Go
 
@@ -40,19 +42,21 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    _, err := client.RunInTransaction(ctx, func(tx *datastore.Transaction) error {
-     var task Task
-     if err := tx.Get(key, &task); err != datastore.ErrNoSuchEntity {
-         return err
-     }
-     _, err := tx.Put(key, &Task{
-         Category:    "Personal",
-         Done:        false,
-         Priority:    4,
-         Description: "Learn Cloud Datastore",
-     })
-     return err
+```go
+_, err := client.RunInTransaction(ctx, func(tx *datastore.Transaction) error {
+    var task Task
+    if err := tx.Get(key, &task); err != datastore.ErrNoSuchEntity {
+        return err
+    }
+    _, err := tx.Put(key, &Task{
+        Category:    "Personal",
+        Done:        false,
+        Priority:    4,
+        Description: "Learn Cloud Datastore",
     })
+    return err
+})
+```
 
 ### Java
 
@@ -60,20 +64,22 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Entity task;
-    Transaction txn = datastore.newTransaction();
-    try {
-      task = txn.get(taskKey);
-      if (task == null) {
-        task = Entity.newBuilder(taskKey).build();
-        txn.put(task);
-        txn.commit();
-      }
-    } finally {
-      if (txn.isActive()) {
-        txn.rollback();
-      }
-    }
+```java
+Entity task;
+Transaction txn = datastore.newTransaction();
+try {
+  task = txn.get(taskKey);
+  if (task == null) {
+    task = Entity.newBuilder(taskKey).build();
+    txn.put(task);
+    txn.commit();
+  }
+} finally {
+  if (txn.isActive()) {
+    txn.rollback();
+  }
+}
+```
 
 ### PHP
 
@@ -81,12 +87,14 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $transaction = $datastore->transaction();
-    $entity = $transaction->lookup($task->key());
-    if ($entity === null) {
-        $entity = $transaction->insert($task);
-        $transaction->commit();
-    }
+```php
+$transaction = $datastore->transaction();
+$entity = $transaction->lookup($task->key());
+if ($entity === null) {
+    $entity = $transaction->insert($task);
+    $transaction->commit();
+}
+```
 
 ### Python
 
@@ -94,27 +102,29 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    import datetime
-    
-    with client.transaction():
-        key = client.key(
-            "Task", datetime.datetime.now(tz=datetime.timezone.utc).isoformat()
-        )
-    
-        task = client.get(key)
-    
-        if not task:
-            task = datastore.Entity(key)
-            task.update({"description": "Example task"})
-            client.put(task)
-    
-        return task
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+import datetime
+
+with client.transaction():
+    key = client.key(
+        "Task", datetime.datetime.now(tz=datetime.timezone.utc).isoformat()
+    )
+
+    task = client.get(key)
+
+    if not task:
+        task = datastore.Entity(key)
+        task.update({"description": "Example task"})
+        client.put(task)
+
+    return task
+```
 
 ### Ruby
 
@@ -122,19 +132,21 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    task = nil
-    datastore.transaction do |tx|
-      task = tx.find task_key
-      if task.nil?
-        task = datastore.entity task_key do |t|
-          t["category"] = "Personal"
-          t["done"] = false
-          t["priority"] = 4
-          t["description"] = "Learn Cloud Datastore"
-        end
-        tx.save task
-      end
+```ruby
+task = nil
+datastore.transaction do |tx|
+  task = tx.find task_key
+  if task.nil?
+    task = datastore.entity task_key do |t|
+      t["category"] = "Personal"
+      t["done"] = false
+      t["priority"] = 4
+      t["description"] = "Learn Cloud Datastore"
     end
+    tx.save task
+  end
+end
+```
 
 ## What's next
 

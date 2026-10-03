@@ -12,7 +12,7 @@ gcloud firestore indexes fields describe - describe the index configuration of t
 
 SYNOPSIS
 
-`gcloud firestore indexes fields describe` \[\[ `  FIELD  ` \] `  --collection-group  ` = `  COLLECTION_GROUP  ` `  --database  ` = `  DATABASE  ` \] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud firestore indexes fields describe` \[\[ [`FIELD`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/fields/describe#FIELD) \] [`--collection-group`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/fields/describe#--collection-group) = `COLLECTION_GROUP` [`--database`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/fields/describe#--database) = `DATABASE` \] \[ [`GCLOUD_WIDE_FLAG`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/fields/describe#GCLOUD-WIDE-FLAGS)` …` \]
 
 DESCRIPTION
 
@@ -22,13 +22,19 @@ EXAMPLES
 
 The following command describes the database-wide default index settings:
 
-    gcloud firestore indexes fields describe
+```
+gcloud firestore indexes fields describe
+```
 
-    gcloud firestore indexes fields describe --database=(default)
+```
+gcloud firestore indexes fields describe --database=(default)
+```
 
 The following command describes the index configuration of the `timestamp` field in the `Events` collection group.
 
-    gcloud firestore indexes fields describe timestamp --collection-group=Events
+```
+gcloud firestore indexes fields describe timestamp --collection-group=Events
+```
 
 POSITIONAL ARGUMENTS
 
@@ -38,43 +44,43 @@ This can be omitted to describe the database-wide default index settings. The ar
 
 To set the `project` attribute:
 
-  - provide the argument `field` on the command line with a fully specified name;
-  - with a fully specified name;
-  - provide the argument `--project` on the command line;
-  - set the property `core/project` .
+- provide the argument `field` on the command line with a fully specified name;
+- with a fully specified name;
+- provide the argument `--project` on the command line;
+- set the property `core/project` .
 
-\[ `  FIELD  ` \]
+\[ `FIELD` \]
 
 ID of the field or fully qualified identifier for the field.
 
 To set the `field` attribute:
 
-  - provide the argument `field` on the command line;
-  - .
+- provide the argument `field` on the command line;
+- .
 
-`--collection-group` = `  COLLECTION_GROUP  `
+`--collection-group` = `COLLECTION_GROUP`
 
 Collection group of the field. To set the `collection-group` attribute:
 
-  - provide the argument `field` on the command line with a fully specified name;
-  - with a fully specified name;
-  - provide the argument `--collection-group` on the command line;
-  - .
+- provide the argument `field` on the command line with a fully specified name;
+- with a fully specified name;
+- provide the argument `--collection-group` on the command line;
+- .
 
-`--database` = `  DATABASE  `
+`--database` = `DATABASE`
 
 Database of the field. To set the `database` attribute:
 
-  - provide the argument `field` on the command line with a fully specified name;
-  - with a fully specified name;
-  - provide the argument `--database` on the command line;
-  - the default value of argument \[--database\] is `(default)` .
+- provide the argument `field` on the command line with a fully specified name;
+- with a fully specified name;
+- provide the argument `--database` on the command line;
+- the default value of argument \[--database\] is `(default)` .
 
 GCLOUD WIDE FLAGS
 
-These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
+These flags are available to all commands: [`--access-token-file`](https://docs.cloud.google.com/sdk/gcloud/reference#--access-token-file) , [`--account`](https://docs.cloud.google.com/sdk/gcloud/reference#--account) , [`--billing-project`](https://docs.cloud.google.com/sdk/gcloud/reference#--billing-project) , [`--configuration`](https://docs.cloud.google.com/sdk/gcloud/reference#--configuration) , [`--flags-file`](https://docs.cloud.google.com/sdk/gcloud/reference#--flags-file) , [`--flatten`](https://docs.cloud.google.com/sdk/gcloud/reference#--flatten) , [`--format`](https://docs.cloud.google.com/sdk/gcloud/reference#--format) , [`--help`](https://docs.cloud.google.com/sdk/gcloud/reference#--help) , [`--impersonate-service-account`](https://docs.cloud.google.com/sdk/gcloud/reference#--impersonate-service-account) , [`--log-http`](https://docs.cloud.google.com/sdk/gcloud/reference#--log-http) , [`--project`](https://docs.cloud.google.com/sdk/gcloud/reference#--project) , [`--quiet`](https://docs.cloud.google.com/sdk/gcloud/reference#--quiet) , [`--trace-token`](https://docs.cloud.google.com/sdk/gcloud/reference#--trace-token) , [`--user-output-enabled`](https://docs.cloud.google.com/sdk/gcloud/reference#--user-output-enabled) , [`--verbosity`](https://docs.cloud.google.com/sdk/gcloud/reference#--verbosity) .
 
-Run ` $ gcloud help  ` for details.
+Run `$ `[`gcloud help`](https://docs.cloud.google.com/sdk/gcloud/reference) for details.
 
 API REFERENCE
 
@@ -84,6 +90,10 @@ NOTES
 
 These variants are also available:
 
-    gcloud alpha firestore indexes fields describe
+```
+gcloud alpha firestore indexes fields describe
+```
 
-    gcloud beta firestore indexes fields describe
+```
+gcloud beta firestore indexes fields describe
+```

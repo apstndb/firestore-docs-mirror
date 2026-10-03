@@ -16,9 +16,9 @@ Indexes have a large impact on the performance of a database. If an index exists
 
 An index consists of the following:
 
-  - a collection ID
-  - a list of fields in the given collection
-  - an order, either ascending or descending, for each field
+- a collection ID
+- a list of fields in the given collection
+- an order, either ascending or descending, for each field
 
 An index can also enable the [sparse](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview#sparse_indexes) , [multikey](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview#multikey) , or [unique](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview#unique_indexes) options.
 
@@ -27,7 +27,7 @@ An index can also enable the [sparse](https://docs.cloud.google.com/firestore/mo
 The order and sort direction of each field uniquely defines the index. For example, the following indexes are two distinct indexes and not interchangeable:
 
 | Collection | Fields                                        |
-| ---------- | --------------------------------------------- |
+|------------|-----------------------------------------------|
 | cities     | country (ascending), population (descending)  |
 | cities     | population (descending), country (ascending), |
 
@@ -49,10 +49,10 @@ Only use multikey indexes if you know that you need to index array values. Regul
 
 The following situations lead to errors when working with array values and multikey indexes:
 
-  - An operation attempts to add an array value to a field indexed by a regular index. To add the array value, you must delete existing regular indexes on that field, and recreate them as multikey indexes.
-  - You attempt to create a regular index on a field that contains an array value. You must either create a multikey index or delete the array values.
-  - An operation attempts to index multiple fields with array values. You cannot have more than one field with an array value in a multikey index. To proceed, modify your data model or your index definitions.
-  - You attempt to create a multikey index where two field paths share a common prefix like `users.posts` and `users.zip` .
+- An operation attempts to add an array value to a field indexed by a regular index. To add the array value, you must delete existing regular indexes on that field, and recreate them as multikey indexes.
+- You attempt to create a regular index on a field that contains an array value. You must either create a multikey index or delete the array values.
+- An operation attempts to index multiple fields with array values. You cannot have more than one field with an array value in a multikey index. To proceed, modify your data model or your index definitions.
+- You attempt to create a multikey index where two field paths share a common prefix like `users.posts` and `users.zip` .
 
 ## Unique indexes
 
@@ -64,7 +64,9 @@ If you insert a document with missing fields for the unique index, the index set
 
 For example, with this index:
 
-    db.cities.createIndex( { "name": 1 }, { unique: true } )
+```
+db.cities.createIndex( { "name": 1 }, { unique: true } )
+```
 
 If you add the document `{"abbreviation": "LA"}` to the collection, the unique index creates an entry with `name` set to `null` . If you then try to add the document `{"abbreviation": "NYC"}` , the operation fails because the resulting entry for the unique index is the same.
 
@@ -78,13 +80,13 @@ Use [TTL indexes](https://docs.cloud.google.com/firestore/mongodb-compatibility/
 
 You might encounter index building errors when managing your indexes. An indexing operation can fail if the database encounters a problem with the data. Indexing operations can fail for the following reasons:
 
-  - You have reached an index limit. For example, the operation may have reached the maximum number of index entries per document. If index creation fails, you see an error message. If you have not reached an index limit, retry the index operation.
-  - A multikey index is required. At least one of the indexed fields contains an array value. To proceed, you must either use a multikey index or delete the array values.
-  - An operation attempts to index multiple fields with array values. You cannot have more than one field with an array value in a multikey index. To proceed, modify your data model or your index definitions.
-  - You set the unique index option and the data of the indexed fields would create duplicate index entries. To proceed, remove duplicate combinations of values from the data.
+- You have reached an index limit. For example, the operation may have reached the maximum number of index entries per document. If index creation fails, you see an error message. If you have not reached an index limit, retry the index operation.
+- A multikey index is required. At least one of the indexed fields contains an array value. To proceed, you must either use a multikey index or delete the array values.
+- An operation attempts to index multiple fields with array values. You cannot have more than one field with an array value in a multikey index. To proceed, modify your data model or your index definitions.
+- You set the unique index option and the data of the indexed fields would create duplicate index entries. To proceed, remove duplicate combinations of values from the data.
 
 > **Warning:** An ongoing index building error might impact creation of new indexes. Resolving the errors before creating indexes under the same collection.
 
 ## What's next
 
-  - Learn how to [create and manage indexes](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing) or [TTL indexes](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl)
+- Learn how to [create and manage indexes](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing) or [TTL indexes](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl)

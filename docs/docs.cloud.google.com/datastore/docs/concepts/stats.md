@@ -10,17 +10,17 @@ Firestore in Datastore mode (Datastore) maintains statistics about the data that
 
 You can view these statistics in the Google Cloud console in one of the following ways:
 
-  - On the [Dashboard](https://console.cloud.google.com/project/_/datastore/stats) page.
-  - On the [Entities](https://console.cloud.google.com/project/_/datastore/entities/query/gql) page, run a GQL query in the form of `SELECT * FROM __Stat_Kind__` .
-  - Programmatically within the application by querying for specially named entities using the Datastore API. For more information about the Datastore API, see [APIs & Reference](https://docs.cloud.google.com/datastore/docs/apis) .
+- On the [Dashboard](https://console.cloud.google.com/project/_/datastore/stats) page.
+- On the [Entities](https://console.cloud.google.com/project/_/datastore/entities/query/gql) page, run a GQL query in the form of `SELECT * FROM __Stat_Kind__` .
+- Programmatically within the application by querying for specially named entities using the Datastore API. For more information about the Datastore API, see [APIs & Reference](https://docs.cloud.google.com/datastore/docs/apis) .
 
 Datastore uses *kind names* that begin and end with two underscores to identify special entities that provide statistics about your data. These are called *statistics entities* . For example, each app has one entity of the kind `__Stat_Total__` , which represents statistics about all of the entities in a Datastore mode database.
 
 Statistics entities track information about your data and give you insights into your data usage. They are automatically created. Each statistic entity has the following properties:
 
-  - `count` : the number of items considered by the statistic (a long integer)
-  - `bytes` : the total size of the items for this statistic (a long integer)
-  - `timestamp` : the time of the most recent update to the statistic (a date-time value)
+- `count` : the number of items considered by the statistic (a long integer)
+- `bytes` : the total size of the items for this statistic (a long integer)
+- `timestamp` : the time of the most recent update to the statistic (a date-time value)
 
 Each entity belongs to a specific kind. *Statistics kind* indicates the category of statistics being collected or used. Use the kind to identify the purpose of a statistic, such as optimizing a query, improving performance, or data analysis.
 
@@ -36,204 +36,49 @@ If an application doesn't use namespaces, the statistics system won't create nam
 
 The following is a list of available statistics:
 
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Statistic</th>
-<th>Stat Entity Kind</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>all entities</td>
-<td><code dir="ltr" translate="no">__Stat_Total__</code><br />
-Namespace specific entry:<br />
-<code dir="ltr" translate="no">__Stat_Ns_Total__</code></td>
-<td>All entities. Additional properties:<br />
-<br />
-• <code dir="ltr" translate="no">entity_bytes</code> : the storage in the entities table measured in bytes.<br />
-• <code dir="ltr" translate="no">builtin_index_bytes</code> : the storage in built-in index entries measured in bytes.<br />
-• <code dir="ltr" translate="no">builtin_index_count</code> : the count of built-in index entries.<br />
-• <code dir="ltr" translate="no">composite_index_bytes</code> : the storage in composite index entries measured in bytes.<br />
-• <code dir="ltr" translate="no">composite_index_count</code> : the count of composite index entries.</td>
-</tr>
-<tr class="even">
-<td>all entities in a namespace</td>
-<td><code dir="ltr" translate="no">__Stat_Namespace__</code><br />
-Note that <code dir="ltr" translate="no">__Stat_Namespace__</code> entities are created for each namespace encountered and are only found in the empty string namespace.</td>
-<td>All entities in a namespace.<br />
-<br />
-• <code dir="ltr" translate="no">subject_namespace</code> : the namespace represented (a string)<br />
-• <code dir="ltr" translate="no">entity_bytes</code> : the storage in the entities table measured in bytes.<br />
-• <code dir="ltr" translate="no">builtin_index_bytes</code> : the storage in built-in index entries measured in bytes.<br />
-• <code dir="ltr" translate="no">builtin_index_count</code> : the count of built-in index entries.<br />
-• <code dir="ltr" translate="no">composite_index_bytes</code> : the storage in composite index entries measured in bytes.<br />
-• <code dir="ltr" translate="no">composite_index_count</code> : the count of composite index entries.<br />
-<br />
-For more information, see the <a href="https://docs.cloud.google.com/datastore/docs/concepts/stats#stats-limitations">Statistics limitations</a> section of this document.<br />
-</td>
-</tr>
-<tr class="odd">
-<td>all entries in application defined indexes</td>
-<td><code dir="ltr" translate="no">__Stat_Kind_CompositeIndex__</code><br />
-Namespace specific entry:<br />
-<code dir="ltr" translate="no">__Stat_Ns_Kind_CompositeIndex__</code><br />
-</td>
-<td>Information about the composite indexes in the database; one stat entity for each composite index. Additional properties:<br />
-<br />
-• <code dir="ltr" translate="no">alphanumeric_id</code> : the alphanumeric identifier of the index. The same identifier used in <code dir="ltr" translate="no">gcloud</code> and the API.<br />
-• <code dir="ltr" translate="no">index_id</code> : internal integer representation of the index ID. For <code dir="ltr" translate="no">gcloud</code> and API methods, use the <code dir="ltr" translate="no">alphanumeric_id</code> instead.<br />
-• <code dir="ltr" translate="no">kind_name</code> : the name of the kind represented (a string)<br />
-• <code dir="ltr" translate="no">last_known_usage_timestamp</code> : the last time this index served a query. Will always be a time between <code dir="ltr" translate="no">stat_tracked_since_time</code> and timestamp. Set to <code dir="ltr" translate="no">null</code> if no usage was recorded in that time window. Not present for <code dir="ltr" translate="no">__Stat_Ns_Kind_CompositeIndex__</code> .<br />
-• <code dir="ltr" translate="no">stat_tracked_since_time</code> : the start of the time window where index usage is known. Not present for <code dir="ltr" translate="no">__Stat_Ns_Kind_CompositeIndex__</code> .</td>
-</tr>
-<tr class="even">
-<td>all entries in built-in indexes</td>
-<td><code dir="ltr" translate="no">__Stat_Kind_BuiltinIndex__</code></td>
-<td>Information about the built-in indexes in the database. One stat entity for each built-in index. Additional properties:<br />
-<br />
-• <code dir="ltr" translate="no">property_name</code> : the name of the indexed property.<br />
-• <code dir="ltr" translate="no">kind_name</code> : the name of the kind represented (a string).<br />
-• <code dir="ltr" translate="no">api_scope</code> : either <code dir="ltr" translate="no">Firestore</code> or <code dir="ltr" translate="no">Datastore</code> .<br />
-• <code dir="ltr" translate="no">query_scope</code> : the index query scope. Always set to <code dir="ltr" translate="no">COLLECTION_GROUP</code> (kind) for Datastore databases.<br />
-• <code dir="ltr" translate="no">value_mode</code> : the mode for the query scope such as <code dir="ltr" translate="no">ASC</code> or <code dir="ltr" translate="no">DESC</code> .<br />
-• <code dir="ltr" translate="no">last_known_usage_timestamp</code> : the last time this index served a query. Will always be a time between <code dir="ltr" translate="no">stat_tracked_since_time</code> and timestamp. Set to <code dir="ltr" translate="no">null</code> if no usage was recorded in that time window.<br />
-• <code dir="ltr" translate="no">stat_tracked_since_time</code> : the start of the time window where index usage is known.</td>
-</tr>
-<tr class="odd">
-<td>entities of a kind</td>
-<td><code dir="ltr" translate="no">__Stat_Kind__</code><br />
-Namespace specific entry:<br />
-<code dir="ltr" translate="no">__Stat_Ns_Kind__</code></td>
-<td>Entities of a kind; one stat entity for each kind of entity stored. Additional properties:<br />
-<br />
-• <code dir="ltr" translate="no">kind_name</code> : the name of the kind represented (a string)<br />
-• <code dir="ltr" translate="no">entity_bytes</code> : the storage in the entities table measured in bytes.<br />
-• <code dir="ltr" translate="no">builtin_index_bytes</code> : the storage in built-in index entries measured in bytes.<br />
-• <code dir="ltr" translate="no">builtin_index_count</code> : the count of built-in index entries.<br />
-• <code dir="ltr" translate="no">composite_index_bytes</code> : the storage in composite index entries measured in bytes.<br />
-• <code dir="ltr" translate="no">composite_index_count</code> : the count of composite index entries.</td>
-</tr>
-<tr class="even">
-<td>root entities of a kind</td>
-<td><code dir="ltr" translate="no">__Stat_Kind_IsRootEntity__</code><br />
-Namespace specific entry:<br />
-<code dir="ltr" translate="no">__Stat_Ns_Kind_IsRootEntity__</code></td>
-<td>Entities of a kind that are entity group root entities (have no ancestor parent); one stat entity for each kind of entity stored. Additional properties:<br />
-<br />
-• <code dir="ltr" translate="no">kind_name</code> : the name of the kind represented (a string)<br />
-• <code dir="ltr" translate="no">entity_bytes</code> : the storage in the entities table measured in bytes.</td>
-</tr>
-<tr class="odd">
-<td>non-root entities of a kind</td>
-<td><code dir="ltr" translate="no">__Stat_Kind_NotRootEntity__</code><br />
-Namespace specific entry:<br />
-<code dir="ltr" translate="no">__Stat_Ns_Kind_NotRootEntity__</code></td>
-<td>Entities of a kind that are not entity group root entities (have an ancestor parent); one stat entity for each kind of entity stored. Additional properties:<br />
-<br />
-• <code dir="ltr" translate="no">kind_name</code> : the name of the kind represented (a string)<br />
-• <code dir="ltr" translate="no">entity_bytes</code> : the storage in the entities table measured in bytes.</td>
-</tr>
-<tr class="even">
-<td>properties of a type</td>
-<td><code dir="ltr" translate="no">__Stat_PropertyType__</code><br />
-Namespace specific entry:<br />
-<code dir="ltr" translate="no">__Stat_Ns_PropertyType__</code></td>
-<td>Properties of a value type across all entities; one stat entity per value type. Additional properties:<br />
-<br />
-• <code dir="ltr" translate="no">property_type</code> : the name of the value type (a string)<br />
-• <code dir="ltr" translate="no">entity_bytes</code> : the storage in the entities table measured in bytes.<br />
-• <code dir="ltr" translate="no">builtin_index_bytes</code> : the storage in built-in index entries measured in bytes.<br />
-• <code dir="ltr" translate="no">builtin_index_count</code> : the count of built-in index entries.</td>
-</tr>
-<tr class="odd">
-<td>properties of a type per kind</td>
-<td><code dir="ltr" translate="no">__Stat_PropertyType_Kind__</code><br />
-Namespace specific entry:<br />
-<code dir="ltr" translate="no">__Stat_Ns_PropertyType_Kind__</code></td>
-<td>Properties of a value type across entities of a given kind; one stat entity per combination of property type and kind.<br />
-<br />
-Additional properties:<br />
-<br />
-• <code dir="ltr" translate="no">property_type</code> : the name of the value type (a string)<br />
-• <code dir="ltr" translate="no">kind_name</code> : the name of the kind represented (a string)<br />
-• <code dir="ltr" translate="no">entity_bytes</code> : the storage in the entities table measured in bytes.<br />
-• <code dir="ltr" translate="no">builtin_index_bytes</code> : the storage in the built-in index measured in bytes.<br />
-• <code dir="ltr" translate="no">builtin_index_count</code> : the count of built-in index entries.<br />
-<br />
-For more information, see the <a href="https://docs.cloud.google.com/datastore/docs/concepts/stats#stats-limitations">Statistics limitations</a> section of this document.<br />
-</td>
-</tr>
-<tr class="even">
-<td>properties with a name</td>
-<td><code dir="ltr" translate="no">__Stat_PropertyName_Kind__</code><br />
-Namespace specific entry:<br />
-<code dir="ltr" translate="no">__Stat_Ns_PropertyName_Kind__</code></td>
-<td>Properties with a given name across entities of a given kind; one stat entity per combination of unique property name and kind. Additional properties:<br />
-<br />
-• <code dir="ltr" translate="no">property_name</code> : the name of the property (a string)<br />
-• <code dir="ltr" translate="no">kind_name</code> : the name of the kind represented (a string)<br />
-• <code dir="ltr" translate="no">entity_bytes</code> : the storage in the entities table measured in bytes.<br />
-• <code dir="ltr" translate="no">builtin_index_bytes</code> : the storage in built-in index entries measured in bytes.<br />
-• <code dir="ltr" translate="no">builtin_index_count</code> : the count of built-in index entries.</td>
-</tr>
-<tr class="odd">
-<td>properties of a type and with a name</td>
-<td><code dir="ltr" translate="no">__Stat_PropertyType_PropertyName_Kind__</code><br />
-Namespace specific entry:<br />
-<code dir="ltr" translate="no">__Stat_Ns_PropertyType_PropertyName_Kind__</code></td>
-<td>Properties with a given name and of a given value type across entities of a given kind; one stat entity per combination of property name, value type and kind that exists in the database.<br />
-<br />
-Additional properties:<br />
-<br />
-• <code dir="ltr" translate="no">property_type</code> : the name of the value type (a string)<br />
-• <code dir="ltr" translate="no">property_name</code> : the name of the property (a string).<br />
-• <code dir="ltr" translate="no">kind_name</code> : the name of the kind represented (a string).<br />
-• <code dir="ltr" translate="no">entity_bytes</code> : the storage in the entities table measured in bytes.<br />
-• <code dir="ltr" translate="no">builtin_index_bytes</code> : the storage in built-in index entries measured in bytes.<br />
-• <code dir="ltr" translate="no">builtin_index_count</code> : the count of built-in index entries.<br />
-<br />
-For more information, see the <a href="https://docs.cloud.google.com/datastore/docs/concepts/stats#stats-limitations">Statistics limitations</a> section of this document.<br />
-</td>
-</tr>
-</tbody>
-</table>
+| Statistic                                  | Stat Entity Kind                                                                                                                                          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+|--------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| all entities                               | `__Stat_Total__` Namespace specific entry: `__Stat_Ns_Total__`                                                                                            | All entities. Additional properties: • `entity_bytes` : the storage in the entities table measured in bytes. • `builtin_index_bytes` : the storage in built-in index entries measured in bytes. • `builtin_index_count` : the count of built-in index entries. • `composite_index_bytes` : the storage in composite index entries measured in bytes. • `composite_index_count` : the count of composite index entries.                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| all entities in a namespace                | `__Stat_Namespace__` Note that `__Stat_Namespace__` entities are created for each namespace encountered and are only found in the empty string namespace. | All entities in a namespace. • `subject_namespace` : the namespace represented (a string) • `entity_bytes` : the storage in the entities table measured in bytes. • `builtin_index_bytes` : the storage in built-in index entries measured in bytes. • `builtin_index_count` : the count of built-in index entries. • `composite_index_bytes` : the storage in composite index entries measured in bytes. • `composite_index_count` : the count of composite index entries. For more information, see the [Statistics limitations](https://docs.cloud.google.com/datastore/docs/concepts/stats#stats-limitations) section of this document.                                                                                                                                                                                                          |
+| all entries in application defined indexes | `__Stat_Kind_CompositeIndex__` Namespace specific entry: `__Stat_Ns_Kind_CompositeIndex__`                                                                | Information about the composite indexes in the database; one stat entity for each composite index. Additional properties: • `alphanumeric_id` : the alphanumeric identifier of the index. The same identifier used in `gcloud` and the API. • `index_id` : internal integer representation of the index ID. For `gcloud` and API methods, use the `alphanumeric_id` instead. • `kind_name` : the name of the kind represented (a string) • `last_known_usage_timestamp` : the last time this index served a query. Will always be a time between `stat_tracked_since_time` and timestamp. Set to `null` if no usage was recorded in that time window. Not present for `__Stat_Ns_Kind_CompositeIndex__` . • `stat_tracked_since_time` : the start of the time window where index usage is known. Not present for `__Stat_Ns_Kind_CompositeIndex__` . |
+| all entries in built-in indexes            | `__Stat_Kind_BuiltinIndex__`                                                                                                                              | Information about the built-in indexes in the database. One stat entity for each built-in index. Additional properties: • `property_name` : the name of the indexed property. • `kind_name` : the name of the kind represented (a string). • `api_scope` : either `Firestore` or `Datastore` . • `query_scope` : the index query scope. Always set to `COLLECTION_GROUP` (kind) for Datastore databases. • `value_mode` : the mode for the query scope such as `ASC` or `DESC` . • `last_known_usage_timestamp` : the last time this index served a query. Will always be a time between `stat_tracked_since_time` and timestamp. Set to `null` if no usage was recorded in that time window. • `stat_tracked_since_time` : the start of the time window where index usage is known.                                                                 |
+| entities of a kind                         | `__Stat_Kind__` Namespace specific entry: `__Stat_Ns_Kind__`                                                                                              | Entities of a kind; one stat entity for each kind of entity stored. Additional properties: • `kind_name` : the name of the kind represented (a string) • `entity_bytes` : the storage in the entities table measured in bytes. • `builtin_index_bytes` : the storage in built-in index entries measured in bytes. • `builtin_index_count` : the count of built-in index entries. • `composite_index_bytes` : the storage in composite index entries measured in bytes. • `composite_index_count` : the count of composite index entries.                                                                                                                                                                                                                                                                                                             |
+| root entities of a kind                    | `__Stat_Kind_IsRootEntity__` Namespace specific entry: `__Stat_Ns_Kind_IsRootEntity__`                                                                    | Entities of a kind that are entity group root entities (have no ancestor parent); one stat entity for each kind of entity stored. Additional properties: • `kind_name` : the name of the kind represented (a string) • `entity_bytes` : the storage in the entities table measured in bytes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| non-root entities of a kind                | `__Stat_Kind_NotRootEntity__` Namespace specific entry: `__Stat_Ns_Kind_NotRootEntity__`                                                                  | Entities of a kind that are not entity group root entities (have an ancestor parent); one stat entity for each kind of entity stored. Additional properties: • `kind_name` : the name of the kind represented (a string) • `entity_bytes` : the storage in the entities table measured in bytes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| properties of a type                       | `__Stat_PropertyType__` Namespace specific entry: `__Stat_Ns_PropertyType__`                                                                              | Properties of a value type across all entities; one stat entity per value type. Additional properties: • `property_type` : the name of the value type (a string) • `entity_bytes` : the storage in the entities table measured in bytes. • `builtin_index_bytes` : the storage in built-in index entries measured in bytes. • `builtin_index_count` : the count of built-in index entries.                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| properties of a type per kind              | `__Stat_PropertyType_Kind__` Namespace specific entry: `__Stat_Ns_PropertyType_Kind__`                                                                    | Properties of a value type across entities of a given kind; one stat entity per combination of property type and kind. Additional properties: • `property_type` : the name of the value type (a string) • `kind_name` : the name of the kind represented (a string) • `entity_bytes` : the storage in the entities table measured in bytes. • `builtin_index_bytes` : the storage in the built-in index measured in bytes. • `builtin_index_count` : the count of built-in index entries. For more information, see the [Statistics limitations](https://docs.cloud.google.com/datastore/docs/concepts/stats#stats-limitations) section of this document.                                                                                                                                                                                            |
+| properties with a name                     | `__Stat_PropertyName_Kind__` Namespace specific entry: `__Stat_Ns_PropertyName_Kind__`                                                                    | Properties with a given name across entities of a given kind; one stat entity per combination of unique property name and kind. Additional properties: • `property_name` : the name of the property (a string) • `kind_name` : the name of the kind represented (a string) • `entity_bytes` : the storage in the entities table measured in bytes. • `builtin_index_bytes` : the storage in built-in index entries measured in bytes. • `builtin_index_count` : the count of built-in index entries.                                                                                                                                                                                                                                                                                                                                                 |
+| properties of a type and with a name       | `__Stat_PropertyType_PropertyName_Kind__` Namespace specific entry: `__Stat_Ns_PropertyType_PropertyName_Kind__`                                          | Properties with a given name and of a given value type across entities of a given kind; one stat entity per combination of property name, value type and kind that exists in the database. Additional properties: • `property_type` : the name of the value type (a string) • `property_name` : the name of the property (a string). • `kind_name` : the name of the kind represented (a string). • `entity_bytes` : the storage in the entities table measured in bytes. • `builtin_index_bytes` : the storage in built-in index entries measured in bytes. • `builtin_index_count` : the count of built-in index entries. For more information, see the [Statistics limitations](https://docs.cloud.google.com/datastore/docs/concepts/stats#stats-limitations) section of this document.                                                          |
 
 Some statistics refer to property value types by name, as strings. These names are as follows:
 
-  - `"Blob"`
-  - `"BlobKey"`
-  - `"Boolean"`
-  - `"Category"`
-  - `"Date/Time"`
-  - `"Email"`
-  - `"Float"`
-  - `"GeoPt"`
-  - `"IM"`
-  - `"Integer"`
-  - `"Key"`
-  - `"Link"`
-  - `"NULL"`
-  - `"PhoneNumber"`
-  - `"PostalAddress"`
-  - `"Rating"`
-  - `"ShortBlob"`
-  - `"String"`
-  - `"Text"`
-  - `"User"`
+- `"Blob"`
+- `"BlobKey"`
+- `"Boolean"`
+- `"Category"`
+- `"Date/Time"`
+- `"Email"`
+- `"Float"`
+- `"GeoPt"`
+- `"IM"`
+- `"Integer"`
+- `"Key"`
+- `"Link"`
+- `"NULL"`
+- `"PhoneNumber"`
+- `"PostalAddress"`
+- `"Rating"`
+- `"ShortBlob"`
+- `"String"`
+- `"Text"`
+- `"User"`
 
 ## Statistics limitations
 
 Statistics have the following limitations:
 
-  - The `__Stat_PropertyType_Kind__` property and the `__Stat_PropertyType_PropertyName_Kind__` property return property type metadata for [array](https://docs.cloud.google.com/datastore/docs/concepts/entities#array) value types, and separately record the property type for each value in the array. For example, if an array property stores a list of strings, the property records the property type as `STRING` , while the actual property type is `ARRAY<STRING>` .
-  - The `__Stat_Namespace__` entities contain the same information found in `__Stat_Ns_Total__` records. `__Stat_Namespace__` entities are stored in the empty namespace and contain a `subject_namespace` field describing the namespace to which they belong. `__Stat_Ns_Total__` records are stored in the namespace to which they refer, and thus don't contain a `subject_namespace` field. Hence, a query on kind `__Stat_Namespace__` (from the empty string namespace) ordered descending by `bytes` will list the namespaces that consume the largest storage first. Since queries across namespaces are not possible, any query for `__Stat_Ns_Total__` entities will only ever produce at most a single record.
+- The `__Stat_PropertyType_Kind__` property and the `__Stat_PropertyType_PropertyName_Kind__` property return property type metadata for [array](https://docs.cloud.google.com/datastore/docs/concepts/entities#array) value types, and separately record the property type for each value in the array. For example, if an array property stores a list of strings, the property records the property type as `STRING` , while the actual property type is `ARRAY<STRING>` .
+- The `__Stat_Namespace__` entities contain the same information found in `__Stat_Ns_Total__` records. `__Stat_Namespace__` entities are stored in the empty namespace and contain a `subject_namespace` field describing the namespace to which they belong. `__Stat_Ns_Total__` records are stored in the namespace to which they refer, and thus don't contain a `subject_namespace` field. Hence, a query on kind `__Stat_Namespace__` (from the empty string namespace) ordered descending by `bytes` will list the namespaces that consume the largest storage first. Since queries across namespaces are not possible, any query for `__Stat_Ns_Total__` entities will only ever produce at most a single record.
 
 ## Statistics entities drop order
 
@@ -244,38 +89,38 @@ The summary statistics entities `__Stat_Kind_CompositeIndex__` , `__Stat_Propert
 Statistics entities are dropped in groups in the following default order:
 
 1.  per-namespace, per-kind, and per-property statistics:
-    
-      - `__Stat_Ns_PropertyName_Kind__`
-      - `__Stat_Ns_PropertyType_PropertyName_Kind__`
+
+    - `__Stat_Ns_PropertyName_Kind__`
+    - `__Stat_Ns_PropertyType_PropertyName_Kind__`
 
 2.  per-kind and per-property statistics
-    
-      - `__Stat_PropertyName_Kind__`
-      - `__Stat_PropertyType_PropertyName_Kind__`
+
+    - `__Stat_PropertyName_Kind__`
+    - `__Stat_PropertyType_PropertyName_Kind__`
 
 3.  per-namespace statistics
-    
-      - `__Stat_Namespace__`
-      - `__Stat_Ns_Kind_CompositeIndex__`
-      - `__Stat_Ns_PropertyType__`
-      - `__Stat_Ns_Total__`
+
+    - `__Stat_Namespace__`
+    - `__Stat_Ns_Kind_CompositeIndex__`
+    - `__Stat_Ns_PropertyType__`
+    - `__Stat_Ns_Total__`
 
 Kind statistics entities have the following drop order:
 
 1.  per-namespace, per-kind statistics
-    
-      - `__Stat_Ns_Kind__`
-      - `__Stat_Ns_Kind_IsRootEntity__`
-      - `__Stat_Ns_Kind_NotRootEntity__`
-      - `__Stat_Ns_PropertyType_Kind__`
+
+    - `__Stat_Ns_Kind__`
+    - `__Stat_Ns_Kind_IsRootEntity__`
+    - `__Stat_Ns_Kind_NotRootEntity__`
+    - `__Stat_Ns_PropertyType_Kind__`
 
 2.  per-kind statistics
-    
-      - `__Stat_Kind__`
-      - `__Stat_Kind_IsRootEntity__`
-      - `__Stat_Kind_NotRootEntity__`
-      - `__Stat_PropertyType_Kind__`
+
+    - `__Stat_Kind__`
+    - `__Stat_Kind_IsRootEntity__`
+    - `__Stat_Kind_NotRootEntity__`
+    - `__Stat_PropertyType_Kind__`
 
 ## What's next
 
-  - [Locating quota usage information](https://docs.cloud.google.com/datastore/docs/pricing#locating_quota_usage_information_for_your_app)
+- [Locating quota usage information](https://docs.cloud.google.com/datastore/docs/pricing#locating_quota_usage_information_for_your_app)

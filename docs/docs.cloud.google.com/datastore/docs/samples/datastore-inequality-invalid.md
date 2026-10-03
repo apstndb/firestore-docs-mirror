@@ -10,17 +10,19 @@ An example of an invalid inequality range filter.
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Filter = Filter.And(Filter.GreaterThan("created", _startDate),
-            Filter.GreaterThan("priority", 3))
-    };
+```csharp
+Query query = new Query("Task")
+{
+    Filter = Filter.And(Filter.GreaterThan("created", _startDate),
+        Filter.GreaterThan("priority", 3))
+};
+```
 
 ### Go
 
@@ -28,9 +30,11 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").
-     FilterField("Created", ">", time.Date(1990, 1, 1, 0, 0, 0, 0, time.UTC)).
-     FilterField("Priority", ">", 3)
+```go
+query := datastore.NewQuery("Task").
+    FilterField("Created", ">", time.Date(1990, 1, 1, 0, 0, 0, 0, time.UTC)).
+    FilterField("Priority", ">", 3)
+```
 
 ### Java
 
@@ -38,13 +42,15 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(
-                CompositeFilter.and(
-                    PropertyFilter.gt("created", startDate), PropertyFilter.gt("priority", 3)))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(
+            CompositeFilter.and(
+                PropertyFilter.gt("created", startDate), PropertyFilter.gt("priority", 3)))
+        .build();
+```
 
 ### Python
 
@@ -52,20 +58,22 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-        import datetime
-    
-        start_date = datetime.datetime(1990, 1, 1)
-        query = client.query(kind="Task")
-        query.add_filter(
-            filter=datastore.query.PropertyFilter("created", ">", start_date)
-        )
-        query.add_filter(filter=datastore.query.PropertyFilter("priority", ">", 3))
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+    import datetime
+
+    start_date = datetime.datetime(1990, 1, 1)
+    query = client.query(kind="Task")
+    query.add_filter(
+        filter=datastore.query.PropertyFilter("created", ">", start_date)
+    )
+    query.add_filter(filter=datastore.query.PropertyFilter("priority", ">", 3))
+```
 
 ### Ruby
 
@@ -73,9 +81,11 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .where("created", ">=", Time.utc(1990, 1, 1))
-                     .where("priority", ">", 3)
+```ruby
+query = datastore.query("Task")
+                 .where("created", ">=", Time.utc(1990, 1, 1))
+                 .where("priority", ">", 3)
+```
 
 ## What's next
 

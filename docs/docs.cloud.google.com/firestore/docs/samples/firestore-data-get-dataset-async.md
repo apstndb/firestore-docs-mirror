@@ -12,8 +12,8 @@ Get Firestore Documents created from custom classes (async).
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Getting data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data)
-  - [Query and filter data](https://docs.cloud.google.com/firestore/native/docs/query-data/queries)
+- [Getting data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data)
+- [Query and filter data](https://docs.cloud.google.com/firestore/native/docs/query-data/queries)
 
 ## Code sample
 
@@ -21,26 +21,28 @@ For detailed documentation that includes this code sample, see the following:
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    cities_ref = db.collection("cities")
-    await cities_ref.document("BJ").set(
-        City("Beijing", None, "China", True, 21500000, ["hebei"]).to_dict()
-    )
-    await cities_ref.document("SF").set(
-        City(
-            "San Francisco", "CA", "USA", False, 860000, ["west_coast", "norcal"]
-        ).to_dict()
-    )
-    await cities_ref.document("LA").set(
-        City(
-            "Los Angeles", "CA", "USA", False, 3900000, ["west_coast", "socal"]
-        ).to_dict()
-    )
-    await cities_ref.document("DC").set(
-        City("Washington D.C.", None, "USA", True, 680000, ["east_coast"]).to_dict()
-    )
-    await cities_ref.document("TOK").set(
-        City("Tokyo", None, "Japan", True, 9000000, ["kanto", "honshu"]).to_dict()
-    )
+```python
+cities_ref = db.collection("cities")
+await cities_ref.document("BJ").set(
+    City("Beijing", None, "China", True, 21500000, ["hebei"]).to_dict()
+)
+await cities_ref.document("SF").set(
+    City(
+        "San Francisco", "CA", "USA", False, 860000, ["west_coast", "norcal"]
+    ).to_dict()
+)
+await cities_ref.document("LA").set(
+    City(
+        "Los Angeles", "CA", "USA", False, 3900000, ["west_coast", "socal"]
+    ).to_dict()
+)
+await cities_ref.document("DC").set(
+    City("Washington D.C.", None, "USA", True, 680000, ["east_coast"]).to_dict()
+)
+await cities_ref.document("TOK").set(
+    City("Tokyo", None, "Japan", True, 9000000, ["kanto", "honshu"]).to_dict()
+)
+```
 
 ## What's next
 

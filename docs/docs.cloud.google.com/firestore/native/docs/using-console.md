@@ -10,9 +10,9 @@ data_source: docs.cloud.google.com
 
 You can manage Firestore Standard edition through the following actions in the Google Cloud console:
 
-  - View, query, add, edit, and delete data.
-  - Manage indexes.
-  - Manage security rules.
+- View, query, add, edit, and delete data.
+- Manage indexes.
+- Manage security rules.
 
 ## View data
 
@@ -39,9 +39,9 @@ To configure panel settings:
 1.  In the data viewer toolbar, click **Panel settings** settings .
 
 2.  In the **Project panel settings** panel, configure the following options:
-    
-      - **Show non-existent parents** : Toggle whether to show non-existent parent documents in the documents list. This setting is enabled by default.
-      - **Realtime updates enabled** : Toggle whether to receive live updates when documents change. This setting is enabled by default. Disabling real-time updates can help lower costs by reducing read operations.
+
+    - **Show non-existent parents** : Toggle whether to show non-existent parent documents in the documents list. This setting is enabled by default.
+    - **Realtime updates enabled** : Toggle whether to receive live updates when documents change. This setting is enabled by default. Disabling real-time updates can help lower costs by reducing read operations.
 
 3.  Click **Save** .
 
@@ -53,8 +53,8 @@ A document can exist even if one or more of its parents don't exist. For example
 
 By default, the Firestore Standard edition data viewer displays non-existent parent documents as follows:
 
-  - In a collection's list of documents, the document IDs of non-existent parent documents are *italicized* .
-  - In a non-existent parent document's information panel, the data viewer points out that the document doesn't exist.
+- In a collection's list of documents, the document IDs of non-existent parent documents are *italicized* .
+- In a non-existent parent document's information panel, the data viewer points out that the document doesn't exist.
 
 ![Firestore data viewer in the console, showing a hierarchy of documents with a missing document highlighted and a warning message.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-console-non-existent-ancestor-document.png)
 
@@ -70,12 +70,12 @@ You can filter documents in a collection based on field value and the `==` , `!-
 
 To apply a collection filter:
 
-1.  Click the filter button filter\_list next to a collection ID:
-    
+1.  Click the filter button filter_list next to a collection ID:
+
     ![Firestore Panel view in the console, with the Filter button highlighted.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-console-filter-documents.png)
 
 2.  From the **Add filters** menu, select a document field, a filter condition, and a sort order.
-    
+
     ![Firestore Add filters panel, showing options to filter by field, add conditions, change sort order, and preview query code.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-console-apply-filter.png)
 
 3.  Click **Apply** .
@@ -95,21 +95,21 @@ You can query for documents in the ***Query Builder*** tab of the Firestore Stud
 4.  Click the **Query Builder** tab.
 
 5.  Select a [query scope](https://docs.cloud.google.com/firestore/docs/concepts/index-overview#query_scopes) .
-    
+
     Select ***Collection*** to query a single collection. In the text field, enter a path to a collection.
-    
+
     Select ***Collection group*** to query all collections with the same ID. In the ***Collection group*** field, enter a collection group ID.
-    
+
     The table will automatically display documents from the specified collection or collection group.
 
 6.  Click ***Add to query*** to filter the returned set of documents. By default, the Query Builder adds a `WHERE` clause. You can modify this clause using the dropdowns and text fields or change to one of the other available clauses. To continue building more complex queries, click ***Add to query*** .
-    
+
     To remove a query clause, click it's remove button delete . To remove all query clauses, click ***Clear*** .
-    
+
     > **Note:** Queries must meet Firestore Standard edition requirements and limitations for queries. Otherwise, the query fails and the page returns an error that describes why the query failed.
 
 7.  Click ***Run*** to retrieve results from your database.
-    
+
     ![Query builder displaying results of a query.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-query-builder.png)
 
 > **Tip:** Queries that you run are stored in your browser history. During the session, you can move forward and back within the browser to access recent queries. You can bookmark queries that you want to access often or to share with others.
@@ -118,15 +118,15 @@ You can query for documents in the ***Query Builder*** tab of the Firestore Stud
 
 As you use the Query Builder, keep in mind the following requirements and limitations for queries.
 
-  - All queries must be supported by one more indexes. If the database cannot find an index to support the query, it will return an error that contains a link to build the required index.
-    
-    ![Query builder with an error message to build the required index for the query.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-query-builder-index-error.png)
+- All queries must be supported by one more indexes. If the database cannot find an index to support the query, it will return an error that contains a link to build the required index.
 
-  - `ORDER BY` clauses must match the fields in the `WHERE` clauses and come in the same order. By default, results are ordered by document ID. If you filter by any other field with anything other than an equality ( `==` ), add an `ORDER BY` clause for that field.
-    
-    ![Query builder with a query clause and an order by clause on the same field.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-query-builder-order-by.png)
+  ![Query builder with an error message to build the required index for the query.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-query-builder-index-error.png)
 
-  - Range ( `<` , `<=` , `>` , `>=` ) and not equals ( `!=` , `not-in` ) query clauses must all filter on the same field.
+- `ORDER BY` clauses must match the fields in the `WHERE` clauses and come in the same order. By default, results are ordered by document ID. If you filter by any other field with anything other than an equality ( `==` ), add an `ORDER BY` clause for that field.
+
+  ![Query builder with a query clause and an order by clause on the same field.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-query-builder-order-by.png)
+
+- Range ( `<` , `<=` , `>` , `>=` ) and not equals ( `!=` , `not-in` ) query clauses must all filter on the same field.
 
 For additional limitations, see [Query limitations](https://docs.cloud.google.com/firestore/docs/query-data/queries#query_limitations) .
 
@@ -199,13 +199,13 @@ You can manage and deploy [Firestore Security Rules](https://docs.cloud.google.c
 
 To manage and deploy security rules in the Google Cloud console, you need the following IAM permissions:
 
-  - `firebaserules.releases.create`
-  - `firebaserules.releases.delete`
-  - `firebaserules.releases.update`
-  - `firebaserules.rulesets.create`
-  - `firebaserules.rulesets.delete`
-  - `firebaserules.rulesets.list`
-  - `firebaserules.rulesets.test` (required to use the rules simulator)
+- `firebaserules.releases.create`
+- `firebaserules.releases.delete`
+- `firebaserules.releases.update`
+- `firebaserules.rulesets.create`
+- `firebaserules.rulesets.delete`
+- `firebaserules.rulesets.list`
+- `firebaserules.rulesets.test` (required to use the rules simulator)
 
 To deploy rules in the Google Cloud console:
 

@@ -10,14 +10,16 @@ Create a new Datastore admin client.
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    // Create client
-    DatastoreAdminClient datastoreAdminClient = DatastoreAdminClient.Create();
+```csharp
+// Create client
+DatastoreAdminClient datastoreAdminClient = DatastoreAdminClient.Create();
+```
 
 ### Go
 
@@ -25,26 +27,28 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    import (
-     "context"
-     "fmt"
-     "io"
-    
-     admin "cloud.google.com/go/datastore/admin/apiv1"
-    )
-    
-    // clientCreate creates a new Datastore admin client.
-    func clientCreate(w io.Writer) (*admin.DatastoreAdminClient, error) {
-     ctx := context.Background()
-     client, err := admin.NewDatastoreAdminClient(ctx)
-     if err != nil {
-         return nil, fmt.Errorf("admin.NewDatastoreAdminClient: %w", err)
-     }
-     // Close client when done using it.
-     // defer client.Close()
-     fmt.Fprintf(w, "Admin client created\n")
-     return client, nil
+```go
+import (
+    "context"
+    "fmt"
+    "io"
+
+    admin "cloud.google.com/go/datastore/admin/apiv1"
+)
+
+// clientCreate creates a new Datastore admin client.
+func clientCreate(w io.Writer) (*admin.DatastoreAdminClient, error) {
+    ctx := context.Background()
+    client, err := admin.NewDatastoreAdminClient(ctx)
+    if err != nil {
+        return nil, fmt.Errorf("admin.NewDatastoreAdminClient: %w", err)
     }
+    // Close client when done using it.
+    // defer client.Close()
+    fmt.Fprintf(w, "Admin client created\n")
+    return client, nil
+}
+```
 
 ### Python
 
@@ -52,15 +56,17 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud.datastore_admin_v1 import DatastoreAdminClient
-    
-    
-    def client_create():
-        """Creates a new Datastore admin client."""
-        client = DatastoreAdminClient()
-    
-        print("Admin client created\n")
-        return client
+```python
+from google.cloud.datastore_admin_v1 import DatastoreAdminClient
+
+
+def client_create():
+    """Creates a new Datastore admin client."""
+    client = DatastoreAdminClient()
+
+    print("Admin client created\n")
+    return client
+```
 
 ### Ruby
 
@@ -68,11 +74,13 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    # Import the client library
-    require "google/cloud/datastore/admin/v1"
-    
-    # Instantiate a client
-    client = Google::Cloud::Datastore::Admin::V1::DatastoreAdmin::Client.new
+```ruby
+# Import the client library
+require "google/cloud/datastore/admin/v1"
+
+# Instantiate a client
+client = Google::Cloud::Datastore::Admin::V1::DatastoreAdmin::Client.new
+```
 
 ## What's next
 

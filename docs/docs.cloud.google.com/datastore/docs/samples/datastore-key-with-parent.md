@@ -12,18 +12,20 @@ Make a key with a single parent.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Entities, Properties, and Keys](https://docs.cloud.google.com/datastore/docs/concepts/entities)
+- [Entities, Properties, and Keys](https://docs.cloud.google.com/datastore/docs/concepts/entities)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Key rootKey = _db.CreateKeyFactory("TaskList").CreateKey("default");
-    Key key = new KeyFactory(rootKey, "Task").CreateKey("sampleTask");
+```csharp
+Key rootKey = _db.CreateKeyFactory("TaskList").CreateKey("default");
+Key key = new KeyFactory(rootKey, "Task").CreateKey("sampleTask");
+```
 
 ### Go
 
@@ -31,8 +33,10 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    parentKey := datastore.NameKey("TaskList", "default", nil)
-    taskKey := datastore.NameKey("Task", "sampleTask", parentKey)
+```go
+parentKey := datastore.NameKey("TaskList", "default", nil)
+taskKey := datastore.NameKey("Task", "sampleTask", parentKey)
+```
 
 ### Java
 
@@ -40,12 +44,14 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Key taskKey =
-        datastore
-            .newKeyFactory()
-            .addAncestors(PathElement.of("TaskList", "default"))
-            .setKind("Task")
-            .newKey("sampleTask");
+```java
+Key taskKey =
+    datastore
+        .newKeyFactory()
+        .addAncestors(PathElement.of("TaskList", "default"))
+        .setKind("Task")
+        .newKey("sampleTask");
+```
 
 ### PHP
 
@@ -53,8 +59,10 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $taskKey = $datastore->key('TaskList', 'default')
-        ->pathElement('Task', 'sampleTask');
+```php
+$taskKey = $datastore->key('TaskList', 'default')
+    ->pathElement('Task', 'sampleTask');
+```
 
 ### Python
 
@@ -62,16 +70,18 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    key = client.key("TaskList", "default", "Task", "sampleTask")
-    # Alternatively
-    parent_key = client.key("TaskList", "default")
-    key = client.key("Task", "sampleTask", parent=parent_key)
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+key = client.key("TaskList", "default", "Task", "sampleTask")
+# Alternatively
+parent_key = client.key("TaskList", "default")
+key = client.key("Task", "sampleTask", parent=parent_key)
+```
 
 ### Ruby
 
@@ -79,9 +89,11 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    # task_list_name = "default"
-    # task_name = "sampleTask"
-    task_key = datastore.key [["TaskList", task_list_name], ["Task", task_name]]
+```ruby
+# task_list_name = "default"
+# task_name = "sampleTask"
+task_key = datastore.key [["TaskList", task_list_name], ["Task", task_name]]
+```
 
 ## What's next
 

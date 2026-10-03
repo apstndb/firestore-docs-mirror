@@ -12,116 +12,130 @@ Retrieve Firestore Document as Map
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Getting data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data)
+- [Getting data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data)
 
 ## Code sample
 
-### C\#
+### C#
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    DocumentReference docRef = db.Collection("cities").Document("SF");
-    DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
-    if (snapshot.Exists)
+```csharp
+DocumentReference docRef = db.Collection("cities").Document("SF");
+DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
+if (snapshot.Exists)
+{
+    Console.WriteLine("Document data for {0} document:", snapshot.Id);
+    Dictionary<string, object> city = snapshot.ToDictionary();
+    foreach (KeyValuePair<string, object> pair in city)
     {
-        Console.WriteLine("Document data for {0} document:", snapshot.Id);
-        Dictionary<string, object> city = snapshot.ToDictionary();
-        foreach (KeyValuePair<string, object> pair in city)
-        {
-            Console.WriteLine("{0}: {1}", pair.Key, pair.Value);
-        }
+        Console.WriteLine("{0}: {1}", pair.Key, pair.Value);
     }
-    else
-    {
-        Console.WriteLine("Document {0} does not exist!", snapshot.Id);
-    }
+}
+else
+{
+    Console.WriteLine("Document {0} does not exist!", snapshot.Id);
+}
+```
 
 ### Go
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    import (
-     "context"
-     "fmt"
-    
-     "cloud.google.com/go/firestore"
-    )
-    
-    func docAsMap(ctx context.Context, client *firestore.Client) (map[string]interface{}, error) {
-     dsnap, err := client.Collection("cities").Doc("SF").Get(ctx)
-     if err != nil {
-         return nil, err
-     }
-     m := dsnap.Data()
-     fmt.Printf("Document data: %#v\n", m)
-     return m, nil
+```go
+import (
+    "context"
+    "fmt"
+
+    "cloud.google.com/go/firestore"
+)
+
+func docAsMap(ctx context.Context, client *firestore.Client) (map[string]interface{}, error) {
+    dsnap, err := client.Collection("cities").Doc("SF").Get(ctx)
+    if err != nil {
+        return nil, err
     }
+    m := dsnap.Data()
+    fmt.Printf("Document data: %#v\n", m)
+    return m, nil
+}
+```
 
 ### Java
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    DocumentReference docRef = db.collection("cities").document("SF");
-    // asynchronously retrieve the document
-    ApiFuture<DocumentSnapshot> future = docRef.get();
-    // ...
-    // future.get() blocks on response
-    DocumentSnapshot document = future.get();
-    if (document.exists()) {
-      System.out.println("Document data: " + document.getData());
-    } else {
-      System.out.println("No such document!");
-    }
+```java
+DocumentReference docRef = db.collection("cities").document("SF");
+// asynchronously retrieve the document
+ApiFuture<DocumentSnapshot> future = docRef.get();
+// ...
+// future.get() blocks on response
+DocumentSnapshot document = future.get();
+if (document.exists()) {
+  System.out.println("Document data: " + document.getData());
+} else {
+  System.out.println("No such document!");
+}
+```
 
 ### Node.js
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const cityRef = db.collection('cities').doc('SF');
-    const doc = await cityRef.get();
-    if (!doc.exists) {
-      console.log('No such document!');
-    } else {
-      console.log('Document data:', doc.data());
-    }
+```javascript
+const cityRef = db.collection('cities').doc('SF');
+const doc = await cityRef.get();
+if (!doc.exists) {
+  console.log('No such document!');
+} else {
+  console.log('Document data:', doc.data());
+}
+```
 
 ### PHP
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $docRef = $db->collection('samples/php/cities')->document('SF');
-    $snapshot = $docRef->snapshot();
-    
-    if ($snapshot->exists()) {
-        printf('Document data:' . PHP_EOL);
-        print_r($snapshot->data());
-    } else {
-        printf('Document %s does not exist!' . PHP_EOL, $snapshot->id());
-    }
+```php
+$docRef = $db->collection('samples/php/cities')->document('SF');
+$snapshot = $docRef->snapshot();
+
+if ($snapshot->exists()) {
+    printf('Document data:' . PHP_EOL);
+    print_r($snapshot->data());
+} else {
+    printf('Document %s does not exist!' . PHP_EOL, $snapshot->id());
+}
+```
 
 ### Python
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    doc_ref = db.collection("cities").document("SF")
-    
-    doc = doc_ref.get()
-    if doc.exists:
-        print(f"Document data: {doc.to_dict()}")
-    else:
-        print("No such document!")
+```python
+doc_ref = db.collection("cities").document("SF")
+
+doc = doc_ref.get()
+if doc.exists:
+    print(f"Document data: {doc.to_dict()}")
+else:
+    print("No such document!")
+```
 
 ### Ruby
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    doc_ref  = firestore.doc "#{collection_path}/SF"
-    snapshot = doc_ref.get
-    if snapshot.exists?
-      puts "#{snapshot.document_id} data: #{snapshot.data}."
-    else
-      puts "Document #{snapshot.document_id} does not exist!"
-    end
+```ruby
+doc_ref  = firestore.doc "#{collection_path}/SF"
+snapshot = doc_ref.get
+if snapshot.exists?
+  puts "#{snapshot.document_id} data: #{snapshot.data}."
+else
+  puts "Document #{snapshot.document_id} does not exist!"
+end
+```
 
 ## What's next
 

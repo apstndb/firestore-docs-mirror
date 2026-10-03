@@ -10,47 +10,49 @@ List indexes within a Datastore project
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    using Google.Cloud.Datastore.Admin.V1;
-    using System;
-    using System.Collections.Generic;
-    
-    public class ListIndexesSample
+```csharp
+using Google.Cloud.Datastore.Admin.V1;
+using System;
+using System.Collections.Generic;
+
+public class ListIndexesSample
+{
+    public IEnumerable<Google.Cloud.Datastore.Admin.V1.Index> ListIndexes(string projectId = "your-project-id")
     {
-        public IEnumerable<Google.Cloud.Datastore.Admin.V1.Index> ListIndexes(string projectId = "your-project-id")
+        // Create client
+        DatastoreAdminClient datastoreAdminClient = DatastoreAdminClient.Create();
+
+        // Initialize request argument(s)
+        ListIndexesRequest listIndexesRequest = new ListIndexesRequest
         {
-            // Create client
-            DatastoreAdminClient datastoreAdminClient = DatastoreAdminClient.Create();
-    
-            // Initialize request argument(s)
-            ListIndexesRequest listIndexesRequest = new ListIndexesRequest
+            ProjectId = projectId
+        };
+
+        var response = datastoreAdminClient.ListIndexes(listIndexesRequest);
+
+        foreach (var index in response)
+        {
+            Console.WriteLine($"Index Id: {index.IndexId}");
+            Console.WriteLine($"Kind: {index.Kind}");
+
+            Console.WriteLine("Properties:");
+            foreach (var property in index.Properties)
             {
-                ProjectId = projectId
-            };
-    
-            var response = datastoreAdminClient.ListIndexes(listIndexesRequest);
-    
-            foreach (var index in response)
-            {
-                Console.WriteLine($"Index Id: {index.IndexId}");
-                Console.WriteLine($"Kind: {index.Kind}");
-    
-                Console.WriteLine("Properties:");
-                foreach (var property in index.Properties)
-                {
-                    Console.WriteLine($"Property: {property.Name}");
-                    Console.WriteLine($"Direction: {property.Direction}");
-                }
+                Console.WriteLine($"Property: {property.Name}");
+                Console.WriteLine($"Direction: {property.Direction}");
             }
-    
-            return response;
         }
+
+        return response;
     }
+}
+```
 
 ### Go
 
@@ -58,46 +60,48 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    import (
-     "context"
-     "fmt"
-     "io"
-    
-     admin "cloud.google.com/go/datastore/admin/apiv1"
-     "cloud.google.com/go/datastore/admin/apiv1/adminpb"
-     "google.golang.org/api/iterator"
-    )
-    
-    // indexList lists the indexes.
-    func indexList(w io.Writer, projectID string) ([]*adminpb.Index, error) {
-     // projectID := "my-project-id"
-     ctx := context.Background()
-     client, err := admin.NewDatastoreAdminClient(ctx)
-     if err != nil {
-         return nil, fmt.Errorf("admin.NewDatastoreAdminClient: %w", err)
-     }
-     defer client.Close()
-    
-     req := &adminpb.ListIndexesRequest{
-         ProjectId: projectID,
-     }
-     it := client.ListIndexes(ctx, req)
-     var indices []*adminpb.Index
-     for {
-         index, err := it.Next()
-         if err == iterator.Done {
-             break
-         }
-         if err != nil {
-             return nil, fmt.Errorf("ListIndexes: %w", err)
-         }
-         indices = append(indices, index)
-         fmt.Fprintf(w, "Got index: %v\n", index.IndexId)
-     }
-    
-     fmt.Fprintf(w, "Got lists of indexes\n")
-     return indices, nil
+```go
+import (
+    "context"
+    "fmt"
+    "io"
+
+    admin "cloud.google.com/go/datastore/admin/apiv1"
+    "cloud.google.com/go/datastore/admin/apiv1/adminpb"
+    "google.golang.org/api/iterator"
+)
+
+// indexList lists the indexes.
+func indexList(w io.Writer, projectID string) ([]*adminpb.Index, error) {
+    // projectID := "my-project-id"
+    ctx := context.Background()
+    client, err := admin.NewDatastoreAdminClient(ctx)
+    if err != nil {
+        return nil, fmt.Errorf("admin.NewDatastoreAdminClient: %w", err)
     }
+    defer client.Close()
+
+    req := &adminpb.ListIndexesRequest{
+        ProjectId: projectID,
+    }
+    it := client.ListIndexes(ctx, req)
+    var indices []*adminpb.Index
+    for {
+        index, err := it.Next()
+        if err == iterator.Done {
+            break
+        }
+        if err != nil {
+            return nil, fmt.Errorf("ListIndexes: %w", err)
+        }
+        indices = append(indices, index)
+        fmt.Fprintf(w, "Got index: %v\n", index.IndexId)
+    }
+
+    fmt.Fprintf(w, "Got lists of indexes\n")
+    return indices, nil
+}
+```
 
 ### Python
 
@@ -105,18 +109,20 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    def list_indexes(project_id):
-        """Lists the indexes."""
-        # project_id := "my-project-id"
-        client = DatastoreAdminClient()
-    
-        indexes = []
-        for index in client.list_indexes({"project_id": project_id}):
-            indexes.append(index)
-            print("Got index: %v\n", index.index_id)
-    
-        print("Got list of indexes\n")
-        return indexes
+```python
+def list_indexes(project_id):
+    """Lists the indexes."""
+    # project_id := "my-project-id"
+    client = DatastoreAdminClient()
+
+    indexes = []
+    for index in client.list_indexes({"project_id": project_id}):
+        indexes.append(index)
+        print("Got index: %v\n", index.index_id)
+
+    print("Got list of indexes\n")
+    return indexes
+```
 
 ### Ruby
 
@@ -124,13 +130,15 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    # project_id = "project-id"
-    indexes = client.list_indexes(project_id: project_id).map do |index|
-      puts "Got index: #{index.index_id}"
-      index
-    end
-    
-    puts "Got list of indexes"
+```ruby
+# project_id = "project-id"
+indexes = client.list_indexes(project_id: project_id).map do |index|
+  puts "Got index: #{index.index_id}"
+  index
+end
+
+puts "Got list of indexes"
+```
 
 ## What's next
 

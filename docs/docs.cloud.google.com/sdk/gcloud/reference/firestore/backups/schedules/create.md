@@ -12,71 +12,89 @@ gcloud firestore backups schedules create - creates a Cloud Firestore backup sch
 
 SYNOPSIS
 
-`gcloud firestore backups schedules create` `  --database  ` = `  DATABASE  ` `  --retention  ` = `  RETENTION  ` ( `  --recurrence  ` = `  RECURRENCE  ` : `  --day-of-week  ` = `  DAY_OF_WEEK  ` ) \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud firestore backups schedules create` [`--database`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/create#--database) = `DATABASE` [`--retention`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/create#--retention) = `RETENTION` ( [`--recurrence`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/create#--recurrence) = `RECURRENCE` : [`--day-of-week`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/create#--day-of-week) = `DAY_OF_WEEK` ) \[ [`GCLOUD_WIDE_FLAG`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/create#GCLOUD-WIDE-FLAGS)` …` \]
 
 EXAMPLES
 
 To create a backup schedule with 7 days retention and daily recurrence under database testdb.
 
-    gcloud firestore backups schedules create --database=testdb --retention=7d --recurrence=daily
+```
+gcloud firestore backups schedules create --database=testdb --retention=7d --recurrence=daily
+```
 
 To create a backup schedule with 7 days retention and weekly recurrence on Monday under database testdb.
 
-    gcloud firestore backups schedules create --database=testdb --retention=7d --recurrence=weekly --day-of-week=MON
+```
+gcloud firestore backups schedules create --database=testdb --retention=7d --recurrence=weekly --day-of-week=MON
+```
 
 REQUIRED FLAGS
 
-`--database` = `  DATABASE  `
+`--database` = `DATABASE`
 
 The database to operate on.
 
 For example, to operate on database `foo` :
 
-    gcloud firestore backups schedules create --database='foo'
+```
+gcloud firestore backups schedules create --database='foo'
+```
 
-`--retention` = `  RETENTION  `
+`--retention` = `RETENTION`
 
 The rention of the backup. At what relative time in the future, compared to the creation time of the backup should the backup be deleted, i.e. keep backups for 7 days.
 
 For example, to set retention as 7 days.
 
-    gcloud firestore backups schedules create --retention=7d
+```
+gcloud firestore backups schedules create --retention=7d
+```
 
 Recurrence settings of a backup schedule. This must be specified.
 
-  - `--recurrence` = `  RECURRENCE  `  
-    The recurrence settings of a backup schedule.
-    
-    Currently only daily and weekly backup schedules are supported.
-    
-    When a weekly backup schedule is created, day-of-week is needed.
-    
-    For example, to create a weekly backup schedule which creates backups on Monday.
-    
-        gcloud firestore backups schedules create --recurrence=weekly --day-of-week=MON
-    
-    This flag argument must be specified if any of the other arguments in this group are specified.
+`--recurrence` = `RECURRENCE`  
+The recurrence settings of a backup schedule.
 
-  - `--day-of-week` = `  DAY_OF_WEEK  `  
-    The day of week (UTC time zone) of when backups are created.
-    
-        The available values are: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`,`SUN`.
-        Values are case insensitive.
-    
-        This is required when creating a weekly backup schedule.
-    
-    `  DAY_OF_WEEK  ` must be one of: `SUN` , `MON` , `TUE` , `WED` , `THU` , `FRI` , `SAT` .
+Currently only daily and weekly backup schedules are supported.
+
+When a weekly backup schedule is created, day-of-week is needed.
+
+For example, to create a weekly backup schedule which creates backups on Monday.
+
+```
+gcloud firestore backups schedules create --recurrence=weekly --day-of-week=MON
+```
+
+This flag argument must be specified if any of the other arguments in this group are specified.
+
+`--day-of-week` = `DAY_OF_WEEK`  
+The day of week (UTC time zone) of when backups are created.
+
+```
+The available values are: `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`,`SUN`.
+Values are case insensitive.
+```
+
+```
+This is required when creating a weekly backup schedule.
+```
+
+`DAY_OF_WEEK` must be one of: `SUN` , `MON` , `TUE` , `WED` , `THU` , `FRI` , `SAT` .
 
 GCLOUD WIDE FLAGS
 
-These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
+These flags are available to all commands: [`--access-token-file`](https://docs.cloud.google.com/sdk/gcloud/reference#--access-token-file) , [`--account`](https://docs.cloud.google.com/sdk/gcloud/reference#--account) , [`--billing-project`](https://docs.cloud.google.com/sdk/gcloud/reference#--billing-project) , [`--configuration`](https://docs.cloud.google.com/sdk/gcloud/reference#--configuration) , [`--flags-file`](https://docs.cloud.google.com/sdk/gcloud/reference#--flags-file) , [`--flatten`](https://docs.cloud.google.com/sdk/gcloud/reference#--flatten) , [`--format`](https://docs.cloud.google.com/sdk/gcloud/reference#--format) , [`--help`](https://docs.cloud.google.com/sdk/gcloud/reference#--help) , [`--impersonate-service-account`](https://docs.cloud.google.com/sdk/gcloud/reference#--impersonate-service-account) , [`--log-http`](https://docs.cloud.google.com/sdk/gcloud/reference#--log-http) , [`--project`](https://docs.cloud.google.com/sdk/gcloud/reference#--project) , [`--quiet`](https://docs.cloud.google.com/sdk/gcloud/reference#--quiet) , [`--trace-token`](https://docs.cloud.google.com/sdk/gcloud/reference#--trace-token) , [`--user-output-enabled`](https://docs.cloud.google.com/sdk/gcloud/reference#--user-output-enabled) , [`--verbosity`](https://docs.cloud.google.com/sdk/gcloud/reference#--verbosity) .
 
-Run ` $ gcloud help  ` for details.
+Run `$ `[`gcloud help`](https://docs.cloud.google.com/sdk/gcloud/reference) for details.
 
 NOTES
 
 These variants are also available:
 
-    gcloud alpha firestore backups schedules create
+```
+gcloud alpha firestore backups schedules create
+```
 
-    gcloud beta firestore backups schedules create
+```
+gcloud beta firestore backups schedules create
+```

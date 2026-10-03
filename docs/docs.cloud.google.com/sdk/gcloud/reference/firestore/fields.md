@@ -12,7 +12,7 @@ gcloud firestore fields - manage field metadata for Cloud Firestore
 
 SYNOPSIS
 
-`gcloud firestore fields` `  GROUP  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud firestore fields` [`GROUP`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields#GROUP) \[ [`GCLOUD_WIDE_FLAG`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields#GCLOUD-WIDE-FLAGS)` …` \]
 
 DESCRIPTION
 
@@ -20,21 +20,25 @@ Manage field metadata for Cloud Firestore.
 
 GCLOUD WIDE FLAGS
 
-These flags are available to all commands: `  --help  ` .
+These flags are available to all commands: [`--help`](https://docs.cloud.google.com/sdk/gcloud/reference#--help) .
 
-Run ` $ gcloud help  ` for details.
+Run `$ `[`gcloud help`](https://docs.cloud.google.com/sdk/gcloud/reference) for details.
 
 GROUPS
 
-`  GROUP  ` is one of the following:
+`GROUP` is one of the following:
 
-  - `  ttls  `  
-    Manage Time-to-live metadata for Cloud Firestore.
+[`ttls`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/fields/ttls)  
+Manage Time-to-live metadata for Cloud Firestore.
 
 NOTES
 
 These variants are also available:
 
-    gcloud alpha firestore fields
+```
+gcloud alpha firestore fields
+```
 
-    gcloud beta firestore fields
+```
+gcloud beta firestore fields
+```

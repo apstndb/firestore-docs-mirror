@@ -8,4 +8,4 @@ data_source: docs.cloud.google.com
 
 # All Datastore mode code samples
 
-Python C\# Go Ruby Java PHP
+Python C# Go Ruby Java PHP

@@ -6,36 +6,22 @@ description: A cloud-hosted NoSQL database that's simple enough for rapid protot
 data_source: docs.cloud.google.com
 ---
 
-The response for `  Firestore.ListDocuments  ` .
+The response for [`Firestore.ListDocuments`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/list#google.firestore.v1beta1.Firestore.ListDocuments) .
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>JSON representation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;documents&quot;: [{object (Document)}],&quot;nextPageToken&quot;: string}</code></pre></td>
-</tr>
-</tbody>
-</table>
+**JSON representation**
 
-Fields
+```
+{
+  "documents": [
+    {
+      object (Document)
+    }
+  ],
+  "nextPageToken": string
+}
+```
 
-`documents[]`
-
-` object ( Document  ` )
-
-The Documents found.
-
-`nextPageToken`
-
-`string`
-
-A token to retrieve the next page of documents.
-
-If this field is omitted, there are no subsequent pages.
+| Fields          |                                                                                                                                                             |
+|-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `documents[]`   | `object ( `[`Document`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents#Document)` )` The Documents found. |
+| `nextPageToken` | `string` A token to retrieve the next page of documents. If this field is omitted, there are no subsequent pages.                                           |

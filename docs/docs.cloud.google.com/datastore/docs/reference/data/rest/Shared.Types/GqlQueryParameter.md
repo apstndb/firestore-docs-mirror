@@ -6,40 +6,26 @@ description: A highly-scalable NoSQL database for your web and mobile applicatio
 data_source: docs.cloud.google.com
 ---
 
-  - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/GqlQueryParameter#SCHEMA_REPRESENTATION)
+- [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/GqlQueryParameter#SCHEMA_REPRESENTATION)
 
 A binding parameter for a GQL query.
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>JSON representation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{// Union field parameter_type can be only one of the following:&quot;value&quot;: {object (Value)},&quot;cursor&quot;: string// End of list of possible types for union field parameter_type.}</code></pre></td>
-</tr>
-</tbody>
-</table>
+**JSON representation**
 
-Fields
+```
+{
 
-Union field `parameter_type` . The type of parameter. `parameter_type` can be only one of the following:
+  // Union field parameter_type can be only one of the following:
+  "value": {
+    object (Value)
+  },
+  "cursor": string
+  // End of list of possible types for union field parameter_type.
+}
+```
 
-`value`
-
-` object ( Value  ` )
-
-A value parameter.
-
-`cursor`
-
-`string ( bytes format)`
-
-A query cursor. Query cursors are returned in query result batches.
-
-A base64-encoded string.
+| Fields                                                                                                   |                                                                                                                                                                                     |
+|----------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Union field `parameter_type` . The type of parameter. `parameter_type` can be only one of the following: |                                                                                                                                                                                     |
+| `value`                                                                                                  | `object ( `[`Value`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/Shared.Types/Value)` )` A value parameter.                                                    |
+| `cursor`                                                                                                 | `string ( `[`bytes`](https://developers.google.com/discovery/v1/type-format)` format)` A query cursor. Query cursors are returned in query result batches. A base64-encoded string. |

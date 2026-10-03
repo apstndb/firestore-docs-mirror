@@ -18,19 +18,23 @@ To delete a document, use the following language-specific `delete()` methods:
 
 Use the `deleteDoc()` method:
 
-    import { doc, deleteDoc } from "firebase/firestore";
-    
-    await deleteDoc(doc(db, "cities", "DC"));
+```
+import { doc, deleteDoc } from "firebase/firestore";
+
+await deleteDoc(doc(db, "cities", "DC"));
+```
 
 ### Web version 8
 
 Use the `delete()` method:
 
-    db.collection("cities").doc("DC").delete().then(() => {
-        console.log("Document successfully deleted!");
-    }).catch((error) => {
-        console.error("Error removing document: ", error);
-    });
+```
+db.collection("cities").doc("DC").delete().then(() => {
+    console.log("Document successfully deleted!");
+}).catch((error) => {
+    console.error("Error removing document: ", error);
+});
+```
 
 ##### Swift
 
@@ -38,12 +42,14 @@ Use the `delete()` method:
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    do {
-      try await db.collection("cities").document("DC").delete()
-      print("Document successfully removed!")
-    } catch {
-      print("Error removing document: \(error)")
-    }
+```
+do {
+  try await db.collection("cities").document("DC").delete()
+  print("Document successfully removed!")
+} catch {
+  print("Error removing document: \(error)")
+}
+```
 
 ##### Objective-C
 
@@ -51,145 +57,170 @@ Use the `deleteDocumentWithCompletion:` method:
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    [[[self.db collectionWithPath:@"cities"] documentWithPath:@"DC"]
-        deleteDocumentWithCompletion:^(NSError * _Nullable error) {
-          if (error != nil) {
-            NSLog(@"Error removing document: %@", error);
-          } else {
-            NSLog(@"Document successfully removed!");
-          }
-    }];
+```
+[[[self.db collectionWithPath:@"cities"] documentWithPath:@"DC"]
+    deleteDocumentWithCompletion:^(NSError * _Nullable error) {
+      if (error != nil) {
+        NSLog(@"Error removing document: %@", error);
+      } else {
+        NSLog(@"Document successfully removed!");
+      }
+}];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
 Use the `delete()` method:
 
-    db.collection("cities").document("DC")
+```
+db.collection("cities").document("DC")
+    .delete()
+    .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+    .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+```
+
+##### Java Android
+
+Use the `delete()` method:
+
+```
+db.collection("cities").document("DC")
         .delete()
-        .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
-        .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
-
-##### Java  
-Android
-
-Use the `delete()` method:
-
-    db.collection("cities").document("DC")
-            .delete()
-            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Log.d(TAG, "DocumentSnapshot successfully deleted!");
-                }
-            })
-            .addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.w(TAG, "Error deleting document", e);
-                }
-            });
+        .addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d(TAG, "DocumentSnapshot successfully deleted!");
+            }
+        })
+        .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w(TAG, "Error deleting document", e);
+            }
+        });
+```
 
 ### Dart
 
 Use the `delete()` method:
 
-    db.collection("cities").doc("DC").delete().then(
-          (doc) => print("Document deleted"),
-          onError: (e) => print("Error updating document $e"),
-        );
+```
+db.collection("cities").doc("DC").delete().then(
+      (doc) => print("Document deleted"),
+      onError: (e) => print("Error updating document $e"),
+    );
+```
 
 ##### Java
 
 Use the `delete()` method:
 
-    // asynchronously delete a document
-    ApiFuture<WriteResult> writeResult = db.collection("cities").document("DC").delete();
-    // ...
-    System.out.println("Update time : " + writeResult.get().getUpdateTime());
+```
+// asynchronously delete a document
+ApiFuture<WriteResult> writeResult = db.collection("cities").document("DC").delete();
+// ...
+System.out.println("Update time : " + writeResult.get().getUpdateTime());
+```
 
 ##### Python
 
 Use the `delete()` method:
 
-    db.collection("cities").document("DC").delete()
+```
+db.collection("cities").document("DC").delete()
+```
 
-##### Python  
-(Async)
+##### Python (Async)
 
 Use the `delete()` method:
 
-    await db.collection("cities").document("DC").delete()
+```
+await db.collection("cities").document("DC").delete()
+```
 
 ##### C++
 
 Use the `Delete()` method:
 
-    db->Collection("cities").Document("DC").Delete().OnCompletion(
-        [](const Future<void>& future) {
-          if (future.error() == Error::kErrorOk) {
-            std::cout << "DocumentSnapshot successfully deleted!" << std::endl;
-          } else {
-            std::cout << "Error deleting document: " << future.error_message()
-                      << std::endl;
-          }
-        });
+```
+db->Collection("cities").Document("DC").Delete().OnCompletion(
+    [](const Future<void>& future) {
+      if (future.error() == Error::kErrorOk) {
+        std::cout << "DocumentSnapshot successfully deleted!" << std::endl;
+      } else {
+        std::cout << "Error deleting document: " << future.error_message()
+                  << std::endl;
+      }
+    });
+```
 
 ##### Node.js
 
 Use the `delete()` method:
 
-    const res = await db.collection('cities').doc('DC').delete();
+```
+const res = await db.collection('cities').doc('DC').delete();
+```
 
 ##### Go
 
 Use the `Delete()` method:
 
-    import (
-     "context"
-     "log"
-    
-     "cloud.google.com/go/firestore"
-    )
-    
-    func deleteDoc(ctx context.Context, client *firestore.Client) error {
-     _, err := client.Collection("cities").Doc("DC").Delete(ctx)
-     if err != nil {
-         // Handle any errors in an appropriate way, such as returning them.
-         log.Printf("An error has occurred: %s", err)
-     }
-    
-     return err
+```
+import (
+    "context"
+    "log"
+
+    "cloud.google.com/go/firestore"
+)
+
+func deleteDoc(ctx context.Context, client *firestore.Client) error {
+    _, err := client.Collection("cities").Doc("DC").Delete(ctx)
+    if err != nil {
+        // Handle any errors in an appropriate way, such as returning them.
+        log.Printf("An error has occurred: %s", err)
     }
+
+    return err
+}
+```
 
 ##### PHP
 
 Use the `delete()` method:
 
-    $db->collection('samples/php/cities')->document('DC')->delete();
+```php
+$db->collection('samples/php/cities')->document('DC')->delete();
+```
 
 ##### Unity
 
 Use the `DeleteAsync()` method:
 
-    DocumentReference cityRef = db.Collection("cities").Document("DC");
-    cityRef.DeleteAsync();
+```
+DocumentReference cityRef = db.Collection("cities").Document("DC");
+cityRef.DeleteAsync();
+```
 
-##### C\#
+##### C#
 
 Use the `DeleteAsync()` method:
 
-    DocumentReference cityRef = db.Collection("cities").Document("DC");
-    await cityRef.DeleteAsync();
+```csharp
+DocumentReference cityRef = db.Collection("cities").Document("DC");
+await cityRef.DeleteAsync();
+```
 
 ##### Ruby
 
 Use the `delete()` method:
 
-    city_ref = firestore.doc "#{collection_path}/DC"
-    city_ref.delete
+```
+city_ref = firestore.doc "#{collection_path}/DC"
+city_ref.delete
+```
 
-> **Warning:** Deleting a document does not delete its subcollections\!
+> **Warning:** Deleting a document does not delete its subcollections!
 
 When you delete a document, Firestore does not automatically delete the documents within its subcollections. You can still access the subcollection documents by reference. For example, you can access the document at path `/mycoll/mydoc/mysubcoll/mysubdoc` even if you delete the parent document at `/mycoll/mydoc` .
 
@@ -205,25 +236,29 @@ To delete specific fields from a document, use the following language-specific `
 
 Use the `deleteField()` method:
 
-    import { doc, updateDoc, deleteField } from "firebase/firestore";
-    
-    const cityRef = doc(db, 'cities', 'BJ');
-    
-    // Remove the 'capital' field from the document
-    await updateDoc(cityRef, {
-        capital: deleteField()
-    });
+```
+import { doc, updateDoc, deleteField } from "firebase/firestore";
+
+const cityRef = doc(db, 'cities', 'BJ');
+
+// Remove the 'capital' field from the document
+await updateDoc(cityRef, {
+    capital: deleteField()
+});
+```
 
 ### Web version 8
 
 Use the `FieldValue.delete()` method:
 
-    var cityRef = db.collection('cities').doc('BJ');
-    
-    // Remove the 'capital' field from the document
-    var removeCapital = cityRef.update({
-        capital: firebase.firestore.FieldValue.delete()
-    });
+```
+var cityRef = db.collection('cities').doc('BJ');
+
+// Remove the 'capital' field from the document
+var removeCapital = cityRef.update({
+    capital: firebase.firestore.FieldValue.delete()
+});
+```
 
 ##### Swift
 
@@ -231,15 +266,17 @@ Use the `FieldValue.delete()` method:
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    do {
-    
-      try await db.collection("cities").document("BJ").updateData([
-        "capital": FieldValue.delete(),
-      ])
-      print("Document successfully updated")
-    } catch {
-      print("Error updating document: \(error)")
-    }
+```
+do {
+
+  try await db.collection("cities").document("BJ").updateData([
+    "capital": FieldValue.delete(),
+  ])
+  print("Document successfully updated")
+} catch {
+  print("Error updating document: \(error)")
+}
+```
 
 ##### Objective-C
 
@@ -247,167 +284,192 @@ Use the `fieldValueForDelete:` method:
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    [[[self.db collectionWithPath:@"cities"] documentWithPath:@"BJ"] updateData:@{
-      @"capital": [FIRFieldValue fieldValueForDelete]
-    } completion:^(NSError * _Nullable error) {
-      if (error != nil) {
-        NSLog(@"Error updating document: %@", error);
-      } else {
-        NSLog(@"Document successfully updated");
-      }
-    }];
+```
+[[[self.db collectionWithPath:@"cities"] documentWithPath:@"BJ"] updateData:@{
+  @"capital": [FIRFieldValue fieldValueForDelete]
+} completion:^(NSError * _Nullable error) {
+  if (error != nil) {
+    NSLog(@"Error updating document: %@", error);
+  } else {
+    NSLog(@"Document successfully updated");
+  }
+}];
+```
 
-##### Kotlin  
-Android
-
-Use the `FieldValue.delete()` method:
-
-    val docRef = db.collection("cities").document("BJ")
-    
-    // Remove the 'capital' field from the document
-    val updates = hashMapOf<String, Any>(
-        "capital" to FieldValue.delete(),
-    )
-    
-    docRef.update(updates).addOnCompleteListener { }
-
-##### Java  
-Android
+##### Kotlin Android
 
 Use the `FieldValue.delete()` method:
 
-    DocumentReference docRef = db.collection("cities").document("BJ");
-    
-    // Remove the 'capital' field from the document
-    Map<String,Object> updates = new HashMap<>();
-    updates.put("capital", FieldValue.delete());
-    
-    docRef.update(updates).addOnCompleteListener(new OnCompleteListener<Void>() {
-        // ...
-        // ...
+```
+val docRef = db.collection("cities").document("BJ")
+
+// Remove the 'capital' field from the document
+val updates = hashMapOf<String, Any>(
+    "capital" to FieldValue.delete(),
+)
+
+docRef.update(updates).addOnCompleteListener { }
+```
+
+##### Java Android
+
+Use the `FieldValue.delete()` method:
+
+```
+DocumentReference docRef = db.collection("cities").document("BJ");
+
+// Remove the 'capital' field from the document
+Map<String,Object> updates = new HashMap<>();
+updates.put("capital", FieldValue.delete());
+
+docRef.update(updates).addOnCompleteListener(new OnCompleteListener<Void>() {
+    // ...
+    // ...
+```
 
 ### Dart
 
 Use the `FieldValue.delete()` method:
 
-    final docRef = db.collection("cities").doc("BJ");
-    
-    // Remove the 'capital' field from the document
-    final updates = <String, dynamic>{
-      "capital": FieldValue.delete(),
-    };
-    
-    docRef.update(updates);
+```
+final docRef = db.collection("cities").doc("BJ");
+
+// Remove the 'capital' field from the document
+final updates = <String, dynamic>{
+  "capital": FieldValue.delete(),
+};
+
+docRef.update(updates);
+```
 
 ##### Java
 
 Use the `FieldValue.delete()` method:
 
-    DocumentReference docRef = db.collection("cities").document("BJ");
-    Map<String, Object> updates = new HashMap<>();
-    updates.put("capital", FieldValue.delete());
-    // Update and delete the "capital" field in the document
-    ApiFuture<WriteResult> writeResult = docRef.update(updates);
-    System.out.println("Update time : " + writeResult.get());
+```
+DocumentReference docRef = db.collection("cities").document("BJ");
+Map<String, Object> updates = new HashMap<>();
+updates.put("capital", FieldValue.delete());
+// Update and delete the "capital" field in the document
+ApiFuture<WriteResult> writeResult = docRef.update(updates);
+System.out.println("Update time : " + writeResult.get());
+```
 
 ##### Python
 
 Use the `firestore.DELETE_FIELD` method:
 
-    city_ref = db.collection("cities").document("BJ")
-    city_ref.update({"capital": firestore.DELETE_FIELD})
+```
+city_ref = db.collection("cities").document("BJ")
+city_ref.update({"capital": firestore.DELETE_FIELD})
+```
 
-##### Python  
-(Async)
+##### Python (Async)
 
 Use the `firestore.DELETE_FIELD` method:
 
-    city_ref = db.collection("cities").document("BJ")
-    await city_ref.update({"capital": firestore.DELETE_FIELD})
+```
+city_ref = db.collection("cities").document("BJ")
+await city_ref.update({"capital": firestore.DELETE_FIELD})
+```
 
 ##### C++
 
 Use the `FieldValue::Delete()` method:
 
-    DocumentReference doc_ref = db->Collection("cities").Document("BJ");
-    doc_ref.Update({{"capital", FieldValue::Delete()}})
-        .OnCompletion([](const Future<void>& future) { /*...*/ });
+```
+DocumentReference doc_ref = db->Collection("cities").Document("BJ");
+doc_ref.Update({{"capital", FieldValue::Delete()}})
+    .OnCompletion([](const Future<void>& future) { /*...*/ });
+```
 
 ##### Node.js
 
 Use the `FieldValue.delete()` method:
 
-    // Create a document reference
-    const cityRef = db.collection('cities').doc('BJ');
-    
-    // Remove the 'capital' field from the document
-    const res = await cityRef.update({
-      capital: FieldValue.delete()
-    });
+```
+// Create a document reference
+const cityRef = db.collection('cities').doc('BJ');
+
+// Remove the 'capital' field from the document
+const res = await cityRef.update({
+  capital: FieldValue.delete()
+});
+```
 
 ##### Go
 
 Use the `firestore.Delete` method:
 
-    import (
-     "context"
-     "log"
-    
-     "cloud.google.com/go/firestore"
-    )
-    
-    func deleteField(ctx context.Context, client *firestore.Client) error {
-     _, err := client.Collection("cities").Doc("BJ").Update(ctx, []firestore.Update{
-         {
-             Path:  "capital",
-             Value: firestore.Delete,
-         },
-     })
-     if err != nil {
-         // Handle any errors in an appropriate way, such as returning them.
-         log.Printf("An error has occurred: %s", err)
-     }
-    
-     // ...
-     return err
+```
+import (
+    "context"
+    "log"
+
+    "cloud.google.com/go/firestore"
+)
+
+func deleteField(ctx context.Context, client *firestore.Client) error {
+    _, err := client.Collection("cities").Doc("BJ").Update(ctx, []firestore.Update{
+        {
+            Path:  "capital",
+            Value: firestore.Delete,
+        },
+    })
+    if err != nil {
+        // Handle any errors in an appropriate way, such as returning them.
+        log.Printf("An error has occurred: %s", err)
     }
+
+    // ...
+    return err
+}
+```
 
 ##### PHP
 
 Use the `FieldValue::deleteField()` method:
 
-    $cityRef = $db->collection('samples/php/cities')->document('BJ');
-    $cityRef->update([
-        ['path' => 'capital', 'value' => FieldValue::deleteField()]
-    ]);
+```php
+$cityRef = $db->collection('samples/php/cities')->document('BJ');
+$cityRef->update([
+    ['path' => 'capital', 'value' => FieldValue::deleteField()]
+]);
+```
 
 ##### Unity
 
 Use the `FieldValue.Delete` method:
 
-    DocumentReference cityRef = db.Collection("cities").Document("BJ");
-    Dictionary<string, object> updates = new Dictionary<string, object>
-    {
-        { "Capital", FieldValue.Delete }
-    };
+```
+DocumentReference cityRef = db.Collection("cities").Document("BJ");
+Dictionary<string, object> updates = new Dictionary<string, object>
+{
+    { "Capital", FieldValue.Delete }
+};
+```
 
-##### C\#
+##### C#
 
 Use the `FieldValue.Delete` method:
 
-    DocumentReference cityRef = db.Collection("cities").Document("BJ");
-    Dictionary<string, object> updates = new Dictionary<string, object>
-    {
-        { "Capital", FieldValue.Delete }
-    };
-    await cityRef.UpdateAsync(updates);
+```csharp
+DocumentReference cityRef = db.Collection("cities").Document("BJ");
+Dictionary<string, object> updates = new Dictionary<string, object>
+{
+    { "Capital", FieldValue.Delete }
+};
+await cityRef.UpdateAsync(updates);
+```
 
 ##### Ruby
 
 Use the `firestore.field_delete` method:
 
-    city_ref = firestore.doc "#{collection_path}/BJ"
-    city_ref.update({ capital: firestore.field_delete })
+```
+city_ref = firestore.doc "#{collection_path}/BJ"
+city_ref.update({ capital: firestore.field_delete })
+```
 
 ## Delete collections
 
@@ -419,32 +481,37 @@ The following snippets are simplified for clarity and don't include error handli
 
 ##### Web
 
-    // Deleting collections from a Web client is not recommended.
+```
+// Deleting collections from a Web client is not recommended.
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    // Deleting collections from an Apple client is not recommended.
+```
+// Deleting collections from an Apple client is not recommended.
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-``` 
+```
 // Deleting collections from an Apple client is not recommended.
-  
 ```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    // Deleting collections from an Android client is not recommended.
+```
+// Deleting collections from an Android client is not recommended.
+```
 
-##### Java  
-Android
+##### Java Android
 
-    // Deleting collections from an Android client is not recommended.
+```
+// Deleting collections from an Android client is not recommended.
+```
 
 ### Dart
 
@@ -452,177 +519,193 @@ Deleting collections from the client is not recommended.
 
 ##### Java
 
-    import com.google.api.core.ApiFuture;
-    import com.google.cloud.firestore.CollectionReference;
-    import com.google.cloud.firestore.Firestore;
-    import com.google.cloud.firestore.FirestoreOptions;
-    
-    public class DeleteCollection {
-    
-      /**
-       * Delete a collection and all its subcollections.
-       *
-       * @param projectId The Google Cloud project ID
-       * @param collectionName The name of the collection to delete
-       */
-      public static void deleteCollection(String projectId, String collectionName) throws Exception {
-        FirestoreOptions firestoreOptions =
-            FirestoreOptions.getDefaultInstance().toBuilder().setProjectId(projectId).build();
-        try (Firestore db = firestoreOptions.getService()) {
-          CollectionReference collection = db.collection(collectionName);
-    
-          ApiFuture<Void> future = db.recursiveDelete(collection);
-    
-          future.get();
-          System.out.println("Collection and all its subcollections deleted successfully.");
-        }
-      }
-    
-      public static void main(String[] args) throws Exception {
-        String projectId = "example-project-id";
-        String collectionName = "example-collection-name";
-    
-        deleteCollection(projectId, collectionName);
-      }
+```
+import com.google.api.core.ApiFuture;
+import com.google.cloud.firestore.CollectionReference;
+import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.FirestoreOptions;
+
+public class DeleteCollection {
+
+  /**
+   * Delete a collection and all its subcollections.
+   *
+   * @param projectId The Google Cloud project ID
+   * @param collectionName The name of the collection to delete
+   */
+  public static void deleteCollection(String projectId, String collectionName) throws Exception {
+    FirestoreOptions firestoreOptions =
+        FirestoreOptions.getDefaultInstance().toBuilder().setProjectId(projectId).build();
+    try (Firestore db = firestoreOptions.getService()) {
+      CollectionReference collection = db.collection(collectionName);
+
+      ApiFuture<Void> future = db.recursiveDelete(collection);
+
+      future.get();
+      System.out.println("Collection and all its subcollections deleted successfully.");
     }
+  }
+
+  public static void main(String[] args) throws Exception {
+    String projectId = "example-project-id";
+    String collectionName = "example-collection-name";
+
+    deleteCollection(projectId, collectionName);
+  }
+}
+```
 
 ##### Python
 
-    def delete_collection(coll_ref):
-    
-        print(f"Recursively deleting collection: {coll_ref}")
-        db.recursive_delete(coll_ref)
+```
+def delete_collection(coll_ref):
 
-##### Python  
-(Async)
+    print(f"Recursively deleting collection: {coll_ref}")
+    db.recursive_delete(coll_ref)
+```
 
-    async def delete_collection(coll_ref):
-    
-        await db.recursive_delete(coll_ref)
+##### Python (Async)
+
+```
+async def delete_collection(coll_ref):
+
+    await db.recursive_delete(coll_ref)
+```
 
 ##### C++
 
-``` 
+```
 // This is not supported. Delete data using CLI as discussed below.
-  
 ```
 
 ##### Node.js
 
-    async function deleteCollection(db, collectionPath) {
-      const collectionRef = db.collection(collectionPath);
-      return await db.recursiveDelete(collectionRef);
-    }
+```
+async function deleteCollection(db, collectionPath) {
+  const collectionRef = db.collection(collectionPath);
+  return await db.recursiveDelete(collectionRef);
+}
+```
 
 ##### Go
 
-    import (
-     "context"
-     "fmt"
-     "io"
-    
-     "cloud.google.com/go/firestore"
-     "google.golang.org/api/iterator"
-    )
-    
-    func deleteCollection(w io.Writer, projectID, collectionName string,
-     batchSize int) error {
-    
-     // Instantiate a client
-     ctx := context.Background()
-     client, err := firestore.NewClient(ctx, projectID)
-     if err != nil {
-         return err
-     }
-    
-     col := client.Collection(collectionName)
-     bulkwriter := client.BulkWriter(ctx)
-    
-     for {
-         // Get a batch of documents
-         iter := col.Limit(batchSize).Documents(ctx)
-         numDeleted := 0
-    
-         // Iterate through the documents, adding
-         // a delete operation for each one to the BulkWriter.
-         for {
-             doc, err := iter.Next()
-             if err == iterator.Done {
-                 break
-             }
-             if err != nil {
-                 return err
-             }
-    
-             bulkwriter.Delete(doc.Ref)
-             numDeleted++
-         }
-    
-         // If there are no documents to delete,
-         // the process is over.
-         if numDeleted == 0 {
-             bulkwriter.End()
-             break
-         }
-    
-         bulkwriter.Flush()
-     }
-     fmt.Fprintf(w, "Deleted collection \"%s\"", collectionName)
-     return nil
+```
+import (
+    "context"
+    "fmt"
+    "io"
+
+    "cloud.google.com/go/firestore"
+    "google.golang.org/api/iterator"
+)
+
+func deleteCollection(w io.Writer, projectID, collectionName string,
+    batchSize int) error {
+
+    // Instantiate a client
+    ctx := context.Background()
+    client, err := firestore.NewClient(ctx, projectID)
+    if err != nil {
+        return err
     }
+
+    col := client.Collection(collectionName)
+    bulkwriter := client.BulkWriter(ctx)
+
+    for {
+        // Get a batch of documents
+        iter := col.Limit(batchSize).Documents(ctx)
+        numDeleted := 0
+
+        // Iterate through the documents, adding
+        // a delete operation for each one to the BulkWriter.
+        for {
+            doc, err := iter.Next()
+            if err == iterator.Done {
+                break
+            }
+            if err != nil {
+                return err
+            }
+
+            bulkwriter.Delete(doc.Ref)
+            numDeleted++
+        }
+
+        // If there are no documents to delete,
+        // the process is over.
+        if numDeleted == 0 {
+            bulkwriter.End()
+            break
+        }
+
+        bulkwriter.Flush()
+    }
+    fmt.Fprintf(w, "Deleted collection \"%s\"", collectionName)
+    return nil
+}
+```
 
 ##### PHP
 
-    function data_delete_collection(string $projectId, string $collectionName, int $batchSize)
-    {
-        // Create the Cloud Firestore client
-        $db = new FirestoreClient([
-            'projectId' => $projectId,
-        ]);
-        $collectionReference = $db->collection($collectionName);
-        $documents = $collectionReference->limit($batchSize)->documents();
-        while (!$documents->isEmpty()) {
-            foreach ($documents as $document) {
-                printf('Deleting document %s' . PHP_EOL, $document->id());
-                $document->reference()->delete();
-            }
-            $documents = $collectionReference->limit($batchSize)->documents();
+```php
+function data_delete_collection(string $projectId, string $collectionName, int $batchSize)
+{
+    // Create the Cloud Firestore client
+    $db = new FirestoreClient([
+        'projectId' => $projectId,
+    ]);
+    $collectionReference = $db->collection($collectionName);
+    $documents = $collectionReference->limit($batchSize)->documents();
+    while (!$documents->isEmpty()) {
+        foreach ($documents as $document) {
+            printf('Deleting document %s' . PHP_EOL, $document->id());
+            $document->reference()->delete();
         }
+        $documents = $collectionReference->limit($batchSize)->documents();
     }
+}
+```
 
 ##### Unity
 
-    // This is not supported. Delete data using CLI as discussed below.
+```
+// This is not supported. Delete data using CLI as discussed below.
+```
 
-##### C\#
+##### C#
 
-    private static async Task DeleteCollection(CollectionReference collectionReference, int batchSize)
+```csharp
+private static async Task DeleteCollection(CollectionReference collectionReference, int batchSize)
+{
+    QuerySnapshot snapshot = await collectionReference.Limit(batchSize).GetSnapshotAsync();
+    IReadOnlyList<DocumentSnapshot> documents = snapshot.Documents;
+    while (documents.Count > 0)
     {
-        QuerySnapshot snapshot = await collectionReference.Limit(batchSize).GetSnapshotAsync();
-        IReadOnlyList<DocumentSnapshot> documents = snapshot.Documents;
-        while (documents.Count > 0)
+        foreach (DocumentSnapshot document in documents)
         {
-            foreach (DocumentSnapshot document in documents)
-            {
-                Console.WriteLine("Deleting document {0}", document.Id);
-                await document.Reference.DeleteAsync();
-            }
-            snapshot = await collectionReference.Limit(batchSize).GetSnapshotAsync();
-            documents = snapshot.Documents;
+            Console.WriteLine("Deleting document {0}", document.Id);
+            await document.Reference.DeleteAsync();
         }
-        Console.WriteLine("Finished deleting all documents from the collection.");
+        snapshot = await collectionReference.Limit(batchSize).GetSnapshotAsync();
+        documents = snapshot.Documents;
     }
+    Console.WriteLine("Finished deleting all documents from the collection.");
+}
+```
 
 ##### Ruby
 
-    cities_ref = firestore.col collection_path
-    query      = cities_ref
-    
-    query.get do |document_snapshot|
-      puts "Deleting document #{document_snapshot.document_id}."
-      document_ref = document_snapshot.ref
-      document_ref.delete
-    end
+```
+cities_ref = firestore.col collection_path
+query      = cities_ref
+
+query.get do |document_snapshot|
+  puts "Deleting document #{document_snapshot.document_id}."
+  document_ref = document_snapshot.ref
+  document_ref.delete
+end
+```
 
 ## Delete data with TTL policies
 
@@ -648,9 +731,11 @@ You can also use the [Firebase CLI](https://firebase.google.com/docs/cli) to del
 
 > **Note:** Deleting data with the Firebase CLI incurs read and delete costs. For more information, see [Pricing](https://firebase.google.com/docs/firestore/pricing#pricing_by_location) .
 
-    firebase firestore:delete  --database=DATABASE_ID PATH
+```
+firebase firestore:delete  --database=DATABASE_ID PATH
+```
 
-Replace DATABASE\_ID with your database ID and PATH with a path to a document or collection.
+Replace ` DATABASE_ID ` with your database ID and ` PATH ` with a path to a document or collection.
 
 For large deletion jobs (millions of documents), use one of the following:
 

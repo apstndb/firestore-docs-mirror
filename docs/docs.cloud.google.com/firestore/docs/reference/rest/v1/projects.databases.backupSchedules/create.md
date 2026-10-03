@@ -19,29 +19,23 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 
-Parameters
-
-`parent`
-
-`string`
-
-Required. The parent database.
-
-Format `projects/{project}/databases/{database}`
+| Parameters |                                                                                          |
+|------------|------------------------------------------------------------------------------------------|
+| `parent`   | `string` Required. The parent database. Format `projects/{project}/databases/{database}` |
 
 ### Request body
 
-The request body contains an instance of `  BackupSchedule  ` .
+The request body contains an instance of [`BackupSchedule`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules#BackupSchedule) .
 
 ### Response body
 
-If successful, the response body contains a newly created instance of `  BackupSchedule  ` .
+If successful, the response body contains a newly created instance of [`BackupSchedule`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules#BackupSchedule) .
 
 ### Authorization scopes
 
 Requires one of the following OAuth scopes:
 
-  - `https://www.googleapis.com/auth/datastore`
-  - `https://www.googleapis.com/auth/cloud-platform`
+- `https://www.googleapis.com/auth/datastore`
+- `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

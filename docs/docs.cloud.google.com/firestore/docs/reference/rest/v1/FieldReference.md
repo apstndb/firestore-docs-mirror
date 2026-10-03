@@ -8,32 +8,34 @@ data_source: docs.cloud.google.com
 
 A reference to a field in a document, ex: `stats.operations` .
 
+**JSON representation**
+
+```
+{
+  "fieldPath": string
+}
+```
+
 <table>
 <colgroup>
-<col style="width: 100%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th>JSON representation</th>
+<th>Fields</th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;fieldPath&quot;: string
-}</code></pre></td>
+<td><code>fieldPath</code></td>
+<td><p><code>string</code></p>
+<p>A reference to a field in a document.</p>
+<p>Requires:</p>
+<ul>
+<li>MUST be a dot-delimited ( <code>.</code> ) string of segments, where each segment conforms to <a href="https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents#Document.FIELDS.fields"><code>document field name</code></a> limitations.</li>
+</ul></td>
 </tr>
 </tbody>
 </table>
-
-Fields
-
-`fieldPath`
-
-`string`
-
-A reference to a field in a document.
-
-Requires:
-
-  - MUST be a dot-delimited ( `.` ) string of segments, where each segment conforms to `  document field name  ` limitations.

@@ -12,23 +12,23 @@ This page describes how to use the Query insights dashboard to detect and analyz
 
 Use the Query insights dashboard to monitor metrics-related queries. Based on the metrics, you can identify the most frequently used queries and queries with high latencies that might require optimization. Use the Query insights dashboard to help you with:
 
-  - **Query performance optimization** : identify queries with high latencies and that might need optimization.
-  - **Query cost management** : discover high-cost queries and optimize them to reduce costs.
-  - **Query stats monitoring** : track query stats over time.
+- **Query performance optimization** : identify queries with high latencies and that might need optimization.
+- **Query cost management** : discover high-cost queries and optimize them to reduce costs.
+- **Query stats monitoring** : track query stats over time.
 
 ### Query insights data
 
 Query insights includes data from the following API methods:
 
-  - [`runQuery`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/runQuery)
-  - [`runAggregationQuery`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/runAggregationQuery)
+- [`runQuery`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/runQuery)
+- [`runAggregationQuery`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/runAggregationQuery)
 
 You can view data about the queries that use these methods for a given project, database, and time duration ranging from 10 minutes to 30 days. Data for queries with equivalent structures is captured under a single normalized query.
 
 Query insights returns the following information about a query:
 
 |                                          |                                                                                                                       |
-| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
 | Normalized query text                    | The query structure represented in text.                                                                              |
 | Execution count                          | Number of executions in the selected time window.                                                                     |
 | Error count                              | Number of errors in the selected time window.                                                                         |
@@ -43,14 +43,14 @@ Query insights returns the following information about a query:
 
 Data granularity depends on the duration specified:
 
-  - 10 minute granularity for intervals up to 4 days ago
-  - 1 hour granularity for intervals up to 30 days ago
+- 10 minute granularity for intervals up to 4 days ago
+- 1 hour granularity for intervals up to 30 days ago
 
 The maximum data retention for Query insights is 30 days. 10-minute data is stored for 4 days, and hourly data is stored for 30 days.
 
 ### Limitations
 
-  - Query insights data is delayed by one to two hours.
+- Query insights data is delayed by one to two hours.
 
 ## Pricing
 
@@ -73,12 +73,12 @@ To view query insights for a Firestore in Datastore mode database, open the data
 2.  From the list of databases, select a database.
 
 3.  In the navigation menu, click **Query insights** .
-    
+
     ![The database usage dashboard in the console.](https://docs.cloud.google.com/static/firestore/native/docs/images/datastore-query-insights.png)
-    
+
     Use the **Load type** drop-down to find the top queries by either latency or number of read operations.
 
 ## What's next
 
-  - Use [query explain](https://docs.cloud.google.com/datastore/docs/query-explain-analyze) to improve query performance
-  - [Monitor usage](https://docs.cloud.google.com/datastore/docs/understand-performance-monitoring)
+- Use [query explain](https://docs.cloud.google.com/datastore/docs/query-explain-analyze) to improve query performance
+- [Monitor usage](https://docs.cloud.google.com/datastore/docs/understand-performance-monitoring)

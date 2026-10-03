@@ -12,21 +12,23 @@ Perform an insert.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Entities, Properties, and Keys](https://docs.cloud.google.com/datastore/docs/concepts/entities)
+- [Entities, Properties, and Keys](https://docs.cloud.google.com/datastore/docs/concepts/entities)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Entity task = new Entity()
-    {
-        Key = _keyFactory.CreateIncompleteKey()
-    };
-    task.Key = _db.Insert(task);
+```csharp
+Entity task = new Entity()
+{
+    Key = _keyFactory.CreateIncompleteKey()
+};
+task.Key = _db.Insert(task);
+```
 
 ### Go
 
@@ -34,17 +36,19 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    taskKey := datastore.NameKey("Task", "sampleTask", nil)
-    _, err := client.RunInTransaction(ctx, func(tx *datastore.Transaction) error {
-     // We first check that there is no entity stored with the given key.
-     var empty Task
-     if err := tx.Get(taskKey, &empty); err != datastore.ErrNoSuchEntity {
-         return err
-     }
-     // If there was no matching entity, store it now.
-     _, err := tx.Put(taskKey, &task)
-     return err
-    })
+```go
+taskKey := datastore.NameKey("Task", "sampleTask", nil)
+_, err := client.RunInTransaction(ctx, func(tx *datastore.Transaction) error {
+    // We first check that there is no entity stored with the given key.
+    var empty Task
+    if err := tx.Get(taskKey, &empty); err != datastore.ErrNoSuchEntity {
+        return err
+    }
+    // If there was no matching entity, store it now.
+    _, err := tx.Put(taskKey, &task)
+    return err
+})
+```
 
 ### Java
 
@@ -52,7 +56,9 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Key taskKey = datastore.add(FullEntity.newBuilder(keyFactory.newKey()).build()).getKey();
+```java
+Key taskKey = datastore.add(FullEntity.newBuilder(keyFactory.newKey()).build()).getKey();
+```
 
 ### PHP
 
@@ -60,13 +66,15 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $task = $datastore->entity('Task', [
-        'category' => 'Personal',
-        'done' => false,
-        'priority' => 4,
-        'description' => 'Learn Cloud Datastore'
-    ]);
-    $datastore->insert($task);
+```php
+$task = $datastore->entity('Task', [
+    'category' => 'Personal',
+    'done' => false,
+    'priority' => 4,
+    'description' => 'Learn Cloud Datastore'
+]);
+$datastore->insert($task);
+```
 
 ### Python
 
@@ -74,27 +82,29 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    with client.transaction():
-        incomplete_key = client.key("Task")
-    
-        task = datastore.Entity(key=incomplete_key)
-    
-        task.update(
-            {
-                "category": "Personal",
-                "done": False,
-                "priority": 4,
-                "description": "Learn Cloud Datastore",
-            }
-        )
-    
-        client.put(task)
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+with client.transaction():
+    incomplete_key = client.key("Task")
+
+    task = datastore.Entity(key=incomplete_key)
+
+    task.update(
+        {
+            "category": "Personal",
+            "done": False,
+            "priority": 4,
+            "description": "Learn Cloud Datastore",
+        }
+    )
+
+    client.put(task)
+```
 
 ### Ruby
 
@@ -102,15 +112,17 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    datastore.transaction do |_tx|
-      task = datastore.entity "Task" do |t|
-        t["category"] = "Personal"
-        t["done"] = false
-        t["priority"] = 4
-        t["description"] = "Learn Cloud Datastore"
-      end
-      datastore.save task
-    end
+```ruby
+datastore.transaction do |_tx|
+  task = datastore.entity "Task" do |t|
+    t["category"] = "Personal"
+    t["done"] = false
+    t["priority"] = 4
+    t["description"] = "Learn Cloud Datastore"
+  end
+  datastore.save task
+end
+```
 
 ## What's next
 

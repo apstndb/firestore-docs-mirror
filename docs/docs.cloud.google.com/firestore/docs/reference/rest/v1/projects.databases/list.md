@@ -19,23 +19,15 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 
-Parameters
-
-`parent`
-
-`string`
-
-Required. A parent name of the form `projects/{projectId}`
+| Parameters |                                                                     |
+|------------|---------------------------------------------------------------------|
+| `parent`   | `string` Required. A parent name of the form `projects/{projectId}` |
 
 ### Query parameters
 
-Parameters
-
-`showDeleted`
-
-`boolean`
-
-If true, also returns deleted resources.
+| Parameters    |                                                    |
+|---------------|----------------------------------------------------|
+| `showDeleted` | `boolean` If true, also returns deleted resources. |
 
 ### Request body
 
@@ -47,43 +39,31 @@ The list of databases for a project.
 
 If successful, the response body contains data with the following structure:
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>JSON representation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;databases&quot;: [{object (Database)}],&quot;unreachable&quot;: [string]}</code></pre></td>
-</tr>
-</tbody>
-</table>
+**JSON representation**
 
-Fields
+```
+{
+  "databases": [
+    {
+      object (Database)
+    }
+  ],
+  "unreachable": [
+    string
+  ]
+}
+```
 
-`databases[]`
-
-` object ( Database  ` )
-
-The databases in the project.
-
-`unreachable[]`
-
-`string`
-
-In the event that data about individual databases cannot be listed they will be recorded here.
-
-An example entry might be: projects/some\_project/locations/some\_location This can happen if the Cloud Region that the Database resides in is currently unavailable. In this case we can't fetch all the details about the database. You may be able to get a more detailed error message (or possibly fetch the resource) by sending a 'Get' request for the resource or a 'List' request for the specific location.
+| Fields          |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+|-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `databases[]`   | `object ( `[`Database`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases#Database)` )` The databases in the project.                                                                                                                                                                                                                                                                                                                                                                        |
+| `unreachable[]` | `string` In the event that data about individual databases cannot be listed they will be recorded here. An example entry might be: projects/some_project/locations/some_location This can happen if the Cloud Region that the Database resides in is currently unavailable. In this case we can't fetch all the details about the database. You may be able to get a more detailed error message (or possibly fetch the resource) by sending a 'Get' request for the resource or a 'List' request for the specific location. |
 
 ### Authorization scopes
 
 Requires one of the following OAuth scopes:
 
-  - `https://www.googleapis.com/auth/datastore`
-  - `https://www.googleapis.com/auth/cloud-platform`
+- `https://www.googleapis.com/auth/datastore`
+- `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

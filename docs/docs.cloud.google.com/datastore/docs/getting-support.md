@@ -22,7 +22,7 @@ Join the [gcd-discuss](https://groups.google.com/forum/#!forum/gcd-discuss) Goog
 
 You can also take the following action to engage with the Datastore mode community:
 
-  - Visit the Google Cloud [Slack community](https://googlecloud-community.slack.com/) to discuss Datastore mode and other Google Cloud products. If you haven't already joined, [use this form to sign up](https://join.slack.com/t/googlecloud-community/shared_invite/zt-3icuwfdvq-eq_58LqmOoCNc16mpZcaNA) . For Datastore mode, join the [`#datastore`](https://googlecloud-community.slack.com/messages/C0HSDJBSR/) channel.
+- Visit the Google Cloud [Slack community](https://googlecloud-community.slack.com/) to discuss Datastore mode and other Google Cloud products. If you haven't already joined, [use this form to sign up](https://join.slack.com/t/googlecloud-community/shared_invite/zt-3icuwfdvq-eq_58LqmOoCNc16mpZcaNA) . For Datastore mode, join the [`#datastore`](https://googlecloud-community.slack.com/messages/C0HSDJBSR/) channel.
 
 ## File bugs or feature requests
 

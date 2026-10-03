@@ -12,65 +12,67 @@ Retry a transaction.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Cloud Datastore Transactions](https://docs.cloud.google.com/datastore/docs/concepts/cloud-datastore-transactions)
-  - [Transactions](https://docs.cloud.google.com/datastore/docs/concepts/transactions)
+- [Cloud Datastore Transactions](https://docs.cloud.google.com/datastore/docs/concepts/cloud-datastore-transactions)
+- [Transactions](https://docs.cloud.google.com/datastore/docs/concepts/transactions)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    /// <summary>
-    /// Retry the action when a Grpc.Core.RpcException is thrown.
-    /// </summary>
-    private T RetryRpc<T>(Func<T> action)
+```csharp
+/// <summary>
+/// Retry the action when a Grpc.Core.RpcException is thrown.
+/// </summary>
+private T RetryRpc<T>(Func<T> action)
+{
+    List<Grpc.Core.RpcException> exceptions = null;
+    var delayMs = _retryDelayMs;
+    for (int tryCount = 0; tryCount < _retryCount; ++tryCount)
     {
-        List<Grpc.Core.RpcException> exceptions = null;
-        var delayMs = _retryDelayMs;
-        for (int tryCount = 0; tryCount < _retryCount; ++tryCount)
+        try
         {
-            try
-            {
-                return action();
-            }
-            catch (Grpc.Core.RpcException e)
-            {
-                if (exceptions == null)
-                    exceptions = new List<Grpc.Core.RpcException>();
-                exceptions.Add(e);
-            }
-            System.Threading.Thread.Sleep(delayMs);
-            delayMs *= 2;  // Exponential back-off.
+            return action();
         }
-        throw new AggregateException(exceptions);
-    }
-    
-    private void RetryRpc(Action action)
-    {
-        RetryRpc(() => { action(); return 0; });
-    }
-    
-    [Fact]
-    public void TestTransactionalRetry()
-    {
-        int tryCount = 0;
-        var keys = UpsertBalances();
-        RetryRpc(() =>
+        catch (Grpc.Core.RpcException e)
         {
-            using (var transaction = _db.BeginTransaction())
-            {
-                TransferFunds(keys[0], keys[1], 10, transaction);
-                // Insert a conflicting transaction on the first try.
-                if (tryCount++ == 0)
-                    TransferFunds(keys[1], keys[0], 5);
-                transaction.Commit();
-            }
-        });
-        Assert.Equal(2, tryCount);
+            if (exceptions == null)
+                exceptions = new List<Grpc.Core.RpcException>();
+            exceptions.Add(e);
+        }
+        System.Threading.Thread.Sleep(delayMs);
+        delayMs *= 2;  // Exponential back-off.
     }
+    throw new AggregateException(exceptions);
+}
+
+private void RetryRpc(Action action)
+{
+    RetryRpc(() => { action(); return 0; });
+}
+
+[Fact]
+public void TestTransactionalRetry()
+{
+    int tryCount = 0;
+    var keys = UpsertBalances();
+    RetryRpc(() =>
+    {
+        using (var transaction = _db.BeginTransaction())
+        {
+            TransferFunds(keys[0], keys[1], 10, transaction);
+            // Insert a conflicting transaction on the first try.
+            if (tryCount++ == 0)
+                TransferFunds(keys[1], keys[0], 5);
+            transaction.Commit();
+        }
+    });
+    Assert.Equal(2, tryCount);
+}
+```
 
 ### Go
 
@@ -78,22 +80,24 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    type BankAccount struct {
-     Balance int
+```go
+type BankAccount struct {
+    Balance int
+}
+
+const amount = 50
+_, err := client.RunInTransaction(ctx, func(tx *datastore.Transaction) error {
+    keys := []*datastore.Key{to, from}
+    accs := make([]BankAccount, 2)
+    if err := tx.GetMulti(keys, accs); err != nil {
+        return err
     }
-    
-    const amount = 50
-    _, err := client.RunInTransaction(ctx, func(tx *datastore.Transaction) error {
-     keys := []*datastore.Key{to, from}
-     accs := make([]BankAccount, 2)
-     if err := tx.GetMulti(keys, accs); err != nil {
-         return err
-     }
-     accs[0].Balance += amount
-     accs[1].Balance -= amount
-     _, err := tx.PutMulti(keys, accs)
-     return err
-    })
+    accs[0].Balance += amount
+    accs[1].Balance -= amount
+    _, err := tx.PutMulti(keys, accs)
+    return err
+})
+```
 
 ### Java
 
@@ -101,19 +105,21 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    int retries = 5;
-    while (true) {
-      try {
-        transferFunds(fromKey, toKey, 10);
-        break;
-      } catch (DatastoreException e) {
-        if (retries == 0) {
-          throw e;
-        }
-        --retries;
-      }
+```java
+int retries = 5;
+while (true) {
+  try {
+    transferFunds(fromKey, toKey, 10);
+    break;
+  } catch (DatastoreException e) {
+    if (retries == 0) {
+      throw e;
     }
-    // Retry handling can also be configured and automatically applied using google-cloud-java.
+    --retries;
+  }
+}
+// Retry handling can also be configured and automatically applied using google-cloud-java.
+```
 
 ### PHP
 
@@ -121,18 +127,20 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $retries = 5;
-    for ($i = 0; $i < $retries; $i++) {
-        try {
-            require_once __DIR__ . '/transfer_funds.php';
-            transfer_funds($fromKeyId, $toKeyId, 10, $namespaceId);
-        } catch (\Google\Cloud\Core\Exception\ConflictException $e) {
-            // if $i >= $retries, the failure is final
-            continue;
-        }
-        // Succeeded!
-        break;
+```php
+$retries = 5;
+for ($i = 0; $i < $retries; $i++) {
+    try {
+        require_once __DIR__ . '/transfer_funds.php';
+        transfer_funds($fromKeyId, $toKeyId, 10, $namespaceId);
+    } catch (\Google\Cloud\Core\Exception\ConflictException $e) {
+        // if $i >= $retries, the failure is final
+        continue;
     }
+    // Succeeded!
+    break;
+}
+```
 
 ### Python
 
@@ -140,22 +148,24 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    import google.cloud.exceptions
-    
-    for _ in range(5):
-        try:
-            transfer_funds(client, account1.key, account2.key, 50)
-            break
-        except google.cloud.exceptions.Conflict:
-            continue
-    else:
-        print("Transaction failed.")
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+import google.cloud.exceptions
+
+for _ in range(5):
+    try:
+        transfer_funds(client, account1.key, account2.key, 50)
+        break
+    except google.cloud.exceptions.Conflict:
+        continue
+else:
+    print("Transaction failed.")
+```
 
 ### Ruby
 
@@ -163,13 +173,15 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    (1..5).each do |i|
-      begin
-        return transfer_funds from_key, to_key, amount
-      rescue Google::Cloud::Error => e
-        raise e if i == 5
-      end
-    end
+```ruby
+(1..5).each do |i|
+  begin
+    return transfer_funds from_key, to_key, amount
+  rescue Google::Cloud::Error => e
+    raise e if i == 5
+  end
+end
+```
 
 ## What's next
 

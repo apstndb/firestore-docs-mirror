@@ -12,110 +12,124 @@ Add a Firestore document using a map
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Add and update data](https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data)
+- [Add and update data](https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data)
 
 ## Code sample
 
-### C\#
+### C#
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    DocumentReference docRef = db.Collection("cities").Document("LA");
-    Dictionary<string, object> city = new Dictionary<string, object>
-    {
-        { "name", "Los Angeles" },
-        { "state", "CA" },
-        { "country", "USA" }
-    };
-    await docRef.SetAsync(city);
+```csharp
+DocumentReference docRef = db.Collection("cities").Document("LA");
+Dictionary<string, object> city = new Dictionary<string, object>
+{
+    { "name", "Los Angeles" },
+    { "state", "CA" },
+    { "country", "USA" }
+};
+await docRef.SetAsync(city);
+```
 
 ### Go
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    import (
-     "context"
-     "log"
-    
-     "cloud.google.com/go/firestore"
-    )
-    
-    func addDocAsMap(ctx context.Context, client *firestore.Client) error {
-     _, err := client.Collection("cities").Doc("LA").Set(ctx, map[string]interface{}{
-         "name":    "Los Angeles",
-         "state":   "CA",
-         "country": "USA",
-     })
-     if err != nil {
-         // Handle any errors in an appropriate way, such as returning them.
-         log.Printf("An error has occurred: %s", err)
-     }
-    
-     return err
+```go
+import (
+    "context"
+    "log"
+
+    "cloud.google.com/go/firestore"
+)
+
+func addDocAsMap(ctx context.Context, client *firestore.Client) error {
+    _, err := client.Collection("cities").Doc("LA").Set(ctx, map[string]interface{}{
+        "name":    "Los Angeles",
+        "state":   "CA",
+        "country": "USA",
+    })
+    if err != nil {
+        // Handle any errors in an appropriate way, such as returning them.
+        log.Printf("An error has occurred: %s", err)
     }
+
+    return err
+}
+```
 
 ### Java
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    // Create a Map to store the data we want to set
-    Map<String, Object> docData = new HashMap<>();
-    docData.put("name", "Los Angeles");
-    docData.put("state", "CA");
-    docData.put("country", "USA");
-    docData.put("regions", Arrays.asList("west_coast", "socal"));
-    // Add a new document (asynchronously) in collection "cities" with id "LA"
-    ApiFuture<WriteResult> future = db.collection("cities").document("LA").set(docData);
-    // ...
-    // future.get() blocks on response
-    System.out.println("Update time : " + future.get().getUpdateTime());
+```java
+// Create a Map to store the data we want to set
+Map<String, Object> docData = new HashMap<>();
+docData.put("name", "Los Angeles");
+docData.put("state", "CA");
+docData.put("country", "USA");
+docData.put("regions", Arrays.asList("west_coast", "socal"));
+// Add a new document (asynchronously) in collection "cities" with id "LA"
+ApiFuture<WriteResult> future = db.collection("cities").document("LA").set(docData);
+// ...
+// future.get() blocks on response
+System.out.println("Update time : " + future.get().getUpdateTime());
+```
 
 ### Node.js
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const data = {
-      name: 'Los Angeles',
-      state: 'CA',
-      country: 'USA'
-    };
-    
-    // Add a new document in collection "cities" with ID 'LA'
-    const res = await db.collection('cities').doc('LA').set(data);
+```javascript
+const data = {
+  name: 'Los Angeles',
+  state: 'CA',
+  country: 'USA'
+};
+
+// Add a new document in collection "cities" with ID 'LA'
+const res = await db.collection('cities').doc('LA').set(data);
+```
 
 ### PHP
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $data = [
-        'name' => 'Los Angeles',
-        'state' => 'CA',
-        'country' => 'USA'
-    ];
-    $db->collection('samples/php/cities')->document('LA')->set($data);
+```php
+$data = [
+    'name' => 'Los Angeles',
+    'state' => 'CA',
+    'country' => 'USA'
+];
+$db->collection('samples/php/cities')->document('LA')->set($data);
+```
 
 ### Python
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    data = {"name": "Los Angeles", "state": "CA", "country": "USA"}
-    
-    # Add a new doc in collection 'cities' with ID 'LA'
-    db.collection("cities").document("LA").set(data)
+```python
+data = {"name": "Los Angeles", "state": "CA", "country": "USA"}
+
+# Add a new doc in collection 'cities' with ID 'LA'
+db.collection("cities").document("LA").set(data)
+```
 
 ### Ruby
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    city_ref = firestore.doc "#{collection_path}/LA"
-    
-    data = {
-      name:    "Los Angeles",
-      state:   "CA",
-      country: "USA"
-    }
-    
-    city_ref.set data
+```ruby
+city_ref = firestore.doc "#{collection_path}/LA"
+
+data = {
+  name:    "Los Angeles",
+  state:   "CA",
+  country: "USA"
+}
+
+city_ref.set data
+```
 
 ## What's next
 

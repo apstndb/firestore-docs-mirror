@@ -12,22 +12,24 @@ Ancestor query.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Datastore queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)
-  - [Structuring Data for Strong Consistency](https://docs.cloud.google.com/datastore/docs/concepts/structuring_for_strong_consistency)
+- [Datastore queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)
+- [Structuring Data for Strong Consistency](https://docs.cloud.google.com/datastore/docs/concepts/structuring_for_strong_consistency)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Filter = Filter.HasAncestor(_db.CreateKeyFactory("TaskList")
-            .CreateKey(keyName))
-    };
+```csharp
+Query query = new Query("Task")
+{
+    Filter = Filter.HasAncestor(_db.CreateKeyFactory("TaskList")
+        .CreateKey(keyName))
+};
+```
 
 ### Go
 
@@ -35,8 +37,10 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    ancestor := datastore.NameKey("TaskList", "default", nil)
-    query := datastore.NewQuery("Task").Ancestor(ancestor)
+```go
+ancestor := datastore.NameKey("TaskList", "default", nil)
+query := datastore.NewQuery("Task").Ancestor(ancestor)
+```
 
 ### Java
 
@@ -44,13 +48,15 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(
-                PropertyFilter.hasAncestor(
-                    datastore.newKeyFactory().setKind("TaskList").newKey("default")))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(
+            PropertyFilter.hasAncestor(
+                datastore.newKeyFactory().setKind("TaskList").newKey("default")))
+        .build();
+```
 
 ### PHP
 
@@ -58,10 +64,12 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $ancestorKey = $datastore->key('TaskList', 'default');
-    $query = $datastore->query()
-        ->kind('Task')
-        ->hasAncestor($ancestorKey);
+```php
+$ancestorKey = $datastore->key('TaskList', 'default');
+$query = $datastore->query()
+    ->kind('Task')
+    ->hasAncestor($ancestorKey);
+```
 
 ### Python
 
@@ -69,16 +77,18 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    # Query filters are omitted in this example as any ancestor queries with a
-    # non-key filter require a composite index.
-    ancestor = client.key("TaskList", "default")
-    query = client.query(kind="Task", ancestor=ancestor)
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+# Query filters are omitted in this example as any ancestor queries with a
+# non-key filter require a composite index.
+ancestor = client.key("TaskList", "default")
+query = client.query(kind="Task", ancestor=ancestor)
+```
 
 ### Ruby
 
@@ -86,11 +96,13 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    # task_list_name = "default"
-    ancestor_key = datastore.key "TaskList", task_list_name
-    
-    query = datastore.query("Task")
-                     .ancestor(ancestor_key)
+```ruby
+# task_list_name = "default"
+ancestor_key = datastore.key "TaskList", task_list_name
+
+query = datastore.query("Task")
+                 .ancestor(ancestor_key)
+```
 
 ## What's next
 

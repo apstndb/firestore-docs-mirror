@@ -22,9 +22,9 @@ For example, the architecture below implements a workflow that checks whether a 
 
 Workflows supports a connector for Firestore. Use the connector to integrate Firestore into your workflows:
 
-  - [Learn more about connectors.](https://docs.cloud.google.com/workflows/docs/connectors)
-  - [See a sample workflow that uses Firestore.](https://docs.cloud.google.com/workflows/docs/reference/googleapis/firestore/Overview)
+- [Learn more about connectors.](https://docs.cloud.google.com/workflows/docs/connectors)
+- [See a sample workflow that uses Firestore.](https://docs.cloud.google.com/workflows/docs/reference/googleapis/firestore/Overview)
 
 ## What's next
 
-  - [See the Workflows quickstarts.](https://docs.cloud.google.com/workflows/docs/quickstarts)
+- [See the Workflows quickstarts.](https://docs.cloud.google.com/workflows/docs/quickstarts)

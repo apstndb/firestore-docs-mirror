@@ -10,27 +10,29 @@ data_source: docs.cloud.google.com
 
 ## **Logical Functions**
 
-|                                  |                                                            |
-| -------------------------------- | ---------------------------------------------------------- |
-| Name                             | Description                                                |
-| `         AND        `           | Performs a logical AND                                     |
-| `         OR        `            | Performs a logical OR                                      |
-| `         XOR        `           | Performs a logical XOR                                     |
-| `         NOT        `           | Performs a logical NOT                                     |
-| `         NOR        `           | Performs a logical NOR                                     |
-| `         CONDITIONAL        `   | Branches evaluation based on a conditional expression.     |
-| `         IF_NULL        `       | Returns the first non-null value                           |
-| `         SWITCH_ON        `     | Branches evaluation based on a series of conditions        |
-| `         EQUAL_ANY        `     | Checks if a value is equal to any elements in an array     |
-| `         NOT_EQUAL_ANY        ` | Checks if a value is not equal to any elements in an array |
-| `         MAXIMUM        `       | Returns the maximum value in a set of values               |
-| `         MINIMUM        `       | Returns the minimum value in a set of values               |
+|                                                                                                                           |                                                            |
+|---------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
+| Name                                                                                                                      | Description                                                |
+| [`AND`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/logical_functions#and)                     | Performs a logical AND                                     |
+| [`OR`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/logical_functions#or)                       | Performs a logical OR                                      |
+| [`XOR`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/logical_functions#xor)                     | Performs a logical XOR                                     |
+| [`NOT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/logical_functions#not)                     | Performs a logical NOT                                     |
+| [`NOR`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/logical_functions#nor)                     | Performs a logical NOR                                     |
+| [`CONDITIONAL`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/logical_functions#conditional)     | Branches evaluation based on a conditional expression.     |
+| [`IF_NULL`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/logical_functions#if_null)             | Returns the first non-null value                           |
+| [`SWITCH_ON`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/logical_functions#switch_on)         | Branches evaluation based on a series of conditions        |
+| [`EQUAL_ANY`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/logical_functions#equal_any)         | Checks if a value is equal to any elements in an array     |
+| [`NOT_EQUAL_ANY`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/logical_functions#not_equal_any) | Checks if a value is not equal to any elements in an array |
+| [`MAXIMUM`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/logical_functions#maximum)             | Returns the maximum value in a set of values               |
+| [`MINIMUM`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/logical_functions#minimum)             | Returns the minimum value in a set of values               |
 
 ### AND
 
 **Syntax:**
 
-    and(x: BOOLEAN...) -> BOOLEAN
+```
+and(x: BOOLEAN...) -> BOOLEAN
+```
 
 **Description:**
 
@@ -41,7 +43,7 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
 **Examples:**
 
 | `x`      | `y`      | `and(x, y)` |
-| :------- | :------- | :---------- |
+|----------|----------|-------------|
 | `TRUE`   | `TRUE`   | `TRUE`      |
 | `FALSE`  | `TRUE`   | `FALSE`     |
 | `NULL`   | `TRUE`   | `NULL`      |
@@ -51,103 +53,119 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        and(field("rating").greaterThan(4), field("price").lessThan(10))
-          .as("under10Recommendation")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    and(field("rating").greaterThan(4), field("price").lessThan(10))
+      .as("under10Recommendation")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        and(field("rating").greaterThan(4), field("price").lessThan(10))
-          .as("under10Recommendation")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    and(field("rating").greaterThan(4), field("price").lessThan(10))
+      .as("under10Recommendation")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        (Field("rating").greaterThan(4) && Field("price").lessThan(10))
-          .as("under10Recommendation")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    (Field("rating").greaterThan(4) && Field("price").lessThan(10))
+      .as("under10Recommendation")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            Expression.and(field("rating").greaterThan(4),
-              field("price").lessThan(10))
-                .alias("under10Recommendation")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        Expression.and(field("rating").greaterThan(4),
+          field("price").lessThan(10))
+            .alias("under10Recommendation")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            Expression.and(
-                field("rating").greaterThan(4),
-                field("price").lessThan(10)
-            ).alias("under10Recommendation")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        Expression.and(
+            field("rating").greaterThan(4),
+            field("price").lessThan(10)
+        ).alias("under10Recommendation")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field, And
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            And(
-                Field.of("rating").greater_than(4), Field.of("price").less_than(10)
-            ).as_("under10Recommendation")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field, And
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        And(
+            Field.of("rating").greater_than(4), Field.of("price").less_than(10)
+        ).as_("under10Recommendation")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(
-                and(greaterThan(field("rating"), 4), lessThan(field("price"), 10))
-                    .as("under10Recommendation"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(
+            and(greaterThan(field("rating"), 4), lessThan(field("price"), 10))
+                .as("under10Recommendation"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.And(
-             firestore.GreaterThan(firestore.FieldOf("rating"), 4),
-             firestore.LessThan(firestore.FieldOf("price"), 10),
-         ).As("under10Recommendation"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.And(
+            firestore.GreaterThan(firestore.FieldOf("rating"), 4),
+            firestore.LessThan(firestore.FieldOf("price"), 10),
+        ).As("under10Recommendation"),
+    )).
+    Execute(ctx)
+```
 
 ### OR
 
 **Syntax:**
 
-    or(x: BOOLEAN...) -> BOOLEAN
+```
+or(x: BOOLEAN...) -> BOOLEAN
+```
 
 **Description:**
 
@@ -158,7 +176,7 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
 **Examples:**
 
 | `x`      | `y`      | `or(x, y)` |
-| :------- | :------- | :--------- |
+|----------|----------|------------|
 | `TRUE`   | `TRUE`   | `TRUE`     |
 | `FALSE`  | `TRUE`   | `TRUE`     |
 | `NULL`   | `TRUE`   | `TRUE`     |
@@ -168,104 +186,120 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        or(field("genre").equal("Fantasy"), field("tags").arrayContains("adventure"))
-          .as("matchesSearchFilters")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    or(field("genre").equal("Fantasy"), field("tags").arrayContains("adventure"))
+      .as("matchesSearchFilters")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        or(field("genre").equal("Fantasy"), field("tags").arrayContains("adventure"))
-          .as("matchesSearchFilters")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    or(field("genre").equal("Fantasy"), field("tags").arrayContains("adventure"))
+      .as("matchesSearchFilters")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        (Field("genre").equal("Fantasy") || Field("tags").arrayContains("adventure"))
-          .as("matchesSearchFilters")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    (Field("genre").equal("Fantasy") || Field("tags").arrayContains("adventure"))
+      .as("matchesSearchFilters")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            Expression.or(field("genre").equal("Fantasy"),
-              field("tags").arrayContains("adventure"))
-                .alias("matchesSearchFilters")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        Expression.or(field("genre").equal("Fantasy"),
+          field("tags").arrayContains("adventure"))
+            .alias("matchesSearchFilters")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            Expression.or(
-                field("genre").equal("Fantasy"),
-                field("tags").arrayContains("adventure")
-            ).alias("matchesSearchFilters")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        Expression.or(
+            field("genre").equal("Fantasy"),
+            field("tags").arrayContains("adventure")
+        ).alias("matchesSearchFilters")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field, And, Or
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Or(
-                Field.of("genre").equal("Fantasy"),
-                Field.of("tags").array_contains("adventure"),
-            ).as_("matchesSearchFilters")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field, And, Or
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Or(
+            Field.of("genre").equal("Fantasy"),
+            Field.of("tags").array_contains("adventure"),
+        ).as_("matchesSearchFilters")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(
-                or(equal(field("genre"), "Fantasy"), arrayContains(field("tags"), "adventure"))
-                    .as("matchesSearchFilters"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(
+            or(equal(field("genre"), "Fantasy"), arrayContains(field("tags"), "adventure"))
+                .as("matchesSearchFilters"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Or(
-             firestore.Equal(firestore.FieldOf("genre"), "Fantasy"),
-             firestore.ArrayContains(firestore.FieldOf("tags"), "adventure"),
-         ).As("matchesSearchFilters"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Or(
+            firestore.Equal(firestore.FieldOf("genre"), "Fantasy"),
+            firestore.ArrayContains(firestore.FieldOf("tags"), "adventure"),
+        ).As("matchesSearchFilters"),
+    )).
+    Execute(ctx)
+```
 
 ### XOR
 
 **Syntax:**
 
-    xor(x: BOOLEAN...) -> BOOLEAN
+```
+xor(x: BOOLEAN...) -> BOOLEAN
+```
 
 **Description:**
 
@@ -276,7 +310,7 @@ Returns `NULL` if any of the given values are `ABSENT` or `NULL` .
 **Examples:**
 
 | `x`      | `y`      | `xor(x, y)` |
-| :------- | :------- | :---------- |
+|----------|----------|-------------|
 | `TRUE`   | `TRUE`   | `FALSE`     |
 | `FALSE`  | `FALSE`  | `FALSE`     |
 | `FALSE`  | `TRUE`   | `TRUE`      |
@@ -287,108 +321,124 @@ Returns `NULL` if any of the given values are `ABSENT` or `NULL` .
 
 ##### Node.js
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        xor(field("tags").arrayContains("magic"), field("tags").arrayContains("nonfiction"))
-          .as("matchesSearchFilters")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    xor(field("tags").arrayContains("magic"), field("tags").arrayContains("nonfiction"))
+      .as("matchesSearchFilters")
+  )
+);
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        xor(field("tags").arrayContains("magic"), field("tags").arrayContains("nonfiction"))
-          .as("matchesSearchFilters")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    xor(field("tags").arrayContains("magic"), field("tags").arrayContains("nonfiction"))
+      .as("matchesSearchFilters")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        (Field("tags").arrayContains("magic") ^ Field("tags").arrayContains("nonfiction"))
-          .as("matchesSearchFilters")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    (Field("tags").arrayContains("magic") ^ Field("tags").arrayContains("nonfiction"))
+      .as("matchesSearchFilters")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            Expression.xor(field("tags").arrayContains("magic"),
-              field("tags").arrayContains("nonfiction"))
-                .alias("matchesSearchFilters")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        Expression.xor(field("tags").arrayContains("magic"),
+          field("tags").arrayContains("nonfiction"))
+            .alias("matchesSearchFilters")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            Expression.xor(
-                field("tags").arrayContains("magic"),
-                field("tags").arrayContains("nonfiction")
-            ).alias("matchesSearchFilters")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        Expression.xor(
+            field("tags").arrayContains("magic"),
+            field("tags").arrayContains("nonfiction")
+        ).alias("matchesSearchFilters")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field, Xor
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Xor(
-                [
-                    Field.of("tags").array_contains("magic"),
-                    Field.of("tags").array_contains("nonfiction"),
-                ]
-            ).as_("matchesSearchFilters")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field, Xor
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Xor(
+            [
+                Field.of("tags").array_contains("magic"),
+                Field.of("tags").array_contains("nonfiction"),
+            ]
+        ).as_("matchesSearchFilters")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(
-                xor(
-                        arrayContains(field("tags"), "magic"),
-                        arrayContains(field("tags"), "nonfiction"))
-                    .as("matchesSearchFilters"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(
+            xor(
+                    arrayContains(field("tags"), "magic"),
+                    arrayContains(field("tags"), "nonfiction"))
+                .as("matchesSearchFilters"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Xor(
-             firestore.ArrayContains(firestore.FieldOf("tags"), "magic"),
-             firestore.ArrayContains(firestore.FieldOf("tags"), "nonfiction"),
-         ).As("matchesSearchFilters"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Xor(
+            firestore.ArrayContains(firestore.FieldOf("tags"), "magic"),
+            firestore.ArrayContains(firestore.FieldOf("tags"), "nonfiction"),
+        ).As("matchesSearchFilters"),
+    )).
+    Execute(ctx)
+```
 
 ### NOR
 
 **Syntax:**
 
-    nor(x: BOOLEAN...) -> BOOLEAN
+```
+nor(x: BOOLEAN...) -> BOOLEAN
+```
 
 **Description:**
 
@@ -399,7 +449,7 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
 **Examples:**
 
 | `x`      | `y`      | `nor(x, y)` |
-| :------- | :------- | :---------- |
+|----------|----------|-------------|
 | `TRUE`   | `TRUE`   | `FALSE`     |
 | `FALSE`  | `TRUE`   | `FALSE`     |
 | `FALSE`  | `FALSE`  | `TRUE`      |
@@ -412,7 +462,9 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
 
 **Syntax:**
 
-    not(x: BOOLEAN) -> BOOLEAN
+```
+not(x: BOOLEAN) -> BOOLEAN
+```
 
 **Description:**
 
@@ -420,93 +472,109 @@ Returns the logical NOT of a boolean value.
 
 ##### Node.js
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("tags").arrayContains("nonfiction").not()
-          .as("isFiction")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("tags").arrayContains("nonfiction").not()
+      .as("isFiction")
+  )
+);
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("tags").arrayContains("nonfiction").not()
-          .as("isFiction")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("tags").arrayContains("nonfiction").not()
+      .as("isFiction")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        (!Field("tags").arrayContains("nonfiction"))
-          .as("isFiction")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    (!Field("tags").arrayContains("nonfiction"))
+      .as("isFiction")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            Expression.not(
-                field("tags").arrayContains("nonfiction")
-            ).alias("isFiction")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        Expression.not(
+            field("tags").arrayContains("nonfiction")
+        ).alias("isFiction")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            Expression.not(
-                field("tags").arrayContains("nonfiction")
-            ).alias("isFiction")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        Expression.not(
+            field("tags").arrayContains("nonfiction")
+        ).alias("isFiction")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field, Not
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Not(Field.of("tags").array_contains("nonfiction")).as_("isFiction"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field, Not
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Not(Field.of("tags").array_contains("nonfiction")).as_("isFiction"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(not(arrayContains(field("tags"), "nonfiction")).as("isFiction"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(not(arrayContains(field("tags"), "nonfiction")).as("isFiction"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Not(firestore.ArrayContains(firestore.FieldOf("tags"), "nonfiction")).As("isFiction"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Not(firestore.ArrayContains(firestore.FieldOf("tags"), "nonfiction")).As("isFiction"),
+    )).
+    Execute(ctx)
+```
 
 ### CONDITIONAL
 
 **Syntax:**
 
-    conditional(condition: BOOLEAN, true_case: ANY, false_case: ANY) -> ANY
+```
+conditional(condition: BOOLEAN, true_case: ANY, false_case: ANY) -> ANY
+```
 
 **Description:**
 
@@ -517,7 +585,7 @@ Evaluates and returns the `false_case` if the condition resolves to `FALSE` , `N
 **Examples:**
 
 | `condition` | `true_case` | `false_case` | `conditional(condition, true_case, false_case)` |
-| :---------- | :---------- | :----------- | :---------------------------------------------- |
+|-------------|-------------|--------------|-------------------------------------------------|
 | `TRUE`      | 1L          | 0L           | 1L                                              |
 | `FALSE`     | 1L          | 0L           | 0L                                              |
 | `NULL`      | 1L          | 0L           | 0L                                              |
@@ -525,138 +593,154 @@ Evaluates and returns the `false_case` if the condition resolves to `FALSE` , `N
 
 ##### Node.js
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("tags").arrayConcat([
-          field("pages").greaterThan(100)
-            .conditional(constant("longRead"), constant("shortRead"))
-        ]).as("extendedTags")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("tags").arrayConcat([
+      field("pages").greaterThan(100)
+        .conditional(constant("longRead"), constant("shortRead"))
+    ]).as("extendedTags")
+  )
+);
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("tags").arrayConcat([
-          field("pages").greaterThan(100)
-            .conditional(constant("longRead"), constant("shortRead"))
-        ]).as("extendedTags")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("tags").arrayConcat([
+      field("pages").greaterThan(100)
+        .conditional(constant("longRead"), constant("shortRead"))
+    ]).as("extendedTags")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("tags").arrayConcat([
-          ConditionalExpression(
-            Field("pages").greaterThan(100),
-            then: Constant("longRead"),
-            else: Constant("shortRead")
-          )
-        ]).as("extendedTags")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("tags").arrayConcat([
+      ConditionalExpression(
+        Field("pages").greaterThan(100),
+        then: Constant("longRead"),
+        else: Constant("shortRead")
+      )
+    ]).as("extendedTags")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("tags").arrayConcat(
-                Expression.conditional(
-                    field("pages").greaterThan(100),
-                    constant("longRead"),
-                    constant("shortRead")
-                )
-            ).alias("extendedTags")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("tags").arrayConcat(
+            Expression.conditional(
+                field("pages").greaterThan(100),
+                constant("longRead"),
+                constant("shortRead")
+            )
+        ).alias("extendedTags")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("tags").arrayConcat(
-                Expression.conditional(
-                    field("pages").greaterThan(100),
-                    constant("longRead"),
-                    constant("shortRead")
-                )
-            ).alias("extendedTags")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("tags").arrayConcat(
+            Expression.conditional(
+                field("pages").greaterThan(100),
+                constant("longRead"),
+                constant("shortRead")
+            )
+        ).alias("extendedTags")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import (
-        Field,
-        Constant,
-        Conditional,
-    )
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Field.of("tags")
-            .array_concat(
-                Conditional(
-                    Field.of("pages").greater_than(100),
-                    Constant.of("longRead"),
-                    Constant.of("shortRead"),
-                )
+```
+from google.cloud.firestore_v1.pipeline_expressions import (
+    Field,
+    Constant,
+    Conditional,
+)
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Field.of("tags")
+        .array_concat(
+            Conditional(
+                Field.of("pages").greater_than(100),
+                Constant.of("longRead"),
+                Constant.of("shortRead"),
             )
-            .as_("extendedTags")
         )
-        .execute()
+        .as_("extendedTags")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(
-                arrayConcat(
-                        field("tags"),
-                        conditional(
-                            greaterThan(field("pages"), 100),
-                            constant("longRead"),
-                            constant("shortRead")))
-                    .as("extendedTags"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(
+            arrayConcat(
+                    field("tags"),
+                    conditional(
+                        greaterThan(field("pages"), 100),
+                        constant("longRead"),
+                        constant("shortRead")))
+                .as("extendedTags"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.ArrayConcat(
-             firestore.FieldOf("tags"),
-             firestore.Conditional(
-                 firestore.GreaterThan(firestore.FieldOf("pages"), 100),
-                 firestore.ConstantOf("longRead"),
-                 firestore.ConstantOf("shortRead"),
-             ),
-         ).As("extendedTags"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.ArrayConcat(
+            firestore.FieldOf("tags"),
+            firestore.Conditional(
+                firestore.GreaterThan(firestore.FieldOf("pages"), 100),
+                firestore.ConstantOf("longRead"),
+                firestore.ConstantOf("shortRead"),
+            ),
+        ).As("extendedTags"),
+    )).
+    Execute(ctx)
+```
 
-### IF\_NULL
+### IF_NULL
 
 **Syntax:**
 
-    if_null(expr: ANY, replacement: ANY) -> ANY
+```
+if_null(expr: ANY, replacement: ANY) -> ANY
+```
 
 **Description:**
 
@@ -665,16 +749,18 @@ Returns `expr` if it is not `NULL` , otherwise evaluates and returns `replacemen
 **Examples:**
 
 | `expr`   | `replacement` | `if_null(expr, replacement)` |
-| :------- | :------------ | :--------------------------- |
+|----------|---------------|------------------------------|
 | 1L       | 2L            | 1L                           |
 | `NULL`   | 2L            | 2L                           |
 | `ABSENT` | 2L            | `ABSENT`                     |
 
-### SWITCH\_ON
+### SWITCH_ON
 
 **Syntax:**
 
-    switch_on(cond1: BOOLEAN, res1: ANY, cond2: BOOLEAN, res2: ANY, ..., [default: ANY]) -> ANY
+```
+switch_on(cond1: BOOLEAN, res1: ANY, cond2: BOOLEAN, res2: ANY, ..., [default: ANY]) -> ANY
+```
 
 **Description:**
 
@@ -685,16 +771,18 @@ To provide a `default` value, pass it as the final argument such that there is a
 **Examples:**
 
 | `x` | `switch_on(eq(x, 1L), "one", eq(x, 2L), "two", "other")` |
-| :-- | :------------------------------------------------------- |
+|-----|----------------------------------------------------------|
 | 1L  | "one"                                                    |
 | 2L  | "two"                                                    |
 | 3L  | "other"                                                  |
 
-### EQUAL\_ANY
+### EQUAL_ANY
 
 **Syntax:**
 
-    equal_any(value: ANY, search_space: ARRAY) -> BOOLEAN
+```
+equal_any(value: ANY, search_space: ARRAY) -> BOOLEAN
+```
 
 **Description:**
 
@@ -703,7 +791,7 @@ Returns `TRUE` if `value` is in the `search_space` array.
 **Examples:**
 
 | `value`  | `search_space`  | `equal_any(value, search_space)` |
-| :------- | :-------------- | :------------------------------- |
+|----------|-----------------|----------------------------------|
 | 0L       | \[1L, 2L, 3L\]  | `FALSE`                          |
 | 2L       | \[1L, 2L, 3L\]  | `TRUE`                           |
 | `NULL`   | \[1L, 2L, 3L\]  | `FALSE`                          |
@@ -713,97 +801,113 @@ Returns `TRUE` if `value` is in the `search_space` array.
 
 ##### Node.js
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("genre").equalAny(["Science Fiction", "Psychological Thriller"])
-          .as("matchesGenreFilters")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("genre").equalAny(["Science Fiction", "Psychological Thriller"])
+      .as("matchesGenreFilters")
+  )
+);
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("genre").equalAny(["Science Fiction", "Psychological Thriller"])
-          .as("matchesGenreFilters")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("genre").equalAny(["Science Fiction", "Psychological Thriller"])
+      .as("matchesGenreFilters")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("genre").equalAny(["Science Fiction", "Psychological Thriller"])
-          .as("matchesGenreFilters")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("genre").equalAny(["Science Fiction", "Psychological Thriller"])
+      .as("matchesGenreFilters")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("genre").equalAny(listOf("Science Fiction", "Psychological Thriller"))
-                .alias("matchesGenreFilters")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("genre").equalAny(listOf("Science Fiction", "Psychological Thriller"))
+            .alias("matchesGenreFilters")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("genre").equalAny(Arrays.asList("Science Fiction", "Psychological Thriller"))
-                .alias("matchesGenreFilters")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("genre").equalAny(Arrays.asList("Science Fiction", "Psychological Thriller"))
+            .alias("matchesGenreFilters")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Field.of("genre")
-            .equal_any(["Science Fiction", "Psychological Thriller"])
-            .as_("matchesGenreFilters")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Field.of("genre")
+        .equal_any(["Science Fiction", "Psychological Thriller"])
+        .as_("matchesGenreFilters")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(
-                equalAny(field("genre"), Arrays.asList("Science Fiction", "Psychological Thriller"))
-                    .as("matchesGenreFilters"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(
+            equalAny(field("genre"), Arrays.asList("Science Fiction", "Psychological Thriller"))
+                .as("matchesGenreFilters"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.EqualAny(firestore.FieldOf("genre"), []string{"Science Fiction", "Psychological Thriller"}).As("matchesGenreFilters"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.EqualAny(firestore.FieldOf("genre"), []string{"Science Fiction", "Psychological Thriller"}).As("matchesGenreFilters"),
+    )).
+    Execute(ctx)
+```
 
-### NOT\_EQUAL\_ANY
+### NOT_EQUAL_ANY
 
 **Syntax:**
 
-    not_equal_any(value: ANY, search_space: ARRAY) -> BOOLEAN
+```
+not_equal_any(value: ANY, search_space: ARRAY) -> BOOLEAN
+```
 
 **Description:**
 
@@ -812,7 +916,7 @@ Returns `TRUE` if `value` is not in the `search_space` array.
 **Examples:**
 
 | `value`  | `search_space`  | `not_equal_any(value, search_space)` |
-| :------- | :-------------- | :----------------------------------- |
+|----------|-----------------|--------------------------------------|
 | 0L       | \[1L, 2L, 3L\]  | `TRUE`                               |
 | 2L       | \[1L, 2L, 3L\]  | `FALSE`                              |
 | `NULL`   | \[1L, 2L, 3L\]  | `TRUE`                               |
@@ -822,98 +926,114 @@ Returns `TRUE` if `value` is not in the `search_space` array.
 
 ##### Node.js
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("author").notEqualAny(["George Orwell", "F. Scott Fitzgerald"])
-          .as("byExcludedAuthors")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("author").notEqualAny(["George Orwell", "F. Scott Fitzgerald"])
+      .as("byExcludedAuthors")
+  )
+);
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("author").notEqualAny(["George Orwell", "F. Scott Fitzgerald"])
-          .as("byExcludedAuthors")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("author").notEqualAny(["George Orwell", "F. Scott Fitzgerald"])
+      .as("byExcludedAuthors")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("author").notEqualAny(["George Orwell", "F. Scott Fitzgerald"])
-          .as("byExcludedAuthors")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("author").notEqualAny(["George Orwell", "F. Scott Fitzgerald"])
+      .as("byExcludedAuthors")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("author").notEqualAny(listOf("George Orwell", "F. Scott Fitzgerald"))
-                .alias("byExcludedAuthors")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("author").notEqualAny(listOf("George Orwell", "F. Scott Fitzgerald"))
+            .alias("byExcludedAuthors")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("author").notEqualAny(Arrays.asList("George Orwell", "F. Scott Fitzgerald"))
-                .alias("byExcludedAuthors")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("author").notEqualAny(Arrays.asList("George Orwell", "F. Scott Fitzgerald"))
+            .alias("byExcludedAuthors")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Field.of("author")
-            .not_equal_any(["George Orwell", "F. Scott Fitzgerald"])
-            .as_("byExcludedAuthors")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Field.of("author")
+        .not_equal_any(["George Orwell", "F. Scott Fitzgerald"])
+        .as_("byExcludedAuthors")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(
-                notEqualAny(field("author"), Arrays.asList("George Orwell", "F. Scott Fitzgerald"))
-                    .as("byExcludedAuthors"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(
+            notEqualAny(field("author"), Arrays.asList("George Orwell", "F. Scott Fitzgerald"))
+                .as("byExcludedAuthors"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.NotEqualAny(firestore.FieldOf("author"), []string{"George Orwell", "F. Scott Fitzgerald"}).As("byExcludedAuthors"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.NotEqualAny(firestore.FieldOf("author"), []string{"George Orwell", "F. Scott Fitzgerald"}).As("byExcludedAuthors"),
+    )).
+    Execute(ctx)
+```
 
 ### MAXIMUM
 
 **Syntax:**
 
-    maximum(x: ANY...) -> ANY
-    maximum(x: ARRAY) -> ANY
+```
+maximum(x: ANY...) -> ANY
+maximum(x: ARRAY) -> ANY
+```
 
 **Description:**
 
@@ -926,10 +1046,10 @@ If there are multiple maximum equivalent values, any one of those values can be 
 **Examples:**
 
 | `x`      | `y`       | `maximum(x, y)` |
-| :------- | :-------- | :-------------- |
+|----------|-----------|-----------------|
 | `FALSE`  | `TRUE`    | `TRUE`          |
-| `FALSE`  | \-10L     | \-10L           |
-| 0.0      | \-5L      | 0.0             |
+| `FALSE`  | -10L      | -10L            |
+| 0.0      | -5L       | 0.0             |
 | "foo"    | "bar"     | "foo"           |
 | "foo"    | \["foo"\] | \["foo"\]       |
 | `ABSENT` | `ABSENT`  | `NULL`          |
@@ -937,83 +1057,99 @@ If there are multiple maximum equivalent values, any one of those values can be 
 
 ##### Node.js
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .aggregate(field("price").maximum().as("maximumPrice"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .aggregate(field("price").maximum().as("maximumPrice"))
+);
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .aggregate(field("price").maximum().as("maximumPrice"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .aggregate(field("price").maximum().as("maximumPrice"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("rating").logicalMaximum([1]).as("flooredRating")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("rating").logicalMaximum([1]).as("flooredRating")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("rating").logicalMaximum(1).alias("flooredRating")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("rating").logicalMaximum(1).alias("flooredRating")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("rating").logicalMaximum(1).alias("flooredRating")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("rating").logicalMaximum(1).alias("flooredRating")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("rating").logical_maximum(1).as_("flooredRating"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("rating").logical_maximum(1).as_("flooredRating"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(logicalMaximum(field("rating"), 1).as("flooredRating"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(logicalMaximum(field("rating"), 1).as("flooredRating"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.LogicalMaximum(firestore.FieldOf("rating"), 1).As("flooredRating"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.LogicalMaximum(firestore.FieldOf("rating"), 1).As("flooredRating"),
+    )).
+    Execute(ctx)
+```
 
 ### MINIMUM
 
 **Syntax:**
 
-    minimum(x: ANY...) -> ANY
-    minimum(x: ARRAY) -> ANY
+```
+minimum(x: ANY...) -> ANY
+minimum(x: ARRAY) -> ANY
+```
 
 **Description:**
 
@@ -1026,10 +1162,10 @@ If there are multiple minimum equivalent values, any one of those values can be 
 **Examples:**
 
 | `x`      | `y`       | `minimum(x, y)` |
-| :------- | :-------- | :-------------- |
+|----------|-----------|-----------------|
 | `FALSE`  | `TRUE`    | `FALSE`         |
-| `FALSE`  | \-10L     | `FALSE`         |
-| 0.0      | \-5L      | \-5L            |
+| `FALSE`  | -10L      | `FALSE`         |
+| 0.0      | -5L       | -5L             |
 | "foo"    | "bar"     | "bar"           |
 | "foo"    | \["foo"\] | "foo"           |
 | `ABSENT` | `ABSENT`  | `NULL`          |
@@ -1037,77 +1173,91 @@ If there are multiple minimum equivalent values, any one of those values can be 
 
 ##### Node.js
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .aggregate(field("price").minimum().as("minimumPrice"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .aggregate(field("price").minimum().as("minimumPrice"))
+);
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .aggregate(field("price").minimum().as("minimumPrice"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .aggregate(field("price").minimum().as("minimumPrice"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("rating").logicalMinimum([5]).as("cappedRating")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("rating").logicalMinimum([5]).as("cappedRating")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("rating").logicalMinimum(5).alias("cappedRating")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("rating").logicalMinimum(5).alias("cappedRating")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("rating").logicalMinimum(5).alias("cappedRating")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("rating").logicalMinimum(5).alias("cappedRating")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("rating").logical_minimum(5).as_("cappedRating"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("rating").logical_minimum(5).as_("cappedRating"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(logicalMinimum(field("rating"), 5).as("cappedRating"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(logicalMinimum(field("rating"), 5).as("cappedRating"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.LogicalMinimum(firestore.FieldOf("rating"), 5).As("cappedRating"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.LogicalMinimum(firestore.FieldOf("rating"), 5).As("cappedRating"),
+    )).
+    Execute(ctx)
+```
 
 ## What's next
 
-  - See the [Pipeline Queries overview](https://docs.cloud.google.com/firestore/docs/pipeline/overview)
+- See the [Pipeline Queries overview](https://docs.cloud.google.com/firestore/docs/pipeline/overview)

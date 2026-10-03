@@ -6,8 +6,10 @@ description: Google Cloud Platform lets you build and host applications and webs
 data_source: docs.cloud.google.com
 ---
 
+# Fast and Reliable Ranking in Datastore
+
 > **Note:** This page describes system behavior for Datastore databases that have not yet upgraded to Firestore in Datastore mode.
-> 
+>
 > [Firestore](https://docs.cloud.google.com/firestore) is the new version of Datastore and [removes several Datastore limitations](https://docs.cloud.google.com/datastore/docs/firestore-or-datastore#in_datastore_mode) .
 
 ## Ranking: A simple and yet very hard problem
@@ -24,11 +26,11 @@ These titles were able to scale smoothly and handle the massively growing traffi
 
 However, up-to-date player ranking is not an easy problem to solve, not for Tomoaki, and probably not for any developer, especially at this scale. The requirements are simple:
 
-  - Your game has hundreds of thousands (or more\!) players.
-  - Whenever a player fights enemies (or performs other activities), their score changes.
-  - You want to show the latest ranking for the player on a web portal page.
+- Your game has hundreds of thousands (or more!) players.
+- Whenever a player fights enemies (or performs other activities), their score changes.
+- You want to show the latest ranking for the player on a web portal page.
 
-### <span id="howtorank"></span> How do you calculate a rank?
+### How do you calculate a rank?
 
 ![Figure 3: Each player has a score. How do you calculate their rank?](https://docs.cloud.google.com/static/datastore/docs/articles/images/fast-and-reliable-ranking-in-datastore/image01.png)
 
@@ -66,8 +68,8 @@ Kaz found an open source implementation of a tree-based ranking algorithm for Da
 
 This Python-based library exposes two methods:
 
-  - `SetScore` to set the score of a player.
-  - `FindRank` to get the rank of a given score.
+- `SetScore` to set the score of a player.
+- `FindRank` to get the rank of a given score.
 
 As player-score pairs are created and updated with the `SetScore` method, the Code Jam ranking library builds an N-ary tree <sup>1</sup> . For example, let’s consider a tertiary tree that can count the number of players with scores in the range from 0 to 80 (Figure 5). The library stores the root node, which holds three numbers, as one entity. Each number corresponds to the number of players with scores in the sub-ranges 0 - 26, 27 - 53 and 54 - 80, respectively. The root node has a child node for each range, holding in turn three values for players in the sub-ranges of the sub-range. The hierarchy needs four levels to store the number of players for 81 different score values.
 
@@ -103,15 +105,15 @@ However, there is a downside to the Job Aggregation pattern: it uses just one th
 
 Based on the advice from the Datastore team, Kaz wrote Proof of Concept (PoC) code that combines the Job Aggregation pattern with the Code Jam ranking library. The PoC has the following components:
 
-  - **Frontend** : Accepts `SetScore` requests from users and adds them as tasks to a pull queue.
-  - **Pull Queue** : Receives and holds the `SetScore` update requests from the frontend.
-  - **Backend** : Runs an infinite loop with a single thread that pulls the update requests from the queue and executes them with the Code Jam ranking library.
+- **Frontend** : Accepts `SetScore` requests from users and adds them as tasks to a pull queue.
+- **Pull Queue** : Receives and holds the `SetScore` update requests from the frontend.
+- **Backend** : Runs an infinite loop with a single thread that pulls the update requests from the queue and executes them with the Code Jam ranking library.
 
 The PoC creates a [pull queue](https://docs.cloud.google.com/appengine/docs/python/taskqueue/overview-pull) , which is a kind of [Task Queue](https://docs.cloud.google.com/appengine/docs/python/taskqueue) in App Engine that allows developers to implement one or multiple workers that consume the tasks added to the queue. The backend instance has a single thread in an infinite loop that keeps pulling as many tasks as possible (up to 1000) from the queue. The thread passes each update request to the Code Jam ranking library, which executes them as a batch in a single transaction. The transaction may be open for a second or more, but because there is a single thread driving the library and Datastore, there is no contention and no concurrent modification problem.
 
 The backend instance is defined as a [module](https://docs.cloud.google.com/appengine/docs/python/modules) , a feature of App Engine that allows developers to define an Application Instance with various characteristics. In this PoC, the backend instance is defined as a manual scaling instance. Only one such instance is running at any given time.
 
-Kaz load-tested the PoC by using JMeter. He confirmed that the PoC was able to process 200 SetScore requests per second, with batches of 500 to 600 updates per transaction. Job Aggregation works\!
+Kaz load-tested the PoC by using JMeter. He confirmed that the PoC was able to process 200 SetScore requests per second, with batches of 500 to 600 updates per transaction. Job Aggregation works!
 
 ### Queue Sharding for Stable Performance
 
@@ -141,9 +143,9 @@ Figure 7 shows the load testing result of the final PoC implementation with Queu
 
 This solution meets all of Applibot's original requirements:
 
-  - Scalable to handle tens of thousands of players.
-  - Persistent and consistent as all updates are executed in Datastore transactions.
-  - Fast enough to handle 300 updates per second.
+- Scalable to handle tens of thousands of players.
+- Persistent and consistent as all updates are executed in Datastore transactions.
+- Fast enough to handle 300 updates per second.
 
 With the load testing results and the PoC code, Kaz presented the solution to Tomoaki and other Applibot engineers. Tomoaki plans to incorporate the solution in their production system, expects to reduce the latency of updating the ranking info from **one hour to a few seconds** , and hopes to dramatically improve the user experience.
 
@@ -153,15 +155,15 @@ The proposed solution has several advantages and one disadvantage:
 
 #### Advantages:
 
-  - Fast: `FindRank` call takes a few hundred milliseconds or less.
-  - Fast: `SetScore` just dispatches a task, which is processed by the backend in a few seconds.
-  - Strongly consistent and persisted in Datastore.
-  - Ranks are accurate.
-  - Scalable to any number of players.
+- Fast: `FindRank` call takes a few hundred milliseconds or less.
+- Fast: `SetScore` just dispatches a task, which is processed by the backend in a few seconds.
+- Strongly consistent and persisted in Datastore.
+- Ranks are accurate.
+- Scalable to any number of players.
 
 #### Disadvantage:
 
-  - Throughput has a limitation (about 300 updates/sec with the current implementation).
+- Throughput has a limitation (about 300 updates/sec with the current implementation).
 
 As this solution uses the Job Aggregation pattern, it relies on a single thread to aggregate all the updates. Additional work or complexity are necessary to achieve throughput higher than 300 updates/sec with the current CPU power of App Engine instances and Datastore performance.
 
@@ -181,9 +183,9 @@ This approach does not work for all types of distributed algorithms, but because
 
 If your application requires scalability more than accuracy of ranks, and can tolerate a certain level of inaccuracy or approximation, you could choose stochastic approaches such as:
 
-  - [Buckets with Global Query](https://docs.cloud.google.com/datastore/docs/articles/fast-and-reliable-ranking-in-datastore#appendix)
-  - Lossy Counting Method
-  - Frugal Streaming
+- [Buckets with Global Query](https://docs.cloud.google.com/datastore/docs/articles/fast-and-reliable-ranking-in-datastore#appendix)
+- Lossy Counting Method
+- Frugal Streaming
 
 These approximate approaches are all variants of one idea: How do you compress the storage for ranking information by allowing a certain degradation of the ranking accuracy?
 
@@ -200,7 +202,7 @@ Ranking is a classic, yet hard-to-solve, problem if you require the algorithm to
 1.  The Code Jam ranking library takes a parameter called “branching factor” that specifies how many scores each entity will hold. By default, the library uses 100 as the parameter. In this case, scores ranging from 0 to 9999 will be stored on 100 entities as children of the root node. If you need to handle a wider range of scores, you can change the branching factor to a higher value to optimize the number of entity accesses.
 2.  Any performance figures described in this article are sampled values for reference and do not guarantee any absolute performance of App Engine, Datastore, or other services.
 
-### <span id="appendix"></span> Appendix: Buckets with Global Query Solution
+### Appendix: Buckets with Global Query Solution
 
 As mentioned in the [How to Get a Rank](https://docs.cloud.google.com/datastore/docs/articles/fast-and-reliable-ranking-in-datastore#howtorank) section, it is expensive to query the database for every ranking request. This alternative approach periodically obtains the count of all the scores, computes the rank of selected scores, and provides those data points for use in computing ranks for particular players. The total range of scores is partitioned into ‘buckets’. Each bucket is characterized by a sub-range of scores and the number of players with scores in that range. From that data, the rank of any score can be found to a close approximation. These buckets are similar to the top-level node in the ranking tree, but instead of descending to more detailed nodes, this algorithm just interpolates within a bucket.
 
@@ -212,7 +214,7 @@ The retrieval of rank by users from the frontend is decoupled from rank computat
 
 The count and upper-most rank (i.e. the highest rank possible in this bucket) are recorded for each bucket. For scores between the low and high score boundaries in a bucket, we use linear interpolation to estimate the rank. For example, if the player has a score of **60** , then we look at the \[50, 74\] bucket, using the count (number of players/scores in the bucket) (42) and upper-most rank (5) to compute the player rank with this formula:
 
-``` 
+```
     rank = 5  + (74 - 60)*42/(74 - 50) =  30
 ```
 
@@ -220,21 +222,25 @@ The count and upper-most rank (i.e. the highest rank possible in this bucket) ar
 
 In the background, using a cron job or task queue, the counts for each bucket are computed and saved by iterating over all buckets. We call this a *global query* , because it computes the parameters needed for estimating the ranks by examining the scores of all players. Sample Python code to do this by the scores in the `[low_score, high_score]` range for each bucket is shown below.
 
-    next_upper_rank = 1
-    for b in buckets:
-      count = GetCountInRange(b.low_score, b.high_score)
-      b.count = count
-      b.upper_rank = next_upper_rank
-      b.put()
-      next_upper_rank += count
+```
+next_upper_rank = 1
+for b in buckets:
+  count = GetCountInRange(b.low_score, b.high_score)
+  b.count = count
+  b.upper_rank = next_upper_rank
+  b.put()
+  next_upper_rank += count
+```
 
 The `GetCountInRange()` method counts each player with scores in the range covered by the bucket. Because Datastore maintains a sorted index on the player scores, this count can be computed efficiently.
 
 When we need to find the rank of a particular player, we can use code as shown below.
 
-    b = GetBucketByScore(score)
-    rank = RankInBucket(b, score)
-    return rank + b.upper_rank - 1
+```
+b = GetBucketByScore(score)
+rank = RankInBucket(b, score)
+return rank + b.upper_rank - 1
+```
 
 The `GetBucketByScore(score)` method retrieves the bucket that contains the given score. The method `RankInBucket()` performs an estimate of rank within the bucket. The player’s rank is the sum of the upper-most rank of the bucket, and the rank within the specific bucket that brackets the player’s score. We need to subtract 1 from the result because the upper-most rank of the top bucket will be 1, and the rank of the top player within a specific bucket will also be 1.
 

@@ -12,7 +12,7 @@ gcloud firestore indexes composite - manage composite indexes for Cloud Firestor
 
 SYNOPSIS
 
-`gcloud firestore indexes composite` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud firestore indexes composite` [`COMMAND`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite#COMMAND) \[ [`GCLOUD_WIDE_FLAG`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite#GCLOUD-WIDE-FLAGS)` …` \]
 
 DESCRIPTION
 
@@ -20,27 +20,34 @@ Manage composite indexes for Cloud Firestore.
 
 GCLOUD WIDE FLAGS
 
-These flags are available to all commands: `  --help  ` .
+These flags are available to all commands: [`--help`](https://docs.cloud.google.com/sdk/gcloud/reference#--help) .
 
-Run ` $ gcloud help  ` for details.
+Run `$ `[`gcloud help`](https://docs.cloud.google.com/sdk/gcloud/reference) for details.
 
 COMMANDS
 
-`  COMMAND  ` is one of the following:
+`COMMAND` is one of the following:
 
-  - `  create  `  
-    Create a new composite index.
-  - `  delete  `  
-    Delete the given composite index.
-  - `  describe  `  
-    Describe the given composite index.
-  - `  list  `  
-    List composite indexes.
+[`create`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/create)  
+Create a new composite index.
+
+[`delete`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/delete)  
+Delete the given composite index.
+
+[`describe`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/describe)  
+Describe the given composite index.
+
+[`list`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/list)  
+List composite indexes.
 
 NOTES
 
 These variants are also available:
 
-    gcloud alpha firestore indexes composite
+```
+gcloud alpha firestore indexes composite
+```
 
-    gcloud beta firestore indexes composite
+```
+gcloud beta firestore indexes composite
+```

@@ -29,13 +29,13 @@ In the Google Cloud console, go to the **Dataflow** page:
 
 After initiating both the Datastream and the Dataflow pipelines, your source database should continue to receive both read and write traffic. You can use the following milestones to determine when the migration can proceed to the next step:
 
-  - The **Transactional write events** step of the Dataflow pipeline is no longer processing a backlog of the data and the throughput drops to a low steady state that matches with your source database's active traffic:
-    
-    ![Transactional write events](https://docs.cloud.google.com/static/firestore/mongodb-compatibility/docs/images/firestore-transactional-write-events.png)
+- The **Transactional write events** step of the Dataflow pipeline is no longer processing a backlog of the data and the throughput drops to a low steady state that matches with your source database's active traffic:
 
-  - The data freshness in the Datastream **Monitoring** tab is at a minimum and is very close behind the ongoing traffic in your source database:
-    
-    ![Data freshness](https://docs.cloud.google.com/static/firestore/mongodb-compatibility/docs/images/firestore-data-freshness.png)
+  ![Transactional write events](https://docs.cloud.google.com/static/firestore/mongodb-compatibility/docs/images/firestore-transactional-write-events.png)
+
+- The data freshness in the Datastream **Monitoring** tab is at a minimum and is very close behind the ongoing traffic in your source database:
+
+  ![Data freshness](https://docs.cloud.google.com/static/firestore/mongodb-compatibility/docs/images/firestore-data-freshness.png)
 
 After the data transfer reaches this steady state, advance to the next step.
 
@@ -48,7 +48,7 @@ After you've determined that the Datastream stream have completed the bulk backf
 1.  Stop all write traffic to the MongoDB-compatible source database. Depending on your application requirements and functionality, you might want to continue to allow read traffic to the source database.
 
 2.  Monitor the Datastream throughput and logs, and the Dataflow throughput, data lag, and logs to ensure the last of the write traffic was processed.
-    
+
     > **Caution:** Wait at least 20 minutes to **ensure the last of the traffic is fetched from the source database** .
 
 3.  [Inspect the Dead Letter Queue](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-troubleshooting#non-retryable-errors) . Determine if any documents couldn't be written to the destination database during the migration, and make a decision about whether to continue with the migration.
@@ -72,38 +72,46 @@ The migration is now complete. Your Datastream stream and the Dataflow job can n
 
 Pause the Datastream stream:
 
-    gcloud datastream streams update "$DATASTREAM_NAME" \
-    --location="$LOCATION" \
-    --state=PAUSED \
-    --update-mask=state
+```
+gcloud datastream streams update "$DATASTREAM_NAME" \
+--location="$LOCATION" \
+--state=PAUSED \
+--update-mask=state
+```
 
 > **Note:** If required, you can [delete the stream](https://docs.cloud.google.com/datastream/docs/delete-a-stream) after the migration completes.
 
 To shut down the Dataflow pipeline:
 
 1.  Listing all current jobs:
-    
-        gcloud dataflow jobs list --region="$LOCATION"
-    
+
+    ```
+    gcloud dataflow jobs list --region="$LOCATION"
+    ```
+
     The output will produce a list of Dataflow jobs.
 
-2.  In the list of jobs, find the `NAME` value that has the timestamp that you've specified in the `  DATAFLOW_START_TIME  ` [environment variable](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-env-vars) .
-    
-    Format: ` dataflow-mongodb-to-firestore- DATAFLOW_START_TIME  ` . Example: `dataflow-mongodb-to-firestore-20250514173638` .
+2.  In the list of jobs, find the `NAME` value that has the timestamp that you've specified in the `DATAFLOW_START_TIME` [environment variable](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-env-vars) .
+
+    Format: `dataflow-mongodb-to-firestore- `` DATAFLOW_START_TIME` . Example: `dataflow-mongodb-to-firestore-20250514173638` .
 
 3.  Obtain the corresponding `JOB_ID` . Example: `2025-05-14_17_36_39-10772223470853954680` .
 
 4.  Run the drain command for this job ID:
-    
-        gcloud dataflow jobs drain \
-        JOB_ID \
-        --region="$LOCATION"
-    
+
+    ```
+    gcloud dataflow jobs drain \
+    JOB_ID \
+    --region="$LOCATION"
+    ```
+
     Example:
-    
-        gcloud dataflow jobs drain \
-        2025-05-14_17_36_39-10772223470853954680 \
-        --region="$LOCATION"
+
+    ```
+    gcloud dataflow jobs drain \
+    2025-05-14_17_36_39-10772223470853954680 \
+    --region="$LOCATION"
+    ```
 
 ## What's next
 

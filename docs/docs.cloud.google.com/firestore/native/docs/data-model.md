@@ -22,22 +22,22 @@ In Firestore, the unit of storage is the document. A document is a lightweight r
 
 A document representing a user `alovelace` might look like this:
 
-  - class alovelace
-    
-    `first : "Ada"`  
-    `last : "Lovelace"`  
-    `born : 1815`  
+- class alovelace
+
+  `first : "Ada"`  
+  `last : "Lovelace"`  
+  `born : 1815`  
 
 > **Note:** Firestore supports a variety of data types for values: boolean, number, string, geo point, binary blob, and timestamp. You can also use arrays or nested objects, called maps, to structure data within a document.
 
 Complex, nested objects in a document are called maps. For example, you could structure the user's name from the example above with a map, like this:
 
-  - class alovelace
-    
-    `name :`  
-    `first : "Ada"`  
-    `last : "Lovelace"`  
-    `born : 1815`  
+- class alovelace
+
+  `name :`  
+  `first : "Ada"`  
+  `last : "Lovelace"`  
+  `born : 1815`  
 
 You may notice that documents look a lot like JSON. In fact, they basically are. There are some differences (for example, documents support extra data types and are limited to the [document size limit](https://docs.cloud.google.com/firestore/quotas#collections_documents_and_fields) ), but in general, you can treat documents as lightweight JSON records.
 
@@ -47,19 +47,19 @@ You may notice that documents look a lot like JSON. In fact, they basically are.
 
 Documents live in collections, which are simply containers for documents. For example, you could have a `users` collection to contain your various users, each represented by a document:
 
-  - collections\_bookmark users
-    
-      - class alovelace
-        
-        `first : "Ada"`  
-        `last : "Lovelace"`  
-        `born : 1815`  
-    
-      - class aturing
-        
-        `first : "Alan"`  
-        `last : "Turing"`  
-        `born : 1912`  
+- collections_bookmark users
+
+  - class alovelace
+
+    `first : "Ada"`  
+    `last : "Lovelace"`  
+    `born : 1815`  
+
+  - class aturing
+
+    `first : "Alan"`  
+    `last : "Turing"`  
+    `born : 1912`  
 
 Firestore is schemaless, so you have complete freedom over what fields you put in each document and what data types you store in those fields. Documents within the same collection can all contain different fields or store different types of data in those fields. However, it's a good idea to use the same fields and data types across multiple documents, so that you can query the documents more easily.
 
@@ -75,78 +75,101 @@ Every document in Firestore is uniquely identified by its location within the da
 
 ### Web version 9
 
-    import { doc } from "firebase/firestore";
-    
-    const alovelaceDocumentRef = doc(db, 'users', 'alovelace');
+```
+import { doc } from "firebase/firestore";
+
+const alovelaceDocumentRef = doc(db, 'users', 'alovelace');
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    var alovelaceDocumentRef = db.collection('users').doc('alovelace');
+```
+var alovelaceDocumentRef = db.collection('users').doc('alovelace');
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    let alovelaceDocumentRef = db.collection("users").document("alovelace")
+```
+let alovelaceDocumentRef = db.collection("users").document("alovelace")
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    FIRDocumentReference *alovelaceDocumentRef =
-        [[self.db collectionWithPath:@"users"] documentWithPath:@"alovelace"];
+```
+FIRDocumentReference *alovelaceDocumentRef =
+    [[self.db collectionWithPath:@"users"] documentWithPath:@"alovelace"];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val alovelaceDocumentRef = db.collection("users").document("alovelace")
+```
+val alovelaceDocumentRef = db.collection("users").document("alovelace")
+```
 
-##### Java  
-Android
+##### Java Android
 
-    DocumentReference alovelaceDocumentRef = db.collection("users").document("alovelace");
+```
+DocumentReference alovelaceDocumentRef = db.collection("users").document("alovelace");
+```
 
 ### Dart
 
-    final alovelaceDocumentRef = db.collection("users").doc("alovelace");
+```
+final alovelaceDocumentRef = db.collection("users").doc("alovelace");
+```
 
 ##### Java
 
-    // Reference to a document with id "alovelace" in the collection "users"
-    DocumentReference document = db.collection("users").document("alovelace");
+```
+// Reference to a document with id "alovelace" in the collection "users"
+DocumentReference document = db.collection("users").document("alovelace");
+```
 
 ##### Python
 
-    a_lovelace_ref = db.collection("users").document("alovelace")
+```
+a_lovelace_ref = db.collection("users").document("alovelace")
+```
 
-##### Python  
-(Async)
+##### Python (Async)
 
-    a_lovelace_ref = db.collection("users").document("alovelace")
+```
+a_lovelace_ref = db.collection("users").document("alovelace")
+```
 
 ##### C++
 
-    DocumentReference alovelace_document_reference =
-        db->Collection("users").Document("alovelace");
+```
+DocumentReference alovelace_document_reference =
+    db->Collection("users").Document("alovelace");
+```
 
 ##### Node.js
 
-    const alovelaceDocumentRef = db.collection('users').doc('alovelace');
+```
+const alovelaceDocumentRef = db.collection('users').doc('alovelace');
+```
 
 ##### Go
 
-    import (
-     "cloud.google.com/go/firestore"
-    )
-    
-    func createDocReference(client *firestore.Client) {
-    
-     alovelaceRef := client.Collection("users").Doc("alovelace")
-    
-     _ = alovelaceRef
-    }
+```
+import (
+    "cloud.google.com/go/firestore"
+)
+
+func createDocReference(client *firestore.Client) {
+
+    alovelaceRef := client.Collection("users").Doc("alovelace")
+
+    _ = alovelaceRef
+}
+```
 
 ##### PHP
 
@@ -154,23 +177,31 @@ Android
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $document = $db->collection('samples/php/users')->document('alovelace');
+```php
+$document = $db->collection('samples/php/users')->document('alovelace');
+```
 
 ##### Unity
 
-    DocumentReference documentRef = db.Collection("users").Document("alovelace");
+```
+DocumentReference documentRef = db.Collection("users").Document("alovelace");
+```
 
-##### C\#
+##### C#
 
-### C\#
+### C#
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    DocumentReference documentRef = db.Collection("users").Document("alovelace");
+```csharp
+DocumentReference documentRef = db.Collection("users").Document("alovelace");
+```
 
 ##### Ruby
 
-    document_ref = firestore.col("users").doc("alovelace")
+```
+document_ref = firestore.col("users").doc("alovelace")
+```
 
 A reference is a lightweight object that just points to a location in your database. You can create a reference whether or not data exists there, and creating a reference does not perform any network operations.
 
@@ -178,75 +209,98 @@ You can also create references to *collections* :
 
 ### Web version 9
 
-    import { collection } from "firebase/firestore";
-    
-    const usersCollectionRef = collection(db, 'users');
+```
+import { collection } from "firebase/firestore";
+
+const usersCollectionRef = collection(db, 'users');
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    var usersCollectionRef = db.collection('users');
+```
+var usersCollectionRef = db.collection('users');
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    let usersCollectionRef = db.collection("users")
+```
+let usersCollectionRef = db.collection("users")
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    FIRCollectionReference *usersCollectionRef = [self.db collectionWithPath:@"users"];
+```
+FIRCollectionReference *usersCollectionRef = [self.db collectionWithPath:@"users"];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val usersCollectionRef = db.collection("users")
+```
+val usersCollectionRef = db.collection("users")
+```
 
-##### Java  
-Android
+##### Java Android
 
-    CollectionReference usersCollectionRef = db.collection("users");
+```
+CollectionReference usersCollectionRef = db.collection("users");
+```
 
 ### Dart
 
-    final usersCollectionRef = db.collection("users");
+```
+final usersCollectionRef = db.collection("users");
+```
 
 ##### Java
 
-    // Reference to the collection "users"
-    CollectionReference collection = db.collection("users");
+```
+// Reference to the collection "users"
+CollectionReference collection = db.collection("users");
+```
 
 ##### Python
 
-    users_ref = db.collection("users")
+```
+users_ref = db.collection("users")
+```
 
-##### Python  
-(Async)
+##### Python (Async)
 
-    users_ref = db.collection("users")
+```
+users_ref = db.collection("users")
+```
 
 ##### C++
 
-    CollectionReference users_collection_reference = db->Collection("users");
+```
+CollectionReference users_collection_reference = db->Collection("users");
+```
 
 ##### Node.js
 
-    const usersCollectionRef = db.collection('users');
+```
+const usersCollectionRef = db.collection('users');
+```
 
 ##### Go
 
-    import (
-     "cloud.google.com/go/firestore"
-    )
-    
-    func createCollectionReference(client *firestore.Client) {
-     usersRef := client.Collection("users")
-    
-     _ = usersRef
-    }
+```
+import (
+    "cloud.google.com/go/firestore"
+)
+
+func createCollectionReference(client *firestore.Client) {
+    usersRef := client.Collection("users")
+
+    _ = usersRef
+}
+```
 
 ##### PHP
 
@@ -254,23 +308,31 @@ Android
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $collection = $db->collection('samples/php/users');
+```php
+$collection = $db->collection('samples/php/users');
+```
 
 ##### Unity
 
-    CollectionReference collectionRef = db.Collection("users");
+```
+CollectionReference collectionRef = db.Collection("users");
+```
 
-##### C\#
+##### C#
 
-### C\#
+### C#
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    CollectionReference collectionRef = db.Collection("users");
+```csharp
+CollectionReference collectionRef = db.Collection("users");
+```
 
 ##### Ruby
 
-    collection_ref = firestore.col "users"
+```
+collection_ref = firestore.col "users"
+```
 
 > **Note:** *Collection references* and *document references* are two distinct types of references and let you perform different operations. For example, you could use a collection reference for querying the documents in the collection, and you could use a document reference to read or write an individual document.
 
@@ -278,77 +340,100 @@ For convenience, you can also create references by specifying the path to a docu
 
 ### Web version 9
 
-    import { doc } from "firebase/firestore"; 
-    
-    const alovelaceDocumentRef = doc(db, 'users/alovelace');
+```
+import { doc } from "firebase/firestore"; 
+
+const alovelaceDocumentRef = doc(db, 'users/alovelace');
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    var alovelaceDocumentRef = db.doc('users/alovelace');
+```
+var alovelaceDocumentRef = db.doc('users/alovelace');
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    let aLovelaceDocumentReference = db.document("users/alovelace")
+```
+let aLovelaceDocumentReference = db.document("users/alovelace")
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    FIRDocumentReference *aLovelaceDocumentReference =
-        [self.db documentWithPath:@"users/alovelace"];
+```
+FIRDocumentReference *aLovelaceDocumentReference =
+    [self.db documentWithPath:@"users/alovelace"];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val alovelaceDocumentRef = db.document("users/alovelace")
+```
+val alovelaceDocumentRef = db.document("users/alovelace")
+```
 
-##### Java  
-Android
+##### Java Android
 
-    DocumentReference alovelaceDocumentRef = db.document("users/alovelace");
+```
+DocumentReference alovelaceDocumentRef = db.document("users/alovelace");
+```
 
 ### Dart
 
-    final aLovelaceDocRef = db.doc("users/alovelace");
+```
+final aLovelaceDocRef = db.doc("users/alovelace");
+```
 
 ##### Java
 
-    // Reference to a document with id "alovelace" in the collection "users"
-    DocumentReference document = db.document("users/alovelace");
+```
+// Reference to a document with id "alovelace" in the collection "users"
+DocumentReference document = db.document("users/alovelace");
+```
 
 ##### Python
 
-    a_lovelace_ref = db.document("users/alovelace")
+```
+a_lovelace_ref = db.document("users/alovelace")
+```
 
-##### Python  
-(Async)
+##### Python (Async)
 
-    a_lovelace_ref = db.document("users/alovelace")
+```
+a_lovelace_ref = db.document("users/alovelace")
+```
 
 ##### C++
 
-    DocumentReference alovelace_document = db->Document("users/alovelace");
+```
+DocumentReference alovelace_document = db->Document("users/alovelace");
+```
 
 ##### Node.js
 
-    const alovelaceDocumentRef = db.doc('users/alovelace');
+```
+const alovelaceDocumentRef = db.doc('users/alovelace');
+```
 
 ##### Go
 
-    import (
-     "cloud.google.com/go/firestore"
-    )
-    
-    func createDocReferenceFromString(client *firestore.Client) {
-     // Reference to a document with id "alovelace" in the collection "users"
-     alovelaceRef := client.Doc("users/alovelace")
-    
-     _ = alovelaceRef
-    }
+```
+import (
+    "cloud.google.com/go/firestore"
+)
+
+func createDocReferenceFromString(client *firestore.Client) {
+    // Reference to a document with id "alovelace" in the collection "users"
+    alovelaceRef := client.Doc("users/alovelace")
+
+    _ = alovelaceRef
+}
+```
 
 ##### PHP
 
@@ -356,23 +441,31 @@ Android
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $document = $db->document('users/alovelace');
+```php
+$document = $db->document('users/alovelace');
+```
 
 ##### Unity
 
-    DocumentReference documentRef = db.Document("users/alovelace");
+```
+DocumentReference documentRef = db.Document("users/alovelace");
+```
 
-##### C\#
+##### C#
 
-### C\#
+### C#
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    DocumentReference documentRef = db.Document("users/alovelace");
+```csharp
+DocumentReference documentRef = db.Document("users/alovelace");
+```
 
 ##### Ruby
 
-    document_path_ref = firestore.doc "users/alovelace"
+```
+document_path_ref = firestore.doc "users/alovelace"
+```
 
 ## Hierarchical Data
 
@@ -380,15 +473,15 @@ To understand how hierarchical data structures work in Firestore, consider an ex
 
 You can create a collection called `rooms` to store different chat rooms:
 
-  - collections\_bookmark rooms
-    
-      - class roomA
-        
-        `name : "my chat room"`  
-    
-      - class roomB
-        
-        `...`  
+- collections_bookmark rooms
+
+  - class roomA
+
+    `name : "my chat room"`  
+
+  - class roomB
+
+    `...`  
 
 Now that you have chat rooms, decide how to store your messages. You might not want to store them in the chat room's document. Documents in Firestore should be lightweight, and a chat room could contain a large number of messages. However, you can create additional collections within your chat room's document, as subcollections.
 
@@ -400,121 +493,144 @@ The best way to store messages in this scenario is by using subcollections. A su
 
 You can create a subcollection called `messages` for every room document in your `rooms` collection:
 
-  - collections\_bookmark rooms
-    
-      - class roomA
-        
-        `name : "my chat room"`  
-        
-          - collections\_bookmark messages
-            
-              - class message1
-                
-                `from : "alex"`  
-                `msg : "Hello World!"`  
-            
-              - class message2
-                
-                `...`  
-    
-      - class roomB
-        
+- collections_bookmark rooms
+
+  - class roomA
+
+    `name : "my chat room"`  
+
+    - collections_bookmark messages
+
+      - class message1
+
+        `from : "alex"`  
+        `msg : "Hello World!"`  
+
+      - class message2
+
         `...`  
+
+  - class roomB
+
+    `...`  
 
 In this example, you would create a reference to a message in the subcollection with the following code:
 
 ### Web version 9
 
-    import { doc } from "firebase/firestore"; 
-    
-    const messageRef = doc(db, "rooms", "roomA", "messages", "message1");
+```
+import { doc } from "firebase/firestore"; 
+
+const messageRef = doc(db, "rooms", "roomA", "messages", "message1");
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    var messageRef = db.collection('rooms').doc('roomA')
-                    .collection('messages').doc('message1');
+```
+var messageRef = db.collection('rooms').doc('roomA')
+                .collection('messages').doc('message1');
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    let messageRef = db
-      .collection("rooms").document("roomA")
-      .collection("messages").document("message1")
+```
+let messageRef = db
+  .collection("rooms").document("roomA")
+  .collection("messages").document("message1")
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    FIRDocumentReference *messageRef =
-        [[[[self.db collectionWithPath:@"rooms"] documentWithPath:@"roomA"]
-        collectionWithPath:@"messages"] documentWithPath:@"message1"];
+```
+FIRDocumentReference *messageRef =
+    [[[[self.db collectionWithPath:@"rooms"] documentWithPath:@"roomA"]
+    collectionWithPath:@"messages"] documentWithPath:@"message1"];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val messageRef = db
+```
+val messageRef = db
+    .collection("rooms").document("roomA")
+    .collection("messages").document("message1")
+```
+
+##### Java Android
+
+```
+DocumentReference messageRef = db
         .collection("rooms").document("roomA")
-        .collection("messages").document("message1")
-
-##### Java  
-Android
-
-    DocumentReference messageRef = db
-            .collection("rooms").document("roomA")
-            .collection("messages").document("message1");
+        .collection("messages").document("message1");
+```
 
 ### Dart
 
-    final messageRef = db
-        .collection("rooms")
-        .doc("roomA")
-        .collection("messages")
-        .doc("message1");
+```
+final messageRef = db
+    .collection("rooms")
+    .doc("roomA")
+    .collection("messages")
+    .doc("message1");
+```
 
 ##### Java
 
-    // Reference to a document in subcollection "messages"
-    DocumentReference document =
-        db.collection("rooms").document("roomA").collection("messages").document("message1");
+```
+// Reference to a document in subcollection "messages"
+DocumentReference document =
+    db.collection("rooms").document("roomA").collection("messages").document("message1");
+```
 
 ##### Python
 
-    room_a_ref = db.collection("rooms").document("roomA")
-    message_ref = room_a_ref.collection("messages").document("message1")
+```
+room_a_ref = db.collection("rooms").document("roomA")
+message_ref = room_a_ref.collection("messages").document("message1")
+```
 
-##### Python  
-(Async)
+##### Python (Async)
 
-    room_a_ref = db.collection("rooms").document("roomA")
-    message_ref = room_a_ref.collection("messages").document("message1")
+```
+room_a_ref = db.collection("rooms").document("roomA")
+message_ref = room_a_ref.collection("messages").document("message1")
+```
 
 ##### C++
 
-    DocumentReference message_reference = db->Collection("rooms")
-        .Document("roomA")
-        .Collection("messages")
-        .Document("message1");
+```
+DocumentReference message_reference = db->Collection("rooms")
+    .Document("roomA")
+    .Collection("messages")
+    .Document("message1");
+```
 
 ##### Node.js
 
-    const messageRef = db.collection('rooms').doc('roomA')
-      .collection('messages').doc('message1');
+```
+const messageRef = db.collection('rooms').doc('roomA')
+  .collection('messages').doc('message1');
+```
 
 ##### Go
 
-    import (
-     "cloud.google.com/go/firestore"
-    )
-    
-    func createSubcollectionReference(client *firestore.Client) {
-     messageRef := client.Collection("rooms").Doc("roomA").
-         Collection("messages").Doc("message1")
-    
-     _ = messageRef
-    }
+```
+import (
+    "cloud.google.com/go/firestore"
+)
+
+func createSubcollectionReference(client *firestore.Client) {
+    messageRef := client.Collection("rooms").Doc("roomA").
+        Collection("messages").Doc("message1")
+
+    _ = messageRef
+}
+```
 
 ##### PHP
 
@@ -522,31 +638,39 @@ Android
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $document = $db
-        ->collection('rooms')
-        ->document('roomA')
-        ->collection('messages')
-        ->document('message1');
+```php
+$document = $db
+    ->collection('rooms')
+    ->document('roomA')
+    ->collection('messages')
+    ->document('message1');
+```
 
 ##### Unity
 
-    DocumentReference documentRef = db
-     .Collection("Rooms").Document("RoomA")
-     .Collection("Messages").Document("Message1");
+```
+DocumentReference documentRef = db
+    .Collection("Rooms").Document("RoomA")
+    .Collection("Messages").Document("Message1");
+```
 
-##### C\#
+##### C#
 
-### C\#
+### C#
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    DocumentReference documentRef = db
-        .Collection("Rooms").Document("RoomA")
-        .Collection("Messages").Document("Message1");
+```csharp
+DocumentReference documentRef = db
+    .Collection("Rooms").Document("RoomA")
+    .Collection("Messages").Document("Message1");
+```
 
 ##### Ruby
 
-    message_ref = firestore.col("rooms").doc("roomA").col("messages").doc("message1")
+```
+message_ref = firestore.col("rooms").doc("roomA").col("messages").doc("message1")
+```
 
 Notice the alternating pattern of collections and documents. Your collections and documents must always follow this pattern. You cannot reference a collection in a collection or a document in a document.
 
@@ -554,6 +678,6 @@ Subcollections allow you to structure data hierarchically, making data easier to
 
 Documents in subcollections can contain subcollections as well, allowing you to further nest data. You can nest data up to 100 levels deep.
 
-> **Warning:** Deleting a document does not delete its subcollections\!  
+> **Warning:** Deleting a document does not delete its subcollections!  
 >   
 > When you delete a document that has subcollections, those subcollections are not deleted. For example, there may be a document located at `coll/doc/subcoll/subdoc` even though the document `coll/doc` no longer exists. If you want to delete documents in subcollections when deleting a parent document, you must do so manually, as shown in [Delete Collections](https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data#collections) .

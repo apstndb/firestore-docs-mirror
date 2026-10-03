@@ -19,7 +19,7 @@ A monitored resource in Cloud Monitoring represents a logical or physical entity
 Using the [Cloud Monitoring API](https://cloud.google.com/monitoring/api/resources) , Firestore performance is monitored with the following resources:
 
 |                                                   |                                                                                                                                                                                                 |                                     |
-| ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
+|---------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------|
 | **Resources**                                     | **Description**                                                                                                                                                                                 | **Supported database mode**         |
 | `firestore.googleapis.com/Database` (recommended) | Monitored resource type that provides breakdowns for `project` , `location` \* , and `database_id` . The `database_id` label will be `(default)` for databases created without a specific name. | Applies to both modes.              |
 | `firestore_instance`                              | Monitored resource type for Firestore projects and does not provide breakdown for databases.                                                                                                    | Applies to Firestore in Native mode |
@@ -31,8 +31,8 @@ Firestore is available in two different modes, Firestore in Native mode and Fire
 
 For a complete list of metrics for both modes, see the following links:
 
-  - [Firestore](https://cloud.google.com/monitoring/api/metrics_gcp_d_h#gcp-firestore)
-  - [Firestore in Datastore mode](https://cloud.google.com/monitoring/api/metrics_gcp_d_h#gcp-datastore)
+- [Firestore](https://cloud.google.com/monitoring/api/metrics_gcp_d_h#gcp-firestore)
+- [Firestore in Datastore mode](https://cloud.google.com/monitoring/api/metrics_gcp_d_h#gcp-datastore)
 
 ### Service runtime metrics
 
@@ -44,31 +44,31 @@ If you need to know what the underlying RPC method is for a given SDK method, se
 
 Use the following service runtime metrics to monitor your database.
 
-#### api/request\_count
+#### api/request_count
 
 This metric provides the count of completed requests, across protocol(request protocol, such as http, gRPC, etc.), response code ( [HTTP response code](https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto) ), `response_code_class` (response code class, such as 2xx, 4xx,etc.), and `grpc_status_code` ( [numeric gRPC response code](https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto) ). Use this metric to observe the overall API request and calculate the error rate.
 
-![**Figure 1.** api/request\_count metric (click to enlarge).](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-req-count.png)
+![**Figure 1.** api/request_count metric (click to enlarge).](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-req-count.png)
 
 In figure 1, requests that return a 2xx code grouped by service and method can be seen. 2xx codes are HTTP status codes that indicate the request was successful.
 
-![**Figure 2.** api/request\_count metric that return a 2xx code (click to enlarge).](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-req-count-1.png)
+![**Figure 2.** api/request_count metric that return a 2xx code (click to enlarge).](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-req-count-1.png)
 
 In figure 2, commits grouped by `response_code` can be seen. In this example, we only see HTTP 200 responses which implies that the database is healthy.
 
-##### api/request\_latencies
+##### api/request_latencies
 
 The `api/request_latencies` metric provides latency distributions across all completed requests.
 
 Firestore records metrics from the **Firestore Service** component. Latency metrics include the time that Firestore receives the request to the time that Firestore finishes sending the response, including interactions with the storage layer. Due to this, round-trip latency (rtt) between the client and the Firestore service is not included in these metrics.
 
-![**Figure 4.** api/request\_latencies to calculate latency distribution.](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-req-latency.png)
+![**Figure 4.** api/request_latencies to calculate latency distribution.](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-req-latency.png)
 
-##### api/request\_sizes and api/response\_sizes
+##### api/request_sizes and api/response_sizes
 
 The `api/request_sizes` and `api/response_sizes` metrics respectively provide insights into payload sizes (in bytes). These can be useful for understanding write workloads that send large amounts of data or queries that are too broad, and return large payloads.
 
-![**Figure 5.** api/request\_sizes and api/response\_sizes metrics (click to enlarge).](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-req-size.png)
+![**Figure 5.** api/request_sizes and api/response_sizes metrics (click to enlarge).](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-req-size.png)
 
 In figure 5, a heatmap for response sizes for the `RunQuery` method can be seen. We can see that sizes are steady, 50 bytes median, and overall between 10 bytes and 100 bytes. Note that payload sizes are always measured in uncompressed bytes, exclusive of transmission control overheads.
 
@@ -78,9 +78,9 @@ Firestore provides read, write, and delete counts. The write metric provides a b
 
 The following metrics can be used to understand whether your database is read heavy or write heavy, and the rate of new documents vs. deleted documents.
 
-  - `document/delete_ops_count` : The number of successful document deletes.
-  - `document/read_ops_count` : The number of successful document reads from queries or lookups.
-  - `document/write_ops_count` : The number of successful document writes.
+- `document/delete_ops_count` : The number of successful document deletes.
+- `document/read_ops_count` : The number of successful document reads from queries or lookups.
+- `document/write_ops_count` : The number of successful document writes.
 
 > **Note:** The `document/delete_ops_count` metric doesn't include documents deleted due to TTL policies. For information about metrics that capture deletes due to TTL policies, see [TTL Metrics](https://docs.cloud.google.com/firestore/native/docs/understand-performance-monitoring#ttl_metrics) .
 
@@ -94,8 +94,8 @@ These metrics provide distributions in bytes of payload sizes for reads (lookups
 
 For example, the document operation metrics use the `datastore_request` monitored resource so there is no service or method breakdown.
 
-  - `entity/read_sizes` : Distribution of sizes of read documents.
-  - `entity/write_sizes` : Distribution of sizes of written documents.
+- `entity/read_sizes` : Distribution of sizes of read documents.
+- `entity/write_sizes` : Distribution of sizes of written documents.
 
 ### Billing metrics (Enterprise edition)
 
@@ -103,19 +103,19 @@ For example, the document operation metrics use the `datastore_request` monitore
 
 Use these metrics to understand billing usage. These metrics don't include billing from administrator operations (indexing, import, export, and bulk delete).
 
-  - `api/billable_read_units` : The number of billable read units. Usage can be broken down by service name and API method.
+- `api/billable_read_units` : The number of billable read units. Usage can be broken down by service name and API method.
 
-  - `api/billable_realtime_read_units` : The number of billable real-time update units from [real-time updates](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) .
+- `api/billable_realtime_read_units` : The number of billable real-time update units from [real-time updates](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) .
 
-  - `api/billable_write_units` : The number of billable write units. Usage can be broken down by service name and API method.
+- `api/billable_write_units` : The number of billable write units. Usage can be broken down by service name and API method.
 
-  - `document/billable_managed_delete_write_units` : The number of billable write units from managed delete services like [TTL](https://docs.cloud.google.com/firestore/native/docs/ttl) .
+- `document/billable_managed_delete_write_units` : The number of billable write units from managed delete services like [TTL](https://docs.cloud.google.com/firestore/native/docs/ttl) .
 
 ### Index metrics
 
 Index write rates can be contrasted with the `document/write_ops_count` metric to understand the [index fanout ratio](https://cloud.google.com/datastore/docs/concepts/indexes#exploding_index) .
 
-  - `index/write_count` : Count of index writes.
+- `index/write_count` : Count of index writes.
 
 ![**Figure 7.** Index write rate contrasted with document write rate (click to enlarge).](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-index-count.png)
 
@@ -125,8 +125,8 @@ In figure 7, you can see how index write rate can be contrasted with document wr
 
 [Two gauge metrics](https://cloud.google.com/monitoring/api/v3/kinds-and-types#metric-kinds) are available to track activity from clients connected directly to Firestore databases through either Mobile SDKs, Web SDKs, or both. These metrics include a functionality related to real time [snapshot listeners](https://firebase.google.com/docs/firestore/query-data/listen) where relevant changes in the database are immediately streamed back to clients.
 
-  - `network/active_connections` : The number of active connections at the point in time. Each web or mobile client has one connection.
-  - `network/snapshot_listeners` : The number of [snapshot listeners](https://firebase.google.com/docs/firestore/query-data/listen) currently registered across all connected clients. There may be multiple connections per-client.
+- `network/active_connections` : The number of active connections at the point in time. Each web or mobile client has one connection.
+- `network/snapshot_listeners` : The number of [snapshot listeners](https://firebase.google.com/docs/firestore/query-data/listen) currently registered across all connected clients. There may be multiple connections per-client.
 
 You can view these metrics in the `Usage` tab within the Firestore database in the Firebase console.
 
@@ -136,13 +136,13 @@ You can view these metrics in the `Usage` tab within the Firestore database in t
 
 The TTL metrics are available for both Firestore in Native mode and Firestore in Datastore mode databases. Use these metrics to monitor the effect of the [TTL policy](https://docs.cloud.google.com/firestore/native/docs/ttl) enforced.
 
-  - `document/ttl_deletion_count` : Total count of documents deleted by TTL services.
+- `document/ttl_deletion_count` : Total count of documents deleted by TTL services.
 
 ![**Figure 9.** Total count of documents deleted by TTL services (click to enlarge).](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-firestore-ttl.png)
 
 In figure 9, you can see the rate of documents deleted every minute over a period of days.
 
-  - `document/ttl_expiration_to_deletion_delays` : Time elapsed between when a document with a TTL expired, and when it was actually deleted.
+- `document/ttl_expiration_to_deletion_delays` : Time elapsed between when a document with a TTL expired, and when it was actually deleted.
 
 ![**Figure 10.** Time taken in seconds for Firestore to delete documents with TTL policies (click to enlarge).](https://docs.cloud.google.com/static/firestore/native/docs/images/cloudmon-firestore-ttl-delay.png)
 
@@ -150,5 +150,5 @@ In figure 10, you can see that this metric provides a distribution of the time i
 
 ## What's next
 
-  - Learn about [using the Cloud Monitoring dashboard](https://docs.cloud.google.com/firestore/native/docs/use-monitoring-dashboard) to view metrics.
-  - [Monitor usage](https://docs.cloud.google.com/firestore/native/docs/monitor-usage) to identify document reads, writes, and deletes over time.
+- Learn about [using the Cloud Monitoring dashboard](https://docs.cloud.google.com/firestore/native/docs/use-monitoring-dashboard) to view metrics.
+- [Monitor usage](https://docs.cloud.google.com/firestore/native/docs/monitor-usage) to identify document reads, writes, and deletes over time.

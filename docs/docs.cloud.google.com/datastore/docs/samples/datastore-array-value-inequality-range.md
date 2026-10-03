@@ -12,21 +12,23 @@ Filter array value with inequality range.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Datastore queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)
+- [Datastore queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Filter = Filter.And(Filter.GreaterThan("tag", "learn"),
-            Filter.LessThan("tag", "math"))
-    };
+```csharp
+Query query = new Query("Task")
+{
+    Filter = Filter.And(Filter.GreaterThan("tag", "learn"),
+        Filter.LessThan("tag", "math"))
+};
+```
 
 ### Go
 
@@ -34,9 +36,11 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").
-     FilterField("Tag", ">", "learn").
-     FilterField("Tag", "<", "math")
+```go
+query := datastore.NewQuery("Task").
+    FilterField("Tag", ">", "learn").
+    FilterField("Tag", "<", "math")
+```
 
 ### Java
 
@@ -44,13 +48,15 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(
-                CompositeFilter.and(
-                    PropertyFilter.gt("tag", "learn"), PropertyFilter.lt("tag", "math")))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(
+            CompositeFilter.and(
+                PropertyFilter.gt("tag", "learn"), PropertyFilter.lt("tag", "math")))
+        .build();
+```
 
 ### PHP
 
@@ -58,10 +64,12 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->filter('tag', '>', 'learn')
-        ->filter('tag', '<', 'math');
+```php
+$query = $datastore->query()
+    ->kind('Task')
+    ->filter('tag', '>', 'learn')
+    ->filter('tag', '<', 'math');
+```
 
 ### Python
 
@@ -69,15 +77,17 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query(kind="Task")
-    query.add_filter(filter=datastore.query.PropertyFilter("tag", ">", "learn"))
-    query.add_filter(filter=datastore.query.PropertyFilter("tag", "<", "math"))
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query(kind="Task")
+query.add_filter(filter=datastore.query.PropertyFilter("tag", ">", "learn"))
+query.add_filter(filter=datastore.query.PropertyFilter("tag", "<", "math"))
+```
 
 ### Ruby
 
@@ -85,9 +95,11 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .where("tag", ">", "learn")
-                     .where("tag", "<", "math")
+```ruby
+query = datastore.query("Task")
+                 .where("tag", ">", "learn")
+                 .where("tag", "<", "math")
+```
 
 ## What's next
 

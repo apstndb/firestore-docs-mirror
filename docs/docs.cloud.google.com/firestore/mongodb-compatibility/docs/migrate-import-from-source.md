@@ -14,33 +14,37 @@ This page describes the first stage of the [migration process](https://docs.clou
 
 In addition to usual command-line flags, creating a stream requires two configuration files in the YAML format:
 
-  - The `mongo_source_config.yaml` file configures the selection of specific resources for migration, such as the database name. Mongo connectivity parameters such as the hostname, username, and password are all properties of the connection profile. However, the database (and any specific collections within that database) are a property of the stream.
+- The `mongo_source_config.yaml` file configures the selection of specific resources for migration, such as the database name. Mongo connectivity parameters such as the hostname, username, and password are all properties of the connection profile. However, the database (and any specific collections within that database) are a property of the stream.
 
-  - The `gcs_dst_config.yaml` file configures the data placement within Cloud Storage. The Cloud Storage bucket and the root path within the bucket are properties of the connection profile. However, the data format and the data placement within the Cloud Storage bucket structure are a property of the stream.
+- The `gcs_dst_config.yaml` file configures the data placement within Cloud Storage. The Cloud Storage bucket and the root path within the bucket are properties of the connection profile. However, the data format and the data placement within the Cloud Storage bucket structure are a property of the stream.
 
 The following command examples create these files and populate them with values from the [environment variables](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-env-vars) that you've set earlier. As an alternative, you can create these files in any text editor and substitute the values manually.
 
-    echo "$(cat <<EOF
-    includeObjects:
-      databases:
-      - database: ${MONGODB_DATABASE_NAME}
-    EOF
-    )" > mongo_source_config.yaml
-    
-    echo "$(cat <<EOF
-    path: "/${GCS_BUCKET_SUB_PATH}"
-    avroFileFormat: {}
-    EOF
-    )" > gcs_dst_config.yaml
+```
+echo "$(cat <<EOF
+includeObjects:
+  databases:
+  - database: ${MONGODB_DATABASE_NAME}
+EOF
+)" > mongo_source_config.yaml
 
-The previous example configures the full contents of $MONGODB\_DATABASE\_NAME for migration. It is also possible to limit the migration to specific collections within the database. For example, to migrate only the collections `users` and `chats` use the following:
+echo "$(cat <<EOF
+path: "/${GCS_BUCKET_SUB_PATH}"
+avroFileFormat: {}
+EOF
+)" > gcs_dst_config.yaml
+```
 
-    includeObjects:
-      databases:
-      - database: ${MONGODB_DATABASE_NAME}
-        collections:
-          - collection: users
-          - collection: chats
+The previous example configures the full contents of \$MONGODB_DATABASE_NAME for migration. It is also possible to limit the migration to specific collections within the database. For example, to migrate only the collections `users` and `chats` use the following:
+
+```
+includeObjects:
+  databases:
+  - database: ${MONGODB_DATABASE_NAME}
+    collections:
+      - collection: users
+      - collection: chats
+```
 
 ## Create a Datastream stream
 
@@ -48,15 +52,17 @@ Next, create a stream that connects the source and the destination:
 
 The stream label `json_canonical_mode=true` ensures that Datastream properly handles MongoDB document events that contain non-standard values like `Infinity` or `NaN` .
 
-    gcloud datastream streams create "$DATASTREAM_NAME" \
-    --display-name="$DATASTREAM_NAME" \
-    --location="$LOCATION" \
-    --source="$SRC_CONNECTION_PROFILE_NAME" \
-    --destination="$DST_CONNECTION_PROFILE_NAME" \
-    --mongodb-source-config=./mongo_source_config.yaml \
-    --gcs-destination-config=./gcs_dst_config.yaml \
-    --labels="json_canonical_mode=true" \
-    --backfill-all
+```
+gcloud datastream streams create "$DATASTREAM_NAME" \
+--display-name="$DATASTREAM_NAME" \
+--location="$LOCATION" \
+--source="$SRC_CONNECTION_PROFILE_NAME" \
+--destination="$DST_CONNECTION_PROFILE_NAME" \
+--mongodb-source-config=./mongo_source_config.yaml \
+--gcs-destination-config=./gcs_dst_config.yaml \
+--labels="json_canonical_mode=true" \
+--backfill-all
+```
 
 For more information about monitoring the Datastream stream creation, see [Troubleshooting](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-troubleshooting) .
 
@@ -70,10 +76,12 @@ As the stream begins pulling data and streaming changes from the Mongo source, y
 
 To activate the stream, run the following command:
 
-    gcloud datastream streams update "$DATASTREAM_NAME" \
-    --location="$LOCATION" \
-    --state=RUNNING \
-    --update-mask=state
+```
+gcloud datastream streams update "$DATASTREAM_NAME" \
+--location="$LOCATION" \
+--state=RUNNING \
+--update-mask=state
+```
 
 ## What's next
 

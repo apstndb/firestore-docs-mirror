@@ -19,43 +19,29 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 
-Parameters
-
-`backupSchedule.name`
-
-`string`
-
-Output only. The unique backup schedule identifier across all locations and databases for the given project.
-
-This will be auto-assigned.
-
-Format is `projects/{project}/databases/{database}/backupSchedules/{backupSchedule}`
+| Parameters            |                                                                                                                                                                                                                                        |
+|-----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `backupSchedule.name` | `string` Output only. The unique backup schedule identifier across all locations and databases for the given project. This will be auto-assigned. Format is `projects/{project}/databases/{database}/backupSchedules/{backupSchedule}` |
 
 ### Query parameters
 
-Parameters
-
-`updateMask`
-
-` string ( FieldMask  ` format)
-
-The list of fields to be updated.
-
-This is a comma-separated list of fully qualified names of fields. Example: `"user.displayName,photo"` .
+| Parameters   |                                                                                                                                                                                                                                                    |
+|--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `updateMask` | `string ( `[`FieldMask`](https://protobuf.dev/reference/protobuf/google.protobuf/#field-mask)` format)` The list of fields to be updated. This is a comma-separated list of fully qualified names of fields. Example: `"user.displayName,photo"` . |
 
 ### Request body
 
-The request body contains an instance of `  BackupSchedule  ` .
+The request body contains an instance of [`BackupSchedule`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules#BackupSchedule) .
 
 ### Response body
 
-If successful, the response body contains an instance of `  BackupSchedule  ` .
+If successful, the response body contains an instance of [`BackupSchedule`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules#BackupSchedule) .
 
 ### Authorization scopes
 
 Requires one of the following OAuth scopes:
 
-  - `https://www.googleapis.com/auth/datastore`
-  - `https://www.googleapis.com/auth/cloud-platform`
+- `https://www.googleapis.com/auth/datastore`
+- `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

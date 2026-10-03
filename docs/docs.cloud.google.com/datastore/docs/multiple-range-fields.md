@@ -14,63 +14,79 @@ The following query uses range filters on priority and days to return all tasks 
 
 ### Go
 
-    query := datastore.NewQuery("Task").
-       FilterField("priority", ">", 4).
-       FilterField("days", "<", 3).
+```
+query := datastore.NewQuery("Task").
+   FilterField("priority", ">", 4).
+   FilterField("days", "<", 3).
+```
 
 ### GQL
 
-    SELECT * FROM /tasks WHERE priority > 4 AND days < 3;
+```
+SELECT * FROM /tasks WHERE priority > 4 AND days < 3;
+```
 
 ### Java
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-          .setKind("Task")
-          .setFilter(
-            CompositeFilter.and(
-                PropertyFilter.gt("priority", 4), PropertyFilter.lt("days", 3)))
-        .build();
+```
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+      .setKind("Task")
+      .setFilter(
+        CompositeFilter.and(
+            PropertyFilter.gt("priority", 4), PropertyFilter.lt("days", 3)))
+    .build();
+```
 
 ### Node.js
 
-    const query = datastore
-      .createQuery('Task')
-      .filter(
-        and([
-          new PropertyFilter('priority', '>', 4),
-          new PropertyFilter('days', '<', 3),
-        ])
-      );
+```
+const query = datastore
+  .createQuery('Task')
+  .filter(
+    and([
+      new PropertyFilter('priority', '>', 4),
+      new PropertyFilter('days', '<', 3),
+    ])
+  );
+```
 
 ### Python
 
-    from google.cloud import datastore
-    client = datastore.Client()
-    query = client.query(kind="Task")
-    query.add_filter(filter=PropertyFilter("priority", ">", 4))
-    query.add_filter(filter=PropertyFilter("days", "<", 3))
+```
+from google.cloud import datastore
+client = datastore.Client()
+query = client.query(kind="Task")
+query.add_filter(filter=PropertyFilter("priority", ">", 4))
+query.add_filter(filter=PropertyFilter("days", "<", 3))
+```
 
 ### PHP
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->filter('priority', '>', 4)
-        ->filter('days', '<', 3)
+```
+$query = $datastore->query()
+    ->kind('Task')
+    ->filter('priority', '>', 4)
+    ->filter('days', '<', 3)
+```
 
-### C\#
+### C#
 
-    Query query = new Query("Task")
-    {
-      Filter = Filter.And(Filter.GreaterThan("priority", 4),
-        Filter.LessThan("days", 3))
-    };
+```
+Query query = new Query("Task")
+{
+  Filter = Filter.And(Filter.GreaterThan("priority", 4),
+    Filter.LessThan("days", 3))
+};
+```
 
 ### Ruby
 
-    query = datastore.query("Task")
-                     .where("priority", ">", 4)
-                     .where("days", "<", 3)
+```
+query = datastore.query("Task")
+                 .where("priority", ">", 4)
+                 .where("days", "<", 3)
+```
 
 ## Indexing considerations
 
@@ -80,45 +96,53 @@ If an `ORDER BY` clause isn't specified, Firestore in Datastore mode uses any in
 
 To optimize the performance and cost of Firestore in Datastore mode queries, optimize the order of properties in the index. To do this, ensure that your index is ordered from left to right so that the query distills to a dataset that prevents scanning of extraneous index entries.
 
-For example, suppose you want to search through a collection of employees to find United States employees whose salary is more than $100,000 and whose number of years of experience is greater than 0. Based on your understanding of the dataset, you know that the salary constraint is more selective than the experience constraint. An index that reduces the number of index scans is the `(salary [...], experience [...])` index. As a result, a fast and cost-efficient query orders `salary` before `experience` , as shown in the following example:
+For example, suppose you want to search through a collection of employees to find United States employees whose salary is more than \$100,000 and whose number of years of experience is greater than 0. Based on your understanding of the dataset, you know that the salary constraint is more selective than the experience constraint. An index that reduces the number of index scans is the `(salary [...], experience [...])` index. As a result, a fast and cost-efficient query orders `salary` before `experience` , as shown in the following example:
 
 ### GQL
 
-    SELECT *
-    FROM /employees
-    WHERE salary > 100000 AND experience > 0
-    ORDER BY salary, experience
+```
+SELECT *
+FROM /employees
+WHERE salary > 100000 AND experience > 0
+ORDER BY salary, experience
+```
 
 ### Java
 
-    Query<Entity> query =
-      Query.newEntityQueryBuilder()
-        .setKind("employees")
-        .setFilter(
-            CompositeFilter.and(
-                PropertyFilter.gt("salary", 100000), PropertyFilter.gt("experience", 0)))
-        .setOrderBy(OrderBy("salary"), OrderBy("experience"))
-        .build();
+```
+Query<Entity> query =
+  Query.newEntityQueryBuilder()
+    .setKind("employees")
+    .setFilter(
+        CompositeFilter.and(
+            PropertyFilter.gt("salary", 100000), PropertyFilter.gt("experience", 0)))
+    .setOrderBy(OrderBy("salary"), OrderBy("experience"))
+    .build();
+```
 
 ### Node.js
 
-    const query = datastore
-      .createQuery("employees")
-      .filter(
-        and([
-          new PropertyFilter("salary", ">", 100000),
-          new PropertyFilter("experience", ">", 0),
-           ])
-        )
-      .order("salary")
-      .order("experience");
+```
+const query = datastore
+  .createQuery("employees")
+  .filter(
+    and([
+      new PropertyFilter("salary", ">", 100000),
+      new PropertyFilter("experience", ">", 0),
+       ])
+    )
+  .order("salary")
+  .order("experience");
+```
 
 ### Python
 
-    query = client.query(kind="employees")
-    query.add_filter("salary", ">", 100000)
-    query.add_filter("experience", ">", 0)
-    query.order = ["-salary", "-experience"]
+```
+query = client.query(kind="employees")
+query.add_filter("salary", ">", 100000)
+query.add_filter("experience", ">", 0)
+query.order = ["-salary", "-experience"]
+```
 
 ## Best practices for optimizing indexes
 
@@ -136,35 +160,41 @@ To ensure that Firestore in Datastore mode selects the optimal index for your qu
 
 To minimize the number of entities that Firestore in Datastore mode scans and returns over the network, you should always order properties in the decreasing order of query constraint selectivity. If the result set is not in the required order and the result set is expected to be small, you can implement client-side logic to reorder it as per your ordering expectation.
 
-For example, if you want to search through a collection of employees to find United States employees whose salary is more than $100,000 and order the results by the year of experience of the employee. If you expect that only a small number of employees will have salary higher than $100,000, then an efficient way to write the query is as follows:
+For example, if you want to search through a collection of employees to find United States employees whose salary is more than \$100,000 and order the results by the year of experience of the employee. If you expect that only a small number of employees will have salary higher than \$100,000, then an efficient way to write the query is as follows:
 
 ### Java
 
-    Query<Entity> query =
-      Query.newEntityQueryBuilder()
-        .setKind("employees")
-        .setFilter(PropertyFilter.gt("salary", 100000))
-        .setOrderBy(OrderBy("salary"))
-        .build();
-    QueryResults<Entity> results = datastore.run(query);
-    // Order results by `experience`
+```
+Query<Entity> query =
+  Query.newEntityQueryBuilder()
+    .setKind("employees")
+    .setFilter(PropertyFilter.gt("salary", 100000))
+    .setOrderBy(OrderBy("salary"))
+    .build();
+QueryResults<Entity> results = datastore.run(query);
+// Order results by `experience`
+```
 
 ### Node.js
 
-    const query = datastore
-      .createQuery("employees")
-      .filter(new PropertyFilter("salary", ">", 100000))
-      .order("salary");
-    const [entities] = await datastore.runQuery(query);
-    // Order results by `experience`
+```
+const query = datastore
+  .createQuery("employees")
+  .filter(new PropertyFilter("salary", ">", 100000))
+  .order("salary");
+const [entities] = await datastore.runQuery(query);
+// Order results by `experience`
+```
 
 ### Python
 
-    query = client.query(kind="employees")
-    query.add_filter("salary", ">", 100000)
-    query.order = ["salary"]
-    results = query.fetch()
-    // Order results by `experience`
+```
+query = client.query(kind="employees")
+query.add_filter("salary", ">", 100000)
+query.order = ["salary"]
+results = query.fetch()
+// Order results by `experience`
+```
 
 While adding an ordering on `experience` to the query will yield the same set of entities and obviate re-ordering the results on the clients, the query may read many more extraneous index entries than the earlier query. This is because Firestore in Datastore mode always prefers an index whose index properties prefix match the order by clause of the query. If `experience` were added to the order by clause, then Firestore in Datastore mode will select the `(experience [...], salary [...])` index for computing query results. Since there are no other constraints on `experience` , Firestore in Datastore mode will read **all** index entries of the `employees` collection before applying the `salary` filter to find the final result set. This means that index entries which don't satisfy the `salary` filter are still read, thus increasing the latency and cost of the query.
 
@@ -178,10 +208,10 @@ For detailed information, see the [Pricing](https://docs.cloud.google.com/datast
 
 Apart from the [query limitations](https://docs.cloud.google.com/datastore/docs/concepts/queries#limitations_2) , note the following limitations before using queries with range and inequality filters on multiple properties:
 
-  - To prevent queries from becoming too expensive to run, Firestore in Datastore mode limits the number of range or inequality operators to 10.
+- To prevent queries from becoming too expensive to run, Firestore in Datastore mode limits the number of range or inequality operators to 10.
 
 ## What's Next
 
-  - Learn about [optimizing your queries](https://docs.cloud.google.com/datastore/docs/multiple-range-optimize-indexes) .
-  - Learn more about [performing simple and compound queries](https://docs.cloud.google.com/datastore/docs/concepts/queries) .
-  - Understand how [Firestore in Datastore mode uses indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes) .
+- Learn about [optimizing your queries](https://docs.cloud.google.com/datastore/docs/multiple-range-optimize-indexes) .
+- Learn more about [performing simple and compound queries](https://docs.cloud.google.com/datastore/docs/concepts/queries) .
+- Understand how [Firestore in Datastore mode uses indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes) .

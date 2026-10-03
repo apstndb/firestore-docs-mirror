@@ -12,7 +12,7 @@ Incrementing a Firestore document field while using shards (async).
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Support frequent and distributed counters](https://docs.cloud.google.com/firestore/native/docs/solutions/counters)
+- [Support frequent and distributed counters](https://docs.cloud.google.com/firestore/native/docs/solutions/counters)
 
 ## Code sample
 
@@ -20,12 +20,14 @@ For detailed documentation that includes this code sample, see the following:
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    async def increment_counter(self, doc_ref):
-        """Increment a randomly picked shard."""
-        doc_id = random.randint(0, self._num_shards - 1)
-    
-        shard_ref = doc_ref.collection("shards").document(str(doc_id))
-        return await shard_ref.update({"count": firestore.Increment(1)})
+```python
+async def increment_counter(self, doc_ref):
+    """Increment a randomly picked shard."""
+    doc_id = random.randint(0, self._num_shards - 1)
+
+    shard_ref = doc_ref.collection("shards").document(str(doc_id))
+    return await shard_ref.update({"count": firestore.Increment(1)})
+```
 
 ## What's next
 

@@ -9,7 +9,7 @@ data_source: docs.cloud.google.com
 # Use text search
 
 > **Preview**
-> 
+>
 > This product or feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . Pre-GA products and features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
 Use text search features in Firestore to search for specific strings within documents.
@@ -30,61 +30,75 @@ The operation searches only in the fields indexed with a text index. If multiple
 
 ### Web version 9
 
-    const result = await execute(db.pipeline().collection('restaurants')
-      .search({
-        query: documentMatches('waffles')
-      }));
+```
+const result = await execute(db.pipeline().collection('restaurants')
+  .search({
+    query: documentMatches('waffles')
+  }));
+```
 
 ##### iOS
 
-    let snapshot = try await db.pipeline().collection("restaurants")
-      .search(query: DocumentMatches("waffles"))
-      .execute()
+```
+let snapshot = try await db.pipeline().collection("restaurants")
+  .search(query: DocumentMatches("waffles"))
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val pipeline = db.pipeline().collection("restaurants")
-        .search(SearchStage.withQuery(documentMatches("waffles")))
+```
+val pipeline = db.pipeline().collection("restaurants")
+    .search(SearchStage.withQuery(documentMatches("waffles")))
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Pipeline pipeline = db.pipeline().collection("restaurants")
-            .search(SearchStage.withQuery(documentMatches("waffles")));
+```
+Pipeline pipeline = db.pipeline().collection("restaurants")
+        .search(SearchStage.withQuery(documentMatches("waffles")));
+```
 
 ##### Node.js
 
-    await db.pipeline().collection('restaurants')
-      .search({
-        query: documentMatches('waffles')
-      })
-      .execute();
+```
+await db.pipeline().collection('restaurants')
+  .search({
+    query: documentMatches('waffles')
+  })
+  .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import DocumentMatches
-    
-    results = (
-        client.pipeline()
-        .collection("restaurants")
-        .search(DocumentMatches("waffles"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import DocumentMatches
+
+results = (
+    client.pipeline()
+    .collection("restaurants")
+    .search(DocumentMatches("waffles"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot results1 =
-        firestore.pipeline().collection("restaurants")
-            .search(Search.withQuery(documentMatches("waffles")))
-            .execute().get();
+```
+Pipeline.Snapshot results1 =
+    firestore.pipeline().collection("restaurants")
+        .search(Search.withQuery(documentMatches("waffles")))
+        .execute().get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("restaurants").
-     Search(firestore.WithSearchQuery(firestore.DocumentMatches("waffles"))).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("restaurants").
+    Search(firestore.WithSearchQuery(firestore.DocumentMatches("waffles"))).
+    Execute(ctx)
+```
 
 ### Search for an exact term
 
@@ -92,61 +106,75 @@ To search for an exact term, enclose the term in quotes ( `"` ):
 
 ### Web version 9
 
-    const result = await execute(db.pipeline().collection('restaurants')
-      .search({
-        query: documentMatches('"belgian waffles"')
-      }));
+```
+const result = await execute(db.pipeline().collection('restaurants')
+  .search({
+    query: documentMatches('"belgian waffles"')
+  }));
+```
 
 ##### iOS
 
-    let snapshot = try await db.pipeline().collection("restaurants")
-      .search(query: DocumentMatches("\"belgian waffles\""))
-      .execute()
+```
+let snapshot = try await db.pipeline().collection("restaurants")
+  .search(query: DocumentMatches("\"belgian waffles\""))
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val pipeline = db.pipeline().collection("restaurants")
-        .search(SearchStage.withQuery(documentMatches("\"belgian waffles\"")))
+```
+val pipeline = db.pipeline().collection("restaurants")
+    .search(SearchStage.withQuery(documentMatches("\"belgian waffles\"")))
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Pipeline pipeline = db.pipeline().collection("restaurants")
-            .search(SearchStage.withQuery(documentMatches("\"belgian waffles\"")));
+```
+Pipeline pipeline = db.pipeline().collection("restaurants")
+        .search(SearchStage.withQuery(documentMatches("\"belgian waffles\"")));
+```
 
 ##### Node.js
 
-    await db.pipeline().collection('restaurants')
-      .search({
-        query: documentMatches('"belgian waffles"')
-      })
-      .execute();
+```
+await db.pipeline().collection('restaurants')
+  .search({
+    query: documentMatches('"belgian waffles"')
+  })
+  .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import DocumentMatches
-    
-    results = (
-        client.pipeline()
-        .collection("restaurants")
-        .search(DocumentMatches('"belgian waffles"'))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import DocumentMatches
+
+results = (
+    client.pipeline()
+    .collection("restaurants")
+    .search(DocumentMatches('"belgian waffles"'))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot results2 =
-        firestore.pipeline().collection("restaurants")
-            .search(Search.withQuery(documentMatches("\"belgian waffles\"")))
-            .execute().get();
+```
+Pipeline.Snapshot results2 =
+    firestore.pipeline().collection("restaurants")
+        .search(Search.withQuery(documentMatches("\"belgian waffles\"")))
+        .execute().get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("restaurants").
-     Search(firestore.WithSearchQuery(firestore.DocumentMatches("\"belgian waffles\""))).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("restaurants").
+    Search(firestore.WithSearchQuery(firestore.DocumentMatches("\"belgian waffles\""))).
+    Execute(ctx)
+```
 
 ### Search for a term combination
 
@@ -154,65 +182,79 @@ To search for combination for terms (logical `AND` ), separate the terms with sp
 
 ### Web version 9
 
-    const result = await execute(db.pipeline().collection('restaurants')
-      .search({
-        query: documentMatches('waffles eggs')
-      }));
+```
+const result = await execute(db.pipeline().collection('restaurants')
+  .search({
+    query: documentMatches('waffles eggs')
+  }));
+```
 
 ##### iOS
 
-    let snapshot = try await db.pipeline().collection("restaurants")
-      .search(query: DocumentMatches("waffles eggs"))
-      .execute()
+```
+let snapshot = try await db.pipeline().collection("restaurants")
+  .search(query: DocumentMatches("waffles eggs"))
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val pipeline = db.pipeline().collection("restaurants")
-        .search(SearchStage.withQuery(documentMatches("waffles eggs")))
+```
+val pipeline = db.pipeline().collection("restaurants")
+    .search(SearchStage.withQuery(documentMatches("waffles eggs")))
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Pipeline pipeline = db.pipeline().collection("restaurants")
-            .search(SearchStage.withQuery(documentMatches("waffles eggs")));
+```
+Pipeline pipeline = db.pipeline().collection("restaurants")
+        .search(SearchStage.withQuery(documentMatches("waffles eggs")));
+```
 
 ##### Node.js
 
-    await db.pipeline().collection('restaurants')
-      .search({
-        query: documentMatches('waffles eggs')
-      })
-      .execute();
+```
+await db.pipeline().collection('restaurants')
+  .search({
+    query: documentMatches('waffles eggs')
+  })
+  .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import DocumentMatches
-    
-    results = (
-        client.pipeline()
-        .collection("restaurants")
-        .search(DocumentMatches("waffles eggs"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import DocumentMatches
+
+results = (
+    client.pipeline()
+    .collection("restaurants")
+    .search(DocumentMatches("waffles eggs"))
+    .execute()
+)
+```
 
 ##### Java
 
-    firestore.collection("restaurants").add(new HashMap<String, Object>() {{
-      put("name", "Morning Diner");
-      put("description", "Start your day with waffles and eggs.");
-    }});
-    Pipeline.Snapshot results3 =
-        firestore.pipeline().collection("restaurants")
-            .search(Search.withQuery(documentMatches("waffles eggs")))
-            .execute().get();
+```
+firestore.collection("restaurants").add(new HashMap<String, Object>() {{
+  put("name", "Morning Diner");
+  put("description", "Start your day with waffles and eggs.");
+}});
+Pipeline.Snapshot results3 =
+    firestore.pipeline().collection("restaurants")
+        .search(Search.withQuery(documentMatches("waffles eggs")))
+        .execute().get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("restaurants").
-     Search(firestore.WithSearchQuery(firestore.DocumentMatches("waffles eggs"))).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("restaurants").
+    Search(firestore.WithSearchQuery(firestore.DocumentMatches("waffles eggs"))).
+    Execute(ctx)
+```
 
 ### Exclude a term
 
@@ -220,65 +262,79 @@ To exclude a term, prefix the term with a hyphen ( `-` ):
 
 ### Web version 9
 
-    const result = await execute(db.pipeline().collection('restaurants')
-      .search({
-        query: documentMatches('coffee -waffles')
-      }));
+```
+const result = await execute(db.pipeline().collection('restaurants')
+  .search({
+    query: documentMatches('coffee -waffles')
+  }));
+```
 
 ##### iOS
 
-    let snapshot = try await db.pipeline().collection("restaurants")
-      .search(query: DocumentMatches("coffee -waffles"))
-      .execute()
+```
+let snapshot = try await db.pipeline().collection("restaurants")
+  .search(query: DocumentMatches("coffee -waffles"))
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val pipeline = db.pipeline().collection("restaurants")
-        .search(SearchStage.withQuery(documentMatches("waffles eggs")))
+```
+val pipeline = db.pipeline().collection("restaurants")
+    .search(SearchStage.withQuery(documentMatches("waffles eggs")))
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Pipeline pipeline = db.pipeline().collection("restaurants")
-            .search(SearchStage.withQuery(documentMatches("coffee -waffles")));
+```
+Pipeline pipeline = db.pipeline().collection("restaurants")
+        .search(SearchStage.withQuery(documentMatches("coffee -waffles")));
+```
 
 ##### Node.js
 
-    await db.pipeline().collection('restaurants')
-      .search({
-        query: documentMatches('-waffles')
-      })
-      .execute();
+```
+await db.pipeline().collection('restaurants')
+  .search({
+    query: documentMatches('-waffles')
+  })
+  .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import DocumentMatches
-    
-    results = (
-        client.pipeline()
-        .collection("restaurants")
-        .search(DocumentMatches("-waffles"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import DocumentMatches
+
+results = (
+    client.pipeline()
+    .collection("restaurants")
+    .search(DocumentMatches("-waffles"))
+    .execute()
+)
+```
 
 ##### Java
 
-    firestore.collection("restaurants").add(new HashMap<String, Object>() {{
-      put("name", "City Coffee");
-      put("description", "Premium coffee and pastries.");
-    }});
-    Pipeline.Snapshot results4 =
-        firestore.pipeline().collection("restaurants")
-            .search(Search.withQuery(documentMatches("-waffles")))
-            .execute().get();
+```
+firestore.collection("restaurants").add(new HashMap<String, Object>() {{
+  put("name", "City Coffee");
+  put("description", "Premium coffee and pastries.");
+}});
+Pipeline.Snapshot results4 =
+    firestore.pipeline().collection("restaurants")
+        .search(Search.withQuery(documentMatches("-waffles")))
+        .execute().get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("restaurants").
-     Search(firestore.WithSearchQuery(firestore.DocumentMatches("-waffles"))).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("restaurants").
+    Search(firestore.WithSearchQuery(firestore.DocumentMatches("-waffles"))).
+    Execute(ctx)
+```
 
 You can also exclude a phrase, for example, `pizza -"New York"` .
 
@@ -290,38 +346,45 @@ To sort results by search score:
 
 ### Web version 9
 
-    const result = await execute(db.pipeline().collection('restaurants')
-      .search({
-        query: documentMatches('waffles'),
-        sort: score().descending()
-      }));
+```
+const result = await execute(db.pipeline().collection('restaurants')
+  .search({
+    query: documentMatches('waffles'),
+    sort: score().descending()
+  }));
+```
 
 ##### iOS
 
-    let snapshot = try await db.pipeline().collection("restaurants")
-      .search(
-          query: DocumentMatches("waffles"),
-          sort: [Score().descending()]
-          )
-      .execute()
+```
+let snapshot = try await db.pipeline().collection("restaurants")
+  .search(
+      query: DocumentMatches("waffles"),
+      sort: [Score().descending()]
+      )
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val pipeline = db.pipeline().collection("restaurants")
-        .search(SearchStage
-                  .withQuery(documentMatches("waffles"))
-                  .withSort(score().descending())
-                  )
+```
+val pipeline = db.pipeline().collection("restaurants")
+    .search(SearchStage
+              .withQuery(documentMatches("waffles"))
+              .withSort(score().descending())
+              )
+```
 
 ##### Node.js
 
-    await db.pipeline().collection('restaurants')
-      .search({
-        query: documentMatches('waffles'),
-        sort: score().descending()
-      })
-      .execute();
+```
+await db.pipeline().collection('restaurants')
+  .search({
+    query: documentMatches('waffles'),
+    sort: score().descending()
+  })
+  .execute();
+```
 
 ### Add fields to documents returned by the search stage
 
@@ -331,80 +394,94 @@ The following example adds the score field to the documents returned by the sear
 
 ### Web version 9
 
-    const result = await execute(db.pipeline().collection('restaurants')
-      .search({
-        query: 'menu:waffles',
-        addFields: [
-            score().as('score'),
-        ]
-      }));
+```
+const result = await execute(db.pipeline().collection('restaurants')
+  .search({
+    query: 'menu:waffles',
+    addFields: [
+        score().as('score'),
+    ]
+  }));
+```
 
 ##### iOS
 
-    let snapshot = try await db.pipeline().collection("restaurants")
-      .search(
-        query: DocumentMatches("waffles"),
-        addFields: [
-          Score().as("score")
-        ]
-      )
-      .execute()
+```
+let snapshot = try await db.pipeline().collection("restaurants")
+  .search(
+    query: DocumentMatches("waffles"),
+    addFields: [
+      Score().as("score")
+    ]
+  )
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val pipeline = db.pipeline().collection("restaurants")
-        .search(SearchStage.withQuery(documentMatches("waffles eggs")))
+```
+val pipeline = db.pipeline().collection("restaurants")
+    .search(SearchStage.withQuery(documentMatches("waffles eggs")))
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Pipeline pipeline = db.pipeline().collection("restaurants")
-            .search(
-                    SearchStage.withQuery(documentMatches("menu:waffles"))
-                            .withAddFields(score().alias("score")));
+```
+Pipeline pipeline = db.pipeline().collection("restaurants")
+        .search(
+                SearchStage.withQuery(documentMatches("menu:waffles"))
+                        .withAddFields(score().alias("score")));
+```
 
 ##### Node.js
 
-    await db.pipeline().collection('restaurants')
-      .search({
-        query: field('menu').matches('waffles'),
-        addFields: [
-            score().as('score'),
-        ]
-      }).execute();
+```
+await db.pipeline().collection('restaurants')
+  .search({
+    query: field('menu').matches('waffles'),
+    addFields: [
+        score().as('score'),
+    ]
+  }).execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import DocumentMatches, Score
-    from google.cloud.firestore_v1.pipeline_stages import SearchOptions
-    
-    results = (
-        client.pipeline()
-        .collection("restaurants")
-        .search(
-            SearchOptions(
-                query=DocumentMatches("menu:waffles"),
-                add_fields=[Score().as_("score")],
-            )
+```
+from google.cloud.firestore_v1.pipeline_expressions import DocumentMatches, Score
+from google.cloud.firestore_v1.pipeline_stages import SearchOptions
+
+results = (
+    client.pipeline()
+    .collection("restaurants")
+    .search(
+        SearchOptions(
+            query=DocumentMatches("menu:waffles"),
+            add_fields=[Score().as_("score")],
         )
-        .execute()
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot results5 =
-        firestore.pipeline().collection("restaurants")
-            .search(Search.withQuery(field("menu").regexMatch("waffles"))
-                .withAddFields(score().as("score")))
-            .execute().get();
+```
+Pipeline.Snapshot results5 =
+    firestore.pipeline().collection("restaurants")
+        .search(Search.withQuery(field("menu").regexMatch("waffles"))
+            .withAddFields(score().as("score")))
+        .execute().get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("restaurants").
-     Search(
-         firestore.WithSearchQuery(firestore.FieldOf("menu").RegexMatch("waffles")),
-         firestore.WithSearchAddFields(firestore.Score().As("score")),
-     ).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("restaurants").
+    Search(
+        firestore.WithSearchQuery(firestore.FieldOf("menu").RegexMatch("waffles")),
+        firestore.WithSearchAddFields(firestore.Score().As("score")),
+    ).
+    Execute(ctx)
+```

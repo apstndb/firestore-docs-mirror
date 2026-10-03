@@ -12,7 +12,7 @@ Query a Firestore collection with a cursor start at document filter (async).
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Paginate data with query cursors](https://docs.cloud.google.com/firestore/native/docs/query-data/query-cursors)
+- [Paginate data with query cursors](https://docs.cloud.google.com/firestore/native/docs/query-data/query-cursors)
 
 ## Code sample
 
@@ -20,12 +20,14 @@ For detailed documentation that includes this code sample, see the following:
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    doc_ref = db.collection("cities").document("SF")
-    
-    snapshot = await doc_ref.get()
-    start_at_snapshot = (
-        db.collection("cities").order_by("population").start_at(snapshot)
-    )
+```python
+doc_ref = db.collection("cities").document("SF")
+
+snapshot = await doc_ref.get()
+start_at_snapshot = (
+    db.collection("cities").order_by("population").start_at(snapshot)
+)
+```
 
 ## What's next
 

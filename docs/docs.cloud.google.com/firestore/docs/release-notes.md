@@ -124,11 +124,11 @@ Feature
 
 The Firestore databases page in the Google Cloud console now includes a status column. Possible statuses include:
 
-  - Ready
-  - Cloning is in progress
-  - Restoring from backup is in progress
-  - Deleted
-  - Failed
+- Ready
+- Cloning is in progress
+- Restoring from backup is in progress
+- Deleted
+- Failed
 
 For the cloning and restore statuses, the status column updates upon completion.
 
@@ -182,8 +182,8 @@ Feature
 
 Firestore is now available on [Database Center](https://docs.cloud.google.com/database-center/docs/overview) . You can track your Firestore resources in the fleet inventory section and the resource table in the Database Center. You can also use Database Center to monitor the following health issues for your Firestore resources:
 
-  - No automated backup policy
-  - No point-in-time recovery
+- No automated backup policy
+- No point-in-time recovery
 
 For more information about Database Center, see [Database Center overview](https://docs.cloud.google.com/database-center/docs/overview) . For more information about health issues supported for Firestore, see [Supported health issues](https://docs.cloud.google.com/database-center/docs/database-health-issues#supported-health-issues) .
 
@@ -213,7 +213,7 @@ Feature
 
 [Firestore](https://docs.cloud.google.com/firestore/docs) is supported by Database Center. Database Center is an AI-assisted dashboard that gives you one centralized view across your entire database fleet. Database Center displays the following [health issue](https://docs.cloud.google.com/database-center/docs/database-health-issues) for Firestore:
 
-  - No automated backup policy
+- No automated backup policy
 
 For more information, see [Database Center overview](https://docs.cloud.google.com/database-center/docs/overview) and [database health issues](https://docs.cloud.google.com/database-center/docs/database-health-issues) .
 
@@ -303,15 +303,15 @@ Feature
 
 Firestore now supports the following additional locations:
 
-  - `africa-south1` Johannesburg
-  - `europe-north1` Finland
-  - `europe-southwest1` Madrid
-  - `europe-west10` Berlin
-  - `europe-west12` Turin
-  - `europe-west8` Milan
-  - `southamerica-west1` Santiago
-  - `us-central1` Iowa
-  - `us-east5` Columbus
+- `africa-south1` Johannesburg
+- `europe-north1` Finland
+- `europe-southwest1` Madrid
+- `europe-west10` Berlin
+- `europe-west12` Turin
+- `europe-west8` Milan
+- `southamerica-west1` Santiago
+- `us-central1` Iowa
+- `us-east5` Columbus
 
 For a full list of supported locations, see [Locations](https://docs.cloud.google.com/firestore/docs/locations) .
 
@@ -401,9 +401,9 @@ Change
 
 Updated the following index limits:
 
-  - Raised the maximum number of composite indexes from 200 to 500 for projects with billing enabled. The limit is 200 for projects without billing enabled.
+- Raised the maximum number of composite indexes from 200 to 500 for projects with billing enabled. The limit is 200 for projects without billing enabled.
 
-  - Raised the maximum number of single-field index configurations from 200 to 500 for projects with billing enabled. The limit is 200 for projects without billing enabled.
+- Raised the maximum number of single-field index configurations from 200 to 500 for projects with billing enabled. The limit is 200 for projects without billing enabled.
 
 For more information about these limits, see [Quotas and limits](https://docs.cloud.google.com/firestore/quotas#indexes) .
 
@@ -529,8 +529,8 @@ Change
 
 The following database limits no longer apply:
 
-  - Maximum writes per second per database: 10,000
-  - Maximum concurrent connections for mobile/web clients per database: 1,000,000
+- Maximum writes per second per database: 10,000
+- Maximum concurrent connections for mobile/web clients per database: 1,000,000
 
 ## October 11, 2022
 
@@ -640,9 +640,9 @@ Feature
 
 Support for the following additional locations:
 
-  - `asia-southeast1` Singapore
-  - `us-west1` Oregeon
-  - `asia-east1` Taiwan
+- `asia-southeast1` Singapore
+- `us-west1` Oregeon
+- `asia-east1` Taiwan
 
 See the [full list of locations](https://docs.cloud.google.com/firestore/docs/locations) .
 
@@ -754,33 +754,33 @@ Feature
 
 Cloud Firestore now supports the following 10 additional locations:
 
-  - Multi-region
-    
-      - `eur3` Europe
+- Multi-region
 
-  - North America (regional)
-    
-      - `us-west2` Los Angeles
-      - `northamerica-northeast1` Montréal
-      - `us-east4` Northern Virginia
+  - `eur3` Europe
 
-  - South America (regional)
-    
-      - `southamerica-east1` São Paulo
+- North America (regional)
 
-  - Europe (regional)
-    
-      - `europe-west2` London
+  - `us-west2` Los Angeles
+  - `northamerica-northeast1` Montréal
+  - `us-east4` Northern Virginia
 
-  - Asia (regional)
-    
-      - `asia-south1` Mumbai
-      - `asia-east2` Hong Kong
-      - `asia-northeast1` Tokyo
+- South America (regional)
 
-  - Australia (regional)
-    
-      - `australia-southeast1` Sydney
+  - `southamerica-east1` São Paulo
+
+- Europe (regional)
+
+  - `europe-west2` London
+
+- Asia (regional)
+
+  - `asia-south1` Mumbai
+  - `asia-east2` Hong Kong
+  - `asia-northeast1` Tokyo
+
+- Australia (regional)
+
+  - `australia-southeast1` Sydney
 
 For a full list of supported multi-regions and regions, see [Cloud Firestore Locations](https://docs.cloud.google.com/firestore/docs/locations) .
 
@@ -800,8 +800,8 @@ Feature
 
 We added two new features to help you work with arrays:
 
-  - [Array contains queries](https://docs.cloud.google.com/firestore/docs/query-data/queries#array_membership) : query for documents that contain a particular array value.
-  - [Array transforms](https://docs.cloud.google.com/firestore/docs/manage-data/add-data#update_elements_in_an_array) : the `arrayUnion()` and `arrayRemove()` functions allow you to directly modify array field values.
+- [Array contains queries](https://docs.cloud.google.com/firestore/docs/query-data/queries#array_membership) : query for documents that contain a particular array value.
+- [Array transforms](https://docs.cloud.google.com/firestore/docs/manage-data/add-data#update_elements_in_an_array) : the `arrayUnion()` and `arrayRemove()` functions allow you to directly modify array field values.
 
 ## August 08, 2018
 
@@ -837,8 +837,8 @@ Change
 
 Documentation updates:
 
-  - [New page on Cloud Firestore indexes](https://docs.cloud.google.com/firestore/docs/concepts/index-overview) . This page describes Cloud Firestore index types, the relationship between queries and indexes, and index merging for equality filters.
-  - Added code examples for the [C\# server client library](http://googleapis.github.io/google-cloud-dotnet/docs/Google.Cloud.Firestore/) .
+- [New page on Cloud Firestore indexes](https://docs.cloud.google.com/firestore/docs/concepts/index-overview) . This page describes Cloud Firestore index types, the relationship between queries and indexes, and index merging for equality filters.
+- Added code examples for the [C# server client library](http://googleapis.github.io/google-cloud-dotnet/docs/Google.Cloud.Firestore/) .
 
 ## May 11, 2018
 
@@ -872,9 +872,9 @@ Feature
 
 New Cloud Firestore server client libraries:
 
-  - [C\#](http://googleapis.github.io/google-cloud-dotnet/docs/Google.Cloud.Firestore/)
-  - [PHP](https://github.com/GoogleCloudPlatform/google-cloud-php#cloud-firestore-beta)
-  - [Ruby](https://github.com/GoogleCloudPlatform/google-cloud-ruby/tree/master/google-cloud-firestore)
+- [C#](http://googleapis.github.io/google-cloud-dotnet/docs/Google.Cloud.Firestore/)
+- [PHP](https://github.com/GoogleCloudPlatform/google-cloud-php#cloud-firestore-beta)
+- [Ruby](https://github.com/GoogleCloudPlatform/google-cloud-ruby/tree/master/google-cloud-firestore)
 
 ## January 18, 2018
 
@@ -882,9 +882,9 @@ Change
 
 Overhaul of the Cloud Firestore Security Rules documentation. These improved pages add more examples and give a clearer introduction to the structure of Cloud Firestore Security Rules:
 
-  - [Getting Started with Security Rules](https://docs.cloud.google.com/firestore/docs/security/get-started)
-  - [Structuring Security Rules](https://docs.cloud.google.com/firestore/docs/security/rules-structure)
-  - [Writing Conditions for Security Rules](https://docs.cloud.google.com/firestore/docs/security/rules-conditions)
+- [Getting Started with Security Rules](https://docs.cloud.google.com/firestore/docs/security/get-started)
+- [Structuring Security Rules](https://docs.cloud.google.com/firestore/docs/security/rules-structure)
+- [Writing Conditions for Security Rules](https://docs.cloud.google.com/firestore/docs/security/rules-conditions)
 
 ## January 10, 2018
 

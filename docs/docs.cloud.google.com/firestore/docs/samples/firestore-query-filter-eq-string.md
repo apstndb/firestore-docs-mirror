@@ -12,85 +12,99 @@ Query a Firestore collection with a string eq filter
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Query and filter data](https://docs.cloud.google.com/firestore/native/docs/query-data/queries)
+- [Query and filter data](https://docs.cloud.google.com/firestore/native/docs/query-data/queries)
 
 ## Code sample
 
-### C\#
+### C#
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    CollectionReference citiesRef = db.Collection("cities");
-    Query query = citiesRef.WhereEqualTo("State", "CA");
-    QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
-    foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
-    {
-        Console.WriteLine("Document {0} returned by query State=CA", documentSnapshot.Id);
-    }
+```csharp
+CollectionReference citiesRef = db.Collection("cities");
+Query query = citiesRef.WhereEqualTo("State", "CA");
+QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
+foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
+{
+    Console.WriteLine("Document {0} returned by query State=CA", documentSnapshot.Id);
+}
+```
 
 ### Go
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := client.Collection("cities").Where("state", "==", "CA")
+```go
+query := client.Collection("cities").Where("state", "==", "CA")
+```
 
 ### Java
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    // Create a reference to the cities collection
-    CollectionReference cities = db.collection("cities");
-    // Create a query against the collection.
-    Query query = cities.whereEqualTo("state", "CA");
-    // retrieve  query results asynchronously using query.get()
-    ApiFuture<QuerySnapshot> querySnapshot = query.get();
-    
-    for (DocumentSnapshot document : querySnapshot.get().getDocuments()) {
-      System.out.println(document.getId());
-    }
+```java
+// Create a reference to the cities collection
+CollectionReference cities = db.collection("cities");
+// Create a query against the collection.
+Query query = cities.whereEqualTo("state", "CA");
+// retrieve  query results asynchronously using query.get()
+ApiFuture<QuerySnapshot> querySnapshot = query.get();
+
+for (DocumentSnapshot document : querySnapshot.get().getDocuments()) {
+  System.out.println(document.getId());
+}
+```
 
 ### Node.js
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    // Create a reference to the cities collection
-    const citiesRef = db.collection('cities');
-    
-    // Create a query against the collection
-    const queryRef = citiesRef.where('state', '==', 'CA');
+```javascript
+// Create a reference to the cities collection
+const citiesRef = db.collection('cities');
+
+// Create a query against the collection
+const queryRef = citiesRef.where('state', '==', 'CA');
+```
 
 ### PHP
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $citiesRef = $db->collection('samples/php/cities');
-    $query = $citiesRef->where('state', '=', 'CA');
-    $snapshot = $query->documents();
-    foreach ($snapshot as $document) {
-        printf('Document %s returned by query state=CA' . PHP_EOL, $document->id());
-    }
+```php
+$citiesRef = $db->collection('samples/php/cities');
+$query = $citiesRef->where('state', '=', 'CA');
+$snapshot = $query->documents();
+foreach ($snapshot as $document) {
+    printf('Document %s returned by query state=CA' . PHP_EOL, $document->id());
+}
+```
 
 ### Python
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    # Create a reference to the cities collection
-    cities_ref = db.collection("cities")
-    
-    # Create a query against the collection
-    query_ref = cities_ref.where(filter=FieldFilter("state", "==", "CA"))
+```python
+# Create a reference to the cities collection
+cities_ref = db.collection("cities")
+
+# Create a query against the collection
+query_ref = cities_ref.where(filter=FieldFilter("state", "==", "CA"))
+```
 
 ### Ruby
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    cities_ref = firestore.col collection_path
-    
-    query = cities_ref.where "state", "=", "CA"
-    
-    query.get do |city|
-      puts "Document #{city.document_id} returned by query state=CA."
-    end
+```ruby
+cities_ref = firestore.col collection_path
+
+query = cities_ref.where "state", "=", "CA"
+
+query.get do |city|
+  puts "Document #{city.document_id} returned by query state=CA."
+end
+```
 
 ## What's next
 

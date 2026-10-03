@@ -16,8 +16,8 @@ CUDs are ideal when your spending on Datastore mode operations involves a predic
 
 Datastore mode offers two levels of discounts, depending on the commitment period:
 
-  - **20% discount** : You get this by committing to a 1-year term. For the duration of your term, you pay the Datastore mode CUD 1-year price (consumption model ID 3892-BA17-92A7) as your committed hourly spend amount.
-  - **40% discount** : You get this by committing to a 3-year term. For the duration of your term, you pay the Datastore mode CUD 3-year price (consumption model ID 2FD9-44B6-D2AC) as your committed hourly spend amount.
+- **20% discount** : You get this by committing to a 1-year term. For the duration of your term, you pay the Datastore mode CUD 1-year price (consumption model ID 3892-BA17-92A7) as your committed hourly spend amount.
+- **40% discount** : You get this by committing to a 3-year term. For the duration of your term, you pay the Datastore mode CUD 3-year price (consumption model ID 2FD9-44B6-D2AC) as your committed hourly spend amount.
 
 When you purchase a commitment, you choose a one-year or three-year period. You also specify a *commitment amount* , which is your expected Datastore mode expenditure on Read/Write/Delete operations per hour over that period. This commitment amount becomes your *commitment fee* . You then receive the CUD, and you are billed for the commitment fee on a monthly basis for the duration of the CUD period.
 
@@ -57,10 +57,10 @@ As an example, say that you have a Datastore mode database that is in region: `u
 
 From the [pricing page](https://docs.cloud.google.com/datastore/docs/pricing) , you can calculate the approximate hourly one-year commitment cost as follows:
 
-  - Monthly cost of a 1-year, $1.92/hour commitment: ($2.40 per hour - 20% discount) \* 730 hours = $1,401.60 per month
-  - Total savings per month: $1,752 - $1,401.60 = $350.40
+- Monthly cost of a 1-year, \$1.92/hour commitment: (\$2.40 per hour - 20% discount) \* 730 hours = \$1,401.60 per month
+- Total savings per month: \$1,752 - \$1,401.60 = \$350.40
 
-If you expect to spend that minimum of $1.92 per hour continuously for the next year or more, then you can make a commitment for that amount. In other words, when purchasing that CUD, you would enter " `$1.92` " as the hourly commitment amount.
+If you expect to spend that minimum of \$1.92 per hour continuously for the next year or more, then you can make a commitment for that amount. In other words, when purchasing that CUD, you would enter " `$1.92` " as the hourly commitment amount.
 
 > In the legacy CUDs program, your commitment amount is the on-demand price instead. For more information about the differences between the legacy and new spend-based CUDs program, see [Improvements to the spend-based CUDs program](https://cloud.google.com/docs/cuds-multiprice) .
 
@@ -68,25 +68,25 @@ If, on the other hand, you expect to scale down the capacity occasionally, you c
 
 As a basis for comparison, compute the on-demand cost of Datastore mode capacity, without the application of any commitment discounts:
 
-  - Read operations expenditure: 2 million document reads per hour \* $0.03 per 100,000 document reads = $0.60 per hour
+- Read operations expenditure: 2 million document reads per hour \* \$0.03 per 100,000 document reads = \$0.60 per hour
 
-  - Write operations expenditure: 2 million document writes per hour \* $0.09 per 100,000 document writes = $1.80 per hour
+- Write operations expenditure: 2 million document writes per hour \* \$0.09 per 100,000 document writes = \$1.80 per hour
 
-  - Total expenditure: $0.60 + $1.80 = $2.40 per hour
+- Total expenditure: \$0.60 + \$1.80 = \$2.40 per hour
 
-  - Monthly cost based on on-demand pricing: $2.40 per hour \* 730 hours = $1,752 per month.
+- Monthly cost based on on-demand pricing: \$2.40 per hour \* 730 hours = \$1,752 per month.
 
 From here, you can calculate the monthly costs and savings that you would see under a 1-year commitment with a 20% discount compared to a year of paying the full rates:
 
-  - Monthly cost of a 1-year, $1.92/hour commitment: ($2.40 per hour - 20% discount) \* 730 hours = $1,401.60 per month
-  - Total savings per month: $1,752 - $1,401.60 = $350.40
-  - Total savings with a 1-year, $1.92/hour commitment: $350.40 per month \* 12 months = **$4,204.80**
+- Monthly cost of a 1-year, \$1.92/hour commitment: (\$2.40 per hour - 20% discount) \* 730 hours = \$1,401.60 per month
+- Total savings per month: \$1,752 - \$1,401.60 = \$350.40
+- Total savings with a 1-year, \$1.92/hour commitment: \$350.40 per month \* 12 months = **\$4,204.80**
 
 You can apply similar math to calculating the costs and savings of a 3-year CUD, a 40% discount compared to the on-demand rates:
 
-  - Monthly cost of a 3-year, $1.44/hour commitment: ($2.40 per hour - 40% discount) \* 730 hours = $1,051.20 per month
-  - Total savings per month: $1,752 - $1,051.20 = $700.80
-  - Total savings with a 3-year, $1.44/hour commitment: $700.80 per month \* 36 months = **$25,228.80**
+- Monthly cost of a 3-year, \$1.44/hour commitment: (\$2.40 per hour - 40% discount) \* 730 hours = \$1,051.20 per month
+- Total savings per month: \$1,752 - \$1,051.20 = \$700.80
+- Total savings with a 3-year, \$1.44/hour commitment: \$700.80 per month \* 36 months = **\$25,228.80**
 
 A commitment that covers your expected minimum Datastore mode usage over the years to come can lead to significant savings.
 
@@ -94,15 +94,15 @@ A commitment that covers your expected minimum Datastore mode usage over the yea
 
 While considering Datastore mode CUDs and the amount that you want to commit to, keep in mind the following:
 
-  - **Regions:** Datastore mode CUDs apply to all Read/Write/Delete operations in a project, regardless of which region they are in. If you have Datastore mode databases in multiple regions, calculate the expenditure across all the regions that your projects use before deciding whether to purchase a commitment.
+- **Regions:** Datastore mode CUDs apply to all Read/Write/Delete operations in a project, regardless of which region they are in. If you have Datastore mode databases in multiple regions, calculate the expenditure across all the regions that your projects use before deciding whether to purchase a commitment.
 
-  - **Projects:** Determine the consistent baseline expenditure per project while calculating total commitment. Consider that production loads usually run 100% of the time, while development or staging environments might often run intermittently.
+- **Projects:** Determine the consistent baseline expenditure per project while calculating total commitment. Consider that production loads usually run 100% of the time, while development or staging environments might often run intermittently.
 
 Your commitment fee applies to every hour during the term of the commitment, regardless of actual usage. Choose your commitment amount carefully, based on both your historical Datastore mode usage and your future expectations. As long as your use of Datastore mode Read/Write/Delete operations stays above your committed expenditure level, you receive the maximum possible discount for the length of the commitment.
 
 ## What's next
 
-  - Read an [overview of Firestore in Datastore mode pricing](https://cloud.google.com/datastore/pricing) .
-  - Learn how to [view your CUD reports](https://docs.cloud.google.com/billing/docs/how-to/cud-analysis) .
-  - Understand savings with [cost breakdown reports](https://docs.cloud.google.com/billing/docs/how-to/cost-breakdown) .
-  - View the [list of Google Cloud services that offer CUDs](https://docs.cloud.google.com/docs/cuds) .
+- Read an [overview of Firestore in Datastore mode pricing](https://cloud.google.com/datastore/pricing) .
+- Learn how to [view your CUD reports](https://docs.cloud.google.com/billing/docs/how-to/cud-analysis) .
+- Understand savings with [cost breakdown reports](https://docs.cloud.google.com/billing/docs/how-to/cost-breakdown) .
+- View the [list of Google Cloud services that offer CUDs](https://docs.cloud.google.com/docs/cuds) .

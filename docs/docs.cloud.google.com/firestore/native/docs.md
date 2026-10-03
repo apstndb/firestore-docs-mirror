@@ -16,53 +16,56 @@ Firestore in Native mode is a NoSQL document database built for automatic scalin
 
 Not sure what database option is right for you? Learn more about our [database services](https://cloud.google.com/products/databases/) .
 
-format\_list\_numbered
+format_list_numbered
 
 ### Guides
 
-  - [Quickstart: Create a Firestore database by using a server client library](https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library)
+- [Quickstart: Create a Firestore database by using a server client library](https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library)
 
-  - [Quickstart: Create a Firestore database by using a web or mobile client library](https://docs.cloud.google.com/firestore/native/docs/create-database-web-mobile-client-library)
+- [Quickstart: Create a Firestore database by using a web or mobile client library](https://docs.cloud.google.com/firestore/native/docs/create-database-web-mobile-client-library)
 
-  - [Querying and filtering data](https://docs.cloud.google.com/firestore/native/docs/query-data/queries)
+- [Querying and filtering data](https://docs.cloud.google.com/firestore/native/docs/query-data/queries)
 
-  - [Adding data](https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data)
+- [Adding data](https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data)
 
-  - [Getting data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data)
+- [Getting data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data)
 
-  - [Exporting and importing data](https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import)
+- [Exporting and importing data](https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import)
 
-  - [Deleting data](https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data)
+- [Deleting data](https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data)
 
-  - [Transactions and batched writes](https://docs.cloud.google.com/firestore/native/docs/manage-data/transactions)
+- [Transactions and batched writes](https://docs.cloud.google.com/firestore/native/docs/manage-data/transactions)
 
-  - [Getting started with security rules](https://docs.cloud.google.com/firestore/native/docs/security/get-started)
+- [Getting started with security rules](https://docs.cloud.google.com/firestore/native/docs/security/get-started)
 
-  - 
-find\_in\_page
+- 
+
+find_in_page
 
 ### Reference
 
-  - [REST API](https://docs.cloud.google.com/firestore/docs/reference/rest)
+- [REST API](https://docs.cloud.google.com/firestore/docs/reference/rest)
 
-  - [Getting started with Firebase](https://docs.cloud.google.com/firestore/docs/client/get-firebase)
+- [Getting started with Firebase](https://docs.cloud.google.com/firestore/docs/client/get-firebase)
 
-  - [RPC API](https://docs.cloud.google.com/firestore/docs/reference/rpc)
+- [RPC API](https://docs.cloud.google.com/firestore/docs/reference/rpc)
 
-  - 
+- 
+
 info
 
 ### Resources
 
-  - [Pricing](https://docs.cloud.google.com/firestore/pricing)
+- [Pricing](https://docs.cloud.google.com/firestore/pricing)
 
-  - [Quotas and limits](https://docs.cloud.google.com/firestore/quotas)
+- [Quotas and limits](https://docs.cloud.google.com/firestore/quotas)
 
-  - [Release notes](https://docs.cloud.google.com/firestore/docs/release-notes)
+- [Release notes](https://docs.cloud.google.com/firestore/docs/release-notes)
 
-  - [Getting support](https://docs.cloud.google.com/firestore/docs/getting-support)
+- [Getting support](https://docs.cloud.google.com/firestore/docs/getting-support)
 
-  - 
+- 
+
 Architecture
 
 Use cases

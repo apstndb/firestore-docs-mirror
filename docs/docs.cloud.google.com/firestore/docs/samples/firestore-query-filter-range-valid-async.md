@@ -14,10 +14,12 @@ Use two ranges for a Firestore query (async).
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    cities_ref = db.collection("cities")
-    cities_ref.where(filter=FieldFilter("state", ">=", "CA")).where(
-        filter=FieldFilter("state", "<=", "IN")
-    )
+```python
+cities_ref = db.collection("cities")
+cities_ref.where(filter=FieldFilter("state", ">=", "CA")).where(
+    filter=FieldFilter("state", "<=", "IN")
+)
+```
 
 ## What's next
 

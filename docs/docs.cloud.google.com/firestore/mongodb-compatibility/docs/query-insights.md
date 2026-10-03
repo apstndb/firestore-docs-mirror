@@ -14,23 +14,23 @@ This page describes how to use the Query insights dashboard to detect and analyz
 
 Use the Query insights dashboard to monitor metrics-related queries. Based on the metrics, you can identify the most frequently used queries and queries with high latencies that might require optimization. Use the Query insights dashboard to help you with:
 
-  - **Query performance optimization** : identify queries with high latencies and that might need optimization.
-  - **Query cost management** : discover high-cost queries and optimize them to reduce costs.
-  - **Query stats monitoring** : track query stats over time.
+- **Query performance optimization** : identify queries with high latencies and that might need optimization.
+- **Query cost management** : discover high-cost queries and optimize them to reduce costs.
+- **Query stats monitoring** : track query stats over time.
 
 ### Query insights data
 
 Query insights includes data from the following API methods:
 
-  - `find`
-  - `aggregate`
+- `find`
+- `aggregate`
 
 You can view data about the queries that use these methods for a given project, database, and time duration ranging from 10 minutes to 30 days. Data for queries with equivalent structures is captured under a single normalized query.
 
 Query insights returns the following information about a query:
 
 |                                          |                                                                                                                 |
-| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+|------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
 | Normalized query text                    | The query structure represented in text.                                                                        |
 | Execution count                          | Number of executions in the selected time window.                                                               |
 | Error count                              | Number of errors in the selected time window.                                                                   |
@@ -45,8 +45,8 @@ Query insights returns the following information about a query:
 
 Data granularity depends on the duration specified:
 
-  - 10 minute granularity for intervals up to 4 days ago
-  - 1 hour granularity for intervals up to 30 days ago
+- 10 minute granularity for intervals up to 4 days ago
+- 1 hour granularity for intervals up to 30 days ago
 
 The maximum data retention for Query insights is 30 days. 10-minute data is stored for 4 days, and hourly data is stored for 30 days.
 
@@ -70,5 +70,5 @@ You might also be able to get this permission with [custom roles](https://docs.c
 
 ## What's next
 
-  - [Monitor usage](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard)
-  - [Use Cloud Audit Logs](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/audit-logging)
+- [Monitor usage](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard)
+- [Use Cloud Audit Logs](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/audit-logging)

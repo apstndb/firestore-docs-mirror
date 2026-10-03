@@ -10,16 +10,16 @@ Firestore in Datastore mode provides access to metadata that includes informatio
 
 The [Datastore Dashboard](https://console.cloud.google.com/project/_/datastore/stats) in the Google Cloud console also provides some metadata about your application, but the data displayed there differs in some important respects from that returned by these functions.
 
-  - **Freshness.** Reading metadata using the API gets current data, whereas data in the dashboard is updated only once daily.
-  - **Contents.** Some metadata in the dashboard is not available through the APIs; the reverse is also true.
-  - **Speed.** Metadata gets and queries are [billed in the same way as datastore gets and queries](https://docs.cloud.google.com/appengine/docs/pricing#costs-for-datastore-calls) . Metadata queries that fetch information on namespaces, kinds, and properties are generally slow to execute. As a rule of thumb, expect a metadata query that returns *N* entities to take about the same time as *N* ordinary queries each returning a single entity. Furthermore, [property representation queries](https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries#property_queries_property_representations) (non-keys-only property queries) are slower than keys-only [property queries](https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries#property_queries) . Metadata gets of entity group metadata are somewhat faster than getting a regular entity.
+- **Freshness.** Reading metadata using the API gets current data, whereas data in the dashboard is updated only once daily.
+- **Contents.** Some metadata in the dashboard is not available through the APIs; the reverse is also true.
+- **Speed.** Metadata gets and queries are [billed in the same way as datastore gets and queries](https://docs.cloud.google.com/appengine/docs/pricing#costs-for-datastore-calls) . Metadata queries that fetch information on namespaces, kinds, and properties are generally slow to execute. As a rule of thumb, expect a metadata query that returns *N* entities to take about the same time as *N* ordinary queries each returning a single entity. Furthermore, [property representation queries](https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries#property_queries_property_representations) (non-keys-only property queries) are slower than keys-only [property queries](https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries#property_queries) . Metadata gets of entity group metadata are somewhat faster than getting a regular entity.
 
 ## Metadata queries
 
 Three special entity kinds are reserved for metadata queries:
 
 | Entity          | Description                                                        |
-| --------------- | ------------------------------------------------------------------ |
+|-----------------|--------------------------------------------------------------------|
 | `__namespace__` | Used to find all the namespaces used in your application entities. |
 | `__kind__`      | Used to query a specific kind.                                     |
 | `__property__`  | Used to query by a property of a kind.                             |
@@ -36,30 +36,32 @@ Namespace queries return entities of the special kind `__namespace__` whose key 
 
 The following example returns a list of an application's namespaces in the range between the values assigned to the `startNamespace` and `endNamespace` variables:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    KeyFactory keyFactory = _db.CreateKeyFactory("__namespace__");
-    // List all the namespaces between a lower and upper bound.
-    string lowerBound = _db.NamespaceId.Substring(0,
-        _db.NamespaceId.Length - 1);
-    string upperBound = _db.NamespaceId + "z";
-    Key startNamespace = keyFactory.CreateKey(lowerBound);
-    Key endNamespace = keyFactory.CreateKey(upperBound);
-    Query query = new Query("__namespace__")
-    {
-        Filter = Filter.And(
-            Filter.GreaterThan("__key__", startNamespace),
-            Filter.LessThan("__key__", endNamespace))
-    };
-    var namespaces = new List<string>();
-    foreach (Entity entity in _db.RunQuery(query).Entities)
-    {
-        namespaces.Add(entity.Key.Path[0].Name);
-    };
+```c#
+KeyFactory keyFactory = _db.CreateKeyFactory("__namespace__");
+// List all the namespaces between a lower and upper bound.
+string lowerBound = _db.NamespaceId.Substring(0,
+    _db.NamespaceId.Length - 1);
+string upperBound = _db.NamespaceId + "z";
+Key startNamespace = keyFactory.CreateKey(lowerBound);
+Key endNamespace = keyFactory.CreateKey(upperBound);
+Query query = new Query("__namespace__")
+{
+    Filter = Filter.And(
+        Filter.GreaterThan("__key__", startNamespace),
+        Filter.LessThan("__key__", endNamespace))
+};
+var namespaces = new List<string>();
+foreach (Entity entity in _db.RunQuery(query).Entities)
+{
+    namespaces.Add(entity.Key.Path[0].Name);
+};
+```
 
 ### Go
 
@@ -67,33 +69,35 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    func metadataNamespaces(w io.Writer, projectID string) error {
-     // projectID := "my-project"
-    
-     ctx := context.Background()
-     client, err := datastore.NewClient(ctx, projectID)
-     if err != nil {
-         return fmt.Errorf("datastore.NewClient: %w", err)
-     }
-     defer client.Close()
-    
-     start := datastore.NameKey("__namespace__", "g", nil)
-     end := datastore.NameKey("__namespace__", "h", nil)
-     query := datastore.NewQuery("__namespace__").
-         FilterField("__key__", ">=", start).
-         FilterField("__key__", "<", end).
-         KeysOnly()
-     keys, err := client.GetAll(ctx, query, nil)
-     if err != nil {
-         return fmt.Errorf("client.GetAll: %w", err)
-     }
-    
-     fmt.Fprintln(w, "Namespaces:")
-     for _, k := range keys {
-         fmt.Fprintf(w, "\t%v", k.Name)
-     }
-     return nil
+```golang
+func metadataNamespaces(w io.Writer, projectID string) error {
+    // projectID := "my-project"
+
+    ctx := context.Background()
+    client, err := datastore.NewClient(ctx, projectID)
+    if err != nil {
+        return fmt.Errorf("datastore.NewClient: %w", err)
     }
+    defer client.Close()
+
+    start := datastore.NameKey("__namespace__", "g", nil)
+    end := datastore.NameKey("__namespace__", "h", nil)
+    query := datastore.NewQuery("__namespace__").
+        FilterField("__key__", ">=", start).
+        FilterField("__key__", "<", end).
+        KeysOnly()
+    keys, err := client.GetAll(ctx, query, nil)
+    if err != nil {
+        return fmt.Errorf("client.GetAll: %w", err)
+    }
+
+    fmt.Fprintln(w, "Namespaces:")
+    for _, k := range keys {
+        fmt.Fprintf(w, "\t%v", k.Name)
+    }
+    return nil
+}
+```
 
 ### Java
 
@@ -101,22 +105,24 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    KeyFactory keyFactory = datastore.newKeyFactory().setKind("__namespace__");
-    Key startNamespace = keyFactory.newKey("g");
-    Key endNamespace = keyFactory.newKey("h");
-    Query<Key> query =
-        Query.newKeyQueryBuilder()
-            .setKind("__namespace__")
-            .setFilter(
-                CompositeFilter.and(
-                    PropertyFilter.gt("__key__", startNamespace),
-                    PropertyFilter.lt("__key__", endNamespace)))
-            .build();
-    List<String> namespaces = new ArrayList<>();
-    QueryResults<Key> results = datastore.run(query);
-    while (results.hasNext()) {
-      namespaces.add(results.next().getName());
-    }
+```java
+KeyFactory keyFactory = datastore.newKeyFactory().setKind("__namespace__");
+Key startNamespace = keyFactory.newKey("g");
+Key endNamespace = keyFactory.newKey("h");
+Query<Key> query =
+    Query.newKeyQueryBuilder()
+        .setKind("__namespace__")
+        .setFilter(
+            CompositeFilter.and(
+                PropertyFilter.gt("__key__", startNamespace),
+                PropertyFilter.lt("__key__", endNamespace)))
+        .build();
+List<String> namespaces = new ArrayList<>();
+QueryResults<Key> results = datastore.run(query);
+while (results.hasNext()) {
+  namespaces.add(results.next().getName());
+}
+```
 
 ### Node.js
 
@@ -124,28 +130,30 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    async function runNamespaceQuery(startNamespace, endNamespace) {
-      const startKey = datastore.key(['__namespace__', startNamespace]);
-      const endKey = datastore.key(['__namespace__', endNamespace]);
-    
-      const query = datastore
-        .createQuery('__namespace__')
-        .select('__key__')
-        .filter(
-          and([
-            new PropertyFilter('__key__', '>=', startKey),
-            new PropertyFilter('__key__', '<', endKey),
-          ]),
-        );
-    
-      const [entities] = await datastore.runQuery(query);
-      const namespaces = entities.map(entity => entity[datastore.KEY].name);
-    
-      console.log('Namespaces:');
-      namespaces.forEach(namespace => console.log(namespace));
-    
-      return namespaces;
-    }
+```javascript
+async function runNamespaceQuery(startNamespace, endNamespace) {
+  const startKey = datastore.key(['__namespace__', startNamespace]);
+  const endKey = datastore.key(['__namespace__', endNamespace]);
+
+  const query = datastore
+    .createQuery('__namespace__')
+    .select('__key__')
+    .filter(
+      and([
+        new PropertyFilter('__key__', '>=', startKey),
+        new PropertyFilter('__key__', '<', endKey),
+      ]),
+    );
+
+  const [entities] = await datastore.runQuery(query);
+  const namespaces = entities.map(entity => entity[datastore.KEY].name);
+
+  console.log('Namespaces:');
+  namespaces.forEach(namespace => console.log(namespace));
+
+  return namespaces;
+}
+```
 
 ### PHP
 
@@ -153,17 +161,19 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('__namespace__')
-        ->projection(['__key__'])
-        ->filter('__key__', '>=', $datastore->key('__namespace__', $start))
-        ->filter('__key__', '<', $datastore->key('__namespace__', $end));
-    $result = $datastore->runQuery($query);
-    /* @var array<string> $namespaces */
-    $namespaces = [];
-    foreach ($result as $namespace) {
-        $namespaces[] = $namespace->key()->pathEnd()['name'];
-    }
+```php
+$query = $datastore->query()
+    ->kind('__namespace__')
+    ->projection(['__key__'])
+    ->filter('__key__', '>=', $datastore->key('__namespace__', $start))
+    ->filter('__key__', '<', $datastore->key('__namespace__', $end));
+$result = $datastore->runQuery($query);
+/* @var array<string> $namespaces */
+$namespaces = [];
+foreach ($result as $namespace) {
+    $namespaces[] = $namespace->key()->pathEnd()['name'];
+}
+```
 
 ### Python
 
@@ -171,26 +181,28 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    # All namespaces
-    query = client.query(kind="__namespace__")
-    query.keys_only()
-    
-    all_namespaces = [entity.key.id_or_name for entity in query.fetch()]
-    
-    # Filtered namespaces
-    start_namespace = client.key("__namespace__", "g")
-    end_namespace = client.key("__namespace__", "h")
-    query = client.query(kind="__namespace__")
-    query.key_filter(start_namespace, ">=")
-    query.key_filter(end_namespace, "<")
-    
-    filtered_namespaces = [entity.key.id_or_name for entity in query.fetch()]
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+# All namespaces
+query = client.query(kind="__namespace__")
+query.keys_only()
+
+all_namespaces = [entity.key.id_or_name for entity in query.fetch()]
+
+# Filtered namespaces
+start_namespace = client.key("__namespace__", "g")
+end_namespace = client.key("__namespace__", "h")
+query = client.query(kind="__namespace__")
+query.key_filter(start_namespace, ">=")
+query.key_filter(end_namespace, "<")
+
+filtered_namespaces = [entity.key.id_or_name for entity in query.fetch()]
+```
 
 ### Ruby
 
@@ -198,20 +210,24 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("__namespace__")
-                     .select("__key__")
-                     .where("__key__", ">=", datastore.key("__namespace__", "g"))
-                     .where("__key__", "<", datastore.key("__namespace__", "h"))
-    
-    namespaces = datastore.run(query).map do |entity|
-      entity.key.name
-    end
+```ruby
+query = datastore.query("__namespace__")
+                 .select("__key__")
+                 .where("__key__", ">=", datastore.key("__namespace__", "g"))
+                 .where("__key__", "<", datastore.key("__namespace__", "h"))
+
+namespaces = datastore.run(query).map do |entity|
+  entity.key.name
+end
+```
 
 ### GQL
 
-    SELECT __key__ FROM __namespace__
-    WHERE __key__ >= KEY(__namespace__, 'namespace-a')
-      AND __key__ <  KEY(__namespace__, 'namespace-b')
+```
+SELECT __key__ FROM __namespace__
+WHERE __key__ >= KEY(__namespace__, 'namespace-a')
+  AND __key__ <  KEY(__namespace__, 'namespace-b')
+```
 
 ## Kind queries
 
@@ -219,18 +235,20 @@ To authenticate to Cloud Datastore, set up Application Default Credentials. For 
 
 The following example prints a list of the kinds used in an application:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("__kind__");
-    var kinds = new List<string>();
-    foreach (Entity entity in _db.RunQuery(query).Entities)
-    {
-        kinds.Add(entity.Key.Path[0].Name);
-    };
+```c#
+Query query = new Query("__kind__");
+var kinds = new List<string>();
+foreach (Entity entity in _db.RunQuery(query).Entities)
+{
+    kinds.Add(entity.Key.Path[0].Name);
+};
+```
 
 ### Go
 
@@ -238,16 +256,18 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("__kind__").KeysOnly()
-    keys, err := client.GetAll(ctx, query, nil)
-    if err != nil {
-     log.Fatalf("client.GetAll: %v", err)
-    }
-    
-    kinds := make([]string, 0, len(keys))
-    for _, k := range keys {
-     kinds = append(kinds, k.Name)
-    }
+```golang
+query := datastore.NewQuery("__kind__").KeysOnly()
+keys, err := client.GetAll(ctx, query, nil)
+if err != nil {
+    log.Fatalf("client.GetAll: %v", err)
+}
+
+kinds := make([]string, 0, len(keys))
+for _, k := range keys {
+    kinds = append(kinds, k.Name)
+}
+```
 
 ### Java
 
@@ -255,12 +275,14 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Key> query = Query.newKeyQueryBuilder().setKind("__kind__").build();
-    List<String> kinds = new ArrayList<>();
-    QueryResults<Key> results = datastore.run(query);
-    while (results.hasNext()) {
-      kinds.add(results.next().getName());
-    }
+```java
+Query<Key> query = Query.newKeyQueryBuilder().setKind("__kind__").build();
+List<String> kinds = new ArrayList<>();
+QueryResults<Key> results = datastore.run(query);
+while (results.hasNext()) {
+  kinds.add(results.next().getName());
+}
+```
 
 ### Node.js
 
@@ -268,17 +290,19 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    async function runKindQuery() {
-      const query = datastore.createQuery('__kind__').select('__key__');
-    
-      const [entities] = await datastore.runQuery(query);
-      const kinds = entities.map(entity => entity[datastore.KEY].name);
-    
-      console.log('Kinds:');
-      kinds.forEach(kind => console.log(kind));
-    
-      return kinds;
-    }
+```javascript
+async function runKindQuery() {
+  const query = datastore.createQuery('__kind__').select('__key__');
+
+  const [entities] = await datastore.runQuery(query);
+  const kinds = entities.map(entity => entity[datastore.KEY].name);
+
+  console.log('Kinds:');
+  kinds.forEach(kind => console.log(kind));
+
+  return kinds;
+}
+```
 
 ### PHP
 
@@ -286,15 +310,17 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('__kind__')
-        ->projection(['__key__']);
-    $result = $datastore->runQuery($query);
-    /* @var array<string> $kinds */
-    $kinds = [];
-    foreach ($result as $kind) {
-        $kinds[] = $kind->key()->pathEnd()['name'];
-    }
+```php
+$query = $datastore->query()
+    ->kind('__kind__')
+    ->projection(['__key__']);
+$result = $datastore->runQuery($query);
+/* @var array<string> $kinds */
+$kinds = [];
+foreach ($result as $kind) {
+    $kinds[] = $kind->key()->pathEnd()['name'];
+}
+```
 
 ### Python
 
@@ -302,16 +328,18 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query(kind="__kind__")
-    query.keys_only()
-    
-    kinds = [entity.key.id_or_name for entity in query.fetch()]
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query(kind="__kind__")
+query.keys_only()
+
+kinds = [entity.key.id_or_name for entity in query.fetch()]
+```
 
 ### Ruby
 
@@ -319,62 +347,72 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("__kind__")
-                     .select("__key__")
-    
-    kinds = datastore.run(query).map do |entity|
-      entity.key.name
-    end
+```ruby
+query = datastore.query("__kind__")
+                 .select("__key__")
+
+kinds = datastore.run(query).map do |entity|
+  entity.key.name
+end
+```
 
 ### GQL
 
-    SELECT __key__ FROM __kind__
+```
+SELECT __key__ FROM __kind__
+```
 
 ## Property queries
 
 *Property queries* return entities of kind `__property__` denoting the indexed properties associated with an entity kind. (Unindexed properties are not included.) The entity representing property *p* of kind *k* is built as follows:
 
-  - The entity's key has kind `__property__` and key name *p* .
-  - The entity's parent key has kind `__kind__` and key name *k* .
-  - The entity's `property_representation` array property contains all the property's [representations](https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries#property_queries_property_representations) .
+- The entity's key has kind `__property__` and key name *p* .
+- The entity's parent key has kind `__kind__` and key name *k* .
+- The entity's `property_representation` array property contains all the property's [representations](https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries#property_queries_property_representations) .
 
 For example, if your database contains exactly two `Task` entities with `name` and `done` properties:
 
-    Key: 'Task:1'
-    name: 'Read some properties'
-    done: true
-    
-    Key: 'Task:2'
-    name: 'Climb'
-    done: null
+```
+Key: 'Task:1'
+name: 'Read some properties'
+done: true
+
+Key: 'Task:2'
+name: 'Climb'
+done: null
+```
 
 then the two entities returned by a `__property__` query will be:
 
-    Key: '__kind__:Task/__property__:name'
-    property_representation: [ 'STRING' ]
-    
-    Key: '__kind__:Task/__property__:done'
-    property_representation: [ 'BOOLEAN', 'NULL' ]
+```
+Key: '__kind__:Task/__property__:name'
+property_representation: [ 'STRING' ]
+
+Key: '__kind__:Task/__property__:done'
+property_representation: [ 'BOOLEAN', 'NULL' ]
+```
 
 Property queries are implicitly restricted to the current namespace, and support limited [filtering](https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries#property_queries_filtering) with an ancestor or a range over the `__key__` pseudoproperty.
 
 A *keys-only* property query is more efficient than a non-keys-only query, as it does not need to collect the property's representations. The following example retrieves the names of all of an application's entity kinds and the properties associated with each:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("__property__");
-    var properties = new List<string>();
-    foreach (Entity entity in _db.RunQuery(query).Entities)
-    {
-        string kind = entity.Key.Path[0].Name;
-        string property = entity.Key.Path[1].Name;
-        if (kind == "Task")
-            properties.Add(property);
-    };
+```c#
+Query query = new Query("__property__");
+var properties = new List<string>();
+foreach (Entity entity in _db.RunQuery(query).Entities)
+{
+    string kind = entity.Key.Path[0].Name;
+    string property = entity.Key.Path[1].Name;
+    if (kind == "Task")
+        properties.Add(property);
+};
+```
 
 ### Go
 
@@ -382,18 +420,20 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("__property__").KeysOnly()
-    keys, err := client.GetAll(ctx, query, nil)
-    if err != nil {
-     log.Fatalf("client.GetAll: %v", err)
-    }
-    
-    props := make(map[string][]string) // Map from kind to slice of properties.
-    for _, k := range keys {
-     prop := k.Name
-     kind := k.Parent.Name
-     props[kind] = append(props[kind], prop)
-    }
+```golang
+query := datastore.NewQuery("__property__").KeysOnly()
+keys, err := client.GetAll(ctx, query, nil)
+if err != nil {
+    log.Fatalf("client.GetAll: %v", err)
+}
+
+props := make(map[string][]string) // Map from kind to slice of properties.
+for _, k := range keys {
+    prop := k.Name
+    kind := k.Parent.Name
+    props[kind] = append(props[kind], prop)
+}
+```
 
 ### Java
 
@@ -401,20 +441,22 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Key> query = Query.newKeyQueryBuilder().setKind("__property__").build();
-    QueryResults<Key> keys = datastore.run(query);
-    Map<String, Collection<String>> propertiesByKind = new HashMap<>();
-    while (keys.hasNext()) {
-      Key key = keys.next();
-      String kind = key.getParent().getName();
-      String propertyName = key.getName();
-      Collection<String> properties = propertiesByKind.get(kind);
-      if (properties == null) {
-        properties = new HashSet<>();
-        propertiesByKind.put(kind, properties);
-      }
-      properties.add(propertyName);
-    }
+```java
+Query<Key> query = Query.newKeyQueryBuilder().setKind("__property__").build();
+QueryResults<Key> keys = datastore.run(query);
+Map<String, Collection<String>> propertiesByKind = new HashMap<>();
+while (keys.hasNext()) {
+  Key key = keys.next();
+  String kind = key.getParent().getName();
+  String propertyName = key.getName();
+  Collection<String> properties = propertiesByKind.get(kind);
+  if (properties == null) {
+    properties = new HashSet<>();
+    propertiesByKind.put(kind, properties);
+  }
+  properties.add(propertyName);
+}
+```
 
 ### Node.js
 
@@ -422,28 +464,30 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    async function runPropertyQuery() {
-      const query = datastore.createQuery('__property__').select('__key__');
-      const [entities] = await datastore.runQuery(query);
-      // @TODO convert below object to map
-      const propertiesByKind = {};
-    
-      entities.forEach(entity => {
-        const key = entity[datastore.KEY];
-        const kind = key.path[1];
-        const property = key.path[3];
-    
-        propertiesByKind[kind] = propertiesByKind[kind] || [];
-        propertiesByKind[kind].push(property);
-      });
-    
-      console.log('Properties by Kind:');
-      for (const key in propertiesByKind) {
-        console.log(key, propertiesByKind[key]);
-      }
-    
-      return propertiesByKind;
-    }
+```javascript
+async function runPropertyQuery() {
+  const query = datastore.createQuery('__property__').select('__key__');
+  const [entities] = await datastore.runQuery(query);
+  // @TODO convert below object to map
+  const propertiesByKind = {};
+
+  entities.forEach(entity => {
+    const key = entity[datastore.KEY];
+    const kind = key.path[1];
+    const property = key.path[3];
+
+    propertiesByKind[kind] = propertiesByKind[kind] || [];
+    propertiesByKind[kind].push(property);
+  });
+
+  console.log('Properties by Kind:');
+  for (const key in propertiesByKind) {
+    console.log(key, propertiesByKind[key]);
+  }
+
+  return propertiesByKind;
+}
+```
 
 ### PHP
 
@@ -451,18 +495,20 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('__property__')
-        ->projection(['__key__']);
-    $result = $datastore->runQuery($query);
-    /* @var array<string> $properties */
-    $properties = [];
-    /* @var Entity $entity */
-    foreach ($result as $entity) {
-        $kind = $entity->key()->path()[0]['name'];
-        $propertyName = $entity->key()->path()[1]['name'];
-        $properties[] = "$kind.$propertyName";
-    }
+```php
+$query = $datastore->query()
+    ->kind('__property__')
+    ->projection(['__key__']);
+$result = $datastore->runQuery($query);
+/* @var array<string> $properties */
+$properties = [];
+/* @var Entity $entity */
+foreach ($result as $entity) {
+    $kind = $entity->key()->path()[0]['name'];
+    $propertyName = $entity->key()->path()[1]['name'];
+    $properties[] = "$kind.$propertyName";
+}
+```
 
 ### Python
 
@@ -470,24 +516,26 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    from collections import defaultdict
-    
-    query = client.query(kind="__property__")
-    query.keys_only()
-    
-    properties_by_kind = defaultdict(list)
-    
-    for entity in query.fetch():
-        kind = entity.key.parent.name
-        property_ = entity.key.name
-    
-        properties_by_kind[kind].append(property_)
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+from collections import defaultdict
+
+query = client.query(kind="__property__")
+query.keys_only()
+
+properties_by_kind = defaultdict(list)
+
+for entity in query.fetch():
+    kind = entity.key.parent.name
+    property_ = entity.key.name
+
+    properties_by_kind[kind].append(property_)
+```
 
 ### Ruby
 
@@ -495,20 +543,24 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("__property__")
-                     .select("__key__")
-    
-    entities = datastore.run query
-    properties_by_kind = entities.each_with_object({}) do |entity, memo|
-      kind = entity.key.parent.name
-      prop = entity.key.name
-      memo[kind] ||= []
-      memo[kind] << prop
-    end
+```ruby
+query = datastore.query("__property__")
+                 .select("__key__")
+
+entities = datastore.run query
+properties_by_kind = entities.each_with_object({}) do |entity, memo|
+  kind = entity.key.parent.name
+  prop = entity.key.name
+  memo[kind] ||= []
+  memo[kind] << prop
+end
+```
 
 ### GQL
 
-    SELECT __key__ FROM __property__
+```
+SELECT __key__ FROM __property__
+```
 
 ### Property queries: property representations
 
@@ -517,7 +569,7 @@ Non-keys-only property queries, known as *property representation queries* , ret
 Each [value](https://docs.cloud.google.com/datastore/docs/concepts/entities#properties_and_value_types) has the following *representation* (note that some value types share representations):
 
 | Value type            | Representation                         |
-| --------------------- | -------------------------------------- |
+|-----------------------|----------------------------------------|
 | Integer               | `INT64`                                |
 | Floating-point number | `DOUBLE`                               |
 | Boolean               | `BOOLEAN`                              |
@@ -532,28 +584,30 @@ Each [value](https://docs.cloud.google.com/datastore/docs/concepts/entities#prop
 
 The following example finds all representations of properties of kind `Task` , using an [ancestor property query](https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries#property_queries_filtering) :
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Key key = _db.CreateKeyFactory("__kind__").CreateKey("Task");
-    Query query = new Query("__property__")
-    {
-        Filter = Filter.HasAncestor(key)
-    };
-    var properties = new List<string>();
-    foreach (Entity entity in _db.RunQuery(query).Entities)
-    {
-        string kind = entity.Key.Path[0].Name;
-        string property = entity.Key.Path[1].Name;
-        var representations = entity["property_representation"]
-            .ArrayValue.Values.Select(x => x.StringValue)
-            .OrderBy(x => x);
-        properties.Add($"{property}:" +
-            string.Join(",", representations));
-    };
+```c#
+Key key = _db.CreateKeyFactory("__kind__").CreateKey("Task");
+Query query = new Query("__property__")
+{
+    Filter = Filter.HasAncestor(key)
+};
+var properties = new List<string>();
+foreach (Entity entity in _db.RunQuery(query).Entities)
+{
+    string kind = entity.Key.Path[0].Name;
+    string property = entity.Key.Path[1].Name;
+    var representations = entity["property_representation"]
+        .ArrayValue.Values.Select(x => x.StringValue)
+        .OrderBy(x => x);
+    properties.Add($"{property}:" +
+        string.Join(",", representations));
+};
+```
 
 ### Go
 
@@ -561,15 +615,17 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    kindKey := datastore.NameKey("__kind__", "Task", nil)
-    query := datastore.NewQuery("__property__").Ancestor(kindKey)
-    
-    type Prop struct {
-     Repr []string `datastore:"property_representation"`
-    }
-    
-    var props []Prop
-    keys, err := client.GetAll(ctx, query, &props)
+```golang
+kindKey := datastore.NameKey("__kind__", "Task", nil)
+query := datastore.NewQuery("__property__").Ancestor(kindKey)
+
+type Prop struct {
+    Repr []string `datastore:"property_representation"`
+}
+
+var props []Prop
+keys, err := client.GetAll(ctx, query, &props)
+```
 
 ### Java
 
@@ -577,27 +633,29 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Key key = datastore.newKeyFactory().setKind("__kind__").newKey("Task");
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("__property__")
-            .setFilter(PropertyFilter.hasAncestor(key))
-            .build();
-    QueryResults<Entity> results = datastore.run(query);
-    Map<String, Collection<String>> representationsByProperty = new HashMap<>();
-    while (results.hasNext()) {
-      Entity result = results.next();
-      String propertyName = result.getKey().getName();
-      List<StringValue> representations = result.getList("property_representation");
-      Collection<String> currentRepresentations = representationsByProperty.get(propertyName);
-      if (currentRepresentations == null) {
-        currentRepresentations = new HashSet<>();
-        representationsByProperty.put(propertyName, currentRepresentations);
-      }
-      for (StringValue value : representations) {
-        currentRepresentations.add(value.get());
-      }
-    }
+```java
+Key key = datastore.newKeyFactory().setKind("__kind__").newKey("Task");
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("__property__")
+        .setFilter(PropertyFilter.hasAncestor(key))
+        .build();
+QueryResults<Entity> results = datastore.run(query);
+Map<String, Collection<String>> representationsByProperty = new HashMap<>();
+while (results.hasNext()) {
+  Entity result = results.next();
+  String propertyName = result.getKey().getName();
+  List<StringValue> representations = result.getList("property_representation");
+  Collection<String> currentRepresentations = representationsByProperty.get(propertyName);
+  if (currentRepresentations == null) {
+    currentRepresentations = new HashSet<>();
+    representationsByProperty.put(propertyName, currentRepresentations);
+  }
+  for (StringValue value : representations) {
+    currentRepresentations.add(value.get());
+  }
+}
+```
 
 ### Node.js
 
@@ -605,31 +663,33 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    async function runPropertyByKindQuery() {
-      const ancestorKey = datastore.key(['__kind__', 'Account']);
-    
-      const query = datastore
-        .createQuery('__property__')
-        .hasAncestor(ancestorKey);
-      const [entities] = await datastore.runQuery(query);
-    
-      const representationsByProperty = {};
-    
-      entities.forEach(entity => {
-        const key = entity[datastore.KEY];
-        const propertyName = key.name;
-        const propertyType = entity.property_representation;
-    
-        representationsByProperty[propertyName] = propertyType;
-      });
-    
-      console.log('Task property representations:');
-      for (const key in representationsByProperty) {
-        console.log(key, representationsByProperty[key]);
-      }
-    
-      return representationsByProperty;
-    }
+```javascript
+async function runPropertyByKindQuery() {
+  const ancestorKey = datastore.key(['__kind__', 'Account']);
+
+  const query = datastore
+    .createQuery('__property__')
+    .hasAncestor(ancestorKey);
+  const [entities] = await datastore.runQuery(query);
+
+  const representationsByProperty = {};
+
+  entities.forEach(entity => {
+    const key = entity[datastore.KEY];
+    const propertyName = key.name;
+    const propertyType = entity.property_representation;
+
+    representationsByProperty[propertyName] = propertyType;
+  });
+
+  console.log('Task property representations:');
+  for (const key in representationsByProperty) {
+    console.log(key, representationsByProperty[key]);
+  }
+
+  return representationsByProperty;
+}
+```
 
 ### PHP
 
@@ -637,20 +697,22 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $ancestorKey = $datastore->key('__kind__', 'Task');
-    $query = $datastore->query()
-        ->kind('__property__')
-        ->hasAncestor($ancestorKey);
-    $result = $datastore->runQuery($query);
-    /* @var array<string,string> $properties */
-    $properties = [];
-    /* @var Entity $entity */
-    foreach ($result as $entity) {
-        $propertyName = $entity->key()->path()[1]['name'];
-        $propertyType = $entity['property_representation'];
-        $properties[$propertyName] = $propertyType;
-    }
-    // Example values of $properties: ['description' => ['STRING']]
+```php
+$ancestorKey = $datastore->key('__kind__', 'Task');
+$query = $datastore->query()
+    ->kind('__property__')
+    ->hasAncestor($ancestorKey);
+$result = $datastore->runQuery($query);
+/* @var array<string,string> $properties */
+$properties = [];
+/* @var Entity $entity */
+foreach ($result as $entity) {
+    $propertyName = $entity->key()->path()[1]['name'];
+    $propertyType = $entity['property_representation'];
+    $properties[$propertyName] = $propertyType;
+}
+// Example values of $properties: ['description' => ['STRING']]
+```
 
 ### Python
 
@@ -658,22 +720,24 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    ancestor = client.key("__kind__", "Task")
-    query = client.query(kind="__property__", ancestor=ancestor)
-    
-    representations_by_property = {}
-    
-    for entity in query.fetch():
-        property_name = entity.key.name
-        property_types = entity["property_representation"]
-    
-        representations_by_property[property_name] = property_types
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+ancestor = client.key("__kind__", "Task")
+query = client.query(kind="__property__", ancestor=ancestor)
+
+representations_by_property = {}
+
+for entity in query.fetch():
+    property_name = entity.key.name
+    property_types = entity["property_representation"]
+
+    representations_by_property[property_name] = property_types
+```
 
 ### Ruby
 
@@ -681,21 +745,25 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    ancestor_key = datastore.key "__kind__", "Task"
-    query = datastore.query("__property__")
-                     .ancestor(ancestor_key)
-    
-    entities = datastore.run query
-    representations = entities.each_with_object({}) do |entity, memo|
-      property_name = entity.key.name
-      property_types = entity["property_representation"]
-      memo[property_name] = property_types
-    end
+```ruby
+ancestor_key = datastore.key "__kind__", "Task"
+query = datastore.query("__property__")
+                 .ancestor(ancestor_key)
+
+entities = datastore.run query
+representations = entities.each_with_object({}) do |entity, memo|
+  property_name = entity.key.name
+  property_types = entity["property_representation"]
+  memo[property_name] = property_types
+end
+```
 
 ### GQL
 
-    SELECT * FROM __property__
-    WHERE __key__ HAS ANCESTOR KEY(__kind__, 'Task')
+```
+SELECT * FROM __property__
+WHERE __key__ HAS ANCESTOR KEY(__kind__, 'Task')
+```
 
 ### Property queries: filtering
 
@@ -703,35 +771,37 @@ Property queries support ancestor filtering on a `__kind__` or `__property__` ke
 
 Property queries can also be filtered with a range over the pseudoproperty `__key__` , where the keys denote either `__kind__` or `__property__` entities. The results can be sorted by ascending (but not descending) `__key__` value. Filtering is applied to kind-property pairs, ordered first by kind and second by property. For instance, suppose you have entities with these properties:
 
-  - kind `Task` with properties
-      - `created`
-      - `priority`
-      - `tags`
-  - kind `TaskList` with properties
-      - `created`
+- kind `Task` with properties
+  - `created`
+  - `priority`
+  - `tags`
+- kind `TaskList` with properties
+  - `created`
 
 The following keys-only property query:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Key key = _db.CreateKeyFactory("__kind__").CreateKey("Task");
-    Key startKey = new KeyFactory(key, "__property__")
-        .CreateKey("priority");
-    Query query = new Query("__property__")
-    {
-        Filter = Filter.GreaterThanOrEqual("__key__", startKey)
-    };
-    var properties = new List<string>();
-    foreach (Entity entity in _db.RunQuery(query).Entities)
-    {
-        string kind = entity.Key.Path[0].Name;
-        string property = entity.Key.Path[1].Name;
-        properties.Add($"{kind}.{property}");
-    };
+```c#
+Key key = _db.CreateKeyFactory("__kind__").CreateKey("Task");
+Key startKey = new KeyFactory(key, "__property__")
+    .CreateKey("priority");
+Query query = new Query("__property__")
+{
+    Filter = Filter.GreaterThanOrEqual("__key__", startKey)
+};
+var properties = new List<string>();
+foreach (Entity entity in _db.RunQuery(query).Entities)
+{
+    string kind = entity.Key.Path[0].Name;
+    string property = entity.Key.Path[1].Name;
+    properties.Add($"{kind}.{property}");
+};
+```
 
 ### Go
 
@@ -747,30 +817,32 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Key startKey =
-        datastore
-            .newKeyFactory()
-            .setKind("__property__")
-            .addAncestors(PathElement.of("__kind__", "Task"))
-            .newKey("priority");
-    Query<Key> query =
-        Query.newKeyQueryBuilder()
-            .setKind("__property__")
-            .setFilter(PropertyFilter.ge("__key__", startKey))
-            .build();
-    Map<String, Collection<String>> propertiesByKind = new HashMap<>();
-    QueryResults<Key> keys = datastore.run(query);
-    while (keys.hasNext()) {
-      Key key = keys.next();
-      String kind = key.getParent().getName();
-      String propertyName = key.getName();
-      Collection<String> properties = propertiesByKind.get(kind);
-      if (properties == null) {
-        properties = new HashSet<String>();
-        propertiesByKind.put(kind, properties);
-      }
-      properties.add(propertyName);
-    }
+```java
+Key startKey =
+    datastore
+        .newKeyFactory()
+        .setKind("__property__")
+        .addAncestors(PathElement.of("__kind__", "Task"))
+        .newKey("priority");
+Query<Key> query =
+    Query.newKeyQueryBuilder()
+        .setKind("__property__")
+        .setFilter(PropertyFilter.ge("__key__", startKey))
+        .build();
+Map<String, Collection<String>> propertiesByKind = new HashMap<>();
+QueryResults<Key> keys = datastore.run(query);
+while (keys.hasNext()) {
+  Key key = keys.next();
+  String kind = key.getParent().getName();
+  String propertyName = key.getName();
+  Collection<String> properties = propertiesByKind.get(kind);
+  if (properties == null) {
+    properties = new HashSet<String>();
+    propertiesByKind.put(kind, properties);
+  }
+  properties.add(propertyName);
+}
+```
 
 ### Node.js
 
@@ -786,21 +858,23 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $ancestorKey = $datastore->key('__kind__', 'Task');
-    $startKey = $datastore->key('__property__', 'priority')
-        ->ancestorKey($ancestorKey);
-    $query = $datastore->query()
-        ->kind('__property__')
-        ->filter('__key__', '>=', $startKey);
-    $result = $datastore->runQuery($query);
-    /* @var array<string> $properties */
-    $properties = [];
-    /* @var Entity $entity */
-    foreach ($result as $entity) {
-        $kind = $entity->key()->path()[0]['name'];
-        $propertyName = $entity->key()->path()[1]['name'];
-        $properties[] = "$kind.$propertyName";
-    }
+```php
+$ancestorKey = $datastore->key('__kind__', 'Task');
+$startKey = $datastore->key('__property__', 'priority')
+    ->ancestorKey($ancestorKey);
+$query = $datastore->query()
+    ->kind('__property__')
+    ->filter('__key__', '>=', $startKey);
+$result = $datastore->runQuery($query);
+/* @var array<string> $properties */
+$properties = [];
+/* @var Entity $entity */
+foreach ($result as $entity) {
+    $kind = $entity->key()->path()[0]['name'];
+    $propertyName = $entity->key()->path()[1]['name'];
+    $properties[] = "$kind.$propertyName";
+}
+```
 
 ### Python
 
@@ -816,29 +890,35 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    start_key = datastore.key [["__kind__", "Task"], ["__property__", "priority"]]
-    query = datastore.query("__property__")
-                     .select("__key__")
-                     .where("__key__", ">=", start_key)
-    
-    entities = datastore.run query
-    properties_by_kind = entities.each_with_object({}) do |entity, memo|
-      kind = entity.key.parent.name
-      prop = entity.key.name
-      memo[kind] ||= []
-      memo[kind] << prop
-    end
+```ruby
+start_key = datastore.key [["__kind__", "Task"], ["__property__", "priority"]]
+query = datastore.query("__property__")
+                 .select("__key__")
+                 .where("__key__", ">=", start_key)
+
+entities = datastore.run query
+properties_by_kind = entities.each_with_object({}) do |entity, memo|
+  kind = entity.key.parent.name
+  prop = entity.key.name
+  memo[kind] ||= []
+  memo[kind] << prop
+end
+```
 
 ### GQL
 
-    SELECT __key__ FROM __property__
-    WHERE __key__ >= KEY(__kind__, 'Task', __property__, 'priority')
+```
+SELECT __key__ FROM __property__
+WHERE __key__ >= KEY(__kind__, 'Task', __property__, 'priority')
+```
 
 will collect the following kind, property name pairs:
 
-    Task, priority
-    Task, tags
-    TaskList, created
+```
+Task, priority
+Task, tags
+TaskList, created
+```
 
 Notice that the results include properties from kinds `Task` and `TaskList` , but do not include the `created` property of kind `Task` , because it falls outside the range specified for the query.
 

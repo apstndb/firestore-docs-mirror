@@ -12,11 +12,11 @@ This page describes Firestore editions and key features.
 
 Firestore is available in the following editions:
 
-  - **Enterprise edition** : provides the most advanced Firestore capabilities, maximizing developer flexibility and control. It supports the Firestore with MongoDB compatibility API along with the Firestore APIs and Firebase SDKs to perform real-time and offline queries.
-    
-    Enterprise edition features an advanced query engine with over 180 capabilities, customizable indexing options, and up to five times faster performance. The Enterprise edition utilizes a modern pricing model based on tranches of bytes read and written, storage consumed, and network egress incurred.
+- **Enterprise edition** : provides the most advanced Firestore capabilities, maximizing developer flexibility and control. It supports the Firestore with MongoDB compatibility API along with the Firestore APIs and Firebase SDKs to perform real-time and offline queries.
 
-  - **Standard edition** : provides the core Firestore capabilities including a standard query engine, automated indexing to help performance, and Firebase SDKs with real-time synchronization and offline queries. Standard edition utilizes a simplified pricing model based on documents read and written, storage consumed, and network egress incurred.
+  Enterprise edition features an advanced query engine with over 180 capabilities, customizable indexing options, and up to five times faster performance. The Enterprise edition utilizes a modern pricing model based on tranches of bytes read and written, storage consumed, and network egress incurred.
+
+- **Standard edition** : provides the core Firestore capabilities including a standard query engine, automated indexing to help performance, and Firebase SDKs with real-time synchronization and offline queries. Standard edition utilizes a simplified pricing model based on documents read and written, storage consumed, and network egress incurred.
 
 ## Editions features
 
@@ -144,16 +144,16 @@ Point-in-time recovery</td>
 
 Firestore supports the following data access modes to read and write data:
 
-  - **Firestore with MongoDB compatibility mode** : this interface supports Firestore with MongoDB compatibility and lets you re-use existing MongoDB drivers, tools, and open-source ecosystem integrations with Firestore.
-  - **Firestore in Native mode** : this interface supports all of the latest and most innovative capabilities of Firestore, including real-time synchronization and offline caching in the Firestore client libraries.
-  - **Firestore in Datastore mode** : this interface is best utilized by Datastore and App Engine Datastore apps.
+- **Firestore with MongoDB compatibility mode** : this interface supports Firestore with MongoDB compatibility and lets you re-use existing MongoDB drivers, tools, and open-source ecosystem integrations with Firestore.
+- **Firestore in Native mode** : this interface supports all of the latest and most innovative capabilities of Firestore, including real-time synchronization and offline caching in the Firestore client libraries.
+- **Firestore in Datastore mode** : this interface is best utilized by Datastore and App Engine Datastore apps.
 
 ### Data access modes that each edition supports
 
 Available data access modes depend on the edition of the database. You must select a data access mode when you create the database. You can't change this mode.
 
-  - **Firestore Enterprise edition** : supports the MongoDB compatibility APIs or the Firestore in Native mode API.
-  - **Firestore Standard edition** : supports the Firestore Native API or the Datastore API.
+- **Firestore Enterprise edition** : supports the MongoDB compatibility APIs or the Firestore in Native mode API.
+- **Firestore Standard edition** : supports the Firestore Native API or the Datastore API.
 
 ## Maximize performance
 
@@ -179,6 +179,6 @@ To try the advanced query engine and other Enterprise edition features, create a
 
 ## What's next
 
-  - [Learn about client libraries for Firestore in Native mode.](https://docs.cloud.google.com/firestore/native/docs/reference/libraries)
-  - For apps that use the Datastore API, see [Firestore in Datastore mode](https://docs.cloud.google.com/datastore/docs/firestore-or-datastore) .
-  - [Learn how to create a Firestore with MongoDB compatibility database and connect to it with the mongosh tool](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database) .
+- [Learn about client libraries for Firestore in Native mode.](https://docs.cloud.google.com/firestore/native/docs/reference/libraries)
+- For apps that use the Datastore API, see [Firestore in Datastore mode](https://docs.cloud.google.com/datastore/docs/firestore-or-datastore) .
+- [Learn how to create a Firestore with MongoDB compatibility database and connect to it with the mongosh tool](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database) .

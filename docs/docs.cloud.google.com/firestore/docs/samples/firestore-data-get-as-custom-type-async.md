@@ -12,7 +12,7 @@ Get a Firestore document using custom types (async).
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Getting data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data)
+- [Getting data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data)
 
 ## Code sample
 
@@ -20,11 +20,13 @@ For detailed documentation that includes this code sample, see the following:
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    doc_ref = db.collection("cities").document("BJ")
-    
-    doc = await doc_ref.get()
-    city = City.from_dict(doc.to_dict())
-    print(city)
+```python
+doc_ref = db.collection("cities").document("BJ")
+
+doc = await doc_ref.get()
+city = City.from_dict(doc.to_dict())
+print(city)
+```
 
 ## What's next
 

@@ -14,8 +14,8 @@ If you have specific compliance or regulatory requirements related to the keys t
 
 This page describes CMEK for Firestore. For more information about CMEK in general, including when and why to enable it, see the following Cloud KMS documentation:
 
-  - [Customer-managed encryption keys (CMEK)](https://cloud.google.com/kms/docs/cmek)
-  - [Recommended practices for using CMEKs](https://cloud.google.com/kms/docs/cmek-recommended-practices)
+- [Customer-managed encryption keys (CMEK)](https://cloud.google.com/kms/docs/cmek)
+- [Recommended practices for using CMEKs](https://cloud.google.com/kms/docs/cmek-recommended-practices)
 
 For instructions on performing CMEK-related tasks with Firestore, see [Use CMEK](https://docs.cloud.google.com/firestore/native/docs/use-cmek) .
 
@@ -23,10 +23,10 @@ For instructions on performing CMEK-related tasks with Firestore, see [Use CMEK]
 
 ## Features
 
-  - **Data control** : CMEK lets you manage the KMS key. You can rotate, disable, and destroy the key used to encrypt the data at rest in your Firestore database.
-  - **Performance** : CMEK does not impact the [Firestore SLA](https://cloud.google.com/firestore/sla) .
-  - **Auditability** : If you [enable audit logging for Cloud KMS](https://cloud.google.com/logging/docs/audit/configure-data-access#config-console-enable) , all the operations on the key are logged and viewable in Cloud Logging.
-  - **Organization policy constraints** : You can use [CMEK organization policy constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints) to specify encryption compliance requirements for Firestore databases in your organization.
+- **Data control** : CMEK lets you manage the KMS key. You can rotate, disable, and destroy the key used to encrypt the data at rest in your Firestore database.
+- **Performance** : CMEK does not impact the [Firestore SLA](https://cloud.google.com/firestore/sla) .
+- **Auditability** : If you [enable audit logging for Cloud KMS](https://cloud.google.com/logging/docs/audit/configure-data-access#config-console-enable) , all the operations on the key are logged and viewable in Cloud Logging.
+- **Organization policy constraints** : You can use [CMEK organization policy constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints) to specify encryption compliance requirements for Firestore databases in your organization.
 
 ## Pricing
 
@@ -42,8 +42,8 @@ If you revoke your key to a database, storage cost will be charged based on the 
 
 When you create a Firestore CMEK-protected database, your Cloud KMS key is used to protect data at rest. This includes data that you store on a disk or a flash drive, including indexes and backups. Some exceptions apply. The following data types are encrypted with Google default encryption and not by the CMEK key:
 
-  - Data in transit or in memory
-  - Database metadata
+- Data in transit or in memory
+- Database metadata
 
 ## How an unavailable key status is handled
 
@@ -53,21 +53,21 @@ If the system detects that the key is unavailable, within 10 minutes any subsequ
 
 If the database has [time-to-live (TTL) policies](https://docs.cloud.google.com/firestore/native/docs/ttl) , and if any expiration times get exceeded while the key is unavailable, [data deletion by TTL](https://docs.cloud.google.com/firestore/native/docs/ttl#ttl_deletion) will be delayed until the key gets reinstated. If the database has long-running operations in progress, they will be affected as follows:
 
-  - Data [import](https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import#import_data) or [export](https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import#export_data) operations will stop making progress, and be marked as `Failed` . The failed operations will **not** be retried if the key gets reinstated.
-  - [Index build](https://docs.cloud.google.com/firestore/native/docs/query-data/indexing#index_build_time) operations, and operations [enabling new TTL policies](https://docs.cloud.google.com/firestore/native/docs/ttl#ttl_policy_enablement_duration) will stop making progress. The stopped operations will be retried if the key gets reinstated.
+- Data [import](https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import#import_data) or [export](https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import#export_data) operations will stop making progress, and be marked as `Failed` . The failed operations will **not** be retried if the key gets reinstated.
+- [Index build](https://docs.cloud.google.com/firestore/native/docs/query-data/indexing#index_build_time) operations, and operations [enabling new TTL policies](https://docs.cloud.google.com/firestore/native/docs/ttl#ttl_policy_enablement_duration) will stop making progress. The stopped operations will be retried if the key gets reinstated.
 
 Keys are considered unavailable in any situation that intentionally disallows Firestore from accessing the key. This includes:
 
-  - [Disabling](https://cloud.google.com/kms/docs/enable-disable#disable) or [destroying](https://cloud.google.com/kms/docs/destroy-restore) the in-use key version. Be careful when destroying a key version, because this [can cause unrecoverable data loss](https://cloud.google.com/kms/docs/destroy-restore#understand-risks) .
-  - [Removing permission](https://cloud.google.com/kms/docs/iam#revoking_access_to_a_resource) to access the key from the Firestore service account.
+- [Disabling](https://cloud.google.com/kms/docs/enable-disable#disable) or [destroying](https://cloud.google.com/kms/docs/destroy-restore) the in-use key version. Be careful when destroying a key version, because this [can cause unrecoverable data loss](https://cloud.google.com/kms/docs/destroy-restore#understand-risks) .
+- [Removing permission](https://cloud.google.com/kms/docs/iam#revoking_access_to_a_resource) to access the key from the Firestore service account.
 
 If the key is reinstated, the polling operation detects that the key is available again. Access is re-enabled, usually within minutes, but it can take up to a few hours in rare cases. Note that some operations on Cloud KMS keys, such as disabling or destroying a key, can take up to [3 hours](https://cloud.google.com/kms/docs/consistency) to propagate. Firestore doesn't detect any changes until after they take effect in Cloud KMS.
 
 Reinstatement of a key involves the following, depending on the situation:
 
-  - [Re-enabling](https://cloud.google.com/kms/docs/enable-disable#enable) a disabled key version.
-  - [Restoring](https://cloud.google.com/kms/docs/destroy-restore#restore) a destroyed key version. Before being permanently destroyed, a key version is scheduled for destruction. You can only restore a key during the period when a key version is scheduled for destruction. You cannot restore a key that has already been permanently destroyed.
-  - [Re-granting](https://cloud.google.com/kms/docs/iam#granting_roles_on_a_resource) the Firestore service agent permission to access the key.
+- [Re-enabling](https://cloud.google.com/kms/docs/enable-disable#enable) a disabled key version.
+- [Restoring](https://cloud.google.com/kms/docs/destroy-restore#restore) a destroyed key version. Before being permanently destroyed, a key version is scheduled for destruction. You can only restore a key during the period when a key version is scheduled for destruction. You cannot restore a key that has already been permanently destroyed.
+- [Re-granting](https://cloud.google.com/kms/docs/iam#granting_roles_on_a_resource) the Firestore service agent permission to access the key.
 
 > **Warning:** Don't let your key become unavailable for longer than seven days. CMEK-protected databases with keys unavailable for more than 7 days may be deleted. In the event of a key being unavailable, to preserve data beyond the seven days limit, we recommend that you enable backups for your Firestore CMEK database with the required retention period. Before you revoke the key, ensure a backup has been created, as a valid key is required for backup creation. Additional charges apply for backups. For backup pricing details, see [Firestore pricing](https://docs.cloud.google.com/firestore/native/docs/pricing) .
 
@@ -103,9 +103,9 @@ For more information about Firestore backups, see [Back up and restore data](htt
 
 A database restored from a backup uses the same encryption mechanism as the backup by default. When you restore a database, you can specify a different encryption type in one of the following ways:
 
-  - Restore to a CMEK database with a newly specified key.
-  - Restore to a non-CMEK database that uses [Google's default encryption](https://cloud.google.com/security/encryption/default-encryption#googles_default_encryption) .
-  - Restore to a database that uses the same encryption as the backup.
+- Restore to a CMEK database with a newly specified key.
+- Restore to a non-CMEK database that uses [Google's default encryption](https://cloud.google.com/security/encryption/default-encryption#googles_default_encryption) .
+- Restore to a database that uses the same encryption as the backup.
 
 For more information about restoring a Firestore database from a backup, see [Restore data from a database backup](https://docs.cloud.google.com/firestore/native/docs/backups#restore_data_from_a_database_backup) . For more information about restoring a CMEK-protected Firestore database from a backup, see [Restore a CMEK-protected database](https://docs.cloud.google.com/firestore/native/docs/use-cmek#restore_a_cmek-protected_database) .
 
@@ -113,9 +113,9 @@ For more information about restoring a Firestore database from a backup, see [Re
 
 By default, a database cloned from another database uses the same encryption mechanism as the source database. When you clone a database, you can specify a different encryption type in one of the following ways:
 
-  - Clone to a CMEK database with a newly specified key.
-  - Clone to a non-CMEK database that uses [Google's default encryption](https://cloud.google.com/security/encryption/default-encryption#googles_default_encryption) .
-  - (Default) Clone to a database that uses the same encryption as the source database.
+- Clone to a CMEK database with a newly specified key.
+- Clone to a non-CMEK database that uses [Google's default encryption](https://cloud.google.com/security/encryption/default-encryption#googles_default_encryption) .
+- (Default) Clone to a database that uses the same encryption as the source database.
 
 For more information about cloning a Firestore database, see [Clone a database](https://docs.cloud.google.com/firestore/native/docs/use-pitr#clone) . For more information about cloning a CMEK-protected Firestore database, see [Clone a CMEK-protected database](https://docs.cloud.google.com/firestore/native/docs/use-cmek#clone-cmek-db) .
 
@@ -127,24 +127,24 @@ You can use key tracking to view resources, for example, Firestore databases, th
 
 When keys are unavailable or disabled, be aware of the following behaviors that can occur in CMEK-enabled databases:
 
-  - You can change Firestore point-in-time recovery (PITR) settings on a CMEK-enabled database even if the key is unavailable because PITR settings are database metadata, which isn't encrypted by CMEK.
-  - You can delete a CMEK database that has unavailable keys.
-  - When you create a CMEK-enabled database, disabled keys don't show on the list of available keys in the Google Cloud console. If you manually input a disabled key, the database creation process will fail with a `FAILED_PRECONDITION` error 400.
+- You can change Firestore point-in-time recovery (PITR) settings on a CMEK-enabled database even if the key is unavailable because PITR settings are database metadata, which isn't encrypted by CMEK.
+- You can delete a CMEK database that has unavailable keys.
+- When you create a CMEK-enabled database, disabled keys don't show on the list of available keys in the Google Cloud console. If you manually input a disabled key, the database creation process will fail with a `FAILED_PRECONDITION` error 400.
 
 ## Limitations
 
-  - You can't change a key for a CMEK-protected database. You can rotate, enable, and disable keys.
-  - CMEK-protected databases support [Key Visualizer](https://cloud.google.com/firestore/docs/key-visualizer) only for entity and document data, not for index data.
-  - You can't enable CMEK on existing databases. You can enable CMEK only on new databases, and you must enable it when you create the database. To migrate data in an existing non-CMEK database to a CMEK-protected database, export your data and then import data to a new CMEK-protected database. You can also restore or clone data from a non-CMEK database to a CMEK database.
-  - Firestore supports a limited number of CMEK-protected databases.
-  - We don't support CMEK protection with Cloud Functions (1st gen) integration. If you want to have CMEK protection, use [Cloud Run functions Firestore Triggers (2nd gen)](https://cloud.google.com/functions/docs/calling/cloud-firestore) .
+- You can't change a key for a CMEK-protected database. You can rotate, enable, and disable keys.
+- CMEK-protected databases support [Key Visualizer](https://cloud.google.com/firestore/docs/key-visualizer) only for entity and document data, not for index data.
+- You can't enable CMEK on existing databases. You can enable CMEK only on new databases, and you must enable it when you create the database. To migrate data in an existing non-CMEK database to a CMEK-protected database, export your data and then import data to a new CMEK-protected database. You can also restore or clone data from a non-CMEK database to a CMEK database.
+- Firestore supports a limited number of CMEK-protected databases.
+- We don't support CMEK protection with Cloud Functions (1st gen) integration. If you want to have CMEK protection, use [Cloud Run functions Firestore Triggers (2nd gen)](https://cloud.google.com/functions/docs/calling/cloud-firestore) .
 
 ## How data can leave CMEK-protected databases
 
-  - Data copied by your application can be stored by its users in arbitrary ways. Appropriate security controls are required for any application accessing Firestore data to make sure that data is only accessed by those with proper authorization. See [security rules](https://docs.cloud.google.com/firestore/native/docs/security/get-started) and [IAM](https://docs.cloud.google.com/firestore/native/docs/security/iam) for more details.
+- Data copied by your application can be stored by its users in arbitrary ways. Appropriate security controls are required for any application accessing Firestore data to make sure that data is only accessed by those with proper authorization. See [security rules](https://docs.cloud.google.com/firestore/native/docs/security/get-started) and [IAM](https://docs.cloud.google.com/firestore/native/docs/security/iam) for more details.
 
-  - Data from a CMEK-protected database can be moved to a non-CMEK database by using [Backup and Restore](https://docs.cloud.google.com/firestore/native/docs/backups) , [Clone](https://docs.cloud.google.com/firestore/native/docs/use-pitr#clone) , or [Import](https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import#import_data) and [Export](https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import#export_data) . Use appropriate [IAM controls](https://docs.cloud.google.com/firestore/native/docs/security/iam) to only grant permission for these actions to authorized users. Additionally, [CMEK organization policy constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints) can be used to require that any databases created by restore or clone and any Cloud Storage buckets used for Import are CMEK-protected.
+- Data from a CMEK-protected database can be moved to a non-CMEK database by using [Backup and Restore](https://docs.cloud.google.com/firestore/native/docs/backups) , [Clone](https://docs.cloud.google.com/firestore/native/docs/use-pitr#clone) , or [Import](https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import#import_data) and [Export](https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import#export_data) . Use appropriate [IAM controls](https://docs.cloud.google.com/firestore/native/docs/security/iam) to only grant permission for these actions to authorized users. Additionally, [CMEK organization policy constraints](https://cloud.google.com/resource-manager/docs/organization-policy/org-policy-constraints) can be used to require that any databases created by restore or clone and any Cloud Storage buckets used for Import are CMEK-protected.
 
 ## What's next
 
-  - [Learn how to use CMEK with Firestore.](https://docs.cloud.google.com/firestore/native/docs/use-cmek)
+- [Learn how to use CMEK with Firestore.](https://docs.cloud.google.com/firestore/native/docs/use-cmek)

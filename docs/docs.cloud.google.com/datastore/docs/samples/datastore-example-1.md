@@ -16,30 +16,32 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    func TestWithdrawLowBal(t *testing.T) {
-     ctx, done, err := aetest.NewContext()
-     if err != nil {
-         t.Fatal(err)
-     }
-     defer done()
-     key := datastore.NewKey(ctx, "BankAccount", "", 1, nil)
-     if _, err := datastore.Put(ctx, key, &BankAccount{100}); err != nil {
-         t.Fatal(err)
-     }
-    
-     err = withdraw(ctx, "myid", 128, 0)
-     if err == nil || err.Error() != "insufficient funds" {
-         t.Errorf("Error: %v; want insufficient funds error", err)
-     }
-    
-     b := BankAccount{}
-     if err := datastore.Get(ctx, key, &b); err != nil {
-         t.Fatal(err)
-     }
-     if bal, want := b.Balance, 100; bal != want {
-         t.Errorf("Balance %d, want %d", bal, want)
-     }
+```go
+func TestWithdrawLowBal(t *testing.T) {
+    ctx, done, err := aetest.NewContext()
+    if err != nil {
+        t.Fatal(err)
     }
+    defer done()
+    key := datastore.NewKey(ctx, "BankAccount", "", 1, nil)
+    if _, err := datastore.Put(ctx, key, &BankAccount{100}); err != nil {
+        t.Fatal(err)
+    }
+
+    err = withdraw(ctx, "myid", 128, 0)
+    if err == nil || err.Error() != "insufficient funds" {
+        t.Errorf("Error: %v; want insufficient funds error", err)
+    }
+
+    b := BankAccount{}
+    if err := datastore.Get(ctx, key, &b); err != nil {
+        t.Fatal(err)
+    }
+    if bal, want := b.Balance, 100; bal != want {
+        t.Errorf("Balance %d, want %d", bal, want)
+    }
+}
+```
 
 ## What's next
 

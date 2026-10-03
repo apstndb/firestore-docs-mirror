@@ -12,20 +12,22 @@ Getting started with Firestore
 
 ### Kotlin
 
-    // Create the client.
-    val db = FirestoreOptions.newBuilder()
-        .build()
-        .service
-    
-    // Fetch the document reference and data object.
-    val docRef = db.collection(collectionName).document(documentName)
-    val data = docRef
-        .get() // future
-        .get() // snapshot
-        .data ?: error("Document $collectionName:$documentName not found") // MutableMap
-    
-    // Print the retrieved data.
-    data.forEach { (key, value) -> println("$key: $value") }
+```kotlin
+// Create the client.
+val db = FirestoreOptions.newBuilder()
+    .build()
+    .service
+
+// Fetch the document reference and data object.
+val docRef = db.collection(collectionName).document(documentName)
+val data = docRef
+    .get() // future
+    .get() // snapshot
+    .data ?: error("Document $collectionName:$documentName not found") // MutableMap
+
+// Print the retrieved data.
+data.forEach { (key, value) -> println("$key: $value") }
+```
 
 ## What's next
 

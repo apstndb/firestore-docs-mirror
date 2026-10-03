@@ -12,36 +12,38 @@ Perform a batch upsert.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Entities, Properties, and Keys](https://docs.cloud.google.com/datastore/docs/concepts/entities)
+- [Entities, Properties, and Keys](https://docs.cloud.google.com/datastore/docs/concepts/entities)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    var taskList = new[]
+```csharp
+var taskList = new[]
+{
+    new Entity()
     {
-        new Entity()
-        {
-            Key = _keyFactory.CreateIncompleteKey(),
-            ["category"] = "Personal",
-            ["done"] = false,
-            ["priority"] = 4,
-            ["description"] = "Learn Cloud Datastore"
-        },
-        new Entity()
-        {
-            Key = _keyFactory.CreateIncompleteKey(),
-            ["category"] = "Personal",
-            ["done"] = "false",
-            ["priority"] = 5,
-            ["description"] = "Integrate Cloud Datastore"
-        }
-    };
-    var keyList = _db.Upsert(taskList[0], taskList[1]);
+        Key = _keyFactory.CreateIncompleteKey(),
+        ["category"] = "Personal",
+        ["done"] = false,
+        ["priority"] = 4,
+        ["description"] = "Learn Cloud Datastore"
+    },
+    new Entity()
+    {
+        Key = _keyFactory.CreateIncompleteKey(),
+        ["category"] = "Personal",
+        ["done"] = "false",
+        ["priority"] = 5,
+        ["description"] = "Integrate Cloud Datastore"
+    }
+};
+var keyList = _db.Upsert(taskList[0], taskList[1]);
+```
 
 ### Go
 
@@ -49,26 +51,28 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    tasks := []*Task{
-     {
-         Category:    "Personal",
-         Done:        false,
-         Priority:    4,
-         Description: "Learn Cloud Datastore",
-     },
-     {
-         Category:    "Personal",
-         Done:        false,
-         Priority:    5,
-         Description: "Integrate Cloud Datastore",
-     },
-    }
-    keys := []*datastore.Key{
-     datastore.IncompleteKey("Task", nil),
-     datastore.IncompleteKey("Task", nil),
-    }
-    
-    keys, err := client.PutMulti(ctx, keys, tasks)
+```go
+tasks := []*Task{
+    {
+        Category:    "Personal",
+        Done:        false,
+        Priority:    4,
+        Description: "Learn Cloud Datastore",
+    },
+    {
+        Category:    "Personal",
+        Done:        false,
+        Priority:    5,
+        Description: "Integrate Cloud Datastore",
+    },
+}
+keys := []*datastore.Key{
+    datastore.IncompleteKey("Task", nil),
+    datastore.IncompleteKey("Task", nil),
+}
+
+keys, err := client.PutMulti(ctx, keys, tasks)
+```
 
 ### Java
 
@@ -76,23 +80,25 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    FullEntity<IncompleteKey> task1 =
-        FullEntity.newBuilder(keyFactory.newKey())
-            .set("category", "Personal")
-            .set("done", false)
-            .set("priority", 4)
-            .set("description", "Learn Cloud Datastore")
-            .build();
-    FullEntity<IncompleteKey> task2 =
-        Entity.newBuilder(keyFactory.newKey())
-            .set("category", "Personal")
-            .set("done", false)
-            .set("priority", 5)
-            .set("description", "Integrate Cloud Datastore")
-            .build();
-    List<Entity> tasks = datastore.add(task1, task2);
-    Key taskKey1 = tasks.get(0).getKey();
-    Key taskKey2 = tasks.get(1).getKey();
+```java
+FullEntity<IncompleteKey> task1 =
+    FullEntity.newBuilder(keyFactory.newKey())
+        .set("category", "Personal")
+        .set("done", false)
+        .set("priority", 4)
+        .set("description", "Learn Cloud Datastore")
+        .build();
+FullEntity<IncompleteKey> task2 =
+    Entity.newBuilder(keyFactory.newKey())
+        .set("category", "Personal")
+        .set("done", false)
+        .set("priority", 5)
+        .set("description", "Integrate Cloud Datastore")
+        .build();
+List<Entity> tasks = datastore.add(task1, task2);
+Key taskKey1 = tasks.get(0).getKey();
+Key taskKey2 = tasks.get(1).getKey();
+```
 
 ### PHP
 
@@ -100,7 +106,9 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $result = $datastore->upsertBatch($tasks);
+```php
+$result = $datastore->upsertBatch($tasks);
+```
 
 ### Python
 
@@ -108,35 +116,37 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    task1 = datastore.Entity(client.key("Task", 1))
-    
-    task1.update(
-        {
-            "category": "Personal",
-            "done": False,
-            "priority": 4,
-            "description": "Learn Cloud Datastore",
-        }
-    )
-    
-    task2 = datastore.Entity(client.key("Task", 2))
-    
-    task2.update(
-        {
-            "category": "Work",
-            "done": False,
-            "priority": 8,
-            "description": "Integrate Cloud Datastore",
-        }
-    )
-    
-    client.put_multi([task1, task2])
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+task1 = datastore.Entity(client.key("Task", 1))
+
+task1.update(
+    {
+        "category": "Personal",
+        "done": False,
+        "priority": 4,
+        "description": "Learn Cloud Datastore",
+    }
+)
+
+task2 = datastore.Entity(client.key("Task", 2))
+
+task2.update(
+    {
+        "category": "Work",
+        "done": False,
+        "priority": 8,
+        "description": "Integrate Cloud Datastore",
+    }
+)
+
+client.put_multi([task1, task2])
+```
 
 ### Ruby
 
@@ -144,23 +154,25 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    task_1 = datastore.entity "Task" do |t|
-      t["category"] = "Personal"
-      t["done"] = false
-      t["priority"] = 4
-      t["description"] = "Learn Cloud Datastore"
-    end
-    
-    task_2 = datastore.entity "Task" do |t|
-      t["category"] = "Personal"
-      t["done"] = false
-      t["priority"] = 5
-      t["description"] = "Integrate Cloud Datastore"
-    end
-    
-    tasks = datastore.save task_1, task_2
-    task_key_1 = tasks[0].key
-    task_key_2 = tasks[1].key
+```ruby
+task_1 = datastore.entity "Task" do |t|
+  t["category"] = "Personal"
+  t["done"] = false
+  t["priority"] = 4
+  t["description"] = "Learn Cloud Datastore"
+end
+
+task_2 = datastore.entity "Task" do |t|
+  t["category"] = "Personal"
+  t["done"] = false
+  t["priority"] = 5
+  t["description"] = "Integrate Cloud Datastore"
+end
+
+tasks = datastore.save task_1, task_2
+task_key_1 = tasks[0].key
+task_key_2 = tasks[1].key
+```
 
 ## What's next
 

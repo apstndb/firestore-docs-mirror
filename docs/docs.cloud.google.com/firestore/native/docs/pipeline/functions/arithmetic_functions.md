@@ -12,65 +12,69 @@ data_source: docs.cloud.google.com
 
 All arithmetic functions in Firestore have the following behaviors:
 
-  - Evaluates to `NULL` if any of the input parameters is `NULL` .
-  - Evaluates to `NaN` if any of the arguments is `NaN` .
-  - Generates an error if an overflow or underflow occurs.
+- Evaluates to `NULL` if any of the input parameters is `NULL` .
+- Evaluates to `NaN` if any of the arguments is `NaN` .
+- Generates an error if an overflow or underflow occurs.
 
 Firestore performs **numeric type widening** based on the following hierarchy: `INT32` \< `INT64` \< `FLOAT64` \< `DECIMAL128` . When an arithmetic function takes multiple numeric arguments of different types (for example, `add(5.0D, 6L)` ), narrower types are implicitly converted to the widest type present among the operands. In the previous example, the `6L` is widened to `6.0D` resulting in the expression returning a `FLOAT64` type.
 
 An implicit coercion from `INT64` -\> `FLOAT64` can result in a loss of precision as the coerced value can lose of its least significant bits. The resulting value will be rounded version of the original integer value using IEEE 754 round-to-nearest mode.
 
-|                             |                                                          |
-| --------------------------- | -------------------------------------------------------- |
-| Name                        | Description                                              |
-| `         ABS        `      | Returns the absolute value of a `number`                 |
-| `         ADD        `      | Returns the value of `x + y`                             |
-| `         SUBTRACT        ` | Returns the value of `x - y`                             |
-| `         MULTIPLY        ` | Returns the value of `x * y`                             |
-| `         DIVIDE        `   | Returns the value of `x / y`                             |
-| `         MOD        `      | Returns the remainder of the division of `x / y`         |
-| `         CEIL        `     | Returns the ceiling of a `number`                        |
-| `         FLOOR        `    | Returns the floor of a `number`                          |
-| `         ROUND        `    | Rounds a `number` to `places` decimal places             |
-| `         TRUNC        `    | Truncates a `number` to `places` decimal places          |
-| `         POW        `      | Returns the value of `base^exponent`                     |
-| `         SQRT        `     | Returns the square root of a `number`                    |
-| `         EXP        `      | Returns Euler's number raised to the power of `exponent` |
-| `         LN        `       | Returns the natural logarithm of a `number`              |
-| `         LOG        `      | Returns the logarithm of a `number`                      |
-| `         LOG10        `    | Returns the logarithm of a `number` to base `10`         |
-| `         RAND        `     | Returns a pseudo-random floating point number            |
+|                                                                                                                    |                                                          |
+|--------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|
+| Name                                                                                                               | Description                                              |
+| [`ABS`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions#abs)           | Returns the absolute value of a `number`                 |
+| [`ADD`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions#add)           | Returns the value of `x + y`                             |
+| [`SUBTRACT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions#subtract) | Returns the value of `x - y`                             |
+| [`MULTIPLY`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions#multiply) | Returns the value of `x * y`                             |
+| [`DIVIDE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions#divide)     | Returns the value of `x / y`                             |
+| [`MOD`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions#mod)           | Returns the remainder of the division of `x / y`         |
+| [`CEIL`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions#ceil)         | Returns the ceiling of a `number`                        |
+| [`FLOOR`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions#floor)       | Returns the floor of a `number`                          |
+| [`ROUND`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions#round)       | Rounds a `number` to `places` decimal places             |
+| [`TRUNC`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions#trunc)       | Truncates a `number` to `places` decimal places          |
+| [`POW`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions#pow)           | Returns the value of `base^exponent`                     |
+| [`SQRT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions#sqrt)         | Returns the square root of a `number`                    |
+| [`EXP`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions#exp)           | Returns Euler's number raised to the power of `exponent` |
+| [`LN`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions#ln)             | Returns the natural logarithm of a `number`              |
+| [`LOG`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions#log)           | Returns the logarithm of a `number`                      |
+| [`LOG10`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions#log10)       | Returns the logarithm of a `number` to base `10`         |
+| [`RAND`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions#rand)         | Returns a pseudo-random floating point number            |
 
 ### ABS
 
 **Syntax:**
 
-    abs[N <: INT32 | INT64 | FLOAT64](number: N) -> N
+```
+abs[N <: INT32 | INT64 | FLOAT64](number: N) -> N
+```
 
 **Description:**
 
 Returns the absolute value of a `number` .
 
-  - Throws an error when the function would overflow an `INT32` or `INT64` value.
+- Throws an error when the function would overflow an `INT32` or `INT64` value.
 
 **Examples:**
 
-| number            | `abs(number)` |
-| :---------------- | :------------ |
-| 10                | 10            |
-| \-10              | 10            |
-| 10L               | 10L           |
-| \-0.0             | 0.0           |
-| 10.5              | 10.5          |
-| \-10.5            | 10.5          |
-| \-2 <sup>31</sup> | `[error]`     |
-| \-2 <sup>63</sup> | `[error]`     |
+| number           | `abs(number)` |
+|------------------|---------------|
+| 10               | 10            |
+| -10              | 10            |
+| 10L              | 10L           |
+| -0.0             | 0.0           |
+| 10.5             | 10.5          |
+| -10.5            | 10.5          |
+| -2 <sup>31</sup> | `[error]`     |
+| -2 <sup>63</sup> | `[error]`     |
 
 ### ADD
 
 **Syntax:**
 
-    add[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+```
+add[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+```
 
 **Description:**
 
@@ -79,88 +83,101 @@ Returns the value of `x + y` .
 **Examples:**
 
 | x         | y   | `add(x, y)` |
-| :-------- | :-- | :---------- |
+|-----------|-----|-------------|
 | 20        | 3   | 23          |
 | 10.0      | 1   | 11.0        |
 | 22.5      | 2.0 | 24.5        |
 | INT64.MAX | 1   | `[error]`   |
-| INT64.MIN | \-1 | `[error]`   |
+| INT64.MIN | -1  | `[error]`   |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("soldBooks").add(field("unsoldBooks")).as("totalBooks"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("soldBooks").add(field("unsoldBooks")).as("totalBooks"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("soldBooks").add(field("unsoldBooks")).as("totalBooks"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("soldBooks").add(field("unsoldBooks")).as("totalBooks"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("soldBooks").add(Field("unsoldBooks")).as("totalBooks")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("soldBooks").add(Field("unsoldBooks")).as("totalBooks")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(Expression.add(field("soldBooks"), field("unsoldBooks")).alias("totalBooks"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(Expression.add(field("soldBooks"), field("unsoldBooks")).alias("totalBooks"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.add(field("soldBooks"), field("unsoldBooks")).alias("totalBooks"))
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("soldBooks").add(Field.of("unsoldBooks")).as_("totalBooks"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("soldBooks").add(Field.of("unsoldBooks")).as_("totalBooks"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(add(field("soldBooks"), field("unsoldBooks")).as("totalBooks"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(add(field("soldBooks"), field("unsoldBooks")).as("totalBooks"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Add(firestore.FieldOf("soldBooks"), firestore.FieldOf("unsoldBooks")).As("totalBooks"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Add(firestore.FieldOf("soldBooks"), firestore.FieldOf("unsoldBooks")).As("totalBooks"),
+    )).
+    Execute(ctx)
+```
 
 ### SUBTRACT
 
 **Syntax:**
 
-    subtract[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+```
+subtract[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+```
 
 **Description:**
 
@@ -169,96 +186,109 @@ Returns the value of `x - y` .
 **Examples:**
 
 | x         | y   | `subtract(x, y)` |
-| :-------- | :-- | :--------------- |
+|-----------|-----|------------------|
 | 20        | 3   | 17               |
 | 10.0      | 1   | 9.0              |
 | 22.5      | 2.0 | 20.5             |
-| INT64.MAX | \-1 | `[error]`        |
+| INT64.MAX | -1  | `[error]`        |
 | INT64.MIN | 1   | `[error]`        |
 
 ##### Node.js
 
-    const storeCredit = 7;
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("price").subtract(constant(storeCredit)).as("totalCost"))
-      .execute();
+```
+const storeCredit = 7;
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("price").subtract(constant(storeCredit)).as("totalCost"))
+  .execute();
+```
 
 ### Web
 
-    const storeCredit = 7;
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("price").subtract(constant(storeCredit)).as("totalCost"))
-    );
+```
+const storeCredit = 7;
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("price").subtract(constant(storeCredit)).as("totalCost"))
+);
+```
 
 ##### Swift
 
-    let storeCredit = 7
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("price").subtract(Constant(storeCredit)).as("totalCost")])
-      .execute()
+```
+let storeCredit = 7
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("price").subtract(Constant(storeCredit)).as("totalCost")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val storeCredit = 7
-    val result = db.pipeline()
-        .collection("books")
-        .select(Expression.subtract(field("price"), storeCredit).alias("totalCost"))
-        .execute()
+```
+val storeCredit = 7
+val result = db.pipeline()
+    .collection("books")
+    .select(Expression.subtract(field("price"), storeCredit).alias("totalCost"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 int storeCredit = 7;
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.subtract(field("price"), storeCredit).alias("totalCost"))
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    store_credit = 7
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("price").subtract(store_credit).as_("totalCost"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+store_credit = 7
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("price").subtract(store_credit).as_("totalCost"))
+    .execute()
+)
+```
 
 ##### Java
 
-    int storeCredit = 7;
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(subtract(field("price"), storeCredit).as("totalCost"))
-            .execute()
-            .get();
+```
+int storeCredit = 7;
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(subtract(field("price"), storeCredit).as("totalCost"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    storeCredit := 7
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Subtract(firestore.FieldOf("price"), storeCredit).As("totalCost"),
-     )).
-     Execute(ctx)
+```
+storeCredit := 7
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Subtract(firestore.FieldOf("price"), storeCredit).As("totalCost"),
+    )).
+    Execute(ctx)
+```
 
 ### MULTIPLY
 
 **Syntax:**
 
-    multiply[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+```
+multiply[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+```
 
 **Description:**
 
@@ -267,7 +297,7 @@ Returns the value of `x * y` .
 **Examples:**
 
 | x           | y           | `multiply(x, y)` |
-| :---------- | :---------- | :--------------- |
+|-------------|-------------|------------------|
 | 20          | 3           | 60               |
 | 10.0        | 1           | 10.0             |
 | 22.5        | 2.0         | 45.0             |
@@ -277,79 +307,92 @@ Returns the value of `x * y` .
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("price").multiply(field("soldBooks")).as("revenue"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("price").multiply(field("soldBooks")).as("revenue"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("price").multiply(field("soldBooks")).as("revenue"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("price").multiply(field("soldBooks")).as("revenue"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("price").multiply(Field("soldBooks")).as("revenue")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("price").multiply(Field("soldBooks")).as("revenue")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(Expression.multiply(field("price"), field("soldBooks")).alias("revenue"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(Expression.multiply(field("price"), field("soldBooks")).alias("revenue"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.multiply(field("price"), field("soldBooks")).alias("revenue"))
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("price").multiply(Field.of("soldBooks")).as_("revenue"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("price").multiply(Field.of("soldBooks")).as_("revenue"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(multiply(field("price"), field("soldBooks")).as("revenue"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(multiply(field("price"), field("soldBooks")).as("revenue"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Multiply(firestore.FieldOf("price"), firestore.FieldOf("soldBooks")).As("revenue"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Multiply(firestore.FieldOf("price"), firestore.FieldOf("soldBooks")).As("revenue"),
+    )).
+    Execute(ctx)
+```
 
 ### DIVIDE
 
 **Syntax:**
 
-    divide[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+```
+divide[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+```
 
 **Description:**
 
@@ -357,106 +400,119 @@ Returns the value of `x / y` . Integer division is truncated.
 
 **Examples:**
 
-| x     | y   | `divide(x, y)` |
-| :---- | :-- | :------------- |
-| 20    | 3   | 6              |
-| 10.0  | 3   | 3.333...       |
-| 22.5  | 2   | 11.25          |
-| 10    | 0   | `[error]`      |
-| 1.0   | 0.0 | `+inf`         |
-| \-1.0 | 0.0 | `-inf`         |
+| x    | y   | `divide(x, y)` |
+|------|-----|----------------|
+| 20   | 3   | 6              |
+| 10.0 | 3   | 3.333...       |
+| 22.5 | 2   | 11.25          |
+| 10   | 0   | `[error]`      |
+| 1.0  | 0.0 | `+inf`         |
+| -1.0 | 0.0 | `-inf`         |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("ratings").divide(field("soldBooks")).as("reviewRate"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("ratings").divide(field("soldBooks")).as("reviewRate"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("ratings").divide(field("soldBooks")).as("reviewRate"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("ratings").divide(field("soldBooks")).as("reviewRate"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("ratings").divide(Field("soldBooks")).as("reviewRate")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("ratings").divide(Field("soldBooks")).as("reviewRate")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(Expression.divide(field("ratings"), field("soldBooks")).alias("reviewRate"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(Expression.divide(field("ratings"), field("soldBooks")).alias("reviewRate"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.divide(field("ratings"), field("soldBooks")).alias("reviewRate"))
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("ratings").divide(Field.of("soldBooks")).as_("reviewRate"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("ratings").divide(Field.of("soldBooks")).as_("reviewRate"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(divide(field("ratings"), field("soldBooks")).as("reviewRate"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(divide(field("ratings"), field("soldBooks")).as("reviewRate"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Divide(firestore.FieldOf("ratings"), firestore.FieldOf("soldBooks")).As("reviewRate"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Divide(firestore.FieldOf("ratings"), firestore.FieldOf("soldBooks")).As("reviewRate"),
+    )).
+    Execute(ctx)
+```
 
 ### MOD
 
 **Syntax:**
 
-    mod[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+```
+mod[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+```
 
 **Description:**
 
 Returns the remainder of `x / y` .
 
-  - Throws an `error` when `y` is zero for integer types ( `INT64` ).
-  - Returns `NaN` when `y` is zero for float types ( `FLOAT64` ).
+- Throws an `error` when `y` is zero for integer types ( `INT64` ).
+- Returns `NaN` when `y` is zero for float types ( `FLOAT64` ).
 
 **Examples:**
 
 | x    | y   | `mod(x, y)` |
-| :--- | :-- | :---------- |
+|------|-----|-------------|
 | 20   | 3   | 2           |
-| \-10 | 3   | \-1         |
-| 10   | \-3 | 1           |
-| \-10 | \-3 | \-1         |
+| -10  | 3   | -1          |
+| 10   | -3  | 1           |
+| -10  | -3  | -1          |
 | 10   | 1   | 0           |
 | 22.5 | 2   | 0.5         |
 | 22.5 | 0.0 | `NaN`       |
@@ -464,87 +520,100 @@ Returns the remainder of `x / y` .
 
 ##### Node.js
 
-    const displayCapacity = 1000;
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("unsoldBooks").mod(constant(displayCapacity)).as("warehousedBooks"))
-      .execute();
+```
+const displayCapacity = 1000;
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("unsoldBooks").mod(constant(displayCapacity)).as("warehousedBooks"))
+  .execute();
+```
 
 ### Web
 
-    const displayCapacity = 1000;
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("unsoldBooks").mod(constant(displayCapacity)).as("warehousedBooks"))
-    );
+```
+const displayCapacity = 1000;
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("unsoldBooks").mod(constant(displayCapacity)).as("warehousedBooks"))
+);
+```
 
 ##### Swift
 
-    let displayCapacity = 1000
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("unsoldBooks").mod(Constant(displayCapacity)).as("warehousedBooks")])
-      .execute()
+```
+let displayCapacity = 1000
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("unsoldBooks").mod(Constant(displayCapacity)).as("warehousedBooks")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val displayCapacity = 1000
-    val result = db.pipeline()
-        .collection("books")
-        .select(Expression.mod(field("unsoldBooks"), displayCapacity).alias("warehousedBooks"))
-        .execute()
+```
+val displayCapacity = 1000
+val result = db.pipeline()
+    .collection("books")
+    .select(Expression.mod(field("unsoldBooks"), displayCapacity).alias("warehousedBooks"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 int displayCapacity = 1000;
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.mod(field("unsoldBooks"), displayCapacity).alias("warehousedBooks"))
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    display_capacity = 1000
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("unsoldBooks").mod(display_capacity).as_("warehousedBooks"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+display_capacity = 1000
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("unsoldBooks").mod(display_capacity).as_("warehousedBooks"))
+    .execute()
+)
+```
 
 ##### Java
 
-    int displayCapacity = 1000;
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(mod(field("unsoldBooks"), displayCapacity).as("warehousedBooks"))
-            .execute()
-            .get();
+```
+int displayCapacity = 1000;
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(mod(field("unsoldBooks"), displayCapacity).as("warehousedBooks"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    displayCapacity := 1000
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Mod(firestore.FieldOf("unsoldBooks"), displayCapacity).As("warehousedBooks"),
-     )).
-     Execute(ctx)
+```
+displayCapacity := 1000
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Mod(firestore.FieldOf("unsoldBooks"), displayCapacity).As("warehousedBooks"),
+    )).
+    Execute(ctx)
+```
 
 ### CEIL
 
 **Syntax:**
 
-    ceil[N <: INT32 | INT64 | FLOAT64](number: N) -> N
+```
+ceil[N <: INT32 | INT64 | FLOAT64](number: N) -> N
+```
 
 **Description:**
 
@@ -553,12 +622,12 @@ Returns the smallest integer value that isn't less than `number` .
 **Examples:**
 
 | number | `ceil(number)` |
-| :----- | :------------- |
+|--------|----------------|
 | 20     | 20             |
 | 10     | 10             |
 | 0      | 0              |
 | 24L    | 24L            |
-| \-0.4  | \-0.0          |
+| -0.4   | -0.0           |
 | 0.4    | 1.0            |
 | 22.5   | 23.0           |
 | `+inf` | `+inf`         |
@@ -566,49 +635,55 @@ Returns the smallest integer value that isn't less than `number` .
 
 ##### Node.js
 
-    const booksPerShelf = 100;
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        field("unsoldBooks").divide(constant(booksPerShelf)).ceil().as("requiredShelves")
-      )
-      .execute();
+```
+const booksPerShelf = 100;
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    field("unsoldBooks").divide(constant(booksPerShelf)).ceil().as("requiredShelves")
+  )
+  .execute();
+```
 
 ### Web
 
-    const booksPerShelf = 100;
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("unsoldBooks").divide(constant(booksPerShelf)).ceil().as("requiredShelves")
-      )
-    );
+```
+const booksPerShelf = 100;
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("unsoldBooks").divide(constant(booksPerShelf)).ceil().as("requiredShelves")
+  )
+);
+```
 
 ##### Swift
 
-    let booksPerShelf = 100
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("unsoldBooks").divide(Constant(booksPerShelf)).ceil().as("requiredShelves")
-      ])
-      .execute()
+```
+let booksPerShelf = 100
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("unsoldBooks").divide(Constant(booksPerShelf)).ceil().as("requiredShelves")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val booksPerShelf = 100
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            Expression.divide(field("unsoldBooks"), booksPerShelf).ceil().alias("requiredShelves")
-        )
-        .execute()
+```
+val booksPerShelf = 100
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        Expression.divide(field("unsoldBooks"), booksPerShelf).ceil().alias("requiredShelves")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 int booksPerShelf = 100;
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
@@ -616,52 +691,59 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         Expression.divide(field("unsoldBooks"), booksPerShelf).ceil().alias("requiredShelves")
     )
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    books_per_shelf = 100
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Field.of("unsoldBooks")
-            .divide(books_per_shelf)
-            .ceil()
-            .as_("requiredShelves")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+books_per_shelf = 100
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Field.of("unsoldBooks")
+        .divide(books_per_shelf)
+        .ceil()
+        .as_("requiredShelves")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    int booksPerShelf = 100;
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(ceil(divide(field("unsoldBooks"), booksPerShelf)).as("requiredShelves"))
-            .execute()
-            .get();
+```
+int booksPerShelf = 100;
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(ceil(divide(field("unsoldBooks"), booksPerShelf)).as("requiredShelves"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    booksPerShelf := 100
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Ceil(firestore.Divide(firestore.FieldOf("unsoldBooks"), booksPerShelf)).As("requiredShelves"),
-     )).
-     Execute(ctx)
+```
+booksPerShelf := 100
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Ceil(firestore.Divide(firestore.FieldOf("unsoldBooks"), booksPerShelf)).As("requiredShelves"),
+    )).
+    Execute(ctx)
+```
 
 ### FLOOR
 
 **Syntax:**
 
-    floor[N <: INT32 | INT64 | FLOAT64](number: N) -> N
+```
+floor[N <: INT32 | INT64 | FLOAT64](number: N) -> N
+```
 
 **Description:**
 
@@ -670,12 +752,12 @@ Returns the largest integer value that isn't greater than `number` .
 **Examples:**
 
 | number     | `floor(number)` |
-| :--------- | :-------------- |
+|------------|-----------------|
 | 20         | 20              |
 | 10         | 10              |
 | 0          | 0               |
 | 2147483648 | 2147483648      |
-| \-0.4      | \-1.0           |
+| -0.4       | -1.0            |
 | 0.4        | 0.0             |
 | 22.5       | 22.0            |
 | `+inf`     | `+inf`          |
@@ -683,347 +765,381 @@ Returns the largest integer value that isn't greater than `number` .
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .addFields(
-        field("wordCount").divide(field("pages")).floor().as("wordsPerPage")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .addFields(
+    field("wordCount").divide(field("pages")).floor().as("wordsPerPage")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .addFields(
-        field("wordCount").divide(field("pages")).floor().as("wordsPerPage")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .addFields(
+    field("wordCount").divide(field("pages")).floor().as("wordsPerPage")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .addFields([
-        Field("wordCount").divide(Field("pages")).floor().as("wordsPerPage")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .addFields([
+    Field("wordCount").divide(Field("pages")).floor().as("wordsPerPage")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .addFields(
-            Expression.divide(field("wordCount"), field("pages")).floor().alias("wordsPerPage")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .addFields(
+        Expression.divide(field("wordCount"), field("pages")).floor().alias("wordsPerPage")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .addFields(
         Expression.divide(field("wordCount"), field("pages")).floor().alias("wordsPerPage")
     )
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .add_fields(
-            Field.of("wordCount").divide(Field.of("pages")).floor().as_("wordsPerPage")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .add_fields(
+        Field.of("wordCount").divide(Field.of("pages")).floor().as_("wordsPerPage")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .addFields(floor(divide(field("wordCount"), field("pages"))).as("wordsPerPage"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .addFields(floor(divide(field("wordCount"), field("pages"))).as("wordsPerPage"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     AddFields(firestore.Selectables(
-         firestore.Floor(firestore.Divide(firestore.FieldOf("wordCount"), firestore.FieldOf("pages"))).As("wordsPerPage"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    AddFields(firestore.Selectables(
+        firestore.Floor(firestore.Divide(firestore.FieldOf("wordCount"), firestore.FieldOf("pages"))).As("wordsPerPage"),
+    )).
+    Execute(ctx)
+```
 
 ### ROUND
 
 **Syntax:**
 
-    round[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](number: N) -> N
-    round[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](number: N, places: INT64) -> N
+```
+round[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](number: N) -> N
+round[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](number: N, places: INT64) -> N
+```
 
 **Description:**
 
 Rounds `places` digits off a `number` . Rounds digits from the right of the decimal point if `places` is positive, and to the left of the decimal point if it is negative.
 
-  - If only `number` is provided, rounds to the nearest whole value.
-  - Rounds away from zero in halfway cases.
-  - An `error` is thrown if rounding with a negative `places` value results in overflow.
+- If only `number` is provided, rounds to the nearest whole value.
+- Rounds away from zero in halfway cases.
+- An `error` is thrown if rounding with a negative `places` value results in overflow.
 
 **Examples:**
 
 | number              | places | `round(number, places)` |
-| :------------------ | :----- | :---------------------- |
+|---------------------|--------|-------------------------|
 | 15.5                | 0      | 16.0                    |
-| \-15.5              | 0      | \-16.0                  |
+| -15.5               | 0      | -16.0                   |
 | 15                  | 1      | 15                      |
 | 15                  | 0      | 15                      |
-| 15                  | \-1    | 20                      |
-| 15                  | \-2    | 0                       |
+| 15                  | -1     | 20                      |
+| 15                  | -2     | 0                       |
 | 15.48924            | 1      | 15.5                    |
-| 2 <sup>31</sup> -1  | \-1    | `[error]`               |
-| 2 <sup>63</sup> -1L | \-1    | `[error]`               |
+| 2 <sup>31</sup> -1  | -1     | `[error]`               |
+| 2 <sup>63</sup> -1L | -1     | `[error]`               |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("soldBooks").multiply(field("price")).round().as("partialRevenue"))
-      .aggregate(field("partialRevenue").sum().as("totalRevenue"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("soldBooks").multiply(field("price")).round().as("partialRevenue"))
+  .aggregate(field("partialRevenue").sum().as("totalRevenue"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("soldBooks").multiply(field("price")).round().as("partialRevenue"))
-      .aggregate(field("partialRevenue").sum().as("totalRevenue"))
-      );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("soldBooks").multiply(field("price")).round().as("partialRevenue"))
+  .aggregate(field("partialRevenue").sum().as("totalRevenue"))
+  );
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("soldBooks").multiply(Field("price")).round().as("partialRevenue")])
-      .aggregate([Field("partialRevenue").sum().as("totalRevenue")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("soldBooks").multiply(Field("price")).round().as("partialRevenue")])
+  .aggregate([Field("partialRevenue").sum().as("totalRevenue")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(Expression.multiply(field("soldBooks"), field("price")).round().alias("partialRevenue"))
-        .aggregate(AggregateFunction.sum("partialRevenue").alias("totalRevenue"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(Expression.multiply(field("soldBooks"), field("price")).round().alias("partialRevenue"))
+    .aggregate(AggregateFunction.sum("partialRevenue").alias("totalRevenue"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.multiply(field("soldBooks"), field("price")).round().alias("partialRevenue"))
     .aggregate(AggregateFunction.sum("partialRevenue").alias("totalRevenue"))
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Field.of("soldBooks")
-            .multiply(Field.of("price"))
-            .round()
-            .as_("partialRevenue")
-        )
-        .aggregate(Field.of("partialRevenue").sum().as_("totalRevenue"))
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Field.of("soldBooks")
+        .multiply(Field.of("price"))
+        .round()
+        .as_("partialRevenue")
     )
+    .aggregate(Field.of("partialRevenue").sum().as_("totalRevenue"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(round(multiply(field("soldBooks"), field("price"))).as("partialRevenue"))
-            .aggregate(sum("partialRevenue").as("totalRevenue"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(round(multiply(field("soldBooks"), field("price"))).as("partialRevenue"))
+        .aggregate(sum("partialRevenue").as("totalRevenue"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Round(firestore.Multiply(firestore.FieldOf("soldBooks"), firestore.FieldOf("price"))).As("partialRevenue"),
-     )).
-     Aggregate(firestore.Accumulators(
-         firestore.Sum("partialRevenue").As("totalRevenue"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Round(firestore.Multiply(firestore.FieldOf("soldBooks"), firestore.FieldOf("price"))).As("partialRevenue"),
+    )).
+    Aggregate(firestore.Accumulators(
+        firestore.Sum("partialRevenue").As("totalRevenue"),
+    )).
+    Execute(ctx)
+```
 
 ### TRUNC
 
 **Syntax:**
 
-    trunc[N <: Number](number: N) -> N
-    trunc[N <: Number](number:  N, places: INT64) -> N
+```
+trunc[N <: Number](number: N) -> N
+trunc[N <: Number](number:  N, places: INT64) -> N
+```
 
 **Description:**
 
 Truncates a `number` to a specified number of `places` decimal places. Truncates digits from the right of the decimal point if `places` is positive, and to the left of the decimal point if it is negative.
 
-  - If only `number` is provided, truncates to the nearest whole value towards zero.
-  - An `error` is thrown if truncating results in overflow.
+- If only `number` is provided, truncates to the nearest whole value towards zero.
+- An `error` is thrown if truncating results in overflow.
 
 **Examples:**
 
-| number     | places | `trunc(number, places)` |
-| :--------- | :----- | :---------------------- |
-| 15.5       | 0      | 15.0                    |
-| \-15.5     | 0      | \-15.0                  |
-| 15         | 1      | 15                      |
-| 15         | 0      | 15                      |
-| 15         | \-1    | 10                      |
-| 15         | \-2    | 0                       |
-| 15.48924   | 1      | 15.4                    |
-| \-15.48924 | 2      | \-15.48                 |
+| number    | places | `trunc(number, places)` |
+|-----------|--------|-------------------------|
+| 15.5      | 0      | 15.0                    |
+| -15.5     | 0      | -15.0                   |
+| 15        | 1      | 15                      |
+| 15        | 0      | 15                      |
+| 15        | -1     | 10                      |
+| 15        | -2     | 0                       |
+| 15.48924  | 1      | 15.4                    |
+| -15.48924 | 2      | -15.48                  |
 
 ### POW
 
 **Syntax:**
 
-    pow(base: FLOAT64, exponent: FLOAT64) -> FLOAT64
+```
+pow(base: FLOAT64, exponent: FLOAT64) -> FLOAT64
+```
 
 **Description:**
 
 Returns the value `base` raised to the power of `exponent` .
 
-  - Throws an error if `base <= 0` and `exponent` is negative.
+- Throws an error if `base <= 0` and `exponent` is negative.
 
-  - For any `exponent` , `pow(1, exponent)` is 1.
+- For any `exponent` , `pow(1, exponent)` is 1.
 
-  - For any `base` , `pow(base, 0)` is 1.
+- For any `base` , `pow(base, 0)` is 1.
 
 **Examples:**
 
 | base   | exponent | `pow(base, exponent)` |
-| :----- | :------- | :-------------------- |
+|--------|----------|-----------------------|
 | 2      | 3        | 8.0                   |
-| 2      | \-3      | 0.125                 |
+| 2      | -3       | 0.125                 |
 | `+inf` | 0        | 1.0                   |
 | 1      | `+inf`   | 1.0                   |
-| \-1    | 0.5      | `[error]`             |
-| 0      | \-1      | `[error]`             |
+| -1     | 0.5      | `[error]`             |
+| 0      | -1       | `[error]`             |
 
 ##### Node.js
 
-    const googleplex = { latitude: 37.4221, longitude: 122.0853 };
-    const result = await db.pipeline()
-      .collection("cities")
-      .addFields(
-        field("lat").subtract(constant(googleplex.latitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("latitudeDifference"),
-        field("lng").subtract(constant(googleplex.longitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("longitudeDifference")
-      )
-      .select(
-        field("latitudeDifference").add(field("longitudeDifference")).sqrt()
-          // Inaccurate for large distances or close to poles
-          .as("approximateDistanceToGoogle")
-      )
-      .execute();
+```
+const googleplex = { latitude: 37.4221, longitude: 122.0853 };
+const result = await db.pipeline()
+  .collection("cities")
+  .addFields(
+    field("lat").subtract(constant(googleplex.latitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("latitudeDifference"),
+    field("lng").subtract(constant(googleplex.longitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("longitudeDifference")
+  )
+  .select(
+    field("latitudeDifference").add(field("longitudeDifference")).sqrt()
+      // Inaccurate for large distances or close to poles
+      .as("approximateDistanceToGoogle")
+  )
+  .execute();
+```
 
 ### Web
 
-    const googleplex = { latitude: 37.4221, longitude: 122.0853 };
-    const result = await execute(db.pipeline()
-      .collection("cities")
-      .addFields(
-        field("lat").subtract(constant(googleplex.latitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("latitudeDifference"),
-        field("lng").subtract(constant(googleplex.longitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("longitudeDifference")
-      )
-      .select(
-        field("latitudeDifference").add(field("longitudeDifference")).sqrt()
-          // Inaccurate for large distances or close to poles
-          .as("approximateDistanceToGoogle")
-      )
-    );
+```
+const googleplex = { latitude: 37.4221, longitude: 122.0853 };
+const result = await execute(db.pipeline()
+  .collection("cities")
+  .addFields(
+    field("lat").subtract(constant(googleplex.latitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("latitudeDifference"),
+    field("lng").subtract(constant(googleplex.longitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("longitudeDifference")
+  )
+  .select(
+    field("latitudeDifference").add(field("longitudeDifference")).sqrt()
+      // Inaccurate for large distances or close to poles
+      .as("approximateDistanceToGoogle")
+  )
+);
+```
 
 ##### Swift
 
-    let googleplex = CLLocation(latitude: 37.4221, longitude: 122.0853)
-    let result = try await db.pipeline()
-      .collection("cities")
-      .addFields([
-        Field("lat").subtract(Constant(googleplex.coordinate.latitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("latitudeDifference"),
-        Field("lng").subtract(Constant(googleplex.coordinate.latitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("longitudeDifference")
-      ])
-      .select([
-        Field("latitudeDifference").add(Field("longitudeDifference")).sqrt()
-          // Inaccurate for large distances or close to poles
-          .as("approximateDistanceToGoogle")
-      ])
-      .execute()
+```
+let googleplex = CLLocation(latitude: 37.4221, longitude: 122.0853)
+let result = try await db.pipeline()
+  .collection("cities")
+  .addFields([
+    Field("lat").subtract(Constant(googleplex.coordinate.latitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("latitudeDifference"),
+    Field("lng").subtract(Constant(googleplex.coordinate.latitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("longitudeDifference")
+  ])
+  .select([
+    Field("latitudeDifference").add(Field("longitudeDifference")).sqrt()
+      // Inaccurate for large distances or close to poles
+      .as("approximateDistanceToGoogle")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val googleplex = GeoPoint(37.4221, -122.0853)
-    val result = db.pipeline()
-        .collection("cities")
-        .addFields(
-            field("lat").subtract(googleplex.latitude)
-                .multiply(111) // km per degree
-                .pow(2)
-                .alias("latitudeDifference"),
-            field("lng").subtract(googleplex.longitude)
-                .multiply(111) // km per degree
-                .pow(2)
-                .alias("longitudeDifference")
-        )
-        .select(
-            field("latitudeDifference").add(field("longitudeDifference")).sqrt()
-                // Inaccurate for large distances or close to poles
-                .alias("approximateDistanceToGoogle")
-        )
-        .execute()
+```
+val googleplex = GeoPoint(37.4221, -122.0853)
+val result = db.pipeline()
+    .collection("cities")
+    .addFields(
+        field("lat").subtract(googleplex.latitude)
+            .multiply(111) // km per degree
+            .pow(2)
+            .alias("latitudeDifference"),
+        field("lng").subtract(googleplex.longitude)
+            .multiply(111) // km per degree
+            .pow(2)
+            .alias("longitudeDifference")
+    )
+    .select(
+        field("latitudeDifference").add(field("longitudeDifference")).sqrt()
+            // Inaccurate for large distances or close to poles
+            .alias("approximateDistanceToGoogle")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 GeoPoint googleplex = new GeoPoint(37.4221, -122.0853);
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("cities")
@@ -1043,93 +1159,100 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .alias("approximateDistanceToGoogle")
     )
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    googleplexLat = 37.4221
-    googleplexLng = -122.0853
-    result = (
-        client.pipeline()
-        .collection("cities")
-        .add_fields(
-            Field.of("lat")
-            .subtract(googleplexLat)
-            .multiply(111)  # km per degree
-            .pow(2)
-            .as_("latitudeDifference"),
-            Field.of("lng")
-            .subtract(googleplexLng)
-            .multiply(111)  # km per degree
-            .pow(2)
-            .as_("longitudeDifference"),
-        )
-        .select(
-            Field.of("latitudeDifference")
-            .add(Field.of("longitudeDifference"))
-            .sqrt()
-            # Inaccurate for large distances or close to poles
-            .as_("approximateDistanceToGoogle")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+googleplexLat = 37.4221
+googleplexLng = -122.0853
+result = (
+    client.pipeline()
+    .collection("cities")
+    .add_fields(
+        Field.of("lat")
+        .subtract(googleplexLat)
+        .multiply(111)  # km per degree
+        .pow(2)
+        .as_("latitudeDifference"),
+        Field.of("lng")
+        .subtract(googleplexLng)
+        .multiply(111)  # km per degree
+        .pow(2)
+        .as_("longitudeDifference"),
     )
+    .select(
+        Field.of("latitudeDifference")
+        .add(Field.of("longitudeDifference"))
+        .sqrt()
+        # Inaccurate for large distances or close to poles
+        .as_("approximateDistanceToGoogle")
+    )
+    .execute()
+)
+```
 
 ##### Java
 
-    double googleplexLat = 37.4221;
-    double googleplexLng = -122.0853;
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("cities")
-            .addFields(
-                pow(multiply(subtract(field("lat"), googleplexLat), 111), 2)
-                    .as("latitudeDifference"),
-                pow(multiply(subtract(field("lng"), googleplexLng), 111), 2)
-                    .as("longitudeDifference"))
-            .select(
-                sqrt(add(field("latitudeDifference"), field("longitudeDifference")))
-                    // Inaccurate for large distances or close to poles
-                    .as("approximateDistanceToGoogle"))
-            .execute()
-            .get();
+```
+double googleplexLat = 37.4221;
+double googleplexLng = -122.0853;
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("cities")
+        .addFields(
+            pow(multiply(subtract(field("lat"), googleplexLat), 111), 2)
+                .as("latitudeDifference"),
+            pow(multiply(subtract(field("lng"), googleplexLng), 111), 2)
+                .as("longitudeDifference"))
+        .select(
+            sqrt(add(field("latitudeDifference"), field("longitudeDifference")))
+                // Inaccurate for large distances or close to poles
+                .as("approximateDistanceToGoogle"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    googleplexLat := 37.4221
-    googleplexLng := -122.0853
-    snapshot := client.Pipeline().
-     Collection("cities").
-     AddFields(firestore.Selectables(
-         firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lat"), googleplexLat), 111), 2).As("latitudeDifference"),
-         firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lng"), googleplexLng), 111), 2).As("longitudeDifference"),
-     )).
-     Select(firestore.Fields(
-         firestore.Sqrt(firestore.Add(firestore.FieldOf("latitudeDifference"), firestore.FieldOf("longitudeDifference"))).
-             // Inaccurate for large distances or close to poles
-             As("approximateDistanceToGoogle"),
-     )).
-     Execute(ctx)
+```
+googleplexLat := 37.4221
+googleplexLng := -122.0853
+snapshot := client.Pipeline().
+    Collection("cities").
+    AddFields(firestore.Selectables(
+        firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lat"), googleplexLat), 111), 2).As("latitudeDifference"),
+        firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lng"), googleplexLng), 111), 2).As("longitudeDifference"),
+    )).
+    Select(firestore.Fields(
+        firestore.Sqrt(firestore.Add(firestore.FieldOf("latitudeDifference"), firestore.FieldOf("longitudeDifference"))).
+            // Inaccurate for large distances or close to poles
+            As("approximateDistanceToGoogle"),
+    )).
+    Execute(ctx)
+```
 
 ### SQRT
 
 **Syntax:**
 
-    sqrt[N <: FLOAT64 | DECIMAL128](number: N) -> N
+```
+sqrt[N <: FLOAT64 | DECIMAL128](number: N) -> N
+```
 
 **Description:**
 
 Returns the square root of a `number` .
 
-  - Throws an `error` if `number` is negative.
+- Throws an `error` if `number` is negative.
 
 **Examples:**
 
 | number  | `sqrt(number)` |
-| :------ | :------------- |
+|---------|----------------|
 | 25      | 5.0            |
 | 12.002  | 3.464...       |
 | 0.0     | 0.0            |
@@ -1140,97 +1263,103 @@ Returns the square root of a `number` .
 
 ##### Node.js
 
-    const googleplex = { latitude: 37.4221, longitude: 122.0853 };
-    const result = await db.pipeline()
-      .collection("cities")
-      .addFields(
-        field("lat").subtract(constant(googleplex.latitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("latitudeDifference"),
-        field("lng").subtract(constant(googleplex.longitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("longitudeDifference")
-      )
-      .select(
-        field("latitudeDifference").add(field("longitudeDifference")).sqrt()
-          // Inaccurate for large distances or close to poles
-          .as("approximateDistanceToGoogle")
-      )
-      .execute();
+```
+const googleplex = { latitude: 37.4221, longitude: 122.0853 };
+const result = await db.pipeline()
+  .collection("cities")
+  .addFields(
+    field("lat").subtract(constant(googleplex.latitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("latitudeDifference"),
+    field("lng").subtract(constant(googleplex.longitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("longitudeDifference")
+  )
+  .select(
+    field("latitudeDifference").add(field("longitudeDifference")).sqrt()
+      // Inaccurate for large distances or close to poles
+      .as("approximateDistanceToGoogle")
+  )
+  .execute();
+```
 
 ### Web
 
-    const googleplex = { latitude: 37.4221, longitude: 122.0853 };
-    const result = await execute(db.pipeline()
-      .collection("cities")
-      .addFields(
-        field("lat").subtract(constant(googleplex.latitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("latitudeDifference"),
-        field("lng").subtract(constant(googleplex.longitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("longitudeDifference")
-      )
-      .select(
-        field("latitudeDifference").add(field("longitudeDifference")).sqrt()
-          // Inaccurate for large distances or close to poles
-          .as("approximateDistanceToGoogle")
-      )
-    );
+```
+const googleplex = { latitude: 37.4221, longitude: 122.0853 };
+const result = await execute(db.pipeline()
+  .collection("cities")
+  .addFields(
+    field("lat").subtract(constant(googleplex.latitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("latitudeDifference"),
+    field("lng").subtract(constant(googleplex.longitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("longitudeDifference")
+  )
+  .select(
+    field("latitudeDifference").add(field("longitudeDifference")).sqrt()
+      // Inaccurate for large distances or close to poles
+      .as("approximateDistanceToGoogle")
+  )
+);
+```
 
 ##### Swift
 
-    let googleplex = CLLocation(latitude: 37.4221, longitude: 122.0853)
-    let result = try await db.pipeline()
-      .collection("cities")
-      .addFields([
-        Field("lat").subtract(Constant(googleplex.coordinate.latitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("latitudeDifference"),
-        Field("lng").subtract(Constant(googleplex.coordinate.latitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("longitudeDifference")
-      ])
-      .select([
-        Field("latitudeDifference").add(Field("longitudeDifference")).sqrt()
-          // Inaccurate for large distances or close to poles
-          .as("approximateDistanceToGoogle")
-      ])
-      .execute()
+```
+let googleplex = CLLocation(latitude: 37.4221, longitude: 122.0853)
+let result = try await db.pipeline()
+  .collection("cities")
+  .addFields([
+    Field("lat").subtract(Constant(googleplex.coordinate.latitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("latitudeDifference"),
+    Field("lng").subtract(Constant(googleplex.coordinate.latitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("longitudeDifference")
+  ])
+  .select([
+    Field("latitudeDifference").add(Field("longitudeDifference")).sqrt()
+      // Inaccurate for large distances or close to poles
+      .as("approximateDistanceToGoogle")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val googleplex = GeoPoint(37.4221, -122.0853)
-    val result = db.pipeline()
-        .collection("cities")
-        .addFields(
-            field("lat").subtract(googleplex.latitude)
-                .multiply(111) // km per degree
-                .pow(2)
-                .alias("latitudeDifference"),
-            field("lng").subtract(googleplex.longitude)
-                .multiply(111) // km per degree
-                .pow(2)
-                .alias("longitudeDifference")
-        )
-        .select(
-            field("latitudeDifference").add(field("longitudeDifference")).sqrt()
-                // Inaccurate for large distances or close to poles
-                .alias("approximateDistanceToGoogle")
-        )
-        .execute()
+```
+val googleplex = GeoPoint(37.4221, -122.0853)
+val result = db.pipeline()
+    .collection("cities")
+    .addFields(
+        field("lat").subtract(googleplex.latitude)
+            .multiply(111) // km per degree
+            .pow(2)
+            .alias("latitudeDifference"),
+        field("lng").subtract(googleplex.longitude)
+            .multiply(111) // km per degree
+            .pow(2)
+            .alias("longitudeDifference")
+    )
+    .select(
+        field("latitudeDifference").add(field("longitudeDifference")).sqrt()
+            // Inaccurate for large distances or close to poles
+            .alias("approximateDistanceToGoogle")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 GeoPoint googleplex = new GeoPoint(37.4221, -122.0853);
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("cities")
@@ -1250,82 +1379,89 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .alias("approximateDistanceToGoogle")
     )
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    googleplexLat = 37.4221
-    googleplexLng = -122.0853
-    result = (
-        client.pipeline()
-        .collection("cities")
-        .add_fields(
-            Field.of("lat")
-            .subtract(googleplexLat)
-            .multiply(111)  # km per degree
-            .pow(2)
-            .as_("latitudeDifference"),
-            Field.of("lng")
-            .subtract(googleplexLng)
-            .multiply(111)  # km per degree
-            .pow(2)
-            .as_("longitudeDifference"),
-        )
-        .select(
-            Field.of("latitudeDifference")
-            .add(Field.of("longitudeDifference"))
-            .sqrt()
-            # Inaccurate for large distances or close to poles
-            .as_("approximateDistanceToGoogle")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+googleplexLat = 37.4221
+googleplexLng = -122.0853
+result = (
+    client.pipeline()
+    .collection("cities")
+    .add_fields(
+        Field.of("lat")
+        .subtract(googleplexLat)
+        .multiply(111)  # km per degree
+        .pow(2)
+        .as_("latitudeDifference"),
+        Field.of("lng")
+        .subtract(googleplexLng)
+        .multiply(111)  # km per degree
+        .pow(2)
+        .as_("longitudeDifference"),
     )
+    .select(
+        Field.of("latitudeDifference")
+        .add(Field.of("longitudeDifference"))
+        .sqrt()
+        # Inaccurate for large distances or close to poles
+        .as_("approximateDistanceToGoogle")
+    )
+    .execute()
+)
+```
 
 ##### Java
 
-    double googleplexLat = 37.4221;
-    double googleplexLng = -122.0853;
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("cities")
-            .addFields(
-                pow(multiply(subtract(field("lat"), googleplexLat), 111), 2)
-                    .as("latitudeDifference"),
-                pow(multiply(subtract(field("lng"), googleplexLng), 111), 2)
-                    .as("longitudeDifference"))
-            .select(
-                sqrt(add(field("latitudeDifference"), field("longitudeDifference")))
-                    // Inaccurate for large distances or close to poles
-                    .as("approximateDistanceToGoogle"))
-            .execute()
-            .get();
+```
+double googleplexLat = 37.4221;
+double googleplexLng = -122.0853;
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("cities")
+        .addFields(
+            pow(multiply(subtract(field("lat"), googleplexLat), 111), 2)
+                .as("latitudeDifference"),
+            pow(multiply(subtract(field("lng"), googleplexLng), 111), 2)
+                .as("longitudeDifference"))
+        .select(
+            sqrt(add(field("latitudeDifference"), field("longitudeDifference")))
+                // Inaccurate for large distances or close to poles
+                .as("approximateDistanceToGoogle"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    googleplexLat := 37.4221
-    googleplexLng := -122.0853
-    snapshot := client.Pipeline().
-     Collection("cities").
-     AddFields(firestore.Selectables(
-         firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lat"), googleplexLat), 111), 2).As("latitudeDifference"),
-         firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lng"), googleplexLng), 111), 2).As("longitudeDifference"),
-     )).
-     Select(firestore.Fields(
-         firestore.Sqrt(firestore.Add(firestore.FieldOf("latitudeDifference"), firestore.FieldOf("longitudeDifference"))).
-             // Inaccurate for large distances or close to poles
-             As("approximateDistanceToGoogle"),
-     )).
-     Execute(ctx)
+```
+googleplexLat := 37.4221
+googleplexLng := -122.0853
+snapshot := client.Pipeline().
+    Collection("cities").
+    AddFields(firestore.Selectables(
+        firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lat"), googleplexLat), 111), 2).As("latitudeDifference"),
+        firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lng"), googleplexLng), 111), 2).As("longitudeDifference"),
+    )).
+    Select(firestore.Fields(
+        firestore.Sqrt(firestore.Add(firestore.FieldOf("latitudeDifference"), firestore.FieldOf("longitudeDifference"))).
+            // Inaccurate for large distances or close to poles
+            As("approximateDistanceToGoogle"),
+    )).
+    Execute(ctx)
+```
 
 ### EXP
 
 **Syntax:**
 
-    exp(exponent: FLOAT64) -> FLOAT64
+```
+exp(exponent: FLOAT64) -> FLOAT64
+```
 
 **Description:**
 
@@ -1334,7 +1470,7 @@ Returns the value of Euler's number raised to the power of `exponent` , also cal
 **Examples:**
 
 | exponent | `exp(exponent)`      |
-| :------- | :------------------- |
+|----------|----------------------|
 | 0.0      | 1.0                  |
 | 10       | `e^10` ( `FLOAT64` ) |
 | `+inf`   | `+inf`               |
@@ -1342,79 +1478,92 @@ Returns the value of Euler's number raised to the power of `exponent` , also cal
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("rating").exp().as("expRating"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("rating").exp().as("expRating"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("rating").exp().as("expRating"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("rating").exp().as("expRating"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("rating").exp().as("expRating")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("rating").exp().as("expRating")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("rating").exp().alias("expRating"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("rating").exp().alias("expRating"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("rating").exp().alias("expRating"))
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("rating").exp().as_("expRating"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("rating").exp().as_("expRating"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(exp(field("rating")).as("expRating"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(exp(field("rating")).as("expRating"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Exp(firestore.FieldOf("rating")).As("expRating"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Exp(firestore.FieldOf("rating")).As("expRating"),
+    )).
+    Execute(ctx)
+```
 
 ### LN
 
 **Syntax:**
 
-    ln(number: FLOAT64) -> FLOAT64
+```
+ln(number: FLOAT64) -> FLOAT64
+```
 
 **Description:**
 
@@ -1423,7 +1572,7 @@ Returns the natural logarithm of `number` . This function is equivalent to `log(
 **Examples:**
 
 | number            | `ln(number)` |
-| :---------------- | :----------- |
+|-------------------|--------------|
 | 1                 | 0.0          |
 | 2L                | 0.693...     |
 | 1.0               | 0.0          |
@@ -1434,91 +1583,104 @@ Returns the natural logarithm of `number` . This function is equivalent to `log(
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("rating").ln().as("lnRating"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("rating").ln().as("lnRating"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("rating").ln().as("lnRating"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("rating").ln().as("lnRating"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("rating").ln().as("lnRating")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("rating").ln().as("lnRating")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("rating").ln().alias("lnRating"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("rating").ln().alias("lnRating"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("rating").ln().alias("lnRating"))
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("rating").ln().as_("lnRating"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("rating").ln().as_("lnRating"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(ln(field("rating")).as("lnRating"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(ln(field("rating")).as("lnRating"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Ln(firestore.FieldOf("rating")).As("lnRating"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Ln(firestore.FieldOf("rating")).As("lnRating"),
+    )).
+    Execute(ctx)
+```
 
 ### LOG
 
 **Syntax:**
 
-    log(number: FLOAT64, base: FLOAT64) -> FLOAT64
-    log(number: FLOAT64) -> FLOAT64
+```
+log(number: FLOAT64, base: FLOAT64) -> FLOAT64
+log(number: FLOAT64) -> FLOAT64
+```
 
 **Description:**
 
 Returns the logarithm of a `number` to `base` .
 
-  - If only `number` is provided, returns the logarithm of `number` to `base` (synonymous to `ln(number)` ).
+- If only `number` is provided, returns the logarithm of `number` to `base` (synonymous to `ln(number)` ).
 
 **Examples:**
 
 | number        | base        | `log(number, base)` |
-| :------------ | :---------- | :------------------ |
+|---------------|-------------|---------------------|
 | 100           | 10          | 2.0                 |
 | `-inf`        | `Numeric`   | `NaN`               |
 | `Numeric` .   | `+inf`      | `NaN`               |
@@ -1530,7 +1692,9 @@ Returns the logarithm of a `number` to `base` .
 
 **Syntax:**
 
-    log10(x: FLOAT64) -> FLOAT64
+```
+log10(x: FLOAT64) -> FLOAT64
+```
 
 **Description:**
 
@@ -1539,7 +1703,7 @@ Returns the logarithm of a `number` to base `10` .
 **Examples:**
 
 | number   | `log10(number)` |
-| :------- | :-------------- |
+|----------|-----------------|
 | 100      | 2.0             |
 | `-inf`   | `NaN`           |
 | `+inf`   | `+inf`          |
@@ -1549,7 +1713,9 @@ Returns the logarithm of a `number` to base `10` .
 
 **Syntax:**
 
-    rand() -> FLOAT64
+```
+rand() -> FLOAT64
+```
 
 **Description:**
 
@@ -1557,4 +1723,4 @@ Return a pseudo-random floating point number, chosen uniformly between `0.0` (in
 
 ## What's next
 
-  - See the [Pipeline Queries overview](https://docs.cloud.google.com/firestore/docs/pipeline/overview)
+- See the [Pipeline Queries overview](https://docs.cloud.google.com/firestore/docs/pipeline/overview)

@@ -16,8 +16,8 @@ For more information about Google Cloud authentication, see the [Authentication 
 
 Firestore supports programmatic access. You can access the API in the following ways:
 
-  - [Client libraries](https://docs.cloud.google.com/firestore/native/docs/authentication#client-libraries)
-  - [Google Cloud CLI](https://docs.cloud.google.com/firestore/native/docs/authentication#gcloud)
+- [Client libraries](https://docs.cloud.google.com/firestore/native/docs/authentication#client-libraries)
+- [Google Cloud CLI](https://docs.cloud.google.com/firestore/native/docs/authentication#gcloud)
 
 ### Client libraries
 
@@ -41,27 +41,31 @@ The following options for setting up authentication are the most commonly used. 
 
 You can set up credentials for a local development environment in the following ways:
 
-  - [User credentials for client libraries or third-party tools](https://docs.cloud.google.com/firestore/native/docs/authentication#client-libs)
-  - [Service account impersonation](https://docs.cloud.google.com/firestore/native/docs/authentication#sa-impersonation)
+- [User credentials for client libraries or third-party tools](https://docs.cloud.google.com/firestore/native/docs/authentication#client-libs)
+- [Service account impersonation](https://docs.cloud.google.com/firestore/native/docs/authentication#sa-impersonation)
 
 #### Client libraries or third-party tools
 
 Set up [Application Default Credentials (ADC)](https://docs.cloud.google.com/docs/authentication/application-default-credentials) in your local environment:
 
 1.  [Install](https://docs.cloud.google.com/sdk/docs/install) the Google Cloud CLI. After installation, [initialize](https://docs.cloud.google.com/sdk/docs/initializing) the Google Cloud CLI by running the following command:
-    
-        gcloud init
-    
+
+    ```
+    gcloud init
+    ```
+
     If you're using an external identity provider (IdP), you must first [sign in to the gcloud CLI with your federated identity](https://docs.cloud.google.com/iam/docs/workforce-log-in-gcloud) .
 
 2.  If you're using a local shell, then create local authentication credentials for your user account:
-    
-        gcloud auth application-default login
-    
+
+    ```
+    gcloud auth application-default login
+    ```
+
     You don't need to do this if you're using Cloud Shell.
-    
+
     If an authentication error is returned, and you are using an external identity provider (IdP), confirm that you have [signed in to the gcloud CLI with your federated identity](https://docs.cloud.google.com/iam/docs/workforce-log-in-gcloud) .
-    
+
     A sign-in screen appears. After you sign in, your credentials are stored in the [local credential file used by ADC](https://docs.cloud.google.com/docs/authentication/application-default-credentials#personal) .
 
 For more information about working with ADC in a local environment, see [Set up ADC for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
@@ -72,11 +76,15 @@ In most cases, you can use your user credentials to authenticate from a local de
 
 You can set up the gcloud CLI to use service account impersonation by using the [`gcloud config set` command](https://docs.cloud.google.com/sdk/gcloud/reference/config) :
 
-    gcloud config set auth/impersonate_service_account SERVICE_ACCT_EMAIL
+```
+gcloud config set auth/impersonate_service_account SERVICE_ACCT_EMAIL
+```
 
 For select languages, you can use service account impersonation to create a local ADC file for use by client libraries. This approach is supported only for the Go, Java, Node.js, and Python client libraries—it is not supported for the other languages. To set up a local ADC file with service account impersonation, use the [`--impersonate-service-account` flag](https://docs.cloud.google.com/sdk/gcloud/reference#--impersonate-service-account) with the [`gcloud auth application-default login` command](https://docs.cloud.google.com/sdk/gcloud/reference/auth/application-default/login) :
 
-    gcloud auth application-default login --impersonate-service-account=SERVICE_ACCT_EMAIL
+```
+gcloud auth application-default login --impersonate-service-account=SERVICE_ACCT_EMAIL
+```
 
 For more information about service account impersonation, see [Use service account impersonation](https://docs.cloud.google.com/docs/authentication/use-service-account-impersonation) .
 
@@ -89,56 +97,64 @@ For most services, you must attach the service account when you create the resou
 Use the gcloud CLI to create a service account and attach it to your resource:
 
 1.  [Install](https://docs.cloud.google.com/sdk/docs/install) the Google Cloud CLI. After installation, [initialize](https://docs.cloud.google.com/sdk/docs/initializing) the Google Cloud CLI by running the following command:
-    
-        gcloud init
-    
+
+    ```
+    gcloud init
+    ```
+
     If you're using an external identity provider (IdP), you must first [sign in to the gcloud CLI with your federated identity](https://docs.cloud.google.com/iam/docs/workforce-log-in-gcloud) .
 
 2.  Set up authentication:
-    
+
     1.  Ensure that you have the Create Service Accounts IAM role ( `roles/iam.serviceAccountCreator` ) and the Project IAM Admin role ( `roles/resourcemanager.projectIamAdmin` ). [Learn how to grant roles](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
-    
+
     2.  Create the service account:
-        
-            gcloud iam service-accounts create SERVICE_ACCOUNT_NAME
-        
-        Replace `  SERVICE_ACCOUNT_NAME  ` with a name for the service account.
-    
+
+        ```
+        gcloud iam service-accounts create SERVICE_ACCOUNT_NAME
+        ```
+
+        Replace `SERVICE_ACCOUNT_NAME` with a name for the service account.
+
     3.  To provide access to your project and your resources, grant a role to the service account:
-        
-            gcloud projects add-iam-policy-binding PROJECT_ID --member="serviceAccount:SERVICE_ACCOUNT_NAME@PROJECT_ID.iam.gserviceaccount.com" --role=ROLE
-        
+
+        ```
+        gcloud projects add-iam-policy-binding PROJECT_ID --member="serviceAccount:SERVICE_ACCOUNT_NAME@PROJECT_ID.iam.gserviceaccount.com" --role=ROLE
+        ```
+
         Replace the following:
-        
-          - `  SERVICE_ACCOUNT_NAME  ` : the name of the service account
-          - `  PROJECT_ID  ` : the project ID where you created the service account
-          - `  ROLE  ` : the role to grant
-        
+
+        - `SERVICE_ACCOUNT_NAME` : the name of the service account
+        - `PROJECT_ID` : the project ID where you created the service account
+        - `ROLE` : the role to grant
+
         > **Note** : The `--role` flag affects which resources the service account can access in your project. You can revoke these roles or grant additional roles later. In production environments, do not grant the Owner, Editor, or Viewer roles. Instead, grant a [predefined role](https://docs.cloud.google.com/iam/docs/understanding-roles#predefined_roles) or [custom role](https://docs.cloud.google.com/iam/docs/understanding-custom-roles) that meets your needs.
-    
+
     4.  To grant another role to the service account, run the command as you did in the previous step.
-    
+
     5.  Grant the required role to the principal that will attach the service account to other resources.
-        
-            gcloud iam service-accounts add-iam-policy-binding SERVICE_ACCOUNT_NAME@PROJECT_ID.iam.gserviceaccount.com --member="user:USER_EMAIL" --role=roles/iam.serviceAccountUser
-        
+
+        ```
+        gcloud iam service-accounts add-iam-policy-binding SERVICE_ACCOUNT_NAME@PROJECT_ID.iam.gserviceaccount.com --member="user:USER_EMAIL" --role=roles/iam.serviceAccountUser
+        ```
+
         Replace the following:
-        
-          - `  SERVICE_ACCOUNT_NAME  ` : the name of the service account
-          - `  PROJECT_ID  ` : the project ID where you created the service account
-          - `  USER_EMAIL  ` : the email address for a Google Account
+
+        - `SERVICE_ACCOUNT_NAME` : the name of the service account
+        - `PROJECT_ID` : the project ID where you created the service account
+        - `USER_EMAIL` : the email address for a Google Account
 
 3.  Create the resource that will run your code, and attach the service account to that resource. For example, if you use Compute Engine:
-    
+
     Create a Compute Engine instance. Configure the instance as follows:
-    
-      - Replace `  INSTANCE_NAME  ` with your preferred instance name.
-      - Set the `--zone` flag to the [zone](https://docs.cloud.google.com/compute/docs/zones#available) in which you want to create your instance.
-      - Set the `--service-account` flag to the email address for the service account that you created.
-    
-    <!-- end list -->
-    
-        gcloud compute instances create INSTANCE_NAME --zone=ZONE --service-account=SERVICE_ACCOUNT_EMAIL
+
+    - Replace `INSTANCE_NAME` with your preferred instance name.
+    - Set the `--zone` flag to the [zone](https://docs.cloud.google.com/compute/docs/zones#available) in which you want to create your instance.
+    - Set the `--service-account` flag to the email address for the service account that you created.
+
+    ```
+    gcloud compute instances create INSTANCE_NAME --zone=ZONE --service-account=SERVICE_ACCOUNT_EMAIL
+    ```
 
 For more information about authenticating to Google APIs, see [Authentication methods](https://docs.cloud.google.com/docs/authentication) .
 
@@ -154,5 +170,5 @@ For more information about the roles for Firestore, see [Security for server cli
 
 ## What's next
 
-  - Learn about [Google Cloud authentication methods](https://docs.cloud.google.com/docs/authentication#auth-decision-tree) .
-  - See a list of [authentication use cases](https://docs.cloud.google.com/docs/authentication/use-cases) .
+- Learn about [Google Cloud authentication methods](https://docs.cloud.google.com/docs/authentication#auth-decision-tree) .
+- See a list of [authentication use cases](https://docs.cloud.google.com/docs/authentication/use-cases) .

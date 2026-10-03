@@ -16,52 +16,66 @@ Skips the first `N` input documents.
 
 ##### Node.js
 
-    const results = await db.pipeline()
-      .collection("cities")
-      .offset(10)
-      .execute();
+```
+const results = await db.pipeline()
+  .collection("cities")
+  .offset(10)
+  .execute();
+```
 
 ### Web
 
-    const results = await execute(db.pipeline()
-      .collection("cities")
-      .offset(10));
+```
+const results = await execute(db.pipeline()
+  .collection("cities")
+  .offset(10));
+```
 
 ##### Swift
 
-    let results = try await db.pipeline()
-      .collection("cities")
-      .offset(10)
-      .execute()
+```
+let results = try await db.pipeline()
+  .collection("cities")
+  .offset(10)
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val results = db.pipeline()
+```
+val results = db.pipeline()
+    .collection("cities")
+    .offset(10)
+    .execute()
+```
+
+##### Java Android
+
+```
+Task<Pipeline.Snapshot> results = db.pipeline()
         .collection("cities")
         .offset(10)
-        .execute()
-
-##### Java  
-Android
-
-    Task<Pipeline.Snapshot> results = db.pipeline()
-            .collection("cities")
-            .offset(10)
-            .execute();
+        .execute();
+```
 
 ##### Python
 
-    results = client.pipeline().collection("cities").offset(10).execute()
+```
+results = client.pipeline().collection("cities").offset(10).execute()
+```
 
 ##### Java
 
-    Pipeline.Snapshot results =
-        firestore.pipeline().collection("cities").offset(10).execute().get();
+```
+Pipeline.Snapshot results =
+    firestore.pipeline().collection("cities").offset(10).execute().get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().Collection("cities").Offset(10).Execute(ctx)
+```
+snapshot := client.Pipeline().Collection("cities").Offset(10).Execute(ctx)
+```
 
 ## Behavior
 

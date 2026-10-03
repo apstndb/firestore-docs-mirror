@@ -20,79 +20,88 @@ This stage behaves similar to Firestore's `batchGet` and allows filtering on the
 
 ### Web
 
-    const results = await execute(db.pipeline()
-      .documents([
-        doc(db, "cities", "SF"),
-        doc(db, "cities", "DC"),
-        doc(db, "cities", "NY")
-      ])
-    );
+```
+const results = await execute(db.pipeline()
+  .documents([
+    doc(db, "cities", "SF"),
+    doc(db, "cities", "DC"),
+    doc(db, "cities", "NY")
+  ])
+);
+```
 
 ##### Swift
 
-    let results = try await db.pipeline()
-      .documents([
+```
+let results = try await db.pipeline()
+  .documents([
+    db.collection("cities").document("SF"),
+    db.collection("cities").document("DC"),
+    db.collection("cities").document("NY")
+  ]).execute()
+```
+
+##### Kotlin Android
+
+```
+val results = db.pipeline()
+    .documents(
         db.collection("cities").document("SF"),
         db.collection("cities").document("DC"),
         db.collection("cities").document("NY")
-      ]).execute()
+    ).execute()
+```
 
-##### Kotlin  
-Android
+##### Java Android
 
-    val results = db.pipeline()
-        .documents(
-            db.collection("cities").document("SF"),
-            db.collection("cities").document("DC"),
-            db.collection("cities").document("NY")
-        ).execute()
-
-##### Java  
-Android
-
-``` 
-      Task<Pipeline.Snapshot> results = db.pipeline()
+```
+Task<Pipeline.Snapshot> results = db.pipeline()
     .documents(
         db.collection("cities").document("SF"),
         db.collection("cities").document("DC"),
         db.collection("cities").document("NY")
     ).execute();
-    
 ```
 
 ##### Python
 
-    results = (
-        client.pipeline()
-        .documents(
-            client.collection("cities").document("SF"),
-            client.collection("cities").document("DC"),
-            client.collection("cities").document("NY"),
-        )
-        .execute()
+```
+results = (
+    client.pipeline()
+    .documents(
+        client.collection("cities").document("SF"),
+        client.collection("cities").document("DC"),
+        client.collection("cities").document("NY"),
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot results =
-        firestore
-            .pipeline()
-            .documents(
-                firestore.collection("cities").document("SF"),
-                firestore.collection("cities").document("DC"),
-                firestore.collection("cities").document("NY"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot results =
+    firestore
+        .pipeline()
+        .documents(
+            firestore.collection("cities").document("SF"),
+            firestore.collection("cities").document("DC"),
+            firestore.collection("cities").document("NY"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Documents([]*firestore.DocumentRef{
-         client.Collection("cities").Doc("SF"),
-         client.Collection("cities").Doc("DC"),
-         client.Collection("cities").Doc("NY"),
-     }).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Documents([]*firestore.DocumentRef{
+        client.Collection("cities").Doc("SF"),
+        client.Collection("cities").Doc("DC"),
+        client.Collection("cities").Doc("NY"),
+    }).
+    Execute(ctx)
+```
 
 ## Behavior
 
@@ -104,24 +113,28 @@ For example, for the following documents:
 
 ### Node.js
 
-    await db.collection("cities").doc("SF").set({name: "San Francsico", state: "California"});
-    await db.collection("cities").doc("NYC").set({name: "New York City", state: "New York"});
-    await db.collection("cities").doc("CHI").set({name: "Chicago", state: "Illinois"});
+```
+await db.collection("cities").doc("SF").set({name: "San Francsico", state: "California"});
+await db.collection("cities").doc("NYC").set({name: "New York City", state: "New York"});
+await db.collection("cities").doc("CHI").set({name: "Chicago", state: "Illinois"});
+```
 
 The `documents(...)` stage can be used to retrieve only the `SF` and `NYC` documents and then sort them in ascending order of name.
 
 ### Node.js
 
-    const results = await db.pipeline()
-      .documents(
-        db.collection("cities").doc("SF"),
-        db.collection("cities").doc("NYC"))
-      .sort(field("name").ascending())
-      .execute();
+```
+const results = await db.pipeline()
+  .documents(
+    db.collection("cities").doc("SF"),
+    db.collection("cities").doc("NYC"))
+  .sort(field("name").ascending())
+  .execute();
+```
 
 This query produces the following documents:
 
-``` 
+```
   { name: "New York City", state: "New York" }
   { name: "San Francsico", state: "California" }
 ```

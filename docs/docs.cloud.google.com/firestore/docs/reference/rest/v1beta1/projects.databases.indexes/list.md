@@ -19,33 +19,17 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 
-Parameters
-
-`parent`
-
-`string`
-
-The database name. For example: `projects/{projectId}/databases/{databaseId}`
+| Parameters |                                                                                        |
+|------------|----------------------------------------------------------------------------------------|
+| `parent`   | `string` The database name. For example: `projects/{projectId}/databases/{databaseId}` |
 
 ### Query parameters
 
-Parameters
-
-`filter`
-
-`string`
-
-`pageSize`
-
-`integer`
-
-The standard List page size.
-
-`pageToken`
-
-`string`
-
-The standard List page token.
+| Parameters  |                                        |
+|-------------|----------------------------------------|
+| `filter`    | `string`                               |
+| `pageSize`  | `integer` The standard List page size. |
+| `pageToken` | `string` The standard List page token. |
 
 ### Request body
 
@@ -53,45 +37,33 @@ The request body must be empty.
 
 ### Response body
 
-The response for `  FirestoreAdmin.ListIndexes  ` .
+The response for [`FirestoreAdmin.ListIndexes`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/list#google.firestore.admin.v1beta1.FirestoreAdmin.ListIndexes) .
 
 If successful, the response body contains data with the following structure:
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>JSON representation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;indexes&quot;: [{object (Index)}],&quot;nextPageToken&quot;: string}</code></pre></td>
-</tr>
-</tbody>
-</table>
+**JSON representation**
 
-Fields
+```
+{
+  "indexes": [
+    {
+      object (Index)
+    }
+  ],
+  "nextPageToken": string
+}
+```
 
-`indexes[]`
-
-` object ( Index  ` )
-
-The indexes.
-
-`nextPageToken`
-
-`string`
-
-The standard List next-page token.
+| Fields          |                                                                                                                                             |
+|-----------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| `indexes[]`     | `object ( `[`Index`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes#Index)` )` The indexes. |
+| `nextPageToken` | `string` The standard List next-page token.                                                                                                 |
 
 ### Authorization scopes
 
 Requires one of the following OAuth scopes:
 
-  - `https://www.googleapis.com/auth/datastore`
-  - `https://www.googleapis.com/auth/cloud-platform`
+- `https://www.googleapis.com/auth/datastore`
+- `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

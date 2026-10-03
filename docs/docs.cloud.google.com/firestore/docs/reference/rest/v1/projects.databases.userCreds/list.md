@@ -19,13 +19,9 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 
-Parameters
-
-`parent`
-
-`string`
-
-Required. A parent database name of the form `projects/{projectId}/databases/{databaseId}`
+| Parameters |                                                                                                     |
+|------------|-----------------------------------------------------------------------------------------------------|
+| `parent`   | `string` Required. A parent database name of the form `projects/{projectId}/databases/{databaseId}` |
 
 ### Request body
 
@@ -33,39 +29,31 @@ The request body must be empty.
 
 ### Response body
 
-The response for `  FirestoreAdmin.ListUserCreds  ` .
+The response for [`FirestoreAdmin.ListUserCreds`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/list#google.firestore.admin.v1.FirestoreAdmin.ListUserCreds) .
 
 If successful, the response body contains data with the following structure:
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>JSON representation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;userCreds&quot;: [{object (UserCreds)}]}</code></pre></td>
-</tr>
-</tbody>
-</table>
+**JSON representation**
 
-Fields
+```
+{
+  "userCreds": [
+    {
+      object (UserCreds)
+    }
+  ]
+}
+```
 
-`userCreds[]`
-
-` object ( UserCreds  ` )
-
-The user creds for the database.
+| Fields        |                                                                                                                                                                      |
+|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `userCreds[]` | `object ( `[`UserCreds`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds#UserCreds)` )` The user creds for the database. |
 
 ### Authorization scopes
 
 Requires one of the following OAuth scopes:
 
-  - `https://www.googleapis.com/auth/datastore`
-  - `https://www.googleapis.com/auth/cloud-platform`
+- `https://www.googleapis.com/auth/datastore`
+- `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

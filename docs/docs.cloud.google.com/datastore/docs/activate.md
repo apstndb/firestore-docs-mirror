@@ -85,11 +85,13 @@ To access your database from a Compute Engine instance, complete the following s
 1.  If you haven't already done this, [install](https://docs.cloud.google.com/sdk/docs/install) the Google Cloud CLI and [set up `gcloud compute`](https://docs.cloud.google.com/compute/docs/gcloud-compute) .
 
 2.  Add a Compute Engine VM instance and start it, following the instructions for [starting an instance](https://docs.cloud.google.com/compute/docs/instances/creating-and-starting-an-instance#startinstancegcloud) in the Compute Engine documentation. Specify the project ID, the VM instance name, and either the `cloud-platform` or the `datastore` [scope](https://docs.cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) as shown in the following example.
-    
-        export PROJECT_ID=[YOUR_PROJECT_ID]
-        export INSTANCE_NAME=[YOUR_INSTANCE_NAME]
-        gcloud compute instances create $INSTANCE_NAME --project $PROJECT_ID --scopes datastore
-    
+
+    ```
+    export PROJECT_ID=[YOUR_PROJECT_ID]
+    export INSTANCE_NAME=[YOUR_INSTANCE_NAME]
+    gcloud compute instances create $INSTANCE_NAME --project $PROJECT_ID --scopes datastore
+    ```
+
     Replace `[YOUR_PROJECT_ID]` with the ID of the project you created previously and `[YOUR_INSTANCE_NAME]` with the name you want to use for your VM instance.
 
 3.  Confirm that your [instance is running](https://docs.cloud.google.com/compute/docs/instances/checking-instance-status) .
@@ -115,13 +117,13 @@ First, create a service account:
 5.  Click **Create** .
 
 6.  Click the **Select a role** field.
-    
+
     Under **All roles** , select a role that grants access to your database, such as **Datastore** \> **Cloud Datastore User** .
 
 7.  Click **Continue** .
 
 8.  Click **Done** to finish creating the service account.
-    
+
     Do not close your browser window. You will use it in the next procedure.
 
 Then create a service account key:
@@ -140,7 +142,7 @@ A certain amount of free quota is available, as described in [Pricing and Quota]
 
 ## What's next
 
-  - Learn about [setting up authentication with client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries#setting_up_authentication) .
-  - Understand the [how your credentials are used by client libraries](https://docs.cloud.google.com/docs/authentication#adc) .
+- Learn about [setting up authentication with client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries#setting_up_authentication) .
+- Understand the [how your credentials are used by client libraries](https://docs.cloud.google.com/docs/authentication#adc) .
 
 To enable billing, see [Enable billing for a project](https://docs.cloud.google.com/billing/docs/how-to/modify-project#enable_billing_for_a_project) .

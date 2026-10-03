@@ -10,17 +10,19 @@ data_source: docs.cloud.google.com
 
 ## **Type Functions**
 
-|                            |                                                         |
-| -------------------------- | ------------------------------------------------------- |
-| Name                       | Description                                             |
-| `         TYPE        `    | Returns the type of the value as a `STRING` .           |
-| `         IS_TYPE        ` | Returns `true` if the value matches the specified type. |
+|                                                                                                            |                                                         |
+|------------------------------------------------------------------------------------------------------------|---------------------------------------------------------|
+| Name                                                                                                       | Description                                             |
+| [`TYPE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/type_functions#type)       | Returns the type of the value as a `STRING` .           |
+| [`IS_TYPE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/type_functions#is_type) | Returns `true` if the value matches the specified type. |
 
 ### TYPE
 
 **Syntax:**
 
-    type(input: ANY) -> STRING
+```
+type(input: ANY) -> STRING
+```
 
 **Description:**
 
@@ -31,11 +33,11 @@ If given an absent value, returns `NULL` .
 **Examples:**
 
 | `input`                  | `type(input)` |
-| ------------------------ | ------------- |
+|--------------------------|---------------|
 | NULL                     | "null"        |
 | true                     | "boolean"     |
 | 1                        | "int32"       |
-| \-3L                     | "int64"       |
+| -3L                      | "int64"       |
 | 3.14                     | "float64"     |
 | 2024-01-01T00:00:00Z UTC | "timestamp"   |
 | "foo"                    | "string"      |
@@ -50,76 +52,92 @@ If given an absent value, returns `NULL` .
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("title").notEqual("1984").as("not1984"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("title").notEqual("1984").as("not1984"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("title").notEqual("1984").as("not1984"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("title").notEqual("1984").as("not1984"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("title").notEqual("1984").as("not1984")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("title").notEqual("1984").as("not1984")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("title").notEqual("1984").alias("not1984"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("title").notEqual("1984").alias("not1984"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(field("title").notEqual("1984").alias("not1984"))
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(field("title").notEqual("1984").alias("not1984"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("title").not_equal("1984").as_("not1984"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("title").not_equal("1984").as_("not1984"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(notEqual(field("title"), "1984").as("not1984"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(notEqual(field("title"), "1984").as("not1984"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.NotEqual(firestore.FieldOf("title"), "1984").As("not1984"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.NotEqual(firestore.FieldOf("title"), "1984").As("not1984"),
+    )).
+    Execute(ctx)
+```
 
-### IS\_TYPE
+### IS_TYPE
 
 **Syntax:**
 
-    is_type(input: ANY, type: STRING) -> BOOLEAN
+```
+is_type(input: ANY, type: STRING) -> BOOLEAN
+```
 
 **Description:**
 
@@ -127,31 +145,31 @@ Returns `true` if the `input` matches the specified `type` , otherwise `false` .
 
 Supported `type` strings are:
 
-  - `"null"`
-  - `"boolean"`
-  - `"int32"`
-  - `"int64"`
-  - `"float64"`
-  - `"decimal128"`
-  - `"number"`
-  - `"timestamp"`
-  - `"string"`
-  - `"bytes"`
-  - `"array"`
-  - `"map"`
-  - `"reference"`
-  - `"vector"`
-  - `"geo_point"`
-  - `"max_key"`
-  - `"min_key"`
-  - `"object_id"`
-  - `"regex"`
-  - `"bson_timestamp"`
+- `"null"`
+- `"boolean"`
+- `"int32"`
+- `"int64"`
+- `"float64"`
+- `"decimal128"`
+- `"number"`
+- `"timestamp"`
+- `"string"`
+- `"bytes"`
+- `"array"`
+- `"map"`
+- `"reference"`
+- `"vector"`
+- `"geo_point"`
+- `"max_key"`
+- `"min_key"`
+- `"object_id"`
+- `"regex"`
+- `"bson_timestamp"`
 
 **Examples:**
 
 | `input`              | `type`    | `is_type(input, type)` |
-| :------------------- | :-------- | :--------------------- |
+|----------------------|-----------|------------------------|
 | NULL                 | "null"    | true                   |
 | true                 | "boolean" | true                   |
 | 3.14                 | "float64" | true                   |
@@ -165,4 +183,4 @@ Supported `type` strings are:
 
 ## What's next
 
-  - See the [Pipeline Queries overview](https://docs.cloud.google.com/firestore/docs/pipeline/overview)
+- See the [Pipeline Queries overview](https://docs.cloud.google.com/firestore/docs/pipeline/overview)

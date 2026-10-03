@@ -12,11 +12,11 @@ This document describes audit logging for Firestore with MongoDB compatibility. 
 
 For more information about Cloud Audit Logs, see the following:
 
-  - [Types of audit logs](https://cloud.google.com/logging/docs/audit#types)
-  - [Audit log entry structure](https://cloud.google.com/logging/docs/audit#audit_log_entry_structure)
-  - [Storing and routing audit logs](https://cloud.google.com/logging/docs/audit#storing_and_routing_audit_logs)
-  - [Cloud Logging pricing summary](https://cloud.google.com/stackdriver/pricing#logs-pricing-summary)
-  - [Enable Data Access audit logs](https://cloud.google.com/logging/docs/audit/configure-data-access)
+- [Types of audit logs](https://cloud.google.com/logging/docs/audit#types)
+- [Audit log entry structure](https://cloud.google.com/logging/docs/audit#audit_log_entry_structure)
+- [Storing and routing audit logs](https://cloud.google.com/logging/docs/audit#storing_and_routing_audit_logs)
+- [Cloud Logging pricing summary](https://cloud.google.com/stackdriver/pricing#logs-pricing-summary)
+- [Enable Data Access audit logs](https://cloud.google.com/logging/docs/audit/configure-data-access)
 
 ## Notes
 
@@ -28,7 +28,9 @@ To view the time it took to process a `DATA_READ` or `DATA_WRITE` request, see t
 
 Firestore audit logs use the service name `firestore.googleapis.com` . Filter for this service:
 
-    protoPayload.serviceName="firestore.googleapis.com"
+```
+protoPayload.serviceName="firestore.googleapis.com"
+```
 
 ## Methods by permission type
 
@@ -38,80 +40,17 @@ Methods that require an IAM permission with the `type` property value of `DATA_R
 
 Methods that require an IAM permission with the `type` property value of `ADMIN_WRITE` generate [Admin Activity](https://cloud.google.com/logging/docs/audit#admin-activity) audit logs.
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Permission type</th>
-<th>Methods</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">ADMIN_READ</code></td>
-<td><code dir="ltr" translate="no">google.cloud.location.Locations.GetLocation</code><br />
-<code dir="ltr" translate="no">google.cloud.location.Locations.ListLocations</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.FirestoreAdmin.GetBackup</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.FirestoreAdmin.GetBackupSchedule</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.FirestoreAdmin.GetDatabase</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.FirestoreAdmin.GetField</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.FirestoreAdmin.GetIndex</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.FirestoreAdmin.ListBackupSchedules</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.FirestoreAdmin.ListBackups</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.FirestoreAdmin.ListDatabases</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.FirestoreAdmin.ListFields</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.FirestoreAdmin.ListIndexes</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1beta1.FirestoreAdmin.GetIndex</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.MongoDBCompatible.ListIndexes</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.MongoDBCompatible.ListDatabases</code></td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">ADMIN_WRITE</code></td>
-<td><code dir="ltr" translate="no">google.firestore.admin.v1.FirestoreAdmin.CreateBackupSchedule</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.FirestoreAdmin.CreateDatabase</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.FirestoreAdmin.CreateIndex</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.FirestoreAdmin.DeleteBackup</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.FirestoreAdmin.DeleteBackupSchedule</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.FirestoreAdmin.DeleteDatabase</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.FirestoreAdmin.DeleteIndex</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.FirestoreAdmin.RestoreDatabase</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.FirestoreAdmin.UpdateBackupSchedule</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.FirestoreAdmin.UpdateDatabase</code><br />
-<code dir="ltr" translate="no">google.firestore.admin.v1.FirestoreAdmin.UpdateField</code><br />
-<code dir="ltr" translate="no">google.longrunning.Operations.CancelOperation</code><br />
-<code dir="ltr" translate="no">google.longrunning.Operations.DeleteOperation</code></td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">DATA_READ</code></td>
-<td><code dir="ltr" translate="no">google.firestore.v1.MongoDBCompatible.Find</code><br />
-<code dir="ltr" translate="no">google.firestore.v1.MongoDBCompatible.Aggregate</code><br />
-<code dir="ltr" translate="no">google.firestore.v1.MongoDBCompatible.GetMore</code><br />
-<code dir="ltr" translate="no">google.firestore.v1.MongoDBCompatible.ListCollections</code><br />
-<code dir="ltr" translate="no">google.firestore.v1.MongoDBCompatible.Count</code><br />
-<code dir="ltr" translate="no">google.firestore.v1.MongoDBCompatible.Distinct</code><br />
-<code dir="ltr" translate="no">google.firestore.v1.MongoDBCompatible.CommitTransaction</code><br />
-<code dir="ltr" translate="no">google.firestore.v1.MongoDBCompatible.AbortTransaction</code><br />
-<code dir="ltr" translate="no">google.firestore.v1.MongoDBCompatible.EndSessions</code><br />
-<code dir="ltr" translate="no">google.firestore.v1.MongoDBCompatible.KillCursors</code></td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">DATA_WRITE</code></td>
-<td><code dir="ltr" translate="no">google.firestore.v1.MongoDBCompatible.Insert</code><br />
-<code dir="ltr" translate="no">google.firestore.v1.MongoDBCompatible.Update</code><br />
-<code dir="ltr" translate="no">google.firestore.v1.MongoDBCompatible.Delete</code><br />
-<code dir="ltr" translate="no">google.firestore.v1.MongoDBCompatible.FindAndModify</code><br />
-<code dir="ltr" translate="no">google.firestore.v1.MongoDBCompatible.CreateCollection</code></td>
-</tr>
-</tbody>
-</table>
+| Permission type | Methods                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `ADMIN_READ`    | `google.cloud.location.Locations.GetLocation` `google.cloud.location.Locations.ListLocations` `google.firestore.admin.v1.FirestoreAdmin.GetBackup` `google.firestore.admin.v1.FirestoreAdmin.GetBackupSchedule` `google.firestore.admin.v1.FirestoreAdmin.GetDatabase` `google.firestore.admin.v1.FirestoreAdmin.GetField` `google.firestore.admin.v1.FirestoreAdmin.GetIndex` `google.firestore.admin.v1.FirestoreAdmin.ListBackupSchedules` `google.firestore.admin.v1.FirestoreAdmin.ListBackups` `google.firestore.admin.v1.FirestoreAdmin.ListDatabases` `google.firestore.admin.v1.FirestoreAdmin.ListFields` `google.firestore.admin.v1.FirestoreAdmin.ListIndexes` `google.firestore.admin.v1beta1.FirestoreAdmin.GetIndex` `google.firestore.admin.v1.MongoDBCompatible.ListIndexes` `google.firestore.admin.v1.MongoDBCompatible.ListDatabases` |
+| `ADMIN_WRITE`   | `google.firestore.admin.v1.FirestoreAdmin.CreateBackupSchedule` `google.firestore.admin.v1.FirestoreAdmin.CreateDatabase` `google.firestore.admin.v1.FirestoreAdmin.CreateIndex` `google.firestore.admin.v1.FirestoreAdmin.DeleteBackup` `google.firestore.admin.v1.FirestoreAdmin.DeleteBackupSchedule` `google.firestore.admin.v1.FirestoreAdmin.DeleteDatabase` `google.firestore.admin.v1.FirestoreAdmin.DeleteIndex` `google.firestore.admin.v1.FirestoreAdmin.RestoreDatabase` `google.firestore.admin.v1.FirestoreAdmin.UpdateBackupSchedule` `google.firestore.admin.v1.FirestoreAdmin.UpdateDatabase` `google.firestore.admin.v1.FirestoreAdmin.UpdateField` `google.longrunning.Operations.CancelOperation` `google.longrunning.Operations.DeleteOperation`                                                                                     |
+| `DATA_READ`     | `google.firestore.v1.MongoDBCompatible.Find` `google.firestore.v1.MongoDBCompatible.Aggregate` `google.firestore.v1.MongoDBCompatible.GetMore` `google.firestore.v1.MongoDBCompatible.ListCollections` `google.firestore.v1.MongoDBCompatible.Count` `google.firestore.v1.MongoDBCompatible.Distinct` `google.firestore.v1.MongoDBCompatible.CommitTransaction` `google.firestore.v1.MongoDBCompatible.AbortTransaction` `google.firestore.v1.MongoDBCompatible.EndSessions` `google.firestore.v1.MongoDBCompatible.KillCursors`                                                                                                                                                                                                                                                                                                                          |
+| `DATA_WRITE`    | `google.firestore.v1.MongoDBCompatible.Insert` `google.firestore.v1.MongoDBCompatible.Update` `google.firestore.v1.MongoDBCompatible.Delete` `google.firestore.v1.MongoDBCompatible.FindAndModify` `google.firestore.v1.MongoDBCompatible.CreateCollection`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 
 ## Identify request callers
 
 Audit Log entries include information about the identity that performed the logged operation. To identify a request caller, see the following fields within an [`AuditLog`](https://cloud.google.com/logging/docs/reference/audit/auditlog/rest/Shared.Types/AuditLog) object:
 
-  - The caller's identity is held in the [`AuthenticationInfo`](https://cloud.google.com/logging/docs/reference/audit/auditlog/rest/Shared.Types/AuditLog#AuthenticationInfo) field. This can include the `principalEmail` of the user. This information is [sometimes redacted](https://cloud.google.com/logging/docs/audit#user-id) .
+- The caller's identity is held in the [`AuthenticationInfo`](https://cloud.google.com/logging/docs/reference/audit/auditlog/rest/Shared.Types/AuditLog#AuthenticationInfo) field. This can include the `principalEmail` of the user. This information is [sometimes redacted](https://cloud.google.com/logging/docs/audit#user-id) .
 
-  - The `callerIp` field within the [`requestMetadata`](https://cloud.google.com/logging/docs/reference/audit/auditlog/rest/Shared.Types/AuditLog#requestmetadata) object of an `AuditLog` entry includes the IP address of the caller.
+- The `callerIp` field within the [`requestMetadata`](https://cloud.google.com/logging/docs/reference/audit/auditlog/rest/Shared.Types/AuditLog#requestmetadata) object of an `AuditLog` entry includes the IP address of the caller.

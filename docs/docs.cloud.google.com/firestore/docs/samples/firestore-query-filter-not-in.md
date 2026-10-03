@@ -12,7 +12,7 @@ Query a Firestore collection with a not in filter
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Query and filter data](https://docs.cloud.google.com/firestore/native/docs/query-data/queries)
+- [Query and filter data](https://docs.cloud.google.com/firestore/native/docs/query-data/queries)
 
 ## Code sample
 
@@ -20,41 +20,51 @@ For detailed documentation that includes this code sample, see the following:
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    CollectionReference citiesRef = db.collection("cities");
-    
-    Query query = citiesRef.whereNotIn("country", Arrays.asList("USA", "Japan"));
+```java
+CollectionReference citiesRef = db.collection("cities");
+
+Query query = citiesRef.whereNotIn("country", Arrays.asList("USA", "Japan"));
+```
 
 ### Node.js
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const notUsaOrJapan = await citiesRef.where('country', 'not-in', ['USA', 'Japan']).get();
+```javascript
+const notUsaOrJapan = await citiesRef.where('country', 'not-in', ['USA', 'Japan']).get();
+```
 
 ### PHP
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $stateQuery = $citiesRef->where(
-        'country',
-        \Google\Cloud\Firestore\V1\StructuredQuery\FieldFilter\Operator::NOT_IN,
-        ['USA', 'Japan']
-    );
+```php
+$stateQuery = $citiesRef->where(
+    'country',
+    \Google\Cloud\Firestore\V1\StructuredQuery\FieldFilter\Operator::NOT_IN,
+    ['USA', 'Japan']
+);
+```
 
 ### Python
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    cities_ref = db.collection("cities")
-    
-    query = cities_ref.where(filter=FieldFilter("country", "not-in", ["USA", "Japan"]))
-    return query
+```python
+cities_ref = db.collection("cities")
+
+query = cities_ref.where(filter=FieldFilter("country", "not-in", ["USA", "Japan"]))
+return query
+```
 
 ### Ruby
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    cities_ref = firestore.col collection_path
-    usr_or_japan = cities_ref.where "country", "not_in", ["USA", "Japan"]
+```ruby
+cities_ref = firestore.col collection_path
+usr_or_japan = cities_ref.where "country", "not_in", ["USA", "Japan"]
+```
 
 ## What's next
 

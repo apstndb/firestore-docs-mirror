@@ -14,20 +14,20 @@ This page describes how to manage your indexes. To learn more about indexes, see
 
 Before you can create an index in Firestore with MongoDB compatibility, make sure that you are assigned any of the following roles:
 
-  - `roles/datastore.owner`
-  - `roles/datastore.indexAdmin`
-  - `roles/editor`
-  - `roles/owner`
+- `roles/datastore.owner`
+- `roles/datastore.indexAdmin`
+- `roles/editor`
+- `roles/owner`
 
 To grant a role, see [Grant a single role](https://cloud.google.com/iam/docs/granting-changing-revoking-access#single-role) . For more information about Firestore roles and associated permissions, see [Predefined roles](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam) .
 
 If you have defined custom roles, assign all of the following permissions to create indexes:
 
-  - `datastore.indexes.create`
-  - `datastore.indexes.delete`
-  - `datastore.indexes.get`
-  - `datastore.indexes.list`
-  - `datastore.indexes.update`
+- `datastore.indexes.create`
+- `datastore.indexes.delete`
+- `datastore.indexes.get`
+- `datastore.indexes.list`
+- `datastore.indexes.update`
 
 ## Create an index
 
@@ -37,28 +37,25 @@ To create an index, complete the following steps:
 
 Use the [`createIndex()`](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/) method to create an index. For example:
 
-  - ``` 
-      db.restaurants.createIndex({"cuisine" : 1})
-      
-    ```
+- ```
+  db.restaurants.createIndex({"cuisine" : 1})
+  ```
 
-  - ``` 
-      db.restaurants.createIndex({"cuisine" : 1}, {sparse: true})
-      
-    ```
+- ```
+  db.restaurants.createIndex({"cuisine" : 1}, {sparse: true})
+  ```
 
-  - Index creation with `db.runCommand()` is also supported with at most one index.
-    
-    ``` 
-      db.runCommand({"createIndexes":"restaurant", "indexes": [{"key": {"cuisine":1}, "name": "cuisine_index"}]})
-      
-    ```
+- Index creation with `db.runCommand()` is also supported with at most one index.
+
+  ```
+  db.runCommand({"createIndexes":"restaurant", "indexes": [{"key": {"cuisine":1}, "name": "cuisine_index"}]})
+  ```
 
 Note the following limitations:
 
-  - You can create only one index per request. `db. collection .createIndexes()` is not supported.
-  - [Audit logs](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/audit-logging) for index creation with the MongoDB API use the method name `google.firestore.admin.v1.FirestoreAdmin.CreateIndex` .
-  - For supported index options, see [indexes and index properties](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80#indexes_and_index_properties) .
+- You can create only one index per request. `db. `` collection `` .createIndexes()` is not supported.
+- [Audit logs](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/audit-logging) for index creation with the MongoDB API use the method name `google.firestore.admin.v1.FirestoreAdmin.CreateIndex` .
+- For supported index options, see [indexes and index properties](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80#indexes_and_index_properties) .
 
 ##### Google Cloud console
 
@@ -86,29 +83,31 @@ Note the following limitations:
 
 To create an index, use the [`gcloud firestore indexes composite create`](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/create) command. Set `api-scope` to `mongodb-compatible-api` .
 
-    gcloud firestore indexes composite create \
-    --database='DATABASE_ID' \
-    --collection-group=COLLECTION \
-    --field-config=FIELD_CONFIGURATION \
-    --query-scope=collection-group \
-    --density=dense \
-    --api-scope=mongodb-compatible-api
+```
+gcloud firestore indexes composite create \
+--database='DATABASE_ID' \
+--collection-group=COLLECTION \
+--field-config=FIELD_CONFIGURATION \
+--query-scope=collection-group \
+--density=dense \
+--api-scope=mongodb-compatible-api
+```
 
 Replace the following:
 
-  - DATABASE\_ID : a database ID.
+- ` DATABASE_ID ` : a database ID.
 
-  - COLLECTION : a collection name.
+- ` COLLECTION ` : a collection name.
 
-  - FIELD\_CONFIGURATION : a field configuration. For each field, add `--field-config=field-path=` . For example:
-    
-    ``` 
-        --field-config=field-path=user-id,order=descending \
-        --field-config=field-path=score,order=descending
-        
-    ```
-    
-    For more information about configuring these fields, see [`--field-config`](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/create#--field-config) .
+- ` FIELD_CONFIGURATION ` : a field configuration. For each field, add `--field-config=field-path=` . For example:
+
+  ```
+      --field-config=field-path=user-id,order=descending \
+      --field-config=field-path=score,order=descending
+      
+  ```
+
+  For more information about configuring these fields, see [`--field-config`](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/create#--field-config) .
 
 To create a sparse index, set `--density=sparse-any` .
 
@@ -120,30 +119,32 @@ To create a unique index, add the `--unique` flag.
 
 Use the [`google_firestore_index`](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_index) resource and set `api_scope` to `MONGODB_COMPATIBLE_API` and `query_scope` to `COLLECTION_GROUP` .
 
-    resource "google_firestore_index" "index" {
-      database    = "DATABASE_ID"
-      collection  = "COLLECTION"
-      api_scope   = "MONGODB_COMPATIBLE_API"
-      query_scope = "COLLECTION_GROUP"
-    
-      // You can include multiple field blocks
-      fields {
-        field_path = "FIELD_PATH"
-        order      = "ORDER"
-      }
-    
-      // Optional
-      multikey = true
-      density  = "DENSITY"
-    }
+```
+resource "google_firestore_index" "index" {
+  database    = "DATABASE_ID"
+  collection  = "COLLECTION"
+  api_scope   = "MONGODB_COMPATIBLE_API"
+  query_scope = "COLLECTION_GROUP"
+
+  // You can include multiple field blocks
+  fields {
+    field_path = "FIELD_PATH"
+    order      = "ORDER"
+  }
+
+  // Optional
+  multikey = true
+  density  = "DENSITY"
+}
+```
 
 Replace the following:
 
-  - DATABASE\_ID : The database ID for your chosen database
-  - COLLECTION : The name of the collection to index
-  - FIELD\_PATH : The name of the field to index
-  - ORDER : One of `ASCENDING` or `DESCENDING`
-  - DENSITY : One of `SPARSE_ANY` or `DENSE`
+- ` DATABASE_ID ` : The database ID for your chosen database
+- ` COLLECTION ` : The name of the collection to index
+- ` FIELD_PATH ` : The name of the field to index
+- ` ORDER ` : One of `ASCENDING` or `DESCENDING`
+- ` DENSITY ` : One of `SPARSE_ANY` or `DENSE`
 
 ## Create a text index
 
@@ -155,21 +156,25 @@ To create a text index for your collection, complete the following steps:
 
 Use the [`createIndex()`](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/) method to create a text index. In the following example, when a document is written to the `cities` collection with the `country` , or `food` fields populated, these fields are indexed for searching purposes.
 
-    db.cities.createIndex({"country": "text", "food": "text"})
+```
+db.cities.createIndex({"country": "text", "food": "text"})
+```
 
 A field must be a string or an array of strings to be indexed. Array indexes are not search-indexed. As a result, indexing `a.1.b` will index `something` in `{a: {1: {b: something}}}` , but not in `{a: [one, {b: something}]}` .
 
 You can also create indexes with `db.runCommand()` . You can have only one text index per collection, but you can create multiple indexes of different types in one `db.runCommand()` . The following example uses `db.runCommand()` to create a text index:
 
-    db.runCommand({
-      createIndexes: "cities",
-      indexes: [
-        {
-          key: { "country": "text", "food": "text" },
-          name: "country_text_food_text"
-        }
-      ]
-    })
+```
+db.runCommand({
+  createIndexes: "cities",
+  indexes: [
+    {
+      key: { "country": "text", "food": "text" },
+      name: "country_text_food_text"
+    }
+  ]
+})
+```
 
 ### Specify a default language
 
@@ -177,119 +182,121 @@ You can also optionally specify a default language, or a field path in your docu
 
 In the following example, `myLanguageField` is specified as the `language_override` . When a document in the `cities` collection contains a field named `myLanguageField` , the value of that field is used to determine the language for indexing the `country` field for that specific document. That value overrides the default language of `french` .
 
-    db.cities.createIndex({"country": "text"}, {"default_language": "french", "language_override": "myLanguageField"})
+```
+db.cities.createIndex({"country": "text"}, {"default_language": "french", "language_override": "myLanguageField"})
+```
 
-  - You can enter a language as either its long form name ( `english` ) or its two-letter ISO language code ( `en` ).
-  - If the default language is left unset, then Firestore defaults to English.
-  - The language override field must be a top-level field. If left unset, the language override field defaults to `language` .
-  - If you set the default language to the `null` character, then Firestore with MongoDB compatibility doesn't use any field as a language override.
+- You can enter a language as either its long form name ( `english` ) or its two-letter ISO language code ( `en` ).
+- If the default language is left unset, then Firestore defaults to English.
+- The language override field must be a top-level field. If left unset, the language override field defaults to `language` .
+- If you set the default language to the `null` character, then Firestore with MongoDB compatibility doesn't use any field as a language override.
 
 #### Expand for a list of supported languages
 
-| Language Code | Language Name        |
-| ------------- | -------------------- |
-| "und"         | Autodetect           |
-| "af"          | Afrikaans            |
-| "ak"          | Akan                 |
-| "sq"          | Albanian             |
-| "am"          | Amharic              |
-| "ar"          | Arabic               |
-| "hy"          | Armenian             |
-| "az"          | Azerbaijani          |
-| "eu"          | Basque               |
-| "be"          | Belarusian           |
-| "bn"          | Bangla               |
-| "bs"          | Bosnian              |
-| "bg"          | Bulgarian            |
-| "my"          | Burmese              |
-| "ca"          | Catalan              |
-| "ceb"         | Cebuano              |
-| "chr"         | Cherokee             |
-| "zh"          | Chinese              |
-| "zh-Hant"     | Chinese\_Traditional |
-| "hr"          | Croatian             |
-| "cs"          | Czech                |
-| "da"          | Danish               |
-| "nl"          | Dutch                |
-| "en"          | English              |
-| "eo"          | Esperanto            |
-| "et"          | Estonian             |
-| "fil"         | Filipino             |
-| "fi"          | Finnish              |
-| "fr"          | French               |
-| "gl"          | Galician             |
-| "ka"          | Georgian             |
-| "de"          | German               |
-| "el"          | Greek                |
-| "gu"          | Gujarati             |
-| "ht"          | Haitian\_Creole      |
-| "ha"          | Hausa                |
-| "haw"         | Hawaiian             |
-| "iw"          | Hebrew               |
-| "hi"          | Hindi                |
-| "hmn"         | Hmong                |
-| "hu"          | Hungarian            |
-| "is"          | Icelandic            |
-| "ig"          | Igbo                 |
-| "id"          | Indonesian           |
-| "ga"          | Irish                |
-| "it"          | Italian              |
-| "ja"          | Japanese             |
-| "jv"          | Javanese             |
-| "kn"          | Kannada              |
-| "kk"          | Kazakh               |
-| "km"          | Khmer                |
-| "ko"          | Korean               |
-| "lo"          | Lao                  |
-| "la"          | Latin                |
-| "lv"          | Latvian              |
-| "lt"          | Lithuanian           |
-| "lb"          | Luxembourgish        |
-| "mk"          | Macedonian           |
-| "mg"          | Malagasy             |
-| "ms"          | Malay                |
-| "ml"          | Malayalam            |
-| "mt"          | Maltese              |
-| "mi"          | Maori                |
-| "mr"          | Marathi              |
-| "mfe"         | Morisyen             |
-| "mn"          | Mongolian            |
-| "sr-ME"       | Serbian\_Montenegro  |
-| "ne"          | Nepali               |
-| "no"          | Norwegian            |
-| "ny"          | Nyanja               |
-| "or"          | Odia                 |
-| "fa"          | Persian              |
-| "pl"          | Polish               |
-| "pt-BR"       | Portuguese\_Brazil   |
-| "pt-PT"       | Portuguese\_Portugal |
-| "pa"          | Punjabi              |
-| "ro"          | Romanian             |
-| "ru"          | Russian              |
-| "gd"          | Scottish Gaelic      |
-| "sr"          | Serbian              |
-| "st"          | Southern Sotho       |
-| "si"          | Sinhala              |
-| "sk"          | Slovak               |
-| "sl"          | Slovenian            |
-| "so"          | Somali               |
-| "es"          | Spanish              |
-| "su"          | Sundanese            |
-| "sw"          | Swahili              |
-| "sv"          | Swedish              |
-| "tg"          | Tajik                |
-| "ta"          | Tamil                |
-| "te"          | Telugu               |
-| "th"          | Thai                 |
-| "tr"          | Turkish              |
-| "uk"          | Ukrainian            |
-| "ur"          | Urdu                 |
-| "uz"          | Uzbek                |
-| "vi"          | Vietnamese           |
-| "cy"          | Welsh                |
-| "yi"          | Yiddish              |
-| "yo"          | Yoruba               |
-| "zu"          | Zulu                 |
+| Language Code | Language Name       |
+|---------------|---------------------|
+| "und"         | Autodetect          |
+| "af"          | Afrikaans           |
+| "ak"          | Akan                |
+| "sq"          | Albanian            |
+| "am"          | Amharic             |
+| "ar"          | Arabic              |
+| "hy"          | Armenian            |
+| "az"          | Azerbaijani         |
+| "eu"          | Basque              |
+| "be"          | Belarusian          |
+| "bn"          | Bangla              |
+| "bs"          | Bosnian             |
+| "bg"          | Bulgarian           |
+| "my"          | Burmese             |
+| "ca"          | Catalan             |
+| "ceb"         | Cebuano             |
+| "chr"         | Cherokee            |
+| "zh"          | Chinese             |
+| "zh-Hant"     | Chinese_Traditional |
+| "hr"          | Croatian            |
+| "cs"          | Czech               |
+| "da"          | Danish              |
+| "nl"          | Dutch               |
+| "en"          | English             |
+| "eo"          | Esperanto           |
+| "et"          | Estonian            |
+| "fil"         | Filipino            |
+| "fi"          | Finnish             |
+| "fr"          | French              |
+| "gl"          | Galician            |
+| "ka"          | Georgian            |
+| "de"          | German              |
+| "el"          | Greek               |
+| "gu"          | Gujarati            |
+| "ht"          | Haitian_Creole      |
+| "ha"          | Hausa               |
+| "haw"         | Hawaiian            |
+| "iw"          | Hebrew              |
+| "hi"          | Hindi               |
+| "hmn"         | Hmong               |
+| "hu"          | Hungarian           |
+| "is"          | Icelandic           |
+| "ig"          | Igbo                |
+| "id"          | Indonesian          |
+| "ga"          | Irish               |
+| "it"          | Italian             |
+| "ja"          | Japanese            |
+| "jv"          | Javanese            |
+| "kn"          | Kannada             |
+| "kk"          | Kazakh              |
+| "km"          | Khmer               |
+| "ko"          | Korean              |
+| "lo"          | Lao                 |
+| "la"          | Latin               |
+| "lv"          | Latvian             |
+| "lt"          | Lithuanian          |
+| "lb"          | Luxembourgish       |
+| "mk"          | Macedonian          |
+| "mg"          | Malagasy            |
+| "ms"          | Malay               |
+| "ml"          | Malayalam           |
+| "mt"          | Maltese             |
+| "mi"          | Maori               |
+| "mr"          | Marathi             |
+| "mfe"         | Morisyen            |
+| "mn"          | Mongolian           |
+| "sr-ME"       | Serbian_Montenegro  |
+| "ne"          | Nepali              |
+| "no"          | Norwegian           |
+| "ny"          | Nyanja              |
+| "or"          | Odia                |
+| "fa"          | Persian             |
+| "pl"          | Polish              |
+| "pt-BR"       | Portuguese_Brazil   |
+| "pt-PT"       | Portuguese_Portugal |
+| "pa"          | Punjabi             |
+| "ro"          | Romanian            |
+| "ru"          | Russian             |
+| "gd"          | Scottish Gaelic     |
+| "sr"          | Serbian             |
+| "st"          | Southern Sotho      |
+| "si"          | Sinhala             |
+| "sk"          | Slovak              |
+| "sl"          | Slovenian           |
+| "so"          | Somali              |
+| "es"          | Spanish             |
+| "su"          | Sundanese           |
+| "sw"          | Swahili             |
+| "sv"          | Swedish             |
+| "tg"          | Tajik               |
+| "ta"          | Tamil               |
+| "te"          | Telugu              |
+| "th"          | Thai                |
+| "tr"          | Turkish             |
+| "uk"          | Ukrainian           |
+| "ur"          | Urdu                |
+| "uz"          | Uzbek               |
+| "vi"          | Vietnamese          |
+| "cy"          | Welsh               |
+| "yi"          | Yiddish             |
+| "yo"          | Yoruba              |
+| "zu"          | Zulu                |
 
 ### Partition a text index
 
@@ -297,28 +304,30 @@ You can also partition your index using a field so that you can filter queries b
 
 To create an index with a partition, configure the `firestoreOptions` field as follows:
 
-    db.runCommand({
-      createIndexes: "cities",
-      indexes: [
-        {
-          key: { "country": "text", "food": "text"},
-          name: "country_text_food_text"
-          firestoreOptions: {"customPartitionFields": ["PARTITIONED_FIELD"]
-        }
-      ]
-    })
+```
+db.runCommand({
+  createIndexes: "cities",
+  indexes: [
+    {
+      key: { "country": "text", "food": "text"},
+      name: "country_text_food_text"
+      firestoreOptions: {"customPartitionFields": ["PARTITIONED_FIELD"]
+    }
+  ]
+})
+```
 
 Where:
 
-  - `  PARTITIONED_FIELD  ` is the name of the field used for the partition. This value must be a string and must refer to a top-level field. When you run a query against a partitioned index, you can filter the results based on a value of this field. For example, you could partition your index using `city` . If a `city` field is defined in your text index, then users can query against a specific city.
-    
-    The partition must be only one field. If you partition an index, then you can run only queries where the partitioned field is specified.
+- `PARTITIONED_FIELD` is the name of the field used for the partition. This value must be a string and must refer to a top-level field. When you run a query against a partitioned index, you can filter the results based on a value of this field. For example, you could partition your index using `city` . If a `city` field is defined in your text index, then users can query against a specific city.
+
+  The partition must be only one field. If you partition an index, then you can run only queries where the partitioned field is specified.
 
 **Limitations**
 
-  - You can create only one index per request.
-  - [Audit logs](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/audit-logging) for index creation with the MongoDB API use the method name `google.firestore.admin.v1.FirestoreAdmin.CreateIndex` .
-  - For supported index options, see [indexes and index properties](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80#indexes_and_index_properties) .
+- You can create only one index per request.
+- [Audit logs](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/audit-logging) for index creation with the MongoDB API use the method name `google.firestore.admin.v1.FirestoreAdmin.CreateIndex` .
+- For supported index options, see [indexes and index properties](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80#indexes_and_index_properties) .
 
 ### Google Cloud console
 
@@ -339,7 +348,7 @@ Where:
 8.  Enter at least one **Field path** .
 
 9.  Optional: Specify a default language.
-    
+
     For example, you set the language override path to `myLanguageField` . When a document in your collection contains a field named `myLanguageField` , the value of that field is used to determine the language for indexing the fields defined within your index. That value overrides the default language of your index.
 
 10. Click **Create** .
@@ -356,19 +365,23 @@ To create a 2dsphere index for your collection, complete the following steps:
 
 Use the [`createIndex()`](https://www.mongodb.com/docs/manual/reference/method/db.collection.createIndex/) method to create an index. For example:
 
-    db.restaurants.createIndex({"location" : "2dsphere", "region": "2dsphere"})
+```
+db.restaurants.createIndex({"location" : "2dsphere", "region": "2dsphere"})
+```
 
 Index creation with `db.runCommand()` is also supported with at most one index:
 
-    db.runCommand({
-      createIndexes: "restaurants",
-      indexes: [
-        {
-          key: { "location": "2dsphere", "region": "2dsphere" },
-          name: "location_2dsphere_region_2dsphere"
-        }
-      ]
-    })
+```
+db.runCommand({
+  createIndexes: "restaurants",
+  indexes: [
+    {
+      key: { "location": "2dsphere", "region": "2dsphere" },
+      name: "location_2dsphere_region_2dsphere"
+    }
+  ]
+})
+```
 
 ### Partition a 2dsphere index
 
@@ -376,28 +389,30 @@ You can also partition your index using a field so that you can filter queries b
 
 To create an index with a partition, configure the `firestoreOptions` field as follows:
 
-    db.runCommand({
-      createIndexes: "restaurants",
-      indexes: [
-        {
-          key: { "location": "2dsphere", "region": "2dsphere" },
-          name: "location_2dsphere_region_2dsphere"
-          firestoreOptions: {"customPartitionFields": ["PARTITIONED_FIELD"]
-        }
-      ]
-    })
+```
+db.runCommand({
+  createIndexes: "restaurants",
+  indexes: [
+    {
+      key: { "location": "2dsphere", "region": "2dsphere" },
+      name: "location_2dsphere_region_2dsphere"
+      firestoreOptions: {"customPartitionFields": ["PARTITIONED_FIELD"]
+    }
+  ]
+})
+```
 
 Where:
 
-  - `  PARTITIONED_FIELD  ` is the name of the field used for the partition. When you run a query against a partitioned index, you can filter the results based on a value of this field. For example, if your index has a `region` field for regional locations, you could partition your index using `region` so that users can query against restaurants in their region.
-    
-    If you partition an index, then you can only run queries where the partitioned field is specified.
+- `PARTITIONED_FIELD` is the name of the field used for the partition. When you run a query against a partitioned index, you can filter the results based on a value of this field. For example, if your index has a `region` field for regional locations, you could partition your index using `region` so that users can query against restaurants in their region.
+
+  If you partition an index, then you can only run queries where the partitioned field is specified.
 
 **Limitations**
 
-  - You can create only one index per request.
-  - [Audit logs](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/audit-logging) for index creation with the MongoDB API use the method name `google.firestore.admin.v1.FirestoreAdmin.CreateIndex` .
-  - For supported index options, see [indexes and index properties](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80#indexes_and_index_properties) .
+- You can create only one index per request.
+- [Audit logs](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/audit-logging) for index creation with the MongoDB API use the method name `google.firestore.admin.v1.FirestoreAdmin.CreateIndex` .
+- For supported index options, see [indexes and index properties](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80#indexes_and_index_properties) .
 
 ### Google Cloud console
 
@@ -429,11 +444,15 @@ Use the [`dropIndex()`](https://www.mongodb.com/docs/manual/reference/method/db.
 
 **Delete an index using index name**
 
-    db.restaurants.dropIndex("cuisine_index")
+```
+db.restaurants.dropIndex("cuisine_index")
+```
 
 **Delete an index using index definition**
 
-    db.restaurants.dropIndex({"cuisine" : 1})
+```
+db.restaurants.dropIndex({"cuisine" : 1})
+```
 
 ##### Google Cloud console
 
@@ -443,38 +462,40 @@ Use the [`dropIndex()`](https://www.mongodb.com/docs/manual/reference/method/db.
 
 3.  In the navigation menu, click **Indexes** .
 
-4.  In the list of indexes, choose **Delete** from the **More** button more\_vert for the index you want to delete.
+4.  In the list of indexes, choose **Delete** from the **More** button more_vert for the index you want to delete.
 
 5.  Click **Delete Index** .
 
 ##### gcloud CLI
 
 1.  To find the name of the index, use the [`gcloud firestore indexes composite list`](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/list) command.
-    
-        gcloud firestore indexes composite list \
-        --database='DATABASE_ID'
-    
-    Replace DATABASE\_ID with the database ID.
+
+    ```
+    gcloud firestore indexes composite list \
+    --database='DATABASE_ID'
+    ```
+
+    Replace ` DATABASE_ID ` with the database ID.
 
 2.  To delete the index, use the [`gcloud firestore indexes composite delete`](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/delete) command.
-    
-        gcloud firestore indexes composite delete INDEX_NAME \
-        --database='DATABASE_ID'
-    
-    Replace the following:
-    
-      - INDEX\_NAME : the name of an index
-      - DATABASE\_ID : a database ID
 
-<span id="index-build-time"></span>
+    ```
+    gcloud firestore indexes composite delete INDEX_NAME \
+    --database='DATABASE_ID'
+    ```
+
+    Replace the following:
+
+    - ` INDEX_NAME ` : the name of an index
+    - ` DATABASE_ID ` : a database ID
 
 ## Index build time
 
 To build an index, Firestore with MongoDB compatibility must create the index and then backfill the index entries with existing data. The time required to create an index is determined by the following:
 
-  - The minimum build time for an index is a few minutes, even for an empty database.
+- The minimum build time for an index is a few minutes, even for an empty database.
 
-  - The time required to backfill index entries depends on how much existing data belongs in the new index. The more field values that match the index definition, the longer it takes to backfill the index entries.
+- The time required to backfill index entries depends on how much existing data belongs in the new index. The more field values that match the index definition, the longer it takes to backfill the index entries.
 
 ### Manage long-running operations
 
@@ -482,9 +503,11 @@ Index builds are *long-running operations* . The following sections describe how
 
 > **Key Term:** Firestore with MongoDB compatibility supports several administrative operations that can take a long time to complete. These operations are called ***long-running operations*** . Firestore with MongoDB compatibility includes features to execute and manage long- running operations. Supported long-running operations include index builds and export operations.
 
-After you start to create an index, Firestore with MongoDB compatibility assigns the operation a unique name. Operation names are prefixed with `projects/ PROJECT_ID /databases/ DATABASE_ID /operations/` , for example:
+After you start to create an index, Firestore with MongoDB compatibility assigns the operation a unique name. Operation names are prefixed with `projects/ `` PROJECT_ID `` /databases/ `` DATABASE_ID `` /operations/` , for example:
 
-    projects/PROJECT_ID/databases/DATABASE_ID/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
+```
+projects/PROJECT_ID/databases/DATABASE_ID/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
+```
 
 You can omit the prefix when specifying an operation name for the `describe` command.
 
@@ -492,13 +515,17 @@ You can omit the prefix when specifying an operation name for the `describe` com
 
 To list long-running operations, use the [`gcloud firestore operations list`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command. This command lists ongoing and recently completed operations. Operations are listed for a few days after completion:
 
-    gcloud firestore operations list
+```
+gcloud firestore operations list
+```
 
 ### Check operation status
 
 Instead of listing all long-running operations, you can list the details of a single operation:
 
-    gcloud firestore operations describe operation-name
+```
+gcloud firestore operations describe operation-name
+```
 
 ### Estimating the completion time
 
@@ -512,23 +539,25 @@ To estimate an operation's progress, divide `workCompleted` by `workEstimated` .
 
 The following is an example of the progress of creating an index:
 
+```
+{
+  "operations": [
     {
-      "operations": [
-        {
-          "name": "projects/project-id/operations/AyAyMDBiM2U5NTgwZDAtZGIyYi0zYjc0LTIzYWEtZjg1ZGdWFmZWQHEjF0c2Flc3UtcmV4ZWRuaS1uaW1kYRUKSBI",
-          "metadata": {
-            "@type": "type.googleapis.com/google.firestore.admin.v1.IndexOperationMetadata",
-            "common": {
-              "operationType": "CREATE_INDEX",
-              "startTime": "2020-06-23T16:52:25.697539Z",
-              "state": "PROCESSING"
-            },
-            "progressDocuments": {
-              "workCompleted": "219327",
-              "workEstimated": "2198182"
-            }
-           },
+      "name": "projects/project-id/operations/AyAyMDBiM2U5NTgwZDAtZGIyYi0zYjc0LTIzYWEtZjg1ZGdWFmZWQHEjF0c2Flc3UtcmV4ZWRuaS1uaW1kYRUKSBI",
+      "metadata": {
+        "@type": "type.googleapis.com/google.firestore.admin.v1.IndexOperationMetadata",
+        "common": {
+          "operationType": "CREATE_INDEX",
+          "startTime": "2020-06-23T16:52:25.697539Z",
+          "state": "PROCESSING"
         },
-        ...
+        "progressDocuments": {
+          "workCompleted": "219327",
+          "workEstimated": "2198182"
+        }
+       },
+    },
+    ...
+```
 
 When an operation completes, the operation description will contain [`"done": true`](https://cloud.google.com/firestore/docs/reference/rpc/google.longrunning#operation) . See the value of the [`state` field](https://cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#state) for the result of the operation. If the `done` field is not set in the response, then the operation has not completed.

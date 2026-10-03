@@ -6,9 +6,9 @@ description: A cloud-hosted NoSQL database that's simple enough for rapid protot
 data_source: docs.cloud.google.com
 ---
 
-Creates the specified index. A newly created index's initial state is `CREATING` . On completion of the returned `  google.longrunning.Operation  ` , the state will be `READY` . If the index already exists, the call will return an `ALREADY_EXISTS` status.
+Creates the specified index. A newly created index's initial state is `CREATING` . On completion of the returned [`google.longrunning.Operation`](https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Operation) , the state will be `READY` . If the index already exists, the call will return an `ALREADY_EXISTS` status.
 
-During creation, the process could result in an error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index with `  delete  ` , then re-creating the index with `  create  ` .
+During creation, the process could result in an error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index with [`delete`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/delete#google.firestore.admin.v1beta1.FirestoreAdmin.DeleteIndex) , then re-creating the index with [`create`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/create#google.firestore.admin.v1beta1.FirestoreAdmin.CreateIndex) .
 
 Indexes with a single field cannot be created.
 
@@ -23,27 +23,23 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 
-Parameters
-
-`parent`
-
-`string`
-
-The name of the database this index will apply to. For example: `projects/{projectId}/databases/{databaseId}`
+| Parameters |                                                                                                                        |
+|------------|------------------------------------------------------------------------------------------------------------------------|
+| `parent`   | `string` The name of the database this index will apply to. For example: `projects/{projectId}/databases/{databaseId}` |
 
 ### Request body
 
-The request body contains an instance of `  Index  ` .
+The request body contains an instance of [`Index`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes#Index) .
 
 ### Response body
 
-If successful, the response body contains a newly created instance of `  Operation  ` .
+If successful, the response body contains a newly created instance of [`Operation`](https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Operation) .
 
 ### Authorization scopes
 
 Requires one of the following OAuth scopes:
 
-  - `https://www.googleapis.com/auth/datastore`
-  - `https://www.googleapis.com/auth/cloud-platform`
+- `https://www.googleapis.com/auth/datastore`
+- `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

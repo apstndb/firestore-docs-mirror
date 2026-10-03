@@ -13,9 +13,9 @@ Firestore supports offline data persistence. This feature caches a copy of the F
 When the device comes back online, Firestore synchronizes any local changes made by your app to the Firestore backend. For multiple changes to the same document, it's last write wins.
 
 > **Note:**
-> 
->   - Offline persistence is supported only in Android, Apple, and web apps.
->   - [Pipeline operations](https://docs.cloud.google.com/firestore/native/docs/query-data/understanding-core-pipelines) don't support offline persistence. To use offline persistence with Enterprise edition databases, use Core operations as described on this page.
+>
+> - Offline persistence is supported only in Android, Apple, and web apps.
+> - [Pipeline operations](https://docs.cloud.google.com/firestore/native/docs/query-data/understanding-core-pipelines) don't support offline persistence. To use offline persistence with Enterprise edition databases, use Core operations as described on this page.
 
 To use offline persistence, you don't need to make any changes to the code that you use to access Firestore data. With offline persistence enabled, the Firestore client library automatically manages online and offline data access and synchronizes local data when the device is back online.
 
@@ -23,8 +23,8 @@ To use offline persistence, you don't need to make any changes to the code that 
 
 When you initialize Firestore, you can enable or disable offline persistence:
 
-  - For Android and Apple platforms, offline persistence is enabled by default. To disable persistence, set the `PersistenceEnabled` option to `false` .
-  - For the web, offline persistence is disabled by default. To enable persistence, call the `enablePersistence` method. Firestore's cache isn't automatically cleared between sessions. Consequently, if your web app handles sensitive information, make sure to ask the user if they're on a trusted device before enabling persistence.
+- For Android and Apple platforms, offline persistence is enabled by default. To disable persistence, set the `PersistenceEnabled` option to `false` .
+- For the web, offline persistence is disabled by default. To enable persistence, call the `enablePersistence` method. Firestore's cache isn't automatically cleared between sessions. Consequently, if your web app handles sensitive information, make sure to ask the user if they're on a trusted device before enabling persistence.
 
 > **Important:** For the web, offline persistence is supported only by the Chrome, Safari, and Firefox web browsers.
 
@@ -32,7 +32,7 @@ When you initialize Firestore, you can enable or disable offline persistence:
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
-``` 
+```
 // Memory cache is the default if no config is specified.
 initializeFirestore(app);
 
@@ -54,101 +54,110 @@ initializeFirestore(app,
   {localCache: 
     persistentLocalCache(/*settings*/{tabManager: persistentMultipleTabManager()})
   });
-  
 ```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
-    firebase.firestore().enablePersistence()
-      .catch((err) => {
-          if (err.code == 'failed-precondition') {
-              // Multiple tabs open, persistence can only be enabled
-              // in one tab at a a time.
-              // ...
-          } else if (err.code == 'unimplemented') {
-              // The current browser does not support all of the
-              // features required to enable persistence
-              // ...
-          }
-      });
-    // Subsequent queries will use persistence, if it was enabled successfully
+```
+firebase.firestore().enablePersistence()
+  .catch((err) => {
+      if (err.code == 'failed-precondition') {
+          // Multiple tabs open, persistence can only be enabled
+          // in one tab at a a time.
+          // ...
+      } else if (err.code == 'unimplemented') {
+          // The current browser does not support all of the
+          // features required to enable persistence
+          // ...
+      }
+  });
+// Subsequent queries will use persistence, if it was enabled successfully
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    let settings = FirestoreSettings()
-    
-    // Use memory-only cache
-    settings.cacheSettings =
-    MemoryCacheSettings(garbageCollectorSettings: MemoryLRUGCSettings())
-    
-    // Use persistent disk cache, with 100 MB cache size
-    settings.cacheSettings = PersistentCacheSettings(sizeBytes: 100 * 1024 * 1024 as NSNumber)
-    
-    // Any additional options
-    // ...
-    
-    // Enable offline data persistence
-    let db = Firestore.firestore()
-    db.settings = settings
+```
+let settings = FirestoreSettings()
+
+// Use memory-only cache
+settings.cacheSettings =
+MemoryCacheSettings(garbageCollectorSettings: MemoryLRUGCSettings())
+
+// Use persistent disk cache, with 100 MB cache size
+settings.cacheSettings = PersistentCacheSettings(sizeBytes: 100 * 1024 * 1024 as NSNumber)
+
+// Any additional options
+// ...
+
+// Enable offline data persistence
+let db = Firestore.firestore()
+db.settings = settings
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    FIRFirestoreSettings *settings = [[FIRFirestoreSettings alloc] init];
-    
+```
+FIRFirestoreSettings *settings = [[FIRFirestoreSettings alloc] init];
+
+// Use memory-only cache
+settings.cacheSettings = [[FIRMemoryCacheSettings alloc]
+    initWithGarbageCollectorSettings:[[FIRMemoryLRUGCSettings alloc] init]];
+
+// Use persistent disk cache (default behavior)
+// This example uses 100 MB.
+settings.cacheSettings = [[FIRPersistentCacheSettings alloc]
+    initWithSizeBytes:@(100 * 1024 * 1024)];
+
+// Any additional options
+// ...
+
+// Enable offline data persistence
+FIRFirestore *db = [FIRFirestore firestore];
+db.settings = settings;
+```
+
+##### Kotlin Android
+
+```
+val settings = firestoreSettings {
+    // Use memory cache
+    setLocalCacheSettings(memoryCacheSettings {})
+    // Use persistent disk cache (default)
+    setLocalCacheSettings(persistentCacheSettings {})
+}
+db.firestoreSettings = settings
+```
+
+##### Java Android
+
+```
+FirebaseFirestoreSettings settings = 
+new FirebaseFirestoreSettings.Builder(db.getFirestoreSettings())
     // Use memory-only cache
-    settings.cacheSettings = [[FIRMemoryCacheSettings alloc]
-        initWithGarbageCollectorSettings:[[FIRMemoryLRUGCSettings alloc] init]];
-    
-    // Use persistent disk cache (default behavior)
-    // This example uses 100 MB.
-    settings.cacheSettings = [[FIRPersistentCacheSettings alloc]
-        initWithSizeBytes:@(100 * 1024 * 1024)];
-    
-    // Any additional options
-    // ...
-    
-    // Enable offline data persistence
-    FIRFirestore *db = [FIRFirestore firestore];
-    db.settings = settings;
-
-##### Kotlin  
-Android
-
-    val settings = firestoreSettings {
-        // Use memory cache
-        setLocalCacheSettings(memoryCacheSettings {})
-        // Use persistent disk cache (default)
-        setLocalCacheSettings(persistentCacheSettings {})
-    }
-    db.firestoreSettings = settings
-
-##### Java  
-Android
-
-    FirebaseFirestoreSettings settings = 
-    new FirebaseFirestoreSettings.Builder(db.getFirestoreSettings())
-        // Use memory-only cache
-        .setLocalCacheSettings(MemoryCacheSettings.newBuilder().build())
-        // Use persistent disk cache (default)
-        .setLocalCacheSettings(PersistentCacheSettings.newBuilder()
-                                .build())
-        .build();
-    db.setFirestoreSettings(settings);
+    .setLocalCacheSettings(MemoryCacheSettings.newBuilder().build())
+    // Use persistent disk cache (default)
+    .setLocalCacheSettings(PersistentCacheSettings.newBuilder()
+                            .build())
+    .build();
+db.setFirestoreSettings(settings);
+```
 
 ### Dart
 
-    // Apple and Android
-    db.settings = const Settings(persistenceEnabled: true);
-    
-    // Web
-    await db
-        .enablePersistence(const PersistenceSettings(synchronizeTabs: true));
+```
+// Apple and Android
+db.settings = const Settings(persistenceEnabled: true);
+
+// Web
+await db
+    .enablePersistence(const PersistenceSettings(synchronizeTabs: true));
+```
 
 ### Configure cache size
 
@@ -156,37 +165,43 @@ When persistence is enabled, Firestore caches every document received from the b
 
 ### Web version 9
 
-    import { initializeFirestore, CACHE_SIZE_UNLIMITED } from "firebase/firestore";
-    
-    const firestoreDb = initializeFirestore(app, {
-      cacheSizeBytes: CACHE_SIZE_UNLIMITED
-    });
+```
+import { initializeFirestore, CACHE_SIZE_UNLIMITED } from "firebase/firestore";
+
+const firestoreDb = initializeFirestore(app, {
+  cacheSizeBytes: CACHE_SIZE_UNLIMITED
+});
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    firebase.firestore().settings({
-        cacheSizeBytes: firebase.firestore.CACHE_SIZE_UNLIMITED
-    });
+```
+firebase.firestore().settings({
+    cacheSizeBytes: firebase.firestore.CACHE_SIZE_UNLIMITED
+});
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    // The default cache size threshold is 100 MB. Configure "cacheSizeBytes"
-    // for a different threshold (minimum 1 MB) or set to "FirestoreCacheSizeUnlimited"
-    // to disable clean-up.
-    let settings = Firestore.firestore().settings
-    // Set cache size to 100 MB
-    settings.cacheSettings = PersistentCacheSettings(sizeBytes: 100 * 1024 * 1024 as NSNumber)
-    Firestore.firestore().settings = settings
+```
+// The default cache size threshold is 100 MB. Configure "cacheSizeBytes"
+// for a different threshold (minimum 1 MB) or set to "FirestoreCacheSizeUnlimited"
+// to disable clean-up.
+let settings = Firestore.firestore().settings
+// Set cache size to 100 MB
+settings.cacheSettings = PersistentCacheSettings(sizeBytes: 100 * 1024 * 1024 as NSNumber)
+Firestore.firestore().settings = settings
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-``` 
+```
 // The default cache size threshold is 100 MB. Configure "cacheSizeBytes"
 // for a different threshold (minimum 1 MB) or set to "kFIRFirestoreCacheSizeUnlimited"
 // to disable clean-up.
@@ -195,37 +210,40 @@ FIRFirestoreSettings *settings = [FIRFirestore firestore].settings;
 settings.cacheSettings =
     [[FIRPersistentCacheSettings alloc] initWithSizeBytes:@(100 * 1024 * 1024)];
 [FIRFirestore firestore].settings = settings;
-  
 ```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    // The default cache size threshold is 100 MB. Configure "setCacheSizeBytes"
-    // for a different threshold (minimum 1 MB) or set to "CACHE_SIZE_UNLIMITED"
-    // to disable clean-up.
-    val settings = FirebaseFirestoreSettings.Builder()
-            .setCacheSizeBytes(FirebaseFirestoreSettings.CACHE_SIZE_UNLIMITED)
-            .build()
-    db.firestoreSettings = settings
+```
+// The default cache size threshold is 100 MB. Configure "setCacheSizeBytes"
+// for a different threshold (minimum 1 MB) or set to "CACHE_SIZE_UNLIMITED"
+// to disable clean-up.
+val settings = FirebaseFirestoreSettings.Builder()
+        .setCacheSizeBytes(FirebaseFirestoreSettings.CACHE_SIZE_UNLIMITED)
+        .build()
+db.firestoreSettings = settings
+```
 
-##### Java  
-Android
+##### Java Android
 
-    // The default cache size threshold is 100 MB. Configure "setCacheSizeBytes"
-    // for a different threshold (minimum 1 MB) or set to "CACHE_SIZE_UNLIMITED"
-    // to disable clean-up.
-    FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
-            .setCacheSizeBytes(FirebaseFirestoreSettings.CACHE_SIZE_UNLIMITED)
-            .build();
-    db.setFirestoreSettings(settings);
+```
+// The default cache size threshold is 100 MB. Configure "setCacheSizeBytes"
+// for a different threshold (minimum 1 MB) or set to "CACHE_SIZE_UNLIMITED"
+// to disable clean-up.
+FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+        .setCacheSizeBytes(FirebaseFirestoreSettings.CACHE_SIZE_UNLIMITED)
+        .build();
+db.setFirestoreSettings(settings);
+```
 
 ### Dart
 
-    db.settings = const Settings(
-      persistenceEnabled: true,
-      cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED,
-    );
+```
+db.settings = const Settings(
+  persistenceEnabled: true,
+  cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED,
+);
+```
 
 ## Listen to offline data
 
@@ -237,148 +255,160 @@ By default, no event is raised if *only* the `SnapshotMetadata` changed. If you 
 
 ### Web version 9
 
-    import { collection, onSnapshot, where, query } from "firebase/firestore"; 
-    
-    const q = query(collection(db, "cities"), where("state", "==", "CA"));
-    onSnapshot(q, { includeMetadataChanges: true }, (snapshot) => {
-        snapshot.docChanges().forEach((change) => {
-            if (change.type === "added") {
-                console.log("New city: ", change.doc.data());
-            }
-    
-            const source = snapshot.metadata.fromCache ? "local cache" : "server";
-            console.log("Data came from " + source);
-        });
+```
+import { collection, onSnapshot, where, query } from "firebase/firestore"; 
+
+const q = query(collection(db, "cities"), where("state", "==", "CA"));
+onSnapshot(q, { includeMetadataChanges: true }, (snapshot) => {
+    snapshot.docChanges().forEach((change) => {
+        if (change.type === "added") {
+            console.log("New city: ", change.doc.data());
+        }
+
+        const source = snapshot.metadata.fromCache ? "local cache" : "server";
+        console.log("Data came from " + source);
     });
+});
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    db.collection("cities").where("state", "==", "CA")
-      .onSnapshot({ includeMetadataChanges: true }, (snapshot) => {
-          snapshot.docChanges().forEach((change) => {
-              if (change.type === "added") {
-                  console.log("New city: ", change.doc.data());
-              }
-    
-              var source = snapshot.metadata.fromCache ? "local cache" : "server";
-              console.log("Data came from " + source);
-          });
+```
+db.collection("cities").where("state", "==", "CA")
+  .onSnapshot({ includeMetadataChanges: true }, (snapshot) => {
+      snapshot.docChanges().forEach((change) => {
+          if (change.type === "added") {
+              console.log("New city: ", change.doc.data());
+          }
+
+          var source = snapshot.metadata.fromCache ? "local cache" : "server";
+          console.log("Data came from " + source);
       });
+  });
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    // Listen to metadata updates to receive a server snapshot even if
-    // the data is the same as the cached data.
-    db.collection("cities").whereField("state", isEqualTo: "CA")
-      .addSnapshotListener(includeMetadataChanges: true) { querySnapshot, error in
-        guard let snapshot = querySnapshot else {
-          print("Error retreiving snapshot: \(error!)")
-          return
-        }
-    
-        for diff in snapshot.documentChanges {
-          if diff.type == .added {
-            print("New city: \(diff.document.data())")
-          }
-        }
-    
-        let source = snapshot.metadata.isFromCache ? "local cache" : "server"
-        print("Metadata: Data fetched from \(source)")
+```
+// Listen to metadata updates to receive a server snapshot even if
+// the data is the same as the cached data.
+db.collection("cities").whereField("state", isEqualTo: "CA")
+  .addSnapshotListener(includeMetadataChanges: true) { querySnapshot, error in
+    guard let snapshot = querySnapshot else {
+      print("Error retreiving snapshot: \(error!)")
+      return
+    }
+
+    for diff in snapshot.documentChanges {
+      if diff.type == .added {
+        print("New city: \(diff.document.data())")
       }
+    }
+
+    let source = snapshot.metadata.isFromCache ? "local cache" : "server"
+    print("Metadata: Data fetched from \(source)")
+  }
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    // Listen to metadata updates to receive a server snapshot even if
-    // the data is the same as the cached data.
-    [[[db collectionWithPath:@"cities"] queryWhereField:@"state" isEqualTo:@"CA"]
-        addSnapshotListenerWithIncludeMetadataChanges:YES
-        listener:^(FIRQuerySnapshot *snapshot, NSError *error) {
-          if (snapshot == nil) {
-            NSLog(@"Error retreiving snapshot: %@", error);
-            return;
-          }
-          for (FIRDocumentChange *diff in snapshot.documentChanges) {
-            if (diff.type == FIRDocumentChangeTypeAdded) {
-              NSLog(@"New city: %@", diff.document.data);
-            }
-          }
-    
-          NSString *source = snapshot.metadata.isFromCache ? @"local cache" : @"server";
-          NSLog(@"Metadata: Data fetched from %@", source);
-        }];
+```
+// Listen to metadata updates to receive a server snapshot even if
+// the data is the same as the cached data.
+[[[db collectionWithPath:@"cities"] queryWhereField:@"state" isEqualTo:@"CA"]
+    addSnapshotListenerWithIncludeMetadataChanges:YES
+    listener:^(FIRQuerySnapshot *snapshot, NSError *error) {
+      if (snapshot == nil) {
+        NSLog(@"Error retreiving snapshot: %@", error);
+        return;
+      }
+      for (FIRDocumentChange *diff in snapshot.documentChanges) {
+        if (diff.type == FIRDocumentChangeTypeAdded) {
+          NSLog(@"New city: %@", diff.document.data);
+        }
+      }
 
-##### Kotlin  
-Android
+      NSString *source = snapshot.metadata.isFromCache ? @"local cache" : @"server";
+      NSLog(@"Metadata: Data fetched from %@", source);
+    }];
+```
 
-    db.collection("cities").whereEqualTo("state", "CA")
-        .addSnapshotListener(MetadataChanges.INCLUDE) { querySnapshot, e ->
-            if (e != null) {
-                Log.w(TAG, "Listen error", e)
-                return@addSnapshotListener
-            }
-    
-            for (change in querySnapshot!!.documentChanges) {
-                if (change.type == DocumentChange.Type.ADDED) {
-                    Log.d(TAG, "New city: ${change.document.data}")
-                }
-    
-                val source = if (querySnapshot.metadata.isFromCache) {
-                    "local cache"
-                } else {
-                    "server"
-                }
-                Log.d(TAG, "Data fetched from $source")
-            }
+##### Kotlin Android
+
+```
+db.collection("cities").whereEqualTo("state", "CA")
+    .addSnapshotListener(MetadataChanges.INCLUDE) { querySnapshot, e ->
+        if (e != null) {
+            Log.w(TAG, "Listen error", e)
+            return@addSnapshotListener
         }
 
-##### Java  
-Android
+        for (change in querySnapshot!!.documentChanges) {
+            if (change.type == DocumentChange.Type.ADDED) {
+                Log.d(TAG, "New city: ${change.document.data}")
+            }
 
-    db.collection("cities").whereEqualTo("state", "CA")
-            .addSnapshotListener(MetadataChanges.INCLUDE, new EventListener<QuerySnapshot>() {
-                @Override
-                public void onEvent(@Nullable QuerySnapshot querySnapshot,
-                                    @Nullable FirebaseFirestoreException e) {
-                    if (e != null) {
-                        Log.w(TAG, "Listen error", e);
-                        return;
-                    }
-    
-                    for (DocumentChange change : querySnapshot.getDocumentChanges()) {
-                        if (change.getType() == Type.ADDED) {
-                            Log.d(TAG, "New city:" + change.getDocument().getData());
-                        }
-    
-                        String source = querySnapshot.getMetadata().isFromCache() ?
-                                "local cache" : "server";
-                        Log.d(TAG, "Data fetched from " + source);
-                    }
-    
+            val source = if (querySnapshot.metadata.isFromCache) {
+                "local cache"
+            } else {
+                "server"
+            }
+            Log.d(TAG, "Data fetched from $source")
+        }
+    }
+```
+
+##### Java Android
+
+```
+db.collection("cities").whereEqualTo("state", "CA")
+        .addSnapshotListener(MetadataChanges.INCLUDE, new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot querySnapshot,
+                                @Nullable FirebaseFirestoreException e) {
+                if (e != null) {
+                    Log.w(TAG, "Listen error", e);
+                    return;
                 }
-            });
+
+                for (DocumentChange change : querySnapshot.getDocumentChanges()) {
+                    if (change.getType() == Type.ADDED) {
+                        Log.d(TAG, "New city:" + change.getDocument().getData());
+                    }
+
+                    String source = querySnapshot.getMetadata().isFromCache() ?
+                            "local cache" : "server";
+                    Log.d(TAG, "Data fetched from " + source);
+                }
+
+            }
+        });
+```
 
 ### Dart
 
-    db
-        .collection("cities")
-        .where("state", isEqualTo: "CA")
-        .snapshots(includeMetadataChanges: true)
-        .listen((querySnapshot) {
-      for (var change in querySnapshot.docChanges) {
-        if (change.type == DocumentChangeType.added) {
-          final source =
-              (querySnapshot.metadata.isFromCache) ? "local cache" : "server";
-    
-          print("Data fetched from $source}");
-        }
-      }
-    });
+```
+db
+    .collection("cities")
+    .where("state", isEqualTo: "CA")
+    .snapshots(includeMetadataChanges: true)
+    .listen((querySnapshot) {
+  for (var change in querySnapshot.docChanges) {
+    if (change.type == DocumentChangeType.added) {
+      final source =
+          (querySnapshot.metadata.isFromCache) ? "local cache" : "server";
+
+      print("Data fetched from $source}");
+    }
+  }
+});
+```
 
 ## Get offline data
 
@@ -400,44 +430,39 @@ Automatic indexing is disabled by default. Your app must enable automatic indexi
 
 ##### Swift
 
-``` 
+```
 if let indexManager = Firestore.firestore().persistentCacheIndexManager {
   // Indexing is disabled by default
   indexManager.enableIndexAutoCreation()
 } else {
   print("indexManager is nil")
 }
-    
 ```
 
 ##### Objective-C
 
-``` 
+```
 PersistentCacheIndexManager *indexManager = [FIRFirestore firestore].persistentCacheIndexManager;
 if (indexManager) {
   // Indexing is disabled by default
   [indexManager enableIndexAutoCreation];
 }
-    
 ```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-``` 
+```
 // return type: PersistentCacheManager?
 
 Firebase.firestore.persistentCacheIndexManager?.apply {
       // Indexing is disabled by default
       enableIndexAutoCreation()
     } ?: println("indexManager is null")
-    
 ```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 // return type: @Nullable PersistentCacheIndexManager
 PersistentCacheIndexManager indexManager = FirebaseFirestore.getInstance().getPersistentCacheIndexManager();
 if (indexManager != null) {
@@ -447,7 +472,6 @@ if (indexManager != null) {
 
 // If not check indexManager != null, IDE shows warning: Method invocation 'enableIndexAutoCreation' may produce 'NullPointerException'
 FirebaseFirestore.getInstance().getPersistentCacheIndexManager().enableIndexAutoCreation();
-    
 ```
 
 Once automatic indexing is enabled, the SDK evaluates which collections have a large number of cached documents and optimizes performance of local queries.
@@ -460,127 +484,151 @@ You can use the method below to disable network access for your Firestore client
 
 ### Web version 9
 
-    import { disableNetwork } from "firebase/firestore"; 
-    
-    await disableNetwork(db);
-    console.log("Network disabled!");
-    // Do offline actions
-    // ...
+```
+import { disableNetwork } from "firebase/firestore"; 
+
+await disableNetwork(db);
+console.log("Network disabled!");
+// Do offline actions
+// ...
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    firebase.firestore().disableNetwork()
-        .then(() => {
-            // Do offline actions
-            // ...
-        });
+```
+firebase.firestore().disableNetwork()
+    .then(() => {
+        // Do offline actions
+        // ...
+    });
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    Firestore.firestore().disableNetwork { (error) in
-      // Do offline things
-      // ...
-    }
+```
+Firestore.firestore().disableNetwork { (error) in
+  // Do offline things
+  // ...
+}
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    [[FIRFirestore firestore] disableNetworkWithCompletion:^(NSError *_Nullable error) {
-      // Do offline actions
-      // ...
-    }];
+```
+[[FIRFirestore firestore] disableNetworkWithCompletion:^(NSError *_Nullable error) {
+  // Do offline actions
+  // ...
+}];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    db.disableNetwork().addOnCompleteListener {
-        // Do offline things
-        // ...
-    }
+```
+db.disableNetwork().addOnCompleteListener {
+    // Do offline things
+    // ...
+}
+```
 
-##### Java  
-Android
+##### Java Android
 
-    db.disableNetwork()
-            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    // Do offline things
-                    // ...
-                }
-            });
+```
+db.disableNetwork()
+        .addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                // Do offline things
+                // ...
+            }
+        });
+```
 
 ### Dart
 
-    db.disableNetwork().then((_) {
-      // Do offline things
-    });
+```
+db.disableNetwork().then((_) {
+  // Do offline things
+});
+```
 
 Use the following method to re-enable network access:
 
 ### Web version 9
 
-    import { enableNetwork } from "firebase/firestore"; 
-    
-    await enableNetwork(db);
-    // Do online actions
-    // ...
+```
+import { enableNetwork } from "firebase/firestore"; 
+
+await enableNetwork(db);
+// Do online actions
+// ...
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    firebase.firestore().enableNetwork()
-        .then(() => {
-            // Do online actions
-            // ...
-        });
+```
+firebase.firestore().enableNetwork()
+    .then(() => {
+        // Do online actions
+        // ...
+    });
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    Firestore.firestore().enableNetwork { (error) in
-      // Do online things
-      // ...
-    }
+```
+Firestore.firestore().enableNetwork { (error) in
+  // Do online things
+  // ...
+}
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    [[FIRFirestore firestore] enableNetworkWithCompletion:^(NSError *_Nullable error) {
-      // Do online actions
-      // ...
-    }];
+```
+[[FIRFirestore firestore] enableNetworkWithCompletion:^(NSError *_Nullable error) {
+  // Do online actions
+  // ...
+}];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    db.enableNetwork().addOnCompleteListener {
-        // Do online things
-        // ...
-    }
+```
+db.enableNetwork().addOnCompleteListener {
+    // Do online things
+    // ...
+}
+```
 
-##### Java  
-Android
+##### Java Android
 
-    db.enableNetwork()
-            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    // Do online things
-                    // ...
-                }
-            });
+```
+db.enableNetwork()
+        .addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                // Do online things
+                // ...
+            }
+        });
+```
 
 ### Dart
 
-    db.enableNetwork().then((_) {
-      // Back online
-    });
+```
+db.enableNetwork().then((_) {
+  // Back online
+});
+```

@@ -12,27 +12,29 @@ Run a projection query.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Datastore queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)
+- [Datastore queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Projection = { "priority", "percent_complete" }
-    };
-    List<long> priorities = new List<long>();
-    List<double> percentCompletes = new List<double>();
-    foreach (var entity in _db.RunQuery(query).Entities)
-    {
-        priorities.Add((long)entity["priority"]);
-        percentCompletes.Add((double)entity["percent_complete"]);
-    }
+```csharp
+Query query = new Query("Task")
+{
+    Projection = { "priority", "percent_complete" }
+};
+List<long> priorities = new List<long>();
+List<double> percentCompletes = new List<double>();
+foreach (var entity in _db.RunQuery(query).Entities)
+{
+    priorities.Add((long)entity["priority"]);
+    percentCompletes.Add((double)entity["percent_complete"]);
+}
+```
 
 ### Go
 
@@ -40,19 +42,21 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    var priorities []int
-    var percents []float64
-    it := client.Run(ctx, query)
-    for {
-     var task Task
-     if _, err := it.Next(&task); err == iterator.Done {
-         break
-     } else if err != nil {
-         log.Fatal(err)
-     }
-     priorities = append(priorities, task.Priority)
-     percents = append(percents, task.PercentComplete)
+```go
+var priorities []int
+var percents []float64
+it := client.Run(ctx, query)
+for {
+    var task Task
+    if _, err := it.Next(&task); err == iterator.Done {
+        break
+    } else if err != nil {
+        log.Fatal(err)
     }
+    priorities = append(priorities, task.Priority)
+    percents = append(percents, task.PercentComplete)
+}
+```
 
 ### Java
 
@@ -60,14 +64,16 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    List<Long> priorities = new LinkedList<>();
-    List<Double> percentCompletes = new LinkedList<>();
-    QueryResults<ProjectionEntity> tasks = datastore.run(query);
-    while (tasks.hasNext()) {
-      ProjectionEntity task = tasks.next();
-      priorities.add(task.getLong("priority"));
-      percentCompletes.add(task.getDouble("percent_complete"));
-    }
+```java
+List<Long> priorities = new LinkedList<>();
+List<Double> percentCompletes = new LinkedList<>();
+QueryResults<ProjectionEntity> tasks = datastore.run(query);
+while (tasks.hasNext()) {
+  ProjectionEntity task = tasks.next();
+  priorities.add(task.getLong("priority"));
+  percentCompletes.add(task.getDouble("percent_complete"));
+}
+```
 
 ### PHP
 
@@ -75,14 +81,16 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $priorities = array();
-    $percentCompletes = array();
-    $result = $datastore->runQuery($query);
-    /* @var Entity $task */
-    foreach ($result as $task) {
-        $priorities[] = $task['priority'];
-        $percentCompletes[] = $task['percent_complete'];
-    }
+```php
+$priorities = array();
+$percentCompletes = array();
+$result = $datastore->runQuery($query);
+/* @var Entity $task */
+foreach ($result as $task) {
+    $priorities[] = $task['priority'];
+    $percentCompletes[] = $task['percent_complete'];
+}
+```
 
 ### Python
 
@@ -90,12 +98,14 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    priorities = []
-    percent_completes = []
-    
-    for task in query.fetch():
-        priorities.append(task["priority"])
-        percent_completes.append(task["percent_complete"])
+```python
+priorities = []
+percent_completes = []
+
+for task in query.fetch():
+    priorities.append(task["priority"])
+    percent_completes.append(task["percent_complete"])
+```
 
 ### Ruby
 
@@ -103,12 +113,14 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    priorities = []
-    percent_completes = []
-    datastore.run(query).each do |task|
-      priorities << task["priority"]
-      percent_completes << task["percent_complete"]
-    end
+```ruby
+priorities = []
+percent_completes = []
+datastore.run(query).each do |task|
+  priorities << task["priority"]
+  percent_completes << task["percent_complete"]
+end
+```
 
 ## What's next
 

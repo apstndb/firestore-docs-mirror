@@ -26,8 +26,8 @@ Creating or retaining backups does not affect the performance of reads or writes
 
 When you use backups, you're charged for the following:
 
-  - The amount of storage used by each backup.
-  - For a restore operation, you're charged based on the size of the backup.
+- The amount of storage used by each backup.
+- For a restore operation, you're charged based on the size of the backup.
 
 For more details and exact rates, see the [Pricing](https://docs.cloud.google.com/datastore/pricing) page.
 
@@ -39,12 +39,12 @@ Make sure that billing is enabled for your Google Cloud project. Learn how to [c
 
 To get the permissions that you need to manage backups and backup schedules, ask your administrator to grant you one or more of the following Identity and Access Management roles:
 
-  - `roles/datastore.owner` : Full access to the Firestore database
-  - `roles/datastore.backupsAdmin` : Read and write access to backups
-  - `roles/datastore.backupsViewer` : Read access to backups
-  - `roles/datastore.backupSchedulesAdmin` : Read and write access to backup schedules
-  - `roles/datastore.backupSchedulesViewer` : Read access to backup schedules
-  - `roles/datastore.restoreAdmin` : Permissions to initiate restore operations
+- `roles/datastore.owner` : Full access to the Firestore database
+- `roles/datastore.backupsAdmin` : Read and write access to backups
+- `roles/datastore.backupsViewer` : Read access to backups
+- `roles/datastore.backupSchedulesAdmin` : Read and write access to backup schedules
+- `roles/datastore.backupSchedulesViewer` : Read access to backup schedules
+- `roles/datastore.restoreAdmin` : Permissions to initiate restore operations
 
 ## Create and manage backup schedules
 
@@ -81,27 +81,32 @@ gcloud firestore backups schedules create \
 
 Replace the following:
 
-  - DATABASE\_ID : The ID of the database to back up. Set to `'(default)'` for the default database.
-  - RETENTION\_PERIOD : Set this to a value up to 14 weeks ( `14w` ).
+- ` DATABASE_ID ` : The ID of the database to back up. Set to `'(default)'` for the default database.
+- ` RETENTION_PERIOD ` : Set this to a value up to 14 weeks ( `14w` ).
 
 ##### Terraform
 
-To create a daily backup schedule, create a `  google_firestore_backup_schedule  ` resource.
+To create a daily backup schedule, create a [`google_firestore_backup_schedule`](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_backup_schedule) resource.
 
-    resource "google_firestore_backup_schedule" "daily-backup" {
-      project  = PROJECT_ID
-      database = DATABASE_ID
-    
-      retention = RETENTION_PERIOD_SECONDS
-    
-      daily_recurrence {}
-    }
+```
+resource "google_firestore_backup_schedule" "daily-backup" {
+  project  = PROJECT_ID
+  database = DATABASE_ID
+
+  retention = RETENTION_PERIOD_SECONDS
+
+  daily_recurrence {}
+}
+```
 
 Replace the following:
 
-  - PROJECT\_ID : The ID of the project.
-  - DATABASE\_ID : The ID of the database to back up. Set to `'(default)'` for the default database.
-  - RETENTION\_PERIOD\_SECONDS : Set this to a value in seconds, followed by "s". The maximum value is `8467200s` (14 weeks).
+- ` PROJECT_ID ` : The ID of the project.
+- ` DATABASE_ID ` : The ID of the database to back up. Set to `'(default)'` for the default database.
+
+You can also use a [resource reference](https://developer.hashicorp.com/terraform/language/expressions/references#resources) to a Terraform resource of type [`google_firestore_database`](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_database) .
+
+- ` RETENTION_PERIOD_SECONDS ` : Set this to a value in seconds, followed by "s". The maximum value is `8467200s` (14 weeks).
 
 #### Create a weekly backup schedule
 
@@ -129,45 +134,50 @@ gcloud firestore backups schedules create \
 
 Replace the following:
 
-  - DATABASE\_ID : The ID of the database to back up. Set to `'(default)'` for the default database.
-  - RETENTION\_PERIOD : Set this to a value up to 14 weeks ( `14w` ).
-  - DAY : The day of the week to take the backup. Set to one of the following:
-      - `SUN` for Sunday
-      - `MON` for Monday
-      - `TUE` for Tuesday
-      - `WED` for Wednesday
-      - `THU` for Thursday
-      - `FRI` for Friday
-      - `SAT` for Saturday
+- ` DATABASE_ID ` : The ID of the database to back up. Set to `'(default)'` for the default database.
+- ` RETENTION_PERIOD ` : Set this to a value up to 14 weeks ( `14w` ).
+- ` DAY ` : The day of the week to take the backup. Set to one of the following:
+  - `SUN` for Sunday
+  - `MON` for Monday
+  - `TUE` for Tuesday
+  - `WED` for Wednesday
+  - `THU` for Thursday
+  - `FRI` for Friday
+  - `SAT` for Saturday
 
 ##### Terraform
 
-To create a weekly backup schedule, create a `  google_firestore_backup_schedule  ` resource.
+To create a weekly backup schedule, create a [`google_firestore_backup_schedule`](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_backup_schedule) resource.
 
-    resource "google_firestore_backup_schedule" "weekly-backup" {
-      project  = PROJECT_ID
-      database = DATABASE_ID
-    
-      retention = RETENTION_PERIOD_SECONDS
-    
-      weekly_recurrence {
-        day = DAY
-      }
-    }
+```
+resource "google_firestore_backup_schedule" "weekly-backup" {
+  project  = PROJECT_ID
+  database = DATABASE_ID
+
+  retention = RETENTION_PERIOD_SECONDS
+
+  weekly_recurrence {
+    day = DAY
+  }
+}
+```
 
 Replace the following:
 
-  - PROJECT\_ID : The ID of the project.
-  - DATABASE\_ID : The ID of the database to back up. Set to `'(default)'` for the default database.
-  - RETENTION\_PERIOD\_SECONDS : Set this to a value in seconds, followed by "s". The maximum value is `8467200s` (14 weeks).
-  - DAY : The day of the week to take the backup. Set to one of the following:
-      - `SUNDAY` for Sunday
-      - `MONDAY` for Monday
-      - `TUESDAY` for Tuesday
-      - `WEDNESDAY` for Wednesday
-      - `THURSDAY` for Thursday
-      - `FRIDAY` for Friday
-      - `SATURDAY` for Saturday
+- ` PROJECT_ID ` : The ID of the project.
+- ` DATABASE_ID ` : The ID of the database to back up. Set to `'(default)'` for the default database.
+
+You can also use a [resource reference](https://developer.hashicorp.com/terraform/language/expressions/references#resources) to a Terraform resource of type [`google_firestore_database`](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/firestore_database) .
+
+- ` RETENTION_PERIOD_SECONDS ` : Set this to a value in seconds, followed by "s". The maximum value is `8467200s` (14 weeks).
+- ` DAY ` : The day of the week to take the backup. Set to one of the following:
+  - `SUNDAY` for Sunday
+  - `MONDAY` for Monday
+  - `TUESDAY` for Tuesday
+  - `WEDNESDAY` for Wednesday
+  - `THURSDAY` for Thursday
+  - `FRIDAY` for Friday
+  - `SATURDAY` for Saturday
 
 ### List backup schedules
 
@@ -190,7 +200,7 @@ gcloud firestore backups schedules list \
 --database='DATABASE_ID'
 ```
 
-Replace DATABASE\_ID with the ID of the database. Use `'(default)'` for the default database.
+Replace ` DATABASE_ID ` with the ID of the database. Use `'(default)'` for the default database.
 
 ### Describe backup schedule
 
@@ -216,8 +226,8 @@ gcloud firestore backups schedules describe \
 
 Replace the following:
 
-  - DATABASE\_ID : The ID of the database to back up. Set to `'(default)'` for the default database.
-  - BACKUP\_SCHEDULE\_ID : The ID of a backup schedule. You can view the ID of each backup schedule when you [list all backup schedules](https://docs.cloud.google.com/datastore/docs/backups#list_backup_schedules) .
+- ` DATABASE_ID ` : The ID of the database to back up. Set to `'(default)'` for the default database.
+- ` BACKUP_SCHEDULE_ID ` : The ID of a backup schedule. You can view the ID of each backup schedule when you [list all backup schedules](https://docs.cloud.google.com/datastore/docs/backups#list_backup_schedules) .
 
 ### Update a backup schedule
 
@@ -246,9 +256,9 @@ gcloud firestore backups schedules update \
 
 Replace the following:
 
-  - DATABASE\_ID : The ID of the database to back up. Set to `'(default)'` for the default database.
-  - BACKUP\_SCHEDULE\_ID : The ID of a backup schedule. You can view the ID of each backup schedule when you [list all backup schedules](https://docs.cloud.google.com/datastore/docs/backups#list_backup_schedules) .
-  - RETENTION\_PERIOD : Set this to a value up to 14 weeks ( `14w` ).
+- ` DATABASE_ID ` : The ID of the database to back up. Set to `'(default)'` for the default database.
+- ` BACKUP_SCHEDULE_ID ` : The ID of a backup schedule. You can view the ID of each backup schedule when you [list all backup schedules](https://docs.cloud.google.com/datastore/docs/backups#list_backup_schedules) .
+- ` RETENTION_PERIOD ` : Set this to a value up to 14 weeks ( `14w` ).
 
 You can update the retention period of a backup schedule, but you cannot update its recurrence. If you need a backup schedule with a different recurrence, delete the old backup schedule if it is no longer required and create a new backup schedule with the preferred recurrence.
 
@@ -278,8 +288,8 @@ gcloud firestore backups schedules delete \
 
 Replace the following:
 
-  - DATABASE\_ID : The ID of the database to back up. Set to `'(default)'` for the default database.
-  - BACKUP\_SCHEDULE\_ID : The ID of a backup schedule. You can view the ID of each backup schedule when you [list all backup schedules](https://docs.cloud.google.com/datastore/docs/backups#list_backup_schedules) .
+- ` DATABASE_ID ` : The ID of the database to back up. Set to `'(default)'` for the default database.
+- ` BACKUP_SCHEDULE_ID ` : The ID of a backup schedule. You can view the ID of each backup schedule when you [list all backup schedules](https://docs.cloud.google.com/datastore/docs/backups#list_backup_schedules) .
 
 Note that deleting a backup schedule won't delete backups already created by this schedule. You can wait for them to expire after their retention period, or to manually delete a backup, see [delete backup](https://docs.cloud.google.com/datastore/docs/backups#delete_backup) .
 
@@ -316,7 +326,7 @@ gcloud firestore backups list \
 --format="table(name, database, state)"
 ```
 
-Replace `  LOCATION  ` with the name of a Datastore mode location.
+Replace `LOCATION` with the name of a Datastore mode location.
 
 ### Describe a backup
 
@@ -342,8 +352,8 @@ gcloud firestore backups describe \
 
 Replace the following:
 
-  - LOCATION : The location of the database.
-  - BACKUP\_ID : The ID of a backup. You can view the ID of each backup when you [list all backups](https://docs.cloud.google.com/datastore/docs/backups#list_backups) .
+- ` LOCATION ` : The location of the database.
+- ` BACKUP_ID ` : The ID of a backup. You can view the ID of each backup when you [list all backups](https://docs.cloud.google.com/datastore/docs/backups#list_backups) .
 
 ### Delete backup
 
@@ -357,7 +367,7 @@ To delete a backup, use one of the following methods.
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists. The **Disaster recovery** page opens. This page describes backup schedules and lists available backups.
 
-3.  In the **Backups** table, find the row for a backup and in the **Actions** column, click **View more** ( more\_vert ). Click **Delete** .
+3.  In the **Backups** table, find the row for a backup and in the **Actions** column, click **View more** ( more_vert ). Click **Delete** .
 
 4.  Confirm the action using the text field and click **Delete** .
 
@@ -373,8 +383,8 @@ gcloud firestore backups delete \
 
 Replace the following:
 
-  - LOCATION : The location of the database.
-  - BACKUP\_ID : The ID of a backup. You can view the ID of each backup when you [list all backups](https://docs.cloud.google.com/datastore/docs/backups#list_backups) .
+- ` LOCATION ` : The location of the database.
+- ` BACKUP_ID ` : The ID of a backup. You can view the ID of each backup when you [list all backups](https://docs.cloud.google.com/datastore/docs/backups#list_backups) .
 
 > **Note:** Firestore stores metadata related to backups and backup schedules related to a database. Firestore retains this metadata until **all** backups for the database expire or are deleted.
 
@@ -390,10 +400,10 @@ To begin a restore operation, use one of the following methods:
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists. The **Disaster recovery** page opens. This page describes backup schedules and lists available backups.
 
-3.  In the **Backups** table, find the row for a backup and in the **Actions** column, click **View more** ( more\_vert ). Click **Restore with Cloud Shell** .
+3.  In the **Backups** table, find the row for a backup and in the **Actions** column, click **View more** ( more_vert ). Click **Restore with Cloud Shell** .
 
-4.  The Cloud Shell panel opens with a gcloud CLI command to restore from the selected backup. Replace ID\_OF\_NEW\_DATABASE with an ID for the database and run the command.
-    
+4.  The Cloud Shell panel opens with a gcloud CLI command to restore from the selected backup. Replace ` ID_OF_NEW_DATABASE ` with an ID for the database and run the command.
+
     Running the command returns a response with more information about the operation. The database soon appears in your list of databases. The restore operation will take some time and must complete before the database is accessible.
 
 ##### gcloud
@@ -409,39 +419,41 @@ gcloud firestore databases restore \
 
 Replace the following:
 
-  - PROJECT\_ID : Your project ID.
-  - LOCATION : The location of the database backup and the location of the new database created for the restored data.
-  - BACKUP\_ID : The ID of a backup. You can view the ID of each backup when you [list all backups](https://docs.cloud.google.com/datastore/docs/backups#list_backups) .
-  - DATABASE\_ID : A database ID for the new database. You cannot use a database ID that is already in use.
-  - \[ KEY = VALUE \]: A optional list of tags KEY=VALUE pairs to bind. For example:
-      - `--tags=123/environment=production,123/costCenter=marketing`
-      - `--tags=tagKeys/333=tagValues/444`
+- ` PROJECT_ID ` : Your project ID.
+- ` LOCATION ` : The location of the database backup and the location of the new database created for the restored data.
+- ` BACKUP_ID ` : The ID of a backup. You can view the ID of each backup when you [list all backups](https://docs.cloud.google.com/datastore/docs/backups#list_backups) .
+- ` DATABASE_ID ` : A database ID for the new database. You cannot use a database ID that is already in use.
+- \[ ` KEY ` = ` VALUE ` \]: A optional list of tags KEY=VALUE pairs to bind. For example:
+  - `--tags=123/environment=production,123/costCenter=marketing`
+  - `--tags=tagKeys/333=tagValues/444`
 
 The database mode will match that of the backup. The output will include `metadata` , `name` , and `response` components:
 
-    metadata:
-      '@type': type.googleapis.com/google.firestore.admin.v1.RestoreDatabaseMetadata
-      backup: projects/PROJECT_ID/locations/LOCATION/backups/BACKUP_ID
-      database: projects/PROJECT_ID/databases/DATABASE_ID
-      operationState: PROCESSING
-      progressPercentage:
-        completedWork: '20'
-        estimatedWork: '100'
-      startTime: '2023-12-06T14:20:17.398325Z'
-    name: projects/PROJECT_ID/databases/DATABASE_ID/operations/operation_uuid
-    response:
-      '@type': type.googleapis.com/google.firestore.admin.v1.Database
-      createTime: '2023-12-06T14:20:17.398325Z'
-      name: projects/PROJECT_ID/databases/DATABASE_ID
-      ...
+```
+metadata:
+  '@type': type.googleapis.com/google.firestore.admin.v1.RestoreDatabaseMetadata
+  backup: projects/PROJECT_ID/locations/LOCATION/backups/BACKUP_ID
+  database: projects/PROJECT_ID/databases/DATABASE_ID
+  operationState: PROCESSING
+  progressPercentage:
+    completedWork: '20'
+    estimatedWork: '100'
+  startTime: '2023-12-06T14:20:17.398325Z'
+name: projects/PROJECT_ID/databases/DATABASE_ID/operations/operation_uuid
+response:
+  '@type': type.googleapis.com/google.firestore.admin.v1.Database
+  createTime: '2023-12-06T14:20:17.398325Z'
+  name: projects/PROJECT_ID/databases/DATABASE_ID
+  ...
+```
 
-The `metadata` field includes a `progressPercentage` component, detailing the estimated progress of the restore thus far, and an `operationState` specifying the overall state of the restore. To retrieve this information again, use `  gcloud firestore operations list  ` :
+The `metadata` field includes a `progressPercentage` component, detailing the estimated progress of the restore thus far, and an `operationState` specifying the overall state of the restore. To retrieve this information again, use [`gcloud firestore operations list`](https://cloud.google.com//sdk/gcloud/reference/firestore/operations/list) :
 
 ```sh
 gcloud firestore operations list --database=DATABASE_ID
 ```
 
-or, using the `name` field from the output described above, with `  gcloud firestore operations describe  ` :
+or, using the `name` field from the output described above, with [`gcloud firestore operations describe`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/describe) :
 
 ```sh
 gcloud firestore operations describe OPERATION_NAME
@@ -455,6 +467,6 @@ A restore operation does not restore [App Engine search data](https://cloud.goog
 
 After you finish restoring, you should do the following:
 
-  - Verify that appropriate [IAM controls](https://docs.cloud.google.com/datastore/docs/security/iam) are applied to your new database.
+- Verify that appropriate [IAM controls](https://docs.cloud.google.com/datastore/docs/security/iam) are applied to your new database.
 
-  - If you previously used [TTL](https://docs.cloud.google.com/datastore/docs/ttl) policies, reapply them to the new database. TTL policies are not included in backups and are not automatically reapplied to restored databases.
+- If you previously used [TTL](https://docs.cloud.google.com/datastore/docs/ttl) policies, reapply them to the new database. TTL policies are not included in backups and are not automatically reapplied to restored databases.

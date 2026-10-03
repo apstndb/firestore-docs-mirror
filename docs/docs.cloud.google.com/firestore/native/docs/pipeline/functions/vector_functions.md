@@ -10,20 +10,22 @@ data_source: docs.cloud.google.com
 
 ## **Vector Functions**
 
-|                                       |                                                    |
-| ------------------------------------- | -------------------------------------------------- |
-| Name                                  | Description                                        |
-| `         COSINE_DISTANCE        `    | Returns the cosine distance between two vectors    |
-| `         DOT_PRODUCT        `        | Returns the dot product between two vectors        |
-| `         EUCLIDEAN_DISTANCE        ` | Returns the euclidean distance between two vectors |
-| `         MANHATTAN_DISTANCE        ` | Returns the manhattan distance between two vectors |
-| `         VECTOR_LENGTH        `      | Returns the number of elements in a vector         |
+|                                                                                                                                    |                                                    |
+|------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
+| Name                                                                                                                               | Description                                        |
+| [`COSINE_DISTANCE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/vector_functions#cosine_distance)       | Returns the cosine distance between two vectors    |
+| [`DOT_PRODUCT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/vector_functions#dot_product)               | Returns the dot product between two vectors        |
+| [`EUCLIDEAN_DISTANCE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/vector_functions#euclidean_distance) | Returns the euclidean distance between two vectors |
+| [`MANHATTAN_DISTANCE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/vector_functions#manhattan_distance) | Returns the manhattan distance between two vectors |
+| [`VECTOR_LENGTH`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/vector_functions#vector_length)           | Returns the number of elements in a vector         |
 
-### COSINE\_DISTANCE
+### COSINE_DISTANCE
 
 **Syntax:**
 
-    cosine_distance(x: VECTOR, y: VECTOR) -> FLOAT64
+```
+cosine_distance(x: VECTOR, y: VECTOR) -> FLOAT64
+```
 
 **Description:**
 
@@ -31,95 +33,111 @@ Returns the cosine distance between `x` and `y` .
 
 ##### Node.js
 
-    const sampleVector = [0.0, 1, 2, 3, 4, 5];
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        field("embedding").cosineDistance(sampleVector).as("cosineDistance")
-      )
-      .execute();
+```
+const sampleVector = [0.0, 1, 2, 3, 4, 5];
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    field("embedding").cosineDistance(sampleVector).as("cosineDistance")
+  )
+  .execute();
+```
 
 ### Web
 
-    const sampleVector = [0.0, 1, 2, 3, 4, 5];
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("embedding").cosineDistance(sampleVector).as("cosineDistance")));
+```
+const sampleVector = [0.0, 1, 2, 3, 4, 5];
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("embedding").cosineDistance(sampleVector).as("cosineDistance")));
+```
 
 ##### Swift
 
-    let sampleVector = [0.0, 1, 2, 3, 4, 5]
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("embedding").cosineDistance(sampleVector).as("cosineDistance")
-      ])
-      .execute()
+```
+let sampleVector = [0.0, 1, 2, 3, 4, 5]
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("embedding").cosineDistance(sampleVector).as("cosineDistance")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val sampleVector = doubleArrayOf(0.0, 1.0, 2.0, 3.0, 4.0, 5.0)
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("embedding").cosineDistance(sampleVector).alias("cosineDistance")
-        )
-        .execute()
+```
+val sampleVector = doubleArrayOf(0.0, 1.0, 2.0, 3.0, 4.0, 5.0)
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("embedding").cosineDistance(sampleVector).alias("cosineDistance")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    double[] sampleVector = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("embedding").cosineDistance(sampleVector).alias("cosineDistance")
-        )
-        .execute();
+```
+double[] sampleVector = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("embedding").cosineDistance(sampleVector).alias("cosineDistance")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    from google.cloud.firestore_v1.vector import Vector
-    
-    sample_vector = Vector([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Field.of("embedding").cosine_distance(sample_vector).as_("cosineDistance")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+from google.cloud.firestore_v1.vector import Vector
+
+sample_vector = Vector([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Field.of("embedding").cosine_distance(sample_vector).as_("cosineDistance")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    double[] sampleVector = new double[] {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(cosineDistance(field("embedding"), sampleVector).as("cosineDistance"))
-            .execute()
-            .get();
+```
+double[] sampleVector = new double[] {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(cosineDistance(field("embedding"), sampleVector).as("cosineDistance"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    sampleVector := []float64{0.0, 1.0, 2.0, 3.0, 4.0, 5.0}
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.CosineDistance(firestore.FieldOf("embedding"), sampleVector).As("cosineDistance"),
-     )).
-     Execute(ctx)
+```
+sampleVector := []float64{0.0, 1.0, 2.0, 3.0, 4.0, 5.0}
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.CosineDistance(firestore.FieldOf("embedding"), sampleVector).As("cosineDistance"),
+    )).
+    Execute(ctx)
+```
 
-### DOT\_PRODUCT
+### DOT_PRODUCT
 
 **Syntax:**
 
-    dot_product(x: VECTOR, y: VECTOR) -> FLOAT64
+```
+dot_product(x: VECTOR, y: VECTOR) -> FLOAT64
+```
 
 **Description:**
 
@@ -127,95 +145,111 @@ Returns the dot product of `x` and `y` .
 
 ##### Node.js
 
-    const sampleVector = [0.0, 1, 2, 3, 4, 5];
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        field("embedding").dotProduct(sampleVector).as("dotProduct")
-      )
-      .execute();
+```
+const sampleVector = [0.0, 1, 2, 3, 4, 5];
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    field("embedding").dotProduct(sampleVector).as("dotProduct")
+  )
+  .execute();
+```
 
 ### Web
 
-    const sampleVector = [0.0, 1, 2, 3, 4, 5];
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("embedding").dotProduct(sampleVector).as("dotProduct")
-      )
-    );
+```
+const sampleVector = [0.0, 1, 2, 3, 4, 5];
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("embedding").dotProduct(sampleVector).as("dotProduct")
+  )
+);
+```
 
 ##### Swift
 
-    let sampleVector = [0.0, 1, 2, 3, 4, 5]
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("embedding").dotProduct(sampleVector).as("dotProduct")
-      ])
-      .execute()
+```
+let sampleVector = [0.0, 1, 2, 3, 4, 5]
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("embedding").dotProduct(sampleVector).as("dotProduct")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val sampleVector = doubleArrayOf(0.0, 1.0, 2.0, 3.0, 4.0, 5.0)
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("embedding").dotProduct(sampleVector).alias("dotProduct")
-        )
-        .execute()
+```
+val sampleVector = doubleArrayOf(0.0, 1.0, 2.0, 3.0, 4.0, 5.0)
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("embedding").dotProduct(sampleVector).alias("dotProduct")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    double[] sampleVector = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("embedding").dotProduct(sampleVector).alias("dotProduct")
-        )
-        .execute();
+```
+double[] sampleVector = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("embedding").dotProduct(sampleVector).alias("dotProduct")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    from google.cloud.firestore_v1.vector import Vector
-    
-    sample_vector = Vector([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("embedding").dot_product(sample_vector).as_("dotProduct"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+from google.cloud.firestore_v1.vector import Vector
+
+sample_vector = Vector([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("embedding").dot_product(sample_vector).as_("dotProduct"))
+    .execute()
+)
+```
 
 ##### Java
 
-    double[] sampleVector = new double[] {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(dotProduct(field("embedding"), sampleVector).as("dotProduct"))
-            .execute()
-            .get();
+```
+double[] sampleVector = new double[] {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(dotProduct(field("embedding"), sampleVector).as("dotProduct"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    sampleVector := []float64{0.0, 1.0, 2.0, 3.0, 4.0, 5.0}
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.DotProduct(firestore.FieldOf("embedding"), sampleVector).As("dotProduct"),
-     )).
-     Execute(ctx)
+```
+sampleVector := []float64{0.0, 1.0, 2.0, 3.0, 4.0, 5.0}
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.DotProduct(firestore.FieldOf("embedding"), sampleVector).As("dotProduct"),
+    )).
+    Execute(ctx)
+```
 
-### EUCLIDEAN\_DISTANCE
+### EUCLIDEAN_DISTANCE
 
 **Syntax:**
 
-    euclidean_distance(x: VECTOR, y: VECTOR) -> FLOAT64
+```
+euclidean_distance(x: VECTOR, y: VECTOR) -> FLOAT64
+```
 
 **Description:**
 
@@ -223,109 +257,127 @@ Computes the euclidean distance between `x` and `y` .
 
 ##### Node.js
 
-    const sampleVector = [0.0, 1, 2, 3, 4, 5];
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        field("embedding").euclideanDistance(sampleVector).as("euclideanDistance")
-      )
-      .execute();
+```
+const sampleVector = [0.0, 1, 2, 3, 4, 5];
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    field("embedding").euclideanDistance(sampleVector).as("euclideanDistance")
+  )
+  .execute();
+```
 
 ### Web
 
-    const sampleVector = [0.0, 1, 2, 3, 4, 5];
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("embedding").euclideanDistance(sampleVector).as("euclideanDistance")
-      )
-    );
+```
+const sampleVector = [0.0, 1, 2, 3, 4, 5];
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("embedding").euclideanDistance(sampleVector).as("euclideanDistance")
+  )
+);
+```
 
 ##### Swift
 
-    let sampleVector = [0.0, 1, 2, 3, 4, 5]
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("embedding").euclideanDistance(sampleVector).as("euclideanDistance")
-      ])
-      .execute()
+```
+let sampleVector = [0.0, 1, 2, 3, 4, 5]
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("embedding").euclideanDistance(sampleVector).as("euclideanDistance")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val sampleVector = doubleArrayOf(0.0, 1.0, 2.0, 3.0, 4.0, 5.0)
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("embedding").euclideanDistance(sampleVector).alias("euclideanDistance")
-        )
-        .execute()
+```
+val sampleVector = doubleArrayOf(0.0, 1.0, 2.0, 3.0, 4.0, 5.0)
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("embedding").euclideanDistance(sampleVector).alias("euclideanDistance")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    double[] sampleVector = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("embedding").euclideanDistance(sampleVector).alias("euclideanDistance")
-        )
-        .execute();
+```
+double[] sampleVector = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("embedding").euclideanDistance(sampleVector).alias("euclideanDistance")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    from google.cloud.firestore_v1.vector import Vector
-    
-    sample_vector = Vector([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Field.of("embedding")
-            .euclidean_distance(sample_vector)
-            .as_("euclideanDistance")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+from google.cloud.firestore_v1.vector import Vector
+
+sample_vector = Vector([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Field.of("embedding")
+        .euclidean_distance(sample_vector)
+        .as_("euclideanDistance")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    double[] sampleVector = new double[] {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(euclideanDistance(field("embedding"), sampleVector).as("euclideanDistance"))
-            .execute()
-            .get();
+```
+double[] sampleVector = new double[] {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(euclideanDistance(field("embedding"), sampleVector).as("euclideanDistance"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    sampleVector := []float64{0.0, 1.0, 2.0, 3.0, 4.0, 5.0}
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.EuclideanDistance(firestore.FieldOf("embedding"), sampleVector).As("euclideanDistance"),
-     )).
-     Execute(ctx)
+```
+sampleVector := []float64{0.0, 1.0, 2.0, 3.0, 4.0, 5.0}
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.EuclideanDistance(firestore.FieldOf("embedding"), sampleVector).As("euclideanDistance"),
+    )).
+    Execute(ctx)
+```
 
-### MANHATTAN\_DISTANCE
+### MANHATTAN_DISTANCE
 
 **Syntax:**
 
-    manhattan_distance(x: VECTOR, y: VECTOR) -> FLOAT64
+```
+manhattan_distance(x: VECTOR, y: VECTOR) -> FLOAT64
+```
 
 **Description:**
 
 Computes the manhattan distance between `x` and `y` .
 
-### VECTOR\_LENGTH
+### VECTOR_LENGTH
 
 **Syntax:**
 
-    vector_length(vector: VECTOR) -> INT64
+```
+vector_length(vector: VECTOR) -> INT64
+```
 
 **Description:**
 
@@ -333,81 +385,95 @@ Returns the number of elements in a `VECTOR` .
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        field("embedding").vectorLength().as("vectorLength")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    field("embedding").vectorLength().as("vectorLength")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("embedding").vectorLength().as("vectorLength")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("embedding").vectorLength().as("vectorLength")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("embedding").vectorLength().as("vectorLength")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("embedding").vectorLength().as("vectorLength")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("embedding").vectorLength().alias("vectorLength")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("embedding").vectorLength().alias("vectorLength")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("embedding").vectorLength().alias("vectorLength")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("embedding").vectorLength().alias("vectorLength")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("embedding").vector_length().as_("vectorLength"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("embedding").vector_length().as_("vectorLength"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(vectorLength(field("embedding")).as("vectorLength"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(vectorLength(field("embedding")).as("vectorLength"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.VectorLength(firestore.FieldOf("embedding")).As("vectorLength"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.VectorLength(firestore.FieldOf("embedding")).As("vectorLength"),
+    )).
+    Execute(ctx)
+```
 
 ## What's next
 
-  - See the [Pipeline Queries overview](https://docs.cloud.google.com/firestore/docs/pipeline/overview)
+- See the [Pipeline Queries overview](https://docs.cloud.google.com/firestore/docs/pipeline/overview)

@@ -10,9 +10,9 @@ data_source: docs.cloud.google.com
 
 This page gives tips and resources to help you understand your Firestore billing report. This page covers the following common sources of billing questions:
 
-  - Outside of app usage, sources of costs include import operations, export operations, and console usage.
-  - Within your app, real-time updates, no-op writes, and query offsets can make your usage rise faster than expected.
-  - As you use the usage dashboard in the console, note the discrepancies between the dashboard and the billing report.
+- Outside of app usage, sources of costs include import operations, export operations, and console usage.
+- Within your app, real-time updates, no-op writes, and query offsets can make your usage rise faster than expected.
+- As you use the usage dashboard in the console, note the discrepancies between the dashboard and the billing report.
 
 ## Import and Export Usage
 
@@ -38,7 +38,9 @@ You can view a list of recent export and import operations in the **Firestore Im
 
 Use the [`operations list`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command to see all running and recently completed export and import operations:
 
-    gcloud firestore operations list
+```
+gcloud firestore operations list
+```
 
 ### Audit Logs for admin operations
 
@@ -54,23 +56,23 @@ As you breakdown your usage, factor in console usage as another source of Firest
 
 In addition to the [pricing information](https://cloud.google.com/firestore/pricing) , review your app for the following operations which can lead to billing rising faster than expected:
 
-  - **Real-time updates**
-    
-    When you [listen to the results of a query](https://docs.cloud.google.com/firestore/docs/query-data/listen) , you are charged for a read each time a document in the result set is added or updated. You are also charged for a read when a document is removed from the result set because the document has changed. (In contrast, when a document is deleted, you are not charged for a read.)
-    
-    Review the scope of your real-time listeners. Listening to the results of a very broad query or listening to an entire collection might result in more read operations than required.
+- **Real-time updates**
 
-  - **No-op writes and no-op deletes**
-    
-    A no-op is an operation that does not result in changes to any documents. You still incur charges for no-op writes and deletes.
-    
-    For a delete operation, you incur charges even if the given document doesn't exist.
-    
-    For a write operation, you still incur charges if the operations result in no changes. For example, an operation that updates a document field to the same field value incurs charges.
+  When you [listen to the results of a query](https://docs.cloud.google.com/firestore/docs/query-data/listen) , you are charged for a read each time a document in the result set is added or updated. You are also charged for a read when a document is removed from the result set because the document has changed. (In contrast, when a document is deleted, you are not charged for a read.)
 
-  - **Query offsets**
-    
-    [Query offsets](https://googleapis.dev/nodejs/firestore/latest/Query.html#offset) skip a specified number of query results but skipped results still count towards billing. Because of this additional cost, you should use [cursors](https://docs.cloud.google.com/firestore/docs/query-data/query-cursors) instead of offsets.
+  Review the scope of your real-time listeners. Listening to the results of a very broad query or listening to an entire collection might result in more read operations than required.
+
+- **No-op writes and no-op deletes**
+
+  A no-op is an operation that does not result in changes to any documents. You still incur charges for no-op writes and deletes.
+
+  For a delete operation, you incur charges even if the given document doesn't exist.
+
+  For a write operation, you still incur charges if the operations result in no changes. For example, an operation that updates a document field to the same field value incurs charges.
+
+- **Query offsets**
+
+  [Query offsets](https://googleapis.dev/nodejs/firestore/latest/Query.html#offset) skip a specified number of query results but skipped results still count towards billing. Because of this additional cost, you should use [cursors](https://docs.cloud.google.com/firestore/docs/query-data/query-cursors) instead of offsets.
 
 ## Usage dashboard discrepancies
 
@@ -78,21 +80,21 @@ The Firestore usage dashboards in the Firebase and Cloud consoles provide an est
 
 Operations that cause discrepancies between the usage dashboard and billed usage include:
 
-  - Import and export operations. Reads and writes performed by these operations do not show up in the usage dashboard.
+- Import and export operations. Reads and writes performed by these operations do not show up in the usage dashboard.
 
-  - No-op verify-only writes. Writes that only verify the existence or non-existence of a document contribute to billed read operations, but they show as `UPDATE_NOOP` and `DELETE_NOOP` respectively in the write usage dashboard.
+- No-op verify-only writes. Writes that only verify the existence or non-existence of a document contribute to billed read operations, but they show as `UPDATE_NOOP` and `DELETE_NOOP` respectively in the write usage dashboard.
 
-  - No-op writes. Operations that do not result in a change to the database, such as an update that does not change field values or a write to a deleted document may show in the usage dashboard as `UPDATE_NOOP` or `DELETE_NOOP` . Even though they show as `NOOP` , they still contribute to billed operations.
+- No-op writes. Operations that do not result in a change to the database, such as an update that does not change field values or a write to a deleted document may show in the usage dashboard as `UPDATE_NOOP` or `DELETE_NOOP` . Even though they show as `NOOP` , they still contribute to billed operations.
 
-  - Collapsed writes. In cases with multiple writes to the same document in quick succession, the usage dashboard might collapse multiple writes together and count them as one. When billing usage, each write is still counted separately.
-    
-    The usage dashboard also collapses writes for field transforms like server timestamps, numeric increments, and array union operations. For field transforms, the usage dashboard might count multiple operations as a single operation.
+- Collapsed writes. In cases with multiple writes to the same document in quick succession, the usage dashboard might collapse multiple writes together and count them as one. When billing usage, each write is still counted separately.
 
-  - Queries that return zero results. Queries with zero results incur a cost of one read operation. This usage is billed but does not appear in the usage dashboard.
+  The usage dashboard also collapses writes for field transforms like server timestamps, numeric increments, and array union operations. For field transforms, the usage dashboard might count multiple operations as a single operation.
 
-  - Read operations from [index entries read](https://docs.cloud.google.com/firestore/pricing#index-reads) . This usage is billed but does not appear in the usage dashboard. For example, aggregation queries bill for index entries read but this usage does not appear in the usage dashboard.
+- Queries that return zero results. Queries with zero results incur a cost of one read operation. This usage is billed but does not appear in the usage dashboard.
 
-  - Requests to list collection IDs. The usage dashboard reports one read operation per collection ID which differs from [billing](https://cloud.google.com/firestore/pricing#:~:text=Queries%20other%20than,once%20per%20request) .
+- Read operations from [index entries read](https://docs.cloud.google.com/firestore/pricing#index-reads) . This usage is billed but does not appear in the usage dashboard. For example, aggregation queries bill for index entries read but this usage does not appear in the usage dashboard.
+
+- Requests to list collection IDs. The usage dashboard reports one read operation per collection ID which differs from [billing](https://cloud.google.com/firestore/pricing#:~:text=Queries%20other%20than,once%20per%20request) .
 
 ## What's next
 

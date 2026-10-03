@@ -8,9 +8,9 @@ data_source: docs.cloud.google.com
 
 Accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application.
 
-  - [REST Resource: v1beta3.projects](https://docs.cloud.google.com/datastore/docs/reference/data/rest#v1beta3.projects)
-  - [REST Resource: v1.projects](https://docs.cloud.google.com/datastore/docs/reference/data/rest#v1.projects)
-  - [REST Resource: v1.projects.operations](https://docs.cloud.google.com/datastore/docs/reference/data/rest#v1.projects.operations)
+- [REST Resource: v1beta3.projects](https://docs.cloud.google.com/datastore/docs/reference/data/rest#v1beta3.projects)
+- [REST Resource: v1.projects](https://docs.cloud.google.com/datastore/docs/reference/data/rest#v1.projects)
+- [REST Resource: v1.projects.operations](https://docs.cloud.google.com/datastore/docs/reference/data/rest#v1.projects.operations)
 
 ## Service: datastore.googleapis.com
 
@@ -20,14 +20,14 @@ To call this service, we recommend that you use the Google-provided [client libr
 
 A [Discovery Document](https://developers.google.com/discovery/v1/reference/apis) is a machine-readable specification for describing and consuming REST APIs. It is used to build client libraries, IDE plugins, and other tools that interact with Google APIs. One service may provide multiple discovery documents. This service provides the following discovery documents:
 
-  - <https://datastore.googleapis.com/$discovery/rest?version=v1>
-  - <https://datastore.googleapis.com/$discovery/rest?version=v1beta3>
+- <https://datastore.googleapis.com/$discovery/rest?version=v1>
+- <https://datastore.googleapis.com/$discovery/rest?version=v1beta3>
 
 ### Service endpoint
 
 A [service endpoint](https://cloud.google.com/apis/design/glossary#api_service_endpoint) is a base URL that specifies the network address of an API service. One service might have multiple service endpoints. This service has the following service endpoint and all URIs below are relative to this service endpoint:
 
-  - `https://datastore.googleapis.com`
+- `https://datastore.googleapis.com`
 
 ### Regional service endpoint
 
@@ -39,112 +39,35 @@ A regional service endpoint is a base URL that specifies the network address of 
 
 ## REST Resource: [v1beta3.projects](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects)
 
-Methods
-
-`  allocateIds  `
-
-`POST /v1beta3/projects/{projectId}:allocateIds`  
-Allocates IDs for the given keys, which is useful for referencing an entity before it is inserted.
-
-`  beginTransaction  `
-
-`POST /v1beta3/projects/{projectId}:beginTransaction`  
-Begins a new transaction.
-
-`  commit  `
-
-`POST /v1beta3/projects/{projectId}:commit`  
-Commits a transaction, optionally creating, deleting or modifying some entities.
-
-`  lookup  `
-
-`POST /v1beta3/projects/{projectId}:lookup`  
-Looks up entities by key.
-
-`  reserveIds  `
-
-`POST /v1beta3/projects/{projectId}:reserveIds`  
-Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.
-
-`  rollback  `
-
-`POST /v1beta3/projects/{projectId}:rollback`  
-Rolls back a transaction.
-
-`  runAggregationQuery  `
-
-`POST /v1beta3/projects/{projectId}:runAggregationQuery`  
-Runs an aggregation query.
-
-`  runQuery  `
-
-`POST /v1beta3/projects/{projectId}:runQuery`  
-Queries for entities.
+| Methods                                                                                                                        |                                                                                                                                                     |
+|--------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`allocateIds`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/allocateIds)                 | `POST /v1beta3/projects/{projectId}:allocateIds` Allocates IDs for the given keys, which is useful for referencing an entity before it is inserted. |
+| [`beginTransaction`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/beginTransaction)       | `POST /v1beta3/projects/{projectId}:beginTransaction` Begins a new transaction.                                                                     |
+| [`commit`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/commit)                           | `POST /v1beta3/projects/{projectId}:commit` Commits a transaction, optionally creating, deleting or modifying some entities.                        |
+| [`lookup`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/lookup)                           | `POST /v1beta3/projects/{projectId}:lookup` Looks up entities by key.                                                                               |
+| [`reserveIds`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/reserveIds)                   | `POST /v1beta3/projects/{projectId}:reserveIds` Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.                       |
+| [`rollback`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/rollback)                       | `POST /v1beta3/projects/{projectId}:rollback` Rolls back a transaction.                                                                             |
+| [`runAggregationQuery`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runAggregationQuery) | `POST /v1beta3/projects/{projectId}:runAggregationQuery` Runs an aggregation query.                                                                 |
+| [`runQuery`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/projects/runQuery)                       | `POST /v1beta3/projects/{projectId}:runQuery` Queries for entities.                                                                                 |
 
 ## REST Resource: [v1.projects](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects)
 
-Methods
-
-`  allocateIds  `
-
-`POST /v1/projects/{projectId}:allocateIds`  
-Allocates IDs for the given keys, which is useful for referencing an entity before it is inserted.
-
-`  beginTransaction  `
-
-`POST /v1/projects/{projectId}:beginTransaction`  
-Begins a new transaction.
-
-`  commit  `
-
-`POST /v1/projects/{projectId}:commit`  
-Commits a transaction, optionally creating, deleting or modifying some entities.
-
-`  lookup  `
-
-`POST /v1/projects/{projectId}:lookup`  
-Looks up entities by key.
-
-`  reserveIds  `
-
-`POST /v1/projects/{projectId}:reserveIds`  
-Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.
-
-`  rollback  `
-
-`POST /v1/projects/{projectId}:rollback`  
-Rolls back a transaction.
-
-`  runAggregationQuery  `
-
-`POST /v1/projects/{projectId}:runAggregationQuery`  
-Runs an aggregation query.
-
-`  runQuery  `
-
-`POST /v1/projects/{projectId}:runQuery`  
-Queries for entities.
+| Methods                                                                                                                   |                                                                                                                                                |
+|---------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`allocateIds`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/allocateIds)                 | `POST /v1/projects/{projectId}:allocateIds` Allocates IDs for the given keys, which is useful for referencing an entity before it is inserted. |
+| [`beginTransaction`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/beginTransaction)       | `POST /v1/projects/{projectId}:beginTransaction` Begins a new transaction.                                                                     |
+| [`commit`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/commit)                           | `POST /v1/projects/{projectId}:commit` Commits a transaction, optionally creating, deleting or modifying some entities.                        |
+| [`lookup`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/lookup)                           | `POST /v1/projects/{projectId}:lookup` Looks up entities by key.                                                                               |
+| [`reserveIds`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/reserveIds)                   | `POST /v1/projects/{projectId}:reserveIds` Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.                       |
+| [`rollback`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/rollback)                       | `POST /v1/projects/{projectId}:rollback` Rolls back a transaction.                                                                             |
+| [`runAggregationQuery`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/runAggregationQuery) | `POST /v1/projects/{projectId}:runAggregationQuery` Runs an aggregation query.                                                                 |
+| [`runQuery`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/runQuery)                       | `POST /v1/projects/{projectId}:runQuery` Queries for entities.                                                                                 |
 
 ## REST Resource: [v1.projects.operations](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations)
 
-Methods
-
-`  cancel  `
-
-`POST /v1/{name=projects/*/operations/*}:cancel`  
-Starts asynchronous cancellation on a long-running operation.
-
-`  delete  `
-
-`DELETE /v1/{name=projects/*/operations/*}`  
-Deletes a long-running operation.
-
-`  get  `
-
-`GET /v1/{name=projects/*/operations/*}`  
-Gets the latest state of a long-running operation.
-
-`  list  `
-
-`GET /v1/{name=projects/*}/operations`  
-Lists operations that match the specified filter in the request.
+| Methods                                                                                                    |                                                                                                                |
+|------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
+| [`cancel`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/cancel) | `POST /v1/{name=projects/*/operations/*}:cancel` Starts asynchronous cancellation on a long-running operation. |
+| [`delete`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/delete) | `DELETE /v1/{name=projects/*/operations/*}` Deletes a long-running operation.                                  |
+| [`get`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/get)       | `GET /v1/{name=projects/*/operations/*}` Gets the latest state of a long-running operation.                    |
+| [`list`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects.operations/list)     | `GET /v1/{name=projects/*}/operations` Lists operations that match the specified filter in the request.        |

@@ -16,12 +16,12 @@ If a collection contains documents with sequential indexed values, Firestore lim
 
 For example, the limit applies to a collection of `user` documents with indexed field `userid` if the app assigns `userid` values like so:
 
-  - `1281, 1282, 1283, 1284, 1285, ...`
+- `1281, 1282, 1283, 1284, 1285, ...`
 
 On the other hand, not all `timestamp` fields trigger this limit. If a `timestamp` field tracks randomly distributed values, the write limit does not apply. The actual value of the field does not matter either, only that the field is monotonically increasing or decreasing. For example, both of the following sets of monotonically increasing field values trigger the write limit:
 
-  - `100000, 100001, 100002, 100003, ...`
-  - `0, 1, 2, 3, ...`
+- `100000, 100001, 100002, 100003, ...`
+- `0, 1, 2, 3, ...`
 
 ## Sharding a timestamp field
 
@@ -43,107 +43,113 @@ As an example, imagine an app for near real-time analysis of financial instrumen
 
 ##### Node.js
 
-    async function insertData() {
-      const instruments = [
-        {
-          symbol: 'AAA',
-          price: {
-            currency: 'USD',
-            micros: 34790000
-          },
-          exchange: 'EXCHG1',
-          instrumentType: 'commonstock',
-          timestamp: Timestamp.fromMillis(
-              Date.parse('2019-01-01T13:45:23.010Z'))
-        },
-        {
-          symbol: 'BBB',
-          price: {
-            currency: 'JPY',
-            micros: 64272000000
-          },
-          exchange: 'EXCHG2',
-          instrumentType: 'commonstock',
-          timestamp: Timestamp.fromMillis(
-              Date.parse('2019-01-01T13:45:23.101Z'))
-        },
-        {
-          symbol: 'Index1 ETF',
-          price: {
-            currency: 'USD',
-            micros: 473000000
-          },
-          exchange: 'EXCHG1',
-          instrumentType: 'etf',
-          timestamp: Timestamp.fromMillis(
-              Date.parse('2019-01-01T13:45:23.001Z'))
-        }
-      ];
-    
-      const batch = fs.batch();
-      for (const inst of instruments) {
-        const ref = fs.collection('instruments').doc();
-        batch.set(ref, inst);
-      }
-    
-      await batch.commit();
+```
+async function insertData() {
+  const instruments = [
+    {
+      symbol: 'AAA',
+      price: {
+        currency: 'USD',
+        micros: 34790000
+      },
+      exchange: 'EXCHG1',
+      instrumentType: 'commonstock',
+      timestamp: Timestamp.fromMillis(
+          Date.parse('2019-01-01T13:45:23.010Z'))
+    },
+    {
+      symbol: 'BBB',
+      price: {
+        currency: 'JPY',
+        micros: 64272000000
+      },
+      exchange: 'EXCHG2',
+      instrumentType: 'commonstock',
+      timestamp: Timestamp.fromMillis(
+          Date.parse('2019-01-01T13:45:23.101Z'))
+    },
+    {
+      symbol: 'Index1 ETF',
+      price: {
+        currency: 'USD',
+        micros: 473000000
+      },
+      exchange: 'EXCHG1',
+      instrumentType: 'etf',
+      timestamp: Timestamp.fromMillis(
+          Date.parse('2019-01-01T13:45:23.001Z'))
     }
+  ];
+
+  const batch = fs.batch();
+  for (const inst of instruments) {
+    const ref = fs.collection('instruments').doc();
+    batch.set(ref, inst);
+  }
+
+  await batch.commit();
+}
+```
 
 This app runs the following queries and orders by the `timestamp` field:
 
 ##### Node.js
 
-    function createQuery(fieldName, fieldOperator, fieldValue, limit = 5) {
-      return fs.collection('instruments')
-          .where(fieldName, fieldOperator, fieldValue)
-          .orderBy('timestamp', 'desc')
-          .limit(limit)
-          .get();
-    }
-    
-    function queryCommonStock() {
-      return createQuery('instrumentType', '==', 'commonstock');
-    }
-    
-    function queryExchange1Instruments() {
-      return createQuery('exchange', '==', 'EXCHG1');
-    }
-    
-    function queryUSDInstruments() {
-      return createQuery('price.currency', '==', 'USD');
-    }
+```
+function createQuery(fieldName, fieldOperator, fieldValue, limit = 5) {
+  return fs.collection('instruments')
+      .where(fieldName, fieldOperator, fieldValue)
+      .orderBy('timestamp', 'desc')
+      .limit(limit)
+      .get();
+}
 
-    insertData()
-        .then(() => {
-          const commonStock = queryCommonStock()
-              .then(
-                  (docs) => {
-                    console.log('--- queryCommonStock: ');
-                    docs.forEach((doc) => {
-                      console.log(`doc = ${util.inspect(doc.data(), {depth: 4})}`);
-                    });
-                  }
-              );
-          const exchange1Instruments = queryExchange1Instruments()
-              .then(
-                  (docs) => {
-                    console.log('--- queryExchange1Instruments: ');
-                    docs.forEach((doc) => {
-                      console.log(`doc = ${util.inspect(doc.data(), {depth: 4})}`);
-                    });
-                  }
-              );
-          const usdInstruments = queryUSDInstruments()
-              .then(
-                  (docs) => {
-                    console.log('--- queryUSDInstruments: ');
-                    docs.forEach((doc) => {
-                      console.log(`doc = ${util.inspect(doc.data(), {depth: 4})}`);
-                    });
-                  }
-              );
-          return Promise.all([commonStock, exchange1Instruments, usdInstruments]);
-        });
+function queryCommonStock() {
+  return createQuery('instrumentType', '==', 'commonstock');
+}
+
+function queryExchange1Instruments() {
+  return createQuery('exchange', '==', 'EXCHG1');
+}
+
+function queryUSDInstruments() {
+  return createQuery('price.currency', '==', 'USD');
+}
+```
+
+```
+insertData()
+    .then(() => {
+      const commonStock = queryCommonStock()
+          .then(
+              (docs) => {
+                console.log('--- queryCommonStock: ');
+                docs.forEach((doc) => {
+                  console.log(`doc = ${util.inspect(doc.data(), {depth: 4})}`);
+                });
+              }
+          );
+      const exchange1Instruments = queryExchange1Instruments()
+          .then(
+              (docs) => {
+                console.log('--- queryExchange1Instruments: ');
+                docs.forEach((doc) => {
+                  console.log(`doc = ${util.inspect(doc.data(), {depth: 4})}`);
+                });
+              }
+          );
+      const usdInstruments = queryUSDInstruments()
+          .then(
+              (docs) => {
+                console.log('--- queryUSDInstruments: ');
+                docs.forEach((doc) => {
+                  console.log(`doc = ${util.inspect(doc.data(), {depth: 4})}`);
+                });
+              }
+          );
+      return Promise.all([commonStock, exchange1Instruments, usdInstruments]);
+    });
+```
 
 After some research, you determine that the app will receive between 1,000 and 1,500 instrument updates per second. This surpasses the 500 writes per second allowed for collections containing documents with indexed timestamp fields. To increase the write throughput, you need 3 shard values, `MAX_INSTRUMENT_UPDATES/500 = 3` . This example uses the shard values `x` , `y` , and `z` . You can also use numbers or other characters for your shard values.
 
@@ -153,77 +159,81 @@ Add a `shard` field to your documents. Set the `shard` field to values `x` , `y`
 
 ##### Node.js
 
-    // Define our 'K' shard values
-    const shards = ['x', 'y', 'z'];
-    // Define a function to help 'chunk' our shards for use in queries.
-    // When using the 'in' query filter there is a max number of values that can be
-    // included in the value. If our number of shards is higher than that limit
-    // break down the shards into the fewest possible number of chunks.
-    function shardChunks() {
-      const chunks = [];
-      let start = 0;
-      while (start < shards.length) {
-        const elements = Math.min(MAX_IN_VALUES, shards.length - start);
-        const end = start + elements;
-        chunks.push(shards.slice(start, end));
-        start = end;
-      }
-      return chunks;
-    }
-    
-    // Add a convenience function to select a random shard
-    function randomShard() {
-      return shards[Math.floor(Math.random() * Math.floor(shards.length))];
-    }
+```
+// Define our 'K' shard values
+const shards = ['x', 'y', 'z'];
+// Define a function to help 'chunk' our shards for use in queries.
+// When using the 'in' query filter there is a max number of values that can be
+// included in the value. If our number of shards is higher than that limit
+// break down the shards into the fewest possible number of chunks.
+function shardChunks() {
+  const chunks = [];
+  let start = 0;
+  while (start < shards.length) {
+    const elements = Math.min(MAX_IN_VALUES, shards.length - start);
+    const end = start + elements;
+    chunks.push(shards.slice(start, end));
+    start = end;
+  }
+  return chunks;
+}
 
-    async function insertData() {
-      const instruments = [
-        {
-          shard: randomShard(),  // add the new shard field to the document
-          symbol: 'AAA',
-          price: {
-            currency: 'USD',
-            micros: 34790000
-          },
-          exchange: 'EXCHG1',
-          instrumentType: 'commonstock',
-          timestamp: Timestamp.fromMillis(
-              Date.parse('2019-01-01T13:45:23.010Z'))
-        },
-        {
-          shard: randomShard(),  // add the new shard field to the document
-          symbol: 'BBB',
-          price: {
-            currency: 'JPY',
-            micros: 64272000000
-          },
-          exchange: 'EXCHG2',
-          instrumentType: 'commonstock',
-          timestamp: Timestamp.fromMillis(
-              Date.parse('2019-01-01T13:45:23.101Z'))
-        },
-        {
-          shard: randomShard(),  // add the new shard field to the document
-          symbol: 'Index1 ETF',
-          price: {
-            currency: 'USD',
-            micros: 473000000
-          },
-          exchange: 'EXCHG1',
-          instrumentType: 'etf',
-          timestamp: Timestamp.fromMillis(
-              Date.parse('2019-01-01T13:45:23.001Z'))
-        }
-      ];
-    
-      const batch = fs.batch();
-      for (const inst of instruments) {
-        const ref = fs.collection('instruments').doc();
-        batch.set(ref, inst);
-      }
-    
-      await batch.commit();
+// Add a convenience function to select a random shard
+function randomShard() {
+  return shards[Math.floor(Math.random() * Math.floor(shards.length))];
+}
+```
+
+```
+async function insertData() {
+  const instruments = [
+    {
+      shard: randomShard(),  // add the new shard field to the document
+      symbol: 'AAA',
+      price: {
+        currency: 'USD',
+        micros: 34790000
+      },
+      exchange: 'EXCHG1',
+      instrumentType: 'commonstock',
+      timestamp: Timestamp.fromMillis(
+          Date.parse('2019-01-01T13:45:23.010Z'))
+    },
+    {
+      shard: randomShard(),  // add the new shard field to the document
+      symbol: 'BBB',
+      price: {
+        currency: 'JPY',
+        micros: 64272000000
+      },
+      exchange: 'EXCHG2',
+      instrumentType: 'commonstock',
+      timestamp: Timestamp.fromMillis(
+          Date.parse('2019-01-01T13:45:23.101Z'))
+    },
+    {
+      shard: randomShard(),  // add the new shard field to the document
+      symbol: 'Index1 ETF',
+      price: {
+        currency: 'USD',
+        micros: 473000000
+      },
+      exchange: 'EXCHG1',
+      instrumentType: 'etf',
+      timestamp: Timestamp.fromMillis(
+          Date.parse('2019-01-01T13:45:23.001Z'))
     }
+  ];
+
+  const batch = fs.batch();
+  for (const inst of instruments) {
+    const ref = fs.collection('instruments').doc();
+    batch.set(ref, inst);
+  }
+
+  await batch.commit();
+}
+```
 
 ### Querying the sharded timestamp
 
@@ -231,97 +241,101 @@ Adding a `shard` field requires that you update your queries to aggregate sharde
 
 ##### Node.js
 
-    function createQuery(fieldName, fieldOperator, fieldValue, limit = 5) {
-      // For each shard value, map it to a new query which adds an additional
-      // where clause specifying the shard value.
-      return Promise.all(shardChunks().map(shardChunk => {
-            return fs.collection('instruments')
-                .where('shard', 'in', shardChunk)  // new shard condition
-                .where(fieldName, fieldOperator, fieldValue)
-                .orderBy('timestamp', 'desc')
-                .limit(limit)
-                .get();
-          }))
-          // Now that we have a promise of multiple possible query results, we need
-          // to merge the results from all of the queries into a single result set.
-          .then((snapshots) => {
-            // Create a new container for 'all' results
-            const docs = [];
-            snapshots.forEach((querySnapshot) => {
-              querySnapshot.forEach((doc) => {
-                // append each document to the new all container
-                docs.push(doc);
-              });
-            });
-            if (snapshots.length === 1) {
-              // if only a single query was returned skip manual sorting as it is
-              // taken care of by the backend.
-              return docs;
+```
+function createQuery(fieldName, fieldOperator, fieldValue, limit = 5) {
+  // For each shard value, map it to a new query which adds an additional
+  // where clause specifying the shard value.
+  return Promise.all(shardChunks().map(shardChunk => {
+        return fs.collection('instruments')
+            .where('shard', 'in', shardChunk)  // new shard condition
+            .where(fieldName, fieldOperator, fieldValue)
+            .orderBy('timestamp', 'desc')
+            .limit(limit)
+            .get();
+      }))
+      // Now that we have a promise of multiple possible query results, we need
+      // to merge the results from all of the queries into a single result set.
+      .then((snapshots) => {
+        // Create a new container for 'all' results
+        const docs = [];
+        snapshots.forEach((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            // append each document to the new all container
+            docs.push(doc);
+          });
+        });
+        if (snapshots.length === 1) {
+          // if only a single query was returned skip manual sorting as it is
+          // taken care of by the backend.
+          return docs;
+        } else {
+          // When multiple query results are returned we need to sort the
+          // results after they have been concatenated.
+          // 
+          // since we're wanting the `limit` newest values, sort the array
+          // descending and take the first `limit` values. By returning negated
+          // values we can easily get a descending value.
+          docs.sort((a, b) => {
+            const aT = a.data().timestamp;
+            const bT = b.data().timestamp;
+            const secondsDiff = aT.seconds - bT.seconds;
+            if (secondsDiff === 0) {
+              return -(aT.nanoseconds - bT.nanoseconds);
             } else {
-              // When multiple query results are returned we need to sort the
-              // results after they have been concatenated.
-              // 
-              // since we're wanting the `limit` newest values, sort the array
-              // descending and take the first `limit` values. By returning negated
-              // values we can easily get a descending value.
-              docs.sort((a, b) => {
-                const aT = a.data().timestamp;
-                const bT = b.data().timestamp;
-                const secondsDiff = aT.seconds - bT.seconds;
-                if (secondsDiff === 0) {
-                  return -(aT.nanoseconds - bT.nanoseconds);
-                } else {
-                  return -secondsDiff;
-                }
-              });
-              return docs.slice(0, limit);
+              return -secondsDiff;
             }
           });
-    }
-    
-    function queryCommonStock() {
-      return createQuery('instrumentType', '==', 'commonstock');
-    }
-    
-    function queryExchange1Instruments() {
-      return createQuery('exchange', '==', 'EXCHG1');
-    }
-    
-    function queryUSDInstruments() {
-      return createQuery('price.currency', '==', 'USD');
-    }
+          return docs.slice(0, limit);
+        }
+      });
+}
 
-    insertData()
-        .then(() => {
-          const commonStock = queryCommonStock()
-              .then(
-                  (docs) => {
-                    console.log('--- queryCommonStock: ');
-                    docs.forEach((doc) => {
-                      console.log(`doc = ${util.inspect(doc.data(), {depth: 4})}`);
-                    });
-                  }
-              );
-          const exchange1Instruments = queryExchange1Instruments()
-              .then(
-                  (docs) => {
-                    console.log('--- queryExchange1Instruments: ');
-                    docs.forEach((doc) => {
-                      console.log(`doc = ${util.inspect(doc.data(), {depth: 4})}`);
-                    });
-                  }
-              );
-          const usdInstruments = queryUSDInstruments()
-              .then(
-                  (docs) => {
-                    console.log('--- queryUSDInstruments: ');
-                    docs.forEach((doc) => {
-                      console.log(`doc = ${util.inspect(doc.data(), {depth: 4})}`);
-                    });
-                  }
-              );
-          return Promise.all([commonStock, exchange1Instruments, usdInstruments]);
-        });
+function queryCommonStock() {
+  return createQuery('instrumentType', '==', 'commonstock');
+}
+
+function queryExchange1Instruments() {
+  return createQuery('exchange', '==', 'EXCHG1');
+}
+
+function queryUSDInstruments() {
+  return createQuery('price.currency', '==', 'USD');
+}
+```
+
+```
+insertData()
+    .then(() => {
+      const commonStock = queryCommonStock()
+          .then(
+              (docs) => {
+                console.log('--- queryCommonStock: ');
+                docs.forEach((doc) => {
+                  console.log(`doc = ${util.inspect(doc.data(), {depth: 4})}`);
+                });
+              }
+          );
+      const exchange1Instruments = queryExchange1Instruments()
+          .then(
+              (docs) => {
+                console.log('--- queryExchange1Instruments: ');
+                docs.forEach((doc) => {
+                  console.log(`doc = ${util.inspect(doc.data(), {depth: 4})}`);
+                });
+              }
+          );
+      const usdInstruments = queryUSDInstruments()
+          .then(
+              (docs) => {
+                console.log('--- queryUSDInstruments: ');
+                docs.forEach((doc) => {
+                  console.log(`doc = ${util.inspect(doc.data(), {depth: 4})}`);
+                });
+              }
+          );
+      return Promise.all([commonStock, exchange1Instruments, usdInstruments]);
+    });
+```
 
 ### Update index definitions
 
@@ -333,7 +347,7 @@ To remove the 500 writes per second constraint, delete the existing single-field
 
 1.  In the Firebase console, go to the **Databases & Storage** \> **Firestore** \> **Composite Indexes** tab.
 
-2.  For each index that contains the `timestamp` field, click the more\_vert button and click ***Delete*** .
+2.  For each index that contains the `timestamp` field, click the more_vert button and click ***Delete*** .
 
 ### GCP Console
 
@@ -345,7 +359,7 @@ To remove the 500 writes per second constraint, delete the existing single-field
 
 4.  Use the **Filter** field to search for index definitions that contain the `timestamp` field.
 
-5.  For each of these indexes, click the more\_vert button and click ***Delete*** .
+5.  For each of these indexes, click the more_vert button and click ***Delete*** .
 
 ### Firebase CLI
 
@@ -354,58 +368,62 @@ To remove the 500 writes per second constraint, delete the existing single-field
 2.  During setup, the Firebase CLI downloads your existing index definitions to a file named, by default, `firestore.indexes.json` .
 
 3.  Remove any index definitions that contain the `timestamp` field, for example:
-    
-        {
-        "indexes": [
-          // Delete composite index definition that contain the timestamp field
+
+    ```
+    {
+    "indexes": [
+      // Delete composite index definition that contain the timestamp field
+      {
+        "collectionGroup": "instruments",
+        "queryScope": "COLLECTION",
+        "fields": [
           {
-            "collectionGroup": "instruments",
-            "queryScope": "COLLECTION",
-            "fields": [
-              {
-                "fieldPath": "exchange",
-                "order": "ASCENDING"
-              },
-              {
-                "fieldPath": "timestamp",
-                "order": "DESCENDING"
-              }
-            ]
+            "fieldPath": "exchange",
+            "order": "ASCENDING"
           },
           {
-            "collectionGroup": "instruments",
-            "queryScope": "COLLECTION",
-            "fields": [
-              {
-                "fieldPath": "instrumentType",
-                "order": "ASCENDING"
-              },
-              {
-                "fieldPath": "timestamp",
-                "order": "DESCENDING"
-              }
-            ]
+            "fieldPath": "timestamp",
+            "order": "DESCENDING"
+          }
+        ]
+      },
+      {
+        "collectionGroup": "instruments",
+        "queryScope": "COLLECTION",
+        "fields": [
+          {
+            "fieldPath": "instrumentType",
+            "order": "ASCENDING"
           },
           {
-            "collectionGroup": "instruments",
-            "queryScope": "COLLECTION",
-            "fields": [
-              {
-                "fieldPath": "price.currency",
-                "order": "ASCENDING"
-              },
-              {
-                "fieldPath": "timestamp",
-                "order": "DESCENDING"
-              }
-            ]
+            "fieldPath": "timestamp",
+            "order": "DESCENDING"
+          }
+        ]
+      },
+      {
+        "collectionGroup": "instruments",
+        "queryScope": "COLLECTION",
+        "fields": [
+          {
+            "fieldPath": "price.currency",
+            "order": "ASCENDING"
           },
-         ]
-        }
+          {
+            "fieldPath": "timestamp",
+            "order": "DESCENDING"
+          }
+        ]
+      },
+     ]
+    }
+    ```
 
 4.  Deploy your updated index definitions:
-    
-        firebase deploy --only firestore:indexes
+
+    ```
+    firebase deploy --only firestore:indexes
+    ```
 
 #### Update Single-field index definitions
 
@@ -450,31 +468,35 @@ To remove the 500 writes per second constraint, delete the existing single-field
 ### Firebase CLI
 
 1.  Add the following to the `fieldOverrides` section of your index definitions file:
-    
-        {
-         "fieldOverrides": [
-           // Disable single-field indexing for the timestamp field
-           {
-             "collectionGroup": "instruments",
-             "fieldPath": "timestamp",
-             "indexes": []
-           },
-         ]
-        }
+
+    ```
+    {
+     "fieldOverrides": [
+       // Disable single-field indexing for the timestamp field
+       {
+         "collectionGroup": "instruments",
+         "fieldPath": "timestamp",
+         "indexes": []
+       },
+     ]
+    }
+    ```
 
 2.  Deploy your updated index definitions:
-    
-        firebase deploy --only firestore:indexes
+
+    ```
+    firebase deploy --only firestore:indexes
+    ```
 
 ### Create new composite indexes
 
 After removing all the previous indexes containing the `timestamp` , define the new indexes that your app requires. Any index containing the `timestamp` field must also contain the `shard` field. For example, to support the queries above, add the following indexes:
 
-| Collection  | Fields indexed                                                                 | Query scope |
-| ----------- | ------------------------------------------------------------------------------ | ----------- |
-| instruments | arrow\_downward shard, arrow\_upward price.currency, arrow\_downward timestamp | Collection  |
-| instruments | arrow\_downward shard, arrow\_upward exchange, arrow\_downward timestamp       | Collection  |
-| instruments | arrow\_downward shard, arrow\_upward instrumentType, arrow\_downward timestamp | Collection  |
+| Collection  | Fields indexed                                                              | Query scope |
+|-------------|-----------------------------------------------------------------------------|-------------|
+| instruments | arrow_downward shard, arrow_upward price.currency, arrow_downward timestamp | Collection  |
+| instruments | arrow_downward shard, arrow_upward exchange, arrow_downward timestamp       | Collection  |
+| instruments | arrow_downward shard, arrow_upward instrumentType, arrow_downward timestamp | Collection  |
 
 ### Error Messages
 
@@ -485,8 +507,8 @@ Each query returns an error message with a link to create the required index in 
 ### Firebase CLI
 
 1.  Add the following indexes to your index definition file:
-    
-    ``` 
+
+    ```
      {
        "indexes": [
        // New indexes for sharded timestamps
@@ -549,8 +571,10 @@ Each query returns an error message with a link to create the required index in 
     ```
 
 2.  Deploy your updated index definitions:
-    
-        firebase deploy --only firestore:indexes
+
+    ```
+    firebase deploy --only firestore:indexes
+    ```
 
 ## Understanding the write limit for sequential indexed fields
 
@@ -562,6 +586,6 @@ By sharding a timestamp field, you make it possible for Firestore to efficiently
 
 ## What's next
 
-  - Read the [best practices for designing for scale](https://docs.cloud.google.com/firestore/native/docs/best-practices#designing_for_scale)
-  - For cases with high write rates to a single document, see [Distrubted counters](https://docs.cloud.google.com/firestore/native/docs/solutions/counters)
-  - See the [standard limits for Firestore](https://docs.cloud.google.com/firestore/native/docs/quotas#limits)
+- Read the [best practices for designing for scale](https://docs.cloud.google.com/firestore/native/docs/best-practices#designing_for_scale)
+- For cases with high write rates to a single document, see [Distrubted counters](https://docs.cloud.google.com/firestore/native/docs/solutions/counters)
+- See the [standard limits for Firestore](https://docs.cloud.google.com/firestore/native/docs/quotas#limits)

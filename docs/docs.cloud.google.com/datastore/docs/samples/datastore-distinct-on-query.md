@@ -12,25 +12,27 @@ Use distinct clause in a query.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Datastore queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)
+- [Datastore queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Projection = { "category", "priority" },
-        DistinctOn = { "category" },
-        Order = {
-            { "category", PropertyOrder.Types.Direction.Ascending},
-            {"priority", PropertyOrder.Types.Direction.Ascending }
-        }
-    };
+```csharp
+Query query = new Query("Task")
+{
+    Projection = { "category", "priority" },
+    DistinctOn = { "category" },
+    Order = {
+        { "category", PropertyOrder.Types.Direction.Ascending},
+        {"priority", PropertyOrder.Types.Direction.Ascending }
+    }
+};
+```
 
 ### Go
 
@@ -38,10 +40,12 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").
-     Project("Priority", "Category").
-     DistinctOn("Category").
-     Order("Category").Order("Priority")
+```go
+query := datastore.NewQuery("Task").
+    Project("Priority", "Category").
+    DistinctOn("Category").
+    Order("Category").Order("Priority")
+```
 
 ### Java
 
@@ -49,13 +53,15 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<ProjectionEntity> query =
-        Query.newProjectionEntityQueryBuilder()
-            .setKind("Task")
-            .setProjection("category", "priority")
-            .setDistinctOn("category")
-            .setOrderBy(OrderBy.asc("category"), OrderBy.asc("priority"))
-            .build();
+```java
+Query<ProjectionEntity> query =
+    Query.newProjectionEntityQueryBuilder()
+        .setKind("Task")
+        .setProjection("category", "priority")
+        .setDistinctOn("category")
+        .setOrderBy(OrderBy.asc("category"), OrderBy.asc("priority"))
+        .build();
+```
 
 ### PHP
 
@@ -63,12 +69,14 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->order('category')
-        ->order('priority')
-        ->projection(['category', 'priority'])
-        ->distinctOn('category');
+```php
+$query = $datastore->query()
+    ->kind('Task')
+    ->order('category')
+    ->order('priority')
+    ->projection(['category', 'priority'])
+    ->distinctOn('category');
+```
 
 ### Python
 
@@ -76,15 +84,17 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query(kind="Task")
-    query.distinct_on = ["category"]
-    query.order = ["category", "priority"]
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query(kind="Task")
+query.distinct_on = ["category"]
+query.order = ["category", "priority"]
+```
 
 ### Ruby
 
@@ -92,11 +102,13 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .select("category", "priority")
-                     .distinct_on("category")
-                     .order("category")
-                     .order("priority")
+```ruby
+query = datastore.query("Task")
+                 .select("category", "priority")
+                 .distinct_on("category")
+                 .order("category")
+                 .order("priority")
+```
 
 ## What's next
 

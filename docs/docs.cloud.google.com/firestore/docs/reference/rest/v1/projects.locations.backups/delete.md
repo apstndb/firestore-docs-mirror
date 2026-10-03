@@ -19,15 +19,9 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 
-Parameters
-
-`name`
-
-`string`
-
-Required. Name of the backup to delete.
-
-format is `projects/{project}/locations/{location}/backups/{backup}` .
+| Parameters |                                                                                                                         |
+|------------|-------------------------------------------------------------------------------------------------------------------------|
+| `name`     | `string` Required. Name of the backup to delete. format is `projects/{project}/locations/{location}/backups/{backup}` . |
 
 ### Request body
 
@@ -41,7 +35,7 @@ If successful, the response body is an empty JSON object.
 
 Requires one of the following OAuth scopes:
 
-  - `https://www.googleapis.com/auth/datastore`
-  - `https://www.googleapis.com/auth/cloud-platform`
+- `https://www.googleapis.com/auth/datastore`
+- `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

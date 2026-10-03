@@ -9,17 +9,17 @@ data_source: docs.cloud.google.com
 # Monitor performance with client-side traces
 
 > **Preview**
-> 
+>
 > This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
 To monitor and debug Firestore requests end-to-end, you can enable traces in the client libraries. Client-side tracing can provide a signal about the performance as experienced by your application, as well as insights that can help with debugging issues.
 
 Client-side traces, which are collected by executing RPCs from the client, provide the following information:
 
-  - Spans with timestamps of when the client sent the RPC request and when the client received the RPC response, including latency introduced by the network and client system
-  - Attributes (key-value pairs) that surface information about the client and its configuration
-  - Logs associated with key events in the spans
-  - Stack traces if a crash occurs in the client
+- Spans with timestamps of when the client sent the RPC request and when the client received the RPC response, including latency introduced by the network and client system
+- Attributes (key-value pairs) that surface information about the client and its configuration
+- Logs associated with key events in the spans
+- Stack traces if a crash occurs in the client
 
 ## OpenTelemetry
 
@@ -35,8 +35,8 @@ In addition to an exporter, OpenTelemetry recommends setting up a [Collector](ht
 
 Client-side traces have the following limitations:
 
-  - Trace spans are available for the Java and Node.js client libraries.
-  - The client library does not produce trace spans for [real-time listeners](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) .
+- Trace spans are available for the Java and Node.js client libraries.
+- The client library does not produce trace spans for [real-time listeners](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) .
 
 ## Billing
 
@@ -52,25 +52,24 @@ To better understand billing, start with a small trace sampling ratio (trace a s
 
 Before you begin:
 
-  - Make sure you set up the service account under which your app writes traces to your observability backend with the necessary [Identity and Access Management roles](https://docs.cloud.google.com/trace/docs/iam) :
-    
-    | Trace operation   | IAM role                 |
-    | ----------------- | ------------------------ |
-    | Read traces       | `roles/cloudtrace.user`  |
-    | Write traces      | `roles/cloudtrace.agent` |
-    | Read/write traces | `roles/cloudtrace.admin` |
-    
+- Make sure you set up the service account under which your app writes traces to your observability backend with the necessary [Identity and Access Management roles](https://docs.cloud.google.com/trace/docs/iam) :
 
-  - Verify Trace API is enabled on this project.
+  | Trace operation   | IAM role                 |
+  |-------------------|--------------------------|
+  | Read traces       | `roles/cloudtrace.user`  |
+  | Write traces      | `roles/cloudtrace.agent` |
+  | Read/write traces | `roles/cloudtrace.admin` |
+
+- Verify Trace API is enabled on this project.
 
 ## Configure client-side traces
 
 This section provides example configurations for client-side traces. You can export to a Collector or directly to an observability backend. You also have the following options for configuring client-side traces:
 
-  - You can configure traces with the OpenTelemetry APIs. This requires code changes to your application. See the following examples:
-      - [Export to a Collector with OpenTelemetry APIs](https://docs.cloud.google.com/firestore/native/docs/client-side-traces#export_to_collector)
-      - [Export directly to an observability backend with OpenTelemetry APIs](https://docs.cloud.google.com/firestore/native/docs/client-side-traces#export_to_backend)
-  - You can configure traces without code changes by following the examples in [Zero-code instrumentation](https://docs.cloud.google.com/firestore/native/docs/client-side-traces#zero-code) .
+- You can configure traces with the OpenTelemetry APIs. This requires code changes to your application. See the following examples:
+  - [Export to a Collector with OpenTelemetry APIs](https://docs.cloud.google.com/firestore/native/docs/client-side-traces#export_to_collector)
+  - [Export directly to an observability backend with OpenTelemetry APIs](https://docs.cloud.google.com/firestore/native/docs/client-side-traces#export_to_backend)
+- You can configure traces without code changes by following the examples in [Zero-code instrumentation](https://docs.cloud.google.com/firestore/native/docs/client-side-traces#zero-code) .
 
 ### Export traces to a Collector with OpenTelemetry APIs
 
@@ -78,7 +77,7 @@ The following code configures the client library to export spans with a 10% samp
 
 ##### Java (Admin)
 
-``` 
+```
 Resource resource = Resource
   .getDefault().merge(Resource.builder().put(SERVICE_NAME, "My App").build());
 
@@ -112,12 +111,11 @@ Firestore firestore = FirestoreOptions
       .setOpenTelemetry(otel)
       .build())
   .build().getService();
-    
 ```
 
 ##### Node.js (Admin)
 
-``` 
+```
 import { trace } from "@opentelemetry/api";
 import {GrpcInstrumentation} from '@opentelemetry/instrumentation-grpc';
 
@@ -165,7 +163,7 @@ process.on('SIGINT', async () => {
   await provider
         .shutdown()
         .catch(error => console.error('Error terminating NodeTracerProvider:', error));
-});    
+});
 ```
 
 ### Export directly to an observability backend with OpenTelemetry APIs
@@ -174,7 +172,7 @@ If your observability service provider supports OTLP ingestion, you can use thei
 
 ##### Java (Admin)
 
-``` 
+```
 // TraceExporter needed for this use case
 import com.google.cloud.opentelemetry.trace.TraceExporter;
 
@@ -205,12 +203,11 @@ Firestore firestore = FirestoreOptions
       .setOpenTelemetry(otel)
       .build())
   .build().getService();
-    
 ```
 
 ##### Node.js (Admin)
 
-``` 
+```
 import { trace } from "@opentelemetry/api";
 import {GrpcInstrumentation} from '@opentelemetry/instrumentation-grpc';
 import { TraceExporter } from "@google-cloud/opentelemetry-cloud-trace-exporter";
@@ -257,10 +254,8 @@ process.on('SIGINT', async () => {
   await provider
         .shutdown()
         .catch(error => console.error('Error terminating NodeTracerProvider:', error));
-});    
+});
 ```
-
-<span id="export_to_collector_auto_agent"></span>
 
 ### Zero-code instrumentation
 
@@ -274,21 +269,23 @@ You can configure traces without code changes using auto agents. You need to set
 
 Run your OpenTelemetry Collector with OTLP gRPC receivers enabled. Set the agent's exporter to `otlp` and specify the endpoint where the agent should export the data. The following example uses a 10% sampling ratio and sends traces to the Collector that listens on localhost port `4317` .
 
-    FIRESTORE_ENABLE_TRACING=ON                            \
-    java                                                   \
-    -javaagent:path/to/opentelemetry-javaagent.jar         \
-    -Dotel.traces.exporter=otlp                            \
-    -Dotel.exporter.otlp.endpoint="http://localhost:4317"  \
-    -Dotel.traces.sampler=traceidratio                     \
-    -Dotel.traces.sampler.arg=0.1                          \
-    -Dotel.service.name="My App"                           \
-    -jar myapp.jar
+```
+FIRESTORE_ENABLE_TRACING=ON                            \
+java                                                   \
+-javaagent:path/to/opentelemetry-javaagent.jar         \
+-Dotel.traces.exporter=otlp                            \
+-Dotel.exporter.otlp.endpoint="http://localhost:4317"  \
+-Dotel.traces.sampler=traceidratio                     \
+-Dotel.traces.sampler.arg=0.1                          \
+-Dotel.service.name="My App"                           \
+-jar myapp.jar
+```
 
 ### Export directly to an observability backend with Auto Agents
 
 In addition to setting the environment variable `FIRESTORE_ENABLE_TRACING=ON` , you need to add the OpenTelemetry Java agent extension for your specific backend. The following example uses the Trace exporter extension and a 10% trace sampling ratio.
 
-``` 
+```
 FIRESTORE_ENABLE_TRACING=ON                                                \
 java                                                                       \
 -javaagent:path/to/opentelemetry-javaagent.jar                             \
@@ -296,14 +293,13 @@ java                                                                       \
 -Dotel.traces.exporter=google_cloud_trace                                  \
 -Dotel.traces.sampler=traceidratio                                         \
 -Dotel.traces.sampler.arg=0.1                                              \
-    
 ```
 
 ##### Node.js (Admin)
 
 To set up zero-code instrumentation, [follow the OpenTelemetry instructions for JavaScript instrumentation](https://opentelemetry.io/docs/zero-code/js/) . The following example code snippet enables instrumentation and sends traces to an OpenTelemetry collector:
 
-``` 
+```
 npm install @opentelemetry/api
 npm install @opentelemetry/auto-instrumentations-node
 
@@ -314,7 +310,6 @@ OTEL_TRACES_EXPORTER=otlp \
 OTEL_NODE_ENABLED_INSTRUMENTATIONS="http,grpc" \
 OTEL_NODE_RESOURCE_DETECTORS="none" \
 node --require @opentelemetry/auto-instrumentations-node/register my_app.js
-    
 ```
 
 ## Example trace
@@ -341,5 +336,5 @@ The following examples show how trace information is displayed in Cloud Trace. F
 
 ## What's next
 
-  - View the reference for [Trace span attributes and events](https://docs.cloud.google.com/firestore/native/docs/trace-span-references)
-  - Learn about [server-side monitoring](https://docs.cloud.google.com/firestore/native/docs/understand-performance-monitoring)
+- View the reference for [Trace span attributes and events](https://docs.cloud.google.com/firestore/native/docs/trace-span-references)
+- Learn about [server-side monitoring](https://docs.cloud.google.com/firestore/native/docs/understand-performance-monitoring)

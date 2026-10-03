@@ -13,7 +13,7 @@ Client-side traces can include the following information:
 ## Span metadata
 
 |                |                                                 |
-| -------------- | ----------------------------------------------- |
+|----------------|-------------------------------------------------|
 | Span ID        | Unique ID of this span                          |
 | Parent Span ID | ID of the parent span, not set for root span    |
 | Project ID     | Google Cloud project ID that ingested the trace |
@@ -22,114 +22,37 @@ Client-side traces can include the following information:
 
 ## Span attributes
 
-**Client Version**
-
-otel.scope.version
-
-String
-
-**Client Environment**
-
-gcp.datastore.memory\_utilization
-
-double (percentage)
-
-**Client Connection Properties**
-
-gcp.datastore.settings.channel.needs\_credentials
-
-boolean
-
-gcp.datastore.settings.channel.needs\_endpoint
-
-boolean
-
-gcp.datastore.settings.channel.needs\_headers
-
-boolean
-
-gcp.datastore.settings.channel.should\_auto\_close
-
-boolean
-
-gcp.datastore.settings.channel.transport\_name
-
-string Ex. "grpc"
-
-gcp.datastore.settings.credentials.authentication\_type
-
-string Ex. "OAuth2"
-
-gcp.datastore.settings.host
-
-string Ex. "datastore.googleapis.com:443"
-
-**Database Properties**
-
-gcp.datastore.settings.project\_id
-
-string  
-Google Cloud project ID that contains the Datastore database
-
-gcp.datastore.settings.database\_id
-
-string  
-Database external ID (name)
-
-**Client RPC Retry Settings**
-
-gcp.datastore.settings.retrySettings.initial\_retry\_delay
-
-string  
-Duration in seconds Ex. 0.01s
-
-gcp.datastore.settings.retrySettings.initial\_rpc\_timeout
-
-gcp.datastore.settings.retrySettings.max\_attempts
-
-integer (count)
-
-gcp.datastore.settings.retrySettings.max\_retry\_delay
-
-string  
-Duration in seconds Ex. 0.1s
-
-gcp.datastore.settings.retrySettings.max\_rpc\_timeout
-
-gcp.datastore.settings.retrySettings.retry\_delay\_multiplier
-
-double
-
-gcp.datastore.settings.retrySettings.rpc\_timeout\_multiplier
-
-double
-
-gcp.datastore.settings.retrySettings.total\_timeout
-
-string  
-Duration in seconds
-
-**OpenTelemetry Configuration**
-
-otel.scope.name
-
-string Ex. "com.google.cloud.datastore"
-
-service.name
-
-Sparky
-
-telemetry.sdk.language
-
-string Ex. "java"
-
-telemetry.sdk.name
-
-opentelemetry
-
-telemetry.sdk.version
-
-Ex. 1.29.0
+| **Client Version**                                          |                                                                     |
+|-------------------------------------------------------------|---------------------------------------------------------------------|
+| otel.scope.version                                          | String                                                              |
+| **Client Environment**                                      |                                                                     |
+| gcp.datastore.memory_utilization                            | double (percentage)                                                 |
+| **Client Connection Properties**                            |                                                                     |
+| gcp.datastore.settings.channel.needs_credentials            | boolean                                                             |
+| gcp.datastore.settings.channel.needs_endpoint               | boolean                                                             |
+| gcp.datastore.settings.channel.needs_headers                | boolean                                                             |
+| gcp.datastore.settings.channel.should_auto_close            | boolean                                                             |
+| gcp.datastore.settings.channel.transport_name               | string Ex. "grpc"                                                   |
+| gcp.datastore.settings.credentials.authentication_type      | string Ex. "OAuth2"                                                 |
+| gcp.datastore.settings.host                                 | string Ex. "datastore.googleapis.com:443"                           |
+| **Database Properties**                                     |                                                                     |
+| gcp.datastore.settings.project_id                           | string Google Cloud project ID that contains the Datastore database |
+| gcp.datastore.settings.database_id                          | string Database external ID (name)                                  |
+| **Client RPC Retry Settings**                               |                                                                     |
+| gcp.datastore.settings.retrySettings.initial_retry_delay    | string Duration in seconds Ex. 0.01s                                |
+| gcp.datastore.settings.retrySettings.initial_rpc_timeout    |                                                                     |
+| gcp.datastore.settings.retrySettings.max_attempts           | integer (count)                                                     |
+| gcp.datastore.settings.retrySettings.max_retry_delay        | string Duration in seconds Ex. 0.1s                                 |
+| gcp.datastore.settings.retrySettings.max_rpc_timeout        |                                                                     |
+| gcp.datastore.settings.retrySettings.retry_delay_multiplier | double                                                              |
+| gcp.datastore.settings.retrySettings.rpc_timeout_multiplier | double                                                              |
+| gcp.datastore.settings.retrySettings.total_timeout          | string Duration in seconds                                          |
+| **OpenTelemetry Configuration**                             |                                                                     |
+| otel.scope.name                                             | string Ex. "com.google.cloud.datastore"                             |
+| service.name                                                | Sparky                                                              |
+| telemetry.sdk.language                                      | string Ex. "java"                                                   |
+| telemetry.sdk.name                                          | opentelemetry                                                       |
+| telemetry.sdk.version                                       | Ex. 1.29.0                                                          |
 
 ## Logs and events
 
@@ -137,79 +60,67 @@ Client-side traces provide the following logs and events.
 
 ### Lookup events
 
-**Event:**  
-**"Lookup complete"**  
-**"Transaction.Lookup complete"**
-
-Received
-
-Integer
-
-Missing
-
-Integer
-
-Deferred
-
-Integer
-
-transactional
-
-Boolean
-
-transaction\_id
-
-String
+| **Event:** **"Lookup complete"** **"Transaction.Lookup complete"** |         |
+|--------------------------------------------------------------------|---------|
+| Received                                                           | Integer |
+| Missing                                                            | Integer |
+| Deferred                                                           | Integer |
+| transactional                                                      | Boolean |
+| transaction_id                                                     | String  |
 
 ### Commit Events
 
-**Event:**  
-**"Commit complete"**  
-**"Transaction.Commit complete"**
-
-doc\_count
-
-Integer
-
-transactional
-
-Boolean
-
-transaction\_id
-
-String
+| **Event:** **"Commit complete"** **"Transaction.Commit complete"** |         |
+|--------------------------------------------------------------------|---------|
+| doc_count                                                          | Integer |
+| transactional                                                      | Boolean |
+| transaction_id                                                     | String  |
 
 ### RunQuery Events
 
-**Event:**  
-**"RunQuery complete"**  
-**"Transaction.RunQuery complete"**
-
-doc\_count
-
-Integer
-
-transactional
-
-Boolean
-
-transaction\_id
-
-String
-
-read\_conistencey
-
-`STRONG` or `EVENTUAL`
-
-more\_results
-
-One of:
-
-  - `NOT_FINISHED`
-  - `MORE_RESULTS_AFTER_LIMIT`
-  - `MORE_RESULTS_AFTER_CURSOR`
-  - `NO_MORE_RESULTS`
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Event:</strong><br />
+<strong>"RunQuery complete"</strong><br />
+<strong>"Transaction.RunQuery complete"</strong></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>doc_count</td>
+<td>Integer</td>
+</tr>
+<tr class="even">
+<td>transactional</td>
+<td>Boolean</td>
+</tr>
+<tr class="odd">
+<td>transaction_id</td>
+<td>String</td>
+</tr>
+<tr class="even">
+<td>read_conistencey</td>
+<td><code>STRONG</code> or <code>EVENTUAL</code></td>
+</tr>
+<tr class="odd">
+<td>more_results</td>
+<td>One of:
+<ul>
+<li><code>NOT_FINISHED</code></li>
+<li><code>MORE_RESULTS_AFTER_LIMIT</code></li>
+<li><code>MORE_RESULTS_AFTER_CURSOR</code></li>
+<li><code>NO_MORE_RESULTS</code></li>
+</ul></td>
+</tr>
+</tbody>
+</table>
 
 ## What's next
 
-  - [Learn how to configure client-side traces](https://docs.cloud.google.com/datastore/docs/client-side-traces)
+- [Learn how to configure client-side traces](https://docs.cloud.google.com/datastore/docs/client-side-traces)

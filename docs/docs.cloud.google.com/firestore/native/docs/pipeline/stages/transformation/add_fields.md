@@ -18,66 +18,75 @@ The generated documents will contain all the fields from the previous stage alon
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("soldBooks").add(field("unsoldBooks")).as("totalBooks"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("soldBooks").add(field("unsoldBooks")).as("totalBooks"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("soldBooks").add(Field("unsoldBooks")).as("totalBooks")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("soldBooks").add(Field("unsoldBooks")).as("totalBooks")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(Expression.add(field("soldBooks"), field("unsoldBooks")).alias("totalBooks"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(Expression.add(field("soldBooks"), field("unsoldBooks")).alias("totalBooks"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
-      Task<Pipeline.Snapshot> result = db.pipeline()
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.add(field("soldBooks"), field("unsoldBooks")).alias("totalBooks"))
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("soldBooks").add(Field.of("unsoldBooks")).as_("totalBooks"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("soldBooks").add(Field.of("unsoldBooks")).as_("totalBooks"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(add(field("soldBooks"), field("unsoldBooks")).as("totalBooks"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(add(field("soldBooks"), field("unsoldBooks")).as("totalBooks"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Add(firestore.FieldOf("soldBooks"), firestore.FieldOf("unsoldBooks")).As("totalBooks"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Add(firestore.FieldOf("soldBooks"), firestore.FieldOf("unsoldBooks")).As("totalBooks"),
+    )).
+    Execute(ctx)
+```
 
 ## Behavior
 
@@ -87,11 +96,13 @@ Assigning an expression an alias that is already in the documents from the previ
 
 ### Node.js
 
-    const results = await db.pipeline()
-      .collection("/users")
-      .addFields(field('age').abs().as('age'))
-      .addFields(field('age').add(10).as('age'))
-      .execute();
+```
+const results = await db.pipeline()
+  .collection("/users")
+  .addFields(field('age').abs().as('age'))
+  .addFields(field('age').add(10).as('age'))
+  .execute();
+```
 
 ### Nested Fields
 
@@ -99,9 +110,11 @@ Nested fields (e.g. those with `.` syntax) can be updated as part of this stage.
 
 ### Node.js
 
-    const results = await db.pipeline()
-      .collection("/users")
-      .addFields(field('address.city').toLower().as('address.city'))
-      .execute();
+```
+const results = await db.pipeline()
+  .collection("/users")
+  .addFields(field('address.city').toLower().as('address.city'))
+  .execute();
+```
 
 Assigning an expression to a nested field will implicitly create any missing parent fields as well.

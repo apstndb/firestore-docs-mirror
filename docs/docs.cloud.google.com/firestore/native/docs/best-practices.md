@@ -20,26 +20,26 @@ Select a [regional location](https://docs.cloud.google.com/firestore/native/docs
 
 ## Document IDs
 
-  - Avoid the document IDs `.` and `..` .
+- Avoid the document IDs `.` and `..` .
 
-  - Avoid using `/` forward slashes in document IDs.
+- Avoid using `/` forward slashes in document IDs.
 
-  - Do not use monotonically increasing document IDs such as:
-    
-      - `Customer1` , `Customer2` , `Customer3` , ...
-      - `Product 1` , `Product 2` , `Product 3` , ...
-    
-    Such sequential IDs can lead to [hotspots](https://docs.cloud.google.com/firestore/native/docs/best-practices#hotspots) that impact latency.
+- Do not use monotonically increasing document IDs such as:
+
+  - `Customer1` , `Customer2` , `Customer3` , ...
+  - `Product 1` , `Product 2` , `Product 3` , ...
+
+  Such sequential IDs can lead to [hotspots](https://docs.cloud.google.com/firestore/native/docs/best-practices#hotspots) that impact latency.
 
 ## Field Names
 
-  - Avoid the following characters in field names because they require extra escaping:
-    
-      - `.` period
-      - `[` left bracket
-      - `]` right bracket
-      - `*` asterisk
-      - `` ` `` backtick
+- Avoid the following characters in field names because they require extra escaping:
+
+  - `.` period
+  - `[` left bracket
+  - `]` right bracket
+  - `*` asterisk
+  - `` ` `` backtick
 
 ## Indexes
 
@@ -47,43 +47,29 @@ Select a [regional location](https://docs.cloud.google.com/firestore/native/docs
 
 The main contributor to write latency is index fanout. The best practices to reduce index fanout are:
 
-  - Set [collection-level index exemptions](https://docs.cloud.google.com/firestore/native/docs/query-data/indexing#add_a_collection-level_exemption) . An easy default is to disable Descending & Array indexing. Removing unused indexed values will also lower [storage costs](https://docs.cloud.google.com/firestore/pricing#storage-size) .
+- Set [collection-level index exemptions](https://docs.cloud.google.com/firestore/native/docs/query-data/indexing#add_a_collection-level_exemption) . An easy default is to disable Descending & Array indexing. Removing unused indexed values will also lower [storage costs](https://docs.cloud.google.com/firestore/pricing#storage-size) .
 
-  - Reduce the number of documents in a transaction. For writing a large number of documents, consider using a bulk writer instead of the atomic batch writer.
+- Reduce the number of documents in a transaction. For writing a large number of documents, consider using a bulk writer instead of the atomic batch writer.
 
 ### Index exemptions
 
 For most apps, you can rely on automatic indexing as well as any error message links to manage your indexes. However, you may want to add [single-field exemptions](https://docs.cloud.google.com/firestore/docs/concepts/index-overview#single-field_index_exemptions) in the following cases:
 
-Case
-
-Description
-
-Large string fields
-
-If you have a string field that often holds long string values that you don't use for querying, you can cut storage costs by exempting the field from indexing.
-
-High write rates to a collection containing documents with sequential values
-
-If you index a field that increases or decreases sequentially between documents in a collection, like a timestamp, then the maximum write rate to the collection is 500 writes per second. If you don't query based on the field with sequential values, you can exempt the field from indexing to bypass this limit.
-
-In an IoT use case with a high write rate, for example, a collection containing documents with a timestamp field might approach the 500 writes per second limit.
-
-TTL fields
-
-If you use [TTL (time-to-live) policies](https://docs.cloud.google.com/firestore/native/docs/ttl) , note that the TTL field must be a timestamp. Indexing on TTL fields is enabled by default and can affect performance at higher traffic rates. As a best practice, add automatic indexing exemptions for your TTL fields.
-
-Large array or map fields
-
-Large array or map fields can approach the limit of 40,000 index entries per document. If you are not querying based on a large array or map field, you should exempt it from indexing.
+| Case                                                                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Large string fields                                                          | If you have a string field that often holds long string values that you don't use for querying, you can cut storage costs by exempting the field from indexing.                                                                                                                                                                                                                                                                                                                        |
+| High write rates to a collection containing documents with sequential values | If you index a field that increases or decreases sequentially between documents in a collection, like a timestamp, then the maximum write rate to the collection is 500 writes per second. If you don't query based on the field with sequential values, you can exempt the field from indexing to bypass this limit. In an IoT use case with a high write rate, for example, a collection containing documents with a timestamp field might approach the 500 writes per second limit. |
+| TTL fields                                                                   | If you use [TTL (time-to-live) policies](https://docs.cloud.google.com/firestore/native/docs/ttl) , note that the TTL field must be a timestamp. Indexing on TTL fields is enabled by default and can affect performance at higher traffic rates. As a best practice, add automatic indexing exemptions for your TTL fields.                                                                                                                                                           |
+| Large array or map fields                                                    | Large array or map fields can approach the limit of 40,000 index entries per document. If you are not querying based on a large array or map field, you should exempt it from indexing.                                                                                                                                                                                                                                                                                                |
+|                                                                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
 ## Read and write operations
 
-  - The exact maximum rate that an app can update a single document depends highly on the workload. For more information, see [Updates to a single document](https://docs.cloud.google.com/firestore/native/docs/best-practices#updates_to_a_single_document) .
+- The exact maximum rate that an app can update a single document depends highly on the workload. For more information, see [Updates to a single document](https://docs.cloud.google.com/firestore/native/docs/best-practices#updates_to_a_single_document) .
 
-  - Use asynchronous calls where available instead of synchronous calls. Asynchronous calls minimize latency impact. For example, consider an application that needs the result of a document lookup and the results of a query before rendering a response. If the lookup and the query do not have a data dependency, there is no need to synchronously wait until the lookup completes before initiating the query.
+- Use asynchronous calls where available instead of synchronous calls. Asynchronous calls minimize latency impact. For example, consider an application that needs the result of a document lookup and the results of a query before rendering a response. If the lookup and the query do not have a data dependency, there is no need to synchronously wait until the lookup completes before initiating the query.
 
-  - Do not use offsets. Instead, use [cursors](https://docs.cloud.google.com/firestore/docs/query-data/query-cursors) . Using an offset only avoids returning the skipped documents to your application, but these documents are still retrieved internally. The skipped documents affect the latency of the query, and your application is billed for the read operations required to retrieve them.
+- Do not use offsets. Instead, use [cursors](https://docs.cloud.google.com/firestore/docs/query-data/query-cursors) . Using an offset only avoids returning the skipped documents to your application, but these documents are still retrieved internally. The skipped documents affect the latency of the query, and your application is billed for the read operations required to retrieve them.
 
 ### Transactions retries
 
@@ -103,23 +89,21 @@ As you design your app, consider how quickly your app updates single documents. 
 
 A document write operation updates the document and any associated indexes, and Firestore synchronously applies the write operation across a quorum of replicas. At high enough write rates, the database will start to encounter contention, higher latency, or other errors.
 
-<span id="hotspots"></span>
-
 ### High read, write, and delete rates to a narrow document range
 
 Avoid high read or write rates to lexicographically close documents, or your application will experience contention errors. This issue is known as hotspotting, and your application can experience hotspotting if it does any of the following:
 
-  - Creates new documents at a very [high rate](https://docs.cloud.google.com/firestore/native/docs/best-practices#ramping_up_traffic) and allocates its own monotonically increasing IDs.
-    
-    Firestore allocates document IDs using a scatter algorithm. You should not encounter hotspotting on writes if you create new documents using automatic document IDs.
+- Creates new documents at a very [high rate](https://docs.cloud.google.com/firestore/native/docs/best-practices#ramping_up_traffic) and allocates its own monotonically increasing IDs.
 
-  - Creates new documents at a high rate in a collection with few documents.
+  Firestore allocates document IDs using a scatter algorithm. You should not encounter hotspotting on writes if you create new documents using automatic document IDs.
 
-  - Creates new documents with a monotonically increasing field, like a timestamp, at a very high rate.
+- Creates new documents at a high rate in a collection with few documents.
 
-  - Deletes documents in a collection at a high rate.
+- Creates new documents with a monotonically increasing field, like a timestamp, at a very high rate.
 
-  - Writes to the database at a very high rate without gradually increasing traffic.
+- Deletes documents in a collection at a high rate.
+
+- Writes to the database at a very high rate without gradually increasing traffic.
 
 ### Avoid skipping over deleted data
 
@@ -127,32 +111,36 @@ Avoid queries that skip over recently deleted data. A query may have to skip ove
 
 An example of a workload that might have to skip over a lot of deleted data is one that tries to find the oldest queued work items. The query might look like:
 
-    docs = db.collection('WorkItems').order_by('created').limit(100)
-    delete_batch = db.batch()
-    for doc in docs.stream():
-      finish_work(doc)
-      delete_batch.delete(doc.reference)
-    delete_batch.commit()
+```
+docs = db.collection('WorkItems').order_by('created').limit(100)
+delete_batch = db.batch()
+for doc in docs.stream():
+  finish_work(doc)
+  delete_batch.delete(doc.reference)
+delete_batch.commit()
+```
 
 Each time this query runs it scans over the index entries for the `created` field on any recently deleted documents. This slows down queries.
 
 To improve the performance, use the `start_at` method to find the best place to start. For example:
 
-    completed_items = db.collection('CompletionStats').document('all stats').get()
-    docs = db.collection('WorkItems').start_at(
-        {'created': completed_items.get('last_completed')}).order_by(
-            'created').limit(100)
-    delete_batch = db.batch()
-    last_completed = None
-    for doc in docs.stream():
-      finish_work(doc)
-      delete_batch.delete(doc.reference)
-      last_completed = doc.get('created')
-    
-    if last_completed:
-      delete_batch.update(completed_items.reference,
-                          {'last_completed': last_completed})
-      delete_batch.commit()
+```
+completed_items = db.collection('CompletionStats').document('all stats').get()
+docs = db.collection('WorkItems').start_at(
+    {'created': completed_items.get('last_completed')}).order_by(
+        'created').limit(100)
+delete_batch = db.batch()
+last_completed = None
+for doc in docs.stream():
+  finish_work(doc)
+  delete_batch.delete(doc.reference)
+  last_completed = doc.get('created')
+
+if last_completed:
+  delete_batch.update(completed_items.reference,
+                      {'last_completed': last_completed})
+  delete_batch.commit()
+```
 
 NOTE: The example above uses a monotonically increasing field which is an anti-pattern for high write rates.
 
@@ -182,5 +170,5 @@ Note that you cannot easily roll back unless you do dual writes of both the old 
 
 ## Privacy
 
-  - Avoid storing sensitive information in a Cloud Project ID. A Cloud Project ID might be retained beyond the life of your project.
-  - As a data compliance best practice, we recommend not storing sensitive information in document names and document field names.
+- Avoid storing sensitive information in a Cloud Project ID. A Cloud Project ID might be retained beyond the life of your project.
+- As a data compliance best practice, we recommend not storing sensitive information in document names and document field names.

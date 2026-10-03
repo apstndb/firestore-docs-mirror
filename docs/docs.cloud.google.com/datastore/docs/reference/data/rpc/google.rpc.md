@@ -8,7 +8,7 @@ data_source: docs.cloud.google.com
 
 ## Index
 
-  - `  Status  ` (message)
+- [`Status`](https://docs.cloud.google.com/datastore/docs/reference/data/rpc/google.rpc#google.rpc.Status) (message)
 
 ## Status
 
@@ -16,22 +16,8 @@ The `Status` type defines a logical error model that is suitable for different p
 
 You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors) .
 
-Fields
-
-`code`
-
-`int32`
-
-The status code, which should be an enum value of `google.rpc.Code` .
-
-`message`
-
-`string`
-
-A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the `  google.rpc.Status.details  ` field, or localized by the client.
-
-`details[]`
-
-`  Any  `
-
-A list of messages that carry the error details. There is a common set of message types for APIs to use.
+| Fields      |                                                                                                                                                                                                                                                                                                                                                                       |
+|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `code`      | `int32` The status code, which should be an enum value of `google.rpc.Code` .                                                                                                                                                                                                                                                                                         |
+| `message`   | `string` A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the [`google.rpc.Status.details`](https://docs.cloud.google.com/datastore/docs/reference/data/rpc/google.rpc#google.rpc.Status.FIELDS.repeated.google.protobuf.Any.google.rpc.Status.details) field, or localized by the client. |
+| `details[]` | [`Any`](https://protobuf.dev/reference/protobuf/google.protobuf/#any) A list of messages that carry the error details. There is a common set of message types for APIs to use.                                                                                                                                                                                        |

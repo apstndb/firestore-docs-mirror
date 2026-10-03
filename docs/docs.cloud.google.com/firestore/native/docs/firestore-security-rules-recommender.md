@@ -10,7 +10,7 @@ data_source: docs.cloud.google.com
 
 The Firestore Security Rules recommender supports the following recommendation subtype:
 
-  - [Update Insecure Policy](https://docs.cloud.google.com/firestore/docs/security/insecure-rules)
+- [Update Insecure Policy](https://docs.cloud.google.com/firestore/docs/security/insecure-rules)
 
 which are security concerns for Firestore customers providing users extra access than the users intend.
 
@@ -23,48 +23,24 @@ Before you can view Firestore Firestore Security rules recommendations and insig
 1.  Enable the Recommender API as described in [Enable the API](https://docs.cloud.google.com/recommender/docs/enabling) .
 
 2.  Ensure that you have sufficient permissions. You must have one of the following roles, which provide the necessary permissions:
-    
+
     | Task description                                                                                                                                                            | Role                                                     |
-    | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+    |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|
     | View recommendations/insights                                                                                                                                               | `roles/recommender.firestoredatabasefirebaserulesViewer` |
     | View and update (dismiss) recommendations/insights                                                                                                                          | `roles/recommender.firestoredatabasefirebaserulesAdmin`  |
     | Opt out of recommendations/insights in Transparency and Control Center. For more information, see [Opting out](https://docs.cloud.google.com/recommender/docs/opting-out) . | `roles/dataprocessing.admin`                             |
-    
 
     These Recommender roles provide the following API permissions:
-    
-    <table>
-    <colgroup>
-    <col style="width: 45%" />
-    <col style="width: 55%" />
-    </colgroup>
-    <thead>
-    <tr class="header">
-    <th>Role</th>
-    <th>Included permissions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr class="odd">
-    <td><code dir="ltr" translate="no">roles/recommender.firestoredatabasefirebaserulesViewer</code></td>
-    <td><code dir="ltr" translate="no">recommender.firestoreDatabaseFirebaseRulesRecommendations.get</code><br />
-    <code dir="ltr" translate="no">recommender.firestoreDatabaseFirebaseRulesRecommendations.list</code><br />
-    <code dir="ltr" translate="no">recommender.firestoreDatabaseFirebaseRulesInsights.get</code><br />
-    <code dir="ltr" translate="no">recommender.firestoreDatabaseFirebaseRulesInsights.list</code></td>
-    </tr>
-    <tr class="even">
-    <td><code dir="ltr" translate="no">roles/recommender.firestoredatabasefirebaserulesAdmin</code></td>
-    <td><code dir="ltr" translate="no">roles/recommender.firestoredatabasefirebaserulesViewer</code> permissions, plus<br />
-    <code dir="ltr" translate="no">recommender.firestoreDatabaseFirebaseRulesRecommendations.update</code><br />
-    <code dir="ltr" translate="no">recommender.firestoreDatabaseFirebaseRulesInsights.update</code></td>
-    </tr>
-    </tbody>
-    </table>
-    
+
+    | Role                                                     | Included permissions                                                                                                                                                                                                                                |
+    |----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | `roles/recommender.firestoredatabasefirebaserulesViewer` | `recommender.firestoreDatabaseFirebaseRulesRecommendations.get` `recommender.firestoreDatabaseFirebaseRulesRecommendations.list` `recommender.firestoreDatabaseFirebaseRulesInsights.get` `recommender.firestoreDatabaseFirebaseRulesInsights.list` |
+    | `roles/recommender.firestoredatabasefirebaserulesAdmin`  | `roles/recommender.firestoredatabasefirebaserulesViewer` permissions, plus `recommender.firestoreDatabaseFirebaseRulesRecommendations.update` `recommender.firestoreDatabaseFirebaseRulesInsights.update`                                           |
+
     For more information about roles and about granting access, see the following:
-    
-      - [Understanding roles](https://docs.cloud.google.com/iam/docs/understanding-roles)
-      - [Managing access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access)
+
+    - [Understanding roles](https://docs.cloud.google.com/iam/docs/understanding-roles)
+    - [Managing access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access)
 
 You can view Firestore Security rules recommendations only if you have non-empty, in-use databases that have any rules exposed to broad access configured. The project must be at least 30 days old for recommendations to be generated for it.
 
@@ -88,7 +64,7 @@ Recommendations can be viewed on **Recommendation Hub** or **Database Center** p
 
 To list Firestore Security rules recommendations by using `gcloud` , run the [`gcloud recommender recommendations list`](https://docs.cloud.google.com/sdk/gcloud/reference/recommender/recommendations/list) command as follows:
 
-``` 
+```
   gcloud recommender recommendations list \
   --project=PROJECT_ID \
   --location=LOCATION \
@@ -97,15 +73,15 @@ To list Firestore Security rules recommendations by using `gcloud` , run the [`g
 
 Replace the following:
 
-  - `  PROJECT_ID  ` : Your project ID
-  - `  LOCATION  ` : A region, such as `us-central1`
-  - `  RECOMMENDER  ` : The ID of the recommender as `FirebaseRulesRecommender` .
+- `PROJECT_ID` : Your project ID
+- `LOCATION` : A region, such as `us-central1`
+- `RECOMMENDER` : The ID of the recommender as `FirebaseRulesRecommender` .
 
 ### Recommender API
 
 To list your Firestore Security rules recommendations by using the [Recommendations API](https://docs.cloud.google.com/recommender/docs/using-api) , call the [`recommendations.list`](https://docs.cloud.google.com/recommender/docs/reference/rest/v1beta1/projects.locations.recommenders.recommendations/list) method as follows:
 
-``` 
+```
   curl -H "Authorization: Bearer $(gcloud auth print-access-token)"  \
   -H "x-goog-user-project: PROJECT_ID" \
   "https://recommender.googleapis.com/v1/projects/PROJECT_ID/locations/LOCATION/recommenders/google.firestore.database.RECOMMENDER/recommendations"
@@ -113,9 +89,9 @@ To list your Firestore Security rules recommendations by using the [Recommendati
 
 Replace the following:
 
-  - `  PROJECT_ID  ` : Your project ID.
-  - `  LOCATION  ` : A region, such as `us-central1` .
-  - `  RECOMMENDER  ` : The ID of the recommender as `FirebaseRulesRecommender` .
+- `PROJECT_ID` : Your project ID.
+- `LOCATION` : A region, such as `us-central1` .
+- `RECOMMENDER` : The ID of the recommender as `FirebaseRulesRecommender` .
 
 For more information, see [Using the API - Recommendations](https://docs.cloud.google.com/recommender/docs/using-api) .
 
@@ -127,7 +103,7 @@ You can view insights and detailed recommendations about Firestore Security rule
 
 To view insights by using `gcloud` , run the [`gcloud recommender insights list`](https://docs.cloud.google.com/sdk/gcloud/reference/recommender/insights/list) command as follows:
 
-``` 
+```
   gcloud recommender insights list \
   --project=PROJECT_ID \
   --location=LOCATION \
@@ -136,23 +112,25 @@ To view insights by using `gcloud` , run the [`gcloud recommender insights list`
 
 Replace the following:
 
-  - `  PROJECT_ID  ` : Your project ID.
-  - `  LOCATION  ` : A region, such as `us-central1` .
-  - `  INSIGHT_TYPE  ` : The ID of the insight type as `FirebaseRulesInsight` .
+- `PROJECT_ID` : Your project ID.
+- `LOCATION` : A region, such as `us-central1` .
+- `INSIGHT_TYPE` : The ID of the insight type as `FirebaseRulesInsight` .
 
 ### Recommender API
 
 To list your insights by using the Recommender API, run the following command:
 
-    curl -H "Authorization: Bearer $(gcloud auth print-access-token)"  \
-    
-    "https://recommender.googleapis.com/v1/projects/PROJECT_ID/locations/LOCATION/insightTypes/google.firestore.database.INSIGHT_TYPE/insights"
+```
+curl -H "Authorization: Bearer $(gcloud auth print-access-token)"  \
+
+"https://recommender.googleapis.com/v1/projects/PROJECT_ID/locations/LOCATION/insightTypes/google.firestore.database.INSIGHT_TYPE/insights"
+```
 
 Replace the following:
 
-  - `  PROJECT_ID  ` : Your project ID.
-  - `  LOCATION  ` : A region, such as `us-central1` .
-  - `  INSIGHT_TYPE  ` : The ID of the insight type as `FirebaseRulesInsight` .
+- `PROJECT_ID` : Your project ID.
+- `LOCATION` : A region, such as `us-central1` .
+- `INSIGHT_TYPE` : The ID of the insight type as `FirebaseRulesInsight` .
 
 For more information, see [Using the API - Insights](https://docs.cloud.google.com/recommender/docs/insights/using-api) .
 

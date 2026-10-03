@@ -12,18 +12,20 @@ Run a query.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Datastore queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)
+- [Datastore queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task");
-    DatastoreQueryResults tasks = _db.RunQuery(query);
+```csharp
+Query query = new Query("Task");
+DatastoreQueryResults tasks = _db.RunQuery(query);
+```
 
 ### Go
 
@@ -31,18 +33,20 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    it := client.Run(ctx, query)
-    for {
-     var task Task
-     _, err := it.Next(&task)
-     if err == iterator.Done {
-         break
-     }
-     if err != nil {
-         log.Fatalf("Error fetching next task: %v", err)
-     }
-     fmt.Printf("Task %q, Priority %d\n", task.Description, task.Priority)
+```go
+it := client.Run(ctx, query)
+for {
+    var task Task
+    _, err := it.Next(&task)
+    if err == iterator.Done {
+        break
     }
+    if err != nil {
+        log.Fatalf("Error fetching next task: %v", err)
+    }
+    fmt.Printf("Task %q, Priority %d\n", task.Description, task.Priority)
+}
+```
 
 ### Java
 
@@ -50,7 +54,9 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    QueryResults<Entity> tasks = datastore.run(query);
+```java
+QueryResults<Entity> tasks = datastore.run(query);
+```
 
 ### PHP
 
@@ -58,7 +64,9 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $result = $datastore->runQuery($query);
+```php
+$result = $datastore->runQuery($query);
+```
 
 ### Python
 
@@ -66,14 +74,16 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query()
-    results = list(query.fetch())
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query()
+results = list(query.fetch())
+```
 
 ### Ruby
 
@@ -81,7 +91,9 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    tasks = datastore.run query
+```ruby
+tasks = datastore.run query
+```
 
 ## What's next
 

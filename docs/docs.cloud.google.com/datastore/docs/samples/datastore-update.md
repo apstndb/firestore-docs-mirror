@@ -12,18 +12,20 @@ Update an entity.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Entities, Properties, and Keys](https://docs.cloud.google.com/datastore/docs/concepts/entities)
+- [Entities, Properties, and Keys](https://docs.cloud.google.com/datastore/docs/concepts/entities)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    _sampleTask["priority"] = 5;
-    _db.Update(_sampleTask);
+```csharp
+_sampleTask["priority"] = 5;
+_db.Update(_sampleTask);
+```
 
 ### Go
 
@@ -31,22 +33,24 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    taskKey := datastore.NameKey("Task", "sampleTask", nil)
-    tx, err := client.NewTransaction(ctx)
-    if err != nil {
-     log.Fatalf("client.NewTransaction: %v", err)
-    }
-    var task Task
-    if err := tx.Get(taskKey, &task); err != nil {
-     log.Fatalf("tx.Get: %v", err)
-    }
-    task.Priority = 5
-    if _, err := tx.Put(taskKey, &task); err != nil {
-     log.Fatalf("tx.Put: %v", err)
-    }
-    if _, err := tx.Commit(); err != nil {
-     log.Fatalf("tx.Commit: %v", err)
-    }
+```go
+taskKey := datastore.NameKey("Task", "sampleTask", nil)
+tx, err := client.NewTransaction(ctx)
+if err != nil {
+    log.Fatalf("client.NewTransaction: %v", err)
+}
+var task Task
+if err := tx.Get(taskKey, &task); err != nil {
+    log.Fatalf("tx.Get: %v", err)
+}
+task.Priority = 5
+if _, err := tx.Put(taskKey, &task); err != nil {
+    log.Fatalf("tx.Put: %v", err)
+}
+if _, err := tx.Commit(); err != nil {
+    log.Fatalf("tx.Commit: %v", err)
+}
+```
 
 ### Java
 
@@ -54,17 +58,19 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Entity task;
-    Transaction txn = datastore.newTransaction();
-    try {
-      task = Entity.newBuilder(txn.get(taskKey)).set("priority", 5).build();
-      txn.put(task);
-      txn.commit();
-    } finally {
-      if (txn.isActive()) {
-        txn.rollback();
-      }
-    }
+```java
+Entity task;
+Transaction txn = datastore.newTransaction();
+try {
+  task = Entity.newBuilder(txn.get(taskKey)).set("priority", 5).build();
+  txn.put(task);
+  txn.commit();
+} finally {
+  if (txn.isActive()) {
+    txn.rollback();
+  }
+}
+```
 
 ### PHP
 
@@ -72,12 +78,14 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $transaction = $datastore->transaction();
-    $key = $datastore->key('Task', 'sampleTask');
-    $task = $transaction->lookup($key);
-    $task['priority'] = 5;
-    $transaction->update($task);
-    $transaction->commit();
+```php
+$transaction = $datastore->transaction();
+$key = $datastore->key('Task', 'sampleTask');
+$task = $transaction->lookup($key);
+$task['priority'] = 5;
+$transaction->update($task);
+$transaction->commit();
+```
 
 ### Python
 
@@ -85,19 +93,21 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    with client.transaction():
-        key = client.key("Task", "sampleTask")
-        task = client.get(key)
-    
-        task["done"] = True
-    
-        client.put(task)
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+with client.transaction():
+    key = client.key("Task", "sampleTask")
+    task = client.get(key)
+
+    task["done"] = True
+
+    client.put(task)
+```
 
 ### Ruby
 
@@ -105,12 +115,14 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    # task_name = "sampleTask"
-    datastore.transaction do |_tx|
-      task = datastore.find "Task", task_name
-      task["priority"] = 5
-      datastore.save task
-    end
+```ruby
+# task_name = "sampleTask"
+datastore.transaction do |_tx|
+  task = datastore.find "Task", task_name
+  task["priority"] = 5
+  datastore.save task
+end
+```
 
 ## What's next
 

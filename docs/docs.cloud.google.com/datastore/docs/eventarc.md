@@ -8,10 +8,10 @@ data_source: docs.cloud.google.com
 
 You can use [Eventarc](https://docs.cloud.google.com/eventarc/docs/overview) and Firestore in Datastore mode to build event-driven architectures. Firestore in Datastore mode provides triggers for Eventarc that generate events from changes to a particular entity in your database. The trigger can route events to a [supported destination](https://docs.cloud.google.com/eventarc/docs/event-providers-targets) :
 
-  - [Cloud Run functions (2nd gen)](https://docs.cloud.google.com/datastore/docs/extend-with-functions-2nd-gen)
-  - [Cloud Run](https://docs.cloud.google.com/eventarc/docs/run/route-trigger-cloud-firestore)
-  - [Google Kubernetes Engine](https://docs.cloud.google.com/eventarc/docs/gke/route-trigger-cloud-firestore)
-  - [Workflows](https://docs.cloud.google.com/eventarc/docs/workflows/route-trigger-cloud-firestore)
+- [Cloud Run functions (2nd gen)](https://docs.cloud.google.com/datastore/docs/extend-with-functions-2nd-gen)
+- [Cloud Run](https://docs.cloud.google.com/eventarc/docs/run/route-trigger-cloud-firestore)
+- [Google Kubernetes Engine](https://docs.cloud.google.com/eventarc/docs/gke/route-trigger-cloud-firestore)
+- [Workflows](https://docs.cloud.google.com/eventarc/docs/workflows/route-trigger-cloud-firestore)
 
 Eventarc offers a standardized solution to manage the flow of state changes, called *events* , between decoupled microservices. When triggered, Eventarc routes these events to various destinations while managing delivery, security, authorization, observability, and error-handling for you.
 
@@ -21,42 +21,42 @@ Eventarc offers a standardized solution to manage the flow of state changes, cal
 
 An event-driven architecture is a system design pattern where services react to changes in state known as events. You can use this pattern alongside the scalability of Firestore to add more features to your app. For example, you might add the following capabilities:
 
-  - Interoperability between different technology stacks
-    
-    Replicate your data and transform it before sending it to an analytics system.
+- Interoperability between different technology stacks
 
-  - Parallel processing
-    
-    Fan out operations for parallel processing. If you have multiple systems that operate based on entity changes, you can use the push-based streams in each consumer and route the event to multiple consumers.
+  Replicate your data and transform it before sending it to an analytics system.
 
-  - Push-based event streams
-    
-    Build push-based messaging designs. Clients can receive notifications without needing to poll remote services. Without the polling latency, you can better perform on-the-fly data processing and real-time analysis.
+- Parallel processing
 
-  - State monitoring and alerting
-    
-    Use an event-driven architecture to add custom metrics to your database operations. Monitor and receive alerts on changes and updates. Detect anomalies.
+  Fan out operations for parallel processing. If you have multiple systems that operate based on entity changes, you can use the push-based streams in each consumer and route the event to multiple consumers.
+
+- Push-based event streams
+
+  Build push-based messaging designs. Clients can receive notifications without needing to poll remote services. Without the polling latency, you can better perform on-the-fly data processing and real-time analysis.
+
+- State monitoring and alerting
+
+  Use an event-driven architecture to add custom metrics to your database operations. Monitor and receive alerts on changes and updates. Detect anomalies.
 
 ## Limitations
 
 Note the following limitations for Datastore mode triggers for Eventarc:
 
-  - Ordering is not guaranteed. Rapid changes can trigger events in an unexpected order.
+- Ordering is not guaranteed. Rapid changes can trigger events in an unexpected order.
 
-  - Events are delivered *at least* once.
-    
-    Make sure your event handler is idempotent and avoid producing unexpected results or side effects when an event is delivered more than once. Refer to [Building idempotent functions](https://cloud.google.com/blog/products/serverless/cloud-functions-pro-tips-building-idempotent-functions) to learn more.
+- Events are delivered *at least* once.
 
-  - A trigger is associated with a single database. You cannot create a trigger that matches multiple databases.
+  Make sure your event handler is idempotent and avoid producing unexpected results or side effects when an event is delivered more than once. Refer to [Building idempotent functions](https://cloud.google.com/blog/products/serverless/cloud-functions-pro-tips-building-idempotent-functions) to learn more.
 
-  - Deleting a database does not automatically delete any triggers for that database. The trigger stops delivering events but continues to exist until you [delete the trigger](https://docs.cloud.google.com/eventarc/docs/managing-triggers#trigger-delete) .
+- A trigger is associated with a single database. You cannot create a trigger that matches multiple databases.
+
+- Deleting a database does not automatically delete any triggers for that database. The trigger stops delivering events but continues to exist until you [delete the trigger](https://docs.cloud.google.com/eventarc/docs/managing-triggers#trigger-delete) .
 
 ## Eventarc and Firestore in Datastore mode locations
 
 Eventarc does not support multi-regions for Firestore event triggers, but you can still create triggers for Firestore databases in multi-region locations. Eventarc maps Firestore multi-region locations to the following Eventarc regions:
 
 | Firestore multi-region | Eventarc region |
-| ---------------------- | --------------- |
+|------------------------|-----------------|
 | `nam5`                 | `us-central1`   |
 | `eur3`                 | `europe-west4`  |
 
@@ -70,9 +70,9 @@ Event interoperability lets you share Eventarc code across Firestore databases o
 
 If you apply a Native mode event trigger to a Datastore mode database, Eventarc makes the following conversions:
 
-  - The namespace of the entity is stored in the event's `PartitionId` attribute.
-  - Embedded entities are converted to Native mode `map` types.
+- The namespace of the entity is stored in the event's `PartitionId` attribute.
+- Embedded entities are converted to Native mode `map` types.
 
 ## What's next
 
-  - Learn about [event-driven architectures](https://docs.cloud.google.com/eventarc/docs/event-driven-architectures) .
+- Learn about [event-driven architectures](https://docs.cloud.google.com/eventarc/docs/event-driven-architectures) .

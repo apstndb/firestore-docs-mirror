@@ -29,7 +29,7 @@ By replicating the data between multiple regions, data can continue to be served
 Firestore with MongoDB compatibility supports the following multi-region locations:
 
 | Multi-region name | Multi-region description         | Read-Write regions                                                         | Witness region                                       |
-| ----------------- | -------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------- |
+|-------------------|----------------------------------|----------------------------------------------------------------------------|------------------------------------------------------|
 | `eur3`            | Europe                           | `europe-west1` (Belgium), `europe-west4` (Netherlands)                     | `europe-north1` (Finland)                            |
 | `nam5`            | United States (Central)          | `us-central1` (Iowa), `us-central2` (Oklahoma—private Google Cloud region) | `us-east1` (South Carolina)                          |
 | `nam7`            | United States (Central and East) | `us-central1` (Iowa), `us-east4` (Northern Virginia)                       | `us-central2` (Oklahoma—private Google Cloud region) |
@@ -42,202 +42,65 @@ Select a regional location for lower costs, for lower write latency if your appl
 
 Firestore with MongoDB compatibility supports the following regional resource locations:
 
-Region name
-
-Region description
-
-**North America**
-
-`us-west1`
-
-Oregon
-
-`us-west2`
-
-Los Angeles
-
-`us-west3`
-
-Salt Lake City
-
-`us-west4`
-
-Las Vegas
-
-`us-central1`
-
-Iowa
-
-`northamerica-northeast1`
-
-Montréal
-
-`northamerica-northeast2`
-
-Toronto
-
-`northamerica-south1`
-
-Queretaro
-
-`us-east1`
-
-South Carolina
-
-`us-east4`
-
-Northern Virginia
-
-`us-east5`
-
-Columbus
-
-`us-south1`
-
-Dallas
-
-**South America**
-
-`southamerica-west1`
-
-Santiago
-
-`southamerica-east1`
-
-São Paulo
-
-**Europe**
-
-`europe-west2`
-
-London
-
-`europe-west1`
-
-Belgium
-
-`europe-west4`
-
-Netherlands
-
-`europe-west8`
-
-Milan
-
-`europe-southwest1`
-
-Madrid
-
-`europe-west9`
-
-Paris
-
-`europe-west12`
-
-Turin
-
-`europe-west10`
-
-Berlin
-
-`europe-west3`
-
-Frankfurt
-
-`europe-north1`
-
-Finland
-
-`europe-north2`
-
-Stockholm
-
-`europe-central2`
-
-Warsaw
-
-`europe-west6`
-
-Zürich
-
-**Middle East**
-
-`me-central1`
-
-Doha
-
-`me-central2`
-
-Dammam
-
-`me-west1`
-
-Tel Aviv
-
-**Asia**
-
-`asia-south1`
-
-Mumbai
-
-`asia-south2`
-
-Delhi
-
-`asia-southeast1`
-
-Singapore
-
-`asia-southeast2`
-
-Jakarta
-
-`asia-southeast3`
-
-Bangkok
-
-`asia-east2`
-
-Hong Kong
-
-`asia-east1`
-
-Taiwan
-
-`asia-northeast1`
-
-Tokyo
-
-`asia-northeast2`
-
-Osaka
-
-`asia-northeast3`
-
-Seoul
-
-**Australia**
-
-`australia-southeast1`
-
-Sydney
-
-`australia-southeast2`
-
-Melbourne
-
-**Africa**
-
-`africa-south1`
-
-Johannesburg
+|                   | Region name               | Region description |
+|-------------------|---------------------------|--------------------|
+| **North America** |                           |                    |
+|                   | `us-west1`                | Oregon             |
+|                   | `us-west2`                | Los Angeles        |
+|                   | `us-west3`                | Salt Lake City     |
+|                   | `us-west4`                | Las Vegas          |
+|                   | `us-central1`             | Iowa               |
+|                   | `northamerica-northeast1` | Montréal           |
+|                   | `northamerica-northeast2` | Toronto            |
+|                   | `northamerica-south1`     | Queretaro          |
+|                   | `us-east1`                | South Carolina     |
+|                   | `us-east4`                | Northern Virginia  |
+|                   | `us-east5`                | Columbus           |
+|                   | `us-south1`               | Dallas             |
+| **South America** |                           |                    |
+|                   | `southamerica-west1`      | Santiago           |
+|                   | `southamerica-east1`      | São Paulo          |
+| **Europe**        |                           |                    |
+|                   | `europe-west2`            | London             |
+|                   | `europe-west1`            | Belgium            |
+|                   | `europe-west4`            | Netherlands        |
+|                   | `europe-west8`            | Milan              |
+|                   | `europe-southwest1`       | Madrid             |
+|                   | `europe-west9`            | Paris              |
+|                   | `europe-west12`           | Turin              |
+|                   | `europe-west10`           | Berlin             |
+|                   | `europe-west3`            | Frankfurt          |
+|                   | `europe-north1`           | Finland            |
+|                   | `europe-north2`           | Stockholm          |
+|                   | `europe-central2`         | Warsaw             |
+|                   | `europe-west6`            | Zürich             |
+| **Middle East**   |                           |                    |
+|                   | `me-central1`             | Doha               |
+|                   | `me-central2`             | Dammam             |
+|                   | `me-west1`                | Tel Aviv           |
+| **Asia**          |                           |                    |
+|                   | `asia-south1`             | Mumbai             |
+|                   | `asia-south2`             | Delhi              |
+|                   | `asia-southeast1`         | Singapore          |
+|                   | `asia-southeast2`         | Jakarta            |
+|                   | `asia-southeast3`         | Bangkok            |
+|                   | `asia-east2`              | Hong Kong          |
+|                   | `asia-east1`              | Taiwan             |
+|                   | `asia-northeast1`         | Tokyo              |
+|                   | `asia-northeast2`         | Osaka              |
+|                   | `asia-northeast3`         | Seoul              |
+| **Australia**     |                           |                    |
+|                   | `australia-southeast1`    | Sydney             |
+|                   | `australia-southeast2`    | Melbourne          |
+| **Africa**        |                           |                    |
+|                   | `africa-south1`           | Johannesburg       |
 
 ## Location SLA
 
 Your Firestore with MongoDB compatibility location type determines the [Service Level Agreement (SLA)](https://docs.cloud.google.com/firestore/sla) uptime percentage at General Availability (GA):
 
 | Covered service                                   | Monthly uptime percentage |
-| ------------------------------------------------- | ------------------------- |
+|---------------------------------------------------|---------------------------|
 | Firestore with MongoDB compatibility Multi-Region | \>= 99.999%               |
 | Firestore with MongoDB compatibility Regional     | \>= 99.99%                |
 
@@ -251,12 +114,12 @@ For a comprehensive explanation of pricing per region and per region type, see [
 
 Use one of the following methods to view the location setting for your databases:
 
-  - Run the [`gcloud firestore databases list`](https://cloud.google.com//sdk/gcloud/reference/firestore/databases/list) command.
+- Run the [`gcloud firestore databases list`](https://cloud.google.com//sdk/gcloud/reference/firestore/databases/list) command.
 
-  - Open the [database list](https://console.cloud.google.com/firestore/databases) in the Google Cloud console. The location for each database is in the location column.
+- Open the [database list](https://console.cloud.google.com/firestore/databases) in the Google Cloud console. The location for each database is in the location column.
 
 ## Next steps
 
-  - To create a Firestore with MongoDB compatibility database in a specific location, see [Create and manage databases](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases)
+- To create a Firestore with MongoDB compatibility database in a specific location, see [Create and manage databases](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases)
 
-  - For more information about building applications to meet your latency, availability, and durability requirements, refer to [Geography and Regions](https://cloud.google.com/docs/geography-and-regions#multi-regional_resources) .
+- For more information about building applications to meet your latency, availability, and durability requirements, refer to [Geography and Regions](https://cloud.google.com/docs/geography-and-regions#multi-regional_resources) .

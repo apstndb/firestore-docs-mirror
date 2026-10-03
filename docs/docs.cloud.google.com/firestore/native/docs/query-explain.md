@@ -16,8 +16,8 @@ Query Explain results help you understand how your queries are executed, showing
 
 Query Explain:
 
-  - Provides insights on the query planning phase so you can adjust your query indexes and boost efficiency.
-  - Using the analyze option, helps you understand your cost and performance on a per-query basis and lets you quickly iterate through different query patterns in order to optimize their usage.
+- Provides insights on the query planning phase so you can adjust your query indexes and boost efficiency.
+- Using the analyze option, helps you understand your cost and performance on a per-query basis and lets you quickly iterate through different query patterns in order to optimize their usage.
 
 > **Note:** Query Explain supports polled queries. Streaming queries are not yet supported.
 
@@ -43,19 +43,18 @@ Note that requests are authenticated with IAM, using the same permissions for re
 
 ##### Java (Admin)
 
-``` 
+```
 Query q = db.collection("col").whereGreaterThan("a", 1);
 ExplainOptions options = ExplainOptions.builder().build();
 
 ExplainResults<QuerySnapshot> explainResults = q.explain(options).get();
 ExplainMetrics metrics = explainResults.getMetrics();
 PlanSummary planSummary = metrics.getPlanSummary();
-    
 ```
 
 ##### Node (Admin)
 
-``` 
+```
 const q = db.collection('col').where('country', '=', 'USA');
 const options = { analyze : 'false' };
 
@@ -63,17 +62,18 @@ const explainResults = await q.explain(options);
 
 const metrics = explainResults.metrics;
 const plan = metrics.planSummary;
-    
 ```
 
 The exact format of the response depends on the execution environment. Returned results can be converted to JSON. For example:
 
-    {
-        "indexes_used": [
-            {"query_scope": "Collection", "properties": "(category ASC, __name__ ASC)"},
-            {"query_scope": "Collection", "properties": "(country ASC, __name__ ASC)"},
-        ]
-    }
+```
+{
+    "indexes_used": [
+        {"query_scope": "Collection", "properties": "(category ASC, __name__ ASC)"},
+        {"query_scope": "Collection", "properties": "(country ASC, __name__ ASC)"},
+    ]
+}
+```
 
 For more information, see the [Query Explain report reference](https://docs.cloud.google.com/firestore/native/docs/query-explain-report-reference) .
 
@@ -87,7 +87,7 @@ Note that requests are authenticated with IAM, using the same permissions for re
 
 ##### Java (Admin)
 
-``` 
+```
 Query q = db.collection("col").whereGreaterThan("a", 1);
 
 ExplainOptions options = ExplainOptions.builder().setAnalyze(true).build();
@@ -98,12 +98,11 @@ ExplainMetrics metrics = explainResults.getMetrics();
 PlanSummary planSummary = metrics.getPlanSummary();
 List<Map<String, Object>> indexesUsed = planSummary.getIndexesUsed();
 ExecutionStats stats = metrics.getExecutionStats();
-    
 ```
 
 ##### Node (Admin)
 
-``` 
+```
 const q = db.collection('col').where('country', '=', 'USA');
 
 const options = { analyze : 'true' };
@@ -114,27 +113,28 @@ const metrics = explainResults.metrics;
 const plan = metrics.planSummary;
 const indexesUsed = plan.indexesUsed;
 const stats = metrics.executionStats;
-    
 ```
 
 The following example shows the `stats` object returned in addition to `planInfo` . The exact format of the response depends on the execution environment. The example response is in JSON format.
 
-    {
-        "resultsReturned": "5",
-        "executionDuration": "0.100718s",
-        "readOperations": "5",
-        "debugStats": {
-                   "index_entries_scanned": "95000",
-                   "documents_scanned": "5"
-                   "billing_details": {
-                         "documents_billable": "5",
-                         "index_entries_billable": "0",
-                         "small_ops": "0",
-                         "min_query_cost": "0",
-                   }
-        }
-    
+```
+{
+    "resultsReturned": "5",
+    "executionDuration": "0.100718s",
+    "readOperations": "5",
+    "debugStats": {
+               "index_entries_scanned": "95000",
+               "documents_scanned": "5"
+               "billing_details": {
+                     "documents_billable": "5",
+                     "index_entries_billable": "0",
+                     "small_ops": "0",
+                     "min_query_cost": "0",
+               }
     }
+
+}
+```
 
 For more information, see the [Query Explain report reference](https://docs.cloud.google.com/firestore/native/docs/query-explain-report-reference) .
 
@@ -146,61 +146,67 @@ Let's look at an example scenario in which we query movies by genre and country 
 
 For illustration, assume the equivalent of this SQL query.
 
-    SELECT *
-    FROM /movies
-    WHERE category = 'Romantic' AND country = 'USA';
+```
+SELECT *
+FROM /movies
+WHERE category = 'Romantic' AND country = 'USA';
+```
 
 If we use the analyze option, the returned metrics show the query runs on two single-field indexes, `(category ASC, __name__ ASC)` and `(country ASC, __name__ ASC)` . It scans 16500 index entries, but returns only 1200 documents.
 
-    // Output query planning info
-    {
-        "indexes_used": [
-            {"query_scope": "Collection", "properties": "(category ASC, __name__ ASC)"},
-            {"query_scope": "Collection", "properties": "(country ASC, __name__ ASC)"},
-        ]
+```
+// Output query planning info
+{
+    "indexes_used": [
+        {"query_scope": "Collection", "properties": "(category ASC, __name__ ASC)"},
+        {"query_scope": "Collection", "properties": "(country ASC, __name__ ASC)"},
+    ]
+}
+
+// Output query status
+{
+    "resultsReturned": "1200",
+    "executionDuration": "0.118882s",
+    "readOperations": "1200",
+    "debugStats": {
+               "index_entries_scanned": "16500",
+               "documents_scanned": "1200"
+               "billing_details": {
+                     "documents_billable": "1200",
+                     "index_entries_billable": "0",
+                     "small_ops": "0",
+                     "min_query_cost": "0",
+               }
     }
-    
-    // Output query status
-    {
-        "resultsReturned": "1200",
-        "executionDuration": "0.118882s",
-        "readOperations": "1200",
-        "debugStats": {
-                   "index_entries_scanned": "16500",
-                   "documents_scanned": "1200"
-                   "billing_details": {
-                         "documents_billable": "1200",
-                         "index_entries_billable": "0",
-                         "small_ops": "0",
-                         "min_query_cost": "0",
-                   }
-        }
-    }
+}
+```
 
 To optimize the performance of executing the query, you can create a fully-covered composite index `(category ASC, country ASC, __name__ ASC)` .
 
 Running the query with the analyze option again we can see that the newly-created index is selected for this query, and the query runs much faster and more efficiently.
 
-    // Output query planning info
-    {
-        "indexes_used": [
-            {"query_scope": "Collection", "properties": "(category ASC, country ASC,  __name__ ASC)"}
-        ]
+```
+// Output query planning info
+{
+    "indexes_used": [
+        {"query_scope": "Collection", "properties": "(category ASC, country ASC,  __name__ ASC)"}
+    ]
+}
+
+// Output query stats
+{
+    "resultsReturned": "1200",
+    "executionDuration": "0.026139s",
+    "readOperations": "1200",
+    "debugStats": {
+               "index_entries_scanned": "1200",
+               "documents_scanned": "1200"
+               "billing_details": {
+                     "documents_billable": "1200",
+                     "index_entries_billable": "0",
+                     "small_ops": "0",
+                     "min_query_cost": "0",
+               }
     }
-    
-    // Output query stats
-    {
-        "resultsReturned": "1200",
-        "executionDuration": "0.026139s",
-        "readOperations": "1200",
-        "debugStats": {
-                   "index_entries_scanned": "1200",
-                   "documents_scanned": "1200"
-                   "billing_details": {
-                         "documents_billable": "1200",
-                         "index_entries_billable": "0",
-                         "small_ops": "0",
-                         "min_query_cost": "0",
-                   }
-        }
-    }
+}
+```

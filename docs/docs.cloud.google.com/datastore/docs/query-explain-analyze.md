@@ -14,8 +14,8 @@ Query Explain results help you understand how your queries are executed, showing
 
 Query Explain:
 
-  - Provides insights on planning phase so you can adjust your query indexes and boost efficiency.
-  - Helps you understand your cost and performance on a per-query basis and lets you quickly iterate through different query patterns in order to optimize their usage.
+- Provides insights on planning phase so you can adjust your query indexes and boost efficiency.
+- Helps you understand your cost and performance on a per-query basis and lets you quickly iterate through different query patterns in order to optimize their usage.
 
 ## Understand Query Explain options: default and analyze
 
@@ -45,46 +45,50 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    import com.google.cloud.datastore.Datastore;
-    import com.google.cloud.datastore.DatastoreOptions;
-    import com.google.cloud.datastore.Entity;
-    import com.google.cloud.datastore.Query;
-    import com.google.cloud.datastore.QueryResults;
-    import com.google.cloud.datastore.models.ExplainMetrics;
-    import com.google.cloud.datastore.models.ExplainOptions;
-    import com.google.cloud.datastore.models.PlanSummary;
-    import java.util.List;
-    import java.util.Map;
-    import java.util.Optional;
-    
-    public class QueryProfileExplain {
-      public static void invoke() throws Exception {
-        // Instantiates a client
-        Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
-    
-        // Build the query
-        Query<Entity> query = Query.newEntityQueryBuilder().setKind("Task").build();
-    
-        // Set the explain options to get back *only* the plan summary
-        QueryResults<Entity> results = datastore.run(query, ExplainOptions.newBuilder().build());
-    
-        // Get the explain metrics
-        Optional<ExplainMetrics> explainMetrics = results.getExplainMetrics();
-        if (!explainMetrics.isPresent()) {
-          throw new Exception("No explain metrics returned");
-        }
-        PlanSummary planSummary = explainMetrics.get().getPlanSummary();
-        List<Map<String, Object>> indexesUsed = planSummary.getIndexesUsed();
-        System.out.println("----- Indexes Used -----");
-        indexesUsed.forEach(map -> map.forEach((key, val) -> System.out.println(key + ": " + val)));
-      }
+```java
+import com.google.cloud.datastore.Datastore;
+import com.google.cloud.datastore.DatastoreOptions;
+import com.google.cloud.datastore.Entity;
+import com.google.cloud.datastore.Query;
+import com.google.cloud.datastore.QueryResults;
+import com.google.cloud.datastore.models.ExplainMetrics;
+import com.google.cloud.datastore.models.ExplainOptions;
+import com.google.cloud.datastore.models.PlanSummary;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+public class QueryProfileExplain {
+  public static void invoke() throws Exception {
+    // Instantiates a client
+    Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
+
+    // Build the query
+    Query<Entity> query = Query.newEntityQueryBuilder().setKind("Task").build();
+
+    // Set the explain options to get back *only* the plan summary
+    QueryResults<Entity> results = datastore.run(query, ExplainOptions.newBuilder().build());
+
+    // Get the explain metrics
+    Optional<ExplainMetrics> explainMetrics = results.getExplainMetrics();
+    if (!explainMetrics.isPresent()) {
+      throw new Exception("No explain metrics returned");
     }
+    PlanSummary planSummary = explainMetrics.get().getPlanSummary();
+    List<Map<String, Object>> indexesUsed = planSummary.getIndexesUsed();
+    System.out.println("----- Indexes Used -----");
+    indexesUsed.forEach(map -> map.forEach((key, val) -> System.out.println(key + ": " + val)));
+  }
+}
+```
 
 See the `indexes_used` field in the response to learn about the indexes used in the query plan:
 
-    "indexes_used": [
-            {"query_scope": "Collection Group", "properties": "(__name__ ASC)"},
-    ]
+```
+"indexes_used": [
+        {"query_scope": "Collection Group", "properties": "(__name__ ASC)"},
+]
+```
 
 For more information about the report, see the [report reference](https://docs.cloud.google.com/datastore/docs/query-explain-analyze-report-reference) .
 
@@ -102,87 +106,91 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    import com.google.cloud.datastore.Datastore;
-    import com.google.cloud.datastore.DatastoreOptions;
-    import com.google.cloud.datastore.Entity;
-    import com.google.cloud.datastore.Query;
-    import com.google.cloud.datastore.QueryResults;
-    import com.google.cloud.datastore.models.ExecutionStats;
-    import com.google.cloud.datastore.models.ExplainMetrics;
-    import com.google.cloud.datastore.models.ExplainOptions;
-    import com.google.cloud.datastore.models.PlanSummary;
-    import java.util.List;
-    import java.util.Map;
-    
-    public class QueryProfileExplainAnalyze {
-      public static void invoke() throws Exception {
-        // Instantiates a client
-        Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
-    
-        // Build the query
-        Query<Entity> query = Query.newEntityQueryBuilder().setKind("Task").build();
-    
-        // Set explain options with analzye = true to get back the query stats, plan info, and query
-        // results
-        QueryResults<Entity> results =
-            datastore.run(query, ExplainOptions.newBuilder().setAnalyze(true).build());
-    
-        // Get the result set stats
-        if (!results.getExplainMetrics().isPresent()) {
-          throw new Exception("No explain metrics returned");
-        }
-        ExplainMetrics explainMetrics = results.getExplainMetrics().get();
-    
-        // Get the execution stats
-        if (!explainMetrics.getExecutionStats().isPresent()) {
-          throw new Exception("No execution stats returned");
-        }
-    
-        ExecutionStats executionStats = explainMetrics.getExecutionStats().get();
-        Map<String, Object> debugStats = executionStats.getDebugStats();
-        System.out.println("----- Debug Stats -----");
-        debugStats.forEach((key, val) -> System.out.println(key + ": " + val));
-        System.out.println("----------");
-    
-        long resultsReturned = executionStats.getResultsReturned();
-        System.out.println("Results returned: " + resultsReturned);
-    
-        // Get the plan summary
-        PlanSummary planSummary = explainMetrics.getPlanSummary();
-        List<Map<String, Object>> indexesUsed = planSummary.getIndexesUsed();
-        System.out.println("----- Indexes Used -----");
-        indexesUsed.forEach(map -> map.forEach((key, val) -> System.out.println(key + ": " + val)));
-    
-        if (!results.hasNext()) {
-          throw new Exception("query yielded no results");
-        }
-    
-        // Get the query results
-        System.out.println("----- Query Results -----");
-        while (results.hasNext()) {
-          Entity entity = results.next();
-          System.out.printf("Entity: %s%n", entity);
-        }
-      }
+```java
+import com.google.cloud.datastore.Datastore;
+import com.google.cloud.datastore.DatastoreOptions;
+import com.google.cloud.datastore.Entity;
+import com.google.cloud.datastore.Query;
+import com.google.cloud.datastore.QueryResults;
+import com.google.cloud.datastore.models.ExecutionStats;
+import com.google.cloud.datastore.models.ExplainMetrics;
+import com.google.cloud.datastore.models.ExplainOptions;
+import com.google.cloud.datastore.models.PlanSummary;
+import java.util.List;
+import java.util.Map;
+
+public class QueryProfileExplainAnalyze {
+  public static void invoke() throws Exception {
+    // Instantiates a client
+    Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
+
+    // Build the query
+    Query<Entity> query = Query.newEntityQueryBuilder().setKind("Task").build();
+
+    // Set explain options with analzye = true to get back the query stats, plan info, and query
+    // results
+    QueryResults<Entity> results =
+        datastore.run(query, ExplainOptions.newBuilder().setAnalyze(true).build());
+
+    // Get the result set stats
+    if (!results.getExplainMetrics().isPresent()) {
+      throw new Exception("No explain metrics returned");
     }
+    ExplainMetrics explainMetrics = results.getExplainMetrics().get();
+
+    // Get the execution stats
+    if (!explainMetrics.getExecutionStats().isPresent()) {
+      throw new Exception("No execution stats returned");
+    }
+
+    ExecutionStats executionStats = explainMetrics.getExecutionStats().get();
+    Map<String, Object> debugStats = executionStats.getDebugStats();
+    System.out.println("----- Debug Stats -----");
+    debugStats.forEach((key, val) -> System.out.println(key + ": " + val));
+    System.out.println("----------");
+
+    long resultsReturned = executionStats.getResultsReturned();
+    System.out.println("Results returned: " + resultsReturned);
+
+    // Get the plan summary
+    PlanSummary planSummary = explainMetrics.getPlanSummary();
+    List<Map<String, Object>> indexesUsed = planSummary.getIndexesUsed();
+    System.out.println("----- Indexes Used -----");
+    indexesUsed.forEach(map -> map.forEach((key, val) -> System.out.println(key + ": " + val)));
+
+    if (!results.hasNext()) {
+      throw new Exception("query yielded no results");
+    }
+
+    // Get the query results
+    System.out.println("----- Query Results -----");
+    while (results.hasNext()) {
+      Entity entity = results.next();
+      System.out.printf("Entity: %s%n", entity);
+    }
+  }
+}
+```
 
 See the `executionStats` object to find query profiling information such as:
 
-    {
-        "resultsReturned": "5",
-        "executionDuration": "0.100718s",
-        "readOperations": "5",
-        "debugStats": {
-                   "index_entries_scanned": "95000",
-                   "documents_scanned": "5"
-                   "billing_details": {
-                         "documents_billable": "5",
-                         "index_entries_billable": "0",
-                         "small_ops": "0",
-                         "min_query_cost": "0",
-                   }
-        }
+```
+{
+    "resultsReturned": "5",
+    "executionDuration": "0.100718s",
+    "readOperations": "5",
+    "debugStats": {
+               "index_entries_scanned": "95000",
+               "documents_scanned": "5"
+               "billing_details": {
+                     "documents_billable": "5",
+                     "index_entries_billable": "0",
+                     "small_ops": "0",
+                     "min_query_cost": "0",
+               }
     }
+}
+```
 
 For more information about the report, see the [report reference](https://docs.cloud.google.com/datastore/docs/query-explain-analyze-report-reference) .
 
@@ -196,62 +204,68 @@ For more information about the report, see the [Query Explain report reference](
 
 For illustration, assume the equivalent of this SQL query.
 
-    SELECT *
-    FROM movies
-    WHERE category = 'Romantic' AND country = 'USA';
+```
+SELECT *
+FROM movies
+WHERE category = 'Romantic' AND country = 'USA';
+```
 
 If we use the analyze option, the following report output shows the query runs on single-field indexes `(category ASC, __name__ ASC)` and `(country ASC, __name__ ASC)` . It scans 16500 index entries, but returns only 1200 documents.
 
-    // Output query planning info
-    "indexes_used": [
-        {"query_scope": "Collection Group", "properties": "(category ASC, __name__ ASC)"},
-        {"query_scope": "Collection Group", "properties": "(country ASC, __name__ ASC)"},
-    ]
-    
-    // Output query status
-    {
-        "resultsReturned": "1200",
-        "executionDuration": "0.118882s",
-        "readOperations": "1200",
-        "debugStats": {
-                   "index_entries_scanned": "16500",
-                   "documents_scanned": "1200"
-                   "billing_details": {
-                         "documents_billable": "1200",
-                         "index_entries_billable": "0",
-                         "small_ops": "0",
-                         "min_query_cost": "0",
-                   }
-        }
+```
+// Output query planning info
+"indexes_used": [
+    {"query_scope": "Collection Group", "properties": "(category ASC, __name__ ASC)"},
+    {"query_scope": "Collection Group", "properties": "(country ASC, __name__ ASC)"},
+]
+
+// Output query status
+{
+    "resultsReturned": "1200",
+    "executionDuration": "0.118882s",
+    "readOperations": "1200",
+    "debugStats": {
+               "index_entries_scanned": "16500",
+               "documents_scanned": "1200"
+               "billing_details": {
+                     "documents_billable": "1200",
+                     "index_entries_billable": "0",
+                     "small_ops": "0",
+                     "min_query_cost": "0",
+               }
     }
+}
+```
 
 To optimize the performance of executing the query, you can create a fully-covered composite index (category ASC, country ASC, \_\_name\_\_ ASC).
 
 Running the query in analyze mode again, we can see that the newly-created index is selected for this query, and the query runs much faster and more efficiently.
 
-    // Output query planning info
-        "indexes_used": [
-            {"query_scope": "Collection Group", "properties": "(category ASC, country ASC, __name__ ASC)"}
-            ]
-    
-    // Output query stats
-    {
-        "resultsReturned": "1200",
-        "executionDuration": "0.026139s",
-        "readOperations": "1200",
-        "debugStats": {
-                   "index_entries_scanned": "1200",
-                   "documents_scanned": "1200"
-                   "billing_details": {
-                         "documents_billable": "1200",
-                         "index_entries_billable": "0",
-                         "small_ops": "0",
-                         "min_query_cost": "0",
-                   }
-        }
+```
+// Output query planning info
+    "indexes_used": [
+        {"query_scope": "Collection Group", "properties": "(category ASC, country ASC, __name__ ASC)"}
+        ]
+
+// Output query stats
+{
+    "resultsReturned": "1200",
+    "executionDuration": "0.026139s",
+    "readOperations": "1200",
+    "debugStats": {
+               "index_entries_scanned": "1200",
+               "documents_scanned": "1200"
+               "billing_details": {
+                     "documents_billable": "1200",
+                     "index_entries_billable": "0",
+                     "small_ops": "0",
+                     "min_query_cost": "0",
+               }
     }
+}
+```
 
 ## What's next
 
-  - [Learn more about the Query Explain report](https://docs.cloud.google.com/datastore/docs/query-explain-analyze-report-reference)
-  - [Learn more about optimizing queries and indexes](https://docs.cloud.google.com/datastore/docs/concepts/optimize-indexes)
+- [Learn more about the Query Explain report](https://docs.cloud.google.com/datastore/docs/query-explain-analyze-report-reference)
+- [Learn more about optimizing queries and indexes](https://docs.cloud.google.com/datastore/docs/concepts/optimize-indexes)

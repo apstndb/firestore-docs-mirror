@@ -26,17 +26,17 @@ To enable APIs, you need the `serviceusage.services.enable` permission. If you c
 
 Make sure that your account is granted one of the following IAM roles:
 
-  - Cloud Datastore Owner
-  - Cloud Datastore Key Visualizer Viewer
-  - Editor
-  - Owner
+- Cloud Datastore Owner
+- Cloud Datastore Key Visualizer Viewer
+- Editor
+- Owner
 
 These roles include the following IAM permissions which are required to access Key Visualizer:
 
-  - `datastore.keyVisualizerScans.get`
-  - `datastore.keyVisualizerScans.list`
-  - `datastore.databases.getMetadata`
-  - `resourcemanager.projects.get`
+- `datastore.keyVisualizerScans.get`
+- `datastore.keyVisualizerScans.list`
+- `datastore.databases.getMetadata`
+- `resourcemanager.projects.get`
 
 You can also define a [custom role](https://docs.cloud.google.com/iam/docs/creating-custom-roles) with the required permissions.
 
@@ -53,17 +53,17 @@ To launch Key Visualizer:
 3.  In the navigation menu, click **Key Visualizer** .
 
 4.  Select a time span and a metric from the available Key Visualizer scans:
-    
+
     1.  Click the **Pencil icon** in the upper right. Select a **Date** and a **Time Span** .
-        
+
         Scans are available based on [scan eligibility](https://docs.cloud.google.com/firestore/native/docs/key-visualizer#scan_eligibility) . You can't select time spans that did not meet scan eligibility or that are still processing. The two most recent scans of the day will take some time to process before they are available.
-    
+
     2.  Select **All document data** or **All index data** as the source.
-    
+
     3.  Click **Update** .
 
 5.  Select a metric to analyze:
-    
+
     Click the metrics dropdown in the upper left and select a metric to view. Key Visualizer opens in the **Ops/s** metric for document keys and **Index Write Ops/s** metric for index keys by default.
 
 To compare metrics or look for data correlations, you can display multiple Key Visualizer metrics together. See [Finding connections between different metrics](https://docs.cloud.google.com/firestore/native/docs/keyvis-exploring-heatmaps#finding-connections) .
@@ -74,9 +74,9 @@ To get an overview of activity during the selected two-hour time period, review 
 
 The following example shows a heatmap where there are major differences in the usage pattern for different key ranges:
 
-  - Ranges shown in dark colors have little or no activity.
-  - Ranges in bright colors have significantly more activity.
-  - The glowing white range in the middle has very high activity.
+- Ranges shown in dark colors have little or no activity.
+- Ranges in bright colors have significantly more activity.
+- The glowing white range in the middle has very high activity.
 
 ![Example of a Key Visualizer scan](https://docs.cloud.google.com/static/firestore/native/docs/images/keyvis-scan-example.png)
 
@@ -92,6 +92,6 @@ The **Index Write Ops/s** metric at a given cell measures the average index writ
 
 ## What's next
 
-  - Learn to recognize [common patterns in heatmaps for document keys](https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns) .
-  - Learn to recognize [common patterns in heatmaps for index keys](https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns-index) .
-  - Find out how to [explore a heatmap in depth](https://docs.cloud.google.com/firestore/native/docs/keyvis-exploring-heatmaps) .
+- Learn to recognize [common patterns in heatmaps for document keys](https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns) .
+- Learn to recognize [common patterns in heatmaps for index keys](https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns-index) .
+- Find out how to [explore a heatmap in depth](https://docs.cloud.google.com/firestore/native/docs/keyvis-exploring-heatmaps) .

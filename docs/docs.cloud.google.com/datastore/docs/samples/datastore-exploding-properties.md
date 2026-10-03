@@ -12,23 +12,25 @@ Use exploding indexes.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes)
+- [Indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Entity task = new Entity()
-    {
-        Key = _db.CreateKeyFactory("Task").CreateKey("sampleTask"),
-        ["tags"] = new ArrayValue() { Values = { "fun", "programming", "learn" } },
-        ["collaborators"] = new ArrayValue() { Values = { "alice", "bob", "charlie" } },
-        ["created"] = DateTime.UtcNow
-    };
+```csharp
+Entity task = new Entity()
+{
+    Key = _db.CreateKeyFactory("Task").CreateKey("sampleTask"),
+    ["tags"] = new ArrayValue() { Values = { "fun", "programming", "learn" } },
+    ["collaborators"] = new ArrayValue() { Values = { "alice", "bob", "charlie" } },
+    ["created"] = DateTime.UtcNow
+};
+```
 
 ### Go
 
@@ -36,11 +38,13 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    task := &Task{
-     Tags:          []string{"fun", "programming", "learn"},
-     Collaborators: []string{"alice", "bob", "charlie"},
-     Created:       time.Now(),
-    }
+```go
+task := &Task{
+    Tags:          []string{"fun", "programming", "learn"},
+    Collaborators: []string{"alice", "bob", "charlie"},
+    Created:       time.Now(),
+}
+```
 
 ### Java
 
@@ -48,12 +52,14 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Entity task =
-        Entity.newBuilder(taskKey)
-            .set("tags", "fun", "programming", "learn")
-            .set("collaborators", "alice", "bob", "charlie")
-            .set("created", Timestamp.now())
-            .build();
+```java
+Entity task =
+    Entity.newBuilder(taskKey)
+        .set("tags", "fun", "programming", "learn")
+        .set("collaborators", "alice", "bob", "charlie")
+        .set("created", Timestamp.now())
+        .build();
+```
 
 ### PHP
 
@@ -61,14 +67,16 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $task = $datastore->entity(
-        $datastore->key('Task'),
-        [
-            'tags' => ['fun', 'programming', 'learn'],
-            'collaborators' => ['alice', 'bob', 'charlie'],
-            'created' => new DateTime(),
-        ]
-    );
+```php
+$task = $datastore->entity(
+    $datastore->key('Task'),
+    [
+        'tags' => ['fun', 'programming', 'learn'],
+        'collaborators' => ['alice', 'bob', 'charlie'],
+        'created' => new DateTime(),
+    ]
+);
+```
 
 ### Python
 
@@ -76,22 +84,24 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    import datetime
-    
-    task = datastore.Entity(client.key("Task"))
-    task.update(
-        {
-            "tags": ["fun", "programming", "learn"],
-            "collaborators": ["alice", "bob", "charlie"],
-            "created": datetime.datetime.now(tz=datetime.timezone.utc),
-        }
-    )
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+import datetime
+
+task = datastore.Entity(client.key("Task"))
+task.update(
+    {
+        "tags": ["fun", "programming", "learn"],
+        "collaborators": ["alice", "bob", "charlie"],
+        "created": datetime.datetime.now(tz=datetime.timezone.utc),
+    }
+)
+```
 
 ### Ruby
 
@@ -99,11 +109,13 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    task = datastore.entity "Task" do |t|
-      t["tags"] = ["fun", "programming", "learn"]
-      t["collaborators"] = ["alice", "bob", "charlie"]
-      t["created"] = Time.now
-    end
+```ruby
+task = datastore.entity "Task" do |t|
+  t["tags"] = ["fun", "programming", "learn"]
+  t["collaborators"] = ["alice", "bob", "charlie"]
+  t["created"] = Time.now
+end
+```
 
 ## What's next
 

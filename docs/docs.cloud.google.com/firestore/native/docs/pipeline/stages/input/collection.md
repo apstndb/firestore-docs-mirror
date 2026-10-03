@@ -16,61 +16,73 @@ Returns all documents from a given collection. The collection can be nested.
 
 ### Web
 
-    const results = await execute(db.pipeline()
-      .collection("users/bob/games")
-      .sort(field("name").ascending())
-      );
+```
+const results = await execute(db.pipeline()
+  .collection("users/bob/games")
+  .sort(field("name").ascending())
+  );
+```
 
 ##### Swift
 
-    let results = try await db.pipeline()
-      .collection("users/bob/games")
-      .sort([Field("name").ascending()])
-      .execute()
+```
+let results = try await db.pipeline()
+  .collection("users/bob/games")
+  .sort([Field("name").ascending()])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val results = db.pipeline()
-        .collection("users/bob/games")
-        .sort(field("name").ascending())
-        .execute()
+```
+val results = db.pipeline()
+    .collection("users/bob/games")
+    .sort(field("name").ascending())
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> results = db.pipeline()
-        .collection("users/bob/games")
-        .sort(field("name").ascending())
-        .execute();
+```
+Task<Pipeline.Snapshot> results = db.pipeline()
+    .collection("users/bob/games")
+    .sort(field("name").ascending())
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    results = (
-        client.pipeline()
-        .collection("users/bob/games")
-        .sort(Field.of("name").ascending())
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+results = (
+    client.pipeline()
+    .collection("users/bob/games")
+    .sort(Field.of("name").ascending())
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot results =
-        firestore
-            .pipeline()
-            .collection("users/bob/games")
-            .sort(ascending(field("name")))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot results =
+    firestore
+        .pipeline()
+        .collection("users/bob/games")
+        .sort(ascending(field("name")))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("users/bob/games").
-     Sort(firestore.Orders(firestore.Ascending(firestore.FieldOf("name")))).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("users/bob/games").
+    Sort(firestore.Orders(firestore.Ascending(firestore.FieldOf("name")))).
+    Execute(ctx)
+```
 
 ## Behavior
 
@@ -82,23 +94,27 @@ For example, for the following documents:
 
 ### Node.js
 
-    await db.collection("cities").doc("SF").set({name: "San Francsico", state: "California"});
-    await db.collection("cities").doc("NYC").set({name: "New York City", state: "New York"});
-    await db.collection("cities").doc("CHI").set({name: "Chicago", state: "Illinois"});
-    await db.collection("states").doc("CA").set({name: "California"});
+```
+await db.collection("cities").doc("SF").set({name: "San Francsico", state: "California"});
+await db.collection("cities").doc("NYC").set({name: "New York City", state: "New York"});
+await db.collection("cities").doc("CHI").set({name: "Chicago", state: "Illinois"});
+await db.collection("states").doc("CA").set({name: "California"});
+```
 
 The `collection` stage can be used to retrieve all cities in the `cities` collection and then sort them in ascending order of name.
 
 ### Node.js
 
-    const results = await db.pipeline()
-      .collection("/cities")
-      .sort(field("name").ascending())
-      .execute();
+```
+const results = await db.pipeline()
+  .collection("/cities")
+  .sort(field("name").ascending())
+  .execute();
+```
 
 This query produces the following documents:
 
-``` 
+```
   { name: "Chicago", state: "Illinois" }
   { name: "New York City", state: "New York" }
   { name: "San Francisco", state: "California" }
@@ -112,23 +128,27 @@ For example, for the following documents:
 
 ### Node.js
 
-    await db.collection("cities/SF/departments").doc("building").set({name: "SF Building Deparment", employees: 750});
-    await db.collection("cities/NY/departments").doc("building").set({name: "NY Building Deparment", employees: 1000});
-    await db.collection("cities/CHI/departments").doc("building").set({name: "CHI Building Deparment", employees: 900});
-    await db.collection("cities/NY/departments").doc("finance").set({name: "NY Finance Deparment", employees: 1200});
+```
+await db.collection("cities/SF/departments").doc("building").set({name: "SF Building Deparment", employees: 750});
+await db.collection("cities/NY/departments").doc("building").set({name: "NY Building Deparment", employees: 1000});
+await db.collection("cities/CHI/departments").doc("building").set({name: "CHI Building Deparment", employees: 900});
+await db.collection("cities/NY/departments").doc("finance").set({name: "NY Finance Deparment", employees: 1200});
+```
 
 For this example, we only want the departments of New York city.
 
 ### Node.js
 
-    const results = await db.pipeline()
-      .collection("/cities/NY/departments")
-      .sort(field("employees").ascending())
-      .execute();
+```
+const results = await db.pipeline()
+  .collection("/cities/NY/departments")
+  .sort(field("employees").ascending())
+  .execute();
+```
 
 This will return all departments under the full path `cities/NY/departments` .
 
-``` 
+```
   { name: "NY Building Deparment", employees: 1000 }
   { name: "NY Finance Deparment", employees: 1200 }
 ```

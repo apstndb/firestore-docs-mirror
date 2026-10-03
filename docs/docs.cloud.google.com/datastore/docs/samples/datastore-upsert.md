@@ -12,17 +12,19 @@ Use an upsert.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Entities, Properties, and Keys](https://docs.cloud.google.com/datastore/docs/concepts/entities)
+- [Entities, Properties, and Keys](https://docs.cloud.google.com/datastore/docs/concepts/entities)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    _db.Upsert(_sampleTask);
+```csharp
+_db.Upsert(_sampleTask);
+```
 
 ### Go
 
@@ -30,8 +32,10 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    key := datastore.IncompleteKey("Task", nil)
-    key, err := client.Put(ctx, key, task)
+```go
+key := datastore.IncompleteKey("Task", nil)
+key, err := client.Put(ctx, key, task)
+```
 
 ### Java
 
@@ -39,8 +43,10 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Entity task = Entity.newBuilder(keyFactory.newKey("sampleTask")).build();
-    datastore.put(task);
+```java
+Entity task = Entity.newBuilder(keyFactory.newKey("sampleTask")).build();
+datastore.put(task);
+```
 
 ### PHP
 
@@ -48,14 +54,16 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $key = $datastore->key('Task', 'sampleTask');
-    $task = $datastore->entity($key, [
-        'category' => 'Personal',
-        'done' => false,
-        'priority' => 4,
-        'description' => 'Learn Cloud Datastore'
-    ]);
-    $datastore->upsert($task);
+```php
+$key = $datastore->key('Task', 'sampleTask');
+$task = $datastore->entity($key, [
+    'category' => 'Personal',
+    'done' => false,
+    'priority' => 4,
+    'description' => 'Learn Cloud Datastore'
+]);
+$datastore->upsert($task);
+```
 
 ### Python
 
@@ -63,26 +71,28 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    complete_key = client.key("Task", "sampleTask")
-    
-    task = datastore.Entity(key=complete_key)
-    
-    task.update(
-        {
-            "category": "Personal",
-            "done": False,
-            "priority": 4,
-            "description": "Learn Cloud Datastore",
-        }
-    )
-    
-    client.put(task)
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+complete_key = client.key("Task", "sampleTask")
+
+task = datastore.Entity(key=complete_key)
+
+task.update(
+    {
+        "category": "Personal",
+        "done": False,
+        "priority": 4,
+        "description": "Learn Cloud Datastore",
+    }
+)
+
+client.put(task)
+```
 
 ### Ruby
 
@@ -90,14 +100,16 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    # task_name = "sampleTask"
-    task = datastore.entity "Task", task_name do |t|
-      t["category"] = "Personal"
-      t["done"] = false
-      t["priority"] = 4
-      t["description"] = "Learn Cloud Datastore"
-    end
-    datastore.save task
+```ruby
+# task_name = "sampleTask"
+task = datastore.entity "Task", task_name do |t|
+  t["category"] = "Personal"
+  t["done"] = false
+  t["priority"] = 4
+  t["description"] = "Learn Cloud Datastore"
+end
+datastore.save task
+```
 
 ## What's next
 

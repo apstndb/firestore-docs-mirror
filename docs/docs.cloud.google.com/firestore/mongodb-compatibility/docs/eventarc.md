@@ -10,10 +10,10 @@ data_source: docs.cloud.google.com
 
 You can use [Eventarc](https://docs.cloud.google.com/eventarc/docs/overview) and Firestore with MongoDB compatibility to build [event-driven architectures](https://docs.cloud.google.com/eventarc/docs/event-driven-architectures) . Firestore with MongoDB compatibility triggers for Eventarc generate events from changes to a particular documents in your database. The trigger can route events to a [supported destination](https://docs.cloud.google.com/eventarc/docs/event-providers-targets) :
 
-  - Cloud Run functions (2nd gen) which supports the [Cloud Client Libraries](https://docs.cloud.google.com/firestore/docs/extend-with-functions-2nd-gen) and the [Firebase SDK](https://firebase.google.com/docs/firestore/extend-with-functions-2nd-gen)
-  - [Cloud Run](https://docs.cloud.google.com/eventarc/docs/run/route-trigger-cloud-firestore)
-  - [Google Kubernetes Engine](https://docs.cloud.google.com/eventarc/docs/gke/route-trigger-cloud-firestore)
-  - [Workflows](https://docs.cloud.google.com/eventarc/docs/workflows/route-trigger-cloud-firestore)
+- Cloud Run functions (2nd gen) which supports the [Cloud Client Libraries](https://docs.cloud.google.com/firestore/docs/extend-with-functions-2nd-gen) and the [Firebase SDK](https://firebase.google.com/docs/firestore/extend-with-functions-2nd-gen)
+- [Cloud Run](https://docs.cloud.google.com/eventarc/docs/run/route-trigger-cloud-firestore)
+- [Google Kubernetes Engine](https://docs.cloud.google.com/eventarc/docs/gke/route-trigger-cloud-firestore)
+- [Workflows](https://docs.cloud.google.com/eventarc/docs/workflows/route-trigger-cloud-firestore)
 
 Eventarc offers a standardized solution to manage the flow of state changes, called *events* , between decoupled microservices. When triggered, Eventarc routes these events to various destinations while managing delivery, security, authorization, observability, and error-handling for you.
 
@@ -23,22 +23,22 @@ Eventarc offers a standardized solution to manage the flow of state changes, cal
 
 Note the following limitations for Firestore with MongoDB compatibility triggers for Eventarc:
 
-  - Ordering is not guaranteed. Rapid changes can trigger events in an unexpected order.
+- Ordering is not guaranteed. Rapid changes can trigger events in an unexpected order.
 
-  - Events are delivered *at least* once.
-    
-    Make sure your event handler is idempotent and avoid producing unexpected results or side effects when an event is delivered more than once. Refer to [Building idempotent functions](https://cloud.google.com/blog/products/serverless/cloud-functions-pro-tips-building-idempotent-functions) to learn more.
+- Events are delivered *at least* once.
 
-  - A trigger is associated with a single database. You cannot create a trigger that matches multiple databases.
+  Make sure your event handler is idempotent and avoid producing unexpected results or side effects when an event is delivered more than once. Refer to [Building idempotent functions](https://cloud.google.com/blog/products/serverless/cloud-functions-pro-tips-building-idempotent-functions) to learn more.
 
-  - Deleting a database does not automatically delete any triggers for that database. The trigger stops delivering events but continues to exist until you [delete the trigger](https://docs.cloud.google.com/eventarc/docs/managing-triggers#trigger-delete) . If the database is recreated, any associated triggers will also need to be deleted and recreated to restore event delivery.
+- A trigger is associated with a single database. You cannot create a trigger that matches multiple databases.
 
-  - Firestore with MongoDB compatibility supports Cloud Run functions (2nd gen) and doesn't support Cloud Run functions (1st gen).
+- Deleting a database does not automatically delete any triggers for that database. The trigger stops delivering events but continues to exist until you [delete the trigger](https://docs.cloud.google.com/eventarc/docs/managing-triggers#trigger-delete) . If the database is recreated, any associated triggers will also need to be deleted and recreated to restore event delivery.
 
-  - Firestore Enterprise edition databases don't support Datastore entity event types.
+- Firestore with MongoDB compatibility supports Cloud Run functions (2nd gen) and doesn't support Cloud Run functions (1st gen).
 
-  - Documents larger than 10 MiB aren't included in the event payload. To retrieve the versioned document, use a [point-in-time recovery read time](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-pitr#read-pitr) .
+- Firestore Enterprise edition databases don't support Datastore entity event types.
+
+- Documents larger than 10 MiB aren't included in the event payload. To retrieve the versioned document, use a [point-in-time recovery read time](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-pitr#read-pitr) .
 
 ## What's next
 
-  - Learn about [event-driven architectures](https://docs.cloud.google.com/eventarc/docs/event-driven-architectures) .
+- Learn about [event-driven architectures](https://docs.cloud.google.com/eventarc/docs/event-driven-architectures) .

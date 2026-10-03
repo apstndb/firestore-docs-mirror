@@ -20,58 +20,68 @@ For aggregations without group-by, the `aggregate(...)` stage takes one or more 
 
 ### Node.js
 
-    const cities = await db.pipeline()
-      .collection("/cities")
-      .aggregate(
-          countAll().as("total"),
-          average("population").as("avg_population")
-      )
-      .execute();
+```
+const cities = await db.pipeline()
+  .collection("/cities")
+  .aggregate(
+      countAll().as("total"),
+      average("population").as("avg_population")
+  )
+  .execute();
+```
 
 For aggregations with grouping, it takes additional groups besides the aggregators:
 
 ### Node.js
 
-    const result = await db.pipeline()
-      .collectionGroup('citites')
-      .aggregate({
-        accumulators: [
-          countAll().as('cities'),
-          field('population').sum().as('total_popoluation')
-        ],
-        groups: [field('location.state').as('state')]
-      })
-      .execute();
+```
+const result = await db.pipeline()
+  .collectionGroup('citites')
+  .aggregate({
+    accumulators: [
+      countAll().as('cities'),
+      field('population').sum().as('total_popoluation')
+    ],
+    groups: [field('location.state').as('state')]
+  })
+  .execute();
+```
 
 ## Behavior
 
 ### Aggregations Without Grouping
 
-Create a cities collection with the following documents:
+Create a ` cities ` collection with the following documents:
 
 ### Node.js
 
-    await db.collection('cities').doc('SF').set({name: 'San Francisco', state: 'CA', country: 'USA', population: 870000});
-    await db.collection('cities').doc('LA').set({name: 'Los Angeles', state: 'CA', country: 'USA', population: 3970000});
-    await db.collection('cities').doc('NY').set({name: 'New York', state: 'NY', country: 'USA', population: 8530000});
-    await db.collection('cities').doc('TOR').set({name: 'Toronto', state: null, country: 'Canada', population: 2930000});
-    await db.collection('cities').doc('MEX').set({name: 'Mexico City', state: null, country: 'Mexico', population: 9200000});
+```
+await db.collection('cities').doc('SF').set({name: 'San Francisco', state: 'CA', country: 'USA', population: 870000});
+await db.collection('cities').doc('LA').set({name: 'Los Angeles', state: 'CA', country: 'USA', population: 3970000});
+await db.collection('cities').doc('NY').set({name: 'New York', state: 'NY', country: 'USA', population: 8530000});
+await db.collection('cities').doc('TOR').set({name: 'Toronto', state: null, country: 'Canada', population: 2930000});
+await db.collection('cities').doc('MEX').set({name: 'Mexico City', state: null, country: 'Mexico', population: 9200000});
+```
 
 To find out the total number of cities and the average population of them:
 
 ### Node.js
 
-    const cities = await db.pipeline()
-      .collection("/cities")
-      .aggregate(
-          countAll().as("total"),
-          average("population").as("avg_population")
-      )
-      .execute();
+```
+const cities = await db.pipeline()
+  .collection("/cities")
+  .aggregate(
+      countAll().as("total"),
+      average("population").as("avg_population")
+  )
+  .execute();
+```
 
 which produces:
 
-    {avg_population: 5100000, total: 5}
+```
+{avg_population: 5100000, total: 5}
+```
 
 ### Perform Aggregations on Groups
 
@@ -81,23 +91,27 @@ For example, to find the city with the largest population in each country and ea
 
 ### Node.js
 
-    const cities = await db.pipeline()
-      .collection("/cities")
-      .aggregate({
-          accumulators: [
-              countAll().as("number_of_cities"),
-              maximum("population").as("max_population")
-          ],
-          groups: ["country", "state"]
-      })
-      .execute();
+```
+const cities = await db.pipeline()
+  .collection("/cities")
+  .aggregate({
+      accumulators: [
+          countAll().as("number_of_cities"),
+          maximum("population").as("max_population")
+      ],
+      groups: ["country", "state"]
+  })
+  .execute();
+```
 
 which gives:
 
-    {country: "USA", state: "CA", max_population: 3970000, number_of_cities: 2},
-    {country: "USA", state: "NY", max_population: 8530000, number_of_cities: 1},
-    {country: "Canada", state: null, max_population: 2930000, number_of_cities: 1},
-    {country: "Mexico", state: null,  max_population: 9200000, number_of_cities: 1}
+```
+{country: "USA", state: "CA", max_population: 3970000, number_of_cities: 2},
+{country: "USA", state: "NY", max_population: 8530000, number_of_cities: 1},
+{country: "Canada", state: null, max_population: 2930000, number_of_cities: 1},
+{country: "Mexico", state: null,  max_population: 9200000, number_of_cities: 1}
+```
 
 ### Complex Expressions on Grouping
 
@@ -107,20 +121,24 @@ For example, to group by whether the state field is null, and find out the total
 
 ### Node.js
 
-    const cities = await db.pipeline()
-      .collection("/cities")
-      .aggregate({
-          accumulators: [
-             sum("population").as("total_population")
-          ],
-          groups: [equal(field("state"), null).as("state_is_null")]
-      })
-      .execute();
+```
+const cities = await db.pipeline()
+  .collection("/cities")
+  .aggregate({
+      accumulators: [
+         sum("population").as("total_population")
+      ],
+      groups: [equal(field("state"), null).as("state_is_null")]
+  })
+  .execute();
+```
 
 will return:
 
-    {state_is_null: true, total_population: 12130000}
-    {state_is_null: false, total_population: 13370000}
+```
+{state_is_null: true, total_population: 12130000}
+{state_is_null: false, total_population: 13370000}
+```
 
 ### Aggregator Behaviors
 
@@ -134,7 +152,9 @@ This means that equivalent values, for example mathematically equivalent numeric
 
 As an example, in a collection `numerics` with different documents containing `foo` values of 32-bit integer `1` , 64-bit integer `1L` and floating-point number `1.0` respectively, they will all be accumulated into the same group. Running a count grouping by `foo` will return:
 
-    {foo: 1.0, count: 3}
+```
+{foo: 1.0, count: 3}
+```
 
 In such cases of having different equivalent values present in the dataset, the output value of the group can be **any** of these equivalent values. In this example, `foo` could be `1` , `1L` , or `1.0` .
 

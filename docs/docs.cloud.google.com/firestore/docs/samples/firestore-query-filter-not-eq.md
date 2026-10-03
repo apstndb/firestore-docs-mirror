@@ -12,7 +12,7 @@ Query a Firestore collection with a not eq filter
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Query and filter data](https://docs.cloud.google.com/firestore/native/docs/query-data/queries)
+- [Query and filter data](https://docs.cloud.google.com/firestore/native/docs/query-data/queries)
 
 ## Code sample
 
@@ -20,28 +20,36 @@ For detailed documentation that includes this code sample, see the following:
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    CollectionReference citiesRef = db.collection("cities");
-    
-    Query query = citiesRef.whereNotEqualTo("capital", false);
+```java
+CollectionReference citiesRef = db.collection("cities");
+
+Query query = citiesRef.whereNotEqualTo("capital", false);
+```
 
 ### Node.js
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const capitalNotFalseRes = await citiesRef.where('capital', '!=', false).get();
+```javascript
+const capitalNotFalseRes = await citiesRef.where('capital', '!=', false).get();
+```
 
 ### PHP
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $stateQuery = $citiesRef->where('capital', '!=', false);
+```php
+$stateQuery = $citiesRef->where('capital', '!=', false);
+```
 
 ### Ruby
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    cities_ref = firestore.col collection_path
-    query = cities_ref.where "capital", "!=", false
+```ruby
+cities_ref = firestore.col collection_path
+query = cities_ref.where "capital", "!=", false
+```
 
 ## What's next
 

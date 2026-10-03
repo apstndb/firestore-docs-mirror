@@ -12,7 +12,7 @@ Example datastore merged index tag queries
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Optimizing Indexes](https://docs.cloud.google.com/datastore/docs/concepts/optimize-indexes)
+- [Optimizing Indexes](https://docs.cloud.google.com/datastore/docs/concepts/optimize-indexes)
 
 ## Code sample
 
@@ -22,32 +22,34 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query_tag = client.query(
-        kind="Photo",
-        filters=[
-            ("tag", "=", "family"),
-            ("tag", "=", "outside"),
-            ("tag", "=", "camping"),
-        ],
-    )
-    
-    query_owner_size_color_tags = client.query(
-        kind="Photo",
-        filters=[
-            ("owner_id", "=", "user1234"),
-            ("size", "=", 2),
-            ("coloration", "=", 2),
-            ("tag", "=", "family"),
-            ("tag", "=", "outside"),
-            ("tag", "=", "camping"),
-        ],
-    )
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query_tag = client.query(
+    kind="Photo",
+    filters=[
+        ("tag", "=", "family"),
+        ("tag", "=", "outside"),
+        ("tag", "=", "camping"),
+    ],
+)
+
+query_owner_size_color_tags = client.query(
+    kind="Photo",
+    filters=[
+        ("owner_id", "=", "user1234"),
+        ("size", "=", 2),
+        ("coloration", "=", 2),
+        ("tag", "=", "family"),
+        ("tag", "=", "outside"),
+        ("tag", "=", "camping"),
+    ],
+)
+```
 
 ## What's next
 

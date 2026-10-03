@@ -12,7 +12,7 @@ Add a Firestore document using a map (async).
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Add and update data](https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data)
+- [Add and update data](https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data)
 
 ## Code sample
 
@@ -20,10 +20,12 @@ For detailed documentation that includes this code sample, see the following:
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    data = {"name": "Los Angeles", "state": "CA", "country": "USA"}
-    
-    # Add a new doc in collection 'cities' with ID 'LA'
-    await db.collection("cities").document("LA").set(data)
+```python
+data = {"name": "Los Angeles", "state": "CA", "country": "USA"}
+
+# Add a new doc in collection 'cities' with ID 'LA'
+await db.collection("cities").document("LA").set(data)
+```
 
 ## What's next
 

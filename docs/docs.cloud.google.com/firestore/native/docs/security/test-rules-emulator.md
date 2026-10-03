@@ -35,40 +35,50 @@ Learn more about Firestore Security Rules in [Get started with Firestore Securit
 
 To install the Firestore in Native Mode emulator, use the [Firebase CLI](https://firebase.google.com/docs/cli/) and run the command below:
 
-    firebase setup:emulators:firestore
+```
+firebase setup:emulators:firestore
+```
 
 ## Run the emulator
 
 Begin by initializing a Firebase project in your working directory. This is a common first step when [using the Firebase CLI](https://firebase.google.com/docs/cli#initialize_a_firebase_project) .
 
-    firebase init
+```
+firebase init
+```
 
 Start the emulator using the following command. The emulator will run until you kill the process:
 
-    firebase emulators:start --only firestore
+```
+firebase emulators:start --only firestore
+```
 
 In many cases you want to start the emulator, run a test suite, and then shut down the emulator after the tests run. You can do this easily using the `emulators:exec` command:
 
-    firebase emulators:exec --only firestore "./my-test-script.sh"
+```
+firebase emulators:exec --only firestore "./my-test-script.sh"
+```
 
 When started the emulator will attempt to run on a default port (8080). You can change the emulator port by modifying the `"emulators"` section of your `firebase.json` file:
 
-    {
-      // ...
-      "emulators": {
-        "firestore": {
-          "port": "YOUR_PORT"
-        }
-      }
+```
+{
+  // ...
+  "emulators": {
+    "firestore": {
+      "port": "YOUR_PORT"
     }
+  }
+}
+```
 
 ## Before you run the emulator
 
 Before you start using the emulator, keep in mind the following:
 
-  - The emulator will initially load the rules specified in the `firestore.rules` field of your `firebase.json` file. It expects the name of a local file containing your Firestore Security Rules and applies those rules to all projects. If you don't provide the local file path or use the `loadFirestoreRules` method as described below, the emulator treats all projects as having open rules.
-  - While [most Firebase SDKs](https://firebase.google.com/docs/emulator-suite#which_firebase_features_and_platforms_are_supported) work with the emulators directly, only the `@firebase/rules-unit-testing` library supports mocking `auth` in Security Rules, making unit tests much easier. In addition, the library supports a few emulator-specific features like clearing all data, as listed below.
-  - The emulators will also accept production Firebase Auth tokens provided through Client SDKs and evaluate rules accordingly, which allows connecting your application directly to the emulators in integration and manual tests.
+- The emulator will initially load the rules specified in the `firestore.rules` field of your `firebase.json` file. It expects the name of a local file containing your Firestore Security Rules and applies those rules to all projects. If you don't provide the local file path or use the `loadFirestoreRules` method as described below, the emulator treats all projects as having open rules.
+- While [most Firebase SDKs](https://firebase.google.com/docs/emulator-suite#which_firebase_features_and_platforms_are_supported) work with the emulators directly, only the `@firebase/rules-unit-testing` library supports mocking `auth` in Security Rules, making unit tests much easier. In addition, the library supports a few emulator-specific features like clearing all data, as listed below.
+- The emulators will also accept production Firebase Auth tokens provided through Client SDKs and evaluate rules accordingly, which allows connecting your application directly to the emulators in integration and manual tests.
 
 ## Run local unit tests
 
@@ -76,8 +86,8 @@ Before you start using the emulator, keep in mind the following:
 
 Firebase distributes a Security Rules unit testing library with both its version 9 JavaScript SDK and its version 8 SDK. The library APIs are significantly different. We recommend the v9 testing library, which is more streamlined and requires less setup to connect to emulators and thus safely avoid accidental use of production resources. For backwards compatibility, we continue to make the [v8 testing library available](https://firebase.google.com/docs/rules/unit-tests#rut-v1-testing) .
 
-  - [Common test methods and utility functions in the v9 SDK](https://docs.cloud.google.com/firestore/native/docs/security/test-rules-emulator#rut-v2-common-methods)
-  - [Emulator-specific test methods in the v9 SDK](https://docs.cloud.google.com/firestore/native/docs/security/test-rules-emulator#rut-v2-specific-methods)
+- [Common test methods and utility functions in the v9 SDK](https://docs.cloud.google.com/firestore/native/docs/security/test-rules-emulator#rut-v2-common-methods)
+- [Emulator-specific test methods in the v9 SDK](https://docs.cloud.google.com/firestore/native/docs/security/test-rules-emulator#rut-v2-specific-methods)
 
 Use the `@firebase/rules-unit-testing` module to interact with the emulator that runs locally. If you get timeouts or `ECONNREFUSED` errors, double-check that the emulator is actually running.
 
@@ -87,21 +97,23 @@ The v9 Rules Unit Testing library is always aware of the emulators and never tou
 
 You import the library using v9 modular import statements. For example:
 
-    import {
-      assertFails,
-      assertSucceeds,
-      initializeTestEnvironment
-    } from "@firebase/rules-unit-testing"
-    
-    // Use `const { … } = require("@firebase/rules-unit-testing")` if imports are not supported
-    // Or we suggest `const testing = require("@firebase/rules-unit-testing")` if necessary.
+```
+import {
+  assertFails,
+  assertSucceeds,
+  initializeTestEnvironment
+} from "@firebase/rules-unit-testing"
+
+// Use `const { … } = require("@firebase/rules-unit-testing")` if imports are not supported
+// Or we suggest `const testing = require("@firebase/rules-unit-testing")` if necessary.
+```
 
 Once imported, implementing unit tests involves:
 
-  - Creating and configuring a `RulesTestEnvironment` with a call to `initializeTestEnvironment` .
-  - Setting up test data without triggering Rules, using a convenience method that allows you to temporarily bypass them, `RulesTestEnvironment.withSecurityRulesDisabled` .
-  - Setting up test suite and per-test before/after hooks with calls to clean up test data and environment, like `RulesTestEnvironment.cleanup()` or `RulesTestEnvironment.clearFirestore()` .
-  - Implementing test cases that mimic authentication states using `RulesTestEnvironment.authenticatedContext` and `RulesTestEnvironment.unauthenticatedContext` .
+- Creating and configuring a `RulesTestEnvironment` with a call to `initializeTestEnvironment` .
+- Setting up test data without triggering Rules, using a convenience method that allows you to temporarily bypass them, `RulesTestEnvironment.withSecurityRulesDisabled` .
+- Setting up test suite and per-test before/after hooks with calls to clean up test data and environment, like `RulesTestEnvironment.cleanup()` or `RulesTestEnvironment.clearFirestore()` .
+- Implementing test cases that mimic authentication states using `RulesTestEnvironment.authenticatedContext` and `RulesTestEnvironment.unauthenticatedContext` .
 
 > **Note:** A summary of the API for the Rules unit testing library is provided below. You can also review the [full API reference documentation](https://firebase.google.com/docs/reference/emulator-suite/rules-unit-testing/rules-unit-testing) .
 
@@ -115,12 +127,14 @@ This function initializes a test environment for rules unit testing. Call this f
 
 The function accepts an optional object defining a `TestEnvironmentConfig` , which can consist of a project ID and emulator configuration settings.
 
-    let testEnv = await initializeTestEnvironment({
-      projectId: "demo-project-1234",
-      firestore: {
-        rules: fs.readFileSync("firestore.rules", "utf8"),
-      },
-    });
+```
+let testEnv = await initializeTestEnvironment({
+  projectId: "demo-project-1234",
+  firestore: {
+    rules: fs.readFileSync("firestore.rules", "utf8"),
+  },
+});
+```
 
 > Note: The emulators persist data between test invocations on a single emulator run. This might impact your results. To clear data between each test run, call the applicable clear emulator data method, e.g. `clearFirestoreData` , between tests.
 
@@ -130,12 +144,14 @@ This method creates a `RulesTestContext` , which behaves like an authenticated A
 
 Use the returned test context object in your tests to access any emulator instances configured, including those configured with `initializeTestEnvironment` .
 
-    // Assuming a Firestore app and the Firestore emulator for this example
-    import { setDoc } from "firebase/firestore";
-    
-    const alice = testEnv.authenticatedContext("alice", { … });
-    // Use the Firestore instance associated with this context
-    await assertSucceeds(setDoc(alice.firestore().doc('/users/alice'), { ... });
+```
+// Assuming a Firestore app and the Firestore emulator for this example
+import { setDoc } from "firebase/firestore";
+
+const alice = testEnv.authenticatedContext("alice", { … });
+// Use the Firestore instance associated with this context
+await assertSucceeds(setDoc(alice.firestore().doc('/users/alice'), { ... });
+```
 
 **`RulesTestEnvironment.unauthenticatedContext() => RulesTestContext`**
 
@@ -143,14 +159,16 @@ This method creates a `RulesTestContext` , which behaves like a client that is n
 
 Use the returned test context object in your tests to access any emulator instances configured, including those configured with `initializeTestEnvironment` .
 
-    // Assuming a Cloud Storage app and the Storage emulator for this example
-    import { getStorage, ref, deleteObject } from "firebase/storage";
-    
-    const alice = testEnv.unauthenticatedContext();
-    
-    // Use the Cloud Storage instance associated with this context
-    const desertRef = ref(alice.storage(), 'images/desert.jpg');
-    await assertSucceeds(deleteObject(desertRef));
+```
+// Assuming a Cloud Storage app and the Storage emulator for this example
+import { getStorage, ref, deleteObject } from "firebase/storage";
+
+const alice = testEnv.unauthenticatedContext();
+
+// Use the Cloud Storage instance associated with this context
+const desertRef = ref(alice.storage(), 'images/desert.jpg');
+await assertSucceeds(deleteObject(desertRef));
+```
 
 **`RulesTestEnvironment.withSecurityRulesDisabled()`**
 
@@ -170,7 +188,9 @@ This is a test case utility function.
 
 The function asserts that the supplied Promise wrapping an emulator operation will be resolved with no Security Rules violations.
 
-    await assertSucceeds(setDoc(alice.firestore(), '/users/alice'), { ... });
+```
+await assertSucceeds(setDoc(alice.firestore(), '/users/alice'), { ... });
+```
 
 **`assertFails(pr: Promise<any>)) => Promise<any>`**
 
@@ -178,7 +198,9 @@ This is a test case utility function.
 
 The function asserts that the supplied Promise wrapping an emulator operation will be rejected with a Security Rules violation.
 
-    await assertFails(setDoc(alice.firestore(), '/users/bob'), { ... });
+```
+await assertFails(setDoc(alice.firestore(), '/users/bob'), { ... });
+```
 
 ### Emulator-specific methods
 
@@ -227,17 +249,17 @@ If your tests are occasionally passing and failing, even without any changes to 
 
 In particular, review the following async operations:
 
-  - Setting security rules, with, for example, `initializeTestEnvironment` .
-  - Reading and writing data, with, for example, `db.collection("users").doc("alice").get()` .
-  - Operational assertions, including `assertSucceeds` and `assertFails` .
+- Setting security rules, with, for example, `initializeTestEnvironment` .
+- Reading and writing data, with, for example, `db.collection("users").doc("alice").get()` .
+- Operational assertions, including `assertSucceeds` and `assertFails` .
 
 ### Tests only pass the first time you load the emulator
 
 The emulator is stateful. It stores all the data written to it in memory, so any data is lost whenever the emulator shuts down. If you're running multiple tests against the same project id, each test can produce data that might influence subsequent tests. You can use any of the following methods to bypass this behavior:
 
-  - Use unique project IDs for each test. Note that if you choose to do this you will need to call `initializeTestEnvironment` as part of each test; rules are only automatically loaded for the default project ID.
-  - Restructure your tests so they don't interact with previously written data (for example, use a different collection for each test).
-  - Delete all the data written during a test.
+- Use unique project IDs for each test. Note that if you choose to do this you will need to call `initializeTestEnvironment` as part of each test; rules are only automatically loaded for the default project ID.
+- Restructure your tests so they don't interact with previously written data (for example, use a different collection for each test).
+- Delete all the data written during a test.
 
 ### Test setup is very complicated
 

@@ -27,7 +27,7 @@ By replicating the data between multiple regions, data can continue to be served
 The following multi-region locations are available:
 
 | Multi-Region Name | Multi-Region Description         | Read-Write Regions                                                         | Witness Region                                       |
-| ----------------- | -------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------- |
+|-------------------|----------------------------------|----------------------------------------------------------------------------|------------------------------------------------------|
 | `eur3`            | Europe                           | `europe-west1` (Belgium), `europe-west4` (Netherlands)                     | `europe-north1` (Finland)                            |
 | `nam5`            | United States (Central)          | `us-central1` (Iowa), `us-central2` (Oklahoma—private Google Cloud region) | `us-east1` (South Carolina)                          |
 | `nam7`            | United States (Central and East) | `us-central1` (Iowa), `us-east4` (Northern Virginia)                       | `us-central2` (Oklahoma—private Google Cloud region) |
@@ -38,343 +38,58 @@ The following multi-region locations are available:
 
 A regional location is a specific geographic place, such as South Carolina. The following regional locations are available:
 
-<table>
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th>Region Name</th>
-<th>Region Description</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>North America</strong></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><code dir="ltr" translate="no">us-west1</code></td>
-<td>Oregon</td>
-<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><code dir="ltr" translate="no">us-west2</code></td>
-<td>Los Angeles</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><code dir="ltr" translate="no">us-west3</code></td>
-<td>Salt Lake City</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><code dir="ltr" translate="no">us-west4</code></td>
-<td>Las Vegas</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code dir="ltr" translate="no">us-central1</code></p>
-<p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
-<td>Iowa</td>
-<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><code dir="ltr" translate="no">northamerica-northeast1</code></td>
-<td>Montréal</td>
-<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code dir="ltr" translate="no">northamerica-northeast2</code></p>
-<p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
-<td>Toronto</td>
-<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><code dir="ltr" translate="no">northamerica-south1</code></p>
-<p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
-<td>Queretaro</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><code dir="ltr" translate="no">us-east1</code></td>
-<td>South Carolina</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><code dir="ltr" translate="no">us-east4</code></td>
-<td>Northern Virginia</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code dir="ltr" translate="no">us-east5</code></p>
-<p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
-<td>Columbus</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><code dir="ltr" translate="no">us-south1</code></p>
-<p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
-<td>Dallas</td>
-<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
-</tr>
-<tr class="even">
-<td><strong>South America</strong></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><code dir="ltr" translate="no">southamerica-west1</code></p>
-<p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
-<td>Santiago</td>
-<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><code dir="ltr" translate="no">southamerica-east1</code></td>
-<td>São Paulo</td>
-<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
-</tr>
-<tr class="odd">
-<td><strong>Europe</strong></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><code dir="ltr" translate="no">europe-west2</code></td>
-<td>London</td>
-<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><code dir="ltr" translate="no">europe-west1</code></td>
-<td>Belgium</td>
-<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code dir="ltr" translate="no">europe-west4</code></p>
-<p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
-<td>Netherlands</td>
-<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><code dir="ltr" translate="no">europe-west3</code></td>
-<td>Frankfurt</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code dir="ltr" translate="no">europe-west8</code></p>
-<p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
-<td>Milan</td>
-<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><code dir="ltr" translate="no">europe-southwest1</code></p>
-<p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
-<td>Madrid</td>
-<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code dir="ltr" translate="no">europe-west9</code></p>
-<p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
-<td>Paris</td>
-<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><code dir="ltr" translate="no">europe-west12</code></p>
-<p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
-<td>Turin</td>
-<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code dir="ltr" translate="no">europe-west10</code></p>
-<p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
-<td>Berlin</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><code dir="ltr" translate="no">europe-north1</code></td>
-<td>Finland</td>
-<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code dir="ltr" translate="no">europe-north2</code></p>
-<p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
-<td>Stockholm</td>
-<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><code dir="ltr" translate="no">europe-central2</code></td>
-<td>Warsaw</td>
-<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><code dir="ltr" translate="no">europe-west6</code></td>
-<td>Zürich</td>
-<td><img src="https://cloud.google.com/sustainability/region-carbon/gleaf.svg" width="18" alt="leaf icon" /> <a href="https://cloud.google.com/sustainability/region-carbon#region-picker">Low CO <sub>2</sub></a></td>
-</tr>
-<tr class="odd">
-<td><strong>Middle East</strong></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code dir="ltr" translate="no">me-central1</code></p>
-<p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
-<td>Doha</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><code dir="ltr" translate="no">me-central2</code></p>
-<p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
-<td>Dammam</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code dir="ltr" translate="no">me-west1</code></p>
-<p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
-<td>Tel Aviv</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><strong>Asia</strong></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><code dir="ltr" translate="no">asia-south1</code></td>
-<td>Mumbai</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><p><code dir="ltr" translate="no">asia-south2</code></p>
-<p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
-<td>Delhi</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><code dir="ltr" translate="no">asia-southeast1</code></td>
-<td>Singapore</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><code dir="ltr" translate="no">asia-southeast2</code></td>
-<td>Jakarta</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><code dir="ltr" translate="no">asia-southeast3</code></td>
-<td>Bangkok</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><code dir="ltr" translate="no">asia-east2</code></td>
-<td>Hong Kong</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><code dir="ltr" translate="no">asia-east1</code></td>
-<td>Taiwan</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><code dir="ltr" translate="no">asia-northeast1</code></td>
-<td>Tokyo</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><code dir="ltr" translate="no">asia-northeast2</code></td>
-<td>Osaka</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><code dir="ltr" translate="no">asia-northeast3</code></td>
-<td>Seoul</td>
-<td></td>
-</tr>
-<tr class="even">
-<td><strong>Australia</strong></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><code dir="ltr" translate="no">australia-southeast1</code></td>
-<td>Sydney</td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code dir="ltr" translate="no">australia-southeast2</code></p>
-<p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
-<td>Melbourne</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td><strong>Africa</strong></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><p><code dir="ltr" translate="no">africa-south1</code></p>
-<p>This location does not support App Engine. If you plan to use App Engine, you should choose a different location.</p></td>
-<td>Johannesburg</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+|                   | Region Name                                                                                                                                 | Region Description |                                                                                                                                                                          |
+|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------|--------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **North America** |                                                                                                                                             |                    |                                                                                                                                                                          |
+|                   | `us-west1`                                                                                                                                  | Oregon             | ![leaf icon](https://cloud.google.com/sustainability/region-carbon/gleaf.svg) [Low CO <sub>2</sub>](https://cloud.google.com/sustainability/region-carbon#region-picker) |
+|                   | `us-west2`                                                                                                                                  | Los Angeles        |                                                                                                                                                                          |
+|                   | `us-west3`                                                                                                                                  | Salt Lake City     |                                                                                                                                                                          |
+|                   | `us-west4`                                                                                                                                  | Las Vegas          |                                                                                                                                                                          |
+|                   | `us-central1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.             | Iowa               | ![leaf icon](https://cloud.google.com/sustainability/region-carbon/gleaf.svg) [Low CO <sub>2</sub>](https://cloud.google.com/sustainability/region-carbon#region-picker) |
+|                   | `northamerica-northeast1`                                                                                                                   | Montréal           | ![leaf icon](https://cloud.google.com/sustainability/region-carbon/gleaf.svg) [Low CO <sub>2</sub>](https://cloud.google.com/sustainability/region-carbon#region-picker) |
+|                   | `northamerica-northeast2` This location does not support App Engine. If you plan to use App Engine, you should choose a different location. | Toronto            | ![leaf icon](https://cloud.google.com/sustainability/region-carbon/gleaf.svg) [Low CO <sub>2</sub>](https://cloud.google.com/sustainability/region-carbon#region-picker) |
+|                   | `northamerica-south1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.     | Queretaro          |                                                                                                                                                                          |
+|                   | `us-east1`                                                                                                                                  | South Carolina     |                                                                                                                                                                          |
+|                   | `us-east4`                                                                                                                                  | Northern Virginia  |                                                                                                                                                                          |
+|                   | `us-east5` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.                | Columbus           |                                                                                                                                                                          |
+|                   | `us-south1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.               | Dallas             | ![leaf icon](https://cloud.google.com/sustainability/region-carbon/gleaf.svg) [Low CO <sub>2</sub>](https://cloud.google.com/sustainability/region-carbon#region-picker) |
+| **South America** |                                                                                                                                             |                    |                                                                                                                                                                          |
+|                   | `southamerica-west1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.      | Santiago           | ![leaf icon](https://cloud.google.com/sustainability/region-carbon/gleaf.svg) [Low CO <sub>2</sub>](https://cloud.google.com/sustainability/region-carbon#region-picker) |
+|                   | `southamerica-east1`                                                                                                                        | São Paulo          | ![leaf icon](https://cloud.google.com/sustainability/region-carbon/gleaf.svg) [Low CO <sub>2</sub>](https://cloud.google.com/sustainability/region-carbon#region-picker) |
+| **Europe**        |                                                                                                                                             |                    |                                                                                                                                                                          |
+|                   | `europe-west2`                                                                                                                              | London             | ![leaf icon](https://cloud.google.com/sustainability/region-carbon/gleaf.svg) [Low CO <sub>2</sub>](https://cloud.google.com/sustainability/region-carbon#region-picker) |
+|                   | `europe-west1`                                                                                                                              | Belgium            | ![leaf icon](https://cloud.google.com/sustainability/region-carbon/gleaf.svg) [Low CO <sub>2</sub>](https://cloud.google.com/sustainability/region-carbon#region-picker) |
+|                   | `europe-west4` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.            | Netherlands        | ![leaf icon](https://cloud.google.com/sustainability/region-carbon/gleaf.svg) [Low CO <sub>2</sub>](https://cloud.google.com/sustainability/region-carbon#region-picker) |
+|                   | `europe-west3`                                                                                                                              | Frankfurt          |                                                                                                                                                                          |
+|                   | `europe-west8` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.            | Milan              | ![leaf icon](https://cloud.google.com/sustainability/region-carbon/gleaf.svg) [Low CO <sub>2</sub>](https://cloud.google.com/sustainability/region-carbon#region-picker) |
+|                   | `europe-southwest1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.       | Madrid             | ![leaf icon](https://cloud.google.com/sustainability/region-carbon/gleaf.svg) [Low CO <sub>2</sub>](https://cloud.google.com/sustainability/region-carbon#region-picker) |
+|                   | `europe-west9` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.            | Paris              | ![leaf icon](https://cloud.google.com/sustainability/region-carbon/gleaf.svg) [Low CO <sub>2</sub>](https://cloud.google.com/sustainability/region-carbon#region-picker) |
+|                   | `europe-west12` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.           | Turin              | ![leaf icon](https://cloud.google.com/sustainability/region-carbon/gleaf.svg) [Low CO <sub>2</sub>](https://cloud.google.com/sustainability/region-carbon#region-picker) |
+|                   | `europe-west10` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.           | Berlin             |                                                                                                                                                                          |
+|                   | `europe-north1`                                                                                                                             | Finland            | ![leaf icon](https://cloud.google.com/sustainability/region-carbon/gleaf.svg) [Low CO <sub>2</sub>](https://cloud.google.com/sustainability/region-carbon#region-picker) |
+|                   | `europe-north2` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.           | Stockholm          | ![leaf icon](https://cloud.google.com/sustainability/region-carbon/gleaf.svg) [Low CO <sub>2</sub>](https://cloud.google.com/sustainability/region-carbon#region-picker) |
+|                   | `europe-central2`                                                                                                                           | Warsaw             | ![leaf icon](https://cloud.google.com/sustainability/region-carbon/gleaf.svg) [Low CO <sub>2</sub>](https://cloud.google.com/sustainability/region-carbon#region-picker) |
+|                   | `europe-west6`                                                                                                                              | Zürich             | ![leaf icon](https://cloud.google.com/sustainability/region-carbon/gleaf.svg) [Low CO <sub>2</sub>](https://cloud.google.com/sustainability/region-carbon#region-picker) |
+| **Middle East**   |                                                                                                                                             |                    |                                                                                                                                                                          |
+|                   | `me-central1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.             | Doha               |                                                                                                                                                                          |
+|                   | `me-central2` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.             | Dammam             |                                                                                                                                                                          |
+|                   | `me-west1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.                | Tel Aviv           |                                                                                                                                                                          |
+| **Asia**          |                                                                                                                                             |                    |                                                                                                                                                                          |
+|                   | `asia-south1`                                                                                                                               | Mumbai             |                                                                                                                                                                          |
+|                   | `asia-south2` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.             | Delhi              |                                                                                                                                                                          |
+|                   | `asia-southeast1`                                                                                                                           | Singapore          |                                                                                                                                                                          |
+|                   | `asia-southeast2`                                                                                                                           | Jakarta            |                                                                                                                                                                          |
+|                   | `asia-southeast3`                                                                                                                           | Bangkok            |                                                                                                                                                                          |
+|                   | `asia-east2`                                                                                                                                | Hong Kong          |                                                                                                                                                                          |
+|                   | `asia-east1`                                                                                                                                | Taiwan             |                                                                                                                                                                          |
+|                   | `asia-northeast1`                                                                                                                           | Tokyo              |                                                                                                                                                                          |
+|                   | `asia-northeast2`                                                                                                                           | Osaka              |                                                                                                                                                                          |
+|                   | `asia-northeast3`                                                                                                                           | Seoul              |                                                                                                                                                                          |
+| **Australia**     |                                                                                                                                             |                    |                                                                                                                                                                          |
+|                   | `australia-southeast1`                                                                                                                      | Sydney             |                                                                                                                                                                          |
+|                   | `australia-southeast2` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.    | Melbourne          |                                                                                                                                                                          |
+| **Africa**        |                                                                                                                                             |                    |                                                                                                                                                                          |
+|                   | `africa-south1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.           | Johannesburg       |                                                                                                                                                                          |
 
 ## Selecting a location
 
@@ -384,20 +99,20 @@ The location setting for your Google Cloud project applies to both Firestore in 
 
 If you have not yet selected a location for your project, you will be asked to select the location when you complete any of the following tasks:
 
-  - Creating a new App Engine application.
-  - [Creating your first Datastore mode entity using the Google Cloud console](https://docs.cloud.google.com/datastore/docs/store-query-data) .
+- Creating a new App Engine application.
+- [Creating your first Datastore mode entity using the Google Cloud console](https://docs.cloud.google.com/datastore/docs/store-query-data) .
 
 ### Viewing the location of your project
 
 Use one of the following methods to find out which location you selected for your project:
 
-  - Run the `gcloud app describe` command.
+- Run the `gcloud app describe` command.
 
-  - If you have at least one version of an App Engine app deployed, open the [App Engine Dashboard](https://console.cloud.google.com/appengine) in the Google Cloud console. The location information in the upper right-hand corner of the dashboard applies to both App Engine and Firestore in Datastore mode.
-    
-    ![Screenshot of the previously chosen location](https://docs.cloud.google.com/static/datastore/docs/images/gae_dashboard_location.png)
+- If you have at least one version of an App Engine app deployed, open the [App Engine Dashboard](https://console.cloud.google.com/appengine) in the Google Cloud console. The location information in the upper right-hand corner of the dashboard applies to both App Engine and Firestore in Datastore mode.
+
+  ![Screenshot of the previously chosen location](https://docs.cloud.google.com/static/datastore/docs/images/gae_dashboard_location.png)
 
 ## Next steps
 
-  - For more information about building applications to meet your latency, availability and durability requirements, see [Geography and Regions](https://docs.cloud.google.com/docs/geography-and-regions#multi-regional_resources) .
-  - For a map of locations, see [Cloud Data Center Locations](https://docs.cloud.google.com/about/datacenters) .
+- For more information about building applications to meet your latency, availability and durability requirements, see [Geography and Regions](https://docs.cloud.google.com/docs/geography-and-regions#multi-regional_resources) .
+- For a map of locations, see [Cloud Data Center Locations](https://docs.cloud.google.com/about/datacenters) .

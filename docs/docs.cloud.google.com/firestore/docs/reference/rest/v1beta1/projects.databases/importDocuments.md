@@ -19,62 +19,39 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 
-Parameters
-
-`name`
-
-`string`
-
-Database to import into. Should be of the form: `projects/{projectId}/databases/{databaseId}` .
+| Parameters |                                                                                                          |
+|------------|----------------------------------------------------------------------------------------------------------|
+| `name`     | `string` Database to import into. Should be of the form: `projects/{projectId}/databases/{databaseId}` . |
 
 ### Request body
 
 The request body contains data with the following structure:
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>JSON representation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;collectionIds&quot;: [
+**JSON representation**
+
+```
+{
+  "collectionIds": [
     string
   ],
-  &quot;inputUriPrefix&quot;: string
-}</code></pre></td>
-</tr>
-</tbody>
-</table>
+  "inputUriPrefix": string
+}
+```
 
-Fields
-
-`collectionIds[]`
-
-`string`
-
-Which collection ids to import. Unspecified means all collections included in the import.
-
-`inputUriPrefix`
-
-`string`
-
-Location of the exported files. This must match the outputUriPrefix of an ExportDocumentsResponse from an export that has completed successfully. See: `google.firestore.admin.v1beta1.ExportDocumentsResponse.output_uri_prefix` .
+| Fields            |                                                                                                                                                                                                                                              |
+|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `collectionIds[]` | `string` Which collection ids to import. Unspecified means all collections included in the import.                                                                                                                                           |
+| `inputUriPrefix`  | `string` Location of the exported files. This must match the outputUriPrefix of an ExportDocumentsResponse from an export that has completed successfully. See: `google.firestore.admin.v1beta1.ExportDocumentsResponse.output_uri_prefix` . |
 
 ### Response body
 
-If successful, the response body contains an instance of `  Operation  ` .
+If successful, the response body contains an instance of [`Operation`](https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Operation) .
 
 ### Authorization scopes
 
 Requires one of the following OAuth scopes:
 
-  - `https://www.googleapis.com/auth/datastore`
-  - `https://www.googleapis.com/auth/cloud-platform`
+- `https://www.googleapis.com/auth/datastore`
+- `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

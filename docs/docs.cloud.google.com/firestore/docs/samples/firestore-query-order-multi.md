@@ -12,54 +12,68 @@ Ordering a Firestore query on multiple fields
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Order and limit data](https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data)
+- [Order and limit data](https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data)
 
 ## Code sample
 
-### C\#
+### C#
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = citiesRef.OrderBy("State").OrderByDescending("Population");
+```csharp
+Query query = citiesRef.OrderBy("State").OrderByDescending("Population");
+```
 
 ### Go
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := client.Collection("cities").OrderBy("state", firestore.Asc).OrderBy("population", firestore.Desc)
+```go
+query := client.Collection("cities").OrderBy("state", firestore.Asc).OrderBy("population", firestore.Desc)
+```
 
 ### Java
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = cities.orderBy("state").orderBy("population", Direction.DESCENDING);
+```java
+Query query = cities.orderBy("state").orderBy("population", Direction.DESCENDING);
+```
 
 ### Node.js
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const byStateByPopRes = await citiesRef.orderBy('state').orderBy('population', 'desc').get();
+```javascript
+const byStateByPopRes = await citiesRef.orderBy('state').orderBy('population', 'desc').get();
+```
 
 ### PHP
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $citiesRef->orderBy('state')->orderBy('population', 'DESC');
+```php
+$query = $citiesRef->orderBy('state')->orderBy('population', 'DESC');
+```
 
 ### Python
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    cities_ref = db.collection("cities")
-    ordered_city_ref = cities_ref.order_by("state").order_by(
-        "population", direction=firestore.Query.DESCENDING
-    )
+```python
+cities_ref = db.collection("cities")
+ordered_city_ref = cities_ref.order_by("state").order_by(
+    "population", direction=firestore.Query.DESCENDING
+)
+```
 
 ### Ruby
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = cities_ref.order("state").order("population", "desc")
+```ruby
+query = cities_ref.order("state").order("population", "desc")
+```
 
 ## What's next
 

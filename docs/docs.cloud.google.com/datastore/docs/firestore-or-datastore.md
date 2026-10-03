@@ -16,10 +16,10 @@ Firestore is an enterprise-grade NoSQL document database with MongoDB compatibil
 
 Firestore offers the following features beyond legacy Datastore capabilities:
 
-  - A strongly consistent storage layer
-  - A collection and document data model
-  - Real-time updates
-  - Mobile and web client libraries
+- A strongly consistent storage layer
+- A collection and document data model
+- Real-time updates
+- Mobile and web client libraries
 
 Firestore is backward compatible with Datastore, but the new data model, real-time updates, and mobile and web client library features aren't. If you want to access all Firestore features, don't configure your database for Datastore compatibility.
 
@@ -27,12 +27,12 @@ Firestore is backward compatible with Datastore, but the new data model, real-ti
 
 Unless you're working with a legacy App Engine application built on Datastore, we recommend that you don't use Datastore compatibility as it blocks access to many valuable Firestore capabilities, such as the following:
 
-  - Rich query capabilities: the database accepts Datastore API requests and denies Firestore API requests which offer rich query capabilities.
-  - More index types: the database uses Datastore indexes instead of Firestore indexes which offer a wider variety of index types and higher configurability.
-  - Real-time capabilities: Firestore real-time capabilities won't be available.
+- Rich query capabilities: the database accepts Datastore API requests and denies Firestore API requests which offer rich query capabilities.
+- More index types: the database uses Datastore indexes instead of Firestore indexes which offer a wider variety of index types and higher configurability.
+- Real-time capabilities: Firestore real-time capabilities won't be available.
 
 ## What's next
 
-  - To get started with Firestore client libraries, see [Create a Firestore database and connect a server client library](https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library) .
+- To get started with Firestore client libraries, see [Create a Firestore database and connect a server client library](https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library) .
 
-  - To get started with Firestore with Datastore compatibility, see [Get started with Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) .
+- To get started with Firestore with Datastore compatibility, see [Get started with Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) .

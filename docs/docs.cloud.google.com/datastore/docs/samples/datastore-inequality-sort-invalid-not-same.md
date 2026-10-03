@@ -12,21 +12,23 @@ Inequality sort must be sorted by the same property and first. Use inequality so
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Datastore queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)
+- [Datastore queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Filter = Filter.GreaterThan("priority", 3),
-        Order = { { "created", PropertyOrder.Types.Direction.Ascending } }
-    };
+```csharp
+Query query = new Query("Task")
+{
+    Filter = Filter.GreaterThan("priority", 3),
+    Order = { { "created", PropertyOrder.Types.Direction.Ascending } }
+};
+```
 
 ### Go
 
@@ -34,9 +36,11 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").
-     FilterField("Priority", ">", 3).
-     Order("Created")
+```go
+query := datastore.NewQuery("Task").
+    FilterField("Priority", ">", 3).
+    Order("Created")
+```
 
 ### Java
 
@@ -44,12 +48,14 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(PropertyFilter.gt("priority", 3))
-            .setOrderBy(OrderBy.asc("created"))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(PropertyFilter.gt("priority", 3))
+        .setOrderBy(OrderBy.asc("created"))
+        .build();
+```
 
 ### PHP
 
@@ -57,10 +63,12 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->filter('priority', '>', 3)
-        ->order('created');
+```php
+$query = $datastore->query()
+    ->kind('Task')
+    ->filter('priority', '>', 3)
+    ->order('created');
+```
 
 ### Python
 
@@ -68,15 +76,17 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-        query = client.query(kind="Task")
-        query.add_filter(filter=datastore.query.PropertyFilter("priority", ">", 3))
-        query.order = ["created"]
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+    query = client.query(kind="Task")
+    query.add_filter(filter=datastore.query.PropertyFilter("priority", ">", 3))
+    query.order = ["created"]
+```
 
 ### Ruby
 
@@ -84,9 +94,11 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .where("priority", ">", 3)
-                     .order("created")
+```ruby
+query = datastore.query("Task")
+                 .where("priority", ">", 3)
+                 .order("created")
+```
 
 ## What's next
 

@@ -30,68 +30,76 @@ Execute a query in the Query Editor and open the **Explanation** tab:
 
 ##### Node.js (Admin)
 
-    const q = db.pipeline()
-            .collection('/users')
-            .sort(field('status').ascending())
-            .limit(100);
-    let results;
-    try {
-        results = await q.execute({
-            explainOptions: { mode: 'analyze', outputFormat: 'text' }
-        });
-    } catch (error) {
-        console.log(error);
-    }
-    const metrics = results?.explainStats?.text;
-    
-    console.log(metrics);
+```
+const q = db.pipeline()
+        .collection('/users')
+        .sort(field('status').ascending())
+        .limit(100);
+let results;
+try {
+    results = await q.execute({
+        explainOptions: { mode: 'analyze', outputFormat: 'text' }
+    });
+} catch (error) {
+    console.log(error);
+}
+const metrics = results?.explainStats?.text;
+
+console.log(metrics);
+```
 
 ##### Java (Admin)
 
-    Pipeline q = db.pipeline()
-            .collection("/users")
-            .sort(field("status").ascending())
-            .limit(100);
-    
-    PipelineExecuteOptions pipelineOpts = new PipelineExecuteOptions().withExplainOptions(
-            new ExplainOptions().withExecutionMode(ExplainOptions.ExecutionMode.ANALYZE)
-    );
-    Pipeline.Snapshot result = q.execute(pipelineOpts).get();
-    
-    String metrics = null;
-    if (result.getExplainStats() != null) {
-        metrics = result.getExplainStats().getText();
-        System.out.println(metrics);
-    }
+```
+Pipeline q = db.pipeline()
+        .collection("/users")
+        .sort(field("status").ascending())
+        .limit(100);
+
+PipelineExecuteOptions pipelineOpts = new PipelineExecuteOptions().withExplainOptions(
+        new ExplainOptions().withExecutionMode(ExplainOptions.ExecutionMode.ANALYZE)
+);
+Pipeline.Snapshot result = q.execute(pipelineOpts).get();
+
+String metrics = null;
+if (result.getExplainStats() != null) {
+    metrics = result.getExplainStats().getText();
+    System.out.println(metrics);
+}
+```
 
 ## Explain modes
 
 Depending on what you want to debug, you can execute a query with Query Explain in different modes:
 
-  - **`analyze`** : Plans and executes the query. Returns planner information, runtime execution statistics, and metrics, alongside the regular results produced by the query.
+- **`analyze`** : Plans and executes the query. Returns planner information, runtime execution statistics, and metrics, alongside the regular results produced by the query.
 
-  - **`explain`** : Plans the query, but does not execute it. Returns the planner information but no runtime statistics, metrics, or results. This is useful for debugging the behaviour of a query without running costly operations.
+- **`explain`** : Plans the query, but does not execute it. Returns the planner information but no runtime statistics, metrics, or results. This is useful for debugging the behaviour of a query without running costly operations.
 
-  - **`stats`** : Plans and executes the query, but does not return results. Returns planner information, runtime execution statistics, and metrics.
+- **`stats`** : Plans and executes the query, but does not return results. Returns planner information, runtime execution statistics, and metrics.
 
 ## Analysis
 
 The output of Query Explain contains two main components - the Summary Statistics and Execution Tree. Consider this query as an example:
 
-    db.pipeline().collection('/users').sort(field("status").ascending()).limit(100)
+```
+db.pipeline().collection('/users').sort(field("status").ascending()).limit(100)
+```
 
 ## Summary Statistics
 
 The top of the explained output contains a summary of the execution statistics. Use these statistics to determine if a query has high latency or cost. It also contains memory statistics which let you know how close your query is to [memory limits](https://docs.cloud.google.com/firestore/quotas#writes_and_transactions) .
 
-    Execution:
-     results returned: 2
-     request peak memory usage: 20.25 KiB (20,736 B)
-     data bytes read: 148 B
-     entity row scanned: 2
-    
-    Billing:
-     read units: 1
+```
+Execution:
+ results returned: 2
+ request peak memory usage: 20.25 KiB (20,736 B)
+ data bytes read: 148 B
+ entity row scanned: 2
+
+Billing:
+ read units: 1
+```
 
 ## Execution Tree
 
@@ -103,54 +111,56 @@ For details on how to use this information to optimize your queries, see [Optimi
 
 The following is an example of an execution tree:
 
-    Tree:
-    • Compute
-    |  $out_1: map_set($record_1, "__name__", $__name___1, "__key__", unset)
-    |  is query result: true
+```
+Tree:
+• Compute
+|  $out_1: map_set($record_1, "__name__", $__name___1, "__key__", unset)
+|  is query result: true
+|
+|  Execution:
+|   records returned: 2
+|   latency: 5.96 ms (local <1 ms)
+|
+└── • Compute
+    |  $__name___1: map_get($record_1, "__key__")
     |
     |  Execution:
     |   records returned: 2
-    |   latency: 5.96 ms (local <1 ms)
+    |   latency: 5.88 ms (local <1 ms)
     |
-    └── • Compute
-        |  $__name___1: map_get($record_1, "__key__")
+    └── • MajorSort
+        |  fields: [$v_1 ASC]
+        |  output: [$record_1]
+        |  limit: 100
         |
         |  Execution:
         |   records returned: 2
-        |   latency: 5.88 ms (local <1 ms)
+        |   latency: 5.86 ms (local <1 ms)
+        |   peak memory usage: 20.25 KiB (20,736 B)
         |
-        └── • MajorSort
-            |  fields: [$v_1 ASC]
-            |  output: [$record_1]
-            |  limit: 100
+        └── • Compute
+            |  $v_1: map_get($record_1, "status")
             |
             |  Execution:
             |   records returned: 2
-            |   latency: 5.86 ms (local <1 ms)
-            |   peak memory usage: 20.25 KiB (20,736 B)
+            |   latency: 5.23 ms (local <1 ms)
             |
-            └── • Compute
-                |  $v_1: map_get($record_1, "status")
-                |
-                |  Execution:
-                |   records returned: 2
-                |   latency: 5.23 ms (local <1 ms)
-                |
-                └── • TableScan
-                       source: /users
-                       order: UNDEFINED
-                       properties: *
-                       row range: (-∞..+∞)
-                       output record: $record_1
-                       variables: [$record_1]
-    
-                       Execution:
-                        records returned: 2
-                        latency: 4.68 ms
-                        records scanned: 2
-                        data bytes read: 148 B
+            └── • TableScan
+                   source: /users
+                   order: UNDEFINED
+                   properties: *
+                   row range: (-∞..+∞)
+                   output record: $record_1
+                   variables: [$record_1]
+
+                   Execution:
+                    records returned: 2
+                    latency: 4.68 ms
+                    records scanned: 2
+                    data bytes read: 148 B
+```
 
 ## What's next
 
-  - To learn about the execution tree nodes, see the [Query execution reference](https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain-reference) .
-  - To learn how to optimize your queries, see [Optimize query execution](https://docs.cloud.google.com/firestore/native/docs/enterprise-optimize-query-performance) .
+- To learn about the execution tree nodes, see the [Query execution reference](https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain-reference) .
+- To learn how to optimize your queries, see [Optimize query execution](https://docs.cloud.google.com/firestore/native/docs/enterprise-optimize-query-performance) .

@@ -50,4 +50,4 @@ You can also create, update, delete, and query entities on this page. Learn how 
 
 ## What's next?
 
-  - Get details about [Statistics in the Console](https://docs.cloud.google.com/datastore/docs/console/datastore-statistics) .
+- Get details about [Statistics in the Console](https://docs.cloud.google.com/datastore/docs/console/datastore-statistics) .

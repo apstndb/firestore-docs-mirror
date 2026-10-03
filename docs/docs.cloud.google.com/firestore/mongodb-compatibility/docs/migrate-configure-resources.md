@@ -21,10 +21,10 @@ At this stage, you do the following:
 
 Your account requires appropriate IAM roles in all services used in the migration process:
 
-  - [Datastream roles](https://docs.cloud.google.com/iam/docs/roles-permissions/datastream)
-  - [Dataflow roles](https://docs.cloud.google.com/dataflow/docs/concepts/access-control)
-  - [Cloud Storage roles](https://docs.cloud.google.com/storage/docs/access-control/iam-roles)
-  - [Datastore roles](https://docs.cloud.google.com/datastore/docs/access/iam)
+- [Datastream roles](https://docs.cloud.google.com/iam/docs/roles-permissions/datastream)
+- [Dataflow roles](https://docs.cloud.google.com/dataflow/docs/concepts/access-control)
+- [Cloud Storage roles](https://docs.cloud.google.com/storage/docs/access-control/iam-roles)
+- [Datastore roles](https://docs.cloud.google.com/datastore/docs/access/iam)
 
 ## Install command-line tools
 

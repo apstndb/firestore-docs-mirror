@@ -12,23 +12,25 @@ Create a basic query.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Datastore queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)
-  - [Structuring Data for Strong Consistency](https://docs.cloud.google.com/datastore/docs/concepts/structuring_for_strong_consistency)
+- [Datastore queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)
+- [Structuring Data for Strong Consistency](https://docs.cloud.google.com/datastore/docs/concepts/structuring_for_strong_consistency)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Filter = Filter.And(Filter.Equal("done", false),
-            Filter.GreaterThanOrEqual("priority", 4)),
-        Order = { { "priority", PropertyOrder.Types.Direction.Descending } }
-    };
+```csharp
+Query query = new Query("Task")
+{
+    Filter = Filter.And(Filter.Equal("done", false),
+        Filter.GreaterThanOrEqual("priority", 4)),
+    Order = { { "priority", PropertyOrder.Types.Direction.Descending } }
+};
+```
 
 ### Go
 
@@ -36,10 +38,12 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").
-     FilterField("Done", "=", false).
-     FilterField("Priority", ">=", 4).
-     Order("-Priority")
+```go
+query := datastore.NewQuery("Task").
+    FilterField("Done", "=", false).
+    FilterField("Priority", ">=", 4).
+    Order("-Priority")
+```
 
 ### Java
 
@@ -47,14 +51,16 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(
-                CompositeFilter.and(
-                    PropertyFilter.eq("done", false), PropertyFilter.ge("priority", 4)))
-            .setOrderBy(OrderBy.desc("priority"))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(
+            CompositeFilter.and(
+                PropertyFilter.eq("done", false), PropertyFilter.ge("priority", 4)))
+        .setOrderBy(OrderBy.desc("priority"))
+        .build();
+```
 
 ### PHP
 
@@ -62,11 +68,13 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->filter('done', '=', false)
-        ->filter('priority', '>=', 4)
-        ->order('priority', Query::ORDER_DESCENDING);
+```php
+$query = $datastore->query()
+    ->kind('Task')
+    ->filter('done', '=', false)
+    ->filter('priority', '>=', 4)
+    ->order('priority', Query::ORDER_DESCENDING);
+```
 
 ### Python
 
@@ -74,16 +82,18 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query(kind="Task")
-    query.add_filter(filter=datastore.query.PropertyFilter("done", "=", False))
-    query.add_filter(filter=datastore.query.PropertyFilter("priority", ">=", 4))
-    query.order = ["-priority"]
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query(kind="Task")
+query.add_filter(filter=datastore.query.PropertyFilter("done", "=", False))
+query.add_filter(filter=datastore.query.PropertyFilter("priority", ">=", 4))
+query.order = ["-priority"]
+```
 
 ### Ruby
 
@@ -91,10 +101,12 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .where("done", "=", false)
-                     .where("priority", ">=", 4)
-                     .order("priority", :desc)
+```ruby
+query = datastore.query("Task")
+                 .where("done", "=", false)
+                 .where("priority", ">=", 4)
+                 .order("priority", :desc)
+```
 
 ## What's next
 

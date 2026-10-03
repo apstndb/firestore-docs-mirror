@@ -26,50 +26,52 @@ First, consider how a traditional presence system works in Realtime Database.
 
 ### Web
 
-    // Fetch the current user's ID from Firebase Authentication.
-    var uid = firebase.auth().currentUser.uid;
-    
-    // Create a reference to this user's specific status node.
-    // This is where we will store data about being online/offline.
-    var userStatusDatabaseRef = firebase.database().ref('/status/' + uid);
-    
-    // We'll create two constants which we will write to 
-    // the Realtime database when this device is offline
-    // or online.
-    var isOfflineForDatabase = {
-        state: 'offline',
-        last_changed: firebase.database.ServerValue.TIMESTAMP,
+```
+// Fetch the current user's ID from Firebase Authentication.
+var uid = firebase.auth().currentUser.uid;
+
+// Create a reference to this user's specific status node.
+// This is where we will store data about being online/offline.
+var userStatusDatabaseRef = firebase.database().ref('/status/' + uid);
+
+// We'll create two constants which we will write to 
+// the Realtime database when this device is offline
+// or online.
+var isOfflineForDatabase = {
+    state: 'offline',
+    last_changed: firebase.database.ServerValue.TIMESTAMP,
+};
+
+var isOnlineForDatabase = {
+    state: 'online',
+    last_changed: firebase.database.ServerValue.TIMESTAMP,
+};
+
+// Create a reference to the special '.info/connected' path in 
+// Realtime Database. This path returns `true` when connected
+// and `false` when disconnected.
+firebase.database().ref('.info/connected').on('value', function(snapshot) {
+    // If we're not currently connected, don't do anything.
+    if (snapshot.val() == false) {
+        return;
     };
-    
-    var isOnlineForDatabase = {
-        state: 'online',
-        last_changed: firebase.database.ServerValue.TIMESTAMP,
-    };
-    
-    // Create a reference to the special '.info/connected' path in 
-    // Realtime Database. This path returns `true` when connected
-    // and `false` when disconnected.
-    firebase.database().ref('.info/connected').on('value', function(snapshot) {
-        // If we're not currently connected, don't do anything.
-        if (snapshot.val() == false) {
-            return;
-        };
-    
-        // If we are currently connected, then use the 'onDisconnect()' 
-        // method to add a set which will only trigger once this 
-        // client has disconnected by closing the app, 
-        // losing internet, or any other means.
-        userStatusDatabaseRef.onDisconnect().set(isOfflineForDatabase).then(function() {
-            // The promise returned from .onDisconnect().set() will
-            // resolve as soon as the server acknowledges the onDisconnect() 
-            // request, NOT once we've actually disconnected:
-            // https://firebase.google.com/docs/reference/js/firebase.database.OnDisconnect
-    
-            // We can now safely set ourselves as 'online' knowing that the
-            // server will mark us as offline once we lose connection.
-            userStatusDatabaseRef.set(isOnlineForDatabase);
-        });
+
+    // If we are currently connected, then use the 'onDisconnect()' 
+    // method to add a set which will only trigger once this 
+    // client has disconnected by closing the app, 
+    // losing internet, or any other means.
+    userStatusDatabaseRef.onDisconnect().set(isOfflineForDatabase).then(function() {
+        // The promise returned from .onDisconnect().set() will
+        // resolve as soon as the server acknowledges the onDisconnect() 
+        // request, NOT once we've actually disconnected:
+        // https://firebase.google.com/docs/reference/js/firebase.database.OnDisconnect
+
+        // We can now safely set ourselves as 'online' knowing that the
+        // server will mark us as offline once we lose connection.
+        userStatusDatabaseRef.set(isOnlineForDatabase);
     });
+});
+```
 
 This example is a complete Realtime Database presence system. It handles multiple disconnections, crashes and so on.
 
@@ -94,46 +96,50 @@ Let's take a look at the changes required to fulfill the first issue - updating 
 
 ### Web
 
-    // ...
-    var userStatusFirestoreRef = firebase.firestore().doc('/status/' + uid);
-    
-    // Firestore uses a different server timestamp value, so we'll 
-    // create two more constants for Firestore state.
-    var isOfflineForFirestore = {
-        state: 'offline',
-        last_changed: firebase.firestore.FieldValue.serverTimestamp(),
+```
+// ...
+var userStatusFirestoreRef = firebase.firestore().doc('/status/' + uid);
+
+// Firestore uses a different server timestamp value, so we'll 
+// create two more constants for Firestore state.
+var isOfflineForFirestore = {
+    state: 'offline',
+    last_changed: firebase.firestore.FieldValue.serverTimestamp(),
+};
+
+var isOnlineForFirestore = {
+    state: 'online',
+    last_changed: firebase.firestore.FieldValue.serverTimestamp(),
+};
+
+firebase.database().ref('.info/connected').on('value', function(snapshot) {
+    if (snapshot.val() == false) {
+        // Instead of simply returning, we'll also set Firestore's state
+        // to 'offline'. This ensures that our Firestore cache is aware
+        // of the switch to 'offline.'
+        userStatusFirestoreRef.set(isOfflineForFirestore);
+        return;
     };
-    
-    var isOnlineForFirestore = {
-        state: 'online',
-        last_changed: firebase.firestore.FieldValue.serverTimestamp(),
-    };
-    
-    firebase.database().ref('.info/connected').on('value', function(snapshot) {
-        if (snapshot.val() == false) {
-            // Instead of simply returning, we'll also set Firestore's state
-            // to 'offline'. This ensures that our Firestore cache is aware
-            // of the switch to 'offline.'
-            userStatusFirestoreRef.set(isOfflineForFirestore);
-            return;
-        };
-    
-        userStatusDatabaseRef.onDisconnect().set(isOfflineForDatabase).then(function() {
-            userStatusDatabaseRef.set(isOnlineForDatabase);
-    
-            // We'll also add Firestore set here for when we come online.
-            userStatusFirestoreRef.set(isOnlineForFirestore);
-        });
+
+    userStatusDatabaseRef.onDisconnect().set(isOfflineForDatabase).then(function() {
+        userStatusDatabaseRef.set(isOnlineForDatabase);
+
+        // We'll also add Firestore set here for when we come online.
+        userStatusFirestoreRef.set(isOnlineForFirestore);
     });
+});
+```
 
 With these changes we've now ensured that the *local* Firestore state will always reflect the online/offline status of the device. This means you can listen to the `/status/{uid}` document and use the data to change your UI to reflect connection status.
 
 ### Web
 
-    userStatusFirestoreRef.onSnapshot(function(doc) {
-        var isOnline = doc.data().state == 'online';
-        // ... use isOnline
-    });
+```
+userStatusFirestoreRef.onSnapshot(function(doc) {
+    var isOnline = doc.data().state == 'online';
+    // ... use isOnline
+});
+```
 
 #### Updating Firestore globally
 
@@ -141,48 +147,52 @@ Although our application correctly reports online presence to itself, this statu
 
 ### Node.js
 
-    firebase.firestore().collection('status')
-        .where('state', '==', 'online')
-        .onSnapshot(function(snapshot) {
-            snapshot.docChanges().forEach(function(change) {
-                if (change.type === 'added') {
-                    var msg = 'User ' + change.doc.id + ' is online.';
-                    console.log(msg);
-                    // ...
-                }
-                if (change.type === 'removed') {
-                    var msg = 'User ' + change.doc.id + ' is offline.';
-                    console.log(msg);
-                    // ...
-                }
-            });
+```
+firebase.firestore().collection('status')
+    .where('state', '==', 'online')
+    .onSnapshot(function(snapshot) {
+        snapshot.docChanges().forEach(function(change) {
+            if (change.type === 'added') {
+                var msg = 'User ' + change.doc.id + ' is online.';
+                console.log(msg);
+                // ...
+            }
+            if (change.type === 'removed') {
+                var msg = 'User ' + change.doc.id + ' is offline.';
+                console.log(msg);
+                // ...
+            }
         });
+    });
+```
 
 Once you deploy this function, you'll have a complete presence system running with Firestore. Below is an example of monitoring for any users who come online or go offline using a `where()` query.
 
 ### Web
 
-    firebase.firestore().collection('status')
-        .where('state', '==', 'online')
-        .onSnapshot(function(snapshot) {
-            snapshot.docChanges().forEach(function(change) {
-                if (change.type === 'added') {
-                    var msg = 'User ' + change.doc.id + ' is online.';
-                    console.log(msg);
-                    // ...
-                }
-                if (change.type === 'removed') {
-                    var msg = 'User ' + change.doc.id + ' is offline.';
-                    console.log(msg);
-                    // ...
-                }
-            });
+```
+firebase.firestore().collection('status')
+    .where('state', '==', 'online')
+    .onSnapshot(function(snapshot) {
+        snapshot.docChanges().forEach(function(change) {
+            if (change.type === 'added') {
+                var msg = 'User ' + change.doc.id + ' is online.';
+                console.log(msg);
+                // ...
+            }
+            if (change.type === 'removed') {
+                var msg = 'User ' + change.doc.id + ' is offline.';
+                console.log(msg);
+                // ...
+            }
         });
+    });
+```
 
 ## Limitations
 
 Using Realtime Database to add presence to your Firestore app is scalable and effective but has some limitations:
 
-  - **Debouncing** - when listening to realtime changes in Firestore, this solution is likely to trigger multiple changes. If these changes trigger more events than you want, manually debounce the Firestore events.
-  - **Connectivity** - this implementation measures connectivity to Realtime Database, not to Firestore. If the connection status to each database is not the same, this solution might report an incorrect presence state.
-  - **Android** - on Android, the Realtime Database disconnects from the backend after 60 seconds of inactivity. Inactivity means no open listeners or pending operations. To keep the connection open, we recommended you add a value event listener to a path besides `.info/connected` . For example you could do `FirebaseDatabase.getInstance().getReference((new Date()).toString()).keepSynced()` at the start of each session. For more information, see [Detecting Connection State](https://firebase.google.com/docs/database/android/offline-capabilities#section-connection-state) .
+- **Debouncing** - when listening to realtime changes in Firestore, this solution is likely to trigger multiple changes. If these changes trigger more events than you want, manually debounce the Firestore events.
+- **Connectivity** - this implementation measures connectivity to Realtime Database, not to Firestore. If the connection status to each database is not the same, this solution might report an incorrect presence state.
+- **Android** - on Android, the Realtime Database disconnects from the backend after 60 seconds of inactivity. Inactivity means no open listeners or pending operations. To keep the connection open, we recommended you add a value event listener to a path besides `.info/connected` . For example you could do `FirebaseDatabase.getInstance().getReference((new Date()).toString()).keepSynced()` at the start of each session. For more information, see [Detecting Connection State](https://firebase.google.com/docs/database/android/offline-capabilities#section-connection-state) .

@@ -12,132 +12,158 @@ gcloud firestore databases create - create a Google Cloud Firestore database via
 
 SYNOPSIS
 
-`gcloud firestore databases create` `  --location  ` = `  LOCATION  ` \[ `  --concurrency-mode  ` = `  CONCURRENCY_MODE  ` \] \[ `  --database  ` = `  DATABASE  ` ; default="(default)"\] \[ `  --delete-protection  ` \] \[ `  --edition  ` = `  EDITION  ` ; default="standard"\] \[ `  --enable-firestore-data-access  ` \] \[ `  --enable-mongodb-compatible-data-access  ` \] \[ `  --enable-pitr  ` \] \[ `  --enable-realtime-updates  ` \] \[ `  --kms-key-name  ` = `  KMS_KEY_NAME  ` \] \[ `  --tags  ` =\[ `  KEY  ` = `  VALUE  ` , …\]\] \[ `  --type  ` = `  TYPE  ` ; default="firestore-native"\] \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud firestore databases create` [`--location`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/create#--location) = `LOCATION` \[ [`--concurrency-mode`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/create#--concurrency-mode) = `CONCURRENCY_MODE` \] \[ [`--database`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/create#--database) = `DATABASE` ; default="(default)"\] \[ [`--delete-protection`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/create#--delete-protection) \] \[ [`--edition`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/create#--edition) = `EDITION` ; default="standard"\] \[ [`--enable-firestore-data-access`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/create#--enable-firestore-data-access) \] \[ [`--enable-mongodb-compatible-data-access`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/create#--enable-mongodb-compatible-data-access) \] \[ [`--enable-pitr`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/create#--enable-pitr) \] \[ [`--enable-realtime-updates`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/create#--enable-realtime-updates) \] \[ [`--kms-key-name`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/create#--kms-key-name) = `KMS_KEY_NAME` \] \[ [`--tags`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/create#--tags) =\[ `KEY` = `VALUE` , …\]\] \[ [`--type`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/create#--type) = `TYPE` ; default="firestore-native"\] \[ [`GCLOUD_WIDE_FLAG`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/create#GCLOUD-WIDE-FLAGS)` …` \]
 
 EXAMPLES
 
 To create a Firestore Enterprise database named foo in nam5 for use with MongoDB Compatible API with Data Access Mode enabled.
 
-    gcloud firestore databases create --database=foo --edition=enterprise --location=nam5 --enable-mongodb-compatible-data-access
+```
+gcloud firestore databases create --database=foo --edition=enterprise --location=nam5 --enable-mongodb-compatible-data-access
+```
 
 To create a Firestore Enterprise database named foo in nam5 for use with Firestore API Data Access Mode enabled and Realtime Updates disabled.
 
-    gcloud firestore databases create --database=foo --edition=enterprise --location=nam5 --enable-firestore-data-access
+```
+gcloud firestore databases create --database=foo --edition=enterprise --location=nam5 --enable-firestore-data-access
+```
 
 To create a Firestore Enterprise database named foo in nam5 for use with Firestore API Data Access Mode enabled and Realtime Updates enabled.
 
-    gcloud firestore databases create --database=foo --edition=enterprise --location=nam5 --enable-firestore-data-access --enable-realtime-updates
+```
+gcloud firestore databases create --database=foo --edition=enterprise --location=nam5 --enable-firestore-data-access --enable-realtime-updates
+```
 
 To create a Firestore Native database in `nam5` .
 
-    gcloud firestore databases create --location=nam5
+```
+gcloud firestore databases create --location=nam5
+```
 
 To create a Firestore Native database in `us-central1` with tags.
 
-    gcloud firestore databases create --location=us-central1 --tags=key1=value1,key2=value2
+```
+gcloud firestore databases create --location=us-central1 --tags=key1=value1,key2=value2
+```
 
 To create a Datastore Mode database in `us-east1` .
 
-    gcloud firestore databases create --location=us-east1 --type=datastore-mode
+```
+gcloud firestore databases create --location=us-east1 --type=datastore-mode
+```
 
 To create a Datastore Mode database in `us-east1` with a databaseId `foo` .
 
-    gcloud firestore databases create --database=foo --location=us-east1 --type=datastore-mode
+```
+gcloud firestore databases create --database=foo --location=us-east1 --type=datastore-mode
+```
 
 To create a Firestore Native database in `nam5` with delete protection enabled.
 
-    gcloud firestore databases create --location=nam5 --delete-protection
+```
+gcloud firestore databases create --location=nam5 --delete-protection
+```
 
 To create a Firestore Native database in `nam5` with Point In Time Recovery (PITR) enabled.
 
-    gcloud firestore databases create --location=nam5 --enable-pitr
+```
+gcloud firestore databases create --location=nam5 --enable-pitr
+```
 
 To create a Firestore Native database in `nam5` encrypted by a Customer-managed encryption key (CMEK).
 
-    gcloud firestore databases create --location=nam5 --kms-key-name=projects/PROJECT_ID/locations/us/keyRings/KEY_RING_ID/cryptoKeys/CRYPTO_KEY_ID
+```
+gcloud firestore databases create --location=nam5 --kms-key-name=projects/PROJECT_ID/locations/us/keyRings/KEY_RING_ID/cryptoKeys/CRYPTO_KEY_ID
+```
 
 REQUIRED FLAGS
 
-  - `--location` = `  LOCATION  `  
-    The location to operate on. Available locations are listed at <https://cloud.google.com/firestore/docs/locations> .
-    
-    For example, to operate on location `us-east1` :
-    
-        gcloud firestore databases create --location='us-east1'
+`--location` = `LOCATION`  
+The location to operate on. Available locations are listed at <https://cloud.google.com/firestore/docs/locations> .
+
+For example, to operate on location `us-east1` :
+
+```
+gcloud firestore databases create --location='us-east1'
+```
 
 OPTIONAL FLAGS
 
-  - `--concurrency-mode` = `  CONCURRENCY_MODE  `  
-    The concurrency control mode to use for this database.
-    
-    When not specified, Firestore will pick a default concurrency mode based on the database edition.
-    
-    `  CONCURRENCY_MODE  ` must be one of: `optimistic` , `pessimistic` .
+`--concurrency-mode` = `CONCURRENCY_MODE`  
+The concurrency control mode to use for this database.
 
-  - `--database` = `  DATABASE  ` ; default="(default)"  
-    The ID to use for the database, which will become the final component of the database's resource name. If database ID is not provided, (default) will be used as database ID.
-    
-    This value should be 4-63 characters. Valid characters are /\[a-z\]\[0-9\]-/ with first character a letter and the last a letter or a number. Must not be UUID-like /\[0-9a-f\]{8}(-\[0-9a-f\]{4}){3}-\[0-9a-f\]{12}/.
-    
-    Using "(default)" database ID is also allowed.
+When not specified, Firestore will pick a default concurrency mode based on the database edition.
 
-  - `--delete-protection`  
-    Whether to enable delete protection on the created database.
-    
-    If set to true, delete protection of the new database will be enabled and delete operations will fail unless delete protection is disabled.
-    
-    Default to false.
+`CONCURRENCY_MODE` must be one of: `optimistic` , `pessimistic` .
 
-  - `--edition` = `  EDITION  ` ; default="standard"  
-    The edition of the database. `  EDITION  ` must be one of: `standard` , `enterprise` .
+`--database` = `DATABASE` ; default="(default)"  
+The ID to use for the database, which will become the final component of the database's resource name. If database ID is not provided, (default) will be used as database ID.
 
-  - `--enable-firestore-data-access`  
-    Whether to enable Firestore API Data Access on the created database.
-    
-    If set to true, Firestore API Data Access on the new database will be enabled. By default, this feature is disabled for Enterprise edition databases. To explicitly disable, use --no-enable-firestore-data-access.
+This value should be 4-63 characters. Valid characters are /\[a-z\]\[0-9\]-/ with first character a letter and the last a letter or a number. Must not be UUID-like /\[0-9a-f\]{8}(-\[0-9a-f\]{4}){3}-\[0-9a-f\]{12}/.
 
-  - `--enable-mongodb-compatible-data-access`  
-    Whether to enable MongoDB Compatible API Data Access on the created database.
-    
-    If set to true, MongoDB Compatible API Data Access on the new database will be enabled. By default, this feature is enabled for Enterprise edition databases. To disable, use --no-enable-mongodb-compatible-data-access.
+Using "(default)" database ID is also allowed.
 
-  - `--enable-pitr`  
-    Whether to enable Point In Time Recovery (PITR) on the created database.
-    
-    If set to true, PITR on the new database will be enabled. By default, this feature is not enabled.
+`--delete-protection`  
+Whether to enable delete protection on the created database.
 
-  - `--enable-realtime-updates`  
-    Whether to enable Realtime Updates feature on the created database.
-    
-    If set to true, Realtime Updates feature on the new database will be enabled. By default, this feature is disabled for Enterprise edition databases. To explicitly disable, use --no-enable-realtime-updates.
+If set to true, delete protection of the new database will be enabled and delete operations will fail unless delete protection is disabled.
 
-  - `--kms-key-name` = `  KMS_KEY_NAME  `  
-    The resource ID of a Cloud KMS key. If set, the database created will be a Customer-Managed Encryption Key (CMEK) database encrypted with this key. This feature is allowlist only in initial launch.
-    
-    Only a key in the same location as this database is allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS location us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS location europe. See <https://cloud.google.com/kms/docs/locations> .
-    
-    This value should be the KMS key resource ID in the format of `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}` . How to retrieve this resource ID is listed at <https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version> .
+Default to false.
 
-  - `--tags` =\[ `  KEY  ` = `  VALUE  ` ,…\]  
-    Tags to attach to the destination database. Example: --tags=key1=value1,key2=value2
-    
-    For example, to attach tags to a database:
-    
-    $ --tags=key1=value1,key2=value2
+`--edition` = `EDITION` ; default="standard"  
+The edition of the database. `EDITION` must be one of: `standard` , `enterprise` .
 
-  - `--type` = `  TYPE  ` ; default="firestore-native"  
-    The type of the database. `  TYPE  ` must be one of: `firestore-native` , `datastore-mode` .
+`--enable-firestore-data-access`  
+Whether to enable Firestore API Data Access on the created database.
+
+If set to true, Firestore API Data Access on the new database will be enabled. By default, this feature is disabled for Enterprise edition databases. To explicitly disable, use --no-enable-firestore-data-access.
+
+`--enable-mongodb-compatible-data-access`  
+Whether to enable MongoDB Compatible API Data Access on the created database.
+
+If set to true, MongoDB Compatible API Data Access on the new database will be enabled. By default, this feature is enabled for Enterprise edition databases. To disable, use --no-enable-mongodb-compatible-data-access.
+
+`--enable-pitr`  
+Whether to enable Point In Time Recovery (PITR) on the created database.
+
+If set to true, PITR on the new database will be enabled. By default, this feature is not enabled.
+
+`--enable-realtime-updates`  
+Whether to enable Realtime Updates feature on the created database.
+
+If set to true, Realtime Updates feature on the new database will be enabled. By default, this feature is disabled for Enterprise edition databases. To explicitly disable, use --no-enable-realtime-updates.
+
+`--kms-key-name` = `KMS_KEY_NAME`  
+The resource ID of a Cloud KMS key. If set, the database created will be a Customer-Managed Encryption Key (CMEK) database encrypted with this key. This feature is allowlist only in initial launch.
+
+Only a key in the same location as this database is allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS location us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS location europe. See <https://cloud.google.com/kms/docs/locations> .
+
+This value should be the KMS key resource ID in the format of `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}` . How to retrieve this resource ID is listed at <https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version> .
+
+`--tags` =\[ `KEY` = `VALUE` ,…\]  
+Tags to attach to the destination database. Example: --tags=key1=value1,key2=value2
+
+For example, to attach tags to a database:
+
+\$ --tags=key1=value1,key2=value2
+
+`--type` = `TYPE` ; default="firestore-native"  
+The type of the database. `TYPE` must be one of: `firestore-native` , `datastore-mode` .
 
 GCLOUD WIDE FLAGS
 
-These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
+These flags are available to all commands: [`--access-token-file`](https://docs.cloud.google.com/sdk/gcloud/reference#--access-token-file) , [`--account`](https://docs.cloud.google.com/sdk/gcloud/reference#--account) , [`--billing-project`](https://docs.cloud.google.com/sdk/gcloud/reference#--billing-project) , [`--configuration`](https://docs.cloud.google.com/sdk/gcloud/reference#--configuration) , [`--flags-file`](https://docs.cloud.google.com/sdk/gcloud/reference#--flags-file) , [`--flatten`](https://docs.cloud.google.com/sdk/gcloud/reference#--flatten) , [`--format`](https://docs.cloud.google.com/sdk/gcloud/reference#--format) , [`--help`](https://docs.cloud.google.com/sdk/gcloud/reference#--help) , [`--impersonate-service-account`](https://docs.cloud.google.com/sdk/gcloud/reference#--impersonate-service-account) , [`--log-http`](https://docs.cloud.google.com/sdk/gcloud/reference#--log-http) , [`--project`](https://docs.cloud.google.com/sdk/gcloud/reference#--project) , [`--quiet`](https://docs.cloud.google.com/sdk/gcloud/reference#--quiet) , [`--trace-token`](https://docs.cloud.google.com/sdk/gcloud/reference#--trace-token) , [`--user-output-enabled`](https://docs.cloud.google.com/sdk/gcloud/reference#--user-output-enabled) , [`--verbosity`](https://docs.cloud.google.com/sdk/gcloud/reference#--verbosity) .
 
-Run ` $ gcloud help  ` for details.
+Run `$ `[`gcloud help`](https://docs.cloud.google.com/sdk/gcloud/reference) for details.
 
 NOTES
 
 These variants are also available:
 
-    gcloud alpha firestore databases create
+```
+gcloud alpha firestore databases create
+```
 
-    gcloud beta firestore databases create
+```
+gcloud beta firestore databases create
+```

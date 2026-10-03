@@ -6,36 +6,38 @@ description: A highly-scalable NoSQL database for your web and mobile applicatio
 data_source: docs.cloud.google.com
 ---
 
-  - [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/PropertyReference#SCHEMA_REPRESENTATION)
+- [JSON representation](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1beta3/PropertyReference#SCHEMA_REPRESENTATION)
 
 A reference to a property relative to the kind expressions.
 
+**JSON representation**
+
+```
+{
+  "name": string
+}
+```
+
 <table>
 <colgroup>
-<col style="width: 100%" />
+<col style="width: 50%" />
+<col style="width: 50%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th>JSON representation</th>
+<th>Fields</th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;name&quot;: string
-}</code></pre></td>
+<td><code>name</code></td>
+<td><p><code>string</code></p>
+<p>A reference to a property.</p>
+<p>Requires:</p>
+<ul>
+<li>MUST be a dot-delimited ( <code>.</code> ) string of segments, where each segment conforms to <code>entity property name</code> limitations.</li>
+</ul></td>
 </tr>
 </tbody>
 </table>
-
-Fields
-
-`name`
-
-`string`
-
-A reference to a property.
-
-Requires:
-
-  - MUST be a dot-delimited ( `.` ) string of segments, where each segment conforms to `entity property name` limitations.

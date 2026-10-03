@@ -12,9 +12,9 @@ data_source: docs.cloud.google.com
 
 There are three ways to retrieve data stored in Firestore. Any of these methods can be used with documents, collections of documents, or the results of queries:
 
-  - Call a method to get the data once.
-  - Set a listener to receive data-change events.
-  - Bulk-load Firestore snapshot data from an external source via [data bundles](https://firebase.google.com/docs/firestore/bundles) . See the bundles doc for more details.
+- Call a method to get the data once.
+- Set a listener to receive data-change events.
+- Bulk-load Firestore snapshot data from an external source via [data bundles](https://firebase.google.com/docs/firestore/bundles) . See the bundles doc for more details.
 
 When you set a listener, Firestore sends your listener an initial snapshot of the data, and then another snapshot each time the document changes.
 
@@ -32,45 +32,49 @@ Initialize an instance of Firestore:
 
 ### Web version 9
 
-    import { initializeApp } from "firebase/app";
-    import { getFirestore } from "firebase/firestore";
-    
-    // TODO: Replace the following with your app's Firebase project configuration
-    // See: https://support.google.com/firebase/answer/7015592
-    const firebaseConfig = {
-        FIREBASE_CONFIGURATION
-    };
-    
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    
-    
-    // Initialize Firestore and get a reference to the service
-    const db = getFirestore(app);
+```
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 
-Replace FIREBASE\_CONFIGURATION with your web app's [`firebaseConfig`](https://support.google.com/firebase/answer/7015592) .
+// TODO: Replace the following with your app's Firebase project configuration
+// See: https://support.google.com/firebase/answer/7015592
+const firebaseConfig = {
+    FIREBASE_CONFIGURATION
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+
+// Initialize Firestore and get a reference to the service
+const db = getFirestore(app);
+```
+
+Replace ` FIREBASE_CONFIGURATION ` with your web app's [`firebaseConfig`](https://support.google.com/firebase/answer/7015592) .
 
 To persist data when the device loses its connection, see the [Enable Offline Data](https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline) documentation.
 
 ### Web version 8
 
-    import firebase from "firebase/app";
-    import "firebase/firestore";
-    
-    // TODO: Replace the following with your app's Firebase project configuration
-    // See: https://support.google.com/firebase/answer/7015592
-    const firebaseConfig = {
-        FIREBASE_CONFIGURATION
-    };
-    
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    
-    
-    // Initialize Firestore and get a reference to the service
-    const db = firebase.firestore();
+```
+import firebase from "firebase/app";
+import "firebase/firestore";
 
-Replace FIREBASE\_CONFIGURATION with your web app's [`firebaseConfig`](https://support.google.com/firebase/answer/7015592) .
+// TODO: Replace the following with your app's Firebase project configuration
+// See: https://support.google.com/firebase/answer/7015592
+const firebaseConfig = {
+    FIREBASE_CONFIGURATION
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+
+// Initialize Firestore and get a reference to the service
+const db = firebase.firestore();
+```
+
+Replace ` FIREBASE_CONFIGURATION ` with your web app's [`firebaseConfig`](https://support.google.com/firebase/answer/7015592) .
 
 To persist data when the device loses its connection, see the [Enable Offline Data](https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline) documentation.
 
@@ -78,126 +82,156 @@ To persist data when the device loses its connection, see the [Enable Offline Da
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    import FirebaseCore
-    import FirebaseFirestore
+```
+import FirebaseCore
+import FirebaseFirestore
+```
 
-    FirebaseApp.configure()
-    
-    let db = Firestore.firestore()
+```
+FirebaseApp.configure()
+
+let db = Firestore.firestore()
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-``` 
+```
 @import FirebaseCore;
 @import FirebaseFirestore;
 
 // Use Firebase library to configure APIs
 [FIRApp configure];
-  
 ```
 
-    FIRFirestore *defaultFirestore = [FIRFirestore firestore];
+```
+FIRFirestore *defaultFirestore = [FIRFirestore firestore];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    // Access a Firestore instance from your Activity
+```
+// Access a Firestore instance from your Activity
+```
 
-    val db = Firebase.firestore
+```
+val db = Firebase.firestore
+```
 
-##### Java  
-Android
+##### Java Android
 
-    // Access a Firestore instance from your Activity
+```
+// Access a Firestore instance from your Activity
+```
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+```
+FirebaseFirestore db = FirebaseFirestore.getInstance();
+```
 
 ### Dart
 
-    db = FirebaseFirestore.instance;
+```
+db = FirebaseFirestore.instance;
+```
 
 ##### C++
 
-    // Make sure the call to `Create()` happens some time before you call Firestore::GetInstance().
-    App::Create();
-    Firestore* db = Firestore::GetInstance();
+```
+// Make sure the call to `Create()` happens some time before you call Firestore::GetInstance().
+App::Create();
+Firestore* db = Firestore::GetInstance();
+```
 
 ##### Unity
 
-    using Firebase.Firestore;
-    using Firebase.Extensions;
+```
+using Firebase.Firestore;
+using Firebase.Extensions;
+```
 
-    FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
+```
+FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
+```
 
 ### Server client libraries
 
 ##### Java
 
-    import com.google.cloud.firestore.Firestore;
-    import com.google.cloud.firestore.FirestoreOptions;
+```
+import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.FirestoreOptions;
+```
 
-    FirestoreOptions firestoreOptions =
-        FirestoreOptions.getDefaultInstance().toBuilder()
-            .setProjectId(projectId)
-            .setCredentials(GoogleCredentials.getApplicationDefault())
-            .build();
-    Firestore db = firestoreOptions.getService();
+```
+FirestoreOptions firestoreOptions =
+    FirestoreOptions.getDefaultInstance().toBuilder()
+        .setProjectId(projectId)
+        .setCredentials(GoogleCredentials.getApplicationDefault())
+        .build();
+Firestore db = firestoreOptions.getService();
+```
 
 ##### Python
 
-    from google.cloud import firestore
-    
-    # The `project` parameter is optional and represents which project the client
-    # will act on behalf of. If not supplied, the client falls back to the default
-    # project inferred from the environment.
-    db = firestore.Client(project="my-project-id")
+```
+from google.cloud import firestore
 
-##### Python  
-(Async)
+# The `project` parameter is optional and represents which project the client
+# will act on behalf of. If not supplied, the client falls back to the default
+# project inferred from the environment.
+db = firestore.Client(project="my-project-id")
+```
 
-    from google.cloud import firestore
-    
-    # The `project` parameter is optional and represents which project the client
-    # will act on behalf of. If not supplied, the client falls back to the default
-    # project inferred from the environment.
-    db = firestore.AsyncClient(project="my-project-id")
+##### Python (Async)
+
+```
+from google.cloud import firestore
+
+# The `project` parameter is optional and represents which project the client
+# will act on behalf of. If not supplied, the client falls back to the default
+# project inferred from the environment.
+db = firestore.AsyncClient(project="my-project-id")
+```
 
 ##### Node.js
 
-    const Firestore = require('@google-cloud/firestore');
-    
-    const db = new Firestore({
-      projectId: 'YOUR_PROJECT_ID',
-      keyFilename: '/path/to/keyfile.json',
-    });
+```
+const Firestore = require('@google-cloud/firestore');
+
+const db = new Firestore({
+  projectId: 'YOUR_PROJECT_ID',
+  keyFilename: '/path/to/keyfile.json',
+});
+```
 
 ##### Go
 
-    import (
-     "context"
-     "flag"
-     "fmt"
-     "log"
-    
-     "google.golang.org/api/iterator"
-    
-     "cloud.google.com/go/firestore"
-    )
-    
-    func createClient(ctx context.Context) *firestore.Client {
-     // Sets your Google Cloud Platform project ID.
-     projectID := "YOUR_PROJECT_ID"
-    
-     client, err := firestore.NewClient(ctx, projectID)
-     if err != nil {
-         log.Fatalf("Failed to create client: %v", err)
-     }
-     // Close client when done with
-     // defer client.Close()
-     return client
+```
+import (
+    "context"
+    "flag"
+    "fmt"
+    "log"
+
+    "google.golang.org/api/iterator"
+
+    "cloud.google.com/go/firestore"
+)
+
+func createClient(ctx context.Context) *firestore.Client {
+    // Sets your Google Cloud Platform project ID.
+    projectID := "YOUR_PROJECT_ID"
+
+    client, err := firestore.NewClient(ctx, projectID)
+    if err != nil {
+        log.Fatalf("Failed to create client: %v", err)
     }
+    // Close client when done with
+    // defer client.Close()
+    return client
+}
+```
 
 ##### PHP
 
@@ -205,47 +239,53 @@ Android
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    use Google\Cloud\Firestore\FirestoreClient;
-    
-    /**
-     * Initialize Cloud Firestore with default project ID.
-     */
-    function setup_client_create(string $projectId = null)
-    {
-        // Create the Cloud Firestore client
-        if (empty($projectId)) {
-            // The `projectId` parameter is optional and represents which project the
-            // client will act on behalf of. If not supplied, the client falls back to
-            // the default project inferred from the environment.
-            $db = new FirestoreClient();
-            printf('Created Cloud Firestore client with default project ID.' . PHP_EOL);
-        } else {
-            $db = new FirestoreClient([
-                'projectId' => $projectId,
-            ]);
-            printf('Created Cloud Firestore client with project ID: %s' . PHP_EOL, $projectId);
-        }
+```php
+use Google\Cloud\Firestore\FirestoreClient;
+
+/**
+ * Initialize Cloud Firestore with default project ID.
+ */
+function setup_client_create(string $projectId = null)
+{
+    // Create the Cloud Firestore client
+    if (empty($projectId)) {
+        // The `projectId` parameter is optional and represents which project the
+        // client will act on behalf of. If not supplied, the client falls back to
+        // the default project inferred from the environment.
+        $db = new FirestoreClient();
+        printf('Created Cloud Firestore client with default project ID.' . PHP_EOL);
+    } else {
+        $db = new FirestoreClient([
+            'projectId' => $projectId,
+        ]);
+        printf('Created Cloud Firestore client with project ID: %s' . PHP_EOL, $projectId);
     }
+}
+```
 
-##### C\#
+##### C#
 
-### C\#
+### C#
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    FirestoreDb db = FirestoreDb.Create(project);
-    Console.WriteLine("Created Cloud Firestore client with project ID: {0}", project);
+```csharp
+FirestoreDb db = FirestoreDb.Create(project);
+Console.WriteLine("Created Cloud Firestore client with project ID: {0}", project);
+```
 
 ##### Ruby
 
-    require "google/cloud/firestore"
-    
-    # The `project_id` parameter is optional and represents which project the
-    # client will act on behalf of. If not supplied, the client falls back to the
-    # default project inferred from the environment.
-    firestore = Google::Cloud::Firestore.new project_id: project_id
-    
-    puts "Created Cloud Firestore client with given project ID."
+```
+require "google/cloud/firestore"
+
+# The `project_id` parameter is optional and represents which project the
+# client will act on behalf of. If not supplied, the client falls back to the
+# default project inferred from the environment.
+firestore = Google::Cloud::Firestore.new project_id: project_id
+
+puts "Created Cloud Firestore client with given project ID."
+```
 
 ## Example data
 
@@ -253,533 +293,558 @@ To get started, write some data about cities so we can look at different ways to
 
 ### Web version 9
 
-    import { collection, doc, setDoc } from "firebase/firestore"; 
-    
-    const citiesRef = collection(db, "cities");
-    
-    await setDoc(doc(citiesRef, "SF"), {
-        name: "San Francisco", state: "CA", country: "USA",
-        capital: false, population: 860000,
-        regions: ["west_coast", "norcal"] });
-    await setDoc(doc(citiesRef, "LA"), {
-        name: "Los Angeles", state: "CA", country: "USA",
-        capital: false, population: 3900000,
-        regions: ["west_coast", "socal"] });
-    await setDoc(doc(citiesRef, "DC"), {
-        name: "Washington, D.C.", state: null, country: "USA",
-        capital: true, population: 680000,
-        regions: ["east_coast"] });
-    await setDoc(doc(citiesRef, "TOK"), {
-        name: "Tokyo", state: null, country: "Japan",
-        capital: true, population: 9000000,
-        regions: ["kanto", "honshu"] });
-    await setDoc(doc(citiesRef, "BJ"), {
-        name: "Beijing", state: null, country: "China",
-        capital: true, population: 21500000,
-        regions: ["jingjinji", "hebei"] });
+```
+import { collection, doc, setDoc } from "firebase/firestore"; 
+
+const citiesRef = collection(db, "cities");
+
+await setDoc(doc(citiesRef, "SF"), {
+    name: "San Francisco", state: "CA", country: "USA",
+    capital: false, population: 860000,
+    regions: ["west_coast", "norcal"] });
+await setDoc(doc(citiesRef, "LA"), {
+    name: "Los Angeles", state: "CA", country: "USA",
+    capital: false, population: 3900000,
+    regions: ["west_coast", "socal"] });
+await setDoc(doc(citiesRef, "DC"), {
+    name: "Washington, D.C.", state: null, country: "USA",
+    capital: true, population: 680000,
+    regions: ["east_coast"] });
+await setDoc(doc(citiesRef, "TOK"), {
+    name: "Tokyo", state: null, country: "Japan",
+    capital: true, population: 9000000,
+    regions: ["kanto", "honshu"] });
+await setDoc(doc(citiesRef, "BJ"), {
+    name: "Beijing", state: null, country: "China",
+    capital: true, population: 21500000,
+    regions: ["jingjinji", "hebei"] });
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    var citiesRef = db.collection("cities");
-    
-    citiesRef.doc("SF").set({
-        name: "San Francisco", state: "CA", country: "USA",
-        capital: false, population: 860000,
-        regions: ["west_coast", "norcal"] });
-    citiesRef.doc("LA").set({
-        name: "Los Angeles", state: "CA", country: "USA",
-        capital: false, population: 3900000,
-        regions: ["west_coast", "socal"] });
-    citiesRef.doc("DC").set({
-        name: "Washington, D.C.", state: null, country: "USA",
-        capital: true, population: 680000,
-        regions: ["east_coast"] });
-    citiesRef.doc("TOK").set({
-        name: "Tokyo", state: null, country: "Japan",
-        capital: true, population: 9000000,
-        regions: ["kanto", "honshu"] });
-    citiesRef.doc("BJ").set({
-        name: "Beijing", state: null, country: "China",
-        capital: true, population: 21500000,
-        regions: ["jingjinji", "hebei"] });
+```
+var citiesRef = db.collection("cities");
+
+citiesRef.doc("SF").set({
+    name: "San Francisco", state: "CA", country: "USA",
+    capital: false, population: 860000,
+    regions: ["west_coast", "norcal"] });
+citiesRef.doc("LA").set({
+    name: "Los Angeles", state: "CA", country: "USA",
+    capital: false, population: 3900000,
+    regions: ["west_coast", "socal"] });
+citiesRef.doc("DC").set({
+    name: "Washington, D.C.", state: null, country: "USA",
+    capital: true, population: 680000,
+    regions: ["east_coast"] });
+citiesRef.doc("TOK").set({
+    name: "Tokyo", state: null, country: "Japan",
+    capital: true, population: 9000000,
+    regions: ["kanto", "honshu"] });
+citiesRef.doc("BJ").set({
+    name: "Beijing", state: null, country: "China",
+    capital: true, population: 21500000,
+    regions: ["jingjinji", "hebei"] });
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    let citiesRef = db.collection("cities")
-    
-    citiesRef.document("SF").setData([
-      "name": "San Francisco",
-      "state": "CA",
-      "country": "USA",
-      "capital": false,
-      "population": 860000,
-      "regions": ["west_coast", "norcal"]
-    ])
-    citiesRef.document("LA").setData([
-      "name": "Los Angeles",
-      "state": "CA",
-      "country": "USA",
-      "capital": false,
-      "population": 3900000,
-      "regions": ["west_coast", "socal"]
-    ])
-    citiesRef.document("DC").setData([
-      "name": "Washington D.C.",
-      "country": "USA",
-      "capital": true,
-      "population": 680000,
-      "regions": ["east_coast"]
-    ])
-    citiesRef.document("TOK").setData([
-      "name": "Tokyo",
-      "country": "Japan",
-      "capital": true,
-      "population": 9000000,
-      "regions": ["kanto", "honshu"]
-    ])
-    citiesRef.document("BJ").setData([
-      "name": "Beijing",
-      "country": "China",
-      "capital": true,
-      "population": 21500000,
-      "regions": ["jingjinji", "hebei"]
-    ])
+```
+let citiesRef = db.collection("cities")
+
+citiesRef.document("SF").setData([
+  "name": "San Francisco",
+  "state": "CA",
+  "country": "USA",
+  "capital": false,
+  "population": 860000,
+  "regions": ["west_coast", "norcal"]
+])
+citiesRef.document("LA").setData([
+  "name": "Los Angeles",
+  "state": "CA",
+  "country": "USA",
+  "capital": false,
+  "population": 3900000,
+  "regions": ["west_coast", "socal"]
+])
+citiesRef.document("DC").setData([
+  "name": "Washington D.C.",
+  "country": "USA",
+  "capital": true,
+  "population": 680000,
+  "regions": ["east_coast"]
+])
+citiesRef.document("TOK").setData([
+  "name": "Tokyo",
+  "country": "Japan",
+  "capital": true,
+  "population": 9000000,
+  "regions": ["kanto", "honshu"]
+])
+citiesRef.document("BJ").setData([
+  "name": "Beijing",
+  "country": "China",
+  "capital": true,
+  "population": 21500000,
+  "regions": ["jingjinji", "hebei"]
+])
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    FIRCollectionReference *citiesRef = [self.db collectionWithPath:@"cities"];
-    [[citiesRef documentWithPath:@"SF"] setData:@{
-      @"name": @"San Francisco",
-      @"state": @"CA",
-      @"country": @"USA",
-      @"capital": @(NO),
-      @"population": @860000,
-      @"regions": @[@"west_coast", @"norcal"]
-    }];
-    [[citiesRef documentWithPath:@"LA"] setData:@{
-      @"name": @"Los Angeles",
-      @"state": @"CA",
-      @"country": @"USA",
-      @"capital": @(NO),
-      @"population": @3900000,
-      @"regions": @[@"west_coast", @"socal"]
-    }];
-    [[citiesRef documentWithPath:@"DC"] setData:@{
-      @"name": @"Washington D.C.",
-      @"country": @"USA",
-      @"capital": @(YES),
-      @"population": @680000,
-      @"regions": @[@"east_coast"]
-    }];
-    [[citiesRef documentWithPath:@"TOK"] setData:@{
-      @"name": @"Tokyo",
-      @"country": @"Japan",
-      @"capital": @(YES),
-      @"population": @9000000,
-      @"regions": @[@"kanto", @"honshu"]
-    }];
-    [[citiesRef documentWithPath:@"BJ"] setData:@{
-      @"name": @"Beijing",
-      @"country": @"China",
-      @"capital": @(YES),
-      @"population": @21500000,
-      @"regions": @[@"jingjinji", @"hebei"]
-    }];
+```
+FIRCollectionReference *citiesRef = [self.db collectionWithPath:@"cities"];
+[[citiesRef documentWithPath:@"SF"] setData:@{
+  @"name": @"San Francisco",
+  @"state": @"CA",
+  @"country": @"USA",
+  @"capital": @(NO),
+  @"population": @860000,
+  @"regions": @[@"west_coast", @"norcal"]
+}];
+[[citiesRef documentWithPath:@"LA"] setData:@{
+  @"name": @"Los Angeles",
+  @"state": @"CA",
+  @"country": @"USA",
+  @"capital": @(NO),
+  @"population": @3900000,
+  @"regions": @[@"west_coast", @"socal"]
+}];
+[[citiesRef documentWithPath:@"DC"] setData:@{
+  @"name": @"Washington D.C.",
+  @"country": @"USA",
+  @"capital": @(YES),
+  @"population": @680000,
+  @"regions": @[@"east_coast"]
+}];
+[[citiesRef documentWithPath:@"TOK"] setData:@{
+  @"name": @"Tokyo",
+  @"country": @"Japan",
+  @"capital": @(YES),
+  @"population": @9000000,
+  @"regions": @[@"kanto", @"honshu"]
+}];
+[[citiesRef documentWithPath:@"BJ"] setData:@{
+  @"name": @"Beijing",
+  @"country": @"China",
+  @"capital": @(YES),
+  @"population": @21500000,
+  @"regions": @[@"jingjinji", @"hebei"]
+}];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val cities = db.collection("cities")
-    
-    val data1 = hashMapOf(
-        "name" to "San Francisco",
-        "state" to "CA",
-        "country" to "USA",
-        "capital" to false,
-        "population" to 860000,
-        "regions" to listOf("west_coast", "norcal"),
-    )
-    cities.document("SF").set(data1)
-    
-    val data2 = hashMapOf(
-        "name" to "Los Angeles",
-        "state" to "CA",
-        "country" to "USA",
-        "capital" to false,
-        "population" to 3900000,
-        "regions" to listOf("west_coast", "socal"),
-    )
-    cities.document("LA").set(data2)
-    
-    val data3 = hashMapOf(
-        "name" to "Washington D.C.",
-        "state" to null,
-        "country" to "USA",
-        "capital" to true,
-        "population" to 680000,
-        "regions" to listOf("east_coast"),
-    )
-    cities.document("DC").set(data3)
-    
-    val data4 = hashMapOf(
-        "name" to "Tokyo",
-        "state" to null,
-        "country" to "Japan",
-        "capital" to true,
-        "population" to 9000000,
-        "regions" to listOf("kanto", "honshu"),
-    )
-    cities.document("TOK").set(data4)
-    
-    val data5 = hashMapOf(
-        "name" to "Beijing",
-        "state" to null,
-        "country" to "China",
-        "capital" to true,
-        "population" to 21500000,
-        "regions" to listOf("jingjinji", "hebei"),
-    )
-    cities.document("BJ").set(data5)
+```
+val cities = db.collection("cities")
 
-##### Java  
-Android
+val data1 = hashMapOf(
+    "name" to "San Francisco",
+    "state" to "CA",
+    "country" to "USA",
+    "capital" to false,
+    "population" to 860000,
+    "regions" to listOf("west_coast", "norcal"),
+)
+cities.document("SF").set(data1)
 
-    CollectionReference cities = db.collection("cities");
-    
-    Map<String, Object> data1 = new HashMap<>();
-    data1.put("name", "San Francisco");
-    data1.put("state", "CA");
-    data1.put("country", "USA");
-    data1.put("capital", false);
-    data1.put("population", 860000);
-    data1.put("regions", Arrays.asList("west_coast", "norcal"));
-    cities.document("SF").set(data1);
-    
-    Map<String, Object> data2 = new HashMap<>();
-    data2.put("name", "Los Angeles");
-    data2.put("state", "CA");
-    data2.put("country", "USA");
-    data2.put("capital", false);
-    data2.put("population", 3900000);
-    data2.put("regions", Arrays.asList("west_coast", "socal"));
-    cities.document("LA").set(data2);
-    
-    Map<String, Object> data3 = new HashMap<>();
-    data3.put("name", "Washington D.C.");
-    data3.put("state", null);
-    data3.put("country", "USA");
-    data3.put("capital", true);
-    data3.put("population", 680000);
-    data3.put("regions", Arrays.asList("east_coast"));
-    cities.document("DC").set(data3);
-    
-    Map<String, Object> data4 = new HashMap<>();
-    data4.put("name", "Tokyo");
-    data4.put("state", null);
-    data4.put("country", "Japan");
-    data4.put("capital", true);
-    data4.put("population", 9000000);
-    data4.put("regions", Arrays.asList("kanto", "honshu"));
-    cities.document("TOK").set(data4);
-    
-    Map<String, Object> data5 = new HashMap<>();
-    data5.put("name", "Beijing");
-    data5.put("state", null);
-    data5.put("country", "China");
-    data5.put("capital", true);
-    data5.put("population", 21500000);
-    data5.put("regions", Arrays.asList("jingjinji", "hebei"));
-    cities.document("BJ").set(data5);
+val data2 = hashMapOf(
+    "name" to "Los Angeles",
+    "state" to "CA",
+    "country" to "USA",
+    "capital" to false,
+    "population" to 3900000,
+    "regions" to listOf("west_coast", "socal"),
+)
+cities.document("LA").set(data2)
+
+val data3 = hashMapOf(
+    "name" to "Washington D.C.",
+    "state" to null,
+    "country" to "USA",
+    "capital" to true,
+    "population" to 680000,
+    "regions" to listOf("east_coast"),
+)
+cities.document("DC").set(data3)
+
+val data4 = hashMapOf(
+    "name" to "Tokyo",
+    "state" to null,
+    "country" to "Japan",
+    "capital" to true,
+    "population" to 9000000,
+    "regions" to listOf("kanto", "honshu"),
+)
+cities.document("TOK").set(data4)
+
+val data5 = hashMapOf(
+    "name" to "Beijing",
+    "state" to null,
+    "country" to "China",
+    "capital" to true,
+    "population" to 21500000,
+    "regions" to listOf("jingjinji", "hebei"),
+)
+cities.document("BJ").set(data5)
+```
+
+##### Java Android
+
+```
+CollectionReference cities = db.collection("cities");
+
+Map<String, Object> data1 = new HashMap<>();
+data1.put("name", "San Francisco");
+data1.put("state", "CA");
+data1.put("country", "USA");
+data1.put("capital", false);
+data1.put("population", 860000);
+data1.put("regions", Arrays.asList("west_coast", "norcal"));
+cities.document("SF").set(data1);
+
+Map<String, Object> data2 = new HashMap<>();
+data2.put("name", "Los Angeles");
+data2.put("state", "CA");
+data2.put("country", "USA");
+data2.put("capital", false);
+data2.put("population", 3900000);
+data2.put("regions", Arrays.asList("west_coast", "socal"));
+cities.document("LA").set(data2);
+
+Map<String, Object> data3 = new HashMap<>();
+data3.put("name", "Washington D.C.");
+data3.put("state", null);
+data3.put("country", "USA");
+data3.put("capital", true);
+data3.put("population", 680000);
+data3.put("regions", Arrays.asList("east_coast"));
+cities.document("DC").set(data3);
+
+Map<String, Object> data4 = new HashMap<>();
+data4.put("name", "Tokyo");
+data4.put("state", null);
+data4.put("country", "Japan");
+data4.put("capital", true);
+data4.put("population", 9000000);
+data4.put("regions", Arrays.asList("kanto", "honshu"));
+cities.document("TOK").set(data4);
+
+Map<String, Object> data5 = new HashMap<>();
+data5.put("name", "Beijing");
+data5.put("state", null);
+data5.put("country", "China");
+data5.put("capital", true);
+data5.put("population", 21500000);
+data5.put("regions", Arrays.asList("jingjinji", "hebei"));
+cities.document("BJ").set(data5);
+```
 
 ### Dart
 
-    final cities = db.collection("cities");
-    final data1 = <String, dynamic>{
-      "name": "San Francisco",
-      "state": "CA",
-      "country": "USA",
-      "capital": false,
-      "population": 860000,
-      "regions": ["west_coast", "norcal"]
-    };
-    cities.doc("SF").set(data1);
-    
-    final data2 = <String, dynamic>{
-      "name": "Los Angeles",
-      "state": "CA",
-      "country": "USA",
-      "capital": false,
-      "population": 3900000,
-      "regions": ["west_coast", "socal"],
-    };
-    cities.doc("LA").set(data2);
-    
-    final data3 = <String, dynamic>{
-      "name": "Washington D.C.",
-      "state": null,
-      "country": "USA",
-      "capital": true,
-      "population": 680000,
-      "regions": ["east_coast"]
-    };
-    cities.doc("DC").set(data3);
-    
-    final data4 = <String, dynamic>{
-      "name": "Tokyo",
-      "state": null,
-      "country": "Japan",
-      "capital": true,
-      "population": 9000000,
-      "regions": ["kanto", "honshu"]
-    };
-    cities.doc("TOK").set(data4);
-    
-    final data5 = <String, dynamic>{
-      "name": "Beijing",
-      "state": null,
-      "country": "China",
-      "capital": true,
-      "population": 21500000,
-      "regions": ["jingjinji", "hebei"],
-    };
-    cities.doc("BJ").set(data5);
+```
+final cities = db.collection("cities");
+final data1 = <String, dynamic>{
+  "name": "San Francisco",
+  "state": "CA",
+  "country": "USA",
+  "capital": false,
+  "population": 860000,
+  "regions": ["west_coast", "norcal"]
+};
+cities.doc("SF").set(data1);
+
+final data2 = <String, dynamic>{
+  "name": "Los Angeles",
+  "state": "CA",
+  "country": "USA",
+  "capital": false,
+  "population": 3900000,
+  "regions": ["west_coast", "socal"],
+};
+cities.doc("LA").set(data2);
+
+final data3 = <String, dynamic>{
+  "name": "Washington D.C.",
+  "state": null,
+  "country": "USA",
+  "capital": true,
+  "population": 680000,
+  "regions": ["east_coast"]
+};
+cities.doc("DC").set(data3);
+
+final data4 = <String, dynamic>{
+  "name": "Tokyo",
+  "state": null,
+  "country": "Japan",
+  "capital": true,
+  "population": 9000000,
+  "regions": ["kanto", "honshu"]
+};
+cities.doc("TOK").set(data4);
+
+final data5 = <String, dynamic>{
+  "name": "Beijing",
+  "state": null,
+  "country": "China",
+  "capital": true,
+  "population": 21500000,
+  "regions": ["jingjinji", "hebei"],
+};
+cities.doc("BJ").set(data5);
+```
 
 ##### Java
 
-    CollectionReference cities = db.collection("cities");
-    List<ApiFuture<WriteResult>> futures = new ArrayList<>();
-    futures.add(
-        cities
-            .document("SF")
-            .set(
-                new City(
-                    "San Francisco",
-                    "CA",
-                    "USA",
-                    false,
-                    860000L,
-                    Arrays.asList("west_coast", "norcal"))));
-    futures.add(
-        cities
-            .document("LA")
-            .set(
-                new City(
-                    "Los Angeles",
-                    "CA",
-                    "USA",
-                    false,
-                    3900000L,
-                    Arrays.asList("west_coast", "socal"))));
-    futures.add(
-        cities
-            .document("DC")
-            .set(
-                new City(
-                    "Washington D.C.", null, "USA", true, 680000L, Arrays.asList("east_coast"))));
-    futures.add(
-        cities
-            .document("TOK")
-            .set(
-                new City(
-                    "Tokyo", null, "Japan", true, 9000000L, Arrays.asList("kanto", "honshu"))));
-    futures.add(
-        cities
-            .document("BJ")
-            .set(
-                new City(
-                    "Beijing",
-                    null,
-                    "China",
-                    true,
-                    21500000L,
-                    Arrays.asList("jingjinji", "hebei"))));
-    // (optional) block on operation
-    ApiFutures.allAsList(futures).get();
+```
+CollectionReference cities = db.collection("cities");
+List<ApiFuture<WriteResult>> futures = new ArrayList<>();
+futures.add(
+    cities
+        .document("SF")
+        .set(
+            new City(
+                "San Francisco",
+                "CA",
+                "USA",
+                false,
+                860000L,
+                Arrays.asList("west_coast", "norcal"))));
+futures.add(
+    cities
+        .document("LA")
+        .set(
+            new City(
+                "Los Angeles",
+                "CA",
+                "USA",
+                false,
+                3900000L,
+                Arrays.asList("west_coast", "socal"))));
+futures.add(
+    cities
+        .document("DC")
+        .set(
+            new City(
+                "Washington D.C.", null, "USA", true, 680000L, Arrays.asList("east_coast"))));
+futures.add(
+    cities
+        .document("TOK")
+        .set(
+            new City(
+                "Tokyo", null, "Japan", true, 9000000L, Arrays.asList("kanto", "honshu"))));
+futures.add(
+    cities
+        .document("BJ")
+        .set(
+            new City(
+                "Beijing",
+                null,
+                "China",
+                true,
+                21500000L,
+                Arrays.asList("jingjinji", "hebei"))));
+// (optional) block on operation
+ApiFutures.allAsList(futures).get();
+```
 
 ##### Python
 
-    class City:
-        def __init__(self, name, state, country, capital=False, population=0, regions=[]):
-            self.name = name
-            self.state = state
-            self.country = country
-            self.capital = capital
-            self.population = population
-            self.regions = regions
-    
-        @staticmethod
-        def from_dict(source):
-            # ...
-    
-        def to_dict(self):
-            # ...
-    
-        def __repr__(self):
-            return f"City(\
-                    name={self.name}, \
-                    country={self.country}, \
-                    population={self.population}, \
-                    capital={self.capital}, \
-                    regions={self.regions}\
-                )"
+```
+class City:
+    def __init__(self, name, state, country, capital=False, population=0, regions=[]):
+        self.name = name
+        self.state = state
+        self.country = country
+        self.capital = capital
+        self.population = population
+        self.regions = regions
 
-    cities_ref = db.collection("cities")
-    cities_ref.document("BJ").set(
-        City("Beijing", None, "China", True, 21500000, ["hebei"]).to_dict()
-    )
-    cities_ref.document("SF").set(
-        City(
-            "San Francisco", "CA", "USA", False, 860000, ["west_coast", "norcal"]
-        ).to_dict()
-    )
-    cities_ref.document("LA").set(
-        City(
-            "Los Angeles", "CA", "USA", False, 3900000, ["west_coast", "socal"]
-        ).to_dict()
-    )
-    cities_ref.document("DC").set(
-        City("Washington D.C.", None, "USA", True, 680000, ["east_coast"]).to_dict()
-    )
-    cities_ref.document("TOK").set(
-        City("Tokyo", None, "Japan", True, 9000000, ["kanto", "honshu"]).to_dict()
-    )
+    @staticmethod
+    def from_dict(source):
+        # ...
 
-##### Python  
-(Async)
+    def to_dict(self):
+        # ...
 
-    cities_ref = db.collection("cities")
-    await cities_ref.document("BJ").set(
-        City("Beijing", None, "China", True, 21500000, ["hebei"]).to_dict()
-    )
-    await cities_ref.document("SF").set(
-        City(
-            "San Francisco", "CA", "USA", False, 860000, ["west_coast", "norcal"]
-        ).to_dict()
-    )
-    await cities_ref.document("LA").set(
-        City(
-            "Los Angeles", "CA", "USA", False, 3900000, ["west_coast", "socal"]
-        ).to_dict()
-    )
-    await cities_ref.document("DC").set(
-        City("Washington D.C.", None, "USA", True, 680000, ["east_coast"]).to_dict()
-    )
-    await cities_ref.document("TOK").set(
-        City("Tokyo", None, "Japan", True, 9000000, ["kanto", "honshu"]).to_dict()
-    )
+    def __repr__(self):
+        return f"City(\
+                name={self.name}, \
+                country={self.country}, \
+                population={self.population}, \
+                capital={self.capital}, \
+                regions={self.regions}\
+            )"
+```
+
+```
+cities_ref = db.collection("cities")
+cities_ref.document("BJ").set(
+    City("Beijing", None, "China", True, 21500000, ["hebei"]).to_dict()
+)
+cities_ref.document("SF").set(
+    City(
+        "San Francisco", "CA", "USA", False, 860000, ["west_coast", "norcal"]
+    ).to_dict()
+)
+cities_ref.document("LA").set(
+    City(
+        "Los Angeles", "CA", "USA", False, 3900000, ["west_coast", "socal"]
+    ).to_dict()
+)
+cities_ref.document("DC").set(
+    City("Washington D.C.", None, "USA", True, 680000, ["east_coast"]).to_dict()
+)
+cities_ref.document("TOK").set(
+    City("Tokyo", None, "Japan", True, 9000000, ["kanto", "honshu"]).to_dict()
+)
+```
+
+##### Python (Async)
+
+```
+cities_ref = db.collection("cities")
+await cities_ref.document("BJ").set(
+    City("Beijing", None, "China", True, 21500000, ["hebei"]).to_dict()
+)
+await cities_ref.document("SF").set(
+    City(
+        "San Francisco", "CA", "USA", False, 860000, ["west_coast", "norcal"]
+    ).to_dict()
+)
+await cities_ref.document("LA").set(
+    City(
+        "Los Angeles", "CA", "USA", False, 3900000, ["west_coast", "socal"]
+    ).to_dict()
+)
+await cities_ref.document("DC").set(
+    City("Washington D.C.", None, "USA", True, 680000, ["east_coast"]).to_dict()
+)
+await cities_ref.document("TOK").set(
+    City("Tokyo", None, "Japan", True, 9000000, ["kanto", "honshu"]).to_dict()
+)
+```
 
 ##### C++
 
-    CollectionReference cities = db->Collection("cities");
-    
-    cities.Document("SF").Set({
-        {"name", FieldValue::String("San Francisco")},
-        {"state", FieldValue::String("CA")},
-        {"country", FieldValue::String("USA")},
-        {"capital", FieldValue::Boolean(false)},
-        {"population", FieldValue::Integer(860000)},
-        {"regions", FieldValue::Array({FieldValue::String("west_coast"),
-                                       FieldValue::String("norcal")})},
-    });
-    
-    cities.Document("LA").Set({
-        {"name", FieldValue::String("Los Angeles")},
-        {"state", FieldValue::String("CA")},
-        {"country", FieldValue::String("USA")},
-        {"capital", FieldValue::Boolean(false)},
-        {"population", FieldValue::Integer(3900000)},
-        {"regions", FieldValue::Array({FieldValue::String("west_coast"),
-                                       FieldValue::String("socal")})},
-    });
-    
-    cities.Document("DC").Set({
-        {"name", FieldValue::String("Washington D.C.")},
-        {"state", FieldValue::Null()},
-        {"country", FieldValue::String("USA")},
-        {"capital", FieldValue::Boolean(true)},
-        {"population", FieldValue::Integer(680000)},
-        {"regions",
-         FieldValue::Array({FieldValue::String("east_coast")})},
-    });
-    
-    cities.Document("TOK").Set({
-        {"name", FieldValue::String("Tokyo")},
-        {"state", FieldValue::Null()},
-        {"country", FieldValue::String("Japan")},
-        {"capital", FieldValue::Boolean(true)},
-        {"population", FieldValue::Integer(9000000)},
-        {"regions", FieldValue::Array({FieldValue::String("kanto"),
-                                       FieldValue::String("honshu")})},
-    });
-    
-    cities.Document("BJ").Set({
-        {"name", FieldValue::String("Beijing")},
-        {"state", FieldValue::Null()},
-        {"country", FieldValue::String("China")},
-        {"capital", FieldValue::Boolean(true)},
-        {"population", FieldValue::Integer(21500000)},
-        {"regions", FieldValue::Array({FieldValue::String("jingjinji"),
-                                       FieldValue::String("hebei")})},
-    });
+```
+CollectionReference cities = db->Collection("cities");
+
+cities.Document("SF").Set({
+    {"name", FieldValue::String("San Francisco")},
+    {"state", FieldValue::String("CA")},
+    {"country", FieldValue::String("USA")},
+    {"capital", FieldValue::Boolean(false)},
+    {"population", FieldValue::Integer(860000)},
+    {"regions", FieldValue::Array({FieldValue::String("west_coast"),
+                                   FieldValue::String("norcal")})},
+});
+
+cities.Document("LA").Set({
+    {"name", FieldValue::String("Los Angeles")},
+    {"state", FieldValue::String("CA")},
+    {"country", FieldValue::String("USA")},
+    {"capital", FieldValue::Boolean(false)},
+    {"population", FieldValue::Integer(3900000)},
+    {"regions", FieldValue::Array({FieldValue::String("west_coast"),
+                                   FieldValue::String("socal")})},
+});
+
+cities.Document("DC").Set({
+    {"name", FieldValue::String("Washington D.C.")},
+    {"state", FieldValue::Null()},
+    {"country", FieldValue::String("USA")},
+    {"capital", FieldValue::Boolean(true)},
+    {"population", FieldValue::Integer(680000)},
+    {"regions",
+     FieldValue::Array({FieldValue::String("east_coast")})},
+});
+
+cities.Document("TOK").Set({
+    {"name", FieldValue::String("Tokyo")},
+    {"state", FieldValue::Null()},
+    {"country", FieldValue::String("Japan")},
+    {"capital", FieldValue::Boolean(true)},
+    {"population", FieldValue::Integer(9000000)},
+    {"regions", FieldValue::Array({FieldValue::String("kanto"),
+                                   FieldValue::String("honshu")})},
+});
+
+cities.Document("BJ").Set({
+    {"name", FieldValue::String("Beijing")},
+    {"state", FieldValue::Null()},
+    {"country", FieldValue::String("China")},
+    {"capital", FieldValue::Boolean(true)},
+    {"population", FieldValue::Integer(21500000)},
+    {"regions", FieldValue::Array({FieldValue::String("jingjinji"),
+                                   FieldValue::String("hebei")})},
+});
+```
 
 ##### Node.js
 
-    const citiesRef = db.collection('cities');
-    
-    await citiesRef.doc('SF').set({
-      name: 'San Francisco', state: 'CA', country: 'USA',
-      capital: false, population: 860000
-    });
-    await citiesRef.doc('LA').set({
-      name: 'Los Angeles', state: 'CA', country: 'USA',
-      capital: false, population: 3900000
-    });
-    await citiesRef.doc('DC').set({
-      name: 'Washington, D.C.', state: null, country: 'USA',
-      capital: true, population: 680000
-    });
-    await citiesRef.doc('TOK').set({
-      name: 'Tokyo', state: null, country: 'Japan',
-      capital: true, population: 9000000
-    });
-    await citiesRef.doc('BJ').set({
-      name: 'Beijing', state: null, country: 'China',
-      capital: true, population: 21500000
-    });
+```
+const citiesRef = db.collection('cities');
+
+await citiesRef.doc('SF').set({
+  name: 'San Francisco', state: 'CA', country: 'USA',
+  capital: false, population: 860000
+});
+await citiesRef.doc('LA').set({
+  name: 'Los Angeles', state: 'CA', country: 'USA',
+  capital: false, population: 3900000
+});
+await citiesRef.doc('DC').set({
+  name: 'Washington, D.C.', state: null, country: 'USA',
+  capital: true, population: 680000
+});
+await citiesRef.doc('TOK').set({
+  name: 'Tokyo', state: null, country: 'Japan',
+  capital: true, population: 9000000
+});
+await citiesRef.doc('BJ').set({
+  name: 'Beijing', state: null, country: 'China',
+  capital: true, population: 21500000
+});
+```
 
 ##### Go
 
-    import (
-     "context"
-    
-     "cloud.google.com/go/firestore"
-    )
-    
-    func prepareRetrieve(ctx context.Context, client *firestore.Client) error {
-     cities := []struct {
-         id string
-         c  City
-     }{
-         {id: "SF", c: City{Name: "San Francisco", State: "CA", Country: "USA", Capital: false, Population: 860000}},
-         {id: "LA", c: City{Name: "Los Angeles", State: "CA", Country: "USA", Capital: false, Population: 3900000}},
-         {id: "DC", c: City{Name: "Washington D.C.", Country: "USA", Capital: true, Population: 680000}},
-         {id: "TOK", c: City{Name: "Tokyo", Country: "Japan", Capital: true, Population: 9000000}},
-         {id: "BJ", c: City{Name: "Beijing", Country: "China", Capital: true, Population: 21500000}},
-     }
-     for _, c := range cities {
-         _, err := client.Collection("cities").Doc(c.id).Set(ctx, c.c)
-         if err != nil {
-             return err
-         }
-     }
-     return nil
+```
+import (
+    "context"
+
+    "cloud.google.com/go/firestore"
+)
+
+func prepareRetrieve(ctx context.Context, client *firestore.Client) error {
+    cities := []struct {
+        id string
+        c  City
+    }{
+        {id: "SF", c: City{Name: "San Francisco", State: "CA", Country: "USA", Capital: false, Population: 860000}},
+        {id: "LA", c: City{Name: "Los Angeles", State: "CA", Country: "USA", Capital: false, Population: 3900000}},
+        {id: "DC", c: City{Name: "Washington D.C.", Country: "USA", Capital: true, Population: 680000}},
+        {id: "TOK", c: City{Name: "Tokyo", Country: "Japan", Capital: true, Population: 9000000}},
+        {id: "BJ", c: City{Name: "Beijing", Country: "China", Capital: true, Population: 21500000}},
     }
+    for _, c := range cities {
+        _, err := client.Collection("cities").Doc(c.id).Set(ctx, c.c)
+        if err != nil {
+            return err
+        }
+    }
+    return nil
+}
+```
 
 ##### PHP
 
@@ -787,181 +852,189 @@ Android
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $citiesRef = $db->collection('samples/php/cities');
-    $citiesRef->document('SF')->set([
-        'name' => 'San Francisco',
-        'state' => 'CA',
-        'country' => 'USA',
-        'capital' => false,
-        'population' => 860000,
-        'density' => 18000,
-    ]);
-    $citiesRef->document('LA')->set([
-        'name' => 'Los Angeles',
-        'state' => 'CA',
-        'country' => 'USA',
-        'capital' => false,
-        'population' => 3900000,
-        'density' => 8000,
-    ]);
-    $citiesRef->document('DC')->set([
-        'name' => 'Washington D.C.',
-        'state' => null,
-        'country' => 'USA',
-        'capital' => true,
-        'population' => 680000,
-        'density' => 11000,
-    ]);
-    $citiesRef->document('TOK')->set([
-        'name' => 'Tokyo',
-        'state' => null,
-        'country' => 'Japan',
-        'capital' => true,
-        'population' => 9000000,
-        'density' => 16000,
-    
-    ]);
-    $citiesRef->document('BJ')->set([
-        'name' => 'Beijing',
-        'state' => null,
-        'country' => 'China',
-        'capital' => true,
-        'population' => 21500000,
-        'density' => 3500,
-    ]);
-    printf('Added example cities data to the cities collection.' . PHP_EOL);
+```php
+$citiesRef = $db->collection('samples/php/cities');
+$citiesRef->document('SF')->set([
+    'name' => 'San Francisco',
+    'state' => 'CA',
+    'country' => 'USA',
+    'capital' => false,
+    'population' => 860000,
+    'density' => 18000,
+]);
+$citiesRef->document('LA')->set([
+    'name' => 'Los Angeles',
+    'state' => 'CA',
+    'country' => 'USA',
+    'capital' => false,
+    'population' => 3900000,
+    'density' => 8000,
+]);
+$citiesRef->document('DC')->set([
+    'name' => 'Washington D.C.',
+    'state' => null,
+    'country' => 'USA',
+    'capital' => true,
+    'population' => 680000,
+    'density' => 11000,
+]);
+$citiesRef->document('TOK')->set([
+    'name' => 'Tokyo',
+    'state' => null,
+    'country' => 'Japan',
+    'capital' => true,
+    'population' => 9000000,
+    'density' => 16000,
+
+]);
+$citiesRef->document('BJ')->set([
+    'name' => 'Beijing',
+    'state' => null,
+    'country' => 'China',
+    'capital' => true,
+    'population' => 21500000,
+    'density' => 3500,
+]);
+printf('Added example cities data to the cities collection.' . PHP_EOL);
+```
 
 ##### Unity
 
-    CollectionReference citiesRef = db.Collection("cities");
-    citiesRef.Document("SF").SetAsync(new Dictionary<string, object>(){
-            { "Name", "San Francisco" },
-            { "State", "CA" },
-            { "Country", "USA" },
-            { "Capital", false },
-            { "Population", 860000 }
-        }).ContinueWithOnMainThread(task =>
-            citiesRef.Document("LA").SetAsync(new Dictionary<string, object>(){
-                { "Name", "Los Angeles" },
-                { "State", "CA" },
-                { "Country", "USA" },
-                { "Capital", false },
-                { "Population", 3900000 }
-            })
-    ).ContinueWithOnMainThread(task =>
-        citiesRef.Document("DC").SetAsync(new Dictionary<string, object>(){
-                { "Name", "Washington D.C." },
-                { "State", null },
-                { "Country", "USA" },
-                { "Capital", true },
-                { "Population", 680000 }
-        })
-    ).ContinueWithOnMainThread(task =>
-        citiesRef.Document("TOK").SetAsync(new Dictionary<string, object>(){
-                { "Name", "Tokyo" },
-                { "State", null },
-                { "Country", "Japan" },
-                { "Capital", true },
-                { "Population", 9000000 }
-        })
-    ).ContinueWithOnMainThread(task =>
-        citiesRef.Document("BJ").SetAsync(new Dictionary<string, object>(){
-                { "Name", "Beijing" },
-                { "State", null },
-                { "Country", "China" },
-                { "Capital", true },
-                { "Population", 21500000 }
-        })
-    );
-
-##### C\#
-
-    CollectionReference citiesRef = db.Collection("cities");
-    await citiesRef.Document("SF").SetAsync(new Dictionary<string, object>(){
+```
+CollectionReference citiesRef = db.Collection("cities");
+citiesRef.Document("SF").SetAsync(new Dictionary<string, object>(){
         { "Name", "San Francisco" },
         { "State", "CA" },
         { "Country", "USA" },
         { "Capital", false },
         { "Population", 860000 }
-    });
-    await citiesRef.Document("LA").SetAsync(new Dictionary<string, object>(){
-        { "Name", "Los Angeles" },
-        { "State", "CA" },
-        { "Country", "USA" },
-        { "Capital", false },
-        { "Population", 3900000 }
-    });
-    await citiesRef.Document("DC").SetAsync(new Dictionary<string, object>(){
-        { "Name", "Washington D.C." },
-        { "State", null },
-        { "Country", "USA" },
-        { "Capital", true },
-        { "Population", 680000 }
-    });
-    await citiesRef.Document("TOK").SetAsync(new Dictionary<string, object>(){
-        { "Name", "Tokyo" },
-        { "State", null },
-        { "Country", "Japan" },
-        { "Capital", true },
-        { "Population", 9000000 }
-    });
-    await citiesRef.Document("BJ").SetAsync(new Dictionary<string, object>(){
-        { "Name", "Beijing" },
-        { "State", null },
-        { "Country", "China" },
-        { "Capital", true },
-        { "Population", 21500000 }
-    });
-    Console.WriteLine("Added example cities data to the cities collection.");
+    }).ContinueWithOnMainThread(task =>
+        citiesRef.Document("LA").SetAsync(new Dictionary<string, object>(){
+            { "Name", "Los Angeles" },
+            { "State", "CA" },
+            { "Country", "USA" },
+            { "Capital", false },
+            { "Population", 3900000 }
+        })
+).ContinueWithOnMainThread(task =>
+    citiesRef.Document("DC").SetAsync(new Dictionary<string, object>(){
+            { "Name", "Washington D.C." },
+            { "State", null },
+            { "Country", "USA" },
+            { "Capital", true },
+            { "Population", 680000 }
+    })
+).ContinueWithOnMainThread(task =>
+    citiesRef.Document("TOK").SetAsync(new Dictionary<string, object>(){
+            { "Name", "Tokyo" },
+            { "State", null },
+            { "Country", "Japan" },
+            { "Capital", true },
+            { "Population", 9000000 }
+    })
+).ContinueWithOnMainThread(task =>
+    citiesRef.Document("BJ").SetAsync(new Dictionary<string, object>(){
+            { "Name", "Beijing" },
+            { "State", null },
+            { "Country", "China" },
+            { "Capital", true },
+            { "Population", 21500000 }
+    })
+);
+```
+
+##### C#
+
+```csharp
+CollectionReference citiesRef = db.Collection("cities");
+await citiesRef.Document("SF").SetAsync(new Dictionary<string, object>(){
+    { "Name", "San Francisco" },
+    { "State", "CA" },
+    { "Country", "USA" },
+    { "Capital", false },
+    { "Population", 860000 }
+});
+await citiesRef.Document("LA").SetAsync(new Dictionary<string, object>(){
+    { "Name", "Los Angeles" },
+    { "State", "CA" },
+    { "Country", "USA" },
+    { "Capital", false },
+    { "Population", 3900000 }
+});
+await citiesRef.Document("DC").SetAsync(new Dictionary<string, object>(){
+    { "Name", "Washington D.C." },
+    { "State", null },
+    { "Country", "USA" },
+    { "Capital", true },
+    { "Population", 680000 }
+});
+await citiesRef.Document("TOK").SetAsync(new Dictionary<string, object>(){
+    { "Name", "Tokyo" },
+    { "State", null },
+    { "Country", "Japan" },
+    { "Capital", true },
+    { "Population", 9000000 }
+});
+await citiesRef.Document("BJ").SetAsync(new Dictionary<string, object>(){
+    { "Name", "Beijing" },
+    { "State", null },
+    { "Country", "China" },
+    { "Capital", true },
+    { "Population", 21500000 }
+});
+Console.WriteLine("Added example cities data to the cities collection.");
+```
 
 ##### Ruby
 
-    cities_ref = firestore.col collection_path
-    cities_ref.doc("SF").set(
-      {
-        name:       "San Francisco",
-        state:      "CA",
-        country:    "USA",
-        capital:    false,
-        population: 860_000
-      }
-    )
-    cities_ref.doc("LA").set(
-      {
-        name:       "Los Angeles",
-        state:      "CA",
-        country:    "USA",
-        capital:    false,
-        population: 3_900_000
-      }
-    )
-    cities_ref.doc("DC").set(
-      {
-        name:       "Washington D.C.",
-        state:      nil,
-        country:    "USA",
-        capital:    true,
-        population: 680_000
-      }
-    )
-    cities_ref.doc("TOK").set(
-      {
-        name:       "Tokyo",
-        state:      nil,
-        country:    "Japan",
-        capital:    true,
-        population: 9_000_000
-      }
-    )
-    cities_ref.doc("BJ").set(
-      {
-        name:       "Beijing",
-        state:      nil,
-        country:    "China",
-        capital:    true,
-        population: 21_500_000
-      }
-    )
+```
+cities_ref = firestore.col collection_path
+cities_ref.doc("SF").set(
+  {
+    name:       "San Francisco",
+    state:      "CA",
+    country:    "USA",
+    capital:    false,
+    population: 860_000
+  }
+)
+cities_ref.doc("LA").set(
+  {
+    name:       "Los Angeles",
+    state:      "CA",
+    country:    "USA",
+    capital:    false,
+    population: 3_900_000
+  }
+)
+cities_ref.doc("DC").set(
+  {
+    name:       "Washington D.C.",
+    state:      nil,
+    country:    "USA",
+    capital:    true,
+    population: 680_000
+  }
+)
+cities_ref.doc("TOK").set(
+  {
+    name:       "Tokyo",
+    state:      nil,
+    country:    "Japan",
+    capital:    true,
+    population: 9_000_000
+  }
+)
+cities_ref.doc("BJ").set(
+  {
+    name:       "Beijing",
+    state:      nil,
+    country:    "China",
+    capital:    true,
+    population: 21_500_000
+  }
+)
+```
 
 ## Get a document
 
@@ -969,194 +1042,217 @@ The following example shows how to retrieve the contents of a single document us
 
 ### Web version 9
 
-    import { doc, getDoc } from "firebase/firestore";
-    
-    const docRef = doc(db, "cities", "SF");
-    const docSnap = await getDoc(docRef);
-    
-    if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
-    } else {
-      // docSnap.data() will be undefined in this case
-      console.log("No such document!");
-    }
+```
+import { doc, getDoc } from "firebase/firestore";
+
+const docRef = doc(db, "cities", "SF");
+const docSnap = await getDoc(docRef);
+
+if (docSnap.exists()) {
+  console.log("Document data:", docSnap.data());
+} else {
+  // docSnap.data() will be undefined in this case
+  console.log("No such document!");
+}
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    var docRef = db.collection("cities").doc("SF");
-    
-    docRef.get().then((doc) => {
-        if (doc.exists) {
-            console.log("Document data:", doc.data());
-        } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-        }
-    }).catch((error) => {
-        console.log("Error getting document:", error);
-    });
+```
+var docRef = db.collection("cities").doc("SF");
+
+docRef.get().then((doc) => {
+    if (doc.exists) {
+        console.log("Document data:", doc.data());
+    } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+    }
+}).catch((error) => {
+    console.log("Error getting document:", error);
+});
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    let docRef = db.collection("cities").document("SF")
-    
-    do {
-      let document = try await docRef.getDocument()
-      if document.exists {
-        let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-        print("Document data: \(dataDescription)")
-      } else {
-        print("Document does not exist")
-      }
-    } catch {
-      print("Error getting document: \(error)")
-    }
+```
+let docRef = db.collection("cities").document("SF")
+
+do {
+  let document = try await docRef.getDocument()
+  if document.exists {
+    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+    print("Document data: \(dataDescription)")
+  } else {
+    print("Document does not exist")
+  }
+} catch {
+  print("Error getting document: \(error)")
+}
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    FIRDocumentReference *docRef =
-        [[self.db collectionWithPath:@"cities"] documentWithPath:@"SF"];
-    [docRef getDocumentWithCompletion:^(FIRDocumentSnapshot *snapshot, NSError *error) {
-      if (snapshot.exists) {
-        // Document data may be nil if the document exists but has no keys or values.
-        NSLog(@"Document data: %@", snapshot.data);
-      } else {
-        NSLog(@"Document does not exist");
-      }
-    }];
+```
+FIRDocumentReference *docRef =
+    [[self.db collectionWithPath:@"cities"] documentWithPath:@"SF"];
+[docRef getDocumentWithCompletion:^(FIRDocumentSnapshot *snapshot, NSError *error) {
+  if (snapshot.exists) {
+    // Document data may be nil if the document exists but has no keys or values.
+    NSLog(@"Document data: %@", snapshot.data);
+  } else {
+    NSLog(@"Document does not exist");
+  }
+}];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val docRef = db.collection("cities").document("SF")
-    docRef.get()
-        .addOnSuccessListener { document ->
-            if (document != null) {
-                Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+```
+val docRef = db.collection("cities").document("SF")
+docRef.get()
+    .addOnSuccessListener { document ->
+        if (document != null) {
+            Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+        } else {
+            Log.d(TAG, "No such document")
+        }
+    }
+    .addOnFailureListener { exception ->
+        Log.d(TAG, "get failed with ", exception)
+    }
+```
+
+##### Java Android
+
+```
+DocumentReference docRef = db.collection("cities").document("SF");
+docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+    @Override
+    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+        if (task.isSuccessful()) {
+            DocumentSnapshot document = task.getResult();
+            if (document.exists()) {
+                Log.d(TAG, "DocumentSnapshot data: " + document.getData());
             } else {
-                Log.d(TAG, "No such document")
+                Log.d(TAG, "No such document");
             }
+        } else {
+            Log.d(TAG, "get failed with ", task.getException());
         }
-        .addOnFailureListener { exception ->
-            Log.d(TAG, "get failed with ", exception)
-        }
-
-##### Java  
-Android
-
-    DocumentReference docRef = db.collection("cities").document("SF");
-    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-        @Override
-        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-            if (task.isSuccessful()) {
-                DocumentSnapshot document = task.getResult();
-                if (document.exists()) {
-                    Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                } else {
-                    Log.d(TAG, "No such document");
-                }
-            } else {
-                Log.d(TAG, "get failed with ", task.getException());
-            }
-        }
-    });
+    }
+});
+```
 
 ### Dart
 
-    final docRef = db.collection("cities").doc("SF");
-    docRef.get().then(
-      (DocumentSnapshot doc) {
-        final data = doc.data() as Map<String, dynamic>;
-        // ...
-      },
-      onError: (e) => print("Error getting document: $e"),
-    );
+```
+final docRef = db.collection("cities").doc("SF");
+docRef.get().then(
+  (DocumentSnapshot doc) {
+    final data = doc.data() as Map<String, dynamic>;
+    // ...
+  },
+  onError: (e) => print("Error getting document: $e"),
+);
+```
 
 ##### Java
 
-    DocumentReference docRef = db.collection("cities").document("SF");
-    // asynchronously retrieve the document
-    ApiFuture<DocumentSnapshot> future = docRef.get();
-    // ...
-    // future.get() blocks on response
-    DocumentSnapshot document = future.get();
-    if (document.exists()) {
-      System.out.println("Document data: " + document.getData());
-    } else {
-      System.out.println("No such document!");
-    }
+```
+DocumentReference docRef = db.collection("cities").document("SF");
+// asynchronously retrieve the document
+ApiFuture<DocumentSnapshot> future = docRef.get();
+// ...
+// future.get() blocks on response
+DocumentSnapshot document = future.get();
+if (document.exists()) {
+  System.out.println("Document data: " + document.getData());
+} else {
+  System.out.println("No such document!");
+}
+```
 
 ##### Python
 
-    doc_ref = db.collection("cities").document("SF")
-    
-    doc = doc_ref.get()
-    if doc.exists:
-        print(f"Document data: {doc.to_dict()}")
-    else:
-        print("No such document!")
+```
+doc_ref = db.collection("cities").document("SF")
 
-##### Python  
-(Async)
+doc = doc_ref.get()
+if doc.exists:
+    print(f"Document data: {doc.to_dict()}")
+else:
+    print("No such document!")
+```
 
-    doc_ref = db.collection("cities").document("SF")
-    
-    doc = await doc_ref.get()
-    if doc.exists:
-        print(f"Document data: {doc.to_dict()}")
-    else:
-        print("No such document!")
+##### Python (Async)
+
+```
+doc_ref = db.collection("cities").document("SF")
+
+doc = await doc_ref.get()
+if doc.exists:
+    print(f"Document data: {doc.to_dict()}")
+else:
+    print("No such document!")
+```
 
 ##### C++
 
-    DocumentReference doc_ref = db->Collection("cities").Document("SF");
-    doc_ref.Get().OnCompletion([](const Future<DocumentSnapshot>& future) {
-      if (future.error() == Error::kErrorOk) {
-        const DocumentSnapshot& document = *future.result();
-        if (document.exists()) {
-          std::cout << "DocumentSnapshot id: " << document.id() << std::endl;
-        } else {
-          std::cout << "no such document" << std::endl;
-        }
-      } else {
-        std::cout << "Get failed with: " << future.error_message() << std::endl;
-      }
-    });
+```
+DocumentReference doc_ref = db->Collection("cities").Document("SF");
+doc_ref.Get().OnCompletion([](const Future<DocumentSnapshot>& future) {
+  if (future.error() == Error::kErrorOk) {
+    const DocumentSnapshot& document = *future.result();
+    if (document.exists()) {
+      std::cout << "DocumentSnapshot id: " << document.id() << std::endl;
+    } else {
+      std::cout << "no such document" << std::endl;
+    }
+  } else {
+    std::cout << "Get failed with: " << future.error_message() << std::endl;
+  }
+});
+```
 
 ##### Node.js
 
-    const cityRef = db.collection('cities').doc('SF');
-    const doc = await cityRef.get();
-    if (!doc.exists) {
-      console.log('No such document!');
-    } else {
-      console.log('Document data:', doc.data());
-    }
+```
+const cityRef = db.collection('cities').doc('SF');
+const doc = await cityRef.get();
+if (!doc.exists) {
+  console.log('No such document!');
+} else {
+  console.log('Document data:', doc.data());
+}
+```
 
 ##### Go
 
-    import (
-     "context"
-     "fmt"
-    
-     "cloud.google.com/go/firestore"
-    )
-    
-    func docAsMap(ctx context.Context, client *firestore.Client) (map[string]interface{}, error) {
-     dsnap, err := client.Collection("cities").Doc("SF").Get(ctx)
-     if err != nil {
-         return nil, err
-     }
-     m := dsnap.Data()
-     fmt.Printf("Document data: %#v\n", m)
-     return m, nil
+```
+import (
+    "context"
+    "fmt"
+
+    "cloud.google.com/go/firestore"
+)
+
+func docAsMap(ctx context.Context, client *firestore.Client) (map[string]interface{}, error) {
+    dsnap, err := client.Collection("cities").Doc("SF").Get(ctx)
+    if err != nil {
+        return nil, err
     }
+    m := dsnap.Data()
+    fmt.Printf("Document data: %#v\n", m)
+    return m, nil
+}
+```
 
 ##### PHP
 
@@ -1164,60 +1260,68 @@ Android
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $docRef = $db->collection('samples/php/cities')->document('SF');
-    $snapshot = $docRef->snapshot();
-    
-    if ($snapshot->exists()) {
-        printf('Document data:' . PHP_EOL);
-        print_r($snapshot->data());
-    } else {
-        printf('Document %s does not exist!' . PHP_EOL, $snapshot->id());
-    }
+```php
+$docRef = $db->collection('samples/php/cities')->document('SF');
+$snapshot = $docRef->snapshot();
+
+if ($snapshot->exists()) {
+    printf('Document data:' . PHP_EOL);
+    print_r($snapshot->data());
+} else {
+    printf('Document %s does not exist!' . PHP_EOL, $snapshot->id());
+}
+```
 
 ##### Unity
 
-    DocumentReference docRef = db.Collection("cities").Document("SF");
-    docRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
-    {
-      DocumentSnapshot snapshot = task.Result;
-      if (snapshot.Exists) {
-        Debug.Log(String.Format("Document data for {0} document:", snapshot.Id));
-        Dictionary<string, object> city = snapshot.ToDictionary();
-        foreach (KeyValuePair<string, object> pair in city) {
-          Debug.Log(String.Format("{0}: {1}", pair.Key, pair.Value));
-        }
-      } else {
-        Debug.Log(String.Format("Document {0} does not exist!", snapshot.Id));
-      }
-    });
-
-##### C\#
-
-    DocumentReference docRef = db.Collection("cities").Document("SF");
-    DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
-    if (snapshot.Exists)
-    {
-        Console.WriteLine("Document data for {0} document:", snapshot.Id);
-        Dictionary<string, object> city = snapshot.ToDictionary();
-        foreach (KeyValuePair<string, object> pair in city)
-        {
-            Console.WriteLine("{0}: {1}", pair.Key, pair.Value);
-        }
+```
+DocumentReference docRef = db.Collection("cities").Document("SF");
+docRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
+{
+  DocumentSnapshot snapshot = task.Result;
+  if (snapshot.Exists) {
+    Debug.Log(String.Format("Document data for {0} document:", snapshot.Id));
+    Dictionary<string, object> city = snapshot.ToDictionary();
+    foreach (KeyValuePair<string, object> pair in city) {
+      Debug.Log(String.Format("{0}: {1}", pair.Key, pair.Value));
     }
-    else
+  } else {
+    Debug.Log(String.Format("Document {0} does not exist!", snapshot.Id));
+  }
+});
+```
+
+##### C#
+
+```csharp
+DocumentReference docRef = db.Collection("cities").Document("SF");
+DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
+if (snapshot.Exists)
+{
+    Console.WriteLine("Document data for {0} document:", snapshot.Id);
+    Dictionary<string, object> city = snapshot.ToDictionary();
+    foreach (KeyValuePair<string, object> pair in city)
     {
-        Console.WriteLine("Document {0} does not exist!", snapshot.Id);
+        Console.WriteLine("{0}: {1}", pair.Key, pair.Value);
     }
+}
+else
+{
+    Console.WriteLine("Document {0} does not exist!", snapshot.Id);
+}
+```
 
 ##### Ruby
 
-    doc_ref  = firestore.doc "#{collection_path}/SF"
-    snapshot = doc_ref.get
-    if snapshot.exists?
-      puts "#{snapshot.document_id} data: #{snapshot.data}."
-    else
-      puts "Document #{snapshot.document_id} does not exist!"
-    end
+```
+doc_ref  = firestore.doc "#{collection_path}/SF"
+snapshot = doc_ref.get
+if snapshot.exists?
+  puts "#{snapshot.document_id} data: #{snapshot.data}."
+else
+  puts "Document #{snapshot.document_id} does not exist!"
+end
+```
 
 > **Note:** If there is no document at the location referenced by `docRef` , the resulting `document` will be empty and calling `exists` on it will return `false` .
 
@@ -1231,135 +1335,147 @@ You can specify the `source` option in a `get()` call to change the default beha
 
 ### Web version 9
 
-    import { doc, getDocFromCache } from "firebase/firestore";
-    
-    const docRef = doc(db, "cities", "SF");
-    
-    // Get a document, forcing the SDK to fetch from the offline cache.
-    try {
-      const doc = await getDocFromCache(docRef);
-    
-      // Document was found in the cache. If no cached document exists,
-      // an error will be returned to the 'catch' block below.
-      console.log("Cached document data:", doc.data());
-    } catch (e) {
-      console.log("Error getting cached document:", e);
-    }
+```
+import { doc, getDocFromCache } from "firebase/firestore";
+
+const docRef = doc(db, "cities", "SF");
+
+// Get a document, forcing the SDK to fetch from the offline cache.
+try {
+  const doc = await getDocFromCache(docRef);
+
+  // Document was found in the cache. If no cached document exists,
+  // an error will be returned to the 'catch' block below.
+  console.log("Cached document data:", doc.data());
+} catch (e) {
+  console.log("Error getting cached document:", e);
+}
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    var docRef = db.collection("cities").doc("SF");
-    
-    // Valid options for source are 'server', 'cache', or
-    // 'default'. See https://firebase.google.com/docs/reference/js/v8/firebase.firestore.GetOptions
-    // for more information.
-    var getOptions = {
-        source: 'cache'
-    };
-    
-    // Get a document, forcing the SDK to fetch from the offline cache.
-    docRef.get(getOptions).then((doc) => {
-        // Document was found in the cache. If no cached document exists,
-        // an error will be returned to the 'catch' block below.
-        console.log("Cached document data:", doc.data());
-    }).catch((error) => {
-        console.log("Error getting cached document:", error);
-    });
+```
+var docRef = db.collection("cities").doc("SF");
+
+// Valid options for source are 'server', 'cache', or
+// 'default'. See https://firebase.google.com/docs/reference/js/v8/firebase.firestore.GetOptions
+// for more information.
+var getOptions = {
+    source: 'cache'
+};
+
+// Get a document, forcing the SDK to fetch from the offline cache.
+docRef.get(getOptions).then((doc) => {
+    // Document was found in the cache. If no cached document exists,
+    // an error will be returned to the 'catch' block below.
+    console.log("Cached document data:", doc.data());
+}).catch((error) => {
+    console.log("Error getting cached document:", error);
+});
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    let docRef = db.collection("cities").document("SF")
-    
-    do {
-      // Force the SDK to fetch the document from the cache. Could also specify
-      // FirestoreSource.server or FirestoreSource.default.
-      let document = try await docRef.getDocument(source: .cache)
-      if document.exists {
-        let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-        print("Cached document data: \(dataDescription)")
-      } else {
-        print("Document does not exist in cache")
-      }
-    } catch {
-      print("Error getting document: \(error)")
-    }
+```
+let docRef = db.collection("cities").document("SF")
+
+do {
+  // Force the SDK to fetch the document from the cache. Could also specify
+  // FirestoreSource.server or FirestoreSource.default.
+  let document = try await docRef.getDocument(source: .cache)
+  if document.exists {
+    let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+    print("Cached document data: \(dataDescription)")
+  } else {
+    print("Document does not exist in cache")
+  }
+} catch {
+  print("Error getting document: \(error)")
+}
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    FIRDocumentReference *docRef =
-    [[self.db collectionWithPath:@"cities"] documentWithPath:@"SF"];
-    
-    // Force the SDK to fetch the document from the cache. Could also specify
-    // FIRFirestoreSourceServer or FIRFirestoreSourceDefault.
-    [docRef getDocumentWithSource:FIRFirestoreSourceCache
-                       completion:^(FIRDocumentSnapshot *snapshot, NSError *error) {
-      if (snapshot != NULL) {
-        // The document data was found in the cache.
-        NSLog(@"Cached document data: %@", snapshot.data);
-      } else {
-        // The document data was not found in the cache.
-        NSLog(@"Document does not exist in cache: %@", error);
-      }
-    }];
+```
+FIRDocumentReference *docRef =
+[[self.db collectionWithPath:@"cities"] documentWithPath:@"SF"];
 
-##### Kotlin  
-Android
+// Force the SDK to fetch the document from the cache. Could also specify
+// FIRFirestoreSourceServer or FIRFirestoreSourceDefault.
+[docRef getDocumentWithSource:FIRFirestoreSourceCache
+                   completion:^(FIRDocumentSnapshot *snapshot, NSError *error) {
+  if (snapshot != NULL) {
+    // The document data was found in the cache.
+    NSLog(@"Cached document data: %@", snapshot.data);
+  } else {
+    // The document data was not found in the cache.
+    NSLog(@"Document does not exist in cache: %@", error);
+  }
+}];
+```
 
-    val docRef = db.collection("cities").document("SF")
-    
-    // Source can be CACHE, SERVER, or DEFAULT.
-    val source = Source.CACHE
-    
-    // Get the document, forcing the SDK to use the offline cache
-    docRef.get(source).addOnCompleteListener { task ->
-        if (task.isSuccessful) {
+##### Kotlin Android
+
+```
+val docRef = db.collection("cities").document("SF")
+
+// Source can be CACHE, SERVER, or DEFAULT.
+val source = Source.CACHE
+
+// Get the document, forcing the SDK to use the offline cache
+docRef.get(source).addOnCompleteListener { task ->
+    if (task.isSuccessful) {
+        // Document found in the offline cache
+        val document = task.result
+        Log.d(TAG, "Cached document data: ${document?.data}")
+    } else {
+        Log.d(TAG, "Cached get failed: ", task.exception)
+    }
+}
+```
+
+##### Java Android
+
+```
+DocumentReference docRef = db.collection("cities").document("SF");
+
+// Source can be CACHE, SERVER, or DEFAULT.
+Source source = Source.CACHE;
+
+// Get the document, forcing the SDK to use the offline cache
+docRef.get(source).addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+    @Override
+    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+        if (task.isSuccessful()) {
             // Document found in the offline cache
-            val document = task.result
-            Log.d(TAG, "Cached document data: ${document?.data}")
+            DocumentSnapshot document = task.getResult();
+            Log.d(TAG, "Cached document data: " + document.getData());
         } else {
-            Log.d(TAG, "Cached get failed: ", task.exception)
+            Log.d(TAG, "Cached get failed: ", task.getException());
         }
     }
-
-##### Java  
-Android
-
-    DocumentReference docRef = db.collection("cities").document("SF");
-    
-    // Source can be CACHE, SERVER, or DEFAULT.
-    Source source = Source.CACHE;
-    
-    // Get the document, forcing the SDK to use the offline cache
-    docRef.get(source).addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-        @Override
-        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-            if (task.isSuccessful()) {
-                // Document found in the offline cache
-                DocumentSnapshot document = task.getResult();
-                Log.d(TAG, "Cached document data: " + document.getData());
-            } else {
-                Log.d(TAG, "Cached get failed: ", task.getException());
-            }
-        }
-    });
+});
+```
 
 ### Dart
 
-    final docRef = db.collection("cities").doc("SF");
-    
-    // Source can be CACHE, SERVER, or DEFAULT.
-    const source = Source.cache;
-    
-    docRef.get(const GetOptions(source: source)).then(
-          (res) => print("Successfully completed"),
-          onError: (e) => print("Error completing: $e"),
-        );
+```
+final docRef = db.collection("cities").doc("SF");
+
+// Source can be CACHE, SERVER, or DEFAULT.
+const source = Source.cache;
+
+docRef.get(const GetOptions(source: source)).then(
+      (res) => print("Successfully completed"),
+      onError: (e) => print("Error completing: $e"),
+    );
+```
 
 ##### Java
 
@@ -1371,19 +1487,21 @@ Not supported in the Python SDK.
 
 ##### C++
 
-    DocumentReference doc_ref = db->Collection("cities").Document("SF");
-    Source source = Source::kCache;
-    doc_ref.Get(source).OnCompletion([](const Future<DocumentSnapshot>& future) {
-      if (future.error() == Error::kErrorOk) {
-        const DocumentSnapshot& document = *future.result();
-        if (document.exists()) {
-          std::cout << "Cached document id: " << document.id() << std::endl;
-        } else {
-        }
-      } else {
-        std::cout << "Cached get failed: " << future.error_message() << std::endl;
-      }
-    });
+```
+DocumentReference doc_ref = db->Collection("cities").Document("SF");
+Source source = Source::kCache;
+doc_ref.Get(source).OnCompletion([](const Future<DocumentSnapshot>& future) {
+  if (future.error() == Error::kErrorOk) {
+    const DocumentSnapshot& document = *future.result();
+    if (document.exists()) {
+      std::cout << "Cached document id: " << document.id() << std::endl;
+    } else {
+    }
+  } else {
+    std::cout << "Cached get failed: " << future.error_message() << std::endl;
+  }
+});
+```
 
 ##### Node.js
 
@@ -1401,9 +1519,9 @@ Not supported in the PHP SDK.
 
 Not supported in the Unity SDK.
 
-##### C\#
+##### C#
 
-Not supported in the C\# SDK.
+Not supported in the C# SDK.
 
 ##### Ruby
 
@@ -1419,31 +1537,33 @@ To use custom objects, you must define a [FirestoreDataConverter](https://fireba
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
-    class City {
-        constructor (name, state, country ) {
-            this.name = name;
-            this.state = state;
-            this.country = country;
-        }
-        toString() {
-            return this.name + ', ' + this.state + ', ' + this.country;
-        }
+```
+class City {
+    constructor (name, state, country ) {
+        this.name = name;
+        this.state = state;
+        this.country = country;
     }
-    
-    // Firestore data converter
-    const cityConverter = {
-        toFirestore: (city) => {
-            return {
-                name: city.name,
-                state: city.state,
-                country: city.country
-                };
-        },
-        fromFirestore: (snapshot, options) => {
-            const data = snapshot.data(options);
-            return new City(data.name, data.state, data.country);
-        }
-    };
+    toString() {
+        return this.name + ', ' + this.state + ', ' + this.country;
+    }
+}
+
+// Firestore data converter
+const cityConverter = {
+    toFirestore: (city) => {
+        return {
+            name: city.name,
+            state: city.state,
+            country: city.country
+            };
+    },
+    fromFirestore: (snapshot, options) => {
+        const data = snapshot.data(options);
+        return new City(data.name, data.state, data.country);
+    }
+};
+```
 
 To use custom objects, you must define a [FirestoreDataConverter](https://firebase.google.com/docs/reference/js/v8/firebase.firestore.FirestoreDataConverter) function for your class. For example:
 
@@ -1451,31 +1571,33 @@ To use custom objects, you must define a [FirestoreDataConverter](https://fireba
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
-    class City {
-        constructor (name, state, country ) {
-            this.name = name;
-            this.state = state;
-            this.country = country;
-        }
-        toString() {
-            return this.name + ', ' + this.state + ', ' + this.country;
-        }
+```
+class City {
+    constructor (name, state, country ) {
+        this.name = name;
+        this.state = state;
+        this.country = country;
     }
-    
-    // Firestore data converter
-    var cityConverter = {
-        toFirestore: function(city) {
-            return {
-                name: city.name,
-                state: city.state,
-                country: city.country
-                };
-        },
-        fromFirestore: function(snapshot, options){
-            const data = snapshot.data(options);
-            return new City(data.name, data.state, data.country);
-        }
-    };
+    toString() {
+        return this.name + ', ' + this.state + ', ' + this.country;
+    }
+}
+
+// Firestore data converter
+var cityConverter = {
+    toFirestore: function(city) {
+        return {
+            name: city.name,
+            state: city.state,
+            country: city.country
+            };
+    },
+    fromFirestore: function(snapshot, options){
+        const data = snapshot.data(options);
+        return new City(data.name, data.state, data.country);
+    }
+};
+```
 
 Call your data converter with your read operations. After conversion, you can access custom object methods:
 
@@ -1483,18 +1605,20 @@ Call your data converter with your read operations. After conversion, you can ac
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
-    import { doc, getDoc} from "firebase/firestore"; 
-    
-    const ref = doc(db, "cities", "LA").withConverter(cityConverter);
-    const docSnap = await getDoc(ref);
-    if (docSnap.exists()) {
-      // Convert to City object
-      const city = docSnap.data();
-      // Use a City instance method
-      console.log(city.toString());
-    } else {
-      console.log("No such document!");
-    }
+```
+import { doc, getDoc} from "firebase/firestore"; 
+
+const ref = doc(db, "cities", "LA").withConverter(cityConverter);
+const docSnap = await getDoc(ref);
+if (docSnap.exists()) {
+  // Convert to City object
+  const city = docSnap.data();
+  // Use a City instance method
+  console.log(city.toString());
+} else {
+  console.log("No such document!");
+}
+```
 
 Call your data converter with your read operations. After conversion, you can access custom object methods:
 
@@ -1502,19 +1626,21 @@ Call your data converter with your read operations. After conversion, you can ac
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
-    db.collection("cities").doc("LA")
-      .withConverter(cityConverter)
-      .get().then((doc) => {
-        if (doc.exists){
-          // Convert to City object
-          var city = doc.data();
-          // Use a City instance method
-          console.log(city.toString());
-        } else {
-          console.log("No such document!");
-        }}).catch((error) => {
-          console.log("Error getting document:", error);
-        });
+```
+db.collection("cities").doc("LA")
+  .withConverter(cityConverter)
+  .get().then((doc) => {
+    if (doc.exists){
+      // Convert to City object
+      var city = doc.data();
+      // Use a City instance method
+      console.log(city.toString());
+    } else {
+      console.log("No such document!");
+    }}).catch((error) => {
+      console.log("Error getting document:", error);
+    });
+```
 
 ##### Swift
 
@@ -1522,14 +1648,16 @@ Call your data converter with your read operations. After conversion, you can ac
 
 To support automatic type serialization in Swift, your type must conform to the [Codable protocol](https://developer.apple.com/documentation/swift/codable) .
 
-    let docRef = db.collection("cities").document("BJ")
-    
-    do {
-      let city = try await docRef.getDocument(as: City.self)
-      print("City: \(city)")
-    } catch {
-      print("Error decoding city: \(error)")
-    }
+```
+let docRef = db.collection("cities").document("BJ")
+
+do {
+  let city = try await docRef.getDocument(as: City.self)
+  print("City: \(city)")
+} catch {
+  print("Error decoding city: \(error)")
+}
+```
 
 ##### Objective-C
 
@@ -1537,139 +1665,154 @@ To support automatic type serialization in Swift, your type must conform to the 
 
 In Objective-C you must do this manually.
 
-    FIRDocumentReference *docRef =
-    [[self.db collectionWithPath:@"cities"] documentWithPath:@"BJ"];
-    [docRef getDocumentWithCompletion:^(FIRDocumentSnapshot *snapshot, NSError *error) {
-      FSTCity *city = [[FSTCity alloc] initWithDictionary:snapshot.data];
-      if (city != nil) {
-        NSLog(@"City: %@", city);
-      } else {
-        NSLog(@"Document does not exist");
-      }
-    }];
+```
+FIRDocumentReference *docRef =
+[[self.db collectionWithPath:@"cities"] documentWithPath:@"BJ"];
+[docRef getDocumentWithCompletion:^(FIRDocumentSnapshot *snapshot, NSError *error) {
+  FSTCity *city = [[FSTCity alloc] initWithDictionary:snapshot.data];
+  if (city != nil) {
+    NSLog(@"City: %@", city);
+  } else {
+    NSLog(@"Document does not exist");
+  }
+}];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val docRef = db.collection("cities").document("BJ")
-    docRef.get().addOnSuccessListener { documentSnapshot ->
-        val city = documentSnapshot.toObject<City>()
-    }
+```
+val docRef = db.collection("cities").document("BJ")
+docRef.get().addOnSuccessListener { documentSnapshot ->
+    val city = documentSnapshot.toObject<City>()
+}
+```
 
-##### Java  
-Android
+##### Java Android
 
 Important: Each custom class must have a public constructor that takes no arguments. In addition, the class must include a public getter for each property.
 
-    DocumentReference docRef = db.collection("cities").document("BJ");
-    docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-        @Override
-        public void onSuccess(DocumentSnapshot documentSnapshot) {
-            City city = documentSnapshot.toObject(City.class);
-        }
-    });
+```
+DocumentReference docRef = db.collection("cities").document("BJ");
+docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+    @Override
+    public void onSuccess(DocumentSnapshot documentSnapshot) {
+        City city = documentSnapshot.toObject(City.class);
+    }
+});
+```
 
 ### Dart
 
 To use custom objects, you must define Firestore data conversion functions for your class. For example:
 
-    class City {
-      final String? name;
-      final String? state;
-      final String? country;
-      final bool? capital;
-      final int? population;
-      final List<String>? regions;
-    
-      City({
-        this.name,
-        this.state,
-        this.country,
-        this.capital,
-        this.population,
-        this.regions,
-      });
-    
-      factory City.fromFirestore(
-        DocumentSnapshot<Map<String, dynamic>> snapshot,
-        SnapshotOptions? options,
-      ) {
-        final data = snapshot.data();
-        return City(
-          name: data?['name'],
-          state: data?['state'],
-          country: data?['country'],
-          capital: data?['capital'],
-          population: data?['population'],
-          regions:
-              data?['regions'] is Iterable ? List.from(data?['regions']) : null,
-        );
-      }
-    
-      Map<String, dynamic> toFirestore() {
-        return {
-          if (name != null) "name": name,
-          if (state != null) "state": state,
-          if (country != null) "country": country,
-          if (capital != null) "capital": capital,
-          if (population != null) "population": population,
-          if (regions != null) "regions": regions,
-        };
-      }
-    }
+```
+class City {
+  final String? name;
+  final String? state;
+  final String? country;
+  final bool? capital;
+  final int? population;
+  final List<String>? regions;
+
+  City({
+    this.name,
+    this.state,
+    this.country,
+    this.capital,
+    this.population,
+    this.regions,
+  });
+
+  factory City.fromFirestore(
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+    SnapshotOptions? options,
+  ) {
+    final data = snapshot.data();
+    return City(
+      name: data?['name'],
+      state: data?['state'],
+      country: data?['country'],
+      capital: data?['capital'],
+      population: data?['population'],
+      regions:
+          data?['regions'] is Iterable ? List.from(data?['regions']) : null,
+    );
+  }
+
+  Map<String, dynamic> toFirestore() {
+    return {
+      if (name != null) "name": name,
+      if (state != null) "state": state,
+      if (country != null) "country": country,
+      if (capital != null) "capital": capital,
+      if (population != null) "population": population,
+      if (regions != null) "regions": regions,
+    };
+  }
+}
+```
 
 Then, create a document reference with your data conversion functions. Any read operations you perform using this reference will return instances of your custom class:
 
-    final ref = db.collection("cities").doc("LA").withConverter(
-          fromFirestore: City.fromFirestore,
-          toFirestore: (City city, _) => city.toFirestore(),
-        );
-    final docSnap = await ref.get();
-    final city = docSnap.data(); // Convert to City object
-    if (city != null) {
-      print(city);
-    } else {
-      print("No such document.");
-    }
+```
+final ref = db.collection("cities").doc("LA").withConverter(
+      fromFirestore: City.fromFirestore,
+      toFirestore: (City city, _) => city.toFirestore(),
+    );
+final docSnap = await ref.get();
+final city = docSnap.data(); // Convert to City object
+if (city != null) {
+  print(city);
+} else {
+  print("No such document.");
+}
+```
 
 ##### Java
 
 Each custom class must have a public constructor that takes no arguments. In addition, the class must include a public getter for each property.
 
-    DocumentReference docRef = db.collection("cities").document("BJ");
-    // asynchronously retrieve the document
-    ApiFuture<DocumentSnapshot> future = docRef.get();
-    // block on response
-    DocumentSnapshot document = future.get();
-    City city = null;
-    if (document.exists()) {
-      // convert document to POJO
-      city = document.toObject(City.class);
-      System.out.println(city);
-    } else {
-      System.out.println("No such document!");
-    }
+```
+DocumentReference docRef = db.collection("cities").document("BJ");
+// asynchronously retrieve the document
+ApiFuture<DocumentSnapshot> future = docRef.get();
+// block on response
+DocumentSnapshot document = future.get();
+City city = null;
+if (document.exists()) {
+  // convert document to POJO
+  city = document.toObject(City.class);
+  System.out.println(city);
+} else {
+  System.out.println("No such document!");
+}
+```
 
 ##### Python
 
-    doc_ref = db.collection("cities").document("BJ")
-    
-    doc = doc_ref.get()
-    city = City.from_dict(doc.to_dict())
-    print(city)
+```
+doc_ref = db.collection("cities").document("BJ")
 
-##### Python  
-(Async)
+doc = doc_ref.get()
+city = City.from_dict(doc.to_dict())
+print(city)
+```
 
-    doc_ref = db.collection("cities").document("BJ")
-    
-    doc = await doc_ref.get()
-    city = City.from_dict(doc.to_dict())
-    print(city)
+##### Python (Async)
+
+```
+doc_ref = db.collection("cities").document("BJ")
+
+doc = await doc_ref.get()
+city = City.from_dict(doc.to_dict())
+print(city)
+```
 
 ##### C++
 
-    // This is not yet supported.
+```
+// This is not yet supported.
+```
 
 ##### Node.js
 
@@ -1677,23 +1820,25 @@ Node.js uses JavaScript objects.
 
 ##### Go
 
-    import (
-     "context"
-     "fmt"
-    
-     "cloud.google.com/go/firestore"
-    )
-    
-    func docAsEntity(ctx context.Context, client *firestore.Client) (*City, error) {
-     dsnap, err := client.Collection("cities").Doc("BJ").Get(ctx)
-     if err != nil {
-         return nil, err
-     }
-     var c City
-     dsnap.DataTo(&c)
-     fmt.Printf("Document data: %#v\n", c)
-     return &c, nil
+```
+import (
+    "context"
+    "fmt"
+
+    "cloud.google.com/go/firestore"
+)
+
+func docAsEntity(ctx context.Context, client *firestore.Client) (*City, error) {
+    dsnap, err := client.Collection("cities").Doc("BJ").Get(ctx)
+    if err != nil {
+        return nil, err
     }
+    var c City
+    dsnap.DataTo(&c)
+    fmt.Printf("Document data: %#v\n", c)
+    return &c, nil
+}
+```
 
 ##### PHP
 
@@ -1701,58 +1846,64 @@ Node.js uses JavaScript objects.
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $docRef = $db->collection('samples/php/cities')->document('SF');
-    $snapshot = $docRef->snapshot();
-    $city = City::fromArray($snapshot->data());
-    
-    if ($snapshot->exists()) {
-        printf('Document data:' . PHP_EOL);
-        print((string) $city);
-    } else {
-        printf('Document %s does not exist!' . PHP_EOL, $snapshot->id());
-    }
+```php
+$docRef = $db->collection('samples/php/cities')->document('SF');
+$snapshot = $docRef->snapshot();
+$city = City::fromArray($snapshot->data());
+
+if ($snapshot->exists()) {
+    printf('Document data:' . PHP_EOL);
+    print((string) $city);
+} else {
+    printf('Document %s does not exist!' . PHP_EOL, $snapshot->id());
+}
+```
 
 ##### Unity
 
-    DocumentReference docRef = db.Collection("cities").Document("BJ");
-    
-    docRef.GetSnapshotAsync().ContinueWith((task) =>
-    {
-      var snapshot = task.Result;
-      if (snapshot.Exists)
-      {
-        Debug.Log(String.Format("Document data for {0} document:", snapshot.Id));
-        City city = snapshot.ConvertTo<City>();
-        Debug.Log(String.Format("Name: {0}", city.Name));
-        Debug.Log(String.Format("State: {0}", city.State));
-        Debug.Log(String.Format("Country: {0}", city.Country));
-        Debug.Log(String.Format("Capital: {0}", city.Capital));
-        Debug.Log(String.Format("Population: {0}", city.Population));
-      }
-      else
-      {
-        Debug.Log(String.Format("Document {0} does not exist!", snapshot.Id));
-      }
-    });
+```
+DocumentReference docRef = db.Collection("cities").Document("BJ");
 
-##### C\#
+docRef.GetSnapshotAsync().ContinueWith((task) =>
+{
+  var snapshot = task.Result;
+  if (snapshot.Exists)
+  {
+    Debug.Log(String.Format("Document data for {0} document:", snapshot.Id));
+    City city = snapshot.ConvertTo<City>();
+    Debug.Log(String.Format("Name: {0}", city.Name));
+    Debug.Log(String.Format("State: {0}", city.State));
+    Debug.Log(String.Format("Country: {0}", city.Country));
+    Debug.Log(String.Format("Capital: {0}", city.Capital));
+    Debug.Log(String.Format("Population: {0}", city.Population));
+  }
+  else
+  {
+    Debug.Log(String.Format("Document {0} does not exist!", snapshot.Id));
+  }
+});
+```
 
-    DocumentReference docRef = db.Collection("cities").Document("BJ");
-    DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
-    if (snapshot.Exists)
-    {
-        Console.WriteLine("Document data for {0} document:", snapshot.Id);
-        City city = snapshot.ConvertTo<City>();
-        Console.WriteLine("Name: {0}", city.Name);
-        Console.WriteLine("State: {0}", city.State);
-        Console.WriteLine("Country: {0}", city.Country);
-        Console.WriteLine("Capital: {0}", city.Capital);
-        Console.WriteLine("Population: {0}", city.Population);
-    }
-    else
-    {
-        Console.WriteLine("Document {0} does not exist!", snapshot.Id);
-    }
+##### C#
+
+```csharp
+DocumentReference docRef = db.Collection("cities").Document("BJ");
+DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
+if (snapshot.Exists)
+{
+    Console.WriteLine("Document data for {0} document:", snapshot.Id);
+    City city = snapshot.ConvertTo<City>();
+    Console.WriteLine("Name: {0}", city.Name);
+    Console.WriteLine("State: {0}", city.State);
+    Console.WriteLine("Country: {0}", city.Country);
+    Console.WriteLine("Capital: {0}", city.Capital);
+    Console.WriteLine("Population: {0}", city.Population);
+}
+else
+{
+    Console.WriteLine("Document {0} does not exist!", snapshot.Id);
+}
+```
 
 ##### Ruby
 
@@ -1764,197 +1915,220 @@ You can also retrieve multiple documents with one request by querying documents 
 
 ### Web version 9
 
-    import { collection, query, where, getDocs } from "firebase/firestore";
-    
-    const q = query(collection(db, "cities"), where("capital", "==", true));
-    
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
-    });
+```
+import { collection, query, where, getDocs } from "firebase/firestore";
+
+const q = query(collection(db, "cities"), where("capital", "==", true));
+
+const querySnapshot = await getDocs(q);
+querySnapshot.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+  console.log(doc.id, " => ", doc.data());
+});
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    db.collection("cities").where("capital", "==", true)
-        .get()
-        .then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                // doc.data() is never undefined for query doc snapshots
-                console.log(doc.id, " => ", doc.data());
-            });
-        })
-        .catch((error) => {
-            console.log("Error getting documents: ", error);
+```
+db.collection("cities").where("capital", "==", true)
+    .get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
         });
+    })
+    .catch((error) => {
+        console.log("Error getting documents: ", error);
+    });
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    do {
-      let querySnapshot = try await db.collection("cities").whereField("capital", isEqualTo: true)
-        .getDocuments()
-      for document in querySnapshot.documents {
-        print("\(document.documentID) => \(document.data())")
-      }
-    } catch {
-      print("Error getting documents: \(error)")
-    }
+```
+do {
+  let querySnapshot = try await db.collection("cities").whereField("capital", isEqualTo: true)
+    .getDocuments()
+  for document in querySnapshot.documents {
+    print("\(document.documentID) => \(document.data())")
+  }
+} catch {
+  print("Error getting documents: \(error)")
+}
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    [[[self.db collectionWithPath:@"cities"] queryWhereField:@"capital" isEqualTo:@(YES)]
-        getDocumentsWithCompletion:^(FIRQuerySnapshot *snapshot, NSError *error) {
-          if (error != nil) {
-            NSLog(@"Error getting documents: %@", error);
-          } else {
-            for (FIRDocumentSnapshot *document in snapshot.documents) {
-              NSLog(@"%@ => %@", document.documentID, document.data);
-            }
-          }
-        }];
+```
+[[[self.db collectionWithPath:@"cities"] queryWhereField:@"capital" isEqualTo:@(YES)]
+    getDocumentsWithCompletion:^(FIRQuerySnapshot *snapshot, NSError *error) {
+      if (error != nil) {
+        NSLog(@"Error getting documents: %@", error);
+      } else {
+        for (FIRDocumentSnapshot *document in snapshot.documents) {
+          NSLog(@"%@ => %@", document.documentID, document.data);
+        }
+      }
+    }];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    db.collection("cities")
+```
+db.collection("cities")
+    .whereEqualTo("capital", true)
+    .get()
+    .addOnSuccessListener { documents ->
+        for (document in documents) {
+            Log.d(TAG, "${document.id} => ${document.data}")
+        }
+    }
+    .addOnFailureListener { exception ->
+        Log.w(TAG, "Error getting documents: ", exception)
+    }
+```
+
+##### Java Android
+
+```
+db.collection("cities")
         .whereEqualTo("capital", true)
         .get()
-        .addOnSuccessListener { documents ->
-            for (document in documents) {
-                Log.d(TAG, "${document.id} => ${document.data}")
-            }
-        }
-        .addOnFailureListener { exception ->
-            Log.w(TAG, "Error getting documents: ", exception)
-        }
-
-##### Java  
-Android
-
-    db.collection("cities")
-            .whereEqualTo("capital", true)
-            .get()
-            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.isSuccessful()) {
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            Log.d(TAG, document.getId() + " => " + document.getData());
-                        }
-                    } else {
-                        Log.d(TAG, "Error getting documents: ", task.getException());
+        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Log.d(TAG, document.getId() + " => " + document.getData());
                     }
+                } else {
+                    Log.d(TAG, "Error getting documents: ", task.getException());
                 }
-            });
+            }
+        });
+```
 
 ### Dart
 
-    db.collection("cities").where("capital", isEqualTo: true).get().then(
-      (querySnapshot) {
-        print("Successfully completed");
-        for (var docSnapshot in querySnapshot.docs) {
-          print('${docSnapshot.id} => ${docSnapshot.data()}');
-        }
-      },
-      onError: (e) => print("Error completing: $e"),
-    );
+```
+db.collection("cities").where("capital", isEqualTo: true).get().then(
+  (querySnapshot) {
+    print("Successfully completed");
+    for (var docSnapshot in querySnapshot.docs) {
+      print('${docSnapshot.id} => ${docSnapshot.data()}');
+    }
+  },
+  onError: (e) => print("Error completing: $e"),
+);
+```
 
 ##### Java
 
-    // asynchronously retrieve multiple documents
-    ApiFuture<QuerySnapshot> future = db.collection("cities").whereEqualTo("capital", true).get();
-    // future.get() blocks on response
-    List<QueryDocumentSnapshot> documents = future.get().getDocuments();
-    for (DocumentSnapshot document : documents) {
-      System.out.println(document.getId() + " => " + document.toObject(City.class));
-    }
+```
+// asynchronously retrieve multiple documents
+ApiFuture<QuerySnapshot> future = db.collection("cities").whereEqualTo("capital", true).get();
+// future.get() blocks on response
+List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+for (DocumentSnapshot document : documents) {
+  System.out.println(document.getId() + " => " + document.toObject(City.class));
+}
+```
 
 ##### Python
 
-    # Note: Use of CollectionRef stream() is prefered to get()
-    docs = (
-        db.collection("cities")
-        .where(filter=FieldFilter("capital", "==", True))
-        .stream()
-    )
-    
-    for doc in docs:
-        print(f"{doc.id} => {doc.to_dict()}")
+```
+# Note: Use of CollectionRef stream() is prefered to get()
+docs = (
+    db.collection("cities")
+    .where(filter=FieldFilter("capital", "==", True))
+    .stream()
+)
 
-##### Python  
-(Async)
+for doc in docs:
+    print(f"{doc.id} => {doc.to_dict()}")
+```
 
-    # Note: Use of CollectionRef stream() is prefered to get()
-    docs = (
-        db.collection("cities")
-        .where(filter=FieldFilter("capital", "==", True))
-        .stream()
-    )
-    
-    async for doc in docs:
-        print(f"{doc.id} => {doc.to_dict()}")
+##### Python (Async)
+
+```
+# Note: Use of CollectionRef stream() is prefered to get()
+docs = (
+    db.collection("cities")
+    .where(filter=FieldFilter("capital", "==", True))
+    .stream()
+)
+
+async for doc in docs:
+    print(f"{doc.id} => {doc.to_dict()}")
+```
 
 ##### C++
 
-    db->Collection("cities")
-        .WhereEqualTo("capital", FieldValue::Boolean(true))
-        .Get()
-        .OnCompletion([](const Future<QuerySnapshot>& future) {
-          if (future.error() == Error::kErrorOk) {
-            for (const DocumentSnapshot& document :
-                 future.result()->documents()) {
-              std::cout << document << std::endl;
-            }
-          } else {
-            std::cout << "Error getting documents: " << future.error_message()
-                      << std::endl;
-          }
-        });
+```
+db->Collection("cities")
+    .WhereEqualTo("capital", FieldValue::Boolean(true))
+    .Get()
+    .OnCompletion([](const Future<QuerySnapshot>& future) {
+      if (future.error() == Error::kErrorOk) {
+        for (const DocumentSnapshot& document :
+             future.result()->documents()) {
+          std::cout << document << std::endl;
+        }
+      } else {
+        std::cout << "Error getting documents: " << future.error_message()
+                  << std::endl;
+      }
+    });
+```
 
 ##### Node.js
 
-    const citiesRef = db.collection('cities');
-    const snapshot = await citiesRef.where('capital', '==', true).get();
-    if (snapshot.empty) {
-      console.log('No matching documents.');
-      return;
-    }  
-    
-    snapshot.forEach(doc => {
-      console.log(doc.id, '=>', doc.data());
-    });
+```
+const citiesRef = db.collection('cities');
+const snapshot = await citiesRef.where('capital', '==', true).get();
+if (snapshot.empty) {
+  console.log('No matching documents.');
+  return;
+}  
+
+snapshot.forEach(doc => {
+  console.log(doc.id, '=>', doc.data());
+});
+```
 
 ##### Go
 
-    import (
-     "context"
-     "fmt"
-    
-     "cloud.google.com/go/firestore"
-     "google.golang.org/api/iterator"
-    )
-    
-    func multipleDocs(ctx context.Context, client *firestore.Client) error {
-     fmt.Println("All capital cities:")
-     iter := client.Collection("cities").Where("capital", "==", true).Documents(ctx)
-     for {
-         doc, err := iter.Next()
-         if err == iterator.Done {
-             break
-         }
-         if err != nil {
-             return err
-         }
-         fmt.Println(doc.Data())
-     }
-     return nil
+```
+import (
+    "context"
+    "fmt"
+
+    "cloud.google.com/go/firestore"
+    "google.golang.org/api/iterator"
+)
+
+func multipleDocs(ctx context.Context, client *firestore.Client) error {
+    fmt.Println("All capital cities:")
+    iter := client.Collection("cities").Where("capital", "==", true).Documents(ctx)
+    for {
+        doc, err := iter.Next()
+        if err == iterator.Done {
+            break
+        }
+        if err != nil {
+            return err
+        }
+        fmt.Println(doc.Data())
     }
+    return nil
+}
+```
 
 ##### PHP
 
@@ -1962,60 +2136,68 @@ Android
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $citiesRef = $db->collection('samples/php/cities');
-    $query = $citiesRef->where('capital', '=', true);
-    $documents = $query->documents();
-    foreach ($documents as $document) {
-        if ($document->exists()) {
-            printf('Document data for document %s:' . PHP_EOL, $document->id());
-            print_r($document->data());
-            printf(PHP_EOL);
-        } else {
-            printf('Document %s does not exist!' . PHP_EOL, $document->id());
-        }
+```php
+$citiesRef = $db->collection('samples/php/cities');
+$query = $citiesRef->where('capital', '=', true);
+$documents = $query->documents();
+foreach ($documents as $document) {
+    if ($document->exists()) {
+        printf('Document data for document %s:' . PHP_EOL, $document->id());
+        print_r($document->data());
+        printf(PHP_EOL);
+    } else {
+        printf('Document %s does not exist!' . PHP_EOL, $document->id());
     }
+}
+```
 
 ##### Unity
 
-    Query capitalQuery = db.Collection("cities").WhereEqualTo("Capital", true);
-    capitalQuery.GetSnapshotAsync().ContinueWithOnMainThread(task => {
-      QuerySnapshot capitalQuerySnapshot = task.Result;
-      foreach (DocumentSnapshot documentSnapshot in capitalQuerySnapshot.Documents) {
-        Debug.Log(String.Format("Document data for {0} document:", documentSnapshot.Id));
-        Dictionary<string, object> city = documentSnapshot.ToDictionary();
-        foreach (KeyValuePair<string, object> pair in city) {
-          Debug.Log(String.Format("{0}: {1}", pair.Key, pair.Value));
-        }
-    
-        // Newline to separate entries
-        Debug.Log("");
-      };
-    });
-
-##### C\#
-
-    Query capitalQuery = db.Collection("cities").WhereEqualTo("Capital", true);
-    QuerySnapshot capitalQuerySnapshot = await capitalQuery.GetSnapshotAsync();
-    foreach (DocumentSnapshot documentSnapshot in capitalQuerySnapshot.Documents)
-    {
-        Console.WriteLine("Document data for {0} document:", documentSnapshot.Id);
-        Dictionary<string, object> city = documentSnapshot.ToDictionary();
-        foreach (KeyValuePair<string, object> pair in city)
-        {
-            Console.WriteLine("{0}: {1}", pair.Key, pair.Value);
-        }
-        Console.WriteLine("");
+```
+Query capitalQuery = db.Collection("cities").WhereEqualTo("Capital", true);
+capitalQuery.GetSnapshotAsync().ContinueWithOnMainThread(task => {
+  QuerySnapshot capitalQuerySnapshot = task.Result;
+  foreach (DocumentSnapshot documentSnapshot in capitalQuerySnapshot.Documents) {
+    Debug.Log(String.Format("Document data for {0} document:", documentSnapshot.Id));
+    Dictionary<string, object> city = documentSnapshot.ToDictionary();
+    foreach (KeyValuePair<string, object> pair in city) {
+      Debug.Log(String.Format("{0}: {1}", pair.Key, pair.Value));
     }
+
+    // Newline to separate entries
+    Debug.Log("");
+  };
+});
+```
+
+##### C#
+
+```csharp
+Query capitalQuery = db.Collection("cities").WhereEqualTo("Capital", true);
+QuerySnapshot capitalQuerySnapshot = await capitalQuery.GetSnapshotAsync();
+foreach (DocumentSnapshot documentSnapshot in capitalQuerySnapshot.Documents)
+{
+    Console.WriteLine("Document data for {0} document:", documentSnapshot.Id);
+    Dictionary<string, object> city = documentSnapshot.ToDictionary();
+    foreach (KeyValuePair<string, object> pair in city)
+    {
+        Console.WriteLine("{0}: {1}", pair.Key, pair.Value);
+    }
+    Console.WriteLine("");
+}
+```
 
 ##### Ruby
 
-    cities_ref = firestore.col collection_path
-    
-    query = cities_ref.where "capital", "=", true
-    
-    query.get do |city|
-      puts "#{city.document_id} data: #{city.data}."
-    end
+```
+cities_ref = firestore.col collection_path
+
+query = cities_ref.where "capital", "=", true
+
+query.get do |city|
+  puts "#{city.document_id} data: #{city.data}."
+end
+```
 
 By default, Firestore retrieves all documents that satisfy the query in ascending order by document ID, but you can [order and limit the data returned](https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data) .
 
@@ -2025,171 +2207,194 @@ In addition, you can retrieve *all* documents in a collection by omitting the `w
 
 ### Web version 9
 
-    import { collection, getDocs } from "firebase/firestore";
-    
-    const querySnapshot = await getDocs(collection(db, "cities"));
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
-    });
+```
+import { collection, getDocs } from "firebase/firestore";
+
+const querySnapshot = await getDocs(collection(db, "cities"));
+querySnapshot.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+  console.log(doc.id, " => ", doc.data());
+});
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    db.collection("cities").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data());
-        });
+```
+db.collection("cities").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
     });
+});
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    do {
-      let querySnapshot = try await db.collection("cities").getDocuments()
-      for document in querySnapshot.documents {
-        print("\(document.documentID) => \(document.data())")
-      }
-    } catch {
-      print("Error getting documents: \(error)")
-    }
+```
+do {
+  let querySnapshot = try await db.collection("cities").getDocuments()
+  for document in querySnapshot.documents {
+    print("\(document.documentID) => \(document.data())")
+  }
+} catch {
+  print("Error getting documents: \(error)")
+}
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    [[self.db collectionWithPath:@"cities"]
-        getDocumentsWithCompletion:^(FIRQuerySnapshot *snapshot, NSError *error) {
-          if (error != nil) {
-            NSLog(@"Error getting documents: %@", error);
-          } else {
-            for (FIRDocumentSnapshot *document in snapshot.documents) {
-              NSLog(@"%@ => %@", document.documentID, document.data);
-            }
-          }
-        }];
+```
+[[self.db collectionWithPath:@"cities"]
+    getDocumentsWithCompletion:^(FIRQuerySnapshot *snapshot, NSError *error) {
+      if (error != nil) {
+        NSLog(@"Error getting documents: %@", error);
+      } else {
+        for (FIRDocumentSnapshot *document in snapshot.documents) {
+          NSLog(@"%@ => %@", document.documentID, document.data);
+        }
+      }
+    }];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    db.collection("cities")
+```
+db.collection("cities")
+    .get()
+    .addOnSuccessListener { result ->
+        for (document in result) {
+            Log.d(TAG, "${document.id} => ${document.data}")
+        }
+    }
+    .addOnFailureListener { exception ->
+        Log.d(TAG, "Error getting documents: ", exception)
+    }
+```
+
+##### Java Android
+
+```
+db.collection("cities")
         .get()
-        .addOnSuccessListener { result ->
-            for (document in result) {
-                Log.d(TAG, "${document.id} => ${document.data}")
-            }
-        }
-        .addOnFailureListener { exception ->
-            Log.d(TAG, "Error getting documents: ", exception)
-        }
-
-##### Java  
-Android
-
-    db.collection("cities")
-            .get()
-            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.isSuccessful()) {
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            Log.d(TAG, document.getId() + " => " + document.getData());
-                        }
-                    } else {
-                        Log.d(TAG, "Error getting documents: ", task.getException());
+        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Log.d(TAG, document.getId() + " => " + document.getData());
                     }
+                } else {
+                    Log.d(TAG, "Error getting documents: ", task.getException());
                 }
-            });
+            }
+        });
+```
 
 ### Dart
 
-    db.collection("cities").get().then(
-      (querySnapshot) {
-        print("Successfully completed");
-        for (var docSnapshot in querySnapshot.docs) {
-          print('${docSnapshot.id} => ${docSnapshot.data()}');
-        }
-      },
-      onError: (e) => print("Error completing: $e"),
-    );
+```
+db.collection("cities").get().then(
+  (querySnapshot) {
+    print("Successfully completed");
+    for (var docSnapshot in querySnapshot.docs) {
+      print('${docSnapshot.id} => ${docSnapshot.data()}');
+    }
+  },
+  onError: (e) => print("Error completing: $e"),
+);
+```
 
 ##### Java
 
-    // asynchronously retrieve all documents
-    ApiFuture<QuerySnapshot> future = db.collection("cities").get();
-    // future.get() blocks on response
-    List<QueryDocumentSnapshot> documents = future.get().getDocuments();
-    for (QueryDocumentSnapshot document : documents) {
-      System.out.println(document.getId() + " => " + document.toObject(City.class));
-    }
+```
+// asynchronously retrieve all documents
+ApiFuture<QuerySnapshot> future = db.collection("cities").get();
+// future.get() blocks on response
+List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+for (QueryDocumentSnapshot document : documents) {
+  System.out.println(document.getId() + " => " + document.toObject(City.class));
+}
+```
 
 ##### Python
 
-    docs = db.collection("cities").stream()
-    
-    for doc in docs:
-        print(f"{doc.id} => {doc.to_dict()}")
+```
+docs = db.collection("cities").stream()
 
-##### Python  
-(Async)
+for doc in docs:
+    print(f"{doc.id} => {doc.to_dict()}")
+```
 
-    docs = db.collection("cities").stream()
-    
-    async for doc in docs:
-        print(f"{doc.id} => {doc.to_dict()}")
+##### Python (Async)
+
+```
+docs = db.collection("cities").stream()
+
+async for doc in docs:
+    print(f"{doc.id} => {doc.to_dict()}")
+```
 
 ##### C++
 
-    db->Collection("cities").Get().OnCompletion(
-        [](const Future<QuerySnapshot>& future) {
-          if (future.error() == Error::kErrorOk) {
-            for (const DocumentSnapshot& document :
-                 future.result()->documents()) {
-              std::cout << document << std::endl;
-            }
-          } else {
-            std::cout << "Error getting documents: " << future.error_message()
-                      << std::endl;
-          }
-        });
+```
+db->Collection("cities").Get().OnCompletion(
+    [](const Future<QuerySnapshot>& future) {
+      if (future.error() == Error::kErrorOk) {
+        for (const DocumentSnapshot& document :
+             future.result()->documents()) {
+          std::cout << document << std::endl;
+        }
+      } else {
+        std::cout << "Error getting documents: " << future.error_message()
+                  << std::endl;
+      }
+    });
+```
 
 ##### Node.js
 
-    const citiesRef = db.collection('cities');
-    const snapshot = await citiesRef.get();
-    snapshot.forEach(doc => {
-      console.log(doc.id, '=>', doc.data());
-    });
+```
+const citiesRef = db.collection('cities');
+const snapshot = await citiesRef.get();
+snapshot.forEach(doc => {
+  console.log(doc.id, '=>', doc.data());
+});
+```
 
 ##### Go
 
-    import (
-     "context"
-     "fmt"
-    
-     "cloud.google.com/go/firestore"
-     "google.golang.org/api/iterator"
-    )
-    
-    func allDocs(ctx context.Context, client *firestore.Client) error {
-     fmt.Println("All cities:")
-     iter := client.Collection("cities").Documents(ctx)
-     defer iter.Stop()
-     for {
-         doc, err := iter.Next()
-         if err == iterator.Done {
-             break
-         }
-         if err != nil {
-             return err
-         }
-         fmt.Println(doc.Data())
-     }
-     return nil
+```
+import (
+    "context"
+    "fmt"
+
+    "cloud.google.com/go/firestore"
+    "google.golang.org/api/iterator"
+)
+
+func allDocs(ctx context.Context, client *firestore.Client) error {
+    fmt.Println("All cities:")
+    iter := client.Collection("cities").Documents(ctx)
+    defer iter.Stop()
+    for {
+        doc, err := iter.Next()
+        if err == iterator.Done {
+            break
+        }
+        if err != nil {
+            return err
+        }
+        fmt.Println(doc.Data())
     }
+    return nil
+}
+```
 
 ##### PHP
 
@@ -2197,59 +2402,67 @@ Android
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $citiesRef = $db->collection('samples/php/cities');
-    $documents = $citiesRef->documents();
-    foreach ($documents as $document) {
-        if ($document->exists()) {
-            printf('Document data for document %s:' . PHP_EOL, $document->id());
-            print_r($document->data());
-            printf(PHP_EOL);
-        } else {
-            printf('Document %s does not exist!' . PHP_EOL, $document->id());
-        }
+```php
+$citiesRef = $db->collection('samples/php/cities');
+$documents = $citiesRef->documents();
+foreach ($documents as $document) {
+    if ($document->exists()) {
+        printf('Document data for document %s:' . PHP_EOL, $document->id());
+        print_r($document->data());
+        printf(PHP_EOL);
+    } else {
+        printf('Document %s does not exist!' . PHP_EOL, $document->id());
     }
+}
+```
 
 ##### Unity
 
-    Query allCitiesQuery = db.Collection("cities");
-    allCitiesQuery.GetSnapshotAsync().ContinueWithOnMainThread(task =>
+```
+Query allCitiesQuery = db.Collection("cities");
+allCitiesQuery.GetSnapshotAsync().ContinueWithOnMainThread(task =>
+{
+  QuerySnapshot allCitiesQuerySnapshot = task.Result;
+  foreach (DocumentSnapshot documentSnapshot in allCitiesQuerySnapshot.Documents)
+  {
+    Debug.Log(String.Format("Document data for {0} document:", documentSnapshot.Id));
+    Dictionary<string, object> city = documentSnapshot.ToDictionary();
+    foreach (KeyValuePair<string, object> pair in city)
     {
-      QuerySnapshot allCitiesQuerySnapshot = task.Result;
-      foreach (DocumentSnapshot documentSnapshot in allCitiesQuerySnapshot.Documents)
-      {
-        Debug.Log(String.Format("Document data for {0} document:", documentSnapshot.Id));
-        Dictionary<string, object> city = documentSnapshot.ToDictionary();
-        foreach (KeyValuePair<string, object> pair in city)
-        {
-          Debug.Log(String.Format("{0}: {1}", pair.Key, pair.Value));
-        }
-    
-        // Newline to separate entries
-        Debug.Log("");
-      }
-    });
-
-##### C\#
-
-    Query allCitiesQuery = db.Collection("cities");
-    QuerySnapshot allCitiesQuerySnapshot = await allCitiesQuery.GetSnapshotAsync();
-    foreach (DocumentSnapshot documentSnapshot in allCitiesQuerySnapshot.Documents)
-    {
-        Console.WriteLine("Document data for {0} document:", documentSnapshot.Id);
-        Dictionary<string, object> city = documentSnapshot.ToDictionary();
-        foreach (KeyValuePair<string, object> pair in city)
-        {
-            Console.WriteLine("{0}: {1}", pair.Key, pair.Value);
-        }
-        Console.WriteLine("");
+      Debug.Log(String.Format("{0}: {1}", pair.Key, pair.Value));
     }
+
+    // Newline to separate entries
+    Debug.Log("");
+  }
+});
+```
+
+##### C#
+
+```csharp
+Query allCitiesQuery = db.Collection("cities");
+QuerySnapshot allCitiesQuerySnapshot = await allCitiesQuery.GetSnapshotAsync();
+foreach (DocumentSnapshot documentSnapshot in allCitiesQuerySnapshot.Documents)
+{
+    Console.WriteLine("Document data for {0} document:", documentSnapshot.Id);
+    Dictionary<string, object> city = documentSnapshot.ToDictionary();
+    foreach (KeyValuePair<string, object> pair in city)
+    {
+        Console.WriteLine("{0}: {1}", pair.Key, pair.Value);
+    }
+    Console.WriteLine("");
+}
+```
 
 ##### Ruby
 
-    cities_ref = firestore.col collection_path
-    cities_ref.get do |city|
-      puts "#{city.document_id} data: #{city.data}."
-    end
+```
+cities_ref = firestore.col collection_path
+cities_ref.get do |city|
+  puts "#{city.document_id} data: #{city.data}."
+end
+```
 
 ### Get all documents in a subcollection
 
@@ -2259,130 +2472,161 @@ To retrieve all the documents from a subcollection, create a reference with the 
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
-    const { collection, getDocs } = require("firebase/firestore");
-    // Query a reference to a subcollection
-    const querySnapshot = await getDocs(collection(db, "cities", "SF", "landmarks"));
-    querySnapshot.forEach((doc) => {
-      // doc.data() is never undefined for query doc snapshots
-      console.log(doc.id, " => ", doc.data());
-    });
+```
+const { collection, getDocs } = require("firebase/firestore");
+// Query a reference to a subcollection
+const querySnapshot = await getDocs(collection(db, "cities", "SF", "landmarks"));
+querySnapshot.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+  console.log(doc.id, " => ", doc.data());
+});
+```
 
 ### Web version 8
 
-    // Snippet not available
+```
+// Snippet not available
+```
 
 ##### Swift
 
-    do {
-      let querySnapshot = try await db.collection("cities/SF/landmarks").getDocuments()
-      for document in querySnapshot.documents {
-        print("\(document.documentID) => \(document.data())")
-      }
-    } catch {
-      print("Error getting documents: \(error)")
-    }
+```
+do {
+  let querySnapshot = try await db.collection("cities/SF/landmarks").getDocuments()
+  for document in querySnapshot.documents {
+    print("\(document.documentID) => \(document.data())")
+  }
+} catch {
+  print("Error getting documents: \(error)")
+}
+```
 
 ##### Objective-C
 
-    [[self.db collectionWithPath:@"cities/SF/landmarks"]
-        getDocumentsWithCompletion:^(FIRQuerySnapshot *snapshot, NSError *error) {
-          if (error != nil) {
-            NSLog(@"Error getting documents: %@", error);
-          } else {
-            for (FIRDocumentSnapshot *document in snapshot.documents) {
-              NSLog(@"%@ => %@", document.documentID, document.data);
-            }
-          }
-        }];
+```
+[[self.db collectionWithPath:@"cities/SF/landmarks"]
+    getDocumentsWithCompletion:^(FIRQuerySnapshot *snapshot, NSError *error) {
+      if (error != nil) {
+        NSLog(@"Error getting documents: %@", error);
+      } else {
+        for (FIRDocumentSnapshot *document in snapshot.documents) {
+          NSLog(@"%@ => %@", document.documentID, document.data);
+        }
+      }
+    }];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    db.collection("cities")
+```
+db.collection("cities")
+    .document("SF")
+    .collection("landmarks")
+    .get()
+    .addOnSuccessListener { result ->
+        for (document in result) {
+            Log.d(TAG, "${document.id} => ${document.data}")
+        }
+    }
+    .addOnFailureListener { exception ->
+        Log.d(TAG, "Error getting documents: ", exception)
+    }
+```
+
+##### Java Android
+
+```
+db.collection("cities")
         .document("SF")
         .collection("landmarks")
         .get()
-        .addOnSuccessListener { result ->
-            for (document in result) {
-                Log.d(TAG, "${document.id} => ${document.data}")
-            }
-        }
-        .addOnFailureListener { exception ->
-            Log.d(TAG, "Error getting documents: ", exception)
-        }
-
-##### Java  
-Android
-
-    db.collection("cities")
-            .document("SF")
-            .collection("landmarks")
-            .get()
-            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if (task.isSuccessful()) {
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            Log.d(TAG, document.getId() + " => " + document.getData());
-                        }
-                    } else {
-                        Log.d(TAG, "Error getting documents: ", task.getException());
+        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Log.d(TAG, document.getId() + " => " + document.getData());
                     }
+                } else {
+                    Log.d(TAG, "Error getting documents: ", task.getException());
                 }
-            });
+            }
+        });
+```
 
 ### Dart
 
-    db.collection("cities").doc("SF").collection("landmarks").get().then(
-      (querySnapshot) {
-        print("Successfully completed");
-        for (var docSnapshot in querySnapshot.docs) {
-          print('${docSnapshot.id} => ${docSnapshot.data()}');
-        }
-      },
-      onError: (e) => print("Error completing: $e"),
-    );
+```
+db.collection("cities").doc("SF").collection("landmarks").get().then(
+  (querySnapshot) {
+    print("Successfully completed");
+    for (var docSnapshot in querySnapshot.docs) {
+      print('${docSnapshot.id} => ${docSnapshot.data()}');
+    }
+  },
+  onError: (e) => print("Error completing: $e"),
+);
+```
 
 ##### Java
 
-    // Snippet not available
+```
+// Snippet not available
+```
 
 ##### Python
 
-    // Snippet not available
+```
+// Snippet not available
+```
 
-##### Python  
-(Async)
+##### Python (Async)
 
-    // Snippet not available
+```
+// Snippet not available
+```
 
 ##### C++
 
-    // Snippet not available
+```
+// Snippet not available
+```
 
 ##### Node.js
 
-    // Snippet not available
+```
+// Snippet not available
+```
 
 ##### Go
 
-    // Snippet not available
+```
+// Snippet not available
+```
 
 ##### PHP
 
-    // Snippet not available
+```
+// Snippet not available
+```
 
 ##### Unity
 
-    // Snippet not available
+```
+// Snippet not available
+```
 
-##### C\#
+##### C#
 
-    // Snippet not available
+```
+// Snippet not available
+```
 
 ##### Ruby
 
-    // Snippet not available
+```
+// Snippet not available
+```
 
 ### Get multiple documents from a collection group
 
@@ -2406,13 +2650,11 @@ Not available in the Swift client library.
 
 Not available in the Objective-C client library.
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
 Not available in the Android client library.
 
-##### Java  
-Android
+##### Java Android
 
 Not available in the Android client library.
 
@@ -2422,28 +2664,33 @@ Not available in the Flutter client library.
 
 ##### Java
 
-    Iterable<CollectionReference> collections =
-        db.collection("cities").document("SF").listCollections();
-    
-    for (CollectionReference collRef : collections) {
-      System.out.println("Found subcollection with id: " + collRef.getId());
-    }
+```
+Iterable<CollectionReference> collections =
+    db.collection("cities").document("SF").listCollections();
+
+for (CollectionReference collRef : collections) {
+  System.out.println("Found subcollection with id: " + collRef.getId());
+}
+```
 
 ##### Python
 
-    city_ref = db.collection("cities").document("SF")
-    collections = city_ref.collections()
-    for collection in collections:
-        for doc in collection.stream():
-            print(f"{doc.id} => {doc.to_dict()}")
+```
+city_ref = db.collection("cities").document("SF")
+collections = city_ref.collections()
+for collection in collections:
+    for doc in collection.stream():
+        print(f"{doc.id} => {doc.to_dict()}")
+```
 
-##### Python  
-(Async)
+##### Python (Async)
 
-    collections = db.collection("cities").document("SF").collections()
-    async for collection in collections:
-        async for doc in collection.stream():
-            print(f"{doc.id} => {doc.to_dict()}")
+```
+collections = db.collection("cities").document("SF").collections()
+async for collection in collections:
+    async for doc in collection.stream():
+        print(f"{doc.id} => {doc.to_dict()}")
+```
 
 ##### C++
 
@@ -2451,36 +2698,40 @@ Not available in the C++ client library.
 
 ##### Node.js
 
-    const sfRef = db.collection('cities').doc('SF');
-    const collections = await sfRef.listCollections();
-    collections.forEach(collection => {
-      console.log('Found subcollection with id:', collection.id);
-    });
+```
+const sfRef = db.collection('cities').doc('SF');
+const collections = await sfRef.listCollections();
+collections.forEach(collection => {
+  console.log('Found subcollection with id:', collection.id);
+});
+```
 
 ##### Go
 
-    import (
-     "context"
-     "fmt"
-    
-     "cloud.google.com/go/firestore"
-     "google.golang.org/api/iterator"
-    )
-    
-    func getCollections(ctx context.Context, client *firestore.Client) error {
-     iter := client.Collection("cities").Doc("SF").Collections(ctx)
-     for {
-         collRef, err := iter.Next()
-         if err == iterator.Done {
-             break
-         }
-         if err != nil {
-             return err
-         }
-         fmt.Printf("Found collection with id: %s\n", collRef.ID)
-     }
-     return nil
+```
+import (
+    "context"
+    "fmt"
+
+    "cloud.google.com/go/firestore"
+    "google.golang.org/api/iterator"
+)
+
+func getCollections(ctx context.Context, client *firestore.Client) error {
+    iter := client.Collection("cities").Doc("SF").Collections(ctx)
+    for {
+        collRef, err := iter.Next()
+        if err == iterator.Done {
+            break
+        }
+        if err != nil {
+            return err
+        }
+        fmt.Printf("Found collection with id: %s\n", collRef.ID)
     }
+    return nil
+}
+```
 
 ##### PHP
 
@@ -2488,33 +2739,41 @@ Not available in the C++ client library.
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $cityRef = $db->collection('samples/php/cities')->document('SF');
-    $collections = $cityRef->collections();
-    foreach ($collections as $collection) {
-        printf('Found subcollection with id: %s' . PHP_EOL, $collection->id());
-    }
+```php
+$cityRef = $db->collection('samples/php/cities')->document('SF');
+$collections = $cityRef->collections();
+foreach ($collections as $collection) {
+    printf('Found subcollection with id: %s' . PHP_EOL, $collection->id());
+}
+```
 
 ##### Unity
 
-    // This is not yet supported in the Unity SDK.
+```
+// This is not yet supported in the Unity SDK.
+```
 
-##### C\#
+##### C#
 
-    DocumentReference cityRef = db.Collection("cities").Document("SF");
-    IAsyncEnumerable<CollectionReference> subcollections = cityRef.ListCollectionsAsync();
-    IAsyncEnumerator<CollectionReference> subcollectionsEnumerator = subcollections.GetAsyncEnumerator(default);
-    while (await subcollectionsEnumerator.MoveNextAsync())
-    {
-        CollectionReference subcollectionRef = subcollectionsEnumerator.Current;
-        Console.WriteLine("Found subcollection with ID: {0}", subcollectionRef.Id);
-    }
+```csharp
+DocumentReference cityRef = db.Collection("cities").Document("SF");
+IAsyncEnumerable<CollectionReference> subcollections = cityRef.ListCollectionsAsync();
+IAsyncEnumerator<CollectionReference> subcollectionsEnumerator = subcollections.GetAsyncEnumerator(default);
+while (await subcollectionsEnumerator.MoveNextAsync())
+{
+    CollectionReference subcollectionRef = subcollectionsEnumerator.Current;
+    Console.WriteLine("Found subcollection with ID: {0}", subcollectionRef.Id);
+}
+```
 
 ##### Ruby
 
-    city_ref = firestore.doc "#{collection_path}/SF"
-    city_ref.cols do |col|
-      puts col.collection_id
-    end
+```
+city_ref = firestore.doc "#{collection_path}/SF"
+city_ref.cols do |col|
+  puts col.collection_id
+end
+```
 
 Learn more about different [types of queries](https://docs.cloud.google.com/firestore/native/docs/query-data/queries) .
 

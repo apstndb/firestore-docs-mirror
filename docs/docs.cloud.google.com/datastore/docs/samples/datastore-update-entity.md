@@ -12,35 +12,37 @@ Example datastore mark task done
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Getting started with the Firestore in Datastore mode API](https://docs.cloud.google.com/datastore/docs/datastore-api-tutorial)
+- [Getting started with the Firestore in Datastore mode API](https://docs.cloud.google.com/datastore/docs/datastore-api-tutorial)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    /// <summary>
-    /// Marks a task entity as done.
-    /// </summary>
-    /// <param name="id">The ID of the task entity as given by Key.</param>
-    /// <returns>true if the task was found.</returns>
-    bool MarkDone(long id)
+```csharp
+/// <summary>
+/// Marks a task entity as done.
+/// </summary>
+/// <param name="id">The ID of the task entity as given by Key.</param>
+/// <returns>true if the task was found.</returns>
+bool MarkDone(long id)
+{
+    using (var transaction = _db.BeginTransaction())
     {
-        using (var transaction = _db.BeginTransaction())
+        Entity task = transaction.Lookup(_keyFactory.CreateKey(id));
+        if (task != null)
         {
-            Entity task = transaction.Lookup(_keyFactory.CreateKey(id));
-            if (task != null)
-            {
-                task["done"] = true;
-                transaction.Update(task);
-            }
-            transaction.Commit();
-            return task != null;
+            task["done"] = true;
+            transaction.Update(task);
         }
+        transaction.Commit();
+        return task != null;
     }
+}
+```
 
 ### Go
 
@@ -48,36 +50,38 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    import (
-     "context"
-     "log"
-    
-     "cloud.google.com/go/datastore"
-    )
-    
-    // MarkDone marks the task done with the given ID.
-    func MarkDone(projectID string, taskID int64) error {
-     ctx := context.Background()
-     client, err := datastore.NewClient(ctx, projectID)
-     if err != nil {
-         log.Fatalf("Could not create datastore client: %v", err)
-     }
-     defer client.Close()
-     // Create a key using the given integer ID.
-     key := datastore.IDKey("Task", taskID, nil)
-    
-     // In a transaction load each task, set done to true and store.
-     _, err = client.RunInTransaction(ctx, func(tx *datastore.Transaction) error {
-         var task Task
-         if err := tx.Get(key, &task); err != nil {
-             return err
-         }
-         task.Done = true
-         _, err := tx.Put(key, &task)
-         return err
-     })
-     return err
+```go
+import (
+    "context"
+    "log"
+
+    "cloud.google.com/go/datastore"
+)
+
+// MarkDone marks the task done with the given ID.
+func MarkDone(projectID string, taskID int64) error {
+    ctx := context.Background()
+    client, err := datastore.NewClient(ctx, projectID)
+    if err != nil {
+        log.Fatalf("Could not create datastore client: %v", err)
     }
+    defer client.Close()
+    // Create a key using the given integer ID.
+    key := datastore.IDKey("Task", taskID, nil)
+
+    // In a transaction load each task, set done to true and store.
+    _, err = client.RunInTransaction(ctx, func(tx *datastore.Transaction) error {
+        var task Task
+        if err := tx.Get(key, &task); err != nil {
+            return err
+        }
+        task.Done = true
+        _, err := tx.Put(key, &task)
+        return err
+    })
+    return err
+}
+```
 
 ### Java
 
@@ -85,28 +89,30 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    /**
-     * Marks a task entity as done.
-     *
-     * @param id The ID of the task entity as given by {@link Key#id()}
-     * @return true if the task was found, false if not
-     * @throws DatastoreException if the transaction fails
-     */
-    boolean markDone(long id) {
-      Transaction transaction = datastore.newTransaction();
-      try {
-        Entity task = transaction.get(keyFactory.newKey(id));
-        if (task != null) {
-          transaction.put(Entity.newBuilder(task).set("done", true).build());
-        }
-        transaction.commit();
-        return task != null;
-      } finally {
-        if (transaction.isActive()) {
-          transaction.rollback();
-        }
-      }
+```java
+/**
+ * Marks a task entity as done.
+ *
+ * @param id The ID of the task entity as given by {@link Key#id()}
+ * @return true if the task was found, false if not
+ * @throws DatastoreException if the transaction fails
+ */
+boolean markDone(long id) {
+  Transaction transaction = datastore.newTransaction();
+  try {
+    Entity task = transaction.get(keyFactory.newKey(id));
+    if (task != null) {
+      transaction.put(Entity.newBuilder(task).set("done", true).build());
     }
+    transaction.commit();
+    return task != null;
+  } finally {
+    if (transaction.isActive()) {
+      transaction.rollback();
+    }
+  }
+}
+```
 
 ### PHP
 
@@ -114,26 +120,28 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    use Google\Cloud\Datastore\DatastoreClient;
-    
-    /**
-     * Mark a task with a given id as done.
-     *
-     * @param string $projectId The Google Cloud project ID.
-     * @param string $taskId
-     */
-    function mark_done(string $projectId, string $taskId)
-    {
-        $datastore = new DatastoreClient(['projectId' => $projectId]);
-    
-        $taskKey = $datastore->key('Task', $taskId);
-        $transaction = $datastore->transaction();
-        $task = $transaction->lookup($taskKey);
-        $task['done'] = true;
-        $transaction->upsert($task);
-        $transaction->commit();
-        printf('Task %d updated successfully.' . PHP_EOL, $taskId);
-    }
+```php
+use Google\Cloud\Datastore\DatastoreClient;
+
+/**
+ * Mark a task with a given id as done.
+ *
+ * @param string $projectId The Google Cloud project ID.
+ * @param string $taskId
+ */
+function mark_done(string $projectId, string $taskId)
+{
+    $datastore = new DatastoreClient(['projectId' => $projectId]);
+
+    $taskKey = $datastore->key('Task', $taskId);
+    $transaction = $datastore->transaction();
+    $task = $transaction->lookup($taskKey);
+    $task['done'] = true;
+    $transaction->upsert($task);
+    $transaction->commit();
+    printf('Task %d updated successfully.' . PHP_EOL, $taskId);
+}
+```
 
 ### Python
 
@@ -141,25 +149,27 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    def mark_done(client: datastore.Client, task_id: str | int):
-        with client.transaction():
-            # Create a key for an entity of kind "Task", and with the supplied
-            # `task_id` as its Id
-            key = client.key("Task", task_id)
-            # Use that key to load the entity
-            task = client.get(key)
-    
-            if not task:
-                raise ValueError(f"Task {task_id} does not exist.")
-    
-            # Update a field indicating that the associated
-            # work has been completed
-            task["done"] = True
-    
-            # Persist the change back to Datastore
-            client.put(task)
+```python
+from google.cloud import datastore
+
+def mark_done(client: datastore.Client, task_id: str | int):
+    with client.transaction():
+        # Create a key for an entity of kind "Task", and with the supplied
+        # `task_id` as its Id
+        key = client.key("Task", task_id)
+        # Use that key to load the entity
+        task = client.get(key)
+
+        if not task:
+            raise ValueError(f"Task {task_id} does not exist.")
+
+        # Update a field indicating that the associated
+        # work has been completed
+        task["done"] = True
+
+        # Persist the change back to Datastore
+        client.put(task)
+```
 
 ### Ruby
 
@@ -167,17 +177,19 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    def mark_done task_id
-      require "google/cloud/datastore"
-    
-      datastore = Google::Cloud::Datastore.new
-    
-      task = datastore.find "Task", task_id
-    
-      task["done"] = true
-    
-      datastore.save task
-    end
+```ruby
+def mark_done task_id
+  require "google/cloud/datastore"
+
+  datastore = Google::Cloud::Datastore.new
+
+  task = datastore.find "Task", task_id
+
+  task["done"] = true
+
+  datastore.save task
+end
+```
 
 ## What's next
 

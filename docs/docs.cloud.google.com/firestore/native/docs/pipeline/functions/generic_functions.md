@@ -10,19 +10,21 @@ data_source: docs.cloud.google.com
 
 ## **Generic Functions**
 
-|                                     |                                                                                 |
-| ----------------------------------- | ------------------------------------------------------------------------------- |
-| Name                                | Description                                                                     |
-| `         CURRENT_DOCUMENT        ` | Returns the document currently being processed in the pipeline.                 |
-| `         CONCAT        `           | Concatenates two or more values of same type.                                   |
-| `         LENGTH        `           | Calculates the length of a `String` , `Bytes` , `Array` , `Vector` , or `Map` . |
-| `         REVERSE        `          | Reverses a `String` , `Bytes` , or `Array` .                                    |
+|                                                                                                                                 |                                                                                 |
+|---------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| Name                                                                                                                            | Description                                                                     |
+| [`CURRENT_DOCUMENT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/generic_functions#current_document) | Returns the document currently being processed in the pipeline.                 |
+| [`CONCAT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/generic_functions#concat)                     | Concatenates two or more values of same type.                                   |
+| [`LENGTH`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/generic_functions#length)                     | Calculates the length of a `String` , `Bytes` , `Array` , `Vector` , or `Map` . |
+| [`REVERSE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/generic_functions#reverse)                   | Reverses a `String` , `Bytes` , or `Array` .                                    |
 
-### CURRENT\_DOCUMENT
+### CURRENT_DOCUMENT
 
 **Syntax:**
 
-    current_document() -> MAP
+```
+current_document() -> MAP
+```
 
 **Description:**
 
@@ -32,19 +34,23 @@ For example, to get a list of documents grouped by a field:
 
 ### Node.js
 
-    const cities = await db.pipeline()
-      .collection("/restaurants")
-      .aggregate({
-        groups: [ field("location.state").as("state") ],
-        accumulators: [ arrayAgg(currentDocument().as("restaurants")) ]
-       })
-      .execute();
+```
+const cities = await db.pipeline()
+  .collection("/restaurants")
+  .aggregate({
+    groups: [ field("location.state").as("state") ],
+    accumulators: [ arrayAgg(currentDocument().as("restaurants")) ]
+   })
+  .execute();
+```
 
 ### CONCAT
 
 **Syntax:**
 
-    concat[T <: STRING | BYTES | ARRAY](values:T ...) -> T
+```
+concat[T <: STRING | BYTES | ARRAY](values:T ...) -> T
+```
 
 **Description:**
 
@@ -53,7 +59,7 @@ Concatenates two or more values of same type.
 **Examples:**
 
 | values                  | `concat(values)` |
-| :---------------------- | :--------------- |
+|-------------------------|------------------|
 | "abc", "def"            | "abcdef"         |
 | \[1, 2\], \[3, 4\]      | \[1, 2, 3, 4\]   |
 | b"abc", b"def"          | b"abcdef"        |
@@ -63,35 +69,47 @@ Concatenates two or more values of same type.
 
 ##### Node.js
 
-    concat(constant("Author ID: "), field("authorId"));
+```
+concat(constant("Author ID: "), field("authorId"));
+```
 
 ### Web
 
-    concat(constant("Author ID: "), field("authorId"));
+```
+concat(constant("Author ID: "), field("authorId"));
+```
 
 ##### Swift
 
-    let displayString = Constant("Author ID: ").concat([Field("authorId")])
+```
+let displayString = Constant("Author ID: ").concat([Field("authorId")])
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val displayString = constant("Author ID: ").concat(field("authorId"))
+```
+val displayString = constant("Author ID: ").concat(field("authorId"))
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Expression displayString = constant("Author ID: ").concat(field("authorId"));
+```
+Expression displayString = constant("Author ID: ").concat(field("authorId"));
+```
 
 ##### Python
 
-    Constant.of("Author ID: ").concat(Field.of("authorId"))
+```
+Constant.of("Author ID: ").concat(Field.of("authorId"))
+```
 
 ### LENGTH
 
 **Syntax:**
 
-    length[T <: STRING | BYTES | ARRAY | VECTOR | MAP](value: T) -> INT64
+```
+length[T <: STRING | BYTES | ARRAY | VECTOR | MAP](value: T) -> INT64
+```
 
 **Description:**
 
@@ -100,7 +118,7 @@ Calculates the length of a `String` , `Bytes` , `Array` , `Vector` , or `Map` va
 **Examples:**
 
 | value          | `length(value)` |
-| :------------- | :-------------- |
+|----------------|-----------------|
 | "hello"        | 5               |
 | \[1, 2, 3, 4\] | 4               |
 | b"abcde"       | 5               |
@@ -111,7 +129,9 @@ Calculates the length of a `String` , `Bytes` , `Array` , `Vector` , or `Map` va
 
 **Syntax:**
 
-    reverse[T <: STRING | BYTES | ARRAY](value: T) -> T
+```
+reverse[T <: STRING | BYTES | ARRAY](value: T) -> T
+```
 
 **Description:**
 
@@ -120,7 +140,7 @@ Reverses a `String` , `Bytes` , or `Array` value.
 **Examples:**
 
 | value       | `reverse(value)` |
-| :---------- | :--------------- |
+|-------------|------------------|
 | "hello"     | "olleh"          |
 | \[1, 2, 3\] | \[3, 2, 1\]      |
 | b"abc"      | b"cba"           |
@@ -129,4 +149,4 @@ Reverses a `String` , `Bytes` , or `Array` value.
 
 ## What's next
 
-  - See the [Pipeline Queries overview](https://docs.cloud.google.com/firestore/docs/pipeline/overview)
+- See the [Pipeline Queries overview](https://docs.cloud.google.com/firestore/docs/pipeline/overview)

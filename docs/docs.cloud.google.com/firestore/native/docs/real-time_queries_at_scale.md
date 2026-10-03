@@ -50,14 +50,16 @@ Imagine two users that connect to Firestore through a messaging app built with o
 
 Client A writes to the database to add and update documents in a collection called `chatroom` :
 
-    collection chatroom:
-        document message1:
-          from: 'Sparky'
-          message: 'Welcome to Firestore!'
-    
-        document message2:
-          from: 'Santa'
-          message: 'Presents are coming'
+```
+collection chatroom:
+    document message1:
+      from: 'Sparky'
+      message: 'Welcome to Firestore!'
+
+    document message2:
+      from: 'Santa'
+      message: 'Presents are coming'
+```
 
 Client B listens for updates in the same collection using a snapshot listener. Client B gets an immediate notification whenever someone creates a new message. The following diagram shows the architecture behind a snapshot listener:
 
@@ -131,9 +133,9 @@ Another key part of responsive real-time queries involves making sure that the p
 
 A listener might also move back from a listening state to a polling state under some circumstances. This happens automatically and is transparent to the SDKs and your app. The following conditions might trigger a polling state:
 
-  - The system [re-balances a changelog](https://docs.cloud.google.com/firestore/native/docs/real-time_queries_at_scale#understand_high_write_traffic_in_the_system) due to changes in load.
-  - Hotspots cause failed or delayed writes to the database.
-  - Transient server restarts temporarily affect listeners.
+- The system [re-balances a changelog](https://docs.cloud.google.com/firestore/native/docs/real-time_queries_at_scale#understand_high_write_traffic_in_the_system) due to changes in load.
+- Hotspots cause failed or delayed writes to the database.
+- Transient server restarts temporarily affect listeners.
 
 If your polling queries are fast enough, a polling state becomes transparent to your app's users.
 
@@ -149,5 +151,5 @@ In cases where your app must consume a high rate of data, snapshot listeners mig
 
 ## What's Next
 
-  - Learn [how to use snapshot listeners](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) .
-  - Read about more [best practices](https://docs.cloud.google.com/firestore/native/docs/best-practices) .
+- Learn [how to use snapshot listeners](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) .
+- Read about more [best practices](https://docs.cloud.google.com/firestore/native/docs/best-practices) .

@@ -6,20 +6,6 @@ description: A cloud-hosted NoSQL database that's simple enough for rapid protot
 data_source: docs.cloud.google.com
 ---
 
-  - [](https://firebaseopensource.com/projects/firebase/friendlyeats-android/)
-    
-    ### Android Friendly Eats
-    
-    Build a restaurant recommendation service using Firestore and Android.
-
-  - [](https://firebaseopensource.com/projects/firebase/friendlyeats-ios/)
-    
-    ### iOS Friendly Eats
-    
-    Build a restaurant recommendation service using Firestore and iOS.
-
-  - [](https://firebaseopensource.com/projects/firebase/friendlyeats-web/)
-    
-    ### Web Friendly Eats
-    
-    Build a restaurant recommendation service using Firestore and the Firebase Web SDK.
+- [Android Friendly Eats Build a restaurant recommendation service using Firestore and Android.](https://firebaseopensource.com/projects/firebase/friendlyeats-android/)
+- [iOS Friendly Eats Build a restaurant recommendation service using Firestore and iOS.](https://firebaseopensource.com/projects/firebase/friendlyeats-ios/)
+- [Web Friendly Eats Build a restaurant recommendation service using Firestore and the Firebase Web SDK.](https://firebaseopensource.com/projects/firebase/friendlyeats-web/)

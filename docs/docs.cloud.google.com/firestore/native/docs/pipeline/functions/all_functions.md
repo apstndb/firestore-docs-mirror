@@ -12,27 +12,29 @@ data_source: docs.cloud.google.com
 
 All aggregate functions can be used as top-level expressions in the `aggregate(...)` stage.
 
-|                                       |                                                                        |
-| ------------------------------------- | ---------------------------------------------------------------------- |
-| Name                                  | Description                                                            |
-| `         COUNT        `              | Returns the number of documents.                                       |
-| `         COUNT_IF        `           | Returns the count of documents where an expression evaluates to `TRUE` |
-| `         COUNT_DISTINCT        `     | Returns the count of unique, non `NULL` values                         |
-| `         SUM        `                | Returns the sum of all `NUMERIC` values                                |
-| `         AVERAGE        `            | Returns the average of all `NUMERIC` values                            |
-| `         MINIMUM        `            | Returns the minimum non `NULL` value                                   |
-| `         MAXIMUM        `            | Returns the maximum non `NULL` value                                   |
-| `         FIRST        `              | Returns the `expression` value for the first document.                 |
-| `         LAST        `               | Returns the `expression` value for the last document.                  |
-| `         ARRAY_AGG        `          | Returns an array of all input values.                                  |
-| `         ARRAY_AGG_DISTINCT        ` | Returns an array of all distinct input values.                         |
+|                                                                                                                                 |                                                                        |
+|---------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------|
+| Name                                                                                                                            | Description                                                            |
+| [`COUNT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#count)                           | Returns the number of documents.                                       |
+| [`COUNT_IF`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#count_if)                     | Returns the count of documents where an expression evaluates to `TRUE` |
+| [`COUNT_DISTINCT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#count_distinct)         | Returns the count of unique, non `NULL` values                         |
+| [`SUM`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#sum)                               | Returns the sum of all `NUMERIC` values                                |
+| [`AVERAGE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#average)                       | Returns the average of all `NUMERIC` values                            |
+| [`MINIMUM`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#minimum)                       | Returns the minimum non `NULL` value                                   |
+| [`MAXIMUM`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#maximum)                       | Returns the maximum non `NULL` value                                   |
+| [`FIRST`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#first)                           | Returns the `expression` value for the first document.                 |
+| [`LAST`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#last)                             | Returns the `expression` value for the last document.                  |
+| [`ARRAY_AGG`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#array_agg)                   | Returns an array of all input values.                                  |
+| [`ARRAY_AGG_DISTINCT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#array_agg_distinct) | Returns an array of all distinct input values.                         |
 
 ### COUNT
 
 **Syntax:**
 
-    count() -> INT64
-    count(expression: ANY) -> INT64
+```
+count() -> INT64
+count(expression: ANY) -> INT64
+```
 
 **Description:**
 
@@ -40,134 +42,150 @@ Returns the count of documents from the previous stage where `expression` evalua
 
 ##### Node.js
 
-    // Total number of books in the collection
-    const countOfAll = await db.pipeline()
-      .collection("books")
-      .aggregate(countAll().as("count"))
-      .execute();
-    
-    // Number of books with nonnull `ratings` field
-    const countField = await db.pipeline()
-      .collection("books")
-      .aggregate(field("ratings").count().as("count"))
-      .execute();
+```
+// Total number of books in the collection
+const countOfAll = await db.pipeline()
+  .collection("books")
+  .aggregate(countAll().as("count"))
+  .execute();
+
+// Number of books with nonnull `ratings` field
+const countField = await db.pipeline()
+  .collection("books")
+  .aggregate(field("ratings").count().as("count"))
+  .execute();
+```
 
 ### Web
 
-    // Total number of books in the collection
-    const countOfAll = await execute(db.pipeline()
-      .collection("books")
-      .aggregate(countAll().as("count"))
-    );
-    
-    // Number of books with nonnull `ratings` field
-    const countField = await execute(db.pipeline()
-      .collection("books")
-      .aggregate(field("ratings").count().as("count"))
-    );
+```
+// Total number of books in the collection
+const countOfAll = await execute(db.pipeline()
+  .collection("books")
+  .aggregate(countAll().as("count"))
+);
+
+// Number of books with nonnull `ratings` field
+const countField = await execute(db.pipeline()
+  .collection("books")
+  .aggregate(field("ratings").count().as("count"))
+);
+```
 
 ##### Swift
 
-    // Total number of books in the collection
-    let countAll = try await db.pipeline()
-      .collection("books")
-      .aggregate([CountAll().as("count")])
-      .execute()
-    
-    // Number of books with nonnull `ratings` field
-    let countField = try await db.pipeline()
-      .collection("books")
-      .aggregate([Field("ratings").count().as("count")])
-      .execute()
+```
+// Total number of books in the collection
+let countAll = try await db.pipeline()
+  .collection("books")
+  .aggregate([CountAll().as("count")])
+  .execute()
 
-##### Kotlin  
-Android
+// Number of books with nonnull `ratings` field
+let countField = try await db.pipeline()
+  .collection("books")
+  .aggregate([Field("ratings").count().as("count")])
+  .execute()
+```
 
-    // Total number of books in the collection
-    val countAll = db.pipeline()
-        .collection("books")
-        .aggregate(AggregateFunction.countAll().alias("count"))
-        .execute()
-    
-    // Number of books with nonnull `ratings` field
-    val countField = db.pipeline()
-        .collection("books")
-        .aggregate(AggregateFunction.count("ratings").alias("count"))
-        .execute()
+##### Kotlin Android
 
-##### Java  
-Android
+```
+// Total number of books in the collection
+val countAll = db.pipeline()
+    .collection("books")
+    .aggregate(AggregateFunction.countAll().alias("count"))
+    .execute()
 
-    // Total number of books in the collection
-    Task<Pipeline.Snapshot> countAll = db.pipeline()
-        .collection("books")
-        .aggregate(AggregateFunction.countAll().alias("count"))
-        .execute();
-    
-    // Number of books with nonnull `ratings` field
-    Task<Pipeline.Snapshot> countField = db.pipeline()
-        .collection("books")
-        .aggregate(AggregateFunction.count("ratings").alias("count"))
-        .execute();
+// Number of books with nonnull `ratings` field
+val countField = db.pipeline()
+    .collection("books")
+    .aggregate(AggregateFunction.count("ratings").alias("count"))
+    .execute()
+```
+
+##### Java Android
+
+```
+// Total number of books in the collection
+Task<Pipeline.Snapshot> countAll = db.pipeline()
+    .collection("books")
+    .aggregate(AggregateFunction.countAll().alias("count"))
+    .execute();
+
+// Number of books with nonnull `ratings` field
+Task<Pipeline.Snapshot> countField = db.pipeline()
+    .collection("books")
+    .aggregate(AggregateFunction.count("ratings").alias("count"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Count
-    
-    # Total number of books in the collection
-    count_all = (
-        client.pipeline().collection("books").aggregate(Count().as_("count")).execute()
-    )
-    
-    # Number of books with nonnull `ratings` field
-    count_field = (
-        client.pipeline()
-        .collection("books")
-        .aggregate(Count("ratings").as_("count"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Count
+
+# Total number of books in the collection
+count_all = (
+    client.pipeline().collection("books").aggregate(Count().as_("count")).execute()
+)
+
+# Number of books with nonnull `ratings` field
+count_field = (
+    client.pipeline()
+    .collection("books")
+    .aggregate(Count("ratings").as_("count"))
+    .execute()
+)
+```
 
 ##### Java
 
-    // Total number of books in the collection
-    Pipeline.Snapshot countAll =
-        firestore.pipeline().collection("books").aggregate(countAll().as("count")).execute().get();
-    
-    // Number of books with nonnull `ratings` field
-    Pipeline.Snapshot countField =
-        firestore
-            .pipeline()
-            .collection("books")
-            .aggregate(count("ratings").as("count"))
-            .execute()
-            .get();
+```
+// Total number of books in the collection
+Pipeline.Snapshot countAll =
+    firestore.pipeline().collection("books").aggregate(countAll().as("count")).execute().get();
+
+// Number of books with nonnull `ratings` field
+Pipeline.Snapshot countField =
+    firestore
+        .pipeline()
+        .collection("books")
+        .aggregate(count("ratings").as("count"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    // Total number of books in the collection
-    countAll, err := client.Pipeline().Collection("books").
-     Aggregate(firestore.Accumulators(firestore.CountAll().As("count"))).
-     Execute(ctx).Results().GetAll()
-    if err != nil {
-     fmt.Fprintf(w, "GetAll failed: %v", err)
-     return err
-    }
-    
-    // Number of books with nonnull `ratings` field
-    countField, err := client.Pipeline().
-     Collection("books").
-     Aggregate(firestore.Accumulators(firestore.Count("ratings").As("count"))).
-     Execute(ctx).Results().GetAll()
-    if err != nil {
-     fmt.Fprintf(w, "GetAll failed: %v", err)
-     return err
-    }
+```
+// Total number of books in the collection
+countAll, err := client.Pipeline().Collection("books").
+    Aggregate(firestore.Accumulators(firestore.CountAll().As("count"))).
+    Execute(ctx).Results().GetAll()
+if err != nil {
+    fmt.Fprintf(w, "GetAll failed: %v", err)
+    return err
+}
 
-### COUNT\_IF
+// Number of books with nonnull `ratings` field
+countField, err := client.Pipeline().
+    Collection("books").
+    Aggregate(firestore.Accumulators(firestore.Count("ratings").As("count"))).
+    Execute(ctx).Results().GetAll()
+if err != nil {
+    fmt.Fprintf(w, "GetAll failed: %v", err)
+    return err
+}
+```
+
+### COUNT_IF
 
 **Syntax:**
 
-    count_if(expression: BOOLEAN) -> INT64
+```
+count_if(expression: BOOLEAN) -> INT64
+```
 
 **Description:**
 
@@ -175,86 +193,102 @@ Returns the number of documents from the previous stage where `expression` evalu
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .aggregate(
-        field("rating").greaterThan(4).countIf().as("filteredCount")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .aggregate(
+    field("rating").greaterThan(4).countIf().as("filteredCount")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .aggregate(
-        field("rating").greaterThan(4).countIf().as("filteredCount")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .aggregate(
+    field("rating").greaterThan(4).countIf().as("filteredCount")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .aggregate([
-        AggregateFunction("count_if", [Field("rating").greaterThan(4)]).as("filteredCount")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .aggregate([
+    AggregateFunction("count_if", [Field("rating").greaterThan(4)]).as("filteredCount")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .aggregate(
-            AggregateFunction.countIf(field("rating").greaterThan(4)).alias("filteredCount")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .aggregate(
+        AggregateFunction.countIf(field("rating").greaterThan(4)).alias("filteredCount")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .aggregate(
-            AggregateFunction.countIf(field("rating").greaterThan(4)).alias("filteredCount")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .aggregate(
+        AggregateFunction.countIf(field("rating").greaterThan(4)).alias("filteredCount")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .aggregate(Field.of("rating").greater_than(4).count_if().as_("filteredCount"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .aggregate(Field.of("rating").greater_than(4).count_if().as_("filteredCount"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .aggregate(countIf(field("rating").greaterThan(4)).as("filteredCount"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .aggregate(countIf(field("rating").greaterThan(4)).as("filteredCount"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Aggregate(firestore.Accumulators(
-         firestore.CountIf(firestore.FieldOf("rating").GreaterThan(4)).As("filteredCount"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Aggregate(firestore.Accumulators(
+        firestore.CountIf(firestore.FieldOf("rating").GreaterThan(4)).As("filteredCount"),
+    )).
+    Execute(ctx)
+```
 
-### COUNT\_DISTINCT
+### COUNT_DISTINCT
 
 **Syntax:**
 
-    count_distinct(expression: ANY) -> INT64
+```
+count_distinct(expression: ANY) -> INT64
+```
 
 **Description:**
 
@@ -262,76 +296,92 @@ Returns the number of unique non- `NULL` , non- `ABSENT` values of `expression` 
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .aggregate(field("author").countDistinct().as("unique_authors"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .aggregate(field("author").countDistinct().as("unique_authors"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .aggregate(field("author").countDistinct().as("unique_authors"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .aggregate(field("author").countDistinct().as("unique_authors"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .aggregate([AggregateFunction("count_distinct", [Field("author")]).as("unique_authors")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .aggregate([AggregateFunction("count_distinct", [Field("author")]).as("unique_authors")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .aggregate(AggregateFunction.countDistinct("author").alias("unique_authors"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .aggregate(AggregateFunction.countDistinct("author").alias("unique_authors"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .aggregate(AggregateFunction.countDistinct("author").alias("unique_authors"))
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .aggregate(AggregateFunction.countDistinct("author").alias("unique_authors"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .aggregate(Field.of("author").count_distinct().as_("unique_authors"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .aggregate(Field.of("author").count_distinct().as_("unique_authors"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .aggregate(countDistinct("author").as("unique_authors"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .aggregate(countDistinct("author").as("unique_authors"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Aggregate(firestore.Accumulators(
-         firestore.CountDistinct("author").As("unique_authors"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Aggregate(firestore.Accumulators(
+        firestore.CountDistinct("author").As("unique_authors"),
+    )).
+    Execute(ctx)
+```
 
 ### SUM
 
 **Syntax:**
 
-    sum(expression: ANY) -> NUMBER
+```
+sum(expression: ANY) -> NUMBER
+```
 
 **Description:**
 
@@ -339,80 +389,96 @@ Returns the sum for all numerical values, ignoring non-numeric values. Returns `
 
 The output will have the same type as the widest input type except in these cases:
 
-  - An `INTEGER` will be converted to a `DOUBLE` if it cannot be represented as an `INTEGER` .
+- An `INTEGER` will be converted to a `DOUBLE` if it cannot be represented as an `INTEGER` .
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("cities")
-      .aggregate(field("population").sum().as("totalPopulation"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("cities")
+  .aggregate(field("population").sum().as("totalPopulation"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("cities")
-      .aggregate(field("population").sum().as("totalPopulation"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("cities")
+  .aggregate(field("population").sum().as("totalPopulation"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("cities")
-      .aggregate([Field("population").sum().as("totalPopulation")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("cities")
+  .aggregate([Field("population").sum().as("totalPopulation")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("cities")
-        .aggregate(AggregateFunction.sum("population").alias("totalPopulation"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("cities")
+    .aggregate(AggregateFunction.sum("population").alias("totalPopulation"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("cities")
-        .aggregate(AggregateFunction.sum("population").alias("totalPopulation"))
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("cities")
+    .aggregate(AggregateFunction.sum("population").alias("totalPopulation"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("cities")
-        .aggregate(Field.of("population").sum().as_("totalPopulation"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("cities")
+    .aggregate(Field.of("population").sum().as_("totalPopulation"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("cities")
-            .aggregate(sum("population").as("totalPopulation"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("cities")
+        .aggregate(sum("population").as("totalPopulation"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("cities").
-     Aggregate(firestore.Accumulators(
-         firestore.Sum("population").As("totalPopulation"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("cities").
+    Aggregate(firestore.Accumulators(
+        firestore.Sum("population").As("totalPopulation"),
+    )).
+    Execute(ctx)
+```
 
 ### AVERAGE
 
 **Syntax:**
 
-    average(expression: ANY) -> FLOAT64
+```
+average(expression: ANY) -> FLOAT64
+```
 
 **Description:**
 
@@ -420,80 +486,96 @@ Returns the average for all numerical values, ignoring non-numeric values. Evalu
 
 The output will have the same type as the input type except in these cases:
 
-  - An `INTEGER` will be converted to a `DOUBLE` if it cannot be represented as an `INTEGER` .
+- An `INTEGER` will be converted to a `DOUBLE` if it cannot be represented as an `INTEGER` .
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("cities")
-      .aggregate(field("population").average().as("averagePopulation"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("cities")
+  .aggregate(field("population").average().as("averagePopulation"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("cities")
-      .aggregate(field("population").average().as("averagePopulation"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("cities")
+  .aggregate(field("population").average().as("averagePopulation"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("cities")
-      .aggregate([Field("population").average().as("averagePopulation")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("cities")
+  .aggregate([Field("population").average().as("averagePopulation")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("cities")
-        .aggregate(AggregateFunction.average("population").alias("averagePopulation"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("cities")
+    .aggregate(AggregateFunction.average("population").alias("averagePopulation"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("cities")
-        .aggregate(AggregateFunction.average("population").alias("averagePopulation"))
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("cities")
+    .aggregate(AggregateFunction.average("population").alias("averagePopulation"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("cities")
-        .aggregate(Field.of("population").average().as_("averagePopulation"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("cities")
+    .aggregate(Field.of("population").average().as_("averagePopulation"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("cities")
-            .aggregate(average("population").as("averagePopulation"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("cities")
+        .aggregate(average("population").as("averagePopulation"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("cities").
-     Aggregate(firestore.Accumulators(
-         firestore.Average("population").As("averagePopulation"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("cities").
+    Aggregate(firestore.Accumulators(
+        firestore.Average("population").As("averagePopulation"),
+    )).
+    Execute(ctx)
+```
 
 ### MINIMUM
 
 **Syntax:**
 
-    minimum(expression: ANY) -> ANY
+```
+minimum(expression: ANY) -> ANY
+```
 
 **Description:**
 
@@ -505,76 +587,92 @@ If there are multiple minimum equivalent values, any one of those values can be 
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .aggregate(field("price").minimum().as("minimumPrice"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .aggregate(field("price").minimum().as("minimumPrice"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .aggregate(field("price").minimum().as("minimumPrice"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .aggregate(field("price").minimum().as("minimumPrice"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .aggregate([Field("price").minimum().as("minimumPrice")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .aggregate([Field("price").minimum().as("minimumPrice")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .aggregate(AggregateFunction.minimum("price").alias("minimumPrice"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .aggregate(AggregateFunction.minimum("price").alias("minimumPrice"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .aggregate(AggregateFunction.minimum("price").alias("minimumPrice"))
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .aggregate(AggregateFunction.minimum("price").alias("minimumPrice"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .aggregate(Field.of("price").minimum().as_("minimumPrice"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .aggregate(Field.of("price").minimum().as_("minimumPrice"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .aggregate(minimum("price").as("minimumPrice"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .aggregate(minimum("price").as("minimumPrice"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Aggregate(firestore.Accumulators(
-         firestore.Minimum("price").As("minimumPrice"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Aggregate(firestore.Accumulators(
+        firestore.Minimum("price").As("minimumPrice"),
+    )).
+    Execute(ctx)
+```
 
 ### MAXIMUM
 
 **Syntax:**
 
-    maximum(expression: ANY) -> ANY
+```
+maximum(expression: ANY) -> ANY
+```
 
 **Description:**
 
@@ -586,76 +684,92 @@ If there are multiple maximum equivalent values, any one of those values can be 
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .aggregate(field("price").maximum().as("maximumPrice"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .aggregate(field("price").maximum().as("maximumPrice"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .aggregate(field("price").maximum().as("maximumPrice"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .aggregate(field("price").maximum().as("maximumPrice"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .aggregate([Field("price").maximum().as("maximumPrice")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .aggregate([Field("price").maximum().as("maximumPrice")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .aggregate(AggregateFunction.maximum("price").alias("maximumPrice"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .aggregate(AggregateFunction.maximum("price").alias("maximumPrice"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .aggregate(AggregateFunction.maximum("price").alias("maximumPrice"))
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .aggregate(AggregateFunction.maximum("price").alias("maximumPrice"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .aggregate(Field.of("price").maximum().as_("maximumPrice"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .aggregate(Field.of("price").maximum().as_("maximumPrice"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .aggregate(maximum("price").as("maximumPrice"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .aggregate(maximum("price").as("maximumPrice"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Aggregate(firestore.Accumulators(
-         firestore.Maximum("price").As("maximumPrice"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Aggregate(firestore.Accumulators(
+        firestore.Maximum("price").As("maximumPrice"),
+    )).
+    Execute(ctx)
+```
 
 ### FIRST
 
 **Syntax:**
 
-    first(expression: ANY) -> ANY
+```
+first(expression: ANY) -> ANY
+```
 
 **Description:**
 
@@ -665,17 +779,21 @@ Returns the value of `expression` for the first returned document.
 
 **Syntax:**
 
-    last(expression: ANY) -> ANY
+```
+last(expression: ANY) -> ANY
+```
 
 **Description:**
 
 Returns the value of `expression` for the last returned document.
 
-### ARRAY\_AGG
+### ARRAY_AGG
 
 **Syntax:**
 
-    array_agg(expression: ANY) -> ARRAY<ANY>
+```
+array_agg(expression: ANY) -> ARRAY<ANY>
+```
 
 **Description:**
 
@@ -685,11 +803,13 @@ If the expression resolves to an absent value, it is converted to `NULL` .
 
 The order of elements in the output array is not stable and shouldn't be relied upon.
 
-### ARRAY\_AGG\_DISTINCT
+### ARRAY_AGG_DISTINCT
 
 **Syntax:**
 
-    array_agg_distinct(expression: ANY) -> ARRAY<ANY>
+```
+array_agg_distinct(expression: ANY) -> ARRAY<ANY>
+```
 
 **Description:**
 
@@ -703,65 +823,69 @@ The order of elements in the output array is not stable and shouldn't be relied 
 
 All arithmetic functions in Firestore have the following behaviors:
 
-  - Evaluates to `NULL` if any of the input parameters is `NULL` .
-  - Evaluates to `NaN` if any of the arguments is `NaN` .
-  - Generates an error if an overflow or underflow occurs.
+- Evaluates to `NULL` if any of the input parameters is `NULL` .
+- Evaluates to `NaN` if any of the arguments is `NaN` .
+- Generates an error if an overflow or underflow occurs.
 
 Firestore performs **numeric type widening** based on the following hierarchy: `INT32` \< `INT64` \< `FLOAT64` \< `DECIMAL128` . When an arithmetic function takes multiple numeric arguments of different types (for example, `add(5.0D, 6L)` ), narrower types are implicitly converted to the widest type present among the operands. In the previous example, the `6L` is widened to `6.0D` resulting in the expression returning a `FLOAT64` type.
 
 An implicit coercion from `INT64` -\> `FLOAT64` can result in a loss of precision as the coerced value can lose of its least significant bits. The resulting value will be rounded version of the original integer value using IEEE 754 round-to-nearest mode.
 
-|                             |                                                          |
-| --------------------------- | -------------------------------------------------------- |
-| Name                        | Description                                              |
-| `         ABS        `      | Returns the absolute value of a `number`                 |
-| `         ADD        `      | Returns the value of `x + y`                             |
-| `         SUBTRACT        ` | Returns the value of `x - y`                             |
-| `         MULTIPLY        ` | Returns the value of `x * y`                             |
-| `         DIVIDE        `   | Returns the value of `x / y`                             |
-| `         MOD        `      | Returns the remainder of the division of `x / y`         |
-| `         CEIL        `     | Returns the ceiling of a `number`                        |
-| `         FLOOR        `    | Returns the floor of a `number`                          |
-| `         ROUND        `    | Rounds a `number` to `places` decimal places             |
-| `         TRUNC        `    | Truncates a `number` to `places` decimal places          |
-| `         POW        `      | Returns the value of `base^exponent`                     |
-| `         SQRT        `     | Returns the square root of a `number`                    |
-| `         EXP        `      | Returns Euler's number raised to the power of `exponent` |
-| `         LN        `       | Returns the natural logarithm of a `number`              |
-| `         LOG        `      | Returns the logarithm of a `number`                      |
-| `         LOG10        `    | Returns the logarithm of a `number` to base `10`         |
-| `         RAND        `     | Returns a pseudo-random floating point number            |
+|                                                                                                             |                                                          |
+|-------------------------------------------------------------------------------------------------------------|----------------------------------------------------------|
+| Name                                                                                                        | Description                                              |
+| [`ABS`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#abs)           | Returns the absolute value of a `number`                 |
+| [`ADD`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#add)           | Returns the value of `x + y`                             |
+| [`SUBTRACT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#subtract) | Returns the value of `x - y`                             |
+| [`MULTIPLY`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#multiply) | Returns the value of `x * y`                             |
+| [`DIVIDE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#divide)     | Returns the value of `x / y`                             |
+| [`MOD`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#mod)           | Returns the remainder of the division of `x / y`         |
+| [`CEIL`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#ceil)         | Returns the ceiling of a `number`                        |
+| [`FLOOR`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#floor)       | Returns the floor of a `number`                          |
+| [`ROUND`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#round)       | Rounds a `number` to `places` decimal places             |
+| [`TRUNC`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#trunc)       | Truncates a `number` to `places` decimal places          |
+| [`POW`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#pow)           | Returns the value of `base^exponent`                     |
+| [`SQRT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#sqrt)         | Returns the square root of a `number`                    |
+| [`EXP`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#exp)           | Returns Euler's number raised to the power of `exponent` |
+| [`LN`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#ln)             | Returns the natural logarithm of a `number`              |
+| [`LOG`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#log)           | Returns the logarithm of a `number`                      |
+| [`LOG10`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#log10)       | Returns the logarithm of a `number` to base `10`         |
+| [`RAND`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#rand)         | Returns a pseudo-random floating point number            |
 
 ### ABS
 
 **Syntax:**
 
-    abs[N <: INT32 | INT64 | FLOAT64](number: N) -> N
+```
+abs[N <: INT32 | INT64 | FLOAT64](number: N) -> N
+```
 
 **Description:**
 
 Returns the absolute value of a `number` .
 
-  - Throws an error when the function would overflow an `INT32` or `INT64` value.
+- Throws an error when the function would overflow an `INT32` or `INT64` value.
 
 **Examples:**
 
-| number            | `abs(number)` |
-| :---------------- | :------------ |
-| 10                | 10            |
-| \-10              | 10            |
-| 10L               | 10L           |
-| \-0.0             | 0.0           |
-| 10.5              | 10.5          |
-| \-10.5            | 10.5          |
-| \-2 <sup>31</sup> | `[error]`     |
-| \-2 <sup>63</sup> | `[error]`     |
+| number           | `abs(number)` |
+|------------------|---------------|
+| 10               | 10            |
+| -10              | 10            |
+| 10L              | 10L           |
+| -0.0             | 0.0           |
+| 10.5             | 10.5          |
+| -10.5            | 10.5          |
+| -2 <sup>31</sup> | `[error]`     |
+| -2 <sup>63</sup> | `[error]`     |
 
 ### ADD
 
 **Syntax:**
 
-    add[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+```
+add[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+```
 
 **Description:**
 
@@ -770,88 +894,101 @@ Returns the value of `x + y` .
 **Examples:**
 
 | x         | y   | `add(x, y)` |
-| :-------- | :-- | :---------- |
+|-----------|-----|-------------|
 | 20        | 3   | 23          |
 | 10.0      | 1   | 11.0        |
 | 22.5      | 2.0 | 24.5        |
 | INT64.MAX | 1   | `[error]`   |
-| INT64.MIN | \-1 | `[error]`   |
+| INT64.MIN | -1  | `[error]`   |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("soldBooks").add(field("unsoldBooks")).as("totalBooks"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("soldBooks").add(field("unsoldBooks")).as("totalBooks"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("soldBooks").add(field("unsoldBooks")).as("totalBooks"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("soldBooks").add(field("unsoldBooks")).as("totalBooks"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("soldBooks").add(Field("unsoldBooks")).as("totalBooks")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("soldBooks").add(Field("unsoldBooks")).as("totalBooks")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(Expression.add(field("soldBooks"), field("unsoldBooks")).alias("totalBooks"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(Expression.add(field("soldBooks"), field("unsoldBooks")).alias("totalBooks"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.add(field("soldBooks"), field("unsoldBooks")).alias("totalBooks"))
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("soldBooks").add(Field.of("unsoldBooks")).as_("totalBooks"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("soldBooks").add(Field.of("unsoldBooks")).as_("totalBooks"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(add(field("soldBooks"), field("unsoldBooks")).as("totalBooks"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(add(field("soldBooks"), field("unsoldBooks")).as("totalBooks"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Add(firestore.FieldOf("soldBooks"), firestore.FieldOf("unsoldBooks")).As("totalBooks"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Add(firestore.FieldOf("soldBooks"), firestore.FieldOf("unsoldBooks")).As("totalBooks"),
+    )).
+    Execute(ctx)
+```
 
 ### SUBTRACT
 
 **Syntax:**
 
-    subtract[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+```
+subtract[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+```
 
 **Description:**
 
@@ -860,96 +997,109 @@ Returns the value of `x - y` .
 **Examples:**
 
 | x         | y   | `subtract(x, y)` |
-| :-------- | :-- | :--------------- |
+|-----------|-----|------------------|
 | 20        | 3   | 17               |
 | 10.0      | 1   | 9.0              |
 | 22.5      | 2.0 | 20.5             |
-| INT64.MAX | \-1 | `[error]`        |
+| INT64.MAX | -1  | `[error]`        |
 | INT64.MIN | 1   | `[error]`        |
 
 ##### Node.js
 
-    const storeCredit = 7;
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("price").subtract(constant(storeCredit)).as("totalCost"))
-      .execute();
+```
+const storeCredit = 7;
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("price").subtract(constant(storeCredit)).as("totalCost"))
+  .execute();
+```
 
 ### Web
 
-    const storeCredit = 7;
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("price").subtract(constant(storeCredit)).as("totalCost"))
-    );
+```
+const storeCredit = 7;
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("price").subtract(constant(storeCredit)).as("totalCost"))
+);
+```
 
 ##### Swift
 
-    let storeCredit = 7
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("price").subtract(Constant(storeCredit)).as("totalCost")])
-      .execute()
+```
+let storeCredit = 7
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("price").subtract(Constant(storeCredit)).as("totalCost")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val storeCredit = 7
-    val result = db.pipeline()
-        .collection("books")
-        .select(Expression.subtract(field("price"), storeCredit).alias("totalCost"))
-        .execute()
+```
+val storeCredit = 7
+val result = db.pipeline()
+    .collection("books")
+    .select(Expression.subtract(field("price"), storeCredit).alias("totalCost"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 int storeCredit = 7;
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.subtract(field("price"), storeCredit).alias("totalCost"))
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    store_credit = 7
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("price").subtract(store_credit).as_("totalCost"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+store_credit = 7
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("price").subtract(store_credit).as_("totalCost"))
+    .execute()
+)
+```
 
 ##### Java
 
-    int storeCredit = 7;
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(subtract(field("price"), storeCredit).as("totalCost"))
-            .execute()
-            .get();
+```
+int storeCredit = 7;
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(subtract(field("price"), storeCredit).as("totalCost"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    storeCredit := 7
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Subtract(firestore.FieldOf("price"), storeCredit).As("totalCost"),
-     )).
-     Execute(ctx)
+```
+storeCredit := 7
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Subtract(firestore.FieldOf("price"), storeCredit).As("totalCost"),
+    )).
+    Execute(ctx)
+```
 
 ### MULTIPLY
 
 **Syntax:**
 
-    multiply[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+```
+multiply[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+```
 
 **Description:**
 
@@ -958,7 +1108,7 @@ Returns the value of `x * y` .
 **Examples:**
 
 | x           | y           | `multiply(x, y)` |
-| :---------- | :---------- | :--------------- |
+|-------------|-------------|------------------|
 | 20          | 3           | 60               |
 | 10.0        | 1           | 10.0             |
 | 22.5        | 2.0         | 45.0             |
@@ -968,79 +1118,92 @@ Returns the value of `x * y` .
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("price").multiply(field("soldBooks")).as("revenue"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("price").multiply(field("soldBooks")).as("revenue"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("price").multiply(field("soldBooks")).as("revenue"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("price").multiply(field("soldBooks")).as("revenue"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("price").multiply(Field("soldBooks")).as("revenue")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("price").multiply(Field("soldBooks")).as("revenue")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(Expression.multiply(field("price"), field("soldBooks")).alias("revenue"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(Expression.multiply(field("price"), field("soldBooks")).alias("revenue"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.multiply(field("price"), field("soldBooks")).alias("revenue"))
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("price").multiply(Field.of("soldBooks")).as_("revenue"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("price").multiply(Field.of("soldBooks")).as_("revenue"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(multiply(field("price"), field("soldBooks")).as("revenue"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(multiply(field("price"), field("soldBooks")).as("revenue"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Multiply(firestore.FieldOf("price"), firestore.FieldOf("soldBooks")).As("revenue"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Multiply(firestore.FieldOf("price"), firestore.FieldOf("soldBooks")).As("revenue"),
+    )).
+    Execute(ctx)
+```
 
 ### DIVIDE
 
 **Syntax:**
 
-    divide[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+```
+divide[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+```
 
 **Description:**
 
@@ -1048,106 +1211,119 @@ Returns the value of `x / y` . Integer division is truncated.
 
 **Examples:**
 
-| x     | y   | `divide(x, y)` |
-| :---- | :-- | :------------- |
-| 20    | 3   | 6              |
-| 10.0  | 3   | 3.333...       |
-| 22.5  | 2   | 11.25          |
-| 10    | 0   | `[error]`      |
-| 1.0   | 0.0 | `+inf`         |
-| \-1.0 | 0.0 | `-inf`         |
+| x    | y   | `divide(x, y)` |
+|------|-----|----------------|
+| 20   | 3   | 6              |
+| 10.0 | 3   | 3.333...       |
+| 22.5 | 2   | 11.25          |
+| 10   | 0   | `[error]`      |
+| 1.0  | 0.0 | `+inf`         |
+| -1.0 | 0.0 | `-inf`         |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("ratings").divide(field("soldBooks")).as("reviewRate"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("ratings").divide(field("soldBooks")).as("reviewRate"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("ratings").divide(field("soldBooks")).as("reviewRate"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("ratings").divide(field("soldBooks")).as("reviewRate"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("ratings").divide(Field("soldBooks")).as("reviewRate")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("ratings").divide(Field("soldBooks")).as("reviewRate")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(Expression.divide(field("ratings"), field("soldBooks")).alias("reviewRate"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(Expression.divide(field("ratings"), field("soldBooks")).alias("reviewRate"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.divide(field("ratings"), field("soldBooks")).alias("reviewRate"))
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("ratings").divide(Field.of("soldBooks")).as_("reviewRate"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("ratings").divide(Field.of("soldBooks")).as_("reviewRate"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(divide(field("ratings"), field("soldBooks")).as("reviewRate"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(divide(field("ratings"), field("soldBooks")).as("reviewRate"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Divide(firestore.FieldOf("ratings"), firestore.FieldOf("soldBooks")).As("reviewRate"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Divide(firestore.FieldOf("ratings"), firestore.FieldOf("soldBooks")).As("reviewRate"),
+    )).
+    Execute(ctx)
+```
 
 ### MOD
 
 **Syntax:**
 
-    mod[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+```
+mod[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+```
 
 **Description:**
 
 Returns the remainder of `x / y` .
 
-  - Throws an `error` when `y` is zero for integer types ( `INT64` ).
-  - Returns `NaN` when `y` is zero for float types ( `FLOAT64` ).
+- Throws an `error` when `y` is zero for integer types ( `INT64` ).
+- Returns `NaN` when `y` is zero for float types ( `FLOAT64` ).
 
 **Examples:**
 
 | x    | y   | `mod(x, y)` |
-| :--- | :-- | :---------- |
+|------|-----|-------------|
 | 20   | 3   | 2           |
-| \-10 | 3   | \-1         |
-| 10   | \-3 | 1           |
-| \-10 | \-3 | \-1         |
+| -10  | 3   | -1          |
+| 10   | -3  | 1           |
+| -10  | -3  | -1          |
 | 10   | 1   | 0           |
 | 22.5 | 2   | 0.5         |
 | 22.5 | 0.0 | `NaN`       |
@@ -1155,87 +1331,100 @@ Returns the remainder of `x / y` .
 
 ##### Node.js
 
-    const displayCapacity = 1000;
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("unsoldBooks").mod(constant(displayCapacity)).as("warehousedBooks"))
-      .execute();
+```
+const displayCapacity = 1000;
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("unsoldBooks").mod(constant(displayCapacity)).as("warehousedBooks"))
+  .execute();
+```
 
 ### Web
 
-    const displayCapacity = 1000;
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("unsoldBooks").mod(constant(displayCapacity)).as("warehousedBooks"))
-    );
+```
+const displayCapacity = 1000;
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("unsoldBooks").mod(constant(displayCapacity)).as("warehousedBooks"))
+);
+```
 
 ##### Swift
 
-    let displayCapacity = 1000
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("unsoldBooks").mod(Constant(displayCapacity)).as("warehousedBooks")])
-      .execute()
+```
+let displayCapacity = 1000
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("unsoldBooks").mod(Constant(displayCapacity)).as("warehousedBooks")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val displayCapacity = 1000
-    val result = db.pipeline()
-        .collection("books")
-        .select(Expression.mod(field("unsoldBooks"), displayCapacity).alias("warehousedBooks"))
-        .execute()
+```
+val displayCapacity = 1000
+val result = db.pipeline()
+    .collection("books")
+    .select(Expression.mod(field("unsoldBooks"), displayCapacity).alias("warehousedBooks"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 int displayCapacity = 1000;
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.mod(field("unsoldBooks"), displayCapacity).alias("warehousedBooks"))
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    display_capacity = 1000
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("unsoldBooks").mod(display_capacity).as_("warehousedBooks"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+display_capacity = 1000
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("unsoldBooks").mod(display_capacity).as_("warehousedBooks"))
+    .execute()
+)
+```
 
 ##### Java
 
-    int displayCapacity = 1000;
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(mod(field("unsoldBooks"), displayCapacity).as("warehousedBooks"))
-            .execute()
-            .get();
+```
+int displayCapacity = 1000;
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(mod(field("unsoldBooks"), displayCapacity).as("warehousedBooks"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    displayCapacity := 1000
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Mod(firestore.FieldOf("unsoldBooks"), displayCapacity).As("warehousedBooks"),
-     )).
-     Execute(ctx)
+```
+displayCapacity := 1000
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Mod(firestore.FieldOf("unsoldBooks"), displayCapacity).As("warehousedBooks"),
+    )).
+    Execute(ctx)
+```
 
 ### CEIL
 
 **Syntax:**
 
-    ceil[N <: INT32 | INT64 | FLOAT64](number: N) -> N
+```
+ceil[N <: INT32 | INT64 | FLOAT64](number: N) -> N
+```
 
 **Description:**
 
@@ -1244,12 +1433,12 @@ Returns the smallest integer value that isn't less than `number` .
 **Examples:**
 
 | number | `ceil(number)` |
-| :----- | :------------- |
+|--------|----------------|
 | 20     | 20             |
 | 10     | 10             |
 | 0      | 0              |
 | 24L    | 24L            |
-| \-0.4  | \-0.0          |
+| -0.4   | -0.0           |
 | 0.4    | 1.0            |
 | 22.5   | 23.0           |
 | `+inf` | `+inf`         |
@@ -1257,49 +1446,55 @@ Returns the smallest integer value that isn't less than `number` .
 
 ##### Node.js
 
-    const booksPerShelf = 100;
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        field("unsoldBooks").divide(constant(booksPerShelf)).ceil().as("requiredShelves")
-      )
-      .execute();
+```
+const booksPerShelf = 100;
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    field("unsoldBooks").divide(constant(booksPerShelf)).ceil().as("requiredShelves")
+  )
+  .execute();
+```
 
 ### Web
 
-    const booksPerShelf = 100;
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("unsoldBooks").divide(constant(booksPerShelf)).ceil().as("requiredShelves")
-      )
-    );
+```
+const booksPerShelf = 100;
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("unsoldBooks").divide(constant(booksPerShelf)).ceil().as("requiredShelves")
+  )
+);
+```
 
 ##### Swift
 
-    let booksPerShelf = 100
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("unsoldBooks").divide(Constant(booksPerShelf)).ceil().as("requiredShelves")
-      ])
-      .execute()
+```
+let booksPerShelf = 100
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("unsoldBooks").divide(Constant(booksPerShelf)).ceil().as("requiredShelves")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val booksPerShelf = 100
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            Expression.divide(field("unsoldBooks"), booksPerShelf).ceil().alias("requiredShelves")
-        )
-        .execute()
+```
+val booksPerShelf = 100
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        Expression.divide(field("unsoldBooks"), booksPerShelf).ceil().alias("requiredShelves")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 int booksPerShelf = 100;
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
@@ -1307,52 +1502,59 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         Expression.divide(field("unsoldBooks"), booksPerShelf).ceil().alias("requiredShelves")
     )
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    books_per_shelf = 100
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Field.of("unsoldBooks")
-            .divide(books_per_shelf)
-            .ceil()
-            .as_("requiredShelves")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+books_per_shelf = 100
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Field.of("unsoldBooks")
+        .divide(books_per_shelf)
+        .ceil()
+        .as_("requiredShelves")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    int booksPerShelf = 100;
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(ceil(divide(field("unsoldBooks"), booksPerShelf)).as("requiredShelves"))
-            .execute()
-            .get();
+```
+int booksPerShelf = 100;
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(ceil(divide(field("unsoldBooks"), booksPerShelf)).as("requiredShelves"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    booksPerShelf := 100
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Ceil(firestore.Divide(firestore.FieldOf("unsoldBooks"), booksPerShelf)).As("requiredShelves"),
-     )).
-     Execute(ctx)
+```
+booksPerShelf := 100
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Ceil(firestore.Divide(firestore.FieldOf("unsoldBooks"), booksPerShelf)).As("requiredShelves"),
+    )).
+    Execute(ctx)
+```
 
 ### FLOOR
 
 **Syntax:**
 
-    floor[N <: INT32 | INT64 | FLOAT64](number: N) -> N
+```
+floor[N <: INT32 | INT64 | FLOAT64](number: N) -> N
+```
 
 **Description:**
 
@@ -1361,12 +1563,12 @@ Returns the largest integer value that isn't greater than `number` .
 **Examples:**
 
 | number     | `floor(number)` |
-| :--------- | :-------------- |
+|------------|-----------------|
 | 20         | 20              |
 | 10         | 10              |
 | 0          | 0               |
 | 2147483648 | 2147483648      |
-| \-0.4      | \-1.0           |
+| -0.4       | -1.0            |
 | 0.4        | 0.0             |
 | 22.5       | 22.0            |
 | `+inf`     | `+inf`          |
@@ -1374,347 +1576,381 @@ Returns the largest integer value that isn't greater than `number` .
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .addFields(
-        field("wordCount").divide(field("pages")).floor().as("wordsPerPage")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .addFields(
+    field("wordCount").divide(field("pages")).floor().as("wordsPerPage")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .addFields(
-        field("wordCount").divide(field("pages")).floor().as("wordsPerPage")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .addFields(
+    field("wordCount").divide(field("pages")).floor().as("wordsPerPage")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .addFields([
-        Field("wordCount").divide(Field("pages")).floor().as("wordsPerPage")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .addFields([
+    Field("wordCount").divide(Field("pages")).floor().as("wordsPerPage")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .addFields(
-            Expression.divide(field("wordCount"), field("pages")).floor().alias("wordsPerPage")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .addFields(
+        Expression.divide(field("wordCount"), field("pages")).floor().alias("wordsPerPage")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .addFields(
         Expression.divide(field("wordCount"), field("pages")).floor().alias("wordsPerPage")
     )
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .add_fields(
-            Field.of("wordCount").divide(Field.of("pages")).floor().as_("wordsPerPage")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .add_fields(
+        Field.of("wordCount").divide(Field.of("pages")).floor().as_("wordsPerPage")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .addFields(floor(divide(field("wordCount"), field("pages"))).as("wordsPerPage"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .addFields(floor(divide(field("wordCount"), field("pages"))).as("wordsPerPage"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     AddFields(firestore.Selectables(
-         firestore.Floor(firestore.Divide(firestore.FieldOf("wordCount"), firestore.FieldOf("pages"))).As("wordsPerPage"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    AddFields(firestore.Selectables(
+        firestore.Floor(firestore.Divide(firestore.FieldOf("wordCount"), firestore.FieldOf("pages"))).As("wordsPerPage"),
+    )).
+    Execute(ctx)
+```
 
 ### ROUND
 
 **Syntax:**
 
-    round[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](number: N) -> N
-    round[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](number: N, places: INT64) -> N
+```
+round[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](number: N) -> N
+round[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](number: N, places: INT64) -> N
+```
 
 **Description:**
 
 Rounds `places` digits off a `number` . Rounds digits from the right of the decimal point if `places` is positive, and to the left of the decimal point if it is negative.
 
-  - If only `number` is provided, rounds to the nearest whole value.
-  - Rounds away from zero in halfway cases.
-  - An `error` is thrown if rounding with a negative `places` value results in overflow.
+- If only `number` is provided, rounds to the nearest whole value.
+- Rounds away from zero in halfway cases.
+- An `error` is thrown if rounding with a negative `places` value results in overflow.
 
 **Examples:**
 
 | number              | places | `round(number, places)` |
-| :------------------ | :----- | :---------------------- |
+|---------------------|--------|-------------------------|
 | 15.5                | 0      | 16.0                    |
-| \-15.5              | 0      | \-16.0                  |
+| -15.5               | 0      | -16.0                   |
 | 15                  | 1      | 15                      |
 | 15                  | 0      | 15                      |
-| 15                  | \-1    | 20                      |
-| 15                  | \-2    | 0                       |
+| 15                  | -1     | 20                      |
+| 15                  | -2     | 0                       |
 | 15.48924            | 1      | 15.5                    |
-| 2 <sup>31</sup> -1  | \-1    | `[error]`               |
-| 2 <sup>63</sup> -1L | \-1    | `[error]`               |
+| 2 <sup>31</sup> -1  | -1     | `[error]`               |
+| 2 <sup>63</sup> -1L | -1     | `[error]`               |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("soldBooks").multiply(field("price")).round().as("partialRevenue"))
-      .aggregate(field("partialRevenue").sum().as("totalRevenue"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("soldBooks").multiply(field("price")).round().as("partialRevenue"))
+  .aggregate(field("partialRevenue").sum().as("totalRevenue"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("soldBooks").multiply(field("price")).round().as("partialRevenue"))
-      .aggregate(field("partialRevenue").sum().as("totalRevenue"))
-      );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("soldBooks").multiply(field("price")).round().as("partialRevenue"))
+  .aggregate(field("partialRevenue").sum().as("totalRevenue"))
+  );
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("soldBooks").multiply(Field("price")).round().as("partialRevenue")])
-      .aggregate([Field("partialRevenue").sum().as("totalRevenue")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("soldBooks").multiply(Field("price")).round().as("partialRevenue")])
+  .aggregate([Field("partialRevenue").sum().as("totalRevenue")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(Expression.multiply(field("soldBooks"), field("price")).round().alias("partialRevenue"))
-        .aggregate(AggregateFunction.sum("partialRevenue").alias("totalRevenue"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(Expression.multiply(field("soldBooks"), field("price")).round().alias("partialRevenue"))
+    .aggregate(AggregateFunction.sum("partialRevenue").alias("totalRevenue"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(Expression.multiply(field("soldBooks"), field("price")).round().alias("partialRevenue"))
     .aggregate(AggregateFunction.sum("partialRevenue").alias("totalRevenue"))
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Field.of("soldBooks")
-            .multiply(Field.of("price"))
-            .round()
-            .as_("partialRevenue")
-        )
-        .aggregate(Field.of("partialRevenue").sum().as_("totalRevenue"))
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Field.of("soldBooks")
+        .multiply(Field.of("price"))
+        .round()
+        .as_("partialRevenue")
     )
+    .aggregate(Field.of("partialRevenue").sum().as_("totalRevenue"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(round(multiply(field("soldBooks"), field("price"))).as("partialRevenue"))
-            .aggregate(sum("partialRevenue").as("totalRevenue"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(round(multiply(field("soldBooks"), field("price"))).as("partialRevenue"))
+        .aggregate(sum("partialRevenue").as("totalRevenue"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Round(firestore.Multiply(firestore.FieldOf("soldBooks"), firestore.FieldOf("price"))).As("partialRevenue"),
-     )).
-     Aggregate(firestore.Accumulators(
-         firestore.Sum("partialRevenue").As("totalRevenue"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Round(firestore.Multiply(firestore.FieldOf("soldBooks"), firestore.FieldOf("price"))).As("partialRevenue"),
+    )).
+    Aggregate(firestore.Accumulators(
+        firestore.Sum("partialRevenue").As("totalRevenue"),
+    )).
+    Execute(ctx)
+```
 
 ### TRUNC
 
 **Syntax:**
 
-    trunc[N <: Number](number: N) -> N
-    trunc[N <: Number](number:  N, places: INT64) -> N
+```
+trunc[N <: Number](number: N) -> N
+trunc[N <: Number](number:  N, places: INT64) -> N
+```
 
 **Description:**
 
 Truncates a `number` to a specified number of `places` decimal places. Truncates digits from the right of the decimal point if `places` is positive, and to the left of the decimal point if it is negative.
 
-  - If only `number` is provided, truncates to the nearest whole value towards zero.
-  - An `error` is thrown if truncating results in overflow.
+- If only `number` is provided, truncates to the nearest whole value towards zero.
+- An `error` is thrown if truncating results in overflow.
 
 **Examples:**
 
-| number     | places | `trunc(number, places)` |
-| :--------- | :----- | :---------------------- |
-| 15.5       | 0      | 15.0                    |
-| \-15.5     | 0      | \-15.0                  |
-| 15         | 1      | 15                      |
-| 15         | 0      | 15                      |
-| 15         | \-1    | 10                      |
-| 15         | \-2    | 0                       |
-| 15.48924   | 1      | 15.4                    |
-| \-15.48924 | 2      | \-15.48                 |
+| number    | places | `trunc(number, places)` |
+|-----------|--------|-------------------------|
+| 15.5      | 0      | 15.0                    |
+| -15.5     | 0      | -15.0                   |
+| 15        | 1      | 15                      |
+| 15        | 0      | 15                      |
+| 15        | -1     | 10                      |
+| 15        | -2     | 0                       |
+| 15.48924  | 1      | 15.4                    |
+| -15.48924 | 2      | -15.48                  |
 
 ### POW
 
 **Syntax:**
 
-    pow(base: FLOAT64, exponent: FLOAT64) -> FLOAT64
+```
+pow(base: FLOAT64, exponent: FLOAT64) -> FLOAT64
+```
 
 **Description:**
 
 Returns the value `base` raised to the power of `exponent` .
 
-  - Throws an error if `base <= 0` and `exponent` is negative.
+- Throws an error if `base <= 0` and `exponent` is negative.
 
-  - For any `exponent` , `pow(1, exponent)` is 1.
+- For any `exponent` , `pow(1, exponent)` is 1.
 
-  - For any `base` , `pow(base, 0)` is 1.
+- For any `base` , `pow(base, 0)` is 1.
 
 **Examples:**
 
 | base   | exponent | `pow(base, exponent)` |
-| :----- | :------- | :-------------------- |
+|--------|----------|-----------------------|
 | 2      | 3        | 8.0                   |
-| 2      | \-3      | 0.125                 |
+| 2      | -3       | 0.125                 |
 | `+inf` | 0        | 1.0                   |
 | 1      | `+inf`   | 1.0                   |
-| \-1    | 0.5      | `[error]`             |
-| 0      | \-1      | `[error]`             |
+| -1     | 0.5      | `[error]`             |
+| 0      | -1       | `[error]`             |
 
 ##### Node.js
 
-    const googleplex = { latitude: 37.4221, longitude: 122.0853 };
-    const result = await db.pipeline()
-      .collection("cities")
-      .addFields(
-        field("lat").subtract(constant(googleplex.latitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("latitudeDifference"),
-        field("lng").subtract(constant(googleplex.longitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("longitudeDifference")
-      )
-      .select(
-        field("latitudeDifference").add(field("longitudeDifference")).sqrt()
-          // Inaccurate for large distances or close to poles
-          .as("approximateDistanceToGoogle")
-      )
-      .execute();
+```
+const googleplex = { latitude: 37.4221, longitude: 122.0853 };
+const result = await db.pipeline()
+  .collection("cities")
+  .addFields(
+    field("lat").subtract(constant(googleplex.latitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("latitudeDifference"),
+    field("lng").subtract(constant(googleplex.longitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("longitudeDifference")
+  )
+  .select(
+    field("latitudeDifference").add(field("longitudeDifference")).sqrt()
+      // Inaccurate for large distances or close to poles
+      .as("approximateDistanceToGoogle")
+  )
+  .execute();
+```
 
 ### Web
 
-    const googleplex = { latitude: 37.4221, longitude: 122.0853 };
-    const result = await execute(db.pipeline()
-      .collection("cities")
-      .addFields(
-        field("lat").subtract(constant(googleplex.latitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("latitudeDifference"),
-        field("lng").subtract(constant(googleplex.longitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("longitudeDifference")
-      )
-      .select(
-        field("latitudeDifference").add(field("longitudeDifference")).sqrt()
-          // Inaccurate for large distances or close to poles
-          .as("approximateDistanceToGoogle")
-      )
-    );
+```
+const googleplex = { latitude: 37.4221, longitude: 122.0853 };
+const result = await execute(db.pipeline()
+  .collection("cities")
+  .addFields(
+    field("lat").subtract(constant(googleplex.latitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("latitudeDifference"),
+    field("lng").subtract(constant(googleplex.longitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("longitudeDifference")
+  )
+  .select(
+    field("latitudeDifference").add(field("longitudeDifference")).sqrt()
+      // Inaccurate for large distances or close to poles
+      .as("approximateDistanceToGoogle")
+  )
+);
+```
 
 ##### Swift
 
-    let googleplex = CLLocation(latitude: 37.4221, longitude: 122.0853)
-    let result = try await db.pipeline()
-      .collection("cities")
-      .addFields([
-        Field("lat").subtract(Constant(googleplex.coordinate.latitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("latitudeDifference"),
-        Field("lng").subtract(Constant(googleplex.coordinate.latitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("longitudeDifference")
-      ])
-      .select([
-        Field("latitudeDifference").add(Field("longitudeDifference")).sqrt()
-          // Inaccurate for large distances or close to poles
-          .as("approximateDistanceToGoogle")
-      ])
-      .execute()
+```
+let googleplex = CLLocation(latitude: 37.4221, longitude: 122.0853)
+let result = try await db.pipeline()
+  .collection("cities")
+  .addFields([
+    Field("lat").subtract(Constant(googleplex.coordinate.latitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("latitudeDifference"),
+    Field("lng").subtract(Constant(googleplex.coordinate.latitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("longitudeDifference")
+  ])
+  .select([
+    Field("latitudeDifference").add(Field("longitudeDifference")).sqrt()
+      // Inaccurate for large distances or close to poles
+      .as("approximateDistanceToGoogle")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val googleplex = GeoPoint(37.4221, -122.0853)
-    val result = db.pipeline()
-        .collection("cities")
-        .addFields(
-            field("lat").subtract(googleplex.latitude)
-                .multiply(111) // km per degree
-                .pow(2)
-                .alias("latitudeDifference"),
-            field("lng").subtract(googleplex.longitude)
-                .multiply(111) // km per degree
-                .pow(2)
-                .alias("longitudeDifference")
-        )
-        .select(
-            field("latitudeDifference").add(field("longitudeDifference")).sqrt()
-                // Inaccurate for large distances or close to poles
-                .alias("approximateDistanceToGoogle")
-        )
-        .execute()
+```
+val googleplex = GeoPoint(37.4221, -122.0853)
+val result = db.pipeline()
+    .collection("cities")
+    .addFields(
+        field("lat").subtract(googleplex.latitude)
+            .multiply(111) // km per degree
+            .pow(2)
+            .alias("latitudeDifference"),
+        field("lng").subtract(googleplex.longitude)
+            .multiply(111) // km per degree
+            .pow(2)
+            .alias("longitudeDifference")
+    )
+    .select(
+        field("latitudeDifference").add(field("longitudeDifference")).sqrt()
+            // Inaccurate for large distances or close to poles
+            .alias("approximateDistanceToGoogle")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 GeoPoint googleplex = new GeoPoint(37.4221, -122.0853);
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("cities")
@@ -1734,93 +1970,100 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .alias("approximateDistanceToGoogle")
     )
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    googleplexLat = 37.4221
-    googleplexLng = -122.0853
-    result = (
-        client.pipeline()
-        .collection("cities")
-        .add_fields(
-            Field.of("lat")
-            .subtract(googleplexLat)
-            .multiply(111)  # km per degree
-            .pow(2)
-            .as_("latitudeDifference"),
-            Field.of("lng")
-            .subtract(googleplexLng)
-            .multiply(111)  # km per degree
-            .pow(2)
-            .as_("longitudeDifference"),
-        )
-        .select(
-            Field.of("latitudeDifference")
-            .add(Field.of("longitudeDifference"))
-            .sqrt()
-            # Inaccurate for large distances or close to poles
-            .as_("approximateDistanceToGoogle")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+googleplexLat = 37.4221
+googleplexLng = -122.0853
+result = (
+    client.pipeline()
+    .collection("cities")
+    .add_fields(
+        Field.of("lat")
+        .subtract(googleplexLat)
+        .multiply(111)  # km per degree
+        .pow(2)
+        .as_("latitudeDifference"),
+        Field.of("lng")
+        .subtract(googleplexLng)
+        .multiply(111)  # km per degree
+        .pow(2)
+        .as_("longitudeDifference"),
     )
+    .select(
+        Field.of("latitudeDifference")
+        .add(Field.of("longitudeDifference"))
+        .sqrt()
+        # Inaccurate for large distances or close to poles
+        .as_("approximateDistanceToGoogle")
+    )
+    .execute()
+)
+```
 
 ##### Java
 
-    double googleplexLat = 37.4221;
-    double googleplexLng = -122.0853;
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("cities")
-            .addFields(
-                pow(multiply(subtract(field("lat"), googleplexLat), 111), 2)
-                    .as("latitudeDifference"),
-                pow(multiply(subtract(field("lng"), googleplexLng), 111), 2)
-                    .as("longitudeDifference"))
-            .select(
-                sqrt(add(field("latitudeDifference"), field("longitudeDifference")))
-                    // Inaccurate for large distances or close to poles
-                    .as("approximateDistanceToGoogle"))
-            .execute()
-            .get();
+```
+double googleplexLat = 37.4221;
+double googleplexLng = -122.0853;
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("cities")
+        .addFields(
+            pow(multiply(subtract(field("lat"), googleplexLat), 111), 2)
+                .as("latitudeDifference"),
+            pow(multiply(subtract(field("lng"), googleplexLng), 111), 2)
+                .as("longitudeDifference"))
+        .select(
+            sqrt(add(field("latitudeDifference"), field("longitudeDifference")))
+                // Inaccurate for large distances or close to poles
+                .as("approximateDistanceToGoogle"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    googleplexLat := 37.4221
-    googleplexLng := -122.0853
-    snapshot := client.Pipeline().
-     Collection("cities").
-     AddFields(firestore.Selectables(
-         firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lat"), googleplexLat), 111), 2).As("latitudeDifference"),
-         firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lng"), googleplexLng), 111), 2).As("longitudeDifference"),
-     )).
-     Select(firestore.Fields(
-         firestore.Sqrt(firestore.Add(firestore.FieldOf("latitudeDifference"), firestore.FieldOf("longitudeDifference"))).
-             // Inaccurate for large distances or close to poles
-             As("approximateDistanceToGoogle"),
-     )).
-     Execute(ctx)
+```
+googleplexLat := 37.4221
+googleplexLng := -122.0853
+snapshot := client.Pipeline().
+    Collection("cities").
+    AddFields(firestore.Selectables(
+        firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lat"), googleplexLat), 111), 2).As("latitudeDifference"),
+        firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lng"), googleplexLng), 111), 2).As("longitudeDifference"),
+    )).
+    Select(firestore.Fields(
+        firestore.Sqrt(firestore.Add(firestore.FieldOf("latitudeDifference"), firestore.FieldOf("longitudeDifference"))).
+            // Inaccurate for large distances or close to poles
+            As("approximateDistanceToGoogle"),
+    )).
+    Execute(ctx)
+```
 
 ### SQRT
 
 **Syntax:**
 
-    sqrt[N <: FLOAT64 | DECIMAL128](number: N) -> N
+```
+sqrt[N <: FLOAT64 | DECIMAL128](number: N) -> N
+```
 
 **Description:**
 
 Returns the square root of a `number` .
 
-  - Throws an `error` if `number` is negative.
+- Throws an `error` if `number` is negative.
 
 **Examples:**
 
 | number  | `sqrt(number)` |
-| :------ | :------------- |
+|---------|----------------|
 | 25      | 5.0            |
 | 12.002  | 3.464...       |
 | 0.0     | 0.0            |
@@ -1831,97 +2074,103 @@ Returns the square root of a `number` .
 
 ##### Node.js
 
-    const googleplex = { latitude: 37.4221, longitude: 122.0853 };
-    const result = await db.pipeline()
-      .collection("cities")
-      .addFields(
-        field("lat").subtract(constant(googleplex.latitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("latitudeDifference"),
-        field("lng").subtract(constant(googleplex.longitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("longitudeDifference")
-      )
-      .select(
-        field("latitudeDifference").add(field("longitudeDifference")).sqrt()
-          // Inaccurate for large distances or close to poles
-          .as("approximateDistanceToGoogle")
-      )
-      .execute();
+```
+const googleplex = { latitude: 37.4221, longitude: 122.0853 };
+const result = await db.pipeline()
+  .collection("cities")
+  .addFields(
+    field("lat").subtract(constant(googleplex.latitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("latitudeDifference"),
+    field("lng").subtract(constant(googleplex.longitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("longitudeDifference")
+  )
+  .select(
+    field("latitudeDifference").add(field("longitudeDifference")).sqrt()
+      // Inaccurate for large distances or close to poles
+      .as("approximateDistanceToGoogle")
+  )
+  .execute();
+```
 
 ### Web
 
-    const googleplex = { latitude: 37.4221, longitude: 122.0853 };
-    const result = await execute(db.pipeline()
-      .collection("cities")
-      .addFields(
-        field("lat").subtract(constant(googleplex.latitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("latitudeDifference"),
-        field("lng").subtract(constant(googleplex.longitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("longitudeDifference")
-      )
-      .select(
-        field("latitudeDifference").add(field("longitudeDifference")).sqrt()
-          // Inaccurate for large distances or close to poles
-          .as("approximateDistanceToGoogle")
-      )
-    );
+```
+const googleplex = { latitude: 37.4221, longitude: 122.0853 };
+const result = await execute(db.pipeline()
+  .collection("cities")
+  .addFields(
+    field("lat").subtract(constant(googleplex.latitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("latitudeDifference"),
+    field("lng").subtract(constant(googleplex.longitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("longitudeDifference")
+  )
+  .select(
+    field("latitudeDifference").add(field("longitudeDifference")).sqrt()
+      // Inaccurate for large distances or close to poles
+      .as("approximateDistanceToGoogle")
+  )
+);
+```
 
 ##### Swift
 
-    let googleplex = CLLocation(latitude: 37.4221, longitude: 122.0853)
-    let result = try await db.pipeline()
-      .collection("cities")
-      .addFields([
-        Field("lat").subtract(Constant(googleplex.coordinate.latitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("latitudeDifference"),
-        Field("lng").subtract(Constant(googleplex.coordinate.latitude))
-          .multiply(111 /* km per degree */)
-          .pow(2)
-          .as("longitudeDifference")
-      ])
-      .select([
-        Field("latitudeDifference").add(Field("longitudeDifference")).sqrt()
-          // Inaccurate for large distances or close to poles
-          .as("approximateDistanceToGoogle")
-      ])
-      .execute()
+```
+let googleplex = CLLocation(latitude: 37.4221, longitude: 122.0853)
+let result = try await db.pipeline()
+  .collection("cities")
+  .addFields([
+    Field("lat").subtract(Constant(googleplex.coordinate.latitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("latitudeDifference"),
+    Field("lng").subtract(Constant(googleplex.coordinate.latitude))
+      .multiply(111 /* km per degree */)
+      .pow(2)
+      .as("longitudeDifference")
+  ])
+  .select([
+    Field("latitudeDifference").add(Field("longitudeDifference")).sqrt()
+      // Inaccurate for large distances or close to poles
+      .as("approximateDistanceToGoogle")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val googleplex = GeoPoint(37.4221, -122.0853)
-    val result = db.pipeline()
-        .collection("cities")
-        .addFields(
-            field("lat").subtract(googleplex.latitude)
-                .multiply(111) // km per degree
-                .pow(2)
-                .alias("latitudeDifference"),
-            field("lng").subtract(googleplex.longitude)
-                .multiply(111) // km per degree
-                .pow(2)
-                .alias("longitudeDifference")
-        )
-        .select(
-            field("latitudeDifference").add(field("longitudeDifference")).sqrt()
-                // Inaccurate for large distances or close to poles
-                .alias("approximateDistanceToGoogle")
-        )
-        .execute()
+```
+val googleplex = GeoPoint(37.4221, -122.0853)
+val result = db.pipeline()
+    .collection("cities")
+    .addFields(
+        field("lat").subtract(googleplex.latitude)
+            .multiply(111) // km per degree
+            .pow(2)
+            .alias("latitudeDifference"),
+        field("lng").subtract(googleplex.longitude)
+            .multiply(111) // km per degree
+            .pow(2)
+            .alias("longitudeDifference")
+    )
+    .select(
+        field("latitudeDifference").add(field("longitudeDifference")).sqrt()
+            // Inaccurate for large distances or close to poles
+            .alias("approximateDistanceToGoogle")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 GeoPoint googleplex = new GeoPoint(37.4221, -122.0853);
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("cities")
@@ -1941,82 +2190,89 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .alias("approximateDistanceToGoogle")
     )
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    googleplexLat = 37.4221
-    googleplexLng = -122.0853
-    result = (
-        client.pipeline()
-        .collection("cities")
-        .add_fields(
-            Field.of("lat")
-            .subtract(googleplexLat)
-            .multiply(111)  # km per degree
-            .pow(2)
-            .as_("latitudeDifference"),
-            Field.of("lng")
-            .subtract(googleplexLng)
-            .multiply(111)  # km per degree
-            .pow(2)
-            .as_("longitudeDifference"),
-        )
-        .select(
-            Field.of("latitudeDifference")
-            .add(Field.of("longitudeDifference"))
-            .sqrt()
-            # Inaccurate for large distances or close to poles
-            .as_("approximateDistanceToGoogle")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+googleplexLat = 37.4221
+googleplexLng = -122.0853
+result = (
+    client.pipeline()
+    .collection("cities")
+    .add_fields(
+        Field.of("lat")
+        .subtract(googleplexLat)
+        .multiply(111)  # km per degree
+        .pow(2)
+        .as_("latitudeDifference"),
+        Field.of("lng")
+        .subtract(googleplexLng)
+        .multiply(111)  # km per degree
+        .pow(2)
+        .as_("longitudeDifference"),
     )
+    .select(
+        Field.of("latitudeDifference")
+        .add(Field.of("longitudeDifference"))
+        .sqrt()
+        # Inaccurate for large distances or close to poles
+        .as_("approximateDistanceToGoogle")
+    )
+    .execute()
+)
+```
 
 ##### Java
 
-    double googleplexLat = 37.4221;
-    double googleplexLng = -122.0853;
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("cities")
-            .addFields(
-                pow(multiply(subtract(field("lat"), googleplexLat), 111), 2)
-                    .as("latitudeDifference"),
-                pow(multiply(subtract(field("lng"), googleplexLng), 111), 2)
-                    .as("longitudeDifference"))
-            .select(
-                sqrt(add(field("latitudeDifference"), field("longitudeDifference")))
-                    // Inaccurate for large distances or close to poles
-                    .as("approximateDistanceToGoogle"))
-            .execute()
-            .get();
+```
+double googleplexLat = 37.4221;
+double googleplexLng = -122.0853;
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("cities")
+        .addFields(
+            pow(multiply(subtract(field("lat"), googleplexLat), 111), 2)
+                .as("latitudeDifference"),
+            pow(multiply(subtract(field("lng"), googleplexLng), 111), 2)
+                .as("longitudeDifference"))
+        .select(
+            sqrt(add(field("latitudeDifference"), field("longitudeDifference")))
+                // Inaccurate for large distances or close to poles
+                .as("approximateDistanceToGoogle"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    googleplexLat := 37.4221
-    googleplexLng := -122.0853
-    snapshot := client.Pipeline().
-     Collection("cities").
-     AddFields(firestore.Selectables(
-         firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lat"), googleplexLat), 111), 2).As("latitudeDifference"),
-         firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lng"), googleplexLng), 111), 2).As("longitudeDifference"),
-     )).
-     Select(firestore.Fields(
-         firestore.Sqrt(firestore.Add(firestore.FieldOf("latitudeDifference"), firestore.FieldOf("longitudeDifference"))).
-             // Inaccurate for large distances or close to poles
-             As("approximateDistanceToGoogle"),
-     )).
-     Execute(ctx)
+```
+googleplexLat := 37.4221
+googleplexLng := -122.0853
+snapshot := client.Pipeline().
+    Collection("cities").
+    AddFields(firestore.Selectables(
+        firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lat"), googleplexLat), 111), 2).As("latitudeDifference"),
+        firestore.Pow(firestore.Multiply(firestore.Subtract(firestore.FieldOf("lng"), googleplexLng), 111), 2).As("longitudeDifference"),
+    )).
+    Select(firestore.Fields(
+        firestore.Sqrt(firestore.Add(firestore.FieldOf("latitudeDifference"), firestore.FieldOf("longitudeDifference"))).
+            // Inaccurate for large distances or close to poles
+            As("approximateDistanceToGoogle"),
+    )).
+    Execute(ctx)
+```
 
 ### EXP
 
 **Syntax:**
 
-    exp(exponent: FLOAT64) -> FLOAT64
+```
+exp(exponent: FLOAT64) -> FLOAT64
+```
 
 **Description:**
 
@@ -2025,7 +2281,7 @@ Returns the value of Euler's number raised to the power of `exponent` , also cal
 **Examples:**
 
 | exponent | `exp(exponent)`      |
-| :------- | :------------------- |
+|----------|----------------------|
 | 0.0      | 1.0                  |
 | 10       | `e^10` ( `FLOAT64` ) |
 | `+inf`   | `+inf`               |
@@ -2033,79 +2289,92 @@ Returns the value of Euler's number raised to the power of `exponent` , also cal
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("rating").exp().as("expRating"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("rating").exp().as("expRating"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("rating").exp().as("expRating"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("rating").exp().as("expRating"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("rating").exp().as("expRating")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("rating").exp().as("expRating")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("rating").exp().alias("expRating"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("rating").exp().alias("expRating"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("rating").exp().alias("expRating"))
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("rating").exp().as_("expRating"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("rating").exp().as_("expRating"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(exp(field("rating")).as("expRating"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(exp(field("rating")).as("expRating"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Exp(firestore.FieldOf("rating")).As("expRating"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Exp(firestore.FieldOf("rating")).As("expRating"),
+    )).
+    Execute(ctx)
+```
 
 ### LN
 
 **Syntax:**
 
-    ln(number: FLOAT64) -> FLOAT64
+```
+ln(number: FLOAT64) -> FLOAT64
+```
 
 **Description:**
 
@@ -2114,7 +2383,7 @@ Returns the natural logarithm of `number` . This function is equivalent to `log(
 **Examples:**
 
 | number            | `ln(number)` |
-| :---------------- | :----------- |
+|-------------------|--------------|
 | 1                 | 0.0          |
 | 2L                | 0.693...     |
 | 1.0               | 0.0          |
@@ -2125,91 +2394,104 @@ Returns the natural logarithm of `number` . This function is equivalent to `log(
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("rating").ln().as("lnRating"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("rating").ln().as("lnRating"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("rating").ln().as("lnRating"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("rating").ln().as("lnRating"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("rating").ln().as("lnRating")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("rating").ln().as("lnRating")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("rating").ln().alias("lnRating"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("rating").ln().alias("lnRating"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("rating").ln().alias("lnRating"))
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("rating").ln().as_("lnRating"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("rating").ln().as_("lnRating"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(ln(field("rating")).as("lnRating"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(ln(field("rating")).as("lnRating"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Ln(firestore.FieldOf("rating")).As("lnRating"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Ln(firestore.FieldOf("rating")).As("lnRating"),
+    )).
+    Execute(ctx)
+```
 
 ### LOG
 
 **Syntax:**
 
-    log(number: FLOAT64, base: FLOAT64) -> FLOAT64
-    log(number: FLOAT64) -> FLOAT64
+```
+log(number: FLOAT64, base: FLOAT64) -> FLOAT64
+log(number: FLOAT64) -> FLOAT64
+```
 
 **Description:**
 
 Returns the logarithm of a `number` to `base` .
 
-  - If only `number` is provided, returns the logarithm of `number` to `base` (synonymous to `ln(number)` ).
+- If only `number` is provided, returns the logarithm of `number` to `base` (synonymous to `ln(number)` ).
 
 **Examples:**
 
 | number        | base        | `log(number, base)` |
-| :------------ | :---------- | :------------------ |
+|---------------|-------------|---------------------|
 | 100           | 10          | 2.0                 |
 | `-inf`        | `Numeric`   | `NaN`               |
 | `Numeric` .   | `+inf`      | `NaN`               |
@@ -2221,7 +2503,9 @@ Returns the logarithm of a `number` to `base` .
 
 **Syntax:**
 
-    log10(x: FLOAT64) -> FLOAT64
+```
+log10(x: FLOAT64) -> FLOAT64
+```
 
 **Description:**
 
@@ -2230,7 +2514,7 @@ Returns the logarithm of a `number` to base `10` .
 **Examples:**
 
 | number   | `log10(number)` |
-| :------- | :-------------- |
+|----------|-----------------|
 | 100      | 2.0             |
 | `-inf`   | `NaN`           |
 | `+inf`   | `+inf`          |
@@ -2240,7 +2524,9 @@ Returns the logarithm of a `number` to base `10` .
 
 **Syntax:**
 
-    rand() -> FLOAT64
+```
+rand() -> FLOAT64
+```
 
 **Description:**
 
@@ -2248,60 +2534,64 @@ Return a pseudo-random floating point number, chosen uniformly between `0.0` (in
 
 ## **Array Functions**
 
-|                                       |                                                                             |
-| ------------------------------------- | --------------------------------------------------------------------------- |
-| Name                                  | Description                                                                 |
-| `         ARRAY        `              | Returns an `ARRAY` containing one element for each input argument           |
-| `         ARRAY_CONCAT        `       | Concatenates multiple arrays into a single `ARRAY`                          |
-| `         ARRAY_CONTAINS        `     | Returns `TRUE` if a given `ARRAY` contains a particular value               |
-| `         ARRAY_CONTAINS_ALL        ` | Returns `TRUE` if all values are present in the `ARRAY`                     |
-| `         ARRAY_CONTAINS_ANY        ` | Returns `TRUE` if any of the values are present in the `ARRAY`              |
-| `         ARRAY_FILTER        `       | Filters out elements from an `ARRAY` that don't satisfy a predicate         |
-| `         ARRAY_FIRST        `        | Returns the first element in an `ARRAY`                                     |
-| `         ARRAY_FIRST_N        `      | Returns the first `n` elements in an `ARRAY`                                |
-| `         ARRAY_GET        `          | Returns the element at a given index in an `ARRAY`                          |
-| `         ARRAY_INDEX_OF        `     | Returns the index of the first occurrence of a value in an `ARRAY`          |
-| `         ARRAY_INDEX_OF_ALL        ` | Returns all indexes of a value in an `ARRAY`                                |
-| `         ARRAY_LENGTH        `       | Returns the number of elements in an `ARRAY`                                |
-| `         ARRAY_LAST        `         | Returns the last element in an `ARRAY`                                      |
-| `         ARRAY_LAST_N        `       | Returns the last `n` elements in an `ARRAY`                                 |
-| `         ARRAY_REVERSE        `      | Reverses the order of elements in an `ARRAY`                                |
-| `         ARRAY_SLICE        `        | Returns a slice of an `ARRAY`                                               |
-| `         ARRAY_TRANSFORM        `    | Transforms elements in an `ARRAY` by applying expression to each element    |
-| `         MAXIMUM        `            | Returns the maximum value in an `ARRAY`                                     |
-| `         MAXIMUM_N        `          | Returns the `n` largest values in an `ARRAY`                                |
-| `         MINIMUM        `            | Returns the minimum value in an `ARRAY`                                     |
-| `         MINIMUM_N        `          | Returns the `n` smallest values in an `ARRAY`                               |
-| `         SUM        `                | Returns the sum of all `NUMERIC` values in an `ARRAY` .                     |
-| `         JOIN        `               | Produces a concatenation of the elements in an `ARRAY` as a `STRING` value. |
+|                                                                                                                                 |                                                                             |
+|---------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| Name                                                                                                                            | Description                                                                 |
+| [`ARRAY`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#array)                           | Returns an `ARRAY` containing one element for each input argument           |
+| [`ARRAY_CONCAT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#array_concat)             | Concatenates multiple arrays into a single `ARRAY`                          |
+| [`ARRAY_CONTAINS`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#array_contains)         | Returns `TRUE` if a given `ARRAY` contains a particular value               |
+| [`ARRAY_CONTAINS_ALL`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#array_contains_all) | Returns `TRUE` if all values are present in the `ARRAY`                     |
+| [`ARRAY_CONTAINS_ANY`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#array_contains_any) | Returns `TRUE` if any of the values are present in the `ARRAY`              |
+| [`ARRAY_FILTER`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#array_filter)             | Filters out elements from an `ARRAY` that don't satisfy a predicate         |
+| [`ARRAY_FIRST`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#array_first)               | Returns the first element in an `ARRAY`                                     |
+| [`ARRAY_FIRST_N`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#array_first_n)           | Returns the first `n` elements in an `ARRAY`                                |
+| [`ARRAY_GET`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#array_get)                   | Returns the element at a given index in an `ARRAY`                          |
+| [`ARRAY_INDEX_OF`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#array_index_of)         | Returns the index of the first occurrence of a value in an `ARRAY`          |
+| [`ARRAY_INDEX_OF_ALL`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#array_index_of_all) | Returns all indexes of a value in an `ARRAY`                                |
+| [`ARRAY_LENGTH`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#array_length)             | Returns the number of elements in an `ARRAY`                                |
+| [`ARRAY_LAST`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#array_last)                 | Returns the last element in an `ARRAY`                                      |
+| [`ARRAY_LAST_N`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#array_last_n)             | Returns the last `n` elements in an `ARRAY`                                 |
+| [`ARRAY_REVERSE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#array_reverse)           | Reverses the order of elements in an `ARRAY`                                |
+| [`ARRAY_SLICE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#array_slice)               | Returns a slice of an `ARRAY`                                               |
+| [`ARRAY_TRANSFORM`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#array_transform)       | Transforms elements in an `ARRAY` by applying expression to each element    |
+| [`MAXIMUM`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#maximum)                       | Returns the maximum value in an `ARRAY`                                     |
+| [`MAXIMUM_N`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#maximum_n)                   | Returns the `n` largest values in an `ARRAY`                                |
+| [`MINIMUM`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#minimum)                       | Returns the minimum value in an `ARRAY`                                     |
+| [`MINIMUM_N`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#minimum_n)                   | Returns the `n` smallest values in an `ARRAY`                               |
+| [`SUM`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#sum)                               | Returns the sum of all `NUMERIC` values in an `ARRAY` .                     |
+| [`JOIN`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#join)                             | Produces a concatenation of the elements in an `ARRAY` as a `STRING` value. |
 
 ### ARRAY
 
 **Syntax:**
 
-    array(values: ANY...) -> ARRAY
+```
+array(values: ANY...) -> ARRAY
+```
 
 **Description:**
 
 Constructs an array from the given elements.
 
-  - If an argument does not exist, it is replaced with `NULL` in the resulting array.
+- If an argument does not exist, it is replaced with `NULL` in the resulting array.
 
 **Examples:**
 
 | values         | `array(values)`  |
-| :------------- | :--------------- |
+|----------------|------------------|
 | ()             | \[\]             |
 | (1, 2, 3)      | \[1, 2, 3\]      |
 | ("a", 1, true) | \["a", 1, true\] |
 | (1, null)      | \[1, null\]      |
 | (1, \[2, 3\])  | \[1, \[2, 3\]\]  |
 
-### ARRAY\_CONCAT
+### ARRAY_CONCAT
 
 **Syntax:**
 
-    array_concat(arrays: ARRAY...) -> ARRAY
+```
+array_concat(arrays: ARRAY...) -> ARRAY
+```
 
 **Description:**
 
@@ -2310,7 +2600,7 @@ Concatenates two or more arrays into a single `ARRAY` .
 **Examples:**
 
 | arrays                  | `array_concat(arrays)` |
-| :---------------------- | :--------------------- |
+|-------------------------|------------------------|
 | (\[1, 2\], \[3, 4\])    | \[1, 2, 3, 4\]         |
 | (\["a", "b"\], \["c"\]) | \["a", "b", "c"\]      |
 | (\[1\], \[2\], \[3\])   | \[1, 2, 3\]            |
@@ -2318,72 +2608,83 @@ Concatenates two or more arrays into a single `ARRAY` .
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("genre").arrayConcat([field("subGenre")]).as("allGenres"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("genre").arrayConcat([field("subGenre")]).as("allGenres"))
+  .execute();
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("genre").arrayConcat([Field("subGenre")]).as("allGenres")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("genre").arrayConcat([Field("subGenre")]).as("allGenres")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("genre").arrayConcat(field("subGenre")).alias("allGenres"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("genre").arrayConcat(field("subGenre")).alias("allGenres"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("genre").arrayConcat(field("subGenre")).alias("allGenres"))
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("genre").array_concat(Field.of("subGenre")).as_("allGenres"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("genre").array_concat(Field.of("subGenre")).as_("allGenres"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(arrayConcat(field("genre"), field("subGenre")).as("allGenres"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(arrayConcat(field("genre"), field("subGenre")).as("allGenres"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.ArrayConcat(firestore.FieldOf("genre"), firestore.FieldOf("subGenre")).As("allGenres"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.ArrayConcat(firestore.FieldOf("genre"), firestore.FieldOf("subGenre")).As("allGenres"),
+    )).
+    Execute(ctx)
+```
 
-### ARRAY\_CONTAINS
+### ARRAY_CONTAINS
 
 **Syntax:**
 
-    array_contains(array: ARRAY, value: ANY) -> BOOLEAN
+```
+array_contains(array: ARRAY, value: ANY) -> BOOLEAN
+```
 
 **Description:**
 
@@ -2392,7 +2693,7 @@ Returns `TRUE` if `value` is found in the `array` , and `FALSE` otherwise.
 **Examples:**
 
 | array               | value    | `array_contains(array, value)` |
-| :------------------ | :------- | :----------------------------- |
+|---------------------|----------|--------------------------------|
 | \[1, 2, 3\]         | 2        | true                           |
 | \[\[1, 2\], \[3\]\] | \[1, 2\] | true                           |
 | \[1, null\]         | null     | true                           |
@@ -2400,79 +2701,92 @@ Returns `TRUE` if `value` is found in the `array` , and `FALSE` otherwise.
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("genre").arrayContains(constant("mystery")).as("isMystery"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("genre").arrayContains(constant("mystery")).as("isMystery"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("genre").arrayContains(constant("mystery")).as("isMystery"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("genre").arrayContains(constant("mystery")).as("isMystery"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("genre").arrayContains(Constant("mystery")).as("isMystery")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("genre").arrayContains(Constant("mystery")).as("isMystery")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("genre").arrayContains("mystery").alias("isMystery"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("genre").arrayContains("mystery").alias("isMystery"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("genre").arrayContains("mystery").alias("isMystery"))
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("genre").array_contains("mystery").as_("isMystery"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("genre").array_contains("mystery").as_("isMystery"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(arrayContains(field("genre"), "mystery").as("isMystery"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(arrayContains(field("genre"), "mystery").as("isMystery"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.ArrayContains(firestore.FieldOf("genre"), "mystery").As("isMystery"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.ArrayContains(firestore.FieldOf("genre"), "mystery").As("isMystery"),
+    )).
+    Execute(ctx)
+```
 
-### ARRAY\_CONTAINS\_ALL
+### ARRAY_CONTAINS_ALL
 
 **Syntax:**
 
-    array_contains_all(array: ARRAY, search_values: ARRAY) -> BOOLEAN
+```
+array_contains_all(array: ARRAY, search_values: ARRAY) -> BOOLEAN
+```
 
 **Description:**
 
@@ -2480,64 +2794,70 @@ Returns `TRUE` if all `search_values` are found in the `array` , and `FALSE` oth
 
 **Examples:**
 
-| array       | search\_values | `array_contains_all(array, search_values)` |
-| :---------- | :------------- | :----------------------------------------- |
-| \[1, 2, 3\] | \[1, 2\]       | true                                       |
-| \[1, 2, 3\] | \[1, 4\]       | false                                      |
-| \[1, null\] | \[null\]       | true                                       |
-| \[NaN\]     | \[NaN\]        | true                                       |
-| \[\]        | \[\]           | true                                       |
-| \[1, 2, 3\] | \[\]           | true                                       |
+| array       | search_values | `array_contains_all(array, search_values)` |
+|-------------|---------------|--------------------------------------------|
+| \[1, 2, 3\] | \[1, 2\]      | true                                       |
+| \[1, 2, 3\] | \[1, 4\]      | false                                      |
+| \[1, null\] | \[null\]      | true                                       |
+| \[NaN\]     | \[NaN\]       | true                                       |
+| \[\]        | \[\]          | true                                       |
+| \[1, 2, 3\] | \[\]          | true                                       |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        field("genre")
-          .arrayContainsAll([constant("fantasy"), constant("adventure")])
-          .as("isFantasyAdventure")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    field("genre")
+      .arrayContainsAll([constant("fantasy"), constant("adventure")])
+      .as("isFantasyAdventure")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("genre")
-          .arrayContainsAll([constant("fantasy"), constant("adventure")])
-          .as("isFantasyAdventure")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("genre")
+      .arrayContainsAll([constant("fantasy"), constant("adventure")])
+      .as("isFantasyAdventure")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("genre")
-          .arrayContainsAll([Constant("fantasy"), Constant("adventure")])
-          .as("isFantasyAdventure")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("genre")
+      .arrayContainsAll([Constant("fantasy"), Constant("adventure")])
+      .as("isFantasyAdventure")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("genre")
-                .arrayContainsAll(listOf("fantasy", "adventure"))
-                .alias("isFantasyAdventure")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("genre")
+            .arrayContainsAll(listOf("fantasy", "adventure"))
+            .alias("isFantasyAdventure")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(
@@ -2546,50 +2866,57 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .alias("isFantasyAdventure")
     )
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Field.of("genre")
-            .array_contains_all(["fantasy", "adventure"])
-            .as_("isFantasyAdventure")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Field.of("genre")
+        .array_contains_all(["fantasy", "adventure"])
+        .as_("isFantasyAdventure")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(
-                arrayContainsAll(field("genre"), Arrays.asList("fantasy", "adventure"))
-                    .as("isFantasyAdventure"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(
+            arrayContainsAll(field("genre"), Arrays.asList("fantasy", "adventure"))
+                .as("isFantasyAdventure"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.ArrayContainsAll(firestore.FieldOf("genre"), []string{"fantasy", "adventure"}).As("isFantasyAdventure"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.ArrayContainsAll(firestore.FieldOf("genre"), []string{"fantasy", "adventure"}).As("isFantasyAdventure"),
+    )).
+    Execute(ctx)
+```
 
-### ARRAY\_CONTAINS\_ANY
+### ARRAY_CONTAINS_ANY
 
 **Syntax:**
 
-    array_contains_any(array: ARRAY, search_values: ARRAY) -> BOOLEAN
+```
+array_contains_any(array: ARRAY, search_values: ARRAY) -> BOOLEAN
+```
 
 **Description:**
 
@@ -2597,61 +2924,67 @@ Returns `TRUE` if any of the `search_values` are found in the `array` , and `FAL
 
 **Examples:**
 
-| array          | search\_values | `array_contains_any(array, search_values)` |
-| :------------- | :------------- | :----------------------------------------- |
-| \[1, 2, 3\]    | \[4, 1\]       | true                                       |
-| \[1, 2, 3\]    | \[4, 5\]       | false                                      |
-| \[1, 2, null\] | \[null\]       | true                                       |
+| array          | search_values | `array_contains_any(array, search_values)` |
+|----------------|---------------|--------------------------------------------|
+| \[1, 2, 3\]    | \[4, 1\]      | true                                       |
+| \[1, 2, 3\]    | \[4, 5\]      | false                                      |
+| \[1, 2, null\] | \[null\]      | true                                       |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        field("genre")
-          .arrayContainsAny([constant("fantasy"), constant("nonfiction")])
-          .as("isMysteryOrFantasy")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    field("genre")
+      .arrayContainsAny([constant("fantasy"), constant("nonfiction")])
+      .as("isMysteryOrFantasy")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("genre")
-          .arrayContainsAny([constant("fantasy"), constant("nonfiction")])
-          .as("isMysteryOrFantasy")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("genre")
+      .arrayContainsAny([constant("fantasy"), constant("nonfiction")])
+      .as("isMysteryOrFantasy")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("genre")
-          .arrayContainsAny([Constant("fantasy"), Constant("nonfiction")])
-          .as("isMysteryOrFantasy")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("genre")
+      .arrayContainsAny([Constant("fantasy"), Constant("nonfiction")])
+      .as("isMysteryOrFantasy")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("genre")
-                .arrayContainsAny(listOf("fantasy", "nonfiction"))
-                .alias("isMysteryOrFantasy")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("genre")
+            .arrayContainsAny(listOf("fantasy", "nonfiction"))
+            .alias("isMysteryOrFantasy")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(
@@ -2660,100 +2993,111 @@ Task<Pipeline.Snapshot> result = db.pipeline()
             .alias("isMysteryOrFantasy")
     )
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Field.of("genre")
-            .array_contains_any(["fantasy", "nonfiction"])
-            .as_("isMysteryOrFantasy")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Field.of("genre")
+        .array_contains_any(["fantasy", "nonfiction"])
+        .as_("isMysteryOrFantasy")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(
-                arrayContainsAny(field("genre"), Arrays.asList("fantasy", "nonfiction"))
-                    .as("isMysteryOrFantasy"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(
+            arrayContainsAny(field("genre"), Arrays.asList("fantasy", "nonfiction"))
+                .as("isMysteryOrFantasy"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.ArrayContainsAny(firestore.FieldOf("genre"), []string{"fantasy", "nonfiction"}).As("isMysteryOrFantasy"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.ArrayContainsAny(firestore.FieldOf("genre"), []string{"fantasy", "nonfiction"}).As("isMysteryOrFantasy"),
+    )).
+    Execute(ctx)
+```
 
-### ARRAY\_FILTER
+### ARRAY_FILTER
 
 **Syntax:**
 
-    array_filter(array: ARRAY, predicate: (ANY) -> BOOLEAN) -> ARRAY
+```
+array_filter(array: ARRAY, predicate: (ANY) -> BOOLEAN) -> ARRAY
+```
 
 **Description:**
 
 Filters `array` using a `predicate` expression, returning a new array with only elements that satisfy the predicate.
 
-  - For each element in `array` , `predicate` is evaluated. If it returns `true` , the element is included in the result; otherwise (if it returns `false` or `null` ), it is omitted.
-  - If `predicate` evaluates to a non-boolean or non-null value, the function returns an error.
+- For each element in `array` , `predicate` is evaluated. If it returns `true` , the element is included in the result; otherwise (if it returns `false` or `null` ), it is omitted.
+- If `predicate` evaluates to a non-boolean or non-null value, the function returns an error.
 
 **Examples:**
 
-| array             | predicate       | `array_filter(array, predicate)` |
-| :---------------- | :-------------- | :------------------------------- |
-| \[1, 2, 3\]       | x -\> x \> 1    | \[2, 3\]                         |
-| \[1, null, 3\]    | x -\> x \> 1    | \[3\]                            |
-| \["a", "b", "c"\] | x -\> x \!= "b" | \["a", "c"\]                     |
-| \[\]              | x -\> true      | \[\]                             |
+| array             | predicate      | `array_filter(array, predicate)` |
+|-------------------|----------------|----------------------------------|
+| \[1, 2, 3\]       | x -\> x \> 1   | \[2, 3\]                         |
+| \[1, null, 3\]    | x -\> x \> 1   | \[3\]                            |
+| \["a", "b", "c"\] | x -\> x != "b" | \["a", "c"\]                     |
+| \[\]              | x -\> true     | \[\]                             |
 
-### ARRAY\_GET
+### ARRAY_GET
 
 **Syntax:**
 
-    array_get(array: ARRAY, index: INT64) -> ANY
+```
+array_get(array: ARRAY, index: INT64) -> ANY
+```
 
 **Description:**
 
 Returns the element at the 0-based `index` in `array` .
 
-  - If `index` is negative, elements are accessed from the end of array, where `-1` is the last element.
-  - If `array` is not of type `ARRAY` and not `null` , returns an error.
-  - If `index` is out of bounds, the function returns an absent value.
-  - If `index` is not of type `INT64` , the function returns an error.
+- If `index` is negative, elements are accessed from the end of array, where `-1` is the last element.
+- If `array` is not of type `ARRAY` and not `null` , returns an error.
+- If `index` is out of bounds, the function returns an absent value.
+- If `index` is not of type `INT64` , the function returns an error.
 
 **Examples:**
 
 | array       | index | `array_get(array, index)` |
-| :---------- | :---- | :------------------------ |
+|-------------|-------|---------------------------|
 | \[1, 2, 3\] | 0     | 1                         |
-| \[1, 2, 3\] | \-1   | 3                         |
+| \[1, 2, 3\] | -1    | 3                         |
 | \[1, 2, 3\] | 3     | absent                    |
-| \[1, 2, 3\] | \-4   | absent                    |
+| \[1, 2, 3\] | -4    | absent                    |
 | "abc"       | 0     | error                     |
 | null        | 0     | null                      |
 | `Array`     | "a"   | error                     |
 | `Array`     | 2.0   | error                     |
 
-### ARRAY\_LENGTH
+### ARRAY_LENGTH
 
 **Syntax:**
 
-    array_length(array: ARRAY) -> INT64
+```
+array_length(array: ARRAY) -> INT64
+```
 
 **Description:**
 
@@ -2762,7 +3106,7 @@ Returns the number of elements in `array` .
 **Examples:**
 
 | array       | `array_length(array)` |
-| :---------- | :-------------------- |
+|-------------|-----------------------|
 | \[1, 2, 3\] | 3                     |
 | \[\]        | 0                     |
 | \[1, 1, 1\] | 3                     |
@@ -2770,79 +3114,92 @@ Returns the number of elements in `array` .
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("genre").arrayLength().as("genreCount"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("genre").arrayLength().as("genreCount"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("genre").arrayLength().as("genreCount"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("genre").arrayLength().as("genreCount"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("genre").arrayLength().as("genreCount")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("genre").arrayLength().as("genreCount")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("genre").arrayLength().alias("genreCount"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("genre").arrayLength().alias("genreCount"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
+```
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("genre").arrayLength().alias("genreCount"))
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("genre").array_length().as_("genreCount"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("genre").array_length().as_("genreCount"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(arrayLength(field("genre")).as("genreCount"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(arrayLength(field("genre")).as("genreCount"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.ArrayLength(firestore.FieldOf("genre")).As("genreCount"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.ArrayLength(firestore.FieldOf("genre")).As("genreCount"),
+    )).
+    Execute(ctx)
+```
 
-### ARRAY\_REVERSE
+### ARRAY_REVERSE
 
 **Syntax:**
 
-    array_reverse(array: ARRAY) -> ARRAY
+```
+array_reverse(array: ARRAY) -> ARRAY
+```
 
 **Description:**
 
@@ -2851,124 +3208,142 @@ Reverses the given `array` .
 **Examples:**
 
 | array          | `array_reverse(array)` |
-| :------------- | :--------------------- |
+|----------------|------------------------|
 | \[1, 2, 3\]    | \[3, 2, 1\]            |
 | \["a", "b"\]   | \["b", "a"\]           |
 | \[1, 2, 2, 3\] | \[3, 2, 2, 1\]         |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(arrayReverse(field("genre")).as("reversedGenres"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(arrayReverse(field("genre")).as("reversedGenres"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("genre").arrayReverse().as("reversedGenres"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("genre").arrayReverse().as("reversedGenres"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("genre").arrayReverse().as("reversedGenres")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("genre").arrayReverse().as("reversedGenres")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("genre").arrayReverse().alias("reversedGenres"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("genre").arrayReverse().alias("reversedGenres"))
+    .execute()
+```
 
-``` 
-    Java
+```
+Java
 Android
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(field("genre").arrayReverse().alias("reversedGenres"))
     .execute();
-  
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("genre").array_reverse().as_("reversedGenres"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("genre").array_reverse().as_("reversedGenres"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(arrayReverse(field("genre")).as("reversedGenres"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(arrayReverse(field("genre")).as("reversedGenres"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.ArrayReverse(firestore.FieldOf("genre")).As("reversedGenres"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.ArrayReverse(firestore.FieldOf("genre")).As("reversedGenres"),
+    )).
+    Execute(ctx)
+```
 
-### ARRAY\_FIRST
+### ARRAY_FIRST
 
 **Syntax:**
 
-    array_first(array: ARRAY) -> ANY
+```
+array_first(array: ARRAY) -> ANY
+```
 
 **Description:**
 
 Returns the first element in `array` . This is equivalent to `array_get(array, 0)` .
 
-  - If `array` is empty, returns an absent value.
+- If `array` is empty, returns an absent value.
 
 **Examples:**
 
 | array       | `array_first(array)` |
-| :---------- | :------------------- |
+|-------------|----------------------|
 | \[1, 2, 3\] | 1                    |
 | \[\]        | absent               |
 
-### ARRAY\_FIRST\_N
+### ARRAY_FIRST_N
 
 **Syntax:**
 
-    array_first_n(array: ARRAY, n: INT64) -> ARRAY
+```
+array_first_n(array: ARRAY, n: INT64) -> ARRAY
+```
 
 **Description:**
 
 Returns the first `n` elements of `array` . This is equivalent to `array_slice(array, 0, n)` .
 
-  - If `n` is negative, returns an error.
+- If `n` is negative, returns an error.
 
 **Examples:**
 
-| array             | n | `array_first_n(array, n)` |
-| :---------------- | :- | :------------------------ |
-| \[1, 2, 3, 4, 5\] | 3 | \[1, 2, 3\]               |
-| \[1, 2\]          | 3 | \[1, 2\]                  |
-| \[1, 2, 3\]       | 0 | \[\]                      |
+| array             | n   | `array_first_n(array, n)` |
+|-------------------|-----|---------------------------|
+| \[1, 2, 3, 4, 5\] | 3   | \[1, 2, 3\]               |
+| \[1, 2\]          | 3   | \[1, 2\]                  |
+| \[1, 2, 3\]       | 0   | \[\]                      |
 
-### ARRAY\_INDEX\_OF
+### ARRAY_INDEX_OF
 
 **Syntax:**
 
-    array_index_of(array: ARRAY, value: ANY) -> INT64
+```
+array_index_of(array: ARRAY, value: ANY) -> INT64
+```
 
 **Description:**
 
@@ -2977,16 +3352,18 @@ Returns the 0-based index of the first occurrence of `value` in `array` . Return
 **Examples:**
 
 | array          | value | `array_index_of(array, value)` |
-| :------------- | :---- | :----------------------------- |
+|----------------|-------|--------------------------------|
 | \[1, 2, 3, 2\] | 2     | 1                              |
-| \[1, 2, 3\]    | 4     | \-1                            |
+| \[1, 2, 3\]    | 4     | -1                             |
 | \[1, null, 3\] | null  | 1                              |
 
-### ARRAY\_INDEX\_OF\_ALL
+### ARRAY_INDEX_OF_ALL
 
 **Syntax:**
 
-    array_index_of_all(array: ARRAY, value: ANY) -> ARRAY<INT64>
+```
+array_index_of_all(array: ARRAY, value: ANY) -> ARRAY<INT64>
+```
 
 **Description:**
 
@@ -2995,92 +3372,100 @@ Returns an array containing the 0-based indexes of all occurrences of `value` in
 **Examples:**
 
 | array                | value | `array_index_of_all(array, value)` |
-| :------------------- | :---- | :--------------------------------- |
+|----------------------|-------|------------------------------------|
 | \[1, 2, 3, 2\]       | 2     | \[1, 3\]                           |
 | \[1, 2, 3\]          | 4     | \[\]                               |
 | \[1, null, 3, null\] | null  | \[1, 3\]                           |
 
-### ARRAY\_LAST
+### ARRAY_LAST
 
 **Syntax:**
 
-    array_last(array: ARRAY) -> ANY
+```
+array_last(array: ARRAY) -> ANY
+```
 
 **Description:**
 
 Returns the last element in `array` . This is equivalent to `array_get(array, -1)` .
 
-  - If `array` is empty, returns an absent value.
+- If `array` is empty, returns an absent value.
 
 **Examples:**
 
 | array       | `array_last(array)` |
-| :---------- | :------------------ |
+|-------------|---------------------|
 | \[1, 2, 3\] | 3                   |
 | \[\]        | absent              |
 
-### ARRAY\_LAST\_N
+### ARRAY_LAST_N
 
 **Syntax:**
 
-    array_last_n(array: ARRAY, n: INT64) -> ARRAY
+```
+array_last_n(array: ARRAY, n: INT64) -> ARRAY
+```
 
 **Description:**
 
 Returns the last `n` elements of `array` .
 
-  - If `n` is negative, returns an error.
+- If `n` is negative, returns an error.
 
 **Examples:**
 
-| array             | n | `array_last_n(array, n)` |
-| :---------------- | :- | :----------------------- |
-| \[1, 2, 3, 4, 5\] | 3 | \[3, 4, 5\]              |
-| \[1, 2\]          | 3 | \[1, 2\]                 |
-| \[1, 2, 3\]       | 0 | \[\]                     |
+| array             | n   | `array_last_n(array, n)` |
+|-------------------|-----|--------------------------|
+| \[1, 2, 3, 4, 5\] | 3   | \[3, 4, 5\]              |
+| \[1, 2\]          | 3   | \[1, 2\]                 |
+| \[1, 2, 3\]       | 0   | \[\]                     |
 
-### ARRAY\_SLICE
+### ARRAY_SLICE
 
 **Syntax:**
 
-    array_slice(array: ARRAY, offset: INT64, length: INT64) -> ARRAY
+```
+array_slice(array: ARRAY, offset: INT64, length: INT64) -> ARRAY
+```
 
 **Description:**
 
 Returns a subset of `array` starting from 0-based index `offset` , and including `length` elements.
 
-  - If `offset` is negative, it indicates the start position from the end of the array, with `-1` being the last element.
-  - If `length` is greater than the number of elements remaining in the array after `offset` , the result extends to the end of the array.
-  - `length` must be non-negative, otherwise returns an error.
+- If `offset` is negative, it indicates the start position from the end of the array, with `-1` being the last element.
+- If `length` is greater than the number of elements remaining in the array after `offset` , the result extends to the end of the array.
+- `length` must be non-negative, otherwise returns an error.
 
 **Examples:**
 
 | array             | offset | length | `array_slice(array, offset, length)` |
-| :---------------- | :----- | :----- | :----------------------------------- |
+|-------------------|--------|--------|--------------------------------------|
 | \[1, 2, 3, 4, 5\] | 1      | 3      | \[2, 3, 4\]                          |
-| \[1, 2, 3, 4, 5\] | \-2    | 2      | \[4, 5\]                             |
+| \[1, 2, 3, 4, 5\] | -2     | 2      | \[4, 5\]                             |
 | \[1, 2, 3\]       | 1      | 5      | \[2, 3\]                             |
 | \[1, 2, 3\]       | 3      | 2      | \[\]                                 |
 
-### ARRAY\_TRANSFORM
+### ARRAY_TRANSFORM
 
 **Syntax:**
 
-    array_transform(array: ARRAY, expression: (ANY) -> ANY) -> ARRAY
-    array_transform(array: ARRAY, expression: (ANY, INT64) -> ANY) -> ARRAY
+```
+array_transform(array: ARRAY, expression: (ANY) -> ANY) -> ARRAY
+array_transform(array: ARRAY, expression: (ANY, INT64) -> ANY) -> ARRAY
+```
 
 **Description:**
 
 Transforms `array` by applying `expression` to each element, returning a new array with transformed elements. The output array will always have same size as input array.
 
-  - `expression` can be a unary function `element -> result` , or a binary function `(element, index) -> result` .
-  - If `expression` is unary, it is called with each element of `array` .
-  - If `expression` is binary, it is called with each element of `array` and its corresponding 0-based index.
+- `expression` can be a unary function `element -> result` , or a binary function `(element, index) -> result` .
+- If `expression` is unary, it is called with each element of `array` .
+- If `expression` is binary, it is called with each element of `array` and its corresponding 0-based index.
 
 **Examples:**
 
 | array       | expression       | `array_transform(array, expression)` |
-| :---------- | :--------------- | :----------------------------------- |
+|-------------|------------------|--------------------------------------|
 | \[1, 2, 3\] | x -\> x \* 2     | \[2, 4, 6\]                          |
 | \[1, 2, 3\] | x -\> x + 1      | \[2, 3, 4\]                          |
 | \[10, 20\]  | (x, i) -\> x + i | \[10, 21\]                           |
@@ -3090,138 +3475,150 @@ Transforms `array` by applying `expression` to each element, returning a new arr
 
 **Syntax:**
 
-    maximum(array: ARRAY) -> ANY
+```
+maximum(array: ARRAY) -> ANY
+```
 
 **Description:**
 
 Returns the maximum value in `array` .
 
-  - `NULL` values are ignored during comparison.
-  - If `array` is empty or only contains `NULL` values, returns `NULL` .
+- `NULL` values are ignored during comparison.
+- If `array` is empty or only contains `NULL` values, returns `NULL` .
 
 **Examples:**
 
 | array             | `maximum(array)` |
-| :---------------- | :--------------- |
+|-------------------|------------------|
 | \[1, 5, 2\]       | 5                |
 | \[1, null, 5\]    | 5                |
 | \["a", "c", "b"\] | "c"              |
 | \[null, null\]    | null             |
 | \[\]              | null             |
 
-### MAXIMUM\_N
+### MAXIMUM_N
 
 **Syntax:**
 
-    maximum_n(array: ARRAY, n: INT64) -> ARRAY
+```
+maximum_n(array: ARRAY, n: INT64) -> ARRAY
+```
 
 **Description:**
 
 Returns an array of the `n` largest values in `array` in descending order.
 
-  - `NULL` values are ignored.
-  - If `n` is negative, returns an error.
+- `NULL` values are ignored.
+- If `n` is negative, returns an error.
 
 **Examples:**
 
-| array             | n | `maximum_n(array, n)` |
-| :---------------- | :- | :-------------------- |
-| \[1, 5, 2, 4, 3\] | 3 | \[5, 4, 3\]           |
-| \[1, null, 5\]    | 3 | \[5, 1\]              |
+| array             | n   | `maximum_n(array, n)` |
+|-------------------|-----|-----------------------|
+| \[1, 5, 2, 4, 3\] | 3   | \[5, 4, 3\]           |
+| \[1, null, 5\]    | 3   | \[5, 1\]              |
 
 ### MINIMUM
 
 **Syntax:**
 
-    minimum(array: ARRAY) -> ANY
+```
+minimum(array: ARRAY) -> ANY
+```
 
 **Description:**
 
 Returns the minimum value in `array` .
 
-  - `NULL` values are ignored during comparison.
-  - If `array` is empty or only contains `NULL` values, returns `NULL` .
+- `NULL` values are ignored during comparison.
+- If `array` is empty or only contains `NULL` values, returns `NULL` .
 
 **Examples:**
 
 | array             | `minimum(array)` |
-| :---------------- | :--------------- |
+|-------------------|------------------|
 | \[1, 5, 2\]       | 1                |
 | \[5, null, 1\]    | 1                |
 | \["a", "c", "b"\] | "a"              |
 | \[null, null\]    | null             |
 | \[\]              | null             |
 
-### MINIMUM\_N
+### MINIMUM_N
 
 **Syntax:**
 
-    minimum_n(array: ARRAY, n: INT64) -> ARRAY
+```
+minimum_n(array: ARRAY, n: INT64) -> ARRAY
+```
 
 **Description:**
 
 Returns an array of the `n` smallest values in `array` in ascending order.
 
-  - `NULL` values are ignored.
-  - If `n` is negative, returns an error.
+- `NULL` values are ignored.
+- If `n` is negative, returns an error.
 
 **Examples:**
 
-| array             | n | `minimum_n(array, n)` |
-| :---------------- | :- | :-------------------- |
-| \[1, 5, 2, 4, 3\] | 3 | \[1, 2, 3\]           |
-| \[5, null, 1\]    | 3 | \[1, 5\]              |
+| array             | n   | `minimum_n(array, n)` |
+|-------------------|-----|-----------------------|
+| \[1, 5, 2, 4, 3\] | 3   | \[1, 2, 3\]           |
+| \[5, null, 1\]    | 3   | \[1, 5\]              |
 
 ### SUM
 
 **Syntax:**
 
-    sum(array: ARRAY) -> INT64 | FLOAT64
+```
+sum(array: ARRAY) -> INT64 | FLOAT64
+```
 
 **Description:**
 
 Returns the sum of all `NUMERIC` values in an `ARRAY` .
 
-  - Non-numeric values in the array are ignored.
-  - If any numeric value in the array is `NaN` , the function returns `NaN` .
-  - The return type is determined by the widest numeric type in the array: `INT64` \< `FLOAT64` .
-  - If 64-bit integer overflow occurs before any floating point value is summed, an error is returned. If floating point values are summed, overflow will result in +/- infinity.
-  - If the array contains no numeric values at all, the function returns `NULL` .
+- Non-numeric values in the array are ignored.
+- If any numeric value in the array is `NaN` , the function returns `NaN` .
+- The return type is determined by the widest numeric type in the array: `INT64` \< `FLOAT64` .
+- If 64-bit integer overflow occurs before any floating point value is summed, an error is returned. If floating point values are summed, overflow will result in +/- infinity.
+- If the array contains no numeric values at all, the function returns `NULL` .
 
 **Examples:**
 
-| array                         | `sum(array)`          |
-| :---------------------------- | :-------------------- |
-| \[1, 2, 3\]                   | 6L                    |
-| \[1L, 2L, 3L\]                | 6L                    |
-| \[2000000000, 2000000000\]    | 4000000000L           |
-| \[10, 20.5\]                  | 30.5                  |
-| \[1, "a", 2\]                 | 3L                    |
-| \[INT64.MAX\_VALUE, 1\]       | error                 |
-| \[INT64.MAX\_VALUE, 1, -1.0\] | error                 |
-| \[INT64.MAX\_VALUE, 1.0\]     | 9.223372036854776e+18 |
+| array                        | `sum(array)`          |
+|------------------------------|-----------------------|
+| \[1, 2, 3\]                  | 6L                    |
+| \[1L, 2L, 3L\]               | 6L                    |
+| \[2000000000, 2000000000\]   | 4000000000L           |
+| \[10, 20.5\]                 | 30.5                  |
+| \[1, "a", 2\]                | 3L                    |
+| \[INT64.MAX_VALUE, 1\]       | error                 |
+| \[INT64.MAX_VALUE, 1, -1.0\] | error                 |
+| \[INT64.MAX_VALUE, 1.0\]     | 9.223372036854776e+18 |
 
 ### JOIN
 
 **Syntax:**
 
-    join[T <: STRING | BYTES](array: ARRAY<T>, delimiter: T) -> STRING
-    join[T <: STRING | BYTES](array: ARRAY<T>, delimiter: T, null_text: T) -> STRING
+```
+join[T <: STRING | BYTES](array: ARRAY<T>, delimiter: T) -> STRING
+join[T <: STRING | BYTES](array: ARRAY<T>, delimiter: T, null_text: T) -> STRING
+```
 
 **Description:**
 
 Returns a concatenation of the elements in `array` as a `STRING` . The `array` can be of `STRING` or `BYTES` data types.
 
-  - All elements in `array` , `delimiter` , and `null_text` must be of the same type; they must all be `STRING` s or all be `BYTES` .
-  - If `null_text` is provided, any `NULL` values in `array` are replaced with `null_text` .
-  - If `null_text` is not provided, `NULL` values in `array` are omitted from the result.
+- All elements in `array` , `delimiter` , and `null_text` must be of the same type; they must all be `STRING` s or all be `BYTES` .
+- If `null_text` is provided, any `NULL` values in `array` are replaced with `null_text` .
+- If `null_text` is not provided, `NULL` values in `array` are omitted from the result.
 
 **Examples:**
 
 When `null_text` is not provided:
 
 | array                | delimiter | `join(array, delimiter)` |
-| :------------------- | :-------- | :----------------------- |
+|----------------------|-----------|--------------------------|
 | \["a", "b", "c"\]    | ","       | "a,b,c"                  |
 | \["a", null, "c"\]   | ","       | "a,c"                    |
 | \[b'a', b'b', b'c'\] | b','      | b'a,b,c'                 |
@@ -3231,41 +3628,43 @@ When `null_text` is not provided:
 
 When `null_text` is provided:
 
-| array                | delimiter | null\_text | `join(array, delimiter, null_text)` |
-| :------------------- | :-------- | :--------- | :---------------------------------- |
-| \["a", null, "c"\]   | ","       | "MISSING"  | "a,MISSING,c"                       |
-| \[b'a', null, b'c'\] | b','      | b'NULL'    | b'a,NULL,c'                         |
-| \[null, "b", null\]  | ","       | "MISSING"  | "MISSING,b,MISSING"                 |
-| \[b'a', null, null\] | b','      | b'NULL'    | b'a,NULL,NULL'                      |
-| \["a", null\]        | ","       | b'N'       | error                               |
-| \[b'a', null\]       | b','      | "N"        | error                               |
+| array                | delimiter | null_text | `join(array, delimiter, null_text)` |
+|----------------------|-----------|-----------|-------------------------------------|
+| \["a", null, "c"\]   | ","       | "MISSING" | "a,MISSING,c"                       |
+| \[b'a', null, b'c'\] | b','      | b'NULL'   | b'a,NULL,c'                         |
+| \[null, "b", null\]  | ","       | "MISSING" | "MISSING,b,MISSING"                 |
+| \[b'a', null, null\] | b','      | b'NULL'   | b'a,NULL,NULL'                      |
+| \["a", null\]        | ","       | b'N'      | error                               |
+| \[b'a', null\]       | b','      | "N"       | error                               |
 
 ## **Comparison Functions**
 
-|                                          |                                  |
-| ---------------------------------------- | -------------------------------- |
-| Name                                     | Description                      |
-| `         EQUAL        `                 | Equality comparison              |
-| `         GREATER_THAN        `          | Greater than comparison          |
-| `         GREATER_THAN_OR_EQUAL        ` | Greater than or equal comparison |
-| `         LESS_THAN        `             | Less than comparison             |
-| `         LESS_THAN_OR_EQUAL        `    | Less than or equal comparison    |
-| `         NOT_EQUAL        `             | Not equals comparison            |
-| `         CMP        `                   | General comparison               |
+|                                                                                                                                       |                                  |
+|---------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|
+| Name                                                                                                                                  | Description                      |
+| [`EQUAL`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#equal)                                 | Equality comparison              |
+| [`GREATER_THAN`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#greater_than)                   | Greater than comparison          |
+| [`GREATER_THAN_OR_EQUAL`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#greater_than_or_equal) | Greater than or equal comparison |
+| [`LESS_THAN`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#less_than)                         | Less than comparison             |
+| [`LESS_THAN_OR_EQUAL`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#less_than_or_equal)       | Less than or equal comparison    |
+| [`NOT_EQUAL`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#not_equal)                         | Not equals comparison            |
+| [`CMP`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#cmp)                                     | General comparison               |
 
 ### EQUAL
 
 **Syntax:**
 
-    equal(x: ANY, y: ANY) -> BOOLEAN
+```
+equal(x: ANY, y: ANY) -> BOOLEAN
+```
 
 **Examples:**
 
 | `x`    | `y`      | `equal(x, y)` |
-| :----- | :------- | :------------ |
+|--------|----------|---------------|
 | 1L     | 1L       | `TRUE`        |
 | 1.0    | 1L       | `TRUE`        |
-| \-1.0  | 1L       | `FALSE`       |
+| -1.0   | 1L       | `FALSE`       |
 | NaN    | NaN      | `TRUE`        |
 | `NULL` | `NULL`   | `TRUE`        |
 | `NULL` | `ABSENT` | `FALSE`       |
@@ -3276,76 +3675,92 @@ Returns `TRUE` if `x` and `y` are equal, and `FALSE` otherwise.
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("rating").equal(5).as("hasPerfectRating"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("rating").equal(5).as("hasPerfectRating"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("rating").equal(5).as("hasPerfectRating"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("rating").equal(5).as("hasPerfectRating"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("rating").equal(5).as("hasPerfectRating")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("rating").equal(5).as("hasPerfectRating")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("rating").equal(5).alias("hasPerfectRating"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("rating").equal(5).alias("hasPerfectRating"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(field("rating").equal(5).alias("hasPerfectRating"))
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(field("rating").equal(5).alias("hasPerfectRating"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("rating").equal(5).as_("hasPerfectRating"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("rating").equal(5).as_("hasPerfectRating"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(equal(field("rating"), 5).as("hasPerfectRating"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(equal(field("rating"), 5).as("hasPerfectRating"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Equal(firestore.FieldOf("rating"), 5).As("hasPerfectRating"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Equal(firestore.FieldOf("rating"), 5).As("hasPerfectRating"),
+    )).
+    Execute(ctx)
+```
 
-### GREATER\_THAN
+### GREATER_THAN
 
 **Syntax:**
 
-    greater_than(x: ANY, y: ANY) -> BOOLEAN
+```
+greater_than(x: ANY, y: ANY) -> BOOLEAN
+```
 
 **Description:**
 
@@ -3356,7 +3771,7 @@ If `x` and `y` are not comparable, returns `FALSE` .
 **Examples:**
 
 | `x`    | `y`    | `greater_than(x, y)` |
-| :----- | :----- | :------------------- |
+|--------|--------|----------------------|
 | 1L     | 0.0    | `TRUE`               |
 | 1L     | 1L     | `FALSE`              |
 | 1L     | 2L     | `FALSE`              |
@@ -3368,76 +3783,92 @@ If `x` and `y` are not comparable, returns `FALSE` .
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("rating").greaterThan(4).as("hasHighRating"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("rating").greaterThan(4).as("hasHighRating"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("rating").greaterThan(4).as("hasHighRating"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("rating").greaterThan(4).as("hasHighRating"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("rating").greaterThan(4).as("hasHighRating")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("rating").greaterThan(4).as("hasHighRating")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("rating").greaterThan(4).alias("hasHighRating"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("rating").greaterThan(4).alias("hasHighRating"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(field("rating").greaterThan(4).alias("hasHighRating"))
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(field("rating").greaterThan(4).alias("hasHighRating"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("rating").greater_than(4).as_("hasHighRating"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("rating").greater_than(4).as_("hasHighRating"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(greaterThan(field("rating"), 4).as("hasHighRating"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(greaterThan(field("rating"), 4).as("hasHighRating"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.GreaterThan(firestore.FieldOf("rating"), 4).As("hasHighRating"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.GreaterThan(firestore.FieldOf("rating"), 4).As("hasHighRating"),
+    )).
+    Execute(ctx)
+```
 
-### GREATER\_THAN\_OR\_EQUAL
+### GREATER_THAN_OR_EQUAL
 
 **Syntax:**
 
-    greater_than_or_equal(x: ANY, y: ANY) -> BOOLEAN
+```
+greater_than_or_equal(x: ANY, y: ANY) -> BOOLEAN
+```
 
 **Description:**
 
@@ -3448,7 +3879,7 @@ If `x` and `y` are not comparable, returns `FALSE` .
 **Examples:**
 
 | `x`    | `y`    | `greater_than_or_equal(x, y)` |
-| :----- | :----- | :---------------------------- |
+|--------|--------|-------------------------------|
 | 1L     | 0.0    | `TRUE`                        |
 | 1L     | 1L     | `TRUE`                        |
 | 1L     | 2L     | `FALSE`                       |
@@ -3460,80 +3891,96 @@ If `x` and `y` are not comparable, returns `FALSE` .
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("published").greaterThanOrEqual(1900).as("publishedIn20thCentury"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("published").greaterThanOrEqual(1900).as("publishedIn20thCentury"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("published").greaterThanOrEqual(1900).as("publishedIn20thCentury"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("published").greaterThanOrEqual(1900).as("publishedIn20thCentury"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("published").greaterThanOrEqual(1900).as("publishedIn20thCentury")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("published").greaterThanOrEqual(1900).as("publishedIn20thCentury")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("published").greaterThanOrEqual(1900).alias("publishedIn20thCentury"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("published").greaterThanOrEqual(1900).alias("publishedIn20thCentury"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(field("published").greaterThanOrEqual(1900).alias("publishedIn20thCentury"))
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(field("published").greaterThanOrEqual(1900).alias("publishedIn20thCentury"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Field.of("published")
-            .greater_than_or_equal(1900)
-            .as_("publishedIn20thCentury")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Field.of("published")
+        .greater_than_or_equal(1900)
+        .as_("publishedIn20thCentury")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(greaterThanOrEqual(field("published"), 1900).as("publishedIn20thCentury"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(greaterThanOrEqual(field("published"), 1900).as("publishedIn20thCentury"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.GreaterThanOrEqual(firestore.FieldOf("published"), 1900).As("publishedIn20thCentury"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.GreaterThanOrEqual(firestore.FieldOf("published"), 1900).As("publishedIn20thCentury"),
+    )).
+    Execute(ctx)
+```
 
-### LESS\_THAN
+### LESS_THAN
 
 **Syntax:**
 
-    less_than(x: ANY, y: ANY) -> BOOLEAN
+```
+less_than(x: ANY, y: ANY) -> BOOLEAN
+```
 
 **Description:**
 
@@ -3544,7 +3991,7 @@ If `x` and `y` are not comparable, returns `FALSE` .
 **Examples:**
 
 | `x`    | `y`    | `less_than(x, y)` |
-| :----- | :----- | :---------------- |
+|--------|--------|-------------------|
 | 1L     | 0.0    | `FALSE`           |
 | 1L     | 1L     | `FALSE`           |
 | 1L     | 2L     | `TRUE`            |
@@ -3556,76 +4003,92 @@ If `x` and `y` are not comparable, returns `FALSE` .
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("published").lessThan(1923).as("isPublicDomainProbably"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("published").lessThan(1923).as("isPublicDomainProbably"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("published").lessThan(1923).as("isPublicDomainProbably"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("published").lessThan(1923).as("isPublicDomainProbably"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("published").lessThan(1923).as("isPublicDomainProbably")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("published").lessThan(1923).as("isPublicDomainProbably")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("published").lessThan(1923).alias("isPublicDomainProbably"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("published").lessThan(1923).alias("isPublicDomainProbably"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(field("published").lessThan(1923).alias("isPublicDomainProbably"))
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(field("published").lessThan(1923).alias("isPublicDomainProbably"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("published").less_than(1923).as_("isPublicDomainProbably"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("published").less_than(1923).as_("isPublicDomainProbably"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(lessThan(field("published"), 1923).as("isPublicDomainProbably"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(lessThan(field("published"), 1923).as("isPublicDomainProbably"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.LessThan(firestore.FieldOf("published"), 1923).As("isPublicDomainProbably"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.LessThan(firestore.FieldOf("published"), 1923).As("isPublicDomainProbably"),
+    )).
+    Execute(ctx)
+```
 
-### LESS\_THAN\_OR\_EQUAL
+### LESS_THAN_OR_EQUAL
 
 **Syntax:**
 
-    less_than_or_equal(x: ANY, y: ANY) -> BOOLEAN
+```
+less_than_or_equal(x: ANY, y: ANY) -> BOOLEAN
+```
 
 **Description:**
 
@@ -3636,7 +4099,7 @@ If `x` and `y` are not comparable, returns `FALSE` .
 **Examples:**
 
 | `x`    | `y`    | `less_than(x, y)` |
-| :----- | :----- | :---------------- |
+|--------|--------|-------------------|
 | 1L     | 0.0    | `FALSE`           |
 | 1L     | 1L     | `TRUE`            |
 | 1L     | 2L     | `TRUE`            |
@@ -3648,76 +4111,92 @@ If `x` and `y` are not comparable, returns `FALSE` .
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("rating").lessThanOrEqual(2).as("hasBadRating"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("rating").lessThanOrEqual(2).as("hasBadRating"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("rating").lessThanOrEqual(2).as("hasBadRating"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("rating").lessThanOrEqual(2).as("hasBadRating"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("rating").lessThanOrEqual(2).as("hasBadRating")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("rating").lessThanOrEqual(2).as("hasBadRating")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("rating").lessThanOrEqual(2).alias("hasBadRating"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("rating").lessThanOrEqual(2).alias("hasBadRating"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(field("rating").lessThanOrEqual(2).alias("hasBadRating"))
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(field("rating").lessThanOrEqual(2).alias("hasBadRating"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("rating").less_than_or_equal(2).as_("hasBadRating"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("rating").less_than_or_equal(2).as_("hasBadRating"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(lessThanOrEqual(field("rating"), 2).as("hasBadRating"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(lessThanOrEqual(field("rating"), 2).as("hasBadRating"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.LessThanOrEqual(firestore.FieldOf("rating"), 2).As("hasBadRating"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.LessThanOrEqual(firestore.FieldOf("rating"), 2).As("hasBadRating"),
+    )).
+    Execute(ctx)
+```
 
-### NOT\_EQUAL
+### NOT_EQUAL
 
 **Syntax:**
 
-    not_equal(x: ANY, y: ANY) -> BOOLEAN
+```
+not_equal(x: ANY, y: ANY) -> BOOLEAN
+```
 
 **Description:**
 
@@ -3726,10 +4205,10 @@ Returns `TRUE` if `x` is not equal to `y` , and `FALSE` otherwise.
 **Examples:**
 
 | `x`    | `y`      | `not_equal(x, y)` |
-| :----- | :------- | :---------------- |
+|--------|----------|-------------------|
 | 1L     | 1L       | `FALSE`           |
 | 1.0    | 1L       | `FALSE`           |
-| \-1.0  | 1L       | `TRUE`            |
+| -1.0   | 1L       | `TRUE`            |
 | NaN    | 0L       | `TRUE`            |
 | NaN    | NaN      | `FALSE`           |
 | `NULL` | `NULL`   | `FALSE`           |
@@ -3737,115 +4216,133 @@ Returns `TRUE` if `x` is not equal to `y` , and `FALSE` otherwise.
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("title").notEqual("1984").as("not1984"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("title").notEqual("1984").as("not1984"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("title").notEqual("1984").as("not1984"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("title").notEqual("1984").as("not1984"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("title").notEqual("1984").as("not1984")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("title").notEqual("1984").as("not1984")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("title").notEqual("1984").alias("not1984"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("title").notEqual("1984").alias("not1984"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(field("title").notEqual("1984").alias("not1984"))
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(field("title").notEqual("1984").alias("not1984"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("title").not_equal("1984").as_("not1984"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("title").not_equal("1984").as_("not1984"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(notEqual(field("title"), "1984").as("not1984"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(notEqual(field("title"), "1984").as("not1984"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.NotEqual(firestore.FieldOf("title"), "1984").As("not1984"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.NotEqual(firestore.FieldOf("title"), "1984").As("not1984"),
+    )).
+    Execute(ctx)
+```
 
 ### CMP
 
 **Syntax:**
 
-    cmp(x: ANY, y: ANY) -> Int64
+```
+cmp(x: ANY, y: ANY) -> Int64
+```
 
 **Description:**
 
 Compares `x` & `y` , returning:
 
-  - `1L` if `x` is greater than `y` .
-  - `-1L` if `x` is less than `y` .
-  - `0L` otherwise.
+- `1L` if `x` is greater than `y` .
+- `-1L` if `x` is less than `y` .
+- `0L` otherwise.
 
 Unlike other comparison functions, the `cmp(...)` function works across types, following the same ordering used in the `sort(...)` stage. See [value type order](https://docs.cloud.google.com/firestore/native/docs/concepts/data-types) for how values are ordered across types.
 
 **Examples:**
 
 | `x`    | `y`      | `cmp(x, y)` |
-| :----- | :------- | :---------- |
+|--------|----------|-------------|
 | 1L     | 1L       | 0L          |
 | 1.0    | 1L       | 0L          |
-| \-1.0  | 1L       | \-1L        |
-| 42.5D  | "foo"    | \-1L        |
+| -1.0   | 1L       | -1L         |
+| 42.5D  | "foo"    | -1L         |
 | `NULL` | `NULL`   | 0L          |
 | `NULL` | `ABSENT` | 0L          |
 
 ## **Debugging Functions**
 
-|                              |                                                                             |
-| ---------------------------- | --------------------------------------------------------------------------- |
-| Name                         | Description                                                                 |
-| `         EXISTS        `    | Returns `TRUE` if the value is not an absent value                          |
-| `         IS_ABSENT        ` | Returns `TRUE` if the value is an absent value                              |
-| `         IF_ABSENT        ` | Replaces the value with an expression if it is absent                       |
-| `         IS_ERROR        `  | Catches and checks if an error has been thrown by the underlying expression |
-| `         IF_ERROR        `  | Replaces the value with an expression if it has thrown an error             |
-| `         ERROR        `     | Terminates evaluation and returns an error with the specified message       |
+|                                                                                                               |                                                                             |
+|---------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| Name                                                                                                          | Description                                                                 |
+| [`EXISTS`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#exists)       | Returns `TRUE` if the value is not an absent value                          |
+| [`IS_ABSENT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#is_absent) | Returns `TRUE` if the value is an absent value                              |
+| [`IF_ABSENT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#if_absent) | Replaces the value with an expression if it is absent                       |
+| [`IS_ERROR`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#is_error)   | Catches and checks if an error has been thrown by the underlying expression |
+| [`IF_ERROR`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#if_error)   | Replaces the value with an expression if it has thrown an error             |
+| [`ERROR`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#error)         | Terminates evaluation and returns an error with the specified message       |
 
 ### EXISTS
 
 **Syntax:**
 
-    exists(value: ANY) -> BOOLEAN
+```
+exists(value: ANY) -> BOOLEAN
+```
 
 **Description:**
 
@@ -3854,7 +4351,7 @@ Returns `TRUE` if `value` is not the absent value.
 **Examples:**
 
 | `value`  | `exists(value)` |
-| :------- | :-------------- |
+|----------|-----------------|
 | 0L       | `TRUE`          |
 | "foo"    | `TRUE`          |
 | `NULL`   | `TRUE`          |
@@ -3862,82 +4359,98 @@ Returns `TRUE` if `value` is not the absent value.
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("rating").exists().as("hasRating"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("rating").exists().as("hasRating"))
+  .execute();
+```
 
 ### Web
 
 **Example:**
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("rating").exists().as("hasRating"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("rating").exists().as("hasRating"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("rating").exists().as("hasRating")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("rating").exists().as("hasRating")])
+  .execute()
+```
 
-##### Kotlin  
-Android
-
-**Example:**
-
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("rating").exists().alias("hasRating"))
-        .execute()
-
-##### Java  
-Android
+##### Kotlin Android
 
 **Example:**
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(field("rating").exists().alias("hasRating"))
-        .execute();
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("rating").exists().alias("hasRating"))
+    .execute()
+```
+
+##### Java Android
+
+**Example:**
+
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(field("rating").exists().alias("hasRating"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("rating").exists().as_("hasRating"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("rating").exists().as_("hasRating"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(exists(field("rating")).as("hasRating"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(exists(field("rating")).as("hasRating"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.FieldExists(firestore.FieldOf("rating")).As("hasRating"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.FieldExists(firestore.FieldOf("rating")).As("hasRating"),
+    )).
+    Execute(ctx)
+```
 
-### IS\_ABSENT
+### IS_ABSENT
 
 **Syntax:**
 
-    is_absent(value: ANY) -> BOOLEAN
+```
+is_absent(value: ANY) -> BOOLEAN
+```
 
 **Description:**
 
@@ -3946,17 +4459,19 @@ Returns `TRUE` if `value` is the absent value, and `FALSE` otherwise. Absent val
 **Examples:**
 
 | `value`  | `is_absent(value)` |
-| :------- | :----------------- |
+|----------|--------------------|
 | 0L       | `FALSE`            |
 | "foo"    | `FALSE`            |
 | `NULL`   | `FALSE`            |
 | `ABSENT` | `TRUE`             |
 
-### IF\_ABSENT
+### IF_ABSENT
 
 **Syntax:**
 
-    if_absent(value: ANY, replacement: ANY) -> ANY
+```
+if_absent(value: ANY, replacement: ANY) -> ANY
+```
 
 **Description:**
 
@@ -3965,26 +4480,30 @@ If `value` is an absent value, evaluates and returns `replacement` . Otherwise r
 **Examples:**
 
 | `value`  | `replacement` | `if_absent(value, replacement)` |
-| :------- | :------------ | :------------------------------ |
+|----------|---------------|---------------------------------|
 | 5L       | 0L            | 5L                              |
 | `NULL`   | 0L            | `NULL`                          |
 | `ABSENT` | 0L            | 0L                              |
 
-### IS\_ERROR
+### IS_ERROR
 
 **Syntax:**
 
-    is_error(try: ANY) -> BOOLEAN
+```
+is_error(try: ANY) -> BOOLEAN
+```
 
 **Description:**
 
 Returns `TRUE` if an error is thrown during the evaluation of `try` . Returns `FALSE` otherwise.
 
-### IF\_ERROR
+### IF_ERROR
 
 **Syntax:**
 
-    if_error(try: ANY, catch: ANY) -> ANY
+```
+if_error(try: ANY, catch: ANY) -> ANY
+```
 
 **Description:**
 
@@ -3994,7 +4513,9 @@ If an error is thrown during the evaluation of `try` , evaluates and returns `re
 
 **Syntax:**
 
-    error(message: STRING) -> ANY
+```
+error(message: STRING) -> ANY
+```
 
 **Description:**
 
@@ -4003,7 +4524,7 @@ Evaluation of the `error` function results in the evaluation of the pipeline to 
 **Examples:**
 
 | `cond`  | `res` | `switch_on(cond, res, error("no condition matched"))` |
-| :------ | :---- | :---------------------------------------------------- |
+|---------|-------|-------------------------------------------------------|
 | `TRUE`  | 1L    | 1L                                                    |
 | `FALSE` | 1L    | `ERROR ("no condition matched")`                      |
 
@@ -4011,19 +4532,21 @@ Evaluation of the `error` function results in the evaluation of the pipeline to 
 
 The `REFERENCE` type acts as a "pointer" to other documents in the database (or even other databases). The following functions allow manipulating this type during query execution.
 
-|                                    |                                                              |
-| ---------------------------------- | ------------------------------------------------------------ |
-| Name                               | Description                                                  |
-| `         COLLECTION_ID        `   | Returns the ID of the leaf collection in the given reference |
-| `         DOCUMENT_ID        `     | Returns the ID of the document in the given reference        |
-| `         PARENT        `          | Returns the parent reference                                 |
-| `         REFERENCE_SLICE        ` | Returns a subset of segments from the given reference        |
+|                                                                                                                           |                                                              |
+|---------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------|
+| Name                                                                                                                      | Description                                                  |
+| [`COLLECTION_ID`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#collection_id)     | Returns the ID of the leaf collection in the given reference |
+| [`DOCUMENT_ID`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#document_id)         | Returns the ID of the document in the given reference        |
+| [`PARENT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#parent)                   | Returns the parent reference                                 |
+| [`REFERENCE_SLICE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#reference_slice) | Returns a subset of segments from the given reference        |
 
-### COLLECTION\_ID
+### COLLECTION_ID
 
 **Syntax:**
 
-    collection_id(ref: REFERENCE) -> STRING
+```
+collection_id(ref: REFERENCE) -> STRING
+```
 
 **Description:**
 
@@ -4032,15 +4555,17 @@ Returns the leaf collection ID of the given `REFERENCE` .
 **Examples:**
 
 | `ref`                     | `collection_id(ref)` |
-| :------------------------ | :------------------- |
+|---------------------------|----------------------|
 | `users/user1`             | `"users"`            |
 | `users/user1/posts/post1` | `"posts"`            |
 
-### DOCUMENT\_ID
+### DOCUMENT_ID
 
 **Syntax:**
 
-    document_id(ref: REFERENCE) -> ANY
+```
+document_id(ref: REFERENCE) -> ANY
+```
 
 **Description:**
 
@@ -4049,7 +4574,7 @@ Returns the document ID of the given `REFERENCE` .
 **Examples:**
 
 | `ref`                     | `document_id(ref)` |
-| :------------------------ | :----------------- |
+|---------------------------|--------------------|
 | `users/user1`             | `"user1"`          |
 | `users/user1/posts/post1` | `"post1"`          |
 
@@ -4057,7 +4582,9 @@ Returns the document ID of the given `REFERENCE` .
 
 **Syntax:**
 
-    parent(ref: REFERENCE) -> REFERENCE
+```
+parent(ref: REFERENCE) -> REFERENCE
+```
 
 **Description:**
 
@@ -4066,16 +4593,18 @@ Returns the parent `REFERENCE` of the given reference, or `NULL` if the ref is a
 **Examples:**
 
 | `ref`                     | `parent(ref)` |
-| :------------------------ | :------------ |
+|---------------------------|---------------|
 | `/`                       | `NULL`        |
 | `users/user1`             | `/`           |
 | `users/user1/posts/post1` | `users/user1` |
 
-### REFERENCE\_SLICE
+### REFERENCE_SLICE
 
 **Syntax:**
 
-    reference_slice(ref: REFERENCE, offset: INT, length: INT) -> REFERENCE
+```
+reference_slice(ref: REFERENCE, offset: INT, length: INT) -> REFERENCE
+```
 
 **Description:**
 
@@ -4083,40 +4612,42 @@ A `REFERENCE` is a list of `(collection_id, document_id)` tuples and this allows
 
 Returns a new `REFERENCE` that is a subset of the segments of the given `ref` .
 
-  - `offset` : The starting index (0-based) of the slice. If negative, it is an offset from the end of the reference.
-  - `length` : The number of segments to include in the slice.
+- `offset` : The starting index (0-based) of the slice. If negative, it is an offset from the end of the reference.
+- `length` : The number of segments to include in the slice.
 
 **Examples:**
 
 | `ref`         | `offset` | `length` | `reference_slice(ref, offset, length)` |
-| :------------ | :------- | :------- | :------------------------------------- |
+|---------------|----------|----------|----------------------------------------|
 | `a/1/b/2/c/3` | 1L       | 2L       | `b/2/c/3`                              |
 | `a/1/b/2/c/3` | 0L       | 2L       | `a/1/b/2`                              |
-| `a/1/b/2/c/3` | \-2L     | 2L       | `c/3`                                  |
+| `a/1/b/2/c/3` | -2L      | 2L       | `c/3`                                  |
 
 ## **Logical Functions**
 
-|                                  |                                                            |
-| -------------------------------- | ---------------------------------------------------------- |
-| Name                             | Description                                                |
-| `         AND        `           | Performs a logical AND                                     |
-| `         OR        `            | Performs a logical OR                                      |
-| `         XOR        `           | Performs a logical XOR                                     |
-| `         NOT        `           | Performs a logical NOT                                     |
-| `         NOR        `           | Performs a logical NOR                                     |
-| `         CONDITIONAL        `   | Branches evaluation based on a conditional expression.     |
-| `         IF_NULL        `       | Returns the first non-null value                           |
-| `         SWITCH_ON        `     | Branches evaluation based on a series of conditions        |
-| `         EQUAL_ANY        `     | Checks if a value is equal to any elements in an array     |
-| `         NOT_EQUAL_ANY        ` | Checks if a value is not equal to any elements in an array |
-| `         MAXIMUM        `       | Returns the maximum value in a set of values               |
-| `         MINIMUM        `       | Returns the minimum value in a set of values               |
+|                                                                                                                       |                                                            |
+|-----------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
+| Name                                                                                                                  | Description                                                |
+| [`AND`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#and)                     | Performs a logical AND                                     |
+| [`OR`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#or)                       | Performs a logical OR                                      |
+| [`XOR`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#xor)                     | Performs a logical XOR                                     |
+| [`NOT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#not)                     | Performs a logical NOT                                     |
+| [`NOR`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#nor)                     | Performs a logical NOR                                     |
+| [`CONDITIONAL`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#conditional)     | Branches evaluation based on a conditional expression.     |
+| [`IF_NULL`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#if_null)             | Returns the first non-null value                           |
+| [`SWITCH_ON`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#switch_on)         | Branches evaluation based on a series of conditions        |
+| [`EQUAL_ANY`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#equal_any)         | Checks if a value is equal to any elements in an array     |
+| [`NOT_EQUAL_ANY`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#not_equal_any) | Checks if a value is not equal to any elements in an array |
+| [`MAXIMUM`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#maximum)             | Returns the maximum value in a set of values               |
+| [`MINIMUM`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#minimum)             | Returns the minimum value in a set of values               |
 
 ### AND
 
 **Syntax:**
 
-    and(x: BOOLEAN...) -> BOOLEAN
+```
+and(x: BOOLEAN...) -> BOOLEAN
+```
 
 **Description:**
 
@@ -4127,7 +4658,7 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
 **Examples:**
 
 | `x`      | `y`      | `and(x, y)` |
-| :------- | :------- | :---------- |
+|----------|----------|-------------|
 | `TRUE`   | `TRUE`   | `TRUE`      |
 | `FALSE`  | `TRUE`   | `FALSE`     |
 | `NULL`   | `TRUE`   | `NULL`      |
@@ -4137,103 +4668,119 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        and(field("rating").greaterThan(4), field("price").lessThan(10))
-          .as("under10Recommendation")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    and(field("rating").greaterThan(4), field("price").lessThan(10))
+      .as("under10Recommendation")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        and(field("rating").greaterThan(4), field("price").lessThan(10))
-          .as("under10Recommendation")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    and(field("rating").greaterThan(4), field("price").lessThan(10))
+      .as("under10Recommendation")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        (Field("rating").greaterThan(4) && Field("price").lessThan(10))
-          .as("under10Recommendation")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    (Field("rating").greaterThan(4) && Field("price").lessThan(10))
+      .as("under10Recommendation")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            Expression.and(field("rating").greaterThan(4),
-              field("price").lessThan(10))
-                .alias("under10Recommendation")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        Expression.and(field("rating").greaterThan(4),
+          field("price").lessThan(10))
+            .alias("under10Recommendation")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            Expression.and(
-                field("rating").greaterThan(4),
-                field("price").lessThan(10)
-            ).alias("under10Recommendation")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        Expression.and(
+            field("rating").greaterThan(4),
+            field("price").lessThan(10)
+        ).alias("under10Recommendation")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field, And
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            And(
-                Field.of("rating").greater_than(4), Field.of("price").less_than(10)
-            ).as_("under10Recommendation")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field, And
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        And(
+            Field.of("rating").greater_than(4), Field.of("price").less_than(10)
+        ).as_("under10Recommendation")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(
-                and(greaterThan(field("rating"), 4), lessThan(field("price"), 10))
-                    .as("under10Recommendation"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(
+            and(greaterThan(field("rating"), 4), lessThan(field("price"), 10))
+                .as("under10Recommendation"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.And(
-             firestore.GreaterThan(firestore.FieldOf("rating"), 4),
-             firestore.LessThan(firestore.FieldOf("price"), 10),
-         ).As("under10Recommendation"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.And(
+            firestore.GreaterThan(firestore.FieldOf("rating"), 4),
+            firestore.LessThan(firestore.FieldOf("price"), 10),
+        ).As("under10Recommendation"),
+    )).
+    Execute(ctx)
+```
 
 ### OR
 
 **Syntax:**
 
-    or(x: BOOLEAN...) -> BOOLEAN
+```
+or(x: BOOLEAN...) -> BOOLEAN
+```
 
 **Description:**
 
@@ -4244,7 +4791,7 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
 **Examples:**
 
 | `x`      | `y`      | `or(x, y)` |
-| :------- | :------- | :--------- |
+|----------|----------|------------|
 | `TRUE`   | `TRUE`   | `TRUE`     |
 | `FALSE`  | `TRUE`   | `TRUE`     |
 | `NULL`   | `TRUE`   | `TRUE`     |
@@ -4254,104 +4801,120 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        or(field("genre").equal("Fantasy"), field("tags").arrayContains("adventure"))
-          .as("matchesSearchFilters")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    or(field("genre").equal("Fantasy"), field("tags").arrayContains("adventure"))
+      .as("matchesSearchFilters")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        or(field("genre").equal("Fantasy"), field("tags").arrayContains("adventure"))
-          .as("matchesSearchFilters")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    or(field("genre").equal("Fantasy"), field("tags").arrayContains("adventure"))
+      .as("matchesSearchFilters")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        (Field("genre").equal("Fantasy") || Field("tags").arrayContains("adventure"))
-          .as("matchesSearchFilters")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    (Field("genre").equal("Fantasy") || Field("tags").arrayContains("adventure"))
+      .as("matchesSearchFilters")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            Expression.or(field("genre").equal("Fantasy"),
-              field("tags").arrayContains("adventure"))
-                .alias("matchesSearchFilters")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        Expression.or(field("genre").equal("Fantasy"),
+          field("tags").arrayContains("adventure"))
+            .alias("matchesSearchFilters")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            Expression.or(
-                field("genre").equal("Fantasy"),
-                field("tags").arrayContains("adventure")
-            ).alias("matchesSearchFilters")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        Expression.or(
+            field("genre").equal("Fantasy"),
+            field("tags").arrayContains("adventure")
+        ).alias("matchesSearchFilters")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field, And, Or
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Or(
-                Field.of("genre").equal("Fantasy"),
-                Field.of("tags").array_contains("adventure"),
-            ).as_("matchesSearchFilters")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field, And, Or
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Or(
+            Field.of("genre").equal("Fantasy"),
+            Field.of("tags").array_contains("adventure"),
+        ).as_("matchesSearchFilters")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(
-                or(equal(field("genre"), "Fantasy"), arrayContains(field("tags"), "adventure"))
-                    .as("matchesSearchFilters"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(
+            or(equal(field("genre"), "Fantasy"), arrayContains(field("tags"), "adventure"))
+                .as("matchesSearchFilters"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Or(
-             firestore.Equal(firestore.FieldOf("genre"), "Fantasy"),
-             firestore.ArrayContains(firestore.FieldOf("tags"), "adventure"),
-         ).As("matchesSearchFilters"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Or(
+            firestore.Equal(firestore.FieldOf("genre"), "Fantasy"),
+            firestore.ArrayContains(firestore.FieldOf("tags"), "adventure"),
+        ).As("matchesSearchFilters"),
+    )).
+    Execute(ctx)
+```
 
 ### XOR
 
 **Syntax:**
 
-    xor(x: BOOLEAN...) -> BOOLEAN
+```
+xor(x: BOOLEAN...) -> BOOLEAN
+```
 
 **Description:**
 
@@ -4362,7 +4925,7 @@ Returns `NULL` if any of the given values are `ABSENT` or `NULL` .
 **Examples:**
 
 | `x`      | `y`      | `xor(x, y)` |
-| :------- | :------- | :---------- |
+|----------|----------|-------------|
 | `TRUE`   | `TRUE`   | `FALSE`     |
 | `FALSE`  | `FALSE`  | `FALSE`     |
 | `FALSE`  | `TRUE`   | `TRUE`      |
@@ -4373,108 +4936,124 @@ Returns `NULL` if any of the given values are `ABSENT` or `NULL` .
 
 ##### Node.js
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        xor(field("tags").arrayContains("magic"), field("tags").arrayContains("nonfiction"))
-          .as("matchesSearchFilters")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    xor(field("tags").arrayContains("magic"), field("tags").arrayContains("nonfiction"))
+      .as("matchesSearchFilters")
+  )
+);
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        xor(field("tags").arrayContains("magic"), field("tags").arrayContains("nonfiction"))
-          .as("matchesSearchFilters")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    xor(field("tags").arrayContains("magic"), field("tags").arrayContains("nonfiction"))
+      .as("matchesSearchFilters")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        (Field("tags").arrayContains("magic") ^ Field("tags").arrayContains("nonfiction"))
-          .as("matchesSearchFilters")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    (Field("tags").arrayContains("magic") ^ Field("tags").arrayContains("nonfiction"))
+      .as("matchesSearchFilters")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            Expression.xor(field("tags").arrayContains("magic"),
-              field("tags").arrayContains("nonfiction"))
-                .alias("matchesSearchFilters")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        Expression.xor(field("tags").arrayContains("magic"),
+          field("tags").arrayContains("nonfiction"))
+            .alias("matchesSearchFilters")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            Expression.xor(
-                field("tags").arrayContains("magic"),
-                field("tags").arrayContains("nonfiction")
-            ).alias("matchesSearchFilters")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        Expression.xor(
+            field("tags").arrayContains("magic"),
+            field("tags").arrayContains("nonfiction")
+        ).alias("matchesSearchFilters")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field, Xor
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Xor(
-                [
-                    Field.of("tags").array_contains("magic"),
-                    Field.of("tags").array_contains("nonfiction"),
-                ]
-            ).as_("matchesSearchFilters")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field, Xor
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Xor(
+            [
+                Field.of("tags").array_contains("magic"),
+                Field.of("tags").array_contains("nonfiction"),
+            ]
+        ).as_("matchesSearchFilters")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(
-                xor(
-                        arrayContains(field("tags"), "magic"),
-                        arrayContains(field("tags"), "nonfiction"))
-                    .as("matchesSearchFilters"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(
+            xor(
+                    arrayContains(field("tags"), "magic"),
+                    arrayContains(field("tags"), "nonfiction"))
+                .as("matchesSearchFilters"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Xor(
-             firestore.ArrayContains(firestore.FieldOf("tags"), "magic"),
-             firestore.ArrayContains(firestore.FieldOf("tags"), "nonfiction"),
-         ).As("matchesSearchFilters"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Xor(
+            firestore.ArrayContains(firestore.FieldOf("tags"), "magic"),
+            firestore.ArrayContains(firestore.FieldOf("tags"), "nonfiction"),
+        ).As("matchesSearchFilters"),
+    )).
+    Execute(ctx)
+```
 
 ### NOR
 
 **Syntax:**
 
-    nor(x: BOOLEAN...) -> BOOLEAN
+```
+nor(x: BOOLEAN...) -> BOOLEAN
+```
 
 **Description:**
 
@@ -4485,7 +5064,7 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
 **Examples:**
 
 | `x`      | `y`      | `nor(x, y)` |
-| :------- | :------- | :---------- |
+|----------|----------|-------------|
 | `TRUE`   | `TRUE`   | `FALSE`     |
 | `FALSE`  | `TRUE`   | `FALSE`     |
 | `FALSE`  | `FALSE`  | `TRUE`      |
@@ -4498,7 +5077,9 @@ Returns `NULL` if the result can't be derived due to any of the given values bei
 
 **Syntax:**
 
-    not(x: BOOLEAN) -> BOOLEAN
+```
+not(x: BOOLEAN) -> BOOLEAN
+```
 
 **Description:**
 
@@ -4506,93 +5087,109 @@ Returns the logical NOT of a boolean value.
 
 ##### Node.js
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("tags").arrayContains("nonfiction").not()
-          .as("isFiction")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("tags").arrayContains("nonfiction").not()
+      .as("isFiction")
+  )
+);
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("tags").arrayContains("nonfiction").not()
-          .as("isFiction")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("tags").arrayContains("nonfiction").not()
+      .as("isFiction")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        (!Field("tags").arrayContains("nonfiction"))
-          .as("isFiction")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    (!Field("tags").arrayContains("nonfiction"))
+      .as("isFiction")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            Expression.not(
-                field("tags").arrayContains("nonfiction")
-            ).alias("isFiction")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        Expression.not(
+            field("tags").arrayContains("nonfiction")
+        ).alias("isFiction")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            Expression.not(
-                field("tags").arrayContains("nonfiction")
-            ).alias("isFiction")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        Expression.not(
+            field("tags").arrayContains("nonfiction")
+        ).alias("isFiction")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field, Not
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Not(Field.of("tags").array_contains("nonfiction")).as_("isFiction"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field, Not
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Not(Field.of("tags").array_contains("nonfiction")).as_("isFiction"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(not(arrayContains(field("tags"), "nonfiction")).as("isFiction"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(not(arrayContains(field("tags"), "nonfiction")).as("isFiction"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Not(firestore.ArrayContains(firestore.FieldOf("tags"), "nonfiction")).As("isFiction"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Not(firestore.ArrayContains(firestore.FieldOf("tags"), "nonfiction")).As("isFiction"),
+    )).
+    Execute(ctx)
+```
 
 ### CONDITIONAL
 
 **Syntax:**
 
-    conditional(condition: BOOLEAN, true_case: ANY, false_case: ANY) -> ANY
+```
+conditional(condition: BOOLEAN, true_case: ANY, false_case: ANY) -> ANY
+```
 
 **Description:**
 
@@ -4603,7 +5200,7 @@ Evaluates and returns the `false_case` if the condition resolves to `FALSE` , `N
 **Examples:**
 
 | `condition` | `true_case` | `false_case` | `conditional(condition, true_case, false_case)` |
-| :---------- | :---------- | :----------- | :---------------------------------------------- |
+|-------------|-------------|--------------|-------------------------------------------------|
 | `TRUE`      | 1L          | 0L           | 1L                                              |
 | `FALSE`     | 1L          | 0L           | 0L                                              |
 | `NULL`      | 1L          | 0L           | 0L                                              |
@@ -4611,138 +5208,154 @@ Evaluates and returns the `false_case` if the condition resolves to `FALSE` , `N
 
 ##### Node.js
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("tags").arrayConcat([
-          field("pages").greaterThan(100)
-            .conditional(constant("longRead"), constant("shortRead"))
-        ]).as("extendedTags")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("tags").arrayConcat([
+      field("pages").greaterThan(100)
+        .conditional(constant("longRead"), constant("shortRead"))
+    ]).as("extendedTags")
+  )
+);
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("tags").arrayConcat([
-          field("pages").greaterThan(100)
-            .conditional(constant("longRead"), constant("shortRead"))
-        ]).as("extendedTags")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("tags").arrayConcat([
+      field("pages").greaterThan(100)
+        .conditional(constant("longRead"), constant("shortRead"))
+    ]).as("extendedTags")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("tags").arrayConcat([
-          ConditionalExpression(
-            Field("pages").greaterThan(100),
-            then: Constant("longRead"),
-            else: Constant("shortRead")
-          )
-        ]).as("extendedTags")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("tags").arrayConcat([
+      ConditionalExpression(
+        Field("pages").greaterThan(100),
+        then: Constant("longRead"),
+        else: Constant("shortRead")
+      )
+    ]).as("extendedTags")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("tags").arrayConcat(
-                Expression.conditional(
-                    field("pages").greaterThan(100),
-                    constant("longRead"),
-                    constant("shortRead")
-                )
-            ).alias("extendedTags")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("tags").arrayConcat(
+            Expression.conditional(
+                field("pages").greaterThan(100),
+                constant("longRead"),
+                constant("shortRead")
+            )
+        ).alias("extendedTags")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("tags").arrayConcat(
-                Expression.conditional(
-                    field("pages").greaterThan(100),
-                    constant("longRead"),
-                    constant("shortRead")
-                )
-            ).alias("extendedTags")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("tags").arrayConcat(
+            Expression.conditional(
+                field("pages").greaterThan(100),
+                constant("longRead"),
+                constant("shortRead")
+            )
+        ).alias("extendedTags")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import (
-        Field,
-        Constant,
-        Conditional,
-    )
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Field.of("tags")
-            .array_concat(
-                Conditional(
-                    Field.of("pages").greater_than(100),
-                    Constant.of("longRead"),
-                    Constant.of("shortRead"),
-                )
+```
+from google.cloud.firestore_v1.pipeline_expressions import (
+    Field,
+    Constant,
+    Conditional,
+)
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Field.of("tags")
+        .array_concat(
+            Conditional(
+                Field.of("pages").greater_than(100),
+                Constant.of("longRead"),
+                Constant.of("shortRead"),
             )
-            .as_("extendedTags")
         )
-        .execute()
+        .as_("extendedTags")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(
-                arrayConcat(
-                        field("tags"),
-                        conditional(
-                            greaterThan(field("pages"), 100),
-                            constant("longRead"),
-                            constant("shortRead")))
-                    .as("extendedTags"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(
+            arrayConcat(
+                    field("tags"),
+                    conditional(
+                        greaterThan(field("pages"), 100),
+                        constant("longRead"),
+                        constant("shortRead")))
+                .as("extendedTags"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.ArrayConcat(
-             firestore.FieldOf("tags"),
-             firestore.Conditional(
-                 firestore.GreaterThan(firestore.FieldOf("pages"), 100),
-                 firestore.ConstantOf("longRead"),
-                 firestore.ConstantOf("shortRead"),
-             ),
-         ).As("extendedTags"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.ArrayConcat(
+            firestore.FieldOf("tags"),
+            firestore.Conditional(
+                firestore.GreaterThan(firestore.FieldOf("pages"), 100),
+                firestore.ConstantOf("longRead"),
+                firestore.ConstantOf("shortRead"),
+            ),
+        ).As("extendedTags"),
+    )).
+    Execute(ctx)
+```
 
-### IF\_NULL
+### IF_NULL
 
 **Syntax:**
 
-    if_null(expr: ANY, replacement: ANY) -> ANY
+```
+if_null(expr: ANY, replacement: ANY) -> ANY
+```
 
 **Description:**
 
@@ -4751,16 +5364,18 @@ Returns `expr` if it is not `NULL` , otherwise evaluates and returns `replacemen
 **Examples:**
 
 | `expr`   | `replacement` | `if_null(expr, replacement)` |
-| :------- | :------------ | :--------------------------- |
+|----------|---------------|------------------------------|
 | 1L       | 2L            | 1L                           |
 | `NULL`   | 2L            | 2L                           |
 | `ABSENT` | 2L            | `ABSENT`                     |
 
-### SWITCH\_ON
+### SWITCH_ON
 
 **Syntax:**
 
-    switch_on(cond1: BOOLEAN, res1: ANY, cond2: BOOLEAN, res2: ANY, ..., [default: ANY]) -> ANY
+```
+switch_on(cond1: BOOLEAN, res1: ANY, cond2: BOOLEAN, res2: ANY, ..., [default: ANY]) -> ANY
+```
 
 **Description:**
 
@@ -4771,16 +5386,18 @@ To provide a `default` value, pass it as the final argument such that there is a
 **Examples:**
 
 | `x` | `switch_on(eq(x, 1L), "one", eq(x, 2L), "two", "other")` |
-| :-- | :------------------------------------------------------- |
+|-----|----------------------------------------------------------|
 | 1L  | "one"                                                    |
 | 2L  | "two"                                                    |
 | 3L  | "other"                                                  |
 
-### EQUAL\_ANY
+### EQUAL_ANY
 
 **Syntax:**
 
-    equal_any(value: ANY, search_space: ARRAY) -> BOOLEAN
+```
+equal_any(value: ANY, search_space: ARRAY) -> BOOLEAN
+```
 
 **Description:**
 
@@ -4789,7 +5406,7 @@ Returns `TRUE` if `value` is in the `search_space` array.
 **Examples:**
 
 | `value`  | `search_space`  | `equal_any(value, search_space)` |
-| :------- | :-------------- | :------------------------------- |
+|----------|-----------------|----------------------------------|
 | 0L       | \[1L, 2L, 3L\]  | `FALSE`                          |
 | 2L       | \[1L, 2L, 3L\]  | `TRUE`                           |
 | `NULL`   | \[1L, 2L, 3L\]  | `FALSE`                          |
@@ -4799,97 +5416,113 @@ Returns `TRUE` if `value` is in the `search_space` array.
 
 ##### Node.js
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("genre").equalAny(["Science Fiction", "Psychological Thriller"])
-          .as("matchesGenreFilters")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("genre").equalAny(["Science Fiction", "Psychological Thriller"])
+      .as("matchesGenreFilters")
+  )
+);
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("genre").equalAny(["Science Fiction", "Psychological Thriller"])
-          .as("matchesGenreFilters")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("genre").equalAny(["Science Fiction", "Psychological Thriller"])
+      .as("matchesGenreFilters")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("genre").equalAny(["Science Fiction", "Psychological Thriller"])
-          .as("matchesGenreFilters")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("genre").equalAny(["Science Fiction", "Psychological Thriller"])
+      .as("matchesGenreFilters")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("genre").equalAny(listOf("Science Fiction", "Psychological Thriller"))
-                .alias("matchesGenreFilters")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("genre").equalAny(listOf("Science Fiction", "Psychological Thriller"))
+            .alias("matchesGenreFilters")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("genre").equalAny(Arrays.asList("Science Fiction", "Psychological Thriller"))
-                .alias("matchesGenreFilters")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("genre").equalAny(Arrays.asList("Science Fiction", "Psychological Thriller"))
+            .alias("matchesGenreFilters")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Field.of("genre")
-            .equal_any(["Science Fiction", "Psychological Thriller"])
-            .as_("matchesGenreFilters")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Field.of("genre")
+        .equal_any(["Science Fiction", "Psychological Thriller"])
+        .as_("matchesGenreFilters")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(
-                equalAny(field("genre"), Arrays.asList("Science Fiction", "Psychological Thriller"))
-                    .as("matchesGenreFilters"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(
+            equalAny(field("genre"), Arrays.asList("Science Fiction", "Psychological Thriller"))
+                .as("matchesGenreFilters"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.EqualAny(firestore.FieldOf("genre"), []string{"Science Fiction", "Psychological Thriller"}).As("matchesGenreFilters"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.EqualAny(firestore.FieldOf("genre"), []string{"Science Fiction", "Psychological Thriller"}).As("matchesGenreFilters"),
+    )).
+    Execute(ctx)
+```
 
-### NOT\_EQUAL\_ANY
+### NOT_EQUAL_ANY
 
 **Syntax:**
 
-    not_equal_any(value: ANY, search_space: ARRAY) -> BOOLEAN
+```
+not_equal_any(value: ANY, search_space: ARRAY) -> BOOLEAN
+```
 
 **Description:**
 
@@ -4898,7 +5531,7 @@ Returns `TRUE` if `value` is not in the `search_space` array.
 **Examples:**
 
 | `value`  | `search_space`  | `not_equal_any(value, search_space)` |
-| :------- | :-------------- | :----------------------------------- |
+|----------|-----------------|--------------------------------------|
 | 0L       | \[1L, 2L, 3L\]  | `TRUE`                               |
 | 2L       | \[1L, 2L, 3L\]  | `FALSE`                              |
 | `NULL`   | \[1L, 2L, 3L\]  | `TRUE`                               |
@@ -4908,98 +5541,114 @@ Returns `TRUE` if `value` is not in the `search_space` array.
 
 ##### Node.js
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("author").notEqualAny(["George Orwell", "F. Scott Fitzgerald"])
-          .as("byExcludedAuthors")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("author").notEqualAny(["George Orwell", "F. Scott Fitzgerald"])
+      .as("byExcludedAuthors")
+  )
+);
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("author").notEqualAny(["George Orwell", "F. Scott Fitzgerald"])
-          .as("byExcludedAuthors")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("author").notEqualAny(["George Orwell", "F. Scott Fitzgerald"])
+      .as("byExcludedAuthors")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("author").notEqualAny(["George Orwell", "F. Scott Fitzgerald"])
-          .as("byExcludedAuthors")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("author").notEqualAny(["George Orwell", "F. Scott Fitzgerald"])
+      .as("byExcludedAuthors")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("author").notEqualAny(listOf("George Orwell", "F. Scott Fitzgerald"))
-                .alias("byExcludedAuthors")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("author").notEqualAny(listOf("George Orwell", "F. Scott Fitzgerald"))
+            .alias("byExcludedAuthors")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("author").notEqualAny(Arrays.asList("George Orwell", "F. Scott Fitzgerald"))
-                .alias("byExcludedAuthors")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("author").notEqualAny(Arrays.asList("George Orwell", "F. Scott Fitzgerald"))
+            .alias("byExcludedAuthors")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Field.of("author")
-            .not_equal_any(["George Orwell", "F. Scott Fitzgerald"])
-            .as_("byExcludedAuthors")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Field.of("author")
+        .not_equal_any(["George Orwell", "F. Scott Fitzgerald"])
+        .as_("byExcludedAuthors")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(
-                notEqualAny(field("author"), Arrays.asList("George Orwell", "F. Scott Fitzgerald"))
-                    .as("byExcludedAuthors"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(
+            notEqualAny(field("author"), Arrays.asList("George Orwell", "F. Scott Fitzgerald"))
+                .as("byExcludedAuthors"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.NotEqualAny(firestore.FieldOf("author"), []string{"George Orwell", "F. Scott Fitzgerald"}).As("byExcludedAuthors"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.NotEqualAny(firestore.FieldOf("author"), []string{"George Orwell", "F. Scott Fitzgerald"}).As("byExcludedAuthors"),
+    )).
+    Execute(ctx)
+```
 
 ### MAXIMUM
 
 **Syntax:**
 
-    maximum(x: ANY...) -> ANY
-    maximum(x: ARRAY) -> ANY
+```
+maximum(x: ANY...) -> ANY
+maximum(x: ARRAY) -> ANY
+```
 
 **Description:**
 
@@ -5012,10 +5661,10 @@ If there are multiple maximum equivalent values, any one of those values can be 
 **Examples:**
 
 | `x`      | `y`       | `maximum(x, y)` |
-| :------- | :-------- | :-------------- |
+|----------|-----------|-----------------|
 | `FALSE`  | `TRUE`    | `TRUE`          |
-| `FALSE`  | \-10L     | \-10L           |
-| 0.0      | \-5L      | 0.0             |
+| `FALSE`  | -10L      | -10L            |
+| 0.0      | -5L       | 0.0             |
 | "foo"    | "bar"     | "foo"           |
 | "foo"    | \["foo"\] | \["foo"\]       |
 | `ABSENT` | `ABSENT`  | `NULL`          |
@@ -5023,83 +5672,99 @@ If there are multiple maximum equivalent values, any one of those values can be 
 
 ##### Node.js
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .aggregate(field("price").maximum().as("maximumPrice"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .aggregate(field("price").maximum().as("maximumPrice"))
+);
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .aggregate(field("price").maximum().as("maximumPrice"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .aggregate(field("price").maximum().as("maximumPrice"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("rating").logicalMaximum([1]).as("flooredRating")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("rating").logicalMaximum([1]).as("flooredRating")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("rating").logicalMaximum(1).alias("flooredRating")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("rating").logicalMaximum(1).alias("flooredRating")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("rating").logicalMaximum(1).alias("flooredRating")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("rating").logicalMaximum(1).alias("flooredRating")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("rating").logical_maximum(1).as_("flooredRating"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("rating").logical_maximum(1).as_("flooredRating"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(logicalMaximum(field("rating"), 1).as("flooredRating"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(logicalMaximum(field("rating"), 1).as("flooredRating"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.LogicalMaximum(firestore.FieldOf("rating"), 1).As("flooredRating"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.LogicalMaximum(firestore.FieldOf("rating"), 1).As("flooredRating"),
+    )).
+    Execute(ctx)
+```
 
 ### MINIMUM
 
 **Syntax:**
 
-    minimum(x: ANY...) -> ANY
-    minimum(x: ARRAY) -> ANY
+```
+minimum(x: ANY...) -> ANY
+minimum(x: ARRAY) -> ANY
+```
 
 **Description:**
 
@@ -5112,10 +5777,10 @@ If there are multiple minimum equivalent values, any one of those values can be 
 **Examples:**
 
 | `x`      | `y`       | `minimum(x, y)` |
-| :------- | :-------- | :-------------- |
+|----------|-----------|-----------------|
 | `FALSE`  | `TRUE`    | `FALSE`         |
-| `FALSE`  | \-10L     | `FALSE`         |
-| 0.0      | \-5L      | \-5L            |
+| `FALSE`  | -10L      | `FALSE`         |
+| 0.0      | -5L       | -5L             |
 | "foo"    | "bar"     | "bar"           |
 | "foo"    | \["foo"\] | "foo"           |
 | `ABSENT` | `ABSENT`  | `NULL`          |
@@ -5123,107 +5788,125 @@ If there are multiple minimum equivalent values, any one of those values can be 
 
 ##### Node.js
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .aggregate(field("price").minimum().as("minimumPrice"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .aggregate(field("price").minimum().as("minimumPrice"))
+);
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .aggregate(field("price").minimum().as("minimumPrice"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .aggregate(field("price").minimum().as("minimumPrice"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("rating").logicalMinimum([5]).as("cappedRating")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("rating").logicalMinimum([5]).as("cappedRating")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("rating").logicalMinimum(5).alias("cappedRating")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("rating").logicalMinimum(5).alias("cappedRating")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("rating").logicalMinimum(5).alias("cappedRating")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("rating").logicalMinimum(5).alias("cappedRating")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("rating").logical_minimum(5).as_("cappedRating"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("rating").logical_minimum(5).as_("cappedRating"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(logicalMinimum(field("rating"), 5).as("cappedRating"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(logicalMinimum(field("rating"), 5).as("cappedRating"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.LogicalMinimum(firestore.FieldOf("rating"), 5).As("cappedRating"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.LogicalMinimum(firestore.FieldOf("rating"), 5).As("cappedRating"),
+    )).
+    Execute(ctx)
+```
 
 ## **Map Functions**
 
-|                                    |                                                         |
-| ---------------------------------- | ------------------------------------------------------- |
-| Name                               | Description                                             |
-| `         MAP        `             | Constructs a map value from a series of key-value pairs |
-| `         MAP_GET        `         | Returns the value in a map given a specified key        |
-| `         MAP_SET        `         | Returns a copy of a map with a series of updated keys   |
-| `         MAP_REMOVE        `      | Returns a copy of a map with a series of keys removed   |
-| `         MAP_MERGE        `       | Merges a series of maps together.                       |
-| `         CURRENT_CONTEXT        ` | Returns the current context as a map.                   |
-| `         MAP_KEYS        `        | Returns an array of all keys in a map.                  |
-| `         MAP_VALUES        `      | Returns an array of all values in a map.                |
-| `         MAP_ENTRIES        `     | Returns an array of key-value pairs of a map.           |
+|                                                                                                                           |                                                         |
+|---------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------|
+| Name                                                                                                                      | Description                                             |
+| [`MAP`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#map)                         | Constructs a map value from a series of key-value pairs |
+| [`MAP_GET`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#map_get)                 | Returns the value in a map given a specified key        |
+| [`MAP_SET`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#map_set)                 | Returns a copy of a map with a series of updated keys   |
+| [`MAP_REMOVE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#map_remove)           | Returns a copy of a map with a series of keys removed   |
+| [`MAP_MERGE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#map_merge)             | Merges a series of maps together.                       |
+| [`CURRENT_CONTEXT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#current_context) | Returns the current context as a map.                   |
+| [`MAP_KEYS`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#map_keys)               | Returns an array of all keys in a map.                  |
+| [`MAP_VALUES`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#map_values)           | Returns an array of all values in a map.                |
+| [`MAP_ENTRIES`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#map_entries)         | Returns an array of key-value pairs of a map.           |
 
 ### MAP
 
 **Syntax:**
 
-    map(key: STRING, value: ANY, ...) -> MAP
+```
+map(key: STRING, value: ANY, ...) -> MAP
+```
 
 **Description:**
 
 Constructs a map from a series of key-value pairs.
 
-### MAP\_GET
+### MAP_GET
 
 **Syntax:**
 
-    map_get(map: ANY, key: STRING) -> ANY
+```
+map_get(map: ANY, key: STRING) -> ANY
+```
 
 **Description:**
 
@@ -5231,86 +5914,102 @@ Returns the value in a map given a specified key. Returns an `ABSENT` value if t
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        field("awards").mapGet("pulitzer").as("hasPulitzerAward")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    field("awards").mapGet("pulitzer").as("hasPulitzerAward")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("awards").mapGet("pulitzer").as("hasPulitzerAward")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("awards").mapGet("pulitzer").as("hasPulitzerAward")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("awards").mapGet("pulitzer").as("hasPulitzerAward")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("awards").mapGet("pulitzer").as("hasPulitzerAward")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("awards").mapGet("pulitzer").alias("hasPulitzerAward")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("awards").mapGet("pulitzer").alias("hasPulitzerAward")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("awards").mapGet("pulitzer").alias("hasPulitzerAward")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("awards").mapGet("pulitzer").alias("hasPulitzerAward")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("awards").map_get("pulitzer").as_("hasPulitzerAward"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("awards").map_get("pulitzer").as_("hasPulitzerAward"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(mapGet(field("awards"), "pulitzer").as("hasPulitzerAward"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(mapGet(field("awards"), "pulitzer").as("hasPulitzerAward"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.MapGet(firestore.FieldOf("awards"), "pulitzer").As("hasPulitzerAward"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.MapGet(firestore.FieldOf("awards"), "pulitzer").As("hasPulitzerAward"),
+    )).
+    Execute(ctx)
+```
 
-### MAP\_SET
+### MAP_SET
 
 **Syntax:**
 
-    map_set(map: MAP, key: STRING, value: ANY, ...) -> MAP
+```
+map_set(map: MAP, key: STRING, value: ANY, ...) -> MAP
+```
 
 **Description:**
 
@@ -5320,57 +6019,69 @@ If the given resolves to an absent value, the associated key is removed from the
 
 If the `map` argument is not a `MAP` , returns an absent value.
 
-### MAP\_REMOVE
+### MAP_REMOVE
 
 **Syntax:**
 
-    map_remove(map: MAP, key: STRING...) -> MAP
+```
+map_remove(map: MAP, key: STRING...) -> MAP
+```
 
 **Description:**
 
 Returns a copy of the `map` value with a series of keys removed.
 
-### MAP\_MERGE
+### MAP_MERGE
 
 **Syntax:**
 
-    map_merge(maps: MAP...) -> MAP
+```
+map_merge(maps: MAP...) -> MAP
+```
 
 Merges the contents of 2 or more maps. If multiple maps have conflicting values, the last value is used.
 
-### CURRENT\_CONTEXT
+### CURRENT_CONTEXT
 
 **Syntax:**
 
-    current_context() -> MAP
+```
+current_context() -> MAP
+```
 
 Returns a map consisting of all available fields in the current point of execution.
 
-### MAP\_KEYS
+### MAP_KEYS
 
 **Syntax:**
 
-    map_keys(map: MAP) -> ARRAY<STRING>
+```
+map_keys(map: MAP) -> ARRAY<STRING>
+```
 
 **Description:**
 
 Returns an array containing all keys of the `map` value.
 
-### MAP\_VALUES
+### MAP_VALUES
 
 **Syntax:**
 
-    map_values(map: MAP) -> ARRAY<ANY>
+```
+map_values(map: MAP) -> ARRAY<ANY>
+```
 
 **Description:**
 
 Returns an array containing all values of the `map` value.
 
-### MAP\_ENTRIES
+### MAP_ENTRIES
 
 **Syntax:**
 
-    map_entries(map: MAP) -> ARRAY<MAP>
+```
+map_entries(map: MAP) -> ARRAY<MAP>
+```
 
 **Description:**
 
@@ -5381,43 +6092,45 @@ Each key-value pair will be in the form of a map with two entries, `k` and `v` .
 **Examples:**
 
 | `map`                          | `map_entries(map)`                                        |
-| :----------------------------- | :-------------------------------------------------------- |
+|--------------------------------|-----------------------------------------------------------|
 | {}                             | \[\]                                                      |
 | {"foo" : 2L}                   | \[{"k": "foo", "v" : 2L}\]                                |
 | {"foo" : "bar", "bar" : "foo"} | \[{"k": "foo", "v" : "bar" }, {"k" : "bar", "v": "foo"}\] |
 
 ## **String Functions**
 
-|                                       |                                                                                   |
-| ------------------------------------- | --------------------------------------------------------------------------------- |
-| Name                                  | Description                                                                       |
-| `         BYTE_LENGTH        `        | Returns the number of `BYTES` in a `STRING` or `BYTES` value                      |
-| `         CHAR_LENGTH        `        | Returns the number of unicode characters in a `STRING` value                      |
-| `         STARTS_WITH        `        | Returns `TRUE` if a `STRING` begins with a given prefix                           |
-| `         ENDS_WITH        `          | Returns `TRUE` if a `STRING` ends with a given postfix                            |
-| `         LIKE        `               | Returns `TRUE` if a `STRING` matches a pattern                                    |
-| `         REGEX_CONTAINS        `     | Returns `TRUE` if a value is a partial or full match for a regular expression     |
-| `         REGEX_MATCH        `        | Returns `TRUE` if any part of a value matches a regular expression                |
-| `         STRING_CONCAT        `      | Concatenates multiple `STRING` into a `STRING`                                    |
-| `         STRING_CONTAINS        `    | Returns `TRUE` if a value contains a `STRING`                                     |
-| `         STRING_INDEX_OF        `    | Returns the 0-based index of the first occurrence of a `STRING` or `BYTES` value. |
-| `         TO_UPPER        `           | Converts a `STRING` or `BYTES` value to uppercase.                                |
-| `         TO_LOWER        `           | Converts a `STRING` or `BYTES` value to lowercase.                                |
-| `         SUBSTRING        `          | Gets a substring of a `STRING` or `BYTES` value.                                  |
-| `         STRING_REVERSE        `     | Reverses a `STRING` or `BYTES` value.                                             |
-| `         STRING_REPEAT        `      | Repeats a `STRING` or `BYTES` value a specified number of times.                  |
-| `         STRING_REPLACE_ALL        ` | Replaces all occurrences of a `STRING` or `BYTES` value.                          |
-| `         STRING_REPLACE_ONE        ` | Replaces the first occurrence of a `STRING` or `BYTES` value.                     |
-| `         TRIM        `               | Trims leading and trailing characters from a `STRING` or `BYTES` value.           |
-| `         LTRIM        `              | Trims leading characters from a `STRING` or `BYTES` value.                        |
-| `         RTRIM        `              | Trims trailing characters from a `STRING` or `BYTES` value.                       |
-| `         SPLIT        `              | Splits a `STRING` or `BYTES` value into an array.                                 |
+|                                                                                                                                 |                                                                                   |
+|---------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
+| Name                                                                                                                            | Description                                                                       |
+| [`BYTE_LENGTH`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#byte_length)               | Returns the number of `BYTES` in a `STRING` or `BYTES` value                      |
+| [`CHAR_LENGTH`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#char_length)               | Returns the number of unicode characters in a `STRING` value                      |
+| [`STARTS_WITH`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#starts_with)               | Returns `TRUE` if a `STRING` begins with a given prefix                           |
+| [`ENDS_WITH`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#ends_with)                   | Returns `TRUE` if a `STRING` ends with a given postfix                            |
+| [`LIKE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#like)                             | Returns `TRUE` if a `STRING` matches a pattern                                    |
+| [`REGEX_CONTAINS`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#regex_contains)         | Returns `TRUE` if a value is a partial or full match for a regular expression     |
+| [`REGEX_MATCH`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#regex_match)               | Returns `TRUE` if any part of a value matches a regular expression                |
+| [`STRING_CONCAT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#string_concat)           | Concatenates multiple `STRING` into a `STRING`                                    |
+| [`STRING_CONTAINS`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#string_contains)       | Returns `TRUE` if a value contains a `STRING`                                     |
+| [`STRING_INDEX_OF`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#string_index_of)       | Returns the 0-based index of the first occurrence of a `STRING` or `BYTES` value. |
+| [`TO_UPPER`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#to_upper)                     | Converts a `STRING` or `BYTES` value to uppercase.                                |
+| [`TO_LOWER`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#to_lower)                     | Converts a `STRING` or `BYTES` value to lowercase.                                |
+| [`SUBSTRING`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#substring)                   | Gets a substring of a `STRING` or `BYTES` value.                                  |
+| [`STRING_REVERSE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#string_reverse)         | Reverses a `STRING` or `BYTES` value.                                             |
+| [`STRING_REPEAT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#string_repeat)           | Repeats a `STRING` or `BYTES` value a specified number of times.                  |
+| [`STRING_REPLACE_ALL`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#string_replace_all) | Replaces all occurrences of a `STRING` or `BYTES` value.                          |
+| [`STRING_REPLACE_ONE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#string_replace_one) | Replaces the first occurrence of a `STRING` or `BYTES` value.                     |
+| [`TRIM`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#trim)                             | Trims leading and trailing characters from a `STRING` or `BYTES` value.           |
+| [`LTRIM`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#ltrim)                           | Trims leading characters from a `STRING` or `BYTES` value.                        |
+| [`RTRIM`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#rtrim)                           | Trims trailing characters from a `STRING` or `BYTES` value.                       |
+| [`SPLIT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#split)                           | Splits a `STRING` or `BYTES` value into an array.                                 |
 
-### BYTE\_LENGTH
+### BYTE_LENGTH
 
 **Syntax:**
 
-    byte_length[T <: STRING | BYTES](value: T) -> INT64
+```
+byte_length[T <: STRING | BYTES](value: T) -> INT64
+```
 
 **Description:**
 
@@ -5426,93 +6139,109 @@ Returns the number of `BYTES` in a `STRING` or `BYTES` value.
 **Examples:**
 
 | value    | `byte_length(value)` |
-| :------- | :------------------- |
+|----------|----------------------|
 | "abc"    | 3                    |
 | "xyzabc" | 6                    |
 | b"abc"   | 3                    |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        field("title").byteLength().as("titleByteLength")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    field("title").byteLength().as("titleByteLength")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("title").byteLength().as("titleByteLength")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("title").byteLength().as("titleByteLength")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("title").byteLength().as("titleByteLength")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("title").byteLength().as("titleByteLength")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("title").byteLength().alias("titleByteLength")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("title").byteLength().alias("titleByteLength")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("title").byteLength().alias("titleByteLength")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("title").byteLength().alias("titleByteLength")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("title").byte_length().as_("titleByteLength"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("title").byte_length().as_("titleByteLength"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(byteLength(field("title")).as("titleByteLength"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(byteLength(field("title")).as("titleByteLength"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.ByteLength(firestore.FieldOf("title")).As("titleByteLength"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.ByteLength(firestore.FieldOf("title")).As("titleByteLength"),
+    )).
+    Execute(ctx)
+```
 
-### CHAR\_LENGTH
+### CHAR_LENGTH
 
 **Syntax:**
 
-    char_length(value: STRING) -> INT64
+```
+char_length(value: STRING) -> INT64
+```
 
 **Description:**
 
@@ -5521,93 +6250,109 @@ Returns the number of unicode code points in `STRING` value.
 **Examples:**
 
 | value   | `char_length(value)` |
-| :------ | :------------------- |
+|---------|----------------------|
 | "abc"   | 3                    |
 | "hello" | 5                    |
 | "world" | 5                    |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        field("title").charLength().as("titleCharLength")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    field("title").charLength().as("titleCharLength")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("title").charLength().as("titleCharLength")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("title").charLength().as("titleCharLength")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("title").charLength().as("titleCharLength")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("title").charLength().as("titleCharLength")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("title").charLength().alias("titleCharLength")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("title").charLength().alias("titleCharLength")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("title").charLength().alias("titleCharLength")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("title").charLength().alias("titleCharLength")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("title").char_length().as_("titleCharLength"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("title").char_length().as_("titleCharLength"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(charLength(field("title")).as("titleCharLength"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(charLength(field("title")).as("titleCharLength"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.CharLength(firestore.FieldOf("title")).As("titleCharLength"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.CharLength(firestore.FieldOf("title")).As("titleCharLength"),
+    )).
+    Execute(ctx)
+```
 
-### STARTS\_WITH
+### STARTS_WITH
 
 **Syntax:**
 
-    starts_with(value: STRING, prefix: STRING) -> BOOLEAN
+```
+starts_with(value: STRING, prefix: STRING) -> BOOLEAN
+```
 
 **Description:**
 
@@ -5616,100 +6361,116 @@ Returns `TRUE` if `value` begins with `prefix` .
 **Examples:**
 
 | value | prefix | `starts_with(value, prefix)` |
-| :---- | :----- | :--------------------------- |
+|-------|--------|------------------------------|
 | "abc" | "a"    | true                         |
 | "abc" | "b"    | false                        |
 | "abc" | ""     | true                         |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        field("title").startsWith("The")
-          .as("needsSpecialAlphabeticalSort")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    field("title").startsWith("The")
+      .as("needsSpecialAlphabeticalSort")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("title").startsWith("The")
-          .as("needsSpecialAlphabeticalSort")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("title").startsWith("The")
+      .as("needsSpecialAlphabeticalSort")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("title").startsWith("The")
-          .as("needsSpecialAlphabeticalSort")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("title").startsWith("The")
+      .as("needsSpecialAlphabeticalSort")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("title").startsWith("The")
-                .alias("needsSpecialAlphabeticalSort")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("title").startsWith("The")
+            .alias("needsSpecialAlphabeticalSort")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("title").startsWith("The")
-                .alias("needsSpecialAlphabeticalSort")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("title").startsWith("The")
+            .alias("needsSpecialAlphabeticalSort")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Field.of("title").starts_with("The").as_("needsSpecialAlphabeticalSort")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Field.of("title").starts_with("The").as_("needsSpecialAlphabeticalSort")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(startsWith(field("title"), "The").as("needsSpecialAlphabeticalSort"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(startsWith(field("title"), "The").as("needsSpecialAlphabeticalSort"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.StartsWith(firestore.FieldOf("title"), "The").As("needsSpecialAlphabeticalSort"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.StartsWith(firestore.FieldOf("title"), "The").As("needsSpecialAlphabeticalSort"),
+    )).
+    Execute(ctx)
+```
 
-### ENDS\_WITH
+### ENDS_WITH
 
 **Syntax:**
 
-    ends_with(value: STRING, postfix: STRING) -> BOOLEAN
+```
+ends_with(value: STRING, postfix: STRING) -> BOOLEAN
+```
 
 **Description:**
 
@@ -5718,88 +6479,102 @@ Returns `TRUE` if `value` ends with `postfix` .
 **Examples:**
 
 | value | postfix | `ends_with(value, postfix)` |
-| :---- | :------ | :-------------------------- |
+|-------|---------|-----------------------------|
 | "abc" | "c"     | true                        |
 | "abc" | "b"     | false                       |
 | "abc" | ""      | true                        |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("inventory/devices/laptops")
-      .select(
-        field("name").endsWith("16 inch")
-          .as("16InLaptops")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("inventory/devices/laptops")
+  .select(
+    field("name").endsWith("16 inch")
+      .as("16InLaptops")
+  )
+  .execute();
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("inventory/devices/laptops")
-      .select([
-        Field("name").endsWith("16 inch")
-          .as("16InLaptops")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("inventory/devices/laptops")
+  .select([
+    Field("name").endsWith("16 inch")
+      .as("16InLaptops")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("inventory/devices/laptops")
-        .select(
-            field("name").endsWith("16 inch")
-                .alias("16InLaptops")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("inventory/devices/laptops")
+    .select(
+        field("name").endsWith("16 inch")
+            .alias("16InLaptops")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("inventory/devices/laptops")
-        .select(
-            field("name").endsWith("16 inch")
-                .alias("16InLaptops")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("inventory/devices/laptops")
+    .select(
+        field("name").endsWith("16 inch")
+            .alias("16InLaptops")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("inventory/devices/laptops")
-        .select(Field.of("name").ends_with("16 inch").as_("16InLaptops"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("inventory/devices/laptops")
+    .select(Field.of("name").ends_with("16 inch").as_("16InLaptops"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("inventory/devices/laptops")
-            .select(endsWith(field("name"), "16 inch").as("16InLaptops"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("inventory/devices/laptops")
+        .select(endsWith(field("name"), "16 inch").as("16InLaptops"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("inventory/devices/laptops").
-     Select(firestore.Fields(
-         firestore.EndsWith(firestore.FieldOf("name"), "16 inch").As("`Laptops16in`"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("inventory/devices/laptops").
+    Select(firestore.Fields(
+        firestore.EndsWith(firestore.FieldOf("name"), "16 inch").As("`Laptops16in`"),
+    )).
+    Execute(ctx)
+```
 
 ### LIKE
 
 **Syntax:**
 
-    like(value: STRING, pattern: STRING) -> BOOLEAN
+```
+like(value: STRING, pattern: STRING) -> BOOLEAN
+```
 
 **Description:**
 
@@ -5807,100 +6582,116 @@ Returns `TRUE` if `value` matches `pattern` .
 
 **Examples:**
 
-| value       | pattern      | `like(value, pattern)` |
-| :---------- | :----------- | :--------------------- |
-| "Firestore" | "Fire%"      | true                   |
-| "Firestore" | "%store"     | true                   |
-| "Datastore" | "Data\_tore" | true                   |
-| "100%"      | "100\\%"     | true                   |
+| value       | pattern     | `like(value, pattern)` |
+|-------------|-------------|------------------------|
+| "Firestore" | "Fire%"     | true                   |
+| "Firestore" | "%store"    | true                   |
+| "Datastore" | "Data_tore" | true                   |
+| "100%"      | "100\\%"    | true                   |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        field("genre").like("%Fiction")
-          .as("anyFiction")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    field("genre").like("%Fiction")
+      .as("anyFiction")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("genre").like("%Fiction")
-          .as("anyFiction")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("genre").like("%Fiction")
+      .as("anyFiction")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("genre").like("%Fiction")
-          .as("anyFiction")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("genre").like("%Fiction")
+      .as("anyFiction")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("genre").like("%Fiction")
-                .alias("anyFiction")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("genre").like("%Fiction")
+            .alias("anyFiction")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("genre").like("%Fiction")
-                .alias("anyFiction")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("genre").like("%Fiction")
+            .alias("anyFiction")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("genre").like("%Fiction").as_("anyFiction"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("genre").like("%Fiction").as_("anyFiction"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(like(field("genre"), "%Fiction").as("anyFiction"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(like(field("genre"), "%Fiction").as("anyFiction"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Like(firestore.FieldOf("genre"), "%Fiction").As("anyFiction"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Like(firestore.FieldOf("genre"), "%Fiction").As("anyFiction"),
+    )).
+    Execute(ctx)
+```
 
-### REGEX\_CONTAINS
+### REGEX_CONTAINS
 
 **Syntax:**
 
-    regex_contains(value: STRING, pattern: STRING) -> BOOLEAN
+```
+regex_contains(value: STRING, pattern: STRING) -> BOOLEAN
+```
 
 **Description:**
 
@@ -5910,105 +6701,121 @@ Regular expressions follow the syntax of the [re2](https://github.com/google/re2
 
 **Examples:**
 
-| value       | pattern  | `regex_contains(value, pattern)` |
-| :---------- | :------- | :------------------------------- |
-| "Firestore" | "Fire"   | true                             |
-| "Firestore" | "store$" | true                             |
-| "Firestore" | "data"   | false                            |
+| value       | pattern   | `regex_contains(value, pattern)` |
+|-------------|-----------|----------------------------------|
+| "Firestore" | "Fire"    | true                             |
+| "Firestore" | "store\$" | true                             |
+| "Firestore" | "data"    | false                            |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("documents")
-      .select(
-        field("title").regexContains("Firestore (Enterprise|Standard)")
-          .as("isFirestoreRelated")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("documents")
+  .select(
+    field("title").regexContains("Firestore (Enterprise|Standard)")
+      .as("isFirestoreRelated")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("documents")
-      .select(
-        field("title").regexContains("Firestore (Enterprise|Standard)")
-          .as("isFirestoreRelated")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("documents")
+  .select(
+    field("title").regexContains("Firestore (Enterprise|Standard)")
+      .as("isFirestoreRelated")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("documents")
-      .select([
-        Field("title").regexContains("Firestore (Enterprise|Standard)")
-          .as("isFirestoreRelated")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("documents")
+  .select([
+    Field("title").regexContains("Firestore (Enterprise|Standard)")
+      .as("isFirestoreRelated")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("documents")
-        .select(
-            field("title").regexContains("Firestore (Enterprise|Standard)")
-                .alias("isFirestoreRelated")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("documents")
+    .select(
+        field("title").regexContains("Firestore (Enterprise|Standard)")
+            .alias("isFirestoreRelated")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("documents")
-        .select(
-            field("title").regexContains("Firestore (Enterprise|Standard)")
-                .alias("isFirestoreRelated")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("documents")
+    .select(
+        field("title").regexContains("Firestore (Enterprise|Standard)")
+            .alias("isFirestoreRelated")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("documents")
-        .select(
-            Field.of("title")
-            .regex_contains("Firestore (Enterprise|Standard)")
-            .as_("isFirestoreRelated")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("documents")
+    .select(
+        Field.of("title")
+        .regex_contains("Firestore (Enterprise|Standard)")
+        .as_("isFirestoreRelated")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("documents")
-            .select(
-                regexContains(field("title"), "Firestore (Enterprise|Standard)")
-                    .as("isFirestoreRelated"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("documents")
+        .select(
+            regexContains(field("title"), "Firestore (Enterprise|Standard)")
+                .as("isFirestoreRelated"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("documents").
-     Select(firestore.Fields(
-         firestore.RegexContains(firestore.FieldOf("title"), "Firestore (Enterprise|Standard)").As("isFirestoreRelated"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("documents").
+    Select(firestore.Fields(
+        firestore.RegexContains(firestore.FieldOf("title"), "Firestore (Enterprise|Standard)").As("isFirestoreRelated"),
+    )).
+    Execute(ctx)
+```
 
-### REGEX\_MATCH
+### REGEX_MATCH
 
 **Syntax:**
 
-    regex_match(value: STRING, pattern: STRING) -> BOOLEAN
+```
+regex_match(value: STRING, pattern: STRING) -> BOOLEAN
+```
 
 **Description:**
 
@@ -6019,104 +6826,120 @@ Regular expressions follow the syntax of the [re2](https://github.com/google/re2
 **Examples:**
 
 | value       | pattern     | `regex_match(value, pattern)` |
-| :---------- | :---------- | :---------------------------- |
+|-------------|-------------|-------------------------------|
 | "Firestore" | "F.\*store" | true                          |
 | "Firestore" | "Fire"      | false                         |
-| "Firestore" | "^F.\*e$"   | true                          |
+| "Firestore" | "^F.\*e\$"  | true                          |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("documents")
-      .select(
-        field("title").regexMatch("Firestore (Enterprise|Standard)")
-          .as("isFirestoreExactly")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("documents")
+  .select(
+    field("title").regexMatch("Firestore (Enterprise|Standard)")
+      .as("isFirestoreExactly")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("documents")
-      .select(
-        field("title").regexMatch("Firestore (Enterprise|Standard)")
-          .as("isFirestoreExactly")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("documents")
+  .select(
+    field("title").regexMatch("Firestore (Enterprise|Standard)")
+      .as("isFirestoreExactly")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("documents")
-      .select([
-        Field("title").regexMatch("Firestore (Enterprise|Standard)")
-          .as("isFirestoreExactly")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("documents")
+  .select([
+    Field("title").regexMatch("Firestore (Enterprise|Standard)")
+      .as("isFirestoreExactly")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("documents")
-        .select(
-            field("title").regexMatch("Firestore (Enterprise|Standard)")
-                .alias("isFirestoreExactly")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("documents")
+    .select(
+        field("title").regexMatch("Firestore (Enterprise|Standard)")
+            .alias("isFirestoreExactly")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("documents")
-        .select(
-            field("title").regexMatch("Firestore (Enterprise|Standard)")
-                .alias("isFirestoreExactly")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("documents")
+    .select(
+        field("title").regexMatch("Firestore (Enterprise|Standard)")
+            .alias("isFirestoreExactly")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("documents")
-        .select(
-            Field.of("title")
-            .regex_match("Firestore (Enterprise|Standard)")
-            .as_("isFirestoreExactly")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("documents")
+    .select(
+        Field.of("title")
+        .regex_match("Firestore (Enterprise|Standard)")
+        .as_("isFirestoreExactly")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("documents")
-            .select(
-                regexMatch(field("title"), "Firestore (Enterprise|Standard)")
-                    .as("isFirestoreExactly"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("documents")
+        .select(
+            regexMatch(field("title"), "Firestore (Enterprise|Standard)")
+                .as("isFirestoreExactly"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("documents").
-     Select(firestore.Fields(
-         firestore.RegexMatch(firestore.FieldOf("title"), "Firestore (Enterprise|Standard)").As("isFirestoreExactly"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("documents").
+    Select(firestore.Fields(
+        firestore.RegexMatch(firestore.FieldOf("title"), "Firestore (Enterprise|Standard)").As("isFirestoreExactly"),
+    )).
+    Execute(ctx)
+```
 
-### STRING\_CONCAT
+### STRING_CONCAT
 
 **Syntax:**
 
-    string_concat(values: STRING...) -> STRING
+```
+string_concat(values: STRING...) -> STRING
+```
 
 **Description:**
 
@@ -6125,7 +6948,7 @@ Concatenates two or more `STRING` values into a single result.
 **Examples:**
 
 | arguments        | `string_concat(values...)` |
-| :--------------- | :------------------------- |
+|------------------|----------------------------|
 | `()`             | error                      |
 | `("a")`          | "a"                        |
 | `("abc", "def")` | "abcdef"                   |
@@ -6133,95 +6956,111 @@ Concatenates two or more `STRING` values into a single result.
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        field("title").stringConcat(" by ", field("author"))
-          .as("fullyQualifiedTitle")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    field("title").stringConcat(" by ", field("author"))
+      .as("fullyQualifiedTitle")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("title").stringConcat(" by ", field("author"))
-          .as("fullyQualifiedTitle")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("title").stringConcat(" by ", field("author"))
+      .as("fullyQualifiedTitle")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("title").concat([" by ", Field("author")])
-          .as("fullyQualifiedTitle")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("title").concat([" by ", Field("author")])
+      .as("fullyQualifiedTitle")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("title").concat(" by ", field("author"))
-                .alias("fullyQualifiedTitle")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("title").concat(" by ", field("author"))
+            .alias("fullyQualifiedTitle")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("title").concat(" by ", field("author"))
-                .alias("fullyQualifiedTitle")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("title").concat(" by ", field("author"))
+            .alias("fullyQualifiedTitle")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Field.of("title")
-            .concat(" by ", Field.of("author"))
-            .as_("fullyQualifiedTitle")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Field.of("title")
+        .concat(" by ", Field.of("author"))
+        .as_("fullyQualifiedTitle")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(stringConcat(field("title"), " by ", field("author")).as("fullyQualifiedTitle"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(stringConcat(field("title"), " by ", field("author")).as("fullyQualifiedTitle"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.StringConcat(firestore.FieldOf("title"), " by ", firestore.FieldOf("author")).As("fullyQualifiedTitle"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.StringConcat(firestore.FieldOf("title"), " by ", firestore.FieldOf("author")).As("fullyQualifiedTitle"),
+    )).
+    Execute(ctx)
+```
 
-### STRING\_CONTAINS
+### STRING_CONTAINS
 
 **Syntax:**
 
-    string_contains(value: STRING, substring: STRING) -> BOOLEAN
+```
+string_contains(value: STRING, substring: STRING) -> BOOLEAN
+```
 
 **Description:**
 
@@ -6230,7 +7069,7 @@ Checks if `value` contains the literal String `substring` .
 **Examples:**
 
 | value | substring | `string_contains(value, substring)` |
-| :---- | :-------- | :---------------------------------- |
+|-------|-----------|-------------------------------------|
 | "abc" | "b"       | true                                |
 | "abc" | "d"       | false                               |
 | "abc" | ""        | true                                |
@@ -6239,118 +7078,136 @@ Checks if `value` contains the literal String `substring` .
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("articles")
-      .select(
-        field("body").stringContains("Firestore")
-          .as("isFirestoreRelated")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("articles")
+  .select(
+    field("body").stringContains("Firestore")
+      .as("isFirestoreRelated")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("articles")
-      .select(
-        field("body").stringContains("Firestore")
-          .as("isFirestoreRelated")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("articles")
+  .select(
+    field("body").stringContains("Firestore")
+      .as("isFirestoreRelated")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("articles")
-      .select([
-        Field("body").stringContains("Firestore")
-          .as("isFirestoreRelated")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("articles")
+  .select([
+    Field("body").stringContains("Firestore")
+      .as("isFirestoreRelated")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("articles")
-        .select(
-            field("body").stringContains("Firestore")
-                .alias("isFirestoreRelated")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("articles")
+    .select(
+        field("body").stringContains("Firestore")
+            .alias("isFirestoreRelated")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("articles")
-        .select(
-            field("body").stringContains("Firestore")
-                .alias("isFirestoreRelated")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("articles")
+    .select(
+        field("body").stringContains("Firestore")
+            .alias("isFirestoreRelated")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("articles")
-        .select(Field.of("body").string_contains("Firestore").as_("isFirestoreRelated"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("articles")
+    .select(Field.of("body").string_contains("Firestore").as_("isFirestoreRelated"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("articles")
-            .select(stringContains(field("body"), "Firestore").as("isFirestoreRelated"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("articles")
+        .select(stringContains(field("body"), "Firestore").as("isFirestoreRelated"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("articles").
-     Select(firestore.Fields(
-         firestore.StringContains(firestore.FieldOf("body"), "Firestore").As("isFirestoreRelated"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("articles").
+    Select(firestore.Fields(
+        firestore.StringContains(firestore.FieldOf("body"), "Firestore").As("isFirestoreRelated"),
+    )).
+    Execute(ctx)
+```
 
-### STRING\_INDEX\_OF
+### STRING_INDEX_OF
 
 **Syntax:**
 
-    string_index_of[T <: STRING | BYTES](value: T, search: T) -> INT64
+```
+string_index_of[T <: STRING | BYTES](value: T, search: T) -> INT64
+```
 
 **Description:**
 
 Returns the 0-based index of the first occurrence of `search` in `value` .
 
-  - Returns `-1` if `search` is not found.
-  - If `value` is a `STRING` value, the result is measured in unicode code points. If it is a `BYTES` value, it is measured in bytes.
-  - If `search` is an empty `STRING` or `BYTES` value, the result is `0` .
+- Returns `-1` if `search` is not found.
+- If `value` is a `STRING` value, the result is measured in unicode code points. If it is a `BYTES` value, it is measured in bytes.
+- If `search` is an empty `STRING` or `BYTES` value, the result is `0` .
 
 **Examples:**
 
 | value         | search | `string_index_of(value, search)` |
-| :------------ | :----- | :------------------------------- |
+|---------------|--------|----------------------------------|
 | "hello world" | "o"    | 4                                |
 | "hello world" | "l"    | 2                                |
-| "hello world" | "z"    | \-1                              |
+| "hello world" | "z"    | -1                               |
 | "banana"      | "na"   | 2                                |
 | "abc"         | ""     | 0                                |
 | b"abc"        | b"b"   | 1                                |
 | "é"           | "é"    | 0                                |
 | b"é"          | b"é"   | 0                                |
 
-### TO\_UPPER
+### TO_UPPER
 
 **Syntax:**
 
-    to_upper[T <: STRING | BYTES](value: T) -> T
+```
+to_upper[T <: STRING | BYTES](value: T) -> T
+```
 
 **Description:**
 
@@ -6361,7 +7218,7 @@ If a byte or char does not correspond to a UTF-8 lowercase alphabetic character,
 **Examples:**
 
 | value  | `to_upper(value)` |
-| :----- | :---------------- |
+|--------|-------------------|
 | "abc"  | "ABC"             |
 | "AbC"  | "ABC"             |
 | b"abc" | b"ABC"            |
@@ -6369,91 +7226,107 @@ If a byte or char does not correspond to a UTF-8 lowercase alphabetic character,
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("authors")
-      .select(
-        field("name").toUpper()
-          .as("uppercaseName")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("authors")
+  .select(
+    field("name").toUpper()
+      .as("uppercaseName")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("authors")
-      .select(
-        field("name").toUpper()
-          .as("uppercaseName")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("authors")
+  .select(
+    field("name").toUpper()
+      .as("uppercaseName")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("authors")
-      .select([
-        Field("name").toUpper()
-          .as("uppercaseName")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("authors")
+  .select([
+    Field("name").toUpper()
+      .as("uppercaseName")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("authors")
-        .select(
-            field("name").toUpper()
-                .alias("uppercaseName")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("authors")
+    .select(
+        field("name").toUpper()
+            .alias("uppercaseName")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("authors")
-        .select(
-            field("name").toUpper()
-                .alias("uppercaseName")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("authors")
+    .select(
+        field("name").toUpper()
+            .alias("uppercaseName")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("authors")
-        .select(Field.of("name").to_upper().as_("uppercaseName"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("authors")
+    .select(Field.of("name").to_upper().as_("uppercaseName"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("authors")
-            .select(toUpper(field("name")).as("uppercaseName"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("authors")
+        .select(toUpper(field("name")).as("uppercaseName"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("authors").
-     Select(firestore.Fields(
-         firestore.ToUpper(firestore.FieldOf("name")).As("uppercaseName"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("authors").
+    Select(firestore.Fields(
+        firestore.ToUpper(firestore.FieldOf("name")).As("uppercaseName"),
+    )).
+    Execute(ctx)
+```
 
-### TO\_LOWER
+### TO_LOWER
 
 **Syntax:**
 
-    to_lower[T <: STRING | BYTES](value: T) -> T
+```
+to_lower[T <: STRING | BYTES](value: T) -> T
+```
 
 **Description:**
 
@@ -6464,7 +7337,7 @@ If a byte or char does not correspond to a UTF-8 uppercase alphabetic character,
 **Examples:**
 
 | value  | `to_lower(value)` |
-| :----- | :---------------- |
+|--------|-------------------|
 | "ABC"  | "abc"             |
 | "AbC"  | "abc"             |
 | "A1C"  | "a1c"             |
@@ -6472,225 +7345,257 @@ If a byte or char does not correspond to a UTF-8 uppercase alphabetic character,
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("authors")
-      .select(
-        field("genre").toLower().equal("fantasy")
-          .as("isFantasy")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("authors")
+  .select(
+    field("genre").toLower().equal("fantasy")
+      .as("isFantasy")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("authors")
-      .select(
-        field("genre").toLower().equal("fantasy")
-          .as("isFantasy")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("authors")
+  .select(
+    field("genre").toLower().equal("fantasy")
+      .as("isFantasy")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("authors")
-      .select([
-        Field("genre").toLower().equal("fantasy")
-          .as("isFantasy")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("authors")
+  .select([
+    Field("genre").toLower().equal("fantasy")
+      .as("isFantasy")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("authors")
-        .select(
-            field("genre").toLower().equal("fantasy")
-                .alias("isFantasy")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("authors")
+    .select(
+        field("genre").toLower().equal("fantasy")
+            .alias("isFantasy")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("authors")
-        .select(
-            field("genre").toLower().equal("fantasy")
-                .alias("isFantasy")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("authors")
+    .select(
+        field("genre").toLower().equal("fantasy")
+            .alias("isFantasy")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("authors")
-        .select(Field.of("genre").to_lower().equal("fantasy").as_("isFantasy"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("authors")
+    .select(Field.of("genre").to_lower().equal("fantasy").as_("isFantasy"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("authors")
-            .select(equal(toLower(field("genre")), "fantasy").as("isFantasy"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("authors")
+        .select(equal(toLower(field("genre")), "fantasy").as("isFantasy"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("authors").
-     Select(firestore.Fields(
-         firestore.Equal(firestore.ToLower(firestore.FieldOf("genre")), "fantasy").As("isFantasy"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("authors").
+    Select(firestore.Fields(
+        firestore.Equal(firestore.ToLower(firestore.FieldOf("genre")), "fantasy").As("isFantasy"),
+    )).
+    Execute(ctx)
+```
 
 ### SUBSTRING
 
 **Syntax:**
 
-    substring[T <: STRING | BYTES](input: T, position: INT64) -> T
-    substring[T <: STRING | BYTES](input: T, position: INT64, length: INT64) -> T
+```
+substring[T <: STRING | BYTES](input: T, position: INT64) -> T
+substring[T <: STRING | BYTES](input: T, position: INT64, length: INT64) -> T
+```
 
 **Description:**
 
 Returns a substring of `input` starting at `position` (zero-based index) and including up to `length` entries. If no `length` is provided, returns the substring from `position` to the end of the `input` .
 
-  - If `input` is a `STRING` value, `position` and `length` are measured in unicode code points. If it is a `BYTES` value, they are measured in bytes.
+- If `input` is a `STRING` value, `position` and `length` are measured in unicode code points. If it is a `BYTES` value, they are measured in bytes.
 
-  - If `position` is greater than the length of the `input` , an empty substring is returned. If `position` plus `length` is greater than the length of `input` , the substring is truncated to the end of `input` .
+- If `position` is greater than the length of the `input` , an empty substring is returned. If `position` plus `length` is greater than the length of `input` , the substring is truncated to the end of `input` .
 
-  - If `position` is negative, the position is taken from the end of the input. If the negative `position` is greater than the size of the input, the position is set to zero. `length` must be non-negative.
+- If `position` is negative, the position is taken from the end of the input. If the negative `position` is greater than the size of the input, the position is set to zero. `length` must be non-negative.
 
 **Examples:**
 
 When `length` is not provided:
 
 | input  | position | `substring(input, position)` |
-| :----- | :------- | :--------------------------- |
+|--------|----------|------------------------------|
 | "abc"  | 0        | "abc"                        |
 | "abc"  | 1        | "bc"                         |
 | "abc"  | 3        | ""                           |
-| "abc"  | \-1      | "c"                          |
+| "abc"  | -1       | "c"                          |
 | b"abc" | 1        | b"bc"                        |
 
 When `length` is provided:
 
 | input  | position | length | `substring(input, position, length)` |
-| :----- | :------- | :----- | :----------------------------------- |
+|--------|----------|--------|--------------------------------------|
 | "abc"  | 0        | 1      | "a"                                  |
 | "abc"  | 1        | 2      | "bc"                                 |
-| "abc"  | \-1      | 1      | "c"                                  |
+| "abc"  | -1       | 1      | "c"                                  |
 | b"abc" | 0        | 1      | b"a"                                 |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .where(field("title").startsWith("The "))
-      .select(
-        field("title").substring(4)
-          .as("titleWithoutLeadingThe")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .where(field("title").startsWith("The "))
+  .select(
+    field("title").substring(4)
+      .as("titleWithoutLeadingThe")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .where(field("title").startsWith("The "))
-      .select(
-        field("title").substring(4)
-          .as("titleWithoutLeadingThe")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .where(field("title").startsWith("The "))
+  .select(
+    field("title").substring(4)
+      .as("titleWithoutLeadingThe")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .where(Field("title").startsWith("The "))
-      .select([
-        Field("title").substring(position: 4)
-          .as("titleWithoutLeadingThe")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .where(Field("title").startsWith("The "))
+  .select([
+    Field("title").substring(position: 4)
+      .as("titleWithoutLeadingThe")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .where(field("title").startsWith("The "))
-        .select(
-            field("title")
-              .substring(constant(4),
-                field("title").charLength().subtract(4))
-                .alias("titleWithoutLeadingThe")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .where(field("title").startsWith("The "))
+    .select(
+        field("title")
+          .substring(constant(4),
+            field("title").charLength().subtract(4))
+            .alias("titleWithoutLeadingThe")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .where(field("title").startsWith("The "))
-        .select(
-            field("title").substring(
-              constant(4),
-                field("title").charLength().subtract(4))
-                .alias("titleWithoutLeadingThe")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .where(field("title").startsWith("The "))
+    .select(
+        field("title").substring(
+          constant(4),
+            field("title").charLength().subtract(4))
+            .alias("titleWithoutLeadingThe")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .where(Field.of("title").starts_with("The "))
-        .select(Field.of("title").substring(4).as_("titleWithoutLeadingThe"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .where(Field.of("title").starts_with("The "))
+    .select(Field.of("title").substring(4).as_("titleWithoutLeadingThe"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .where(startsWith(field("title"), "The "))
-            .select(
-                substring(field("title"), constant(4), field("title").charLength())
-                    .as("titleWithoutLeadingThe"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .where(startsWith(field("title"), "The "))
+        .select(
+            substring(field("title"), constant(4), field("title").charLength())
+                .as("titleWithoutLeadingThe"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Where(firestore.StartsWith(firestore.FieldOf("title"), "The ")).
-     Select(firestore.Fields(
-         firestore.Substring(firestore.FieldOf("title"), firestore.ConstantOf(4), firestore.FieldOf("title").CharLength()).As("titleWithoutLeadingThe"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Where(firestore.StartsWith(firestore.FieldOf("title"), "The ")).
+    Select(firestore.Fields(
+        firestore.Substring(firestore.FieldOf("title"), firestore.ConstantOf(4), firestore.FieldOf("title").CharLength()).As("titleWithoutLeadingThe"),
+    )).
+    Execute(ctx)
+```
 
-### STRING\_REVERSE
+### STRING_REVERSE
 
 **Syntax:**
 
-    string_reverse[T <: STRING | BYTES](input: T) -> T
+```
+string_reverse[T <: STRING | BYTES](input: T) -> T
+```
 
 **Description:**
 
@@ -6701,153 +7606,173 @@ Characters are delineated by Unicode code points when the input is a `STRING` , 
 **Examples:**
 
 | input   | `string_reverse(input)` |
-| :------ | :---------------------- |
+|---------|-------------------------|
 | "abc"   | "cba"                   |
-| "a🌹b"   | "b🌹a"                   |
+| "a🌹b"  | "b🌹a"                  |
 | "hello" | "olleh"                 |
 | b"abc"  | b"cba"                  |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        field("name").reverse().as("reversedName")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    field("name").reverse().as("reversedName")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("name").reverse().as("reversedName")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("name").reverse().as("reversedName")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("name").reverse().as("reversedName")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("name").reverse().as("reversedName")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("name").reverse().alias("reversedName")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("name").reverse().alias("reversedName")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("name").reverse().alias("reversedName")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("name").reverse().alias("reversedName")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("name").string_reverse().as_("reversedName"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("name").string_reverse().as_("reversedName"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(reverse(field("name")).as("reversedName"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(reverse(field("name")).as("reversedName"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Reverse(firestore.FieldOf("name")).As("reversedName"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Reverse(firestore.FieldOf("name")).As("reversedName"),
+    )).
+    Execute(ctx)
+```
 
-### STRING\_REPEAT
+### STRING_REPEAT
 
 **Syntax:**
 
-    string_repeat[T <: STRING | BYTES](input: T, repetitions: INT64) -> T
+```
+string_repeat[T <: STRING | BYTES](input: T, repetitions: INT64) -> T
+```
 
 **Description:**
 
 Returns the `input` repeated `repetitions` times.
 
-  - `repetitions` must be a non-negative integer.
-  - If `repetitions` is `0` , returns an empty value of the same type as `input` .
-  - If the result exceeds the maximum allowed size (1 MB), an error is returned.
+- `repetitions` must be a non-negative integer.
+- If `repetitions` is `0` , returns an empty value of the same type as `input` .
+- If the result exceeds the maximum allowed size (1 MB), an error is returned.
 
 **Examples:**
 
 | input | repetitions | `string_repeat(input, repetitions)` |
-| :---- | :---------- | :---------------------------------- |
+|-------|-------------|-------------------------------------|
 | "foo" | 3           | "foofoofoo"                         |
 | "foo" | 0           | ""                                  |
 | "a "  | 3           | "a a a "                            |
 | b"ab" | 2           | b"abab"                             |
-| "é🦆"  | 2           | "é🦆é🦆"                              |
+| "é🦆" | 2           | "é🦆é🦆"                            |
 
-### STRING\_REPLACE\_ALL
+### STRING_REPLACE_ALL
 
 **Syntax:**
 
-    string_replace_all[T <: STRING | BYTES](input: T, find: T, replacement: T) -> T
+```
+string_replace_all[T <: STRING | BYTES](input: T, find: T, replacement: T) -> T
+```
 
 **Description:**
 
 Replaces all non-overlapping occurrences of `find` in `input` with `replacement` .
 
-  - Matches are case-sensitive.
-  - If `find` is empty, no replacements are made.
+- Matches are case-sensitive.
+- If `find` is empty, no replacements are made.
 
 **Examples:**
 
 | input       | find  | replacement | `string_replace_all(input, find, replacement)` |
-| :---------- | :---- | :---------- | :--------------------------------------------- |
+|-------------|-------|-------------|------------------------------------------------|
 | "foobarfoo" | "foo" | "baz"       | "bazbarbaz"                                    |
 | "ababab"    | "aba" | "c"         | "cbab"                                         |
 | "foobar"    | "o"   | ""          | "fbar"                                         |
-| "é🦆🌎🦆"      | "🦆"   | "a"         | "éa🌎a"                                         |
+| "é🦆🌎🦆"   | "🦆"  | "a"         | "éa🌎a"                                        |
 | b"abc"      | b"b"  | b"d"        | b"adc"                                         |
 
-### STRING\_REPLACE\_ONE
+### STRING_REPLACE_ONE
 
 **Syntax:**
 
-    string_replace_one[T <: STRING | BYTES](input: T, find: T, replacement: T) -> T
+```
+string_replace_one[T <: STRING | BYTES](input: T, find: T, replacement: T) -> T
+```
 
 **Description:**
 
 Replaces the first occurrence of `find` in `input` with `replacement` .
 
-  - Matches are case-sensitive.
-  - If `find` is empty, no replacements are made.
+- Matches are case-sensitive.
+- If `find` is empty, no replacements are made.
 
 **Examples:**
 
 | input       | find  | replacement | `string_replace_one(input, find, replacement)` |
-| :---------- | :---- | :---------- | :--------------------------------------------- |
+|-------------|-------|-------------|------------------------------------------------|
 | "foobarfoo" | "foo" | "baz"       | "bazbarfoo"                                    |
 | "é"         | "é"   | "a"         | "a"                                            |
 | b"foobar"   | b"o"  | b"z"        | b"fzoobar"                                     |
@@ -6856,194 +7781,214 @@ Replaces the first occurrence of `find` in `input` with `replacement` .
 
 **Syntax:**
 
-    trim[T <: STRING | BYTES](input: T, values_to_trim: T) -> T
-    trim[T <: STRING | BYTES](input: T) -> T
+```
+trim[T <: STRING | BYTES](input: T, values_to_trim: T) -> T
+trim[T <: STRING | BYTES](input: T) -> T
+```
 
 **Description:**
 
 Trims a specified set of `BYTES` or `CHARS` from the beginning and end of the supplied `input` .
 
-  - If no `values_to_trim` are provided, trims whitespace characters.
+- If no `values_to_trim` are provided, trims whitespace characters.
 
 **Examples:**
 
 When `values_to_trim` is not provided:
 
-| input                      | `trim(input)` |
-| :------------------------- | :------------ |
-| " foo "                    | "foo"         |
-| b" foo "                   | b"foo"        |
-| "foo"                      | "foo"         |
-| ""                         | ""            |
-| " "                        | ""            |
-| "\\t foo \\n"              | "foo"         |
-| b"\\t foo \\n"             | b"foo"        |
-| "\\r\\f\\v foo \\r\\f\\v"  | "foo"         |
-| b"\\r\\f\\v foo \\r\\f\\v" | b"foo"        |
+| input                | `trim(input)` |
+|----------------------|---------------|
+| " foo "              | "foo"         |
+| b" foo "             | b"foo"        |
+| "foo"                | "foo"         |
+| ""                   | ""            |
+| " "                  | ""            |
+| "\t foo \n"          | "foo"         |
+| b"\t foo \n"         | b"foo"        |
+| "\r\f\v foo \r\f\v"  | "foo"         |
+| b"\r\f\v foo \r\f\v" | b"foo"        |
 
 When `values_to_trim` is provided:
 
-| input          | values\_to\_trim | `trim(input, values_to_trim)` |
-| :------------- | :--------------- | :---------------------------- |
-| "abcbfooaacb"  | "abc"            | "foo"                         |
-| "abcdaabadbac" | "abc"            | "daabad"                      |
-| b"C1C2C3"      | b"C1"            | b"C2C3"                       |
-| b"C1C2"        | "foo"            | error                         |
-| "foo"          | b"C1"            | error                         |
+| input          | values_to_trim | `trim(input, values_to_trim)` |
+|----------------|----------------|-------------------------------|
+| "abcbfooaacb"  | "abc"          | "foo"                         |
+| "abcdaabadbac" | "abc"          | "daabad"                      |
+| b"C1C2C3"      | b"C1"          | b"C2C3"                       |
+| b"C1C2"        | "foo"          | error                         |
+| "foo"          | b"C1"          | error                         |
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("name").trim().as("whitespaceTrimmedName")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("name").trim().as("whitespaceTrimmedName")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("name").trim(" \n\t").as("whitespaceTrimmedName")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("name").trim(" \n\t").as("whitespaceTrimmedName")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("name").trim().alias("whitespaceTrimmedName")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("name").trim().alias("whitespaceTrimmedName")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("name").trim().alias("whitespaceTrimmedName")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("name").trim().alias("whitespaceTrimmedName")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("name").trim().as_("whitespaceTrimmedName"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("name").trim().as_("whitespaceTrimmedName"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(trim(field("name")).as("whitespaceTrimmedName"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(trim(field("name")).as("whitespaceTrimmedName"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Trim(firestore.FieldOf("name")).As("whitespaceTrimmedName"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Trim(firestore.FieldOf("name")).As("whitespaceTrimmedName"),
+    )).
+    Execute(ctx)
+```
 
 ### LTRIM
 
 **Syntax:**
 
-    ltrim[T <: STRING | BYTES](value: T, to_trim: T) -> T
-    ltrim[T <: STRING | BYTES](value: T) -> T
+```
+ltrim[T <: STRING | BYTES](value: T, to_trim: T) -> T
+ltrim[T <: STRING | BYTES](value: T) -> T
+```
 
 **Description:**
 
 Trims a specified set of `BYTES` or `CHARS` from the beginning of the supplied `value` .
 
-  - If `to_trim` is not provided, trims leading whitespace characters.
+- If `to_trim` is not provided, trims leading whitespace characters.
 
 **Examples:**
 
 When `to_trim` is not provided:
 
 | value   | `ltrim(value)` |
-| :------ | :------------- |
+|---------|----------------|
 | " foo " | "foo "         |
 | "foo"   | "foo"          |
 
 When `to_trim` is provided:
 
-| value     | to\_trim | `ltrim(value, to_trim)` |
-| :-------- | :------- | :---------------------- |
-| "aaabc"   | "a"      | "bc"                    |
-| "abacaba" | "ba"     | "caba"                  |
-| "é"       | "é"      | ""                      |
+| value     | to_trim | `ltrim(value, to_trim)` |
+|-----------|---------|-------------------------|
+| "aaabc"   | "a"     | "bc"                    |
+| "abacaba" | "ba"    | "caba"                  |
+| "é"       | "é"     | ""                      |
 
 ### RTRIM
 
 **Syntax:**
 
-    rtrim[T <: STRING | BYTES](value: T, to_trim: T) -> T
-    rtrim[T <: STRING | BYTES](value: T) -> T
+```
+rtrim[T <: STRING | BYTES](value: T, to_trim: T) -> T
+rtrim[T <: STRING | BYTES](value: T) -> T
+```
 
 **Description:**
 
 Trims a specified set of `BYTES` or `CHARS` from the end of the supplied `value` .
 
-  - If `to_trim` is not provided, trims trailing whitespace characters.
+- If `to_trim` is not provided, trims trailing whitespace characters.
 
 **Examples:**
 
 When `to_trim` is not provided:
 
 | value   | `rtrim(value)` |
-| :------ | :------------- |
+|---------|----------------|
 | " foo " | " foo"         |
 | "foo"   | "foo"          |
 
 When `to_trim` is provided:
 
-| value     | to\_trim | `rtrim(value, to_trim)` |
-| :-------- | :------- | :---------------------- |
-| "abccc"   | "c"      | "ab"                    |
-| "abacaba" | "ba"     | "abac"                  |
-| "é"       | "é"      | ""                      |
+| value     | to_trim | `rtrim(value, to_trim)` |
+|-----------|---------|-------------------------|
+| "abccc"   | "c"     | "ab"                    |
+| "abacaba" | "ba"    | "abac"                  |
+| "é"       | "é"     | ""                      |
 
 ### SPLIT
 
 **Syntax:**
 
-    split(input: STRING) -> ARRAY<STRING>
-    split[T <: STRING | BYTES](input: T, delimiter: T) -> ARRAY<T>
+```
+split(input: STRING) -> ARRAY<STRING>
+split[T <: STRING | BYTES](input: T, delimiter: T) -> ARRAY<T>
+```
 
 **Description:**
 
 Splits a `STRING` or `BYTES` value, using a delimiter.
 
-  - For `STRING` the default delimiter is the comma `,` . The delimiter is treated as a single string.
+- For `STRING` the default delimiter is the comma `,` . The delimiter is treated as a single string.
 
-  - For `BYTES` , you must specify a delimiter.
+- For `BYTES` , you must specify a delimiter.
 
-  - Splitting on an empty delimiter produces an array of Unicode codepoints for `STRING` values, and an array of `BYTES` for `BYTES` values.
+- Splitting on an empty delimiter produces an array of Unicode codepoints for `STRING` values, and an array of `BYTES` for `BYTES` values.
 
-  - Splitting an empty `STRING` returns an `ARRAY` with a single empty `STRING` .
+- Splitting an empty `STRING` returns an `ARRAY` with a single empty `STRING` .
 
 **Examples:**
 
 When `delimiter` is not provided:
 
 | input         | `split(input)`          |
-| :------------ | :---------------------- |
+|---------------|-------------------------|
 | "foo,bar,foo" | \["foo", "bar", "foo"\] |
 | "foo"         | \["foo"\]               |
 | ",foo,"       | \["", "foo", ""\]       |
@@ -7053,7 +7998,7 @@ When `delimiter` is not provided:
 When `delimiter` is provided:
 
 | input         | delimiter | `split(input, delimiter)` |
-| :------------ | :-------- | :------------------------ |
+|---------------|-----------|---------------------------|
 | "foo bar foo" | " "       | \["foo", "bar", "foo"\]   |
 | "foo bar foo" | "z"       | \["foo bar foo"\]         |
 | "abc"         | ""        | \["a", "b", "c"\]         |
@@ -7063,27 +8008,29 @@ When `delimiter` is provided:
 
 ## **Timestamp Functions**
 
-|                                              |                                                                                      |
-| -------------------------------------------- | ------------------------------------------------------------------------------------ |
-| Name                                         | Description                                                                          |
-| `         CURRENT_TIMESTAMP        `         | Generates a `TIMESTAMP` corresponding to the request time.                           |
-| `         TIMESTAMP_TRUNC        `           | Truncates a `TIMESTAMP` to a given granularity.                                      |
-| `         UNIX_MICROS_TO_TIMESTAMP        `  | Converts the number of microseconds since `1970-01-01 00:00:00 UTC` to a `TIMESTAMP` |
-| `         UNIX_MILLIS_TO_TIMESTAMP        `  | Converts the number of milliseconds since `1970-01-01 00:00:00 UTC` to a `TIMESTAMP` |
-| `         UNIX_SECONDS_TO_TIMESTAMP        ` | Converts the number of seconds since `1970-01-01 00:00:00 UTC` to a `TIMESTAMP`      |
-| `         TIMESTAMP_ADD        `             | Adds a time interval to a `TIMESTAMP`                                                |
-| `         TIMESTAMP_SUB        `             | Subtracts a time interval to a `TIMESTAMP`                                           |
-| `         TIMESTAMP_TO_UNIX_MICROS        `  | Converts a `TIMESTAMP` to the number of microseconds since `1970-01-01 00:00:00 UTC` |
-| `         TIMESTAMP_TO_UNIX_MILLIS        `  | Converts a `TIMESTAMP` to the number of milliseconds since `1970-01-01 00:00:00 UTC` |
-| `         TIMESTAMP_TO_UNIX_SECONDS        ` | Converts a `TIMESTAMP` to the number of seconds since `1970-01-01 00:00:00 UTC`      |
-| `         TIMESTAMP_DIFF        `            | Returns the whole number of specified `unit` intervals between two `TIMESTAMP` s.    |
-| `         TIMESTAMP_EXTRACT        `         | Extracts a specific `part` (e.g. year, month, day) from a `TIMESTAMP` .              |
+|                                                                                                                                               |                                                                                      |
+|-----------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| Name                                                                                                                                          | Description                                                                          |
+| [`CURRENT_TIMESTAMP`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#current_timestamp)                 | Generates a `TIMESTAMP` corresponding to the request time.                           |
+| [`TIMESTAMP_TRUNC`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#timestamp_trunc)                     | Truncates a `TIMESTAMP` to a given granularity.                                      |
+| [`UNIX_MICROS_TO_TIMESTAMP`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#unix_micros_to_timestamp)   | Converts the number of microseconds since `1970-01-01 00:00:00 UTC` to a `TIMESTAMP` |
+| [`UNIX_MILLIS_TO_TIMESTAMP`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#unix_millis_to_timestamp)   | Converts the number of milliseconds since `1970-01-01 00:00:00 UTC` to a `TIMESTAMP` |
+| [`UNIX_SECONDS_TO_TIMESTAMP`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#unix_seconds_to_timestamp) | Converts the number of seconds since `1970-01-01 00:00:00 UTC` to a `TIMESTAMP`      |
+| [`TIMESTAMP_ADD`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#timestamp_add)                         | Adds a time interval to a `TIMESTAMP`                                                |
+| [`TIMESTAMP_SUB`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#timestamp_sub)                         | Subtracts a time interval to a `TIMESTAMP`                                           |
+| [`TIMESTAMP_TO_UNIX_MICROS`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#timestamp_to_unix_micros)   | Converts a `TIMESTAMP` to the number of microseconds since `1970-01-01 00:00:00 UTC` |
+| [`TIMESTAMP_TO_UNIX_MILLIS`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#timestamp_to_unix_millis)   | Converts a `TIMESTAMP` to the number of milliseconds since `1970-01-01 00:00:00 UTC` |
+| [`TIMESTAMP_TO_UNIX_SECONDS`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#timestamp_to_unix_seconds) | Converts a `TIMESTAMP` to the number of seconds since `1970-01-01 00:00:00 UTC`      |
+| [`TIMESTAMP_DIFF`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#timestamp_diff)                       | Returns the whole number of specified `unit` intervals between two `TIMESTAMP` s.    |
+| [`TIMESTAMP_EXTRACT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#timestamp_extract)                 | Extracts a specific `part` (e.g. year, month, day) from a `TIMESTAMP` .              |
 
-### CURRENT\_TIMESTAMP
+### CURRENT_TIMESTAMP
 
 **Syntax:**
 
-    current_timestamp() -> TIMESTAMP
+```
+current_timestamp() -> TIMESTAMP
+```
 
 **Description:**
 
@@ -7091,11 +8038,13 @@ Gets the timestamp at the beginning of request time `input` (interpreted as the 
 
 This is stable within a query, and will always resolve to the same value if called multiple times.
 
-### TIMESTAMP\_TRUNC
+### TIMESTAMP_TRUNC
 
 **Syntax:**
 
-    timestamp_trunc(timestamp: TIMESTAMP, granularity: STRING[, timezone: STRING]) -> TIMESTAMP
+```
+timestamp_trunc(timestamp: TIMESTAMP, granularity: STRING[, timezone: STRING]) -> TIMESTAMP
+```
 
 **Description:**
 
@@ -7103,18 +8052,18 @@ Truncates a timestamp down to a given granularity.
 
 The `granularity` argument must be a string and one of the following:
 
-  - `microsecond`
-  - `millisecond`
-  - `second`
-  - `minute`
-  - `hour`
-  - `day`
-  - `week`
-  - `week([weekday])`
-  - `month`
-  - `quarter`
-  - `year`
-  - `isoyear`
+- `microsecond`
+- `millisecond`
+- `second`
+- `minute`
+- `hour`
+- `day`
+- `week`
+- `week([weekday])`
+- `month`
+- `quarter`
+- `year`
+- `isoyear`
 
 If the `timezone` argument is provided, truncation will be based on the given timezone's calendar boundaries (e.g. day truncation will truncate to midnight in the given timezone). The truncation will respect daylight savings time.
 
@@ -7124,20 +8073,22 @@ The `timezone` argument should be a string representation of a timezone from the
 
 **Examples:**
 
-| `timestamp`                    | `granularity` | `timezone`             | `timestamp_trunc(timestamp, granularity, timezone)` |
-| :----------------------------- | :------------ | :--------------------- | :-------------------------------------------------- |
-| 2000-01-01 10:20:30:123456 UTC | "second"      | Not provided           | 2001-01-01 10:20:30 UTC                             |
-| 1997-05-31 04:30:30 UTC        | "day"         | Not provided           | 1997-05-31 00:00:00 UTC                             |
-| 1997-05-31 04:30:30 UTC        | "day"         | "America/Los\_Angeles" | 1997-05-30 07:00:00 UTC                             |
-| 2001-03-16 04:00:00 UTC        | "week(friday) | Not provided           | 2001-03-16 00:00:00 UTC                             |
-| 2001-03-23 04:00:00 UTC        | "week(friday) | "America/Los\_Angeles" | 2001-03-23 17:00:00 UTC                             |
-| 2026-01-24 20:00:00 UTC        | "month"       | "GMT+06:32:43"         | 2026-01-01T06:32:43 UTC                             |
+| `timestamp`                    | `granularity` | `timezone`            | `timestamp_trunc(timestamp, granularity, timezone)` |
+|--------------------------------|---------------|-----------------------|-----------------------------------------------------|
+| 2000-01-01 10:20:30:123456 UTC | "second"      | Not provided          | 2001-01-01 10:20:30 UTC                             |
+| 1997-05-31 04:30:30 UTC        | "day"         | Not provided          | 1997-05-31 00:00:00 UTC                             |
+| 1997-05-31 04:30:30 UTC        | "day"         | "America/Los_Angeles" | 1997-05-30 07:00:00 UTC                             |
+| 2001-03-16 04:00:00 UTC        | "week(friday) | Not provided          | 2001-03-16 00:00:00 UTC                             |
+| 2001-03-23 04:00:00 UTC        | "week(friday) | "America/Los_Angeles" | 2001-03-23 17:00:00 UTC                             |
+| 2026-01-24 20:00:00 UTC        | "month"       | "GMT+06:32:43"        | 2026-01-01T06:32:43 UTC                             |
 
-### UNIX\_MICROS\_TO\_TIMESTAMP
+### UNIX_MICROS_TO_TIMESTAMP
 
 **Syntax:**
 
-    unix_micros_to_timestamp(input: INT64) -> TIMESTAMP
+```
+unix_micros_to_timestamp(input: INT64) -> TIMESTAMP
+```
 
 **Description:**
 
@@ -7146,97 +8097,113 @@ Converts `input` (interpreted as the number of microseconds since `1970-01-01 00
 **Examples:**
 
 | `input`    | `unix_micros_to_timestamp(input)` |
-| :--------- | :-------------------------------- |
+|------------|-----------------------------------|
 | 0L         | 1970-01-01 00:00:00 UTC           |
 | 400123456L | 1970-01-01 00:06:40.123456 UTC    |
-| \-1000000L | 1969-12-31 23:59:59 UTC           |
+| -1000000L  | 1969-12-31 23:59:59 UTC           |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("documents")
-      .select(
-        field("createdAtMicros").unixMicrosToTimestamp().as("createdAtString")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("documents")
+  .select(
+    field("createdAtMicros").unixMicrosToTimestamp().as("createdAtString")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("documents")
-      .select(
-        field("createdAtMicros").unixMicrosToTimestamp().as("createdAtString")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("documents")
+  .select(
+    field("createdAtMicros").unixMicrosToTimestamp().as("createdAtString")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("documents")
-      .select([
-        Field("createdAtMicros").unixMicrosToTimestamp().as("createdAtString")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("documents")
+  .select([
+    Field("createdAtMicros").unixMicrosToTimestamp().as("createdAtString")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("documents")
-        .select(
-            field("createdAtMicros").unixMicrosToTimestamp().alias("createdAtString")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("documents")
+    .select(
+        field("createdAtMicros").unixMicrosToTimestamp().alias("createdAtString")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("documents")
-        .select(
-            field("createdAtMicros").unixMicrosToTimestamp().alias("createdAtString")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("documents")
+    .select(
+        field("createdAtMicros").unixMicrosToTimestamp().alias("createdAtString")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("documents")
-        .select(
-            Field.of("createdAtMicros")
-            .unix_micros_to_timestamp()
-            .as_("createdAtString")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("documents")
+    .select(
+        Field.of("createdAtMicros")
+        .unix_micros_to_timestamp()
+        .as_("createdAtString")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("documents")
-            .select(unixMicrosToTimestamp(field("createdAtMicros")).as("createdAtString"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("documents")
+        .select(unixMicrosToTimestamp(field("createdAtMicros")).as("createdAtString"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("documents").
-     Select(firestore.Fields(
-         firestore.UnixMicrosToTimestamp(firestore.FieldOf("createdAtMicros")).As("createdAtString"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("documents").
+    Select(firestore.Fields(
+        firestore.UnixMicrosToTimestamp(firestore.FieldOf("createdAtMicros")).As("createdAtString"),
+    )).
+    Execute(ctx)
+```
 
-### UNIX\_MILLIS\_TO\_TIMESTAMP
+### UNIX_MILLIS_TO_TIMESTAMP
 
 **Syntax:**
 
-    unix_millis_to_timestamp(input: INT64) -> TIMESTAMP
+```
+unix_millis_to_timestamp(input: INT64) -> TIMESTAMP
+```
 
 **Description:**
 
@@ -7244,98 +8211,114 @@ Converts `input` (interpreted as the number of milliseconds since `1970-01-01 00
 
 **Examples:**
 
-| `input`    | `unix_millis_to_timestamp(input)` |
-| :--------- | :-------------------------------- |
-| 0L         | 1970-01-01 00:00:00 UTC           |
-| 4000123L   | 1970-01-01 01:06:40.123 UTC       |
-| \-1000000L | 1969-12-31 23:43:20 UTC           |
+| `input`   | `unix_millis_to_timestamp(input)` |
+|-----------|-----------------------------------|
+| 0L        | 1970-01-01 00:00:00 UTC           |
+| 4000123L  | 1970-01-01 01:06:40.123 UTC       |
+| -1000000L | 1969-12-31 23:43:20 UTC           |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("documents")
-      .select(
-        field("createdAtMillis").unixMillisToTimestamp().as("createdAtString")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("documents")
+  .select(
+    field("createdAtMillis").unixMillisToTimestamp().as("createdAtString")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("documents")
-      .select(
-        field("createdAtMillis").unixMillisToTimestamp().as("createdAtString")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("documents")
+  .select(
+    field("createdAtMillis").unixMillisToTimestamp().as("createdAtString")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("documents")
-      .select([
-        Field("createdAtMillis").unixMillisToTimestamp().as("createdAtString")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("documents")
+  .select([
+    Field("createdAtMillis").unixMillisToTimestamp().as("createdAtString")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("documents")
-        .select(
-            field("createdAtMillis").unixMillisToTimestamp().alias("createdAtString")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("documents")
+    .select(
+        field("createdAtMillis").unixMillisToTimestamp().alias("createdAtString")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("documents")
-        .select(
-            field("createdAtMillis").unixMillisToTimestamp().alias("createdAtString")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("documents")
+    .select(
+        field("createdAtMillis").unixMillisToTimestamp().alias("createdAtString")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("documents")
-        .select(
-            Field.of("createdAtMillis")
-            .unix_millis_to_timestamp()
-            .as_("createdAtString")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("documents")
+    .select(
+        Field.of("createdAtMillis")
+        .unix_millis_to_timestamp()
+        .as_("createdAtString")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("documents")
-            .select(unixMillisToTimestamp(field("createdAtMillis")).as("createdAtString"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("documents")
+        .select(unixMillisToTimestamp(field("createdAtMillis")).as("createdAtString"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("documents").
-     Select(firestore.Fields(
-         firestore.UnixMillisToTimestamp(firestore.FieldOf("createdAtMillis")).As("createdAtString"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("documents").
+    Select(firestore.Fields(
+        firestore.UnixMillisToTimestamp(firestore.FieldOf("createdAtMillis")).As("createdAtString"),
+    )).
+    Execute(ctx)
+```
 
-### UNIX\_SECONDS\_TO\_TIMESTAMP
+### UNIX_SECONDS_TO_TIMESTAMP
 
 **Syntax:**
 
-    unix_seconds_to_timestamp(input: INT64) -> TIMESTAMP
+```
+unix_seconds_to_timestamp(input: INT64) -> TIMESTAMP
+```
 
 **Description:**
 
@@ -7344,317 +8327,365 @@ Converts `input` (interpreted as the number of seconds since `1970-01-01 00:00:0
 **Examples:**
 
 | `input` | `unix_seconds_to_timestamp(input)` |
-| :------ | :--------------------------------- |
+|---------|------------------------------------|
 | 0L      | 1970-01-01 00:00:00 UTC            |
 | 60L     | 1970-01-01 00:01:00 UTC            |
-| \-300L  | 1969-12-31 23:55:00 UTC            |
+| -300L   | 1969-12-31 23:55:00 UTC            |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("documents")
-      .select(
-        field("createdAtSeconds").unixSecondsToTimestamp().as("createdAtString")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("documents")
+  .select(
+    field("createdAtSeconds").unixSecondsToTimestamp().as("createdAtString")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("documents")
-      .select(
-        field("createdAtSeconds").unixSecondsToTimestamp().as("createdAtString")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("documents")
+  .select(
+    field("createdAtSeconds").unixSecondsToTimestamp().as("createdAtString")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("documents")
-      .select([
-        Field("createdAtSeconds").unixSecondsToTimestamp().as("createdAtString")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("documents")
+  .select([
+    Field("createdAtSeconds").unixSecondsToTimestamp().as("createdAtString")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("documents")
-        .select(
-            field("createdAtSeconds").unixSecondsToTimestamp().alias("createdAtString")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("documents")
+    .select(
+        field("createdAtSeconds").unixSecondsToTimestamp().alias("createdAtString")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("documents")
-        .select(
-            field("createdAtSeconds").unixSecondsToTimestamp().alias("createdAtString")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("documents")
+    .select(
+        field("createdAtSeconds").unixSecondsToTimestamp().alias("createdAtString")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("documents")
-        .select(
-            Field.of("createdAtSeconds")
-            .unix_seconds_to_timestamp()
-            .as_("createdAtString")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("documents")
+    .select(
+        Field.of("createdAtSeconds")
+        .unix_seconds_to_timestamp()
+        .as_("createdAtString")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("documents")
-            .select(unixSecondsToTimestamp(field("createdAtSeconds")).as("createdAtString"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("documents")
+        .select(unixSecondsToTimestamp(field("createdAtSeconds")).as("createdAtString"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("documents").
-     Select(firestore.Fields(
-         firestore.UnixSecondsToTimestamp(firestore.FieldOf("createdAtSeconds")).As("createdAtString"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("documents").
+    Select(firestore.Fields(
+        firestore.UnixSecondsToTimestamp(firestore.FieldOf("createdAtSeconds")).As("createdAtString"),
+    )).
+    Execute(ctx)
+```
 
-### TIMESTAMP\_ADD
+### TIMESTAMP_ADD
 
 **Syntax:**
 
-    timestamp_add(timestamp: TIMESTAMP, unit: STRING, amount: INT64) -> TIMESTAMP
+```
+timestamp_add(timestamp: TIMESTAMP, unit: STRING, amount: INT64) -> TIMESTAMP
+```
 
 **Description:**
 
-Adds an `amount` of `unit` from `timestamp` . The `amount` argument can be negative, in that case it is equivalent to [TIMESTAMP\_SUB](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#timestamp_sub) .
+Adds an `amount` of `unit` from `timestamp` . The `amount` argument can be negative, in that case it is equivalent to [TIMESTAMP_SUB](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#timestamp_sub) .
 
 The `unit` argument must be a string and one of the following:
 
-  - `microsecond`
-  - `millisecond`
-  - `second`
-  - `minute`
-  - `hour`
-  - `day`
+- `microsecond`
+- `millisecond`
+- `second`
+- `minute`
+- `hour`
+- `day`
 
 Throws an error if the resulting timestamp does not fit within the `TIMESTAMP` range.
 
 **Examples:**
 
 | `timestamp`             | `unit`   | `amount` | `timestamp_add(timestamp, unit, amount)` |
-| :---------------------- | :------- | :------- | :--------------------------------------- |
+|-------------------------|----------|----------|------------------------------------------|
 | 2025-02-20 00:00:00 UTC | "minute" | 2L       | 2025-02-20 00:02:00 UTC                  |
-| 2025-02-20 00:00:00 UTC | "hour"   | \-4L     | 2025-02-19 20:00:00 UTC                  |
+| 2025-02-20 00:00:00 UTC | "hour"   | -4L      | 2025-02-19 20:00:00 UTC                  |
 | 2025-02-20 00:00:00 UTC | "day"    | 5L       | 2025-02-25 00:00:00 UTC                  |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("documents")
-      .select(
-        field("createdAt").timestampAdd("day", 3653).as("expiresAt")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("documents")
+  .select(
+    field("createdAt").timestampAdd("day", 3653).as("expiresAt")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("documents")
-      .select(
-        field("createdAt").timestampAdd("day", 3653).as("expiresAt")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("documents")
+  .select(
+    field("createdAt").timestampAdd("day", 3653).as("expiresAt")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("documents")
-      .select([
-        Field("createdAt").timestampAdd(3653, .day).as("expiresAt")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("documents")
+  .select([
+    Field("createdAt").timestampAdd(3653, .day).as("expiresAt")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("documents")
-        .select(
-            field("createdAt")
-              .timestampAdd("day", 3653)
-              .alias("expiresAt")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("documents")
+    .select(
+        field("createdAt")
+          .timestampAdd("day", 3653)
+          .alias("expiresAt")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("documents")
-        .select(
-            field("createdAt").timestampAdd("day", 3653).alias("expiresAt")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("documents")
+    .select(
+        field("createdAt").timestampAdd("day", 3653).alias("expiresAt")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("documents")
-        .select(Field.of("createdAt").timestamp_add("day", 3653).as_("expiresAt"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("documents")
+    .select(Field.of("createdAt").timestamp_add("day", 3653).as_("expiresAt"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("documents")
-            .select(timestampAdd(field("createdAt"), "day", 3653).as("expiresAt"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("documents")
+        .select(timestampAdd(field("createdAt"), "day", 3653).as("expiresAt"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("documents").
-     Select(firestore.Fields(
-         firestore.TimestampAdd(firestore.FieldOf("createdAt"), "day", 3653).As("expiresAt"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("documents").
+    Select(firestore.Fields(
+        firestore.TimestampAdd(firestore.FieldOf("createdAt"), "day", 3653).As("expiresAt"),
+    )).
+    Execute(ctx)
+```
 
-### TIMESTAMP\_SUB
+### TIMESTAMP_SUB
 
 **Syntax:**
 
-    timestamp_sub(timestamp: TIMESTAMP, unit: STRING, amount: INT64) -> TIMESTAMP
+```
+timestamp_sub(timestamp: TIMESTAMP, unit: STRING, amount: INT64) -> TIMESTAMP
+```
 
 **Description:**
 
-Subtracts an `amount` of `unit` from `timestamp` . The `amount` argument can be negative, in that case it is equivalent to [TIMESTAMP\_ADD](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#timestamp_add) .
+Subtracts an `amount` of `unit` from `timestamp` . The `amount` argument can be negative, in that case it is equivalent to [TIMESTAMP_ADD](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#timestamp_add) .
 
 The `unit` argument must be a string and one of the following:
 
-  - `microsecond`
-  - `millisecond`
-  - `second`
-  - `minute`
-  - `hour`
-  - `day`
+- `microsecond`
+- `millisecond`
+- `second`
+- `minute`
+- `hour`
+- `day`
 
 Throws an error if the resulting timestamp does not fit within the `TIMESTAMP` range.
 
 **Examples:**
 
 | `timestamp`             | `unit`   | `amount` | `timestamp_sub(timestamp, unit, amount)` |
-| :---------------------- | :------- | :------- | :--------------------------------------- |
+|-------------------------|----------|----------|------------------------------------------|
 | 2026-07-04 00:00:00 UTC | "minute" | 40L      | 2026-07-03 23:20:00 UTC                  |
-| 2026-07-04 00:00:00 UTC | "hour"   | \-24L    | 2026-07-05 00:00:00 UTC                  |
+| 2026-07-04 00:00:00 UTC | "hour"   | -24L     | 2026-07-05 00:00:00 UTC                  |
 | 2026-07-04 00:00:00 UTC | "day"    | 3L       | 2026-07-01 00:00:00 UTC                  |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("documents")
-      .select(
-        field("expiresAt").timestampSubtract("day", 14).as("sendWarningTimestamp")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("documents")
+  .select(
+    field("expiresAt").timestampSubtract("day", 14).as("sendWarningTimestamp")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("documents")
-      .select(
-        field("expiresAt").timestampSubtract("day", 14).as("sendWarningTimestamp")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("documents")
+  .select(
+    field("expiresAt").timestampSubtract("day", 14).as("sendWarningTimestamp")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("documents")
-      .select([
-        Field("expiresAt").timestampSubtract(14, .day).as("sendWarningTimestamp")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("documents")
+  .select([
+    Field("expiresAt").timestampSubtract(14, .day).as("sendWarningTimestamp")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("documents")
-        .select(
-            field("expiresAt")
-              .timestampSubtract("day", 14)
-              .alias("sendWarningTimestamp")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("documents")
+    .select(
+        field("expiresAt")
+          .timestampSubtract("day", 14)
+          .alias("sendWarningTimestamp")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("documents")
-        .select(
-            field("expiresAt").timestampSubtract("day", 14).alias("sendWarningTimestamp")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("documents")
+    .select(
+        field("expiresAt").timestampSubtract("day", 14).alias("sendWarningTimestamp")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("documents")
-        .select(
-            Field.of("expiresAt")
-            .timestamp_subtract("day", 14)
-            .as_("sendWarningTimestamp")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("documents")
+    .select(
+        Field.of("expiresAt")
+        .timestamp_subtract("day", 14)
+        .as_("sendWarningTimestamp")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("documents")
-            .select(timestampSubtract(field("expiresAt"), "day", 14).as("sendWarningTimestamp"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("documents")
+        .select(timestampSubtract(field("expiresAt"), "day", 14).as("sendWarningTimestamp"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("documents").
-     Select(firestore.Fields(
-         firestore.TimestampSubtract(firestore.FieldOf("expiresAt"), "day", 14).As("sendWarningTimestamp"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("documents").
+    Select(firestore.Fields(
+        firestore.TimestampSubtract(firestore.FieldOf("expiresAt"), "day", 14).As("sendWarningTimestamp"),
+    )).
+    Execute(ctx)
+```
 
-### TIMESTAMP\_TO\_UNIX\_MICROS
+### TIMESTAMP_TO_UNIX_MICROS
 
 **Syntax:**
 
-    timestamp_to_unix_micros(input: TIMESTAMP) -> INT64
+```
+timestamp_to_unix_micros(input: TIMESTAMP) -> INT64
+```
 
 **Description:**
 
@@ -7663,93 +8694,109 @@ Converts `input` to the number of microseconds since `1970-01-01 00:00:00 UTC` .
 **Examples:**
 
 | `input`                        | `timestamp_to_unix_micros(input)` |
-| :----------------------------- | :-------------------------------- |
+|--------------------------------|-----------------------------------|
 | 1970-01-01 00:00:00 UTC        | 0L                                |
 | 1970-01-01 00:06:40.123456 UTC | 400123456L                        |
-| 1969-12-31 23:59:59 UTC        | \-1000000L                        |
+| 1969-12-31 23:59:59 UTC        | -1000000L                         |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("documents")
-      .select(
-        field("dateString").timestampToUnixMicros().as("unixMicros")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("documents")
+  .select(
+    field("dateString").timestampToUnixMicros().as("unixMicros")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("documents")
-      .select(
-        field("dateString").timestampToUnixMicros().as("unixMicros")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("documents")
+  .select(
+    field("dateString").timestampToUnixMicros().as("unixMicros")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("documents")
-      .select([
-        Field("dateString").timestampToUnixMicros().as("unixMicros")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("documents")
+  .select([
+    Field("dateString").timestampToUnixMicros().as("unixMicros")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("documents")
-        .select(
-            field("dateString").timestampToUnixMicros().alias("unixMicros")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("documents")
+    .select(
+        field("dateString").timestampToUnixMicros().alias("unixMicros")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("documents")
-        .select(
-            field("dateString").timestampToUnixMicros().alias("unixMicros")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("documents")
+    .select(
+        field("dateString").timestampToUnixMicros().alias("unixMicros")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("documents")
-        .select(Field.of("dateString").timestamp_to_unix_micros().as_("unixMicros"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("documents")
+    .select(Field.of("dateString").timestamp_to_unix_micros().as_("unixMicros"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("documents")
-            .select(timestampToUnixMicros(field("dateString")).as("unixMicros"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("documents")
+        .select(timestampToUnixMicros(field("dateString")).as("unixMicros"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("documents").
-     Select(firestore.Fields(
-         firestore.TimestampToUnixMicros(firestore.FieldOf("dateString")).As("unixMicros"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("documents").
+    Select(firestore.Fields(
+        firestore.TimestampToUnixMicros(firestore.FieldOf("dateString")).As("unixMicros"),
+    )).
+    Execute(ctx)
+```
 
-### TIMESTAMP\_TO\_UNIX\_MILLIS
+### TIMESTAMP_TO_UNIX_MILLIS
 
 **Syntax:**
 
-    timestamp_to_unix_millis(input: TIMESTAMP) -> INT64
+```
+timestamp_to_unix_millis(input: TIMESTAMP) -> INT64
+```
 
 **Description:**
 
@@ -7758,93 +8805,109 @@ Converts `input` to the number of milliseconds since `1970-01-01 00:00:00 UTC` .
 **Examples:**
 
 | `input`                     | `timestamp_to_unix_millis(input)` |
-| :-------------------------- | :-------------------------------- |
+|-----------------------------|-----------------------------------|
 | 1970-01-01 00:00:00 UTC     | 0L                                |
 | 1970-01-01 01:06:40.123 UTC | 4000123L                          |
-| 1969-12-31 23:43:20         | \-1000000L                        |
+| 1969-12-31 23:43:20         | -1000000L                         |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("documents")
-      .select(
-        field("dateString").timestampToUnixMillis().as("unixMillis")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("documents")
+  .select(
+    field("dateString").timestampToUnixMillis().as("unixMillis")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("documents")
-      .select(
-        field("dateString").timestampToUnixMillis().as("unixMillis")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("documents")
+  .select(
+    field("dateString").timestampToUnixMillis().as("unixMillis")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("documents")
-      .select([
-        Field("dateString").timestampToUnixMillis().as("unixMillis")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("documents")
+  .select([
+    Field("dateString").timestampToUnixMillis().as("unixMillis")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("documents")
-        .select(
-            field("dateString").timestampToUnixMillis().alias("unixMillis")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("documents")
+    .select(
+        field("dateString").timestampToUnixMillis().alias("unixMillis")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("documents")
-        .select(
-            field("dateString").timestampToUnixMillis().alias("unixMillis")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("documents")
+    .select(
+        field("dateString").timestampToUnixMillis().alias("unixMillis")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("documents")
-        .select(Field.of("dateString").timestamp_to_unix_millis().as_("unixMillis"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("documents")
+    .select(Field.of("dateString").timestamp_to_unix_millis().as_("unixMillis"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("documents")
-            .select(timestampToUnixMillis(field("dateString")).as("unixMillis"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("documents")
+        .select(timestampToUnixMillis(field("dateString")).as("unixMillis"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("documents").
-     Select(firestore.Fields(
-         firestore.TimestampToUnixMillis(firestore.FieldOf("dateString")).As("unixMillis"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("documents").
+    Select(firestore.Fields(
+        firestore.TimestampToUnixMillis(firestore.FieldOf("dateString")).As("unixMillis"),
+    )).
+    Execute(ctx)
+```
 
-### TIMESTAMP\_TO\_UNIX\_SECONDS
+### TIMESTAMP_TO_UNIX_SECONDS
 
 **Syntax:**
 
-    timestamp_to_unix_seconds(input: TIMESTAMP) -> INT64
+```
+timestamp_to_unix_seconds(input: TIMESTAMP) -> INT64
+```
 
 **Description:**
 
@@ -7853,123 +8916,141 @@ Converts `input` to the number of seconds since `1970-01-01 00:00:00 UTC` . Trun
 **Examples:**
 
 | `input`                 | `timestamp_to_unix_seconds(input)` |
-| :---------------------- | :--------------------------------- |
+|-------------------------|------------------------------------|
 | 1970-01-01 00:00:00 UTC | 0L                                 |
 | 1970-01-01 00:01:00 UTC | 60L                                |
-| 1969-12-31 23:55:00 UTC | \-300L                             |
+| 1969-12-31 23:55:00 UTC | -300L                              |
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("documents")
-      .select(
-        field("dateString").timestampToUnixSeconds().as("unixSeconds")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("documents")
+  .select(
+    field("dateString").timestampToUnixSeconds().as("unixSeconds")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("documents")
-      .select(
-        field("dateString").timestampToUnixSeconds().as("unixSeconds")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("documents")
+  .select(
+    field("dateString").timestampToUnixSeconds().as("unixSeconds")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("documents")
-      .select([
-        Field("dateString").timestampToUnixSeconds().as("unixSeconds")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("documents")
+  .select([
+    Field("dateString").timestampToUnixSeconds().as("unixSeconds")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("documents")
-        .select(
-            field("dateString").timestampToUnixSeconds().alias("unixSeconds")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("documents")
+    .select(
+        field("dateString").timestampToUnixSeconds().alias("unixSeconds")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("documents")
-        .select(
-            field("dateString").timestampToUnixSeconds().alias("unixSeconds")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("documents")
+    .select(
+        field("dateString").timestampToUnixSeconds().alias("unixSeconds")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("documents")
-        .select(Field.of("dateString").timestamp_to_unix_seconds().as_("unixSeconds"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("documents")
+    .select(Field.of("dateString").timestamp_to_unix_seconds().as_("unixSeconds"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("documents")
-            .select(timestampToUnixSeconds(field("dateString")).as("unixSeconds"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("documents")
+        .select(timestampToUnixSeconds(field("dateString")).as("unixSeconds"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("documents").
-     Select(firestore.Fields(
-         firestore.TimestampToUnixSeconds(firestore.FieldOf("dateString")).As("unixSeconds"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("documents").
+    Select(firestore.Fields(
+        firestore.TimestampToUnixSeconds(firestore.FieldOf("dateString")).As("unixSeconds"),
+    )).
+    Execute(ctx)
+```
 
-### TIMESTAMP\_DIFF
+### TIMESTAMP_DIFF
 
 **Syntax:**
 
-    timestamp_diff(end: TIMESTAMP, start: TIMESTAMP, unit: STRING) -> INT64
+```
+timestamp_diff(end: TIMESTAMP, start: TIMESTAMP, unit: STRING) -> INT64
+```
 
 **Description:**
 
 Returns the whole number of specified `unit` intervals between two `TIMESTAMP` s.
 
-  - Returns a negative value if `end` is before `start` .
-  - Truncates any fractional unit. For example, `timestamp_diff("2021-01-01 00:00:01", "2021-01-01 00:00:00", "minute")` returns `0` .
+- Returns a negative value if `end` is before `start` .
+- Truncates any fractional unit. For example, `timestamp_diff("2021-01-01 00:00:01", "2021-01-01 00:00:00", "minute")` returns `0` .
 
 The `unit` argument must be a string and one of the following:
 
-  - `microsecond`
-  - `millisecond`
-  - `second`
-  - `minute`
-  - `hour`
-  - `day`
+- `microsecond`
+- `millisecond`
+- `second`
+- `minute`
+- `hour`
+- `day`
 
 **Examples:**
 
 | `end`                   | `start`                 | `unit`   | `timestamp_diff(end, start, unit)` |
-| :---------------------- | :---------------------- | :------- | :--------------------------------- |
+|-------------------------|-------------------------|----------|------------------------------------|
 | 2026-07-04 00:01:00 UTC | 2026-07-04 00:00:00 UTC | "second" | 60L                                |
-| 2026-07-04 00:00:00 UTC | 2026-07-05 00:00:00 UTC | "day"    | \-1L                               |
+| 2026-07-04 00:00:00 UTC | 2026-07-05 00:00:00 UTC | "day"    | -1L                                |
 | 2026-07-04 00:00:59 UTC | 2026-07-04 00:00:00 UTC | "minute" | 0L                                 |
 
-### TIMESTAMP\_EXTRACT
+### TIMESTAMP_EXTRACT
 
 **Syntax:**
 
-    timestamp_extract(timestamp: TIMESTAMP, part: STRING[, timezone: STRING]) -> INT64
+```
+timestamp_extract(timestamp: TIMESTAMP, part: STRING[, timezone: STRING]) -> INT64
+```
 
 **Description:**
 
@@ -7977,21 +9058,21 @@ Extracts a specific `part` (e.g. year, month, day) from `timestamp` .
 
 The `part` argument must be a string and one of the following:
 
-  - `microsecond`
-  - `millisecond`
-  - `second`
-  - `minute`
-  - `hour`
-  - `day`
-  - `dayofweek` : Returns a value between 1 (Sunday) and 7 (Saturday).
-  - `dayofyear`
-  - `week` : Returns the week number of the year, starting at 1 for the first Sunday of the year.
-  - `week([weekday])` : Returns the week number of the year, starting on the specified `weekday` .
-  - `month`
-  - `quarter`
-  - `year`
-  - `isoweek` : Returns the ISO 8601 week number.
-  - `isoyear` : Returns the ISO 8601 week-numbering year.
+- `microsecond`
+- `millisecond`
+- `second`
+- `minute`
+- `hour`
+- `day`
+- `dayofweek` : Returns a value between 1 (Sunday) and 7 (Saturday).
+- `dayofyear`
+- `week` : Returns the week number of the year, starting at 1 for the first Sunday of the year.
+- `week([weekday])` : Returns the week number of the year, starting on the specified `weekday` .
+- `month`
+- `quarter`
+- `year`
+- `isoweek` : Returns the ISO 8601 week number.
+- `isoyear` : Returns the ISO 8601 week-numbering year.
 
 If the `timezone` argument is provided, the extraction will be based on the given timezone's calendar. The extraction will respect daylight savings time.
 
@@ -8002,24 +9083,26 @@ The `timezone` argument should be a string representation of a timezone from the
 **Examples:**
 
 | `timestamp`             | `part` | `timezone`   | `timestamp_extract(timestamp, part, timezone)` |
-| :---------------------- | :----- | :----------- | :--------------------------------------------- |
+|-------------------------|--------|--------------|------------------------------------------------|
 | 2025-02-20 10:20:30 UTC | "year" | Not provided | 2025                                           |
 | 2025-02-20 10:20:30 UTC | "day"  | Not provided | 20                                             |
 | 2025-12-31 23:59:59 UTC | "year" | "Asia/Tokyo" | 2026                                           |
 
 ## **Type Functions**
 
-|                            |                                                         |
-| -------------------------- | ------------------------------------------------------- |
-| Name                       | Description                                             |
-| `         TYPE        `    | Returns the type of the value as a `STRING` .           |
-| `         IS_TYPE        ` | Returns `true` if the value matches the specified type. |
+|                                                                                                           |                                                         |
+|-----------------------------------------------------------------------------------------------------------|---------------------------------------------------------|
+| Name                                                                                                      | Description                                             |
+| [`TYPE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#type)       | Returns the type of the value as a `STRING` .           |
+| [`IS_TYPE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#is_type) | Returns `true` if the value matches the specified type. |
 
 ### TYPE
 
 **Syntax:**
 
-    type(input: ANY) -> STRING
+```
+type(input: ANY) -> STRING
+```
 
 **Description:**
 
@@ -8030,11 +9113,11 @@ If given an absent value, returns `NULL` .
 **Examples:**
 
 | `input`                  | `type(input)` |
-| ------------------------ | ------------- |
+|--------------------------|---------------|
 | NULL                     | "null"        |
 | true                     | "boolean"     |
 | 1                        | "int32"       |
-| \-3L                     | "int64"       |
+| -3L                      | "int64"       |
 | 3.14                     | "float64"     |
 | 2024-01-01T00:00:00Z UTC | "timestamp"   |
 | "foo"                    | "string"      |
@@ -8049,76 +9132,92 @@ If given an absent value, returns `NULL` .
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("title").notEqual("1984").as("not1984"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("title").notEqual("1984").as("not1984"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("title").notEqual("1984").as("not1984"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("title").notEqual("1984").as("not1984"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("title").notEqual("1984").as("not1984")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("title").notEqual("1984").as("not1984")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("title").notEqual("1984").alias("not1984"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("title").notEqual("1984").alias("not1984"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(field("title").notEqual("1984").alias("not1984"))
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(field("title").notEqual("1984").alias("not1984"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("title").not_equal("1984").as_("not1984"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("title").not_equal("1984").as_("not1984"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(notEqual(field("title"), "1984").as("not1984"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(notEqual(field("title"), "1984").as("not1984"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.NotEqual(firestore.FieldOf("title"), "1984").As("not1984"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.NotEqual(firestore.FieldOf("title"), "1984").As("not1984"),
+    )).
+    Execute(ctx)
+```
 
-### IS\_TYPE
+### IS_TYPE
 
 **Syntax:**
 
-    is_type(input: ANY, type: STRING) -> BOOLEAN
+```
+is_type(input: ANY, type: STRING) -> BOOLEAN
+```
 
 **Description:**
 
@@ -8126,31 +9225,31 @@ Returns `true` if the `input` matches the specified `type` , otherwise `false` .
 
 Supported `type` strings are:
 
-  - `"null"`
-  - `"boolean"`
-  - `"int32"`
-  - `"int64"`
-  - `"float64"`
-  - `"decimal128"`
-  - `"number"`
-  - `"timestamp"`
-  - `"string"`
-  - `"bytes"`
-  - `"array"`
-  - `"map"`
-  - `"reference"`
-  - `"vector"`
-  - `"geo_point"`
-  - `"max_key"`
-  - `"min_key"`
-  - `"object_id"`
-  - `"regex"`
-  - `"bson_timestamp"`
+- `"null"`
+- `"boolean"`
+- `"int32"`
+- `"int64"`
+- `"float64"`
+- `"decimal128"`
+- `"number"`
+- `"timestamp"`
+- `"string"`
+- `"bytes"`
+- `"array"`
+- `"map"`
+- `"reference"`
+- `"vector"`
+- `"geo_point"`
+- `"max_key"`
+- `"min_key"`
+- `"object_id"`
+- `"regex"`
+- `"bson_timestamp"`
 
 **Examples:**
 
 | `input`              | `type`    | `is_type(input, type)` |
-| :------------------- | :-------- | :--------------------- |
+|----------------------|-----------|------------------------|
 | NULL                 | "null"    | true                   |
 | true                 | "boolean" | true                   |
 | 3.14                 | "float64" | true                   |
@@ -8164,20 +9263,22 @@ Supported `type` strings are:
 
 ## **Vector Functions**
 
-|                                       |                                                    |
-| ------------------------------------- | -------------------------------------------------- |
-| Name                                  | Description                                        |
-| `         COSINE_DISTANCE        `    | Returns the cosine distance between two vectors    |
-| `         DOT_PRODUCT        `        | Returns the dot product between two vectors        |
-| `         EUCLIDEAN_DISTANCE        ` | Returns the euclidean distance between two vectors |
-| `         MANHATTAN_DISTANCE        ` | Returns the manhattan distance between two vectors |
-| `         VECTOR_LENGTH        `      | Returns the number of elements in a vector         |
+|                                                                                                                                 |                                                    |
+|---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
+| Name                                                                                                                            | Description                                        |
+| [`COSINE_DISTANCE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#cosine_distance)       | Returns the cosine distance between two vectors    |
+| [`DOT_PRODUCT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#dot_product)               | Returns the dot product between two vectors        |
+| [`EUCLIDEAN_DISTANCE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#euclidean_distance) | Returns the euclidean distance between two vectors |
+| [`MANHATTAN_DISTANCE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#manhattan_distance) | Returns the manhattan distance between two vectors |
+| [`VECTOR_LENGTH`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#vector_length)           | Returns the number of elements in a vector         |
 
-### COSINE\_DISTANCE
+### COSINE_DISTANCE
 
 **Syntax:**
 
-    cosine_distance(x: VECTOR, y: VECTOR) -> FLOAT64
+```
+cosine_distance(x: VECTOR, y: VECTOR) -> FLOAT64
+```
 
 **Description:**
 
@@ -8185,95 +9286,111 @@ Returns the cosine distance between `x` and `y` .
 
 ##### Node.js
 
-    const sampleVector = [0.0, 1, 2, 3, 4, 5];
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        field("embedding").cosineDistance(sampleVector).as("cosineDistance")
-      )
-      .execute();
+```
+const sampleVector = [0.0, 1, 2, 3, 4, 5];
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    field("embedding").cosineDistance(sampleVector).as("cosineDistance")
+  )
+  .execute();
+```
 
 ### Web
 
-    const sampleVector = [0.0, 1, 2, 3, 4, 5];
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("embedding").cosineDistance(sampleVector).as("cosineDistance")));
+```
+const sampleVector = [0.0, 1, 2, 3, 4, 5];
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("embedding").cosineDistance(sampleVector).as("cosineDistance")));
+```
 
 ##### Swift
 
-    let sampleVector = [0.0, 1, 2, 3, 4, 5]
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("embedding").cosineDistance(sampleVector).as("cosineDistance")
-      ])
-      .execute()
+```
+let sampleVector = [0.0, 1, 2, 3, 4, 5]
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("embedding").cosineDistance(sampleVector).as("cosineDistance")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val sampleVector = doubleArrayOf(0.0, 1.0, 2.0, 3.0, 4.0, 5.0)
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("embedding").cosineDistance(sampleVector).alias("cosineDistance")
-        )
-        .execute()
+```
+val sampleVector = doubleArrayOf(0.0, 1.0, 2.0, 3.0, 4.0, 5.0)
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("embedding").cosineDistance(sampleVector).alias("cosineDistance")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    double[] sampleVector = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("embedding").cosineDistance(sampleVector).alias("cosineDistance")
-        )
-        .execute();
+```
+double[] sampleVector = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("embedding").cosineDistance(sampleVector).alias("cosineDistance")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    from google.cloud.firestore_v1.vector import Vector
-    
-    sample_vector = Vector([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Field.of("embedding").cosine_distance(sample_vector).as_("cosineDistance")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+from google.cloud.firestore_v1.vector import Vector
+
+sample_vector = Vector([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Field.of("embedding").cosine_distance(sample_vector).as_("cosineDistance")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    double[] sampleVector = new double[] {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(cosineDistance(field("embedding"), sampleVector).as("cosineDistance"))
-            .execute()
-            .get();
+```
+double[] sampleVector = new double[] {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(cosineDistance(field("embedding"), sampleVector).as("cosineDistance"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    sampleVector := []float64{0.0, 1.0, 2.0, 3.0, 4.0, 5.0}
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.CosineDistance(firestore.FieldOf("embedding"), sampleVector).As("cosineDistance"),
-     )).
-     Execute(ctx)
+```
+sampleVector := []float64{0.0, 1.0, 2.0, 3.0, 4.0, 5.0}
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.CosineDistance(firestore.FieldOf("embedding"), sampleVector).As("cosineDistance"),
+    )).
+    Execute(ctx)
+```
 
-### DOT\_PRODUCT
+### DOT_PRODUCT
 
 **Syntax:**
 
-    dot_product(x: VECTOR, y: VECTOR) -> FLOAT64
+```
+dot_product(x: VECTOR, y: VECTOR) -> FLOAT64
+```
 
 **Description:**
 
@@ -8281,95 +9398,111 @@ Returns the dot product of `x` and `y` .
 
 ##### Node.js
 
-    const sampleVector = [0.0, 1, 2, 3, 4, 5];
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        field("embedding").dotProduct(sampleVector).as("dotProduct")
-      )
-      .execute();
+```
+const sampleVector = [0.0, 1, 2, 3, 4, 5];
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    field("embedding").dotProduct(sampleVector).as("dotProduct")
+  )
+  .execute();
+```
 
 ### Web
 
-    const sampleVector = [0.0, 1, 2, 3, 4, 5];
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("embedding").dotProduct(sampleVector).as("dotProduct")
-      )
-    );
+```
+const sampleVector = [0.0, 1, 2, 3, 4, 5];
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("embedding").dotProduct(sampleVector).as("dotProduct")
+  )
+);
+```
 
 ##### Swift
 
-    let sampleVector = [0.0, 1, 2, 3, 4, 5]
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("embedding").dotProduct(sampleVector).as("dotProduct")
-      ])
-      .execute()
+```
+let sampleVector = [0.0, 1, 2, 3, 4, 5]
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("embedding").dotProduct(sampleVector).as("dotProduct")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val sampleVector = doubleArrayOf(0.0, 1.0, 2.0, 3.0, 4.0, 5.0)
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("embedding").dotProduct(sampleVector).alias("dotProduct")
-        )
-        .execute()
+```
+val sampleVector = doubleArrayOf(0.0, 1.0, 2.0, 3.0, 4.0, 5.0)
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("embedding").dotProduct(sampleVector).alias("dotProduct")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    double[] sampleVector = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("embedding").dotProduct(sampleVector).alias("dotProduct")
-        )
-        .execute();
+```
+double[] sampleVector = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("embedding").dotProduct(sampleVector).alias("dotProduct")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    from google.cloud.firestore_v1.vector import Vector
-    
-    sample_vector = Vector([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("embedding").dot_product(sample_vector).as_("dotProduct"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+from google.cloud.firestore_v1.vector import Vector
+
+sample_vector = Vector([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("embedding").dot_product(sample_vector).as_("dotProduct"))
+    .execute()
+)
+```
 
 ##### Java
 
-    double[] sampleVector = new double[] {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(dotProduct(field("embedding"), sampleVector).as("dotProduct"))
-            .execute()
-            .get();
+```
+double[] sampleVector = new double[] {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(dotProduct(field("embedding"), sampleVector).as("dotProduct"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    sampleVector := []float64{0.0, 1.0, 2.0, 3.0, 4.0, 5.0}
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.DotProduct(firestore.FieldOf("embedding"), sampleVector).As("dotProduct"),
-     )).
-     Execute(ctx)
+```
+sampleVector := []float64{0.0, 1.0, 2.0, 3.0, 4.0, 5.0}
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.DotProduct(firestore.FieldOf("embedding"), sampleVector).As("dotProduct"),
+    )).
+    Execute(ctx)
+```
 
-### EUCLIDEAN\_DISTANCE
+### EUCLIDEAN_DISTANCE
 
 **Syntax:**
 
-    euclidean_distance(x: VECTOR, y: VECTOR) -> FLOAT64
+```
+euclidean_distance(x: VECTOR, y: VECTOR) -> FLOAT64
+```
 
 **Description:**
 
@@ -8377,109 +9510,127 @@ Computes the euclidean distance between `x` and `y` .
 
 ##### Node.js
 
-    const sampleVector = [0.0, 1, 2, 3, 4, 5];
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        field("embedding").euclideanDistance(sampleVector).as("euclideanDistance")
-      )
-      .execute();
+```
+const sampleVector = [0.0, 1, 2, 3, 4, 5];
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    field("embedding").euclideanDistance(sampleVector).as("euclideanDistance")
+  )
+  .execute();
+```
 
 ### Web
 
-    const sampleVector = [0.0, 1, 2, 3, 4, 5];
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("embedding").euclideanDistance(sampleVector).as("euclideanDistance")
-      )
-    );
+```
+const sampleVector = [0.0, 1, 2, 3, 4, 5];
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("embedding").euclideanDistance(sampleVector).as("euclideanDistance")
+  )
+);
+```
 
 ##### Swift
 
-    let sampleVector = [0.0, 1, 2, 3, 4, 5]
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("embedding").euclideanDistance(sampleVector).as("euclideanDistance")
-      ])
-      .execute()
+```
+let sampleVector = [0.0, 1, 2, 3, 4, 5]
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("embedding").euclideanDistance(sampleVector).as("euclideanDistance")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val sampleVector = doubleArrayOf(0.0, 1.0, 2.0, 3.0, 4.0, 5.0)
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("embedding").euclideanDistance(sampleVector).alias("euclideanDistance")
-        )
-        .execute()
+```
+val sampleVector = doubleArrayOf(0.0, 1.0, 2.0, 3.0, 4.0, 5.0)
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("embedding").euclideanDistance(sampleVector).alias("euclideanDistance")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    double[] sampleVector = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("embedding").euclideanDistance(sampleVector).alias("euclideanDistance")
-        )
-        .execute();
+```
+double[] sampleVector = {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("embedding").euclideanDistance(sampleVector).alias("euclideanDistance")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    from google.cloud.firestore_v1.vector import Vector
-    
-    sample_vector = Vector([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Field.of("embedding")
-            .euclidean_distance(sample_vector)
-            .as_("euclideanDistance")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+from google.cloud.firestore_v1.vector import Vector
+
+sample_vector = Vector([0.0, 1.0, 2.0, 3.0, 4.0, 5.0])
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Field.of("embedding")
+        .euclidean_distance(sample_vector)
+        .as_("euclideanDistance")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    double[] sampleVector = new double[] {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(euclideanDistance(field("embedding"), sampleVector).as("euclideanDistance"))
-            .execute()
-            .get();
+```
+double[] sampleVector = new double[] {0.0, 1.0, 2.0, 3.0, 4.0, 5.0};
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(euclideanDistance(field("embedding"), sampleVector).as("euclideanDistance"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    sampleVector := []float64{0.0, 1.0, 2.0, 3.0, 4.0, 5.0}
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.EuclideanDistance(firestore.FieldOf("embedding"), sampleVector).As("euclideanDistance"),
-     )).
-     Execute(ctx)
+```
+sampleVector := []float64{0.0, 1.0, 2.0, 3.0, 4.0, 5.0}
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.EuclideanDistance(firestore.FieldOf("embedding"), sampleVector).As("euclideanDistance"),
+    )).
+    Execute(ctx)
+```
 
-### MANHATTAN\_DISTANCE
+### MANHATTAN_DISTANCE
 
 **Syntax:**
 
-    manhattan_distance(x: VECTOR, y: VECTOR) -> FLOAT64
+```
+manhattan_distance(x: VECTOR, y: VECTOR) -> FLOAT64
+```
 
 **Description:**
 
 Computes the manhattan distance between `x` and `y` .
 
-### VECTOR\_LENGTH
+### VECTOR_LENGTH
 
 **Syntax:**
 
-    vector_length(vector: VECTOR) -> INT64
+```
+vector_length(vector: VECTOR) -> INT64
+```
 
 **Description:**
 
@@ -8487,81 +9638,95 @@ Returns the number of elements in a `VECTOR` .
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        field("embedding").vectorLength().as("vectorLength")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    field("embedding").vectorLength().as("vectorLength")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("embedding").vectorLength().as("vectorLength")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("embedding").vectorLength().as("vectorLength")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("embedding").vectorLength().as("vectorLength")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("embedding").vectorLength().as("vectorLength")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("embedding").vectorLength().alias("vectorLength")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("embedding").vectorLength().alias("vectorLength")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("embedding").vectorLength().alias("vectorLength")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("embedding").vectorLength().alias("vectorLength")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("embedding").vector_length().as_("vectorLength"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("embedding").vector_length().as_("vectorLength"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(vectorLength(field("embedding")).as("vectorLength"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(vectorLength(field("embedding")).as("vectorLength"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.VectorLength(firestore.FieldOf("embedding")).As("vectorLength"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.VectorLength(firestore.FieldOf("embedding")).As("vectorLength"),
+    )).
+    Execute(ctx)
+```
 
 ## What's next
 
-  - See the [Pipeline Queries overview](https://docs.cloud.google.com/firestore/docs/pipeline/overview)
+- See the [Pipeline Queries overview](https://docs.cloud.google.com/firestore/docs/pipeline/overview)

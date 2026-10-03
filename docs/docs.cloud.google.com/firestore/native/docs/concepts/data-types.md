@@ -14,94 +14,20 @@ This page describes the data types that Firestore supports.
 
 The following table lists the data types supported by Firestore. It also describes the sort order used when comparing values of the same type:
 
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Data type</th>
-<th>Sort order</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Array</td>
-<td>By element values</td>
-<td><p>In Standard edition databases, an array cannot contain another array value as one of its elements. In Enterprise edition databases, an array can contain an array value as one if its elements.</p>
-<p>Within an array, elements maintain the position assigned to them. When sorting two or more arrays, arrays are ordered based on their element values.</p>
-<p>When comparing two arrays, the first elements of each array are compared. If the first elements are equal, then the second elements are compared and so on until a difference is found. If an array runs out of elements to compare but is equal up to that point, then the shorter array is ordered before the longer array.</p>
-<p>For example, <code dir="ltr" translate="no">[1, 2, 3] &lt; [1, 2, 3, 1] &lt; [2]</code> . The array <code dir="ltr" translate="no">[2]</code> has the greatest first element value. The array <code dir="ltr" translate="no">[1, 2, 3]</code> has elements equal to the first three elements of <code dir="ltr" translate="no">[1, 2, 3, 1]</code> but is shorter in length.</p></td>
-</tr>
-<tr class="even">
-<td>Boolean</td>
-<td><code dir="ltr" translate="no">false</code> &lt; <code dir="ltr" translate="no">true</code></td>
-<td>—</td>
-</tr>
-<tr class="odd">
-<td>Bytes</td>
-<td>Byte order</td>
-<td>In Standard edition databases, the value must not exceed 1,048,487 bytes (1 MiB - 89 bytes) and only the first 1,500 bytes are considered by queries. In Enterprise edition databases, there is no limit on the size of the value (other than document and index entry size limits) and the full value is considered by queries.</td>
-</tr>
-<tr class="even">
-<td>Date and time</td>
-<td>Chronological</td>
-<td>When stored in Firestore, precise only to microseconds; any additional precision is rounded down.</td>
-</tr>
-<tr class="odd">
-<td>Floating-point number</td>
-<td>Numeric</td>
-<td>64-bit double precision according to <a href="https://en.wikipedia.org/wiki/IEEE_754">IEEE 754</a> , including (normalized) <code dir="ltr" translate="no">NaN</code> &amp; <code dir="ltr" translate="no">+/-Infinity</code> .</td>
-</tr>
-<tr class="even">
-<td>Geographical point</td>
-<td>By latitude, then longitude</td>
-<td>To search based on distance, see <a href="https://docs.cloud.google.com/firestore/native/docs/geospatial-search">Geospatial search</a> .</td>
-</tr>
-<tr class="odd">
-<td>Integer</td>
-<td>Numeric</td>
-<td>64-bit, signed</td>
-</tr>
-<tr class="even">
-<td>Map</td>
-<td>By keys, then by value</td>
-<td><p>Represents an object embedded within a document. When indexed, you can query on subfields. If you exclude this value from indexing, then all subfields are also excluded from indexing.</p>
-<p>Key ordering is always sorted. For example, if you write <code dir="ltr" translate="no">{c: "foo", a: "bar", b: "qux"}</code> the map is sorted by key and saved as <code dir="ltr" translate="no">{a: "bar", b: "qux", c: "foo"}</code> .</p>
-<p>Map fields are sorted by key and compared by key-value pairs, first comparing the keys and then the values. If the first key-value pairs are equal, the next key-value pairs are compared, and so on. If two maps have all of the same key-value pairs, then map length is considered. For example, the following maps are in ascending order:</p>
-<p><code dir="ltr" translate="no">{a: "aaa", b: "baz"}</code><br />
-<code dir="ltr" translate="no">{a: "foo", b: "bar"}</code><br />
-<code dir="ltr" translate="no">{a: "foo", b: "bar", c: "qux"}</code><br />
-<code dir="ltr" translate="no">{a: "foo", b: "baz"}</code><br />
-<code dir="ltr" translate="no">{b: "aaa", c: "baz"}</code><br />
-<code dir="ltr" translate="no">{c: "aaa"}</code><br />
-</p></td>
-</tr>
-<tr class="odd">
-<td>Null</td>
-<td>None</td>
-<td>—</td>
-</tr>
-<tr class="even">
-<td>Reference</td>
-<td>By path elements (collection, document ID, collection, document ID...)</td>
-<td>For example, <code dir="ltr" translate="no">projects/[PROJECT_ID]/databases/[DATABASE_ID]/documents/[DOCUMENT_PATH]</code> .</td>
-</tr>
-<tr class="odd">
-<td>Text string</td>
-<td>UTF-8 encoded byte order</td>
-<td>In Standard edition databases, the value must not exceed 1,048,487 bytes (1 MiB - 89 bytes) and only the first 1,500 bytes are considered by queries. In Enterprise edition databases, there is no limit on the size of the value (other than document and index entry size limits) and the full value is considered by queries.</td>
-</tr>
-<tr class="even">
-<td>Vector</td>
-<td>By dimension and then by individual element values</td>
-<td>The max supported embedding dimension is 2048. To store vectors with larger dimensions, use <a href="https://en.wikipedia.org/wiki/Dimensionality_reduction">dimensionality reduction</a> .</td>
-</tr>
-</tbody>
-</table>
+| Data type             | Sort order                                                             | Notes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|-----------------------|------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Array                 | By element values                                                      | In Standard edition databases, an array cannot contain another array value as one of its elements. In Enterprise edition databases, an array can contain an array value as one if its elements. Within an array, elements maintain the position assigned to them. When sorting two or more arrays, arrays are ordered based on their element values. When comparing two arrays, the first elements of each array are compared. If the first elements are equal, then the second elements are compared and so on until a difference is found. If an array runs out of elements to compare but is equal up to that point, then the shorter array is ordered before the longer array. For example, `[1, 2, 3] < [1, 2, 3, 1] < [2]` . The array `[2]` has the greatest first element value. The array `[1, 2, 3]` has elements equal to the first three elements of `[1, 2, 3, 1]` but is shorter in length. |
+| Boolean               | `false` \< `true`                                                      | —                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Bytes                 | Byte order                                                             | In Standard edition databases, the value must not exceed 1,048,487 bytes (1 MiB - 89 bytes) and only the first 1,500 bytes are considered by queries. In Enterprise edition databases, there is no limit on the size of the value (other than document and index entry size limits) and the full value is considered by queries.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Date and time         | Chronological                                                          | When stored in Firestore, precise only to microseconds; any additional precision is rounded down.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Floating-point number | Numeric                                                                | 64-bit double precision according to [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754) , including (normalized) `NaN` & `+/-Infinity` .                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Geographical point    | By latitude, then longitude                                            | To search based on distance, see [Geospatial search](https://docs.cloud.google.com/firestore/native/docs/geospatial-search) .                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Integer               | Numeric                                                                | 64-bit, signed                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| Map                   | By keys, then by value                                                 | Represents an object embedded within a document. When indexed, you can query on subfields. If you exclude this value from indexing, then all subfields are also excluded from indexing. Key ordering is always sorted. For example, if you write `{c: "foo", a: "bar", b: "qux"}` the map is sorted by key and saved as `{a: "bar", b: "qux", c: "foo"}` . Map fields are sorted by key and compared by key-value pairs, first comparing the keys and then the values. If the first key-value pairs are equal, the next key-value pairs are compared, and so on. If two maps have all of the same key-value pairs, then map length is considered. For example, the following maps are in ascending order: `{a: "aaa", b: "baz"}` `{a: "foo", b: "bar"}` `{a: "foo", b: "bar", c: "qux"}` `{a: "foo", b: "baz"}` `{b: "aaa", c: "baz"}` `{c: "aaa"}`                                                       |
+| Null                  | None                                                                   | —                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Reference             | By path elements (collection, document ID, collection, document ID...) | For example, `projects/[PROJECT_ID]/databases/[DATABASE_ID]/documents/[DOCUMENT_PATH]` .                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| Text string           | UTF-8 encoded byte order                                               | In Standard edition databases, the value must not exceed 1,048,487 bytes (1 MiB - 89 bytes) and only the first 1,500 bytes are considered by queries. In Enterprise edition databases, there is no limit on the size of the value (other than document and index entry size limits) and the full value is considered by queries.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| Vector                | By dimension and then by individual element values                     | The max supported embedding dimension is 2048. To store vectors with larger dimensions, use [dimensionality reduction](https://en.wikipedia.org/wiki/Dimensionality_reduction) .                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
 ## Value type ordering
 

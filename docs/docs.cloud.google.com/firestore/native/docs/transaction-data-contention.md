@@ -14,12 +14,14 @@ This page describes transactional data contention, serializability, and isolatio
 
 For a transaction to succeed, the documents retrieved by its read operations must remain unmodified by operations outside the transaction. If another operation attempts to change one of those documents, that operations enters a state of data contention with the transaction.
 
-  - Data contention  
-    When two or more operations compete to control the same document. For example, one transaction might require a document to remain consistent while a concurrent operation tries to update that document's field values.
+Data contention  
+When two or more operations compete to control the same document. For example, one transaction might require a document to remain consistent while a concurrent operation tries to update that document's field values.
 
 Firestore resolves data contention by delaying or failing one of the operations. The Firestore client libraries automatically retry transactions that fail due to data contention. After a finite number of retries, the transaction operation fails and returns an error message:
 
-    ABORTED: Too much contention on these documents. Please try again.
+```
+ABORTED: Too much contention on these documents. Please try again.
+```
 
 When deciding which operation to fail or delay, behavior depends the type of concurrency controls.
 
@@ -27,45 +29,49 @@ When deciding which operation to fail or delay, behavior depends the type of con
 
 The concurrency mode is a configurable database option. Firestore supports the following concurrency modes:
 
-  - `PESSIMISTIC` : Pessimistic concurrency controls assume that data contention is likely. Pessimistic transactions use database locks to prevent other operations from modifying data.
-    
-    With pessimist concurrency controls, transactions place locks on the documents they read. A transaction's lock on a document blocks other transactions, batched writes, and non-transactional writes from changing that document. A transaction releases its document locks at commit time. It also releases its locks if it times out or fails for any reason.
-    
-    When a transaction locks a document, other write operations must wait for the transaction to release its lock. Transactions acquire their locks in chronological order.
+- `PESSIMISTIC` : Pessimistic concurrency controls assume that data contention is likely. Pessimistic transactions use database locks to prevent other operations from modifying data.
 
-  - `OPTIMISTIC` : Optimistic concurrency controls assume that data contention is not likely or that it's not efficient to hold database locks. Optimistic transactions don't use database locks to block other operations from changing data
-    
-    With optimistic concurrency controls, a transaction keeps track of all the documents you read inside the transaction. The transaction completes its write operations **only if** none of those documents changed during the transaction's execution. If any document did change, the transaction handler retries the transaction. If the transaction can't get a clean result after a few retries, the transaction fails due to data contention.
+  With pessimist concurrency controls, transactions place locks on the documents they read. A transaction's lock on a document blocks other transactions, batched writes, and non-transactional writes from changing that document. A transaction releases its document locks at commit time. It also releases its locks if it times out or fails for any reason.
+
+  When a transaction locks a document, other write operations must wait for the transaction to release its lock. Transactions acquire their locks in chronological order.
+
+- `OPTIMISTIC` : Optimistic concurrency controls assume that data contention is not likely or that it's not efficient to hold database locks. Optimistic transactions don't use database locks to block other operations from changing data
+
+  With optimistic concurrency controls, a transaction keeps track of all the documents you read inside the transaction. The transaction completes its write operations **only if** none of those documents changed during the transaction's execution. If any document did change, the transaction handler retries the transaction. If the transaction can't get a clean result after a few retries, the transaction fails due to data contention.
 
 ### Concurrency mode defaults
 
 The default for Standard edition is `PESSIMISTIC` . The default for Enterprise edition is `OPTIMISTIC` . However, the behaviour also depends on the type of client library:
 
-  - The mobile / web SDKs use optimistic concurrency controls. The mobile and web SDKs behave independently of this setting as they always emulate optimistic concurrency.
-  - The server client libraries use concurrency controls of the database setting.
+- The mobile / web SDKs use optimistic concurrency controls. The mobile and web SDKs behave independently of this setting as they always emulate optimistic concurrency.
+- The server client libraries use concurrency controls of the database setting.
 
 ### View concurrency mode
 
 Run the [`gcloud firestore databases describe`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/describe) command to view your database's server-side concurrency mode:
 
-    gcloud firestore databases describe \
-      --project=PROJECT_ID \
-      --database=DATABASE_ID
+```
+gcloud firestore databases describe \
+  --project=PROJECT_ID \
+  --database=DATABASE_ID
+```
 
 ### Change concurrency mode
 
 Run the [`gcloud firestore databases update`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/update) command to change your database's server-side concurrency mode:
 
-    gcloud firestore databases update \
-      --project=PROJECT_ID \
-      --database=DATABASE_ID \
-      --concurrency-mode=CONCURRENCY_MODE
+```
+gcloud firestore databases update \
+  --project=PROJECT_ID \
+  --database=DATABASE_ID \
+  --concurrency-mode=CONCURRENCY_MODE
+```
 
 where:
 
-  - CONCURRENCY\_MODE is `PESSIMISTIC` or `OPTIMISTIC` .
-  - PROJECT\_ID is the ID of your Google Cloud project.
-  - DATABASE\_ID is the ID of your Firestore database.
+- ` CONCURRENCY_MODE ` is `PESSIMISTIC` or `OPTIMISTIC` .
+- ` PROJECT_ID ` is the ID of your Google Cloud project.
+- ` DATABASE_ID ` is the ID of your Firestore database.
 
 > **Key Term:** In database systems, *concurrency controls* describe how the system resolves data contention between concurrent operations. Systems can implement optimistic or pessimistic concurrency controls.
 
@@ -77,11 +83,11 @@ Mobile/web SDKs use optimistic concurrency controls, because they can operate in
 
 ## Data contention in the server client libraries
 
-Server client libraries (C\#, Go, Java, Node.js, PHP, Python, Ruby) use the [built-in transactions](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/commit) feature. These transactions use the database-level concurrency mode setting and the default depends on the edition:
+Server client libraries (C#, Go, Java, Node.js, PHP, Python, Ruby) use the [built-in transactions](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/commit) feature. These transactions use the database-level concurrency mode setting and the default depends on the edition:
 
-  - Enterprise edition uses optimistic concurrency controls by default to support operations that scan over entire collections. Optimistic concurrency controls help avoid scan operations that lock on a large number of documents.
+- Enterprise edition uses optimistic concurrency controls by default to support operations that scan over entire collections. Optimistic concurrency controls help avoid scan operations that lock on a large number of documents.
 
-  - Standard edition uses pessimistic concurrency controls and assumes low latency and a reliable connection to the database.
+- Standard edition uses pessimistic concurrency controls and assumes low latency and a reliable connection to the database.
 
 > **Note:** To best ensure low latency, use server client libraries from a [Google Cloud compute product as close to your Firestore database as possible](https://cloud.google.com/about/locations#products-available-by-location) . A server client library with a high latency connection can run into issues with locking and data contention.
 
@@ -89,15 +95,15 @@ Server client libraries (C\#, Go, Java, Node.js, PHP, Python, Ruby) use the [bui
 
 Data contention between transactions is closely related to database isolation levels. A database's *isolation level* describes how well the system handles conflicts between concurrent operations. Conflict comes from the following database requirements:
 
-  - Transactions require accurate, consistent data.
-  - To efficiently use resources, databases execute operations concurrently.
+- Transactions require accurate, consistent data.
+- To efficiently use resources, databases execute operations concurrently.
 
 In systems with a low isolation level, a read operation within a transaction might read inaccurate data from uncommitted changes in a concurrent operation.
 
 *Serializable isolation* defines the highest isolation level. Serializable isolation means that:
 
-  - You can assume that the database executes transactions in series.
-  - Transactions are not affected by uncommitted changes in concurrent operations.
+- You can assume that the database executes transactions in series.
+- Transactions are not affected by uncommitted changes in concurrent operations.
 
 This guarantee must hold even while the database executes multiple transactions in parallel. The database must implement concurrency controls to resolve conflicts that would break this guarantee.
 
@@ -109,8 +115,8 @@ Firestore assigns each transaction a commit time which represents a single point
 
 Actual execution of a transaction requires some span of time. The execution of a transaction begins before the commit time, and the execution of multiple operations may overlap. Firestore upholds serializable isolation and guarantees that:
 
-  - Firestore commits transactions in order by commit time.
-  - Firestore isolates transactions from concurrent operations with a later commit time.
+- Firestore commits transactions in order by commit time.
+- Firestore isolates transactions from concurrent operations with a later commit time.
 
 In the case of data contention between concurrent operations, [Firestore uses optimistic and pessimistic concurrency controls to resolve contention.](https://docs.cloud.google.com/firestore/native/docs/transaction-data-contention#concurrency-controls)
 

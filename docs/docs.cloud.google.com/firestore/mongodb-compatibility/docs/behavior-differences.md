@@ -12,15 +12,15 @@ This page describes behavioral differences between Firestore with MongoDB compat
 
 For a breakdown of supported features depending on MongoDB version, see:
 
-  - [Supported features: 8.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80)
-  - [Supported features: 7.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-70)
-  - [Supported features: 6.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-60)
-  - [Supported features: 5.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-50)
+- [Supported features: 8.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80)
+- [Supported features: 7.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-70)
+- [Supported features: 6.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-60)
+- [Supported features: 5.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-50)
 
 ## Connections and databases
 
-  - Each connection is limited to a single Firestore with MongoDB compatibility database.
-  - A database must be created before connecting to it.
+- Each connection is limited to a single Firestore with MongoDB compatibility database.
+- A database must be created before connecting to it.
 
 ## Naming
 
@@ -28,96 +28,96 @@ The following differences apply to naming parts of your data model.
 
 ### Collections
 
-  - Collection names matching `__.*__` are not supported.
+- Collection names matching `__.*__` are not supported.
 
 ### Fields
 
-  - Field names matching `__.*__` are not supported.
-  - Empty field names are not supported.
+- Field names matching `__.*__` are not supported.
+- Empty field names are not supported.
 
 ## Documents
 
-  - The maximum document size is 16 MiB.
-  - The maximum nesting depth of fields is 20. Each Array and Object-typed field adds one level to the overall depth.
-  - In Eventarc events, documents larger than 10 MiB are not included in the event payload.
+- The maximum document size is 16 MiB.
+- The maximum nesting depth of fields is 20. Each Array and Object-typed field adds one level to the overall depth.
+- In Eventarc events, documents larger than 10 MiB are not included in the event payload.
 
 ### `_id` field
 
-  - The top-level `_id` field must be an ObjectId, String, 64-bit integer, 32-bit integer, Double, Binary, or Object. Other BSON types are not supported.
+- The top-level `_id` field must be an ObjectId, String, 64-bit integer, 32-bit integer, Double, Binary, or Object. Other BSON types are not supported.
 
 ## Values
 
-  - The JavaScript, Symbol, DBPointer, and Undefined BSON types are not supported.
+- The JavaScript, Symbol, DBPointer, and Undefined BSON types are not supported.
 
 ### Date
 
-  - Date values must fall in `[0001-01-01T00:00:00Z, 9999-12-31T23:59:59Z]` .
+- Date values must fall in `[0001-01-01T00:00:00Z, 9999-12-31T23:59:59Z]` .
 
 ### Decimal128
 
-  - `NaN` , positive infinity, and negative infinity values are canonicalized on write.
-  - Arithmetic operations on Decimal128 are not supported.
+- `NaN` , positive infinity, and negative infinity values are canonicalized on write.
+- Arithmetic operations on Decimal128 are not supported.
 
 ### Double
 
-  - `NaN` values are canonicalized on write.
+- `NaN` values are canonicalized on write.
 
 ### Regular expression
 
-  - Regular expression options must be valid ("i", "m", "s", "u", or "x") and provided in alphabetical order without repeats.
+- Regular expression options must be valid ("i", "m", "s", "u", or "x") and provided in alphabetical order without repeats.
 
 ## Queries
 
-  - Natural sort order (queries without an explicit sort) does not match insertion order or order by `_id` ascending.
+- Natural sort order (queries without an explicit sort) does not match insertion order or order by `_id` ascending.
 
 ## Aggregations
 
-  - Aggregations are limited to 250 stages.
-  - The `$merge` and `$out` stages are not supported. See the [commands](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences#commands) section for a complete list of supported stages and operators.
-  - The `$facet` stage does not support `$rand` or `$sample` in the input stages because it's a volatile expression.
+- Aggregations are limited to 250 stages.
+- The `$merge` and `$out` stages are not supported. See the [commands](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences#commands) section for a complete list of supported stages and operators.
+- The `$facet` stage does not support `$rand` or `$sample` in the input stages because it's a volatile expression.
 
 ## Writes
 
-  - Documents with names beginning with a dollar sign ("$") cannot be created using the upsert feature of `update` or `findAndModify` .
-  - Make sure your connection string includes `retryWrites=false` (or use the method appropriate to your driver) to make sure the driver does not attempt to use this feature. Retryable writes are not supported.
+- Documents with names beginning with a dollar sign ("\$") cannot be created using the upsert feature of `update` or `findAndModify` .
+- Make sure your connection string includes `retryWrites=false` (or use the method appropriate to your driver) to make sure the driver does not attempt to use this feature. Retryable writes are not supported.
 
 ## Transactions
 
-  - Snapshot isolation and serializable transactions are supported.
+- Snapshot isolation and serializable transactions are supported.
 
-  - By default, transactions use optimistic concurrency controls with snapshot isolation.
+- By default, transactions use optimistic concurrency controls with snapshot isolation.
 
 ## Read concern
 
-  - Firestore with MongoDB compatibility supports the `snapshot` , `majority` , and `linearizable` read concerns. The default is `snapshot` which refers to snapshot isolation.
-    
-    Use `linearizable` when the application requires strict consistency and must prevent write skew anomalies. For other workloads, `snapshot` can improve performance and reduce transaction contention.
+- Firestore with MongoDB compatibility supports the `snapshot` , `majority` , and `linearizable` read concerns. The default is `snapshot` which refers to snapshot isolation.
+
+  Use `linearizable` when the application requires strict consistency and must prevent write skew anomalies. For other workloads, `snapshot` can improve performance and reduce transaction contention.
 
 ## Write concern
 
-  - Only `w: 'majority'` and `w: 1` write concerns are supported.
+- Only `w: 'majority'` and `w: 1` write concerns are supported.
 
 ## Read preference
 
-  - Only the `primary` , `primaryPreferred` , `primary_preferred` , `secondary_preferred` , and `nearest` read concerns are supported.
+- Only the `primary` , `primaryPreferred` , `primary_preferred` , `secondary_preferred` , and `nearest` read concerns are supported.
 
 ## Indexes
 
-  - Wildcard indexes are not supported.
-  - Firestore with MongoDB compatibility does not automatically create an index on `_id` , but it ensures values of `_id` are unique within a collection. To achieve similar sorting behavior, you need to explicitly create an ordered index on the `_id` field. However, be mindful of potential hotspot issues, especially if your `_id` values are monotonically increasing or decreasing (e.g., timestamps), as this can impact performance at scale.
-  - Indexes without multi-key enabled are not automatically changed to [multi-key indexes](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview#multi-key_indexes_for_array_values) based on write operations. You must enable multi-key when you create the index and the option cannot be changed.
+- Wildcard indexes are not supported.
+- Firestore with MongoDB compatibility does not automatically create an index on `_id` , but it ensures values of `_id` are unique within a collection. To achieve similar sorting behavior, you need to explicitly create an ordered index on the `_id` field. However, be mindful of potential hotspot issues, especially if your `_id` values are monotonically increasing or decreasing (e.g., timestamps), as this can impact performance at scale.
+- Indexes without multi-key enabled are not automatically changed to [multi-key indexes](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview#multi-key_indexes_for_array_values) based on write operations. You must enable multi-key when you create the index and the option cannot be changed.
 
 ## Errors
 
-  - Error codes and messages may differ between Firestore with MongoDB compatibility and MongoDB.
+- Error codes and messages may differ between Firestore with MongoDB compatibility and MongoDB.
 
 ## Commands
 
 The following behavior differences apply to specific commands.
 
-  - Commands not listed in the following tables are unsupported.
-  - `comment` is accepted by most commands but is ignored.
-  - `maxTimeMS` is accepted by most commands but may be ignored.
+- Commands not listed in the following tables are unsupported.
+- `comment` is accepted by most commands but is ignored.
+- `maxTimeMS` is accepted by most commands but may be ignored.
 
 ### Queries
 
@@ -136,108 +136,108 @@ and writes
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">find</code></p></td>
+<td><p><code>find</code></p></td>
 <td><ul>
-<li><code dir="ltr" translate="no">max</code></li>
+<li><code>max</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">min</code></li>
+<li><code>min</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">returnKey</code></li>
+<li><code>returnKey</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">showRecordId</code></li>
+<li><code>showRecordId</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">tailable</code></li>
+<li><code>tailable</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">oplogReplay</code></li>
+<li><code>oplogReplay</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">noCursorTimeout</code></li>
+<li><code>noCursorTimeout</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">awaitData</code></li>
+<li><code>awaitData</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">allowPartialResults</code></li>
+<li><code>allowPartialResults</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">collation</code></li>
+<li><code>collation</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">allowDiskUsage</code></li>
+<li><code>allowDiskUsage</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">let</code></li>
+<li><code>let</code></li>
 </ul></td>
 </tr>
 <tr class="even">
-<td><p><code dir="ltr" translate="no">aggregate</code></p></td>
+<td><p><code>aggregate</code></p></td>
 <td><ul>
-<li><code dir="ltr" translate="no">collation</code></li>
+<li><code>collation</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">let</code></li>
+<li><code>let</code></li>
 </ul></td>
 </tr>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">insert</code></p></td>
+<td><p><code>insert</code></p></td>
 <td><p>(none)</p></td>
 </tr>
 <tr class="even">
-<td><p><code dir="ltr" translate="no">update</code></p></td>
+<td><p><code>update</code></p></td>
 <td>Within an update statement:<br />
 <br />
 
 <ul>
-<li><code dir="ltr" translate="no">collation</code></li>
+<li><code>collation</code></li>
 </ul></td>
 </tr>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">delete</code></p></td>
+<td><p><code>delete</code></p></td>
 <td>Within a delete statement:<br />
 <br />
 
 <ul>
-<li><code dir="ltr" translate="no">collation</code></li>
+<li><code>collation</code></li>
 </ul></td>
 </tr>
 <tr class="even">
-<td><p><code dir="ltr" translate="no">findAndModify</code></p></td>
+<td><p><code>findAndModify</code></p></td>
 <td><ul>
-<li><code dir="ltr" translate="no">collation</code></li>
+<li><code>collation</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">let</code></li>
+<li><code>let</code></li>
 </ul></td>
 </tr>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">count</code></p></td>
+<td><p><code>count</code></p></td>
 <td><ul>
-<li><code dir="ltr" translate="no">collation</code></li>
+<li><code>collation</code></li>
 </ul></td>
 </tr>
 <tr class="even">
-<td><p><code dir="ltr" translate="no">distinct</code></p></td>
+<td><p><code>distinct</code></p></td>
 <td><ul>
-<li><code dir="ltr" translate="no">collation</code></li>
+<li><code>collation</code></li>
 </ul></td>
 </tr>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">getMore</code></p></td>
+<td><p><code>getMore</code></p></td>
 <td><ul>
-<li><code dir="ltr" translate="no">comment</code></li>
+<li><code>comment</code></li>
 </ul></td>
 </tr>
 <tr class="even">
-<td><p><code dir="ltr" translate="no">killCursors</code></p></td>
+<td><p><code>killCursors</code></p></td>
 <td><p>(none)</p></td>
 </tr>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">explain</code></p></td>
+<td><p><code>explain</code></p></td>
 <td><p>(none)</p></td>
 </tr>
 </tbody>
@@ -248,7 +248,7 @@ and writes
 and sessions
 
 | **Command**         | **Unsupported Fields** |
-| ------------------- | ---------------------- |
+|---------------------|------------------------|
 | `commitTransaction` | (none)                 |
 | `abortTransaction`  | (none)                 |
 | `endSessions`       | (none)                 |
@@ -270,85 +270,85 @@ and sessions
 </thead>
 <tbody>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">listDatabases</code></p></td>
+<td><p><code>listDatabases</code></p></td>
 <td><ul>
-<li><code dir="ltr" translate="no">authorizedDatabases</code></li>
+<li><code>authorizedDatabases</code></li>
 </ul></td>
-<td><code dir="ltr" translate="no">filter</code> must be empty if provided.</td>
+<td><code>filter</code> must be empty if provided.</td>
 </tr>
 <tr class="even">
-<td><p><code dir="ltr" translate="no">listCollections</code></p></td>
+<td><p><code>listCollections</code></p></td>
 <td><p>(none)</p></td>
-<td><code dir="ltr" translate="no">authorizedCollections</code> must be false if provided.</td>
+<td><code>authorizedCollections</code> must be false if provided.</td>
 </tr>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">listIndexes</code></p></td>
+<td><p><code>listIndexes</code></p></td>
 <td><p>(none)</p></td>
 <td></td>
 </tr>
 <tr class="even">
-<td><p><code dir="ltr" translate="no">createIndexes</code></p></td>
+<td><p><code>createIndexes</code></p></td>
 <td><p>(none)</p></td>
 <td></td>
 </tr>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">dropIndexes</code></p></td>
+<td><p><code>dropIndexes</code></p></td>
 <td><p>(none)</p></td>
 <td></td>
 </tr>
 <tr class="even">
-<td><p><code dir="ltr" translate="no">createCollection</code></p></td>
+<td><p><code>createCollection</code></p></td>
 <td><ul>
-<li><code dir="ltr" translate="no">timeseries</code></li>
+<li><code>timeseries</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">expireAfterSeconds</code></li>
+<li><code>expireAfterSeconds</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">clusteredIndex</code></li>
+<li><code>clusteredIndex</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">changeStreamPreAndPostImages</code></li>
+<li><code>changeStreamPreAndPostImages</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">size</code></li>
+<li><code>size</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">max</code></li>
+<li><code>max</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">storageEngine</code></li>
+<li><code>storageEngine</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">validator</code></li>
+<li><code>validator</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">validationLevel</code></li>
+<li><code>validationLevel</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">validationAction</code></li>
+<li><code>validationAction</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">indexOptionDefaults</code></li>
+<li><code>indexOptionDefaults</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">viewOn</code></li>
+<li><code>viewOn</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">pipeline</code></li>
+<li><code>pipeline</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">collation</code></li>
+<li><code>collation</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">encryptedFields</code></li>
+<li><code>encryptedFields</code></li>
 </ul></td>
 <td>This command is a no-op.<br />
 <br />
-<code dir="ltr" translate="no">capped</code> must be false if provided.</td>
+<code>capped</code> must be false if provided.</td>
 </tr>
 <tr class="odd">
-<td><p><code dir="ltr" translate="no">drop</code></p></td>
+<td><p><code>drop</code></p></td>
 <td><p>(none)</p></td>
 <td></td>
 </tr>
@@ -361,11 +361,11 @@ and sessions
 
 The following limitations apply when you drop a collection:
 
-  - **Index recreation:** You cannot create the same index configuration immediately after a drop. You must wait for the background deletion to finish.
-  - **Size limit:** Dropping large collections may result in connection timeouts. Increase the connection deadline if you see timeouts. You can use [bulk delete](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/bulk-delete) as an alternative.
-  - **Events:** Drop collection events are not generated for Eventarc when using the `drop` command.
+- **Index recreation:** You cannot create the same index configuration immediately after a drop. You must wait for the background deletion to finish.
+- **Size limit:** Dropping large collections may result in connection timeouts. Increase the connection deadline if you see timeouts. You can use [bulk delete](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/bulk-delete) as an alternative.
+- **Events:** Drop collection events are not generated for Eventarc when using the `drop` command.
 
 ## What's next
 
-  - Run the [Quickstart: Create a database and connect to it](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database) .
-  - For a full list of supported features, see [Supported MongoDB data types, drivers, and features](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-data-types-drivers) .
+- Run the [Quickstart: Create a database and connect to it](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database) .
+- For a full list of supported features, see [Supported MongoDB data types, drivers, and features](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-data-types-drivers) .

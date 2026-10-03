@@ -21,7 +21,7 @@ A monitored resource in Cloud Monitoring represents a logical or physical entity
 Using the [Cloud Monitoring API](https://cloud.google.com/monitoring/api/resources) , Firestore with MongoDB compatibility performance is monitored with the following resource:
 
 |                                     |                                                                                                   |
-| ----------------------------------- | ------------------------------------------------------------------------------------------------- |
+|-------------------------------------|---------------------------------------------------------------------------------------------------|
 | **Resources**                       | **Description**                                                                                   |
 | `firestore.googleapis.com/Database` | Monitored resource type that provides breakdowns for `project` , `location` , and `database_id` . |
 
@@ -37,7 +37,7 @@ An important resource label for the `serviceruntime` metrics is `method` . This 
 
 If you need to know what the underlying RPC method is for a given SDK method, see the [API documentation](https://cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1) .
 
-#### api/request\_latencies
+#### api/request_latencies
 
 The `api/request_latencies` metric provides latency distributions across all completed requests.
 
@@ -49,9 +49,9 @@ Firestore provides read, write, and delete counts. The write metric provides a b
 
 The following metrics can be used to understand whether your database is read heavy or write heavy, and the rate of new documents versus deleted documents.
 
-  - `document/delete_ops_count` : The number of successful document deletes.
-  - `document/read_ops_count` : The number of successful document reads from queries or lookups.
-  - `document/write_ops_count` : The number of successful document writes.
+- `document/delete_ops_count` : The number of successful document deletes.
+- `document/read_ops_count` : The number of successful document reads from queries or lookups.
+- `document/write_ops_count` : The number of successful document writes.
 
 > **Note:** The `document/delete_ops_count` metric doesn't include documents deleted because of TTL policies. For information about metrics that capture deletes due to TTL policies, see [TTL Metrics](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard#ttl_metrics) .
 
@@ -59,22 +59,22 @@ The following metrics can be used to understand whether your database is read he
 
 Use these metrics to understand billing usage. These metrics don't include billing from administrator operations (indexing, import, export, and bulk delete).
 
-  - `api/billable_read_units` : The number of billable read units. Usage can be broken down by service name and API method.
-  - `api/billable_write_units` : The number of billable write units. Usage can be broken down by service name and API method.
-  - `document/billable_managed_delete_write_units` : The number of billable write units from managed delete services like [TTL](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl) .
+- `api/billable_read_units` : The number of billable read units. Usage can be broken down by service name and API method.
+- `api/billable_write_units` : The number of billable write units. Usage can be broken down by service name and API method.
+- `document/billable_managed_delete_write_units` : The number of billable write units from managed delete services like [TTL](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl) .
 
 ### Index metrics
 
 Index write rates can be contrasted with the `document/write_ops_count` metric to understand index fanout.
 
-  - `index/write_count` : Count of index writes.
+- `index/write_count` : Count of index writes.
 
 ### TTL Metrics
 
 The TTL metrics for Firestore with MongoDB compatibility metrics are used to monitor the effect of the [TTL policy](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl) enforced.
 
-  - `document/ttl_deletion_count` : Total count of documents deleted by TTL services.
-  - `document/ttl_expiration_to_deletion_delays` : Time elapsed between when a document with a TTL expired, and when it was actually deleted.
+- `document/ttl_deletion_count` : Total count of documents deleted by TTL services.
+- `document/ttl_expiration_to_deletion_delays` : Time elapsed between when a document with a TTL expired, and when it was actually deleted.
 
 ## View predefined dashboards and create custom dashboards
 
@@ -143,7 +143,7 @@ Consider the following example where we create a latency alert policy. The alert
 5.  Click **Next** to configure the trigger.
 
 6.  Select the **Condition Types** as **Threshold** .
-    
+
     A threshold condition is set to a threshold value of 250ms. An alert is triggered when the p99 latency value stays the same for the entire period of the rolling window (5 min).
 
 7.  Set the **Threshold value** as **250** .
@@ -158,11 +158,13 @@ Consider the following example where we create a latency alert policy. The alert
 
 You can implement the same latency alert policy using a Monitoring Query Language (MQL) query. For more examples of using MQL, see [Sample MQL queries](https://cloud.google.com/monitoring/mql/examples) .
 
-    fetch consumed_api
-    | metric 'serviceruntime.googleapis.com/api/request_latencies'
-    | filter (resource.service == 'firestore.googleapis.com')
-    | group_by 5m,
-        [value_request_latencies_percentile:
-          percentile(value.request_latencies, 99)]
-    | every 5m
-    | condition val() > 0.25 's'
+```
+fetch consumed_api
+| metric 'serviceruntime.googleapis.com/api/request_latencies'
+| filter (resource.service == 'firestore.googleapis.com')
+| group_by 5m,
+    [value_request_latencies_percentile:
+      percentile(value.request_latencies, 99)]
+| every 5m
+| condition val() > 0.25 's'
+```

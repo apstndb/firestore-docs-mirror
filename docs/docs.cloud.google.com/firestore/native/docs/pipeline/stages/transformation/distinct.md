@@ -18,116 +18,130 @@ The `distinct(...)` stage has similar syntax as [`select(...)`](https://docs.clo
 
 ##### Node.js
 
-    let cities = await db.pipeline()
-      .collection("cities")
-      .distinct("country")
-      .execute();
-    
-    cities = await db.pipeline()
-      .collection("cities")
-      .distinct(
-        field("state").toLower().as("normalizedState"),
-        field("country"))
-      .execute();
+```
+let cities = await db.pipeline()
+  .collection("cities")
+  .distinct("country")
+  .execute();
+
+cities = await db.pipeline()
+  .collection("cities")
+  .distinct(
+    field("state").toLower().as("normalizedState"),
+    field("country"))
+  .execute();
+```
 
 ### Web
 
-    let cities = await execute(db.pipeline()
-      .collection("cities")
-      .distinct("country"));
-    
-    cities = await execute(db.pipeline()
-      .collection("cities")
-      .distinct(
-        field("state").toLower().as("normalizedState"),
-        field("country")));
+```
+let cities = await execute(db.pipeline()
+  .collection("cities")
+  .distinct("country"));
+
+cities = await execute(db.pipeline()
+  .collection("cities")
+  .distinct(
+    field("state").toLower().as("normalizedState"),
+    field("country")));
+```
 
 ##### Swift
 
-    let results = try await db.pipeline()
-      .collection("books")
-      .distinct([
-        Field("author").toUpper().as("author"),
-        Field("genre")
-      ])
-      .execute()
+```
+let results = try await db.pipeline()
+  .collection("books")
+  .distinct([
+    Field("author").toUpper().as("author"),
+    Field("genre")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    var cities = db.pipeline()
+```
+var cities = db.pipeline()
+    .collection("cities")
+    .distinct("country")
+    .execute()
+
+cities = db.pipeline()
+    .collection("cities")
+    .distinct(
+        field("state").toLower().alias("normalizedState"),
+        field("country")
+    )
+    .execute()
+```
+
+##### Java Android
+
+```
+Task<Pipeline.Snapshot> cities;
+cities = db.pipeline()
         .collection("cities")
         .distinct("country")
-        .execute()
-    
-    cities = db.pipeline()
+        .execute();
+
+cities = db.pipeline()
         .collection("cities")
         .distinct(
-            field("state").toLower().alias("normalizedState"),
-            field("country")
-        )
-        .execute()
-
-##### Java  
-Android
-
-    Task<Pipeline.Snapshot> cities;
-    cities = db.pipeline()
-            .collection("cities")
-            .distinct("country")
-            .execute();
-    
-    cities = db.pipeline()
-            .collection("cities")
-            .distinct(
-                    field("state").toLower().alias("normalizedState"),
-                    field("country"))
-            .execute();
+                field("state").toLower().alias("normalizedState"),
+                field("country"))
+        .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    cities = client.pipeline().collection("cities").distinct("country").execute()
-    
-    cities = (
-        client.pipeline()
-        .collection("cities")
-        .distinct(Field.of("state").to_lower().as_("normalizedState"), "country")
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+cities = client.pipeline().collection("cities").distinct("country").execute()
+
+cities = (
+    client.pipeline()
+    .collection("cities")
+    .distinct(Field.of("state").to_lower().as_("normalizedState"), "country")
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot cities1 =
-        firestore.pipeline().collection("cities").distinct("country").execute().get();
-    
-    Pipeline.Snapshot cities2 =
-        firestore
-            .pipeline()
-            .collection("cities")
-            .distinct(toLower(field("state")).as("normalizedState"), field("country"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot cities1 =
+    firestore.pipeline().collection("cities").distinct("country").execute().get();
+
+Pipeline.Snapshot cities2 =
+    firestore
+        .pipeline()
+        .collection("cities")
+        .distinct(toLower(field("state")).as("normalizedState"), field("country"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    cities1, err := client.Pipeline().Collection("cities").Distinct(firestore.Fields("country")).Execute(ctx).Results().GetAll()
-    if err != nil {
-     fmt.Fprintf(w, "GetAll failed: %v", err)
-     return err
-    }
-    
-    cities2, err := client.Pipeline().Collection("cities").
-     Distinct(firestore.Fields(
-         firestore.ToLower(firestore.FieldOf("state")).As("normalizedState"),
-         firestore.FieldOf("country"),
-     )).
-     Execute(ctx).Results().GetAll()
-    if err != nil {
-     fmt.Fprintf(w, "GetAll failed: %v", err)
-     return err
-    }
+```
+cities1, err := client.Pipeline().Collection("cities").Distinct(firestore.Fields("country")).Execute(ctx).Results().GetAll()
+if err != nil {
+    fmt.Fprintf(w, "GetAll failed: %v", err)
+    return err
+}
+
+cities2, err := client.Pipeline().Collection("cities").
+    Distinct(firestore.Fields(
+        firestore.ToLower(firestore.FieldOf("state")).As("normalizedState"),
+        firestore.FieldOf("country"),
+    )).
+    Execute(ctx).Results().GetAll()
+if err != nil {
+    fmt.Fprintf(w, "GetAll failed: %v", err)
+    return err
+}
+```
 
 ## Behavior
 
@@ -139,26 +153,32 @@ For example, to get a list of every country in the following `cities` collection
 
 ### Node.js
 
-    await db.collection("cities").doc("SF").set({name: "San Francisco", state: "CA", country: "USA"});
-    await db.collection("cities").doc("LA").set({name: "Los Angeles", state: "CA", country: "USA"});
-    await db.collection("cities").doc("NY").set({name: "New York", state: "NY", country: "USA"});
-    await db.collection("cities").doc("TOR").set({name: "Toronto", state: null, country: "Canada"});
-    await db.collection("cities").doc("MEX").set({name: "Mexico City", state: null, country: "Mexico"});
+```
+await db.collection("cities").doc("SF").set({name: "San Francisco", state: "CA", country: "USA"});
+await db.collection("cities").doc("LA").set({name: "Los Angeles", state: "CA", country: "USA"});
+await db.collection("cities").doc("NY").set({name: "New York", state: "NY", country: "USA"});
+await db.collection("cities").doc("TOR").set({name: "Toronto", state: null, country: "Canada"});
+await db.collection("cities").doc("MEX").set({name: "Mexico City", state: null, country: "Mexico"});
+```
 
 Distinct countries can be found using:
 
 ### Node.js
 
-    const cities = await db.pipeline()
-      .collection("/cities")
-      .distinct("country")
-      .execute();
+```
+const cities = await db.pipeline()
+  .collection("/cities")
+  .distinct("country")
+  .execute();
+```
 
 which generates the following result:
 
-    { country: "USA" }
-    { country: "Canada" }
-    { country: "Mexico" }
+```
+{ country: "USA" }
+{ country: "Canada" }
+{ country: "Mexico" }
+```
 
 ### Distinct Output of Expressions
 
@@ -166,19 +186,23 @@ You can also find the distinct combinations of multiple fields, or more complica
 
 ### Node.js
 
-    const cities = await db.pipeline()
-      .collection("/cities")
-      .distinct(
-        field("state").toLower().as("normalized_state"),
-        field("country"))
-      .execute();
+```
+const cities = await db.pipeline()
+  .collection("/cities")
+  .distinct(
+    field("state").toLower().as("normalized_state"),
+    field("country"))
+  .execute();
+```
 
 to get:
 
-    { country: "USA", normalized_state: "ca" }
-    { country: "USA", normalized_state: "ny" }
-    { country: "Canada", normalized_state: null }
-    { country: "Mexico", normalized_state: null }
+```
+{ country: "USA", normalized_state: "ca" }
+{ country: "USA", normalized_state: "ny" }
+{ country: "Canada", normalized_state: null }
+{ country: "Mexico", normalized_state: null }
+```
 
 ### Equivalence Behaviors
 

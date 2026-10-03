@@ -29,9 +29,11 @@ The following is the typical workflow using the gcloud CLI:
 3.  Start your application and test it against the emulator. You need to run the queries your application uses against the emulator in order to generate indexes for your production database instance.
 
 4.  Upload the generated indexes with the [`indexes create`](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/indexes/create) command, passing in the path to your local `index.yaml` file, as in the following example:
-    
-        gcloud datastore indexes create ~/.config/gcloud/emulators/datastore/WEB-INF/index.yaml
-    
+
+    ```
+    gcloud datastore indexes create ~/.config/gcloud/emulators/datastore/WEB-INF/index.yaml
+    ```
+
     The example path assumes you have not set a specific directory for the [`data-dir`](https://docs.cloud.google.com/sdk/gcloud/reference/beta/emulators/datastore/start#FLAGS) option. If you have set a specific directory, modify the path to use the path to your `index.yaml` file.
 
 5.  [Remove environment variables](https://docs.cloud.google.com/datastore/docs/tools/datastore-emulator#removing_environment_variables) so your application knows it is using the production database instance.
@@ -39,12 +41,14 @@ The following is the typical workflow using the gcloud CLI:
 6.  Run your application against your production database instance.
 
 7.  Over time, you might no longer use some of the indexes. You can delete unused indexes from your production database instance by removing them from your local `index.yaml` file and then invoking the [`indexes cleanup`](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/indexes/cleanup) command:
-    
-        gcloud datastore indexes cleanup ~/.config/gcloud/emulators/datastore/WEB-INF/index.yaml
-    
+
+    ```
+    gcloud datastore indexes cleanup ~/.config/gcloud/emulators/datastore/WEB-INF/index.yaml
+    ```
+
     If you have set a specific directory for the [`data-dir`](https://docs.cloud.google.com/sdk/gcloud/reference/beta/emulators/datastore/start#FLAGS) option, modify the path in the example to use the path to your `index.yaml` file.
 
 ## What's next
 
-  - Learn more about the [emulator](https://docs.cloud.google.com/datastore/docs/tools/datastore-emulator) .
-  - Get details about [Index configuration](https://docs.cloud.google.com/datastore/docs/tools/indexconfig) .
+- Learn more about the [emulator](https://docs.cloud.google.com/datastore/docs/tools/datastore-emulator) .
+- Get details about [Index configuration](https://docs.cloud.google.com/datastore/docs/tools/indexconfig) .

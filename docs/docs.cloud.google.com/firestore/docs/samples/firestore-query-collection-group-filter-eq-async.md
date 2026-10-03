@@ -12,7 +12,7 @@ Query a Firestore collection group with an eq filter (async).
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Query and filter data](https://docs.cloud.google.com/firestore/native/docs/query-data/queries)
+- [Query and filter data](https://docs.cloud.google.com/firestore/native/docs/query-data/queries)
 
 ## Code sample
 
@@ -20,12 +20,14 @@ For detailed documentation that includes this code sample, see the following:
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    museums = db.collection_group("landmarks").where(
-        filter=FieldFilter("type", "==", "museum")
-    )
-    docs = museums.stream()
-    async for doc in docs:
-        print(f"{doc.id} => {doc.to_dict()}")
+```python
+museums = db.collection_group("landmarks").where(
+    filter=FieldFilter("type", "==", "museum")
+)
+docs = museums.stream()
+async for doc in docs:
+    print(f"{doc.id} => {doc.to_dict()}")
+```
 
 ## What's next
 

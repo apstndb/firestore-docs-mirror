@@ -13,7 +13,7 @@ The following tables list supported MongoDB data types, drivers, and third-party
 ## Data types
 
 | **BSON Type**           | **Supported** |
-| ----------------------- | ------------- |
+|-------------------------|---------------|
 | 32-bit Integer          | Yes           |
 | 64-bit Integer          | Yes           |
 | Array                   | Yes           |
@@ -40,14 +40,14 @@ The following tables list supported MongoDB data types, drivers, and third-party
 
 The top-level `_id` field in a document must be one of the following types:
 
-  - ObjectId
-  - String
-  - 64-bit Integer
-  - 32-bit Integer
-  - Double
-  - Binary
-  - Object
-  - Boolean
+- ObjectId
+- String
+- 64-bit Integer
+- 32-bit Integer
+- Double
+- Binary
+- Object
+- Boolean
 
 The total size of the `_id` must not exceed 1500 bytes.
 
@@ -59,63 +59,31 @@ Other BSON types are not supported.
 
 Firestore with MongoDB compatibility supports the following driver versions:
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>Language</strong></th>
-<th><strong>Driver versions</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Java</td>
-<td>5.x</td>
-</tr>
-<tr class="even">
-<td>Node.js</td>
-<td>6.x<br />
-5.x</td>
-</tr>
-<tr class="odd">
-<td>Python</td>
-<td>4.x<br />
-3.x (x ≥ 12)</td>
-</tr>
-<tr class="even">
-<td>Go</td>
-<td>2.x</td>
-</tr>
-<tr class="odd">
-<td>C#</td>
-<td>3.x</td>
-</tr>
-<tr class="even">
-<td>Ruby</td>
-<td>2.x (x ≥ 16)</td>
-</tr>
-</tbody>
-</table>
+| **Language** | **Driver versions** |
+|--------------|---------------------|
+| Java         | 5.x                 |
+| Node.js      | 6.x 5.x             |
+| Python       | 4.x 3.x (x ≥ 12)    |
+| Go           | 2.x                 |
+| C#           | 3.x                 |
+| Ruby         | 2.x (x ≥ 16)        |
 
 ### OIDC authentication support
 
-The Go, C\#, and Ruby drivers support OpenID Connect (OIDC) authentication from Google Cloud for all supported driver versions.
+The Go, C#, and Ruby drivers support OpenID Connect (OIDC) authentication from Google Cloud for all supported driver versions.
 
 The Java, Node.js, and Python drivers support OIDC authentication from Google Cloud starting with the following driver versions:
 
-  - Java: 4.10
-  - Node.js: 6.7
-  - Python: 4.7
+- Java: 4.10
+- Node.js: 6.7
+- Python: 4.7
 
 ## Third-party tools
 
 Firestore with MongoDB compatibility supports third-party tools described in this section.
 
 | **Tool**                                                                  | **Description**               | **Notes**                                                                                                                  |
-| ------------------------------------------------------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+|---------------------------------------------------------------------------|-------------------------------|----------------------------------------------------------------------------------------------------------------------------|
 | [mongoimport](https://www.mongodb.com/docs/database-tools/mongoimport/)   | MongoDB Database Tools        | See [Bulk data loading](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/bulk-data-loading#mongoimport)  |
 | [mongoexport](https://www.mongodb.com/docs/database-tools/mongoexport/)   | MongoDB Database Tools        |                                                                                                                            |
 | [mongodump](https://www.mongodb.com/docs/database-tools/mongodump/)       | MongoDB Database Tools        |                                                                                                                            |
@@ -128,12 +96,12 @@ Firestore with MongoDB compatibility supports third-party tools described in thi
 
 ## What's next
 
-  - Run the [Quickstart: Create a database and connect to it](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database) .
-  - Learn about [Behavior differences](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences) .
-  - For a breakdown of supported features depending on MongoDB version, see
-      - [Supported features: 8.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80)
-      - [Supported features: 7.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-70)
-      - [Supported features: 6.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-60)
-      - [Supported features: 5.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-50)
-      - [Supported features: 4.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-40)
-      - [Supported features: 3.6](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-36)
+- Run the [Quickstart: Create a database and connect to it](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database) .
+- Learn about [Behavior differences](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences) .
+- For a breakdown of supported features depending on MongoDB version, see
+  - [Supported features: 8.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80)
+  - [Supported features: 7.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-70)
+  - [Supported features: 6.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-60)
+  - [Supported features: 5.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-50)
+  - [Supported features: 4.0](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-40)
+  - [Supported features: 3.6](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-36)

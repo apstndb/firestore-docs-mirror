@@ -16,87 +16,99 @@ Limits the number of documents returned by the pipeline.
 
 ### Web
 
-    const pipeline = db.pipeline()
-      // Step 1: Start a query with collection scope
-      .collection("cities")
-      // Step 2: Filter the collection
-      .where(field("population").greaterThan(100000))
-      // Step 3: Sort the remaining documents
-      .sort(field("name").ascending())
-      // Step 4: Return the top 10. Note applying the limit earlier in the
-      // pipeline would have unintentional results.
-      .limit(10);
+```
+const pipeline = db.pipeline()
+  // Step 1: Start a query with collection scope
+  .collection("cities")
+  // Step 2: Filter the collection
+  .where(field("population").greaterThan(100000))
+  // Step 3: Sort the remaining documents
+  .sort(field("name").ascending())
+  // Step 4: Return the top 10. Note applying the limit earlier in the
+  // pipeline would have unintentional results.
+  .limit(10);
+```
 
 ##### Swift
 
-    let pipeline = db.pipeline()
-      // Step 1: Start a query with collection scope
-      .collection("cities")
-      // Step 2: Filter the collection
-      .where(Field("population").greaterThan(100000))
-      // Step 3: Sort the remaining documents
-      .sort([Field("name").ascending()])
-      // Step 4: Return the top 10. Note applying the limit earlier in the pipeline would have
-      // unintentional results.
-      .limit(10)
+```
+let pipeline = db.pipeline()
+  // Step 1: Start a query with collection scope
+  .collection("cities")
+  // Step 2: Filter the collection
+  .where(Field("population").greaterThan(100000))
+  // Step 3: Sort the remaining documents
+  .sort([Field("name").ascending()])
+  // Step 4: Return the top 10. Note applying the limit earlier in the pipeline would have
+  // unintentional results.
+  .limit(10)
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val pipeline = db.pipeline()
-        // Step 1: Start a query with collection scope
-        .collection("cities")
-        // Step 2: Filter the collection
-        .where(field("population").greaterThan(100000))
-        // Step 3: Sort the remaining documents
-        .sort(field("name").ascending())
-        // Step 4: Return the top 10. Note applying the limit earlier in the pipeline would have
-        // unintentional results.
-        .limit(10)
+```
+val pipeline = db.pipeline()
+    // Step 1: Start a query with collection scope
+    .collection("cities")
+    // Step 2: Filter the collection
+    .where(field("population").greaterThan(100000))
+    // Step 3: Sort the remaining documents
+    .sort(field("name").ascending())
+    // Step 4: Return the top 10. Note applying the limit earlier in the pipeline would have
+    // unintentional results.
+    .limit(10)
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Pipeline pipeline = db.pipeline()
-        // Step 1: Start a query with collection scope
-        .collection("cities")
-        // Step 2: Filter the collection
-        .where(field("population").greaterThan(100000))
-        // Step 3: Sort the remaining documents
-        .sort(field("name").ascending())
-        // Step 4: Return the top 10. Note applying the limit earlier in the pipeline would have
-        // unintentional results.
-        .limit(10);
+```
+Pipeline pipeline = db.pipeline()
+    // Step 1: Start a query with collection scope
+    .collection("cities")
+    // Step 2: Filter the collection
+    .where(field("population").greaterThan(100000))
+    // Step 3: Sort the remaining documents
+    .sort(field("name").ascending())
+    // Step 4: Return the top 10. Note applying the limit earlier in the pipeline would have
+    // unintentional results.
+    .limit(10);
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    pipeline = (
-        client.pipeline()
-        .collection("cities")
-        .where(Field.of("population").greater_than(100_000))
-        .sort(Field.of("name").ascending())
-        .limit(10)
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+pipeline = (
+    client.pipeline()
+    .collection("cities")
+    .where(Field.of("population").greater_than(100_000))
+    .sort(Field.of("name").ascending())
+    .limit(10)
+)
+```
 
 ##### Java
 
-    Pipeline pipeline =
-        firestore
-            .pipeline()
-            .collection("cities")
-            .where(field("population").greaterThan(100_000))
-            .sort(ascending(field("name")))
-            .limit(10);
+```
+Pipeline pipeline =
+    firestore
+        .pipeline()
+        .collection("cities")
+        .where(field("population").greaterThan(100_000))
+        .sort(ascending(field("name")))
+        .limit(10);
+```
 
 ##### Go
 
-    pipeline := client.Pipeline().
-     Collection("cities").
-     Where(firestore.FieldOf("population").GreaterThan(100000)).
-     Sort(firestore.Orders(firestore.Ascending(firestore.FieldOf("name")))).
-     Limit(10)
+```
+pipeline := client.Pipeline().
+    Collection("cities").
+    Where(firestore.FieldOf("population").GreaterThan(100000)).
+    Sort(firestore.Orders(firestore.Ascending(firestore.FieldOf("name")))).
+    Limit(10)
+```
 
 ## Behavior
 

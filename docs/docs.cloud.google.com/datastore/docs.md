@@ -16,50 +16,50 @@ Not sure what database option is right for you? Learn more about our [database s
 
 [Go to the Firestore in Datastore mode product page for more.](https://cloud.google.com/datastore/)
 
-format\_list\_numbered
+format_list_numbered
 
 ### Guides
 
-  - [Quickstart: Store and query data in Firestore in Datastore mode](https://docs.cloud.google.com/datastore/docs/store-query-data)
+- [Quickstart: Store and query data in Firestore in Datastore mode](https://docs.cloud.google.com/datastore/docs/store-query-data)
 
-  - [Exporting and Importing Entities](https://docs.cloud.google.com/datastore/docs/export-import-entities)
+- [Exporting and Importing Entities](https://docs.cloud.google.com/datastore/docs/export-import-entities)
 
-  - [Running the Datastore Emulator](https://docs.cloud.google.com/datastore/docs/tools/datastore-emulator)
+- [Running the Datastore Emulator](https://docs.cloud.google.com/datastore/docs/tools/datastore-emulator)
 
-  - [Datastore Admin](https://docs.cloud.google.com/datastore/docs/console/datastore-admin-console)
+- [Datastore Admin](https://docs.cloud.google.com/datastore/docs/console/datastore-admin-console)
 
-  - [Accessing your database](https://docs.cloud.google.com/datastore/docs/activate)
+- [Accessing your database](https://docs.cloud.google.com/datastore/docs/activate)
 
-  - [Deleting Entities in Bulk](https://docs.cloud.google.com/datastore/docs/bulk-delete)
+- [Deleting Entities in Bulk](https://docs.cloud.google.com/datastore/docs/bulk-delete)
 
-  - [Index Configuration](https://docs.cloud.google.com/datastore/docs/tools/indexconfig)
+- [Index Configuration](https://docs.cloud.google.com/datastore/docs/tools/indexconfig)
 
-  - [Viewing Statistics in the Console](https://docs.cloud.google.com/datastore/docs/console/datastore-statistics)
+- [Viewing Statistics in the Console](https://docs.cloud.google.com/datastore/docs/console/datastore-statistics)
 
-  - [Managing Firestore in Datastore mode from the Console](https://docs.cloud.google.com/datastore/docs/console/managing-datastore)
+- [Managing Firestore in Datastore mode from the Console](https://docs.cloud.google.com/datastore/docs/console/managing-datastore)
 
-find\_in\_page
+find_in_page
 
 ### Reference
 
-  - [Datastore mode Client Libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries)
+- [Datastore mode Client Libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries)
 
-  - [GQL Reference](https://docs.cloud.google.com/datastore/docs/reference/gql_reference)
+- [GQL Reference](https://docs.cloud.google.com/datastore/docs/reference/gql_reference)
 
-  - [REST API](https://docs.cloud.google.com/datastore/docs/reference/data/rest)
+- [REST API](https://docs.cloud.google.com/datastore/docs/reference/data/rest)
 
-  - [RPC API](https://docs.cloud.google.com/datastore/docs/reference/data/rpc)
+- [RPC API](https://docs.cloud.google.com/datastore/docs/reference/data/rpc)
 
 info
 
 ### Resources
 
-  - [Pricing and Quota](https://docs.cloud.google.com/datastore/pricing)
+- [Pricing and Quota](https://docs.cloud.google.com/datastore/pricing)
 
-  - [Release Notes](https://docs.cloud.google.com/datastore/docs/release-notes)
+- [Release Notes](https://docs.cloud.google.com/datastore/docs/release-notes)
 
-  - [Billing Questions](https://docs.cloud.google.com/datastore/docs/billing-questions)
+- [Billing Questions](https://docs.cloud.google.com/datastore/docs/billing-questions)
 
-  - [Getting support](https://docs.cloud.google.com/datastore/docs/getting-support)
+- [Getting support](https://docs.cloud.google.com/datastore/docs/getting-support)
 
 ## Related videos

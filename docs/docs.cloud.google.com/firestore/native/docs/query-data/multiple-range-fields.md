@@ -16,40 +16,50 @@ The following query uses range filters on population and density to return all c
 
 ### Web version 9 modular
 
-    const q = query(
-        collection(db, "cities"),
-        where('population', '>', 1000000),
-        where('density', '<', 10000),
-      );
+```
+const q = query(
+    collection(db, "cities"),
+    where('population', '>', 1000000),
+    where('density', '<', 10000),
+  );
+```
 
 ### Swift
 
-    let query = db.collection("cities")
-      .whereField("population", isGreaterThan: 1000000)
-      .whereField("density", isLessThan: 10000)
+```
+let query = db.collection("cities")
+  .whereField("population", isGreaterThan: 1000000)
+  .whereField("density", isLessThan: 10000)
+```
 
 ### Objective-C
 
-    FIRQuery *query =
-     [[[[self.db collectionWithPath:@"cities"]
-    queryWhereField:@"population" isGreaterThan:@1000000]
-       queryWhereField:@"density" isLessThan:@10000];
+```
+FIRQuery *query =
+ [[[[self.db collectionWithPath:@"cities"]
+queryWhereField:@"population" isGreaterThan:@1000000]
+   queryWhereField:@"density" isLessThan:@10000];
+```
 
 ### Java Android
 
-    Query query = db.collection("cities")
-     .whereGreaterThan("population", 1000000)
-     .whereLessThan("density", 10000);
+```
+Query query = db.collection("cities")
+ .whereGreaterThan("population", 1000000)
+ .whereLessThan("density", 10000);
+```
 
 ### Kotlin+KTX Android
 
-    val query = db.collection("cities")
-     .whereGreaterThan("population", 1000000)
-     .whereLessThan("density", 10000)
+```
+val query = db.collection("cities")
+ .whereGreaterThan("population", 1000000)
+ .whereLessThan("density", 10000)
+```
 
 ### Go
 
-``` 
+```
    query := client.Collection("cities").
       Where("population", ">", 1000000).
       Where("density", "<", 10000)
@@ -57,69 +67,87 @@ The following query uses range filters on population and density to return all c
 
 ### Java
 
-    db.collection("cities")
-      .whereGreaterThan("population", 1000000)
-      .whereLessThan("density", 10000);
+```
+db.collection("cities")
+  .whereGreaterThan("population", 1000000)
+  .whereLessThan("density", 10000);
+```
 
 ### Node.js
 
-    db.collection("cities")
-      .where('population', '>', 1000000),
-      .where('density', '<', 10000)
+```
+db.collection("cities")
+  .where('population', '>', 1000000),
+  .where('density', '<', 10000)
+```
 
 ### Python
 
-    from google.cloud import firestore
-    
-    db = firestore.Client()
-    query = db.collection("cities")
-    .where("population", ">", 1000000)
-    .where("density", "<", 10000)
+```
+from google.cloud import firestore
+
+db = firestore.Client()
+query = db.collection("cities")
+.where("population", ">", 1000000)
+.where("density", "<", 10000)
+```
 
 ### PHP
 
-    $collection = $db->collection('samples/php/cities');
-    $chainedQuery = $collection
-        ->where('population', '>', 1000000)
-        ->where('density', '<', 10000);
+```php
+$collection = $db->collection('samples/php/cities');
+$chainedQuery = $collection
+    ->where('population', '>', 1000000)
+    ->where('density', '<', 10000);
+```
 
-### C\#
+### C#
 
-    CollectionReference citiesRef = db.Collection("cities");
-    Query query = citiesRef
-        .WhereGreaterThan("Population", 1000000)
-        .WhereLessThan("Density", 10000);
-    QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
-    foreach (DocumentSnapshot documentSnapshot in querySnapshot)
-    {
-        var name = documentSnapshot.GetValue<string>("Name");
-        var population = documentSnapshot.GetValue<int>("Population");
-        var density = documentSnapshot.GetValue<int>("Density");
-        Console.WriteLine($"City '{name}' returned by query. Population={population}; Density={density}");
-    }
+```cs
+CollectionReference citiesRef = db.Collection("cities");
+Query query = citiesRef
+    .WhereGreaterThan("Population", 1000000)
+    .WhereLessThan("Density", 10000);
+QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
+foreach (DocumentSnapshot documentSnapshot in querySnapshot)
+{
+    var name = documentSnapshot.GetValue<string>("Name");
+    var population = documentSnapshot.GetValue<int>("Population");
+    var density = documentSnapshot.GetValue<int>("Density");
+    Console.WriteLine($"City '{name}' returned by query. Population={population}; Density={density}");
+}
+```
 
 ### Ruby
 
-    query = cities_ref.where("population", ">", "1000000")
-                      .where("density", "<", 10000)
+```
+query = cities_ref.where("population", ">", "1000000")
+                  .where("density", "<", 10000)
+```
 
 ### C++
 
-    CollectionReference cities_ref = db->Collection("cities");
-    Query query = cities_ref.WhereGreaterThan("population", FieldValue::Integer(1000000))
-                           .WhereLessThan("density", FieldValue::Integer(10000));
+```
+CollectionReference cities_ref = db->Collection("cities");
+Query query = cities_ref.WhereGreaterThan("population", FieldValue::Integer(1000000))
+                       .WhereLessThan("density", FieldValue::Integer(10000));
+```
 
 ### Unity
 
-    CollectionReference citiesRef = db.Collection("cities");
-    Query query = citiesRef.WhereGreaterThan("population", 1000000)
-                          .WhereLessThan("density", 10000);
+```
+CollectionReference citiesRef = db.Collection("cities");
+Query query = citiesRef.WhereGreaterThan("population", 1000000)
+                      .WhereLessThan("density", 10000);
+```
 
 ### Dart
 
-    final citiesRef = FirebaseFirestore.instance.collection('cities')
-    final query = citiesRef.where("population", isGreaterThan: 1000000)
-                      .where("density", isLessThan: 10000);
+```
+final citiesRef = FirebaseFirestore.instance.collection('cities')
+final query = citiesRef.where("population", isGreaterThan: 1000000)
+                  .where("density", isLessThan: 10000);
+```
 
 ## Indexing considerations
 
@@ -129,31 +157,37 @@ In Firestore, the `ORDER BY` clause of a query determines which indexes can be u
 
 To optimize the performance and cost of Firestore queries, optimize the order of fields in the index. To do this, ensure that your index is ordered from left to right such that the query distills to a dataset that prevents scanning of unnecessary index entries.
 
-Suppose you want to search through a collection of employees and find United States employees whose salary is more than $100,000 and whose number of years of experience is greater than 0. Based on your understanding of the dataset, you know that the salary constraint is more selective than the experience constraint. The ideal index that would reduce the number of index scans would be the `(salary [...], experience [...])` . Thus, the query that would be fast and cost-efficient would order `salary` before `experience` and look as follows:
+Suppose you want to search through a collection of employees and find United States employees whose salary is more than \$100,000 and whose number of years of experience is greater than 0. Based on your understanding of the dataset, you know that the salary constraint is more selective than the experience constraint. The ideal index that would reduce the number of index scans would be the `(salary [...], experience [...])` . Thus, the query that would be fast and cost-efficient would order `salary` before `experience` and look as follows:
 
 ### Java
 
-    db.collection("employees")
-      .whereGreaterThan("salary", 100000)
-      .whereGreaterThan("experience", 0)
-      .orderBy("salary")
-      .orderBy("experience");
+```
+db.collection("employees")
+  .whereGreaterThan("salary", 100000)
+  .whereGreaterThan("experience", 0)
+  .orderBy("salary")
+  .orderBy("experience");
+```
 
 ### Node.js
 
-    db.collection("employees")
-      .where("salary", ">", 100000)
-      .where("experience", ">", 0)
-      .orderBy("salary")
-      .orderBy("experience");
+```
+db.collection("employees")
+  .where("salary", ">", 100000)
+  .where("experience", ">", 0)
+  .orderBy("salary")
+  .orderBy("experience");
+```
 
 ### Python
 
-    db.collection("employees")
-      .where("salary", ">", 100000)
-      .where("experience", ">", 0)
-      .order_by("salary")
-      .order_by("experience");
+```
+db.collection("employees")
+  .where("salary", ">", 100000)
+  .where("experience", ">", 0)
+  .order_by("salary")
+  .order_by("experience");
+```
 
 ## Best practices for optimizing indexes
 
@@ -171,38 +205,44 @@ To ensure that Firestore selects the optimal index for your query, specify an `o
 
 To minimize the number of documents that Firestore scans and returns over the network, you should always order fields in the decreasing order of query constraint selectivity. If the result set is not in the required order and the result set is expected to be small, you can implement client-side logic to reorder it as per your ordering expectation.
 
-For example, suppose you want to search through a collection of employees to find United States employees whose salary is more than $100,000 and order the results by the year of experience of the employee. If you expect only a small number of employees will have salaries greater than $100,000, then the most efficient way to write the query is as follows:
+For example, suppose you want to search through a collection of employees to find United States employees whose salary is more than \$100,000 and order the results by the year of experience of the employee. If you expect only a small number of employees will have salaries greater than \$100,000, then the most efficient way to write the query is as follows:
 
 ### Java
 
-    db.collection("employees")
-      .whereGreaterThan("salary", 100000)
-      .orderBy("salary")
-      .get()
-      .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-            @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-              // Order results by `experience`
-            }
-        });;
+```
+db.collection("employees")
+  .whereGreaterThan("salary", 100000)
+  .orderBy("salary")
+  .get()
+  .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        @Override
+        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+          // Order results by `experience`
+        }
+    });;
+```
 
 ### Node.js
 
-    const querySnapshot = await db.collection('employees')
-                                  .where("salary", ">", 100000)
-                                  .orderBy("salary")
-                                  .get();
-    
-    // Order results by `experience`
+```
+const querySnapshot = await db.collection('employees')
+                              .where("salary", ">", 100000)
+                              .orderBy("salary")
+                              .get();
+
+// Order results by `experience`
+```
 
 ### Python
 
-    results = db.collection("employees")
-                .where("salary", ">", 100000)
-                .order_by("salary")
-                .stream()
-    
-    // Order results by `experience`
+```
+results = db.collection("employees")
+            .where("salary", ">", 100000)
+            .order_by("salary")
+            .stream()
+
+// Order results by `experience`
+```
 
 While adding an ordering on `experience` to the query will yield the same set of documents and obviate re-ordering the results on the clients, the query may read many more extraneous index entries than the earlier query. This is because Firestore always prefers an index whose index fields prefix match the order by clause of the query. If `experience` were added to the order by clause, then Firestore will select the `(experience [...], salary [...])` index for computing query results. Since there are no other constraints on `experience` , Firestore will read **all** index entries of the `employees` collection before applying the `salary` filter to find the final result set. This means that index entries which don't satisfy the `salary` filter are still read, thus increasing the latency and cost of the query.
 
@@ -216,13 +256,13 @@ For detailed information, see the \[Pricing\]\[5\] page.
 
 Apart from the \[query limitations\]\[6\], note the following limitations before using queries with range and inequality filters on multiple fields:
 
-  - Queries with range or inequality filters on document fields and only equality constraints on the document key `(__name__)` aren't supported.
-  - Firestore limits the number of range or inequality fields to 10. This is to prevent queries from becoming too expensive to run.
+- Queries with range or inequality filters on document fields and only equality constraints on the document key `(__name__)` aren't supported.
+- Firestore limits the number of range or inequality fields to 10. This is to prevent queries from becoming too expensive to run.
 
 ## What's next
 
-  - Learn about \[optimizing your queries\]\[3\].
-  - Learn more about \[performing simple and compound queries\]\[8\].
-  - Understand how \[Firestore uses indexes\]\[9\].
+- Learn about \[optimizing your queries\]\[3\].
+- Learn more about \[performing simple and compound queries\]\[8\].
+- Understand how \[Firestore uses indexes\]\[9\].
 
-\[1\]: /firestore/native/docs/query-data/get-data \[2\]: /firestore/native/docs/data-model \[3\]: /firestore/native/docs/query-data/multiple-range-optimize-indexes \[4\]: /firestore/native/docs/concepts/index-overview\#index\_properties \[5\]: /firestore/native/docs/pricing \[6\]: /firestore/native/docs/query-data/queries\#query\_limitations \[7\]: https://en.wikipedia.org/wiki/Disjunctive\_normal\_form \[8\]: /firestore/native/docs/query-data/queries \[9\]: /firestore/native/docs/concepts/index-overview \[10\]: /firestore/native/docs/query-data/multiple-range-optimize-indexes
+\[1\]: /firestore/native/docs/query-data/get-data \[2\]: /firestore/native/docs/data-model \[3\]: /firestore/native/docs/query-data/multiple-range-optimize-indexes \[4\]: /firestore/native/docs/concepts/index-overview#index_properties \[5\]: /firestore/native/docs/pricing \[6\]: /firestore/native/docs/query-data/queries#query_limitations \[7\]: https://en.wikipedia.org/wiki/Disjunctive_normal_form \[8\]: /firestore/native/docs/query-data/queries \[9\]: /firestore/native/docs/concepts/index-overview \[10\]: /firestore/native/docs/query-data/multiple-range-optimize-indexes

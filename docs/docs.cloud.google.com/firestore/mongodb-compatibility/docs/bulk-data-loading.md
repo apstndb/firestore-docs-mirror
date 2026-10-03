@@ -36,8 +36,8 @@ To improve the load time into Firestore, you can also increase the number of ins
 
 When developing your own software using MongoDB compatible operations, you can improve parallelism in the following ways:
 
-  - *Async frameworks* : using async frameworks let you process and respond to requests in parallel. It is not necessary to develop any complex pooling or queuing when making calls to your database. Each request flow can use independent connections and make their database calls in parallel.
-  - *Use parallelized compute offerings* : using services like Cloud Run, your system can scale the number of computation workers required to process data.
+- *Async frameworks* : using async frameworks let you process and respond to requests in parallel. It is not necessary to develop any complex pooling or queuing when making calls to your database. Each request flow can use independent connections and make their database calls in parallel.
+- *Use parallelized compute offerings* : using services like Cloud Run, your system can scale the number of computation workers required to process data.
 
 ### Transient Failures
 

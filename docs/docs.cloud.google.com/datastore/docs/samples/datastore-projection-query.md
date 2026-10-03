@@ -12,20 +12,22 @@ Use a projection query.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Datastore queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)
+- [Datastore queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Projection = { "priority", "percent_complete" }
-    };
+```csharp
+Query query = new Query("Task")
+{
+    Projection = { "priority", "percent_complete" }
+};
+```
 
 ### Go
 
@@ -33,7 +35,9 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").Project("Priority", "PercentComplete")
+```go
+query := datastore.NewQuery("Task").Project("Priority", "PercentComplete")
+```
 
 ### Java
 
@@ -41,11 +45,13 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<ProjectionEntity> query =
-        Query.newProjectionEntityQueryBuilder()
-            .setKind("Task")
-            .setProjection("priority", "percent_complete")
-            .build();
+```java
+Query<ProjectionEntity> query =
+    Query.newProjectionEntityQueryBuilder()
+        .setKind("Task")
+        .setProjection("priority", "percent_complete")
+        .build();
+```
 
 ### PHP
 
@@ -53,9 +59,11 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->projection(['priority', 'percent_complete']);
+```php
+$query = $datastore->query()
+    ->kind('Task')
+    ->projection(['priority', 'percent_complete']);
+```
 
 ### Python
 
@@ -63,14 +71,16 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query(kind="Task")
-    query.projection = ["priority", "percent_complete"]
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query(kind="Task")
+query.projection = ["priority", "percent_complete"]
+```
 
 ### Ruby
 
@@ -78,8 +88,10 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .select("priority", "percent_complete")
+```ruby
+query = datastore.query("Task")
+                 .select("priority", "percent_complete")
+```
 
 ## What's next
 

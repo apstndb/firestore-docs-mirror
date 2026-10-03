@@ -12,45 +12,43 @@ This page shows you how to store and query data in Firestore in Datastore mode u
 
 ## Before you begin
 
-  - <span id="quickstart-permissions"></span> If you are **not** the project owner, your account requires the following permissions to complete this quickstart:
-    
-      - Your account requires the [**Datastore Owner** role](https://docs.cloud.google.com/iam/docs/understanding-roles#cloud_datastore_roles) which contains the `datastore.databases.create` permission needed to create a Datastore mode instance.
-      - Datastore mode requires an active App Engine application. If the project doesn't have an application, this quickstart creates one for you. In that case, you require the `appengine.applications.create` permission. The project owner can assign this permission with an [IAM custom role](https://docs.cloud.google.com/iam/docs/creating-custom-roles) .
+- If you are **not** the project owner, your account requires the following permissions to complete this quickstart:
 
-<span id="firestore-or-datastore"></span>
+  - Your account requires the [**Datastore Owner** role](https://docs.cloud.google.com/iam/docs/understanding-roles#cloud_datastore_roles) which contains the `datastore.databases.create` permission needed to create a Datastore mode instance.
+  - Datastore mode requires an active App Engine application. If the project doesn't have an application, this quickstart creates one for you. In that case, you require the `appengine.applications.create` permission. The project owner can assign this permission with an [IAM custom role](https://docs.cloud.google.com/iam/docs/creating-custom-roles) .
 
 ## Create a database
 
 1.  To create a new database instance, open the Datastore section in the Google Cloud console:  
 
 2.  Select a database mode.
-    
+
     When you create a new Firestore database, you have the option to use Firestore in either Native Mode or Datastore mode. You can't use both modes in the same project.
-    
+
     Select from one of the database options:
-    
-      - **Firestore in Native Mode**
-        
-        Recommended for mobile and web apps. To get started with Firestore, continue in the [Firestore Quickstart](https://docs.cloud.google.com/firestore/docs/quickstart) .
-    
-      - **Firestore in Datastore Mode**
-        
-        Recommended for app architectures with backend servers.
-    
+
+    - **Firestore in Native Mode**
+
+      Recommended for mobile and web apps. To get started with Firestore, continue in the [Firestore Quickstart](https://docs.cloud.google.com/firestore/docs/quickstart) .
+
+    - **Firestore in Datastore Mode**
+
+      Recommended for app architectures with backend servers.
+
     For more guidance on selecting a database mode and for a feature-by-feature comparison, see [choosing between Native Mode and Datastore Mode](https://docs.cloud.google.com/datastore/docs/firestore-or-datastore) .
 
 3.  Select a database location. Datastore mode supports multi-region and regional locations.
-    
+
     A multi-region location maximizes availability and durability. Regional locations offer lower write latency. To learn more about location types, see [Datastore mode locations](https://docs.cloud.google.com/datastore/docs/locations) . The location applies to both Datastore mode databases and App Engine apps for your Google Cloud project.
-    
+
     > **Warning:** Once you create your database, you cannot change the location.
-    
+
     Click **Create database** . After your database finishes initializing, the Google Cloud console directs you to the Datastore Entities page.
 
 ## Store data
 
 1.  Go to the Datastore Entities page in the Google Cloud console.
-    
+
     This page lets you store, query, update, and delete data.
 
 2.  Click **Create entity** .
@@ -60,21 +58,20 @@ This page shows you how to store and query data in Firestore in Datastore mode u
 4.  Type `Task` in the **Kind** field. Leave **Key identifier** set to the default value of `Numeric ID (auto-generated)` .
 
 5.  Under **Properties** , use the **Add property** button to add these properties:
-    
+
     | Name        | Type          | Value                  | Indexed |
-    | ----------- | ------------- | ---------------------- | ------- |
+    |-------------|---------------|------------------------|---------|
     | description | String        | Learn about Datastore. |         |
     | created     | Date and time | (today's date)         | ✓       |
     | done        | Boolean       | False                  | ✓       |
-    
 
     Your creation page should now look like this:
-    
+
     ![The entity creation window with various properties set](https://docs.cloud.google.com/static/datastore/docs/images/developer_console_create_entity.png)
 
 6.  Click **Create** . The console displays the `Task` entity that you just created.
 
-You just stored data in your database\!
+You just stored data in your database!
 
 ## Run a query
 
@@ -103,7 +100,7 @@ Next, add a query clause to restrict the results to entities that meet specific 
 The query results show the `Task` entity that you created.
 
 > **Tip**
-> 
+>
 > The GQL query editor supports autocompletion for kinds: When you need to type a kind name, press Ctrl+Space to see a list of the available kinds. Up to 300 alphabetically sorted kinds can appear in the list. For better matches of kinds, type one or more characters.
 
 Add a query filter to restrict the results to entities that meet specific criteria:
@@ -116,11 +113,11 @@ Add a query filter to restrict the results to entities that meet specific criter
 1.  Click **Query by kind** and ensure `Task` is the selected kind.
 2.  Click **Clear** to remove any query clauses.
 3.  Select the `Task` entity that you created.
-4.  Click **Delete** , and then confirm you want to delete the `Task` entity. Depending on the size of the browser window, **Delete** might be under the more\_vert **More actions** menu. Once deleted, the entity is permanently removed from your database.
+4.  Click **Delete** , and then confirm you want to delete the `Task` entity. Depending on the size of the browser window, **Delete** might be under the more_vert **More actions** menu. Once deleted, the entity is permanently removed from your database.
 
-That's it, you completed this quickstart\!
+That's it, you completed this quickstart!
 
 ## What's next
 
-  - Learn more about [Datastore Queries](https://docs.cloud.google.com/datastore/docs/concepts/queries) .
-  - Learn more about [Datastore mode](https://docs.cloud.google.com/datastore/docs) databases.
+- Learn more about [Datastore Queries](https://docs.cloud.google.com/datastore/docs/concepts/queries) .
+- Learn more about [Datastore mode](https://docs.cloud.google.com/datastore/docs) databases.

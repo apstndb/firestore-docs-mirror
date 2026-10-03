@@ -12,18 +12,20 @@ Perform a batch lookup.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Entities, Properties, and Keys](https://docs.cloud.google.com/datastore/docs/concepts/entities)
+- [Entities, Properties, and Keys](https://docs.cloud.google.com/datastore/docs/concepts/entities)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    var keys = new Key[] { _keyFactory.CreateKey(1), _keyFactory.CreateKey(2) };
-    var tasks = _db.Lookup(keys[0], keys[1]);
+```csharp
+var keys = new Key[] { _keyFactory.CreateKey(1), _keyFactory.CreateKey(2) };
+var tasks = _db.Lookup(keys[0], keys[1]);
+```
 
 ### Go
 
@@ -31,9 +33,11 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    var taskKeys []*datastore.Key // Populated with incomplete keys.
-    tasks := make([]*Task, len(taskKeys))
-    err := client.GetMulti(ctx, taskKeys, &tasks)
+```go
+var taskKeys []*datastore.Key // Populated with incomplete keys.
+tasks := make([]*Task, len(taskKeys))
+err := client.GetMulti(ctx, taskKeys, &tasks)
+```
 
 ### Java
 
@@ -41,7 +45,9 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Iterator<Entity> tasks = datastore.get(taskKey1, taskKey2);
+```java
+Iterator<Entity> tasks = datastore.get(taskKey1, taskKey2);
+```
 
 ### PHP
 
@@ -49,12 +55,14 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $result = $datastore->lookupBatch($keys);
-    if (isset($result['found'])) {
-        // $result['found'] is an array of entities.
-    } else {
-        // No entities found.
-    }
+```php
+$result = $datastore->lookupBatch($keys);
+if (isset($result['found'])) {
+    // $result['found'] is an array of entities.
+} else {
+    // No entities found.
+}
+```
 
 ### Python
 
@@ -62,14 +70,16 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    keys = [client.key("Task", 1), client.key("Task", 2)]
-    tasks = client.get_multi(keys)
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+keys = [client.key("Task", 1), client.key("Task", 2)]
+tasks = client.get_multi(keys)
+```
 
 ### Ruby
 
@@ -77,11 +87,13 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    # task_name_1 = "sampleTask1"
-    # task_name_2 = "sampleTask2"
-    task_key_1 = datastore.key "Task", task_name_1
-    task_key_2 = datastore.key "Task", task_name_2
-    tasks = datastore.find_all task_key_1, task_key_2
+```ruby
+# task_name_1 = "sampleTask1"
+# task_name_2 = "sampleTask2"
+task_key_1 = datastore.key "Task", task_name_1
+task_key_2 = datastore.key "Task", task_name_2
+tasks = datastore.find_all task_key_1, task_key_2
+```
 
 ## What's next
 

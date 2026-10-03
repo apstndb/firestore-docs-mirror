@@ -29,7 +29,7 @@ To view usage metrics for a Firestore database, open the database **Usage** page
 3.  In the navigation menu, click **Usage** .
 
 4.  Click the link in the message that appears on the page to view your database usage.
-    
+
     ![The database usage dashboard in the console.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-database-usage-dashboard.png)
 
 ### Aggregated usage dashboard
@@ -54,21 +54,21 @@ The Firestore usage dashboards in the Firebase and Cloud consoles provide an est
 
 Operations that cause discrepancies between the usage dashboard and billed usage include:
 
-  - Import and export operations. Reads and writes performed by these operations do not show up in the usage dashboard.
+- Import and export operations. Reads and writes performed by these operations do not show up in the usage dashboard.
 
-  - No-op verify-only writes. Writes that only verify the existence or non-existence of a document contribute to billed read operations, but they show as `UPDATE_NOOP` and `DELETE_NOOP` respectively in the write usage dashboard.
+- No-op verify-only writes. Writes that only verify the existence or non-existence of a document contribute to billed read operations, but they show as `UPDATE_NOOP` and `DELETE_NOOP` respectively in the write usage dashboard.
 
-  - No-op writes. Operations that do not result in a change to the database, such as an update that does not change field values or a write to a deleted document may show in the usage dashboard as `UPDATE_NOOP` or `DELETE_NOOP` . Even though they show as `NOOP` , they still contribute to billed operations.
+- No-op writes. Operations that do not result in a change to the database, such as an update that does not change field values or a write to a deleted document may show in the usage dashboard as `UPDATE_NOOP` or `DELETE_NOOP` . Even though they show as `NOOP` , they still contribute to billed operations.
 
-  - Collapsed writes. In cases with multiple writes to the same document in quick succession, the usage dashboard might collapse multiple writes together and count them as one. When billing usage, each write is still counted separately.
-    
-    The usage dashboard also collapses writes for field transforms like server timestamps, numeric increments, and array union operations. For field transforms, the usage dashboard might count multiple operations as a single operation.
+- Collapsed writes. In cases with multiple writes to the same document in quick succession, the usage dashboard might collapse multiple writes together and count them as one. When billing usage, each write is still counted separately.
 
-  - Queries that return zero results. Queries with zero results incur a cost of one read operation. This usage is billed but does not appear in the usage dashboard.
+  The usage dashboard also collapses writes for field transforms like server timestamps, numeric increments, and array union operations. For field transforms, the usage dashboard might count multiple operations as a single operation.
 
-  - Read operations from [index entries read](https://docs.cloud.google.com/firestore/pricing#index-reads) . This usage is billed but does not appear in the usage dashboard. For example, aggregation queries bill for index entries read but this usage does not appear in the usage dashboard.
+- Queries that return zero results. Queries with zero results incur a cost of one read operation. This usage is billed but does not appear in the usage dashboard.
 
-  - Requests to list collection IDs. The usage dashboard reports one read operation per collection ID which differs from [billing](https://cloud.google.com/firestore/pricing#:~:text=Queries%20other%20than,once%20per%20request) .
+- Read operations from [index entries read](https://docs.cloud.google.com/firestore/pricing#index-reads) . This usage is billed but does not appear in the usage dashboard. For example, aggregation queries bill for index entries read but this usage does not appear in the usage dashboard.
+
+- Requests to list collection IDs. The usage dashboard reports one read operation per collection ID which differs from [billing](https://cloud.google.com/firestore/pricing#:~:text=Queries%20other%20than,once%20per%20request) .
 
 The usage dashboard for deletes does not capture automatic expiration operations performed by Time-to-live (TTL) policies. Please refer to the TTL metrics from [Cloud Monitoring](https://docs.cloud.google.com/firestore/native/docs/monitor-usage#monitoring-metrics) .
 
@@ -84,61 +84,25 @@ Additionally, the Firebase console provides a Firebase Security Rules evaluation
 
 Cloud Monitoring includes the following Firestore metrics:
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Metric Name</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Document Reads</td>
-<td><p>The number of successful document reads. You can break this metric down by the type of read: LOOKUP or QUERY.</p>
-<p>This metric does not include reads from managed export or bulk delete operations.</p></td>
-</tr>
-<tr class="even">
-<td>Document Writes</td>
-<td><p>The number of successful document writes. You can break the metric down by the type of write: CREATE or UPDATE.</p>
-<p>This metric does not include writes from managed import operations.</p></td>
-</tr>
-<tr class="odd">
-<td>Document Deletes</td>
-<td>The number of successful document deletes.</td>
-</tr>
-<tr class="even">
-<td>Active Connections</td>
-<td><p>The number of active connections to your database.</p>
-<p>Each active <a href="https://docs.cloud.google.com/firestore/docs/reference/libraries#mobile_and_web_sdks">mobile and web SDK</a> maintains a single connection, which can be shared across multiple snapshot listeners. The <a href="https://docs.cloud.google.com/firestore/docs/reference/libraries#server_client_libraries">server client libraries</a> create one connection per snapshot listener.</p></td>
-</tr>
-<tr class="odd">
-<td>Snapshot Listeners</td>
-<td><p>The number of snapshot listeners across all active connections.</p></td>
-</tr>
-<tr class="even">
-<td>Time-to-live deletion count</td>
-<td><p>Total count of documents deleted by <a href="https://docs.cloud.google.com/firestore/native/docs/ttl">Time-to-live (TTL) policies</a> .</p></td>
-</tr>
-<tr class="odd">
-<td>Time-to-live expiration to deletion delays</td>
-<td><p>Time elapsed between when a document expired under a <a href="https://docs.cloud.google.com/firestore/native/docs/ttl">Time-to-live (TTL) policy</a> and when it was actually deleted.</p></td>
-</tr>
-</tbody>
-</table>
+| Metric Name                                | Description                                                                                                                                                                                                                                                                                                                                                                                                                           |
+|--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Document Reads                             | The number of successful document reads. You can break this metric down by the type of read: LOOKUP or QUERY. This metric does not include reads from managed export or bulk delete operations.                                                                                                                                                                                                                                       |
+| Document Writes                            | The number of successful document writes. You can break the metric down by the type of write: CREATE or UPDATE. This metric does not include writes from managed import operations.                                                                                                                                                                                                                                                   |
+| Document Deletes                           | The number of successful document deletes.                                                                                                                                                                                                                                                                                                                                                                                            |
+| Active Connections                         | The number of active connections to your database. Each active [mobile and web SDK](https://docs.cloud.google.com/firestore/docs/reference/libraries#mobile_and_web_sdks) maintains a single connection, which can be shared across multiple snapshot listeners. The [server client libraries](https://docs.cloud.google.com/firestore/docs/reference/libraries#server_client_libraries) create one connection per snapshot listener. |
+| Snapshot Listeners                         | The number of snapshot listeners across all active connections.                                                                                                                                                                                                                                                                                                                                                                       |
+| Time-to-live deletion count                | Total count of documents deleted by [Time-to-live (TTL) policies](https://docs.cloud.google.com/firestore/native/docs/ttl) .                                                                                                                                                                                                                                                                                                          |
+| Time-to-live expiration to deletion delays | Time elapsed between when a document expired under a [Time-to-live (TTL) policy](https://docs.cloud.google.com/firestore/native/docs/ttl) and when it was actually deleted.                                                                                                                                                                                                                                                           |
 
 > **Note:** The preceding list covers only the most commonly used Firestore metrics. Additional metrics, such as latency measurements, index entry reads, and system-level metrics, are also available through Cloud Monitoring. See the [full reference of Firestore metrics](https://cloud.google.com/monitoring/api/metrics_gcp#gcp-firestore) for the complete set.
 
-  - Realtime updates usage  
-    Use the active connections and snapshot listeners metrics to measure your usage of [realtime updates](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) .
-    
-    Let's say a user opens your app on their phone. The app then connects to Firestore and subscribes to 10 queries. This increases your metrics by 1 active connection and 10 snapshot listeners.
+Realtime updates usage  
+Use the active connections and snapshot listeners metrics to measure your usage of [realtime updates](https://docs.cloud.google.com/firestore/native/docs/query-data/listen) .
 
-  - Sampling rate  
-    The Firestore metrics are sampled every minute, but updates may take up to 4 minutes to show up in your dashboards.
+Let's say a user opens your app on their phone. The app then connects to Firestore and subscribes to 10 queries. This increases your metrics by 1 active connection and 10 snapshot listeners.
+
+Sampling rate  
+The Firestore metrics are sampled every minute, but updates may take up to 4 minutes to show up in your dashboards.
 
 ### Latency metrics
 
@@ -152,5 +116,5 @@ To view a pre-defined dashboard or to set up a dashboard, see [Use the monitorin
 
 ## What's next
 
-  - [Learn more about Cloud Monitoring.](https://cloud.google.com/monitoring/docs/)
-  - Learn about [best practices for monitoring Firestore performance](https://cloud.google.com/firestore/docs/understand-performance-monitoring) .
+- [Learn more about Cloud Monitoring.](https://cloud.google.com/monitoring/docs/)
+- Learn about [best practices for monitoring Firestore performance](https://cloud.google.com/firestore/docs/understand-performance-monitoring) .

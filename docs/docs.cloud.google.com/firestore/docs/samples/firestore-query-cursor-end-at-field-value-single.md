@@ -12,57 +12,71 @@ Query a Firestore collection with a cursor end at filter
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Paginate data with query cursors](https://docs.cloud.google.com/firestore/native/docs/query-data/query-cursors)
+- [Paginate data with query cursors](https://docs.cloud.google.com/firestore/native/docs/query-data/query-cursors)
 
 ## Code sample
 
-### C\#
+### C#
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = citiesRef.OrderBy("Population").EndAt(1000000);
+```csharp
+Query query = citiesRef.OrderBy("Population").EndAt(1000000);
+```
 
 ### Go
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := client.Collection("cities").OrderBy("population", firestore.Asc).EndAt(1000000)
+```go
+query := client.Collection("cities").OrderBy("population", firestore.Asc).EndAt(1000000)
+```
 
 ### Java
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = cities.orderBy("population").endAt(4921000L);
+```java
+Query query = cities.orderBy("population").endAt(4921000L);
+```
 
 ### Node.js
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const endAtRes = await db.collection('cities')
-      .orderBy('population')
-      .endAt(1000000)
-      .get();
+```javascript
+const endAtRes = await db.collection('cities')
+  .orderBy('population')
+  .endAt(1000000)
+  .get();
+```
 
 ### PHP
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $citiesRef
-        ->orderBy('population')
-        ->endAt([1000000]);
+```php
+$query = $citiesRef
+    ->orderBy('population')
+    ->endAt([1000000]);
+```
 
 ### Python
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    cities_ref = db.collection("cities")
-    query_end_at = cities_ref.order_by("population").end_at({"population": 1000000})
+```python
+cities_ref = db.collection("cities")
+query_end_at = cities_ref.order_by("population").end_at({"population": 1000000})
+```
 
 ### Ruby
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = cities_ref.order("population").end_at(1_000_000)
+```ruby
+query = cities_ref.order("population").end_at(1_000_000)
+```
 
 ## What's next
 

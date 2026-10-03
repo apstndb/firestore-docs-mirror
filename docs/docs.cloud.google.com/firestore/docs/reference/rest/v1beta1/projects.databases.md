@@ -10,12 +10,7 @@ data_source: docs.cloud.google.com
 
 There is no persistent data associated with this resource.
 
-## Methods
-
-### `            exportDocuments           `
-
-Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage.
-
-### `            importDocuments           `
-
-Imports documents into Google Cloud Firestore.
+| Methods                                                                                                                     |                                                                                                                                     |
+|-----------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| [`exportDocuments`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases/exportDocuments) | Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage. |
+| [`importDocuments`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases/importDocuments) | Imports documents into Google Cloud Firestore.                                                                                      |

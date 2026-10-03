@@ -51,8 +51,8 @@ This limit applies when Datastore mode is used outside of Google App Engine. If 
 (1 MiB - 4 bytes)</td>
 </tr>
 <tr class="even">
-<td><p>Maximum number of property transformations that can be performed on a single entity in a <code dir="ltr" translate="no">Commit</code> operation or in a transaction.</p>
-<p>For array transforms like <code dir="ltr" translate="no">"appendMissingElements"</code> , each array element counts towards the limit.</p></td>
+<td><p>Maximum number of property transformations that can be performed on a single entity in a <code>Commit</code> operation or in a transaction.</p>
+<p>For array transforms like <code>"appendMissingElements"</code> , each array element counts towards the limit.</p></td>
 <td>500</td>
 </tr>
 <tr class="odd">
@@ -64,7 +64,7 @@ This limit applies when Datastore mode is used outside of Google App Engine. If 
 <td>20</td>
 </tr>
 <tr class="odd">
-<td>Maximum number of keys allowed for a <code dir="ltr" translate="no">Lookup</code> operation in the Datastore API</td>
+<td>Maximum number of keys allowed for a <code>Lookup</code> operation in the Datastore API</td>
 <td>1,000</td>
 </tr>
 <tr class="even">
@@ -111,9 +111,9 @@ This limit applies when Datastore mode is used outside of Google App Engine. If 
 </tr>
 <tr class="even">
 <td>Maximum number of entity filters for export and import requests
-When the export or import request specifies an <code dir="ltr" translate="no">entity_filter</code> , each combination of filtered kind and namespace counts as a separate filter towards this limit. For example:
-A request with <code dir="ltr" translate="no">kinds=['foo', 'bar']</code> and <code dir="ltr" translate="no">namespace_ids=['', 'ns1']</code><br />
-results in 4 filters towards this limit: <code dir="ltr" translate="no">[('', 'foo'), ('', 'bar'), ('ns1', 'foo'), ('ns1', 'bar')]</code></td>
+When the export or import request specifies an <code>entity_filter</code> , each combination of filtered kind and namespace counts as a separate filter towards this limit. For example:
+A request with <code>kinds=['foo', 'bar']</code> and <code>namespace_ids=['', 'ns1']</code><br />
+results in 4 filters towards this limit: <code>[('', 'foo'), ('', 'bar'), ('ns1', 'foo'), ('ns1', 'bar')]</code></td>
 <td>100</td>
 </tr>
 <tr class="odd">
@@ -127,35 +127,13 @@ results in 4 filters towards this limit: <code dir="ltr" translate="no">[('', 'f
 
 If you have not yet upgraded from Datastore to [Firestore in Datastore mode](https://docs.cloud.google.com/datastore/docs/firestore-or-datastore#cloud_firestore_in_datastore_mode) , the following limits also apply to your database instance:
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Limit</th>
-<th>Amount</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Maximum number of entity groups that can be accessed in a transaction</td>
-<td>25</td>
-</tr>
-<tr class="even">
-<td>Maximum rate of transactions reading from or writing to an entity group</td>
-<td><a href="https://docs.cloud.google.com/datastore/docs/concepts/cloud-datastore-transactions#transactions_and_entity_groups">1 per sec</a></td>
-</tr>
-<tr class="odd">
-<td>Maximum write rate to an entity group.
-Note you can batch writes together for an entity group. This allows you to write multiple entities to an entity group within this limit.</td>
-<td>1 per second</td>
-</tr>
-</tbody>
-</table>
+| Limit                                                                                                                                                                           | Amount                                                                                                                         |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| Maximum number of entity groups that can be accessed in a transaction                                                                                                           | 25                                                                                                                             |
+| Maximum rate of transactions reading from or writing to an entity group                                                                                                         | [1 per sec](https://docs.cloud.google.com/datastore/docs/concepts/cloud-datastore-transactions#transactions_and_entity_groups) |
+| Maximum write rate to an entity group. Note you can batch writes together for an entity group. This allows you to write multiple entities to an entity group within this limit. | 1 per second                                                                                                                   |
 
 ## What's next
 
-  - Learn about [Pricing and Quota](https://docs.cloud.google.com/datastore/docs/pricing)
-  - Learn about [Storage Size Calculations](https://docs.cloud.google.com/datastore/docs/concepts/storage-size)
+- Learn about [Pricing and Quota](https://docs.cloud.google.com/datastore/docs/pricing)
+- Learn about [Storage Size Calculations](https://docs.cloud.google.com/datastore/docs/concepts/storage-size)

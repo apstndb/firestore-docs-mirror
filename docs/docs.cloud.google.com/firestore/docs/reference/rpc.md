@@ -12,382 +12,125 @@ Accesses the NoSQL document database built for automatic scaling, high performan
 
 The Service name `firestore.googleapis.com` is needed to create RPC client stubs.
 
-## `        google.cloud.location.Locations       `
-
-Methods
-
-`  GetLocation  `
-
-Gets information about a location.
-
-`  ListLocations  `
-
-Lists information about the supported locations for this service.
-
-## `        google.firestore.admin.v1.FirestoreAdmin       `
-
-Methods
-
-`  BulkDeleteDocuments  `
-
-Bulk deletes a subset of documents from Google Cloud Firestore.
-
-`  CloneDatabase  `
-
-Creates a new database by cloning an existing one.
-
-`  CreateBackupSchedule  `
-
-Creates a backup schedule on a database.
-
-`  CreateDatabase  `
-
-Create a database.
-
-`  CreateIndex  `
-
-Creates a composite index.
-
-`  CreateUserCreds  `
-
-Create a user creds.
-
-`  DeleteBackup  `
-
-Deletes a backup.
-
-`  DeleteBackupSchedule  `
-
-Deletes a backup schedule.
-
-`  DeleteDatabase  `
-
-Deletes a database.
-
-`  DeleteIndex  `
-
-Deletes a composite index.
-
-`  DeleteUserCreds  `
-
-Deletes a user creds.
-
-`  DisableUserCreds  `
-
-Disables a user creds.
-
-`  EnableUserCreds  `
-
-Enables a user creds.
-
-`  ExportDocuments  `
-
-Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage.
-
-`  GetBackup  `
-
-Gets information about a backup.
-
-`  GetBackupSchedule  `
-
-Gets information about a backup schedule.
-
-`  GetDatabase  `
-
-Gets information about a database.
-
-`  GetField  `
-
-Gets the metadata and configuration for a Field.
-
-`  GetIndex  `
-
-Gets a composite index.
-
-`  GetUserCreds  `
-
-Gets a user creds resource.
-
-`  ImportDocuments  `
-
-Imports documents into Google Cloud Firestore.
-
-`  ListBackupSchedules  `
-
-List backup schedules.
-
-`  ListBackups  `
-
-Lists all the backups.
-
-`  ListDatabases  `
-
-List all the databases in the project.
-
-`  ListFields  `
-
-Lists the field configuration and metadata for this database.
-
-`  ListIndexes  `
-
-Lists composite indexes.
-
-`  ListUserCreds  `
-
-List all user creds in the database.
-
-`  ResetUserPassword  `
-
-Resets the password of a user creds.
-
-`  RestoreDatabase  `
-
-Creates a new database by restoring from an existing backup.
-
-`  UpdateBackupSchedule  `
-
-Updates a backup schedule.
-
-`  UpdateDatabase  `
-
-Updates a database.
-
-`  UpdateField  `
-
-Updates a field configuration.
-
-## `        google.firestore.admin.v1beta1.FirestoreAdmin       `
-
-Methods
-
-`  CreateIndex  `
-
-Creates the specified index.
-
-`  DeleteIndex  `
-
-Deletes an index.
-
-`  ExportDocuments  `
-
-Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage.
-
-`  GetIndex  `
-
-Gets an index.
-
-`  ImportDocuments  `
-
-Imports documents into Google Cloud Firestore.
-
-`  ListIndexes  `
-
-Lists the indexes that match the specified filters.
-
-## `        google.firestore.admin.v1beta2.FirestoreAdmin       `
-
-Methods
-
-`  CreateIndex  `
-
-Creates a composite index.
-
-`  DeleteIndex  `
-
-Deletes a composite index.
-
-`  ExportDocuments  `
-
-Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage.
-
-`  GetField  `
-
-Gets the metadata and configuration for a Field.
-
-`  GetIndex  `
-
-Gets a composite index.
-
-`  ImportDocuments  `
-
-Imports documents into Google Cloud Firestore.
-
-`  ListFields  `
-
-Lists the field configuration and metadata for this database.
-
-`  ListIndexes  `
-
-Lists composite indexes.
-
-`  UpdateField  `
-
-Updates a field configuration.
-
-## `        google.firestore.v1.Firestore       `
-
-Methods
-
-`  BatchGetDocuments  `
-
-Gets multiple documents.
-
-`  BatchWrite  `
-
-Applies a batch of write operations.
-
-`  BeginTransaction  `
-
-Starts a new transaction.
-
-`  Commit  `
-
-Commits a transaction, while optionally updating documents.
-
-`  CreateDocument  `
-
-Creates a new document.
-
-`  DeleteDocument  `
-
-Deletes a document.
-
-`  ExecutePipeline  `
-
-Executes a pipeline query.
-
-`  GetDocument  `
-
-Gets a single document.
-
-`  ListCollectionIds  `
-
-Lists all the collection IDs underneath a document.
-
-`  ListDocuments  `
-
-Lists documents.
-
-`  Listen  `
-
-Listens to changes.
-
-`  PartitionQuery  `
-
-Partitions a query by returning partition cursors that can be used to run the query in parallel.
-
-`  Rollback  `
-
-Rolls back a transaction.
-
-`  RunAggregationQuery  `
-
-Runs an aggregation query.
-
-`  RunQuery  `
-
-Runs a query.
-
-`  UpdateDocument  `
-
-Updates or inserts a document.
-
-`  Write  `
-
-Streams batches of document updates and deletes, in order.
-
-## `        google.firestore.v1beta1.Firestore       `
-
-Methods
-
-`  BatchGetDocuments  `
-
-Gets multiple documents.
-
-`  BatchWrite  `
-
-Applies a batch of write operations.
-
-`  BeginTransaction  `
-
-Starts a new transaction.
-
-`  Commit  `
-
-Commits a transaction, while optionally updating documents.
-
-`  CreateDocument  `
-
-Creates a new document.
-
-`  DeleteDocument  `
-
-Deletes a document.
-
-`  ExecutePipeline  `
-
-Executes a pipeline query.
-
-`  GetDocument  `
-
-Gets a single document.
-
-`  ListCollectionIds  `
-
-Lists all the collection IDs underneath a document.
-
-`  ListDocuments  `
-
-Lists documents.
-
-`  Listen  `
-
-Listens to changes.
-
-`  PartitionQuery  `
-
-Partitions a query by returning partition cursors that can be used to run the query in parallel.
-
-`  Rollback  `
-
-Rolls back a transaction.
-
-`  RunAggregationQuery  `
-
-Runs an aggregation query.
-
-`  RunQuery  `
-
-Runs a query.
-
-`  UpdateDocument  `
-
-Updates or inserts a document.
-
-`  Write  `
-
-Streams batches of document updates and deletes, in order.
-
-## `        google.longrunning.Operations       `
-
-Methods
-
-`  CancelOperation  `
-
-Starts asynchronous cancellation on a long-running operation.
-
-`  DeleteOperation  `
-
-Deletes a long-running operation.
-
-`  GetOperation  `
-
-Gets the latest state of a long-running operation.
-
-`  ListOperations  `
-
-Lists operations that match the specified filter in the request.
-
-`  WaitOperation  `
-
-Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state.
+## [`google.cloud.location.Locations`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.cloud.location#google.cloud.location.Locations)
+
+| Methods                                                                                                                                           |                                                                   |
+|---------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|
+| [`GetLocation`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.cloud.location#google.cloud.location.Locations.GetLocation)     | Gets information about a location.                                |
+| [`ListLocations`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.cloud.location#google.cloud.location.Locations.ListLocations) | Lists information about the supported locations for this service. |
+
+## [`google.firestore.admin.v1.FirestoreAdmin`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin)
+
+| Methods                                                                                                                                                                      |                                                                                                                                     |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| [`BulkDeleteDocuments`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.BulkDeleteDocuments)   | Bulk deletes a subset of documents from Google Cloud Firestore.                                                                     |
+| [`CloneDatabase`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.CloneDatabase)               | Creates a new database by cloning an existing one.                                                                                  |
+| [`CreateBackupSchedule`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.CreateBackupSchedule) | Creates a backup schedule on a database.                                                                                            |
+| [`CreateDatabase`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.CreateDatabase)             | Create a database.                                                                                                                  |
+| [`CreateIndex`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.CreateIndex)                   | Creates a composite index.                                                                                                          |
+| [`CreateUserCreds`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.CreateUserCreds)           | Create a user creds.                                                                                                                |
+| [`DeleteBackup`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.DeleteBackup)                 | Deletes a backup.                                                                                                                   |
+| [`DeleteBackupSchedule`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.DeleteBackupSchedule) | Deletes a backup schedule.                                                                                                          |
+| [`DeleteDatabase`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.DeleteDatabase)             | Deletes a database.                                                                                                                 |
+| [`DeleteIndex`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.DeleteIndex)                   | Deletes a composite index.                                                                                                          |
+| [`DeleteUserCreds`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.DeleteUserCreds)           | Deletes a user creds.                                                                                                               |
+| [`DisableUserCreds`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.DisableUserCreds)         | Disables a user creds.                                                                                                              |
+| [`EnableUserCreds`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.EnableUserCreds)           | Enables a user creds.                                                                                                               |
+| [`ExportDocuments`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.ExportDocuments)           | Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage. |
+| [`GetBackup`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.GetBackup)                       | Gets information about a backup.                                                                                                    |
+| [`GetBackupSchedule`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.GetBackupSchedule)       | Gets information about a backup schedule.                                                                                           |
+| [`GetDatabase`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.GetDatabase)                   | Gets information about a database.                                                                                                  |
+| [`GetField`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.GetField)                         | Gets the metadata and configuration for a Field.                                                                                    |
+| [`GetIndex`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.GetIndex)                         | Gets a composite index.                                                                                                             |
+| [`GetUserCreds`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.GetUserCreds)                 | Gets a user creds resource.                                                                                                         |
+| [`ImportDocuments`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.ImportDocuments)           | Imports documents into Google Cloud Firestore.                                                                                      |
+| [`ListBackupSchedules`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.ListBackupSchedules)   | List backup schedules.                                                                                                              |
+| [`ListBackups`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.ListBackups)                   | Lists all the backups.                                                                                                              |
+| [`ListDatabases`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.ListDatabases)               | List all the databases in the project.                                                                                              |
+| [`ListFields`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.ListFields)                     | Lists the field configuration and metadata for this database.                                                                       |
+| [`ListIndexes`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.ListIndexes)                   | Lists composite indexes.                                                                                                            |
+| [`ListUserCreds`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.ListUserCreds)               | List all user creds in the database.                                                                                                |
+| [`ResetUserPassword`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.ResetUserPassword)       | Resets the password of a user creds.                                                                                                |
+| [`RestoreDatabase`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.RestoreDatabase)           | Creates a new database by restoring from an existing backup.                                                                        |
+| [`UpdateBackupSchedule`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.UpdateBackupSchedule) | Updates a backup schedule.                                                                                                          |
+| [`UpdateDatabase`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.UpdateDatabase)             | Updates a database.                                                                                                                 |
+| [`UpdateField`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1#google.firestore.admin.v1.FirestoreAdmin.UpdateField)                   | Updates a field configuration.                                                                                                      |
+
+## [`google.firestore.admin.v1beta1.FirestoreAdmin`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta1#google.firestore.admin.v1beta1.FirestoreAdmin)
+
+| Methods                                                                                                                                                                      |                                                                                                                                     |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| [`CreateIndex`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta1#google.firestore.admin.v1beta1.FirestoreAdmin.CreateIndex)         | Creates the specified index.                                                                                                        |
+| [`DeleteIndex`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta1#google.firestore.admin.v1beta1.FirestoreAdmin.DeleteIndex)         | Deletes an index.                                                                                                                   |
+| [`ExportDocuments`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta1#google.firestore.admin.v1beta1.FirestoreAdmin.ExportDocuments) | Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage. |
+| [`GetIndex`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta1#google.firestore.admin.v1beta1.FirestoreAdmin.GetIndex)               | Gets an index.                                                                                                                      |
+| [`ImportDocuments`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta1#google.firestore.admin.v1beta1.FirestoreAdmin.ImportDocuments) | Imports documents into Google Cloud Firestore.                                                                                      |
+| [`ListIndexes`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta1#google.firestore.admin.v1beta1.FirestoreAdmin.ListIndexes)         | Lists the indexes that match the specified filters.                                                                                 |
+
+## [`google.firestore.admin.v1beta2.FirestoreAdmin`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta2#google.firestore.admin.v1beta2.FirestoreAdmin)
+
+| Methods                                                                                                                                                                      |                                                                                                                                     |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| [`CreateIndex`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta2#google.firestore.admin.v1beta2.FirestoreAdmin.CreateIndex)         | Creates a composite index.                                                                                                          |
+| [`DeleteIndex`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta2#google.firestore.admin.v1beta2.FirestoreAdmin.DeleteIndex)         | Deletes a composite index.                                                                                                          |
+| [`ExportDocuments`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta2#google.firestore.admin.v1beta2.FirestoreAdmin.ExportDocuments) | Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage. |
+| [`GetField`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta2#google.firestore.admin.v1beta2.FirestoreAdmin.GetField)               | Gets the metadata and configuration for a Field.                                                                                    |
+| [`GetIndex`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta2#google.firestore.admin.v1beta2.FirestoreAdmin.GetIndex)               | Gets a composite index.                                                                                                             |
+| [`ImportDocuments`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta2#google.firestore.admin.v1beta2.FirestoreAdmin.ImportDocuments) | Imports documents into Google Cloud Firestore.                                                                                      |
+| [`ListFields`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta2#google.firestore.admin.v1beta2.FirestoreAdmin.ListFields)           | Lists the field configuration and metadata for this database.                                                                       |
+| [`ListIndexes`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta2#google.firestore.admin.v1beta2.FirestoreAdmin.ListIndexes)         | Lists composite indexes.                                                                                                            |
+| [`UpdateField`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.admin.v1beta2#google.firestore.admin.v1beta2.FirestoreAdmin.UpdateField)         | Updates a field configuration.                                                                                                      |
+
+## [`google.firestore.v1.Firestore`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore)
+
+| Methods                                                                                                                                                   |                                                                                                  |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| [`BatchGetDocuments`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore.BatchGetDocuments)     | Gets multiple documents.                                                                         |
+| [`BatchWrite`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore.BatchWrite)                   | Applies a batch of write operations.                                                             |
+| [`BeginTransaction`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore.BeginTransaction)       | Starts a new transaction.                                                                        |
+| [`Commit`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore.Commit)                           | Commits a transaction, while optionally updating documents.                                      |
+| [`CreateDocument`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore.CreateDocument)           | Creates a new document.                                                                          |
+| [`DeleteDocument`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore.DeleteDocument)           | Deletes a document.                                                                              |
+| [`ExecutePipeline`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore.ExecutePipeline)         | Executes a pipeline query.                                                                       |
+| [`GetDocument`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore.GetDocument)                 | Gets a single document.                                                                          |
+| [`ListCollectionIds`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore.ListCollectionIds)     | Lists all the collection IDs underneath a document.                                              |
+| [`ListDocuments`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore.ListDocuments)             | Lists documents.                                                                                 |
+| [`Listen`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore.Listen)                           | Listens to changes.                                                                              |
+| [`PartitionQuery`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore.PartitionQuery)           | Partitions a query by returning partition cursors that can be used to run the query in parallel. |
+| [`Rollback`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore.Rollback)                       | Rolls back a transaction.                                                                        |
+| [`RunAggregationQuery`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore.RunAggregationQuery) | Runs an aggregation query.                                                                       |
+| [`RunQuery`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore.RunQuery)                       | Runs a query.                                                                                    |
+| [`UpdateDocument`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore.UpdateDocument)           | Updates or inserts a document.                                                                   |
+| [`Write`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore.Write)                             | Streams batches of document updates and deletes, in order.                                       |
+
+## [`google.firestore.v1beta1.Firestore`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1beta1#google.firestore.v1beta1.Firestore)
+
+| Methods                                                                                                                                                             |                                                                                                  |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| [`BatchGetDocuments`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1beta1#google.firestore.v1beta1.Firestore.BatchGetDocuments)     | Gets multiple documents.                                                                         |
+| [`BatchWrite`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1beta1#google.firestore.v1beta1.Firestore.BatchWrite)                   | Applies a batch of write operations.                                                             |
+| [`BeginTransaction`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1beta1#google.firestore.v1beta1.Firestore.BeginTransaction)       | Starts a new transaction.                                                                        |
+| [`Commit`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1beta1#google.firestore.v1beta1.Firestore.Commit)                           | Commits a transaction, while optionally updating documents.                                      |
+| [`CreateDocument`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1beta1#google.firestore.v1beta1.Firestore.CreateDocument)           | Creates a new document.                                                                          |
+| [`DeleteDocument`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1beta1#google.firestore.v1beta1.Firestore.DeleteDocument)           | Deletes a document.                                                                              |
+| [`ExecutePipeline`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1beta1#google.firestore.v1beta1.Firestore.ExecutePipeline)         | Executes a pipeline query.                                                                       |
+| [`GetDocument`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1beta1#google.firestore.v1beta1.Firestore.GetDocument)                 | Gets a single document.                                                                          |
+| [`ListCollectionIds`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1beta1#google.firestore.v1beta1.Firestore.ListCollectionIds)     | Lists all the collection IDs underneath a document.                                              |
+| [`ListDocuments`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1beta1#google.firestore.v1beta1.Firestore.ListDocuments)             | Lists documents.                                                                                 |
+| [`Listen`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1beta1#google.firestore.v1beta1.Firestore.Listen)                           | Listens to changes.                                                                              |
+| [`PartitionQuery`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1beta1#google.firestore.v1beta1.Firestore.PartitionQuery)           | Partitions a query by returning partition cursors that can be used to run the query in parallel. |
+| [`Rollback`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1beta1#google.firestore.v1beta1.Firestore.Rollback)                       | Rolls back a transaction.                                                                        |
+| [`RunAggregationQuery`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1beta1#google.firestore.v1beta1.Firestore.RunAggregationQuery) | Runs an aggregation query.                                                                       |
+| [`RunQuery`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1beta1#google.firestore.v1beta1.Firestore.RunQuery)                       | Runs a query.                                                                                    |
+| [`UpdateDocument`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1beta1#google.firestore.v1beta1.Firestore.UpdateDocument)           | Updates or inserts a document.                                                                   |
+| [`Write`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1beta1#google.firestore.v1beta1.Firestore.Write)                             | Streams batches of document updates and deletes, in order.                                       |
+
+## [`google.longrunning.Operations`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.longrunning#google.longrunning.Operations)
+
+| Methods                                                                                                                                          |                                                                                                                              |
+|--------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| [`CancelOperation`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.longrunning#google.longrunning.Operations.CancelOperation) | Starts asynchronous cancellation on a long-running operation.                                                                |
+| [`DeleteOperation`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.longrunning#google.longrunning.Operations.DeleteOperation) | Deletes a long-running operation.                                                                                            |
+| [`GetOperation`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.longrunning#google.longrunning.Operations.GetOperation)       | Gets the latest state of a long-running operation.                                                                           |
+| [`ListOperations`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.longrunning#google.longrunning.Operations.ListOperations)   | Lists operations that match the specified filter in the request.                                                             |
+| [`WaitOperation`](https://docs.cloud.google.com/firestore/docs/reference/rpc/google.longrunning#google.longrunning.Operations.WaitOperation)     | Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. |

@@ -8,4 +8,4 @@ data_source: docs.cloud.google.com
 
 # All Firestore code samples
 
-Python Go Java C\# Ruby Node.js PHP Kotlin
+Python Go Java C# Ruby Node.js PHP Kotlin

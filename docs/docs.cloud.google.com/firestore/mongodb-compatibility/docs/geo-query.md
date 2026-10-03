@@ -9,7 +9,7 @@ data_source: docs.cloud.google.com
 # Use geo queries
 
 > **Preview**
-> 
+>
 > This product or feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . Pre-GA products and features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
 Use geospatial queries in MongoDB compatible operations to query documents that exist within a certain range from a specific longitude and latitude.
@@ -30,7 +30,7 @@ You can perform a geospatial query using the `$near` operator, which calculates 
 
 In the following example, the `$near` operator is used to calculate the distance between the geo point `(-122.084, 37.4221)` and the geo points located in the `location` field of all documents in `myCollection.` The documents are returned and ordered by nearest to farthest distance between the two points.
 
-``` 
+```
   db.myCollection.find({
     location: {
       $near: {
@@ -46,7 +46,7 @@ In the following example, the `$near` operator is used to calculate the distance
 
 You can also use the optional `$maxDistance` and `$minDistance` fields to control the distance in meters from the point of your query. The following example shows a query where returned documents must be at least 500 meters and at most 2000 meters from the point `(-122.084, 37.4221)` :
 
-``` 
+```
   db.myCollection.find({
     location: {
       $near: {
@@ -63,7 +63,7 @@ You can also use the optional `$maxDistance` and `$minDistance` fields to contro
 
 If your index is partitioned, then you can filter based on the partition by including the partition in an "and" equality filter within your query. For example, if you had a `region` partition and wanted to filter your query results by the `midwest` region, you could do the following:
 
-``` 
+```
   db.myCollection.find( { $and: [
     { location:
       { $near: {
@@ -81,7 +81,7 @@ The value of your partition must be a string. Your partition filter must be join
 
 ## Limitations
 
-  - `$near` operators and `$text` operators can't be used in the same the query.
-  - `$near` can't be nested in a multi-clause `$or` statement unless `$near` is the only expression in the `$or` clause.
-  - `$near` can't be used with the `$not` or `$nor` operators in a query.
-  - `$near` isn't supported in aggregation queries.
+- `$near` operators and `$text` operators can't be used in the same the query.
+- `$near` can't be nested in a multi-clause `$or` statement unless `$near` is the only expression in the `$or` clause.
+- `$near` can't be used with the `$not` or `$nor` operators in a query.
+- `$near` isn't supported in aggregation queries.

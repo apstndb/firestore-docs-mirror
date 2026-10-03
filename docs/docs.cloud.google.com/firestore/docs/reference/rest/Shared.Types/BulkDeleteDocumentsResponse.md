@@ -8,4 +8,4 @@ data_source: docs.cloud.google.com
 
 This type has no fields.
 
-The response for `  FirestoreAdmin.BulkDeleteDocuments  ` .
+The response for [`FirestoreAdmin.BulkDeleteDocuments`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/bulkDeleteDocuments#google.firestore.admin.v1.FirestoreAdmin.BulkDeleteDocuments) .

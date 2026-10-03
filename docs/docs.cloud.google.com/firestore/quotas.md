@@ -21,7 +21,7 @@ The free tier applies to only one Firestore database per project. The first data
 ### Standard edition
 
 | Free tier              | Quota            |
-| ---------------------- | ---------------- |
+|------------------------|------------------|
 | Stored data            | 1 GiB            |
 | Document reads         | 50,000 per day   |
 | Document writes        | 20,000 per day   |
@@ -31,7 +31,7 @@ The free tier applies to only one Firestore database per project. The first data
 ### Enterprise edition
 
 | Free tier              | Quota            |
-| ---------------------- | ---------------- |
+|------------------------|------------------|
 | Stored data            | 1 GiB            |
 | Read units             | 50,000 per day   |
 | Real-time update units | 50,000 per day   |
@@ -40,11 +40,11 @@ The free tier applies to only one Firestore database per project. The first data
 
 The following operations and features don't include free usage. You must [enable billing](https://docs.cloud.google.com/billing/docs/how-to/modify-project) to use these features:
 
-  - Managed deletes (TTL)
-  - PITR data
-  - Backup data
-  - Restore operations
-  - Clone operations
+- Managed deletes (TTL)
+- PITR data
+- Backup data
+- Restore operations
+- Clone operations
 
 ## Limits
 
@@ -54,57 +54,17 @@ The following tables show the limits that apply to Firestore. These are hard lim
 
 ### Standard edition
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Limit</th>
-<th>Details</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Maximum number of databases per project</td>
-<td><p>100</p>
-<p>You can <a href="https://docs.cloud.google.com/support-hub">contact support</a> to request an increase to this limit.</p></td>
-</tr>
-<tr class="even">
-<td>Maximum number of <a href="https://docs.cloud.google.com/firestore/docs/cmek">customer-managed encryption keys (CMEK) databases</a> per project</td>
-<td><p>0</p>
-<p>By default the quota is 0 because this feature is behind an allowlist. You can request to increase the quota by filling in <a href="https://docs.google.com/forms/d/e/1FAIpQLSfKs8wJf4IXu1NizvfyU2vT59JDbdPvkehMVZ2ab5l_aDLIIA/viewform?resourcekey=0-O15dlRFvA0JIDmh6VFUEcA">the CMEK access request form</a> .</p></td>
-</tr>
-</tbody>
-</table>
+| Limit                                                                                                                                | Details                                                                                                                                                                                                                                                                                                 |
+|--------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Maximum number of databases per project                                                                                              | 100 You can [contact support](https://docs.cloud.google.com/support-hub) to request an increase to this limit.                                                                                                                                                                                          |
+| Maximum number of [customer-managed encryption keys (CMEK) databases](https://docs.cloud.google.com/firestore/docs/cmek) per project | 0 By default the quota is 0 because this feature is behind an allowlist. You can request to increase the quota by filling in [the CMEK access request form](https://docs.google.com/forms/d/e/1FAIpQLSfKs8wJf4IXu1NizvfyU2vT59JDbdPvkehMVZ2ab5l_aDLIIA/viewform?resourcekey=0-O15dlRFvA0JIDmh6VFUEcA) . |
 
 ### Enterprise edition
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Limit</th>
-<th>Details</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Maximum number of databases per project</td>
-<td><p>100</p>
-<p>You can <a href="https://docs.cloud.google.com/support-hub">contact support</a> to request an increase to this limit.</p></td>
-</tr>
-<tr class="even">
-<td>Maximum number of <a href="https://docs.cloud.google.com/firestore/docs/cmek">customer-managed encryption keys (CMEK) databases</a> per project</td>
-<td><p>0</p>
-<p>By default the quota is 0 because this feature is behind an allowlist. You can request to increase the quota by filling in <a href="https://docs.google.com/forms/d/e/1FAIpQLSfKs8wJf4IXu1NizvfyU2vT59JDbdPvkehMVZ2ab5l_aDLIIA/viewform?resourcekey=0-O15dlRFvA0JIDmh6VFUEcA">the CMEK access request form</a> .</p></td>
-</tr>
-</tbody>
-</table>
+| Limit                                                                                                                                | Details                                                                                                                                                                                                                                                                                                 |
+|--------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Maximum number of databases per project                                                                                              | 100 You can [contact support](https://docs.cloud.google.com/support-hub) to request an increase to this limit.                                                                                                                                                                                          |
+| Maximum number of [customer-managed encryption keys (CMEK) databases](https://docs.cloud.google.com/firestore/docs/cmek) per project | 0 By default the quota is 0 because this feature is behind an allowlist. You can request to increase the quota by filling in [the CMEK access request form](https://docs.google.com/forms/d/e/1FAIpQLSfKs8wJf4IXu1NizvfyU2vT59JDbdPvkehMVZ2ab5l_aDLIIA/viewform?resourcekey=0-O15dlRFvA0JIDmh6VFUEcA) . |
 
 ### Collections, documents, and fields
 
@@ -127,9 +87,9 @@ The following tables show the limits that apply to Firestore. These are hard lim
 <td><ul>
 <li>Must be valid UTF-8 characters</li>
 <li>Must be no longer than 1,500 bytes</li>
-<li>Cannot contain a forward slash ( <code dir="ltr" translate="no">/</code> )</li>
-<li>Cannot solely consist of a single period ( <code dir="ltr" translate="no">.</code> ) or double periods ( <code dir="ltr" translate="no">..</code> )</li>
-<li>Cannot match the regular expression <code dir="ltr" translate="no">__.*__</code></li>
+<li>Cannot contain a forward slash ( <code>/</code> )</li>
+<li>Cannot solely consist of a single period ( <code>.</code> ) or double periods ( <code>..</code> )</li>
+<li>Cannot match the regular expression <code>__.*__</code></li>
 </ul></td>
 </tr>
 <tr class="even">
@@ -141,10 +101,10 @@ The following tables show the limits that apply to Firestore. These are hard lim
 <td><ul>
 <li>Must be valid UTF-8 characters</li>
 <li>Must be no longer than 1,500 bytes</li>
-<li>Cannot contain a forward slash ( <code dir="ltr" translate="no">/</code> )</li>
-<li>Cannot solely consist of a single period ( <code dir="ltr" translate="no">.</code> ) or double periods ( <code dir="ltr" translate="no">..</code> )</li>
-<li>Cannot match the regular expression <code dir="ltr" translate="no">__.*__</code></li>
-<li>If you import Datastore entities into a Firestore database, numeric entity IDs are exposed as <code dir="ltr" translate="no">__id[0-9]+__</code></li>
+<li>Cannot contain a forward slash ( <code>/</code> )</li>
+<li>Cannot solely consist of a single period ( <code>.</code> ) or double periods ( <code>..</code> )</li>
+<li>Cannot match the regular expression <code>__.*__</code></li>
+<li>If you import Datastore entities into a Firestore database, numeric entity IDs are exposed as <code>__id[0-9]+__</code></li>
 </ul></td>
 </tr>
 <tr class="even">
@@ -159,7 +119,7 @@ The following tables show the limits that apply to Firestore. These are hard lim
 <td>Constraints on field names</td>
 <td><ul>
 <li>Must be valid UTF-8 characters</li>
-<li>Cannot match the regular expression <code dir="ltr" translate="no">__.*__</code></li>
+<li>Cannot match the regular expression <code>__.*__</code></li>
 </ul></td>
 </tr>
 <tr class="odd">
@@ -169,15 +129,15 @@ The following tables show the limits that apply to Firestore. These are hard lim
 <tr class="even">
 <td>Constraints on field paths</td>
 <td><ul>
-<li>Must separate field names with a single period ( <code dir="ltr" translate="no">.</code> )</li>
-<li>May be passed as a dot-delimited ( <code dir="ltr" translate="no">.</code> ) string of segments where each segment is either a simple field name or a quoted field name (defined below).</li>
+<li>Must separate field names with a single period ( <code>.</code> )</li>
+<li>May be passed as a dot-delimited ( <code>.</code> ) string of segments where each segment is either a simple field name or a quoted field name (defined below).</li>
 </ul>
 A simple field name is one where all of the following are true:
 <ul>
-<li>Contains only the characters <code dir="ltr" translate="no">a-z</code> , <code dir="ltr" translate="no">A-Z</code> , <code dir="ltr" translate="no">0-9</code> , and underscore ( <code dir="ltr" translate="no">_</code> )</li>
-<li>Does not start with <code dir="ltr" translate="no">0-9</code></li>
+<li>Contains only the characters <code>a-z</code> , <code>A-Z</code> , <code>0-9</code> , and underscore ( <code>_</code> )</li>
+<li>Does not start with <code>0-9</code></li>
 </ul>
-A quoted field name starts and ends with the backtick character ( <code dir="ltr" translate="no">`</code> ). For example, <code dir="ltr" translate="no">foo.`x&amp;y`</code> refers to the <code dir="ltr" translate="no">x&amp;y</code> field nested under the <code dir="ltr" translate="no">foo</code> field. To construct a field name with the backtick character, escape the backtick character with the backslash character ( <code dir="ltr" translate="no">\</code> ). For convenience, you can avoid quoted field names by passing the field path as a FieldPath object ( <a href="https://firebase.google.com/docs/reference/js/firestore_.fieldpath">for example, see JavaScript FieldPath</a> ).</td>
+A quoted field name starts and ends with the backtick character ( <code>`</code> ). For example, <code>foo.`x&amp;y`</code> refers to the <code>x&amp;y</code> field nested under the <code>foo</code> field. To construct a field name with the backtick character, escape the backtick character with the backslash character ( <code>\</code> ). For convenience, you can avoid quoted field names by passing the field path as a FieldPath object ( <a href="https://firebase.google.com/docs/reference/js/firestore_.fieldpath">for example, see JavaScript FieldPath</a> ).</td>
 </tr>
 <tr class="odd">
 <td>Maximum size of a field path</td>
@@ -191,7 +151,7 @@ A quoted field name starts and ends with the backtick character ( <code dir="ltr
 <td>Maximum depth of fields in a map or array</td>
 <td><p>20</p>
 <p>Map and array fields add one level to the overall depth of an object. For example, the following object has a total depth of three levels:</p>
-<pre dir="ltr" data-is-upgraded="" translate="no"><code>{
+<pre data-fenced=""><code>{
   nested_map: {         #depth 1
     nested_array: [     #depth 2
       {
@@ -224,9 +184,9 @@ A quoted field name starts and ends with the backtick character ( <code dir="ltr
 <td><ul>
 <li>Must be valid UTF-8 characters</li>
 <li>Must be no longer than 1,500 bytes</li>
-<li>Cannot contain a forward slash ( <code dir="ltr" translate="no">/</code> )</li>
-<li>Cannot solely consist of a single period ( <code dir="ltr" translate="no">.</code> ) or double periods ( <code dir="ltr" translate="no">..</code> )</li>
-<li>Cannot match the regular expression <code dir="ltr" translate="no">__.*__</code></li>
+<li>Cannot contain a forward slash ( <code>/</code> )</li>
+<li>Cannot solely consist of a single period ( <code>.</code> ) or double periods ( <code>..</code> )</li>
+<li>Cannot match the regular expression <code>__.*__</code></li>
 </ul></td>
 </tr>
 <tr class="even">
@@ -238,10 +198,10 @@ A quoted field name starts and ends with the backtick character ( <code dir="ltr
 <td><ul>
 <li>Must be valid UTF-8 characters</li>
 <li>Must be no longer than 1,500 bytes</li>
-<li>Cannot contain a forward slash ( <code dir="ltr" translate="no">/</code> )</li>
-<li>Cannot solely consist of a single period ( <code dir="ltr" translate="no">.</code> ) or double periods ( <code dir="ltr" translate="no">..</code> )</li>
-<li>Cannot match the regular expression <code dir="ltr" translate="no">__.*__</code></li>
-<li>If you import Datastore entities into a Firestore database, numeric entity IDs are exposed as <code dir="ltr" translate="no">__id[0-9]+__</code></li>
+<li>Cannot contain a forward slash ( <code>/</code> )</li>
+<li>Cannot solely consist of a single period ( <code>.</code> ) or double periods ( <code>..</code> )</li>
+<li>Cannot match the regular expression <code>__.*__</code></li>
+<li>If you import Datastore entities into a Firestore database, numeric entity IDs are exposed as <code>__id[0-9]+__</code></li>
 </ul></td>
 </tr>
 <tr class="even">
@@ -256,7 +216,7 @@ A quoted field name starts and ends with the backtick character ( <code dir="ltr
 <td>Constraints on field names</td>
 <td><ul>
 <li>Must be valid UTF-8 characters</li>
-<li>Cannot match the regular expression <code dir="ltr" translate="no">__.*__</code></li>
+<li>Cannot match the regular expression <code>__.*__</code></li>
 </ul></td>
 </tr>
 <tr class="odd">
@@ -266,15 +226,15 @@ A quoted field name starts and ends with the backtick character ( <code dir="ltr
 <tr class="even">
 <td>Constraints on field paths</td>
 <td><ul>
-<li>Must separate field names with a single period ( <code dir="ltr" translate="no">.</code> )</li>
-<li>May be passed as a dot-delimited ( <code dir="ltr" translate="no">.</code> ) string of segments where each segment is either a simple field name or a quoted field name (defined below).</li>
+<li>Must separate field names with a single period ( <code>.</code> )</li>
+<li>May be passed as a dot-delimited ( <code>.</code> ) string of segments where each segment is either a simple field name or a quoted field name (defined below).</li>
 </ul>
 A simple field name is one where all of the following are true:
 <ul>
-<li>Contains only the characters <code dir="ltr" translate="no">a-z</code> , <code dir="ltr" translate="no">A-Z</code> , <code dir="ltr" translate="no">0-9</code> , and underscore ( <code dir="ltr" translate="no">_</code> )</li>
-<li>Does not start with <code dir="ltr" translate="no">0-9</code></li>
+<li>Contains only the characters <code>a-z</code> , <code>A-Z</code> , <code>0-9</code> , and underscore ( <code>_</code> )</li>
+<li>Does not start with <code>0-9</code></li>
 </ul>
-A quoted field name starts and ends with the backtick character ( <code dir="ltr" translate="no">`</code> ). For example, <code dir="ltr" translate="no">foo.`x&amp;y`</code> refers to the <code dir="ltr" translate="no">x&amp;y</code> field nested under the <code dir="ltr" translate="no">foo</code> field. To construct a field name with the backtick character, escape the backtick character with the backslash character ( <code dir="ltr" translate="no">\</code> ). For convenience, you can avoid quoted field names by passing the field path as a FieldPath object ( <a href="https://firebase.google.com/docs/reference/js/firestore_.fieldpath">for example, see JavaScript FieldPath</a> ).</td>
+A quoted field name starts and ends with the backtick character ( <code>`</code> ). For example, <code>foo.`x&amp;y`</code> refers to the <code>x&amp;y</code> field nested under the <code>foo</code> field. To construct a field name with the backtick character, escape the backtick character with the backslash character ( <code>\</code> ). For convenience, you can avoid quoted field names by passing the field path as a FieldPath object ( <a href="https://firebase.google.com/docs/reference/js/firestore_.fieldpath">for example, see JavaScript FieldPath</a> ).</td>
 </tr>
 <tr class="odd">
 <td>Maximum size of a field path</td>
@@ -288,7 +248,7 @@ A quoted field name starts and ends with the backtick character ( <code dir="ltr
 <td>Maximum depth of fields in a map or array</td>
 <td><p>20</p>
 <p>Map and array fields add one level to the overall depth of an object. For example, the following object has a total depth of three levels:</p>
-<pre dir="ltr" data-is-upgraded="" translate="no"><code>{
+<pre data-fenced=""><code>{
   nested_map: {         #depth 1
     nested_array: [     #depth 2
       {
@@ -307,7 +267,7 @@ A quoted field name starts and ends with the backtick character ( <code dir="ltr
 ### Standard edition
 
 | Limit                                                                                                                          | Details                                            |
-| ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------- |
+|--------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
 | Maximum API request size                                                                                                       | 10 MiB                                             |
 | The memory limit for a query                                                                                                   | 128 MiB                                            |
 | Time limit for a transaction                                                                                                   | 270 seconds, with a 60-second idle expiration time |
@@ -316,7 +276,7 @@ A quoted field name starts and ends with the backtick character ( <code dir="ltr
 ### Enterprise edition
 
 | Limit                                                                                                                          | Details                                            |
-| ------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------- |
+|--------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------|
 | Maximum API request size                                                                                                       | 10 MiB                                             |
 | Time limit for a transaction                                                                                                   | 270 seconds, with a 60-second idle expiration time |
 | Maximum number of field transformations that can be performed on a single document in a `Commit` operation or in a transaction | 500                                                |
@@ -437,13 +397,13 @@ The sum of the size of a document's composite index entries</td>
 ### Standard edition
 
 | Limit                                               | Details |
-| --------------------------------------------------- | ------- |
+|-----------------------------------------------------|---------|
 | Maximum number of TTL configurations for a database | 1000    |
 
 ### Enterprise edition
 
 | Limit                                               | Details |
-| --------------------------------------------------- | ------- |
+|-----------------------------------------------------|---------|
 | Maximum number of TTL configurations for a database | 1000    |
 
 ### Export/Import
@@ -453,7 +413,7 @@ The following limits apply to [managed import and export operations](https://doc
 ### Standard edition
 
 | Limit                                                                                    | Details |
-| ---------------------------------------------------------------------------------------- | ------- |
+|------------------------------------------------------------------------------------------|---------|
 | Maximum total number of both export and import requests for a project allowed per minute | 20      |
 | Maximum number of concurrent exports and imports                                         | 50      |
 | Maximum number of collection ID filters for export and import requests                   | 100     |
@@ -461,7 +421,7 @@ The following limits apply to [managed import and export operations](https://doc
 ### Enterprise edition
 
 | Limit                                                                                    | Details |
-| ---------------------------------------------------------------------------------------- | ------- |
+|------------------------------------------------------------------------------------------|---------|
 | Maximum total number of both export and import requests for a project allowed per minute | 20      |
 | Maximum number of concurrent exports and imports                                         | 50      |
 | Maximum number of collection ID filters for export and import requests                   | 100     |
@@ -483,7 +443,7 @@ The following limits apply to [managed import and export operations](https://doc
 </thead>
 <tbody>
 <tr class="odd">
-<td>Maximum number of <code dir="ltr" translate="no">exists()</code> , <code dir="ltr" translate="no">get()</code> , and <code dir="ltr" translate="no">getAfter()</code> calls per request</td>
+<td>Maximum number of <code>exists()</code> , <code>get()</code> , and <code>getAfter()</code> calls per request</td>
 <td><ul>
 <li>10 for single-document requests and query requests.</li>
 <li><p>20 for multi-document reads, transactions, and batched writes. The previous limit of 10 also applies to each operation.</p>
@@ -493,15 +453,15 @@ The following limits apply to [managed import and export operations](https://doc
 <p>Some document access calls may be cached, and cached calls do not count towards the limits.</p></td>
 </tr>
 <tr class="even">
-<td>Maximum nested <code dir="ltr" translate="no">match</code> statement depth</td>
+<td>Maximum nested <code>match</code> statement depth</td>
 <td>10</td>
 </tr>
 <tr class="odd">
-<td>Maximum path length, in path segments, allowed within a set of nested <code dir="ltr" translate="no">match</code> statements</td>
+<td>Maximum path length, in path segments, allowed within a set of nested <code>match</code> statements</td>
 <td>100</td>
 </tr>
 <tr class="even">
-<td>Maximum number of path capture variables allowed within a set of nested <code dir="ltr" translate="no">match</code> statements</td>
+<td>Maximum number of path capture variables allowed within a set of nested <code>match</code> statements</td>
 <td>20</td>
 </tr>
 <tr class="odd">
@@ -513,7 +473,7 @@ The following limits apply to [managed import and export operations](https://doc
 <td>7</td>
 </tr>
 <tr class="odd">
-<td>Maximum number of <code dir="ltr" translate="no">let</code> variable bindings per function</td>
+<td>Maximum number of <code>let</code> variable bindings per function</td>
 <td>10</td>
 </tr>
 <tr class="even">
@@ -528,7 +488,7 @@ The following limits apply to [managed import and export operations](https://doc
 <td>Maximum size of a ruleset</td>
 <td>Rulesets must obey two size limits:
 <ul>
-<li>a 256 KB limit on the size of the ruleset text source published from the Firebase console or from the CLI using <code dir="ltr" translate="no">firebase deploy</code> .</li>
+<li>a 256 KB limit on the size of the ruleset text source published from the Firebase console or from the CLI using <code>firebase deploy</code> .</li>
 <li>a 250 KB limit on the size of the compiled ruleset that results when Firebase processes the source and makes it active on the back-end.</li>
 </ul></td>
 </tr>
@@ -550,7 +510,7 @@ The following limits apply to [managed import and export operations](https://doc
 </thead>
 <tbody>
 <tr class="odd">
-<td>Maximum number of <code dir="ltr" translate="no">exists()</code> , <code dir="ltr" translate="no">get()</code> , and <code dir="ltr" translate="no">getAfter()</code> calls per request</td>
+<td>Maximum number of <code>exists()</code> , <code>get()</code> , and <code>getAfter()</code> calls per request</td>
 <td><ul>
 <li>10 for single-document requests and query requests.</li>
 <li><p>20 for multi-document reads, transactions, and batched writes. The previous limit of 10 also applies to each operation.</p>
@@ -560,15 +520,15 @@ The following limits apply to [managed import and export operations](https://doc
 <p>Some document access calls may be cached, and cached calls do not count towards the limits.</p></td>
 </tr>
 <tr class="even">
-<td>Maximum nested <code dir="ltr" translate="no">match</code> statement depth</td>
+<td>Maximum nested <code>match</code> statement depth</td>
 <td>10</td>
 </tr>
 <tr class="odd">
-<td>Maximum path length, in path segments, allowed within a set of nested <code dir="ltr" translate="no">match</code> statements</td>
+<td>Maximum path length, in path segments, allowed within a set of nested <code>match</code> statements</td>
 <td>100</td>
 </tr>
 <tr class="even">
-<td>Maximum number of path capture variables allowed within a set of nested <code dir="ltr" translate="no">match</code> statements</td>
+<td>Maximum number of path capture variables allowed within a set of nested <code>match</code> statements</td>
 <td>20</td>
 </tr>
 <tr class="odd">
@@ -580,7 +540,7 @@ The following limits apply to [managed import and export operations](https://doc
 <td>7</td>
 </tr>
 <tr class="odd">
-<td>Maximum number of <code dir="ltr" translate="no">let</code> variable bindings per function</td>
+<td>Maximum number of <code>let</code> variable bindings per function</td>
 <td>10</td>
 </tr>
 <tr class="even">
@@ -595,7 +555,7 @@ The following limits apply to [managed import and export operations](https://doc
 <td>Maximum size of a ruleset</td>
 <td>Rulesets must obey two size limits:
 <ul>
-<li>a 256 KB limit on the size of the ruleset text source published from the Firebase console or from the CLI using <code dir="ltr" translate="no">firebase deploy</code> .</li>
+<li>a 256 KB limit on the size of the ruleset text source published from the Firebase console or from the CLI using <code>firebase deploy</code> .</li>
 <li>a 250 KB limit on the size of the compiled ruleset that results when Firebase processes the source and makes it active on the back-end.</li>
 </ul></td>
 </tr>

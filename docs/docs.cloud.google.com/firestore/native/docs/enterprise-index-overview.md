@@ -18,9 +18,9 @@ Indexes have a large impact on the performance of a database. If an index exists
 
 An index consists of the following:
 
-  - a collection ID
-  - a list of fields in the given collection
-  - an order, either ascending or descending, for each field
+- a collection ID
+- a list of fields in the given collection
+- an order, either ascending or descending, for each field
 
 An index can also enable the [sparse](https://docs.cloud.google.com/firestore/native/docs/enterprise-index-overview#sparse_indexes) or [unique](https://docs.cloud.google.com/firestore/native/docs/enterprise-index-overview#unique_indexes) options.
 
@@ -29,7 +29,7 @@ An index can also enable the [sparse](https://docs.cloud.google.com/firestore/na
 The order and sort direction of each field uniquely defines the index. For example, the following indexes are two distinct indexes and not interchangeable:
 
 | Collection | Fields                                        |
-| ---------- | --------------------------------------------- |
+|------------|-----------------------------------------------|
 | cities     | country (ascending), population (descending)  |
 | cities     | population (descending), country (ascending), |
 
@@ -54,7 +54,7 @@ If you insert a document with missing fields for the unique index, the index set
 For example, with this index:
 
 | Collection | Fields indexed   | Query scope |
-| ---------- | ---------------- | ----------- |
+|------------|------------------|-------------|
 | cities     | name (ascending) | Collection  |
 
 If you add the document `{"abbreviation": "LA"}` to the collection, the unique index creates an entry with `name` set to `null` . If you then try to add the document `{"abbreviation": "NYC"}` , the operation fails because the resulting entry for the unique index is the same.
@@ -65,7 +65,7 @@ The same behavior applies to unique indexes with multiple fields. When creating 
 
 You might encounter index building errors when managing your indexes. An indexing operation can fail if the database encounters a problem with the data. Indexing operations can fail for the following reasons:
 
-  - You have reached an index limit. For example, the operation may have reached the maximum number of index entries per document. If index creation fails, you see an error message. If you have not reached an index limit, retry the index operation.
-  - You set the unique index option and the data of the indexed fields would create duplicate index entries. To proceed, remove duplicate combinations of values from the data.
+- You have reached an index limit. For example, the operation may have reached the maximum number of index entries per document. If index creation fails, you see an error message. If you have not reached an index limit, retry the index operation.
+- You set the unique index option and the data of the indexed fields would create duplicate index entries. To proceed, remove duplicate combinations of values from the data.
 
 > **Warning:** An ongoing index building error might impact creation of new indexes. Resolving the errors before creating indexes under the same collection.

@@ -19,45 +19,25 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 
-Parameters
-
-`database`
-
-`string`
-
-Required. The database name. In the format: `projects/{projectId}/databases/{databaseId}` .
+| Parameters |                                                                                                      |
+|------------|------------------------------------------------------------------------------------------------------|
+| `database` | `string` Required. The database name. In the format: `projects/{projectId}/databases/{databaseId}` . |
 
 ### Request body
 
 The request body contains data with the following structure:
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>JSON representation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;transaction&quot;: string
-}</code></pre></td>
-</tr>
-</tbody>
-</table>
+**JSON representation**
 
-Fields
+```
+{
+  "transaction": string
+}
+```
 
-`transaction`
-
-`string ( bytes format)`
-
-Required. The transaction to roll back.
-
-A base64-encoded string.
+| Fields        |                                                                                                                                                         |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `transaction` | `string ( `[`bytes`](https://developers.google.com/discovery/v1/type-format)` format)` Required. The transaction to roll back. A base64-encoded string. |
 
 ### Response body
 
@@ -67,7 +47,7 @@ If successful, the response body is an empty JSON object.
 
 Requires one of the following OAuth scopes:
 
-  - `https://www.googleapis.com/auth/datastore`
-  - `https://www.googleapis.com/auth/cloud-platform`
+- `https://www.googleapis.com/auth/datastore`
+- `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

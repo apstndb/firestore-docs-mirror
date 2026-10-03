@@ -12,7 +12,7 @@ gcloud datastore - manage your Cloud Datastore resources
 
 SYNOPSIS
 
-`gcloud datastore` `  GROUP  ` | `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud datastore` [`GROUP`](https://docs.cloud.google.com/sdk/gcloud/reference/datastore#GROUP) \| [`COMMAND`](https://docs.cloud.google.com/sdk/gcloud/reference/datastore#COMMAND) \[ [`GCLOUD_WIDE_FLAG`](https://docs.cloud.google.com/sdk/gcloud/reference/datastore#GCLOUD-WIDE-FLAGS)` …` \]
 
 DESCRIPTION
 
@@ -30,32 +30,38 @@ operations -- Manage Long Running Operations for Cloud Firestore.
 
 GCLOUD WIDE FLAGS
 
-These flags are available to all commands: `  --help  ` .
+These flags are available to all commands: [`--help`](https://docs.cloud.google.com/sdk/gcloud/reference#--help) .
 
-Run ` $ gcloud help  ` for details.
+Run `$ `[`gcloud help`](https://docs.cloud.google.com/sdk/gcloud/reference) for details.
 
 GROUPS
 
-`  GROUP  ` is one of the following:
+`GROUP` is one of the following:
 
-  - `  indexes  `  
-    Manage your Cloud Datastore indexes.
-  - `  operations  `  
-    Manage Long Running Operations for Cloud Datastore.
+[`indexes`](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/indexes)  
+Manage your Cloud Datastore indexes.
+
+[`operations`](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations)  
+Manage Long Running Operations for Cloud Datastore.
 
 COMMANDS
 
-`  COMMAND  ` is one of the following:
+`COMMAND` is one of the following:
 
-  - `  export  `  
-    Export Cloud Datastore entities to Google Cloud Storage.
-  - `  import  `  
-    Import Cloud Datastore entities from Google Cloud Storage.
+[`export`](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/export)  
+Export Cloud Datastore entities to Google Cloud Storage.
+
+[`import`](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/import)  
+Import Cloud Datastore entities from Google Cloud Storage.
 
 NOTES
 
 These variants are also available:
 
-    gcloud alpha datastore
+```
+gcloud alpha datastore
+```
 
-    gcloud beta datastore
+```
+gcloud beta datastore
+```

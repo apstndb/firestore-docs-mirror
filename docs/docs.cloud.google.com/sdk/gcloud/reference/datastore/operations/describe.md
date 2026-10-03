@@ -12,7 +12,7 @@ gcloud datastore operations describe - retrieves information about a Cloud Datas
 
 SYNOPSIS
 
-`gcloud datastore operations describe` `  NAME  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud datastore operations describe` [`NAME`](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/describe#NAME) \[ [`GCLOUD_WIDE_FLAG`](https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/describe#GCLOUD-WIDE-FLAGS)` …` \]
 
 DESCRIPTION
 
@@ -22,33 +22,45 @@ EXAMPLES
 
 To see information on the operation with id `exampleId` , run:
 
-    gcloud datastore operations describe exampleId
+```
+gcloud datastore operations describe exampleId
+```
 
 or
 
-    gcloud datastore operations describe projects/your-project-id/operations/exampleId
+```
+gcloud datastore operations describe projects/your-project-id/operations/exampleId
+```
 
 POSITIONAL ARGUMENTS
 
-  - `  NAME  `  
-    The unique name of the Operation to retrieve, formatted as either the full or relative resource path:
-    
-        projects/my-app-id/operations/foo
-    
-    or:
-    
-        foo
+`NAME`  
+The unique name of the Operation to retrieve, formatted as either the full or relative resource path:
+
+```
+projects/my-app-id/operations/foo
+```
+
+or:
+
+```
+foo
+```
 
 GCLOUD WIDE FLAGS
 
-These flags are available to all commands: `  --access-token-file  ` , `  --account  ` , `  --billing-project  ` , `  --configuration  ` , `  --flags-file  ` , `  --flatten  ` , `  --format  ` , `  --help  ` , `  --impersonate-service-account  ` , `  --log-http  ` , `  --project  ` , `  --quiet  ` , `  --trace-token  ` , `  --user-output-enabled  ` , `  --verbosity  ` .
+These flags are available to all commands: [`--access-token-file`](https://docs.cloud.google.com/sdk/gcloud/reference#--access-token-file) , [`--account`](https://docs.cloud.google.com/sdk/gcloud/reference#--account) , [`--billing-project`](https://docs.cloud.google.com/sdk/gcloud/reference#--billing-project) , [`--configuration`](https://docs.cloud.google.com/sdk/gcloud/reference#--configuration) , [`--flags-file`](https://docs.cloud.google.com/sdk/gcloud/reference#--flags-file) , [`--flatten`](https://docs.cloud.google.com/sdk/gcloud/reference#--flatten) , [`--format`](https://docs.cloud.google.com/sdk/gcloud/reference#--format) , [`--help`](https://docs.cloud.google.com/sdk/gcloud/reference#--help) , [`--impersonate-service-account`](https://docs.cloud.google.com/sdk/gcloud/reference#--impersonate-service-account) , [`--log-http`](https://docs.cloud.google.com/sdk/gcloud/reference#--log-http) , [`--project`](https://docs.cloud.google.com/sdk/gcloud/reference#--project) , [`--quiet`](https://docs.cloud.google.com/sdk/gcloud/reference#--quiet) , [`--trace-token`](https://docs.cloud.google.com/sdk/gcloud/reference#--trace-token) , [`--user-output-enabled`](https://docs.cloud.google.com/sdk/gcloud/reference#--user-output-enabled) , [`--verbosity`](https://docs.cloud.google.com/sdk/gcloud/reference#--verbosity) .
 
-Run ` $ gcloud help  ` for details.
+Run `$ `[`gcloud help`](https://docs.cloud.google.com/sdk/gcloud/reference) for details.
 
 NOTES
 
 These variants are also available:
 
-    gcloud alpha datastore operations describe
+```
+gcloud alpha datastore operations describe
+```
 
-    gcloud beta datastore operations describe
+```
+gcloud beta datastore operations describe
+```

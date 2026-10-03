@@ -12,7 +12,7 @@ gcloud firestore locations - the set of commands to manage Locations for Cloud F
 
 SYNOPSIS
 
-`gcloud firestore locations` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud firestore locations` [`COMMAND`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/locations#COMMAND) \[ [`GCLOUD_WIDE_FLAG`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/locations#GCLOUD-WIDE-FLAGS)` …` \]
 
 DESCRIPTION
 
@@ -20,21 +20,25 @@ The set of commands to manage Locations for Cloud Firestore.
 
 GCLOUD WIDE FLAGS
 
-These flags are available to all commands: `  --help  ` .
+These flags are available to all commands: [`--help`](https://docs.cloud.google.com/sdk/gcloud/reference#--help) .
 
-Run ` $ gcloud help  ` for details.
+Run `$ `[`gcloud help`](https://docs.cloud.google.com/sdk/gcloud/reference) for details.
 
 COMMANDS
 
-`  COMMAND  ` is one of the following:
+`COMMAND` is one of the following:
 
-  - `  list  `  
-    List locations available to Google Cloud Firestore.
+[`list`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/locations/list)  
+List locations available to Google Cloud Firestore.
 
 NOTES
 
 These variants are also available:
 
-    gcloud alpha firestore locations
+```
+gcloud alpha firestore locations
+```
 
-    gcloud beta firestore locations
+```
+gcloud beta firestore locations
+```

@@ -17,7 +17,7 @@ Firestore with MongoDB compatibility supports the following query and projection
 ### Array operators
 
 | **Operator** | **Supported** |
-| ------------ | ------------- |
+|--------------|---------------|
 | `$all`       | Yes           |
 | `$elemMatch` | Yes           |
 | `$size`      | Yes           |
@@ -25,7 +25,7 @@ Firestore with MongoDB compatibility supports the following query and projection
 ### Bitwise operators
 
 | **Operator**    | **Supported** |
-| --------------- | ------------- |
+|-----------------|---------------|
 | `$bitsAllClear` | No            |
 | `$bitsAllSet`   | No            |
 | `$bitsAnyClear` | No            |
@@ -34,13 +34,13 @@ Firestore with MongoDB compatibility supports the following query and projection
 ### Comment operator
 
 | **Operator** | **Supported** |
-| ------------ | ------------- |
+|--------------|---------------|
 | `$comment`   | No            |
 
 ### Comparison operators
 
 | **Operator** | **Supported** |
-| ------------ | ------------- |
+|--------------|---------------|
 | `$eq`        | Yes           |
 | `$gt`        | Yes           |
 | `$gte`       | Yes           |
@@ -53,14 +53,14 @@ Firestore with MongoDB compatibility supports the following query and projection
 ### Element operators
 
 | **Operator** | **Supported** |
-| ------------ | ------------- |
+|--------------|---------------|
 | `$exists`    | Yes           |
 | `$type`      | Yes           |
 
 ### Evaluation query operators
 
 | **Operator**  | **Supported** |
-| ------------- | ------------- |
+|---------------|---------------|
 | `$expr`       | Yes           |
 | `$jsonSchema` | No            |
 | `$mod`        | Yes           |
@@ -71,7 +71,7 @@ Firestore with MongoDB compatibility supports the following query and projection
 ### Logical operators
 
 | **Operator** | **Supported** |
-| ------------ | ------------- |
+|--------------|---------------|
 | `$and`       | Yes           |
 | `$nor`       | Yes           |
 | `$not`       | Yes           |
@@ -80,7 +80,7 @@ Firestore with MongoDB compatibility supports the following query and projection
 ### Projection operators
 
 | **Operator** | **Supported**                    |
-| ------------ | -------------------------------- |
+|--------------|----------------------------------|
 | `$`          | Yes                              |
 | `$elemMatch` | Yes                              |
 | `$meta`      | Partial (supports \`textScore\`) |
@@ -93,7 +93,7 @@ Firestore with MongoDB compatibility supports the following update operators.
 ### Array operators
 
 | **Operator**      | **Supported** |
-| ----------------- | ------------- |
+|-------------------|---------------|
 | `$`               | Yes           |
 | `$[]`             | Yes           |
 | `$[<identifier>]` | Yes           |
@@ -106,13 +106,13 @@ Firestore with MongoDB compatibility supports the following update operators.
 ### Bitwise operators
 
 | **Operator** | **Supported** |
-| ------------ | ------------- |
+|--------------|---------------|
 | `$bit`       | Yes           |
 
 ### Field operators
 
 | **Operator**   | **Supported** |
-| -------------- | ------------- |
+|----------------|---------------|
 | `$currentDate` | Yes           |
 | `$inc`         | Yes           |
 | `$max`         | Yes           |
@@ -124,7 +124,7 @@ Firestore with MongoDB compatibility supports the following update operators.
 ### Update modifiers
 
 | **Modifier** | **Supported** |
-| ------------ | ------------- |
+|--------------|---------------|
 | `$each`      | Yes           |
 | `$position`  | Yes           |
 | `$slice`     | Yes           |
@@ -137,7 +137,7 @@ Firestore with MongoDB compatibility supports the following aggregation pipeline
 ### Accumulators
 
 | **Expression**  | **Supported** |
-| --------------- | ------------- |
+|-----------------|---------------|
 | `$addToSet`     | Yes           |
 | `$avg`          | Yes           |
 | `$first`        | Yes           |
@@ -153,7 +153,7 @@ Firestore with MongoDB compatibility supports the following aggregation pipeline
 ### Accumulator expressions
 
 | **Expression** | **Supported** |
-| -------------- | ------------- |
+|----------------|---------------|
 | `$avg`         | Yes           |
 | `$first`       | Yes           |
 | `$last`        | Yes           |
@@ -168,7 +168,7 @@ Firestore with MongoDB compatibility supports the following aggregation pipeline
 **Limitations** : Arithmetic operators don't support `decimal128` values.
 
 | **Operator** | **Supported** |
-| ------------ | ------------- |
+|--------------|---------------|
 | `$abs`       | Yes           |
 | `$add`       | Yes           |
 | `$ceil`      | Yes           |
@@ -188,7 +188,7 @@ Firestore with MongoDB compatibility supports the following aggregation pipeline
 ### Array operators
 
 | **Operator**     | **Supported** |
-| ---------------- | ------------- |
+|------------------|---------------|
 | `$arrayElemAt`   | Yes           |
 | `$arrayToObject` | Yes           |
 | `$concatArrays`  | Yes           |
@@ -209,7 +209,7 @@ Firestore with MongoDB compatibility supports the following aggregation pipeline
 ### Boolean operators
 
 | **Operator** | **Supported** |
-| ------------ | ------------- |
+|--------------|---------------|
 | `$and`       | Yes           |
 | `$not`       | Yes           |
 | `$or`        | Yes           |
@@ -217,7 +217,7 @@ Firestore with MongoDB compatibility supports the following aggregation pipeline
 ### Comparison operators
 
 | **Operator** | **Supported** |
-| ------------ | ------------- |
+|--------------|---------------|
 | `$cmp`       | Yes           |
 | `$eq`        | Yes           |
 | `$gt`        | Yes           |
@@ -229,7 +229,7 @@ Firestore with MongoDB compatibility supports the following aggregation pipeline
 ### Conditional expression operators
 
 | **Operator** | **Supported** |
-| ------------ | ------------- |
+|--------------|---------------|
 | `$cond`      | Yes           |
 | `$ifNull`    | Yes           |
 | `$switch`    | Yes           |
@@ -237,7 +237,7 @@ Firestore with MongoDB compatibility supports the following aggregation pipeline
 ### Date operators
 
 | **Operator**      | **Supported** |
-| ----------------- | ------------- |
+|-------------------|---------------|
 | `$dateFromParts`  | Yes           |
 | `$dateFromString` | Yes           |
 | `$dateToParts`    | Yes           |
@@ -259,27 +259,27 @@ Firestore with MongoDB compatibility supports the following aggregation pipeline
 ### Miscellaneous operators
 
 | **Operator**        | **Supported**   |
-| ------------------- | --------------- |
+|---------------------|-----------------|
 | `$natural`          | Yes (ascending) |
 | `$toHashedIndexKey` | No              |
 
 ### Literal expression operators
 
 | **Operator** | **Supported** |
-| ------------ | ------------- |
+|--------------|---------------|
 | `$literal`   | Yes           |
 
 ### Object operators
 
 | **Operator**     | **Supported** |
-| ---------------- | ------------- |
+|------------------|---------------|
 | `$mergeObjects`  | Yes           |
 | `$objectToArray` | Yes           |
 
 ### Set operators
 
 | **Operator**       | **Supported** |
-| ------------------ | ------------- |
+|--------------------|---------------|
 | `$allElementsTrue` | Yes           |
 | `$anyElementTrue`  | Yes           |
 | `$setDifference`   | Yes           |
@@ -291,7 +291,7 @@ Firestore with MongoDB compatibility supports the following aggregation pipeline
 ### Stage operators
 
 | **Operator**         | **Supported** |
-| -------------------- | ------------- |
+|----------------------|---------------|
 | `$addFields`         | Yes           |
 | `$bucket`            | Yes           |
 | `$bucketAuto`        | No            |
@@ -323,7 +323,7 @@ Firestore with MongoDB compatibility supports the following aggregation pipeline
 ### String operators
 
 | **Operator**      | **Supported** |
-| ----------------- | ------------- |
+|-------------------|---------------|
 | `$concat`         | Yes           |
 | `$dateFromString` | Yes           |
 | `$dateToString`   | Yes           |
@@ -343,7 +343,7 @@ Firestore with MongoDB compatibility supports the following aggregation pipeline
 ### System variables
 
 | **Variable** | **Supported** |
-| ------------ | ------------- |
+|--------------|---------------|
 | `$$CURRENT`  | No            |
 | `$$DESCEND`  | No            |
 | `$$KEEP`     | No            |
@@ -354,19 +354,19 @@ Firestore with MongoDB compatibility supports the following aggregation pipeline
 ### Text operators
 
 | **Operator** | **Supported** |
-| ------------ | ------------- |
+|--------------|---------------|
 | `$meta`      | Yes           |
 
 ### Type operators
 
 | **Operator** | **Supported** |
-| ------------ | ------------- |
+|--------------|---------------|
 | `$type`      | Yes           |
 
 ### Variable operators
 
 | **Operator** | **Supported** |
-| ------------ | ------------- |
+|--------------|---------------|
 | `$let`       | Yes           |
 
 ## Geospatial
@@ -376,7 +376,7 @@ Firestore with MongoDB compatibility supports the following Geospatial operators
 ### Geometry specifiers
 
 | **Specifier**   | **Supported** |
-| --------------- | ------------- |
+|-----------------|---------------|
 | `$box`          | No            |
 | `$center`       | No            |
 | `$centerSphere` | No            |
@@ -389,7 +389,7 @@ Firestore with MongoDB compatibility supports the following Geospatial operators
 ### Query selectors
 
 | **Selector**     | **Supported** |
-| ---------------- | ------------- |
+|------------------|---------------|
 | `$geoIntersects` | No            |
 | `$geoWithin`     | No            |
 | `$near`          | Yes           |
@@ -404,7 +404,7 @@ Firestore with MongoDB compatibility supports the following indexes and index op
 ### Indexes
 
 | **Index type** | **Supported** |
-| -------------- | ------------- |
+|----------------|---------------|
 | 2d             | No            |
 | 2dsphere       | Yes           |
 | Compound       | Yes           |
@@ -416,7 +416,7 @@ Firestore with MongoDB compatibility supports the following indexes and index op
 ### Index properties
 
 | **Property**     | **Supported** |
-| ---------------- | ------------- |
+|------------------|---------------|
 | Background       | Yes           |
 | Case Insensitive | No            |
 | Partial          | No            |
@@ -432,124 +432,44 @@ Firestore with MongoDB compatibility supports the following database commands.
 
 ### Aggregation
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>Command</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">aggregate</code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">count</code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">distinct</code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">group</code></td>
-<td><p>No</p>
-<p>The <code dir="ltr" translate="no">$group</code> stage in aggregations is supported whereas the group command isn't.</p></td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">mapReduce</code></td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+| **Command** | **Supported**                                                                       |
+|-------------|-------------------------------------------------------------------------------------|
+| `aggregate` | Yes                                                                                 |
+| `count`     | Yes                                                                                 |
+| `distinct`  | Yes                                                                                 |
+| `group`     | No The `$group` stage in aggregations is supported whereas the group command isn't. |
+| `mapReduce` | No                                                                                  |
 
 ### Authentication
 
 | **Command**    | **Supported** |
-| -------------- | ------------- |
+|----------------|---------------|
 | `authenticate` | No            |
 | `getnonce`     | No            |
 | `logout`       | No            |
 
 ### Query and write operations
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>Command</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">delete</code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">eval</code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">find</code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">findAndModify</code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">getLastError</code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">getMore</code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">getPrevError</code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">GridFS</code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">insert</code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">parallelCollectionScan</code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">replaceOne</code></td>
-<td><p>No</p>
-<p>The <code dir="ltr" translate="no">replaceOne</code> driver method is supported with the <code dir="ltr" translate="no">update</code> command.</p></td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">resetError</code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">update</code></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+| **Command**              | **Supported**                                                             |
+|--------------------------|---------------------------------------------------------------------------|
+| `delete`                 | Yes                                                                       |
+| `eval`                   | No                                                                        |
+| `find`                   | Yes                                                                       |
+| `findAndModify`          | Yes                                                                       |
+| `getLastError`           | Yes                                                                       |
+| `getMore`                | Yes                                                                       |
+| `getPrevError`           | No                                                                        |
+| `GridFS`                 | No                                                                        |
+| `insert`                 | Yes                                                                       |
+| `parallelCollectionScan` | No                                                                        |
+| `replaceOne`             | No The `replaceOne` driver method is supported with the `update` command. |
+| `resetError`             | No                                                                        |
+| `update`                 | Yes                                                                       |
 
 ### Session commands
 
 | **Command**                | **Supported**                                                   |
-| -------------------------- | --------------------------------------------------------------- |
+|----------------------------|-----------------------------------------------------------------|
 | `endSessions`              | Yes                                                             |
 | `killAllSessions`          | No                                                              |
 | `killAllSessionsByPattern` | No                                                              |
@@ -561,202 +481,61 @@ Firestore with MongoDB compatibility supports the following database commands.
 
 Firestore with MongoDB compatibility supports the following administrative commands.
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>Command</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">cloneCollectionAsCapped</code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">collMod</code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">collMod: expireAfterSeconds</code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">convertToCapped</code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">copydb</code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">create</code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">createIndex</code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">createIndexes</code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">createView</code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">currentOp</code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">drop</code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">dropDatabase</code></td>
-<td><p>No</p>
-<p>To delete a database, see <a href="https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases#delete-database">Delete a database</a> .</p></td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">dropIndex</code></td>
-<td><p>Yes</p>
-<p>To delete indexes, see <a href="https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing">Manage indexes</a> .</p></td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">dropIndexes</code></td>
-<td><p>No</p></td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">filemd5</code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">killCursors</code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">killOp</code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">listCollections</code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">listDatabases</code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">listIndexes</code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">reIndex</code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">renameCollection</code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">setAuditConfig</code></td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+| **Command**                   | **Supported**                                                                                                                                           |
+|-------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `cloneCollectionAsCapped`     | No                                                                                                                                                      |
+| `collMod`                     | No                                                                                                                                                      |
+| `collMod: expireAfterSeconds` | No                                                                                                                                                      |
+| `convertToCapped`             | No                                                                                                                                                      |
+| `copydb`                      | No                                                                                                                                                      |
+| `create`                      | Yes                                                                                                                                                     |
+| `createIndex`                 | Yes                                                                                                                                                     |
+| `createIndexes`               | Yes                                                                                                                                                     |
+| `createView`                  | No                                                                                                                                                      |
+| `currentOp`                   | No                                                                                                                                                      |
+| `drop`                        | Yes                                                                                                                                                     |
+| `dropDatabase`                | No To delete a database, see [Delete a database](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases#delete-database) . |
+| `dropIndex`                   | Yes To delete indexes, see [Manage indexes](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing) .                              |
+| `dropIndexes`                 | No                                                                                                                                                      |
+| `filemd5`                     | No                                                                                                                                                      |
+| `killCursors`                 | Yes                                                                                                                                                     |
+| `killOp`                      | No                                                                                                                                                      |
+| `listCollections`             | Yes                                                                                                                                                     |
+| `listDatabases`               | Yes                                                                                                                                                     |
+| `listIndexes`                 | Yes                                                                                                                                                     |
+| `reIndex`                     | No                                                                                                                                                      |
+| `renameCollection`            | No                                                                                                                                                      |
+| `setAuditConfig`              | No                                                                                                                                                      |
 
 ### Diagnostic commands
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th><strong>Command</strong></th>
-<th><strong>Supported</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">buildInfo</code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">collStats</code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">connectionStatus</code></td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">connPoolStats</code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">dataSize</code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">dbHash</code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">dbStats</code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">explain</code></td>
-<td><p>Yes</p>
-<p>For behavior differences and limitations, see <a href="https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain#explain-command">Query Explain</a></p></td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">features</code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">hostInfo</code></td>
-<td>Yes</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">listCommands</code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">profiler</code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">serverStatus</code></td>
-<td>No</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">top</code></td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">whatsmyuri</code></td>
-<td>No</td>
-</tr>
-</tbody>
-</table>
+| **Command**        | **Supported**                                                                                                                                                       |
+|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `buildInfo`        | Yes                                                                                                                                                                 |
+| `collStats`        | Yes                                                                                                                                                                 |
+| `connectionStatus` | Yes                                                                                                                                                                 |
+| `connPoolStats`    | No                                                                                                                                                                  |
+| `dataSize`         | No                                                                                                                                                                  |
+| `dbHash`           | No                                                                                                                                                                  |
+| `dbStats`          | No                                                                                                                                                                  |
+| `explain`          | Yes For behavior differences and limitations, see [Query Explain](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain#explain-command) |
+| `features`         | No                                                                                                                                                                  |
+| `hostInfo`         | Yes                                                                                                                                                                 |
+| `listCommands`     | No                                                                                                                                                                  |
+| `profiler`         | No                                                                                                                                                                  |
+| `serverStatus`     | No                                                                                                                                                                  |
+| `top`              | No                                                                                                                                                                  |
+| `whatsmyuri`       | No                                                                                                                                                                  |
 
 ### User management commands
 
 To manage database access, see the following:
 
-  - [Authenticate and connect to a database](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect) .
-  - [Manage users](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam) .
+- [Authenticate and connect to a database](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect) .
+- [Manage users](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam) .
 
 | **Command**                | **Supported** |
-| -------------------------- | ------------- |
+|----------------------------|---------------|
 | `createUser`               | No            |
 | `dropAllUsersFromDatabase` | No            |
 | `dropUser`                 | No            |
@@ -769,11 +548,11 @@ To manage database access, see the following:
 
 To manage database access, see the following:
 
-  - [Authenticate and connect to a database](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect) .
-  - [Manage users](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam) .
+- [Authenticate and connect to a database](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect) .
+- [Manage users](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam) .
 
 | **Command**                | **Supported** |
-| -------------------------- | ------------- |
+|----------------------------|---------------|
 | `createRole`               | No            |
 | `dropRole`                 | No            |
 | `dropAllRolesFromDatabase` | No            |
@@ -787,5 +566,5 @@ To manage database access, see the following:
 
 ## What's next
 
-  - Run the [Quickstart: Create a database and connect to it](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database) .
-  - Learn about [Behavior differences](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences) .
+- Run the [Quickstart: Create a database and connect to it](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database) .
+- Learn about [Behavior differences](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences) .

@@ -12,7 +12,7 @@ Delete a single Firestore document (async).
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Delete documents and fields](https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data)
+- [Delete documents and fields](https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data)
 
 ## Code sample
 
@@ -20,7 +20,9 @@ For detailed documentation that includes this code sample, see the following:
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    await db.collection("cities").document("DC").delete()
+```python
+await db.collection("cities").document("DC").delete()
+```
 
 ## What's next
 

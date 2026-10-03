@@ -15,7 +15,7 @@ You can optionally [create multiple databases](https://docs.cloud.google.com/fir
 Be aware that once you provision a database instance, you cannot change its location setting.
 
 > **Important** : The location setting for your *default* Firestore database instance has a [dependency on the "location of default Google Cloud resources"](https://docs.cloud.google.com/firestore/native/docs/locations#default-cloud-location) . This means that when you provision your default Firestore database, its location might have already been set, either during project creation or when setting up another service that shares this location dependency.
-> 
+>
 > Any non-default Firestore database instances in your project do not share this location dependency.
 
 ## Types of locations
@@ -35,7 +35,7 @@ Firestore supports the following multi-region locations:
 ### Standard edition
 
 | Multi-region name | Multi-region description         | Read-Write regions                                                | Witness region                                       |
-| ----------------- | -------------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------- |
+|-------------------|----------------------------------|-------------------------------------------------------------------|------------------------------------------------------|
 | `eur3`            | Europe                           | `europe-west1` (Belgium), `europe-west4` (Netherlands)            | `europe-north1` (Finland)                            |
 | `nam5`            | United States (Central)          | `us-central1` (Iowa), `us-central2` (Oklahoma—private GCP region) | `us-east1` (South Carolina)                          |
 | `nam7`            | United States (Central and East) | `us-central1` (Iowa), `us-east4` (Northern Virginia)              | `us-central2` (Oklahoma—private Google Cloud region) |
@@ -43,7 +43,7 @@ Firestore supports the following multi-region locations:
 ### Enterprise edition
 
 | Multi-region name | Multi-region description         | Read-Write regions                                                | Witness region                                       |
-| ----------------- | -------------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------- |
+|-------------------|----------------------------------|-------------------------------------------------------------------|------------------------------------------------------|
 | `eur3`            | Europe                           | `europe-west1` (Belgium), `europe-west4` (Netherlands)            | `europe-north1` (Finland)                            |
 | `nam5`            | United States (Central)          | `us-central1` (Iowa), `us-central2` (Oklahoma—private GCP region) | `us-east1` (South Carolina)                          |
 | `nam7`            | United States (Central and East) | `us-central1` (Iowa), `us-east4` (Northern Virginia)              | `us-central2` (Oklahoma—private Google Cloud region) |
@@ -60,478 +60,120 @@ Firestore supports the following regional resource locations:
 
 ### Standard edition
 
-Region name
-
-Region description
-
-**North America**
-
-`us-west1`
-
-Oregon
-
-`us-west2`
-
-Los Angeles
-
-`us-west3`
-
-Salt Lake City
-
-`us-west4`
-
-Las Vegas
-
-`us-central1`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Iowa
-
-`northamerica-northeast1`
-
-Montréal
-
-`northamerica-northeast2`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Toronto
-
-`northamerica-south1`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Queretaro
-
-`us-east1`
-
-South Carolina
-
-`us-east4`
-
-Northern Virginia
-
-`us-east5`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Columbus
-
-`us-south1`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Dallas
-
-**South America**
-
-`southamerica-west1`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Santiago
-
-`southamerica-east1`
-
-São Paulo
-
-**Europe**
-
-`europe-west2`
-
-London
-
-`europe-west1`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Belgium
-
-`europe-west4`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Netherlands
-
-`europe-west8`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Milan
-
-`europe-southwest1`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Madrid
-
-`europe-west9`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Paris
-
-`europe-west12`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Turin
-
-`europe-west10`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Berlin
-
-`europe-west3`
-
-Frankfurt
-
-`europe-north1`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Finland
-
-`europe-north2`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Stockholm
-
-`europe-central2`
-
-Warsaw
-
-`europe-west6`
-
-Zürich
-
-**Middle East**
-
-`me-central1`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Doha
-
-`me-central2`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Dammam
-
-`me-west1`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Tel Aviv
-
-**Asia**
-
-`asia-south1`
-
-Mumbai
-
-`asia-south2`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Delhi
-
-`asia-southeast1`
-
-Singapore
-
-`asia-southeast2`
-
-Jakarta
-
-`asia-southeast3`
-
-Bangkok
-
-`asia-east2`
-
-Hong Kong
-
-`asia-east1`
-
-Taiwan
-
-`asia-northeast1`
-
-Tokyo
-
-`asia-northeast2`
-
-Osaka
-
-`asia-northeast3`
-
-Seoul
-
-**Australia**
-
-`australia-southeast1`
-
-Sydney
-
-`australia-southeast2`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Melbourne
-
-**Africa**
-
-`africa-south1`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Johannesburg
+|                   | Region name                                                                                                                                 | Region description |
+|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| **North America** |                                                                                                                                             |                    |
+|                   | `us-west1`                                                                                                                                  | Oregon             |
+|                   | `us-west2`                                                                                                                                  | Los Angeles        |
+|                   | `us-west3`                                                                                                                                  | Salt Lake City     |
+|                   | `us-west4`                                                                                                                                  | Las Vegas          |
+|                   | `us-central1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.             | Iowa               |
+|                   | `northamerica-northeast1`                                                                                                                   | Montréal           |
+|                   | `northamerica-northeast2` This location does not support App Engine. If you plan to use App Engine, you should choose a different location. | Toronto            |
+|                   | `northamerica-south1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.     | Queretaro          |
+|                   | `us-east1`                                                                                                                                  | South Carolina     |
+|                   | `us-east4`                                                                                                                                  | Northern Virginia  |
+|                   | `us-east5` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.                | Columbus           |
+|                   | `us-south1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.               | Dallas             |
+| **South America** |                                                                                                                                             |                    |
+|                   | `southamerica-west1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.      | Santiago           |
+|                   | `southamerica-east1`                                                                                                                        | São Paulo          |
+| **Europe**        |                                                                                                                                             |                    |
+|                   | `europe-west2`                                                                                                                              | London             |
+|                   | `europe-west1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.            | Belgium            |
+|                   | `europe-west4` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.            | Netherlands        |
+|                   | `europe-west8` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.            | Milan              |
+|                   | `europe-southwest1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.       | Madrid             |
+|                   | `europe-west9` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.            | Paris              |
+|                   | `europe-west12` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.           | Turin              |
+|                   | `europe-west10` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.           | Berlin             |
+|                   | `europe-west3`                                                                                                                              | Frankfurt          |
+|                   | `europe-north1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.           | Finland            |
+|                   | `europe-north2` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.           | Stockholm          |
+|                   | `europe-central2`                                                                                                                           | Warsaw             |
+|                   | `europe-west6`                                                                                                                              | Zürich             |
+| **Middle East**   |                                                                                                                                             |                    |
+|                   | `me-central1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.             | Doha               |
+|                   | `me-central2` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.             | Dammam             |
+|                   | `me-west1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.                | Tel Aviv           |
+| **Asia**          |                                                                                                                                             |                    |
+|                   | `asia-south1`                                                                                                                               | Mumbai             |
+|                   | `asia-south2` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.             | Delhi              |
+|                   | `asia-southeast1`                                                                                                                           | Singapore          |
+|                   | `asia-southeast2`                                                                                                                           | Jakarta            |
+|                   | `asia-southeast3`                                                                                                                           | Bangkok            |
+|                   | `asia-east2`                                                                                                                                | Hong Kong          |
+|                   | `asia-east1`                                                                                                                                | Taiwan             |
+|                   | `asia-northeast1`                                                                                                                           | Tokyo              |
+|                   | `asia-northeast2`                                                                                                                           | Osaka              |
+|                   | `asia-northeast3`                                                                                                                           | Seoul              |
+| **Australia**     |                                                                                                                                             |                    |
+|                   | `australia-southeast1`                                                                                                                      | Sydney             |
+|                   | `australia-southeast2` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.    | Melbourne          |
+| **Africa**        |                                                                                                                                             |                    |
+|                   | `africa-south1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.           | Johannesburg       |
 
 ### Enterprise edition
 
-Region name
-
-Region description
-
-**North America**
-
-`us-west1`
-
-Oregon
-
-`us-west2`
-
-Los Angeles
-
-`us-west3`
-
-Salt Lake City
-
-`us-west4`
-
-Las Vegas
-
-`us-central1`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Iowa
-
-`northamerica-northeast1`
-
-Montréal
-
-`northamerica-northeast2`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Toronto
-
-`northamerica-south1`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Queretaro
-
-`us-east1`
-
-South Carolina
-
-`us-east4`
-
-Northern Virginia
-
-`us-east5`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Columbus
-
-`us-south1`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Dallas
-
-**South America**
-
-`southamerica-west1`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Santiago
-
-`southamerica-east1`
-
-São Paulo
-
-**Europe**
-
-`europe-west2`
-
-London
-
-`europe-west1`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Belgium
-
-`europe-west4`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Netherlands
-
-`europe-west8`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Milan
-
-`europe-southwest1`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Madrid
-
-`europe-west9`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Paris
-
-`europe-west12`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Turin
-
-`europe-west10`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Berlin
-
-`europe-west3`
-
-Frankfurt
-
-`europe-north1`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Finland
-
-`europe-north2`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Stockholm
-
-`europe-central2`
-
-Warsaw
-
-`europe-west6`
-
-Zürich
-
-**Middle East**
-
-`me-central1`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Doha
-
-`me-central2`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Dammam
-
-`me-west1`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Tel Aviv
-
-**Asia**
-
-`asia-south1`
-
-Mumbai
-
-`asia-south2`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Delhi
-
-`asia-southeast1`
-
-Singapore
-
-`asia-southeast2`
-
-Jakarta
-
-`asia-southeast3`
-
-Bangkok
-
-`asia-east2`
-
-Hong Kong
-
-`asia-east1`
-
-Taiwan
-
-`asia-northeast1`
-
-Tokyo
-
-`asia-northeast2`
-
-Osaka
-
-`asia-northeast3`
-
-Seoul
-
-**Australia**
-
-`australia-southeast1`
-
-Sydney
-
-`australia-southeast2`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Melbourne
-
-**Africa**
-
-`africa-south1`
-
-This location does not support App Engine. If you plan to use App Engine, you should choose a different location.
-
-Johannesburg
+|                   | Region name                                                                                                                                 | Region description |
+|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| **North America** |                                                                                                                                             |                    |
+|                   | `us-west1`                                                                                                                                  | Oregon             |
+|                   | `us-west2`                                                                                                                                  | Los Angeles        |
+|                   | `us-west3`                                                                                                                                  | Salt Lake City     |
+|                   | `us-west4`                                                                                                                                  | Las Vegas          |
+|                   | `us-central1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.             | Iowa               |
+|                   | `northamerica-northeast1`                                                                                                                   | Montréal           |
+|                   | `northamerica-northeast2` This location does not support App Engine. If you plan to use App Engine, you should choose a different location. | Toronto            |
+|                   | `northamerica-south1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.     | Queretaro          |
+|                   | `us-east1`                                                                                                                                  | South Carolina     |
+|                   | `us-east4`                                                                                                                                  | Northern Virginia  |
+|                   | `us-east5` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.                | Columbus           |
+|                   | `us-south1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.               | Dallas             |
+| **South America** |                                                                                                                                             |                    |
+|                   | `southamerica-west1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.      | Santiago           |
+|                   | `southamerica-east1`                                                                                                                        | São Paulo          |
+| **Europe**        |                                                                                                                                             |                    |
+|                   | `europe-west2`                                                                                                                              | London             |
+|                   | `europe-west1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.            | Belgium            |
+|                   | `europe-west4` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.            | Netherlands        |
+|                   | `europe-west8` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.            | Milan              |
+|                   | `europe-southwest1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.       | Madrid             |
+|                   | `europe-west9` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.            | Paris              |
+|                   | `europe-west12` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.           | Turin              |
+|                   | `europe-west10` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.           | Berlin             |
+|                   | `europe-west3`                                                                                                                              | Frankfurt          |
+|                   | `europe-north1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.           | Finland            |
+|                   | `europe-north2` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.           | Stockholm          |
+|                   | `europe-central2`                                                                                                                           | Warsaw             |
+|                   | `europe-west6`                                                                                                                              | Zürich             |
+| **Middle East**   |                                                                                                                                             |                    |
+|                   | `me-central1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.             | Doha               |
+|                   | `me-central2` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.             | Dammam             |
+|                   | `me-west1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.                | Tel Aviv           |
+| **Asia**          |                                                                                                                                             |                    |
+|                   | `asia-south1`                                                                                                                               | Mumbai             |
+|                   | `asia-south2` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.             | Delhi              |
+|                   | `asia-southeast1`                                                                                                                           | Singapore          |
+|                   | `asia-southeast2`                                                                                                                           | Jakarta            |
+|                   | `asia-southeast3`                                                                                                                           | Bangkok            |
+|                   | `asia-east2`                                                                                                                                | Hong Kong          |
+|                   | `asia-east1`                                                                                                                                | Taiwan             |
+|                   | `asia-northeast1`                                                                                                                           | Tokyo              |
+|                   | `asia-northeast2`                                                                                                                           | Osaka              |
+|                   | `asia-northeast3`                                                                                                                           | Seoul              |
+| **Australia**     |                                                                                                                                             |                    |
+|                   | `australia-southeast1`                                                                                                                      | Sydney             |
+|                   | `australia-southeast2` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.    | Melbourne          |
+| **Africa**        |                                                                                                                                             |                    |
+|                   | `africa-south1` This location does not support App Engine. If you plan to use App Engine, you should choose a different location.           | Johannesburg       |
 
 ## Location SLA
 
 Your Firestore location type determines the [Service Level Agreement (SLA)](https://cloud.google.com/firestore/sla) uptime percentage:
 
 | Covered service        | Monthly uptime percentage |
-| ---------------------- | ------------------------- |
+|------------------------|---------------------------|
 | Firestore Multi-Region | \>= 99.999%               |
 | Firestore Regional     | \>= 99.99%                |
 
@@ -541,26 +183,26 @@ Your Firestore location determines the cost of database operations.
 
 For a comprehensive explanation of pricing per region and per region type, see:
 
-  - [Firestore Standard edition pricing](https://cloud.google.com/firestore/pricing)
-  - [Firestore Enterprise edition pricing](https://cloud.google.com/firestore/enterprise/pricing)
+- [Firestore Standard edition pricing](https://cloud.google.com/firestore/pricing)
+- [Firestore Enterprise edition pricing](https://cloud.google.com/firestore/enterprise/pricing)
 
 ## View the location of your databases
 
 Use one of the following methods to view the location setting for your databases:
 
-  - Run the [`gcloud firestore databases list`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/list) command.
+- Run the [`gcloud firestore databases list`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/list) command.
 
-  - Open the [database list](https://console.cloud.google.com/firestore/databases) in the Google Cloud console. The location for each database is in the location column.
+- Open the [database list](https://console.cloud.google.com/firestore/databases) in the Google Cloud console. The location for each database is in the location column.
 
-  - In the Firebase console, go to the **Databases & Storage** \> **Firestore** \> [**Data** tab](https://console.firebase.google.com/project/_/firestore/databases/_/data) to view the list of your database instances and their locations.
+- In the Firebase console, go to the **Databases & Storage** \> **Firestore** \> [**Data** tab](https://console.firebase.google.com/project/_/firestore/databases/_/data) to view the list of your database instances and their locations.
 
 ## Possible location dependencies due to "location for default Google Cloud resources"
 
 The "location for default Google Cloud resources" is the location setting for any project resources associated with Google App Engine, including the following:
 
-  - default Firestore database instance
-  - default Cloud Storage for Firebase bucket with the name format of `*.appspot.com`
-  - Google Cloud Scheduler used specifically with 1st gen scheduled functions
+- default Firestore database instance
+- default Cloud Storage for Firebase bucket with the name format of `*.appspot.com`
+- Google Cloud Scheduler used specifically with 1st gen scheduled functions
 
 > **Note:** None of the other resources in your project share this location dependency, including the following: Realtime Database instances, non-default Firestore instances, non-default Cloud Storage buckets, default Cloud Storage buckets with the name format of `*.firebasestorage.app` , non-scheduled functions, and 2nd gen scheduled functions.
 
@@ -572,19 +214,19 @@ However, with many changes to the Firebase and Google Cloud ecosystem over the y
 
 Here are the details of what changed in the possible **location dependencies** :
 
-  - Starting October 30, 2024 , **if the default Firestore instance and the default Cloud Storage for Firebase bucket are *not* yet provisioned:**
-    
-      - Provisioning the default Firestore instance sets the location for any future App Engine app provisioned in the project. However, it does *not* dictate the location of the future default Cloud Storage bucket.
-    
-      - Provisioning the default Cloud Storage bucket *no longer* provisions an App Engine app. Thus, the location of the default Cloud Storage bucket does *not* dictate the location of the future default Firestore instance.
+- Starting October 30, 2024 , **if the default Firestore instance and the default Cloud Storage for Firebase bucket are *not* yet provisioned:**
 
-  - Starting October 30, 2024 , **if the default Firestore instance has *already* been provisioned, but the default Cloud Storage for Firebase bucket has *not* been provisioned:**
-    
-      - The existing default Firestore instance does *not* dictate the location of the future default Cloud Storage bucket ( `*.firebasestorage.app` ).
+  - Provisioning the default Firestore instance sets the location for any future App Engine app provisioned in the project. However, it does *not* dictate the location of the future default Cloud Storage bucket.
 
-  - Starting October 30, 2024 , **if the default Cloud Storage for Firebase bucket has *already* been provisioned** (specifically, the `*.appspot.com` bucket) **, but the default Firestore instance has *not* been provisioned:**
-    
-      - Back when the default Cloud Storage bucket ( `*.appspot.com` ) was provisioned, an App Engine app was *also* provisioned, and thus the location of the future default Firestore instance was set at that time. Even if you delete the `*.appspot.com` bucket, you can't delete the App Engine app, so the location setting of the future default Firestore instance is already set.
+  - Provisioning the default Cloud Storage bucket *no longer* provisions an App Engine app. Thus, the location of the default Cloud Storage bucket does *not* dictate the location of the future default Firestore instance.
+
+- Starting October 30, 2024 , **if the default Firestore instance has *already* been provisioned, but the default Cloud Storage for Firebase bucket has *not* been provisioned:**
+
+  - The existing default Firestore instance does *not* dictate the location of the future default Cloud Storage bucket ( `*.firebasestorage.app` ).
+
+- Starting October 30, 2024 , **if the default Cloud Storage for Firebase bucket has *already* been provisioned** (specifically, the `*.appspot.com` bucket) **, but the default Firestore instance has *not* been provisioned:**
+
+  - Back when the default Cloud Storage bucket ( `*.appspot.com` ) was provisioned, an App Engine app was *also* provisioned, and thus the location of the future default Firestore instance was set at that time. Even if you delete the `*.appspot.com` bucket, you can't delete the App Engine app, so the location setting of the future default Firestore instance is already set.
 
 If you used ***1st gen scheduled* functions** , then their location is set to the location for default Google Cloud resources. This is because Cloud Scheduler and App Engine previously had an association with each other. Also, if you set up 1st gen scheduled functions *before* provisioning other resources that shared this location setting, then you set their location, too.
 
@@ -592,8 +234,8 @@ Note that if you have an App Engine app with a location of either `us-central` o
 
 ## Next steps
 
-  - To create a Firestore database in specific location, visit one of the [Firestore quickstarts](https://docs.cloud.google.com/firestore/docs/quickstarts) .
+- To create a Firestore database in specific location, visit one of the [Firestore quickstarts](https://docs.cloud.google.com/firestore/docs/quickstarts) .
 
-<!-- end list -->
+<!-- -->
 
-  - For more information about building applications to meet your latency, availability, and durability requirements, refer to [Geography and Regions](https://cloud.google.com/docs/geography-and-regions#multi-regional_resources) .
+- For more information about building applications to meet your latency, availability, and durability requirements, refer to [Geography and Regions](https://cloud.google.com/docs/geography-and-regions#multi-regional_resources) .

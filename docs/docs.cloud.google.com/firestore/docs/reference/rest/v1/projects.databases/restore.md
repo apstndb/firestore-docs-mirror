@@ -8,9 +8,9 @@ data_source: docs.cloud.google.com
 
 Creates a new database by restoring from an existing backup.
 
-The new database must be in the same cloud region or multi-region location as the existing backup. This behaves similar to `  FirestoreAdmin.CreateDatabase  ` except instead of creating a new empty database, a new database is created with the database type, index configuration, and documents from an existing backup.
+The new database must be in the same cloud region or multi-region location as the existing backup. This behaves similar to [`FirestoreAdmin.CreateDatabase`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/create#google.firestore.admin.v1.FirestoreAdmin.CreateDatabase) except instead of creating a new empty database, a new database is created with the database type, index configuration, and documents from an existing backup.
 
-The `  long-running operation  ` can be used to track the progress of the restore, with the Operation's `  metadata  ` field type being the `  RestoreDatabaseMetadata  ` . The `  response  ` type is the `  Database  ` if the restore was successful. The new database is not readable or writeable until the LRO has completed.
+The [`long-running operation`](https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Operation) can be used to track the progress of the restore, with the Operation's [`metadata`](https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Operation#FIELDS.metadata) field type being the [`RestoreDatabaseMetadata`](https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/RestoreDatabaseMetadata) . The [`response`](https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Operation#FIELDS.response) type is the [`Database`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases#Database) if the restore was successful. The new database is not readable or writeable until the LRO has completed.
 
 ### HTTP request
 
@@ -23,83 +23,46 @@ The URLs use [gRPC Transcoding](https://google.aip.dev/127) syntax.
 
 ### Path parameters
 
-Parameters
-
-`parent`
-
-`string`
-
-Required. The project to restore the database in. Format is `projects/{projectId}` .
+| Parameters |                                                                                               |
+|------------|-----------------------------------------------------------------------------------------------|
+| `parent`   | `string` Required. The project to restore the database in. Format is `projects/{projectId}` . |
 
 ### Request body
 
 The request body contains data with the following structure:
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>JSON representation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;databaseId&quot;: string,&quot;backup&quot;: string,&quot;encryptionConfig&quot;: {object (EncryptionConfig)},&quot;tags&quot;: {string: string,...}}</code></pre></td>
-</tr>
-</tbody>
-</table>
+**JSON representation**
 
-Fields
+```
+{
+  "databaseId": string,
+  "backup": string,
+  "encryptionConfig": {
+    object (EncryptionConfig)
+  },
+  "tags": {
+    string: string,
+    ...
+  }
+}
+```
 
-`databaseId`
-
-`string`
-
-Required. The ID to use for the database, which will become the final component of the database's resource name. This database ID must not be associated with an existing database.
-
-This value should be 4-63 characters. Valid characters are /\[a-z\]\[0-9\]-/ with first character a letter and the last a letter or a number. Must not be UUID-like /\[0-9a-f\]{8}(-\[0-9a-f\]{4}){3}-\[0-9a-f\]{12}/.
-
-"(default)" database ID is also valid if the database is Standard edition.
-
-`backup`
-
-`string`
-
-Required. Backup to restore from. Must be from the same project as the parent.
-
-The restored database will be created in the same location as the source backup.
-
-Format is: `projects/{projectId}/locations/{location}/backups/{backup}`
-
-`encryptionConfig`
-
-` object ( EncryptionConfig  ` )
-
-Optional. Encryption configuration for the restored database.
-
-If this field is not specified, the restored database will use the same encryption configuration as the backup, namely `  useSourceEncryption  ` .
-
-`tags`
-
-`map (key: string, value: string)`
-
-Optional. Immutable. Tags to be bound to the restored database.
-
-The tags should be provided in the format of `tagKeys/{tag_key_id} -> tagValues/{tag_value_id}` .
-
-An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }` .
+| Fields             |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+|--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `databaseId`       | `string` Required. The ID to use for the database, which will become the final component of the database's resource name. This database ID must not be associated with an existing database. This value should be 4-63 characters. Valid characters are /\[a-z\]\[0-9\]-/ with first character a letter and the last a letter or a number. Must not be UUID-like /\[0-9a-f\]{8}(-\[0-9a-f\]{4}){3}-\[0-9a-f\]{12}/. "(default)" database ID is also valid if the database is Standard edition. |
+| `backup`           | `string` Required. Backup to restore from. Must be from the same project as the parent. The restored database will be created in the same location as the source backup. Format is: `projects/{projectId}/locations/{location}/backups/{backup}`                                                                                                                                                                                                                                               |
+| `encryptionConfig` | `object ( `[`EncryptionConfig`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/EncryptionConfig)` )` Optional. Encryption configuration for the restored database. If this field is not specified, the restored database will use the same encryption configuration as the backup, namely [`useSourceEncryption`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/EncryptionConfig#FIELDS.use_source_encryption) .                                              |
+| `tags`             | `map (key: string, value: string)` Optional. Immutable. Tags to be bound to the restored database. The tags should be provided in the format of `tagKeys/{tag_key_id} -> tagValues/{tag_value_id}` . An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }` .                                                                                                                                                                     |
 
 ### Response body
 
-If successful, the response body contains an instance of `  Operation  ` .
+If successful, the response body contains an instance of [`Operation`](https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Operation) .
 
 ### Authorization scopes
 
 Requires one of the following OAuth scopes:
 
-  - `https://www.googleapis.com/auth/datastore`
-  - `https://www.googleapis.com/auth/cloud-platform`
+- `https://www.googleapis.com/auth/datastore`
+- `https://www.googleapis.com/auth/cloud-platform`
 
 For more information, see the [Authentication Overview](https://docs.cloud.google.com/docs/authentication#authorization-gcp) .

@@ -12,26 +12,28 @@ Use entity with parent.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Structuring Data for Strong Consistency](https://docs.cloud.google.com/datastore/docs/concepts/structuring_for_strong_consistency)
+- [Structuring Data for Strong Consistency](https://docs.cloud.google.com/datastore/docs/concepts/structuring_for_strong_consistency)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Key taskListKey = _db.CreateKeyFactory("TaskList").CreateKey(TestUtil.RandomName());
-    Key taskKey = new KeyFactory(taskListKey, "Task").CreateKey("sampleTask");
-    Entity task = new Entity()
-    {
-        Key = taskKey,
-        ["category"] = "Personal",
-        ["done"] = false,
-        ["priority"] = 4,
-        ["description"] = "Learn Cloud Datastore"
-    };
+```csharp
+Key taskListKey = _db.CreateKeyFactory("TaskList").CreateKey(TestUtil.RandomName());
+Key taskKey = new KeyFactory(taskListKey, "Task").CreateKey("sampleTask");
+Entity task = new Entity()
+{
+    Key = taskKey,
+    ["category"] = "Personal",
+    ["done"] = false,
+    ["priority"] = 4,
+    ["description"] = "Learn Cloud Datastore"
+};
+```
 
 ### Go
 
@@ -39,19 +41,21 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    parentKey := datastore.NameKey("TaskList", "default", nil)
-    key := datastore.IncompleteKey("Task", parentKey)
-    
-    task := Task{
-     Category:    "Personal",
-     Done:        false,
-     Priority:    4,
-     Description: "Learn Cloud Datastore",
-    }
-    
-    // A complete key is assigned to the entity when it is Put.
-    var err error
-    key, err = client.Put(ctx, key, &task)
+```go
+parentKey := datastore.NameKey("TaskList", "default", nil)
+key := datastore.IncompleteKey("Task", parentKey)
+
+task := Task{
+    Category:    "Personal",
+    Done:        false,
+    Priority:    4,
+    Description: "Learn Cloud Datastore",
+}
+
+// A complete key is assigned to the entity when it is Put.
+var err error
+key, err = client.Put(ctx, key, &task)
+```
 
 ### Java
 
@@ -59,19 +63,21 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Key taskKey =
-        datastore
-            .newKeyFactory()
-            .addAncestors(PathElement.of("TaskList", "default"))
-            .setKind("Task")
-            .newKey("sampleTask");
-    Entity task =
-        Entity.newBuilder(taskKey)
-            .set("category", "Personal")
-            .set("done", false)
-            .set("priority", 4)
-            .set("description", "Learn Cloud Datastore")
-            .build();
+```java
+Key taskKey =
+    datastore
+        .newKeyFactory()
+        .addAncestors(PathElement.of("TaskList", "default"))
+        .setKind("Task")
+        .newKey("sampleTask");
+Entity task =
+    Entity.newBuilder(taskKey)
+        .set("category", "Personal")
+        .set("done", false)
+        .set("priority", 4)
+        .set("description", "Learn Cloud Datastore")
+        .build();
+```
 
 ### PHP
 
@@ -79,17 +85,19 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $parentKey = $datastore->key('TaskList', 'default');
-    $key = $datastore->key('Task')->ancestorKey($parentKey);
-    $task = $datastore->entity(
-        $key,
-        [
-            'Category' => 'Personal',
-            'Done' => false,
-            'Priority' => 4,
-            'Description' => 'Learn Cloud Datastore'
-        ]
-    );
+```php
+$parentKey = $datastore->key('TaskList', 'default');
+$key = $datastore->key('Task')->ancestorKey($parentKey);
+$task = $datastore->entity(
+    $key,
+    [
+        'Category' => 'Personal',
+        'Done' => false,
+        'Priority' => 4,
+        'Description' => 'Learn Cloud Datastore'
+    ]
+);
+```
 
 ### Python
 
@@ -97,24 +105,26 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    key_with_parent = client.key("TaskList", "default", "Task", "sampleTask")
-    
-    task = datastore.Entity(key=key_with_parent)
-    
-    task.update(
-        {
-            "category": "Personal",
-            "done": False,
-            "priority": 4,
-            "description": "Learn Cloud Datastore",
-        }
-    )
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+key_with_parent = client.key("TaskList", "default", "Task", "sampleTask")
+
+task = datastore.Entity(key=key_with_parent)
+
+task.update(
+    {
+        "category": "Personal",
+        "done": False,
+        "priority": 4,
+        "description": "Learn Cloud Datastore",
+    }
+)
+```
 
 ### Ruby
 
@@ -122,16 +132,18 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    # task_list_name = "default"
-    # task_name = "sampleTask"
-    task_key = datastore.key [["TaskList", task_list_name], ["Task", task_name]]
-    
-    task = datastore.entity task_key do |t|
-      t["category"] = "Personal"
-      t["done"] = false
-      t["priority"] = 4
-      t["description"] = "Learn Cloud Datastore"
-    end
+```ruby
+# task_list_name = "default"
+# task_name = "sampleTask"
+task_key = datastore.key [["TaskList", task_list_name], ["Task", task_name]]
+
+task = datastore.entity task_key do |t|
+  t["category"] = "Personal"
+  t["done"] = false
+  t["priority"] = 4
+  t["description"] = "Learn Cloud Datastore"
+end
+```
 
 ## What's next
 

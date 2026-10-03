@@ -46,109 +46,52 @@ Before you understand the structure of index keys that you see in Key Visualizer
 
 The following code shows an example index key format that you see when you hover over the affected key-range on the heatmap.
 
-    NAMESPACE: NS KIND: Users 
-    PROPERTIES: (Timestamp: DESC, Name: DESC)
-    ANCESTOR: KEY(PROJECT('PROJECT_ID'),NAMESPACE('NS'),`UserList`,1)
-    VALUES: (16500000000000001,'Alice')
-    ENTITY:KEY(PROJECT('PROJECT_ID'),NAMESPACE(''),`UserList`,1,`User`,5000000000000001)
+```
+NAMESPACE: NS KIND: Users 
+PROPERTIES: (Timestamp: DESC, Name: DESC)
+ANCESTOR: KEY(PROJECT('PROJECT_ID'),NAMESPACE('NS'),`UserList`,1)
+VALUES: (16500000000000001,'Alice')
+ENTITY:KEY(PROJECT('PROJECT_ID'),NAMESPACE(''),`UserList`,1,`User`,5000000000000001)
+```
 
 Where:
 
-  - **NAMESPACE** : [namespace](https://docs.cloud.google.com/datastore/docs/concepts/multitenancy) of the entity.
-  - **KIND** : [kind](https://docs.cloud.google.com/datastore/docs/concepts/entities#kinds_and_identifiers) of entity that categorizes the entities.
-  - **PROPERTIES** : [properties](https://docs.cloud.google.com/datastore/docs/concepts/entities#properties_and_value_types) related to the entity. The `__key__` ordering property is only shown for index definitions that modify the default ordering.
-  - **ANCESTOR** : optional [ancestor path](https://docs.cloud.google.com/datastore/docs/concepts/entities#ancestor_paths) to locate the entity within the database hierarchy.
-  - **VALUES** : value of each property.
-  - **ENTITY** : ID of the entity updated in an operation.
+- **NAMESPACE** : [namespace](https://docs.cloud.google.com/datastore/docs/concepts/multitenancy) of the entity.
+- **KIND** : [kind](https://docs.cloud.google.com/datastore/docs/concepts/entities#kinds_and_identifiers) of entity that categorizes the entities.
+- **PROPERTIES** : [properties](https://docs.cloud.google.com/datastore/docs/concepts/entities#properties_and_value_types) related to the entity. The `__key__` ordering property is only shown for index definitions that modify the default ordering.
+- **ANCESTOR** : optional [ancestor path](https://docs.cloud.google.com/datastore/docs/concepts/entities#ancestor_paths) to locate the entity within the database hierarchy.
+- **VALUES** : value of each property.
+- **ENTITY** : ID of the entity updated in an operation.
 
 From the earlier example, identify the properties from the **PROPERTIES** value to find the affected index.
 
 To find the index, complete the following steps:
 
 1.  Go to the **Datastore mode Indexes** page in Google Cloud console.
-    
+
     You can identify the type of index by analyzing the **PROPERTIES** field. See [examples of index keys](https://docs.cloud.google.com/datastore/docs/keyvis-patterns-index#examples_of_index_key_entries_on_the_heatmap) for more information.
 
 2.  Click **Filter** , select **Fields** , and enter the name of the field.
-    
+
     Use the **OR** operator to add more properties in case of composite indexes.
 
 After you have identified the index that is causing issues, you can use the following solutions:
 
-  - Built-in index: Exclude the property such that the index doesn't maintain index entries for that property. See [Excluded properties](https://docs.cloud.google.com/datastore/docs/concepts/indexes#unindexed_properties) for more information.
-  - Composite index: Either modify the index in the `index.yaml` file to ensure that the field whose value monotonically increases or decreases is not selected as the first field for indexing, or delete the index. See [About index.yaml](https://docs.cloud.google.com/datastore/docs/tools/indexconfig#Datastore_About_index_yaml) for more information.
+- Built-in index: Exclude the property such that the index doesn't maintain index entries for that property. See [Excluded properties](https://docs.cloud.google.com/datastore/docs/concepts/indexes#unindexed_properties) for more information.
+- Composite index: Either modify the index in the `index.yaml` file to ensure that the field whose value monotonically increases or decreases is not selected as the first field for indexing, or delete the index. See [About index.yaml](https://docs.cloud.google.com/datastore/docs/tools/indexconfig#Datastore_About_index_yaml) for more information.
 
 ### Examples of index key entries on the heatmap
 
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Type</th>
-<th>Description</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Built-in index entry</td>
-<td>Index entry for the single property index on the <code dir="ltr" translate="no">Timestamp</code> property, in descending order for the <code dir="ltr" translate="no">NS</code> namespace.</td>
-<td><code dir="ltr" translate="no">NAMESPACE: NS</code><br />
-<code dir="ltr" translate="no">KIND: Users</code><br />
-<code dir="ltr" translate="no">PROPERTIES: (Timestamp: DESC)</code><br />
-<code dir="ltr" translate="no">ANCESTOR: NONE</code><br />
-<code dir="ltr" translate="no">VALUES: (16500000000000001)</code><br />
-<code dir="ltr" translate="no">ENTITY: KEY(PROJECT('         PROJECT_ID        '), NAMESPACE('NS'),</code> Users <code dir="ltr" translate="no">, 5000000000000001)</code></td>
-</tr>
-<tr class="even">
-<td>Built-in index entry</td>
-<td>Index entry for the single property index in the default namespace.</td>
-<td><code dir="ltr" translate="no">NAMESPACE: ' '</code><br />
-<code dir="ltr" translate="no">KIND: Users</code><br />
-<code dir="ltr" translate="no">PROPERTIES: (Timestamp: DESC)</code><br />
-<code dir="ltr" translate="no">ANCESTOR: NONE</code><br />
-<code dir="ltr" translate="no">VALUES: (16500000000000001)</code><br />
-<code dir="ltr" translate="no">ENTITY: KEY(PROJECT('         PROJECT_ID        '), NAMESPACE('NS'),</code> Users <code dir="ltr" translate="no">, 5000000000000001)</code></td>
-</tr>
-<tr class="odd">
-<td>Composite index entry</td>
-<td>Index entry for the composite index on the <code dir="ltr" translate="no">Timestamp</code> property and the <code dir="ltr" translate="no">Name</code> property in descending order without ancestor enabled.</td>
-<td><code dir="ltr" translate="no">NAMESPACE: NS</code><br />
-<code dir="ltr" translate="no">KIND: Users</code><br />
-<code dir="ltr" translate="no">PROPERTIES: (Timestamp: DESC, Name: DESC)</code><br />
-<code dir="ltr" translate="no">ANCESTOR: NONE</code><br />
-<code dir="ltr" translate="no">VALUES: (16500000000000001, 'Alice')</code><br />
-<code dir="ltr" translate="no">ENTITY: KEY(PROJECT('         PROJECT_ID        '),NAMESPACE('NS'),</code> Users <code dir="ltr" translate="no">,5000000000000001)</code></td>
-</tr>
-<tr class="even">
-<td>Composite index entry with ancestor</td>
-<td>Index entry for the composite index on the <code dir="ltr" translate="no">Timestamp</code> property in descending order and the <code dir="ltr" translate="no">Name</code> property in descending order with ancestor enabled.</td>
-<td><code dir="ltr" translate="no">NAMESPACE: NS</code><br />
-<code dir="ltr" translate="no">KIND: Users</code><br />
-<code dir="ltr" translate="no">PROPERTIES: (Timestamp: DESC, Name: ASC)</code><br />
-<code dir="ltr" translate="no">ANCESTOR: KEY(PROJECT('         PROJECT_ID        '),NAMESPACE('NS'),</code> UserList <code dir="ltr" translate="no">,1,</code> User <code dir="ltr" translate="no">,5000000000000001</code><br />
-<code dir="ltr" translate="no">VALUES: (16500000000000001, 'Alice')</code><br />
-<code dir="ltr" translate="no">ENTITY: KEY(PROJECT('         PROJECT_ID        '),NAMESPACE('NS'),</code> UserList <code dir="ltr" translate="no">,1,</code> User <code dir="ltr" translate="no">,5000000000000001)</code></td>
-</tr>
-<tr class="odd">
-<td>Composite index entry with <code dir="ltr" translate="no">__key__</code></td>
-<td>Index entry for the composite index on the <code dir="ltr" translate="no">Timestamp</code> property in ascending order and the <code dir="ltr" translate="no">__key__</code> in descending order without ancestor enabled. You can use <code dir="ltr" translate="no">__key__</code> as the final property in an index definition to change the default ordering of results.</td>
-<td><code dir="ltr" translate="no">NAMESPACE: NS</code><br />
-<code dir="ltr" translate="no">KIND: Users</code><br />
-<code dir="ltr" translate="no">PROPERTIES: (Timestamp: ASC, __key__ DESC)</code><br />
-<code dir="ltr" translate="no">ANCESTOR: NONE</code><br />
-<code dir="ltr" translate="no">VALUES: (16500000000000001)</code><br />
-<code dir="ltr" translate="no">ENTITY: KEY(PROJECT('         PROJECT_ID        '),NAMESPACE('NS'),</code> UserList <code dir="ltr" translate="no">,1,</code> User <code dir="ltr" translate="no">,5000000000000001)</code></td>
-</tr>
-</tbody>
-</table>
+| Type                                 | Description                                                                                                                                                                                                                                                      | Example                                                                                                                                                                                                                                                                                                                      |
+|--------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Built-in index entry                 | Index entry for the single property index on the `Timestamp` property, in descending order for the `NS` namespace.                                                                                                                                               | `NAMESPACE: NS` `KIND: Users` `PROPERTIES: (Timestamp: DESC)` `ANCESTOR: NONE` `VALUES: (16500000000000001)` `ENTITY: KEY(PROJECT(' `` PROJECT_ID `` '), NAMESPACE('NS'),` Users `, 5000000000000001)`                                                                                                                       |
+| Built-in index entry                 | Index entry for the single property index in the default namespace.                                                                                                                                                                                              | `NAMESPACE: ' '` `KIND: Users` `PROPERTIES: (Timestamp: DESC)` `ANCESTOR: NONE` `VALUES: (16500000000000001)` `ENTITY: KEY(PROJECT(' `` PROJECT_ID `` '), NAMESPACE('NS'),` Users `, 5000000000000001)`                                                                                                                      |
+| Composite index entry                | Index entry for the composite index on the `Timestamp` property and the `Name` property in descending order without ancestor enabled.                                                                                                                            | `NAMESPACE: NS` `KIND: Users` `PROPERTIES: (Timestamp: DESC, Name: DESC)` `ANCESTOR: NONE` `VALUES: (16500000000000001, 'Alice')` `ENTITY: KEY(PROJECT(' `` PROJECT_ID `` '),NAMESPACE('NS'),` Users `,5000000000000001)`                                                                                                    |
+| Composite index entry with ancestor  | Index entry for the composite index on the `Timestamp` property in descending order and the `Name` property in descending order with ancestor enabled.                                                                                                           | `NAMESPACE: NS` `KIND: Users` `PROPERTIES: (Timestamp: DESC, Name: ASC)` `ANCESTOR: KEY(PROJECT(' `` PROJECT_ID `` '),NAMESPACE('NS'),` UserList `,1,` User `,5000000000000001` `VALUES: (16500000000000001, 'Alice')` `ENTITY: KEY(PROJECT(' `` PROJECT_ID `` '),NAMESPACE('NS'),` UserList `,1,` User `,5000000000000001)` |
+| Composite index entry with `__key__` | Index entry for the composite index on the `Timestamp` property in ascending order and the `__key__` in descending order without ancestor enabled. You can use `__key__` as the final property in an index definition to change the default ordering of results. | `NAMESPACE: NS` `KIND: Users` `PROPERTIES: (Timestamp: ASC, __key__ DESC)` `ANCESTOR: NONE` `VALUES: (16500000000000001)` `ENTITY: KEY(PROJECT(' `` PROJECT_ID `` '),NAMESPACE('NS'),` UserList `,1,` User `,5000000000000001)`                                                                                              |
 
 ## What's next
 
-  - Learn how to [get started with Key Visualizer](https://docs.cloud.google.com/datastore/docs/keyvis-getting-started) .
-  - Find out how to [explore a heatmap in detail](https://docs.cloud.google.com/datastore/docs/keyvis-exploring-heatmaps) .
-  - Read about the [metrics you can view in a heatmap](https://docs.cloud.google.com/datastore/docs/key-visualizer#metrics) .
+- Learn how to [get started with Key Visualizer](https://docs.cloud.google.com/datastore/docs/keyvis-getting-started) .
+- Find out how to [explore a heatmap in detail](https://docs.cloud.google.com/datastore/docs/keyvis-exploring-heatmaps) .
+- Read about the [metrics you can view in a heatmap](https://docs.cloud.google.com/datastore/docs/key-visualizer#metrics) .

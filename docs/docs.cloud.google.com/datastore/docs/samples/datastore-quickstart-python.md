@@ -12,7 +12,7 @@ Use Cloud NDB client context to query a Datastore model within a function
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Migrate to Cloud NDB](https://docs.cloud.google.com/appengine/migration-center/standard/python/migrate-to-cloud-ndb)
+- [Migrate to Cloud NDB](https://docs.cloud.google.com/appengine/migration-center/standard/python/migrate-to-cloud-ndb)
 
 ## Code sample
 
@@ -22,21 +22,23 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import ndb
-    
-    
-    class Book(ndb.Model):
-        title = ndb.StringProperty()
-    
-    
-    client = ndb.Client()
-    
-    
-    def list_books():
-        with client.context():
-            books = Book.query()
-            for book in books:
-                print(book.to_dict())
+```python
+from google.cloud import ndb
+
+
+class Book(ndb.Model):
+    title = ndb.StringProperty()
+
+
+client = ndb.Client()
+
+
+def list_books():
+    with client.context():
+        books = Book.query()
+        for book in books:
+            print(book.to_dict())
+```
 
 ## What's next
 

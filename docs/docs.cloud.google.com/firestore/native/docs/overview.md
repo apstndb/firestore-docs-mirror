@@ -16,36 +16,13 @@ In addition to idiomatic Firestore client libraries, Firestore also provides a M
 
 No matter how you access Firestore, you gain access to the following key capabilities:
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td><strong>Serverless infrastructure</strong></td>
-<td>Firestore uses a pay-per-use model. Firestore does not require any pre-provisioning of resources and auto scales to match your load.</td>
-</tr>
-<tr class="even">
-<td><strong>Virtually unlimited scale</strong></td>
-<td>Firestore seamlessly scales compute and storage on-demand without the need to configure capacity, sharding or provision storage &amp; I/O.</td>
-</tr>
-<tr class="odd">
-<td><strong>Industry-leading high availability</strong></td>
-<td>All Firestore databases offer high availability, with 99.99% availability for regional and 99.999% availability for multi-regional deployments.<br />
-<br />
-Firestore has automatic multi-region data replication, strongly-consistent queries, atomic batch operations, and transaction support.</td>
-</tr>
-<tr class="even">
-<td><strong>Low latency</strong></td>
-<td>Firestore offers single digit millisecond read latency.</td>
-</tr>
-<tr class="odd">
-<td><strong>Enterprise-grade security and monitoring</strong></td>
-<td>Secure Firestore with centralized Google Cloud governance encompassing Identity and Access Management (IAM),VPC Service Controls (VPC-SC), Access Transparency, Access Approval, Cloud Monitoring, and Cloud Logging. Achieve enhanced visibility and simplified management of your Firestore database fleet with our integrated Database Center. Benefit from a unified fleet view and simplified management through centralized control and AI assistance.</td>
-</tr>
-</tbody>
-</table>
+|                                              |                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+|----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Serverless infrastructure**                | Firestore uses a pay-per-use model. Firestore does not require any pre-provisioning of resources and auto scales to match your load.                                                                                                                                                                                                                                                                                                                         |
+| **Virtually unlimited scale**                | Firestore seamlessly scales compute and storage on-demand without the need to configure capacity, sharding or provision storage & I/O.                                                                                                                                                                                                                                                                                                                       |
+| **Industry-leading high availability**       | All Firestore databases offer high availability, with 99.99% availability for regional and 99.999% availability for multi-regional deployments. Firestore has automatic multi-region data replication, strongly-consistent queries, atomic batch operations, and transaction support.                                                                                                                                                                        |
+| **Low latency**                              | Firestore offers single digit millisecond read latency.                                                                                                                                                                                                                                                                                                                                                                                                      |
+| **Enterprise-grade security and monitoring** | Secure Firestore with centralized Google Cloud governance encompassing Identity and Access Management (IAM),VPC Service Controls (VPC-SC), Access Transparency, Access Approval, Cloud Monitoring, and Cloud Logging. Achieve enhanced visibility and simplified management of your Firestore database fleet with our integrated Database Center. Benefit from a unified fleet view and simplified management through centralized control and AI assistance. |
 
 You can interact with Firestore through multiple interfaces depending on your application's requirements.
 

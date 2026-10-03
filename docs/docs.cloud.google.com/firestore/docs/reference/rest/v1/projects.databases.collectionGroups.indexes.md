@@ -10,16 +10,8 @@ data_source: docs.cloud.google.com
 
 There is no persistent data associated with this resource.
 
-## Methods
-
-### `            delete           `
-
-Deletes a composite index.
-
-### `            get           `
-
-Gets a composite index.
-
-### `            list           `
-
-Lists composite indexes.
+| Methods                                                                                                                       |                            |
+|-------------------------------------------------------------------------------------------------------------------------------|----------------------------|
+| [`delete`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes/delete) | Deletes a composite index. |
+| [`get`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes/get)       | Gets a composite index.    |
+| [`list`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes/list)     | Lists composite indexes.   |

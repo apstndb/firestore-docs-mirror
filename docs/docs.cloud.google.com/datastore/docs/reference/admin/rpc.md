@@ -12,66 +12,30 @@ Accesses the schemaless NoSQL database to provide fully managed, robust, scalabl
 
 The Service name `datastore.googleapis.com` is needed to create RPC client stubs.
 
-## `        google.datastore.admin.v1.DatastoreAdmin       `
+## [`google.datastore.admin.v1.DatastoreAdmin`](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1#google.datastore.admin.v1.DatastoreAdmin)
 
-Methods
+| Methods                                                                                                                                                                |                                                                                                                                    |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| [`CreateIndex`](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1#google.datastore.admin.v1.DatastoreAdmin.CreateIndex)       | Creates the specified index.                                                                                                       |
+| [`DeleteIndex`](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1#google.datastore.admin.v1.DatastoreAdmin.DeleteIndex)       | Deletes an existing index.                                                                                                         |
+| [`ExportEntities`](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1#google.datastore.admin.v1.DatastoreAdmin.ExportEntities) | Exports a copy of all or a subset of entities from Google Cloud Datastore to another storage system, such as Google Cloud Storage. |
+| [`GetIndex`](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1#google.datastore.admin.v1.DatastoreAdmin.GetIndex)             | Gets an index.                                                                                                                     |
+| [`ImportEntities`](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1#google.datastore.admin.v1.DatastoreAdmin.ImportEntities) | Imports entities into Google Cloud Datastore.                                                                                      |
+| [`ListIndexes`](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1#google.datastore.admin.v1.DatastoreAdmin.ListIndexes)       | Lists the indexes that match the specified filters.                                                                                |
 
-`  CreateIndex  `
+## [`google.datastore.admin.v1beta1.DatastoreAdmin`](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1beta1#google.datastore.admin.v1beta1.DatastoreAdmin)
 
-Creates the specified index.
+| Methods                                                                                                                                                                          |                                                                                                                                    |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| [`ExportEntities`](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1beta1#google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities) | Exports a copy of all or a subset of entities from Google Cloud Datastore to another storage system, such as Google Cloud Storage. |
+| [`ImportEntities`](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.datastore.admin.v1beta1#google.datastore.admin.v1beta1.DatastoreAdmin.ImportEntities) | Imports entities into Google Cloud Datastore.                                                                                      |
 
-`  DeleteIndex  `
+## [`google.longrunning.Operations`](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.longrunning#google.longrunning.Operations)
 
-Deletes an existing index.
-
-`  ExportEntities  `
-
-Exports a copy of all or a subset of entities from Google Cloud Datastore to another storage system, such as Google Cloud Storage.
-
-`  GetIndex  `
-
-Gets an index.
-
-`  ImportEntities  `
-
-Imports entities into Google Cloud Datastore.
-
-`  ListIndexes  `
-
-Lists the indexes that match the specified filters.
-
-## `        google.datastore.admin.v1beta1.DatastoreAdmin       `
-
-Methods
-
-`  ExportEntities  `
-
-Exports a copy of all or a subset of entities from Google Cloud Datastore to another storage system, such as Google Cloud Storage.
-
-`  ImportEntities  `
-
-Imports entities into Google Cloud Datastore.
-
-## `        google.longrunning.Operations       `
-
-Methods
-
-`  CancelOperation  `
-
-Starts asynchronous cancellation on a long-running operation.
-
-`  DeleteOperation  `
-
-Deletes a long-running operation.
-
-`  GetOperation  `
-
-Gets the latest state of a long-running operation.
-
-`  ListOperations  `
-
-Lists operations that match the specified filter in the request.
-
-`  WaitOperation  `
-
-Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state.
+| Methods                                                                                                                                                |                                                                                                                              |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| [`CancelOperation`](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.longrunning#google.longrunning.Operations.CancelOperation) | Starts asynchronous cancellation on a long-running operation.                                                                |
+| [`DeleteOperation`](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.longrunning#google.longrunning.Operations.DeleteOperation) | Deletes a long-running operation.                                                                                            |
+| [`GetOperation`](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.longrunning#google.longrunning.Operations.GetOperation)       | Gets the latest state of a long-running operation.                                                                           |
+| [`ListOperations`](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.longrunning#google.longrunning.Operations.ListOperations)   | Lists operations that match the specified filter in the request.                                                             |
+| [`WaitOperation`](https://docs.cloud.google.com/datastore/docs/reference/admin/rpc/google.longrunning#google.longrunning.Operations.WaitOperation)     | Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. |

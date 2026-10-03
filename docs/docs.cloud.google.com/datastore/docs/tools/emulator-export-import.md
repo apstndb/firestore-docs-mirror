@@ -12,11 +12,11 @@ Using the import and export features of the Datastore emulator, you can export d
 
 Before you use the import or export features of the Datastore emulator, complete the following:
 
-  - [Start the Datastore emulator.](https://docs.cloud.google.com/datastore/docs/tools/datastore-emulator)
-    
-    The import and export features are available for `cloud-datastore-emulator` versions 2.1.0 and greater. You may need to [update your Google Cloud CLI components](https://docs.cloud.google.com/sdk/docs/components#updating_components) .
+- [Start the Datastore emulator.](https://docs.cloud.google.com/datastore/docs/tools/datastore-emulator)
 
-  - For import operations, make sure your entity export files are on the same machine as the emulator.
+  The import and export features are available for `cloud-datastore-emulator` versions 2.1.0 and greater. You may need to [update your Google Cloud CLI components](https://docs.cloud.google.com/sdk/docs/components#updating_components) .
+
+- For import operations, make sure your entity export files are on the same machine as the emulator.
 
 ## Import entities into the emulator
 
@@ -36,11 +36,11 @@ Modify `localhost:8081` if the emulator uses a different port.
 
 where:
 
-  - `[PROJECT_ID]` is the ID of your project.
+- `[PROJECT_ID]` is the ID of your project.
 
-  - `[ENTITY_EXPORT_FILES]` is the path to the `overall_export_metadata` file of your entity export files. For example:
-    
-    `{"input_url":"/home/user/myexports/2019-02-04T19:39:33_443/2019-02-04T19:39:33_443.overall_export_metadata"}`
+- `[ENTITY_EXPORT_FILES]` is the path to the `overall_export_metadata` file of your entity export files. For example:
+
+  `{"input_url":"/home/user/myexports/2019-02-04T19:39:33_443/2019-02-04T19:39:33_443.overall_export_metadata"}`
 
 ### Import entities from specific kinds and namespaces
 
@@ -61,17 +61,17 @@ Modify `localhost:8081` if the emulator uses a different port.
 
 where:
 
-  - `[PROJECT_ID]` is the ID of your project.
+- `[PROJECT_ID]` is the ID of your project.
 
-  - `[ENTITY_EXPORT_FILES]` is the path to the `overall_export_metadata` file of your entity export files. For example:
-    
-    `{"input_url":"/home/user/myexports/2019-02-04T19:39:33_443/2019-02-04T19:39:33_443.overall_export_metadata"}`
+- `[ENTITY_EXPORT_FILES]` is the path to the `overall_export_metadata` file of your entity export files. For example:
 
-  - `[KIND_NAMES]` is a list of kinds: `"kinds":["KIND_1", "KIND_2"]`
+  `{"input_url":"/home/user/myexports/2019-02-04T19:39:33_443/2019-02-04T19:39:33_443.overall_export_metadata"}`
 
-  - `[NAMESPACES]` is a list of namespace IDs:
-    
-    `"namespace_ids":["NAMESPACE_1", "NAMESPACE_2"]`
+- `[KIND_NAMES]` is a list of kinds: `"kinds":["KIND_1", "KIND_2"]`
+
+- `[NAMESPACES]` is a list of namespace IDs:
+
+  `"namespace_ids":["NAMESPACE_1", "NAMESPACE_2"]`
 
 ## Export entities in the emulator
 
@@ -91,25 +91,17 @@ Modify `localhost:8081` if the emulator uses a different port.
 
 where:
 
-  - `[PROJECT_ID]` is the ID of your project.
+- `[PROJECT_ID]` is the ID of your project.
 
-  - `[EXPORT_DIRECTORY]` specifies the directory where the emulator saves the entity export files. This directory must not already contain a set of entity export files. For example:
-    
-    `{"output_url_prefix":"/home/user/myexports/2019-02-04/"}`
+- `[EXPORT_DIRECTORY]` specifies the directory where the emulator saves the entity export files. This directory must not already contain a set of entity export files. For example:
+
+  `{"output_url_prefix":"/home/user/myexports/2019-02-04/"}`
 
 > **Note:** If you intend to use an entity filter when importing entities from your entity export files, you must [specify an entity filter in your export operation](https://docs.cloud.google.com/datastore/docs/tools/emulator-export-import#export-with-entity-filter) .
 
-<span id="export-with-entity-filter"></span>
+Export entities from specific kinds and namespaces You can specify an entity filter to export entities from only specific kinds or namespaces. Specify kinds or namespaces in an entity filter:
 
-<span id="export-with-entity-filter"></span>
-
-### Export entities from specific kinds and namespaces
-
-You can specify an entity filter to export entities from only specific kinds or namespaces.
-
-Specify kinds or namespaces in an entity filter:
-
-### Protocol
+Protocol
 
 ```sh
 curl -X POST localhost:8081/v1/projects/[PROJECT_ID]:export \
@@ -122,22 +114,13 @@ Modify `localhost:8081` if the emulator uses a different port.
 
 where:
 
-  - `[PROJECT_ID]` is the ID of your project.
+- `[PROJECT_ID]` is the ID of your project.
+- `[EXPORT_DIRECTORY]` specifies the directory where the emulator saves the entity export files. This directory must not already contain a set of entity export files. For example: {"output_url_prefix":"/home/user/myexports/2019-02-04/"}\`\`
+- `[KIND_NAMES]` is a list of kinds: `"kinds":["KIND_1", "KIND_2"]`
+- `[NAMESPACES]` is a list of namespace IDs: `"namespace_ids":["NAMESPACE_1", "NAMESPACE_2"]`
 
-  - `[EXPORT_DIRECTORY]` specifies the directory where the emulator saves the entity export files. This directory must not already contain a set of entity export files. For example:
-    
-    {"output\_url\_prefix":"/home/user/myexports/2019-02-04/"}\`\`
+Load emulator data into your database Entity export files created by the emulator are compatible with the managed import feature for Datastore mode databases.
 
-  - `[KIND_NAMES]` is a list of kinds: `"kinds":["KIND_1", "KIND_2"]`
-
-  - `[NAMESPACES]` is a list of namespace IDs:
-    
-    `"namespace_ids":["NAMESPACE_1", "NAMESPACE_2"]`
-
-### Load emulator data into your database
-
-Entity export files created by the emulator are compatible with the managed import feature for Datastore mode databases.
-
-<span id="export-with-entity-filter">Before you can load entities exported from the emulator into your database, you must</span> [upload your entity export files to a Cloud Storage bucket](https://docs.cloud.google.com/storage/docs/uploading-objects) . The managed import feature reads only from Cloud Storage buckets.
+Before you can load entities exported from the emulator into your database, you must [upload your entity export files to a Cloud Storage bucket](https://docs.cloud.google.com/storage/docs/uploading-objects) . The managed import feature reads only from Cloud Storage buckets.
 
 Once your entity export files are available in a Cloud Storage bucket, you can import the data into your database as described in [Exporting and importing entities](https://docs.cloud.google.com/datastore/docs/export-import-entities) .

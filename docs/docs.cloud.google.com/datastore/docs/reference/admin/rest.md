@@ -8,10 +8,10 @@ data_source: docs.cloud.google.com
 
 Accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application.
 
-  - [REST Resource: v1beta1.projects](https://docs.cloud.google.com/datastore/docs/reference/admin/rest#v1beta1.projects)
-  - [REST Resource: v1.projects](https://docs.cloud.google.com/datastore/docs/reference/admin/rest#v1.projects)
-  - [REST Resource: v1.projects.indexes](https://docs.cloud.google.com/datastore/docs/reference/admin/rest#v1.projects.indexes)
-  - [REST Resource: v1.projects.operations](https://docs.cloud.google.com/datastore/docs/reference/admin/rest#v1.projects.operations)
+- [REST Resource: v1beta1.projects](https://docs.cloud.google.com/datastore/docs/reference/admin/rest#v1beta1.projects)
+- [REST Resource: v1.projects](https://docs.cloud.google.com/datastore/docs/reference/admin/rest#v1.projects)
+- [REST Resource: v1.projects.indexes](https://docs.cloud.google.com/datastore/docs/reference/admin/rest#v1.projects.indexes)
+- [REST Resource: v1.projects.operations](https://docs.cloud.google.com/datastore/docs/reference/admin/rest#v1.projects.operations)
 
 ## Service: datastore.googleapis.com
 
@@ -21,14 +21,14 @@ To call this service, we recommend that you use the Google-provided [client libr
 
 A [Discovery Document](https://developers.google.com/discovery/v1/reference/apis) is a machine-readable specification for describing and consuming REST APIs. It is used to build client libraries, IDE plugins, and other tools that interact with Google APIs. One service may provide multiple discovery documents. This service provides the following discovery documents:
 
-  - <https://datastore.googleapis.com/$discovery/rest?version=v1>
-  - <https://datastore.googleapis.com/$discovery/rest?version=v1beta1>
+- <https://datastore.googleapis.com/$discovery/rest?version=v1>
+- <https://datastore.googleapis.com/$discovery/rest?version=v1beta1>
 
 ### Service endpoint
 
 A [service endpoint](https://cloud.google.com/apis/design/glossary#api_service_endpoint) is a base URL that specifies the network address of an API service. One service might have multiple service endpoints. This service has the following service endpoint and all URIs below are relative to this service endpoint:
 
-  - `https://datastore.googleapis.com`
+- `https://datastore.googleapis.com`
 
 ### Regional service endpoint
 
@@ -40,76 +40,32 @@ A regional service endpoint is a base URL that specifies the network address of 
 
 ## REST Resource: [v1beta1.projects](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1beta1/projects)
 
-Methods
-
-`  export  `
-
-`POST /v1beta1/projects/{projectId}:export`  
-Exports a copy of all or a subset of entities from Google Cloud Datastore to another storage system, such as Google Cloud Storage.
-
-`  import  `
-
-`POST /v1beta1/projects/{projectId}:import`  
-Imports entities into Google Cloud Datastore.
+| Methods                                                                                               |                                                                                                                                                                                |
+|-------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`export`](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1beta1/projects/export) | `POST /v1beta1/projects/{projectId}:export` Exports a copy of all or a subset of entities from Google Cloud Datastore to another storage system, such as Google Cloud Storage. |
+| [`import`](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1beta1/projects/import) | `POST /v1beta1/projects/{projectId}:import` Imports entities into Google Cloud Datastore.                                                                                      |
 
 ## REST Resource: [v1.projects](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects)
 
-Methods
-
-`  export  `
-
-`POST /v1/projects/{projectId}:export`  
-Exports a copy of all or a subset of entities from Google Cloud Datastore to another storage system, such as Google Cloud Storage.
-
-`  import  `
-
-`POST /v1/projects/{projectId}:import`  
-Imports entities into Google Cloud Datastore.
+| Methods                                                                                          |                                                                                                                                                                           |
+|--------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`export`](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects/export) | `POST /v1/projects/{projectId}:export` Exports a copy of all or a subset of entities from Google Cloud Datastore to another storage system, such as Google Cloud Storage. |
+| [`import`](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects/import) | `POST /v1/projects/{projectId}:import` Imports entities into Google Cloud Datastore.                                                                                      |
 
 ## REST Resource: [v1.projects.indexes](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes)
 
-Methods
-
-`  create  `
-
-`POST /v1/projects/{projectId}/indexes`  
-Creates the specified index.
-
-`  delete  `
-
-`DELETE /v1/projects/{projectId}/indexes/{indexId}`  
-Deletes an existing index.
-
-`  get  `
-
-`GET /v1/projects/{projectId}/indexes/{indexId}`  
-Gets an index.
-
-`  list  `
-
-`GET /v1/projects/{projectId}/indexes`  
-Lists the indexes that match the specified filters.
+| Methods                                                                                                  |                                                                                            |
+|----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| [`create`](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes/create) | `POST /v1/projects/{projectId}/indexes` Creates the specified index.                       |
+| [`delete`](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes/delete) | `DELETE /v1/projects/{projectId}/indexes/{indexId}` Deletes an existing index.             |
+| [`get`](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes/get)       | `GET /v1/projects/{projectId}/indexes/{indexId}` Gets an index.                            |
+| [`list`](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.indexes/list)     | `GET /v1/projects/{projectId}/indexes` Lists the indexes that match the specified filters. |
 
 ## REST Resource: [v1.projects.operations](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations)
 
-Methods
-
-`  cancel  `
-
-`POST /v1/{name=projects/*/operations/*}:cancel`  
-Starts asynchronous cancellation on a long-running operation.
-
-`  delete  `
-
-`DELETE /v1/{name=projects/*/operations/*}`  
-Deletes a long-running operation.
-
-`  get  `
-
-`GET /v1/{name=projects/*/operations/*}`  
-Gets the latest state of a long-running operation.
-
-`  list  `
-
-`GET /v1/{name=projects/*}/operations`  
-Lists operations that match the specified filter in the request.
+| Methods                                                                                                     |                                                                                                                |
+|-------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
+| [`cancel`](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations/cancel) | `POST /v1/{name=projects/*/operations/*}:cancel` Starts asynchronous cancellation on a long-running operation. |
+| [`delete`](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations/delete) | `DELETE /v1/{name=projects/*/operations/*}` Deletes a long-running operation.                                  |
+| [`get`](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations/get)       | `GET /v1/{name=projects/*/operations/*}` Gets the latest state of a long-running operation.                    |
+| [`list`](https://docs.cloud.google.com/datastore/docs/reference/admin/rest/v1/projects.operations/list)     | `GET /v1/{name=projects/*}/operations` Lists operations that match the specified filter in the request.        |

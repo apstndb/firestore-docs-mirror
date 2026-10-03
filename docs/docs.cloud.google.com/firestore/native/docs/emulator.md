@@ -23,30 +23,38 @@ To install the Firestore emulator, install and update the gcloud CLI:
 1.  [Install the gcloud CLI](https://docs.cloud.google.com/sdk/docs/install) .
 
 2.  Update your gcloud CLI installation to get the latest features:
-    
-        gcloud components update
+
+    ```
+    gcloud components update
+    ```
 
 ## Run the emulator
 
 1.  Run the following command to start the emulator:
-    
-        gcloud emulators firestore start
-    
+
+    ```
+    gcloud emulators firestore start
+    ```
+
     The emulator prints the host and port number where it is running.
-    
-    By default, the emulator attempts to use `127.0.0.1:8080` . To bind the emulator to a specific host and port, use the optional `--host-port` flag, replacing HOST and PORT :
-    
-        gcloud emulators firestore start --host-port=HOST:PORT
+
+    By default, the emulator attempts to use `127.0.0.1:8080` . To bind the emulator to a specific host and port, use the optional `--host-port` flag, replacing ` HOST ` and ` PORT ` :
+
+    ```
+    gcloud emulators firestore start --host-port=HOST:PORT
+    ```
 
 2.  Type `Control + C` to stop the emulator. The emulator may also be stopped with a POST to `/shutdown` . For example:
-    
-        curl -d '' HOST:PORT/shutdown
+
+    ```
+    curl -d '' HOST:PORT/shutdown
+    ```
 
 ## Starting emulator in specific edition
 
 To start up the emulator in Enterprise edition, use the optional `--edition` flag. The valid values are `standard` and `enterprise` . By default, the emulator starts up in Standard Edition if the flag is not provided.
 
-``` 
+```
     gcloud emulators firestore start --edition=enterprise
 ```
 
@@ -56,9 +64,11 @@ How you connect to the emulator depends on the type of client library, server cl
 
 ### Server client libraries
 
-To connect a Firestore server client library (C\#, Go, Java, Node.js, PHP, Python, and Ruby), set the `FIRESTORE_EMULATOR_HOST` environment variable. When this environment variable is set, the server client libraries automatically connect to the emulator.
+To connect a Firestore server client library (C#, Go, Java, Node.js, PHP, Python, and Ruby), set the `FIRESTORE_EMULATOR_HOST` environment variable. When this environment variable is set, the server client libraries automatically connect to the emulator.
 
-    export FIRESTORE_EMULATOR_HOST="HOST:PORT"
+```
+export FIRESTORE_EMULATOR_HOST="HOST:PORT"
+```
 
 ### Android, Apple platforms, and Web SDKs
 
@@ -66,41 +76,49 @@ The following examples demonstrate how to connect the Android, Apple platforms, 
 
 ##### Android
 
-    // 10.0.2.2 is the special IP address to connect to the 'localhost' of
-    // the host computer from an Android emulator.
-    FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-    firestore.useEmulator("10.0.2.2", 8080);
-    
-    FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
-            .setPersistenceEnabled(false)
-            .build();
-    firestore.setFirestoreSettings(settings);
+```
+// 10.0.2.2 is the special IP address to connect to the 'localhost' of
+// the host computer from an Android emulator.
+FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+firestore.useEmulator("10.0.2.2", 8080);
+
+FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+        .setPersistenceEnabled(false)
+        .build();
+firestore.setFirestoreSettings(settings);
+```
 
 ##### Swift
 
-    let settings = Firestore.firestore().settings
-    settings.host = "127.0.0.1:8080"
-    settings.cacheSettings = MemoryCacheSettings()
-    settings.isSSLEnabled = false
-    Firestore.firestore().settings = settings
+```
+let settings = Firestore.firestore().settings
+settings.host = "127.0.0.1:8080"
+settings.cacheSettings = MemoryCacheSettings()
+settings.isSSLEnabled = false
+Firestore.firestore().settings = settings
+```
 
 ### Web version 9
 
-    import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
-    
-    // firebaseApps previously initialized using initializeApp()
-    const db = getFirestore();
-    connectFirestoreEmulator(db, '127.0.0.1', 8080);
+```
+import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
+
+// firebaseApps previously initialized using initializeApp()
+const db = getFirestore();
+connectFirestoreEmulator(db, '127.0.0.1', 8080);
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    // Firebase previously initialized using firebase.initializeApp().
-    var db = firebase.firestore();
-    if (location.hostname === "localhost") {
-      db.useEmulator("127.0.0.1", 8080);
-    }
+```
+// Firebase previously initialized using firebase.initializeApp().
+var db = firebase.firestore();
+if (location.hostname === "localhost") {
+  db.useEmulator("127.0.0.1", 8080);
+}
+```
 
 The Firestore in Native Mode emulator clears database contents when shut down. Since the offline cache of the Firestore SDK is not automatically cleared, you may want to disable local persistence in your emulator configuration to avoid discrepancies between the emulated database and local caches; in the Web SDK, persistence is disabled by default.
 
@@ -108,15 +126,19 @@ The Firestore in Native Mode emulator clears database contents when shut down. S
 
 The Firestore emulator includes a REST endpoint for deleting all the data currently in the emulator. You can use this endpoint to clear data between tests without shutting down the emulator.
 
-To delete all data in the emulator, perform an HTTP `DELETE` operation against the following endpoint, replacing HOST and PORT with the host and port you selected and replacing PROJECT\_ID with your own project ID:
+To delete all data in the emulator, perform an HTTP `DELETE` operation against the following endpoint, replacing ` HOST ` and ` PORT ` with the host and port you selected and replacing ` PROJECT_ID ` with your own project ID:
 
-    http://HOST:PORT/emulator/v1/projects/PROJECT_ID/databases/(default)/documents
+```
+http://HOST:PORT/emulator/v1/projects/PROJECT_ID/databases/(default)/documents
+```
 
 Adjust the host and port if the emulator does not use `127.0.0.1:8080` . Your code should await REST confirmation that the deletion finished or failed.
 
 You can perform this operation from the shell using `curl` :
 
-    $ curl -v -X DELETE "http://HOST:PORT/emulator/v1/projects/PROJECT_ID/databases/(default)/documents"
+```
+$ curl -v -X DELETE "http://HOST:PORT/emulator/v1/projects/PROJECT_ID/databases/(default)/documents"
+```
 
 ## How the Firestore emulator differs from production
 

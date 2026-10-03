@@ -12,8 +12,8 @@ While the easiest way to use Firestore is to use one of the native client librar
 
 The REST API can be helpful for the following use cases:
 
-  - Accessing Firestore from a resource-constrained environment, such as an internet of things (IoT) device, where running a complete client library is not possible.
-  - Automating database administration or retrieving detailed database metadata.
+- Accessing Firestore from a resource-constrained environment, such as an internet of things (IoT) device, where running a complete client library is not possible.
+- Automating database administration or retrieving detailed database metadata.
 
 If you are using a [gRPC-supported language](https://grpc.io/about/#osp) , consider using the [RPC API](https://docs.cloud.google.com/firestore/native/docs/reference/rpc/) rather than the REST API.
 
@@ -21,16 +21,16 @@ If you are using a [gRPC-supported language](https://grpc.io/about/#osp) , consi
 
 For authentication, the Firestore REST API accepts either a [Firebase Authentication](https://firebase.google.com/docs/auth/) ID token or a [Google Identity OAuth 2.0](https://developers.google.com/identity/protocols/OAuth2) token. The token you provide affects your request's authorization:
 
-  - Use Firebase ID tokens to authenticate requests from your application's users. For these requests, Firestore uses [Firestore Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/get-started) to determine if a request is authorized.
+- Use Firebase ID tokens to authenticate requests from your application's users. For these requests, Firestore uses [Firestore Security Rules](https://docs.cloud.google.com/firestore/native/docs/security/get-started) to determine if a request is authorized.
 
-  - Use a Google Identity OAuth 2.0 token and a [service account](https://cloud.google.com/iam/docs/service-accounts) to authenticate requests from your application, such as requests for database administration. For these requests, Firestore uses [Identity and Access Management (IAM)](https://cloud.google.com/iam/docs/overview) to determine if a request is authorized.
+- Use a Google Identity OAuth 2.0 token and a [service account](https://cloud.google.com/iam/docs/service-accounts) to authenticate requests from your application, such as requests for database administration. For these requests, Firestore uses [Identity and Access Management (IAM)](https://cloud.google.com/iam/docs/overview) to determine if a request is authorized.
 
 ### Working with Firebase ID tokens
 
 You can attain a Firebase ID token in two ways:
 
-  - [Generate a Firebase ID token using the Firebase Authentication REST API](https://firebase.google.com/docs/reference/rest/auth/) .
-  - [Retrieve a user's Firebase ID token from a Firebase Authentication SDK](https://firebase.google.com/docs/auth/admin/verify-id-tokens#retrieve_id_tokens_on_clients) .
+- [Generate a Firebase ID token using the Firebase Authentication REST API](https://firebase.google.com/docs/reference/rest/auth/) .
+- [Retrieve a user's Firebase ID token from a Firebase Authentication SDK](https://firebase.google.com/docs/auth/admin/verify-id-tokens#retrieve_id_tokens_on_clients) .
 
 By retrieving a user's Firebase ID token, you can make requests on behalf of the user.
 
@@ -42,7 +42,7 @@ You can generate an access token by using a [service account](https://cloud.goog
 
 This token must have the following scope to send requests to the Firestore REST API:
 
-  - `https://www.googleapis.com/auth/datastore`
+- `https://www.googleapis.com/auth/datastore`
 
 If you authenticate your requests with a service account and a Google Identity OAuth 2.0 token, Firestore assumes that your requests act on behalf of your application instead of an individual user. Firestore allows these requests to ignore your security rules. Instead, Firestore uses [IAM](https://cloud.google.com/iam/docs/overview) to determine if a request is authorized.
 
@@ -58,11 +58,15 @@ All REST API endpoints exist under the base URL `https://firestore.googleapis.co
 
 To create a path to a document with the ID `LA` in the collection `cities` under the project `YOUR_PROJECT_ID` you would use the following structure.
 
-    /projects/YOUR_PROJECT_ID/databases/(default)/documents/cities/LA
+```
+/projects/YOUR_PROJECT_ID/databases/(default)/documents/cities/LA
+```
 
 To interact with this path, combine it with the base API URL.
 
-    https://firestore.googleapis.com/v1/projects/YOUR_PROJECT_ID/databases/(default)/documents/cities/LA
+```
+https://firestore.googleapis.com/v1/projects/YOUR_PROJECT_ID/databases/(default)/documents/cities/LA
+```
 
 The best way to begin experimenting with the REST API is to use the [API Explorer](https://developers.google.com/apis-explorer/#search/firestore/firestore/v1/) , which automatically generates Google Identity OAuth 2.0 tokens and allows you to examine the API.
 
@@ -86,80 +90,16 @@ When a Firestore request succeeds, the Firestore API returns an HTTP `200 OK` st
 
 The following table lists recommended actions for each error code. These codes apply to the Firestore REST and RPC APIs. The [Firestore SDKs and client libraries](https://docs.cloud.google.com/firestore/docs/reference/libraries) may not return these same error codes.
 
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Canonical Error Code</th>
-<th>Description</th>
-<th>Recommended Action</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">ABORTED</code></td>
-<td>The request conflicted with another request.</td>
-<td>For a non-transactional commit:<br />
-Retry the request or re-structure your data model to reduce contention.<br />
-<br />
-For requests in a transaction:<br />
-Retry the entire transaction or re-structure your data model to reduce contention.</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">ALREADY_EXISTS</code></td>
-<td>The request tried to create a document that already exists.</td>
-<td>Do not retry without fixing the problem.</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">DEADLINE_EXCEEDED</code></td>
-<td>The Firestore server handling the request exceeded a deadline.</td>
-<td>Retry using exponential backoff.</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">FAILED_PRECONDITION</code></td>
-<td>The request did not meet one of its preconditions. For example, a query request might require an index not yet defined. See the message field in the error response for the precondition that failed.</td>
-<td>Do not retry without fixing the problem.</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">INTERNAL</code></td>
-<td>The Firestore server returned an error.</td>
-<td>Do not retry this request more than once.</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">INVALID_ARGUMENT</code></td>
-<td>A request parameter includes an invalid value. See the message field in the error response for the invalid value.</td>
-<td>Do not retry without fixing the problem.</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">NOT_FOUND</code></td>
-<td>The request attempted to update a document that does not exist.</td>
-<td>Do not retry without fixing the problem.</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">PERMISSION_DENIED</code></td>
-<td>The user is not authorized to make this request.</td>
-<td>Do not retry without fixing the problem.</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">RESOURCE_EXHAUSTED</code></td>
-<td>The project exceeded either its <a href="https://docs.cloud.google.com/firestore/quotas">quota</a> or the region/multi-region capacity.</td>
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/monitor-usage#view-quota">Verify that you did not exceed your project quota</a> . If you exceeded a project quota, do not retry without fixing the problem.<br />
-<br />
-Otherwise, retry with exponential backoff.</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">UNAUTHENTICATED</code></td>
-<td>The request did not include valid authentication credentials.</td>
-<td>Do not retry without fixing the problem.</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">UNAVAILABLE</code></td>
-<td>The Firestore server returned an error.</td>
-<td>Retry using exponential backoff.</td>
-</tr>
-</tbody>
-</table>
+| Canonical Error Code  | Description                                                                                                                                                                                           | Recommended Action                                                                                                                                                                                                                                       |
+|-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `ABORTED`             | The request conflicted with another request.                                                                                                                                                          | For a non-transactional commit: Retry the request or re-structure your data model to reduce contention. For requests in a transaction: Retry the entire transaction or re-structure your data model to reduce contention.                                |
+| `ALREADY_EXISTS`      | The request tried to create a document that already exists.                                                                                                                                           | Do not retry without fixing the problem.                                                                                                                                                                                                                 |
+| `DEADLINE_EXCEEDED`   | The Firestore server handling the request exceeded a deadline.                                                                                                                                        | Retry using exponential backoff.                                                                                                                                                                                                                         |
+| `FAILED_PRECONDITION` | The request did not meet one of its preconditions. For example, a query request might require an index not yet defined. See the message field in the error response for the precondition that failed. | Do not retry without fixing the problem.                                                                                                                                                                                                                 |
+| `INTERNAL`            | The Firestore server returned an error.                                                                                                                                                               | Do not retry this request more than once.                                                                                                                                                                                                                |
+| `INVALID_ARGUMENT`    | A request parameter includes an invalid value. See the message field in the error response for the invalid value.                                                                                     | Do not retry without fixing the problem.                                                                                                                                                                                                                 |
+| `NOT_FOUND`           | The request attempted to update a document that does not exist.                                                                                                                                       | Do not retry without fixing the problem.                                                                                                                                                                                                                 |
+| `PERMISSION_DENIED`   | The user is not authorized to make this request.                                                                                                                                                      | Do not retry without fixing the problem.                                                                                                                                                                                                                 |
+| `RESOURCE_EXHAUSTED`  | The project exceeded either its [quota](https://docs.cloud.google.com/firestore/quotas) or the region/multi-region capacity.                                                                          | [Verify that you did not exceed your project quota](https://docs.cloud.google.com/firestore/native/docs/monitor-usage#view-quota) . If you exceeded a project quota, do not retry without fixing the problem. Otherwise, retry with exponential backoff. |
+| `UNAUTHENTICATED`     | The request did not include valid authentication credentials.                                                                                                                                         | Do not retry without fixing the problem.                                                                                                                                                                                                                 |
+| `UNAVAILABLE`         | The Firestore server returned an error.                                                                                                                                                               | Retry using exponential backoff.                                                                                                                                                                                                                         |

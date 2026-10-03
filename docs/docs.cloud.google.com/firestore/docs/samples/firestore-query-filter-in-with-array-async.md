@@ -12,7 +12,7 @@ Query a Firestore collection with an in array filter (async).
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Query and filter data](https://docs.cloud.google.com/firestore/native/docs/query-data/queries)
+- [Query and filter data](https://docs.cloud.google.com/firestore/native/docs/query-data/queries)
 
 ## Code sample
 
@@ -20,12 +20,14 @@ For detailed documentation that includes this code sample, see the following:
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    cities_ref = db.collection("cities")
-    
-    query = cities_ref.where(
-        filter=FieldFilter("regions", "in", [["west_coast"], ["east_coast"]])
-    )
-    return query
+```python
+cities_ref = db.collection("cities")
+
+query = cities_ref.where(
+    filter=FieldFilter("regions", "in", [["west_coast"], ["east_coast"]])
+)
+return query
+```
 
 ## What's next
 

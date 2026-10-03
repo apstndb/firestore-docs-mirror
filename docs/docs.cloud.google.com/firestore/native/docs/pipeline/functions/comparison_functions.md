@@ -10,30 +10,32 @@ data_source: docs.cloud.google.com
 
 ## **Comparison Functions**
 
-|                                          |                                  |
-| ---------------------------------------- | -------------------------------- |
-| Name                                     | Description                      |
-| `         EQUAL        `                 | Equality comparison              |
-| `         GREATER_THAN        `          | Greater than comparison          |
-| `         GREATER_THAN_OR_EQUAL        ` | Greater than or equal comparison |
-| `         LESS_THAN        `             | Less than comparison             |
-| `         LESS_THAN_OR_EQUAL        `    | Less than or equal comparison    |
-| `         NOT_EQUAL        `             | Not equals comparison            |
-| `         CMP        `                   | General comparison               |
+|                                                                                                                                              |                                  |
+|----------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|
+| Name                                                                                                                                         | Description                      |
+| [`EQUAL`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/comparison_functions#equal)                                 | Equality comparison              |
+| [`GREATER_THAN`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/comparison_functions#greater_than)                   | Greater than comparison          |
+| [`GREATER_THAN_OR_EQUAL`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/comparison_functions#greater_than_or_equal) | Greater than or equal comparison |
+| [`LESS_THAN`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/comparison_functions#less_than)                         | Less than comparison             |
+| [`LESS_THAN_OR_EQUAL`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/comparison_functions#less_than_or_equal)       | Less than or equal comparison    |
+| [`NOT_EQUAL`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/comparison_functions#not_equal)                         | Not equals comparison            |
+| [`CMP`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/comparison_functions#cmp)                                     | General comparison               |
 
 ### EQUAL
 
 **Syntax:**
 
-    equal(x: ANY, y: ANY) -> BOOLEAN
+```
+equal(x: ANY, y: ANY) -> BOOLEAN
+```
 
 **Examples:**
 
 | `x`    | `y`      | `equal(x, y)` |
-| :----- | :------- | :------------ |
+|--------|----------|---------------|
 | 1L     | 1L       | `TRUE`        |
 | 1.0    | 1L       | `TRUE`        |
-| \-1.0  | 1L       | `FALSE`       |
+| -1.0   | 1L       | `FALSE`       |
 | NaN    | NaN      | `TRUE`        |
 | `NULL` | `NULL`   | `TRUE`        |
 | `NULL` | `ABSENT` | `FALSE`       |
@@ -44,76 +46,92 @@ Returns `TRUE` if `x` and `y` are equal, and `FALSE` otherwise.
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("rating").equal(5).as("hasPerfectRating"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("rating").equal(5).as("hasPerfectRating"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("rating").equal(5).as("hasPerfectRating"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("rating").equal(5).as("hasPerfectRating"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("rating").equal(5).as("hasPerfectRating")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("rating").equal(5).as("hasPerfectRating")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("rating").equal(5).alias("hasPerfectRating"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("rating").equal(5).alias("hasPerfectRating"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(field("rating").equal(5).alias("hasPerfectRating"))
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(field("rating").equal(5).alias("hasPerfectRating"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("rating").equal(5).as_("hasPerfectRating"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("rating").equal(5).as_("hasPerfectRating"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(equal(field("rating"), 5).as("hasPerfectRating"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(equal(field("rating"), 5).as("hasPerfectRating"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.Equal(firestore.FieldOf("rating"), 5).As("hasPerfectRating"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.Equal(firestore.FieldOf("rating"), 5).As("hasPerfectRating"),
+    )).
+    Execute(ctx)
+```
 
-### GREATER\_THAN
+### GREATER_THAN
 
 **Syntax:**
 
-    greater_than(x: ANY, y: ANY) -> BOOLEAN
+```
+greater_than(x: ANY, y: ANY) -> BOOLEAN
+```
 
 **Description:**
 
@@ -124,7 +142,7 @@ If `x` and `y` are not comparable, returns `FALSE` .
 **Examples:**
 
 | `x`    | `y`    | `greater_than(x, y)` |
-| :----- | :----- | :------------------- |
+|--------|--------|----------------------|
 | 1L     | 0.0    | `TRUE`               |
 | 1L     | 1L     | `FALSE`              |
 | 1L     | 2L     | `FALSE`              |
@@ -136,76 +154,92 @@ If `x` and `y` are not comparable, returns `FALSE` .
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("rating").greaterThan(4).as("hasHighRating"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("rating").greaterThan(4).as("hasHighRating"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("rating").greaterThan(4).as("hasHighRating"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("rating").greaterThan(4).as("hasHighRating"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("rating").greaterThan(4).as("hasHighRating")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("rating").greaterThan(4).as("hasHighRating")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("rating").greaterThan(4).alias("hasHighRating"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("rating").greaterThan(4).alias("hasHighRating"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(field("rating").greaterThan(4).alias("hasHighRating"))
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(field("rating").greaterThan(4).alias("hasHighRating"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("rating").greater_than(4).as_("hasHighRating"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("rating").greater_than(4).as_("hasHighRating"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(greaterThan(field("rating"), 4).as("hasHighRating"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(greaterThan(field("rating"), 4).as("hasHighRating"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.GreaterThan(firestore.FieldOf("rating"), 4).As("hasHighRating"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.GreaterThan(firestore.FieldOf("rating"), 4).As("hasHighRating"),
+    )).
+    Execute(ctx)
+```
 
-### GREATER\_THAN\_OR\_EQUAL
+### GREATER_THAN_OR_EQUAL
 
 **Syntax:**
 
-    greater_than_or_equal(x: ANY, y: ANY) -> BOOLEAN
+```
+greater_than_or_equal(x: ANY, y: ANY) -> BOOLEAN
+```
 
 **Description:**
 
@@ -216,7 +250,7 @@ If `x` and `y` are not comparable, returns `FALSE` .
 **Examples:**
 
 | `x`    | `y`    | `greater_than_or_equal(x, y)` |
-| :----- | :----- | :---------------------------- |
+|--------|--------|-------------------------------|
 | 1L     | 0.0    | `TRUE`                        |
 | 1L     | 1L     | `TRUE`                        |
 | 1L     | 2L     | `FALSE`                       |
@@ -228,80 +262,96 @@ If `x` and `y` are not comparable, returns `FALSE` .
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("published").greaterThanOrEqual(1900).as("publishedIn20thCentury"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("published").greaterThanOrEqual(1900).as("publishedIn20thCentury"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("published").greaterThanOrEqual(1900).as("publishedIn20thCentury"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("published").greaterThanOrEqual(1900).as("publishedIn20thCentury"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("published").greaterThanOrEqual(1900).as("publishedIn20thCentury")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("published").greaterThanOrEqual(1900).as("publishedIn20thCentury")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("published").greaterThanOrEqual(1900).alias("publishedIn20thCentury"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("published").greaterThanOrEqual(1900).alias("publishedIn20thCentury"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(field("published").greaterThanOrEqual(1900).alias("publishedIn20thCentury"))
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(field("published").greaterThanOrEqual(1900).alias("publishedIn20thCentury"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(
-            Field.of("published")
-            .greater_than_or_equal(1900)
-            .as_("publishedIn20thCentury")
-        )
-        .execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(
+        Field.of("published")
+        .greater_than_or_equal(1900)
+        .as_("publishedIn20thCentury")
     )
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(greaterThanOrEqual(field("published"), 1900).as("publishedIn20thCentury"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(greaterThanOrEqual(field("published"), 1900).as("publishedIn20thCentury"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.GreaterThanOrEqual(firestore.FieldOf("published"), 1900).As("publishedIn20thCentury"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.GreaterThanOrEqual(firestore.FieldOf("published"), 1900).As("publishedIn20thCentury"),
+    )).
+    Execute(ctx)
+```
 
-### LESS\_THAN
+### LESS_THAN
 
 **Syntax:**
 
-    less_than(x: ANY, y: ANY) -> BOOLEAN
+```
+less_than(x: ANY, y: ANY) -> BOOLEAN
+```
 
 **Description:**
 
@@ -312,7 +362,7 @@ If `x` and `y` are not comparable, returns `FALSE` .
 **Examples:**
 
 | `x`    | `y`    | `less_than(x, y)` |
-| :----- | :----- | :---------------- |
+|--------|--------|-------------------|
 | 1L     | 0.0    | `FALSE`           |
 | 1L     | 1L     | `FALSE`           |
 | 1L     | 2L     | `TRUE`            |
@@ -324,76 +374,92 @@ If `x` and `y` are not comparable, returns `FALSE` .
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("published").lessThan(1923).as("isPublicDomainProbably"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("published").lessThan(1923).as("isPublicDomainProbably"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("published").lessThan(1923).as("isPublicDomainProbably"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("published").lessThan(1923).as("isPublicDomainProbably"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("published").lessThan(1923).as("isPublicDomainProbably")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("published").lessThan(1923).as("isPublicDomainProbably")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("published").lessThan(1923).alias("isPublicDomainProbably"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("published").lessThan(1923).alias("isPublicDomainProbably"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(field("published").lessThan(1923).alias("isPublicDomainProbably"))
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(field("published").lessThan(1923).alias("isPublicDomainProbably"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("published").less_than(1923).as_("isPublicDomainProbably"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("published").less_than(1923).as_("isPublicDomainProbably"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(lessThan(field("published"), 1923).as("isPublicDomainProbably"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(lessThan(field("published"), 1923).as("isPublicDomainProbably"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.LessThan(firestore.FieldOf("published"), 1923).As("isPublicDomainProbably"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.LessThan(firestore.FieldOf("published"), 1923).As("isPublicDomainProbably"),
+    )).
+    Execute(ctx)
+```
 
-### LESS\_THAN\_OR\_EQUAL
+### LESS_THAN_OR_EQUAL
 
 **Syntax:**
 
-    less_than_or_equal(x: ANY, y: ANY) -> BOOLEAN
+```
+less_than_or_equal(x: ANY, y: ANY) -> BOOLEAN
+```
 
 **Description:**
 
@@ -404,7 +470,7 @@ If `x` and `y` are not comparable, returns `FALSE` .
 **Examples:**
 
 | `x`    | `y`    | `less_than(x, y)` |
-| :----- | :----- | :---------------- |
+|--------|--------|-------------------|
 | 1L     | 0.0    | `FALSE`           |
 | 1L     | 1L     | `TRUE`            |
 | 1L     | 2L     | `TRUE`            |
@@ -416,76 +482,92 @@ If `x` and `y` are not comparable, returns `FALSE` .
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("rating").lessThanOrEqual(2).as("hasBadRating"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("rating").lessThanOrEqual(2).as("hasBadRating"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("rating").lessThanOrEqual(2).as("hasBadRating"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("rating").lessThanOrEqual(2).as("hasBadRating"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("rating").lessThanOrEqual(2).as("hasBadRating")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("rating").lessThanOrEqual(2).as("hasBadRating")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("rating").lessThanOrEqual(2).alias("hasBadRating"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("rating").lessThanOrEqual(2).alias("hasBadRating"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(field("rating").lessThanOrEqual(2).alias("hasBadRating"))
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(field("rating").lessThanOrEqual(2).alias("hasBadRating"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("rating").less_than_or_equal(2).as_("hasBadRating"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("rating").less_than_or_equal(2).as_("hasBadRating"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(lessThanOrEqual(field("rating"), 2).as("hasBadRating"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(lessThanOrEqual(field("rating"), 2).as("hasBadRating"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.LessThanOrEqual(firestore.FieldOf("rating"), 2).As("hasBadRating"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.LessThanOrEqual(firestore.FieldOf("rating"), 2).As("hasBadRating"),
+    )).
+    Execute(ctx)
+```
 
-### NOT\_EQUAL
+### NOT_EQUAL
 
 **Syntax:**
 
-    not_equal(x: ANY, y: ANY) -> BOOLEAN
+```
+not_equal(x: ANY, y: ANY) -> BOOLEAN
+```
 
 **Description:**
 
@@ -494,10 +576,10 @@ Returns `TRUE` if `x` is not equal to `y` , and `FALSE` otherwise.
 **Examples:**
 
 | `x`    | `y`      | `not_equal(x, y)` |
-| :----- | :------- | :---------------- |
+|--------|----------|-------------------|
 | 1L     | 1L       | `FALSE`           |
 | 1.0    | 1L       | `FALSE`           |
-| \-1.0  | 1L       | `TRUE`            |
+| -1.0   | 1L       | `TRUE`            |
 | NaN    | 0L       | `TRUE`            |
 | NaN    | NaN      | `FALSE`           |
 | `NULL` | `NULL`   | `FALSE`           |
@@ -505,98 +587,114 @@ Returns `TRUE` if `x` is not equal to `y` , and `FALSE` otherwise.
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(field("title").notEqual("1984").as("not1984"))
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(field("title").notEqual("1984").as("not1984"))
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(field("title").notEqual("1984").as("not1984"))
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(field("title").notEqual("1984").as("not1984"))
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([Field("title").notEqual("1984").as("not1984")])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([Field("title").notEqual("1984").as("not1984")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(field("title").notEqual("1984").alias("not1984"))
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(field("title").notEqual("1984").alias("not1984"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(field("title").notEqual("1984").alias("not1984"))
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(field("title").notEqual("1984").alias("not1984"))
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("title").not_equal("1984").as_("not1984"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("title").not_equal("1984").as_("not1984"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(notEqual(field("title"), "1984").as("not1984"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(notEqual(field("title"), "1984").as("not1984"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.NotEqual(firestore.FieldOf("title"), "1984").As("not1984"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.NotEqual(firestore.FieldOf("title"), "1984").As("not1984"),
+    )).
+    Execute(ctx)
+```
 
 ### CMP
 
 **Syntax:**
 
-    cmp(x: ANY, y: ANY) -> Int64
+```
+cmp(x: ANY, y: ANY) -> Int64
+```
 
 **Description:**
 
 Compares `x` & `y` , returning:
 
-  - `1L` if `x` is greater than `y` .
-  - `-1L` if `x` is less than `y` .
-  - `0L` otherwise.
+- `1L` if `x` is greater than `y` .
+- `-1L` if `x` is less than `y` .
+- `0L` otherwise.
 
 Unlike other comparison functions, the `cmp(...)` function works across types, following the same ordering used in the `sort(...)` stage. See [value type order](https://docs.cloud.google.com/firestore/native/docs/concepts/data-types) for how values are ordered across types.
 
 **Examples:**
 
 | `x`    | `y`      | `cmp(x, y)` |
-| :----- | :------- | :---------- |
+|--------|----------|-------------|
 | 1L     | 1L       | 0L          |
 | 1.0    | 1L       | 0L          |
-| \-1.0  | 1L       | \-1L        |
-| 42.5D  | "foo"    | \-1L        |
+| -1.0   | 1L       | -1L         |
+| 42.5D  | "foo"    | -1L         |
 | `NULL` | `NULL`   | 0L          |
 | `NULL` | `ABSENT` | 0L          |
 
 ## What's next
 
-  - See the [Pipeline Queries overview](https://docs.cloud.google.com/firestore/docs/pipeline/overview)
+- See the [Pipeline Queries overview](https://docs.cloud.google.com/firestore/docs/pipeline/overview)

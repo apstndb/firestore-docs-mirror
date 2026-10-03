@@ -18,33 +18,19 @@ Build AI, web, and mobile applications with a fully managed, serverless document
 
 [Deploy a dynamic website](https://console.cloud.google.com/products/solutions/details/dynamic-web-app-with-javascript)
 
-New customers get $300 in free credits to spend on Firestore. All customers get 50,000 reads, 20,000 writes, 20,000 deletes, and 1 GB storage free per day, not charged against your credits.
+New customers get \$300 in free credits to spend on Firestore. All customers get 50,000 reads, 20,000 writes, 20,000 deletes, and 1 GB storage free per day, not charged against your credits.
 
   
 
 ### Product highlights
 
-  - [](https://cloud.google.com/products/firestore#features)
-    
-    Firestore with MongoDB compatibility
+- [Firestore with MongoDB compatibility](https://cloud.google.com/products/firestore#features)
+- [Serverless with up to 99.999% availability SLA](https://cloud.google.com/products/firestore#features)
+- [Pipeline query API and indexes for advanced query patterns](https://cloud.google.com/products/firestore#features)
 
-  - [](https://cloud.google.com/products/firestore#features)
-    
-    Serverless with up to 99.999% availability SLA
+------------------------------------------------------------------------
 
-  - [](https://cloud.google.com/products/firestore#features)
-    
-    Pipeline query API and indexes for advanced query patterns
-
------
-
-  - [](https://www.youtube.com/watch?v=IemOAESlWKw)
-    
-    ![Document database illustration](https://www.gstatic.com/bricks/image/89792e07-14ea-45c4-b383-1a6009b10928.png)
-    
-    Firestore in a minute video
-    
-    1:49
+[![Document database illustration](https://www.gstatic.com/bricks/image/89792e07-14ea-45c4-b383-1a6009b10928.png) Firestore in a minute video 1:49](https://www.youtube.com/watch?v=IemOAESlWKw)
 
 Features
 
@@ -100,17 +86,9 @@ You can now significantly accelerate your build process and focus on delivering 
 
 [Mobile web apps compute diagram](https://cloud.google.com/products/firestore#)
 
-  - [](https://cloud.google.com/firestore/docs/create-database-web-mobile-client-library)
-    
-    **Quickstart:** Create a Firestore database by using a web or mobile client library
-
-  - [](https://cloud.google.com/firestore/docs/best-practices)
-    
-    **Docs:** Best practices for designing an app
-
-  - [](https://youtu.be/ZzLFAEYV2js?t=1848)
-    
-    **Case study:** Mayo Clinic's journey with Firestore
+- [**Quickstart:** Create a Firestore database by using a web or mobile client library](https://cloud.google.com/firestore/docs/create-database-web-mobile-client-library)
+- [**Docs:** Best practices for designing an app](https://cloud.google.com/firestore/docs/best-practices)
+- [**Case study:** Mayo Clinic's journey with Firestore](https://youtu.be/ZzLFAEYV2js?t=1848)
 
 ![book](https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/book/wght100fill1/20px.svg)
 
@@ -124,17 +102,9 @@ You can now significantly accelerate your build process and focus on delivering 
 
 [Mobile web apps compute diagram](https://cloud.google.com/products/firestore#)
 
-  - [](https://cloud.google.com/firestore/docs/create-database-web-mobile-client-library)
-    
-    **Quickstart:** Create a Firestore database by using a web or mobile client library
-
-  - [](https://cloud.google.com/firestore/docs/best-practices)
-    
-    **Docs:** Best practices for designing an app
-
-  - [](https://youtu.be/ZzLFAEYV2js?t=1848)
-    
-    **Case study:** Mayo Clinic's journey with Firestore
+- [**Quickstart:** Create a Firestore database by using a web or mobile client library](https://cloud.google.com/firestore/docs/create-database-web-mobile-client-library)
+- [**Docs:** Best practices for designing an app](https://cloud.google.com/firestore/docs/best-practices)
+- [**Case study:** Mayo Clinic's journey with Firestore](https://youtu.be/ZzLFAEYV2js?t=1848)
 
 ### Gaming
 
@@ -144,17 +114,9 @@ Modern games demand high-performance, flexible databases to power immersive play
 
 [Gaming Use Case](https://cloud.google.com/products/firestore#)
 
-  - [](https://www.youtube.com/watch?v=Z8NTrBTVifE)
-    
-    **Video:** Building a next-generation scalable gaming platform
-
-  - [](https://firebase.google.com/docs/games/setup)
-    
-    **Docs:** Supercharge your games with Firebase and Firestore
-
-  - [](https://docs.cloud.google.com/firestore/native/docs/reference/libraries)
-    
-    **Docs:** Firestore client libraries
+- [**Video:** Building a next-generation scalable gaming platform](https://www.youtube.com/watch?v=Z8NTrBTVifE)
+- [**Docs:** Supercharge your games with Firebase and Firestore](https://firebase.google.com/docs/games/setup)
+- [**Docs:** Firestore client libraries](https://docs.cloud.google.com/firestore/native/docs/reference/libraries)
 
 ![book](https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/book/wght100fill1/20px.svg)
 
@@ -166,17 +128,9 @@ Modern games demand high-performance, flexible databases to power immersive play
 
 [Gaming Use Case](https://cloud.google.com/products/firestore#)
 
-  - [](https://www.youtube.com/watch?v=Z8NTrBTVifE)
-    
-    **Video:** Building a next-generation scalable gaming platform
-
-  - [](https://firebase.google.com/docs/games/setup)
-    
-    **Docs:** Supercharge your games with Firebase and Firestore
-
-  - [](https://docs.cloud.google.com/firestore/native/docs/reference/libraries)
-    
-    **Docs:** Firestore client libraries
+- [**Video:** Building a next-generation scalable gaming platform](https://www.youtube.com/watch?v=Z8NTrBTVifE)
+- [**Docs:** Supercharge your games with Firebase and Firestore](https://firebase.google.com/docs/games/setup)
+- [**Docs:** Firestore client libraries](https://docs.cloud.google.com/firestore/native/docs/reference/libraries)
 
 ### Generative AI
 
@@ -188,17 +142,9 @@ By leveraging Firestore as a scalable vector database, you can store embeddings 
 
 [Gen AI Use Case](https://cloud.google.com/products/firestore#)
 
-  - [](https://cloud.google.com/firestore/docs/solutions/generative-ai-index)
-    
-    **Docs:** Get started with generative AI features in Firestore
-
-  - [](https://cloud.google.com/blog/products/databases/get-started-with-firestore-vector-similarity-search)
-    
-    **Blog:** Build gen AI apps with Firestore vector similarity search
-
-  - [](https://firebase.google.com/products/generative-ai)
-    
-    **Product page:** Build AI-powered apps with Firebase
+- [**Docs:** Get started with generative AI features in Firestore](https://cloud.google.com/firestore/docs/solutions/generative-ai-index)
+- [**Blog:** Build gen AI apps with Firestore vector similarity search](https://cloud.google.com/blog/products/databases/get-started-with-firestore-vector-similarity-search)
+- [**Product page:** Build AI-powered apps with Firebase](https://firebase.google.com/products/generative-ai)
 
 ![book](https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/book/wght100fill1/20px.svg)
 
@@ -212,17 +158,9 @@ By leveraging Firestore as a scalable vector database, you can store embeddings 
 
 [Gen AI Use Case](https://cloud.google.com/products/firestore#)
 
-  - [](https://cloud.google.com/firestore/docs/solutions/generative-ai-index)
-    
-    **Docs:** Get started with generative AI features in Firestore
-
-  - [](https://cloud.google.com/blog/products/databases/get-started-with-firestore-vector-similarity-search)
-    
-    **Blog:** Build gen AI apps with Firestore vector similarity search
-
-  - [](https://firebase.google.com/products/generative-ai)
-    
-    **Product page:** Build AI-powered apps with Firebase
+- [**Docs:** Get started with generative AI features in Firestore](https://cloud.google.com/firestore/docs/solutions/generative-ai-index)
+- [**Blog:** Build gen AI apps with Firestore vector similarity search](https://cloud.google.com/blog/products/databases/get-started-with-firestore-vector-similarity-search)
+- [**Product page:** Build AI-powered apps with Firebase](https://firebase.google.com/products/generative-ai)
 
 ### Personalization
 
@@ -232,13 +170,8 @@ Deliver highly personalized experiences at scale with Firestore. This flexible d
 
 [Personalization Use Case](https://cloud.google.com/products/firestore#)
 
-  - [](https://www.youtube.com/watch?v=icuk1UiHx-Q)
-    
-    **Video:** How HighLevel built an AI marketing platform with Firestore
-
-  - [](https://www.youtube.com/watch?v=Bw6EtlZrsi0)
-    
-    **Case study:** How Dialpad has built an AI-powered customer communications platform with Firestore
+- [**Video:** How HighLevel built an AI marketing platform with Firestore](https://www.youtube.com/watch?v=icuk1UiHx-Q)
+- [**Case study:** How Dialpad has built an AI-powered customer communications platform with Firestore](https://www.youtube.com/watch?v=Bw6EtlZrsi0)
 
 ![book](https://fonts.gstatic.com/s/i/short-term/release/googlesymbols/book/wght100fill1/20px.svg)
 
@@ -250,13 +183,8 @@ Deliver highly personalized experiences at scale with Firestore. This flexible d
 
 [Personalization Use Case](https://cloud.google.com/products/firestore#)
 
-  - [](https://www.youtube.com/watch?v=icuk1UiHx-Q)
-    
-    **Video:** How HighLevel built an AI marketing platform with Firestore
-
-  - [](https://www.youtube.com/watch?v=Bw6EtlZrsi0)
-    
-    **Case study:** How Dialpad has built an AI-powered customer communications platform with Firestore
+- [**Video:** How HighLevel built an AI marketing platform with Firestore](https://www.youtube.com/watch?v=icuk1UiHx-Q)
+- [**Case study:** How Dialpad has built an AI-powered customer communications platform with Firestore](https://www.youtube.com/watch?v=Bw6EtlZrsi0)
 
 ### Content management
 
@@ -282,129 +210,32 @@ What problem are you trying to solve?
 
 What you'll get:
 
-*check\_small*Step-by-step guide
+*check_small*Step-by-step guide
 
-*check\_small*Reference architecture
+*check_small*Reference architecture
 
-*check\_small*Available pre-built solutions
+*check_small*Available pre-built solutions
 
 This service was built with [Gemini Enterprise Agent Platform](https://cloud.google.com/products/gemini-enterprise-agent-platform). You must be 18 or older to use it. Do not enter sensitive, confidential, or personal info.
 
 Pricing
 
-How Firestore pricing works
-
-Firestore’s pricing is based on the read and write operations conducted on your database, consumed storage, and network usage. Pricing varies based on the edition selected. Committed use discounts reduce the price further.
-
-Feature
-
-Description
-
-Price (USD)
-
-Operations
-
-[**Enterprise edition**](https://cloud.google.com/firestore/enterprise/pricing)
-
-Provides additional capabilities including MongoDB compatibility and an advanced query engine supporting a larger number of features and increased limits.
-
-In our serverless model, operations in Enterprise edition are charged based on read and write units.
-
-Read units
-
-Starting at
-
-$0.05
-
-per 1 million read units (4 KB tranches)
-
-Write units
-
-Starting at
-
-$0.26
-
-per 1 million write units (1 KB tranches)
-
-Real-time Update units
-
-Starting at
-
-$0.30
-
-per 1 million write units (1 KB tranches)
-
-Operations
-
-[**Standard edition**](https://cloud.google.com/firestore/pricing)
-
-Provides comprehensive capabilities as a document database including a standard query engine, fluent SDKs, real-time and offline support, high availability, and a convenient serverless operational model with seamless autoscaling.
-
-In our serverless model, operations conducted in Standard edition are charged based on read, write, and delete units.
-
-Read units
-
-Starting at
-
-$0.03
-
-per 100,000 read units
-
-Write units
-
-Starting at
-
-$0.09
-
-per 100,000 write units
-
-Delete units
-
-Starting at
-
-$0.01
-
-per 100,000 delete units
-
-Storage
-
-[**Enterprise edition**](https://cloud.google.com/firestore/enterprise/pricing)
-
-Enterprise edition offers SSD storage for consistent performance in all utilization patterns.
-
-Starting at
-
-$0.24
-
-Per GB/month
-
-[**Standard edition**](https://cloud.google.com/firestore/pricing)
-
-Standard edition offers hybrid storage using both SSDs and HDDs.
-
-Starting at
-
-$0.15
-
-per GB/month
-
-Network
-
-**Ingress**
-
-Free
-
-**Intra-region egress**
-
-Free
-
-**Inter-region egress**
-
-Starting at
-
-$0.01
-
-per GB
+| How Firestore pricing works                                                                                                         | Firestore’s pricing is based on the read and write operations conducted on your database, consumed storage, and network usage. Pricing varies based on the edition selected. Committed use discounts reduce the price further.                                                                                                                                                                                                 |                                 |
+|-------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------|
+| Feature                                                                                                                             | Description                                                                                                                                                                                                                                                                                                                                                                                                                    | Price (USD)                     |
+| Operations                                                                                                                          | [**Enterprise edition**](https://cloud.google.com/firestore/enterprise/pricing) Provides additional capabilities including MongoDB compatibility and an advanced query engine supporting a larger number of features and increased limits. In our serverless model, operations in Enterprise edition are charged based on read and write units.                                                                                |                                 |
+| Read units                                                                                                                          | Starting at \$0.05 per 1 million read units (4 KB tranches)                                                                                                                                                                                                                                                                                                                                                                    |                                 |
+| Write units                                                                                                                         | Starting at \$0.26 per 1 million write units (1 KB tranches)                                                                                                                                                                                                                                                                                                                                                                   |                                 |
+| Real-time Update units                                                                                                              | Starting at \$0.30 per 1 million write units (1 KB tranches)                                                                                                                                                                                                                                                                                                                                                                   |                                 |
+| Operations                                                                                                                          | [**Standard edition**](https://cloud.google.com/firestore/pricing) Provides comprehensive capabilities as a document database including a standard query engine, fluent SDKs, real-time and offline support, high availability, and a convenient serverless operational model with seamless autoscaling. In our serverless model, operations conducted in Standard edition are charged based on read, write, and delete units. |                                 |
+| Read units                                                                                                                          | Starting at \$0.03 per 100,000 read units                                                                                                                                                                                                                                                                                                                                                                                      |                                 |
+| Write units                                                                                                                         | Starting at \$0.09 per 100,000 write units                                                                                                                                                                                                                                                                                                                                                                                     |                                 |
+| Delete units                                                                                                                        | Starting at \$0.01 per 100,000 delete units                                                                                                                                                                                                                                                                                                                                                                                    |                                 |
+| Storage                                                                                                                             | [**Enterprise edition**](https://cloud.google.com/firestore/enterprise/pricing) Enterprise edition offers SSD storage for consistent performance in all utilization patterns.                                                                                                                                                                                                                                                  | Starting at \$0.24 Per GB/month |
+| [**Standard edition**](https://cloud.google.com/firestore/pricing) Standard edition offers hybrid storage using both SSDs and HDDs. | Starting at \$0.15 per GB/month                                                                                                                                                                                                                                                                                                                                                                                                |                                 |
+| Network                                                                                                                             | **Ingress**                                                                                                                                                                                                                                                                                                                                                                                                                    | Free                            |
+| **Intra-region egress**                                                                                                             | Free                                                                                                                                                                                                                                                                                                                                                                                                                           |                                 |
+| **Inter-region egress**                                                                                                             | Starting at \$0.01 per GB                                                                                                                                                                                                                                                                                                                                                                                                      |                                 |
 
 Get full details on Firestore pricing across [Standard](https://cloud.google.com/firestore/pricing) and [Enterprise](https://cloud.google.com/firestore/enterprise/pricing) editions.
 
@@ -432,7 +263,7 @@ Description
 
 Starting at
 
-$0.05
+\$0.05
 
 per 1 million read units (4 KB tranches)
 
@@ -442,7 +273,7 @@ Description
 
 Starting at
 
-$0.26
+\$0.26
 
 per 1 million write units (1 KB tranches)
 
@@ -452,7 +283,7 @@ Description
 
 Starting at
 
-$0.30
+\$0.30
 
 per 1 million write units (1 KB tranches)
 
@@ -474,7 +305,7 @@ Description
 
 Starting at
 
-$0.03
+\$0.03
 
 per 100,000 read units
 
@@ -484,7 +315,7 @@ Description
 
 Starting at
 
-$0.09
+\$0.09
 
 per 100,000 write units
 
@@ -494,7 +325,7 @@ Description
 
 Starting at
 
-$0.01
+\$0.01
 
 per 100,000 delete units
 
@@ -510,7 +341,7 @@ Price (USD)
 
 Starting at
 
-$0.24
+\$0.24
 
 Per GB/month
 
@@ -522,7 +353,7 @@ Description
 
 Starting at
 
-$0.15
+\$0.15
 
 per GB/month
 
@@ -548,7 +379,7 @@ Description
 
 Starting at
 
-$0.01
+\$0.01
 
 per GB
 
@@ -600,7 +431,7 @@ Business Case
 
 More than 750,000 monthly active developers use Firestore.
 
------
+------------------------------------------------------------------------
 
 ![Forbes Logo](https://www.gstatic.com/bricks/image/aee5c22d-ef83-4bf5-8424-721b0b16c7d7.png)
 
@@ -612,20 +443,6 @@ Benjamin Harrigan, Software Architect, Forbes
 
 ### Related Content
 
-  - [](https://www.youtube.com/watch?v=icuk1UiHx-Q)
-    
-    ![HighLevel Logo](https://www.gstatic.com/bricks/image/215b1874-c4f7-449a-a9d8-46bad49e20bc.png)
-    
-    HighLevel built an AI marketing platform with Firestore and improved developer productivity by 55%.
-
-  - [](https://cloud.google.com/blog/products/databases/b4a-migrates-their-beauty-platform-to-alloydb)
-    
-    ![B4A Logo](https://www.gstatic.com/bricks/image/04871271-9332-4567-8c3b-d786efd3cdea.png)
-    
-    B4A loves Firestore because it's a fully managed, scalable, and serverless database.
-
-  - [](https://www.youtube.com/watch?v=A_OLQMGmtpQ&)
-    
-    ![The Home Depot Logo](https://www.gstatic.com/bricks/image/d385de1e-748d-49a7-8945-5f504186dc8d.jpg)
-    
-    The Home Depot uses Firestore to ship rich mobile and web apps in days.
+- [![HighLevel Logo](https://www.gstatic.com/bricks/image/215b1874-c4f7-449a-a9d8-46bad49e20bc.png) HighLevel built an AI marketing platform with Firestore and improved developer productivity by 55%.](https://www.youtube.com/watch?v=icuk1UiHx-Q)
+- [![B4A Logo](https://www.gstatic.com/bricks/image/04871271-9332-4567-8c3b-d786efd3cdea.png) B4A loves Firestore because it's a fully managed, scalable, and serverless database.](https://cloud.google.com/blog/products/databases/b4a-migrates-their-beauty-platform-to-alloydb)
+- [![The Home Depot Logo](https://www.gstatic.com/bricks/image/d385de1e-748d-49a7-8945-5f504186dc8d.jpg) The Home Depot uses Firestore to ship rich mobile and web apps in days.](https://www.youtube.com/watch?v=A_OLQMGmtpQ&)

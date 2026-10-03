@@ -11,296 +11,328 @@ data_source: docs.cloud.google.com
 You can *listen* to a document with the `onSnapshot()` method. An initial call using the callback you provide creates a document snapshot immediately with the current contents of the single document. Then, each time the contents change, another call updates the document snapshot.
 
 > **Note:**
-> 
->   - [Pipeline operations](https://docs.cloud.google.com/firestore/native/docs/query-data/understanding-core-pipelines) don't support realtime listeners. To use Real-time Listen queries with Enterprise edition databases, use Core operations as described on this page.
->   - Realtime listeners are not supported in the PHP client library.
+>
+> - [Pipeline operations](https://docs.cloud.google.com/firestore/native/docs/query-data/understanding-core-pipelines) don't support realtime listeners. To use Real-time Listen queries with Enterprise edition databases, use Core operations as described on this page.
+> - Realtime listeners are not supported in the PHP client library.
 
 ### Web version 9
 
-    import { doc, onSnapshot } from "firebase/firestore";
-    
-    const unsub = onSnapshot(doc(db, "cities", "SF"), (doc) => {
-        console.log("Current data: ", doc.data());
-    });
+```
+import { doc, onSnapshot } from "firebase/firestore";
+
+const unsub = onSnapshot(doc(db, "cities", "SF"), (doc) => {
+    console.log("Current data: ", doc.data());
+});
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    db.collection("cities").doc("SF")
-        .onSnapshot((doc) => {
-            console.log("Current data: ", doc.data());
-        });
+```
+db.collection("cities").doc("SF")
+    .onSnapshot((doc) => {
+        console.log("Current data: ", doc.data());
+    });
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    db.collection("cities").document("SF")
-      .addSnapshotListener { documentSnapshot, error in
-        guard let document = documentSnapshot else {
-          print("Error fetching document: \(error!)")
-          return
-        }
-        guard let data = document.data() else {
-          print("Document data was empty.")
-          return
-        }
-        print("Current data: \(data)")
-      }
+```
+db.collection("cities").document("SF")
+  .addSnapshotListener { documentSnapshot, error in
+    guard let document = documentSnapshot else {
+      print("Error fetching document: \(error!)")
+      return
+    }
+    guard let data = document.data() else {
+      print("Document data was empty.")
+      return
+    }
+    print("Current data: \(data)")
+  }
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    [[[self.db collectionWithPath:@"cities"] documentWithPath:@"SF"]
-        addSnapshotListener:^(FIRDocumentSnapshot *snapshot, NSError *error) {
-          if (snapshot == nil) {
-            NSLog(@"Error fetching document: %@", error);
-            return;
-          }
-          NSLog(@"Current data: %@", snapshot.data);
-        }];
+```
+[[[self.db collectionWithPath:@"cities"] documentWithPath:@"SF"]
+    addSnapshotListener:^(FIRDocumentSnapshot *snapshot, NSError *error) {
+      if (snapshot == nil) {
+        NSLog(@"Error fetching document: %@", error);
+        return;
+      }
+      NSLog(@"Current data: %@", snapshot.data);
+    }];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val docRef = db.collection("cities").document("SF")
-    docRef.addSnapshotListener { snapshot, e ->
-        if (e != null) {
-            Log.w(TAG, "Listen failed.", e)
-            return@addSnapshotListener
-        }
-    
-        if (snapshot != null && snapshot.exists()) {
-            Log.d(TAG, "Current data: ${snapshot.data}")
-        } else {
-            Log.d(TAG, "Current data: null")
-        }
+```
+val docRef = db.collection("cities").document("SF")
+docRef.addSnapshotListener { snapshot, e ->
+    if (e != null) {
+        Log.w(TAG, "Listen failed.", e)
+        return@addSnapshotListener
     }
 
-##### Java  
-Android
+    if (snapshot != null && snapshot.exists()) {
+        Log.d(TAG, "Current data: ${snapshot.data}")
+    } else {
+        Log.d(TAG, "Current data: null")
+    }
+}
+```
 
-    final DocumentReference docRef = db.collection("cities").document("SF");
-    docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-        @Override
-        public void onEvent(@Nullable DocumentSnapshot snapshot,
-                            @Nullable FirebaseFirestoreException e) {
-            if (e != null) {
-                Log.w(TAG, "Listen failed.", e);
-                return;
-            }
-    
-            if (snapshot != null && snapshot.exists()) {
-                Log.d(TAG, "Current data: " + snapshot.getData());
-            } else {
-                Log.d(TAG, "Current data: null");
-            }
+##### Java Android
+
+```
+final DocumentReference docRef = db.collection("cities").document("SF");
+docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+    @Override
+    public void onEvent(@Nullable DocumentSnapshot snapshot,
+                        @Nullable FirebaseFirestoreException e) {
+        if (e != null) {
+            Log.w(TAG, "Listen failed.", e);
+            return;
         }
-    });
+
+        if (snapshot != null && snapshot.exists()) {
+            Log.d(TAG, "Current data: " + snapshot.getData());
+        } else {
+            Log.d(TAG, "Current data: null");
+        }
+    }
+});
+```
 
 ### Dart
 
-    final docRef = db.collection("cities").doc("SF");
-    docRef.snapshots().listen(
-          (event) => print("current data: ${event.data()}"),
-          onError: (error) => print("Listen failed: $error"),
-        );
+```
+final docRef = db.collection("cities").doc("SF");
+docRef.snapshots().listen(
+      (event) => print("current data: ${event.data()}"),
+      onError: (error) => print("Listen failed: $error"),
+    );
+```
 
 Often, you want your UI to react to changes in the contents of a Firestore document or collection. You can do so with a `StreamBuilder` widget that consumes the Firestore snapshot stream:
 
-    class UserInformation extends StatefulWidget {
-      @override
-      _UserInformationState createState() => _UserInformationState();
-    }
-    
-    class _UserInformationState extends State<UserInformation> {
-      final Stream<QuerySnapshot> _usersStream =
-          FirebaseFirestore.instance.collection('users').snapshots();
-    
-      @override
-      Widget build(BuildContext context) {
-        return StreamBuilder<QuerySnapshot>(
-          stream: _usersStream,
-          builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (snapshot.hasError) {
-              return const Text('Something went wrong');
-            }
-    
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Text("Loading");
-            }
-    
-            return ListView(
-              children: snapshot.data!.docs
-                  .map((DocumentSnapshot document) {
-                    Map<String, dynamic> data =
-                        document.data()! as Map<String, dynamic>;
-                    return ListTile(
-                      title: Text(data['full_name']),
-                      subtitle: Text(data['company']),
-                    );
-                  })
-                  .toList()
-                  .cast(),
-            );
-          },
+```
+class UserInformation extends StatefulWidget {
+  @override
+  _UserInformationState createState() => _UserInformationState();
+}
+
+class _UserInformationState extends State<UserInformation> {
+  final Stream<QuerySnapshot> _usersStream =
+      FirebaseFirestore.instance.collection('users').snapshots();
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+      stream: _usersStream,
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasError) {
+          return const Text('Something went wrong');
+        }
+
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Text("Loading");
+        }
+
+        return ListView(
+          children: snapshot.data!.docs
+              .map((DocumentSnapshot document) {
+                Map<String, dynamic> data =
+                    document.data()! as Map<String, dynamic>;
+                return ListTile(
+                  title: Text(data['full_name']),
+                  subtitle: Text(data['company']),
+                );
+              })
+              .toList()
+              .cast(),
         );
-      }
-    }
+      },
+    );
+  }
+}
+```
 
 ##### Java
 
-    DocumentReference docRef = db.collection("cities").document("SF");
-    docRef.addSnapshotListener(
-        new EventListener<DocumentSnapshot>() {
-          @Override
-          public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirestoreException e) {
-            if (e != null) {
-              System.err.println("Listen failed: " + e);
-              return;
-            }
-    
-            if (snapshot != null && snapshot.exists()) {
-              System.out.println("Current data: " + snapshot.getData());
-            } else {
-              System.out.print("Current data: null");
-            }
-          }
-        });
+```
+DocumentReference docRef = db.collection("cities").document("SF");
+docRef.addSnapshotListener(
+    new EventListener<DocumentSnapshot>() {
+      @Override
+      public void onEvent(@Nullable DocumentSnapshot snapshot, @Nullable FirestoreException e) {
+        if (e != null) {
+          System.err.println("Listen failed: " + e);
+          return;
+        }
+
+        if (snapshot != null && snapshot.exists()) {
+          System.out.println("Current data: " + snapshot.getData());
+        } else {
+          System.out.print("Current data: null");
+        }
+      }
+    });
+```
 
 ##### Python
 
-    # Create an Event for notifying main thread.
-    callback_done = threading.Event()
-    
-    # Create a callback on_snapshot function to capture changes
-    def on_snapshot(doc_snapshot, changes, read_time):
-        for doc in doc_snapshot:
-            print(f"Received document snapshot: {doc.id}")
-        callback_done.set()
-    
-    doc_ref = db.collection("cities").document("SF")
-    
-    # Watch the document
-    doc_watch = doc_ref.on_snapshot(on_snapshot)
+```
+# Create an Event for notifying main thread.
+callback_done = threading.Event()
+
+# Create a callback on_snapshot function to capture changes
+def on_snapshot(doc_snapshot, changes, read_time):
+    for doc in doc_snapshot:
+        print(f"Received document snapshot: {doc.id}")
+    callback_done.set()
+
+doc_ref = db.collection("cities").document("SF")
+
+# Watch the document
+doc_watch = doc_ref.on_snapshot(on_snapshot)
+```
 
 ##### C++
 
-    DocumentReference doc_ref = db->Collection("cities").Document("SF");
-    doc_ref.AddSnapshotListener(
-        [](const DocumentSnapshot& snapshot, Error error, const std::string& errorMsg) {
-          if (error == Error::kErrorOk) {
-            if (snapshot.exists()) {
-              std::cout << "Current data: " << snapshot << std::endl;
-            } else {
-              std::cout << "Current data: null" << std::endl;
-            }
-          } else {
-            std::cout << "Listen failed: " << error << std::endl;
-          }
-        });
+```
+DocumentReference doc_ref = db->Collection("cities").Document("SF");
+doc_ref.AddSnapshotListener(
+    [](const DocumentSnapshot& snapshot, Error error, const std::string& errorMsg) {
+      if (error == Error::kErrorOk) {
+        if (snapshot.exists()) {
+          std::cout << "Current data: " << snapshot << std::endl;
+        } else {
+          std::cout << "Current data: null" << std::endl;
+        }
+      } else {
+        std::cout << "Listen failed: " << error << std::endl;
+      }
+    });
+```
 
 ##### Node.js
 
-    const doc = db.collection('cities').doc('SF');
-    
-    const observer = doc.onSnapshot(docSnapshot => {
-      console.log(`Received doc snapshot: ${docSnapshot}`);
-      // ...
-    }, err => {
-      console.log(`Encountered error: ${err}`);
-    });
+```
+const doc = db.collection('cities').doc('SF');
+
+const observer = doc.onSnapshot(docSnapshot => {
+  console.log(`Received doc snapshot: ${docSnapshot}`);
+  // ...
+}, err => {
+  console.log(`Encountered error: ${err}`);
+});
+```
 
 ##### Go
 
-    import (
-     "context"
-     "fmt"
-     "io"
-     "time"
-    
-     "cloud.google.com/go/firestore"
-     "google.golang.org/grpc/codes"
-     "google.golang.org/grpc/status"
-    )
-    
-    // listenDocument listens to a single document.
-    func listenDocument(ctx context.Context, w io.Writer, projectID, collection string) error {
-     // projectID := "project-id"
-     // Сontext with timeout stops listening to changes.
-     ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
-     defer cancel()
-    
-     client, err := firestore.NewClient(ctx, projectID)
-     if err != nil {
-         return fmt.Errorf("firestore.NewClient: %w", err)
-     }
-     defer client.Close()
-    
-     it := client.Collection(collection).Doc("SF").Snapshots(ctx)
-     for {
-         snap, err := it.Next()
-         // DeadlineExceeded will be returned when ctx is cancelled.
-         if status.Code(err) == codes.DeadlineExceeded {
-             return nil
-         }
-         if err != nil {
-             return fmt.Errorf("Snapshots.Next: %w", err)
-         }
-         if !snap.Exists() {
-             fmt.Fprintf(w, "Document no longer exists\n")
-             return nil
-         }
-         fmt.Fprintf(w, "Received document snapshot: %v\n", snap.Data())
-     }
+```
+import (
+    "context"
+    "fmt"
+    "io"
+    "time"
+
+    "cloud.google.com/go/firestore"
+    "google.golang.org/grpc/codes"
+    "google.golang.org/grpc/status"
+)
+
+// listenDocument listens to a single document.
+func listenDocument(ctx context.Context, w io.Writer, projectID, collection string) error {
+    // projectID := "project-id"
+    // Сontext with timeout stops listening to changes.
+    ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
+    defer cancel()
+
+    client, err := firestore.NewClient(ctx, projectID)
+    if err != nil {
+        return fmt.Errorf("firestore.NewClient: %w", err)
     }
+    defer client.Close()
+
+    it := client.Collection(collection).Doc("SF").Snapshots(ctx)
+    for {
+        snap, err := it.Next()
+        // DeadlineExceeded will be returned when ctx is cancelled.
+        if status.Code(err) == codes.DeadlineExceeded {
+            return nil
+        }
+        if err != nil {
+            return fmt.Errorf("Snapshots.Next: %w", err)
+        }
+        if !snap.Exists() {
+            fmt.Fprintf(w, "Document no longer exists\n")
+            return nil
+        }
+        fmt.Fprintf(w, "Received document snapshot: %v\n", snap.Data())
+    }
+}
+```
 
 ##### PHP
 
-    // Not supported in the PHP client library
+```
+// Not supported in the PHP client library
+```
 
 ##### Unity
 
-    DocumentReference docRef = db.Collection("cities").Document("SF");
-    docRef.Listen(snapshot => {
-        Debug.Log("Callback received document snapshot.");
-        Debug.Log(String.Format("Document data for {0} document:", snapshot.Id));
-        Dictionary<string, object> city = snapshot.ToDictionary();
-        foreach (KeyValuePair<string, object> pair in city) {
-            Debug.Log(String.Format("{0}: {1}", pair.Key, pair.Value));
-        }
-    });
+```
+DocumentReference docRef = db.Collection("cities").Document("SF");
+docRef.Listen(snapshot => {
+    Debug.Log("Callback received document snapshot.");
+    Debug.Log(String.Format("Document data for {0} document:", snapshot.Id));
+    Dictionary<string, object> city = snapshot.ToDictionary();
+    foreach (KeyValuePair<string, object> pair in city) {
+        Debug.Log(String.Format("{0}: {1}", pair.Key, pair.Value));
+    }
+});
+```
 
-##### C\#
+##### C#
 
-    DocumentReference docRef = db.Collection("cities").Document("SF");
-    FirestoreChangeListener listener = docRef.Listen(snapshot =>
+```csharp
+DocumentReference docRef = db.Collection("cities").Document("SF");
+FirestoreChangeListener listener = docRef.Listen(snapshot =>
+{
+    Console.WriteLine("Callback received document snapshot.");
+    Console.WriteLine("Document exists? {0}", snapshot.Exists);
+    if (snapshot.Exists)
     {
-        Console.WriteLine("Callback received document snapshot.");
-        Console.WriteLine("Document exists? {0}", snapshot.Exists);
-        if (snapshot.Exists)
+        Console.WriteLine("Document data for {0} document:", snapshot.Id);
+        Dictionary<string, object> city = snapshot.ToDictionary();
+        foreach (KeyValuePair<string, object> pair in city)
         {
-            Console.WriteLine("Document data for {0} document:", snapshot.Id);
-            Dictionary<string, object> city = snapshot.ToDictionary();
-            foreach (KeyValuePair<string, object> pair in city)
-            {
-                Console.WriteLine("{0}: {1}", pair.Key, pair.Value);
-            }
+            Console.WriteLine("{0}: {1}", pair.Key, pair.Value);
         }
-    });
+    }
+});
+```
 
 ##### Ruby
 
-    doc_ref = firestore.col(collection_path).doc document_path
-    snapshots = []
-    
-    # Watch the document.
-    listener = doc_ref.listen do |snapshot|
-      puts "Received document snapshot: #{snapshot.document_id}"
-      snapshots << snapshot
-    end
+```
+doc_ref = firestore.col(collection_path).doc document_path
+snapshots = []
+
+# Watch the document.
+listener = doc_ref.listen do |snapshot|
+  puts "Received document snapshot: #{snapshot.document_id}"
+  snapshots << snapshot
+end
+```
 
 ### Events for local changes
 
@@ -310,176 +342,206 @@ Retrieved documents have a `metadata.hasPendingWrites` property that indicates w
 
 ### Web version 9
 
-    import { doc, onSnapshot } from "firebase/firestore";
-    
-    const unsub = onSnapshot(doc(db, "cities", "SF"), (doc) => {
-      const source = doc.metadata.hasPendingWrites ? "Local" : "Server";
-      console.log(source, " data: ", doc.data());
-    });
+```
+import { doc, onSnapshot } from "firebase/firestore";
+
+const unsub = onSnapshot(doc(db, "cities", "SF"), (doc) => {
+  const source = doc.metadata.hasPendingWrites ? "Local" : "Server";
+  console.log(source, " data: ", doc.data());
+});
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    db.collection("cities").doc("SF")
-        .onSnapshot((doc) => {
-            var source = doc.metadata.hasPendingWrites ? "Local" : "Server";
-            console.log(source, " data: ", doc.data());
-        });
+```
+db.collection("cities").doc("SF")
+    .onSnapshot((doc) => {
+        var source = doc.metadata.hasPendingWrites ? "Local" : "Server";
+        console.log(source, " data: ", doc.data());
+    });
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    db.collection("cities").document("SF")
-      .addSnapshotListener { documentSnapshot, error in
-        guard let document = documentSnapshot else {
-          print("Error fetching document: \(error!)")
-          return
-        }
-        let source = document.metadata.hasPendingWrites ? "Local" : "Server"
-        print("\(source) data: \(document.data() ?? [:])")
-      }
+```
+db.collection("cities").document("SF")
+  .addSnapshotListener { documentSnapshot, error in
+    guard let document = documentSnapshot else {
+      print("Error fetching document: \(error!)")
+      return
+    }
+    let source = document.metadata.hasPendingWrites ? "Local" : "Server"
+    print("\(source) data: \(document.data() ?? [:])")
+  }
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    [[[self.db collectionWithPath:@"cities"] documentWithPath:@"SF"]
-        addSnapshotListener:^(FIRDocumentSnapshot *snapshot, NSError *error) {
-          if (snapshot == nil) {
-            NSLog(@"Error fetching document: %@", error);
-            return;
-          }
-          NSString *source = snapshot.metadata.hasPendingWrites ? @"Local" : @"Server";
-          NSLog(@"%@ data: %@", source, snapshot.data);
-        }];
+```
+[[[self.db collectionWithPath:@"cities"] documentWithPath:@"SF"]
+    addSnapshotListener:^(FIRDocumentSnapshot *snapshot, NSError *error) {
+      if (snapshot == nil) {
+        NSLog(@"Error fetching document: %@", error);
+        return;
+      }
+      NSString *source = snapshot.metadata.hasPendingWrites ? @"Local" : @"Server";
+      NSLog(@"%@ data: %@", source, snapshot.data);
+    }];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val docRef = db.collection("cities").document("SF")
-    docRef.addSnapshotListener { snapshot, e ->
-        if (e != null) {
-            Log.w(TAG, "Listen failed.", e)
-            return@addSnapshotListener
-        }
-    
-        val source = if (snapshot != null && snapshot.metadata.hasPendingWrites()) {
-            "Local"
-        } else {
-            "Server"
-        }
-    
-        if (snapshot != null && snapshot.exists()) {
-            Log.d(TAG, "$source data: ${snapshot.data}")
-        } else {
-            Log.d(TAG, "$source data: null")
-        }
+```
+val docRef = db.collection("cities").document("SF")
+docRef.addSnapshotListener { snapshot, e ->
+    if (e != null) {
+        Log.w(TAG, "Listen failed.", e)
+        return@addSnapshotListener
     }
 
-##### Java  
-Android
+    val source = if (snapshot != null && snapshot.metadata.hasPendingWrites()) {
+        "Local"
+    } else {
+        "Server"
+    }
 
-    final DocumentReference docRef = db.collection("cities").document("SF");
-    docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-        @Override
-        public void onEvent(@Nullable DocumentSnapshot snapshot,
-                            @Nullable FirebaseFirestoreException e) {
-            if (e != null) {
-                Log.w(TAG, "Listen failed.", e);
-                return;
-            }
-    
-            String source = snapshot != null && snapshot.getMetadata().hasPendingWrites()
-                    ? "Local" : "Server";
-    
-            if (snapshot != null && snapshot.exists()) {
-                Log.d(TAG, source + " data: " + snapshot.getData());
-            } else {
-                Log.d(TAG, source + " data: null");
-            }
+    if (snapshot != null && snapshot.exists()) {
+        Log.d(TAG, "$source data: ${snapshot.data}")
+    } else {
+        Log.d(TAG, "$source data: null")
+    }
+}
+```
+
+##### Java Android
+
+```
+final DocumentReference docRef = db.collection("cities").document("SF");
+docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+    @Override
+    public void onEvent(@Nullable DocumentSnapshot snapshot,
+                        @Nullable FirebaseFirestoreException e) {
+        if (e != null) {
+            Log.w(TAG, "Listen failed.", e);
+            return;
         }
-    });
+
+        String source = snapshot != null && snapshot.getMetadata().hasPendingWrites()
+                ? "Local" : "Server";
+
+        if (snapshot != null && snapshot.exists()) {
+            Log.d(TAG, source + " data: " + snapshot.getData());
+        } else {
+            Log.d(TAG, source + " data: null");
+        }
+    }
+});
+```
 
 ### Dart
 
-    final docRef = db.collection("cities").doc("SF");
-    docRef.snapshots().listen(
-      (event) {
-        final source = (event.metadata.hasPendingWrites) ? "Local" : "Server";
-        print("$source data: ${event.data()}");
-      },
-      onError: (error) => print("Listen failed: $error"),
-    );
+```
+final docRef = db.collection("cities").doc("SF");
+docRef.snapshots().listen(
+  (event) {
+    final source = (event.metadata.hasPendingWrites) ? "Local" : "Server";
+    print("$source data: ${event.data()}");
+  },
+  onError: (error) => print("Listen failed: $error"),
+);
+```
 
 ##### Java
 
-    # Not yet supported in the Java client library
+```
+# Not yet supported in the Java client library
+```
 
 ##### Python
 
-    // Not yet supported in Python client library
+```
+// Not yet supported in Python client library
+```
 
 ##### C++
 
-    DocumentReference doc_ref = db->Collection("cities").Document("SF");
-    doc_ref.AddSnapshotListener([](const DocumentSnapshot& snapshot,
-                                   Error error, const std::string& errorMsg) {
-      if (error == Error::kErrorOk) {
-        const char* source =
-            snapshot.metadata().has_pending_writes() ? "Local" : "Server";
-        if (snapshot.exists()) {
-          std::cout << source << " data: " << snapshot.Get("name").string_value()
-                    << std::endl;
-        } else {
-          std::cout << source << " data: null" << std::endl;
-        }
-      } else {
-        std::cout << "Listen failed: " << error << std::endl;
-      }
-    });
+```
+DocumentReference doc_ref = db->Collection("cities").Document("SF");
+doc_ref.AddSnapshotListener([](const DocumentSnapshot& snapshot,
+                               Error error, const std::string& errorMsg) {
+  if (error == Error::kErrorOk) {
+    const char* source =
+        snapshot.metadata().has_pending_writes() ? "Local" : "Server";
+    if (snapshot.exists()) {
+      std::cout << source << " data: " << snapshot.Get("name").string_value()
+                << std::endl;
+    } else {
+      std::cout << source << " data: null" << std::endl;
+    }
+  } else {
+    std::cout << "Listen failed: " << error << std::endl;
+  }
+});
+```
 
 ##### Node.js
 
-    // Not yet supported in the Node.js client library
+```
+// Not yet supported in the Node.js client library
+```
 
 ##### Go
 
-    // Not yet supported in the Go client library
+```
+// Not yet supported in the Go client library
+```
 
 ##### PHP
 
-    // Not supported in the PHP client library
+```
+// Not supported in the PHP client library
+```
 
 ##### Unity
 
-    DocumentReference docRef = db.Collection("cities").Document("SF");
-    docRef.Listen(
-      snapshot =>
+```
+DocumentReference docRef = db.Collection("cities").Document("SF");
+docRef.Listen(
+  snapshot =>
+  {
+      string source = (snapshot != null && snapshot.Metadata.HasPendingWrites) ? "Local" : "Server";
+      string snapshotData = "null";
+      if (snapshot != null && snapshot.Exists)
       {
-          string source = (snapshot != null && snapshot.Metadata.HasPendingWrites) ? "Local" : "Server";
-          string snapshotData = "null";
-          if (snapshot != null && snapshot.Exists)
+          System.Text.StringBuilder builder = new System.Text.StringBuilder();
+          IDictionary<string, object> dict = snapshot.ToDictionary();
+          foreach (var KVPair in dict)
           {
-              System.Text.StringBuilder builder = new System.Text.StringBuilder();
-              IDictionary<string, object> dict = snapshot.ToDictionary();
-              foreach (var KVPair in dict)
-              {
-                  builder.Append($"{KVPair.Key}: {KVPair.Value}\n");
-              }
-              snapshotData = builder.ToString();
+              builder.Append($"{KVPair.Key}: {KVPair.Value}\n");
           }
-          Debug.Log($"{source} data: ${snapshotData}");
-      });
+          snapshotData = builder.ToString();
+      }
+      Debug.Log($"{source} data: ${snapshotData}");
+  });
+```
 
-##### C\#
+##### C#
 
-    // Not yet supported in the C# client library
+```
+// Not yet supported in the C# client library
+```
 
 ##### Ruby
 
-    // Not yet supported in the Ruby client library
+```
+// Not yet supported in the Ruby client library
+```
 
 ### Events for metadata changes
 
@@ -493,123 +555,153 @@ By default, listeners are not notified of changes that only affect metadata. Con
 
 If you want to receive snapshot events when the document or query metadata changes, pass a listen options object when attaching your listener.
 
-> **Note:** You can pass listener options as shown in the following samples. You can also use the configuration interfaces for snapshot options [described below](https://docs.cloud.google.com/firestore/native/docs/query-data/listen#events-local-only) to explicitly configure events for metadata changes. For more information, see the reference documentation for [Kotlin + KTX Android]() , [Java Android]() , [Swift]() , [Objective-C]() , and [Web modular]() .
+> **Note:** You can pass listener options as shown in the following samples. You can also use the configuration interfaces for snapshot options [described below](https://docs.cloud.google.com/firestore/native/docs/query-data/listen#events-local-only) to explicitly configure events for metadata changes. For more information, see the reference documentation for Kotlin + KTX Android , Java Android , Swift , Objective-C , and Web modular .
 
 ### Web version 9
 
-    import { doc, onSnapshot } from "firebase/firestore";
-    
-    const unsub = onSnapshot(
-      doc(db, "cities", "SF"), 
-      { includeMetadataChanges: true }, 
-      (doc) => {
-        // ...
-      });
+```
+import { doc, onSnapshot } from "firebase/firestore";
+
+const unsub = onSnapshot(
+  doc(db, "cities", "SF"), 
+  { includeMetadataChanges: true }, 
+  (doc) => {
+    // ...
+  });
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    db.collection("cities").doc("SF")
-        .onSnapshot({
-            // Listen for document metadata changes
-            includeMetadataChanges: true
-        }, (doc) => {
-            // ...
-        });
+```
+db.collection("cities").doc("SF")
+    .onSnapshot({
+        // Listen for document metadata changes
+        includeMetadataChanges: true
+    }, (doc) => {
+        // ...
+    });
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    // Listen to document metadata.
-    db.collection("cities").document("SF")
-      .addSnapshotListener(includeMetadataChanges: true) { documentSnapshot, error in
-        // ...
-      }
+```
+// Listen to document metadata.
+db.collection("cities").document("SF")
+  .addSnapshotListener(includeMetadataChanges: true) { documentSnapshot, error in
+    // ...
+  }
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    // Listen for metadata changes.
-    [[[self.db collectionWithPath:@"cities"] documentWithPath:@"SF"]
-        addSnapshotListenerWithIncludeMetadataChanges:YES
-                                             listener:^(FIRDocumentSnapshot *snapshot, NSError *error) {
-       // ...
-    }];
+```
+// Listen for metadata changes.
+[[[self.db collectionWithPath:@"cities"] documentWithPath:@"SF"]
+    addSnapshotListenerWithIncludeMetadataChanges:YES
+                                         listener:^(FIRDocumentSnapshot *snapshot, NSError *error) {
+   // ...
+}];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    // Listen for metadata changes to the document.
-    val docRef = db.collection("cities").document("SF")
-    docRef.addSnapshotListener(MetadataChanges.INCLUDE) { snapshot, e ->
+```
+// Listen for metadata changes to the document.
+val docRef = db.collection("cities").document("SF")
+docRef.addSnapshotListener(MetadataChanges.INCLUDE) { snapshot, e ->
+    // ...
+}
+```
+
+##### Java Android
+
+```
+// Listen for metadata changes to the document.
+DocumentReference docRef = db.collection("cities").document("SF");
+docRef.addSnapshotListener(MetadataChanges.INCLUDE, new EventListener<DocumentSnapshot>() {
+    @Override
+    public void onEvent(@Nullable DocumentSnapshot snapshot,
+                        @Nullable FirebaseFirestoreException e) {
         // ...
     }
-
-##### Java  
-Android
-
-    // Listen for metadata changes to the document.
-    DocumentReference docRef = db.collection("cities").document("SF");
-    docRef.addSnapshotListener(MetadataChanges.INCLUDE, new EventListener<DocumentSnapshot>() {
-        @Override
-        public void onEvent(@Nullable DocumentSnapshot snapshot,
-                            @Nullable FirebaseFirestoreException e) {
-            // ...
-        }
-    });
+});
+```
 
 ### Dart
 
-    final docRef = db.collection("cities").doc("SF");
-    docRef.snapshots(includeMetadataChanges: true).listen((event) {
-      // ...
-    });
+```
+final docRef = db.collection("cities").doc("SF");
+docRef.snapshots(includeMetadataChanges: true).listen((event) {
+  // ...
+});
+```
 
 ##### Java
 
-    // Not yet supported in the Java client library
+```
+// Not yet supported in the Java client library
+```
 
 ##### Python
 
-    // Not yet supported in Python client library
+```
+// Not yet supported in Python client library
+```
 
 ##### C++
 
-    DocumentReference doc_ref = db->Collection("cities").Document("SF");
-    doc_ref.AddSnapshotListener(
-        MetadataChanges::kInclude,
-        [](const DocumentSnapshot& snapshot, Error error, const std::string& errorMsg) { /* ... */ });
+```
+DocumentReference doc_ref = db->Collection("cities").Document("SF");
+doc_ref.AddSnapshotListener(
+    MetadataChanges::kInclude,
+    [](const DocumentSnapshot& snapshot, Error error, const std::string& errorMsg) { /* ... */ });
+```
 
 ##### Node.js
 
-    // Not yet supported the Node.js client library
+```
+// Not yet supported the Node.js client library
+```
 
 ##### Go
 
-    // Not yet supported in the Go client library
+```
+// Not yet supported in the Go client library
+```
 
 ##### PHP
 
-    // Not supported in the PHP client library
+```
+// Not supported in the PHP client library
+```
 
 ##### Unity
 
-    DocumentReference docRef = db.Collection("cities").Document("SF");
-    docRef.Listen(MetadataChanges.Include, snapshot =>
-    {
-        // ...
-    });
+```
+DocumentReference docRef = db.Collection("cities").Document("SF");
+docRef.Listen(MetadataChanges.Include, snapshot =>
+{
+    // ...
+});
+```
 
-##### C\#
+##### C#
 
-    // Not yet supported in the C# client library
+```
+// Not yet supported in the C# client library
+```
 
 ##### Ruby
 
-    // Not yet supported in the Ruby client library
+```
+// Not yet supported in the Ruby client library
+```
 
 > **Note:** If you just want to know when your write has completed, you can listen to the completion callback rather than using `hasPendingWrites` . In JavaScript, use the `Promise` returned from your write operation by attaching a `.then()` callback. In Swift, pass a completion callback to your write function.
 
@@ -625,114 +717,144 @@ Here, snapshot options are set in client code to allow listening for local chang
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from the namespaced API.
 
-    const unsubscribe = onSnapshot(
-       doc(db, "cities", "SF"),
-        { 
-          includeMetadataChanges: true,
-          source:'cache'
-         },
-        (documentSnapshot) => {//…}
-      );
+```
+const unsubscribe = onSnapshot(
+   doc(db, "cities", "SF"),
+    { 
+      includeMetadataChanges: true,
+      source:'cache'
+     },
+    (documentSnapshot) => {//…}
+  );
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from the namespaced API.
 
-    // Not yet supported in the Web namespaced API
+```
+// Not yet supported in the Web namespaced API
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    // Set up listener options
-    let options = SnapshotListenOptions()
-        .withSource(ListenSource.cache)
-        .withIncludeMetadataChanges(true)
-    db.collection("cities").document("SF")
-      .addSnapshotListener(options: options) { documentSnapshot, error in
-        // ...
-      }
+```
+// Set up listener options
+let options = SnapshotListenOptions()
+    .withSource(ListenSource.cache)
+    .withIncludeMetadataChanges(true)
+db.collection("cities").document("SF")
+  .addSnapshotListener(options: options) { documentSnapshot, error in
+    // ...
+  }
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    // Set up listener options
-    FIRSnapshotListenOptions *options = [[FIRSnapshotListenOptions alloc] init];
-    FIRSnapshotListenOptions *optionsWithSourceAndMetadata = 
-                        [[options optionsWithIncludeMetadataChanges:YES] 
-                          optionsWithSource:FIRListenSourceCache];
-    [[[self.db collectionWithPath:@"cities"] documentWithPath:@"SF"]
-      addSnapshotListenerWithOptions:optionsWithSourceAndMetadata
-      listener: ^ (FIRDocumentSnapshot * snapshot, NSError * error) {
-        //…
-      }
-    ];
+```
+// Set up listener options
+FIRSnapshotListenOptions *options = [[FIRSnapshotListenOptions alloc] init];
+FIRSnapshotListenOptions *optionsWithSourceAndMetadata = 
+                    [[options optionsWithIncludeMetadataChanges:YES] 
+                      optionsWithSource:FIRListenSourceCache];
+[[[self.db collectionWithPath:@"cities"] documentWithPath:@"SF"]
+  addSnapshotListenerWithOptions:optionsWithSourceAndMetadata
+  listener: ^ (FIRDocumentSnapshot * snapshot, NSError * error) {
+    //…
+  }
+];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    // Set up listener options
-    val options = SnapshotListenOptions.Builder()
-      .setMetadataChanges(MetadataChanges.INCLUDE)
-      .setSource(ListenSource.CACHE)
-      .build();
-    db.collection("cities").document("SF")
-      .addSnapshotListener(options) { snapshot, error ->
-        //…
-      }
+```
+// Set up listener options
+val options = SnapshotListenOptions.Builder()
+  .setMetadataChanges(MetadataChanges.INCLUDE)
+  .setSource(ListenSource.CACHE)
+  .build();
+db.collection("cities").document("SF")
+  .addSnapshotListener(options) { snapshot, error ->
+    //…
+  }
+```
 
-##### Java  
-Android
+##### Java Android
 
-    // Set up listener options
-    SnapshotListenOptions options = new SnapshotListenOptions.Builder()
-      .setMetadataChanges(MetadataChanges.INCLUDE)
-      .setSource(ListenSource.CACHE)
-      .build();
-    db.collection("cities").document("SF").addSnapshotListener(options, new EventListener<DocumentSnapshot>() {
-        //…
-      });
+```
+// Set up listener options
+SnapshotListenOptions options = new SnapshotListenOptions.Builder()
+  .setMetadataChanges(MetadataChanges.INCLUDE)
+  .setSource(ListenSource.CACHE)
+  .build();
+db.collection("cities").document("SF").addSnapshotListener(options, new EventListener<DocumentSnapshot>() {
+    //…
+  });
+```
 
 ### Dart
 
-    // Not yet supported in this client library
+```
+// Not yet supported in this client library
+```
 
 ##### Java
 
-    # Not yet supported in the Java client library
+```
+# Not yet supported in the Java client library
+```
 
 ##### Python
 
-    // Not yet supported in Python client library
+```
+// Not yet supported in Python client library
+```
 
 ##### C++
 
-    // Not yet supported in the C++ client library
+```
+// Not yet supported in the C++ client library
+```
 
 ##### Node.js
 
-    // Not yet supported in the Node.js client library
+```
+// Not yet supported in the Node.js client library
+```
 
 ##### Go
 
-    // Not yet supported in the Go client library
+```
+// Not yet supported in the Go client library
+```
 
 ##### PHP
 
-    // Not yet supported in the PHP client library
+```
+// Not yet supported in the PHP client library
+```
 
 ##### Unity
 
-    // Not yet supported in the Unity client library
+```
+// Not yet supported in the Unity client library
+```
 
-##### C\#
+##### C#
 
-    // Not yet supported in the C# client library
+```
+// Not yet supported in the C# client library
+```
 
 ##### Ruby
 
-    // Not yet supported in the Ruby client library
+```
+// Not yet supported in the Ruby client library
+```
 
 ## Listen to multiple documents in a collection
 
@@ -740,286 +862,316 @@ As with documents, you can use `onSnapshot()` instead of `get()` to listen to th
 
 ### Web version 9
 
-    import { collection, query, where, onSnapshot } from "firebase/firestore";
-    
-    const q = query(collection(db, "cities"), where("state", "==", "CA"));
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const cities = [];
-      querySnapshot.forEach((doc) => {
-          cities.push(doc.data().name);
-      });
-      console.log("Current cities in CA: ", cities.join(", "));
-    });
+```
+import { collection, query, where, onSnapshot } from "firebase/firestore";
+
+const q = query(collection(db, "cities"), where("state", "==", "CA"));
+const unsubscribe = onSnapshot(q, (querySnapshot) => {
+  const cities = [];
+  querySnapshot.forEach((doc) => {
+      cities.push(doc.data().name);
+  });
+  console.log("Current cities in CA: ", cities.join(", "));
+});
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    db.collection("cities").where("state", "==", "CA")
-        .onSnapshot((querySnapshot) => {
-            var cities = [];
-            querySnapshot.forEach((doc) => {
-                cities.push(doc.data().name);
-            });
-            console.log("Current cities in CA: ", cities.join(", "));
+```
+db.collection("cities").where("state", "==", "CA")
+    .onSnapshot((querySnapshot) => {
+        var cities = [];
+        querySnapshot.forEach((doc) => {
+            cities.push(doc.data().name);
         });
+        console.log("Current cities in CA: ", cities.join(", "));
+    });
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    db.collection("cities").whereField("state", isEqualTo: "CA")
-      .addSnapshotListener { querySnapshot, error in
-        guard let documents = querySnapshot?.documents else {
-          print("Error fetching documents: \(error!)")
-          return
-        }
-        let cities = documents.compactMap { $0["name"] }
-        print("Current cities in CA: \(cities)")
-      }
+```
+db.collection("cities").whereField("state", isEqualTo: "CA")
+  .addSnapshotListener { querySnapshot, error in
+    guard let documents = querySnapshot?.documents else {
+      print("Error fetching documents: \(error!)")
+      return
+    }
+    let cities = documents.compactMap { $0["name"] }
+    print("Current cities in CA: \(cities)")
+  }
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    [[[self.db collectionWithPath:@"cities"] queryWhereField:@"state" isEqualTo:@"CA"]
-        addSnapshotListener:^(FIRQuerySnapshot *snapshot, NSError *error) {
-          if (snapshot == nil) {
-            NSLog(@"Error fetching documents: %@", error);
-            return;
-          }
-          NSMutableArray *cities = [NSMutableArray array];
-          for (FIRDocumentSnapshot *document in snapshot.documents) {
-            [cities addObject:document.data[@"name"]];
-          }
-          NSLog(@"Current cities in CA: %@", cities);
-        }];
+```
+[[[self.db collectionWithPath:@"cities"] queryWhereField:@"state" isEqualTo:@"CA"]
+    addSnapshotListener:^(FIRQuerySnapshot *snapshot, NSError *error) {
+      if (snapshot == nil) {
+        NSLog(@"Error fetching documents: %@", error);
+        return;
+      }
+      NSMutableArray *cities = [NSMutableArray array];
+      for (FIRDocumentSnapshot *document in snapshot.documents) {
+        [cities addObject:document.data[@"name"]];
+      }
+      NSLog(@"Current cities in CA: %@", cities);
+    }];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    db.collection("cities")
-        .whereEqualTo("state", "CA")
-        .addSnapshotListener { value, e ->
-            if (e != null) {
-                Log.w(TAG, "Listen failed.", e)
-                return@addSnapshotListener
-            }
-    
-            val cities = ArrayList<String>()
-            for (doc in value!!) {
-                doc.getString("name")?.let {
-                    cities.add(it)
-                }
-            }
-            Log.d(TAG, "Current cites in CA: $cities")
+```
+db.collection("cities")
+    .whereEqualTo("state", "CA")
+    .addSnapshotListener { value, e ->
+        if (e != null) {
+            Log.w(TAG, "Listen failed.", e)
+            return@addSnapshotListener
         }
 
-##### Java  
-Android
+        val cities = ArrayList<String>()
+        for (doc in value!!) {
+            doc.getString("name")?.let {
+                cities.add(it)
+            }
+        }
+        Log.d(TAG, "Current cites in CA: $cities")
+    }
+```
 
-    db.collection("cities")
-            .whereEqualTo("state", "CA")
-            .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                @Override
-                public void onEvent(@Nullable QuerySnapshot value,
-                                    @Nullable FirebaseFirestoreException e) {
-                    if (e != null) {
-                        Log.w(TAG, "Listen failed.", e);
-                        return;
-                    }
-    
-                    List<String> cities = new ArrayList<>();
-                    for (QueryDocumentSnapshot doc : value) {
-                        if (doc.get("name") != null) {
-                            cities.add(doc.getString("name"));
-                        }
-                    }
-                    Log.d(TAG, "Current cites in CA: " + cities);
+##### Java Android
+
+```
+db.collection("cities")
+        .whereEqualTo("state", "CA")
+        .addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value,
+                                @Nullable FirebaseFirestoreException e) {
+                if (e != null) {
+                    Log.w(TAG, "Listen failed.", e);
+                    return;
                 }
-            });
+
+                List<String> cities = new ArrayList<>();
+                for (QueryDocumentSnapshot doc : value) {
+                    if (doc.get("name") != null) {
+                        cities.add(doc.getString("name"));
+                    }
+                }
+                Log.d(TAG, "Current cites in CA: " + cities);
+            }
+        });
+```
 
 ### Dart
 
-    db
-        .collection("cities")
-        .where("state", isEqualTo: "CA")
-        .snapshots()
-        .listen((event) {
-      final cities = [];
-      for (var doc in event.docs) {
-        cities.add(doc.data()["name"]);
-      }
-      print("cities in CA: ${cities.join(", ")}");
-    });
+```
+db
+    .collection("cities")
+    .where("state", isEqualTo: "CA")
+    .snapshots()
+    .listen((event) {
+  final cities = [];
+  for (var doc in event.docs) {
+    cities.add(doc.data()["name"]);
+  }
+  print("cities in CA: ${cities.join(", ")}");
+});
+```
 
 ##### Java
 
-    db.collection("cities")
-        .whereEqualTo("state", "CA")
-        .addSnapshotListener(
-            new EventListener<QuerySnapshot>() {
-              @Override
-              public void onEvent(
-                  @Nullable QuerySnapshot snapshots, @Nullable FirestoreException e) {
-                if (e != null) {
-                  System.err.println("Listen failed:" + e);
-                  return;
-                }
-    
-                List<String> cities = new ArrayList<>();
-                for (DocumentSnapshot doc : snapshots) {
-                  if (doc.get("name") != null) {
-                    cities.add(doc.getString("name"));
-                  }
-                }
-                System.out.println("Current cites in CA: " + cities);
+```
+db.collection("cities")
+    .whereEqualTo("state", "CA")
+    .addSnapshotListener(
+        new EventListener<QuerySnapshot>() {
+          @Override
+          public void onEvent(
+              @Nullable QuerySnapshot snapshots, @Nullable FirestoreException e) {
+            if (e != null) {
+              System.err.println("Listen failed:" + e);
+              return;
+            }
+
+            List<String> cities = new ArrayList<>();
+            for (DocumentSnapshot doc : snapshots) {
+              if (doc.get("name") != null) {
+                cities.add(doc.getString("name"));
               }
-            });
+            }
+            System.out.println("Current cites in CA: " + cities);
+          }
+        });
+```
 
 ##### Python
 
-    # Create an Event for notifying main thread.
-    callback_done = threading.Event()
-    
-    # Create a callback on_snapshot function to capture changes
-    def on_snapshot(col_snapshot, changes, read_time):
-        print("Callback received query snapshot.")
-        print("Current cities in California:")
-        for doc in col_snapshot:
-            print(f"{doc.id}")
-        callback_done.set()
-    
-    col_query = db.collection("cities").where(filter=FieldFilter("state", "==", "CA"))
-    
-    # Watch the collection query
-    query_watch = col_query.on_snapshot(on_snapshot)
+```
+# Create an Event for notifying main thread.
+callback_done = threading.Event()
+
+# Create a callback on_snapshot function to capture changes
+def on_snapshot(col_snapshot, changes, read_time):
+    print("Callback received query snapshot.")
+    print("Current cities in California:")
+    for doc in col_snapshot:
+        print(f"{doc.id}")
+    callback_done.set()
+
+col_query = db.collection("cities").where(filter=FieldFilter("state", "==", "CA"))
+
+# Watch the collection query
+query_watch = col_query.on_snapshot(on_snapshot)
+```
 
 ##### C++
 
-    db->Collection("cities")
-        .WhereEqualTo("state", FieldValue::String("CA"))
-        .AddSnapshotListener([](const QuerySnapshot& snapshot, Error error, const std::string& errorMsg) {
-          if (error == Error::kErrorOk) {
-            std::vector<std::string> cities;
-            std::cout << "Current cities in CA: " << error << std::endl;
-            for (const DocumentSnapshot& doc : snapshot.documents()) {
-              cities.push_back(doc.Get("name").string_value());
-              std::cout << "" << cities.back() << std::endl;
-            }
-          } else {
-            std::cout << "Listen failed: " << error << std::endl;
-          }
-        });
+```
+db->Collection("cities")
+    .WhereEqualTo("state", FieldValue::String("CA"))
+    .AddSnapshotListener([](const QuerySnapshot& snapshot, Error error, const std::string& errorMsg) {
+      if (error == Error::kErrorOk) {
+        std::vector<std::string> cities;
+        std::cout << "Current cities in CA: " << error << std::endl;
+        for (const DocumentSnapshot& doc : snapshot.documents()) {
+          cities.push_back(doc.Get("name").string_value());
+          std::cout << "" << cities.back() << std::endl;
+        }
+      } else {
+        std::cout << "Listen failed: " << error << std::endl;
+      }
+    });
+```
 
 ##### Node.js
 
-    const query = db.collection('cities').where('state', '==', 'CA');
-    
-    const observer = query.onSnapshot(querySnapshot => {
-      console.log(`Received query snapshot of size ${querySnapshot.size}`);
-      // ...
-    }, err => {
-      console.log(`Encountered error: ${err}`);
-    });
+```
+const query = db.collection('cities').where('state', '==', 'CA');
+
+const observer = query.onSnapshot(querySnapshot => {
+  console.log(`Received query snapshot of size ${querySnapshot.size}`);
+  // ...
+}, err => {
+  console.log(`Encountered error: ${err}`);
+});
+```
 
 ##### Go
 
-    import (
-     "context"
-     "fmt"
-     "io"
-     "time"
-    
-     "cloud.google.com/go/firestore"
-     "google.golang.org/api/iterator"
-     "google.golang.org/grpc/codes"
-     "google.golang.org/grpc/status"
-    )
-    
-    // listenMultiple listens to a query, returning the names of all cities
-    // for a state.
-    func listenMultiple(ctx context.Context, w io.Writer, projectID, collection string) error {
-     // projectID := "project-id"
-     ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
-     defer cancel()
-    
-     client, err := firestore.NewClient(ctx, projectID)
-     if err != nil {
-         return fmt.Errorf("firestore.NewClient: %w", err)
-     }
-     defer client.Close()
-    
-     it := client.Collection(collection).Where("state", "==", "CA").Snapshots(ctx)
-     for {
-         snap, err := it.Next()
-         // DeadlineExceeded will be returned when ctx is cancelled.
-         if status.Code(err) == codes.DeadlineExceeded {
-             return nil
-         }
-         if err != nil {
-             return fmt.Errorf("Snapshots.Next: %w", err)
-         }
-         if snap != nil {
-             for {
-                 doc, err := snap.Documents.Next()
-                 if err == iterator.Done {
-                     break
-                 }
-                 if err != nil {
-                     return fmt.Errorf("Documents.Next: %w", err)
-                 }
-                 fmt.Fprintf(w, "Current cities in California: %v\n", doc.Ref.ID)
-             }
-         }
-     }
+```
+import (
+    "context"
+    "fmt"
+    "io"
+    "time"
+
+    "cloud.google.com/go/firestore"
+    "google.golang.org/api/iterator"
+    "google.golang.org/grpc/codes"
+    "google.golang.org/grpc/status"
+)
+
+// listenMultiple listens to a query, returning the names of all cities
+// for a state.
+func listenMultiple(ctx context.Context, w io.Writer, projectID, collection string) error {
+    // projectID := "project-id"
+    ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
+    defer cancel()
+
+    client, err := firestore.NewClient(ctx, projectID)
+    if err != nil {
+        return fmt.Errorf("firestore.NewClient: %w", err)
     }
+    defer client.Close()
+
+    it := client.Collection(collection).Where("state", "==", "CA").Snapshots(ctx)
+    for {
+        snap, err := it.Next()
+        // DeadlineExceeded will be returned when ctx is cancelled.
+        if status.Code(err) == codes.DeadlineExceeded {
+            return nil
+        }
+        if err != nil {
+            return fmt.Errorf("Snapshots.Next: %w", err)
+        }
+        if snap != nil {
+            for {
+                doc, err := snap.Documents.Next()
+                if err == iterator.Done {
+                    break
+                }
+                if err != nil {
+                    return fmt.Errorf("Documents.Next: %w", err)
+                }
+                fmt.Fprintf(w, "Current cities in California: %v\n", doc.Ref.ID)
+            }
+        }
+    }
+}
+```
 
 ##### PHP
 
-    // Not supported in the PHP client library
+```
+// Not supported in the PHP client library
+```
 
 ##### Unity
 
-    Query query = db.Collection("cities").WhereEqualTo("State", "CA");
-    
-    ListenerRegistration listener = query.Listen(snapshot => {
-      Debug.Log("Callback received query snapshot.");
-      Debug.Log("Current cities in California:");
-      foreach (DocumentSnapshot documentSnapshot in snapshot.Documents) {
-        Debug.Log(documentSnapshot.Id);
-      }
-    });
+```
+Query query = db.Collection("cities").WhereEqualTo("State", "CA");
 
-##### C\#
+ListenerRegistration listener = query.Listen(snapshot => {
+  Debug.Log("Callback received query snapshot.");
+  Debug.Log("Current cities in California:");
+  foreach (DocumentSnapshot documentSnapshot in snapshot.Documents) {
+    Debug.Log(documentSnapshot.Id);
+  }
+});
+```
 
-    CollectionReference citiesRef = db.Collection("cities");
-    Query query = db.Collection("cities").WhereEqualTo("State", "CA");
-    
-    FirestoreChangeListener listener = query.Listen(snapshot =>
+##### C#
+
+```csharp
+CollectionReference citiesRef = db.Collection("cities");
+Query query = db.Collection("cities").WhereEqualTo("State", "CA");
+
+FirestoreChangeListener listener = query.Listen(snapshot =>
+{
+    Console.WriteLine("Callback received query snapshot.");
+    Console.WriteLine("Current cities in California:");
+    foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
     {
-        Console.WriteLine("Callback received query snapshot.");
-        Console.WriteLine("Current cities in California:");
-        foreach (DocumentSnapshot documentSnapshot in snapshot.Documents)
-        {
-            Console.WriteLine(documentSnapshot.Id);
-        }
-    });
+        Console.WriteLine(documentSnapshot.Id);
+    }
+});
+```
 
 ##### Ruby
 
-    query = firestore.col(collection_path).where :state, :==, "CA"
-    docs = []
-    
-    # Watch the collection query.
-    listener = query.listen do |snapshot|
-      puts "Callback received query snapshot."
-      puts "Current cities in California:"
-      snapshot.docs.each do |doc|
-        puts doc.document_id
-        docs << doc
-      end
-    end
+```
+query = firestore.col(collection_path).where :state, :==, "CA"
+docs = []
+
+# Watch the collection query.
+listener = query.listen do |snapshot|
+  puts "Callback received query snapshot."
+  puts "Current cities in California:"
+  snapshot.docs.each do |doc|
+    puts doc.document_id
+    docs << doc
+  end
+end
+```
 
 The snapshot handler will receive a new query snapshot every time the query results change (that is, when a document is added, removed, or modified).
 
@@ -1031,385 +1183,415 @@ It is often useful to see the actual changes to query results between query snap
 
 ### Web version 9
 
-    import { collection, query, where, onSnapshot } from "firebase/firestore";
-    
-    const q = query(collection(db, "cities"), where("state", "==", "CA"));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      snapshot.docChanges().forEach((change) => {
-        if (change.type === "added") {
-            console.log("New city: ", change.doc.data());
-        }
-        if (change.type === "modified") {
-            console.log("Modified city: ", change.doc.data());
-        }
-        if (change.type === "removed") {
-            console.log("Removed city: ", change.doc.data());
-        }
-      });
-    });
+```
+import { collection, query, where, onSnapshot } from "firebase/firestore";
+
+const q = query(collection(db, "cities"), where("state", "==", "CA"));
+const unsubscribe = onSnapshot(q, (snapshot) => {
+  snapshot.docChanges().forEach((change) => {
+    if (change.type === "added") {
+        console.log("New city: ", change.doc.data());
+    }
+    if (change.type === "modified") {
+        console.log("Modified city: ", change.doc.data());
+    }
+    if (change.type === "removed") {
+        console.log("Removed city: ", change.doc.data());
+    }
+  });
+});
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    db.collection("cities").where("state", "==", "CA")
-        .onSnapshot((snapshot) => {
-            snapshot.docChanges().forEach((change) => {
-                if (change.type === "added") {
-                    console.log("New city: ", change.doc.data());
-                }
-                if (change.type === "modified") {
-                    console.log("Modified city: ", change.doc.data());
-                }
-                if (change.type === "removed") {
-                    console.log("Removed city: ", change.doc.data());
-                }
-            });
+```
+db.collection("cities").where("state", "==", "CA")
+    .onSnapshot((snapshot) => {
+        snapshot.docChanges().forEach((change) => {
+            if (change.type === "added") {
+                console.log("New city: ", change.doc.data());
+            }
+            if (change.type === "modified") {
+                console.log("Modified city: ", change.doc.data());
+            }
+            if (change.type === "removed") {
+                console.log("Removed city: ", change.doc.data());
+            }
         });
+    });
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    db.collection("cities").whereField("state", isEqualTo: "CA")
-      .addSnapshotListener { querySnapshot, error in
-        guard let snapshot = querySnapshot else {
-          print("Error fetching snapshots: \(error!)")
-          return
-        }
-        snapshot.documentChanges.forEach { diff in
-          if (diff.type == .added) {
-            print("New city: \(diff.document.data())")
-          }
-          if (diff.type == .modified) {
-            print("Modified city: \(diff.document.data())")
-          }
-          if (diff.type == .removed) {
-            print("Removed city: \(diff.document.data())")
-          }
-        }
+```
+db.collection("cities").whereField("state", isEqualTo: "CA")
+  .addSnapshotListener { querySnapshot, error in
+    guard let snapshot = querySnapshot else {
+      print("Error fetching snapshots: \(error!)")
+      return
+    }
+    snapshot.documentChanges.forEach { diff in
+      if (diff.type == .added) {
+        print("New city: \(diff.document.data())")
       }
+      if (diff.type == .modified) {
+        print("Modified city: \(diff.document.data())")
+      }
+      if (diff.type == .removed) {
+        print("Removed city: \(diff.document.data())")
+      }
+    }
+  }
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    [[[self.db collectionWithPath:@"cities"] queryWhereField:@"state" isEqualTo:@"CA"]
-        addSnapshotListener:^(FIRQuerySnapshot *snapshot, NSError *error) {
-          if (snapshot == nil) {
-            NSLog(@"Error fetching documents: %@", error);
-            return;
-          }
-          for (FIRDocumentChange *diff in snapshot.documentChanges) {
-            if (diff.type == FIRDocumentChangeTypeAdded) {
-              NSLog(@"New city: %@", diff.document.data);
-            }
-            if (diff.type == FIRDocumentChangeTypeModified) {
-              NSLog(@"Modified city: %@", diff.document.data);
-            }
-            if (diff.type == FIRDocumentChangeTypeRemoved) {
-              NSLog(@"Removed city: %@", diff.document.data);
-            }
-          }
-        }];
+```
+[[[self.db collectionWithPath:@"cities"] queryWhereField:@"state" isEqualTo:@"CA"]
+    addSnapshotListener:^(FIRQuerySnapshot *snapshot, NSError *error) {
+      if (snapshot == nil) {
+        NSLog(@"Error fetching documents: %@", error);
+        return;
+      }
+      for (FIRDocumentChange *diff in snapshot.documentChanges) {
+        if (diff.type == FIRDocumentChangeTypeAdded) {
+          NSLog(@"New city: %@", diff.document.data);
+        }
+        if (diff.type == FIRDocumentChangeTypeModified) {
+          NSLog(@"Modified city: %@", diff.document.data);
+        }
+        if (diff.type == FIRDocumentChangeTypeRemoved) {
+          NSLog(@"Removed city: %@", diff.document.data);
+        }
+      }
+    }];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    db.collection("cities")
-        .whereEqualTo("state", "CA")
-        .addSnapshotListener { snapshots, e ->
-            if (e != null) {
-                Log.w(TAG, "listen:error", e)
-                return@addSnapshotListener
-            }
-    
-            for (dc in snapshots!!.documentChanges) {
-                when (dc.type) {
-                    DocumentChange.Type.ADDED -> Log.d(TAG, "New city: ${dc.document.data}")
-                    DocumentChange.Type.MODIFIED -> Log.d(TAG, "Modified city: ${dc.document.data}")
-                    DocumentChange.Type.REMOVED -> Log.d(TAG, "Removed city: ${dc.document.data}")
-                }
-            }
+```
+db.collection("cities")
+    .whereEqualTo("state", "CA")
+    .addSnapshotListener { snapshots, e ->
+        if (e != null) {
+            Log.w(TAG, "listen:error", e)
+            return@addSnapshotListener
         }
 
-##### Java  
-Android
+        for (dc in snapshots!!.documentChanges) {
+            when (dc.type) {
+                DocumentChange.Type.ADDED -> Log.d(TAG, "New city: ${dc.document.data}")
+                DocumentChange.Type.MODIFIED -> Log.d(TAG, "Modified city: ${dc.document.data}")
+                DocumentChange.Type.REMOVED -> Log.d(TAG, "Removed city: ${dc.document.data}")
+            }
+        }
+    }
+```
 
-    db.collection("cities")
-            .whereEqualTo("state", "CA")
-            .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                @Override
-                public void onEvent(@Nullable QuerySnapshot snapshots,
-                                    @Nullable FirebaseFirestoreException e) {
-                    if (e != null) {
-                        Log.w(TAG, "listen:error", e);
-                        return;
-                    }
-    
-                    for (DocumentChange dc : snapshots.getDocumentChanges()) {
-                        switch (dc.getType()) {
-                            case ADDED:
-                                Log.d(TAG, "New city: " + dc.getDocument().getData());
-                                break;
-                            case MODIFIED:
-                                Log.d(TAG, "Modified city: " + dc.getDocument().getData());
-                                break;
-                            case REMOVED:
-                                Log.d(TAG, "Removed city: " + dc.getDocument().getData());
-                                break;
-                        }
-                    }
-    
+##### Java Android
+
+```
+db.collection("cities")
+        .whereEqualTo("state", "CA")
+        .addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot snapshots,
+                                @Nullable FirebaseFirestoreException e) {
+                if (e != null) {
+                    Log.w(TAG, "listen:error", e);
+                    return;
                 }
-            });
+
+                for (DocumentChange dc : snapshots.getDocumentChanges()) {
+                    switch (dc.getType()) {
+                        case ADDED:
+                            Log.d(TAG, "New city: " + dc.getDocument().getData());
+                            break;
+                        case MODIFIED:
+                            Log.d(TAG, "Modified city: " + dc.getDocument().getData());
+                            break;
+                        case REMOVED:
+                            Log.d(TAG, "Removed city: " + dc.getDocument().getData());
+                            break;
+                    }
+                }
+
+            }
+        });
+```
 
 ### Dart
 
-    db
-        .collection("cities")
-        .where("state", isEqualTo: "CA")
-        .snapshots()
-        .listen((event) {
-      for (var change in event.docChanges) {
-        switch (change.type) {
-          case DocumentChangeType.added:
-            print("New City: ${change.doc.data()}");
-            break;
-          case DocumentChangeType.modified:
-            print("Modified City: ${change.doc.data()}");
-            break;
-          case DocumentChangeType.removed:
-            print("Removed City: ${change.doc.data()}");
-            break;
-        }
-      }
-    });
+```
+db
+    .collection("cities")
+    .where("state", isEqualTo: "CA")
+    .snapshots()
+    .listen((event) {
+  for (var change in event.docChanges) {
+    switch (change.type) {
+      case DocumentChangeType.added:
+        print("New City: ${change.doc.data()}");
+        break;
+      case DocumentChangeType.modified:
+        print("Modified City: ${change.doc.data()}");
+        break;
+      case DocumentChangeType.removed:
+        print("Removed City: ${change.doc.data()}");
+        break;
+    }
+  }
+});
+```
 
 ##### Java
 
-    db.collection("cities")
-        .whereEqualTo("state", "CA")
-        .addSnapshotListener(
-            new EventListener<QuerySnapshot>() {
-              @Override
-              public void onEvent(
-                  @Nullable QuerySnapshot snapshots, @Nullable FirestoreException e) {
-                if (e != null) {
-                  System.err.println("Listen failed: " + e);
-                  return;
-                }
-    
-                for (DocumentChange dc : snapshots.getDocumentChanges()) {
-                  switch (dc.getType()) {
-                    case ADDED:
-                      System.out.println("New city: " + dc.getDocument().getData());
-                      break;
-                    case MODIFIED:
-                      System.out.println("Modified city: " + dc.getDocument().getData());
-                      break;
-                    case REMOVED:
-                      System.out.println("Removed city: " + dc.getDocument().getData());
-                      break;
-                    default:
-                      break;
-                  }
-                }
+```
+db.collection("cities")
+    .whereEqualTo("state", "CA")
+    .addSnapshotListener(
+        new EventListener<QuerySnapshot>() {
+          @Override
+          public void onEvent(
+              @Nullable QuerySnapshot snapshots, @Nullable FirestoreException e) {
+            if (e != null) {
+              System.err.println("Listen failed: " + e);
+              return;
+            }
+
+            for (DocumentChange dc : snapshots.getDocumentChanges()) {
+              switch (dc.getType()) {
+                case ADDED:
+                  System.out.println("New city: " + dc.getDocument().getData());
+                  break;
+                case MODIFIED:
+                  System.out.println("Modified city: " + dc.getDocument().getData());
+                  break;
+                case REMOVED:
+                  System.out.println("Removed city: " + dc.getDocument().getData());
+                  break;
+                default:
+                  break;
               }
-            });
+            }
+          }
+        });
+```
 
 ##### C++
 
-    db->Collection("cities")
-        .WhereEqualTo("state", FieldValue::String("CA"))
-        .AddSnapshotListener([](const QuerySnapshot& snapshot, Error error, const std::string& errorMsg) {
-          if (error == Error::kErrorOk) {
-            for (const DocumentChange& dc : snapshot.DocumentChanges()) {
-              switch (dc.type()) {
-                case DocumentChange::Type::kAdded:
-                  std::cout << "New city: "
-                            << dc.document().Get("name").string_value() << std::endl;
-                  break;
-                case DocumentChange::Type::kModified:
-                  std::cout << "Modified city: "
-                            << dc.document().Get("name").string_value() << std::endl;
-                  break;
-                case DocumentChange::Type::kRemoved:
-                  std::cout << "Removed city: "
-                            << dc.document().Get("name").string_value() << std::endl;
-                  break;
-              }
-            }
-          } else {
-            std::cout << "Listen failed: " << error << std::endl;
+```
+db->Collection("cities")
+    .WhereEqualTo("state", FieldValue::String("CA"))
+    .AddSnapshotListener([](const QuerySnapshot& snapshot, Error error, const std::string& errorMsg) {
+      if (error == Error::kErrorOk) {
+        for (const DocumentChange& dc : snapshot.DocumentChanges()) {
+          switch (dc.type()) {
+            case DocumentChange::Type::kAdded:
+              std::cout << "New city: "
+                        << dc.document().Get("name").string_value() << std::endl;
+              break;
+            case DocumentChange::Type::kModified:
+              std::cout << "Modified city: "
+                        << dc.document().Get("name").string_value() << std::endl;
+              break;
+            case DocumentChange::Type::kRemoved:
+              std::cout << "Removed city: "
+                        << dc.document().Get("name").string_value() << std::endl;
+              break;
           }
-        });
+        }
+      } else {
+        std::cout << "Listen failed: " << error << std::endl;
+      }
+    });
+```
 
 ##### Python
 
-    # Create an Event for notifying main thread.
-    delete_done = threading.Event()
-    
-    # Create a callback on_snapshot function to capture changes
-    def on_snapshot(col_snapshot, changes, read_time):
-        print("Callback received query snapshot.")
-        print("Current cities in California: ")
-        for change in changes:
-            if change.type.name == "ADDED":
-                print(f"New city: {change.document.id}")
-            elif change.type.name == "MODIFIED":
-                print(f"Modified city: {change.document.id}")
-            elif change.type.name == "REMOVED":
-                print(f"Removed city: {change.document.id}")
-                delete_done.set()
-    
-    col_query = db.collection("cities").where(filter=FieldFilter("state", "==", "CA"))
-    
-    # Watch the collection query
-    query_watch = col_query.on_snapshot(on_snapshot)
+```
+# Create an Event for notifying main thread.
+delete_done = threading.Event()
+
+# Create a callback on_snapshot function to capture changes
+def on_snapshot(col_snapshot, changes, read_time):
+    print("Callback received query snapshot.")
+    print("Current cities in California: ")
+    for change in changes:
+        if change.type.name == "ADDED":
+            print(f"New city: {change.document.id}")
+        elif change.type.name == "MODIFIED":
+            print(f"Modified city: {change.document.id}")
+        elif change.type.name == "REMOVED":
+            print(f"Removed city: {change.document.id}")
+            delete_done.set()
+
+col_query = db.collection("cities").where(filter=FieldFilter("state", "==", "CA"))
+
+# Watch the collection query
+query_watch = col_query.on_snapshot(on_snapshot)
+```
 
 ##### Node.js
 
-    const observer = db.collection('cities').where('state', '==', 'CA')
-      .onSnapshot(querySnapshot => {
-        querySnapshot.docChanges().forEach(change => {
-          if (change.type === 'added') {
-            console.log('New city: ', change.doc.data());
-          }
-          if (change.type === 'modified') {
-            console.log('Modified city: ', change.doc.data());
-          }
-          if (change.type === 'removed') {
-            console.log('Removed city: ', change.doc.data());
-          }
-        });
-      });
+```
+const observer = db.collection('cities').where('state', '==', 'CA')
+  .onSnapshot(querySnapshot => {
+    querySnapshot.docChanges().forEach(change => {
+      if (change.type === 'added') {
+        console.log('New city: ', change.doc.data());
+      }
+      if (change.type === 'modified') {
+        console.log('Modified city: ', change.doc.data());
+      }
+      if (change.type === 'removed') {
+        console.log('Removed city: ', change.doc.data());
+      }
+    });
+  });
+```
 
 ##### Go
 
-    import (
-     "context"
-     "fmt"
-     "io"
-     "time"
-    
-     "cloud.google.com/go/firestore"
-     "google.golang.org/grpc/codes"
-     "google.golang.org/grpc/status"
-    )
-    
-    // listenChanges listens to a query, returning the list of document changes.
-    func listenChanges(ctx context.Context, w io.Writer, projectID, collection string) error {
-     // projectID := "project-id"
-     ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
-     defer cancel()
-    
-     client, err := firestore.NewClient(ctx, projectID)
-     if err != nil {
-         return fmt.Errorf("firestore.NewClient: %w", err)
-     }
-     defer client.Close()
-    
-     it := client.Collection(collection).Where("state", "==", "CA").Snapshots(ctx)
-     for {
-         snap, err := it.Next()
-         // DeadlineExceeded will be returned when ctx is cancelled.
-         if status.Code(err) == codes.DeadlineExceeded {
-             return nil
-         }
-         if err != nil {
-             return fmt.Errorf("Snapshots.Next: %w", err)
-         }
-         if snap != nil {
-             for _, change := range snap.Changes {
-                 switch change.Kind {
-                 case firestore.DocumentAdded:
-                     fmt.Fprintf(w, "New city: %v\n", change.Doc.Data())
-                 case firestore.DocumentModified:
-                     fmt.Fprintf(w, "Modified city: %v\n", change.Doc.Data())
-                 case firestore.DocumentRemoved:
-                     fmt.Fprintf(w, "Removed city: %v\n", change.Doc.Data())
-                 }
-             }
-         }
-     }
+```
+import (
+    "context"
+    "fmt"
+    "io"
+    "time"
+
+    "cloud.google.com/go/firestore"
+    "google.golang.org/grpc/codes"
+    "google.golang.org/grpc/status"
+)
+
+// listenChanges listens to a query, returning the list of document changes.
+func listenChanges(ctx context.Context, w io.Writer, projectID, collection string) error {
+    // projectID := "project-id"
+    ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
+    defer cancel()
+
+    client, err := firestore.NewClient(ctx, projectID)
+    if err != nil {
+        return fmt.Errorf("firestore.NewClient: %w", err)
     }
+    defer client.Close()
+
+    it := client.Collection(collection).Where("state", "==", "CA").Snapshots(ctx)
+    for {
+        snap, err := it.Next()
+        // DeadlineExceeded will be returned when ctx is cancelled.
+        if status.Code(err) == codes.DeadlineExceeded {
+            return nil
+        }
+        if err != nil {
+            return fmt.Errorf("Snapshots.Next: %w", err)
+        }
+        if snap != nil {
+            for _, change := range snap.Changes {
+                switch change.Kind {
+                case firestore.DocumentAdded:
+                    fmt.Fprintf(w, "New city: %v\n", change.Doc.Data())
+                case firestore.DocumentModified:
+                    fmt.Fprintf(w, "Modified city: %v\n", change.Doc.Data())
+                case firestore.DocumentRemoved:
+                    fmt.Fprintf(w, "Removed city: %v\n", change.Doc.Data())
+                }
+            }
+        }
+    }
+}
+```
 
 ##### PHP
 
-    // Not supported in the PHP client library
+```
+// Not supported in the PHP client library
+```
 
 ##### Unity
 
-    Query query = db.Collection("cities").WhereEqualTo("State", "CA");
-    
-    ListenerRegistration listener = query.Listen(snapshot =>
-    {
-        foreach (DocumentChange change in snapshot.GetChanges())
-        {
-            if (change.ChangeType == DocumentChange.Type.Added)
-            {
-                Debug.Log(String.Format("New city: {0}", change.Document.Id));
-            }
-            else if (change.ChangeType == DocumentChange.Type.Modified)
-            {
-                Debug.Log(String.Format("Modified city: {0}", change.Document.Id));
-            }
-            else if (change.ChangeType == DocumentChange.Type.Removed)
-            {
-                Debug.Log(String.Format("Removed city: {0}", change.Document.Id));
-            }
-        }
-    });
+```
+Query query = db.Collection("cities").WhereEqualTo("State", "CA");
 
-##### C\#
-
-    CollectionReference citiesRef = db.Collection("cities");
-    Query query = db.Collection("cities").WhereEqualTo("State", "CA");
-    
-    FirestoreChangeListener listener = query.Listen(snapshot =>
+ListenerRegistration listener = query.Listen(snapshot =>
+{
+    foreach (DocumentChange change in snapshot.GetChanges())
     {
-        foreach (DocumentChange change in snapshot.Changes)
+        if (change.ChangeType == DocumentChange.Type.Added)
         {
-            if (change.ChangeType.ToString() == "Added")
-            {
-                Console.WriteLine("New city: {0}", change.Document.Id);
-            }
-            else if (change.ChangeType.ToString() == "Modified")
-            {
-                Console.WriteLine("Modified city: {0}", change.Document.Id);
-            }
-            else if (change.ChangeType.ToString() == "Removed")
-            {
-                Console.WriteLine("Removed city: {0}", change.Document.Id);
-            }
+            Debug.Log(String.Format("New city: {0}", change.Document.Id));
         }
-    });
+        else if (change.ChangeType == DocumentChange.Type.Modified)
+        {
+            Debug.Log(String.Format("Modified city: {0}", change.Document.Id));
+        }
+        else if (change.ChangeType == DocumentChange.Type.Removed)
+        {
+            Debug.Log(String.Format("Removed city: {0}", change.Document.Id));
+        }
+    }
+});
+```
+
+##### C#
+
+```csharp
+CollectionReference citiesRef = db.Collection("cities");
+Query query = db.Collection("cities").WhereEqualTo("State", "CA");
+
+FirestoreChangeListener listener = query.Listen(snapshot =>
+{
+    foreach (DocumentChange change in snapshot.Changes)
+    {
+        if (change.ChangeType.ToString() == "Added")
+        {
+            Console.WriteLine("New city: {0}", change.Document.Id);
+        }
+        else if (change.ChangeType.ToString() == "Modified")
+        {
+            Console.WriteLine("Modified city: {0}", change.Document.Id);
+        }
+        else if (change.ChangeType.ToString() == "Removed")
+        {
+            Console.WriteLine("Removed city: {0}", change.Document.Id);
+        }
+    }
+});
+```
 
 ##### Ruby
 
-    query = firestore.col(collection_path).where :state, :==, "CA"
-    added = []
-    modified = []
-    removed = []
-    
-    # Watch the collection query.
-    listener = query.listen do |snapshot|
-      puts "Callback received query snapshot."
-      puts "Current cities in California:"
-      snapshot.changes.each do |change|
-        if change.added?
-          puts "New city: #{change.doc.document_id}"
-          added << snapshot
-        elsif change.modified?
-          puts "Modified city: #{change.doc.document_id}"
-          modified << snapshot
-        elsif change.removed?
-          puts "Removed city: #{change.doc.document_id}"
-          removed << snapshot
-        end
-      end
+```
+query = firestore.col(collection_path).where :state, :==, "CA"
+added = []
+modified = []
+removed = []
+
+# Watch the collection query.
+listener = query.listen do |snapshot|
+  puts "Callback received query snapshot."
+  puts "Current cities in California:"
+  snapshot.changes.each do |change|
+    if change.added?
+      puts "New city: #{change.doc.document_id}"
+      added << snapshot
+    elsif change.modified?
+      puts "Modified city: #{change.doc.document_id}"
+      modified << snapshot
+    elsif change.removed?
+      puts "Removed city: #{change.doc.document_id}"
+      removed << snapshot
     end
+  end
+end
+```
 
 > **Important:** The first query snapshot contains `added` events for all existing documents that match the query. This is because you're getting a set of changes that bring your query snapshot current with the initial state of the query. This allows you, for instance, to directly populate your UI from the changes you receive in the first query snapshot, without needing to add special logic for handling the initial state.
 
@@ -1421,154 +1603,184 @@ When you are no longer interested in listening to your data, you must detach you
 
 ### Web version 9
 
-    import { collection, onSnapshot } from "firebase/firestore";
-    
-    const unsubscribe = onSnapshot(collection(db, "cities"), () => {
-      // Respond to data
-      // ...
-    });
-    
-    // Later ...
-    
-    // Stop listening to changes
-    unsubscribe();
+```
+import { collection, onSnapshot } from "firebase/firestore";
+
+const unsubscribe = onSnapshot(collection(db, "cities"), () => {
+  // Respond to data
+  // ...
+});
+
+// Later ...
+
+// Stop listening to changes
+unsubscribe();
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    var unsubscribe = db.collection("cities")
-        .onSnapshot(() => {
-          // Respond to data
-          // ...
-        });
-    
-    // Later ...
-    
-    // Stop listening to changes
-    unsubscribe();
+```
+var unsubscribe = db.collection("cities")
+    .onSnapshot(() => {
+      // Respond to data
+      // ...
+    });
+
+// Later ...
+
+// Stop listening to changes
+unsubscribe();
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    let listener = db.collection("cities").addSnapshotListener { querySnapshot, error in
-      // ...
-    }
-    
-    // ...
-    
-    // Stop listening to changes
-    listener.remove()
+```
+let listener = db.collection("cities").addSnapshotListener { querySnapshot, error in
+  // ...
+}
+
+// ...
+
+// Stop listening to changes
+listener.remove()
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    id<FIRListenerRegistration> listener = [[self.db collectionWithPath:@"cities"]
-        addSnapshotListener:^(FIRQuerySnapshot *snapshot, NSError *error) {
-          // ...
-    }];
-    
+```
+id<FIRListenerRegistration> listener = [[self.db collectionWithPath:@"cities"]
+    addSnapshotListener:^(FIRQuerySnapshot *snapshot, NSError *error) {
+      // ...
+}];
+
+// ...
+
+// Stop listening to changes
+[listener remove];
+```
+
+##### Kotlin Android
+
+```
+val query = db.collection("cities")
+val registration = query.addSnapshotListener { snapshots, e ->
     // ...
-    
-    // Stop listening to changes
-    [listener remove];
+}
 
-##### Kotlin  
-Android
+// ...
 
-    val query = db.collection("cities")
-    val registration = query.addSnapshotListener { snapshots, e ->
-        // ...
-    }
-    
-    // ...
-    
-    // Stop listening to changes
-    registration.remove()
+// Stop listening to changes
+registration.remove()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Query query = db.collection("cities");
-    ListenerRegistration registration = query.addSnapshotListener(
-            new EventListener<QuerySnapshot>() {
-                // ...
-            });
-    
-    // ...
-    
-    // Stop listening to changes
-    registration.remove();
+```
+Query query = db.collection("cities");
+ListenerRegistration registration = query.addSnapshotListener(
+        new EventListener<QuerySnapshot>() {
+            // ...
+        });
+
+// ...
+
+// Stop listening to changes
+registration.remove();
+```
 
 ### Dart
 
-    final collection = db.collection("cities");
-    final listener = collection.snapshots().listen((event) {
-      // ...
-    });
-    listener.cancel();
+```
+final collection = db.collection("cities");
+final listener = collection.snapshots().listen((event) {
+  // ...
+});
+listener.cancel();
+```
 
 ##### Java
 
-    Query query = db.collection("cities");
-    ListenerRegistration registration =
-        query.addSnapshotListener(
-            new EventListener<QuerySnapshot>() {
-              // ...
-            });
-    
-    // ...
-    
-    // Stop listening to changes
-    registration.remove();
+```
+Query query = db.collection("cities");
+ListenerRegistration registration =
+    query.addSnapshotListener(
+        new EventListener<QuerySnapshot>() {
+          // ...
+        });
+
+// ...
+
+// Stop listening to changes
+registration.remove();
+```
 
 ##### Python
 
-    # Terminate watch on a document
-    doc_watch.unsubscribe()
+```
+# Terminate watch on a document
+doc_watch.unsubscribe()
+```
 
 ##### C++
 
-    // Add a listener
-    Query query = db->Collection("cities");
-    ListenerRegistration registration = query.AddSnapshotListener(
-        [](const QuerySnapshot& snapshot, Error error, const std::string& errorMsg) { /* ... */ });
-    // Stop listening to changes
-    registration.Remove();
+```
+// Add a listener
+Query query = db->Collection("cities");
+ListenerRegistration registration = query.AddSnapshotListener(
+    [](const QuerySnapshot& snapshot, Error error, const std::string& errorMsg) { /* ... */ });
+// Stop listening to changes
+registration.Remove();
+```
 
 ##### Node.js
 
-    const unsub = db.collection('cities').onSnapshot(() => {
-    });
-    
-    // ...
-    
-    // Stop listening for changes
-    unsub();
+```
+const unsub = db.collection('cities').onSnapshot(() => {
+});
+
+// ...
+
+// Stop listening for changes
+unsub();
+```
 
 ##### Go
 
-    // Сontext with timeout stops listening to changes.
-    ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
-    defer cancel()
+```
+// Сontext with timeout stops listening to changes.
+ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
+defer cancel()
+```
 
 ##### PHP
 
-    // Not supported in the PHP client library
+```
+// Not supported in the PHP client library
+```
 
 ##### Unity
 
-    listener.Stop();
+```
+listener.Stop();
+```
 
-##### C\#
+##### C#
 
-    await listener.StopAsync();
+```csharp
+await listener.StopAsync();
+```
 
 ##### Ruby
 
-    listener.stop
+```
+listener.stop
+```
 
 ## Handle listen errors
 
@@ -1576,232 +1788,262 @@ A listen may occasionally fail — for example, due to security permissions, or 
 
 ### Web version 9
 
-    import { collection, onSnapshot } from "firebase/firestore";
-    
-    const unsubscribe = onSnapshot(
-      collection(db, "cities"), 
-      (snapshot) => {
-        // ...
-      },
-      (error) => {
-        // ...
-      });
+```
+import { collection, onSnapshot } from "firebase/firestore";
+
+const unsubscribe = onSnapshot(
+  collection(db, "cities"), 
+  (snapshot) => {
+    // ...
+  },
+  (error) => {
+    // ...
+  });
+```
 
 ### Web version 8
 
 > [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and its advantages over the namespaced API.
 
-    db.collection("cities")
-        .onSnapshot((snapshot) => {
-            // ...
-        }, (error) => {
-            // ...
-        });
+```
+db.collection("cities")
+    .onSnapshot((snapshot) => {
+        // ...
+    }, (error) => {
+        // ...
+    });
+```
 
 ##### Swift
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    db.collection("cities")
-      .addSnapshotListener { querySnapshot, error in
-        if let error = error {
-          print("Error retreiving collection: \(error)")
-        }
-      }
+```
+db.collection("cities")
+  .addSnapshotListener { querySnapshot, error in
+    if let error = error {
+      print("Error retreiving collection: \(error)")
+    }
+  }
+```
 
 ##### Objective-C
 
 **Note:** This product is not available on watchOS and App Clip targets.
 
-    [[self.db collectionWithPath:@"cities"]
-        addSnapshotListener:^(FIRQuerySnapshot *snapshot, NSError *error) {
-          if (error != nil) {
-            NSLog(@"Error retreving collection: %@", error);
-          }
-        }];
+```
+[[self.db collectionWithPath:@"cities"]
+    addSnapshotListener:^(FIRQuerySnapshot *snapshot, NSError *error) {
+      if (error != nil) {
+        NSLog(@"Error retreving collection: %@", error);
+      }
+    }];
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    db.collection("cities")
-        .addSnapshotListener { snapshots, e ->
-            if (e != null) {
-                Log.w(TAG, "listen:error", e)
-                return@addSnapshotListener
-            }
-    
-            for (dc in snapshots!!.documentChanges) {
-                if (dc.type == DocumentChange.Type.ADDED) {
-                    Log.d(TAG, "New city: ${dc.document.data}")
-                }
-            }
+```
+db.collection("cities")
+    .addSnapshotListener { snapshots, e ->
+        if (e != null) {
+            Log.w(TAG, "listen:error", e)
+            return@addSnapshotListener
         }
 
-##### Java  
-Android
+        for (dc in snapshots!!.documentChanges) {
+            if (dc.type == DocumentChange.Type.ADDED) {
+                Log.d(TAG, "New city: ${dc.document.data}")
+            }
+        }
+    }
+```
 
-    db.collection("cities")
-            .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                @Override
-                public void onEvent(@Nullable QuerySnapshot snapshots,
-                                    @Nullable FirebaseFirestoreException e) {
-                    if (e != null) {
-                        Log.w(TAG, "listen:error", e);
-                        return;
-                    }
-    
-                    for (DocumentChange dc : snapshots.getDocumentChanges()) {
-                        if (dc.getType() == Type.ADDED) {
-                            Log.d(TAG, "New city: " + dc.getDocument().getData());
-                        }
-                    }
-    
+##### Java Android
+
+```
+db.collection("cities")
+        .addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot snapshots,
+                                @Nullable FirebaseFirestoreException e) {
+                if (e != null) {
+                    Log.w(TAG, "listen:error", e);
+                    return;
                 }
-            });
+
+                for (DocumentChange dc : snapshots.getDocumentChanges()) {
+                    if (dc.getType() == Type.ADDED) {
+                        Log.d(TAG, "New city: " + dc.getDocument().getData());
+                    }
+                }
+
+            }
+        });
+```
 
 ### Dart
 
-    final docRef = db.collection("cities");
-    docRef.snapshots().listen(
-          (event) => print("listener attached"),
-          onError: (error) => print("Listen failed: $error"),
-        );
+```
+final docRef = db.collection("cities");
+docRef.snapshots().listen(
+      (event) => print("listener attached"),
+      onError: (error) => print("Listen failed: $error"),
+    );
+```
 
 ##### Java
 
-    db.collection("cities")
-        .addSnapshotListener(
-            new EventListener<QuerySnapshot>() {
-              @Override
-              public void onEvent(
-                  @Nullable QuerySnapshot snapshots, @Nullable FirestoreException e) {
-                if (e != null) {
-                  System.err.println("Listen failed: " + e);
-                  return;
-                }
-    
-                for (DocumentChange dc : snapshots.getDocumentChanges()) {
-                  if (dc.getType() == Type.ADDED) {
-                    System.out.println("New city: " + dc.getDocument().getData());
-                  }
-                }
+```
+db.collection("cities")
+    .addSnapshotListener(
+        new EventListener<QuerySnapshot>() {
+          @Override
+          public void onEvent(
+              @Nullable QuerySnapshot snapshots, @Nullable FirestoreException e) {
+            if (e != null) {
+              System.err.println("Listen failed: " + e);
+              return;
+            }
+
+            for (DocumentChange dc : snapshots.getDocumentChanges()) {
+              if (dc.getType() == Type.ADDED) {
+                System.out.println("New city: " + dc.getDocument().getData());
               }
-            });
+            }
+          }
+        });
+```
 
 ##### Python
 
-    // Snippet coming soon
+```
+// Snippet coming soon
+```
 
 ##### C++
 
-    // Snippet coming soon.
+```
+// Snippet coming soon.
+```
 
 ##### Node.js
 
-    db.collection('cities')
-      .onSnapshot((snapshot) => {
-        //...
-      }, (error) => {
-        //...
-      });
+```
+db.collection('cities')
+  .onSnapshot((snapshot) => {
+    //...
+  }, (error) => {
+    //...
+  });
+```
 
 ##### Go
 
-    import (
-     "context"
-     "fmt"
-     "io"
-     "time"
-    
-     "cloud.google.com/go/firestore"
-     "google.golang.org/grpc/codes"
-     "google.golang.org/grpc/status"
-    )
-    
-    // listenErrors demonstrates how to handle listening errors.
-    func listenErrors(ctx context.Context, w io.Writer, projectID, collection string) error {
-     // projectID := "project-id"
-     ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
-     defer cancel()
-    
-     client, err := firestore.NewClient(ctx, projectID)
-     if err != nil {
-         return fmt.Errorf("firestore.NewClient: %w", err)
-     }
-     defer client.Close()
-    
-     it := client.Collection(collection).Snapshots(ctx)
-     for {
-         snap, err := it.Next()
-         // Canceled will be returned when ctx is cancelled and DeadlineExceeded will
-         // be returned when ctx reaches its deadline.
-         if e := status.Code(err); e == codes.Canceled || e == codes.DeadlineExceeded {
-             return nil
-         }
-         if err != nil {
-             return fmt.Errorf("Snapshots.Next: %w", err)
-         }
-         if snap != nil {
-             for _, change := range snap.Changes {
-                 if change.Kind == firestore.DocumentAdded {
-                     fmt.Fprintf(w, "New city: %v\n", change.Doc.Data())
-                 }
-             }
-         }
-     }
+```
+import (
+    "context"
+    "fmt"
+    "io"
+    "time"
+
+    "cloud.google.com/go/firestore"
+    "google.golang.org/grpc/codes"
+    "google.golang.org/grpc/status"
+)
+
+// listenErrors demonstrates how to handle listening errors.
+func listenErrors(ctx context.Context, w io.Writer, projectID, collection string) error {
+    // projectID := "project-id"
+    ctx, cancel := context.WithTimeout(ctx, 30*time.Second)
+    defer cancel()
+
+    client, err := firestore.NewClient(ctx, projectID)
+    if err != nil {
+        return fmt.Errorf("firestore.NewClient: %w", err)
     }
+    defer client.Close()
+
+    it := client.Collection(collection).Snapshots(ctx)
+    for {
+        snap, err := it.Next()
+        // Canceled will be returned when ctx is cancelled and DeadlineExceeded will
+        // be returned when ctx reaches its deadline.
+        if e := status.Code(err); e == codes.Canceled || e == codes.DeadlineExceeded {
+            return nil
+        }
+        if err != nil {
+            return fmt.Errorf("Snapshots.Next: %w", err)
+        }
+        if snap != nil {
+            for _, change := range snap.Changes {
+                if change.Kind == firestore.DocumentAdded {
+                    fmt.Fprintf(w, "New city: %v\n", change.Doc.Data())
+                }
+            }
+        }
+    }
+}
+```
 
 ##### PHP
 
-    // Not supported in the PHP client library
+```
+// Not supported in the PHP client library
+```
 
 ##### Unity
 
-    ListenerRegistration registration =
-    db.Collection("cities").Listen(
-      querySnapshot =>
-      {
-          // ...
-      });
-    
-    registration.ListenerTask.ContinueWithOnMainThread(
-        listenerTask =>
+```
+ListenerRegistration registration =
+db.Collection("cities").Listen(
+  querySnapshot =>
+  {
+      // ...
+  });
+
+registration.ListenerTask.ContinueWithOnMainThread(
+    listenerTask =>
+    {
+        if (listenerTask.IsFaulted)
         {
-            if (listenerTask.IsFaulted)
-            {
-                Debug.LogError($"Listen failed: {listenerTask.Exception}");
-                // ...
-                // Handle the listener error.
-                // ...
-            }
-        });
+            Debug.LogError($"Listen failed: {listenerTask.Exception}");
+            // ...
+            // Handle the listener error.
+            // ...
+        }
+    });
+```
 
-##### C\#
+##### C#
 
-    // Snippet coming soon
+```
+// Snippet coming soon
+```
 
 ##### Ruby
 
-    listener = firestore.col(collection_path).listen do |snapshot|
-      snapshot.changes.each do |change|
-        puts "New city: #{change.doc.document_id}" if change.added?
-      end
-    end
-    
-    # Register to be notified when unhandled errors occur.
-    listener.on_error do |error|
-      puts "Listen failed: #{error.message}"
-    end
+```
+listener = firestore.col(collection_path).listen do |snapshot|
+  snapshot.changes.each do |change|
+    puts "New city: #{change.doc.document_id}" if change.added?
+  end
+end
+
+# Register to be notified when unhandled errors occur.
+listener.on_error do |error|
+  puts "Listen failed: #{error.message}"
+end
+```
 
 ## Pricing
 
 Pricing for realtime listener operations depends on the edition of the database. See the following:
 
-  - [Standard edition pricing](https://cloud.google.com/firestore/pricing)
-  - [Enterprise edition pricing](https://cloud.google.com/firestore/enterprise/pricing)
+- [Standard edition pricing](https://cloud.google.com/firestore/pricing)
+- [Enterprise edition pricing](https://cloud.google.com/firestore/enterprise/pricing)
 
 ## What's next
 
-  - [Combine listeners with simple and compound queries](https://docs.cloud.google.com/firestore/native/docs/query-data/queries) .
-  - [Order and limit the documents retrieved](https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data) .
-  - [Understand billing for listeners](https://docs.cloud.google.com/firestore/native/docs/pricing#operations) .
+- [Combine listeners with simple and compound queries](https://docs.cloud.google.com/firestore/native/docs/query-data/queries) .
+- [Order and limit the documents retrieved](https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data) .
+- [Understand billing for listeners](https://docs.cloud.google.com/firestore/native/docs/pricing#operations) .

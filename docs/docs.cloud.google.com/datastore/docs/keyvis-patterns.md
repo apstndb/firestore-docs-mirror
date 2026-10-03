@@ -34,7 +34,7 @@ A heatmap with a key range that suddenly changes from dark to bright indicates a
 
 ## What's next
 
-  - Learn how to [get started with Key Visualizer](https://docs.cloud.google.com/datastore/docs/keyvis-getting-started) .
-  - Find out how to [explore a heatmap in detail](https://docs.cloud.google.com/datastore/docs/keyvis-exploring-heatmaps) .
-  - Read about the [metrics you can view in a heatmap](https://docs.cloud.google.com/datastore/docs/key-visualizer#metrics) .
-  - Learn about [index key patterns](https://docs.cloud.google.com/datastore/docs/keyvis-patterns-index)
+- Learn how to [get started with Key Visualizer](https://docs.cloud.google.com/datastore/docs/keyvis-getting-started) .
+- Find out how to [explore a heatmap in detail](https://docs.cloud.google.com/datastore/docs/keyvis-exploring-heatmaps) .
+- Read about the [metrics you can view in a heatmap](https://docs.cloud.google.com/datastore/docs/key-visualizer#metrics) .
+- Learn about [index key patterns](https://docs.cloud.google.com/datastore/docs/keyvis-patterns-index)

@@ -12,7 +12,7 @@ gcloud firestore indexes fields - manage single-field indexes for Cloud Firestor
 
 SYNOPSIS
 
-`gcloud firestore indexes fields` `  COMMAND  ` \[ `  GCLOUD_WIDE_FLAG …  ` \]
+`gcloud firestore indexes fields` [`COMMAND`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/fields#COMMAND) \[ [`GCLOUD_WIDE_FLAG`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/fields#GCLOUD-WIDE-FLAGS)` …` \]
 
 DESCRIPTION
 
@@ -20,25 +20,31 @@ Changes here apply to index settings for individual fields, and won't affect any
 
 GCLOUD WIDE FLAGS
 
-These flags are available to all commands: `  --help  ` .
+These flags are available to all commands: [`--help`](https://docs.cloud.google.com/sdk/gcloud/reference#--help) .
 
-Run ` $ gcloud help  ` for details.
+Run `$ `[`gcloud help`](https://docs.cloud.google.com/sdk/gcloud/reference) for details.
 
 COMMANDS
 
-`  COMMAND  ` is one of the following:
+`COMMAND` is one of the following:
 
-  - `  describe  `  
-    Describe the index configuration of the given field.
-  - `  list  `  
-    List fields with non-default index settings.
-  - `  update  `  
-    Update the index configuration of the given field.
+[`describe`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/fields/describe)  
+Describe the index configuration of the given field.
+
+[`list`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/fields/list)  
+List fields with non-default index settings.
+
+[`update`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/indexes/fields/update)  
+Update the index configuration of the given field.
 
 NOTES
 
 These variants are also available:
 
-    gcloud alpha firestore indexes fields
+```
+gcloud alpha firestore indexes fields
+```
 
-    gcloud beta firestore indexes fields
+```
+gcloud beta firestore indexes fields
+```

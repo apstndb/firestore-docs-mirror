@@ -12,7 +12,7 @@ Query a Firestore collection with a string eq filter (async).
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Query and filter data](https://docs.cloud.google.com/firestore/native/docs/query-data/queries)
+- [Query and filter data](https://docs.cloud.google.com/firestore/native/docs/query-data/queries)
 
 ## Code sample
 
@@ -20,11 +20,13 @@ For detailed documentation that includes this code sample, see the following:
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    # Create a reference to the cities collection
-    cities_ref = db.collection("cities")
-    
-    # Create a query against the collection
-    query_ref = cities_ref.where(filter=FieldFilter("state", "==", "CA"))
+```python
+# Create a reference to the cities collection
+cities_ref = db.collection("cities")
+
+# Create a query against the collection
+query_ref = cities_ref.where(filter=FieldFilter("state", "==", "CA"))
+```
 
 ## What's next
 

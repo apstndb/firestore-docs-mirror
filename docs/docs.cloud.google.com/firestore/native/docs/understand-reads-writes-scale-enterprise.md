@@ -48,7 +48,7 @@ Documents can generate index entries which are lexicographically ordered and par
 
 #### Synchronous Replication
 
-Every write is synchronously replicated to a majority of replicas using [Paxos](https://en.wikipedia.org/wiki/Paxos_\(computer_science\)) . One replica per split is considered a leader and coordinates the replication process. In the event of leader failure a new leader is elected. Replicas are located in different [zones](https://cloud.google.com/docs/geography-and-regions#regions_and_zones) to be resilient to potential zone failure. The overall result of this is a scalable and highly available system that provides low latencies for both reads and writes, irrespective of heavy workloads and at very large scale.
+Every write is synchronously replicated to a majority of replicas using [Paxos](https://en.wikipedia.org/wiki/Paxos_(computer_science)) . One replica per split is considered a leader and coordinates the replication process. In the event of leader failure a new leader is elected. Replicas are located in different [zones](https://cloud.google.com/docs/geography-and-regions#regions_and_zones) to be resilient to potential zone failure. The overall result of this is a scalable and highly available system that provides low latencies for both reads and writes, irrespective of heavy workloads and at very large scale.
 
 #### Single Region versus Multi-Region
 
@@ -78,9 +78,9 @@ As the first step of a transaction, Firestore reads the existing document, and d
 
 This also includes making updates to any relevant indexes:
 
-  - Indexed fields that are being added to the documents need corresponding inserts into the indexes.
-  - Indexed fields that are being removed from the documents need corresponding deletes in the indexes.
-  - Indexed fields that are being modified in the documents, need both deletes (for old values) and inserts (for new values) in the indexes.
+- Indexed fields that are being added to the documents need corresponding inserts into the indexes.
+- Indexed fields that are being removed from the documents need corresponding deletes in the indexes.
+- Indexed fields that are being modified in the documents, need both deletes (for old values) and inserts (for new values) in the indexes.
 
 To calculate the mutations mentioned earlier, Firestore reads the *indexing configuration* for the project. The indexing configuration stores information about the indexes for a project.
 
@@ -110,9 +110,9 @@ The following high-level steps describe what happens as part of the write:
 2.  Read the `restaurant1` document in the `Restaurants` collection.
 3.  Read the indexes for the document.
 4.  Compute the mutations to be made to the data. In this case, there are five mutations:
-      - M1: Update the row for `restaurant1` to reflect the change in value of the *`priceCategory`* field.
-      - M2 and M3: Delete the old index entries for *`priceCategory`* .
-      - M4 and M5: Add new index entries for *`priceCategory`* .
+    - M1: Update the row for `restaurant1` to reflect the change in value of the *`priceCategory`* field.
+    - M2 and M3: Delete the old index entries for *`priceCategory`* .
+    - M4 and M5: Add new index entries for *`priceCategory`* .
 5.  Commit these mutations.
 
 The storage client in the Firestore service looks up the splits that owns the keys of the rows to be changed. Consider a case where Split 3 serves M1, and Split 6 serves M2-M5. There is a distributed transaction, involving all these splits as *participants* . The participant splits may also include any other split from which data was read earlier as part of the read-write transaction.
@@ -121,10 +121,10 @@ The following steps describe what happens as part of the commit:
 
 1.  The storage client issues a commit. The commit contains the mutations M1-M5.
 2.  Splits 3 and 6 are the participants in this transaction. One of the participants is chosen as the *coordinator* , such as Split 3. The job of the coordinator is to make sure the transaction either commits or aborts atomically across all participants.
-      - The leader replicas of these splits are responsible for work done by the participants and coordinators.
+    - The leader replicas of these splits are responsible for work done by the participants and coordinators.
 3.  Each participant and coordinator runs a Paxos algorithm with their respective replicas.
-      - The leader runs a Paxos algorithm with the replicas. Quorum is achieved if most of the replicas reply with an `ok to commit` response to the leader.
-      - Each participant then notifies the coordinator when they are *prepared* (first phase of two-phase commit). If any participant cannot commit the transaction, the whole transaction `aborts` .
+    - The leader runs a Paxos algorithm with the replicas. Quorum is achieved if most of the replicas reply with an `ok to commit` response to the leader.
+    - Each participant then notifies the coordinator when they are *prepared* (first phase of two-phase commit). If any participant cannot commit the transaction, the whole transaction `aborts` .
 4.  Once the coordinator knows all participants, including itself, are prepared, it communicates the *`accept`* transaction outcome to all the participants (second phase of two-phase commit). In this phase, each participant records the commit decision to stable storage and the transaction is committed.
 5.  The coordinator responds to the storage client in Firestore that the transaction has been committed. In parallel, the coordinator and all the participants apply the mutations to the data.
 
@@ -141,9 +141,9 @@ We configure the replicas in a way that leadership for splits always stays in th
 > **Key Point:** Firestore uses transactions to do writes, which requires acquiring shared locks for read and exclusive locks for write. When a transaction reads many rows no other transaction can write to that set of rows till this transaction either commits or aborts, causing higher latencies and lock contention errors. Hence, try to avoid large reads inside a transaction.
 
 > **Key Point:** Write/transaction latency increases as the number of splits/participants increases. There is no explicit mechanism to control the number of participants. However, you can do the following to reduce the number of participants:
-> 
->   - High index fanout is when many index entries need to be written. High index fanout for a document write increases the number or database rows to be mutated, which increases the number of participants. Don't index on fields not used for querying.
->   - The number of participants increases as the number of documents updated in a write transaction increase. For lower latency, keep the number of documents updated in a single write transaction low.
+>
+> - High index fanout is when many index entries need to be written. High index fanout for a document write increases the number or database rows to be mutated, which increases the number of participants. Don't index on fields not used for querying.
+> - The number of participants increases as the number of documents updated in a write transaction increase. For lower latency, keep the number of documents updated in a single write transaction low.
 
 ## Understand the life of a read
 
@@ -165,11 +165,11 @@ The storage client in Firestore looks up the splits that own the keys of the row
 
 At this point, the following cases might happen depending on the chosen replica:
 
-  - Read request goes to a leader replica (Zone A).
-      - As the leader is always up-to-date, the read can proceed directly.
-  - Read request goes to a non-leader replica (such as, Zone B)
-      - Split 3 may know by its internal state that it has enough information to serve the read and the split does so.
-      - Split 3 is unsure if it has seen the latest data. It sends a message to the leader to ask for the timestamp of the last transaction it needs to apply to serve the read. Once that transaction is applied, the read can proceed.
+- Read request goes to a leader replica (Zone A).
+  - As the leader is always up-to-date, the read can proceed directly.
+- Read request goes to a non-leader replica (such as, Zone B)
+  - Split 3 may know by its internal state that it has enough information to serve the read and the split does so.
+  - Split 3 is unsure if it has seen the latest data. It sends a message to the leader to ask for the timestamp of the last transaction it needs to apply to serve the read. Once that transaction is applied, the read can proceed.
 
 Firestore then returns the response to its client.
 

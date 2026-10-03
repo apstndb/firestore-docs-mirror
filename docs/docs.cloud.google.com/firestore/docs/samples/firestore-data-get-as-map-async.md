@@ -12,7 +12,7 @@ Retrieve Firestore Document as Map (async).
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Getting data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data)
+- [Getting data](https://docs.cloud.google.com/firestore/native/docs/query-data/get-data)
 
 ## Code sample
 
@@ -20,13 +20,15 @@ For detailed documentation that includes this code sample, see the following:
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    doc_ref = db.collection("cities").document("SF")
-    
-    doc = await doc_ref.get()
-    if doc.exists:
-        print(f"Document data: {doc.to_dict()}")
-    else:
-        print("No such document!")
+```python
+doc_ref = db.collection("cities").document("SF")
+
+doc = await doc_ref.get()
+if doc.exists:
+    print(f"Document data: {doc.to_dict()}")
+else:
+    print("No such document!")
+```
 
 ## What's next
 

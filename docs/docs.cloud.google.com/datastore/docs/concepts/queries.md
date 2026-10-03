@@ -12,9 +12,9 @@ The query operates on entities of a given [*kind*](https://docs.cloud.google.com
 
 A typical query includes the following:
 
-  - An [entity kind](https://docs.cloud.google.com/datastore/docs/concepts/entities#kinds_and_identifiers) to which the query applies
-  - Zero or more [filters](https://docs.cloud.google.com/datastore/docs/concepts/queries#filters) based on the entities' property values, keys, and ancestors
-  - Zero or more [sort orders](https://docs.cloud.google.com/datastore/docs/concepts/queries#sort_orders) to sequence the results
+- An [entity kind](https://docs.cloud.google.com/datastore/docs/concepts/entities#kinds_and_identifiers) to which the query applies
+- Zero or more [filters](https://docs.cloud.google.com/datastore/docs/concepts/queries#filters) based on the entities' property values, keys, and ancestors
+- Zero or more [sort orders](https://docs.cloud.google.com/datastore/docs/concepts/queries#sort_orders) to sequence the results
 
 When executed, the query retrieves all entities of the given kind that satisfy all of the given filters, sorted in the specified order. Queries execute as read-only.
 
@@ -28,18 +28,20 @@ The index-based query mechanism supports a wide range of queries and is suitable
 
 You can issue a query against a Datastore mode database. The following example shows how to retrieve all tasks that are not yet done with priorities greater than or equal to 4, sorted in descending order by priority:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Filter = Filter.And(Filter.Equal("done", false),
-            Filter.GreaterThanOrEqual("priority", 4)),
-        Order = { { "priority", PropertyOrder.Types.Direction.Descending } }
-    };
+```c#
+Query query = new Query("Task")
+{
+    Filter = Filter.And(Filter.Equal("done", false),
+        Filter.GreaterThanOrEqual("priority", 4)),
+    Order = { { "priority", PropertyOrder.Types.Direction.Descending } }
+};
+```
 
 ### Go
 
@@ -47,10 +49,12 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").
-     FilterField("Done", "=", false).
-     FilterField("Priority", ">=", 4).
-     Order("-Priority")
+```golang
+query := datastore.NewQuery("Task").
+    FilterField("Done", "=", false).
+    FilterField("Priority", ">=", 4).
+    Order("-Priority")
+```
 
 ### Java
 
@@ -58,14 +62,16 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(
-                CompositeFilter.and(
-                    PropertyFilter.eq("done", false), PropertyFilter.ge("priority", 4)))
-            .setOrderBy(OrderBy.desc("priority"))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(
+            CompositeFilter.and(
+                PropertyFilter.eq("done", false), PropertyFilter.ge("priority", 4)))
+        .setOrderBy(OrderBy.desc("priority"))
+        .build();
+```
 
 ### Node.js
 
@@ -73,17 +79,19 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const query = datastore
-      .createQuery('Task')
-      .filter(
-        and([
-          new PropertyFilter('done', '=', false),
-          new PropertyFilter('priority', '>=', 4),
-        ]),
-      )
-      .order('priority', {
-        descending: true,
-      });
+```javascript
+const query = datastore
+  .createQuery('Task')
+  .filter(
+    and([
+      new PropertyFilter('done', '=', false),
+      new PropertyFilter('priority', '>=', 4),
+    ]),
+  )
+  .order('priority', {
+    descending: true,
+  });
+```
 
 ### PHP
 
@@ -91,11 +99,13 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->filter('done', '=', false)
-        ->filter('priority', '>=', 4)
-        ->order('priority', Query::ORDER_DESCENDING);
+```php
+$query = $datastore->query()
+    ->kind('Task')
+    ->filter('done', '=', false)
+    ->filter('priority', '>=', 4)
+    ->order('priority', Query::ORDER_DESCENDING);
+```
 
 ### Python
 
@@ -103,16 +113,18 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query(kind="Task")
-    query.add_filter(filter=datastore.query.PropertyFilter("done", "=", False))
-    query.add_filter(filter=datastore.query.PropertyFilter("priority", ">=", 4))
-    query.order = ["-priority"]
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query(kind="Task")
+query.add_filter(filter=datastore.query.PropertyFilter("done", "=", False))
+query.add_filter(filter=datastore.query.PropertyFilter("priority", ">=", 4))
+query.order = ["-priority"]
+```
 
 ### Ruby
 
@@ -120,29 +132,35 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .where("done", "=", false)
-                     .where("priority", ">=", 4)
-                     .order("priority", :desc)
+```ruby
+query = datastore.query("Task")
+                 .where("done", "=", false)
+                 .where("priority", ">=", 4)
+                 .order("priority", :desc)
+```
 
 ### GQL
 
-    SELECT * FROM Task
-    WHERE done = FALSE AND priority >= 4
-    ORDER BY priority DESC
+```
+SELECT * FROM Task
+WHERE done = FALSE AND priority >= 4
+ORDER BY priority DESC
+```
 
 > **Note:** The properties being filtered on must have a corresponding predefined index which can be defined in your [index configuration file](https://docs.cloud.google.com/datastore/docs/tools/indexconfig) ( `index.yaml` ).
 
 The following example shows how to run a query:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task");
-    DatastoreQueryResults tasks = _db.RunQuery(query);
+```c#
+Query query = new Query("Task");
+DatastoreQueryResults tasks = _db.RunQuery(query);
+```
 
 ### Go
 
@@ -150,18 +168,20 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    it := client.Run(ctx, query)
-    for {
-     var task Task
-     _, err := it.Next(&task)
-     if err == iterator.Done {
-         break
-     }
-     if err != nil {
-         log.Fatalf("Error fetching next task: %v", err)
-     }
-     fmt.Printf("Task %q, Priority %d\n", task.Description, task.Priority)
+```golang
+it := client.Run(ctx, query)
+for {
+    var task Task
+    _, err := it.Next(&task)
+    if err == iterator.Done {
+        break
     }
+    if err != nil {
+        log.Fatalf("Error fetching next task: %v", err)
+    }
+    fmt.Printf("Task %q, Priority %d\n", task.Description, task.Priority)
+}
+```
 
 ### Java
 
@@ -169,7 +189,9 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    QueryResults<Entity> tasks = datastore.run(query);
+```java
+QueryResults<Entity> tasks = datastore.run(query);
+```
 
 ### Node.js
 
@@ -177,9 +199,11 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const [tasks] = await datastore.runQuery(query);
-    console.log('Tasks:');
-    tasks.forEach(task => console.log(task));
+```javascript
+const [tasks] = await datastore.runQuery(query);
+console.log('Tasks:');
+tasks.forEach(task => console.log(task));
+```
 
 ### PHP
 
@@ -187,7 +211,9 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $result = $datastore->runQuery($query);
+```php
+$result = $datastore->runQuery($query);
+```
 
 ### Python
 
@@ -195,14 +221,16 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query()
-    results = list(query.fetch())
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query()
+results = list(query.fetch())
+```
 
 ### Ruby
 
@@ -210,7 +238,9 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    tasks = datastore.run query
+```ruby
+tasks = datastore.run query
+```
 
 ### GQL
 
@@ -228,22 +258,24 @@ A query's *filters* set constraints on the [properties](https://docs.cloud.googl
 
 A *property filter* specifies the following:
 
-  - A property name
-  - A comparison operator
-  - A property value
+- A property name
+- A comparison operator
+- A property value
 
 The following example returns task entities that are marked not done:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Filter = Filter.Equal("done", false)
-    };
+```c#
+Query query = new Query("Task")
+{
+    Filter = Filter.Equal("done", false)
+};
+```
 
 ### Go
 
@@ -251,7 +283,9 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").FilterField("Done", "=", false)
+```golang
+query := datastore.NewQuery("Task").FilterField("Done", "=", false)
+```
 
 ### Java
 
@@ -259,11 +293,13 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(PropertyFilter.eq("done", false))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(PropertyFilter.eq("done", false))
+        .build();
+```
 
 ### Node.js
 
@@ -271,9 +307,11 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const query = datastore
-      .createQuery('Task')
-      .filter(new PropertyFilter('done', '=', false));
+```javascript
+const query = datastore
+  .createQuery('Task')
+  .filter(new PropertyFilter('done', '=', false));
+```
 
 ### PHP
 
@@ -281,9 +319,11 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->filter('done', '=', false);
+```php
+$query = $datastore->query()
+    ->kind('Task')
+    ->filter('done', '=', false);
+```
 
 ### Python
 
@@ -291,14 +331,16 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query(kind="Task")
-    query.add_filter(filter=datastore.query.PropertyFilter("done", "=", False))
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query(kind="Task")
+query.add_filter(filter=datastore.query.PropertyFilter("done", "=", False))
+```
 
 ### Ruby
 
@@ -306,19 +348,23 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .where("done", "=", false)
+```ruby
+query = datastore.query("Task")
+                 .where("done", "=", false)
+```
 
 ### GQL
 
-    SELECT * FROM Task WHERE done = FALSE
+```
+SELECT * FROM Task WHERE done = FALSE
+```
 
 The property value must be supplied by the application; it cannot refer to or be calculated in terms of other properties. An entity satisfies the filter if it has a property of the given name whose value compares to the value specified in the filter in the manner described by the comparison operator. If the property of the given name is array-valued, the entity satisfies the filter if any of the values compares to the value specified in the filter in the manner described by the comparison operator.
 
 The comparison operator can be any of the following:
 
 | Operator                | Meaning                                                                                 |
-| ----------------------- | --------------------------------------------------------------------------------------- |
+|-------------------------|-----------------------------------------------------------------------------------------|
 | `EQUAL`                 | Equal to                                                                                |
 | `LESS_THAN`             | Less than                                                                               |
 | `LESS_THAN_OR_EQUAL`    | Less than or equal to                                                                   |
@@ -332,17 +378,19 @@ The comparison operator can be any of the following:
 
 A *composite filter* consists of more than one property filter. You can combine filters with `AND` and `OR` . The following example returns `Task` entities that are marked not done and have a priority of 4:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Filter = Filter.And(Filter.Equal("done", false),
-            Filter.Equal("priority", 4)),
-    };
+```c#
+Query query = new Query("Task")
+{
+    Filter = Filter.And(Filter.Equal("done", false),
+        Filter.Equal("priority", 4)),
+};
+```
 
 ### Go
 
@@ -350,9 +398,11 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").
-     FilterField("Done", "=", false).
-     FilterField("Priority", "=", 4)
+```golang
+query := datastore.NewQuery("Task").
+    FilterField("Done", "=", false).
+    FilterField("Priority", "=", 4)
+```
 
 ### Java
 
@@ -360,13 +410,15 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(
-                CompositeFilter.and(
-                    PropertyFilter.eq("done", false), PropertyFilter.eq("priority", 4)))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(
+            CompositeFilter.and(
+                PropertyFilter.eq("done", false), PropertyFilter.eq("priority", 4)))
+        .build();
+```
 
 ### Node.js
 
@@ -374,14 +426,16 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const query = datastore
-      .createQuery('Task')
-      .filter(
-        and([
-          new PropertyFilter('done', '=', false),
-          new PropertyFilter('priority', '=', 4),
-        ]),
-      );
+```javascript
+const query = datastore
+  .createQuery('Task')
+  .filter(
+    and([
+      new PropertyFilter('done', '=', false),
+      new PropertyFilter('priority', '=', 4),
+    ]),
+  );
+```
 
 ### PHP
 
@@ -389,10 +443,12 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->filter('done', '=', false)
-        ->filter('priority', '=', 4);
+```php
+$query = $datastore->query()
+    ->kind('Task')
+    ->filter('done', '=', false)
+    ->filter('priority', '=', 4);
+```
 
 ### Python
 
@@ -400,15 +456,17 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query(kind="Task")
-    query.add_filter(filter=datastore.query.PropertyFilter("done", "=", False))
-    query.add_filter(filter=datastore.query.PropertyFilter("priority", "=", 4))
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query(kind="Task")
+query.add_filter(filter=datastore.query.PropertyFilter("done", "=", False))
+query.add_filter(filter=datastore.query.PropertyFilter("priority", "=", 4))
+```
 
 ### Ruby
 
@@ -416,17 +474,21 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .where("done", "=", false)
-                     .where("priority", "=", 4)
+```ruby
+query = datastore.query("Task")
+                 .where("done", "=", false)
+                 .where("priority", "=", 4)
+```
 
 ### GQL
 
-    SELECT * FROM Task WHERE done = FALSE AND priority = 4
+```
+SELECT * FROM Task WHERE done = FALSE AND priority = 4
+```
 
 The following example combines filters with a logical `OR` :
 
-##### C\#
+##### C#
 
 Snippet not available.
 
@@ -440,44 +502,46 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    import com.google.cloud.datastore.Datastore;
-    import com.google.cloud.datastore.DatastoreOptions;
-    import com.google.cloud.datastore.Entity;
-    import com.google.cloud.datastore.Query;
-    import com.google.cloud.datastore.QueryResults;
-    import com.google.cloud.datastore.StructuredQuery.CompositeFilter;
-    import com.google.cloud.datastore.StructuredQuery.Filter;
-    import com.google.cloud.datastore.StructuredQuery.PropertyFilter;
-    
-    public class OrFilterQuery {
-      public static void invoke() throws Exception {
-    
-        // Instantiates a client
-        Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
-        String propertyName = "description";
-    
-        // Create the two filters
-        Filter orFilter =
-            CompositeFilter.or(
-                PropertyFilter.eq(propertyName, "Feed cats"),
-                PropertyFilter.eq(propertyName, "Buy milk"));
-    
-        // Build the query
-        Query<Entity> query = Query.newEntityQueryBuilder().setKind("Task").setFilter(orFilter).build();
-    
-        // Get the results back from Datastore
-        QueryResults<Entity> results = datastore.run(query);
-    
-        if (!results.hasNext()) {
-          throw new Exception("query yielded no results");
-        }
-    
-        while (results.hasNext()) {
-          Entity entity = results.next();
-          System.out.printf("Entity: %s%n", entity);
-        }
-      }
+```java
+import com.google.cloud.datastore.Datastore;
+import com.google.cloud.datastore.DatastoreOptions;
+import com.google.cloud.datastore.Entity;
+import com.google.cloud.datastore.Query;
+import com.google.cloud.datastore.QueryResults;
+import com.google.cloud.datastore.StructuredQuery.CompositeFilter;
+import com.google.cloud.datastore.StructuredQuery.Filter;
+import com.google.cloud.datastore.StructuredQuery.PropertyFilter;
+
+public class OrFilterQuery {
+  public static void invoke() throws Exception {
+
+    // Instantiates a client
+    Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
+    String propertyName = "description";
+
+    // Create the two filters
+    Filter orFilter =
+        CompositeFilter.or(
+            PropertyFilter.eq(propertyName, "Feed cats"),
+            PropertyFilter.eq(propertyName, "Buy milk"));
+
+    // Build the query
+    Query<Entity> query = Query.newEntityQueryBuilder().setKind("Task").setFilter(orFilter).build();
+
+    // Get the results back from Datastore
+    QueryResults<Entity> results = datastore.run(query);
+
+    if (!results.hasNext()) {
+      throw new Exception("query yielded no results");
     }
+
+    while (results.hasNext()) {
+      Entity entity = results.next();
+      System.out.printf("Entity: %s%n", entity);
+    }
+  }
+}
+```
 
 ### Node.js
 
@@ -485,33 +549,35 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    /**
-     * TODO(developer): Uncomment these variables before running the sample.
-     */
-    // const projectId = "your Google Cloud project id";
-    
-    // Imports the Cloud Datastore
-    const {Datastore, PropertyFilter, or} = require('@google-cloud/datastore');
-    
-    async function queryFilterOr() {
-      // Instantiate the Datastore
-      const datastore = new Datastore();
-      const query = datastore
-        .createQuery('Task')
-        .filter(
-          or([
-            new PropertyFilter('description', '=', 'Buy milk'),
-            new PropertyFilter('description', '=', 'Feed cats'),
-          ]),
-        );
-    
-      const [entities] = await datastore.runQuery(query);
-      for (const entity of entities) {
-        console.log(`Entity found: ${entity['description']}`);
-      }
-    }
-    
-    queryFilterOr();
+```javascript
+/**
+ * TODO(developer): Uncomment these variables before running the sample.
+ */
+// const projectId = "your Google Cloud project id";
+
+// Imports the Cloud Datastore
+const {Datastore, PropertyFilter, or} = require('@google-cloud/datastore');
+
+async function queryFilterOr() {
+  // Instantiate the Datastore
+  const datastore = new Datastore();
+  const query = datastore
+    .createQuery('Task')
+    .filter(
+      or([
+        new PropertyFilter('description', '=', 'Buy milk'),
+        new PropertyFilter('description', '=', 'Feed cats'),
+      ]),
+    );
+
+  const [entities] = await datastore.runQuery(query);
+  for (const entity of entities) {
+    console.log(`Entity found: ${entity['description']}`);
+  }
+}
+
+queryFilterOr();
+```
 
 ##### PHP
 
@@ -523,31 +589,33 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    from google.cloud.datastore import query
-    
-    
-    def query_filter_or(project_id: str) -> None:
-        """Builds a union of two queries (OR) filter.
-    
-        Arguments:
-            project_id: your Google Cloud Project ID
-        """
-        client = datastore.Client(project=project_id)
-    
-        or_query = client.query(kind="Task")
-        or_filter = query.Or(
-            [
-                query.PropertyFilter("description", "=", "Buy milk"),
-                query.PropertyFilter("description", "=", "Feed cats"),
-            ]
-        )
-    
-        or_query.add_filter(filter=or_filter)
-    
-        results = list(or_query.fetch())
-        for result in results:
-            print(result["description"])
+```python
+from google.cloud import datastore
+from google.cloud.datastore import query
+
+
+def query_filter_or(project_id: str) -> None:
+    """Builds a union of two queries (OR) filter.
+
+    Arguments:
+        project_id: your Google Cloud Project ID
+    """
+    client = datastore.Client(project=project_id)
+
+    or_query = client.query(kind="Task")
+    or_filter = query.Or(
+        [
+            query.PropertyFilter("description", "=", "Buy milk"),
+            query.PropertyFilter("description", "=", "Feed cats"),
+        ]
+    )
+
+    or_query.add_filter(filter=or_filter)
+
+    results = list(or_query.fetch())
+    for result in results:
+        print(result["description"])
+```
 
 ##### Ruby
 
@@ -559,7 +627,7 @@ Snippet not available.
 
 Firestore in Datastore mode supports combining filters with `AND` and `OR` operators. The following example returns `Task` entities that are either starred or that are marked not done and have a priority of 4:
 
-##### C\#
+##### C#
 
 Snippet not available.
 
@@ -569,15 +637,17 @@ Snippet not available.
 
 ##### Java
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(CompositeFilter.or(
-                PropertyFilter.eq("starred", true)),
-                CompositeFilter.and(
-                    PropertyFilter.eq("done", false),
-                    PropertyFilter.eq("priority", 4)))
-            .build();
+```
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(CompositeFilter.or(
+            PropertyFilter.eq("starred", true)),
+            CompositeFilter.and(
+                PropertyFilter.eq("done", false),
+                PropertyFilter.eq("priority", 4)))
+        .build();
+```
 
 ##### Node.js
 
@@ -589,23 +659,25 @@ Snippet not available.
 
 ##### Python
 
-    and_or_query = client.query(kind="Task")
-    
-    query_filter = query.Or(
-        [
-            query.PropertyFilter("starred", "=", True),
-            query.And([query.PropertyFilter("done", "=", False),
-                        query.PropertyFilter("priority", "=", 4,),
-            ]
-            )
+```
+and_or_query = client.query(kind="Task")
+
+query_filter = query.Or(
+    [
+        query.PropertyFilter("starred", "=", True),
+        query.And([query.PropertyFilter("done", "=", False),
+                    query.PropertyFilter("priority", "=", 4,),
         ]
-    )
-    
-    and_or_query.add_filter(filter=query_filter)
-    
-    results = and_or_query.fetch()
-    for result in results:
-        print(result["description"])
+        )
+    ]
+)
+
+and_or_query.add_filter(filter=query_filter)
+
+results = and_or_query.fetch()
+for result in results:
+    print(result["description"])
+```
 
 ##### Ruby
 
@@ -619,16 +691,18 @@ Snippet not available.
 
 To filter on the value of an entity's key, use the special property `__key__` :
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Filter = Filter.GreaterThan("__key__", _keyFactory.CreateKey("aTask"))
-    };
+```c#
+Query query = new Query("Task")
+{
+    Filter = Filter.GreaterThan("__key__", _keyFactory.CreateKey("aTask"))
+};
+```
 
 ### Go
 
@@ -636,8 +710,10 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    key := datastore.NameKey("Task", "someTask", nil)
-    query := datastore.NewQuery("Task").FilterField("__key__", ">", key)
+```golang
+key := datastore.NameKey("Task", "someTask", nil)
+query := datastore.NewQuery("Task").FilterField("__key__", ">", key)
+```
 
 ### Java
 
@@ -645,11 +721,13 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(PropertyFilter.gt("__key__", keyFactory.newKey("someTask")))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(PropertyFilter.gt("__key__", keyFactory.newKey("someTask")))
+        .build();
+```
 
 ### Node.js
 
@@ -657,11 +735,13 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const query = datastore
-      .createQuery('Task')
-      .filter(
-        new PropertyFilter('__key__', '>', datastore.key(['Task', 'someTask'])),
-      );
+```javascript
+const query = datastore
+  .createQuery('Task')
+  .filter(
+    new PropertyFilter('__key__', '>', datastore.key(['Task', 'someTask'])),
+  );
+```
 
 ### PHP
 
@@ -669,9 +749,11 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->filter('__key__', '>', $datastore->key('Task', 'someTask'));
+```php
+$query = $datastore->query()
+    ->kind('Task')
+    ->filter('__key__', '>', $datastore->key('Task', 'someTask'));
+```
 
 ### Python
 
@@ -679,16 +761,18 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query(kind="Task")
-    first_key = client.key("Task", "first_task")
-    # key_filter(key, op) translates to add_filter('__key__', op, key).
-    query.key_filter(first_key, ">")
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query(kind="Task")
+first_key = client.key("Task", "first_task")
+# key_filter(key, op) translates to add_filter('__key__', op, key).
+query.key_filter(first_key, ">")
+```
 
 ### Ruby
 
@@ -696,12 +780,16 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .where("__key__", ">", datastore.key("Task", "someTask"))
+```ruby
+query = datastore.query("Task")
+                 .where("__key__", ">", datastore.key("Task", "someTask"))
+```
 
 ### GQL
 
-    SELECT * FROM Task WHERE __key__ > KEY(Task, 'someTask')
+```
+SELECT * FROM Task WHERE __key__ > KEY(Task, 'someTask')
+```
 
 When comparing for inequality, keys are ordered by the following criteria, in order:
 
@@ -713,8 +801,8 @@ Elements of the ancestor path are compared similarly: by kind (string), then by 
 
 Queries on keys use indexes just like queries on properties and require custom indexes in the same cases. The following exceptions don't require a custom index:
 
-  - Inequality filters
-  - Ascending sort order on the key
+- Inequality filters
+- Ascending sort order on the key
 
 A descending sort order on the key requires a custom index. As with all queries, the development server creates appropriate entries in the [index configuration file](https://docs.cloud.google.com/datastore/docs/concepts/indexes#index_configuration) when a query that needs a custom index is used in the development environment.
 
@@ -722,21 +810,23 @@ A descending sort order on the key requires a custom index. As with all queries,
 
 A query *sort order* specifies the following:
 
-  - A property name.
-  - A sort direction (ascending or descending). By default the sort order is ascending.
+- A property name.
+- A sort direction (ascending or descending). By default the sort order is ascending.
 
 This example sorts Task entities by creation time in ascending order:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Order = { { "created", PropertyOrder.Types.Direction.Ascending } }
-    };
+```c#
+Query query = new Query("Task")
+{
+    Order = { { "created", PropertyOrder.Types.Direction.Ascending } }
+};
+```
 
 ### Go
 
@@ -744,7 +834,9 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").Order("created")
+```golang
+query := datastore.NewQuery("Task").Order("created")
+```
 
 ### Java
 
@@ -752,8 +844,10 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder().setKind("Task").setOrderBy(OrderBy.asc("created")).build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder().setKind("Task").setOrderBy(OrderBy.asc("created")).build();
+```
 
 ### Node.js
 
@@ -761,7 +855,9 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const query = datastore.createQuery('Task').order('created');
+```javascript
+const query = datastore.createQuery('Task').order('created');
+```
 
 ### PHP
 
@@ -769,9 +865,11 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->order('created');
+```php
+$query = $datastore->query()
+    ->kind('Task')
+    ->order('created');
+```
 
 ### Python
 
@@ -779,14 +877,16 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query(kind="Task")
-    query.order = ["created"]
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query(kind="Task")
+query.order = ["created"]
+```
 
 ### Ruby
 
@@ -794,25 +894,31 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .order("created", :asc)
+```ruby
+query = datastore.query("Task")
+                 .order("created", :asc)
+```
 
 ### GQL
 
-    SELECT * FROM Task ORDER BY created ASC
+```
+SELECT * FROM Task ORDER BY created ASC
+```
 
 This example sorts Task entities by creation time in descending order:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Order = { { "created", PropertyOrder.Types.Direction.Descending } }
-    };
+```c#
+Query query = new Query("Task")
+{
+    Order = { { "created", PropertyOrder.Types.Direction.Descending } }
+};
+```
 
 ### Go
 
@@ -820,7 +926,9 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").Order("-created")
+```golang
+query := datastore.NewQuery("Task").Order("-created")
+```
 
 ### Java
 
@@ -828,8 +936,10 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder().setKind("Task").setOrderBy(OrderBy.desc("created")).build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder().setKind("Task").setOrderBy(OrderBy.desc("created")).build();
+```
 
 ### Node.js
 
@@ -837,9 +947,11 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const query = datastore.createQuery('Task').order('created', {
-      descending: true,
-    });
+```javascript
+const query = datastore.createQuery('Task').order('created', {
+  descending: true,
+});
+```
 
 ### PHP
 
@@ -847,9 +959,11 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->order('created', Query::ORDER_DESCENDING);
+```php
+$query = $datastore->query()
+    ->kind('Task')
+    ->order('created', Query::ORDER_DESCENDING);
+```
 
 ### Python
 
@@ -857,14 +971,16 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query(kind="Task")
-    query.order = ["-created"]
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query(kind="Task")
+query.order = ["-created"]
+```
 
 ### Ruby
 
@@ -872,26 +988,32 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .order("created", :desc)
+```ruby
+query = datastore.query("Task")
+                 .order("created", :desc)
+```
 
 ### GQL
 
-    SELECT * FROM Task ORDER BY created DESC
+```
+SELECT * FROM Task ORDER BY created DESC
+```
 
 If a query includes multiple sort orders, they are applied in the sequence specified. The following example sorts first by descending priority and then by ascending creation time:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Order = { { "priority", PropertyOrder.Types.Direction.Descending },
-            { "created", PropertyOrder.Types.Direction.Ascending } }
-    };
+```c#
+Query query = new Query("Task")
+{
+    Order = { { "priority", PropertyOrder.Types.Direction.Descending },
+        { "created", PropertyOrder.Types.Direction.Ascending } }
+};
+```
 
 ### Go
 
@@ -899,7 +1021,9 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").Order("-priority").Order("created")
+```golang
+query := datastore.NewQuery("Task").Order("-priority").Order("created")
+```
 
 ### Java
 
@@ -907,11 +1031,13 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setOrderBy(OrderBy.desc("priority"), OrderBy.asc("created"))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setOrderBy(OrderBy.desc("priority"), OrderBy.asc("created"))
+        .build();
+```
 
 ### Node.js
 
@@ -919,12 +1045,14 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const query = datastore
-      .createQuery('Task')
-      .order('priority', {
-        descending: true,
-      })
-      .order('created');
+```javascript
+const query = datastore
+  .createQuery('Task')
+  .order('priority', {
+    descending: true,
+  })
+  .order('created');
+```
 
 ### PHP
 
@@ -932,10 +1060,12 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->order('priority', Query::ORDER_DESCENDING)
-        ->order('created');
+```php
+$query = $datastore->query()
+    ->kind('Task')
+    ->order('priority', Query::ORDER_DESCENDING)
+    ->order('created');
+```
 
 ### Python
 
@@ -943,14 +1073,16 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query(kind="Task")
-    query.order = ["-priority", "created"]
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query(kind="Task")
+query.order = ["-priority", "created"]
+```
 
 ### Ruby
 
@@ -958,13 +1090,17 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .order("priority", :desc)
-                     .order("created", :asc)
+```ruby
+query = datastore.query("Task")
+                 .order("priority", :desc)
+                 .order("created", :asc)
+```
 
 ### GQL
 
-    SELECT * FROM Task ORDER BY priority DESC, created ASC
+```
+SELECT * FROM Task ORDER BY priority DESC, created ASC
+```
 
 If no sort orders are specified, the results are returned in the order they are retrieved from Datastore mode.
 
@@ -972,9 +1108,9 @@ If no sort orders are specified, the results are returned in the order they are 
 
 *Sort orders* have the following restrictions:
 
-  - Because of the way Datastore mode executes queries, if a query specifies inequality filters on a property and *sort orders* on other properties, [the property used in the inequality filters must be ordered before the other properties](https://docs.cloud.google.com/datastore/docs/concepts/queries#properties_used_in_inequality_filters_must_be_sorted_first) .
-  - If ordering is specified, the set of properties specified in the `distinct on` clause must appear before any non- `distinct on` properties in the *sort orders* . For more information, see [grouping queries](https://docs.cloud.google.com/datastore/docs/concepts/queries#grouping) .
-  - [Sort orders on properties with equality filters are all ignored](https://docs.cloud.google.com/datastore/docs/concepts/queries#sort_orders_are_ignored_on_properties_with_equality_filters) .
+- Because of the way Datastore mode executes queries, if a query specifies inequality filters on a property and *sort orders* on other properties, [the property used in the inequality filters must be ordered before the other properties](https://docs.cloud.google.com/datastore/docs/concepts/queries#properties_used_in_inequality_filters_must_be_sorted_first) .
+- If ordering is specified, the set of properties specified in the `distinct on` clause must appear before any non- `distinct on` properties in the *sort orders* . For more information, see [grouping queries](https://docs.cloud.google.com/datastore/docs/concepts/queries#grouping) .
+- [Sort orders on properties with equality filters are all ignored](https://docs.cloud.google.com/datastore/docs/concepts/queries#sort_orders_are_ignored_on_properties_with_equality_filters) .
 
 ## Special query types
 
@@ -984,9 +1120,9 @@ Some specific types of query deserve special mention:
 
 Use the not-equal ( `!=` ) operator to return entities where the given property exists and doesn't match the comparison value.
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
@@ -998,46 +1134,48 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    package datastore_snippets
-    
-    import (
-     "context"
-     "fmt"
-     "io"
-    
-     "cloud.google.com/go/datastore"
-     "google.golang.org/api/iterator"
-    )
-    
-    func queryNotEquals(w io.Writer, projectId string) error {
-     ctx := context.Background()
-     client, err := datastore.NewClient(ctx, projectId)
-     if err != nil {
-         return fmt.Errorf("NewClient: %w", err)
-     }
-     defer client.Close()
-    
-     q := datastore.NewQuery("TaskList")
-     q.FilterField("Task", "!=", []string{"notASimpleTask"})
-    
-     it := client.Run(ctx, q)
-     for {
-         var dst struct {
-             Task string
-         }
-         key, err := it.Next(&dst)
-         if err == iterator.Done {
-             break
-         }
-    
-         if err != nil {
-             return err
-         }
-         fmt.Fprintf(w, "Key retrieved: %v\n", key)
-     }
-    
-     return nil
+```golang
+package datastore_snippets
+
+import (
+    "context"
+    "fmt"
+    "io"
+
+    "cloud.google.com/go/datastore"
+    "google.golang.org/api/iterator"
+)
+
+func queryNotEquals(w io.Writer, projectId string) error {
+    ctx := context.Background()
+    client, err := datastore.NewClient(ctx, projectId)
+    if err != nil {
+        return fmt.Errorf("NewClient: %w", err)
     }
+    defer client.Close()
+
+    q := datastore.NewQuery("TaskList")
+    q.FilterField("Task", "!=", []string{"notASimpleTask"})
+
+    it := client.Run(ctx, q)
+    for {
+        var dst struct {
+            Task string
+        }
+        key, err := it.Next(&dst)
+        if err == iterator.Done {
+            break
+        }
+
+        if err != nil {
+            return err
+        }
+        fmt.Fprintf(w, "Key retrieved: %v\n", key)
+    }
+
+    return nil
+}
+```
 
 ### Java
 
@@ -1045,11 +1183,13 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(PropertyFilter.neq("category", "Work"))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(PropertyFilter.neq("category", "Work"))
+        .build();
+```
 
 ### Node.js
 
@@ -1073,8 +1213,10 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = client.query(kind="Task")
-    query.add_filter("category", "!=", "work")
+```python
+query = client.query(kind="Task")
+query.add_filter("category", "!=", "work")
+```
 
 ### Ruby
 
@@ -1086,7 +1228,9 @@ Not Applicable
 
 ### GQL
 
-    SELECT * FROM Task WHERE category != 'work'
+```
+SELECT * FROM Task WHERE category != 'work'
+```
 
 This query returns every `Task` entity where the `category` property exists and is set to any value other than `Work` .
 
@@ -1098,16 +1242,16 @@ This query doesn't return entities where the `category` property doesn't exist. 
 
 Note the following limitations for `!=` queries:
 
-  - Only entities where the given property exists can match the query.
-  - Only a single `NOT_IN` or `!=` is allowed per query.
+- Only entities where the given property exists can match the query.
+- Only a single `NOT_IN` or `!=` is allowed per query.
 
 ### `IN`
 
 Use the `IN` operator to combine up to 30 equality ( `==` ) clauses on the same property with a logical `OR` . An `IN` query returns entities where the given property matches any of the comparison values.
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
@@ -1119,46 +1263,48 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    package datastore_snippets
-    
-    import (
-     "context"
-     "fmt"
-     "io"
-    
-     "cloud.google.com/go/datastore"
-     "google.golang.org/api/iterator"
-    )
-    
-    func queryIn(w io.Writer, projectId string) error {
-     ctx := context.Background()
-     client, err := datastore.NewClient(ctx, projectId)
-     if err != nil {
-         return fmt.Errorf("NewClient: %w", err)
-     }
-     defer client.Close()
-    
-     q := datastore.NewQuery("TaskList")
-     q.FilterField("Task", "in", []string{"simpleTask", "easyTask"})
-    
-     it := client.Run(ctx, q)
-     for {
-         var dst struct {
-             Task string
-         }
-         key, err := it.Next(&dst)
-         if err == iterator.Done {
-             break
-         }
-    
-         if err != nil {
-             return err
-         }
-         fmt.Fprintf(w, "Key retrieved: %v\n", key)
-     }
-    
-     return nil
+```golang
+package datastore_snippets
+
+import (
+    "context"
+    "fmt"
+    "io"
+
+    "cloud.google.com/go/datastore"
+    "google.golang.org/api/iterator"
+)
+
+func queryIn(w io.Writer, projectId string) error {
+    ctx := context.Background()
+    client, err := datastore.NewClient(ctx, projectId)
+    if err != nil {
+        return fmt.Errorf("NewClient: %w", err)
     }
+    defer client.Close()
+
+    q := datastore.NewQuery("TaskList")
+    q.FilterField("Task", "in", []string{"simpleTask", "easyTask"})
+
+    it := client.Run(ctx, q)
+    for {
+        var dst struct {
+            Task string
+        }
+        key, err := it.Next(&dst)
+        if err == iterator.Done {
+            break
+        }
+
+        if err != nil {
+            return err
+        }
+        fmt.Fprintf(w, "Key retrieved: %v\n", key)
+    }
+
+    return nil
+}
+```
 
 ### Java
 
@@ -1166,11 +1312,13 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(PropertyFilter.in("tag", ListValue.of("learn", "study")))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(PropertyFilter.in("tag", ListValue.of("learn", "study")))
+        .build();
+```
 
 ### Node.js
 
@@ -1194,8 +1342,10 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = client.query(kind="Task")
-    query.add_filter("tag", "IN", ["learn", "study"])
+```python
+query = client.query(kind="Task")
+query.add_filter("tag", "IN", ["learn", "study"])
+```
 
 ### Ruby
 
@@ -1207,7 +1357,9 @@ Not Applicable
 
 ### GQL
 
-    SELECT * FROM Task WHERE tag IN ARRAY('learn', 'study')
+```
+SELECT * FROM Task WHERE tag IN ARRAY('learn', 'study')
+```
 
 This query returns every `Task` entity where the `tag` property is set to `learn` or `study` . This includes `Task` entities where the `tag` property includes one of these values but not the other.
 
@@ -1217,9 +1369,9 @@ This query returns every `Task` entity where the `tag` property is set to `learn
 
 Use the `NOT_IN` operator to combine up to 10 not-equal ( `!=` ) clauses on the same property with a logical `AND` . A `NOT_IN` query returns entities where the given property exists and doesn't match any of the comparison values.
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
@@ -1231,46 +1383,48 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    package datastore_snippets
-    
-    import (
-     "context"
-     "fmt"
-     "io"
-    
-     "cloud.google.com/go/datastore"
-     "google.golang.org/api/iterator"
-    )
-    
-    func queryNotIn(w io.Writer, projectId string) error {
-     ctx := context.Background()
-     client, err := datastore.NewClient(ctx, projectId)
-     if err != nil {
-         return fmt.Errorf("NewClient: %w", err)
-     }
-     defer client.Close()
-    
-     q := datastore.NewQuery("TaskList")
-     q.FilterField("Task", "not-in", []string{"notASimpleTask", "notAnEasyTask"})
-    
-     it := client.Run(ctx, q)
-     for {
-         var dst struct {
-             Task string
-         }
-         key, err := it.Next(&dst)
-         if err == iterator.Done {
-             break
-         }
-    
-         if err != nil {
-             return err
-         }
-         fmt.Fprintf(w, "Key retrieved: %v\n", key)
-     }
-    
-     return nil
+```golang
+package datastore_snippets
+
+import (
+    "context"
+    "fmt"
+    "io"
+
+    "cloud.google.com/go/datastore"
+    "google.golang.org/api/iterator"
+)
+
+func queryNotIn(w io.Writer, projectId string) error {
+    ctx := context.Background()
+    client, err := datastore.NewClient(ctx, projectId)
+    if err != nil {
+        return fmt.Errorf("NewClient: %w", err)
     }
+    defer client.Close()
+
+    q := datastore.NewQuery("TaskList")
+    q.FilterField("Task", "not-in", []string{"notASimpleTask", "notAnEasyTask"})
+
+    it := client.Run(ctx, q)
+    for {
+        var dst struct {
+            Task string
+        }
+        key, err := it.Next(&dst)
+        if err == iterator.Done {
+            break
+        }
+
+        if err != nil {
+            return err
+        }
+        fmt.Fprintf(w, "Key retrieved: %v\n", key)
+    }
+
+    return nil
+}
+```
 
 ### Java
 
@@ -1278,11 +1432,13 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(PropertyFilter.not_in("category", ListValue.of("Work", "Chores", "School")))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(PropertyFilter.not_in("category", ListValue.of("Work", "Chores", "School")))
+        .build();
+```
 
 ### Node.js
 
@@ -1306,8 +1462,10 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = client.query(kind="Task")
-    query.add_filter("category", "NOT_IN", ["work", "chores", "school"])
+```python
+query = client.query(kind="Task")
+query.add_filter("category", "NOT_IN", ["work", "chores", "school"])
+```
 
 ### Ruby
 
@@ -1319,7 +1477,9 @@ Not Applicable
 
 ### GQL
 
-    SELECT * FROM Task WHERE category NOT IN ARRAY('work', 'chores', 'school')
+```
+SELECT * FROM Task WHERE category NOT IN ARRAY('work', 'chores', 'school')
+```
 
 This query doesn't return entities where the `category` entity doesn't exist. Not-equal ( `!=` ) and `NOT_IN` queries exclude entities where the given property doesn't exist. A property exists when it's set to any value, including an empty string or `null` .
 
@@ -1329,24 +1489,26 @@ This query doesn't return entities where the `category` entity doesn't exist. No
 
 Note the following limitations for `NOT_IN` queries:
 
-  - Only entities where the given property exists can match the query.
-  - Only a single `NOT_IN` or `!=` is allowed per query.
+- Only entities where the given property exists can match the query.
+- Only a single `NOT_IN` or `!=` is allowed per query.
 
 ### Ancestor queries
 
 An ancestor query limits its results to the specified entity and its descendants. This example returns all Task entities that have the specified TaskList entity as an ancestor:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Filter = Filter.HasAncestor(_db.CreateKeyFactory("TaskList")
-            .CreateKey(keyName))
-    };
+```c#
+Query query = new Query("Task")
+{
+    Filter = Filter.HasAncestor(_db.CreateKeyFactory("TaskList")
+        .CreateKey(keyName))
+};
+```
 
 ### Go
 
@@ -1354,8 +1516,10 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    ancestor := datastore.NameKey("TaskList", "default", nil)
-    query := datastore.NewQuery("Task").Ancestor(ancestor)
+```golang
+ancestor := datastore.NameKey("TaskList", "default", nil)
+query := datastore.NewQuery("Task").Ancestor(ancestor)
+```
 
 ### Java
 
@@ -1363,13 +1527,15 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(
-                PropertyFilter.hasAncestor(
-                    datastore.newKeyFactory().setKind("TaskList").newKey("default")))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(
+            PropertyFilter.hasAncestor(
+                datastore.newKeyFactory().setKind("TaskList").newKey("default")))
+        .build();
+```
 
 ### Node.js
 
@@ -1377,9 +1543,11 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const ancestorKey = datastore.key(['TaskList', 'default']);
-    
-    const query = datastore.createQuery('Task').hasAncestor(ancestorKey);
+```javascript
+const ancestorKey = datastore.key(['TaskList', 'default']);
+
+const query = datastore.createQuery('Task').hasAncestor(ancestorKey);
+```
 
 ### PHP
 
@@ -1387,10 +1555,12 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $ancestorKey = $datastore->key('TaskList', 'default');
-    $query = $datastore->query()
-        ->kind('Task')
-        ->hasAncestor($ancestorKey);
+```php
+$ancestorKey = $datastore->key('TaskList', 'default');
+$query = $datastore->query()
+    ->kind('Task')
+    ->hasAncestor($ancestorKey);
+```
 
 ### Python
 
@@ -1398,16 +1568,18 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    # Query filters are omitted in this example as any ancestor queries with a
-    # non-key filter require a composite index.
-    ancestor = client.key("TaskList", "default")
-    query = client.query(kind="Task", ancestor=ancestor)
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+# Query filters are omitted in this example as any ancestor queries with a
+# non-key filter require a composite index.
+ancestor = client.key("TaskList", "default")
+query = client.query(kind="Task", ancestor=ancestor)
+```
 
 ### Ruby
 
@@ -1415,37 +1587,43 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    # task_list_name = "default"
-    ancestor_key = datastore.key "TaskList", task_list_name
-    
-    query = datastore.query("Task")
-                     .ancestor(ancestor_key)
+```ruby
+# task_list_name = "default"
+ancestor_key = datastore.key "TaskList", task_list_name
+
+query = datastore.query("Task")
+                 .ancestor(ancestor_key)
+```
 
 ### GQL
 
-    SELECT * FROM Task WHERE __key__ HAS ANCESTOR KEY(TaskList, 'default')
+```
+SELECT * FROM Task WHERE __key__ HAS ANCESTOR KEY(TaskList, 'default')
+```
 
 #### Limitations on Ancestor queries
 
 Note the following limitations for `Ancestor` queries:
 
-  - All evaluated disjunctions must have the same ancestor filter.
+- All evaluated disjunctions must have the same ancestor filter.
 
 ### Kindless queries
 
 A query with no kind and no ancestor retrieves all of the entities of an application from Datastore mode. Such *kindless queries* cannot include filters or sort orders on property values. They can, however, filter on entity keys and use ancestor filters. Key filters can be used by specifying `__key__` as the property name:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query()
-    {
-        Filter = Filter.GreaterThan("__key__",
-            _keyFactory.CreateKey("aTask"))
-    };
+```c#
+Query query = new Query()
+{
+    Filter = Filter.GreaterThan("__key__",
+        _keyFactory.CreateKey("aTask"))
+};
+```
 
 ### Go
 
@@ -1453,7 +1631,9 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("").FilterField("__key__", ">", lastSeenKey)
+```golang
+query := datastore.NewQuery("").FilterField("__key__", ">", lastSeenKey)
+```
 
 ### Java
 
@@ -1461,8 +1641,10 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder().setFilter(PropertyFilter.gt("__key__", lastSeenKey)).build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder().setFilter(PropertyFilter.gt("__key__", lastSeenKey)).build();
+```
 
 ### Node.js
 
@@ -1470,10 +1652,12 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const query = datastore
-      .createQuery()
-      .filter(new PropertyFilter('__key__', '>', lastSeenKey))
-      .limit(1);
+```javascript
+const query = datastore
+  .createQuery()
+  .filter(new PropertyFilter('__key__', '>', lastSeenKey))
+  .limit(1);
+```
 
 ### PHP
 
@@ -1481,8 +1665,10 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->filter('__key__', '>', $lastSeenKey);
+```php
+$query = $datastore->query()
+    ->filter('__key__', '>', $lastSeenKey);
+```
 
 ### Python
 
@@ -1490,15 +1676,17 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    last_seen_key = client.key("Task", "a")
-    query = client.query()
-    query.key_filter(last_seen_key, ">")
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+last_seen_key = client.key("Task", "a")
+query = client.query()
+query.key_filter(last_seen_key, ">")
+```
 
 ### Ruby
 
@@ -1506,12 +1694,16 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = Google::Cloud::Datastore::Query.new
-    query.where "__key__", ">", last_seen_key
+```ruby
+query = Google::Cloud::Datastore::Query.new
+query.where "__key__", ">", last_seen_key
+```
 
 ### GQL
 
-    SELECT * WHERE __key__ > KEY(Task, 'someTask')
+```
+SELECT * WHERE __key__ > KEY(Task, 'someTask')
+```
 
 ### Projection queries
 
@@ -1527,16 +1719,18 @@ It is often more economical to do a keys-only query first, and then fetch a subs
 
 Here's how to create a keys-only query:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Projection = { "__key__" }
-    };
+```c#
+Query query = new Query("Task")
+{
+    Projection = { "__key__" }
+};
+```
 
 ### Go
 
@@ -1544,7 +1738,9 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").KeysOnly()
+```golang
+query := datastore.NewQuery("Task").KeysOnly()
+```
 
 ### Java
 
@@ -1552,7 +1748,9 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Key> query = Query.newKeyQueryBuilder().setKind("Task").build();
+```java
+Query<Key> query = Query.newKeyQueryBuilder().setKind("Task").build();
+```
 
 ### Node.js
 
@@ -1560,7 +1758,9 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const query = datastore.createQuery().select('__key__').limit(1);
+```javascript
+const query = datastore.createQuery().select('__key__').limit(1);
+```
 
 ### PHP
 
@@ -1568,8 +1768,10 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->keysOnly();
+```php
+$query = $datastore->query()
+    ->keysOnly();
+```
 
 ### Python
 
@@ -1577,14 +1779,16 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query()
-    query.keys_only()
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query()
+query.keys_only()
+```
 
 ### Ruby
 
@@ -1592,12 +1796,16 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .select("__key__")
+```ruby
+query = datastore.query("Task")
+                 .select("__key__")
+```
 
 ### GQL
 
-    SELECT __key__ FROM Task
+```
+SELECT __key__ FROM Task
+```
 
 A keys-only query is a small operation and counts as only a single entity read for the query itself.
 
@@ -1605,22 +1813,26 @@ A keys-only query is a small operation and counts as only a single entity read f
 
 Projection queries are similar to SQL queries of the form:
 
-    SELECT priority, percent_complete FROM Task
+```
+SELECT priority, percent_complete FROM Task
+```
 
 You can use all of the filtering and sorting features available for standard entity queries, but note [these limitations](https://docs.cloud.google.com/datastore/docs/concepts/queries#limitations_on_projections) .
 
 The example SQL query returns abridged results with only the specified properties, `priority` and `percent_complete` , populated with values; all other properties are not populated. Here's how you construct this as a projection query:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Projection = { "priority", "percent_complete" }
-    };
+```c#
+Query query = new Query("Task")
+{
+    Projection = { "priority", "percent_complete" }
+};
+```
 
 ### Go
 
@@ -1628,7 +1840,9 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").Project("Priority", "PercentComplete")
+```golang
+query := datastore.NewQuery("Task").Project("Priority", "PercentComplete")
+```
 
 ### Java
 
@@ -1636,11 +1850,13 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<ProjectionEntity> query =
-        Query.newProjectionEntityQueryBuilder()
-            .setKind("Task")
-            .setProjection("priority", "percent_complete")
-            .build();
+```java
+Query<ProjectionEntity> query =
+    Query.newProjectionEntityQueryBuilder()
+        .setKind("Task")
+        .setProjection("priority", "percent_complete")
+        .build();
+```
 
 ### Node.js
 
@@ -1648,9 +1864,11 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const query = datastore
-      .createQuery('Task')
-      .select(['priority', 'percent_complete']);
+```javascript
+const query = datastore
+  .createQuery('Task')
+  .select(['priority', 'percent_complete']);
+```
 
 ### PHP
 
@@ -1658,9 +1876,11 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->projection(['priority', 'percent_complete']);
+```php
+$query = $datastore->query()
+    ->kind('Task')
+    ->projection(['priority', 'percent_complete']);
+```
 
 ### Python
 
@@ -1668,14 +1888,16 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query(kind="Task")
-    query.projection = ["priority", "percent_complete"]
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query(kind="Task")
+query.projection = ["priority", "percent_complete"]
+```
 
 ### Ruby
 
@@ -1683,32 +1905,38 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .select("priority", "percent_complete")
+```ruby
+query = datastore.query("Task")
+                 .select("priority", "percent_complete")
+```
 
 ### GQL
 
-    SELECT priority, percent_complete FROM Task
+```
+SELECT priority, percent_complete FROM Task
+```
 
 And here's how to run the projection query:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Projection = { "priority", "percent_complete" }
-    };
-    List<long> priorities = new List<long>();
-    List<double> percentCompletes = new List<double>();
-    foreach (var entity in _db.RunQuery(query).Entities)
-    {
-        priorities.Add((long)entity["priority"]);
-        percentCompletes.Add((double)entity["percent_complete"]);
-    }
+```c#
+Query query = new Query("Task")
+{
+    Projection = { "priority", "percent_complete" }
+};
+List<long> priorities = new List<long>();
+List<double> percentCompletes = new List<double>();
+foreach (var entity in _db.RunQuery(query).Entities)
+{
+    priorities.Add((long)entity["priority"]);
+    percentCompletes.Add((double)entity["percent_complete"]);
+}
+```
 
 ### Go
 
@@ -1716,19 +1944,21 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    var priorities []int
-    var percents []float64
-    it := client.Run(ctx, query)
-    for {
-     var task Task
-     if _, err := it.Next(&task); err == iterator.Done {
-         break
-     } else if err != nil {
-         log.Fatal(err)
-     }
-     priorities = append(priorities, task.Priority)
-     percents = append(percents, task.PercentComplete)
+```golang
+var priorities []int
+var percents []float64
+it := client.Run(ctx, query)
+for {
+    var task Task
+    if _, err := it.Next(&task); err == iterator.Done {
+        break
+    } else if err != nil {
+        log.Fatal(err)
     }
+    priorities = append(priorities, task.Priority)
+    percents = append(percents, task.PercentComplete)
+}
+```
 
 ### Java
 
@@ -1736,14 +1966,16 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    List<Long> priorities = new LinkedList<>();
-    List<Double> percentCompletes = new LinkedList<>();
-    QueryResults<ProjectionEntity> tasks = datastore.run(query);
-    while (tasks.hasNext()) {
-      ProjectionEntity task = tasks.next();
-      priorities.add(task.getLong("priority"));
-      percentCompletes.add(task.getDouble("percent_complete"));
-    }
+```java
+List<Long> priorities = new LinkedList<>();
+List<Double> percentCompletes = new LinkedList<>();
+QueryResults<ProjectionEntity> tasks = datastore.run(query);
+while (tasks.hasNext()) {
+  ProjectionEntity task = tasks.next();
+  priorities.add(task.getLong("priority"));
+  percentCompletes.add(task.getDouble("percent_complete"));
+}
+```
 
 ### Node.js
 
@@ -1751,20 +1983,22 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    async function runProjectionQuery() {
-      const priorities = [];
-      const percentCompletes = [];
-      const [tasks] = await datastore.runQuery(query);
-      tasks.forEach(task => {
-        priorities.push(task.priority);
-        percentCompletes.push(task.percent_complete);
-      });
-    
-      return {
-        priorities: priorities,
-        percentCompletes: percentCompletes,
-      };
-    }
+```javascript
+async function runProjectionQuery() {
+  const priorities = [];
+  const percentCompletes = [];
+  const [tasks] = await datastore.runQuery(query);
+  tasks.forEach(task => {
+    priorities.push(task.priority);
+    percentCompletes.push(task.percent_complete);
+  });
+
+  return {
+    priorities: priorities,
+    percentCompletes: percentCompletes,
+  };
+}
+```
 
 ### PHP
 
@@ -1772,14 +2006,16 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $priorities = array();
-    $percentCompletes = array();
-    $result = $datastore->runQuery($query);
-    /* @var Entity $task */
-    foreach ($result as $task) {
-        $priorities[] = $task['priority'];
-        $percentCompletes[] = $task['percent_complete'];
-    }
+```php
+$priorities = array();
+$percentCompletes = array();
+$result = $datastore->runQuery($query);
+/* @var Entity $task */
+foreach ($result as $task) {
+    $priorities[] = $task['priority'];
+    $percentCompletes[] = $task['percent_complete'];
+}
+```
 
 ### Python
 
@@ -1787,12 +2023,14 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    priorities = []
-    percent_completes = []
-    
-    for task in query.fetch():
-        priorities.append(task["priority"])
-        percent_completes.append(task["percent_complete"])
+```python
+priorities = []
+percent_completes = []
+
+for task in query.fetch():
+    priorities.append(task["priority"])
+    percent_completes.append(task["percent_complete"])
+```
 
 ### Ruby
 
@@ -1800,12 +2038,14 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    priorities = []
-    percent_completes = []
-    datastore.run(query).each do |task|
-      priorities << task["priority"]
-      percent_completes << task["percent_complete"]
-    end
+```ruby
+priorities = []
+percent_completes = []
+datastore.run(query).each do |task|
+  priorities << task["priority"]
+  percent_completes << task["percent_complete"]
+end
+```
 
 ### GQL
 
@@ -1817,21 +2057,23 @@ A projection query that doesn't use the [`distinct on`](https://docs.cloud.googl
 
 Projection queries can use the `distinct on` clause to ensure that only the first result for each distinct combination of values for the specified properties will be returned. This will return only the first result for entities which have the same values for the properties that are being projected.
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Projection = { "category", "priority" },
-        DistinctOn = { "category" },
-        Order = {
-            { "category", PropertyOrder.Types.Direction.Ascending},
-            {"priority", PropertyOrder.Types.Direction.Ascending }
-        }
-    };
+```c#
+Query query = new Query("Task")
+{
+    Projection = { "category", "priority" },
+    DistinctOn = { "category" },
+    Order = {
+        { "category", PropertyOrder.Types.Direction.Ascending},
+        {"priority", PropertyOrder.Types.Direction.Ascending }
+    }
+};
+```
 
 ### Go
 
@@ -1839,10 +2081,12 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").
-     Project("Priority", "Category").
-     DistinctOn("Category").
-     Order("Category").Order("Priority")
+```golang
+query := datastore.NewQuery("Task").
+    Project("Priority", "Category").
+    DistinctOn("Category").
+    Order("Category").Order("Priority")
+```
 
 ### Java
 
@@ -1850,13 +2094,15 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<ProjectionEntity> query =
-        Query.newProjectionEntityQueryBuilder()
-            .setKind("Task")
-            .setProjection("category", "priority")
-            .setDistinctOn("category")
-            .setOrderBy(OrderBy.asc("category"), OrderBy.asc("priority"))
-            .build();
+```java
+Query<ProjectionEntity> query =
+    Query.newProjectionEntityQueryBuilder()
+        .setKind("Task")
+        .setProjection("category", "priority")
+        .setDistinctOn("category")
+        .setOrderBy(OrderBy.asc("category"), OrderBy.asc("priority"))
+        .build();
+```
 
 ### Node.js
 
@@ -1864,11 +2110,13 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const query = datastore
-      .createQuery('Task')
-      .groupBy('category')
-      .order('category')
-      .order('priority');
+```javascript
+const query = datastore
+  .createQuery('Task')
+  .groupBy('category')
+  .order('category')
+  .order('priority');
+```
 
 ### PHP
 
@@ -1876,12 +2124,14 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->order('category')
-        ->order('priority')
-        ->projection(['category', 'priority'])
-        ->distinctOn('category');
+```php
+$query = $datastore->query()
+    ->kind('Task')
+    ->order('category')
+    ->order('priority')
+    ->projection(['category', 'priority'])
+    ->distinctOn('category');
+```
 
 ### Python
 
@@ -1889,15 +2139,17 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query(kind="Task")
-    query.distinct_on = ["category"]
-    query.order = ["category", "priority"]
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query(kind="Task")
+query.distinct_on = ["category"]
+query.order = ["category", "priority"]
+```
 
 ### Ruby
 
@@ -1905,16 +2157,20 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .select("category", "priority")
-                     .distinct_on("category")
-                     .order("category")
-                     .order("priority")
+```ruby
+query = datastore.query("Task")
+                 .select("category", "priority")
+                 .distinct_on("category")
+                 .order("category")
+                 .order("priority")
+```
 
 ### GQL
 
-    SELECT DISTINCT ON (category) category, priority FROM Task
-    ORDER BY category, priority
+```
+SELECT DISTINCT ON (category) category, priority FROM Task
+ORDER BY category, priority
+```
 
 The set of properties specified in the `distinct on` clause must appear before any non- `distinct on` properties in the `order by` clause if `order by` is specified.
 
@@ -1938,17 +2194,19 @@ Because of the way they're indexed, entities with multiple values for the same p
 
 If a query has multiple inequality filters on a given property, an entity will match the query only if at least one of its individual values for the property satisfies *all* of the filters. For example, if an entity of kind `Task` has values `fun` and `programming` for property `tag` , it will *not* match the query:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Filter = Filter.And(Filter.GreaterThan("tag", "learn"),
-            Filter.LessThan("tag", "math"))
-    };
+```c#
+Query query = new Query("Task")
+{
+    Filter = Filter.And(Filter.GreaterThan("tag", "learn"),
+        Filter.LessThan("tag", "math"))
+};
+```
 
 ### Go
 
@@ -1956,9 +2214,11 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").
-     FilterField("Tag", ">", "learn").
-     FilterField("Tag", "<", "math")
+```golang
+query := datastore.NewQuery("Task").
+    FilterField("Tag", ">", "learn").
+    FilterField("Tag", "<", "math")
+```
 
 ### Java
 
@@ -1966,13 +2226,15 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(
-                CompositeFilter.and(
-                    PropertyFilter.gt("tag", "learn"), PropertyFilter.lt("tag", "math")))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(
+            CompositeFilter.and(
+                PropertyFilter.gt("tag", "learn"), PropertyFilter.lt("tag", "math")))
+        .build();
+```
 
 ### Node.js
 
@@ -1980,14 +2242,16 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const query = datastore
-      .createQuery('Task')
-      .filter(
-        and([
-          new PropertyFilter('tag', '>', 'learn'),
-          new PropertyFilter('tag', '<', 'math'),
-        ]),
-      );
+```javascript
+const query = datastore
+  .createQuery('Task')
+  .filter(
+    and([
+      new PropertyFilter('tag', '>', 'learn'),
+      new PropertyFilter('tag', '<', 'math'),
+    ]),
+  );
+```
 
 ### PHP
 
@@ -1995,10 +2259,12 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->filter('tag', '>', 'learn')
-        ->filter('tag', '<', 'math');
+```php
+$query = $datastore->query()
+    ->kind('Task')
+    ->filter('tag', '>', 'learn')
+    ->filter('tag', '<', 'math');
+```
 
 ### Python
 
@@ -2006,15 +2272,17 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query(kind="Task")
-    query.add_filter(filter=datastore.query.PropertyFilter("tag", ">", "learn"))
-    query.add_filter(filter=datastore.query.PropertyFilter("tag", "<", "math"))
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query(kind="Task")
+query.add_filter(filter=datastore.query.PropertyFilter("tag", ">", "learn"))
+query.add_filter(filter=datastore.query.PropertyFilter("tag", "<", "math"))
+```
 
 ### Ruby
 
@@ -2022,13 +2290,17 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .where("tag", ">", "learn")
-                     .where("tag", "<", "math")
+```ruby
+query = datastore.query("Task")
+                 .where("tag", ">", "learn")
+                 .where("tag", "<", "math")
+```
 
 ### GQL
 
-    SELECT * FROM Task WHERE tag > 'learn' AND tag < 'math'
+```
+SELECT * FROM Task WHERE tag > 'learn' AND tag < 'math'
+```
 
 Each of the entity's `tag` values satisfies one of the filters, but neither single value satisfies both.
 
@@ -2036,17 +2308,19 @@ Each of the entity's `tag` values satisfies one of the filters, but neither sing
 
 Multiple equality filters can be used to query for entities that contain a set of values. For example, an entity of kind `Task` with values `fun` and `programming` for property `tag` *will* satisfy the query
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Filter = Filter.And(Filter.Equal("tag", "fun"),
-            Filter.Equal("tag", "programming"))
-    };
+```c#
+Query query = new Query("Task")
+{
+    Filter = Filter.And(Filter.Equal("tag", "fun"),
+        Filter.Equal("tag", "programming"))
+};
+```
 
 ### Go
 
@@ -2054,9 +2328,11 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").
-     FilterField("Tag", "=", "fun").
-     FilterField("Tag", "=", "programming")
+```golang
+query := datastore.NewQuery("Task").
+    FilterField("Tag", "=", "fun").
+    FilterField("Tag", "=", "programming")
+```
 
 ### Java
 
@@ -2064,13 +2340,15 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(
-                CompositeFilter.and(
-                    PropertyFilter.eq("tag", "fun"), PropertyFilter.eq("tag", "programming")))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(
+            CompositeFilter.and(
+                PropertyFilter.eq("tag", "fun"), PropertyFilter.eq("tag", "programming")))
+        .build();
+```
 
 ### Node.js
 
@@ -2078,14 +2356,16 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const query = datastore
-      .createQuery('Task')
-      .filter(
-        and([
-          new PropertyFilter('tag', '=', 'fun'),
-          new PropertyFilter('tag', '=', 'programming'),
-        ]),
-      );
+```javascript
+const query = datastore
+  .createQuery('Task')
+  .filter(
+    and([
+      new PropertyFilter('tag', '=', 'fun'),
+      new PropertyFilter('tag', '=', 'programming'),
+    ]),
+  );
+```
 
 ### PHP
 
@@ -2093,10 +2373,12 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->filter('tag', '=', 'fun')
-        ->filter('tag', '=', 'programming');
+```php
+$query = $datastore->query()
+    ->kind('Task')
+    ->filter('tag', '=', 'fun')
+    ->filter('tag', '=', 'programming');
+```
 
 ### Python
 
@@ -2104,15 +2386,17 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query(kind="Task")
-    query.add_filter(filter=datastore.query.PropertyFilter("tag", "=", "fun"))
-    query.add_filter(filter=datastore.query.PropertyFilter("tag", "=", "programming"))
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query(kind="Task")
+query.add_filter(filter=datastore.query.PropertyFilter("tag", "=", "fun"))
+query.add_filter(filter=datastore.query.PropertyFilter("tag", "=", "programming"))
+```
 
 ### Ruby
 
@@ -2120,13 +2404,17 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .where("tag", "=", "fun")
-                     .where("tag", "=", "programming")
+```ruby
+query = datastore.query("Task")
+                 .where("tag", "=", "fun")
+                 .where("tag", "=", "programming")
+```
 
 ### GQL
 
-    SELECT * FROM Task WHERE tag = 'fun' AND tag = 'programming'
+```
+SELECT * FROM Task WHERE tag = 'fun' AND tag = 'programming'
+```
 
 even though neither of the entity's individual `tag` values satisfies both filter conditions.
 
@@ -2136,9 +2424,9 @@ Similarly, the sort order for multiple-valued properties is unusual. Because suc
 
 If a multi-valued property is not used in any filter:
 
-  - and the query results are sorted in ascending order by the property, the smallest value of the property is used for ordering.
-  - and the query results are sorted in descending order by the property, the greatest value is used for ordering.
-  - other values don't affect the sort order, nor does the number of values.
+- and the query results are sorted in ascending order by the property, the smallest value of the property is used for ordering.
+- and the query results are sorted in descending order by the property, the greatest value is used for ordering.
+- other values don't affect the sort order, nor does the number of values.
 
 This has the unusual consequence that an entity with property values `1` and `9` precedes an entity with values `4` , `5` , `6` , and `7` in both ascending *and* descending order.
 
@@ -2146,33 +2434,39 @@ If a multi-valued property is used in an equality filter, [any sort order on tha
 
 If a multi-valued property is used in an inequality or an `NOT_IN` filter:
 
-  - and the query results are sorted in ascending order by the property, the smallest value that satisfies all of the query's inequality filters is used for ordering.
-  - and the query results are sorted in descending order by the property, the greatest value that satisfies all of the query's inequality filters is used for ordering.
+- and the query results are sorted in ascending order by the property, the smallest value that satisfies all of the query's inequality filters is used for ordering.
+- and the query results are sorted in descending order by the property, the greatest value that satisfies all of the query's inequality filters is used for ordering.
 
 Note that if a set of inequality filters on a property translate into an equality filter, such as
 
-    WHERE tag >= 'math' AND tag <= 'math'
+```
+WHERE tag >= 'math' AND tag <= 'math'
+```
 
 any sort order on that property is ignored, as the filters evaluate the same as the equality filter
 
-    WHERE tag = 'math'
+```
+WHERE tag = 'math'
+```
 
 ### Projections and array-valued properties
 
 Projecting a property with array values won't populate all values for that property. Instead, a separate entity will be returned for each unique combination of projected values matching the query. For example, suppose you have an entity of kind `Task` with two multiple-valued properties, `tag` and `collaborators` :
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Entity task = new Entity()
-    {
-        Key = _db.CreateKeyFactory("Task").CreateKey("sampleTask"),
-        ["collaborators"] = new ArrayValue() { Values = { "alice", "bob" } },
-        ["tags"] = new ArrayValue() { Values = { "fun", "programming" } }
-    };
+```c#
+Entity task = new Entity()
+{
+    Key = _db.CreateKeyFactory("Task").CreateKey("sampleTask"),
+    ["collaborators"] = new ArrayValue() { Values = { "alice", "bob" } },
+    ["tags"] = new ArrayValue() { Values = { "fun", "programming" } }
+};
+```
 
 ### Go
 
@@ -2180,14 +2474,16 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    type Task struct {
-     Tags          []string
-     Collaborators []string
-    }
-    task := &Task{
-     Tags:          []string{"fun", "programming"},
-     Collaborators: []string{"alice", "bob"},
-    }
+```golang
+type Task struct {
+    Tags          []string
+    Collaborators []string
+}
+task := &Task{
+    Tags:          []string{"fun", "programming"},
+    Collaborators: []string{"alice", "bob"},
+}
+```
 
 ### Java
 
@@ -2195,11 +2491,13 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Entity task =
-        Entity.newBuilder(taskKey)
-            .set("tags", "fun", "programming")
-            .set("collaborators", ListValue.of("alice", "bob"))
-            .build();
+```java
+Entity task =
+    Entity.newBuilder(taskKey)
+        .set("tags", "fun", "programming")
+        .set("collaborators", ListValue.of("alice", "bob"))
+        .build();
+```
 
 ### Node.js
 
@@ -2207,10 +2505,12 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const task = {
-      tags: ['fun', 'programming'],
-      collaborators: ['alice', 'bob'],
-    };
+```javascript
+const task = {
+  tags: ['fun', 'programming'],
+  collaborators: ['alice', 'bob'],
+};
+```
 
 ### PHP
 
@@ -2218,13 +2518,15 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $task = $datastore->entity(
-        $key,
-        [
-            'tags' => ['fun', 'programming'],
-            'collaborators' => ['alice', 'bob']
-        ]
-    );
+```php
+$task = $datastore->entity(
+    $key,
+    [
+        'tags' => ['fun', 'programming'],
+        'collaborators' => ['alice', 'bob']
+    ]
+);
+```
 
 ### Python
 
@@ -2232,15 +2534,17 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    key = client.key("Task")
-    task = datastore.Entity(key)
-    task.update({"tags": ["fun", "programming"], "collaborators": ["alice", "bob"]})
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+key = client.key("Task")
+task = datastore.Entity(key)
+task.update({"tags": ["fun", "programming"], "collaborators": ["alice", "bob"]})
+```
 
 ### Ruby
 
@@ -2248,11 +2552,13 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    # task_name = "sampleTask"
-    task = datastore.entity "Task", task_name do |t|
-      t["tags"] = ["fun", "programming"]
-      t["collaborators"] = ["alice", "bob"]
-    end
+```ruby
+# task_name = "sampleTask"
+task = datastore.entity "Task", task_name do |t|
+  t["tags"] = ["fun", "programming"]
+  t["collaborators"] = ["alice", "bob"]
+end
+```
 
 ### GQL
 
@@ -2260,7 +2566,9 @@ Not Applicable
 
 Then the projection query
 
-    SELECT tag, collaborators FROM Task WHERE collaborators < 'charlie'
+```
+SELECT tag, collaborators FROM Task WHERE collaborators < 'charlie'
+```
 
 will return four entities with the following combinations of values:
 
@@ -2275,16 +2583,18 @@ will return four entities with the following combinations of values:
 
 You can specify a *limit* for your query to control the maximum number of results returned in one batch. The following example retrieves at most five Task entities:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Limit = 5,
-    };
+```c#
+Query query = new Query("Task")
+{
+    Limit = 5,
+};
+```
 
 ### Go
 
@@ -2292,7 +2602,9 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").Limit(5)
+```golang
+query := datastore.NewQuery("Task").Limit(5)
+```
 
 ### Java
 
@@ -2300,7 +2612,9 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query = Query.newEntityQueryBuilder().setKind("Task").setLimit(5).build();
+```java
+Query<Entity> query = Query.newEntityQueryBuilder().setKind("Task").setLimit(5).build();
+```
 
 ### Node.js
 
@@ -2308,7 +2622,9 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const query = datastore.createQuery('Task').limit(5);
+```javascript
+const query = datastore.createQuery('Task').limit(5);
+```
 
 ### PHP
 
@@ -2316,9 +2632,11 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->limit(5);
+```php
+$query = $datastore->query()
+    ->kind('Task')
+    ->limit(5);
+```
 
 ### Python
 
@@ -2326,14 +2644,16 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query()
-    tasks = list(query.fetch(limit=5))
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query()
+tasks = list(query.fetch(limit=5))
+```
 
 ### Ruby
 
@@ -2341,31 +2661,37 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .limit(5)
+```ruby
+query = datastore.query("Task")
+                 .limit(5)
+```
 
 ### GQL
 
-    SELECT * FROM Task LIMIT 5
+```
+SELECT * FROM Task LIMIT 5
+```
 
 *Query cursors* allow an application to retrieve a query's results in convenient batches without incurring the overhead of a query offset. After performing a retrieval operation, the application can obtain a cursor, which is an opaque byte string marking the index position of the last result retrieved. The application can save this string (for instance in your Datastore mode database, a cache, or embedded in a web page as a base-64 encoded HTTP `GET` or `POST` parameter), and can then use the cursor as the starting point for a subsequent retrieval operation to obtain the next batch of results from the point where the previous retrieval ended. A retrieval can also specify an end cursor, to limit the extent of the result set returned.
 
 The following example demonstrates the use of cursors for pagination:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Limit = pageSize,
-    };
-    if (!string.IsNullOrEmpty(pageCursor))
-        query.StartCursor = ByteString.FromBase64(pageCursor);
-    
-    return _db.RunQuery(query).EndCursor?.ToBase64();
+```c#
+Query query = new Query("Task")
+{
+    Limit = pageSize,
+};
+if (!string.IsNullOrEmpty(pageCursor))
+    query.StartCursor = ByteString.FromBase64(pageCursor);
+
+return _db.RunQuery(query).EndCursor?.ToBase64();
+```
 
 ### Go
 
@@ -2373,37 +2699,39 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    // cursorStr is a cursor to start querying at.
-    cursorStr := ""
-    
-    const pageSize = 5
-    query := datastore.NewQuery("Tasks").Limit(pageSize)
-    if cursorStr != "" {
-     cursor, err := datastore.DecodeCursor(cursorStr)
-     if err != nil {
-         log.Fatalf("Bad cursor %q: %v", cursorStr, err)
-     }
-     query = query.Start(cursor)
+```golang
+// cursorStr is a cursor to start querying at.
+cursorStr := ""
+
+const pageSize = 5
+query := datastore.NewQuery("Tasks").Limit(pageSize)
+if cursorStr != "" {
+    cursor, err := datastore.DecodeCursor(cursorStr)
+    if err != nil {
+        log.Fatalf("Bad cursor %q: %v", cursorStr, err)
     }
-    
-    // Read the tasks.
-    it := client.Run(ctx, query)
-    var tasks []Task
-    for {
-     var task Task
-     _, err := it.Next(&task)
-     if err == iterator.Done {
-         break
-     }
-     if err != nil {
-         log.Fatalf("Failed fetching results: %v", err)
-     }
-     tasks = append(tasks, task)
+    query = query.Start(cursor)
+}
+
+// Read the tasks.
+it := client.Run(ctx, query)
+var tasks []Task
+for {
+    var task Task
+    _, err := it.Next(&task)
+    if err == iterator.Done {
+        break
     }
-    
-    // Get the cursor for the next page of results.
-    // nextCursor.String can be used as the next page's token.
-    nextCursor, err := it.Cursor()
+    if err != nil {
+        log.Fatalf("Failed fetching results: %v", err)
+    }
+    tasks = append(tasks, task)
+}
+
+// Get the cursor for the next page of results.
+// nextCursor.String can be used as the next page's token.
+nextCursor, err := it.Cursor()
+```
 
 ### Java
 
@@ -2411,17 +2739,19 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    EntityQuery.Builder queryBuilder =
-        Query.newEntityQueryBuilder().setKind("Task").setLimit(pageSize);
-    if (pageCursor != null) {
-      queryBuilder.setStartCursor(pageCursor);
-    }
-    QueryResults<Entity> tasks = datastore.run(queryBuilder.build());
-    while (tasks.hasNext()) {
-      Entity task = tasks.next();
-      // do something with the task
-    }
-    Cursor nextPageCursor = tasks.getCursorAfter();
+```java
+EntityQuery.Builder queryBuilder =
+    Query.newEntityQueryBuilder().setKind("Task").setLimit(pageSize);
+if (pageCursor != null) {
+  queryBuilder.setStartCursor(pageCursor);
+}
+QueryResults<Entity> tasks = datastore.run(queryBuilder.build());
+while (tasks.hasNext()) {
+  Entity task = tasks.next();
+  // do something with the task
+}
+Cursor nextPageCursor = tasks.getCursorAfter();
+```
 
 ### Node.js
 
@@ -2429,32 +2759,34 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    // By default, google-cloud-node will automatically paginate through all of
-    // the results that match a query. However, this sample implements manual
-    // pagination using limits and cursor tokens.
-    async function runPageQuery(pageCursor) {
-      let query = datastore.createQuery('Task').limit(pageSize);
-    
-      if (pageCursor) {
-        query = query.start(pageCursor);
-      }
-      const results = await datastore.runQuery(query);
-      const entities = results[0];
-      const info = results[1];
-    
-      if (info.moreResults !== Datastore.NO_MORE_RESULTS) {
-        // If there are more results to retrieve, the end cursor is
-        // automatically set on `info`. To get this value directly, access
-        // the `endCursor` property.
-        const results = await runPageQuery(info.endCursor);
-    
-        // Concatenate entities
-        results[0] = entities.concat(results[0]);
-        return results;
-      }
-    
-      return [entities, info];
-    }
+```javascript
+// By default, google-cloud-node will automatically paginate through all of
+// the results that match a query. However, this sample implements manual
+// pagination using limits and cursor tokens.
+async function runPageQuery(pageCursor) {
+  let query = datastore.createQuery('Task').limit(pageSize);
+
+  if (pageCursor) {
+    query = query.start(pageCursor);
+  }
+  const results = await datastore.runQuery(query);
+  const entities = results[0];
+  const info = results[1];
+
+  if (info.moreResults !== Datastore.NO_MORE_RESULTS) {
+    // If there are more results to retrieve, the end cursor is
+    // automatically set on `info`. To get this value directly, access
+    // the `endCursor` property.
+    const results = await runPageQuery(info.endCursor);
+
+    // Concatenate entities
+    results[0] = entities.concat(results[0]);
+    return results;
+  }
+
+  return [entities, info];
+}
+```
 
 ### PHP
 
@@ -2462,46 +2794,48 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    /**
-     * Fetch a query cursor.
-     *
-     * @param int $pageSize
-     * @param string $pageCursor
-     * @param string $namespaceId
-     */
-    function cursor_paging(int $pageSize, string $pageCursor = '', string $namespaceId = null)
-    {
-        $datastore = new DatastoreClient(['namespaceId' => $namespaceId]);
+```php
+/**
+ * Fetch a query cursor.
+ *
+ * @param int $pageSize
+ * @param string $pageCursor
+ * @param string $namespaceId
+ */
+function cursor_paging(int $pageSize, string $pageCursor = '', string $namespaceId = null)
+{
+    $datastore = new DatastoreClient(['namespaceId' => $namespaceId]);
+    $query = $datastore->query()
+        ->kind('Task')
+        ->limit($pageSize)
+        ->start($pageCursor);
+    $result = $datastore->runQuery($query);
+    $nextPageCursor = '';
+    $entities = [];
+    /* @var Entity $entity */
+    foreach ($result as $entity) {
+        $nextPageCursor = $entity->cursor();
+        $entities[] = $entity;
+    }
+
+    printf('Found %s entities', count($entities));
+
+    $entities = [];
+    if (!empty($nextPageCursor)) {
         $query = $datastore->query()
-            ->kind('Task')
-            ->limit($pageSize)
-            ->start($pageCursor);
+          ->kind('Task')
+          ->limit($pageSize)
+          ->start($nextPageCursor);
         $result = $datastore->runQuery($query);
-        $nextPageCursor = '';
-        $entities = [];
-        /* @var Entity $entity */
+
         foreach ($result as $entity) {
-            $nextPageCursor = $entity->cursor();
             $entities[] = $entity;
         }
-    
-        printf('Found %s entities', count($entities));
-    
-        $entities = [];
-        if (!empty($nextPageCursor)) {
-            $query = $datastore->query()
-              ->kind('Task')
-              ->limit($pageSize)
-              ->start($nextPageCursor);
-            $result = $datastore->runQuery($query);
-    
-            foreach ($result as $entity) {
-                $entities[] = $entity;
-            }
-    
-            printf('Found %s entities with next page cursor', count($entities));
-        }
+
+        printf('Found %s entities with next page cursor', count($entities));
     }
+}
+```
 
 ### Python
 
@@ -2509,22 +2843,24 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    
-    def get_one_page_of_tasks(cursor=None):
-        query = client.query(kind="Task")
-        query_iter = query.fetch(start_cursor=cursor, limit=5)
-        page = next(query_iter.pages)
-    
-        tasks = list(page)
-        next_cursor = query_iter.next_page_token
-    
-        return tasks, next_cursor
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+
+def get_one_page_of_tasks(cursor=None):
+    query = client.query(kind="Task")
+    query_iter = query.fetch(start_cursor=cursor, limit=5)
+    page = next(query_iter.pages)
+
+    tasks = list(page)
+    next_cursor = query_iter.next_page_token
+
+    return tasks, next_cursor
+```
 
 ### Ruby
 
@@ -2532,16 +2868,18 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    page_size = 2
-    query = datastore.query("Task")
-                     .limit(page_size)
-    tasks = datastore.run query
-    
-    page_cursor = tasks.cursor
-    
-    query = datastore.query("Task")
-                     .limit(page_size)
-                     .start(page_cursor)
+```ruby
+page_size = 2
+query = datastore.query("Task")
+                 .limit(page_size)
+tasks = datastore.run query
+
+page_cursor = tasks.cursor
+
+query = datastore.query("Task")
+                 .limit(page_size)
+                 .start(page_cursor)
+```
 
 ### GQL
 
@@ -2555,21 +2893,21 @@ Not Applicable
 
 Cursors are subject to the following limitations:
 
-  - A cursor can be used only by the same project that performed the original query, and only to continue the same query. It is not possible to retrieve results using a cursor without setting up the same query from which it was originally generated.
-  - If any of the following items are changed, a cursor can still be used for subsequent retrievals.
-      - start cursor
-      - end cursor
-      - offset
-      - limit
-  - If any of the following items are changed, a cursor cannot be used for subsequent retrievals.
-      - projection
-      - kind
-      - ancestor
-      - filter
-      - distinct on
-      - sort order An exception is if the original query's final sort order was on `__key__` . In that case, you can use the cursor in a *reverse query* , which is the original query with each sort order reversed. The reverse query can modify the start cursor, end cursor, offset, and limit.
-  - Cursors don't always work as expected with a query that uses an inequality filter or a sort order on a property with multiple values. The de-duplication logic for such multiple-valued properties doesn't persist between retrievals, possibly causing the same result to be returned more than once.
-  - New Datastore mode releases may change internal implementation details, invalidating cursors that depend on them. If an application attempts to use a cursor that is no longer valid, Firestore in Datastore mode raises an exception.
+- A cursor can be used only by the same project that performed the original query, and only to continue the same query. It is not possible to retrieve results using a cursor without setting up the same query from which it was originally generated.
+- If any of the following items are changed, a cursor can still be used for subsequent retrievals.
+  - start cursor
+  - end cursor
+  - offset
+  - limit
+- If any of the following items are changed, a cursor cannot be used for subsequent retrievals.
+  - projection
+  - kind
+  - ancestor
+  - filter
+  - distinct on
+  - sort order An exception is if the original query's final sort order was on `__key__` . In that case, you can use the cursor in a *reverse query* , which is the original query with each sort order reversed. The reverse query can modify the start cursor, end cursor, offset, and limit.
+- Cursors don't always work as expected with a query that uses an inequality filter or a sort order on a property with multiple values. The de-duplication logic for such multiple-valued properties doesn't persist between retrievals, possibly causing the same result to be returned more than once.
+- New Datastore mode releases may change internal implementation details, invalidating cursors that depend on them. If an application attempts to use a cursor that is no longer valid, Firestore in Datastore mode raises an exception.
 
 ### Cursors and data updates
 
@@ -2607,9 +2945,9 @@ When a query doesn't specify a sort order, the results are returned in the order
 
 Queries that include an equality filter for a given property ignore any sort order specified for that property. This is an optimization to save needless processing for single-valued properties. Since all results have the same value for the property, no further sorting is needed. Multiple-valued properties, however, may have additional values besides the one matched by the equality filter. Because this use case is rare and applying the sort order would be expensive and require extra indexes, the Datastore mode query planner ignores the sort order even in the multiple-valued case. This may cause query results to be returned in a different order than the sort order appears to imply. For example, the sort order is ignored in the following query:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
@@ -2629,12 +2967,14 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(PropertyFilter.eq("tag", "learn"))
-            .setOrderBy(OrderBy.asc("tag"))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(PropertyFilter.eq("tag", "learn"))
+        .setOrderBy(OrderBy.asc("tag"))
+        .build();
+```
 
 ### Node.js
 
@@ -2670,14 +3010,16 @@ Not Applicable
 
 ### GQL
 
-    # Sort order on an equality filter is ignored
-    SELECT * FROM Task WHERE tag = 'learn' ORDER BY tag ASC
+```
+# Sort order on an equality filter is ignored
+SELECT * FROM Task WHERE tag = 'learn' ORDER BY tag ASC
+```
 
 This doesn't apply to queries that include an `IN` filter. Use the [`IN` operator](https://docs.cloud.google.com/datastore/docs/concepts/queries#in) to combine up to 10 equality ( `==` ) clauses on the same property with a logical `OR` . If you add a sort order for that property, it's applied to the result set.
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
@@ -2697,12 +3039,14 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(PropertyFilter.in("tag", ListValue.of("learn", "study")))
-            .setOrderBy(OrderBy.asc("tag"))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(PropertyFilter.in("tag", ListValue.of("learn", "study")))
+        .setOrderBy(OrderBy.asc("tag"))
+        .build();
+```
 
 ### Node.js
 
@@ -2738,28 +3082,32 @@ Not Applicable
 
 ### GQL
 
-    SELECT * FROM Task WHERE tag IN ARRAY('learn', 'study') ORDER BY tag ASC
+```
+SELECT * FROM Task WHERE tag IN ARRAY('learn', 'study') ORDER BY tag ASC
+```
 
-  - For ascending order, the smallest value that satisfies the filter is used for ordering.
-  - For descending order, the greatest value that satisfies the filter is used for ordering.
-  - Other values don't affect the sort order and nor does the number of values in the property.
+- For ascending order, the smallest value that satisfies the filter is used for ordering.
+- For descending order, the greatest value that satisfies the filter is used for ordering.
+- Other values don't affect the sort order and nor does the number of values in the property.
 
 #### Properties used in inequality filters must be sorted first
 
 To retrieve all results that match an inequality filter, a query scans the index for the first row matching the filter, then scans forward until it encounters a non matching row. For the consecutive rows to encompass the complete result set, they must be ordered by the property used in the inequality filter before any other properties. Thus if a query specifies one or more inequality filters along with one or more sort orders, the first sort order must refer to the same property named in the inequality filters. The following is a valid query:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Filter = Filter.GreaterThan("priority", 3),
-        Order = { { "priority", PropertyOrder.Types.Direction.Ascending},
-            {"created", PropertyOrder.Types.Direction.Ascending } }
-    };
+```c#
+Query query = new Query("Task")
+{
+    Filter = Filter.GreaterThan("priority", 3),
+    Order = { { "priority", PropertyOrder.Types.Direction.Ascending},
+        {"created", PropertyOrder.Types.Direction.Ascending } }
+};
+```
 
 ### Go
 
@@ -2767,10 +3115,12 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").
-     FilterField("Priority", ">", 3).
-     Order("Priority").
-     Order("Created")
+```golang
+query := datastore.NewQuery("Task").
+    FilterField("Priority", ">", 3).
+    Order("Priority").
+    Order("Created")
+```
 
 ### Java
 
@@ -2778,12 +3128,14 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(PropertyFilter.gt("priority", 3))
-            .setOrderBy(OrderBy.asc("priority"), OrderBy.asc("created"))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(PropertyFilter.gt("priority", 3))
+        .setOrderBy(OrderBy.asc("priority"), OrderBy.asc("created"))
+        .build();
+```
 
 ### Node.js
 
@@ -2791,11 +3143,13 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const query = datastore
-      .createQuery('Task')
-      .filter(new PropertyFilter('priority', '>', 3))
-      .order('priority')
-      .order('created');
+```javascript
+const query = datastore
+  .createQuery('Task')
+  .filter(new PropertyFilter('priority', '>', 3))
+  .order('priority')
+  .order('created');
+```
 
 ### PHP
 
@@ -2803,11 +3157,13 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->filter('priority', '>', 3)
-        ->order('priority')
-        ->order('created');
+```php
+$query = $datastore->query()
+    ->kind('Task')
+    ->filter('priority', '>', 3)
+    ->order('priority')
+    ->order('created');
+```
 
 ### Python
 
@@ -2815,15 +3171,17 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query(kind="Task")
-    query.add_filter(filter=datastore.query.PropertyFilter("priority", ">", 3))
-    query.order = ["priority", "created"]
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query(kind="Task")
+query.add_filter(filter=datastore.query.PropertyFilter("priority", ">", 3))
+query.order = ["priority", "created"]
+```
 
 ### Ruby
 
@@ -2831,28 +3189,34 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .where("priority", ">", 3)
-                     .order("priority")
-                     .order("created")
+```ruby
+query = datastore.query("Task")
+                 .where("priority", ">", 3)
+                 .order("priority")
+                 .order("created")
+```
 
 ### GQL
 
-    SELECT * FROM Task WHERE priority > 3 ORDER BY priority, created
+```
+SELECT * FROM Task WHERE priority > 3 ORDER BY priority, created
+```
 
 This query is *not* valid, because it doesn't sort on the property used in the inequality filter:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Filter = Filter.GreaterThan("priority", 3),
-        Order = { { "created", PropertyOrder.Types.Direction.Ascending } }
-    };
+```c#
+Query query = new Query("Task")
+{
+    Filter = Filter.GreaterThan("priority", 3),
+    Order = { { "created", PropertyOrder.Types.Direction.Ascending } }
+};
+```
 
 ### Go
 
@@ -2860,9 +3224,11 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").
-     FilterField("Priority", ">", 3).
-     Order("Created")
+```golang
+query := datastore.NewQuery("Task").
+    FilterField("Priority", ">", 3).
+    Order("Created")
+```
 
 ### Java
 
@@ -2870,12 +3236,14 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(PropertyFilter.gt("priority", 3))
-            .setOrderBy(OrderBy.asc("created"))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(PropertyFilter.gt("priority", 3))
+        .setOrderBy(OrderBy.asc("created"))
+        .build();
+```
 
 ### Node.js
 
@@ -2883,10 +3251,12 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const query = datastore
-      .createQuery('Task')
-      .filter(new PropertyFilter('priority', '>', 3))
-      .order('created');
+```javascript
+const query = datastore
+  .createQuery('Task')
+  .filter(new PropertyFilter('priority', '>', 3))
+  .order('created');
+```
 
 ### PHP
 
@@ -2894,10 +3264,12 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->filter('priority', '>', 3)
-        ->order('created');
+```php
+$query = $datastore->query()
+    ->kind('Task')
+    ->filter('priority', '>', 3)
+    ->order('created');
+```
 
 ### Python
 
@@ -2905,15 +3277,17 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-        query = client.query(kind="Task")
-        query.add_filter(filter=datastore.query.PropertyFilter("priority", ">", 3))
-        query.order = ["created"]
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+    query = client.query(kind="Task")
+    query.add_filter(filter=datastore.query.PropertyFilter("priority", ">", 3))
+    query.order = ["created"]
+```
 
 ### Ruby
 
@@ -2921,29 +3295,35 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .where("priority", ">", 3)
-                     .order("created")
+```ruby
+query = datastore.query("Task")
+                 .where("priority", ">", 3)
+                 .order("created")
+```
 
 ### GQL
 
-    # Invalid query!
-    SELECT * FROM Task WHERE priority > 3 ORDER BY created
+```
+# Invalid query!
+SELECT * FROM Task WHERE priority > 3 ORDER BY created
+```
 
 Similarly, this query is not valid because the property used in the inequality filter is not the first one sorted:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Filter = Filter.GreaterThan("priority", 3),
-        Order = { {"created", PropertyOrder.Types.Direction.Ascending },
-            { "priority", PropertyOrder.Types.Direction.Ascending} }
-    };
+```c#
+Query query = new Query("Task")
+{
+    Filter = Filter.GreaterThan("priority", 3),
+    Order = { {"created", PropertyOrder.Types.Direction.Ascending },
+        { "priority", PropertyOrder.Types.Direction.Ascending} }
+};
+```
 
 ### Go
 
@@ -2951,10 +3331,12 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Task").
-     FilterField("Priority", ">", 3).
-     Order("Created").
-     Order("Priority")
+```golang
+query := datastore.NewQuery("Task").
+    FilterField("Priority", ">", 3).
+    Order("Created").
+    Order("Priority")
+```
 
 ### Java
 
@@ -2962,12 +3344,14 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(PropertyFilter.gt("priority", 3))
-            .setOrderBy(OrderBy.asc("created"), OrderBy.asc("priority"))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(PropertyFilter.gt("priority", 3))
+        .setOrderBy(OrderBy.asc("created"), OrderBy.asc("priority"))
+        .build();
+```
 
 ### Node.js
 
@@ -2975,11 +3359,13 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const query = datastore
-      .createQuery('Task')
-      .filter(new PropertyFilter('priority', '>', 3))
-      .order('created')
-      .order('priority');
+```javascript
+const query = datastore
+  .createQuery('Task')
+  .filter(new PropertyFilter('priority', '>', 3))
+  .order('created')
+  .order('priority');
+```
 
 ### PHP
 
@@ -2987,11 +3373,13 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->filter('priority', '>', 3)
-        ->order('created')
-        ->order('priority');
+```php
+$query = $datastore->query()
+    ->kind('Task')
+    ->filter('priority', '>', 3)
+    ->order('created')
+    ->order('priority');
+```
 
 ### Python
 
@@ -2999,15 +3387,17 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-        query = client.query(kind="Task")
-        query.add_filter(filter=datastore.query.PropertyFilter("priority", ">", 3))
-        query.order = ["created", "priority"]
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+    query = client.query(kind="Task")
+    query.add_filter(filter=datastore.query.PropertyFilter("priority", ">", 3))
+    query.order = ["created", "priority"]
+```
 
 ### Ruby
 
@@ -3015,15 +3405,19 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .where("priority", ">", 3)
-                     .order("created")
-                     .order("priority")
+```ruby
+query = datastore.query("Task")
+                 .where("priority", ">", 3)
+                 .order("created")
+                 .order("priority")
+```
 
 ### GQL
 
-    # Invalid query!
-    SELECT * FROM Task WHERE priority > 3 ORDER BY created, priority
+```
+# Invalid query!
+SELECT * FROM Task WHERE priority > 3 ORDER BY created, priority
+```
 
 #### `OrderBy` and existence
 
@@ -3033,73 +3427,85 @@ For example, the following query wouldn't return any entities where the `priorit
 
 ##### Java
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder().setKind("Task")
-                                     .setFilter(PropertyFilter.eq("done", false))
-                                     .setOrderBy(OrderBy.desc("priority"))
-                                     .build();
+```
+Query<Entity> query =
+    Query.newEntityQueryBuilder().setKind("Task")
+                                 .setFilter(PropertyFilter.eq("done", false))
+                                 .setOrderBy(OrderBy.desc("priority"))
+                                 .build();
+```
 
 A related effect applies to inequalities. A query with an inequality filter on a property also implies ordering by that property. The following query doesn't return entities without a `priority` property even if `starred = true` in that entity. As a workaround, you can execute separate queries for each ordering or you can assign a value for all properties that you order by.
 
 ##### Java
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(CompositeFilter.or(
-                PropertyFilter.eq("starred", true)),
-                PropertyFilter.ge("priority", 4))
-            .build();
+```
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(CompositeFilter.or(
+            PropertyFilter.eq("starred", true)),
+            PropertyFilter.ge("priority", 4))
+        .build();
+```
 
 The earlier query includes an implied order-by on the inequality such as the following. The direction of the implied order-by depends on available indexes:
 
 ##### Java
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(CompositeFilter.or(
-                PropertyFilter.eq("starred", true)),
-                PropertyFilter.ge("priority", 4)
-            )
-            .setOrderBy(OrderBy.asc("priority"))
-            .build();
+```
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(CompositeFilter.or(
+            PropertyFilter.eq("starred", true)),
+            PropertyFilter.ge("priority", 4)
+        )
+        .setOrderBy(OrderBy.asc("priority"))
+        .build();
+```
 
 #### Limitations on projections
 
 Projection queries are subject to the following limitations:
 
-  - **Only indexed properties can be projected.**
-    
-    This means that all properties used in a query (projected or filters) must exist in the same index. So, `select tag from Task where priority = 1` requires a composite index on priority then tag.
-    
-    Projection is not supported for strings that are longer than 1500 bytes, byte arrays that have more than 1500 elements, and other properties explicitly marked as unindexed.
+- **Only indexed properties can be projected.**
 
-  - **The same property cannot be projected more than once.**
+  This means that all properties used in a query (projected or filters) must exist in the same index. So, `select tag from Task where priority = 1` requires a composite index on priority then tag.
 
-  - **Properties referenced in an equality filter cannot be projected.**
-    
-    For example,
-    
-        SELECT tag FROM Task WHERE priority = 1
-    
-    is valid (projected property not used in the equality filter), as is
-    
-        SELECT tag FROM Task WHERE tag > 'fun`
-    
-    (not an equality filter), but
-    
-        SELECT tag FROM Task WHERE tag = 'fun`
-    
-    (projected property used in equality filter) is not.
+  Projection is not supported for strings that are longer than 1500 bytes, byte arrays that have more than 1500 elements, and other properties explicitly marked as unindexed.
 
-  - **Results returned by a projection query shouldn't be saved back to your Datastore mode database.**
-    
-    Because the query returns results that are only partially populated, you shouldn't write them back to the Datastore mode database.
+- **The same property cannot be projected more than once.**
 
-  - **Projection queries convert timestamps into integers.**
-    
-    In the results of a projection query, Datastore mode converts timestamp values to microsecond integer values.
+- **Properties referenced in an equality filter cannot be projected.**
+
+  For example,
+
+  ```
+  SELECT tag FROM Task WHERE priority = 1
+  ```
+
+  is valid (projected property not used in the equality filter), as is
+
+  ```
+  SELECT tag FROM Task WHERE tag > 'fun`
+  ```
+
+  (not an equality filter), but
+
+  ```
+  SELECT tag FROM Task WHERE tag = 'fun`
+  ```
+
+  (projected property used in equality filter) is not.
+
+- **Results returned by a projection query shouldn't be saved back to your Datastore mode database.**
+
+  Because the query returns results that are only partially populated, you shouldn't write them back to the Datastore mode database.
+
+- **Projection queries convert timestamps into integers.**
+
+  In the results of a projection query, Datastore mode converts timestamp values to microsecond integer values.
 
 ## What's next
 

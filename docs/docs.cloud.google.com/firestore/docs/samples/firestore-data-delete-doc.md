@@ -12,71 +12,85 @@ Delete a single Firestore document
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Delete documents and fields](https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data)
+- [Delete documents and fields](https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data)
 
 ## Code sample
 
-### C\#
+### C#
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    DocumentReference cityRef = db.Collection("cities").Document("DC");
-    await cityRef.DeleteAsync();
+```csharp
+DocumentReference cityRef = db.Collection("cities").Document("DC");
+await cityRef.DeleteAsync();
+```
 
 ### Go
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    import (
-     "context"
-     "log"
-    
-     "cloud.google.com/go/firestore"
-    )
-    
-    func deleteDoc(ctx context.Context, client *firestore.Client) error {
-     _, err := client.Collection("cities").Doc("DC").Delete(ctx)
-     if err != nil {
-         // Handle any errors in an appropriate way, such as returning them.
-         log.Printf("An error has occurred: %s", err)
-     }
-    
-     return err
+```go
+import (
+    "context"
+    "log"
+
+    "cloud.google.com/go/firestore"
+)
+
+func deleteDoc(ctx context.Context, client *firestore.Client) error {
+    _, err := client.Collection("cities").Doc("DC").Delete(ctx)
+    if err != nil {
+        // Handle any errors in an appropriate way, such as returning them.
+        log.Printf("An error has occurred: %s", err)
     }
+
+    return err
+}
+```
 
 ### Java
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    // asynchronously delete a document
-    ApiFuture<WriteResult> writeResult = db.collection("cities").document("DC").delete();
-    // ...
-    System.out.println("Update time : " + writeResult.get().getUpdateTime());
+```java
+// asynchronously delete a document
+ApiFuture<WriteResult> writeResult = db.collection("cities").document("DC").delete();
+// ...
+System.out.println("Update time : " + writeResult.get().getUpdateTime());
+```
 
 ### Node.js
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const res = await db.collection('cities').doc('DC').delete();
+```javascript
+const res = await db.collection('cities').doc('DC').delete();
+```
 
 ### PHP
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $db->collection('samples/php/cities')->document('DC')->delete();
+```php
+$db->collection('samples/php/cities')->document('DC')->delete();
+```
 
 ### Python
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    db.collection("cities").document("DC").delete()
+```python
+db.collection("cities").document("DC").delete()
+```
 
 ### Ruby
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    city_ref = firestore.doc "#{collection_path}/DC"
-    city_ref.delete
+```ruby
+city_ref = firestore.doc "#{collection_path}/DC"
+city_ref.delete
+```
 
 ## What's next
 

@@ -9,7 +9,7 @@ data_source: docs.cloud.google.com
 # Create and manage saved queries
 
 > **Preview**
-> 
+>
 > This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
 This page describes how to create and manage saved queries. When you write queries in Firestore Studio, you can save and manage those queries. For more information, see [Saved queries overview](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/saved-queries) .
@@ -20,9 +20,9 @@ The saved queries capability is available only in the console, and not using API
 
 To get the permissions that you need to use saved queries, ask your administrator to grant you the following Identity and Access Management (IAM) roles on the project:
 
-  - To view saved queries: [Cloud Datastore Viewer](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam#predefined_roles) ( `roles/datastore.viewer` )
-  - To view, create, modify, and delete saved queries: [Cloud Datastore User](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam#predefined_roles) ( `roles/datastore.user` )
-  - To administer, view, create, modify, and delete saved queries: [Cloud Datastore Owner](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam#predefined_roles) ( `roles/datastore.owner` ). This role has broad permissions and provides full access to Firestore with MongoDB compatibility, only for use by administrators.
+- To view saved queries: [Cloud Datastore Viewer](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam#predefined_roles) ( `roles/datastore.viewer` )
+- To view, create, modify, and delete saved queries: [Cloud Datastore User](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam#predefined_roles) ( `roles/datastore.user` )
+- To administer, view, create, modify, and delete saved queries: [Cloud Datastore Owner](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam#predefined_roles) ( `roles/datastore.owner` ). This role has broad permissions and provides full access to Firestore with MongoDB compatibility, only for use by administrators.
 
 For more information about granting roles, see [Manage access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
 
@@ -47,37 +47,37 @@ To create, view, modify, and delete saved queries, you need the following IAM pe
 <tr class="odd">
 <td>Create saved queries</td>
 <td><ul>
-<li><code dir="ltr" translate="no">databasesconsole.studioQueries.create</code></li>
+<li><code>databasesconsole.studioQueries.create</code></li>
 </ul></td>
 </tr>
 <tr class="even">
 <td>View saved queries</td>
 <td><ul>
-<li><code dir="ltr" translate="no">databasesconsole.studioQueries.search</code></li>
-<li><code dir="ltr" translate="no">databasesconsole.locations.get</code></li>
-<li><code dir="ltr" translate="no">databasesconsole.locations.list</code></li>
+<li><code>databasesconsole.studioQueries.search</code></li>
+<li><code>databasesconsole.locations.get</code></li>
+<li><code>databasesconsole.locations.list</code></li>
 </ul></td>
 </tr>
 <tr class="odd">
 <td>Modify saved queries</td>
 <td><ul>
-<li><code dir="ltr" translate="no">databasesconsole.studioQueries.update</code></li>
+<li><code>databasesconsole.studioQueries.update</code></li>
 </ul></td>
 </tr>
 <tr class="even">
 <td>Delete saved queries</td>
 <td><ul>
-<li><code dir="ltr" translate="no">databasesconsole.studioQueries.delete</code></li>
+<li><code>databasesconsole.studioQueries.delete</code></li>
 </ul></td>
 </tr>
 <tr class="odd">
 <td>Administer saved queries<br />
 (Only for use by administrators)</td>
 <td><ul>
-<li><code dir="ltr" translate="no">databasesConsole.studioQueries.list</code></li>
+<li><code>databasesConsole.studioQueries.list</code></li>
 </ul>
 <ul>
-<li><code dir="ltr" translate="no">databasesconsole.locations.list</code></li>
+<li><code>databasesconsole.locations.list</code></li>
 </ul></td>
 </tr>
 </tbody>
@@ -99,7 +99,7 @@ To create a saved query, follow these steps:
 2.  Select a Firestore with MongoDB compatibility database in which you want to create a saved query.
 3.  In the navigation menu, click **Firestore Studio** .
 4.  In the **Explorer** pane on the Firestore Studio page, navigate to the **Collections** section.
-5.  Click a collection to open a new editor tab. Optionally, you can click more\_vert **View actions** next to a collection. Then, click **Query collection** to open a new editor tab.
+5.  Click a collection to open a new editor tab. Optionally, you can click more_vert **View actions** next to a collection. Then, click **Query collection** to open a new editor tab.
 6.  In the query editor, enter a query.
 7.  Click **Save** .
 8.  In the **Save query** dialog, enter a name for the saved query.
@@ -110,7 +110,7 @@ To create a saved query, follow these steps:
 To open a saved query as a new query, follow these steps:
 
 1.  In the **Explorer** pane on the **Firestore Studio** page, navigate to the **Queries** section.
-2.  Click a saved query to open it in a new editor tab. Optionally, you can click more\_vert **View actions** next to a saved query. Then, click **Open query** to open it in a new editor tab.
+2.  Click a saved query to open it in a new editor tab. Optionally, you can click more_vert **View actions** next to a saved query. Then, click **Open query** to open it in a new editor tab.
 3.  Click **Run** .
 
 ## Update a saved query
@@ -118,7 +118,7 @@ To open a saved query as a new query, follow these steps:
 To update an existing saved query, follow these steps:
 
 1.  In the **Explorer** pane on the **Firestore Studio** page, navigate to the **Queries** section.
-2.  Click a saved query to open it in a new editor tab. Optionally, you can click more\_vert **View actions** next to a saved query. Then, click **Open query** to open it in a new editor tab.
+2.  Click a saved query to open it in a new editor tab. Optionally, you can click more_vert **View actions** next to a saved query. Then, click **Open query** to open it in a new editor tab.
 3.  Modify the query.
 4.  To save the modified query, click **Save** .
 
@@ -129,14 +129,14 @@ To view a list of all saved queries in your project, follow these steps:
 1.  Go to the **All databases** page in the Google Cloud console.  
 2.  Select any database. Because a saved query is a child of a project, as long as you have the required role, you can view all saved queries in the project from any database.
 
-<!-- end list -->
+<!-- -->
 
 3.  Select any database.
 
 4.  In the **Explorer** pane on the **Firestore Studio** page, navigate to the **Queries** section.
 
-5.  Click more\_vert **View actions** next to a saved query. Then, click **Manage queries** .
-    
+5.  Click more_vert **View actions** next to a saved query. Then, click **Manage queries** .
+
     The **Saved queries** page opens. This page lists all the saved queries in this project, including saved queries for other Google Cloud products.
 
 You can search, filter, view, and delete queries on the **Saved queries** page. You can't edit an existing query on the **Saved queries** page.
@@ -146,16 +146,16 @@ You can search, filter, view, and delete queries on the **Saved queries** page. 
 You can delete a saved query from the **Firestore Studio** page or on the **Saved queries** page in the Google Cloud console.
 
 1.  In the **Explorer** pane on the **Firestore Studio** page, navigate to the **Queries** section.
-2.  Click more\_vert **View actions** next to the saved query that you want to delete. Then, to delete the saved query, click **Delete query** .
+2.  Click more_vert **View actions** next to the saved query that you want to delete. Then, to delete the saved query, click **Delete query** .
 3.  In the **Delete query** dialog, click **Delete** .
 
 You can also delete a saved query on the **Saved queries** page. To delete a saved query on the **Saved queries** page, follow these steps:
 
 1.  Navigate to the [**Saved queries**](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-manage-saved-queries#view-and-manage) page.
-2.  Click more\_vert **View actions** next to the saved query that you want to delete.
+2.  Click more_vert **View actions** next to the saved query that you want to delete.
 3.  Click **Delete query** to delete the saved query.
 4.  In the **Delete query** dialog, click **Delete** .
 
 ## What's next
 
-  - Learn about [saved queries](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/saved-queries) .
+- Learn about [saved queries](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/saved-queries) .

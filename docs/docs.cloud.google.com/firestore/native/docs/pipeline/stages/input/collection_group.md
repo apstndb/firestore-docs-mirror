@@ -16,64 +16,73 @@ Returns all documents from any collection with the specified collection ID, rega
 
 ### Web
 
-    const results = await execute(db.pipeline()
-      .collectionGroup("games")
-      .sort(field("name").ascending())
-      );
+```
+const results = await execute(db.pipeline()
+  .collectionGroup("games")
+  .sort(field("name").ascending())
+  );
+```
 
 ##### Swift
 
-    let results = try await db.pipeline()
-      .collectionGroup("games")
-      .sort([Field("name").ascending()])
-      .execute()
+```
+let results = try await db.pipeline()
+  .collectionGroup("games")
+  .sort([Field("name").ascending()])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val results = db.pipeline()
-        .collectionGroup("games")
-        .sort(field("name").ascending())
-        .execute()
+```
+val results = db.pipeline()
+    .collectionGroup("games")
+    .sort(field("name").ascending())
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
-      Task<Pipeline.Snapshot> results = db.pipeline()
+```
+Task<Pipeline.Snapshot> results = db.pipeline()
     .collectionGroup("games")
     .sort(field("name").ascending())
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    results = (
-        client.pipeline()
-        .collection_group("games")
-        .sort(Field.of("name").ascending())
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+results = (
+    client.pipeline()
+    .collection_group("games")
+    .sort(Field.of("name").ascending())
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot results =
-        firestore
-            .pipeline()
-            .collectionGroup("games")
-            .sort(ascending(field("name")))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot results =
+    firestore
+        .pipeline()
+        .collectionGroup("games")
+        .sort(ascending(field("name")))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     CollectionGroup("games").
-     Sort(firestore.Orders(firestore.Ascending(firestore.FieldOf("name")))).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    CollectionGroup("games").
+    Sort(firestore.Orders(firestore.Ascending(firestore.FieldOf("name")))).
+    Execute(ctx)
+```
 
 ## Behavior
 
@@ -85,23 +94,27 @@ For example, for the following documents:
 
 ### Node.js
 
-    await db.collection("cities/SF/departments").doc("building").set({name: "SF Building Deparment", employees: 750});
-    await db.collection("cities/NY/departments").doc("building").set({name: "NY Building Deparment", employees: 1000});
-    await db.collection("cities/CHI/departments").doc("building").set({name: "CHI Building Deparment", employees: 900});
-    await db.collection("cities/NY/departments").doc("finance").set({name: "NY Finance Deparment", employees: 1200});
+```
+await db.collection("cities/SF/departments").doc("building").set({name: "SF Building Deparment", employees: 750});
+await db.collection("cities/NY/departments").doc("building").set({name: "NY Building Deparment", employees: 1000});
+await db.collection("cities/CHI/departments").doc("building").set({name: "CHI Building Deparment", employees: 900});
+await db.collection("cities/NY/departments").doc("finance").set({name: "NY Finance Deparment", employees: 1200});
+```
 
 The `collection_group(...)` stage can be used to return documents from every departments collection across all parent collections in the database.
 
 ### Node.js
 
-    const results = await db.pipeline()
-      .collectionGroup("departments")
-      .sort(field("employees").ascending())
-      .execute();
+```
+const results = await db.pipeline()
+  .collectionGroup("departments")
+  .sort(field("employees").ascending())
+  .execute();
+```
 
 This query produces the following documents:
 
-``` 
+```
   { name: "SF Building Deparment", employees: 750 }
   { name: "CHI Building Deparment", employees: 900 }
   { name: "NY Building Deparment", employees: 1000 }

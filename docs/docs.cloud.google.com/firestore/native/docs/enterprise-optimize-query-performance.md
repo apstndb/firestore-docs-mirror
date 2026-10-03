@@ -59,35 +59,41 @@ The following example forces the planner to use index with ID `CICAgOi36pgK` :
 
 ##### Node.js
 
-    // Force Planner to use Index ID CICAgOi36pgK
-    await db.pipeline()
-      .collectionGroup({ collectionId: "customers", forceIndex: "CICAgOi36pgK" })
-      .limit(100)
-      .execute();
+```
+// Force Planner to use Index ID CICAgOi36pgK
+await db.pipeline()
+  .collectionGroup({ collectionId: "customers", forceIndex: "CICAgOi36pgK" })
+  .limit(100)
+  .execute();
+```
 
 ##### Java
 
-    // Force Planner to use Index ID CICAgOi36pgK
-    Pipeline.Snapshot results1 =
-        firestore.pipeline()
-          .collectionGroup("customers", new CollectionGroupOptions()
-              .withHints(new CollectionHints().withForceIndex("CICAgOi36pgK")))
-          .limit(100)
-          .execute().get();
+```
+// Force Planner to use Index ID CICAgOi36pgK
+Pipeline.Snapshot results1 =
+    firestore.pipeline()
+      .collectionGroup("customers", new CollectionGroupOptions()
+          .withHints(new CollectionHints().withForceIndex("CICAgOi36pgK")))
+      .limit(100)
+      .execute().get();
+```
 
 ##### Go
 
-    // Force Planner to use Index ID CICAgOi36pgK
-    snapshot1 := client.Pipeline().
-     CollectionGroup("customers", firestore.WithForceIndex("CICAgOi36pgK")).
-     Limit(100).
-     Execute(ctx)
+```
+// Force Planner to use Index ID CICAgOi36pgK
+snapshot1 := client.Pipeline().
+    CollectionGroup("customers", firestore.WithForceIndex("CICAgOi36pgK")).
+    Limit(100).
+    Execute(ctx)
+```
 
 Here are some use cases for forcing a specific index:
 
-  - Testing the performance of different indexes.
-  - Ensuring a specific, known-optimal index is used for a query.
-  - Overriding the optimizer when its default choice is suboptimal for a particular query.
+- Testing the performance of different indexes.
+- Ensuring a specific, known-optimal index is used for a query.
+- Overriding the optimizer when its default choice is suboptimal for a particular query.
 
 If the specified index is not found, the query fails.
 
@@ -97,16 +103,18 @@ A table scan reads documents in the collection or collection group without using
 
 The following example forces a table scan:
 
-    // Force Planner to only do a Full-Table Scan
-    db.pipeline()
-      .collectionGroup({ collectionId: "customers", forceIndex: "primary" })
-      .limit(100)
+```
+// Force Planner to only do a Full-Table Scan
+db.pipeline()
+  .collectionGroup({ collectionId: "customers", forceIndex: "primary" })
+  .limit(100)
+```
 
 You might use a table scan in the following cases:
 
-  - For very small collections where index overhead is not justified.
-  - For queries that access most of the documents in a collection.
-  - For debugging and performance comparisons.
+- For very small collections where index overhead is not justified.
+- For queries that access most of the documents in a collection.
+- For debugging and performance comparisons.
 
 > **Caution:** Table scans on large collections are slow and don't scale. They read all documents in the collection, which significantly increases read operation costs. For most production scenarios, we recommend relying on indexes instead of forcing table scans.
 
@@ -114,14 +122,14 @@ You might use a table scan in the following cases:
 
 You can use [Query Explain](https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain) in the `explain` or `analyze` modes to observe the effects of `forceIndex` :
 
-  - Verify that Firestore in Native Mode used the specified index in `forceIndex` by checking the leaf nodes of the execution tree for the index ID.
-  - Confirm that a `TableScan` node appears in the plan when using `forceIndex: "primary"` .
-  - With `analyze` mode, compare the performance metrics—such as latency, documents scanned, and index entries scanned—with and without `forceIndex` to fine-tune query performance.
+- Verify that Firestore in Native Mode used the specified index in `forceIndex` by checking the leaf nodes of the execution tree for the index ID.
+- Confirm that a `TableScan` node appears in the plan when using `forceIndex: "primary"` .
+- With `analyze` mode, compare the performance metrics—such as latency, documents scanned, and index entries scanned—with and without `forceIndex` to fine-tune query performance.
 
 #### Best practices for `forceIndex`
 
 While `forceIndex` provides more control over query execution, Firestore in Native Mode's query optimizer is generally efficient for most use cases. Consider the following best practices when using `forceIndex` :
 
-  - Use `forceIndex` judiciously. If you observe suboptimal performance with the default query plan, use [Query Explain](https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain) to diagnose the issue before forcing an index.
-  - When using `forceIndex` , make sure to test your queries with realistic data volumes to understand their performance and cost characteristics.
-  - Avoid using `forceIndex: "primary"` on large collections in production environments.
+- Use `forceIndex` judiciously. If you observe suboptimal performance with the default query plan, use [Query Explain](https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain) to diagnose the issue before forcing an index.
+- When using `forceIndex` , make sure to test your queries with realistic data volumes to understand their performance and cost characteristics.
+- Avoid using `forceIndex: "primary"` on large collections in production environments.

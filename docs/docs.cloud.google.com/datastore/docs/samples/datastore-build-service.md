@@ -12,20 +12,22 @@ Build a service by using various CRUD methods.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Getting started with the Firestore in Datastore mode API](https://docs.cloud.google.com/datastore/docs/datastore-api-tutorial)
+- [Getting started with the Firestore in Datastore mode API](https://docs.cloud.google.com/datastore/docs/datastore-api-tutorial)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    // Create an authorized Datastore service using Application Default Credentials.
-    _db = DatastoreDb.Create(projectId);
-    // Create a Key factory to construct keys associated with this project.
-    _keyFactory = _db.CreateKeyFactory("Task");
+```csharp
+// Create an authorized Datastore service using Application Default Credentials.
+_db = DatastoreDb.Create(projectId);
+// Create a Key factory to construct keys associated with this project.
+_keyFactory = _db.CreateKeyFactory("Task");
+```
 
 ### Go
 
@@ -33,24 +35,26 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    import (
-     "context"
-     "log"
-    
-     "cloud.google.com/go/datastore"
-    )
-    
-    func createClient(projectID string) (*datastore.Client, error) {
-     ctx := context.Background()
-     client, err := datastore.NewClient(ctx, projectID)
-     if err != nil {
-         log.Fatalf("Could not create datastore client: %v", err)
-     }
-     // Note: call the following from main() to ensure the client
-     // properly frees all resources.
-     // defer client.Close()
-     return client, nil
+```go
+import (
+    "context"
+    "log"
+
+    "cloud.google.com/go/datastore"
+)
+
+func createClient(projectID string) (*datastore.Client, error) {
+    ctx := context.Background()
+    client, err := datastore.NewClient(ctx, projectID)
+    if err != nil {
+        log.Fatalf("Could not create datastore client: %v", err)
     }
+    // Note: call the following from main() to ensure the client
+    // properly frees all resources.
+    // defer client.Close()
+    return client, nil
+}
+```
 
 ### Java
 
@@ -58,11 +62,13 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    // Create an authorized Datastore service using Application Default Credentials.
-    private final Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
-    
-    // Create a Key factory to construct keys associated with this project.
-    private final KeyFactory keyFactory = datastore.newKeyFactory().setKind("Task");
+```java
+// Create an authorized Datastore service using Application Default Credentials.
+private final Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
+
+// Create a Key factory to construct keys associated with this project.
+private final KeyFactory keyFactory = datastore.newKeyFactory().setKind("Task");
+```
 
 ### PHP
 
@@ -70,18 +76,20 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    use Google\Cloud\Datastore\DatastoreClient;
-    
-    /**
-     * Create a Cloud Datastore client.
-     *
-     * @param string $projectId The Google Cloud project ID.
-     */
-    function build_service(string $projectId)
-    {
-        $datastore = new DatastoreClient(['projectId' => $projectId]);
-        return $datastore;
-    }
+```php
+use Google\Cloud\Datastore\DatastoreClient;
+
+/**
+ * Create a Cloud Datastore client.
+ *
+ * @param string $projectId The Google Cloud project ID.
+ */
+function build_service(string $projectId)
+{
+    $datastore = new DatastoreClient(['projectId' => $projectId]);
+    return $datastore;
+}
+```
 
 ### Python
 
@@ -89,10 +97,12 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    def create_client(project_id):
-        return datastore.Client(project_id)
+```python
+from google.cloud import datastore
+
+def create_client(project_id):
+    return datastore.Client(project_id)
+```
 
 ### Ruby
 
@@ -100,9 +110,11 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    require "google/cloud/datastore"
-    
-    datastore = Google::Cloud::Datastore.new
+```ruby
+require "google/cloud/datastore"
+
+datastore = Google::Cloud::Datastore.new
+```
 
 ## What's next
 

@@ -8,4 +8,4 @@ data_source: docs.cloud.google.com
 
 This type has no fields.
 
-The metadata message for `  google.cloud.location.Location.metadata  ` .
+The metadata message for [`google.cloud.location.Location.metadata`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations#Location.FIELDS.metadata) .

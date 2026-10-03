@@ -12,23 +12,25 @@ Set array value types.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Datastore queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)
-  - [Entities, Properties, and Keys](https://docs.cloud.google.com/datastore/docs/concepts/entities)
+- [Datastore queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)
+- [Entities, Properties, and Keys](https://docs.cloud.google.com/datastore/docs/concepts/entities)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Entity task = new Entity()
-    {
-        Key = _db.CreateKeyFactory("Task").CreateKey("sampleTask"),
-        ["collaborators"] = new ArrayValue() { Values = { "alice", "bob" } },
-        ["tags"] = new ArrayValue() { Values = { "fun", "programming" } }
-    };
+```csharp
+Entity task = new Entity()
+{
+    Key = _db.CreateKeyFactory("Task").CreateKey("sampleTask"),
+    ["collaborators"] = new ArrayValue() { Values = { "alice", "bob" } },
+    ["tags"] = new ArrayValue() { Values = { "fun", "programming" } }
+};
+```
 
 ### Go
 
@@ -36,14 +38,16 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    type Task struct {
-     Tags          []string
-     Collaborators []string
-    }
-    task := &Task{
-     Tags:          []string{"fun", "programming"},
-     Collaborators: []string{"alice", "bob"},
-    }
+```go
+type Task struct {
+    Tags          []string
+    Collaborators []string
+}
+task := &Task{
+    Tags:          []string{"fun", "programming"},
+    Collaborators: []string{"alice", "bob"},
+}
+```
 
 ### Java
 
@@ -51,11 +55,13 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Entity task =
-        Entity.newBuilder(taskKey)
-            .set("tags", "fun", "programming")
-            .set("collaborators", ListValue.of("alice", "bob"))
-            .build();
+```java
+Entity task =
+    Entity.newBuilder(taskKey)
+        .set("tags", "fun", "programming")
+        .set("collaborators", ListValue.of("alice", "bob"))
+        .build();
+```
 
 ### PHP
 
@@ -63,13 +69,15 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $task = $datastore->entity(
-        $key,
-        [
-            'tags' => ['fun', 'programming'],
-            'collaborators' => ['alice', 'bob']
-        ]
-    );
+```php
+$task = $datastore->entity(
+    $key,
+    [
+        'tags' => ['fun', 'programming'],
+        'collaborators' => ['alice', 'bob']
+    ]
+);
+```
 
 ### Python
 
@@ -77,15 +85,17 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    key = client.key("Task")
-    task = datastore.Entity(key)
-    task.update({"tags": ["fun", "programming"], "collaborators": ["alice", "bob"]})
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+key = client.key("Task")
+task = datastore.Entity(key)
+task.update({"tags": ["fun", "programming"], "collaborators": ["alice", "bob"]})
+```
 
 ### Ruby
 
@@ -93,11 +103,13 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    # task_name = "sampleTask"
-    task = datastore.entity "Task", task_name do |t|
-      t["tags"] = ["fun", "programming"]
-      t["collaborators"] = ["alice", "bob"]
-    end
+```ruby
+# task_name = "sampleTask"
+task = datastore.entity "Task", task_name do |t|
+  t["tags"] = ["fun", "programming"]
+  t["collaborators"] = ["alice", "bob"]
+end
+```
 
 ## What's next
 

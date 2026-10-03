@@ -16,61 +16,70 @@ Returns all the documents within a database across different collections and nes
 
 ### Web
 
-    // Count all documents in the database
-    const results = await execute(db.pipeline()
-      .database()
-      .aggregate(countAll().as("total"))
-      );
+```
+// Count all documents in the database
+const results = await execute(db.pipeline()
+  .database()
+  .aggregate(countAll().as("total"))
+  );
+```
 
 ##### Swift
 
-    // Count all documents in the database
-    let results = try await db.pipeline()
-      .database()
-      .aggregate([CountAll().as("total")])
-      .execute()
+```
+// Count all documents in the database
+let results = try await db.pipeline()
+  .database()
+  .aggregate([CountAll().as("total")])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    // Count all documents in the database
-    val results = db.pipeline()
-        .database()
-        .aggregate(AggregateFunction.countAll().alias("total"))
-        .execute()
+```
+// Count all documents in the database
+val results = db.pipeline()
+    .database()
+    .aggregate(AggregateFunction.countAll().alias("total"))
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-``` 
-      // Count all documents in the database
+```
+// Count all documents in the database
 Task<Pipeline.Snapshot> results = db.pipeline()
     .database()
     .aggregate(AggregateFunction.countAll().alias("total"))
     .execute();
-    
 ```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Count
-    
-    # Count all documents in the database
-    results = client.pipeline().database().aggregate(Count().as_("total")).execute()
+```
+from google.cloud.firestore_v1.pipeline_expressions import Count
+
+# Count all documents in the database
+results = client.pipeline().database().aggregate(Count().as_("total")).execute()
+```
 
 ##### Java
 
-    // Count all documents in the database
-    Pipeline.Snapshot results =
-        firestore.pipeline().database().aggregate(countAll().as("total")).execute().get();
+```
+// Count all documents in the database
+Pipeline.Snapshot results =
+    firestore.pipeline().database().aggregate(countAll().as("total")).execute().get();
+```
 
 ##### Go
 
-    // Count all documents in the database
-    snapshot := client.Pipeline().
-     Database().
-     Aggregate(firestore.Accumulators(firestore.CountAll().As("total"))).
-     Execute(ctx)
+```
+// Count all documents in the database
+snapshot := client.Pipeline().
+    Database().
+    Aggregate(firestore.Accumulators(firestore.CountAll().As("total"))).
+    Execute(ctx)
+```
 
 ## Behavior
 
@@ -82,22 +91,26 @@ For example, for the following documents:
 
 ### Node.js
 
-    await db.collection("cities").doc("SF").set({name: "San Francsico", state: "California", population: 800000});
-    await db.collection("states").doc("CA").set({name: "California", population: 39000000});
-    await db.collection("countries").doc("USA").set({name: "United States of America", population: 340000000});
+```
+await db.collection("cities").doc("SF").set({name: "San Francsico", state: "California", population: 800000});
+await db.collection("states").doc("CA").set({name: "California", population: 39000000});
+await db.collection("countries").doc("USA").set({name: "United States of America", population: 340000000});
+```
 
 The `database(...)` stage can be used to retrieve all the documents in the database.
 
 ### Node.js
 
-    const results = await db.pipeline()
-      .database()
-      .sort(field("population").ascending())
-      .execute();
+```
+const results = await db.pipeline()
+  .database()
+  .sort(field("population").ascending())
+  .execute();
+```
 
 This query produces the following documents:
 
-``` 
+```
   { name: "San Francsico", state: "California", population: 800000 }
   { name: "California", population: 39000000 }
   { name: "United States of America", population: 340000000 }

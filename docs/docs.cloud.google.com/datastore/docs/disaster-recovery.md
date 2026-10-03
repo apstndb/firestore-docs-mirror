@@ -50,5 +50,5 @@ To start a clone operation, see [Clone from a database](https://docs.cloud.googl
 
 ## What's next
 
-  - [Learn about backups](https://docs.cloud.google.com/datastore/docs/backups)
-  - [Learn about PITR exports](https://docs.cloud.google.com/datastore/docs/pitr)
+- [Learn about backups](https://docs.cloud.google.com/datastore/docs/backups)
+- [Learn about PITR exports](https://docs.cloud.google.com/datastore/docs/pitr)

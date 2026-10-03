@@ -12,22 +12,24 @@ Kind query.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Datastore Metadata](https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries)
+- [Datastore Metadata](https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("__kind__");
-    var kinds = new List<string>();
-    foreach (Entity entity in _db.RunQuery(query).Entities)
-    {
-        kinds.Add(entity.Key.Path[0].Name);
-    };
+```csharp
+Query query = new Query("__kind__");
+var kinds = new List<string>();
+foreach (Entity entity in _db.RunQuery(query).Entities)
+{
+    kinds.Add(entity.Key.Path[0].Name);
+};
+```
 
 ### Go
 
@@ -35,16 +37,18 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("__kind__").KeysOnly()
-    keys, err := client.GetAll(ctx, query, nil)
-    if err != nil {
-     log.Fatalf("client.GetAll: %v", err)
-    }
-    
-    kinds := make([]string, 0, len(keys))
-    for _, k := range keys {
-     kinds = append(kinds, k.Name)
-    }
+```go
+query := datastore.NewQuery("__kind__").KeysOnly()
+keys, err := client.GetAll(ctx, query, nil)
+if err != nil {
+    log.Fatalf("client.GetAll: %v", err)
+}
+
+kinds := make([]string, 0, len(keys))
+for _, k := range keys {
+    kinds = append(kinds, k.Name)
+}
+```
 
 ### Java
 
@@ -52,12 +56,14 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Key> query = Query.newKeyQueryBuilder().setKind("__kind__").build();
-    List<String> kinds = new ArrayList<>();
-    QueryResults<Key> results = datastore.run(query);
-    while (results.hasNext()) {
-      kinds.add(results.next().getName());
-    }
+```java
+Query<Key> query = Query.newKeyQueryBuilder().setKind("__kind__").build();
+List<String> kinds = new ArrayList<>();
+QueryResults<Key> results = datastore.run(query);
+while (results.hasNext()) {
+  kinds.add(results.next().getName());
+}
+```
 
 ### PHP
 
@@ -65,15 +71,17 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('__kind__')
-        ->projection(['__key__']);
-    $result = $datastore->runQuery($query);
-    /* @var array<string> $kinds */
-    $kinds = [];
-    foreach ($result as $kind) {
-        $kinds[] = $kind->key()->pathEnd()['name'];
-    }
+```php
+$query = $datastore->query()
+    ->kind('__kind__')
+    ->projection(['__key__']);
+$result = $datastore->runQuery($query);
+/* @var array<string> $kinds */
+$kinds = [];
+foreach ($result as $kind) {
+    $kinds[] = $kind->key()->pathEnd()['name'];
+}
+```
 
 ### Python
 
@@ -81,16 +89,18 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query(kind="__kind__")
-    query.keys_only()
-    
-    kinds = [entity.key.id_or_name for entity in query.fetch()]
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query(kind="__kind__")
+query.keys_only()
+
+kinds = [entity.key.id_or_name for entity in query.fetch()]
+```
 
 ### Ruby
 
@@ -98,12 +108,14 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("__kind__")
-                     .select("__key__")
-    
-    kinds = datastore.run(query).map do |entity|
-      entity.key.name
-    end
+```ruby
+query = datastore.query("__kind__")
+                 .select("__key__")
+
+kinds = datastore.run(query).map do |entity|
+  entity.key.name
+end
+```
 
 ## What's next
 

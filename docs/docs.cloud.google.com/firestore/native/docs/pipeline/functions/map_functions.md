@@ -10,34 +10,38 @@ data_source: docs.cloud.google.com
 
 ## **Map Functions**
 
-|                                    |                                                         |
-| ---------------------------------- | ------------------------------------------------------- |
-| Name                               | Description                                             |
-| `         MAP        `             | Constructs a map value from a series of key-value pairs |
-| `         MAP_GET        `         | Returns the value in a map given a specified key        |
-| `         MAP_SET        `         | Returns a copy of a map with a series of updated keys   |
-| `         MAP_REMOVE        `      | Returns a copy of a map with a series of keys removed   |
-| `         MAP_MERGE        `       | Merges a series of maps together.                       |
-| `         CURRENT_CONTEXT        ` | Returns the current context as a map.                   |
-| `         MAP_KEYS        `        | Returns an array of all keys in a map.                  |
-| `         MAP_VALUES        `      | Returns an array of all values in a map.                |
-| `         MAP_ENTRIES        `     | Returns an array of key-value pairs of a map.           |
+|                                                                                                                           |                                                         |
+|---------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------|
+| Name                                                                                                                      | Description                                             |
+| [`MAP`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_functions#map)                         | Constructs a map value from a series of key-value pairs |
+| [`MAP_GET`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_functions#map_get)                 | Returns the value in a map given a specified key        |
+| [`MAP_SET`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_functions#map_set)                 | Returns a copy of a map with a series of updated keys   |
+| [`MAP_REMOVE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_functions#map_remove)           | Returns a copy of a map with a series of keys removed   |
+| [`MAP_MERGE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_functions#map_merge)             | Merges a series of maps together.                       |
+| [`CURRENT_CONTEXT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_functions#current_context) | Returns the current context as a map.                   |
+| [`MAP_KEYS`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_functions#map_keys)               | Returns an array of all keys in a map.                  |
+| [`MAP_VALUES`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_functions#map_values)           | Returns an array of all values in a map.                |
+| [`MAP_ENTRIES`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_functions#map_entries)         | Returns an array of key-value pairs of a map.           |
 
 ### MAP
 
 **Syntax:**
 
-    map(key: STRING, value: ANY, ...) -> MAP
+```
+map(key: STRING, value: ANY, ...) -> MAP
+```
 
 **Description:**
 
 Constructs a map from a series of key-value pairs.
 
-### MAP\_GET
+### MAP_GET
 
 **Syntax:**
 
-    map_get(map: ANY, key: STRING) -> ANY
+```
+map_get(map: ANY, key: STRING) -> ANY
+```
 
 **Description:**
 
@@ -45,86 +49,102 @@ Returns the value in a map given a specified key. Returns an `ABSENT` value if t
 
 ##### Node.js
 
-    const result = await db.pipeline()
-      .collection("books")
-      .select(
-        field("awards").mapGet("pulitzer").as("hasPulitzerAward")
-      )
-      .execute();
+```
+const result = await db.pipeline()
+  .collection("books")
+  .select(
+    field("awards").mapGet("pulitzer").as("hasPulitzerAward")
+  )
+  .execute();
+```
 
 ### Web
 
-    const result = await execute(db.pipeline()
-      .collection("books")
-      .select(
-        field("awards").mapGet("pulitzer").as("hasPulitzerAward")
-      )
-    );
+```
+const result = await execute(db.pipeline()
+  .collection("books")
+  .select(
+    field("awards").mapGet("pulitzer").as("hasPulitzerAward")
+  )
+);
+```
 
 ##### Swift
 
-    let result = try await db.pipeline()
-      .collection("books")
-      .select([
-        Field("awards").mapGet("pulitzer").as("hasPulitzerAward")
-      ])
-      .execute()
+```
+let result = try await db.pipeline()
+  .collection("books")
+  .select([
+    Field("awards").mapGet("pulitzer").as("hasPulitzerAward")
+  ])
+  .execute()
+```
 
-##### Kotlin  
-Android
+##### Kotlin Android
 
-    val result = db.pipeline()
-        .collection("books")
-        .select(
-            field("awards").mapGet("pulitzer").alias("hasPulitzerAward")
-        )
-        .execute()
+```
+val result = db.pipeline()
+    .collection("books")
+    .select(
+        field("awards").mapGet("pulitzer").alias("hasPulitzerAward")
+    )
+    .execute()
+```
 
-##### Java  
-Android
+##### Java Android
 
-    Task<Pipeline.Snapshot> result = db.pipeline()
-        .collection("books")
-        .select(
-            field("awards").mapGet("pulitzer").alias("hasPulitzerAward")
-        )
-        .execute();
+```
+Task<Pipeline.Snapshot> result = db.pipeline()
+    .collection("books")
+    .select(
+        field("awards").mapGet("pulitzer").alias("hasPulitzerAward")
+    )
+    .execute();
+```
 
 ##### Python
 
-    from google.cloud.firestore_v1.pipeline_expressions import Field
-    
-    result = (
-        client.pipeline()
-        .collection("books")
-        .select(Field.of("awards").map_get("pulitzer").as_("hasPulitzerAward"))
-        .execute()
-    )
+```
+from google.cloud.firestore_v1.pipeline_expressions import Field
+
+result = (
+    client.pipeline()
+    .collection("books")
+    .select(Field.of("awards").map_get("pulitzer").as_("hasPulitzerAward"))
+    .execute()
+)
+```
 
 ##### Java
 
-    Pipeline.Snapshot result =
-        firestore
-            .pipeline()
-            .collection("books")
-            .select(mapGet(field("awards"), "pulitzer").as("hasPulitzerAward"))
-            .execute()
-            .get();
+```
+Pipeline.Snapshot result =
+    firestore
+        .pipeline()
+        .collection("books")
+        .select(mapGet(field("awards"), "pulitzer").as("hasPulitzerAward"))
+        .execute()
+        .get();
+```
 
 ##### Go
 
-    snapshot := client.Pipeline().
-     Collection("books").
-     Select(firestore.Fields(
-         firestore.MapGet(firestore.FieldOf("awards"), "pulitzer").As("hasPulitzerAward"),
-     )).
-     Execute(ctx)
+```
+snapshot := client.Pipeline().
+    Collection("books").
+    Select(firestore.Fields(
+        firestore.MapGet(firestore.FieldOf("awards"), "pulitzer").As("hasPulitzerAward"),
+    )).
+    Execute(ctx)
+```
 
-### MAP\_SET
+### MAP_SET
 
 **Syntax:**
 
-    map_set(map: MAP, key: STRING, value: ANY, ...) -> MAP
+```
+map_set(map: MAP, key: STRING, value: ANY, ...) -> MAP
+```
 
 **Description:**
 
@@ -134,57 +154,69 @@ If the given resolves to an absent value, the associated key is removed from the
 
 If the `map` argument is not a `MAP` , returns an absent value.
 
-### MAP\_REMOVE
+### MAP_REMOVE
 
 **Syntax:**
 
-    map_remove(map: MAP, key: STRING...) -> MAP
+```
+map_remove(map: MAP, key: STRING...) -> MAP
+```
 
 **Description:**
 
 Returns a copy of the `map` value with a series of keys removed.
 
-### MAP\_MERGE
+### MAP_MERGE
 
 **Syntax:**
 
-    map_merge(maps: MAP...) -> MAP
+```
+map_merge(maps: MAP...) -> MAP
+```
 
 Merges the contents of 2 or more maps. If multiple maps have conflicting values, the last value is used.
 
-### CURRENT\_CONTEXT
+### CURRENT_CONTEXT
 
 **Syntax:**
 
-    current_context() -> MAP
+```
+current_context() -> MAP
+```
 
 Returns a map consisting of all available fields in the current point of execution.
 
-### MAP\_KEYS
+### MAP_KEYS
 
 **Syntax:**
 
-    map_keys(map: MAP) -> ARRAY<STRING>
+```
+map_keys(map: MAP) -> ARRAY<STRING>
+```
 
 **Description:**
 
 Returns an array containing all keys of the `map` value.
 
-### MAP\_VALUES
+### MAP_VALUES
 
 **Syntax:**
 
-    map_values(map: MAP) -> ARRAY<ANY>
+```
+map_values(map: MAP) -> ARRAY<ANY>
+```
 
 **Description:**
 
 Returns an array containing all values of the `map` value.
 
-### MAP\_ENTRIES
+### MAP_ENTRIES
 
 **Syntax:**
 
-    map_entries(map: MAP) -> ARRAY<MAP>
+```
+map_entries(map: MAP) -> ARRAY<MAP>
+```
 
 **Description:**
 
@@ -195,11 +227,11 @@ Each key-value pair will be in the form of a map with two entries, `k` and `v` .
 **Examples:**
 
 | `map`                          | `map_entries(map)`                                        |
-| :----------------------------- | :-------------------------------------------------------- |
+|--------------------------------|-----------------------------------------------------------|
 | {}                             | \[\]                                                      |
 | {"foo" : 2L}                   | \[{"k": "foo", "v" : 2L}\]                                |
 | {"foo" : "bar", "bar" : "foo"} | \[{"k": "foo", "v" : "bar" }, {"k" : "bar", "v": "foo"}\] |
 
 ## What's next
 
-  - See the [Pipeline Queries overview](https://docs.cloud.google.com/firestore/docs/pipeline/overview)
+- See the [Pipeline Queries overview](https://docs.cloud.google.com/firestore/docs/pipeline/overview)

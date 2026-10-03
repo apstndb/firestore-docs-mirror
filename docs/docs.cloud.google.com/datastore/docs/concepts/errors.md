@@ -16,31 +16,35 @@ The rest of this page describes the structure of an error, enumerates specific e
 
 The following is the structure of an error response for a JSON request:
 
-    {
-      "error": {
-        "code": "integer",
-        "message": "string",
-        "status": "string"
-      }
-    }
+```
+{
+  "error": {
+    "code": "integer",
+    "message": "string",
+    "status": "string"
+  }
+}
+```
 
 The response object contains a single field `error` whose value contains the following elements:
 
 | Element   | Description                                                                                                                                                                                                                                                                                           |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `code`    | An [HTTP status code](https://tools.ietf.org/html/rfc7231#section-6) that generically identifies the request failure.                                                                                                                                                                                 |
 | `message` | Specific information about the request failure.                                                                                                                                                                                                                                                       |
 | `status`  | The [canonical error code](https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto) ( `google.rpc.Code` ) for Google APIs. Codes that may be returned by the Datastore API are listed in [Error Codes](https://docs.cloud.google.com/datastore/docs/concepts/errors#error_codes) . |
 
 Here's an example of an error response for a JSON request:
 
-    {
-      "error": {
-        "code": 400,
-        "message": "Key path is incomplete: [Person: null]",
-        "status": "INVALID_ARGUMENT"
-      }
-    }
+```
+{
+  "error": {
+    "code": 400,
+    "message": "Key path is incomplete: [Person: null]",
+    "status": "INVALID_ARGUMENT"
+  }
+}
+```
 
 If a request made with a content type of `application/x-protobuf` results in an error, it will return a serialized [`google.rpc.Status`](https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto) message as the payload.
 
@@ -50,80 +54,16 @@ If a request made with a content type of `application/x-protobuf` results in an 
 
 The recommended way to classify errors is inspect the value of the [canonical error code](https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto) ( `google.rpc.Code` ). In JSON errors, this code appears in the `status` field. In `application/x-protobuf` errors, it's in the `code` field.
 
-<table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Canonical Error Code</th>
-<th>Description</th>
-<th>Recommended Action</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code dir="ltr" translate="no">ABORTED</code></td>
-<td>Indicates that the request conflicted with another request.</td>
-<td>For a non-transactional commit:<br />
-Retry the request or structure your entities to reduce contention.<br />
-<br />
-For requests that are part of a <a href="https://docs.cloud.google.com/datastore/docs/concepts/transactions">transactional</a> commit:<br />
-Retry the entire transaction or structure your entities to reduce contention.</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">ALREADY_EXISTS</code></td>
-<td>Indicates that the request attempted to insert an entity that already exists.</td>
-<td>Do not retry without fixing the problem.</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">DEADLINE_EXCEEDED</code></td>
-<td>A deadline was exceeded on the server.</td>
-<td>Retry using exponential backoff.</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">FAILED_PRECONDITION</code></td>
-<td>Indicates that a precondition for the request was not met. The message field in the error response provides information about the precondition that failed. One possible cause is running a query that requires an index not yet defined.</td>
-<td>Do not retry without fixing the problem.</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">INTERNAL</code></td>
-<td>Server returned an error.</td>
-<td>Do not retry this request more than once.</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">INVALID_ARGUMENT</code></td>
-<td>Indicates that a request parameter has an invalid value. The message field in the error response provides information as to which value was invalid.</td>
-<td>Do not retry without fixing the problem.</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">NOT_FOUND</code></td>
-<td>Indicates that the request attempted to update an entity that does not exist.</td>
-<td>Do not retry without fixing the problem.</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">PERMISSION_DENIED</code></td>
-<td>Indicates that the user was not authorized to make the request.</td>
-<td>Do not retry without fixing the problem.</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">RESOURCE_EXHAUSTED</code></td>
-<td>Indicates that the project exceeded either its <a href="https://docs.cloud.google.com/datastore/docs/pricing">quota</a> or the region/multi-region capacity.</td>
-<td><a href="https://docs.cloud.google.com/datastore/docs/pricing#locating_quota_usage_information_for_your_app">Verify that you did not exceed your project quota</a> . If you exceeded a project quota, do not retry without fixing the problem.<br />
-<br />
-Otherwise, retry with exponential backoff.</td>
-</tr>
-<tr class="even">
-<td><code dir="ltr" translate="no">UNAUTHENTICATED</code></td>
-<td>Indicates that the request did not have valid authentication credentials.</td>
-<td>Do not retry without fixing the problem.</td>
-</tr>
-<tr class="odd">
-<td><code dir="ltr" translate="no">UNAVAILABLE</code></td>
-<td>Server returned an error.</td>
-<td>Retry using exponential backoff.</td>
-</tr>
-</tbody>
-</table>
+| Canonical Error Code  | Description                                                                                                                                                                                                                               | Recommended Action                                                                                                                                                                                                                                                                                           |
+|-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `ABORTED`             | Indicates that the request conflicted with another request.                                                                                                                                                                               | For a non-transactional commit: Retry the request or structure your entities to reduce contention. For requests that are part of a [transactional](https://docs.cloud.google.com/datastore/docs/concepts/transactions) commit: Retry the entire transaction or structure your entities to reduce contention. |
+| `ALREADY_EXISTS`      | Indicates that the request attempted to insert an entity that already exists.                                                                                                                                                             | Do not retry without fixing the problem.                                                                                                                                                                                                                                                                     |
+| `DEADLINE_EXCEEDED`   | A deadline was exceeded on the server.                                                                                                                                                                                                    | Retry using exponential backoff.                                                                                                                                                                                                                                                                             |
+| `FAILED_PRECONDITION` | Indicates that a precondition for the request was not met. The message field in the error response provides information about the precondition that failed. One possible cause is running a query that requires an index not yet defined. | Do not retry without fixing the problem.                                                                                                                                                                                                                                                                     |
+| `INTERNAL`            | Server returned an error.                                                                                                                                                                                                                 | Do not retry this request more than once.                                                                                                                                                                                                                                                                    |
+| `INVALID_ARGUMENT`    | Indicates that a request parameter has an invalid value. The message field in the error response provides information as to which value was invalid.                                                                                      | Do not retry without fixing the problem.                                                                                                                                                                                                                                                                     |
+| `NOT_FOUND`           | Indicates that the request attempted to update an entity that does not exist.                                                                                                                                                             | Do not retry without fixing the problem.                                                                                                                                                                                                                                                                     |
+| `PERMISSION_DENIED`   | Indicates that the user was not authorized to make the request.                                                                                                                                                                           | Do not retry without fixing the problem.                                                                                                                                                                                                                                                                     |
+| `RESOURCE_EXHAUSTED`  | Indicates that the project exceeded either its [quota](https://docs.cloud.google.com/datastore/docs/pricing) or the region/multi-region capacity.                                                                                         | [Verify that you did not exceed your project quota](https://docs.cloud.google.com/datastore/docs/pricing#locating_quota_usage_information_for_your_app) . If you exceeded a project quota, do not retry without fixing the problem. Otherwise, retry with exponential backoff.                               |
+| `UNAUTHENTICATED`     | Indicates that the request did not have valid authentication credentials.                                                                                                                                                                 | Do not retry without fixing the problem.                                                                                                                                                                                                                                                                     |
+| `UNAVAILABLE`         | Server returned an error.                                                                                                                                                                                                                 | Retry using exponential backoff.                                                                                                                                                                                                                                                                             |

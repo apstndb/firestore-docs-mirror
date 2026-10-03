@@ -14,10 +14,11 @@ This document shows you how to use the Firestore remote Model Context Protocol (
 
 ## What's the difference between local and remote MCP servers?
 
-  - Local MCP servers  
-    Typically run on your local machine and use the standard input and output streams (stdio) for communication between services on the same device.
-  - Remote MCP servers  
-    Run on the service's infrastructure and offer an HTTP endpoint to AI applications for communication between the AI MCP client and the MCP server. For more information about MCP architecture, see [MCP architecture](https://modelcontextprotocol.io/docs/learn/architecture) .
+Local MCP servers  
+Typically run on your local machine and use the standard input and output streams (stdio) for communication between services on the same device.
+
+Remote MCP servers  
+Run on the service's infrastructure and offer an HTTP endpoint to AI applications for communication between the AI MCP client and the MCP server. For more information about MCP architecture, see [MCP architecture](https://modelcontextprotocol.io/docs/learn/architecture) .
 
 ## Stateless core
 
@@ -25,8 +26,8 @@ With [MCP version 2026-07-28](https://modelcontextprotocol.io/specification/2026
 
 To help route and process requests without parsing the request body, some MCP headers are required, including the following:
 
-  - Headers that are required by the MCP specification such as the [protocol version header](https://modelcontextprotocol.io/specification/latest/basic/transports/streamable-http#protocol-version-header) and [standard request headers](https://modelcontextprotocol.io/specification/latest/basic/transports/streamable-http#standard-request-headers) .
-  - [Custom headers](https://modelcontextprotocol.io/specification/latest/basic/transports/streamable-http#custom-headers-from-tool-parameters) that are defined by the MCP server. These headers are mirrored into HTTP headers from the tool's input schema using the `x-mcp-header` property. For example, an MCP server might define a custom header to specify the Google Cloud region or project ID.
+- Headers that are required by the MCP specification such as the [protocol version header](https://modelcontextprotocol.io/specification/latest/basic/transports/streamable-http#protocol-version-header) and [standard request headers](https://modelcontextprotocol.io/specification/latest/basic/transports/streamable-http#standard-request-headers) .
+- [Custom headers](https://modelcontextprotocol.io/specification/latest/basic/transports/streamable-http#custom-headers-from-tool-parameters) that are defined by the MCP server. These headers are mirrored into HTTP headers from the tool's input schema using the `x-mcp-header` property. For example, an MCP server might define a custom header to specify the Google Cloud region or project ID.
 
 For more information about MCP architecture, see the MCP version 2026-07-28 [specification](https://modelcontextprotocol.io/specification/2026-07-28) and [key changes](https://modelcontextprotocol.io/specification/2026-07-28/changelog) .
 
@@ -38,8 +39,8 @@ For more information about MCP architecture, see the MCP version 2026-07-28 [spe
 
 To get the permissions that you need to use the Firestore MCP server and interact with Firestore documents, ask your administrator to grant you the following IAM roles on the project where you want to use the Firestore MCP server:
 
-  - Make MCP tool calls: [MCP Tool User](https://docs.cloud.google.com/iam/docs/roles-permissions/mcp#mcp.toolUser) ( `roles/mcp.toolUser` )
-  - Read and edit Firestore documents: [Firestore User](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.user) ( `roles/datastore.user` )
+- Make MCP tool calls: [MCP Tool User](https://docs.cloud.google.com/iam/docs/roles-permissions/mcp#mcp.toolUser) ( `roles/mcp.toolUser` )
+- Read and edit Firestore documents: [Firestore User](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.user) ( `roles/datastore.user` )
 
 For more information about granting roles, see [Manage access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
 
@@ -49,14 +50,14 @@ These predefined roles contain the permissions required to use the Firestore MCP
 
 The following permissions are required to use the Firestore MCP server and interact with Firestore documents:
 
-  - Make MCP tool calls: `mcp.tools.call`
-  - Read and edit Firestore documents:
-      - `datastore.entities.allocateIds`
-      - `datastore.entities.create`
-      - `datastore.entities.delete`
-      - `datastore.entities.get`
-      - `datastore.entities.list`
-      - `datastore.entities.update`
+- Make MCP tool calls: `mcp.tools.call`
+- Read and edit Firestore documents:
+  - `datastore.entities.allocateIds`
+  - `datastore.entities.create`
+  - `datastore.entities.delete`
+  - `datastore.entities.get`
+  - `datastore.entities.list`
+  - `datastore.entities.update`
 
 You might also be able to get these permissions with [custom roles](https://docs.cloud.google.com/iam/docs/creating-custom-roles) or other [predefined roles](https://docs.cloud.google.com/iam/docs/roles-overview#predefined) .
 
@@ -73,7 +74,7 @@ OAuth 2.0 uses scopes and credentials to determine if an authenticated principal
 Firestore has the following MCP tool OAuth scopes:
 
 | Scope URI for gcloud CLI                         | Description                                                                                                |
-| ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
+|--------------------------------------------------|------------------------------------------------------------------------------------------------------------|
 | `https://www.googleapis.com/auth/cloud-platform` | See, edit, configure, and delete your Google Cloud data and see the email address for your Google Account. |
 
 Additional scopes might be required on the resources accessed during a tool call. To view a list of scopes required for Firestore, see [Firestore API](https://developers.google.com/identity/protocols/oauth2/scopes#firestore) .
@@ -84,18 +85,18 @@ AI applications and agents, such as Claude or Antigravity, can instantiate an MC
 
 In your AI application, look for a way to add or connect to a remote MCP server. For the Firestore MCP server, enter the following information as required:
 
-  - **Server name** : Firestore MCP server
-  - **Server URL** or **Endpoint** : https://firestore.googleapis.com/mcp
-  - **Transport** : [Streamable HTTP](https://modelcontextprotocol.io/specification/latest/basic/transports/streamable-http)
-  - **Authentication details** : Depending on how you want to authenticate, you can enter your Google Cloud credentials, your OAuth Client ID and secret, or an agent identity and credentials. For more information about authentication, see [Authenticate to MCP servers](https://docs.cloud.google.com/mcp/authenticate-mcp) .
-  - **OAuth scope** : the [OAuth 2.0 scope](https://developers.google.com/identity/protocols/oauth2/scopes) that you want to use when connecting to the Firestore MCP server.
+- **Server name** : Firestore MCP server
+- **Server URL** or **Endpoint** : https://firestore.googleapis.com/mcp
+- **Transport** : [Streamable HTTP](https://modelcontextprotocol.io/specification/latest/basic/transports/streamable-http)
+- **Authentication details** : depending on how you want to authenticate, you can enter your Google Cloud credentials, your OAuth Client ID and secret, or an agent identity and credentials. For more information about authentication, see [Authenticate to MCP servers](https://docs.cloud.google.com/mcp/authenticate-mcp) .
+- **OAuth scope** : the [OAuth 2.0 scope](https://developers.google.com/identity/protocols/oauth2/scopes) that you want to use when connecting to the Firestore MCP server.
 
 For application-specific guidance about setting up and connecting to MCP server, see [Client-specific guidance](https://docs.cloud.google.com/mcp/configure-mcp-ai-application#client-specific-guidance) .
 
 For more general guidance, see the following resources:
 
-  - [Connect to remote MCP servers](https://modelcontextprotocol.io/docs/develop/connect-remote-servers) .
-  - [Configure MCP in an AI application](https://docs.cloud.google.com/mcp/configure-mcp-ai-application) .
+- [Connect to remote MCP servers](https://modelcontextprotocol.io/docs/develop/connect-remote-servers) .
+- [Configure MCP in an AI application](https://docs.cloud.google.com/mcp/configure-mcp-ai-application) .
 
 ## Use the Firestore MCP server with ADK in Python
 
@@ -103,60 +104,62 @@ You can use the Agent Development Kit (ADK) for Python to interact with the Fire
 
 The following example demonstrates how to configure an agent with the Firestore MCP server and run a prompt.
 
-    import os
-    import google.auth
-    from google.auth.transport.requests import Request
-    
-    from google.adk import Agent
-    from google.adk.tools.mcp_tool.mcp_toolset import McpToolset, StreamableHTTPConnectionParams
-    from google.adk.runners import InMemoryRunner, print_event
-    from google.genai import types
-    
-    # Set your project configuration
-    PROJECT_ID = os.environ.get("PROJECT_ID", "your-project-id")
-    TARGET_PROJECT_ID = os.environ.get("TARGET_PROJECT_ID", "your-target-project-id")
-    
-    # Authenticate and get token
-    credentials, _ = google.auth.default()
-    credentials.refresh(Request())
-    
-    # Configure the Firestore remote MCP server
-    mcp_toolset = McpToolset(
-        connection_params=StreamableHTTPConnectionParams(
-            url="https://firestore.googleapis.com/mcp",
-            headers={
-                "Accept": "text/event-stream, application/json",
-                "Content-Type": "application/json",
-                "Authorization": f"Bearer {credentials.token}"
-            },
-        ),
-    )
-    
-    model_path = f"projects/{PROJECT_ID}/locations/us-central1/publishers/google/models/gemini-2.5-flash"
-    
-    root_agent = Agent(
-        name="mcp_codelab_agent",
-        model=model_path,
-        instruction="You are a Firestore database assistant. Use the available Firestore MCP tools to query, retrieve, and manage documents in the database based on the user's request.",
-        tools=[mcp_toolset],
-    )
-    
-    if __name__ == "__main__":
-        prompt = f"Please list all Firestore databases under the project `{TARGET_PROJECT_ID}`"
-    
-        print("--- Running Agent ---")
-        runner = InMemoryRunner(agent=root_agent)
-        runner.auto_create_session = True
-        events = runner.run(
-            user_id="user",
-            session_id="session",
-            new_message=types.Content(
-                parts=[types.Part.from_text(text=prompt)]
-            )
+```
+import os
+import google.auth
+from google.auth.transport.requests import Request
+
+from google.adk import Agent
+from google.adk.tools.mcp_tool.mcp_toolset import McpToolset, StreamableHTTPConnectionParams
+from google.adk.runners import InMemoryRunner, print_event
+from google.genai import types
+
+# Set your project configuration
+PROJECT_ID = os.environ.get("PROJECT_ID", "your-project-id")
+TARGET_PROJECT_ID = os.environ.get("TARGET_PROJECT_ID", "your-target-project-id")
+
+# Authenticate and get token
+credentials, _ = google.auth.default()
+credentials.refresh(Request())
+
+# Configure the Firestore remote MCP server
+mcp_toolset = McpToolset(
+    connection_params=StreamableHTTPConnectionParams(
+        url="https://firestore.googleapis.com/mcp",
+        headers={
+            "Accept": "text/event-stream, application/json",
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {credentials.token}"
+        },
+    ),
+)
+
+model_path = f"projects/{PROJECT_ID}/locations/us-central1/publishers/google/models/gemini-2.5-flash"
+
+root_agent = Agent(
+    name="mcp_codelab_agent",
+    model=model_path,
+    instruction="You are a Firestore database assistant. Use the available Firestore MCP tools to query, retrieve, and manage documents in the database based on the user's request.",
+    tools=[mcp_toolset],
+)
+
+if __name__ == "__main__":
+    prompt = f"Please list all Firestore databases under the project `{TARGET_PROJECT_ID}`"
+
+    print("--- Running Agent ---")
+    runner = InMemoryRunner(agent=root_agent)
+    runner.auto_create_session = True
+    events = runner.run(
+        user_id="user",
+        session_id="session",
+        new_message=types.Content(
+            parts=[types.Part.from_text(text=prompt)]
         )
-    
-        for event in events:
-            print_event(event, verbose=True)
+    )
+
+    for event in events:
+        print_event(event, verbose=True)
+```
 
 ## Available tools
 
@@ -166,29 +169,50 @@ To view details of available MCP tools and their descriptions for the Firestore 
 
 Use the [MCP inspector](https://modelcontextprotocol.io/docs/tools/inspector) to list tools, or send a `tools/list` HTTP request directly to the Firestore remote MCP server. The `tools/list` method doesn't require authentication.
 
-    POST /mcp HTTP/1.1
-    Host: firestore.googleapis.com
-    Content-Type: application/json
-    
-    {
+```
+curl -X POST https://firestore.googleapis.com/TOOLSET_ENDPOINT \
+    -H 'Content-Type: application/json' \
+    -H 'Accept: application/json' \
+    -H 'MCP-Protocol-Version: MCP_PROTOCOL_VERSION' \
+    -H 'Mcp-Method: tools/list' \
+    -d '{
       "jsonrpc": "2.0",
+      "id": 1,
       "method": "tools/list",
-    }
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "MCP_PROTOCOL_VERSION",
+          "io.modelcontextprotocol/clientCapabilities": {
+            "extensions": {
+              "io.modelcontextprotocol/ui": {
+                "mimeTypes": ["text/html;profile=mcp-app"]
+              }
+            }
+          }
+        }
+      }
+    }'
+```
+
+Replace the following:
+
+- ` ``TOOLSET_ENDPOINT`` ` : the remainder of the MCP endpoint after the service name. For example, for Firestore, this might be `mcp/toolset-name` .
+- ` ``MCP_PROTOCOL_VERSION`` ` : the MCP protocol version. For example, `2026-07-28` .
 
 ## Sample use cases
 
 The following are sample use cases and prompts for the Firestore MCP server:
 
-  - "What tools are available for the Firestore MCP server?"
-  - "Add a document with collection "book" under my Firestore database "my-database" with the Google Cloud project "my-project" with generated book info."
-  - "Get the information for the book with ID 3VyGFIAPRHUNeuH5h2eb from the book collection."
-  - "Update the year field of document 3VyGFIAPRHUNeuH5h2eb to 1995."
-  - "List all books under the book collection."
-  - "List all collections IDs under the root of the "my-database" Firestore database."
-  - "Delete the document 3VyGFIAPRHUNeuH5h2eb under the book collection."
-  - "List all databases under the project."
-  - "Create a Firestore Enterprise database with MongoDB compatibility mode in nam5."
-  - "List all indexes entries for collection group users."
+- "What tools are available for the Firestore MCP server?"
+- "Add a document with collection "book" under my Firestore database "my-database" with the Google Cloud project "my-project" with generated book info."
+- "Get the information for the book with ID 3VyGFIAPRHUNeuH5h2eb from the book collection."
+- "Update the year field of document 3VyGFIAPRHUNeuH5h2eb to 1995."
+- "List all books under the book collection."
+- "List all collections IDs under the root of the "my-database" Firestore database."
+- "Delete the document 3VyGFIAPRHUNeuH5h2eb under the book collection."
+- "List all databases under the project."
+- "Create a Firestore Enterprise database with MongoDB compatibility mode in nam5."
+- "List all indexes entries for collection group users."
 
 ## Optional security and safety configurations
 
@@ -213,9 +237,9 @@ You must enable Model Armor APIs before you can use Model Armor.
 ### Console
 
 1.  Enable the Model Armor API, if it is not already enabled.
-    
+
     **Roles required to enable APIs**
-    
+
     To enable APIs, you need the `serviceusage.services.enable` permission. If you created the project, then you likely already have this permission through the Owner role ( `roles/owner` ). Otherwise, you can get this permission through the Service Usage Admin role ( `roles/serviceusage.serviceUsageAdmin` ). [Learn how to grant roles](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
 
 2.  Select the project where you want to activate Model Armor.
@@ -225,14 +249,16 @@ You must enable Model Armor APIs before you can use Model Armor.
 Before you begin, follow these steps using the Google Cloud CLI with the Model Armor API:
 
 1.  In the Google Cloud console, activate Cloud Shell.
-    
+
     At the bottom of the Google Cloud console, a [Cloud Shell](https://docs.cloud.google.com/shell/docs/how-cloud-shell-works) session starts and displays a command-line prompt. Cloud Shell is a shell environment with the Google Cloud CLI already installed and with values already set for your current project. It can take a few seconds for the session to initialize.
 
 2.  Run the following command to set the API endpoint for the Model Armor service.
-    
-        gcloud config set api_endpoint_overrides/modelarmor "https://modelarmor.LOCATION.rep.googleapis.com/"
-    
-    Replace `  LOCATION  ` with the region where you want to use Model Armor.
+
+    ```
+    gcloud config set api_endpoint_overrides/modelarmor "https://modelarmor.LOCATION.rep.googleapis.com/"
+    ```
+
+    Replace `LOCATION` with the region where you want to use Model Armor.
 
 #### Configure protection for Google and Google Cloud remote MCP servers
 
@@ -246,32 +272,36 @@ Set up a Model Armor floor setting with MCP sanitization enabled. For more infor
 
 See the following example command:
 
-    gcloud model-armor floorsettings update \
-    --full-uri='projects/PROJECT_ID/locations/global/floorSetting' \
-    --enable-floor-setting-enforcement=TRUE \
-    --add-integrated-services=GOOGLE_MCP_SERVER \
-    --google-mcp-server-enforcement-type=INSPECT_AND_BLOCK \
-    --enable-google-mcp-server-cloud-logging \
-    --malicious-uri-filter-settings-enforcement=ENABLED \
-    --add-rai-settings-filters='[{"confidenceLevel": "MEDIUM_AND_ABOVE", "filterType": "DANGEROUS"}]'
+```
+gcloud model-armor floorsettings update \
+--full-uri='projects/PROJECT_ID/locations/global/floorSetting' \
+--enable-floor-setting-enforcement=TRUE \
+--add-integrated-services=GOOGLE_MCP_SERVER \
+--google-mcp-server-enforcement-type=INSPECT_AND_BLOCK \
+--enable-google-mcp-server-cloud-logging \
+--malicious-uri-filter-settings-enforcement=ENABLED \
+--add-rai-settings-filters='[{"confidenceLevel": "MEDIUM_AND_ABOVE", "filterType": "DANGEROUS"}]'
+```
 
-Replace `  PROJECT_ID  ` with your Google Cloud project ID.
+Replace `PROJECT_ID` with your Google Cloud project ID.
 
 Note the following settings:
 
-  - `INSPECT_AND_BLOCK` : The enforcement type that inspects content for the Google MCP server and blocks prompts and responses that match the filters.
-  - `ENABLED` : The setting that enables a filter or enforcement.
-  - `MEDIUM_AND_ABOVE` : The confidence level for the Responsible AI - Dangerous filter settings. You can modify this setting, though lower values might result in more false positives. For more information, see [Model Armor confidence levels](https://docs.cloud.google.com/model-armor/overview#ma-confidence-levels) .
+- ` ``INSPECT_AND_BLOCK`` ` : The enforcement type that inspects content for the Google MCP server and blocks prompts and responses that match the filters.
+- ` ``ENABLED`` ` : The setting that enables a filter or enforcement.
+- ` ``MEDIUM_AND_ABOVE`` ` : The confidence level for the Responsible AI - Dangerous filter settings. You can modify this setting, though lower values might result in more false positives. For more information, see [Model Armor confidence levels](https://docs.cloud.google.com/model-armor/overview#ma-confidence-levels) .
 
 #### Disable scanning MCP traffic with Model Armor
 
 To stop Model Armor from automatically scanning traffic to and from Google MCP servers based on the project's floor settings, run the following command:
 
-    gcloud model-armor floorsettings update \
-      --full-uri='projects/PROJECT_ID/locations/global/floorSetting' \
-      --remove-integrated-services=GOOGLE_MCP_SERVER
+```
+gcloud model-armor floorsettings update \
+  --full-uri='projects/PROJECT_ID/locations/global/floorSetting' \
+  --remove-integrated-services=GOOGLE_MCP_SERVER
+```
 
-Replace `  PROJECT_ID  ` with the Google Cloud project ID. Model Armor doesn't automatically apply the rules defined in this project's floor settings to any Google MCP server traffic.
+Replace `PROJECT_ID` with the Google Cloud project ID. Model Armor doesn't automatically apply the rules defined in this project's floor settings to any Google MCP server traffic.
 
 Model Armor floor settings and general configuration can impact more than just MCP. Because Model Armor integrates with services like Vertex AI, any changes you make to floor settings can affect traffic scanning and safety behaviors across all integrated services, not just MCP.
 
@@ -281,10 +311,10 @@ Identity and Access Management (IAM) [deny policies](https://docs.cloud.google.c
 
 You can combine multiple criteria to build customized security and governance policies by allowing or denying access based on the following:
 
-  - The principal.
-  - Tool properties like the read-only attribute.
-  - The service name or tool name.
-  - The application's OAuth client ID.
+- The principal.
+- Tool properties like the read-only attribute.
+- The service name or tool name.
+- The application's OAuth client ID.
 
 For more information, see [Control MCP use with Identity and Access Management](https://docs.cloud.google.com/mcp/control-mcp-use-iam) .
 
@@ -292,17 +322,17 @@ For more information, see [Control MCP use with Identity and Access Management](
 
 You can monitor the usage and latency of your Firestore MCP tools through [Cloud Monitoring](https://cloud.google.com/monitoring/docs/) . The following metrics are available for the `firestore.googleapis.com/Database` monitored resource:
 
-  - `mcp/request_count` (Beta): The count of Firestore MCP calls.
-  - `mcp/request_latencies` (Beta): The distribution of latencies for Firestore MCP calls.
+- `mcp/request_count` (Beta): the count of Firestore MCP calls.
+- `mcp/request_latencies` (Beta): the distribution of latencies for Firestore MCP calls.
 
 You can group and filter these metrics by the following labels:
 
-  - `tool_name` : The name of the MCP tool making the MCP call.
+- `tool_name` : the name of the MCP tool making the MCP call.
 
 For more information about Firestore metrics, see [Firestore metrics](https://docs.cloud.google.com/monitoring/api/metrics_gcp_d_h#gcp-firestore) .
 
 ## What's next
 
-  - Read the [Firestore MCP reference documentation](https://docs.cloud.google.com/firestore/docs/reference/mcp) .
-  - Learn more about [Google Cloud MCP servers](https://docs.cloud.google.com/mcp/overview) .
-  - Learn how to [use an AI prompt to draft security rules](https://firebase.google.com/docs/ai-assistance/prompt-catalog/write-security-rules)
+- Read the [Firestore MCP reference documentation](https://docs.cloud.google.com/firestore/docs/reference/mcp) .
+- Learn more about [Google Cloud MCP servers](https://docs.cloud.google.com/mcp/overview) .
+- Learn how to [use an AI prompt to draft security rules](https://firebase.google.com/docs/ai-assistance/prompt-catalog/write-security-rules)

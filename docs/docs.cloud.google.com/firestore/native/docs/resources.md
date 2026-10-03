@@ -6,38 +6,9 @@ description: A cloud-hosted NoSQL database that's simple enough for rapid protot
 data_source: docs.cloud.google.com
 ---
 
-  - [](https://cloud.google.com/firestore/pricing)
-    
-    ### Pricing
-    
-    Pricing details for Firestore, including Firestore pricing for a sample chat app.
-
-  - [](https://docs.cloud.google.com/firestore/quotas)
-    
-    ### Quotas and limits
-    
-    Usage policies for your Firestore resources.
-
-  - [](https://docs.cloud.google.com/firestore/docs/release-notes)
-    
-    ### Release notes
-    
-    Production updates to Firestore.
-
-  - [](https://docs.cloud.google.com/firestore/native/docs/locations)
-    
-    ### Locations
-    
-    Locations where Firestore is available.
-
-  - [](https://docs.cloud.google.com/firestore/native/docs/getting-support)
-    
-    ### Support
-    
-    How to get additional help with Firestore.
-
-  - [](https://docs.cloud.google.com/firestore/sla)
-    
-    ### Service Level Agreement
-    
-    The current Service Level Agreement (SLA) for Firestore.
+- [Pricing Pricing details for Firestore, including Firestore pricing for a sample chat app.](https://cloud.google.com/firestore/pricing)
+- [Quotas and limits Usage policies for your Firestore resources.](https://docs.cloud.google.com/firestore/quotas)
+- [Release notes Production updates to Firestore.](https://docs.cloud.google.com/firestore/docs/release-notes)
+- [Locations Locations where Firestore is available.](https://docs.cloud.google.com/firestore/native/docs/locations)
+- [Support How to get additional help with Firestore.](https://docs.cloud.google.com/firestore/native/docs/getting-support)
+- [Service Level Agreement The current Service Level Agreement (SLA) for Firestore.](https://docs.cloud.google.com/firestore/sla)

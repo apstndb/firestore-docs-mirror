@@ -9,68 +9,69 @@ data_source: docs.cloud.google.com
 You can use the best practices listed here as a quick reference of what to keep in mind when building an application that uses Datastore. If you are just starting out with Datastore, this page might not be the best place to start, because it does not teach you the basics of how to use Datastore. If you are a new user, we suggest that you start with [Getting Started with Datastore](https://docs.cloud.google.com/datastore/docs/datastore-api-tutorial) .
 
 > **Note:** This page describes system behavior for Datastore databases that have not yet upgraded to Firestore in Datastore mode.
-> 
+>
 > [Firestore](https://docs.cloud.google.com/firestore) is the new version of Datastore and [removes several Datastore limitations](https://docs.cloud.google.com/datastore/docs/firestore-or-datastore#in_datastore_mode) .
 
 ## General
 
-  - Always use UTF-8 characters for namespace names, kind names, property names, and custom key names. Non-UTF-8 characters used in these names can interfere with Datastore functionality. For example, a non-UTF-8 character in a property name can prevent creation of an index that uses the property.
-  - Do not use a forward slash ( `/` ) in kind names or custom key names. Forward slashes in these names could interfere with future functionality.
-  - Avoid storing sensitive information in a Cloud Project ID. A Cloud Project ID might be retained beyond the life of your project.
-  - As a data compliance best practice, we recommend not storing sensitive information in Datastore entity names or entity property names.
+- Always use UTF-8 characters for namespace names, kind names, property names, and custom key names. Non-UTF-8 characters used in these names can interfere with Datastore functionality. For example, a non-UTF-8 character in a property name can prevent creation of an index that uses the property.
+- Do not use a forward slash ( `/` ) in kind names or custom key names. Forward slashes in these names could interfere with future functionality.
+- Avoid storing sensitive information in a Cloud Project ID. A Cloud Project ID might be retained beyond the life of your project.
+- As a data compliance best practice, we recommend not storing sensitive information in Datastore entity names or entity property names.
 
 ## API calls
 
-  - Use [batch operations](https://docs.cloud.google.com/datastore/docs/concepts/entities#batch_operations) for your reads, writes, and deletes instead of single operations. Batch operations are more efficient because they perform multiple operations with the same overhead as a single operation.
-  - If a [transaction](https://docs.cloud.google.com/datastore/docs/concepts/transactions) fails, ensure you try to rollback the transaction. The rollback minimizes retry latency for a different request contending for the same resource(s) in a transaction. Note that a rollback itself might fail, so the rollback should be a best-effort attempt only.
-  - Use asynchronous calls where available instead of synchronous calls. Asynchronous calls minimize latency impact. For example, consider an application that needs the result of a synchronous `lookup()` and the results of a query before it can render a response. If the `lookup()` and the query do not have a data dependency, there is no need to synchronously wait until the `lookup()` completes before initiating the query.
+- Use [batch operations](https://docs.cloud.google.com/datastore/docs/concepts/entities#batch_operations) for your reads, writes, and deletes instead of single operations. Batch operations are more efficient because they perform multiple operations with the same overhead as a single operation.
+- If a [transaction](https://docs.cloud.google.com/datastore/docs/concepts/transactions) fails, ensure you try to rollback the transaction. The rollback minimizes retry latency for a different request contending for the same resource(s) in a transaction. Note that a rollback itself might fail, so the rollback should be a best-effort attempt only.
+- Use asynchronous calls where available instead of synchronous calls. Asynchronous calls minimize latency impact. For example, consider an application that needs the result of a synchronous `lookup()` and the results of a query before it can render a response. If the `lookup()` and the query do not have a data dependency, there is no need to synchronously wait until the `lookup()` completes before initiating the query.
 
 ## Entities
 
-  - Group highly related data in [entity groups](https://docs.cloud.google.com/datastore/docs/concepts/entities#entity_groups) . Entity groups enable [ancestor queries](https://docs.cloud.google.com/datastore/docs/concepts/queries#ancestor_queries) , which return strongly consistent results. Ancestor queries also rapidly scan an entity group with minimal I/O because the entities in an entity group are stored at physically close places on Datastore servers.
-  - Avoid writing to an entity group more than once per second. Writing at a sustained rate above that limit makes eventually consistent reads more eventual, leads to time outs for strongly consistent reads, and results in slower overall performance of your application. A batch or transactional write to an entity group counts as only a single write against this limit.
-  - Do not include the same entity (by key) multiple times in the same commit. Including the same entity multiple times in the same commit could impact Datastore latency.
+- Group highly related data in [entity groups](https://docs.cloud.google.com/datastore/docs/concepts/entities#entity_groups) . Entity groups enable [ancestor queries](https://docs.cloud.google.com/datastore/docs/concepts/queries#ancestor_queries) , which return strongly consistent results. Ancestor queries also rapidly scan an entity group with minimal I/O because the entities in an entity group are stored at physically close places on Datastore servers.
+- Avoid writing to an entity group more than once per second. Writing at a sustained rate above that limit makes eventually consistent reads more eventual, leads to time outs for strongly consistent reads, and results in slower overall performance of your application. A batch or transactional write to an entity group counts as only a single write against this limit.
+- Do not include the same entity (by key) multiple times in the same commit. Including the same entity multiple times in the same commit could impact Datastore latency.
 
 ## Keys
 
-  - Key names are autogenerated if not provided at entity creation. They are allocated so as to be evenly distributed in the keyspace.
+- Key names are autogenerated if not provided at entity creation. They are allocated so as to be evenly distributed in the keyspace.
 
-  - For a key that uses a custom name, always use UTF-8 characters except a forward slash ( `/` ). Non-UTF-8 characters interfere with various processes such as importing a Datastore backup into [Google BigQuery](https://docs.cloud.google.com/bigquery) . A forward slash could interfere with future functionality.
+- For a key that uses a custom name, always use UTF-8 characters except a forward slash ( `/` ). Non-UTF-8 characters interfere with various processes such as importing a Datastore backup into [Google BigQuery](https://docs.cloud.google.com/bigquery) . A forward slash could interfere with future functionality.
 
-  - For a key that uses a numeric ID:
-    
-      - Do not use a negative number for the ID. A negative ID could interfere with sorting.
-      - Do not use the value `0` (zero) for the ID. If you do, you will get an automatically allocated ID.
-      - If you wish to manually assign your own numeric IDs to the entities you create, have your application obtain a block of IDs with the `allocateIds()` method. This will prevent Datastore from assigning one of your manual numeric IDs to another entity.
+- For a key that uses a numeric ID:
+  - Do not use a negative number for the ID. A negative ID could interfere with sorting.
+  - Do not use the value `0` (zero) for the ID. If you do, you will get an automatically allocated ID.
+  - If you wish to manually assign your own numeric IDs to the entities you create, have your application obtain a block of IDs with the `allocateIds()` method. This will prevent Datastore from assigning one of your manual numeric IDs to another entity.
 
-  - If you assign your own manual numeric ID or custom name to the entities you create, do not use monotonically increasing values such as:
-    
-        1, 2, 3, …,
-        "Customer1", "Customer2", "Customer3", ….
-        "Product 1", "Product 2", "Product 3", ….
-    
-    If an application generates large traffic, such sequential numbering could lead to hotspots that impact Datastore latency. To avoid the issue of sequential numeric IDs, obtain numeric IDs from the `allocateIds()` method. The `allocateIds()` method generates well-distributed sequences of numeric IDs.
+- If you assign your own manual numeric ID or custom name to the entities you create, do not use monotonically increasing values such as:
 
-  - By specifying a key or storing the generated name, you can later perform a consistent `lookup()` on that entity without needing issue a query to find the entity.
+  ```
+  1, 2, 3, …,
+  "Customer1", "Customer2", "Customer3", ….
+  "Product 1", "Product 2", "Product 3", ….
+  ```
+
+  If an application generates large traffic, such sequential numbering could lead to hotspots that impact Datastore latency. To avoid the issue of sequential numeric IDs, obtain numeric IDs from the `allocateIds()` method. The `allocateIds()` method generates well-distributed sequences of numeric IDs.
+
+- By specifying a key or storing the generated name, you can later perform a consistent `lookup()` on that entity without needing issue a query to find the entity.
 
 ## Indexes
 
-  - If a property will never be needed for a query, [exclude the property from indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes#unindexed_properties) . Unnecessarily indexing a property could result in increased latency to achieve consistency, and increased [storage costs of index entries](https://docs.cloud.google.com/datastore/docs/concepts/storage-size#index_entry_size) .
-  - Avoid having too many [composite indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes#composite_indexes) . Excessive use of composite indexes could result in increased latency to achieve consistency, and increased [storage costs of index entries](https://docs.cloud.google.com/datastore/docs/concepts/storage-size#index_entry_size) . If you need to execute ad hoc queries on large datasets without previously defined indexes, use [Google BigQuery](https://docs.cloud.google.com/bigquery) .
-  - Do not index properties with monotonically increasing values (such as a `NOW()` timestamp). Maintaining such an index could lead to hotspots that impact Datastore latency for applications with high read and write rates. For further guidance on dealing with monotonic properties, see [High read/write rates for a narrow key range](https://docs.cloud.google.com/datastore/docs/best-practices#high_readwrite_rates_to_a_narrow_key_range) below.
+- If a property will never be needed for a query, [exclude the property from indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes#unindexed_properties) . Unnecessarily indexing a property could result in increased latency to achieve consistency, and increased [storage costs of index entries](https://docs.cloud.google.com/datastore/docs/concepts/storage-size#index_entry_size) .
+- Avoid having too many [composite indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes#composite_indexes) . Excessive use of composite indexes could result in increased latency to achieve consistency, and increased [storage costs of index entries](https://docs.cloud.google.com/datastore/docs/concepts/storage-size#index_entry_size) . If you need to execute ad hoc queries on large datasets without previously defined indexes, use [Google BigQuery](https://docs.cloud.google.com/bigquery) .
+- Do not index properties with monotonically increasing values (such as a `NOW()` timestamp). Maintaining such an index could lead to hotspots that impact Datastore latency for applications with high read and write rates. For further guidance on dealing with monotonic properties, see [High read/write rates for a narrow key range](https://docs.cloud.google.com/datastore/docs/best-practices#high_readwrite_rates_to_a_narrow_key_range) below.
 
 ## Properties
 
-  - Always use UTF-8 characters for properties of type [string](https://docs.cloud.google.com/datastore/docs/concepts/entities#text_string) . A non-UTF-8 character in a property of type string could interfere with queries. If you need to save data with non-UTF-8 characters, use a [byte string](https://docs.cloud.google.com/datastore/docs/concepts/entities#byte_string) .
-  - Do not use dots in property names. Dots in property names interfere with indexing of [embedded entity properties](https://docs.cloud.google.com/datastore/docs/concepts/entities#embedded_entity) .
+- Always use UTF-8 characters for properties of type [string](https://docs.cloud.google.com/datastore/docs/concepts/entities#text_string) . A non-UTF-8 character in a property of type string could interfere with queries. If you need to save data with non-UTF-8 characters, use a [byte string](https://docs.cloud.google.com/datastore/docs/concepts/entities#byte_string) .
+- Do not use dots in property names. Dots in property names interfere with indexing of [embedded entity properties](https://docs.cloud.google.com/datastore/docs/concepts/entities#embedded_entity) .
 
 ## Queries
 
-  - If you need to access only the key from query results, use a [keys-only query](https://docs.cloud.google.com/datastore/docs/concepts/queries#keys-only_queries) . A keys-only query returns results at lower latency and cost than retrieving entire entities.
-  - If you need to access only specific properties from an entity, use a [projection query](https://docs.cloud.google.com/datastore/docs/concepts/queries#projection_queries) . A projection query returns results at lower latency and cost than retrieving entire entities.
-  - Likewise, if you need to access only the properties that are included in the query filter (for example, those listed in an `order by` clause), use a [projection query](https://docs.cloud.google.com/datastore/docs/concepts/queries#projection_queries) .
-  - Do not use offsets. Instead use [cursors](https://docs.cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets) . Using an offset only avoids returning the skipped entities to your application, but these entities are still retrieved internally. The skipped entities affect the latency of the query, and your application is billed for the read operations required to retrieve them.
-  - If you need strong consistency for your queries, use an [ancestor query](https://docs.cloud.google.com/datastore/docs/concepts/queries#ancestor_queries) . (To use ancestor queries, you first need to [structure your data for strong consistency](https://docs.cloud.google.com/datastore/docs/concepts/structuring_for_strong_consistency#structuring_your_data_for_consistency) .) An ancestor query returns strongly consistent results. Note that a non-ancestor [keys-only](https://docs.cloud.google.com/datastore/docs/concepts/queries#keys-only_queries) query followed by a `lookup()` does not return strong results, because the non-ancestor keys-only query could get results from an index that is not consistent at the time of the query.
+- If you need to access only the key from query results, use a [keys-only query](https://docs.cloud.google.com/datastore/docs/concepts/queries#keys-only_queries) . A keys-only query returns results at lower latency and cost than retrieving entire entities.
+- If you need to access only specific properties from an entity, use a [projection query](https://docs.cloud.google.com/datastore/docs/concepts/queries#projection_queries) . A projection query returns results at lower latency and cost than retrieving entire entities.
+- Likewise, if you need to access only the properties that are included in the query filter (for example, those listed in an `order by` clause), use a [projection query](https://docs.cloud.google.com/datastore/docs/concepts/queries#projection_queries) .
+- Do not use offsets. Instead use [cursors](https://docs.cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets) . Using an offset only avoids returning the skipped entities to your application, but these entities are still retrieved internally. The skipped entities affect the latency of the query, and your application is billed for the read operations required to retrieve them.
+- If you need strong consistency for your queries, use an [ancestor query](https://docs.cloud.google.com/datastore/docs/concepts/queries#ancestor_queries) . (To use ancestor queries, you first need to [structure your data for strong consistency](https://docs.cloud.google.com/datastore/docs/concepts/structuring_for_strong_consistency#structuring_your_data_for_consistency) .) An ancestor query returns strongly consistent results. Note that a non-ancestor [keys-only](https://docs.cloud.google.com/datastore/docs/concepts/queries#keys-only_queries) query followed by a `lookup()` does not return strong results, because the non-ancestor keys-only query could get results from an index that is not consistent at the time of the query.
 
 ## Designing for scale
 
@@ -98,15 +99,15 @@ In some cases, a Datastore hotspot can have wider impact to an application than 
 
 By default, Datastore allocates keys using a scattered algorithm. Thus you will not normally encounter hotspotting on Datastore writes if you create new entities at a high write rate using the default ID allocation policy. There are some corner cases where you can hit this problem:
 
-  - If you create new entities at a very high rate using the legacy sequential ID allocation policy.
+- If you create new entities at a very high rate using the legacy sequential ID allocation policy.
 
-  - If you create new entities at a very high rate and you are allocating your own IDs which are monotonically increasing.
+- If you create new entities at a very high rate and you are allocating your own IDs which are monotonically increasing.
 
-  - If you create new entities at a very high rate for a kind which previously had very few existing entities. Bigtable will start off with all entities on the same tablet server and will take some time to split the range of keys onto separate tablet servers.
+- If you create new entities at a very high rate for a kind which previously had very few existing entities. Bigtable will start off with all entities on the same tablet server and will take some time to split the range of keys onto separate tablet servers.
 
-  - You will also see this problem if you create new entities at a high rate with a monotonically increasing indexed property like a timestamp, because these properties are the keys for rows in the index tables in Bigtable.
+- You will also see this problem if you create new entities at a high rate with a monotonically increasing indexed property like a timestamp, because these properties are the keys for rows in the index tables in Bigtable.
 
-  - Datastore prepends the namespace and the kind of the root entity group to the Bigtable row key. You can hit a hotspot if you start to write to a new namespace or kind without gradually ramping up traffic.
+- Datastore prepends the namespace and the kind of the root entity group to the Bigtable row key. You can hit a hotspot if you start to write to a new namespace or kind without gradually ramping up traffic.
 
 If you do have a key or indexed property that will be monotonically increasing then you can prepend a random hash to ensure that the keys are sharded onto multiple tablets.
 
@@ -160,11 +161,11 @@ You can use sharding if you need to write to a portion of the key range at a hig
 
 Some common mistakes when sharding include:
 
-  - Sharding using a time prefix. When the time rolls over to the next prefix then the new unsplit portion becomes a hotspot. Instead, you should gradually roll over a portion of your writes to the new prefix.
+- Sharding using a time prefix. When the time rolls over to the next prefix then the new unsplit portion becomes a hotspot. Instead, you should gradually roll over a portion of your writes to the new prefix.
 
-  - Sharding just the hottest entities. If you shard a small proportion of the total number of entities then there might not be sufficient rows between the hot entities to ensure that they stay on different splits.
+- Sharding just the hottest entities. If you shard a small proportion of the total number of entities then there might not be sufficient rows between the hot entities to ensure that they stay on different splits.
 
 ## What's next
 
-  - Learn about [Datastore Limits](https://docs.cloud.google.com/datastore/docs/concepts/limits) .
-  - Learn about Google Cloud Platform [Best Practices for Enterprise Organizations](https://docs.cloud.google.com/architecture/framework) .
+- Learn about [Datastore Limits](https://docs.cloud.google.com/datastore/docs/concepts/limits) .
+- Learn about Google Cloud Platform [Best Practices for Enterprise Organizations](https://docs.cloud.google.com/architecture/framework) .

@@ -9,7 +9,7 @@ data_source: docs.cloud.google.com
 # Build LLM-powered applications using LangChain
 
 > **Preview — LangChain**
-> 
+>
 > This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
 
 This page introduces how to build LLM-powered applications using [LangChain](https://www.langchain.com/) . The overviews on this page link to procedure guides in GitHub.
@@ -24,9 +24,9 @@ For more information about LangChain, see the [Google LangChain](https://python.
 
 Firestore offers the following LangChain interfaces:
 
-  - [Vector store](https://docs.cloud.google.com/firestore/native/docs/langchain#vector-store)
-  - [Document loader](https://docs.cloud.google.com/firestore/native/docs/langchain#document-loader)
-  - [Chat message history](https://docs.cloud.google.com/firestore/native/docs/langchain#chat-message-history)
+- [Vector store](https://docs.cloud.google.com/firestore/native/docs/langchain#vector-store)
+- [Document loader](https://docs.cloud.google.com/firestore/native/docs/langchain#document-loader)
+- [Chat message history](https://docs.cloud.google.com/firestore/native/docs/langchain#chat-message-history)
 
 ## Vector store for Firestore
 
@@ -40,13 +40,13 @@ For more information, see the [LangChain Vector Stores](https://python.langchain
 
 The [Firestore guide for vector store](https://github.com/googleapis/langchain-google-firestore-python/blob/main/docs/vectorstores.ipynb) shows you how to do the following:
 
-  - Install the integration package and LangChain
-  - Initialize a table for the vector store
-  - Set up an embedding service using `VertexAIEmbeddings`
-  - Initialize `FirestoreVectorStore`
-  - Update and delete documents
-  - Search for similar documents
-  - Create a custom vector store to connect to a pre-existing Firestore database that has a table with vector embeddings
+- Install the integration package and LangChain
+- Initialize a table for the vector store
+- Set up an embedding service using `VertexAIEmbeddings`
+- Initialize `FirestoreVectorStore`
+- Update and delete documents
+- Search for similar documents
+- Create a custom vector store to connect to a pre-existing Firestore database that has a table with vector embeddings
 
 ## Document loader for Firestore
 
@@ -60,12 +60,12 @@ For more information, see the [LangChain Document loaders](https://python.langch
 
 The [Firestore guide for document loader](https://github.com/googleapis/langchain-google-firestore-python/blob/main/docs/document_loader.ipynb) shows you how to:
 
-  - Install the integration package and LangChain
-  - Load documents from a table
-  - Add a filter to the loader
-  - Customize the connection and authentication
-  - Customize Document construction by specifying customer content and metadata
-  - How to use and customize a `FirestoreSaver` to store and delete documents
+- Install the integration package and LangChain
+- Load documents from a table
+- Add a filter to the loader
+- Customize the connection and authentication
+- Customize Document construction by specifying customer content and metadata
+- How to use and customize a `FirestoreSaver` to store and delete documents
 
 ## Chat message history for Firestore
 
@@ -77,6 +77,6 @@ Firestore extends this class with `FirestoreChatMessageHistory` .
 
 The [Firestore guide for chat message history](https://github.com/googleapis/langchain-google-firestore-python/blob/main/docs/chat_message_history.ipynb) shows you how to:
 
-  - Install LangChain and authenticate to Google Cloud
-  - Initialize the `FirestoreChatMessageHistory` class to add and delete messages
-  - Use a client to customize the connection and authentication
+- Install LangChain and authenticate to Google Cloud
+- Initialize the `FirestoreChatMessageHistory` class to add and delete messages
+- Use a client to customize the connection and authentication

@@ -12,82 +12,88 @@ Create custom shard and counter types for Firestore distributed counters
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Support frequent and distributed counters](https://docs.cloud.google.com/firestore/native/docs/solutions/counters)
+- [Support frequent and distributed counters](https://docs.cloud.google.com/firestore/native/docs/solutions/counters)
 
 ## Code sample
 
-### C\#
+### C#
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    /// <summary>
-    /// Shard is a document that contains the count.
-    /// </summary>
-    [FirestoreData]
-    public class Shard
-    {
-        [FirestoreProperty(name: "count")]
-        public int Count { get; set; }
-    }
+```csharp
+/// <summary>
+/// Shard is a document that contains the count.
+/// </summary>
+[FirestoreData]
+public class Shard
+{
+    [FirestoreProperty(name: "count")]
+    public int Count { get; set; }
+}
+```
 
 ### Go
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    import (
-     "context"
-     "fmt"
-     "math/rand"
-     "strconv"
-    
-     "cloud.google.com/go/firestore"
-     "google.golang.org/api/iterator"
-    )
-    
-    // Counter is a collection of documents (shards)
-    // to realize counter with high frequency.
-    type Counter struct {
-     numShards int
-    }
-    
-    // Shard is a single counter, which is used in a group
-    // of other shards within Counter.
-    type Shard struct {
-     Count int
-    }
+```go
+import (
+    "context"
+    "fmt"
+    "math/rand"
+    "strconv"
+
+    "cloud.google.com/go/firestore"
+    "google.golang.org/api/iterator"
+)
+
+// Counter is a collection of documents (shards)
+// to realize counter with high frequency.
+type Counter struct {
+    numShards int
+}
+
+// Shard is a single counter, which is used in a group
+// of other shards within Counter.
+type Shard struct {
+    Count int
+}
+```
 
 ### Python
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    import random
-    
-    from google.cloud import firestore
-    
-    
-    class Shard:
-        """
-        A shard is a distributed counter. Each shard can support being incremented
-        once per second. Multiple shards are needed within a Counter to allow
-        more frequent incrementing.
-        """
-    
-        def __init__(self):
-            self._count = 0
-    
-        def to_dict(self):
-            return {"count": self._count}
-    
-    
-    class Counter:
-        """
-        A counter stores a collection of shards which are
-        summed to return a total count. This allows for more
-        frequent incrementing than a single document.
-        """
-    
-        def __init__(self, num_shards):
-            self._num_shards = num_shards
+```python
+import random
+
+from google.cloud import firestore
+
+
+class Shard:
+    """
+    A shard is a distributed counter. Each shard can support being incremented
+    once per second. Multiple shards are needed within a Counter to allow
+    more frequent incrementing.
+    """
+
+    def __init__(self):
+        self._count = 0
+
+    def to_dict(self):
+        return {"count": self._count}
+
+
+class Counter:
+    """
+    A counter stores a collection of shards which are
+    summed to return a total count. This allows for more
+    frequent incrementing than a single document.
+    """
+
+    def __init__(self, num_shards):
+        self._num_shards = num_shards
+```
 
 ## What's next
 

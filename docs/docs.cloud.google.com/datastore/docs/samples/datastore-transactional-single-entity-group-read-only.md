@@ -12,29 +12,31 @@ Use a read-only transaction.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Cloud Datastore Transactions](https://docs.cloud.google.com/datastore/docs/concepts/cloud-datastore-transactions)
-  - [Transactions](https://docs.cloud.google.com/datastore/docs/concepts/transactions)
+- [Cloud Datastore Transactions](https://docs.cloud.google.com/datastore/docs/concepts/cloud-datastore-transactions)
+- [Transactions](https://docs.cloud.google.com/datastore/docs/concepts/transactions)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Entity taskList;
-    IReadOnlyList<Entity> tasks;
-    using (var transaction = _db.BeginTransaction(TransactionOptions.CreateReadOnly()))
+```csharp
+Entity taskList;
+IReadOnlyList<Entity> tasks;
+using (var transaction = _db.BeginTransaction(TransactionOptions.CreateReadOnly()))
+{
+    taskList = transaction.Lookup(taskListKey);
+    var query = new Query("Task")
     {
-        taskList = transaction.Lookup(taskListKey);
-        var query = new Query("Task")
-        {
-            Filter = Filter.HasAncestor(taskListKey)
-        };
-        tasks = transaction.RunQuery(query).Entities;
-        transaction.Commit();
-    }
+        Filter = Filter.HasAncestor(taskListKey)
+    };
+    tasks = transaction.RunQuery(query).Entities;
+    transaction.Commit();
+}
+```
 
 ### Go
 
@@ -42,16 +44,18 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    tx, err := client.NewTransaction(ctx, datastore.ReadOnly)
-    if err != nil {
-     log.Fatalf("client.NewTransaction: %v", err)
-    }
-    defer tx.Rollback() // Transaction only used for read.
-    
-    ancestor := datastore.NameKey("TaskList", "default", nil)
-    query := datastore.NewQuery("Task").Ancestor(ancestor).Transaction(tx)
-    var tasks []Task
-    _, err = client.GetAll(ctx, query, &tasks)
+```go
+tx, err := client.NewTransaction(ctx, datastore.ReadOnly)
+if err != nil {
+    log.Fatalf("client.NewTransaction: %v", err)
+}
+defer tx.Rollback() // Transaction only used for read.
+
+ancestor := datastore.NameKey("TaskList", "default", nil)
+query := datastore.NewQuery("Task").Ancestor(ancestor).Transaction(tx)
+var tasks []Task
+_, err = client.GetAll(ctx, query, &tasks)
+```
 
 ### Java
 
@@ -59,25 +63,27 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Entity taskList;
-    QueryResults<Entity> tasks;
-    Transaction txn =
-        datastore.newTransaction(
-            TransactionOptions.newBuilder().setReadOnly(ReadOnly.newBuilder().build()).build());
-    try {
-      taskList = txn.get(taskListKey);
-      Query<Entity> query =
-          Query.newEntityQueryBuilder()
-              .setKind("Task")
-              .setFilter(PropertyFilter.hasAncestor(taskListKey))
-              .build();
-      tasks = txn.run(query);
-      txn.commit();
-    } finally {
-      if (txn.isActive()) {
-        txn.rollback();
-      }
-    }
+```java
+Entity taskList;
+QueryResults<Entity> tasks;
+Transaction txn =
+    datastore.newTransaction(
+        TransactionOptions.newBuilder().setReadOnly(ReadOnly.newBuilder().build()).build());
+try {
+  taskList = txn.get(taskListKey);
+  Query<Entity> query =
+      Query.newEntityQueryBuilder()
+          .setKind("Task")
+          .setFilter(PropertyFilter.hasAncestor(taskListKey))
+          .build();
+  tasks = txn.run(query);
+  txn.commit();
+} finally {
+  if (txn.isActive()) {
+    txn.rollback();
+  }
+}
+```
 
 ### PHP
 
@@ -85,19 +91,21 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $transaction = $datastore->readOnlyTransaction();
-    $taskListKey = $datastore->key('TaskList', 'default');
-    $query = $datastore->query()
-        ->kind('Task')
-        ->hasAncestor($taskListKey);
-    $result = $transaction->runQuery($query);
-    $taskListEntities = [];
-    $num = 0;
-    /* @var Entity $task */
-    foreach ($result as $task) {
-        $taskListEntities[] = $task;
-        $num += 1;
-    }
+```php
+$transaction = $datastore->readOnlyTransaction();
+$taskListKey = $datastore->key('TaskList', 'default');
+$query = $datastore->query()
+    ->kind('Task')
+    ->hasAncestor($taskListKey);
+$result = $transaction->runQuery($query);
+$taskListEntities = [];
+$num = 0;
+/* @var Entity $task */
+foreach ($result as $task) {
+    $taskListEntities[] = $task;
+    $num += 1;
+}
+```
 
 ### Python
 
@@ -105,21 +113,23 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    with client.transaction(read_only=True):
-        task_list_key = client.key("TaskList", "default")
-    
-        task_list = client.get(task_list_key)
-    
-        query = client.query(kind="Task", ancestor=task_list_key)
-        tasks_in_list = list(query.fetch())
-    
-        return task_list, tasks_in_list
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+with client.transaction(read_only=True):
+    task_list_key = client.key("TaskList", "default")
+
+    task_list = client.get(task_list_key)
+
+    query = client.query(kind="Task", ancestor=task_list_key)
+    tasks_in_list = list(query.fetch())
+
+    return task_list, tasks_in_list
+```
 
 ### Ruby
 
@@ -127,13 +137,15 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    # task_list_name = "default"
-    task_list_key = datastore.key "TaskList", task_list_name
-    datastore.read_only_transaction do |tx|
-      task_list = tx.find task_list_key
-      query = datastore.query("Task").ancestor(task_list)
-      tasks_in_list = tx.run query
-    end
+```ruby
+# task_list_name = "default"
+task_list_key = datastore.key "TaskList", task_list_name
+datastore.read_only_transaction do |tx|
+  task_list = tx.find task_list_key
+  query = datastore.query("Task").ancestor(task_list)
+  tasks_in_list = tx.run query
+end
+```
 
 ## What's next
 

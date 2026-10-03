@@ -6,37 +6,18 @@ description: A cloud-hosted NoSQL database that's simple enough for rapid protot
 data_source: docs.cloud.google.com
 ---
 
-Describes the progress of the operation. Unit of work is generic and must be interpreted based on where `  Progress  ` is used.
+Describes the progress of the operation. Unit of work is generic and must be interpreted based on where [`Progress`](https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Progress) is used.
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>JSON representation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;estimatedWork&quot;: string,
-  &quot;completedWork&quot;: string
-}</code></pre></td>
-</tr>
-</tbody>
-</table>
+**JSON representation**
 
-Fields
+```
+{
+  "estimatedWork": string,
+  "completedWork": string
+}
+```
 
-`estimatedWork`
-
-`string ( int64 format)`
-
-The amount of work estimated.
-
-`completedWork`
-
-`string ( int64 format)`
-
-The amount of work completed.
+| Fields          |                                                                                                                      |
+|-----------------|----------------------------------------------------------------------------------------------------------------------|
+| `estimatedWork` | `string ( `[`int64`](https://developers.google.com/discovery/v1/type-format)` format)` The amount of work estimated. |
+| `completedWork` | `string ( `[`int64`](https://developers.google.com/discovery/v1/type-format)` format)` The amount of work completed. |

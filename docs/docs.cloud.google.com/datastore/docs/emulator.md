@@ -21,20 +21,26 @@ To install the Firestore emulator, install and update the gcloud CLI:
 1.  [Install the gcloud CLI](https://docs.cloud.google.com/sdk/docs/install) .
 
 2.  Update your gcloud CLI installation to get the latest features:
-    
-        gcloud components update
+
+    ```
+    gcloud components update
+    ```
 
 ## Run the emulator
 
 1.  Run the following command to start the emulator:
-    
-        gcloud emulators firestore start --database-mode=datastore-mode
-    
+
+    ```
+    gcloud emulators firestore start --database-mode=datastore-mode
+    ```
+
     The emulator prints the host and port number where it is running.
-    
-    By default, the emulator attempts to use `127.0.0.1:8080` . To bind the emulator to a specific host and port, use the optional `--host-port` flag, replacing HOST and PORT :
-    
-        gcloud emulators firestore start --database-mode=datastore-mode --host-port=HOST:PORT
+
+    By default, the emulator attempts to use `127.0.0.1:8080` . To bind the emulator to a specific host and port, use the optional `--host-port` flag, replacing ` HOST ` and ` PORT ` :
+
+    ```
+    gcloud emulators firestore start --database-mode=datastore-mode --host-port=HOST:PORT
+    ```
 
 2.  Use the keyboard shortcut `Control + C` to stop the emulator.
 
@@ -44,7 +50,9 @@ To install the Firestore emulator, install and update the gcloud CLI:
 
 To connect a client library and app to the emulator, set the `DATASTORE_EMULATOR_HOST` environment variable. When this environment variable is set, the client libraries automatically connect to the emulator.
 
-    export DATASTORE_EMULATOR_HOST="HOST:PORT"
+```
+export DATASTORE_EMULATOR_HOST="HOST:PORT"
+```
 
 ## Import entities into the emulator
 
@@ -70,15 +78,15 @@ gcloud emulators firestore start --database-mode=datastore-mode --import-data=EX
 
 where:
 
-  - `[PROJECT_ID]` is the ID of your project.
+- `[PROJECT_ID]` is the ID of your project.
 
-  - `[DATABASE]` is the database path. For example a project with default database would look like the following:
-    
-    `{"database":"projects/myProject/databases/"}`
+- `[DATABASE]` is the database path. For example a project with default database would look like the following:
 
-  - `[EXPORT_DIRECTORY]` is the path to the `overall_export_metadata` file of your entity export files. For example:
-    
-    `{"export_directory":"/home/user/myexports/2024-03-26T19:39:33_443/2024-03-26T19:39:33_443.overall_export_metadata"}`
+  `{"database":"projects/myProject/databases/"}`
+
+- `[EXPORT_DIRECTORY]` is the path to the `overall_export_metadata` file of your entity export files. For example:
+
+  `{"export_directory":"/home/user/myexports/2024-03-26T19:39:33_443/2024-03-26T19:39:33_443.overall_export_metadata"}`
 
 > **Note:** Exporting entities of specific kinds or namespaces is not supported.
 
@@ -106,15 +114,15 @@ gcloud emulators firestore start --database-mode=datastore-mode --export-on-exit
 
 where:
 
-  - `[PROJECT_ID]` is the ID of your project.
+- `[PROJECT_ID]` is the ID of your project.
 
-  - `[DATABASE_PATH]` is the database path. For example a project with default database would look like the following:
-    
-    `{"database":"projects/myProject/databases/"}`
+- `[DATABASE_PATH]` is the database path. For example a project with default database would look like the following:
 
-  - `[EXPORT_DIRECTORY]` specifies the directory where the emulator saves the entity export files. This directory must not already contain a set of entity export files. For example:
-    
-    `{"export_directory":"/home/user/myexports/2024-03-26/"}`
+  `{"database":"projects/myProject/databases/"}`
+
+- `[EXPORT_DIRECTORY]` specifies the directory where the emulator saves the entity export files. This directory must not already contain a set of entity export files. For example:
+
+  `{"export_directory":"/home/user/myexports/2024-03-26/"}`
 
 > **Note:** Exporting entities of specific kinds or namespaces is not supported.
 
@@ -122,21 +130,27 @@ where:
 
 By default, the Firestore emulator does not persist data to disk. To persist emulator data, run the following command to use import and export flags to load and save the data across emulator instances:
 
-    gcloud emulators firestore start --database-mode=datastore-mode --import-data=EXPORT_DIRECTORY --export-on-exit=EXPORT_DIRECTORY
+```
+gcloud emulators firestore start --database-mode=datastore-mode --import-data=EXPORT_DIRECTORY --export-on-exit=EXPORT_DIRECTORY
+```
 
 ## Reset emulator data
 
 The Firestore emulator includes a REST endpoint for resetting all the data in the emulator. You can use this endpoint to clear data between tests without shutting down the emulator.
 
-To reset all the data in the emulator, perform an HTTP `POST` operation against the following endpoint, replacing HOST and PORT with the host and port you selected and replacing PROJECT\_ID with your own project ID:
+To reset all the data in the emulator, perform an HTTP `POST` operation against the following endpoint, replacing ` HOST ` and ` PORT ` with the host and port you selected and replacing ` PROJECT_ID ` with your own project ID:
 
-    http://HOST:PORT/reset
+```
+http://HOST:PORT/reset
+```
 
 Adjust the host and port if the emulator does not use `127.0.0.1:8080` . Your code should await REST confirmation that the reset finished or failed.
 
 You can perform this operation from the shell using `curl` :
 
-    $ curl -X POST "http://HOST:PORT/reset"
+```
+$ curl -X POST "http://HOST:PORT/reset"
+```
 
 ## How the emulator differs from production
 
@@ -160,7 +174,9 @@ By default, the emulator does not track composite indexes and instead executes a
 
 To test if composite index requirements are met, start the emulator with the `--require-indexes` and `--index-file` flags. When you start the emulator with these flags, it will check for and reject queries that require a composite index that is not defined in the specified index file.
 
-    gcloud emulators firestore start --database-mode=datastore-mode --require-indexes --index-file=./index.yaml
+```
+gcloud emulators firestore start --database-mode=datastore-mode --require-indexes --index-file=./index.yaml
+```
 
 See [Configuring Datastore Indexes with index.yaml](https://docs.cloud.google.com/datastore/docs/tools/indexconfig#Datastore_About_index_yaml) for more information on the `index-file` format.
 
@@ -170,5 +186,5 @@ The emulator does not enforce all limits enforced in production. For example, th
 
 ## What's next
 
-  - Learn how to work with [Entities, properties, and keys](https://docs.cloud.google.com/datastore/docs/concepts/entities)
-  - Learn about [queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)
+- Learn how to work with [Entities, properties, and keys](https://docs.cloud.google.com/datastore/docs/concepts/entities)
+- Learn about [queries](https://docs.cloud.google.com/datastore/docs/concepts/queries)

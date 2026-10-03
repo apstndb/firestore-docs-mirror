@@ -18,24 +18,24 @@ Key Visualizer is a tool that helps you analyze your Datastore mode usage patter
 
 Key Visualizer can provide insights into usage patterns at scale. Uses for Key Visualizer include:
 
-  - Troubleshooting performance issues. Key Visualizer helps you identify performance issues in your database caused by hotspots from sequential entity or index keys or sudden traffic increases.
-  - Getting a better understanding of how you access the data stored in Datastore mode.
-  - Iteratively designing a data model or improving the design of an existing data model. In each iteration, you can check Key Visualizer to spot problems your data model causes.
+- Troubleshooting performance issues. Key Visualizer helps you identify performance issues in your database caused by hotspots from sequential entity or index keys or sudden traffic increases.
+- Getting a better understanding of how you access the data stored in Datastore mode.
+- Iteratively designing a data model or improving the design of an existing data model. In each iteration, you can check Key Visualizer to spot problems your data model causes.
 
 To accomplish these goals, Key Visualizer can help you complete the following tasks:
 
-  - Check whether your reads or writes create hotspots on specific entity ranges.
-  - See how a sudden increase in traffic affects latency.
-  - Look at whether your access patterns are balanced across your database.
-  - Check the structure of index keys to identify the index definitions that cause index load problems.
-  - Use the index keys visualization to make better workload pattern predictions.
+- Check whether your reads or writes create hotspots on specific entity ranges.
+- See how a sudden increase in traffic affects latency.
+- Look at whether your access patterns are balanced across your database.
+- Check the structure of index keys to identify the index definitions that cause index load problems.
+- Use the index keys visualization to make better workload pattern predictions.
 
 > **Key Term:** Index key
-> 
+>
 > In Key Visualizer, the term **Index Key** refers to a index's unique identifier. These can be built-in indexes or composite indexes. For example, the following indexes are some examples of index keys as seen on the Key Visualizer tool:
-> 
->   - ``NAMESPACE: '' KIND: Test PROPERTIES: (integer: ASC, description: DESC)ANCESTOR:KEY(PROJECT('PROJECT_ID'),NAMESPACE(''),`Ancestor`,1685558526142092,`Test`,4848490060529664) VALUES: (1,"tIu9hjuuTpFj0OjDdBe0lX3Zfv8P6pOWKQYxE6hNaol0HrWzGoJ1MHva4T8XupUVccbe4ZCU7Fa1NUhEVBAAcBiUijZw00D0qHbZ") ENTITY: KEY(PROJECT('PROJECT_ID'),NAMESPACE(''),`Ancestor`,1685558526142092,`Test`,4848490060529664)``
->   - ``NAMESPACE: '' KIND: Test PROPERTIES: (integer: ASC, description:DESC) ANCESTOR: KEY(PROJECT('PROJECT_ID'),NAMESPACE(''),`Ancestor`,1685556682238805,`Test`,5097691411464192) VALUES: (1,"7m4tJ4nMqmpWgTH9dl6GxgHlnsLbCEZTlFRxVIapvFvXgt3SPogs2bqIDLxAL3GK6Wg1oig7PJi2iin7p3PZueNM5SgqMXwwAm9j") ENTITY:KEY(PROJECT('PROJECT_ID'),NAMESPACE(''),`Ancestor`,1685556682238805,`Test`,5097691411464192)``
+>
+> - `` NAMESPACE: '' KIND: Test PROPERTIES: (integer: ASC, description: DESC)ANCESTOR:KEY(PROJECT('PROJECT_ID'),NAMESPACE(''),`Ancestor`,1685558526142092,`Test`,4848490060529664) VALUES: (1,"tIu9hjuuTpFj0OjDdBe0lX3Zfv8P6pOWKQYxE6hNaol0HrWzGoJ1MHva4T8XupUVccbe4ZCU7Fa1NUhEVBAAcBiUijZw00D0qHbZ") ENTITY: KEY(PROJECT('PROJECT_ID'),NAMESPACE(''),`Ancestor`,1685558526142092,`Test`,4848490060529664) ``
+> - `` NAMESPACE: '' KIND: Test PROPERTIES: (integer: ASC, description:DESC) ANCESTOR: KEY(PROJECT('PROJECT_ID'),NAMESPACE(''),`Ancestor`,1685556682238805,`Test`,5097691411464192) VALUES: (1,"7m4tJ4nMqmpWgTH9dl6GxgHlnsLbCEZTlFRxVIapvFvXgt3SPogs2bqIDLxAL3GK6Wg1oig7PJi2iin7p3PZueNM5SgqMXwwAm9j") ENTITY:KEY(PROJECT('PROJECT_ID'),NAMESPACE(''),`Ancestor`,1685556682238805,`Test`,5097691411464192) ``
 
 ## Scan eligibility
 
@@ -80,7 +80,7 @@ Key Visualizer reports most metrics as averages over each key bucket, or as maxi
 The following metrics are available for entity keys in Key Visualizer scans:
 
 | Metrics                 | Description                                                                                                                                                       |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Activity metrics**    |                                                                                                                                                                   |
 | Ops/s                   | Average number of entity operations per second. Roughly equal to the sum of writes, lookups, and queries per second. This metric can indicate which keys are hot. |
 | Write ops/s             | Average number of entity operations per second for writes and deletes.                                                                                            |
@@ -97,7 +97,7 @@ The following metrics are available for entity keys in Key Visualizer scans:
 The following metric is available for index keys in Key Visualizer scans:
 
 | Metrics           | Description                                |
-| ----------------- | ------------------------------------------ |
+|-------------------|--------------------------------------------|
 | Index Write Ops/s | Average number of index writes per second. |
 
 ### Performance averages
@@ -108,7 +108,7 @@ Average latency metrics take an average over the keys in the key bucket. Since t
 
 Although Key Visualizer shows a variety of metrics, it doesn't display every single metric that can affect the performance of Datastore mode. For example:
 
-  - Network issues between your application and Google Cloud might not be visible. They might appear as vertical bands across all keys in Key Visualizer which only gives you hints about *when* the problems occurred.
+- Network issues between your application and Google Cloud might not be visible. They might appear as vertical bands across all keys in Key Visualizer which only gives you hints about *when* the problems occurred.
 
 ## Data duration
 
@@ -120,6 +120,6 @@ This limit also means that if you bookmark or share the URL for a Key Visualizer
 
 ## What's next
 
-  - Learn how to [get started with Key Visualizer](https://docs.cloud.google.com/datastore/docs/keyvis-getting-started) .
-  - Understand the [entity key patterns](https://docs.cloud.google.com/datastore/docs/keyvis-patterns) or [index key patterns](https://docs.cloud.google.com/datastore/docs/keyvis-patterns-index) you might see in Key Visualizer heatmaps.
-  - Find out how to [explore a heatmap in detail](https://docs.cloud.google.com/datastore/docs/keyvis-exploring-heatmaps) .
+- Learn how to [get started with Key Visualizer](https://docs.cloud.google.com/datastore/docs/keyvis-getting-started) .
+- Understand the [entity key patterns](https://docs.cloud.google.com/datastore/docs/keyvis-patterns) or [index key patterns](https://docs.cloud.google.com/datastore/docs/keyvis-patterns-index) you might see in Key Visualizer heatmaps.
+- Find out how to [explore a heatmap in detail](https://docs.cloud.google.com/datastore/docs/keyvis-exploring-heatmaps) .

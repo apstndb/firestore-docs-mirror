@@ -10,140 +10,66 @@ data_source: docs.cloud.google.com
 
 A Cloud Firestore User Creds.
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>JSON representation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;name&quot;: string,&quot;createTime&quot;: string,&quot;updateTime&quot;: string,&quot;state&quot;: enum (State),&quot;securePassword&quot;: string,// Union field UserCredsIdentity can be only one of the following:&quot;resourceIdentity&quot;: {object (ResourceIdentity)}// End of list of possible types for union field UserCredsIdentity.}</code></pre></td>
-</tr>
-</tbody>
-</table>
+**JSON representation**
 
-Fields
+```
+{
+  "name": string,
+  "createTime": string,
+  "updateTime": string,
+  "state": enum (State),
+  "securePassword": string,
 
-`name`
+  // Union field UserCredsIdentity can be only one of the following:
+  "resourceIdentity": {
+    object (ResourceIdentity)
+  }
+  // End of list of possible types for union field UserCredsIdentity.
+}
+```
 
-`string`
-
-Identifier. The resource name of the UserCreds. Format: `projects/{project}/databases/{database}/userCreds/{userCreds}`
-
-`createTime`
-
-` string ( Timestamp  ` format)
-
-Output only. The time the user creds were created.
-
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .
-
-`updateTime`
-
-` string ( Timestamp  ` format)
-
-Output only. The time the user creds were last updated.
-
-Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .
-
-`state`
-
-` enum ( State  ` )
-
-Output only. Whether the user creds are enabled or disabled. Defaults to ENABLED on creation.
-
-`securePassword`
-
-`string`
-
-Output only. The plaintext server-generated password for the user creds. Only populated in responses for userCreds.create and userCreds.resetPassword.
-
-Union field `UserCredsIdentity` . Identity associated with this User Creds. `UserCredsIdentity` can be only one of the following:
-
-`resourceIdentity`
-
-` object ( ResourceIdentity  ` )
-
-Resource Identity descriptor.
+| Fields                                                                                                                            |                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|-----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`                                                                                                                            | `string` Identifier. The resource name of the UserCreds. Format: `projects/{project}/databases/{database}/userCreds/{userCreds}`                                                                                                                                                                                                                                                                                              |
+| `createTime`                                                                                                                      | `string ( `[`Timestamp`](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp)` format)` Output only. The time the user creds were created. Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` .      |
+| `updateTime`                                                                                                                      | `string ( `[`Timestamp`](https://protobuf.dev/reference/protobuf/google.protobuf/#timestamp)` format)` Output only. The time the user creds were last updated. Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 6 or 9 fractional digits. Offsets other than "Z" are also accepted. Examples: `"2014-10-02T15:01:23Z"` , `"2014-10-02T15:01:23.045123456Z"` or `"2014-10-02T15:01:23+05:30"` . |
+| `state`                                                                                                                           | `enum ( `[`State`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds#State)` )` Output only. Whether the user creds are enabled or disabled. Defaults to ENABLED on creation.                                                                                                                                                                                                       |
+| `securePassword`                                                                                                                  | `string` Output only. The plaintext server-generated password for the user creds. Only populated in responses for userCreds.create and userCreds.resetPassword.                                                                                                                                                                                                                                                               |
+| Union field `UserCredsIdentity` . Identity associated with this User Creds. `UserCredsIdentity` can be only one of the following: |                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `resourceIdentity`                                                                                                                | `object ( `[`ResourceIdentity`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds#ResourceIdentity)` )` Resource Identity descriptor.                                                                                                                                                                                                                                               |
 
 ## State
 
 The state of the user creds (ENABLED or DISABLED).
 
-Enums
-
-`STATE_UNSPECIFIED`
-
-The default value. Should not be used.
-
-`ENABLED`
-
-The user creds are enabled.
-
-`DISABLED`
-
-The user creds are disabled.
+| Enums               |                                        |
+|---------------------|----------------------------------------|
+| `STATE_UNSPECIFIED` | The default value. Should not be used. |
+| `ENABLED`           | The user creds are enabled.            |
+| `DISABLED`          | The user creds are disabled.           |
 
 ## ResourceIdentity
 
 Describes a Resource Identity principal.
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>JSON representation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{
-  &quot;principal&quot;: string
-}</code></pre></td>
-</tr>
-</tbody>
-</table>
+**JSON representation**
 
-Fields
+```
+{
+  "principal": string
+}
+```
 
-`principal`
+| Fields      |                                                                                                                   |
+|-------------|-------------------------------------------------------------------------------------------------------------------|
+| `principal` | `string` Output only. Principal identifier string. See: <https://cloud.google.com/iam/docs/principal-identifiers> |
 
-`string`
-
-Output only. Principal identifier string. See: <https://cloud.google.com/iam/docs/principal-identifiers>
-
-## Methods
-
-### `            create           `
-
-Create a user creds.
-
-### `            delete           `
-
-Deletes a user creds.
-
-### `            disable           `
-
-Disables a user creds.
-
-### `            enable           `
-
-Enables a user creds.
-
-### `            get           `
-
-Gets a user creds resource.
-
-### `            list           `
-
-List all user creds in the database.
-
-### `            resetPassword           `
-
-Resets the password of a user creds.
+| Methods                                                                                                                      |                                      |
+|------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
+| [`create`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/create)               | Create a user creds.                 |
+| [`delete`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/delete)               | Deletes a user creds.                |
+| [`disable`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/disable)             | Disables a user creds.               |
+| [`enable`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/enable)               | Enables a user creds.                |
+| [`get`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/get)                     | Gets a user creds resource.          |
+| [`list`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/list)                   | List all user creds in the database. |
+| [`resetPassword`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/resetPassword) | Resets the password of a user creds. |

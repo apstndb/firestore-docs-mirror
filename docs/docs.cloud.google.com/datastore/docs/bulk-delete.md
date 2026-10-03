@@ -21,22 +21,24 @@ Before you can use the managed bulk delete service, you must complete the follow
 1.  [For bulk document deletion, enable billing for your Google Cloud project.](https://cloud.google.com/billing/docs/how-to/modify-project) Only Google Cloud projects with billing enabled can use the bulk delete functionality.
 
 2.  Make sure your account has the necessary permissions for Datastore mode. **If you are the project owner, your account has the required permissions.** Otherwise, the following roles grant the necessary permissions for bulk delete operations:
-    
-      - [Datastore mode roles:](https://docs.cloud.google.com/datastore/docs/security/iam#predefined_rol%20es) `Owner` , `Cloud Datastore Owner` , or `Cloud Datastore Bulk Admin`
-        
-        > **Note:** These Datastore roles also grant permissions in Firestore.
+
+    - [Datastore mode roles:](https://docs.cloud.google.com/datastore/docs/security/iam#predefined_rol%20es) `Owner` , `Cloud Datastore Owner` , or `Cloud Datastore Bulk Admin`
+
+      > **Note:** These Datastore roles also grant permissions in Firestore.
 
 #### Set up `gcloud` for your project
 
 You can initiate bulk delete operations through the Google Cloud console or the `gcloud` command-line tool. To use `gcloud` , set up the command-line tool and connect to your project in one of the following ways:
 
-  - Access `gcloud` from the Google Cloud console using [Cloud Shell](https://cloud.google.com/shell/) .
-    
-    Make sure `gcloud` is configured for the correct project:
-    
-        gcloud config set project [PROJECT_ID]
+- Access `gcloud` from the Google Cloud console using [Cloud Shell](https://cloud.google.com/shell/) .
 
-  - [Install and initialize the Google Cloud SDK.](https://cloud.google.com/sdk/docs/quickstarts)
+  Make sure `gcloud` is configured for the correct project:
+
+  ```
+  gcloud config set project [PROJECT_ID]
+  ```
+
+- [Install and initialize the Google Cloud SDK.](https://cloud.google.com/sdk/docs/quickstarts)
 
 ### Delete data with the managed bulk delete service
 
@@ -52,9 +54,11 @@ To bulk delete specific kinds, use the [`--collection-ids`](https://cloud.google
 
 > **Note:** The \`--collection-ids\` flag accepts a maximum of 100 collection IDs.
 
-    gcloud firestore bulk-delete \
-    --collection-ids=[COLLECTION_GROUP_ID_1_OR_KIND_1],[COLLECTION_GROUP_ID_2_OR_KIND_2],[SUBCOLLECTION_GROUP_ID_1_OR_KIND_3] \
-    --database=[DATABASE]
+```
+gcloud firestore bulk-delete \
+--collection-ids=[COLLECTION_GROUP_ID_1_OR_KIND_1],[COLLECTION_GROUP_ID_2_OR_KIND_2],[SUBCOLLECTION_GROUP_ID_1_OR_KIND_3] \
+--database=[DATABASE]
+```
 
 ### Manage bulk delete operations
 
@@ -62,7 +66,9 @@ After you start a bulk delete operation, Datastore mode assigns the operation a 
 
 Operation names are prefixed with `projects/[PROJECT_ID]/databases/[DATABASE_ID]/operations/` , for example:
 
-    projects/my-project/databases/(default)/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
+```
+projects/my-project/databases/(default)/operations/ASA1MTAwNDQxNAgadGx1YWZlZAcSeWx0aGdpbi1zYm9qLW5pbWRhEgopEg
+```
 
 However, you can leave out the prefix when specifying an operation name for the `describe` , `cancel` , and `delete` commands.
 
@@ -72,7 +78,9 @@ However, you can leave out the prefix when specifying an operation name for the 
 
 Use the [`operations list`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/list) command to see all running and recently completed operations, including bulk delete operations:
 
-    gcloud firestore operations list
+```
+gcloud firestore operations list
+```
 
 #### Check operation status
 
@@ -80,15 +88,17 @@ Use the [`operations list`](https://cloud.google.com/sdk/gcloud/reference/firest
 
 Use the [`operations describe`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/describe) command to show the status of a bulk delete operation.
 
-    gcloud firestore operations describe [OPERATION_NAME]
+```
+gcloud firestore operations describe [OPERATION_NAME]
+```
 
 ##### Estimate the completion time
 
 A request for the status of a long-running operation returns the metrics `workEstimated` and `workCompleted` . Each of these metrics is returned in both number of bytes and number of entities:
 
-  - `workEstimated` shows the estimated total number of bytes and entities an operation will process. Datastore mode might omit this metric if it can't make an estimate.
+- `workEstimated` shows the estimated total number of bytes and entities an operation will process. Datastore mode might omit this metric if it can't make an estimate.
 
-  - `workCompleted` shows the number of bytes and entities deleted so far. After the operation completes, the value shows the total number of bytes and entities that were actually processed, which might be larger than the value of `workEstimated` .
+- `workCompleted` shows the number of bytes and entities deleted so far. After the operation completes, the value shows the total number of bytes and entities that were actually processed, which might be larger than the value of `workEstimated` .
 
 Divide `workCompleted` by `workEstimated` for a rough progress estimate. This estimate might be inaccurate, because it depends on delayed statistics collection.
 
@@ -98,7 +108,9 @@ Divide `workCompleted` by `workEstimated` for a rough progress estimate. This es
 
 Use the [`operations cancel`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/cancel) command to stop an operation in progress:
 
-    gcloud firestore operations cancel [OPERATION_NAME]
+```
+gcloud firestore operations cancel [OPERATION_NAME]
+```
 
 Cancelling a running operation doesn't undo the operation. A cancelled bulk delete operation doesn't recover the deleted entities.
 
@@ -106,7 +118,9 @@ Cancelling a running operation doesn't undo the operation. A cancelled bulk dele
 
 Use the [`gcloud firestore operations delete`](https://cloud.google.com/sdk/gcloud/reference/firestore/operations/delete) command to remove a completed operation from the list of recent operations. To cancel a running operation, use the earlier cancellation operation.
 
-    gcloud firestore operations delete [OPERATION_NAME]
+```
+gcloud firestore operations delete [OPERATION_NAME]
+```
 
 ### Billing and pricing for managed bulk delete operations
 

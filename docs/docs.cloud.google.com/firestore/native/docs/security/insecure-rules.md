@@ -19,9 +19,9 @@ To view your existing Security Rules, go to the [Rules tab](https://console.fire
 > **Note:** If you manage your Security Rules from the Firebase CLI, go to the rules file noted in your [firebase.json file](https://firebase.google.com/docs/cli/#the_firebasejson_file) .
 
 > #### For Firestore in Native Mode instances created in the Google Cloud console
-> 
+>
 > If you created your Firestore in Native Mode database in the Google Cloud console, and haven't connected it to a Firebase project, you don't need Firestore Security Rules. Those Firestore in Native Mode instances will only accept and return requests through your application layer. Firestore in Native Mode instances tied to a Firebase project (created in the Firebase console) allow clients to connect directly to the database and employ access control through Firestore Security Rules. To enable direct access for clients, [import your Google Cloud project in the Firebase console](https://firebase.google.com/docs/guides) . If you've already added your Google Cloud project to a Firebase project, it's important that you properly configure your Security Rules.
-> 
+>
 > **The following documentation only applies to Firestore in Native Mode instances that were created with Firebase or have been added to a Firebase project.** All Firestore in Native Mode instances tied to Firebase projects must have properly configured Security Rules to protect your data.
 
 ## Understand your Firestore Security Rules
@@ -38,37 +38,29 @@ The Firestore Security Rules you might have set up by default or as you initiall
 
 As you set up Firestore in Native Mode, you might have set your rules to allow open access during development. You might think you're the only person using your app, but if you've deployed it, it's available on the internet. If you're not authenticating users and configuring security rules, then anyone who guesses your project ID can steal, modify, or delete the data.
 
-|                                                      |
-| ---------------------------------------------------- |
-| Not recommended: Read and write access to all users. |
+Not recommended: Read and write access to all users.
 
-    // Allow read/write access to all users under any conditions
-    // Warning: **NEVER** use this rule set in production; it allows
-    // anyone to overwrite your entire database.
-    
-    service cloud.firestore {
-      match /databases/{database}/documents {
-        match /{document=**} {
-          allow read, write: if true;
-        }
-      }
+```
+// Allow read/write access to all users under any conditions
+// Warning: **NEVER** use this rule set in production; it allows
+// anyone to overwrite your entire database.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if true;
     }
+  }
+}
+```
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>Solution: Rules that restrict read and write access.
-<p>Build rules that make sense for your data hierarchy. One of the common solutions to this insecurity is user-based security with Firebase Authentication. Learn more about <a href="https://docs.cloud.google.com/firestore/native/docs/security/rules-conditions#authentication">authenticating users with rules</a> .</p></td>
-</tr>
-</tbody>
-</table>
+Solution: Rules that restrict read and write access.
+
+Build rules that make sense for your data hierarchy. One of the common solutions to this insecurity is user-based security with Firebase Authentication. Learn more about [authenticating users with rules](https://docs.cloud.google.com/firestore/native/docs/security/rules-conditions#authentication) .
 
 #### Content owner only
 
-``` 
+```
 service cloud.firestore {
   match /databases/{database}/documents {
     // Allow only authenticated content owners access
@@ -84,12 +76,11 @@ service cloud.firestore {
     }
   }
 }
-  
 ```
 
 #### Mixed public and private access
 
-``` 
+```
 service cloud.firestore {
   match /databases/{database}/documents {
     // Allow public read access, but only content owners can write
@@ -106,55 +97,48 @@ service cloud.firestore {
     }
   }
 }
-  
 ```
 
 ### Access for any authenticated user
 
 Sometimes, Firestore Security Rules check that a user is logged in, but don't further restrict access based on that authentication. If one of your rules includes `auth != null` , confirm that you want any logged-in user to have access to the data.
 
-|                                                                                        |
-| -------------------------------------------------------------------------------------- |
-| Not recommended: Any logged-in user has read and write access to your entire database. |
+Not recommended: Any logged-in user has read and write access to your entire database.
 
-    service cloud.firestore {
-      match /databases/{database}/documents {
-        match /some_collection/{document} {
-          allow read, write: if request.auth != null;
-        }
-      }
+```
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /some_collection/{document} {
+      allow read, write: if request.auth != null;
     }
+  }
+}
+```
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>Solution: Narrow access using security conditions.
-<p>When you're checking for authentication, you might also want to use one of the authentication properties to further restrict access to specific users for specific data sets. Learn more about <a href="https://docs.cloud.google.com/firestore/native/docs/security/rules-conditions">adding security conditions</a> and <a href="https://docs.cloud.google.com/firestore/native/docs/solutions/role-based-access">role-based access</a> .</p></td>
-</tr>
-</tbody>
-</table>
+Solution: Narrow access using security conditions.
+
+When you're checking for authentication, you might also want to use one of the authentication properties to further restrict access to specific users for specific data sets. Learn more about [adding security conditions](https://docs.cloud.google.com/firestore/native/docs/security/rules-conditions) and [role-based access](https://docs.cloud.google.com/firestore/native/docs/solutions/role-based-access) .
 
 #### Role-based access
 
-    service cloud.firestore {
-      match /databases/{database}/documents {
-        // Assign roles to all users and refine access based on user roles
-        match /some_collection/{document} {
-         allow read: if request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "Reader"
-         allow write: if request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "Writer"
-    
-         // Note: Checking for roles in your database using `get` (as in the code
-         // above) or `exists` carry standard charges for read operations.
-        }
-      }
+```
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Assign roles to all users and refine access based on user roles
+    match /some_collection/{document} {
+     allow read: if request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "Reader"
+     allow write: if request.auth != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "Writer"
+
+     // Note: Checking for roles in your database using `get` (as in the code
+     // above) or `exists` carry standard charges for read operations.
     }
+  }
+}
+```
 
 #### Attribute-based access
 
-``` 
+```
 // Give each user in your database a particular attribute
 // and set it to true/false
 // Then, use that attribute to grant access to subsets of data
@@ -169,12 +153,11 @@ service cloud.firestore {
     }
   }
 }
-  
 ```
 
 #### Mixed public and private access
 
-``` 
+```
 service cloud.firestore {
   match /databases/{database}/documents {
     // Allow public read access, but only content owners can write
@@ -191,49 +174,51 @@ service cloud.firestore {
 
 Sometimes, Firestore Security Rules check that a user's email belongs to a particular domain. While this is generally a good practice, emails are not always verified during sign-in until an additional step is performed by the user upon receipt of a verification email. Ensure you are validating that the email does in fact belong to the user.
 
-|                                                                        |
-| ---------------------------------------------------------------------- |
-| Not recommended: Any user can sign in with an arbitrary email address. |
+Not recommended: Any user can sign in with an arbitrary email address.
 
-    service cloud.firestore {
-      match /databases/{database}/documents {
-        // Allow access based on email domain
-        match /some_collection/{document} {
-         allow read: if request.auth != null
-                     && request.auth.email.endsWith('@example.com')
-        }
-      }
+```
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow access based on email domain
+    match /some_collection/{document} {
+     allow read: if request.auth != null
+                 && request.auth.email.endsWith('@example.com')
     }
+  }
+}
+```
 
-|                                                  |
-| ------------------------------------------------ |
-| Solution: Narrow access to verified emails only. |
+Solution: Narrow access to verified emails only.
 
 #### Verify emails
 
-    service cloud.firestore {
-      match /databases/{database}/documents {
-        // Allow access based on email domain
-        match /some_collection/{document} {
-         allow read: if request.auth != null
-                     && request.auth.email_verified
-                     && request.auth.email.endsWith('@example.com')
-        }
-      }
+```
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow access based on email domain
+    match /some_collection/{document} {
+     allow read: if request.auth != null
+                 && request.auth.email_verified
+                 && request.auth.email.endsWith('@example.com')
     }
+  }
+}
+```
 
 ### Closed access
 
 While you're developing your app, another common approach is to keep your data locked down. Typically, this means you've closed off read and write access to all users, as follows:
 
-    // Deny read/write access to all users under any conditions
-    service cloud.firestore {
-      match /databases/{database}/documents {
-        match /{document=**} {
-          allow read, write: if false;
-        }
-      }
+```
+// Deny read/write access to all users under any conditions
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
     }
+  }
+}
+```
 
 The Firebase Admin SDKs and Cloud Functions can still access your database. Use these rules when you intend to use Firestore in Native Mode as a server-only backend in conjunction with the Firebase Admin SDK. While it is secure, you should test that your app's clients can properly retrieve data.
 
@@ -249,8 +234,8 @@ To quickly test your updated Firestore Security Rules in the Firebase console, u
 
 1.  To open the Rules Playground, click **Rules playground** from the [Rules tab](https://console.firebase.google.com/project/_/firestore/_/rules) .
 2.  In the *Rules playground* settings, select options for your test, including:
-      - Testing reads or writes
-      - A specific **Location** in your database, as a path
-      - Authentication type — unauthenticated, authenticated anonymous user, or a specific user ID
-      - Document-specific data that your rules specifically reference (for example, if your rules require the presence of a specific field before allowing a write)
+    - Testing reads or writes
+    - A specific **Location** in your database, as a path
+    - Authentication type — unauthenticated, authenticated anonymous user, or a specific user ID
+    - Document-specific data that your rules specifically reference (for example, if your rules require the presence of a specific field before allowing a write)
 3.  Click **Run** and look for the results in the banner above the rules window.

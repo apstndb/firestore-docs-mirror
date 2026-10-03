@@ -10,10 +10,11 @@ Every Firestore in Datastore mode [query](https://docs.cloud.google.com/datastor
 
 There are two types of indexes:
 
-  - <span id="built_in_indexes"></span> *Built-in indexes*  
-    By default, a Datastore mode database automatically predefines an index for each property of each entity kind. These single property indexes are suitable for simple types of queries.
-  - <span id="composite_indexes"></span> *Composite indexes*  
-    Composite indexes index multiple property values per indexed entity. Composite indexes support complex queries and are defined in an [index configuration file](https://docs.cloud.google.com/datastore/docs/tools/indexconfig) ( `index.yaml` ).
+*Built-in indexes*  
+By default, a Datastore mode database automatically predefines an index for each property of each entity kind. These single property indexes are suitable for simple types of queries.
+
+*Composite indexes*  
+Composite indexes index multiple property values per indexed entity. Composite indexes support complex queries and are defined in an [index configuration file](https://docs.cloud.google.com/datastore/docs/tools/indexconfig) ( `index.yaml` ).
 
 The types of indexes are discussed in more detail later.
 
@@ -33,11 +34,11 @@ The composite index is sorted first by ancestor and then by property values, in 
 
 Firestore in Datastore mode provides *built-in* , or automatic, indexes for queries of the following forms:
 
-  - Kindless queries using only ancestor and key filters
-  - Queries using only ancestor and equality filters
-  - Queries using only inequality filters (which are [limited to a single property](https://docs.cloud.google.com/datastore/docs/concepts/queries#inequality_filters_are_limited_to_at_most_one_property) )
-  - Queries using only ancestor filters, equality filters on properties, and inequality filters on keys
-  - Queries with no filters and only one sort order on a property, either ascending or descending
+- Kindless queries using only ancestor and key filters
+- Queries using only ancestor and equality filters
+- Queries using only inequality filters (which are [limited to a single property](https://docs.cloud.google.com/datastore/docs/concepts/queries#inequality_filters_are_limited_to_at_most_one_property) )
+- Queries using only ancestor filters, equality filters on properties, and inequality filters on keys
+- Queries with no filters and only one sort order on a property, either ascending or descending
 
 As an example, by default, Datastore mode databases automatically predefine two single property indexes for each property of each entity kind, one in ascending order and one in descending order. If you don't want your database to maintain an index for a property, [exclude the property from your indexes](https://docs.cloud.google.com/datastore/docs/concepts/indexes#unindexed_properties) . Note that excluding a property removes it from any composite indexes.
 
@@ -47,11 +48,11 @@ Built-in indexes don't appear in the [Indexes page](https://console.cloud.google
 
 For more complex queries, an application must define *composite* , or manual, indexes. Composite indexes are required for queries of the following form:
 
-  - Queries with ancestor and inequality filters
-  - Queries with one or more inequality filters on a property and one or more equality filters on other properties
-  - Queries with a sort order on keys in descending order
-  - Queries with multiple sort orders
-  - Queries with one or more filters and one or more sort orders
+- Queries with ancestor and inequality filters
+- Queries with one or more inequality filters on a property and one or more equality filters on other properties
+- Queries with a sort order on keys in descending order
+- Queries with multiple sort orders
+- Queries with one or more filters and one or more sort orders
 
 Composite indexes are defined in the application's [index configuration file](https://docs.cloud.google.com/datastore/docs/tools/indexconfig) ( `index.yaml` ). (Built-in indexes are not contained in the index configuration file.)
 
@@ -101,26 +102,28 @@ If you know you will never have to filter or sort on a particular property, you 
 
 The `description` property in the following example is excluded from indexes:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Entity task = new Entity()
+```c#
+Entity task = new Entity()
+{
+    Key = _db.CreateKeyFactory("Task").CreateKey("sampleTask"),
+    ["category"] = "Personal",
+    ["created"] = new DateTime(1999, 01, 01, 0, 0, 0, DateTimeKind.Utc),
+    ["done"] = false,
+    ["priority"] = 4,
+    ["percent_complete"] = 10.0,
+    ["description"] = new Value()
     {
-        Key = _db.CreateKeyFactory("Task").CreateKey("sampleTask"),
-        ["category"] = "Personal",
-        ["created"] = new DateTime(1999, 01, 01, 0, 0, 0, DateTimeKind.Utc),
-        ["done"] = false,
-        ["priority"] = 4,
-        ["percent_complete"] = 10.0,
-        ["description"] = new Value()
-        {
-            StringValue = "Learn Cloud Datastore",
-            ExcludeFromIndexes = true
-        },
-    };
+        StringValue = "Learn Cloud Datastore",
+        ExcludeFromIndexes = true
+    },
+};
+```
 
 ### Go
 
@@ -128,22 +131,24 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    type Task struct {
-     Category        string
-     Done            bool
-     Priority        int
-     Description     string `datastore:",noindex"`
-     PercentComplete float64
-     Created         time.Time
-    }
-    task := &Task{
-     Category:        "Personal",
-     Done:            false,
-     Priority:        4,
-     Description:     "Learn Cloud Datastore",
-     PercentComplete: 10.0,
-     Created:         time.Now(),
-    }
+```golang
+type Task struct {
+    Category        string
+    Done            bool
+    Priority        int
+    Description     string `datastore:",noindex"`
+    PercentComplete float64
+    Created         time.Time
+}
+task := &Task{
+    Category:        "Personal",
+    Done:            false,
+    Priority:        4,
+    Description:     "Learn Cloud Datastore",
+    PercentComplete: 10.0,
+    Created:         time.Now(),
+}
+```
 
 ### Java
 
@@ -151,17 +156,19 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Entity task =
-        Entity.newBuilder(taskKey)
-            .set("category", "Personal")
-            .set("created", Timestamp.now())
-            .set("done", false)
-            .set("priority", 4)
-            .set("percent_complete", 10.0)
-            .set(
-                "description",
-                StringValue.newBuilder("Learn Cloud Datastore").setExcludeFromIndexes(true).build())
-            .build();
+```java
+Entity task =
+    Entity.newBuilder(taskKey)
+        .set("category", "Personal")
+        .set("created", Timestamp.now())
+        .set("done", false)
+        .set("priority", 4)
+        .set("percent_complete", 10.0)
+        .set(
+            "description",
+            StringValue.newBuilder("Learn Cloud Datastore").setExcludeFromIndexes(true).build())
+        .build();
+```
 
 ### Node.js
 
@@ -169,33 +176,35 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const task = [
-      {
-        name: 'category',
-        value: 'Personal',
-      },
-      {
-        name: 'created',
-        value: new Date(),
-      },
-      {
-        name: 'done',
-        value: false,
-      },
-      {
-        name: 'priority',
-        value: 4,
-      },
-      {
-        name: 'percent_complete',
-        value: 10.0,
-      },
-      {
-        name: 'description',
-        value: 'Learn Cloud Datastore',
-        excludeFromIndexes: true,
-      },
-    ];
+```javascript
+const task = [
+  {
+    name: 'category',
+    value: 'Personal',
+  },
+  {
+    name: 'created',
+    value: new Date(),
+  },
+  {
+    name: 'done',
+    value: false,
+  },
+  {
+    name: 'priority',
+    value: 4,
+  },
+  {
+    name: 'percent_complete',
+    value: 10.0,
+  },
+  {
+    name: 'description',
+    value: 'Learn Cloud Datastore',
+    excludeFromIndexes: true,
+  },
+];
+```
 
 ### PHP
 
@@ -203,18 +212,20 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $task = $datastore->entity(
-        $key,
-        [
-            'category' => 'Personal',
-            'created' => new DateTime(),
-            'done' => false,
-            'priority' => 4,
-            'percent_complete' => 10.0,
-            'description' => 'Learn Cloud Datastore'
-        ],
-        ['excludeFromIndexes' => ['description']]
-    );
+```php
+$task = $datastore->entity(
+    $key,
+    [
+        'category' => 'Personal',
+        'created' => new DateTime(),
+        'done' => false,
+        'priority' => 4,
+        'percent_complete' => 10.0,
+        'description' => 'Learn Cloud Datastore'
+    ],
+    ['excludeFromIndexes' => ['description']]
+);
+```
 
 ### Python
 
@@ -222,27 +233,29 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    import datetime
-    
-    key = client.key("Task")
-    task = datastore.Entity(key, exclude_from_indexes=("description",))
-    task.update(
-        {
-            "category": "Personal",
-            "description": "Learn Cloud Datastore",
-            "created": datetime.datetime.now(tz=datetime.timezone.utc),
-            "done": False,
-            "priority": 4,
-            "percent_complete": 10.5,
-        }
-    )
-    client.put(task)
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+import datetime
+
+key = client.key("Task")
+task = datastore.Entity(key, exclude_from_indexes=("description",))
+task.update(
+    {
+        "category": "Personal",
+        "description": "Learn Cloud Datastore",
+        "created": datetime.datetime.now(tz=datetime.timezone.utc),
+        "done": False,
+        "priority": 4,
+        "percent_complete": 10.5,
+    }
+)
+client.put(task)
+```
 
 ### Ruby
 
@@ -250,15 +263,17 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    task = datastore.entity "Task" do |t|
-      t["category"] = "Personal"
-      t["created"] = Time.now
-      t["done"] = false
-      t["priority"] = 4
-      t["percent_complete"] = 10.0
-      t["description"] = "Learn Cloud Datastore"
-      t.exclude_from_indexes! "description", true
-    end
+```ruby
+task = datastore.entity "Task" do |t|
+  t["category"] = "Personal"
+  t["created"] = Time.now
+  t["done"] = false
+  t["priority"] = 4
+  t["percent_complete"] = 10.0
+  t["description"] = "Learn Cloud Datastore"
+  t.exclude_from_indexes! "description", true
+end
+```
 
 ### GQL
 
@@ -266,16 +281,18 @@ Not Applicable
 
 The query in the following example won't return any results if the `description` property was excluded:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query query = new Query("Task")
-    {
-        Filter = Filter.Equal("description", "Learn Cloud Datastore")
-    };
+```c#
+Query query = new Query("Task")
+{
+    Filter = Filter.Equal("description", "Learn Cloud Datastore")
+};
+```
 
 ### Go
 
@@ -283,8 +300,10 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query := datastore.NewQuery("Tasks").
-     FilterField("Description", "=", "A task description")
+```golang
+query := datastore.NewQuery("Tasks").
+    FilterField("Description", "=", "A task description")
+```
 
 ### Java
 
@@ -292,11 +311,13 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Query<Entity> query =
-        Query.newEntityQueryBuilder()
-            .setKind("Task")
-            .setFilter(PropertyFilter.eq("description", "A task description"))
-            .build();
+```java
+Query<Entity> query =
+    Query.newEntityQueryBuilder()
+        .setKind("Task")
+        .setFilter(PropertyFilter.eq("description", "A task description"))
+        .build();
+```
 
 ### Node.js
 
@@ -304,9 +325,11 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const query = datastore
-      .createQuery('Task')
-      .filter(new PropertyFilter('description', '=', 'A task description.'));
+```javascript
+const query = datastore
+  .createQuery('Task')
+  .filter(new PropertyFilter('description', '=', 'A task description.'));
+```
 
 ### PHP
 
@@ -314,9 +337,11 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $query = $datastore->query()
-        ->kind('Task')
-        ->filter('description', '=', 'A task description.');
+```php
+$query = $datastore->query()
+    ->kind('Task')
+    ->filter('description', '=', 'A task description.');
+```
 
 ### Python
 
@@ -324,18 +349,20 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    query = client.query(kind="Task")
-    query.add_filter(
-        filter=datastore.query.PropertyFilter(
-            "description", "=", "Learn Cloud Datastore"
-        )
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+query = client.query(kind="Task")
+query.add_filter(
+    filter=datastore.query.PropertyFilter(
+        "description", "=", "Learn Cloud Datastore"
     )
+)
+```
 
 ### Ruby
 
@@ -343,13 +370,17 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    query = datastore.query("Task")
-                     .where("description", "=", "A task description.")
+```ruby
+query = datastore.query("Task")
+                 .where("description", "=", "A task description.")
+```
 
 ### GQL
 
-    # Will not return any results!
-    SELECT * FROM Task WHERE description = 'A task description.'
+```
+# Will not return any results!
+SELECT * FROM Task WHERE description = 'A task description.'
+```
 
 You can later change the property back to indexed.
 
@@ -368,23 +399,25 @@ As described [above](https://docs.cloud.google.com/datastore/docs/concepts/index
 
 For a property that has a single value for each entity, each possible value needs to be stored just once per entity in the property's predefined index. Even so, it is possible for an entity with a large number of such single-valued properties to exceed the index entry or size limit. Similarly, an entity that can have multiple values for the same property requires a separate index entry for each value; again, if the number of possible values is large, such an entity can exceed the entry limit.
 
-<span id="exploding_index"></span> The situation becomes worse in the case of entities with multiple properties, each of which can take on multiple values. To accommodate such an entity, the index must include an entry for every possible *combination* of property values. Custom indexes that refer to multiple properties, each with multiple values, can "explode" combinatorially, requiring large numbers of entries for an entity with only a relatively small number of possible property values. Such *exploding indexes* can dramatically increase the [storage size](https://docs.cloud.google.com/datastore/docs/concepts/storage-size) of an entity, because of the large number of index entries that must be stored. Exploding indexes also can cause the entity to exceed the index entry count or size limit.
+The situation becomes worse in the case of entities with multiple properties, each of which can take on multiple values. To accommodate such an entity, the index must include an entry for every possible *combination* of property values. Custom indexes that refer to multiple properties, each with multiple values, can "explode" combinatorially, requiring large numbers of entries for an entity with only a relatively small number of possible property values. Such *exploding indexes* can dramatically increase the [storage size](https://docs.cloud.google.com/datastore/docs/concepts/storage-size) of an entity, because of the large number of index entries that must be stored. Exploding indexes also can cause the entity to exceed the index entry count or size limit.
 
 Consider the following code:
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Cloud Datastore, see [Cloud Datastore client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Cloud Datastore C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Entity task = new Entity()
-    {
-        Key = _db.CreateKeyFactory("Task").CreateKey("sampleTask"),
-        ["tags"] = new ArrayValue() { Values = { "fun", "programming", "learn" } },
-        ["collaborators"] = new ArrayValue() { Values = { "alice", "bob", "charlie" } },
-        ["created"] = DateTime.UtcNow
-    };
+```c#
+Entity task = new Entity()
+{
+    Key = _db.CreateKeyFactory("Task").CreateKey("sampleTask"),
+    ["tags"] = new ArrayValue() { Values = { "fun", "programming", "learn" } },
+    ["collaborators"] = new ArrayValue() { Values = { "alice", "bob", "charlie" } },
+    ["created"] = DateTime.UtcNow
+};
+```
 
 ### Go
 
@@ -392,11 +425,13 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    task := &Task{
-     Tags:          []string{"fun", "programming", "learn"},
-     Collaborators: []string{"alice", "bob", "charlie"},
-     Created:       time.Now(),
-    }
+```golang
+task := &Task{
+    Tags:          []string{"fun", "programming", "learn"},
+    Collaborators: []string{"alice", "bob", "charlie"},
+    Created:       time.Now(),
+}
+```
 
 ### Java
 
@@ -404,12 +439,14 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    Entity task =
-        Entity.newBuilder(taskKey)
-            .set("tags", "fun", "programming", "learn")
-            .set("collaborators", "alice", "bob", "charlie")
-            .set("created", Timestamp.now())
-            .build();
+```java
+Entity task =
+    Entity.newBuilder(taskKey)
+        .set("tags", "fun", "programming", "learn")
+        .set("collaborators", "alice", "bob", "charlie")
+        .set("created", Timestamp.now())
+        .build();
+```
 
 ### Node.js
 
@@ -417,15 +454,17 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    const task = {
-      method: 'insert',
-      key: datastore.key('Task'),
-      data: {
-        tags: ['fun', 'programming', 'learn'],
-        collaborators: ['alice', 'bob', 'charlie'],
-        created: new Date(),
-      },
-    };
+```javascript
+const task = {
+  method: 'insert',
+  key: datastore.key('Task'),
+  data: {
+    tags: ['fun', 'programming', 'learn'],
+    collaborators: ['alice', 'bob', 'charlie'],
+    created: new Date(),
+  },
+};
+```
 
 ### PHP
 
@@ -433,14 +472,16 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    $task = $datastore->entity(
-        $datastore->key('Task'),
-        [
-            'tags' => ['fun', 'programming', 'learn'],
-            'collaborators' => ['alice', 'bob', 'charlie'],
-            'created' => new DateTime(),
-        ]
-    );
+```php
+$task = $datastore->entity(
+    $datastore->key('Task'),
+    [
+        'tags' => ['fun', 'programming', 'learn'],
+        'collaborators' => ['alice', 'bob', 'charlie'],
+        'created' => new DateTime(),
+    ]
+);
+```
 
 ### Python
 
@@ -448,22 +489,24 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    # For help authenticating your client, visit
-    # https://cloud.google.com/docs/authentication/getting-started
-    client = datastore.Client()
-    
-    import datetime
-    
-    task = datastore.Entity(client.key("Task"))
-    task.update(
-        {
-            "tags": ["fun", "programming", "learn"],
-            "collaborators": ["alice", "bob", "charlie"],
-            "created": datetime.datetime.now(tz=datetime.timezone.utc),
-        }
-    )
+```python
+from google.cloud import datastore
+
+# For help authenticating your client, visit
+# https://cloud.google.com/docs/authentication/getting-started
+client = datastore.Client()
+
+import datetime
+
+task = datastore.Entity(client.key("Task"))
+task.update(
+    {
+        "tags": ["fun", "programming", "learn"],
+        "collaborators": ["alice", "bob", "charlie"],
+        "created": datetime.datetime.now(tz=datetime.timezone.utc),
+    }
+)
+```
 
 ### Ruby
 
@@ -471,11 +514,13 @@ To learn how to install and use the client library for Cloud Datastore, see [Clo
 
 To authenticate to Cloud Datastore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    task = datastore.entity "Task" do |t|
-      t["tags"] = ["fun", "programming", "learn"]
-      t["collaborators"] = ["alice", "bob", "charlie"]
-      t["created"] = Time.now
-    end
+```ruby
+task = datastore.entity "Task" do |t|
+  t["tags"] = ["fun", "programming", "learn"]
+  t["collaborators"] = ["alice", "bob", "charlie"]
+  t["created"] = Time.now
+end
+```
 
 ### GQL
 
@@ -497,15 +542,17 @@ It creates a `Task` entity with three values for property `tags` , three values 
 
 When the same property is repeated multiple times, Firestore in Datastore mode can detect exploding indexes and suggest an alternative index. However, in all other circumstances (such as the query defined in this example), a Datastore mode database will generate an exploding index. In this case, you can circumvent the exploding index by manually configuring an index in your index configuration file:
 
-    indexes:
-    - kind: Task
-      properties:
-      - name: tags
-      - name: created
-    - kind: Task
-      properties:
-      - name: collaborators
-      - name: created
+```
+indexes:
+- kind: Task
+  properties:
+  - name: tags
+  - name: created
+- kind: Task
+  properties:
+  - name: collaborators
+  - name: created
+```
 
 This reduces the number of entries needed to only `(|tags|` `*` `|created|` `+` `|collaborators|` `*` `|created|)` , or 6 entries instead of 9:
 
@@ -522,8 +569,8 @@ Any `commit` operation that would cause an index to exceed the index entry or si
 1.  Remove the index from your index configuration file ( `index.yaml` ).
 2.  Using the Google Cloud CLI, remove the index from the database using the `datastore indexes cleanup` command, as described in [Deleting unused indexes](https://docs.cloud.google.com/datastore/docs/tools/indexconfig#Datastore_Deleting_unused_indexes) .
 3.  Either
-      - reformulate the index definition and corresponding queries, or
-      - remove the entities that are causing the index to explode.
+    - reformulate the index definition and corresponding queries, or
+    - remove the entities that are causing the index to explode.
 4.  Add the index back to `index.yaml` .
 5.  Using the Google Cloud CLI, add the index to the database by running the `datastore indexes create` command, as described in [Updating Indexes](https://docs.cloud.google.com/datastore/docs/tools/indexconfig#Datastore_Updating_indexes) .
 
@@ -535,50 +582,62 @@ You can avoid exploding indexes by avoiding queries that would require a custom 
 
 One way to minimize the number of indexes required is to project the same properties consistently, even when not all of them are always needed. For example, these queries require two separate indexes:
 
-    SELECT priority, percent_complete FROM Task
-    
-    SELECT priority, percent_complete, created FROM Task
+```
+SELECT priority, percent_complete FROM Task
+
+SELECT priority, percent_complete, created FROM Task
+```
 
 However, if you always project properties `priority` , `percent_complete` , `created` , even when `created` is not required, only one index will be needed.
 
 Converting an existing query into a projection query may require building a new index if the properties in the projection are not already included in another part of the query. For example, suppose you had an existing query like
 
-    SELECT * FROM Task
-    WHERE priority > 1
-    ORDER BY priority, percent_complete
+```
+SELECT * FROM Task
+WHERE priority > 1
+ORDER BY priority, percent_complete
+```
 
 which requires the index:
 
-    indexes:
-    - kind: Task
-      properties:
-      - name: priority
-      - name: percent_complete
+```
+indexes:
+- kind: Task
+  properties:
+  - name: priority
+  - name: percent_complete
+```
 
 Converting this to either of the projection queries
 
-    SELECT created FROM Task
-    WHERE priority > 1
-    ORDER BY priority, percent_complete
-    
-    SELECT priority, percent_complete, created FROM Task
-    WHERE priority > 1
-    ORDER BY priority, percent_complete
+```
+SELECT created FROM Task
+WHERE priority > 1
+ORDER BY priority, percent_complete
+
+SELECT priority, percent_complete, created FROM Task
+WHERE priority > 1
+ORDER BY priority, percent_complete
+```
 
 introduces a new property ( `created` ) and thus will require building a new index:
 
-    indexes:
-    - kind: Task
-      properties:
-      - name: priority
-      - name: percent_complete
-      - name: created
+```
+indexes:
+- kind: Task
+  properties:
+  - name: priority
+  - name: percent_complete
+  - name: created
+```
 
 However,
 
-    SELECT priority, percent_complete FROM Task
-    WHERE priority > 1
-    ORDER BY priority, percent_complete
+```
+SELECT priority, percent_complete FROM Task
+WHERE priority > 1
+ORDER BY priority, percent_complete
+```
 
 would *not* change the required index, since the projected properties `priority` and `percent_complete` were already included in the existing query.
 
@@ -588,13 +647,17 @@ You can use `gcloud firestore` to manage a single index for Datastore mode or us
 
 ##### gcloud firestore
 
-    gcloud firestore indexes composite create --api-scope=datastore-mode-api  --query-scope=QUERY_SCOPE --database=DATABASE_ID
+```
+gcloud firestore indexes composite create --api-scope=datastore-mode-api  --query-scope=QUERY_SCOPE --database=DATABASE_ID
+```
 
 ##### gcloud datastore
 
-    gcloud alpha datastore indexes create index.yaml --database=DATABASE_ID
+```
+gcloud alpha datastore indexes create index.yaml --database=DATABASE_ID
+```
 
 Replace the following:
 
-  - DATABASE\_ID : a database ID.
-  - QUERY\_SCOPE : either `collection-recursive` for ancestor indexes or `collection-group` for non-ancestor indexes.
+- ` DATABASE_ID ` : a database ID.
+- ` QUERY_SCOPE ` : either `collection-recursive` for ancestor indexes or `collection-group` for non-ancestor indexes.

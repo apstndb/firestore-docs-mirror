@@ -12,24 +12,26 @@ Delete a task.
 
 For detailed documentation that includes this code sample, see the following:
 
-  - [Getting started with the Firestore in Datastore mode API](https://docs.cloud.google.com/datastore/docs/datastore-api-tutorial)
+- [Getting started with the Firestore in Datastore mode API](https://docs.cloud.google.com/datastore/docs/datastore-api-tutorial)
 
 ## Code sample
 
-### C\#
+### C#
 
-To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C\# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
+To learn how to install and use the client library for Datastore mode, see [Datastore mode client libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries) . For more information, see the [Datastore mode C# API reference documentation](https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Datastore.V1/latest) .
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    /// <summary>
-    /// Deletes a task entity.
-    /// </summary>
-    /// <param name="id">The ID of the task entity as given by Key.</param>
-    void DeleteTask(long id)
-    {
-        _db.Delete(_keyFactory.CreateKey(id));
-    }
+```csharp
+/// <summary>
+/// Deletes a task entity.
+/// </summary>
+/// <param name="id">The ID of the task entity as given by Key.</param>
+void DeleteTask(long id)
+{
+    _db.Delete(_keyFactory.CreateKey(id));
+}
+```
 
 ### Go
 
@@ -37,22 +39,24 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    import (
-     "context"
-     "log"
-    
-     "cloud.google.com/go/datastore"
-    )
-    
-    // DeleteTask deletes the task with the given ID.
-    func DeleteTask(projectID string, taskID int64) error {
-     ctx := context.Background()
-     client, err := datastore.NewClient(ctx, projectID)
-     if err != nil {
-         log.Fatalf("Could not create datastore client: %v", err)
-     }
-     return client.Delete(ctx, datastore.IDKey("Task", taskID, nil))
+```go
+import (
+    "context"
+    "log"
+
+    "cloud.google.com/go/datastore"
+)
+
+// DeleteTask deletes the task with the given ID.
+func DeleteTask(projectID string, taskID int64) error {
+    ctx := context.Background()
+    client, err := datastore.NewClient(ctx, projectID)
+    if err != nil {
+        log.Fatalf("Could not create datastore client: %v", err)
     }
+    return client.Delete(ctx, datastore.IDKey("Task", taskID, nil))
+}
+```
 
 ### Java
 
@@ -60,15 +64,17 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    /**
-     * Deletes a task entity.
-     *
-     * @param id The ID of the task entity as given by {@link Key#id()}
-     * @throws DatastoreException if the delete fails
-     */
-    void deleteTask(long id) {
-      datastore.delete(keyFactory.newKey(id));
-    }
+```java
+/**
+ * Deletes a task entity.
+ *
+ * @param id The ID of the task entity as given by {@link Key#id()}
+ * @throws DatastoreException if the delete fails
+ */
+void deleteTask(long id) {
+  datastore.delete(keyFactory.newKey(id));
+}
+```
 
 ### PHP
 
@@ -76,23 +82,25 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    use Google\Cloud\Datastore\DatastoreClient;
-    
-    /**
-     * Delete a task with a given id.
-     *
-     * @param string $projectId The Google Cloud project ID.
-     * @param string $taskId
-     */
-    function delete_task(string $projectId, string $taskId)
-    {
-        $datastore = new DatastoreClient(['projectId' => $projectId]);
-    
-        $taskKey = $datastore->key('Task', $taskId);
-        $datastore->delete($taskKey);
-    
-        printf('Task %d deleted successfully.' . PHP_EOL, $taskId);
-    }
+```php
+use Google\Cloud\Datastore\DatastoreClient;
+
+/**
+ * Delete a task with a given id.
+ *
+ * @param string $projectId The Google Cloud project ID.
+ * @param string $taskId
+ */
+function delete_task(string $projectId, string $taskId)
+{
+    $datastore = new DatastoreClient(['projectId' => $projectId]);
+
+    $taskKey = $datastore->key('Task', $taskId);
+    $datastore->delete($taskKey);
+
+    printf('Task %d deleted successfully.' . PHP_EOL, $taskId);
+}
+```
 
 ### Python
 
@@ -100,14 +108,16 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    from google.cloud import datastore
-    
-    def delete_task(client: datastore.Client, task_id: str | int):
-        # Create a key for an entity of kind "Task", and with the supplied
-        # `task_id` as its Id
-        key = client.key("Task", task_id)
-        # Use that key to delete its associated document, if it exists
-        client.delete(key)
+```python
+from google.cloud import datastore
+
+def delete_task(client: datastore.Client, task_id: str | int):
+    # Create a key for an entity of kind "Task", and with the supplied
+    # `task_id` as its Id
+    key = client.key("Task", task_id)
+    # Use that key to delete its associated document, if it exists
+    client.delete(key)
+```
 
 ### Ruby
 
@@ -115,15 +125,17 @@ To learn how to install and use the client library for Datastore mode, see [Data
 
 To authenticate to Datastore mode, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
-    def delete_task task_id
-      require "google/cloud/datastore"
-    
-      datastore = Google::Cloud::Datastore.new
-    
-      task = datastore.find "Task", task_id
-    
-      datastore.delete task
-    end
+```ruby
+def delete_task task_id
+  require "google/cloud/datastore"
+
+  datastore = Google::Cloud::Datastore.new
+
+  task = datastore.find "Task", task_id
+
+  datastore.delete task
+end
+```
 
 ## What's next
 

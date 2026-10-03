@@ -12,95 +12,51 @@ Represents a single field in the database.
 
 Fields are grouped by their "Collection Group", which represent all collections in the database with the same ID.
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>JSON representation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;name&quot;: string,&quot;indexConfig&quot;: {object (IndexConfig)},&quot;ttlConfig&quot;: {object (TtlConfig)}}</code></pre></td>
-</tr>
-</tbody>
-</table>
+**JSON representation**
 
-Fields
+```
+{
+  "name": string,
+  "indexConfig": {
+    object (IndexConfig)
+  },
+  "ttlConfig": {
+    object (TtlConfig)
+  }
+}
+```
 
-`name`
-
-`string`
-
-Required. A field name of the form: `projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId}/fields/{fieldPath}`
-
-A field path can be a simple field name, e.g. `address` or a path to fields within `mapValue` , e.g. `address.city` , or a special field path. The only valid special field is `*` , which represents any field.
-
-Field paths can be quoted using `` ` `` (backtick). The only character that must be escaped within a quoted field path is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted include: `*` , `.` , `` ` `` (backtick), `[` , `]` , as well as any ascii symbolic characters.
-
-Examples: `` `address.city` `` represents a field named `address.city` , not the map key `city` in the field `address` . `` `*` `` represents a field named `*` , not any field.
-
-A special `Field` contains the default indexing settings for all fields. This field's resource name is: `projects/{projectId}/databases/{databaseId}/collectionGroups/__default__/fields/*` Indexes defined on this `Field` will be applied to all fields which do not have their own `Field` index configuration.
-
-`indexConfig`
-
-` object ( IndexConfig  ` )
-
-The index configuration for this field. If unset, field indexing will revert to the configuration defined by the `ancestorField` . To explicitly remove all indexes for this field, specify an index config with an empty list of indexes.
-
-`ttlConfig`
-
-` object ( TtlConfig  ` )
-
-The TTL configuration for this `Field` . Setting or unsetting this will enable or disable the TTL for documents that have this `Field` .
+| Fields        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`        | `string` Required. A field name of the form: `projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId}/fields/{fieldPath}` A field path can be a simple field name, e.g. `address` or a path to fields within `mapValue` , e.g. `address.city` , or a special field path. The only valid special field is `*` , which represents any field. Field paths can be quoted using `` ` `` (backtick). The only character that must be escaped within a quoted field path is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted include: `*` , `.` , `` ` `` (backtick), `[` , `]` , as well as any ascii symbolic characters. Examples: `` `address.city` `` represents a field named `address.city` , not the map key `city` in the field `address` . `` `*` `` represents a field named `*` , not any field. A special `Field` contains the default indexing settings for all fields. This field's resource name is: `projects/{projectId}/databases/{databaseId}/collectionGroups/__default__/fields/*` Indexes defined on this `Field` will be applied to all fields which do not have their own `Field` index configuration. |
+| `indexConfig` | `object ( `[`IndexConfig`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields#IndexConfig)` )` The index configuration for this field. If unset, field indexing will revert to the configuration defined by the `ancestorField` . To explicitly remove all indexes for this field, specify an index config with an empty list of indexes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `ttlConfig`   | `object ( `[`TtlConfig`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields#TtlConfig)` )` The TTL configuration for this `Field` . Setting or unsetting this will enable or disable the TTL for documents that have this `Field` .                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 ## IndexConfig
 
 The index configuration for this field.
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>JSON representation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;indexes&quot;: [{object (Index)}],&quot;usesAncestorConfig&quot;: boolean,&quot;ancestorField&quot;: string,&quot;reverting&quot;: boolean}</code></pre></td>
-</tr>
-</tbody>
-</table>
+**JSON representation**
 
-Fields
+```
+{
+  "indexes": [
+    {
+      object (Index)
+    }
+  ],
+  "usesAncestorConfig": boolean,
+  "ancestorField": string,
+  "reverting": boolean
+}
+```
 
-`indexes[]`
-
-` object ( Index  ` )
-
-The indexes supported for this field.
-
-`usesAncestorConfig`
-
-`boolean`
-
-Output only. When true, the `Field` 's index configuration is set from the configuration specified by the `ancestorField` . When false, the `Field` 's index configuration is defined explicitly.
-
-`ancestorField`
-
-`string`
-
-Output only. Specifies the resource name of the `Field` from which this field's index configuration is set (when `usesAncestorConfig` is true), or from which it *would* be set if this field had no index configuration (when `usesAncestorConfig` is false).
-
-`reverting`
-
-`boolean`
-
-Output only When true, the `Field` 's index configuration is in the process of being reverted. Once complete, the index config will transition to the same state as the field specified by `ancestorField` , at which point `usesAncestorConfig` will be `true` and `reverting` will be `false` .
+| Fields               |                                                                                                                                                                                                                                                                                                             |
+|----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `indexes[]`          | `object ( `[`Index`](https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Index)` )` The indexes supported for this field.                                                                                                                                                              |
+| `usesAncestorConfig` | `boolean` Output only. When true, the `Field` 's index configuration is set from the configuration specified by the `ancestorField` . When false, the `Field` 's index configuration is defined explicitly.                                                                                                 |
+| `ancestorField`      | `string` Output only. Specifies the resource name of the `Field` from which this field's index configuration is set (when `usesAncestorConfig` is true), or from which it *would* be set if this field had no index configuration (when `usesAncestorConfig` is false).                                     |
+| `reverting`          | `boolean` Output only When true, the `Field` 's index configuration is in the process of being reverted. Once complete, the index config will transition to the same state as the field specified by `ancestorField` , at which point `usesAncestorConfig` will be `true` and `reverting` will be `false` . |
 
 ## TtlConfig
 
@@ -112,74 +68,33 @@ For Enterprise edition databases, the timestamp value may alternatively be store
 
 An expiration time in the past indicates that the document is eligible for immediate expiration. Using any other data type or leaving the field absent will disable expiration for the individual document.
 
-<table>
-<colgroup>
-<col style="width: 100%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>JSON representation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><pre dir="ltr" data-is-upgraded="" style="border: 0;margin: 0;" translate="no"><code>{&quot;state&quot;: enum (State),&quot;expirationOffset&quot;: string}</code></pre></td>
-</tr>
-</tbody>
-</table>
+**JSON representation**
 
-Fields
+```
+{
+  "state": enum (State),
+  "expirationOffset": string
+}
+```
 
-`state`
-
-` enum ( State  ` )
-
-Output only. The state of the TTL configuration.
-
-`expirationOffset`
-
-` string ( Duration  ` format)
-
-Optional. The offset, relative to the timestamp value from the TTL-enabled field, used to determine the document's expiration time.
-
-`expirationOffset.seconds` must be between 0 and 2,147,483,647 inclusive. Values more precise than seconds are rejected.
-
-If unset, defaults to 0, in which case the expiration time is the same as the timestamp value from the TTL-enabled field.
-
-A duration in seconds with up to nine fractional digits, ending with ' `s` '. Example: `"3.5s"` .
+| Fields             |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `state`            | `enum ( `[`State`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields#State)` )` Output only. The state of the TTL configuration.                                                                                                                                                                                                                                                                                                                                                                                                      |
+| `expirationOffset` | `string ( `[`Duration`](https://protobuf.dev/reference/protobuf/google.protobuf/#duration)` format)` Optional. The offset, relative to the timestamp value from the TTL-enabled field, used to determine the document's expiration time. `expirationOffset.seconds` must be between 0 and 2,147,483,647 inclusive. Values more precise than seconds are rejected. If unset, defaults to 0, in which case the expiration time is the same as the timestamp value from the TTL-enabled field. A duration in seconds with up to nine fractional digits, ending with ' `s` '. Example: `"3.5s"` . |
 
 ## State
 
 The state of applying the TTL configuration to all documents.
 
-Enums
+| Enums               |                                                                                                                                                                                                                                                                                                                 |
+|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `STATE_UNSPECIFIED` | The state is unspecified or unknown.                                                                                                                                                                                                                                                                            |
+| `CREATING`          | The TTL is being applied. There is an active long-running operation to track the change. Newly written documents will have TTLs applied as requested. Requested TTLs on existing documents are still being processed. When TTLs on all existing documents have been processed, the state will move to 'ACTIVE'. |
+| `ACTIVE`            | The TTL is active for all documents.                                                                                                                                                                                                                                                                            |
+| `NEEDS_REPAIR`      | The TTL configuration could not be enabled for all existing documents. Newly written documents will continue to have their TTL applied. The LRO returned when last attempting to enable TTL for this `Field` has failed, and may have more details.                                                             |
 
-`STATE_UNSPECIFIED`
-
-The state is unspecified or unknown.
-
-`CREATING`
-
-The TTL is being applied. There is an active long-running operation to track the change. Newly written documents will have TTLs applied as requested. Requested TTLs on existing documents are still being processed. When TTLs on all existing documents have been processed, the state will move to 'ACTIVE'.
-
-`ACTIVE`
-
-The TTL is active for all documents.
-
-`NEEDS_REPAIR`
-
-The TTL configuration could not be enabled for all existing documents. Newly written documents will continue to have their TTL applied. The LRO returned when last attempting to enable TTL for this `Field` has failed, and may have more details.
-
-## Methods
-
-### `            get           `
-
-Gets the metadata and configuration for a Field.
-
-### `            list           `
-
-Lists the field configuration and metadata for this database.
-
-### `            patch           `
-
-Updates a field configuration.
+| Methods                                                                                                                    |                                                               |
+|----------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------|
+| [`get`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields/get)     | Gets the metadata and configuration for a Field.              |
+| [`list`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields/list)   | Lists the field configuration and metadata for this database. |
+| [`patch`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields/patch) | Updates a field configuration.                                |
