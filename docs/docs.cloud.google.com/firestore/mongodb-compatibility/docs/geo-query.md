@@ -81,7 +81,7 @@ The value of your partition must be a string. Your partition filter must be join
 
 ## Limitations
 
-- `$near` operators and `$text` operators can't be used in the same the query.
+- `$near` operators and `$text` operators can't be used in the same query.
 - `$near` can't be nested in a multi-clause `$or` statement unless `$near` is the only expression in the `$or` clause.
 - `$near` can't be used with the `$not` or `$nor` operators in a query.
 - `$near` isn't supported in aggregation queries.

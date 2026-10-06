@@ -558,12 +558,12 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect	2026-
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-manage-saved-queries	2026-10-02T06:02:44Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/custom-constraints	2026-10-02T06:02:44Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/custom-constraints	2026-10-05T17:44:38Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/disaster-recovery	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/eventarc	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/extend-with-cloud-run-functions	2026-10-02T06:02:44Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/geo-query	2026-10-02T06:02:44Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/geo-query	2026-10-05T20:51:34Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/knowledge-catalog	2026-10-02T06:02:44Z
@@ -600,7 +600,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-fea
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-70	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/tags	2026-10-02T06:02:28Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/text-search	2026-10-02T06:02:28Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/text-search	2026-10-05T20:53:02Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-error-codes	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-reads-writes-scale	2026-10-02T06:02:28Z
@@ -613,7 +613,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/quotas	2026-10-02T
 https://docs.cloud.google.com/firestore/native/docs	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/apis	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/app-engine-requirement	2026-10-02T06:02:28Z
-https://docs.cloud.google.com/firestore/native/docs/audit-logging	2026-10-02T06:02:28Z
+https://docs.cloud.google.com/firestore/native/docs/audit-logging	2026-10-05T14:35:56Z
 https://docs.cloud.google.com/firestore/native/docs/authentication	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/backups	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/best-practices	2026-10-02T06:02:28Z

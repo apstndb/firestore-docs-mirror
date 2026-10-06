@@ -150,7 +150,7 @@ To enhance the relevance of text search outcomes, the `$text` operator augments 
 
 ## Limitations
 
-- `$near` operators and `$text` operators can't be used in the same the text search.
+- `$near` operators and `$text` operators can't be used in the same text search.
 - A single `$text` operator is permitted per `find` or `aggregation` search.
 - In aggregations, the `$match` stage with `$text` must be the first pipeline stage.
 - `$text` can only be nested inside `$and` and `$or` .
