@@ -558,7 +558,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect	2026-
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-manage-saved-queries	2026-10-02T06:02:44Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/custom-constraints	2026-10-05T17:44:38Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/custom-constraints	2026-10-06T06:28:19Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/disaster-recovery	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/eventarc	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import	2026-10-02T06:02:44Z
@@ -741,7 +741,7 @@ https://docs.cloud.google.com/firestore/native/docs/solutions/counters	2026-10-0
 https://docs.cloud.google.com/firestore/native/docs/solutions/delete-collections	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/generative-ai-index	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/geoqueries	2026-10-02T06:02:45Z
-https://docs.cloud.google.com/firestore/native/docs/solutions/presence	2026-10-02T06:02:45Z
+https://docs.cloud.google.com/firestore/native/docs/solutions/presence	2026-10-06T23:23:08Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/role-based-access	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/schedule-export	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/shard-timestamp	2026-10-02T06:02:45Z

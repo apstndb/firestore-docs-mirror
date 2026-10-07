@@ -357,7 +357,7 @@ resourceTypes:
 - firestore.googleapis.com/Database
 methodTypes:
   - GOVERN_TAGS
-condition: &#39;!resource.matchDirectTag(&quot;ORGANIZATION_ID/TAG_KEY&amp;quot;, &quot;TAG_VALUE&quot;)&#39;
+condition: &#39;!resource.matchDirectTag(&quot;ORGANIZATION_ID/TAG_KEY&quot;, &quot;TAG_VALUE&quot;)&#39;
 actionType: DENY
 displayName: Require a specific tag when databases get created
 description: Denies the database creation operations if the request does not contain the tag ORGANIZATION_ID/TAG_KEY with the value TAG_VALUE.</code></pre></td>
