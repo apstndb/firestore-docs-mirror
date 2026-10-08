@@ -8,12 +8,6 @@ data_source: docs.cloud.google.com
 
 # Manage Enterprise edition indexes
 
-  
-
-> **Preview — Firestore in Native mode (with Pipeline Operations) for Enterprise Edition**
->
-> This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . You can process personal data for this feature as outlined in the [Cloud Data Processing Addendum](https://docs.cloud.google.com/terms/data-processing-addendum) , subject to the obligations and restrictions described in the agreement under which you access Google Cloud. Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
-
 Indexing behavior depends on the edition of the database. This page describes how to manage your indexes for Firestore Enterprise edition. For Firestore Standard edition, see [Firestore Standard edition index overview](https://docs.cloud.google.com/firestore/native/docs/standard-indexing) .
 
 To learn more about Firestore Enterprise edition indexes, see [Indexes overview](https://docs.cloud.google.com/firestore/native/docs/enterprise-index-overview) .
@@ -128,7 +122,9 @@ Replace the following:
 
 ### Create a text index
 
-Use the Google Cloud console to create a text index.
+To create a text index, complete the following steps:
+
+##### Google Cloud console
 
 1.  In the **Google Cloud console** , go to the **Databases** page.
 
@@ -154,9 +150,32 @@ Use the Google Cloud console to create a text index.
 
 12. Your new index is displayed in the list of indexes and Firestore begins creating your index. When your index is created, a green check mark next to the index is displayed.
 
+##### gcloud CLI
+
+To create a text index, use the [`gcloud firestore indexes composite create`](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/create) command:
+
+```
+gcloud firestore indexes composite create \
+  --database='DATABASE_ID' \
+  --collection-group=COLLECTION_GROUP \
+  --field-config=field-path=FIELD_NAME,search-config='{"text-spec": {"index-specs": [{"index-type": "tokenized", "match-type": "match-globally"}]}}' \
+  --search-index-options=text-language=en \
+  --async
+```
+
+Replace the following:
+
+- ` DATABASE_ID ` : a database ID.
+- ` COLLECTION_GROUP ` : the ID of the collection to index.
+- ` FIELD_NAME ` : the name of the field to index.
+
+The `--async` flag runs the index creation operation in the background.
+
 ### Create a geospatial index
 
-Use the Google Cloud console to create a geospatial index.
+To create a geospatial index, complete the following steps:
+
+##### Google Cloud console
 
 1.  In the **Google Cloud console** , go to the **Databases** page.
 
@@ -176,7 +195,27 @@ Use the Google Cloud console to create a geospatial index.
 
 9.  Click **Create** .
 
-    Your new index is displayed in the list of indexes and Firestore begins creating your index. When your index is created, a green check mark next to the index is displayed.
+Your new index is displayed in the list of indexes and Firestore begins creating your index. When your index is created, a green check mark next to the index is displayed.
+
+##### gcloud CLI
+
+To create a geospatial index, use the [`gcloud firestore indexes composite create`](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/create) command:
+
+```
+gcloud firestore indexes composite create \
+  --database='DATABASE_ID' \
+  --collection-group=COLLECTION_GROUP \
+  --field-config=field-path=FIELD_NAME,search-config='{"geo-spec": {}}' \
+  --async
+```
+
+Replace the following:
+
+- ` DATABASE_ID ` : a database ID.
+- ` COLLECTION_GROUP ` : the ID of the collection to index.
+- ` FIELD_NAME ` : the name of the field to index.
+
+The `--async` flag runs the index creation operation in the background.
 
 ## Delete an index
 

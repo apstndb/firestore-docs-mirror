@@ -355,6 +355,28 @@ Where:
 
 11. Your new index is displayed in the list of indexes and MongoDB compatible operations begins creating your index. When your index is created, you will see a green check mark next to the index. If index is not created, see [Index building errors](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview#index-building-errors) for possible causes.
 
+### gcloud CLI
+
+To create a text index, use the [`gcloud firestore indexes composite create`](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/create) command. Set `--api-scope` to `mongodb-compatible-api` .
+
+```
+gcloud firestore indexes composite create \
+  --database='DATABASE_ID' \
+  --collection-group=COLLECTION_GROUP \
+  --field-config=field-path=FIELD_NAME,search-config='{"text-spec": {"index-specs": [{"index-type": "tokenized", "match-type": "match-globally"}]}}' \
+  --api-scope=mongodb-compatible-api \
+  --search-index-options=text-language=en \
+  --async
+```
+
+Replace the following:
+
+- ` DATABASE_ID ` : a database ID.
+- ` COLLECTION_GROUP ` : the ID of the collection to index.
+- ` FIELD_NAME ` : the name of the field to index.
+
+The `--async` flag runs the index creation operation in the background.
+
 ## Create a 2dsphere index
 
 Create a 2dsphere index to perform geospatial queries and search for documents that exist within a certain range from a specific longitude and latitude.
@@ -431,6 +453,27 @@ Where:
 7.  Click **Create** .
 
 8.  Your new index is displayed in the list of indexes and MongoDB compatible operations begins creating your index. When your index is created, you will see a green check mark next to the index. If index is not created, see [Index building errors](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview#index-building-errors) for possible causes.
+
+### gcloud CLI
+
+To create a 2dsphere index, use the [`gcloud firestore indexes composite create`](https://cloud.google.com/sdk/gcloud/reference/firestore/indexes/composite/create) command. Set `--api-scope` to `mongodb-compatible-api` .
+
+```
+gcloud firestore indexes composite create \
+  --database='DATABASE_ID' \
+  --collection-group=COLLECTION_GROUP \
+  --field-config=field-path=FIELD_NAME,search-config='{"geo-spec": {}}' \
+  --api-scope=mongodb-compatible-api \
+  --async
+```
+
+Replace the following:
+
+- ` DATABASE_ID ` : a database ID.
+- ` COLLECTION_GROUP ` : the ID of the collection to index.
+- ` FIELD_NAME ` : the name of the field to index.
+
+The `--async` flag runs the index creation operation in the background.
 
 ## Delete an index
 

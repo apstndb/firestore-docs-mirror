@@ -193,7 +193,7 @@ https://docs.cloud.google.com/datastore/docs/samples/datastore-incomplete-key	20
 https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-invalid	2026-10-02T04:27:17Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-range	2026-10-02T04:27:17Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort	2026-10-02T04:27:17Z
-https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort-invalid-not-first	2026-10-02T04:27:17Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort-invalid-not-first	2026-10-08T09:40:02Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort-invalid-not-same	2026-10-02T04:27:17Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-insert	2026-10-02T04:27:17Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-key-filter	2026-10-02T04:27:17Z
@@ -244,7 +244,7 @@ https://docs.cloud.google.com/datastore/docs/troubleshoot-java-client	2026-10-02
 https://docs.cloud.google.com/datastore/docs/troubleshooting	2026-10-02T04:27:15Z
 https://docs.cloud.google.com/datastore/docs/ttl	2026-10-02T04:27:15Z
 https://docs.cloud.google.com/datastore/docs/understand-performance-monitoring	2026-10-02T04:27:15Z
-https://docs.cloud.google.com/datastore/docs/usage-insights	2026-10-02T04:27:15Z
+https://docs.cloud.google.com/datastore/docs/usage-insights	2026-10-08T04:43:20Z
 https://docs.cloud.google.com/datastore/docs/use-cmek	2026-10-02T04:27:15Z
 https://docs.cloud.google.com/datastore/docs/use-monitoring-dashboard	2026-10-02T04:27:15Z
 https://docs.cloud.google.com/datastore/docs/use-pitr	2026-10-02T23:43:18Z
@@ -565,7 +565,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/extend-with-cloud-run-functions	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/geo-query	2026-10-05T20:51:34Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview	2026-10-02T06:02:44Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing	2026-10-02T06:02:44Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing	2026-10-07T18:06:09Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/knowledge-catalog	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/locations	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-env-vars	2026-10-02T06:02:44Z
@@ -604,7 +604,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/text-search	2
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-error-codes	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-reads-writes-scale	2026-10-02T06:02:28Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/usage-insights	2026-10-02T06:02:28Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/usage-insights	2026-10-08T04:43:20Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-cmek	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-monitoring-dashboard	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-pitr	2026-10-02T06:02:28Z
@@ -625,7 +625,7 @@ https://docs.cloud.google.com/firestore/native/docs/concepts/data-types	2026-10-
 https://docs.cloud.google.com/firestore/native/docs/concepts/structure-data	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/connect-ide-using-mcp-toolbox	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library	2026-10-02T06:02:28Z
-https://docs.cloud.google.com/firestore/native/docs/create-database-web-mobile-client-library	2026-10-02T06:02:28Z
+https://docs.cloud.google.com/firestore/native/docs/create-database-web-mobile-client-library	2026-10-08T07:13:44Z
 https://docs.cloud.google.com/firestore/native/docs/custom-constraints	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/data-model	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/dataflow-connector	2026-10-02T06:02:28Z
@@ -633,7 +633,7 @@ https://docs.cloud.google.com/firestore/native/docs/disaster-recovery	2026-10-02
 https://docs.cloud.google.com/firestore/native/docs/editions-overview	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/emulator	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/enterprise-index-overview	2026-10-02T06:02:28Z
-https://docs.cloud.google.com/firestore/native/docs/enterprise-indexing	2026-10-02T06:02:45Z
+https://docs.cloud.google.com/firestore/native/docs/enterprise-indexing	2026-10-07T21:18:52Z
 https://docs.cloud.google.com/firestore/native/docs/enterprise-optimize-query-performance	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain-reference	2026-10-02T06:02:45Z
@@ -652,7 +652,7 @@ https://docs.cloud.google.com/firestore/native/docs/keyvis-patterns-index	2026-1
 https://docs.cloud.google.com/firestore/native/docs/knowledge-catalog	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/langchain	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/locations	2026-10-02T06:02:45Z
-https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data	2026-10-02T06:02:41Z
+https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data	2026-10-08T07:13:53Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/bulk-delete	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline	2026-10-02T06:02:41Z
@@ -706,7 +706,7 @@ https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformati
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/where	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/pitr	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/query-data/aggregation-queries	2026-10-02T06:02:45Z
-https://docs.cloud.google.com/firestore/native/docs/query-data/get-data	2026-10-02T06:02:45Z
+https://docs.cloud.google.com/firestore/native/docs/query-data/get-data	2026-10-08T07:13:53Z
 https://docs.cloud.google.com/firestore/native/docs/query-data/listen	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/query-data/multiple-range-fields	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/query-data/multiple-range-optimize-indexes	2026-10-02T06:02:45Z
@@ -759,7 +759,7 @@ https://docs.cloud.google.com/firestore/native/docs/understand-error-codes	2026-
 https://docs.cloud.google.com/firestore/native/docs/understand-performance-monitoring	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale-enterprise	2026-10-02T06:02:45Z
-https://docs.cloud.google.com/firestore/native/docs/usage-insights	2026-10-02T06:02:45Z
+https://docs.cloud.google.com/firestore/native/docs/usage-insights	2026-10-08T04:43:20Z
 https://docs.cloud.google.com/firestore/native/docs/use-cmek	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/use-firestore-mcp	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/use-monitoring-dashboard	2026-10-02T06:02:41Z

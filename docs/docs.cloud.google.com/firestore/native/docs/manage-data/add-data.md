@@ -607,7 +607,7 @@ If the document does not exist, it will be created. If the document does exist, 
 import { doc, setDoc } from "firebase/firestore"; 
 
 const cityRef = doc(db, 'cities', 'BJ');
-setDoc(cityRef, { capital: true }, { merge: true });
+await setDoc(cityRef, { capital: true }, { merge: true });
 ```
 
 ### Web version 8

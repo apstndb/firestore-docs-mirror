@@ -31,10 +31,10 @@ This page describes how to use the usage insights to analyze your billable usage
 <tr class="odd">
 <td>Enterprise</td>
 <td><ul>
-<li>Reads</li>
-<li>Writes</li>
-<li>TTL deletes</li>
-<li>Event</li>
+<li>Read units</li>
+<li>Write units (includes deletes)</li>
+<li>TTL delete or managed delete units</li>
+<li>Eventarc units</li>
 </ul></td>
 </tr>
 </tbody>
@@ -62,8 +62,8 @@ You might also be able to get this permission with [custom roles](https://cloud.
 
 The Usage insights dashboard is organized into two primary sections:
 
-- **Total Usage:** Displays aggregated metrics (Reads, Writes, TTL Deletes) for the entire database.
-- **GroupBy Usage:** Shows metrics broken down by the top 100 dimensions and is grouped by collection, collection group, or namespaces.
+- **Total Usage:** Displays aggregated metrics (reads, writes, and TTL deletes) for the entire database.
+- **GroupBy Usage:** Shows metrics broken down by the top 100 dimensions and grouped by collection, collection group, or namespace.
 
 ### Total Usage and GroupBy metrics
 
@@ -110,7 +110,6 @@ It is important to note that the sum of metrics in the GroupBy section might not
 
   ## Limitations
 
-  - Streaming queries that contribute to billable reads and writes are not tracked as part of the API response.
   - Usage insights for Admin operations (that contribute to billable reads and writes) like import/export, bulk delete, restore, clone, and index builds in Enterprise edition are not supported.
   - Network egress and storage billing are not supported.
 

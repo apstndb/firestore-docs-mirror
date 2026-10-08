@@ -26,15 +26,20 @@ This page describes how to use the usage insights to analyze your billable usage
 <li>Reads</li>
 <li>Writes (includes deletes)</li>
 <li>TTL deletes</li>
+<li>Stream reads ( <code>Listen</code> requests)</li>
+<li>Stream writes ( <code>StreamWrite</code> requests, includes deletes)</li>
 </ul></td>
 </tr>
 <tr class="odd">
 <td>Enterprise</td>
 <td><ul>
-<li>Reads</li>
-<li>Writes</li>
-<li>TTL deletes</li>
-<li>Event</li>
+<li>Read units</li>
+<li>Write units (includes deletes)</li>
+<li>TTL delete or managed delete units</li>
+<li>Eventarc units</li>
+<li>Stream read units ( <code>Listen</code> polling)</li>
+<li>Real-time read units ( <code>Listen</code> streaming updates)</li>
+<li>Stream write units ( <code>StreamWrite</code> requests, includes deletes)</li>
 </ul></td>
 </tr>
 </tbody>
@@ -62,8 +67,8 @@ You might also be able to get this permission with [custom roles](https://cloud.
 
 The Usage insights dashboard is organized into two primary sections:
 
-- **Total Usage:** Displays aggregated metrics (Reads, Writes, TTL Deletes) for the entire database.
-- **GroupBy Usage:** Shows metrics broken down by the top 100 dimensions and is grouped by collection, collection group, or namespaces.
+- **Total Usage:** Displays aggregated metrics (reads, writes, stream reads, stream writes, and TTL deletes) for the entire database.
+- **GroupBy Usage:** Shows metrics broken down by the top 100 dimensions and grouped by collection, collection group, or namespace.
 
 ### Total Usage and GroupBy metrics
 
@@ -89,27 +94,31 @@ It is important to note that the sum of metrics in the GroupBy section might not
   - `queryTopAggregatedInsightsData`
   - `queryTopTimeseriesInsightsData`
 
-  |                                               |                                                                                                                                                 |
-  |-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-  | Field name                                    | Details                                                                                                                                         |
-  | Collection Name CollectionGroup Name          | The value corresponding to the usage dimension for which the usage data is aggregated. This could be a collection name or collection group name |
-  | Total Read Operations                         | Total number of read operations. Applicable only to Standard edition.                                                                           |
-  | Total Write Operations                        | Total number of write operations. Includes Delete operations as well. Applicable only to Standard edition.                                      |
-  | Total TTL Delete Operations                   | Total number of TTL Delete operations. Applicable only to Standard edition.                                                                     |
-  | Total Read operations                         | Total number of tranched read units (4KiB tranches). Applicable only to Enterprise edition.                                                     |
-  | Total Write operations                        | Total number of tranched write units (1KiB tranches). Includes Delete units as well. Applicable only to Enterprise edition.                     |
-  | Total TTL Delete or Managed Delete operations | Total number of TTL Delete or Managed Delete units. Applicable only to Enterprise edition.                                                      |
-  | Total Eventarc units                          | Total number of Eventarc units. Applicable only to Enterprise edition.                                                                          |
-  | Total Read Bytes                              | Total number of bytes scanned.                                                                                                                  |
-  | Total Scanned Documents Count                 | Total number of documents scanned.                                                                                                              |
-  | Total Scanned Index Entries Count             | Total number of index entries scanned.                                                                                                          |
-  | Total Written Documents Count                 | Total number of documents written.                                                                                                              |
-  | Total Written Index Entries Count             | Total number of index entries written.                                                                                                          |
-  | Total Sum of Document Size written            | Total document write size in bytes.                                                                                                             |
+  |                                               |                                                                                                                                                                                                                                               |
+  |-----------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | Field name                                    | Details                                                                                                                                                                                                                                       |
+  | Collection Name CollectionGroup Name          | The value corresponding to the usage dimension for which the usage data is aggregated. This could be a collection name or collection group name                                                                                               |
+  | Total Read Operations                         | Total number of non-streaming read operations. Applicable only to Standard edition.                                                                                                                                                           |
+  | Total Write Operations                        | Total number of non-streaming write operations. Includes delete operations. Applicable only to Standard edition.                                                                                                                              |
+  | Total Stream Read Operations                  | Total number of read operations used for streaming `Listen` requests (including initial query polling, real-time document change notifications, skipped results, index reads, and minimum read charges). Applicable only to Standard edition. |
+  | Total Stream Write Operations                 | Total number of write operations used for `StreamWrite` requests. Includes delete operations. Applicable only to Standard edition.                                                                                                            |
+  | Total TTL Delete Operations                   | Total number of TTL Delete operations. Applicable only to Standard edition.                                                                                                                                                                   |
+  | Total Read Units                              | Total number of tranched read units (4 KiB tranches) for non-streaming reads. Applicable only to Enterprise edition.                                                                                                                          |
+  | Total Write Units                             | Total number of tranched write units (1 KiB tranches) for non-streaming writes. Includes delete units. Applicable only to Enterprise edition.                                                                                                 |
+  | Total TTL Delete or Managed Delete operations | Total number of TTL Delete or Managed Delete units. Applicable only to Enterprise edition.                                                                                                                                                    |
+  | Total Eventarc units                          | Total number of Eventarc units. Applicable only to Enterprise edition.                                                                                                                                                                        |
+  | Total Stream Read Units                       | Total number of tranched read units (4 KiB tranches) used for polling operations in streaming `Listen` requests. Applicable only to Enterprise edition.                                                                                       |
+  | Total Realtime Read Units                     | Total number of real-time read units (1 KiB tranches) used for streaming updates in `Listen` requests. Applicable only to Enterprise edition.                                                                                                 |
+  | Total Stream Write Units                      | Total number of tranched write units (1 KiB tranches) used for `StreamWrite` requests. Includes delete units. Applicable only to Enterprise edition.                                                                                          |
+  | Total Read Bytes                              | Total number of bytes scanned.                                                                                                                                                                                                                |
+  | Total Scanned Documents Count                 | Total number of documents scanned.                                                                                                                                                                                                            |
+  | Total Scanned Index Entries Count             | Total number of index entries scanned.                                                                                                                                                                                                        |
+  | Total Written Documents Count                 | Total number of documents written.                                                                                                                                                                                                            |
+  | Total Written Index Entries Count             | Total number of index entries written.                                                                                                                                                                                                        |
+  | Total Sum of Document Size written            | Total document write size in bytes.                                                                                                                                                                                                           |
 
   ## Limitations
 
-  - Streaming queries that contribute to billable reads and writes are not tracked as part of the API response.
   - Usage insights for Admin operations (that contribute to billable reads and writes) like import/export, bulk delete, restore, clone, and index builds in Enterprise edition are not supported.
   - Network egress and storage billing are not supported.
 
