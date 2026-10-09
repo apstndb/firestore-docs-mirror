@@ -193,7 +193,7 @@ https://docs.cloud.google.com/datastore/docs/samples/datastore-incomplete-key	20
 https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-invalid	2026-10-02T04:27:17Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-range	2026-10-02T04:27:17Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort	2026-10-02T04:27:17Z
-https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort-invalid-not-first	2026-10-08T09:40:02Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort-invalid-not-first	2026-10-08T17:56:35Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-inequality-sort-invalid-not-same	2026-10-02T04:27:17Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-insert	2026-10-02T04:27:17Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-key-filter	2026-10-02T04:27:17Z
@@ -564,7 +564,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/eventarc	2026
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/extend-with-cloud-run-functions	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/geo-query	2026-10-05T20:51:34Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview	2026-10-02T06:02:44Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview	2026-10-08T13:54:57Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing	2026-10-07T18:06:09Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/knowledge-catalog	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/locations	2026-10-02T06:02:44Z
@@ -632,7 +632,7 @@ https://docs.cloud.google.com/firestore/native/docs/dataflow-connector	2026-10-0
 https://docs.cloud.google.com/firestore/native/docs/disaster-recovery	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/editions-overview	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/emulator	2026-10-02T06:02:28Z
-https://docs.cloud.google.com/firestore/native/docs/enterprise-index-overview	2026-10-02T06:02:28Z
+https://docs.cloud.google.com/firestore/native/docs/enterprise-index-overview	2026-10-08T14:08:49Z
 https://docs.cloud.google.com/firestore/native/docs/enterprise-indexing	2026-10-07T21:18:52Z
 https://docs.cloud.google.com/firestore/native/docs/enterprise-optimize-query-performance	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain	2026-10-02T06:02:45Z
@@ -740,7 +740,7 @@ https://docs.cloud.google.com/firestore/native/docs/solutions/aggregation	2026-1
 https://docs.cloud.google.com/firestore/native/docs/solutions/counters	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/delete-collections	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/generative-ai-index	2026-10-02T06:02:45Z
-https://docs.cloud.google.com/firestore/native/docs/solutions/geoqueries	2026-10-02T06:02:45Z
+https://docs.cloud.google.com/firestore/native/docs/solutions/geoqueries	2026-10-08T19:09:41Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/presence	2026-10-06T23:23:08Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/role-based-access	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/schedule-export	2026-10-02T06:02:45Z

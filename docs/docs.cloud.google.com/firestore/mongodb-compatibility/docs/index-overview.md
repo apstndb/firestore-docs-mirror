@@ -72,6 +72,49 @@ If you add the document `{"abbreviation": "LA"}` to the collection, the unique i
 
 The same behavior applies to unique indexes with multiple fields. When creating or updating a document, missing indexed fields are set to `null` and the resulting index entry must be unique in the index.
 
+### Unique indexes on array values
+
+A unique multikey index can be used to enforce that documents don't have overlapping array elements.
+
+This type of index does **not** enforce that an array has unique values within a single document.
+
+For example, with a unique index:
+
+```
+db.collection.createIndex( { "tags": 1 }, { unique: true } )
+```
+
+The following document is valid to insert:
+
+```
+{
+  "_id": 1,
+  "tags": [ "news", "tech", "news", "music" ]
+}
+```
+
+The index permits duplicate values ( `"news"` ) within the same array of a single document.
+
+If you attempt to insert a second document with a duplicate element, the operation fails:
+
+```
+{
+  "_id": 2,
+  "tags": [ "sports", "music" ]
+}
+```
+
+The operation fails because `"music"` is already present in document `1` 's array and mapped in the index.
+
+If you need to ensure that elements within the same array in a single document are unique, handle this in your application logic by using updating operators such as `$addToSet` instead of `$push` .
+
+#### Empty arrays, missing fields, and null values
+
+Normally, missing fields in a unique index are treated as `null` and must be unique across documents (see [Absent fields in a unique index](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview#unique-index-missing-fields) ). However, for unique indexes on array fields:
+
+- **Empty arrays, missing fields, and standalone nulls:** If the array field is empty, missing entirely, or holds a standalone `null` value (not inside an array), no index keys are generated for the document. Therefore, multiple documents can have empty fields or standalone `null` values without triggering duplicate key errors.
+- **Null elements inside an array:** If the array contains a `null` value as an element (for example, `["news", null]` ), the `null` element is indexed. Any subsequent document containing a `null` element in its indexed array field will fail with a duplicate key error.
+
 ## TTL indexes
 
 Use [TTL indexes](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl) to automatically remove stale data from your databases. A TTL index designates a given field as the expiration time for documents in a given collection. With TTL, you can decrease storage costs by cleaning out obsolete data. Data is typically deleted within 24 hours after its expiration time.
