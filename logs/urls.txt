@@ -23,7 +23,7 @@ https://docs.cloud.google.com/datastore/docs/concepts/indexes	2026-10-02T04:27:1
 https://docs.cloud.google.com/datastore/docs/concepts/limits	2026-10-02T04:27:15Z
 https://docs.cloud.google.com/datastore/docs/concepts/metadataqueries	2026-10-02T04:27:15Z
 https://docs.cloud.google.com/datastore/docs/concepts/multitenancy	2026-10-02T04:27:15Z
-https://docs.cloud.google.com/datastore/docs/concepts/optimize-indexes	2026-10-02T04:27:15Z
+https://docs.cloud.google.com/datastore/docs/concepts/optimize-indexes	2026-10-11T04:50:09Z
 https://docs.cloud.google.com/datastore/docs/concepts/overview	2026-10-02T04:27:15Z
 https://docs.cloud.google.com/datastore/docs/concepts/queries	2026-02-26T03:56:03Z
 https://docs.cloud.google.com/datastore/docs/concepts/stats	2026-10-02T04:27:15Z
@@ -711,7 +711,7 @@ https://docs.cloud.google.com/firestore/native/docs/query-data/listen	2026-10-02
 https://docs.cloud.google.com/firestore/native/docs/query-data/multiple-range-fields	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/query-data/multiple-range-optimize-indexes	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/query-data/order-limit-data	2026-10-02T06:02:45Z
-https://docs.cloud.google.com/firestore/native/docs/query-data/queries	2026-10-02T06:02:45Z
+https://docs.cloud.google.com/firestore/native/docs/query-data/queries	2026-10-11T07:07:57Z
 https://docs.cloud.google.com/firestore/native/docs/query-data/query-cursors	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/query-data/understanding-core-pipelines	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/query-explain	2026-10-02T06:02:45Z
@@ -724,7 +724,6 @@ https://docs.cloud.google.com/firestore/native/docs/reliability-recommender	2026
 https://docs.cloud.google.com/firestore/native/docs/resolve-latency	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/resources	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/restore-in-place	2026-10-02T06:02:45Z
-https://docs.cloud.google.com/firestore/native/docs/secure-agent-interactions-mcp	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/securing-with-vpc-sc	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/security/get-started	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/security/iam	2026-10-02T06:02:45Z

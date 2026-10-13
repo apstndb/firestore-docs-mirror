@@ -4576,13 +4576,12 @@ The following examples show the number of disjunctions for different queries:
 <col style="width: 50%" />
 <col style="width: 50%" />
 </colgroup>
-<thead>
+<tbody>
 <tr class="header">
 <th>Query</th>
 <th>Number of disjunctions</th>
 </tr>
-</thead>
-<tbody>
+
 <tr class="odd">
 <td><pre data-fenced=""><code>query(collectionRef, where(&quot;a&quot;, &quot;==&quot;, 1))
       </code></pre></td>

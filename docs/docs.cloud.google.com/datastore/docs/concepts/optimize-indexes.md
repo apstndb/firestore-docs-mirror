@@ -29,14 +29,12 @@ Consider a Datastore mode database with entities of kind `Photo` :
 <col style="width: 33%" />
 <col style="width: 33%" />
 </colgroup>
-<thead>
+<tbody>
 <tr class="header">
 <th>Photo</th>
 <th></th>
 <th></th>
 </tr>
-</thead>
-<tbody>
 <tr class="odd">
 <th>Property</th>
 <th>Value type</th>
@@ -405,13 +403,12 @@ Although composite indexes that exactly match the filters in a query perform bes
   <col style="width: 50%" />
   <col style="width: 50%" />
   </colgroup>
-  <thead>
+  <tbody>
   <tr class="header">
   <th>Limit</th>
   <th>Amount</th>
   </tr>
-  </thead>
-  <tbody>
+
   <tr class="odd">
   <td>Maximum number of composite indexes for a database</td>
   <td><ul>

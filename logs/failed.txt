@@ -1,3 +1,10 @@
+200 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/querydata
+200 https://docs.cloud.google.com/firestore/native/docs/secure-agent-interactions-mcp
+200 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/change-streams
+200 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/change-streams/create
+200 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/change-streams/delete
+200 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/change-streams/describe
+200 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/change-streams/list
 404 https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/Index
 404 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/listen
 404 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/write
