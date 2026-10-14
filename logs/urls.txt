@@ -250,6 +250,7 @@ https://docs.cloud.google.com/datastore/docs/use-monitoring-dashboard	2026-10-02
 https://docs.cloud.google.com/datastore/docs/use-pitr	2026-10-02T23:43:18Z
 https://docs.cloud.google.com/firestore/docs/cuds	2026-10-02T06:02:33Z
 https://docs.cloud.google.com/firestore/docs/reference/rest	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types	2026-04-25T02:33:14Z
 https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/ApiScope	2025-10-17T23:18:41Z
 https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/ArrayConfig	2025-10-17T23:18:34Z
 https://docs.cloud.google.com/firestore/docs/reference/rest/Shared.Types/ArrayValue	2026-03-05T19:16:04Z
@@ -582,6 +583,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/pitr	2026-10-
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain-reference	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-insights	2026-10-02T06:02:44Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/querydata	2026-10-12T21:03:27Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/release-notes	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/reliability-recommender	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/resolve-latency	2026-10-02T06:02:28Z
@@ -724,6 +726,7 @@ https://docs.cloud.google.com/firestore/native/docs/reliability-recommender	2026
 https://docs.cloud.google.com/firestore/native/docs/resolve-latency	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/resources	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/restore-in-place	2026-10-02T06:02:45Z
+https://docs.cloud.google.com/firestore/native/docs/secure-agent-interactions-mcp	2026-10-13T08:49:01Z
 https://docs.cloud.google.com/firestore/native/docs/securing-with-vpc-sc	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/security/get-started	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/security/iam	2026-10-02T06:02:45Z
