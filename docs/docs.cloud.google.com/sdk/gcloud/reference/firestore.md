@@ -39,6 +39,9 @@ GROUPS
 [`backups`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups)  
 The set of commands to manage backups for Cloud Firestore.
 
+[`change-streams`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/change-streams)  
+Manage Cloud Firestore ChangeStreams.
+
 [`databases`](https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases)  
 Manage Creation of Cloud Firestore in Native mode Database.
 

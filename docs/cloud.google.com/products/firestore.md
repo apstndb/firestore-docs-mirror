@@ -72,7 +72,7 @@ How It Works
 
 [Documentation](https://cloud.google.com/firestore/docs/understand-reads-writes-scale)
 
-[Play video](https://www.youtube.com/watch?v=8DYWeI4Yc8Q)
+[Get started with Firestore, 12 minutes 38 seconds](https://www.youtube.com/watch?v=8DYWeI4Yc8Q)
 
 Common Uses
 

@@ -12,6 +12,14 @@ You can see the latest product updates for all of Google Cloud on the [Google Cl
 
 To get the latest product updates delivered to you, add the URL of this page to your [feed reader](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the [feed URL](https://docs.cloud.google.com/feeds/firestore-with-mongodb-compatibility-release-notes.xml) directly.
 
+## October 12, 2026
+
+Feature
+
+Firestore with MongoDB compatibility now supports QueryData, which you can use to build data agents that interact with the data in your database using conversational language. For more information, see [QueryData overview](https://docs.cloud.google.com/gemini/data-agents/querydata/firestore-mongodb-compatibility/data-agent-overview) .
+
+This feature is available in [Preview](https://cloud.google.com/products#product-launch-stages) .
+
 ## June 01, 2026
 
 Feature

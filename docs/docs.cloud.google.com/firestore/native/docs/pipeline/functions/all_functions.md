@@ -1211,14 +1211,16 @@ Returns the value of `x / y` . Integer division is truncated.
 
 **Examples:**
 
-| x    | y   | `divide(x, y)` |
-|------|-----|----------------|
-| 20   | 3   | 6              |
-| 10.0 | 3   | 3.333...       |
-| 22.5 | 2   | 11.25          |
-| 10   | 0   | `[error]`      |
-| 1.0  | 0.0 | `+inf`         |
-| -1.0 | 0.0 | `-inf`         |
+| x      | y      | `divide(x, y)` |
+|--------|--------|----------------|
+| 20     | 3      | 6              |
+| 10.0   | 3      | 3.333...       |
+| 22.5   | 2      | 11.25          |
+| 10     | 0      | `[error]`      |
+| 1.0    | 0.0    | `+inf`         |
+| -1.0   | 0.0    | `-inf`         |
+| 0.0    | 0.0    | `NaN`          |
+| `+inf` | `+inf` | `NaN`          |
 
 ##### Node.js
 
@@ -1441,6 +1443,7 @@ Returns the smallest integer value that isn't less than `number` .
 | -0.4   | -0.0           |
 | 0.4    | 1.0            |
 | 22.5   | 23.0           |
+| `NaN`  | `NaN`          |
 | `+inf` | `+inf`         |
 | `-inf` | `-inf`         |
 
@@ -1571,6 +1574,7 @@ Returns the largest integer value that isn't greater than `number` .
 | -0.4       | -1.0            |
 | 0.4        | 0.0             |
 | 22.5       | 22.0            |
+| `NaN`      | `NaN`           |
 | `+inf`     | `+inf`          |
 | `-inf`     | `-inf`          |
 
@@ -1837,20 +1841,24 @@ Returns the value `base` raised to the power of `exponent` .
 
 - Throws an error if `base <= 0` and `exponent` is negative.
 
-- For any `exponent` , `pow(1, exponent)` is 1.
+- For any `exponent` (including `NaN` ), `pow(1, exponent)` is 1.
 
-- For any `base` , `pow(base, 0)` is 1.
+- For any `base` (including `NaN` ), `pow(base, 0)` is 1.
 
 **Examples:**
 
-| base   | exponent | `pow(base, exponent)` |
-|--------|----------|-----------------------|
-| 2      | 3        | 8.0                   |
-| 2      | -3       | 0.125                 |
-| `+inf` | 0        | 1.0                   |
-| 1      | `+inf`   | 1.0                   |
-| -1     | 0.5      | `[error]`             |
-| 0      | -1       | `[error]`             |
+| base      | exponent  | `pow(base, exponent)` |
+|-----------|-----------|-----------------------|
+| 2         | 3         | 8.0                   |
+| 2         | -3        | 0.125                 |
+| `+inf`    | 0         | 1.0                   |
+| 1         | `+inf`    | 1.0                   |
+| `NaN`     | 0         | 1.0                   |
+| 1         | `NaN`     | 1.0                   |
+| `NaN`     | `Numeric` | `NaN`                 |
+| `Numeric` | `NaN`     | `NaN`                 |
+| -1        | 0.5       | `[error]`             |
+| 0         | -1        | `[error]`             |
 
 ##### Node.js
 
@@ -2284,6 +2292,7 @@ Returns the value of Euler's number raised to the power of `exponent` , also cal
 |----------|----------------------|
 | 0.0      | 1.0                  |
 | 10       | `e^10` ( `FLOAT64` ) |
+| `NaN`    | `NaN`                |
 | `+inf`   | `+inf`               |
 | `-inf`   | 0                    |
 
@@ -2388,6 +2397,7 @@ Returns the natural logarithm of `number` . This function is equivalent to `log(
 | 2L                | 0.693...     |
 | 1.0               | 0.0          |
 | `e` ( `FLOAT64` ) | 1.0          |
+| `NaN`             | `NaN`        |
 | `-inf`            | `NaN`        |
 | `+inf`            | `+inf`       |
 | `x <= 0`          | `[error]`    |
@@ -2493,6 +2503,8 @@ Returns the logarithm of a `number` to `base` .
 | number        | base        | `log(number, base)` |
 |---------------|-------------|---------------------|
 | 100           | 10          | 2.0                 |
+| `NaN`         | `Numeric`   | `NaN`               |
+| `Numeric`     | `NaN`       | `NaN`               |
 | `-inf`        | `Numeric`   | `NaN`               |
 | `Numeric` .   | `+inf`      | `NaN`               |
 | `number <= 0` | `Numeric`   | `[error]`           |
@@ -2516,6 +2528,7 @@ Returns the logarithm of a `number` to base `10` .
 | number   | `log10(number)` |
 |----------|-----------------|
 | 100      | 2.0             |
+| `NaN`    | `NaN`           |
 | `-inf`   | `NaN`           |
 | `+inf`   | `+inf`          |
 | `x <= 0` | `[error]`       |

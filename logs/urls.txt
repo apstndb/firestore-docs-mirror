@@ -584,7 +584,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain-reference	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-insights	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/querydata	2026-10-12T21:03:27Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/release-notes	2026-10-02T06:02:41Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/release-notes	2026-10-15T06:16:50Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/reliability-recommender	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/resolve-latency	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/resources	2026-10-02T06:02:28Z
@@ -667,8 +667,8 @@ https://docs.cloud.google.com/firestore/native/docs/monitor-usage	2026-10-02T06:
 https://docs.cloud.google.com/firestore/native/docs/overview	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/dml	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/aggregate_functions	2026-10-02T06:02:41Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions	2026-10-02T06:02:41Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions	2026-10-02T06:02:41Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions	2026-10-13T23:28:25Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions	2026-10-13T23:28:25Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/array_functions	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/comparison_functions	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/debugging_functions	2026-10-02T06:02:41Z
@@ -783,7 +783,7 @@ https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/cancel	2
 https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/delete	2026-05-27T16:47:22Z
 https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/describe	2026-05-27T16:47:55Z
 https://docs.cloud.google.com/sdk/gcloud/reference/datastore/operations/list	2026-05-27T16:47:13Z
-https://docs.cloud.google.com/sdk/gcloud/reference/firestore	2026-05-27T16:46:31Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore	2026-10-13T13:33:16Z
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups	2026-05-27T16:48:06Z
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/delete	2026-05-27T16:47:17Z
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/describe	2026-05-27T16:48:50Z
@@ -795,6 +795,11 @@ https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/d
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/list	2026-05-27T16:46:56Z
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/backups/schedules/update	2026-05-27T16:48:25Z
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/bulk-delete	2026-05-27T16:46:48Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/change-streams	2026-10-13T13:33:32Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/change-streams/create	2026-10-13T13:32:59Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/change-streams/delete	2026-10-13T13:33:32Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/change-streams/describe	2026-10-13T13:33:32Z
+https://docs.cloud.google.com/sdk/gcloud/reference/firestore/change-streams/list	2026-10-13T13:32:59Z
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases	2026-05-27T16:47:33Z
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/clone	2026-05-27T16:48:13Z
 https://docs.cloud.google.com/sdk/gcloud/reference/firestore/databases/connection-string	2026-05-27T16:46:43Z
