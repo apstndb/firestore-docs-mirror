@@ -6,10 +6,6 @@ description: API reference for Firestore with MongoDB compatibility.
 data_source: docs.cloud.google.com
 ---
 
-> **Beta**
->
-> This product is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . Pre-GA products are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
-
 - [API overview Overview of the API for Firestore.](https://github.com/googleapis/googleapis/tree/master/google/firestore)
 
 <!-- -->

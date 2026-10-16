@@ -85,7 +85,7 @@ To create an index, use the [`gcloud firestore indexes composite create`](https:
 
 ```
 gcloud firestore indexes composite create \
---database='DATABASE_ID' \
+--database=&#39;DATABASE_ID' \
 --collection-group=COLLECTION \
 --field-config=FIELD_CONFIGURATION \
 --query-scope=collection-group \
@@ -121,7 +121,7 @@ Use the [`google_firestore_index`](https://registry.terraform.io/providers/hashi
 
 ```
 resource "google_firestore_index" "index" {
-  database    = "DATABASE_ID"
+  database    = "DATABASE_ID&quot;
   collection  = "COLLECTION"
   api_scope   = "MONGODB_COMPATIBLE_API"
   query_scope = "COLLECTION_GROUP"
@@ -515,7 +515,7 @@ db.restaurants.dropIndex({"cuisine" : 1})
 
     ```
     gcloud firestore indexes composite list \
-    --database='DATABASE_ID'
+    --database=&#39;DATABASE_ID'
     ```
 
     Replace ` DATABASE_ID ` with the database ID.
@@ -524,7 +524,7 @@ db.restaurants.dropIndex({"cuisine" : 1})
 
     ```
     gcloud firestore indexes composite delete INDEX_NAME \
-    --database='DATABASE_ID'
+    --database=&#39;DATABASE_ID'
     ```
 
     Replace the following:

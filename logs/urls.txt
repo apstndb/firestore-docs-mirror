@@ -546,7 +546,7 @@ https://docs.cloud.google.com/firestore/docs/samples/firestore-transaction-docum
 https://docs.cloud.google.com/firestore/docs/samples/firestore-transaction-document-update-conditional	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-transaction-document-update-conditional-async	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs	2026-10-02T06:02:41Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/apis	2026-10-02T06:02:44Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/apis	2026-10-16T06:18:47Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/audit-logging	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/backups	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/behavior-differences	2026-10-02T06:02:44Z
@@ -566,7 +566,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/extend-with-cloud-run-functions	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/geo-query	2026-10-05T20:51:34Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/index-overview	2026-10-08T13:54:57Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing	2026-10-07T18:06:09Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/indexing	2026-10-16T06:18:47Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/knowledge-catalog	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/locations	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/migrate-configure-env-vars	2026-10-02T06:02:44Z
@@ -587,7 +587,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/querydata	202
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/release-notes	2026-10-15T06:16:50Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/reliability-recommender	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/resolve-latency	2026-10-02T06:02:28Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/resources	2026-10-02T06:02:28Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/resources	2026-10-16T06:18:47Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/restore-in-place	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/saved-queries	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/securing-with-vpc-sc	2026-10-02T06:02:28Z
