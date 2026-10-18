@@ -388,7 +388,6 @@ https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.dat
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/create	2026-03-20T21:17:05Z
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/delete	2026-03-20T21:17:05Z
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/get	2026-03-20T21:17:05Z
-https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/list	2026-03-20T21:17:05Z
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases/exportDocuments	2026-03-20T21:17:05Z
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases/importDocuments	2026-03-20T21:17:05Z
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases	2025-10-17T23:18:34Z
