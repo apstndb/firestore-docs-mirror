@@ -388,6 +388,7 @@ https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.dat
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/create	2026-03-20T21:17:05Z
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/delete	2026-03-20T21:17:05Z
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/get	2026-03-20T21:17:05Z
+https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/list	2026-03-20T21:17:05Z
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases/exportDocuments	2026-03-20T21:17:05Z
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases/importDocuments	2026-03-20T21:17:05Z
 https://docs.cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases	2025-10-17T23:18:34Z
@@ -612,7 +613,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/use-pitr	2026
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/write-mql-gemini	2026-09-30T20:02:49Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/quotas	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/native/docs	2026-10-02T06:02:41Z
-https://docs.cloud.google.com/firestore/native/docs/apis	2026-10-02T06:02:28Z
+https://docs.cloud.google.com/firestore/native/docs/apis	2026-10-19T09:43:17Z
 https://docs.cloud.google.com/firestore/native/docs/app-engine-requirement	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/audit-logging	2026-10-05T14:35:56Z
 https://docs.cloud.google.com/firestore/native/docs/authentication	2026-10-02T06:02:28Z

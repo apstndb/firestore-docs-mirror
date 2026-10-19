@@ -24,6 +24,9 @@ data_source: docs.cloud.google.com
 - [iOS (Swift) Client Library Reference](https://firebase.google.com/docs/reference/swift/firebasefirestore/api/reference/Classes)
 - [iOS (Objective-C) Client Library Reference](https://firebase.google.com/docs/reference/ios/firebasefirestore/api/reference/Classes)
 - [Web Client Library Reference](https://firebase.google.com/docs/reference/js/firebase.firestore)
+- [Flutter Client Library Reference](https://pub.dev/documentation/cloud_firestore/latest/)
+- [Unity Client Library Reference](https://firebase.google.com/docs/reference/unity/namespace/firebase/firestore)
+- [C++ Client Library Reference](https://firebase.google.com/docs/reference/cpp/namespace/firebase/firestore)
 
 <!-- -->
 
