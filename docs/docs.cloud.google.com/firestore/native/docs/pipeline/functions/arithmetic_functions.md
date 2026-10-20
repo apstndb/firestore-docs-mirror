@@ -46,7 +46,7 @@ An implicit coercion from `INT64` -\> `FLOAT64` can result in a loss of precisio
 **Syntax:**
 
 ```
-abs[N <: INT32 | INT64 | FLOAT64](number: N) -> N
+abs[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](number: N) -> N
 ```
 
 **Description:**
@@ -73,7 +73,7 @@ Returns the absolute value of a `number` .
 **Syntax:**
 
 ```
-add[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+add[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](x: N, y: N) -> N
 ```
 
 **Description:**
@@ -176,7 +176,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-subtract[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+subtract[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](x: N, y: N) -> N
 ```
 
 **Description:**
@@ -287,7 +287,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-multiply[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+multiply[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](x: N, y: N) -> N
 ```
 
 **Description:**
@@ -391,7 +391,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-divide[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+divide[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](x: N, y: N) -> N
 ```
 
 **Description:**
@@ -497,7 +497,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-mod[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+mod[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](x: N, y: N) -> N
 ```
 
 **Description:**
@@ -614,7 +614,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-ceil[N <: INT32 | INT64 | FLOAT64](number: N) -> N
+ceil[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](number: N) -> N
 ```
 
 **Description:**
@@ -745,7 +745,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-floor[N <: INT32 | INT64 | FLOAT64](number: N) -> N
+floor[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](number: N) -> N
 ```
 
 **Description:**

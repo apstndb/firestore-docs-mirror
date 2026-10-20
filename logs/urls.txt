@@ -17,7 +17,7 @@ https://docs.cloud.google.com/datastore/docs/cloud-datastore-best-practices	2026
 https://docs.cloud.google.com/datastore/docs/cmek	2026-10-02T04:28:03Z
 https://docs.cloud.google.com/datastore/docs/concepts/cloud-datastore-transactions	2026-10-02T04:27:15Z
 https://docs.cloud.google.com/datastore/docs/concepts/encryption-at-rest	2026-09-25T05:49:43Z
-https://docs.cloud.google.com/datastore/docs/concepts/entities	2026-10-02T04:27:15Z
+https://docs.cloud.google.com/datastore/docs/concepts/entities	2026-10-19T16:58:34Z
 https://docs.cloud.google.com/datastore/docs/concepts/errors	2026-10-02T04:27:15Z
 https://docs.cloud.google.com/datastore/docs/concepts/indexes	2026-10-02T04:27:15Z
 https://docs.cloud.google.com/datastore/docs/concepts/limits	2026-10-02T04:27:15Z
@@ -594,7 +594,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/securing-with
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/server-side-encryption	2026-09-25T07:47:05Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/storage-size	2026-10-02T06:02:28Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-data-types-drivers	2026-10-02T06:02:28Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-data-types-drivers	2026-10-19T16:57:08Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-36	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-40	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-50	2026-10-02T06:02:28Z
@@ -602,7 +602,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-fea
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-70	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/tags	2026-10-02T06:02:28Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/text-search	2026-10-17T00:01:42Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/text-search	2026-10-19T16:37:07Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-error-codes	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/understand-reads-writes-scale	2026-10-02T06:02:28Z
@@ -623,7 +623,7 @@ https://docs.cloud.google.com/firestore/native/docs/billing-example	2026-10-02T0
 https://docs.cloud.google.com/firestore/native/docs/billing-questions	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/client-side-traces	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/cmek	2026-10-02T06:02:28Z
-https://docs.cloud.google.com/firestore/native/docs/concepts/data-types	2026-10-02T06:02:41Z
+https://docs.cloud.google.com/firestore/native/docs/concepts/data-types	2026-10-19T18:52:00Z
 https://docs.cloud.google.com/firestore/native/docs/concepts/structure-data	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/connect-ide-using-mcp-toolbox	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library	2026-10-02T06:02:28Z
@@ -667,8 +667,8 @@ https://docs.cloud.google.com/firestore/native/docs/monitor-usage	2026-10-02T06:
 https://docs.cloud.google.com/firestore/native/docs/overview	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/dml	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/aggregate_functions	2026-10-02T06:02:41Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions	2026-10-13T23:28:25Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions	2026-10-13T23:28:25Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions	2026-10-19T18:52:00Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions	2026-10-19T18:52:00Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/array_functions	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/comparison_functions	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/debugging_functions	2026-10-02T06:02:41Z
@@ -676,9 +676,9 @@ https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/generic_f
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/logical_functions	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_functions	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/reference_functions	2026-10-02T06:02:41Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/string_functions	2026-10-02T06:02:41Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/timestamp_functions	2026-10-02T06:02:41Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/type_functions	2026-10-02T06:02:41Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/string_functions	2026-10-19T18:52:00Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/timestamp_functions	2026-10-19T18:52:00Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/type_functions	2026-10-19T18:52:00Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/vector_functions	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/overview	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/perform-joins-with-sub-pipelines	2026-10-02T06:02:41Z
@@ -752,7 +752,7 @@ https://docs.cloud.google.com/firestore/native/docs/standard-index-overview	2026
 https://docs.cloud.google.com/firestore/native/docs/standard-indexing	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/storage-size	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/tags	2026-10-02T06:02:45Z
-https://docs.cloud.google.com/firestore/native/docs/text-search	2026-10-17T00:01:42Z
+https://docs.cloud.google.com/firestore/native/docs/text-search	2026-10-19T18:52:00Z
 https://docs.cloud.google.com/firestore/native/docs/trace-span-references	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/transaction-data-contention	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/ttl	2026-10-02T06:02:45Z

@@ -2091,6 +2091,26 @@ Array properties can be useful, for example, when performing queries with equali
 
 Properties are stored as a `string/value` map that contains the entity's property names and values. The following types are supported for values:
 
+### 32-bit integer
+
+- REST API
+  - field name: `entityValue`
+  - type: a JSON entity map containing a single property `__int__` with an integer `integerValue`
+- RPC API
+  - field name: `entity_value`
+  - type: an `Entity` message containing a single property `__int__` with an `integer_value`
+- Sort order: Numeric
+
+### 64-bit integer
+
+- REST API
+  - field name: `integerValue`
+  - type: number or string. Use strings for integers that cannot be exactly represented as numbers.
+- RPC API
+  - field name: `integer_value`
+  - type: `int64`
+- Sort order: Numeric
+
 ### Array
 
 - REST API
@@ -2119,7 +2139,18 @@ Properties are stored as a `string/value` map that contains the entity's propert
   - type: `bool`
 - Sort order: `false` \< `true`
 
-### Blob
+### BSON timestamp
+
+- REST API
+  - field name: `entityValue`
+  - type: a JSON entity map containing a property `__request_timestamp__` with integer properties `seconds` and `increment`
+- RPC API
+  - field name: `entity_value`
+  - type: an `Entity` message representing a BSON timestamp containing `seconds` and `increment`
+- Sort order: Chronological
+- Notes: A 64-bit timestamp value comprising Unix seconds and an increment counter.
+
+### Bytes (Blob)
 
 - REST API
   - field name: `blobValue`
@@ -2130,7 +2161,18 @@ Properties are stored as a `string/value` map that contains the entity's propert
 - Sort order: Byte order
 - Notes: Up to 1,500 bytes if property is indexed, up to 1,048,487 bytes (1 MiB - 89 bytes) otherwise.
 
-### Date and time
+### Bytes with subtype
+
+- REST API
+  - field name: `entityValue`
+  - type: a JSON entity map containing a single property `__binary__` with base64-encoded `blobValue` (subtype byte prepended to data)
+- RPC API
+  - field name: `entity_value`
+  - type: an `Entity` message containing a single property `__binary__` with `blob_value` (subtype byte prepended to data)
+- Sort order: Byte order (subtype, then value)
+- Notes: Binary byte sequence with a BSON subtype indicator.
+
+### Date and time (timestamp)
 
 - REST API
   - field name: `timestampValue`
@@ -2143,6 +2185,28 @@ Properties are stored as a `string/value` map that contains the entity's propert
   - When stored in Datastore mode, precise only to microseconds; any additional precision is rounded down.
   - When returned as part of a [projection query](https://docs.cloud.google.com/datastore/docs/concepts/queries#projection_queries) , Datastore mode converts timestamp values to microsecond integer values.
 
+### Decimal128
+
+- REST API
+  - field name: `entityValue`
+  - type: a JSON entity map containing a single property `__decimal128__` with a `stringValue`
+- RPC API
+  - field name: `entity_value`
+  - type: an `Entity` message containing a single property `__decimal128__` with a `string_value`
+- Sort order: Numeric
+- Notes: 128-bit decimal floating-point number for high-precision arithmetic.
+
+### Double (floating-point number)
+
+- REST API
+  - field name: `doubleValue`
+  - type: number
+- RPC API
+  - field name: `double_value`
+  - type: `double`
+- Sort order: Numeric
+- Notes: 64-bit double precision, IEEE 754
+
 ### Embedded entity
 
 - REST API
@@ -2154,17 +2218,6 @@ Properties are stored as a `string/value` map that contains the entity's propert
 - Sort order: None
 - Notes: When indexed, you can query on subproperties. If you exclude this value from indexing, then all subproperties are also excluded from indexing.
 
-### Floating-point number
-
-- REST API
-  - field name: `doubleValue`
-  - type: number
-- RPC API
-  - field name: `double_value`
-  - type: `double`
-- Sort order: Numeric
-- Notes: 64-bit double precision, IEEE 754
-
 ### Geographical point
 
 - REST API
@@ -2174,16 +2227,6 @@ Properties are stored as a `string/value` map that contains the entity's propert
   - field name: `geo_point_value`
   - type: a `LatLng` message
 - Sort order: By latitude, then longitude
-
-### Integer
-
-- REST API
-  - field name: `integerValue`
-  - type: number or string. Use strings for integers that cannot be exactly represented as numbers.
-- RPC API
-  - field name: `integer_value`
-  - type: `int64`
-- Sort order: Numeric
 
 ### Key
 
@@ -2195,6 +2238,24 @@ Properties are stored as a `string/value` map that contains the entity's propert
   - type: a `Key` message
 - Sort order: By path elements (kind, identifier, kind, identifier...)
 
+### MaxKey
+
+- REST API
+  - field name: `entityValue`
+  - type: a JSON entity map containing a single property `__max__` with a `nullValue`
+- RPC API
+  - field name: `entity_value`
+  - type: an `Entity` message containing a single property `__max__` with a `null_value`
+
+### MinKey
+
+- REST API
+  - field name: `entityValue`
+  - type: a JSON entity map containing a single property `__min__` with a `nullValue`
+- RPC API
+  - field name: `entity_value`
+  - type: an `Entity` message containing a single property `__min__` with a `null_value`
+
 ### Null
 
 - REST API
@@ -2204,6 +2265,26 @@ Properties are stored as a `string/value` map that contains the entity's propert
   - field name: `null_value`
   - type: `NullValue`
 - Sort order: None
+
+### ObjectId
+
+- REST API
+  - field name: `entityValue`
+  - type: a JSON entity map containing a single property `__oid__` with a `stringValue` (lowercase hex string)
+- RPC API
+  - field name: `entity_value`
+  - type: an `Entity` message containing a single property `__oid__` with a `string_value`
+- Sort order: By 12-byte sequence
+
+### Regular expression
+
+- REST API
+  - field name: `entityValue`
+  - type: a JSON entity map containing `__regex__` with properties for `pattern` and `options`
+- RPC API
+  - field name: `entity_value`
+  - type: an `Entity` message representing a regular expression with `pattern` and `options` properties
+- Sort order: By pattern, then by options
 
 ### Text string
 
@@ -2221,15 +2302,19 @@ Properties are stored as a `string/value` map that contains the entity's propert
 When a query involves a property with values of mixed types, a Datastore mode database uses a deterministic ordering based on the internal representations. The following list shows the order:
 
 1.  Null values
-2.  Fixed-point numbers
-    - Integers
-    - Dates and times
-3.  Boolean values
-4.  Byte strings
-5.  Unicode strings
-6.  Floating-point numbers
-7.  NaN values
-8.  Geographical points
-9.  Datastore mode keys
+2.  MinKey
+3.  32-bit integers
+4.  64-bit integers and timestamps
+5.  Boolean values
+6.  Byte strings and Unicode strings
+7.  Bytes with subtypes
+8.  Doubles (NaN sorts last)
+9.  Geographical points
+10. Datastore mode keys
+11. ObjectId
+12. BSON timestamp
+13. Regular expression
+14. Decimal128 (NaN sorts last)
+15. MaxKey
 
-> **Note:** Integers and floating-point numbers are considered separate types in Datastore mode. If an entity uses a mix of integers and floats for the same property, all integers will be sorted before all floats, for example: `7` \< `3.2` .
+> **Note:** Integers and floating-point numbers are considered separate types in Datastore mode. If an entity uses a mix of integers and floats for the same property, all integers will be sorted before all floats, for example: `7` \< `3.2` . 32-bit integers sort before 64-bit integers.

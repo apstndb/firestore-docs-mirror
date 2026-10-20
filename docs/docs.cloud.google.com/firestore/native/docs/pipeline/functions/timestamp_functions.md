@@ -45,7 +45,7 @@ This is stable within a query, and will always resolve to the same value if call
 **Syntax:**
 
 ```
-timestamp_trunc(timestamp: TIMESTAMP, granularity: STRING[, timezone: STRING]) -> TIMESTAMP
+timestamp_trunc(timestamp: TIMESTAMP | BSON_TIMESTAMP, granularity: STRING[, timezone: STRING]) -> TIMESTAMP
 ```
 
 **Description:**
@@ -434,7 +434,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-timestamp_add(timestamp: TIMESTAMP, unit: STRING, amount: INT64) -> TIMESTAMP
+timestamp_add(timestamp: TIMESTAMP | BSON_TIMESTAMP, unit: STRING, amount: INT64) -> TIMESTAMP
 ```
 
 **Description:**
@@ -558,7 +558,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-timestamp_sub(timestamp: TIMESTAMP, unit: STRING, amount: INT64) -> TIMESTAMP
+timestamp_sub(timestamp: TIMESTAMP | BSON_TIMESTAMP, unit: STRING, amount: INT64) -> TIMESTAMP
 ```
 
 **Description:**
@@ -686,7 +686,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-timestamp_to_unix_micros(input: TIMESTAMP) -> INT64
+timestamp_to_unix_micros(input: TIMESTAMP | BSON_TIMESTAMP) -> INT64
 ```
 
 **Description:**
@@ -797,7 +797,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-timestamp_to_unix_millis(input: TIMESTAMP) -> INT64
+timestamp_to_unix_millis(input: TIMESTAMP | BSON_TIMESTAMP) -> INT64
 ```
 
 **Description:**
@@ -908,7 +908,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-timestamp_to_unix_seconds(input: TIMESTAMP) -> INT64
+timestamp_to_unix_seconds(input: TIMESTAMP | BSON_TIMESTAMP) -> INT64
 ```
 
 **Description:**
@@ -1019,7 +1019,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-timestamp_diff(end: TIMESTAMP, start: TIMESTAMP, unit: STRING) -> INT64
+timestamp_diff(end: TIMESTAMP | BSON_TIMESTAMP, start: TIMESTAMP | BSON_TIMESTAMP, unit: STRING) -> INT64
 ```
 
 **Description:**
@@ -1051,7 +1051,7 @@ The `unit` argument must be a string and one of the following:
 **Syntax:**
 
 ```
-timestamp_extract(timestamp: TIMESTAMP, part: STRING[, timezone: STRING]) -> INT64
+timestamp_extract(timestamp: TIMESTAMP | BSON_TIMESTAMP, part: STRING[, timezone: STRING]) -> INT64
 ```
 
 **Description:**

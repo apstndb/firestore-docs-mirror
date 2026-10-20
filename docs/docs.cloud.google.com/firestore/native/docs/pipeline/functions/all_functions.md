@@ -857,7 +857,7 @@ An implicit coercion from `INT64` -\> `FLOAT64` can result in a loss of precisio
 **Syntax:**
 
 ```
-abs[N <: INT32 | INT64 | FLOAT64](number: N) -> N
+abs[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](number: N) -> N
 ```
 
 **Description:**
@@ -884,7 +884,7 @@ Returns the absolute value of a `number` .
 **Syntax:**
 
 ```
-add[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+add[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](x: N, y: N) -> N
 ```
 
 **Description:**
@@ -987,7 +987,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-subtract[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+subtract[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](x: N, y: N) -> N
 ```
 
 **Description:**
@@ -1098,7 +1098,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-multiply[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+multiply[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](x: N, y: N) -> N
 ```
 
 **Description:**
@@ -1202,7 +1202,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-divide[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+divide[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](x: N, y: N) -> N
 ```
 
 **Description:**
@@ -1308,7 +1308,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-mod[N <: INT32 | INT64 | FLOAT64](x: N, y: N) -> N
+mod[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](x: N, y: N) -> N
 ```
 
 **Description:**
@@ -1425,7 +1425,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-ceil[N <: INT32 | INT64 | FLOAT64](number: N) -> N
+ceil[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](number: N) -> N
 ```
 
 **Description:**
@@ -1556,7 +1556,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-floor[N <: INT32 | INT64 | FLOAT64](number: N) -> N
+floor[N <: INT32 | INT64 | FLOAT64 | DECIMAL128](number: N) -> N
 ```
 
 **Description:**
@@ -6112,30 +6112,32 @@ Each key-value pair will be in the form of a map with two entries, `k` and `v` .
 
 ## **String Functions**
 
-|                                                                                                                                 |                                                                                   |
-|---------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
-| Name                                                                                                                            | Description                                                                       |
-| [`BYTE_LENGTH`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#byte_length)               | Returns the number of `BYTES` in a `STRING` or `BYTES` value                      |
-| [`CHAR_LENGTH`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#char_length)               | Returns the number of unicode characters in a `STRING` value                      |
-| [`STARTS_WITH`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#starts_with)               | Returns `TRUE` if a `STRING` begins with a given prefix                           |
-| [`ENDS_WITH`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#ends_with)                   | Returns `TRUE` if a `STRING` ends with a given postfix                            |
-| [`LIKE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#like)                             | Returns `TRUE` if a `STRING` matches a pattern                                    |
-| [`REGEX_CONTAINS`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#regex_contains)         | Returns `TRUE` if a value is a partial or full match for a regular expression     |
-| [`REGEX_MATCH`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#regex_match)               | Returns `TRUE` if any part of a value matches a regular expression                |
-| [`STRING_CONCAT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#string_concat)           | Concatenates multiple `STRING` into a `STRING`                                    |
-| [`STRING_CONTAINS`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#string_contains)       | Returns `TRUE` if a value contains a `STRING`                                     |
-| [`STRING_INDEX_OF`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#string_index_of)       | Returns the 0-based index of the first occurrence of a `STRING` or `BYTES` value. |
-| [`TO_UPPER`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#to_upper)                     | Converts a `STRING` or `BYTES` value to uppercase.                                |
-| [`TO_LOWER`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#to_lower)                     | Converts a `STRING` or `BYTES` value to lowercase.                                |
-| [`SUBSTRING`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#substring)                   | Gets a substring of a `STRING` or `BYTES` value.                                  |
-| [`STRING_REVERSE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#string_reverse)         | Reverses a `STRING` or `BYTES` value.                                             |
-| [`STRING_REPEAT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#string_repeat)           | Repeats a `STRING` or `BYTES` value a specified number of times.                  |
-| [`STRING_REPLACE_ALL`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#string_replace_all) | Replaces all occurrences of a `STRING` or `BYTES` value.                          |
-| [`STRING_REPLACE_ONE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#string_replace_one) | Replaces the first occurrence of a `STRING` or `BYTES` value.                     |
-| [`TRIM`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#trim)                             | Trims leading and trailing characters from a `STRING` or `BYTES` value.           |
-| [`LTRIM`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#ltrim)                           | Trims leading characters from a `STRING` or `BYTES` value.                        |
-| [`RTRIM`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#rtrim)                           | Trims trailing characters from a `STRING` or `BYTES` value.                       |
-| [`SPLIT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#split)                           | Splits a `STRING` or `BYTES` value into an array.                                 |
+|                                                                                                                                 |                                                                                                                |
+|---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
+| Name                                                                                                                            | Description                                                                                                    |
+| [`BYTE_LENGTH`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#byte_length)               | Returns the number of `BYTES` in a `STRING` or `BYTES` value                                                   |
+| [`CHAR_LENGTH`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#char_length)               | Returns the number of unicode characters in a `STRING` value                                                   |
+| [`STARTS_WITH`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#starts_with)               | Returns `TRUE` if a `STRING` begins with a given prefix                                                        |
+| [`ENDS_WITH`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#ends_with)                   | Returns `TRUE` if a `STRING` ends with a given postfix                                                         |
+| [`LIKE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#like)                             | Returns `TRUE` if a `STRING` matches a pattern                                                                 |
+| [`REGEX_CONTAINS`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#regex_contains)         | Returns `TRUE` if a value is a partial or full match for a regular expression                                  |
+| [`REGEX_FIND`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#regex_find)                 | Returns the first substring that matches a regular expression, or `NULL` if there is no match.                 |
+| [`REGEX_FIND_ALL`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#regex_find_all)         | Returns an array of all substrings that match a regular expression, or an empty array if there are no matches. |
+| [`REGEX_MATCH`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#regex_match)               | Returns `TRUE` if any part of a value matches a regular expression                                             |
+| [`STRING_CONCAT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#string_concat)           | Concatenates multiple `STRING` into a `STRING`                                                                 |
+| [`STRING_CONTAINS`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#string_contains)       | Returns `TRUE` if a value contains a `STRING`                                                                  |
+| [`STRING_INDEX_OF`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#string_index_of)       | Returns the 0-based index of the first occurrence of a `STRING` or `BYTES` value.                              |
+| [`TO_UPPER`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#to_upper)                     | Converts a `STRING` or `BYTES` value to uppercase.                                                             |
+| [`TO_LOWER`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#to_lower)                     | Converts a `STRING` or `BYTES` value to lowercase.                                                             |
+| [`SUBSTRING`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#substring)                   | Gets a substring of a `STRING` or `BYTES` value.                                                               |
+| [`STRING_REVERSE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#string_reverse)         | Reverses a `STRING` or `BYTES` value.                                                                          |
+| [`STRING_REPEAT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#string_repeat)           | Repeats a `STRING` or `BYTES` value a specified number of times.                                               |
+| [`STRING_REPLACE_ALL`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#string_replace_all) | Replaces all occurrences of a `STRING` or `BYTES` value.                                                       |
+| [`STRING_REPLACE_ONE`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#string_replace_one) | Replaces the first occurrence of a `STRING` or `BYTES` value.                                                  |
+| [`TRIM`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#trim)                             | Trims leading and trailing characters from a `STRING` or `BYTES` value.                                        |
+| [`LTRIM`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#ltrim)                           | Trims leading characters from a `STRING` or `BYTES` value.                                                     |
+| [`RTRIM`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#rtrim)                           | Trims trailing characters from a `STRING` or `BYTES` value.                                                    |
+| [`SPLIT`](https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions#split)                           | Splits a `STRING` or `BYTES` value into an array.                                                              |
 
 ### BYTE_LENGTH
 
@@ -6703,22 +6705,32 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-regex_contains(value: STRING, pattern: STRING) -> BOOLEAN
+regex_contains(value: STRING, regexp: STRING | REGEX) -> BOOLEAN
 ```
 
 **Description:**
 
-Returns `TRUE` if some part of `value` matches `pattern` . If `pattern` is not a valid regular expression, this function returns an `error` .
+Returns `TRUE` if some part of `value` matches `regexp` . If `regexp` is not a valid regular expression, this function returns an `error` .
+
+The `regexp` argument can also be a `REGEX` value created using `regex("pattern", "options")` . This format lets you provide regular expression options along with the pattern. The supported options are:
+
+- `i` : Case-insensitive matching.
+- `m` : Multi-line mode ( `^` and `$` match the start or end of lines).
+- `s` : Dotall mode ( `.` matches newlines).
+
+If `regexp` is a `STRING` , no options are applied besides those embedded in the pattern itself (e.g., `(?i)` ).
 
 Regular expressions follow the syntax of the [re2](https://github.com/google/re2/wiki/Syntax) library.
 
 **Examples:**
 
-| value       | pattern   | `regex_contains(value, pattern)` |
-|-------------|-----------|----------------------------------|
-| "Firestore" | "Fire"    | true                             |
-| "Firestore" | "store\$" | true                             |
-| "Firestore" | "data"    | false                            |
+| value       | regexp               | `regex_contains(value, regexp)` |
+|-------------|----------------------|---------------------------------|
+| "Firestore" | "Fire"               | true                            |
+| "Firestore" | "store\$"            | true                            |
+| "Firestore" | "data"               | false                           |
+| "Firestore" | `regex("fire", "i")` | true                            |
+| "Firestore" | `regex("FIRE", "")`  | false                           |
 
 ##### Node.js
 
@@ -6822,27 +6834,98 @@ snapshot := client.Pipeline().
     Execute(ctx)
 ```
 
-### REGEX_MATCH
+### REGEX_FIND
 
 **Syntax:**
 
 ```
-regex_match(value: STRING, pattern: STRING) -> BOOLEAN
+regex_find(value: STRING, regexp: STRING | REGEX) -> STRING
 ```
 
 **Description:**
 
-Returns `TRUE` if `value` fully matches `pattern` . If `pattern` is not a valid regular expression, this function returns an `error` .
+Returns the first substring in `value` that matches `regexp` , or `NULL` if there is no match. If `regexp` is not a valid regular expression, this function returns an `error` .
+
+The `regexp` argument can also be a `REGEX` value created using `regex("pattern", "options")` . This format lets you provide regular expression options along with the pattern. The supported options are:
+
+- `i` : Case-insensitive matching.
+- `m` : Multi-line mode ( `^` and `$` match the start or end of lines).
+- `s` : Dotall mode ( `.` matches newlines).
+
+If `regexp` is a `STRING` , no options are applied besides those embedded in the pattern itself (e.g., `(?i)` ).
 
 Regular expressions follow the syntax of the [re2](https://github.com/google/re2/wiki/Syntax) library.
 
 **Examples:**
 
-| value       | pattern     | `regex_match(value, pattern)` |
-|-------------|-------------|-------------------------------|
-| "Firestore" | "F.\*store" | true                          |
-| "Firestore" | "Fire"      | false                         |
-| "Firestore" | "^F.\*e\$"  | true                          |
+| value            | regexp                  | `regex_find(value, regexp)` |
+|------------------|-------------------------|-----------------------------|
+| "Sometext MATCH" | "SomeText"              | "Sometext"                  |
+| "Sometext MATCH" | `regex("match", "i")`   | "MATCH"                     |
+| "Sometext MATCH" | `regex("(match)", "i")` | "MATCH"                     |
+| "Sometext match" | `regex("MATCH", "")`    | null                        |
+
+### REGEX_FIND_ALL
+
+**Syntax:**
+
+```
+regex_find_all(value: STRING, regexp: STRING | REGEX) -> ARRAY<STRING>
+```
+
+**Description:**
+
+Returns an array of all substrings in `value` that match `regexp` , or an empty array if there are no matches. If `regexp` is not a valid regular expression, this function returns an `error` .
+
+The `regexp` argument can also be a `REGEX` value created using `regex("pattern", "options")` . This format lets you provide regular expression options along with the pattern. The supported options are:
+
+- `i` : Case-insensitive matching.
+- `m` : Multi-line mode ( `^` and `$` match the start or end of lines).
+- `s` : Dotall mode ( `.` matches newlines).
+
+If `regexp` is a `STRING` , no options are applied besides those embedded in the pattern itself (e.g., `(?i)` ).
+
+Regular expressions follow the syntax of the [re2](https://github.com/google/re2/wiki/Syntax) library.
+
+**Examples:**
+
+| value               | regexp              | `regex_find_all(value, regexp)` |
+|---------------------|---------------------|---------------------------------|
+| "one two three two" | "one"               | \["one"\]                       |
+| "one TWO three Two" | `regex("two", "i")` | \["TWO", "Two"\]                |
+| "one two three two" | `regex("TWO", "")`  | \[\]                            |
+
+### REGEX_MATCH
+
+**Syntax:**
+
+```
+regex_match(value: STRING, regexp: STRING | REGEX) -> BOOLEAN
+```
+
+**Description:**
+
+Returns `TRUE` if `value` fully matches `regexp` . If `regexp` is not a valid regular expression, this function returns an `error` .
+
+The `regexp` argument can also be a `REGEX` value created using `regex("pattern", "options")` . This format lets you provide regular expression options along with the pattern. The supported options are:
+
+- `i` : Case-insensitive matching.
+- `m` : Multi-line mode ( `^` and `$` match the start or end of lines).
+- `s` : Dotall mode ( `.` matches newlines).
+
+If `regexp` is a `STRING` , no options are applied besides those embedded in the pattern itself (e.g., `(?i)` ).
+
+Regular expressions follow the syntax of the [re2](https://github.com/google/re2/wiki/Syntax) library.
+
+**Examples:**
+
+| value       | regexp                    | `regex_match(value, regexp)` |
+|-------------|---------------------------|------------------------------|
+| "Firestore" | "F.\*store"               | true                         |
+| "Firestore" | "Fire"                    | false                        |
+| "Firestore" | "^F.\*e\$"                | true                         |
+| "FiReStOrE" | `regex("firestore", "i")` | true                         |
+| "Firestore" | `regex("firestore", "")`  | false                        |
 
 ##### Node.js
 
@@ -7208,7 +7291,7 @@ Returns the 0-based index of the first occurrence of `search` in `value` .
 | "hello world" | "o"    | 4                                |
 | "hello world" | "l"    | 2                                |
 | "hello world" | "z"    | -1                               |
-| "banana"      | "na"   | 2                                |
+| "banana"      | "ana"  | 1                                |
 | "abc"         | ""     | 0                                |
 | b"abc"        | b"b"   | 1                                |
 | "é"           | "é"    | 0                                |
@@ -8056,7 +8139,7 @@ This is stable within a query, and will always resolve to the same value if call
 **Syntax:**
 
 ```
-timestamp_trunc(timestamp: TIMESTAMP, granularity: STRING[, timezone: STRING]) -> TIMESTAMP
+timestamp_trunc(timestamp: TIMESTAMP | BSON_TIMESTAMP, granularity: STRING[, timezone: STRING]) -> TIMESTAMP
 ```
 
 **Description:**
@@ -8445,7 +8528,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-timestamp_add(timestamp: TIMESTAMP, unit: STRING, amount: INT64) -> TIMESTAMP
+timestamp_add(timestamp: TIMESTAMP | BSON_TIMESTAMP, unit: STRING, amount: INT64) -> TIMESTAMP
 ```
 
 **Description:**
@@ -8569,7 +8652,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-timestamp_sub(timestamp: TIMESTAMP, unit: STRING, amount: INT64) -> TIMESTAMP
+timestamp_sub(timestamp: TIMESTAMP | BSON_TIMESTAMP, unit: STRING, amount: INT64) -> TIMESTAMP
 ```
 
 **Description:**
@@ -8697,7 +8780,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-timestamp_to_unix_micros(input: TIMESTAMP) -> INT64
+timestamp_to_unix_micros(input: TIMESTAMP | BSON_TIMESTAMP) -> INT64
 ```
 
 **Description:**
@@ -8808,7 +8891,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-timestamp_to_unix_millis(input: TIMESTAMP) -> INT64
+timestamp_to_unix_millis(input: TIMESTAMP | BSON_TIMESTAMP) -> INT64
 ```
 
 **Description:**
@@ -8919,7 +9002,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-timestamp_to_unix_seconds(input: TIMESTAMP) -> INT64
+timestamp_to_unix_seconds(input: TIMESTAMP | BSON_TIMESTAMP) -> INT64
 ```
 
 **Description:**
@@ -9030,7 +9113,7 @@ snapshot := client.Pipeline().
 **Syntax:**
 
 ```
-timestamp_diff(end: TIMESTAMP, start: TIMESTAMP, unit: STRING) -> INT64
+timestamp_diff(end: TIMESTAMP | BSON_TIMESTAMP, start: TIMESTAMP | BSON_TIMESTAMP, unit: STRING) -> INT64
 ```
 
 **Description:**
@@ -9062,7 +9145,7 @@ The `unit` argument must be a string and one of the following:
 **Syntax:**
 
 ```
-timestamp_extract(timestamp: TIMESTAMP, part: STRING[, timezone: STRING]) -> INT64
+timestamp_extract(timestamp: TIMESTAMP | BSON_TIMESTAMP, part: STRING[, timezone: STRING]) -> INT64
 ```
 
 **Description:**
@@ -9125,21 +9208,25 @@ If given an absent value, returns `NULL` .
 
 **Examples:**
 
-| `input`                  | `type(input)` |
-|--------------------------|---------------|
-| NULL                     | "null"        |
-| true                     | "boolean"     |
-| 1                        | "int32"       |
-| -3L                      | "int64"       |
-| 3.14                     | "float64"     |
-| 2024-01-01T00:00:00Z UTC | "timestamp"   |
-| "foo"                    | "string"      |
-| b"foo"                   | "bytes"       |
-| \[1, 2\]                 | "array"       |
-| {"a": 1}                 | "map"         |
-| `path("c/d")`            | "reference"   |
-| `vector([1.0, 2.0])`     | "vector"      |
-| ABSENT                   | NULL          |
+| `input`                                | `type(input)`      |
+|----------------------------------------|--------------------|
+| NULL                                   | `"null"`           |
+| true                                   | `"boolean"`        |
+| 1                                      | `"int32"`          |
+| -3L                                    | `"int64"`          |
+| 3.14                                   | `"float64"`        |
+| 2024-01-01T00:00:00Z UTC               | `"timestamp"`      |
+| "foo"                                  | `"string"`         |
+| b"foo"                                 | `"bytes"`          |
+| \[1, 2\]                               | `"array"`          |
+| {"a": 1}                               | `"map"`            |
+| `path("c/d")`                          | `"reference"`      |
+| `vector([1.0, 2.0])`                   | `"vector"`         |
+| `object_id "a7f2c9d18b3e4509f67c12d8"` | `"object_id"`      |
+| `1.2e9m`                               | `"decimal128"`     |
+| `regex "/pattern/i"`                   | `"regex"`          |
+| `bson_timestamp(1732754912, 500)`      | `"bson_timestamp"` |
+| ABSENT                                 | `NULL`             |
 
 **Client examples**
 

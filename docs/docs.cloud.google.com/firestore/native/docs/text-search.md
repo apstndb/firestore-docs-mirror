@@ -481,3 +481,7 @@ snapshot := client.Pipeline().
     ).
     Execute(ctx)
 ```
+
+## Limitations
+
+- Text search isn't supported for [Assured Workloads](https://docs.cloud.google.com/assured-workloads/docs/overview) control packages that enforce [in-use data residency](https://docs.cloud.google.com/assured-workloads/docs/data-residency) , where the `constraints/firestore.managed.disableEnhancedTextSearch` organization policy constraint is enforced by default.

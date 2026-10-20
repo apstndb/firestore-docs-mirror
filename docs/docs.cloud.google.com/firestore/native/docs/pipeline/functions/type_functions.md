@@ -32,21 +32,25 @@ If given an absent value, returns `NULL` .
 
 **Examples:**
 
-| `input`                  | `type(input)` |
-|--------------------------|---------------|
-| NULL                     | "null"        |
-| true                     | "boolean"     |
-| 1                        | "int32"       |
-| -3L                      | "int64"       |
-| 3.14                     | "float64"     |
-| 2024-01-01T00:00:00Z UTC | "timestamp"   |
-| "foo"                    | "string"      |
-| b"foo"                   | "bytes"       |
-| \[1, 2\]                 | "array"       |
-| {"a": 1}                 | "map"         |
-| `path("c/d")`            | "reference"   |
-| `vector([1.0, 2.0])`     | "vector"      |
-| ABSENT                   | NULL          |
+| `input`                                | `type(input)`      |
+|----------------------------------------|--------------------|
+| NULL                                   | `"null"`           |
+| true                                   | `"boolean"`        |
+| 1                                      | `"int32"`          |
+| -3L                                    | `"int64"`          |
+| 3.14                                   | `"float64"`        |
+| 2024-01-01T00:00:00Z UTC               | `"timestamp"`      |
+| "foo"                                  | `"string"`         |
+| b"foo"                                 | `"bytes"`          |
+| \[1, 2\]                               | `"array"`          |
+| {"a": 1}                               | `"map"`            |
+| `path("c/d")`                          | `"reference"`      |
+| `vector([1.0, 2.0])`                   | `"vector"`         |
+| `object_id "a7f2c9d18b3e4509f67c12d8"` | `"object_id"`      |
+| `1.2e9m`                               | `"decimal128"`     |
+| `regex "/pattern/i"`                   | `"regex"`          |
+| `bson_timestamp(1732754912, 500)`      | `"bson_timestamp"` |
+| ABSENT                                 | `NULL`             |
 
 **Client examples**
 

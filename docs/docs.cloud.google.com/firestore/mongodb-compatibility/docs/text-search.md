@@ -153,3 +153,4 @@ To enhance the relevance of text search outcomes, the `$text` operator augments 
 - If `$text` is inside `$or` , the non-search disjuncts may use existing ordered indexes to optimize the search. If the other disjuncts are not indexed, then the search relies on a collection scan.
 - `$text` cannot be used with hints.
 - Queries with text search can't sort by `$natural` .
+- Text search isn't supported for [Assured Workloads](https://docs.cloud.google.com/assured-workloads/docs/overview) control packages that enforce [in-use data residency](https://docs.cloud.google.com/assured-workloads/docs/data-residency) , where the `constraints/firestore.managed.disableEnhancedTextSearch` organization policy constraint is enforced by default.
