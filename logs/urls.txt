@@ -413,7 +413,7 @@ https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1be
 https://docs.cloud.google.com/firestore/docs/reference/rpc/google.longrunning	2025-12-05T18:23:35Z
 https://docs.cloud.google.com/firestore/docs/reference/rpc/google.rpc	2025-10-17T23:18:41Z
 https://docs.cloud.google.com/firestore/docs/reference/rpc/google.type	2025-10-17T23:18:34Z
-https://docs.cloud.google.com/firestore/docs/release-notes	2026-10-02T06:02:41Z
+https://docs.cloud.google.com/firestore/docs/release-notes	2026-10-21T16:18:25Z
 https://docs.cloud.google.com/firestore/docs/samples	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes	2026-10-02T06:02:21Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes-async	2026-10-02T06:02:21Z
@@ -584,7 +584,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain-reference	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-insights	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/querydata	2026-10-12T21:03:27Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/release-notes	2026-10-15T06:16:50Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/release-notes	2026-10-22T07:12:59Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/reliability-recommender	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/resolve-latency	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/resources	2026-10-16T06:18:47Z
@@ -763,7 +763,7 @@ https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scal
 https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale-enterprise	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/usage-insights	2026-10-16T15:45:57Z
 https://docs.cloud.google.com/firestore/native/docs/use-cmek	2026-10-02T06:02:41Z
-https://docs.cloud.google.com/firestore/native/docs/use-firestore-mcp	2026-10-02T06:02:41Z
+https://docs.cloud.google.com/firestore/native/docs/use-firestore-mcp	2026-10-21T21:01:07Z
 https://docs.cloud.google.com/firestore/native/docs/use-monitoring-dashboard	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/use-pitr	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/use-rest-api	2026-10-02T06:02:41Z

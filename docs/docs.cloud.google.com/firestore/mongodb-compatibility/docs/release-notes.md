@@ -12,6 +12,12 @@ You can see the latest product updates for all of Google Cloud on the [Google Cl
 
 To get the latest product updates delivered to you, add the URL of this page to your [feed reader](https://wikipedia.org/wiki/Comparison_of_feed_aggregators) , or add the [feed URL](https://docs.cloud.google.com/feeds/firestore-with-mongodb-compatibility-release-notes.xml) directly.
 
+## October 19, 2026
+
+Feature
+
+[Text search](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/text-query) and [Geospatial search](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/geo-query) are generally available ( [GA](https://cloud.google.com/products#product-launch-stages) ).
+
 ## October 12, 2026
 
 Feature
