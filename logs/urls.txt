@@ -558,7 +558,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/configure-pri
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases	2026-10-02T06:02:44Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-manage-saved-queries	2026-10-02T06:02:44Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-manage-saved-queries	2026-10-23T06:22:23Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/custom-constraints	2026-10-06T06:28:19Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/disaster-recovery	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/eventarc	2026-10-02T06:02:44Z
@@ -589,7 +589,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/reliability-r
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/resolve-latency	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/resources	2026-10-16T06:18:47Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/restore-in-place	2026-10-02T06:02:28Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/saved-queries	2026-10-02T06:02:28Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/saved-queries	2026-10-23T06:22:23Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/securing-with-vpc-sc	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/security/iam	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/server-side-encryption	2026-09-25T07:47:05Z
@@ -665,7 +665,7 @@ https://docs.cloud.google.com/firestore/native/docs/manage-databases	2026-10-02T
 https://docs.cloud.google.com/firestore/native/docs/migrate-standard-to-enterprise	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/monitor-usage	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/overview	2026-10-02T06:02:45Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/dml	2026-10-02T06:02:41Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/dml	2026-10-22T16:05:20Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/aggregate_functions	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions	2026-10-19T18:52:00Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions	2026-10-19T18:52:00Z
@@ -681,15 +681,17 @@ https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/timestamp
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/type_functions	2026-10-19T18:52:00Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/vector_functions	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/overview	2026-10-02T06:02:41Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/perform-joins-with-sub-pipelines	2026-10-02T06:02:41Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/perform-joins-with-sub-pipelines	2026-10-22T16:05:20Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/collection_group	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/database	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/documents	2026-10-02T06:02:41Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/literals	2026-10-02T06:02:41Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/literals	2026-10-22T16:05:20Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/input/subcollection	2026-10-02T06:02:41Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/output/delete	2026-10-02T06:02:41Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/output/update	2026-10-02T06:02:41Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/output/delete	2026-10-22T16:05:20Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/output/insert	2026-10-22T16:05:20Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/output/update	2026-10-22T16:05:20Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/output/upsert	2026-10-22T16:05:20Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/add_fields	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/aggregate	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/stages/transformation/distinct	2026-10-02T06:02:41Z
@@ -733,7 +735,7 @@ https://docs.cloud.google.com/firestore/native/docs/security/iam	2026-10-02T06:0
 https://docs.cloud.google.com/firestore/native/docs/security/insecure-rules	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/security/rules-conditions	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/security/rules-fields	2026-10-02T06:02:45Z
-https://docs.cloud.google.com/firestore/native/docs/security/rules-pipelines	2026-10-02T06:02:45Z
+https://docs.cloud.google.com/firestore/native/docs/security/rules-pipelines	2026-10-22T16:05:20Z
 https://docs.cloud.google.com/firestore/native/docs/security/rules-query	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/security/rules-structure	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/security/test-rules-emulator	2026-10-02T06:02:45Z
@@ -743,7 +745,7 @@ https://docs.cloud.google.com/firestore/native/docs/solutions/counters	2026-10-0
 https://docs.cloud.google.com/firestore/native/docs/solutions/delete-collections	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/generative-ai-index	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/geoqueries	2026-10-08T19:09:41Z
-https://docs.cloud.google.com/firestore/native/docs/solutions/presence	2026-10-06T23:23:08Z
+https://docs.cloud.google.com/firestore/native/docs/solutions/presence	2026-10-22T19:51:38Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/role-based-access	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/schedule-export	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/solutions/shard-timestamp	2026-10-02T06:02:45Z

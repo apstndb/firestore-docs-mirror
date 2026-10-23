@@ -76,86 +76,86 @@ The following loads a set of test data to use in all following examples.
 
 ```
 // Load set of cities.
-const cities = collection(db, "cities");
+const cities = db.collection("cities");
 
-await setDoc(doc(cities, "SF"), {
+await cities.doc("SF").set({
   name: "San Francisco",
   state: "CA",
   country: "USA",
 });
-await setDoc(doc(cities, "LA"), {
+await cities.doc("LA").set({
   name: "Los Angeles",
   state: "CA",
   country: "USA"
 });
-await setDoc(doc(cities, "DC"), {
+await cities.doc("DC").set({
   name: "Washington, D.C.",
   state: null,
   country: "USA"
 });
-await setDoc(doc(cities, "TOK"), {
+await cities.doc("TOK").set({
   name: "Tokyo",
   state: null,
   country: "Japan"
 });
 
 // Load restaurants in various cities.
-const sfRestaurants = collection(db, "cities", "SF", "restaurants");
-const laRestaurants = collection(db, "cities", "LA", "restaurants");
-const dcRestaurants = collection(db, "cities", "DC", "restaurants");
+const sfRestaurants = db.collection("cities/SF/restaurants");
+const laRestaurants = db.collection("cities/LA/restaurants");
+const dcRestaurants = db.collection("cities/DC/restaurants");
 
-const rest1 = await addDoc(sfRestaurants, {
+const rest1 = await sfRestaurants.add({
   name: "Golden Gate Pizza",
   type: "pizza",
   owner_id: "Mario Rossi"
 });
-const rest2 = await addDoc(sfRestaurants, {
+const rest2 = await sfRestaurants.add({
   name: "Bay Area Burger",
   type: "burger",
   owner_id: "Sarah Jenkins"
 });
-const rest3 = await addDoc(sfRestaurants, {
+const rest3 = await sfRestaurants.add({
   name: "Sunset Taco",
   type: "mexican",
   owner_id: "Edward"
 });
 
-const rest4 = await addDoc(laRestaurants, {
+const rest4 = await laRestaurants.add({
   name: "Hollywood Sushi",
   type: "sushi",
   owner_id: "Ken Kenji"
 });
-const rest5 = await addDoc(laRestaurants, {
+const rest5 = await laRestaurants.add({
   name: "Venice Pizza",
   type: "pizza",
   owner_id: "Luigi Romano"
 });
 
-const rest6 = await addDoc(dcRestaurants, {
+const rest6 = await dcRestaurants.add({
   name: "Capitol Tacos",
   type: "mexican",
   owner_id: "Maria Garcia"
 });
-const rest7 = await addDoc(dcRestaurants, {
+const rest7 = await dcRestaurants.add({
   name: "Georgetown Coffee",
   type: "cafe",
   owner_id: "David Kim"
 });
 
 // Load collection of reviews.
-const reviews = collection(db, "reviews");
+const reviews = db.collection("reviews");
 
-await addDoc(reviews, { restaurant: rest1, rating: 5, reviewer_id "Alice" });
-await addDoc(reviews, { restaurant: rest1, rating: 4, reviewer_id "Bob" });
-await addDoc(reviews, { restaurant: rest2, rating: 4, reviewer_id "Charlie" });
-await addDoc(reviews, { restaurant: rest3, rating: 5, reviewer_id "Diana" });
-await addDoc(reviews, { restaurant: rest3, rating: 4, reviewer_id "Edward" });
-await addDoc(reviews, { restaurant: rest3, rating: 4, reviewer_id "Fiona" });
+await reviews.add({ restaurant: rest1, rating: 5, reviewer_id: "Alice" });
+await reviews.add({ restaurant: rest1, rating: 4, reviewer_id: "Bob" });
+await reviews.add({ restaurant: rest2, rating: 4, reviewer_id: "Charlie" });
+await reviews.add({ restaurant: rest3, rating: 5, reviewer_id: "Diana" });
+await reviews.add({ restaurant: rest3, rating: 4, reviewer_id: "Edward" });
+await reviews.add({ restaurant: rest3, rating: 4, reviewer_id: "Fiona" });
 // rest4 has 0 reviews
-await addDoc(reviews, { restaurant: rest5, rating: 3, reviewer_id "George" });
-await addDoc(reviews, { restaurant: rest6, rating: 5, reviewer_id "Hannah" });
-await addDoc(reviews, { restaurant: rest6, rating: 4, reviewer_id "Ian" });
-await addDoc(reviews, { restaurant: rest7, rating: 5, reviewer_id "Julia" });
+await reviews.add({ restaurant: rest5, rating: 3, reviewer_id: "George" });
+await reviews.add({ restaurant: rest6, rating: 5, reviewer_id: "Hannah" });
+await reviews.add({ restaurant: rest6, rating: 4, reviewer_id: "Ian" });
+await reviews.add({ restaurant: rest7, rating: 5, reviewer_id: "Julia" });
 ```
 
 ### Lookup a Document in Another Collection
@@ -165,7 +165,7 @@ The following query on the `reviews` collection group performs a lookup into the
 ### Node.js
 
 ```
-let results = await execute(db.pipeline()
+let results = await db.pipeline()
   .collectionGroup("reviews")
   .define(field("restaurant").as("restaurant_name"))
   .addFields(db.pipeline()
@@ -173,7 +173,8 @@ let results = await execute(db.pipeline()
     .where(field("__name__").equal(variable("restaurant_name")))
     .select("name", "type")
     .toScalarExpression()
-    .as("restaurant")));
+    .as("restaurant"))
+  .execute();
 ```
 
 **Response**
@@ -238,7 +239,7 @@ The following query fetches all pizza places from the `restaurants` collection g
 ### Node.js
 
 ```
-let results = await execute(db.pipeline()
+let results = await db.pipeline()
   .collectionGroup("restaurants")
   .where(field("type").equal("pizza"))
   .define(field("__name__").as("restaurant_name"))
@@ -249,7 +250,8 @@ let results = await execute(db.pipeline()
       .where(field("restaurant").equal(variable("restaurant_name")))
       .select("rating", "reviewer_id")
       .toArrayExpression()
-      .as("reviews")));
+      .as("reviews"))
+  .execute();
 ```
 
 **Response**
@@ -279,7 +281,7 @@ The following query on the `restaurants` collection group uses a correlated subq
 ### Node.js
 
 ```
-let results = await execute(db.pipeline()
+let results = await db.pipeline()
   .collectionGroup("restaurants")
   .where(field("type").equal("pizza"))
   .define(field("__name__").as("restaurant_name"))
@@ -290,7 +292,8 @@ let results = await execute(db.pipeline()
       .where(field("restaurant").equal(variable("restaurant_name")))
       .aggregate(average("rating").as("avg_rating"))
       .toScalarExpression()
-      .as("avg_rating")));
+      .as("avg_rating"))
+  .execute();
 ```
 
 **Response**
@@ -315,7 +318,7 @@ This ensures that the array of reviews does not grow too large and hits the quer
 ### Node.js
 
 ```
-let results = await execute(db.pipeline()
+let results = await db.pipeline()
   .collectionGroup("restaurants")
   .define(field("__name__").as("restaurant_name"))
   .select(
@@ -327,7 +330,8 @@ let results = await execute(db.pipeline()
       .limit(2)
       .select("rating", "reviewer_id")
       .toArrayExpression()
-      .as("top_reviews")));
+      .as("top_reviews"))
+  .execute();
 ```
 
 **Response**
@@ -385,12 +389,13 @@ The following query scans the `cities` collection and uses the [`subcollection(.
 ### Node.js
 
 ```
-let results = await execute(db.pipeline()
+let results = await db.pipeline()
   .collection("cities")
   .addFields(subcollection("restaurants")
     .toArrayExpression()
     .length()
-    .as("restaurant_count")));
+    .as("restaurant_count"))
+  .execute();
 ```
 
 **Response**
@@ -433,7 +438,7 @@ The following query scans the `restaurants` collection group and performs a mult
 ### Node.js
 
 ```
-let results = await execute(db.pipeline()
+let results = await db.pipeline()
   .collectionGroup("restaurants")
   .define(field("owner_id"), field("__name__"))
   .where(db.pipeline()
@@ -442,7 +447,8 @@ let results = await execute(db.pipeline()
     .where(field("author").equal(variable("owner_id")))
     .aggregate(count().as("c"))
     .toScalarExpression()
-    .greaterThan(0)));
+    .greaterThan(0))
+  .execute();
 ```
 
 **Response**
@@ -463,7 +469,7 @@ The following query scans the `restaurants` collection group and finds all resta
 ### Node.js
 
 ```
-let results = await execute(db.pipeline()
+let results = await db.pipeline()
   .collectionGroup("restaurants")
   .define(field("__name__").as("restaurant_name"))
   .where(db.pipeline()
@@ -471,7 +477,8 @@ let results = await execute(db.pipeline()
     .where(field("restaurant").equal(variable("restaurant_name")))
     .aggregate(count().as("review_count"))
     .toScalarExpression()
-    .equal(0)));
+    .equal(0))
+  .execute();
 ```
 
 **Response**
@@ -492,7 +499,7 @@ The following query flattens the relationship between each pizza place and its r
 ### Node.js
 
 ```
-let results = await execute(db.pipeline()
+let results = await db.pipeline()
   .collectionGroup("restaurants")
   .where(field("type").equal("pizza"))
   .define(field("__name__").as("restaurant_name"))
@@ -502,7 +509,8 @@ let results = await execute(db.pipeline()
       .where(field("restaurant").equal(variable("restaurant_name")))
       .select("rating", "reviewer_id")
       .toArrayExpression()
-      .as("review")));
+      .as("review"))
+  .execute();
 ```
 
 **Response**
@@ -538,14 +546,15 @@ The following query on the `reviews` collection performs filters using a uncorre
 ### Node.js
 
 ```
-let results = await execute(db.pipeline()
+let results = await db.pipeline()
   .collection("reviews")
   // Average review rating is 4.3
   .where(field("rating").greaterThan(db.pipeline()
     .collection("reviews")
     .aggregate(average("rating").as("avg"))
-    .toScalarExpression())))
-  .select("rating", "reviewer_id");
+    .toScalarExpression()))
+  .select("rating", "reviewer_id")
+  .execute();
 ```
 
 **Response**
