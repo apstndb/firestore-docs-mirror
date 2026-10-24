@@ -413,7 +413,7 @@ https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1be
 https://docs.cloud.google.com/firestore/docs/reference/rpc/google.longrunning	2025-12-05T18:23:35Z
 https://docs.cloud.google.com/firestore/docs/reference/rpc/google.rpc	2025-10-17T23:18:41Z
 https://docs.cloud.google.com/firestore/docs/reference/rpc/google.type	2025-10-17T23:18:34Z
-https://docs.cloud.google.com/firestore/docs/release-notes	2026-10-21T16:18:25Z
+https://docs.cloud.google.com/firestore/docs/release-notes	2026-10-24T05:41:32Z
 https://docs.cloud.google.com/firestore/docs/samples	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes	2026-10-02T06:02:21Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-batch-writes-async	2026-10-02T06:02:21Z
@@ -627,7 +627,7 @@ https://docs.cloud.google.com/firestore/native/docs/concepts/data-types	2026-10-
 https://docs.cloud.google.com/firestore/native/docs/concepts/structure-data	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/connect-ide-using-mcp-toolbox	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library	2026-10-02T06:02:28Z
-https://docs.cloud.google.com/firestore/native/docs/create-database-web-mobile-client-library	2026-10-17T06:09:24Z
+https://docs.cloud.google.com/firestore/native/docs/create-database-web-mobile-client-library	2026-10-24T05:41:43Z
 https://docs.cloud.google.com/firestore/native/docs/custom-constraints	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/data-model	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/dataflow-connector	2026-10-02T06:02:28Z
