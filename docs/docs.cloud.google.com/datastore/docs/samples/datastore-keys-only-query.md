@@ -25,7 +25,7 @@ To authenticate to Datastore mode, set up Application Default Credentials. For m
 ```csharp
 Query query = new Query("Task")
 {
-    Projection = { "__key__" }
+    Projection = { &quot;__key__" }
 };
 ```
 

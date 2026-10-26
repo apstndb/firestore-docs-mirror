@@ -199,7 +199,7 @@ https://docs.cloud.google.com/datastore/docs/samples/datastore-insert	2026-10-02
 https://docs.cloud.google.com/datastore/docs/samples/datastore-key-filter	2026-10-02T04:27:17Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-key-with-multilevel-parent	2026-10-02T04:27:17Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-key-with-parent	2026-10-02T04:27:17Z
-https://docs.cloud.google.com/datastore/docs/samples/datastore-keys-only-query	2026-10-02T04:27:17Z
+https://docs.cloud.google.com/datastore/docs/samples/datastore-keys-only-query	2026-10-26T03:36:11Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-kind-run-query	2026-10-02T04:27:17Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-kindless-query	2026-10-02T04:27:17Z
 https://docs.cloud.google.com/datastore/docs/samples/datastore-limit	2026-10-02T04:27:17Z
@@ -524,7 +524,7 @@ https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-limit
 https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-multi	2026-10-02T06:02:31Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-multi-async	2026-10-02T06:02:31Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-with-filter	2026-10-02T06:02:31Z
-https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-with-filter-async	2026-10-02T06:02:31Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-with-filter-async	2026-10-26T03:36:48Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-query-subcollection	2026-10-02T06:02:31Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-quickstart	2026-10-02T06:02:31Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-client-create	2026-10-02T06:02:31Z
