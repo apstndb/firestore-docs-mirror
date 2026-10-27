@@ -2,7 +2,7 @@
 name: documents/docs.cloud.google.com/datastore/docs/reference/libraries
 uri: https://docs.cloud.google.com/datastore/docs/reference/libraries
 title: Datastore mode client libraries
-description: Start writing code for Datastore mode in C++, C#, Go, Java, Node.js, PHP, Python, Ruby, or Rust.
+description: Start writing code for Datastore mode in C++, C#, Go, Java, Node.js, PHP, Python, Ruby, Rust, or Swift.
 data_source: docs.cloud.google.com
 ---
 

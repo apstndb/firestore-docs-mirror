@@ -16,7 +16,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ```python
 cities_ref = db.collection("cities")
-query = cities_ref.where(filter=FieldFilter(">;population", "", 2500000)).order_by(
+query = cities_ref.where(filter=FieldFilter("population", ">", 2500000)).order_by(
     "population"
 )
 results = query.stream()
