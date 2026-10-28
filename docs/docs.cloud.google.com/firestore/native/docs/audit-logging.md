@@ -8,7 +8,9 @@ data_source: docs.cloud.google.com
 
 # Firestore audit logging information
 
-This document lists the audited methods for Firestore. Google Cloud services generate audit logs that record administrative and access activities within your Google Cloud resources. For more information about Cloud Audit Logs, see the following:
+Cloud Audit Logs for Firestore let you track administrative and data-access operations on your resources to help you monitor access and configuration changes. You can query these logs in the Logs Explorer and check which Firestore API methods generate Cloud Audit Logs.
+
+For more information about Cloud Audit Logs, see the following documents:
 
 - [Types of audit logs](https://docs.cloud.google.com/logging/docs/audit#types)
 - [Audit log entry structure](https://docs.cloud.google.com/logging/docs/audit#audit_log_entry_structure)
@@ -622,8 +624,11 @@ The following audit logs are associated with methods belonging to `google.firest
 - **Method** : [`google.firestore.v1.Firestore.ExecutePipeline`](https://cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore.ExecutePipeline)  
 - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
 - **Permissions** :
+  - `datastore.databases.get - DATA_READ`
+  - `datastore.entities.create - DATA_WRITE`
   - `datastore.entities.get - DATA_READ`
   - `datastore.entities.list - DATA_READ`
+  - `datastore.entities.update - DATA_WRITE`
 - **Method is a long-running or streaming operation** : No.  
 - **Filter for this method** : `protoPayload.methodName="google.firestore.v1.Firestore.ExecutePipeline"`  
 
@@ -681,7 +686,6 @@ The following audit logs are associated with methods belonging to `google.firest
 - **Method** : [`google.firestore.v1.Firestore.PartitionQuery`](https://cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#google.firestore.v1.Firestore.PartitionQuery)  
 - **Audit log type** : [Data access](https://docs.cloud.google.com/logging/docs/audit#data-access)  
 - **Permissions** :
-  - `datastore.databases.get - DATA_READ`
   - `datastore.entities.get - DATA_READ`
   - `datastore.entities.list - DATA_READ`
 - **Method is a long-running or streaming operation** : No.  
