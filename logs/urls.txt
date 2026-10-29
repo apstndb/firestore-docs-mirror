@@ -658,8 +658,8 @@ https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data	2026-10
 https://docs.cloud.google.com/firestore/native/docs/manage-data/bulk-delete	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline	2026-10-02T06:02:41Z
-https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import	2026-10-02T06:02:41Z
-https://docs.cloud.google.com/firestore/native/docs/manage-data/move-data	2026-10-02T06:02:41Z
+https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import	2026-10-29T03:03:00Z
+https://docs.cloud.google.com/firestore/native/docs/manage-data/move-data	2026-10-29T03:03:00Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/transactions	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/manage-databases	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/migrate-standard-to-enterprise	2026-10-02T06:02:45Z

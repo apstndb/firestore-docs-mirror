@@ -21,7 +21,7 @@ Before you can use the managed export and import service, you must complete the 
 
 1.  [Enable billing for both your source project and destination project.](https://cloud.google.com/billing/docs/how-to/modify-project#enable_billing_for_a_project) Only Google Cloud projects with billing enabled can use the export and import functionality.
 
-    > **Note:** Firebase projects must be on the [Blaze plan](https://firebase.google.com/pricing/?authuser=0) to use the managed export and import service. Enabling billing for the Google Cloud automatically upgrades your Firebase project to the Blaze plan.
+    > **Note:** Firebase projects must be on the [Blaze plan](https://firebase.google.com/pricing/) to use the managed export and import service. Enabling billing for the Google Cloud automatically upgrades your Firebase project to the Blaze plan.
 
 2.  Make sure your account has the necessary IAM permissions in your source project and destination project. **If you are a project owner for both projects, your account has the required permissions.** Otherwise, the following IAM roles grant the necessary permissions for Firestore export and import operations:
 
