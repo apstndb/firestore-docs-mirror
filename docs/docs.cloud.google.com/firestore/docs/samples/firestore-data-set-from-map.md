@@ -76,6 +76,68 @@ ApiFuture<WriteResult> future = db.collection("cities").document("LA").set(docDa
 System.out.println("Update time : " + future.get().getUpdateTime());
 ```
 
+### Kotlin
+
+```kotlin
+import com.google.api.gax.rpc.ApiException
+import com.google.api.gax.rpc.NotFoundException
+import com.google.cloud.firestore.FirestoreOptions
+import java.util.concurrent.ExecutionException
+
+/**
+ * Writes a document with structured fields into a Firestore collection. Setting
+ * a document creates the record if it does not exist or overwrites its fields.
+ *
+ * @param projectId Google Cloud project identifier (for example, "example-project-id").
+ * @param collectionId Target Firestore collection identifier (for example, "cities").
+ * @param documentId Target Firestore document identifier (for example, "LA").
+ */
+fun setDocument(projectId: String, collectionId: String, documentId: String) {
+  val options =
+    FirestoreOptions.getDefaultInstance()
+      .toBuilder()
+      .setProjectId(projectId)
+      .build()
+
+  val documentData =
+    mapOf(
+      "name" to "Los Angeles",
+      "state" to "CA",
+      "country" to "USA",
+    )
+
+  try {
+    options.service.use { firestore ->
+      val documentReference =
+        firestore.collection(collectionId).document(documentId)
+      println("Writing document '$documentId' in collection '$collectionId'...")
+      val writeResult = documentReference.set(documentData).get()
+
+      println("Resource ID: ${documentReference.path}")
+      println("Collection ID: $collectionId")
+      println("Document ID: $documentId")
+      println("Update Time: ${writeResult.updateTime}")
+    }
+  } catch (err: ExecutionException) {
+    val message =
+      when (val cause = err.cause) {
+        is NotFoundException ->
+          "error: Firestore database not found in project '$projectId': ${cause.message}"
+        is ApiException ->
+          "error: failed to write document '$documentId' in collection '$collectionId' for project '$projectId': ${cause.message}"
+        else ->
+          "error: execution failed while writing document '$documentId' in collection '$collectionId' for project '$projectId': ${err.message}"
+      }
+    System.err.println(message)
+  } catch (err: InterruptedException) {
+    Thread.currentThread().interrupt()
+    System.err.println(
+      "error: interrupted while writing document '$documentId' in collection '$collectionId' for project '$projectId': ${err.message}"
+    )
+  }
+}
+```
+
 ### Node.js
 
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .

@@ -425,7 +425,7 @@ https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-doc	2
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-doc-async	2026-10-02T06:02:21Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-field	2026-10-02T06:02:21Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-field-async	2026-10-02T06:02:21Z
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-all-documents	2026-10-02T06:02:21Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-all-documents	2026-10-29T21:30:03Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-all-documents-async	2026-10-02T06:02:21Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-as-custom-type	2026-10-02T06:02:21Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-as-custom-type-async	2026-10-02T06:02:21Z
@@ -453,7 +453,7 @@ https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-field	20
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-field-async	2026-10-02T06:02:34Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-custom-type	2026-10-02T06:02:34Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-custom-type-async	2026-10-02T06:02:34Z
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-map	2026-10-02T06:02:34Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-map	2026-10-29T21:30:03Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-map-async	2026-10-02T06:02:34Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-map-nested	2026-10-02T06:02:34Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-set-from-map-nested-async	2026-10-02T06:02:34Z
@@ -526,13 +526,13 @@ https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-multi
 https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-with-filter	2026-10-02T06:02:31Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-query-order-with-filter-async	2026-10-27T06:04:02Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-query-subcollection	2026-10-02T06:02:31Z
-https://docs.cloud.google.com/firestore/docs/samples/firestore-quickstart	2026-10-02T06:02:31Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-quickstart	2026-10-29T21:30:03Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-client-create	2026-10-02T06:02:31Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-client-create-async	2026-10-02T06:02:31Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-client-create-with-project-id	2026-10-02T06:02:31Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-dataset-pt1-async	2026-10-02T06:02:31Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-dataset-pt2-async	2026-10-02T06:02:31Z
-https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-dataset-read	2026-10-02T06:02:31Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-setup-dataset-read	2026-10-29T21:30:03Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-create	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-create-async	2026-10-02T06:02:31Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-solution-sharded-counter-custom-type	2026-10-02T06:02:44Z
@@ -559,7 +559,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/connect	2026-
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-manage-saved-queries	2026-10-23T06:22:23Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/custom-constraints	2026-10-06T06:28:19Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/custom-constraints	2026-10-29T16:56:38Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/disaster-recovery	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/eventarc	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/export-import	2026-10-02T06:02:44Z
@@ -628,7 +628,7 @@ https://docs.cloud.google.com/firestore/native/docs/concepts/structure-data	2026
 https://docs.cloud.google.com/firestore/native/docs/connect-ide-using-mcp-toolbox	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/create-database-web-mobile-client-library	2026-10-24T05:41:43Z
-https://docs.cloud.google.com/firestore/native/docs/custom-constraints	2026-10-02T06:02:28Z
+https://docs.cloud.google.com/firestore/native/docs/custom-constraints	2026-10-29T16:56:38Z
 https://docs.cloud.google.com/firestore/native/docs/data-model	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/dataflow-connector	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/disaster-recovery	2026-10-02T06:02:28Z
