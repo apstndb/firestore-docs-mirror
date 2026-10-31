@@ -27,6 +27,7 @@ Query insights includes data from the following API methods:
 - [`runQuery`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/runQuery)
 - [`runAggregationQuery`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/runAggregationQuery)
 - [`partitionQuery`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/partitionQuery)
+- [`executePipeline`](https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/executePipeline)
 
 You can view data about the queries that use these methods for a given project, database, and time duration ranging from 10 minutes to 30 days. Data for queries with equivalent structures is captured under a single normalized query.
 

@@ -186,6 +186,7 @@ The PITR export operation supports all filters, including exporting all document
 
 Note the following points before exporting PITR data:
 
+- [Enable PITR](https://docs.cloud.google.com/firestore/native/docs/use-pitr#enable) on your database. If PITR is disabled, exporting at a snapshot timestamp fails, even for timestamps within the past hour after `earliestVersionTime` . The export operation returns the `Point-in-Time Recovery must be enabled in order to execute exports at a snapshot timestamp` error.
 - Specify the timestamp in [RFC 3339 format](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Timestamp) . For example, `2023-05-26T10:20:00.00Z` .
 - Make sure that the timestamp you specify is a whole minute timestamp within the past seven days, but not earlier than the `earliestVersionTime` . If data no longer exists at the specified timestamp, an error is generated.
 - You are not charged for a failed PITR export.
