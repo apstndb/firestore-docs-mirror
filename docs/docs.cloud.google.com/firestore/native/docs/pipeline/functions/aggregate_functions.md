@@ -217,11 +217,16 @@ const result = await execute(db.pipeline()
 
 ```
 let result = try await db.pipeline()
-  .collection("books")
-  .aggregate([
-    AggregateFunction("count_if", [Field("rating").greaterThan(4)]).as("filteredCount")
-  ])
-  .execute()
+      .collection("books")
+<<<<<<< HEAD
+      .aggregate([
+        AggregateFunction(functionName: "count_if",
+                          args: [Field("rating").greaterThan(4)]).as("filteredCount")
+      ])
+=======
+      .aggregate([Field("rating").greaterThan(4).countIf().as("filteredCount")])
+>>>>>>> master
+      .execute()
 ```
 
 ##### Kotlin Android
@@ -316,9 +321,14 @@ const result = await execute(db.pipeline()
 
 ```
 let result = try await db.pipeline()
-  .collection("books")
-  .aggregate([AggregateFunction("count_distinct", [Field("author")]).as("unique_authors")])
-  .execute()
+      .collection("books")
+<<<<<<< HEAD
+      .aggregate([AggregateFunction(functionName: "count_distinct",
+                                    args: [Field("author")]).as("unique_authors")])
+=======
+      .aggregate([Field("author").countDistinct().as("unique_authors")])
+>>>>>>> master
+      .execute()
 ```
 
 ##### Kotlin Android

@@ -666,8 +666,8 @@ https://docs.cloud.google.com/firestore/native/docs/migrate-standard-to-enterpri
 https://docs.cloud.google.com/firestore/native/docs/monitor-usage	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/overview	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/dml	2026-10-22T16:05:20Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/aggregate_functions	2026-10-02T06:02:41Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions	2026-10-19T18:52:00Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/aggregate_functions	2026-11-01T03:45:55Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions	2026-11-01T03:45:55Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions	2026-10-19T18:52:00Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/array_functions	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/comparison_functions	2026-10-02T06:02:41Z
@@ -676,9 +676,9 @@ https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/generic_f
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/logical_functions	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_functions	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/reference_functions	2026-10-02T06:02:41Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/string_functions	2026-10-19T18:52:00Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/string_functions	2026-11-01T03:45:55Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/timestamp_functions	2026-10-19T18:52:00Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/type_functions	2026-10-19T18:52:00Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/type_functions	2026-11-01T03:45:55Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/vector_functions	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/overview	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/perform-joins-with-sub-pipelines	2026-10-22T16:05:20Z
