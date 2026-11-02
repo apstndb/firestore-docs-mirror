@@ -130,7 +130,9 @@ Pipeline.Snapshot result =
 snapshot := client.Pipeline().
     Collection("books").
     Select(firestore.Fields(
-        firestore.NotEqual(firestore.FieldOf("title"), "1984").As(cute(ctx)pipeline_snippets_comparison.go
+        firestore.NotEqual(firestore.FieldOf("title"), "1984").As("not1984"),
+    )).
+    Execute(ctx)
 ```
 
 ### IS_TYPE

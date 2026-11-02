@@ -678,7 +678,7 @@ https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_funct
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/reference_functions	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/string_functions	2026-11-01T03:45:55Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/timestamp_functions	2026-10-19T18:52:00Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/type_functions	2026-11-01T03:45:55Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/type_functions	2026-11-02T05:28:12Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/vector_functions	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/overview	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/perform-joins-with-sub-pipelines	2026-10-22T16:05:20Z
