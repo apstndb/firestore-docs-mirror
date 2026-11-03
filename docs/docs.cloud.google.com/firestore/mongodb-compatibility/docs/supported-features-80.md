@@ -228,6 +228,15 @@ Firestore with MongoDB compatibility supports the following aggregation pipeline
 | `$sortArray`     | Yes           |
 | `$zip`           | Yes           |
 
+### Bitwise operators
+
+| **Operator** | **Supported** |
+|--------------|---------------|
+| `$bitAnd`    | Yes           |
+| `$bitNot`    | Yes           |
+| `$bitOr`     | Yes           |
+| `$bitXor`    | Yes           |
+
 ### Boolean operators
 
 | **Operator** | **Supported** |

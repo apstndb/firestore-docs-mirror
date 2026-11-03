@@ -63,7 +63,9 @@ Returns the number of `BYTES` in a `STRING` or `BYTES` value.
 const result = await db.pipeline()
   .collection("books")
   .select(
-    field("title").byteLength().as("titleByteL  .execute();test.firestore.js
+    field("title").byteLength().as("titleByteLength")
+  )
+  .execute();
 ```
 
 ### Web
@@ -72,9 +74,9 @@ const result = await db.pipeline()
 const result = await execute(db.pipeline()
   .collection("books")
   .select(
-    field("title").byteLength().as("quot;)
+    field("title").byteLength().as("titleByteLength")
   )
-);test.firestore.js
+);
 ```
 
 ##### Swift
@@ -83,7 +85,9 @@ const result = await execute(db.pipeline()
 let result = try await db.pipeline()
   .collection("books")
   .select([
-    Field("title").byteLength().as("titleByteLxecute()PipelineSnippets.swift
+    Field("title").byteLength().as("titleByteLength")
+  ])
+  .execute()
 ```
 
 ##### Kotlin Android
@@ -92,8 +96,9 @@ let result = try await db.pipeline()
 val result = db.pipeline()
     .collection("books")
     .select(
-        field("title").byteLength().alias("titleByteLeng)
-    .execute()DocSnippets.kt
+        field("title").byteLength().alias("titleByteLength")
+    )
+    .execute()
 ```
 
 ##### Java Android
@@ -102,7 +107,9 @@ val result = db.pipeline()
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(
-        field("title").byteLength().alias("titleByteLengt   .execute();DocSnippets.java
+        field("title").byteLength().alias("titleByteLength")
+    )
+    .execute();
 ```
 
 ##### Python
@@ -113,8 +120,9 @@ from google.cloud.firestore_v1.pipeline_expressions import Field
 result = (
     client.pipeline()
     .collection("books")
-    .select(Field.of("title").byte_length().as_("titleByteLcute()
-)firestore_pipelines.py
+    .select(Field.of("title").byte_length().as_("titleByteLength"))
+    .execute()
+)
 ```
 
 ##### Java
@@ -125,7 +133,8 @@ Pipeline.Snapshot result =
         .pipeline()
         .collection("books")
         .select(byteLength(field("title")).as("titleByteLength"))
-      .get();PipelineSnippets.java
+        .execute()
+        .get();
 ```
 
 ##### Go
@@ -134,7 +143,9 @@ Pipeline.Snapshot result =
 snapshot := client.Pipeline().
     Collection("books").
     Select(firestore.Fields(
-        firestore.ByteLength(firestore.FieldOf("title")).As("titleByteLentx)pipeline_snippets_string.go
+        firestore.ByteLength(firestore.FieldOf("title")).As("titleByteLength"),
+    )).
+    Execute(ctx)
 ```
 
 ### CHAR_LENGTH
@@ -163,7 +174,9 @@ Returns the number of unicode code points in `STRING` value.
 const result = await db.pipeline()
   .collection("books")
   .select(
-    field("title").charLength().as("titleCharL  .execute();test.firestore.js
+    field("title").charLength().as("titleCharLength")
+  )
+  .execute();
 ```
 
 ### Web
@@ -172,9 +185,9 @@ const result = await db.pipeline()
 const result = await execute(db.pipeline()
   .collection("books")
   .select(
-    field("title").charLength().as("quot;)
+    field("title").charLength().as("titleCharLength")
   )
-);test.firestore.js
+);
 ```
 
 ##### Swift
@@ -183,7 +196,9 @@ const result = await execute(db.pipeline()
 let result = try await db.pipeline()
   .collection("books")
   .select([
-    Field("title").charLength().as("titleCharLxecute()PipelineSnippets.swift
+    Field("title").charLength().as("titleCharLength")
+  ])
+  .execute()
 ```
 
 ##### Kotlin Android
@@ -192,8 +207,9 @@ let result = try await db.pipeline()
 val result = db.pipeline()
     .collection("books")
     .select(
-        field("title").charLength().alias("titleCharLeng)
-    .execute()DocSnippets.kt
+        field("title").charLength().alias("titleCharLength")
+    )
+    .execute()
 ```
 
 ##### Java Android
@@ -202,7 +218,9 @@ val result = db.pipeline()
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(
-        field("title").charLength().alias("titleCharLengt   .execute();DocSnippets.java
+        field("title").charLength().alias("titleCharLength")
+    )
+    .execute();
 ```
 
 ##### Python
@@ -213,8 +231,9 @@ from google.cloud.firestore_v1.pipeline_expressions import Field
 result = (
     client.pipeline()
     .collection("books")
-    .select(Field.of("title").char_length().as_("titleCharLcute()
-)firestore_pipelines.py
+    .select(Field.of("title").char_length().as_("titleCharLength"))
+    .execute()
+)
 ```
 
 ##### Java
@@ -225,7 +244,8 @@ Pipeline.Snapshot result =
         .pipeline()
         .collection("books")
         .select(charLength(field("title")).as("titleCharLength"))
-      .get();PipelineSnippets.java
+        .execute()
+        .get();
 ```
 
 ##### Go
@@ -234,7 +254,9 @@ Pipeline.Snapshot result =
 snapshot := client.Pipeline().
     Collection("books").
     Select(firestore.Fields(
-        firestore.CharLength(firestore.FieldOf("title")).As("titleCharLentx)pipeline_snippets_string.go
+        firestore.CharLength(firestore.FieldOf("title")).As("titleCharLength"),
+    )).
+    Execute(ctx)
 ```
 
 ### STARTS_WITH
@@ -264,9 +286,9 @@ const result = await db.pipeline()
   .collection("books")
   .select(
     field("title").startsWith("The")
-      .as("needsSpecialAuot;)
+      .as("needsSpecialAlphabeticalSort")
   )
-  .execute();test.firestore.js
+  .execute();
 ```
 
 ### Web
@@ -276,9 +298,9 @@ const result = await execute(db.pipeline()
   .collection("books")
   .select(
     field("title").startsWith("The")
-      .as("neticalSort")
+      .as("needsSpecialAlphabeticalSort")
   )
-);test.firestore.js
+);
 ```
 
 ##### Swift
@@ -288,9 +310,9 @@ let result = try await db.pipeline()
   .collection("books")
   .select([
     Field("title").startsWith("The")
-      .as("needsSpecialA
+      .as("needsSpecialAlphabeticalSort")
   ])
-  .execute()PipelineSnippets.swift
+  .execute()
 ```
 
 ##### Kotlin Android
@@ -300,9 +322,9 @@ val result = db.pipeline()
     .collection("books")
     .select(
         field("title").startsWith("The")
-            .alias("needsSpecialAlphuot;)
+            .alias("needsSpecialAlphabeticalSort")
     )
-    .execute()DocSnippets.kt
+    .execute()
 ```
 
 ##### Java Android
@@ -312,9 +334,9 @@ Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(
         field("title").startsWith("The")
-            .alias("needsSpecialAlpha;)
+            .alias("needsSpecialAlphabeticalSort")
     )
-    .execute();DocSnippets.java
+    .execute();
 ```
 
 ##### Python
@@ -326,9 +348,10 @@ result = (
     client.pipeline()
     .collection("books")
     .select(
-        Field.of("title").starts_with("The").as_("needsSpecialAlphab)
+        Field.of("title").starts_with("The").as_("needsSpecialAlphabeticalSort")
+    )
     .execute()
-)firestore_pipelines.py
+)
 ```
 
 ##### Java
@@ -338,8 +361,9 @@ Pipeline.Snapshot result =
     firestore
         .pipeline()
         .collection("books")
-        .select(startsWith(field("title"), "The").as("needsSpecialAlphabeticalSort&que()
-        .get();PipelineSnippets.java
+        .select(startsWith(field("title"), "The").as("needsSpecialAlphabeticalSort"))
+        .execute()
+        .get();
 ```
 
 ##### Go
@@ -348,7 +372,9 @@ Pipeline.Snapshot result =
 snapshot := client.Pipeline().
     Collection("books").
     Select(firestore.Fields(
-        firestore.StartsWith(firestore.FieldOf("title"), "The").As("needsSpecialAlp Execute(ctx)pipeline_snippets_string.go
+        firestore.StartsWith(firestore.FieldOf("title"), "The").As("needsSpecialAlphabeticalSort"),
+    )).
+    Execute(ctx)
 ```
 
 ### ENDS_WITH
@@ -378,9 +404,9 @@ const result = await db.pipeline()
   .collection("inventory/devices/laptops")
   .select(
     field("name").endsWith("16 inch")
-      .as(&quot;)
+      .as("16InLaptops")
   )
-  .execute();test.firestore.js
+  .execute();
 ```
 
 ##### Swift
@@ -390,9 +416,9 @@ let result = try await db.pipeline()
   .collection("inventory/devices/laptops")
   .select([
     Field("name").endsWith("16 inch")
-      .as(&q
+      .as("16InLaptops")
   ])
-  .execute()PipelineSnippets.swift
+  .execute()
 ```
 
 ##### Kotlin Android
@@ -402,9 +428,9 @@ val result = db.pipeline()
     .collection("inventory/devices/laptops")
     .select(
         field("name").endsWith("16 inch")
-            .alias("uot;)
+            .alias("16InLaptops")
     )
-    .execute()DocSnippets.kt
+    .execute()
 ```
 
 ##### Java Android
@@ -414,9 +440,9 @@ Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("inventory/devices/laptops")
     .select(
         field("name").endsWith("16 inch")
-            .alias(";)
+            .alias("16InLaptops")
     )
-    .execute();DocSnippets.java
+    .execute();
 ```
 
 ##### Python
@@ -427,9 +453,9 @@ from google.cloud.firestore_v1.pipeline_expressions import Field
 result = (
     client.pipeline()
     .collection("inventory/devices/laptops")
-    .select(Field.of("name").ends_with("16 inch").as_(&q)
+    .select(Field.of("name").ends_with("16 inch").as_("16InLaptops"))
     .execute()
-)firestore_pipelines.py
+)
 ```
 
 ##### Java
@@ -439,8 +465,9 @@ Pipeline.Snapshot result =
     firestore
         .pipeline()
         .collection("inventory/devices/laptops")
-        .select(endsWith(field("name"), "16 inch").as("16InLaptops&que()
-        .get();PipelineSnippets.java
+        .select(endsWith(field("name"), "16 inch").as("16InLaptops"))
+        .execute()
+        .get();
 ```
 
 ##### Go
@@ -449,7 +476,9 @@ Pipeline.Snapshot result =
 snapshot := client.Pipeline().
     Collection("inventory/devices/laptops").
     Select(firestore.Fields(
-        firestore.EndsWith(firestore.FieldOf("name"), "16 inch").As("   Execute(ctx)pipeline_snippets_string.go
+        firestore.EndsWith(firestore.FieldOf("name"), "16 inch").As("`Laptops16in`"),
+    )).
+    Execute(ctx)
 ```
 
 ### LIKE
@@ -480,9 +509,9 @@ const result = await db.pipeline()
   .collection("books")
   .select(
     field("genre").like("%Fiction")
-      .as(&uot;)
+      .as("anyFiction")
   )
-  .execute();test.firestore.js
+  .execute();
 ```
 
 ### Web
@@ -492,9 +521,9 @@ const result = await execute(db.pipeline()
   .collection("books")
   .select(
     field("genre").like("%Fiction")
-nyFiction")
+      .as("anyFiction")
   )
-);test.firestore.js
+);
 ```
 
 ##### Swift
@@ -504,9 +533,9 @@ let result = try await db.pipeline()
   .collection("books")
   .select([
     Field("genre").like("%Fiction")
-      .as(&
+      .as("anyFiction")
   ])
-  .execute()PipelineSnippets.swift
+  .execute()
 ```
 
 ##### Kotlin Android
@@ -516,9 +545,9 @@ val result = db.pipeline()
     .collection("books")
     .select(
         field("genre").like("%Fiction")
-            .alias(&quouot;)
+            .alias("anyFiction")
     )
-    .execute()DocSnippets.kt
+    .execute()
 ```
 
 ##### Java Android
@@ -528,9 +557,9 @@ Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(
         field("genre").like("%Fiction")
-            .alias(";)
+            .alias("anyFiction")
     )
-    .execute();DocSnippets.java
+    .execute();
 ```
 
 ##### Python
@@ -541,9 +570,9 @@ from google.cloud.firestore_v1.pipeline_expressions import Field
 result = (
     client.pipeline()
     .collection("books")
-    .select(Field.of("genre").like("%Fiction").as_(&)
+    .select(Field.of("genre").like("%Fiction").as_("anyFiction"))
     .execute()
-)firestore_pipelines.py
+)
 ```
 
 ##### Java
@@ -553,8 +582,9 @@ Pipeline.Snapshot result =
     firestore
         .pipeline()
         .collection("books")
-        .select(like(field("genre"), "%Fiction").as("anyFiction&que()
-        .get();PipelineSnippets.java
+        .select(like(field("genre"), "%Fiction").as("anyFiction"))
+        .execute()
+        .get();
 ```
 
 ##### Go
@@ -563,7 +593,9 @@ Pipeline.Snapshot result =
 snapshot := client.Pipeline().
     Collection("books").
     Select(firestore.Fields(
-        firestore.Like(firestore.FieldOf("genre"), "%Fiction").As(&qu   Execute(ctx)pipeline_snippets_string.go
+        firestore.Like(firestore.FieldOf("genre"), "%Fiction").As("anyFiction"),
+    )).
+    Execute(ctx)
 ```
 
 ### REGEX_CONTAINS
@@ -605,9 +637,9 @@ const result = await db.pipeline()
   .collection("documents")
   .select(
     field("title").regexContains("Firestore (Enterprise|Standard)")
-      .as("isFuot;)
+      .as("isFirestoreRelated")
   )
-  .execute();test.firestore.js
+  .execute();
 ```
 
 ### Web
@@ -617,9 +649,9 @@ const result = await execute(db.pipeline()
   .collection("documents")
   .select(
     field("title").regexContains("Firestore (Enterprise|Standard)")
-      .areRelated")
+      .as("isFirestoreRelated")
   )
-);test.firestore.js
+);
 ```
 
 ##### Swift
@@ -629,9 +661,9 @@ let result = try await db.pipeline()
   .collection("documents")
   .select([
     Field("title").regexContains("Firestore (Enterprise|Standard)")
-      .as("isF
+      .as("isFirestoreRelated")
   ])
-  .execute()PipelineSnippets.swift
+  .execute()
 ```
 
 ##### Kotlin Android
@@ -641,9 +673,9 @@ val result = db.pipeline()
     .collection("documents")
     .select(
         field("title").regexContains("Firestore (Enterprise|Standard)")
-            .alias("isFireuot;)
+            .alias("isFirestoreRelated")
     )
-    .execute()DocSnippets.kt
+    .execute()
 ```
 
 ##### Java Android
@@ -653,9 +685,9 @@ Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("documents")
     .select(
         field("title").regexContains("Firestore (Enterprise|Standard)")
-            .alias("isFires;)
+            .alias("isFirestoreRelated")
     )
-    .execute();DocSnippets.java
+    .execute();
 ```
 
 ##### Python
@@ -669,9 +701,10 @@ result = (
     .select(
         Field.of("title")
         .regex_contains("Firestore (Enterprise|Standard)")
-        .as_("isFirest)
+        .as_("isFirestoreRelated")
+    )
     .execute()
-)firestore_pipelines.py
+)
 ```
 
 ##### Java
@@ -683,8 +716,9 @@ Pipeline.Snapshot result =
         .collection("documents")
         .select(
             regexContains(field("title"), "Firestore (Enterprise|Standard)")
-                .as("isFirestoreRelated&que()
-        .get();PipelineSnippets.java
+                .as("isFirestoreRelated"))
+        .execute()
+        .get();
 ```
 
 ##### Go
@@ -693,7 +727,9 @@ Pipeline.Snapshot result =
 snapshot := client.Pipeline().
     Collection("documents").
     Select(firestore.Fields(
-        firestore.RegexContains(firestore.FieldOf("title"), "Firestore (Enterprise|Standard)").As("isFir    Execute(ctx)pipeline_snippets_string.go
+        firestore.RegexContains(firestore.FieldOf("title"), "Firestore (Enterprise|Standard)").As("isFirestoreRelated"),
+    )).
+    Execute(ctx)
 ```
 
 ### REGEX_FIND
@@ -796,9 +832,9 @@ const result = await db.pipeline()
   .collection("documents")
   .select(
     field("title").regexMatch("Firestore (Enterprise|Standard)")
-      .as("isFuot;)
+      .as("isFirestoreExactly")
   )
-  .execute();test.firestore.js
+  .execute();
 ```
 
 ### Web
@@ -808,9 +844,9 @@ const result = await execute(db.pipeline()
   .collection("documents")
   .select(
     field("title").regexMatch("Firestore (Enterprise|Standard)")
-      .areExactly")
+      .as("isFirestoreExactly")
   )
-);test.firestore.js
+);
 ```
 
 ##### Swift
@@ -820,9 +856,9 @@ let result = try await db.pipeline()
   .collection("documents")
   .select([
     Field("title").regexMatch("Firestore (Enterprise|Standard)")
-      .as("isF
+      .as("isFirestoreExactly")
   ])
-  .execute()PipelineSnippets.swift
+  .execute()
 ```
 
 ##### Kotlin Android
@@ -832,9 +868,9 @@ val result = db.pipeline()
     .collection("documents")
     .select(
         field("title").regexMatch("Firestore (Enterprise|Standard)")
-            .alias("isFireuot;)
+            .alias("isFirestoreExactly")
     )
-    .execute()DocSnippets.kt
+    .execute()
 ```
 
 ##### Java Android
@@ -844,9 +880,9 @@ Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("documents")
     .select(
         field("title").regexMatch("Firestore (Enterprise|Standard)")
-            .alias("isFires;)
+            .alias("isFirestoreExactly")
     )
-    .execute();DocSnippets.java
+    .execute();
 ```
 
 ##### Python
@@ -860,9 +896,10 @@ result = (
     .select(
         Field.of("title")
         .regex_match("Firestore (Enterprise|Standard)")
-        .as_("isFirest)
+        .as_("isFirestoreExactly")
+    )
     .execute()
-)firestore_pipelines.py
+)
 ```
 
 ##### Java
@@ -874,8 +911,9 @@ Pipeline.Snapshot result =
         .collection("documents")
         .select(
             regexMatch(field("title"), "Firestore (Enterprise|Standard)")
-                .as("isFirestoreExactly&que()
-        .get();PipelineSnippets.java
+                .as("isFirestoreExactly"))
+        .execute()
+        .get();
 ```
 
 ##### Go
@@ -884,7 +922,9 @@ Pipeline.Snapshot result =
 snapshot := client.Pipeline().
     Collection("documents").
     Select(firestore.Fields(
-        firestore.RegexMatch(firestore.FieldOf("title"), "Firestore (Enterprise|Standard)").As("isFir   Execute(ctx)pipeline_snippets_string.go
+        firestore.RegexMatch(firestore.FieldOf("title"), "Firestore (Enterprise|Standard)").As("isFirestoreExactly"),
+    )).
+    Execute(ctx)
 ```
 
 ### STRING_CONCAT
@@ -915,9 +955,9 @@ const result = await db.pipeline()
   .collection("books")
   .select(
     field("title").stringConcat(" by ", field("author"))
-      .as(iedTitle")
+      .as("fullyQualifiedTitle")
   )
-  .execute();test.firestore.js
+  .execute();
 ```
 
 ### Web
@@ -926,9 +966,10 @@ const result = await db.pipeline()
 const result = await execute(db.pipeline()
   .collection("books")
   .select(
-    field("title").stringConcat(" by ", field("author"))fullyQualifiedTitle")
+    field("title").stringConcat(" by ", field("author"))
+      .as("fullyQualifiedTitle")
   )
-);test.firestore.js
+);
 ```
 
 ##### Swift
@@ -938,9 +979,9 @@ let result = try await db.pipeline()
   .collection("books")
   .select([
     Field("title").concat([" by ", Field("author")])
-      .as(tle")
+      .as("fullyQualifiedTitle")
   ])
-  .execute()PipelineSnippets.swift
+  .execute()
 ```
 
 ##### Kotlin Android
@@ -950,9 +991,9 @@ val result = db.pipeline()
     .collection("books")
     .select(
         field("title").concat(" by ", field("author"))
-            .alias(&quiedTitle")
+            .alias("fullyQualifiedTitle")
     )
-    .execute()DocSnippets.kt
+    .execute()
 ```
 
 ##### Java Android
@@ -962,9 +1003,9 @@ Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(
         field("title").concat(" by ", field("author"))
-            .alias(&quoTitle")
+            .alias("fullyQualifiedTitle")
     )
-    .execute();DocSnippets.java
+    .execute();
 ```
 
 ##### Python
@@ -978,10 +1019,10 @@ result = (
     .select(
         Field.of("title")
         .concat(" by ", Field.of("author"))
-        .as_("uot;)
+        .as_("fullyQualifiedTitle")
     )
     .execute()
-)firestore_pipelines.py
+)
 ```
 
 ##### Java
@@ -991,8 +1032,9 @@ Pipeline.Snapshot result =
     firestore
         .pipeline()
         .collection("books")
-        .select(stringConcat(field("title"), " by ", field("author")).as("fullyQualifi   .execute()
-        .get();PipelineSnippets.java
+        .select(stringConcat(field("title"), " by ", field("author")).as("fullyQualifiedTitle"))
+        .execute()
+        .get();
 ```
 
 ##### Go
@@ -1001,9 +1043,9 @@ Pipeline.Snapshot result =
 snapshot := client.Pipeline().
     Collection("books").
     Select(firestore.Fields(
-        firestore.StringConcat(firestore.FieldOf("title"), " by ", firestore.FieldOf("author")).As(&qt;),
+        firestore.StringConcat(firestore.FieldOf("title"), " by ", firestore.FieldOf("author")).As("fullyQualifiedTitle"),
     )).
-    Execute(ctx)pipeline_snippets_string.go
+    Execute(ctx)
 ```
 
 ### STRING_CONTAINS
@@ -1035,9 +1077,9 @@ const result = await db.pipeline()
   .collection("articles")
   .select(
     field("body").stringContains("Firestore")
-      .as("isFuot;)
+      .as("isFirestoreRelated")
   )
-  .execute();test.firestore.js
+  .execute();
 ```
 
 ### Web
@@ -1047,9 +1089,9 @@ const result = await execute(db.pipeline()
   .collection("articles")
   .select(
     field("body").stringContains("Firestore")
-      .areRelated")
+      .as("isFirestoreRelated")
   )
-);test.firestore.js
+);
 ```
 
 ##### Swift
@@ -1059,9 +1101,9 @@ let result = try await db.pipeline()
   .collection("articles")
   .select([
     Field("body").stringContains("Firestore")
-      .as("isF
+      .as("isFirestoreRelated")
   ])
-  .execute()PipelineSnippets.swift
+  .execute()
 ```
 
 ##### Kotlin Android
@@ -1071,9 +1113,9 @@ val result = db.pipeline()
     .collection("articles")
     .select(
         field("body").stringContains("Firestore")
-            .alias("isFireuot;)
+            .alias("isFirestoreRelated")
     )
-    .execute()DocSnippets.kt
+    .execute()
 ```
 
 ##### Java Android
@@ -1083,9 +1125,9 @@ Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("articles")
     .select(
         field("body").stringContains("Firestore")
-            .alias("isFires;)
+            .alias("isFirestoreRelated")
     )
-    .execute();DocSnippets.java
+    .execute();
 ```
 
 ##### Python
@@ -1096,9 +1138,9 @@ from google.cloud.firestore_v1.pipeline_expressions import Field
 result = (
     client.pipeline()
     .collection("articles")
-    .select(Field.of("body").string_contains("Firestore").as_("isF)
+    .select(Field.of("body").string_contains("Firestore").as_("isFirestoreRelated"))
     .execute()
-)firestore_pipelines.py
+)
 ```
 
 ##### Java
@@ -1108,8 +1150,9 @@ Pipeline.Snapshot result =
     firestore
         .pipeline()
         .collection("articles")
-        .select(stringContains(field("body"), "Firestore").as("isFirestoreRelated&que()
-        .get();PipelineSnippets.java
+        .select(stringContains(field("body"), "Firestore").as("isFirestoreRelated"))
+        .execute()
+        .get();
 ```
 
 ##### Go
@@ -1118,7 +1161,9 @@ Pipeline.Snapshot result =
 snapshot := client.Pipeline().
     Collection("articles").
     Select(firestore.Fields(
-        firestore.StringContains(firestore.FieldOf("body"), "Firestore").As("isFir  Execute(ctx)pipeline_snippets_string.go
+        firestore.StringContains(firestore.FieldOf("body"), "Firestore").As("isFirestoreRelated"),
+    )).
+    Execute(ctx)
 ```
 
 ### STRING_INDEX_OF
@@ -1180,7 +1225,9 @@ const result = await db.pipeline()
   .collection("authors")
   .select(
     field("name").toUpper()
-      .as("uppercas  .execute();test.firestore.js
+      .as("uppercaseName")
+  )
+  .execute();
 ```
 
 ### Web
@@ -1190,9 +1237,9 @@ const result = await execute(db.pipeline()
   .collection("authors")
   .select(
     field("name").toUpper()
-      .as(&ququot;)
+      .as("uppercaseName")
   )
-);test.firestore.js
+);
 ```
 
 ##### Swift
@@ -1202,7 +1249,9 @@ let result = try await db.pipeline()
   .collection("authors")
   .select([
     Field("name").toUpper()
-      .as("uppercasxecute()PipelineSnippets.swift
+      .as("uppercaseName")
+  ])
+  .execute()
 ```
 
 ##### Kotlin Android
@@ -1212,8 +1261,9 @@ val result = db.pipeline()
     .collection("authors")
     .select(
         field("name").toUpper()
-            .alias("uppercaseNa)
-    .execute()DocSnippets.kt
+            .alias("uppercaseName")
+    )
+    .execute()
 ```
 
 ##### Java Android
@@ -1223,7 +1273,9 @@ Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("authors")
     .select(
         field("name").toUpper()
-            .alias("uppercaseNam   .execute();DocSnippets.java
+            .alias("uppercaseName")
+    )
+    .execute();
 ```
 
 ##### Python
@@ -1234,8 +1286,9 @@ from google.cloud.firestore_v1.pipeline_expressions import Field
 result = (
     client.pipeline()
     .collection("authors")
-    .select(Field.of("name").to_upper().as_("uppercascute()
-)firestore_pipelines.py
+    .select(Field.of("name").to_upper().as_("uppercaseName"))
+    .execute()
+)
 ```
 
 ##### Java
@@ -1246,7 +1299,8 @@ Pipeline.Snapshot result =
         .pipeline()
         .collection("authors")
         .select(toUpper(field("name")).as("uppercaseName"))
-      .get();PipelineSnippets.java
+        .execute()
+        .get();
 ```
 
 ##### Go
@@ -1255,7 +1309,9 @@ Pipeline.Snapshot result =
 snapshot := client.Pipeline().
     Collection("authors").
     Select(firestore.Fields(
-        firestore.ToUpper(firestore.FieldOf("name")).As("uppercaseNtx)pipeline_snippets_string.go
+        firestore.ToUpper(firestore.FieldOf("name")).As("uppercaseName"),
+    )).
+    Execute(ctx)
 ```
 
 ### TO_LOWER
@@ -1288,9 +1344,9 @@ const result = await db.pipeline()
   .collection("authors")
   .select(
     field("genre").toLower().equal("fantasy")
-      .as(uot;)
+      .as("isFantasy")
   )
-  .execute();test.firestore.js
+  .execute();
 ```
 
 ### Web
@@ -1299,9 +1355,10 @@ const result = await db.pipeline()
 const result = await execute(db.pipeline()
   .collection("authors")
   .select(
-    field("genre").toLower().equal("fantasy")isFantasy")
+    field("genre").toLower().equal("fantasy")
+      .as("isFantasy")
   )
-);test.firestore.js
+);
 ```
 
 ##### Swift
@@ -1311,9 +1368,9 @@ let result = try await db.pipeline()
   .collection("authors")
   .select([
     Field("genre").toLower().equal("fantasy")
-      .as(
+      .as("isFantasy")
   ])
-  .execute()PipelineSnippets.swift
+  .execute()
 ```
 
 ##### Kotlin Android
@@ -1323,9 +1380,9 @@ val result = db.pipeline()
     .collection("authors")
     .select(
         field("genre").toLower().equal("fantasy")
-            .alias(&quuot;)
+            .alias("isFantasy")
     )
-    .execute()DocSnippets.kt
+    .execute()
 ```
 
 ##### Java Android
@@ -1335,9 +1392,9 @@ Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("authors")
     .select(
         field("genre").toLower().equal("fantasy")
-            .alias(&quo;)
+            .alias("isFantasy")
     )
-    .execute();DocSnippets.java
+    .execute();
 ```
 
 ##### Python
@@ -1348,9 +1405,9 @@ from google.cloud.firestore_v1.pipeline_expressions import Field
 result = (
     client.pipeline()
     .collection("authors")
-    .select(Field.of("genre").to_lower().equal("fantasy").as_()
+    .select(Field.of("genre").to_lower().equal("fantasy").as_("isFantasy"))
     .execute()
-)firestore_pipelines.py
+)
 ```
 
 ##### Java
@@ -1360,8 +1417,9 @@ Pipeline.Snapshot result =
     firestore
         .pipeline()
         .collection("authors")
-        .select(equal(toLower(field("genre")), "fantasy").as("isFantasy&que()
-        .get();PipelineSnippets.java
+        .select(equal(toLower(field("genre")), "fantasy").as("isFantasy"))
+        .execute()
+        .get();
 ```
 
 ##### Go
@@ -1370,7 +1428,9 @@ Pipeline.Snapshot result =
 snapshot := client.Pipeline().
     Collection("authors").
     Select(firestore.Fields(
-        firestore.Equal(firestore.ToLower(firestore.FieldOf("genre")), "fantasy").As(&q Execute(ctx)pipeline_snippets_string.go
+        firestore.Equal(firestore.ToLower(firestore.FieldOf("genre")), "fantasy").As("isFantasy"),
+    )).
+    Execute(ctx)
 ```
 
 ### SUBSTRING
@@ -1421,9 +1481,9 @@ const result = await db.pipeline()
   .where(field("title").startsWith("The "))
   .select(
     field("title").substring(4)
-      .as(&quadingThe")
+      .as("titleWithoutLeadingThe")
   )
-  .execute();test.firestore.js
+  .execute();
 ```
 
 ### Web
@@ -1434,9 +1494,9 @@ const result = await execute(db.pipeline()
   .where(field("title").startsWith("The "))
   .select(
     field("title").substring(4)
-  leWithoutLeadingThe")
+      .as("titleWithoutLeadingThe")
   )
-);test.firestore.js
+);
 ```
 
 ##### Swift
@@ -1447,9 +1507,9 @@ let result = try await db.pipeline()
   .where(Field("title").startsWith("The "))
   .select([
     Field("title").substring(position: 4)
-      .as(&quThe")
+      .as("titleWithoutLeadingThe")
   ])
-  .execute()PipelineSnippets.swift
+  .execute()
 ```
 
 ##### Kotlin Android
@@ -1462,9 +1522,9 @@ val result = db.pipeline()
         field("title")
           .substring(constant(4),
             field("title").charLength().subtract(4))
-            .aleWithoutLeadingThe")
+            .alias("titleWithoutLeadingThe")
     )
-    .execute()DocSnippets.kt
+    .execute()
 ```
 
 ##### Java Android
@@ -1477,9 +1537,9 @@ Task<Pipeline.Snapshot> result = db.pipeline()
         field("title").substring(
           constant(4),
             field("title").charLength().subtract(4))
-            .alithoutLeadingThe")
+            .alias("titleWithoutLeadingThe")
     )
-    .execute();DocSnippets.java
+    .execute();
 ```
 
 ##### Python
@@ -1491,9 +1551,9 @@ result = (
     client.pipeline()
     .collection("books")
     .where(Field.of("title").starts_with("The "))
-    .select(Field.of("title").substring(4).as_(&quThe"))
+    .select(Field.of("title").substring(4).as_("titleWithoutLeadingThe"))
     .execute()
-)firestore_pipelines.py
+)
 ```
 
 ##### Java
@@ -1506,9 +1566,9 @@ Pipeline.Snapshot result =
         .where(startsWith(field("title"), "The "))
         .select(
             substring(field("title"), constant(4), field("title").charLength())
-                .as("titlet;))
+                .as("titleWithoutLeadingThe"))
         .execute()
-        .get();PipelineSnippets.java
+        .get();
 ```
 
 ##### Go
@@ -1518,9 +1578,9 @@ snapshot := client.Pipeline().
     Collection("books").
     Where(firestore.StartsWith(firestore.FieldOf("title"), "The ")).
     Select(firestore.Fields(
-        firestore.Substring(firestore.FieldOf("title"), firestore.ConstantOf(4), firestore.FieldOf("title").CharLength()ingThe"),
+        firestore.Substring(firestore.FieldOf("title"), firestore.ConstantOf(4), firestore.FieldOf("title").CharLength()).As("titleWithoutLeadingThe"),
     )).
-    Execute(ctx)pipeline_snippets_string.go
+    Execute(ctx)
 ```
 
 ### STRING_REVERSE
@@ -1552,7 +1612,9 @@ Characters are delineated by Unicode code points when the input is a `STRING` , 
 const result = await db.pipeline()
   .collection("books")
   .select(
-    field("name").reverse().as("reverse  .execute();test.firestore.js
+    field("name").reverse().as("reversedName")
+  )
+  .execute();
 ```
 
 ### Web
@@ -1561,9 +1623,9 @@ const result = await db.pipeline()
 const result = await execute(db.pipeline()
   .collection("books")
   .select(
-    field("name").reverse().as(&qquot;)
+    field("name").reverse().as("reversedName")
   )
-);test.firestore.js
+);
 ```
 
 ##### Swift
@@ -1572,7 +1634,9 @@ const result = await execute(db.pipeline()
 let result = try await db.pipeline()
   .collection("books")
   .select([
-    Field("name").reverse().as("reversexecute()PipelineSnippets.swift
+    Field("name").reverse().as("reversedName")
+  ])
+  .execute()
 ```
 
 ##### Kotlin Android
@@ -1581,8 +1645,9 @@ let result = try await db.pipeline()
 val result = db.pipeline()
     .collection("books")
     .select(
-        field("name").reverse().alias("reversedNa)
-    .execute()DocSnippets.kt
+        field("name").reverse().alias("reversedName")
+    )
+    .execute()
 ```
 
 ##### Java Android
@@ -1591,7 +1656,9 @@ val result = db.pipeline()
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(
-        field("name").reverse().alias("reversedNam   .execute();DocSnippets.java
+        field("name").reverse().alias("reversedName")
+    )
+    .execute();
 ```
 
 ##### Python
@@ -1602,8 +1669,9 @@ from google.cloud.firestore_v1.pipeline_expressions import Field
 result = (
     client.pipeline()
     .collection("books")
-    .select(Field.of("name").string_reverse().as_("reversecute()
-)firestore_pipelines.py
+    .select(Field.of("name").string_reverse().as_("reversedName"))
+    .execute()
+)
 ```
 
 ##### Java
@@ -1614,7 +1682,8 @@ Pipeline.Snapshot result =
         .pipeline()
         .collection("books")
         .select(reverse(field("name")).as("reversedName"))
-      .get();PipelineSnippets.java
+        .execute()
+        .get();
 ```
 
 ##### Go
@@ -1623,7 +1692,9 @@ Pipeline.Snapshot result =
 snapshot := client.Pipeline().
     Collection("books").
     Select(firestore.Fields(
-        firestore.Reverse(firestore.FieldOf("name")).As("reversedNtx)pipeline_snippets_string.go
+        firestore.Reverse(firestore.FieldOf("name")).As("reversedName"),
+    )).
+    Execute(ctx)
 ```
 
 ### STRING_REPEAT
@@ -1747,9 +1818,9 @@ When `values_to_trim` is provided:
 const result = await execute(db.pipeline()
   .collection("books")
   .select(
-    field("name").trim().as("whitequot;)
+    field("name").trim().as("whitespaceTrimmedName")
   )
-);test.firestore.js
+);
 ```
 
 ##### Swift
@@ -1758,9 +1829,9 @@ const result = await execute(db.pipeline()
 let result = try await db.pipeline()
   .collection("books")
   .select([
-    Field("name").trim(" \n\t").as("whites
+    Field("name").trim(" \n\t").as("whitespaceTrimmedName")
   ])
-  .execute()PipelineSnippets.swift
+  .execute()
 ```
 
 ##### Kotlin Android
@@ -1769,8 +1840,9 @@ let result = try await db.pipeline()
 val result = db.pipeline()
     .collection("books")
     .select(
-        field("name").trim().alias("whitespaceTrimmedNa)
-    .execute()DocSnippets.kt
+        field("name").trim().alias("whitespaceTrimmedName")
+    )
+    .execute()
 ```
 
 ##### Java Android
@@ -1779,7 +1851,9 @@ val result = db.pipeline()
 Task<Pipeline.Snapshot> result = db.pipeline()
     .collection("books")
     .select(
-        field("name").trim().alias("whitespaceTrimmedNam   .execute();DocSnippets.java
+        field("name").trim().alias("whitespaceTrimmedName")
+    )
+    .execute();
 ```
 
 ##### Python
@@ -1790,8 +1864,9 @@ from google.cloud.firestore_v1.pipeline_expressions import Field
 result = (
     client.pipeline()
     .collection("books")
-    .select(Field.of("name").trim().as_("whitespaceTrimmecute()
-)firestore_pipelines.py
+    .select(Field.of("name").trim().as_("whitespaceTrimmedName"))
+    .execute()
+)
 ```
 
 ##### Java
@@ -1802,7 +1877,8 @@ Pipeline.Snapshot result =
         .pipeline()
         .collection("books")
         .select(trim(field("name")).as("whitespaceTrimmedName"))
-      .get();PipelineSnippets.java
+        .execute()
+        .get();
 ```
 
 ##### Go
@@ -1811,7 +1887,9 @@ Pipeline.Snapshot result =
 snapshot := client.Pipeline().
     Collection("books").
     Select(firestore.Fields(
-        firestore.Trim(firestore.FieldOf("name")).As("whitespaceTrimmedNtx)pipeline_snippets_string.go
+        firestore.Trim(firestore.FieldOf("name")).As("whitespaceTrimmedName"),
+    )).
+    Execute(ctx)
 ```
 
 ### LTRIM

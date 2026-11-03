@@ -599,8 +599,8 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-fea
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-40	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-50	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-60	2026-10-02T06:02:28Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-70	2026-10-02T06:02:28Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80	2026-10-02T06:02:28Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-70	2026-11-03T01:44:55Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/supported-features-80	2026-11-03T01:44:55Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/tags	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/text-search	2026-10-19T16:37:07Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/ttl	2026-10-02T06:02:28Z
@@ -676,7 +676,7 @@ https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/generic_f
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/logical_functions	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/map_functions	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/reference_functions	2026-10-02T06:02:41Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/string_functions	2026-11-01T03:45:55Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/string_functions	2026-11-02T05:28:12Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/timestamp_functions	2026-10-19T18:52:00Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/type_functions	2026-11-02T05:28:12Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/vector_functions	2026-10-02T06:02:41Z
