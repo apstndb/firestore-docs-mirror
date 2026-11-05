@@ -24,12 +24,12 @@ Firestore Enterprise edition doesn't support Cloud Functions (1st gen). Use [Clo
 
 The Cloud Functions for Firebase SDK exports a [`functions.firestore`](https://firebase.google.com/docs/reference/functions/firebase-functions.firestore) object that allows you to create handlers tied to specific Firestore events.
 
-| Event Type                                                                                                                                          | Trigger                                                             |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|
-| [`onCreate`](https://firebase.google.com/docs/reference/functions/firebase-functions.firestore.documentbuilder.md#firestoredocumentbuilderoncreate) | Triggered when a document is written to for the first time.         |
-| [`onUpdate`](https://firebase.google.com/docs/reference/functions/firebase-functions.firestore.documentbuilder.md#firestoredocumentbuilderonupdate) | Triggered when a document already exists and has any value changed. |
-| [`onDelete`](https://firebase.google.com/docs/reference/functions/firebase-functions.firestore.documentbuilder.md#firestoredocumentbuilderondelete) | Triggered when a document with data is deleted.                     |
-| [`onWrite`](https://firebase.google.com/docs/reference/functions/firebase-functions.firestore.documentbuilder.md#firestoredocumentbuilderonwrite)   | Triggered when `onCreate` , `onUpdate` or `onDelete` is triggered.  |
+| Event Type                                                                                                                                       | Trigger                                                             |
+|--------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------|
+| [`onCreate`](https://firebase.google.com/docs/reference/functions/firebase-functions.firestore.documentbuilder#firestoredocumentbuilderoncreate) | Triggered when a document is written to for the first time.         |
+| [`onUpdate`](https://firebase.google.com/docs/reference/functions/firebase-functions.firestore.documentbuilder#firestoredocumentbuilderonupdate) | Triggered when a document already exists and has any value changed. |
+| [`onDelete`](https://firebase.google.com/docs/reference/functions/firebase-functions.firestore.documentbuilder#firestoredocumentbuilderondelete) | Triggered when a document with data is deleted.                     |
+| [`onWrite`](https://firebase.google.com/docs/reference/functions/firebase-functions.firestore.documentbuilder#firestoredocumentbuilderonwrite)   | Triggered when `onCreate` , `onUpdate` or `onDelete` is triggered.  |
 
 > **Note:** Firestore events will trigger only on document changes. An update to a Firestore document, where data is unchanged (a no-op write), will not generate an update or write event. It is not possible to add events to specific fields.
 

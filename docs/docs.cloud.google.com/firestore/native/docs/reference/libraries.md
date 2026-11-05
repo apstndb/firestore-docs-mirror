@@ -139,7 +139,7 @@ For more information about each SDK, see the following resources:
 In addition to the standard client SDK, Firebase offers Firestore Lite, a lightweight, REST-only SDK.
 
 - [Firestore Lite Solutions Guide](https://firebase.google.com/docs/firestore/solutions/firestore-lite)
-- [Firestore Lite API Reference Documentation](https://firebase.google.com/docs/reference/js/firestore_lite.md)
+- [Firestore Lite API Reference Documentation](https://firebase.google.com/docs/reference/js/firestore_lite)
 - [Firestore Lite Source Code](https://github.com/firebase/firebase-js-sdk/tree/master/packages/firestore/lite)
 - [Firestore Lite GitHub Issue Tracker](https://github.com/firebase/firebase-js-sdk/labels/api%3A%20firestore)
 

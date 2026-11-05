@@ -642,7 +642,7 @@ https://docs.cloud.google.com/firestore/native/docs/enterprise-query-explain-ref
 https://docs.cloud.google.com/firestore/native/docs/enterprise-query-insights	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/eventarc	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/extend-with-cloud-run-functions	2026-10-02T06:02:45Z
-https://docs.cloud.google.com/firestore/native/docs/extend-with-functions	2026-10-02T06:02:45Z
+https://docs.cloud.google.com/firestore/native/docs/extend-with-functions	2026-11-05T08:01:10Z
 https://docs.cloud.google.com/firestore/native/docs/firestore-security-rules-recommender	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/geospatial-query	2026-10-17T00:01:42Z
 https://docs.cloud.google.com/firestore/native/docs/getting-support	2026-09-25T16:40:12Z
@@ -722,7 +722,7 @@ https://docs.cloud.google.com/firestore/native/docs/query-explain	2026-10-02T06:
 https://docs.cloud.google.com/firestore/native/docs/query-explain-report-reference	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/query-insights	2026-10-30T18:35:48Z
 https://docs.cloud.google.com/firestore/native/docs/real-time_queries_at_scale	2026-10-02T06:02:45Z
-https://docs.cloud.google.com/firestore/native/docs/reference/libraries	2026-10-02T06:02:45Z
+https://docs.cloud.google.com/firestore/native/docs/reference/libraries	2026-11-05T08:01:10Z
 https://docs.cloud.google.com/firestore/native/docs/regional-endpoints	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/reliability-recommender	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/resolve-latency	2026-10-02T06:02:45Z
