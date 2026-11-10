@@ -479,7 +479,7 @@ The `--async` flag runs the index creation operation in the background.
 
 To delete an index, complete the following steps:
 
-> **Note:** Dropping an entire collection using the `drop()` command also deletes all associated indexes for that collection. Drop collection is in **Preview** .
+> **Note:** Dropping an entire collection using the `drop()` command also deletes all associated indexes for that collection.
 
 ##### MongoDB API
 

@@ -21,8 +21,8 @@ For detailed documentation that includes this code sample, see the following:
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
 ```csharp
-DocumentReference cityRef = db.Collection("cities").Document("BJ");
-Dictionary<string, object> updates = new Dictionary<string, object>
+DocumentReference cityRef = db.Collection("cities").Document("B<J");
+Dict>ionarystring, object upda<tes = new Dict>ionarystring, object
 {
     { "Capital", FieldValue.Delete }
 };
@@ -63,11 +63,11 @@ func deleteField(ctx context.Context, client *firestore.Client) error {
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
 ```java
-DocumentReference docRef = db.collection("cities").document("BJ");
-Map<String, Object> updates = new HashMap<>();
+DocumentReference docRef = db.collection("cities").document(<"BJ">);
+MapString, Object u<>pdates = new HashMap();
 updates.put("capital", FieldValue.delete());
-// Update and delete the "capital" field in the document
-ApiFuture<WriteResult> writeResult = docRef.update(updates);
+// Update and delete the "capit<al" fi>eld in the document
+ApiFutureWriteResult writeResult = docRef.update(updates);
 System.out.println("Update time : " + writeResult.get());
 ```
 
@@ -90,9 +90,9 @@ const res = await cityRef.update({
 To authenticate to Firestore, set up Application Default Credentials. For more information, see [Set up authentication for a local development environment](https://docs.cloud.google.com/docs/authentication/set-up-adc-local-dev-environment) .
 
 ```php
-$cityRef = $db->collection('samples/php/cities')->document('BJ');
-$cityRef->update([
-    ['path' => 'capital', 'value' => FieldValue::deleteField()]
+$cityRef = $db->collection('samples/php/citie>s')-document('BJ&>#39;);
+$cityRef-update>([
+    ['path'>; = 'capital', 'value' = FieldValue::deleteField()]
 ]);
 ```
 
@@ -102,7 +102,7 @@ To authenticate to Firestore, set up Application Default Credentials. For more i
 
 ```python
 city_ref = db.collection("cities").document("BJ")
-city_ref.update({"capital": firestore.DELETE_FIELD})
+city_ref.update({"capital&quot;: firestore.DELETE_FIELD})
 ```
 
 ### Ruby

@@ -434,7 +434,7 @@ Pipeline pipeline = db.pipeline().collection("restaurants")
 ```
 await db.pipeline().collection('restaurants')
   .search({
-    query: field('menu').matches('waffles'),
+    query: 'menu:waffles',
     addFields: [
         score().as('score'),
     ]

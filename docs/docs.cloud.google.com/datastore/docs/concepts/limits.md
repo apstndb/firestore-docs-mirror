@@ -38,7 +38,7 @@ In addition to these limits, see the [best practices](https://docs.cloud.google.
 </tr>
 <tr class="odd">
 <td>Maximum API request size.
-This limit applies when Datastore mode is used outside of Google App Engine. If Datastore mode is used from App Engine, the limit depends on the client library that is used.</td>
+<p>This limit applies when Datastore mode is used outside of Google App Engine. If Datastore mode is used from App Engine, the limit depends on the client library that is used.</p></td>
 <td>10 MiB</td>
 </tr>
 <tr class="even">
@@ -111,9 +111,9 @@ This limit applies when Datastore mode is used outside of Google App Engine. If 
 </tr>
 <tr class="even">
 <td>Maximum number of entity filters for export and import requests
-When the export or import request specifies an <code>entity_filter</code> , each combination of filtered kind and namespace counts as a separate filter towards this limit. For example:
-A request with <code>kinds=['foo', 'bar']</code> and <code>namespace_ids=['', 'ns1']</code><br />
-results in 4 filters towards this limit: <code>[('', 'foo'), ('', 'bar'), ('ns1', 'foo'), ('ns1', 'bar')]</code></td>
+<p>When the export or import request specifies an <code>entity_filter</code> , each combination of filtered kind and namespace counts as a separate filter towards this limit. For example:</p>
+<p>A request with <code>kinds=['foo', 'bar']</code> and <code>namespace_ids=['', 'ns1']</code><br />
+results in 4 filters towards this limit: <code>[('', 'foo'), ('', 'bar'), ('ns1', 'foo'), ('ns1', 'bar')]</code></p></td>
 <td>100</td>
 </tr>
 <tr class="odd">

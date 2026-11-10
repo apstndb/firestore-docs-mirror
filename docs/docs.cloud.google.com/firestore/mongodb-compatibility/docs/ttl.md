@@ -223,7 +223,7 @@ db.restaurants.dropIndex({"ts": 1})
 
 Note that [Audit logs](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/audit-logging) for dropping a TTL index with the MongoDB API use the method name `google.firestore.admin.v1.FirestoreAdmin.UpdateField` .
 
-> **Note:** Dropping a collection using the MongoDB `drop()` command automatically removes the TTL index configured for that collection. Drop collection is in **Preview** .
+> **Note:** Dropping a collection using the MongoDB `drop()` command automatically removes the TTL index configured for that collection.
 
 ### Google Cloud Console
 
