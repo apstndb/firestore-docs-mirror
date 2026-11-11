@@ -12,7 +12,7 @@ This page describes how to use the Google Cloud console and the Google Cloud CLI
 
 ## Time to live overview
 
-Use TTL policies to automatically remove stale data from your databases. A TTL policy designates a given field as the expiration time for documents in a given collection group. With TTL, you can decrease storage costs by cleaning out obsolete data. Data is typically deleted within 24 hours after its expiration date.
+Use TTL policies to automatically remove stale data from your databases. A TTL policy designates a given field as the expiration time for documents in a given [collection group](https://docs.cloud.google.com/firestore/native/docs/data-model#collection-groups) . With TTL, you can decrease storage costs by cleaning out obsolete data. Data is typically deleted within 24 hours after its expiration date.
 
 ### Pricing
 

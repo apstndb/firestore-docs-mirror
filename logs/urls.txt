@@ -583,7 +583,7 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/pitr	2026-10-
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain-reference	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-insights	2026-10-02T06:02:44Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/querydata	2026-10-12T21:03:27Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/querydata	2026-11-10T12:58:08Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/release-notes	2026-10-22T07:12:59Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/reliability-recommender	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/resolve-latency	2026-10-02T06:02:28Z
@@ -629,7 +629,7 @@ https://docs.cloud.google.com/firestore/native/docs/connect-ide-using-mcp-toolbo
 https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/create-database-web-mobile-client-library	2026-10-24T05:41:43Z
 https://docs.cloud.google.com/firestore/native/docs/custom-constraints	2026-11-10T03:45:01Z
-https://docs.cloud.google.com/firestore/native/docs/data-model	2026-10-02T06:02:28Z
+https://docs.cloud.google.com/firestore/native/docs/data-model	2026-11-10T22:26:45Z
 https://docs.cloud.google.com/firestore/native/docs/dataflow-connector	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/disaster-recovery	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/editions-overview	2026-10-02T06:02:28Z
@@ -657,7 +657,7 @@ https://docs.cloud.google.com/firestore/native/docs/locations	2026-10-02T06:02:4
 https://docs.cloud.google.com/firestore/native/docs/manage-data/add-data	2026-10-08T07:13:53Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/bulk-delete	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data	2026-10-02T06:02:41Z
-https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline	2026-10-02T06:02:41Z
+https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline	2026-11-11T01:25:19Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/export-import	2026-10-30T23:33:16Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/move-data	2026-10-29T03:03:00Z
 https://docs.cloud.google.com/firestore/native/docs/manage-data/transactions	2026-10-02T06:02:41Z
@@ -757,7 +757,7 @@ https://docs.cloud.google.com/firestore/native/docs/tags	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/text-search	2026-11-10T03:45:11Z
 https://docs.cloud.google.com/firestore/native/docs/trace-span-references	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/transaction-data-contention	2026-10-02T06:02:45Z
-https://docs.cloud.google.com/firestore/native/docs/ttl	2026-10-02T06:02:45Z
+https://docs.cloud.google.com/firestore/native/docs/ttl	2026-11-10T22:26:45Z
 https://docs.cloud.google.com/firestore/native/docs/tutorials	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/understand-error-codes	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/understand-performance-monitoring	2026-10-02T06:02:45Z

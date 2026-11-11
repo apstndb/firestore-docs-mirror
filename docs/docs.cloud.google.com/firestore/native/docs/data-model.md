@@ -45,7 +45,7 @@ You may notice that documents look a lot like JSON. In fact, they basically are.
 
 ![](https://docs.cloud.google.com/static/firestore/native/docs/images/structure-data.png)
 
-Documents live in collections, which are simply containers for documents. For example, you could have a `users` collection to contain your various users, each represented by a document:
+Documents live in collections, which are containers for documents. For example, you could have a `users` collection to contain your various users, each represented by a document:
 
 - collections_bookmark users
 
@@ -681,3 +681,15 @@ Documents in subcollections can contain subcollections as well, allowing you to 
 > **Warning:** Deleting a document does not delete its subcollections!  
 >   
 > When you delete a document that has subcollections, those subcollections are not deleted. For example, there may be a document located at `coll/doc/subcoll/subdoc` even though the document `coll/doc` no longer exists. If you want to delete documents in subcollections when deleting a parent document, you must do so manually, as shown in [Delete Collections](https://docs.cloud.google.com/firestore/native/docs/manage-data/delete-data#collections) .
+
+### Collection groups
+
+A *collection group* consists of all collections in a database that share the same collection ID, regardless of where they are in the document hierarchy. This includes both root-level collections and subcollections nested at any depth.
+
+For example, if your database has a root-level `messages` collection and both `roomA` and `roomB` in the `rooms` collection also contain `messages` subcollections, all of the following belong to the `messages` collection group:
+
+- `messages`
+- `rooms/roomA/messages`
+- `rooms/roomB/messages`
+
+By default, queries retrieve results from a single collection. To retrieve documents across all collections in a collection group at once, use [collection group queries](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#collection-group-query) .

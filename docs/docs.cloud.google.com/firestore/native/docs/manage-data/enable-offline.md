@@ -8,7 +8,7 @@ data_source: docs.cloud.google.com
 
 # Enable offline data
 
-Firestore supports offline data persistence. This feature caches a copy of the Firestore data that your app is actively using, so your app can access the data when the device is offline. You can write, read, listen to, and query the cached data.
+Firestore supports offline data persistence through its integration with Firebase. This optional feature caches a copy of the Firestore data that your app actively uses, which lets your app access the data while the device is offline. You can write, read, listen to, and query the cached data on mobile devices or in a web browser.
 
 When the device comes back online, Firestore synchronizes any local changes made by your app to the Firestore backend. For multiple changes to the same document, it's last write wins.
 
@@ -17,11 +17,13 @@ When the device comes back online, Firestore synchronizes any local changes made
 > - Offline persistence is supported only in Android, Apple, and web apps.
 > - [Pipeline operations](https://docs.cloud.google.com/firestore/native/docs/query-data/understanding-core-pipelines) don't support offline persistence. To use offline persistence with Enterprise edition databases, use Core operations as described on this page.
 
-To use offline persistence, you don't need to make any changes to the code that you use to access Firestore data. With offline persistence enabled, the Firestore client library automatically manages online and offline data access and synchronizes local data when the device is back online.
+To use offline persistence, you don't need to change how your code accesses Firestore data. When you enable offline persistence, Firebase coordinates with Firestore to automatically manage online and offline data access and synchronize local data when the device is back online.
+
+Offline persistence requires the Firebase integration for mobile and web app development. The Firestore server-side client libraries for C#, Go, Java, Node.js, PHP, Python, and Ruby don't support offline persistence. If Firebase isn't approved for use within your organization, then use these server-side client libraries to avoid being dependent upon Firebase.
 
 ## Configure offline persistence
 
-When you initialize Firestore, you can enable or disable offline persistence:
+When you initialize a Firestore client, you can enable or disable offline persistence in the following ways:
 
 - For Android and Apple platforms, offline persistence is enabled by default. To disable persistence, set the `PersistenceEnabled` option to `false` .
 - For the web, offline persistence is disabled by default. To enable persistence, call the `enablePersistence` method. Firestore's cache isn't automatically cleared between sessions. Consequently, if your web app handles sensitive information, make sure to ask the user if they're on a trusted device before enabling persistence.
