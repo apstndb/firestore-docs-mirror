@@ -58,7 +58,7 @@ https://docs.cloud.google.com/datastore/docs/multiple-range-optimize-indexes	202
 https://docs.cloud.google.com/datastore/docs/pitr	2026-10-02T04:27:15Z
 https://docs.cloud.google.com/datastore/docs/query-explain-analyze	2026-10-02T04:27:15Z
 https://docs.cloud.google.com/datastore/docs/query-explain-analyze-report-reference	2026-10-02T04:27:15Z
-https://docs.cloud.google.com/datastore/docs/query-insights	2026-10-02T04:27:15Z
+https://docs.cloud.google.com/datastore/docs/query-insights	2026-11-11T07:40:28Z
 https://docs.cloud.google.com/datastore/docs/reference/admin/rest	2026-03-20T21:17:16Z
 https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/CommonMetadata	2025-12-05T18:21:43Z
 https://docs.cloud.google.com/datastore/docs/reference/admin/rest/Shared.Types/ConcurrencyMode	2025-10-17T22:06:14Z
@@ -423,7 +423,7 @@ https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-colle
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-collection-async	2026-10-02T06:02:21Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-doc	2026-10-02T06:02:21Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-doc-async	2026-10-02T06:02:21Z
-https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-field	2026-11-10T03:45:09Z
+https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-field	2026-11-11T07:14:54Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-delete-field-async	2026-10-02T06:02:21Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-all-documents	2026-10-29T21:30:03Z
 https://docs.cloud.google.com/firestore/docs/samples/firestore-data-get-all-documents-async	2026-10-02T06:02:21Z
@@ -582,9 +582,9 @@ https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/overview	2026
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/pitr	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain-reference	2026-10-02T06:02:44Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-insights	2026-10-02T06:02:44Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/querydata	2026-11-10T12:58:08Z
-https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/release-notes	2026-10-22T07:12:59Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-insights	2026-11-11T07:40:28Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/querydata	2026-11-11T18:40:35Z
+https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/release-notes	2026-11-11T07:15:22Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/reliability-recommender	2026-10-02T06:02:44Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/resolve-latency	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/resources	2026-10-16T06:18:47Z
@@ -720,7 +720,7 @@ https://docs.cloud.google.com/firestore/native/docs/query-data/query-cursors	202
 https://docs.cloud.google.com/firestore/native/docs/query-data/understanding-core-pipelines	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/query-explain	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/query-explain-report-reference	2026-10-02T06:02:45Z
-https://docs.cloud.google.com/firestore/native/docs/query-insights	2026-10-30T18:35:48Z
+https://docs.cloud.google.com/firestore/native/docs/query-insights	2026-11-11T07:40:28Z
 https://docs.cloud.google.com/firestore/native/docs/real-time_queries_at_scale	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/reference/libraries	2026-11-05T08:01:10Z
 https://docs.cloud.google.com/firestore/native/docs/regional-endpoints	2026-10-02T06:02:45Z

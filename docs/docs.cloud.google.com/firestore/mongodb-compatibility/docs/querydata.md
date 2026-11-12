@@ -18,17 +18,17 @@ QueryData lets you interact with the data in your Firestore with MongoDB compati
 
 A context set is a collection of database-specific information that enables QueryData to generate queries with high accuracy. A context set includes templates, facets, and value searches that help QueryData understand your database schema and the business logic of your applications.
 
-To learn more, see:
+To learn more, see the following resources:
 
 - [Context sets overview](https://docs.cloud.google.com/gemini/data-agents/querydata/firestore-mongodb-compatibility/context-sets-overview)
 - [Build context sets using the context engineering agent](https://docs.cloud.google.com/gemini/data-agents/querydata/firestore-mongodb-compatibility/build-context-sets)
-- [Manage context sets in](https://docs.cloud.google.com/gemini/data-agents/querydata/firestore-mongodb-compatibility/manage-data-agents)
+- [Manage context sets in Firestore Studio](https://docs.cloud.google.com/gemini/data-agents/querydata/firestore-mongodb-compatibility/manage-data-agents)
 
 ## QueryData
 
 QueryData writes queries for your database using context sets, translating natural language questions into accurate MongoDB-compatible Query Language (MQL) queries.
 
-To learn more, see :
+To learn more, see the following resources:
 
 - [QueryData overview](https://docs.cloud.google.com/gemini/data-agents/querydata/firestore-mongodb-compatibility/data-agent-overview)
 - [Test QueryData in Firestore Studio](https://docs.cloud.google.com/gemini/data-agents/querydata/firestore-mongodb-compatibility/inspect-data-agent)

@@ -17,6 +17,7 @@ Use the Query insights dashboard to monitor metrics-related queries. Based on th
 - **Query performance optimization** : identify queries with high latencies and that might need optimization.
 - **Query cost management** : discover high-cost queries and optimize them to reduce costs.
 - **Query stats monitoring** : track query stats over time.
+- **Index recommendations** : identify missing or suboptimal composite indexes and create recommended indexes directly from the dashboard (Enterprise edition).
 
 ### Query insights data
 
@@ -33,17 +34,18 @@ You can view data about the queries that use these methods for a given project, 
 
 Query insights returns the following information about a query:
 
-|                                          |                                                                                                                 |
-|------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
-| Normalized query text                    | The query structure represented in text.                                                                        |
-| Execution count                          | Number of executions in the selected time window.                                                               |
-| Error count                              | Number of errors in the selected time window.                                                                   |
-| Average execution duration(ms)           | The average time in milliseconds it took the database to process the query.                                     |
-| Average number of results returned       | The number of results returned by the query. Results include documents, collection IDs, and aggregated buckets. |
-| Average number of documents scanned      | The number of documents scanned in a query.                                                                     |
-| Average number of index entries scanned  | The number of index entries examined to execute the query.                                                      |
-| Load by average time                     | Data to help filter for the top queries based on average latency.                                               |
-| Load by total (billable) read operations | Data to help filter for the top queries based on total billable read operations.                                |
+|                                          |                                                                                                                         |
+|------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| Normalized query text                    | The query structure represented in text.                                                                                |
+| Execution count                          | Number of executions in the selected time window.                                                                       |
+| Error count                              | Number of errors in the selected time window.                                                                           |
+| Average execution duration(ms)           | The average time in milliseconds it took the database to process the query.                                             |
+| Average number of results returned       | The number of results returned by the query. Results include documents, collection IDs, and aggregated buckets.         |
+| Average number of documents scanned      | The number of documents scanned in a query.                                                                             |
+| Average number of index entries scanned  | The number of index entries examined to execute the query.                                                              |
+| Load by average time                     | Data to help filter for the top queries based on average latency.                                                       |
+| Load by total (billable) read operations | Data to help filter for the top queries based on total billable read operations.                                        |
+| Index recommendations                    | Recommended composite indexes, used indexes, and estimated workload impact for queries in Enterprise edition databases. |
 
 ### Data granularity and retention
 
@@ -53,23 +55,6 @@ Data granularity depends on the duration specified:
 - 1 hour granularity for intervals up to 30 days ago
 
 The maximum data retention for Query insights is 30 days. 10-minute data is stored for 4 days, and hourly data is stored for 30 days.
-
-### Limitations
-
-- [Real-time listeners](https://docs.cloud.google.com/firestore/docs/query-data/listen) are not included in Query insights statistics.
-- Query insights data is delayed by one to two hours.
-
-## Pricing
-
-There's no additional cost for Query insights.
-
-## Required roles
-
-To get the permission that you need to view the Query insights dashboard, ask your administrator to grant you the [Datastore Viewer](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.viewer) ( `roles/datastore.viewer` ) IAM role on your project. For more information about granting roles, see [Manage access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
-
-This predefined role contains the `datastore.insights.get` permission, which is required to view the Query insights dashboard.
-
-You might also be able to get this permission with [custom roles](https://docs.cloud.google.com/iam/docs/creating-custom-roles) or other [predefined roles](https://docs.cloud.google.com/iam/docs/roles-overview#predefined) .
 
 ## View Query insights
 
@@ -84,6 +69,93 @@ To view query insights for a Firestore database, open the database **Query insig
     ![The database usage dashboard in the console.](https://docs.cloud.google.com/static/firestore/native/docs/images/firestore-query-insights.png)
 
     Use the **Load type** drop-down to find the top queries by either latency or number of read operations.
+
+## Index recommendations
+
+Index recommendations for Query insights automatically identify missing or suboptimal composite index configurations for frequently executed query shapes in Firestore Enterprise edition databases.
+
+In Firestore Enterprise edition, queries can run even without matching composite indexes, which can result in slow full collection scans or in-memory sort operations. The Query insights dashboard analyzes historical query execution statistics and suggests targeted composite indexes to optimize query latency and reduce billable scanned documents.
+
+### How index recommendations work
+
+An offline batch pipeline periodically evaluates historical top queries:
+
+- **Query structure analysis** : Extracts equality, sort, and range predicates from frequently executed queries.
+- **Candidate index generation** : Generates prospective composite index definitions using index-ordering heuristics (Equality \> Sort \> Range).
+- **Optimizer evaluation** : Injects candidate indexes into the query engine's cost model to compare baseline query execution costs against hypothetical indexed execution plans.
+- **Workload impact ranking** : Ranks recommended indexes into impact tiers based on total estimated workload cost savings:
+  - **HIGH** : Converts full collection scans to selective index seeks, significantly reducing document reads and execution latency.
+  - **MEDIUM** : Eliminates expensive operations such as in-memory sorting by providing pre-sorted index results.
+  - **LOW** : Offers minor seek improvements.
+
+### View and create recommended indexes
+
+To view index recommendations and create suggested indexes from the Google Cloud console:
+
+1.  In the Google Cloud console, navigate to the **Databases** page.
+
+2.  From the list of databases, select an Enterprise edition database.
+
+3.  In the navigation menu, click **Query insights** .
+
+4.  In the queries table, select a query shape to view its **Recommendations** card. The card displays:
+
+    - The recommended composite index definition (collection, fields, sort orders, or array-contains properties).
+    - The estimated workload impact tier ( **HIGH** , **MEDIUM** , or **LOW** ).
+    - The indexes used, or an indication that a full collection scan is performed.
+
+5.  Click **Create index** on the recommendation card. A dialog opens with the collection, query scope, and fields pre-populated.
+
+6.  Click **Create** to begin building the index. You can monitor the index build progress on the **Indexes** page in the Google Cloud console.
+
+### Supported editions and modes
+
+Index recommendations are supported for Firestore Enterprise edition databases, including:
+
+- Firestore in Native mode
+- Firestore with MongoDB compatibility
+
+Standard edition databases aren't supported for index recommendations.
+
+### Limitations
+
+- [Real-time listeners](https://docs.cloud.google.com/firestore/docs/query-data/listen) are not included in Query insights statistics.
+- Query insights data is delayed by one to two hours.
+- Index recommendations are generated periodically based on historical query data, not in real time.
+- Index recommendations suggest new composite indexes; they don't suggest modifying or deleting existing indexes.
+- Automatic index creation isn't supported; recommended indexes must be created manually.
+- Query normalization replaces literal values with placeholders. Index recommendations are based on normalized query templates rather than specific runtime values.
+- Cost evaluation uses heuristics rather than live data sampling. Recommended indexes might not improve performance in every scenario, and creating an index adds write and storage overhead.
+
+## Pricing
+
+There's no additional cost for Query insights or index recommendations.
+
+## Required roles
+
+To get the permissions that you need to view the Query insights dashboard and create recommended indexes, ask your administrator to grant you the following IAM roles on your project:
+
+- View Query insights: [Datastore Viewer](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.viewer) ( `roles/datastore.viewer` )
+- Create recommended indexes:
+  - [Datastore Index Admin](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.indexAdmin) ( `roles/datastore.indexAdmin` )
+  - [Cloud Datastore Owner](https://docs.cloud.google.com/iam/docs/roles-permissions/firestore#datastore.owner) ( `roles/datastore.owner` )
+  - [Editor](https://docs.cloud.google.com/iam/docs/roles-overview#basic) ( `roles/editor` )
+  - [Owner](https://docs.cloud.google.com/iam/docs/roles-overview#basic) ( `roles/owner` )
+
+For more information about granting roles, see [Manage access to projects, folders, and organizations](https://docs.cloud.google.com/iam/docs/granting-changing-revoking-access) .
+
+These predefined roles contain the permissions required to view the Query insights dashboard and create recommended indexes. To see the exact permissions that are required, expand the **Required permissions** section:
+
+#### Required permissions
+
+The following permissions are required to view the Query insights dashboard and create recommended indexes:
+
+- View Query insights: `datastore.insights.get`
+- Create recommended indexes:
+  - `datastore.indexes.create`
+  - `datastore.indexes.update`
+
+You might also be able to get these permissions with [custom roles](https://docs.cloud.google.com/iam/docs/creating-custom-roles) or other [predefined roles](https://docs.cloud.google.com/iam/docs/roles-overview#predefined) .
 
 ## What's next
 
