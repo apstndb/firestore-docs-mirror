@@ -627,7 +627,7 @@ https://docs.cloud.google.com/firestore/native/docs/concepts/data-types	2026-10-
 https://docs.cloud.google.com/firestore/native/docs/concepts/structure-data	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/connect-ide-using-mcp-toolbox	2026-10-02T06:02:28Z
 https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library	2026-10-02T06:02:28Z
-https://docs.cloud.google.com/firestore/native/docs/create-database-web-mobile-client-library	2026-10-24T05:41:43Z
+https://docs.cloud.google.com/firestore/native/docs/create-database-web-mobile-client-library	2026-11-12T21:18:09Z
 https://docs.cloud.google.com/firestore/native/docs/custom-constraints	2026-11-10T03:45:01Z
 https://docs.cloud.google.com/firestore/native/docs/data-model	2026-11-10T22:26:45Z
 https://docs.cloud.google.com/firestore/native/docs/dataflow-connector	2026-10-02T06:02:28Z
@@ -668,7 +668,7 @@ https://docs.cloud.google.com/firestore/native/docs/overview	2026-10-02T06:02:45
 https://docs.cloud.google.com/firestore/native/docs/pipeline/dml	2026-10-22T16:05:20Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/aggregate_functions	2026-11-01T03:45:55Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/all_functions	2026-11-01T03:45:55Z
-https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions	2026-10-19T18:52:00Z
+https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/arithmetic_functions	2026-11-12T21:17:53Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/array_functions	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/comparison_functions	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/pipeline/functions/debugging_functions	2026-10-02T06:02:41Z
@@ -763,7 +763,7 @@ https://docs.cloud.google.com/firestore/native/docs/understand-error-codes	2026-
 https://docs.cloud.google.com/firestore/native/docs/understand-performance-monitoring	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/understand-reads-writes-scale-enterprise	2026-10-02T06:02:45Z
-https://docs.cloud.google.com/firestore/native/docs/usage-insights	2026-10-16T15:45:57Z
+https://docs.cloud.google.com/firestore/native/docs/usage-insights	2026-11-12T21:18:09Z
 https://docs.cloud.google.com/firestore/native/docs/use-cmek	2026-10-02T06:02:41Z
 https://docs.cloud.google.com/firestore/native/docs/use-firestore-mcp	2026-10-21T21:01:07Z
 https://docs.cloud.google.com/firestore/native/docs/use-monitoring-dashboard	2026-10-02T06:02:41Z

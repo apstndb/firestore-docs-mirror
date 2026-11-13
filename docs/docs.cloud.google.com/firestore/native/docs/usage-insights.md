@@ -84,10 +84,7 @@ It is important to note that the sum of metrics in the GroupBy section might not
 
   ## Usage insights data
 
-  Usage insights on the Google Cloud console displays data sourced from the following API methods:
-
-  - `queryTopAggregatedInsightsData`
-  - `queryTopTimeseriesInsightsData`
+  Usage insights in the Google Cloud console displays the following fields:
 
   |                                               |                                                                                                                                                 |
   |-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
