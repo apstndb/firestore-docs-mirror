@@ -26,7 +26,7 @@ Query insights includes data from the following API methods:
 - `find`
 - `aggregate`
 
-You can view data about the queries that use these methods for a given project, database, and time duration ranging from 10 minutes to 30 days. Data for queries with equivalent structures is captured under a single normalized query.
+You can view data about the queries that use these methods for a given project, database, and time duration ranging from 1 minute to 30 days. Data for queries with equivalent structures is captured under a single normalized query.
 
 Query insights returns the following information about a query:
 
@@ -47,12 +47,25 @@ Query insights returns the following information about a query:
 
 Data granularity depends on the duration specified:
 
+- 1 minute granularity for intervals up to 6 hours ago
 - 10 minute granularity for intervals up to 4 days ago
 - 1 hour granularity for intervals up to 30 days ago
 
-The maximum data retention for Query insights is 30 days. 10-minute data is stored for 4 days, and hourly data is stored for 30 days.
+The maximum data retention for query insights is 30 days. 1-minute data is stored for 6 hours, 10-minute data is stored for 4 days, and hourly data is stored for 30 days.
 
-## View Query insights
+## View query insights
+
+##### Google Cloud console
+
+To view query insights for a Firestore with MongoDB compatibility database, do the following:
+
+1.  In the Google Cloud console, go to the **Databases** page.
+
+2.  From the list of databases, select a database.
+
+3.  In the navigation menu, click **Query insights** .
+
+The **Query insights** page displays a time-series graph of your top queries alongside a table of normalized query statistics. Select a time range to view historical trends or near real-time metrics at 1-minute intervals. Use the **Load type** list to rank the top queries by either average latency or total read operations, and select individual queries in the table to compare their performance metrics on the graph.
 
 ## Index recommendations
 
@@ -98,7 +111,7 @@ Index recommendations are supported only for Firestore Enterprise edition databa
 
 ### Limitations
 
-- Query insights data is delayed by one to two hours.
+- Query insights data is available within minutes of query execution.
 - Index recommendations are generated periodically based on historical query data, not in real time.
 - Index recommendations suggest new composite indexes; they don't suggest modifying or deleting existing indexes.
 - Automatic index creation isn't supported; recommended indexes must be created manually.
@@ -107,7 +120,7 @@ Index recommendations are supported only for Firestore Enterprise edition databa
 
 ## Pricing
 
-There's no additional cost for Query insights or index recommendations.
+There's no additional cost for query insights or index recommendations.
 
 ## Required roles
 

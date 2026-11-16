@@ -24,7 +24,7 @@ Query insights includes data from the following API methods:
 - [`runQuery`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/runQuery)
 - [`runAggregationQuery`](https://docs.cloud.google.com/datastore/docs/reference/data/rest/v1/projects/runAggregationQuery)
 
-You can view data about the queries that use these methods for a given project, database, and time duration ranging from 10 minutes to 30 days. Data for queries with equivalent structures is captured under a single normalized query.
+You can view data about the queries that use these methods for a given project, database, and time duration ranging from 1 minute to 30 days. Data for queries with equivalent structures is captured under a single normalized query.
 
 Query insights returns the following information about a query:
 
@@ -45,14 +45,15 @@ Query insights returns the following information about a query:
 
 Data granularity depends on the duration specified:
 
+- 1 minute granularity for intervals up to 6 hours ago
 - 10 minute granularity for intervals up to 4 days ago
 - 1 hour granularity for intervals up to 30 days ago
 
-The maximum data retention for Query insights is 30 days. 10-minute data is stored for 4 days, and hourly data is stored for 30 days.
+The maximum data retention for query insights is 30 days. 1-minute data is stored for 6 hours, 10-minute data is stored for 4 days, and hourly data is stored for 30 days.
 
-## View Query insights
+## View query insights
 
-To view query insights for a Firestore in Datastore mode database, open the database **Query insights** pane in the Google Cloud console.
+To view query insights for a Firestore in Datastore mode database, do the following:
 
 1.  In the Google Cloud console, go to the **Databases** page.
 
@@ -60,9 +61,11 @@ To view query insights for a Firestore in Datastore mode database, open the data
 
 3.  In the navigation menu, click **Query insights** .
 
-    ![The database usage dashboard in the console.](https://docs.cloud.google.com/static/firestore/native/docs/images/datastore-query-insights.png)
+The **Query insights** page displays a time-series graph of your top queries alongside a table of normalized query statistics. To analyze query performance:
 
-    Use the **Load type** drop-down to find the top queries by either latency or number of read operations.
+- Select a time range to view historical trends or near real-time metrics at 1-minute intervals.
+- Use the **Load type** list to rank the top queries by either average latency or total read operations.
+- Select individual queries in the table to plot and compare their execution counts, latency, entities scanned, index entries scanned, and error counts on the graph.
 
 ## Index recommendations
 
@@ -71,7 +74,7 @@ In Firestore in Datastore mode, the **Index recommendations** field is visible i
 ### Limitations
 
 - In Firestore in Datastore mode, the index recommendations field is present in the Query insights dashboard, but is always empty.
-- Query insights data is delayed by one to two hours.
+- Query insights data is available within minutes of query execution.
 - Index recommendations are generated periodically based on historical query data, not in real time.
 - Index recommendations suggest new composite indexes; they don't suggest modifying or deleting existing indexes.
 - Automatic index creation isn't supported; recommended indexes must be created manually.
@@ -80,7 +83,7 @@ In Firestore in Datastore mode, the **Index recommendations** field is visible i
 
 ## Pricing
 
-There's no additional cost for Query insights or index recommendations.
+There's no additional cost for query insights or index recommendations.
 
 ## Required roles
 
