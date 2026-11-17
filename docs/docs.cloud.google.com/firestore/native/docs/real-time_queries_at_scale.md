@@ -93,11 +93,11 @@ The Firestore changelogs that drive the real-time queries automatically scale ho
 
 ![Architecture of changelog fan-out](https://docs.cloud.google.com/static/firestore/native/docs/images/changelog_architecture.svg)
 
-Automatic scaling allows you to increase your write traffic without limits, but as the traffic ramps up, the system might take some time to respond. Follow the recommendations of the [5-5-5 rule](https://docs.cloud.google.com/firestore/native/docs/best-practices#ramping_up_traffic) to avoid creating a write hotspot. [Key Visualizer](https://cloud.google.com/firestore/docs/key-visualizer) is a useful tool for analyzing write hotspots.
+Automatic scaling lets you increase your write traffic without limits, but load-based splitting takes a few minutes to add split boundaries as traffic grows. With well-distributed keys, write throughput can double every few minutes. Follow the recommendations for [ramping up traffic](https://docs.cloud.google.com/firestore/native/docs/best-practices#ramping_up_traffic) to avoid creating a write hotspot. [Key Visualizer](https://cloud.google.com/firestore/docs/key-visualizer) is a useful tool for analyzing write hotspots.
 
-Many apps have predictable organic growth, which Firestore can accommodate without precautions. Batch workloads like importing a large dataset, however, can ramp up writes too quickly. As you design your app, stay aware of where your write traffic comes from.
+Many apps have predictable organic growth, which Firestore can accommodate without precautions. Batch workloads like importing a large dataset, however, can ramp up writes faster than splits are added. When you design your app, stay aware of where your write traffic comes from.
 
-> **Key Point:** Firestore scales automatically but ramping up writes too quickly leads to contention and performance problems. Make sure to follow the [5-5-5 rule](https://docs.cloud.google.com/firestore/native/docs/best-practices#ramping_up_traffic) to avoid creating a write hotspot.
+> **Key Point:** Firestore scales automatically through load-based splitting, where write throughput can double every few minutes, but ramping up writes too abruptly leads to contention and performance issues. Follow the guidance for [ramping up traffic](https://docs.cloud.google.com/firestore/native/docs/best-practices#ramping_up_traffic) to avoid creating a write hotspot.
 
 ### Understand how writes and reads interact
 

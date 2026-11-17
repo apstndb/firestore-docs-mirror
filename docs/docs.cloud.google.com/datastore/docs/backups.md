@@ -367,7 +367,7 @@ To delete a backup, use one of the following methods.
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists. The **Disaster recovery** page opens. This page describes backup schedules and lists available backups.
 
-3.  In the **Backups** table, find the row for a backup and in the **Actions** column, click **View more** ( more_vert ). Click **Delete** .
+3.  In the **Backups** table, find the row for a backup and in the **Actions** column, click **View more** ( ). Click **Delete** .
 
 4.  Confirm the action using the text field and click **Delete** .
 
@@ -400,7 +400,7 @@ To begin a restore operation, use one of the following methods:
 
 2.  In the list of databases, find the row for the database. In the **Scheduled backups** column click either **View backups** or **Edit settings** , depending on whether a backup schedule exists. The **Disaster recovery** page opens. This page describes backup schedules and lists available backups.
 
-3.  In the **Backups** table, find the row for a backup and in the **Actions** column, click **View more** ( more_vert ). Click **Restore with Cloud Shell** .
+3.  In the **Backups** table, find the row for a backup and in the **Actions** column, click **View more** ( ). Click **Restore with Cloud Shell** .
 
 4.  The Cloud Shell panel opens with a gcloud CLI command to restore from the selected backup. Replace ` ID_OF_NEW_DATABASE ` with an ID for the database and run the command.
 

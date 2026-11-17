@@ -14,8 +14,6 @@ Firestore with MongoDB compatibility is a serverless, document database service 
 
 Not sure what database option is right for you? Learn more about our [database services](https://cloud.google.com/products/databases/) .
 
-format_list_numbered
-
 ### Guides
 
 - [Quickstart: Create a database and connect to it](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-and-query-database)
@@ -26,15 +24,11 @@ format_list_numbered
 
 - [Create and manage databases](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/create-databases)
 
-find_in_page
-
 ### Reference
 
 - [API overview](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/apis)
 
 - [Query execution reference](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/query-explain-reference)
-
-info
 
 ### Resources
 

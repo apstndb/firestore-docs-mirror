@@ -113,7 +113,7 @@ Add a query filter to restrict the results to entities that meet specific criter
 1.  Click **Query by kind** and ensure `Task` is the selected kind.
 2.  Click **Clear** to remove any query clauses.
 3.  Select the `Task` entity that you created.
-4.  Click **Delete** , and then confirm you want to delete the `Task` entity. Depending on the size of the browser window, **Delete** might be under the more_vert **More actions** menu. Once deleted, the entity is permanently removed from your database.
+4.  Click **Delete** , and then confirm you want to delete the `Task` entity. Depending on the size of the browser window, **Delete** might be under the **More actions** menu. Once deleted, the entity is permanently removed from your database.
 
 That's it, you completed this quickstart!
 

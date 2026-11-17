@@ -109,9 +109,9 @@ Likewise, if you need to query on a monotonically increasing (or decreasing) pro
 
 ### Ramping up traffic
 
-Gradually ramp up traffic to new kinds or portions of the keyspace.
+Firestore in Datastore mode uses load-based splitting to automatically partition data and distribute traffic across storage servers. Splitting isn't instantaneous. After a few minutes of sustained load, Datastore mode introduces split boundaries between keys to balance traffic across more servers.
 
-You should ramp up traffic to new kinds gradually in order to give Firestore in Datastore mode sufficient time to prepare for the increased traffic. We recommend a maximum of 500 operations per second to a new kind, then increasing traffic by 50% every 5 minutes. In theory, you can grow to 740K operations per second after 90 minutes using this ramp up schedule. Be sure that writes are distributed relatively evenly throughout the key range. Our SREs call this the "500/50/5" rule.
+If you distribute operations evenly across the key range and avoid [hotspots](https://docs.cloud.google.com/datastore/docs/best-practices#high_readwrite_rates_to_a_narrow_key_range) , write throughput can double every few minutes and read throughput improves every few minutes. Throughput scales within [Datastore mode limits](https://docs.cloud.google.com/datastore/docs/concepts/limits) , unless a split covers a single entity and can't be divided further. Ramp up traffic gradually to new kinds or portions of the keyspace to give Datastore mode time to split key ranges.
 
 This pattern of gradual ramp up is particularly important if you change your code to stop using kind A and instead use kind B. A naive way to handle this migration is to change your code to read kind B, and if it does not exist then read kind A. However, this could cause a sudden increase in traffic to a new kind with a very small portion of the keyspace.
 

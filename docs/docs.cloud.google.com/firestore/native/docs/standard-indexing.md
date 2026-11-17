@@ -79,7 +79,7 @@ To delete a manual index:
 
 3.  In the navigation menu, click **Indexes** , and then click the **Manual** tab.
 
-4.  In the list of your manual indexes, click the **More** button more_vert for the index you want to delete. Click **Delete** .
+4.  In the list of your manual indexes, click the **More** button for the index you want to delete. Click **Delete** .
 
 5.  Confirm that you want to delete this index by clicking **Delete Index** from the alert.
 
@@ -125,7 +125,7 @@ To delete a automatic indexing exemption, do the following:
 
 3.  In the navigation menu, click **Indexes** , and then click the **Automatic** tab.
 
-4.  In the list of your single-field index exemptions, click the **More** button more_vert for the exemption you want to delete. Click **Delete** .
+4.  In the list of your single-field index exemptions, click the **More** button for the exemption you want to delete. Click **Delete** .
 
 5.  Confirm that you want to delete this exemption by clicking **Delete** from the alert.
 

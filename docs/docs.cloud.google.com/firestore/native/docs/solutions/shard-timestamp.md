@@ -347,7 +347,7 @@ To remove the 500 writes per second constraint, delete the existing single-field
 
 1.  In the Firebase console, go to the **Databases & Storage** \> **Firestore** \> **Composite Indexes** tab.
 
-2.  For each index that contains the `timestamp` field, click the more_vert button and click ***Delete*** .
+2.  For each index that contains the `timestamp` field, click the button and click ***Delete*** .
 
 ### GCP Console
 
@@ -359,7 +359,7 @@ To remove the 500 writes per second constraint, delete the existing single-field
 
 4.  Use the **Filter** field to search for index definitions that contain the `timestamp` field.
 
-5.  For each of these indexes, click the more_vert button and click ***Delete*** .
+5.  For each of these indexes, click the button and click ***Delete*** .
 
 ### Firebase CLI
 
@@ -492,11 +492,11 @@ To remove the 500 writes per second constraint, delete the existing single-field
 
 After removing all the previous indexes containing the `timestamp` , define the new indexes that your app requires. Any index containing the `timestamp` field must also contain the `shard` field. For example, to support the queries above, add the following indexes:
 
-| Collection  | Fields indexed                                                              | Query scope |
-|-------------|-----------------------------------------------------------------------------|-------------|
-| instruments | arrow_downward shard, arrow_upward price.currency, arrow_downward timestamp | Collection  |
-| instruments | arrow_downward shard, arrow_upward exchange, arrow_downward timestamp       | Collection  |
-| instruments | arrow_downward shard, arrow_upward instrumentType, arrow_downward timestamp | Collection  |
+| Collection  | Fields indexed                   | Query scope |
+|-------------|----------------------------------|-------------|
+| instruments | shard, price.currency, timestamp | Collection  |
+| instruments | shard, exchange, timestamp       | Collection  |
+| instruments | shard, instrumentType, timestamp | Collection  |
 
 ### Error Messages
 

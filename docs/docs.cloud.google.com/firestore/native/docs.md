@@ -16,8 +16,6 @@ Firestore in Native mode is a NoSQL document database built for automatic scalin
 
 Not sure what database option is right for you? Learn more about our [database services](https://cloud.google.com/products/databases/) .
 
-format_list_numbered
-
 ### Guides
 
 - [Quickstart: Create a Firestore database by using a server client library](https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library)
@@ -40,8 +38,6 @@ format_list_numbered
 
 - 
 
-find_in_page
-
 ### Reference
 
 - [REST API](https://docs.cloud.google.com/firestore/docs/reference/rest)
@@ -51,8 +47,6 @@ find_in_page
 - [RPC API](https://docs.cloud.google.com/firestore/docs/reference/rpc)
 
 - 
-
-info
 
 ### Resources
 

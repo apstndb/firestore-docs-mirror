@@ -16,8 +16,6 @@ Not sure what database option is right for you? Learn more about our [database s
 
 [Go to the Firestore in Datastore mode product page for more.](https://cloud.google.com/datastore/)
 
-format_list_numbered
-
 ### Guides
 
 - [Quickstart: Store and query data in Firestore in Datastore mode](https://docs.cloud.google.com/datastore/docs/store-query-data)
@@ -38,8 +36,6 @@ format_list_numbered
 
 - [Managing Firestore in Datastore mode from the Console](https://docs.cloud.google.com/datastore/docs/console/managing-datastore)
 
-find_in_page
-
 ### Reference
 
 - [Datastore mode Client Libraries](https://docs.cloud.google.com/datastore/docs/reference/libraries)
@@ -49,8 +45,6 @@ find_in_page
 - [REST API](https://docs.cloud.google.com/datastore/docs/reference/data/rest)
 
 - [RPC API](https://docs.cloud.google.com/datastore/docs/reference/data/rpc)
-
-info
 
 ### Resources
 

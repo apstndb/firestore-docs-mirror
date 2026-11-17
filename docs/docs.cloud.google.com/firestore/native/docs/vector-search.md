@@ -269,7 +269,7 @@ gcloud firestore indexes composite create \
 
 3.  In the navigation menu, click **Indexes** , and then click the **Manual** tab.
 
-    The indexes table lists all indexes for the database. Vector indexes include a vector field with a polyline icon.
+    The indexes table lists all indexes for the database. Vector indexes include a vector field with a icon.
 
 ##### gcloud
 
@@ -302,7 +302,7 @@ where:
 
 3.  In the navigation menu, click **Indexes** , and then click the **Manual** tab.
 
-4.  In the list of your manual indexes, click the **More** button more_vert for the index you want to delete. Click **Delete** .
+4.  In the list of your manual indexes, click the **More** button for the index you want to delete. Click **Delete** .
 
 5.  Confirm that you want to delete this index by clicking **Delete Index** from the alert.
 

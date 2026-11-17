@@ -150,6 +150,16 @@ The following tables show the limits that apply to Firestore with MongoDB compat
 |-----------------------------------------------------|---------|
 | Maximum number of TTL configurations for a database | 500     |
 
+### Change streams
+
+> **Preview — Change streams**
+>
+> This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://docs.cloud.google.com/terms/service-terms#1) . Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products/#product-launch-stages) .
+
+| Limit                                           | Details                                                                                                                                                                                                                                                       |
+|-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Maximum number of change streams for a database | 400 Includes both active change streams and recently deleted change streams for up to 6 minutes after deletion. For more information, see [Change streams limits](https://docs.cloud.google.com/firestore/mongodb-compatibility/docs/change-streams#limits) . |
+
 ### Saved queries limits
 
 > **Preview — Saved queries**

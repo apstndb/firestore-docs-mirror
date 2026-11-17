@@ -33,7 +33,7 @@ You can nest complex objects like arrays or maps within documents.
 <li><strong>What's a possible use case?</strong> In a chat app, for example, you might store a user's 3 most recently visited chat rooms as a nested list in their profile.</li>
 </ul></td>
 <td><ul>
-<li>class alovelace<br />
+<li>alovelace<br />
 
 <ul>
 <li>name :<br />
@@ -68,18 +68,18 @@ You can create collections within documents when you have data that might expand
 <li><strong>What's a possible use case?</strong> In the same chat app, for example, you might create collections of users or messages within chat room documents.</li>
 </ul></td>
 <td><ul>
-<li>collections_bookmark science
+<li>science
 <ul>
-<li>class software<br />
+<li>software<br />
 name : "software chat"
 <ul>
-<li>collections_bookmark users
+<li>users
 <ul>
-<li>class alovelace<br />
+<li>alovelace<br />
 first : "Ada"<br />
 last : "Lovelace"<br />
 </li>
-<li>class sride<br />
+<li>sride<br />
 first : "Sally"<br />
 last : "Ride"`</li>
 </ul></li>
@@ -87,7 +87,7 @@ last : "Ride"`</li>
 <br />
 <br />
 </li>
-<li>class astrophysics
+<li>astrophysics
 <ul>
 <li>...<br />
 </li>
@@ -115,30 +115,30 @@ Create collections at the root level of your database to organize disparate data
 <li><strong>What's a possible use case?</strong> In the same chat app, for example, you might create one collection for users and another for rooms and messages.</li>
 </ul></td>
 <td><ul>
-<li>collections_bookmark users
+<li>users
 <ul>
-<li>class alovelace<br />
+<li>alovelace<br />
 first : "Ada"<br />
 last : "Lovelace"<br />
 born : 1815<br />
 </li>
-<li>class sride<br />
+<li>sride<br />
 first : "Sally"<br />
 last : "Ride"<br />
 born : 1951<br />
 </li>
 </ul></li>
-<li>collections_bookmark rooms
+<li>rooms
 <ul>
-<li>class software
+<li>software
 <ul>
-<li>collections_bookmark messages
+<li>messages
 <ul>
-<li>class message1<br />
+<li>message1<br />
 from : "alovelace"<br />
 content : "..."<br />
 </li>
-<li>class message2<br />
+<li>message2<br />
 from : "sride"<br />
 content : "..."<br />
 </li>

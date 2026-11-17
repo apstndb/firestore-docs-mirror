@@ -22,7 +22,7 @@ In Firestore, the unit of storage is the document. A document is a lightweight r
 
 A document representing a user `alovelace` might look like this:
 
-- class alovelace
+- alovelace
 
   `first : "Ada"`  
   `last : "Lovelace"`  
@@ -32,7 +32,7 @@ A document representing a user `alovelace` might look like this:
 
 Complex, nested objects in a document are called maps. For example, you could structure the user's name from the example above with a map, like this:
 
-- class alovelace
+- alovelace
 
   `name :`  
   `first : "Ada"`  
@@ -47,15 +47,15 @@ You may notice that documents look a lot like JSON. In fact, they basically are.
 
 Documents live in collections, which are containers for documents. For example, you could have a `users` collection to contain your various users, each represented by a document:
 
-- collections_bookmark users
+- users
 
-  - class alovelace
+  - alovelace
 
     `first : "Ada"`  
     `last : "Lovelace"`  
     `born : 1815`  
 
-  - class aturing
+  - aturing
 
     `first : "Alan"`  
     `last : "Turing"`  
@@ -473,13 +473,13 @@ To understand how hierarchical data structures work in Firestore, consider an ex
 
 You can create a collection called `rooms` to store different chat rooms:
 
-- collections_bookmark rooms
+- rooms
 
-  - class roomA
+  - roomA
 
     `name : "my chat room"`  
 
-  - class roomB
+  - roomB
 
     `...`  
 
@@ -493,24 +493,24 @@ The best way to store messages in this scenario is by using subcollections. A su
 
 You can create a subcollection called `messages` for every room document in your `rooms` collection:
 
-- collections_bookmark rooms
+- rooms
 
-  - class roomA
+  - roomA
 
     `name : "my chat room"`  
 
-    - collections_bookmark messages
+    - messages
 
-      - class message1
+      - message1
 
         `from : "alex"`  
         `msg : "Hello World!"`  
 
-      - class message2
+      - message2
 
         `...`  
 
-  - class roomB
+  - roomB
 
     `...`  
 

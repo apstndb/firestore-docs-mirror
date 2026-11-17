@@ -25,9 +25,9 @@ Key Visualizer heatmaps use dark colors to indicate normal or low values, and br
 
 Keep in mind that for most metrics, Key Visualizer identifies which values are "high" and "low" based entirely on your database's usage. For example, if you perform 20 reads per second in a specific key range and 1 read per second in other key ranges, Key Visualizer uses a bright color for that specific key range. Note that bright colors do not necessarily indicate a problem.
 
-To adjust the colors that are used for different values, use the **+ / -** buttons on either side of the **Adjust Brightness** *brightness_6* icon. When you increase the brightness, you lower the range of values that each color represents; when you lower the brightness, you increase the range of values.
+To adjust the colors that are used for different values, use the **+ / -** buttons on either side of the **Adjust Brightness** icon. When you increase the brightness, you lower the range of values that each color represents; when you lower the brightness, you increase the range of values.
 
-To reset the brightness to the default setting, click the **Adjust Brightness** *brightness_6* icon .
+To reset the brightness to the default setting, click the **Adjust Brightness** icon .
 
 ## Zooming in on time periods and key ranges
 
@@ -36,10 +36,10 @@ When you open a heatmap, it displays values for the time period included in the 
 There are several ways to zoom in or out:
 
 - Scroll up or down within the heatmap.
-- Click the **Rectangular Zoom** *crop* button, then click and drag to select an area to enlarge.
+- Click the **Rectangular Zoom** button, then click and drag to select an area to enlarge.
 - Press and hold the `Shift` key, then click and drag to select an area to enlarge.
 - Return to the previous area of the heatmap by pressing the `Backspace` or `Delete` key.
-- Zoom out to view the entire table by clicking the **Reset Zoom** *zoom_out_map* button or pressing the `R` key.
+- Zoom out to view the entire table by clicking the **Reset Zoom** button or pressing the `R` key.
 
 ## Drilling down by key prefix
 

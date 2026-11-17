@@ -26,7 +26,7 @@ You can view all your Firestore Standard edition data in the Google Cloud consol
 
 ### Open a specific path
 
-To open a document or collection at a specific path, use the **Edit path** button create :
+To open a document or collection at a specific path, use the **Edit path** button :
 
 ![Firestore Panel view in the console, with the Edit path button highlighted.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-console-edit-path.png)
 
@@ -36,7 +36,7 @@ You can configure preferences for the data viewer in Firestore Studio. These pre
 
 To configure panel settings:
 
-1.  In the data viewer toolbar, click **Panel settings** settings .
+1.  In the data viewer toolbar, click **Panel settings** .
 
 2.  In the **Project panel settings** panel, configure the following options:
 
@@ -70,7 +70,7 @@ You can filter documents in a collection based on field value and the `==` , `!-
 
 To apply a collection filter:
 
-1.  Click the filter button filter_list next to a collection ID:
+1.  Click the filter button next to a collection ID:
 
     ![Firestore Panel view in the console, with the Filter button highlighted.](https://docs.cloud.google.com/firestore/native/docs/images/firestore-console-filter-documents.png)
 
@@ -104,7 +104,7 @@ You can query for documents in the ***Query Builder*** tab of the Firestore Stud
 
 6.  Click ***Add to query*** to filter the returned set of documents. By default, the Query Builder adds a `WHERE` clause. You can modify this clause using the dropdowns and text fields or change to one of the other available clauses. To continue building more complex queries, click ***Add to query*** .
 
-    To remove a query clause, click it's remove button delete . To remove all query clauses, click ***Clear*** .
+    To remove a query clause, click it's remove button . To remove all query clauses, click ***Clear*** .
 
     > **Note:** Queries must meet Firestore Standard edition requirements and limitations for queries. Otherwise, the query fails and the page returns an error that describes why the query failed.
 

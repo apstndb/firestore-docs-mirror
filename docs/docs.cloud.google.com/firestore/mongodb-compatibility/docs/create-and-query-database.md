@@ -43,13 +43,13 @@ Learn how to create a Firestore with MongoDB compatibility database and connect 
 
     2.  Select the project.
 
-    3.  Click person_add **Grant access** .
+    3.  Click **Grant access** .
 
     4.  In the **New principals** field, enter your user identifier. This is typically the email address for a Google Account.
 
     5.  Click **Select a role** , then search for the role.
 
-    6.  To grant additional roles, click add **Add another role** and add each additional role.
+    6.  To grant additional roles, click **Add another role** and add each additional role.
 
     7.  Click **Save** .
 

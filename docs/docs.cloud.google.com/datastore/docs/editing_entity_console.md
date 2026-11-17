@@ -30,7 +30,7 @@ This page assumes you have already created an entity that is stored in Firestore
 
 ### Edit a property
 
-1.  Open the **Edit Entity** page for an entity. Under **Properties** , click **Edit** edit for the property you want to edit.
+1.  Open the **Edit Entity** page for an entity. Under **Properties** , click **Edit** for the property you want to edit.
 
     > **Tip:** You can filter the properties table. Click **Filter properties** at the top of the table.
 
@@ -66,7 +66,7 @@ This page assumes you have already created an entity that is stored in Firestore
 
 ### Delete a property
 
-1.  Open the **Edit Entity** page for an entity. Under **Properties** , click **Delete** delete for the property you want to delete.
+1.  Open the **Edit Entity** page for an entity. Under **Properties** , click **Delete** for the property you want to delete.
 
     ![The delete button within the property table.](https://docs.cloud.google.com/static/datastore/images/delete_property.png)
 

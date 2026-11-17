@@ -16,11 +16,11 @@ Creating innovative AI-powered solutions for use cases such as product recommend
 
 The core workflow for vector search in Firestore consists of 4 steps.
 
-### looks_one Generate vector embeddings
+### Generate vector embeddings
 
 The first step in utilizing vector search is to generate vector embeddings. Embeddings are representations of different kinds of data like text, images, and video that capture semantic or syntactic similarities between the entities they represent. Embeddings can be calculated using a service, such as the Vertex AI text-embeddings API.
 
-### looks_two Store embeddings in Firestore
+### Store embeddings in Firestore
 
 Once the embeddings are generated you can store them in Firestore using one of the supported SDKs. Here is what that operation looks like in the NodeJS SDK:
 
@@ -35,11 +35,11 @@ await collectionRef.add({
 });
 ```
 
-### looks_3 Create a vector index
+### Create a vector index
 
 The next step is to create a Firestore KNN vector index where the vector embeddings are stored. During the preview release, you will need to create the index using the `gcloud` command line tool.
 
-### looks_4 Perform the vector search
+### Perform the vector search
 
 Once you have added all the vector embeddings and created the vector index, you are ready to run the search. You will then utilize the `find_nearest` call on a collection reference to pass the query vector embedding with which to compare the stored embeddings and to specify the distance function you want to utilize.
 

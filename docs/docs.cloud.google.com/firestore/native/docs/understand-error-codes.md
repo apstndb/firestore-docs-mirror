@@ -30,7 +30,7 @@ The following situations can increase `ABORTED` errors:
 
 - A document receiving too many updates per second.
 - Contention from overlapping transactions.
-- Traffic increases that exceed the 500-50-5 rule or encounter hot-spots.
+- Rapid [traffic increases](https://docs.cloud.google.com/firestore/native/docs/best-practices#ramping_up_traffic) that outpace load-based splitting or encounter hotspots.
 
 ```
 ABORTED

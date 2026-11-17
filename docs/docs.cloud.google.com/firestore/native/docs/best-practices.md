@@ -146,7 +146,9 @@ NOTE: The example above uses a monotonically increasing field which is an anti-p
 
 ### Ramping up traffic
 
-You should gradually ramp up traffic to new collections or lexicographically close documents to give Firestore sufficient time to prepare documents for increased traffic. We recommend starting with a maximum of 500 operations per second to a new collection and then increasing traffic by 50% every 5 minutes. You can similarly ramp up your write traffic, but keep in mind the [Firestore Standard Limits](https://docs.cloud.google.com/firestore/quotas#writes_and_transactions) . Be sure that operations are distributed relatively evenly throughout the key range. This is called the "500/50/5" rule.
+Firestore uses load-based splitting to automatically partition data and distribute traffic across storage servers. Splitting isn't instantaneous. After a few minutes of sustained load, Firestore introduces split boundaries between keys to balance traffic across more servers.
+
+If you distribute operations evenly across the key range and avoid [hotspots](https://docs.cloud.google.com/firestore/native/docs/best-practices#hotspots) , write throughput can double every few minutes and read throughput improves every few minutes. Throughput scales within the [Firestore standard limits](https://docs.cloud.google.com/firestore/quotas#writes_and_transactions) , unless a split covers a single document and can't be divided further. Ramp up traffic gradually to new collections or lexicographically close documents to give Firestore time to split key ranges.
 
 #### Migrating traffic to a new collection
 

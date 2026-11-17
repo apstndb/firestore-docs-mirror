@@ -505,7 +505,7 @@ db.restaurants.dropIndex({"cuisine" : 1})
 
 3.  In the navigation menu, click **Indexes** .
 
-4.  In the list of indexes, choose **Delete** from the **More** button more_vert for the index you want to delete.
+4.  In the list of indexes, choose **Delete** from the **More** button for the index you want to delete.
 
 5.  Click **Delete Index** .
 

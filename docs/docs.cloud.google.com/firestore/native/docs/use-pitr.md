@@ -267,7 +267,7 @@ You can clone an existing database at a selected timestamp into a new database:
 
 1.  In the Google Cloud console, go to the **Databases** page.
 
-2.  Click more_vert **View more** in the table row for the database that you want to clone. Click **Clone** . The **Create a clone** dialog appears.
+2.  Click **View more** in the table row for the database that you want to clone. Click **Clone** . The **Create a clone** dialog appears.
 
 3.  In the **Create a clone** dialog, provide parameters for cloning the database:
 

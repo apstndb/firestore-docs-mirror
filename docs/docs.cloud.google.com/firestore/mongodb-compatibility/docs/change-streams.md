@@ -32,6 +32,15 @@ Change Streams support the following features:
 - All resume options including `resumeAfter` and `startAfter` .
 - When using `watch()` to observe changes, you can chain aggregation stages like `$addFields` , `$match` , `$project` , `$replaceRoot` , `$replaceWith` , `$set` , and `$unset` .
 
+## Limits
+
+A database can have a maximum of 400 change streams. Both active change streams and recently deleted change streams in an inactive state count toward this limit.
+
+When you delete a change stream, it stays in an inactive state for up to 6 minutes before it's cleared and stops counting toward the limit. If you reach the limit, creating a new change stream fails with an error that shows the counts of active and inactive change streams. To troubleshoot this issue, do one of the following:
+
+- If inactive change streams are present, wait for the duration shown in the error message, up to 6 minutes after deletion, and then try again.
+- If all 400 change streams are active, delete an unused change stream and wait up to 6 minutes before creating a new one.
+
 ## Configure Change Streams
 
 To create, drop, or view existing Change Streams for a database, use the Google Cloud console.
@@ -52,7 +61,7 @@ To create a change stream, use the Google Cloud console.
 
 2.  From the list, select a Firestore with MongoDB compatibility database. The **Firestore Studio** panel opens.
 
-3.  In the **Explorer** panel, find the **Change streams** node, click more_vert **More actions** , and then select **Create change stream** .
+3.  In the **Explorer** panel, find the **Change streams** node, click **More actions** , and then select **Create change stream** .
 
 4.  Enter a unique change stream name, scope, and retention period, and then click **Save**
 
@@ -66,7 +75,7 @@ You can view details about Change Streams in the Google Cloud console.
 
 3.  In the **Explorer** panel, find the **Change streams** node.
 
-4.  To open or close the node, click arrow_drop_down **Toggle node** .
+4.  To open or close the node, click **Toggle node** .
 
 ### Delete a change stream
 
@@ -78,11 +87,11 @@ To delete a change stream, use the Google Cloud console.
 
 3.  In the **Explorer** panel, find the **Change streams** node.
 
-4.  To open or close the node, click arrow_drop_down **Toggle node** .
+4.  To open or close the node, click **Toggle node** .
 
 5.  In the **Explorer** , locate the change stream that you want to delete.
 
-6.  Click more_vert **More actions** and then select **Delete change stream** .
+6.  Click **More actions** and then select **Delete change stream** .
 
 7.  In the dialog, enter the change stream name to confirm deletion, and then click **Delete** .
 
