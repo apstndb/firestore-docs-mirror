@@ -715,8 +715,6 @@ Here, snapshot options are set in client code to allow listening for local chang
 
 ### Web version 9
 
-> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from the namespaced API.
-
 ```
 const unsubscribe = onSnapshot(
    doc(db, "cities", "SF"),
@@ -729,8 +727,6 @@ const unsubscribe = onSnapshot(
 ```
 
 ### Web version 8
-
-> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable modular Web API and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from the namespaced API.
 
 ```
 // Not yet supported in the Web namespaced API

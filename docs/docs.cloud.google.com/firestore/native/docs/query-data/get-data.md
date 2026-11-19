@@ -1535,8 +1535,6 @@ To use custom objects, you must define a [FirestoreDataConverter](https://fireba
 
 ### Web version 9
 
-> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
-
 ```
 class City {
     constructor (name, state, country ) {
@@ -1568,8 +1566,6 @@ const cityConverter = {
 To use custom objects, you must define a [FirestoreDataConverter](https://firebase.google.com/docs/reference/js/v8/firebase.firestore.FirestoreDataConverter) function for your class. For example:
 
 ### Web version 8
-
-> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
 ```
 class City {
@@ -1603,8 +1599,6 @@ Call your data converter with your read operations. After conversion, you can ac
 
 ### Web version 9
 
-> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
-
 ```
 import { doc, getDoc} from "firebase/firestore"; 
 
@@ -1624,8 +1618,6 @@ if (docSnap.exists()) {
 Call your data converter with your read operations. After conversion, you can access custom object methods:
 
 ### Web version 8
-
-> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
 ```
 db.collection("cities").doc("LA")
@@ -2471,8 +2463,6 @@ end
 To retrieve all the documents from a subcollection, create a reference with the complete path to that subcollection:
 
 ### Web version 9
-
-> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
 ```
 const { collection, getDocs } = require("firebase/firestore");

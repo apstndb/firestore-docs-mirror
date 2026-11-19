@@ -2,7 +2,7 @@
 name: documents/docs.cloud.google.com/firestore/native/docs/client-side-traces
 uri: https://docs.cloud.google.com/firestore/native/docs/client-side-traces
 title: Monitor performance with client-side traces
-description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+description: Monitor client-side performance and debug requests with OpenTelemetry traces in the client libraries.
 data_source: docs.cloud.google.com
 ---
 

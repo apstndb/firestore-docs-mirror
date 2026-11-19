@@ -2,7 +2,7 @@
 name: documents/docs.cloud.google.com/firestore/native/docs/best-practices
 uri: https://docs.cloud.google.com/firestore/native/docs/best-practices
 title: Best practices
-description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+description: Learn about best practices for Firestore to optimize app performance and manage data effectively.
 data_source: docs.cloud.google.com
 ---
 

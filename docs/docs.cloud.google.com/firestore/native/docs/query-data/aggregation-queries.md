@@ -32,8 +32,6 @@ The following `count()` aggregation returns the total number of cities in the `c
 
 ### Web version 9
 
-> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
-
 ```
 const coll = collection(db, "cities");
 const snapshot = await getCountFromServer(coll);
@@ -215,8 +213,6 @@ def create_count_query(project_id: str) -> None:
 The `count()` aggregation takes into account any filters on the query and any `limit` clauses.
 
 ### Web version 9
-
-> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
 ```
 const coll = collection(db, "cities");
@@ -408,8 +404,6 @@ Use the `sum()` aggregation to return the total sum of numeric values that match
 
 ### Web version 9
 
-> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
-
 ```
 const coll = collection(firestore, 'cities');
 const snapshot = await getAggregateFromServer(coll, {
@@ -565,8 +559,6 @@ func createSumQuery(w io.Writer, projectID string) error {
 The `sum()` aggregation takes into account any filters on the query and any limit clauses—for example:
 
 ### Web version 9
-
-> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
 ```
 const coll = collection(firestore, 'cities');
@@ -736,8 +728,6 @@ Use the `average()` aggregation to return the average of numeric values that mat
 
 ### Web version 9
 
-> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
-
 ```
 const coll = collection(firestore, 'cities');
 const snapshot = await getAggregateFromServer(coll, {
@@ -893,8 +883,6 @@ func createAvgQuery(w io.Writer, projectID string) error {
 The `average()` aggregation takes into account any filters on the query and any limit clauses, for example:
 
 ### Web version 9
-
-> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
 ```
 const coll = collection(firestore, 'cities');
@@ -1065,8 +1053,6 @@ You can combine multiple aggregations in a single aggregation pipeline. This can
 The following example performs multiple aggregations in a single aggregation query:
 
 ### Web version 9
-
-> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
 ```
 const coll = collection(firestore, 'cities');

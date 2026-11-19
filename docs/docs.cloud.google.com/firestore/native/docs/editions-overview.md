@@ -2,7 +2,7 @@
 name: documents/docs.cloud.google.com/firestore/native/docs/editions-overview
 uri: https://docs.cloud.google.com/firestore/native/docs/editions-overview
 title: Firestore editions overview
-description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+description: Choose your Firestore edition. Evaluate Standard and Enterprise features.
 data_source: docs.cloud.google.com
 ---
 

@@ -2,7 +2,7 @@
 name: documents/docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline
 uri: https://docs.cloud.google.com/firestore/native/docs/manage-data/enable-offline
 title: Enable offline data
-description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+description: Enable offline data persistence for Android, Apple, and web apps using Firestore.
 data_source: docs.cloud.google.com
 ---
 
@@ -32,8 +32,6 @@ When you initialize a Firestore client, you can enable or disable offline persis
 
 ### Web version 9
 
-> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
-
 ```
 // Memory cache is the default if no config is specified.
 initializeFirestore(app);
@@ -59,8 +57,6 @@ initializeFirestore(app,
 ```
 
 ### Web version 8
-
-> [Learn more](https://firebase.google.com/docs/web/learn-more#modular-version) about the tree-shakeable Web v9 modular SDK and [upgrade](https://firebase.google.com/docs/web/modular-upgrade) from version 8.
 
 ```
 firebase.firestore().enablePersistence()

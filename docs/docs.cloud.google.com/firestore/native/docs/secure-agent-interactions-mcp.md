@@ -2,7 +2,7 @@
 name: documents/docs.cloud.google.com/firestore/native/docs/secure-agent-interactions-mcp
 uri: https://docs.cloud.google.com/firestore/native/docs/secure-agent-interactions-mcp
 title: Best practices for securing agent interactions with Model Context Protocol
-description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+description: Learn best practices for securing agent interactions with Model Context Protocol.
 data_source: docs.cloud.google.com
 ---
 

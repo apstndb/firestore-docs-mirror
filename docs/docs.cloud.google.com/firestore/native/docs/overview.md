@@ -2,7 +2,7 @@
 name: documents/docs.cloud.google.com/firestore/native/docs/overview
 uri: https://docs.cloud.google.com/firestore/native/docs/overview
 title: Firestore overview
-description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+description: Learn about Firestore, an enterprise-grade, fully managed document database from {{dynamic_data.site_values.cloud_name}}.
 data_source: docs.cloud.google.com
 ---
 

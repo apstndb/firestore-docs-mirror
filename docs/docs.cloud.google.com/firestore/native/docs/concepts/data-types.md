@@ -2,7 +2,7 @@
 name: documents/docs.cloud.google.com/firestore/native/docs/concepts/data-types
 uri: https://docs.cloud.google.com/firestore/native/docs/concepts/data-types
 title: Supported data types
-description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+description: Learn about supported data types for Firestore in Native mode.
 data_source: docs.cloud.google.com
 ---
 

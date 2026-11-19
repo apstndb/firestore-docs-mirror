@@ -2,7 +2,7 @@
 name: documents/docs.cloud.google.com/firestore/native/docs/usage-insights
 uri: https://docs.cloud.google.com/firestore/native/docs/usage-insights
 title: Analyze usage insights
-description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+description: Learn how to analyze usage insights for your Firestore database.
 data_source: docs.cloud.google.com
 ---
 

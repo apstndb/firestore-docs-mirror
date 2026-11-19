@@ -18,7 +18,7 @@ The core workflow for vector search in Firestore consists of 4 steps.
 
 ### Generate vector embeddings
 
-The first step in utilizing vector search is to generate vector embeddings. Embeddings are representations of different kinds of data like text, images, and video that capture semantic or syntactic similarities between the entities they represent. Embeddings can be calculated using a service, such as the Vertex AI text-embeddings API.
+The first step in utilizing vector search is to generate vector embeddings. Embeddings are representations of different kinds of data like text, images, and video that capture semantic or syntactic similarities between the entities they represent. Embeddings can be calculated using a service, such as the [Gemini Enterprise Agent Platform text-embeddings API](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/embeddings/get-text-embeddings) .
 
 ### Store embeddings in Firestore
 

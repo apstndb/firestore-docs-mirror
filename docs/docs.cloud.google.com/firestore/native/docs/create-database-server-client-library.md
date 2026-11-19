@@ -2,7 +2,7 @@
 name: documents/docs.cloud.google.com/firestore/native/docs/create-database-server-client-library
 uri: https://docs.cloud.google.com/firestore/native/docs/create-database-server-client-library
 title: 'Quickstart: Create a Firestore database by using a server client library'
-description: Set up Firestore to add or read data by using the C#, Go, Java, Node.js, PHP, Python, or Ruby server client library.
+description: Set up Firestore to add or read data using server client libraries.
 data_source: docs.cloud.google.com
 ---
 

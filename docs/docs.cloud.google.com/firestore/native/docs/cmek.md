@@ -2,7 +2,7 @@
 name: documents/docs.cloud.google.com/firestore/native/docs/cmek
 uri: https://docs.cloud.google.com/firestore/native/docs/cmek
 title: Customer-managed encryption keys (CMEK)
-description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+description: Protect your data using customer-managed encryption keys for the Firestore API.
 data_source: docs.cloud.google.com
 ---
 

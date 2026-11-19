@@ -16,11 +16,11 @@ This page shows you how to use Firestore to perform K-nearest neighbor (KNN) vec
 
 ## Before you begin
 
-Before you store embeddings in Firestore, you must generate vector embeddings. Firestore does not generate the embeddings. You can use a service such as Vertex AI to create vector values, for example, [text embeddings](https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/get-text-embeddings) from your Firestore data. You can then store these embeddings back in Firestore documents.
+Before you store embeddings in Firestore, you must generate vector embeddings. Firestore does not generate the embeddings. You can use a service such as Gemini Enterprise Agent Platform to create vector values, for example, [text embeddings](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/embeddings/get-text-embeddings) from your Firestore data. You can then store these embeddings back in Firestore documents.
 
-To learn more about embeddings, see [What are embeddings?](https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings#embedding-types)
+To learn more about embeddings, see [What are embeddings?](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/embeddings)
 
-To learn how to get text embeddings with Vertex AI, see [Get text embeddings](https://cloud.google.com/vertex-ai/generative-ai/docs/embeddings/get-text-embeddings) .
+To learn how to get text embeddings with Gemini Enterprise Agent Platform, see [Get text embeddings](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/embeddings/get-text-embeddings) .
 
 ## Store vector embeddings
 
@@ -450,7 +450,7 @@ If you're unsure whether or not your data is normalized and you want to use `DOT
 
 ### Pre-filter documents
 
-To pre-filter documents before finding the nearest neighbors, you can combine a similarity search with other query operators. The `and` and `or` composite filters are supported. For more information about supported field filters, see [Query operators](https://cloud.google.com/firestore/docs/query-data/queries#query_operators) .
+To pre-filter documents before finding the nearest neighbors, you can combine a similarity search with other query operators. The `and` and `or` composite filters are supported. For more information about supported field filters, see [Query operators](https://docs.cloud.google.com/firestore/native/docs/query-data/queries#query_operators) .
 
 ##### Python
 

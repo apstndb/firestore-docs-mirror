@@ -2,7 +2,7 @@
 name: documents/docs.cloud.google.com/firestore/native/docs/backups
 uri: https://docs.cloud.google.com/firestore/native/docs/backups
 title: Back up and restore data
-description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+description: Back up and restore Firestore data using scheduled backups.
 data_source: docs.cloud.google.com
 ---
 

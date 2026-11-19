@@ -2,7 +2,7 @@
 name: documents/docs.cloud.google.com/firestore/native/docs/text-search
 uri: https://docs.cloud.google.com/firestore/native/docs/text-search
 title: Use text search
-description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+description: Learn how to use text search in Firestore.
 data_source: docs.cloud.google.com
 ---
 

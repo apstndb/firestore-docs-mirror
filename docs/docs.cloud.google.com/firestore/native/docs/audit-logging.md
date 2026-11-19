@@ -2,7 +2,7 @@
 name: documents/docs.cloud.google.com/firestore/native/docs/audit-logging
 uri: https://docs.cloud.google.com/firestore/native/docs/audit-logging
 title: Firestore audit logging information
-description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+description: Learn about Audit Log entries for Firestore.
 data_source: docs.cloud.google.com
 ---
 
