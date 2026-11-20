@@ -74,12 +74,12 @@ The following table summarizes the features available for each edition:
 </tr>
 <tr class="even">
 <td>Text search</td>
-<td>Yes (Preview)</td>
+<td>Yes</td>
 <td>No</td>
 </tr>
 <tr class="odd">
 <td>Geospatial search</td>
-<td>Yes (Preview)</td>
+<td>Yes</td>
 <td>No</td>
 </tr>
 <tr class="even">
