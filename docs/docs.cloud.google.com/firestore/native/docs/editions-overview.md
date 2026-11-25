@@ -2,7 +2,7 @@
 name: documents/docs.cloud.google.com/firestore/native/docs/editions-overview
 uri: https://docs.cloud.google.com/firestore/native/docs/editions-overview
 title: Firestore editions overview
-description: Choose your Firestore edition. Evaluate Standard and Enterprise features.
+description: Learn about the Enterprise and Standard editions of Firestore.
 data_source: docs.cloud.google.com
 ---
 

@@ -2,7 +2,7 @@
 name: documents/docs.cloud.google.com/firestore/native/docs/emulator
 uri: https://docs.cloud.google.com/firestore/native/docs/emulator
 title: Use Firestore emulator locally
-description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+description: Test your app locally by installing, running, and connecting to the Firestore emulator using the Google Cloud CLI.
 data_source: docs.cloud.google.com
 ---
 

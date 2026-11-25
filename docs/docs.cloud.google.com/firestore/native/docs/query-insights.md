@@ -162,5 +162,5 @@ You might also be able to get these permissions with [custom roles](https://docs
 
 ## What's next
 
-- Use [query explain](https://docs.cloud.google.com/firestore/docs/query-explain) to improve query performance
-- [Monitor usage](https://docs.cloud.google.com/firestore/docs/monitor-usage)
+- Use [Query Explain](https://docs.cloud.google.com/firestore/native/docs/query-explain) to improve query performance
+- [Monitor usage](https://docs.cloud.google.com/firestore/native/docs/monitor-usage)

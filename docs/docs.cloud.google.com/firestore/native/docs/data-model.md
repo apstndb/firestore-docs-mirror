@@ -2,7 +2,7 @@
 name: documents/docs.cloud.google.com/firestore/native/docs/data-model
 uri: https://docs.cloud.google.com/firestore/native/docs/data-model
 title: Data model
-description: A cloud-hosted NoSQL database that's simple enough for rapid prototyping yet scalable and flexible enough to grow to any size.
+description: Understand the Firestore data model to structure data effectively for your applications.
 data_source: docs.cloud.google.com
 ---
 
