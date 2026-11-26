@@ -43,84 +43,84 @@ The following table lists the permissions that the caller must have to perform e
 <td></td>
 </tr>
 <tr class="even">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/batchGet"><code>batchGet</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/batchGet"><code>batchGet</code></a></td>
 <td><code>datastore.entities.get</code></td>
 </tr>
 <tr class="odd">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/batchWrite"><code>batchWrite</code></a> update or transform with <a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition">exists precondition</a> set to <code>false</code></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/batchWrite"><code>batchWrite</code></a> update or transform with <a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/Precondition">exists precondition</a> set to <code>false</code></td>
 <td><code>datastore.entities.create</code></td>
 </tr>
 <tr class="even">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/batchWrite"><code>batchWrite</code></a> update or transform with <a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition">exists precondition</a> set to <code>true</code></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/batchWrite"><code>batchWrite</code></a> update or transform with <a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/Precondition">exists precondition</a> set to <code>true</code></td>
 <td><code>datastore.entities.create</code></td>
 </tr>
 <tr class="odd">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/batchWrite"><code>batchWrite</code></a> update or transform with no <a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition">precondition</a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/batchWrite"><code>batchWrite</code></a> update or transform with no <a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/Precondition">precondition</a></td>
 <td><code>datastore.entities.create datastore.entities.update</code></td>
 </tr>
 <tr class="even">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/beginTransaction"><code>beginTransaction</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/beginTransaction"><code>beginTransaction</code></a></td>
 <td><code>datastore.databases.get</code></td>
 </tr>
 <tr class="odd">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/commit"><code>commit</code></a> update or transform with <a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition">exists precondition</a> set to <code>false</code></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/commit"><code>commit</code></a> update or transform with <a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/Precondition">exists precondition</a> set to <code>false</code></td>
 <td><code>datastore.entities.create</code></td>
 </tr>
 <tr class="even">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/commit"><code>commit</code></a> update or transform with <a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition">exists precondition</a> set to <code>true</code></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/commit"><code>commit</code></a> update or transform with <a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/Precondition">exists precondition</a> set to <code>true</code></td>
 <td><code>datastore.entities.update</code></td>
 </tr>
 <tr class="odd">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/commit"><code>commit</code></a> update or transform with no <a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition">precondition</a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/commit"><code>commit</code></a> update or transform with no <a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/Precondition">precondition</a></td>
 <td><code>datastore.entities.create datastore.entities.update</code></td>
 </tr>
 <tr class="even">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/commit"><code>commit</code></a> delete</td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/commit"><code>commit</code></a> delete</td>
 <td><code>datastore.entities.delete</code></td>
 </tr>
 <tr class="odd">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/createDocument"><code>createDocument</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/createDocument"><code>createDocument</code></a></td>
 <td><code>datastore.entities.create</code></td>
 </tr>
 <tr class="even">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/delete"><code>delete</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/delete"><code>delete</code></a></td>
 <td><code>datastore.entities.delete</code></td>
 </tr>
 <tr class="odd">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/get"><code>get</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/get"><code>get</code></a></td>
 <td><code>datastore.entities.get</code></td>
 </tr>
 <tr class="even">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/list"><code>list</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/list"><code>list</code></a></td>
 <td><code>datastore.entities.get</code><br />
 <code>datastore.entities.list</code></td>
 </tr>
 <tr class="odd">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/listCollectionIds"><code>listCollectionIds</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/listCollectionIds"><code>listCollectionIds</code></a></td>
 <td><code>datastore.entities.list</code></td>
 </tr>
 <tr class="even">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/partitionQuery"><code>partitionQuery</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/partitionQuery"><code>partitionQuery</code></a></td>
 <td><code>datastore.entities.get datastore.entities.list</code></td>
 </tr>
 <tr class="odd">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/patch"><code>patch</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/patch"><code>patch</code></a></td>
 <td><code>datastore.entities.update</code></td>
 </tr>
 <tr class="even">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/rollback"><code>rollback</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/rollback"><code>rollback</code></a></td>
 <td><code>datastore.databases.get</code></td>
 </tr>
 <tr class="odd">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/runAggregationQuery"><code>runAggregationQuery</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/runAggregationQuery"><code>runAggregationQuery</code></a></td>
 <td><code>datastore.entities.get datastore.entities.list</code></td>
 </tr>
 <tr class="even">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/runQuery"><code>runQuery</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/runQuery"><code>runQuery</code></a></td>
 <td><code>datastore.entities.get datastore.entities.list</code></td>
 </tr>
 <tr class="odd">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/executePipeline"><code>executePipeline (RPC)</code></a><br />
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/executePipeline"><code>executePipeline (RPC)</code></a><br />
 <br />
 with any of the following stages:<br />
 - <code>collection(...)</code><br />
@@ -129,7 +129,7 @@ with any of the following stages:<br />
 <td><code>datastore.entities.get datastore.entities.list</code></td>
 </tr>
 <tr class="even">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/executePipeline"><code>executePipeline (RPC)</code></a><br />
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/executePipeline"><code>executePipeline (RPC)</code></a><br />
 <br />
 with any of the following stages:<br />
 - <code>documents(...)</code><br />
@@ -137,7 +137,7 @@ with any of the following stages:<br />
 <td><code>datastore.entities.get</code></td>
 </tr>
 <tr class="odd">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/executePipeline"><code>executePipeline (RPC)</code></a><br />
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/executePipeline"><code>executePipeline (RPC)</code></a><br />
 <br />
 with any of the following stages:<br />
 - <code>update(...)</code><br />
@@ -145,7 +145,7 @@ with any of the following stages:<br />
 <td><code>datastore.entities.update</code></td>
 </tr>
 <tr class="even">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.documents/executePipeline"><code>executePipeline (RPC)</code></a><br />
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.documents/executePipeline"><code>executePipeline (RPC)</code></a><br />
 <br />
 with any of the following stages:<br />
 - <code>delete(...)</code><br />
@@ -153,19 +153,19 @@ with any of the following stages:<br />
 <td><code>datastore.entities.delete</code></td>
 </tr>
 <tr class="odd">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rpc/google.firestore.v1#write"><code>write (RPC)</code></a> update or transform with <a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition">exists precondition</a> set to <code>false</code></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#write"><code>write (RPC)</code></a> update or transform with <a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/Precondition">exists precondition</a> set to <code>false</code></td>
 <td><code>datastore.entities.create</code></td>
 </tr>
 <tr class="even">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rpc/google.firestore.v1#write"><code>write (RPC)</code></a> update or transform with <a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition">exists precondition</a> set to <code>true</code></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#write"><code>write (RPC)</code></a> update or transform with <a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/Precondition">exists precondition</a> set to <code>true</code></td>
 <td><code>datastore.entities.update</code></td>
 </tr>
 <tr class="odd">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rpc/google.firestore.v1#write"><code>write (RPC)</code></a> update or transform with no <a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/Precondition">precondition</a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#write"><code>write (RPC)</code></a> update or transform with no <a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/Precondition">precondition</a></td>
 <td><code>datastore.entities.create datastore.entities.update</code></td>
 </tr>
 <tr class="even">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rpc/google.firestore.v1#write"><code>write (RPC)</code></a> delete</td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rpc/google.firestore.v1#write"><code>write (RPC)</code></a> delete</td>
 <td><code>datastore.entities.delete</code></td>
 </tr>
 <tr class="odd">
@@ -173,19 +173,19 @@ with any of the following stages:<br />
 <td></td>
 </tr>
 <tr class="even">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.indexes/create"><code>create</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.indexes/create"><code>create</code></a></td>
 <td><code>datastore.schemas.create</code></td>
 </tr>
 <tr class="odd">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.indexes/delete"><code>delete</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.indexes/delete"><code>delete</code></a></td>
 <td><code>datastore.schemas.delete</code></td>
 </tr>
 <tr class="even">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.indexes/get"><code>get</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.indexes/get"><code>get</code></a></td>
 <td><code>datastore.schemas.get</code></td>
 </tr>
 <tr class="odd">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/latest/projects.databases.indexes/list"><code>list</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/latest/projects.databases.indexes/list"><code>list</code></a></td>
 <td><code>datastore.schemas.list</code></td>
 </tr>
 <tr class="even">
@@ -193,7 +193,7 @@ with any of the following stages:<br />
 <td></td>
 </tr>
 <tr class="odd">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/create"><code>create</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/create"><code>create</code></a></td>
 <td><code>datastore.databases.create</code><br />
 
 <p>If your <code>create</code> request contains a <code>tags</code> value, then the following additional permissions are required:</p>
@@ -207,19 +207,19 @@ with any of the following stages:<br />
 </ul></td>
 </tr>
 <tr class="even">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/delete"><code>delete</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/delete"><code>delete</code></a></td>
 <td><code>datastore.databases.delete</code></td>
 </tr>
 <tr class="odd">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/get"><code>get</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/get"><code>get</code></a></td>
 <td><code>datastore.databases.getMetadata</code></td>
 </tr>
 <tr class="even">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/list"><code>list</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/list"><code>list</code></a></td>
 <td><code>datastore.databases.list</code></td>
 </tr>
 <tr class="odd">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/patch"><code>patch</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/patch"><code>patch</code></a></td>
 <td><code>datastore.databases.update</code></td>
 </tr>
 <tr class="even">
@@ -227,7 +227,7 @@ with any of the following stages:<br />
 <td><code>datastore.backups.restoreDatabase</code></td>
 </tr>
 <tr class="odd">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.databases/clone"><code>clone</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/clone"><code>clone</code></a></td>
 <td><code>datastore.databases.clone</code><br />
 
 <p>If your <code>clone</code> request contains a <code>tags</code> value, then the following additional permissions are required:</p>
@@ -245,11 +245,11 @@ with any of the following stages:<br />
 <td></td>
 </tr>
 <tr class="odd">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.locations/get"><code>get</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations/get"><code>get</code></a></td>
 <td><code>datastore.locations.get</code></td>
 </tr>
 <tr class="even">
-<td><a href="https://docs.cloud.google.com/firestore/native/docs/reference/rest/v1/projects.locations/list"><code>list</code></a></td>
+<td><a href="https://docs.cloud.google.com/firestore/docs/reference/rest/v1/projects.locations/list"><code>list</code></a></td>
 <td><code>datastore.locations.list</code></td>
 </tr>
 <tr class="odd">

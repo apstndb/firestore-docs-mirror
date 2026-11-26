@@ -731,7 +731,7 @@ https://docs.cloud.google.com/firestore/native/docs/restore-in-place	2026-10-02T
 https://docs.cloud.google.com/firestore/native/docs/secure-agent-interactions-mcp	2026-11-17T21:21:51Z
 https://docs.cloud.google.com/firestore/native/docs/securing-with-vpc-sc	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/security/get-started	2026-10-02T06:02:45Z
-https://docs.cloud.google.com/firestore/native/docs/security/iam	2026-10-02T06:02:45Z
+https://docs.cloud.google.com/firestore/native/docs/security/iam	2026-11-25T17:56:25Z
 https://docs.cloud.google.com/firestore/native/docs/security/insecure-rules	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/security/rules-conditions	2026-10-02T06:02:45Z
 https://docs.cloud.google.com/firestore/native/docs/security/rules-fields	2026-10-02T06:02:45Z
